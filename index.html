@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA_Technical-Report-Knowledge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: {
+            'pda': { 'blue': '#1e3a5f', 'blue-light': '#3182ce', 'blue-dark': '#152a45', 'accent': '#3498db' }
+        }}}}
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'DM Sans', 'Noto Sans TC', -apple-system, sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .doc-card { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .doc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(30,58,95,0.15); }
+        .style-card { transition: all 0.2s ease; border: 2px solid transparent; }
+        .style-card:hover { border-color: #3498db; }
+        .tag-pill { font-size: 0.65rem; padding: 2px 8px; border-radius: 9999px; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; }
+        .search-hits { margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: #f0f7ff; border-left: 3px solid #1e3a5f; border-radius: 0 0.375rem 0.375rem 0; font-size: 0.7rem; line-height: 1.6; color: #475569; }
+        .search-hits .hit-title { font-weight: 600; color: #1e3a5f; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .search-hits mark { background: #fde68a; color: #92400e; padding: 0 2px; border-radius: 2px; }
+        .relevance-bar { height: 3px; border-radius: 2px; margin-top: 2px; transition: width 0.3s ease; }
+        .match-badges { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+        .match-badge { font-size: 0.6rem; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+        .match-badge-title { background: #dbeafe; color: #1e40af; }
+        .match-badge-summary { background: #d1fae5; color: #065f46; }
+        .match-badge-content { background: #f3e8ff; color: #6b21a8; }
+        .match-badge-tag { background: #fef3c7; color: #92400e; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-up { animation: fadeUp 0.4s ease-out forwards; opacity: 0; }
+        .fade-up:nth-child(2) { animation-delay: 0.05s; }
+        .fade-up:nth-child(3) { animation-delay: 0.1s; }
+        .fade-up:nth-child(4) { animation-delay: 0.15s; }
+        body.search-active #statsRow,
+        body.search-active #categoryBar,
+        body.search-active #categoryLegend,
+        body.search-active #styleGuideSection { display: none; }
+        body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <!-- HEADER -->
+    <div class="bg-gradient-to-br from-pda-blue via-pda-blue-light to-pda-blue text-white px-6 py-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-1/2 translate-x-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-1/2 -translate-x-1/4"></div>
+        </div>
+        <div class="max-w-6xl mx-auto relative">
+            <div class="text-center">
+                <h1 class="text-2xl font-bold tracking-tight">PDA_Technical-Report-Knowledge</h1>
+                <p class="text-blue-200 text-sm mt-1">Pharma Manufacturing x Education -- Bilingual Educational Document Index</p>
+                <p class="text-xs text-blue-300 mt-2">Last updated: <span id="lastUpdated"></span></p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-5" id="statsRow"></div>
+        </div>
+    </div>
+
+    <!-- CATEGORY BAR -->
+    <div class="max-w-6xl mx-auto px-6 mt-4">
+        <div class="flex h-2 rounded-full overflow-hidden bg-gray-200" id="categoryBar"></div>
+        <div class="flex gap-4 flex-wrap mt-2" id="categoryLegend"></div>
+    </div>
+
+    <!-- SEARCH & FILTERS -->
+    <div class="max-w-6xl mx-auto px-6 mt-4 flex gap-3 flex-wrap items-center">
+        <input type="text" id="searchBox" placeholder="Search titles, sources, tags, and full content..."
+               class="flex-1 min-w-[250px] px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-800 text-sm focus:outline-none focus:border-pda-blue focus:ring-1 focus:ring-pda-blue">
+        <span id="resultCount" class="text-xs text-pda-blue font-medium" style="display:none"></span>
+        <div class="flex gap-2 flex-wrap" id="filterBtns"></div>
+        <select id="sortSelect" onchange="this._userChanged=true;renderCards()"
+                class="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-gray-700 text-xs focus:outline-none focus:border-pda-blue">
+            <option value="relevance">Relevance</option>
+            <option value="date-desc">Newest first</option>
+            <option value="date-asc">Oldest first</option>
+            <option value="source">By Source</option>
+        </select>
+    </div>
+
+    <!-- CSS STYLE GUIDE -->
+    <div id="styleGuideSection" class="max-w-6xl mx-auto px-6 mt-6">
+        <div class="flex items-center gap-2 mb-3">
+            <h2 class="text-sm font-bold text-pda-blue">CSS Component Reference</h2>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-pda-blue font-medium border border-blue-200">template.css</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="styleCards"></div>
+    </div>
+
+    <!-- DOCUMENT CARDS -->
+    <div class="max-w-6xl mx-auto px-6 py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="docGrid"></div>
+
+    <!-- FOOTER -->
+    <div class="max-w-6xl mx-auto px-6 py-6 text-center text-xs text-gray-400 border-t border-gray-200 mt-4">
+        <p>Pharma Manufacturing x Education | Built with Claude AI</p>
+    </div>
+
+<script>window.searchIndex = window.searchIndex || [];</script>
+<script src="search-index.js" onerror=""></script>
+<script>
+// ============================================================
+// DOCUMENT DATA -- Each entry = one educational HTML file
+// To add new documents from ANY source, append to this array.
+// ============================================================
+const documents = [
+    // -- PDA Guide No.1: Aseptic Filling (2025) -----------------
+    { date:"2025-06-15", title:"Introduction & Glossary", titleZh:"導論與術語表",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Overview","Glossary","GMP"],
+      summary:"PDA指南總覽、四大部分架構、跨功能團隊設計原則、關鍵術語定義表。",
+      lines:850, pages:"p1-p7", figures:0, file:"pda-guide-no1/section-00-intro.html" },
+    { date:"2025-06-20", title:"Section 1: Design Elements for System Selection", titleZh:"設計要素與系統選擇",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Design","Selection","Phase-Appropriate"],
+      summary:"充填系統選擇設計要素：產品考量、容器選擇、Phase-Appropriate方法、決策優先層級（SA > CQA > Business）。",
+      lines:1200, pages:"p8-p28", figures:1, file:"pda-guide-no1/section-01-design.html" },
+    { date:"2025-06-25", title:"Section 2: Filling Technologies", titleZh:"充填技術",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Technology","PP","RPP","TP","DP"],
+      summary:"四大充填技術深度比較：蠕動泵、旋轉活塞泵、時間壓力充填、膜片泵的原理與選型邏輯。",
+      lines:1800, pages:"p29-p62", figures:2, file:"pda-guide-no1/section-02-tech.html" },
+    { date:"2025-07-01", title:"Section 3: Needle Designs", titleZh:"針頭設計",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Design","Needle","Single-Use"],
+      summary:"充填針頭設計：材質選擇(SS vs SU)、幾何形狀對充填精度與滴漏的影響。",
+      lines:600, pages:"p63-p69", figures:0, file:"pda-guide-no1/section-03-needle.html" },
+    { date:"2025-07-05", title:"Section 4: System Functionality", titleZh:"系統功能",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Functionality","Changeover","Foam Control"],
+      summary:"系統功能：連續/批次充填、曝型、泡沫控制、滴漏控制、溫控、大批量設計、機器人增強。",
+      lines:1600, pages:"p70-p100", figures:0, file:"pda-guide-no1/section-04-function.html" },
+    { date:"2025-07-10", title:"Section 5: Dose Control Systems", titleZh:"劑量控制系統",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Dose Control","IPC","Weight Check"],
+      summary:"劑量控制：100% vs 統計抽檢秤重、Operating Window概念、overfill成本分析。",
+      lines:1100, pages:"p101-p114", figures:2, file:"pda-guide-no1/section-05-dose.html" },
+    { date:"2025-07-12", title:"Section 6: Container-Closure Systems", titleZh:"容器密封系統",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Container","Closure","RTU"],
+      summary:"容器密封系統：容器類型對充填線設計的影響、RTU系統考量。",
+      lines:400, pages:"p115-p117", figures:0, file:"pda-guide-no1/section-06-container.html" },
+    { date:"2025-07-15", title:"Section 7: Closing Systems", titleZh:"封蓋系統",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Closing","Elastomer","Stopper"],
+      summary:"封蓋系統：彈性體分揀、壓入技術(vented/vacuum/hybrid)、PFS/卡匣封蓋。",
+      lines:900, pages:"p118-p128", figures:2, file:"pda-guide-no1/section-07-closing.html" },
+    { date:"2025-07-20", title:"Section 8: Interventions", titleZh:"介入操作",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Interventions","Line Setup","Risk"],
+      summary:"無菌介入操作：生產線設置、計劃/非計劃性介入風險評估、SOP設計。",
+      lines:1400, pages:"p129-p148", figures:0, file:"pda-guide-no1/section-08-interventions.html" },
+    { date:"2025-07-25", title:"Section 9: Component Introduction", titleZh:"組件導入",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Components","Sterilization","Transfer"],
+      summary:"組件導入策略：滅菌方式選擇、RTP/autoclave/tunnel傳遞、RTU導入。",
+      lines:800, pages:"p149-p158", figures:0, file:"pda-guide-no1/section-09-components.html" },
+    { date:"2025-07-28", title:"Section 10: Sterilization of Components", titleZh:"滅菌系統",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Sterilization","SIP","VPHP"],
+      summary:"滅菌系統：SIP、乾熱隧道、VPHP生物去污、高壓蒸汽滅菌設計與驗證。",
+      lines:700, pages:"p159-p167", figures:0, file:"pda-guide-no1/section-10-sterilization.html" },
+    { date:"2025-08-01", title:"Section 11: Sterile Fluid Pathway", titleZh:"無菌流體路徑",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Fluid Path","Filter","PUPSIT","Single-Use"],
+      summary:"無菌流體路徑：過濾器完整性(PUPSIT)、管路配置、SU流體路徑方案。",
+      lines:900, pages:"p168-p178", figures:3, file:"pda-guide-no1/section-11-fluid.html" },
+    { date:"2025-08-05", title:"Section 12: Operational Considerations", titleZh:"營運操作",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Operations","Priming","Yield"],
+      summary:"營運操作：灌注(Priming)、產量優化、批次調和、報廢管理。",
+      lines:900, pages:"p179-p190", figures:0, file:"pda-guide-no1/section-12-operations.html" },
+    { date:"2025-08-10", title:"Section 13: Aseptic Process Simulation", titleZh:"無菌製程模擬",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","APS","Media Fill","Validation"],
+      summary:"APS/Media Fill設計：挑戰測試項目、合格標準、常見失敗原因。",
+      lines:700, pages:"p191-p198", figures:0, file:"pda-guide-no1/section-13-aps.html" },
+    { date:"2025-08-12", title:"Section 14: Environmental Monitoring", titleZh:"環境監控",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","EM","Microbiology","Grade A"],
+      summary:"環境監控：Grade A/B/C/D分區策略、採樣方法、趨勢分析。",
+      lines:550, pages:"p199-p204", figures:0, file:"pda-guide-no1/section-14-monitoring.html" },
+    { date:"2025-08-15", title:"Section 15: Contamination Control Strategy", titleZh:"污染控制策略",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","CCS","Risk","Annex 1"],
+      summary:"CCS：EU GMP Annex 1要求、風險評估整合、全生命週期管理。",
+      lines:450, pages:"p205-p208", figures:0, file:"pda-guide-no1/section-15-ccs.html" },
+    { date:"2025-08-18", title:"Section 16: Supplier Management", titleZh:"供應商管理",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Supplier","Quality","SCM"],
+      summary:"供應商評估框架、品質協議、變更通知、供應鏈風險。",
+      lines:350, pages:"p209-p211", figures:0, file:"pda-guide-no1/section-16-supplier.html" },
+    { date:"2025-08-20", title:"Section 17: Qualification & Validation", titleZh:"確效與驗證",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Validation","IQ/OQ/PQ","Lifecycle"],
+      summary:"IQ/OQ/PQ策略、製程驗證生命週期(Stage 1-3)、持續確效。",
+      lines:350, pages:"p212-p214", figures:0, file:"pda-guide-no1/section-17-validation.html" },
+    { date:"2025-08-22", title:"Section 18: Maintenance & Calibration", titleZh:"維護保養",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Maintenance","Calibration"],
+      summary:"預防性維護、校準週期、備件管理、設備生命週期成本。",
+      lines:350, pages:"p215-p217", figures:0, file:"pda-guide-no1/section-18-maintenance.html" },
+    { date:"2025-08-25", title:"Section 19: Powder Filling Technology", titleZh:"粉末充填技術",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Powder","Lyophilization","Technology"],
+      summary:"粉末充填(Part 4)：螺旋/真空充填、粉末物理特性、凍乾產品特殊考量。",
+      lines:450, pages:"p218-p221", figures:0, file:"pda-guide-no1/section-19-powder.html" },
+    { date:"2025-08-28", title:"Section 20: References", titleZh:"參考文獻",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Reference","PDA TR","ICH"],
+      summary:"完整參考文獻：PDA TR、ICH指引、EU GMP、FDA指導文件。",
+      lines:300, pages:"p222-p225", figures:0, file:"pda-guide-no1/section-20-refs.html" },
+    { date:"2025-09-01", title:"Section 21: Case Studies", titleZh:"案例研究",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Case Study","Decision","CDMO"],
+      summary:"充填線設計決策案例、技術選型分析、CDMO評估情境。",
+      lines:1100, pages:"p226-p240", figures:0, file:"pda-guide-no1/section-21-case.html" },
+    { date:"2025-09-05", title:"Section 22: Vendor Resources", titleZh:"廠商資源",
+      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Vendor","Equipment"],
+      summary:"充填設備廠商資源彙整、技術諮詢管道。",
+      lines:600, pages:"p241-p250", figures:0, file:"pda-guide-no1/section-22-vendors.html" }
+
+    // -- Future: add documents from other sources here ----------
+    // { date:"2026-01-15", title:"ICH Q8(R2) Pharmaceutical Development",
+    //   titleZh:"藥品開發", source:"ICH Q-Series Study Guides",
+    //   tags:["ICH","QbD","Design Space","CQA"],
+    //   summary:"...", lines:800, file:"ich/q8r2-study-guide.html" },
+];
+
+// ============================================================
+// CONFIG
+// ============================================================
+const sourceColors = {
+    "PDA Guide No.1 Aseptic Filling (2025)": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"PDA Guide No.1" }
+    // "ICH Q-Series Study Guides": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"ICH Q-Series" },
+};
+
+const tagCls={
+    "Aseptic":"bg-blue-50 text-blue-700 border border-blue-200 font-semibold",
+    "Overview":"bg-slate-100 text-slate-600","Glossary":"bg-slate-100 text-slate-600",
+    "GMP":"bg-red-50 text-red-600","Annex 1":"bg-red-50 text-red-600",
+    "Design":"bg-blue-50 text-blue-600","Selection":"bg-blue-50 text-blue-600",
+    "Phase-Appropriate":"bg-blue-50 text-blue-700","Technology":"bg-indigo-50 text-indigo-600",
+    "PP":"bg-violet-50 text-violet-600","RPP":"bg-violet-50 text-violet-600",
+    "TP":"bg-violet-50 text-violet-600","DP":"bg-violet-50 text-violet-600",
+    "Needle":"bg-blue-50 text-blue-600","Single-Use":"bg-emerald-50 text-emerald-600",
+    "Functionality":"bg-indigo-50 text-indigo-600","Changeover":"bg-indigo-50 text-indigo-600",
+    "Foam Control":"bg-indigo-50 text-indigo-600",
+    "Dose Control":"bg-purple-50 text-purple-600","IPC":"bg-purple-50 text-purple-600",
+    "Weight Check":"bg-purple-50 text-purple-600",
+    "Container":"bg-cyan-50 text-cyan-600","Closure":"bg-cyan-50 text-cyan-600",
+    "RTU":"bg-cyan-50 text-cyan-600","Closing":"bg-cyan-50 text-cyan-600",
+    "Elastomer":"bg-cyan-50 text-cyan-600","Stopper":"bg-cyan-50 text-cyan-600",
+    "Interventions":"bg-teal-50 text-teal-600","Line Setup":"bg-teal-50 text-teal-600",
+    "Risk":"bg-orange-50 text-orange-600","Components":"bg-teal-50 text-teal-600",
+    "Sterilization":"bg-teal-50 text-teal-600","Transfer":"bg-teal-50 text-teal-600",
+    "SIP":"bg-teal-50 text-teal-600","VPHP":"bg-teal-50 text-teal-600",
+    "Fluid Path":"bg-teal-50 text-teal-600","Filter":"bg-teal-50 text-teal-600",
+    "PUPSIT":"bg-teal-50 text-teal-600","Operations":"bg-teal-50 text-teal-600",
+    "Priming":"bg-teal-50 text-teal-600","Yield":"bg-teal-50 text-teal-600",
+    "APS":"bg-teal-50 text-teal-600","Media Fill":"bg-teal-50 text-teal-600",
+    "Validation":"bg-teal-50 text-teal-600","EM":"bg-teal-50 text-teal-600",
+    "Microbiology":"bg-teal-50 text-teal-600","Grade A":"bg-teal-50 text-teal-600",
+    "CCS":"bg-teal-50 text-teal-600","Supplier":"bg-teal-50 text-teal-600",
+    "Quality":"bg-teal-50 text-teal-600","SCM":"bg-teal-50 text-teal-600",
+    "IQ/OQ/PQ":"bg-teal-50 text-teal-600","Lifecycle":"bg-teal-50 text-teal-600",
+    "Maintenance":"bg-teal-50 text-teal-600","Calibration":"bg-teal-50 text-teal-600",
+    "Powder":"bg-amber-50 text-amber-600","Lyophilization":"bg-amber-50 text-amber-600",
+    "Reference":"bg-gray-100 text-gray-600","PDA TR":"bg-gray-100 text-gray-600",
+    "ICH":"bg-gray-100 text-gray-600","Case Study":"bg-gray-100 text-gray-600",
+    "Decision":"bg-gray-100 text-gray-600","CDMO":"bg-orange-50 text-orange-700",
+    "Vendor":"bg-gray-100 text-gray-600","Equipment":"bg-gray-100 text-gray-600",
+    "QbD":"bg-green-50 text-green-600","Design Space":"bg-green-50 text-green-600",
+    "CQA":"bg-purple-50 text-purple-600"
+};
+
+const styleGuide = [
+    { name:"Key Terms", nameZh:"核心概念", bg:"#e8f5e9", border:"#4caf50", hc:"#2e7d32", desc:"定義關鍵技術術語", usage:".concept-box" },
+    { name:"Analogy", nameZh:"比喻說明", bg:"linear-gradient(135deg,#fff9e6,#fff3cd)", border:"#f6ad55", hc:"#856404", desc:"日常生活類比", usage:".analogy-box" },
+    { name:"Key Note", nameZh:"重點提示", bg:"#fff3e0", border:"#ff9800", hc:"#c65102", desc:"重要注意事項", usage:".note-box" },
+    { name:"Formula", nameZh:"公式計算", bg:"#f3e5f5", border:"#9c27b0", hc:"#7b1fa2", desc:"計算公式與決策樹", usage:".formula-box" },
+    { name:"Practice", nameZh:"練習思考", bg:"linear-gradient(135deg,#e8f4fd,#d1e9ff)", border:"#3182ce", hc:"#2c5282", desc:"練習題與思考問題", usage:".practice-box", dashed:true },
+    { name:"Application", nameZh:"實務應用", bg:"#e3f2fd", border:"#1976d2", hc:"#1565c0", desc:"CDMO實務案例", usage:".application-box" }
+];
+
+// Dynamic source filters
+const allSources=[...new Set(documents.map(d=>d.source))];
+const filterMap={'all':'all'};
+allSources.forEach(s=>{const sc=sourceColors[s];filterMap[sc?sc.short:s]=s;});
+const filterTags=['all',...allSources.map(s=>(sourceColors[s]||{}).short||s)];
+let activeFilter='all';
+
+// Deep search index
+const sectionsByFile={};
+if(typeof searchIndex!=='undefined'){searchIndex.forEach(e=>{if(!sectionsByFile[e.docFile])sectionsByFile[e.docFile]=[];sectionsByFile[e.docFile].push(e);});}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderStats(){
+    const t=documents.length,tl=documents.filter(d=>d.lines).reduce((s,d)=>s+d.lines,0);
+    const fig=documents.reduce((s,d)=>s+(d.figures||0),0);
+    const src=allSources.length,lnk=documents.filter(d=>d.file).length;
+    const stats=[{v:t,l:'Documents'},{v:(tl/1000).toFixed(1)+'K',l:'Total Lines'},{v:fig,l:'Figures'},{v:src,l:'Sources'},{v:lnk,l:'Linked'}];
+    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-blue-200 mt-0.5">${s.l}</div></div>`).join('');
+    const latest=documents.reduce((a,b)=>a.date>b.date?a:b);
+    document.getElementById('lastUpdated').textContent=latest.date;
+    const sc={};documents.forEach(d=>sc[d.source]=(sc[d.source]||0)+1);
+    const tot=Object.values(sc).reduce((a,b)=>a+b,0);
+    document.getElementById('categoryBar').innerHTML=Object.entries(sc).map(([s,c])=>`<div style="width:${c/tot*100}%;background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>`).join('');
+    document.getElementById('categoryLegend').innerHTML=Object.entries(sc).map(([s,c])=>`<div class="flex items-center gap-1.5 text-xs text-gray-500"><div class="w-2 h-2 rounded-sm" style="background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>${(sourceColors[s]||{}).short||s} (${c})</div>`).join('');
+}
+
+function renderStyleGuide(){
+    document.getElementById('styleCards').innerHTML=styleGuide.map(s=>{
+        const bg=s.bg.includes('gradient')?`background:${s.bg}`:`background:${s.bg}`;
+        const bd=s.dashed?`border:2px dashed ${s.border}`:`border-left:4px solid ${s.border}`;
+        return `<div class="style-card bg-white rounded-xl p-3 shadow-sm cursor-default"><div class="rounded-lg p-2.5 mb-2" style="${bg};${bd}"><div class="font-semibold text-xs" style="color:${s.hc}">${s.name}</div><div class="text-[10px] mt-0.5" style="color:${s.hc};opacity:0.8">${s.nameZh}</div></div><p class="text-[10px] text-gray-500 leading-relaxed">${s.desc}</p><code class="mono text-[9px] text-gray-400 mt-1 block">${s.usage}</code></div>`;
+    }).join('');
+}
+
+function initFilters(){
+    document.getElementById('filterBtns').innerHTML=filterTags.map(f=>{
+        const a=f===activeFilter;
+        const c=a?'bg-pda-blue text-white border-pda-blue':'border-gray-200 text-gray-600 bg-white hover:border-pda-blue hover:text-pda-blue';
+        return `<button class="px-3 py-1.5 rounded-lg text-xs font-medium border ${c} transition-colors" onclick="setFilter('${f}')">${f==='all'?'All':f}</button>`;
+    }).join('');
+}
+function setFilter(f){activeFilter=f;initFilters();renderCards();}
+
+let prevSort='date-desc';
+function getSnippet(content,query){const l=content.toLowerCase(),i=l.indexOf(query);if(i===-1)return'';const s=Math.max(0,i-40),e=Math.min(content.length,i+query.length+60);let sn=(s>0?'...':'')+content.substring(s,e)+(e<content.length?'...':'');const esc=query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return sn.replace(new RegExp('('+esc+')','gi'),'<mark>$1</mark>');}
+
+function getFiltered(){
+    let d=[...documents];const s=document.getElementById('searchBox').value.toLowerCase().trim();
+    const sortEl=document.getElementById('sortSelect');
+    if(s&&sortEl.value!=='relevance'&&!sortEl._userChanged){prevSort=sortEl.value;sortEl.value='relevance';}
+    else if(!s&&sortEl.value==='relevance'&&!sortEl._userChanged){sortEl.value=prevSort;}
+    sortEl._userChanged=false;
+    d.forEach(x=>{x._hits=null;x._score=0;x._matchTypes=[];});
+    if(s){d=d.filter(x=>{let sc=0;const ty=[];
+        if(x.title.toLowerCase().includes(s)){sc+=10;ty.push('title');}
+        if(x.titleZh&&x.titleZh.includes(s)){sc+=8;ty.push('title');}
+        if(x.tags.some(t=>t.toLowerCase().includes(s))){sc+=5;ty.push('tag');}
+        if(x.summary.toLowerCase().includes(s)){sc+=3;ty.push('summary');}
+        if(x.source.toLowerCase().includes(s)){sc+=2;ty.push('title');}
+        if(x.pages&&x.pages.toLowerCase().includes(s)){sc+=2;ty.push('title');}
+        const secs=sectionsByFile[x.file]||[];
+        const hits=secs.filter(sec=>sec.content.toLowerCase().includes(s));
+        if(hits.length>0){sc+=Math.min(hits.length,8);ty.push('content');x._hits=hits.map(h=>({sectionTitle:h.sectionTitle,snippet:getSnippet(h.content,s)}));}
+        x._score=sc;x._matchTypes=[...new Set(ty)];return sc>0;
+    });}
+    if(activeFilter!=='all'){const sf=filterMap[activeFilter];d=d.filter(x=>x.source===sf);}
+    const sort=sortEl.value;
+    if(sort==='relevance'&&s)d.sort((a,b)=>b._score-a._score||b.date.localeCompare(a.date));
+    else if(sort==='date-desc')d.sort((a,b)=>b.date.localeCompare(a.date));
+    else if(sort==='date-asc')d.sort((a,b)=>a.date.localeCompare(b.date));
+    else if(sort==='source')d.sort((a,b)=>a.source.localeCompare(b.source)||a.date.localeCompare(b.date));
+    return d;
+}
+
+function renderCards(){
+    const docs=getFiltered();const s=document.getElementById('searchBox').value.toLowerCase().trim();
+    const ce=document.getElementById('resultCount');
+    if(ce){ce.textContent=s?`${docs.length} results`:'';ce.style.display=s?'inline':'none';}
+    document.body.classList.toggle('search-active',!!s);
+    if(!docs.length){document.getElementById('docGrid').innerHTML='<div class="col-span-full text-center py-12 text-gray-400">No documents match.</div>';return;}
+    const mx=Math.max(...docs.map(d=>d._score||0),1);
+
+    document.getElementById('docGrid').innerHTML=docs.map((d,i)=>{
+        const sc=sourceColors[d.source]||{bg:'#f1f5f9',text:'#475569',short:d.source};
+        const tags=d.tags.slice(0,4).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
+        const fb=d.figures?`<span class="tag-pill bg-orange-50 text-orange-600">${d.figures} fig</span>`:'';
+        const btn=d.file?`<a href="docs/${d.file}" target="_blank" class="text-xs bg-pda-blue text-white px-3 py-1 rounded hover:bg-pda-blue-light no-underline transition-colors">Open</a>`:'';
+        let rel='';
+        if(s&&d._score>0){const p=Math.round(d._score/mx*100);const bc=p>=70?'#1e3a5f':p>=40?'#3182ce':'#93c5fd';
+            const bm={title:'Title',tag:'Tag',summary:'Summary',content:'Content'};
+            const bl={title:'match-badge-title',tag:'match-badge-tag',summary:'match-badge-summary',content:'match-badge-content'};
+            const mb=d._matchTypes.map(t=>`<span class="match-badge ${bl[t]}">${bm[t]}</span>`).join('');
+            rel=`<div class="flex items-center gap-2 mt-2"><div class="match-badges">${mb}</div><div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="relevance-bar h-1.5 rounded-full" style="width:${p}%;background:${bc}"></div></div><span class="mono text-[10px] text-gray-400">#${i+1}</span></div>`;}
+        let hh='';
+        if(d._hits&&d._hits.length>0){const sh=d._hits.slice(0,3);const mo=d._hits.length>3?`<div class="text-[10px] text-gray-400 mt-1">+${d._hits.length-3} more</div>`:'';
+            hh=`<div class="search-hits"><div class="hit-title">Content matches (${d._hits.length})</div>${sh.map(h=>`<div class="text-[10px]"><span class="font-medium text-pda-blue">${h.sectionTitle}</span>: ${h.snippet}</div>`).join('')}${mo}</div>`;}
+        const bc2=s&&d._score>0?(d._score/mx>=0.7?'border-pda-blue':d._score/mx>=0.4?'border-blue-300':'border-gray-200'):'border-gray-200';
+        const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
+        return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col">
+            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div>`:''}
+            <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
+            ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
+            ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
+            ${rel}
+            ${ss?`<p class="text-xs text-gray-600 leading-relaxed mt-2 flex-1">${d.summary}</p>`:''}
+            ${hh}
+            <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                <div class="flex items-center gap-3"><span class="mono text-[10px] text-gray-400">${d.pages||''}</span><span class="mono text-[10px] text-gray-400">${d.lines?d.lines+' lines':''}</span></div>${btn}
+            </div></div>`;
+    }).join('');
+}
+
+let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
+initFilters();renderStats();renderStyleGuide();renderCards();
+</script>
+</body>
+</html>
