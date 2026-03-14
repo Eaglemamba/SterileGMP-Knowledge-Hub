@@ -96,3 +96,36 @@ The following stats are computed dynamically from the `documents` array — no m
 - Split sections: `section-XXa-name.html`, `section-XXb-name.html`
 - Merged output: `TRXX-Complete.html`
 - Source text: `section-X.0-text.txt`
+
+## TopNav Scroll Arrow Rule
+
+All merged documents use scroll arrow buttons (‹ ›) in the top nav. This is required whenever a report has more than ~8 sections, as tabs overflow the viewport.
+
+**template.css** must have:
+- `.top-nav`: `display: flex; align-items: stretch;`
+- `.nav-container`: `justify-content: flex-start; scrollbar-width: none;` (NO `justify-content: center`)
+- `.nav-scroll-btn` and `.nav-scroll-btn.hidden` styles defined
+
+**Each merge.py** must wrap the nav like this:
+```html
+<nav class="top-nav" id="topNav">
+    <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+    <div class="nav-container" id="navContainer">
+        <!-- nav items -->
+    </div>
+    <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+</nav>
+```
+
+**JS block** must include:
+- `updateNavArrows()` — toggles `.hidden` on left/right buttons based on scroll position
+- Click handlers on both buttons (`scrollBy ±300px`)
+- `navContainer.addEventListener('scroll', updateNavArrows)`
+- `item.scrollIntoView({ block:'nearest', inline:'nearest' })` when active item changes
+
+When creating a new report's `merge.py`, copy the nav HTML and JS from `pda-guide-no1/merge.py` as the reference template.
+
+## index.html Link Rule
+
+The `file` field in the `documents` array must be a path **relative to `index.html`** (repo root).
+Example: `"pda-guide-no1/output/Guide-No1-Complete.html"` — no `docs/` prefix, no leading slash.
