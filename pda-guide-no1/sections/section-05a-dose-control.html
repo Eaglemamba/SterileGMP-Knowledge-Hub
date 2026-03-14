@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide No.1 - Section 5A: Dose Control (5.0–5.1.4)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5A: Dose Control (5.0–5.1.4)</h1>
+    <div class="subtitle">劑量管控系統：設計原則與風險效益分析</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | doc p101 – p107</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解劑量管控系統（Dose Control System）在無菌充填中的核心地位，以及與 CQA 的直接關聯</li>
+        <li>比較 100% 重量檢測（100% Weight Check）與間歇性統計抽樣（Intermittent Statistical Weight Check）的優缺點，並掌握適用情境</li>
+        <li>掌握重力式劑量管控（Gravimetric Dose Control）的四大不確定性來源：Container Holdup、Scale Bias、sMU、sFill</li>
+        <li>理解 k 因子（k-factor）系統如何將不確定性轉化為填充機的調整限與拒絕限設定</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.0: Designs for Dose Control Systems -->
+<!-- ============================================================ -->
+<div class="section-title">5.0 Designs for Dose Control Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>To ensure that the delivered parenteral dose to the patient is highly accurate, the <span class="key-term">filled volume</span> must be controlled during the filling process. Whether filling a <span class="key-term">SU container</span> (e.g., a prefilled syringe in an autoinjector or a vial where all the contents are fully withdrawn for injection) or a <span class="key-term">multi-use container</span> (e.g., a cartridge in a device or a multi-use vial), the amount of drug product filled into the container is of the utmost importance.</p>
+
+        <p>To ensure this <span class="key-term">CQA</span> for each container, the system must be designed to accommodate either <span class="key-term">100% weight checks</span> or <span class="key-term">intermittent (statistical) weight-check</span> for IPC of dosing accuracy. Sections 5.1–5.1.4 explore the benefits and risks of both approaches, design options, and factors that influence system stability.</p>
+
+        <div class="quote-box">
+            Note: This section does not discuss Quality Control methods such as United States Pharmacopeia &lt;697&gt; Container Contents for Injections (harmonized with European and Japanese Pharmacopeia). Such methods are typically designed for off-line use, are destructive tests, and are not typically employed for in-process control purposes.
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>劑量管控（Dose Control）</strong>是充填製程的核心 CQA（關鍵品質屬性）之一。每個容器所填入的藥量必須精確，這直接影響病患收到的實際治療劑量。</p>
+            <p>兩種主要容器類型有不同的管控挑戰：</p>
+            <ul>
+                <li><strong>SU 容器</strong>（一次性使用，如預充填注射器）：整支注射，填充量即為給藥量</li>
+                <li><strong>多用途容器</strong>（如多劑量瓶、卡匣）：每次取用量不固定，填充總量需保護每一次用藥</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像咖啡師泡一杯 espresso：客人點了雙份（double shot），要的是剛好 60ml，多或少都影響口感與咖啡因含量。充填機面對的是同樣的任務，只是精度要求更嚴格——通常在 ±2% 以內，而且每一支都要準確，不能靠「平均起來差不多」交差。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>USP &lt;697&gt; 等藥典方法是<strong>離線破壞性測試（off-line destructive）</strong>，不能替代製程中管控（IPC）。本節只討論<strong>線上（on-line）</strong>管控方法。這個區分在查核時常被稽查員考核，要牢記。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何單支預充填注射器（PFS）對填充精度的要求，比多劑量瓶更嚴格？</li>
+                <li>USP &lt;697&gt; 屬於 IPC 嗎？為什麼不能用它取代線上重量管控？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.1: Dose Control Systems Risks and Benefits -->
+<!-- ============================================================ -->
+<div class="section-title">5.1 Dose Control Systems Risks and Benefits</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Whenever possible, <span class="key-term">100% of container doses</span> should be checked as an integral part of the filling process, as long as line speed and line design permit this approach. If this is not possible, an <span class="key-term">intermittent statistical dose-check</span> should be done automatically on-line. Both approaches have advantages and disadvantages that will be described in this section.</p>
+
+        <p><span class="key-term">Quarantine buffers</span> are required for all intermittent on-line weight check systems to ensure that the automation is accurately tracking any container between the last good weight check and a failing weight check. For filling systems that make use of nested components, part of the design approach for on-line intermittent weight checks should be to ensure the quarantine buffer enables the identification of entire nests between weight checks so that they can be easily segregated for further investigation or discard.</p>
+
+        <p>Typically, <span class="key-term">off-line IPC</span>, which is not automated, has the disadvantage of introducing a high degree of human error either during the weight-check procedure or the documentation of the results. Off-line weight checks are commonly required to be destructively tested (e.g., emptying the product in the container for weighing on an external laboratory balance), which also makes this process undesirable.</p>
+
+        <p>Throughout the remainder of this section all check-weigh descriptors will describe on-line techniques unless specifically identified.</p>
+
+        <p>A thorough <span class="key-term">risk assessment</span>, such as that described in the International Council for Harmonisation's Quality Guideline Q9(R1): Quality Risk Management, PDA's Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations or PDA/ANSI Standard 03-2025, Standard Practice for Quality Risk Management of Aseptic Processes might be employed to assess the risks associated with the various weight-check approaches for a specific filling configuration (7–9). See TR 54-2 for applied examples of packaging risk assessments (10).</p>
+
+        <p>The benefits and risks of on-line intermittent and on-line 100% weight-check approaches are described in Sections 5.1.1–5.1.4.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Quarantine Buffer（隔離緩衝區）</strong>是間歇抽樣系統的必要配套。當最後一次合格量測到下一次量測之間發生問題，所有這段期間充填的容器都必須被追蹤並保留，直到確認合格才能放行。</p>
+            <p>這個概念在 Nest 充填線上特別重要：每個 Nest（巢盤）包含多個容器，系統必須能精確對應每個 Nest 的填充結果。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Quarantine buffer 就像機場的安檢等候區（airport security holding area）：每個旅客（容器）在通過安檢（重量驗證）之前，都必須被追蹤在等候區內。若發現某個時間點的問題，整個等候區的旅客都要重新審查，不能放行。間隔時間越長，等候區越大，管理成本越高。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>ICH Q9(R1) 要求劑量管控方法的選擇必須有正式的<strong>品質風險管理（QRM）</strong>文件支撐。選擇間歇抽樣而非 100% 檢測，必須有充分的科學和風險理由，不能只以速度或成本為由。稽查時這個決策的文件紀錄是高頻稽查點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的廠區使用 Nest 充填線，採間歇抽樣。若抽樣率 1%、每 Nest 100 支注射器，需要隔離多少 Nests？</li>
+                <li>離線 IPC 的兩個主要缺點是什麼？為何特別不適合無菌充填環境？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.1.1: Benefits of Intermittent Weight Checks -->
+<!-- ============================================================ -->
+<div class="section-title">5.1.1 Benefits of Intermittent Weight Checks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The benefits of <span class="key-term">intermittent statistical weight-check</span> approaches include:</p>
+        <ul>
+            <li>For <span class="key-term">RTU primary packaging material</span>, the containers can remain within the nest, and no <span class="key-term">denesting</span> process is needed.</li>
+            <li>Filling lines can run at a <span class="key-term">higher speed</span> as samples are only taken statistically, depending on the IPC rate.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>RTU（Ready-to-Use，即用型）</strong>包材通常以 Nest 形式提供，如整盤注射器或西林瓶。間歇抽樣不需要將容器從 Nest 取出（denesting），可直接在 Nest 內完成充填與量測，維持容器排列不變，減少機械操作風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像餐廳用同一個托盤上菜，廚師只需抽查其中幾道菜的份量，而不用把每道菜都從盤子拿出來秤重。這樣出菜速度快，但若某道菜有問題，整桌可能都需要重新確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>間歇抽樣的「速度優勢」是有代價的：你的<strong>填充目標值必須設得更保守</strong>（偏離下限更遠），以補償未被檢測容器的不確定性。這意味著更多的 overfill，即每支容器多填一些，以防未被抽到的容器低於下限。高單價產品（如 mAb、基因療法）的 overfill 成本相當可觀。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.1.2: Constraints of Intermittent Weight Checks -->
+<!-- ============================================================ -->
+<div class="section-title">5.1.2 Constraints of Intermittent Weight Checks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The risks of an <span class="key-term">intermittent (statistical) weight-check</span> approach include:</p>
+        <ul>
+            <li>Potential missing detection of <span class="key-term">underfills</span> between the IPC sampling points</li>
+            <li><span class="key-term">Quarantine handling</span> between the IPC sampling points (e.g., with a 10-fill station RTU filling line running IPC at a 1% rate with 100 containers per nest, 1 row of 10 syringes in each of 10 nests will be weighed; in this case, 10 nests must be held in a quarantine buffer awaiting results of subsequent check-weigh results)</li>
+            <li>Filling control strategy must take <span class="key-term">bias</span> between the measurements tare and gross into account, whether two scales or a single scale are used, potentially resulting in a smaller filling range to compensate (see Section 5.2 and Section 5.3 for additional details on dose control).</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>間歇抽樣的三大風險</strong>環環相扣：</p>
+            <ul>
+                <li><strong>偵測盲區</strong>：抽樣點之間發生的問題（如氣泡、泵浦漂移）無法即時發現</li>
+                <li><strong>隔離成本</strong>：需要足夠的實體緩衝空間和自動化追蹤系統，設備成本和線體長度都增加</li>
+                <li><strong>量測偏差補償</strong>：Tare 和 Gross 不一定用同一個秤，兩個秤之間的 Bias 必須納入填充視窗計算，壓縮可用的操作範圍</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula — 隔離 Nest 數量估算</h4>
+            <pre>
+範例設定：
+  填充站數：10 站
+  IPC 抽樣率：1%（每 100 容器抽 1 個）
+  每個 Nest 容器數：100 支
+  每次抽取：10 個 Nests 中各取 1 排（1×10 支）
+
+所需隔離 Nests 數 = 抽樣間隔期間通過的 Nests 數
+  = 1/1% = 100 容器間隔 ÷ 10 站 = 10 Nests
+
+結論：系統需保留 10 個 Nests 在隔離緩衝區，
+等待後續量測結果才能放行或拒絕。
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若抽樣率從 1% 提高到 5%，隔離 Nests 數量如何變化？對線速有何影響？</li>
+                <li>Scale bias 如何影響填充下限的設定？為何「偏差越大，可用操作視窗越小」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.1.3: Benefits of 100% Weight Checks -->
+<!-- ============================================================ -->
+<div class="section-title">5.1.3 Benefits of 100% Weight Checks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Typically, <span class="key-term">100% IPC weight checks</span> are accomplished using a <span class="key-term">tare scale</span> (which weighs the empty container prior to filling) and a <span class="key-term">gross scale</span> (which weighs the container after filling). Tare and gross scales are provided for each filling station so that each dosing path is verified for weight. (Configurations with a single scale per dosing path are also available for low-throughput applications, where the single scale is used for both tare and gross.)</p>
+
+        <p>The benefits of 100% weight checks include:</p>
+        <ul>
+            <li>Possibility to <span class="key-term">dose-in</span>, <span class="key-term">re-dose</span>, and <span class="key-term">dose-out</span> for maximizing product yield:
+                <ul>
+                    <li><em>Dose-in</em> means the filling set is primed, where air is expelled into the container until a constant flow of product is achieved, on the gross scales until the correct filling volume is achieved. After priming is accomplished for the initial setup of the filler, this dose-in process will generally not need to be repeated, unless there is downtime where prime is lost. Normal filling operations will follow the dose-in (priming) step.</li>
+                    <li><em>Re-dosing</em> means that there is the ability to add small increments of product to an individual container if the net weight is lower than the target to bring the container to volume before acceptance. When re-dosing is performed, it should be performed (or simulated) as a standard part of the APS, as the extended filling time has the potential to increase risk. Re-dosing is generally not practical for very small fill volumes.</li>
+                    <li><em>Dose-out</em> means the line will be run until the filling path to each needle is completely empty on the gross scales; underfilled containers will be rejected, but any containers that achieve target weight before reaching empty may be retained. For high-value products, the increase in time to execute the dose-out is compensated with the savings achieved by minimizing scrap. The dose-out process will typically start when the intermediate vessel is below the lower replenishment level and there is no further product to be supplied. For specialty products, like suspensions, dose-out may not be advisable as mixing may no longer be sufficient.</li>
+                </ul>
+            </li>
+            <li><span class="key-term">Constant final dosing</span> is possible where two-step filling is performed; the first filling step fills more than 80–95% of the volume, with a second dose provided by the filler to provide a fine-tuned quantity of product. This conserves product by not requiring an excess fill, while providing a highly precise final volume within the container. The two-step filling approach is especially valuable for rare or expensive products, or for products where the dose must be very precise due to clinical effect.</li>
+            <li>Data is available for each container, and each container can be rejected directly after the net-weighing; as a consequence, <span class="key-term">there is no quarantine handling</span>.</li>
+            <li>Detection of <span class="key-term">low or high doses</span> due to undetected special-cause variation is possible at the filling process (e.g., an air bubble in the filling hose).</li>
+            <li>Constant feedback will be provided to the filling system, which may be beneficial to systems such as PP for <span class="key-term">correcting drift</span> (see Section 2.0).</li>
+            <li>A 100% check-weigh enables the filling target to be <span class="key-term">closer to the lower limit</span>, maximizing product yield.</li>
+        </ul>
+
+        <p>Historically, <span class="key-term">mass flowmeters</span> were used for some continuous motion, high-speed machines as a 100% IPC for dosing management; however, the mass flowmeters were poor options for low-volume fills, which resulted in the need for overfilling. Mass flowmeters are capable of withstanding CIP and SIP; however, it is difficult to verify their cleanliness and sterility, so the validation can be challenging. As a result, the <span class="key-term">gravimetric approach</span> is by far the more common approach.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>100% 重量管控的三個填充操作模式</strong>是此系統最大的彈性優勢：</p>
+            <ul>
+                <li><strong>Dose-in（導入充填）</strong>：批次開始時的引液操作，確保管路無氣泡、流量穩定才開始正式充填。這個步驟「浪費」少量藥液，但確保後續每支都準確。</li>
+                <li><strong>Re-dosing（補充充填）</strong>：對個別未達標容器追加補充，補救輕微不足，提高良品率。但<strong>必須納入 APS（無菌製程模擬）</strong>驗證，因為多一次插針動作即多一次暴露風險。</li>
+                <li><strong>Dose-out（耗盡充填）</strong>：批次結束時，將管路殘留藥液盡量充填至容器，減少浪費。懸浮液（Suspension）不適用，因此時混勻可能不足。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>100% 檢重就像「每台車都有倒車雷達」——每次停車（充填）系統都即時回饋距離（重量），駕駛（充填機控制器）立即修正，不需要等待事後統計分析。而間歇抽樣則像「靠目測停車距離」，技術好的師傅可以停好，但無法保證每次都準確，也無法即時修正。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>兩步充填（Two-step Filling）</strong>是高價值產品的關鍵技術：第一步填 80–95%，第二步精確補至目標值。這讓填充目標可以設在幾乎緊貼下限，大幅減少 overfill。對於每毫升藥液價值數萬美元的基因療法、mAb 等產品，overfill 的節省直接影響批次 COGS（製造成本）。</p>
+            <p>Mass flowmeter 雖能承受 CIP/SIP，但<strong>清潔驗證困難</strong>，且不適合小體積充填，因此重力式（gravimetric）已成為主流。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 承接高價值生物製劑（如 CAR-T 細胞療法配套注射液）時，選擇 100% 重量管控 + 兩步充填的組合，可以將目標值設在下限上方僅 2–3% 處，而非間歇抽樣需要的 8–10% 保守偏移量。以每批次 5,000 支計算，每支節省 0.1ml 藥液，5000 × 0.1ml × 藥液單價，即使單價 USD 1,000/ml，節省也達 USD 500,000/批。這個計算方式在 business case 提報中非常有說服力。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.1.4: Constraints of 100% Weight Checks -->
+<!-- ============================================================ -->
+<div class="section-title">5.1.4 Constraints of 100% Weight Checks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The risks of <span class="key-term">100% weight checks</span> include:</p>
+        <ul>
+            <li><span class="key-term">Limited filling speed</span></li>
+            <li><span class="key-term">Denesting</span> is typically required for RTU containers that are provided in nests</li>
+            <li>Filling control strategy must take <span class="key-term">bias</span> into account between the two measurements, tare and gross, whether a single scale or two scales are used, potentially resulting in a smaller filling range in order to compensate (see Section 5.2 and Section 5.3 for additional details on dose control).</li>
+            <li>Depending upon system design, 100% weight checks can result in <span class="key-term">additional handling and/or exposure time</span> prior to stoppering</li>
+        </ul>
+
+        <p>Finally, concerning risks for both intermittent and 100% IPC, <span class="key-term">weight-check systems</span> are much more robust than earlier generations of equipment, and therefore are much less likely to be damaged should mishandling of containers on the line occur. Nevertheless, care should be taken to ensure that the container transport and movement is aligned. To facilitate aligning these elements, <span class="key-term">ergonomic devices</span> such as locating pins can be used. Confirming alignment during setup avoids incurring costly replacement or repairs or product-reject losses.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>100% 管控的代價</strong>主要在設備複雜度和操作風險：</p>
+            <ul>
+                <li><strong>速度限制</strong>：每個容器都需要在秤台上停留足夠時間讀取穩定數值，這是物理限制，無法與高速線的需求完全相容</li>
+                <li><strong>Denesting 需求</strong>：RTU Nest 包材需要先將容器逐一取出再稱重充填，增加機械操作步驟和相應的微粒與污染風險</li>
+                <li><strong>額外暴露時間</strong>：容器在 Tare 秤 → 充填 → Gross 秤的移動過程中，暴露在環境中的時間比直接充填更長，設計時需評估對無菌保證的影響</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>決策階層的實際應用</strong>：100% 管控因為 denesting 增加操作步驟，可能增加暴露時間（影響無菌保證）。這時候決策順序就很重要：</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><div class="hierarchy-box level-1">無菌保證 Sterility Assurance — 優先</div></div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-2">劑量準確性 CQA — 次優先</div></div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-3">速度與產量 Business — 末位</div></div>
+            </div>
+            <p>若 denesting 操作無法確保暴露風險可接受，<strong>無菌保證的優先級高於劑量精度的優先級</strong>，必須重新考慮系統設計或採用間歇抽樣。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>100% 檢重系統的「速度限制」如何影響每批次產能？對 CDMO 的排程和客戶承諾有何影響？</li>
+                <li>若客戶要求高速充填（&gt;300 vials/min）且使用 RTU Nest 包材，你會建議 100% 還是間歇抽樣？理由為何？</li>
+                <li>Locating pins（定位銷）解決了什麼問題？它屬於哪個層面的管控措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.2: Dose Control System Design Options (Intro) -->
+<!-- ============================================================ -->
+<div class="section-title">5.2 Dose Control System Design Options — Statistical Overview</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>For some filling lines with singularized containers, especially in filling rooms with limited size and required high throughput, a 100% check-weigh is not possible. In this case, a <span class="key-term">statistical dose-control model</span> must be used. Statistical dose-control is also used on a majority of nested filling lines. In statistical check weighing, every container fill-weight is not known, and extra protection must be incorporated to protect for the filling variability for containers not checked for dose. Typically, this results in <span class="key-term">target-fills set farther away from the lower fill-reject limit</span>, and filling reject-limits set farther away from the maximum and minimum filling limits. Practically, this results in a smaller operating window for products with both upper and lower filling limits and in more overfill for products with only a lower filling limit.</p>
+
+        <p>The greatest disadvantage of statistical dose-control is the <span class="key-term">handling of rejects</span>. Should a dose-check for a filling pump or needle exceed the reject limits, all filled containers from the last good dose-check to the current failing dose-check must be discarded for that pump position. In a nested line, it is relatively simple to segregate underfilled containers based on position in the nest (which correlates to the filling needle); nevertheless, a <span class="key-term">quarantine system</span> must be in place to ensure that the "faulty" containers can be rejected, whether the nests are fully held on the line or have exited the line. For a line that handles individual containers, such as a vial line, segregation is more difficult depending on container-handling and shift-register control, and it is often simpler to discard all units filled for all pump positions back to the last good dose, resulting in more rejects.</p>
+
+        <p><span class="key-term">Figure 5.2-1</span> provides an example of statistical dose-control in a nested filling-machine, where one row out of every six nests is tare-weighed, filled, and then gross-weighed. Figure 5.2-1 shows the removal of the syringes from the nest, the filling of the units, and the dose numbering-system needed to associate the units in each tub to the last good dose-check. This association is critical for handling rejects.</p>
+
+        <div class="figure-container">
+            <div style="background:#edf2f7; border:1px dashed #a0aec0; border-radius:8px; padding:2rem; text-align:center; color:#718096;">
+                <p style="font-weight:600; margin-bottom:0.5rem;">Figure 5.2-1</p>
+                <p style="font-size:0.88rem;">Statistical In-Process Control for Nested Containers – All Doses Within Limits</p>
+                <p style="font-size:0.8rem; margin-top:0.75rem; font-style:italic;">[Figure not available in text source — refer to original PDA Guide No.1 p104]</p>
+            </div>
+        </div>
+
+        <p><span class="key-term">Figure 5.2-2</span> depicts the same nested filling process but, this time, a dose-check fails either high or low reject-limits. In this case, the filler will reenter a dose "in process" to center and control the dose for each pump, and all containers back to the last passing IPC check will be discarded (either per pump position or for all, depending on the reject control strategy).</p>
+
+        <div class="figure-container">
+            <div style="background:#edf2f7; border:1px dashed #a0aec0; border-radius:8px; padding:2rem; text-align:center; color:#718096;">
+                <p style="font-weight:600; margin-bottom:0.5rem;">Figure 5.2-2</p>
+                <p style="font-size:0.88rem;">Statistical In-Process Control for Nested Containers – Dose Outside of Limits</p>
+                <p style="font-size:0.8rem; margin-top:0.75rem; font-style:italic;">[Figure not available in text source — refer to original PDA Guide No.1 p105]</p>
+            </div>
+        </div>
+
+        <p>There are two main methods to control the dose in parenteral containers—<span class="key-term">gravimetric</span> and <span class="key-term">volumetric fill</span>—to a physical stopping point (e.g., laser-fill endpoint detection on a cartridge).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>統計劑量管控的核心邏輯</strong>：因為不是每支容器都被量測，填充目標必須「偏保守」——設在遠離下限的位置，確保即使最差的未測容器也不會跌破下限。這個「保守偏移量」的大小，取決於系統的填充變異（σFill）和抽樣設計。</p>
+            <p><strong>兩種主要劑量量測方法</strong>：</p>
+            <ul>
+                <li><strong>重力式（Gravimetric）</strong>：用秤量測重量，計算淨重。主流方法，精度高，適用大多數液體充填</li>
+                <li><strong>體積式（Volumetric）</strong>：計算物理限位點（如雷射偵測卡匣液位），適用特殊容器幾何形狀</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p><strong>圖 5.2-1（正常狀況）</strong>：顯示 Nest 充填線在所有劑量都在管制限內時的操作流程。每隔固定 Nest 數抽取一排進行重量量測，量測通過後，這一批 Nests 才能放行繼續後續製程。</p>
+            <p><strong>圖 5.2-2（異常狀況）</strong>：顯示某次量測超出拒絕限時的處理程序。系統回到「製程中」狀態重新調整，且從上次合格量測到此次不合格量測之間的所有容器，依拒絕策略決定是否全部報廢，或只報廢對應充填站的容器。</p>
+            <p>這兩張圖的核心訊息：<strong>shift-register（移位暫存器）追蹤系統</strong>的精確性決定了報廢範圍的大小，系統越精確，不必要的報廢越少。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>統計劑量管控的「報廢處理」為何是最大缺點？對 CDMO 的批次良率有何衝擊？</li>
+                <li>在 Vial 充填線（非 Nest）上，為何報廢範圍往往比 Nest 充填線更大？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.2.1: Gravimetric Dose Control -->
+<!-- ============================================================ -->
+<div class="section-title">5.2.1 Method 1: Gravimetric Dose Control Process &amp; 5.2.1.1 Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>5.2.1 Method 1: Gravimetric Dose Control Process</h3>
+
+        <p>The basics of <span class="key-term">gravimetric dose control</span> are simple and well understood. An empty container is weighed on a load-cell to obtain <span class="key-term">tare weight</span>; the container is filled, and then the filled container is weighed again on a load-cell to find <span class="key-term">gross weight</span>. The net weight is calculated from those numbers.</p>
+
+        <p>The tare and gross load-cells can be the same, as is the case in many nested filling lines. However, on many bulk or singularized filling lines, two separate load-cells are used to measure tare and gross weight.</p>
+
+        <h3>5.2.1.1 Gravimetric Dose Control Considerations</h3>
+
+        <p>To ensure the dose delivered to the patient is correct, several sources of uncertainty need to be considered. These sources of uncertainty, when applied to the label claim and maximum- and minimum-fill weights, can be used to calculate the filling-machine's <span class="key-term">adjust</span> and <span class="key-term">reject limits</span>. However, some parenteral products do not have maximum-filling weight limits (e.g., a multi-use cartridge or a vial in which the patient uses a syringe to determine the dose delivered).</p>
+
+        <p>Below are the sources of uncertainty that must be taken into consideration when applying a gravimetric dose-control strategy:</p>
+
+        <ol>
+            <li><strong><span class="key-term">Container Holdup</span></strong> – Container holdup is the undelivered volume that cannot be dosed to the patient due to such features as container geometry, device limitations, or plunger compliance. Container holdup can be empirically determined with a Gage Repeatability and Reproducibility Study or using the relevant U.S. Pharmacopeia estimates. Because the label claim is the mandatory lowest volume (or weight) that can be delivered to the patient, protections must be built into the dose-control strategy to account for container holdup.</li>
+
+            <li><strong><span class="key-term">Scale Bias</span></strong> – In filling machines with separate tare and gross scales, the bias between the two scales must be considered to protect the maximum and minimum fill-weight. In filling machines with only one scale for both tare and gross weights, an analogous calculation for the two measurements that are taken on the single scale is applicable. To ensure no units exceed the minimum or maximum fill-weight, the upper and lower filling-machine reject limits should be protected against scale (or measurement) bias by including <span class="key-term">guard-banding</span> from the minimum and maximum fill-weight limits. A guard-band is an adjustment or offset to the pass/fail process limits that include known uncertainties (such as the potential bias between the two measurements).</li>
+
+            <li><strong><span class="key-term">Scale Measurement Uncertainty (sMU)</span></strong> – Measurement uncertainty of the scale must be known in the range of the weights being considered. To ensure that no units exceed the minimum or maximum fill-weight, the upper and lower filling-machine reject limits should be protected against sMU by guard-banding in from the limits by a correction factor of k<sub>1</sub>, shown in Figure 5.2.1-1. The scale calibration should be checked periodically to ensure its uncertainty does not exceed the value used for the dose limit. Checking the scale calibration before and at the end of the batch, at a minimum, is also recommended. It is also common for machines equipped with IPC to periodically tare (i.e., zero) the weighing cells at defined intervals, especially for long fills. If this feature is not included, then the scale-calibration checks should be executed more frequently.</li>
+
+            <li><strong><span class="key-term">Filling Standard Deviation (sFill)</span></strong> – The standard deviation of the fill process must be empirically determined for the dose and the container being filled. The filling standard deviation, when multiplied by correction factors k<sub>2</sub> and k<sub>3</sub>, is used to set the target of the dose a distance away from the upper and lower reject limits. In Figure 5.2.1-1, the target is centered between the upper and lower reject limits, when the target most often is closer to the lower reject limit to minimize overfills. The filling standard deviation is also multiplied by correction factor k<sub>4</sub> to set the adjust limits for the filler. This adjustment is discussed further in Figure 5.2.1-1.</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>重力式劑量管控的四大不確定性來源</strong>——每一項都必須在設計充填視窗時量化納入：</p>
+            <ul>
+                <li><strong>Container Holdup（容器殘留量）</strong>：藥液填入後，仍有一部分因容器幾何形狀（如注射器柱塞空間）無法被病患抽出。標籤聲稱量（Label Claim）是必須<em>可送達</em>的最低量，所以填充量必須 = Label Claim + Holdup</li>
+                <li><strong>Scale Bias（秤台偏差）</strong>：Tare 秤和 Gross 秤的系統性誤差之差值。即使每台秤個別校正合格，兩台之間仍可能有固定偏差，需要 Guard-banding（保護帶）補償</li>
+                <li><strong>sMU（Scale Measurement Uncertainty，秤台量測不確定度）</strong>：秤台在特定量測範圍內的隨機誤差，以標準差表示，透過 k₁ 因子納入拒絕限計算</li>
+                <li><strong>sFill（充填標準差）</strong>：充填製程本身的批次內變異，以標準差表示，透過 k₂、k₃、k₄ 因子控制目標值位置和調整觸發點</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在烘焙，要求每個蛋糕剛好 500g：</p>
+            <ul>
+                <li><strong>Container Holdup</strong> = 烤模本身會吸油，所以必須多放一點麵糊</li>
+                <li><strong>Scale Bias</strong> = 廚房秤和出廠秤之間的固定差異，需要校正補償</li>
+                <li><strong>sMU</strong> = 廚房秤每次量測的誤差範圍（±2g），要在安全範圍內操作</li>
+                <li><strong>sFill</strong> = 每次倒麵糊的手抖程度，有時多有時少，這個變異決定了你需要預留多少「安全邊距」</li>
+            </ul>
+            <p>充填機設計的核心就是把這四個誤差來源同時管控，確保每支注射器送到病患手中的藥量都在規格內。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula — Guard-band 概念</h4>
+            <pre>
+填充下限設定邏輯（概念式）：
+
+最低填充量（Label Claim）
++ Container Holdup（容器殘留補償）
++ Guard-band for Scale Bias（秤台偏差保護帶）
++ k₁ × sMU（量測不確定度保護）
++ k₂ × sFill（充填變異保護）
+= 填充機下拒絕限（Lower Reject Limit）
+
+填充目標（Target）
+= Lower Reject Limit + k₂ × sFill
+
+[實際 k 因子的計算見 Section 5.2.1-1 圖表]
+
+結論：每增加一個誤差來源，填充下限就向上移動，
+意味著每支容器必須多填更多藥液（overfill 增加）。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>秤台校正（Scale Calibration）</strong>是 GMP 關鍵操作，最少要在<strong>批次前後各做一次</strong>。長批次生產中還需要定期歸零（tare/zero），防止溫度漂移等因素造成累積誤差。若機台不具備自動歸零功能，需要提高手動校正頻率——這會直接影響生產效率，設計評估時必須考量。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5.2.1-1: K Factors Figure -->
+<!-- ============================================================ -->
+<div class="section-title">Figure 5.2.1-1: K Factors and Standard Deviation Explanation (doc p106–p107)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div class="figure-container">
+            <div style="background:#edf2f7; border:1px dashed #a0aec0; border-radius:8px; padding:2rem; text-align:center; color:#718096;">
+                <p style="font-weight:600; margin-bottom:0.5rem;">Figure 5.2.1-1</p>
+                <p style="font-size:0.88rem;">Gravimetric Dose-Control Range Determination Depicting K Factors and Standard Deviation</p>
+                <p style="font-size:0.8rem; margin-top:0.75rem; font-style:italic;">[Figure not available in text source — refer to original PDA Guide No.1 p107]</p>
+            </div>
+        </div>
+
+        <p><strong>Key for Figure 5.2.1-1:</strong></p>
+        <ul>
+            <li><strong>k<sub>1</sub></strong> = Controls the risk that a container determined to have an acceptable weight is actually within the minimum- and maximum-fill weight requirements. Recommended that k<sub>1</sub> is set to have a high statistical confidence of containers meeting the weight requirements.</li>
+            <li><strong>k<sub>2</sub></strong> = Controls the number of containers that will fail the lower reject limit by controlling how close the average fill weight can be to the lower reject limit. The larger k<sub>2</sub> is, the lower the risk of rejecting containers; also, a larger k<sub>2</sub> raises the target and allows more product to be put into each container, which increases the cost. Rejection risk vs. overfill must be balanced to choose the appropriate k<sub>2</sub>.</li>
+            <li><strong>k<sub>3</sub></strong> = Calculated value of the number of filler standard deviations between the target and the upper reject limit, it determines the number of containers that will fail the upper reject limit by determining how close the average fill weight is to the upper reject limit. The larger k<sub>3</sub> is, the lower the risk of rejecting containers. If the difference between the maximum and minimum fill-weights is large compared to filler variability, then the target can be closer to the minimum fill weight requirement to minimize overfill. In this case, k<sub>3</sub> will be larger than k<sub>2</sub>; otherwise, k<sub>3</sub> will be equal to k<sub>2</sub>.</li>
+            <li><strong>k<sub>4</sub></strong> = Controls the average container weight so it is near the target. The smaller k<sub>4</sub> is, the more adjustment will occur to keep the filler on target; if adjustments are manual, it could slow down the line. If k<sub>4</sub> is too large, the filler could drift significantly far from the target before an adjustment occurs.</li>
+            <li><strong>σ<sub>MU</sub></strong> = Scale measurement uncertainty (standard deviation). (See k<sub>1</sub> above.)</li>
+            <li><strong>bias</strong> = Measurement bias between tare and gross. (See k<sub>1</sub> above.)</li>
+            <li><strong>σ<sub>Fill</sub></strong> = Filling standard deviation. (See k<sub>2</sub>, k<sub>3</sub>, and k<sub>4</sub> above.)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — k 因子系統詳解</h4>
+            <p>k 因子系統是一套<strong>風險與成本的平衡工具</strong>，每個因子控制一個不同的失效模式：</p>
+            <ul>
+                <li><strong>k₁</strong>：保護秤台量測誤差（sMU + Bias）。k₁ 越大，拒絕限離規格限越遠，誤判的風險越低，但操作視窗越窄</li>
+                <li><strong>k₂</strong>：保護充填目標不落入下拒絕限。k₂ 越大，目標值越高，報廢率越低，但 overfill 越多（成本越高）</li>
+                <li><strong>k₃</strong>：保護充填目標不超過上拒絕限。若上下限差距大，k₃ 可大於 k₂，讓目標值靠近下限以減少 overfill</li>
+                <li><strong>k₄</strong>：控制調整觸發點的靈敏度。k₄ 太小 = 頻繁調整 = 速度慢；k₄ 太大 = 允許漂移過大 = 良率風險增加</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula — k 因子的商業意義</h4>
+            <pre>
+k 因子與 overfill 的關係：
+
+目標值（Target）相對下限的偏移量
+= k₂ × σFill + k₁ × (σMU + bias) + Holdup
+
+若 σFill 大（製程變異大）：
+  → k₂ 需要更大 → 目標值更高 → overfill 更多
+
+若 σMU 大（秤台精度差）：
+  → k₁ 需要更大 → 操作視窗更窄 → 更多容器被拒絕
+
+關鍵洞察：投資精度更高的秤台（降低 σMU），
+可以減少整體 overfill，對高單價產品回報顯著。
+
+範例試算：
+  藥液單價 = USD 10,000/ml
+  每支因 k 因子導致 overfill = 0.05ml
+  批次量 = 10,000 支
+  每批 overfill 成本 = 0.05 × 10,000 × 10,000 = USD 5,000,000
+  → 改善製程精度（降低 σFill）的 ROI 極高
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>k₄ 的設計對自動化 vs. 手動調整的影響</strong>：若充填機依靠操作員手動調整，k₄ 設得太小會導致頻繁操作員介入，增加人為錯誤風險（違反無菌保證原則）。自動化充填機可設更小的 k₄，達到更緊密的目標控制而不增加人工介入。這是選擇自動化設備的重要技術理由之一，CDMO 在設備評估時應將此納入 TCO（總擁有成本）計算。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若你的充填製程 σFill 從 0.05ml 改善到 0.02ml，k₂ 維持不變，填充目標值會如何移動？對批次 overfill 量有何影響？</li>
+                <li>k₄ 太大（如 k₄ = 5）意味著什麼？對充填品質的長期影響是什麼？</li>
+                <li>為何高單價生物製劑（如基因療法）更需要精確的 k 因子設計？請從商業角度計算說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary (5.0–5.1.4 + 5.2 intro + 5.2.1)</h3>
+    <ul>
+        <li><strong>劑量管控是 CQA</strong>：每個容器的填充量直接決定病患收到的治療劑量，是無菌充填中最關鍵的品質屬性之一</li>
+        <li><strong>100% vs. 間歇抽樣</strong>：100% 管控精度高、可無隔離緩衝、可 Re-dose/Dose-out，但速度受限且需 Denesting；間歇抽樣速度快、適合 RTU Nest，但需隔離緩衝且必須更保守的 overfill 設定</li>
+        <li><strong>Dose-in / Re-dosing / Dose-out</strong>：100% 管控系統獨有的三種操作模式，分別對應批次啟動、不足補充、批次結束，最大化高價值藥液的回收率</li>
+        <li><strong>四大不確定性來源</strong>：重力式劑量管控必須量化 Container Holdup、Scale Bias、sMU、sFill，並通過 Guard-banding 和 k 因子系統轉化為填充機操作限</li>
+        <li><strong>k 因子的商業本質</strong>：k₁–k₄ 每個都是風險（報廢率）與成本（overfill）的平衡點，改善製程精度（降低 σFill 和 σMU）直接轉化為每批可觀的藥液節省</li>
+        <li><strong>決策階層的實踐</strong>：即使 100% 管控的商業優勢明顯，若 Denesting 操作增加無法接受的無菌暴露風險，無菌保證的優先級必須居首位</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+    window.addEventListener('scroll', function() {
+        const btn = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
