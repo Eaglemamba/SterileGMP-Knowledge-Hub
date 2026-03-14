@@ -16,8 +16,6 @@
         .mono { font-family: 'JetBrains Mono', monospace; }
         .doc-card { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
         .doc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(30,58,95,0.15); }
-        .style-card { transition: all 0.2s ease; border: 2px solid transparent; }
-        .style-card:hover { border-color: #3498db; }
         .tag-pill { font-size: 0.65rem; padding: 2px 8px; border-radius: 9999px; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; }
         .search-hits { margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: #f0f7ff; border-left: 3px solid #1e3a5f; border-radius: 0 0.375rem 0.375rem 0; font-size: 0.7rem; line-height: 1.6; color: #475569; }
         .search-hits .hit-title { font-weight: 600; color: #1e3a5f; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
@@ -36,8 +34,7 @@
         .fade-up:nth-child(4) { animation-delay: 0.15s; }
         body.search-active #statsRow,
         body.search-active #categoryBar,
-        body.search-active #categoryLegend,
-        body.search-active #styleGuideSection { display: none; }
+        body.search-active #categoryLegend { display: none; }
         body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
     </style>
 </head>
@@ -55,7 +52,7 @@
                 <p class="text-blue-200 text-sm mt-1">Pharma Manufacturing x Education -- Bilingual Educational Document Index</p>
                 <p class="text-xs text-blue-300 mt-2">Last updated: <span id="lastUpdated"></span></p>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-5" id="statsRow"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5" id="statsRow"></div>
         </div>
     </div>
 
@@ -80,15 +77,6 @@
         </select>
     </div>
 
-    <!-- CSS STYLE GUIDE -->
-    <div id="styleGuideSection" class="max-w-6xl mx-auto px-6 mt-6">
-        <div class="flex items-center gap-2 mb-3">
-            <h2 class="text-sm font-bold text-pda-blue">CSS Component Reference</h2>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-pda-blue font-medium border border-blue-200">template.css</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="styleCards"></div>
-    </div>
-
     <!-- DOCUMENT CARDS -->
     <div class="max-w-6xl mx-auto px-6 py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="docGrid"></div>
 
@@ -105,153 +93,24 @@
 // To add new documents from ANY source, append to this array.
 // ============================================================
 const documents = [
-    // -- PDA Guide No.1: Aseptic Filling (2025) -----------------
-    { date:"2025-06-15", title:"Introduction & Glossary", titleZh:"導論與術語表",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Overview","Glossary","GMP"],
-      summary:"PDA指南總覽、四大部分架構、跨功能團隊設計原則、關鍵術語定義表。",
-      lines:850, pages:"p1-p7", figures:0, file:"pda-guide-no1/section-00-intro.html" },
-    { date:"2025-06-20", title:"Section 1: Design Elements for System Selection", titleZh:"設計要素與系統選擇",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Design","Selection","Phase-Appropriate"],
-      summary:"充填系統選擇設計要素：產品考量、容器選擇、Phase-Appropriate方法、決策優先層級（SA > CQA > Business）。",
-      lines:1200, pages:"p8-p28", figures:1, file:"pda-guide-no1/section-01-design.html" },
-    { date:"2025-06-25", title:"Section 2: Filling Technologies", titleZh:"充填技術",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Technology","PP","RPP","TP","DP"],
-      summary:"四大充填技術深度比較：蠕動泵、旋轉活塞泵、時間壓力充填、膜片泵的原理與選型邏輯。",
-      lines:1800, pages:"p29-p62", figures:2, file:"pda-guide-no1/section-02-tech.html" },
-    { date:"2025-07-01", title:"Section 3: Needle Designs", titleZh:"針頭設計",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Design","Needle","Single-Use"],
-      summary:"充填針頭設計：材質選擇(SS vs SU)、幾何形狀對充填精度與滴漏的影響。",
-      lines:600, pages:"p63-p69", figures:0, file:"pda-guide-no1/section-03-needle.html" },
-    { date:"2025-07-05", title:"Section 4: System Functionality", titleZh:"系統功能",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Functionality","Changeover","Foam Control"],
-      summary:"系統功能：連續/批次充填、曝型、泡沫控制、滴漏控制、溫控、大批量設計、機器人增強。",
-      lines:1600, pages:"p70-p100", figures:0, file:"pda-guide-no1/section-04-function.html" },
-    { date:"2025-07-10", title:"Section 5: Dose Control Systems", titleZh:"劑量控制系統",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Dose Control","IPC","Weight Check"],
-      summary:"劑量控制：100% vs 統計抽檢秤重、Operating Window概念、overfill成本分析。",
-      lines:1100, pages:"p101-p114", figures:2, file:"pda-guide-no1/section-05-dose.html" },
-    { date:"2025-07-12", title:"Section 6: Container-Closure Systems", titleZh:"容器密封系統",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Container","Closure","RTU"],
-      summary:"容器密封系統：容器類型對充填線設計的影響、RTU系統考量。",
-      lines:400, pages:"p115-p117", figures:0, file:"pda-guide-no1/section-06-container.html" },
-    { date:"2025-07-15", title:"Section 7: Closing Systems", titleZh:"封蓋系統",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Closing","Elastomer","Stopper"],
-      summary:"封蓋系統：彈性體分揀、壓入技術(vented/vacuum/hybrid)、PFS/卡匣封蓋。",
-      lines:900, pages:"p118-p128", figures:2, file:"pda-guide-no1/section-07-closing.html" },
-    { date:"2025-07-20", title:"Section 8: Interventions", titleZh:"介入操作",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Interventions","Line Setup","Risk"],
-      summary:"無菌介入操作：生產線設置、計劃/非計劃性介入風險評估、SOP設計。",
-      lines:1400, pages:"p129-p148", figures:0, file:"pda-guide-no1/section-08-interventions.html" },
-    { date:"2025-07-25", title:"Section 9: Component Introduction", titleZh:"組件導入",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Components","Sterilization","Transfer"],
-      summary:"組件導入策略：滅菌方式選擇、RTP/autoclave/tunnel傳遞、RTU導入。",
-      lines:800, pages:"p149-p158", figures:0, file:"pda-guide-no1/section-09-components.html" },
-    { date:"2025-07-28", title:"Section 10: Sterilization of Components", titleZh:"滅菌系統",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Sterilization","SIP","VPHP"],
-      summary:"滅菌系統：SIP、乾熱隧道、VPHP生物去污、高壓蒸汽滅菌設計與驗證。",
-      lines:700, pages:"p159-p167", figures:0, file:"pda-guide-no1/section-10-sterilization.html" },
-    { date:"2025-08-01", title:"Section 11: Sterile Fluid Pathway", titleZh:"無菌流體路徑",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Fluid Path","Filter","PUPSIT","Single-Use"],
-      summary:"無菌流體路徑：過濾器完整性(PUPSIT)、管路配置、SU流體路徑方案。",
-      lines:900, pages:"p168-p178", figures:3, file:"pda-guide-no1/section-11-fluid.html" },
-    { date:"2025-08-05", title:"Section 12: Operational Considerations", titleZh:"營運操作",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Operations","Priming","Yield"],
-      summary:"營運操作：灌注(Priming)、產量優化、批次調和、報廢管理。",
-      lines:900, pages:"p179-p190", figures:0, file:"pda-guide-no1/section-12-operations.html" },
-    { date:"2025-08-10", title:"Section 13: Aseptic Process Simulation", titleZh:"無菌製程模擬",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","APS","Media Fill","Validation"],
-      summary:"APS/Media Fill設計：挑戰測試項目、合格標準、常見失敗原因。",
-      lines:700, pages:"p191-p198", figures:0, file:"pda-guide-no1/section-13-aps.html" },
-    { date:"2025-08-12", title:"Section 14: Environmental Monitoring", titleZh:"環境監控",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","EM","Microbiology","Grade A"],
-      summary:"環境監控：Grade A/B/C/D分區策略、採樣方法、趨勢分析。",
-      lines:550, pages:"p199-p204", figures:0, file:"pda-guide-no1/section-14-monitoring.html" },
-    { date:"2025-08-15", title:"Section 15: Contamination Control Strategy", titleZh:"污染控制策略",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","CCS","Risk","Annex 1"],
-      summary:"CCS：EU GMP Annex 1要求、風險評估整合、全生命週期管理。",
-      lines:450, pages:"p205-p208", figures:0, file:"pda-guide-no1/section-15-ccs.html" },
-    { date:"2025-08-18", title:"Section 16: Supplier Management", titleZh:"供應商管理",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Supplier","Quality","SCM"],
-      summary:"供應商評估框架、品質協議、變更通知、供應鏈風險。",
-      lines:350, pages:"p209-p211", figures:0, file:"pda-guide-no1/section-16-supplier.html" },
-    { date:"2025-08-20", title:"Section 17: Qualification & Validation", titleZh:"確效與驗證",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Validation","IQ/OQ/PQ","Lifecycle"],
-      summary:"IQ/OQ/PQ策略、製程驗證生命週期(Stage 1-3)、持續確效。",
-      lines:350, pages:"p212-p214", figures:0, file:"pda-guide-no1/section-17-validation.html" },
-    { date:"2025-08-22", title:"Section 18: Maintenance & Calibration", titleZh:"維護保養",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Maintenance","Calibration"],
-      summary:"預防性維護、校準週期、備件管理、設備生命週期成本。",
-      lines:350, pages:"p215-p217", figures:0, file:"pda-guide-no1/section-18-maintenance.html" },
-    { date:"2025-08-25", title:"Section 19: Powder Filling Technology", titleZh:"粉末充填技術",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Powder","Lyophilization","Technology"],
-      summary:"粉末充填(Part 4)：螺旋/真空充填、粉末物理特性、凍乾產品特殊考量。",
-      lines:450, pages:"p218-p221", figures:0, file:"pda-guide-no1/section-19-powder.html" },
-    { date:"2025-08-28", title:"Section 20: References", titleZh:"參考文獻",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Reference","PDA TR","ICH"],
-      summary:"完整參考文獻：PDA TR、ICH指引、EU GMP、FDA指導文件。",
-      lines:300, pages:"p222-p225", figures:0, file:"pda-guide-no1/section-20-refs.html" },
-    { date:"2025-09-01", title:"Section 21: Case Studies", titleZh:"案例研究",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Case Study","Decision","CDMO"],
-      summary:"充填線設計決策案例、技術選型分析、CDMO評估情境。",
-      lines:1100, pages:"p226-p240", figures:0, file:"pda-guide-no1/section-21-case.html" },
-    { date:"2025-09-05", title:"Section 22: Vendor Resources", titleZh:"廠商資源",
-      source:"PDA Guide No.1 Aseptic Filling (2025)", tags:["Aseptic","Vendor","Equipment"],
-      summary:"充填設備廠商資源彙整、技術諮詢管道。",
-      lines:600, pages:"p241-p250", figures:0, file:"pda-guide-no1/section-22-vendors.html" },
+    // One card per PDA Technical Report — links to merged TopNav document
+    { date:"2025-09-05", title:"PDA Guide No.1: Aseptic Filling, Engineering & Operation", titleZh:"無菌充填工程與操作技術指引",
+      source:"PDA Guide No.1", tags:["Aseptic","Filling","Design","GMP","CCS","CDMO"],
+      summary:"完整22章：充填系統設計、四大充填技術(PP/RPP/TP/DP)、劑量控制、容器密封、APS、環境監控、CCS、供應商管理。涵蓋250頁、Part 1-4全部內容。",
+      sections:22, pages:"p1-p250", figures:10, file:"pda-guide-no1/output/PDA-Guide-Complete.html" },
 
-    // -- PDA TR26: Sterilizing Filtration of Liquids (Revised 2025) --
-    { date:"2026-03-10", title:"Section 1: Introduction", titleZh:"導論",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Overview","Regulatory"],
-      summary:"TR26修訂版導論：除菌過濾在無菌製造中的角色、法規要求(EU Annex 1/FDA)、報告範圍。",
-      lines:360, pages:"p1-p5", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-10", title:"Section 2: Glossary", titleZh:"術語表",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Glossary"],
-      summary:"除菌過濾關鍵術語定義：微生物截留、完整性測試、細菌挑戰、SAL等核心概念。",
-      lines:650, pages:"p6-p10", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-10", title:"Section 3: How Filters Work", titleZh:"濾膜原理",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Membrane","Mechanism"],
-      summary:"濾膜過濾機制：篩分截留、吸附截留、孔徑分佈、0.2μm與0.1μm濾膜選擇。",
-      lines:580, pages:"p11-p16", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-10", title:"Section 4: Filter Qualification", titleZh:"濾膜確效",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Qualification","Validation","E&L"],
-      summary:"供應商濾膜確效：細菌截留驗證、萃取物/溶出物評估、化學相容性、完整性測試相關性。",
-      lines:830, pages:"p17-p22", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-14", title:"Section 5: Filtration Process Design", titleZh:"製程設計",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Process Design","Scale-Up","QbD"],
-      summary:"過濾製程設計：設計空間評估、流量特性、濾器容量、縮尺系統、系列過濾、安裝與處理。",
-      lines:1570, pages:"p23-p38", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-14", title:"Section 6: Validation Testing", titleZh:"驗證測試",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Validation","Bacterial Retention","E&L","QbD"],
-      summary:"製程專屬驗證：吸附、萃取物/溶出物、細菌截留研究(B. diminuta)、化學相容性、再驗證。",
-      lines:2490, pages:"p39-p55", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-14", title:"Section 7: Integrity Testing", titleZh:"完整性測試",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Integrity Test","PUPSIT","Bubble Point"],
-      summary:"濾膜完整性測試：泡點/擴散流/壓力保持、PUPSIT考量、產品潤濕測試、故障分析。",
-      lines:960, pages:"p56-p70", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-14", title:"Section 8: Sterilization of Filters", titleZh:"濾膜滅菌",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Sterilization","SIP","Autoclave"],
-      summary:"濾膜滅菌方法：蒸汽(Autoclave/SIP)、輻射、氣體(EO)滅菌，再滅菌限制與驗證。",
-      lines:620, pages:"p71-p73", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-10", title:"Appendix I: Diffusion", titleZh:"附錄一：擴散",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Integrity Test","Diffusion"],
-      summary:"擴散流測試原理：氣體溶解-擴散機制、Fick定律應用、溫度/壓力影響。",
-      lines:370, pages:"Appendix", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-10", title:"Appendix II: Integrity Methods", titleZh:"附錄二：完整性方法",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Integrity Test","Methods"],
-      summary:"完整性測試方法詳解：泡點、擴散流、壓力保持、水侵入測試的操作與判定。",
-      lines:640, pages:"Appendix", figures:0, file:"TR26/output/TR26-Complete.html" },
-    { date:"2026-03-10", title:"Appendix III: Troubleshooting", titleZh:"附錄三：疑難排解",
-      source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Troubleshooting","Operations"],
-      summary:"完整性測試疑難排解：常見失敗原因分析、潤濕不足、溫度效應、系統洩漏排查。",
-      lines:440, pages:"Appendix", figures:0, file:"TR26/output/TR26-Complete.html" }
+    { date:"2026-03-14", title:"PDA TR26: Sterilizing Filtration of Liquids", titleZh:"液體除菌過濾",
+      source:"PDA TR26", tags:["Filtration","Validation","Integrity Test","Sterilization","QbD"],
+      summary:"完整8章+3附錄：濾膜原理、確效、製程設計(QbD)、驗證測試(細菌截留/E&L)、完整性測試(PUPSIT)、滅菌方法(Steam/Irradiation/EO)。Revised 2025版，73頁。",
+      sections:11, pages:"p1-p73", figures:0, file:"TR26/output/TR26-Complete.html" }
 ];
 
 // ============================================================
 // CONFIG
 // ============================================================
 const sourceColors = {
-    "PDA Guide No.1 Aseptic Filling (2025)": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"PDA Guide No.1" },
-    "PDA TR26 Sterilizing Filtration (2025)": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" }
+    "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
+    "PDA TR26": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" }
 };
 
 const tagCls={
@@ -302,15 +161,6 @@ const tagCls={
     "Regulatory":"bg-red-50 text-red-600","Operations":"bg-teal-50 text-teal-600"
 };
 
-const styleGuide = [
-    { name:"Key Terms", nameZh:"核心概念", bg:"#e8f5e9", border:"#4caf50", hc:"#2e7d32", desc:"定義關鍵技術術語", usage:".concept-box" },
-    { name:"Analogy", nameZh:"比喻說明", bg:"linear-gradient(135deg,#fff9e6,#fff3cd)", border:"#f6ad55", hc:"#856404", desc:"日常生活類比", usage:".analogy-box" },
-    { name:"Key Note", nameZh:"重點提示", bg:"#fff3e0", border:"#ff9800", hc:"#c65102", desc:"重要注意事項", usage:".note-box" },
-    { name:"Formula", nameZh:"公式計算", bg:"#f3e5f5", border:"#9c27b0", hc:"#7b1fa2", desc:"計算公式與決策樹", usage:".formula-box" },
-    { name:"Practice", nameZh:"練習思考", bg:"linear-gradient(135deg,#e8f4fd,#d1e9ff)", border:"#3182ce", hc:"#2c5282", desc:"練習題與思考問題", usage:".practice-box", dashed:true },
-    { name:"Application", nameZh:"實務應用", bg:"#e3f2fd", border:"#1976d2", hc:"#1565c0", desc:"CDMO實務案例", usage:".application-box" }
-];
-
 // Dynamic source filters
 const allSources=[...new Set(documents.map(d=>d.source))];
 const filterMap={'all':'all'};
@@ -326,25 +176,18 @@ if(typeof searchIndex!=='undefined'){searchIndex.forEach(e=>{if(!sectionsByFile[
 // RENDER
 // ============================================================
 function renderStats(){
-    const t=documents.length,tl=documents.filter(d=>d.lines).reduce((s,d)=>s+d.lines,0);
-    const fig=documents.reduce((s,d)=>s+(d.figures||0),0);
-    const src=allSources.length,lnk=documents.filter(d=>d.file).length;
-    const stats=[{v:t,l:'Documents'},{v:(tl/1000).toFixed(1)+'K',l:'Total Lines'},{v:fig,l:'Figures'},{v:src,l:'Sources'},{v:lnk,l:'Linked'}];
-    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-blue-200 mt-0.5">${s.l}</div></div>`).join('');
+    const t=documents.length;
+    const tp=documents.reduce((s,d)=>{const m=d.pages?d.pages.match(/p(\d+)\s*-\s*p(\d+)/):null;return s+(m?parseInt(m[2])-parseInt(m[1])+1:0);},0);
+    const allTags=[...new Set(documents.flatMap(d=>d.tags))];
     const latest=documents.reduce((a,b)=>a.date>b.date?a:b);
+    const latestShort=(sourceColors[latest.source]||{}).short||latest.source;
+    const stats=[{v:t,l:'Reports'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'},{v:latestShort,l:'Latest Added'}];
+    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-blue-200 mt-0.5">${s.l}</div></div>`).join('');
     document.getElementById('lastUpdated').textContent=latest.date;
-    const sc={};documents.forEach(d=>sc[d.source]=(sc[d.source]||0)+1);
+    const sc={};documents.forEach(d=>{sc[d.source]=(sc[d.source]||0)+1;});
     const tot=Object.values(sc).reduce((a,b)=>a+b,0);
     document.getElementById('categoryBar').innerHTML=Object.entries(sc).map(([s,c])=>`<div style="width:${c/tot*100}%;background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>`).join('');
     document.getElementById('categoryLegend').innerHTML=Object.entries(sc).map(([s,c])=>`<div class="flex items-center gap-1.5 text-xs text-gray-500"><div class="w-2 h-2 rounded-sm" style="background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>${(sourceColors[s]||{}).short||s} (${c})</div>`).join('');
-}
-
-function renderStyleGuide(){
-    document.getElementById('styleCards').innerHTML=styleGuide.map(s=>{
-        const bg=s.bg.includes('gradient')?`background:${s.bg}`:`background:${s.bg}`;
-        const bd=s.dashed?`border:2px dashed ${s.border}`:`border-left:4px solid ${s.border}`;
-        return `<div class="style-card bg-white rounded-xl p-3 shadow-sm cursor-default"><div class="rounded-lg p-2.5 mb-2" style="${bg};${bd}"><div class="font-semibold text-xs" style="color:${s.hc}">${s.name}</div><div class="text-[10px] mt-0.5" style="color:${s.hc};opacity:0.8">${s.nameZh}</div></div><p class="text-[10px] text-gray-500 leading-relaxed">${s.desc}</p><code class="mono text-[9px] text-gray-400 mt-1 block">${s.usage}</code></div>`;
-    }).join('');
 }
 
 function initFilters(){
@@ -420,13 +263,13 @@ function renderCards(){
             ${ss?`<p class="text-xs text-gray-600 leading-relaxed mt-2 flex-1">${d.summary}</p>`:''}
             ${hh}
             <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                <div class="flex items-center gap-3"><span class="mono text-[10px] text-gray-400">${d.pages||''}</span><span class="mono text-[10px] text-gray-400">${d.lines?d.lines+' lines':''}</span></div>${btn}
+                <div class="flex items-center gap-3"><span class="mono text-[10px] text-gray-400">${d.pages||''}</span><span class="mono text-[10px] text-gray-400">${d.sections?d.sections+' sections':''}</span></div>${btn}
             </div></div>`;
     }).join('');
 }
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-initFilters();renderStats();renderStyleGuide();renderCards();
+initFilters();renderStats();renderCards();
 </script>
 </body>
 </html>
