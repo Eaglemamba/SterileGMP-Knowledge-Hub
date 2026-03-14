@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-14 — Topic 2: Facilities (ATMP Facility Design)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== PRACTICE BOX GREEN SOLID - CDMO Application ===== */
+.practice-box.cdmo {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+
+.practice-box.cdmo h3, .practice-box.cdmo h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== DECISION HIERARCHY BANNER ===== */
+.decision-hierarchy {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.decision-hierarchy h3 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.hierarchy-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.h-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.h-step-box {
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.h-step-box.s1 { background: #ef4444; color: white; border: 2px solid #fca5a5; }
+.h-step-box.s2 { background: #f59e0b; color: white; border: 2px solid #fcd34d; }
+.h-step-box.s3 { background: #10b981; color: white; border: 2px solid #6ee7b7; }
+.h-step-box.s4 { background: #3b82f6; color: white; border: 2px solid #93c5fd; }
+.h-step-box.s5 { background: #8b5cf6; color: white; border: 2px solid #c4b5fd; }
+
+.h-arrow { color: rgba(255,255,255,0.6); font-size: 1rem; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+
+    .hierarchy-steps {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Points to Consider No. 14 — Topic 2: Facilities</h1>
+    <div class="subtitle">ATMP Facility Design — Process Flow, Closed Systems, Pressure Cascades, HVAC, and Environmental Risk</div>
+    <div class="page-info">Source: PDA PtC-14 (2025), Pages 15–25 | Q2.1 – Q2.5</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== DECISION HIERARCHY BANNER ===== -->
+    <div class="decision-hierarchy">
+        <h3>ATMP 設施設計決策優先層級 / Decision Hierarchy for ATMP Facility Design</h3>
+        <div class="hierarchy-steps">
+            <div class="h-step">
+                <div class="h-step-box s1">1. Operator Safety (BSL Containment)</div>
+            </div>
+            <div class="h-arrow">&#8594;</div>
+            <div class="h-step">
+                <div class="h-step-box s2">2. Patient Safety (Sterility / Cross-Contamination)</div>
+            </div>
+            <div class="h-arrow">&#8594;</div>
+            <div class="h-step">
+                <div class="h-step-box s3">3. Product Quality</div>
+            </div>
+            <div class="h-arrow">&#8594;</div>
+            <div class="h-step">
+                <div class="h-step-box s4">4. Regulatory Compliance</div>
+            </div>
+            <div class="h-arrow">&#8594;</div>
+            <div class="h-step">
+                <div class="h-step-box s5">5. Business Flexibility</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>Topic 2 章節導覽 / Section Navigation</h3>
+        <div class="toc-grid">
+            <a href="#q21">Q2.1 Process Flow &amp; Contamination</a>
+            <a href="#q22">Q2.2 Open vs. Closed Systems</a>
+            <a href="#q23">Q2.3 Pressure Cascade Concepts</a>
+            <a href="#q24">Q2.4 Cleanroom / HVAC Design</a>
+            <a href="#q25">Q2.5 External Environmental Risk (GMO)</a>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         Q2.1 — Process Flow & Contamination Prevention
+         =================================================== -->
+    <div class="chapter-section" id="q21">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.1</div>
+            <div class="chapter-info">
+                <h2>Q2.1 — Process Flow Design: Contamination &amp; Cross-Contamination Prevention</h2>
+                <p>如何設計製程流程，以降低外來汙染、交叉汙染並防止作業錯誤？ | Pages 15–18</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Row 1: Intro & Contamination Vectors -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Recommendation — Contamination Vectors</h3>
+                    <p>Facility design plays an essential role in minimizing contamination, <span class="key-term">cross-contamination</span>, and prevention of errors. The possible risk factors should be evaluated and defined in the <span class="key-term">CCS (Contamination Control Strategy)</span> document.</p>
+                    <p>Contamination and cross-contamination occur through several different vectors, including:</p>
+                    <p><strong>Physical</strong></p>
+                    <ol>
+                        <li><strong>Contaminated packaging or containers</strong> — Packaging formats of raw or starting materials that cannot be adequately decontaminated upon transfer.</li>
+                        <li><strong>Mechanical transfers</strong> — Spillages, improperly sealed transfer devices, or risks such as the <span class="key-term">"ring of concern"</span> — an area on a rapid transfer port (RTP) that cannot be adequately disinfected and may be exposed during transfer procedures.</li>
+                        <li><strong>Personnel</strong> — Contamination from non-process-dedicated clothing regimes.</li>
+                        <li><strong>Waste processes.</strong></li>
+                        <li><strong>Airborne sources</strong> — Aerosols, failure of air-handling units in the Grade A environment, or volatile constituents of contaminated waste.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>CCS — 汙染控制策略文件</h4>
+                        <p><strong>CCS（Contamination Control Strategy）</strong>是 ATMP 設施設計的核心文件，強制要求你在設施設計階段就識別並記錄所有汙染風險。</p>
+                        <p>EU GMP Annex 1 規定 CCS 必須貫穿整個產品生命週期，不只是一次性評估。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：餐廳廚房分區</h4>
+                        <p>把 ATMP 設施想像成一間米其林餐廳廚房：</p>
+                        <ul>
+                            <li><strong>生食區 = BSL 高風險區</strong>（病毒載體生產室）</li>
+                            <li><strong>熟食區 = 無菌填充區</strong>（Grade A/B）</li>
+                            <li><strong>出菜口 = MAL 物料氣鎖</strong></li>
+                            <li><strong>廚師更衣室 = PAL 人員氣鎖</strong></li>
+                        </ul>
+                        <p>核心原則：食材（物料）、廚師（人員）、廚餘（廢棄物）絕對不能走同一條路。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>"Ring of Concern" — 轉移端口的高風險區</h4>
+                        <p>RTP（Rapid Transfer Port，快速轉移端口）連接隔離器與外界。「Ring of Concern」是端口環狀接觸面，無法被有效消毒——如果操作不當，轉移時這個區域可能直接暴露，成為汙染進入路徑。</p>
+                        <p><strong>實務對策：</strong>使用 VPHP 艙室，或將 RTP 轉移改設計為在 MAL 內執行並加自動表面去汙。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Containment Strategy -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Containment Strategy — Inside-Out Principle</h3>
+                    <p>To minimize these risks, a containment strategy should be developed from the <span class="key-term">inside-out</span> (from critical operations to less-critical operations) based on a risk assessment.</p>
+                    <p>Based on the primary protection measures, a <span class="key-term">secondary means of protection</span> should be planned, such as the <span class="key-term">PAL (Personnel Air Lock)</span> and <span class="key-term">MAL (Material Air Lock)</span> pressure cascades — from production room to air lock and from air lock to corridor.</p>
+                    <p>Personnel, product, sample, and waste paths should be considered to avoid possible contamination and minimize cross-contamination risk.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>由內而外的防護設計邏輯</h4>
+                        <p>「由內而外（Inside-Out）」的設計思維：</p>
+                        <ul>
+                            <li><strong>最內層</strong>：Grade A 核心製程區（最高保護需求）</li>
+                            <li><strong>次外層</strong>：Grade B/C 背景環境</li>
+                            <li><strong>氣鎖層</strong>：PAL / MAL（隔離與緩衝）</li>
+                            <li><strong>最外層</strong>：走廊、支援區域</li>
+                        </ul>
+                        <p>先確定最核心操作的風險，再向外逐層設計防護——而不是從外部環境往內設計。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>四流分離矩陣 / Four-Flow Separation Matrix</h4>
+                        <pre>
+流向      進入路徑     離開路徑     是否可共用
+─────────────────────────────────────────
+人員流    PAL 入口     PAL 出口     禁止與物料共用
+物料流    MAL 物料入   MAL 物料出   禁止與廢棄物共用
+樣品流    專用容器     獨立取樣口   嚴格標識
+廢棄物    廢棄物 MAL   滅活後清除   禁止與清潔物料同時通過
+</pre>
+                        <p>規則：四流不相交。設計時畫出流程圖，確保無交叉點。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Important Considerations — Closed Process -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Important Considerations (1–4): Closed Process &amp; Material Handling</h3>
+                    <ol>
+                        <li>Is the overall process <span class="key-term">closed</span> throughout the whole procedure? Any process which can be performed closed should be designed and executed closed. Items required within the Grade A space should be sterilized. <span class="key-term">Intrinsic sterile connectors</span> should be used when possible.</li>
+                        <li>How are transfers in and out of the BSC or isolator performed? Use of <span class="key-term">RTPs (Rapid Transfer Ports)</span> or MALs with automated surface decontamination is recommended.</li>
+                        <li>Isolators or BSCs should use appropriate technologies like RTPs for transferring sterilized or disinfected material to reduce the risk of physical transfer of contaminants.</li>
+                        <li>How is the pharmaceutical product handled inside the BSC or isolator?
+                            <ul>
+                                <li><span class="key-term">First-air protection</span> for any open-handled processes.</li>
+                                <li>Greatest possible separation of personnel from the process through use of barriers and sterile implements.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>First-Air Protection — 第一氣流保護原則</h4>
+                        <p>在 BSC（生物安全櫃）或 Isolator 中，<strong>「第一氣流」</strong>指 HEPA 過濾後直接吹出、尚未接觸任何表面或人員的潔淨空氣。</p>
+                        <p>原則：開放式操作（open manipulation）必須在第一氣流正下方進行，任何物件或手部都不得遮蔽這個氣流路徑。</p>
+                        <p>違反此原則 = Grade A 環境保護失效。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：醫院無菌換藥</h4>
+                        <p>護理師在換藥時，不會把手伸到無菌包上方（會遮蔽第一氣流）。ATMP 製程也一樣：操作員的手、工具、包裝材料的移動路徑都必須避免「遮蔽」從 HEPA 下來的第一道氣流。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>Intrinsic Sterile Connectors 的重要性</h4>
+                        <p>每一次無菌連接（aseptic connection）都是汙染機會。<strong>固有無菌連接器（intrinsic sterile connectors）</strong>讓連接動作本身維持無菌狀態，減少暴露風險。</p>
+                        <p>應盡量減少不同管路的無菌連接次數——每增加一個連接點，就增加一個 CCI（容器密封完整性）失效風險。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Considerations 5–9 -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Important Considerations (5–9): Packaging, Waste, Spills</h3>
+                    <ol start="5">
+                        <li>Can the packaging material be externally contaminated before leaving the isolator? Use <span class="key-term">VPHP (Vapor Phase Hydrogen Peroxide)</span> or other appropriate decontamination air locks, or RTPs, to transfer material to a safe area.</li>
+                        <li>What are the methods to manage <span class="key-term">pharmaceutical product residues or waste</span>?
+                            <ul>
+                                <li>Waste should be handled in a contained manner through a separate pathway from product or product samples.</li>
+                                <li>If the product exit is not separate from waste exit, removal-of-waste should be performed at a dedicated time separate from product manufacture.</li>
+                            </ul>
+                        </li>
+                        <li>How will the processing area be cleaned to eliminate cross-contamination risk? Any <span class="key-term">inactivation step</span> of residual pharmaceutical product should be performed before cleaning.</li>
+                        <li>Are <span class="key-term">single-use closed systems</span> used? Contamination can occur at interfaces (e.g., single-use bioreactors, single-use bags) during additions, sampling, or dismantling. Tightness/integrity should be tested and validated.</li>
+                        <li>How will process <span class="key-term">leaks and spills</span> be handled?
+                            <ul>
+                                <li>Containment measures to stop and prevent spread.</li>
+                                <li>Inactivation/decontamination steps to protect product and packaging.</li>
+                                <li>Procedures for gowning contaminated by spills.</li>
+                                <li>Deviation and investigation procedures.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>VPHP — 氣態過氧化氫去汙</h4>
+                        <p><strong>VPHP（Vapor Phase Hydrogen Peroxide）</strong>是目前 ATMP 設施最常用的整室去汙方式。其優點：</p>
+                        <ul>
+                            <li>可對整個房間或氣鎖進行 6-log 滅活</li>
+                            <li>能滲透角落、縫隙等難以擦拭的區域</li>
+                            <li>不留殘留物（分解成水和氧）</li>
+                        </ul>
+                        <p>設施設計時必須確認材質相容性（金屬、塑膠、電子設備的耐 VPHP 性）。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>先滅活，再清潔 — 必須牢記的順序</h4>
+                        <p><strong>錯誤順序：</strong>先清潔 → 再滅活（清潔已將病毒擴散到更大面積）</p>
+                        <p><strong>正確順序：</strong>先滅活（原位灭活病毒）→ 再清潔（移除殘留物）</p>
+                        <p>這個順序對 ATMP（特別是病毒載體產品）尤其關鍵，一旦弄錯可能造成整個設施的生物汙染事件。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：洩漏應急程序設計</h4>
+                        <p>在您的 CDMO 環境中，洩漏/溢出應急程序（Spill SOP）應包含：</p>
+                        <ul>
+                            <li><strong>立即行動清單</strong>：在製程中可立即執行 vs. 製程完成後才執行的步驟</li>
+                            <li><strong>個人防護升級標準</strong>：何時需要更換被汙染的 gown/手套</li>
+                            <li><strong>廢棄物分類</strong>：病毒汙染廢棄物 vs. 一般製程廢棄物的區分</li>
+                            <li><strong>偏差啟動觸發點</strong>：自動開啟偏差調查的條件</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：Single-Use 系統的介面風險</h4>
+                        <p>一次性系統（Single-Use System）就像密封保鮮盒——盒子本身是密封的，但每次你打開蓋子加料（採樣、補充培養基）時，就是風險點。設計重點不是「用密封的盒子」，而是「如何讓每次開蓋的動作也維持無菌」。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>您的 ATMP 設施中，物料、人員、樣品、廢棄物的流動路徑是否已繪製成流程圖？是否存在交叉點？如果存在，目前的控制措施是否足夠？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 5: Warehouse & Kitting -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Warehouse &amp; Kitting Requirements</h3>
+                    <p>To reduce the risk of intrinsic particulate contamination and maintain low mold in support areas, <span class="key-term">kitting of consumables</span> should be performed in, at minimum, an <span class="key-term">ISO-8 cleanroom</span> or controlled non-classified area to prevent introduction of particulate matter from the warehouse.</p>
+                    <p>Warehouses should be maintained free of <span class="key-term">cardboard and paperboard</span> by transferring materials into totes prior to storage. This lower-particulate warehouse for materials destined for Grade B cell-processing suites should be separated from the main warehouse where non-product-contact items are stored, ideally with <span class="key-term">air-wash curtains</span>.</p>
+                    <p><strong>Rationale:</strong> An appropriate closed process, with a cleaning and inactivation strategy, minimizes the chance of extraneous contamination and cross-contamination. Well-documented procedures and training also contribute to prevention.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>Kitting — 為什麼倉庫也需要潔淨控制？</h4>
+                        <p><strong>Kitting</strong>（備料整備）指在物料進入高等級潔淨室前，先在較低等級的受控環境中進行分裝、去除外包裝等準備工作。</p>
+                        <p>紙箱（cardboard）是黴菌孢子和微粒汙染的主要來源。如果紙箱直接進入倉庫，每次取料動作都可能揚起大量微粒，最終進入生產區域。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>Air-Wash Curtain — 氣簾的功能</h4>
+                        <p>Air-Wash Curtain（氣簾）在倉庫分區界面產生連續氣流屏障：</p>
+                        <ul>
+                            <li>阻擋外部微粒和孢子進入低微粒倉庫區</li>
+                            <li>不需要實體隔牆，方便推車和叉車通行</li>
+                            <li>搭配物料「去紙箱→裝入 tote（儲物桶）」程序共同使用</li>
+                        </ul>
+                        <p>這是一個低成本、高效益的汙染控制措施，在 CDMO 多品種生產環境中尤其重要。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：倉庫分區設計</h4>
+                        <p>建議在您的 CDMO 設施中建立「物料準入分級制度」：</p>
+                        <ul>
+                            <li><strong>外部倉庫</strong>：原裝紙箱，一般環境控制</li>
+                            <li><strong>去紙箱區（ISO-8 或 CNC）</strong>：去除外包裝、轉入 tote，開始記錄</li>
+                            <li><strong>低微粒暫存區</strong>：等待進入 Grade C/D 的物料</li>
+                            <li><strong>Grade C/D MAL</strong>：表面消毒後進入生產區</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end Q2.1 -->
+
+
+    <!-- ===================================================
+         Q2.2 — Open vs. Closed Systems
+         =================================================== -->
+    <div class="chapter-section" id="q22">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.2</div>
+            <div class="chapter-info">
+                <h2>Q2.2 — Open vs. Closed Systems: Product &amp; Operator Protection</h2>
+                <p>開放式與密閉式系統的選擇：如何實現產品保護與操作員保護的雙重目標？ | Pages 18–19</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Row 1: Open System -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Open System</h3>
+                    <p>An <span class="key-term">open system</span> is one where the material is exposed to the manufacturing environment for even a short time. Due to this exposure, the environment is required to be of <span class="key-term">Grade A</span> cleanliness.</p>
+                    <p>The manufacturing environment is a total sum of events that occur during the process — any particulate, bioburden, pyrogenic, or viral contamination present in the area has the potential to contaminate the product. This is why environmental controls and monitoring, operator movement, effectiveness of material transfers, and sanitization steps are of key importance.</p>
+                    <p>Open systems are often used for <span class="key-term">early-phase/proof-of-concept trials</span> when the required manipulations are still being defined and refined.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>開放系統的三層含義</h4>
+                        <p><strong>開放系統（Open System）</strong>不只是指「蓋子打開的容器」，更廣泛指：</p>
+                        <ul>
+                            <li>產品/物料在製程任何步驟中暴露於周圍環境</li>
+                            <li>暴露時間可以非常短（即使只有幾秒）</li>
+                            <li>一旦暴露，環境中的任何汙染都可能進入產品</li>
+                        </ul>
+                        <p>要求：開放操作必須在 Grade A 環境下執行（BSC 下方第一氣流區或 Isolator 內部）。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：戶外開刀 vs. 手術室</h4>
+                        <p>開放系統 = 在醫院走廊做傷口換藥（風險高，環境不可控）。Grade A BSC = 在正壓手術室換藥（環境已被控制到最低風險）。閉合系統 = 用預充填注射器給藥（完全不暴露環境，最安全）。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>早期開發與商業化的系統選擇</h4>
+                        <p>開放系統多用於<strong>早期/概念驗證（PoC）試驗</strong>，原因是開發初期操作步驟尚未定型、需要靈活調整。但進入商業化生產時，應盡量將所有可關閉的步驟改為密閉系統，以降低批次失敗風險。</p>
+                        <p>這是 CDMO 承接早期客戶時需要特別告知的技術升級路徑。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Closed & Hybrid Systems -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Closed System</h3>
+                    <p>A <span class="key-term">closed system</span> is hermetically sealed from the manufacturing environment, inside which the product pathway is considered sterile. Examples include single-use systems that have been gamma-irradiated using intrinsic sterile connectors.</p>
+                    <p>Systems are only considered closed when they have been <span class="key-term">integrity-tested</span> and demonstrated to be hermetically sealed. Fully closed systems can be deployed in a <span class="key-term">Grade C environment</span> if adequate control measures are implemented.</p>
+
+                    <h3 style="margin-top:1.25rem;">Hybrid System</h3>
+                    <p>Hybrid processes — such as those requiring an open addition into a closed system, or that are open during initial assembly but closed thereafter — are required to be performed within:</p>
+                    <ul>
+                        <li><span class="key-term">Grade A cleanroom with Grade B background</span> when using a BSC</li>
+                        <li><span class="key-term">Grade D background</span> when using a closed isolator (depending on CCS requirements)</li>
+                    </ul>
+                    <p>The increased cleanliness requirement is due to the fact that hybrid processes may create the opportunity for exposure of the product pathway to the environment.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>三種系統類型與環境等級要求對照</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>系統類型</th>
+                                    <th>背景環境等級</th>
+                                    <th>操作設備</th>
+                                    <th>主要風險</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>開放系統</strong></td>
+                                    <td>Grade A (with Grade B background)</td>
+                                    <td>BSC</td>
+                                    <td>直接暴露環境汙染</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>混合系統</strong></td>
+                                    <td>Grade A + Grade B（BSC）或 Grade D（Isolator）</td>
+                                    <td>BSC 或 Closed Isolator</td>
+                                    <td>開放/密閉介面時的短暫暴露</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>密閉系統</strong></td>
+                                    <td>Grade C（需有充分控制措施）</td>
+                                    <td>密閉隔離器或 SUS</td>
+                                    <td>介面洩漏、完整性失效</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>密閉性驗證 — Integrity Testing 是前提</h4>
+                        <p>一個系統不能「自稱」是密閉的，必須：</p>
+                        <ul>
+                            <li>通過完整性測試（壓力測試、染料侵入試驗等）</li>
+                            <li>證明在操作條件下維持密封性</li>
+                            <li>供應商認證 + 必要時進行內部測試</li>
+                        </ul>
+                        <p>只有通過測試、被「證明」密封的系統，才能適用 Grade C 環境的較低要求。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>系統選擇決策樹 / Decision Tree</h4>
+                        <pre>
+製程步驟有物料暴露嗎？
+├── 否（全程密閉）→ 密閉系統 → 至少 Grade C
+├── 部分（組裝/添加時開放）→ 混合系統
+│   ├── 使用 BSC → Grade A + Grade B 背景
+│   └── 使用 Closed Isolator → Grade D 背景
+└── 是（製程中持續開放）→ 開放系統 → Grade A BSC + Grade B 背景
+</pre>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：系統選擇的商業考量</h4>
+                        <p>在 CDMO 環境中，系統選擇直接影響設施能力與客戶承接範圍：</p>
+                        <ul>
+                            <li><strong>密閉系統優先</strong>：降低環境等級需求，節省設施建設與維護成本</li>
+                            <li><strong>混合系統彈性</strong>：能承接早期開發客戶（操作步驟未定型），但需準備 Grade B 背景</li>
+                            <li><strong>開放系統</strong>：保留最大操作彈性，但需要最嚴格的環境控制，cost 最高</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>您目前的或計劃中的 ATMP 製程，哪些步驟是開放、哪些是密閉、哪些是混合？每個步驟的環境等級要求是否已在 CCS 中明確記錄？</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end Q2.2 -->
+
+
+    <!-- ===================================================
+         Q2.3 — Pressure Cascade Concepts
+         =================================================== -->
+    <div class="chapter-section" id="q23">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.3</div>
+            <div class="chapter-info">
+                <h2>Q2.3 — Pressure Cascade Concepts: Containment &amp; Classification</h2>
+                <p>正壓、負壓、氣泡與水槽壓力概念：ATMP 設施如何同時保護操作員與產品？ | Pages 19–21</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Row 1: Regulatory Background -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Regulatory Background</h3>
+                    <p>The leading regulatory standards for aseptic manufacturing include:</p>
+                    <ul>
+                        <li><strong>FDA Guidance for Industry:</strong> Sterile Drug Products Produced by Aseptic Processing — cGMP</li>
+                        <li><strong>EU GMP Annex 1:</strong> Manufacture of Sterile Medicinal Products (EudraLex Volume 4)</li>
+                    </ul>
+                    <p>These guidances state that <span class="key-term">pressure differentials</span> for supporting clean areas must be maintained to keep sterile processing areas free from any contaminant (viable or nonviable).</p>
+                    <p>EU GMP Annex 1 states that a <span class="key-term">positive pressure differential of a minimum of 10 Pascals</span> should be maintained between each adjacent space.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>壓差梯度的基本原理</h4>
+                        <p>潔淨室使用<strong>正壓</strong>的邏輯非常直觀：</p>
+                        <ul>
+                            <li>高壓區的空氣只會向外流</li>
+                            <li>外部「不潔淨」的空氣無法逆流進入</li>
+                            <li>因此，從最潔淨到最不潔淨形成「壓力階梯」</li>
+                        </ul>
+                        <p>EU GMP Annex 1 要求相鄰空間的最小壓差為 <strong>10 Pa</strong>。實務上通常設計為 10–15 Pa 以提供安全餘裕。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>ATMP 特殊挑戰：正壓 vs. BSL 負壓的矛盾</h4>
+                        <p>傳統無菌製程 = <strong>正壓保護產品</strong>（潔淨空氣向外吹）</p>
+                        <p>BSL-2 病毒載體生產 = <strong>負壓保護環境/操作員</strong>（含病毒氣溶膠往內抽）</p>
+                        <p><strong>矛盾：</strong>你不能同時對同一個房間既正壓又負壓。</p>
+                        <p><strong>解法：</strong>使用「Bubble + Sink 組合設計」——見下方 formula-box。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Pressure Concepts -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Pressure Concepts: Bubble, Sink, and Cascade</h3>
+                    <p>Cleanrooms are designed to maintain <span class="key-term">positive pressure</span>, ensuring filtered air always flows from the cleanest to less-clean spaces — a <span class="key-term">pressure cascade</span>.</p>
+                    <p>In a multichambered cleanroom, the cleanest room is kept at the highest pressure. Air locks can act as a <span class="key-term">"bubble"</span> (higher pressure than both adjacent rooms) or as a <span class="key-term">"sink"</span> (lower pressure than both adjacent rooms).</p>
+                    <p>For <span class="key-term">potent products or viral vectors</span>, the pressure concept should be adapted to prevent spreading into surrounding areas using negative and positive adjacent areas.</p>
+                    <p>The BSC is an open system; therefore the pressure differential cannot be regulated in the same way as an isolator. Instead, the surrounding environment is controlled with respect to the air locks and corridors.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="formula-box">
+                        <h4>Bubble vs. Sink 氣鎖設計圖解</h4>
+                        <pre>
+【Bubble 氣泡式氣鎖】— 適用於多產品設施防交叉汙染
+  走廊 (低壓) ← 氣鎖 (最高壓) → 生產室 (中壓)
+  空氣從氣鎖向兩側流出，阻止任何方向的汙染進入氣鎖
+
+【Sink 水槽式氣鎖】— 適用於高效力或病毒性產品的圍堵
+  走廊 (中壓) → 氣鎖 (最低壓) ← 生產室 (高效力產品區)
+  空氣從兩側流向氣鎖，防止生產室內的高效力物質溢出
+
+【BSC 的壓力配置】— BSC 本身是開放系統，無法直接加壓
+  BSC 周圍 Grade B 房間（正壓）
+  ↑ BSC 層流頭（向下正壓氣流）
+  → 廢氣經 HEPA 過濾後排出（BSC 下排風可設計為負壓抽排）
+</pre>
+                        <p>決策原則：<strong>高效力/病毒性產品 → 優先用 Sink 防止外洩；多產品設施防交叉汙染 → 優先用 Bubble</strong></p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>BSC 壓力管理的特殊性</h4>
+                        <p>生物安全櫃（BSC）因為是「開放」接口的，無法像隔離器一樣在內部設定壓差。BSC 的保護機制依賴：</p>
+                        <ul>
+                            <li><strong>向下氣流（Downflow）</strong>：HEPA 過濾空氣向下吹，在工作區形成正壓層</li>
+                            <li><strong>前方進氣口（Inflow）</strong>：負壓抽取前方空氣，阻止氣溶膠逸出</li>
+                            <li><strong>周圍房間正壓</strong>：BSC 外的 Grade B 環境提供額外保護層</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: MAL/PAL Interlocks, VPHP, RCV -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>MAL/PAL Design Requirements &amp; Suite Fumigation</h3>
+                    <p><span class="key-term">MALs and PALs</span> should be designed with <span class="key-term">interlocks</span> that prohibit opening both doors at once. They should also have an integrated timer that enforces the required time to ensure at least <span class="key-term">4–5 room air-changes</span> occur within the MAL to reduce particles introduced into the higher-classified side.</p>
+                    <p>Cleanroom suites should be designed for <span class="key-term">VPHP (Vapor Phase Hydrogen Peroxide)</span> or <span class="key-term">ClO₂ (Chlorine Dioxide)</span> compatibility. For product changeover (different vectors) and for <span class="key-term">RCV (Replication-Competent Virus)</span> to non-RCV, whole-suite fumigation should be carried out periodically.</p>
+                    <p>RCV is a crucial safety concern in gene therapy. Vectors are engineered to be replication-defective, but there is a risk that the virus could revert to a RCV during manufacturing due to <span class="key-term">recombination events</span>. If this happens, the RCV could replicate uncontrollably in the patient's body.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>氣鎖聯鎖與換氣次數要求</h4>
+                        <p><strong>聯鎖（Interlock）</strong>確保氣鎖兩側門不能同時打開——這是維持壓差的物理保障。</p>
+                        <p><strong>4–5 次換氣（Air Changes）</strong>的計時要求：空氣需要足夠的時間置換，才能把從低等級端帶入的微粒稀釋到可接受水平，然後才能打開通往高等級端的門。</p>
+                        <p>這個設計要求必須在 MAL 設備規格中明確，並在驗證時確認計時器功能。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>RCV — 基因治療最嚴重的安全風險之一</h4>
+                        <p><strong>RCV（Replication-Competent Virus，複製能力病毒）</strong>是基因治療領域的關鍵安全議題：</p>
+                        <ul>
+                            <li>載體病毒被設計為「複製缺陷型」（只能感染一次，不能繁殖）</li>
+                            <li>但在製造過程中，基因重組（recombination）可能使其恢復複製能力</li>
+                            <li>如果含 RCV 的產品注射到病人體內，病毒可能在體內無限複製，造成嚴重傷害</li>
+                        </ul>
+                        <p><strong>設施含義：</strong>換產品（不同病毒載體）前，必須進行整室燻蒸（whole-suite fumigation），以確保沒有 RCV 殘留。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：RCV vs. 複製缺陷型病毒</h4>
+                        <p>想像一支 USB 隨身碟（病毒載體）被設計成「唯讀模式」——只能把基因藥物「複製」到細胞中，但自己不能「複製自身」。RCV 就像 USB 的唯讀鎖被解除了，變成一個會自我複製的病毒——這就是為什麼必須嚴格監控並通過整室燻蒸清除每一批產品的殘留。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：換產清潔程序設計</h4>
+                        <p>在多客戶 / 多產品 CDMO 環境中，換產清潔（Changeover Cleaning）必須包含：</p>
+                        <ul>
+                            <li><strong>整室燻蒸計劃</strong>：確認使用 VPHP 或 ClO₂ 的接觸時間和濃度</li>
+                            <li><strong>效力確認</strong>：使用生物指示劑（BI）進行 6-log 殺滅驗證</li>
+                            <li><strong>HVAC 清除時間</strong>：燻蒸後確保分解完全，避免殘留對下一批次影響</li>
+                            <li><strong>EM 監測加強</strong>：換產後的前 3 批次加強環境監測頻率</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end Q2.3 -->
+
+
+    <!-- ===================================================
+         Q2.4 — Cleanroom / HVAC Design for Viral Vectors
+         =================================================== -->
+    <div class="chapter-section" id="q24">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.4</div>
+            <div class="chapter-info">
+                <h2>Q2.4 — Cleanroom, HVAC, Air Locks &amp; Corridors for Viral Vector Handling</h2>
+                <p>病毒載體 ATMP 設施的硬體設計：潔淨室、HVAC、氣鎖與走廊的完整考量 | Pages 22–24</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Row 1: Design Principles -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Design Principles</h3>
+                    <p>When designing a production site for ATMPs, essential design considerations include:</p>
+                    <ul>
+                        <li>Fulfilling a minimum of <span class="key-term">Grade D background (closed isolator)</span> or <span class="key-term">Grade B background (BSC)</span> with appropriate graded air locks.</li>
+                        <li>Designing all cleanrooms to be easily <span class="key-term">cleaned and disinfected</span>; as some ATMPs require BSL-1 or higher, rooms should accommodate specific cleaning/inactivation procedures required by the specific BSL.</li>
+                        <li>Designing all equipment and room features to be <span class="key-term">hygienic and chemically compatible</span> with cleaning, sanitizing, and inactivation agents used. Chemical compatibility should be considered early in the design stage.</li>
+                        <li>Installing appropriate <span class="key-term">decontamination/deactivation methods</span> (e.g., autoclaves) based on the required BSL, to deactivate/decontaminate waste or leftover raw materials/products before leaving the area.</li>
+                        <li>Consider locating <span class="key-term">emergency response equipment</span> (e.g., emergency shower, eye shower) outside the cleanroom, while ensuring there are no open drains within classified environments.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>化學相容性 — 設計初期就要考慮</h4>
+                        <p>ATMP 設施使用的消毒/去汙劑種類繁多（VPHP、ClO₂、次氯酸鈉、IPA 等），每種對材料的腐蝕性不同。在設計初期就必須確認：</p>
+                        <ul>
+                            <li>牆面塗料、地板材質、密封條的耐化學性</li>
+                            <li>設備表面（不鏽鋼等級、塗層）</li>
+                            <li>電子元件、感測器的防護等級</li>
+                            <li>管道接頭和密封材質</li>
+                        </ul>
+                        <p>如果設計時忽略，事後改造成本極高，且可能影響設施認證時間表。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>潔淨室內禁止開放排水</h4>
+                        <p>「無開放排水口（no open drains）」在 GMP 潔淨室中是基本要求：</p>
+                        <ul>
+                            <li>開放排水口是微生物（特別是黴菌）滋生的溫床</li>
+                            <li>在 BSL-2 區域，排水可能含有病毒性廢液，必須先灭活</li>
+                            <li>緊急淋浴/洗眼站必須設置在潔淨室外，但位置需確保人員能快速到達</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：醫院手術室的設計邏輯</h4>
+                        <p>ATMP 潔淨室的設計要求與醫院手術室非常相似：</p>
+                        <ul>
+                            <li><strong>易清潔表面</strong>（圓角設計，沒有縫隙積塵）= 無菌手術台</li>
+                            <li><strong>高效空氣過濾</strong>（HEPA）= 手術室的層流頂棚</li>
+                            <li><strong>無排水口</strong> = 手術室地板防積水防污染</li>
+                            <li><strong>緊急洗眼站在室外</strong> = 急救設備不得影響無菌環境</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: HVAC -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>HVAC Requirements</h3>
+                    <ul>
+                        <li>Design the HVAC system appropriate for the <span class="key-term">product potency and/or the required BSL</span>.</li>
+                        <li>Use <span class="key-term">HEPA filtration</span> to obtain the required cleanroom classification.</li>
+                        <li>Design the air supply for each space to promote appropriate <span class="key-term">air pressure differentials</span> between rooms of varying classification or required operations (for maintenance of cleanliness or containment).</li>
+                        <li>Design HEPA filter installation and replacement so they can be <span class="key-term">easily maintained</span> in a way that minimizes cross-contamination and permits periodic <span class="key-term">integrity testing</span>.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>HVAC 設計的三個關鍵維度</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>維度</th>
+                                    <th>一般無菌設施</th>
+                                    <th>ATMP/病毒載體設施</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>過濾等級</strong></td>
+                                    <td>HEPA H14（Grade A/B）</td>
+                                    <td>同上，且需雙層 HEPA（BSL-2 區域排氣）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>壓差方向</strong></td>
+                                    <td>正壓（保護產品）</td>
+                                    <td>依 BSL 需求可能需負壓或 Bubble/Sink 組合</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>換氣次數</strong></td>
+                                    <td>Grade B: 20–40 ACH；Grade A: 單向流</td>
+                                    <td>BSL-2：需滿足 BSL 換氣要求，通常 &ge;10 ACH</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>HEPA 過濾器的完整性測試</h4>
+                        <p>HEPA 過濾器需定期進行 <strong>DOP/PAO 完整性測試</strong>（Dispersed Oil Particulate 或 Polyalphaolefin 測試），確認沒有洩漏點。</p>
+                        <p>在 ATMP（特別是 BSL-2）設施中，HEPA 過濾器的更換和測試是高風險操作：操作人員可能接觸到含有活性病毒的過濾器。設計時必須考慮「Bag-in/Bag-out」(BIBO) 過濾器更換機制，讓過濾器可以在不暴露操作人員的前提下完成更換。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：HVAC 分區隔離</h4>
+                        <p>多客戶 CDMO 的 HVAC 設計必須考慮：</p>
+                        <ul>
+                            <li><strong>各生產套件獨立 HVAC 系統</strong>，防止不同客戶產品間的氣流交叉</li>
+                            <li><strong>獨立排氣系統</strong>：BSL-2 區域的排氣不能與一般區域共用，需獨立 HEPA 處理後排放</li>
+                            <li><strong>失電後的壓差保護</strong>：UPS 備用電源確保壓差維持，防止停電時汙染外洩</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Air Locks -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Air Lock Requirements</h3>
+                    <ul>
+                        <li>Position air locks to <span class="key-term">separate spaces of different classifications</span> and/or avoid spreading contaminants in adjacent areas.</li>
+                        <li>Design PALs and changing rooms so that <span class="key-term">exiting operators do not contaminate entering operators</span> — providing separate routes of entry and exit.</li>
+                        <li>Separate <span class="key-term">MALs from PALs</span>.</li>
+                        <li>Design MALs to allow for <span class="key-term">decontamination procedures</span> within their environment, permitting the movement of materials from a lower grade to the higher grade.</li>
+                        <li><span class="key-term">Restrict personnel</span> from crossing through a MAL to enter the processing cleanrooms. Instead, design a procedure for personnel to deliver material to one side of the air lock and, after decontamination, retrieve it from the other side.</li>
+                        <li>Allow waste materials to pass through MALs/PALs <span class="key-term">only when clean materials or personnel are not present</span>.</li>
+                        <li>Separate waste flow from personnel and material based on potency and BSL requirements.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>PAL vs. MAL 設計要點對比</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>PAL 人員氣鎖</th>
+                                    <th>MAL 物料氣鎖</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>主要功能</strong></td>
+                                    <td>人員更衣/潔淨度轉換</td>
+                                    <td>物料表面消毒/轉移</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>人員通行</strong></td>
+                                    <td>允許</td>
+                                    <td>禁止（人員不得穿越 MAL）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>是否可合併</strong></td>
+                                    <td colspan="2">禁止合併，必須分開設置</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>進出方向</strong></td>
+                                    <td>進出必須分開（防止出方污染入方）</td>
+                                    <td>單向物料流或雙門聯鎖</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>廢棄物</strong></td>
+                                    <td>不得與人員同時通過</td>
+                                    <td>不得與清潔物料同時通過</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>人員不得穿越 MAL — 為什麼這個規則如此重要？</h4>
+                        <p>MAL 是為物料表面消毒設計的，其內部會進行噴霧消毒、VPHP 處理等程序。如果人員穿越 MAL：</p>
+                        <ul>
+                            <li>人員可能暴露於消毒劑</li>
+                            <li>人員的服裝可能帶入生物汙染</li>
+                            <li>消毒程序被人員通行干擾而失效</li>
+                        </ul>
+                        <p>正確做法：人員把物料放在 MAL 一側，自行離開，讓 MAL 完成消毒，然後由另一側的人員（或同一人繞道通過 PAL）取出物料。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：核電廠的物料傳遞盒</h4>
+                        <p>核電廠管制區外的人員需要將物品傳遞進去時，使用「通道箱」：物品放進去，外門關閉，輻射消毒，內門開啟，管制區內人員取出。人員本身絕不穿越這個通道箱。ATMP 設施的 MAL 邏輯完全一樣。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Corridors -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Corridor Design</h3>
+                    <ul>
+                        <li>Plot <span class="key-term">personnel, material, samples, and waste flows</span> throughout the facility to ensure corridors promote <span class="key-term">unidirectional flow</span> where possible (cleanest to "dirtiest") and avoid risks from intersecting flow paths.</li>
+                        <li>Design the facility to employ <span class="key-term">clean corridors with positive pressure</span> from the corridor to the MAL and PAL, or MAL and PAL with positive pressure to the corridor (air locks as bubbles), if the product is highly potent or if <span class="key-term">multiproduct manufacture</span> will occur.</li>
+                        <li>Use <span class="key-term">air locks as sinks</span> when containment of potent products is the primary concern, based on the CCS.</li>
+                    </ul>
+                    <p><strong>Rationale:</strong> The design of ATMP facilities requires careful understanding of all personnel, material, waste, and sample flows. The adjacent rooms, corridors, air locks, and HVAC all play a part in ensuring product is free from contamination and providing operator safety. Additional safety requirements should be based on risk assessment and captured within the CCS.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="formula-box">
+                        <h4>走廊壓力設計選擇框架</h4>
+                        <pre>
+【情境 A】多產品設施，防止產品間交叉汙染
+  走廊（高壓）→ MAL（正壓氣泡）→ 各生產室
+  走廊保持最高壓，任何產品的洩漏都被走廊正壓推回生產室
+
+【情境 B】高效力/病毒性產品，防止外洩到環境
+  走廊（中壓）→ MAL（負壓水槽）← 生產室（高效力，低壓）
+  生產室維持相對低壓，任何洩漏都被吸入 MAL，不向走廊散佈
+
+【情境 C】BSC 設施的典型配置
+  走廊（中壓 15 Pa）→ PAL/MAL（+10 Pa）→ Grade B 生產室（+5 Pa）
+  BSC 本身層流頭維持 Grade A 環境
+</pre>
+                    </div>
+                    <div class="concept-box">
+                        <h4>單向流走廊設計原則</h4>
+                        <p>理想的走廊設計應避免流程「交叉」：</p>
+                        <ul>
+                            <li>清潔物料進入方向 ≠ 廢棄物出去方向</li>
+                            <li>已更衣人員走廊 ≠ 去汙人員走廊</li>
+                            <li>如無法完全分開，至少設計時間隔離（不同時段通行）</li>
+                        </ul>
+                        <p>設施設計審查時，繪製「流向衝突矩陣」是識別潛在問題的實用工具。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：走廊壓力設計的 CCS 文件化</h4>
+                        <p>CCS 中應包含每個走廊段的壓力設計根據：</p>
+                        <ul>
+                            <li>列出走廊段 → 相鄰空間 → 壓差設定值 → 設計依據（防汙染 or 防外洩）</li>
+                            <li>繪製設施壓力圖（Pressure Map），作為 Commissioning &amp; Qualification 的基準</li>
+                            <li>定義壓差報警上下限（Alert/Action limits），並連接 BMS（Building Management System）</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>請針對您熟悉的一個生產套件，畫出人員、物料、廢棄物三條流動路徑。是否存在任何交叉點？如果存在，現有控制措施是程序性（SOP）的，還是工程性（設施設計）的？哪種更可靠？</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end Q2.4 -->
+
+
+    <!-- ===================================================
+         Q2.5 — External Environmental Risk / GMO
+         =================================================== -->
+    <div class="chapter-section" id="q25">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.5</div>
+            <div class="chapter-info">
+                <h2>Q2.5 — External Environmental Risks: GMO &amp; Highly Potent Materials</h2>
+                <p>製造設施以外的環境風險：鄰近設施、醫院、居家環境中的 GMO 與高效力物質管控 | Page 24–25</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Row 1: External Risk Overview -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Recommendation — External Environmental Risks</h3>
+                    <p><span class="key-term">Highly potent materials and GMOs</span> are considered major environmental risk factors in facility design since there are often additional local regulatory requirements to prevent unwanted release to the environment.</p>
+                    <p>The organization should:</p>
+                    <ul>
+                        <li>Consult <span class="key-term">local regulatory requirements</span>, including assessing all biological materials handled in the facility against such regulations, including GMOs where appropriate.</li>
+                        <li>Work with the <span class="key-term">point-of-administration facility</span> (e.g., hospital) to determine any containment control requirements (e.g., administration precautions, patient waste, hospital waste).</li>
+                        <li>Engage in a discussion with <span class="key-term">local regulatory authorities</span> — a discussion is recommended since ATMP technology is developing rapidly, and novel technology may result in novel products with novel risks.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>GMO 法規框架 — 製造商的責任範圍延伸至院外</h4>
+                        <p><strong>GMO（Genetically Modified Organisms，基因改造生物）</strong>在許多國家受到專門的環境法規管制，不只是醫藥法規：</p>
+                        <ul>
+                            <li><strong>台灣</strong>：受《基因改造生物田間試驗管理辦法》及環保署相關規範管轄</li>
+                            <li><strong>EU</strong>：受 Directive 2001/18/EC（基因改造生物蓄意釋放）管制</li>
+                            <li><strong>美國</strong>：NIH Guidelines for Research Involving Recombinant DNA Molecules</li>
+                        </ul>
+                        <p>製造商需在設施設計階段就識別哪些物料屬於 GMO，並確認相應法規要求。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>與醫院合作的必要性</h4>
+                        <p>ATMP 的「產品生命週期」不在工廠結束，而是延伸到：</p>
+                        <ul>
+                            <li><strong>醫院給藥室</strong>：解凍、準備、給藥操作的人員防護</li>
+                            <li><strong>病房</strong>：給藥後 30 天的病患廢棄物處理</li>
+                            <li><strong>居家</strong>：病患出院後家人的接觸預防措施</li>
+                        </ul>
+                        <p>製造商有責任提供醫院和病患家屬充分的操作指引，這不只是服務，而是法規合規要求。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Healthcare Setting & Home Setting -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Healthcare Setting &amp; Home Environment</h3>
+                    <p>Research laboratories manage biosafety risk through the oversight of an <span class="key-term">Institutional Biosafety Committee (IBC)</span>. The use of ATMPs with biosafety concerns in healthcare settings has resulted in the extension of the IBC's role into <span class="key-term">patient administration settings</span>, which is not within the traditional purview of conventional IBCs.</p>
+                    <p>For gene therapy products in healthcare facilities:</p>
+                    <ul>
+                        <li>A <span class="key-term">contact precaution over a 30-day period</span> post-product administration, including waste handling, is recommended.</li>
+                        <li>When the patient has returned home, families are recommended to take <span class="key-term">similar precautions</span> for the same duration.</li>
+                        <li>Disinfection and cleaning procedures, including relevant <span class="key-term">disinfectant contact time</span>, must be shown appropriate for the organisms involved within the post-administration setting (e.g., the home).</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>IBC — 機構生物安全委員會的角色延伸</h4>
+                        <p><strong>IBC（Institutional Biosafety Committee）</strong>傳統上負責研究實驗室的生物安全監督。但 ATMP 進入臨床後，其角色已延伸到：</p>
+                        <ul>
+                            <li>醫院給藥環境的生物安全評估</li>
+                            <li>病患術後廢棄物（尿液、糞便、血液）的處理規範</li>
+                            <li>給藥 30 天內的醫療人員個人防護規範</li>
+                        </ul>
+                        <p>這對許多醫院而言是全新挑戰——傳統 IBC 不熟悉基因治療產品的風險。ATMP 製造商需主動提供支持文件。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：放射性藥物的居家管控類比</h4>
+                        <p>核醫科使用的放射性藥物有標準的「居家輻射防護指引」——病患治療後 X 天內：不能與嬰幼兒同睡、廁所使用後需沖水兩次等。</p>
+                        <p>ATMP 的「30 天接觸預防措施」概念類似，但現階段執行框架仍在發展中。ATMP 製造商必須主動填補這個指引空缺。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>消毒劑接觸時間 — 家庭環境的挑戰</h4>
+                        <p>在醫院可以強制執行標準消毒程序，但病患返家後，消毒劑和接觸時間的執行完全依賴病患/家屬的理解和配合：</p>
+                        <ul>
+                            <li>選用的消毒劑必須是家庭可購得的普通商品</li>
+                            <li>接觸時間需足夠殺滅目標病毒，但也不能太複雜以至於家屬無法執行</li>
+                            <li>說明書必須以清楚的非專業語言呈現</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Healthcare Personnel Training & Rationale -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Healthcare Personnel Training Challenges</h3>
+                    <p>One particular risk in healthcare settings is related to <span class="key-term">handling competency</span>. Healthcare settings tend to include:</p>
+                    <ul>
+                        <li>Use of <span class="key-term">floating staff</span> where the personnel assigned are not always involved in one particular activity.</li>
+                        <li><span class="key-term">Training management</span> for healthcare personnel (e.g., physician, nurse) is managed differently than for production workers. Use of a Learning Management System (LMS) may not be common in a healthcare setting, making <span class="key-term">tracking specific training competency</span> difficult.</li>
+                    </ul>
+                    <p><strong>Rationale:</strong> Safety concerns for highly potent materials or GMOs must be addressed regardless of the setting, to protect patients, healthcare workers, home caregivers, and others who may come into contact with the patient. The evolving nature of ATMPs means that the systems designed to control these extended risks are not fully mature. Therefore, it is incumbent upon the manufacturer to provide appropriate guidance for the necessary controls.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>浮動人員制度的訓練風險</h4>
+                        <p>醫院廣泛使用「浮動（floating）」制度，讓護理師根據需求分配到不同病房。這對 ATMP 給藥管理造成特殊挑戰：</p>
+                        <ul>
+                            <li>ATMP 給藥後的接觸預防知識不是每位護理師的常規訓練</li>
+                            <li>無 LMS 系統難以追蹤誰受過訓練</li>
+                            <li>換班時的交接可能導致關鍵防護措施被遺漏</li>
+                        </ul>
+                        <p>這是 ATMP 上市後（post-marketing）設施風險的一部分，製造商和醫院必須共同解決。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>製造商的法規責任延伸</h4>
+                        <p>PtC-14 的最後一句話意義深遠：</p>
+                        <p><em>"it is incumbent upon the manufacturer to provide appropriate guidance for the necessary controls."</em></p>
+                        <p><strong>製造商必須主動提供</strong>給醫院和居家環境的操控指引，這不是可選的服務，而是 ATMP 監管合規的組成部分。設施設計時就應將這個「院外風險管理」納入整體 CCS 文件架構。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 實務應用：GMO 風險管理的 CDMO 視角</h4>
+                        <p>作為 CDMO，在承接 ATMP 客戶時需確認：</p>
+                        <ul>
+                            <li><strong>GMO 分類確認</strong>：客戶產品是否屬於 GMO？適用哪個國家/地區的 GMO 法規？</li>
+                            <li><strong>GMO 物料清單</strong>：設施中所有含 GMO 的物料必須登記，定期審查法規符合性</li>
+                            <li><strong>廢棄物申報</strong>：含 GMO 的廢棄物是否需要向環保主管機關申報？</li>
+                            <li><strong>院外指引協助</strong>：協助客戶起草醫院給藥環境的操作 SOP，作為技術服務的一部分</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>如果您的 CDMO 計劃承接一個 AAV 基因治療病毒載體的生產合約，您需要額外考慮哪些超出「設施本身」的 GMO 合規工作？請列出至少三個需要與客戶討論的議題。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Summary Table -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Topic 2 Summary — Key Requirements at a Glance</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Core Requirement</th>
+                                <th>Key Document/Concept</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Q2.1</strong></td>
+                                <td>Four-flow separation; inside-out containment strategy; inactivate before clean</td>
+                                <td>CCS; Contamination Control Strategy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Q2.2</strong></td>
+                                <td>Open = Grade A; Hybrid = Grade A/B or Grade D; Closed = Grade C (if integrity-tested)</td>
+                                <td>System classification matrix</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Q2.3</strong></td>
+                                <td>Min. 10 Pa differential between adjacent spaces; Bubble/Sink design for potent products; MAL/PAL interlocks with 4–5 ACH timer</td>
+                                <td>EU GMP Annex 1; Pressure Map</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Q2.4</strong></td>
+                                <td>HEPA + BIBO design; MAL ≠ PAL; no open drains; chemical compatibility from design stage; waste deactivation before exit</td>
+                                <td>HVAC Design; CCS; BSL requirements</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Q2.5</strong></td>
+                                <td>GMO local regulations; hospital collaboration; 30-day post-administration contact precautions; manufacturer must provide guidance</td>
+                                <td>IBC; GMO regulations; Post-market risk management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>Topic 2 整合複習</h3>
+                    <div class="concept-box">
+                        <h4>決策優先層級在 Topic 2 中的體現</h4>
+                        <p>回顧本頁頂部的決策優先層級，在設施設計中每個層級的具體體現：</p>
+                        <ul>
+                            <li><strong>1. 操作員安全（BSL）</strong>：負壓設計（Sink）、BSC 下排氣、BIBO 過濾器更換、Spill SOP</li>
+                            <li><strong>2. 病患安全（無菌/交叉汙染）</strong>：四流分離、MAL/PAL 設計、整室燻蒸、RCV 管控</li>
+                            <li><strong>3. 產品品質</strong>：First-air protection、密閉系統優先、HVAC 完整性、ISO 等級維持</li>
+                            <li><strong>4. 法規合規</strong>：CCS 文件化、EU Annex 1 壓差要求、GMO 法規、IBC 監督</li>
+                            <li><strong>5. 商業彈性</strong>：多套件設計、可切換的 Bubble/Sink 壓力配置、混合系統支持早期客戶</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>Topic 2 的核心洞察</h4>
+                        <p>ATMP 設施設計與傳統無菌設施最大的差異在於：<strong>雙向防護的矛盾</strong>——傳統設施只需要保護產品（向外吹），ATMP 設施同時需要保護操作員（向內抽）。</p>
+                        <p>解決這個矛盾的工具是：Isolator（密閉隔離器）、Bubble/Sink 壓力配置組合、以及 CCS 文件框架——這三者構成 ATMP 設施設計的核心。</p>
+                    </div>
+                    <div class="practice-box cdmo">
+                        <h4>CDMO 最終整合練習</h4>
+                        <p>假設您的 CDMO 正在設計一個新的 ATMP 生產套件，將同時承接：</p>
+                        <ul>
+                            <li>客戶 A：AAV 病毒載體（BSL-2，高效力）</li>
+                            <li>客戶 B：CAR-T 細胞治療（BSL-1，autologous）</li>
+                        </ul>
+                        <p>根據 Topic 2 的內容，您最需要在設施設計中解決的前三個問題是什麼？</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end Q2.5 -->
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 14 — Manufacturing of ATMPs: Facility Design (Part 1)</p>
+    <p>Topic 2: Facilities | Pages 15–25 | Q2.1–Q2.5</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc. — Educational Use Only. &copy; 2025 Parenteral Drug Association, Inc.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂部">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

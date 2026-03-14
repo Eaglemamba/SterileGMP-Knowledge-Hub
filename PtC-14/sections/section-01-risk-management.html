@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-14 — Topic 1: Risk Management</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== CDMO PRACTICE BOX (Green solid) ===== */
+.practice-box-cdmo {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box-cdmo h3, .practice-box-cdmo h4 {
+    color: #2e7d32 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box-cdmo p,
+.practice-box-cdmo li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Topic 1: Risk Management | 風險管理</h1>
+    <div class="subtitle">Q1.1 ATMP Facility Risk Assessment &nbsp;|&nbsp; Q1.2 Biosafety Level Determination</div>
+    <div class="page-info">PDA PtC-14: Manufacturing of ATMPs – Facility Design &nbsp;|&nbsp; p10–p14</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== DECISION HIERARCHY BANNER ===== -->
+    <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; padding: 1rem 1.5rem; margin-bottom: 1.5rem; border-radius: 8px;">
+        <div style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase;">PtC-14 決策優先層級 — Decision Hierarchy</div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <span style="background: rgba(239,68,68,0.3); border: 1px solid #ef4444; border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 0.85rem;"><strong>1. 操作員安全</strong> — BSL 合規</span>
+            <span style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">&#8594;</span>
+            <span style="background: rgba(245,158,11,0.3); border: 1px solid #f59e0b; border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 0.85rem;"><strong>2. 患者安全</strong> — 無菌保證</span>
+            <span style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">&#8594;</span>
+            <span style="background: rgba(16,185,129,0.3); border: 1px solid #10b981; border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 0.85rem;"><strong>3. 產品品質</strong> — CQAs</span>
+            <span style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">&#8594;</span>
+            <span style="background: rgba(99,179,237,0.3); border: 1px solid #63b3ed; border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 0.85rem;"><strong>4. 法規合規</strong> — GMP/GMO</span>
+            <span style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">&#8594;</span>
+            <span style="background: rgba(167,139,250,0.3); border: 1px solid #a78bfa; border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 0.85rem;"><strong>5. 商業彈性</strong></span>
+        </div>
+    </div>
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 ATMP 設施風險評估的範疇與跨學科團隊組成，並對應 ICH Q9 QRM 原則。</li>
+            <li>掌握六大風險評估要素（物料、設施設備、多產品處理、清潔去污、氣流設計、外部環境）的具體內容。</li>
+            <li>區分生物安全風險評估（BSL 導向）與醫藥品質風險評估（GMP 導向）的差異與交集。</li>
+            <li>能依據 WHO/FDA 風險群組分類（Risk Group 1–4）判斷設施所需 BSL 等級。</li>
+            <li>辨識正壓（無菌）與負壓（BSL 遏制）氣流設計的本質衝突，並提出整合解決方案。</li>
+            <li>評估自體（autologous）vs. 異體（allogeneic）ATMP 對污染控制策略的不同影響。</li>
+        </ol>
+    </div>
+
+    <!-- ===== Q1.1 SECTION ===== -->
+    <!-- Q1.1 Chapter Divider -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">Q1.1</div>
+            <div class="chapter-info">
+                <h2>How can a risk assessment be created for an ATMP facility?</h2>
+                <p>ATMP 設施風險評估如何建立？&nbsp;|&nbsp; Recommendation + Rationale (p10–p13)</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Two-column: Q1.1 Recommendation intro -->
+            <div class="two-column">
+                <!-- LEFT: English source -->
+                <div class="left-column">
+                    <h3>Recommendation</h3>
+                    <p>The manufacture of any product, including an <span class="key-term">ATMP</span>, necessarily entails some degree of risk. The degree of risk often correlates with such factors as the number of <span class="key-term">manual interventions</span>, the type of environment in which those interventions occur, and the <span class="key-term">open or closed</span> nature of the process.</p>
+                    <p>For example, <span class="key-term">autologous therapies</span> produced in small batches (small-scale) often have a higher risk per unit produced when manual manipulations are numerous. The facility design element of a formal <span class="key-term">facility risk assessment</span> should always be included as part of the <span class="key-term">Design Review</span> process in the organization, but it is even more important when processes have varying levels of risk.</p>
+                    <p>Based on the process design principles and nature of the work to be performed in the facility, the organization can define the <span class="key-term">risk profile</span> of the facility and work to mitigate those risks through appropriate <span class="key-term">design controls</span> associated with the equipment (e.g., isolators, BSCs) and appropriate process improvements (e.g., <span class="key-term">single-use systems</span>, <span class="key-term">closed processing</span>, automation, improved intervention design).</p>
+                    <p>As part of the same facility risk assessment, design controls can also be considered to manage risks related to <span class="key-term">biological hazards</span>.</p>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>核心概念解析</h3>
+
+                    <div class="concept-box">
+                        <h4>為什麼 ATMP 的風險特別複雜？</h4>
+                        <p>一般藥品的風險評估主要聚焦在化學污染與微生物污染。ATMP 額外增加了：</p>
+                        <ul>
+                            <li><strong>生物安全風險</strong>：病毒載體可能感染操作員（BSL 問題）</li>
+                            <li><strong>基因改造風險</strong>：GMO 法規要求遏制（負壓 containment）</li>
+                            <li><strong>交叉污染風險</strong>：自體療法批次獨特性，不容混淆</li>
+                            <li><strong>患者特殊性風險</strong>：免疫低下患者對污染零容忍</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：風險量表就像廚房安全評估</h4>
+                        <p>一般廚房評估：刀具管理、食物分區存放（防交叉污染）。</p>
+                        <p>ATMP 設施評估：同上，但還要同時考慮：廚師會不會被食材感染（BSL）、廢棄物會不會污染鄰近環境（GMO 遏制）、並且每道菜的食材只能給特定一個人吃（自體療法身份鏈）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵判斷：開放 vs. 封閉系統</h4>
+                        <ul>
+                            <li><strong>開放系統</strong>（open processing）：最高風險，需最高環境等級（ISO 5/A 級）</li>
+                            <li><strong>封閉系統</strong>（closed processing）：風險最低，可在較低潔淨度環境操作</li>
+                            <li><strong>混合系統</strong>（hybrid）：風險取決於開放步驟的暴露時間與程度</li>
+                        </ul>
+                        <p>設施設計目標：盡量將開放步驟轉為封閉，或用 BSC/隔離器保護暴露點。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <p>一個自體 CAR-T 細胞治療的製造流程，包含細胞採集、活化、基因轉導（病毒載體）、擴增、收穫、配製。哪個步驟的 <strong>開放性</strong> 最高？哪個步驟的 <strong>BSL 要求</strong> 最嚴格？兩者是否為同一步驟？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: Interdisciplinary Team -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Interdisciplinary Team Requirement</h3>
+                    <p>Facility risk assessment should be undertaken by an <span class="key-term">interdisciplinary team</span> and should be guided by a <span class="key-term">risk-assessment facilitator</span> of appropriate experience along with a scribe to record the risk assessment.</p>
+                    <p>The scope of the facility risk assessment should include both facility and equipment design and selection, as well as <span class="key-term">product, personnel, and environmental risk categories</span>. Including personnel and environmental safety aspects in the risk assessment is recommended as it is likely that safety-related controls could also have an impact on product quality.</p>
+                    <p><span class="key-term">Control measures for one risk category should be assessed for impact on other risk categories.</span> For example, the use of a virus in cell therapy manufacturing may pose health risks to personnel while facilities producing the viral vectors have additional safety considerations due to the active replication of viral vectors, albeit in a controlled process and environment.</p>
+                    <p>Where applicable, specialized safety personnel, such as those with <span class="key-term">biosafety, toxicology, microbiology, and virology expertise</span>, should be involved in the performance of the risk assessment and in the design of the mitigations of the identified risks.</p>
+                </div>
+                <div class="right-column">
+                    <h3>跨學科團隊的必要性</h3>
+
+                    <div class="concept-box">
+                        <h4>風險評估團隊組成建議</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>角色</th>
+                                    <th>貢獻領域</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>QRM 促進者（Facilitator）</td>
+                                    <td>主導評估流程，防止偏見，確保 ICH Q9 合規</td>
+                                </tr>
+                                <tr>
+                                    <td>生物安全官（BSO）</td>
+                                    <td>BSL 判斷、GMO 法規、廢棄物處理</td>
+                                </tr>
+                                <tr>
+                                    <td>病毒學專家</td>
+                                    <td>載體特性、RCV 風險、去活化策略</td>
+                                </tr>
+                                <tr>
+                                    <td>設施工程師</td>
+                                    <td>HVAC、壓差設計、人員/物料流動</td>
+                                </tr>
+                                <tr>
+                                    <td>製程開發</td>
+                                    <td>開放/封閉步驟識別、介入點分析</td>
+                                </tr>
+                                <tr>
+                                    <td>品保（QA）</td>
+                                    <td>GMP 合規、CCS 整合、EM 策略</td>
+                                </tr>
+                                <tr>
+                                    <td>微生物學家</td>
+                                    <td>環境監控、消毒策略</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>跨類別影響的關鍵原則</h4>
+                        <p>PtC-14 特別強調：<strong>一個風險控制措施對其他類別的影響必須評估</strong>。這是 ATMP 設施設計最容易被忽略的陷阱：</p>
+                        <ul>
+                            <li>BSC 的擺放位置影響人員/物料/廢棄物流動</li>
+                            <li>廢棄物去污系統影響 CCS</li>
+                            <li>設施去污殘留影響產品品質與患者安全</li>
+                            <li>GMO 負壓遏制與無菌正壓設計互相衝突</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box-cdmo">
+                        <h4>CDMO 情境：多客戶 ATMP 設施</h4>
+                        <p>你的 CDMO 設施同時承接兩個客戶：客戶 A 使用 AAV 病毒載體（非複製型）、客戶 B 使用慢病毒載體（非複製型但整合型）。跨學科團隊中，哪個角色對評估客戶 B 的操作員健康風險最關鍵？如何確保兩個產品的 GMO 廢棄物流動不交叉？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: Six Risk Elements — Material + Facility -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Risk Assessment Elements — 1 & 2</h3>
+                    <p>Facility risk assessments should consider, but are not limited to, the following elements:</p>
+
+                    <p><strong>1. Material</strong></p>
+                    <ol type="a">
+                        <li>Presence of <span class="key-term">adventitious agents</span> (e.g., potential presence of replication competent agents).</li>
+                        <li>Material handling and transfer into and out of critical process areas (e.g., appropriate design and classification of pass-through containers, surface decontamination/disinfection during transfer of frozen materials, transfer of sterile parts/consumables).</li>
+                        <li>Controls and material-flow requirements when <span class="key-term">viruses, cellular materials, or GMOs</span> are present in the facility (including raw material, product, sample, and waste flows).</li>
+                        <li>Incoming control of materials for quality, microorganisms, and adventitious agents (e.g., vendor qualification, vendor audit, vendor certification, in-house sampling and testing, controls at loading dock, warehouse).</li>
+                    </ol>
+
+                    <p><strong>2. Facility and Equipment</strong></p>
+                    <ol type="a">
+                        <li>Equipment, material, and waste flow (e.g., material or equipment moving to a higher-grade area, <span class="key-term">cross-contamination due to non-unidirectional flow</span>).</li>
+                        <li>Personnel flow (e.g., cross-contamination risk due to personnel working or supporting different batches or different products at the same time).</li>
+                        <li><span class="key-term">Cleanability</span> of equipment and facility, including contact materials (e.g., selection of materials of construction that are nonadditive, non-absorptive, or non-reactive, including primary equipment, gaskets, filters, and selection of product-/process-compatible lubricants).</li>
+                        <li>Need for <span class="key-term">dedicated, segregated, self-contained areas</span> and separation by time (e.g., manufacturing process using infectious viral vectors).</li>
+                        <li><span class="key-term">Containment adequacy</span> (e.g., ability to contain potential aerosol release, examination of open processing for possible routes of contamination).</li>
+                        <li>Radiation shielding (e.g., use of x-ray irradiation equipment in process may require additional consideration directed by local regulations).</li>
+                        <li>Aspects of commissioning, qualification, maintenance, and <span class="key-term">environmental monitoring (EM)</span> (e.g., handling of pass-through containers, process gases).</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>物料與設施風險深度解析</h3>
+
+                    <div class="concept-box">
+                        <h4>物料風險的 ATMP 特殊性</h4>
+                        <p><strong>Adventitious agents（外來因子）</strong>是 ATMP 物料風險的核心。來源包括：</p>
+                        <ul>
+                            <li>起始物料（患者自體細胞本身可能攜帶潛伏病毒）</li>
+                            <li>製程中使用的病毒載體（即便是非複製型，仍具感染性）</li>
+                            <li>動物來源輔助物料（血清、滋養層細胞）</li>
+                            <li>供應商交叉污染</li>
+                        </ul>
+                        <p>因此，供應商資格確認（vendor qualification）在 ATMP 中比傳統藥品更為關鍵。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>物料流動風險矩陣</h4>
+                        <pre>
+物料類型          | 進入路徑   | 風險控制措施
+─────────────────|───────────|──────────────────
+原材料（非GMO）  | 物料氣鎖   | 表面消毒、目視檢查
+病毒載體          | 生物安全   | BSC、密閉容器、
+                  | 轉移箱     | 雙層包裝、記錄
+冷凍細胞產品      | 冷鏈氣鎖   | VPHP 去污、溫度
+                  |            | 監控、解凍確認
+廢棄物（含GMO）  | 專用廢棄   | 高壓滅菌或化學
+                  | 通道       | 去活化後方可離場
+樣本              | 樣本氣鎖   | 密閉試管、滅活
+                  |            | 後送外部實驗室
+                        </pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「含 GMO 設施」的特殊物料流動要求</h4>
+                        <p>當設施內有 GMO（包含病毒載體產品或 CAR-T 細胞）時，各國 GMO 法規（如 EU Directive 2001/18/EC）要求：</p>
+                        <ul>
+                            <li>所有含 GMO 廢棄物必須就地去活化，方可離開遏制區</li>
+                            <li>廢棄物流動必須單向，不可與清潔物料流動交叉</li>
+                            <li>廢液去活化系統（液體）需定期確效</li>
+                            <li>固體廢棄物須高壓滅菌（autoclaving）後方可一般廢棄</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「專用、隔離、自給自足」</h4>
+                        <p>想像一間核電廠的放射性物料處理室：不能與一般廠區共用通道、廢棄物有獨立出口、人員穿特定防護裝備且出入都要監測。</p>
+                        <p>使用感染性病毒載體（如複製型病毒）的 ATMP 設施，其邏輯完全相同——dedicated（不與其他產品共用）、segregated（物理隔離）、self-contained（獨立廢棄物處理）。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: Risk Elements 3, 4, 5, 6 -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Risk Assessment Elements — 3, 4, 5 & 6</h3>
+
+                    <p><strong>3. Multiproduct Processing</strong></p>
+                    <p>(e.g., handling multiple batches of product and/or multiple products simultaneously to ensure chain of identity to avoid mix-ups, limit risks of cross-contamination, prevent processing errors, and ensure process adherence)</p>
+                    <ol type="a">
+                        <li><span class="key-term">Pressure-cascade design</span>, which meets the containment design and aseptic processing requirements for all materials, especially highly potent materials and the appropriate controls for transitioning from area to area (e.g., air lock and pass-throughs with appropriate interlocks and purge times before opening to other zones or classifications).</li>
+                        <li>Utilities that ensure appropriate quality, reduce risk of contamination, ensure adequacy of supply and appropriate control (e.g., steam, process gases, power, clean compressed air, instrument air, <span class="key-term">HVAC</span>, <span class="key-term">WFI</span> and/or purified water, liquid nitrogen, carbon dioxide).</li>
+                    </ol>
+
+                    <p><strong>4. Cleaning, Decontamination, Disinfection, Sanitization, and Sterilization</strong></p>
+                    <ol type="a">
+                        <li>Equipment and facility <span class="key-term">cleaning/decontamination design</span> (e.g., design of automated decontamination, cell-virus inactivation process).</li>
+                        <li>Waste decontamination (e.g., solid or liquid, in-process or waste treatment system).</li>
+                        <li>Accident and spill response, decontamination, and cleaning.</li>
+                        <li>Equipment and material disinfection, sanitization, and sterilization.</li>
+                    </ol>
+
+                    <p><strong>5. Airflow Design</strong></p>
+                    <ol type="a">
+                        <li>Airflow within the facility design should consider the acceptability of <span class="key-term">recirculation of air</span> within the facility or whether <span class="key-term">single-pass air</span> (i.e., no recirculation) is required.</li>
+                        <li>Zone control within the HVAC air-handling units should consider separation by cleanliness and/or by process.</li>
+                        <li><span class="key-term">Differential pressure management</span> to ensure appropriate containment and/or cleanliness.</li>
+                    </ol>
+
+                    <p><strong>6. External Environment</strong></p>
+                    <ol type="a">
+                        <li>Impact of activities performed in the facility on the external environment (e.g., waste treatment requirement, construction).</li>
+                        <li>Seasonal changes of incoming air and source water, where applicable, to ensure that adequate pretreatment is included in the utility system design.</li>
+                        <li>Pest control measures.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>多產品、清潔、氣流與外部環境深度解析</h3>
+
+                    <div class="note-box">
+                        <h4>最關鍵的衝突點：壓差設計的兩難</h4>
+                        <p>這是 ATMP 設施設計中最核心的技術難題，PtC-14 在 Rationale 中明確指出：</p>
+                        <ul>
+                            <li><strong>無菌加工需要正壓</strong>（positive pressure）：潔淨區氣流向外推，防止外部污染進入</li>
+                            <li><strong>BSL/GMO 遏制需要負壓</strong>（negative pressure）：遏制區氣流向內吸，防止生物材料外逸</li>
+                        </ul>
+                        <p>當製程同時需要無菌操作 AND 生物遏制時（如 BSL-2 等級的病毒載體細胞轉導），兩個需求直接衝突。解決方案：使用 BSC class II 或隔離器，在小範圍內同時實現正壓無菌與負壓遏制。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>正壓 vs. 負壓壓差設計決策樹</h4>
+                        <pre>
+製程是否涉及感染性物質或 GMO？
+        │
+       Yes ──→ 需要 BSL/GMO 遏制
+        │              │
+       No             是否同時需要無菌操作？
+        │              │         │
+        ↓             Yes       No
+  標準正壓         需要隔離器   純負壓設計
+  無菌設計         或 Class II  （遏制優先）
+  (Grade A/B)      BSC 解決
+                        </pre>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>空氣迴圈 vs. 單通道空氣</h4>
+                        <p><strong>空氣迴圈（Recirculation）</strong>：節省能源，但若設施有 GMO，必須在迴圈前對空氣進行 HEPA 過濾；含有病毒載體的製程通常要求 HEPA H14 或更高等級。</p>
+                        <p><strong>單通道空氣（Single-pass）</strong>：所有排氣直接排出建築物（經 HEPA 過濾），不迴圈。用於最高生物安全要求場合，能耗高但遏制最確實。</p>
+                        <p>ATMP 設施的氣流設計需要在 BSL 需求、GMP 潔淨度需求與能源成本之間取得平衡。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：多產品設施的身份鏈管理</h4>
+                        <p>自體療法就像每個患者訂製的西裝——從量身（採樣）到成品（infusion bag）全程標籤不能錯。異體療法（同種異體）像工廠大量生產的標準尺碼——批次管理，但批次間交叉污染風險仍需嚴控。</p>
+                        <p>CDMO 同時做兩種：需要物理隔離或嚴格的時間分隔（campaign manufacturing），並有強健的身份鏈（chain of identity）SOP。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考問題：清潔去污的序列設計</h4>
+                        <p>一個多用途 ATMP 製造間，上午做 AAV 產品（Gene Therapy），下午做 CAR-T（Cell Therapy）。在兩個製程之間，清潔/去污步驟應如何設計？需要哪些科學依據來證明清潔有效性？AAV 和 CAR-T 的去污殘留對彼此有何影響？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: Rationale -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Rationale — Why Cross-Category Assessment Matters</h3>
+                    <p>A facility risk assessment can help determine the most appropriate design of facilities and selection of equipment. In particular, it is important to consider not only quality risks but also environmental and safety risks. Examples of how hazards can affect both safety and quality aspects include, but are not limited to:</p>
+
+                    <ol>
+                        <li>Certification and qualification test for a <span class="key-term">BSC</span> covers product, personnel, and environmental risk but <span class="key-term">placement and layout of BSC should also be verified</span> according to manufacturer and/or standard requirements (e.g., NSF/ANSI 49). The layout will then likely impact personnel, material, sample, and waste flows and potentially affect the <span class="key-term">cross-contamination control strategy</span>. If the risk cannot be adequately controlled with the use of a BSC, a closed system or <span class="key-term">isolators</span> should be used.</li>
+
+                        <li><span class="key-term">Waste treatment</span> is part of the biological risk management in the facility, and the type of waste treatment will impact personnel and material flow and potentially affect the cross-contamination control strategy.</li>
+
+                        <li>Facility <span class="key-term">decontamination processes</span> may leave residues that subsequently impact product quality and patient safety but may also represent a risk to operator safety.</li>
+
+                        <li><span class="key-term">Cross-contamination between manufacturing areas</span> of different products (e.g., live vs. inactivated microorganisms) will impact product quality and patient safety, as well as put operators at risk.</li>
+
+                        <li>Design requirements for <span class="key-term">BSL containment of GMOs</span> or other highly potent products may conflict with aseptic processing requirements. For example, a <span class="key-term">negative-pressure cascade</span> may be recommended to contain GMO within the facility, but aseptic processes rely on a <span class="key-term">positive-pressure cascade</span> to prevent contamination from entering the facility.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>Rationale 五個實例的深度解析</h3>
+
+                    <div class="concept-box">
+                        <h4>實例一：BSC 擺放位置的系統影響</h4>
+                        <p>BSC（生物安全櫃）的 NSF/ANSI 49 認證只確認「這台機器本身安全」，但不保證「放在這個位置是安全的」。錯誤的位置會：</p>
+                        <ul>
+                            <li>使人員在操作時背對廢棄物通道，導致移動時帶菌</li>
+                            <li>開門氣流與 HVAC 送風方向衝突，破壞層流</li>
+                            <li>限制物料進出路徑，強迫操作員走不合規路線</li>
+                        </ul>
+                        <p>結論：BSC 位置必須納入設施整體氣流 CFD（計算流體動力學）模擬驗證。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>實例三：去污殘留的雙面刃</h4>
+                        <p>VPHP（氣相過氧化氫）是 ATMP 設施最常用的設施去污劑，但必須注意：</p>
+                        <ul>
+                            <li><strong>對產品的影響</strong>：VPHP 殘留可能氧化細胞培養基成分，影響細胞活力</li>
+                            <li><strong>對患者的影響</strong>：過氧化氫殘留於設備表面，可能進入產品</li>
+                            <li><strong>對操作員的影響</strong>：VPHP 濃度超過 1 ppm 即對人體有害，需確保完全散逸</li>
+                        </ul>
+                        <p>因此去污後必須有足夠的換氣週期（aeration cycle）並用指示劑確認殘留濃度低於安全閾值，方能讓人員進入。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>實例五：正負壓衝突的工程解決方案</h4>
+                        <pre>
+問題：GMO 遏制（負壓）vs. 無菌保護（正壓）
+
+解決方案層次：
+1. 使用 Class II Type B2 BSC
+   → 100% 排氣至室外，HEPA 過濾
+   → 工作區域正壓（產品保護）
+   → 機箱對房間負壓（遏制）
+
+2. 使用負壓隔離器（Negative Pressure Isolator）
+   → 內部保持無菌
+   → 對房間負壓
+   → 手套箱操作，完全封閉
+
+3. 建築設計層次的緩衝氣鎖（Buffer Airlocks）
+   → 遏制區與無菌區之間設中間壓力氣鎖
+   → 複雜但可兩全
+
+4. 時間分隔（Campaign Manufacturing）
+   → 遏制製程與無菌製程不同時進行
+   → 最後防線，犧牲效率
+                        </pre>
+                    </div>
+
+                    <div class="practice-box-cdmo">
+                        <h4>CDMO 設施設計情境：你的決定</h4>
+                        <p>你正在為一個新 ATMP CDMO 設施做設施風險評估。客戶需求是：同一個套房（suite）中做 <strong>CAR-T 製造</strong>（慢病毒轉導，BSL-2 物質）。慢病毒轉導步驟需要在生物安全環境下進行，但後續的細胞培養、收穫、配製需要嚴格無菌保證。你會選擇哪種工程解決方案？需要哪些額外的確效資料來支持這個選擇？</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body Q1.1 -->
+    </div><!-- end chapter-section Q1.1 -->
+
+    <!-- ===== Q1.2 SECTION ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">Q1.2</div>
+            <div class="chapter-info">
+                <h2>How does the ATMP risk assessment determine the biosafety level requirement?</h2>
+                <p>ATMP 風險評估如何決定生物安全等級（BSL）需求？&nbsp;|&nbsp; p14</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Two-column: Risk Group Classification -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Risk Group Classification (WHO / FDA)</h3>
+                    <p>A list of biological materials, including <span class="key-term">GMOs</span>, should be maintained and reviewed regularly against local requirements as part of a <span class="key-term">risk management program</span>. The list serves as a basis for the organization to determine the <span class="key-term">risk group classification</span> of each material, and the risk group is determined by the hazard posed by the biological agents and toxins (if any) used in the manufacturing process.</p>
+                    <p>Although risk group classification depends on localities, the definition is generally in line with those from the <span class="key-term">World Health Organization (WHO)</span> and <span class="key-term">U.S. Food and Drug Administration (FDA)</span>:</p>
+
+                    <ul>
+                        <li><span class="key-term">Risk Group 1</span> (no or low individual and community risk): A microorganism that is unlikely to cause human or animal disease.</li>
+                        <li><span class="key-term">Risk Group 2</span> (moderate individual risk, low community risk): A pathogen that can cause human or animal disease but is unlikely to be a serious hazard to laboratory personnel, the community, livestock, or the environment. Laboratory exposures may cause serious infection, but effective treatment and preventive measures are available, and the risk of the spread of infection is limited.</li>
+                        <li><span class="key-term">Risk Group 3</span> (high individual risk, low community risk): A pathogen that usually causes serious human or animal diseases but does not ordinarily spread from one infected individual to another. Effective treatment and preventive measures are available <em>(not considered in this document)</em>.</li>
+                        <li><span class="key-term">Risk Group 4</span> (high individual and community risk): A pathogen that usually causes serious human or animal disease and that can be readily transmitted from one individual to another, directly or indirectly. Effective treatment and preventive measures are not usually available <em>(not considered in this document)</em>.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>風險群組分類詳解</h3>
+
+                    <div class="concept-box">
+                        <h4>風險群組 → BSL 的對應關係</h4>
+                        <p>風險群組（Risk Group, RG）分類是 BSL 設施要求的基礎。一般對應關係如下：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>風險群組</th>
+                                    <th>一般對應 BSL</th>
+                                    <th>ATMP 常見實例</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>RG 1</strong></td>
+                                    <td>BSL-1</td>
+                                    <td>大腸桿菌（非致病株）、酵母菌（質粒生產）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RG 2</strong></td>
+                                    <td>BSL-2</td>
+                                    <td>慢病毒載體（LVV）、AAV（大多數血清型）、腺病毒載體</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RG 3</strong></td>
+                                    <td>BSL-3</td>
+                                    <td>HIV 原型株（PtC-14 不涵蓋）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RG 4</strong></td>
+                                    <td>BSL-4</td>
+                                    <td>伊波拉病毒等（PtC-14 不涵蓋）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:0.85rem; color:#555; margin-top:0.5rem;">注意：此對應為一般準則，實際 BSL 要求須由當地主管機關確認。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>地區差異的重要性</h4>
+                        <p>PtC-14 特別強調：「風險群組分類取決於各地（localities）」。實務上，同一種病毒載體在不同國家可能有不同的 BSL 要求：</p>
+                        <ul>
+                            <li><strong>美國</strong>：NIH 指南 + CDC/USDA 法規</li>
+                            <li><strong>歐盟</strong>：EU Directive 2000/54/EC（生物因子工作者保護）</li>
+                            <li><strong>台灣</strong>：衛福部疾管署的病原體分類表</li>
+                            <li><strong>日本</strong>：厚生勞動省的感染症法規</li>
+                        </ul>
+                        <p>CDMO 若服務全球客戶，必須以最嚴格的適用法規為基準設計設施。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：風險群組就像食品安全等級</h4>
+                        <p>RG 1 → 一般食品（洗手即可）</p>
+                        <p>RG 2 → 生肉（需要砧板隔離、特定刀具、烹調至熟）</p>
+                        <p>RG 3 → 致病菌培養（需要專業實驗室隔離）</p>
+                        <p>RG 4 → 高致死性病原體（需最高等級生物安全實驗室）</p>
+                        <p>大部分的 ATMP 病毒載體屬於 RG 2，相當於「生肉等級」——需要謹慎操作，但有標準的防護程序。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: BSL Determination and Heightened Situations -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Determining BSL Requirements & Heightened Risk Situations</h3>
+                    <p>Upon understanding the risk group classification of the materials involved in the product, the organization should <span class="key-term">consult with the local environmental health and safety regulatory bodies</span> and the <span class="key-term">inspecting regulatory bodies of the countries</span> in which the product is licensed to determine the BSL requirements for the manufacturing facility.</p>
+                    <p>The organization can then determine the controls required to manage the risk using facility risk assessment. Typically, risk group classification and <span class="key-term">control requirements are heightened</span> for the following situations:</p>
+                    <ul>
+                        <li><span class="key-term">Novel biological materials</span> (e.g., new gene insertion or deletion, novel virus)</li>
+                        <li>Biological material that is <span class="key-term">replication competent</span> as opposed to biological material known to be no longer capable of replication</li>
+                        <li><span class="key-term">Viral vectors</span> and their risk to the operator and cross-contamination</li>
+                    </ul>
+                    <p>The organization should also consider the requirements related to the use of <span class="key-term">GMOs</span>. Many countries maintain specific facility and procedural requirements for facility-handling of GMOs, and the containment requirements are typically applied <span class="key-term">in addition to</span> the typical pharmaceutical facility cleanliness requirements.</p>
+                    <p>Risk management principles should be applied when determining the control points. The risk assessment and mitigations should aim to minimize the risk to as <span class="key-term">low as is reasonably practical</span>.</p>
+                </div>
+                <div class="right-column">
+                    <h3>BSL 判定流程與三大加嚴情境</h3>
+
+                    <div class="formula-box">
+                        <h4>BSL 需求判定流程（Decision Process）</h4>
+                        <pre>
+步驟 1：建立生物物料清單
+  ↓ （包含所有原料、中間物、病毒載體、廢棄物）
+
+步驟 2：對每種物料進行風險群組分類
+  ↓ （參照 WHO、FDA、當地主管機關）
+
+步驟 3：識別加嚴情況
+  ↓ 是否為新型（Novel）生物物料？
+  ↓ 是否具複製能力（RCV）？
+  ↓ 是否為病毒載體？
+  → 若任一「是」→ 考慮提升風險等級
+
+步驟 4：諮詢主管機關
+  ↓ 環境衛生主管機關（EH&S）
+  ↓ 藥品審查機關（FDA/EMA/各國）
+
+步驟 5：確定 BSL 等級
+  ↓ BSL-1 / BSL-2（PtC-14 範疇）
+
+步驟 6：設計設施控制措施
+  ↓ 設施硬體、程序、個人防護
+
+步驟 7：定期審查（物料清單更新時）
+                        </pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>三大加嚴情境解析</h4>
+                        <p><strong>1. 新型生物物料（Novel biological materials）</strong></p>
+                        <p>全新的基因插入或新型病毒無前例可循，無法引用已有的安全數據。此時風險群組往往暫時上調一個等級，直到累積足夠的安全數據。</p>
+
+                        <p><strong>2. 複製能力（Replication Competency）</strong></p>
+                        <p><span class="key-term">RCV（Replication-Competent Virus）</span>vs. <span class="key-term">Non-RCV</span> 是最重要的 BSL 決定因子之一：</p>
+                        <ul>
+                            <li>Non-RCV（複製缺陷型）：僅能感染一次，不能在體內複製傳播，風險較低</li>
+                            <li>RCV（複製型）：可在人體複製，存在傳播風險，須提高 BSL 要求</li>
+                            <li>製程中必須有 RCV 篩查（RCA assay），確認載體為 Non-RCV</li>
+                        </ul>
+
+                        <p><strong>3. 病毒載體的雙重風險</strong></p>
+                        <p>病毒載體同時存在兩個風險維度：</p>
+                        <ul>
+                            <li><strong>操作員感染風險</strong>：載體若攜帶治療基因，意外感染員工後可能引起非預期基因表達</li>
+                            <li><strong>交叉污染風險</strong>：環境中殘留的病毒載體可能污染其他批次或其他產品</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: BSL-1 vs BSL-2 Facility Requirements -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>BSL-1 vs. BSL-2 — Facility Requirements Overview</h3>
+                    <p>PtC-14 focuses on facilities operating at <span class="key-term">BSL-1 and BSL-2</span>, which cover the majority of ATMP manufacturing operations. The following provides a comparative overview based on WHO Laboratory Biosafety Manual and EU Directive 2000/54/EC requirements:</p>
+
+                    <p><strong>BSL-1 (Risk Group 1 agents):</strong></p>
+                    <ul>
+                        <li>Standard microbiological practices apply</li>
+                        <li>No special primary or secondary barriers required beyond standard laboratory design</li>
+                        <li>Handwashing sink required</li>
+                        <li>Personal protective equipment: laboratory coat, gloves, eye protection</li>
+                        <li>No specific HVAC requirements beyond general ventilation</li>
+                        <li>Waste decontamination not required before disposal (though good practice)</li>
+                    </ul>
+
+                    <p><strong>BSL-2 (Risk Group 2 agents):</strong></p>
+                    <ul>
+                        <li>BSL-1 practices plus enhanced controls</li>
+                        <li>Access restricted to trained, authorized personnel</li>
+                        <li>Biohazard signage required on all access points</li>
+                        <li><span class="key-term">Class II Biological Safety Cabinet (BSC)</span> required for aerosol-generating procedures</li>
+                        <li>Autoclave available within facility or building</li>
+                        <li>Decontamination of all infectious materials before disposal</li>
+                        <li>HVAC: inward directional airflow (negative pressure) recommended</li>
+                        <li>Emergency eyewash and safety shower available</li>
+                        <li>Defined emergency and spill response procedures</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>BSL-1 vs. BSL-2 實務比較</h3>
+
+                    <div class="concept-box">
+                        <h4>BSL-1 與 BSL-2 設施要求對照表</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>要素</th>
+                                    <th>BSL-1</th>
+                                    <th>BSL-2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>人員進出管制</td>
+                                    <td>一般</td>
+                                    <td>限制，需培訓授權</td>
+                                </tr>
+                                <tr>
+                                    <td>生物危害標示</td>
+                                    <td>不必要</td>
+                                    <td>所有入口必須</td>
+                                </tr>
+                                <tr>
+                                    <td>BSC（生物安全櫃）</td>
+                                    <td>非必要</td>
+                                    <td>產生氣溶膠步驟必須</td>
+                                </tr>
+                                <tr>
+                                    <td>高壓滅菌鍋</td>
+                                    <td>建議</td>
+                                    <td>設施內或同棟必須</td>
+                                </tr>
+                                <tr>
+                                    <td>廢棄物去污</td>
+                                    <td>良好操作即可</td>
+                                    <td>離場前必須去活化</td>
+                                </tr>
+                                <tr>
+                                    <td>氣流設計</td>
+                                    <td>一般通風</td>
+                                    <td>建議向內氣流（負壓）</td>
+                                </tr>
+                                <tr>
+                                    <td>個人防護</td>
+                                    <td>實驗服、手套、護目鏡</td>
+                                    <td>BSL-1+ 面罩、呼吸防護（視作業）</td>
+                                </tr>
+                                <tr>
+                                    <td>緊急沖眼站</td>
+                                    <td>建議</td>
+                                    <td>必須</td>
+                                </tr>
+                                <tr>
+                                    <td>溢灑應變程序</td>
+                                    <td>一般</td>
+                                    <td>文件化且演練</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>常見 ATMP 類型的 BSL 需求矩陣</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ATMP 類型</th>
+                                    <th>使用物質</th>
+                                    <th>典型 BSL</th>
+                                    <th>關鍵考量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CAR-T Cell Therapy</td>
+                                    <td>慢病毒載體（LVV）</td>
+                                    <td>BSL-2</td>
+                                    <td>RCV 篩查、操作員健康監測</td>
+                                </tr>
+                                <tr>
+                                    <td>AAV Gene Therapy</td>
+                                    <td>AAV（大多數血清型）</td>
+                                    <td>BSL-2</td>
+                                    <td>血清型決定風險、RG 分類</td>
+                                </tr>
+                                <tr>
+                                    <td>MSC Therapy（未修飾）</td>
+                                    <td>人類間充質幹細胞</td>
+                                    <td>BSL-1/2</td>
+                                    <td>無病毒→BSL-1，有病毒→BSL-2</td>
+                                </tr>
+                                <tr>
+                                    <td>TCR-T Cell Therapy</td>
+                                    <td>逆轉錄病毒載體</td>
+                                    <td>BSL-2</td>
+                                    <td>整合型→更嚴格的 RCV 監控</td>
+                                </tr>
+                                <tr>
+                                    <td>組織工程產品（TEP）</td>
+                                    <td>細胞+支架（無病毒）</td>
+                                    <td>BSL-1</td>
+                                    <td>重點在無菌保證</td>
+                                </tr>
+                                <tr>
+                                    <td>溶瘤病毒（OV）</td>
+                                    <td>改造後病毒（可複製型）</td>
+                                    <td>BSL-2+</td>
+                                    <td>複製型→需強化遏制設計</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: GMO Containment and ALARP -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>GMO Containment Requirements & ALARP Principle</h3>
+                    <p>The organization should also consider the requirements related to the use of <span class="key-term">GMOs</span>. Many countries maintain specific facility and procedural requirements for facility-handling of GMOs, and the containment requirements are typically applied <span class="key-term">in addition to</span> the typical pharmaceutical facility cleanliness requirements.</p>
+
+                    <p>Risk management principles should be applied when determining the control points. The risk assessment and mitigations should aim to minimize the risk to as <span class="key-term">low as is reasonably practical (ALARP)</span>.</p>
+
+                    <div class="quote-box">
+                        "The list [of biological materials] serves as a basis for the organization to determine the risk group classification of each material, and the risk group is determined by the hazard posed by the biological agents and toxins (if any) used in the manufacturing process."
+                        <br><em>— PDA PtC-14, Q1.2, p14</em>
+                    </div>
+
+                    <p><strong>Key regulatory references for BSL determination:</strong></p>
+                    <ul>
+                        <li>WHO Laboratory Biosafety Manual (4th Edition, 2020)</li>
+                        <li>CDC/NIH Biosafety in Microbiological and Biomedical Laboratories (BMBL, 6th Edition)</li>
+                        <li>EU Directive 2000/54/EC — Protection of workers from risks related to exposure to biological agents</li>
+                        <li>EU Directive 2009/41/EC — Contained use of genetically modified micro-organisms</li>
+                        <li>Local national regulations (vary by country)</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>GMO 法規疊加與 ALARP 原則</h3>
+
+                    <div class="note-box">
+                        <h4>GMO 法規疊加在 GMP 之上（雙重合規要求）</h4>
+                        <p>這是 ATMP CDMO 必須理解的關鍵點：GMO 遏制法規與 GMP 法規是<strong>並行且疊加</strong>的，不能互相替代：</p>
+                        <ul>
+                            <li><strong>GMP 法規</strong>要求：產品品質保證、無菌保證、文件完整性</li>
+                            <li><strong>GMO 法規</strong>要求：設施遏制等級、廢棄物去活化、環境釋放許可</li>
+                            <li>兩套要求必須同時滿足，且有時互相衝突（如前述正負壓問題）</li>
+                        </ul>
+                        <p>監管機關對 ATMP 設施的稽查可能同時包含 GMP 稽查員和生物安全稽查員，必須對兩個框架都有答案。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ALARP 原則在 ATMP 設施中的應用</h4>
+                        <p><strong>ALARP = As Low As Reasonably Practicable（盡可能合理降低）</strong></p>
+                        <p>這個原則來自職業安全領域，PtC-14 將其引入 ATMP 設施風險管理：</p>
+                        <ul>
+                            <li><strong>不是</strong>"零風險"（不可能）</li>
+                            <li><strong>不是</strong>最低技術可能的風險（可能成本過高）</li>
+                            <li><strong>是</strong>在合理成本和技術可行範圍內的最低風險</li>
+                        </ul>
+                        <p>實務應用：當工程改善（如升級 BSL-2 至 BSL-3 設施）的成本遠超過額外的安全收益時，ALARP 允許保留在 BSL-2，但需要更強的程序控制和 PPE 補償。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>生物物料清單的動態維護框架</h4>
+                        <pre>
+生物物料清單（Living Document）
+├── 原材料
+│   ├── 人類來源（起始細胞、血漿）→ 外來因子風險
+│   └── 動物來源（血清、滋養層）→ 種屬特異性病毒
+├── 製程物質
+│   ├── 病毒載體（LVV/AAV/AdV）→ RG 分類
+│   ├── 質粒 DNA → GMO 考量
+│   └── 輔助物質（細胞激素、培養基）→ 批次驗證
+├── 廢棄物
+│   ├── 液體廢棄物（含活性病毒）→ 就地滅活要求
+│   └── 固體廢棄物（耗材）→ 高壓滅菌要求
+└── 審查觸發條件
+    ├── 新供應商引入
+    ├── 製程變更（基因序列修改）
+    ├── 新產品引入設施
+    └── 法規指引更新
+                        </pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：定期審查生物物料清單</h4>
+                        <p>就像餐廳每年更新食材供應商名單與食品安全認證——不是一次性工作，而是持續維護的活文件。當新的食材（新型病毒載體）或新的供應商（新的細胞株來源）引入時，就必須重新評估整個清單的風險。</p>
+                    </div>
+
+                    <div class="practice-box-cdmo">
+                        <h4>CDMO 最終情境：從零開始的 BSL 判定</h4>
+                        <p>一個製藥公司找上你的 CDMO，要委託製造一種「新型 AAV-X」基因療法——基於全新血清型（未在 WHO 風險群組清單中），攜帶治療人類罕見代謝疾病的基因，設計為 Non-RCV。</p>
+                        <p>請依 Q1.2 的框架：(1) 這個載體應如何進行初步 BSL 分類？(2) 你需要諮詢哪些主管機關？(3) 設施上你需要哪些額外控制措施？(4) 生物物料清單上如何記錄這個新物質？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column: Summary Integration -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Integration: Risk Assessment → BSL → Facility Design</h3>
+                    <p>The Q1.1 and Q1.2 recommendations work together as an integrated framework. The facility risk assessment (Q1.1) identifies all risks across six categories — material, facility, multiproduct, cleaning, airflow, external environment — while the BSL determination (Q1.2) specifically addresses the biological hazard dimension that is unique to ATMP manufacturing.</p>
+
+                    <p>The integrated outcome is a <span class="key-term">Contamination Control Strategy (CCS)</span> that simultaneously addresses:</p>
+                    <ul>
+                        <li>Operator safety through appropriate BSL containment design</li>
+                        <li>Patient safety through aseptic processing and cross-contamination prevention</li>
+                        <li>Product quality through environmental monitoring and process controls</li>
+                        <li>Regulatory compliance through documented risk assessment and BSL determination</li>
+                        <li>Business flexibility through scalable and multi-product capable facility design</li>
+                    </ul>
+
+                    <p>This integrated approach aligns with <span class="key-term">ICH Q9</span> quality risk management principles, applying systematic risk identification, analysis, evaluation, and control across the full spectrum of ATMP manufacturing hazards.</p>
+                </div>
+                <div class="right-column">
+                    <h3>整合總結：從風險評估到設施設計的完整鏈條</h3>
+
+                    <div class="concept-box">
+                        <h4>Q1.1 + Q1.2 整合框架圖</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-1">Q1.1 設施風險評估（六大要素）</div>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-2">Q1.2 生物物料清單 → 風險群組分類 → BSL 判定</div>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-3">CCS：設施 + 設備 + 程序 + EM + 廢棄物管理</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 0.75rem;">每個設施設計決策都可以追溯回風險評估的某個識別風險，並有相應的控制措施說明其理由。這就是 <strong>科學性設施設計</strong> 與 <strong>經驗性設計</strong> 的根本差異。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>污染控制策略（CCS）的 ATMP 特殊元素</h4>
+                        <p>相比一般注射劑的 CCS，ATMP 設施的 CCS 必須額外包含：</p>
+                        <ul>
+                            <li><strong>生物遏制層（Biocontainment tier）</strong>：BSL 設施要求、BSC、隔離器</li>
+                            <li><strong>GMO 管理層（GMO management tier）</strong>：廢棄物去活化、環境監測（GMO 面向）、GMO 溢灑應變</li>
+                            <li><strong>身份鏈保護層（Chain of identity tier）</strong>：（對自體療法）從採集到輸注全程可追溯性</li>
+                            <li><strong>操作員健康監測（Occupational health layer）</strong>：病毒暴露後健康追蹤、疫苗狀況確認</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管稽查視角：稽查員會問什麼？</h4>
+                        <p>在 ATMP 設施的 GMP 稽查中，有關 Topic 1（風險管理）的常見問題：</p>
+                        <ul>
+                            <li>「您的設施風險評估是如何進行的？團隊組成為何？」</li>
+                            <li>「您如何確定目前設施的 BSL 等級是正確的？依據哪個主管機關的分類？」</li>
+                            <li>「您的生物物料清單多久更新一次？上次更新的觸發原因是什麼？」</li>
+                            <li>「當您的正壓無菌區旁邊有 BSL-2 操作時，壓差如何管理？工程依據是什麼？」</li>
+                            <li>「發生 GMO 溢灑時，您的應變程序是什麼？最近一次演練紀錄在哪？」</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>最終自我評估問題</h4>
+                        <p>完成 Topic 1 學習後，請嘗試回答：</p>
+                        <ol>
+                            <li>為什麼 ICH Q9 的 QRM 框架不足以單獨覆蓋 ATMP 設施風險評估？需要額外加入哪些維度？</li>
+                            <li>「控制措施對其他風險類別的影響」這個原則，在 ATMP 設施中最容易被忽略的案例是哪個？</li>
+                            <li>如果你是設施風險評估的 facilitator，如何確保生物安全官和 GMP 品保的觀點都被充分考慮而不互相否定？</li>
+                            <li>ALARP 原則在 BSL-2 設施中如何平衡成本與安全？請舉一個具體的工程控制決策為例。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body Q1.2 -->
+    </div><!-- end chapter-section Q1.2 -->
+
+    <!-- ===== KEY TERMS GLOSSARY ===== -->
+    <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 2rem;">
+        <h3 style="color: var(--primary-blue); font-size: 1.1rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;">Topic 1 關鍵術語詞彙表 — Key Terms Glossary</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.75rem;">
+            <div class="info-card">
+                <strong>ATMP</strong> — Advanced Therapy Medicinal Products<br>
+                <span style="font-size:0.85rem; color:#4a5568;">先進療法醫藥品：細胞、基因、組織工程醫藥品</span>
+            </div>
+            <div class="info-card">
+                <strong>BSL</strong> — Biological Safety Level<br>
+                <span style="font-size:0.85rem; color:#4a5568;">生物安全等級：1-4 級，依生物危害程度分類</span>
+            </div>
+            <div class="info-card">
+                <strong>BSC</strong> — Biological Safety Cabinet<br>
+                <span style="font-size:0.85rem; color:#4a5568;">生物安全櫃：提供人員、環境、產品三重保護</span>
+            </div>
+            <div class="info-card">
+                <strong>CCS</strong> — Contamination Control Strategy<br>
+                <span style="font-size:0.85rem; color:#4a5568;">污染控制策略：整合所有防污染措施的系統性文件</span>
+            </div>
+            <div class="info-card">
+                <strong>GMO</strong> — Genetically Modified Organisms<br>
+                <span style="font-size:0.85rem; color:#4a5568;">基因改造生物體：需要特定法規遏制措施</span>
+            </div>
+            <div class="info-card">
+                <strong>QRM</strong> — Quality Risk Management<br>
+                <span style="font-size:0.85rem; color:#4a5568;">品質風險管理：ICH Q9 框架，系統性風險識別與控制</span>
+            </div>
+            <div class="info-card">
+                <strong>RCV / Non-RCV</strong> — Replication-Competent / Non-Replication-Competent Virus<br>
+                <span style="font-size:0.85rem; color:#4a5568;">複製型 / 非複製型病毒：決定病毒載體 BSL 等級的關鍵特性</span>
+            </div>
+            <div class="info-card">
+                <strong>EM</strong> — Environmental Monitoring<br>
+                <span style="font-size:0.85rem; color:#4a5568;">環境監控：對空氣、表面、人員的微生物監測</span>
+            </div>
+            <div class="info-card">
+                <strong>HVAC</strong> — Heating, Ventilation, and Air Conditioning<br>
+                <span style="font-size:0.85rem; color:#4a5568;">暖通空調系統：控制潔淨度、壓差、溫濕度的核心系統</span>
+            </div>
+            <div class="info-card">
+                <strong>ALARP</strong> — As Low As Reasonably Practicable<br>
+                <span style="font-size:0.85rem; color:#4a5568;">盡可能合理降低：在技術與成本可行範圍內最大程度降低風險</span>
+            </div>
+            <div class="info-card">
+                <strong>VPHP</strong> — Vapor Phase Hydrogen Peroxide<br>
+                <span style="font-size:0.85rem; color:#4a5568;">氣相過氧化氫：ATMP 設施最常用的設施去污方法</span>
+            </div>
+            <div class="info-card">
+                <strong>WFI</strong> — Water for Injection<br>
+                <span style="font-size:0.85rem; color:#4a5568;">注射用水：最高純度用水，用於配製、清洗</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="main-footer">
+        <p><strong>PDA PtC-14: Points to Consider for the Manufacturing of ATMPs — Facility Design</strong></p>
+        <p>Topic 1: Risk Management | Q1.1–Q1.2 | Pages 10–14</p>
+        <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">&#169; 2025 Parenteral Drug Association, Inc. — Educational commentary in Traditional Chinese for internal learning purposes.</p>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
