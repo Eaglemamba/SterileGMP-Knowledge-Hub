@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide - Section 8B: Operational Considerations — Interventions &amp; Recovery (8.4–8.9)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 8B: Operational Considerations — Interventions &amp; Recovery (8.4–8.9)</h1>
+    <div class="subtitle">操作考量：無菌干預、機械故障與環境監測 (8.4–8.9)</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | doc p141 – p147</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握充填針損壞時的三種處置選項，以及預組裝流體路徑如何降低更換風險</li>
+        <li>理解破損或堵塞初級包裝材料的無菌干預原則，包括 AVS 與 APS 的設計要求</li>
+        <li>區分元件自動傳遞與手動傳遞的微生物風險差異，以及各層次包裝去除的標準</li>
+        <li>了解分選系統的滅菌、生物去污與矽油殘留等管理要點</li>
+        <li>掌握機械干預四大分類及其相應的風險管理原則，理解何時必須停止批次</li>
+        <li>理解環境監測 (EM) 的事件驅動與時間驅動設計，以及樣品全生命週期管控的重要性</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8.4 — FILLING NEEDLE ADJUSTMENT, REPAIR, REPLACEMENT -->
+<!-- ============================================================ -->
+<div class="section-title">8.4 Microbiological Considerations for Aseptic Manipulations Associated with Filling Needle Adjustment, Repair, and Replacement</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>If a liquid filling needle is damaged, there are three options from which to choose:</p>
+        <ul>
+            <li>Turn off the needle</li>
+            <li>Repair or adjust the needle</li>
+            <li>Replace the needle</li>
+        </ul>
+
+        <p>The first option does not require aseptic manipulation, as it can typically be accomplished through the
+        control system and so does not pose any microbiological risk. Regarding repairing or replacing the
+        needle, the general considerations for performing interventions identified in Section 8.2 would apply.
+        The <span class="key-term">filling needle</span> is one of the most critical locations for an intervention due to its position
+        immediately above the open patient-dose.</p>
+
+        <p>When designing the intervention for replacing the needle, whether any portion of the
+        <span class="key-term">sterile fluid pathway</span> will also be changed at the same time should be considered. A
+        <span class="key-term">preassembled sterile fluid pathway</span> may be less risky to replace than one component of the
+        pathway alone. In some cases, replacing a single component may risk leaks or drips from improper
+        connections, or it may cause greater environmental exposure to the fluid path, whereas a preassembled
+        pathway may reduce those risks.</p>
+
+        <p>In the case of powder filling that makes use of <span class="key-term">powder dosing-needles</span>, turning off or repairing
+        needles is typically not possible, and full replacement would be required. For liquid needles,
+        repair/replacement is one of the highest risk interventions and should not be undertaken lightly.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>充填針損壞的三選項決策：</strong></p>
+            <ul>
+                <li><strong>關閉針頭 (Turn off)：</strong>透過控制系統完成，無需進入 Grade A，零微生物風險。這是首選。</li>
+                <li><strong>修復／調整 (Repair/Adjust)：</strong>需要無菌干預，必須符合 Section 8.2 一般干預原則，風險中等。</li>
+                <li><strong>更換針頭 (Replace)：</strong>液體充填中最高風險干預之一——針頭正好位於開放患者劑量容器正上方，直接暴露無菌空間。</li>
+            </ul>
+            <p>粉末充填的粉末劑量針 (powder dosing-needle) 無法關閉或修復，只能完全更換，管理難度更高。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像外科醫生在開胸手術進行中途需要更換手術刀：直接換一把刀（更換單一元件）vs. 換整組無菌手術包（預組裝流體路徑）。後者雖然動作較大，但接頭都已預先確認，減少現場失誤的機率。充填針的預組裝流體路徑就是這個邏輯——預先組裝、預先驗證，臨場更換時風險更低。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>更換時的關鍵判斷：</strong>設計更換干預程序時，必須同時考量是否連同部分無菌流體路徑一起更換。單獨更換一個元件可能導致：</p>
+            <ul>
+                <li>接頭不當造成漏液或滴液</li>
+                <li>流體路徑更長時間暴露於環境</li>
+            </ul>
+            <p>預組裝路徑雖然表面上「換的更多」，但整體無菌保證反而更高。決策原則：<strong>無菌保證 &gt; 操作便利性</strong>。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一支充填針在生產中途彎曲但未斷裂，你的操作員建議直接就地調整。在允許此干預之前，你需要確認哪些前提條件？</li>
+                <li>為何粉末充填針的管理比液體充填針更具挑戰性？從 APS 設計的角度說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8.5 — BROKEN OR BLOCKED PRIMARY-PACKAGING MATERIALS  -->
+<!-- ============================================================ -->
+<div class="section-title">8.5 Microbiological Considerations for Aseptic Manipulations Related to Broken or Blocked Primary-Packaging Materials</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The general considerations for aseptic interventions outlined in Section 8.2 should be followed for
+        the removal of blocked or broken <span class="key-term">primary-packaging materials</span>. Such interventions are considered
+        <span class="key-term">corrective interventions</span> that should be included in the AVS and included within an appropriate
+        <span class="key-term">APS</span> study design. The <span class="key-term">AVS</span> would be designed to demonstrate that the corrective intervention
+        minimizes airflow disruption and does not have the potential to add contamination. The intervention
+        should be considered for inclusion in the APS design at a frequency representative of the rate of
+        occurrence in routine production.</p>
+
+        <p>The intervention should only be performed while using <span class="key-term">sterilized tools</span> such as forceps. The tools
+        should be placed at any location along the filling line where this intervention is likely to occur.</p>
+
+        <p>The intervention should be reduced to the actions necessary to keep the line running, resulting in
+        shorter duration interventions that are generally of lower risk. For example, minimizing actions
+        commonly means that only when debris from a broken container can possibly cause contamination or
+        malfunction of the line should that debris be fully removed. Similarly, <span class="key-term">actions below the working
+        height</span> should be avoided. For example, should materials fall to the machine base plate, they would
+        commonly remain there until the conclusion of the filling operation unless they posed a risk of
+        malfunction.</p>
+
+        <p>An intervention risk assessment should describe each required intervention and its associated risks and
+        define the required controls. The intervention and controls should be included in the
+        <span class="key-term">CCS</span> (Contamination Control Strategy).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>矯正性干預 (Corrective Intervention)：</strong>指在生產過程中，為應對突發狀況（如容器破裂、堵塞）而執行的無菌操作。與預防性干預不同，矯正性干預的特性是：</p>
+            <ul>
+                <li>必須預先納入 AVS（Airflow Visualization Study，氣流可視化研究），驗證干預不造成氣流紊亂</li>
+                <li>必須納入 APS（Aseptic Process Simulation，無菌製程模擬），以代表性頻率演練</li>
+                <li>必須納入 CCS（污染控制策略），作為正式管控措施</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像消防員在受控建築火災演習中：演習設計要模擬真實火災的發生頻率與位置，不能只練「最簡單的狀況」。無菌充填的 APS 設計也是同樣道理——破損容器的模擬頻率，必須反映實際生產中的發生率，而非象徵性地演練一次。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「最小化行動原則」是關鍵：</strong></p>
+            <ul>
+                <li>干預時間越短，微生物污染風險越低</li>
+                <li>掉落到機台底部的碎片，除非造成機台故障風險，否則應留到批次結束再處理——這是刻意設計的風險判斷，不是疏失</li>
+                <li><strong>工作高度以下的動作應避免</strong>——低於工作面的操作更難維持無菌技術，且容易干擾層流氣流</li>
+            </ul>
+            <p>核心邏輯：每一秒在 Grade A 的「額外動作」都是風險，能不做就不做。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，處理破損容器的 SOP 應包含：預先放置滅菌鑷子的位置清單、APS 演練頻率規劃（參考歷史破損率），以及 CCS 中的干預風險評估章節。監管機構查核時，常要求確認 APS 的干預場景是否充分代表實際生產。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8.6 — SUPPLY OF COMPONENTS                           -->
+<!-- ============================================================ -->
+<div class="section-title">8.6 Microbiological Considerations for Aseptic Manipulations Associated with Supply of Components</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Automated transfer</span> of components to the aseptic filling line is preferred to reduce microbiological
+        risk. An automated system is repeatable, can be biodecontaminated, and can be validated. Depending
+        on the primary-packaging materials used, different automated solutions may be required (e.g.,
+        <span class="key-term">e-beam</span>, <span class="key-term">depyrogenation tunnel</span>, <span class="key-term">RTP transfer</span>, <span class="key-term">no-touch transfer</span>). All interventions in a Grade A
+        environment linked to the automated transfer of materials should be designed and performed taking into
+        account the general rules for aseptic manipulations (see Section 8.2). The supply of components
+        should be included in a representative manner within both the AVS and APS. Transfer technologies are
+        further discussed in Sections 9.0 and 10.0.</p>
+
+        <p><span class="key-term">Manual transfer</span> of components is only possible in cleanroom conditions where the transfer occurs
+        from a <span class="key-term">Grade B</span> environment to the <span class="key-term">Grade A</span> environment. As the components transition through
+        the cleanroom classifications, successive layers of sterilized wrapping are removed. Special attention
+        is required to avoid contamination of the outer surfaces of the inner bag at each transition. The
+        second-to-last bag should be removed, using aseptic techniques under unidirectional airflow, when
+        transferring the materials from Grade B to Grade A. The layers of removed wrapping materials should
+        be prevented from contacting surfaces within the Grade A space. The <span class="key-term">final bag</span> should only be
+        removed within the Grade A environment.</p>
+
+        <p>When using a <span class="key-term">mousehole</span>, <span class="key-term">RTP</span>, or other equipment doors for transfers, dynamic airflow pattern
+        studies in the AVS should prove that the transfer of materials to the inside of the barrier does not
+        result in turbulence inside the barrier or result in airborne contamination transfer. In the case of a
+        mousehole or door (such as those that may be opened to restock elastomers), it is important to
+        demonstrate that there is no ingress of air from Grade B into Grade A. In both cases, the addition of
+        components from a bag to a hopper should be executed considering the general rules for aseptic
+        manipulations (see Section 8.2). The transfer and addition of components should be demonstrated in a
+        representative manner and frequency within an appropriately designed APS.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>元件傳遞的技術層級（由低風險到高風險）：</strong></p>
+            <ul>
+                <li><strong>No-touch transfer (無接觸傳遞)：</strong>全自動，最低風險</li>
+                <li><strong>RTP (Rapid Transfer Port，快速傳遞口)：</strong>密封對接傳遞，可防止 Grade B 空氣進入 Grade A</li>
+                <li><strong>Depyrogenation tunnel (去熱原隧道)：</strong>適用玻璃瓶等耐高溫材料</li>
+                <li><strong>E-beam：</strong>電子束滅菌，適用塑膠容器</li>
+                <li><strong>Mousehole 手動傳遞：</strong>最高風險，需 AVS 驗證不造成氣流逆向</li>
+            </ul>
+            <p>自動化系統的三大優勢：可重複性 (repeatable)、可生物去污 (biodecontaminated)、可驗證 (validated)。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手動傳遞元件的「逐層去袋」原則，就像剝橙子：每進入一個更潔淨的區域，去掉一層皮，但必須確保去皮過程中不污染裡面那層。最內層只能在 Grade A 環境（最潔淨的地方）才能打開。如果在 Grade B 就剝開最內層，等於把「保護外皮」帶入了清潔室，反而污染內容物表面。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Mousehole 與 RTP 的 AVS 驗證要求：</strong>監管機構特別關注這個環節。使用 Mousehole 或門傳遞時，AVS 必須證明：</p>
+            <ul>
+                <li>屏障內部不產生氣流紊亂 (no turbulence inside barrier)</li>
+                <li>沒有空氣從 Grade B 進入 Grade A (no ingress from B to A)</li>
+            </ul>
+            <p>EU GMP Annex 1 明確要求傳遞過程的氣流動態研究必須記錄在案，且 APS 必須以代表性頻率模擬補料過程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 CDMO 客戶的產品使用矽化橡皮塞，目前採用 Mousehole 手動補料。你會建議升級到 RTP 或自動化系統嗎？需要哪些資料支持這個決策？</li>
+                <li>手動傳遞時，「最後一層袋子必須在 Grade A 才能去除」的理由是什麼？如果在 Grade B 去除會有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8.7 — SORTING SYSTEMS FOR COMPONENTS                 -->
+<!-- ============================================================ -->
+<div class="section-title">8.7 Microbiological Considerations for Aseptic Manipulations Associated with Sorting Systems for Components</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Sorting systems</span> are each independently machined (custom made), so there can be small geometric
+        differences between each sorting system. Characterizing and qualifying each
+        <span class="key-term">stoppering-set</span> is recommended to define optimal settings, as this will reduce the requirement for
+        fine-tuning during both the <span class="key-term">LSU</span> (Line Set-Up) and the aseptic filling operation.</p>
+
+        <p>Sorting systems should be designed to be handled and assembled by touching only the external
+        surfaces (e.g., outside of the feeder bowl) avoiding any manipulation in the portion that is in contact
+        with components. Sorting systems should be controlled (e.g., using <span class="key-term">kitting procedures</span> or through
+        the use of ID numbers) to ensure that all required parts are used together consistently. Checks should
+        be performed at the start of a batch or campaign to optimize the setup and adjustment prior to the
+        start of fill. Any fine-tuning after setup should focus on optimization of machine parameters that do
+        not require an aseptic intervention. Any aseptic interventions required should apply the general
+        considerations regarding aseptic interventions (see Section 8.2). The intervention actions associated
+        with initial setup and fine-tuning should be demonstrated through both AVS and APS.</p>
+
+        <p>Sorting systems are <span class="key-term">indirect product-contact parts</span>; consequently, they should be sterilized before
+        use. When transporting and installing the sorting systems, especially the large and often-awkward
+        <span class="key-term">feed bowls</span>, protective covers are recommended to avoid recontamination after sterilization
+        during LSU (see Section 8.1). In the case of <span class="key-term">isolators</span>, several approaches have been acceptable to
+        regulators and have been justified through risk assessment and validation. For some facilities, the
+        outermost protective bag (of the sterile sorting bowl) will be removed prior to biodecontamination,
+        but a <span class="key-term">protective cap</span> will stay in place over the opening of the stopper bowl to maintain the
+        sterility of the interior surfaces until the isolator is biodecontaminated. After the end of aeration an
+        intervention will be performed using a glove, tool, external manipulator, or robot to remove and
+        discard the protective cap. For other facilities, the cap is removed just before or just after the door
+        is closed, but before the biodecontamination is initiated so that the internal surfaces of the sorting
+        bowl are also fully exposed to the biodecontamination. The approach to be taken should be established
+        through risk assessment and included in the CCS (12). The PDA Points to Consider for the Aseptic
+        Processing of Sterile Pharmaceutical Products in Isolators may be referenced for additional approaches
+        and details about the risks (16).</p>
+
+        <p><span class="key-term">Biodecontamination</span> effectiveness can be affected by any residues that remain on surfaces after
+        cleaning (and sterilization). For sorting systems which are used with siliconized components, special
+        care should be taken to remove any <span class="key-term">residual silicone oil</span> from surfaces during cleaning before
+        sterilization as it may inhibit effective biodecontamination.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>分選系統 (Sorting System) 的特殊性：</strong>分選系統（如振動碗、進料碗）是客製化加工品，每套之間存在細微幾何差異。因此：</p>
+            <ul>
+                <li>每套 stoppering-set 必須個別定性 (characterize) 並確效 (qualify)</li>
+                <li>使用 Kitting 程序或 ID 編號確保配套零件始終一起使用，避免混用導致效能差異</li>
+                <li>批次開始前的設定調整應盡量完成，減少填充中途的無菌干預需求</li>
+            </ul>
+            <p>關鍵原則：<strong>設定優化優先於生產中調整</strong>，因為生產中調整 = 無菌干預 = 風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>隔離器中分選系統的防護帽管理，就像賽車手的安全帽裝備：「先戴上帽子進賽車（先保護無菌內表面），等進入安全的密閉環境後再取下防護面罩（生物去污後再移除防護帽）」。兩種方式（去污前移除 vs. 去污後移除）各有支持者，關鍵是必須透過風險評估說明哪種方式在你的設施中更有效，並納入 CCS 書面化。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>矽油殘留 (Residual Silicone Oil) — 常被忽略的風險：</strong></p>
+            <p>矽化橡皮塞（siliconized stoppers）在分選碗中運行後，會在內表面留下矽油。矽油是一種疏水性物質，可以：</p>
+            <ul>
+                <li>阻擋氣態過氧化氫 (VHP) 或其他生物去污劑接觸表面</li>
+                <li>顯著降低生物去污效果，使孢子殺滅數據 (sporicidal log reduction) 不達標</li>
+            </ul>
+            <p>因此清潔步驟必須包含矽油去除的確認，且應在滅菌前完成。這是 FDA 483 觀察常見項目之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施使用隔離器，分選碗目前的做法是「在生物去污前移除防護帽」。如果審計員詢問這個選擇的依據，你如何回答？需要準備哪些文件？</li>
+                <li>為什麼 Kitting 程序對分選系統特別重要？如果不同批次混用了不同套的零件，可能發生什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8.8 — MECHANICAL INTERVENTIONS                       -->
+<!-- ============================================================ -->
+<div class="section-title">8.8 Microbiological Considerations for Mechanical Interventions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Mechanical interventions to repair or replace parts fall into one of four categories:</p>
+        <ol>
+            <li>Sterilized or disinfected mechanical components within the cleanroom environment for which
+            failures have been anticipated</li>
+            <li>Disinfected mechanical components within the cleanroom environment for which failures have
+            not been anticipated</li>
+            <li>Mechanical components that are not disinfected due to being occluded (and, therefore, not
+            disinfected during preparation of the line)</li>
+            <li>Equipment located in enclosed mechanical cabinets, also known as <span class="key-term">technical areas</span> or
+            <span class="key-term">gray zones</span></li>
+        </ol>
+
+        <p>The microbiological risk of each of these four categories is directly related to the ability to perform
+        the intervention in an aseptic manner, while minimizing airflow disruptions and without risk of
+        compromising the aseptic condition of the equipment, personnel gowning, or the environment. While
+        Categories 2 and 3 are far less frequent, and perhaps entirely unanticipated and rare, they should not
+        be executed without risk assessment (including risk assessment of the means for execution of the
+        intervention), and approval of the risk by the quality unit. If risk is high or not acceptable, then
+        steps should be performed to reduce the risk or to eliminate the intervention. If the activity cannot be
+        eliminated or the risk reduced to an acceptable level, then the activity should not be allowed to be
+        performed.</p>
+
+        <p>Category 4 (also subject to risk assessment) should rarely, if ever, be permitted from the cleanroom
+        without discontinuing the batch. Some of the specific risks associated with all four categories are
+        described below.</p>
+
+        <p><strong>Category 1:</strong> The first category, sterilized or disinfected mechanical components, involves
+        interventions that were anticipated, risk-assessed, and followed the standard practices for
+        interventions, including the performance of the intervention under both AVS and APS. These are
+        standard corrective interventions that must be documented within the batch record and executed by
+        personnel who have been qualified in the performance of that or similar interventions (see Section 8.2
+        for standard intervention practices).</p>
+
+        <p><strong>Category 2:</strong> The second category, disinfected mechanical components, can generally be manipulated
+        during aseptic operations. If the specific intervention was not included in a procedure and challenged
+        during AVS and APS a <span class="key-term">risk-based decision</span> should be made by operations and the quality unit to
+        allow the intervention, stop the aseptic process, and/or to address it as a deviation, which may result
+        in additional investigation, actions, and the potential loss of the portion of the batch that follows the
+        required intervention. For this reason, it is important to have procedures that plan for and address
+        <span class="key-term">unexpected interventions</span>. Planning for unexpected interventions must include appropriate Quality
+        Assurance involvement in risk assessment and decision-making at the time the mechanical failure
+        occurs. Considerations for improved detection may include additional supervision or oversight and
+        sampling (e.g., risk-based EM samples collected after the conclusion of the fill to represent the
+        surfaces associated with the intervention, sterility samples). Also included in the plans for the
+        unexpected intervention are stringent requirements to isolate and <span class="key-term">quarantine</span> portions of the batch
+        that are associated with or that follow the performance of the intervention.</p>
+
+        <p><strong>Category 3:</strong> For equipment in the third category, where a surface is potentially occluded during
+        surface biodecontamination (e.g., a nut or a bolt in a difficult-to-reach area) but there is a known
+        risk of needing access to the surface during interventions in the filling process, the risk should be
+        assessed and the approach for accessing this area should be considered as part of any potential
+        interventions. Some firms may disinfect this area with a <span class="key-term">sporicidal disinfectant</span> prior to LSU
+        (during open-door phases of the setup) in order to reduce the risk of exposing this occluded surface
+        during any potential interventions. The exposure of this surface, however, and the manual disinfection
+        should be considered as part of the original qualification of the line, and all intended actions should
+        be included in the appropriate AVS and APS. The ability to perform this activity in a manner that is
+        appropriate to prevent microbiological risk should be considered on a case-by-case basis and
+        pre-approved by the quality unit if it is determined that the intervention should proceed.</p>
+
+        <p><strong>Category 4:</strong> Opening of <span class="key-term">technical areas</span> of the filling line that are not biodecontaminated or
+        disinfected is not allowed during aseptic processing with one exception. A technical area that is
+        accessed from a service area that is isolated from the cleanroom that the filling line is installed in
+        can be allowed during aseptic processing. Should a repair or replacement require access to an area
+        that is only accessible from the cleanroom, the fill needs to be suspended, and a
+        <span class="key-term">line clearance</span> should be conducted in the affected zones. Technical measures should be taken to
+        restrict the scope of the impact to the cleanroom and isolator or RABS. Even with these technical
+        measures, such access will require disinfection of the portion of the equipment, isolator, or cleanroom
+        impacted by the opening. Depending on the extent of the exposure to the nondisinfected zone and the
+        possible pressure differentials experienced after the work is complete, the cleanroom may require more
+        than one successive cleaning and disinfection event. Equipment will also need to be recleaned and
+        resterilized prior to restarting. For many products, such an interruption could cause product
+        <span class="key-term">hold times</span> to be exceeded or would represent such a high sterility-assurance risk that the filling
+        operation is discontinued, and the remaining product is rejected, filled via a re-setup of the line, or
+        reprocessed (if permissible and justified by site SOPs and by product license).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 四類機械干預風險框架</h4>
+            <table>
+                <tr>
+                    <th>類別</th>
+                    <th>特徵</th>
+                    <th>風險等級</th>
+                    <th>管理要求</th>
+                </tr>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>已預期、已滅菌/消毒的元件</td>
+                    <td>低-中</td>
+                    <td>納入 AVS + APS，批次記錄</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>已消毒但未預期的干預</td>
+                    <td>中-高</td>
+                    <td>即時 QA 介入，批次隔離，可能偏差</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>被遮蔽、未消毒表面</td>
+                    <td>高</td>
+                    <td>個案審查，QA 預批准，孢子劑預處理</td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td>技術區域／灰區</td>
+                    <td>極高</td>
+                    <td>原則上必須停止批次</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這四類就像醫院手術室的緊急情況分級：</p>
+            <ul>
+                <li><strong>類別 1：</strong>備用無菌手術器械已就緒，直接更換，有標準流程</li>
+                <li><strong>類別 2：</strong>需要一個沒有預先備好的工具——必須緊急召開會議決定是否繼續</li>
+                <li><strong>類別 3：</strong>要碰到消毒時沒有照到的角落——需要個案評估</li>
+                <li><strong>類別 4：</strong>需要打開手術室的牆壁維修管線——手術必須暫停，病人先轉移</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — Category 4 的嚴重後果</h4>
+            <p>技術區域（Gray Zone）開啟是無菌充填中最嚴重的中斷事件：</p>
+            <ul>
+                <li>必須停止充填，執行 Line Clearance</li>
+                <li>整個受影響區域需重新清潔與消毒（可能需要多次）</li>
+                <li>設備需重新清洗與滅菌 (reclean + resterilize)</li>
+                <li>剩餘產品可能因超出 hold time 或無菌保證風險而被拒批</li>
+            </ul>
+            <p><strong>商業影響：</strong>對於短保存期的生物製劑，這意味著整批報廢。這正是為何 Category 4 干預在設計充填線時就應該被工程控制消除——無菌保證永遠優先於批次救回。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>風險決策框架 Decision Framework</h4>
+            <pre>
+機械故障發生
+    ↓
+Q1: 元件是否已滅菌/消毒？
+    ↓ YES → Q2: 干預是否預先納入 AVS + APS？
+               ↓ YES → 類別 1：執行標準干預程序
+               ↓ NO  → 類別 2：即時 QA 介入 + 風險評估
+    ↓ NO  → Q3: 表面是否被遮蔽（occluded）？
+               ↓ YES → 類別 3：個案評估 + QA 預批准
+               ↓ NO  → 類別 4（技術區域）：停止批次
+
+決策原則：
+無菌保證 &gt; 批次救回 &gt; 生產效率
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個充填機的皮帶在生產中途斷裂，更換皮帶時需要觸碰到一個平常被面板遮蔽、清潔時無法消毒的螺絲。這屬於哪個類別？你下一步怎麼做？</li>
+                <li>Category 2 的干預為什麼必須包含「隔離干預後的批次部分」？這個隔離的目的是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8.9 — ENVIRONMENTAL MONITORING                       -->
+<!-- ============================================================ -->
+<div class="section-title">8.9 Microbiological Considerations for Aseptic Manipulations Related to Environmental Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Environmental Monitoring (EM)</span> includes viable particulate-monitoring (e.g., settle plates,
+        volumetric air, swab, and contact plates for surface, gloves, and gowns) and total
+        particulate-monitoring (e.g., particles greater than or equal to 0.5 µm and 5 µm). Risk-based EM
+        should be undertaken for the full duration of critical processing, including LSU (17). Manually
+        manipulated EM techniques or activities taking place in Grade A and B spaces prior to or during the
+        aseptic process are interventions and should follow recommendations associated with intervention
+        design and qualification. New techniques such as <span class="key-term">biofluorescent particle counting</span> offer a
+        non-invasive method to measure airborne viable particles and should be considered as an alternative
+        to conventional monitoring when seeking a less invasive method.</p>
+
+        <p>Total particulate EM sampling should be <span class="key-term">continuous</span> throughout the entire operation. The EM
+        microbiological sampling plan is both <span class="key-term">event-driven</span> and <span class="key-term">time-driven</span>, meaning the EM sampling
+        plan is designed to measure across the full duration of the aseptic operation. Samples, like settle
+        plates and volumetric air samples, are taken for specific intervals throughout the operation
+        (time-driven), whereas other microbiological samples, like contact plates and swabs, are taken to
+        represent the monitoring of specific events (event-driven). Examples of event-driven monitoring
+        include samples collected during setup, aseptic interventions, exit of personnel after shift, end of the
+        batch, and/or line-changeover during a campaign. The sampling sites and critical control points should
+        be justified and included in the CCS.</p>
+
+        <p>Personnel represent the greatest risk to microbiological control during aseptic processing. EM is
+        conducted by people; therefore, it follows that people are the greatest risk to both the environment
+        during the sampling activities and to the integrity of EM samples. In addition, the introduction of
+        <span class="key-term">growth-promoting media</span> into the aseptic environment for the purpose of sampling represents a
+        risk that growth-promoting residues are left behind if sampling sites are not appropriately cleaned
+        after sampling.</p>
+
+        <p>Therefore, the design of the viable monitoring program should ensure controls for the full lifecycle
+        of the EM samples (plates and swabs) to ensure the validity of the results, including:</p>
+        <ul>
+            <li>Media supplier management</li>
+            <li>Receipt</li>
+            <li>Quality control of incoming media (including identity, general condition and appearance, growth
+            promotion, sterility check, and expiration dating)</li>
+            <li>Handling and storage prior to use</li>
+            <li>Use in aseptic operations:
+                <ul>
+                    <li>Transport into cleanrooms (and removal of outer wrapping/layers)</li>
+                    <li>Sampling aseptic techniques and minimized sample-handling within the cleanroom</li>
+                    <li>Closing of plates and swabs to maintain integrity after sampling</li>
+                    <li>Cleaning and disinfection after sampling (of gloves and surfaces)</li>
+                </ul>
+            </li>
+            <li>Reconciliation, labeling, and chain of custody</li>
+            <li>Transportation to incubators (including any taping, bagging, or wrapping to protect samples)</li>
+            <li>Incubation, reading (with confirmation of results), and subculture (if any)</li>
+            <li>Identification and specification</li>
+            <li>Handling of any discrepancies</li>
+        </ul>
+
+        <p>Risk assessment tools should be used to define the controls to be put in place for the end-to-end
+        <span class="key-term">chain of custody</span> for all phases of the plate- or swab-handling process, with specific focus of
+        reducing the following contamination risks during the process:</p>
+        <ul>
+            <li>Handling and labeling of media prior to sampling</li>
+            <li>Sample collection by EM sampling personnel</li>
+            <li>Handling, labeling, and transportation following sample collection</li>
+            <li>Laboratory handling for incubation and reading post-monitoring</li>
+        </ul>
+
+        <p>Detailed procedures, training, and qualification of personnel are essential to ensure that these
+        technique-driven handling procedures (especially during the exposure of the samples in the cleanroom)
+        are well practiced and performed effectively by each person assigned to a role in handling EM samples.</p>
+
+        <p>SOPs should be established to define the processes to be followed for atypical events including
+        <span class="key-term">desiccated plates</span>, <span class="key-term">cracked plates</span>, <span class="key-term">dropped plates</span>, nonviable particulate matter on plates, and
+        <span class="key-term">viable growth</span> (which should be atypical in Grade A and B). These SOPs should include
+        documentation containing example pictures of the impacted plates and details on how to handle
+        atypical plates. A deviation, out-of-limits, or equivalent laboratory investigation should be raised to
+        initiate the examination of any abnormal result. The impacted plates should be retained until
+        completion of the investigation (18).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>EM 的雙重性質：</strong></p>
+            <p>環境監測 (Environmental Monitoring, EM) 本身是一個矛盾體——它是用來<strong>驗證</strong>環境是否無菌的工具，但執行 EM 的人員和培養基本身，就是<strong>污染環境的潛在來源</strong>。</p>
+            <p><strong>時間驅動 vs. 事件驅動：</strong></p>
+            <ul>
+                <li><strong>時間驅動 (time-driven)：</strong>沉降板 (settle plates)、體積空氣采樣 (volumetric air) — 按時間間隔採集，反映整體趨勢</li>
+                <li><strong>事件驅動 (event-driven)：</strong>接觸板 (contact plates)、棉拭 (swabs) — 對應特定事件，如干預後、人員更換班次後、批次結束後</li>
+            </ul>
+            <p>總顆粒監測 (total particulate) 應全程連續進行。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>EM 樣品的全生命週期管控，就像法庭上的物證保管鏈 (chain of custody)：從採樣到判決（微生物鑑定），每一個環節都要有記錄，任何斷點都可能使結果不被採信。培養基的供應商、入庫品質管控、冷鏈保存、潔淨室操作技術、培養條件、讀板方式——每一步都必須有 SOP 和訓練記錄，否則即使培養結果正常，也無法證明這個結果是可信的。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「培養基本身帶來污染風險」的監管視角：</strong></p>
+            <p>沉降板含有促生長培養基 (growth-promoting media)，放入 Grade A 環境後：</p>
+            <ul>
+                <li>如果採樣後培養基殘留未清潔，會成為後續微生物的營養來源</li>
+                <li>採樣人員本身就是最大的污染風險——EM 人員進入 Grade A 的行為本身就是一次干預，必須像其他干預一樣設計與確效</li>
+            </ul>
+            <p><strong>新技術：</strong>生物螢光顆粒計數 (biofluorescent particle counting) 可以非侵入性地即時偵測活性顆粒，是傳統沉降板的潛在替代方案。EU GMP Annex 1 (2022) 已開始提及此類新興技術。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的 EM 程序審計中，查核人員最常問的問題包括：</p>
+            <ul>
+                <li>培養基的生長促進測試 (growth promotion test) 是否每批都執行？</li>
+                <li>掉落的沉降板如何處理？SOP 是否包含照片說明？</li>
+                <li>事件驅動的採樣位點（如干預後）是否與 CCS 一致？</li>
+                <li>EM 人員的技術確效記錄是否齊全？</li>
+            </ul>
+            <p>Grade A 出現任何有活性生長的結果，應立即啟動偏差調查，保留培養板至調查完成。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 EM 採樣人員在採集沉降板時不小心讓板子接觸到了 Grade A 表面，然後繼續完成採樣。這個事件如何記錄和評估？採樣結果是否仍然有效？</li>
+                <li>為什麼 EM 採樣行為本身被視為「干預」？這對 APS 設計有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY                                               -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary (8.4–8.9)</h3>
+    <ul>
+        <li><strong>充填針管理 (8.4)：</strong>液體充填針的修復或更換是最高風險干預之一；預組裝流體路徑可降低更換風險；粉末充填針只能完全更換。</li>
+        <li><strong>破損容器處置 (8.5)：</strong>所有矯正性干預必須納入 AVS 和 APS，以代表性頻率模擬；遵循「最小化行動」原則，工作高度以下的動作應避免。</li>
+        <li><strong>元件供應 (8.6)：</strong>自動化傳遞優先；手動傳遞必須逐層去袋，最後一層只能在 Grade A 去除；Mousehole/RTP 必須有 AVS 氣流驗證。</li>
+        <li><strong>分選系統 (8.7)：</strong>每套 stoppering-set 個別確效；使用 Kitting 管理；矽油殘留可抑制生物去污效果，清潔時必須完全去除。</li>
+        <li><strong>機械干預四分類 (8.8)：</strong>類別 1 標準執行；類別 2-3 需即時 QA 風險評估；類別 4（技術區域）原則上必須停止批次；無菌保證永遠優先於批次救回。</li>
+        <li><strong>環境監測 (8.9)：</strong>EM 兼具「監測工具」與「污染風險」的雙重性；採樣計畫結合時間驅動與事件驅動；培養基的全生命週期需嚴格管控；EM 人員本身是最大的污染風險源。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 300);
+});
+</script>
+
+</body>
+</html>
