@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide - Section 7B: Closing Systems — Advanced Topics (7.5+)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7B: Closing Systems — Advanced Topics (7.5+)</h1>
+    <div class="subtitle">密封系統進階主題：卡匣碟封、缺陷識別與容器密封完整性驗證</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | doc p126 - p133</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding:1.25rem 1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解卡匣碟封 (Cartridge Disc Seal) 的特殊設計需求，以及為何必須置於無菌邊界內</li>
+        <li>掌握常見彈性體放置缺陷的種類及其品質管控意義</li>
+        <li>了解容器密封完整性 (Container-Closure Integrity, CCI) 驗證的整體框架與考量因素</li>
+        <li>能夠依決策層級（無菌保證 > 產品 CQA > 商業彈性）評估各種密封系統設計選擇</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.3.2 CONTINUATION: Elastomer Placement Table + Defects -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.3.2 (Cont.) Insertion Method Comparison &amp; 7.3.3 Common Defects in Elastomer Placement
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Continuation of Table 7.3.2-1 — Comparison of Insertion Methods (doc p126):</p>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Vented Insertion</th>
+                        <th>Vacuum Insertion</th>
+                        <th>Vacuum-Assisted Vented — Short</th>
+                        <th>Vacuum-Assisted Vented — Long</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Consistency of Elastomer Placement</strong></td>
+                        <td>Highly consistent for elastomer placement.</td>
+                        <td>Vacuum alone not highly consistent for elastomer placement.</td>
+                        <td>More consistent for elastomer placement than vacuum alone, but short tube will be more variable with a deeper placement requirement.</td>
+                        <td>Long vent tube permits accurate elastomer placement.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prevention of Wrinkling or Distortion</strong></td>
+                        <td>Higher risk of wrinkling or distortion of elastomers due to compression.</td>
+                        <td>Low risk of wrinkling or distortion with vacuum alone.</td>
+                        <td>Low risk of wrinkling or distortion of elastomers, similar to vacuum-bell application.</td>
+                        <td>Higher risk of wrinkling or distortion of elastomers due to compression.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Mechanical insertion may be used for the insertion of stoppers into cartridges from the bottom prior to filling, as shown in Figure 7.3.2-2. In this case, the cartridge is then filled from the top. Whether from the bottom or top, stopper insertion has the same risks and required controls as those compared and contrasted in Table 7.3.2-1.</p>
+
+        <h3>7.3.3 Common Defects in Elastomer Placement Operations</h3>
+
+        <p>There are a number of defects that routinely occur with <span class="key-term">elastomer placement</span>, among them:</p>
+        <ul>
+            <li>Incomplete seating (vials) or inconsistent seating position (syringe/cartridge)</li>
+            <li>Disruption or smearing of silicone or fluoropolymer coating on elastomer</li>
+            <li>Wrinkling/distortion of ribs on syringe/cartridge elastomers during placement</li>
+            <li>Liquid in ribs of elastomer for syringes/cartridges, or product under the stopper flange on vials and bottles</li>
+            <li>Damage to plunger (e.g., bending, distortion of ribs)</li>
+            <li>Insufficient control of headspace (air or inert gas)</li>
+        </ul>
+
+        <p>Many of these defects can be reduced through proper selection and design of the elastomer placement system. However, careful adherence to consistent, <span class="key-term">validated setup parameters</span> of the insertion system is necessary to maintain quality control. Quality control is also important during the incoming inspection of elastomers to ensure that dimensional tolerances and quality of coatings is maintained.</p>
+
+        <p>As a final note, elastomers are subject to an array of testing for <span class="key-term">extractables and leachables</span> (during initial qualification), as well as chemical and particulate contaminants (with each batch). <span class="key-term">Container-closure integrity</span> is commonly tested on every batch, with careful adherence to the validated parameters for closing the containers (both with elastomer and mechanical seal) (see Section 7.7). Visual inspection of sterile products includes inspection of the elastomer for abnormal appearance or improper insertion. As a consequence, elastomer placement is an important part of the ongoing quality of the container-closure system and for the overall integrity of the sterile product.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>插入方式的核心取捨：</strong>四種方式在兩個維度上形成對角線矛盾：</p>
+            <ul>
+                <li><strong>通氣插入 (Vented)：</strong>放置一致性高，但壓縮力大，易造成皺折</li>
+                <li><strong>真空插入 (Vacuum)：</strong>皺折風險低，但放置一致性差（尤其深位置）</li>
+                <li><strong>混合式（短管）：</strong>折衷，但深位置時仍有變異</li>
+                <li><strong>混合式（長管）：</strong>放置最精準，但壓縮風險與通氣式相當</li>
+            </ul>
+            <p>選擇哪種方式，取決於特定容器的幾何尺寸與彈性體規格——沒有放諸四海皆準的最佳解。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>彈性體放置缺陷就像替瓶子裝軟木塞：<br>
+            — 塞得太淺（incomplete seating）：開瓶機稍一用力就漏氣<br>
+            — 塞歪了（wrinkling/distortion）：外觀不雅，甚至密封不全<br>
+            — 軟木塞沾到酒液（liquid in ribs）：影響藥品純度<br>
+            差別在於葡萄酒漏氣只是浪費，藥品密封失敗卻可能危及病人生命。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>三層防線確保密封品質：</strong></p>
+            <ol>
+                <li><strong>來料檢驗 (Incoming Inspection)：</strong>確認彈性體尺寸公差與塗層品質</li>
+                <li><strong>製程中管控 (IPC)：</strong>驗證後的設定參數嚴格執行，不得隨意調整</li>
+                <li><strong>成品檢驗 (Visual Inspection)：</strong>目視篩除外觀異常或插入不當</li>
+            </ol>
+            <p>每批均需執行 CCI 測試 — 這是決策層級中「無菌保證 (Sterility Assurance)」的直接體現。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若您的預充式注射器 (PFS) 在 CCI 批次測試中出現異常，您會從哪幾個方向追查根本原因？</li>
+                <li>「liquid in ribs of elastomer」這個缺陷對產品的哪項 CQA 有直接影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.4: Mechanical Seal Application and System Design   -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.4 Mechanical Seal Application and System Design
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Mechanical seals</span> are inherent components in many container-closure systems. As with the primary packaging, the choice of mechanical seal will influence the design of the aseptic filling system. The use of more than one mechanical closure type on a line may require flexibility in the closing system design and use but, as with primary containers and closures, the objective is to ensure an integral seal on the container to protect its contents throughout its shelf life.</p>
+
+        <h3>7.4.1 Mechanical Seal Application</h3>
+
+        <p>There are specialty closures, such as press-fit caps or cartridge disc seals, that integrate both the elastomer and the mechanical seal in a single closure and, often, a single closing step. However, there are other processes where the mechanical seal is separate from the elastomer and is applied in a dedicated process step.</p>
+
+        <p>Mechanical seals for vials and bottles, often called <span class="key-term">overseals</span> or <span class="key-term">crimp seals</span> consist of a crimpable "skirt" with either a button, or dust cover (flip seal) over the top of the stopper. These mechanical seals are commonly produced of aluminum or aluminum with a polymer component.</p>
+
+        <p>Mechanical seals are specified to be slightly wider and longer than the combined dimensions of the flange or finial of the stopper plus the lip of the container. With these dimensions, they can be placed over top of the stopper, and the skirt of the seal can be folded under the lip of the container to secure them and supply sufficient downward pressure on the elastomer and glass to seal. A similar mechanical seal is commonly applied to cartridges.</p>
+
+        <p>Mechanical seals come in several common designs:</p>
+        <ul>
+            <li><strong>Flip-off</strong> – Has a removable button (often polymer) that can be detached to expose the stopper underneath during administration while leaving the aluminum skirt in place, which continues to secure the stopper on the container; this is the most common crimp seal for vials that are intended for syringe administration</li>
+            <li><strong>Flip-up/tear-off</strong> – Has a button that, when flipped up, is used to help tear off the aluminum skirt so the stopper can be removed; not used for parenteral applications but may be used for ophthalmic solutions</li>
+            <li><strong>Flip-off/tear-off</strong> – Offers the combination of features of the first two mechanical seal types, allowing access to the stopper only to remove the aluminum skirt; this is not used for parenteral applications, but may be used for sterile fluids that are used in testing settings</li>
+            <li><strong>Center-tear seal</strong> – Usually all aluminum, these seals are most like the flip-off seal but, in this case, the center tab of aluminum is integrated with the aluminum skirt and can be lifted and removed for access to the center of the stopper flange while leaving the skirt in place; although intended for syringe administration, the risk of glove tears with the aluminum tab reduces the frequency that this design is used</li>
+            <li><strong>Complete-tear crimp seal</strong> – Like the center-tear seal, these are all aluminum, however, when the center tab is lifted, it can be used to remove the entire crimp seal from the container; like the flip-up/tear-off seal, this is not used for parenteral applications</li>
+        </ul>
+
+        <p>Mechanical seals are expected to be applied under <span class="key-term">Grade A air supply</span> (at minimum) that is contiguous with the filling line. Some systems include the mechanical seal application within the Grade A cleanroom or isolator adjacent to the filling station. Whether within the cleanroom, isolator, or supplied with Grade A air supply the intent is to ensure the protection of fully stoppered vials where the mechanical seal has not yet been crimped. The mechanical seals are not required to be sterile, although in some applications they may be rendered sterile. The process of forming the aluminum around the lip of the container may generate significant <span class="key-term">particulate</span> (as does the rapid spinning of the sealing machine). Therefore, the sealing equipment for vials is often separated from the rest of the filling line by having a physical barrier (often with a <span class="key-term">mousehole</span>) in between the stoppering and seal placement sections of a filling machine within a RABS or isolator.</p>
+
+        <div class="quote-box">
+            "Successful sealing station design will depend upon advanced knowledge of those elements described in Table 7.4.1-1."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>機械封蓋 (Mechanical Seal) 五種設計：</strong></p>
+            <ul>
+                <li><strong>Flip-off（翻開式）：</strong>最常見，注射用小瓶主流。移除膠蓋露出stopper，鋁裙留下繼續固定</li>
+                <li><strong>Flip-up/tear-off：</strong>眼藥水適用，非注射用</li>
+                <li><strong>Flip-off/tear-off（複合式）：</strong>測試用無菌液，非注射用</li>
+                <li><strong>Center-tear：</strong>設計上可注射，但鋁片撕裂風險高（手套破損危險）</li>
+                <li><strong>Complete-tear：</strong>可移除整個鋁蓋，非注射用</li>
+            </ul>
+            <p>關鍵判斷：凡是「注射用 (parenteral)」，幾乎只用 Flip-off。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>鋁封蓋就像易開罐的拉環設計：不同場景需要不同開啟方式。<br>
+            — 護士用針筒抽藥 → Flip-off（揭蓋不移鋁裙，防止污染）<br>
+            — 眼藥水倒藥液 → tear-off（直接撕開瓶蓋）<br>
+            設計錯誤不只是使用不便，更可能造成鋁屑汙染、needle-stick 傷害。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>壓蓋產生微粒 (Particulate Generation) 是高風險點：</strong></p>
+            <p>鋁封蓋壓蓋時高速旋轉，產生大量鋁屑微粒。這直接威脅充填區的 Grade A 潔淨度。解決方案：在壓蓋站與充填站之間設置 <strong>mousehole</strong>（小型物理隔板），讓瓶子通過但隔絕微粒擴散。這是「無菌保證 (Sterility Assurance) > 商業效率」決策的典型案例。</p>
+            <p>注意：機械封蓋本身不需要滅菌，但若放置在隔離器 (isolator) 內，則需要配合去污流程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的客戶要求同一條線可以生產兩種不同規格的 flip-off 封蓋。這對閉合系統設計有什麼額外要求？</li>
+                <li>如果壓蓋站位於 RABS 內，mousehole 的設計需要考慮哪些因素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Table 7.4.1-1 -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    Table 7.4.1-1 Attributes Impacting Sealing System Design (doc p130)
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Impact(s) to Closing Station Design</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Seal Dimensions and Overall Shape (and Features)</strong></td>
+                        <td>
+                            Will define sorting-system bowl and track dimensions and design.<br><br>
+                            Will influence issues where one seal is inside another (i.e., <strong>twinning</strong>) which, in turn, may require different features of the sorting-system bowl or differing levels of vibration for manipulating them.<br><br>
+                            Will influence detection-system capability, such as missing flip-seal detection, or missing elastomeric disc-seal/missing stopper detection.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Batch/Campaign Details</strong></td>
+                        <td>
+                            Size of the batch/campaign will influence the number of times that replenishment of the sorting system will be required, which will influence decisions such as whether a bulk hopper should be provided for feeding the sorting system.<br><br>
+                            Filling speed will determine the required speed for the sealing system; commonly, sealing systems operate at a higher speed than the filling system does to prevent any interruption in the continuous operation of the filler.<br><br>
+                            Filling speed will also influence the size of the sorting-system bowl to provide the best balance between continuous operation and replenishment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Method of Introduction to the Filling Line</strong></td>
+                        <td>
+                            Location of the sealing system will dictate whether the seals require sterility (i.e., sealing system located inside of an isolator) and, in turn, the preparation of the components will dictate such elements as methods of introduction and replenishment quantities (see Sections 9.0 and 10.0).
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="quote-box">
+            "The sealing station is considered to contribute to the CCI, which is a CQA; therefore, the equipment must be qualified, calibrated, and maintained in accordance with strict standards. Routine testing during setup should be performed to ensure that completed seals deliver integral units that are shown to be defect-free (e.g., no missing caps, no wrinkles in crimped skirt, no loose seals). Visual inspection of finished pharmaceuticals will also inspect the mechanical seals to check for, and cull, any sealing defects."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>壓蓋站設計三大驅動因素：</strong></p>
+            <ul>
+                <li><strong>封蓋尺寸與外形：</strong>決定振動碗 (sorting bowl) 規格；「twinning」（封蓋套在另一個裡面）是常見故障，需要特殊振動或感測設計排除</li>
+                <li><strong>批次規模與產速：</strong>壓蓋機速度通常高於充填機，確保不成為生產瓶頸；大批次需要大容量送料斗減少補料次數</li>
+                <li><strong>導入方式：</strong>位於隔離器內 → 封蓋需無菌；位於隔離器外 → 只需 Grade A 氣流保護</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+壓蓋系統速度規劃：
+
+壓蓋系統速度 > 充填速度
+（通常高 10-20%，確保充填不等待壓蓋）
+
+排序碗容量估算：
+碗容量 = 目標連續運行時間（min）× 充填速度（vials/min）× 安全係數（1.2-1.5）
+
+例：充填速度 300 vials/min，目標 30 分鐘免補料
+→ 碗容量 ≥ 300 × 30 × 1.3 ≈ 11,700 個封蓋
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CCI 是 CQA，壓蓋站是設備而非選項：</strong>文中明確指出「sealing station is considered to contribute to CCI, which is a CQA」。這意味著：</p>
+            <ul>
+                <li>壓蓋設備必須 IQ/OQ/PQ 驗證</li>
+                <li>設定後需例行確認（no missing caps, no wrinkles, no loose seals）</li>
+                <li>成品視覺檢查 100% 篩選封蓋缺陷</li>
+            </ul>
+            <p>任何封蓋缺陷都是批次風險，不是可忽略的外觀問題。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.4.2: Mechanical Seals Applied to Nested Containers -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.4.2 Mechanical Seals Applied to Nested Containers
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Nested containers</span> may be de-nested for the application of mechanical seals. This is the traditional approach for closing nested containers.</p>
+
+        <p>Special systems are available where the mechanical sealing is conducted while the containers are within the nest. These systems can be used with press-fit caps or integrated stopper-seal combinations, which are also in a type of nest or plate that matches the configuration of the vial or syringe nest below. For these systems, the nest must remain separate from the tub to permit sufficient space between the tops of the containers, and a special sealing head descends to close all of the containers at once. The risk with this type of closure of a full nest of containers at one time is ensuring that each individual container has had sufficient force to fulfill the closing specifications, thereby assuring <span class="key-term">CCI</span>.</p>
+
+        <p>Innovations continue to be made with both containers and closures, therefore, additional features and capabilities may also become available (see Section 6.0).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>巢式容器密封兩種方式：</strong></p>
+            <ul>
+                <li><strong>傳統方式（De-nested）：</strong>先從巢中取出，再進行壓蓋。流程清晰，設備成熟</li>
+                <li><strong>整批同步壓蓋（In-nest）：</strong>特殊壓蓋頭一次封閉整盤（例如 6x4 = 24 支），效率高，但必須確保每支都受到足夠壓力</li>
+            </ul>
+            <p><strong>In-nest 壓蓋的挑戰：</strong>如果某支容器高度公差偏低，壓蓋頭施力分佈不均，可能造成部分容器密封不足（CCI 失敗）。這是製程驗證必須評估的最壞情況。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>整批同步壓蓋就像工廠用壓床一次沖壓一排零件：效率倍增，但若其中一個零件厚度不足，壓力就會傳到旁邊的零件，導致部分過壓、部分欠壓。因此「均勻施力」是工程驗證的核心挑戰。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>In-nest 壓蓋方式的 CCI 驗證必須考慮巢中所有位置（角落 vs 中央）的壓力均勻性。驗證樣品需涵蓋最壞位置（通常是角落或邊緣）的容器，以確保整批均達到密封規格。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.5: Cartridge Disc Seal Application                 -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.5 Cartridge Disc Seal Application and System Design Considerations
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Cartridge disc seals</span> (also called <span class="key-term">lined seals</span>) consist of a flat elastomeric disc that is integrated with an aluminum seal (see item E of Figure 7.2-1). These combination closures are applied in a single step.</p>
+
+        <p>As the elastomer is applied at the same time as the seal, these combination closures need to be <span class="key-term">fully sterilized before application</span>, and the location of the sealing equipment will also need to be within the <span class="key-term">aseptic boundary</span>; it should be close to the point of fill in order to reduce the duration of exposure of the open container to the environment.</p>
+
+        <p>Different crimping processes are used, depending on the system procured; however, all systems have a high risk of <span class="key-term">particulate</span> near the critical filling station due to the particle-generation at the crimping station. As a result, some specific precautions should be considered:</p>
+        <ul>
+            <li>Airflow should be designed to ensure that no air from the crimping station will move toward the filling station.</li>
+            <li>Crimping technology should be designed to minimize the generation of particles (e.g., minimizing the shear of blades over the metal seal, using seals that minimize particle-generation during crimping).</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>卡匣碟封 (Cartridge Disc Seal / Lined Seal) 的特殊性：</strong></p>
+            <p>與標準密封不同，卡匣碟封將彈性體碟片與鋁封蓋整合為一體，一次壓蓋即完成密封。這帶來兩個關鍵含義：</p>
+            <ul>
+                <li><strong>必須預先滅菌：</strong>彈性體是無菌邊界的一部分，封蓋整組必須在使用前完成滅菌（不像標準鋁蓋只需 Grade A 環境保護）</li>
+                <li><strong>設備必須在無菌邊界內：</strong>壓蓋機本身需置於隔離器或充填站無菌區域內，離充填點越近越好</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>標準壓蓋流程像是先放好軟木塞、再套上鐵絲籠固定（兩個步驟）；卡匣碟封則像是「一體成型的快開蓋」——彈性墊圈已壓在金屬蓋內，一個動作完成密封。方便固然方便，但這個蓋子本身就是密封的一部分，所以必須無菌。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>微粒控制是卡匣碟封的核心挑戰：</strong>壓蓋過程產生微粒（鋁屑），且壓蓋機必須位於充填站附近（甚至無菌區內）。解決方案：</p>
+            <ul>
+                <li><strong>氣流設計：</strong>確保壓蓋站氣流方向「遠離充填站」（單向流由充填站向壓蓋站方向流）</li>
+                <li><strong>低微粒壓蓋技術：</strong>選用刀片剪切最小化的壓蓋機；選用壓蓋時產塵少的封蓋材料</li>
+            </ul>
+            <p>這是「無菌保證 > 商業便利性」決策層級在硬體設計中的直接體現。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若客戶要求在現有 RABS 充填線加裝卡匣碟封壓蓋機，您需要評估哪些關鍵的環境控制修改？</li>
+                <li>卡匣碟封的滅菌方式通常有哪幾種選擇？各有什麼限制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.6: Container and Closure Defects                   -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.6 Container and Closure Defects
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>PDA's <span class="key-term">Technical Report No. 76</span>: Identification and Classification of Visible Nonconformities in Elastomeric Components and Aluminum Seals for Parenteral Packaging and <span class="key-term">Technical Report No. 43</span> (Revised 2023): Identification and Classification of Nonconformities in Molded and Tubular Glass Containers for Pharmaceutical Manufacturing: Covering Ampoules, Bottles, Cartridges, Syringes and Vials provide more detailed information on the most common quality defects for container-closures and for glass.</p>
+
+        <p>Defects or damage that occur on the line to either component can result in failed package integrity as discussed in Section 7.7.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PDA 缺陷分類技術報告：</strong></p>
+            <ul>
+                <li><strong>TR76：</strong>彈性體組件與鋁封蓋的可見不合格品分類</li>
+                <li><strong>TR43（2023年修訂）：</strong>玻璃容器（安瓿、瓶、卡匣、注射器、小瓶）不合格品分類</li>
+            </ul>
+            <p>這兩份技術報告是視覺檢查標準的重要外部參考依據。在 SOP 建立和稽核準備時，應確認廠內標準與 PDA 指引的一致性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>「線上發生的缺陷或損傷 → 可能導致包裝完整性失敗」—— 這個因果關係說明了為什麼製程中每個步驟（去除巢、傳送、壓塞、壓蓋）都需要製程管控。<br>
+            任何容器或密封件的缺陷，都可能直接與 Section 7.7 的 CCI 失敗相連。不能將缺陷管理視為「外觀問題」而輕忽。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.7: CCI Requirements and Validation                 -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.7 Requirements for Effective Container-Closure Integrity and Validation
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The goal of <span class="key-term">CCI validation</span> is to ensure that integrity can first be established in packaging development studies and, subsequently, can be tested and confirmed with the actual manufacturing equipment and intended process parameters to fully demonstrate process control, thereby providing integrity assurance.</p>
+
+        <p>When performing CCI assessments, the selection of manufacturing conditions should include <span class="key-term">worst-case factors</span> impacting CCI characteristics. Additionally, variability in the manufacture of each of the primary components must be considered and represented in such assessments.</p>
+
+        <p>The following are common considerations that may impact component characteristics, and resultant closure integrity, that should be evaluated during development studies for each supplier (as applicable to the selected container-closure system):</p>
+        <ul>
+            <li><strong>Component fit for integrity</strong> — Stacked dimensional tolerances</li>
+            <li><strong>Inherent-component CCI</strong> — Ensures a container system can provide the appropriate level of tightness for the intended application, for instance, maintaining a modified headspace or vacuum throughout the shelf life</li>
+            <li><strong>Performance with intended capping force or residual seal force</strong></li>
+            <li><strong>Raised stopper threshold</strong></li>
+            <li><strong>Multi-puncture closures</strong> and limited microbial ingress and product leakage between doses</li>
+            <li><strong>Plunger-insertion depth</strong> and critical bubble-size to support maintenance of sterility during shipment and transportation</li>
+            <li><strong>Utilization with semiautomatic dosing pens</strong> that require minimal priming</li>
+            <li><strong>Headspace maintenance</strong> for lyophilized and inert-gas overlay product</li>
+            <li><strong>Cold-storage performance</strong> and maintenance of integrity under cold-storage conditions below the material properties (i.e., glass transition temperature) for elastomers</li>
+            <li><strong>Freeze-thaw/thermal-cycling performance</strong>, for example:
+                <ul>
+                    <li>Freeze-thaw impact on fragile containers (e.g., bags)</li>
+                    <li>Impact to integrity of mechanical closures (e.g., threaded caps, snap caps) upon thermal-cycling</li>
+                </ul>
+            </li>
+            <li><strong>Carbon dioxide (CO<sub>2</sub>) ingress</strong>, if transported or stored with dry ice</li>
+            <li><strong>Maintenance of closure over time and transport</strong>, including relaxation over time under the proposed storage conditions, and impact of transport (e.g., shock and vibration, pressure change in headspace due to altitude/temperature)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>CCI 驗證 (Container-Closure Integrity Validation) 的兩個階段：</strong></p>
+            <ol>
+                <li><strong>開發研究 (Development Studies)：</strong>在包裝開發階段建立完整性基礎，探索各種 worst-case 因素</li>
+                <li><strong>製程確認 (Process Confirmation)：</strong>使用實際量產設備與製程參數，確認線上生產能持續達到完整性要求</li>
+            </ol>
+            <p>這兩個階段缺一不可。開發階段建立知識，製程階段轉化為管控。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>CCI 驗證就像建造橋梁的安全測試：<br>
+            — <strong>開發研究</strong> = 在試驗室用各種最壞情況荷載測試模型橋（模擬地震、颱風、超重車輛）<br>
+            — <strong>製程確認</strong> = 正式建橋後，在實橋上執行載重測試，確認施工過程沒有引入新的缺陷<br>
+            兩者一起才能確保這座橋（藥品包裝）在整個使用生命周期都不會崩潰（失去密封）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>12項開發研究考量因素——覆蓋範圍廣泛：</strong></p>
+            <p>特別注意以下幾個容易被忽略的項目：</p>
+            <ul>
+                <li><strong>Stacked dimensional tolerances（堆疊尺寸公差）：</strong>容器與密封件分別都在公差範圍內，但「最壞組合」可能導致 CCI 不足</li>
+                <li><strong>Cold-storage / glass transition temperature：</strong>低溫下彈性體硬化，密封力下降；冷鏈產品必須驗證 -80°C 或更低溫度的密封性</li>
+                <li><strong>CO₂ ingress（乾冰運輸）：</strong>CO₂ 可穿透某些彈性體，影響冷凍乾燥製品的頭空間組成</li>
+                <li><strong>Relaxation over time（彈性體鬆弛）：</strong>長效期產品（5-10年）需評估彈性體在儲存壓力下的蠕變特性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您正在開發一個凍乾 (lyophilized) 蛋白質製品，儲存於 -20°C，目標效期 3 年。請列出 CCI 開發研究應優先評估的前五個考量因素，並說明理由。</li>
+                <li>若供應商提供兩個「相同規格」的彈性體批次，CCI 驗證是否還需要分別測試？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7.7 CONT.: General CCI Evaluation Considerations     -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding:0 1.5rem;">
+    7.7 (Cont.) General Considerations for CCI Evaluation (doc p132-p133)
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Once development work has been completed, the following are general considerations for inclusion in CCI evaluations:</p>
+
+        <ul>
+            <li><strong>Multiple primary component-batch combinations</strong> — To account for batch-to-batch component variability, validation samples should consider multiple (e.g., three) unique component-batch combinations from each supplier where each combination of components consists of a unique pairing (e.g., stopper batch "A" with vial batch "A," stopper batch "B" with vial batch "A," stopper batch "B" with vial batch "B").</li>
+
+            <li><strong>Alternate component suppliers/sources</strong> — If multiple suppliers/sources are used for a single component, where an "identical" version of that component exists, CCI testing using components from each supplier/source should be considered. This approach is commonly applicable to components using identical dimensional specifications and material types. In these cases, the vendor must first affirm that they have qualified their fabrication processes. The supplier's qualification of components is a complex and separate exercise because, depending on the technology chosen, the supplier must be shown to qualify different fabrication lines on which they might produce the same component, for example:
+                <ul>
+                    <li>Glass forming equipment</li>
+                    <li>Needle insertion equipment</li>
+                    <li>Open mills, mixers, molds, and presses for polymers</li>
+                    <li>Crimp seals aluminum forming and assembly with either polymers or flip-off tops</li>
+                </ul>
+            </li>
+
+            <li><strong>Preparation</strong> — The impact of preparation processes that precede the filling operation (e.g., cleaning, sterilization) needs to be evaluated. These may be at the vendors, in the case of RTU components, at the filling site, or both, in the case of ready-to-sterilize (RTS) components.</li>
+
+            <li><strong>Closing process</strong> — The aseptic filling line intended for routine production of the final package configuration should be used to generate the validation test samples. Process parameters impacting closure integrity should be identified prior to initiating CCI activities, with the intended production parameters used to generate validation test samples. Where a parameter is variable or has a range, the range should be supported by validation testing. For example, for vials, the capper testing should consider performing CCI testing at high, medium, and low application-force settings when variable forces may be applied during production setup and operation.</li>
+
+            <li><strong>Manufacturing conditions</strong> — Test samples should represent the complete sequence of the final commercial process, including component cleaning and sterilization. In addition, terminally sterilized products would require test samples to be processed through the entire terminal-sterilization operation before testing.</li>
+
+            <li><strong>Storage conditions and shelf life</strong> — CCI validation should consider the intended storage conditions of filled product containers, which are typically supported by development activities. All manufacturing conditions, including storage intervals where filled containers are held for a predefined period prior to final sealing operations, should be incorporated into the CCI validation study.</li>
+
+            <li><strong>Packaging and secondary assembly</strong> — CCI and the impact of closure characteristics should be considered for additional processing steps following primary container-sealing and can include technical assessment or direct testing. Typically, the impact from the labeling and packaging of vials does not require additional CCI testing; however, the secondary assembly of plunger rod or safety devices and their incorporation into the final device delivery system can present risks requiring additional CCI evaluation.</li>
+
+            <li><strong>Shipping and transport</strong> — Evidence that a container-closure system maintains integrity throughout shipping and distribution is expected. This can be achieved by either testing a container-closure system that has undergone actual or simulated shipping, or by providing robust evidence within a validation assessment that builds on the knowledge from development and CCI-validation activities and focuses on failure modes specific to shipping and transport. If shipping-and-transport CCI-testing is executed, it is typically a separate study from the filling-line CCI validation.</li>
+
+            <li><strong>Vial-stopper and syringes</strong> — These do not typically benefit from additional CCI testing following shipping and transport if worst-case conditions have already been characterized in development and are demonstrated to be comparable or worse than the conditions experienced during shipment, for example:
+                <ul>
+                    <li>Worst-case pressures via tests (e.g., helium leak, dye ingress, vacuum decay)</li>
+                    <li>Plunger-movement characterization studies for syringes</li>
+                    <li>Maintenance of headspace on cold storage</li>
+                    <li>Resistance of CO<sub>2</sub> ingress from dry-ice exposure</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>CCI 驗證的九大評估面向：</strong></p>
+            <ol>
+                <li><strong>多批次組合：</strong>最少三個獨特批次配對，涵蓋批間變異</li>
+                <li><strong>多供應商：</strong>「相同規格」不等於「相同 CCI」，各供應商必須分別測試</li>
+                <li><strong>前處理 (Preparation)：</strong>RTU vs RTS 組件的清潔和滅菌方式影響 CCI</li>
+                <li><strong>密封製程：</strong>高/中/低壓力設定均需 CCI 驗證，覆蓋操作範圍</li>
+                <li><strong>製造條件：</strong>必須複製完整商業製程順序，包含終端滅菌</li>
+                <li><strong>儲存條件與效期：</strong>包含充填後中間儲存的時間窗口</li>
+                <li><strong>二次組裝：</strong>活塞桿、安全裝置組裝可能影響 CCI</li>
+                <li><strong>運輸：</strong>模擬或實際運輸測試，通常為獨立研究</li>
+                <li><strong>小瓶/注射器：</strong>若開發研究已涵蓋最壞條件，可不再重複運輸 CCI</li>
+            </ol>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+CCI 驗證批次組合規劃（以小瓶+塞為例）：
+
+最少組合數 = 供應商數(塞) × 供應商數(瓶) × 3批次
+例：2家塞供應商 × 1家瓶供應商 × 3批次
+= 6組獨特配對
+
+壓蓋力測試矩陣（關閉製程CPP）：
+     低力 | 中力 | 高力
+批次A  CCI  CCI   CCI
+批次B  CCI  CCI   CCI
+批次C  CCI  CCI   CCI
+→ 9個測試條件點
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「供應商資質」與「CCI 驗證」是分開的兩件事：</strong></p>
+            <p>即使供應商已完成其製造設備的資質確認 (Supplier Qualification)，填充方仍需進行自身的 CCI 驗證。原因：供應商確認的是「製造出符合規格的組件」，填充方驗證的是「這些組件與自身充填設備和製程組合後，能否維持密封完整性」——這是完全不同的驗證目標。</p>
+            <p>監管機構（FDA、EMA）期望看到兩者分別的文件，不可合併。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>您的客戶帶來一個新的凍乾抗體藥品（-80°C 儲存，3年效期，附注射安全裝置），計劃使用兩家小瓶供應商（各2個批次）和一家彈性體供應商（3個批次）。請初步規劃 CCI 驗證矩陣：</p>
+            <ul>
+                <li>批次配對：2瓶供應商 × 3塞批次 = 6組</li>
+                <li>壓蓋力：高/中/低 × 6組 = 18個製程條件</li>
+                <li>額外評估：-80°C 冷藏 CCI、運輸模擬（獨立研究）、安全裝置組裝後 CCI</li>
+                <li>儲存時間點：初始、6個月、12個月、24個月、36個月（效期全覆蓋）</li>
+            </ul>
+            <p>這個矩陣雖然龐大，但缺少任何一環都可能在 FDA/EMA 審查時被要求補充研究，延誤上市時程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「最終商業製程的完整順序」具體包含哪些步驟？對凍乾製品而言，CCI 取樣時間點應在凍乾之前、之後，還是兩者都需要？</li>
+                <li>若您的 PFS 在運輸模擬測試後出現部分 CCI 失敗，但充填線上驗證全部通過，下一步您會採取什麼行動？</li>
+                <li>「小瓶/注射器若開發研究已涵蓋最壞條件，可省略運輸 CCI 測試」——您認為什麼情況下會使開發研究的 worst-case 不足以覆蓋實際運輸條件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY                                               -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin:0 auto 1.5rem; padding:1.25rem 1.5rem;">
+    <h3>本節重點回顧 Section Summary (7.5+, doc p126-p133)</h3>
+    <ul>
+        <li><strong>彈性體放置缺陷管控三層防線：</strong>來料檢驗（尺寸公差與塗層）、製程中驗證參數執行、成品視覺與 CCI 批次測試，三者缺一不可</li>
+        <li><strong>機械封蓋設計選擇：</strong>注射用小瓶幾乎只用 Flip-off 設計；壓蓋站產生大量微粒，必須以 mousehole 物理隔離保護充填區，Grade A 氣流為最低要求</li>
+        <li><strong>卡匣碟封的雙重要求：</strong>彈性體與鋁封蓋一體化 → 封蓋整組必須預先滅菌 + 壓蓋設備必須位於無菌邊界內，且氣流設計必須確保微粒不逆流回充填站</li>
+        <li><strong>巢式容器整批壓蓋風險：</strong>需驗證每支容器（特別是邊角位置）均達到足夠的密封壓力，確保全批 CCI 均一性</li>
+        <li><strong>CCI 驗證兩階段框架：</strong>開發研究（探索 worst-case）→ 製程確認（實際設備與參數）；九大評估面向涵蓋多批次組合、多供應商、前處理、密封製程、儲存、運輸、二次組裝</li>
+        <li><strong>決策層級貫穿全節：</strong>無菌保證 (CCI = Sterility Assurance 的核心保障) 始終優先於商業彈性，任何密封系統設計簡化都不能以犧牲 CCI 為代價</li>
+    </ul>
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+<script>
+    window.addEventListener('scroll', function() {
+        const btn = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+</script>
+
+</body>
+</html>
