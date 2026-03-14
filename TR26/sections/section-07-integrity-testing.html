@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR26 - Section 7.0: Integrity Testing</title>
+    <style>
+:root{--primary-blue:#1e3a5f;--accent-blue:#3498db;--light-gray:#fafafa;--light-blue:#f0f7ff;--yellow-start:#fff9e6;--yellow-end:#fff3cd;--green-bg:#e8f5e9;--green-border:#4caf50;--orange-bg:#fff3e0;--orange-border:#ff9800;--purple-bg:#f3e5f5;--purple-border:#9c27b0;--text-dark:#2d3748;--text-medium:#4a5568;--header-height:60px;--nav-height:50px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.75;color:var(--text-dark);background:#f0f2f5}
+.header{background:linear-gradient(135deg,var(--primary-blue) 0%,#2c5282 100%);color:#fff;padding:2rem;text-align:center}
+.header h1{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.header .subtitle{font-size:1rem;opacity:.9;margin-bottom:.3rem}
+.header .page-info{font-size:.8rem;opacity:.7}
+.top-header{background:linear-gradient(135deg,var(--primary-blue) 0%,#2c5282 100%);color:#fff;padding:1rem 2rem;text-align:center}
+.top-header h1{font-size:1.3rem;font-weight:600;margin-bottom:.25rem}
+.top-header .subtitle{font-size:.85rem;opacity:.85}
+.top-nav{background:#2d3748;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.nav-container{display:flex;justify-content:center;align-items:center;max-width:1600px;margin:0 auto;padding:0 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav-container::-webkit-scrollbar{height:3px}
+.nav-container::-webkit-scrollbar-thumb{background:var(--accent-blue);border-radius:3px}
+.nav-item{display:flex;align-items:center;gap:.5rem;padding:.85rem 1rem;color:rgba(255,255,255,.85);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s ease}
+.nav-item:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav-item.active{color:#fff;border-bottom-color:var(--accent-blue);background:rgba(255,255,255,.05)}
+.nav-num{width:24px;height:24px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600}
+.nav-item.active .nav-num{background:var(--accent-blue)}
+.nav-label{font-size:.85rem;font-weight:500}
+.main-content{max-width:1800px;margin:0 auto;padding:1.5rem}
+.main-container{max-width:1800px;margin:0 auto;padding:1.5rem}
+.chapter-section{background:#fff;border-radius:12px;margin-bottom:2rem;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden;scroll-margin-top:calc(var(--nav-height) + 1rem)}
+.chapter-divider{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;background:linear-gradient(135deg,var(--primary-blue) 0%,#3182ce 100%);color:#fff}
+.chapter-badge{width:45px;height:45px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;flex-shrink:0}
+.chapter-info h2{font-size:1.15rem;font-weight:600;margin-bottom:.15rem}
+.chapter-info p{font-size:.85rem;opacity:.85}
+.chapter-body{padding:1.5rem}
+.two-column,.content-grid,.side-by-side{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.left-column,.original-content{background:var(--light-gray);border-radius:10px;padding:1.5rem;border:1px solid #e2e8f0}
+.left-column h2,.left-column h3,.original-content h2,.original-content h3{color:var(--primary-blue);border-bottom:2px solid #3182ce;padding-bottom:.5rem;margin-bottom:1rem;font-size:1.1rem}
+.left-column p,.original-content p{margin-bottom:.85rem;text-align:justify;font-size:.95rem}
+.left-column ul,.left-column ol,.original-content ul,.original-content ol{margin:.75rem 0 .75rem 1.5rem;font-size:.95rem}
+.left-column li,.original-content li{margin-bottom:.5rem}
+.right-column,.commentary{background:var(--light-blue);border-radius:10px;padding:1.5rem;border:1px solid #bee3f8}
+.right-column h2,.right-column h3,.commentary h2,.commentary h3{color:#2c5282;border-bottom:2px solid #63b3ed;padding-bottom:.5rem;margin-bottom:1rem;font-size:1.1rem}
+.right-column p,.commentary p{margin-bottom:.85rem;font-size:.95rem}
+.column-header{font-weight:600;color:var(--primary-blue);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid currentColor;font-size:1rem}
+.right-column .column-header,.commentary .column-header{color:#2c5282}
+.chapter-body .container,.chapter-body .main-container{max-width:100%;padding:0;margin:0}
+.key-term,.highlight-term{background:linear-gradient(to right,#d4edda,#c3e6cb);padding:1px 6px;border-radius:4px;font-weight:600;color:#155724;font-size:.9em}
+.quote-box,.important-quote{background:linear-gradient(to right,#e7f3ff,#d6e9ff);border-left:4px solid #3182ce;padding:1rem 1.25rem;margin:1rem 0;border-radius:0 8px 8px 0;font-style:italic;font-size:.95rem}
+.concept-box,.analogy-box,.note-box,.key-note,.term-box,.formula-box,.key-term-box,.key-point-box,.highlight-box{border-radius:8px!important;padding:1rem 1.25rem!important;margin-bottom:1rem!important;font-size:.92rem!important;line-height:1.7!important}
+.concept-box h3,.concept-box h4,.analogy-box h3,.analogy-box h4,.note-box h3,.note-box h4,.key-note h3,.key-note h4,.term-box h3,.term-box h4,.formula-box h3,.formula-box h4,.key-term-box h3,.key-term-box h4,.key-point-box h3,.key-point-box h4,.highlight-box h3,.highlight-box h4{margin-bottom:.6rem!important;font-size:.95rem!important;font-weight:600!important}
+.concept-box p,.analogy-box p,.note-box p,.key-note p,.term-box p,.formula-box p,.key-term-box p,.key-point-box p,.highlight-box p{margin-bottom:.5rem!important;font-size:.92rem!important}
+.concept-box ul,.concept-box ol,.analogy-box ul,.analogy-box ol,.note-box ul,.note-box ol,.key-note ul,.key-note ol,.term-box ul,.term-box ol,.formula-box ul,.formula-box ol,.key-term-box ul,.key-term-box ol,.key-point-box ul,.key-point-box ol,.highlight-box ul,.highlight-box ol{margin:.5rem 0 .5rem 1.25rem!important;font-size:.92rem!important}
+.concept-box li,.analogy-box li,.note-box li,.key-note li,.term-box li,.formula-box li,.key-term-box li,.key-point-box li,.highlight-box li{margin-bottom:.35rem!important;font-size:.92rem!important}
+.analogy-box,.concept-box[class*="analogy"],.concept-box.analogy,div[class*="analogy"]:not(.content-grid):not(.two-column){background:linear-gradient(135deg,var(--yellow-start) 0%,var(--yellow-end) 100%)!important;border-left:4px solid #f6ad55!important}
+.analogy-box h3,.analogy-box h4,.concept-box.analogy h3,.concept-box.analogy h4{color:#856404!important}
+.term-box,.key-term-box,.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application){background:var(--green-bg)!important;border-left:4px solid var(--green-border)!important}
+.concept-box:not(.analogy):not(.application) h3,.concept-box:not(.analogy):not(.application) h4,.term-box h3,.term-box h4,.key-term-box h3,.key-term-box h4{color:#2e7d32!important}
+.note-box,.key-note,.key-point-box,.concept-box[class*="note"],.concept-box[class*="highlight"],.key-point,.highlight-box{background:var(--orange-bg)!important;border-left:4px solid var(--orange-border)!important}
+.note-box h3,.note-box h4,.key-note h3,.key-note h4,.key-point-box h3,.key-point-box h4,.highlight-box h3,.highlight-box h4{color:#c65102!important}
+.formula-box,.concept-box[class*="formula"]{background:var(--purple-bg)!important;border-left:4px solid var(--purple-border)!important}
+.formula-box h3,.formula-box h4{color:#7b1fa2!important}
+.formula-box pre{background:rgba(156,39,176,.08);padding:.75rem;border-radius:6px;font-family:'Courier New',monospace;font-size:.85rem;overflow-x:auto;white-space:pre-wrap}
+.concept-box.application,.application-box{background:#e3f2fd!important;border-left:4px solid #1976d2!important}
+.concept-box.application h3,.concept-box.application h4,.application-box h3,.application-box h4{color:#1565c0!important}
+.practice-box{background:linear-gradient(135deg,#e8f4fd 0%,#d1e9ff 100%)!important;border:2px dashed #3182ce!important;border-radius:10px!important;padding:1.25rem!important;margin:1.25rem 0!important;font-size:.92rem!important}
+.practice-box h3,.practice-box h4{color:#2c5282!important;margin-bottom:.75rem!important;font-size:.95rem!important;font-weight:600!important}
+.practice-box p,.practice-box li{font-size:.92rem!important}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+th,td{padding:.6rem .75rem;border:1px solid #e2e8f0;text-align:left}
+th{background:linear-gradient(135deg,#edf2f7 0%,#e2e8f0 100%);font-weight:600;color:var(--primary-blue);font-size:.85rem}
+tr:nth-child(even){background:#f7fafc}
+.learning-objectives{background:linear-gradient(135deg,#e8f8f5 0%,#d1f2eb 100%);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem}
+.learning-objectives h3{color:#117a65;margin-bottom:.75rem;font-size:1rem}
+.learning-objectives ul,.learning-objectives ol{margin-left:1.25rem}
+.learning-objectives li{margin-bottom:.4rem;font-size:.92rem}
+.structure-list{list-style:none;padding:0;margin:0}
+.structure-list li{padding:.75rem 1rem;margin-bottom:.5rem;background:#fff;border-radius:6px;border-left:4px solid #3182ce;box-shadow:0 1px 3px rgba(0,0,0,.05);font-size:.9rem}
+.section-title,.section-divider{font-size:1.1rem;color:var(--primary-blue);margin:1.5rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid #e2e8f0}
+.section-divider{border-bottom:1px solid #e2e8f0;margin:2rem 0}
+.toc{background:#fff;border-radius:10px;padding:1.25rem;margin-bottom:1.5rem;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.toc h3{color:var(--primary-blue);margin-bottom:.75rem;font-size:1rem}
+.toc-grid{display:flex;flex-wrap:wrap;gap:.5rem}
+.toc-grid a{display:inline-block;padding:.4rem .8rem;background:#edf2f7;border-radius:6px;color:var(--primary-blue);text-decoration:none;font-size:.85rem;transition:all .2s}
+.toc-grid a:hover{background:var(--accent-blue);color:#fff}
+.figure-container{margin:1.25rem 0;text-align:center}
+.figure-container img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.figure-caption{margin-top:.5rem;font-size:.85rem;color:var(--text-medium);font-style:italic}
+.hierarchy-diagram{text-align:center;margin:1rem 0}
+.hierarchy-level{margin:.5rem 0}
+.hierarchy-box{display:inline-block;padding:.6rem 1.2rem;border-radius:8px;font-weight:600;font-size:.9rem}
+.hierarchy-box.level-1{background:#fee2e2;border:2px solid #ef4444;color:#b91c1c}
+.hierarchy-box.level-2{background:#fef3c7;border:2px solid #f59e0b;color:#92400e}
+.hierarchy-box.level-3{background:#d1fae5;border:2px solid #10b981;color:#065f46}
+.arrow-down{font-size:1.2rem;color:var(--text-medium);margin:.25rem 0}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.8rem;font-weight:600}
+.badge.green{background:#d4edda;color:#155724}
+.badge.red{background:#f8d7da;color:#721c24}
+.badge.blue{background:#cce5ff;color:#004085}
+.badge.yellow{background:#fff3cd;color:#856404}
+.checklist{list-style:none;padding:0}
+.checklist li{padding:.3rem 0;padding-left:1.5rem;position:relative}
+.checklist li::before{content:"\2610";position:absolute;left:0;color:var(--accent-blue)}
+.pump-card,.tech-card,.info-card{background:#fff;border-radius:8px;padding:1rem;border:1px solid #e2e8f0;margin-bottom:.75rem}
+.main-footer{background:var(--primary-blue);color:#fff;padding:2rem;text-align:center;margin-top:2rem}
+.main-footer p{opacity:.9;font-size:.9rem;margin-bottom:.3rem}
+.back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:45px;height:45px;background:var(--accent-blue);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.3rem;box-shadow:0 3px 12px rgba(52,152,219,.4);z-index:999;opacity:0;visibility:hidden;transition:all .3s ease}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{background:#2980b9;transform:scale(1.1)}
+@media(max-width:1200px){.two-column,.content-grid,.side-by-side{gap:1rem}.left-column,.right-column,.original-content,.commentary{padding:1.25rem}}
+@media(max-width:900px){.two-column,.content-grid,.side-by-side{grid-template-columns:1fr}.top-header h1,.header h1{font-size:1.1rem}.nav-label{display:none}.nav-item{padding:.75rem}.nav-num{width:28px;height:28px;font-size:.85rem}.chapter-divider{padding:.85rem 1rem}.chapter-badge{width:38px;height:38px;font-size:1.1rem}.chapter-info h2{font-size:1rem}.main-content,.main-container{padding:1rem}.chapter-body{padding:1rem}}
+@media print{.top-nav,.back-to-top,.header{display:none!important}.top-header{background:var(--primary-blue)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.chapter-section{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border:1px solid #ccc;margin-bottom:1rem}.two-column,.content-grid,.side-by-side{grid-template-columns:1fr 1fr}.main-content,.main-container{max-width:100%;padding:0}}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 7.0 Integrity Testing</h1>
+    <div class="subtitle">完整性測試</div>
+    <div class="page-info">PDA Technical Report No. 26 (Revised 2025) -- Sterilizing Filtration of Liquids | p56 - p70</div>
+</div>
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解完整性測試 (Integrity Test) 的物理原理：擴散流量 (Diffusive Flow) 與泡點 (Bubble Point) 的基本機制</li>
+        <li>掌握完整性測試結果與細菌截留 (Bacterial Retention) 之間的關聯性，以及如何建立測試規格</li>
+        <li>學會根據濾膜面積選擇適當的測試方法（泡點法、擴散流量法、壓力保持法），並理解產品潤濕測試的轉換公式</li>
+        <li>了解 PUPSIT（使用前滅菌後完整性測試）的考量因素與法規期望</li>
+        <li>掌握完整性測試失敗的故障排除流程與潤濕不足的分析方法</li>
+    </ul>
+</div>
+
+<div class="main-container">
+
+<!-- ===== 7.0 OVERVIEW ===== -->
+<div class="section-title">7.0 Integrity Testing -- Overview 完整性測試概述</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Bacterial retention studies</span> are used for validating a filter membrane but are not feasible for routine confirmation of the retentive capabilities of each filter used in the manufacture of sterile pharmaceuticals. Such challenge tests can clearly not be performed prior to the use of the filter in the production setting, as it involves deliberate introduction of contaminating microorganisms to the filter (a "destructive" test). It is also not feasible post-use, as it requires advanced microbiology equipment and multiday incubation periods. Hence the need for a <span class="key-term">nondestructive, physical-integrity test method</span> that can be correlated with bacterial retention (i.e., can be used as a surrogate method for direct bacterial retention). The main objective of a nondestructive physical integrity test is to determine the presence of defects that may compromise a filter's retention capability without rendering the filter useless. Additionally, the integrity test establishes the similarity of the test filter to validated bacterial retention-challenged filters under process-related conditions.</p>
+        <p>For integrity tests on <span class="key-term">hydrophilic membranes</span>, gas flow properties of wetted filter membranes are evaluated over a range of pressures. This can be demonstrated by completely wetting the entire filter membrane and introducing gas to the upstream side of the membrane at a low pressure. <span class="key-term">Capillary forces</span> within the filter material keep the liquid from being expelled from the pores, and the wetted membrane functions as a barrier to convective gas flow. As this pressure is applied on the upstream side of the filter, a small amount of the gas dissolves into the wetting liquid, diffuses across the wetted membrane, and is released on the downstream side when it is maintained at atmospheric pressure (Figure 7.0-1). The <span class="key-term">diffusion rate</span> increases as the pressure on the upstream side is increased. Once a critical pressure is achieved ("<span class="key-term">the bubble point</span>"), the effect of capillary forces keeping the liquid in the pores will be overcome by sufficient pressure, pushing the wetting liquid out through the membrane pores. This happens first for the largest pores, where capillary forces are the weakest (Figure 7.0-2). If the rate of gas flow that passes to the downstream is measured at increasing pressure values, the <span class="key-term">membrane characterization curve</span> (Figure 7.0-3) can be obtained for the given membrane filter.</p>
+        <p>Characterization of these dynamics (both the <span class="key-term">diffusive flow rate</span> at pressures below the bubble point, as well as the exact bubble point pressure) can indicate integrity of the filter in a nondestructive manner, resulting in a method that can be performed on every filter used in production. Diffusive flow theory is discussed further in Section 10.1. Figure 7.0-1 illustrates gas diffusion through the wetted membrane pores at pressures where the wetting fluid is held in the pores by capillary forces. Figure 7.0-2 illustrates gas flow through the membrane at a pressure exceeding the bubble point where the wetting fluid is expelled from the largest pores.</p>
+        <p><em>[Figure 7.0-1 Gas Diffusion Through a Wetted Membrane]</em></p>
+        <p><em>[Figure 7.0-2 Bubble Point Through a Wetted Membrane]</em></p>
+        <p>Figure 7.0-3 illustrates the relationship between measured air flow downstream of a wetted filter membrane. Three characteristic portions of the curves act as the basis for membrane-filter integrity-testing:</p>
+        <ol>
+            <li>The linear portion on the low end of the pressure axis shows <span class="key-term">diffusive gas flow</span> through the liquid held in the pores of the membrane.</li>
+            <li>As the pressure is increased, there is a characteristic bend in the curve followed by another linear portion. This bend indicates the transition between diffusive gas flow and <span class="key-term">bulk, or viscous, flow</span>.</li>
+            <li>For an integral filter, bulk gas flow occurs after the bubble point of the largest pores has been exceeded. Before reaching this point, the majority of gas flow is due to free-flowing gas through open pores; a minor portion of the flow results from diffusion through the pores of the membrane that are still wetted.</li>
+        </ol>
+        <p><em>[Figure 7.0-3 Characteristic Curve of the Membrane]</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Integrity Test（完整性測試）：</strong>一種非破壞性的物理測試方法，用來確認除菌濾膜在使用前後是否完好無損。由於細菌截留試驗 (Bacterial Retention Test) 是破壞性的，無法在每次生產時執行，因此需要一個「替代方法」來間接確認濾膜的截留能力。</p>
+            <p><strong>Bubble Point（泡點）：</strong>當施加在濕潤濾膜上游的氣體壓力達到某個臨界值時，毛細管力不足以將液體保持在孔隙中，液體被推出最大孔隙，氣體開始大量通過。這個臨界壓力就是泡點。</p>
+            <p><strong>Diffusive Flow（擴散流量）：</strong>在泡點以下的壓力下，少量氣體溶解進入潤濕液，擴散穿過濕潤的濾膜，在下游釋放出來。這個流量與濾膜完整性直接相關。</p>
+            <p><strong>Capillary Forces（毛細管力）：</strong>液體在微小孔隙中因表面張力而產生的保持力。孔隙越小，毛細管力越大，需要越高的壓力才能將液體推出。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>出門前檢查瓦斯：</strong>想像你每天出門前都要確認瓦斯已經關好。你不可能每次都請瓦斯公司來做全面管線壓力測試（那就像細菌截留試驗，費時費力且具破壞性）。取而代之的是，你用簡單的方式——聞一聞有沒有瓦斯味、看看爐頭火焰是否正常——這就是「非破壞性完整性測試」的概念。</p>
+            <p><strong>吹氣球找漏洞：</strong>泡點測試就像吹一個氣球——當壓力不大時，氣球表面的微小孔洞讓少量空氣慢慢滲出（擴散流量）。但當你用力吹到某個程度，最大的孔洞會突然讓大量空氣衝出來（泡點）。如果氣球在很低的壓力就大量漏氣，代表它有大洞（濾膜不完整）。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>為什麼完整性測試如此重要？</strong>在除菌過濾的決策層級中，「無菌濾液保證」永遠是第一優先。完整性測試是連接「濾膜資格確認」與「實際生產使用」之間的橋樑——它讓我們能在不破壞濾膜的情況下，確認每一支生產用濾膜都具備與經過細菌截留驗證的濾膜相同的品質。</p>
+            <p>膜特性曲線 (Characteristic Curve) 的三個區域是理解所有完整性測試方法的基礎：低壓區（擴散流量）、轉折區、高壓區（泡點後的體積流量）。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，每個批次的除菌過濾都需要完整性測試。假設你的工廠一年生產 200 批無菌注射劑，每批都需要至少一次使用後完整性測試。如果其中一批測試失敗，可能意味著整批產品需要丟棄或返工——數百萬元的直接損失，還不包括調查成本和客戶信任的影響。理解完整性測試的物理原理，能幫助你正確解讀結果、區分真正的濾膜損壞與「假陽性失敗」。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼細菌截留試驗不適合作為每批生產的常規測試？請列出至少兩個原因。</li>
+                <li>如果一支濾膜的泡點值異常偏低，這在物理上代表什麼意義？對無菌保證有何影響？</li>
+                <li>膜特性曲線上的三個區域分別對應哪些完整性測試方法？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.1 ===== -->
+<div class="section-title">7.1 Relationship Between Integrity Test Results and Bacterial Retention 完整性測試結果與細菌截留的關係</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>During membrane development by the filter manufacturer, <span class="key-term">retentive capability</span> can be assessed by challenging successively "tighter" samples of the specific membrane under standardized test conditions and analyzing the bacterial passage results. Typically, the retention pattern observed will allow identification of <span class="key-term">physical integrity-test specifications</span> using standard wetting fluids--acceptance criteria for the measured parameters within which no bacterial penetration will occur under standardized testing conditions (6). The integrity-test value established by this exercise is linked to the sterility of the filtrate. Such establishment of integrity-test value specifications should incorporate a <span class="key-term">safety margin</span> to account for natural variability in measurement and membrane manufacture (e.g., by applying appropriate statistics with confidence intervals).</p>
+        <p><em>[Figure 7.1-1 Gas Flow Profile Values and Filtrate Sterility]</em></p>
+        <p>Figure 7.1-1 illustrates a typical relationship between the gas flow profile values and filtrate sterility from a series of five filters with decreasing maximum pore size (from left to right).</p>
+        <p>The <span class="key-term">bubble point test</span> relates to the effective diameter of the largest pores present in the membrane, and these pores, along with membrane thickness and pore tortuosity, directly influence the retention properties of the membrane. The resolution of the bubble point test diminishes as a function of increasing filter area, since diffusive gas flow below the bubble point tends to obscure it (41-43).</p>
+        <p>While diffusion does not bear a direct relationship to pore size, the <span class="key-term">diffusive flow test</span> provides a quantitative measurement in which maximum flow limit is established by the filter manufacturer at a designated test pressure lower than the minimum bubble point value.</p>
+        <p>During membrane development and initial integrity-test qualification by the filter manufacturer, testing flow rate at multiple pressure values enables plotting of the gas flow curve from diffusion at low pressures through the bubble point region at elevated pressures. These tests combine the advantages of the bubble-point and single-point diffusive-flow integrity tests in characterizing the <span class="key-term">pore size distribution</span>. Methods for mathematically characterizing the diffusive-flow to bulk-flow transition region and correlation of the value generated to bacterial titer reduction may be found in reference literature.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>完整性測試規格的建立：</strong>濾膜製造商在開發階段會測試一系列「孔徑越來越緊」的濾膜樣品。對每個樣品同時進行細菌截留試驗和物理完整性測試，找出「完整性測試值」與「是否能完全截留細菌」之間的對應關係。最終設定的規格值會加入安全裕度 (Safety Margin)，以涵蓋量測和製造的自然變異。</p>
+            <p><strong>泡點 vs 擴散流量的互補性：</strong></p>
+            <ul>
+                <li><strong>Bubble Point（泡點）：</strong>反映最大孔徑的有效直徑，是「最差情況」的指標</li>
+                <li><strong>Diffusive Flow（擴散流量）：</strong>反映整體膜結構的完整性，是一個定量的「綜合指標」</li>
+                <li>兩者結合可以更完整地描繪孔徑分佈 (Pore Size Distribution)</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>駕照考試的及格線：</strong>濾膜製造商建立完整性測試規格的過程，就像交通部門制定駕照考試標準。他們讓不同程度的駕駛（不同孔徑的濾膜）參加路考（細菌截留試驗），找出「筆試分數」（完整性測試值）和「實際駕駛安全」（能否截留細菌）之間的關聯。最後設定一個「及格線」（規格值），而且會比真正的臨界點稍微嚴格一些（安全裕度），確保所有通過的人都真的安全。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>泡點測試在大面積濾膜上的局限性：</strong>隨著濾膜面積增加，泡點以下的擴散流量也會增加（因為擴散流量與面積成正比），這會「遮蔽」泡點的訊號，使泡點判定變得困難。這就是為什麼大面積濾膜通常使用擴散流量法而非泡點法。</p>
+            <p><strong>安全裕度的重要性：</strong>規格值不是「剛好能截留細菌」的臨界值，而是加入了統計信賴區間的安全值。這體現了決策層級的第一原則：無菌濾液保證永遠優先於效率考量。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼完整性測試規格需要包含安全裕度？如果不加安全裕度會有什麼風險？</li>
+                <li>為什麼泡點測試的解析度會隨著濾膜面積增加而降低？從物理原理的角度解釋。</li>
+                <li>濾膜製造商如何將完整性測試值與細菌截留能力關聯起來？這個過程的關鍵步驟是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.1.1 ===== -->
+<div class="section-title">7.1.1 Test Method Selection 測試方法選擇</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The method for integrity-testing of production filters by the filter user should be chosen to provide reliable results based on the nature of the filter, product, and processing conditions. <span class="key-term">Bubble point</span>, <span class="key-term">multiple-point and single-point diffusive-flow</span> and <span class="key-term">pressure-hold tests</span> can be used, recognizing that each has strengths and limitations that must be evaluated in terms of the particular circumstances of the test. These test methods can be used for both hydrophilic and hydrophobic membrane filters and can be performed manually or preferentially with <span class="key-term">automated integrity-test instruments</span>. Section 10.2 contains further discussion of filter integrity-test methods.</p>
+        <p>The flow rate of the test gas that passes through the wetting fluid in the pores of the filter media via diffusive flow is much lower than the flow rate of bulk gas that passes through the filter media when the wetting fluid is displaced from the larger pores of the filter media (i.e., what occurs at and above the bubble point). The rate at which test gas passes through the filter media via diffusive flow is directly related to the <span class="key-term">surface area</span> of the filter media (i.e., as the filter surface area increases, the flow rate due to diffusive flow increases).</p>
+        <p>Integrity-test instruments have a lower limit at which they can reliably determine the flow rate of the test gas passing through the filter media. For this reason, there is typically a minimum value for the surface area of the filter being integrity-tested to perform a diffusive-flow integrity test. Below this minimum surface area, the automated integrity tester may not be capable of determining the diffusive flow at the specific test pressure (i.e., &lt;= 80% of bubble point). In contrast, when using the bubble point method, the algorithm is looking at the change in the flow rate instead of the absolute flow rate as the differential pressure is increased (specifically, the pressure at which bulk flow starts). For this reason, the bubble point integrity-test method is typically used instead of the diffusive-flow integrity-test method to perform an integrity test on a filter with a small surface area.</p>
+        <p>Above the minimum surface-area threshold for testing via the diffusive-flow integrity-test method, either the diffusive-flow or the bubble point test method may be used for a range of filter surface areas. As the surface area of the filter media being tested increases significantly (e.g., in the case where multiple round housings are used), there comes a point where the diffusive flow of gas passing through the wetted membrane is so high that it will be difficult for the integrity test to distinguish the bubble point from the high rate of "background" diffusive flow through wetted pores. For this reason, the diffusive-flow method is typically selected for the largest filter sizes.</p>
+        <p>The exact cutoffs for small, medium, and large surface area depend upon the attributes of the filter media being tested, the wetting fluid used, and the capability of the automated integrity tester being used, but general guidance is provided in Table 7.1.1-1.</p>
+        <table>
+            <caption style="text-align:left; font-weight:600; margin-bottom:0.5rem;">Table 7.1.1-1 Suggested Integrity Test Methods Based on Filtration Surface Area</caption>
+            <tr><th>Surface Area of Filter Media*</th><th>Suggested Integrity Test Method</th></tr>
+            <tr><td>&lt; 0.03 m&sup2;</td><td>Bubble Point</td></tr>
+            <tr><td>0.03 -- 1.8 m&sup2;</td><td>Bubble Point or Diffusive Flow</td></tr>
+            <tr><td>&gt; 1.8 m&sup2;</td><td>Combination of Diffusive Flow and Bubble Point</td></tr>
+        </table>
+        <p><em>*These values are approximate values only. Consult Filter Manufacturer for specific guidance.</em></p>
+        <p>One approach to diffusive-flow testing of large filter systems with multiple cartridges is to derive an assembly-specific value that is lower than the linear multiplied-limit of each cartridge. A technical evaluation should be conducted to justify this approach. If the assembly's diffusive air flow exceeds the corrected limit, an investigation would be required (e.g., individual tests on each cartridge, and confirmation of the seals with the housing).</p>
+        <p>When performing tests on filter capsules with associated <span class="key-term">SUS</span>, the high pressures required for bubble point testing could exceed the pressure ratings of such equipment. For this reason, diffusive-flow tests may be preferred as they typically require lower pressures than bubble point-test methods. Or, in case the bubble point method is required, the SUS is designed to be compatible with a higher working-pressure range.</p>
+        <p>A modification to the diffusive flow method is a <span class="key-term">pressure-hold/decay method</span>, where pressure is allowed to drop as diffusive flow across the wetted membrane occurs, instead of being held constant (see Appendix B for more information).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三種主要測試方法：</strong></p>
+            <ul>
+                <li><strong>Bubble Point（泡點法）：</strong>量測最大孔隙被突破的壓力，適用於小面積濾膜</li>
+                <li><strong>Diffusive Flow（擴散流量法）：</strong>在泡點以下的壓力量測氣體擴散速率，適用於中大面積濾膜</li>
+                <li><strong>Pressure Hold/Decay（壓力保持/衰減法）：</strong>擴散流量法的變體，讓壓力自然下降來間接量測擴散流量</li>
+            </ul>
+            <p><strong>面積與方法選擇的關係：</strong>擴散流量與濾膜面積成正比。面積太小時，擴散流量低到儀器無法可靠量測，所以用泡點法。面積太大時，背景擴散流量太高會遮蔽泡點信號，所以用擴散流量法。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要檢查一面牆是否有裂縫：</p>
+            <ul>
+                <li><strong>小面牆（泡點法）：</strong>你可以靠近仔細看，找到最大的裂縫在哪裡——容易判斷</li>
+                <li><strong>大面牆（擴散流量法）：</strong>牆面太大無法逐一檢查，但可以在牆的一側噴水霧，看另一側整體滲出了多少水——如果總滲水量在標準範圍內，代表牆面整體完好</li>
+                <li><strong>超大面牆（壓力衰減法）：</strong>你密封一個房間加壓，看壓力降多快來推算滲漏量</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>SUS 與壓力限制：</strong>一次性使用系統 (Single-Use System, SUS) 的壓力耐受度通常比不鏽鋼系統低。泡點測試需要的壓力往往高於擴散流量測試，因此在 SUS 環境中，擴散流量法更為常用。如果硬要在 SUS 上執行泡點測試，可能會損壞管路或接頭。</p>
+            <p><strong>多濾芯組合的特殊處理：</strong>當多支濾芯安裝在同一個外殼中時，擴散流量的上限不能簡單地將單支濾芯的限值乘以數量。需要建立「組合體專屬」的規格值，通常會低於線性倍數值。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 中，你可能同時處理不同客戶的產品。根據 Table 7.1.1-1 的指引：</p>
+            <ul>
+                <li>實驗室小型濾膜（&lt; 0.03 m&sup2;）：只用泡點法</li>
+                <li>標準 10 吋濾芯（~0.5-0.7 m&sup2;）：泡點或擴散流量皆可</li>
+                <li>多濾芯組合（&gt; 1.8 m&sup2;）：以擴散流量為主，輔以泡點</li>
+            </ul>
+            <p>在制定 SOP 時，應與濾膜供應商確認各濾膜型號的具體面積門檻值。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼小面積濾膜不適合用擴散流量法？請從儀器靈敏度的角度解釋。</li>
+                <li>為什麼大面積濾膜不適合用泡點法？請從信噪比的角度解釋。</li>
+                <li>如果你的製程使用 SUS 搭配除菌濾膜，在選擇完整性測試方法時需要額外考慮什麼因素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.1.2 ===== -->
+<div class="section-title">7.1.2 Filtrate Sterility Assurance 濾液無菌保證</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Integrity-testing</span> of sterilizing-grade production filters is a fundamental element of <span class="key-term">sterility assurance</span> for the most critical applications that require a sterile claim (9, 11). However, integrity-testing alone is insufficient to ensure the sterility of the filtrate. Other control elements should also be in place, such as:</p>
+        <ul>
+            <li>Filter manufacturer's production controls and quality assurance systems should be in place to ensure the quality and uniformity of the filter membranes and fabricated filters.</li>
+            <li>Filter user should conduct <span class="key-term">bacterial retention validation studies</span> to demonstrate that product, processing conditions, and sterilizing-grade filter can effectively sterilize the fluid.</li>
+            <li>Filter user should ensure appropriate product and process controls (e.g., system design, operating parameters, <span class="key-term">bioburden control</span>, process monitoring) are in place so that the filtration operates within the validated parameters defined by the bacterial retention study.</li>
+        </ul>
+        <p>With the appropriate controls in place, the filter integrity test is only one part of the overall <span class="key-term">sterility-assurance strategy</span>. It is incumbent on the filter user to ensure that all elements are, and continue to remain, in place.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>完整性測試不等於無菌保證的全部：</strong>完整的無菌保證策略需要三個層面的控制同時到位：</p>
+            <ol>
+                <li><strong>濾膜製造商的品質控制：</strong>確保每一批濾膜的品質和一致性</li>
+                <li><strong>用戶的驗證研究：</strong>用特定產品和製程條件證明濾膜能有效除菌</li>
+                <li><strong>用戶的製程控制：</strong>確保實際操作在驗證過的參數範圍內運行</li>
+            </ol>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>機場的多層安全機制：</strong>完整性測試就像機場安檢門（金屬探測器）。但機場安全不僅僅靠安檢門——還需要行李 X 光機（生物負荷控制）、護照查驗（驗證研究）、以及航空公司的標準作業程序（製程控制）。任何一個環節的缺失都會危及整體安全，即使安檢門運作正常。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這裡再次強調了無菌濾液保證 (Sterile Filtrate Assurance) 作為最高優先的原則。完整性測試通過只代表濾膜本身完好，但如果生物負荷 (Bioburden) 超出驗證範圍，或操作參數偏離驗證條件，濾液的無菌性仍然可能受到威脅。</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><div class="hierarchy-box level-1">1. 無菌濾液保證 Sterile Filtrate Assurance</div></div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-2">2. 產品品質 / CQAs</div></div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-3">3. 製程穩健性與商業效率</div></div>
+            </div>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>列舉三個即使完整性測試通過，濾液仍可能不無菌的情境。</li>
+                <li>作為 CDMO 的營運主管，你如何確保無菌保證策略的「所有要素都持續到位」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.2 ===== -->
+<div class="section-title">7.2 Automated Integrity-Test Instruments 自動化完整性測試儀器</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The standard for modern filter integrity-testing utilizes <span class="key-term">automated integrity-test units</span>, which provide the most reproducible and sensitive methods. Automated integrity-testers employ highly sensitive pressure sensors and/or gas flow meters, in combination with the careful regulation of pressure, to test filters in a highly repeatable manner.</p>
+        <p>Historically, filter integrity-testing had been performed manually via a combination of manual manipulation of pressure regulators, graduated cylinders, and/or visual detection of increasing gas flow rate via a stream of bubbles. Some manual integrity-test methods require downstream manipulations that could compromise the sterility of the system if performed before use. <span class="key-term">Automated integrity-test instruments</span> perform the integrity test from the upstream (nonsterile) side of the filters, minimizing the risk for downstream contamination. Manual integrity-testing should now only be performed on production filters in special and justified cases, due to the ready availability of automated integrity-test instruments.</p>
+        <p>Automatic integrity-test equipment, both hardware and software, should be qualified, as described in Section 7.3. Most automated integrity-test instruments function by measuring pressure only upstream of the filter membrane, and assuming downstream pressure is atmospheric. Care must be taken if the downstream side of the membrane is not in equilibrium with the atmosphere.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Automated Integrity-Test Instruments（自動化完整性測試儀器）：</strong>現代除菌過濾的標準是使用自動化儀器進行完整性測試。這些儀器使用高靈敏度的壓力感測器和/或氣體流量計，配合精確的壓力調節，提供高度可重複的測試結果。</p>
+            <p><strong>上游測試 vs 下游測試：</strong>自動化儀器從濾膜的上游（非無菌側）進行測試，避免了手動方法需要在下游（無菌側）操作的風險。這是自動化儀器的一個關鍵優勢——不會破壞已建立的無菌狀態。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手動完整性測試就像用肉眼和經驗判斷一個輪胎是否漏氣——你把輪胎泡在水裡，觀察有沒有氣泡冒出來。這種方法受限於觀察者的主觀判斷。自動化儀器則像是汽車維修廠的電子胎壓偵測系統——精確到毫巴等級，而且每次測量結果一致可追溯。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>手動測試的限制：</strong>手動完整性測試「現在只應在特殊且有正當理由的情況下」對生產用濾膜執行。這反映了法規對資料完整性 (Data Integrity) 和可重現性的日益重視。在稽核中，如果被發現仍在使用手動方法而沒有充分的理由，可能會引發觀察缺失。</p>
+            <p><strong>下游壓力假設：</strong>大多數自動化儀器假設下游壓力等於大氣壓。如果下游側未與大氣平衡（例如封閉的系統），測試結果可能不準確。這是一個實務上常被忽略的細節。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼自動化完整性測試儀器比手動方法更受法規青睞？請從再現性和資料完整性兩個角度說明。</li>
+                <li>在什麼情況下，自動化儀器假設下游壓力為大氣壓的前提可能不成立？這會如何影響測試結果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.3 ===== -->
+<div class="section-title">7.3 Qualification of Integrity Test Devices 完整性測試設備的確認</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Qualification of integrity-test devices is similar to qualifying other process test-equipment. Qualification of an integrity-test device begins with the development of the device and is usually conducted by the device manufacturer. <span class="key-term">Design qualification</span> and device development documentation are generally generated by the device manufacturer. These documents may be included in the filter user's qualification documentation package. Equipment qualification should cover the key functions of the device; however, it may not cover all possible combinations of functions and configurations. <span class="key-term">Risk assessment</span>, therefore, should include key functions such as, but not limited to:</p>
+        <ul>
+            <li>Test procedures as a main function of the device</li>
+            <li>Detection of error conditions and messages</li>
+            <li>Compliance with <span class="key-term">data integrity</span> requirements and good documentation practices</li>
+            <li>Qualification of the measurement itself (accuracy and limits)</li>
+        </ul>
+        <p>Typical qualification activities may include:</p>
+        <ul>
+            <li>Computer software evaluation--test parameters, test methods, programming the unit, and tests (e.g., ease of use, test options, networking capability, operating systems)</li>
+            <li>Unit sensitivity evaluation</li>
+            <li>Unit startup</li>
+            <li>Unit calibration</li>
+            <li>Performing the tests</li>
+            <li>Integrity-test performance evaluation (bubble point, diffusive flow, pressure hold)</li>
+            <li>Test other functions (volume determination, failure modes, ejecting invalid entries)</li>
+            <li>Test printout evaluation</li>
+            <li>Password protection in combination with appropriate user roles and permission levels to avoid modification of a test program by an unauthorized user.</li>
+            <li>Peripheral function evaluation (date/time clock, memory, cleaning)</li>
+        </ul>
+        <p>Integrity-test devices that measure pressure and/or gas flow should be calibrated using relevant calibration standards and should generate records according to applicable regulatory expectations.</p>
+        <p>Automated integrity-testers often incorporate <span class="key-term">sensitivity settings</span> and test algorithms to detect atypical test conditions and to reliably test different filter sizes. These sensitivity settings are of importance and require careful observation to assure the right sensitivity for the particular filter-size is chosen, otherwise the integrity test may lack accuracy and validity. The sensitivity parameter establishment can be performed or confirmed during <span class="key-term">process qualification (PQ)</span>. For thorough qualification strategy, end users should consider confirming not only that the unit can successfully return a "pass" integrity result for integral filters but can also reliably detect broken filters or incorrect test setups.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>設備確認 (Equipment Qualification)：</strong>完整性測試儀器的確認遵循與其他製程測試設備相同的原則——DQ（設計確認）、IQ（安裝確認）、OQ（操作確認）、PQ（性能確認）。設備製造商通常負責 DQ 和部分 OQ，終端用戶負責確認設備在實際使用條件下的表現。</p>
+            <p><strong>Sensitivity Settings（靈敏度設定）：</strong>自動化儀器會根據不同的濾膜尺寸調整靈敏度。選錯靈敏度可能導致測試結果不準確——太靈敏會產生假失敗，不夠靈敏則可能讓真正有缺陷的濾膜通過。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>確認完整性測試儀器就像校準一台體溫計。你不僅要確認它在正常體溫（36.5 度C）時讀數正確（能判定「健康」），還要確認它在發燒溫度（38 度C以上）時也能準確讀出（能偵測到「異常」）。如果你只驗證了「正常通過」的情境，卻沒有驗證「應該失敗」的情境，那這台儀器的確認就不完整。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>資料完整性 (Data Integrity) 是關鍵：</strong>現代法規對電子記錄的要求越來越嚴格。完整性測試儀器必須滿足：密碼保護、使用者權限分級、審計追蹤 (Audit Trail)、以及防止未授權修改測試程式。這些都是稽核的重點項目。</p>
+            <p><strong>「通過」和「失敗」都要確認：</strong>完整的確認策略不僅要確認儀器能讓完好的濾膜「通過」，還要能可靠地偵測到破損的濾膜或不正確的測試設定。這是很多工廠容易忽略的地方。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在完整性測試儀器的確認過程中，為什麼必須同時驗證「通過」和「失敗」兩種情境？</li>
+                <li>如果靈敏度設定與實際使用的濾膜尺寸不匹配，可能會產生哪些問題？</li>
+                <li>從資料完整性的角度，列舉至少三個完整性測試儀器必須具備的功能。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.4 ===== -->
+<div class="section-title">7.4 Product Wet Integrity Tests 產品潤濕完整性測試</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The default "reference" wetting fluid for physical integrity tests of hydrophilic filters, as validated by membrane manufacturers, is typically water. However, for testing production filters, drug product or buffers may be the most appropriate <span class="key-term">wetting fluid</span> (e.g., after use, when the filter is already wetted with this fluid). A new integrity-test specification, customized for the unique wetting fluid, can be determined during filter validation by executing a protocol in which the reference fluid specification is "converted" to an appropriate specification for the new wetting fluid. This specification is then, by extension, also correlated to the bacterial retention capabilities of the membrane.</p>
+        <p>Differences between <span class="key-term">product-wetted integrity test values</span> and <span class="key-term">reference fluid-wetted integrity test values</span> are due to differences in test gas solubility, the diffusion constant, and the surface tension of the wetting fluid.</p>
+        <p>The <span class="key-term">scale-down studies</span> are used to determine the correction factor between the water-wet integrity-test specification and the required product-wet test limits.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Product-Wet vs Water-Wet（產品潤濕 vs 水潤濕）：</strong>濾膜製造商提供的完整性測試規格通常以水作為標準潤濕液。但在實際生產中，濾膜在使用後已經被藥品溶液潤濕。由於藥品的表面張力、氣體溶解度和擴散係數與水不同，完整性測試的數值也會不同。因此需要進行「轉換」，建立產品潤濕的專屬規格。</p>
+            <p><strong>影響測試值差異的三個因素：</strong></p>
+            <ul>
+                <li><strong>Test gas solubility（測試氣體溶解度）：</strong>氣體在產品中的溶解度可能與水不同</li>
+                <li><strong>Diffusion constant（擴散常數）：</strong>氣體穿過潤濕液的擴散速率不同</li>
+                <li><strong>Surface tension（表面張力）：</strong>直接影響泡點壓力</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>泡茶時茶葉釋出物 vs 實際喝到的：</strong>想像你用同一個茶壺泡不同的茶——綠茶和紅茶的滲出速率不同，顏色深淺也不同。同樣地，用水潤濕和用藥品潤濕的濾膜，在完整性測試中的表現也不同。你不能用「綠茶的標準」去判斷「紅茶是否泡好了」——需要針對每種茶（潤濕液）建立各自的標準。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Scale-Down Studies 的重要性：</strong>轉換係數的建立通常在小規模實驗中完成，使用濾膜碟片 (Filter Discs) 而非全尺寸的濾芯。這是因為碟片更容易操控和乾燥，可以在相同的濾膜上依序測試水潤濕和產品潤濕的差異。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼在生產環境中，產品潤濕測試比水潤濕測試更具實際意義？</li>
+                <li>如果藥品的表面張力低於水，你預期泡點值會如何變化？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.4.1 ===== -->
+<div class="section-title">7.4.1 Product-Wetted Bubble Point Tests 產品潤濕泡點測試</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Tests for determination of <span class="key-term">product-wet bubble point limits</span> should be conducted, first with water followed by product-wetting and then by the product-wet test. The technical rationale for establishment of product-wet bubble point values should be documented. Bubble point values are affected by the <span class="key-term">surface tension</span> and <span class="key-term">temperature</span> of the wetting fluid. Section 7.4.1.1 describes one method used to establish bubble point specifications using filter discs. Other methods may be appropriate if scientifically justified (see Section 10.2 for further discussion of bubble point tests).</p>
+        <h3>7.4.1.1 Bubble Point Ratio Approach</h3>
+        <p>For determining product-specific bubble point specifications, testing can generally be conducted as follows:</p>
+        <ol>
+            <li>Select multiple samples of filter discs for testing--generally at least three membrane lots. Since the bubble point refers to specific values relating to the membrane's pore size and the wetting-liquid surface tension, filter discs can be used.</li>
+            <li>Install the membrane discs in the holder and rinse them with the reference wetting liquid (e.g., water, alcohol).</li>
+            <li>Perform the bubble point test on each disc.</li>
+            <li>Either completely dry the filter discs or rinse the membranes with an appropriate amount of the product in question to ensure complete removal of the wetting fluid used in the first integrity test.</li>
+            <li>Perform the bubble point test with the product. These values are used to calculate the product-wet bubble point limit.</li>
+        </ol>
+        <p>The bubble point limit for product can be calculated using the formula given in Equation 1. This example uses water as the reference fluid, which correlates the product-wetted-filter bubble point test data to the minimum water-wetted bubble point value given by the filter manufacturer.</p>
+        <div class="quote-box">
+            <strong>Equation 1:</strong><br>
+            PBP<sub>min</sub> = WBP<sub>min</sub> x (PBP<sub>avg</sub> / WBP<sub>avg</sub>)<br><br>
+            Where:<br>
+            PBP<sub>min</sub> = Product-wetted bubble point, minimum (minimum validated product-wetted bubble point)<br>
+            WBP<sub>min</sub> = Water-wetted bubble point, minimum (minimum water-wetted bubble point specified by the filter supplier)<br>
+            PBP<sub>avg</sub> = Average product-wetted bubble point of the test samples recorded in the test<br>
+            WBP<sub>avg</sub> = Average water-wetted bubble point of the test samples recorded in the test
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Bubble Point Ratio Approach（泡點比值法）：</strong>這是一種將水潤濕泡點規格「轉換」為產品潤濕泡點規格的標準方法。核心邏輯是：產品潤濕泡點與水潤濕泡點之間存在一個穩定的比例關係（主要由表面張力決定），這個比例可以從小規模實驗中測定，然後應用到製造商提供的水潤濕最低泡點值上。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+Equation 1: Product-Wetted Bubble Point Minimum
+
+PBP_min = WBP_min x (PBP_avg / WBP_avg)
+
+範例計算：
+假設：
+  WBP_min (供應商規格) = 3200 mbar
+  WBP_avg (水潤濕實測平均) = 3800 mbar
+  PBP_avg (產品潤濕實測平均) = 3040 mbar
+
+則：比值 = PBP_avg / WBP_avg = 3040 / 3800 = 0.80
+
+PBP_min = 3200 x 0.80 = 2560 mbar
+
+意義：產品潤濕的最低泡點規格為 2560 mbar
+            </pre>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像匯率轉換。濾膜製造商給你的是「美元價格」（水潤濕泡點規格），但你的工廠使用「歐元」（產品潤濕）。你需要找出匯率（比值），然後把美元價格轉換成歐元價格。匯率的計算方式是：用同一批濾膜碟片，分別量測「美元」和「歐元」的數值，算出比例。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>至少三個膜批次：</strong>測試必須使用至少三個不同的濾膜批次，以確保比值具有統計代表性。只用一個批次的數據可能無法反映批次間的正常變異。</p>
+            <p><strong>完全去除前一種潤濕液：</strong>在從水潤濕切換到產品潤濕之前，必須確保水已被完全去除（乾燥或充分沖洗）。殘留的水會影響產品潤濕泡點的準確性。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果產品的表面張力是水的 80%，你預期 PBP_avg / WBP_avg 的比值大約是多少？</li>
+                <li>為什麼測試需要至少三個不同的膜批次？只用一個批次有什麼風險？</li>
+                <li>使用上述範例的數據，如果你工廠實測的產品潤濕泡點為 2400 mbar，這支濾膜是否通過測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.4.2 ===== -->
+<div class="section-title">7.4.2 Product-Wetted Diffusive Flow Test 產品潤濕擴散流量測試</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The determination of <span class="key-term">product-wetted test specifications for diffusive flow</span> is a two-step process, which requires first, identifying the bubble point ratio as described in Equation 1.</p>
+        <p><strong>Step 1: Determination of Test Pressure</strong></p>
+        <p>The test pressure for the product-wetted diffusive flow test is typically calculated using the following formula and the determined product wet bubble point values:</p>
+        <div class="quote-box">
+            <strong>Equation 2:</strong><br>
+            TP<sub>PW</sub> = MTP<sub>WW</sub> x (PBP<sub>avg</sub> / WBP<sub>avg</sub>)<br><br>
+            Where:<br>
+            TP<sub>PW</sub> = Test pressure, product-wetted (varies with surface tension)<br>
+            MTP<sub>WW</sub> = Manufacturer test pressure, water-wetted (or other test solvent) (see Section 10.2)<br>
+            PBP<sub>avg</sub> = Average product-wetted bubble point of the test samples recorded in the test<br>
+            WBP<sub>avg</sub> = Average water-wetted bubble point of the test samples recorded in the test
+        </div>
+        <p><strong>Step 2: Determination of the Product-Wetted Diffusive Flow Limit</strong></p>
+        <p>The product-wetted diffusive-flow limit is then typically determined as follows:</p>
+        <ol>
+            <li>Conduct replicate water-wetted diffusive-flow tests on the filter assembly at the test pressure specified by the filter manufacturer (small-scale devices may be used as long as an accurate determination of flow is possible).</li>
+            <li>Dry the previously water-wet tested filter assembly and conduct several replicates of the product-wetted diffusive-flow test at the appropriate test pressure determined in Step 1, Equation 2 above.</li>
+            <li>Calculate the diffusive-flow test limit using the formula expressed in Equation 3:</li>
+        </ol>
+        <div class="quote-box">
+            <strong>Equation 3:</strong><br>
+            DFL<sub>PW</sub> = DFL<sub>WW</sub> x (DF<sub>PW</sub> / DF<sub>WW</sub>)<br><br>
+            Where:<br>
+            DFL<sub>PW</sub> = Diffusive flow limit, product-wetted<br>
+            DFL<sub>WW</sub> = Diffusive-flow test limit specified by the supplier, water-wetted<br>
+            DF<sub>PW</sub> = Diffusive flow, product-wetted<br>
+            DF<sub>WW</sub> = Diffusive flow, water-wetted
+        </div>
+        <p>Diffusion values are affected by the solubility of the test gas in the wetting fluid and its diffusion constant through the wetting fluid, therefore acceptance criteria are specific to a particular test gas being used.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>兩步驟轉換流程：</strong>產品潤濕的擴散流量規格建立比泡點更複雜，需要兩個步驟：</p>
+            <ol>
+                <li><strong>Step 1 -- 轉換測試壓力：</strong>使用與泡點相同的比值，將水潤濕的測試壓力轉換為產品潤濕的測試壓力</li>
+                <li><strong>Step 2 -- 轉換擴散流量限值：</strong>在新的測試壓力下，比較水潤濕和產品潤濕的擴散流量，算出轉換係數</li>
+            </ol>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+Step 1: 測試壓力轉換 (Equation 2)
+TP_PW = MTP_WW x (PBP_avg / WBP_avg)
+
+範例：
+  MTP_WW = 2500 mbar (供應商指定)
+  比值 = 0.80 (從 Equation 1 計算)
+  TP_PW = 2500 x 0.80 = 2000 mbar
+
+Step 2: 擴散流量限值轉換 (Equation 3)
+DFL_PW = DFL_WW x (DF_PW / DF_WW)
+
+範例：
+  DFL_WW = 12 ml/min (供應商規格)
+  DF_WW = 8 ml/min (水潤濕實測)
+  DF_PW = 10 ml/min (產品潤濕實測)
+  DFL_PW = 12 x (10/8) = 15 ml/min
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>測試氣體的影響：</strong>擴散流量的數值還受測試氣體種類影響。不同氣體在潤濕液中的溶解度和擴散係數不同，因此驗收標準必須針對特定的測試氣體。在實務中，壓縮空氣和氮氣是最常用的測試氣體，但兩者的擴散特性有差異——切換氣體時必須重新建立規格。</p>
+            <p><strong>為什麼產品潤濕的擴散流量可能高於水潤濕？</strong>如果產品中測試氣體的溶解度較高或擴散係數較大，同一支完好濾膜的產品潤濕擴散流量會高於水潤濕值。因此，產品潤濕的限值 (DFL_PW) 通常也會高於水潤濕限值 (DFL_WW)。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼擴散流量的轉換需要兩個步驟，而不能像泡點那樣一步完成？</li>
+                <li>如果你在驗證過程中切換了測試氣體（從壓縮空氣改為氮氣），是否需要重新建立產品潤濕規格？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.5 ===== -->
+<div class="section-title">7.5 When a Sterilizing-Grade Filter Should be Integrity-Tested 除菌級濾膜應在何時進行完整性測試</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Where the claimed purpose of the filter is to sterilize, <span class="key-term">post-use integrity-testing is mandatory</span>. This confirms that the filter remained integral throughout its use and was capable of retaining microorganisms. If truly nonintegral filters are detected post-use, a thorough investigation to determine the root cause is required. Guidance on best practice is to leverage the supplier's or manufacturer's expertise. In most cases, it also results in discarding a drug batch (or reprocessing, where validated) to protect patient safety from exposure to a nonsterile product.</p>
+        <p>For filters marketed for critical sterilizing filtration, each filter element should also be integrity-tested by the filter manufacturer prior to release.</p>
+        <p>Integrity-testing can also be performed by the end user prior to use, either before the filter itself is sterilized (when sterilized by the end user) or after sterilization (Figure 7.5-1). This allows early detection of nonintegral filters or improperly installed filters prior to execution of the filtration process. Whether to test filters in-line or off-line will depend on actual process requirements, but the test must include the cartridge already installed in the filter-housing (if applicable) so the seal between the filter element and the housing is also confirmed. Regulatory expectations regarding pre- and post-filtration integrity-testing may differ regionally (9, 11). In general, the objectives of pre- and post-filtration integrity-testing vary, and the need for each should be informed by <span class="key-term">risk assessment</span>.</p>
+        <p><em>[Figure 7.5-1 Filter Lifecycle -- Opportunities for Integrity-Testing]</em></p>
+        <p>Pre-use, pre-sterilization integrity tests performed by the end user would be redundant to the integrity test performed by the filter manufacturer to release the sterilizing-grade filter from their production. However, a presterilization test will additionally confirm that an integral filter of the proper pore size has been correctly installed in the housing, and that damage has not occurred during shipping and handling. A <span class="key-term">post-sterilization integrity test</span> provides the same information as a pre-sterilization test plus confirmation that the filter was not damaged during sterilization. Steps must be taken to ensure that the downstream side of the system remains sterile when performing <span class="key-term">PUPSIT</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>濾膜生命週期中的測試時機：</strong></p>
+            <ul>
+                <li><strong>製造商出廠測試：</strong>每支除菌級濾膜在出廠前都經過完整性測試</li>
+                <li><strong>用戶使用前、滅菌前測試：</strong>確認安裝正確、運輸無損壞（與出廠測試重複）</li>
+                <li><strong>用戶使用前、滅菌後測試 (PUPSIT)：</strong>額外確認滅菌過程未損壞濾膜</li>
+                <li><strong>用戶使用後測試（強制性）：</strong>確認濾膜在整個使用過程中保持完整</li>
+            </ul>
+            <p><strong>PUPSIT（使用前滅菌後完整性測試）：</strong>在濾膜滅菌後、過濾產品之前進行的測試。必須確保下游系統的無菌狀態不被破壞。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>出門前檢查瓦斯（再次強化）：</strong></p>
+            <ul>
+                <li><strong>出廠測試 = 瓦斯公司安裝後的驗收：</strong>確認設備出廠合格</li>
+                <li><strong>使用前測試 = 你自己聞一聞：</strong>確認搬進新家後管線沒問題</li>
+                <li><strong>PUPSIT = 每次用完瓦斯後確認關閉：</strong>確認最近一次使用後一切正常</li>
+                <li><strong>使用後測試 = 做完飯後的最終確認：</strong>這是強制性的——必須確認瓦斯已安全關閉</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>使用後測試是強制性的：</strong>如果濾膜的聲稱用途是除菌，使用後完整性測試是「mandatory（強制性的）」——沒有例外。如果測試失敗，通常意味著整批產品需要丟棄或返工。</p>
+            <p><strong>法規差異：</strong>對於使用前測試（特別是 PUPSIT），不同地區的法規期望可能不同。EU GMP Annex 1 對 PUPSIT 有更明確的期望，而 FDA 的要求相對靈活。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼使用後完整性測試是「強制性的」而非「建議性的」？從病患安全的角度解釋。</li>
+                <li>使用前滅菌前測試與出廠測試有何重疊？為什麼仍有其價值？</li>
+                <li>執行 PUPSIT 時，「確保下游系統的無菌狀態不被破壞」具體需要哪些措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.5.1 ===== -->
+<div class="section-title">7.5.1 Pre-Use Post-Sterilization Integrity Test (PUPSIT) Considerations PUPSIT 考量</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The post-use test is designed to detect any filter damage that occurred throughout its lifecycle, up to and including the filtration process itself. However, under extreme circumstances, <span class="key-term">post-filtration integrity test results may be influenced (i.e., shifted) by high-foulant fluids</span>, which may mask a filter flaw or larger pore structure (44-47). In this scenario a PUPSIT result could identify filter flaws or filter damage when a post-use integrity may not. Recent publications have shown that these conditions are atypical for terminal filtration steps as <span class="key-term">filter-fouling</span> is typically avoided within these filtration applications. <span class="key-term">Filterability studies</span>, performed to determine the appropriate filter size and area before any filter design is established, will indicate the fluid-fouling propensity and filter flaw-masking risk, and gauge potential preventive measurements against any fouling (47).</p>
+        <p>In filtration applications with significant pore-plugging or large-pore structure-blockage potential, it is advisable to know the filter's prefiltration integrity-test value prior to the influences of contact with the full batch of product (or more strictly, the potential of foulants to shift the measured post-use integrity-test results in the direction that might cause <span class="key-term">false passes</span>.) Any excessive fouling conditions would be also evidenced by significant flux decay or required pressure increase to maintain flow. True post-use integrity-test failures are typically a result of damages due to extreme mechanical or thermal process conditions. Such damages are typically catastrophic, and flaw-masking would not be possible for catastrophic or gross damage to filter membranes, as this damage is not capable of being "masked" by components of the fluid to an extent that allows a post-use test to appear to pass (48). However, in cases where significant fouling of the filter is possible, it could potentially mask rare marginal membrane flaws, which may not be detected by the post-use integrity test. Excessive filter-fouling could also be detected by special customizations to the post-use test, as the decrease in porosity and blockage of the largest pores would be manifested in a decrease in diffusive flow and in an increase in the bubble point, respectively (49). Alternative means also exist to detect any fouling that has the potential to modify post-use test value, including flow and differential-pressure monitoring during filtration, and possible modifications to the post-use test to detect unexpectedly low diffusive-flow values or unexpectedly high bubble points. Further, any risk of such flaw-masking (due to product-specific mechanisms of shifting the integrity-test results after fouling) can be evaluated during process design. Decades of experiences of filter suppliers and end-users showed that this type of behavior is scarce and evaluated during filterability tests respectively filter area sizing and process validation.</p>
+        <p>Any potential risks involved in the sterilizing filtration activity must be thoroughly assessed (28, 50, 51). While PUPSIT is a common regulatory expectation, there may be process constraints where it is not feasible (11). In such cases, and in relevant jurisdictions, a <span class="key-term">thorough risk assessment</span> is required not to justify omission, but to evaluate and manage the risks associated with not performing PUPSIT. This includes assessing the filter sterilization process, supply chain controls, packaging, product characteristics, and pre-filtration steps. The goal of this assessment is to ensure that adequate controls are in place to mitigate the risk of using any non-integral filters.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Flaw-Masking（缺陷遮蔽）：</strong>這是 PUPSIT 爭議的核心問題。在某些極端情況下，高堵塞性流體 (High-Foulant Fluids) 可能在使用後測試中「遮蔽」濾膜缺陷——堵塞的孔隙使得擴散流量降低、泡點升高，讓一支有缺陷的濾膜看起來像是通過了測試。PUPSIT 能在產品接觸前偵測到這些缺陷。</p>
+            <p><strong>但是——這種情況非常罕見：</strong>文件明確指出，數十年的經驗顯示這種行為「is scarce（很稀少的）」。而且災難性損壞（如嚴重的機械或熱損傷）不可能被產品成分「遮蔽」到讓使用後測試通過的程度。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在檢查一個水管是否有裂縫。如果水管裡有很多水垢（fouling），水垢可能會堵住小裂縫，讓漏水測試看起來正常。這就是 flaw-masking。PUPSIT 就像是在水垢形成之前先測一次——確認水管本身是完好的。但實際上，如果水管有大的裂口（catastrophic damage），水垢不可能堵住它；只有微小的邊緣缺陷才可能被遮蔽。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>PUPSIT 不可行時的風險評估：</strong>文件強調，不執行 PUPSIT 時需要的風險評估「不是為了合理化省略 (not to justify omission)」，而是為了「評估和管理相關風險」。這個措辭非常重要——法規並不接受「因為不方便所以不做」的理由，而是要求你證明有足夠的替代控制措施來降低風險。</p>
+            <p><strong>偵測堵塞的替代方法：</strong>過濾過程中的流量和壓差監控、使用後測試的特殊客製化（偵測異常低的擴散流量或異常高的泡點）都是偵測堵塞的手段。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO，你可能面臨客戶或法規要求執行 PUPSIT 的情境。評估時需考慮：</p>
+            <ul>
+                <li>產品的堵塞傾向（透過 filterability studies 評估）</li>
+                <li>SUS 是否能承受 PUPSIT 所需的壓力</li>
+                <li>下游無菌維護的可行性</li>
+                <li>是否有足夠的替代控制（如冗餘過濾、生物負荷監控）</li>
+            </ul>
+            <p>如果決定不執行 PUPSIT，風險評估文件必須經過品質部門審核，並在法規稽核時隨時可供查閱。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>什麼是 flaw-masking？在什麼類型的產品中最可能發生？</li>
+                <li>為什麼 catastrophic filter damage 不可能被 flaw-masking 遮蔽？</li>
+                <li>如果你決定不執行 PUPSIT，風險評估中必須包含哪些要素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.5.2 ===== -->
+<div class="section-title">7.5.2 Post-Filtration Integrity-Test Considerations 過濾後完整性測試考量</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>For operational reasons, the post-filtration integrity test should be accomplished <span class="key-term">as soon as feasible</span> to avoid any detrimental test influences, for example, filter membrane wetting problems. Product residues should not dry out on the membrane and should be removed, if possible (by sufficiently flushing the filter with an appropriate fluid, post-use), if not testing in product. Filters should not be discarded until the integrity-test results are reviewed. <span class="key-term">Storage conditions and duration</span> should be qualified to ensure they do not adversely affect the integrity of the filter. In cases of abnormally long delay between the use of the filter and its integrity test, the possibility of <span class="key-term">false passes</span> should be evaluated.</p>
+        <p>The post-use test is not only a test of membrane integrity, but of the junction between the filter element and its housing or capsule. The filter element to be tested should therefore remain within the filter-housing to ensure that the filter and its junction with the housing has been integral throughout the filtration process. The post-use integrity test could be performed in-line or off-line within specific integrity-test laboratories within the end user's facility. The post-use test can be performed as a product-wet or water-wet procedure. Confirmation of integrity must be obtained before any product batch is released; therefore, the filter must not be discarded before the test result is obtained. If the filter receives an apparently failing integrity-test result, specific activities for <span class="key-term">retesting or root cause analysis</span> are required and should be documented in the relevant procedure or batch record.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>使用後測試的實務要求：</strong></p>
+            <ul>
+                <li><strong>盡快執行：</strong>避免產品殘留乾燥在膜上影響潤濕和測試結果</li>
+                <li><strong>不要丟棄濾膜：</strong>在測試結果確認前，濾膜必須保留——這是批次放行的前提條件</li>
+                <li><strong>保持在外殼中：</strong>測試的不僅是濾膜本身，還包括濾膜與外殼的密封接合</li>
+                <li><strong>存儲條件需確認：</strong>如果使用和測試之間有延遲，存儲條件和時間必須經過驗證</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>使用後完整性測試就像犯罪現場鑑識——必須在「現場」盡快完成（不要讓證據被破壞），而且必須保留「物證」（不要丟棄濾膜），直到「案件結案」（批次放行）。如果你把濾膜從外殼中取出再測試，就像是把證據從犯罪現場移走再分析——你無法確認它在原始位置的狀態。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>批次放行的門檻：</strong>「確認完整性必須在任何產品批次放行之前獲得」——這是一個明確的法規期望。如果完整性測試結果是失敗的或可疑的，產品批次不能放行，必須進行調查。</p>
+            <p><strong>延遲測試的風險：</strong>如果使用和測試之間的延遲異常長，必須評估「假通過」的可能性。產品殘留乾燥可能改變膜的潤濕特性，導致不準確的測試結果。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼使用後測試應「盡快」執行？延遲測試可能造成哪些問題？</li>
+                <li>為什麼濾膜在測試前必須保持在外殼中？如果取出會遺漏什麼資訊？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.5.3 ===== -->
+<div class="section-title">7.5.3 Integrity Testing for Serial or Redundant Filtration 串聯或冗餘過濾的完整性測試</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Manufacturing processes may be designed with trains of multiple filters, but the purpose of these extra filters varies from process to process (see Section 5.0). This purpose determines the need for integrity-testing of each filter. If one filter has been validated to achieve sterilization with a specific product, then the single sterilizing filter must satisfactorily pass integrity-testing after use.</p>
+        <h3>7.5.3.1 Two-Filter Sterilization (Double Filtration)</h3>
+        <p>In <span class="key-term">double filtration</span>, the filter train is considered to be a sterilizing unit, and all sterilizing filters within the train must satisfactorily pass integrity-testing after use.</p>
+        <h3>7.5.3.2 Pre-Filtration</h3>
+        <p>For <span class="key-term">prefiltration</span>, requirements for integrity-testing must be determined by the end user in an overall assessment during process design. Depending on the purpose of the filter, integrity-testing (correlated to complete bacterial retention) may not always be necessary.</p>
+        <h3>7.5.3.3 Redundant Filtration</h3>
+        <p>The primary filter (generally the farthest downstream) must be integrity-tested post-use. The secondary (<span class="key-term">redundant</span>) sterilizing filter may not require post-use integrity-testing unless the primary sterilizing filter fails. In that case, the redundant filter must satisfactorily pass post-use integrity-testing and the reason for the failure of the primary filter should be investigated including confirmation of the sterile boundary. If the sterilizing-filtration process is redundant and registered as having PUPSIT, both filters should undergo PUPSIT for them to be considered comparable.</p>
+        <p>Performing PUPSIT on both filters in a redundant filtration configuration can be quite complex. Each filter must be tested individually after sufficient wetting; a single test cannot typically be used to test both filters simultaneously. Precautions should be taken to maintain the sterility of the fluid pathway between the two filters, as that region becomes critical for product sterility should the downstream filter fail, and the upstream filter is relied upon for sterility. Controls can include the use of additional sterilizing filters to vent the integrity-test gas from the upstream filter and introduce the test gas for integrity-testing the downstream filter. To test the downstream filter, there must be a valve or other closure between it and the upstream filter. In this type of setup, the integrity-test process-method development should include a risk assessment to ensure that the effects of wetting, or nonintegrity of the product and vent filters, does not interfere with the filter integrity-test result (52, 53). Further details on these considerations were discussed in PDA's Points to Consider for Implementation of Pre-Use Post-Sterilization Integrity Testing (PUPSIT).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三種多濾膜配置的測試要求：</strong></p>
+            <ul>
+                <li><strong>Double Filtration（雙重過濾）：</strong>兩支濾膜都是除菌用途，都必須通過使用後測試</li>
+                <li><strong>Pre-Filtration（預過濾）：</strong>非除菌用途，完整性測試不一定需要（取決於用途）</li>
+                <li><strong>Redundant Filtration（冗餘過濾）：</strong>主濾膜（下游）必須測試；冗餘濾膜（上游）僅在主濾膜失敗時才必須測試</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>雙重安全帶：</strong>冗餘過濾就像飛機上的備用引擎。主引擎（primary filter）每次飛行後都要檢查。備用引擎（redundant filter）只有在主引擎出問題時才需要全面檢測——但一旦需要啟用，就必須確認它是完好的。如果你的系統註冊為「有 PUPSIT」，那就像承諾兩個引擎在每次起飛前都要檢查。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>冗餘配置中 PUPSIT 的複雜性：</strong>在冗餘過濾系統中執行 PUPSIT 極其複雜——需要分別測試每支濾膜、維護兩膜之間的無菌性、使用額外的除菌排氣濾膜。這是許多工廠在評估 PUPSIT 可行性時必須仔細考量的實務挑戰。</p>
+            <p><strong>兩膜之間的無菌區域：</strong>如果下游主濾膜失敗，兩膜之間的流體路徑就成為產品無菌性的關鍵。這個區域的無菌狀態必須在整個 PUPSIT 過程中得到保護。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 double filtration 中，為什麼兩支濾膜都必須通過使用後測試？</li>
+                <li>在 redundant filtration 中，如果主濾膜通過測試但冗餘濾膜未測試，批次能否放行？</li>
+                <li>執行冗餘配置的 PUPSIT 時，為什麼需要額外的除菌排氣濾膜？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.6 ===== -->
+<div class="section-title">7.6 Failure Analysis/Troubleshooting 失敗分析/故障排除</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>If a sterilizing filter fails an integrity test, it could be damaged, but there may be other causes for the failure that include incorrect assembly (incomplete sealing) and <span class="key-term">incomplete wetting</span> (see Section 7.7.1). Due to the physical mechanisms of filter integrity-testing, <span class="key-term">"false failures"</span> may occur, and controlled retesting with defined actions may be permitted. When procedures are followed and appropriately justified, an ultimate passing result can be treated as a valid result even if initial tests resulted in reported failures. Filter-failure investigations and retest procedures should be documented.</p>
+        <p>To distinguish between filter damage and possible wetting or other problems, the following verification steps may be taken to determine that the:</p>
+        <ul>
+            <li>Appropriate integrity test has been selected</li>
+            <li>Correct test parameters are being used</li>
+            <li>Correct wetting fluid and wetting procedure are being used</li>
+            <li>No leaks in the test system</li>
+            <li>Filter assembly temperature has remained stable and within specification during testing (e.g., <span class="key-term">adiabatic effect</span>*) (54)</li>
+            <li>Equipment has been properly calibrated (55)</li>
+            <li>Test setup is properly assembled and functions properly</li>
+            <li>Correct filter has been installed</li>
+        </ul>
+        <p><em>*Note: Adiabatic effects can influence the test result if temperature is not held constant. To overcome this, extended stabilization and test times may be required for these systems.</em></p>
+        <p>After verifying the above, troubleshooting steps (including re-wetting and re-testing) can be performed to rule out possible false failure causes. Example steps in a troubleshooting procedure include:</p>
+        <ul>
+            <li>Rewet the filter according to the specifications and repeat the test (see Figure 7.6-1, Step 1).</li>
+        </ul>
+        <p>If the filter integrity-test fails again, the following step may be employed:</p>
+        <ul>
+            <li>Apply more aggressive wetting conditions by increasing the flush volume/time, increasing the pressure differential, and/or applying back pressure (see Figure 7.6-1, Step 2).</li>
+        </ul>
+        <p>If the filter-integrity test fails again, the following steps may be employed:</p>
+        <ul>
+            <li>Perform the integrity test in a lower surface-tension reference fluid to assess filter wettability changes independent of filter integrity (see Figure 7.6-1, Step 3).</li>
+            <li>If the filter fails using the reference fluid, the filter fails the test.</li>
+        </ul>
+        <p>If the filter passes the integrity test at any point during this failure analysis, it can be considered integral and capable of yielding a sterile effluent. Figure 7.6-1 provides an example of a decision tree that may be used to evaluate integrity-test failures. The total number of test repetitions allowed should be defined and documented, and all actions should be proceduralized. When the total number of test repetitions allowed is exceeded, investigations should be initiated and documented.</p>
+        <p><em>[Figure 7.6-1 Example Integrity-Test Failure Analysis Decision Tree]</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>False Failures（假失敗）：</strong>由於完整性測試的物理機制，可能發生「假失敗」——濾膜本身完好，但測試結果顯示不通過。最常見的原因是潤濕不足 (Incomplete Wetting)。TR26 允許在有程序、有記錄的前提下進行重新測試。</p>
+            <p><strong>三步故障排除流程：</strong></p>
+            <ol>
+                <li><strong>Step 1：</strong>按規格重新潤濕並重測</li>
+                <li><strong>Step 2：</strong>加強潤濕條件（增加沖洗量/時間、增加壓差、施加背壓）再重測</li>
+                <li><strong>Step 3：</strong>用低表面張力的參考液測試（排除潤濕性問題），如果仍然失敗，濾膜確認不合格</li>
+            </ol>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你的電視遙控器按鍵沒反應。你不會立刻認定電視壞了：</p>
+            <ul>
+                <li><strong>Step 1：</strong>先換新電池試試（重新潤濕並重測）</li>
+                <li><strong>Step 2：</strong>換電池後還是不行，試試用力按、調整角度（加強潤濕條件）</li>
+                <li><strong>Step 3：</strong>用另一個遙控器試試電視（用參考液測試），如果另一個遙控器也不行，那電視真的有問題（濾膜確認不合格）</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Adiabatic Effect（絕熱效應）：</strong>當氣體在密閉系統中膨脹或壓縮時，溫度會變化。這種溫度變化會影響測試結果。解決方法是延長穩定時間和測試時間，讓系統達到熱平衡。大型系統（大體積上游空間）特別容易受此影響。</p>
+            <p><strong>重測次數必須預先定義：</strong>允許的重測次數必須在程序中事先明確定義並記錄。不能無限次重測直到通過——這會引發法規對「testing into compliance（測到合格為止）」的關注。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的日常營運中，完整性測試失敗是常見的偏差事件。建立一套清晰的故障排除 SOP 至關重要：</p>
+            <ul>
+                <li>明確定義允許的最大重測次數（例如：潤濕重測最多 2 次，加強潤濕 1 次）</li>
+                <li>每次重測都要記錄原因和結果</li>
+                <li>超過重測次數限制時自動觸發偏差調查</li>
+                <li>確保操作人員經過培訓，了解何時需要停止重測、升級報告</li>
+            </ul>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR26 允許在完整性測試失敗後重測？這與「testing into compliance」有何不同？</li>
+                <li>Adiabatic effect 在什麼類型的系統中最為顯著？如何減輕其影響？</li>
+                <li>如果 Step 3 中使用參考液測試通過但產品潤濕測試仍然失敗，這說明什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 7.6.1 ===== -->
+<div class="section-title">7.6.1 Insufficient Wetting Failure Analysis 潤濕不足的失敗分析</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Filter integrity-test failures are often caused by <span class="key-term">insufficient wetting</span> of the filter membrane matrix. Incomplete wetting may be due to either inadequate flushing to wet out all pores, adsorption of hydrophobic contaminants, or other formulation components that can change the surface-wetting characteristics of the filter membrane. A change in the wetting characteristics may affect integrity-test performance. For example, <span class="key-term">leachables</span> from upstream materials may be adsorbed into the filter membrane, impacting its wetting properties and resulting in an integrity-test failure (56).</p>
+        <p>To obtain an appropriate integrity-test result, the filter's porous structure must be completely wetted, as the physics of integrity-test measurement rely on either gas flow through the wetting liquid layer or displacement of the wetting fluid from the largest structure. Wetting of the filter membrane can be influenced by:</p>
+        <ul>
+            <li><strong>Membrane polymer:</strong> Some polymers are easier to wet than others, depending on the critical surface tension of the membrane material</li>
+            <li><strong>Pore size:</strong> The smaller the pore size, the more difficult the pores are to wet</li>
+            <li><strong>Wetting fluid:</strong> Some wetting fluids may interact unfavorably with the polymeric matrix</li>
+            <li><strong>Product residues or contaminants:</strong> Product residues or contaminants can alter the hydrophilicity of the membrane polymer and repel the wetting fluid or lower the surface tension</li>
+            <li><strong>Pressure conditions:</strong> Manufacturer's pressure recommendations should be followed to completely wet the membrane</li>
+            <li><strong>Temperature conditions:</strong> Temperature influences the surface tension of the wetting fluid</li>
+        </ul>
+        <p>In addition to the above, there may be process- and application-specific factors that could affect integrity tests that are not covered by the manufacturer's description of use. The troubleshooting steps described in Section 7.6 and the decision tree provided in Figure 7.6-1 may be useful to evaluate integrity-test failures. Additional troubleshooting information is provided in Section 10.3.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Insufficient Wetting（潤濕不足）：</strong>這是完整性測試失敗最常見的原因。完整性測試的物理原理建立在「濾膜完全被液體潤濕」的前提上。如果任何孔隙未被潤濕，氣體就能自由通過這些「乾」孔隙，產生異常高的流量讀數，導致測試失敗。</p>
+            <p><strong>影響潤濕的六個因素：</strong></p>
+            <ul>
+                <li><strong>膜材質 (Membrane Polymer)：</strong>PES（聚醚碸）比 PVDF（聚偏二氟乙烯）更容易潤濕</li>
+                <li><strong>孔徑 (Pore Size)：</strong>0.1 微米比 0.2 微米更難潤濕</li>
+                <li><strong>潤濕液 (Wetting Fluid)：</strong>某些溶液可能與膜材質不相容</li>
+                <li><strong>產品殘留/污染物：</strong>可能改變膜的親水性</li>
+                <li><strong>壓力條件：</strong>需按製造商建議的壓力來潤濕</li>
+                <li><strong>溫度條件：</strong>溫度影響潤濕液的表面張力</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在用水潤濕一塊海綿。如果海綿表面有一層油（疏水性污染物），水就很難滲透進去。即使你把海綿大部分泡濕了，那些有油的地方仍然是乾的——這些「乾」區域會讓水通過測試看起來像是海綿有洞。同樣地，如果從上游設備溶出的 Leachables（可溶出物）被濾膜吸附，可能改變膜表面的親水性，導致潤濕不完全。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Leachables 的意外影響：</strong>上游材料（如矽膠管路、密封圈）釋放的可溶出物可能被濾膜吸附，改變其潤濕特性。這是一個容易被忽略的失敗根因——如果你的工廠更換了上游管路材料，可能會突然開始出現完整性測試失敗。</p>
+            <p><strong>孔徑越小越難潤濕：</strong>這是一個重要的實務知識。0.1 微米的除菌濾膜比 0.2 微米更難完全潤濕，可能需要更高的潤濕壓力和更長的潤濕時間。如果你的製程使用 0.1 微米濾膜，潤濕程序的驗證尤為重要。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼潤濕不足會導致完整性測試「失敗」而非「通過」？從物理機制的角度解釋。</li>
+                <li>如果你的工廠在更換上游管路後開始出現頻繁的完整性測試失敗，你會從哪些方向調查？</li>
+                <li>列舉至少三種提高濾膜潤濕效果的方法。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SECTION SUMMARY ===== -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>完整性測試的本質：</strong>一種非破壞性物理測試，作為細菌截留試驗的替代方法 (Surrogate Method)，基於濕潤濾膜的氣體擴散和泡點原理來判定濾膜完整性</li>
+        <li><strong>測試方法的選擇：</strong>取決於濾膜面積——小面積用泡點法，中面積兩者皆可，大面積用擴散流量法。SUS 環境應優先考慮擴散流量法以避免超壓</li>
+        <li><strong>完整性測試只是無菌保證的一環：</strong>必須搭配製造商品質控制、細菌截留驗證、製程控制等多重要素，才能構成完整的無菌保證策略</li>
+        <li><strong>產品潤濕規格的建立：</strong>需要透過 Bubble Point Ratio Approach 和擴散流量轉換公式（Equations 1-3），將水潤濕的標準規格轉換為產品潤濕的專屬規格</li>
+        <li><strong>使用後測試是強制性的：</strong>只要濾膜的聲稱用途是除菌，使用後完整性測試就是必須的。PUPSIT 的執行取決於風險評估和法規要求</li>
+        <li><strong>故障排除遵循三步流程：</strong>重新潤濕 → 加強潤濕 → 參考液測試。潤濕不足是最常見的失敗原因，受膜材質、孔徑、潤濕液、污染物、壓力和溫度等因素影響</li>
+        <li><strong>設備確認和資料完整性：</strong>自動化完整性測試儀器是現代標準，必須經過完整的設備確認（含「通過」和「失敗」情境），並符合資料完整性要求</li>
+        <li><strong>決策層級：</strong>在所有與完整性測試相關的決策中，無菌濾液保證 (Sterile Filtrate Assurance) 永遠是最高優先，高於製程便利性和商業效率</li>
+    </ul>
+</div>
+
+</div>
+</body>
+</html>

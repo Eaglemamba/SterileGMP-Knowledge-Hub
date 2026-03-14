@@ -312,6 +312,43 @@ Update this checklist as sections are completed.
 
 ---
 
+## TOKEN ESTIMATION & AGENT DISPATCH PLANNING
+
+Before processing a new PDA document, estimate token consumption per section to plan parallel agent dispatch within the 200K context window.
+
+### Estimation Formula
+
+```
+Source content chars × 0.3 = input tokens (approximate)
+Total tokens per section ≈ fixed overhead (20K) + (source pages × 15K)
+
+Fixed overhead includes: PROMPT.md instructions + template.css + HTML template structure
+Variable cost: bilingual commentary generates 3-5x more text than original
+```
+
+### Estimation Reference (from TR26 actual measurement)
+
+| Source Pages | Source Chars | Est. Input Tokens | Est. Total Tokens | Fits in 200K? |
+|---|---|---|---|---|
+| 1-3 pages | <10K | <3K | ~30-50K | Yes, combine with neighbors |
+| 4-5 pages | 10-15K | 3-5K | ~60-80K | Yes, can combine |
+| 10-12 pages | 20-35K | 6-10K | ~100-140K | Yes, solo |
+| 15-17 pages | 40-55K | 12-16K | ~160-180K | Tight — solo only |
+| 18+ pages | 55K+ | 16K+ | ~190K+ | Must split into sub-sections |
+
+### Agent Dispatch Rules
+
+1. **First**: Extract all section texts from PDF and measure char counts
+2. **Then**: Group sections so each agent's total stays under ~160K tokens (safe margin)
+3. **Small sections** (1-5 pages): combine 2-4 into one agent
+4. **Medium sections** (6-12 pages): solo or pair with one small section
+5. **Large sections** (13-17 pages): always solo
+6. **Extra-large sections** (18+ pages): split into sub-sections across multiple agents
+7. **Skip** reference-only sections (no commentary needed)
+8. **Dispatch all agents simultaneously** for maximum parallelism
+
+---
+
 ## DECISION HIERARCHY (Reinforce in every section)
 
 When making design or content choices, this priority always applies:
