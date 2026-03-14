@@ -4,24 +4,27 @@
 
 When a PDA Technical Report is fully processed (all sections generated, merged, and verified in browser), you MUST complete these steps before committing:
 
-### 1. Update `index.html` — Document Cards
+### 1. Update `index.html` — Document Card (ONE card per report)
 
-Add entries to the `documents` array for each section of the new report:
+Add ONE entry to the `documents` array for the entire report (not per-section):
 
 ```javascript
-// Example for TR26:
-{ date:"2026-03-14", title:"Section 1: Introduction", titleZh:"導論",
-  source:"PDA TR26 Sterilizing Filtration (2025)", tags:["Filtration","Overview"],
-  summary:"...", lines:XXX, pages:"pX-pX", figures:0, file:"TR26/output/TR26-Complete.html" },
+// Example:
+{ date:"2026-03-14", title:"PDA TR26: Sterilizing Filtration of Liquids", titleZh:"液體除菌過濾",
+  source:"PDA TR26", tags:["Filtration","Validation","Integrity Test","Sterilization","QbD"],
+  summary:"完整8章+3附錄：濾膜原理、確效、製程設計...（1-2 sentence Chinese summary of full report）",
+  sections:11, pages:"p1-p73", figures:0, file:"TR26/output/TR26-Complete.html" },
 ```
 
 Key fields:
-- `date` — date the section was completed
-- `source` — use consistent naming: `"PDA TRXX [Short Title] (Year)"`
-- `tags` — relevant technical tags for search/filter
-- `summary` — 1-line Traditional Chinese summary
-- `lines` — approximate line count of the HTML
-- `file` — path relative to `docs/` (or direct path to the merged output)
+- `date` — date the report was completed
+- `title` — format: `"PDA TRXX: [Full English Title]"`
+- `source` — short form: `"PDA TRXX"` (matches sourceColors key)
+- `tags` — 4-6 top-level technical tags covering the whole report
+- `summary` — Traditional Chinese summary of the entire report scope
+- `sections` — total number of chapters/sections in the merged document
+- `pages` — page range of the source PDF
+- `file` — path to the merged TopNav HTML (e.g., `TR26/output/TR26-Complete.html`)
 
 ### 2. Update `index.html` — Source Colors
 
@@ -29,9 +32,9 @@ Add a new entry to `sourceColors` for the new report's color theme:
 
 ```javascript
 const sourceColors = {
-    "PDA Guide No.1 Aseptic Filling (2025)": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"PDA Guide No.1" },
-    "PDA TR26 Sterilizing Filtration (2025)": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" },
-    // new report here...
+    "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
+    "PDA TR26": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" },
+    // new report here — pick a distinct color pair...
 };
 ```
 
@@ -49,8 +52,8 @@ Add any new tags to the `tagCls` object that don't already exist:
 ### 4. Dashboard Stats Auto-Update
 
 The following stats are computed dynamically from the `documents` array — no manual update needed:
-- Total Documents count
-- Total Lines
+- Reports count (total cards)
+- Sections count (sum of all `sections` fields)
 - Figures count
 - Sources count
 - Linked count
