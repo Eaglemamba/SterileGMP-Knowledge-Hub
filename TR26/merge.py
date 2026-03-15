@@ -201,9 +201,11 @@ def merge():
     </header>
 
     <nav class="top-nav" id="topNav">
-        <div class="nav-container">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
 {nav_html}
         </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -223,6 +225,23 @@ def merge():
         const sections = document.querySelectorAll('.chapter-section');
         const navItems = document.querySelectorAll('.nav-item');
         const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        function updateNavArrows() {{
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }}
+        btnLeft.addEventListener('click', function() {{
+            navContainer.scrollBy({{ left: -300, behavior: 'smooth' }});
+        }});
+        btnRight.addEventListener('click', function() {{
+            navContainer.scrollBy({{ left: 300, behavior: 'smooth' }});
+        }});
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
 
         window.addEventListener('scroll', function() {{
             if (window.scrollY > 300) {{
@@ -243,6 +262,7 @@ def merge():
                 item.classList.remove('active');
                 if (item.getAttribute('data-section') === current) {{
                     item.classList.add('active');
+                    item.scrollIntoView({{ block: 'nearest', inline: 'nearest' }});
                 }}
             }});
         }});

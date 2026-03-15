@@ -75,17 +75,18 @@ The following stats are computed dynamically from the `documents` array — no m
 ├── index.html              # Main dashboard (update per rules above)
 ├── PROMPT.md               # Master generation instructions
 ├── template.css            # Shared CSS (do not modify per-report)
-├── merge.py                # Root merge script (PDA Guide No.1)
+├── merge_engine.py         # Shared merge library — import in report merge.py files
+├── new_report.py           # Scaffold script — run to create new report folder
 ├── README.md               # Repo readme
-├── search-index.js         # Full-text search index (optional)
 ├── Raw pdfs/               # Source PDFs
-├── TR26/                   # One folder per technical report
-│   ├── PROMPT.md           # TR-specific instructions
-│   ├── merge.py            # TR-specific merge script
+├── pda-guide-no1/          # One folder per technical report
+│   ├── merge.py            # Report-specific merge script (reference template for JS/nav)
 │   ├── source/             # Extracted text files
 │   ├── sections/           # Individual section HTMLs
 │   └── output/             # Merged TopNav HTML
-├── TRXX/                   # Next report follows same structure
+├── TR26/                   # Same structure as above
+│   └── ...
+├── PtC-14/                 # Same structure
 │   └── ...
 ```
 
@@ -129,3 +130,69 @@ When creating a new report's `merge.py`, copy the nav HTML and JS from `pda-guid
 
 The `file` field in the `documents` array must be a path **relative to `index.html`** (repo root).
 Example: `"pda-guide-no1/output/Guide-No1-Complete.html"` — no `docs/` prefix, no leading slash.
+
+---
+
+## Quick Start — Adding a New Report
+
+```bash
+# 1. Scaffold the folder structure
+python3 new_report.py
+
+# 2. Extract PDF text
+python3 extract_pdf.py "Raw pdfs/TRXX.pdf" TRXX/source/
+
+# 3. Generate section HTMLs (one agent per section, parallel dispatch)
+#    Use PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
+
+# 4. Merge
+python3 TRXX/merge.py
+
+# 5. Update index.html (document card, sourceColors, tagCls)
+
+# 6. Verify in browser, then commit + push
+git add TRXX/ index.html && git commit -m "Add TRXX: [title]"
+```
+
+For new merge.py files, use `merge_engine.py` via import — see its docstring for usage.
+
+---
+
+## Current Reports Inventory
+
+| Folder | Report | Sections | Status |
+|--------|--------|----------|--------|
+| `pda-guide-no1/` | PDA Guide No.1: Filling Machine Design | 30 | Complete |
+| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
+| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
+| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
+
+---
+
+## Known Pitfalls
+
+### 32K Output Token Limit
+Claude agents have a 32,000 output token limit per response. Sections covering 20+ pages of dense
+technical content often exceed this. **Plan A/B splits upfront** for any source text file over ~800 lines.
+Name them: `section-04a-name.html`, `section-04b-name.html`.
+Update SECTION_MAP to pass both files in the same list entry:
+```python
+(["section-04a-name.html", "section-04b-name.html"], "sec4", "4", "Label", "中文", "p29-p41"),
+```
+
+### Nav Overflow (justify-content: center)
+If `.nav-container` has `justify-content: center`, overflow is clipped symmetrically — users cannot
+reach leftmost tabs. Always use `justify-content: flex-start` + scroll arrows (see TopNav Scroll Arrow Rule).
+
+### index.html "docs/" Prefix Bug
+Never prefix file paths with `docs/`. The `file` field must be relative to repo root:
+- Correct: `"TR26/output/TR26-Complete.html"`
+- Wrong: `"docs/TR26/output/TR26-Complete.html"`
+
+### merge_engine.py Import Path
+When a report's `merge.py` imports from `merge_engine.py`, add the parent directory to sys.path:
+```python
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from merge_engine import run_merge
+```
