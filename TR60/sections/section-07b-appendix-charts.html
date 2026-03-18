@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR60 - Section 7b: Appendix II Control Charts + Appendix References</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7b: Appendix II &mdash; Types of Control Charts + Appendix References</h1>
+    <div class="subtitle">附錄 II：管制圖類型 + 附錄參考文獻</div>
+    <div class="page-info">PDA Technical Report No. 60 (Revised 2026) &mdash; Process Validation: A Lifecycle Approach | p144 - p155</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解製程驗證中常用的計量型（Variables）管制圖種類及其適用場景</li>
+        <li>了解計數型（Attributes）管制圖種類及特殊大樣本情況的替代方案</li>
+        <li>理解 Average Run Length (ARL) 的概念及其在管制圖效能評估中的意義</li>
+        <li>掌握 Laney p-chart / u-chart 處理過度分散（Over-Dispersion）資料的原理</li>
+        <li>熟悉附錄參考文獻清單，了解進階統計方法的學術出處</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節內容導覽</h3>
+    <div class="toc-grid">
+        <a href="#sec10-0">10.0 附錄 II 概述</a>
+        <a href="#sec10-1">10.1 計量型管制圖</a>
+        <a href="#sec10-2">10.2 計數型管制圖</a>
+        <a href="#sec-arl">管制圖效能：ARL</a>
+        <a href="#sec11-0">11.0 附錄參考文獻</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.0 APPENDIX II: TYPES OF CONTROL CHARTS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec10-0">10.0 Appendix II: Types of Control Charts</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Section 10.0 (Appendix II) lists recommended <span class="key-term">statistical process control</span> tools, such as <span class="key-term">control charts</span>, that may be utilized for <span class="key-term">process validation (PV)</span> data trending. Refer to <span class="key-term">TR 59</span> for additional information (16).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Control Chart (管制圖)：</strong>管制圖是 Statistical Process Control (SPC，統計製程管制) 的核心工具。它以時間序列的方式繪製製程數據，並設定管制上限 (UCL) 與管制下限 (LCL)，通常為中心線 &plusmn;3 個標準差。當數據點落在管制界限之外或出現非隨機模式時，即表示製程可能已發生偏移。</p>
+            <p><strong>TR 59 (PDA 技術報告第 59 號)：</strong>專門探討「生產監控中統計方法的利用」，是 TR 60 管制圖議題的延伸閱讀重要資源。兩份報告應搭配使用。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>管制圖就像汽車儀表板上的速度表和引擎溫度表。正常行駛時，指針在安全範圍內波動；一旦超出紅線區域，就表示有問題需要處理。關鍵是：你不是等到引擎冒煙才發現問題，而是透過持續監控，在小異常階段就能即時發現。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.1 CONTROL CHARTS FOR VARIABLES DATA -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec10-1">10.1 Control Charts for Variables Data</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Commonly used control charts for <span class="key-term">variables data</span> are (8,9):</p>
+        <ul>
+            <li><span class="key-term">x&#772;/R or x&#772;/S "Shewhart" chart</span> using &plusmn;3-sigma limits</li>
+            <li><span class="key-term">Individuals/Moving Range (I/MR) chart</span></li>
+            <li><span class="key-term">Levey-Jennings chart</span></li>
+            <li><span class="key-term">Moving average chart</span></li>
+            <li><span class="key-term">Exponentially weighted moving average (EWMA) chart</span></li>
+            <li><span class="key-term">Cumulative sum (CUSUM) chart</span></li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Variables Data (計量型數據)：</strong>指可以在連續尺度上量測的數據，例如充填重量 (mg)、pH 值、含量 (%)、溶離度 (%) 等。這類數據包含的資訊量較計數型數據更豐富，能更靈敏地偵測製程偏移。</p>
+        </div>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>管制圖類型</th>
+                <th>適用場景</th>
+                <th>特點</th>
+            </tr>
+            <tr>
+                <td><strong>x&#772;/R 或 x&#772;/S (Shewhart)</strong></td>
+                <td>每個取樣點有多個觀測值（子組），例如每批取 5 個樣品測量</td>
+                <td>最經典的管制圖；x&#772; 監控平均值，R 或 S 監控組內變異。使用 &plusmn;3&sigma; 管制界限</td>
+            </tr>
+            <tr>
+                <td><strong>I/MR (個別值/移動全距)</strong></td>
+                <td>每個取樣點只有一個觀測值，例如每批只測一個複合樣品</td>
+                <td>適用於樣本量 n=1 的情境；移動全距 (MR) 用於估計製程變異</td>
+            </tr>
+            <tr>
+                <td><strong>Levey-Jennings</strong></td>
+                <td>實驗室 QC 常用，追蹤分析方法穩定性</td>
+                <td>類似 I/MR，但常搭配 Westgard 規則進行判斷；在製藥實驗室中廣泛使用</td>
+            </tr>
+            <tr>
+                <td><strong>Moving Average (移動平均)</strong></td>
+                <td>需要平滑短期波動、觀察趨勢</td>
+                <td>將連續 k 個觀測值取平均後繪圖，有助於偵測緩慢漂移</td>
+            </tr>
+            <tr>
+                <td><strong>EWMA (指數加權移動平均)</strong></td>
+                <td>需要偵測製程的小偏移</td>
+                <td>賦予近期數據較大權重，對小偏移（0.5&sigma; ~ 2&sigma;）比 Shewhart 圖更靈敏</td>
+            </tr>
+            <tr>
+                <td><strong>CUSUM (累積和)</strong></td>
+                <td>需要偵測製程的持續性小偏移</td>
+                <td>累積觀測值與目標值的偏差；對持續小偏移的偵測力最強</td>
+            </tr>
+        </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Shewhart 圖 vs EWMA/CUSUM 的選擇邏輯：</strong></p>
+            <ul>
+                <li>Shewhart 圖對<strong>大偏移</strong>（&ge;2&sigma;）偵測快速，但對小偏移不敏感</li>
+                <li>EWMA 和 CUSUM 則對<strong>小偏移</strong>（0.5&sigma;~1.5&sigma;）有卓越的偵測能力</li>
+                <li>在 Continued Process Verification (CPV，持續製程確認) 階段，製程通常已穩定，因此<strong>偵測小偏移</strong>的能力更為關鍵 &mdash; 此時 EWMA/CUSUM 是更佳選擇</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在監控一個水塔的水位：</p>
+            <ul>
+                <li><strong>Shewhart 圖</strong>像是每隔一段時間看一眼水位表 &mdash; 如果水位突然大幅下降你會發現，但慢慢滲漏就不容易察覺</li>
+                <li><strong>EWMA 圖</strong>像是一個智慧型感測器，會加權考慮最近的水位變化趨勢，即使每次只滲漏一點點也能發出預警</li>
+                <li><strong>CUSUM 圖</strong>則像是記帳本，持續累積偏差 &mdash; 即使每次偏差很小，累積起來就會觸發警報</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠每批充填後取 5 支安瓿測量充填體積，應該選用哪種管制圖？為什麼？</li>
+                <li>在 CPV 階段，如果你擔心製程的平均值緩慢漂移（例如每批偏移 0.5&sigma;），Shewhart 圖能否有效偵測？你會推薦什麼替代方案？</li>
+                <li>Levey-Jennings 圖主要用於什麼場景？它與 I/MR 圖的主要差異為何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.2 CONTROL CHARTS FOR ATTRIBUTES DATA -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec10-2">10.2 Control Charts for Attributes Data</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The most-used control charts for <span class="key-term">attributes data</span> are (8,9):</p>
+        <ul>
+            <li><span class="key-term">p-chart</span> for fraction or percent nonconforming (binomial data)</li>
+            <li><span class="key-term">np-chart</span> for number of units nonconforming (binomial data)</li>
+            <li><span class="key-term">c-chart</span> for number of defects (Poisson data)</li>
+            <li><span class="key-term">u-chart</span> for average number of defects (Poisson data)</li>
+        </ul>
+
+        <p>In addition, the <span class="key-term">I/MR chart</span> can be used for attributes data if most of the plotted values are not zero (0).</p>
+
+        <p>For very large sample sizes, for instance, greater than 500 or 1,000 (e.g., percent of tablets rejected across lots on a sample of 1000 or more tablets inspected per lot with an automatic metal detector) and long time periods, the assumptions of a binomial or Poisson distribution that attributes charts use is often violated. In that case, alternative approaches to the common charts for attributes data could be used:</p>
+
+        <ul>
+            <li><span class="key-term">Laney's p-chart and u-chart</span> deal appropriately with under- or over-dispersion in the data, which lead respectively to an increased or a decreased number of points outside the control limits with the corresponding classical charts for attributes (17)</li>
+            <li><span class="key-term">I/MR or Levey-Jennings's control chart</span></li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Attributes Data (計數型數據)：</strong>指只能以離散數值（合格/不合格、缺陷數）表示的數據。例如：外觀檢查的不合格數、微粒計數、容器完整性測試的通過/不通過。</p>
+            <p><strong>Binomial (二項分布) vs Poisson (卜瓦松分布)：</strong></p>
+            <ul>
+                <li><strong>Binomial：</strong>每個樣品只有「合格」或「不合格」兩種結果。p-chart 和 np-chart 基於此分布</li>
+                <li><strong>Poisson：</strong>計算的是單位面積/體積/時間內的缺陷「次數」，每個樣品可以有 0 個或多個缺陷。c-chart 和 u-chart 基於此分布</li>
+            </ul>
+        </div>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>管制圖</th>
+                <th>監控對象</th>
+                <th>分布假設</th>
+                <th>樣本量要求</th>
+            </tr>
+            <tr>
+                <td><strong>p-chart</strong></td>
+                <td>不合格品比例</td>
+                <td>Binomial</td>
+                <td>可變動（n 可以不同）</td>
+            </tr>
+            <tr>
+                <td><strong>np-chart</strong></td>
+                <td>不合格品數量</td>
+                <td>Binomial</td>
+                <td>必須固定（n 相同）</td>
+            </tr>
+            <tr>
+                <td><strong>c-chart</strong></td>
+                <td>缺陷數</td>
+                <td>Poisson</td>
+                <td>必須固定（檢查區域/體積相同）</td>
+            </tr>
+            <tr>
+                <td><strong>u-chart</strong></td>
+                <td>平均缺陷數</td>
+                <td>Poisson</td>
+                <td>可變動（n 可以不同）</td>
+            </tr>
+        </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>大樣本量的陷阱 &mdash; Over-Dispersion (過度分散)：</strong></p>
+            <p>這是一個非常實務且容易被忽略的問題。當樣本量非常大（例如 n &gt; 500 或 1,000）時，傳統 p-chart 和 u-chart 的管制界限會變得極窄（因為標準差與 &radic;n 成反比）。這導致：</p>
+            <ul>
+                <li>大量數據點落在管制界限之外，產生過多<strong>假警報 (False Alarms)</strong></li>
+                <li>這些「超限點」並非真正的製程偏移，而是因為實際數據的變異比 Binomial/Poisson 模型假設的更大（即<strong>過度分散</strong>）</li>
+                <li><strong>Laney's p'/u' chart</strong> 透過引入 sigma(Z) 因子來修正管制界限寬度，解決此問題</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在一個大城市的十字路口統計交通違規次數。如果你只觀察 10 分鐘（小樣本），偶爾多幾次違規是正常波動；但如果你觀察整整一個月、每秒都在記錄（超大樣本），「每天違規率」的微小波動在傳統管制圖上都會顯示為「異常」。Laney 的方法就是在計算管制界限時，考慮了這種「大規模觀察自然帶來的額外變異」，讓管制界限回歸合理範圍。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>案例：自動金屬偵測器的錠劑剔除率監控</strong></p>
+            <p>假設你的工廠每批檢查 5,000 顆錠劑，記錄被金屬偵測器剔除的數量。如果使用傳統 p-chart：</p>
+            <ul>
+                <li>管制界限極窄（因 n=5,000 很大），UCL 可能只有 0.3%</li>
+                <li>批間的正常波動（例如 0.1% ~ 0.5%）會導致許多批次被標記為 OOC (Out of Control)</li>
+                <li>工廠調查團隊會疲於調查這些「假警報」，浪費大量資源</li>
+            </ul>
+            <p>改用 <strong>Laney's p'-chart</strong> 或 <strong>I/MR chart</strong>（以每批剔除率為個別值），管制界限會更合理，真正的製程偏移才會被正確識別。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的外觀檢查站每批抽 200 支安瓿（固定數量），記錄不合格支數。應選用 p-chart 還是 np-chart？理由為何？</li>
+                <li>如果每批抽樣數不固定（有時 100 支、有時 300 支），此時 np-chart 還適用嗎？應改用什麼？</li>
+                <li>為什麼 TR 60 建議對大樣本量的計數型數據考慮使用 I/MR 圖？其前提條件是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PERFORMANCE OF CONTROL CHARTS: ARL -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-arl">Performance of Control Charts: Average Run Length (ARL)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The ability of a <span class="key-term">control chart</span> to detect a shift in the process is measured by the average number of sample periods before the shift is detected. This is called the <span class="key-term">Average Run Length (ARL)</span>. When the process has not changed (a shift of 0), it is desirable to have a large ARL to keep the <span class="key-term">false-alarm rate</span> low. However, if the process has shifted, it is desirable to have a small ARL to detect the change quickly. ARL is most important in <span class="key-term">CPV</span>, when it is desirable to detect a significant process change within a short period of time. The ARL can be used to help select the <span class="key-term">sample size</span> and <span class="key-term">frequency of sampling</span>. Tables of ARLs comparing different control chart types are available and can also be calculated by software.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Average Run Length, ARL (平均運行長度)：</strong>指管制圖在製程偏移發生後，平均需要觀察幾個取樣點才能偵測到偏移（即第一個點落在管制界限之外）。</p>
+            <ul>
+                <li><strong>ARL<sub>0</sub>（製程在管制狀態）：</strong>希望此值越大越好，代表不會頻繁產生假警報。Shewhart 圖的 ARL<sub>0</sub> = 370（即平均每 370 個取樣點才會有一次假警報）</li>
+                <li><strong>ARL<sub>1</sub>（製程已偏移）：</strong>希望此值越小越好，代表能快速偵測到問題。例如偏移 1&sigma; 時，Shewhart 圖的 ARL<sub>1</sub> &asymp; 44，EWMA 的 ARL<sub>1</sub> &asymp; 10</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>Shewhart 管制圖的 ARL 計算概念：</strong></p>
+            <pre>
+ARL = 1 / P(點落在管制界限外)
+
+製程在管制狀態（&plusmn;3&sigma; limits）：
+  P(超限) = 0.0027 (即 &plusmn;3&sigma; 外的常態分布面積)
+  ARL_0 = 1 / 0.0027 &asymp; 370
+
+製程偏移 1&sigma;：
+  P(超限) &asymp; 0.0228
+  ARL_1 = 1 / 0.0228 &asymp; 44
+
+製程偏移 2&sigma;：
+  P(超限) &asymp; 0.1587
+  ARL_1 = 1 / 0.1587 &asymp; 6.3
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>ARL 與取樣策略的關聯：</strong></p>
+            <ul>
+                <li>ARL 直接影響你的<strong>取樣頻率</strong>決策。如果 ARL<sub>1</sub> = 44，表示平均要等 44 個取樣點才能偵測到 1&sigma; 的偏移。若每月取樣一次，可能需要近 4 年才能發現！</li>
+                <li>這也是為什麼 TR 60 特別指出 ARL 在 <strong>CPV 階段</strong>最為重要 &mdash; CPV 的目標是及時發現製程變化，而非等到大量不合格品產出後才處理</li>
+                <li>實務上，可使用 ARL 比較表來選擇最適合的管制圖類型和取樣方案</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>ARL 就像一個煙霧偵測器的靈敏度設定：</p>
+            <ul>
+                <li>你希望在沒有火災時不要亂響（<strong>ARL<sub>0</sub> 越大越好</strong> = 不要太敏感而頻繁假警報）</li>
+                <li>但你也希望在真正有火災時能迅速響起（<strong>ARL<sub>1</sub> 越小越好</strong> = 快速偵測到真正的問題）</li>
+                <li>不同種類的管制圖就像不同品牌的偵測器 &mdash; 有些對大火反應快但對陰燃不敏感（Shewhart），有些對小火苗就能偵測到（EWMA/CUSUM）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 CPV 取樣頻率是每週一次，而你使用 Shewhart 圖監控一個 CQA，當製程偏移 1&sigma; 時，大約需要多少週（ARL<sub>1</sub> &asymp; 44）才能偵測到？這樣的延遲在實務上是否可接受？</li>
+                <li>如何透過管制圖類型的選擇（例如改用 EWMA）來降低 ARL<sub>1</sub>，又不至於讓 ARL<sub>0</sub> 過低而產生太多假警報？</li>
+                <li>為什麼 TR 60 說 ARL 可以幫助決定取樣大小和取樣頻率？請用自己的話解釋其中的邏輯。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 11.0 APPENDIX REFERENCES -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec11-0">11.0 Appendix References</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Appendix References</h3>
+        <ol>
+            <li>Meeker, W.Q., Hahn, G.J., Escobar, L.A. <em>Statistical Intervals: A Guide for Practitioners and Researchers.</em> John Wiley &amp; Sons, 2017.</li>
+            <li>U.S. Food and Drug Administration. <em>Guidance for Industry: PAT &mdash; A Framework for Innovative Pharmaceutical Development, Manufacturing, and Quality Assurance;</em> U.S. Department of Health and Human Services: Rockville, Md., 2004.</li>
+            <li>Oliver, J. A 3-D Risk Assessment Model. <em>J Validation Tech</em> 2008, 14 (5), 70-76.</li>
+            <li>Makkonen, L. Bringing Closure to the Plotting Position Controversy. <em>Communications in Statistics&mdash;Theory and Methods</em> 2008, 37, 460&ndash;67.</li>
+            <li>Lenth, R V. Java Applets for Power and Sample Size [computer software]. http://homepage.divms.uiowa.edu/~rlenth/Power/ (accessed 20 Mar 2011).</li>
+            <li>Hoffman, D; Kringle, R. Two-Sided Tolerance Intervals for Balanced and Unbalanced Random Effects Models. <em>J Biopharm Stat</em> 2005, 15 (2), 283-93.</li>
+            <li>Vangel, M. New Methods for One-Sided Tolerance Limits for a One-Way Balanced Random-Effects ANOVA Model. <em>Technometrics</em> 1992, 34, 176-85.</li>
+            <li>Montgomery, D C. <em>Introduction to Statistical Quality Control, 6th Edition.</em> John Wiley &amp; Sons, Inc.: Hoboken, NJ, 2009; p. 63.</li>
+            <li>Wheeler, D J, Chambers, D S. <em>Understanding Statistical Process Control, Third Edition.</em> SPC Press: Knoxville, Tenn., 2010.</li>
+            <li>Scherder, T. et al. Benefits and challenges of process capability metrics. <em>Pharmaceutical Engineering</em>, ISPE, November-December, 2023.</li>
+            <li>Burdick, R. K. &amp; Graybill, F. A. <em>Confidence intervals on variance components.</em> CRC Press, 1992.</li>
+            <li>Farnuma, N; Stantona, L. Narrow Limit Gauging: Go or No Go? <em>Qual Eng</em> 1991, 3 (3), 293-307.</li>
+            <li>Nelson, L. Nomograph of Sample Size for Estimating Standard Deviation. <em>J Quality Tech</em> 2018, 11 (Sup1), 25-26.</li>
+            <li>Greenwood, J A; Sondomire, M M. Sample Size Required for Estimating the Standard Deviation as a Percent of its True Value. <em>J Am Statistical Assoc</em> 1950, 45 (250), 257-60.</li>
+            <li>Flight, L., and Julious, S. A. Practical guide to sample size calculations: non-inferiority and equivalence trials. <em>Pharmaceut. Statist.</em>, 2016, 15: 80&ndash;89.</li>
+            <li>Parenteral Drug Association. <em>Technical Report No. 59: Utilization of Statistical Methods for Production Monitoring;</em> PDA: Bethesda, Md., 2012.</li>
+            <li>Laney, D B. Improved Control Chart for Attributes. <em>Qual Eng</em> 2002, 14 (4), 531-37.</li>
+        </ol>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>參考文獻分類導讀：</strong>這 17 篇參考文獻可依主題分為以下幾個類別，方便讀者依需求查閱：</p>
+        </div>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>主題分類</th>
+                <th>文獻編號</th>
+                <th>內容摘要</th>
+            </tr>
+            <tr>
+                <td><strong>統計區間與容許區間</strong></td>
+                <td>Ref 1, 6, 7</td>
+                <td>Meeker 等人的經典教科書，以及 Hoffman 和 Vangel 關於容許區間 (Tolerance Intervals) 的專論，適用於製程驗證中的 acceptance criteria 設定</td>
+            </tr>
+            <tr>
+                <td><strong>SPC 與管制圖</strong></td>
+                <td>Ref 8, 9, 16, 17</td>
+                <td>Montgomery 和 Wheeler 的 SPC 經典教科書；TR 59 為 PDA 姊妹報告；Laney 的改良計數型管制圖</td>
+            </tr>
+            <tr>
+                <td><strong>樣本量與檢定力</strong></td>
+                <td>Ref 5, 13, 14, 15</td>
+                <td>樣本量計算工具、標準差估計所需樣本量、非劣性/等效性試驗的樣本量指引</td>
+            </tr>
+            <tr>
+                <td><strong>製程能力指標</strong></td>
+                <td>Ref 10, 11</td>
+                <td>Scherder 對製程能力指標的優缺點分析；Burdick 關於變異成分信賴區間的方法論</td>
+            </tr>
+            <tr>
+                <td><strong>風險評估與 PAT</strong></td>
+                <td>Ref 2, 3</td>
+                <td>FDA PAT 指引（製程分析技術框架）；Oliver 的 3D 風險評估模型</td>
+            </tr>
+            <tr>
+                <td><strong>其他統計方法</strong></td>
+                <td>Ref 4, 12</td>
+                <td>繪圖位置爭議的結論性文章；窄限量規 (Narrow Limit Gauging) 方法論</td>
+            </tr>
+        </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>必讀文獻推薦：</strong></p>
+            <ul>
+                <li><strong>Ref 8 (Montgomery)：</strong>SPC 入門最佳教科書，涵蓋所有管制圖的數學基礎和應用案例。若你是統計製程管制的初學者，建議從此書開始</li>
+                <li><strong>Ref 16 (TR 59)：</strong>PDA 的姊妹報告，專門探討生產監控中的統計方法，是 TR 60 附錄內容的最佳補充</li>
+                <li><strong>Ref 17 (Laney)：</strong>Laney 的原始論文，若你的工廠處理大樣本量的計數型數據，務必了解其 p'/u' chart 方法</li>
+                <li><strong>Ref 1 (Meeker)：</strong>統計區間的權威參考書，涵蓋信賴區間、預測區間、容許區間的理論與實務</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這份參考文獻清單就像一間製藥統計師的「工具箱目錄」。不是每個工具你都需要隨時使用，但你要知道：</p>
+            <ul>
+                <li>需要設定規格限的容許區間時，去找 Meeker (Ref 1)</li>
+                <li>需要建立管制圖時，查 Montgomery (Ref 8) 或 Wheeler (Ref 9)</li>
+                <li>需要決定取樣數量時，參考 Ref 5, 13, 14</li>
+                <li>大樣本計數型數據出問題時，翻 Laney (Ref 17)</li>
+            </ul>
+            <p>好的工程師不需要記住所有公式，但一定要知道遇到問題時去哪裡找答案。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你需要為 CPV 方案制定管制圖策略，你會優先閱讀上述哪些參考文獻？請列出前 3 名並說明原因。</li>
+                <li>FDA PAT 指引 (Ref 2) 發布於 2004 年，其核心理念如何與 TR 60 的 Lifecycle Approach 相呼應？</li>
+                <li>你注意到 Ref 17 (Laney, 2002) 提出的改良方法至今已有 20 多年歷史，為什麼在最新版 TR 60 (2026) 中仍被推薦？這說明了什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>管制圖分類：</strong>計量型數據（Variables）使用 x&#772;/R、I/MR、Levey-Jennings、Moving Average、EWMA、CUSUM 等管制圖；計數型數據（Attributes）使用 p、np、c、u 管制圖</li>
+        <li><strong>管制圖選擇邏輯：</strong>Shewhart 圖適合偵測大偏移；EWMA 和 CUSUM 適合偵測持續性小偏移，在 CPV 階段特別有價值</li>
+        <li><strong>大樣本量陷阱：</strong>當樣本量很大（n &gt; 500~1,000）時，傳統計數型管制圖的分布假設可能被違反，導致過多假警報。Laney's p'/u' chart 或 I/MR 圖是有效的替代方案</li>
+        <li><strong>ARL 的決策意義：</strong>Average Run Length 衡量管制圖偵測偏移的速度。ARL<sub>0</sub> 要大（避免假警報），ARL<sub>1</sub> 要小（快速偵測真實偏移）。ARL 可作為選擇管制圖類型和取樣策略的定量依據</li>
+        <li><strong>參考文獻活用：</strong>17 篇附錄參考文獻涵蓋統計區間、SPC 管制圖、樣本量設計、製程能力指標、風險評估等主題，是深入學習的關鍵資源。Montgomery (Ref 8)、TR 59 (Ref 16) 和 Laney (Ref 17) 為最高優先閱讀項</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 60 (Revised 2026) &mdash; Process Validation: A Lifecycle Approach</p>
+    <p>Section 7b: Appendix II Control Charts + Appendix References (10.0-11.0, p144-p155)</p>
+    <p>Educational Material for CDMO Professionals | Bilingual EN/繁體中文</p>
+</div>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+// Back to top button visibility
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
