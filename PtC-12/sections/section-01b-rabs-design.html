@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Section 1b: RABS Design (Q1.7-Q1.12)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1b: Topic 1 RABS Design (Q1.7 - Q1.12)</h1>
+    <div class="subtitle">RABS 設計考量（第二部分）：開門介入預防、設置風險、建材維護、高效價化合物、環境監測與改裝設計</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems | p23 - p33</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解如何透過設計審查與程序控制<strong>預防充填期間的開門介入</strong>（Open-Door Interventions），以及不可避免時的風險緩解措施</li>
+        <li>掌握設置（Setup）階段降低 Grade A 環境污染風險的<strong>最佳實務做法</strong>，包括由上而下組裝、主/副操作員模式等</li>
+        <li>了解 RABS <strong>建材選擇與維護設計</strong>的關鍵要求（316SS、衛生設計、耐化學性）</li>
+        <li>認識在 cRABS 中處理<strong>高效價化合物</strong>（Highly Potent Compounds）時的正壓/負壓設計矛盾與解決方案</li>
+        <li>掌握<strong>線上環境監測（In-line EM）</strong>設備的工程設計考量，包括粒子計數器、活性空氣採樣器的安裝位置</li>
+        <li>理解 RABS <strong>改裝（Retrofitting）</strong>的典型場景、設計要點與 First Air 驗證方法</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Table of Contents</h3>
+    <div class="toc-grid">
+        <a href="#q1-7">Q1.7 預防開門介入</a>
+        <a href="#q1-8">Q1.8 設置期間風險最小化</a>
+        <a href="#q1-9">Q1.9 建材與維護設計</a>
+        <a href="#q1-10">Q1.10 高效價化合物設計</a>
+        <a href="#q1-11">Q1.11 線上環境監測設計</a>
+        <a href="#q1-12">Q1.12 改裝與介面設計</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.7 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-7">Q 1.7 How can open-door interventions be prevented during filling?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>RABS are designed with the goal of operating predominately as a <span class="key-term">closed system</span>. Where open-door interventions may be required, appropriate measures must be taken to mitigate the potential for increased risk to the aseptic process.</p>
+
+        <p>Detailed <span class="key-term">design reviews</span> of the production process undertaken at the onset of design can help avoid or minimize the need for open-door activities during the filling operation (1). These reviews should consider, but not be limited to, the following:</p>
+
+        <ul>
+            <li>Since the open-door barrier manual set-up process presents the highest risk of contamination of the Grade A zone when entering sterilized parts, the design of the set-up operation should be assessed using <span class="key-term">QRM principles</span> to reduce any unnecessary risk.</li>
+            <li>Following QRM principles, RABS design and operation should avoid the need for open-door interventions so after the last <span class="key-term">bio-decontamination</span> at set up the barrier doors remain closed until batch end. Primarily inherent and corrective interventions should be via barrier closed and any open-door intervention fully justified and rare.</li>
+            <li><span class="key-term">RTPs</span> used for introduction of pre-sterilized process components, consumables, product containers and closures plus EM plates if required to be changed or recovered for incubation during aseptic manufacturing operations.</li>
+            <li>Use of <span class="key-term">robotic systems and automation</span> that drives intervention free processing including introduction of EM systems that do not rely on growth media plate change (e.g., real time continuous viable monitoring).</li>
+            <li>Design considerations equally extend to consideration of the use and position of glove ports and should be considered in conjunction with the intended operations to define access requirements within the enclosed system and the type of operations for which interventions may be required.</li>
+            <li>Design considerations extend to the use of <span class="key-term">clean-in-place (CIP)/SIP</span> and single-use systems for fluid or powder pathways.</li>
+        </ul>
+
+        <p>Periodic reviews of the type, frequency, and duration of interventions for the filling process should be reviewed to inform the next periodic <span class="key-term">aseptic process simulation (APS)</span> protocol and to otherwise inform a potential engineering or other control solution that may be introduced to eliminate the need for future similar open-door interventions (1, 4, 9).</p>
+
+        <p>Notwithstanding these considerations, not all possible events that may be encountered during manufacturing operations can be considered during the design or early stages of RABS introduction for a new product or process. Rather, the intent of a well-designed aseptic program involving the use of barrier technology is to ensure that the RABS protection concept is the primary focus and continuously assessed, with the aim of eliminating or reducing the need to open the barrier during filling activities. <strong>When a closed-door intervention is possible to address an issue, an open-door intervention must be prohibited.</strong></p>
+
+        <p>Procedural controls should be established to ensure that adequate provisions are included in governing procedures and processes for such unavoidable scenarios and should extend to a detailed review and documentation including, but not limited to:</p>
+
+        <ul>
+            <li>Preassessment of <span class="key-term">airflow visualization studies (AVS)</span> and positive-pressure differentials to ensure that positive airflow from the enclosure to the external environment can be maintained prior to opening doors. A pre-intervention assessment should also extend to a documented review of what needs to be performed and whether the activity can be considered comparable to a preexisting intervention (1, 4, 9).</li>
+            <li>Consideration of whether the unqualified intervention represents a departure from critical controls established and whether a <span class="key-term">deviation</span> or formal risk assessment is required in support of finalizing and undertaking the planned intervention. The need for additional EM data, personnel monitoring requirements, sterility sample requirements, particulate-monitoring data and alarm review should be considered. An assessment of whether a media qualification and AVS may be required prior to release of the batch should also be understood and documented.</li>
+            <li>A robust disinfection of the nonproduct-contact surfaces, implicated by the open-door activity using appropriately qualified disinfectants. If necessary, to ensure there is no disinfectant residue, the use of <span class="key-term">70% IPA</span> after disinfection should be considered.</li>
+            <li>Consideration of need for <span class="key-term">batch segregation</span> and/or discarding of any filled product or components that may have been compromised or placed at unnecessary risk during the intervention.</li>
+            <li>Line clearance to eliminate open containers and/or components as applicable that may be in the vicinity of the intervention.</li>
+            <li>Confirmation that <span class="key-term">Grade A conditions</span> have been reestablished prior to recommencing filling.</li>
+        </ul>
+
+        <div class="quote-box">
+            "Note: Although not recommended, in rare cases, an unanticipated corrective intervention may be required that necessitates open-door operator intervention (e.g., to mitigate equipment challenges). In such cases, the inherent increased risk to the product requires careful consideration in line with formal QRM principles and should inform future engineering controls or other provisions that may be introduced with the aim of eliminating recurrences or the requirement for the open-door intervention. Before the intervention is executed, it needs to be risk assessed. If the risk-assessment does not support the execution of the intervention, it should not occur."
+        </div>
+
+        <p><strong>Rationale</strong></p>
+        <p>By design, the intent of a RABS or other barrier system is to separate the operator from the critical process zone to reduce the overall risk of contamination. Since interventions within a barrier system pose the highest risk to the aseptic core, the aim of any barrier technology, combined with a system of (engineering) controls, should be to reduce or eliminate any unnecessary interventions. Hence, the use of the barrier technology in conjunction with a system of controls comprising suitable design, robust quality systems, and aseptic oversight is required.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Open-Door Intervention（開門介入）：</strong>操作員必須打開 RABS 門才能進行的操作。這是 RABS 環境中<strong>風險最高</strong>的事件，因為它直接破壞了屏障系統的核心保護功能 -- 將人與 Grade A 關鍵區域隔離。</p>
+            <p><strong>Closed-Door Intervention（關門介入）：</strong>透過手套口（Glove Ports）在不打開門的情況下完成的操作。風險顯著低於開門介入，是 RABS 運行期間的首選方式。</p>
+            <p><strong>核心原則：</strong>當閉門介入可以解決問題時，<strong>必須禁止開門介入</strong>。這不是「建議」，而是一條明確的禁令。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在進行一場精密的<strong>心臟手術</strong>：手術室的正壓環境就像 RABS 的 UDAF 氣流保護。如果助手每次遞器械都要打開手術室大門，走廊的細菌就會湧入。最好的做法是透過一個<strong>傳遞窗</strong>（就像 RTP 快速傳遞口）把器械送進來，或者讓機器人自動遞送（就像自動化系統），手術室門從頭到尾不需要打開。</p>
+            <p>萬一必須開門（比如緊急搬入大型設備），必須先確認走廊已清潔、正壓仍維持、所有暴露的無菌表面已覆蓋 -- 這就是文件中描述的「程序控制」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>EU Annex 1 的嚴格立場：</strong>歐盟法規明確要求充填期間的開門介入應「極為罕見」（very rare）。PDA 本文更進一步指出，在設計階段就應透過 QRM 評估將其消除。這意味著：</p>
+            <ul>
+                <li>開門介入不能作為「標準操作」存在於 SOP 中</li>
+                <li>每次開門介入都應觸發偏差調查或正式風險評估</li>
+                <li>需要評估是否需要額外的 EM 數據、人員監測、無菌樣品等</li>
+                <li>必須確認 Grade A 條件已恢復後才能重新開始充填</li>
+            </ul>
+            <p><strong>批次隔離考量：</strong>開門介入後，可能需要將受影響的已充填產品或元件進行隔離或銷毀，這是一個重大的商業損失。因此，在設計階段投資消除開門介入需求，遠比事後處理更具成本效益。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>場景：</strong>你的 CDMO 工廠正在設計一條新的 RABS 充填線。設計團隊提出需要 12 個手套口，但預算有限。如何決策？</p>
+            <ul>
+                <li><strong>步驟 1：</strong>列出所有預期的固有介入（Inherent Interventions）和可能的矯正介入（Corrective Interventions）</li>
+                <li><strong>步驟 2：</strong>對每個介入進行 QRM 評估：能否透過自動化消除？能否透過 RTP 替代？</li>
+                <li><strong>步驟 3：</strong>剩餘必須手動完成的介入，確認手套口位置能覆蓋所有需求</li>
+                <li><strong>步驟 4：</strong>在 Mock-up 階段驗證每個介入都能在閉門狀態下完成</li>
+            </ul>
+            <p>投資於 RTP 和自動化的前期成本，可能在第一次避免開門介入引發的偏差調查時就回收了。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼文件特別強調「當閉門介入可行時，開門介入必須被禁止」？這與一般的「盡可能避免」措辭有何不同？</li>
+                <li>如果你的 RABS 充填線在生產中發生了一次未預期的開門矯正介入，列出你需要執行的所有後續程序控制步驟。</li>
+                <li>文件提到應定期審查介入的類型、頻率和持續時間，並將結果納入下次 APS 方案。這種「介入驅動的 APS 設計」如何提升無菌保證水平？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.8 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-8">Q 1.8 How can contamination risks of Grade A environments and compromise of sterilized component sterility be minimized during setup?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Setup, if done through closed doors via the glove ports, requires fewer precautions; however, setup most often requires activities through open doors. If that is the case, there are several ways to minimize the risk:</p>
+
+        <ul>
+            <li>Operate with <span class="key-term">only one door open at a time</span>.</li>
+            <li>As much as possible, equipment should be assembled prior to sterilization to avoid the need for aseptic connections. Sterilized items should be introduced with <span class="key-term">protective covers or sterile boxes</span> and those covers or boxes should only be removed after the doors have been closed through the glove ports. For legacy systems, where removal of protective covers after the doors are closed is not possible, alternative approaches must be considered and documented as part of the CCS. (See Topic 6.)</li>
+            <li>Utilize a <span class="key-term">"top down" approach</span> to line build, when possible, so installation is not occurring over an exposed critical surface (e.g., stopper hopper, stopper slide, stopper bowl).</li>
+            <li>Don additional gowning, such as <span class="key-term">sterile sleeves or longer gloves</span> (1).</li>
+            <li>Perform operator activities with a <span class="key-term">primary and secondary operator model</span>: In this model, the secondary operator opens the door and hands material to the primary operator who only operates within the Grade A space. (See Topic 9.)</li>
+            <li>The RABS design should consider, under a risk assessment, a <span class="key-term">zone of protection using an UDAF unit</span> to at least cover the open-door radius. The positions have to be determined by a risk analysis and should consider frequent open-door activities such as the setup of stopper bowls or feeding lanes. Figure 1.8-1 shows an example for UDAF extension (1, 9).</li>
+            <li>Evaluate the need to take additional (continuous) air samples (viable and total particulates) in the Grade B area with UDAF immediately surrounding the open-door area for the duration of the open-door setup activities (1, 9). (See PDA Technical Report No. 62: Recommended Practices for Manual Aseptic Processes for additional guidance for personnel behavior.)</li>
+            <li><span class="key-term">AVS qualification</span> should be done to ensure that there is a UDAF flush away and out of the RABS during setup.</li>
+            <li>Evaluate the possibility of performing <span class="key-term">VPHP decontamination</span> after setup (cRABS or oRABS with cleanroom).</li>
+            <li>After setup, the use of <span class="key-term">automatic decontamination</span> reduces the risk of ingress of the operator into Grade A.</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>Open-door activities typically necessary for equipment setup are of a higher risk as personnel must ingress into the Grade A space. All activities that minimize the risk of introducing bioburden into the Grade A environment will reduce the risk to the environment and, subsequently, the product. Such activities include, but are not limited to, the following:</p>
+        <ul>
+            <li>Minimizing the number of open doors to reduce the potential disruption of the UDAF within the RABS.</li>
+            <li>Maintaining protective covers on equipment, such as bonnets on a stopper bowl, keeps the sterilized surfaces from being exposed until the RABS doors have been closed and ensuring greater protection. It also allows for the door-open time to be minimized, completing the setup activities through the glove ports in a second step (4).</li>
+            <li>The utilization of additional protective measures (sterile sleeves, longer gloves, etc.) needs to be evaluated based upon an approved risk assessment.</li>
+            <li>Similarly, the primary/secondary operator model safeguards the integrity of the gowning of the primary operator, further reducing the risk of introducing contamination. (See PDA TR-62 for additional information.)</li>
+            <li>Having UDAF immediately adjacent to the doors, so that once the door is open, the area remains covered by Grade B surrounding the open door, will reduce the risk of introducing bioburden into the RABS enclosure.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>設置（Setup）階段</strong>是 RABS 運營中風險最高的時段之一，因為操作員必須進入 Grade A 區域安裝設備元件（如充填針頭、塞子碗、導軌等）。與充填期間的介入不同，設置通常<strong>無法完全避免開門操作</strong>。</p>
+            <p><strong>"Top Down" Approach（由上而下組裝法）：</strong>先安裝上方元件，再安裝下方元件，確保安裝動作不會發生在已暴露的關鍵表面上方。這是一個簡單但極為有效的污染風險控制策略。</p>
+            <p><strong>Primary/Secondary Operator Model（主/副操作員模式）：</strong>副操作員負責開門和傳遞物料，主操作員專注於 Grade A 區域內的操作。這樣可以保護主操作員的更衣完整性，因為他/她不需要觸碰門把或 Grade B 區域的物品。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>設置階段就像<strong>搬家到一間已消毒的手術室</strong>：你必須把家具（設備元件）搬進去，但每次開門都會讓走廊的灰塵進來。最聰明的做法是：</p>
+            <ul>
+                <li>家具先用塑膠膜包好（保護罩/無菌盒），進門後再拆</li>
+                <li>一次只開一扇門（避免對流）</li>
+                <li>先放天花板的燈具，再放桌子（由上而下）</li>
+                <li>門口有一個人接應（副操作員），裡面的人專心擺放（主操作員）</li>
+                <li>搬完後用消毒噴霧清一遍（VPHP 生物去污）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Legacy Systems（舊式系統）的挑戰：</strong>文件特別提到，對於舊系統可能無法在關門後透過手套口移除保護罩的情況，需要制定替代方案並記錄在 CCS 中。這表示法規單位認可不同設備能力的差異，但<strong>不接受「做不到所以不做」</strong>的態度 -- 必須有書面的替代方案和風險評估。</p>
+            <p><strong>VPHP 設置後去污：</strong>cRABS 的一個重要優勢是可以在設置完成後執行 VPHP 自動生物去污。這一步驟能大幅降低設置階段引入的微生物風險，相當於給 Grade A 區域做了一次「重置」。oRABS 如果配合潔淨室也可以考慮這一做法。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>設置階段風險降低檢查清單：</strong></p>
+            <ul>
+                <li>所有可滅菌的元件是否已在滅菌前預組裝？</li>
+                <li>所有滅菌品是否有保護罩/無菌盒？保護罩是否設計為可在閉門後透過手套口移除？</li>
+                <li>組裝順序是否遵循「由上而下」原則？</li>
+                <li>UDAF 覆蓋範圍是否涵蓋所有需要開門的區域？</li>
+                <li>是否有設置後 VPHP 去污的能力（cRABS）？</li>
+                <li>操作員是否穿戴額外的無菌保護裝備（無菌袖套、加長手套）？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「一次只開一扇門」對維持 UDAF 氣流模式至關重要？如果同時開兩扇門會發生什麼？</li>
+                <li>主/副操作員模式如何比單人操作提供更高的無菌保證？從更衣完整性的角度分析。</li>
+                <li>比較 cRABS 和 oRABS 在設置後生物去污能力方面的差異，以及這對 CCS 策略的影響。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.9 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-9">Q 1.9 What construction design considerations are required for materials and maintenance?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>RABS surfaces should be manufactured in materials compatible with the environmental classification conditions required for the proposed use.</p>
+
+        <p><strong>Construction Materials Considerations:</strong></p>
+        <ul>
+            <li>Interior metallic surfaces in direct or indirect contact with the primary packing should be constructed in <span class="key-term">316 stainless steel</span> or better and, for the rest of the line, metallic components could be constructed of low-carbon <span class="key-term">304 stainless steel</span> or better (1, 6).</li>
+            <li>Interior transparent surfaces made of <span class="key-term">polycarbonate or glass</span>.</li>
+            <li>Seals joining the RABS with upstream and downstream equipment should take temperature and differential pressures into consideration (e.g., depyrogenation tunnel to filler RABS or freeze dryer).</li>
+            <li>Cleanable with detergents commonly used in the cleanroom with no absorbing or desorbing effect when in contact with them (10).</li>
+        </ul>
+
+        <p>All RABS surfaces should be resistant to the following conditions and agents to avoid the release of particles:</p>
+        <ul>
+            <li>Scratches and abrasions.</li>
+            <li>Detergents and <span class="key-term">sporicidals</span> used for CIP and cleaning-out-of-place, or disinfection (e.g., turntables, guides) (11).</li>
+            <li>Sterilization process as SIP for fixed-system components (e.g., filling path).</li>
+            <li>External sterilization processes with moist heat or radiation, or chemical sterilization processes for complementary components removable from RABS (e.g., stopper bowl, feeding lanes), or ready to use.</li>
+        </ul>
+
+        <p><strong>Maintenance Considerations</strong></p>
+        <p>The internal RABS working areas should be designed to minimize the risk of contamination in critical zones for troubleshooting and repair activities.</p>
+        <p>The access to maintenance panels and/or mechanical spaces should be outside the RABS and below the operating/processing level (product height) as much as possible. Even if outside of the machine, these areas should not be opened without additional controls being evaluated and implemented (e.g., requires to exchange gowning after those activities).</p>
+        <p>All maintenance activities for a RABS and related equipment should be scheduled in a plan to occur at the same time, when it is possible, to avoid multiple preventive-maintenance work-order days.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>The RABS and equipment construction materials should be designed to meet such production requirements as cleanability, sanitization, and practicality of use, with the scope to reduce the contamination risk by particles that could be released from routine use or from eventual damages and abrasion occurred during routine production or maintenance activities.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>316 vs. 304 不鏽鋼的選擇邏輯：</strong></p>
+            <ul>
+                <li><strong>316SS（含鉬）：</strong>用於與產品直接或間接接觸的表面。鉬元素提供更強的抗氯化物腐蝕能力，適合頻繁使用消毒劑和 SIP 蒸汽滅菌的環境。</li>
+                <li><strong>304SS（低碳）：</strong>用於產線其餘非直接接觸產品的金屬元件。成本較低但仍具備基本的耐腐蝕性。</li>
+            </ul>
+            <p><strong>Hygienic Design（衛生設計）：</strong>所有表面必須可清潔、不會吸收或釋放化學物質、能承受反覆的消毒和滅菌處理而不產生微粒。這是 GMP 對製藥設備的基本要求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>選擇 RABS 建材就像<strong>選擇餐廳廚房的檯面材質</strong>：你不會用木頭（會吸水、藏菌），而是用不鏽鋼。但如果這個廚房每天用強酸清潔劑洗，你就需要更高等級的不鏽鋼（316SS）來防止腐蝕。至於客人看得到的透明隔板，就像壽司店的玻璃展示櫃一樣，用聚碳酸酯或玻璃。</p>
+            <p>維護面板放在 RABS 外面且低於產品高度，就像餐廳把水管維修口設在廚房外面的牆壁底部 -- 修水管時不會影響到料理檯面上的食材。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>密封件的溫度/壓差考量：</strong>RABS 與上下游設備（如除熱原隧道、凍乾機）的連接密封件必須同時承受高溫（SIP）和壓差條件。這是設計中容易被忽略但在運行中經常出問題的地方。密封件失效會導致 Grade A 環境的完整性喪失。</p>
+            <p><strong>維護活動集中排程：</strong>PDA 建議將所有維護活動安排在同一時間執行，避免多次維護導致多次潛在的污染暴露。這是一個務實的建議 -- 每次維護都需要額外的清潔和可能的重新確效，集中執行能大幅減少停機時間。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼維護面板的位置要設在 RABS 外部且低於產品操作高度？如果維護面板在 RABS 內部，會對 CCS 產生什麼影響？</li>
+                <li>列出 RABS 表面需要承受的化學品和物理條件清單。哪些材質要求對於 cRABS 比 oRABS 更為嚴格？為什麼？</li>
+                <li>當你評估一個 RABS 供應商的設計方案時，你會從哪些方面檢查其「衛生設計」的合規性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.10 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-10">Q 1.10 What unique design provisions are required for highly potent compounds exposed within closed restricted access barrier systems (cRABS)?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p><strong>Environmental Health Safety vs. Good Manufacturing Practices</strong></p>
+        <p>When designing a RABS for aseptic highly potent compounds, both the good manufacturing practice (GMP) and <span class="key-term">environmental health and safety (EHS)</span> aspects are very important. While <span class="key-term">overpressure</span> of the containment is necessary from a GMP perspective, <span class="key-term">negative pressure</span> is required from the EHS standpoint to ensure operator safety (6).</p>
+
+        <p>Therefore, the pressure differential between the inside of the RABS and the outside environment must be positive. To avoid contamination from the most highly potent exposure area (e.g., filling zone), this zone is operated in negative pressure towards adjacent RABS sections. To make this physically and technically possible, a cRABS is needed. To allow for the creation and maintenance of the pressure differences during operation, it needs at least a cRABS, if recirculating air is used, a <span class="key-term">dedicated air handling unit (AHU)</span> must be present.</p>
+
+        <p><strong>Additional Considerations:</strong></p>
+        <ul>
+            <li>Ability to safely change out terminal HEPAs by a <span class="key-term">safe-change filter system</span> or one-pass aeration systems (with bag-in/bag-out exhaust HEPAs) (See Figure 1.10-1.)</li>
+            <li>Interlocked door sensors and other mechanical devices to ensure operator safety</li>
+            <li>Vacuum systems should be avoided where possible; otherwise, the integration of filters that prevent contamination at the base of the machine should be considered</li>
+            <li>Transfer ports should be present to manage the removal of contained material used for spillage clean-up without having to open the RABS.*</li>
+            <li><span class="key-term">Pressure differential-monitoring systems</span> to alarm in case of loss of pressure differential or RABS leakage.</li>
+            <li>Double glass doors are to be avoided (See Figure 1.10-1.)</li>
+            <li>Important for the commissioning of such products is the correct protective equipment of the employees and their behavior in case of an accidental breach.</li>
+        </ul>
+
+        <p><em>*Note: This consideration does not apply for monitoring equipment using vacuum, such as total-particle counters or active viable monitoring. The monitoring equipment must be located in the most critical positions according to the EM risk analysis. A strategy to prevent contamination of the vacuum lines and the monitoring equipment must be evaluated (e.g., the particulate filter above the machine plate in the aseptic area) immediately after the sampling head for active viable (6). The sampling head must be treated as any other exposed equipment surface within the RABS and needs to be appropriately cleaned before the sterilization cycle. For particulate measurement systems, a different strategy must be considered. Total particle counters should be dedicated to certain areas and changed in situ to reduce the movement of the equipment and to limit exposure. Particulate filter can be placed after the device to ensure contamination prevention of the vacuum lines and pumps.</em></p>
+
+        <p><strong>Cleaning</strong></p>
+        <p>A highly preferred method for cleaning a cRABS contaminated with toxic substances is the automatic <span class="key-term">wash-in-place (WIP)</span> process. The WIP process can either be executed with spray guns mounted inside the RABS for manual wash-down or with a spray ball to achieve an automatic wash down. This means that even hard-to-reach areas can be cleaned more easily while the doors remain closed and, therefore, the risk of operator exposure is minimized. The handling of the wastewater must be considered with a special focus on the draining systems (i.e., EU Annex 1: Manufacture of Sterile Medicinal Products excludes drains in Grade A or Grade B environments) and toxic water separation. Depending on toxicity, measuring residuals in wastewater is recommended to ensure the RABS environment is free from potential potent residuals. A risk assessment should be performed to determine the proper neutralization of the wastewater from the toxic process and proper design. Nevertheless, the machine and the containment must, of course, be designed in such a way that all parts can be easily cleaned and equipped in a hygienic design.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Potent compounds are hazardous to operators and, while product sterility must be maintained, it is equally important to ensure that operators and the environment they operate in can be protected from exposure. Utilization of cRABS, with negative pressure and WIP systems, allows for the operation and cleaning of the system, without ever exposing the operator or the environment outside of the RABS to the compound.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>GMP vs. EHS 的壓力矛盾：</strong>這是處理高效價化合物（如 ADC 藥物偶聯物、細胞毒性藥物）時最經典的設計難題。</p>
+            <ul>
+                <li><strong>GMP 要求：</strong>RABS 相對於外部環境必須<strong>正壓</strong>，防止外部微生物進入 Grade A</li>
+                <li><strong>EHS 要求：</strong>含毒性物質的區域必須<strong>負壓</strong>，防止有毒物質外洩傷害操作員</li>
+            </ul>
+            <p><strong>解決方案（壓力梯度設計）：</strong></p>
+            <ul>
+                <li>RABS 整體相對於背景環境保持正壓（滿足 GMP）</li>
+                <li>充填區（最高暴露區域）相對於 RABS 其他區段保持負壓（滿足 EHS）</li>
+                <li>這種「局部負壓+整體正壓」的設計只有 cRABS 能實現，因為需要密封性和獨立空調系統</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一座處理<strong>放射性物質的醫院</strong>：整棟醫院相對於外部保持正壓（防止外部髒空氣進入），但放射科的操作室相對於走廊保持負壓（防止放射性物質外洩到走廊）。這就是「整體正壓、局部負壓」的概念。</p>
+            <p>WIP 系統就像把一台<strong>自動洗車機</strong>裝在 RABS 裡面 -- 車門不用打開，內部的噴頭就能把所有有毒殘留物沖洗乾淨。廢水還要經過專門的處理系統，不能直接排入一般下水道。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>為什麼只有 cRABS 適用？</strong>oRABS 無法維持密封性和壓力梯度，因此無法同時滿足 GMP 正壓和 EHS 局部負壓的要求。對於高效價化合物充填，cRABS 是最低要求（隔離器則是更優選擇）。</p>
+            <p><strong>EU Annex 1 排水限制：</strong>歐盟法規禁止在 Grade A 和 Grade B 環境中設置排水口。因此，WIP 系統的廢水管理是一個重大設計挑戰 -- 需要特殊的廢水收集和中和系統，且不能使用傳統地漏。</p>
+            <p><strong>Safe-Change HEPA Filter System：</strong>更換被有毒物質污染的 HEPA 濾網時，必須使用 Bag-In/Bag-Out（BIBO）系統，確保操作員不會暴露於污染的濾網。這是生物安全實驗室和核設施常用的技術。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>壓力梯度設計邏輯</h4>
+            <pre>
+壓力梯度示意：
+
+外部環境（Grade B）: 基準壓力 P0
+        |
+        v  (+15 Pa)
+RABS 外圍區段:      P0 + 15 Pa
+        |
+        v  (-10 Pa)
+充填區（高暴露區）:   P0 + 5 Pa
+
+結果：
+- 充填區 > 外部環境 (+5 Pa) --> GMP 正壓要求 OK
+- 充填區 < RABS 外圍 (-10 Pa) --> EHS 負壓防護 OK
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 CDMO 需要在現有 oRABS 產線上充填一種 OEL &lt; 1 &mu;g/m&sup3; 的高效價 ADC 藥物，你會建議什麼樣的設備升級方案？</li>
+                <li>為什麼文件建議避免使用真空系統？在必須使用時（如粒子計數器），應採取什麼防護措施？</li>
+                <li>解釋為什麼「雙層玻璃門」在高效價化合物 cRABS 中應被避免。從清潔性和密封性的角度思考。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.11 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-11">Q 1.11 What are the best engineering design considerations for in-line environmental monitoring (EM)?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Monitoring should be performed at locations posing the <span class="key-term">highest risk of contamination</span> of the sterile equipment surfaces, containers, closures, and product. The selection of monitoring locations and the orientation and positioning of sampling devices should be justified in an <span class="key-term">EM risk analysis</span> and appropriate to obtain reliable data from the critical zones (1, 4, 12).</p>
+
+        <p><strong>In-line Viable Monitoring:</strong></p>
+        <ul>
+            <li>Viable air samplers located near <span class="key-term">critical process zones</span> (e.g., accumulation table, filling station, stoppering section).</li>
+            <li>Consider location near glove ports for ease of plate placement, removal, and storage.</li>
+            <li>Consider installing an EM plate holder for staging multiple EM plates as well as holding the lid of the air sampler, if applicable. This stand should be installed near to the air sampler and within reach via glove ports.</li>
+            <li>Verify active air samplers are part of the calibration program (airflow).</li>
+            <li>Consider <span class="key-term">First Air requirements</span> for critical surfaces (e.g., initial load of agar plates, replacement of settle plates).</li>
+        </ul>
+
+        <p><strong>In-line Total Particulate Monitoring:</strong></p>
+        <ul>
+            <li>Total particle air sampler located near critical process zones within a <span class="key-term">one foot radius</span> of the working position (e.g., accumulation table, filling, stoppering) (4).</li>
+            <li>If air samplers have covers, verify sampler is near glove ports for ease of cover placement or removal.</li>
+            <li>Verify air sampler is part of the calibration program (airflow, particulates typically <span class="key-term">0.5 &mu;m and 5.0 &mu;m</span>).</li>
+            <li>Ensure that the tube between the sampling probe (isokinetic funnel) and particle counter is <span class="key-term">&lt;1 m</span> minimizing bends or radii. If deviating from this requirement, particle loss studies need to demonstrate the functionality (1).</li>
+        </ul>
+
+        <p><strong>If considering the use of an alternate rapid microbiological methods (real-time monitoring via biofluorescent particle-counting), considerations should include, but not be limited to, the following (1, 6, 12, 13):</strong></p>
+        <ul>
+            <li>Sampling locations must be representative and close to conventional settle plates to show equivalency of the system for validation and data collection during production.</li>
+            <li>Suitable installation location of the counter to ensure accessibility for retraction of gelatine filter/agar plate for possibility of identifying the autofluorescence unit.</li>
+            <li>Tube length from sampling point to counter needs to be considered and validated by particle loss studies if &gt;1 m.</li>
+            <li>Alarm management for autofluorescence unit hit must be in place and validated.</li>
+        </ul>
+
+        <p><strong>Temp/RH/DP/Airflow Velocity (6):</strong></p>
+        <ul>
+            <li>Sensors should be placed in representative locations&mdash;located downstream of UDAF/HEPA filters but above product pathway&mdash;so as not to interfere with equipment operation and potential interventions.</li>
+        </ul>
+
+        <p><strong>Alarm and Notification Systems:</strong></p>
+        <ul>
+            <li>Warnings (alerts and alarms) should be in place to alert operators in the event of any deviations from the predefined EM parameters.</li>
+            <li>Where alarm delays are utilized, a duration of delay must be justified.</li>
+        </ul>
+
+        <p><strong>Data Analysis and Reporting:</strong></p>
+        <ul>
+            <li>Consider having the inline EM sensors integral to the RABS control system to facilitate central operator control and integration of EM readings to equipment interlocks (e.g., high particle counts halts filling).</li>
+            <li>Alert levels should be established, and then trended, followed by periodic review.</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>EM should effectively evaluate the state of environmental conditions within the RABS (e.g., total particulates, viables, air quality, airflow and pressure cascade).</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Environmental Monitoring（環境監測）</strong>是 RABS 設計中容易被低估的領域。EM 不只是「放幾個培養皿」，而是一個完整的<strong>工程設計問題</strong>，涉及採樣位置、管路長度、校準程序、警報系統和數據整合。</p>
+            <p><strong>關鍵設計原則：</strong></p>
+            <ul>
+                <li><strong>位置選擇：</strong>監測點必須位於污染風險最高的位置（充填站、加塞區、積瓶台），而非最方便安裝的位置</li>
+                <li><strong>可及性：</strong>EM 設備必須可透過手套口操作（更換培養皿、蓋板等），否則每次操作都需要開門</li>
+                <li><strong>管路限制：</strong>粒子計數器的採樣管長度 &lt;1 m 且應避免彎折，否則會造成粒子損失導致數據不可靠</li>
+                <li><strong>等速吸引（Isokinetic Sampling）：</strong>採樣探頭的進氣速度必須與周圍氣流速度匹配</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>EM 系統就像一間房子的<strong>煙霧偵測器和空氣品質監測器</strong>。你不會把煙霧偵測器放在沒有電器的儲藏室（低風險區），而是放在廚房和臥室（高風險區）。而且偵測器不能裝在通風口正前方（會被吹散煙霧導致漏報），也不能距離太遠（反應太慢）。</p>
+            <p>粒子計數器的採樣管 &lt;1 m 限制，就像你用一根很長的吸管喝珍珠奶茶 -- 管子越長、轉彎越多，珍珠（粒子）就越容易卡在中間，你喝到的（偵測到的）就越少。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>即時微生物監測的未來趨勢：</strong>文件提到了生物螢光粒子計數（Biofluorescent Particle Counting）作為替代性快速微生物方法（RMM）。這項技術可以實現<strong>即時連續</strong>的活性微生物監測，不再依賴培養皿更換（培養皿更換本身就是一次介入）。</p>
+            <p>但法規上仍要求新方法必須與傳統沉降板方法進行等效性驗證，採樣位置必須接近常規沉降板以進行比對。</p>
+            <p><strong>EM 與設備聯鎖：</strong>將 EM 數據整合到 RABS 控制系統中（例如，高粒子數自動停止充填）是一個先進且有價值的設計理念。這實現了從「被動監測」到「主動控制」的轉變，大幅提升無菌保證水平。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>EM 設計審查場景：</strong>你正在審查供應商提交的 RABS EM 設計方案。以下是你應檢查的關鍵項目：</p>
+            <table>
+                <tr><th>檢查項目</th><th>合格標準</th></tr>
+                <tr><td>活性空氣採樣器位置</td><td>位於關鍵製程區域附近，可透過手套口操作</td></tr>
+                <tr><td>粒子計數器採樣管長度</td><td>&lt;1 m，最少彎折；若超過需有粒子損失研究</td></tr>
+                <tr><td>EM 培養皿架</td><td>安裝於採樣器附近，手套口可及範圍內</td></tr>
+                <tr><td>溫度/濕度/壓差感測器</td><td>位於 HEPA 下游但在產品路徑上方</td></tr>
+                <tr><td>警報系統</td><td>已定義警報延遲時間並有書面理由</td></tr>
+                <tr><td>數據整合</td><td>EM 數據可與設備控制系統聯鎖</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼粒子計數器的採樣管長度被限制在 1 公尺以內？如果你的設備佈局使得管長必須超過 1 m，你需要做什麼額外的驗證工作？</li>
+                <li>「高粒子數自動停止充填」的聯鎖設計可能帶來什麼好處和潛在問題？考慮假陽性警報的影響。</li>
+                <li>比較傳統沉降板監測和生物螢光即時監測在 RABS 環境中的優缺點，特別是對介入頻率的影響。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.12 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-12">Q 1.12 What are the criteria for retrofitting and design considerations for restricted access barrier systems (RABS), including RABS interfaces?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p><span class="key-term">Retrofitting</span> a line into a RABS is normally a temporary solution to maintain compliance with GMP. However, retrofitting can be beneficial by increasing sterility assurance while the company works on the longer-term implementation of a full RABS or isolator design.</p>
+
+        <p>Typical retrofit scenarios, include:</p>
+        <ul>
+            <li>Conventional A/B filling to <span class="key-term">oRABS</span></li>
+            <li>oRABS to <span class="key-term">cRABS</span></li>
+        </ul>
+        <p>Note: Retrofitting a cRABS could be challenging.</p>
+        <ul>
+            <li>Adding <span class="key-term">transfer interfaces (e.g. RTPs)</span> to existing RABS</li>
+        </ul>
+
+        <p>Retrofitting a RABS or transferring system interfaces along the filling line is recommended to address the following needs:</p>
+        <ul>
+            <li>Create a barrier system for the RABS critical zone and interfaces</li>
+            <li>Compliance with <span class="key-term">First Air concepts</span> (i.e., modifications to the design of the manufacturing line may be needed)</li>
+            <li>Reduced open-door interventions</li>
+            <li>Improved <span class="key-term">CCS</span> for the manufacturing line</li>
+            <li>Requirements from relevant health authorities (international and local)</li>
+        </ul>
+
+        <p>Note: Retrofitting a RABS could be difficult.</p>
+
+        <p><strong>Points to consider for a retrofitting approach include, but are not limited to, the following:</strong></p>
+
+        <p><strong>First Air Principle Maintained</strong></p>
+        <p>Check the feasibility of any operation that must be performed with doors closed to ensure that unidirectionality (First Air Principle) can be maintained during the manipulation. Also consider the use of components and materials that can be transferred into the RABS via <span class="key-term">rapid transfer ports (e.g. RTPs)</span> to avoid the necessity to open the barrier doors. These ports should be located nearest to the use of the materials transferred in. Port location and First Air verification can be accomplished via the use of a <span class="key-term">3-D model with computational fluid dynamics (CFD)</span> or a mock-up model prior to the retrofit. Refer to Questions 1.2 and 1.3 for further details on RABS design considerations.</p>
+
+        <p><strong>Production Operations</strong></p>
+        <p>Ensure full filling equipment access via glove ports for aseptic connection and interventions in critical zones, reducing the door opening for intervention during production. It is important to ensure that interventions during all phases of production are evaluated including batch setup. Refer to Question 9.2 for further details on the qualification of interventions.</p>
+
+        <p>For the differential pressure requirement associated with, for example, a Load Accumulation Table to Transfer Cart RABS interface (Grade B background), the background environment is the Grade B area with the Grade A Load Unload Automatic Transfer representing the critical zone. Consequently, at the interface, a positive airflow from the critical zones (i.e., RABS) to the supporting background environment (i.e., Grade B area) is required.</p>
+
+        <p>Minimize or consider the possibility of eliminating operator intervention during the freeze-dryer loading/unloading, implementing automatic or semi-automatic loading system, that can provide:</p>
+        <ul>
+            <li>Creation of a barrier system</li>
+            <li>First Air concept compliance</li>
+        </ul>
+
+        <p>Retrofitting a RABS for a freeze-dryer loading/unloading system could be realized in a first step by a semi-automatic system before changing to a fully automated system.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>When retrofitting, the design of the RABS must work around the existing design of the filling equipment. It is important, and challenging, to achieve a balance between ensuring the retrofit allows sufficient access to perform all required interventions while also minimizing the need to perform open-door activities/interventions.</p>
+        <p>In a RABS retrofit, the design of the unidirectional airflow protection surrounding the RABS barrier can also be a challenge, and it is important to ensure that it can cover the entire area exposed during the opening of doors (i.e., Grade B).</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Retrofitting（改裝）：</strong>將現有的充填線升級為 RABS 的過程。這不是最理想的方案（全新設計更佳），但對於需要在短期內提升 GMP 合規性的工廠來說，是一個務實的過渡策略。</p>
+            <p><strong>典型升級路徑：</strong></p>
+            <ul>
+                <li><strong>傳統 A/B 充填 &rarr; oRABS：</strong>最常見的改裝場景。在現有充填線周圍加裝屏障面板和門。</li>
+                <li><strong>oRABS &rarr; cRABS：</strong>難度更高，需要增加密封性、可能需要獨立空調系統。</li>
+                <li><strong>加裝 RTP：</strong>在現有 RABS 上增加快速傳遞口，減少開門需求。</li>
+            </ul>
+            <p><strong>介面設計（Interface Design）：</strong>RABS 與上下游設備（如除熱原隧道、凍乾機、傳輸車）的連接點是改裝設計中最關鍵的部分，必須確保壓力梯度和 First Air 原則在介面處不被破壞。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>RABS 改裝就像<strong>在一棟已建成的房子上加裝氣密窗和空調系統</strong>。你不能拆掉整棟房子重建（成本太高、停產太久），但你可以逐步升級：先把普通窗戶換成氣密窗（加裝屏障面板），然後加裝全熱交換器（壓差控制），再裝一個傳遞窗口（RTP），這樣送外賣的人不用每次都開大門。</p>
+            <p>最大的挑戰是：房子的格局已經固定了，你必須在現有空間內想辦法。有時候窗戶的位置不適合裝氣密窗（手套口位置受限），有時候牆壁太薄裝不了傳遞窗口（結構限制）。這就是為什麼文件提到「改裝可能很困難」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CFD 模擬在改裝中的價值：</strong>在改裝前使用 3-D 模型和計算流體力學（CFD）模擬是極為重要的步驟。因為改裝後的 RABS 幾何形狀往往不如全新設計那麼理想（可能有突出物、不規則的轉角），氣流模式可能會出現意料之外的紊流或死角。CFD 模擬可以在實際改裝前識別這些問題。</p>
+            <p><strong>凍乾機裝/卸料的改裝策略：</strong>文件建議採用分階段方法 -- 先實施半自動系統，再過渡到全自動系統。這是一個務實的建議，因為凍乾機裝卸料是 RABS 充填線中最複雜的介面之一，涉及大量容器的移動和溫度管控。</p>
+            <p><strong>法規驅動的改裝：</strong>許多改裝計劃是由衛生主管機關的要求（如 FDA 483 觀察項或 EU Annex 1 更新後的合規差距）驅動的。改裝方案必須記錄在 CCS 中，並作為長期屏障技術升級計劃的一部分。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>場景：</strong>你的 CDMO 收到 FDA 的 483 觀察項，指出你的傳統 A/B 充填線需要升級到屏障技術。管理層決定先改裝為 oRABS 作為過渡方案，同時規劃 3 年後的隔離器新線。你的改裝設計檢查清單：</p>
+            <ul>
+                <li>現有充填設備的尺寸和佈局是否允許加裝屏障面板？</li>
+                <li>手套口位置是否能覆蓋所有必要的介入操作？（用 Mock-up 驗證）</li>
+                <li>UDAF 覆蓋範圍是否足以涵蓋開門區域？</li>
+                <li>是否能加裝 RTP 以減少開門頻率？</li>
+                <li>與凍乾機/隧道的介面壓力梯度是否可以實現？</li>
+                <li>CFD 模擬是否已驗證改裝後的氣流模式？</li>
+                <li>改裝方案是否已記錄在 CCS 中，並有明確的長期升級時間表？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼文件兩次強調「改裝可能很困難」？從 First Air 原則、手套口定位和壓差控制三個角度分析改裝的主要技術挑戰。</li>
+                <li>比較「傳統 A/B &rarr; oRABS」和「oRABS &rarr; cRABS」兩種改裝場景在技術難度和成本上的差異。</li>
+                <li>凍乾機裝卸料區的 RABS 改裝為什麼特別具有挑戰性？從容器移動、溫度控制和介面壓差的角度分析。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Q1.7 開門介入預防：</strong>RABS 的核心設計目標是作為封閉系統運行。當閉門介入可行時，開門介入<strong>必須被禁止</strong>。透過 RTP、自動化、機器人系統和合理的手套口佈置，可以在設計階段消除大部分開門需求。不可避免的開門介入需要嚴格的程序控制，包括 AVS 預評估、偏差評估、消毒、批次隔離考量，以及 Grade A 條件恢復確認。</li>
+        <li><strong>Q1.8 設置風險最小化：</strong>設置階段是 RABS 運營中風險最高的時期。關鍵緩解措施包括：一次只開一扇門、使用保護罩/無菌盒、由上而下組裝法、主/副操作員模式、UDAF 延伸覆蓋開門區域，以及設置後的 VPHP 自動生物去污。</li>
+        <li><strong>Q1.9 建材與維護：</strong>產品接觸面使用 316SS、非接觸面使用 304SS、透明面使用聚碳酸酯或玻璃。所有材質必須耐化學消毒和滅菌。維護面板應設在 RABS 外部且低於產品高度，維護活動應集中排程。</li>
+        <li><strong>Q1.10 高效價化合物：</strong>處理高效價化合物時需要同時滿足 GMP（正壓）和 EHS（局部負壓）要求，只有 cRABS 能實現這種壓力梯度設計。WIP 系統允許在閉門狀態下清洗有毒殘留，廢水管理需特別注意 EU Annex 1 的排水限制。</li>
+        <li><strong>Q1.11 線上環境監測：</strong>EM 設備必須安裝在污染風險最高的位置。粒子計數器採樣管 &lt;1 m、活性空氣採樣器可透過手套口操作、即時生物螢光監測是未來趨勢。EM 數據應整合到 RABS 控制系統實現設備聯鎖（如高粒子數自動停機）。</li>
+        <li><strong>Q1.12 改裝設計：</strong>改裝是提升合規性的過渡方案，典型路徑為傳統 A/B &rarr; oRABS 或 oRABS &rarr; cRABS。改裝前應使用 CFD 模擬驗證氣流，確保 First Air 原則、手套口可及性和壓差梯度在改裝後仍能維持。凍乾機介面是改裝中最複雜的區域，建議分階段從半自動過渡到全自動。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems</p>
+    <p>Section 1b: Topic 1 RABS Design (Q1.7 - Q1.12) | p23 - p33</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

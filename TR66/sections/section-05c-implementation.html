@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR66 - Section 5c: Implementation Framework S6-S7</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7.6-7.7: Implementation S6 &mdash; Testing and Validation &amp; S7 &mdash; Launch</h1>
+    <div class="subtitle">實施階段 S6：測試與驗證 / S7：啟動上線</div>
+    <div class="page-info">PDA Technical Report No. 66 &mdash; Single-Use Systems (2014) | p100 - p107</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 SUS 實施階段 S6（測試與驗證）中交付、安裝、確效、訓練與安全的完整流程</li>
+        <li>掌握 S7（啟動上線）中供應商管理、常規採購與技術盡職調查 (Technical Diligence) 的關鍵要素</li>
+        <li>學習 HSE（健康、安全與環境）計畫在 SUS 專案中的制定與執行</li>
+        <li>了解品質與技術協議、物流倉儲策略在維持 SUS 持續營運中的角色</li>
+        <li>區分品質稽核 (Quality Audit) 與技術盡職調查 (Technical Diligence) 的目的與範疇差異</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本節目錄 Table of Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec761">7.6.1 Delivery</a>
+        <a href="#sec762">7.6.2 Installation</a>
+        <a href="#sec763">7.6.3 Qualification</a>
+        <a href="#sec764">7.6.4 Training</a>
+        <a href="#sec765">7.6.5 Training Workflow</a>
+        <a href="#sec766">7.6.6 SUS Training Example</a>
+        <a href="#sec767">7.6.7 Safety</a>
+        <a href="#sec768">7.6.8 HSE Plan</a>
+        <a href="#sec769">7.6.9 HSE Issues</a>
+        <a href="#sec770">7.7 Launch</a>
+        <a href="#sec771">7.7.1 Management of Materials</a>
+        <a href="#sec772">7.7.2 Routine Procurement</a>
+        <a href="#sec773">7.7.3 Technical Diligence</a>
+        <a href="#sec774">7.7.4 Quality &amp; Technical Agreements</a>
+        <a href="#sec775">7.7.5 Logistics &amp; Storage</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.6 Implementation S6: Testing and Validation -->
+<!-- ============================================================= -->
+
+<h2 class="section-title" id="sec76">7.6 Implementation S6: Testing and Validation</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>During this stage, methods and documentation must be developed for equipment <span class="key-term">SOPs</span>, maintenance, <span class="key-term">qualification</span> and <span class="key-term">process validation</span>, <span class="key-term">HSE</span> processes, and personnel training. Some documents (e.g., the <span class="key-term">validation master plan</span>) may require updates at this stage to maintain compliance.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Implementation S6 (實施階段 S6)：</strong>這是 SUS 專案從設計走向實際運作的關鍵轉折點。此階段需要完成所有設備 SOP、維護計畫、確效與驗證文件、HSE（健康安全環境）流程以及人員訓練的建立。</p>
+            <p><strong>Validation Master Plan (驗證主計畫)：</strong>此文件統領整個驗證活動，在 S6 階段可能需要因應新的 SUS 設備資訊進行更新，以確保法規合規性。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>S6 階段就像新餐廳開幕前的「試營運」期。菜單（SOP）已擬定、廚房設備（SUS 硬體）已到位，現在要實際測試每道菜的流程是否順暢、廚師是否熟悉操作、消防設備是否合格。所有細節必須在正式開幕（S7 啟動）前確認完畢。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.1 Delivery -->
+<h2 class="section-title" id="sec761">7.6.1 Delivery (交付)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The <span class="key-term">PEP</span> must cover the delivery process, including responsibilities of the supplier and the end user. Transport logistics are sometimes complex, and the procedure by which the equipment will be safely shipped (transported) and unloaded from its delivery vehicle must be considered. Some suppliers do not take unloading into account, and the end user may need to take particular precautions here or ensure that the supplier contractually takes responsibility. There may be specific non-GxP issues to resolve such as documentation (delivery notes), inspection for inventory or damage, and insurance or the removal and appropriate disposal of crates and other packaging materials.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PEP (Process Engineering Plan，製程工程計畫)：</strong>PEP 是貫穿 SUS 實施全過程的主文件，必須涵蓋交付流程中供應商與最終使用者各自的責任。</p>
+            <p>交付階段看似簡單，實則暗藏許多風險：運輸損壞、卸貨責任歸屬不明、包裝廢棄物處理等。這些雖屬 non-GxP 範疇，但若處理不當，會延誤整個專案時程。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>許多供應商的基本報價不包含卸貨服務！最終使用者必須在合約中明確約定卸貨責任歸屬，否則可能面臨額外成本與延誤。務必在 PEP 中加入交付驗收檢查清單：交貨單核對、外觀損壞檢查、庫存登記與保險索賠程序。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果供應商的報價不含卸貨服務，你會如何在合約中保護最終使用者的權益？</li>
+                <li>大型 SUS 設備運輸時，可能遇到哪些物流挑戰？你會如何提前規劃？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.2 Installation -->
+<h2 class="section-title" id="sec762">7.6.2 Installation (安裝)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The PEP will also cover all aspects of the startup process, including post-delivery storage, handling prior to installation unpacking, and the responsibilities of the supplier and the end user in a more general manner. Transferring the equipment to its place of use can be problematic if equipment dimensions or facility access has not been reviewed in advance. Preparing the area, particularly in cases where the SUS equipment will be used in manufacturing operations, may require specific training. The overall strategy and approach will depend on the nature of the SUS and the level of risk associated with this process (Section 7.4.1). In some cases, non-GxP documentation may be generated or supplied and work permits (e.g., fire safety) secured during the installation processes (e.g., removals).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Installation (安裝)：</strong>安裝不只是把設備放到定位。從交付後的暫存、拆箱前的處理、到搬運至使用地點，每一步都需要計畫。特別是設備尺寸與設施通道的預先評估，若忽略此步驟，可能會發生設備無法進入廠房的窘境。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像買了一台大型冰箱送到新家，結果發現電梯太小、門框太窄，根本無法搬進廚房。在製藥廠房中，這種情況造成的延誤和成本遠比家用設備嚴重。提前量測設備尺寸與所有通道寬度，是最基本卻最常被忽略的步驟。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 GMP 製造區域進行安裝時，可能需要：(1) 特定的人員訓練；(2) 動火許可等工作許可證；(3) 拆除舊設備的 non-GxP 文件記錄。安裝策略應依據風險評估結果（Section 7.4.1）來制定。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.3 Qualification -->
+<h2 class="section-title" id="sec763">7.6.3 Qualification (確效)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Qualification of an SUS should include <span class="key-term">lifecycle testing</span> that reproduces the most impactful steps of the system's lifecycle (e.g., sterilization, transport, freezing/thawing) followed by a verification of the key functionalities and performance attributes (e.g., <span class="key-term">integrity testing</span>). The lifecycle testing must be designed to cover the intended working space. Please refer to Sections 5 and 7.7 for a discussion of the SUS qualification process and supplier qualification, respectively.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Lifecycle Testing (生命週期測試)：</strong>不是只測試 SUS 在「完美狀態」下的表現，而是模擬其整個使用生命週期中最具衝擊性的步驟——例如滅菌、運輸震盪、凍融循環——然後再驗證關鍵功能（如完整性測試）是否仍然合格。</p>
+            <p><strong>Integrity Testing (完整性測試)：</strong>確認 SUS 在經歷生命週期壓力後，系統的密封性與屏障功能仍然完好。這是確保產品無菌保證的關鍵步驟。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>確效測試必須涵蓋「預期工作空間 (intended working space)」，意即不能只在最佳條件下測試，還必須涵蓋邊界條件與最壞情境。這與 ICH Q8 中 Design Space 的概念相呼應。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 確效必須包含生命週期測試，而不只是靜態的功能測試？</li>
+                <li>請列舉三個 SUS 生命週期中「最具衝擊性」的步驟，並說明它們可能造成的風險。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.4 Training -->
+<h2 class="section-title" id="sec764">7.6.4 Training (訓練)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><span class="key-term">Training</span> is a GMP requirement and an integral part of SUS technical implementation. The goal of any training program should be to provide specific knowledge and understanding that will support successful operations. Although, the specific training needs are normally described in the user requirements, other training requirements (e.g., for project management and risk assessment) may be critical for the successful implementation of the project. Training programs for SUS should include concepts and principles of operation that might be unique to SUS and unfamiliar to <span class="key-term">MUS</span> operators.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Training (訓練)：</strong>訓練是 GMP 的硬性要求，也是 SUS 技術實施不可或缺的環節。重點不只是「怎麼操作」，更包括專案管理與風險評估等軟技能。</p>
+            <p><strong>MUS (Multi-Use System，多次使用系統)：</strong>傳統不鏽鋼設備。SUS 的操作概念與 MUS 有根本差異，習慣 MUS 的操作人員需要「重新學習」SUS 的獨特原理。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>從 MUS 轉換到 SUS，就像從手排車換到電動車。雖然都是「開車」，但煞車回饋、加速特性、充電（而非加油）等概念完全不同。如果只告訴電動車駕駛「跟以前一樣開就好」，一定會出問題。同理，MUS 操作員必須接受 SUS 專屬訓練。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.5 Training Workflow -->
+<h2 class="section-title" id="sec765">7.6.5 Training Workflow (訓練工作流程)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Guidelines for a training workflow are as follows:</p>
+        <ul>
+            <li>Examine each part of the entire SUS PEP individually and identify the functional areas concerned.</li>
+            <li>Identify the training needs in each functional area and assign stakeholders.</li>
+            <li>Assemble training requirements in a <span class="key-term">training matrix</span> (example in Section 10, Appendix 3).</li>
+            <li>Determine the scope of each training module. Some subjects may require more than one level of presentation and may require periodic retraining.</li>
+            <li>Make sure that a trainee assessment or evaluation process is included at the end of the training module; this is a <span class="key-term">GMP requirement</span>.</li>
+            <li>Take the resources as well as the subject and complexity of the training requirement into account when planning training procedures.</li>
+            <li>Some training modules may be delivered by competent team members or operators who are familiar with SUS implementation. Other training modules may be delivered by suppliers.</li>
+            <li>Add completed training modules to the individual training records of each stakeholder.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Training Matrix (訓練矩陣)：</strong>將每個功能領域的訓練需求與相關利害關係人對應起來的表格工具。確保沒有人被遺漏、沒有主題被忽略。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>訓練工作流程的核心原則：</p>
+            <ul>
+                <li><strong>完整性：</strong>逐一檢視 PEP 的每個部分，辨識所有需要訓練的功能領域</li>
+                <li><strong>分級制：</strong>某些主題需要多層次的訓練，且需要定期複訓</li>
+                <li><strong>評估機制：</strong>每個訓練模組結束後必須有考核評估——這是 GMP 的強制要求</li>
+                <li><strong>記錄追蹤：</strong>完成的訓練必須記錄在個人訓練檔案中</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，操作人員可能同時處理多個客戶的不同 SUS 平台。訓練矩陣的設計必須考慮到：(1) 通用 SUS 基礎知識；(2) 特定客戶/產品的操作程序；(3) 跨平台差異的認知訓練。供應商提供的訓練模組可以節省內部資源，但必須確保其內容符合公司的 GMP 標準。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.6 SUS Training Example -->
+<h2 class="section-title" id="sec766">7.6.6 An Example of SUS Training (SUS 訓練範例)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Factors that may contribute to the <span class="key-term">leakage of bags</span> are:</p>
+        <ul>
+            <li>Poor handling during deployment</li>
+            <li>Mechanical stress on films or welds</li>
+            <li>Accidental puncture or stressing of the SUS during handling and setup</li>
+        </ul>
+        <p>Incidences of bag leakage may be reduced through the following interventions:</p>
+        <ul>
+            <li>Changing storage bin and bag design, if appropriate</li>
+            <li>Optimizing the method of deployment (i.e., installation)</li>
+            <li>Providing operational training</li>
+            <li>Providing bag-handling awareness training</li>
+            <li>Implementing a control strategy (e.g., remedial procedures by the supplier)</li>
+            <li>Monitoring location and type of bag damage for trending</li>
+        </ul>
+        <p>The in-house training program should be based on operational parameters and operator feedback. Operators should be educated and engaged about:</p>
+        <ul>
+            <li>Working areas and surfaces</li>
+            <li>Bag installation and filling</li>
+            <li>Prior root causes for failure</li>
+            <li>Leakage history and trends</li>
+            <li>Root-cause analyses</li>
+        </ul>
+        <p>Additional details on training are provided in Section 6.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Bag Leakage (袋體洩漏)：</strong>SUS 最常見也最令人頭痛的問題之一。洩漏不僅造成產品損失，更可能危及無菌保證。本節從「原因分析」到「預防介入」提供了完整的訓練框架。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 袋體就像手術室中的無菌手套——材質本身很耐用，但若拿取方式不當（指甲刮到、拉扯過猛），就會破損。訓練操作人員正確的「袋體處理意識」，就像訓練外科醫師正確穿戴手套一樣重要。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>防止袋體洩漏的六大介入措施中，「操作訓練」和「袋體處理意識訓練」是最具成本效益的。根據產業經驗，大部分的袋體損壞都是人為操作不當造成的，而非材料缺陷。因此，建立「操作人員回饋→根因分析→趨勢監控」的持續改善迴路至關重要。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的工廠在過去三個月內發生了五次袋體洩漏事件，你會如何設計一個訓練改善方案？</li>
+                <li>為什麼操作人員的「意識訓練」比單純的「操作步驟訓練」更加重要？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.7 Safety -->
+<h2 class="section-title" id="sec767">7.6.7 Safety (安全)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Health and safety issues involving the control of both recognized and unidentified hazards in order to achieve an acceptable level of risk in the workplace are the responsibility of all stakeholders. Ensuring safety in the workplace as required by local laws can be best addressed by preparing an <span class="key-term">HSE plan</span>.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>HSE Plan (健康、安全與環境計畫)：</strong>一份系統性的文件，涵蓋專案全程的健康、安全與環境關注事項。HSE 計畫是所有利害關係人的共同責任，不僅要管理「已知風險」，更要考慮「未辨識的風險」。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>安全不是某個部門的責任——「the responsibility of all stakeholders」（所有利害關係人的責任）。在 SUS 專案中，由於涉及大量手動操作（搬運、安裝、拆卸），安全風險可能比傳統 MUS 更為複雜多變。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.8 HSE Plan -->
+<h2 class="section-title" id="sec768">7.6.8 Preparation of a Health, Safety, and Environment Plan (HSE 計畫的制定)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The HSE plan addresses health, safety, and environmental concerns throughout the SUS project. It should be prepared at an early stage and incorporated into the user requirements. Published examples of an HSE plan (although not related to SU technology) can be found in the literature. The HSE plan lists stakeholders and those responsible for performing specific HSE activities. These activities may range from mapping and analyzing the impact of HSE to developing and implementing process improvements. A workflow for developing an HSE plan may consist of the following steps:</p>
+        <ul>
+            <li><strong>Screen</strong> &mdash; Quick clarification of any HSE aspects related to the project</li>
+            <li><strong>Define</strong> &mdash; Overall evaluation of significant HSE concerns during the project lifecycle</li>
+            <li><strong>Plan</strong> &mdash; Final HSE plan with stakeholders, activities, responsibilities, and deadlines</li>
+        </ul>
+        <p>The screening and defining activities involve the complete evaluation of the project from an HSE point of view in order to determine HSE concerns that require immediate action. Some of the HSE concerns for a typical SUS project are presented here.</p>
+
+        <table>
+            <tr>
+                <th>Health</th>
+                <th>Safety</th>
+                <th>Environment</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul style="margin-left:1rem;">
+                        <li>Ergonomics</li>
+                        <li>Manual operations</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul style="margin-left:1rem;">
+                        <li>Flammables</li>
+                        <li>Equipment malfunction</li>
+                        <li>Improper operation of equipment</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul style="margin-left:1rem;">
+                        <li>Emissions</li>
+                        <li>Waste</li>
+                        <li>Energy</li>
+                        <li>Water</li>
+                        <li>Chemicals</li>
+                        <li>Fossil fuels and raw materials</li>
+                        <li>Consumption of raw materials</li>
+                        <li>Wrappings and other support materials</li>
+                        <li>Transport</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>HSE 三步驟工作流程：</strong></p>
+            <ul>
+                <li><strong>Screen (篩選)：</strong>快速盤點專案中與 HSE 相關的面向</li>
+                <li><strong>Define (定義)：</strong>全面評估專案生命週期中的重大 HSE 關注事項</li>
+                <li><strong>Plan (計畫)：</strong>制定最終 HSE 計畫，明確列出利害關係人、活動、責任與時程</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>HSE 計畫就像醫院的感染管控計畫 (Infection Control Plan)——不是出了問題才寫，而是在專案早期就納入使用者需求規格中。三步驟流程就像醫院的「風險篩檢→詳細評估→制定方案」，從宏觀到微觀逐步聚焦。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>SUS 專案的環境面向特別值得關注：一次性使用意味著大量的塑膠廢棄物、包裝材料和運輸碳足跡。這與傳統 MUS（使用 CIP/SIP 但產生較少固體廢棄物）形成鮮明對比。企業的永續製造政策必須納入 SUS 的 HSE 評估中。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>SUS 與 MUS 在環境影響面向上有哪些根本性差異？</li>
+                <li>為什麼 HSE 計畫應該在專案早期就制定，而不是等到安裝階段？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.6.9 HSE Issues Related to SUS -->
+<h2 class="section-title" id="sec769">7.6.9 Health and Safety Issues Related to SUS (SUS 相關 HSE 議題)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>SUSs often consist of plastic components that have low resistance to physical stress, pressure, and temperature extremes. A typical setup includes a range of support equipment (e.g., pumps, agitators, scales) that requires manual transportation, installation, and dismantling. This generates a unique set of HSE concerns, as presented in the following lists.</p>
+
+        <h3 style="font-size:1rem; margin-top:1rem;">Safety</h3>
+        <ul>
+            <li>Tubing ruptures at eye level</li>
+            <li>Bag ruptures at eye level</li>
+            <li>Spills and slippage</li>
+            <li>Emergency stops for moving parts</li>
+            <li>Automatic restarts after power cuts</li>
+            <li>Tubing on floor that may result in tripping</li>
+            <li>Loose parts (e.g., media containers, peristaltic pumps) that can fall</li>
+            <li>Mobile containers over feet or hands, mobile containers squeezed in doorways</li>
+            <li>Mobile containers' finish, corners, and handles</li>
+            <li>Connections failing for compressed air and other gases (e.g., CO<sub>2</sub> and nitrogen)</li>
+            <li>Retention of infectious material</li>
+            <li>Failure in connecting to CIP/SIP equipment</li>
+            <li>Position of emergency stop during filling operations may be out of sight from dispensing vessel</li>
+        </ul>
+
+        <h3 style="font-size:1rem; margin-top:1rem;">Health</h3>
+        <ul>
+            <li>Ergonomics for installation and removal of SUS components (e.g., installing bags, filters)</li>
+            <li>Ergonomics for handling bags that contain liquid</li>
+            <li>Stress of communicating during filling operations that may be out of sight from dispensing vessel</li>
+            <li>Lifting heavy or cumbersome objects</li>
+            <li>Insufficient work space and surfaces</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>SUS 的安全風險與 MUS 截然不同。MUS 是固定的不鏽鋼設備，一旦安裝就很少移動；SUS 則由塑膠組件構成，耐壓性和耐溫性較低，且需要頻繁的手動搬運、安裝與拆卸。這產生了一組獨特的安全隱患。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>特別需要注意的高風險情境：</p>
+            <ul>
+                <li><strong>眼部高度的管路/袋體破裂：</strong>如果處理的是生物製劑或有害物質，後果可能非常嚴重</li>
+                <li><strong>停電後自動重啟：</strong>未受控的設備重啟可能導致嚴重的安全事故</li>
+                <li><strong>地面管路絆倒風險：</strong>SUS 的臨時管路布線經常造成地面障礙</li>
+                <li><strong>緊急停機按鈕位置：</strong>充填操作時，緊急停機按鈕可能不在操作人員視線範圍內</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一下廚房的安全差異：一間是配備固定式不鏽鋼爐灶的專業廚房（MUS），另一間是使用臨時瓦斯管線和移動式設備的流動廚房（SUS）。後者的安全風險更為複雜——管線可能絆倒人、設備可能滑動、連接處可能鬆脫。需要完全不同的安全思維。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>針對「管路在眼部高度破裂」的風險，你會制定哪些預防措施？</li>
+                <li>SUS 操作中，人因工程 (Ergonomics) 問題為什麼比 MUS 更加嚴重？請舉例說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.7 Implementation S7: Launch -->
+<!-- ============================================================= -->
+
+<h2 class="section-title" id="sec770">7.7 Implementation S7: Launch (啟動上線)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The PEP leads to an initial procurement of equipment for the SUS project in addition to setting out a secure supply chain for continuous operation of the SUS. Initial supplier evaluations are part of the PEP preparation in S4 (Section 7.4.10). In the following paragraphs, these first steps are consolidated with a detailed evaluation of the appropriate tools for the <span class="key-term">routine management of suppliers</span>.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Implementation S7 - Launch (啟動上線)：</strong>S7 標誌著 SUS 從「專案模式」轉入「營運模式」的關鍵時刻。PEP 不僅引導初始設備採購，更要建立一條安全可靠的供應鏈，以支持 SUS 的持續運作。此階段的核心任務是將 S4 階段的初步供應商評估，深化為常規化的供應商管理體系。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>S7 就像餐廳從「試營運」轉為「正式營業」——試營運時可以用少量食材測試，但正式營業後必須建立穩定的食材供應鏈：固定的供應商、品質協議、備用供應商、庫存管理策略等。沒有穩定的供應鏈，再好的廚藝也無法持續出餐。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.7.1 Management of Materials -->
+<h2 class="section-title" id="sec771">7.7.1 Management of Materials (物料管理)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Since continuous sourcing of supplies is critical to keeping the SUS in a productive state, it is important to maintain an efficient <span class="key-term">routine supplier management</span> (e.g., technical diligence, quality audits, quality and supply agreements, and purchasing, logistical, and waste-handling strategies) to create a robust support for SUS manufacturing operations.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Routine Supplier Management (常規供應商管理)：</strong>涵蓋技術盡職調查、品質稽核、品質與供應協議、採購策略、物流策略和廢棄物處理策略等多個面向。SUS 與 MUS 的根本差異在於：SUS 是「消耗品模式」，持續供應的中斷直接等於生產停擺。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對於 CDMO 而言，物料管理的重要性不言而喻。由於 SUS 組件無法重複使用，任何供應中斷都會直接影響客戶的產品交付時程。建立「穩健的供應商管理體系」是 SUS 營運成功的基石。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.7.2 Routine Procurement -->
+<h2 class="section-title" id="sec772">7.7.2 Routine or Operational Procurement (常規採購)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Routine procurement for SUS (e.g., single-use bioreactors or chromatography systems) requires a <span class="key-term">supplier qualification program</span> for each of the SUS suppliers included in the PEP. Whenever the risk and complexity of the component in question is considered significant, the qualification program should be implemented using a <span class="key-term">risk-management approach</span>. Some of the factors to consider are as follows:</p>
+        <ul>
+            <li>The end user may have to adopt a different approach to the procurement of integrated SUS equipment versus routine SUS components (Sections 5.2, 5.4, 5.5, 6.12.1, 6.14, 7.5.7, and 7.6.2).</li>
+            <li>A backup policy of sourcing the same component from at least two different vendors should be adopted, and the suitability for the backup to be interchangeable with the original must be defined.</li>
+            <li>The end user must evaluate and audit the supplier's manufacturing capabilities and supply chain to determine the supplier's ability to increase output on demand.</li>
+            <li>The relationship between the end user and the supplier should be as transparent as possible in order to enhance the unimpeded operation of the SUS.</li>
+            <li>The quality systems of the supplier should be examined as part of a quality audit process, and quality and supply agreements should be implemented (Section 7.7.4).</li>
+            <li>The supplier should be provided with a detailed description of the manufacturing process of the SUS, film quality, biocompatibility, and testing (e.g., bioburden monitoring of the SUS), particulates, extractables and leachables, and testing of leakages.</li>
+            <li>A contract (supply or manufacturing agreement) describing the commercial conditions that relate to the supply chain, guarantee of delivery, and transport quality should be implemented.</li>
+            <li>Both the supplier and the end user must institute robust <span class="key-term">change-control processes</span> in order to prevent ad hoc modifications to the SUS.</li>
+            <li>Time lines from the design to arrival of both MUS and SUS parts should be monitored.</li>
+            <li>Evaluation models (preferably at the end user's site) that use mock-ups of preliminary SUS designs (available for training and simulations) should be tested. Testing is an important risk-mitigating procedure. This process may have been started as part of the SUS strategy (Section 7.2.3).</li>
+            <li>The end user should adhere to green and sustainable manufacturing policies throughout the entire supply chain and evaluate waste disposal for carbon footprint reduction.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Supplier Qualification Program (供應商確認計畫)：</strong>針對 PEP 中的每個 SUS 供應商實施的系統性評估計畫。當組件的風險和複雜度較高時，應採用風險管理方法來實施。</p>
+            <p><strong>Dual Sourcing (雙重供應策略)：</strong>同一組件至少從兩家不同供應商採購的備份策略，並須定義備用供應商的產品是否可與原廠互換。</p>
+            <p><strong>Change Control (變更管控)：</strong>供應商和最終使用者雙方都必須建立嚴格的變更管控流程，以防止對 SUS 的臨時性修改。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>常規採購的十一項考量因素中，最關鍵的三點：</p>
+            <ul>
+                <li><strong>雙重供應商策略：</strong>避免單一供應商風險，但「互換性」的定義和驗證是巨大的技術挑戰</li>
+                <li><strong>雙向變更管控：</strong>不僅使用者不能隨意更改，供應商的任何製程變更也必須通知使用者並經過評估</li>
+                <li><strong>永續製造：</strong>SUS 的環境影響（大量塑膠廢棄物）正受到越來越多的監管關注</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO，你的客戶可能指定使用特定供應商的 SUS 組件。但如果該供應商發生產能不足或品質問題怎麼辦？建議在客戶的技術轉移過程中，就主動協商備用供應商方案，並在品質協議中明確「供應商變更」的程序和責任歸屬。模型評估（使用 mock-up 進行模擬測試）是降低風險的有效手段。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 的供應商管理比 MUS 更加複雜？請從「消耗品」的本質來分析。</li>
+                <li>如果供應商單方面變更了薄膜配方，可能對你的製程產生哪些影響？你會如何通過變更管控來防範？</li>
+                <li>「綠色永續製造」在 SUS 供應鏈中面臨哪些特殊挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.7.3 Technical Diligence -->
+<h2 class="section-title" id="sec773">7.7.3 Technical Diligence (技術盡職調查)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>A <span class="key-term">QbD</span> approach is the best way to qualify suppliers for SUSs. It is based on ICH principles (ICH Q8) and it embraces the complementary concepts of <span class="key-term">quality-risk management</span> and <span class="key-term">pharmaceutical quality-system management</span> (as detailed in ICH Q9 and Q10), process validation and verification, and stakeholder management (Sections 7.2.1, 7.2.2 and 7.2.3). These approaches lay the foundation for quality-driven processes built on a science- and risk-based approach and understanding. This is the case not just for the process for which the SUS will be used but also for the SU technology that will be deployed, thus supporting patient safety and product availability. The QbD approach allows for the identification and management of critical sources of variability in which control strategies can be used to maintain a state of control and facilitate the application of continuous improvement throughout the SUS product lifecycle.</p>
+
+        <p>Technical diligence can be started at S4 (Section 7.4). Based on established principles, it involves a carefully documented visit to the supplier's site. The outcome should be an appropriate and measured understanding of all the technical issues pertaining to the SUS manufacturing process, readiness for installation, and operation at the end user's facility. Technical diligence should be considered an important step in the supplier qualification process and a complement to the quality audit process. The principal differences between technical diligence and a quality audit are summarized in Table 7.7.3-1.</p>
+
+        <h3 style="font-size:1rem; margin-top:1rem;">Table 7.7.3-1: Principal Differences Between a Quality Audit and a Technical Diligence Assessment</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Description</th>
+                    <th>Quality Audit</th>
+                    <th>Technical Diligence</th>
+                </tr>
+                <tr>
+                    <td><strong>Purpose</strong></td>
+                    <td>Compliance, quality systems</td>
+                    <td>Extensive technical understanding of design, manufacture, fitness for purpose, and control strategy</td>
+                </tr>
+                <tr>
+                    <td><strong>Personnel involved</strong></td>
+                    <td>Quality team(s)</td>
+                    <td>Scientists, engineers, SMEs, and the supplier's technical and manufacturing staff</td>
+                </tr>
+                <tr>
+                    <td><strong>Scope</strong></td>
+                    <td>Focused, supplier's quality systems</td>
+                    <td>Open-ended scope will vary depending on project, supply-chain transparency, subsuppliers back to source</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Technical Diligence (技術盡職調查)：</strong>不同於品質稽核只關注「合規性」，技術盡職調查的目的是深入理解供應商的設計、製造、適用性和控制策略。這是一種基於 QbD（Quality by Design，品質源於設計）原則的供應商評估方法。</p>
+            <p><strong>QbD Approach (品質源於設計方法)：</strong>基於 ICH Q8/Q9/Q10 原則，通過科學和風險導向的方法來辨識和管理關鍵變異來源，建立控制策略以維持受控狀態。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>品質稽核就像檢查一間餐廳是否有營業執照、衛生許可和食安制度（合規性）；技術盡職調查則像是派一位主廚去實地考察食材供應商的農場——了解土壤品質、灌溉方式、施肥策略、收割流程，判斷食材是否真正適合自己的料理風格。兩者互補，缺一不可。</p>
+        </div>
+        <div class="note-box">
+            <h4>圖表解讀 Table Analysis</h4>
+            <p>Table 7.7.3-1 清楚呈現了品質稽核與技術盡職調查的三大差異：</p>
+            <ul>
+                <li><strong>目的不同：</strong>稽核聚焦「合規」；技術盡職調查聚焦「技術理解」</li>
+                <li><strong>參與人員不同：</strong>稽核由品質團隊主導；技術盡職調查需要科學家、工程師和 SME 的深度參與</li>
+                <li><strong>範疇不同：</strong>稽核範圍明確且聚焦；技術盡職調查是開放式的，可能需要追溯到次級供應商</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Technical Diligence continued: Table 7.7.3-2 and supplier integration -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>Table 7.7.3-2: Some Pertinent Factors for a Technical Diligence Assessment Checklist</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Supplier Information</th>
+                    <th>Supplier Technical Capability</th>
+                    <th>End-User Product Suitability and Compatibility</th>
+                </tr>
+                <tr>
+                    <td>CDA implemented</td>
+                    <td>Design: engineering drawings and specifications</td>
+                    <td>Fit with the end user's process</td>
+                </tr>
+                <tr>
+                    <td>Company and stakeholders</td>
+                    <td>Risk to the end user</td>
+                    <td>Fit with the end user's facility and warehousing</td>
+                </tr>
+                <tr>
+                    <td>Level of supplier integration</td>
+                    <td>Resins, films, and other components</td>
+                    <td>Prototype testing procedure</td>
+                </tr>
+                <tr>
+                    <td>Sourcing and supply chain</td>
+                    <td>Manufacturing process overview</td>
+                    <td>Qualification</td>
+                </tr>
+                <tr>
+                    <td>Contingency planning</td>
+                    <td>Irradiation or other form of sterilization</td>
+                    <td>Deployment method</td>
+                </tr>
+                <tr>
+                    <td>Plant tour</td>
+                    <td>SUS shelf life</td>
+                    <td>Training and HSE</td>
+                </tr>
+            </table>
+        </div>
+
+        <p style="margin-top:1rem;">Determine the supplier's degree of integration:</p>
+        <ul>
+            <li><strong>Vertical:</strong> The supplier manufactures practically everything on-site, from the film to the finished and packaged SUS</li>
+            <li><strong>Horizontal:</strong> These activities are spread over more than one site</li>
+            <li><strong>Mixed model:</strong> A combination of vertical and horizontal integration</li>
+        </ul>
+        <p>The mixed model has become increasingly common. Resin is nearly always sourced as a bulk from larger industrial companies, and the SUS supplier company may be specialized in the production of SUS for pharmaceutical operations and have facilities on more than one continent. In some cases, it may require more than one technical diligence visit to the supplier's sites to address all the relevant technical concerns (e.g., the film's blow-extrusion may be performed at a different site than that used for SUS assembly and testing). The end user should pay careful attention to supply chain issues in this context. Depending on sourcing from another continent or from multiple continents could easily be disrupted by many factors beyond the end user's control and should be assessed from a risk-based approach.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Supplier Integration Models (供應商整合模式)：</strong></p>
+            <ul>
+                <li><strong>Vertical (垂直整合)：</strong>從薄膜到成品全部在同一站點製造——供應鏈最簡單，但供應商選擇有限</li>
+                <li><strong>Horizontal (水平整合)：</strong>活動分布在多個站點——需要多次技術盡職調查拜訪</li>
+                <li><strong>Mixed (混合模式)：</strong>最常見的形態，樹脂通常從大型工業公司大量採購，SUS 組裝和測試可能在不同地點</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 7.7.3-2 提供了技術盡職調查的檢查清單框架，涵蓋三大面向：供應商資訊、技術能力、與最終使用者的適用性。特別注意：</p>
+            <ul>
+                <li><strong>CDA (保密協議)：</strong>技術盡職調查涉及深層技術資訊交換，保密協議是前提</li>
+                <li><strong>應急計畫 (Contingency Planning)：</strong>供應商是否有備援方案至關重要</li>
+                <li><strong>跨洲供應鏈風險：</strong>依賴不同大洲的供應可能因地緣政治、天災、物流中斷等因素而輕易斷裂</li>
+            </ul>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 SUS 供應商採用混合整合模式，薄膜吹塑在歐洲、組裝在亞洲、測試在北美，你會如何規劃技術盡職調查的行程和重點？</li>
+                <li>為什麼 CDA 必須在技術盡職調查之前就簽署？不簽 CDA 會有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Table 7.7.3-3: SUS Implementation Process Lifecycle -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>Table 7.7.3-3: An Interpretation of the SUS Implementation Process</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Clinical Status of Product</th>
+                    <th>SUS Implementation Stage</th>
+                    <th>FDA PV Stage</th>
+                    <th>Supplier Qualification Activity</th>
+                    <th>Quality Agreement</th>
+                    <th>Risk &amp; Complexity</th>
+                </tr>
+                <tr>
+                    <td>Preclinical material</td>
+                    <td>Technical assessment (1), detailed investigation (2), and scoping (3)</td>
+                    <td>PV S1</td>
+                    <td>Collect supplier and SUS product information</td>
+                    <td>Optional</td>
+                    <td><span class="badge red">High</span></td>
+                </tr>
+                <tr>
+                    <td>IMPs for toxicology and phase I</td>
+                    <td>Business case (4), development (5), and testing and validation (6)</td>
+                    <td>PV S1-2</td>
+                    <td>Perform technical diligence</td>
+                    <td>Yes</td>
+                    <td><span class="badge red">High</span></td>
+                </tr>
+                <tr>
+                    <td>IMPs for phases II and III / PPQ conformance batches</td>
+                    <td>Launch (7)</td>
+                    <td>PV S2</td>
+                    <td>Perform technical diligence and an audit</td>
+                    <td>Yes</td>
+                    <td><span class="badge yellow">Moderate</span></td>
+                </tr>
+                <tr>
+                    <td>Licensed product</td>
+                    <td>SUS exploitation stage</td>
+                    <td>PV S3</td>
+                    <td>Continue supplier verification</td>
+                    <td>Yes</td>
+                    <td><span class="badge green">Low</span></td>
+                </tr>
+            </table>
+        </div>
+        <p>A quality audit may be executed either following or in parallel with the technical diligence process (e.g., an audit questionnaire can be part of the technical diligence process for phase I IMPs). A practical example of the technical diligence process can be found in Brown's presentation on Implementation and Technical Diligence.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>生命週期方法的實施對照表：</strong>Table 7.7.3-3 是本節最重要的表格之一，它將產品的臨床開發階段、SUS 實施階段、FDA 製程驗證 (PV) 階段、供應商確認活動和品質協議需求全部對齊。</p>
+        </div>
+        <div class="note-box">
+            <h4>圖表解讀 Table Analysis</h4>
+            <p>這張表格揭示了一個重要的趨勢：</p>
+            <ul>
+                <li><strong>風險隨時間降低：</strong>從臨床前的「高風險」逐步降至上市產品的「低風險」</li>
+                <li><strong>供應商管理深度遞增：</strong>從「蒐集資訊」→「技術盡職調查」→「技術盡職調查+稽核」→「持續驗證」</li>
+                <li><strong>品質協議從選配到必配：</strong>臨床前階段品質協議為選項，但進入臨床後就是必要的</li>
+                <li><strong>Phase-appropriate approach（階段適切方法）：</strong>不同開發階段對供應商管理的要求不同，體現了 ICH 的階段適切原則</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像學生到職場的成長過程：實習期（臨床前）只需了解公司基本資訊；試用期（Phase I）需要展示實際能力；正式聘用（Phase II/III）要通過績效考核和背景調查；長期員工（上市產品）則進入持續監督與年度考評模式。每個階段的管理深度和正式程度逐漸提高。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.7.4 Quality and Technical Agreements -->
+<h2 class="section-title" id="sec774">7.7.4 Quality and Technical Agreements (品質與技術協議)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><span class="key-term">Quality and technical agreements</span> clarify the functional aspects of a business relationship by delineating the responsibilities of quality, regulatory, and production personnel within each company in order to enhance communication and prevent ambiguity as referred to in Section 6. A quality agreement should not be confused with a business, supply, or manufacturing agreement. Several templates for APIs are available for chemical and biological products, and the end user may adapt them to an SUS from the <span class="key-term">Bulk Pharmaceuticals Task Force</span> (Society of Chemical Manufacturers and Affiliates or SOCMA) or the <span class="key-term">International Pharmaceutical Excipients Council</span> (IPEC).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Quality Agreement (品質協議)：</strong>明確界定雙方品質、法規和生產人員責任的文件。注意：品質協議不等於商業協議或供應協議——它專注於品質相關的責任劃分。</p>
+            <p><strong>SOCMA / IPEC 範本：</strong>現有的 API（原料藥）品質協議範本可以改編為 SUS 用途，但需要根據 SUS 的特殊性質（如 extractables/leachables、薄膜品質、生物相容性等）進行調整。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>品質協議的核心功能是「防止模糊性 (prevent ambiguity)」。在 SUS 供應鏈中，供應商和使用者之間的責任界線往往比 API 供應更加模糊——例如：薄膜的 extractables 測試是誰的責任？生物相容性數據由誰提供？變更通知的時限是多久？這些問題都必須在品質協議中明確回答。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼品質協議不應與商業/供應協議混為一談？兩者的核心目的有何不同？</li>
+                <li>將 API 品質協議範本改編為 SUS 品質協議時，你認為需要增加哪些特定條款？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.7.5 Logistics and Storage -->
+<h2 class="section-title" id="sec775">7.7.5 Logistics and Storage (物流與倉儲)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The storage and warehouse facilities required for the efficient operation of the SUS should be defined in the PEP. In general, the amount of pallet space required may be calculated as a function of consumption and the dimensions of the shipping container. A risk-based approach may be used to allocate storage space for critical consumables with limited or no alternative suppliers, while standard consumables can be sourced as and when they are needed. <span class="key-term">Value-stream mapping</span> (a lean manufacturing technique used to analyze the flow of materials and information required to bring a product or service to the user) can be used to identify improvements in lead time or to identify inefficient operations. For example, a value-stream map can show where excess materials are accumulating. Some of the factors to consider are:</p>
+        <ul>
+            <li>High-risk consumables</li>
+            <li>Standard consumables</li>
+            <li>Storage policy</li>
+            <li>Pallet space</li>
+            <li>Frequency of delivery to consumers</li>
+            <li>Environmental storage conditions monitoring and control (a GMP requirement)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Value-Stream Mapping (價值流圖，VSM)：</strong>精實製造的核心工具之一，用於分析從原材料到最終使用者的物料和資訊流動。在 SUS 倉儲管理中，VSM 可以幫助辨識前置時間的改善空間和效率低落的環節。</p>
+            <p><strong>Risk-Based Storage (風險導向倉儲)：</strong>關鍵消耗品（特別是沒有替代供應商的）應配置較多的安全庫存空間；一般性消耗品則可以按需採購。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 的倉儲策略就像超市的庫存管理：暢銷且獨家代理的商品（高風險消耗品）需要較大的儲架空間和安全庫存；而容易從多家供應商取得的日用品（標準消耗品）則採用即時補貨模式。價值流圖就是超市的「動線分析」，找出哪裡在排隊（瓶頸）、哪裡在囤積（浪費）。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+棧板空間需求 = f (消耗速率, 貨櫃尺寸)
+
+安全庫存策略：
+  高風險消耗品 → 較高安全庫存 (2-4 週)
+  標準消耗品   → 按需採購 (JIT)
+
+GMP 要求：
+  環境儲存條件 → 必須監控與管控
+  (溫度、濕度等)
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>SUS 相比 MUS 在倉儲上有一個獨特的挑戰：SUS 是消耗品，每批生產都需要全新的組件，因此所需的倉儲空間遠大於 MUS。環境儲存條件的監控與管控是 GMP 的強制要求——某些 SUS 組件（如薄膜袋）對溫度和濕度敏感，不當儲存可能導致保質期縮短或材料劣化。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 SUS 使用量突然因為新客戶訂單而增加 50%，你的倉儲策略需要做哪些調整？</li>
+                <li>價值流圖如何幫助你發現 SUS 供應鏈中的「隱藏浪費」？請舉一個具體例子。</li>
+                <li>為什麼 SUS 的倉儲管理比 MUS 更加複雜且佔用更多空間？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>S6 測試與驗證階段</strong>涵蓋交付、安裝、確效、訓練和安全五大領域。每個環節都需要在 PEP 中詳細規劃，並明確供應商與最終使用者的責任劃分。</li>
+        <li><strong>SUS 確效</strong>必須包含生命週期測試（Lifecycle Testing），模擬滅菌、運輸、凍融等最具衝擊性的步驟，確保在預期工作空間內的功能表現。</li>
+        <li><strong>訓練是 GMP 的硬性要求</strong>。SUS 操作人員需要接受專屬訓練，因為 SUS 的操作原理與 MUS 有根本性差異。袋體處理意識訓練是減少洩漏的最有效手段。</li>
+        <li><strong>HSE 計畫</strong>應在專案早期制定。SUS 因大量手動操作而產生獨特的安全風險（眼部高度破裂、地面管路絆倒、人因工程挑戰等），同時其一次性使用的特性帶來顯著的環境影響。</li>
+        <li><strong>S7 啟動上線</strong>的核心是建立從專案採購轉向常規營運採購的供應商管理體系，包括雙重供應策略、變更管控和品質協議。</li>
+        <li><strong>技術盡職調查</strong>與品質稽核互補：前者聚焦技術理解（由科學家和工程師主導），後者聚焦合規性（由品質團隊主導）。供應商的整合模式（垂直/水平/混合）決定了調查的複雜度。</li>
+        <li><strong>品質協議</strong>是防止責任模糊的關鍵文件，必須與商業協議分開管理。SOCMA 和 IPEC 提供了可改編的範本。</li>
+        <li><strong>倉儲策略</strong>應採用風險導向方法：高風險消耗品配置安全庫存，標準品按需採購。價值流圖 (VSM) 是優化物流效率的精實工具。環境監控是 GMP 的強制要求。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 66 (2014): Single-Use Systems</p>
+    <p>Section 5c: Implementation Framework S6-S7 (Sections 7.6-7.7, p100-p107)</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

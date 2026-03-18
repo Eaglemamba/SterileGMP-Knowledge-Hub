@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Topic 5: Environmental Monitoring</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Topic 5: Environmental Monitoring</h1>
+    <div class="subtitle">主題五：環境監測</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025) &mdash; RABS | p60 - p72</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解 oRABS 與 cRABS 環境監測頻率的要求，以及「連續監測」的起始與結束時機 (Q5.1)</li>
+        <li>掌握 RABS 內部應監測哪些表面、取樣時機與風險評估原則 (Q5.2)</li>
+        <li>學習 EM 培養皿進出 RABS 的安全轉移方法，以及為何不應在產線建置後開門轉移 (Q5.3)</li>
+        <li>理解培養皿在 RABS 內部的存放位置原則與 First Air 保護的關聯 (Q5.4)</li>
+        <li>掌握開門操作與人員監測的具體要求，包括人員取樣程序 (Q5.5)</li>
+        <li>認識將產線建置與充填活動的 EM 數據分離追蹤的好處 (Q5.6)</li>
+        <li>了解固定式 EM 空氣採樣點的定位原則與管路長度限制 (Q5.7)</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本章內容導覽</h3>
+    <div class="toc-grid">
+        <a href="#q5-1">Q5.1 監測頻率</a>
+        <a href="#q5-2">Q5.2 表面監測</a>
+        <a href="#q5-3">Q5.3 培養皿轉移</a>
+        <a href="#q5-4">Q5.4 培養皿存放</a>
+        <a href="#q5-5">Q5.5 人員監測</a>
+        <a href="#q5-6">Q5.6 數據分離</a>
+        <a href="#q5-7">Q5.7 採樣點定位</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.1 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-1">Q 5.1 &mdash; Environmental Monitoring Frequency (EM 監測頻率)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.1. What should the environmental monitoring (EM) frequency be in a closed or open restricted access barrier system (cRABS or oRABS)?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>The frequency of EM for oRABS and cRABS should be the same; <span class="key-term">continuous viable and total particle monitoring</span> is required for the full duration of critical activities, including setup (1). (See Question 5.5.)</p>
+
+        <p><span class="key-term">Critical activities</span> start at the point when a product-contact part and/or a primary container or closure are transferred and are exposed to the inside of the RABS. Where the RABS is subdivided into discrete zones, the point where critical activities start and end may well be different within the different zones; hence, the continuous EM may start at different times in each zone (4).</p>
+
+        <p>Continuous viable (i.e., a combination of <span class="key-term">active and passive air monitoring</span>) and total particle monitoring should begin at the start of the aseptic setup and should continue up until the end of filling. Typically, this is the end of the batch or campaign.</p>
+
+        <p>The RABS should be well designed to minimize the need for interventions involving opening the doors. By exception and where required, the doors should only be opened under strictly defined conditions, which should be procedurally defined and pre-assessed as part of the <span class="key-term">QRM</span>. The conditions for the opening of the doors and controls in place to mitigate risks should be considered and documented as part of the overall <span class="key-term">CCS</span>.</p>
+
+        <p>Appropriate controls should be in place to minimize the risk posed by the intervention through the opening of the doors and should extend to consideration of further disinfection steps. Additionally, controls should extend to the need to undertake a partial line clearance, for example, to discard exposed primary packaging containers or other direct product-contact parts located close to the intervention (e.g., vials, syringes, stoppers located on the stopper track). While sterility testing cannot be used to rationalize poor practices or otherwise support the undertaking of a high-risk intervention, based on risk, additional sterility samples should be considered as part of an additional control measure for critical interventions (4).</p>
+
+        <p>The same EM program applies to both product manufacture and <span class="key-term">APS</span>.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>There is no difference in expectations around the frequency of EM inside oRABS and cRABS.</p>
+
+        <p>Once a critical surface is exposed inside the RABS, that surface is potentially at risk of contamination, so continuous EM is required.</p>
+
+        <p>The requirement for continuous EM ceases once the last unit is closed for the batch or campaign provided any used product-contact parts are reprocessed, and any sterile components are cleared prior to reuse of the line.</p>
+
+        <p>In the rare event that the RABS door is opened after line setup is completed, the critical zone is put at an elevated risk of contamination from the person(s) intervening and from the surrounding cleanroom. Additional controls should be considered to reduce risks of such interventions and should extend to consideration of additional disinfection steps and partial line clearances.</p>
+
+        <p>Monitoring should not interfere with production processes in a way that raises the level of risk by introducing an activity in the critical zone, which defeats the purpose of the EM.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Continuous Viable and Total Particle Monitoring (連續微生物與微粒監測)：</strong>EU Annex 1 與本文件均要求在 Grade A 環境中進行「連續」監測。這裡的「連續」指的是從無菌建置開始到最後一個容器密封為止，監測不能中斷。</p>
+            <p><strong>Viable Monitoring (微生物監測)：</strong>由 active air sampling (主動式空氣採樣) 與 passive air monitoring (沉降菌培養皿) 兩者組合構成。</p>
+            <p><strong>Total Particle Monitoring (總微粒監測)：</strong>使用粒子計數器持續偵測 &ge;0.5 &mu;m 與 &ge;5.0 &mu;m 的微粒數量。</p>
+            <p><strong>Critical Activities (關鍵活動)：</strong>從產品接觸面或一級包材暴露於 RABS 內部的時刻開始。若 RABS 有分區，各區的關鍵活動起始時間可能不同。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你是醫院手術室的感控護理師。從手術器械打開無菌包裝的那一刻起，空氣品質監測就必須啟動，直到傷口完全縫合、敷料蓋好為止。不會因為是「小手術」就跳過監測 &mdash; RABS 的 EM 也是如此，不論 oRABS 或 cRABS，監測的起點和要求完全一致。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>oRABS = cRABS：</strong>EM 頻率要求完全相同，沒有差異。這是許多廠商常見的誤解。</li>
+                <li><strong>監測 ≠ 干擾：</strong>文件特別提醒，監測活動本身不應在關鍵區域引入額外風險，否則就違背了 EM 的初衷。</li>
+                <li><strong>APS 同等適用：</strong>無菌製程模擬 (Aseptic Process Simulation) 的 EM 計畫必須與實際生產一致。</li>
+                <li><strong>開門介入後的因應：</strong>需考慮額外消毒步驟與部分產線清場 (partial line clearance)，例如丟棄暴露的西林瓶或膠塞。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，客戶可能會問：「我們的 cRABS 充填線是否可以比 oRABS 減少 EM 點位？」答案是否定的。本文件明確指出兩者的 EM 頻率要求一致。然而，cRABS 的優勢體現在開門介入的頻率更低，因此實際的偏差事件與調查負擔較少，長期來看可降低品質成本。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 RABS 分為灌裝區與加塞區兩個獨立區域，連續 EM 的起始時間是否必須相同？為什麼？</li>
+                <li>在什麼情況下可以停止連續 EM？請列出必須滿足的條件。</li>
+                <li>為什麼無菌測試不能用來合理化高風險的開門介入操作？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.2 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-2">Q 5.2 &mdash; Surface Monitoring in RABS (RABS 表面監測)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.2. Which surfaces should be monitored in a restricted access barrier system (RABS) (open or closed)?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Firms should conduct a <span class="key-term">risk assessment</span> to define which surfaces of a RABS to monitor after use. Swabs should be used for complex geometric surfaces; <span class="key-term">contact plates</span> should be used for flat surfaces. Sampling is only representative; not all surfaces can be sampled (e.g., not all filling needles and not all other surfaces above the critical surfaces).</p>
+
+        <p>Typically, based on risk, firms will sample:</p>
+        <ul>
+            <li><span class="key-term">Direct- and indirect-contact parts</span></li>
+            <li>Sterile tools that contact or breach First Air over contact parts or sterile primary packaging during the batch/campaign</li>
+            <li>RABS intervention gloves used during the batch/campaign for critical interventions*</li>
+            <li><span class="key-term">RTP doors</span>, if used, where the door breaches First Air over a critical surface</li>
+            <li>Parts above the critical surfaces that cannot be sterilized</li>
+        </ul>
+        <p>*Note: When RABS intervention gloves are used ambidextrously, considerations should be given to EM sampling on multiple sides of gloves. This should be assessed using QRM principles.</p>
+
+        <p>Other locations linked to the risk assessment may also be sampled (e.g., occluded/hard to reach surfaces).</p>
+
+        <p>Surface samples are taken at the end of use (i.e., the batch or campaign). The surfaces sampled should be returned to a state suitable for aseptic manufacturing before the parts are reused. Typically, sterilized surfaces will be removed, subjected to a qualified cleaning process, and then resterilized. Other surfaces, including barrier gloves, should be cleaned and returned to a state suitable for aseptic manufacture.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Surface monitoring is typically aimed at surfaces that have the greatest potential impact on product sterility because they directly or indirectly contact the product, or they are permitted to breach <span class="key-term">First Air</span> (e.g., forceps).</p>
+
+        <p>A risk assessment is required to select and scientifically justify both the surfaces to be sampled and locations on those surfaces that are most representative of the risk. Sampling the entire product-contact surface is not necessary; instead, risk-based sampling should occur on the parts most likely to have been put at risk during installation or use.</p>
+
+        <p>RABS gloves are used for interventions; therefore, they are required to be sterile before installation and bio-decontaminated in situ thereafter. During use, RABS gloves are likely to contact surfaces inside the RABS that have been disinfected, not sterilized. Where open-door interventions are permitted, a barrier glove may well reside in a lower grade for the duration of the intervention and then be disinfected as the door is shut. Also, RABS gloves are made of flexible materials prone to puncture. RABS gloves that may have come into proximity with or breach First Air over sterile primary packaging, open product, or product-contact parts potentially puts the product at risk and should be sampled; such events should be avoided whenever possible.</p>
+
+        <p>Tools used for critical interventions should be sampled. Consideration should be given to the use of dedicated sterile tools that are used exclusively for conducting certain types of interventions (e.g., involving direct or indirect product-contact parts). Sterile tools should be kept in Grade A condition and maintained in a manner that prevents contamination (i.e., proper aseptic technique).</p>
+
+        <p>RTP doors are not sterile; they are bio-decontaminated inside and out in situ.</p>
+
+        <p>Surface samples are taken at the end of use because the surfaces being sampled need to be maintained both sterile and clean until the end of use; the samples allow this to be assessed as part of batch release. Care must be taken to ensure that the act of sampling does not put the surfaces being sampled at risk of contamination due to either improper sampling techniques, or the use of wrong or incorrectly prepared sampling equipment or consumables.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Direct-Contact Parts (直接接觸部件)：</strong>直接與產品或產品接觸面接觸的零件，如灌針、膠塞軌道等。</p>
+            <p><strong>Indirect-Contact Parts (間接接觸部件)：</strong>不直接碰觸產品，但可能影響無菌環境的部件。</p>
+            <p><strong>Contact Plates vs. Swabs (接觸皿 vs. 擦拭棒)：</strong>接觸皿用於平面表面採樣，擦拭棒用於幾何形狀複雜的表面。選擇正確的採樣工具是確保數據代表性的關鍵。</p>
+            <p><strong>Representative Sampling (代表性取樣)：</strong>不可能對所有表面採樣，因此必須透過風險評估選出最具代表性的採樣位置。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你是食品安全稽核員，要檢查一家餐廳的衛生狀況。你不可能擦拭每一寸廚房表面，但你一定會選擇砧板（直接接觸食物）、刀具（工具）、冰箱把手（間接接觸）這些最關鍵的位置。RABS 的表面監測也是同樣邏輯 &mdash; 風險評估決定採樣的「重點區域」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>取樣時機：</strong>表面採樣在使用結束後進行（批次或生產活動結束時），因為需要確認整個使用期間表面的無菌狀態。</li>
+                <li><strong>手套的雙面取樣：</strong>若 RABS 手套被雙手交替使用（ambidextrously），應考慮多面取樣。</li>
+                <li><strong>RTP 門非無菌：</strong>RTP 門是經過生物去污（bio-decontaminated），而非滅菌。這個區別在風險評估中很重要。</li>
+                <li><strong>取樣本身也是風險：</strong>取樣行為本身不應增加污染風險，這包括技術、設備與耗材的正確性。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 在為不同客戶產品建立 EM 計畫時，表面監測點位清單應根據每條充填線的風險評估個別定義。例如，使用 RTP 傳遞的 cRABS 充填線，應將 RTP 門面納入取樣清單；而傳統手動開門的 oRABS，則應更關注介入手套與門框周邊表面。表面監測數據是批次放行文件的一部分，缺少合理的風險評估將無法通過法規審查。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼不需要對所有灌針進行表面取樣？「代表性取樣」的科學依據是什麼？</li>
+                <li>在開門介入後，RABS 手套可能短暫處於較低級別環境中。這如何影響手套的取樣策略？</li>
+                <li>請比較 contact plates 與 swabs 的適用情境，各自的優缺點為何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.3 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-3">Q 5.3 &mdash; Transferring EM Plates Into/Out of RABS (EM 培養皿的轉移)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.3. What factors should be taken into consideration when transferring environmental monitoring (EM) plates into and out of a restricted access barrier system (RABS)?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Plates should be brought into the surrounding cleanroom sterile and suitably packaged for transfer into the RABS.</p>
+
+        <p>Plates should be transferred into and out of the RABS following <span class="key-term">QRM principles</span> and good aseptic working practices. Suitable methods include, but are not limited to:</p>
+        <ul>
+            <li>Plates sterilized in <span class="key-term">beta bags</span> or containers that are transferred via <span class="key-term">alpha RTP ports</span> in the RABS.</li>
+            <li>Plates sterilized in impermeable bags that enter and exit the RABS via an integral bio-decontamination (e.g., VPHP), rapid transfer airlock, or transfer chamber.</li>
+            <li>Transfer into the RABS occurs prior to line setup, with the outer bag being removed or disinfected at the Grade transition point. Exit occurs after the batch is complete. Transport to the testing laboratory should be done in a manner that prevents contamination.</li>
+            <li>Using <span class="key-term">plate sliders</span>, with the outer surfaces of the plate being disinfected at the Grade transition point. Care must be taken to ensure that no disinfectant goes inside the plate. Design should ensure that no airflow enters the RABS from the cleanroom. An example of a plate slider can be seen in Figure 5.3-1.</li>
+        </ul>
+
+        <p>It is not recommended to open RABS doors to transfer EM plates in or out of the RABS after line setup is complete or when critical surfaces are exposed.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>To provide reliable results, plates need to be sterile at the point of exposure.</p>
+
+        <p>RABS doors should not be opened after line setup; this includes the transfer of EM plates.</p>
+
+        <p><span class="key-term">RTPs</span> provide a method for safe entry of materials, including EM plates.</p>
+
+        <p>Transfer chambers provide a method whereby the risk posed by the entry of material previously exposed to Grade B conditions can be controlled by a combination of outer bag removal and sporicidal disinfection.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Beta Bags / Alpha RTP Ports：</strong>RTP (Rapid Transfer Port，快速傳遞口) 系統由 alpha 端（固定在 RABS 上）和 beta 端（可移動的容器/袋）組成。EM 培養皿可放在 beta 袋中滅菌後，透過 alpha 口安全送入 RABS，全程不暴露於背景環境。</p>
+            <p><strong>Plate Sliders (培養皿滑道)：</strong>一種專用裝置，可在不開門的情況下將培養皿滑入或滑出 RABS。設計重點是防止外部氣流進入 RABS 內部。</p>
+            <p><strong>VPHP (Vaporized Hydrogen Peroxide，汽化過氧化氫)：</strong>一種常用的生物去污方法，可用於傳遞艙內物品的表面去污。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 RABS 想像成一間手術室，而 EM 培養皿是手術中要使用的採樣工具。你不能在手術進行中打開手術室大門把工具搬進來 &mdash; 那會破壞無菌環境。正確的做法是在手術前就把所有器具準備好放入室內，或者透過專門的傳遞窗（就像 RTP）安全傳入。培養皿滑道就像是「得來速窗口」&mdash; 物品可以安全地傳遞，而不需要打開整面牆。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>絕對不要為了 EM 而開門：</strong>文件明確指出，在產線建置完成後或關鍵面暴露時，不建議為了轉移 EM 培養皿而打開 RABS 門。EM 不應成為污染的來源。</li>
+                <li><strong>四種轉移方法：</strong>RTP、傳遞艙（含 VPHP 去污）、預先放入、培養皿滑道。每種方法各有優缺點，應依設備配置選擇。</li>
+                <li><strong>消毒劑不可進入培養皿內部：</strong>使用 plate slider 時需特別注意外部消毒不能污染培養基表面，否則會產生假陰性結果。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在設計新的 RABS 充填線時，EM 培養皿的進出路徑必須在設計階段就考量。若只靠手動開門傳遞，不僅違反指南建議，更會在每次培養皿更換時製造一次「小型開門介入」，累積相當可觀的污染風險。建議在採購 RABS 設備時，就將 plate slider 或 RTP 配置列入使用需求規格 (URS)。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 RABS 沒有安裝 RTP 或 plate slider，你會如何設計 EM 培養皿的進出流程以避免開門？</li>
+                <li>為什麼培養皿必須在暴露點是「無菌」的？如果培養皿本身被污染，會對 EM 數據造成什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.4 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-4">Q 5.4 &mdash; Media Plate Storage Inside RABS (培養皿的 RABS 內部存放)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.4. How should media plates be stored inside a restricted access barrier system (RABS)?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Plate storage locations (i.e., either within the last layer bag or unbagged) should be <span class="key-term">risk-assessed</span> and well-defined. Considerations include, but are not limited to, the following:</p>
+        <ul>
+            <li>Plates should be stored away from product and product-contact parts in a location close to the sampling location.</li>
+            <li>Plates should not be stored in the same flow of <span class="key-term">First Air</span> that is protecting a critical surface.</li>
+            <li>The operator should not need to reach over or pass close to a critical surface to interact with the EM plates.</li>
+            <li>Plates should not be stored close to air returns within a cRABS.</li>
+            <li>The use of <span class="key-term">plate stands</span> is recommended (See Figure 5.4-1).</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>Care must be taken to ensure that EM does not add contamination risk to the process. Risk-assessing the storage location and the linked activities (e.g., retrieval of a plate from pre-use storage, labeling, positioning, retrieval of the plate from the sampling location, relocation to post-use storage location) should be undertaken to define the correct storage location.</p>
+
+        <p>The storage location must ensure that the handling of the plates does not require the plate or the operator to breach First Air or come into proximity with sterile primary packaging, open product, or product-contact surfaces.</p>
+
+        <p>The defined storage location must also be selected with respect to the airflow within the RABS. The plates, and the packaging they arrive in, should not be allowed to block air exits or returns. Storage of the plates should be considered as part of the <span class="key-term">AVS</span> (Air Visualization Study).</p>
+
+        <p>The storage of exposed and unexposed plates needs to be considered to prevent mix-ups and the potential reuse of a previously exposed plate, which may be dried out if used beyond allowed exposure time. Plate stands can aid in this, for example, by stacking plates such that fresh plates are removed from the bottom of the stack and used plates are returned to the top of the stack.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>First Air (第一氣流)：</strong>HEPA 過濾器出來後首先接觸關鍵面的潔淨氣流。EM 培養皿絕不能放在保護關鍵面的 First Air 路徑上，因為培養皿本身會造成氣流干擾。</p>
+            <p><strong>AVS (Air Visualization Study，氣流可視化研究)：</strong>使用煙霧測試來驗證 RABS 內部的氣流模式。培養皿的存放位置必須作為 AVS 的考量項目之一。</p>
+            <p><strong>Plate Stands (培養皿架)：</strong>專用的支架，可以有序地存放未使用和已使用的培養皿，避免混淆和重複使用。建議採用底部取用新皿、頂部放回已用皿的堆疊方式。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 EM 培養皿想像成你在廚房裡準備的抽油煙機替換濾網。你不會把備用濾網放在爐火旁邊（等同於放在 First Air 路徑上），也不會把它放在你切菜的砧板上方（等同於放在關鍵面附近）。你會把它放在一個不影響烹飪動線、又方便取用的架子上 &mdash; 這就是 plate stand 的概念。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>EM 不能增加污染風險：</strong>這是貫穿整個 Topic 5 的核心原則。培養皿的存放、取用、更換，每一個動作都必須經過風險評估。</li>
+                <li><strong>已用 vs. 未用培養皿分離：</strong>必須有明確的方法區分已暴露和未暴露的培養皿，避免混淆。已暴露的培養皿若超過允許暴露時間會乾燥失效。</li>
+                <li><strong>不要阻擋回風口：</strong>在 cRABS 中，培養皿及其包裝不應阻擋氣流出口或回風口，否則會影響 RABS 內部的氣流模式和壓差。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼培養皿架建議用「底部取新、頂部回收」的堆疊方式？這能防止什麼問題？</li>
+                <li>如果培養皿存放位置不當，可能對 AVS 結果和充填產品品質造成什麼影響？</li>
+                <li>操作人員在取用或更換培養皿時，哪些動作應特別避免？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.5 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-5">Q 5.5 &mdash; Personnel Monitoring During Setup and Open-Door Interventions (人員監測)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.5. When and how should environmental and personnel monitoring be performed during setup and open-door interventions?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>All open-door interventions need to be monitored from the point where the first <span class="key-term">critical surface</span> enters the RABS. The minimum level of monitoring inside a RABS during critical activities is <span class="key-term">continuous viable and total particle monitoring</span>; continuous viable monitoring is achieved by passive-air and active-air monitoring.</p>
+
+        <p>For open-door activities, including line set-up, monitoring within the <span class="key-term">intervention zone</span> is recommended. This monitoring needs to be based on QRM principles and may need to be changed to ensure monitoring covers the performed activities. Sampling locations, as defined in the EM risk assessment, should be linked to qualified and unqualified interventions.</p>
+
+        <p>Additional samples might be taken, based on QRM principles, in the <span class="key-term">UDAF</span> immediately outside the intervention zone, close to the operator and open-door. This can be achieved with either passive or active monitoring; samples should be taken at the working position level.</p>
+
+        <p>Each primary operator involved in open-door interventions, including line setup, should be monitored immediately as they exit the RABS Grade A interior, after having completed all the intervention steps in the critical zone, including any disinfection that may be required. The RABS door disinfection and closure should be done by the <span class="key-term">secondary operator</span>.</p>
+
+        <p>Representative samples should be taken as defined in the risk assessment of the EM program. Sample locations must be selected as per the risk assessment. The risk assessment should consider any body part entering the Grade A environment and any location selected through the risk assessment, and these must meet <span class="key-term">Grade A limits</span> (e.g., taking samples from the operator's RABS gloves, sleeves, head, and chest, as appropriate to the specific intervention).</p>
+
+        <p>It is recommended that a second, fully trained operator should support the monitoring to prevent <span class="key-term">false positive growth</span>. This sampling should be done in an environment that prevents contamination of the sample (e.g., the UDAF zone of protection or another UDAF zone close to the RABS).</p>
+
+        <p>To be representative, samples should be taken as close as possible (i.e., physical and temporal) to the end of the operators' activities inside the RABS. Gowns should be removed and replaced following sampling. Care must be taken to ensure that agar is not transferred to the RABS or surrounding cleanroom where the sampling takes place, during the degowning and gown disposal step.</p>
+
+        <p>The individual whose clothing was sampled will then need to leave the cleanroom and replace some or all of their aseptic clothing (i.e., RABS gloves and gown). The second person should also open any doors to allow the person sampled to pass without transferring agar onto cleanroom surfaces.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Entry of personnel into the RABS reduces the effectiveness of the barrier and potentially puts the product at risk of contamination. Performing personnel monitoring after, and active air sampling during, the open-door activities provides valuable additional data to support batch disposition.</p>
+
+        <p>An approved EM risk assessment should be used to determine the representative locations that require sampling meeting Grade A limits (e.g., body parts entering the Grade A environment). Relying only on glove-sampling data may not be adequate, especially where RABS gloves are disinfected or changed immediately prior to the intervention.</p>
+
+        <p>When sampling occurs close to the point where the person exits the RABS, the data collected will most closely reflect the risk posed by the operator to the RABS and will be less influenced by the surrounding lower-grade cleanroom and surfaces outside the RABS that are touched up to the point where the samples are taken. Ideally, a second person would sample the person exiting the RABS at the point they exit, this minimizes any external influences on the data (e.g., handling of plates, pens, documentation in Grade B) and ensures that the samples fully represent the risk posed by the first operator to the critical zone and have not been unnecessarily compromised.</p>
+
+        <p>Note: Operators should leave the RABS and change gloves to prevent the spread of media residues after finger dabs.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Intervention Zone (介入區域)：</strong>操作人員進行開門介入時所影響的 RABS 內部區域。在此區域內必須進行環境監測。</p>
+            <p><strong>UDAF (Unidirectional Airflow，單向氣流)：</strong>從 HEPA 過濾器垂直向下流動的潔淨氣流，提供 Grade A 等級的空氣品質保護。</p>
+            <p><strong>Primary Operator vs. Secondary Operator (主操作員 vs. 輔助操作員)：</strong>主操作員負責在 RABS 內執行介入操作；輔助操作員負責門的消毒、關閉以及人員取樣，形成「雙人互控」的品質保證機制。</p>
+            <p><strong>False Positive Growth (假陽性生長)：</strong>因取樣技術不當或環境干擾導致的非真實微生物回收。由第二人協助取樣可減少此風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把開門介入想像成進入無塵室的「安全檢查站」。主操作員就像進入手術室的外科醫師，完成操作後必須在出口接受「感染管控檢查」（人員取樣）。輔助操作員就像門口的感控護理師，負責門的消毒和取樣工作。這是一個「一人做事、一人監督」的雙人機制，確保每次進出都有完整的微生物數據記錄。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>即時取樣原則：</strong>人員取樣必須在操作員離開 RABS Grade A 環境「立即」進行，因為時間延遲會讓結果受到周圍較低級別環境的影響。</li>
+                <li><strong>全身取樣，不只手套：</strong>僅依賴手套取樣可能不足夠，特別是當 RABS 手套在介入前剛被消毒或更換時。應考慮手套、袖套、頭部、胸部等部位。</li>
+                <li><strong>培養基殘留管控：</strong>手指壓印取樣後，操作員必須離開潔淨室更換手套和衣物，防止瓊脂殘留轉移到 RABS 或潔淨室表面。</li>
+                <li><strong>輔助操作員協助開門：</strong>被取樣人員不應自行開門，以避免將瓊脂轉移至門把等潔淨室表面。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，開門介入的人員監測程序是法規查核的重點項目之一。建議建立標準化的「雙人介入 SOP」，明確規定：(1) 主操作員的操作步驟與範圍、(2) 輔助操作員的門管控與取樣職責、(3) 取樣部位與方法清單、(4) 取樣後的衣物更換與培養皿送檢流程。這份 SOP 應包含在 CCS 文件中，並在 APS 期間進行驗證。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼由第二人取樣比操作員自行取樣更具代表性？在數據可靠度方面有何差異？</li>
+                <li>如果 RABS 手套在介入前剛做過消毒，為什麼僅取手套樣可能不足以評估操作員帶來的風險？</li>
+                <li>人員取樣後為什麼需要完全更換無菌衣物？如果不更換，可能造成什麼後果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.6 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-6">Q 5.6 &mdash; Separating EM Data for Setup vs. Filling (EM 數據分離)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.6. Should environmental monitoring (EM) for line setup and filling be kept separate?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Yes. While not mandated, there are benefits to keeping EM for <span class="key-term">line setup</span> and <span class="key-term">filling</span> separate. Keeping the data from open-door line setup separate aids the investigation and process improvement in the event of EM recoveries (1, 7).</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Line setup activities usually pose a higher risk to the critical zone because they typically include frequent open-door interventions, material movements into the RABS, and the presence of personnel in the critical zone, whereas filling activities are typically conducted via <span class="key-term">closed-door interventions</span>. Segregating the two activities for EM allows the data from line setup and filling activities to be visualized and trended independently. Where EM recoveries occur, identifying the assignable root cause of the microbiological data deviation is aided when the data for the two activities are separate.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Line Setup vs. Filling (產線建置 vs. 充填)：</strong>這是 RABS 操作中風險等級截然不同的兩個階段。產線建置通常涉及頻繁的開門介入、物料搬入、人員進入關鍵區域；而充填階段通常透過關門介入（使用手套口）進行，風險相對較低。</p>
+            <p><strong>EM Recoveries (EM 微生物回收)：</strong>指在環境監測中偵測到微生物的事件。將建置與充填的 EM 數據分開，可以更精準地追溯污染來源。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你經營一家餐廳，如果把「備餐時段」和「出餐時段」的食品安全檢驗結果混在一起報告，當發現問題時你就無法判斷是備餐還是出餐環節出了差錯。將兩者分離追蹤，就像分別記錄「廚房準備階段」和「餐廳服務階段」的衛生數據，這樣當出現異常時可以快速鎖定是哪個環節的問題。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>非強制但強烈建議：</strong>文件用「not mandated」但隨即強調「有益處」，這在法規語境中意味著最佳實踐的期望，查核時若未執行需提供充分理由。</li>
+                <li><strong>趨勢分析價值：</strong>分離數據可以獨立觀察產線建置和充填各自的微生物趨勢，對於持續改善 (continuous improvement) 非常有價值。</li>
+                <li><strong>根因調查效率：</strong>當發生 EM 偏差時，分離的數據可以立即判斷問題發生在哪個階段，加速調查進程。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 而言，將建置與充填的 EM 數據分離是展示品質管理成熟度的重要指標。建議在 LIMS 或 EM 數據庫中設定「活動階段」標籤，讓每筆 EM 數據都能自動標記為「Setup」或「Filling」。這樣在年度趨勢報告或客戶審計時，可以清楚呈現每個階段的微生物控制水準，也有助於識別系統性改善機會。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼產線建置階段通常比充填階段有更高的微生物污染風險？</li>
+                <li>如果一家工廠沒有將建置與充填的 EM 數據分開，在法規查核時可能面臨什麼挑戰？</li>
+                <li>在你的 LIMS 系統中，你會用什麼欄位或標籤來實現這種數據分離？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q5.7 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q5-7">Q 5.7 &mdash; Fixed EM Air-Monitoring Sampling Point Locations (固定式 EM 空氣採樣點定位)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.7. Where should the fixed environmental monitoring (EM) air-monitoring sampling points be located within the restricted access barrier system (RABS)?</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Firms should conduct a risk assessment in the design phase to determine the number and locations of EM samples that should be taken. (See PDA Technical Report No. 13 (Revised 2014): Fundamentals of an Environmental Monitoring Program.)</p>
+
+        <p>The sampling locations should be positioned as closely as possible to the most <span class="key-term">critical operations</span>, such as the point of fill, sorting bowl, or rotary-table. They should be positioned vertically at or close to the height of the critical surface they are monitoring and ideally in the same plane.</p>
+
+        <p>Note: FDA's 2004 Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing&mdash;Current Good Manufacturing Practice states:</p>
+
+        <div class="quote-box">
+            "Air in the immediate proximity of exposed sterilized containers/closures and filling/closing operations would be of appropriate particle quality when it has a per-cubic-meter particle count of no more than 3520 in a size range of 0.5 &mu;m and larger when counted at representative locations normally not more than 1 foot away from the work site, within the airflow, and during filling/closing operations. This level of air cleanliness is also known as Class 100 (ISO 5)."
+        </div>
+
+        <p>Sampling locations should not breach <span class="key-term">First Air</span> over critical surfaces. They should be positioned so that they capture the risks from any permitted intervention, for example, between the RABS door or glove and the critical surface being monitored, and between the door and critical surfaces where open-door interventions are permitted.</p>
+
+        <p>Viable- and total-particle sampling locations should be <span class="key-term">co-located</span> wherever possible (if supported by risk-assessment) both to allow a point of comparison and for ergonomic reasons. Sampling locations should not cause an interference on the airflow between the sampling points (i.e., ideally <span class="key-term">isokinetic sampling</span> for viable monitoring). AVS should demonstrate the noninterference during the sampling (e.g., passages of RABS gloves during the plate changing).</p>
+
+        <p>Total-particle sampling positions need to be set to allow a tube no longer than <span class="key-term">one meter (1 m)</span> to connect the isokinetic sampling-head to the particle counter. Where lengths greater than 1 m must be used,* studies are required to assess the particle loss, in particular, the 5.0 &mu;m particle loss, and determine if improvements are required. Ideally, the connecting tube would run straight. Any necessary bends should have smooth bend radii, where a 90&deg; bend is achieved over no less than 15 cm of tube.</p>
+
+        <p>*Note: RABS should be designed/installed to avoid use exceeding 1 m.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>It is not possible to monitor the entire RABS. A risk assessment is required to position EM samples in locations where they are most likely to detect the risks posed from the main contamination risks, that is, conducting both open- and closed-door interventions.</p>
+
+        <p>Each unique particle size will have a different deposition profile in tubing based on, for example, airflow velocity and sample volume, tubing diameter, sampling port arrangement, temperature, bend radius, tube length, and tubing material. Because particulate monitoring attempts to assess a range of sizes (e.g., 0.5 &mu;m and greater in optical diameter), no single set of radii or length conditions can describe best practices for each of these particle sizes. Minimizing the number of tubing bends, maximizing radii, and minimizing overall tubing length should be the goal, and it should be done in accordance with the particle-counter equipment manufacturer's recommended best practices.</p>
+
+        <p>The particle-counter equipment manufacturer should provide technical justification for its recommendations. Instrument calibration should address sampling configuration.</p>
+
+        <p>Note:</p>
+        <ul>
+            <li>EU Annex 1 now states that tube length should typically be no longer than 1 m and any bend radii should be avoided.</li>
+            <li>International Organization for Standardization (ISO) 14644-1:2015 Cleanrooms and Associated Controlled Environments &mdash; Part 1: Classification of Air Cleanliness by Particle Concentration also states that tube length should be no longer than 1 m.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Isokinetic Sampling (等速採樣)：</strong>採樣探頭的吸入速度與周圍氣流速度一致，確保粒子被等比例地採集，不會因為速度差異導致取樣偏差。這是微粒監測準確性的關鍵。</p>
+            <p><strong>Co-location (共位設置)：</strong>將微生物採樣點與微粒採樣點設置在同一位置，這樣當某處出現微粒異常時，可以直接比對同一位置的微生物數據，方便關聯分析。</p>
+            <p><strong>1 m 管路限制：</strong>連接等速採樣頭與粒子計數器的管路不應超過 1 公尺。管路越長，粒子（特別是 &ge;5.0 &mu;m 的大粒子）因沉降和管壁附著而損失越大，導致測量結果偏低。</p>
+            <p><strong>Bend Radii (彎曲半徑)：</strong>管路如必須彎曲，90&deg; 彎折應在至少 15 cm 的管長上平緩完成，避免急彎造成粒子損失。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在一棟大樓安裝火災偵測器。你不能把偵煙器裝在離火源很遠的走廊盡頭 &mdash; 應該裝在最可能起火的廚房附近和關鍵出口處。同樣地，RABS 的 EM 採樣點要盡可能靠近灌裝點、分瓶台等最關鍵的操作位置。而管路就像偵煙器的連接線 &mdash; 越短、越直，訊號傳遞越準確；彎折太多，「煙」（粒子）就會在途中損失。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>設計階段就要規劃：</strong>採樣點位置應在 RABS 設計階段透過風險評估確定，而不是安裝後才「找空間放」。</li>
+                <li><strong>位置的三維考量：</strong>水平方向要靠近關鍵操作，垂直方向要在關鍵面的高度或接近高度，理想狀態在同一平面。</li>
+                <li><strong>不能干擾 First Air：</strong>採樣點本身不能阻擋保護關鍵面的 First Air，否則就是「為了監測品質而降低了品質」。</li>
+                <li><strong>在門與關鍵面之間：</strong>採樣點應位於 RABS 門或手套口與關鍵面之間，這樣才能捕捉到介入操作帶來的污染風險。</li>
+                <li><strong>多方法規一致要求 1 m：</strong>EU Annex 1 和 ISO 14644-1:2015 都明確要求管路長度不超過 1 m。這已是國際共識。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>管路設計關鍵參數 Tubing Design Parameters</h4>
+            <pre>
+管路長度限制：  &le; 1 m（EU Annex 1 / ISO 14644-1）
+90&deg; 彎折最小弧長：&ge; 15 cm
+FDA ISO 5 微粒限值：&le; 3,520 particles/m&sup3; (&ge;0.5 &mu;m)
+採樣距離：         &le; 1 foot (~30 cm) from work site
+
+粒子損失影響因素：
+  - 管路長度 (tube length)
+  - 彎折數量與半徑 (bend count &amp; radii)
+  - 管徑 (tubing diameter)
+  - 氣流速度 (airflow velocity)
+  - 管材 (tubing material)
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 RABS 設備採購階段，粒子計數器的安裝位置與管路走向必須列入 URS 和設計確認 (DQ) 文件中。建議與設備供應商確認：(1) 粒子計數器的建議管路配置；(2) 超過 1 m 管路時的粒子損失驗證方案；(3) 採樣頭的等速取樣設計。這些在設計階段確定，可避免安裝後發現管路超長而需要進行昂貴的改裝。同時，AVS 應驗證所有採樣點在運作中（含培養皿更換動作）不會干擾氣流。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 5.0 &mu;m 粒子比 0.5 &mu;m 粒子更容易在長管路中損失？從物理原理解釋。</li>
+                <li>如果你的 RABS 設計中，粒子計數器管路不得不超過 1 m，你需要執行什麼研究來證明測量結果仍然可靠？</li>
+                <li>為什麼建議將微生物採樣點與微粒採樣點共位設置？在什麼情況下可能不適合共位？</li>
+                <li>採樣點應位於 RABS 門/手套口與關鍵面之間，而不是關鍵面的正上方。請解釋這個定位原則背後的邏輯。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Q5.1 監測頻率：</strong>oRABS 與 cRABS 的 EM 頻率要求完全相同 &mdash; 從關鍵面暴露開始到最後一個容器密封為止，必須進行連續微生物與微粒監測。同樣的 EM 計畫適用於生產和 APS。</li>
+        <li><strong>Q5.2 表面監測：</strong>應透過風險評估選定監測表面，重點包括直接/間接接觸部件、介入手套、RTP 門、關鍵面上方不可滅菌的部件。表面取樣在批次結束後進行。</li>
+        <li><strong>Q5.3 培養皿轉移：</strong>培養皿應透過 RTP、傳遞艙、預先放入或 plate slider 等方式進出 RABS，絕不應在產線建置後為了轉移 EM 培養皿而開門。</li>
+        <li><strong>Q5.4 培養皿存放：</strong>存放位置必須遠離 First Air 路徑和關鍵面，不阻擋回風口，使用培養皿架區分已用/未用培養皿，並在 AVS 中驗證。</li>
+        <li><strong>Q5.5 人員監測：</strong>開門介入需要即時的人員取樣（手套、袖套、頭部、胸部等），由第二人執行取樣，取樣後須更換衣物並防止培養基殘留轉移。</li>
+        <li><strong>Q5.6 數據分離：</strong>雖非強制要求，但強烈建議將產線建置與充填階段的 EM 數據分開追蹤，以利趨勢分析和根因調查。</li>
+        <li><strong>Q5.7 採樣點定位：</strong>採樣點應在設計階段定位，盡可能靠近關鍵操作且在同一高度平面，管路長度不超過 1 m，微生物與微粒採樣點建議共位設置。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems (RABS)</p>
+    <p>Topic 5: Environmental Monitoring &mdash; Q5.1-Q5.7 | p60-p72</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
