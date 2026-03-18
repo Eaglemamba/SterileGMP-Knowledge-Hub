@@ -173,6 +173,7 @@ For new merge.py files, use `merge_engine.py` via import — see its docstring f
 | `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
 | `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
 | `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
+| `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
 
 ---
 
