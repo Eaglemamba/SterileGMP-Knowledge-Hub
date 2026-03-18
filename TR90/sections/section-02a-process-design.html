@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR90 - Section 2a: Process Design, Microbial Control, and Monitoring (4.0-4.2)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.0-4.2: Process Design, Microbial Control, and Monitoring</h1>
+    <div class="subtitle">製程設計、微生物控制與監測（第一部分）</div>
+    <div class="page-info">PDA Technical Report No. 90 — Contamination Control Strategy | p7-p12</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解製造製程設計如何整合微生物控制與監測，以防止污染</li>
+        <li>掌握微生物侵入 (Microbial Ingress)、增殖 (Proliferation)、持續 (Persistence) 三大風險考量</li>
+        <li>了解低微生物負載 (Low-Bioburden) 原料藥 (DS) 製程控制的關鍵要素</li>
+        <li>認識病毒與黴漿菌 (Viral and Mycoplasma) 在細胞培養中的特殊污染風險</li>
+        <li>掌握無菌藥品 (Sterile Drug Product) 製程中全面性 (Holistic) 污染控制方法</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.0 Process Design, Microbial Control, and Monitoring          -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-0">4.0 Process Design, Microbial Control, and Monitoring</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p>Manufacturing processes should be designed, commissioned, qualified, and monitored by personnel with appropriate process, engineering, and <span class="key-term">microbiological knowledge</span>. The manufacturing process should be designed and validated to prevent potential contamination from <span class="key-term">microorganisms</span>, <span class="key-term">microbial byproducts</span> (e.g., endotoxins), and <span class="key-term">foreign particulate matter</span>.</p>
+
+        <p><span class="key-term">CQAs</span> can include a broad range of characteristics that must be controlled during the process. In this TR only microbiological and particulate attributes are addressed (see TR 60 for further discussion on establishing CQAs). The following sections address the location for testing and setting appropriate limits for assessing <span class="key-term">critical control points (CCPs)</span>.</p>
+
+        <p>Controlling the potential ingress of <span class="key-term">microbial contaminants</span> throughout the drug substance and sterile drug product manufacturing processes is a key element to any contamination control program because contaminants can alter the process performance and adulterate the final product (e.g., clogging of process filters, degradation of process solutions or product molecule, unexpected impurities). For nonsterile drug products, elevated levels of microorganisms can lead to unwanted degradation and impurities; also, the presence of specific <span class="key-term">objectionable organisms</span> can directly impact patient safety.</p>
+
+        <p><span class="key-term">Risk-based process and monitoring plans</span> for microbial control should be in place to address the specific product, process, and facility design. These plans may vary based on the type of product produced (e.g., sterile, nonsterile, biologic, small molecule), the stage of manufacturing (e.g., drug product, intermediate, drug substance), and the design of the facility (e.g., isolator, RABS, single-use, stainless steel, multiuse). The three main microbial contamination considerations for the risk assessment within the manufacturing facility, equipment, and processes are:</p>
+
+        <ul>
+            <li><strong><span class="key-term">Microbial Ingress</span>:</strong> What are the sources of contamination and how are they gaining access to the manufacturing environment?</li>
+            <li><strong><span class="key-term">Proliferation</span>:</strong> Are there environmental factors or processing conditions that may increase the risk or extent of a contamination?</li>
+            <li><strong><span class="key-term">Persistence</span>:</strong> Are the cleaning, sanitization/disinfection/sterilization, and monitoring programs appropriate for all the product, contact equipment, systems, and facilities to ensure bioburden is being eliminated or kept in check?</li>
+        </ul>
+
+        <p>PDA Technical Report No. 69: <em>Bioburden and Biofilm Management in Pharmaceutical Manufacturing Operations</em> provides further guidance on these three considerations.</p>
+
+        <p>These risk-based process and monitoring plans should consider that microorganisms may enter the manufacturing process from multiple sources—from incoming raw materials, facility design and inputs, and drug substance manufacturing, culminating in the final packaging of drug product. Figure 4.0-1 displays a diagram of possible microbial contamination sources, and Section 15.0, Table 15.0-2 and Table 15.0-7 provide further points to consider on bioburden controls for multiuse versus single-product facilities. In addition, Section 4.1.1.2 provides an extensive listing of resources that address sterilization processes and other aspects of the diagram below.</p>
+
+        <p style="text-align:center; color:var(--text-medium); font-style:italic; margin: 1rem 0; padding: 1rem; background: #f7fafc; border-radius: 8px;">[Figure 4.0-1: Potential Sources of Microbial Contamination to Consider when Conducting a Microbial Control Risk Assessment — 圖片請參閱原文]</p>
+
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Critical Control Points, CCPs (關鍵控制點):</strong> 這是從食品安全 HACCP 概念借鏡而來的術語。在藥品製造中，CCP 指的是製程中那些「如果失控就會直接影響產品品質」的關鍵步驟。每個 CCP 都需要設定明確的監測方法和限度。</p>
+            <p><strong>CQAs (關鍵品質屬性):</strong> 本 TR 聚焦在微生物學屬性和微粒屬性這兩類 CQA。其他類型的 CQA（如化學純度、效力等）則參見 PDA TR 60。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>三大微生物風險維度</h4>
+            <p>TR90 將微生物污染風險歸納為三個核心維度，這是建構 CCS 風險評估的基礎框架：</p>
+            <ul>
+                <li><strong>Microbial Ingress（微生物侵入）：</strong>污染物從哪裡來？如何進入製程？這包括原料、人員、設備、環境等所有可能的入口點。</li>
+                <li><strong>Proliferation（增殖）：</strong>一旦微生物進入系統後，是否有條件讓它們大量繁殖？例如溫度、營養物、停留時間等因素。</li>
+                <li><strong>Persistence（持續存在）：</strong>現有的清潔、消毒、滅菌和監測程序是否足以消除或控制微生物？生物膜 (Biofilm) 的形成就是 Persistence 的典型例子。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把微生物污染控制想像成<strong>醫院的感染管控計畫 (Hospital Infection Control Plan)</strong>：</p>
+            <ul>
+                <li><strong>Ingress（侵入）</strong>= 訪客、外部物品帶入病菌 → 需要門禁管制和消毒</li>
+                <li><strong>Proliferation（增殖）</strong>= 醫院內溫暖潮濕的環境讓細菌繁殖 → 需要空調控制和乾燥</li>
+                <li><strong>Persistence（持續）</strong>= 某些頑固的超級細菌清潔不掉 → 需要更強效的消毒方案和定期監測</li>
+            </ul>
+            <p>藥廠的 CCS 就像醫院的感染管控——必須從「進來」「長大」「賴著不走」三個面向同時防堵。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節特別強調：製程和監測計畫必須是<strong>基於風險 (Risk-based)</strong> 的，而非一體適用。計畫應根據以下因素量身訂做：</p>
+            <ul>
+                <li>產品類型（無菌 vs. 非無菌、生物製劑 vs. 小分子）</li>
+                <li>製造階段（原料藥 vs. 中間體 vs. 成品藥）</li>
+                <li>設施設計（隔離器 vs. RABS vs. 一次性 vs. 不鏽鋼 vs. 多用途）</li>
+            </ul>
+            <p>這意味著沒有萬用的 CCS 模板——每個產品/製程/設施組合都需要獨立評估。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p><strong>Figure 4.0-1</strong> 呈現了在進行微生物控制風險評估時，需要考慮的所有潛在微生物污染來源的全貌圖。主要涵蓋：</p>
+            <ul>
+                <li>進料原物料（包括水系統、培養基、緩衝液等）</li>
+                <li>設施環境投入（空調系統、壓差控制、人員和物料流動）</li>
+                <li>設備和製程本身的風險（開放式 vs. 封閉式操作、連接和斷接操作）</li>
+                <li>從原料藥生產一直到最終包裝的完整流程鏈</li>
+            </ul>
+            <p>這張圖是進行 CCS 風險評估時的起始參考——確保團隊不會遺漏任何潛在的污染來源。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的工廠中，請列舉三個最可能的微生物侵入 (Ingress) 來源。對於每個來源，目前有哪些控制措施？</li>
+                <li>為什麼「基於風險的製程監測計畫」比「一刀切的標準計畫」更適合污染控制？請用具體例子說明。</li>
+                <li>Ingress、Proliferation、Persistence 這三個風險維度中，哪一個在你的製程中最難控制？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1 Low-Bioburden Drug Substance Process Control               -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-1">4.1 Low-Bioburden Drug Substance Process Control</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><span class="key-term">Drug substances (DS)</span> are active ingredients with pharmacological activity for the prevention and treatment of diseases. DS undergo additional manufacturing steps that may include formulation, sterilization, and filling; those that undergo <span class="key-term">sterile filtration</span> are generally not monitored for the presence of foreign particulate matter. Maintaining <span class="key-term">microbial control</span> while processing the DS is critical because, although potential bioburden may be filtered out in subsequent manufacturing steps, microbial contamination during the initial processing can introduce <span class="key-term">product variability</span>. Inconsistency of the DS could impact (a) <span class="key-term">safety</span>, due to the release of toxic by-products, including bacterial endotoxins; (b) <span class="key-term">potency</span>, due to degradation or modification of the product by microbial enzymes; and (c) <span class="key-term">purity</span>, due to changes in the impurity profiles from microbial by-products.</p>
+
+        <p>DS and other process intermediates should be handled and stored under conditions that consider microbial ingress and proliferation and minimize the risk of microbial contamination. The probability of microbial ingress and its impact on product quality should be assessed case by case. The risk of impact on products stored frozen is low because organisms will not proliferate during storage. Microbial ingress in refrigerated products, however, may result in unacceptable bioburden levels during storage, so appropriate procedural controls should be in place to minimize it. For example, steps where a process stream is directly exposed to the environment may be performed under <span class="key-term">unidirectional Grade A air supply</span> and a <span class="key-term">Grade C background</span> may be sufficient based on the overall CCS.</p>
+
+        <p>Bottles containing the DS should be closed with a predefined torque that ensures the integrity of the seal and, at the same time, prevents cracking or damaging the bottle; in addition, sampling that introduces a pipette into the bottle should be avoided to prevent microbial ingress. <span class="key-term">Single-use systems (SUS)</span> should be certified sterile by the vendor; single-use bags should be handled in a manner that prevents leaks, and the bags containing the product should be inspected for leaks before use. Bags that are frozen during storage may warrant additional integrity checks. Mobile stainless-steel vessels should be sterilized; vessel integrity may be validated using a <span class="key-term">hold study</span> with a growth-promoting solution. The length of the hold may be included in the risk assessment, as it may be impractical to conduct the study for the complete length of the proposed storage time.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Drug Substance, DS（原料藥）：</strong>具有藥理活性的活性成分。在生物製劑中，這通常指純化後但尚未配方的蛋白質或抗體。DS 階段通常不是無菌製造，而是「低微生物負載」(Low-Bioburden) 控制。</p>
+            <p><strong>為什麼 DS 階段的微生物控制如此重要？</strong> 即使後續步驟（如無菌過濾）能去除微生物細胞，但微生物在 DS 製程中造成的損害是不可逆的：</p>
+            <ul>
+                <li><strong>安全性：</strong>細菌內毒素 (Endotoxin) 等毒性副產物一旦釋放，過濾無法完全去除</li>
+                <li><strong>效力：</strong>微生物酵素可能降解或修飾產品分子</li>
+                <li><strong>純度：</strong>微生物副產物會改變雜質的面貌 (Impurity Profile)</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在準備一鍋高級湯底：即使最後你會用細篩網過濾所有固體，但如果湯底在燉煮過程中受到污染（例如掉入了不潔的東西），那些<strong>已溶解的有害物質</strong>是篩網過濾不掉的。</p>
+            <p>同理，DS 製程中的微生物污染即使後續被過濾去除，微生物已經釋放的內毒素和酵素所造成的產品品質變化，無法透過下游過濾來逆轉。這就是為什麼「上游的微生物控制」至關重要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>儲存條件與微生物風險的關係：</strong></p>
+            <ul>
+                <li><strong>冷凍儲存：</strong>微生物不會增殖，風險低</li>
+                <li><strong>冷藏儲存：</strong>微生物增殖速度雖慢，但長時間儲存仍可能導致超標，需要程序控制</li>
+                <li><strong>室溫儲存：</strong>風險最高，需要最嚴格的控制（但有一個優點——可目視觀察是否有微生物生長導致的混濁）</li>
+            </ul>
+            <p><strong>容器完整性是關鍵：</strong>無論是瓶裝、一次性袋或不鏽鋼容器，密封完整性 (Seal Integrity) 直接決定了微生物侵入的風險。特別注意冷凍/解凍循環可能損害容器完整性。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景：</strong>某 CDMO 代工生產生物製劑 DS，使用一次性袋系統進行儲存和運輸。以下是實務中的關鍵控制點：</p>
+            <ul>
+                <li>確認 SUS 供應商提供無菌證書，且進料檢驗包含完整性確認</li>
+                <li>冷凍前後都進行袋子完整性目視檢查</li>
+                <li>建立 DS 儲存保持時間 (Hold Time) 驗證研究，使用促生長培養基來挑戰微生物控制能力</li>
+                <li>避免使用吸管直接伸入 DS 瓶中取樣——改用封閉式取樣系統</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼文件說「經無菌過濾的 DS 通常不監測外來微粒」？這在什麼情況下可能不適用？</li>
+                <li>如果你的 DS 需要在 2-8°C 冷藏儲存長達 30 天，你會如何設計 Hold Time 驗證研究？</li>
+                <li>文件提到 DS 暴露於環境的步驟可在 Grade A 單向流/Grade C 背景下進行。為什麼不需要 Grade B 背景？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.1 Viral and Mycoplasma Considerations                      -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-1-1">4.1.1 Viral and Mycoplasma Considerations</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><span class="key-term">Viral and mycoplasma contaminations</span> in cell cultures (where applicable) are much less common than bacterial or fungal contaminations, but they can significantly interrupt manufacturing operations that result in a facility shutdown and <span class="key-term">product supply shortage</span>.</p>
+
+        <p>Virus contamination of biological products can originate from contaminated cells with <span class="key-term">endogenous retroviruses</span> or a latent infection or from cells contaminated during manipulation. <span class="key-term">Adventitious viruses</span> can also be introduced from extraneous sources, including personnel, poorly designed processes or facilities, contaminated raw materials, and cross-contamination. For example, contamination with <span class="key-term">minute mouse virus</span> has been traced to the presence of rodents in the facility. Since virus particles are not retained by 0.1-&micro;m or 0.2-&micro;m filters, filtration of the media or culture is not effective in removing them. Absence of adventitious viruses contaminating the final product is achieved by a combination of preventive measures, for instance, the use of appropriate sources of raw materials, heat inactivation or irradiation of the media, virus detection measures such as <span class="key-term">adventitious agent testing</span>, and viral clearance measures in the process. PDA Technical Report 41 (Revised 2022): <em>Virus Retentive Filtration</em> provides further guidance on this topic.</p>
+
+        <p>Most of the sources of <span class="key-term">mycoplasma</span> contamination are the same as viruses, so contamination control measures against viral contamination also reduce the challenges of mycoplasma contamination. Indiscriminate use of antibiotics during cell culture has also been reported to increase the probability of mycoplasma contamination because it may lead to less rigorous <span class="key-term">aseptic technique</span>. Mycoplasmas are resistant to commonly used antibiotics, and they cannot be detected by turbidity or standard microscopic techniques. Of note, <span class="key-term">0.1-&micro;m filters</span> are effective at reducing mycoplasma and have become commonplace for media filtration.</p>
+
+        <p>One advantage to testing for virus and mycoplasma early in the process is the ability to respond promptly to a confirmed contamination event. Having a strong <span class="key-term">remediation plan</span> in place in the event of a contamination and all critical personnel well trained on the plan to ensure prompt execution is very important. Additional information on virus contamination is available in PDA Technical Report No. 83: <em>Virus Contamination in Biomanufacturing: Risk Mitigation, Preparedness, and Response</em>.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Adventitious Virus（外源性病毒）：</strong>非預期引入細胞培養系統的病毒。來源可能是原料（例如動物來源的培養基成分）、操作人員、設施環境，甚至是工廠內的害蟲（如小鼠病毒案例）。</p>
+            <p><strong>Endogenous Retrovirus（內源性逆轉錄病毒）：</strong>已整合到宿主細胞基因體中的病毒序列。例如 CHO 細胞株中天然存在的逆轉錄病毒樣顆粒 (Retrovirus-like Particles)。這些不是「污染」，而是細胞株本身的特性，但仍需要在下游製程中進行病毒清除。</p>
+            <p><strong>Mycoplasma（黴漿菌）：</strong>一種沒有細胞壁的微小原核生物。因為體積極小且無細胞壁，它們具有以下特殊挑戰：</p>
+            <ul>
+                <li>對常見抗生素（如青黴素類）具抗性（因為沒有細胞壁）</li>
+                <li>無法用標準濁度法或一般顯微鏡檢測</li>
+                <li>可通過 0.2 &micro;m 濾膜（但 0.1 &micro;m 濾膜可有效減少）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>病毒和黴漿菌污染就像建築物中的<strong>白蟻和隱藏的水管漏水</strong>：</p>
+            <ul>
+                <li>發生頻率遠低於一般細菌污染（比如灰塵和髒污），但一旦發生，後果極為嚴重</li>
+                <li>病毒無法被常規過濾器攔截（就像白蟻能從最細微的縫隙進入），需要特殊的偵測和清除手段</li>
+                <li>一旦確認污染，往往需要整個設施停產清理（就像嚴重的白蟻災需要整棟建築熏蒸處理）</li>
+            </ul>
+            <p>這就是為什麼預防措施和早期偵測如此關鍵——等到問題被發現時，損失已經是天文數字。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>病毒 vs. 黴漿菌 vs. 細菌——過濾效果差異：</strong></p>
+            <ul>
+                <li><strong>細菌：</strong>0.2 &micro;m 過濾器有效攔截</li>
+                <li><strong>黴漿菌：</strong>0.2 &micro;m 可能通過；0.1 &micro;m 可有效減少 → 這就是為什麼培養基過濾普遍改用 0.1 &micro;m</li>
+                <li><strong>病毒：</strong>0.1 &micro;m 和 0.2 &micro;m 都無法攔截 → 需要專用病毒去除過濾器（約 20 nm）或病毒滅活步驟</li>
+            </ul>
+            <p><strong>抗生素的陷阱：</strong>文件特別警告不要濫用抗生素。表面上抗生素可以「掩蓋」細菌污染問題，但實際上它會導致操作人員降低無菌操作的嚴謹性，而且抗生素對黴漿菌無效——結果反而增加黴漿菌污染的風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>法規與業界實務 Regulatory Context</h4>
+            <p>相關 PDA 技術報告的交叉參考：</p>
+            <ul>
+                <li><strong>PDA TR 41 (2022 修訂版)：</strong>病毒截留過濾 (Virus Retentive Filtration) — 下游病毒清除步驟的設計與驗證</li>
+                <li><strong>PDA TR 83：</strong>生物製造中的病毒污染——風險緩解、準備和因應 — 建立污染應變計畫</li>
+            </ul>
+            <p>對於 CDMO 來說，病毒污染事件的影響不僅是單一批次的損失，還可能導致：設施停產數月、全面清潔驗證、監管機構調查，以及對客戶的供應中斷。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 0.2 &micro;m 過濾器無法攔截病毒？病毒的大小範圍大約是多少？</li>
+                <li>文件提到小鼠病毒 (Minute Mouse Virus) 的污染來源是工廠中的囓齒類動物。這個案例對設施管理有什麼啟示？</li>
+                <li>為什麼「早期偵測」病毒和黴漿菌比「最終測試」更重要？從供應鏈和成本角度分析。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.2 Sterile Drug Product Process Control                       -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-2">4.2 Sterile Drug Product Process Control</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p>The manufacturing process of most parenteral <span class="key-term">drug products (DPs)</span> includes steps before and after product sterilization. The complete process should be under microbial control prior to sterilization, and <span class="key-term">sterility assurance</span> of the product should be demonstrated through the cumulation of controls after product sterilization. Microbial control of DP prior to the sterilization step is critical because bioburden may impact safety, potency, and purity in the same manner as it does DS. Contamination of the DP after the sterilization step may result in infections, which could impact patient safety. Table 4.2-1 describes control elements and measures that prevent microbial contamination throughout the manufacturing process.</p>
+
+        <h3 style="margin-top:1.5rem;">Table 4.2-1: Process Control Considerations</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%;">Category</th>
+                <th>Controls</th>
+            </tr>
+            <tr>
+                <td><strong>General</strong></td>
+                <td>
+                    <ul style="margin:0.25rem 0 0.25rem 1.25rem; font-size:0.88rem;">
+                        <li>Facility, equipment, and manufacturing process designed and qualified to control bioburden:
+                            <ul>
+                                <li>Facility design (e.g., pressure differential, temperature control, smooth materials, sufficient workspace)</li>
+                                <li>Manufacturing process design (e.g., barrier technology, closed vs. open system, process and product segregations, automation)</li>
+                                <li>Equipment design (e.g., closed vs. open system, drainability, materials of construction, automation)</li>
+                                <li>Equipment optimized to prevent microbial ingress and to be cleaned easily and sterilized using validated cycles, where applicable (e.g., closed equipment, SUS, closed bioreactors and vessels, aseptic connections for media, culture, buffer, and intermediate transfers, closed sampling systems)</li>
+                                <li>Design of critical utilities (e.g., water, compressed gases)</li>
+                            </ul>
+                        </li>
+                        <li>Procedures in place to cover major aspects of contamination control (e.g., entry of personnel and materials into the manufacturing areas, personnel gowning, facility cleaning and disinfection, equipment sterilization, cleanroom behavior training)</li>
+                        <li>Use of water for injection (WFI) or endotoxin-reduced purified water (PW) for nonsterile process steps for endotoxin control in parenteral products</li>
+                        <li>Procedures in place to inspect for and detect potential leaks in equipment (e.g., daily walk-throughs, receipt inspection, pre-use checks, automated leak detectors), including procedures in place for a risk-based leak response</li>
+                        <li>Maximum hold times established and validated (sterile equipment, buffers/media, in-process hold during cell culture, purification, and drug product manufacture)
+                            <ul>
+                                <li>Hold times during routine operations should be minimized</li>
+                                <li>Refrigerated storage will reduce microbial proliferation</li>
+                                <li>Storage of sterile media at room temperature prior to use may allow for visual observation of potential contamination</li>
+                            </ul>
+                        </li>
+                        <li>Monitoring controls to prevent bioburden in process (e.g., incoming raw materials) or before process bioburden reduction steps</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Cell Expansion, Fermentation, Cell Culture, and Harvest</strong></td>
+                <td>
+                    <ul style="margin:0.25rem 0 0.25rem 1.25rem; font-size:0.88rem;">
+                        <li>EM and personnel monitoring during any critical operations inside biosafety cabinet (BSC)</li>
+                        <li>Controls during cell bank/cell expansion operations, including performing open processes under BSC, aseptic techniques and cell transfers using a closed system</li>
+                        <li>Avoid use of animal-based raw materials to prevent virus or mycoplasma contamination (insect or plant-derived materials may also introduce mycoplasma and should be appropriately controlled)</li>
+                        <li>Use heat-inactivated or gamma-irradiated medium, when possible</li>
+                        <li>Heat-sterilization of media using validated sterilization cycles, filter-integrity testing of filter-sterilized media</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Purification</strong></td>
+                <td>
+                    <ul style="margin:0.25rem 0 0.25rem 1.25rem; font-size:0.88rem;">
+                        <li>Bioburden-reduction filtration of in-process pools and product-contact buffers using integrity-tested filters with sufficient capacity</li>
+                        <li>Viral clearance steps, when applicable, established and validated</li>
+                        <li>Endotoxin limits of product-contact buffers (e.g., formulation, elution buffers) consistent with process intermediates</li>
+                        <li>Microbial control of chromatography resins and ultrafiltration/diafiltration membranes:
+                            <ul>
+                                <li>Throughout their lifetime and during storage</li>
+                                <li>Validation of effectiveness of sanitization and storage solutions</li>
+                                <li>See PDA Technical Report 14: Validation of Column Chromatography</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Drug Product</strong></td>
+                <td>
+                    <ul style="margin:0.25rem 0 0.25rem 1.25rem; font-size:0.88rem;">
+                        <li>Terminal sterilization of drug product, if applicable, validated to demonstrate sterility assurance level (SAL) of 10<sup>-6</sup> (see PDA TR No. 1)</li>
+                        <li>Validation of the sterilizing filter, if applicable, to demonstrate bacterial retention of 10<sup>7</sup> CFU/cm<sup>2</sup> using worst-case conditions (see PDA TR No. 26)</li>
+                        <li>Point of final filtration should be located as close to the filling needle as possible (see EU GMP Annex 1)</li>
+                        <li>Avoidance of activities that increase the risk of contamination to sterile bulk drug product, such as:
+                            <ul>
+                                <li>Sampling of the sterile bulk product</li>
+                                <li>Storage in low-classified areas</li>
+                                <li>Long hold times</li>
+                            </ul>
+                        </li>
+                        <li>Sterilizing filter integrity-tested before (PUPSIT) and after use, as required</li>
+                        <li>Sterilization of equipment and components contacting the sterile product, both directly and indirectly, validated to demonstrate SAL of 10<sup>-6</sup></li>
+                        <li>Use of filling isolators with validated decontamination cycles and/or RABS</li>
+                        <li>Use of rapid transfer port (RTP) to transfer sterile materials into isolators</li>
+                        <li>Fill-line aseptic process simulations (media fills) conducted periodically using relevant or worst-case processes, equipment, containers, and post-filtration hold times (see PDA TR No. 22)</li>
+                        <li>Demonstration of container closure integrity throughout the process using worst-case process parameters
+                            <ul><li>Container closure integrity should also be considered at the drug substance stage</li></ul>
+                        </li>
+                        <li>All products labeled as sterile passing a sterility test unless the product is approved for parametric release (per relevant regional guidance or PIC/S Annex 17)</li>
+                        <li>Particle control achieved through equipment and environmental controls and verified through 100% inspection (see PDA TR No. 85 and TR No. 86)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Nonsterilizable Biological Products</strong></td>
+                <td>
+                    <ul style="margin:0.25rem 0 0.25rem 1.25rem; font-size:0.88rem;">
+                        <li>Category includes cell therapy products, certain gene therapies and vaccines, and other specialized products</li>
+                        <li>End-to-end aseptic processing conditions that should be applied throughout the process</li>
+                        <li>CCS designed to minimize ingress of foreign particulate matter from all solutions and product contact surfaces, e.g., consumables (see PDA TR No. 81 and TR No. 79)</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>滅菌前 vs. 滅菌後的雙重控制邏輯：</strong></p>
+            <ul>
+                <li><strong>滅菌前 (Pre-Sterilization)：</strong>目標是「微生物控制」——保持低微生物負載。原因與 DS 相同：微生物可能影響安全性、效力和純度。</li>
+                <li><strong>滅菌後 (Post-Sterilization)：</strong>目標是「無菌保證 (Sterility Assurance)」——透過多重控制措施的累積來證明無菌性。任何此階段的污染都可能直接導致患者感染。</li>
+            </ul>
+            <p><strong>SAL 10<sup>-6</sup>（無菌保證水平）：</strong>表示每一百萬個單位中最多只能有一個非無菌單位的機率。這是國際公認的滅菌驗證標準。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Table 4.2-1 深度解析</h4>
+            <p>這張表格是 CCS 實務的寶典，按製造流程階段列出了所有關鍵控制要素：</p>
+            <ul>
+                <li><strong>General（通用）：</strong>設施、設備、製程設計的基礎要求，加上程序控制和保持時間驗證</li>
+                <li><strong>Cell Expansion/Culture（細胞培養）：</strong>特別強調避免動物來源原料、培養基滅活處理、BSC 操作監測</li>
+                <li><strong>Purification（純化）：</strong>關注層析樹脂和超過濾膜的微生物控制——這是經常被忽視的風險點</li>
+                <li><strong>Drug Product（藥品成品）：</strong>涵蓋從滅菌過濾、PUPSIT、填充隔離器到容器密封完整性的全部無菌保證措施</li>
+                <li><strong>Nonsterilizable Products（不可滅菌產品）：</strong>如細胞治療產品，必須全程無菌操作</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把整個 DP 製造過程想像成一條<strong>機場安全通關流程</strong>：</p>
+            <ul>
+                <li><strong>滅菌前</strong> = 安檢前區域：所有人和物品都在管控下移動，但還不算「安全區」</li>
+                <li><strong>滅菌步驟</strong> = 安檢關卡：通過 X 光和金屬探測器的嚴格篩查</li>
+                <li><strong>滅菌後</strong> = 管制區/候機室：一旦進入就不能再接觸外界，任何從外部帶入的風險都是零容忍</li>
+            </ul>
+            <p>就像機場安檢後的區域必須嚴格管控以防止未經篩查的人員和物品進入，滅菌後的藥品製程也必須透過多重屏障（隔離器、RABS、無菌連接等）來維持無菌狀態。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>容易被忽視的關鍵控制點：</strong></p>
+            <ul>
+                <li><strong>最終過濾位置：</strong>EU GMP Annex 1 要求無菌過濾的最終過濾點應盡可能靠近充填針——這減少了過濾後產品暴露於污染風險的路徑長度</li>
+                <li><strong>層析樹脂的微生物控制：</strong>樹脂是多孔結構，清潔劑與微生物的接觸受限，且樹脂在其使用壽命末期更容易滋生生物膜——驗證消毒液的有效性至關重要</li>
+                <li><strong>室溫培養基儲存的隱藏好處：</strong>在使用前將無菌培養基存放在室溫下，可以目視觀察是否有微生物生長導致的混濁——這是一個簡單但有效的污染偵測手段</li>
+                <li><strong>PUPSIT：</strong>使用前滅菌後完整性測試——在開始過濾之前確認過濾器完整性，就像出門前檢查瓦斯</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>不可滅菌產品的特殊挑戰</h4>
+            <p>細胞治療 (Cell Therapy)、某些基因治療和疫苗產品<strong>無法進行終端滅菌或無菌過濾</strong>，因為這些步驟會破壞活性成分（活細胞或病毒載體）。這意味著：</p>
+            <ul>
+                <li>整個製程必須在無菌條件下進行（End-to-end Aseptic Processing）</li>
+                <li>CCS 的要求更加嚴格，因為沒有後續的「安全網」（如過濾或滅菌步驟）</li>
+                <li>外來微粒控制也極為重要，需要從所有溶液和產品接觸表面進行管控</li>
+            </ul>
+            <p>這是 CDMO 進入 ATMP 領域時面臨的最大挑戰之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Table 4.2-1 中，「Drug Product」類別列出了十多項控制措施。如果你只能選擇三項作為最關鍵的控制，你會選哪三項？為什麼？</li>
+                <li>為什麼文件建議避免對無菌散裝藥品 (Sterile Bulk DP) 進行取樣？如果確實需要取樣，你會如何設計取樣程序來最小化污染風險？</li>
+                <li>比較終端滅菌產品和無菌過濾產品的 CCS 差異——哪種類型的產品需要更全面的 CCS？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.2 Continued: Table 4.2-2 Holistic Approach                  -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-2-2">4.2 (Continued): Holistic vs. Non-Holistic Approach</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p>Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is addressed by using a holistic approach.</p>
+
+        <h3 style="margin-top:1rem;">Table 4.2-2: Holistic Approach to Process Considerations</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:45%;">Non-Holistic Approach</th>
+                <th style="width:55%;">Holistic Approach</th>
+            </tr>
+            <tr>
+                <td>Environmental excursions do not impact the DP batch if the final sterility test is passing.</td>
+                <td>Any failure in a contamination control may indicate a loss of sterility assurance during batch manufacture and requires investigation and assessment for product impact.</td>
+            </tr>
+            <tr>
+                <td>The background environment to barrier isolator or RABS is not important because the interior of the barrier system is decontaminated.</td>
+                <td>Environmental failures in the background may over-challenge the barrier contamination controls and indicate a loss of sterility assurance that requires investigation and assessment for product impact.</td>
+            </tr>
+            <tr>
+                <td>Sterility failures cannot happen if the operators and interventions are qualified via an aseptic process simulation (APS).</td>
+                <td>The APS evaluates the capability of the process to be aseptic, but is limited in its ability to predict impact of future errors, especially where manual interventions are performed.</td>
+            </tr>
+            <tr>
+                <td>The DS manufacturing process is not sterile; therefore, the only requirement is to meet the final DS bioburden specification.</td>
+                <td>Maintaining microbial control at every step of the process helps ensure that a safe, pure, and potent product is consistently manufactured.</td>
+            </tr>
+            <tr>
+                <td>Low levels of contamination during early upstream manufacturing steps are a low risk because there is removal downstream.</td>
+                <td>Contamination during early upstream steps adds an uncertain level of risk and severity that cannot be resolved through testing.</td>
+            </tr>
+            <tr>
+                <td>Noncontrolled environments are adequate when conducting closed manufacturing operations.</td>
+                <td>Closed manufacturing operations lower the risk of microbial ingress in the process; however, most operations considered closed are still vulnerable to breaches (e.g., leaks may occur). Environmental controls will provide for redundancy in the control strategy and further mitigate the risk of contamination.</td>
+            </tr>
+            <tr>
+                <td>Testing of raw material is not necessary because the process intermediate will eventually be tested.</td>
+                <td>Testing of raw materials and buffers will prevent the use of contaminated raw materials that may result in excursions of in-process intermediates, which may impact product quality and result in long and expensive investigation.</td>
+            </tr>
+            <tr>
+                <td>WFI is only used in the last step of the DS manufacturing process because potential endotoxin of PW will be removed during the purification step.</td>
+                <td>While PW may be used in upstream processes, the use of PW in later steps that have an endotoxin action level may result in excursions of in-process intermediates. This may impact product quality and result in long and expensive investigations.</td>
+            </tr>
+            <tr>
+                <td>In-process filtrations will eliminate contaminations from the intermediates; therefore, in-process bioburden is irrelevant.</td>
+                <td>Unacceptable levels of bioburden in the process may result in impurities and in degradation of the product and impact product quality, even if the microbial cells are removed by filtration.</td>
+            </tr>
+            <tr>
+                <td>Validation of microbial control at the end of the maximum hold is not necessary because the intermediate will be routinely tested at the end of the hold.</td>
+                <td>Microbiology hold-time validation studies will provide process knowledge and lower the risk of contamination due to inappropriate hold times.</td>
+            </tr>
+            <tr>
+                <td>Sanitization of chromatography resins is adequate because the sanitizing solution results in a 3-log reduction of microorganisms.</td>
+                <td>Chromatography resins are porous and contact between the microorganisms and the sanitizing solution is limited; therefore, sanitization and storage of resins should be validated and monitored on an ongoing basis.</td>
+            </tr>
+            <tr>
+                <td>Microbial control of the resins is demonstrated in the three process performance qualification batches.</td>
+                <td>Resins at the end of their lifetime may be more prone to contamination than fresh resins because sanitization is not 100% effective, and spore-forming organisms and biofilm may be difficult to remove during sanitization.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Holistic Approach（全面性方法）：</strong>這是 TR90 和 EU GMP Annex 1 一再強調的核心思維。全面性方法的核心精神是：</p>
+            <ul>
+                <li>不依賴單一測試結果（如最終無菌試驗）來判定產品品質</li>
+                <li>製程中的每一個環節都對最終產品品質有影響</li>
+                <li>過程中的偏差（即使「通過」了最終測試）都需要調查和評估</li>
+                <li>冗餘控制 (Redundancy) 是必要的——因為沒有任何單一控制是 100% 可靠的</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>Non-Holistic 思維</strong>就像一個人說：「我每年做一次體檢，所以平時飲食和運動不重要。」結果等到體檢發現問題時，已經是晚期。</p>
+            <p><strong>Holistic 思維</strong>則是：「我每天注意飲食、定期運動、按時睡覺、定期追蹤健康指標。年度體檢只是眾多健康管理措施之一，而非唯一的依據。」</p>
+            <p>Table 4.2-2 的每一行都在對比這兩種思維。Non-Holistic 方法看似節省成本和精力，但長遠來看，它增加了未偵測到污染風險的機率，最終可能導致更大的品質事件和財務損失。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Table 4.2-2 中最關鍵的對比：</strong></p>
+            <ol>
+                <li><strong>「最終無菌試驗通過就好」vs.「任何控制失敗都需調查」：</strong>這是最根本的思維轉換。無菌試驗的統計檢測力極低（20 支取樣約只有 5% 的機率偵測到 0.1% 的污染率）。</li>
+                <li><strong>「封閉系統不需環境控制」vs.「封閉系統仍可能洩漏」：</strong>現實中沒有真正 100% 封閉的系統——連接、拆卸、取樣都是潛在的突破點。環境控制提供了額外的安全網。</li>
+                <li><strong>「PPQ 三批即可證明樹脂控制」vs.「樹脂壽命末期風險更高」：</strong>樹脂隨使用次數增加，多孔結構可能積累生物膜和產孢菌，消毒效果逐漸下降。這需要持續監測，而非僅靠初始驗證。</li>
+            </ol>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 自我檢視工具：</strong>把 Table 4.2-2 當作一張「心態檢查清單」。逐一檢視你的組織目前的做法：</p>
+            <ul>
+                <li>對於每一行，判斷你的組織更傾向左欄（Non-Holistic）還是右欄（Holistic）</li>
+                <li>如果發現多項偏向左欄，這是一個危險信號——你的 CCS 可能存在系統性盲點</li>
+                <li>特別關注層析樹脂管理和保持時間驗證——這是許多 CDMO 在稽查中被指出的常見缺陷</li>
+            </ul>
+            <p>這張表格也是準備法規稽查時的極佳參考——稽查員經常會從類似的角度提問。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>從 Table 4.2-2 中選擇三個你認為在實務中最常見的「Non-Holistic」思維，解釋為什麼組織容易陷入這種思維，以及如何推動轉變。</li>
+                <li>「封閉系統不需要環境控制」這個 Non-Holistic 觀點的風險是什麼？請列舉至少兩種「封閉系統」可能失敗的場景。</li>
+                <li>如果你是 CCS 的治理委員會成員，你會如何利用 Table 4.2-2 來評估和改善你的工廠的污染控制文化？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

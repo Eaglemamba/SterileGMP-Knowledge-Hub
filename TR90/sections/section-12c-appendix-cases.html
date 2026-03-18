@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR90 - Appendices 3-5: Case Studies, CCS Variability & Template (17.0-19.0)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CASE STUDY SPECIFIC ===== */
+.case-label {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.case-label.green { background: #27ae60; }
+.case-label.blue { background: #2980b9; }
+.case-label.orange { background: #e67e22; }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendices 3-5: Case Studies, CCS Variability &amp; Template Example</h1>
+    <div class="subtitle">附錄 3-5：案例研究、CCS 製程差異性 &amp; 文件範本</div>
+    <div class="page-info">PDA Technical Report No. 90 | Sections 17.0 - 19.0 | p57 - p65</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>透過四個真實案例，瞭解污染事件的根本原因調查 (Root Cause Investigation) 方法與矯正預防措施</li>
+        <li>理解設備維護 (Equipment Maintenance)、設施施工 (Facility Construction) 與 BFS 設備設計對污染控制的關鍵影響</li>
+        <li>掌握 Disruption Recovery Program（干擾復原計畫）的分級管理原則與具體步驟</li>
+        <li>認識不同製程類型（開放步驟 vs 封閉系統、可重複使用 vs 一次性使用）如何影響 CCS 的重點設計</li>
+        <li>學習 CCS 文件範本的標準結構，能夠應用於實際場域的污染控制策略文件撰寫</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Table of Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec17-0">17.0 附錄3：案例研究</a>
+        <a href="#sec17-1">17.1 Case 1: 設備維護</a>
+        <a href="#sec17-2">17.2 Case 2: BFS 設備</a>
+        <a href="#sec17-3">17.3 Case 3: 設施施工</a>
+        <a href="#sec17-4">17.4 Case 4: 干擾復原</a>
+        <a href="#sec18-0">18.0 附錄4：CCS 製程差異</a>
+        <a href="#sec19-0">19.0 附錄5：CCS 文件範本</a>
+        <a href="#sec-summary">TR90 全報告總結</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 17.0 Appendix 3: Case Studies -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec17-0">17.0 Appendix 3: Case Studies for Contamination Control</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The following <span class="key-term">case studies</span> provide real examples of <span class="key-term">contamination events</span> that indicate weaknesses in <span class="key-term">contamination control strategies (CCS)</span>, particularly around <span class="key-term">maintenance controls</span>, and the resulting <span class="key-term">root cause investigations</span> (Cases 1&ndash;3). An example program to protect manufacturing processes during maintenance events, or "<span class="key-term">disruptions</span>," is also presented (Case 4).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Case Study（案例研究）：</strong>TR-90 在此附錄中收錄了四個來自真實製藥工廠的污染事件案例，其中 Cases 1-3 屬於失敗案例分析，Case 4 則是正面的干擾管理程式範例。這些案例的共同主題都圍繞在「維護管控 (Maintenance Controls)」的薄弱環節。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這四個案例就像醫院的「感染事件回顧會議」——每當發生院內感染時，醫院會進行根因分析、公開討論失誤環節，並制定改善措施。製藥工廠的污染事件同樣需要這種透明、系統化的檢討機制，從錯誤中學習才能持續改善。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>注意這些案例的文獻來源：Cases 1-3 來自 FDA 官員 Richard L. Friedman 發表的學術論文，代表了 FDA 稽查中常見的污染問題模式。這不僅是學術討論，更是 FDA 審查關注的重點。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 17.1 Case Study 1 -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec17-1">17.1 Case Study 1: Contamination Related to Equipment Maintenance</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><em>Reference: Case Studies of Microbial Contamination in Biologic Product Manufacturing by Kalavati Suvarna, PhD, Patricia Hughes, PhD, Richard L. Friedman; American Pharmaceutical Review, January 1, 2011</em></p>
+        <p>One case involved contamination of a <span class="key-term">fermenter</span> used in the manufacture of a protein product secreted by a bacterial host. The contaminant was identified as <span class="key-term">Bacillus cereus</span> (a Gram-positive spore-forming rod). A second case involved the contamination of a fermenter used in the manufacture of a recombinant protein by <span class="key-term">Paenibacillus curdlanolyticus</span> (a Gram-variable spore-forming rod). A systematic approach was used during the investigations to identify the <span class="key-term">root cause</span> of the contamination, which included several <span class="key-term">media simulations</span> to aid in identifying the point of entry into the fermenter. In addition, the investigations involved the manufacture of <span class="key-term">engineering batches</span>.</p>
+        <p>After a lengthy investigation in both case studies, multiple potential root causes were identified, including problems with the <span class="key-term">sampling devices</span>, <span class="key-term">addition valves</span>, incorrectly fitted components, missing <span class="key-term">O-rings</span>, incorrect installation and deformation of an <span class="key-term">air filter</span> after sterilization, and/or inadequate slope of a <span class="key-term">condensate line</span>.</p>
+        <p>Immediate corrective actions included the replacement of <span class="key-term">valve diaphragms</span> in fermenter addition ports, replacement of a membrane valve in the sampling device, and replacement of O-rings on the measuring probes. Enhancements were also made to the <span class="key-term">sterilization processes</span> of the fermenter and associated transfer lines. A <span class="key-term">preventive maintenance plan</span> was developed for all fermenter valves. All valves were tagged using a detailed checklist to ensure correct installation. All SOPs were updated, and employees were trained on the revised versions.</p>
+        <p>The investigations and corrective actions addressed all possible causes of contamination as an <span class="key-term">unequivocal root cause</span> could not be assigned. In most cases, it is very difficult to identify a definitive assignable cause. Following a systematic approach to determine the root cause is highly recommended. <span class="key-term">Media simulations</span> help in demonstrating that the sterility of the fermenter is not compromised.</p>
+        <div class="quote-box">
+            "Recent microbial contamination events at several manufacturing facilities point to breaches in the sterile boundary caused by damaged vent filters, O-rings, diaphragms, and elastomers, and by improperly sloped condensate lines."
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Fermenter Contamination（發酵槽污染）：</strong>此案例涉及生物製劑生產中的發酵槽，被芽孢桿菌屬 (Bacillus cereus 和 Paenibacillus curdlanolyticus) 污染。這兩種都是產芽孢菌 (spore-forming bacteria)，芽孢的耐受性極強，能夠存活於一般滅菌條件下的微環境死角。</p>
+            <p><strong>Media Simulation（培養基模擬）：</strong>類似無菌製程模擬 (APS)，使用培養基替代產品在發酵槽中運行，以偵測無菌邊界的突破點。這是調查工具中非常有價值的手段。</p>
+            <p><strong>Engineering Batch（工程批）：</strong>專門為調查或驗證目的而生產的非商業批次，用於重現問題條件並驗證修正措施的有效性。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>發酵槽的無菌邊界就像潛水艇的船殼——任何一個微小的縫隙（O-ring 缺失、閥膜損壞、冷凝水管斜度不足）都可能讓「水」（微生物）滲入。而芽孢菌就像頑強的種子，一旦通過裂縫進入，即使條件暫時不利也能等待時機萌發。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>多重根因：</strong>本案最終無法確認單一明確根因 (unequivocal root cause)，這在實務中非常常見。正確做法是：辨識所有可能的原因並全面矯正。</li>
+                <li><strong>CAPA 範圍：</strong>矯正行動包含硬體（更換閥膜、O-ring）、製程（強化滅菌程序）、制度（建立 PM 計畫、SOP 更新、人員訓練）三個層面——這是完整 CAPA 的典範。</li>
+                <li><strong>常見無菌邊界薄弱點：</strong>排氣過濾器 (vent filters)、O-rings、隔膜 (diaphragms)、彈性體 (elastomers)、冷凝水管線斜度不足。</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對於 CDMO 而言，發酵槽是高價值設備，停機調查的成本極高。建立完善的預防性維護 (PM) 計畫——特別是針對所有閥門、密封件的定期更換週期——是避免此類事件的最佳投資。建議將關鍵密封元件 (O-rings、隔膜) 納入物料管理系統，確保有足夠的安全庫存。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼芽孢菌 (spore-forming bacteria) 特別容易成為發酵槽污染的元兇？</li>
+                <li>當無法確定單一根因時，調查團隊應採取什麼策略來確保完整性？</li>
+                <li>Media simulation 在根因調查中扮演什麼角色？它與 APS 有何異同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 17.2 Case Study 2 -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec17-2">17.2 Case Study 2: Contamination Related to Blow-Fill-Seal Equipment Design and Maintenance</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><em>Reference: Commentary Aseptic Processing Contamination Case Studies and the Pharmaceutical Quality System by Richard L. Friedman; PDA Journal of Pharmaceutical Science and Technology, Vol. 59, No. 2, March&ndash;April 2005</em></p>
+        <p><strong>Background:</strong> A firm experienced both <span class="key-term">sterility</span> and <span class="key-term">media-fill failures</span>. <span class="key-term">Stenotrophomonas maltophilia</span> was identified as a sterility failure isolate. Media-fill isolates included <span class="key-term">Pseudomonas spp.</span> and <span class="key-term">Acinetobacter spp.</span> The prior sterility history of the <span class="key-term">blow-fill-seal (BFS)</span> processing line was good.</p>
+        <p><strong>GMP Issues:</strong> <span class="key-term">Mold plates</span> used to form the primary product container were chilled with <span class="key-term">cooling water</span>. This demineralized potable water was held in a tank at a low temperature prior to use. When sampled, the cooling water yielded very high microbial counts. <span class="key-term">Leaks</span> developed in the mold plates, allowing contaminated water to infiltrate into the product, causing nonsterility. Based on this significant breach in equipment integrity, among the most relevant GMP deviations were the unsuitable processing equipment and the lack of an adequate <span class="key-term">preventive maintenance program</span>.</p>
+        <p><strong>Quality System Context:</strong> The facility and equipment system were the most deficient. The unsuitable equipment and inadequate preventive maintenance program were key factors in the product contamination.</p>
+        <p><strong>Outcome:</strong> Both the sterility failure and media-fill failure were attributed to contamination by <span class="key-term">cooling water</span>. <span class="key-term">Pinhole leaks</span> in the mold plates of the aseptic filling machine allowed cooling water to directly contaminate the product. The exact date the problem occurred was unknown, making the <span class="key-term">corrective and preventive action</span> plan more difficult. Numerous lots were rejected. The firm concluded that frequent visual inspections of BFS molds for leaks had not provided sufficient preventive maintenance, and it implemented corrective measures, including regular testing of <span class="key-term">molding equipment pressure integrity</span>.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Blow-Fill-Seal (BFS，吹灌封)：</strong>一種將容器成形、充填與密封整合在同一設備中完成的無菌充填技術。BFS 模具需要冷卻水來維持成形溫度。</p>
+            <p><strong>Pinhole Leak（針孔滲漏）：</strong>模具板上極微小的穿孔，肉眼難以察覺，但足以讓微生物隨冷卻水滲入產品。這是 BFS 特有的污染風險。</p>
+            <p><strong>Cooling Water Contamination（冷卻水污染）：</strong>去礦化飲用水在低溫槽中長期靜置，導致微生物大量繁殖。冷卻水系統往往被忽視，但它與產品之間僅隔著一層模具板金屬。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>BFS 模具上的針孔滲漏就像冰箱背面冷凝管的微小裂縫——冷媒（污染物）會緩慢且不知不覺地洩漏。你可能長時間都不知道問題存在，直到冰箱（產品）開始出問題。而「目視檢查」就像只用眼睛看冷媒管有沒有漏——顯然不夠，你需要壓力測試才能發現微小滲漏。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>設備設計缺陷 + 維護不足 = 災難：</strong>冷卻水系統與產品只有一層金屬板相隔，若維護不足，設備老化後針孔漏洞不可避免。</li>
+                <li><strong>目視檢查的局限性：</strong>本案明確指出「頻繁的目視檢查不足以提供充分的預防性維護」，必須採用壓力完整性測試等定量方法。</li>
+                <li><strong>追溯困難：</strong>由於不知道問題發生的確切日期，大量批次被拒絕放行。這凸顯了持續監控的重要性——越早發現，影響範圍越小。</li>
+                <li><strong>微生物特徵：</strong>Stenotrophomonas maltophilia、Pseudomonas spp.、Acinetobacter spp. 都是典型的水系統相關微生物。</li>
+            </ul>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼冷卻水系統中的微生物能夠直接影響 BFS 產品的無菌性？</li>
+                <li>除了壓力完整性測試，還有哪些方法可以監控 BFS 模具的狀態？</li>
+                <li>如果你是品質主管，如何設計一個 BFS 冷卻水系統的監控計畫？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 17.3 Case Study 3 -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec17-3">17.3 Case Study 3: Contamination Related to Facility Construction</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><em>Reference: Commentary Aseptic Processing Contamination Case Studies and the Pharmaceutical Quality System by Richard L. Friedman, PDA Journal of Pharmaceutical Science and Technology, Vol. 59, No. 2, March&ndash;April 2005</em></p>
+        <p><strong>Background:</strong> A firm undertook major <span class="key-term">construction</span> in a cleanroom next to the personnel <span class="key-term">gowning air lock</span>. The construction occurred over a one-month period and coincided with continued drug product production. Following an initial <span class="key-term">media-fill failure</span>, the firm's investigation concluded that practices unrelated to the construction were the likely sources of the nonsterile units. The firm corrected the apparent root causes and then performed a repeat media fill. A second media-fill failure occurred. A second thorough investigation by the firm concluded that the contaminants in the media-fill vials had migrated from the area of the construction activity. <span class="key-term">Spore-forming bacteria</span> (<em>Bacillus</em> sp.) were identified as isolates in both media fills.</p>
+        <p><strong>GMP Issues:</strong> The firm did not adequately assess the <span class="key-term">risk posed by construction activities</span>.</p>
+        <p><strong>Quality System Context:</strong> The <span class="key-term">production system</span> was most deficient in this case. With any change in normal, qualified conditions it is essential that it be carefully evaluated by production and quality management. The FDA has seen this scenario with surprising frequency: a firm performs construction in an area that is considerably removed from the <span class="key-term">aseptic processing room</span> (in some cases, several rooms away) and presumes that the construction will not affect the sterility assurance of the product.</p>
+
+        <div class="quote-box">
+            "Unfortunately, it is not uncommon for the contamination to ultimately migrate to the aseptic processing room and into the product. Many sterility failures and media-fill failures have been attributed to contamination from nearby construction."
+        </div>
+
+        <p>For example, moving walls is a common culprit in the liberation of <span class="key-term">spore-formers</span> (most commonly fungi) into the cleanroom environment. These experiences should alert a firm to assess the potential impact of such deviations from normal conditions. <span class="key-term">Deviation and/or change control systems</span> provide a formal mechanism for evaluating these issues. Written procedures should address returning a facility to normal operating conditions when construction or other activities (e.g., maintenance) are considered to have a potentially adverse impact. In these cases, a firm should either elect not to manufacture product for a specific period or, where appropriate, implement special precautions and increase monitoring to detect any drift in environmental control.</p>
+        <p><strong>Outcome:</strong> Multiple lots were found to lack the assurance of sterility, and those already distributed were <span class="key-term">recalled</span>. The firm temporarily suspended operations. The firm ultimately restored adequate conditions and resumed aseptic processing following successful <span class="key-term">media fill-requalification</span>.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Construction Contamination Migration（施工污染遷移）：</strong>施工活動（拆除牆面、管路改造等）會釋放大量微粒和微生物（特別是芽孢菌和真菌），這些污染物可以透過空調系統或壓差不足沿著氣流路徑遷移到遠處的無菌作業區。</p>
+            <p><strong>Change Control（變更管制）：</strong>任何偏離正常經確效條件的活動都應通過正式的變更管制或偏差系統進行評估。施工活動屬於重大變更，必須事前進行風險評估。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>施工污染遷移就像隔壁房間的裝潢粉塵——即使你關了自己房間的門，灰塵仍然會通過門縫、通風管道、共用走廊慢慢飄進來。更危險的是，牆壁內部可能藏著幾十年的黴菌孢子，一旦拆牆就會大量釋放。「距離很遠所以沒關係」是最危險的假設。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>FDA 常見觀察：</strong>FDA 指出這種場景「令人驚訝地頻繁 (surprising frequency)」發生——廠商往往低估施工對遠端區域的影響。</li>
+                <li><strong>首次調查方向錯誤：</strong>廠方最初將根因歸咎於「與施工無關的操作」，直到第二次 media fill 再次失敗才正視施工的影響，造成了時間和批次的雙重損失。</li>
+                <li><strong>後果嚴重：</strong>產品召回 (recall) + 暫停生產——這是任何廠商都無法承受的代價。</li>
+                <li><strong>正確做法：</strong>施工期間應停止生產，或至少設置實體隔離屏障、加強環境監控、增加非例行取樣。</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 經常面臨在不停產的情況下進行設施升級的壓力。最佳實務是：在施工計畫階段即成立跨部門小組（工程、品質、生產），進行正式的風險評估，明確定義隔離措施、加強監控方案、以及「停止生產」的觸發條件 (trigger criteria)。寧可主動停產一週，也不要被動召回一整批產品。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「距離遠」並不能保證施工不會影響無菌作業區的環境？</li>
+                <li>本案中第一次調查結論為什麼是錯誤的？這對調查方法論有什麼啟示？</li>
+                <li>如果你的工廠需要在生產期間進行施工，你會設計哪些控制措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 17.4 Case Study 4 -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec17-4">17.4 Case Study 4: Disruption Recovery Program</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><em>Reference: The PDA TR-90 authoring team developed the following recovery program example based on their professional experiences.</em></p>
+        <p>Based on the CCS principle that impact to classified areas should be minimized whenever possible, every effort should be made to plan and schedule routine events such as <span class="key-term">preventive maintenance</span>, calibration and validation activities, during <span class="key-term">shutdown periods</span> or times when areas are not in use. The invasive disruption described below is considered an exception.</p>
+        <p>Two levels of disruption are defined based on the severity of the event and their potential impact to the qualified state:</p>
+        <ul>
+            <li><strong><span class="key-term">Noninvasive disruption</span>:</strong> An activity that does not breach the integrity of a controlled classified area or critical utilities systems and are performed when no activity is occurring in the room, for example, caulking repair, light-switch or outlet repair (no cutting), equipment calibration.</li>
+            <li><strong><span class="key-term">Invasive Disruption</span>:</strong> An activity that breaches the integrity of the controlled classified area or critical utilities systems and are performed when processing is occurring in the room, for example, opening an electrical panel in a classified area, welding or cutting pipes in critical utilities.</li>
+        </ul>
+        <p><strong>Disruption Recovery Plan:</strong> The following steps may be followed for the shutdown/startup process:</p>
+        <ol>
+            <li>Develop a plan to contain the disruption and recover afterward through cleaning/disinfection and monitoring</li>
+            <li>Determine the environmental control measures for the equipment, facilities and personnel</li>
+            <li>Execute the activities in the plan</li>
+            <li>Confirm the completion of activities</li>
+            <li>Verify EM results to demonstrate the control and post-recovery environmental control measures (level of post-recovery measures should be commensurate with the risk; may be reduced for noninvasive disruptions)</li>
+            <li>Resume manufacturing</li>
+        </ol>
+        <p><strong>Specific actions to be taken as part of the shutdown include:</strong></p>
+        <ul>
+            <li>Create temporary barriers around the area (protect equipment and utilities and segregate the affected area)</li>
+            <li>Determine which activities may continue, and which must be stopped</li>
+            <li>Define a sequence of activities or steps to be conducted</li>
+            <li>Provide instructions for the alternative movement of materials, equipment, and people</li>
+            <li>Train personnel involved in the shut-down activities how to prevent contamination</li>
+        </ul>
+
+        <h3 style="margin-top:1.5rem;">Table 17.4-1: Example of Categorization of Disruption</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Level</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>1</strong><br>Noninvasive Disruption</td>
+                <td>An activity that does not breach the integrity of a controlled classified area or critical utilities systems and is performed when no activity is occurring in the room/area.
+                    <ul style="margin-top:0.5rem;">
+                        <li><strong>Classified Areas:</strong> e.g., caulking repair, light switch or outlet repair (no cutting), spot painting (no sanding), calibration activities</li>
+                        <li><strong>Critical Utilities:</strong> e.g., preventive maintenance, valve maintenance, calibration</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2</strong><br>Invasive Disruption</td>
+                <td>An activity that breaches the integrity of the controlled classified area or critical utilities systems and is performed when processing is occurring in the room/area.
+                    <ul style="margin-top:0.5rem;">
+                        <li><strong>Classified Areas:</strong> e.g., opening an electrical panel, equipment repair or maintenance, light bulb change, sprinkler cover replacement</li>
+                        <li><strong>Critical Utilities:</strong> e.g., cutting, welding, piping replacement, derouging, chemical cleaning</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Table 17.4-2: Example Recovery Plans</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Level</th>
+                <th>Containment Recommendations</th>
+                <th>Cleaning and Disinfection Recommendation</th>
+                <th>Monitoring Recommendation</th>
+            </tr>
+            <tr>
+                <td><strong>1</strong></td>
+                <td>Over-gowning when exposing dirty surfaces &ndash; in addition to routine gowning, additional gloves, frock, booties may be applied during the work and removed directly after contact with dirty surfaces e.g., behind light switch or outlet</td>
+                <td>Daily cleaning / disinfection of the area and equipment. Targeted cleaning / disinfection with sporicide if dirty surfaces (e.g., behind light switch or outlet) are exposed</td>
+                <td>Routine daily EM and critical utilities monitoring. Particle counts may be sufficient to initiate activity in the area for minimally invasive work</td>
+            </tr>
+            <tr>
+                <td><strong>2</strong></td>
+                <td>Over-gowning. Dust collection and temporary walls may be warranted depending on type of work</td>
+                <td>Construction clean-up (e.g., HEPA vacuum, dust horizontal surfaces) followed by cleaning and disinfection; should include sporicide per local procedure.</td>
+                <td>Specific EM program covering areas and locations that were impacted by the construction measures (both static and dynamic monitoring) for air and surfaces. Additional nonroutine samples should be considered. Air balancing/air change should be verified, as appropriate.</td>
+            </tr>
+            <tr>
+                <td><strong>3 (Utility)</strong></td>
+                <td>Isolate and limit access to the affected utility/portion of utility ports</td>
+                <td>Critical utilities should be sanitized to ensure system integrity.</td>
+                <td>Microbiological and chemical testing covering the impacted system</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Disruption Recovery Program（干擾復原計畫）：</strong>一套預先定義的管理程序，用於處理對分級區域或關鍵公用設施造成干擾的事件。其核心原則是「分級管理」——根據干擾的嚴重程度採取相應的控制措施。</p>
+            <p><strong>Noninvasive vs Invasive Disruption（非侵入性 vs 侵入性干擾）：</strong></p>
+            <ul>
+                <li><strong>Level 1 非侵入性：</strong>不破壞分級區域完整性，且在無作業時進行（如校正、填縫修補）</li>
+                <li><strong>Level 2 侵入性：</strong>破壞分級區域完整性，且在生產進行時發生（如開啟電氣面板、管路焊接）</li>
+                <li><strong>Level 3 公用設施：</strong>涉及關鍵公用設施系統的維護或修復</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>干擾復原計畫就像醫院手術室的「緊急維修 SOP」：</p>
+            <ul>
+                <li><strong>Level 1</strong> = 換燈泡——可以在手術之間進行，簡單擦拭即可</li>
+                <li><strong>Level 2</strong> = 修天花板管線——需要搭臨時隔板、吸塵、全面消毒後才能重新使用</li>
+                <li><strong>Level 3</strong> = 修理供水系統——必須隔離管路、消毒後檢測合格才能恢復供水</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>計畫優先原則：</strong>例行性事件（PM、校正、確效）應儘量安排在停機期間進行，將對分級區域的影響降到最低。</li>
+                <li><strong>Sporicide（殺孢子劑）的使用：</strong>Level 1 中暴露髒表面時需要使用殺孢子劑進行目標性消毒；Level 2 更是必須使用。這呼應了 Case Study 3 中芽孢菌遷移的問題。</li>
+                <li><strong>復原確認 = EM 合格：</strong>恢復生產前必須透過環境監控結果確認環境已回到受控狀態，這不是「走形式」而是「放行條件」。</li>
+                <li><strong>風險相稱原則 (commensurate with risk)：</strong>復原措施的力度應與干擾的風險等級相匹配，避免過度反應浪費資源，也避免不足導致污染。</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>建議每個 CDMO 工廠都建立一份「Disruption Recovery Matrix」，將所有可能的維護/施工事件按照 Level 1/2/3 分類，並預先定義每個類別的：(1) 隔離措施、(2) 清潔/消毒程序、(3) 環境監控方案、(4) 恢復生產前的放行標準。這樣在事件發生時就能快速啟動預定的復原程序，而不是臨時決定。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如何判斷一個維護事件應歸類為 Level 1 還是 Level 2？關鍵判斷標準是什麼？</li>
+                <li>Table 17.4-2 中為什麼 Level 2 需要「static and dynamic monitoring」而 Level 1 只需要 routine EM？</li>
+                <li>設計一個你工廠中某項常見維護事件的完整 Disruption Recovery Plan。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 18.0 Appendix 4: CCS Variability -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec18-0">18.0 Appendix 4: Illustration of CCS Variability based on Process</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>An effective <span class="key-term">CCS</span> is tailored to the specific risks of a process, illustrated by the following three DS examples (Table 18.0-1). <span class="key-term">DS</span> is used to illustrate this point because the processes vary widely across industry. This principle also applies to <span class="key-term">DP</span>.</p>
+
+        <h3 style="margin-top:1.5rem;">Table 18.0-1: Illustration of CCS Tailored to Example Process</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th></th>
+                <th>Process 1</th>
+                <th>Process 2</th>
+                <th>Process 3</th>
+            </tr>
+            <tr>
+                <td><strong>Key Features</strong></td>
+                <td>Open steps at start and end<br>Reusable equipment, complex piping<br>Synthetic product</td>
+                <td>Few open steps only at start<br>Single-use systems, manual connections via thermal welding &amp; connectors<br>Biologic process, some animal-derived materials</td>
+                <td>No open steps<br>Single-use systems, pre-assembled kits &ndash; few manual connections<br>Biologic process, synthetic materials (other than host system)</td>
+            </tr>
+            <tr>
+                <td><strong>Key Features &ndash; Risks for CCS</strong></td>
+                <td>
+                    <em>Multiple open steps throughout:</em>
+                    <ul><li>Ingress from Environment &amp; Personnel</li></ul>
+                    <em>Reusable equipment, complex piping:</em>
+                    <ul><li>Equipment maintenance issues</li><li>Challenges to clean/sterilize</li><li>Deadlegs/misalignments</li></ul>
+                    <em>Synthetic product:</em>
+                    <ul><li>Fouling during storage</li><li>Temp, humidity control</li></ul>
+                </td>
+                <td>
+                    <em>Few open steps, only at start:</em>
+                    <ul><li>Ingress from Environment &amp; Personnel for open steps</li></ul>
+                    <em>Single-use systems, manual connections:</em>
+                    <ul><li>Leaks, Personnel technique</li><li>Vendor quality defects</li></ul>
+                    <em>Biologic process, some animal-derived materials:</em>
+                    <ul><li>Adventitious agents, prions</li></ul>
+                </td>
+                <td>
+                    <em>No open steps:</em>
+                    <ul><li>Risks from environment &amp; personnel minimized</li></ul>
+                    <em>Single-use systems, pre-assembled kits:</em>
+                    <ul><li>Vendor quality defects (e.g., possible leaks)</li></ul>
+                    <em>Biologic process, synthetic materials:</em>
+                    <ul><li>Adventitious agents, prions</li></ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Controls to Enhance for CCS</strong></td>
+                <td>
+                    <ul>
+                        <li>Stricter overall cleanroom classification</li>
+                        <li>CCS Awareness Campaign &amp; Coaching (alongside training)</li>
+                        <li>Conservative cleaning/sanitization/storage practices</li>
+                        <li>Periodic equipment audits</li>
+                        <li>Cleanroom controls for material sampling</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Stricter cleanroom classification for open steps</li>
+                        <li>CCS Awareness Campaign &amp; Coaching (alongside training)</li>
+                        <li>Targeted, hands-on training</li>
+                        <li>Inspection of consumables, on-site pre-use inflation of bags</li>
+                        <li>Partner with vendors</li>
+                        <li>Expanded characterization</li>
+                        <li>Pre-use testing</li>
+                        <li>Treatment (e.g., gamma irradiation)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Less strict cleanroom classification</li>
+                        <li>Inspection of consumables, on-site pre-use inflation of bags</li>
+                        <li>Partner with vendors</li>
+                        <li>Expanded characterization</li>
+                        <li>Pre-use testing</li>
+                        <li>Treatment</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <p style="margin-top:1rem;">All CCS elements apply to each of the example processes, and the blue-highlighted elements in Figure 18.0-1 warrant enhanced controls for risks that are specific to that process.</p>
+        <p><em>Figure 18.0-1: Illustration of CCS Elements Highlighting those that Require Enhanced Controls for Example Processes (Process 1, Process 2, Process 3)</em></p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>CCS Variability（CCS 差異性）：</strong>有效的污染控制策略必須針對特定製程的風險進行客製化 (tailored)。不存在「一體適用」的 CCS——不同的製程特性決定了不同的風險輪廓和控制重點。</p>
+            <p><strong>三種製程代表了典型的風險頻譜：</strong></p>
+            <ul>
+                <li><strong>Process 1（高風險）：</strong>開放步驟多 + 可重複使用設備 + 複雜管路 = 環境暴露風險最高、清潔/滅菌挑戰最大</li>
+                <li><strong>Process 2（中風險）：</strong>少量開放步驟 + 一次性使用系統 + 動物來源原料 = 外源因子 (adventitious agents) 風險</li>
+                <li><strong>Process 3（低風險）：</strong>無開放步驟 + 預組裝一次性套件 = 環境風險最低，但供應商品質風險仍需管控</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>三種製程就像三種不同的餐飲模式：</p>
+            <ul>
+                <li><strong>Process 1</strong> = 傳統餐廳廚房——開放的烹飪環境，可重複使用的鍋碗瓢盆需要徹底清洗，管線（水管、油管）複雜容易藏污納垢</li>
+                <li><strong>Process 2</strong> = 使用預包裝食材的現代餐廳——部分食材需要現場拆封（開放步驟少），大量使用一次性容器，但某些原料（如生肉）有特殊衛生要求</li>
+                <li><strong>Process 3</strong> = 全自動化的即食餐生產線——食材全部在密封系統中處理，人員幾乎不接觸，主要風險是包材供應商的品質</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>所有 CCS 要素都適用：</strong>三種製程都需要涵蓋所有 CCS 要素，差異在於「哪些要素需要加強 (enhanced)」。</li>
+                <li><strong>開放步驟數量是關鍵驅動因素：</strong>開放步驟越多 = 環境和人員暴露風險越高 = 需要更嚴格的潔淨室等級。</li>
+                <li><strong>一次性使用系統改變風險重點：</strong>從「清潔/滅菌/維護」轉向「供應商品質管控/使用前檢查/洩漏防護」。</li>
+                <li><strong>動物來源原料引入特殊風險：</strong>外源因子 (adventitious agents) 和朊蛋白 (prions) 是生物製程特有的污染類型，需要擴展的表徵和預處理（如伽馬照射）。</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 往往同時服務多種製程類型的客戶。建議建立一份「CCS 基礎版」涵蓋所有通用要素，再根據每個產品/製程的特性，以附件形式增加需要加強的控制措施。這樣既能保證基礎一致性，又能體現製程特異性——稽查人員也更容易理解你的邏輯。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的工廠從 Process 1 型態轉型為 Process 2，CCS 中哪些要素的控制力度應該調降？哪些應該增強？</li>
+                <li>為什麼即使 Process 3 是最封閉的系統，CCS 仍然不能忽視供應商管控？</li>
+                <li>動物來源原料帶來的 adventitious agents 風險，與一般微生物風險的管控方法有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 19.0 Appendix 5: CCS Template -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec19-0">19.0 Appendix 5: Template Example for Contamination Control Strategy Document</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><strong>Instructions for Template:</strong></p>
+        <p><em>Text in gray is instructions for using this template. Delete from your final document.</em></p>
+        <p>This short template is meant to serve as an example and should be tailored to the specific company's processes and products. The template is designed to include brief example overviews with supporting references included, as applicable. Sections should be rearranged, omitted, or edited as required.</p>
+
+        <h3 style="margin-top:1rem;">Tips for Contamination Control Strategy Document</h3>
+        <ul>
+            <li><strong>Use factual, active voice.</strong> Describe the controls that do occur at the site, not what "shall" occur. State the rationale for these controls, especially when that rationale is critical to the overall strategy or not obvious/common.</li>
+            <li><strong>Target 30-50 pages.</strong> Include visuals and avoid too many details. Instead, refer to other detailed GMP documents (e.g., SOPs, Batch Records, site master file, reports, risk assessments).</li>
+            <li><strong>Align the format to your company/site procedure requirements.</strong></li>
+            <li><strong>The Audience</strong> of the Contamination Control Strategy document is:
+                <ul>
+                    <li><strong>Inspectors:</strong> This document will be given to inspectors to orient them to a site's overall strategy, procedures, and data related to contamination control.</li>
+                    <li><strong>All GMP site employees:</strong> This document is a holistic overview to help readers understand the interconnectedness of all elements of the CCS and to ensure future changes do not adversely impact the state of contamination control.</li>
+                </ul>
+            </li>
+            <li><strong>The Scope</strong> of your Contamination Control Strategy document: It may be facility-specific and/or process-specific, depending on the organization.
+                <ul>
+                    <li>The CCS should be prepared and owned by the responsible site for their portion of the supply chain. When multiple CCSs are needed to cover the full, end-to-end supply chain, they should reference one another.</li>
+                    <li>For multiproduct facilities, where the manufacturing processes are similar and the same CCS is employed (e.g., fill-finish operations), one strategy document may cover all processes/products at the site.</li>
+                    <li>For multiproduct facilities, where manufacturing processes and/or associated CCSs vary widely (e.g., some drug substance sites, sites with liquid and solid products, nonsterile and sterile), separate strategy documents should be prepared for each product.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3 style="margin-top:1.5rem;">Template Structure</h3>
+
+        <h4>1. PURPOSE</h4>
+        <table>
+            <tr><th>Step</th><th>Purpose</th></tr>
+            <tr><td>1.1</td><td>This document outlines a contamination control strategy to safeguard product quality from microbial, particulate, pyrogen/endotoxin, and viral contamination.</td></tr>
+        </table>
+
+        <h4 style="margin-top:1rem;">2. BACKGROUND</h4>
+        <table>
+            <tr><th>Step</th><th>Background</th></tr>
+            <tr><td>2.1</td><td>A Contamination Control Strategy (CCS) should be implemented across the facility in order to define all critical control points and assess the effectiveness of all the controls (design, procedural, technical and organizational) and monitoring measures employed to manage risks associated with contamination. The CCS should be actively updated and should drive continuous improvement of the manufacturing and control methods.<br><br>
+            Contamination control and steps taken to minimize the risk of contamination from microbial and particulate sources are a series of successively linked events or measures. These are typically assessed, controlled and monitored individually but their collective effectiveness should be considered altogether.<br><br>
+            The development of the CCS requires thorough technical and process knowledge. Potential sources of contamination are attributable to microbial and cellular debris (e.g., pyrogens, endotoxins) as well as foreign particulate matter (e.g., glass and other visible and sub-visible particles).</td></tr>
+        </table>
+
+        <h4 style="margin-top:1rem;">3. SCOPE</h4>
+        <table>
+            <tr><th>Step</th><th>Scope</th></tr>
+            <tr><td>3.1</td><td>This document describes, at a high level, the manufacturing process and associated contamination controls for &lt;product/processes&gt; at the &lt;facility/area&gt;.<br><br>&lt;Product&gt; is a &lt;type of product, e.g., chemically derived drug substance for an injectable drug product&gt;.<br><br><em>If this CCS is specific to one portion of the product, refer to CCS for the other portions of the supply chain if internal (or refer to QTA if externally sourced).</em></td></tr>
+            <tr><td>3.2</td><td>The strategy is multifaceted and includes controls associated with the following:<br>
+                <ul>
+                    <li>Manufacturing process design, risk assessment, validation, monitoring</li>
+                    <li>Facility design and environmental controls</li>
+                    <li>Environmental monitoring</li>
+                    <li>Equipment handling and cleaning controls</li>
+                    <li>Equipment maintenance</li>
+                    <li>Utility design and controls</li>
+                    <li>Alarm system</li>
+                    <li>Personnel training and controls</li>
+                    <li>Raw materials and components</li>
+                    <li>Product containers and closures</li>
+                    <li>Vendor approval</li>
+                    <li>Contamination and utility disruption response</li>
+                    <li>Prevention: Quality systems and continuous improvement</li>
+                    <li>Governance and oversight</li>
+                </ul>
+            </td></tr>
+        </table>
+
+        <h4 style="margin-top:1rem;">4. RESPONSIBILITY</h4>
+        <table>
+            <tr><th>Step</th><th>Role</th><th>Responsibility</th></tr>
+            <tr><td>4.1</td><td>Quality</td><td>Ensure this policy remains current</td></tr>
+            <tr><td>4.2</td><td>Site Employees involved in GMP activities</td><td>Ensure adherence to the principles and policies outlined in this document</td></tr>
+        </table>
+
+        <h4 style="margin-top:1rem;">5. CONTAMINATION CONTROL STRATEGY ELEMENTS</h4>
+        <p><em>Sections may be rearranged as deemed appropriate by the site. Add other important site-specific controls where appropriate.</em></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Step</th><th>Contamination Control Elements</th></tr>
+            <tr><td>5.1</td><td><strong>Manufacturing Process Design, Risk Assessment, Validation, and Monitoring</strong> (TR90 Sections 7.0, 8.0, and 9.0)<br><em>Include: process map, contamination controls, antimicrobial agents, impurity removal steps, hold times, testing points, APS, risk assessments.</em></td></tr>
+            <tr><td>5.2</td><td><strong>Facilities Design and Environmental Controls</strong> (TR90 Section 5.0)<br><em>Include: facility maps with classifications, flows, segregation, temperature/humidity, air pressure cascade, cleaning/disinfection, access control, pest control, barrier technologies.</em></td></tr>
+            <tr><td>5.3</td><td><strong>Environmental Monitoring</strong> (TR90 Section 7.0)<br><em>Include: EM overview, limits, qualification status, requalification periodicity.</em></td></tr>
+            <tr><td>5.4</td><td><strong>Equipment Handling, Cleaning, and Sanitization/Sterilization</strong> (TR90 Section 9.2)<br><em>Include: reusable equipment controls, clean/dirty segregation, cleaning/sterilization methods, storage, validations.</em></td></tr>
+            <tr><td>5.5</td><td><strong>Equipment Maintenance</strong> (TR90 Section 9.5)<br><em>Include: PM schedules, containment of maintenance events.</em></td></tr>
+            <tr><td>5.6</td><td><strong>Utilities Design and Controls</strong> (TR90 Section 5.4)<br><em>Subsections: 5.6.1 Air Handling/HVAC; 5.6.2 Water(s); 5.6.3 Clean Steam; 5.6.4 Compressed Air Gas; 5.6.5 Other Gases/Vacuum; 5.6.6 Other GMP Utilities (e.g., cooling system)</em></td></tr>
+            <tr><td>5.7</td><td><strong>Alarm System</strong> (TR90 Section 9.1)<br><em>Include: alarm controls, limit strategy, excursion handling.</em></td></tr>
+            <tr><td>5.8</td><td><strong>Personnel Training and Controls</strong> (TR90 Section 8.0)<br><em>Include: health/hygiene/gowning, aseptic training, CCS awareness campaign, visitor handling, visual inspection training.</em></td></tr>
+            <tr><td>5.9</td><td><strong>Raw Materials and Components</strong> (TR90 Section 6.0)<br><em>Include: selection, qualification, testing, SUS controls, endotoxin/particulate provisions, data trending.</em></td></tr>
+            <tr><td>5.10</td><td><strong>Containers and Closures</strong> (TR90 Section 10.0)<br><em>Include: selection, testing, in-house controls, CCI validation.</em></td></tr>
+            <tr><td>5.11</td><td><strong>Vendor Approval</strong> (TR90 Section 11.6)<br><em>Include: vendor/subcontractor approval for raw materials, consumables, outsourced services.</em></td></tr>
+            <tr><td>5.12</td><td><strong>Contamination and Utility Disruption Response</strong> (TR90 Section 7.2)<br><em>Include: contamination response, utility interruption containment, maintenance shutdowns.</em></td></tr>
+            <tr><td>5.13</td><td><strong>Prevention: Quality Systems and Continuous Improvement</strong> (TR90 Section 11.0)<br><em>Include: deviation investigation, trending, CAPA, change control, QRM.</em></td></tr>
+            <tr><td>5.14</td><td><strong>Quality Controls</strong> (TR90 Section 11.7)<br><em>Include: lab training, OOS program, APS, testing aspects.</em></td></tr>
+            <tr><td>5.15</td><td><strong>Governance and Effectiveness Review</strong> (TR90 Section 12.0)<br><em>Include: performance monitoring, governance, escalation scheme.</em></td></tr>
+        </table>
+        </div>
+
+        <h4 style="margin-top:1rem;">6. GLOSSARY</h4>
+        <table>
+            <tr><th>Step</th><th>Definitions</th></tr>
+            <tr><td>6.1</td><td>&lt;Add relevant site definitions in this document.&gt;</td></tr>
+        </table>
+
+        <h4 style="margin-top:1rem;">7. REFERENCED DOCUMENTS</h4>
+        <table>
+            <tr><th>Document Number</th><th>Title</th></tr>
+            <tr><td colspan="2"><em>Add relevant site SOPs, site validations, studies, risk assessments, and others mentioned in this document</em></td></tr>
+        </table>
+
+        <h4 style="margin-top:1rem;">8. REVISION HISTORY</h4>
+        <table>
+            <tr><th>Revision Number</th><th>Date Effective</th><th>Summary of Changes</th></tr>
+            <tr><td colspan="3"><em>[To be filled by site]</em></td></tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>CCS Document Template（CCS 文件範本）：</strong>此範本提供了一個標準化但可客製化的 CCS 文件架構。重點不是「照抄範本」，而是理解每個章節背後的邏輯，並根據自己工廠的實際情況填寫具體內容。</p>
+            <p><strong>文件的兩大讀者群：</strong></p>
+            <ul>
+                <li><strong>Inspectors（稽查員）：</strong>CCS 文件是展示工廠整體污染控制邏輯的「導覽地圖」，讓稽查員快速理解你的策略架構。</li>
+                <li><strong>Site Employees（場域員工）：</strong>CCS 文件幫助所有人理解各控制要素之間的關聯性，避免局部變更破壞整體策略。</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>CCS 文件就像一棟建築物的「安全防護總設計圖」。它不是每扇門鎖的安裝手冊（那是 SOP），也不是每次安全巡邏的紀錄（那是 Batch Record），而是展示整體安全理念的總圖——門禁在哪、監視器怎麼配置、消防系統如何設計、保全人員如何巡邏。30-50 頁的篇幅意味著它是「鳥瞰圖」而非「細節圖」。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>Use factual, active voice：</strong>描述「工廠實際在做什麼」(do occur)，而非「應該做什麼」(shall occur)。這是 CCS 與 SOP 的根本區別——SOP 是指令式的，CCS 是描述式的。</li>
+                <li><strong>30-50 頁目標：</strong>CCS 不是百科全書，而是「帶有參考引用的摘要」。過度詳細反而會讓讀者迷失在細節中，失去對整體策略的理解。</li>
+                <li><strong>多工廠/多產品策略：</strong>
+                    <ul>
+                        <li>同類製程 + 同一 CCS = 可以一份文件涵蓋所有產品</li>
+                        <li>不同類製程 = 需要分別撰寫</li>
+                        <li>供應鏈上下游 = 各站撰寫自己的 CCS，互相引用</li>
+                    </ul>
+                </li>
+                <li><strong>15 個 CCS 要素對應 TR90 章節：</strong>範本中每個要素都明確標註了對應的 TR90 章節編號，這是撰寫 CCS 時回顧原始指引的最佳索引。</li>
+            </ul>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>撰寫 CCS 文件的實務建議：</p>
+            <ol>
+                <li><strong>從 Section 3 (Scope) 開始：</strong>先明確定義範圍——哪些產品、哪些區域、哪段供應鏈。</li>
+                <li><strong>善用 Process Map：</strong>在 Section 5.1 中以圖形呈現製程流程和控制點，比文字描述更有效。</li>
+                <li><strong>引用而非複製：</strong>每個要素只需寫 1-2 段摘要，然後引用詳細的 SOP/報告/風險評估文件。</li>
+                <li><strong>定期更新：</strong>CCS 是活的文件 (living document)，每次重大變更、偏差事件、或年度審查都應觸發更新。</li>
+                <li><strong>跨部門協作：</strong>指派品質部門擁有 (own) CCS 文件，但撰寫時需要生產、工程、微生物、確效等團隊的輸入。</li>
+            </ol>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 CCS 文件要用「factual, active voice」而非「shall」語句？這與 SOP 的寫作風格有何不同？</li>
+                <li>如果你的 CDMO 同時生產無菌注射液和口服固體劑型，你會寫幾份 CCS 文件？為什麼？</li>
+                <li>範本中的 15 個 CCS 要素中，哪 3-5 個你認為是最難寫好的？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- TR90 Overall Report Summary -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-summary">TR90 Complete Report Summary</h2>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>TR90 全報告總結 Complete Report Summary</h3>
+    <ul>
+        <li><strong>CCS 的核心精神：</strong>Contamination Control Strategy (污染控制策略) 不是一份靜態文件，而是一個涵蓋設計、建造、運營、監控、改善的全生命週期系統。它要求從「整體性 (holistic)」的角度理解所有控制措施之間的關聯。</li>
+        <li><strong>風險為基礎的方法：</strong>TR90 始終強調 CCS 必須以風險評估為驅動力——辨識污染源、評估風險等級、設計相應控制措施、並持續監控有效性。Risk 不是一次性評估，而是動態循環。</li>
+        <li><strong>十五大 CCS 要素：</strong>從設施設計、環境監控、製程設計、設備維護、人員管控、原物料管理、公用設施、警報系統、容器密封、供應商管理、品質系統、到治理與績效審查——每個要素都是整體策略的一環。</li>
+        <li><strong>環境監控 (EM) 的雙重角色：</strong>EM 既是「偵測工具」也是「趨勢分析工具」。單次數據確認即時狀態，長期趨勢揭示系統性漂移。Contamination Recovery Program 的核心就是透過 EM 確認復原。</li>
+        <li><strong>設備維護是隱藏的關鍵風險：</strong>四個案例研究中，有三個與維護相關的失敗直接導致了污染事件。Preventive Maintenance Plan、Disruption Recovery Program 是 CCS 中不可或缺的組成部分。</li>
+        <li><strong>微生物數據的整合運用：</strong>從微生物鑑定 (identification)、環境趨勢 (trending)、到微生物影響評估 (Microbial Impact Assessment)，TR90 展示了如何將微生物學知識整合進品質決策中。</li>
+        <li><strong>CCS 文件的撰寫原則：</strong>30-50 頁、事實描述語氣、引用而非複製、針對稽查員和員工的雙重讀者群設計。文件結構應涵蓋所有 15 個要素，並根據製程特性調整重點。</li>
+        <li><strong>持續改善是最終目標：</strong>CCS 不是通過稽查的工具，而是推動製造品質持續提升的引擎。每次偏差調查、CAPA 執行、年度審查都是改善 CCS 的契機。</li>
+    </ul>
+</div>
+
+<div class="learning-objectives">
+    <h3>本節重點回顧 Section Summary (Appendices 3-5)</h3>
+    <ul>
+        <li><strong>Case Studies 1-3：</strong>三個真實污染事件（發酵槽維護缺陷、BFS 冷卻水滲漏、施工污染遷移）都指向維護管控和變更管制的薄弱環節，造成批次拒絕、產品召回、停產等嚴重後果。</li>
+        <li><strong>Case Study 4：</strong>Disruption Recovery Program 提供了分級管理框架（Level 1-3），從隔離、清潔消毒到環境監控復原，確保維護/施工事件不會危及產品品質。</li>
+        <li><strong>CCS 製程差異性：</strong>開放 vs 封閉步驟、可重複使用 vs 一次性設備、合成 vs 生物製程——不同特性決定不同的風險重點和控制強化方向。</li>
+        <li><strong>CCS 文件範本：</strong>8 大章節、15 個控制要素，提供了標準化但可客製化的文件架構。關鍵是描述「實際在做什麼」而非「應該做什麼」。</li>
+        <li><strong>從案例到制度：</strong>這三個附錄形成完美的學習閉環——Case Studies 告訴你「什麼會出錯」，CCS Variability 告訴你「如何客製化策略」，Template 告訴你「如何落筆成文」。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>PDA Technical Report No. 90: Contamination Control Strategy Development in Pharmaceutical Manufacturing</p>
+    <p>Appendices 3-5: Case Studies, CCS Variability &amp; Template Example (Sections 17.0-19.0) | p57-p65</p>
+    <p>Educational Material - For Learning Purposes Only</p>
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
