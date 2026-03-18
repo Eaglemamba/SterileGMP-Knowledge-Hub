@@ -166,6 +166,9 @@ For new merge.py files, use `merge_engine.py` via import — see its docstring f
 | `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
 | `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
 | `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
+| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
+| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p81-109) | 4 | Complete |
+| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
 
 ---
 
