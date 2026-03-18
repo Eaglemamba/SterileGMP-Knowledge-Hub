@@ -169,6 +169,10 @@ For new merge.py files, use `merge_engine.py` via import — see its docstring f
 | `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
 | `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p81-109) | 4 | Complete |
 | `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
+| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
+| `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
+| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
+| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
 
 ---
 

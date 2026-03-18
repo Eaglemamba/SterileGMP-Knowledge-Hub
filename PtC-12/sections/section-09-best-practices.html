@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Topic 9: Best Practices for Aseptic Operations</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Topic 9: Best Practices for Aseptic Operations</h1>
+    <div class="subtitle">無菌操作最佳實務</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025) &mdash; RABS | p95 - p115</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 RABS 中 closed-door 與 open-door intervention 均須遵循無菌操作技術的原因與風險差異</li>
+        <li>掌握 intervention 的資格確認（qualification）流程，包括風險評估、AVS 文件化與 APS 納入</li>
+        <li>學習 First Air 原則在介入操作設計中的關鍵角色及其受限時的緩解措施</li>
+        <li>了解 RABS 手套不得接觸 critical surfaces 的規範，以及接觸後應採取的措施</li>
+        <li>認識 open-door intervention 後所需之額外控制措施（消毒、棄置、取樣、EM 監控等）</li>
+        <li>熟悉 intervention 執行的標準化流程：清線、手套穿戴、視覺檢查、無菌工具使用</li>
+        <li>掌握 RABS 手套安裝的三種業界方法及其各自的優勢與風險考量</li>
+        <li>理解 RABS 手套在操作期間的消毒策略與殺孢子劑使用時機</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本章快速導覽 Quick Navigation</h3>
+    <div class="toc-grid">
+        <a href="#q9-1">Q9.1 無菌技術一致性</a>
+        <a href="#q9-2">Q9.2 Intervention 資格確認</a>
+        <a href="#q9-3">Q9.3 First Air 干擾</a>
+        <a href="#q9-4">Q9.4 手套接觸限制</a>
+        <a href="#q9-5">Q9.5 Open-Door 後續措施</a>
+        <a href="#q9-6">Q9.6 介入操作執行</a>
+        <a href="#q9-7">Q9.7 手套安裝方法</a>
+        <a href="#q9-8">Q9.8 手套消毒策略</a>
+        <a href="#references">References 參考文獻</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.1 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-1">Q 9.1 Aseptic Techniques for Closed- and Open-Door Interventions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.1. Is it necessary to use the same aseptic techniques and practices when performing closed- and open-door interventions in the <span class="key-term">restricted access barrier system (RABS)</span>?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>To ensure product sterility, operators performing aseptic operations must adhere to <span class="key-term">aseptic techniques</span> for both closed- and open-door interventions. As part of a company's comprehensive <span class="key-term">CCS</span>, a risk assessment must be developed to ensure all intervention steps are appropriately defined, including required mitigation actions, for qualified interventions. All <span class="key-term">open-door interventions</span> are to be minimized and should have a qualified maximum time limit.</p>
+
+        <p>When assessing the risk of an intervention, the following should be considered:</p>
+        <ul>
+            <li>Overall contamination risk to product (e.g., open units, exposed components), based on personnel location, movement, and/or RABS glove proximity</li>
+            <li>Maintenance of <span class="key-term">First Air</span></li>
+            <li>Including the accessibility of the area to perform the intervention</li>
+            <li>Supported with <span class="key-term">AVS</span></li>
+            <li>Consideration of line clearance (e.g., removal of compromised units)</li>
+            <li>Disinfection</li>
+            <li>Area where the intervention takes place needs to be accessible for disinfection, if required (Disinfection prior to EM should be avoided.)</li>
+            <li>Monitoring the intervention</li>
+            <li>Viable (e.g., surface(s), operator(s),) and total particulates</li>
+            <li>Start and end time of intervention (i.e., duration)</li>
+            <li>Before resuming operation, appropriate evaluation and line clearances performed (e.g., disinfection, verified removal of compromised units)</li>
+        </ul>
+        <p>Note: See Topic 4 for clarification on recommended aseptic techniques.</p>
+
+        <p>Furthermore, while a RABS with closed doors provides an improved separation between the operator and the product, it decreases the likelihood of nonsterile product; therefore, the risk is still present and should be appropriately controlled.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>While a RABS with closed doors provides enhanced protection of the product between the operator and extraneous contamination sources (e.g., operator, environment), proper aseptic technique is still required to aid in the overall control of the product. A risk assessment should be documented outlining the necessary controls required to maintain product sterility.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Closed-door vs. Open-door Intervention (關門介入 vs. 開門介入)：</strong>在 RABS 中，即使門是關閉的，操作人員透過手套進行的介入仍然存在污染風險。PDA 的立場非常明確：不論門是開或關，都必須遵循相同的無菌操作技術。</p>
+            <p><strong>Qualified Maximum Time Limit (經過資格確認的最長時限)：</strong>所有 open-door intervention 都必須設定經過驗證的最長允許時間。這不是隨意訂定的數字，而是透過風險評估、AVS 和 EM 數據所支持的。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像手術室中的無菌操作：即使外科醫師戴著手套（類似 closed-door），他仍必須遵循嚴格的無菌技術，不能因為「有手套保護」就放鬆警覺。而當需要打開器械包（類似 open-door intervention）時，風險更高，所需的控制措施也更多。RABS 的邏輯完全相同 -- 屏障降低風險，但不消除風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>EU Annex 1 對齊：</strong>此建議直接呼應 EU Annex 1 的核心精神 -- CCS 必須涵蓋所有介入操作。文件中特別強調「Disinfection prior to EM should be avoided」，這是因為如果在 EM 取樣前就先消毒，你就無法真正評估介入操作帶來的污染風險。</p>
+            <p><strong>時間記錄的重要性：</strong>每次介入必須記錄開始與結束時間。這不僅是 GDocP 要求，更是事後調查異常時的關鍵數據來源。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 PDA 建議在 EM 取樣之前不應先進行消毒？如果先消毒了，對數據解讀會有什麼影響？</li>
+                <li>貴公司目前的 CCS 是否有涵蓋 closed-door intervention 的風險評估？如果沒有，可能有什麼法規風險？</li>
+                <li>如何設計一個系統來自動記錄 intervention 的持續時間，而不依賴人工記錄？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.2 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-2">Q 9.2 Qualification and Approval of Interventions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.2. How should interventions be qualified and approved for use in routine production?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>All interventions should be included in a documented <span class="key-term">risk assessment</span> associated with a comprehensive CCS. This documented risk assessment should consider the following risk factors:</p>
+        <ul>
+            <li>Duration of the intervention (in minutes)</li>
+            <li>Complexity of the intervention (number of steps)</li>
+            <li>Proximity of the intervention to sterile components (equipment, product)</li>
+            <li>Exposure of personnel</li>
+        </ul>
+
+        <p>Additional factors may be considered when assessing the risk associated with execution of an intervention. The assessment must consider the use of sterile equipment and tools (e.g., forceps) to minimize impact on the RABS environment when performing an intervention.</p>
+
+        <p>All qualified interventions should have the <span class="key-term">airflow visualization</span> recorded and documented to ensure that the impact of performing the interventions are thoroughly understood. This includes inherent and corrective interventions that can be performed through RABS gloves and open-door activities. <span class="key-term">First Air</span> principles shall be included in this airflow visualization and must not be ignored during execution of interventions. Based on mechanical or physical limitations, if proper First Air principles cannot be followed, it must be documented within the risk assessment, and proper mitigations (e.g., material discard) must be established. It is recommended that, as much as possible, mitigations be automated, ensuring proper execution each time the intervention is performed. The inclusion of qualified interventions to be performed during routine production should be included in the firm's <span class="key-term">APS</span> program.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Following the process recommended above would ensure the inclusion of <span class="key-term">QRM</span> principles through a documented risk assessment to be included in a comprehensive CCS. The proper design, followed by risk analysis and airflow visualization, will provide the appropriate understanding of the intervention to approve its use, during routine production, and for execution in a firm's APS program. The execution of interventions, to be performed during routine production, are to be included in a firm's APS program.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Intervention Qualification (介入操作資格確認)：</strong>每一個 intervention 在被允許用於日常生產前，都必須經過完整的資格確認流程。PDA 提出了四大風險因子：</p>
+            <ul>
+                <li><strong>持續時間 (Duration)：</strong>越長風險越高</li>
+                <li><strong>複雜度 (Complexity)：</strong>步驟越多，出錯機率越高</li>
+                <li><strong>接近度 (Proximity)：</strong>離無菌組件越近，污染風險越大</li>
+                <li><strong>人員暴露 (Exposure)：</strong>操作人員介入的程度</li>
+            </ul>
+            <p><strong>AVS (Airflow Visualization Study，氣流可視化研究)：</strong>所有 qualified intervention 都必須有 AVS 記錄。這不是「做過一次就好」，而是要確保每個 intervention 對 First Air 的影響都被充分理解並文件化。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 intervention qualification 想成飛行員的飛行前檢查清單 (preflight checklist)。飛行員不會因為「飛過很多次」就跳過檢查。同樣地，每個 intervention 都需要一份完整的「飛行計畫」：你要知道會經過哪些風險區域（proximity）、需要多長時間（duration）、有多少步驟（complexity），以及誰會參與（exposure）。只有通過這些審查的 intervention 才能被「核可起飛」用於日常生產。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>自動化緩解措施：</strong>PDA 特別建議，緩解措施應盡可能自動化。例如，當 First Air 原則因物理限制無法被遵循時，自動棄置受影響的產品比依賴人工判斷更可靠。這符合 EU Annex 1 中「減少人為因素」的精神。</p>
+            <p><strong>APS 納入：</strong>所有 qualified intervention 都必須納入 APS 計畫中進行模擬。這意味著 APS 不僅僅是「充填培養基」，還必須包含對所有已批准介入操作的真實模擬。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>假設你的 RABS 填充線在換品時需要更換充填針頭（一種常見的 inherent intervention）。你的資格確認檔案應包含：(1) AVS 影片顯示換針時的氣流模式；(2) 風險評估矩陣記載持續時間上限（例如 3 分鐘）；(3) 與最近鄰無菌表面的距離分析；(4) 操作人員的 SOP 與培訓記錄。只有完成這些文件，此 intervention 才能被列入「approved intervention list」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個 intervention 的 AVS 顯示會短暫破壞 First Air，但該 intervention 在機械上無法避免，PDA 建議的緩解方案是什麼？</li>
+                <li>為什麼 PDA 強調「mitigations be automated」？人工緩解有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.3 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-3">Q 9.3 Interventions that Disrupt First Air</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.3. Should interventions that disrupt <span class="key-term">First Air</span>, as defined in EU Annex 1, be permitted?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>The placement of RABS glove positions and the aseptic operation should be designed to avoid the disruption of <span class="key-term">unidirectional airflow</span> above or in the proximity of exposed sterile product or critical surfaces. Interventions should be designed in a manner that prevents the disruption of First Air to critical surfaces or exposed product. If the intervention is occurring above a critical surface, sterile tools and/or equipment must be utilized for execution of the intervention.</p>
+
+        <p>All interventions should be designed following appropriate aseptic techniques as recommended in <span class="key-term">EU Annex I</span>: Manufacture of Sterile Medicinal Products, <span class="key-term">FDA Guidance</span> for Industry: Sterile Drug Products Produced by Aseptic Processing-Current Good Manufacturing Practice, or PDA PTC-1. Intervention design must consider equipment limitations and the placement of required equipment (e.g., EM) within the RABS. The use of sterile equipment and tools (e.g., forceps) must be well thought out to not add further risks to intervention execution.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>The process described above would ensure proper design of aseptic interventions and inclusion in the QRM program through a documented risk assessment to be included in a comprehensive CCS. All interventions shall be designed to meet First Air principles and include proper mitigation if those principles are impacted due to mechanical or physical limitations. The proper design followed by risk analysis and airflow visualization will provide the appropriate understanding of the intervention to approve for use, during routine production, and for execution in a firm's APS program.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>First Air (初始氣流)：</strong>EU Annex 1 定義的 First Air 是指直接從 HEPA 濾器出來、尚未接觸任何表面的單向氣流。它是 Grade A 環境中最純淨的空氣。任何介入操作都不應阻斷 First Air 到達暴露產品或關鍵表面的路徑。</p>
+            <p><strong>設計優先原則 (Design-First Principle)：</strong>PDA 的建議核心在於「設計」-- 手套孔位置、操作動線、工具放置都應在設計階段就考量 First Air 的維護。事後補救永遠不如事前設計。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>First Air 就像瀑布般從上方傾瀉而下的「空氣簾幕」。暴露的無菌產品就在這道簾幕的保護之下。當你把手（透過 RABS 手套）伸入操作時，就像是在瀑布中插入一塊石頭 -- 你會在石頭下方製造出亂流區域。因此，你必須確保你的「石頭」（手）不會出現在需要保護的物品正上方，或者使用已滅菌的工具來延伸你的操作距離。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>三大法規框架對齊：</strong>PDA 特別列出了三個法規文件作為 intervention 設計的依據：EU Annex 1、FDA Guidance、以及 PDA PTC-1。這意味著，無論你的產品目標市場在哪裡，intervention 設計都必須同時滿足這三者的要求。對於 CDMO 而言，這一點至關重要，因為同一條產線可能服務於不同法規市場的客戶。</p>
+            <p><strong>無菌工具的雙重考量：</strong>使用無菌工具（如鑷子）可以避免手套直接接觸關鍵表面，但工具本身的設計、放置和使用也不能增加額外風險。工具越多，操作越複雜，掉落或碰撞的機率也越高。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 RABS 手套孔的位置正好在充填針上方，你會建議什麼設計改善方案？</li>
+                <li>在 intervention 設計審查中，如何平衡「使用更多無菌工具以保護 First Air」與「工具增加操作複雜度」之間的矛盾？</li>
+                <li>EU Annex 1、FDA Guidance 與 PDA PTC-1 在 First Air 的定義上是否完全一致？如果有差異，CDMO 應如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.4 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-4">Q 9.4 RABS Glove Contact with Critical Surfaces</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.4. Should contact between <span class="key-term">restricted access barrier system (RABS) gloves</span> and <span class="key-term">critical surfaces</span> during setup or operations be permitted?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>RABS gloves should not be permitted to contact critical surfaces during setup or during operation.</p>
+
+        <p>Portions of equipment would only be considered as a <span class="key-term">"critical surface"</span> when coming into direct contact with product or components. The handle and exterior surface of the stopper bowl are not "critical surfaces" and may be contacted by RABS or operator gloves during setup.</p>
+
+        <p>Aseptic technique should be applied throughout the manufacturing process by trained and qualified operators. (See Question 9.7 for more information on glove installation.) Written procedures are to be established to avoid the risks of RABS gloves contacting direct or indirect surfaces and, if contact occurs, what action(s) are to be taken.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>While the CCS for RABS gloves should maintain proper aseptic conditions throughout the campaign, there is an inherent risk to the product when touching critical surfaces, as the environment and glove materials are not sterile. Proper controls (e.g., process flow, equipment design) and use of sterile tools should be in place to mitigate the need to touch critical surfaces.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Critical Surface (關鍵表面)：</strong>PDA 提供了一個非常務實的定義 -- 只有「直接接觸產品或組件」的設備部位才被視為 critical surface。例如充填針的內壁、瓶塞的接觸面等。而塞栓碗的把手和外表面則不屬於 critical surface，可以被手套接觸。</p>
+            <p><strong>「禁止接觸」的明確立場：</strong>PDA 在這裡的態度非常堅定 -- RABS 手套<strong>不應被允許</strong>接觸 critical surfaces。理由很清楚：RABS 手套和其所處的環境並非無菌的（不像 Isolator 內部）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像餐廳的食品安全規範：服務生可以觸碰盤子的邊緣（non-critical surface），但絕對不能用手觸碰食物本身或食物直接接觸的盤面（critical surface）。如果不小心碰到了，該份餐點就必須被丟棄或重新處理。RABS 手套的邏輯完全相同 -- 你可以操作設備的外部，但不能碰到產品直接接觸的表面。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>RABS vs. Isolator 的關鍵差異：</strong>在 Isolator 中，手套處於 Grade A 環境且經過 VPHP 生物淨化，因此手套表面被視為「可控的」。但 RABS 手套雖然在安裝前已滅菌，但在使用過程中暴露於 Grade B 環境風險。這是 RABS 與 Isolator 在操作層面最根本的差異之一。</p>
+            <p><strong>必須有書面程序：</strong>文件中明確要求建立書面程序 (Written procedures)，涵蓋：(1) 如何避免接觸；(2) 如果不慎接觸了應採取什麼行動。這意味著單純的培訓是不夠的，必須有 SOP。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請列舉三個你的產線上的 critical surfaces 與三個 non-critical surfaces，並說明你是如何區分的。</li>
+                <li>如果操作人員在 intervention 中不慎以 RABS 手套碰觸了充填針外壁，你的 SOP 應規定什麼處置步驟？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.5 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-5">Q 9.5 Post Open-Door Intervention Actions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.5. What should be performed after open-door interventions?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>RABS should be designed and operated with doors closed during aseptic processing; however, the process specificities may require identification, qualification, and approval of interventions performed with the doors open. Interventions performed with <span class="key-term">open RABS doors</span> (e.g., manual setup) are to be minimized, and mitigation controls must be identified and implemented.</p>
+
+        <p>When a RABS door must be opened, those interventions need to be assessed for risk of contamination ingress. These interventions must be part of the <span class="key-term">approved list</span> and must incorporate additional control measures based on the risk of microbiological contamination that the intervention may produce.</p>
+
+        <p>Such additional control measures may include, but are not limited to:</p>
+        <ul>
+            <li>Additional disinfection and/or <span class="key-term">sporicidal disinfection</span> of nonproduct-contact surfaces, including the interior of doors and glove ports exposed or touched during the activity.
+                <br>Note: The firm is responsible for documenting and defining a validated agent as part of its CCS.</li>
+            <li>Identification of the appropriate units that are to be manually removed (i.e., discarded) as part of the intervention.
+                <br>Note: The firm is responsible for validating all automatic unit removal performed by the filling machine.</li>
+            <li>Collection of <span class="key-term">sterility samples</span> may be taken, if warranted in the CCS</li>
+            <li>Door access with recorded intervention alarms and an effective means of documenting the following:
+                <ul>
+                    <li>Start and end time of intervention</li>
+                    <li>Description of the qualified intervention</li>
+                    <li>Participants</li>
+                    <li>Documentation of units removed (i.e., discarded)</li>
+                    <li>Documentation of required EM</li>
+                </ul>
+                Note: The firm is responsible for determining the appropriate risk-based monitoring related to the open-door intervention.</li>
+            <li>Monitoring of operator gloves and additional risk-based locations (e.g., forearms, chest, head, etc.), immediately after completion of the open-door intervention. (See Topic 2 for additional EM recommendations.)</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>Personnel are a significant source of microbiological contamination and, therefore, pose a risk to product sterility. Efforts to separate personnel from sterile products and product-contact surfaces reduce the risk of microbiological contamination. Barrier systems, such as RABS, provide a physical separation between personnel and the external environment and exposed product or product-contact surfaces, which helps prevent microbiological contamination of the sterile product by personnel and the environment.</p>
+        <p>In the case of open-door interventions, there is no longer a physical separation; therefore, additional control measures are required, as described in this section.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Approved Intervention List (經批准的介入操作清單)：</strong>這是 RABS 操作的核心文件之一。每一個可能需要開門的操作都必須事先被識別、評估、資格確認，並列入此清單。任何不在清單上的 open-door intervention 都不應被執行。</p>
+            <p><strong>五大額外控制措施：</strong></p>
+            <ul>
+                <li><strong>消毒/殺孢子劑處理：</strong>針對非產品接觸表面</li>
+                <li><strong>產品棄置：</strong>識別並移除可能受影響的單位</li>
+                <li><strong>無菌樣品採集：</strong>依 CCS 需求判斷</li>
+                <li><strong>文件記錄：</strong>完整的介入操作記錄（時間、描述、參與者、棄置數、EM）</li>
+                <li><strong>操作人員監控：</strong>手套及其他風險部位的即時 EM</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Open-door intervention 就像是在無塵室中打開了一扇「緊急逃生門」。每次打開這扇門，你都需要執行一套完整的「善後程序」：檢查是否有外物進入（EM 監控）、清潔受影響區域（消毒）、移除可能受損的物品（棄置產品）、記錄事件（文件化），以及確認「大門」已經安全關閉。這不是一個可以省略的流程，就像機場安檢區被突破後，必須清場重新安檢一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Intervention Alarm System：</strong>PDA 建議 door access 應配備「recorded intervention alarms」。這代表 RABS 門的開閉應該與自動化系統連動，一旦開門就觸發警報並自動記錄。這是減少人為疏失的關鍵設計。</p>
+            <p><strong>操作人員 EM 監控範圍：</strong>不僅是手套，還包括前臂、胸部、頭部等部位。這反映了 EU Annex 1 對 Grade A/B 操作人員 EM 監控的嚴格要求。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 的棄置策略 (Discard Strategy)：</strong>對於 CDMO 而言，每次 open-door intervention 的產品棄置量直接影響批次產出率和成本。建議在設備設計階段就與設備供應商討論自動棄置功能（auto-reject），並在確效時驗證其準確性。自動棄置比人工判斷更可靠，也更容易通過稽核審查。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>貴公司的 open-door intervention 後的棄置數量是如何決定的？是基於時間、位置、還是 AVS 結果？</li>
+                <li>如果一次 open-door intervention 超過了 qualified maximum time limit，你會採取什麼額外措施？</li>
+                <li>為什麼 PDA 說「Collection of sterility samples may be taken, if warranted in the CCS」而不是「must be taken」？這給了企業什麼空間？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.6 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-6">Q 9.6 How Should Interventions Be Performed?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.6. How should interventions be performed?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Prior to performing an intervention, all product and empty containers are to be cleared, as applicable, then the filling process is stopped. The operator(s) will then don the <span class="key-term">RABS glove</span> in a slow and deliberate manner, which should immediately be followed by a qualified <span class="key-term">visual inspection</span> process. The operator(s) then executes the intervention, as described in an approved procedure, following good aseptic practices and the use of a <span class="key-term">sterilized tool</span>, where appropriate, based upon the intervention.</p>
+
+        <p>Upon completion of the intervention, the operator(s) returns the sterile tool, where appropriate, to its designated stand or location within the Grade A RABS. Prior to retracting the hands from the RABS glove, the operator(s) will perform a second qualified visual inspection of the glove. The operator(s) then ensures the glove is correctly placed to minimize stress and ensures the glove does not activate any <span class="key-term">light curtain</span>, present. The filler can then be reactivated to continue the manufacturing process. When open-door RABS intervention is required, operators should work as a team, with a primary operator performing the task under Grade A environment and a secondary operator assisting the primary operator in the intervention and to ensure proper segregation.</p>
+
+        <p>This collaboration between primary and secondary operator(s) during Grade A open-door intervention aims to prevent any contact between the primary operator's gloves and any surfaces exposed to the surrounding environment (i.e., RABS door opening, material transfer). Intrusion of the primary operator and the duration of the intervention into the Grade A RABS should be minimized.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Each intervention needs to be performed using a sterile tool to minimize the likelihood of the RABS glove contacting critical equipment and/or damaging the glove. Minimizing the impact to sterile components, equipment, and sterile product, along with the RABS environment, is critical when executing an intervention. Each firm needs to have a robust <span class="key-term">discard strategy</span>, based on approved airflow visualization, to discard product and open primary packaging components that have potentially been impacted when an intervention is required. It is important to ensure the operator(s) understands and follows good aseptic practices, as they can be a significant source of contamination. The integrity of the RABS gloves is an important part of the comprehensive CCS to minimize hazard ingress; therefore, the RABS gloves need to be inspected prior to and after every use. This process must be proceduralized, and each operator is to be qualified to perform the inspection process. Each intervention needs to be performed using a sterile tool to minimize the likelihood of the RABS glove contacting critical equipment and/or damage the glove.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Intervention 標準流程 (Standard Intervention Workflow)：</strong>PDA 描述了一個非常明確的 7 步驟流程：</p>
+            <ol>
+                <li><strong>清線 (Line Clearance)：</strong>移除所有產品和空容器</li>
+                <li><strong>停機 (Stop Filler)：</strong>停止充填流程</li>
+                <li><strong>穿戴手套 + 視覺檢查 (Don Glove + Visual Inspection)：</strong>緩慢、刻意地穿戴，立即檢查完整性</li>
+                <li><strong>執行介入 (Execute Intervention)：</strong>依 SOP，使用無菌工具</li>
+                <li><strong>歸位工具 (Return Tool)：</strong>放回指定位置</li>
+                <li><strong>第二次視覺檢查 (2nd Visual Inspection)：</strong>退出手套前再次檢查</li>
+                <li><strong>安置手套 + 重啟 (Position Glove + Restart)：</strong>確保不觸發光幕</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Light Curtain (光幕)：</strong>這是 RABS 中常見的安全/監控設備，用於偵測手套或物體是否侵入特定區域。操作完成後，手套必須被正確安置，避免誤觸發光幕導致不必要的警報或停機。</p>
+            <p><strong>雙人操作制度 (Primary + Secondary Operator)：</strong>開門介入必須採用團隊合作模式。Primary operator 負責 Grade A 區域內的操作；secondary operator 在外部協助，確保 primary operator 的手套不會接觸暴露於外部環境的表面。這類似於手術室的「術者 + 遞械護理師」的配合模式。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Intervention 的執行流程就像外科手術的「刷手上台」程序。你不會直接衝進手術室開始動刀。你必須先完成刷手（穿戴手套 + 檢查）、確認手術區域已清場（清線）、使用滅菌器械操作（無菌工具）、操作完成後逐一確認（第二次檢查），最後安全退出。每一步都有其存在的理由，跳過任何一步都會增加感染風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 PDA 要求手套穿戴必須「slow and deliberate」？如果操作人員趕時間快速穿戴，可能會有什麼風險？</li>
+                <li>PDA 為什麼要求介入前後各做一次手套視覺檢查？如果只在介入後檢查，可能會錯過什麼？</li>
+                <li>在你的產線中，primary operator 和 secondary operator 的角色和責任是否有明確的書面定義？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.7 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-7">Q 9.7 RABS Glove Installation Methods</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.7. How and when should <span class="key-term">restricted access barrier system (RABS) gloves</span> be installed?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>RABS gloves are sterilized before installation in the RABS barrier wall (glove port), and subsequently, they must be wrapped and sterilized within an integral bag for protection against contamination through transfer within the Grade B area. Prior to installation, RABS gloves are required to be sterile. Typically, this is accomplished via <span class="key-term">autoclave</span> or <span class="key-term">gamma-irradiation</span>. There are multiple ways to install RABS gloves and, while this document outlines three industry approaches, other options may be considered based on the company's equipment and risk assessment.</p>
+
+        <p>Note: In all the approaches listed below, there should be no contact of the RABS glove to any Grade A surface with the exception of sterile tools.</p>
+
+        <p><strong>Approach 1: RABS Door Closed</strong></p>
+        <ol>
+            <li>RABS door is closed.</li>
+            <li>Glove port inside is decontaminated by spraying and/or wiping with validated agents (e.g., sporicidals).</li>
+            <li>Wrapped glove is introduced through the glove port; the glove remains covered.
+                <br>Note: The wrapped RABS glove does not leave the UDAF (e.g., within cart) or UDAF zone of protection using a UDAF cart, and it is transferred into the RABS under the UDAF zone of protection.</li>
+            <li>Upper part of the glove bag is opened using sterile tools (outside of RABS).</li>
+            <li>RABS glove is connected by the attachment of the o-ring on the outside of the RABS door.</li>
+            <li>Glove wrapping is aseptically removed inside the RABS.</li>
+            <li>Glove remains inverted (i.e., turned "inside-out").</li>
+            <li>Glove wrapping is then taken out of the RABS by using the opening below the RABS doors for oRABS. For cRABS another method must be used.</li>
+        </ol>
+        <p>Approach 1 is detailed in Figure 9.7-1.</p>
+        <p><em>(Figure 9.7-1: Approach 1: RABS Door Closed)</em></p>
+        <p><em>(Figure 9.7-2: Example of Approach 1)</em></p>
+
+        <p><strong>Approach 2: RABS Door Open</strong></p>
+        <ol>
+            <li>RABS door is open.</li>
+            <li>RABS door is positioned and protected inside by an extended, vertical UDAF zone of protection.</li>
+            <li>Upper part of the glove bag is cut by sterile tools.</li>
+            <li>Bag gets connected to the glove port.</li>
+            <li>O-ring is attached on the inside of the RABS door.</li>
+            <li>Upper part of the RABS glove gets decontaminated by wiping or spraying with sporicidal agents.</li>
+            <li>RABS door is then closed.</li>
+            <li>Glove wrapping is aseptically removed inside the RABS.</li>
+            <li>Glove remains inverted (i.e., turned "inside-out").</li>
+            <li>Glove wrapping is then taken out of the RABS by using the opening below the RABS doors, for oRABS. For cRABS another method must be used.</li>
+        </ol>
+        <p>Approach 2 is detailed in Figure 9.7-3.</p>
+        <p><em>(Figure 9.7-3: Approach 2: RABS Door Open)</em></p>
+
+        <p><strong>Approach 3: RABS Door Closed</strong></p>
+        <ol>
+            <li>Glove port inside is disinfected by spraying and/or wiping with validated agents (e.g., sporicidal agents) based on CCS.</li>
+            <li>Bag with inverted RABS glove is opened.</li>
+            <li>Inverted glove is introduced through the glove port.</li>
+            <li>RABS glove is connected by the attachment of the o-ring on the outside of the RABS door.</li>
+            <li>Glove remains inverted (i.e., turned "inside-out").</li>
+        </ol>
+        <p>Approach 3 is illustrated in Figure 9.7-4.</p>
+        <p><em>(Figure 9.7-4: Approach 3: RABS Door Closed)</em></p>
+
+        <p>By using these three methods, the risk of contamination of the RABS gloves during installation is lowered. This is because the RABS glove:</p>
+        <ol>
+            <li>Was never exposed to the Grade B environment.</li>
+            <li>Was never in contact with any surfaces within Grade A.</li>
+        </ol>
+
+        <p>Installing the RABS glove after the last step of open-door interventions required for the setup is recommended.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>It is common industry practice that sterilized RABS gloves are installed before and/or during the setup of the RABS. Other options for glove installation may be performed; however, careful consideration should be given and a risk assessment should be documented to verify the firms CCS of the RABS gloves with respect to the environment and operator. In order to mitigate contamination by the environment or the operator, the three approaches outlined in this section provide practical options to install RABS gloves.</p>
+        <p>If RABS gloves are installed following the recommended approaches, any potential contamination of product and critical surfaces with microorganisms should be reduced.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>RABS 手套安裝三法 (Three Approaches)：</strong>PDA 提出三種業界通用的手套安裝方法，每種都有特定適用場景：</p>
+            <table>
+                <tr>
+                    <th>方法</th>
+                    <th>門狀態</th>
+                    <th>關鍵特點</th>
+                    <th>適用性</th>
+                </tr>
+                <tr>
+                    <td>Approach 1</td>
+                    <td>關閉</td>
+                    <td>手套從 glove port 引入，始終在 UDAF 保護下</td>
+                    <td>oRABS 首選</td>
+                </tr>
+                <tr>
+                    <td>Approach 2</td>
+                    <td>開啟</td>
+                    <td>門在 UDAF 保護下開啟，手套從內側安裝</td>
+                    <td>需開門 setup 時</td>
+                </tr>
+                <tr>
+                    <td>Approach 3</td>
+                    <td>關閉</td>
+                    <td>已反轉手套直接透過 glove port 引入，步驟最少</td>
+                    <td>cRABS/oRABS 皆適用</td>
+                </tr>
+            </table>
+            <p><strong>兩大安全保證：</strong>無論使用哪種方法，最終結果都必須確保手套 (1) 從未暴露於 Grade B 環境，(2) 從未接觸 Grade A 內的任何表面。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手套安裝就像是在「無菌的氣泡」中進行一場精密的換裝。想像你要在一間無塵室中更換一雙無菌手套，但你的手本身不能碰到手套的外表面，手套也不能碰到房間裡的任何東西。解決方案是：手套被裝在一個密封袋中（像是密封的禮物包裝），你透過手套孔把它送進去，然後用無菌工具打開包裝，再把包裝從另一個出口取出 -- 全程手套都在「保護泡泡」裡。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「Inverted」手套的意義：</strong>三種方法都提到手套要保持「inverted（反轉/內翻）」狀態。這是一個關鍵的無菌保護策略 -- 手套的無菌外表面（將來接觸 Grade A 環境的面）在安裝過程中是朝內的，從而避免被污染。</p>
+            <p><strong>安裝時機的建議：</strong>PDA 建議在 setup 階段最後一個 open-door intervention 完成後再安裝手套。這樣可以避免剛安裝好的無菌手套在後續的開門操作中被污染。</p>
+            <p><strong>oRABS vs. cRABS 的差異：</strong>Approach 1 和 2 都提到手套包裝可以從 RABS 門下方的開口取出（適用於 oRABS），但 cRABS 需要使用其他方法。這是因為 cRABS 的門在操作期間不會開啟，沒有下方開口可用。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>滅菌方式的選擇：</strong>文件提到手套可以透過高壓滅菌 (autoclave) 或伽馬射線照射 (gamma-irradiation) 進行滅菌。對於 CDMO 而言，gamma-irradiation 的手套通常以即用型 (RTU) 形式購入，簡化了供應鏈管理。而 autoclave 則需要企業自行管理滅菌確效、裝載模式和參數控制。選擇哪種方式應基於產能規模、更換頻率和總擁有成本 (TCO) 來決定。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>比較三種手套安裝方法，哪一種的污染風險最低？哪一種的操作複雜度最高？為什麼？</li>
+                <li>為什麼 PDA 建議手套安裝應在 setup 的最後一個 open-door intervention 之後進行？如果先安裝手套再做 setup，會有什麼風險？</li>
+                <li>如果你的 cRABS 無法使用 Approach 1 中「門下方開口取出包裝」的方式，你會設計什麼替代方案？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q9.8 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q9-8">Q 9.8 Disinfection of RABS Gloves During Operations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Q 9.8. Are <span class="key-term">restricted access barrier system (RABS) gloves</span> treated with <span class="key-term">sporicidal agents</span> and/or otherwise disinfected during operations?</strong></p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>The use of disinfection, including sporicidal disinfection, should be defined within a CCS. In general, there is no need to conduct a sporicidal disinfection of RABS glove(s) during aseptic operations.</p>
+
+        <p>Note: Disinfection is only required if the RABS gloves come in contact with nonsterilized surfaces.</p>
+
+        <p>RABS gloves should be installed, operated, and maintained in a manner in which they will not become contaminated by exposure to the zone of protection outside the RABS (Grade B environment), by contact with personnel during door opening, or by contact with nonsterilized surfaces within the RABS.</p>
+
+        <p>This requires that the RABS gloves be <span class="key-term">inverted</span> (turned "inside out") to the RABS outside when leaving the RABS gloves with the operator hands (See Figure 1.4-1 for visual example of inversion). Leaving the RABS gloves inserted and hanging down inside the RABS should be prevented as they may be contaminated by direct contact with nonsterilized surfaces.</p>
+
+        <p>When there are door openings as part of setup or as a qualified intervention during a filling operation, the RABS gloves should also be inverted and should not be directly exposed to the zone of protection outside the RABS (Grade B environment).</p>
+
+        <p>RABS glove disinfection or sporicidal disinfection is only required if the RABS glove has come in contact with potentially contaminated surfaces, which are locations below the working level, for example, for interventions where an equipment-part must be fixed. The disinfection or sporicidal disinfection should be performed by wiping; spraying disinfectants inside the Grade A RABS during filling should be prevented.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>RABS gloves are sterilized before installation and should be installed in a manner that prevents contamination. (See Question 9.7.) Proper aseptic techniques should always be used when working with RABS gloves during closed-door conditions. If the door is not opened, the RABS glove is not exposed to the Grade B environment, and there is no contact with nonsterilized surfaces. There is no requirement for an additional wiping, via disinfection or sporicidal disinfection, during operations. If a contamination risk results as described above (e.g., RABS glove exposure in Grade B, contact with non-sterilized surfaces, etc.) mitigation should follow the recommendations from Questions 9.4 and 9.5.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>手套消毒策略的核心原則：</strong>PDA 的立場非常清楚 -- 正常操作下，RABS 手套<strong>不需要</strong>殺孢子劑消毒。消毒只有在手套接觸了非滅菌表面時才需要。</p>
+            <p><strong>Inversion（反轉）的關鍵角色：</strong>手套不使用時必須反轉（翻到 RABS 外側），使無菌表面朝內受保護。如果讓手套自然下垂懸掛在 RABS 內部，無菌表面可能接觸到設備的非滅菌表面，造成污染。</p>
+            <p><strong>Wiping vs. Spraying：</strong>即使需要消毒，也必須使用擦拭方式，而非噴灑。在 Grade A 環境中噴灑消毒劑會產生液滴和顆粒，反而增加污染風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手套反轉的原理就像你脫下橡膠手套時自然將其翻面。當你把手從手套中抽出時，手套會自然從手腕處翻轉，原本在外面（接觸東西的面）變成在裡面被包住。RABS 手套也是這個邏輯 -- 不使用時反轉，讓「乾淨面」被保護在裡面，「可能被污染的面」暴露在外。下次要使用時，再翻回來，乾淨面就又朝外了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「Below Working Level」的風險：</strong>PDA 特別指出，當 intervention 涉及工作面以下的設備維修時（例如修理充填設備底部的零件），手套接觸非滅菌表面的風險較高。這是因為工作面以下通常不在 First Air 的直接保護範圍內，且可能有潤滑油、灰塵等污染物。</p>
+            <p><strong>與 Q9.4 和 Q9.5 的交叉引用：</strong>如果手套確實發生了污染風險事件，PDA 指引操作人員參照 Q9.4（critical surface 接觸規範）和 Q9.5（open-door intervention 後續措施）的建議來執行緩解措施。這體現了 PDA 文件內部的邏輯一致性。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>Campaign 期間的手套管理策略：</strong>在長時間的 campaign 生產中（可能持續數天），手套管理是一個持續性的挑戰。建議建立一個手套狀態追蹤系統，記錄每副手套的安裝時間、使用次數、是否曾接觸非滅菌表面，以及是否曾進行消毒。這些數據不僅支持 campaign 期間的決策（例如何時更換手套），也是批次放行審查的關鍵輸入。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 PDA 說「spraying disinfectants inside the Grade A RABS during filling should be prevented」？噴灑消毒劑在 Grade A 中會帶來什麼風險？</li>
+                <li>如果操作人員忘記將手套反轉就離開，你會如何評估此事件的風險？需要採取什麼行動？</li>
+                <li>在你的 CCS 中，手套消毒的觸發條件是什麼？這些條件是否已經過風險評估和確效？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- REFERENCES -->
+<!-- ============================================================= -->
+<div class="section-title" id="references">References 參考文獻</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>References</strong></p>
+        <ol>
+            <li>European Commission. <em>Annex 1: Manufacture of Sterile Medicinal Products</em>, EudraLex &ndash; Volume 4 &ndash; EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use. Brussels: European Commission; 2022.</li>
+            <li>Parenteral Drug Association. <em>Technical Report No. 70: Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities</em>. Bethesda, Md.: PDA; 2015.</li>
+            <li>Parenteral Drug Association. <em>Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators</em>. Bethesda, Md.: PDA; 2020.</li>
+            <li>U.S. Food and Drug Administration. <em>Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing&mdash;Current Good Manufacturing Practice</em>. Rockville, Md.: U.S. Department of Health and Human Services; 2004.</li>
+            <li>American Society of Mechanical Engineers. <em>ASME BPE-2022 (Revision of ASME BPE-2019): Bioprocessing Equipment</em>. New York, NY: ASME; 2022.</li>
+            <li>International Society for Pharmaceutical Engineering. <em>Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities</em>, 3rd Ed. Bethesda, Md.: ISPE; 2018.</li>
+            <li>Parenteral Drug Association. <em>Points to Consider No. 1: Aseptic Processing (Revised 2023)</em>. Bethesda, Md.: PDA; 2023.</li>
+            <li>U.S. Food and Drug Administration. <em>FDA Compliance Program Guidance Manual</em>. 735600A-09/11/15-(6). Silver Spring, MD: U.S. Department of Health and Human Services; 2015.</li>
+            <li>Lysfjord J. ISPE definition: Restricted Access Barrier System (RABS) for Aseptic Processing. <em>Pharmaceutical Engineering</em>. 2005;25(6).</li>
+            <li>21 CFR 211.65 Equipment Construction, (2018).</li>
+            <li>U.S. Food and Drug Administration. <em>Questions and Answers on Current Good Manufacturing Practices&mdash;Equipment</em>. Silver Spring, Md.: U.S. FDA, CDER-OPQ; 2015 [updated 11/16/2022].</li>
+            <li>International Organization for Standardization. <em>ISO 14698-1:2003: Cleanrooms and Associated Controlled Environments &mdash; Biocontamination Control &mdash; Part 1: General Principles and Methods</em>. Geneva: ISO; 2003. p. 32.</li>
+            <li>The International Society for Pharmaceutical Engineering. Bio-Fluorescent Particle Counter (BFPC) Continuous Environmental Viable Particle Monitoring Strategy for Aseptic Filling. <em>Pharmaceutical Engineering</em>. 2023.</li>
+            <li>Gessler A, Stark A, Sigwarth V, Moirandat C. How risky are pinholes in gloves? A rational appeal for the integrity of gloves for isolators. <em>PDA J Pharm Sci Technol</em>. 2011;65(3):227-41.</li>
+            <li>Parenteral Drug Association. <em>Technical Report No. 22 (Revised 2011): Process Simulation for Aseptically Filled Products</em>. Bethesda, Md.: PDA; 2011.</li>
+            <li>Parenteral Drug Association. <em>Technical Report No. 44: Quality Risk Management for Aseptic Processes</em>. Bethesda, Md.: PDA; 2008. Contract No.: S-1.</li>
+            <li>Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). <em>Annex 1: Manufacture of Sterile Medicinal Products</em>, Guide to GMP for Medicinal Products. Geneva: PIC/S; 2018. p. 1-18.</li>
+            <li>International Organization for Standardization. <em>ISO 14644-7:2004 Cleanrooms and Associated Controlled Environments &mdash; Part 7: Separative devices (clean air hoods, gloveboxes, isolators and mini-environments)</em>. Geneva: ISO; 2004. p. 52.</li>
+            <li>Pharmaceutical &amp; Healthcare Sciences Society. <em>Clarity on GMP Guidance Note No. 3, Qualification of No-Touch Transfer: NTT for RTU Containers</em>. 2020.</li>
+            <li>U.S. Pharmacopeial Convention. General Chapter &lt;1072&gt; Disinfectants and Antiseptics. <em>USP 43&ndash;NF 38</em>. Rockville, Md.: USP; 2020. p. 7608.</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>參考文獻分類導讀</h4>
+            <p>PtC-12 引用的 20 份參考文獻可以按功能分為以下幾類：</p>
+            <p><strong>核心法規文件：</strong></p>
+            <ul>
+                <li><strong>Ref 1 - EU Annex 1 (2022)：</strong>最新版歐盟 GMP 附件一，是 RABS 設計與操作最重要的法規依據</li>
+                <li><strong>Ref 4 - FDA Aseptic Processing Guidance (2004)：</strong>美國 FDA 的無菌加工指導，雖然年代較早但仍為有效法規</li>
+                <li><strong>Ref 17 - PIC/S Annex 1 (2018)：</strong>PIC/S 版本的 GMP 附件一</li>
+                <li><strong>Ref 10 - 21 CFR 211.65：</strong>設備構造的聯邦法規</li>
+            </ul>
+            <p><strong>PDA 技術文件：</strong></p>
+            <ul>
+                <li><strong>Ref 2 - TR70：</strong>清潔與消毒計畫基礎</li>
+                <li><strong>Ref 3 - PtC (Isolators)：</strong>隔離器無菌加工，與 PtC-12 (RABS) 為姊妹文件</li>
+                <li><strong>Ref 7 - PTC-1：</strong>無菌加工總論</li>
+                <li><strong>Ref 15 - TR22：</strong>無菌製程模擬 (APS)</li>
+                <li><strong>Ref 16 - TR44：</strong>品質風險管理 (QRM)</li>
+            </ul>
+            <p><strong>標準與技術參考：</strong></p>
+            <ul>
+                <li><strong>Ref 5 - ASME BPE-2022：</strong>生物製程設備標準</li>
+                <li><strong>Ref 6 - ISPE Baseline Guide Vol. 3：</strong>無菌設施設計</li>
+                <li><strong>Ref 12 - ISO 14698-1：</strong>生物污染控制</li>
+                <li><strong>Ref 18 - ISO 14644-7：</strong>分離裝置標準</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>文獻延伸閱讀建議：</strong>如果你正在建立或改善 RABS 操作程序，以下三份文獻是最優先閱讀的：</p>
+            <ul>
+                <li><strong>EU Annex 1 (2022) [Ref 1]：</strong>理解法規最新要求</li>
+                <li><strong>PDA TR70 [Ref 2]：</strong>深入了解清潔與消毒確效</li>
+                <li><strong>PDA TR22 [Ref 15]：</strong>設計符合法規的 APS 計畫</li>
+            </ul>
+            <p>特別注意 Ref 14 (Gessler et al., 2011) 關於手套針孔風險的研究 -- 這是理解手套完整性測試重要性的關鍵文獻。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>無菌技術一致性 (Q9.1)：</strong>不論 closed-door 或 open-door intervention，都必須遵循相同的無菌操作技術。RABS 屏障降低風險，但不消除風險。所有 open-door intervention 需設定 qualified maximum time limit。</li>
+        <li><strong>Intervention 資格確認 (Q9.2)：</strong>每個 intervention 須經過風險評估（持續時間、複雜度、接近度、人員暴露），並配備 AVS 文件化記錄。所有 qualified intervention 必須納入 APS 計畫。緩解措施應盡可能自動化。</li>
+        <li><strong>First Air 保護 (Q9.3)：</strong>Intervention 設計必須避免中斷暴露產品或關鍵表面上方的 First Air。若因物理限制無法避免，須有文件化的風險評估和緩解措施。設計須同時符合 EU Annex 1、FDA Guidance 和 PDA PTC-1。</li>
+        <li><strong>Critical Surface 接觸限制 (Q9.4)：</strong>RABS 手套不得接觸 critical surfaces（直接接觸產品或組件的表面）。必須建立書面程序，定義避免接觸的方法和接觸後的處置措施。使用無菌工具是關鍵緩解策略。</li>
+        <li><strong>Open-Door 後續控制 (Q9.5)：</strong>開門介入後需執行五大額外控制措施：消毒、產品棄置、無菌取樣、完整文件記錄（含警報系統）、操作人員 EM 監控。所有 open-door intervention 須列於 approved list。</li>
+        <li><strong>Intervention 執行流程 (Q9.6)：</strong>標準化七步驟流程：清線 → 停機 → 穿戴手套 + 視覺檢查 → 執行介入 → 歸位工具 → 第二次視覺檢查 → 安置手套 + 重啟。開門介入須採用 primary + secondary operator 雙人制度。</li>
+        <li><strong>手套安裝三法 (Q9.7)：</strong>Approach 1（閉門，glove port 引入）、Approach 2（開門，UDAF 保護下安裝）、Approach 3（閉門，反轉手套直接引入）。所有方法的共同目標：手套從未暴露於 Grade B，從未接觸 Grade A 表面。建議在 setup 最後一個開門步驟後安裝。</li>
+        <li><strong>手套消毒策略 (Q9.8)：</strong>正常操作下不需要殺孢子劑消毒。消毒僅在手套接觸非滅菌表面時才需要。手套不使用時必須反轉（inverted）。消毒方式為擦拭，Grade A 內禁止噴灑消毒劑。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems (RABS)</p>
+    <p>Topic 9: Best Practices for Aseptic Operations + References | p95 - p115</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

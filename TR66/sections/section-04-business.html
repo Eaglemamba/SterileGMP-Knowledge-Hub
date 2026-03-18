@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR66 - Section 6.0: Business Drivers for the Adoption of Single-Use Systems</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6.0 Business Drivers for the Adoption of Single-Use Systems</h1>
+    <div class="subtitle">一次性使用系統採用之商業驅動因素</div>
+    <div class="page-info">PDA Technical Report No. 66 (2014) &mdash; Single-Use Systems | p61 - p69</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解驅動企業採用 Single-Use Systems (SUS) 的關鍵商業因素與評估框架</li>
+        <li>掌握 Lifecycle Approach (生命週期方法) 與 Opportunity Cost (機會成本) 在 SUS 決策中的應用</li>
+        <li>學習 Cost of Goods Manufactured (COGM) 模型的結構，包含 Process Model、Operational Model、Variable Cost 及 Fixed Cost 子模型</li>
+        <li>理解 Investment Costs (投資成本) 的組成因素，包括設備、設施、公用設施及間接成本</li>
+        <li>認識 SUS 實施對 QC/QA 品質成本及固定營運成本的影響</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec6-0">6.0 Overview</a>
+        <a href="#sec6-1">6.1 Evaluation</a>
+        <a href="#sec6-2">6.2 Lifecycle</a>
+        <a href="#sec6-3">6.3 Opportunity Cost</a>
+        <a href="#sec6-4">6.4 Cost of Quality</a>
+        <a href="#sec6-5">6.5 Quantitative Evaluation</a>
+        <a href="#sec6-6">6.6 Operational Model</a>
+        <a href="#sec6-7">6.7 Total Cost Model</a>
+        <a href="#sec6-8">6.8 Investment Costs</a>
+        <a href="#sec6-9">6.9 QC/QA</a>
+        <a href="#sec6-10">6.10 Fixed Costs</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.0 OVERVIEW -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-0">6.0 Business Drivers for the Adoption of Single-Use Systems</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section provides a detailed description of the key <span class="key-term">business drivers</span> that inform the evaluation and implementation of single-use versus traditional <span class="key-term">MUSs</span>. The business drivers for the introduction of an SUS are many, varied, and unique to each company's individual situation and business model. Several factors must be considered for a successful analysis. These factors include:</p>
+        <ul>
+            <li>Supplier-demonstrated technical and quality capabilities</li>
+            <li>Product sustainability</li>
+            <li>Guarantee of business continuity</li>
+            <li>The business model of the company considering an SUS</li>
+            <li>Process design</li>
+            <li>The product and its potential market volume</li>
+            <li>Available facilities</li>
+            <li>Anticipated location</li>
+        </ul>
+        <p>Each company will approach SUS implementation with a different set of objectives developed from business drivers that are unique to a specific business model.</p>
+        <p>SUS implementation confers advantages such as <span class="key-term">reduced capital investment</span>, <span class="key-term">flexible operation</span>, faster changeover, and the application of <span class="key-term">lean manufacturing</span> principles. Since a company's individual situation and business model will affect the role of pertinent business drivers, it is critical to start the evaluation with an understanding of the business in question. For example, the main concern of a <span class="key-term">contract manufacturing company (CMO)</span> may be the elimination of cross-contamination in a multiple-client, multiple-product facility. A stand-alone manufacturer with a facility dedicated to the production of a single product may consider a <span class="key-term">hybrid approach</span> of an SUS and MUS to reduce SU variable costs yet allow for the expansion of production capacity at peak periods. An effective implementation of an SUS would help the company to meet important business goals in addition to cost savings.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Business Drivers (商業驅動因素)：</strong>指促使企業決定採用 SUS 的各種商業考量，包括成本、彈性、速度、法規合規等。每家公司的驅動因素組合都不同，取決於其商業模式。</p>
+            <p><strong>Hybrid Approach (混合方法)：</strong>同時使用 SUS 與傳統 Multi-Use Systems (MUS) 的策略，在降低變動成本的同時保持產能擴充彈性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在開一家餐廳。你可以選擇全部使用瓷器餐具 (MUS)，需要洗碗機和專人清洗；或全部使用免洗餐具 (SUS)，省去清洗但每餐耗材成本較高；或者混合使用 &mdash; 主餐用瓷盤、飲料用紙杯 (Hybrid)。最佳選擇取決於你的餐廳類型：高級餐廳、快餐店、還是外燴服務商 (CMO)？</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR66 強調：SUS 的評估<strong>必須從了解企業本身的商業模式開始</strong>。CMO 最重視交叉污染防控，單一產品工廠可能偏好 Hybrid 方案，而新建工廠則可能完全採用 SUS 設計。沒有「一體適用」的答案。</p>
+            <p>注意原文列出的八大評估因素，涵蓋了從供應商能力到預期設廠地點的完整範圍 &mdash; 這不只是「成本比較」，而是全方位的商業策略評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你是一家 CMO 的營運主管，為什麼「消除交叉污染」可能比「降低成本」更重要？</li>
+                <li>Hybrid approach 在什麼情境下最具優勢？請舉出至少兩個具體場景。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.1 EVALUATION OF BUSINESS DRIVERS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-1">6.1 Evaluation of Business Drivers</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The decision to implement an SUS tends to be driven by economic incentives such as 1) potential elimination of <span class="key-term">cleaning and sterilization</span> processes; 2) reduction of dedicated equipment or <span class="key-term">changeover time</span>; and 3) increased flexibility and capacity of the manufacturing facility. The end user must consider both tangible cost savings and less quantitative benefits such as low risks of <span class="key-term">cross contamination</span>. A <span class="key-term">cost-of-goods-manufactured (COGM)</span> analysis can be used to support claims of economic savings. Other tools, such as <span class="key-term">risk assessment</span>, <span class="key-term">value-stream mapping</span>, CO2 footprint, green manufacturing, and value-added analysis, can provide invaluable data to inform a business decision on whether to implement SUS or not.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>COGM (製造成本)：</strong>Cost of Goods Manufactured，是衡量每批次產品製造總成本的關鍵指標。它將所有營運成本與資本成本除以批次數量，得出單位批次成本，用於比較 SUS 與 MUS 的經濟可行性。</p>
+            <p><strong>Value-Stream Mapping (價值流圖)：</strong>精實製造工具，用於視覺化整個製程流程中的增值與非增值步驟，幫助識別可用 SUS 取代的浪費環節。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>評估 SUS 不能只看「看得見的成本節省」（tangible savings），還必須考量「難以量化的效益」（less quantitative benefits），例如降低交叉污染風險。這些軟性效益在法規審查和產品品質層面往往更具決定性。</p>
+            <p>原文提到的評估工具組合 &mdash; COGM + Risk Assessment + Value-Stream Mapping + CO2 Footprint &mdash; 反映了現代製藥業對 SUS 決策的全面性要求，不再只是財務部門的工作。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像買車不能只看售價 &mdash; 你還要考慮油耗、維修費、保險、折舊，甚至對環境的影響。COGM 分析就是 SUS 決策的「買車全生命週期成本 (TCO)」計算器。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請列舉三項 SUS 實施帶來的「可量化成本節省」和三項「難以量化的效益」。</li>
+                <li>為什麼 CO2 footprint 和 green manufacturing 也被列為評估工具？這對藥廠的商業決策有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.2 LIFECYCLE APPROACH -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-2">6.2 Lifecycle Approach</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The importance of specific business drivers will depend on the needs of each individual company. The scope of the project may be as narrow as using an SUS to boost the capacity of a single process step or to eliminate cleaning steps. Such a tactical comparison depends on technological, process compatibility, and economic factors. Conversely, the project scope could be a corporate-wide initiative to evaluate the feasibility of SUS implementation for an entire production process or part of an overall <span class="key-term">lifecycle evaluation</span> for a product or facility. A <span class="key-term">lifecycle approach</span> involves an evaluation of the costs incurred throughout the lifetime of the project in order to provide a complete economic basis for making decisions. Costs for evaluation may include the initial <span class="key-term">capital investments</span>, production and quality overheads, and <span class="key-term">decommissioning</span>. The lifecycle approach incorporates time and risk factors as relevant strategies are applied, and this leads to a more comprehensive economic evaluation.</p>
+        <p>For instance, the forecast for a new product may include an initial launch phase with a relatively uncertain production demand followed by a full-scale production phase with options for capacity expansion or additional products. In such a situation, <span class="key-term">operational flexibility</span> becomes important to the business case because of the uncertainty in product demand. Such flexibility comes with an increase in capital investment for traditional MUSs, whereas the implementation of an SUS tends to reduce the cost of operational flexibility because it is less reliant on investment for utilities and equipment installation. An SUS is less costly to modify or expand to a new facility when a change in product lifecycle occurs.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Lifecycle Approach (生命週期方法)：</strong>評估專案從建設到除役 (decommissioning) 整個生命週期中所有成本的方法。不只看初始投資，還包括營運、品質管理開銷、以及最終的設備拆除成本。</p>
+            <p><strong>Operational Flexibility (營運彈性)：</strong>製造設施快速適應產量變化、產品切換或市場需求波動的能力。SUS 因較少依賴固定設備和公用設施安裝，天然具有較高的營運彈性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>生命週期方法就像評估「租房 vs 買房」的決策：租房 (SUS) 初期投入低、搬家方便，但每月租金較高；買房 (MUS) 需要大額頭期款和裝潢費用，但長期使用成本可能較低。最佳選擇取決於你預計住多久、是否會需要搬遷、以及未來家庭大小的不確定性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這段內容揭示了 SUS 的一個核心優勢：<strong>降低「彈性的成本」</strong>。在傳統 MUS 中，要獲得營運彈性需要額外的資本投資（備用設備、更大的設施等）；而 SUS 本身就具備彈性，不需要為「可能的擴產」預先投入鉅資。</p>
+            <p>這對新藥上市特別重要 &mdash; 在臨床階段需求不確定時，SUS 可以讓企業「量力而為」，等市場明確後再決定是否擴大規模。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>情境：你的公司正在開發一款新型生物製劑，Phase III 試驗結果將在 18 個月後揭曉。如果成功，預計需要年產 2,000 批；如果僅部分成功，可能只需 500 批。在這種不確定性下，SUS 的 lifecycle approach 建議你先以 SUS 設計啟動生產，避免在結果不確定時投入大量固定資產。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Lifecycle approach 中的「decommissioning cost」包含哪些項目？為什麼 SUS 在這方面可能有優勢？</li>
+                <li>在什麼情況下，即使 lifecycle approach 分析結果顯示 MUS 長期成本更低，企業仍可能選擇 SUS？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.3 OPPORTUNITY COST -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-3">6.3 Opportunity Cost</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><span class="key-term">Opportunity cost</span> is defined as the value of the next-best choice available when choosing between several mutually exclusive options. These costs are often excluded from estimates of fixed operation costs because they can be difficult for comparative analyses in the overall decision process. For example, deciding to expand a facility may result in forgoing the opportunity to invest in other projects, contract batch production at a CMO, or maintain cash reserves. Opportunities can be difficult to compare; hence, opportunity cost calculations between competing projects may help identify the best path forward.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Opportunity Cost (機會成本)：</strong>在多個互斥選項中，選擇某一方案時所放棄的「次佳選項」的價值。這是經濟學的基本概念，但在製藥業的設施投資決策中經常被忽略，因為不同專案之間難以直接比較。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>假設你有 1,000 萬的資金。你可以用來擴建工廠 (A)、投資新藥研發 (B)、或委託 CMO 代工 (C)。如果你選了 A，那麼機會成本就是 B 和 C 中較好的那個選項所能帶來的收益。SUS 因為初始投資較低，可以讓你「多保留一些子彈」投入其他機會。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>機會成本之所以「經常被排除」在評估之外，是因為它需要對「沒走的那條路」做出假設性估算 &mdash; 這在大型製藥企業中特別困難，因為涉及的變數太多。然而，忽略機會成本可能導致企業過度投資於固定資產，而錯失更有價值的商業機會。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼機會成本在 CMO 的商業決策中特別重要？</li>
+                <li>如果你的企業決定不擴廠而改用 SUS，省下的資金可以用於哪些替代投資？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.4 COST OF QUALITY -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-4">6.4 Cost of Quality</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The <span class="key-term">cost of quality</span> can be defined as any cost that would not have been expended if quality were perfect. The inherent advantages of an SUS may lead to reductions in the cost of quality for the end user. In order for an SUS to be used in a manufacturing process, the end user must be able to demonstrate that it is <span class="key-term">fit for purpose</span> and meets applicable quality and regulatory requirements. SUS suppliers may take advantage of automation, economies of scale, and lean manufacturing to improve consistency and reduce the cost of manufacturing. This arrangement makes the end user dependent on the <span class="key-term">supplier's quality system</span>. Therefore, it is critical for the quality system of the supplier to be robust enough to manage subsuppliers (e.g., resin and component suppliers). In addition, the quality system of the supplier must be able to monitor and detect the unique <span class="key-term">failure modes</span> associated with SUS (e.g., bag breakage, variations in the profile of <span class="key-term">extractables and leachables</span>, and effects on cell growth). It is the responsibility of the end user to ensure that the SUS meets applicable quality standards. Any tests conducted by the end user to ascertain process compatibility due to changes made by the supplier may be included in cost-of-quality estimates.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Cost of Quality (品質成本)：</strong>如果品質是完美的，就不需要花費的所有成本。包括預防成本、鑑定成本、內部失敗成本和外部失敗成本。SUS 可以降低某些品質成本（例如消除 CIP/SIP 驗證），但也引入新的品質成本（例如 E&amp;L 研究）。</p>
+            <p><strong>Extractables &amp; Leachables (可萃取物與溶出物)：</strong>SUS 獨特的品質風險 &mdash; 塑膠材料中的化學物質可能溶出到製程液體中，影響產品品質和安全性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這段文字隱含一個關鍵風險：<strong>SUS 將品質保證的責任部分轉移給供應商</strong>。終端使用者依賴供應商的品質系統來管理次級供應商、監測 SUS 特有的失敗模式。這意味著：</p>
+            <ul>
+                <li>供應商稽核 (supplier audit) 的深度和頻率必須加強</li>
+                <li>品質協議 (quality agreement) 必須涵蓋 SUS 特有的風險</li>
+                <li>供應商變更管控 (change control) 對終端使用者的影響需要持續監控</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>品質成本就像保險費：你付保險費 (預防成本) 是為了避免意外發生時的巨大損失 (失敗成本)。使用 SUS 就像將部分保險責任轉給供應商 &mdash; 你的保費可能降低，但如果供應商的「保險公司」不可靠，一旦出問題，損失可能更大。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>SUS 的三種特有 failure modes（袋子破裂、E&amp;L 變異、細胞生長影響）中，哪一種最難被供應商品質系統檢測到？為什麼？</li>
+                <li>當供應商對 SUS 組件進行變更時，終端使用者需要進行哪些額外的 process compatibility 測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.5 QUANTITATIVE EVALUATION OF BUSINESS DRIVERS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-5">6.5 Quantitative Evaluation of Business Drivers</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>A quantitative evaluation of business drivers for an SUS project may be based on determining the average cost of a batch in order to examine the feasibility of the SUS project. An overall <span class="key-term">economic model</span> for a given project may be obtained by combining parameters from a series of <span class="key-term">submodels</span>. A list of submodels and their interactions for setting up the overall economic model is shown in Figure 6.5-1. The actual split between submodels and the amount of modeling work necessary depends on the project scope and level of accuracy necessary for the study. A more comprehensive comparative study may include all submodels, but in some cases, depending on the level of accuracy needed, an approach including only the Process, Capital Cost, and Variable Cost models may be sufficient for giving an estimate of the feasibility of the project.</p>
+
+        <!-- Figure 6.5-1 description as text diagram -->
+        <div style="background:#f8f9fa; border:1px solid #e2e8f0; border-radius:8px; padding:1.25rem; margin:1rem 0; text-align:center;">
+            <p style="font-weight:600; color:var(--primary-blue); margin-bottom:0.75rem;">Figure 6.5-1: Cost Comparison Studies Reference Model</p>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:0.3rem; font-size:0.88rem;">
+                <div style="background:#dbeafe; border:2px solid #3b82f6; padding:0.5rem 1.5rem; border-radius:8px; font-weight:600;">Process Model</div>
+                <div style="color:#6b7280;">&#8595;</div>
+                <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
+                    <div style="background:#fef3c7; border:2px solid #f59e0b; padding:0.4rem 1rem; border-radius:6px;">Business Model</div>
+                    <div style="background:#fef3c7; border:2px solid #f59e0b; padding:0.4rem 1rem; border-radius:6px;">Operational Model</div>
+                    <div style="background:#fef3c7; border:2px solid #f59e0b; padding:0.4rem 1rem; border-radius:6px;">Facility Model</div>
+                </div>
+                <div style="color:#6b7280;">&#8595;</div>
+                <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
+                    <div style="background:#d1fae5; border:2px solid #10b981; padding:0.4rem 1rem; border-radius:6px;">Capital Cost Model</div>
+                    <div style="background:#d1fae5; border:2px solid #10b981; padding:0.4rem 1rem; border-radius:6px;">Variable Cost Model</div>
+                    <div style="background:#d1fae5; border:2px solid #10b981; padding:0.4rem 1rem; border-radius:6px;">Fixed Cost Model</div>
+                </div>
+                <div style="color:#6b7280;">&#8595;</div>
+                <div style="background:#fee2e2; border:2px solid #ef4444; padding:0.5rem 1.5rem; border-radius:8px; font-weight:600;">Total Cost Model</div>
+            </div>
+        </div>
+
+        <p>As shown in Figure 6.5-1, a <span class="key-term">process model</span> is created first, followed by the generation of submodels according to the project scope. The resulting submodels for facility, investment, variable, and fixed costs may then be combined to form the <span class="key-term">total cost model</span>. The factors to consider for the process model are summarized in Table 6.5-1.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="text-align:left; font-weight:600; padding:0.5rem 0; color:var(--primary-blue);">Table 6.5-1: Factors That Affect the Process Model</caption>
+            <tr>
+                <th>Process Model Factors</th>
+                <th>Considerations for SUS Implementation</th>
+            </tr>
+            <tr>
+                <td>Unit operation</td>
+                <td>Processes involving large volumes may be done with only one reusable vessel, whereas several vessels may be required for an SUS. The effect on the function, layout, and classification of the facility should be taken into account.</td>
+            </tr>
+            <tr>
+                <td>Storage of solution</td>
+                <td>The storage and distribution of solutions may be performed with mobile tanks or bags or in fixed installations. The concentrations of the solutions may be at use concentration or highly concentrated for subsequent dilution prior to use.</td>
+            </tr>
+            <tr>
+                <td>Support system requirements</td>
+                <td>This includes utility demand, washing and sterilization requirements, and the need for water and steam.</td>
+            </tr>
+            <tr>
+                <td>Batch duration and frequency</td>
+                <td>The time required for performing the process steps in question needs to be determined.</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">6.5.1 Process Assessment</h3>
+        <p>The process model is an assessment of the process with respect to an SUS. The process model forms the basis for any cost comparison exercise by defining process setup and deployment for either an SUS or an MUS. Data from the process model feeds into the facility, capital cost, and variable cost model to provide the basis for the fixed-cost model.</p>
+
+        <h3 style="margin-top:1.5rem;">6.5.2 Batch Frequency</h3>
+        <p>With a higher <span class="key-term">batch frequency</span>, variable costs arising from using more consumables over time may become prohibitive for an SUS design. If the batch frequency is low, varies, or becomes difficult to predict, then an SUS may improve the business case by keeping fixed costs low. For batch sizes exceeding feasible SUS volumes, there may be adverse economic effects from frequent use of the SUS.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Economic Model (經濟模型)：</strong>由多個子模型 (submodels) 組成的分析框架，用於量化比較 SUS 與 MUS 的總成本。子模型包括：Process Model（製程模型）、Operational Model（營運模型）、Facility Model（設施模型）、Capital Cost Model（資本成本模型）、Variable Cost Model（變動成本模型）、Fixed Cost Model（固定成本模型），最終整合為 Total Cost Model（總成本模型）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p>Figure 6.5-1 展示了一個層層遞進的成本模型架構：</p>
+            <ul>
+                <li><strong>第一層 (Process Model)：</strong>一切的基礎 &mdash; 先定義製程步驟、設備需求和批次規模</li>
+                <li><strong>第二層 (Business/Operational/Facility)：</strong>將製程資訊轉化為營運場景和設施需求</li>
+                <li><strong>第三層 (Capital/Variable/Fixed Cost)：</strong>將場景轉化為具體的成本數據</li>
+                <li><strong>第四層 (Total Cost Model)：</strong>整合所有成本，輸出每批次平均成本</li>
+            </ul>
+            <p>重要：不是所有專案都需要完整的六個子模型。對於初步可行性研究，只需 Process + Capital Cost + Variable Cost 三個子模型即可。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這個經濟模型就像蓋房子的預算規劃：先畫設計圖 (Process Model)，然後估算建材費 (Capital Cost)、每月水電費 (Variable Cost)、和物業管理費 (Fixed Cost)，最後加總得出每月居住成本。如果只是初步評估，你可能只需要建材費和水電費的大概數字。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Batch Frequency (批次頻率) 是 SUS 經濟可行性的關鍵分水嶺：</strong></p>
+            <ul>
+                <li>高頻批次 = 耗材成本疊加，SUS 可能不划算</li>
+                <li>低頻/不規律批次 = SUS 優勢明顯，因固定成本低</li>
+                <li>超大批次 = 可能超過 SUS 袋體容量限制，需要多個 SUS 組合，增加成本</li>
+            </ul>
+            <p>這就是為什麼 CMO 和臨床階段生產特別適合 SUS &mdash; 批次頻率低且難以預測。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p>簡化版成本比較思路：</p>
+            <pre>
+SUS 每批次成本 = (固定成本/年批次數) + 變動成本/批次
+MUS 每批次成本 = (固定成本/年批次數) + 變動成本/批次
+
+SUS: 固定成本低，變動成本高 (耗材)
+MUS: 固定成本高，變動成本低 (清洗/滅菌)
+
+損益兩平點 = 固定成本差額 / 變動成本差額
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Table 6.5-1 中的「Unit operation」因素指出大容量製程可能需要多個 SUS 袋體。這對設施分類 (classification) 有什麼影響？</li>
+                <li>如果你的批次頻率為每年 200 批，批量為 500L，SUS 的經濟可行性評估應該重點關注哪些子模型？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.6 OPERATIONAL MODEL -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-6">6.6 Operational Model</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Operational data about the facility is captured by the <span class="key-term">operation model</span> and then added to the data from the process model in order to estimate utilization and batch output from the facility. When this information is combined with other cost models, the average batch cost for the various scenarios can then be calculated. The main factors that affect the selection of operation model are summarized in Table 6.6-1.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="text-align:left; font-weight:600; padding:0.5rem 0; color:var(--primary-blue);">Table 6.6-1: Factors That Affect the Operational Model</caption>
+            <tr>
+                <th>Operational Model Factors</th>
+                <th>Considerations</th>
+            </tr>
+            <tr>
+                <td>Production (weeks/year)</td>
+                <td>The number of weeks scheduled for production minus holidays and scheduled maintenance.</td>
+            </tr>
+            <tr>
+                <td>Downtime duration</td>
+                <td>The time required for cleaning, dismantling, sterilizing, calibrating, testing, setting up, and deploying the next batch to be processed.</td>
+            </tr>
+            <tr>
+                <td>Changeover duration</td>
+                <td>The time required for switching between campaigns or products. This may include the dismantling and cleaning of the production train (e.g., reusable storage containers, equipment, or instrumentation screens), and clearance of items used in the last batch of production.</td>
+            </tr>
+            <tr>
+                <td>Batches per year</td>
+                <td>An SUS may produce more batches per year compared to an MUS because of the reduction in changeover time. The average cost of a batch does not include variable costs only, but it is influenced by fixed costs and the number of batches processed per year.</td>
+            </tr>
+            <tr>
+                <td>Scrap ratio</td>
+                <td>This refers to the number of batches lost to contamination, loss of integrity, and other problems. It also refers to the cost of materials and labor stemming from the loss of sterility or the integrity of the system.</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">6.6.1 Single- or Multiple-Product Facility</h3>
+        <p>The business case may be improved with an SUS because it may reduce <span class="key-term">downtime</span> and <span class="key-term">changeover time</span>. In a single-product facility, capacity may be increased via a reduction in the time required for equipment cleaning. In a <span class="key-term">multiple-product facility</span>, improved capacity may be achieved through a decrease in both changeover and equipment-cleaning time. It is important to factor in differences in facility throughput when technologies are compared.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Downtime (停機時間)：</strong>批次之間用於清洗、拆卸、滅菌、校準、測試、安裝和部署的時間。SUS 可以大幅縮短停機時間，因為省去了 CIP/SIP 步驟。</p>
+            <p><strong>Changeover Duration (換線時間)：</strong>在不同產品或批次之間切換所需的時間。在多產品設施中，這通常是產能瓶頸。SUS 的「用完即丟」特性可以顯著縮短換線時間。</p>
+            <p><strong>Scrap Ratio (報廢率)：</strong>因污染、完整性喪失或其他問題而損失的批次比例。包含報廢所造成的材料和人工成本。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Changeover 就像 F1 賽車的進站換胎 (pit stop)：傳統 MUS 的換線就像整台車要推進維修區徹底檢修（清洗、消毒、驗證），可能需要數天甚至數週；SUS 的換線就像直接換上全新的輪胎組，幾小時就能重新上路。在 CMO 這種「每場比賽換不同車隊」的環境中，進站速度直接決定勝負。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 6.6-1 中的「Batches per year」這一行揭示了一個經常被忽略的邏輯：<strong>SUS 的真正經濟價值不只在於降低每批次成本，更在於同一設施每年能生產更多批次</strong>。當固定成本被分攤到更多批次上時，每批次的固定成本分攤額會下降，這可能完全抵消 SUS 較高的耗材成本。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>情境：某 CMO 有一條多產品生產線，每年需要進行 12 次產品切換。MUS 每次換線需要 5 天（清洗+驗證），SUS 只需 1 天。這意味著 SUS 每年多出 48 個工作天，可額外生產約 15-20 個批次。這些額外批次的營收，往往遠超 SUS 的耗材成本增加。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Scrap ratio 對 SUS 和 MUS 的影響方式有何不同？（提示：SUS 的 scrap 成本主要是耗材，MUS 的 scrap 成本主要是什麼？）</li>
+                <li>在單一產品設施中，SUS 的主要價值是減少 downtime 還是 changeover？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.7 TOTAL COST MODEL -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-7">6.7 Total Cost Model</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>A project may involve either the construction of a new facility or the <span class="key-term">retrofitting</span> of an existing one. The main points of consideration for both cases are summarized in Table 6.7-1 (58).</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="text-align:left; font-weight:600; padding:0.5rem 0; color:var(--primary-blue);">Table 6.7-1: Comparative Evaluation of a New Versus Retrofitted Facility During SUS Implementation</caption>
+            <tr>
+                <th>New Facility</th>
+                <th>Retrofitting of an Existing Facility</th>
+            </tr>
+            <tr>
+                <td>Emphasis on facility model for capital cost estimate</td>
+                <td>Ability to limit facility model by constraints already given</td>
+            </tr>
+            <tr>
+                <td>Ability to eliminate or reduce functions or utilities by using SUS</td>
+                <td>Possibility to overcome capacity limitations by using an SUS</td>
+            </tr>
+            <tr>
+                <td>Design for SUS technology</td>
+                <td>Interfacing and connecting SUS technology to existing areas and systems</td>
+            </tr>
+            <tr>
+                <td>Reduction in total project time as a result of SUS, time to market</td>
+                <td>Possible reduction of interruptions in productivity</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">6.7.1 Shortcut Cost Model Based on Cost of Goods</h3>
+        <p>In a preliminary evaluation in which the speed of comparison is more important than accuracy, a yes-or-no type of <span class="key-term">feasibility study</span> incorporating a minimum of factors would be sufficient. This approach may not be rigorous enough for a final binding decision where funds would be committed. In such a case, elements of the more comprehensive approach must be applied.</p>
+        <p>The minimum factors to consider in the shortcut model are:</p>
+        <ul>
+            <li>Process equipment</li>
+            <li>Utility equipment</li>
+            <li>SU consumables</li>
+            <li>Cost of capital assumptions</li>
+        </ul>
+
+        <h3 style="margin-top:1.5rem;">6.7.2 Example of a Shortcut Cost Model</h3>
+        <p>Use the following lists and the preceding paragraphs to estimate the following for each scenario:</p>
+        <p><strong>Process and Operational Basis</strong></p>
+        <ul>
+            <li>Process equipment involved</li>
+            <li>Number of batches produced annually</li>
+        </ul>
+        <p><strong>Investment Costs</strong></p>
+        <ul>
+            <li>Equipment costs</li>
+            <li>Area needed</li>
+            <li>Area costs</li>
+            <li>Total investment costs</li>
+        </ul>
+        <p><strong>Cost of Capital</strong></p>
+        <ul>
+            <li>Annual depreciation on investment</li>
+            <li>Annual interest rate paid on capital investment</li>
+            <li>Total cost of capital</li>
+        </ul>
+        <p><strong>Operating Costs</strong></p>
+        <ul>
+            <li>Consumables costs</li>
+            <li>Materials costs</li>
+            <li>Labor costs</li>
+        </ul>
+        <p><strong>Evaluate the Following According to the Business Model:</strong></p>
+        <ul>
+            <li>Investment costs</li>
+            <li>Operating costs</li>
+            <li>Number of batches produced</li>
+            <li><span class="key-term">COGM</span> = (total operating costs + total cost of capital) / number of batches produced</li>
+            <li><span class="key-term">Payback time</span> = difference in investment cost / difference in COGM</li>
+        </ul>
+
+        <h3 style="margin-top:1.5rem;">6.7.3 Comprehensive Cost-of-Goods Model</h3>
+        <p>A more comprehensive cost model may include factors selected from the preceding sections (Tables 6.5-1, 6.6-1, 6.7-1 and Section 6.7.2-1). The structure of the model must be flexible enough so that it can be improved for accuracy with additional data. A <span class="key-term">sensitivity analysis</span> is the most effective way to use an economic model because it incorporates a range of input factors for arriving at a good understanding of the potential risks involved.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Retrofitting (改裝/翻新)：</strong>將現有設施改造以導入 SUS 技術，與新建設施有不同的考量重點。改裝受限於既有設施條件，但投資較低且能維持生產。</p>
+            <p><strong>Shortcut Cost Model (簡化成本模型)：</strong>使用最少因素進行快速可行性判斷的方法，適合初步評估但不足以支持最終投資決策。</p>
+            <p><strong>Sensitivity Analysis (敏感度分析)：</strong>透過改變模型中的輸入變數範圍，了解不同假設條件對結果的影響程度，識別哪些變數是影響 SUS 經濟可行性的關鍵。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 6.7-1 的對比非常實用：</p>
+            <ul>
+                <li><strong>新建設施：</strong>可以從零設計為 SUS 最佳化，大幅縮減上市時間 (time to market)</li>
+                <li><strong>改裝設施：</strong>重點在於克服現有產能限制，減少改裝期間的生產中斷</li>
+            </ul>
+            <p>對於 CDMO 而言，改裝往往是更常見的情境，因為完全停產建新廠的成本太高。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p>Shortcut Cost Model 的核心公式：</p>
+            <pre>
+COGM = (Total Operating Costs + Total Cost of Capital)
+       / Number of Batches Produced
+
+Payback Time = Difference in Investment Cost
+             / Difference in COGM
+
+其中：
+  Total Cost of Capital = 年折舊 + 年利息
+  Total Operating Costs = 耗材 + 材料 + 人工
+
+範例：
+  SUS 投資 = $2M, COGM = $15K/batch
+  MUS 投資 = $8M, COGM = $18K/batch
+  Payback = ($8M - $2M) / ($18K - $15K)
+          = $6M / $3K = 2,000 batches
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Shortcut Model vs Comprehensive Model 就像看病：快篩 (shortcut) 可以快速告訴你「可能有問題」或「看起來沒事」，但要確認診斷和制定治療方案，需要做完整的健康檢查 (comprehensive model)。Sensitivity analysis 則像壓力測試 &mdash; 看看在最壞的情況下，你的財務還撐得住嗎？</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 shortcut cost model 中，為什麼只需要四個最少因素（製程設備、公用設施設備、SU 耗材、資本成本假設）就能做出初步判斷？</li>
+                <li>如果 sensitivity analysis 顯示 SUS 耗材價格波動 20% 會使 COGM 超過 MUS，你的建議是什麼？</li>
+                <li>Payback time 計算結果為 2,000 批次時，對年產 100 批的企業和年產 500 批的企業分別意味著什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.8 INVESTMENT COSTS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-8">6.8 Investment Costs</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h3 style="margin-top:0;">6.8.1 Process Equipment</h3>
+        <p>The first step in evaluating an SU project is normally an equipment-to-equipment comparison of SUS versus MUS direct <span class="key-term">investment cost</span>. Reduced demand for cleaning and sterilization allow for simplifications in piping and instrumentation, which leads to a reduction in the investment cost for SUSs. While this will give an estimate of whether the technology is economically feasible for the project, Table 6.8.1-1 shows additional factors for evaluating investment costs that should be considered for an SUS project (59).</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="text-align:left; font-weight:600; padding:0.5rem 0; color:var(--primary-blue);">Table 6.8.1-1: Contributory Factors to Investment Costs</caption>
+            <tr>
+                <th>Investment Costs</th>
+                <th>Considerations</th>
+            </tr>
+            <tr>
+                <td>Process equipment</td>
+                <td>This refers to the process equipment (e.g., bioreactors, centrifuges, tanks, filters, columns) and support equipment (e.g., welders, sealers, process controller, pumps, and bag supports for SUS) required to run the process.</td>
+            </tr>
+            <tr>
+                <td>Utility equipment</td>
+                <td>This refers to the secondary equipment or systems (e.g., clean steam, CIP, and COP) required to run the process.</td>
+            </tr>
+            <tr>
+                <td>Installation</td>
+                <td>Installations for CIP/SIP and traditional process tanks should be considered.</td>
+            </tr>
+            <tr>
+                <td>Engineering design</td>
+                <td>A SUS may either be customized or purchased with the off-the-shelf configuration.</td>
+            </tr>
+            <tr>
+                <td>Commissioning</td>
+                <td>Implementation of an SUS may eliminate I/O points associated with CIP and SIP.</td>
+            </tr>
+            <tr>
+                <td>Validation / quality shop floor</td>
+                <td>A SUS may require investigations into potential leachables and other studies, and reusable equipment would require CIP and SIP validation. Consider the cost of doing facility acceptance test (FAT) and site acceptance test (SAT) as well as verification activities.</td>
+            </tr>
+            <tr>
+                <td>Facility floor space</td>
+                <td>This refers to the effect on both footprint and cleanliness classification for operation and SUS storage.</td>
+            </tr>
+            <tr>
+                <td>Operators</td>
+                <td>The number of operators affects training considerations as well as the number of workstations and lockers required.</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">6.8.2 Utility Equipment</h3>
+        <p>The effect of utility systems on the investment costs should be explored because it may be possible to remove entire system groups from the scope (e.g., clean steam, CIP stations) or achieve enough reduction in capacity to obtain cost reductions (WFI for rinsing, kill systems). The need to inactivate solid waste may increase the investment costs of an SUS, while the absence of a CIP in an SUS design may lead to a reduction in the generation of <span class="key-term">wastewater</span>.</p>
+
+        <h3 style="margin-top:1.5rem;">6.8.3 Indirect Equipment Costs</h3>
+        <p>The estimates for <span class="key-term">engineering and installation costs</span> (e.g., design, commissioning, and qualification and validation) are normally calculated as a percentage of the equipment costs. One of the advantages of an SUS is that reductions in piping and instrumentation may decrease the number of both installed hardware and communication I/O points in the automation system. However, an SUS may incur a higher engineering percentage cost compared to similar MUS designs because of lower initial investment costs and the cost of validating <span class="key-term">leachables and extractables</span> for the SUS. The installation percentage is lower for an SUS than an MUS. A similar approach can be used to determine the percentage costs for construction and project management (60).</p>
+
+        <h3 style="margin-top:1.5rem;">6.8.4 Facility</h3>
+        <p>An SUS uses stackable rectangular containers, which results in a smaller footprint compared to MUS. The absence of a CIP and washing/sterilization function further reduces the space requirements of SUS. However, inefficient movement of containers, installation, and dismantling of bags can easily waste the space saved by an SUS. In addition, proper storage and handling of an SUS is very important, since any damage might result in a lost batch or contamination. The transport route of an SUS may increase compared to that of a hard-piped system, and an SUS requires space to store process waste prior to final disposal. Storage space for SUS is typically greater than that for traditional MUS because of the need to manage SUS inventory and associated reusable storage containers. The main contributions to variable operating costs are summarized in Table 6.8.4-1 (61).</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="text-align:left; font-weight:600; padding:0.5rem 0; color:var(--primary-blue);">Table 6.8.4-1: Main Variable Operating Costs</caption>
+            <tr>
+                <th>Variable Costs</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Raw materials</td>
+                <td>Input materials such as media, buffer, and various process aids like antifoam and chromatography gels</td>
+            </tr>
+            <tr>
+                <td>Consumables</td>
+                <td>Items such as storage bags, tubing, filters, and diaphragms that form or are a part of process equipment and are used on a per batch basis</td>
+            </tr>
+            <tr>
+                <td>Utilities</td>
+                <td>Steam, water, power, cooling, and chemical consumption for CIP/SIP</td>
+            </tr>
+            <tr>
+                <td>Waste</td>
+                <td>Energy consumption for inactivation systems and costs for disposing of solid waste</td>
+            </tr>
+            <tr>
+                <td>QC/QA and cost of quality</td>
+                <td>Analytical, documentation, batch documentation, release activities, investigations, supplier audits</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">6.8.5 Materials</h3>
+        <p>Often, input materials (e.g., SUS materials prefilled with hydrated or powdered media and buffer components and chromatography gels) may be independent of SUS or MUS technology (62).</p>
+
+        <h3 style="margin-top:1.5rem;">6.8.6 Consumables</h3>
+        <p>The best way to determine the component cost of consumables is from the specific SUS process design under consideration because there can be a significant discrepancy between the costs of a supplier's standard configuration and that of the specific assembly required for a particular process step. Whenever possible, using the supplier's standard configurations would be the most cost-effective way to determine the cost of consumables. Designing the SUS with backup systems such as redundant tubing, filters, and connectors will increase the costs per batch of that SUS. However, if these backup systems are necessary, they must be reflected in the final cost analysis of the project.</p>
+        <p>It is possible to minimize SUS overdesign via a thorough understanding of the real risks determined in a process risk assessment such as a <span class="key-term">failure mode and effects analysis (FMEA)</span> (7). It is also important to get a feel for the actual cost of the SUS once specific connectors, filters, and tubing sets are added to the design. Since it may be possible to obtain discounts with large-volume orders from prospective suppliers, it is necessary to understand SUS configurations and how they can be customized to meet individual SUS process requirements. It would be advisable to incorporate a <span class="key-term">sensitivity analysis</span> for the purchase cost of an SUS because final configurations and prices can be difficult to predict. In general, the sensitivity analysis should be extended to any variable with uncertain cost estimates (63).</p>
+
+        <h3 style="margin-top:1.5rem;">6.8.7 Utilities</h3>
+        <p>The reductions in cleaning and sterilization associated with an SUS leads to a decrease in the cost of utilities, especially for clean water generation, CIP, and SIP systems. It is important to use carefully verified cost data since large volumes may be involved in these processes. The cost of <span class="key-term">water for injection</span> is significantly lower for large on-site systems than for commercially supplied WFI. It may be calculated from system depreciation, labor, and energy costs.</p>
+
+        <h3 style="margin-top:1.5rem;">6.8.8 Waste</h3>
+        <p>The cost of inactivating solid waste can be significant depending on the degree of containment required. The solid waste may be 1) inactivated on-site, which will lead to increased load on <span class="key-term">kill autoclaves</span>; or 2) transported off-site for incineration or disposal at a landfill. Both approaches would incur transport and disposal fees. A third approach involves chemical inactivation. The disposal strategy for each SUS must comply with the laws and requirements of the municipal authority in charge (64&ndash;66).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Investment Costs (投資成本)：</strong>不只是設備採購價格，還包括公用設施、安裝、工程設計、試運轉 (commissioning)、驗證 (validation)、設施空間和操作人員等全面性的初始投入成本。</p>
+            <p><strong>Indirect Equipment Costs (間接設備成本)：</strong>通常以設備成本的百分比來估算，包括設計、試運轉、確效和驗證費用。SUS 在安裝百分比上較低，但工程百分比可能較高（因基礎投資較低且需要 E&amp;L 驗證）。</p>
+            <p><strong>FMEA (失效模式與效應分析)：</strong>系統性的風險評估工具，用於識別 SUS 的真實風險，避免過度設計 (overdesign) 導致的不必要成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 6.8.1-1 是投資成本評估的完整清單，特別注意以下經常被低估的因素：</p>
+            <ul>
+                <li><strong>Commissioning：</strong>SUS 可以消除與 CIP/SIP 相關的 I/O 點，簡化自動化系統</li>
+                <li><strong>Facility floor space：</strong>SUS 不僅影響生產區面積，還影響潔淨度分級和倉儲需求</li>
+                <li><strong>Operators：</strong>操作人員數量影響培訓成本、工作站和更衣室需求</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - 設施與廢棄物</h4>
+            <p>SUS 在設施方面的「空間節省」並非絕對：</p>
+            <ul>
+                <li>省去 CIP/SIP 設備空間</li>
+                <li>但增加 SUS 庫存倉儲空間</li>
+                <li>增加製程廢棄物暫存空間</li>
+                <li>增加運輸路線長度（相比硬管系統）</li>
+            </ul>
+            <p>廢棄物處理的三種方式（廠內滅活、廠外焚化/掩埋、化學滅活）各有不同的成本和法規要求，必須符合當地主管機關的規定。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 耗材的成本估算就像裝修房子：供應商型錄上的「標準配置」價格和你實際需要的「客製化組合」可能天差地遠。就像你看到「基本裝修每坪 3 萬」，但加上你要的進口磁磚、隱藏式燈具、智能家居系統後，可能變成每坪 8 萬。所以 TR66 建議做 sensitivity analysis &mdash; 看看價格浮動對整體成本的影響有多大。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>情境：你正在評估將一條現有的不銹鋼緩衝液配製線轉換為 SUS。使用 Table 6.8.1-1 作為檢查清單：</p>
+            <ul>
+                <li>Process equipment：需要採購袋體支架 (bag supports)、焊接機 (welders)、密封機 (sealers)</li>
+                <li>Utility equipment：可以取消該線的 CIP 站，但需要評估 WFI 需求變化</li>
+                <li>Validation：需要進行 E&amp;L 研究，但可以省去 CIP/SIP 驗證</li>
+                <li>Facility：生產區可能縮小，但需要增加 SUS 倉庫</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 的工程百分比成本 (engineering percentage) 可能高於 MUS？這是否意味著 SUS 的總投資成本更高？</li>
+                <li>SUS 的廢棄物處理策略應該在專案的哪個階段就開始規劃？為什麼？</li>
+                <li>Table 6.8.4-1 中的五項變動成本，哪些在 SUS 中會增加，哪些會減少？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.9 QC/QA AND COST OF QUALITY -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-9">6.9 QC/QA and Cost of Quality</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Since some variable costs (e.g., analyses, preparing batch documentation, and batch release) are rarely affected by SUS implementation, the baseline costs of MU and SU systems tend to be similar. Batch review and investigation efforts may decrease and result in additional savings because SUS implementation results in reduced cleaning, SIP, and changeover activities. However, certain <span class="key-term">quality oversight activities</span> (e.g., quality agreement, supplier audits, SUS documentation review, subsupplier audits, and QC-receiving inspection) may increase with an SUS implementation. The operation of several quality activities within the supplier's quality system rather than that of the end user may make <span class="key-term">process investigations</span> more complex, and this additional effort should be taken into account.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Quality Oversight Activities (品質監管活動)：</strong>SUS 實施後增加的品質管理工作，包括：品質協議 (quality agreement)、供應商稽核 (supplier audit)、SUS 文件審查、次級供應商稽核 (subsupplier audit)、QC 進料檢驗 (receiving inspection)。這些是使用「外購即用型元件」必須承擔的品質管理成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>QC/QA 成本的「一增一減」效應：</p>
+            <ul>
+                <li><strong>減少的成本：</strong>批次審查和調查工作量降低（因減少了清洗、SIP 和換線步驟的相關偏差調查）</li>
+                <li><strong>增加的成本：</strong>供應商品質監管工作增加（品質協議、稽核、文件審查、進料檢驗）</li>
+                <li><strong>複雜化的風險：</strong>當品質活動分散在供應商和終端使用者兩個品質系統中時，製程調查變得更複雜</li>
+            </ul>
+            <p>淨效益取決於企業的具體情況 &mdash; 如果供應商品質系統成熟可靠，SUS 的品質成本可能整體降低。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像從「自家廚房煮飯」轉為「訂購外食便當」：你省去了洗碗、備料的時間（減少清洗/SIP 相關偏差），但需要檢查便當供應商的食安衛生（supplier audit）、確認食材來源（subsupplier audit）、收貨時驗收品質（receiving inspection）。如果便當出了問題，追查原因比自己煮出問題更困難（process investigations more complex）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「批次文件準備和批次放行」的成本在 SUS 和 MUS 之間差異不大？</li>
+                <li>如果你的 SUS 供應商在另一個國家，subsupplier audit 的挑戰會如何增加？這對品質成本有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.10 FIXED OPERATING COSTS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec6-10">6.10 Fixed Operating Costs</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><span class="key-term">Fixed operating costs</span> represent the expenditure on the facility regardless of the state of production. The main factors involved in evaluating fixed operating costs are summarized in Table 6.10-1.</p>
+        <p><em>(Table 6.10-1 continues beyond the scope of pages covered in this section.)</em></p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Fixed Operating Costs (固定營運成本)：</strong>不論生產狀態如何（生產中、閒置、或維護中）都必須支出的設施費用。典型項目包括：設施租金/折舊、基礎人力、維護保養、保險、稅務等。SUS 因設施需求較小且設備較少，通常有較低的固定營運成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>固定成本的特性是「無論你生產 0 批還是 100 批，都必須支付」。這就是為什麼批次頻率低時 SUS 更有優勢 &mdash; SUS 的固定成本較低，即使產量不高也不會造成過大的經濟壓力。反之，MUS 的高固定成本需要透過大量批次來分攤，閒置設備等於「燒錢」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>固定營運成本就像你的手機月租費 &mdash; 不管你打了多少電話，每個月都要付。MUS 就像高額月租方案（設備折舊、CIP 系統維護、大型設施維護），SUS 就像低月租但通話費較高的方案。當你通話量 (批次數) 不確定時，低月租方案風險較低。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>列舉三項在 SUS 實施後可能降低的固定營運成本，並說明原因。</li>
+                <li>在什麼情境下，SUS 的固定營運成本可能反而高於 MUS？（提示：考慮倉儲和庫存管理。）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>商業驅動因素多元：</strong>SUS 採用不只是成本考量，還涉及供應商能力、產品可持續性、業務連續性、製程設計、市場規模、設施和地點等八大因素，每家企業的評估重點不同。</li>
+        <li><strong>生命週期方法 (Lifecycle Approach)：</strong>評估應涵蓋從建設到除役的完整生命週期成本，SUS 在需求不確定和需要營運彈性時特別有利。</li>
+        <li><strong>經濟模型層層建構：</strong>從 Process Model 到 Total Cost Model，由多個子模型組成。初步評估可用 Shortcut Model，最終決策需要 Comprehensive Model + Sensitivity Analysis。</li>
+        <li><strong>COGM 與 Payback Time：</strong>核心公式為 COGM = (營運成本 + 資本成本) / 批次數；Payback = 投資差額 / COGM 差額。批次頻率是決定 SUS 經濟可行性的關鍵變數。</li>
+        <li><strong>投資成本評估全面性：</strong>不僅比較設備價格，還須考慮公用設施、安裝、工程、試運轉、驗證、設施空間和人員等因素。SUS 安裝百分比低但工程百分比可能高。</li>
+        <li><strong>品質成本一增一減：</strong>SUS 減少了清洗/SIP 相關的調查成本，但增加了供應商監管成本。當品質活動分散在兩個品質系統中時，製程調查變得更複雜。</li>
+        <li><strong>固定成本優勢：</strong>SUS 通常具有較低的固定營運成本，在批次頻率低或不確定的情境下特別有利。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 66 (2014): Single-Use Systems for Parenteral Drug Manufacturing</p>
+    <p>Section 6.0: Business Drivers for the Adoption of Single-Use Systems | Pages 61-69</p>
+    <p style="opacity:0.7; font-size:0.8rem; margin-top:0.5rem;">Educational material for internal training use only</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

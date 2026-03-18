@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73-2 - Section 0: Introduction & Glossary</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY SPECIFIC ===== */
+.glossary-term {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.glossary-term:last-child {
+    border-bottom: none;
+}
+
+.glossary-term strong {
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+}
+
+.abbr-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.25rem 1rem;
+    font-size: 0.9rem;
+}
+
+.abbr-grid dt {
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.abbr-grid dd {
+    margin: 0;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction & Glossary</h1>
+    <div class="subtitle">導論與詞彙表 - 膠針注射器系統之 MDR Annex I 要求應用</div>
+    <div class="page-info">PDA Technical Report No. 73-2 (2024) | p1 - p5</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解 TR-73-2 的制定背景：歐盟 MDR (EU) 2017/745 對預充填注射器 (PFS) 的新要求</li>
+        <li>掌握本技術報告的目的 (Purpose) 和範圍 (Scope)，以及哪些產品與元件在範圍內/外</li>
+        <li>熟悉藥品-器材組合產品 (DDC) 的定義與法規分類 (Article 1(8) 與 1(9))</li>
+        <li>學習本報告的核心術語及縮寫，建立共同語言基礎</li>
+    </ul>
+</div>
+
+<!-- ========== 1.0 INTRODUCTION ========== -->
+<div class="section-title" id="sec1-0">1.0 Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The European Union regulation <span class="key-term">(EU) 2017/745</span> on medical devices, referred to as <span class="key-term">MDR</span>, introduces new requirements for manufacturers of medical devices. These new requirements, according to MDR Articles 1(8) and 1(9), subparagraphs 2, also apply to pharmaceutical companies developing and manufacturing combinations of medicinal products and medical devices, including <span class="key-term">prefilled syringes (PFS)</span>, both integral and single integral products. The device part of these PFS must comply with the rules outlined in <span class="key-term">MDR Annex I: General Safety and Performance Requirements (GSPRs)</span>. Evidence of compliance, as described in Article 117, must be provided by requesting an opinion from a <span class="key-term">Notified Body (NB)</span> appropriately accredited for the issuance of such an opinion (1) (See Section 3.0).</p>
+
+        <p>PDA Technical Report No. 73-2: Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes represents the current state of knowledge as to its application. As this is a new process based on a new regulatory requirement, expectations of the NBs and competent authorities may diverge as the process evolves. Ultimately, the responsibility for the entire content of the submission file that is reviewed by the NB lies with the applicant. Accordingly, the intended users of TR-73-2 are applicants, i.e., pharmaceutical companies, their suppliers, and other interested parties.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>MDR (Medical Device Regulation, 醫療器材法規)：</strong>這是歐盟於 2017 年發布、2021 年 5 月 26 日正式施行的醫療器材新法規，取代了舊有的 Directive 93/42/EEC。MDR 對預充填注射器 (PFS) 的「器材部分 (device part)」提出了更嚴格的安全與性能要求。</p>
+            <p><strong>GSPRs (General Safety and Performance Requirements, 一般安全與性能要求)：</strong>MDR Annex I 所列出的全面性要求清單，涵蓋設計、材料、生物相容性、化學穩定性等多個面向。PFS 的器材部分必須逐項滿足相關 GSPRs。</p>
+            <p><strong>Notified Body (NB, 認證機構)：</strong>經歐盟認可的第三方評估機構，負責審查 PFS 器材部分是否符合 MDR 要求，並出具正式意見 (NB Opinion)。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>可以把 MDR 的 GSPRs 想像成一張「建築安全檢查清單」。就像蓋房子需要通過結構、消防、水電等各項安全檢查一樣，預充填注射器的器材部分也需要逐一通過 GSPRs 的各項安全與性能要求。而 Notified Body 就像是「建築檢查員」，負責審核你的設計文件和測試報告，確認一切合規後才能核發許可。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR-73-2 代表的是「當前的知識狀態 (current state of knowledge)」。由於 MDR 仍是相對新的法規框架，不同的 NB 和各國主管機關 (Competent Authorities) 的期望可能存在差異。這意味著：</p>
+            <ul>
+                <li>申請者不能完全依賴單一指引，需要保持對法規演變的關注</li>
+                <li>提交文件的最終責任在申請者 (applicant) 本身</li>
+                <li>藥廠、供應商和其他相關方都是本報告的目標讀者</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>MDR 與舊有的 Directive 93/42/EEC 最關鍵的差異是什麼？為何對藥廠影響巨大？</li>
+                <li>為什麼 NB Opinion 對於 PFS 的上市至關重要？如果沒有取得 NB Opinion，後果是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ========== 1.1 PURPOSE ========== -->
+<div class="section-title" id="sec1-1">1.1 Purpose</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>As an addendum to <span class="key-term">PDA Technical Report No. 73</span>: Prefilled Syringe User Requirements for Biotechnology Applications, this technical report provides recommendations on preparing the required documentation of the device part of the PFS to facilitate obtaining an <span class="key-term">NB opinion</span>.</p>
+
+        <p><span class="key-term">Table 5.1-1</span> in Section 5.0 provides GSPR guidance on the syringe components, syringe subassembly ready for filling, and the device part (see Figure 4.2-1). It systematically recommends the amount and depth of information needed for each relevant GSPR to support pharmaceutical companies in assembling the submission file to the NBs.</p>
+
+        <p>Section 4.0 provides information on documents that provide guidance on completing the NB submission file. Following <span class="key-term">MDR Annex II: Technical Documentation</span> to complete the submission file for the NBs is recommended; individual sections can be written in more or less detail, at the discretion of the submitting applicant (2). Additional guidance can be found in the <span class="key-term">Team-NB position papers</span> on documentation requirements and on best practices for the submission of technical documentation (2,3). TR-73-2 also follows the same structure as the submission file.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>TR-73 與 TR-73-2 的關係：</strong>TR-73 是原始的預充填注射器使用者需求技術報告（針對生物技術應用），而 TR-73-2 是其增補版 (addendum)，專門聚焦於如何準備 MDR 所要求的器材部分文件，以順利取得 NB Opinion。</p>
+            <p><strong>MDR Annex II (Technical Documentation, 技術文件)：</strong>這是 MDR 規範的技術文件結構框架。TR-73-2 建議遵循此框架來組織提交文件，但各章節的詳細程度可由申請者自行決定。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>如果把 TR-73 比作一本「如何設計好注射器」的教科書，那麼 TR-73-2 就是一本「如何準備考試申請資料」的指南。兩者缺一不可 -- 你不僅需要設計出好產品，還需要知道如何把合規證據有條理地呈現給審查員 (NB)。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR-73-2 的核心價值在 Table 5.1-1：它逐項列出每個 GSPR 所需的資訊深度與廣度。這就像一張「通關清單」，幫助藥廠確認每項要求是否已充分準備支持證據。Team-NB 的立場文件也提供了額外的實務指引，建議一併參考。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對於 CDMO 或藥廠而言，準備 NB 提交文件是一項跨部門的系統工程。建議在專案初期就依照 MDR Annex II 的架構建立文件管理系統，並指派專人負責追蹤每項 GSPR 的證據蒐集進度。提早規劃可避免後期「補考」式的匆忙補件。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== 1.2 SCOPE ========== -->
+<div class="section-title" id="sec1-2">1.2 Scope</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>While the scope of PDA TR-73 applies only to 1 ml long glass PFS for biotechnology application, TR-73-2 applies to PFS of glass and polymer of different volumes within the definition of <span class="key-term">MDR Article 1(9), subparagraph 2</span>. The scope of TR-73-2 is not exclusive for biotechnology applications. The device part, including its corresponding components and materials, are in scope as they will be evaluated by the NBs, but the medicinal product (drug) is not.</p>
+
+        <p>Figure 4.2-1 provides a schematic overview of the drug and the device parts of a PFS and its components; a backstop can be added if needed.</p>
+
+        <p>Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.</p>
+
+        <!-- Table 1.2-1 -->
+        <h3>Table 1.2-1: Items In and Out of Scope of TR-73-2, by Category</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>In Scope</th>
+                <th>Out of Scope</th>
+            </tr>
+            <tr>
+                <td><strong>Syringe Type</strong></td>
+                <td>Staked needle</td>
+                <td>Luer lock, luer cone, dual chamber<sup>1</sup></td>
+            </tr>
+            <tr>
+                <td><strong>Dosing</strong></td>
+                <td>Fixed dose</td>
+                <td>Variable dose (with or without measuring function)</td>
+            </tr>
+            <tr>
+                <td><strong>Material of Construction</strong></td>
+                <td>Glass<br>Polymer</td>
+                <td>&mdash;</td>
+            </tr>
+            <tr>
+                <td><strong>Additional Components/Features</strong></td>
+                <td>Backstop or finger-flange extension<br>(Rigid) needle shield<br>Plunger rod<sup>2</sup></td>
+                <td>Autoinjectors<br>Sharps injury-protection system (needle safety system)<br>Immediate syringe label</td>
+            </tr>
+            <tr>
+                <td><strong>Packaging</strong></td>
+                <td>&mdash;</td>
+                <td>Packaging, such as blister, folding box or carton labels, paper tray, leaflets, or sterile barrier</td>
+            </tr>
+            <tr>
+                <td><strong>Regulatory Requirements</strong></td>
+                <td>GSPRs in Annex I of Regulation (EU) 2017/745</td>
+                <td>Non-EU regulatory frameworks</td>
+            </tr>
+            <tr>
+                <td><strong>Application</strong></td>
+                <td>Injectable medicinal products, as defined in Article 1(2), intended for intramuscular, intravenous, or subcutaneous injection<sup>3</sup></td>
+                <td>Veterinary products<sup>4</sup><br>ATMPs as defined under Article 2(1)(d) of Regulation (EC) No 1394/2007<sup>4,5</sup><br>Intravitreal<sup>6</sup></td>
+            </tr>
+        </table>
+        </div>
+        <p style="font-size:0.82rem; color:#4a5568;">
+            <sup>1</sup> Dual-chamber PFS are out of scope because they are not typically produced in a staked needle configuration.<br>
+            <sup>2</sup> Additional components and features are described in Section 5.3.<br>
+            <sup>3</sup> Directive 2001/83/EC of the European Parliament and of the Council of 6 November 2001 on the Community Code Relating to Medicinal Products for Human Use (MPD) (4).<br>
+            <sup>4</sup> Veterinary medicines and advanced therapy medicinal products (ATMP) are out of scope because they are out of the scope of the MDR.<br>
+            <sup>5</sup> Regulation (EC) No 1394/2007 of the European Parliament and of the Council of 13 November 2007 on advanced therapy medicinal products.<br>
+            <sup>6</sup> Intravitreal PFS are out of scope because they are not typically produced in a staked needle configuration.
+        </p>
+
+        <p>The components listed in Table 1.2-1 under the category of "Packaging" are out of scope of TR-73-2 because the requirements are covered by Directive 2001/83/EC, which is the leading legal framework. However, in terms of the individual product-specific setup, related evidence (e.g., shipping studies, risk- and/or user-related labeling, if it affects the device part) should be considered as part of the MDR Annex I evidence submitted to the NB. (See Section 5.5.)</p>
+
+        <p>Further design variants similar to the components described in this document are technically out of scope; nonetheless, this technical report can be used as a guidance to address them.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Staked Needle Syringe (膠針注射器)：</strong>針頭直接固定於針筒上的注射器，針頭無法拆卸。這是本報告的核心對象。相對地，Luer lock（鎖定式接頭）和 Luer cone（圓錐式接頭）型注射器不在範圍內。</p>
+            <p><strong>Device Part vs. Drug (器材部分 vs. 藥品)：</strong>NB 只評估器材部分（針筒、針頭、針頭護套、活塞桿等），藥品本身不在 NB 的審查範圍內，藥品由藥品主管機關（如 EMA）負責。</p>
+            <p><strong>Fixed Dose (固定劑量)：</strong>本報告僅涵蓋固定劑量的 PFS，不包括需要量測功能的可變劑量設計。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR-73-2 的範圍比 TR-73 更廣：</p>
+            <ul>
+                <li><strong>材料：</strong>不限於玻璃，也涵蓋高分子 (polymer) 針筒</li>
+                <li><strong>容量：</strong>不限於 1 mL，適用於不同容量</li>
+                <li><strong>應用：</strong>不僅限於生物技術產品，涵蓋所有注射型藥品</li>
+            </ul>
+            <p>但請注意：包裝 (Packaging) 雖不在範圍內，若包裝相關證據（如運送研究、使用者標示）會影響器材部分，仍應納入 NB 提交文件中。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>可以把 Table 1.2-1 想像成一個「考試範圍公告」。就像學生需要知道哪些章節會考、哪些不考一樣，藥廠需要清楚知道哪些元件會被 NB 評估、哪些不會。不在範圍內的項目（如 autoinjector、針頭安全裝置）可能有其他法規要求，但不屬於本報告的「考試範圍」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>表格解讀 Table Analysis</h4>
+            <p>Table 1.2-1 的關鍵要點：</p>
+            <ul>
+                <li><strong>Autoinjector (自動注射器)：</strong>不在範圍內，因為它屬於更複雜的器材系統，有專門的法規要求</li>
+                <li><strong>ATMP (先進治療藥品)：</strong>不在 MDR 適用範圍內，因此也不在本報告範圍內</li>
+                <li><strong>Intravitreal (玻璃體內注射)：</strong>排除在外，因為此類 PFS 通常不採用膠針設計</li>
+                <li><strong>Non-EU regulatory frameworks：</strong>本報告僅聚焦歐盟法規，其他地區（如 FDA、PMDA）的要求不在討論範圍內</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼包裝 (Packaging) 被列為 out of scope，但仍可能需要納入 NB 提交文件？請舉例說明。</li>
+                <li>如果一家藥廠使用 polymer PFS 搭配 staked needle 來充填皮下注射的生物藥品，這個產品是否在 TR-73-2 的範圍內？</li>
+                <li>Dual-chamber PFS 為什麼被排除在範圍外？這與技術設計有什麼關係？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ========== 2.0 GLOSSARY AND ABBREVIATIONS ========== -->
+<div class="section-title" id="sec2-0">2.0 Glossary and Abbreviations</div>
+
+<!-- ========== 2.1 GLOSSARY ========== -->
+<div class="section-title" id="sec2-1" style="font-size:1rem; margin-top:1rem;">2.1 Glossary</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Definitions have been provided to help clarify the concepts discussed in this technical report. While some of the definitions vary among companies, the definitions described below are consistent for use within this technical report. Where a definition is based on another published source, the source is cited. Only definitions that are either not mentioned in TR-73 or not taken from the TR-73 glossary are mentioned here.</p>
+
+        <p>As there is no agreed-upon EU-wide term for a product combining a medicinal product and a medical device part, such as "prefillable syringes ready for filling," this document uses the term <span class="key-term">"drug-device combination (DDC)"</span> to refer to the final PFS system.</p>
+
+        <div class="glossary-term">
+            <strong>Applicant</strong><br>
+            The commercial entity responsible for the marketing authorisation application or post-approval application in the EU (5).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Competent Authorities (National)</strong><br>
+            A medicines regulatory authority in a European Union Member State (6).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Container Closure Integrity</strong><br>
+            Container closure integrity (CCI) is the ability of a container closure system to maintain the sterility and product quality of sterile final pharmaceutical, biological, and vaccine products throughout their shelf life.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Device Part</strong><br>
+            A device that fulfills the definition of a medical device, as defined in the relevant EU legal framework, and is intended to be placed on the EU market or made available on the EU market. This also applies to part of a device that fulfills the definition of Article 2(1). In the context of this document, the device part comprises the syringe subassembly ready for filling plus the plunger rod, needle shield, and finger flange extension.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Direct Contact</strong><br>
+            Medical device or medical device component that comes into physical contact with body tissue (7).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Drug-Device Combination (DDC) Product</strong><br>
+            Medicinal products where the medical device and/or device part and the medicinal product form an integral product that is not reusable (hereafter called integral) and where the action of the medicinal product is principal (1). There are two types of DDCs according to MDR Articles 1(8) and 1(9):
+            <ul>
+                <li>Any device which, when placed on the market or put into service, incorporates, as an integral part, a substance which, if used separately, would be considered to be a medicinal product... [and] if the action of that substance is principal and not ancillary to that of the device, the integral product will be regulated as a medicinal product (Article 1(8)).</li>
+                <li>If the [medical] device intended to administer a medicinal product and the medicinal product is placed on the market in such a way that they form a single integral product which is intended exclusively for use in the given combination and which is not reusable, that single integral product shall be governed by Directive 2001/83/EC or Regulation (EC) No 726/2004, as applicable (Article 1(9), subparagraph 2) (8).</li>
+            </ul>
+        </div>
+
+        <div class="glossary-term">
+            <strong>Indirect Contact</strong><br>
+            Medical device or medical device component through which a fluid or gas passes, prior to the fluid or gas coming into physical contact with body tissue (in this case the medical device or medical device component itself does not physically contact body tissue) (7).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Market Authorization Holder</strong><br>
+            The company or other legal entity that has the authorization or aims to receive it, to market a medicine in one, several, or all European Union Member States (adapted from EMA Glossary of Regulatory Terms) (6).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Nanomaterial</strong><br>
+            A natural, incidental or manufactured material containing particles in an unbound state or as an aggregate or as an agglomerate and where, for 50 % or more of the particles in the number size distribution, one or more external dimensions is in the size range 1-100 nm; Fullerenes, graphene flakes and single-wall carbon nanotubes with one or more external dimensions below 1 nm shall also be deemed to be nanomaterials (Article 2(18)) (1).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Needle Safety Device</strong><br>
+            A safety feature or mechanism that effectively reduces the risk of an exposure incident (e.g., accidental needlestick) (9); sharps injuries protection system.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Needle Shield, Rigid Needle Shield</strong><br>
+            Elastomeric syringe closure, which seals the front end of staked needle syringe, designed to protect the needle tip/bevel from damage and allows sterilization of the syringe. The elastomeric syringe closure covered by a rigid housing is called rigid needle shield (10).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Notified Body</strong><br>
+            Conformity assessment body designated in accordance with Regulation (EU) 2017/745 (Article 2(42)) (1).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Processing Aids</strong><br>
+            A substance (or mixture of substances) that is used to facilitate manufacturability, processing, transport, or storage of a material or component. It may assist in, for example, reducing energy/time/resources required to aid the process, increasing production, and cleaning efficiency and machinability. Processing aids do not contribute to the intended attributes of the finished component and do not belong to the intentionally added ingredients of the formulation (e.g., silicone oil, mold release, and anti-tack agents). Processing aids may be removed during the manufacturing process or, depending on the process clearance capability, may remain as low-level residuals in the finished component.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Processing Residues</strong><br>
+            Residues of processing aids in or on the final drug-device combination.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Quality Certificate</strong><br>
+            Certificate of Analysis, Certificate of Compliance, or equivalent document providing evidence of compliance with product specifications.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Risk Evaluation</strong><br>
+            Process of comparing the estimated risk against given risk criteria to determine the acceptability of the risk (11).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Risk Management</strong><br>
+            Systematic application of management policies, procedures and practices to the tasks of analyzing, evaluating, controlling and monitoring risks (11).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Single-Dose Container</strong><br>
+            A container that holds a quantity of the preparation intended for total or partial use on one occasion only (Ph. Eur. 3.2) (12).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Staked Needle Syringe</strong><br>
+            Syringe with a needle integrated into the barrel; the fixation can be done by insert molding, gluing or other bonding methods (13).
+        </div>
+
+        <div class="glossary-term">
+            <strong>State of the Art (SOTA), Generally Acknowledged (GA)</strong><br>
+            Developed stage of current technical capability and/or accepted clinical practice in regard to products, processes and patient management, based on the relevant consolidated findings of science, technology and experience (14).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Surgically Invasive</strong><br>
+            Surgically invasive device means (a) an invasive device which penetrates inside the body through the surface of the body, including through mucous membranes of body orifices with the aid or in the context of a surgical operation; and (b) a device which produces penetration other than through a body orifice (Annex VIII, Chapt. 1, 2.2) (1).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Syringe Barrel</strong><br>
+            Cylindrical glass or polymer body with front end and finger flange (10, 13).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Syringe Components</strong><br>
+            Can be a glass or polymer syringe barrel with or without lubrication, a needle with lubrication and a needle shield (soft or rigid), plunger (also plunger stopper) with lubrication, coating and/or lamination, plunger rod and, if needed, a backstop.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Syringe Subassembly Ready for Filling (also Prefillable Subassembled Syringe)</strong><br>
+            Subassembly consisting of a glass or polymer syringe barrel, a needle and a needle shield (soft or rigid) that has been washed and sterilized; considered as starting material for the filling and assembling process of a prefilled syringe (10).
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Drug-Device Combination, DDC (藥品-器材組合產品)：</strong>這是本報告最核心的概念之一。DDC 指的是藥品與醫療器材組合成不可重複使用的一體化產品，且藥品作用為主要 (principal) 作用。PFS 就是一個典型的 DDC：針筒是器材部分，藥液是藥品部分，兩者組合成一體化產品。</p>
+            <p><strong>Article 1(8) vs. Article 1(9) 的區別：</strong></p>
+            <ul>
+                <li><strong>Article 1(8)：</strong>器材「內含」藥物性質的物質，若該物質的作用是主要的，則整個產品按藥品法規管理</li>
+                <li><strong>Article 1(9), subparagraph 2：</strong>器材與藥品以單一整合產品上市、不可重複使用，則由 Directive 2001/83/EC 管理（即藥品法規為主導）</li>
+            </ul>
+            <p>PFS 主要適用 Article 1(9), subparagraph 2 的情境。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵術語對照 Key Term Reference</h4>
+            <p><strong>Direct Contact (直接接觸)：</strong>元件直接接觸人體組織。例如：針頭刺入皮膚、針筒內壁接觸藥液後注入體內。</p>
+            <p><strong>Indirect Contact (間接接觸)：</strong>元件不直接接觸組織，但液體或氣體通過它後才接觸人體。例如：針筒內壁（藥液通過後注入體內）。</p>
+            <p><strong>Container Closure Integrity, CCI (容器密封完整性)：</strong>容器密封系統在整個保存期限內維持無菌性和產品品質的能力。這是 PFS 的關鍵品質屬性。</p>
+            <p><strong>Processing Aids (加工助劑)：</strong>如矽油 (silicone oil)、脫模劑等，不屬於配方的一部分，但可能以低量殘留存在於成品中。這些殘留 (Processing Residues) 需要被評估和管控。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>DDC 的概念可以用「即食便當」來理解。便當盒（器材）和食物（藥品）組合成一體化產品，消費者吃完就丟棄（不可重複使用）。食物（藥品）的功能是主要的，但便當盒（器材）必須符合食品安全容器的標準。在法規上，這個「即食便當」主要由食品法規管理，但便當盒部分仍需符合容器安全要求 -- 這就像 PFS 主要由藥品法規管理，但器材部分需符合 MDR GSPRs。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>詞彙表中有幾個容易混淆的概念需要特別注意：</p>
+            <ul>
+                <li><strong>Syringe Components (注射器元件)：</strong>包括所有零件（針筒、針頭、護套、活塞、活塞桿、止退器）</li>
+                <li><strong>Syringe Subassembly Ready for Filling (待充填注射器組件)：</strong>已清洗和滅菌的針筒+針頭+護套組件，是充填製程的起始材料</li>
+                <li><strong>Device Part (器材部分)：</strong>= Syringe Subassembly + 活塞桿 + 護套 + 指法蘭延伸件</li>
+            </ul>
+            <p>這三個層級的區分對於理解後續 GSPR 的適用範圍至關重要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>State of the Art, SOTA (技術現狀) -- 特別說明</h4>
+            <p>SOTA 在 MDR 中具有特殊的法律意義。它不僅指「最新技術」，更指「基於科學、技術和經驗的綜合成果所達到的當前技術水準和/或公認的臨床實踐」。在準備 GSPR 證據時，必須證明你的設計和製造符合 SOTA。這意味著需要引用相關標準 (harmonised standards)、指引文件和已發表的科學文獻。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請說明 Direct Contact 和 Indirect Contact 的差異，並舉例說明 PFS 中哪些元件屬於哪一類？</li>
+                <li>Processing Aids 和 Processing Residues 的差異是什麼？為什麼這個區分在 MDR 合規中很重要？</li>
+                <li>Device Part 包含哪些具體元件？它與 Syringe Components 和 Syringe Subassembly 有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ========== 2.2 ABBREVIATIONS ========== -->
+<div class="section-title" id="sec2-2" style="font-size:1rem; margin-top:1rem;">2.2 Abbreviations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <dl class="abbr-grid">
+            <dt>ASTM</dt><dd>American Society for Testing and Materials</dd>
+            <dt>ATMP</dt><dd>Advanced Therapy Medicinal Product</dd>
+            <dt>CCI</dt><dd>Container Closure Integrity</dd>
+            <dt>CMR</dt><dd>Carcinogenic, Mutagenic, or Toxic to Reproduction</dd>
+            <dt>DDC</dt><dd>Drug-Device Combination Product</dd>
+            <dt>ED</dt><dd>Endocrine-Disrupting</dd>
+            <dt>EMA</dt><dd>European Medicines Agency</dd>
+            <dt>GSPR</dt><dd>General Safety and Performance Requirement</dd>
+            <dt>MAA</dt><dd>Marketing Authorization Application</dd>
+            <dt>MDR</dt><dd>Medical Device Regulation</dd>
+            <dt>NB</dt><dd>Notified Body</dd>
+            <dt>NBOp</dt><dd>Notified Body Opinion</dd>
+            <dt>NS</dt><dd>Needle Shield</dd>
+            <dt>PFS</dt><dd>Prefilled Syringe</dd>
+            <dt>RM</dt><dd>Risk Management</dd>
+            <dt>RMS</dt><dd>Risk Management System</dd>
+            <dt>RNS</dt><dd>Rigid Needle Shield</dd>
+            <dt>SmPC</dt><dd>Summary of Product Characteristics</dd>
+            <dt>TSE/BSE</dt><dd>Transmissible spongiform encephalopathies / Bovine spongiform encephalopathy</dd>
+        </dl>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>縮寫分類速查 Abbreviation Categories</h4>
+            <p>可將這些縮寫分為以下幾類以便記憶：</p>
+            <p><strong>法規相關：</strong></p>
+            <ul>
+                <li>MDR - 醫療器材法規（歐盟核心法規）</li>
+                <li>GSPR - 一般安全與性能要求（MDR Annex I）</li>
+                <li>NB / NBOp - 認證機構 / 認證機構意見</li>
+                <li>MAA - 上市許可申請</li>
+                <li>EMA - 歐洲藥品管理局</li>
+            </ul>
+            <p><strong>產品相關：</strong></p>
+            <ul>
+                <li>PFS - 預充填注射器</li>
+                <li>DDC - 藥品-器材組合產品</li>
+                <li>NS / RNS - 針頭護套 / 硬式針頭護套</li>
+                <li>CCI - 容器密封完整性</li>
+            </ul>
+            <p><strong>風險/安全相關：</strong></p>
+            <ul>
+                <li>RM / RMS - 風險管理 / 風險管理系統</li>
+                <li>CMR - 致癌性、致突變性或生殖毒性</li>
+                <li>ED - 內分泌干擾物質</li>
+                <li>TSE/BSE - 傳染性海綿狀腦病 / 牛海綿狀腦病</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CMR 和 ED</strong> 是 MDR 中特別關注的材料安全議題。MDR 要求製造商評估器材中是否含有 CMR 物質（致癌、致突變、生殖毒性物質）或 ED 物質（內分泌干擾物質），並在技術文件中提供相關證據。這將在後續 GSPR 評估中詳細討論。</p>
+            <p><strong>TSE/BSE</strong> 涉及動物源性材料的安全性評估。如果 PFS 元件（如彈性體護套）使用了動物源性原料，必須提供 TSE/BSE 風險評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>NBOp (Notified Body Opinion) 在 PFS 上市流程中扮演什麼角色？它與傳統醫療器材的 CE marking 有何不同？</li>
+                <li>為什麼 CMR 和 ED 物質的評估對 PFS 特別重要？請思考 PFS 中可能含有這類物質的元件有哪些？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>法規背景：</strong>MDR (EU) 2017/745 取代了舊有的醫療器材指令，對 PFS 的器材部分提出新的 GSPRs 合規要求，需取得 NB Opinion</li>
+        <li><strong>報告定位：</strong>TR-73-2 是 TR-73 的增補版，專注於指引藥廠如何準備 NB 提交文件，Table 5.1-1 是核心參考工具</li>
+        <li><strong>範圍界定：</strong>適用於玻璃和高分子材質、不同容量的膠針型 PFS（固定劑量），不包括 autoinjector、針頭安全裝置、ATMP 和非歐盟法規</li>
+        <li><strong>DDC 分類：</strong>PFS 屬於 MDR Article 1(9) subparagraph 2 定義的單一整合產品，主要由藥品法規管理，但器材部分需符合 MDR Annex I</li>
+        <li><strong>關鍵層級：</strong>Syringe Components（零件）→ Syringe Subassembly（待充填組件）→ Device Part（器材部分）→ DDC（最終組合產品），每個層級有不同的 GSPR 適用範圍</li>
+        <li><strong>材料安全：</strong>CMR、ED 物質和 TSE/BSE 評估是 MDR 特別關注的材料安全議題，將在後續 GSPR 章節中深入探討</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 73-2 (2024): Application of MDR Annex I Requirements for Staked Needle Systems</p>
+    <p>Educational Material - Section 0: Introduction & Glossary | p1-p5</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

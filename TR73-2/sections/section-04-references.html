@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73-2 - Section 4: References (6.0)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== REFERENCE LIST STYLING ===== */
+.ref-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: ref-counter;
+}
+
+.ref-list li {
+    counter-increment: ref-counter;
+    padding: 0.7rem 0.75rem 0.7rem 2.5rem;
+    margin-bottom: 0.4rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-bottom: 1px solid #edf2f7;
+    text-align: justify;
+}
+
+.ref-list li::before {
+    content: counter(ref-counter) ".";
+    position: absolute;
+    left: 0.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+}
+
+.ref-list li:last-child {
+    border-bottom: none;
+}
+
+.ref-category {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 1.25rem 0 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-blue);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6.0 References</h1>
+    <div class="subtitle">參考文獻</div>
+    <div class="page-info">PDA Technical Report No. 73-2 (2024): MDR Annex I for Staked Needle Systems | p33</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="margin:1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>瞭解 TR73-2 所引用的核心法規文件架構，包括 <span class="key-term">MDR 2017/745</span> 及其相關指引</li>
+        <li>認識歐盟醫療器材法規體系中各機構（European Commission、EMA、MDCG、Team-NB）的角色與發佈之指引文件</li>
+        <li>掌握與預充填注射器 (Prefilled Syringe) 及固定式針頭系統 (Staked Needle Syringe) 相關的關鍵 ISO 標準</li>
+        <li>理解藥品-醫材組合產品 (Drug-Device Combination Product) 在法規交叉領域中需參照的多重文件來源</li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+<!-- MAIN TWO-COLUMN CONTENT -->
+<div class="two-column">
+    <!-- LEFT COLUMN: Original English References -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>6.0 References</h3>
+
+        <ol class="ref-list">
+            <li>European Commission. <span class="key-term">Regulation (EU) 2017/745</span> of the European Parliament and of the Council of 5 April 2017 on Medical Devices, amending Directive 2001/83/EC, Regulation (EC) No 178/2002 and Regulation (EC) No 1223/2009 and repealing Council Directives 90/385/EEC and 93/42/EEC; Document 32017R0745. OJ L 117: Brussels, 2017.</li>
+
+            <li>The European Association Medical devices of Notified Bodies. <span class="key-term">Team-NB Position Paper</span> on Documentation Requirements for Drug Device Combination Products Falling in the Scope of Article 117 of MDR 2017/745; TEAM-NB.org: Sprimont, Belgium, 2020.</li>
+
+            <li>The European Association Medical devices of Notified Bodies. Team-NB Position Paper: Best Practice Guidance for the Submission of Technical Documentation under <span class="key-term">Annex II and III</span> of In Vitro Diagnostic Medical Devices Regulation; Team-NB: Sprimont, Belgium, 2023.</li>
+
+            <li>European Commission. <span class="key-term">Directive 2001/83/EC</span> of the European Parliament and of the Council of 6 November 2001 on the Community Code Relating to Medicinal Products for Human Use; OJ European Commission: Brussels, 2012.</li>
+
+            <li>European Medicines Agency. <span class="key-term">Guideline on Quality Documentation for Medicinal Products when Used with a Medical Device</span>; EMA: London, 2019.</li>
+
+            <li>European Medicines Agency. Glossary of Regulatory Terms. About Us. https://www.ema.europa.eu/en/about-us/about-website/glossary (accessed 19 Jan 2024).</li>
+
+            <li>International Organization for Standardization. <span class="key-term">ISO 10993-18:2020/Amd 1:2022</span>: Biological Evaluation of Medical Devices &mdash; Part 18: Chemical Characterization of Medical Device Materials within a Risk Management Process &mdash; Amendment 1: Determination of the Uncertainty Factor; ISO: Geneva, 2020.</li>
+
+            <li>European Medicines Agency. Questions and Answers: Good Manufacturing Practice &ndash; Data Integrity. Guidance on good manufacturing practice and good distribution practice: Questions and answers. https://www.ema.europa.eu/en/human-regulatory-overview/research-and-development/compliance-research-and-development/good-manufacturing-practice/guidance-good-manufacturing-practice-and-good-distribution-practice-questions-and-answers (accessed 19 Jan 2024).</li>
+
+            <li>Parenteral Drug Association. <span class="key-term">Technical Report No. 73</span>: Prefilled Syringe User Requirements for Biotechnology Applications; PDA: Bethesda, Md., 2015.</li>
+
+            <li>International Organization for Standardization. <span class="key-term">ISO 11040-4:2015</span> Prefilled Syringes &mdash; Part 4: Glass Barrels for Injectables and Sterilized Subassembled Syringes Ready for Filling; ISO: Geneva, 2015.</li>
+
+            <li>International Organization for Standardization. <span class="key-term">ISO 14971:2019</span> Medical Devices &mdash; Application of Risk Management to Medical Devices; ISO: Geneva, 2019.</li>
+
+            <li>Council of Europe. <span class="key-term">European Pharmacopeia (Ph. Eur.)</span>, 11th Edition. Council of Europe: Strasbourg, 2022.</li>
+
+            <li>International Organization for Standardization. <span class="key-term">ISO 11040-6:2019</span> Prefilled Syringes &mdash; Part 6: Plastic Barrels for Injectables and Sterilized Subassembled Syringes Ready for Filling; ISO: Geneva, 2019.</li>
+
+            <li>Medical Device Coordination Group. <span class="key-term">Guidance on Standardisation for Medical Devices (MDCG-5)</span>; European Commission: 2021.</li>
+
+            <li>U.S. Food and Drug Administration. Guidance for Industry: <span class="key-term">Data Integrity and Compliance with cGMP</span>: Questions and Answers; U.S. Department of Health and Human Services: Silver Spring, Md., 2018.</li>
+
+            <li>European Biopharmaceutical Enterprises and European Federation of Pharmaceutical Industries and Associations. <span class="key-term">EBE-EFPIA Reflection Paper</span>: Conformity with the relevant General Safety Performance Requirements listed in the European Medical Device Regulation 2017/745: Case Study for a Prefilled Pen (Prefilled Syringe Assembled with Autoinjector Parts forming a Single Integral Product Regulated as a Medicinal Product); EFPIA: Brussels, 2019.</li>
+
+            <li>European Biopharmaceutical Enterprises and European Federation of Pharmaceutical Industries and Associations. EBE-EFPIA Reflection Paper: An Industry Perspective on <span class="key-term">Article 117</span> of the EU Medical Devices Regulation and the Impact on how Medicines are Assessed; EFPIA: Brussels, 2018.</li>
+
+            <li>Medical Device Coordination Group. <span class="key-term">MDCG 2021-24</span>: Guidance on Classification of Medical Devices; European Commission: Strasbourg, 2021.</li>
+
+            <li>European Commission. Guidelines Relating to the Application of the Council Directive 90/385/EEC on Active Implantable Medical Devices the Council Directive 93/42/EEC on Medical Devices: Medical Devices with a Measuring Function; European Commission: Brussels, 1998.</li>
+
+            <li>The British Standards Institution. <span class="key-term">BS EN 60601-1-2:2015+A1:2021</span> Medical Electrical Equipment General Requirements for Basic Safety and Essential Performance. Collateral Standard: Electromagnetic Disturbances. Requirements and Tests; BSI: London, 2021.</li>
+
+            <li>The British Standards Institution. <span class="key-term">BS EN 62366-1:2015+A1:2020</span> Medical Devices Application of Usability Engineering to Medical; BSI: London, 2020.</li>
+
+            <li>International Organization for Standardization. <span class="key-term">IEC/TR 62366-2:2016</span> Medical Devices &mdash; Part 2: Guidance on the Application of Usability Engineering to Medical Devices; ISO: Geneva, 2016.</li>
+
+            <li>European Commission. Note for Guidance on Minimising the Risk of Transmitting <span class="key-term">Animal Spongiform Encephalopathy</span> Agents via Human and Veterinary Medicinal Products (EMA/410/01 rev.3); Official Journal of the European Union. Publications Office, European Union: Brussels, 2011.</li>
+        </ol>
+    </div>
+
+    <!-- RIGHT COLUMN: Chinese Commentary -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- Key Concept Box -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>MDR 2017/745 (歐盟醫療器材法規)：</strong>這是本報告最核心的法規基礎。MDR 於 2017 年發佈，2021 年 5 月 26 日正式全面適用，取代了舊有的 MDD (93/42/EEC) 和 AIMDD (90/385/EEC) 指令。對於預充填注射器等藥品-醫材組合產品而言，MDR Annex I 中的 General Safety and Performance Requirements (GSPRs，一般安全與性能要求) 是必須逐條符合的關鍵要求。</p>
+            <p><strong>Article 117 (第 117 條)：</strong>MDR 中專門處理「以藥品形式審查的組合產品」的條款。當一個產品的主要作用機制是藥理學的（如預充填注射器中的藥物），醫材部分仍須符合 MDR Annex I 的相關 GSPRs，但整體產品由藥品主管機關（如 EMA）進行審查。</p>
+            <p><strong>Drug-Device Combination Product (藥品-醫材組合產品)：</strong>TR73-2 的核心主題 -- 固定式針頭注射器 (Staked Needle Syringe) 即屬此類。藥品與器材整合為一體，法規上橫跨兩個領域。</p>
+        </div>
+
+        <!-- Reference Classification Table -->
+        <div class="note-box">
+            <h4>重點提示 -- 參考文獻分類導覽</h4>
+            <p>本節共 23 篇參考文獻，可依發佈機構與主題歸納為以下幾大類：</p>
+            <table style="font-size:0.85rem;">
+                <tr>
+                    <th>分類</th>
+                    <th>文獻編號</th>
+                    <th>說明</th>
+                </tr>
+                <tr>
+                    <td><strong>歐盟核心法規</strong></td>
+                    <td>#1, #4</td>
+                    <td>MDR 2017/745 及藥品指令 2001/83/EC -- 法規骨幹</td>
+                </tr>
+                <tr>
+                    <td><strong>歐盟指引文件</strong></td>
+                    <td>#5, #6, #8, #14, #18, #19, #23</td>
+                    <td>EMA、MDCG、EC 發佈的指南與分類指引</td>
+                </tr>
+                <tr>
+                    <td><strong>業界立場文件</strong></td>
+                    <td>#2, #3, #16, #17</td>
+                    <td>Team-NB 與 EBE-EFPIA 的反思論文與最佳實務</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 標準</strong></td>
+                    <td>#7, #10, #11, #13</td>
+                    <td>生物相容性、預充填注射器規格、風險管理</td>
+                </tr>
+                <tr>
+                    <td><strong>IEC/BSI 標準</strong></td>
+                    <td>#20, #21, #22</td>
+                    <td>電氣安全 (EMC) 與可用性工程</td>
+                </tr>
+                <tr>
+                    <td><strong>藥典</strong></td>
+                    <td>#12</td>
+                    <td>歐洲藥典第 11 版 -- 材料與容器標準</td>
+                </tr>
+                <tr>
+                    <td><strong>PDA 技術報告</strong></td>
+                    <td>#9</td>
+                    <td>TR73（母報告）-- 預充填注射器生技應用使用者需求</td>
+                </tr>
+                <tr>
+                    <td><strong>美國 FDA 指引</strong></td>
+                    <td>#15</td>
+                    <td>數據完整性與 cGMP 合規</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Analogy Box -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要蓋一棟「複合用途大樓」（同時是商場又是住宅）。你不能只看商業建築法規，也不能只看住宅法規 -- 兩套法規都必須符合，而且要有人負責整體協調。</p>
+            <p>藥品-醫材組合產品也是如此：藥品法規 (Directive 2001/83/EC) 是「住宅法規」，醫材法規 (MDR 2017/745) 是「商業法規」，而 Article 117 就是告訴你誰來當「都市計畫審查主管」-- 由藥品主管機關主導，但醫材的安全要求一項也不能少。</p>
+        </div>
+
+        <!-- Key Standards Highlight -->
+        <div class="concept-box">
+            <h4>關鍵標準速覽 Key Standards at a Glance</h4>
+            <ul>
+                <li><strong>ISO 11040-4 (#10)：</strong>玻璃管注射器規格 -- 定義了預充填注射器的玻璃管尺寸、品質要求</li>
+                <li><strong>ISO 11040-6 (#13)：</strong>塑膠管注射器規格 -- 針對聚合物材質的預充填注射器</li>
+                <li><strong>ISO 14971 (#11)：</strong>醫療器材風險管理 -- 這是所有醫材開發的基礎框架，Annex I 中多處 GSPRs 要求依此標準執行風險分析</li>
+                <li><strong>ISO 10993-18 (#7)：</strong>醫材材料的化學特性鑑定 -- 用於評估可萃取物/浸出物 (E&amp;L) 的風險</li>
+                <li><strong>IEC 62366 (#21, #22)：</strong>可用性工程 (Usability Engineering) -- 確保使用者能安全正確地操作注射器</li>
+            </ul>
+        </div>
+
+        <!-- Note Box: Regulatory Landscape -->
+        <div class="note-box">
+            <h4>重點提示 -- 法規版圖的複雜性</h4>
+            <p>從這 23 篇參考文獻可以看出，固定式針頭注射器的法規合規並非只是「符合一個法規」這麼簡單。製造商/CDMO 必須同時掌握：</p>
+            <ul>
+                <li><strong>法規層 (Regulation)：</strong>MDR 2017/745、Directive 2001/83/EC</li>
+                <li><strong>指引層 (Guidance)：</strong>EMA 指南、MDCG 指引、EC 指引</li>
+                <li><strong>標準層 (Standards)：</strong>ISO 11040 系列、ISO 14971、ISO 10993、IEC 62366</li>
+                <li><strong>業界最佳實務 (Industry Best Practice)：</strong>PDA TR73/TR73-2、EBE-EFPIA 反思論文</li>
+            </ul>
+            <p>這四層架構形成一個由上而下的合規金字塔，越上層越具法律約束力，越下層越提供實務操作指導。</p>
+        </div>
+
+        <!-- Application Box -->
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>情境：</strong>假設你是一家 CDMO 的法規事務經理，客戶要求你協助準備一款預充填注射器組合產品在歐盟的上市申請文件。</p>
+            <p><strong>你需要做什麼：</strong></p>
+            <ul>
+                <li>首先確認產品是否落入 Article 117 範圍 -- 參考文獻 #1 (MDR) 和 #17 (EBE-EFPIA 反思論文)</li>
+                <li>準備 MDR Annex I GSPRs 的逐條合規矩陣 -- 參考文獻 #16 (EBE-EFPIA 案例研究) 提供了實際範例</li>
+                <li>進行風險管理文件準備 -- 依 ISO 14971 (#11) 建立風險管理檔案</li>
+                <li>確認容器密封系統的材質合規 -- 參照歐洲藥典 (#12) 和 ISO 10993 (#7)</li>
+                <li>完成可用性評估 -- 依 IEC 62366 (#21, #22) 進行人因工程研究</li>
+            </ul>
+        </div>
+
+        <!-- Practice Questions -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>MDR 2017/745 取代了哪些舊有的歐盟醫材指令？為什麼這次法規升級對組合產品影響特別大？</li>
+                <li>Article 117 的存在解決了什麼問題？如果沒有 Article 117，藥品-醫材組合產品的審查會面臨什麼困難？</li>
+                <li>在這 23 篇參考文獻中，哪些是法規（具法律約束力），哪些是指引（不具約束力但實務上必須遵循）？這個區別為什麼重要？</li>
+                <li>為什麼 TR73-2 需要同時引用歐盟 (EMA/EC) 和美國 (FDA) 的數據完整性指引？這暗示了什麼樣的產品開發策略？</li>
+            </ol>
+        </div>
+
+        <!-- TSE Note -->
+        <div class="note-box">
+            <h4>特殊議題 -- TSE/BSE 風險 (#23)</h4>
+            <p>參考文獻第 23 號提到「動物海綿狀腦病 (Animal Spongiform Encephalopathy, ASE)」風險。這對預充填注射器的意義是：注射器組件中若使用任何動物來源的材料（例如某些潤滑劑或膠合劑），必須評估 TSE/BSE 傳播風險。這是歐盟法規中特有的要求，反映了 1990 年代狂牛症危機後歐盟對動物源性材料的高度警戒。</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin: 0 1.5rem 1.5rem;">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>法規基礎：</strong>TR73-2 以 MDR 2017/745 為核心法規基礎，Annex I 的 GSPRs（一般安全與性能要求）是固定式針頭注射器必須逐條符合的根本要求</li>
+        <li><strong>組合產品審查路徑：</strong>Article 117 確立了藥品-醫材組合產品的審查機制 -- 由藥品主管機關主導，醫材合規由 Notified Body 提供意見</li>
+        <li><strong>多層級合規架構：</strong>從法規 (Regulation) → 指引 (Guidance) → 標準 (Standards) → 業界最佳實務 (Best Practice)，形成完整的合規金字塔</li>
+        <li><strong>ISO 標準群：</strong>ISO 11040 系列（注射器規格）、ISO 14971（風險管理）、ISO 10993（生物相容性）、IEC 62366（可用性工程）構成技術標準的四大支柱</li>
+        <li><strong>業界共識：</strong>EBE-EFPIA 反思論文（#16, #17）與 Team-NB 立場文件（#2, #3）代表業界與驗證機構對 MDR 實施的實務解讀，是準備合規文件時不可忽略的參考</li>
+        <li><strong>跨境考量：</strong>同時引用 EMA 與 FDA 數據完整性指引（#8, #15），暗示產品開發應採取全球化法規策略</li>
+    </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 73-2 (2024): Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes</p>
+    <p>Section 6.0: References | Educational Material</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">This educational summary is for learning purposes. Refer to the original PDA TR73-2 for authoritative content.</p>
+</div>
+
+</body>
+</html>
