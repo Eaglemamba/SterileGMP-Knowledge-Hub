@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR66 - Section 8.0: Appendix I URS Example</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 8.0 Appendix I: Overall User Requirement Specification Example</h1>
+    <div class="subtitle">附錄 I：整體使用者需求規格範例</div>
+    <div class="page-info">PDA Technical Report No. 66 (2014) Single-Use Systems | p108 - p120</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 User Requirement Specification (URS) 文件在 SUS 設施專案中的角色與結構</li>
+        <li>掌握 URS 範例中涵蓋的主要領域：設施描述、製程、物料流、人員流、法規、公用設施、潔淨室、控制系統</li>
+        <li>學習如何為基因治療病毒載體的 SUS 生產設施撰寫使用者需求</li>
+        <li>認識 BSL2 生物安全要求如何影響設施設計與 HVAC 系統規劃</li>
+        <li>了解 URS 如何為後續設計確認 (DQ) 及驗證活動奠定基礎</li>
+    </ul>
+</div>
+
+<!-- ===== 8.0 / 8.1 Description of Document ===== -->
+<h2 class="section-title" id="sec8-1">8.0 / 8.1 Description of Document</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:1rem;">8.0 Appendix I: Overall User Requirement Specification Example</h4>
+
+        <h4 style="color:var(--primary-blue); margin-top:1rem;">8.1 Description of Document</h4>
+        <p>This appendix contains an example of <span class="key-term">user requirements (UR)</span> written for an SUS facility. This material is referenced in Section 7.5.1, User Requirements, and should be used as an example for how this type of document is structured. The complexity and size of the document will change according to the type of SUS and complexity of the project. These types of documents should be considered as <span class="key-term">living</span> (i.e., they can be updated as appropriate should the project or UR change). The document can be prepared by the end user or a sponsor of the end user such as an engineering company or supplier.</p>
+        <p>This document describes the UR concerning the new production suite, GMP, SUS (shown in figure below). This is an overall UR specification and detailed UR will be written. The requirements stated in this document may not be qualified but will form the basis for design.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.1.1 Abbreviations</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Full Term</th></tr>
+            <tr><td>API</td><td>Active Pharmaceutical Ingredient</td></tr>
+            <tr><td>ASME</td><td>American Society of Mechanical Engineers</td></tr>
+            <tr><td>BMS</td><td>Building Management System</td></tr>
+            <tr><td>BSL</td><td>Biosafety Level</td></tr>
+            <tr><td>CFR</td><td>Code of Federal Regulations</td></tr>
+            <tr><td>CIP</td><td>Clean-in-Place</td></tr>
+            <tr><td>CNC</td><td>Controlled but Not Classified</td></tr>
+            <tr><td>CPE</td><td>Cytopathic Effect</td></tr>
+            <tr><td>EMEA</td><td>European Agency for the Evaluation of Medicinal Products</td></tr>
+            <tr><td>EN</td><td>European Norm</td></tr>
+            <tr><td>FDA</td><td>United States Food and Drug Administration</td></tr>
+            <tr><td>FMS</td><td>Facility Monitoring System</td></tr>
+            <tr><td>GAMP</td><td>Good Automated Manufacturing Practice</td></tr>
+            <tr><td>GEP</td><td>Good Engineering Practice</td></tr>
+            <tr><td>IP</td><td>Ingress Protection</td></tr>
+            <tr><td>ISO</td><td>International Organization for Standardization</td></tr>
+            <tr><td>ISPE</td><td>International Society of Pharmaceutical Engineering</td></tr>
+            <tr><td>HEPA</td><td>High-Efficiency Particulate Air</td></tr>
+            <tr><td>HMI</td><td>Human-Machine Interface</td></tr>
+            <tr><td>HVAC</td><td>Heating, Ventilating, and Air-Conditioning</td></tr>
+            <tr><td>MAA</td><td>Marketing Authorization Application</td></tr>
+            <tr><td>MCB</td><td>Master Cell Bank</td></tr>
+            <tr><td>MVSS</td><td>Master Viral Seed Stock</td></tr>
+            <tr><td>NAM</td><td>National Agency for Medicines</td></tr>
+            <tr><td>PC</td><td>Personal Computer</td></tr>
+            <tr><td>PEP</td><td>Project Execution Plan</td></tr>
+            <tr><td>Ph. Eur.</td><td>European Pharmacopoeia</td></tr>
+            <tr><td>PLC</td><td>Programmable Logic Control</td></tr>
+            <tr><td>PMS</td><td>Particle Monitoring System</td></tr>
+            <tr><td>QA</td><td>Quality Assurance</td></tr>
+            <tr><td>QAP</td><td>Quality Activity Plan</td></tr>
+            <tr><td>QC</td><td>Quality Control</td></tr>
+            <tr><td>QMS</td><td>Quality Management System</td></tr>
+            <tr><td>SCADA</td><td>Supervisory Control and Data Application</td></tr>
+            <tr><td>SIP</td><td>Sterilize-in-Place</td></tr>
+            <tr><td>SOP</td><td>Standard Operating Procedure</td></tr>
+            <tr><td>SPA</td><td>Special Protocol Assessment</td></tr>
+            <tr><td>UDAF</td><td>Unidirectional Airflow</td></tr>
+            <tr><td>UR</td><td>User Requirements</td></tr>
+            <tr><td>USP</td><td>United States Pharmacopeia</td></tr>
+            <tr><td>VHP</td><td>Vaporized Hydrogen Peroxide</td></tr>
+            <tr><td>WFI</td><td>Water for Injection</td></tr>
+            <tr><td>WHO</td><td>World Health Organization</td></tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>User Requirement Specification, URS (使用者需求規格書):</strong> URS 是製藥工程專案中最重要的基礎文件之一。它由使用者（製藥公司）撰寫，明確定義「我需要什麼」，而非「如何做到」。URS 是後續所有設計（概念設計、基本設計、細節設計）的起點，也是 Design Qualification (DQ) 的驗證依據。</p>
+            <p><strong>Living Document (活文件):</strong> URS 不是一次定稿就永不更改的文件。隨著專案進展、法規變化或製程需求調整，URS 可以且應該被更新——但必須透過正式的變更管控 (Change Control) 程序。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>URS 就像蓋房子時的「需求清單」：你告訴建築師「我需要三間臥室、兩間浴室、一個開放式廚房」，但不會告訴他用什麼品牌的水泥或什麼尺寸的鋼筋。URS 描述的是「What」（需要什麼），而非「How」（如何實現）。建築師根據你的需求出設計圖，就像工程公司根據 URS 產出設計規格 (Design Specification)。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本附錄提供的是一個<strong>整體性 (Overall)</strong> 的 URS 範例，實際專案中還需要針對個別系統（如 HVAC 系統、WFI 系統、自動化系統等）撰寫更詳細的 URS。整體 URS 定義大框架，細節 URS 則深入每個子系統。</p>
+            <p>注意：本 URS 範例中的需求「may not be qualified」——意思是這些需求不一定全部需要正式確認 (Qualification)，但它們構成設計的基礎。哪些需求需要確認，會在後續風險評估中決定。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 URS 被稱為「活文件」？在什麼情況下需要更新 URS？</li>
+                <li>URS 可以由「end user 的 sponsor（如工程公司或供應商）」撰寫，這在 CDMO 情境中意味著什麼？</li>
+                <li>「Overall URS」與「Detailed URS」之間有何差異？請舉例說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 8.2 Introduction ===== -->
+<h2 class="section-title" id="sec8-2">8.2 Introduction</h2>
+
+<!-- 8.2.1 Description of Facility -->
+<h3 class="section-title" id="sec8-2-1" style="font-size:1rem;">8.2.1 Description of Facility</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Company X needs to equip a new facility GMP, SUS for the manufacture of <span class="key-term">injectable products for viral particle gene therapy</span>. This document outlines the user requirements of the facility. In this project and UR document, abbreviation T4 stands for the main building site and GMP, SUS for the cleanroom area. The new production suite should be designed for <span class="key-term">biosafety level 2 (BSL2)</span> and comply with <span class="key-term">EU GMP and FDA cGMP</span>.</p>
+        <p>The products of this facility shall be based on modified live viral particle technologies (gene therapy). The manufacturing process shall cover production of biological bulk and final filled products for sterile, as parenteral applications. The initial adenovirus production portfolio covers in the first instance two bulk and two final products, which are known as Product 1 and Product 2.</p>
+        <p>Product 1 is a novel gene-based product that is given as a suicide therapy for tumors. Product 2 is a novel product being developed to deliver a growth factor for use in surgery.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>BSL2 (生物安全等級 2):</strong> BSL2 適用於處理對人員有中等潛在危害的微生物。此案例使用活病毒載體（腺病毒），因此需要 BSL2 等級的生物安全防護。這直接影響設施的 HVAC 設計（需要負壓或定向氣流）、廢棄物處理（需要滅活）、及人員防護。</p>
+            <p><strong>Gene Therapy (基因治療):</strong> 利用病毒載體將治療性基因送入患者細胞。此處使用腺病毒 (Adenovirus) 作為載體，是一種常見的基因治療技術平台。</p>
+            <p><strong>雙重法規合規:</strong> 設施需同時符合 EU GMP 和 FDA cGMP，這表明產品將在歐盟和美國市場上市。雙重合規會增加設計複雜度，因為兩套法規在潔淨室分級、環境監控等方面有些許差異。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>BSL2 設施就像一個「有門禁的實驗室」——與一般辦公室相比，它有嚴格的出入管控、特殊的通風系統（確保空氣只往內流，不往外洩）、以及專用的廢棄物處理通道。想像一個處理感染性物質的醫院病房：空氣是負壓控制的，廢棄物要先滅菌才能丟棄，人員進出要換裝。SUS 設施在此基礎上，再加上 GMP 的潔淨度要求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這個 URS 範例特別有價值，因為它展示了 SUS 技術在<strong>基因治療</strong>這類先進治療藥品 (ATMP) 生產中的應用。由於基因治療產品批量通常較小、產品種類變化快，SUS 的靈活性和免清洗特性特別適合此類應用。</p>
+            <p>注意 URS 中使用的語言：「shall」表示強制性需求；「should」表示建議性需求。在 URS 撰寫中，用詞的選擇直接影響後續驗證的範圍。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.2.2 Environment -->
+<h3 class="section-title" id="sec8-2-2" style="font-size:1rem;">8.2.2 Environment / 8.2.3 Capacity</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.2.2 Environment</h4>
+        <p>As a design basis for the HVAC in Company X, an upper limit of <span class="key-term">+30&deg;C at 50% RH (63 kJ/kg)</span> in summertime and lower limit of <span class="key-term">&minus;37&deg;C</span> in wintertime for the outside climate will be used.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.3 Capacity</h4>
+        <p>The target capacities to fulfill the expected need of the market for the facility are summarized in the following list. Total number of vials will be about <span class="key-term">130,000</span>.</p>
+        <p>The process capabilities are limited by the drug substance manufacture. The drug substance manufacture will need <span class="key-term">24-hour, 7-day-week control</span>. However, the filling operation will be run on an <span class="key-term">8-hour, 5-day-week</span> basis.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>HVAC 設計基準 (Design Basis):</strong> HVAC 系統的設計需考慮當地最極端的氣候條件。此案例設定夏季最高 +30&deg;C/50% RH、冬季最低 &minus;37&deg;C，暗示設施可能位於北歐（如芬蘭）。這些數據決定了 HVAC 系統的冷卻和加熱能力設計。</p>
+            <p><strong>產能規劃:</strong> 年產約 130,000 瓶——在基因治療領域屬於中等規模。藥物原料 (Drug Substance) 製造需要 24/7 監控（因為細胞培養不能中斷），但充填 (Filling) 只需 8 小時/天、5 天/週，反映了兩個工段不同的運營節奏。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 URS 中明確定義環境設計基準至關重要——如果 HVAC 設計基準設定錯誤（例如低估了夏季最高溫度），可能導致潔淨室在極端天氣下無法維持所需的溫濕度條件，進而影響產品品質和 GMP 合規性。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.2.4 Process -->
+<h3 class="section-title" id="sec8-2-4" style="font-size:1rem;">8.2.4 Process</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.2.4.1 Production Process</h4>
+        <p>The planned process for large-scale manufacturing of Product 1 and Product 2 vectors for the commercial scale process is shown below.</p>
+
+        <p><strong>Thawing and expansion of master cell banks (API clean process)</strong></p>
+        <ul>
+            <li>T-flask, roller bottles, and rocker bags</li>
+        </ul>
+
+        <p><strong>Infection of expanded cells with working virus seed stock (WVSS) (API clean process)</strong></p>
+        <ul>
+            <li>Infection of the cell suspension with WVSS</li>
+            <li>Full CPE monitored with analytical and process tools</li>
+        </ul>
+
+        <p><strong>Cell lysis and clarification of crude viral lysate (cCVL) (API clean process)</strong></p>
+        <ul>
+            <li>Benzonase&reg; and surfactant treatments to lyse the cells</li>
+            <li>Depth filtration to remove cell debris</li>
+        </ul>
+
+        <p><strong>Buffer conditioning by crossflow ultrafiltration (API clean process)</strong></p>
+        <ul>
+            <li>Diafiltration to reduce the amount of host cell&ndash; and growth medium&ndash;originated impurities</li>
+            <li>Buffer conditioning suitable for chromatography</li>
+        </ul>
+
+        <p><strong>Chromatography (API clean process)</strong></p>
+        <ul>
+            <li>Capture and polishing of recombinant adenoviruses</li>
+        </ul>
+
+        <p><strong>Crossflow ultrafiltration (API clean process)</strong></p>
+        <ul>
+            <li>Concentration</li>
+            <li>Diafiltration to remove the chromatography elution components (salts)</li>
+            <li>Change to final formulation buffer standardization of concentration</li>
+            <li>Freezing and holding in &minus;70&deg;C</li>
+        </ul>
+
+        <p><strong>Fill and finish (aseptic process)</strong></p>
+        <ul>
+            <li>Thawing final sterilization filtration prior to filling</li>
+            <li>Washing and sterilization of vials</li>
+            <li>Filling, stoppering, and crimping</li>
+        </ul>
+
+        <p><strong>Inspection, packaging, and storage</strong></p>
+        <ul>
+            <li>Checking of container seals and visual inspection</li>
+            <li>Labeling of primary containers and packaging</li>
+            <li>Freezing and storage of the drug product</li>
+        </ul>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.2 Assumptions for planning</h4>
+        <ul>
+            <li><span class="key-term">Disposable equipment</span> is used during processing of the product.</li>
+            <li>The production suite should be equipped with its own <span class="key-term">WFI facility</span> and solution manufacture.</li>
+            <li>Glass vials for sterile filling are brought into the facility ready to be washed and depyrogenated. Stoppers and aluminum crimps for filling are bought from suppliers presterilized.</li>
+        </ul>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.3 Storage in GMP, SUS</h4>
+        <p>There shall be storage areas for incoming raw materials and packaging material within T4. The GMP, SUS area shall provide storage of a batch material between process steps in the production.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.4 Inactivation</h4>
+        <p>All floor and process drains, such as product-containing waste waters, elution buffers, and so on, from the manufacturing areas shall be led to the <span class="key-term">collection tanks in the inactivation system</span>. The connection to the collection tank shall be a closed system. Inactivation shall be carried out <span class="key-term">chemically or thermally</span> in the balance tanks. After inactivation and neutralization, the drain liquid is transferred to the common drainage for transportation to the municipal wastewater treatment plant.</p>
+        <p>Floor and process drains from other areas shall be led directly to the common drainage or, when appropriate, to existing T4 balancing tank.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.5 Waste Handling</h4>
+        <p>Used equipment from the aseptic area and reusable equipment from the API areas are placed and sealed into plastic bags and decontaminated in a <span class="key-term">decontamination area (BSL2)</span>. The risk assessment will show the need for decontamination in the autoclave.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.6 CIP</h4>
+        <p>No CIP station is necessary due to the use of disposables. Elution solutions are used in order to clean columns and filter systems. A washing machine is used for washing filling-machine parts and filter holders.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.7 Washing and Sterilization</h4>
+        <p>Sterilization of reusable equipment shall be performed in an autoclave. Stoppers and aluminum crimps are bought from suppliers presterilized. Vials are to be washed and depyrogenized locally on entering the filling area.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.4.8 SIP</h4>
+        <p>No sterilization-in-place (SIP) is necessary due to the use of disposables and the supply of media, buffer, and elution solutions.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>製程流程概觀:</strong> 這是一個典型的腺病毒載體生產製程，包含以下關鍵階段：</p>
+            <ul>
+                <li><strong>上游 (Upstream):</strong> 細胞解凍 → 細胞擴增 → 病毒感染 → 細胞裂解</li>
+                <li><strong>下游 (Downstream):</strong> 深層過濾 → 超過濾/透析過濾 → 層析純化 → 濃縮/換液</li>
+                <li><strong>充填 (Fill &amp; Finish):</strong> 無菌過濾 → 充填 → 加塞 → 壓蓋</li>
+            </ul>
+            <p>注意所有上游和下游步驟都標註為「API clean process」（原料藥潔淨製程），而充填則標註為「aseptic process」（無菌製程），反映不同工段的無菌要求等級。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 在這個製程中的角色就像「免洗餐具」用於外燴活動——每次使用全新的拋棄式設備（搖擺袋、管路、過濾器、層析管柱等），用完即丟，不需要清洗和滅菌。這不僅省去了 CIP/SIP 系統的建置成本，更重要的是<strong>消除了交叉污染的風險</strong>——就像用免洗餐具永遠不會有前一位客人的殘留。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>SUS 對設施設計的簡化效果:</strong></p>
+            <ul>
+                <li><strong>無需 CIP 站</strong> — 大幅減少公用設施需求和設備佔地面積</li>
+                <li><strong>無需 SIP 系統</strong> — 不需要潔淨蒸氣系統的複雜管線配置</li>
+                <li><strong>但仍需高壓滅菌釜 (Autoclave)</strong> — 用於可重複使用設備的滅菌和 BSL2 廢棄物的滅活</li>
+            </ul>
+            <p>這是 SUS 的核心價值主張：簡化設施、加速建設、降低資本支出，但不是完全消除所有傳統設備。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>生物安全滅活要求 Biosafety Inactivation</h4>
+            <p>由於使用活病毒載體 (BSL2)，所有接觸過製程物料的廢水和排放物必須經過<strong>化學或熱滅活</strong>才能排入公共下水道。這是生物安全法規的硬性要求，在 URS 中必須明確定義滅活系統的規格。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼即使採用全拋棄式設備，仍然需要高壓滅菌釜？</li>
+                <li>如果把此設施從 BSL2 降為 BSL1，URS 中哪些需求可以簡化或省略？</li>
+                <li>「API clean process」與「aseptic process」在潔淨室等級要求上有何差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.2.5 Material Flows -->
+<h3 class="section-title" id="sec8-2-5" style="font-size:1rem;">8.2.5 Material Flows</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The risk of <span class="key-term">cross-contamination</span> shall be minimized in the layout of the plant area and in the manufacturing areas. Special attention shall be put on straight flows so that possibility for mix-ups between products from different process phases or different products is minimized. <span class="key-term">Line clearance</span> shall be performed between production runs of different products. The facility shall be designed for sequential batches of cells to be expanded in cell culture at the same time. Attention shall also be put on keeping the BSL2 requirements in the layout.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.5.1 Traffic to and from T4</h4>
+        <p>The incoming raw materials shall be transported to the goods-receiving area of T4. In the same way, the final products are removed for transportation from the same T4 building. Rejected material is transported to incineration.</p>
+        <p>The following shall be delivered to or brought out of T4:</p>
+        <p><strong>Incoming:</strong></p>
+        <ul>
+            <li>Raw material for the process</li>
+            <li>Utensils, disposables, and components for production</li>
+            <li>Clothing for cleanrooms</li>
+            <li>Packaging materials</li>
+            <li>Material for cleaning of cleanrooms</li>
+        </ul>
+        <p><strong>Outgoing:</strong></p>
+        <ul>
+            <li>Final products in cardboard boxes</li>
+            <li>Clothing from cleanrooms</li>
+            <li>Production waste</li>
+            <li>Additional waste</li>
+        </ul>
+        <p>Material flows for the production shall be separated from the other material flows.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.5.2 Storage areas in GMP, SUS and T4</h4>
+        <p>The main function of the storage areas in T4 is to receive and store the raw material needed in production and daily work and, when approved, to distribute it for use. Released final products shall be stored and dispatched to the customer in pallets or smaller packages. The storage areas also work as storage for hazardous and medical material and collection points for waste. The storage areas shall be designed for storage of at least <span class="key-term">two months' needs</span> in production and consumption. The storage for finished products shall be dimensioned for <span class="key-term">six months' production</span>.</p>
+        <p>There shall be storage areas for the following materials and products:</p>
+        <ul>
+            <li>Incoming raw material, packaging material, and pallets (existing)</li>
+            <li>Raw material in cold storages (MCB in liquid nitrogen and MVSS in freezer)</li>
+            <li>Intermediates during process (cold storages)</li>
+            <li>Quarantined material and packaging material (existing)</li>
+            <li>Approved bulk material and packaging material (existing)</li>
+            <li>Rejected raw material and packaging material (existing)</li>
+            <li>Finished products (freezers)</li>
+            <li>Quarantined finished products (existing freezers)</li>
+            <li>Approved finished products (existing freezers)</li>
+            <li>Rejected finished products</li>
+            <li>Reference samples (existing)</li>
+            <li>Spare parts (existing)</li>
+            <li>Samples for stability studies (existing)</li>
+            <li>Lining materials and used boxes (existing)</li>
+        </ul>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.5.3 Material Airlocks</h4>
+        <p>Transport of material or products between unclassified and classified rooms and rooms with different classifications shall be done through <span class="key-term">extracted airlocks or pass-throughs</span>. The airlocks shall be of the one-way type because personnel and the material flow shall be unidirectional. The material or product shall be unpacked and sprayed with ethanol inside the airlock when transporting to a room with class C classification. Filling components passed into the class B area shall be washed and depyrogenated, or packages of presterilized components shall be subject to a <span class="key-term">vaporized hydrogen peroxide (VHP) cycle</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Unidirectional Flow (單向流動):</strong> 物料和人員只能沿一個方向移動，避免乾淨物料與廢棄物料交叉。這是 GMP 設施設計的基本原則之一，也是防止交叉污染 (Cross-Contamination) 的關鍵。</p>
+            <p><strong>Line Clearance (生產線清場):</strong> 在不同產品批次之間進行的清潔和檢查程序，確保上一批次的物料不會殘留在生產線上。在 SUS 設施中，由於使用拋棄式設備，line clearance 的範圍和複雜度會大幅降低。</p>
+            <p><strong>Material Airlock (物料氣鎖):</strong> 連接不同潔淨等級區域的過渡空間，用於物料傳遞。氣鎖內維持壓差，防止低潔淨區的空氣進入高潔淨區。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>物料流管理就像機場的行李處理系統——出境行李和入境行李走不同的通道，不會交叉。「Airlock」就像機場的安檢區——所有進入管制區的物品必須經過檢查和處理（拆包、噴酒精消毒或 VHP 滅菌），才能進入更乾淨的區域。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>儲存需求設計:</strong> URS 要求原物料儲存量為至少<strong>兩個月</strong>的生產需求，成品儲存為<strong>六個月</strong>的產量。成品儲存需求較大，因為基因治療產品需要在 &minus;70&deg;C 冷凍儲存，且放行檢測需要較長時間。這些數字直接決定了冷凍櫃和液態氮儲存設施的規模。</p>
+            <p><strong>SUS 對儲存的特殊影響:</strong> 使用拋棄式設備意味著需要大量儲存空間來存放一次性耗材（袋子、管路、過濾器等），這是傳統不鏽鋼設施不需要考慮的。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 URS 要求物料氣鎖必須是「one-way type」？如果允許雙向通行會有什麼風險？</li>
+                <li>進入 C 級區域的物料需要「噴灑酒精」，而進入 B 級區域的充填組件需要「清洗除熱源」或「VHP 循環」——為什麼要求不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.2.6 Personnel Flows -->
+<h3 class="section-title" id="sec8-2-6" style="font-size:1rem;">8.2.6 Personnel Flows / 8.2.7 Training</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.2.6 Personnel Flows</h4>
+        <p>The risk of cross-contamination shall also be minimized in the personnel flows. The main office building area has existing entrance, lunchroom, offices, and other social rooms.</p>
+        <p>There shall be <span class="key-term">emergency exits</span> from the T4 and GMP, SUS buildings. If possible, the use of emergency exits should not compromise contained operation.</p>
+        <p>Personnel lockers and changing rooms for factory suit shall also be situated in T4. There shall be <span class="key-term">authorization control</span> at the entrance to the manufacturing area, allowing only authorized personnel to enter. The working areas should be visible by inspectors and QA personnel for observation of the activities.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.6.1 Gowning</h4>
+        <p>Personnel working in the production areas and in laboratories shall wear suitable protective clothes for classified rooms and working in a BSL2 containment area. Personnel working in office areas, such as the central facility control room, may wear common clothes.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.6.2 Personnel Airlocks</h4>
+        <p>The first main objective with airlocks is to maintain a positive pressure in the classified area and, by that, ensure a proper separation of the individual rooms or areas when only cleanliness grades are to be considered. The second main objective with airlocks is to prevent contaminants from BSL2 active rooms from spreading to nonactive cleaner areas. The personnel entering or leaving the cleanrooms shall go through airlocks where gowning is performed to suit the classified area gowns. The airlocks can be of the one-way type. There should be <span class="key-term">unidirectional personnel flow</span> in the active areas.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.6.3 Estimated Number of Personnel</h4>
+        <p>About 8&ndash;11: cell culture rooms, 2&ndash;3 persons; downstream, 3&ndash;4 persons; filling, 3&ndash;4.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.2.7 Training</h4>
+        <p>In order to assure that the personnel have updated information of their working area, all personnel shall be trained in <span class="key-term">GMP procedures</span> and in using SOPs and instructions concerning them.</p>
+        <p>Sufficient training for the personnel shall be provided by the supplier of every process equipment and utility and automation system. The education level shall be maintained with additional training during the whole lifecycle of the plant.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Personnel Airlock 的雙重目的:</strong></p>
+            <ul>
+                <li><strong>GMP 目的:</strong> 維持潔淨區的正壓差，防止外界空氣中的微粒和微生物進入</li>
+                <li><strong>BSL2 目的:</strong> 防止活性區 (Active Areas，即處理活病毒的區域) 的生物性污染物擴散到非活性區</li>
+            </ul>
+            <p>這兩個目的有時會產生衝突——GMP 要求潔淨區正壓（空氣從乾淨區往髒區流），而 BSL2 要求活性區負壓（空氣從外往內流，防止生物危害物外洩）。設施設計必須巧妙平衡這兩個需求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>人員氣鎖就像「太空站的氣密艙」——太空人從外太空（非管控區）進入太空站（潔淨區）前，必須在氣密艙中換裝、加壓。同樣，操作人員從辦公區進入潔淨室前，必須在更衣區逐層穿上無塵衣。差別在於，這裡還要考慮 BSL2 的反向需求——有些區域的空氣流向要「向內」而非「向外」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>緊急出口與生物安全的平衡:</strong> URS 中特別提到「emergency exits should not compromise contained operation」——這意味著即使在緊急疏散時，也要盡可能維持生物安全的圍阻。這在實務設計中是一個挑戰，需要特殊的氣鎖設計或連鎖控制系統。</p>
+            <p><strong>人力規劃:</strong> 僅需 8-11 人即可運行整個設施，反映了 SUS 設施的<strong>人力效率優勢</strong>——不需要大量人力進行設備清洗、組裝和滅菌驗證等工作。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>GMP 正壓需求和 BSL2 負壓需求如何在同一設施中共存？請思考可能的設計方案。</li>
+                <li>為什麼 URS 要求「工作區域應該讓檢查員和 QA 人員可以觀察」？這對設施設計有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.3 Regulatory Requirements -->
+<h2 class="section-title" id="sec8-3">8.3 Regulatory Requirements</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The production facilities shall be designed to meet applicable requirements in the <span class="key-term">US CFR, EU GMP, PIC/S</span>, and applicable EU directives and Finnish legislation. All components and systems shall be designed and commissioned according to <span class="key-term">GEP, GAMP, and ASME standards</span> and shall have a CE mark and a declaration of conformity.</p>
+        <p>The substances used and produced at the site shall meet the effective versions of monographs in the <span class="key-term">Ph. Eur., USP</span>, or registered specifications. The compressed air and gases shall meet the demands in <span class="key-term">ISO 8573-1</span>.</p>
+        <p>The cleanrooms shall be designed, constructed, and commissioned according to <span class="key-term">ISO 14644 and 14698</span>, to meet cGMPs above.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>多重法規合規框架:</strong></p>
+            <ul>
+                <li><strong>US CFR:</strong> 美國聯邦法規，特別是 21 CFR Part 211 (藥品 cGMP) 和 Part 600 (生物製品)</li>
+                <li><strong>EU GMP:</strong> 歐盟 GMP 指南，包括 Annex 1 (無菌藥品製造)</li>
+                <li><strong>PIC/S:</strong> 藥品稽查合作計畫，提供全球一致的 GMP 稽查標準</li>
+                <li><strong>Finnish Legislation:</strong> 確認設施位於芬蘭，需遵守當地法規</li>
+            </ul>
+            <p><strong>關鍵標準:</strong></p>
+            <ul>
+                <li><strong>ISO 14644:</strong> 潔淨室和相關控制環境的分級與測試標準</li>
+                <li><strong>ISO 14698:</strong> 潔淨室的生物污染控制標準</li>
+                <li><strong>ISO 8573-1:</strong> 壓縮空氣品質標準</li>
+                <li><strong>GAMP:</strong> 良好自動化製造實務，用於電腦化系統驗證</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 URS 中列出所有適用的法規和標準非常重要——這些構成了設計的<strong>法規邊界條件</strong>。如果遺漏了某個適用法規，可能導致設施建成後無法通過監管機構的查廠檢查 (Regulatory Inspection)。</p>
+            <p>CE 標誌 (CE Mark) 的要求確認設備須符合歐盟安全指令，是在歐盟境內使用設備的法律要求。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果此設施的產品也要銷往日本市場，URS 的法規需求章節需要增加哪些內容？</li>
+                <li>ISO 14644 和 EU GMP 在潔淨室分級上有何差異？為什麼 URS 中要同時引用兩者？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4 User Requirements -->
+<h2 class="section-title" id="sec8-4">8.4 User Requirements</h2>
+
+<!-- 8.4.1 Functional Area Requirements -->
+<h3 class="section-title" id="sec8-4-1" style="font-size:1rem;">8.4.1 Functional Area Requirements</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The following areas shall be available in the manufacturing suite:</p>
+        <ol>
+            <li>Material receipt and product dispatch</li>
+            <li>Storage for incoming materials (room temp and cold)</li>
+            <li>Quarantine area</li>
+            <li>QC laboratory control area</li>
+            <li>Released and rejected material storages</li>
+            <li>Weighing room (optional)</li>
+            <li>Master cell bank storage</li>
+            <li>Master virus seed stock storage</li>
+            <li>Airlocks for personnel and materials going between areas of different classification</li>
+            <li>Personnel locker room/changing room</li>
+            <li>Column packing room</li>
+            <li>Cell culture room, clean</li>
+            <li>Cell culture room, infected (upstream)/harvest</li>
+            <li>Purification room (downstream)</li>
+            <li>Filter integrity testing</li>
+            <li>Filling</li>
+            <li>Visual inspection, labeling, and packaging</li>
+            <li>Washing area</li>
+            <li>Decontamination</li>
+            <li>Clean area</li>
+            <li>Intermediate storage</li>
+            <li>Media/buffer preparation area</li>
+            <li>Storage for the final drug product (&minus;70&deg;C)</li>
+            <li>Area for production utilities</li>
+            <li>Area for waste inactivation</li>
+            <li>Technical space for building HVAC and cleanroom HVAC</li>
+            <li>Area for cleanroom clothes</li>
+            <li>Area for maintenance equipment</li>
+            <li>Storage for cleanroom cleaning equipment</li>
+            <li>Control room/IT (CNC&mdash;external to change room routine)</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>功能區域清單 (Functional Area List):</strong> 這是 URS 的核心內容之一——列出設施中必須包含的所有功能區域。這份清單直接驅動設施的平面佈局 (Layout) 設計。</p>
+            <p>值得注意的幾個特殊區域：</p>
+            <ul>
+                <li><strong>#12 vs #13:</strong> 細胞培養分為「clean」和「infected」兩個房間——這是 BSL2 和病毒生產的特殊需求，感染前和感染後的操作必須在不同房間進行</li>
+                <li><strong>#19 Decontamination:</strong> BSL2 設施必備，用於活病毒廢棄物的滅活處理</li>
+                <li><strong>#25 Waste Inactivation:</strong> 與 #19 配合，處理液態生物性廢棄物</li>
+                <li><strong>#30 Control Room (CNC):</strong> 控制室設在更衣流程之外，操作人員不需穿潔淨衣即可監控生產</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>此清單共列出<strong>30 個功能區域</strong>，足見即使是採用 SUS 的設施，空間規劃仍然相當複雜。SUS 雖然省去了 CIP/SIP 設備房，但增加了拋棄式耗材的儲存空間和廢棄物處理區域。</p>
+            <p>注意 #6「Weighing room (optional)」——在 SUS 設施中，許多溶液由供應商預先配製好直接以袋裝供應，因此秤量室可能不是必需的。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 情境中，如果要在同一設施中生產多個客戶的基因治療產品，功能區域清單需要額外考慮：專用 vs 共用區域的劃分、不同客戶產品的儲存隔離、以及更靈活的 changeover 策略。SUS 的優勢在此更加明顯——換產品時只需更換一次性耗材，而非清洗整套不鏽鋼系統。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4.2 Utilities and Services -->
+<h3 class="section-title" id="sec8-4-2" style="font-size:1rem;">8.4.2 Utilities and Services</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Type</th><th>Purpose</th><th>Area</th><th>Required?</th></tr>
+            <tr><td>Compressed air</td><td>Instrument air</td><td>All</td><td>Yes</td></tr>
+            <tr><td>CO<sub>2</sub></td><td>Rocker system</td><td>Fermentation</td><td>Yes</td></tr>
+            <tr><td>O<sub>2</sub></td><td>Rocker system</td><td>Fermentation</td><td>Yes</td></tr>
+            <tr><td>Electrical</td><td>Facility power</td><td>All</td><td>Yes</td></tr>
+            <tr><td>Process air</td><td>Rocker system</td><td>Fermentation</td><td>Yes</td></tr>
+            <tr><td>Plant steam</td><td>Heating of autoclaves, WFI</td><td>Decontamination</td><td>Yes</td></tr>
+            <tr><td>Clean steam</td><td>Sterilization</td><td>Sterilization</td><td>Yes</td></tr>
+            <tr><td>WFI</td><td>Washing machine, final rinse</td><td>Washing</td><td>Yes</td></tr>
+            <tr><td>Tap water</td><td>Washing, PW production</td><td>Changing rooms, utility production, process equipment</td><td>Yes</td></tr>
+            <tr><td>Hot water</td><td>Washing</td><td>Changing rooms</td><td>Yes</td></tr>
+            <tr><td>Chilled water</td><td>Cooling</td><td>HVAC</td><td>Yes</td></tr>
+            <tr><td>Drainage</td><td>Common wastewater</td><td>Changing rooms, utility production, process equipment</td><td>Yes</td></tr>
+            <tr><td>Waste active</td><td>Process waste solutions</td><td>Manufacturing areas</td><td>Yes</td></tr>
+            <tr><td>Waste inactive</td><td>Process waste (including solids)</td><td>Manufacturing areas</td><td>Yes</td></tr>
+            <tr><td>Liquid nitrogen</td><td>Cooling down and freezing of solutions</td><td>Storage before filling</td><td>Yes</td></tr>
+            <tr><td>Vacuum</td><td>&mdash;</td><td>&mdash;</td><td>No</td></tr>
+            <tr><td>Heating</td><td>Temperature control</td><td>Radiators (already installed), HVAC</td><td>Yes, existing municipal heating system</td></tr>
+            <tr><td>Solvents (EEx)</td><td>&mdash;</td><td>&mdash;</td><td>No</td></tr>
+            <tr><td>VHP</td><td>&mdash;</td><td>&mdash;</td><td>Has to be considered</td></tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>公用設施分類:</strong></p>
+            <ul>
+                <li><strong>製程氣體:</strong> CO<sub>2</sub>、O<sub>2</sub>、製程空氣——用於搖擺袋 (Rocker) 細胞培養系統</li>
+                <li><strong>水系統:</strong> WFI（注射用水）、純水 (PW)、自來水、冷凍水——各有不同用途和品質等級</li>
+                <li><strong>蒸氣:</strong> 工廠蒸氣（加熱用）和潔淨蒸氣（滅菌用）——SUS 設施仍需潔淨蒸氣用於高壓滅菌釜</li>
+                <li><strong>廢水:</strong> 分為「活性廢水」(Waste active) 和「非活性廢水」(Waste inactive)——BSL2 設施的關鍵區分</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>SUS 並未完全消除公用設施需求:</strong> 從表中可以看到，雖然省去了 CIP 系統，但仍需要 WFI（清洗用）、潔淨蒸氣（高壓滅菌釜用）、液態氮（冷凍儲存用）等。這提醒我們：SUS 簡化了製程接觸面的清潔和滅菌，但設施的基礎公用設施仍然是必需的。</p>
+            <p><strong>VHP「Has to be considered」:</strong> 氣化過氧化氫 (VHP) 用於表面除污和氣鎖消毒，此處標註為「需考慮」而非確定需要，表示在後續詳細設計階段才會決定是否採用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 設施仍需要潔淨蒸氣 (Clean Steam)？它用在哪些地方？</li>
+                <li>「Waste active」和「Waste inactive」的分流管理為什麼重要？如果混合處理會有什麼後果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4.3 Cleanroom and HVAC -->
+<h3 class="section-title" id="sec8-4-3" style="font-size:1rem;">8.4.3 Cleanroom and HVAC</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.4.3.1 Room Classification</h4>
+        <p>The rooms are classified according to the needs of the process and BSL2 containment requirements. The cleanrooms are designed according to <span class="key-term">ISO 14644-1</span> but validated, operated, and monitored according to <span class="key-term">EU GMP and PIC/S</span>. The protection classes of electrical equipment in the cleanrooms shall be <span class="key-term">IP54</span> and in other areas according to room activity.</p>
+
+        <p><strong>Table 8.4.3.1-1 Sample Room Classifications</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Activity</th><th>Class (ISO 14644-1)</th><th>Grade (EU GMP)</th></tr>
+            <tr><td>UDAF-hood and aseptic filling</td><td>Core area 5</td><td>A</td></tr>
+            <tr><td>Aseptic filling room</td><td>7</td><td>B</td></tr>
+            <tr><td>Aseptic formulation rooms, chromatography and filter stations, cell growth, buffer preparation</td><td>8</td><td>C</td></tr>
+            <tr><td>Sampling and weighing of raw material, clean corridors, and washing rooms</td><td>8 (at rest)</td><td>D</td></tr>
+            <tr><td>Visitors corridors, clean utility production, utility production, packaging hall, and all other controlled production areas</td><td>Unclassified</td><td>Unclassified</td></tr>
+            <tr><td>HVAC, utility production, social areas</td><td>Unclassified</td><td>Unclassified</td></tr>
+        </table>
+        </div>
+        <p>ISO classes are, unless separately mentioned, defined as during operation.</p>
+        <p>Airlocks shall be clean-room classified according to cleaner classification when at rest.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.3.2 Ventilation Equipment</h4>
+        <p>The ventilation system is divided into separate systems, according to use (one for cleanrooms and one for technical basement). Space will be reserved for future expansion of ventilation systems, which will serve cleanrooms on the first floor.</p>
+        <p>The cleanroom ventilation systems consist of fresh-air-handling units to obtain the air changes specified for each room or classified area. The ventilation system shall be designed as a <span class="key-term">"full fresh air" system</span> in order to ensure the BSL2 and prevent cross-contamination in the production suite. The cleanrooms and technical spaces with high heat generation shall be equipped with separate circulation air-handling units to maintain room temperature within acceptable limits. <span class="key-term">Fan filter units</span> shall be used in nonactive (BSL2) cleanrooms. There shall be a redundancy in the HVAC for the primary fan motors at a minimum. Due to the fact that operators will be in the cleanroom only eight hours a day, there shall be a possibility to have a <span class="key-term">lower airflow at night</span>.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.3.3 Air Filtration</h4>
+        <p>The air for basement ventilation is filtered in three steps: G4, F7, and F9 filter, according to EN 779, within the air-handling unit.</p>
+        <p>Cleanroom air is prefiltered in four steps: G4, F7, F9, and H12, according to EN 779 and EN 1822, within the air-handling units. The terminal filter is minimum <span class="key-term">H13</span>.</p>
+        <p>Exhaust air from the area where live virus is processed is filtered in two steps: <span class="key-term">F7 and H14 filter</span>. Exhaust air from the basement is F7 filtered.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>ISO vs EU GMP 潔淨室分級對照:</strong></p>
+            <ul>
+                <li><strong>ISO 5 / Grade A:</strong> 無菌操作核心區（UDAF 層流罩下），微粒數最嚴格</li>
+                <li><strong>ISO 7 / Grade B:</strong> 無菌操作背景環境</li>
+                <li><strong>ISO 8 / Grade C:</strong> 無菌製造的一般操作區</li>
+                <li><strong>ISO 8 at rest / Grade D:</strong> 較低風險操作區（靜態時達到 ISO 8）</li>
+            </ul>
+            <p><strong>Full Fresh Air System (全新風系統):</strong> 所有送入潔淨室的空氣都是經過過濾的新鮮空氣，不回收再利用。這是 BSL2 設施的要求——如果回收空氣，可能將活病毒從一個房間帶到另一個房間，造成交叉污染。</p>
+            <p><strong>H14 排氣過濾:</strong> 處理活病毒區域的排氣必須經過 HEPA H14 過濾（效率 ≥ 99.995%），防止活病毒顆粒排入大氣。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>HVAC 的「全新風系統」就像醫院負壓隔離病房的通風——每一口送進去的空氣都是新鮮的，每一口排出來的空氣都經過 HEPA 過濾。不像一般辦公室的空調會回收室內空氣。這確保了「進去的空氣是乾淨的，出來的空氣也是安全的」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>夜間降低風量:</strong> URS 允許在非操作時段降低送風量——這是一個重要的<strong>節能設計</strong>考量。全新風系統的能耗極高（因為所有空氣都需要加熱/冷卻和過濾），夜間降低風量可以顯著降低運營成本。但必須確保降低風量後仍能維持必要的壓差和潔淨度（at rest 狀態）。</p>
+            <p><strong>風機冗餘 (Redundancy):</strong> 主風機必須有備用——如果潔淨室 HVAC 風機故障，將導致壓差喪失，可能危及產品品質和 BSL2 安全性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼活病毒處理區的排氣需要 H14 (99.995%) 而非 H13 (99.95%)？效率差異 0.045% 在實際意義上代表什麼？</li>
+                <li>「Full fresh air system」相比「回風系統」的主要缺點是什麼？在哪些情況下可以考慮部分回風？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4.4 Control and Automation System -->
+<h3 class="section-title" id="sec8-4-4" style="font-size:1rem;">8.4.4 Control and Automation System</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.4.4.1 Process Control System</h4>
+        <p>The process equipment is of the <span class="key-term">stand-alone type</span>, which means that every unit has its own control system. The system shall consist of a local PLC/PC and an HMI and it shall be possible to handle at least <span class="key-term">three user levels</span>. Every user shall have an individualized user name and password to restrict the access and maintain the <span class="key-term">audit trail</span>. The ability of a control system to communicate with a <span class="key-term">SCADA</span> system shall be stated in the UR. There shall be electronic records from the process but no electronic batch records.</p>
+        <p>All utility systems and appropriate equipment shall have separate control systems, which control production, distribution, and quality of the utility. It shall be possible to connect critical parameters to a SCADA system.</p>
+        <p>There should be an overall data collection and viewing system for the entire production plant.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.4.2 Facility Monitoring System</h4>
+        <p>The cleanrooms shall have a <span class="key-term">facility monitoring system (FMS)</span> consisting of a PLC and an HMI. The FMS shall monitor the critical parameters for room conditions [e.g. temperature, pressure, viable and nonviable particles, microbial presence, and moisture (some areas)] in every classified room. The critical refrigeration devices also have to be connected to the FMS. The whole GMP, SUS suite is controlled by the <span class="key-term">building monitoring system (BMS)</span>. Cleanrooms in grades A and B will be equipped with a <span class="key-term">continuous online particle monitoring system</span>. The operational C grade areas are also equipped with online particle monitoring (e.g., manifold system).</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Stand-alone Control (獨立控制):</strong> 每台設備有自己的 PLC/PC 和 HMI，而非由中央系統統一控制。這在 SUS 設施中很常見，因為拋棄式設備供應商通常提供整合好的設備控制系統。</p>
+            <p><strong>三級使用者權限:</strong> 通常為 Operator（操作員）、Supervisor（主管）、Administrator（管理員），每級有不同的操作權限。這是 21 CFR Part 11 / EU GMP Annex 11 對電子記錄的基本要求。</p>
+            <p><strong>Audit Trail (稽核追蹤):</strong> 系統必須記錄所有操作、修改、和數據存取的時間戳和操作者身份。這是數據完整性 (Data Integrity) 的核心要素。</p>
+            <p><strong>FMS vs BMS:</strong> FMS 專注於 GMP 關鍵參數（潔淨室壓差、微粒、溫度等），BMS 負責整體建築的設施控制（照明、電力、一般 HVAC 等）。兩者通常是獨立系統，但可以交換數據。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>連續線上粒子監控:</strong> A 級和 B 級區域必須配備連續線上粒子監控——這是 EU GMP Annex 1 的要求。C 級區域使用多歧管系統 (Manifold System)，由一台粒子計數器輪流採樣多個採樣點，是一種成本效益較高的方案。</p>
+            <p>URS 中指出「electronic records but no electronic batch records」——表示雖然有電子數據記錄，但批次記錄仍以紙本為主。這在 2014 年是常見做法，但現今趨勢已朝向電子批次記錄 (EBR) 發展。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 URS 要求設備控制系統具備與 SCADA 通訊的能力，即使目前不使用 SCADA？</li>
+                <li>「Stand-alone」設備控制與「集中式」控制各有何優缺點？在 SUS 設施中為何偏好前者？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4.5 HSE Requirements -->
+<h3 class="section-title" id="sec8-4-5" style="font-size:1rem;">8.4.5 Health, Safety, and Environmental Requirements</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.4.5.1 General</h4>
+        <p>An <span class="key-term">HSE risk analysis</span> shall be performed for the plant. Special attention shall be put on taking care of the environment. Contribution to the sustainable development shall be made by using natural resources rationally and by preventing health and environmental damage caused by waste. The generated waste shall primarily be reused, secondarily used as energy, and only as a final solution be transported to the dump. Special attention shall also be put on <span class="key-term">biosafety containment</span>.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.5.2 Air</h4>
+        <p>Air from the production areas shall be filtered before leaving the building.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.5.3 Drain</h4>
+        <p>After inactivation, the drain liquid is processed further and neutralized in the municipal effluent plant together with all other drain systems.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.5.4 Material</h4>
+        <p>Waste material (e.g., biowaste, cardboard, plastics, paper, glass, and other waste) shall be sorted and reused if possible. If not, the material shall be transported to a dump or burned.</p>
+        <p><span class="key-term">Hazardous and dangerous waste</span> shall be gathered separately and moved to a storage area for hazardous waste. The waste shall be transported to incineration. Hazardous waste can be, for example, medical waste from production and equipment or returned medicines.</p>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.5.5 Emergency Systems</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Type</th><th>Purpose</th><th>Area</th><th>Required</th></tr>
+            <tr><td>Fire alarm</td><td>Personnel safety</td><td>All</td><td>Yes</td></tr>
+            <tr><td>Intruder alarm system</td><td>Security / Biosecurity</td><td>Outer walls</td><td>Yes</td></tr>
+            <tr><td>Sprinkler</td><td>Fire control</td><td>&mdash;</td><td>No</td></tr>
+            <tr><td>Cell phones</td><td>Personnel safety</td><td>All</td><td>Yes</td></tr>
+            <tr><td>Oxygen sensors</td><td>Personnel safety</td><td>In liquid N<sub>2</sub>, CO<sub>2</sub> presence, excess O<sub>2</sub></td><td>Yes</td></tr>
+            <tr><td>UPS (uninterrupted power supply)</td><td>Business contingency, Maintenance of bio-containment, Personnel safety</td><td>UDAF-hood, HVAC FMS including PMS, control systems</td><td>Yes</td></tr>
+            <tr><td>Diesel generator</td><td>Business contingency, Maintenance of bio-containment, Personnel safety</td><td>UDAF-hood, HVAC FMS including PMS, refrigerators, and freezers</td><td>Yes</td></tr>
+            <tr><td>Waste active failure alarm</td><td>Business contingency, Maintenance of bio-containment, Personnel safety, Pollution control</td><td>Basement</td><td>Yes</td></tr>
+            <tr><td>Leak and other appropriate detectors</td><td>To avoid damage to equipment, HSE issues</td><td>Basement</td><td>Yes</td></tr>
+        </table>
+        </div>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.4.5.6 Noise</h4>
+        <p>A risk assessment regarding noise levels shall be performed. Both internal and external noise shall be analyzed.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>HSE (健康、安全、環境) 風險分析:</strong> 這是設施設計中與 GMP 同等重要但常被忽視的面向。URS 要求進行系統性的 HSE 風險評估，涵蓋：</p>
+            <ul>
+                <li><strong>健康 (Health):</strong> 人員暴露於生物危害物質的風險</li>
+                <li><strong>安全 (Safety):</strong> 液態氮窒息風險、高壓蒸氣燙傷風險等</li>
+                <li><strong>環境 (Environment):</strong> 排氣過濾、廢水滅活、廢棄物分類處理</li>
+            </ul>
+            <p><strong>廢棄物處理優先順序:</strong> 再利用 → 能源回收 → 最後才是掩埋。這反映了歐盟的永續發展法規要求，對 SUS 設施尤為重要，因為拋棄式設備會產生大量塑膠廢棄物。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>緊急系統的層次化設計:</strong></p>
+            <ul>
+                <li><strong>UPS (不斷電系統):</strong> 提供短時間（通常 15-30 分鐘）的備用電力，讓關鍵設備（UDAF 罩、HVAC、監控系統）有序關機或切換到柴油發電機</li>
+                <li><strong>柴油發電機:</strong> 提供長時間備用電力，覆蓋範圍更廣（包括冷凍櫃和冷藏庫）</li>
+                <li>兩者配合形成「無縫供電」：UPS 負責瞬間切換，柴油發電機負責長期供電</li>
+            </ul>
+            <p><strong>注意：不需要灑水系統 (Sprinkler = No)</strong>——這可能是因為潔淨室中灑水會造成嚴重的微粒和微生物污染，以及 BSL2 區域的水可能被生物污染。替代方案可能是惰性氣體滅火系統。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>緊急供電系統就像醫院的電力備援——手術室的電力不能中斷，即使外面停電了，UPS 立刻接手供電，同時柴油發電機在幾十秒內啟動提供長期電力。SUS 設施的 UDAF 罩和 HVAC 就像手術室的無影燈和層流系統——一旦斷電，無菌環境就會被破壞。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>SUS 設施產生的大量塑膠廢棄物如何與「永續發展」目標平衡？有哪些可行的解決方案？</li>
+                <li>為什麼需要「氧氣感測器」？液態氮在什麼情況下會對人員造成危險？</li>
+                <li>如果潔淨室不使用灑水系統，應該採用什麼替代消防方案？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4.6 Maintenance and Service -->
+<h3 class="section-title" id="sec8-4-6" style="font-size:1rem;">8.4.6 Maintenance and Service</h3>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>A <span class="key-term">maintenance program</span> for the whole suite shall be developed before start of production. The program shall include the facility and technical equipment within, the ventilation system and equipment, the production equipment, and all laboratory equipment. The maintenance system shall produce, in advance, weekly reports of equipment that needs service.</p>
+        <p>All equipment in the area shall be assigned an <span class="key-term">item number</span>, which shall be fed to the maintenance system. The maintenance personnel are responsible for service of all equipment. Two times a year (summer and winter) there shall be <span class="key-term">production stops for maintenance</span> of the production equipment.</p>
+        <p>Spare parts for process equipment for <span class="key-term">two years of continuous production</span> shall be stored.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>預防性維護 (Preventive Maintenance):</strong> URS 要求在生產開始前就建立完整的維護計畫。每件設備都有唯一的項目編號 (Item Number)，確保可追溯性。系統能自動產生週報，提前通知需要維護的設備。</p>
+            <p><strong>計畫性停機 (Planned Shutdown):</strong> 每年夏季和冬季各一次停機維護——選擇夏季和冬季可能是考慮到可以同時進行 HVAC 系統的季節性維護。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>備品策略:</strong> 儲存兩年份的備品——這對 SUS 設施尤其重要，因為一次性耗材的供應鏈中斷會直接影響生產。備品計畫必須涵蓋不僅是設備零件，還有拋棄式組件的安全庫存。</p>
+            <p>在 SUS 設施中，維護需求與傳統不鏽鋼設施有很大不同：不需要管路和容器的定期重新鈍化 (Re-passivation)、不需要墊片的定期更換、不需要焊接接頭的定期檢查——但需要確保搖擺裝置、蠕動泵驅動器等支撐設備的正常運作。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.5 Documentation Requirements (p120) -->
+<h2 class="section-title" id="sec8-5">8.5 Documentation Requirements / 8.6 Validation and Testing</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <h4 style="color:var(--primary-blue); margin-top:0.5rem;">8.5 Documentation Requirements</h4>
+        <h4 style="color:var(--primary-blue); margin-top:1rem;">8.5.1 General</h4>
+
+        <h4 style="color:var(--primary-blue); margin-top:1rem;">8.5.1.1 Version Handling</h4>
+
+        <h4 style="color:var(--primary-blue); margin-top:1rem;">8.5.2 Risk Assessment</h4>
+
+        <h4 style="color:var(--primary-blue); margin-top:1rem;">8.5.3 SOPs</h4>
+
+        <h4 style="color:var(--primary-blue); margin-top:1.5rem;">8.6 Validation and Testing</h4>
+
+        <p><em>(Note: Sections 8.5 and 8.6 are listed in the table of contents on p108 as part of the URS structure, with content on p120. These sections serve as placeholders indicating that the URS document must address documentation requirements, version control, risk assessment, SOPs, and validation/testing plans.)</em></p>
+    </div>
+
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>文件需求 (Documentation Requirements):</strong> URS 的最後幾節提醒我們，設施專案不僅僅是硬體和設備——文件體系同樣是 URS 的一部分。URS 應定義：</p>
+            <ul>
+                <li><strong>版本管理 (Version Handling):</strong> 所有文件的版本控制規則</li>
+                <li><strong>風險評估 (Risk Assessment):</strong> 要求在設計階段進行哪些風險評估</li>
+                <li><strong>SOPs:</strong> 需要在生產前完成哪些標準作業程序</li>
+                <li><strong>驗證與測試 (Validation &amp; Testing):</strong> IQ/OQ/PQ 的基本策略和範圍</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這些「佔位符」式的章節提醒 URS 撰寫者：即使在初始版本中無法完全定義所有細節，也要在 URS 的結構中為這些主題保留位置。隨著專案推進，這些章節會被逐步充實。這體現了 URS 作為「活文件」的特性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼驗證策略需要在 URS 階段就開始規劃，而不是等到設備安裝完成後？</li>
+                <li>URS 中的風險評估要求與後續的 FMEA 或 HACCP 分析有何關係？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>URS 的定位:</strong> User Requirement Specification 是 SUS 設施專案的基礎文件，定義「需要什麼」而非「如何做到」，是後續所有設計和驗證活動的起點</li>
+        <li><strong>範例場景:</strong> 本 URS 範例描述的是一個用於基因治療腺病毒載體生產的 BSL2 級 SUS 設施，需同時符合 EU GMP 和 FDA cGMP</li>
+        <li><strong>SUS 對設施設計的影響:</strong> 免去 CIP/SIP 系統，但仍需高壓滅菌釜、WFI 系統、潔淨蒸氣等基礎公用設施；同時增加了拋棄式耗材的儲存需求</li>
+        <li><strong>BSL2 的設計挑戰:</strong> 需要全新風 HVAC 系統、排氣 HEPA H14 過濾、廢水/廢棄物滅活系統、以及 GMP 正壓與 BSL2 負壓之間的壓差平衡</li>
+        <li><strong>潔淨室分級:</strong> 從 Grade A (ISO 5) 到 Unclassified，每個功能區域都需要明確定義其潔淨等級，且需同時參照 ISO 14644 和 EU GMP 標準</li>
+        <li><strong>控制與監控:</strong> 獨立設備控制 + SCADA 整合能力 + FMS/BMS 環境監控，構成完整的自動化架構</li>
+        <li><strong>HSE 與緊急系統:</strong> UPS + 柴油發電機的分層供電保障、廢棄物分類與滅活處理、氧氣偵測器等安全措施是 BSL2 SUS 設施的必備要素</li>
+        <li><strong>活文件概念:</strong> URS 是隨專案演進持續更新的文件，初版可以有佔位符式的章節，後續逐步充實</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 66 (2014) - Single-Use Systems</p>
+    <p>Section 8.0: Appendix I - Overall User Requirement Specification Example | p108-p120</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73-2 - Section 4.0: Content of Submission File to Notified Bodies</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.0: Content of Submission File to Notified Bodies</h1>
+    <div class="subtitle">提交至公告機構之文件內容</div>
+    <div class="page-info">PDA Technical Report No. 73-2 (2024): MDR Annex I for Staked Needle Systems | p6 - p15</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解向 Notified Body (NB, 公告機構) 提交之 Submission File（送件檔案）應包含哪些核心章節</li>
+        <li>掌握產品描述 (Product Description)、裝置識別 (Device Identification)、裝置功能 (Device Function) 的撰寫邏輯與範例措辭</li>
+        <li>學習如何依照 MDR 要求整理元件 (Components)、材料 (Materials) 及包裝 (Packaging) 資訊</li>
+        <li>理解製造概述 (Product Manufacturing) 章節應涵蓋的範圍，包括元件製造、DDC 充填組裝及儲運驗證</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec41">4.1 Product Description</a>
+        <a href="#sec42">4.2 Device</a>
+        <a href="#sec43">4.3 Device Function</a>
+        <a href="#sec44">4.4 Components</a>
+        <a href="#sec45">4.5 Materials</a>
+        <a href="#sec46">4.6 Packaging</a>
+        <a href="#sec47">4.7 Product Manufacturing</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1 Product Description -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec41">4.1 Product Description 產品描述</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The submission file to NBs should include a description of the product as it is intended to be placed on the market (i.e., as a <span class="key-term">single integral product</span>). The description should contain key information (as in Table 4.1-1) as well as references to more detailed information. The summary may be phrased like this:</p>
+
+        <div class="quote-box">
+            Product "Prefilled Syringe XYZ" is intended to be placed on the market in such a way that the medicinal product and the device intended to administer the medicinal product form a <span class="key-term">single integral product</span> that is intended exclusively for use in the given combination, and is not reusable, as defined by <span class="key-term">MDR Article 1(9)</span>, subparagraph 2.
+        </div>
+
+        <p><strong>Table 4.1-1: Example of Marketing Authorization Application (MAA) Information Summary on the Medicinal Product</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Category</th><th>Status</th></tr>
+                <tr><td>Invented/trade name of the medicinal product</td><td>As per MAA</td></tr>
+                <tr><td>INN (or common name) of the active substance(s)</td><td>As per MAA</td></tr>
+                <tr><td>Pharmaceutical form(s) and strength(s)</td><td>10 mg of INN in 1.5 mL solution in prefilled syringe</td></tr>
+                <tr><td>Pharmaco-therapeutic group (ATC code)</td><td>D084 C52</td></tr>
+                <tr><td>Indication(s)</td><td>As per SmPC<sup>1</sup> module 4.1</td></tr>
+                <tr><td>Marketing Authorisation Holder (MAH)</td><td>Name and address of the legal entity holding the Marketing Authorization or respective EU-authorized representative</td></tr>
+                <tr><td>Marketing Authorisation type</td><td>Centralized application</td></tr>
+                <tr><td>Marketing Authorisation procedure number</td><td>EU/xxx/xxx</td></tr>
+            </table>
+        </div>
+        <p style="font-size:0.85rem; color:#4a5568;"><sup>1</sup> Summary of Product Characteristics</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Single Integral Product (單一整合產品):</strong> 根據 MDR Article 1(9) 第二段，當藥品與用於給藥的裝置形成一個不可分離、僅供該特定組合使用且不可重複使用的整體時，即屬於「單一整合產品」。預充填注射器 (PFS) 就是典型範例 —— 藥液已預先充填於注射器中，兩者構成不可分割的組合。</p>
+            <p><strong>MAA (Marketing Authorization Application, 上市許可申請):</strong> 在歐盟，藥品上市前須取得上市許可。對於 DDC（藥品-裝置組合產品），申請人須在 MAA 中同時提供藥品與裝置部分的資訊。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一支原子筆：筆芯（藥品）和筆殼（裝置）出廠時已經組裝好，消費者無法也不需要自行更換筆芯。這就像 PFS —— 藥液與注射器是一體的，使用者只需拔開針頭護套即可注射，用完即丟。而 Table 4.1-1 就像是原子筆包裝盒上的產品說明標籤，列出品牌、型號、墨水顏色等關鍵資訊。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 4.1-1 的內容來自 MAA 文件，提供給 NB 的目的是讓審查員快速了解該整合產品的藥品面概況。注意，NB 審查的重點是裝置部分是否符合 GSPR，但他們仍需要理解藥品的基本資訊，因為藥品與裝置之間存在交互作用（例如藥液與容器的相容性）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 NB 在審查裝置部分時仍然需要了解藥品的適應症和給藥途徑？</li>
+                <li>如果同一支 PFS 要用於兩種不同濃度的藥品，Table 4.1-1 的內容需要如何調整？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.2 Device -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec42">4.2 Device 裝置</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section of the submission file identifies the device part of the <span class="key-term">DDC</span>, including its components and subassemblies and a backstop, if needed. The device description may be phrased like this:</p>
+
+        <div class="quote-box">
+            The device is a single-dose disposable syringe with a <span class="key-term">staked needle</span>. This device will be used to administer a medicinal product as stated in Table 4.2-1. Table 4.2-1 and Table 4.2-2 summarize the main device attributes and provide an overview of the intended use and target patient population of the device. The commercial version will consist of the components detailed in Figure 4.2-1 and Figure 4.2-2. As this is not a medical device, but a DDC, the <span class="key-term">classification rules for devices do not formally apply</span> and are applied here for the "virtual" device part (18).
+        </div>
+
+        <p style="font-size:0.88rem; color:#4a5568;">"Drug for injection" is added here for illustration only; drug is not in scope of this document.</p>
+
+        <p><strong>Figure 4.2-1:</strong> Schematic Overview of the Drug and the Device with its Components</p>
+        <p style="font-size:0.85rem; color:#718096;">[Figure: Schematic diagram showing integrated PFS components]</p>
+
+        <p><strong>Table 4.2-1: Example of Identification of "Virtual" Device</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Category</th><th>Status</th></tr>
+                <tr><td>Device invented name/trade name/project name<sup>1</sup></td><td>Prefilled Syringe XXX 1.5 mL</td></tr>
+                <tr><td>Device part category</td><td>Single-dose prefilled syringe</td></tr>
+                <tr>
+                    <td>Risk class of the device part, i.e., "virtual" device part classification and applicable classification rule(s) (per MDR Annex VIII)</td>
+                    <td>Class IIa, per Rule 6: Surgically invasive device intended for transient use and administration of medicinal product is not done in a manner that is potentially hazardous, taking into account the mode of application</td>
+                </tr>
+                <tr>
+                    <td>Applicable MDA/MDN<sup>2</sup> code (single selection according to Commission Implementing Regulation (EU) 2017/2185; CIR 2017/2185)</td>
+                    <td>MDN 1202</td>
+                </tr>
+                <tr>
+                    <td>Applicable MDS/MDT<sup>3</sup> code (multiple selection according to CIR 2017/2185)</td>
+                    <td>MDT 2001</td>
+                </tr>
+                <tr>
+                    <td>Route of Conformity</td>
+                    <td>Conformity will be assessed pursuant to Directive 2001/83/EC, point 12 of Section 3.2 as amended by MDR 2017/745 Article 117, which states that products governed by the Medicinal Products Directive 2001/83/EC shall require an opinion on the conformity of the device part with the relevant General Safety and Performance Requirements (GSPR) set out in Annex I to the MDR, issued by a notified body designated in accordance with that Regulation for the type of device in question.</td>
+                </tr>
+                <tr><td>Notified Body</td><td>[insert name of the NB]</td></tr>
+            </table>
+        </div>
+        <p style="font-size:0.82rem; color:#4a5568;">
+            <sup>1</sup> Throughout the development of a product, the product name may be adapted respectively. There is often a project name as well as several other terms. Listing several naming options allows an external reviewer to recognize the device part and the integral medicinal product throughout the documentation submitted for assessment.<br>
+            <sup>2</sup> MDA/MDN: Code given by EMA to reflect design and intended purpose of a device<br>
+            <sup>3</sup> MDS/MDT: Code given by EMA to describe technologies or processes
+        </p>
+
+        <p><strong>Figure 4.2-2:</strong> Syringe Subassembly Ready for Filling</p>
+        <p style="font-size:0.85rem; color:#718096;">[Figure: Syringe subassembly diagram]</p>
+
+        <p><strong>Table 4.2-2: Example of Device Attributes</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Category</th><th>Status</th></tr>
+                <tr><td>Administration route</td><td>Subcutaneous</td></tr>
+                <tr><td>Needle</td><td>Staked; covered with needle shield</td></tr>
+                <tr><td>Reusable or not reusable</td><td>Not reusable</td></tr>
+                <tr><td>Mode of activation</td><td>Non-active: energy for dose delivery is created by human force and directly applied to the plunger</td></tr>
+                <tr><td>Additional feature</td><td>Does not require any additional feature for its intended use</td></tr>
+                <tr><td>Invasiveness</td><td>The needle penetrates inside the body through the surface of the body (intact skin), not through a body orifice</td></tr>
+                <tr><td>Measuring function (as per MEDDEV 2.1/5 (June 1998)) (19)</td><td>No measuring function</td></tr>
+            </table>
+        </div>
+
+        <p>Depending on the type of device, the following information can also be included: Key functional elements, principle mode of action, accessories (if applicable), compatibility with other devices, specific performance claims of the manufacturer, critical components, previous generations of the device, accuracy and stability for devices with measuring function (not applicable within the scope of this document), identified similar devices available in Europe or other international markets, explanation of any novel features, market history, device history, different variants, changes to the device, sales and complaints, and design stages applied to the device (Annex II) (1).</p>
+
+        <p>The content included in Table 4.2-3 should be chosen based on the respective current standards (e.g., EN 60601-1-2, EN 62366-1, and TR 62366-2) (20-22). Additional aspects to be considered could be the frequency of use of the DDC to address the cumulative use and exposure to the device parts, intended use locations on the body, contraindications, warnings, and dose and dose ranges (if other dosages are available).</p>
+
+        <p><strong>Table 4.2-3: Example of Device Intended Use and Intended User Population</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Category</th><th>Status</th></tr>
+                <tr><td>Intended medical indication</td><td>Provide as stated in SmPC (Document XXX), e.g., delivery of a predefined fixed dose of a drug product</td></tr>
+                <tr><td>Intended patient population</td><td>Provide as stated in SmPC (Document XXX), e.g., patient with chronic disease xxx</td></tr>
+                <tr><td>Intended user profile</td><td>Provide as stated in SmPC (Document XXX), e.g., patients, caregivers, healthcare professionals</td></tr>
+                <tr><td>Intended use environment and conditions of use</td><td>Provide as stated in SmPC (Document XXX), e.g., clinical setting (private office and/or hospital), home setting</td></tr>
+                <tr><td>Intended storage conditions</td><td>Provide as stated in SmPC (Document XXX), e.g., do not refrigerate or freeze</td></tr>
+            </table>
+        </div>
+
+        <p>Reference documentation is not restricted to the Summary of Product Characteristics (SmPC). Any other product description document can also be used, provided it contains all the needed information.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>"Virtual" Device Part（「虛擬」裝置部分）:</strong> DDC 在法規上不是醫療器材，而是藥品。但 MDR 要求其裝置部分必須符合 GSPR。因此，業界使用「虛擬裝置」這個概念 —— 假設這個裝置部分是獨立的醫療器材，對它進行分類和評估。對於 staked needle PFS，按 MDR Annex VIII Rule 6 分類為 <strong>Class IIa</strong>（短暫使用的外科侵入性裝置）。</p>
+            <p><strong>Staked Needle（固定式針頭）:</strong> 針頭在製造過程中即以黏著劑永久固定於注射器筒身，與可拆卸式針頭 (Luer-lock) 不同。這種設計減少了死體積 (dead volume)，降低了針頭脫落的風險。</p>
+            <p><strong>MDA/MDN 與 MDS/MDT 代碼:</strong> 這些是 EMA 用來識別裝置設計用途和技術的編碼系統。MDN 1202 對應注射器類裝置，MDT 2001 對應相關製程技術。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「虛擬裝置」的概念就像租屋合約中的「假設獨立產權」評估。雖然這間房間是整棟建築的一部分（就像 PFS 裝置是 DDC 的一部分），但為了評估其安全性，我們假設它是一個獨立單位，檢查它的消防設施、逃生通道是否符合標準。Table 4.2-1 就是這份「假設獨立產權」的身分證明文件。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li>Route of Conformity（合規路徑）非常關鍵：DDC 依循 Directive 2001/83/EC（藥品指令），但裝置部分需要 NB 依據 MDR Annex I 的 GSPR 出具意見書。這是藥品法規與器材法規的交會點。</li>
+                <li>Table 4.2-2 定義了裝置的基本屬性，例如「非主動式」(non-active) 表示注射力來自使用者手動推壓，而非電池或彈簧等動力源。</li>
+                <li>Table 4.2-3 強調預期用途與使用者族群的描述必須與 SmPC 保持一致 —— 這是藥品與裝置文件之間的關鍵對齊點。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在準備 NB 送件時，藥廠 RA 團隊常見的錯誤是：將裝置部分的描述寫得過於「器材化」，忽略了 DDC 的本質是藥品。例如，不應使用 MDR 器材分類規則來決定合規路徑，而應明確指出這是透過藥品法規（Directive 2001/83/EC）進行評估，NB 僅對裝置部分的 GSPR 出具意見。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR73-2 強調 DDC 的分類規則「不正式適用」(do not formally apply)？這對 NB 審查有什麼影響？</li>
+                <li>如果一款 PFS 設計為可由患者自行在家中使用（home setting），Table 4.2-3 中的「Intended user profile」和「Intended use environment」應如何描述？這對人因工程 (Human Factors) 評估有何影響？</li>
+                <li>MDA/MDN 和 MDS/MDT 代碼的選擇為何重要？選錯代碼可能導致什麼後果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.3 Device Function -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec43">4.3 Device Function 裝置功能</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section provides a summary of the <span class="key-term">device function</span>. The description may be phrased like this:</p>
+
+        <div class="quote-box">
+            The staked needle PFS consists of a plunger with a rubber stopper that fits tightly in a cylindrical tube (the syringe barrel) containing the drug. To expel the drug, the user pushes the <span class="key-term">plunger rod</span> until the rubber stopper hits the end of the barrel. Dosing will be fixed, that is, no dose adjustment with respect to bodyweight and/or body surface area is needed. One PFS equals one dose.
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Fixed Dose（固定劑量）:</strong> 「One PFS equals one dose」是 staked needle PFS 的核心特徵之一。每支注射器預充填了精確的單一劑量，使用者不需要也無法調整劑量。這簡化了使用流程，降低了劑量錯誤的風險，但也意味著製造時的充填精度至關重要。</p>
+            <p><strong>Break-loose Force 與 Glide Force:</strong> 雖然本段未展開，但描述中提到的「rubber stopper fits tightly」暗示了兩個重要的力學參數：break-loose force（初始推動力，克服活塞與筒壁的靜摩擦力）和 glide force（持續推動力，維持活塞滑動）。這些力直接影響使用者注射體驗。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PFS 的操作原理就像使用一支大型膠水棒：管內的膠水（藥品）被推桿（plunger rod）末端的封塞（rubber stopper）推動，從管口（針頭）擠出。差別在於 PFS 的精度要求極高 —— 每一支都必須確保推出完整且精確的劑量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這段範例措辭雖然簡短，卻包含了 NB 審查時關注的幾個要點：(1) 裝置的基本工作原理、(2) 給藥方式（推壓式）、(3) 劑量策略（固定劑量）。撰寫時應避免過度簡化，但也不需要在此處展開所有技術細節 —— 細節會在後續的 GSPR 合規章節中呈現。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果某款 PFS 允許使用者進行劑量調整（例如依體重調整），在 Device Function 描述中需要增加哪些額外資訊？</li>
+                <li>「One PFS equals one dose」的設計對於藥品廢棄量（overfill）有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4 Components -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec44">4.4 Components 元件</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Section 4.4 provides a general description of the key functional elements, for example, the parts and components of the device (see Figure 4.4-1). Diagrams, photographs, and technical drawings can be included, as needed, clearly indicating the components and respective explanations to support understanding of the information provided.</p>
+
+        <p>The component description may be phrased like this:</p>
+
+        <div class="quote-box">
+            The single-use, not reusable "Prefilled Syringe XYZ" with a staked needle consists of the components stated in Table 4.4-1 and the functional units stated in Table 4.4-2.
+        </div>
+
+        <p><strong>Figure 4.4-1:</strong> Components of a Syringe</p>
+        <p style="font-size:0.85rem; color:#718096;">[Figure: Exploded view of syringe components]</p>
+
+        <p><strong>Table 4.4-1: Example of Component Information</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Identifier</th><th>Component Name/Number</th><th>Functional Description</th><th>Specifications</th></tr>
+                <tr>
+                    <td>1A</td>
+                    <td>Plunger stopper/PSxxx</td>
+                    <td>Seals the flange end of the syringe and ensures container&ndash;closure integrity (CCI)<br>Engages with the plunger rod<br>Determines break-loose force and contributes to glide force</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>1B</td>
+                    <td>Plunger rod/PRxxx</td>
+                    <td>Engages with the plunger stopper<br>Converts kinetic energy into a plunger stopper movement and allows to expel/administer the drug<br>Enables human interaction on thumb pad</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>2A</td>
+                    <td>Barrel/Bxxx</td>
+                    <td>Contains the drug product<br>Holds the needle and engages with the needle shield<br>Interacts with the plunger stopper<br>Contributes to glide force</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>2B</td>
+                    <td>Needle/Nxxx</td>
+                    <td>Enables perforation of the human skin and drug deposition in the target tissue<br>Ensures proper connection of needle and syringe barrel<br>Contributes to glide force<br>Balances injection pain and injection force (flow rate)</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>2C</td>
+                    <td>Needle shield (only soft or also including a rigid part)/NSxxx</td>
+                    <td>Seals the needle tip end of the syringe and ensures CCI<br>Engages with the syringe barrel cone<br>Protects the needle until use<br>Prevents needle stick prior to product use<br>Determines needle shield removal force</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>2D</td>
+                    <td>Backstop/Bxxx</td>
+                    <td>Supports conversion of user force into longitudinal plunger rod movement<br>May include a feature to prevent plunger removal from the syringe (an optional component)</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>3A</td>
+                    <td>Immediate labeling/ILxxx</td>
+                    <td>Is transparent and spacious enough to allow inspection of drug condition<br>Provides safety information (e.g., drug, strength, expiry date)</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+            </table>
+        </div>
+
+        <p><strong>Table 4.4-2: Example of Functional Unit Information</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Identifier</th><th>Component Name/Number</th><th>Description</th><th>Specifications</th></tr>
+                <tr>
+                    <td>1</td>
+                    <td>Plunger stopper/plunger rod/backstop<br>Pxxx</td>
+                    <td>Functional unit composed of components 1A, 1B, and 2D</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Barrel/staked needle/needle shield<br>Bxxx</td>
+                    <td>Functional unit composed of components 2A, 2B, and 2C</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Syringe<br>Sxxx</td>
+                    <td>Functional unit composed of components 1, 2, and 3A</td>
+                    <td>Document XXX<br>Document XXY</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Component（元件）vs Functional Unit（功能單元）:</strong> Table 4.4-1 列出了個別元件，而 Table 4.4-2 則將這些元件組合成功能單元。這種分層結構非常重要：</p>
+            <ul>
+                <li><strong>元件層級 (Component level):</strong> 單一零件，如活塞 (plunger stopper)、筒身 (barrel)、針頭 (needle)</li>
+                <li><strong>功能單元層級 (Functional unit level):</strong> 由多個元件組成的子系統，如「推桿組件」（活塞+推桿+後擋）</li>
+                <li><strong>裝置層級 (Device level):</strong> 所有功能單元組成完整的注射器</li>
+            </ul>
+            <p><strong>Container-Closure Integrity (CCI, 容器密封完整性):</strong> 出現在 plunger stopper 和 needle shield 的描述中，是確保藥品無菌性和穩定性的關鍵指標。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這種元件到功能單元的分層結構，就像描述一輛汽車：先列出個別零件（輪胎、煞車片、避震器），再描述功能模組（懸吊系統 = 輪胎 + 避震器；制動系統 = 煞車片 + 碟盤），最後是整車。Table 4.4-1 就是「零件清單」(BOM)，Table 4.4-2 則是「模組組裝圖」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>Backstop（後擋）</strong>標記為「optional component」—— 並非所有 PFS 設計都需要後擋，但如果有，它可以防止推桿被意外拔出。</li>
+                <li>每個元件都有對應的規格文件參考（Document XXX），這是可追溯性 (traceability) 的要求。NB 審查時可能要求調閱這些文件。</li>
+                <li>注意 Needle (2B) 的描述提到 "balances injection pain and injection force (flow rate)" —— 針頭規格（gauge、長度、斜面角度）是平衡注射疼痛與藥液流速的關鍵設計要素。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Table 4.4-1 中的 Identifier 使用「1A, 1B, 2A, 2B...」而非簡單的「1, 2, 3...」？這種編碼方式傳達了什麼資訊？</li>
+                <li>如果在 PFS 設計中新增一個安全裝置（例如針頭回縮機構），需要在哪些表格中添加資訊？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.5 Materials -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec45">4.5 Materials 材料</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section provides a description of the (raw) materials of construction that are used for the components, functional units, and subassembled part of the device as presented in the DDC. In addition, the type of <span class="key-term">direct or indirect body contact</span> (via the drug product) is described to allow an overview of the material categorization (e.g., in line with <span class="key-term">ISO 10993-1:2018</span>). The presence of any material that is stated in the context of <span class="key-term">GSPR 10</span> is emphasized to allow an assessment of the material criticality. A rationale for the choice of material may be added.</p>
+
+        <p>The material description may be phrased like this:</p>
+
+        <div class="quote-box">
+            Table 4.5-1 contains information on the materials used to produce the components, and information on their body&ndash;drug product interaction. Materials relevant in the context of GSPR 10, that is, materials or substances offering concentration limits or requiring "special attention" (e.g., <span class="key-term">carcinogenic, mutagenic and reprotoxic chemicals (CMR)</span>, <span class="key-term">endocrine-disrupting (ED) substances</span>, nanomaterials) are stated in Table 4.5-2.
+        </div>
+
+        <p><strong>Table 4.5-1: Example of Material Information</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Component Name/Number</th>
+                    <th>Material Description (Supplier)</th>
+                    <th>Body Contact (Yes &ndash; Type/No)</th>
+                    <th>Drug Product Contact (Yes/No)</th>
+                </tr>
+                <tr>
+                    <td>Plunger stopper/PSxxx</td>
+                    <td>Elastomer Halobutyl xyz (Supplier xxx)<br>Lubricant: e.g., Silicone oil SOxxx (Supplier xxx)<br>Color/Colorant: Black xyz (Supplier xxx)<br>For more details, see document XXX.</td>
+                    <td>No (indirect body contact via drug product)</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Plunger rod/PRxxx</td>
+                    <td>Polypropylene xyz (Supplier xxx)<br>Color/Colorant: Black xyz (Supplier xxx)<br>For more details, see document XXX.</td>
+                    <td>Yes &ndash; intact skin</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Barrel/Bxxx</td>
+                    <td>Type I Borosilicate Glass (Supplier xxx)<br>Lubricant: Silicone oil SOxxx (Supplier xxx)<br>Ink: Black ink yyy (Supplier xxx)<br>For more details, see document XXX.</td>
+                    <td>Yes &ndash; intact skin in contact with outer surface (glass)</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Needle/Nxxx</td>
+                    <td>Stainless Steel X5CrNi18-9 (Supplier xxx)<br>Lubricant: Silicone oil SOxxx (Supplier xxx)<br>Adhesive: Ultraviolet light-reacting curing adhesive xyz (Supplier xxx)<br>For more details, see document XXX.</td>
+                    <td>Yes &ndash; surgically invasive</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Needle Shield Soft Part/NSxxx</td>
+                    <td>Synthetic Isoprene Butyl Blend xyz (Supplier xxx)<br>Color/Colorant: Grey (Supplier xxx)<br>Lubricant: Silicone oil SOxxx (Supplier xxx)<br>For more details, refer to document XXX.</td>
+                    <td>No (indirect body contact via drug product)</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Needle Shield Rigid Part/NSxxx</td>
+                    <td>Polypropylene xyz (Supplier xxx)<br>Color/Colorant: Transparent (Supplier xxx)<br>For more details, see document XXX.</td>
+                    <td>Yes &ndash; intact skin</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Immediate Syringe Labeling/ILxxx</td>
+                    <td>Label made of Polypropylene xyz (Supplier xxx)<br>Glue: Adhesive xyz (Supplier xxx)<br>Ink: Black ink yyy (Supplier xxx)<br>For more details, see document XXX.</td>
+                    <td>Yes &ndash; intact skin</td>
+                    <td>No</td>
+                </tr>
+            </table>
+        </div>
+
+        <p><strong>Table 4.5-2: Example of Materials Relevant in the Context of GSPR 10</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Component Name/Number</th>
+                    <th>Presence of CMR, ED, or Nanomaterial (Yes/No)</th>
+                    <th>If Present, Type of Material</th>
+                </tr>
+                <tr><td>Plunger stopper/PSxxx</td><td>No</td><td>Not applicable</td></tr>
+                <tr><td>Plunger rod/PRxxx</td><td>No</td><td>Not applicable</td></tr>
+                <tr><td>Barrel/Bxxx</td><td>No</td><td>Not applicable</td></tr>
+                <tr>
+                    <td>Needle/Nxxx</td>
+                    <td>Yes</td>
+                    <td>Contains substances that are carcinogenic, mutagenic, or toxic to reproduction (CMR) (per GSPR 10.4.1(a), MDR)<br>For more details, see document XXX.</td>
+                </tr>
+                <tr><td>Needle Shield Soft Part/NSxxx</td><td>No</td><td>Not applicable</td></tr>
+                <tr><td>Needle Shield Rigid Part/NSxxx</td><td>No</td><td>Not applicable</td></tr>
+                <tr>
+                    <td>Immediate Labeling/ILxxx</td>
+                    <td>Yes</td>
+                    <td>Incorporates and/or consists of nanomaterials (according to definition in Article 2(18) and to GSPR 10.6, MDR)<br>For more details, see document XXX.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>GSPR 10（一般安全與性能要求第10條）:</strong> MDR Annex I 中的 GSPR 10 專門針對「化學、物理和生物特性」。當裝置元件含有 CMR 物質、內分泌干擾物 (ED) 或奈米材料時，必須特別標記並提供風險效益分析。</p>
+            <p><strong>Body Contact 分類:</strong> ISO 10993-1 依據接觸類型將材料分類：</p>
+            <ul>
+                <li><strong>Surgically invasive（外科侵入性）:</strong> 針頭 —— 穿透皮膚進入人體，風險最高</li>
+                <li><strong>Intact skin（完整皮膚接觸）:</strong> 推桿、筒身外表面、標籤</li>
+                <li><strong>Indirect body contact（間接人體接觸）:</strong> 活塞、針頭護套軟質部分 —— 透過藥液間接接觸人體</li>
+            </ul>
+            <p><strong>Drug Product Contact:</strong> 與藥液直接接觸的元件需要進行可萃取物/浸出物 (E&L) 研究。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>材料接觸分類就像餐廳的食品安全管理：直接接觸食物的器具（相當於 drug product contact = Yes）需要食品級認證；觸碰嘴唇的杯沿（surgically invasive 類比）要求最嚴格的安全標準；而只是握在手中的杯把（intact skin）則要求較低但仍需安全無害。Table 4.5-2 就像一份「特殊成分警示清單」，標記出需要額外關注的材料。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li>針頭 (Needle) 標記含有 CMR 物質 —— 不鏽鋼 (X5CrNi18-9) 中的鎳和鉻屬於 CMR 物質。雖然不鏽鋼已被廣泛使用，但 MDR 要求必須明確揭露並進行風險效益論證。</li>
+                <li>即時標籤 (Immediate Labeling) 含有奈米材料 —— 這在 MDR 框架下需要額外關注（GSPR 10.6）。可能源自標籤油墨或塗層中的奈米級顏料顆粒。</li>
+                <li>矽油 (Silicone oil) 作為潤滑劑出現在多個元件中 —— 它影響 glide force、CCI，且可能與某些生物製劑產生交互作用（如蛋白質聚集）。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在準備 Table 4.5-1 時，供應商資訊的揭露程度是常見的難題。元件供應商可能不願意完整揭露其配方（屬商業機密）。實務上可採用「第三方機密資料包」(Confidential Data Package) 的方式，讓供應商直接向 NB 提交敏感資訊，而不經過藥廠。這需要事先與供應商和 NB 達成協議。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼活塞 (plunger stopper) 的 Body Contact 是「No (indirect)」而非「Yes」？如果活塞直接接觸人體皮膚，分類會如何改變？</li>
+                <li>針頭的不鏽鋼含有 CMR 物質但仍被允許使用，MDR 如何要求廠商進行風險效益論證？</li>
+                <li>如果供應商更換了矽油的品牌或等級，需要更新哪些文件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.6 Packaging -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec46">4.6 Packaging 包裝</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Section 4.6 provides a description of all covering and protecting packaging components (e.g., blister, folding box, instructions for use), including <span class="key-term">tamper-evident features</span> and other means to identify the packaging integrity by the user. The GSPR Table 5.1-1 does not address packaging-related GSPRs, for example, GSPR 7 or GSPR 10.2, as these are out of scope. (See Section 1.2.) However, these aspects need to be addressed within the final submission file (e.g., MAA or variation submission).</p>
+
+        <p>A description of the PFS packaging may be phrased like this:</p>
+
+        <div class="quote-box">
+            Each final assembled device, that is, the device being in the final status as an integral part of the DDC, is individually packed in a blister that is placed in a carton box together with a product information leaflet (package insert). An overview of the packaging materials is given in Table 4.6-1.
+        </div>
+
+        <p><strong>Table 4.6-1: Example of Overview of Packaging Materials</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Component Name/Number</th><th>Dimensions</th><th>Material</th></tr>
+                <tr>
+                    <td>Folding Box/FOxxx</td>
+                    <td>40 mm &times; 25 mm &times; 150 mm (Height, Width, Length)</td>
+                    <td>Carton board material xyz (Supplier xxx)<br>For more details, see document XXX.</td>
+                </tr>
+                <tr>
+                    <td>Tamper-Evident Label/TExxx</td>
+                    <td>15 mm &times; 23 mm (Width, Length)</td>
+                    <td>Polymeric material xyz (Supplier xxx)<br>For more details, see document XXX.</td>
+                </tr>
+                <tr>
+                    <td>Blister/BRxxx</td>
+                    <td>See technical drawing xxx.</td>
+                    <td>Foil xxy (Supplier xxx)<br>For more details, see document xxx.</td>
+                </tr>
+                <tr>
+                    <td>Blister Lid/BLxxx</td>
+                    <td>17 mm &times; 100 mm (Width, Length)</td>
+                    <td>Blister lidding foil Coated Paper (Supplier xxx)<br>For more details, see document XXX.</td>
+                </tr>
+                <tr>
+                    <td>Package insert/PIxxx</td>
+                    <td>105 mm &times; 280 mm (35 mm &times; 140 mm in folded format) (Width, Length)</td>
+                    <td>Paper xyz (Supplier xxx)<br>For more details, see document XXX.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Tamper-Evident Features（防竄改特徵）:</strong> 防竄改設計讓使用者能辨識包裝是否曾被打開或破壞。這是歐盟防偽藥指令 (Falsified Medicines Directive, FMD) 的要求之一，也是 MDR 對包裝完整性的關注點。</p>
+            <p><strong>GSPR 7 與 GSPR 10.2:</strong> 雖然本節指出這些包裝相關的 GSPR 不在 TR73-2 範圍內，但在最終的 MAA 送件中必須處理。GSPR 7 涉及標籤和使用說明書，GSPR 10.2 涉及包裝材料的化學特性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PFS 的包裝層次就像俄羅斯套娃：最內層是泡殼 (blister) 保護注射器，中層是紙盒 (folding box) 提供結構支撐和標示空間，最外層的防竄改標籤 (tamper-evident label) 就像封條，一旦被破壞就無法復原。每一層都有其功能：保護產品、傳達資訊、防止竄改。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>注意 Table 4.6-1 列出了精確的尺寸資訊 —— 這不僅是 NB 審查需要的，更是確保包裝設計能充分保護 PFS 的基礎。例如，泡殼的形狀和尺寸必須確保 PFS 在運輸過程中不會移動或撞擊，避免針頭護套脫落或玻璃筒身破裂。</p>
+            <p>Package insert（仿單/使用說明書）的尺寸資訊也很重要 —— 它必須在有限的空間內包含完整的使用指導和安全資訊，同時確保字體大小符合可讀性要求。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果同一款 PFS 需要在不同國家上市，包裝的哪些元素需要調整？對 NB 送件有何影響？</li>
+                <li>為什麼 GSPR 7 和 GSPR 10.2 被標記為超出範圍 (out of scope)，但仍需要在 MAA 中處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.7 Product Manufacturing -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec47">4.7 Product Manufacturing 產品製造</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section provides an overview of the <span class="key-term">manufacturing process</span> of the device components and related manufacturing control measures as applied by the syringe component suppliers. This information can be provided by the component manufacturers. In addition, it covers the pharmaceutical manufacturing step executed by the applicant.</p>
+
+        <p>Further information on manufacturing considerations can be found in TR-73. Table 4.7.1-1 maps specific information in TR-73 by component.</p>
+
+        <h3 style="font-size:1rem; margin-top:1.5rem;">4.7.1 Components and Subassembly Manufacturing</h3>
+
+        <p>The level of detail provided by the component manufacturer shall be appropriate to support the pharmaceutical company in their overall risk evaluation and the derived control strategy. Accordingly, the information provided should cover at least:</p>
+
+        <ul>
+            <li>Table including procedures to select and qualify raw materials of construction suppliers and control material quality</li>
+            <li>Description of the manufacturing process, for example, a process flow diagram (main process steps, critical process steps, in-process controls)</li>
+            <li>Processing aids and residuals overview</li>
+            <li>Assembly, labeling, and packaging</li>
+            <li>List manufacturing sites(s), test site(s), site responsible for release, and sterilization sites (if applicable)</li>
+            <li>Sterilization process and validation summary, including decontamination from sterilization residuals</li>
+            <li>Acceptance criteria for batch release (specifications)</li>
+            <li>Change communication policy for specification changes/major process changes</li>
+        </ul>
+
+        <p>The supplier of the subassembly is responsible for incorporating available information for the respective sourced components, for example, needles, adhesives, lubricants, needle shield, and coatings, in their information package.</p>
+
+        <p><strong>Table 4.7.1-1: Example of Overview of Device Part Manufacturing (Components and Subassembly)</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Component Name/Number</th><th>Link to Relevant Information in TR-73</th><th>Manufacturing Related Information</th></tr>
+                <tr><td>Plunger Stopper/PSxxx</td><td>Chapters 3, 11, 13</td><td>Document XXX</td></tr>
+                <tr><td>Plunger Rod/PRxxx</td><td>Chapters 11, 13</td><td>Document XXX</td></tr>
+                <tr><td>Barrel/Bxxx</td><td>Chapters 5, 6, 10, 13</td><td>Document XXX</td></tr>
+                <tr><td>Needle/Nxxx</td><td>Chapters 5, 6, 8, 10, 13</td><td>Document XXX</td></tr>
+                <tr><td>Needle Shield (Rigid Part)/NSxxx</td><td>Chapters 5, 6, 8, 10, 13</td><td>Document XXX</td></tr>
+                <tr><td>Needle Shield (Soft Part)/NSxxx</td><td>Chapters 5, 6, 8, 10, 13</td><td>Document XXX</td></tr>
+            </table>
+        </div>
+
+        <h3 style="font-size:1rem; margin-top:1.5rem;">4.7.2 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)</h3>
+
+        <p>Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and packaging of the final DDC. Respective process validation summaries of all steps should be included.</p>
+
+        <p><strong>Table 4.7.2-1: Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)</strong></p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr><th>Component Name/Number</th><th>Link to Relevant Information in TR-73</th><th>Manufacturing Related Information</th></tr>
+                <tr><td>Filling/Fixxx</td><td>Chapter 13</td><td>Document XXX</td></tr>
+                <tr><td>Labeling, Plunger Rod Assembly and Packaging/LAPxxx</td><td>Chapters 11, 13</td><td>Document XXX</td></tr>
+            </table>
+        </div>
+
+        <h3 style="font-size:1rem; margin-top:1.5rem;">4.7.3 Storage and Transport</h3>
+
+        <p>All device components and packaging materials are stored in compliance with the storage conditions defined by the respective supplier until filling and assembly. All facilities involved in filling and assembly are qualified and perform such functions, for example, as monitoring of temperature, room pressure, and relative humidity. References to storage and transport validation studies performed, as well as simulated and/or real-time studies, should be included. Evidence should be provided to establish that the packaging sufficiently protects the device to enable it to achieve its intended performance.</p>
+
+        <p>A summary of the shipping/transit simulation study conducted, and the applicable study reports, should be provided.</p>
+
+        <p>For more information, see TR-73, Section 11.9 "Shelf Life and Storage," and Section 12.3.5 "Shipping and Distribution of Semifinished Syringes and PFSs."</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>製造資訊的層次結構:</strong> Section 4.7 將製造分為三個層次：</p>
+            <ul>
+                <li><strong>4.7.1 元件與次組件製造 (Component &amp; Subassembly):</strong> 由元件供應商執行，包括玻璃管成型、針頭製造、橡膠活塞配方等</li>
+                <li><strong>4.7.2 DDC 製造 (Filling, Assembly, Packaging):</strong> 由藥廠執行，包括無菌充填、推桿組裝、最終包裝</li>
+                <li><strong>4.7.3 儲運 (Storage &amp; Transport):</strong> 涵蓋從元件到最終產品的全鏈條儲存和運輸條件</li>
+            </ul>
+            <p><strong>Change Communication Policy（變更溝通政策）:</strong> 這是供應商管理的關鍵要素。元件供應商的製程變更可能影響 DDC 的品質和安全性，因此必須建立明確的變更通知機制。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這三個製造層次就像蓋房子：4.7.1 是建材供應商提供合格的磚頭、水泥、鋼筋（各元件製造商的品質保證）；4.7.2 是營造商按照設計圖組裝施工（藥廠的充填和組裝）；4.7.3 則是確保建好的房子在地震、颱風等運輸考驗下仍然穩固（儲運驗證）。NB 需要看到每一層的品質證據。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li>4.7.1 列出了八項元件製造商應提供的最低資訊要求 —— 這是與供應商溝通時的「checklist」。特別注意「change communication policy」，許多 NB 缺陷報告源自供應商未及時通報變更。</li>
+                <li>Table 4.7.1-1 和 Table 4.7.2-1 巧妙地建立了與 TR-73 的交叉參照 —— 這提醒讀者 TR73-2 與 TR-73 是互補文件，TR-73 提供了更詳細的技術指引。</li>
+                <li>4.7.3 強調了運輸模擬研究 (shipping/transit simulation study) 的重要性。玻璃 PFS 在運輸過程中特別容易受到衝擊和振動的影響，可能導致微裂紋或 CCI 失效。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的業務場景中，4.7 節的準備往往最具挑戰性。作為藥品代工製造商 (CDMO)，你同時扮演兩個角色：(1) 向元件供應商索取製造資訊（作為客戶），(2) 向申請人提供充填組裝的製造資訊（作為供應商）。建議建立標準化的「供應商技術文件包」(Supplier Technical Documentation Package) 模板，確保每次合作都能系統性地收集和提供所需資訊。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果元件供應商拒絕提供某些製造細節（例如橡膠配方），藥廠有哪些替代方案來滿足 NB 的資訊要求？</li>
+                <li>TR-73 在 Table 4.7.1-1 中被多次引用。針頭 (Needle) 引用了最多的章節（5, 6, 8, 10, 13），這暗示了什麼？</li>
+                <li>運輸模擬研究通常參考哪些標準（如 ASTM D4169 或 ISTA 標準）？模擬條件應如何設定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Section 4.0 架構:</strong> NB 送件文件依序涵蓋產品描述 (4.1)、裝置識別 (4.2)、裝置功能 (4.3)、元件 (4.4)、材料 (4.5)、包裝 (4.6) 和製造 (4.7) 七大章節，由概況到細節層層遞進。</li>
+        <li><strong>「虛擬裝置」概念:</strong> DDC 不是醫療器材，但其裝置部分需按 MDR 的 GSPR 進行評估。PFS 的「虛擬」分類為 Class IIa（Rule 6），合規路徑依循 Directive 2001/83/EC。</li>
+        <li><strong>材料與接觸分類:</strong> 每個元件需依 ISO 10993-1 標示人體接觸類型和藥品接觸情況，特別關注含有 CMR、ED 物質或奈米材料的元件（GSPR 10）。</li>
+        <li><strong>製造資訊三層次:</strong> 元件製造（供應商負責）、DDC 製造（藥廠負責）、儲運驗證（全鏈條），每層都需提供充分的品質證據和驗證摘要。</li>
+        <li><strong>與 TR-73 的互補:</strong> TR73-2 提供送件框架和範例，TR-73 提供各元件的深度技術指引，兩者應搭配使用。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 73-2 (2024): MDR Annex I for Staked Needle Systems</p>
+    <p>Section 4.0: Content of Submission File to Notified Bodies | p6 - p15</p>
+    <p style="opacity:0.7; font-size:0.8rem;">Educational material for professional development. Not for regulatory submission.</p>
+</div>
+
+</body>
+</html>

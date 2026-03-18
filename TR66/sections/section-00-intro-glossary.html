@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR66 - Section 0: Introduction & Glossary</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY TABLE CUSTOM ===== */
+.glossary-table td:first-child {
+    font-weight: 600;
+    color: var(--primary-blue);
+    white-space: nowrap;
+    width: 30%;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction & Glossary of Terms</h1>
+    <div class="subtitle">前言與術語表</div>
+    <div class="page-info">PDA Technical Report No. 66 (2014) &mdash; Application of Single-Use Systems in Pharmaceutical Manufacturing | p1 - p3</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解 PDA TR66 的撰寫背景及其在 Single-Use Systems (SUS) 產業中的定位</li>
+        <li>掌握 SUS 導入的核心關鍵成功因素：供應商夥伴關係與風險管理</li>
+        <li>理解本技術報告涵蓋範圍與不涵蓋範圍的界定</li>
+        <li>熟悉 SUS 領域的關鍵術語定義，建立後續章節閱讀的共同語言基礎</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 1.0: INTRODUCTION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec1">1.0 Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Single-use technology</span>, often described as <span class="key-term">single-use systems (SUSs)</span> or single-use equipment, has the potential to transform pharmaceutical manufacturing by offering tremendous opportunities to reduce cost, improve flexibility or cycle time, and shorten the time needed to build a manufacturing process for new, lifesaving drugs. This success, however, is very much dependent on how effectively the industry approaches the development and implementation of single-use technology. Ultimately, a new drug can only be successful if it is effective, safe, and available. Traditionally, only a comprehensive understanding of the drug product and manufacturing process can achieve these goals. This remains true as SUS is introduced in place of traditional reusable equipment. Encouraging an open science- and risk-based dialogue during supplier audits and evaluation of SUS supply chains significantly improves an SUS implementation.</p>
+
+        <p>This document is intended to provide the reader with critical concepts or points to consider when implementing an SUS strategy in a pharmaceutical manufacturing process. These concepts are intended to be valid both for <span class="key-term">chemically synthesized small molecules</span> and for <span class="key-term">bioprocesses</span> that produce large-molecule biopharmaceutical products. However, to be truly effective, many of these critical concepts must start with the design, supply chain, manufacturing, and distribution of SUSs themselves, as many inherent quality attributes can impact either the product molecule or its production process. Pharmaceutical manufacturers and single-use technology suppliers have become partners whose success is dependent on the <span class="key-term">control strategies</span> implemented.</p>
+
+        <p>This document discusses SUSs that are in either direct or indirect contact with the raw materials, intermediates, and pharmaceutical drug substances or drug products. The document does not intend to discuss disposable items related to laboratory activities, final delivery system to the patient, transfusion bags, packaging, or medical devices.</p>
+
+        <p>Successful SUS implementation needs a comprehensive approach balancing the product and process goals achieved by using single-use technology. Section 3, <span class="key-term">Manufacturing Strategy</span>, of this technical report is intended to present an approach that ties together key considerations when evaluating single-use technology. A well-designed manufacturing strategy will address technical, quality, business, and implementation considerations. Each topic has a dedicated section in this technical report, providing a detailed discussion of the associated considerations.</p>
+
+        <p>Determining the optimal manufacturing strategy involves concepts from many disciplines. An effective evaluation will have a balanced viewpoint, with input from engineering, regulatory, quality, project management, and accounting. Balancing risks and rewards of an SUS over a <span class="key-term">multiple-use system (MUS)</span> will help determine the most appropriate manufacturing strategy. Thus, a structured science- and risk-based approach is recommended and should be consistent with principles described in <span class="key-term">ICH Guidelines Q6, Q7, Q8, Q9, Q10, and Q11</span>. Primary goals, when developing any manufacturing strategy, should focus on controlling impacts to <span class="key-term">patient safety</span>, product availability, and product and process understanding (1&ndash;6).</p>
+
+        <p>Only a formal partnership with an SUS supplier can ensure that quality is as good as or better than what is achieved with traditional systems (e.g., a purchase order is not a partnership). SUS suppliers provide equipment that includes the outsourced, value-added activities that the end user no longer performs. These value-added activities are important for the success of both organizations, and a winning control strategy for SUS has elements in both the supplier&rsquo;s and the end user&rsquo;s quality systems.</p>
+
+        <p>The concepts and recommendations presented in this technical report were developed over several years of discussion within the task force, at PDA workshops, and at other industry meetings. The authors of this technical report recognize that the conversation regarding how best to implement SUSs is just beginning. Ultimately the success of these systems will be determined by the decisions suppliers and end users make during implementation, and the hope is that this report provides a foundation for the industry to build on.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- Concept Box -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Single-Use Systems, SUS (一次性使用系統)：</strong>指在製藥製造過程中，以拋棄式元件取代傳統可重複使用的不鏽鋼設備。這些系統在使用一次（或一個批次/製程週期）後即被丟棄，無需進行 CIP (就地清洗) 或 SIP (就地滅菌)。</p>
+            <p><strong>Multiple-Use System, MUS (多次使用系統)：</strong>傳統的不鏽鋼工程設備方案，設計為可反覆使用，每次使用後需進行清洗、消毒或滅菌驗證。</p>
+            <p><strong>Control Strategy (管控策略)：</strong>藥品製造商與 SUS 供應商共同建立的品質管控架構。TR66 強調這不僅是買方的責任，供應商端的品質系統同樣關鍵。</p>
+        </div>
+
+        <!-- Analogy Box -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 SUS 想像成「免洗餐具 vs 瓷器」的選擇。傳統不鏽鋼設備就像高級餐廳的瓷器：耐用但需要專業洗碗機(CIP)和高溫消毒(SIP)，每次使用後必須清洗驗證。SUS 就像精心設計的免洗餐具：用完即丟，省去清洗步驟，但你必須確保供應商提供的免洗餐具本身是乾淨、安全且品質一致的。</p>
+            <p>更重要的是，TR66 告訴我們：你不能只是「下一張採購單」就了事 — 這就像要求一家免洗餐具工廠為你的米其林餐廳供貨，卻從不去看他們的生產線。你需要的是一個真正的「夥伴關係」。</p>
+        </div>
+
+        <!-- Note Box -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>適用範圍界定：</strong>本文件僅討論與原料、中間體、藥物原料藥(drug substance)或藥品(drug product)有直接或間接接觸的 SUS。不包含實驗室用拋棄式物品、最終給藥裝置、輸血袋、包裝材料或醫療器械。</p>
+            <p><strong>跨領域適用：</strong>本報告的概念既適用於化學合成小分子藥物，也適用於生產大分子生物藥品的生物製程。對 CDMO 而言，這意味著無論接的是哪類案子，TR66 的框架都能適用。</p>
+            <p><strong>ICH 指引對接：</strong>報告明確建議 SUS 策略應與 ICH Q6-Q11 的原則一致，特別是 Q8 (Pharmaceutical Development)、Q9 (Quality Risk Management) 和 Q10 (Pharmaceutical Quality System)。</p>
+        </div>
+
+        <!-- Key Quote -->
+        <div class="quote-box">
+            "A purchase order is not a partnership." &mdash; 採購訂單不等於夥伴關係。這是 TR66 反覆強調的核心理念：SUS 的品質保證需要藥廠與供應商雙方共同承擔。
+        </div>
+
+        <!-- Application Box -->
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>當你的 CDMO 正在評估是否將某條生物藥產線從傳統不鏽鋼轉為 SUS 時，TR66 提醒你不能只看設備成本的節省。你需要考量：</p>
+            <ul>
+                <li>供應商是否能長期穩定供貨（供應鏈風險）</li>
+                <li>SUS 元件的 Extractables & Leachables 對產品的影響</li>
+                <li>是否有足夠的產品/製程理解來支撐風險評估</li>
+                <li>供應商品質系統是否與你的 GMP 要求對齊</li>
+            </ul>
+        </div>
+
+        <!-- Practice Box -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR66 強調「採購訂單不等於夥伴關係」？在 SUS 導入中，供應商夥伴關係具體包含哪些面向？</li>
+                <li>一個「平衡的製造策略」需要哪些部門的投入？為什麼單靠工程部門做決策是不夠的？</li>
+                <li>TR66 適用於小分子和大分子，但在實務中，哪類產品更可能大量採用 SUS？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 2.0: GLOSSARY OF TERMS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec2">2.0 Glossary of Terms</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table class="glossary-table">
+            <tr>
+                <th>Term</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td><span class="key-term">Campaigning</span></td>
+                <td>Extending the period of time, or number of cycles a single-use system is operating in a closed process without breaking the sterile barrier processes. The end user is responsible to evaluate and determine if appropriate quality requirements are met for their application.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Closed System</span></td>
+                <td>An isolated system that has no interaction with its external environment, preventing contamination and release of the material contained.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Consumables</span></td>
+                <td>This refers to items (e.g., SUS, storage bags, tubing, filters, diaphragms, flasks, etc.) that form or are a part of process equipment and are used on a per batch basis.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Deployment</span></td>
+                <td>Activities involving the hands-on steps required to successfully assemble and make a system ready for use for a specific SUS application.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Extractables</span></td>
+                <td>Chemical substances that can be extracted from components of material process fluid contact surfaces by exertion of an exaggerated force (e.g., organic solvent, extreme elevated temperature, ionic strength, pH, contact time, etc.) Extractables may represent most but not all of the potential leachables that may be seen in process fluids.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Flexible 2D or 3D Bag</span></td>
+                <td>A flexible-wall container designed with 2 sides (two dimensional or "pillow" shape) or 6 sides (three dimensional cuboid shape) designed to hold process fluids or product.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">In-Process Leachables</span></td>
+                <td>Chemicals substances that are leached, from product-contact or non-product-contact materials under typical process conditions and could be cleared or sufficiently diluted by downstream processes so as to be undetected as leachables in the final dosage. Alternate Terms: Transient Leachables, Migrant Leachable.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Packaged Raw Material for Single-Use</span></td>
+                <td>Procurement of a product such as liquid or powder format culture media or buffer and that has been supplied in single-use technology.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Leachables</span></td>
+                <td>Chemicals substances that are leached, from product-contact or non-product-contact materials, under typical process conditions and detected in final dosage. Leachables may be a subset of Extractables, and can include their reaction or breakdown products.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Multi-Use System (MUS)</span></td>
+                <td>An engineered process equipment solution for process management and unit operations designed for repeated use.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Opportunity Costs</span></td>
+                <td>This is defined as the value of the next-best choice available when choosing between several mutually exclusive choices (e.g., the decision to expand a facility may result in losing the opportunity to invest the maintenance funds in the financial markets). Opportunity costs are often excluded from estimates of fixed operation costs because they can be difficult for comparative analyses in the overall decision process.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Pressure Decay Test</span></td>
+                <td>A leak test in which a container or system is pressurized with air to a preset level. After the pressure has stabilized, the decay in pressure over a preset test time is measured and evaluated to determine if a leak (defect) is present.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Ready-To-Use</span></td>
+                <td>A marketing term often used to describe the benefits of single-use technology or SUS. This designation has no regulatory or scientific basis supporting suitability for use and the end user is responsible to evaluate and determine if appropriate quality requirements are met for their application.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Single-Use Component (SUC)</span></td>
+                <td>An individual part designed to perform a particular function when assembled into a single-use system.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- Concept Box: E&L -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Extractables (可萃取物) vs Leachables (溶出物)：</strong>這是 SUS 領域最重要的一對概念。簡單區分：</p>
+            <ul>
+                <li><strong>Extractables：</strong>在「極端條件」下（高溫、有機溶劑、極端 pH）從材料中萃取出的化學物質。這是一種「最壞情況」的實驗室測試。</li>
+                <li><strong>Leachables：</strong>在「正常製程條件」下從材料中溶出並在最終劑型中被檢測到的化學物質。這才是真正影響患者安全的指標。</li>
+                <li><strong>In-Process Leachables (製程中溶出物)：</strong>在製程中溶出但會被下游純化步驟清除或充分稀釋，以至於在最終劑型中無法檢測到的物質。</li>
+            </ul>
+            <p>三者的關係：Extractables &supseteq; Leachables + In-Process Leachables。Extractables 研究是預測性的篩選工具，Leachables 研究才是最終的安全性確認。</p>
+        </div>
+
+        <!-- Analogy Box -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 <strong>Extractables</strong> 想像成你用高壓水槍沖洗一個塑膠容器時沖出來的所有東西 — 這是故意用極端方式「逼」出來的。而 <strong>Leachables</strong> 則是你正常裝水、正常使用時，水中實際出現的東西。In-Process Leachables 就像中途出現但最後被過濾掉的雜質 — 它們存在過，但到你喝水時已經被去除了。</p>
+        </div>
+
+        <!-- Note Box: Closed System & Campaigning -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Closed System (封閉系統)：</strong>在 SUS 語境中，封閉系統的概念極其重要。一個真正的封閉系統與外部環境沒有交互作用，既能防止外來污染進入，也能防止內容物洩漏。這直接影響到環境分級要求和無菌保證策略。</p>
+            <p><strong>Campaigning (連續運行)：</strong>注意這裡的定義 — 在不破壞無菌屏障的情況下，延長 SUS 的使用時間或批次數。這不是供應商給你的許可，而是<strong>終端使用者自己的責任</strong>去評估和驗證。這反映了 TR66 的一個核心理念：SUS 的品質責任最終在使用者手上。</p>
+        </div>
+
+        <!-- Note Box: Ready-To-Use warning -->
+        <div class="note-box">
+            <h4>重點警示 Critical Warning</h4>
+            <p><strong>Ready-To-Use (即用型) — 行銷術語而非科學聲明：</strong>TR66 明確指出，Ready-To-Use 僅是供應商的行銷用語，「沒有任何法規或科學基礎支持其適用性」。這是對所有 CDMO 專業人員的重要提醒：</p>
+            <ul>
+                <li>不要因為供應商標示 "Ready-To-Use" 就免除自己的驗證責任</li>
+                <li>終端使用者仍需評估是否符合其特定應用的品質要求</li>
+                <li>這與 Campaigning 的責任歸屬邏輯一致：品質適用性的判定權在使用者</li>
+            </ul>
+        </div>
+
+        <!-- Concept Box: SUS hierarchy -->
+        <div class="concept-box">
+            <h4>術語層級解析 Terminology Hierarchy</h4>
+            <p>理解 SUS 術語的層級關係有助於後續章節的閱讀：</p>
+            <ul>
+                <li><strong>Single-Use Component, SUC (一次性使用元件)：</strong>最小單位，如一段管路、一個接頭、一片濾膜</li>
+                <li><strong>Single-Use System, SUS (一次性使用系統)：</strong>由多個 SUC 組裝而成的完整系統，如一套混合袋+管路+過濾器的組合</li>
+                <li><strong>Consumables (耗材)：</strong>更廣義的概念，泛指按批次使用的所有物品</li>
+            </ul>
+            <p><strong>Flexible 2D/3D Bag (軟質2D/3D袋)：</strong>2D 袋（枕頭狀）和 3D 袋（長方體狀）是 SUS 中最常見的元件之一，用於儲存製程液體或產品。3D 袋因為有六面設計，能更好地利用容器支架空間。</p>
+        </div>
+
+        <!-- Application Box -->
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 術語對照實務：</strong></p>
+            <ul>
+                <li><strong>Pressure Decay Test (壓力衰減測試)：</strong>在 CDMO 日常操作中，每次使用 SUS 袋體前都可能需要做洩漏測試。壓力衰減法是最常見的方法之一 — 充氣、穩壓、看壓力是否掉落。</li>
+                <li><strong>Opportunity Costs (機會成本)：</strong>CDMO 在決策時常忽略這一項。例如，若選擇擴建不鏽鋼廠房，佔用的資金就無法投入 SUS 彈性產線，可能錯失接更多臨床階段案子的機會。</li>
+                <li><strong>Deployment (部署)：</strong>SUS 的現場組裝步驟。這是 SUS 與傳統設備最大的操作差異之一 — 每批次都需要操作員進行組裝，因此操作員培訓和 SOP 標準化至關重要。</li>
+            </ul>
+        </div>
+
+        <!-- Practice Box -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Extractables 和 Leachables 的關鍵差異是什麼？為什麼 Extractables 研究通常先於 Leachables 研究進行？</li>
+                <li>TR66 為何特別提醒 "Ready-To-Use" 是行銷術語？這對你在評估供應商時有什麼啟示？</li>
+                <li>在什麼情況下，CDMO 可能需要對 SUS 進行 Campaigning？需要考量哪些風險因素？</li>
+                <li>Closed System 的概念如何影響 SUS 操作環境的潔淨室等級要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>SUS 的變革潛力：</strong>一次性使用系統能降低成本、提升彈性、縮短建廠時間，但成功與否取決於導入策略的完善程度</li>
+        <li><strong>夥伴關係是核心：</strong>「採購訂單不等於夥伴關係」— SUS 品質保證需要藥廠與供應商雙方品質系統的共同支撐</li>
+        <li><strong>風險與科學導向：</strong>SUS 策略應與 ICH Q6-Q11 原則一致，以患者安全、產品可及性和製程理解為首要目標</li>
+        <li><strong>E&L 是關鍵議題：</strong>Extractables 與 Leachables 的理解是 SUS 安全性評估的基礎，貫穿後續所有章節</li>
+        <li><strong>Ready-To-Use 的迷思：</strong>這只是行銷術語，終端使用者永遠有責任驗證 SUS 是否符合其特定應用的品質要求</li>
+        <li><strong>適用範圍明確：</strong>本報告涵蓋與藥品有直接或間接接觸的 SUS，不包含實驗室用品、給藥裝置或醫療器械</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+</body>
+</html>

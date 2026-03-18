@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR22 - Section 2a: Overview of APS + Products (4.0-4.2)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.0-4.2: Overview of APS for Aseptically Produced Products</h1>
+    <div class="subtitle">無菌製程模擬概述：一般要求與產品相關設計 (Part A)</div>
+    <div class="page-info">PDA Technical Report No. 22 (Revised 2025) | p14 - p23</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Aseptic Process Simulation (APS) 的範圍 — 從滅菌點到容器密封的完整模擬</li>
+        <li>掌握 APS 設計的核心原則：模擬必須忠實反映常規製程，不得人為降低或增加風險</li>
+        <li>區分 Inherent Interventions (固有介入) 與 Corrective Interventions (矯正介入) 的定義、風險評估與頻率設計</li>
+        <li>了解介入操作的確認 (Qualification)、未經確認介入的處理流程，以及禁止介入的管理</li>
+        <li>學習 APS 中介入相關單位 (intervention-related units) 的處理原則與培養判定邏輯</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec-4-0">4.0 Overview</a>
+        <a href="#sec-4-1">4.1 General Requirements</a>
+        <a href="#sec-4-1-1">4.1.1 Scope of APS</a>
+        <a href="#sec-4-1-2">4.1.2 Design of APS</a>
+        <a href="#sec-4-1-3">4.1.3 Interventions</a>
+        <a href="#sec-4-1-3-1">4.1.3.1 Identifying Interventions</a>
+        <a href="#sec-4-1-3-2">4.1.3.2 Procedures &amp; Qualification</a>
+        <a href="#sec-4-1-3-3">4.1.3.3 APS Study Design</a>
+        <a href="#sec-4-1-3-4">4.1.3.4 Handling Units</a>
+        <a href="#sec-4-1-4">4.1.4 Sterile Bulk APS</a>
+        <a href="#sec-4-2">4.2 APS Design for Products</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.0 OVERVIEW -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-0">4.0 Overview of Aseptic Process Simulation for Aseptically Produced Products</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>This section summarizes general <span class="key-term">APS design requirements</span> as well as considerations related to APS design with regard to products and aseptic processing technologies.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Aseptic Process Simulation, APS (無菌製程模擬)：</strong>APS 是以無菌培養基 (growth medium) 取代實際產品，在與常規生產盡可能相同的條件下執行充填操作的一種驗證活動。其目的不是「測試培養基是否汙染」，而是<strong>評估整個無菌製程的能力 (process capability)</strong>，確認人員、設備、環境、操作程序的整體配合能否持續產出無菌產品。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你經營一間手術室等級的餐廳。APS 就像一次「彩排」：你不用真的食材（因為浪費且無法看出汙染），而是用培養基來代替——如果最終培養基長菌了，就表示這套流程有破口。這場彩排必須盡可能模擬真實營業日的所有環節，包括換盤子、補食材、處理掉落的餐具等「介入操作」。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Section 4 是 TR22 的核心骨幹，涵蓋 APS 的一般要求 (4.1) 與針對不同產品劑型的特殊考量 (4.2)。本節 (2a) 涵蓋 4.0 至 4.2 開頭，後續 4.2 的各劑型細節將在 Section 2b 中繼續。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1 GENERAL REQUIREMENTS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1">4.1 General Requirements</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>This section provides an overview of the various products manufactured aseptically in the pharmaceutical industry and how to perform adequate <span class="key-term">APS studies</span> in respect to these products.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>4.1 節建立了 APS 的「通用框架」，適用於所有無菌充填產品。無論你的產品是液態注射劑、凍乾產品、懸浮液還是預充填針筒，4.1 節的原則都必須遵守。產品特有的差異則在 4.2 節中處理。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.1 SCOPE OF APS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-1">4.1.1 Scope of Aseptic Process Simulation</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The APS should imitate the <span class="key-term">routine aseptic manufacturing process</span> as closely as possible and include all <span class="key-term">critical manufacturing steps</span>. The APS for aseptically produced sterile dosage forms and products starts at the point of sterilization of the product, for example, the <span class="key-term">sterile filtration</span> of product solutions and the sterilization of product contact surfaces, including containers and closures, through sealing of the filled containers (e.g., vials, syringes) or other packaging units. Any aseptic activities performed during dosage-form compounding (e.g., the aseptic addition of ingredients for the preparation of a suspension), are a necessary part of the APS.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>APS 的範圍 (Scope)：</strong>APS 的起點是產品的「滅菌點」(point of sterilization)，例如：</p>
+            <ul>
+                <li><strong>液態產品</strong> → 從 Sterile Filtration (除菌過濾) 開始</li>
+                <li><strong>容器/膠塞</strong> → 從其滅菌處理完成後開始</li>
+                <li><strong>懸浮液</strong> → 包含無菌添加成分的調配步驟</li>
+            </ul>
+            <p>APS 的終點是「容器密封完成」(sealing of filled containers)。也就是說，APS 涵蓋了從無菌狀態開始到密封完成為止的所有暴露步驟。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像醫院感染管控的稽核範圍：從「器械完成消毒離開高壓鍋」那一刻起，到「手術完成縫合傷口」為止的所有步驟都必須納入檢視。在此之前的消毒效果由別的驗證 (如 filter validation) 來證明，不是 APS 的責任。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>特別注意：若產品配方中有「無菌添加」步驟（如懸浮液的粉末加入），這些步驟也必須包含在 APS 中。很多公司容易忽略上游的調配步驟，只模擬充填段——這是不完整的。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠生產一款含有無菌粉末添加的懸浮液注射劑。APS 應該從哪個步驟開始模擬？為什麼？</li>
+                <li>如果 APS 只模擬充填段而跳過上游的無菌調配，可能會遺漏哪些汙染風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.2 DESIGN OF APS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-2">4.1.2 Design of Aseptic Process Simulation</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The aseptic process is simulated through the use of production operations in which a <span class="key-term">sterile growth medium</span> and/or <span class="key-term">placebo</span> is handled in a manner that resembles the methods used in routine production as closely as possible. The application of this principle to a specific aseptic process or procedure may require adaptation of the methods described in this technical report to that process or procedure. However, any such adaptations should not reduce the risk (i.e., APS should not be a "best case" in comparison to routine manufacturing), or increase risk beyond normal operating parameters.</p>
+
+        <p>Where growth media and/or placebo is added or utilized in the APS, its sterilization need not be performed in a manner identical to that used for the product being simulated. For example, an APS does not support the validation of the <span class="key-term">sterilizing filter</span> used in the product or process being simulated; this will be accomplished by other studies. So, differences in the filter area and filter media, for example, are acceptable providing these changes do not enhance the aseptic process or eliminate a process step that could adversely affect the sterility assurance of the product.</p>
+
+        <p>A company must determine the appropriate rationale and approaches applicable to their unique operations and APS design based on a sound <span class="key-term">risk assessment</span>. <span class="key-term">Process-flow diagrams</span> showing the routine manufacturing process and steps in parallel with the APS steps are very useful for an APS illustration and design assessment and to explicitly highlight the potential differences between both processes.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>APS 設計的黃金原則：</strong></p>
+            <ul>
+                <li><strong>忠實模擬 (Faithful Simulation)：</strong>APS 必須盡可能地模仿常規生產操作</li>
+                <li><strong>不得降低風險：</strong>APS 不能成為「最佳情境」(best case)，例如不能只在最乾淨的時段、由最資深的操作員來執行</li>
+                <li><strong>不得超出常規參數：</strong>也不能人為製造超出正常操作範圍的極端挑戰</li>
+            </ul>
+            <p>簡言之：APS 應該是常規製程的「鏡像」，不美化也不醜化。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>培養基滅菌 vs. 產品滅菌的差異是允許的：</strong>APS 使用的培養基不需要用與產品完全相同的方式滅菌。例如，培養基的除菌過濾可以用不同面積的濾膜，因為 APS 的目的不是驗證過濾器——那是 Filter Validation (參見 PDA TR26) 的職責。但這些差異不能讓無菌操作變得更簡單或省略任何可能影響無菌保證的步驟。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像消防演習：你必須模擬真實火災的逃生流程，但不需要真的放火。演習中用煙霧彈代替真火是可以的（培養基代替產品），但你不能因此省略某些逃生路線的測試，或是在白天人少時才演練——那就失去了模擬的意義。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>Process-Flow Diagram 的實務價值：</strong>TR22 建議製作「常規製程 vs. APS」的並排流程圖。這在法規查廠時極有價值——稽查員可以一目了然地看到兩個流程的對應關係，以及任何差異的合理性。建議 CDMO 在 APS Protocol 中加入此並排圖作為標準附件。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 APS 使用 0.1 m&sup2; 的濾膜來過濾培養基，但常規生產使用 0.5 m&sup2;。這是否可接受？為什麼？</li>
+                <li>如果 APS 省略了常規生產中的「更換膠塞料斗」步驟，可能帶來什麼合規風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.3 INTERVENTIONS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-3">4.1.3 Interventions</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>Personnel are a significant source of <span class="key-term">microbial contamination</span> during aseptic processes. Consequently, activities performed by personnel within the <span class="key-term">critical area</span>, also called <span class="key-term">interventions</span>, must be carefully designed, qualified, and controlled to ensure they do not compromise the sterility of the materials being produced. (See Section 4.1.3.2). Each company should have a list of <span class="key-term">"qualified interventions"</span> for each aseptic process type.</p>
+
+        <p>The execution of interventions during the APS is critical to the <span class="key-term">process-capability demonstration</span>. To demonstrate that capability, APSs should include representative interventions that occur during an aseptic filling process. While there are no truly risk-free interventions, when absolutely necessary, interventions can be considered acceptable if demonstrated to carry acceptable residual risk as evidenced by the application of appropriate <span class="key-term">aseptic technique</span>, air-flow studies and successful APS.</p>
+
+        <p>It is essential to include the interventions that are known to occur during normal production runs in an APS. Interventions that are permitted in a production operation should be specifically documented and included in APSs at a similar frequency and of a similar duration based on their potential risk to product sterility. Nonqualified interventions that must be performed should be handled with the <span class="key-term">quality management system</span>, and new interventions to be added to the intervention program should be managed through the <span class="key-term">change management system</span>, as defined by the company. The details of the intervention conducted should be subject to risk assessment, recorded, and fully investigated under the manufacturer's pharmaceutical quality system, including a real-time assessment of the acceptance of the intervention from a risk to product/patient perspective. They should also be thoroughly assessed by the Quality Unit and considered for inclusion in the next APS based on the needs of the process or for investigational purposes. While interventions and/or stoppages are normally recorded in the batch record, the manner of documenting these occurrences varies. Line stoppages and corrective interventions should be sufficiently documented in batch records with the associated time, duration, and repetition of the event.</p>
+
+        <p>A thorough risk assessment of the aseptic manufacturing process is necessary to evaluate the process risk associated with each intervention. Factors such as the proximity of the intervention to critical surfaces or open containers, the duration of the intervention, the complexity of the intervention, and other parameters determined by each company may be used to evaluate the risk of each intervention. Rating the intervention risks based on objective criteria will help determine if additional actions or controls are needed to mitigate each risk and will also help determine the frequency with which each intervention should be performed during the APS. (See Section 13.4).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Interventions (介入操作)：</strong>指人員在無菌關鍵區域 (Critical Area) 內執行的所有活動。人員是無菌製程中微生物汙染的<strong>最主要來源</strong>，因此介入操作的設計、確認和控制是 APS 的核心議題。</p>
+            <p>每家公司都必須為每種無菌製程建立一份<strong>「合格介入清單」(Qualified Interventions List)</strong>。只有經過以下程序的介入才能被允許：</p>
+            <ul>
+                <li>風險評估 (Risk Assessment)</li>
+                <li>書面程序 (Written Procedures)</li>
+                <li>人員訓練 (Personnel Training)</li>
+                <li>APS 中成功挑戰 (Successful APS Challenge)</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>介入操作的風險評估因素：</strong></p>
+            <ul>
+                <li><strong>接近度 (Proximity)：</strong>介入操作與關鍵表面或開放容器的距離</li>
+                <li><strong>持續時間 (Duration)：</strong>介入操作持續多久</li>
+                <li><strong>複雜度 (Complexity)：</strong>操作步驟的繁複程度</li>
+            </ul>
+            <p>這三個因素決定了介入操作在 APS 中應被模擬的<strong>頻率</strong>。高風險介入需要更頻繁地挑戰。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像手術室中的規定：每位護理師只能執行經過核准的動作清單上的操作。如果手術中出現清單外的狀況（例如需要用一種新工具），必須即時通知主治醫師（品質單位），記錄事件，評估風險，事後還要決定是否將此操作加入未來的核准清單。這就是 TR22 對介入操作的管理邏輯。</p>
+        </div>
+
+        <div class="hierarchy-diagram">
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-1">Proximity to Open Product 接近開放產品</div>
+            </div>
+            <div class="arrow-down">+</div>
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-2">Duration of Intervention 介入持續時間</div>
+            </div>
+            <div class="arrow-down">+</div>
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-3">Complexity of Operation 操作複雜度</div>
+            </div>
+            <div class="arrow-down">= Intervention Risk Level 介入風險等級</div>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR22 強調「沒有真正零風險的介入操作」？這對 APS 設計有什麼影響？</li>
+                <li>如果一項介入操作在生產中每批發生 2 次，但在 APS 中被模擬了 10 次，可能產生什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.3.1 IDENTIFYING INTERVENTIONS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-3-1">4.1.3.1 Identifying Interventions Associated with an Aseptic Process</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>Companies should develop and maintain an approved list of allowed and qualified interventions that may occur during production and in the APS. Companies should also establish clear instructions for the performance of each aseptic intervention with inputs from operators, line mechanics, supervisory staff, microbiology, engineering, and quality assurance. These instructions can be in the form of written procedures, visual aids, videos, other media such as virtual reality, or any combination thereof. The instructions must be periodically reviewed and updated to reflect the current processes and interventions. This ensures consistency for operators and the interventions they are required to perform.</p>
+
+        <p>Companies should identify interventions and determine their frequency and duration of inclusion in the APS based on process design and historical performance documentation, such as completed batch records, batch-related documentation, SOPs, and discussions with operating personnel. The goal of this activity is to list all interventions for each product, process, container, closure, or filling line configuration. For firms with multiple aseptic operations, interventions may vary from one fill line to another, even if both are filling similar products and containers. Variations in product type may add activities that are specific to individual situations. The basis and number of the required simulated interventions must be documented.</p>
+
+        <p>Operators must demonstrate their ability to perform the aseptic interventions on the filling line prior to taking part in an APS or participating in a product fill (see Section 8.0). If multiple filling lines of comparable design are utilized for the manufacture of a product, application of a <span class="key-term">matrix approach</span> to operator qualification might be considered. In the case of multiple primary-packaging configurations, it is technically not feasible to run every possible configuration on every filling line. Qualification of the operator on a different filling line can be done using a matrix approach only when equivalency of the intervention conducted on the other line has been established and well documented. This enables operators to simulate interventions on one filling line as part of the matrix approach in an APS, which is suitable for participation on other filling lines in routine production. The definition of worst-case configurations and matrixing therefore is a suitable alternative. For more information on qualification, please see Section 8.0.</p>
+
+        <p>Similar logic can be applied to interventions of very similar type, or interventions that could be seen as a subset of more complex operations. It is not necessary to perform every intervention individually during an APS. Depending on a risk assessment of the individual interventions and solid rationale for why a certain operation can be seen as a subset of, or sufficiently similar to, another intervention, a matrixing approach might be applicable. For example, during the removal of varying numbers of vials from a turntable due to overturned vials or glass-breakage events, the performance of the highest-risk vial-removal activity may be sufficient to demonstrate proficiency in performing lower-risk vial-removal activities.</p>
+
+        <h3>4.1.3.1.1 Inherent Interventions</h3>
+
+        <p><span class="key-term">Inherent interventions</span> are an integral part of the aseptic process and are required for setup or routine operation and/or monitoring (e.g., equipment installation/assembly, weight adjustments, closure resupply, container resupply, EM sampling). Inherent interventions are not corrections to events that occur on the filling line; rather, they are a planned and necessary part of the overall process and are performed during the APS at a defined frequency or point of the filling operation. Inherent interventions are required by batch record, procedure, or work instructions and should be executed in full during APS in accordance with the normal production process or, in part, just simulated (e.g., loading of packaging components).</p>
+
+        <p>Depending on the process design, the inherent interventions may pose different risks to the product. Therefore, the risk of the inherent interventions should be assessed and ranked for criticality (e.g., major, moderate, or minor). The criticality of an inherent intervention can be used to determine the frequency of its inclusion in the APS. That being said, higher-risk inherent interventions expected to take place at a relatively high frequency during production should be avoided to the extent possible, or the criticality of these interventions should be reduced by improved process, facility, or equipment design. Examples of inherent interventions are:</p>
+        <ul>
+            <li>Setup of direct and indirect product-contact parts vs. nonproduct-contact parts</li>
+            <li>Change of EM plates preferably via manipulation through a glove port</li>
+            <li>Addition of components</li>
+            <li>Closure resupply requiring manual handling when opening the container/bag and during loading</li>
+            <li>For isolators and restricted access barrier systems (RABS):
+                <ul>
+                    <li>Proximity of gloves to critical surfaces or open product during placement of hands in gloves</li>
+                    <li>Docking and movement of materials in areas of the line with critical surfaces and/or open product</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>4.1.3.1.2 Corrective Interventions</h3>
+
+        <p><span class="key-term">Corrective interventions</span> are performed to correct or adjust an aseptic process during its execution. There should be a list of permitted corrective interventions, each of which is fully characterized, that is, supported with a step-by-step written description, a contamination-focused risk assessment, comprehensive operator training, and detailed airflow visualization studies to confirm their suitability "by design." (See Section 4.1.3.2)</p>
+
+        <p>Corrective interventions should be challenged during the APS at a frequency (rate) similar to that in which they occur during routine manufacturing. To achieve this, the approximate rate that each permitted intervention occurs during product manufacture should be evaluated and used to inform the APS process design. For the APS to remain representative of the routine aseptic process, the cumulative rate that all corrective interventions occur during product manufacturing should also be known; the total number of corrective interventions challenged in each APS should align with this cumulative rate. The frequency with which interventions are performed during the APS should be representative of that used for production and may be adjusted periodically based on recent manufacturing data.</p>
+
+        <p>In practice, there are likely to be multiple permitted corrective interventions that may not occur during each production run and challenging each of them in every APS will lead to the APS becoming an <span class="key-term">un-representative challenge</span>. Because some interventions will occur infrequently (e.g., in less than 50% of batches), the use of frequency to determine how often these interventions are challenged during APS will lead to them being overchallenged (e.g., once during each APS) and push the overall intervention rate for the APS beyond what is representative. The suggested approach is to deal with infrequent interventions in order of the risk they pose and the frequency they occur, while ensuring that each permitted intervention is included at least annually. This will mean that lower-risk infrequent interventions may be challenged annually rather than every six months.</p>
+
+        <p>Replicate interventions should not be performed at the same time but should be distributed throughout the APS to simulate production activities. Repeating the intervention multiple times during an APS may not represent an improved sterility assurance challenge to the process. Therefore, it should not be necessary to perform the same intervention multiple times during an APS to determine the maximum number of times an intervention may be performed in production. For example, if an intervention occurs ten times during production, it may not be necessary to replicate that number during the APS. The frequency should be representative, but does not need to equal the maximum number, especially for lower-risk interventions. The decision on the number of replicate interventions to include in the APS should be based on relative risk criteria. The inclusion of an unrealistically higher number and frequency of interventions during the APS than during the aseptic process may no longer be a true representation and simulation of the aseptic process.</p>
+
+        <p>Where a lower-risk intervention has an established rate, leading to it potentially being challenged multiple times during an APS, one or more replicates could be dropped to allow additional higher-risk interventions to be included more frequently (although care should be taken to ensure that the APS design does not become artificially such a worst-case that it is no longer representative of the process). The selection of interventions and frequency that each intervention is performed during APS should be fully justified.</p>
+
+        <p>Where the need to perform a new corrective intervention arises during product manufacture, a proactive assessment of risk should be performed to determine whether the intervention should be permitted and, if permitted, the risk-mitigating steps to be taken before and after it. Until that point and inclusion in a successful APS, any new intervention should be treated as a <span class="key-term">deviation</span> from the established process with the potential for the batch to be stopped in the worst-case scenario.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Matrix Approach (矩陣法)：</strong>當公司擁有多條類似設計的充填線時，不需要每條線都獨立做所有介入操作的確認。只要能證明不同充填線上的同類介入操作具有等效性 (equivalency)，就可以用矩陣法來管理操作員的資格確認。</p>
+            <p>同樣的邏輯也適用於「相似介入操作的分組」：如果一個複雜介入操作包含了另一個簡單介入操作的所有動作，那麼成功執行複雜版本即可涵蓋簡單版本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>兩類介入操作的關鍵區別：</strong></p>
+            <table>
+                <tr>
+                    <th>特性</th>
+                    <th>Inherent (固有介入)</th>
+                    <th>Corrective (矯正介入)</th>
+                </tr>
+                <tr>
+                    <td>性質</td>
+                    <td>計畫性、製程必需</td>
+                    <td>因異常而產生的糾正動作</td>
+                </tr>
+                <tr>
+                    <td>範例</td>
+                    <td>膠塞補充、重量調整、EM 取樣</td>
+                    <td>移除倒瓶、維修設備故障、更換零件</td>
+                </tr>
+                <tr>
+                    <td>APS 中的處理</td>
+                    <td>依批次記錄按時間點完整執行</td>
+                    <td>依歷史頻率代表性地模擬</td>
+                </tr>
+                <tr>
+                    <td>風險分級</td>
+                    <td>Major / Moderate / Minor</td>
+                    <td>依風險與頻率排序</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>Inherent (固有介入)</strong> 就像開車時的「定期動作」——加油、調後視鏡、開雨刷——這些是正常駕駛的一部分，每次開車都會做。<strong>Corrective (矯正介入)</strong> 則像「臨時排除故障」——爆胎換胎、擋風玻璃破裂處理——不是每次都發生，但一旦發生就必須有標準程序處理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 過度挑戰的陷阱 Overchallenging Trap</h4>
+            <p>TR22 在此處提出一個非常重要且常被忽視的觀點：<strong>APS 中的介入操作不能過多</strong>。如果把所有允許的矯正介入都塞進每次 APS，總介入頻率將遠超常規生產，使 APS 不再具有代表性。</p>
+            <p>建議做法：</p>
+            <ul>
+                <li>高風險且頻繁的介入 → 每次 APS 都模擬</li>
+                <li>低風險且不頻繁的介入 → 至少每年挑戰一次，可輪流納入</li>
+                <li>用省下的「介入配額」來增加高風險介入的模擬頻率</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 新介入操作的處理</h4>
+            <p>在常規生產中首次出現的新矯正介入，在被正式納入合格清單並在 APS 中成功挑戰之前，<strong>必須被視為偏差 (Deviation)</strong>。最壞的情況下，可能需要停止該批次。這體現了「先證明安全，再允許執行」的原則。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 的介入操作管理策略：</strong>對 CDMO 而言，由於客戶產品多樣，介入操作清單的管理尤其重要。建議：</p>
+            <ul>
+                <li>建立「通用介入清單」(Common Interventions List) 適用於所有產品/充填線</li>
+                <li>針對特定產品/充填線的獨特介入，建立「產品特定附錄」</li>
+                <li>每次新客戶導入時，進行差異分析 (Gap Analysis) 確認是否有新的介入需求</li>
+                <li>利用矩陣法減少操作員在多條線之間的重複確認工作</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某矯正介入在過去一年 200 批生產中只發生過 3 次。在半年一次的 APS 中，應如何決定此介入的模擬頻率？</li>
+                <li>為什麼 TR22 說「不需要在 APS 中模擬介入的最大次數」？請用具體例子說明。</li>
+                <li>一位新操作員需要在 3 條類似設計的充填線上作業。如何使用矩陣法來簡化其介入操作的確認流程？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.3.2 INTERVENTION PROCEDURES AND QUALIFICATION -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-3-2">4.1.3.2 Intervention Procedures and Qualification</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>In aseptic processing, the <span class="key-term">qualification of interventions</span> is a critical aspect that ensures the maintenance of product sterility and overall process integrity. This section delves into the essential procedures and considerations for qualifying interventions, as well as the protocols for handling unqualified, unapproved, and disallowed interventions.</p>
+
+        <h3>4.1.3.2.1 Intervention Qualification</h3>
+
+        <p>Interventions should be properly qualified before they are performed in aseptic processes. The APS alone does not qualify the intervention, and it should not be considered the sole means to, or a substitute for, more-focused and effective methods to qualify an intervention. However, all interventions (inherent or corrective), after meeting other qualification criteria, should be included in the APS to evaluate whether any weakness or under-addressed variable in the process adversely affects product sterility.</p>
+
+        <p>The qualification of an intervention should include the following considerations:</p>
+        <ul>
+            <li>Risk assessment to determine the risks posed by the intervention and if those risks are adequately controlled</li>
+            <li>Sound process design of the intervention, as well as qualification of any control measures designed to address risks posed by the intervention</li>
+            <li>Approved procedures (as noted in formal SOPs, batch records, or other documents) describing the performance of the intervention</li>
+            <li>Personnel training in the performance of the intervention</li>
+            <li>Evidence that adequately trained and qualified personnel can properly perform the intervention within a consistent duration</li>
+            <li>Evidence, inclusive of air-visualization studies, that personnel performing interventions in the critical area and in proximity to sterile product or contact surfaces can do so following good aseptic working techniques, without disrupting first air or compromising adjacent critical surfaces, e.g., by causing external "dirtier" air to enter the critical area by generating significant turbulences</li>
+            <li>Use of ergonomics, rest periods (e.g., breaks), and other means to minimize the effects of human fatigue on aseptic process performance and risks posed to product quality (see Section 7.9.2).</li>
+            <li>Oversight of intervention performance to evaluate proper execution of the intervention</li>
+        </ul>
+        <p>A clear decision as to whether the intervention is acceptable risk, if further actions such as engineering is required or if the intervention poses an unacceptable risk.</p>
+
+        <h3>4.1.3.2.2 Unqualified or Unapproved Interventions</h3>
+
+        <p><span class="key-term">Interventions that are required in a production run to continue manufacturing and have not been previously qualified</span> should be considered unqualified and unapproved. Procedures should be in place to address unqualified and unapproved interventions, including personnel and departments responsible for input and approval and actions required to perform the intervention if it is possible to do it with an acceptable risk. If such interventions are required or are contemplated, the company should do one or more of the following:</p>
+        <ul>
+            <li>Immediately contact the Quality Unit (before the intervention, if possible)</li>
+            <li>Disallow the intervention and immediately stop production, pending corrective actions that are not normally performed during the aseptic process (through a deviation or temporary change control)</li>
+            <li>Assess the intervention to determine the risk to product sterility posed by the intervention and control steps needed to mitigate such risk. If the assessment supports the execution of the intervention, consider whether the intervention should become part of the established process.</li>
+            <li>Incorporate special precautions, risk mitigation, controls, and monitoring to limit the risk of product contamination, including removal of potential compromised units and disinfection or decontamination of affected areas</li>
+            <li>Segregate and contain the affected units and define disposition criteria for the product filled after the performance of the intervention</li>
+            <li>Evaluate the similarity of the interventions to qualified and approved interventions and activities. If the intervention has occurred before or is reasonably likely to occur again, consideration should be given to adding it to the established process as a permitted intervention once it is fully qualified (i.e., assessed and successfully challenged during the APS).</li>
+            <li>If it is determined that the unqualified intervention will be necessary, operators should be coached on how to perform the intervention. Additionally, should the intervention be added to the qualified interventions, formal training of operators should be undertaken. Document the intervention and decision criteria, including steps required to qualify the new intervention and its inclusion in future APS runs, if applicable</li>
+            <li>Arrange for the Quality Unit to oversee the proper execution of the intervention</li>
+            <li>Additional samples (e.g., sterility and EM taken after critical interventions) should be considered based on risk</li>
+        </ul>
+
+        <h3>4.1.3.2.3 Disallowed Interventions</h3>
+
+        <p><span class="key-term">Disallowed interventions</span> are those that pose an unacceptable level of risk of contamination to sterile product, those that are no longer relevant or performed in production (not simulated in APS, "just in case" interventions), or those that for some other reason are no longer allowed in the production process. Disallowed interventions should be removed from the list of approved interventions, and procedures should be modified to remove these interventions from APS and normal production.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>介入操作的三層分類體系：</strong></p>
+            <ul>
+                <li><span class="badge green">Qualified 合格</span> — 已完成風險評估、程序建立、人員訓練、氣流可視化驗證，並在 APS 中成功挑戰</li>
+                <li><span class="badge yellow">Unqualified 未確認</span> — 生產中必須執行但尚未經過正式確認程序的介入</li>
+                <li><span class="badge red">Disallowed 禁止</span> — 風險不可接受、已不相關、或基於其他原因被禁止的介入</li>
+            </ul>
+            <p><strong>關鍵洞察：</strong>APS 本身<strong>不能</strong>單獨作為介入操作確認的手段。介入操作的確認是一個多層次的過程，APS 只是最終的「整合挑戰」，用來發現其他確認步驟可能遺漏的問題。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 介入確認的八大要素</h4>
+            <p>TR22 列出的介入確認要素可歸納為以下八項，形成一個完整的確認框架：</p>
+            <ol>
+                <li><strong>風險評估</strong> — 識別並評估介入帶來的風險</li>
+                <li><strong>製程設計</strong> — 介入本身及其控制措施的設計合理性</li>
+                <li><strong>書面程序</strong> — SOP / 批次記錄中的正式記載</li>
+                <li><strong>人員訓練</strong> — 操作員的訓練與能力展示</li>
+                <li><strong>一致性證據</strong> — 證明操作員能在一致的時間內正確執行</li>
+                <li><strong>氣流可視化</strong> — 煙霧試驗確認介入不會破壞 First Air (初級氣流)</li>
+                <li><strong>人因工程</strong> — 考量疲勞、休息時間等人因因素</li>
+                <li><strong>監督機制</strong> — 評估介入執行正確性的監控</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像飛行員的操作授權體系：</p>
+            <ul>
+                <li><strong>Qualified</strong> = 取得特定機型飛行執照的飛行員，可以正常執行所有該機型允許的操作</li>
+                <li><strong>Unqualified</strong> = 緊急情況下飛行員需要執行一個未受訓練的操作（如緊急迫降在未鋪設跑道上），必須即時通報塔台（品質單位），並由塔台評估是否允許</li>
+                <li><strong>Disallowed</strong> = 無論何種情況都絕對禁止的飛行操作（如超過結構限制的機動動作），因為風險完全不可接受</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 未確認介入的應急流程</h4>
+            <p>當生產中遇到未確認的介入需求時，TR22 提供了一套完整的應急決策流程：</p>
+            <ol>
+                <li>優先聯繫品質單位 (Quality Unit)</li>
+                <li>評估是否可以不執行 → 若不可避免則停線</li>
+                <li>若必須執行 → 即時風險評估</li>
+                <li>執行時加強防護措施（隔離受影響產品、消毒區域、增加取樣）</li>
+                <li>品質單位全程監督</li>
+                <li>事後評估是否應納入合格介入清單</li>
+            </ol>
+            <p>這套流程的核心精神是：<strong>寧可停線，也不可冒然執行未確認的操作</strong>。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR22 強調「APS 不能作為介入確認的唯一手段」？如果只依賴 APS 來確認介入，可能遺漏什麼？</li>
+                <li>一項「以防萬一」(just in case) 的介入操作已經三年沒有在生產中執行過。根據 TR22，這項介入應該如何處理？</li>
+                <li>在氣流可視化研究中，如何判斷一項介入操作是否會「破壞 First Air」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.3.3 APS STUDY DESIGN -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-3-3">4.1.3.3 Aseptic Processing Simulation Study Design</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The number, type, and complexity of <span class="key-term">inherent interventions</span> that occur with each filling process, as well as <span class="key-term">corrective interventions</span> and events (e.g., maintenance, stoppages, equipment adjustments) should be incorporated into the APS study design (12). When the APS procedures are consistent with those used for routine production, the simulation will be a more authentic representation of the routine process.</p>
+
+        <p>The purpose of the APS is to evaluate the capability of executing a process, interventions included, under specific conditions to produce units devoid of microbial contamination. During the design of the APS, it's crucial to take into account the quantity, variety, and intricacy of both inherent and corrective interventions, backed by robust scientific reasoning. Filling lines with comparable equipment setups might adopt a <span class="key-term">"worst-case" strategy</span> for equipment arrangement and intervention to mimic the risks associated with each filling-line configuration. For example, two sets of filling parts of similar design sourced from different vendors may present a similar overall processing risk and may not require a separate APS to demonstrate the acceptability of the interventions associated with the use of each filling set.</p>
+
+        <p>Interventions to be included in the APS protocol should be considered in terms of the expected frequency and duration with which they are performed during production based on process design, production logs, batch records, observations of the aseptic filling process, and the microbiological risk to the product and process as determined by a thorough risk assessment. In general, interventions that commonly occur should be routinely simulated, while those occurring rarely can be simulated periodically (e.g., annually, depending on their risk, complexity, and the frequency with which they are performed during production fills). It should be noted that rarely performed interventions may have an additional risk factor due to lower familiarity of the operator with the intervention (if it is sufficiently different from other more routine interventions). The APS should consider the anticipated number of interventions required to run and accurately simulate the aseptic process.</p>
+
+        <p>Proper intervention performance is dependent upon the <span class="key-term">operator training and qualification program</span> and predicated on sound intervention design, airflow-visualization studies, procedures, and evidence supporting operator training and execution of interventions (see Section 9.0). Qualification studies on higher-risk complex interventions may be used to demonstrate adequate aseptic training proficiency and the ability to execute less-complex interventions during production without the operator having to perform the less-complex intervention during the APS. The execution of interventions during the APS, although important, should not be the sole indicator of an intervention's suitability or proper performance. Likewise, the ability to perform a particular intervention should not be based on the number of times it is performed during the APS, but rather the qualification and training of operators to perform these interventions. On-the-job training of higher-risk interventions using placebo (production environment) or growth promoting media (training environment), airflow visualization studies of intervention execution, virtual-reality training, and enhanced supervision of inexperienced operators may be used to ensure that operators are proficient at performing their assigned interventions.</p>
+
+        <p>The performance of interventions should be accomplished by <span class="key-term">qualified personnel</span>, including those involved in maintenance activities, EM, and support personnel according to defined procedures. The ability of the operator or mechanic to intervene in the process to address mechanical failures or other infrequent interventions that may pose a significant risk to the process should be reflected in the APS. Certain corrective interventions that occur infrequently during product manufacture should be performed periodically to simulate their performance during routine operations. These include events such as equipment breakdown, part replacement, or other infrequent nonroutine corrective interventions.</p>
+
+        <p>Defined intervention procedures ensure controlled process activities and help avoid unintended, personnel-dependent activities that may not conform to appropriate aseptic behavior. A <span class="key-term">matrix approach</span> (grouping interventions by similarity of execution and risk) for certain types of aseptic processing interventions may be considered for the simulation of similar interventions of comparable complexity and risk, where risk-related variables have been assessed and found to be captured in this approach. It should be noted that although some interventions may be considered within a matrix equivalent to each other, and in any one APS only a single intervention is executed the interventions should be rotated, so that over time all are included. Interventions that are demonstrated to be acceptable can normally be performed by other trained and qualified individuals.</p>
+
+        <p>Note: This may not be the case for highly complex specialized activities where only individuals who have performed that activity successfully (as supported by acceptable APS results) are considered qualified (see Section 8.0).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>APS Study Design 的核心邏輯：</strong></p>
+            <p>APS 研究設計需要回答四個關鍵問題：</p>
+            <ol>
+                <li><strong>What (哪些)：</strong>哪些介入操作需要納入本次 APS？</li>
+                <li><strong>How many (多少次)：</strong>每項介入操作模擬幾次？</li>
+                <li><strong>When (何時)：</strong>在 APS 的哪個時間點執行？</li>
+                <li><strong>Who (誰)：</strong>由哪些合格人員執行？</li>
+            </ol>
+            <p>所有決定都必須有<strong>科學根據</strong>，包括歷史生產數據、風險評估結果、製程設計特性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Worst-Case Strategy 的正確應用</h4>
+            <p>「最壞情境策略」不等於「堆疊所有風險」。TR22 舉例：兩套來自不同供應商但設計類似的充填零件，如果整體製程風險相似，可以不需要分別做 APS。Worst-case 的真正意義是<strong>選擇最能代表風險的配置</strong>，而非人為製造不切實際的極端情境。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>APS 的研究設計就像編排一齣「寫實劇」：劇本（Protocol）必須包含所有常見的場景（固有介入），偶爾穿插一些意外事件（矯正介入），演員（操作員）必須經過充分排練（訓練與確認）。但如果你把所有可能的意外事件都塞進一集，觀眾（稽查員）會說：「這也太不真實了。」關鍵在於<strong>代表性 (representativeness)</strong>，不是「越多越好」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 不常見介入的額外風險</h4>
+            <p>TR22 特別指出：<strong>不常執行的介入操作可能帶有額外風險</strong>，因為操作員對這些操作的熟悉度較低。這一點在設計 APS 時容易被忽略。建議：</p>
+            <ul>
+                <li>對不常見介入操作加強模擬前的複習訓練</li>
+                <li>考慮使用 Virtual Reality (VR) 訓練來維持操作員的熟練度</li>
+                <li>在 APS Protocol 中標註哪些介入是「低頻高風險」類型</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 矩陣法的輪替原則</h4>
+            <p>使用矩陣法分組介入操作時，雖然每次 APS 只需執行組內的一項代表性介入，但<strong>必須隨時間輪替</strong>，確保所有介入操作最終都被涵蓋。這與前述「每項允許的介入至少每年挑戰一次」的要求一致。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某充填線有 15 項允許的矯正介入，其中 5 項經常發生（每批 1-3 次），10 項很少發生（每年不到 5 次）。如何設計半年一次的 APS 中的介入計畫？</li>
+                <li>TR22 提到「高風險複雜介入的確認研究可用來證明操作員執行較簡單介入的能力」。請舉一個具體例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.3.4 HANDLING INTERVENTION-RELATED UNITS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-3-4">4.1.3.4 Handling of Intervention-Related Units</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>It is common for a predefined number of units to be discarded during production runs as a risk reduction or mitigation activity following interventions, particularly after initial <span class="key-term">aseptic line setup</span>. If the intervention procedure and batch documentation call for a minimum number of units (from specified location(s)) to be removed during or after an intervention, then those units are considered <span class="key-term">rejects</span> associated with the intervention. Procedures should be in place to ensure that these rejected units are properly removed and discarded during production without compromising the adjacent aseptic environment and that the same procedure can be followed during the APS without incubation of rejected units.</p>
+
+        <p>Units rejected in response to an APS intervention, however, may provide valuable information to help the manufacturer better understand the risk that each intervention poses and may drive further risk reduction or mitigation. For this reason, manufacturers should consider <span class="key-term">incubating any integral filled and closed units</span> (e.g., a vial with a fully inserted stopper) for informational purposes. The incubation of these units during an APS should be considered (1) if there is scientific value that can be obtained from the evaluation of these incubated units, and (2) where the operation and automation of the filling line permits collection of these units. Otherwise, the intervention rejects may be removed and noted in the APS. Rejects from higher-risk operations, for example, first-filled units following setup operations or units filled following significant interventions should be incubated if their inclusion does not introduce an artificially greater challenge to aseptic control than commercial operation (e.g., units removed and sealed by a manual vs. an automated process). In no case should more units be removed, or a larger zone be cleared during an APS intervention than would be cleared during a production run.</p>
+
+        <p>Where such units are incubated, they should be incubated separately. They are not to be considered part of the <span class="key-term">acceptance criteria</span> for the APS; however, any contaminated unit should trigger an investigation for potential root cause, its impact on the overall process evaluation, and any associated corrective action. The exclusion of any units from incubation requires justification and documentation. Procedurally defined <span class="key-term">nonintegral units</span> (e.g., cracked or unsealed containers) that are detected and discarded as part of the routine operation should not be incubated. The incubation of nonintegral units will not provide any meaningful measure of the aseptic process, since these units do not represent either acceptable production practices or acceptable container-closure integrity. Any integral units found to be contaminated should be considered in the context of potential improvement.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Intervention-Related Units (介入相關單位) 的處理邏輯：</strong></p>
+            <p>在常規生產中，介入操作後通常會丟棄一定數量的產品單位作為風險緩解措施（例如：設備組裝後的前 N 瓶、矯正介入後受影響區域的產品）。在 APS 中，這些「棄置單位」的處理需要特別考量：</p>
+            <table>
+                <tr>
+                    <th>單位類型</th>
+                    <th>APS 中的處理</th>
+                    <th>是否納入判定標準</th>
+                </tr>
+                <tr>
+                    <td>完整密封的棄置單位 (Integral rejects)</td>
+                    <td>建議單獨培養以獲取資訊</td>
+                    <td>否 — 僅供參考用</td>
+                </tr>
+                <tr>
+                    <td>非完整單位 (Non-integral, e.g., cracked)</td>
+                    <td>不培養，直接丟棄</td>
+                    <td>不適用</td>
+                </tr>
+                <tr>
+                    <td>常規充填的正常單位</td>
+                    <td>全部培養</td>
+                    <td>是 — 納入 APS 接受標準</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>APS 棄置量的鐵律：</strong>APS 中介入後的棄置量<strong>絕不可超過</strong>常規生產中的棄置量。如果生產中只棄置 5 瓶，APS 中也只能棄置 5 瓶。這確保 APS 不會因為丟棄更多「可能有問題」的單位而人為美化結果。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在做食品安全檢查：廚師切菜時刀子掉到地上（矯正介入），按照規定要丟掉刀子碰到的那幾片菜（棄置單位）。在「模擬檢查」中，你也只能丟掉同樣數量的菜。如果你丟掉更多，那這次檢查的結果就不能真正代表日常狀況了。而那些被丟掉的菜，雖然不算在合格率裡，但如果送去化驗發現有問題，仍然需要調查原因。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「培養但不計分」的智慧</h4>
+            <p>TR22 對介入棄置單位的處理建議體現了一種巧妙的平衡：</p>
+            <ul>
+                <li><strong>培養</strong>它們 — 因為這些單位能提供寶貴的製程資訊，幫助理解每項介入的實際風險</li>
+                <li><strong>不計入判定標準</strong> — 因為在生產中這些單位也會被丟棄，計入判定會使 APS 比生產更嚴格</li>
+                <li><strong>但若發現汙染必須調查</strong> — 因為即使不計分，汙染仍然是一個警訊，需要找出根本原因</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼非完整單位（如破裂容器）不需要在 APS 中培養？如果培養了會產生什麼問題？</li>
+                <li>某 APS 中，介入後棄置的 10 瓶單位中有 2 瓶發現微生物生長。雖然這些不計入 APS 判定標準，品質單位應該如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.1.4 STERILE BULK APS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-1-4">4.1.4 Sterile Bulk Aseptic Process Simulation</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>Technical Report 22 does not address APS for <span class="key-term">sterile bulk products</span> (i.e., liquids, solids, suspensions) or for drug product, however they are described in <span class="key-term">PDA Technical Report No. 28 (Revised 2006)</span>: Process Simulation Testing for Sterile Bulk Pharmaceutical Chemicals (TR 28). Special considerations for the inclusion in the APS of sterile-material additions during the preparation of suspension drug products, however, is covered in Section 4.2.3.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>TR22 與 TR28 的分工：</strong></p>
+            <ul>
+                <li><strong>TR22</strong> — 針對最終劑型 (Finished Dosage Forms) 的無菌充填製程模擬</li>
+                <li><strong>TR28</strong> — 針對無菌原料藥 (Sterile Bulk Pharmaceutical Chemicals) 的製程模擬測試</li>
+            </ul>
+            <p>但注意：懸浮液產品在調配過程中涉及無菌物料添加的特殊考量，仍在 TR22 的 Section 4.2.3 中討論。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對 CDMO 而言，如果同時承接原料藥和成品藥的無菌製造，需要同時參考 TR22 和 TR28 兩份技術報告。兩者在基本原則上一致，但在具體操作細節上有所不同。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.2 APS DESIGN WITH REGARD TO PRODUCTS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-2">4.2 Aseptic Process Simulation Design with Regard to Products</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The following are aspects to consider in the design of the APS which are specific to the simulated product dosage form.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>產品劑型特定的 APS 設計考量：</strong>Section 4.2 將針對不同產品劑型（如溶液、凍乾、懸浮液、預充填針筒等）討論各自的 APS 設計要點。由於每種劑型有不同的無菌操作步驟和風險特性，APS 的設計也必須相應調整。</p>
+            <p>此部分的詳細內容將在 <strong>Section 2b</strong> 中繼續。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Section 4.2 是 TR22 中非常重要的一節，因為它將通用原則 (4.1) 轉化為針對特定劑型的具體指引。在實際作業中，品質人員和製程工程師需要同時參考 4.1 的通用要求和 4.2 中適用於自身產品的特定要求。</p>
+        </div>
+    </div>
+</div>
+
+<!-- NOTE: This section (2a) merges with Section 2b which continues 4.2 subsections -->
+
+</div><!-- end main-content -->
+
+</body>
+</html>

@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Topic 4: Glove Integrity-Testing and Maintenance</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Topic 4: Glove Integrity-Testing and Maintenance</h1>
+    <div class="subtitle">主題四：手套完整性測試與維護</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025) — RABS | p48 - p55</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 RABS 手套完整性 (Glove Integrity) 對 Grade A 環境維護的關鍵角色，以及完整性失敗的潛在影響</li>
+        <li>掌握手套管理策略 (Glove Management Strategy) 的核心要素：選擇、測試、更換頻率與輪換</li>
+        <li>學習手套完整性失敗時的分階段調查與回應流程，建立系統性的品質風險管理 (QRM) 思維</li>
+        <li>了解預防手套損壞的操作規範、更換標準，以及維護計畫 (Preventive Maintenance) 的制定邏輯</li>
+    </ul>
+</div>
+
+<div class="main-container">
+
+<!-- ============================================================= -->
+<!-- Q4.1: How do you ensure the integrity of RABS gloves? -->
+<!-- ============================================================= -->
+<div class="section-title">Q4.1 How do you ensure the integrity of RABS gloves?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Recommendation</h3>
+        <p>There are various aspects to designing, maintaining, and verifying the integrity of a <span class="key-term">RABS</span>. The potential loss of integrity can occur at many locations, including the RABS enclosure seams, baseplate openings, doors, <span class="key-term">glove ports</span>, gloves, transfer ports, <span class="key-term">UDAF</span> (in the case of an active RABS), and the lack of First Air.</p>
+
+        <p>A <span class="key-term">risk analysis</span> should be conducted to assist in identifying design decisions and operational actions that have the potential for a loss of integrity. (See PDA Technical Report No. 54: <em>Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations</em> for guidance on performing a risk analysis.)</p>
+
+        <p>As discussed in Questions 1.1-1.6 of this document, <span class="key-term">quality-by-design</span> techniques can reduce the risk of incursions to RABS by considering process and user requirements, risk analysis, and designs that limit potential points of contamination. However, active monitoring and verification of RABS integrity is key to protecting the product and operator safety, where applicable in cRABS.</p>
+
+        <p>Considerations on monitoring <span class="key-term">glove integrity</span> throughout a campaign is important as post campaign integrity test failures can be highly impactful. Also, integrity monitoring after significant interventions needs to be considered. Monitoring environmental conditions in real time within the oRABS or cRABS is essential to maintaining <span class="key-term">Grade A</span> conditions to support RABS integrity. These parameters include:</p>
+
+        <ul>
+            <li>Temperature</li>
+            <li>Humidity</li>
+            <li>Differential pressure</li>
+            <li>UDAF velocity</li>
+            <li>EM</li>
+        </ul>
+
+        <p>In addition to real-time monitoring of these environmental conditions, <span class="key-term">glove integrity-testing</span>, both visual assessment and a <span class="key-term">pressure test</span> are required (1, 17). Firms should establish the procedures for this pressure test based on the specifications of their gloves and testing methods. This process should be incorporated into the <span class="key-term">CCS</span>. (See Topics 4-6 of this PtC.)</p>
+
+        <p>A common pathway to RABS contamination is through the use of glove ports and, in particular, the loss of integrity of the glove material (4). While pre- and post-filling EM sampling may detect contamination via the gloves, it is imperative to verify the integrity of the glove itself. Glove integrity-testing should be performed based on an approved risk assessment. An approved risk assessment should determine the frequency of pressure testing, visual inspection, and <span class="key-term">glove changeout</span> (6, 8). Additional glove visual assessments should be performed prior to each use during both campaign and batch production (3).</p>
+
+        <h3>Rationale</h3>
+        <p>It is critical for RABS to maintain integrity in order to support Grade A conditions. The RABS gloves design, use, and maintenance are key elements to ensuring appropriate control and overall integrity. RABS-related procedures and programs should encompass the continuous review of system and process improvements that support product quality.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Glove Integrity (手套完整性)：</strong>指 RABS 手套作為屏障系統一部分，維持其物理密封性的能力。手套是 RABS 中最脆弱的環節之一，因為它是柔性材料，會被反覆使用、拉伸、接觸清潔劑，隨時間推移可能產生針孔 (pinhole)、撕裂或磨損。</p>
+            <p><strong>Pressure Test (壓力測試)：</strong>利用壓力衰減法或恆壓法，物理性地檢測手套是否有洩漏。相對於目視檢查，壓力測試能偵測微米級別的孔洞，是確保 Grade A 環境完整性的關鍵手段。</p>
+            <p><strong>UDAF (Unidirectional Airflow，單向氣流)：</strong>在 RABS 內從上方向下吹送的潔淨空氣，提供 First Air 保護。若手套或密封失效，外部污染物可能逆向進入。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像 RABS 就像一艘潛水艇 -- 手套就是潛水艇上的「機械手臂密封圈」。潛水艇在深海中，任何一個密封點（艙門、接縫、觀察窗、機械臂介面）的洩漏都可能導致災難。你不會等到水淹進來才發現問題，而是定期做壓力測試、目視檢查，並在每次任務前確認所有密封完好。RABS 手套的管理邏輯完全一樣：預防勝於補救。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>手套是 RABS 最常見的污染途徑：</strong>PtC 明確指出 "A common pathway to RABS contamination is through the use of glove ports." 這意味著所有 RABS 污染調查中，手套相關事件佔據很高比例。</p>
+            <p><strong>即時監控五大參數：</strong>溫度、濕度、壓差、UDAF 風速、EM -- 這些構成了 RABS 完整性的「儀表板」。任何一項偏離都可能暗示屏障系統有問題。</p>
+            <p><strong>Campaign 期間的監控：</strong>不能只在批次結束後測試。如果在整個 campaign 結束後才發現手套失敗，可能影響多個批次，調查範圍和商業損失都會擴大。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，同一條 RABS 充填線可能服務多個客戶產品。如果 campaign 結束後手套完整性測試失敗，可能影響整個 campaign 中所有批次 -- 這意味著多個客戶的產品都需要進行回溯性調查 (retrospective assessment)。這不僅是品質問題，更是商譽問題。因此，許多領先 CDMO 選擇在 campaign 中間也進行手套完整性測試，以「分段」風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 RABS 在一次 campaign 中要連續生產 5 個批次，你會在哪些時間點安排手套壓力測試？為什麼？</li>
+                <li>除了手套本身，RABS 還有哪些位置可能發生完整性喪失？請列舉至少 4 個。</li>
+                <li>為什麼 EM 取樣「可能」偵測到污染，但不能取代手套完整性測試？兩者的角色有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q4.2: Glove-management strategy -->
+<!-- ============================================================= -->
+<div class="section-title">Q4.2 What are the considerations for a RABS glove-management strategy?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Recommendation</h3>
+        <p>A RABS <span class="key-term">glove-management strategy</span> is essential to maintaining the RABS environment (i.e., product quality) and providing operator safety. This strategy includes glove selection, integrity testing, and an established <span class="key-term">glove changeout frequency</span> (6). Interventions should be designed to in a way to minimize the risk of glove damage and loss of integrity. Within a <span class="key-term">Glove Management Strategy</span> (part of CCS) the regime for glove integrity testing should be specified based on risk and impact of glove integrity breaches. Visual inspection, and where appropriate physical methods of glove integrity testing, should be applied as combined assurance that glove integrity has been maintained through critical process steps of set-up and during routine operations where inherent and corrective interventions apply.</p>
+
+        <p>There are multiple considerations with the selection of glove material. (See Question 1.5 for details on glove materials of construction).</p>
+
+        <p>Depending on the glove selected, a risk assessment should establish the appropriate and validated <span class="key-term">integrity test method</span> and frequency (1). The risk associated with the process and product would have the greatest impact on establishing the appropriate integrity-test requirements. The integrity-test method should include both visual and physical testing components as detailed in Question 4.6.</p>
+
+        <p>Based on the glove selected and the established integrity-test requirements, the risk assessment should evaluate a <span class="key-term">preventive maintenance (PM)</span> program to establish the duration of glove changeout and replacement frequency (6). Once in operation, the PM frequency of the gloves should be reviewed on a periodic basis and adjusted based on data acquired from the RABS. For example, if certain gloves are experiencing higher wear due to machine setup and adjustment, operator interventions, and/or cleaning and disinfecting agents, the PM frequency may be increased.</p>
+
+        <p><span class="key-term">Glove rotation</span> can be considered to minimize the damage or failure rate for reusable-type gloves. Consideration should be given to the location(s) where the glove is subjected for low/high utilization during processing for rotation from batch or campaign operations (e.g., from a high-interventions zone to a low-interventions zone). The rotation policy and its recording procedure is to be defined by QRM for its traceability.</p>
+
+        <h3>Rationale</h3>
+        <p>The selection of the proper gloves, glove testing, and management of gloves is necessary to ensure operator safety and to maintain the RABS environmental conditions. The firm should evaluate their process and perform a risk assessment to determine an appropriate integrity test that reliably detects glove defects.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Glove Management Strategy (手套管理策略)：</strong>這不只是「定期換手套」這麼簡單，而是一個涵蓋選材、測試方法、測試頻率、更換排程、輪換政策的完整管理體系，且必須納入 CCS (污染控制策略) 中。</p>
+            <p><strong>Preventive Maintenance, PM (預防性維護)：</strong>關鍵原則是「不要用到壞」(gloves should not be used until failure)。PM 頻率應基於風險評估，並持續依據實際數據調整。</p>
+            <p><strong>Glove Rotation (手套輪換)：</strong>把高使用頻率區域的手套輪換到低使用頻率區域，類似於輪胎輪換，可延長整體使用壽命並平均磨損。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手套管理策略就像汽車輪胎的管理：你不會只看輪胎有沒有爆胎（視覺檢查），你還需要定期量胎壓（壓力測試）、檢查胎紋深度（物理測試），並根據磨損程度決定更換時間（PM 頻率）。更聰明的做法是前後輪定期對調（手套輪換），讓四條輪胎的磨損更均勻。如果你的車經常走崎嶇路面（高介入頻率的操作），你就需要更頻繁地檢查和更換。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>三層防線（選材 + 測試 + 維護）：</strong>手套管理策略的三大支柱缺一不可。選擇適當的材料是第一道防線，定期測試是偵測防線，預防性更換是最終保障。</p>
+            <p><strong>數據驅動的 PM 調整：</strong>PtC 強調 PM 頻率不是一成不變的，應該根據營運數據（如磨損率、失敗率）動態調整。這體現了持續改進 (continuous improvement) 的精神。</p>
+            <p><strong>輪換政策需可追溯：</strong>手套輪換不能隨便做，必須由 QRM 定義政策並有完整記錄，確保可追溯性 (traceability)。這在法規查廠時是被查核的重點。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+手套管理策略 =
+    選材 (Material Selection)
+  + 測試方法 (Integrity Test Method)
+      - 目視檢查 (Visual Inspection)
+      - 物理測試 (Physical/Pressure Test)
+  + 測試頻率 (Test Frequency)
+      - 基於風險評估 (Risk-Based)
+  + PM 更換排程 (Changeout Schedule)
+      - 基於供應商建議 + 實際數據
+  + 輪換政策 (Rotation Policy)
+      - 高→低使用區域輪換
+  → 全部納入 CCS 文件
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 RABS 有 20 個手套口，其中 4 個位於充填區域（高介入頻率），你會如何設計輪換政策？</li>
+                <li>為什麼手套管理策略必須是 CCS 的一部分，而不能只是一份獨立的 SOP？</li>
+                <li>假設近三個月你的 RABS 手套完整性測試失敗率從 1% 上升到 5%，你會採取哪些行動？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q4.3: Maintenance program -->
+<!-- ============================================================= -->
+<div class="section-title">Q4.3 What should the maintenance program be for RABS gloves?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Recommendation</h3>
+        <p>Expectations and practices regarding the inspection and replacement of glove systems can be documented within the <span class="key-term">planned maintenance program</span>. This should be supported with a quality risk assessment that details the rationale for glove-replacement frequency. (See PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators for further details on the glove maintenance program.)</p>
+
+        <p>Gloves should not be used until failure. The frequency of PM activities must be established via <span class="key-term">risk assessment</span> with input from the vendor to determine the optimal frequency of glove changeout. The quality risk assessment should include, but not be limited to:</p>
+
+        <ul>
+            <li>Glove material of construction</li>
+            <li>Frequency of glove use</li>
+            <li>How gloves are used (e.g., handling sharp-edged equipment, stretching)</li>
+            <li><span class="key-term">VPHP</span> contact time or concentration, if applicable (delamination can occur due to prolonged VPHP/decontaminant exposure)</li>
+            <li>Type of disinfectant used for inner disinfection of the gloves</li>
+            <li>Ability to clean residual product from the gloves</li>
+            <li>Historical data for loss of integrity</li>
+        </ul>
+
+        <h3>Rationale</h3>
+        <p>Glove integrity can be critical to product quality. A robust risk assessment, including specific process parameters, will provide the information needed for maintenance procedures. Site procedures should define the maintenance and operational procedures based on risk.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Planned Maintenance Program (計畫性維護計畫)：</strong>一套預先規劃的手套檢查與更換排程。核心原則是「預防性」而非「反應性」-- 不要等到手套破了才換。</p>
+            <p><strong>VPHP Delamination (VPHP 脫層)：</strong>汽化過氧化氫 (Vaporized Hydrogen Peroxide) 是 RABS 常用的生物去污方法，但長期接觸可能導致某些手套材料「脫層」-- 外層和內層分離，嚴重削弱手套強度。這是一個常被忽略但極為重要的考量。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像飛機引擎的維護計畫：你絕不會等引擎故障才去檢修（用到壞），而是根據飛行時數、起降次數、環境條件（如鹽霧、沙塵）來制定定期檢修排程。手套也是一樣：使用次數（飛行時數）、操作類型（是否接觸尖銳物件 = 惡劣飛行條件）、VPHP 暴露（腐蝕性環境）都是決定「多久該換」的關鍵因素。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>"Gloves should not be used until failure" -- 這句話是黃金法則。</strong>如果你在法規查廠中被發現手套是「用到破才換」，這幾乎可以確定會被開出 observation。預防性更換的頻率必須有風險評估支持。</p>
+            <p><strong>七大風險評估因子：</strong>材料、使用頻率、使用方式、VPHP 接觸時間/濃度、消毒劑類型、殘留產品清潔能力、歷史失敗數據。這七項構成了更換頻率決策的完整輸入。</p>
+            <p><strong>供應商的角色：</strong>PtC 特別提到需要供應商的輸入 (input from the vendor)。手套供應商通常會提供材料的耐化學性數據、建議使用壽命等，這些是風險評估的重要依據。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設你是一家 CDMO 的品質主管，正在建立一條新的 RABS 充填線的手套維護計畫。你的 RABS 使用 VPHP 進行生物去污，每個 campaign 約 5 個批次，每批次約 8 小時。你會怎麼做？</p>
+            <ul>
+                <li>首先，聯繫手套供應商取得 VPHP 相容性數據和建議更換週期</li>
+                <li>根據操作 SOP 分析每個手套口的預期使用頻率和操作類型</li>
+                <li>建立初始 PM 排程（例如每 30 天或每 campaign 更換）</li>
+                <li>收集前 6 個月的完整性測試數據，根據趨勢調整 PM 頻率</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 VPHP 暴露時間和濃度需要被納入手套風險評估？脫層現象如何影響手套完整性？</li>
+                <li>如果歷史數據顯示某個特定手套口的失敗率明顯高於其他位置，你會採取哪些調查和改善措施？</li>
+                <li>PtC 提到可以參考 Isolator 的 PtC 來了解更多維護計畫細節。RABS 手套與 Isolator 手套的維護需求有何異同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q4.4: Response to a glove-integrity failure -->
+<!-- ============================================================= -->
+<div class="section-title">Q4.4 What is the response to a glove-integrity failure?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Recommendation</h3>
+        <p>In response to a <span class="key-term">glove-integrity failure</span>, the actions to be taken will vary depending on when and where the failure is identified. The impact on previous batches must be always considered unless there is an approved end of batch glove integrity test available. A risk-based site policy and/or procedure should detail the actions required when a glove failure is discovered (1, 6). Typical responses to a glove failure include, but are not limited to the following:</p>
+
+        <ul>
+            <li>If discovered during line setup and prior to RABS cleaning, disinfecting, and/or bio-decontamination, the nonintegral or damaged glove should be replaced, and the replacement should be documented per the site's procedures.</li>
+            <li>If discovered after RABS cleaning, disinfecting, and/or bio-decontamination but prior to product exposure inside the RABS, the glove should be replaced, disinfected or sterilized, and the action documented per the site's procedures. An investigation, including a <span class="key-term">root cause analysis</span> of procedures, process, and equipment, is recommended.</li>
+            <li>If discovered during or after a production run, an investigation, including a root cause analysis of procedures, process, and equipment as well as the impact on the filled product, is recommended.</li>
+        </ul>
+
+        <p>During the investigation process, the evaluation of the following elements should be considered:</p>
+
+        <ul>
+            <li>Time and process step when the glove failure was identified</li>
+            <li>Who identified the glove failure and the associated interview</li>
+            <li>RABS location of the failed glove</li>
+            <li>Failure location on the glove (e.g., fingertip, palm, glove port interface)</li>
+            <li>Activities performed by those wearing the failed glove</li>
+            <li>Review of the gloves and RABS preventive maintenance records, including:
+                <ul>
+                    <li>Recent glove integrity test results</li>
+                    <li>Last glove changeout</li>
+                </ul>
+            </li>
+            <li>Review of the batch records, including:
+                <ul>
+                    <li>RABS gloves Incoming Quality Assurance documentation (e.g., material specifications)</li>
+                    <li>RABS setup/glove installation</li>
+                    <li>RABS cleaning/disinfecting</li>
+                    <li>Filling interventions, both qualified and unqualified</li>
+                    <li>Any batch-related deviations</li>
+                </ul>
+            </li>
+            <li>Review of the operator's qualification and training records</li>
+            <li>Review of the glove integrity-test system qualification studies</li>
+            <li>Review of the current unidirectional air visualization studies</li>
+            <li>Review of batch EM data, both viable and total particles (See Topic 5.)</li>
+            <li>Review of batch bioburden samples data</li>
+        </ul>
+
+        <p>The evaluation of these materials and records should be conducted according to the site's QRM system. This glove-integrity investigation should be conducted such that the impact on the product is clearly understood and suitable <span class="key-term">corrective and preventive actions</span> are put in place (4).</p>
+
+        <h3>Rationale</h3>
+        <p>When nonintegral gloves or gloves with tears or pinhole leaks are detected, proper QRM must be used to determine the potential for contamination of the Grade A environment. While cleaning and disinfecting prior to the run, as well as continuous First Air, provides a level of protection, all integrity-test failures should be investigated. The investigation should determine the potential impact on process and product quality and whether any other processes or batches are potentially impacted. The reason for including or excluding a product or batch from the scope of the investigation should be clearly justified and documented.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Glove-Integrity Failure (手套完整性失敗)：</strong>指手套在完整性測試或目視檢查中被發現有針孔、撕裂、變形或其他影響密封性的缺陷。這是 RABS 操作中最具影響力的偏差 (deviation) 之一。</p>
+            <p><strong>三階段回應 (Tiered Response)：</strong>PtC 將手套失敗的回應分為三個時間點，風險等級遞增：</p>
+            <ul>
+                <li><strong>階段一（設置期間，清潔前）：</strong>最低風險 -- 換手套並記錄即可</li>
+                <li><strong>階段二（清潔後，產品暴露前）：</strong>中等風險 -- 換手套 + 消毒/滅菌 + 調查</li>
+                <li><strong>階段三（生產中或生產後）：</strong>最高風險 -- 全面調查 + 評估產品影響</li>
+            </ul>
+            <p><strong>CAPA (Corrective and Preventive Actions，矯正與預防措施)：</strong>調查完成後必須建立的改善行動，確保同類事件不再發生。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你經營一家高級無菌手術室。如果手術開始前發現手套有問題，影響最小 -- 換一雙就好。如果是手術器械已經擺好但還沒切開病人時發現，你需要換手套並重新消毒整個手術區域，同時調查為什麼會發生。但如果是手術進行中才發現手套破了，這就是最嚴重的情境 -- 你必須評估病人是否已經受到感染風險，回溯整個手術過程，並對所有接觸過的器械和區域進行全面調查。RABS 手套失敗的三階段回應邏輯完全一致。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>回溯性影響評估是必須的：</strong>"The impact on previous batches must be always considered" -- 除非你有「每批次結束後手套完整性測試合格」的紀錄可以將影響範圍縮小到當前批次，否則所有之前的批次都在調查範圍內。</p>
+            <p><strong>調查清單極為詳盡：</strong>PtC 列出了 11 個調查要素，從人員（誰發現的、誰戴過這雙手套、其資格訓練紀錄）到設備（手套位置、PM 紀錄）到製程（批次紀錄、EM 數據）。這是因為手套失敗的根因可能來自多方面。</p>
+            <p><strong>排除也要有理由：</strong>如果你決定某個批次不受影響而不納入調查，你必須「clearly justified and documented」。這在法規查廠中是非常容易被挑戰的點。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>假設你的 RABS 在一個 5 批次 campaign 的第 3 批結束後的手套完整性測試中發現一隻手套有針孔。</p>
+            <ul>
+                <li><strong>影響範圍：</strong>如果前兩批結束時沒有做手套完整性測試，則批次 1-3 都在調查範圍內</li>
+                <li><strong>客戶通知：</strong>如果這 3 個批次涉及不同客戶的產品，你需要通知所有受影響的客戶</li>
+                <li><strong>批次放行：</strong>在調查完成之前，受影響批次應暫停放行 (hold for release)</li>
+                <li><strong>商業影響：</strong>可能導致供貨延遲、客戶信心下降、額外測試成本</li>
+            </ul>
+            <p>這就是為什麼越來越多 CDMO 選擇每批次結束後都做手套完整性測試 -- 縮小風險窗口。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼手套失敗的調查需要回顧「氣流可視化研究」(AVS) 的結果？AVS 如何幫助評估產品受影響的風險？</li>
+                <li>假設調查發現手套針孔位於指尖位置，且該手套最近一次被用於調整充填針頭。這個資訊如何影響你的風險評估？</li>
+                <li>請設計一份簡化的「手套完整性失敗回應決策樹」，涵蓋三個階段的回應行動。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q4.5: Preventing RABS glove damages after installation -->
+<!-- ============================================================= -->
+<div class="section-title">Q4.5 How do you prevent RABS glove damages after installation?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Recommendation</h3>
+        <p>To keep the gloves in good condition during the processing of a batch or maintenance intervention, any operation that could compromise glove integrity should be avoided. For example, tools with sharp edges (e.g., scissors), should be those with rounded or covered tips designed specifically for <span class="key-term">cleanrooms</span>.</p>
+
+        <p>Any operation that may overstretch gloves should be avoided, using instead activities within the specific glove range of action or using another glove in closer proximity of the intervention. When not in use, RABS gloves should be <span class="key-term">retracted</span> to avoid possible interference and damage due to moving parts as well as disruption to <span class="key-term">First Air</span>. When the gloves are retracted, best practice is to keep the fingers of the gloves extended for ease of the next use.</p>
+
+        <p>See Topic 1 of this PtC for RABS design considerations related to gloves.</p>
+
+        <h3>Glove Replacement Criteria</h3>
+        <p>Gloves should be replaced whenever the relative conditions are different from the technical characteristics defined in manufacturer data sheets or from the internal risk assessment that could compromise the RABS aseptic internal conditions and product quality (1, 3).</p>
+
+        <p>Glove replacement frequency is based on the following recommendations, which include, but are not limited to:</p>
+
+        <ul>
+            <li>Physical attributes</li>
+            <li>Manufacturer expiry date</li>
+            <li>Color variation from specification</li>
+            <li>Loss of elasticity</li>
+            <li>Viable and total particle counts trending higher</li>
+        </ul>
+
+        <p>Prior to removal of gloves from the RABS, a visual inspection and/or pressure test should be conducted based on an approved risk assessment of any damage. Gloves should be removed gently from the RABS station and carefully placed on a sterile or sanitized cart or in sterile pouches. Any other hard or sharp object should not be placed over the gloves after removal from RABS station as that may damage the glove during handling for washing and sterilization processes.</p>
+
+        <h3>Rationale</h3>
+        <p>Integrity of the gloves is key in order to maintain a Grade A environment within the RABS enclosure. Maintaining glove integrity includes procedurally controlled glove use and replacement, as well as both periodic and routine glove inspection or testing based on an internal risk assessment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Glove Retraction (手套收回)：</strong>當 RABS 手套不在使用時，應該向外收回（翻轉收入手套口內側），避免手套懸掛在 RABS 內部被移動零件損壞或干擾 First Air 氣流。最佳實踐是收回時保持手指伸展，方便下次使用時快速穿戴。</p>
+            <p><strong>Glove Replacement Criteria (手套更換標準)：</strong>PtC 提出五項更換觸發條件：物理屬性變化、超過供應商效期、顏色偏差、彈性喪失、微粒計數趨勢上升。這些都是手套性能劣化的客觀指標。</p>
+            <p><strong>Color Variation (顏色變化)：</strong>手套顏色偏離規格可能代表材料降解（如被化學品侵蝕或紫外線老化），是一個容易被目視檢查發現的早期預警信號。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>保護 RABS 手套就像保養名牌皮手套：你不會用它去搬磚頭（避免接觸尖銳物件），不會把它塞進太小的口袋裡（避免過度拉伸），不用時你會把它平放在專用盒子裡而不是隨便丟在桌上（收回手套，妥善存放）。要更換時，你會先檢查它的狀態（目視/壓力測試），然後小心地取下放入保護袋中（無菌袋），而不是隨便塞進口袋裡壓壞它。整個過程都需要「溫柔以待」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>預防勝於偵測：</strong>Q4.5 的核心思想是「源頭管控」-- 與其在手套壞了之後花大量資源調查，不如從根本上預防損壞：使用圓頭工具、避免過度拉伸、不使用時收回手套。</p>
+            <p><strong>微粒趨勢是隱性指標：</strong>"Viable and total particle counts trending higher" 是一個非常精妙的更換觸發條件。手套本身可能看起來完好，但如果其附近的微粒計數持續上升，可能暗示手套材料正在降解或產生微粒脫落。</p>
+            <p><strong>拆卸手套也需要 SOP：</strong>PtC 特別強調拆除手套時的注意事項（輕柔取下、放置在無菌推車或無菌袋中、不要在手套上放置尖銳物品）。這是因為可重複使用的手套在拆除後可能需要清洗和重新滅菌再使用，拆除過程中的損壞會導致不必要的浪費。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>操作員培訓重點：</strong>在 CDMO 環境中，新進操作員的手套使用培訓應包含以下實際操作演練：</p>
+            <ul>
+                <li><strong>工具選擇：</strong>展示潔淨室專用圓頭剪刀與普通剪刀的差異，說明為什麼不能使用尖銳工具</li>
+                <li><strong>操作範圍：</strong>實際演練每個手套口的可及範圍，讓操作員了解何時該使用「更近的那隻手套」而非過度拉伸</li>
+                <li><strong>收回技巧：</strong>示範正確的手套收回方式，包括保持手指伸展的技巧</li>
+                <li><strong>異常識別：</strong>展示顏色變化、彈性喪失、表面粗糙化等手套劣化的實際樣本</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼手套不使用時需要收回？如果手套一直懸掛在 RABS 內部，可能會造成哪些問題？</li>
+                <li>假設你正在建立手套更換 SOP，五項更換標準中哪些可以通過目視檢查發現？哪些需要數據趨勢分析？</li>
+                <li>PtC 提到手套拆除後應放在「sterile or sanitized cart or in sterile pouches」。為什麼即使是要丟棄的手套，也需要小心處理？（提示：考慮完整性測試的需求）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-container -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin: 0 1.5rem 1.5rem 1.5rem;">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>完整性是 RABS 的生命線：</strong>手套是 RABS 屏障系統中最常見的污染途徑，必須通過目視檢查和物理測試（壓力測試）雙重驗證其完整性，且這些程序必須納入 CCS</li>
+        <li><strong>手套管理策略三大支柱：</strong>選材（材料與供應商）、測試（方法與頻率）、維護（PM 排程與輪換政策），三者缺一不可，且需基於風險評估動態調整</li>
+        <li><strong>「不要用到壞」是黃金法則：</strong>PM 頻率應考慮七大因子（材料、使用頻率、使用方式、VPHP 暴露、消毒劑、清潔能力、歷史數據），並持續以營運數據驅動改進</li>
+        <li><strong>失敗回應分三個階段：</strong>設置期間（低風險，換手套即可）、清潔後但生產前（中風險，需調查）、生產中/後（高風險，全面調查 + 產品影響評估 + CAPA）</li>
+        <li><strong>預防優於偵測：</strong>使用圓頭工具、避免過度拉伸、不用時收回手套、更換標準包含物理屬性/效期/顏色/彈性/微粒趨勢五大指標</li>
+        <li><strong>回溯影響評估不可迴避：</strong>手套完整性失敗時，除非有「批次結束後測試合格」的紀錄，否則所有之前批次都在調查範圍內 -- 這是 CDMO 必須特別注意的風險管控重點</li>
+    </ul>
+</div>
+
+</body>
+</html>

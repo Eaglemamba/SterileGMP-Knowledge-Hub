@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Section 1a: RABS Design (Q1.1–Q1.6)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1a: Topic 1 &mdash; Restricted Access Barrier System Design (Q1.1&ndash;Q1.6)</h1>
+    <div class="subtitle">主題 1（上）：限制進出屏障系統設計</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025) | p8 &ndash; p17</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 RABS 三種類型（Passive oRABS、Active oRABS、cRABS）的設計差異與適用場景</li>
+        <li>掌握 RABS 設計準則屬性（屏障、氣流、手套口、RTP、環境控制、壓差、清潔與生物去污）的關鍵比較</li>
+        <li>瞭解 cRABS 相較於 oRABS 與 Isolator 的獨特設計考量</li>
+        <li>認識 RABS 手套口定位、手套材質選擇與操作介入管控的設計原則</li>
+        <li>理解如何透過設計降低人員介入對無菌保證的風險</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節快速導覽</h3>
+    <div class="toc-grid">
+        <a href="#q1-1">Q1.1 RABS 類型</a>
+        <a href="#q1-2">Q1.2 設計準則</a>
+        <a href="#q1-3">Q1.3 cRABS 設計</a>
+        <a href="#q1-4">Q1.4 手套口定位</a>
+        <a href="#q1-5">Q1.5 RABS 手套設計</a>
+        <a href="#q1-6">Q1.6 介入風險最小化</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.1 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-1">Q 1.1 What are the different types of restricted access barrier systems (RABS)?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>A <span class="key-term">Restricted Access Barrier System (RABS)</span> is a series of components and processes that enclose and provide a <span class="key-term">Grade A environment</span> for aseptic processing (e.g., dispensing, filling and closing, lyophilization loading). Due to the protection offered by the barrier system, a RABS can provide a higher level of product and personnel protection than conventional Grade A or Grade B filling operations. See Question 2.3.</p>
+
+        <p>All RABS have <span class="key-term">rigid barriers</span>, <span class="key-term">glove ports</span> for operator access, a <span class="key-term">unidirectional airflow (UDAF)</span> unit source providing <span class="key-term">H14 high efficiency particulate air filter (HEPA)</span> filtered air (i.e., <span class="key-term">First Air</span>), and a method to transfer materials and supplies in and out of it. Having these features in common, RABS differentiate in three different types of air handling: <span class="key-term">passive open RABS (oRABS)</span>, <span class="key-term">active oRABS</span>, and <span class="key-term">closed RABS (cRABS)</span>, each offering an increasing level of protection for product and personnel. See Topic 3.</p>
+
+        <p><em>Note: This document does not cover isolator design. (See PDA&rsquo;s Point to Consider for the Aseptic Processing of Sterile Pharmaceuticals in Isolators for additional information.)</em></p>
+
+        <p>Figures 1.1-1, 1.1-2, and 1.1-3 depict the general layout of each RABS type highlighting the UDAF source, rigid barrier coverage, and typical environmental classifications.</p>
+
+        <p><em>Note: Diagrams are provided to illustrate the ways that air is supplied to and exits from the different types of RABS systems. Diagrams are not intended to inform readers how operators should interact with the equipment enclosed; that detail follows in later sections.</em></p>
+
+        <p><strong>Figure 1.1-1:</strong> Passive oRABS<br>
+        <strong>Figure 1.1-2:</strong> Active oRABS<br>
+        <strong>Figure 1.1-3:</strong> cRABS</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Product and aseptic procedures could require different designs of RABS systems. The correct execution of the RABS needs to be evaluated during the design process of the filling line and should be made based on a <span class="key-term">risk assessment</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>RABS (限制進出屏障系統)：</strong>RABS 是一套由硬質屏障、手套口、HEPA 過濾單向氣流、物料傳遞口等元件組成的系統，目的是在無菌製程區域形成 Grade A 環境，將操作人員與關鍵區域「隔離」，降低微生物污染風險。</p>
+            <p><strong>三種 RABS 類型的核心差異在於氣流處理方式：</strong></p>
+            <ul>
+                <li><strong>Passive oRABS（被動開放式）：</strong>氣流來自房間天花板 HVAC 系統，經屏障後溢流至周圍空間。保護等級最低。</li>
+                <li><strong>Active oRABS（主動開放式）：</strong>配備專屬 RABS HVAC 系統供氣，但氣流仍溢流至周圍空間。保護等級中等。</li>
+                <li><strong>cRABS（封閉式）：</strong>配備專屬 HVAC 系統，氣流在 RABS 內部循環不外溢，可建立正壓差。保護等級最高。</li>
+            </ul>
+            <p><strong>First Air (第一氣流)：</strong>指從 HEPA 過濾器出來後尚未接觸任何表面的潔淨氣流，是保護無菌產品的第一道防線。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一間手術室：</p>
+            <ul>
+                <li><strong>Passive oRABS</strong> 就像手術室只靠走廊的空調吹氣，門是半開的 &mdash; 有基本保護但容易受走廊環境影響。</li>
+                <li><strong>Active oRABS</strong> 像手術室有自己的獨立空調，但門仍半開 &mdash; 空氣品質更好，但走廊的人走過還是有影響。</li>
+                <li><strong>cRABS</strong> 像手術室有獨立空調且門關上 &mdash; 內部空氣循環使用，與外界隔離，提供最高保護。</li>
+            </ul>
+            <p>而 Isolator（隔離器）則像太空站 &mdash; 完全密封、自成一體，本文件不涵蓋此範圍。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>保護等級遞增順序：</strong>Passive oRABS &lt; Active oRABS &lt; cRABS &lt; Isolator。選擇哪種類型應基於風險評估 (Risk Assessment)，考量產品特性、製程需求、人員安全等因素。</p>
+            <p>PDA 明確指出，「Non-barrier technology（無屏障技術）」已是過時技術，不符合法規期望。所有新建線體應至少採用 RABS。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請說明 Passive oRABS 與 Active oRABS 在氣流來源上的根本差異是什麼？</li>
+                <li>若您的產品具有毒性，三種 RABS 中哪一種可以使用？為什麼？</li>
+                <li>為什麼 PDA 說「Non-barrier technology 已過時」？從法規趨勢（如 EU GMP Annex 1, 2022）的角度說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.2 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-2">Q 1.2 What are the design criteria considerations for restricted access barrier systems (RABS)?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>There are several <span class="key-term">design criteria attributes</span> that need to be taken into consideration when selecting the type of RABS appropriate for a filling line (1, 5, 6).</p>
+        <p>Table 1.2-1 summarizes the main design criteria attributes that need to be taken into consideration for each type of RABS.</p>
+
+        <p><strong>Table 1.2-1: RABS and Non-Barrier System Design Criteria Attribute Considerations</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Design Attribute</th>
+                <th>Non-Barrier System*</th>
+                <th>Passive Open RABS</th>
+                <th>Active Open RABS</th>
+                <th>Closed RABS</th>
+            </tr>
+            <tr>
+                <td><strong>Barrier</strong></td>
+                <td>No barrier system; Open to the room; Leak Rate Test unable to be performed</td>
+                <td>Barrier system; Open to the room; Leak Rate Test unable to be performed</td>
+                <td>Barrier system; Open to the room; Leak Rate Test unable to be performed</td>
+                <td>Barrier system; Closed to the room; Leak Rate Test able to be performed</td>
+            </tr>
+            <tr>
+                <td><strong>Unidirectional Airflow Source</strong></td>
+                <td>HVAC system mounted in surrounding space/room</td>
+                <td>HVAC system mounted in surrounding space/room</td>
+                <td>Dedicated RABS HVAC system</td>
+                <td>Dedicated RABS HVAC system</td>
+            </tr>
+            <tr>
+                <td><strong>Glove Ports</strong></td>
+                <td>None</td>
+                <td>Glove ports installed on rigid barrier</td>
+                <td>Glove ports installed on rigid barrier</td>
+                <td>Glove ports installed on rigid barrier</td>
+            </tr>
+            <tr>
+                <td><strong>Rapid Transfer Ports (RTPs)</strong></td>
+                <td>None</td>
+                <td>Material transfer ports integrated into rigid barrier</td>
+                <td>Material transfer ports integrated into rigid barrier</td>
+                <td>Material transfer ports integrated into rigid barrier</td>
+            </tr>
+            <tr>
+                <td><strong>Environmental Control</strong></td>
+                <td>Factors controlled by HVAC in surrounding space/room; No pressure differential</td>
+                <td>Factors controlled by HVAC in surrounding space/room; Minimal to no pressure differential</td>
+                <td>Factors controlled by dedicated RABS HVAC system; Pressure differential</td>
+                <td>Factors controlled by dedicated RABS HVAC system; Pressure differential</td>
+            </tr>
+            <tr>
+                <td><strong>Pressure Cascade</strong></td>
+                <td>No pressure cascade possible</td>
+                <td>No pressure cascade possible</td>
+                <td>No pressure cascade possible</td>
+                <td>Pressure cascade possible</td>
+            </tr>
+            <tr>
+                <td><strong>Cleaning</strong></td>
+                <td>Manual</td>
+                <td>Manual</td>
+                <td>Manual</td>
+                <td>Manual or possible installation of automatic system with spray balls (Wetting/Washing In Place) and/or semiautomatic system with spray guns</td>
+            </tr>
+            <tr>
+                <td><strong>Bio-decontamination</strong></td>
+                <td>Possible only with room</td>
+                <td>Possible only with room</td>
+                <td>Possible only with room</td>
+                <td>Possible w/o room, but the absence of an inflatable gasket could generate leakage and should not be performed without appropriate precautions for personnel safety</td>
+            </tr>
+            <tr>
+                <td><strong>Product</strong></td>
+                <td>Nontoxic</td>
+                <td>Nontoxic</td>
+                <td>Nontoxic</td>
+                <td>Nontoxic &amp; Toxic</td>
+            </tr>
+        </table>
+        </div>
+        <p><em>* "Non-barrier technology" is obsolete technology.</em><br>
+        <em>Note: Biosafety Cabinets (BSCs) are not covered under the scope of this table.</em></p>
+
+        <p><strong>Barrier Considerations</strong></p>
+        <p>Non-barrier technology is obsolete and is not compliant with regulatory expectations. Non-barrier systems have only individual barriers in place, such as polycarbonate, or curtains and aseptic operations are open to the surrounding space of the room.</p>
+        <p>All types of RABS have a barrier system in place (e.g., translucent rigid barriers) that surrounds the aseptic operations. In <span class="key-term">oRABS</span> (i.e., passive and active), the barrier system is open to the room via openings below the product level that allow the unidirectional airflow to vent to the surrounding space. This type of oRABS is not sufficiently sealed during operations, therefore the RABS cannot be subjected to a <span class="key-term">Leak Rate Test</span> to verify enclosure integrity while in operation.</p>
+        <p>In <span class="key-term">cRABS</span>, the barrier system is closed to the room such that the unidirectional airflow is recirculated inside the cRABS. The barrier system is sealed, and the cRABS may be subjected to a Leak Rate Test to verify closure integrity even during operations. However, the lack of inflatable gaskets can lead to leaking into the room, and the Leak Rate Test should not be conducted without additional precautionary measures.</p>
+
+        <p><strong>Unidirectional Airflow Source</strong></p>
+        <p>Non-barrier systems and passive oRABS have unidirectional airflow supplied by the surrounding space/room via a ceiling-mounted HVAC system with HEPA-grade filters. <span class="key-term">Active oRABS</span> and cRABS have unidirectional airflow supplied by a <span class="key-term">dedicated RABS HVAC system</span> with HEPA-grade filters.</p>
+
+        <p><strong>Glove Ports</strong></p>
+        <p>Non-barrier systems do not have glove ports because the process is open to the surrounding space/room. All types of RABS have <span class="key-term">glove port(s)</span> installed on the rigid barrier; number and placement will vary. Glove ports allow for aseptic interventions to occur without the need for the operator to enter the RABS (i.e., aseptic processing area).</p>
+
+        <p><strong>Rapid Transfer Ports (RTPs)</strong></p>
+        <p>Non-barrier systems have no material transfer ports because supplies and samples that are transferred into and out of the processing area are done so directly. (See Topic 6 for additional information.) All types of RABS have <span class="key-term">material transfer port(s)</span> that are integrated into RABS. These ports allow for the aseptic transfer of materials and samples in and out of the RABS.</p>
+        <p><em>Note: Although RABS doors can be opened, in the absence of appropriate controls this would potentially allow the introduction of lower-grade air into the Grade A space, potentially contaminating the Grade A processing area environment with lower-grade air. Open-door interventions should be extremely rare occurrences, and proper risk mitigation precautions should be implemented (1).</em></p>
+
+        <p><strong>Environmental Control</strong></p>
+        <p>Factors such as temperature, humidity, and differential pressure are controlled by the HVAC unit mounted in the surrounding room/space for non-barrier systems and passive oRABS. These factors are controlled by the dedicated RABS HVAC unit for active oRABS and cRABS.</p>
+        <p>Typically, no positive pressure is present over the processing area compared to the surrounding space. Minimal to no positive pressure is present in passive oRABS over the processing area compared to the surrounding space. In active oRABS and cRABS, positive pressure is established in the processing area compared to the surrounding space. However, in some designs there is the capability to selectively control the air volume in specific areas to enable a positive air flow.</p>
+
+        <p><strong>Pressure Cascade</strong></p>
+        <p>No <span class="key-term">pressure cascade</span> is possible in non-barrier systems, or oRABS (i.e., active or passive), but this is possible in cRABS.</p>
+
+        <p><strong>Bio-decontamination</strong></p>
+        <p><span class="key-term">Bio-decontamination</span> (by gassing or fogging) is possible for non-barrier systems or oRABS only if the room is also bio-decontaminated. In the case of cRABS, it is possible to perform bio-decontamination without the room, however, if the cRABS does not utilize <span class="key-term">inflatable gaskets</span>, there could be leakage around the gaskets leading to health safety concerns and adequate precautions are needed to ensure personnel safety.</p>
+
+        <p><strong>Product</strong></p>
+        <p>Only nontoxic products are able to be manufactured in non-barrier systems and in oRABS (i.e., active or passive). In cRABS, it is possible to manufacture nontoxic or <span class="key-term">toxic drug products</span>.</p>
+
+        <p><strong>Additional design features</strong> should be considered including, but not limited to the following:</p>
+        <ul>
+            <li>Design must ensure that all processes (i.e., with the exception of setup) will be designed to avoid <span class="key-term">open-door interventions</span>.</li>
+            <li>The barrier walls should be rigid, resistant to chemical cleaning and disinfecting agents, and also resistant to mechanical stresses (e.g., scratches/cracking) from cleaning tools. Typical barrier materials are polycarbonate or tempered/safety glass.</li>
+            <li>The positioning of equipment, components, and sensors within the critical zone (e.g., filling needles, open vials) should be considered to ensure that <span class="key-term">First Air</span> is not disrupted. For fixed machine components (i.e., transport mechanisms), having an effective disinfection program in place is required.</li>
+            <li>The glove positions inside the RABS barrier wall should be appropriate to allow operator arm entry into RABS glove(s) without disruption of First Air above critical surfaces, for example, open vials at the accumulation turntable, above fill needles, above stopper bowl, or above environmental monitoring (EM) equipment. It is key that these locations be determined early in the design process and tested during the mock-up phase of the project to verify operator ergonomics for all intended operations. Having support from experienced operators during this design process is beneficial and recommended.</li>
+        </ul>
+        <p><em>Note: Any tools that are stored inside the RABS for operator use must be sterilized.</em></p>
+        <ul>
+            <li>To protect the product from particulate contamination, it is recommended that RABS parts and components in the aseptic processing area be constructed of <span class="key-term">non-shedding, non-leaching, non-corrosive, chemical-resistant materials</span>. It is recommended that all metallic components be constructed of low-carbon <span class="key-term">304 stainless steel</span> or better. In the case of metallic product contact and indirect product-contact components, low-carbon <span class="key-term">316 stainless steel</span> or better should be used (5). All nonmetallic materials, including RABS gloves, gasketing, seals, and barrier walls and doors need to withstand exposure to various cleaning and disinfecting agents and be suitable for the process.</li>
+        </ul>
+
+        <p>The following are some points to consider in design and operations of RABS that impact achieving specified environmental control conditions within the RABS:</p>
+        <ul>
+            <li>Appropriate lighting to see the equipment, product, and components without degradation of light sensitive product.</li>
+            <li>Rounded corners and smooth materials to minimize the risk of compromising the glove integrity during changes or line interventions.</li>
+            <li>Safety curtain (i.e., light curtain) to detect operator glove entry into the RABS.</li>
+            <li>Alarms for environmental parameters (Temperature/Humidity/UDAF velocity) and door status (door open or closed).</li>
+            <li>EM system viable and total particles in continuous operation during setup and filling operations.</li>
+            <li>EM system (settle plates and active air-monitoring locations) readily accessible via glove ports.</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>The RABS design attributes as described in Table 1.2-1 are beneficial in assuring that environmental conditions are maintained and minimizing microbial contamination associated with direct human interventions in the critical zones.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Table 1.2-1 是本節的核心。</strong>這張比較表從 9 個設計屬性維度，系統性地比較了四種技術（含已過時的 Non-Barrier）。以下是最關鍵的幾個區別：</p>
+            <ul>
+                <li><strong>Leak Rate Test (洩漏率測試)：</strong>只有 cRABS 因為密封到房間，才能執行此測試來驗證屏障完整性。oRABS 因為底部有開口溢氣，無法執行。</li>
+                <li><strong>Pressure Cascade (壓力梯度)：</strong>只有 cRABS 可以建立壓力梯度 &mdash; 這對於控制氣流方向、防止低潔淨等級的空氣倒灌至關重要。</li>
+                <li><strong>Bio-decontamination (生物去污)：</strong>oRABS 只有連同房間一起去污才可行；cRABS 可獨立去污（但需注意密封墊片的洩漏問題）。</li>
+                <li><strong>毒性產品：</strong>只有 cRABS 可處理毒性藥品，因其密封特性可同時保護產品與操作人員。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>材質規範：</strong></p>
+            <ul>
+                <li>一般金屬部件：低碳 304 不鏽鋼或更高等級</li>
+                <li>產品接觸及間接接觸部件：低碳 316 不鏽鋼或更高等級</li>
+                <li>非金屬材料（手套、墊片、密封件、屏障壁與門）：須耐受各種清潔與消毒劑</li>
+                <li>屏障壁材料：聚碳酸酯 (Polycarbonate) 或鋼化/安全玻璃</li>
+            </ul>
+            <p><strong>設計原則：</strong>所有製程（設置/setup 除外）都必須設計為避免開門介入 (Open-door Interventions)。存放在 RABS 內的工具必須經過滅菌。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這張比較表就像選擇汽車的安全等級：</p>
+            <ul>
+                <li><strong>Non-Barrier</strong> = 沒有安全帶的老車（已被法規淘汰）</li>
+                <li><strong>Passive oRABS</strong> = 有安全帶但沒有安全氣囊的車</li>
+                <li><strong>Active oRABS</strong> = 有安全帶加安全氣囊的車</li>
+                <li><strong>cRABS</strong> = 全車主動安全系統（ABS + 氣囊 + 車道偏離警示 + 自動煞車）</li>
+            </ul>
+            <p>安全等級越高，成本越高，但保護也越全面。選擇依據是風險評估。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; 環境監測設計</h4>
+            <p>PDA 列出的環境控制設計考量極為實務：</p>
+            <ul>
+                <li><strong>Light Curtain（光柵）：</strong>偵測操作員手套進入 RABS 的自動感應系統 &mdash; 可用於記錄介入事件</li>
+                <li><strong>環境參數警報：</strong>溫度/濕度/UDAF 風速/門開關狀態 &mdash; 任何偏離都需要即時告警</li>
+                <li><strong>EM 系統：</strong>沉降板與主動空氣採樣位置必須能透過手套口操作 &mdash; 這直接影響手套口的定位設計</li>
+                <li><strong>圓角與光滑材料：</strong>減少手套在操作中被尖銳邊角損壞的風險</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景：</strong>假設您的 CDMO 正在評估一條新建充填線的屏障技術選型。客戶 A 需要充填抗體藥物（非毒性），客戶 B 需要充填 ADC 藥物（毒性原料藥）。</p>
+            <ul>
+                <li>客戶 A 的產品：oRABS 或 cRABS 皆可，視整體 CCS 與風險評估決定</li>
+                <li>客戶 B 的產品：<strong>必須使用 cRABS</strong>（或 Isolator），因為只有封閉系統才能同時保護產品無菌性與操作人員安全</li>
+                <li>若要最大化線體利用率，採用 cRABS 可兼顧兩類客戶需求</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 oRABS 無法進行 Leak Rate Test？從其氣流設計的角度解釋。</li>
+                <li>cRABS 在沒有 Inflatable Gasket（充氣密封墊）的情況下進行生物去污，會有什麼安全風險？</li>
+                <li>PDA 建議產品接觸部件使用 316 不鏽鋼而非 304 不鏽鋼，原因是什麼？（提示：考慮耐腐蝕性與產品相容性）</li>
+                <li>為什麼手套口定位要在設計早期（mock-up 階段）就由有經驗的操作員參與確認？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.3 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-3">Q 1.3 What are the design criteria for closed restricted access barrier systems (cRABS)?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>A <span class="key-term">cRABS</span>, while not providing the same design constructs as an isolator, does provide some advantages over an oRABS design. The benefits of a cRABS can only be experienced when the RABS remains closed following setup. All qualified interventions should be able to be performed through the <span class="key-term">glove ports</span>. The need to open the doors should be rare and heavily scrutinized on a case-by-case basis; these types of rare <span class="key-term">open-door interventions</span> may require a deviation (1, 3, 6).</p>
+
+        <p><strong>Differences between cRABS and active oRABS:</strong></p>
+        <ul>
+            <li>The rigid barrier completely encloses the Grade A space within the cRABS.</li>
+            <li>Air is recirculated within a cRABS, hence there is no spillover to adjacent space as in an oRABS. (See Figure 1.1-3.)</li>
+            <li>Pressure can be maintained within a cRABS, allowing for better control of a <span class="key-term">pressure cascade</span> between the RABS and upstream and downstream equipment.</li>
+        </ul>
+
+        <p><strong>Differences between cRABS and an isolator:</strong></p>
+        <ul>
+            <li>If inflatable door seals on a cRABS are not present, a <span class="key-term">vapor-phase hydrogen peroxide (VPHP)</span> cycle is not recommended without adequate safety precautions.</li>
+            <li>Due to the lack of a positive door seal, the background environment for a cRABS is <span class="key-term">Grade B</span> to minimize the risk of contamination.</li>
+            <li>In the case of rare, open-door interventions and the potential for not being able to conduct automated biodecontamination for a cRABS, a Grade B background is required to minimize the risk of contamination.</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>The cRABS design attributes are beneficial in providing further assurance of environmental conditions and minimizing microbial contamination associated with direct human interventions in the critical zones.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>cRABS 的定位 &mdash; 介於 oRABS 與 Isolator 之間：</strong></p>
+            <ul>
+                <li>相較 oRABS：cRABS 的屏障完全封閉 Grade A 空間、氣流內部循環、可建立壓力梯度</li>
+                <li>相較 Isolator：cRABS 缺乏正壓門封 (Positive Door Seal)，因此背景環境須為 Grade B（Isolator 背景可為 Grade C 或 D）</li>
+            </ul>
+            <p><strong>VPHP (汽化過氧化氫)：</strong>一種常用的表面生物去污方法。由於 cRABS 若無充氣密封墊片 (Inflatable Gasket)，VPHP 可能洩漏到周圍環境，對人員造成安全風險，因此須格外謹慎。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>如果將 Isolator 想成一間完全密封的「太空站」，那 cRABS 就像一間「高級潛水艇」&mdash; 雖然有密封門艙，但門封不像太空站那麼嚴密。因此：</p>
+            <ul>
+                <li>太空站（Isolator）可以在太空（Grade C/D 背景）安全運作</li>
+                <li>潛水艇（cRABS）需要在較淺的水域（Grade B 背景）運作，才能在門封不完美時維持安全</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>cRABS 最關鍵的操作原則：</strong>Setup 完成後，門必須保持關閉，直到批次結束。所有合格介入 (Qualified Interventions) 都應能透過手套口完成。若必須開門，應視為極罕見事件，逐案審查，且可能需要開立偏差 (Deviation)。</p>
+            <p>這個原則直接影響到：</p>
+            <ul>
+                <li>手套口的數量與位置必須足以涵蓋所有預期操作</li>
+                <li>設備設計必須讓所有維護操作都能從手套口完成</li>
+                <li>人員訓練必須確保熟練使用手套口作業</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 cRABS 的背景環境必須是 Grade B 而非 Grade C？從門封設計的角度解釋。</li>
+                <li>如果 cRABS 配備了充氣密封墊片 (Inflatable Gasket)，這會改變哪些設計考量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.4 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-4">Q 1.4 What are the design considerations for the placement of the restricted access barrier system (RABS) glove ports?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>The correct positioning of the <span class="key-term">RABS glove ports</span> is one of the key elements that should be considered during the design of a RABS. The position of the glove ports plays a vital role in the operation of the RABS and its ability to remain closed during setup and operation. Efforts to minimize the need to use RABS gloves should be taken to reduce the impact or risk to process performance and product sterility. Examples include reducing, eliminating, or repositioning activities, manipulations, and interventions. Figure 1.4-1 distinguishes which part of the RABS are the glove ports and which are the RABS gloves (1).</p>
+
+        <p><em>Figure 1.4-1: Differentiation of Glove Ports and Gloves</em></p>
+
+        <p>When determining where to place/position the RABS glove ports (typically done during <span class="key-term">mock-up studies</span>), several factors that may pose a risk to the performance of the aseptic process and sterility of the product should be considered such as:</p>
+        <ul>
+            <li>Use of a simulation method to review glove port positioning</li>
+            <li>Ergonomics to address personnel fatigue and safety</li>
+            <li>Diversity of personnel height and reach, from which a determined range may inform optimum port positioning</li>
+            <li>Quantity of glove ports</li>
+            <li>Orientation and location of planned and anticipated activities, manipulations, and interventions (i.e., <span class="key-term">inherent and corrective interventions</span>)</li>
+            <li>Glove port distance to open containers (e.g., vials, syringes, cartridges, EM components) and equipment*</li>
+            <li>RABS gloves range of motion</li>
+            <li>Weight and orientation of materials and items to be handled via the glove port</li>
+            <li>Ability to install RABS gloves and donning RABS gloves in an aseptic manner</li>
+            <li>Orientation of RABS gloves during decontamination/disinfection, aeration, if applicable, and nonuse</li>
+            <li>Proximity to sharp objects or surfaces that can pierce RABS gloves</li>
+            <li>Position of EM apparatus, instruments, and sampling sites</li>
+        </ul>
+        <p><em>*Note: Interventions cannot be performed directly using the RABS gloves, but rather by using a sterilized tool and/or sterile material for an additional layer of protection where the First Air concept needs to be maintained.</em></p>
+
+        <p><strong>Rationale</strong></p>
+        <p>With the use of RABS gloves, it is possible to perform interventions inside the RABS without the need to open it. The correct positioning of glove ports enables the operator to reach machine parts without the introduction of the operator gloves and gown, which are potential particle and microbial contamination sources. For this reason, the design and position of glove ports is an important decision point and should be part of the <span class="key-term">risk assessment</span> and <span class="key-term">contamination control strategy (CCS)</span>.</p>
+        <p>Generally, a review of the positioning should be performed using a simulation method. Modeling, rendering, 3-D model, virtual reality, mock-up, or any method that allows for demonstration and testing of glove-related procedures with different operators of diverse heights and arm length could be used.</p>
+        <p>The glove port needs to be positioned to ensure that the RABS gloves have sufficient distance to the open containers (e.g., vials, syringes, cartridges, EM components, etc.) and to the equipment that comes into direct and indirect contact with the product. This allows for a RABS glove entry by the operator without disruption for First Air above critical surfaces.</p>
+        <p>The design of glove ports should be sufficiently cleanable (i.e., <span class="key-term">hygienic design</span>) and resistant to the appropriate cleaning/disinfection agents. The design should also allow for the range of motion necessary with the RABS gloves to avoid excessive operator reaching or stretching of RABS gloves.</p>
+        <p>Restriction of airflow interrupting or interfering with adequate distribution of decontamination chemicals, vapors, or gases (i.e., typically only seen with cRABS) should be avoided.</p>
+        <p>If applicable, select position of glove stretchers to allow for automatic bio-decontamination of the whole surface (cRABS only).</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Glove Port（手套口）vs. Gloves（手套）：</strong>這是兩個不同的元件。Glove Port 是安裝在屏障壁上的固定開口與法蘭結構；Gloves 是安裝在 Port 上的可更換手套。兩者的設計考量不同：</p>
+            <ul>
+                <li><strong>Port 定位：</strong>決定操作員能觸及的範圍 &mdash; 一旦屏障壁製造完成就難以更改</li>
+                <li><strong>Gloves 選擇：</strong>材質、厚度、尺寸 &mdash; 可更換但須匹配 Port 設計</li>
+            </ul>
+            <p><strong>Mock-up Studies（模型試驗）：</strong>PDA 強調手套口定位必須在設計早期透過模擬或實體模型進行驗證。方法包括 3D 模型、虛擬實境 (VR)、實體 Mock-up 等，且須讓不同身高與臂長的操作員參與測試。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手套口的設計就像設計汽車駕駛座：</p>
+            <ul>
+                <li>方向盤、排檔桿、按鈕的位置必須讓不同身材的駕駛都能舒適操作</li>
+                <li>如果設計不當，高個子碰不到腳踏板，矮個子看不到儀表板</li>
+                <li>駕駛座一旦出廠就無法大幅更改 &mdash; 手套口也是如此</li>
+            </ul>
+            <p>因此，在「交車前」（設備出廠前）就要讓各種身材的「試駕員」（操作員）來驗證。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>關鍵設計原則 &mdash; 間距：</strong>手套口與開放容器（開口瓶、注射器等）之間必須有足夠距離，確保操作員手臂進入 RABS 手套時不會干擾 First Air。這是一個經常在設計審查中被忽略但在實際運行中引發問題的關鍵點。</p>
+            <p><strong>注意：</strong>PDA 明確指出，操作員不應直接使用 RABS 手套觸碰產品或關鍵表面，而應使用已滅菌的工具或無菌材料作為額外保護層。這是一個常見的操作誤解。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>列舉三種可用來驗證手套口定位的模擬方法，並比較其優缺點。</li>
+                <li>為什麼 PDA 建議手套口位置需考慮「接近尖銳物體的距離」？這與哪些風險有關？</li>
+                <li>在 cRABS 中，手套伸展器 (Glove Stretcher) 的位置為什麼會影響生物去污效果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.5 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-5">Q 1.5 What are the design considerations for restricted access barrier system (RABS) gloves?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p><span class="key-term">Quality risk management (QRM)</span> principles should be used to identify, assess, and address special considerations for the safe and effective use of RABS gloves to mitigate the risks posed by the installation and use of RABS gloves during aseptic operation (1).</p>
+
+        <p>Once the glove-port positioning is determined, a number of factors that may pose a risk to the performance of the aseptic process and the sterility of the product should be considered. The following considerations should be given to the composition of RABS gloves (3, 4):</p>
+        <ul>
+            <li>Quality and design of RABS gloves should be sufficiently cleanable (i.e., hygienic design) and resistant to the appropriate cleaning/disinfection agents and steam sterilization.</li>
+            <li>Glove size, though usually supplied as standard size ranges, should be considered based on intended user population and demographic to ensure that gloves are sufficiently sized and practical for use.</li>
+            <li>Method of physical and visual inspection for integrity (See Topic 4).</li>
+            <li>Ability to confirm or test the integrity of RABS gloves (See Topic 4).</li>
+            <li>Ability to decontaminate, disinfect and, if applicable, aerate RABS gloves</li>
+            <li>Selection of glove material (e.g., <span class="key-term">ethylene propylene diene monomer (EPDM)</span>, <span class="key-term">chlorosulfonated polyethylene synthetic rubber (CSM)</span>) to allow for resistance during sanitization/decontamination and use; also, to ensure sufficient dexterity to allow for the accurate execution of interventions</li>
+            <li>Thickness of glove material to address dexterity needed to perform task in RABS gloves</li>
+            <li>Thickness of glove material to resist puncture, cracking, or excessive wear</li>
+            <li>Ability to adequately install RABS gloves in glove ports to maintain aseptic status of the line</li>
+        </ul>
+
+        <p>Additional operational considerations include, but are not limited to:</p>
+        <ul>
+            <li>A sufficient number of spare RABS gloves should be available for each run.</li>
+            <li>Expiration date of RABS gloves</li>
+            <li>Exposure to direct sunlight that can degrade RABS gloves or glove seal material</li>
+            <li>Safe position for intermediate storage of RABS gloves in the RABS glove port after or between operations to avoid both the obstruction to First Air during operation, as well as ensuring that the gloves cannot be damaged by moving parts within the RABS</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>Performing the above recommendations will reduce the possibility of leakages due to the tearing of RABS gloves, which impacts the integrity of the RABS. These recommendations are to promote compliance of good aseptic practices/techniques to reduce contamination risks and promote the prevention of open-door interventions.</p>
+        <p>With the use of RABS gloves, it is possible to perform interventions inside the RABS and to reach machine parts without the introduction of the operator gloves and gown (a potential particle and microbial contamination source). For this reason, the manner of usage, construction materials, and installation procedures is an important decision point and should, at a minimum, be recorded in the <span class="key-term">CCS</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>RABS 手套材質選擇是一個典型的工程折衷 (Trade-off)：</strong></p>
+            <ul>
+                <li><strong>EPDM（三元乙丙橡膠）：</strong>耐蒸氣滅菌、耐化學藥品、彈性佳，是常見選擇</li>
+                <li><strong>CSM（氯磺化聚乙烯合成橡膠）：</strong>化學抗性好、耐臭氧與紫外線</li>
+                <li><strong>厚度的取捨：</strong>太薄 &rarr; 容易穿刺破損；太厚 &rarr; 靈巧度不足，操作員疲勞</li>
+            </ul>
+            <p><strong>手套完整性測試 (Glove Integrity Testing)：</strong>PDA 將此獨立為 Topic 4 討論，強調了其重要性。手套破損意味著 RABS 屏障完整性被破壞，相當於「城牆出現缺口」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>RABS 手套的設計就像外科手術手套的進階版：</p>
+            <ul>
+                <li>外科手套要兼顧觸感（薄）與防護（不破）&mdash; RABS 手套也是</li>
+                <li>外科手套有尺碼選擇 &mdash; RABS 手套也需要考慮使用者群體的手型</li>
+                <li>但 RABS 手套還要能耐受蒸氣滅菌、化學消毒劑、VPHP 等嚴苛條件 &mdash; 遠超外科手套的要求</li>
+            </ul>
+            <p>而且外科手套用完即丟，RABS 手套則是可重複使用，因此還有有效期限、儲存條件、紫外線降解等額外考量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>操作面的實務考量常被設計者忽略：</strong></p>
+            <ul>
+                <li><strong>備品管理：</strong>每次運行必須備有足夠的備用手套 &mdash; 若手套在批次中破損且無備品，可能需要開門更換（最壞情況）</li>
+                <li><strong>非使用時的手套位置：</strong>手套不能懸垂在 First Air 路徑上阻擋氣流，也不能被 RABS 內的運動部件損壞</li>
+                <li><strong>陽光曝曬：</strong>直射陽光會加速橡膠降解 &mdash; 這在有天窗或大面積玻璃窗的潔淨室中是實際問題</li>
+            </ul>
+            <p>PDA 強調手套的使用方式、構造材料與安裝程序至少應記錄在 CCS (污染控制策略) 中。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>EPDM 與 CSM 兩種手套材質各適用於什麼場景？如果您的 cRABS 需要使用 VPHP 生物去污，會傾向選擇哪種材質？</li>
+                <li>手套厚度如何影響操作員的介入品質？在「精細操作」與「耐久性」之間如何取得平衡？</li>
+                <li>為什麼 PDA 要求手套相關資訊必須記錄在 CCS 中？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q1.6 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q1-6">Q 1.6 How should the restricted access barrier system (RABS) be designed to minimize the risk posed by interventions?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+
+        <p><strong>Recommendation</strong></p>
+        <p>Human interventions (i.e., <span class="key-term">open-door</span> and/or <span class="key-term">inherent interventions</span>) within the RABS are required during the setup and assembly of the aseptic filling machine, including the installation of RABS gloves, and during routine manufacturing operations (e.g., aseptic filling with open- and closed-door inherent and corrective interventions).</p>
+
+        <p>Risk-based assessments should be used to evaluate the need for and design of human interventions. Where possible, interventions should be eliminated, reduced, or modified to reduce their relative risk. A process should be created to monitor and control the frequency of interventions. Changes to the process should be made to improve the overall robustness of the manufacturing process and should eliminate the need for interventions, when possible.</p>
+
+        <p>It is not recommended to approach the need for manufacturing changes with the goal of reducing intervention. <span class="key-term">Corrective, open-door interventions</span> should be eliminated or occur only as very rare events. Therefore, the prevention of open-door interventions should be a key factor in the consideration for designing a RABS (1, 6).</p>
+
+        <p>The positioning of RABS gloves in proper locations should eliminate the need for open-door interventions during filling operations where good aseptic technique applies. Interventions within the RABS (i.e., inherent and corrective) are to be designed to minimize microbiological ingress, including retention, within the RABS. Such factors are proximity to exposed sterile product, components, indirect product contact surfaces, intervention duration, complexity, and frequency.</p>
+
+        <p>The following points for consideration are applicable for an aseptic filling line and also for other aseptic working steps (e.g., dispensing, lyophilizer loading/unloading), where a RABS is used:</p>
+        <ul>
+            <li>The RABS and the filling line should be designed to allow for interventions (i.e., open and closed door) in the Grade A RABS with due consideration of adherence to proper aseptic technique, for example, to follow <span class="key-term">First Air</span> working principles for the operator during open-door interventions and also RABS gloves during closed-door interventions. See Question 1.1 for more information.</li>
+            <li>In the case of an open-door intervention that requires direct entry of part of the operator&rsquo;s body within the Grade A area, design considerations should extend to operator posture and body positioning and ensure that the door openings and location of the RABS glove ports do not prevent risk of operator contact. Tools should be used in place of an operator entering the RABS when possible. <span class="key-term">Airflow visualization studies</span> should be performed to confirm adequacy under dynamic conditions. Further precautions and controls are required for open-door interventions (1, 6-8). (See Topic 9.)</li>
+            <li>The number and location of glove ports should be designed based on the need for and ease of performance of interventions, in particular, in locations where First Air principles can be followed.</li>
+            <li>Materials and equipment within the RABS should be positioned to avoid crowding and the need to reach over exposed sterile products, materials, and surfaces.</li>
+            <li>The design and positioning of a RABS filling line should prevent the use of swing conveyors to pass from the front to the back of the filling line.</li>
+            <li>The RABS design should consider, under risk assessment, a zone of protection using a <span class="key-term">UDAF unit</span> to cover, at a minimum, the open-door radius. The positions must be determined by a risk analysis and should consider typical open-door activities, such as the setup of stopper bowls or feeding lanes.</li>
+            <li>The dynamic use of the RABS, where there are inherent and/or corrective interventions being performed and equipment is operating, needs to be confirmed by <span class="key-term">airflow visualization studies (AVS)</span> to demonstrate that unidirectional flow of air is occurring, and First Air principles are maintained.</li>
+            <li>The use of automated process steps (e.g., <span class="key-term">sterilization in place (SIP)</span> after installation of the filling line), and intervention-reducing technology (e.g., <span class="key-term">rapid transfer port (RTP)</span> filling path or components loading as closures, to install EM samplers for preventing mobile air sampler transfer) should be considered to minimize interventions during setup, operations, and sampling.</li>
+            <li>The use of <span class="key-term">robotics and advanced automation</span> should be considered during the design of a new RABS line to increase the level of sterility assurance by removing operator interventions for critical processes (e.g., the setup of the filling path). When using robotics in the aseptic environment for aseptic filling, the design and operating principles must be carefully evaluated for operation suitability within a cleanroom environment. Robotic systems, regardless of type, bring a certain risk to the unidirectional airflow due to a tendency to generate turbulence. Therefore, robots should not be used for the sake of using robotics, but rather should bring a benefit for the aseptic filling process. <span class="key-term">Computational fluid dynamics (CFD)</span> and airflow visualization studies (static and dynamic) should verify the impact of the robot to the unidirectional airflow and its impact on First Air. Besides the robot itself the requirements to meet first air also applies for any tools the robot is carrying and connections made on the robot (e.g., media hoses etc.). In addition to considerations regarding impact to First Air, cleanability, disinfection and accessibility to the robot also require consideration.</li>
+        </ul>
+
+        <p><strong>Rationale</strong></p>
+        <p>All interventions into a RABS (i.e., open-door intervention) and within the RABS (i.e., closed-door intervention) in the vicinity of exposed sterile product and critical surfaces can add the risk of microbiological contamination to sterile product. Where possible, the elimination or reduction of these activities through process design, equipment layout, technology, and automation can reduce risk. Where activities cannot be eliminated or reduced, process and equipment design that allows for proper aseptic technique and practices can reduce risk. Where interventions cannot be eliminated or reduced in number, modifying these activities to reduce risk factors can reduce the overall relative risk.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>介入 (Intervention) 的分類與風險層級：</strong></p>
+            <ul>
+                <li><strong>Inherent Interventions（固有介入）：</strong>製程設計中預期會發生的操作，如 EM 取樣、零件調整等</li>
+                <li><strong>Corrective Interventions（糾正介入）：</strong>因異常情況而需要的操作，如排除卡瓶、調整偏移等</li>
+                <li><strong>Open-door Interventions（開門介入）：</strong>需要打開 RABS 門的操作 &mdash; <strong>風險最高</strong></li>
+                <li><strong>Closed-door Interventions（關門介入）：</strong>透過手套口完成的操作 &mdash; 風險相對較低</li>
+            </ul>
+            <p><strong>PDA 的介入管控哲學（優先順序）：</strong></p>
+            <ol>
+                <li><strong>消除 (Eliminate)：</strong>透過設計讓介入不需要發生</li>
+                <li><strong>減少 (Reduce)：</strong>降低介入的頻率</li>
+                <li><strong>修改 (Modify)：</strong>改變介入方式以降低風險因素（如用手套口取代開門）</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>機器人與自動化 &mdash; 不是萬靈丹：</strong></p>
+            <p>PDA 對機器人採取審慎態度：「robots should not be used for the sake of using robotics, but rather should bring a benefit for the aseptic filling process.」</p>
+            <p>機器人在無菌環境中的關鍵挑戰：</p>
+            <ul>
+                <li>機器人運動會產生紊流 (Turbulence)，破壞 UDAF</li>
+                <li>機器人攜帶的工具、軟管連接同樣需要滿足 First Air 要求</li>
+                <li>需要透過 CFD（計算流體動力學）和 AVS 驗證其對氣流的影響</li>
+                <li>可清洗性、消毒可行性、可及性都是額外的設計挑戰</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>RABS 的介入管控就像飛機駕駛艙的設計哲學：</p>
+            <ul>
+                <li><strong>消除介入</strong> = 自動駕駛（Autopilot）處理所有例行操作</li>
+                <li><strong>減少介入</strong> = 只在關鍵時刻需要機師手動操作</li>
+                <li><strong>修改介入</strong> = 即使需要手動操作，也透過操縱桿而非直接觸碰引擎（手套口 vs 開門）</li>
+                <li><strong>開門介入</strong> = 機師在飛行中打開引擎艙蓋 &mdash; 顯然風險極高，只有在絕對必要時才做</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; UDAF 保護區設計</h4>
+            <p>PDA 提出一個重要設計概念：<strong>Zone of Protection（保護區）</strong>&mdash; UDAF 氣流覆蓋範圍至少應涵蓋門的開啟半徑。這意味著即使在開門介入時，關鍵區域仍有正壓 UDAF 氣流保護，降低外部低等級空氣侵入的風險。</p>
+            <p>另外，禁止使用 Swing Conveyor（擺動輸送帶）從充填線前方通過後方，因為這會要求操作員跨越暴露的無菌產品上方，違反 First Air 原則。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 新線設計場景：</strong>您正在為一條新的無菌充填線設計 RABS 系統。客戶要求具備「全自動充填路徑建立」能力。</p>
+            <ul>
+                <li><strong>Step 1：</strong>盤點所有介入點 &mdash; 列出 Setup、運行中固有介入、可能的糾正介入</li>
+                <li><strong>Step 2：</strong>逐一評估 &mdash; 哪些可以透過自動化/機器人消除？哪些可以從開門改為手套口操作？</li>
+                <li><strong>Step 3：</strong>若導入機器人 &mdash; 必須進行 CFD 模擬與 AVS 確認氣流影響</li>
+                <li><strong>Step 4：</strong>所有無法消除的介入 &mdash; 設計手套口位置、評估 First Air 路徑、制定 SOP</li>
+            </ul>
+            <p>關鍵：每個決策都要有風險評估支持，並納入 CCS 文件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>PDA 為什麼不建議以「減少介入次數」作為製程變更的出發點？（提示：思考因果關係 vs. 結果）</li>
+                <li>在機器人導入評估中，CFD 模擬與 AVS 各自驗證的重點是什麼？它們是互補還是可以擇一？</li>
+                <li>如果一個糾正性介入需要開門操作，PDA 建議在開門前應確認哪些條件？</li>
+                <li>「Zone of Protection」的 UDAF 覆蓋範圍設計如何影響 RABS 的總體尺寸與成本？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- NOTE: This is Section 1a. It merges with Section 1b. No final summary here. -->
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
