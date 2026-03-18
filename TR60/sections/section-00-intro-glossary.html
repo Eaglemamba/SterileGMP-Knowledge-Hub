@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR60 - Section 0: Introduction & Glossary</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY-SPECIFIC STYLES ===== */
+.glossary-term-card {
+    background: white;
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 0.6rem;
+    border-left: 4px solid var(--accent-blue);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.glossary-term-card h4 {
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.glossary-term-card p {
+    font-size: 0.88rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-medium);
+}
+
+.glossary-term-card .badge {
+    margin-right: 0.3rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Glossary</h1>
+    <div class="subtitle">導論與術語表 (Sections 1.0 - 2.0)</div>
+    <div class="page-info">PDA Technical Report No. 60 (Revised 2026): Process Validation: A Lifecycle Approach | p1 - p10</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Process Validation (製程確效) 生命週期方法的核心理念及其監管背景</li>
+        <li>掌握 FDA 三階段製程確效框架 (Stage 1 - Process Design, Stage 2 - Process Qualification, Stage 3 - Continued Process Verification) 的基本架構</li>
+        <li>了解 TR60 的適用範圍：涵蓋哪些產品類別、排除哪些類別</li>
+        <li>認識 ICH 品質指引 (Q8, Q9, Q10, Q12, Q13, Q14) 與 PV 生命週期的關聯</li>
+        <li>區分 Continuous Process Verification (持續製程驗證) 與 Continued Process Verification (持續製程確認) 的差異</li>
+        <li>熟悉 TR60 中使用的關鍵術語及其定義</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec1-0">1.0 Introduction</a>
+        <a href="#sec1-1">1.1 Purpose and Scope</a>
+        <a href="#sec1-2">1.2 Background</a>
+        <a href="#sec1-2-1">1.2.1 Review of Guidances</a>
+        <a href="#sec2-0">2.0 Glossary</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 1.0 INTRODUCTION -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec1-0">1.0 Introduction 導論</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The <span class="key-term">United States Food and Drug Administration (FDA)</span> and <span class="key-term">European Medicines Association (EMA)</span> consider <span class="key-term">process validation (PV)</span> an essential element in the assurance of drug quality and include both general and specific requirements in their <span class="key-term">current good manufacturing practice (GMP)</span> guidelines (1-3).</p>
+
+        <p>The <span class="key-term">PV lifecycle concept</span> links product and process development, qualification of commercial manufacturing processes, and maintenance of the commercial production process in a coordinated effort (1). When based on sound <span class="key-term">process understanding</span> and used with <span class="key-term">quality risk management (QRM)</span> principles and change control, the lifecycle approach allows manufacturers to use <span class="key-term">continuous process verification</span> (enhanced approach, e.g., real-time release) in addition to, or instead of, traditional PV (1, 2, 4, 5). The lifecycle approach may not be linear or sequential. As the product/process knowledge becomes available, the changes could be initiated at any part of the process. These changes may include all areas of validation, such as PV, the physical equipment requalification, control hardware, and software changes and qualification, as all of these systems are subject to GMP controls and the lifecycle approach.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Process Validation, PV (製程確效)：</strong>透過科學證據證明一個製造過程能持續生產出符合預定品質標準的產品。FDA 和 EMA 都將其視為藥品品質保證中不可或缺的要素。</p>
+            <p><strong>PV Lifecycle Concept (PV 生命週期概念)：</strong>將產品從開發到商業化生產再到上市後維護，視為一個完整、協調的整體過程，而非一次性的測試事件。</p>
+            <p><strong>Quality Risk Management, QRM (品質風險管理)：</strong>系統性地識別、評估和控制可能影響產品品質的風險因子。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你開一家連鎖餐廳。製程確效就像確保每家分店都能穩定做出相同品質的料理。這不只是開幕前試做幾次就好（傳統方式），而是從研發菜單（Stage 1）、到正式營運前的驗收測試（Stage 2）、再到營運後的持續品質監控（Stage 3），形成一個完整的品質保證循環。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR60 開篇就強調：PV 生命週期方法「可能不是線性或循序的」(may not be linear or sequential)。這是一個非常重要的觀點 -- 當新的產品/製程知識出現時，可以在製程的任何部分啟動變更。這與傳統「先做完開發，再做確效，最後維護」的線性思維截然不同。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 1.1 PURPOSE AND SCOPE -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec1-1">1.1 Purpose and Scope 目的與範圍</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>Depending on the context, process, and product history, PV activities can differ. The information in this technical report applies to the manufacturing processes for <span class="key-term">drug substances (DSs)</span> and <span class="key-term">drug products (DPs)</span>, including:</p>
+        <ul>
+            <li>Pharmaceuticals, sterile and nonsterile</li>
+            <li>Biological/biotechnological products, including vaccines, blood-derivative products, <span class="key-term">advanced therapy medicinal products (ATMP)</span>, and <span class="key-term">regenerative medicine advanced therapy (RMAT)</span> products</li>
+            <li><span class="key-term">Active pharmaceutical ingredients (APIs)</span></li>
+            <li>Radiopharmaceuticals</li>
+            <li>Veterinary medicines</li>
+            <li>Drug constituents of combination products (e.g., a combination of drug plus a medical device)</li>
+        </ul>
+
+        <p>This technical report was prepared for global use and applies to both new and existing commercial manufacturing processes; however, its scope does not include manufacturing processes for:</p>
+        <ul>
+            <li>Medical devices, except when part of a combination product</li>
+            <li>Dietary supplements</li>
+            <li>Medicated feed</li>
+            <li>Human tissues, except human-tissue engineering when part of an ATMP</li>
+        </ul>
+
+        <p>Although these product categories are outside the scope of this technical report, regulatory guidance documents require the manufacturer to develop their validation programs. As such, the <span class="key-term">Parenteral Drug Association's (PDA)</span> Technical Report No. 60 (Revised): Process Validation: A Lifecycle Approach would be a useful reference in the development of PV lifecycle approaches for other product categories. While the validation of ancillary supporting operations used in pharmaceutical manufacturing processes is not discussed in TR 60, separate PDA technical reports are available that provide specific guidance for such procedures as cleaning, <span class="key-term">aseptic process simulation (APS)</span>, moist-heat sterilization, and dry-heat sterilization (6-9).</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Drug Substance, DS (原料藥)：</strong>在藥品製造中使用的活性成分物質，後續會與賦形劑配製成最終藥品。</p>
+            <p><strong>Drug Product, DP (藥品成品)：</strong>最終包裝中的劑型產品，即供上市銷售的成品。</p>
+            <p><strong>ATMP (先進治療醫藥產品)：</strong>包括基因治療、細胞治療及組織工程產品，是近年藥品開發的前沿領域。</p>
+            <p><strong>RMAT (再生醫學先進治療)：</strong>FDA 針對再生醫學產品的特殊加速審查路徑。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR60 的適用範圍非常廣泛，幾乎涵蓋所有藥品類型。特別注意以下重點：</p>
+            <ul>
+                <li>適用於<strong>新產品</strong>和<strong>既有商業產品</strong>的製程</li>
+                <li>適用於<strong>全球</strong>使用場景</li>
+                <li>醫療器材「單獨時」不在範圍內，但<strong>組合產品中的藥品成分</strong>則納入</li>
+                <li>清潔驗證、無菌製程模擬 (APS)、滅菌驗證等輔助操作有各自專屬的 PDA 技術報告</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>TR60 就像一本「烹飪總則」，適用於中餐、西餐、日料、甜點等各種料理類型。但像是「如何正確清洗刀具」（清潔驗證）或「如何消毒砧板」（滅菌驗證）這些專門操作，另有各自的專用手冊。同樣地，膳食補充品（保健食品）和動物飼料有自己的法規體系，不在這本總則的管轄範圍。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的公司若同時生產生物製劑和組合產品（藥品+器材），TR60 的指引如何分別適用？</li>
+                <li>為什麼 TR60 強調對既有商業產品也適用生命週期方法？這對一家已經生產多年的藥廠意味著什麼？</li>
+                <li>ATMP 和傳統小分子藥品的製程確效，在實務上可能有哪些差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 1.2 BACKGROUND -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec1-2">1.2 Background 背景</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>The <span class="key-term">lifecycle concept</span> includes all phases in the life of a product from initial development and registration through commercial production, including post-approval changes and product discontinuation. The use of a lifecycle approach to pharmaceutical product quality is widely thought to facilitate innovation and continual improvement as well as strengthen the link between pharmaceutical development and manufacturing. The lifecycle philosophy is fundamental to the quality guidelines developed by the <span class="key-term">International Council of Harmonisation (ICH)</span> that cover pharmaceutical development, QRM, <span class="key-term">pharmaceutical quality systems (PQS)</span>, development and manufacture of DSs, and technical and regulatory considerations for pharmaceutical product lifecycle management. Additional ICH guidelines have been issued for <span class="key-term">continuous manufacturing</span> and method validation analytics (10-12).</p>
+
+        <p>These ICH principles provide the product lifecycle framework and quality-system enablers that have been used in pharmaceutical PV guidance documents. These documents advise that PV is not a one-time event, but an activity that spans the product lifecycle, linking process development to the commercial manufacturing process and its maintenance during routine commercial production.</p>
+
+        <p><span class="key-term">ICH Quality Guideline Q8(R2): Pharmaceutical Development</span> defines procedures for linking product- and process-development planning to the final commercial-process control strategy and quality system. It describes an enhanced scientific- and risk-based approach to product and process development that emphasizes statistical analysis and <span class="key-term">design of experiments (DoE)</span>, as well as the incorporation of knowledge gained from similar products and processes. Manufacturing capabilities and the quality system must be integrated into the process development plan to ensure effective and compliant commercial operations. The functionality and limitations of commercial manufacturing equipment are primary considerations in the process design.</p>
+
+        <p><span class="key-term">ICH Quality Guideline Q9(R1): Quality Risk Management</span> describes the use of a risk-based approach to pharmaceutical development and manufacturing quality. These approaches identify and prioritize those process parameters and product quality attributes with the greatest potential to affect product quality. Specific guidance on the application of ICH Q9(R1) concepts can be found in PDA Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations, PDA Technical Report No. 54-5: Quality Risk Management for the Design, Qualification, and Operation of Manufacturing Systems, and PDA Technical Report No. 59: Utilization of Statistical Methods for Production and Business Processes. The FDA Guidance for Industry: Process Validation: General Principles and Practices stresses using a risk-based approach to develop criteria and process performance indicators and improve the design and execution of other validation-related activities (1).</p>
+
+        <p>The FDA and EMA PV guidances follow the principles of <span class="key-term">ICH Quality Guideline Q10: Pharmaceutical Quality System</span>, which conveys the essential need to integrate process design into the quality system. Throughout the development effort, the input and alignment of product and process development from a firm's <span class="key-term">Quality Unit</span> are required to ensure compatibility with the quality system. Key considerations in product and process design include <span class="key-term">knowledge management (KM)</span>, development of a commercial <span class="key-term">control strategy</span>, and use of modern QRM practices. Quality and regulatory organizational components should be part of the cross-functional team from the beginning of the PV study design to ensure that it is compatible with the firm's quality system and that it will meet regulatory agency expectations.</p>
+
+        <p>The Quality Unit provides the appropriate oversight of the PV studies required under GMP guidelines. Although not all lifecycle activities are required to be performed under GMPs (e.g., some Stage 1&ndash;Process Design studies), including representatives from the Quality and Regulatory Units on the cross-functional team is a wise decision (5). Documentation is an important element at all stages of lifecycle validation and, though the degree and type required varies throughout, documentation requirements are greatest during the process qualification and verification stages. Studies during these stages should conform to GMPs and should be approved by the Quality Unit.</p>
+
+        <p>The <span class="key-term">process validation master plan (PVMP)</span> should describe the overall rationale, validation strategy, and list of specific studies and should reside within the firm's quality documentation system. A successful validation program is one that is initiated early in the product lifecycle and is kept current through change control throughout the lifecycle. A comprehensive corporate policy that defines the expectations and commitment to PV lifecycle principles is the foundation of a successful validation program. This policy should define the quality management philosophy, components of validation, change control, documentation requirements (including a PVMP), validation protocols and reports, and responsibilities of key stakeholders within the organization (13).</p>
+
+        <p>This document follows the principles and general recommendations presented in the current FDA validation guidance document and uses the traditional and nontraditional (enhanced) PV terminology employed by EMA. In this context, nontraditional or <span class="key-term">enhanced PV</span> may use continuous process verification as an alternative approach to traditional PV. With the enhanced approach, manufacturing process performance is continuously monitored and evaluated. The enhanced approach is a science- and risk-based, real-time approach to verify and demonstrate that a process operates within specified parameters and consistently produces material that meets quality and process performance requirements (14).</p>
+
+        <p>The <span class="key-term">three-stage PV lifecycle</span> nomenclature used by FDA&mdash;<span class="key-term">Stage 1&ndash;Process Design</span>, <span class="key-term">Stage 2&ndash;Process Qualification</span>, and <span class="key-term">Stage 3&ndash;Continued Process Verification (CPV)</span>&mdash;is also used in this technical report (1). Section 3.0, Section 4.0, and Section 5.0 discuss implementation of these stages in detail. Figure 1.2-1 shows the relationship between the relevant ICH guidance documents and the FDA stage approach to PV across the product lifecycle.</p>
+
+        <div class="quote-box">
+            "Continuous process verification and continued process verification are distinct terms and have different meanings. Continuous process verification refers to validating manufacturing processes that use advanced manufacturing and analytical technologies (e.g., process analytical technology (PAT) systems). FDA uses the term continued process verification generally to mean those activities that maintain the process in a state of control, and it encompasses all manufacturing scenarios."
+        </div>
+
+        <p>A variety of regulatory guidances combined with the experience and knowledge of a cross-section of industry professionals covering products within the scope of this document (e.g., large and small molecules, sterile and nonsterile products) provide the basis for this revision. It presents approaches to best practices that are scientifically sound, represent good business, and are designed to meet current regulatory requirements and expectations.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 - ICH 品質指引體系</h4>
+            <p>ICH 品質指引是全球藥品監管的基石。以下是與 PV 最直接相關的指引：</p>
+            <ul>
+                <li><strong>ICH Q8(R2) (藥品開發)：</strong>從開發階段就規劃商業製程的控制策略，強調 Design of Experiments (實驗設計) 和統計分析</li>
+                <li><strong>ICH Q9(R1) (品質風險管理)：</strong>以風險為基礎，識別和優先處理最可能影響產品品質的製程參數和品質屬性</li>
+                <li><strong>ICH Q10 (藥品品質系統)：</strong>將製程設計整合到品質系統中，確保開發到商業化的無縫銜接</li>
+                <li><strong>ICH Q12 (產品生命週期管理)：</strong>上市後變更的技術和法規考量</li>
+                <li><strong>ICH Q13 (連續製造)：</strong>針對連續製造的新指引</li>
+                <li><strong>ICH Q14 (分析方法開發)：</strong>分析方法的生命週期方法</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 - FDA 三階段框架</h4>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-1">Stage 1: Process Design 製程設計</div>
+                </div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-2">Stage 2: Process Qualification 製程確認</div>
+                </div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-3">Stage 3: Continued Process Verification (CPV) 持續製程確認</div>
+                </div>
+            </div>
+            <p>這三個階段構成了 PV 生命週期的骨幹，後續章節 (3.0, 4.0, 5.0) 將分別深入討論。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - Continuous vs. Continued</h4>
+            <p>這兩個易混淆的術語必須區分清楚：</p>
+            <table>
+                <tr>
+                    <th>術語</th>
+                    <th>含義</th>
+                    <th>應用場景</th>
+                </tr>
+                <tr>
+                    <td><strong>Continuous</strong> Process Verification (持續製程驗證)</td>
+                    <td>使用先進製造和分析技術（如 PAT）來驗證製程的替代方法</td>
+                    <td>Enhanced approach (增強方法)，如即時放行</td>
+                </tr>
+                <tr>
+                    <td><strong>Continued</strong> Process Verification, CPV (持續製程確認)</td>
+                    <td>確保常規生產中製程維持在受控狀態的各項活動</td>
+                    <td>所有製造情境，對應 FDA Stage 3</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - PVMP 與品質體系</h4>
+            <p><strong>Process Validation Master Plan, PVMP (製程確效主計畫)：</strong>描述整體確效理由、驗證策略和具體研究清單的總綱文件，應存放在企業的品質文件系統中。</p>
+            <p>成功的確效計畫有三個關鍵特徵：</p>
+            <ul>
+                <li><strong>及早啟動</strong> -- 在產品生命週期的早期就開始規劃</li>
+                <li><strong>持續更新</strong> -- 透過變更管控在整個生命週期中保持最新</li>
+                <li><strong>跨功能合作</strong> -- Quality Unit 和法規單位從一開始就參與</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PVMP 就像建築師在動工前繪製的「施工總規劃圖」。它不是一張固定不變的藍圖，而是隨著工程進展（產品生命週期）持續更新的動態文件。就像蓋一棟大樓需要結構工程師、水電師傅、消防安全人員從設計階段就共同參與一樣，PV 也需要品質、法規、製造等跨功能團隊從一開始就協同合作。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ICH Q8 強調在開發階段就要考慮商業製造設備的功能和限制？如果忽略這一點會有什麼後果？</li>
+                <li>假設你是一個 CDMO 的品質主管，如何向客戶解釯 "enhanced PV approach" 與 "traditional PV" 的差異和優勢？</li>
+                <li>為什麼即使 Stage 1 的某些研究不要求在 GMP 下執行，仍建議品質和法規人員參與？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 1.2.1 REVIEW OF GUIDANCES -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec1-2-1">1.2.1 Review of Guidances Issued after Technical Report No. 60 First Published in 2013</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>There are multiple guidance documents, standards, and regulations that are related in some way to PV. Though not all of them can be listed here, the authors of this revision encourage PV practitioners to study them on their own. Furthermore, continually tracking guidances issued by <span class="key-term">ICH</span>, <span class="key-term">EMA</span>, <span class="key-term">FDA</span>, the United Kingdom's <span class="key-term">Medicines and Healthcare products Regulatory Agency</span>, <span class="key-term">Pharmaceutical Inspection Co-Operation Scheme (PIC/S)</span>, and <span class="key-term">World Health Organization (WHO)</span>, is recommended as they provide the most up-to-date direction of pharmaceutical GMP. In addition, other jurisdictions, such as the China Food and Drug Administration, Korea Food &amp; Drug Administration, Pharmaceuticals and Medical Devices Agency (Japan), Health Canada, Therapeutic Goods Administration (Australia), Ag&ecirc;ncia Nacional de Vigil&acirc;ncia Sanit&aacute;ria (Brazil), and other ministries and agencies issue their own guideline documentation that typically take global trends into consideration and should be consulted for local manufacturing and distribution.</p>
+
+        <p>One of the main objectives of revising TR 60 was to align its discussions and ultimate recommendations with the most relevant and current regulatory guidances available at the time it was drafted. There may be more regulatory guidances that could prove useful to a PV practitioner, but the authors decided to focus on those documents that, in their professional opinion, would prove especially influential. The guidance documents the task group considered are:</p>
+        <ul>
+            <li><span class="key-term">EU Annex 1</span>: Manufacture of Sterile Medicinal Products, EudraLex &ndash; Volume 4 &ndash; Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use</li>
+            <li><span class="key-term">EU Annex 11</span>: Computerised Systems, EudraLex &ndash; Volume 4</li>
+            <li><span class="key-term">EU Annex 14</span>: Manufacture of Products derived from Human Blood or Human Plasma, EudraLex &ndash; Volume 4</li>
+            <li><span class="key-term">EU Annex 15</span>: Qualification and Validation, EudraLex &ndash; Volume 4</li>
+            <li>FDA Guidance for Industry: Data Integrity and Compliance with Drug cGMP: Questions and Answers</li>
+            <li>FDA Guidance for Industry: Part 11, Electronic Records; Electronic Signatures &mdash; Scope and Application</li>
+            <li>U.S. Code of Federal Regulations, Title 21, Part 640&ndash;Additional Standards for Human Blood and Blood Products</li>
+            <li><span class="key-term">ICH Quality Guideline Q12</span>: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management</li>
+            <li><span class="key-term">ICH Quality Guideline Q13</span>: Continuous Manufacturing of Drug Substances and Drug Products</li>
+            <li><span class="key-term">ICH Quality Guideline Q14</span>: Analytical Procedure Development</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念 - 全球監管地圖</h4>
+            <p>製程確效不是單一國家的要求，而是全球監管的共識。以下是主要的監管機構和指引來源：</p>
+            <ul>
+                <li><strong>ICH：</strong>國際協調組織，制定全球通用的品質指引</li>
+                <li><strong>FDA：</strong>美國食品藥物管理局</li>
+                <li><strong>EMA：</strong>歐洲藥品管理局</li>
+                <li><strong>PIC/S：</strong>藥品稽查合作計畫，建立 GMP 稽查的國際一致標準</li>
+                <li><strong>WHO：</strong>世界衛生組織</li>
+                <li><strong>PMDA（日本）、NMPA（中國）、KFDA（韓國）、TGA（澳洲）、Health Canada（加拿大）、ANVISA（巴西）</strong>等區域性機構</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - 2013年後的關鍵法規更新</h4>
+            <p>TR60 修訂版特別關注 2013 年初版之後發布的指引。以下是最具影響力的文件：</p>
+            <ul>
+                <li><strong>EU Annex 1 (2022 修訂)：</strong>無菌藥品製造的全面更新，對無菌製程確效有深遠影響</li>
+                <li><strong>EU Annex 15：</strong>歐盟 GMP 中最直接涉及確認與確效的附錄</li>
+                <li><strong>ICH Q12：</strong>為上市後變更管理提供了框架，與 Stage 3 CPV 密切相關</li>
+                <li><strong>ICH Q13：</strong>連續製造的出現帶來全新的確效挑戰</li>
+                <li><strong>ICH Q14：</strong>將生命週期方法延伸到分析方法開發</li>
+                <li><strong>FDA 資料完整性指引：</strong>強調確效數據的 ALCOA+ 原則</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>全球法規體系就像聯合國的多層架構：ICH 就像聯合國制定國際公約，各國（FDA、EMA、PMDA 等）再根據公約制定自己的國內法。作為一個全球營運的藥廠或 CDMO，你不能只看一個國家的規定，而要了解整個「國際公約」體系。TR60 就是將這些分散的指引整合成一份實用的參考文件。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO，你可能同時為美國、歐洲和日本市場生產藥品。這意味著你的製程確效計畫必須同時滿足 FDA Guidance、EU Annex 15 和 PMDA 的要求。TR60 的價值在於它整合了這些不同來源的最佳實踐，讓你可以建立一套「一次確效，多國適用」的策略。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>EU Annex 1 (2022) 的修訂對無菌產品的製程確效帶來了哪些新要求？</li>
+                <li>ICH Q13 針對連續製造提出了哪些獨特的確效挑戰？與傳統批次製造有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 2.0 GLOSSARY -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec2-0">2.0 Glossary 術語表</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>Definitions have been provided to help clarify the concepts discussed in this document. While some definitions used vary among companies, geographic location, etc., the definitions described below are consistently used within this Technical Report document. Where a definition is based on another published source, the source is cited.</p>
+
+        <!-- API -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Active Pharmaceutical Ingredient (API)</span></h4>
+            <p>Any substance or mixture of substances intended to be used in the manufacture of a drug (medicinal) product and that, when used in the production of a drug, becomes an active ingredient of the drug product. Such substances are intended to furnish pharmacological activity or other direct effect in the diagnosis, cure, mitigation, treatment, or prevention of disease or to affect the structure and function of the body (15).</p>
+            <p><em>Note: The significant structural component of APIs is called "API Starting Material".</em></p>
+            <p><em>Note: Equivalent to drug substance (DS).</em></p>
+        </div>
+
+        <!-- Attribute -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Attribute</span></h4>
+            <p>A physical, chemical or microbiological property or characteristic of an input or output material (16).</p>
+        </div>
+
+        <!-- CQA -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Critical Quality Attribute (CQA)</span></h4>
+            <p>A physical, chemical, biological, or microbiological property or characteristic that should be within an appropriate limit, range, or distribution to ensure the desired product quality (17).</p>
+        </div>
+
+        <!-- Quality Attribute -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Quality Attribute</span></h4>
+            <p>A molecular or product characteristic that is selected for its ability to help indicate the quality of the product. Collectively, the quality attributes define identity, purity, potency and stability of the product, and safety with respect to adventitious agents. Specifications measure a selected subset of the quality attributes (18).</p>
+        </div>
+
+        <!-- Component -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Component</span></h4>
+            <p>Component means any ingredient intended for use in the manufacture of a drug product, including those that may not appear in such drug product (19).</p>
+        </div>
+
+        <!-- CPV -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Continued Process Verification (CPV)</span></h4>
+            <p>Assuring that during routine production the process remains in a state of control (1).</p>
+        </div>
+
+        <!-- Continuous PV -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Continuous Process Verification</span></h4>
+            <p>An alternative approach to process validation in which manufacturing process performance is continuously monitored and evaluated (17).</p>
+        </div>
+
+        <!-- Control Strategy -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Control Strategy</span></h4>
+            <p>A planned set of controls, derived from current product and process understanding, that assures process performance and product quality. The controls can include parameters and attributes related to drug substance and drug product materials and components, facility and equipment operating conditions, in-process controls, finished product specifications, and the associated methods and frequency of monitoring and control (5).</p>
+        </div>
+
+        <!-- Data Integrity -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Data Integrity</span></h4>
+            <p>The assurance that the data remains complete, consistent, accurate, trustworthy, and reliable throughout its life cycle. Maintaining data integrity is crucial for ensuring the validity of AI-driven insights, supporting regulatory compliance, and enabling reliable decision-making in pharmaceutical manufacturing (20).</p>
+        </div>
+
+        <!-- DoE -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Design of Experiments (DoE)</span></h4>
+            <p>A structured, organized method for determining the relationship between factors affecting a process and the output of that process (17).</p>
+            <p><em>Note: This is typically referred to as "Formal Experimental Design".</em></p>
+        </div>
+
+        <!-- Design Space -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Design Space</span></h4>
+            <p>The multidimensional combination and interaction of input variables (e.g., material attributes) and process parameters have been demonstrated to provide assurance of quality. Working within the design space is not considered as a change. Movement out of the design space is a change and would normally initiate a regulatory post approval change process. Design space is proposed by the applicant and is subject to regulatory assessment and approval (17).</p>
+        </div>
+
+        <!-- DP -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Drug Product (DP)</span></h4>
+            <p>The dosage form in the final immediate packaging intended for marketing (15).</p>
+        </div>
+
+        <!-- DS -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Drug Substance (DS)</span></h4>
+            <p>The material which is subsequently formulated with excipients to produce the drug product. It can be composed of the desired product, product-related substances, and product- and process-related impurities. It may also contain excipients including other components such as buffers (21).</p>
+        </div>
+
+        <!-- Good Engineering Practice -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Good Engineering Practice</span></h4>
+            <p>Established engineering methods and standards applied throughout the lifecycle to deliver appropriate and cost-effective solutions (22).</p>
+        </div>
+
+        <!-- Intermediate -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Intermediate</span></h4>
+            <p>A material produced during the steps of the processing of an API that undergoes further molecular change or purification before it becomes an API. Intermediates may or may not be isolated (15).</p>
+        </div>
+
+        <!-- KM -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Knowledge Management (KM)</span></h4>
+            <p>Knowledge management is a systematic approach to acquiring, analyzing, storing and disseminating information related to products, manufacturing processes and components. Sources of knowledge include, but are not limited to, prior knowledge (public domain or internally documented); pharmaceutical development studies; technology transfer activities; process validation studies over the product lifecycle; manufacturing experience; innovation; continual improvement; and change management activities.</p>
+        </div>
+
+        <!-- Lifecycle -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Lifecycle</span></h4>
+            <p>All phases in the life of a product, from the initial development through marketing until the product's discontinuation (17).</p>
+        </div>
+
+        <!-- NOR -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Normal Operating Range (NOR)</span></h4>
+            <p>A defined range, within the Proven Acceptable Range, specified in the manufacturing instructions as the target and range at which a process parameter is controlled, while producing unit operation material or final product meeting release criteria and Critical Quality Attributes (23).</p>
+        </div>
+
+        <!-- Materials -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Materials</span></h4>
+            <p>A general term used to denote raw materials (starting materials, reagents, solvents), process aids, intermediates, APIs, and packaging and labeling materials.</p>
+        </div>
+
+        <!-- In-Process Material -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">In-Process Material</span></h4>
+            <p>In-process material means any material fabricated, compounded, blended, or derived by chemical reaction that is produced for, and used in, the preparation of the drug product (19).</p>
+        </div>
+
+        <!-- Raw Material -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Raw Material</span></h4>
+            <p>A general term used to denote starting materials, reagents, and solvents intended for use in the production of intermediates or APIs (12).</p>
+        </div>
+
+        <!-- OC Curve -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Operating Characteristic Curve</span></h4>
+            <p>Depicts the discriminatory power of an acceptance sampling plan. The operating characteristic curve plots the probabilities of accepting a lot versus the fraction defective.</p>
+        </div>
+
+        <!-- CPP -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Critical Process Parameter (CPP)</span></h4>
+            <p>A process parameter whose variability has an impact on a critical quality attribute and therefore should be monitored or controlled to ensure the process produces the desired quality (17).</p>
+        </div>
+
+        <!-- Noncritical Process Parameter -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Noncritical Process Parameter</span></h4>
+            <p>A noncritical parameter has no impact on quality at the process step in question. Note: It may have an impact on the performance of the next process step and so may be monitored for process control purposes.</p>
+        </div>
+
+        <!-- Process Parameter -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Process Parameter</span></h4>
+            <p>An input variable or condition of the manufacturing process that can be directly controlled in the process. Typically, these parameters are physical or chemical (e.g., temperature, process time, column flow rate, column wash volume, reagent concentration, or buffer pH) (24).</p>
+            <p><em>Note: This is typically referred to as "Operational Parameter".</em></p>
+        </div>
+
+        <!-- PQ -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Performance Qualification (PQ)</span></h4>
+            <p>The documented verification that systems and equipment can perform effectively and reproducibly based on the approved process method and product specifications.</p>
+        </div>
+
+        <!-- Platform Manufacturing -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Platform Manufacturing</span></h4>
+            <p>The approach of developing a production strategy for a new drug starting from manufacturing processes similar to those used by the same manufacturer to manufacture other drugs of the same type (25).</p>
+        </div>
+
+        <!-- PAT -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Process Analytical Technology (PAT)</span></h4>
+            <p>A system for designing, analyzing, and controlling manufacturing through timely measurements (i.e., during processing) of critical quality and performance attributes of raw and in-process materials and processes with the goal of ensuring final product quality (17).</p>
+        </div>
+
+        <!-- CpK -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Process Capability Index (CpK)</span></h4>
+            <p>A statistical tool, to measure the ability of a process to produce output within a customer's specification limits. In simple words, it measures the producer's capability to produce a product within the customer's tolerance range. Cpk is used to estimate how close a given target is and how consistent it is with the average performance. Cpk provides the best-case scenario for the existing process. It can also estimate future process performance, assuming performance is consistent over time.</p>
+        </div>
+
+        <!-- PpK -->
+        <div class="glossary-term-card">
+            <h4><span class="key-term">Process Performance Index (PpK)</span></h4>
+            <p>A statistical tool to verify if the sample that has been generated from the process is capable of meeting the customer's requirements. It measures the performance of the process related to both dispersion and centeredness. In simple words, Ppk is an index of process performance that tells how well a system is meeting specifications and how well the process is centered within the specification limits.</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念 - 術語層級關係</h4>
+            <p>TR60 的術語表不只是字典，它反映了製程確效的核心邏輯架構。讓我們按照邏輯關係來理解這些術語：</p>
+            <p><strong>品質屬性的層級：</strong></p>
+            <ul>
+                <li><strong>Attribute (屬性)：</strong>輸入或輸出物料的物理、化學或微生物特性 -- 最廣泛的概念</li>
+                <li><strong>Quality Attribute (品質屬性)：</strong>被選定用於指示產品品質的分子或產品特性 -- 所有與品質有關的屬性</li>
+                <li><strong>Critical Quality Attribute, CQA (關鍵品質屬性)：</strong>必須在適當的限度、範圍或分佈內以確保所需產品品質的屬性 -- 最關鍵的子集</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 - 製程參數的分類</h4>
+            <p><strong>製程參數的層級：</strong></p>
+            <ul>
+                <li><strong>Process Parameter (製程參數)：</strong>可以直接控制的製造過程輸入變數或條件（如溫度、時間、流速）</li>
+                <li><strong>Critical Process Parameter, CPP (關鍵製程參數)：</strong>其變異性會影響 CQA 的製程參數，因此必須監控或控制</li>
+                <li><strong>Noncritical Process Parameter (非關鍵製程參數)：</strong>在該製程步驟中對品質無影響的參數，但可能影響下一步驟的性能</li>
+            </ul>
+            <p><strong>操作範圍的層級：</strong></p>
+            <ul>
+                <li><strong>Design Space (設計空間)：</strong>已被證明能確保品質的多維度輸入變數和製程參數的組合 -- 最外層</li>
+                <li><strong>Proven Acceptable Range, PAR (已證明可接受範圍)：</strong>已被驗證為可接受的參數範圍 -- 中間層</li>
+                <li><strong>Normal Operating Range, NOR (正常操作範圍)：</strong>製造指令中指定的目標和範圍 -- 最內層，日常操作的實際目標</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 - Design Space vs NOR vs PAR</h4>
+            <p>想像你開車在高速公路上：</p>
+            <ul>
+                <li><strong>Design Space</strong> = 整條道路的邊界護欄，超出就「出事」（品質風險）</li>
+                <li><strong>PAR (已證明可接受範圍)</strong> = 車道標線，在標線內行駛已被證明是安全的</li>
+                <li><strong>NOR (正常操作範圍)</strong> = 你的方向盤實際瞄準的車道中心位置，日常操作的目標</li>
+            </ul>
+            <p>重要的是：在 Design Space 內操作不算「變更」，但超出 Design Space 就是變更，需要啟動法規上市後變更程序。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - CpK vs PpK 的區別</h4>
+            <p>這兩個統計指標經常被混淆，但它們有重要區別：</p>
+            <ul>
+                <li><strong>CpK (製程能力指數)：</strong>衡量製程在「穩定狀態」下的固有能力，使用<strong>組內變異</strong>計算。代表製程的「最佳情境」表現。</li>
+                <li><strong>PpK (製程績效指數)：</strong>衡量製程的「實際表現」，使用<strong>總變異</strong>（包含組內和組間變異）計算。反映製程的真實績效。</li>
+            </ul>
+            <p>實務判斷：若 CpK >> PpK，表示製程存在顯著的批次間變異（特殊原因變異），需要調查。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 - 其他重要術語</h4>
+            <p><strong>Control Strategy (控制策略)：</strong>基於當前產品和製程理解所規劃的一組控制措施，包含參數控制、物料屬性、設施設備條件、製程中管控、成品規格等。這是整個 PV 生命週期的核心產出之一。</p>
+            <p><strong>Data Integrity (資料完整性)：</strong>確保資料在整個生命週期中保持完整、一致、準確、可信和可靠。TR60 (2026修訂版) 特別提到了「AI 驅動洞察的有效性」，反映了數位化轉型的趨勢。</p>
+            <p><strong>Knowledge Management, KM (知識管理)：</strong>系統性地獲取、分析、儲存和傳播與產品、製程和組件相關的資訊。知識來源包括先驗知識、開發研究、技術轉移、確效研究、製造經驗等。</p>
+            <p><strong>Platform Manufacturing (平台製造)：</strong>從同一製造商已用於生產同類藥品的類似製程出發，為新藥開發生產策略。這對 CDMO 特別重要，可大幅縮短開發時間。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 - Platform Manufacturing</h4>
+            <p>Platform Manufacturing 就像汽車製造商的「共用底盤平台」策略。Toyota 的 TNGA 平台可以衍生出 Camry、RAV4、Lexus ES 等不同車型。同樣地，一個生物製藥 CDMO 的單株抗體生產平台可以快速適配不同客戶的 mAb 產品，只需調整少數特定參數，大幅縮短開發和確效時間。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - PAT 與 Enhanced Approach</h4>
+            <p><strong>Process Analytical Technology, PAT (製程分析技術)：</strong>透過即時量測（在製程進行中）來設計、分析和控制製造的系統。PAT 是實現 enhanced approach（增強方法）和 continuous process verification（持續製程驗證）的技術基礎。</p>
+            <p>PAT 的實際應用範例：</p>
+            <ul>
+                <li>近紅外光譜 (NIR) 即時監測混合均勻度</li>
+                <li>拉曼光譜即時監測結晶過程</li>
+                <li>多變量資料分析 (MVDA) 即時預測 CQA</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個製程參數被歸類為 CPP，這對你的確效策略（取樣計畫、監控頻率）有什麼具體影響？</li>
+                <li>Design Space 內的操作不算「變更」，這對法規申報有什麼實際優勢？為什麼監管機構要求 Design Space 需經核准？</li>
+                <li>CpK = 1.33 而 PpK = 0.8 的情況代表什麼？你會建議採取什麼行動？</li>
+                <li>為什麼 TR60 (2026修訂版) 在 Data Integrity 定義中特別提到 AI？這反映了產業的什麼趨勢？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>PV 是生命週期活動：</strong>製程確效不是一次性事件，而是貫穿產品從開發到停產整個生命週期的持續活動</li>
+        <li><strong>FDA 三階段框架：</strong>Stage 1 (Process Design) → Stage 2 (Process Qualification) → Stage 3 (Continued Process Verification)，構成 PV 生命週期的骨幹</li>
+        <li><strong>全球適用：</strong>TR60 整合了 ICH、FDA、EMA 等全球主要監管機構的指引，適用於幾乎所有藥品類型</li>
+        <li><strong>Continuous vs. Continued：</strong>Continuous Process Verification 是使用 PAT 等先進技術的驗證替代方法；Continued Process Verification (CPV) 是確保常規生產維持受控狀態的 Stage 3 活動</li>
+        <li><strong>關鍵術語關係：</strong>Attribute → Quality Attribute → CQA 形成品質屬性的層級；Process Parameter → CPP 形成參數的關鍵性分類；Design Space → PAR → NOR 形成操作範圍的嵌套結構</li>
+        <li><strong>跨功能協作：</strong>品質單位、法規單位應從 PV 研究設計之初就參與，確保與品質系統和法規期望相容</li>
+        <li><strong>PVMP 是基石：</strong>製程確效主計畫應描述整體理由、確效策略和具體研究清單，並透過變更管控持續更新</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 60 (Revised 2026): Process Validation: A Lifecycle Approach</p>
+    <p>Section 0: Introduction &amp; Glossary | Sections 1.0 - 2.0 | Pages 1-10</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
