@@ -319,6 +319,64 @@ def html_to_markdown(html: str) -> str:
     return md.strip()
 
 
+def _filter_original_only(md: str) -> str:
+    """Remove tutorial commentary blocks, keeping only original PDA text.
+
+    For each heading, if its text contains any REMOVE keyword, the heading
+    and all content beneath it is dropped until a heading of strictly lesser
+    depth (i.e. a parent section) is encountered.
+
+    Headings whose text matches STRIP_LABEL_ONLY have the heading line
+    removed but their content kept (e.g. '原文內容 Original Text').
+    """
+    # Keywords that identify tutorial-only headings (Chinese and English variants)
+    REMOVE_KEYWORDS = (
+        # Chinese
+        '導師解析', '本章學習目標', '本節目錄', '本節內容索引',
+        '本節內容導覽', '本節重點回顧', '核心概念解析', '核心概念',
+        '比喻說明', '重點提示', '重點警示', '練習思考', '實務應用',
+        '法規背景', '圖表解讀', '圖表索引', '範圍解析',
+        # English variants used in some sections
+        'Tutorial Commentary', 'Core Concepts', 'Key Concepts',
+        'Analogy', 'Key Notes', 'Critical Warning', 'Practice Questions',
+        'Practical Application', 'Learning Objectives', 'Section Contents',
+        'Regulatory Context', 'Scope Analysis', 'Table Analysis',
+    )
+    # Heading labels to silently drop (content beneath is kept)
+    STRIP_LABEL_ONLY = ('原文內容 Original Text', 'Original Text',)
+
+    lines = md.split('\n')
+    result = []
+    skip_until_depth = None  # when set, skip until a heading of depth < this value
+
+    for line in lines:
+        m = re.match(r'^(#{1,6}) ', line)
+
+        if skip_until_depth is not None:
+            # Resume only when we reach a PARENT heading (strictly shallower)
+            if m and len(m.group(1)) < skip_until_depth:
+                skip_until_depth = None
+            else:
+                continue  # still inside a removed block
+
+        if m:
+            depth = len(m.group(1))
+            text = line[depth + 1:].strip()
+
+            if any(kw in text for kw in REMOVE_KEYWORDS):
+                skip_until_depth = depth
+                continue
+
+            if any(text.startswith(label) for label in STRIP_LABEL_ONLY):
+                continue  # drop heading line, keep content
+
+        result.append(line)
+
+    md = '\n'.join(result)
+    md = re.sub(r'\n{3,}', '\n\n', md)
+    return md.strip()
+
+
 # ============================================================
 # MARKDOWN GENERATOR
 # ============================================================
@@ -357,7 +415,7 @@ def generate_markdown(
                 continue
             with open(filepath, 'r', encoding='utf-8') as f:
                 html = f.read()
-            section_parts.append(html_to_markdown(html))
+            section_parts.append(_filter_original_only(html_to_markdown(html)))
 
         if not section_parts:
             continue
