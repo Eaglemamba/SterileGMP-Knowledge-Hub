@@ -320,14 +320,14 @@ def html_to_markdown(html: str) -> str:
 
 
 def _filter_original_only(md: str) -> str:
-    """Remove tutorial commentary blocks, keeping only original PDA text.
+    """Remove tutorial commentary blocks and all Chinese text, keeping only
+    original PDA English content.
 
-    For each heading, if its text contains any REMOVE keyword, the heading
-    and all content beneath it is dropped until a heading of strictly lesser
-    depth (i.e. a parent section) is encountered.
-
-    Headings whose text matches STRIP_LABEL_ONLY have the heading line
-    removed but their content kept (e.g. '原文內容 Original Text').
+    1. Headings containing REMOVE keywords → drop heading + all content until
+       a heading of strictly lesser depth.
+    2. Headings matching STRIP_LABEL_ONLY → drop heading line, keep content.
+    3. Lines that are purely CJK / whitespace / punctuation → drop.
+    4. Strip Chinese from mixed-language heading lines.
     """
     # Keywords that identify tutorial-only headings (Chinese and English variants)
     REMOVE_KEYWORDS = (
@@ -345,19 +345,27 @@ def _filter_original_only(md: str) -> str:
     # Heading labels to silently drop (content beneath is kept)
     STRIP_LABEL_ONLY = ('原文內容 Original Text', 'Original Text',)
 
+    # Regex matching CJK Unified Ideographs + common CJK punctuation
+    CJK_RE = re.compile(
+        r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff'
+        r'\u3000-\u303f\uff00-\uffef\u2e80-\u2eff\u2f00-\u2fdf]'
+    )
+    def _has_cjk(line: str) -> bool:
+        """Return True if line contains any CJK characters."""
+        return bool(CJK_RE.search(line))
+
     lines = md.split('\n')
     result = []
-    skip_until_depth = None  # when set, skip until a heading of depth < this value
+    skip_until_depth = None
 
     for line in lines:
         m = re.match(r'^(#{1,6}) ', line)
 
         if skip_until_depth is not None:
-            # Resume only when we reach a PARENT heading (strictly shallower)
             if m and len(m.group(1)) < skip_until_depth:
                 skip_until_depth = None
             else:
-                continue  # still inside a removed block
+                continue
 
         if m:
             depth = len(m.group(1))
@@ -368,7 +376,17 @@ def _filter_original_only(md: str) -> str:
                 continue
 
             if any(text.startswith(label) for label in STRIP_LABEL_ONLY):
-                continue  # drop heading line, keep content
+                continue
+
+            # Strip CJK from mixed headings (e.g. "# Section 3: How Filters Work 濾膜原理")
+            cleaned = CJK_RE.sub('', text).strip()
+            cleaned = re.sub(r'\s{2,}', ' ', cleaned)  # collapse double spaces
+            line = '#' * depth + ' ' + cleaned
+
+        # Drop any line containing CJK characters (commentary, Chinese
+        # translations, figure captions with Chinese, etc.)
+        if _has_cjk(line):
+            continue
 
         result.append(line)
 
@@ -405,7 +423,7 @@ def generate_markdown(
 
     lines = []
     lines.append(f'# {report_title_en}: {report_subtitle_en}')
-    lines.append(f'\n> {report_subtitle_zh}\n')
+    lines.append('')  # no Chinese subtitle
 
     for files, nav_id, nav_num, label_en, label_zh, pages in section_map:
         section_parts = []
@@ -421,7 +439,8 @@ def generate_markdown(
             continue
 
         page_info = f' ({pages})' if pages else ''
-        lines.append(f'\n## {chapter_label} {nav_num}: {label_en} {label_zh}{page_info}\n')
+        # English only — no label_zh in knowledge MD
+        lines.append(f'\n## {chapter_label} {nav_num}: {label_en}{page_info}\n')
         lines.append('\n\n'.join(section_parts))
 
     md_content = '\n'.join(lines)
