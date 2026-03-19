@@ -297,13 +297,33 @@ def source_to_markdown(
         print(f"  [WARNING] No source text files found in {source_dir}")
         return ""
 
-    # Track when we're inside raw table data that should be suppressed
-    # (because an HTML table was already spliced for this table)
-    skip_raw_table = False
+    # skip_raw_table is set per source file — see inner loop
+
+    # Build a flat list of all HTML tables in order for sequential matching
+    all_html_tables = []
+    for entry in config.get("section_map", []):
+        for fn in entry["files"]:
+            if fn in tables_by_file:
+                all_html_tables.extend(tables_by_file[fn])
+    html_table_cursor = 0  # next unlabeled table to use
 
     for txt_file in files_to_read:
         with open(txt_file, "r", encoding="utf-8") as f:
             raw_lines = f.readlines()
+
+        skip_raw_table = False  # reset at each source file boundary
+
+        # Build list of HTML tables available for this source file
+        # Match by filename pattern: sec01a-text.txt → section-01a-*.html
+        src_stem = txt_file.stem.replace('-text', '')  # e.g., "sec01a"
+        file_html_tables = []
+        for fn, tbls in tables_by_file.items():
+            # Normalize: "section-01a-process-design.html" → check if "01a" is in it
+            fn_parts = fn.replace('section-', '').split('-')
+            src_parts = src_stem.replace('sec', '')
+            if src_parts and src_parts in fn:
+                file_html_tables.extend(tbls)
+        file_table_cursor = 0
 
         for raw_line in raw_lines:
             line = raw_line.rstrip()
@@ -315,18 +335,31 @@ def source_to_markdown(
             stripped = line.strip()
 
             # If we're skipping raw table data after an HTML table splice,
-            # check if we've reached normal content again
+            # check if we've reached normal content again.
+            # Raw table data = short fragmented lines (cell values, column headers).
+            # Real content = section headings, table captions, figure captions,
+            # footnotes, or paragraph text (multiple sentences).
             if skip_raw_table:
-                # Resume on: section heading, next table caption, or a real paragraph
-                # (line > 80 chars that doesn't look like a cell value)
+                # Always resume on structural elements
                 is_heading = bool(HEADING_RE.match(stripped)) and '.' in stripped
                 is_table_caption = bool(TABLE_HEADING_RE.match(stripped))
-                is_paragraph = len(stripped) > 80 and not stripped.startswith('Table') and not stripped.startswith('Figure')
+                is_figure_caption = bool(FIGURE_HEADING_RE.match(stripped))
                 is_appendix = bool(APPENDIX_RE.match(stripped))
-                if is_heading or is_table_caption or is_paragraph or is_appendix:
+                is_footnote = stripped.startswith('*') and len(stripped) > 20
+
+                if is_heading or is_table_caption or is_figure_caption or is_appendix or is_footnote:
                     skip_raw_table = False
+                elif stripped:
+                    # A real paragraph has multiple sentences or is very long
+                    # Table fragments are typically <60 chars with no periods
+                    has_sentences = '. ' in stripped and len(stripped) > 60
+                    is_very_long = len(stripped) > 120
+                    if has_sentences or is_very_long:
+                        skip_raw_table = False
+                    else:
+                        continue  # skip — still looks like table fragment
                 else:
-                    continue  # still in raw table zone, skip
+                    continue  # skip blank lines in skip mode
 
             # Detect section headings — must start with a structured section
             # number (e.g., "3.0", "6.6.1") followed by a capitalized title.
@@ -399,18 +432,19 @@ def source_to_markdown(
                     table_num = re.match(r'(table\s+\d+[\.\d]*[-–]\d+\S*)', stripped, re.I)
                     table_num_key = table_num.group(1).lower().strip() if table_num else ''
                     matched_table = None
-                    # 1. Try labeled match
+                    # 1. Try labeled match by table number key
                     if table_num_key and table_num_key in labeled_tables:
                         matched_table = labeled_tables[table_num_key]
-                    # 2. Try next unlabeled table from the current source file
-                    if not matched_table:
-                        # Find which HTML file this source text corresponds to
-                        for fn, tbl_list in tables_by_file.items():
-                            idx = file_table_idx.get(fn, 0)
-                            if idx < len(tbl_list):
-                                matched_table = tbl_list[idx]
-                                file_table_idx[fn] = idx + 1
+                    # 2. Search all HTML tables for content match
+                    if not matched_table and table_num_key:
+                        for tbl in all_html_tables:
+                            if table_num_key in tbl.lower():
+                                matched_table = tbl
                                 break
+                    # 3. Fall back to next table from this source file's HTML
+                    if not matched_table and file_table_cursor < len(file_html_tables):
+                        matched_table = file_html_tables[file_table_cursor]
+                        file_table_cursor += 1
                     if matched_table:
                         lines.append("")
                         lines.append(matched_table)

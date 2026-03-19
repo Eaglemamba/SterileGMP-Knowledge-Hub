@@ -402,13 +402,12 @@ There are several design criteria attributes that need to be taken into consider
 (1, 5, 6).
 Table 1.2-1 summarizes the main design criteria attributes that need to be taken into consideration for each type of RABS.
 
-| | cRABS () | oRABS () |
-| --- | --- | --- |
-| | | |
-| | UDAF | HVAC UDAF |
-| | mouseholes | |
-| | mouseholes | |
+| Design Attribute | Non-Barrier System* | Passive Open RABS | Active Open RABS | Closed RABS |
+| --- | --- | --- | --- | --- |
 
+* “Non-barrier technology” is obsolete technology.
+Note: Biosafety Cabinets (BSCs) are not covered under the scope of this table.
+Barrier Considerations
 Non-barrier technology is obsolete and is not compliant with regulatory expectations. Non-barrier systems have only individual barriers in place, such
 as polycarbonate, or curtains and aseptic operations are open to the surrounding space of the room.
 All types of RABS have a barrier system in place (e.g., translucent rigid barriers) that surrounds the aseptic

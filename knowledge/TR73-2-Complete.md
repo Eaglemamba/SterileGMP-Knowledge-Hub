@@ -351,10 +351,6 @@ on the market (i.e., as a single integral product). The description should conta
 | Marketing Authorisation type | Centralized application |
 | Marketing Authorisation procedure number | EU/xxx/xxx |
 
-way that the medicinal product and the device intended to administer the medicinal
-product form a single integral product that is intended exclusively for use in the given
-combination, and is not reusable, as defined by MDR Article 1(9), subparagraph 2.
-
 | Category | Status |
 | --- | --- |
 | Device invented name/trade name/project name1 | Prefilled Syringe XXX 1.5 mL |
@@ -365,14 +361,6 @@ combination, and is not reusable, as defined by MDR Article 1(9), subparagraph 2
 | Route of Conformity | Conformity will be assessed pursuant to Directive 2001/83/EC, point 12 of Section 3.2 as amended by MDR 2017/745 Article 117, which states that products governed by the Medicinal Products Directive 2001/83/EC shall require an opinion on the conformity of the device part with the relevant General Safety and Performance Requirements (GSPR) set out in Annex I to the MDR, issued by a notified body designated in accordance with that Regulation for the type of device in question. |
 | Notified Body | [insert name of the NB] |
 
-Example of Marketing Authorization Application (MAA) Information Summary on the Medicinal Product
-Category
-Status
-Invented/trade name of the medicinal product
-As per MAA
-INN (or common name) of the active substance(s)
-As per MAA
-Pharmaceutical form(s) and strength(s)
 10 mg of INN in 1.5 mL solution in prefilled syringe
 Pharmaco-therapeutic group (ATC code)
 D084 C52
@@ -403,6 +391,7 @@ be used to administer a medicinal product as stated in Table 4.2-1. Table 4.2-1 
 | Invasiveness | The needle penetrates inside the body through the surface of the body (intact skin), not through a body orifice |
 | Measuring function (as per MEDDEV 2.1/5 (June 1998)) (19) | No measuring function |
 
+intended use and target patient population of the device. The commercial version
 will consist of the components detailed in Figure 4.2-1 and Figure 4.2-2. As this is
 not a medical device, but a DDC, the classification rules for devices do not formally
 apply and are applied here for the “virtual” device part (18).
@@ -436,23 +425,6 @@ Syringe Subassembly Ready for Filling
 | 2D | Backstop/Bxxx | Supports conversion of user force into longitudinal plunger rod movementMay include a feature to prevent plunger removal from the syringe (an optional component) | Document XXXDocument XXY |
 | 3A | Immediate labeling/ILxxx | Is transparent and spacious enough to allow inspection of drug conditionProvides safety information (e.g., drug, strength, expiry date) | Document XXXDocument XXY |
 
-Non-active: energy for dose delivery is created by human force and directly applied to the plunger
-Additional feature
-Does not require any additional feature for its intended use
-Invasiveness
-The needle penetrates inside the body through the surface of the body (intact skin), not through
-a body orifice
-Measuring function (as per MEDDEV
-2.1/5 (June 1998)) (19)
-No measuring function
-Depending on the type of device, the following information can also be included: Key functional
-elements, principle mode of action, accessories (if applicable), compatibility with other devices, spe-
-cific performance claims of the manufacturer, critical components, previous generations of the device,
-accuracy and stability for devices with measuring function (not applicable within the scope of this
-document), identified similar devices available in Europe or other international markets, explanation
-of any novel features, market history, device history, different variants, changes to the device, sales and
-complaints, and design stages applied to the device (Annex II) (1).
-The content included in Table 4.2-3 should be chosen based on the respective current standards (e.g.,
 EN 60601-1-2, EN 62366-1, and TR 62366-2) (20-22). Additional aspects to be considered could
 be the frequency of use of the DDC to address the cumulative use and exposure to the device parts,
 intended use locations on the body, contraindications, warnings, and dose and dose ranges (if other
@@ -464,17 +436,6 @@ dosages are available).
 | 2 | Barrel/staked needle/needle shieldBxxx | Functional unit composed of components 2A, 2B, and 2C | Document XXXDocument XXY |
 | 3 | SyringeSxxx | Functional unit composed of components 1, 2, and 3A | Document XXXDocument XXY |
 
-Provide as stated in SmPC (Document XXX), e.g., delivery of a predefined fixed dose of a drug product
-Intended patient population
-Provide as stated in SmPC (Document XXX), e.g., patient with chronic disease xxx
-Intended user profile
-Provide as stated in SmPC (Document XXX), e.g., patients, caregivers, healthcare professionals
-Intended use environment and
-conditions of use
-Provide as stated in SmPC (Document XXX), e.g., clinical setting (private office and/or hospital),
-home setting
-Intended storage conditions
-Provide as stated in SmPC (Document XXX), e.g., do not refrigerate or freeze
 Reference documentation is not restricted to the Summary of Product Characteristics (SmPC). Any
 other product description document can also be used, provided it contains all the needed information.
 4.3
@@ -517,7 +478,6 @@ Components of a Syringe
 | Needle Shield Rigid Part/NSxxx | No | Not applicable |
 | Immediate Labeling/ILxxx | Yes | Incorporates and/or consists of nanomaterials (according to definition in Article 2(18) and to GSPR 10.6, MDR)For more details, see document XXX. |
 
-This section provides a description of the (raw) materials of construction that are used for the com-
 ponents, functional units, and subassembled part of the device as presented in the DDC. In addition,
 the type of direct or indirect body contact (via the drug product) is described to allow an overview of
 the material categorization (e.g., in line with ISO 10993-1:2018). The presence of any material that
@@ -547,8 +507,6 @@ endocrine-disrupting (ED) substances, nanomaterials) are stated in Table 4.5-2.
 | Needle Shield (Rigid Part)/NSxxx | Chapters 5, 6, 8, 10, 13 | Document XXX |
 | Needle Shield (Soft Part)/NSxxx | Chapters 5, 6, 8, 10, 13 | Document XXX |
 
-Section 4.6 provides a description of all covering and protecting packaging components (e.g., blister,
-folding box, instructions for use), including tamper-evident features and other means to identify the
 packaging integrity by the user. The GSPR Table 5.1-1 does not address packaging-related GSPRs, for
 example, GSPR 7 or GSPR 10.2, as these are out of scope. (See Section 1.2.) However, these aspects
 need to be addressed within the final submission file (e.g., MAA or variation submission).
@@ -563,7 +521,6 @@ rials is given in Table 4.6-1.
 | Filling/Fixxx | Chapter 13 | Document XXX |
 | Labeling, Plunger Rod Assembly and Packaging/LAPxxx | Chapters 11, 13 | Document XXX |
 
-This section provides an overview of the manufacturing process of the device components and related
 manufacturing control measures as applied by the syringe component suppliers. This information can
 be provided by the component manufacturers. In addition, it covers the pharmaceutical manufactur-
 ing step executed by the applicant.
@@ -601,18 +558,48 @@ their information package.
 Table 4.7.1-1 contains an overview of relevant information as presented in TR-73 regarding the man-
 ufacturing of the different components and subassemblies.
 
-| GSPR | Scope | Device Part | Syringe Subassembly | Plunger Stoppers |
-| --- | --- | --- | --- | --- |
-| Evidence of Conformity of the Device Part1 of the Prefilled Syringe | Supportive Documents and Methods for the Syringe Subassembly Ready for Filling2 | Supportive Documents and Methods for Plunger Stoppers3 |
-| Provided by Applicant | Provided by Supplier | Provided by Supplier |
-| Chapter I — General Requirements4 |
+**Table 4.7.1-1**
 
+Example of Overview of Device Part Manufacturing (Components and Subassembly)
+Component Name/ Number
+Link to Relevant Information in TR-73
+Manufacturing Related Information
+Plunger Stopper/PSxxx
+Chapters 3, 11, 13
+Document XXX
+Plunger Rod/PRxxx
+Chapters 11, 13
+Document XXX
+Barrel/Bxxx
+Chapters 5, 6, 10, 13
+Document XXX
+Needle/Nxxx
+Chapters 5, 6, 8, 10, 13
+Document XXX
+Needle Shield
+(Rigid Part)/NSxxx
+Chapters 5, 6, 8, 10, 13
+Document XXX
+Needle Shield
+(Soft Part)/NSxxx
+Chapters 5, 6, 8, 10, 13
+Document XXX
 4.7.2	 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)
 Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and
 packaging of the final DDC. Respective process validation summaries of all steps should be included.
 
-| 8 | Risks and side-effects | Risk management file, including Risk management report Benefit/risk assessment Usability engineering file, including Information for safety, incl. residual risks Evidence for the implementation of a RMS and a usability engineering process, e.g., according to ISO 14971, ICH Q9 IEC 62366-1 | High-level risk management summary as evidence for the implementation of a RMS Evidence for the implementation of a QMS, e.g., according to the applicable parts of ISO 13485 ISO 15378 | High-level risk management summary as evidence for the implementation of a RMS Evidence for the implementation of a QMS, e.g., according to the applicable parts of ISO 13485 ISO 15378 |
-| Chapter II — Requirements Regarding Design and Manufacture |
+**Table 4.7.2-1	 Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)**
+
+Component Name/ Number
+Link to Relevant Information in TR-73
+Manufacturing Related Information
+Filling/Fixxx
+Chapter 13
+Document XXX
+Labeling, Plunger Rod Assembly and
+Packaging/ LAPxxx
+Chapters 11, 13
+Document XXX
 
 #### 4.7.3 Storage and Transport
 
@@ -676,8 +663,11 @@ of the plunger stopper/needle shield to the applicant.
 Documents regarding the plunger rod, the rigid part of the needle shield (if used), and the backstop
 (if used) are listed in Section 5.3.
 
-| 10.6 | Risks related to particles | Risk management file, incl. Design risk analysis Design verification summary report, incl. Biological Evaluation report Control strategy Evidence of compliance with the applicable parts of GMP requirements for medicinal products EMA/CHMP/CVMP/QWP/850374/2015 Evidence for the implementation of a RMS, e.g., according to the applicable parts of ISO 14971, ICH Q9 Evidence of compliance with the applicable parts of ISO 15378 Evidence of compliance with material safety requirements based on supplier information | Specification, incl. particles Quality Certificate Statement on use of nanomaterials Statement on compliance with the applicable parts of ISO 11040-4, -6 | Specification, incl. particles Quality Certificate Statement on use of nanomaterials Statement on compliance with the applicable parts of ISO 8871-3 |
-| 11 — Infection and Microbial Contamination |
+| GSPR | Scope | Device Part | Syringe Subassembly | Plunger Stoppers |
+| --- | --- | --- | --- | --- |
+| Evidence of Conformity of the Device Part1 of the Prefilled Syringe | Supportive Documents and Methods for the Syringe Subassembly Ready for Filling2 | Supportive Documents and Methods for Plunger Stoppers3 |
+| Provided by Applicant | Provided by Supplier | Provided by Supplier |
+| Chapter I — General Requirements4 |
 
 1	 See Glossary: incl. barrel, lubrication (if needed), needle and adhesive, NS/RNS, plunger stopper, plunger rod, backstop; suggestions for documentation on the rigid part of the RNS, plunger rod and backstop are provided in Section 5.3.
 2	 Incl. lubrication (if existing), needle and adhesive, NS/RNS (for supportive documentation on the soft part of the NS, please use column 3).
@@ -1452,22 +1442,6 @@ reports.
 | --- |
 | Category | Requirements & Standards |
 
-Examples of Supportive Documents for Plunger Rod, Rigid Part of RNS and, if used, Finger Flange Extension/Backstop
-Material Safety
-Biocompatibility information
-•	 ISO 10993-1: Brief description of the approach, incl categorization, endpoints, and biological testing strategy
-•	 ISO 10993-5: Cytotoxicity
-•	 ISO 10993-10: Sensitization (and Irritation)
-•	 ISO 10993-18: Physical and/or chemical information
-•	 ISO 10993-23: Irritation
-Materials of concern
-•	 Statement on the use of/content of:
-o	 Phthalates
-o	 CMR/ED substances
-o	 Substances regulated under REACH: Substances of very high concern
-o	 ICH Q3D: Elemental Analysis
-o	 Latex
-o	 Materials of animal origin (TSE/BSE; EU Note for Guidance EMA/410/01 revision 3) (23)
 •	 ISO 10993-18: Physical and/or chemical information, incl. ingredients and processing aids
 •	 MDR Chapter II, GSPR 13: Devices incorporating materials of biological origin (products or derivatives of human origin; devices
 manufactured utilizing nonviable biological substances)
@@ -1502,14 +1476,6 @@ Table 5.5-1 provides a few examples of justifications; it is not exhaustive and 
 | Materials of concern | Statement on the use of/content of: Phthalates CMR/ED substances Substances regulated under REACH: Substances of very high concern ICH Q3D: Elemental Analysis Latex Materials of animal origin (TSE/BSE; EU Note for Guidance EMA/410/01 revision 3) ISO 10993-18: Physical and/or chemical information, incl. ingredients and processing aids MDR Chapter II, GSPR 13: Devices incorporating materials of biological origin (products or derivatives of human origin; devices manufactured utilizing nonviable biological substances) ISO 22442: Medical devices utilizing animal tissues and their derivatives, Parts 1, 2, and 3 Material Safety Data Sheet, Technical Safety Data Sheet |
 | Technical Information and Performance |
 
-For the devices referred to in Annex XVI, the general safety requirements set out in Sections 1 and 8 shall be
-understood to mean that the device, when used under the conditions and for the purposes intended, does not
-present a risk at all or presents a risk that is no more than the maximum acceptable risk related to the product’s
-use, which is consistent with a high level of protection for the safety and health of persons.
-The device in scope is not referred to in Annex XVI (products without an intended
-medical purpose).
-14.3
-Devices shall be designed and manufactured in such a way as to minimize the risks of fire or explosion during normal
 use and in single fault condition. Particular attention shall be paid to devices the intended use of which includes
 exposure to or use in association with flammable or explosive substances or substances that could cause combustion.
 The device in scope does not include electronic components and is not intended
