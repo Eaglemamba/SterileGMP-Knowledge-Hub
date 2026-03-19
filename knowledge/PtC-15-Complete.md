@@ -19,36 +19,6 @@ PDA PtC-15: Mobile Manufacturing | p1–p4
 
         
 
-### Learning Objectives — 學習目標
-
-        
-
-            
-- Understand why pharmaceutical manufacturing has historically been "fixed" and what triggered the shift toward mobile models — 了解製藥製造業為何歷史上以固定廠房為主，以及促成轉向行動式模式的驅動因素
-
-            
-- Define Mobile Manufacturing and Mobile Manufacturing Unit (MMU) using PDA's official definitions — 以 PDA 官方定義理解行動式製造與行動製造單元（MMU）的概念
-
-            
-- Identify the six key terms in the PtC-15 glossary and their implications for qualification strategy — 辨識 PtC-15 術語表中六個核心詞彙及其對確效策略的含意
-
-            
-- Recognize how single-use technology, process intensification, and geopolitical drivers converge to enable mobile manufacturing — 認識一次性技術、製程強化與地緣政治風險如何共同促成行動式製造的可行性
-
-            
-- Apply the decision hierarchy (Product Quality → Regulatory → Business) when evaluating MMU scenarios — 在評估 MMU 情境時能應用決策優先順序（產品品質 → 法規 → 商業）
-
-        
-
-    
-
-    
-    
-
-        
-
-            
-
 ## Document Overview — PDA PtC-15
 
             
@@ -1264,39 +1234,6 @@ Source: PDA PtC-15 (2025), pp. 5–9 | Educational Commentary in Traditional Chi
 
         
 
-### Learning Objectives — 學習目標
-
-        
-
-            
-- Distinguish between stick-built, modular, and mobile manufacturing unit (MMU) facility types and their key decision drivers.
-
-            
-- Evaluate the advantages and practical challenges of deploying a mobile manufacturing unit across multiple geographic sites.
-
-            
-- Understand the FAT/SAT-based qualification strategy for MMUs and identify which elements re-qualify at each new location.
-
-            
-- Apply the MMU concept as a technology transfer vehicle, particularly in CDMO and phase-to-phase drug development contexts.
-
-        
-
-    
-
-    
-    
-
-        
-
-            
-
-Q1.1
-
-            
-
-                
-
 ## What are the available options to build a facility?
 
                 
@@ -1315,8 +1252,6 @@ Q1.1
                 
 
                     
-
-### Original Text — PDA PtC-15 (pp. 5, 9)
 
                     
 
@@ -2979,62 +2914,6 @@ Source: PDA PtC-15, pp. 10–16  |  Questions 2.1, 2.2, 3.1  |  Bilingual Ed
 
         
 
-### 本節內容導覽 — Section Navigator
-
-        
-
-            Topic 2 — 法規考量概覽
-            Q2.1 — 現行法規的影響
-            Q2.2 — 主管機關可採取的行動
-            Topic 3 — 實施概覽
-            Q3.1 — 新地點的確效策略
-            Appendix A — 各地區法規期望比較表
-            Document Summary
-        
-
-    
-
-    
-    
-
-        
-
-### Learning Objectives — 學習目標
-
-        
-
-            
-- Understand how current GMP regulations (FDA 21 CFR 210/211, EMA EU GMP, ICH Q10) constrain or challenge mobile manufacturing unit (MMU) adoption.
-
-            
-- Identify specific regulatory actions — procedural, administrative, and technical — that would facilitate MMU implementation at scale.
-
-            
-- Apply a risk-based validation framework to qualify an MMU at a new location, distinguishing what must be repeated versus what can be leveraged from the initial site.
-
-            
-- Navigate multi-jurisdictional complexity using Appendix A's regional compliance comparison (FDA, EMA, PMDA, Health Canada, and others).
-
-            
-- 理解現行法規體系（尤其是固定設施假設）對MMU部署的結構性障礙。
-
-            
-- 掌握跨地點確效的分段策略與法規申報（NDA/BLA/ANDA補件）的觸發條件。
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            TOPIC 2
-            
-
 ## Regulatory Considerations — 法規考量
 
         
@@ -3061,8 +2940,6 @@ Source: PDA PtC-15, pp. 10–16  |  Questions 2.1, 2.2, 3.1  |  Bilingual Ed
         
 
             
-
-### Original Text — PDA PtC-15 (pp. 14–15)
 
             
 
@@ -3431,8 +3308,6 @@ MMU 的理想願景正是類似的「標準化平台認證」——但現行法�
         
 
             
-
-### Original Text — PDA PtC-15 (pp. 15–16)
 
             
 
@@ -3826,8 +3701,6 @@ T+03 個月：第二個地點部署（Family Approach 減量確效）
         
 
             
-
-### Original Text — PDA PtC-15 (p. 16)
 
             
 
