@@ -23,9 +23,7 @@ Purpose
 As an addendum to PDA Technical Report No. 73: Prefilled Syringe User Requirements for Biotechnology
 Applications, this technical report provides recommendations on preparing the required documenta-
 tion of the device part of the PFS to facilitate obtaining an NB opinion.
-
-#### Table 5.1-1 in Section 5.0 provides GSPR guidance on the syringe components, syringe subassembly
-
+Table 5.1-1 in Section 5.0 provides GSPR guidance on the syringe components, syringe subassembly
 ready for filling, and the device part (see Figure 4.2-1). It systematically recommends the amount and
 depth of information needed for each relevant GSPR to support pharmaceutical companies in assem-
 bling the submission file to the NBs.
@@ -48,7 +46,7 @@ evaluated by the NBs, but the medicinal product (drug) is not.
 nents; a backstop can be added if needed.
 2
 
-#### Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.
+**Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.**
 
 Table 1.2-1
 Items In and Out of Scope of TR-73-2, by Category
@@ -86,23 +84,14 @@ Veterinary products4
 ATMPs as defined under Article 2(1)(d) of Regulation
 (EC) No 1394/20074,5
 Intravitreal6
-
-## 1 Dual-chamber PFS are out of scope because they are not typically produced in a staked needle configuration.
-
-## 2 Additional components and features are described in Section 5.3.
-
-## 3 Directive 2001/83/EC of the European Parliament and of the Council of 6 November 2001 on the Community Code Relating to Medicinal
-
+1	 Dual-chamber PFS are out of scope because they are not typically produced in a staked needle configuration.
+2	 Additional components and features are described in Section 5.3.
+3	 Directive 2001/83/EC of the European Parliament and of the Council of 6 November 2001 on the Community Code Relating to Medicinal
 Products for Human Use (MPD) (4).
-
-## 4 Veterinary medicines and advanced therapy medicinal products (ATMP) are out of scope because they are out of the scope of the MDR.
-
-## 5 Regulation (EC) No 1394/2007 of the European Parliament and of the Council of 13 November 2007 on advanced therapy medicinal
-
+4	 Veterinary medicines and advanced therapy medicinal products (ATMP) are out of scope because they are out of the scope of the MDR.
+5	 Regulation (EC) No 1394/2007 of the European Parliament and of the Council of 13 November 2007 on advanced therapy medicinal
 products
-
-## 6 Intravitreal PFS are out of scope because they are not typically produced in a staked needle configuration.
-
+6	 Intravitreal PFS are out of scope because they are not typically produced in a staked needle configuration.
 The components listed in Table 1.2-1 under the category of “Packaging” are out of scope of TR-73-2
 because the requirements are covered by Directive 2001/83/EC, which is the leading legal framework.
 However, in terms of the individual product-specific setup, related evidence (e.g., shipping studies,
@@ -418,9 +407,7 @@ Marketing Authorisation type
 Centralized application
 Marketing Authorisation procedure number
 EU/xxx/xxx
-
-## 1 Summary of Product Characteristics
-
+1	 Summary of Product Characteristics
 4.2
 Device
 This section of the submission file identifies the device part of the DDC, including its components and
@@ -428,7 +415,7 @@ subassemblies and a backstop, if needed. The device description may be phrased l
 The device is a single-dose disposable syringe with a staked needle. This device will
 be used to administer a medicinal product as stated in Table 4.2-1. Table 4.2-1 and
 
-#### Table 4.2-2 summarize the main device attributes and provide an overview of the
+**Table 4.2-2 summarize the main device attributes and provide an overview of the**
 
 intended use and target patient population of the device. The commercial version
 will consist of the components detailed in Figure 4.2-1 and Figure 4.2-2. As this is
@@ -469,16 +456,11 @@ to the MDR, issued by a notified body designated in accordance with that
 Regulation for the type of device in question.
 Notified Body
 [insert name of the NB]
-
-## 1 Throughout the development of a product, the product name may be adapted respectively. There is often a project name as well as several
-
+1	 Throughout the development of a product, the product name may be adapted respectively. There is often a project name as well as several
 other terms. Listing several naming options allows an external reviewer to recognize the device part and the integral medicinal product
 throughout the documentation submitted for assessment.
-
-## 2 MDA/MDN: Code given by EMA to reflect design and intended purpose of a device
-
-## 3 MDS/MDT: Code given by EMA to describe technologies or processes
-
+2	 MDA/MDN: Code given by EMA to reflect design and intended purpose of a device
+3	 MDS/MDT: Code given by EMA to describe technologies or processes
 Figure 4.2-2
 Syringe Subassembly Ready for Filling
 9
@@ -657,7 +639,7 @@ is stated in the context of GSPR 10 is emphasized to allow an assessment of the 
 A rationale for the choice of material may be added.
 The material description may be phrased like this:
 
-#### Table 4.5-1 contains information on the materials used to produce the components,
+**Table 4.5-1 contains information on the materials used to produce the components,**
 
 and information on their body–drug product interaction. Materials relevant in the con-
 text of GSPR 10, that is, materials or substances offering concentration limits or requir-
@@ -846,7 +828,7 @@ The supplier of the subassembly is responsible for incorporating available infor
 tive sourced components, for example, needles, adhesives, lubricants, needle shield, and coatings, in
 their information package.
 
-#### Table 4.7.1-1 contains an overview of relevant information as presented in TR-73 regarding the man-
+**Table 4.7.1-1 contains an overview of relevant information as presented in TR-73 regarding the man-**
 
 ufacturing of the different components and subassemblies.
 Table 4.7.1-1
@@ -876,12 +858,12 @@ Chapters 5, 6, 8, 10, 13
 Document XXX
 4.7.2	 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)
 
-#### Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and
+**Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and**
 
 packaging of the final DDC. Respective process validation summaries of all steps should be included.
 15
 
-#### Table 4.7.2-1	 Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)
+**Table 4.7.2-1	 Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)**
 
 Component Name/ Number
 Link to Relevant Information in TR-73
@@ -916,9 +898,7 @@ used. The applicant can either include them directly as they are or incorporate/
 the final submission file.
 5.1
 Supportive Documents Needed to Address GSPRs
-
-#### Table 5.1-1 provides a list of documents that should be provided to support the creation of Section 4.0.
-
+Table 5.1-1 provides a list of documents that should be provided to support the creation of Section 4.0.
 This list is neither exhaustive, nor are all the documents necessarily required. There should always
 be agreement between the applicant and the suppliers on the content, granularity, and format of the
 documents needed.
@@ -1045,13 +1025,9 @@ plan
 •	 Evidence for the implementation of a RMS, e.g., according to
 o	 ISO 14971, ICH Q9
 1	 See Glossary: incl. barrel, lubrication (if needed), needle and adhesive, NS/RNS, plunger stopper, plunger rod, backstop; suggestions for documentation on the rigid part of the RNS, plunger rod and backstop are provided in Section 5.3.
-
-## 2 Incl. lubrication (if existing), needle and adhesive, NS/RNS (for supportive documentation on the soft part of the NS, please use column 3).
-
-## 3 Incl. lubrication, coating and/or lamination
-
-## 4 For addressing Quality Management System considerations for Device Parts, a reference to a supplier’s ISO 15378 and/or ISO 13485 certification can be added.
-
+2	 Incl. lubrication (if existing), needle and adhesive, NS/RNS (for supportive documentation on the soft part of the NS, please use column 3).
+3	 Incl. lubrication, coating and/or lamination
+4	 For addressing Quality Management System considerations for Device Parts, a reference to a supplier’s ISO 15378 and/or ISO 13485 certification can be added.
 18
 GSPR
 Scope
@@ -1282,9 +1258,7 @@ o	 ISO 9626
 o	 ISO 7864
 o	 ISO 15510
 (Table 5.1-1 Continued)
-
-## 5 Still in draft at the time this document was published.
-
+5	 Still in draft at the time this document was published.
 21
 GSPR
 Scope
@@ -1833,9 +1807,7 @@ Fewer GSPRs require documentation on the plunger rod, the rigid part of the RNS 
 flange extension/backstop. But, as they belong to the final DDC and contribute to the overall safety and
 performance, they still need to be assessed and included in the submission file. To preserve the clarity
 and readability of the GSPR table (Table 5.1-1), they are addressed separately in this section.
-
-#### Table 5.3-1 provides examples of requirements that should be addressed and can be supported using
-
+Table 5.3-1 provides examples of requirements that should be addressed and can be supported using
 supplier documentation, for example, general statements, compliance certificates, data sheets, and test
 reports.
 30
@@ -1886,9 +1858,7 @@ If a requirement contains several subrequirements, make sure to justify which on
 Use wording that aligns with the wording of the requirement (same terminology)
 •
 Be precise and keep it simple
-
-#### Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.
-
+Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.
 32
 Table 5.5-1
 Nonapplicable GSPRs and Suggested Justifications
@@ -1956,9 +1926,7 @@ in accordance with Section 10.4.5.
 The device in scope does not contain product substances listed in MDR Annex I, 10.4.
 1	 Immediate labeling is out of scope of this technical report (see Section 1.2) as the requirements are covered by Directive 2001/83/EC as the leading legal framework. However, relevant performance and safety input from
 design development activities of the device part on user-related labeling should be considered.
-
-## 2 Potential required visual inspection before use is specified in the IFU and provided in the application to CAs (see Section 1.2).
-
+2	 Potential required visual inspection before use is specified in the IFU and provided in the application to CAs (see Section 1.2).
 33
 6.0
 References
@@ -2014,9 +1982,7 @@ compliance-research-and-development/
 good-manufacturing-practice/guidance-good-
 manufacturing-practice-and-good-distribu-
 tion-practice-questions-and-answers (accessed
-
-## 19 Jan 2024).
-
+19 Jan 2024).
 9.	 Parenteral Drug Association. Technical
 Report No. 73: Prefilled Syringe User Require-
 ments for Biotechnology Applications; PDA:
@@ -2204,9 +2170,7 @@ Jacqueline Veivia-Panter, Biocentriq
 Vudathala, Gopi, Incyte
 Kelly Waldron, ValSource
 Bethesda Towers
-
-## 4350 East West Highway
-
+4350 East West Highway
 Suite 600
 Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900

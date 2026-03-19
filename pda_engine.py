@@ -190,43 +190,79 @@ def source_to_markdown(
 
             # Detect section headings — must start with a structured section
             # number (e.g., "3.0", "6.6.1") followed by a capitalized title.
-            # Reject bare decimals like "0.2 µm" or mid-sentence references
-            # like "5.4.1 for additional information)."
+            #
+            # REJECT these false positives:
+            #   - Bare decimals: "0.2 µm", "0.45 μm"
+            #   - Parenthetical refs: "5.4.1 for additional information)."
+            #   - Units/values: "10 L/min", "35 L", "15 PSIG"
+            #   - Footnotes: "1 The PIC/S GMP...", "1 Author's note:"
+            #   - TOC lines with dots: "Table 3.3-1 Example ... 15"
+            #   - Sentences (lowercase after first few words)
             m = HEADING_RE.match(stripped)
-            if (
-                m
-                and len(stripped) < 200  # headings aren't paragraph-length
-                and re.match(r'[A-Z]', m.group(2).strip())  # title starts uppercase
-                and not m.group(2).strip().endswith(')')  # not a parenthetical ref
-                and int(m.group(1).split('.')[0]) > 0  # first part > 0 (skip "0.2 µm")
-            ):
+            if m:
                 sec_num = m.group(1)
                 sec_title = m.group(2).strip()
-                depth = _heading_depth(sec_num)
-                lines.append("")
-                lines.append(f"{'#' * depth} {sec_num} {sec_title}")
-                lines.append("")
-                continue
+                first_part = int(sec_num.split('.')[0])
+                # Must have at least one dot (e.g., "1.0", "3.1") — bare "1", "10" are not headings
+                has_dot = '.' in sec_num
+                # Title must start with uppercase letter
+                starts_upper = bool(re.match(r'[A-Z]', sec_title))
+                # Not a parenthetical cross-reference
+                not_paren = not sec_title.endswith(')')
+                # Not a TOC entry (contains "..." or trailing page number)
+                not_toc = '...' not in stripped and not re.search(r'\.\s*\d+\s*$', stripped)
+                # Not a unit/value line (title is just a unit like "L/min", "PSI", "PSIG", "L")
+                # Units are typically short (1-5 chars), all caps or with / symbol
+                first_word = sec_title.split()[0] if sec_title else ''
+                UNIT_WORDS = {'L', 'PSI', 'PSIG', 'KG', 'ML', 'MM', 'CM', 'HR', 'MIN'}
+                not_unit = first_word not in UNIT_WORDS and not re.match(r'^[A-Z][a-z]*/[A-Za-z²³]+$', first_word)
+                # Reasonable length
+                not_long = len(stripped) < 150
 
-            # Detect appendix headings
+                if (
+                    has_dot
+                    and first_part > 0
+                    and starts_upper
+                    and not_paren
+                    and not_toc
+                    and not_unit
+                    and not_long
+                ):
+                    depth = _heading_depth(sec_num)
+                    lines.append("")
+                    lines.append(f"{'#' * depth} {sec_num} {sec_title}")
+                    lines.append("")
+                    continue
+
+            # Detect appendix headings — but not cross-references like
+            # "Appendix III: presents example cases..."
             m = APPENDIX_RE.match(stripped)
-            if m:
+            if (
+                m
+                and '...' not in stripped
+                and not re.search(r'\b(presents|provides|lists|shows|describes|see)\b', m.group(2), re.I)
+                and len(stripped) < 120
+            ):
                 lines.append("")
                 lines.append(f"## {m.group(1)}: {m.group(2).strip()}")
                 lines.append("")
                 continue
 
-            # Detect table headings
+            # Detect table/figure caption lines — format as bold, NOT headings
+            # Only match if it's a short caption, not a sentence about a table
             m = TABLE_HEADING_RE.match(stripped)
-            if m:
+            if (
+                m
+                and '...' not in stripped  # not a TOC entry
+                and not re.search(r'\b(provides|lists|shows|presents|describes|outlines|summarizes)\b', stripped, re.I)
+            ):
                 lines.append("")
-                lines.append(f"#### {stripped}")
+                lines.append(f"**{stripped}**")
                 lines.append("")
                 continue
 
-            # Detect figure headings
             m = FIGURE_HEADING_RE.match(stripped)
-            if m:
+            if m and '...' not in stripped:
                 lines.append("")
                 lines.append(f"*[{stripped}]*")
                 lines.append("")

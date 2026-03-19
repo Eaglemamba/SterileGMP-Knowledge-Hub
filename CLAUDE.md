@@ -177,3 +177,19 @@ Note: `pda-guide-no1` has no source text — its MD is generated via HTML-stripp
 
 ### Knowledge MDs — English Only
 Knowledge MDs in `knowledge/` must contain **only original English text** from the PDF. No Chinese translations or commentary. The `pda_engine.py md` command generates these from `source/*.txt` files. The `merge_engine.generate_markdown()` fallback strips CJK from HTML sections.
+
+### Heading Detection Rules (`pda_engine.py`)
+When generating MDs from source text, `source_to_markdown()` auto-detects section headings. A line like `3.1 Pore Size Rating` becomes `### 3.1 Pore Size Rating`. The rules reject false positives:
+
+| Pattern | Example | Action |
+|---------|---------|--------|
+| Must have a dot in number | `1.0`, `3.1.2` = valid; bare `1`, `10` = rejected |
+| First number > 0 | `0.2 µm`, `0.45 μm` = rejected |
+| Title starts uppercase | `3.1 pore size` = rejected |
+| Not a TOC entry | Lines with `...` or trailing page number = rejected |
+| Not a unit/value | `10 L/min`, `35 L`, `15 PSIG` = rejected |
+| Not a sentence | `Table 4.2-2 provides examples...` = rejected |
+| Not a cross-reference | `5.4.1 for additional information).` = rejected |
+| Length < 150 chars | Paragraph-length lines = rejected |
+
+If a new PDF introduces false headings, update `UNIT_WORDS` or the rejection rules in `pda_engine.py`'s `source_to_markdown()` function, then run `python pda_engine.py md --all` to regenerate.

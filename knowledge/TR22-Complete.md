@@ -3,97 +3,82 @@
 vii
 Figures and Tables Index
 
-#### Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling
+**Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling**
 
 Equipment ....................................................................................................................................................... 28
 
-#### Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with
+**Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with**
 
 Supplementary Liquid-Fill Capability ......................................................................................................... 29
 
-#### Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-Line
+**Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-Line**
 
 Placebo Powder Fill ....................................................................................................................................... 29
+Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill .................... 30
 
-#### Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill .................... 30
-
-#### Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and
+**Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and**
 
 Reconstituted to a Liquid Form After the Fill ........................................................................................... 30
+Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics ........... 47
+Figure 8.0-1 APS Personnel Qualification Criteria .................................................................................. 59
+Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist .................................... 74
+Table 15.1-1 Applying Risk-Based APS Frequency ................................................................................ 83
 
-#### Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics ........... 47
-
-*[Figure 8.0-1 APS Personnel Qualification Criteria .................................................................................. 59]*
-
-#### Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist .................................... 74
-
-#### Table 15.1-1 Applying Risk-Based APS Frequency ................................................................................ 83
-
-#### Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk
+**Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk**
 
 Evaluation & Management Model .............................................................................................................. 87
 
-#### Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention
+**Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention**
 
 Risk Level (Example 3) ................................................................................................................................... 91
 
-#### Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level
+**Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level**
 
 (Example 3) ...................................................................................................................................................... 92
 
-#### Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access
+**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access**
 
 Barrier Systems without Built-In In-Process Control (Example 3) ....................................................... 92
 
-#### Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention
+**Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention**
 
 Risk Level (Example 4) ................................................................................................................................... 95
 
-#### Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level
+**Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level**
 
 (Example 4) ...................................................................................................................................................... 96
 
-#### Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted
+**Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted**
 
 Access Barrier Systems without Built-In In-Process Control (Example 4) ......................................... 96
 
-#### Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case
+**Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case**
 
 Vial) ................................................................................................................................................................... 98
 
-#### Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different Products/Dosage
+**Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different Products/Dosage**
 
 Forms (Worst-Case Vial) ............................................................................................................................... 98
 
-#### Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to
+**Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to**
 
 Fill Different Dosage Forms ....................................................................................................................... 100
-
-*[Figure 15.7-1 Initial APS Validation: Conservative Approach ............................................................ 103]*
-
-*[Figure 15.7-2 Initial APS Validation: Risk-Based Approach ................................................................ 103]*
-
-*[Figure 15.7-3 Periodic APS Revalidation Setup Once the Full-Validation Criteria are Met ........ 105]*
-
+Figure 15.7-1 Initial APS Validation: Conservative Approach ............................................................ 103
+Figure 15.7-2 Initial APS Validation: Risk-Based Approach ................................................................ 103
+Figure 15.7-3 Periodic APS Revalidation Setup Once the Full-Validation Criteria are Met ........ 105
 viii
 
 *[Figure 15.7-4 Process Flow Diagram of the Major Unit Operations of the Manufacturing Process]*
 
  ......................................................................................................................................................................... 106
+Figure 15.7-5 Aseptic Risk Evaluation Model – Steps in the Risk Assessment Process ............... 107
+Table 15.7-1 Definition of the Aseptic Manipulation Factors ............................................................ 108
+Table 15.7-2 Identification of the Risk Ranking for Each of the Factors ......................................... 108
+Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class ................................. 109
+Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score ................................ 109
+Table 15.7-5 Action Level Table based on Overall Risk Score ........................................................... 110
 
-*[Figure 15.7-5 Aseptic Risk Evaluation Model – Steps in the Risk Assessment Process ............... 107]*
-
-#### Table 15.7-1 Definition of the Aseptic Manipulation Factors ............................................................ 108
-
-#### Table 15.7-2 Identification of the Risk Ranking for Each of the Factors ......................................... 108
-
-#### Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class ................................. 109
-
-#### Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score ................................ 109
-
-#### Table 15.7-5 Action Level Table based on Overall Risk Score ........................................................... 110
-
-#### Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation
+**Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation**
 
 of Viral Vector Transduction) .................................................................................................................... 111
 
@@ -135,8 +120,7 @@ appropriate process design, equipment qualification, adherence to an adequate ph
 system, well-defined process controls, process monitoring and data evaluation, personnel training and
 includes the APS. The APS alone should not be considered as the primary means to validate the aseptic
 
-## 1 The PIC/S GMP Annex 1 is identical to the EU Annex 1 and, hereafter, EU Annex 1 means EU-PIC/S Annex 1.
-
+1 The PIC/S GMP Annex 1 is identical to the EU Annex 1 and, hereafter, EU Annex 1 means EU-PIC/S Annex 1.
 2
 process or aspects of the aseptic process; it is simply a final demonstration of the sum of the controls. The
 effectiveness of the aseptic process should be determined through process design, adherence to the
@@ -1509,7 +1493,7 @@ adaptation to the process when contrasted with the modifications necessary for o
 the APS is essentially the same as that described in Section 4.2, which notes the importance of integrating
 all the fill-line activities during the simulation.
 
-#### Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling
+**Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling**
 
 Equipment
 Advantages
@@ -1547,7 +1531,7 @@ machines is not equivalent to conventional liquid fillers and is used only in AP
 filling machine could be used for both the liquid- and solid-filling operation during APS.
 29
 
-#### Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler
+**Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler**
 
 with Supplementary Liquid-Fill Capability
 Advantages
@@ -1589,7 +1573,7 @@ and a liquid are combined, then the dispersion and dissolution of powder through
 confirmed. This can be achieved manually by inverting the container several times during the pre-inspection
 of containers prior to incubation.
 
-#### Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-
+**Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-**
 
 Line Placebo Powder Fill
 Advantages
@@ -1619,7 +1603,7 @@ be confirmed. This can be achieved manually by inverting the container several t
 inspection of containers prior to incubation.
 30
 
-#### Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill
+**Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill**
 
 Advantages
 Disadvantages
@@ -1651,7 +1635,7 @@ inspection after incubation.
 In this method, dry media is filled into the units using a powder filler. Sterile water is added under Grade A
 conditions; the main advantages and disadvantages of this are listed in Table 4.2.5.5-1.
 
-#### Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and
+**Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and**
 
 Reconstituted to a Liquid Form After the Fill
 Advantages
@@ -2429,7 +2413,7 @@ to assess those process variables. Examples of containers and closures that may 
 are outlined in Table 7.5.1-1.
 47
 
-#### Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics
+**Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics**
 
 Container-Closure Characteristic
 Example of Potential Risk
@@ -3638,7 +3622,7 @@ reconstitution and growth-promotion prior to use in an APS.
 
 The activities in a typical APS generally occur in the order presented in Table 14.0-1.
 
-#### Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist
+**Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist**
 
 Activity
 Additional Information*
@@ -3989,7 +3973,7 @@ obtained from the example. In other cases, when the risk is low, such as when us
 frequency of shift simulation can be justified.
 83
 
-#### Table 15.1-1 Applying Risk-Based APS Frequency
+**Table 15.1-1 Applying Risk-Based APS Frequency**
 
 Risk Factor
 Risk Level (Score)
@@ -4071,9 +4055,7 @@ High: >5 years
 Environmental Monitoring
 Compliance History
 >1 OOL* per month
-
-## 1 OOL every 1 to 6
-
+1 OOL every 1 to 6
 months
 <1 OOL every 6 months
 
@@ -4081,9 +4063,7 @@ Process Compliance History
 APS Failure/ Sterility Test
 Failures in Past 2 Years
 >1 OOS* per 6 months
-
-## 1 OOS every 6 to 12
-
+1 OOS every 6 to 12
 months
 <1 OOS every 12 months
 
@@ -4140,17 +4120,11 @@ with no human
 intervention and with no
 history of OOS results.
 N/A
-
-## 1 Author’s note: Example: A company historically aseptically filling liquid products using stainless steel systems and recently deciding to use single use
-
+1 Author’s note: Example: A company historically aseptically filling liquid products using stainless steel systems and recently deciding to use single use
 systems for the first time in their facility.
-
-## 2 Author’s note: The process-frequency factor risk-scoring measures the level of proficiency that operators are expected to have with the process, given
-
+2 Author’s note: The process-frequency factor risk-scoring measures the level of proficiency that operators are expected to have with the process, given
 how often it is being executed.
-
-## 3 Author’s note: Reflects the overall operator proficiency in general aseptic processes (not necessarily just this one under consideration).
-
+3 Author’s note: Reflects the overall operator proficiency in general aseptic processes (not necessarily just this one under consideration).
 * OOL = Out-of-Limit
 * OOS = Out-of-Specification
 While this example focuses on results above action limit, similar considerations should be given to significant negative trends of results above alert level.
@@ -4170,7 +4144,7 @@ number of interventions to be included in the APS are defined based on the prece
 commercial production, and takes into consideration the new risk level of each intervention based on the
 IREM.
 
-#### Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine
+**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine**
 
 the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual
 aseptic manipulations performed during regular aseptic operations (during online filtration, filling,
@@ -4181,7 +4155,7 @@ design aspects such as intervention location, tools used, and/or air flow effect
 establishing a grouping logic.
 87
 
-#### Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk Evaluation & Management Model
+**Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk Evaluation & Management Model**
 
 Line Type – Aseptic Vial Filling Line with open Restricted Access Barrier System placed in Grade B external environment
 No.
@@ -4541,9 +4515,7 @@ mitigated
 risk level.
 Note: Other types of interventions that can be evaluated utilizing a similar approach are, for example, stopper-track minimum accumulation, loading of the stopper in the hopper through a rapid transfer port (RTP), an object falling
 on the in-feed turntable filling machine, and an empty-run machine-run check for vial transfer.
-
-## 1 Author’s note: This Intervention simulation is eliminated after mitigation actions since this is no longer done as a part of the aseptic process in regular production.
-
+1 Author’s note: This Intervention simulation is eliminated after mitigation actions since this is no longer done as a part of the aseptic process in regular production.
 2 Author’s note: The risk is rated low in this particular case. However, the risk level can increase depending on the frequency and extent of vial breakage and the procedure adopted to discard the adjacent empty vials.
 3 Author’s note: During the evaluation of this example, it was suggested that the installation of a physical barrier and removal of all vials in the same sector be considered as a mitigation to prevent the risk of glass particles and other
 contamination from contacting open vials or other product-contact surfaces.
@@ -4565,7 +4537,7 @@ and the process/product. The intent is not to provide examples of specific scori
 the tool can be used.
 91
 
-#### Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 3)
+**Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 3)**
 
 Intervention Risk Criteria
 Risk Level (Score)
@@ -4626,7 +4598,7 @@ Total
 industry.
 92
 
-#### Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 3)
+**Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 3)**
 
 Overall Intervention Risk Level
 Recommended Frequency of Simulation
@@ -4642,7 +4614,7 @@ Yearly
 May be less than the number in routine production
 *Biannual: twice a year (approximately every 6 months)
 
-#### Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access Barrier Systems without Built-In In-
+**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access Barrier Systems without Built-In In-**
 
 Process Control (Example 3)
 No.
@@ -4810,7 +4782,7 @@ and the process/product. The intent is not to provide examples of specific scori
 the tool can be used.
 95
 
-#### Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 4)
+**Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 4)**
 
 Intervention Risk Criteria
 Risk Level (Score)
@@ -4864,10 +4836,8 @@ Total
 11-20
 <11
 
-## 1 Author’s note: Frequency may or may not be a risk factor. For this example, it was chosen to be a factor of consideration.
-
-## 2 Authors’ note: Using oRABS does not mean that all risks are the same since very few interventions are open-door interventions (e.g., during machine
-
+1 Author’s note: Frequency may or may not be a risk factor. For this example, it was chosen to be a factor of consideration.
+2 Authors’ note: Using oRABS does not mean that all risks are the same since very few interventions are open-door interventions (e.g., during machine
 set-up) and they cannot have the same risk level of other interventions. Even if the assumption is that all interventions will be closed door interventions,
 this risk factor his has to be considered because it will lead to the need for different frequencies of the same intervention when done through oRABs
 than the frequency needed when conducted using another line with an isolator.
@@ -4875,7 +4845,7 @@ than the frequency needed when conducted using another line with an isolator.
 industry.
 96
 
-#### Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 4)
+**Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 4)**
 
 Overall Intervention Risk Level
 Recommended Frequency of Simulation
@@ -4891,7 +4861,7 @@ Yearly
 May be less than the number in routine production
 *Biannual: twice a year (approximately every 6 months)
 
-#### Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted Access Barrier Systems without Built-In
+**Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted Access Barrier Systems without Built-In**
 
 In-Process Control (Example 4)
 No.
@@ -5027,7 +4997,7 @@ and 10 mL vials will be filled and none of them is assessed to be a worst-case, 
 each of minimum and maximum vial sizes should be done, in addition to at least one run from each other
 vial size (Table 15.5-1).
 
-#### Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-
+**Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-**
 
 Case Vial)
 Vial Amount (mL)
@@ -5045,7 +5015,7 @@ is a worst-case (e.g., 10 mL), at least three (3) runs of this vial size plus at
 vial sizes should be done in the initial validation study (Table 15.5-2) (see Section 7.5.1.1 for additional
 information on bracketing criteria).
 
-#### Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different
+**Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different**
 
 Products/Dosage Forms (Worst-Case Vial)
 Vial Amount (mL)
@@ -5079,7 +5049,7 @@ differences in process steps were considered with other factors fixed. When appl
 factors should also be considered that could impact aseptic process and may necessitate more APS runs.
 100
 
-#### Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to Fill Different Dosage Forms
+**Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to Fill Different Dosage Forms**
 
 Process Step
 Dosage Forms Manufactured at Line
@@ -5385,7 +5355,7 @@ Each of the individual aseptic steps (i.e., manipulations) is rated based on thr
 Duration, and Proximity - as defined in Table 15.7-1.
 108
 
-#### Table 15.7-1 Definition of the Aseptic Manipulation Factors
+**Table 15.7-1 Definition of the Aseptic Manipulation Factors**
 
 Factor
 Definition
@@ -5405,7 +5375,7 @@ aseptic procedure, it is first determined whether first air is broken or not. In
 sterile entity or with a nonsterile entity is determined.
 The relative ratings for each of these three factors, based on the input from this AREM Team, were defined as shown in Table 15.7-2.
 
-#### Table 15.7-2 Identification of the Risk Ranking for Each of the Factors
+**Table 15.7-2 Identification of the Risk Ranking for Each of the Factors**
 
 Risk
 Ranking
@@ -5434,7 +5404,7 @@ Step 4
 Upon determining the risk-ranking of each factor for an aseptic procedure, a preliminary matrix was used to determine the initial Risk Class, as shown
 in Table 15.7-3.
 
-#### Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class
+**Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class**
 
 Duration
 Low
@@ -5455,7 +5425,7 @@ Risk Class 2
 A secondary matrix is then used to determine the overall risk score using the previously determined Risk Class and the proximity, as shown in Table
 15.7-4.
 
-#### Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score
+**Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score**
 
 Proximity
 Low
@@ -5479,7 +5449,7 @@ Step 5
 Upon the determination of the overall risk score, the aseptic procedures are ranked by risk, and the following actions are to be taken, as shown in
 Table 15.7-5.
 
-#### Table 15.7-5 Action Level Table based on Overall Risk Score
+**Table 15.7-5 Action Level Table based on Overall Risk Score**
 
 Risk Ranking
 Action
@@ -5500,7 +5470,7 @@ purposes of gene transfer is provided in Table 15.7-6.
 
 111
 
-#### Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation of Viral Vector Transduction)
+**Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation of Viral Vector Transduction)**
 
 Description of
 Aseptic Steps/

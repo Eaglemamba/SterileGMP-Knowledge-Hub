@@ -507,7 +507,7 @@ Measurements of pressure and time are necessary for the determination of Vs beca
 capability of the filter membrane is related to the flow Vs, as shown in Equation 14. Additionally, the
 upstream volume must be known and the temperature in the upstream volume must be constant.
 
-#### Table 11.5-1 Nomenclature for Symbols Used in Equations 10-14
+**Table 11.5-1 Nomenclature for Symbols Used in Equations 10-14**
 
 Symbol Meaning Symbol Meaning
 
@@ -548,9 +548,9 @@ When investigating a manual integrity test failure, the following items should b
 • Inappropriate wetting medium (e.g., solvent instead of water)
 • Incorrect filter pore size rating
 
-#### Table 12.0-1 lists items for consideration when investigating an automatic device integrity-test failure.
+Table 12.0-1 lists items for consideration when investigating an automatic device integrity-test failure.
 
-#### Table 12.0-1 Automatic Device Integrity Test Troubleshooting Guide
+**Table 12.0-1 Automatic Device Integrity Test Troubleshooting Guide**
 
 Issue Possible Cause
 
@@ -1108,7 +1108,7 @@ process-specific validation, only then should a filter be described as a “ster
 Due to the important nuances of these terms, recommended uses of these terms are summarized in Table
 3.1-1.
 
-#### Table 3.1-1 Recommended Terminology Related to Sterilizing-Grade Filters
+**Table 3.1-1 Recommended Terminology Related to Sterilizing-Grade Filters**
 
 Term Definition
 
@@ -1267,7 +1267,7 @@ supports, but does not replace, performance qualification as a part of process v
 filter user. Table 4.1-1 lists qualification and lot-release tests on membranes and devices commonly
 performed by manufacturers and validated by filter users.
 
-#### Table 4.1-1 Qualification and Validation Recommendations
+**Table 4.1-1 Qualification and Validation Recommendations**
 
 Criteria Filter
 User
@@ -1641,7 +1641,7 @@ development and revalidation of the sterilizing-filtration process as the condit
 lifecycle. Table 5.1.2-1 shows a list of potential factors to consider during the process design phase that can
 help determine operational ranges to study.
 
-#### Table 5.1.2-1 Factors to Consider When Developing Operational Ranges for Study During
+**Table 5.1.2-1 Factors to Consider When Developing Operational Ranges for Study During**
 
 Sterilizing-Filtration Process Design and Development
 
@@ -1717,7 +1717,7 @@ Filter flow rate is affected by such parameters as the EFA, membrane porosity, p
 differential pressure, flow path design, fluid viscosity, and temperature. Table 5.2-1 shows the relationships
 between flow rate and a common list of process parameters.
 
-#### Table 5.2-1 Common Factors Affecting Flow Rate
+**Table 5.2-1 Common Factors Affecting Flow Rate**
 
 Higher Flow Rate Lower Flow Rate
 
@@ -1831,7 +1831,7 @@ Appropriate scale-down studies can be used to determine these behaviors as outli
 the case where no defined maximum filter capacity can be determined, the maximum volume that will be
 filtered should be specified so it can be covered during the filter-validation studies (see Section 6.8).
 
-#### Table 5.3-1 Factors Affecting Throughput
+**Table 5.3-1 Factors Affecting Throughput**
 
 Higher Total Throughput Lower Total Throughput
 
@@ -2256,9 +2256,9 @@ The purpose of performing process-specific validation testing for final steriliz
 1. To assess any impact the filter may have on the quality of the final drug product.
 2. To assess any impact the drug product may have on the performance of the filter.
 
-#### Table 6.2-1 provides a summary of typical testing that is in scope for process-specific filter validation.
+Table 6.2-1 provides a summary of typical testing that is in scope for process-specific filter validation.
 
-#### Table 6.2-1 Test Types for Process-Specific Filter Validation
+**Table 6.2-1 Test Types for Process-Specific Filter Validation**
 
 Objective Test Type Purpose
 
@@ -2338,7 +2338,7 @@ elect to have this performed as part of the filter validation package. Considera
 conditions to assess potential adsorption are shown in Table 6.4-1, but the parameters selected for testing
 should be based on risk assessment.
 
-#### Table 6.4-1 Considerations for Worst-Case Test Parameters to Assess Potential Adsorption
+**Table 6.4-1 Considerations for Worst-Case Test Parameters to Assess Potential Adsorption**
 
 Description Worst Case Rationale
 
@@ -2401,7 +2401,7 @@ solution at a given temperature for a defined amount of time. Extractables may a
 recirculating or reciprocating the extraction solution through the filter for a given amount of time under a
 defined temperature. The extract is collected and tested for the presence of filter extractables.
 
-#### Table 6.5-1 Worst-Case Parameters for Extractables/Leachables Testing Selection Factors
+**Table 6.5-1 Worst-Case Parameters for Extractables/Leachables Testing Selection Factors**
 
 Description Parameters WorstCaseRationaleProcess
 Fluid Product Type Solvents Increased potential for extractables
@@ -2614,7 +2614,7 @@ short-duration bacterial retention studies), a rationale should be provided to j
 post-input viability sample. The same culture medium should also be used to determine any recovery of B.
 diminuta downstream of the test and control filters.
 
-#### 6.6.4 Viability/Filter Flush Qualification Testing Procedure and Protocol Development
+6.6.4 Viability/Filter Flush Qualification Testing Procedure and Protocol Development
 
 Prior to completing the bacterial retention study, the test organism's viability should be verified by direct
 inoculation into the carrier fluid (ideally, product or surrogate fluid, if justified) in order to determine the
@@ -2755,11 +2755,10 @@ likelihood of operating the filtration process at the PAR. Product recovery by b
 at a higher pressure than maximum pressure during normal filtration and should be simulated at the end of
 the bacterial retention study.
 
-#### Table 6.6.6-1 lists examples of factors to consider when selecting worst-case parameters for processspecific
-
+Table 6.6.6-1 lists examples of factors to consider when selecting worst-case parameters for processspecific
 bacterial retention studies.
 
-#### Table 6.6.6-1 Considerations for Selection of Bacterial Retention Study Parameters
+**Table 6.6.6-1 Considerations for Selection of Bacterial Retention Study Parameters**
 
 Description Parameters Worst-Case Rationale
 
@@ -2958,7 +2957,7 @@ contact time.
 
 A summary of worst-case conditions for conducting compatibility testing is shown in Table 6.8-1.
 
-#### Table 6.8-1 Worst-Case Considerations for Compatibility Testing
+**Table 6.8-1 Worst-Case Considerations for Compatibility Testing**
 
 Description Worst-Case Rationale
 
@@ -3143,7 +3142,7 @@ The exact cutoffs for small, medium, and large surface area depend upon the attr
 being tested, the wetting fluid used, and the capability of the automated integrity tester being used, but
 general guidance is provided in Table 7.1.1-1.
 
-#### Table 7.1.1-1 Suggested Integrity Test Methods Based on Filtration Surface Area
+**Table 7.1.1-1 Suggested Integrity Test Methods Based on Filtration Surface Area**
 
 Surface Area of Filter Media being Integrity
 Tested*
