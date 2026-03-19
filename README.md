@@ -1,66 +1,64 @@
-# PDA Educational Material Generator - Claude Code Kit
+# PDA Technical Report Knowledge
 
-## Quick Start
+A structured knowledge base of PDA (Parenteral Drug Association) technical reports, combining a human-readable HTML dashboard with a chatbot-ready Markdown knowledge base.
 
-### 1. Setup
+## What's in Here
+
+| Layer | Format | Purpose |
+|-------|--------|---------|
+| Section HTMLs | `*/sections/*.html` | Source content — bilingual, styled, educational |
+| Merged documents | `*/output/*-Complete.html` | Human reading — sticky nav, bilingual layout |
+| Knowledge base | `knowledge/*.md` | Chatbot Q&A — clean Markdown, searchable |
+| Dashboard | `index.html` | Browse all reports, keyword search |
+| Skill | `.claude/commands/pda-ask.md` | `/pda-ask` chatbot via Claude Code |
+
+## Reports Covered (12 total)
+
+| Report | Topic |
+|--------|-------|
+| PDA Guide No.1 | Filling Machine Design and Operation |
+| PDA TR22 | Process Simulation for Aseptically Filled Products |
+| PDA TR26 | Sterilizing Filtration of Liquids |
+| PDA TR52 | Good Distribution Practices (GDPs) |
+| PDA TR60 | Process Validation — A Lifecycle Approach |
+| PDA TR66 | Single-Use Systems in Pharmaceutical Manufacturing |
+| PDA TR73 | Prefilled Syringe (Sections 12–18) |
+| PDA TR73-2 | MDR Annex I for Staked Needle Systems |
+| PDA TR90 | Contamination Control Strategy (CCS) |
+| PDA PtC-12 | Restricted Access Barrier Systems (RABS) |
+| PDA PtC-14 | Manufacturing of ATMPs — Facility Design |
+| PDA PtC-15 | Mobile Manufacturing |
+
+## Using the Chatbot Skill
+
+In Claude Code, from the repo directory:
+
+```
+/pda-ask What are the filter integrity test requirements in TR26?
+/pda-ask 無菌模擬充填的判定標準是什麼？
+/pda-ask How does RABS APS differ from standard media fill?
+```
+
+The skill reads `knowledge/INDEX.md` to route your question to the right report(s), then greps the relevant Markdown for precise content. Uses your Claude Max plan — no API key needed.
+
+## Adding a New Report
+
 ```bash
-# Place your PDF in source/
-cp PDA-Tech-Guide-No1-Aseptic-Filling-2025.pdf source/
+# 1. Scaffold folder
+python3 new_report.py
 
-# Place extracted figure images in figures/
-# Naming: fig-{section}.{subsection}-{number}.png
-# Example: fig-1.1-1.png, fig-2.1.2-2.png
+# 2. Extract PDF text
+python3 extract_pdf.py "Raw pdfs/TRXX.pdf" TRXX/source/
+
+# 3. Generate section HTMLs using PROMPT.md template
+
+# 4. Merge (auto-generates HTML + knowledge/TRXX-Complete.md)
+python3 TRXX/merge.py
+
+# 5. Update index.html — document card, sourceColors, tagCls
+# 6. Update knowledge/INDEX.md — new report block, routing table, cross-report topics
+# 7. Commit and push
+git add TRXX/ index.html knowledge/ && git commit -m "Add TRXX: [title]"
 ```
 
-### 2. Run with Claude Code
-```bash
-# Open Claude Code in this directory
-claude
-
-# Then tell Claude Code:
-# "Read PROMPT.md and process all sections of the PDA guide.
-#  Start with section 1, create each HTML file, save to sections/,
-#  then run merge.py when all sections are complete."
-```
-
-### 3. Process a single section
-```bash
-# Tell Claude Code:
-# "Read PROMPT.md. Process only Section 5 (Dose Control, p101-p114).
-#  Check figures/ for any fig-5.* images. Save to sections/section-05-dose.html"
-```
-
-### 4. Merge into final document
-```bash
-python3 merge.py
-# Output: output/PDA-Guide-Complete.html
-```
-
-### 5. Merge with custom paths
-```bash
-python3 merge.py --sections-dir ./sections --css ./template.css --output ./output/PDA-Guide-Complete.html
-```
-
-## File Overview
-
-| File | Purpose |
-|------|---------|
-| `PROMPT.md` | Master instructions - Claude Code reads this first |
-| `template.css` | Shared CSS stylesheet (18KB) |
-| `merge.py` | Combines section HTMLs into TopNav document |
-| `sections/` | Individual section HTML output directory |
-| `figures/` | Place extracted figure images here |
-| `source/` | Place the PDA PDF here |
-| `output/` | Final merged HTML output |
-
-## Figure Naming Convention
-
-```
-fig-{major}.{minor}-{number}.png
-
-Examples:
-  fig-1.1-1.png     -> Figure 1.1-1 (Phase-Appropriate Approach)
-  fig-2.1.2-2.png   -> Figure 2.1.2-2 (External Tubing Wear)
-  fig-5.2-1.png     -> Figure 5.2-1 (Statistical IPC)
-  fig-7.3.2-1.png   -> Figure 7.3.2-1 (Elastomer Insertion Methods)
-```
+See `CLAUDE.md` for detailed rules, naming conventions, and known pitfalls.
