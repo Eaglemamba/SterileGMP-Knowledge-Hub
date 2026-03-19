@@ -307,21 +307,62 @@ def source_to_markdown(
                 all_html_tables.extend(tables_by_file[fn])
     html_table_cursor = 0  # next unlabeled table to use
 
+    # Regex to detect garbled math Unicode from PDF extraction
+    # Mathematical Italic/Bold chars in U+1D400-U+1D7FF range
+    MATH_UNICODE_RE = re.compile(r'[\U0001d400-\U0001d7ff]')
+
+    # Pre-build HTML-stripped content per HTML file for equation fallback
+    from merge_engine import html_to_markdown, _filter_original_only
+    html_fallback_by_file = {}
+    sections_html_dir = REPO_ROOT / report_id / "sections"
+    if sections_html_dir.exists():
+        for entry in config.get("section_map", []):
+            for fn in entry["files"]:
+                fp = sections_html_dir / fn
+                if fp.exists():
+                    with open(fp, "r", encoding="utf-8") as f:
+                        html = f.read()
+                    html_fallback_by_file[fn] = _filter_original_only(html_to_markdown(html))
+
     for txt_file in files_to_read:
         with open(txt_file, "r", encoding="utf-8") as f:
             raw_lines = f.readlines()
+            raw_content = ''.join(raw_lines)
 
         skip_raw_table = False  # reset at each source file boundary
 
+        # Check if this source file has garbled math Unicode
+        # If so, use HTML-stripped content instead of source text
+        if MATH_UNICODE_RE.search(raw_content):
+            # Extract section number from source filename
+            # Handles: sec01a-text.txt → "01a", section-10.0-text.txt → "10"
+            src_stem = txt_file.stem.replace('-text', '')
+            num_match = re.search(r'(\d+[a-z]?)', src_stem)
+            src_num = num_match.group(1) if num_match else ''
+            used_fallback = False
+            for fn, html_md in html_fallback_by_file.items():
+                # Match: section-10-appendix-diffusion.html contains "10"
+                fn_num = re.search(r'section-(\d+[a-z]?)', fn)
+                fn_num_str = fn_num.group(1) if fn_num else ''
+                if src_num and fn_num_str and src_num == fn_num_str:
+                    print(f"  [INFO] Using HTML fallback for {txt_file.name} (contains equations)")
+                    lines.append("")
+                    lines.append(html_md)
+                    lines.append("")
+                    used_fallback = True
+                    break
+            if used_fallback:
+                continue  # skip normal source-text processing for this file
+
         # Build list of HTML tables available for this source file
-        # Match by filename pattern: sec01a-text.txt → section-01a-*.html
-        src_stem = txt_file.stem.replace('-text', '')  # e.g., "sec01a"
+        src_stem = txt_file.stem.replace('-text', '')
+        num_match = re.search(r'(\d+[a-z]?)', src_stem)
+        src_num = num_match.group(1) if num_match else ''
         file_html_tables = []
         for fn, tbls in tables_by_file.items():
-            # Normalize: "section-01a-process-design.html" → check if "01a" is in it
-            fn_parts = fn.replace('section-', '').split('-')
-            src_parts = src_stem.replace('sec', '')
-            if src_parts and src_parts in fn:
+            fn_num = re.search(r'section-(\d+[a-z]?)', fn)
+            fn_num_str = fn_num.group(1) if fn_num else ''
+            if src_num and fn_num_str and src_num == fn_num_str:
                 file_html_tables.extend(tbls)
         file_table_cursor = 0
 
@@ -496,6 +537,147 @@ def generate_md_from_source(report_id: str, config: dict = None) -> Path:
 
 
 # ============================================================
+# PDF-BASED MD GENERATION (highest quality)
+# ============================================================
+
+# Map report IDs to PDF filenames in Raw pdfs/
+PDF_FILES = {
+    "pda-guide-no1": "PDA-Tech-Guide-No1-Aseptic-Filling-2025.pdf",
+    "TR26": "PDA_TR26-2025-Sterilizing-Filtration-of-Liquids.pdf",
+    "PtC-14": "PDA_PtC-14-Manufacturing-of-ATMPs\u2013Facility-Design-2025.pdf",
+    "PtC-15": "PDA_PtC-15-Mobile-Manufacturing-2025.pdf",
+    "TR52": "PDA_TR52_Guidance for Good Distribution Practices (GDPs) for the Pharmaceutical Supply Chain.pdf",
+    "TR73": "PDA_TR73_Prefilled Syringe p81-109_1.pdf",
+    "TR90": "PDA_TR90_CCS development in pharmaceutical manufacturing.pdf",
+    "PtC-12": "PDA Point to Consider-12-Restricted-Access-Barrier-Systems_2025.pdf",
+    "TR22": "PDA TR22-2025-Process-Simulation-for-Aseptically-Filled-Products.pdf",
+    "TR66": "PDA_TR66_Application of single-use systems in pharma manufacturing_2014.pdf",
+    "TR73-2": "PDA_TR73-2_2024_Application of medical device regulation Annex 1 requirements for staked needle systems.pdf",
+    "TR60": "TR-60-2026-Process-Validation-LifeCycle-Approach.pdf",
+}
+
+# PDF noise patterns for cleanup
+_PDF_CLEAN_PATTERNS = [
+    re.compile(r'^Licensed to .+Copying and Distribution Prohibited.*$', re.M),
+    re.compile(r'^\d*\s*\*\*Technical Report No\. \d+.*Parenteral Drug Association.*$', re.M),
+    re.compile(r'^\*\*Technical Report No\. \d+.*Parenteral Drug Association.*$', re.M),
+    re.compile(r'^Technical Report No\. \d+.*Parenteral Drug Association.*$', re.M),
+    re.compile(r'^\d*\s*\*\*Points to Consider No\. \d+\*\*.*Parenteral Drug Association.*$', re.M),
+    re.compile(r'^Points to Consider No\. \d+\s*$', re.M),
+    re.compile(r'^\d*\s*PDA Manufacturing Technology Guide No\. 1.*Parenteral Drug Association.*$', re.M),
+]
+
+
+def _replace_math_unicode(content: str) -> str:
+    """Replace Mathematical Italic/Bold Unicode chars with ASCII equivalents."""
+    def _replace(m):
+        c = ord(m.group())
+        # Bold uppercase A-Z: U+1D400-U+1D419
+        if 0x1D400 <= c <= 0x1D419:
+            return chr(c - 0x1D400 + ord('A'))
+        # Bold lowercase a-z: U+1D41A-U+1D433
+        if 0x1D41A <= c <= 0x1D433:
+            return chr(c - 0x1D41A + ord('a'))
+        # Italic uppercase A-Z: U+1D434-U+1D44D
+        if 0x1D434 <= c <= 0x1D44D:
+            return chr(c - 0x1D434 + ord('A'))
+        # Italic lowercase a-z: U+1D44E-U+1D467
+        if 0x1D44E <= c <= 0x1D467:
+            return chr(c - 0x1D44E + ord('a'))
+        # Greek letters
+        greek = {
+            0x1D6FC: 'alpha', 0x1D6FD: 'beta', 0x1D6FE: 'gamma',
+            0x1D6FF: 'delta', 0x1D700: 'epsilon', 0x1D701: 'zeta',
+            0x1D702: 'eta', 0x1D703: 'theta', 0x1D704: 'iota',
+            0x1D705: 'kappa', 0x1D706: 'lambda', 0x1D707: 'mu',
+            0x1D708: 'nu', 0x1D709: 'xi', 0x1D70B: 'pi',
+            0x1D70C: 'rho', 0x1D70E: 'sigma', 0x1D70F: 'tau',
+            0x1D711: 'phi', 0x1D712: 'chi', 0x1D713: 'psi',
+            0x1D714: 'omega',
+        }
+        return greek.get(c, '?')
+    return re.sub(r'[\U0001d400-\U0001d7ff]', _replace, content)
+
+
+def generate_md_from_pdf(report_id: str, config: dict = None) -> Path:
+    """Generate knowledge MD directly from the original PDF.
+
+    Uses pymupdf4llm for high-quality extraction with proper:
+    - Table formatting (pipe tables)
+    - Heading hierarchy
+    - Equation variable definitions
+    Then cleans PDF artifacts and math Unicode.
+    """
+    if config is None:
+        config = load_config(report_id)
+
+    pdf_filename = PDF_FILES.get(report_id)
+    if not pdf_filename:
+        print(f"  [ERROR] No PDF mapping for {report_id}")
+        return None
+
+    # Check both locations for PDFs
+    pdf_path = REPO_ROOT / "Raw pdfs" / pdf_filename
+    if not pdf_path.exists():
+        pdf_path = REPO_ROOT / pdf_filename
+    if not pdf_path.exists():
+        print(f"  [ERROR] PDF not found: {pdf_filename}")
+        return None
+
+    import pymupdf4llm
+
+    print(f"  [PDF] Extracting {pdf_filename}...")
+    raw_md = pymupdf4llm.to_markdown(str(pdf_path))
+
+    # --- Clean PDF noise ---
+    content = raw_md
+    for pattern in _PDF_CLEAN_PATTERNS:
+        content = pattern.sub('', content)
+
+    # Strip standalone page numbers (digit-only lines)
+    content = re.sub(r'^\d{1,3}\s*$', '', content, flags=re.M)
+
+    # --- Strip frontmatter (TOC, authors, etc.) ---
+    # Find the first real content section heading
+    first_section = re.search(
+        r'^#{1,3}\s+1\.0\s|^1\.0\s+Introduction|^#{1,3}\s+1\.0\s+Introduction',
+        content, re.M
+    )
+    if first_section:
+        title = f"# {config['report_title_en']}: {config['report_subtitle_en']}"
+        content = title + "\n\n" + content[first_section.start():]
+
+    # --- Fix math Unicode ---
+    content = _replace_math_unicode(content)
+
+    # --- Strip CJK (shouldn't be any but safety) ---
+    CJK_RE = re.compile(
+        r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff'
+        r'\u3000-\u303f\uff00-\uffef\u2e80-\u2eff\u2f00-\u2fdf]'
+    )
+    content = CJK_RE.sub('', content)
+
+    # --- Collapse blank lines ---
+    content = re.sub(r'\n{3,}', '\n\n', content)
+    content = content.strip()
+
+    # --- Write output ---
+    KNOWLEDGE_DIR.mkdir(exist_ok=True)
+    output_stem = config["output_filename"].replace(".html", "")
+    md_path = KNOWLEDGE_DIR / f"{output_stem}.md"
+
+    with open(md_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    # --- Stats ---
+    pipe_rows = sum(1 for l in content.split('\n') if l.strip().startswith('|'))
+    math_remaining = len(re.compile(r'[\U0001d400-\U0001d7ff]').findall(content))
+    size_kb = md_path.stat().st_size / 1024
+    print(f"  [MD] {md_path.name} → knowledge/ ({size_kb:.1f} KB, {pipe_rows} table rows, {math_remaining} math chars)")
+    return md_path
+
+
+# ============================================================
 # SCAFFOLD
 # ============================================================
 
@@ -552,24 +734,34 @@ def cmd_scaffold(args):
 # MD COMMAND
 # ============================================================
 
+def _generate_md_for_report(report_id: str, config: dict):
+    """Generate MD for one report: try PDF first, fall back to source text."""
+    if report_id in PDF_FILES:
+        result = generate_md_from_pdf(report_id, config)
+        if result:
+            return
+    # Fallback to source text approach
+    generate_md_from_source(report_id, config)
+
+
 def cmd_md(args):
     if args.all:
         reports = find_all_reports()
         if not reports:
-            print("[WARNING] No reports with config.json found.")
+            print("[WARNING] No reports in reports.json.")
             return
         print(f"Generating knowledge MDs for {len(reports)} reports...\n")
         for rid in reports:
-            print(f"--- {rid} ---")
+            print(f"\n--- {rid} ---")
             config = load_config(rid)
-            generate_md_from_source(rid, config)
+            _generate_md_for_report(rid, config)
         print("\nDone!")
     else:
         if not args.report_id:
             print("[ERROR] Specify a report ID or use --all")
             sys.exit(1)
         config = load_config(args.report_id)
-        generate_md_from_source(args.report_id, config)
+        _generate_md_for_report(args.report_id, config)
 
 
 # ============================================================
