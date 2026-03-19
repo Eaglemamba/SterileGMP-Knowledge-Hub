@@ -248,22 +248,116 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ## Quick Topic Routing Guide
 
-| If the question is about... | Look in... |
+| Topic (English / 中文 / common lay terms) | Look in... |
 |---|---|
-| Filling machines, pump types, dose accuracy | Guide-No1 |
-| Media fill / APS design and acceptance criteria | TR22 |
-| Filter validation, integrity testing, PUPSIT | TR26 |
-| Cold chain, GDP, distribution, 3PL | TR52 |
-| Process validation lifecycle, PPQ, CPV, DoE | TR60 |
-| Single-use systems, SUS bags/tubing, E&L | TR66 |
-| Prefilled syringe CCI, drug compatibility | TR73 |
-| MDR Annex I, combination product regulatory | TR73-2 |
-| Contamination control strategy, CCS, Annex 1 | TR90 |
-| RABS design, glove integrity, VHP decontamination | PtC-12 |
-| ATMP facility, gene/cell therapy manufacturing | PtC-14 |
-| Mobile/modular manufacturing facilities | PtC-15 |
-| Extractables & leachables | TR26 + TR66 |
-| Environmental monitoring | TR90 + PtC-12 + TR22 |
-| Aseptic processing general | Guide-No1 + TR22 + PtC-12 |
-| Container closure integrity | TR73 + TR90 |
-| Regulatory submissions (EU MDR) | TR73-2 |
+| Filling machines, pump types, dose accuracy / 充填機、幫浦類型、劑量精準度 | Guide-No1 |
+| Media fill, APS, aseptic simulation / 培養基充填、媒體充填、無菌模擬、模擬充填 | TR22 |
+| Filter validation, integrity test, PUPSIT / 過濾器驗證、完整性測試、過濾器破損檢查 | TR26 |
+| Cold chain, GDP, distribution, shipping / 冷鏈、配銷規範、運輸、溫度控制 | TR52 |
+| Process validation, PPQ, CPV, lifecycle / 製程確效、製程驗證、持續確認 | TR60 |
+| Single-use systems, SUS, disposable bags / 一次性系統、拋棄式、SUS袋 | TR66 |
+| Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封、藥品相容性 | TR73 |
+| EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
+| Contamination control strategy, CCS, Annex 1 / 污染管制策略、歐盟GMP附錄一 | TR90 |
+| RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 |
+| ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
+| Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
+| Extractables & leachables / 可萃取物、可滲出物、E&L | TR26 + TR66 |
+| Environmental monitoring, EM / 環境監控、微生物監測 | TR90 + PtC-12 + TR22 |
+| Aseptic processing (general) / 無菌製程（一般）| Guide-No1 + TR22 + PtC-12 |
+| Container closure integrity / 容器密封完整性、CCI | TR73 + TR90 |
+| Regulatory submissions EU MDR / 歐盟MDR法規送件 | TR73-2 |
+
+## Not Covered in This Knowledge Base
+
+If the user asks about these topics, say so clearly and suggest alternatives:
+
+- **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
+- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR54, TR62, TR70, TR83, TR85) — not available; suggest the user consult the official PDA website
+- **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
+- **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
+- **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
+- **API (active pharmaceutical ingredient) manufacturing** — these reports focus on drug product manufacturing, not API synthesis
+- **Laboratory methods / analytical testing** — not covered; focus is on manufacturing and process
+
+---
+
+## Cross-Report Topics
+
+For these topics, search the PRIMARY report deeply and SECONDARY reports lightly.
+Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
+
+**Media Fill / APS (無菌製程模擬)**
+→ TR22 ★★★ | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
+
+**Extractables & Leachables / E&L (可萃取物與可滲出物)**
+→ TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
+
+**Environmental Monitoring / EM (環境監控)**
+→ TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | PtC-14 ★ (ATMP context)
+
+**Aseptic Processing (無菌製程)**
+→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+
+**Container Closure Integrity / CCI (容器密封完整性)**
+→ TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+
+**Contamination Control (污染管制)**
+→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+
+**Single-Use Systems / SUS (一次性系統)**
+→ TR66 ★★★ (full SUS guidance) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
+
+**Process Validation (製程確效)**
+→ TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
+
+**Risk Assessment (風險評估)**
+→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+
+**Personnel / Gowning (人員與更衣)**
+→ PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
+
+**Equipment Qualification IQ/OQ/PQ (設備確效)**
+→ TR60 ★★★ (lifecycle qualification framework) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
+
+**Regulatory Background — FDA/EMA GMP (法規)**
+→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
+
+**Annex 1 (2022) EU GMP**
+→ TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR22 ★★ (APS under Annex 1)
+
+**Sterile Filtration / Bioburden Control (除菌過濾/微生物負荷)**
+→ TR26 ★★★ (primary filtration guidance) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
+
+**Prefilled Syringe (預充填注射器)**
+→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
+
+**Supplier / Vendor Qualification (供應商確認)**
+→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR90 ★★ (raw material suppliers)
+
+**Change Control (變更管制)**
+→ TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control)
+
+**Statistical Methods / SPC (統計方法)**
+→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR22 ★★ (APS batch statistics)
+
+**Cleaning Validation (清潔確效)**
+→ Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
+
+**Cold Chain / Temperature Control (冷鏈/溫度管控)**
+→ TR52 ★★★ (GDP cold chain) | PtC-14 ★★ (ATMP cold chain requirements)
+
+**ATMP / Cell & Gene Therapy (先進療法)**
+→ PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs)
+
+**Powder Filling (粉末充填)**
+→ Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
+
+**RABS vs Isolator (隔離系統比較)**
+→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice)
+
+**Lyophilization / Freeze-drying (凍乾)**
+→ TR22 ★★★ (lyo APS) — single-report topic in this knowledge base
+
+**GDP / Good Distribution Practices (優良配銷規範)**
+→ TR52 ★★★ — single-report topic in this knowledge base
