@@ -97,12 +97,22 @@ def find_all_reports() -> list[str]:
 
 # Lines matching these patterns are PDF artifacts (headers, footers, license)
 PDF_NOISE_PATTERNS = [
-    re.compile(r'^Licensed to .+: Copying and Distribution Prohibited\.$'),
-    re.compile(r'^\d+\s+Technical Report No\.\s*\d+'),
-    re.compile(r'^Technical Report No\.\s*\d+'),
+    # License/copyright lines
+    re.compile(r'^Licensed to .+: Copying and Distribution Prohibited'),
     re.compile(r'©\s*\d{4}\s+Parenteral\s*Drug\s*Association'),
-    re.compile(r'^Points to Consider.*Copying and Distribution'),
+    re.compile(r'Copying and Distribution Prohibited'),
     re.compile(r'^\s*PDA\s+J\s+Pharm\s+Sci'),
+    # Page header/footer: "Technical Report No. XX" or "NN Technical Report No. XX"
+    re.compile(r'^\d*\s*Technical Report No\.\s*\d+'),
+    re.compile(r'^Technical Report No\.\s*\d+'),
+    # Points to Consider header/footer
+    re.compile(r'^Points to Consider No\.\s*\d+\s*$'),
+    re.compile(r'^Points to Consider.*Copying and Distribution'),
+    # Standalone page numbers (1-3 digits alone on a line)
+    re.compile(r'^\d{1,3}\s*$'),
+    # Common PDF running headers: "NN © YYYY PDA" or just the report short name
+    re.compile(r'^\d+\s+©\s*\d{4}'),
+    re.compile(r'^PDA Manufacturing Technology Guide'),
 ]
 
 # Heading patterns in PDA source text: "3.0 Title", "3.1.2 Subtitle", "Appendix I: Title"

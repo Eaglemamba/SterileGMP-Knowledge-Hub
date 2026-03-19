@@ -1,7 +1,5 @@
 # PDA Technical Report No. 73-2 (2024): Application of MDR Annex I Requirements for Staked Needle Systems
 
-1
-
 ## 1.0 Introduction
 
 The European Union regulation (EU) 2017/745 on medical devices, referred to as MDR, introduces
@@ -44,7 +42,6 @@ evaluated by the NBs, but the medicinal product (drug) is not.
 *[Figure 4.2-1 provides a schematic overview of the drug and the device parts of a PFS and its compo-]*
 
 nents; a backstop can be added if needed.
-2
 
 **Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.**
 
@@ -99,7 +96,6 @@ risk- and/or user-related labeling, if it affects the device part) should be con
 Annex I evidence submitted to the NB. (See Section 5.5.)
 Further design variants similar to the components described in this document are technically out of
 scope; nonetheless, this technical report can be used as a guidance to address them.
-3
 
 ## 2.0 Glossary and Abbreviations
 
@@ -187,7 +183,6 @@ an aggregate or as an agglomerate and where,
 for 50 % or more of the particles in the number
 size distribution, one or more external dimen-
 sions is in the size range 1-100 nm; Fullerenes,
-4
 graphene flakes and single-wall carbon nano-
 tubes with one or more external dimensions
 below 1 nm shall also be deemed to be nanoma-
@@ -276,7 +271,6 @@ syringe barrel, a needle and a needle shield (soft
 or rigid) that has been washed and sterilized;
 considered as starting material for the filling and
 assembling process of a prefilled syringe (10).
-5
 2.2
 Abbreviations
 ASTM
@@ -333,7 +327,6 @@ product are placed on the market in such a way that they form a single integral 
 uct which is intended exclusively for use in the given combination and which is not
 reusable, that single integral product shall be governed by Directive 2001/83/EC or
 Regulation (EC) No 726/2004, as applicable (1).
-6
 Moreover, the device part of this single integral (DDC) product (e.g., final prefilled staked needle
 syringe) must comply with the relevant GSPRs established in MDR Annex I.
 In order to evaluate whether GSPR compliance can be self-assessed or if it requires a Notified Body Opin-
@@ -376,7 +369,6 @@ Enterprises and European Federation of Pharmaceutical Industries and Association
 This document represents the current state of knowledge. As this is a new process based on a new regula-
 tory requirement, expectations of the NBs and competent authorities may diverge as the process evolves.
 Ultimately, the responsibility for the entire content of the submission file lies with the applicant.
-7
 4.1
 Product Description
 The submission file to NBs should include a description of the product as it is intended to be placed
@@ -424,7 +416,6 @@ apply and are applied here for the “virtual” device part (18).
 “Drug for injection” is added here for illustration only; drug is not in scope of this document.
 Figure 4.2-1
 Schematic Overview of the Drug and the Device with its Components
-8
 Table 4.2-1
 Example of Identification of “Virtual” Device
 Category
@@ -463,7 +454,6 @@ throughout the documentation submitted for assessment.
 3	 MDS/MDT: Code given by EMA to describe technologies or processes
 Figure 4.2-2
 Syringe Subassembly Ready for Filling
-9
 Table 4.2-2
 Example of Device Attributes
 Category
@@ -522,7 +512,6 @@ a cylindrical tube (the syringe barrel) containing the drug. To expel the drug, 
 pushes the plunger rod until the rubber stopper hits the end of the barrel. Dosing will
 be fixed, that is, no dose adjustment with respect to bodyweight and/or body surface
 area is needed. One PFS equals one dose.
-10
 4.4
 Components
 Section 4.4 provides a general description of the key functional elements, for example, the parts and
@@ -534,7 +523,6 @@ The single-use, not reusable “Prefilled Syringe XYZ” with a staked needle co
 the components stated in Table 4.4-1 and the functional units stated in Table 4.4-2.
 Figure 4.4-1
 Components of a Syringe
-11
 Table 4.4-1
 Example of Component Information
 Identifier
@@ -608,27 +596,23 @@ Component Name/
 Number
 Description
 Specifications
-1
 Plunger stopper/plunger
 rod/backstop
 Pxxx
 Functional unit composed of components 1A, 1B, and 2D
 Document XXX
 Document XXY
-2
 Barrel/staked needle/
 needle shield
 Bxxx
 Functional unit composed of components 2A, 2B, and 2C
 Document XXX
 Document XXY
-3
 Syringe
 Sxxx
 Functional unit composed of components 1, 2, and 3A
 Document XXX
 Document XXY
-12
 4.5
 Materials
 This section provides a description of the (raw) materials of construction that are used for the com-
@@ -713,7 +697,6 @@ Ink: Black ink yyy (Supplier xxx)
 For more details, see document XXX.
 Yes – intact skin
 No
-13
 Table 4.5-2
 Example of Materials Relevant in the Context of GSPR 10
 Component Name/ Number
@@ -789,7 +772,6 @@ mm in folded format)
 (Width, Length)
 Paper xyz (Supplier xxx)
 For more details, see document XXX.
-14
 4.7
 Product Manufacturing
 This section provides an overview of the manufacturing process of the device components and related
@@ -861,7 +843,6 @@ Document XXX
 **Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and**
 
 packaging of the final DDC. Respective process validation summaries of all steps should be included.
-15
 
 **Table 4.7.2-1	 Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)**
 
@@ -913,7 +894,6 @@ be used. In the case of conflicting requirements, as the drug is the principal m
 Eur. requirements, EU guidances, and International Council for Harmonisation (ICH) guidelines
 take precedence over International Organization for Standardization (ISO) standards. The documents
 should always represent generally acknowledged state-of-the-art standards. In TR-73-2, “ISO” is used
-16
 as an overarching, representative term. ISO can be the current version of the Final Draft International
 Standard (FDIS) or European Standard (EN) version, depending on availability and upon agreement
 between the parties involved.
@@ -938,7 +918,6 @@ lubrication, coating, and/or lamination if existing. Content listed here is prov
 of the plunger stopper/needle shield to the applicant.
 Documents regarding the plunger rod, the rigid part of the needle shield (if used), and the backstop
 (if used) are listed in Section 5.3.
-17
 Table 5.1-1
 Supportive Documents Suggested to Address Relevant GSPRs
 GSPR
@@ -956,7 +935,6 @@ Provided by Supplier
 Provided by Supplier
 Chapter I – General Requirements4
 1 – Intended Performance
-1
 Intended Performance
 •	 Intended Use statement or reference to information provided in Table 4.2-3
 •	 Risk management file
@@ -986,7 +964,6 @@ o	 ISO 11040-8
 o	 ISO 10993-1
 o	 IEC 62366-1
  2 – Risk Reduction I
-2
 Risk
 Reduction I
 •	 Risk management file
@@ -999,7 +976,6 @@ implementation of a RMS
 implementation of a RMS
 •	 Evidence how suppliers specified and verified performance
 3 – Risk Management System
-3
 (a-f)
 Risk management
 system
@@ -1028,14 +1004,12 @@ o	 ISO 14971, ICH Q9
 2	 Incl. lubrication (if existing), needle and adhesive, NS/RNS (for supportive documentation on the soft part of the NS, please use column 3).
 3	 Incl. lubrication, coating and/or lamination
 4	 For addressing Quality Management System considerations for Device Parts, a reference to a supplier’s ISO 15378 and/or ISO 13485 certification can be added.
-18
 GSPR
 Scope
 Device Part
 Syringe Subassembly
 Plunger Stoppers
 4 – Risk Control Measures
-4
 (a-c)
 Risk control measures
 •	 Risk management file, including
@@ -1060,7 +1034,6 @@ to the applicable parts of
 o	 ISO 13485
 o	 ISO 15378
 5 – Risk Reduction II
-5
 Risk reduction II
 •	 Risk management file, including
 o	 Risk management plan
@@ -1086,7 +1059,6 @@ to the applicable parts of
 o	 ISO 13485
 o	 ISO 15378
 6 – Characteristics and Performance
-6
 Characteristics and performance
 •	 Release Specification
 •	 Shelf life and storage information
@@ -1109,14 +1081,12 @@ summary, e.g., based on
 o	 ICH Q1A and/or ASTM F1980
 o	 ISO 11040-5
 (Table 5.1-1 Continued)
-19
 GSPR
 Scope
 Device Part
 Syringe Subassembly
 Plunger Stoppers
 7 – Design, Manufacture, Packaging
-7
 Design, manufacture, packaging
 •	 Release Specification
 •	 Shelf life and storage information
@@ -1143,7 +1113,6 @@ summary, e.g., based on ICH Q1A  and/or ASTM F1980
 •	 Statements on compliance with the applicable parts of
 o	 ISO 11040-5
 8 – Risks and Side-Effects
-8
 Risks and side-effects
 •	 Risk management file, including
 o	 Risk management report
@@ -1167,7 +1136,6 @@ to the applicable parts of
 o	 ISO 13485
 o	 ISO 15378
 (Table 5.1-1 Continued)
-20
 GSPR
 Scope
 Device Part
@@ -1259,7 +1227,6 @@ o	 ISO 7864
 o	 ISO 15510
 (Table 5.1-1 Continued)
 5	 Still in draft at the time this document was published.
-21
 GSPR
 Scope
 Device Part
@@ -1349,7 +1316,6 @@ o	 ISO 11040-5
 •	 Information on the surface finish, e.g., lubrication, coating,
 lamination
 (Table 5.1-1 Continued)
-22
 GSPR
 Scope
 Device Part
@@ -1425,7 +1391,6 @@ the according controls
 •	 Statements on compliance with the applicable parts of
 o	 ISO 8871-1, -3, -4
 (Table 5.1-1 Continued)
-23
 (Table 5.1-1 Continued)
 GSPR
 Scope
@@ -1514,7 +1479,6 @@ BSE, latex, nitrosamines, CMR/ED, phthalates
 the according controls
 •	 Statements on compliance with the applicable parts of
 o	  ISO 8871-1, -3, -4
-24
 GSPR
 Scope
 Device Part
@@ -1559,7 +1523,6 @@ oxygen transmission rate
 •	 Statements on compliance with the applicable parts of
 o	 ISO 2782-1
 (Table 5.1-1 Continued)
-25
 (Table 5.1-1 Continued)
 GSPR
 Scope
@@ -1634,7 +1597,6 @@ o	 ASTM 4169 ISTA 3E
 shipping studies
 •	 Specification
 •	 Quality Certificate, incl. sterilization confirmation
-26
 GSPR
 Scope
 Device Part
@@ -1670,7 +1632,6 @@ supplier information
 •	 Content declaration on substances of concern, e.g., latex
 •	 Content declaration on substances of concern, e.g., latex
 (Table 5.1-1 Continued)
-27
 (Table 5.1-1 Continued)
 GSPR
 Scope
@@ -1730,7 +1691,6 @@ o	 ASTM D4169
 shipping studies
 •	 Transport validation summary, incl. transportation and
 shipping studies
-28
 (Table 5.1-1 Continued)
 GSPR
 Scope
@@ -1774,11 +1734,9 @@ o	 intended use, users and context of use information
 •	  Not addressable by the component supplier
 Chapter III – Requirements regarding the Information Supplied with the Device – General Requirements for Label and Instructions for Use
 23 – Label and Instructions for Use
-23
 General requirements
 regarding information
 •	 Might be partially applicable, see Chapter 5.5
-29
 5.2
 Chapter I — Risk Management
 Chapter I of the MDR GSPR list relates primarily to risk management (RM). The pharmaceutical
@@ -1810,7 +1768,6 @@ and readability of the GSPR table (Table 5.1-1), they are addressed separately i
 Table 5.3-1 provides examples of requirements that should be addressed and can be supported using
 supplier documentation, for example, general statements, compliance certificates, data sheets, and test
 reports.
-30
 Table 5.3-1
 Examples of Supportive Documents for Plunger Rod, Rigid Part of RNS and, if used, Finger Flange Extension/Backstop
 Material Safety
@@ -1845,7 +1802,6 @@ materials, design development, and manufacturing process, including microbial co
 that the design and manufacturing process of a PFS is robust and yields a product that meets the qual-
 ity standards. A detailed assessment of applicability of the requirements should be performed for the
 target product profile.
-31
 Figure 5.4-1
 Overview of Subrequirements of GSPRs 10, 11, 13, 14, and 15 Applicable to Prefilled Syringes
 5.5
@@ -1859,13 +1815,11 @@ Use wording that aligns with the wording of the requirement (same terminology)
 •
 Be precise and keep it simple
 Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.
-32
 Table 5.5-1
 Nonapplicable GSPRs and Suggested Justifications
 GSPR Number
 GSPR Content
 Justification of Nonapplicability
-9
 For the devices referred to in Annex XVI, the general safety requirements set out in Sections 1 and 8 shall be
 understood to mean that the device, when used under the conditions and for the purposes intended, does not
 present a risk at all or presents a risk that is no more than the maximum acceptable risk related to the product’s
@@ -1914,7 +1868,6 @@ The function of the controls and indicators shall be clearly specified on the de
 instructions required for its operation or indicates operating or adjustment parameters by means of a visual
 system, such information shall be understandable to the user and, as appropriate, to the patient.
 The device part does not have any controls or indicators specified on the label. 2
-23
 Label and instructions for use —  23.1 “General requirements regarding the information supplied by the
 manufacturer”; 23.2 “Information on the label”; 23.3 “Information on the packaging which maintains the sterile
 condition of a device (‘sterile packaging’)”; 23.4 “Information in the instructions for use”
@@ -1927,7 +1880,6 @@ The device in scope does not contain product substances listed in MDR Annex I, 1
 1	 Immediate labeling is out of scope of this technical report (see Section 1.2) as the requirements are covered by Directive 2001/83/EC as the leading legal framework. However, relevant performance and safety input from
 design development activities of the device part on user-related labeling should be considered.
 2	 Potential required visual inspection before use is specified in the IFU and provided in the application to CAs (see Section 1.2).
-33
 6.0
 References
 1.	 European Commission. Regulation (EU)
@@ -2019,7 +1971,6 @@ EFPIA Reflection Paper: Conformity with the
 relevant General Safety Performance Require-
 ments listed in the European Medical Device
 Regulation 2017/745: Case Study for a Pre-
-34
 filled Pen (Prefilled Syringe Assembled with
 Autoinjector Parts forming a Single Integral
 Product Regulated as a Medicinal Product);
@@ -2064,7 +2015,6 @@ Human and Veterinary Medicinal Products
 (EMA/410/01 rev.3); Official Journal of
 the European Union. Publications Office,
 European Union: Brussels, 2011.
-35
 Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
 An Authorized User of this electronic publication is the purchaser.
 Authorized Users are permitted to do the following:

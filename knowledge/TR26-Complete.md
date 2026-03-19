@@ -108,8 +108,6 @@ conditions)
 L
 icensed to Ku
 
-o, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
-
 Note that the diffusive flux of gas is independent of the actual filter-pore size, providing the pores are filled
 with the wetting liquid. Further, Equation 5 predicts a linear relationship between the diffusive flow and the
 applied test pressure. This relationship ceases to exist if the applied test pressure exceeds that required to
@@ -150,7 +148,6 @@ relation
 ship attributed to Laplace, often referred to as the "Bubble Point equation."
 Equation
 
- 7
 𝑃𝑃 = 4𝑘𝑘
 
 𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘
@@ -188,8 +185,6 @@ Equation 8
 Licensed t
 
 o Kuo, Li-Hung/Amara
-
-n Biotechnology, Inc.: Copying and Distribution Prohibited.
 
 Where:
 
@@ -459,7 +454,6 @@ Equation 13
 𝐿𝐿 𝑐𝑐
 Hence,
 Equation 13a
-1
 2− 1
 (−𝑑𝑑𝑝𝑝2) = 𝑅𝑅𝑅𝑅
 𝑉𝑉𝑢𝑢𝑢𝑢
@@ -1162,8 +1156,6 @@ be
 th
 e filter (the filter itself is sterilized, e.g., via steam or irradiation).
 Li
-
-censed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
 
 *[Figure 3.1-1 attempts to further clarify these terms with a Venn diagram. This diagram should be taken as a]*
 
@@ -2469,8 +2461,6 @@ ex
 tractables to evaluate the patient exposure to potential leachables, the end user may also elect to perform a
 Li
 
-censed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
-
 leachables study. This involves using the actual process fluid with the same filter type that will be used in
 production. Due to the low levels of potential leachables, extractables testing using a model solvent
 approach is usually a prerequisite to having a leachables study performed. Circumstances, such as drug
@@ -3326,8 +3316,6 @@ WBPavg = Average water-wetted bubble poi
 
 nt of the test samples recorded in the test
 Licensed to Kuo, Li-Hung/Amaran Biotechn
-
-ology, Inc.: Copying and Distribution Prohibited.
 
 #### 7.4.2 Product-Wetted Diffusive Flow Test
 
