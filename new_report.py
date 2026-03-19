@@ -131,7 +131,12 @@ def main():
     print(f"  2. Generate section HTMLs → {report_id}/sections/")
     print(f"  3. Edit SECTION_MAP in {report_id}/merge.py")
     print(f"  4. Run: python3 {report_id}/merge.py")
+    print(f"     (auto-generates HTML + knowledge/{output_filename.replace('.html', '.md')})")
     print(f"  5. Update index.html with new document card")
+    print(f"  6. Update knowledge/INDEX.md:")
+    print(f"       - Add report block (topics, key terms, sections)")
+    print(f"       - Add row to Quick Topic Routing Guide")
+    print(f"       - Add to Cross-Report Topics where relevant")
     print("=" * 60)
 
 
