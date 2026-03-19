@@ -4,63 +4,38 @@
 
 When a PDA Technical Report is fully processed (all sections generated, merged, and verified in browser), you MUST complete these steps before committing:
 
-### 1. Update `index.html` — Document Card (ONE card per report)
+### 1. Update `reports.json` (SINGLE source of truth)
 
-Add ONE entry to the `documents` array for the entire report (not per-section):
+Add a new report entry to the `reports` object. This feeds BOTH the dashboard and the merge engine — no need to edit index.html separately.
 
-```javascript
-// Example:
-{ date:"2026-03-14", title:"PDA TR26: Sterilizing Filtration of Liquids", titleZh:"液體除菌過濾",
-  source:"PDA TR26", tags:["Filtration","Validation","Integrity Test","Sterilization","QbD"],
-  summary:"完整8章+3附錄：濾膜原理、確效、製程設計...（1-2 sentence Chinese summary of full report）",
-  sections:11, pages:"p1-p73", figures:0, file:"TR26/output/TR26-Complete.html" },
+```json
+{
+  "TRXX": {
+    "report_title_en": "PDA Technical Report No. XX (Year)",
+    "report_subtitle_en": "Full English Subtitle",
+    "report_subtitle_zh": "中文副標題 完整教學版",
+    "output_filename": "TRXX-Complete.html",
+    "footer_text": "PDA Technical Report No. XX (Year): Full English Subtitle",
+    "chapter_label": "Section",
+    "date": "2026-03-20",
+    "title": "PDA TRXX: Short Dashboard Title",
+    "titleZh": "中文標題",
+    "source": "PDA TRXX",
+    "source_color": { "bg": "#...", "text": "#...", "bar": "#...", "short": "TRXX" },
+    "tags": ["Tag1", "Tag2", "Tag3"],
+    "summary": "中文摘要（1-2句）",
+    "pages": "p1-p100",
+    "figures": 0,
+    "section_map": [
+      { "files": ["section-00-intro.html"], "id": "sec0", "num": "0", "label_en": "Introduction", "label_zh": "導論", "pages": "p1-p5" }
+    ]
+  }
+}
 ```
 
-Key fields:
-- `date` — date the report was completed
-- `title` — format: `"PDA TRXX: [Full English Title]"`
-- `source` — short form: `"PDA TRXX"` (matches sourceColors key)
-- `tags` — 4-6 top-level technical tags covering the whole report
-- `summary` — Traditional Chinese summary of the entire report scope
-- `sections` — total number of chapters/sections in the merged document
-- `pages` — page range of the source PDF
-- `file` — path to the merged TopNav HTML (e.g., `TR26/output/TR26-Complete.html`)
+Also add any new tags to `tagClasses` in the same file if they don't already exist.
 
-### 2. Update `index.html` — Source Colors
-
-Add a new entry to `sourceColors` for the new report's color theme:
-
-```javascript
-const sourceColors = {
-    "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
-    "PDA TR26": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" },
-    // new report here — pick a distinct color pair...
-};
-```
-
-### 3. Update `index.html` — Tag Classes
-
-Add any new tags to the `tagCls` object that don't already exist:
-
-```javascript
-// Example new tags for a filtration report:
-"Filtration":"bg-green-50 text-green-600",
-"Integrity Test":"bg-green-50 text-green-600",
-"Bacterial Retention":"bg-green-50 text-green-600",
-```
-
-### 4. Dashboard Stats Auto-Update
-
-The following stats are computed dynamically from the `documents` array — no manual update needed:
-- Reports count (total cards)
-- Sections count (sum of all `sections` fields)
-- Figures count
-- Sources count
-- Linked count
-- Category bar proportions
-- Last updated date
-
-### 5. Update `knowledge/INDEX.md`
+### 2. Update `knowledge/INDEX.md`
 
 Add an entry for the new report to THREE places in `knowledge/INDEX.md`:
 
@@ -76,135 +51,105 @@ Add an entry for the new report to THREE places in `knowledge/INDEX.md`:
    add it to the relevant rows with appropriate ★ rating. If it introduces a new cross-report topic,
    add a new row.
 
-### 6. Verify Before Commit
+### 3. Verify Before Commit
 
-- [ ] Open `index.html` in browser — confirm new cards appear
+- [ ] Open `index.html` in browser — confirm new card appears (data comes from reports.json)
 - [ ] Confirm search works for new report content
 - [ ] Confirm filter buttons include the new source
 - [ ] Confirm stats numbers are correct
 - [ ] Confirm "Open" button links to the correct file
-- [ ] Confirm `knowledge/<TRXX>-Complete.md` was generated (check file exists and is > 100KB)
+- [ ] Confirm `knowledge/<TRXX>-Complete.md` was generated with **English-only** content (no Chinese)
 - [ ] Confirm `knowledge/INDEX.md` has been updated with the new report
 
 ## File Structure Convention
 
 ```
 /
-├── index.html              # Main dashboard (update per rules above)
+├── reports.json            # SINGLE SOURCE OF TRUTH — all report metadata, dashboard data, section maps
+├── pda_engine.py           # Unified CLI: scaffold, md, merge
+├── merge_engine.py         # Shared HTML merge library (imported by pda_engine.py)
+├── index.html              # Dashboard — reads from reports.json (no hardcoded data)
 ├── PROMPT.md               # Master generation instructions
 ├── template.css            # Shared CSS (do not modify per-report)
-├── merge_engine.py         # Shared merge library — auto-generates HTML + MD
-├── new_report.py           # Scaffold script — run to create new report folder
 ├── README.md               # Repo readme
 ├── Raw pdfs/               # Source PDFs
-├── knowledge/              # Chatbot knowledge base (auto-generated Markdown)
+├── knowledge/              # Chatbot knowledge base — English-only original content
 │   ├── INDEX.md            # Master routing index — update manually per new report
-│   ├── TR26-Complete.md    # One .md per report (generated by merge.py)
+│   ├── TR26-Complete.md    # One .md per report (auto-generated, English only)
 │   └── ...
 ├── .claude/
 │   └── commands/
 │       └── pda-ask.md      # /pda-ask skill — chatbot Q&A via Claude Code
 ├── pda-guide-no1/          # One folder per technical report
-│   ├── merge.py            # Report-specific merge script
 │   ├── source/             # Extracted text files
 │   ├── sections/           # Individual section HTMLs
 │   └── output/             # Merged TopNav HTML
 ├── TR26/                   # Same structure as above
 │   └── ...
-├── PtC-14/                 # Same structure
-│   └── ...
 ```
 
 ## Naming Conventions
 
-- Report folders: `TR26/`, `TR01/`, etc.
+- Report folders: `TR26/`, `TR01/`, `PtC-14/`, etc.
 - Section files: `section-XX-short-name.html`
 - Split sections: `section-XXa-name.html`, `section-XXb-name.html`
 - Merged output: `TRXX-Complete.html`
-- Source text: `section-X.0-text.txt`
+- Source text: `section-X.0-text.txt` or `TRXX-full-text.txt`
+- Knowledge MD: `knowledge/TRXX-Complete.md` (English only, auto-generated)
 
 ## TopNav Scroll Arrow Rule
 
-All merged documents use scroll arrow buttons (‹ ›) in the top nav. This is required whenever a report has more than ~8 sections, as tabs overflow the viewport.
-
-**template.css** must have:
-- `.top-nav`: `display: flex; align-items: stretch;`
-- `.nav-container`: `justify-content: flex-start; scrollbar-width: none;` (NO `justify-content: center`)
-- `.nav-scroll-btn` and `.nav-scroll-btn.hidden` styles defined
-
-**Each merge.py** must wrap the nav like this:
-```html
-<nav class="top-nav" id="topNav">
-    <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
-    <div class="nav-container" id="navContainer">
-        <!-- nav items -->
-    </div>
-    <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
-</nav>
-```
-
-**JS block** must include:
-- `updateNavArrows()` — toggles `.hidden` on left/right buttons based on scroll position
-- Click handlers on both buttons (`scrollBy ±300px`)
-- `navContainer.addEventListener('scroll', updateNavArrows)`
-- `item.scrollIntoView({ block:'nearest', inline:'nearest' })` when active item changes
-
-When creating a new report's `merge.py`, copy the nav HTML and JS from `pda-guide-no1/merge.py` as the reference template.
-
-## index.html Link Rule
-
-The `file` field in the `documents` array must be a path **relative to `index.html`** (repo root).
-Example: `"pda-guide-no1/output/Guide-No1-Complete.html"` — no `docs/` prefix, no leading slash.
+All merged documents use scroll arrow buttons (‹ ›) in the top nav. This is required whenever a report has more than ~8 sections, as tabs overflow the viewport. The nav HTML and JS are auto-generated by `merge_engine.py` — no manual setup needed.
 
 ---
 
 ## Quick Start — Adding a New Report
 
 ```bash
-# 1. Scaffold the folder structure
-python3 new_report.py
+# 1. Scaffold the folder structure + add skeleton to reports.json
+python pda_engine.py scaffold TRXX
 
-# 2. Extract PDF text
-python3 extract_pdf.py "Raw pdfs/TRXX.pdf" TRXX/source/
+# 2. Edit reports.json — fill in TRXX entry (title, tags, colors, section_map)
 
-# 3. Generate section HTMLs (one agent per section, parallel dispatch)
+# 3. Extract PDF text into TRXX/source/
+#    Use any external tool (e.g., pdftotext, PyMuPDF, or manual copy-paste)
+
+# 4. Generate knowledge MD — review hierarchy before proceeding
+python pda_engine.py md TRXX
+#    Review knowledge/TRXX-Complete.md — confirm sections/headings match PDF
+
+# 5. Generate bilingual HTML sections (Claude agents, parallel dispatch)
 #    Use PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
 
-# 4. Merge — auto-generates BOTH the HTML and knowledge/TRXX-Complete.md
-python3 TRXX/merge.py
+# 6. Merge HTML → TRXX/output/TRXX-Complete.html
+python pda_engine.py merge TRXX
 
-# 5. Update index.html (document card, sourceColors, tagCls)
+# 7. Update knowledge/INDEX.md (new report block + routing table row + cross-report topics)
 
-# 6. Update knowledge/INDEX.md (new report block + routing table row + cross-report topics)
-
-# 7. Verify in browser, then commit + push
-git add TRXX/ index.html knowledge/ && git commit -m "Add TRXX: [title]"
+# 8. Verify in browser, then commit + push
+git add TRXX/ reports.json knowledge/ && git commit -m "Add TRXX: [title]"
 ```
-
-For new merge.py files, use `merge_engine.py` via import — see its docstring for usage.
-The MD file is generated automatically by `run_merge()` — no extra step needed.
 
 ---
 
 ## Current Reports Inventory
 
-| Folder | Report | Sections | MD Generated | Status |
-|--------|--------|----------|--------------|--------|
-| `pda-guide-no1/` | PDA Guide No.1: Filling Machine Design | 20 | ⚠️ manual* | Complete |
-| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | ⚠️ manual* | Complete |
-| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | ⚠️ manual* | Complete |
-| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | ⚠️ manual* | Complete |
-| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | ✅ auto | Complete |
-| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | ✅ auto | Complete |
-| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | ✅ auto | Complete |
-| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | ✅ auto | Complete |
-| `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | ✅ auto | Complete |
-| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | ✅ auto | Complete |
-| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | ✅ auto | Complete |
-| `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | ✅ auto | Complete |
+Report metadata is in `reports.json`. Current reports:
 
-\* These 4 reports use a custom `merge.py` that predates `merge_engine.py` and do not auto-generate MD.
-Their `knowledge/` MD files were generated once via a manual script. To regenerate, see Known Pitfalls below.
+| Folder | Report | Sections | Status |
+|--------|--------|----------|--------|
+| `pda-guide-no1/` | PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025) | 20 | Complete |
+| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
+| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
+| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
+| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
+| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | Complete |
+| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
+| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
+| `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
+| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
+| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
+| `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
 
 ---
 
@@ -214,53 +159,21 @@ Their `knowledge/` MD files were generated once via a manual script. To regenera
 Claude agents have a 32,000 output token limit per response. Sections covering 20+ pages of dense
 technical content often exceed this. **Plan A/B splits upfront** for any source text file over ~800 lines.
 Name them: `section-04a-name.html`, `section-04b-name.html`.
-Update SECTION_MAP to pass both files in the same list entry:
-```python
-(["section-04a-name.html", "section-04b-name.html"], "sec4", "4", "Label", "中文", "p29-p41"),
+Update section_map in reports.json to pass both files in the same entry:
+```json
+{ "files": ["section-04a-name.html", "section-04b-name.html"], "id": "sec4", "num": "4", "label_en": "Label", "label_zh": "中文", "pages": "p29-p41" }
 ```
 
 ### Nav Overflow (justify-content: center)
 If `.nav-container` has `justify-content: center`, overflow is clipped symmetrically — users cannot
-reach leftmost tabs. Always use `justify-content: flex-start` + scroll arrows (see TopNav Scroll Arrow Rule).
+reach leftmost tabs. Always use `justify-content: flex-start` + scroll arrows (handled by merge_engine.py).
 
-### index.html "docs/" Prefix Bug
-Never prefix file paths with `docs/`. The `file` field must be relative to repo root:
-- Correct: `"TR26/output/TR26-Complete.html"`
-- Wrong: `"docs/TR26/output/TR26-Complete.html"`
-
-### merge_engine.py Import Path
-When a report's `merge.py` imports from `merge_engine.py`, add the parent directory to sys.path:
-```python
-import sys
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-from merge_engine import run_merge
+### Regenerating All Knowledge MDs
+To regenerate all knowledge MDs at once (e.g. after updating `pda_engine.py` heading detection):
+```bash
+python pda_engine.py md --all
 ```
+Note: `pda-guide-no1` has no source text — its MD is generated via HTML-stripping fallback in `merge_engine.generate_markdown()`.
 
-### Older Reports — Manual MD Regeneration
-Four reports (`pda-guide-no1`, `TR26`, `PtC-14`, `PtC-15`) use custom `merge.py` files that don't
-call `merge_engine.run_merge()`, so they do **not** auto-generate `knowledge/*.md`.
-
-To regenerate their MD files manually (e.g. after updating `merge_engine.html_to_markdown`):
-```python
-import sys, os
-sys.path.insert(0, '.')
-from merge_engine import generate_markdown
-
-# Import SECTION_MAP by exec-ing the merge.py (up to the if __name__ block)
-ns = {}
-with open('TR26/merge.py') as f:
-    src = f.read().split("if __name__")[0]
-exec(compile(src, 'TR26/merge.py', 'exec'), ns)
-
-generate_markdown(
-    section_map=ns["SECTION_MAP"],
-    report_title_en="PDA Technical Report No. 26 (Revised 2025)",
-    report_subtitle_en="Sterilizing Filtration of Liquids",
-    report_subtitle_zh="液體除菌過濾 完整教學版",
-    output_filename="TR26-Complete.html",
-    chapter_label="Section",
-    base_dir=os.path.abspath("TR26"),
-)
-```
-Repeat for each of the 4 older reports. Consider migrating them to `merge_engine.run_merge()` when
-making other changes to those files.
+### Knowledge MDs — English Only
+Knowledge MDs in `knowledge/` must contain **only original English text** from the PDF. No Chinese translations or commentary. The `pda_engine.py md` command generates these from `source/*.txt` files. The `merge_engine.generate_markdown()` fallback strips CJK from HTML sections.

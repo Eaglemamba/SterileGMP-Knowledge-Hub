@@ -423,28 +423,24 @@ Use these Chinese translations consistently across ALL sections:
 
 ## EXECUTION COMMANDS FOR CLAUDE CODE
 
-### Process a single section:
+### MD-first workflow (recommended):
 ```bash
-claude "Read PROMPT.md for full instructions. Process Section 1.1 (Product Considerations, p8-p15) from /source/PDA-Tech-Guide-No1-Aseptic-Filling-2025.pdf. Embed figure from /figures/fig-1.1-1.png as base64. Copy full CSS from template.css into the HTML style tag. Save output to /sections/section-01-1-product-considerations.html"
-```
+# 1. Scaffold + extract PDF text
+python pda_engine.py scaffold TRXX
+# Edit reports.json with report metadata + section_map
+# Extract PDF text → TRXX/source/
 
-### Process multiple sections in sequence:
-```bash
-claude "Read PROMPT.md for full instructions. Process Sections 1.0 through 1.3 from the PDF. Check /figures/ for any associated images. Save each as separate HTML files in /sections/. Copy full CSS from template.css into each file."
-```
+# 2. Generate knowledge MD — review hierarchy before HTML generation
+python pda_engine.py md TRXX
 
-### Merge all completed sections:
-```bash
-python merge.py
-```
+# 3. Process sections into bilingual HTML
+claude "Read PROMPT.md for full instructions. Process Section X.X (Title, pN-pM) from TRXX/source/section-X.0-text.txt. Copy full CSS from template.css into the HTML style tag. Save output to TRXX/sections/section-XX-name.html"
 
-### Verify output:
-```bash
-# Check all section files exist and have content
-for f in /sections/section-*.html; do echo "$f: $(wc -c < "$f") bytes"; done
+# 4. Merge all completed sections
+python pda_engine.py merge TRXX
 
-# Open the merged file
-open /output/PDA-Guide-Complete.html
+# 5. Verify output
+open TRXX/output/TRXX-Complete.html
 ```
 
 ---

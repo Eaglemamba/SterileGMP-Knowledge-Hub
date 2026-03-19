@@ -1,0 +1,424 @@
+#!/usr/bin/env python3
+"""
+pda_engine.py — Unified PDA Technical Report processing engine
+===============================================================
+Replaces: merge_engine.py (library), new_report.py, regenerate_knowledge.py,
+          and per-report merge.py files.
+
+Each report is defined by a config.json in its folder (no more per-report .py).
+
+Usage:
+    python pda_engine.py scaffold TRXX             # Create new report folder + config.json
+    python pda_engine.py md TRXX                   # Generate knowledge MD from source text
+    python pda_engine.py md --all                   # Regenerate all knowledge MDs from source
+    python pda_engine.py merge TRXX                # Merge HTML sections → Complete.html + MD
+    python pda_engine.py merge --all               # Merge all reports
+
+MD-first workflow (recommended for new reports):
+    1. pda_engine.py scaffold TRXX
+    2. Extract PDF text → TRXX/source/
+    3. pda_engine.py md TRXX                        # structured English MD, review hierarchy
+    4. Generate bilingual HTML sections (Claude agents)
+    5. pda_engine.py merge TRXX                     # merge HTML + refresh MD from source
+"""
+
+import argparse
+import json
+import os
+import re
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).parent.resolve()
+KNOWLEDGE_DIR = REPO_ROOT / "knowledge"
+TEMPLATE_CSS = REPO_ROOT / "template.css"
+
+# Import merge functions from merge_engine (still used for HTML merging)
+sys.path.insert(0, str(REPO_ROOT))
+from merge_engine import (
+    extract_body_content,
+    load_css,
+    build_nav_html,
+    run_merge,
+    STANDARD_JS,
+)
+
+
+# ============================================================
+# CONFIG LOADER — reads from reports.json (single source of truth)
+# ============================================================
+
+REPORTS_JSON = REPO_ROOT / "reports.json"
+
+
+def _load_all_reports() -> dict:
+    """Load reports.json and return the 'reports' dict."""
+    if not REPORTS_JSON.exists():
+        print(f"[ERROR] {REPORTS_JSON} not found.")
+        sys.exit(1)
+    with open(REPORTS_JSON, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data.get("reports", {})
+
+
+def load_config(report_id: str) -> dict:
+    """Load config for a single report from reports.json."""
+    all_reports = _load_all_reports()
+    if report_id not in all_reports:
+        print(f"[ERROR] '{report_id}' not found in reports.json.")
+        print(f"  Available: {', '.join(all_reports.keys())}")
+        sys.exit(1)
+    return all_reports[report_id]
+
+
+def config_to_section_map(config: dict) -> list:
+    """Convert section_map from JSON to the tuple format merge_engine expects."""
+    result = []
+    for s in config["section_map"]:
+        result.append((
+            s["files"],
+            s["id"],
+            s["num"],
+            s["label_en"],
+            s.get("label_zh", ""),
+            s.get("pages", ""),
+        ))
+    return result
+
+
+def find_all_reports() -> list[str]:
+    """Return all report IDs from reports.json."""
+    return list(_load_all_reports().keys())
+
+
+# ============================================================
+# MD FROM SOURCE TEXT (new approach)
+# ============================================================
+
+# Lines matching these patterns are PDF artifacts (headers, footers, license)
+PDF_NOISE_PATTERNS = [
+    re.compile(r'^Licensed to .+: Copying and Distribution Prohibited\.$'),
+    re.compile(r'^\d+\s+Technical Report No\.\s*\d+'),
+    re.compile(r'^Technical Report No\.\s*\d+'),
+    re.compile(r'©\s*\d{4}\s+Parenteral\s*Drug\s*Association'),
+    re.compile(r'^Points to Consider.*Copying and Distribution'),
+    re.compile(r'^\s*PDA\s+J\s+Pharm\s+Sci'),
+]
+
+# Heading patterns in PDA source text: "3.0 Title", "3.1.2 Subtitle", "Appendix I: Title"
+HEADING_RE = re.compile(
+    r'^(\d+(?:\.\d+)*)\s+(.+)$'
+)
+APPENDIX_RE = re.compile(
+    r'^(Appendix\s+[A-Z0-9]+(?:\.\d+)?)[:\s]+(.+)$', re.IGNORECASE
+)
+TABLE_HEADING_RE = re.compile(
+    r'^(Table\s+\d+[\.\d]*[-–]\d+)\s+(.+)$'
+)
+FIGURE_HEADING_RE = re.compile(
+    r'^(Figure\s+\d+[\.\d]*[-–]\d+)\s+(.+)$'
+)
+
+
+def _heading_depth(section_num: str) -> int:
+    """Determine MD heading depth from section number.
+
+    1.0 → ## (depth 2, since # is reserved for report title)
+    1.1 → ### (depth 3)
+    1.1.1 → #### (depth 4)
+    """
+    parts = section_num.strip('.').split('.')
+    # Top-level sections (1.0, 2.0) → ##
+    # Sub-sections (1.1, 2.3) → ###
+    # Sub-sub (1.1.1) → ####
+    depth = len(parts)
+    if len(parts) >= 2 and parts[-1] == '0':
+        depth -= 1  # treat X.0 same as X
+    return min(depth + 1, 5)  # +1 because # is report title; cap at #####
+
+
+def _is_noise(line: str) -> bool:
+    """Check if line is a PDF artifact that should be stripped."""
+    stripped = line.strip()
+    if not stripped:
+        return False
+    for pattern in PDF_NOISE_PATTERNS:
+        if pattern.search(stripped):
+            return True
+    return False
+
+
+def source_to_markdown(
+    report_id: str,
+    config: dict,
+) -> str:
+    """Generate structured Markdown from source/*.txt files.
+
+    Reads all source text files in order, detects heading hierarchy,
+    strips PDF noise, and produces clean English-only Markdown.
+    """
+    source_dir = REPO_ROOT / report_id / "source"
+
+    title = f"{config['report_title_en']}: {config['report_subtitle_en']}"
+    lines = [f"# {title}", ""]
+
+    # Collect all source files, sorted
+    txt_files = sorted(source_dir.glob("*.txt"))
+    # Separate full-text files from section files
+    full_text = [f for f in txt_files if "full-text" in f.name.lower()]
+    section_files = [f for f in txt_files if "full-text" not in f.name.lower()]
+
+    # Prefer section files (they're pre-split); fall back to full-text
+    files_to_read = section_files if section_files else full_text
+
+    if not files_to_read:
+        print(f"  [WARNING] No source text files found in {source_dir}")
+        return ""
+
+    for txt_file in files_to_read:
+        with open(txt_file, "r", encoding="utf-8") as f:
+            raw_lines = f.readlines()
+
+        for raw_line in raw_lines:
+            line = raw_line.rstrip()
+
+            # Skip PDF noise
+            if _is_noise(line):
+                continue
+
+            stripped = line.strip()
+
+            # Detect section headings — must start with a structured section
+            # number (e.g., "3.0", "6.6.1") followed by a capitalized title.
+            # Reject bare decimals like "0.2 µm" or mid-sentence references
+            # like "5.4.1 for additional information)."
+            m = HEADING_RE.match(stripped)
+            if (
+                m
+                and len(stripped) < 200  # headings aren't paragraph-length
+                and re.match(r'[A-Z]', m.group(2).strip())  # title starts uppercase
+                and not m.group(2).strip().endswith(')')  # not a parenthetical ref
+                and int(m.group(1).split('.')[0]) > 0  # first part > 0 (skip "0.2 µm")
+            ):
+                sec_num = m.group(1)
+                sec_title = m.group(2).strip()
+                depth = _heading_depth(sec_num)
+                lines.append("")
+                lines.append(f"{'#' * depth} {sec_num} {sec_title}")
+                lines.append("")
+                continue
+
+            # Detect appendix headings
+            m = APPENDIX_RE.match(stripped)
+            if m:
+                lines.append("")
+                lines.append(f"## {m.group(1)}: {m.group(2).strip()}")
+                lines.append("")
+                continue
+
+            # Detect table headings
+            m = TABLE_HEADING_RE.match(stripped)
+            if m:
+                lines.append("")
+                lines.append(f"#### {stripped}")
+                lines.append("")
+                continue
+
+            # Detect figure headings
+            m = FIGURE_HEADING_RE.match(stripped)
+            if m:
+                lines.append("")
+                lines.append(f"*[{stripped}]*")
+                lines.append("")
+                continue
+
+            # Regular text
+            lines.append(line)
+
+    md = "\n".join(lines)
+    # Collapse 3+ blank lines to 2
+    md = re.sub(r"\n{3,}", "\n\n", md)
+    return md.strip()
+
+
+def generate_md_from_source(report_id: str, config: dict = None) -> Path:
+    """Generate knowledge MD from source text and write to knowledge/ folder."""
+    if config is None:
+        config = load_config(report_id)
+
+    KNOWLEDGE_DIR.mkdir(exist_ok=True)
+
+    output_stem = config["output_filename"].replace(".html", "")
+    md_path = KNOWLEDGE_DIR / f"{output_stem}.md"
+
+    md_content = source_to_markdown(report_id, config)
+    if not md_content:
+        print(f"  [SKIP] No content generated for {report_id}")
+        return None
+
+    with open(md_path, "w", encoding="utf-8") as f:
+        f.write(md_content)
+
+    size_kb = md_path.stat().st_size / 1024
+    print(f"  [MD] {md_path.name} → knowledge/ ({size_kb:.1f} KB)")
+    return md_path
+
+
+# ============================================================
+# SCAFFOLD
+# ============================================================
+
+def cmd_scaffold(args):
+    report_id = args.report_id
+    report_dir = REPO_ROOT / report_id
+
+    for sub in ["sections", "source", "output"]:
+        (report_dir / sub).mkdir(parents=True, exist_ok=True)
+
+    # Add skeleton entry to reports.json
+    with open(REPORTS_JSON, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    if report_id in data.get("reports", {}):
+        print(f"[WARNING] '{report_id}' already exists in reports.json — skipping JSON update.")
+    else:
+        skeleton = {
+            "report_title_en": "",
+            "report_subtitle_en": "",
+            "report_subtitle_zh": "",
+            "output_filename": f"{report_id}-Complete.html",
+            "footer_text": "",
+            "chapter_label": "Section",
+            "date": "",
+            "title": "",
+            "titleZh": "",
+            "source": f"PDA {report_id}",
+            "source_color": {"bg": "#f1f5f9", "text": "#475569", "bar": "#6b7280", "short": report_id},
+            "tags": [],
+            "summary": "",
+            "pages": "",
+            "figures": 0,
+            "section_map": [
+                {"files": ["section-00-intro.html"], "id": "sec0", "num": "0", "label_en": "Introduction", "label_zh": "", "pages": "p1-p5"}
+            ],
+        }
+        data.setdefault("reports", {})[report_id] = skeleton
+        with open(REPORTS_JSON, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print(f"  [OK] Added '{report_id}' skeleton to reports.json")
+
+    print(f"\n[SUCCESS] Scaffold created: {report_dir}/")
+    print(f"\nNext steps:")
+    print(f"  1. Edit reports.json → fill in '{report_id}' entry (title, sections, tags, colors)")
+    print(f"  2. Extract PDF text → {report_id}/source/")
+    print(f"  3. python pda_engine.py md {report_id}       # generate knowledge MD, review hierarchy")
+    print(f"  4. Generate bilingual HTML sections (Claude agents)")
+    print(f"  5. python pda_engine.py merge {report_id}    # merge HTML + refresh MD")
+    print(f"  6. Update knowledge/INDEX.md")
+
+
+# ============================================================
+# MD COMMAND
+# ============================================================
+
+def cmd_md(args):
+    if args.all:
+        reports = find_all_reports()
+        if not reports:
+            print("[WARNING] No reports with config.json found.")
+            return
+        print(f"Generating knowledge MDs for {len(reports)} reports...\n")
+        for rid in reports:
+            print(f"--- {rid} ---")
+            config = load_config(rid)
+            generate_md_from_source(rid, config)
+        print("\nDone!")
+    else:
+        if not args.report_id:
+            print("[ERROR] Specify a report ID or use --all")
+            sys.exit(1)
+        config = load_config(args.report_id)
+        generate_md_from_source(args.report_id, config)
+
+
+# ============================================================
+# MERGE COMMAND
+# ============================================================
+
+def _merge_one(report_id: str, config: dict):
+    """Merge HTML for one report, then regenerate MD from source text if available."""
+    section_map = config_to_section_map(config)
+    run_merge(
+        section_map=section_map,
+        report_title_en=config["report_title_en"],
+        report_subtitle_en=config["report_subtitle_en"],
+        report_subtitle_zh=config.get("report_subtitle_zh", ""),
+        output_filename=config["output_filename"],
+        footer_text=config.get("footer_text", ""),
+        chapter_label=config.get("chapter_label", "Section"),
+        base_dir=str(REPO_ROOT / report_id),
+    )
+    # Overwrite the HTML-stripped MD with source-text MD if source files exist
+    source_dir = REPO_ROOT / report_id / "source"
+    txt_files = list(source_dir.glob("*.txt")) if source_dir.exists() else []
+    if txt_files:
+        print("  [MD] Regenerating from source text (overriding HTML-stripped version)...")
+        generate_md_from_source(report_id, config)
+
+
+def cmd_merge(args):
+    if args.all:
+        reports = find_all_reports()
+        for rid in reports:
+            print(f"\n{'='*60}")
+            print(f"Merging: {rid}")
+            config = load_config(rid)
+            _merge_one(rid, config)
+    else:
+        if not args.report_id:
+            print("[ERROR] Specify a report ID or use --all")
+            sys.exit(1)
+        config = load_config(args.report_id)
+        _merge_one(args.report_id, config)
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="PDA Technical Report processing engine",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    sub = parser.add_subparsers(dest="command")
+
+    # scaffold
+    p_scaffold = sub.add_parser("scaffold", help="Create new report folder + config.json")
+    p_scaffold.add_argument("report_id", help="Report folder name (e.g., TR70)")
+
+    # md
+    p_md = sub.add_parser("md", help="Generate knowledge MD from source text")
+    p_md.add_argument("report_id", nargs="?", help="Report folder name")
+    p_md.add_argument("--all", action="store_true", help="Regenerate all reports")
+
+    # merge
+    p_merge = sub.add_parser("merge", help="Merge HTML sections into Complete.html + MD")
+    p_merge.add_argument("report_id", nargs="?", help="Report folder name")
+    p_merge.add_argument("--all", action="store_true", help="Merge all reports")
+
+    args = parser.parse_args()
+
+    if args.command == "scaffold":
+        cmd_scaffold(args)
+    elif args.command == "md":
+        cmd_md(args)
+    elif args.command == "merge":
+        cmd_merge(args)
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
