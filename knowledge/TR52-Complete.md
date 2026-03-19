@@ -48,65 +48,65 @@ All rights reserved.
 
 **1.0 Introduction���������������������������������������������������2**
 
-1.1 Purpose and Scope�������������������������������������������2
-1.2 Responsibility���������������������������������������������������2
+### 1.1 Purpose and Scope�������������������������������������������2
+### 1.2 Responsibility���������������������������������������������������2
 
 **2.0 Glossary of Terms�����������������������������������������3**
 
 **3.0 Requirements����������������������������������������������������4**
 
-3.1 Stability������������������������������������������������������������4
-3.1.1 Storage Temperatures ������������������������������4
-3.1.2 Shipping Temperatures �����������������������������4
-3.1.3 Stability Testing to Support Distribution����5
-3.2 Distribution Control Management���������������������5
-3.2.1 Qualification and Training of Personnel������5
-3.2.2 Premises and Equipment���������������������������5
-3.2.3 Material Handling��������������������������������������6
-3.2.3.1 Receiving and Storage��������������������������6
-3.2.3.2 Product Status��������������������������������������6
-3.2.3.3 Controlled Drugs�����������������������������������7
-3.2.3.4 Counterfeit Products�����������������������������7
-3.2.3.5 Records������������������������������������������������7
-3.2.4 Storage and Inventory Control�������������������7
-3.2.4.1 Inventory����������������������������������������������7
-3.2.4.2 Product Status Control�������������������������7
-3.2.4.3 In-Transit Storage���������������������������������8
-3.2.5 Transportation��������������������������������������������8
-3.2.6 Product Disposition and Distribution����������8
+### 3.1 Stability������������������������������������������������������������4
+**3.1.1 Storage Temperatures ������������������������������4**
+**3.1.2 Shipping Temperatures �����������������������������4**
+**3.1.3 Stability Testing to Support Distribution����5**
+### 3.2 Distribution Control Management���������������������5
+**3.2.1 Qualification and Training of Personnel������5**
+**3.2.2 Premises and Equipment���������������������������5**
+**3.2.3 Material Handling��������������������������������������6**
+**3.2.3.1 Receiving and Storage��������������������������6**
+**3.2.3.2 Product Status��������������������������������������6**
+**3.2.3.3 Controlled Drugs�����������������������������������7**
+**3.2.3.4 Counterfeit Products�����������������������������7**
+**3.2.3.5 Records������������������������������������������������7**
+**3.2.4 Storage and Inventory Control�������������������7**
+**3.2.4.1 Inventory����������������������������������������������7**
+**3.2.4.2 Product Status Control�������������������������7**
+**3.2.4.3 In-Transit Storage���������������������������������8**
+**3.2.5 Transportation��������������������������������������������8**
+**3.2.6 Product Disposition and Distribution����������8**
 
 **Figures and Tables Index**
 
 Table 1.1 Seven Pillars of
 Good Distribution Practices ���������������������2
 
-3.2.7 Product Protection�������������������������������������9
-3.2.8 Returns Management��������������������������������9
-3.2.9 Exception Management ��������������������������10
-3.2.9.1 Corrective Action and Preventative
+**3.2.7 Product Protection�������������������������������������9**
+**3.2.8 Returns Management��������������������������������9**
+**3.2.9 Exception Management ��������������������������10**
+**3.2.9.1 Corrective Action and Preventative**
 Action (CAPA) System�����������������������10
-3.2.9.2 Complaints ���������������������������������������10
-3.2.9.3 Quality Holds �������������������������������������10
-3.2.9.4 Product Action ����������������������������������10
-3.3 Performance Management�����������������������������10
-3.3.1 Performance Measurement
+**3.2.9.2 Complaints ���������������������������������������10**
+**3.2.9.3 Quality Holds �������������������������������������10**
+**3.2.9.4 Product Action ����������������������������������10**
+### 3.3 Performance Management�����������������������������10
+**3.3.1 Performance Measurement**
 and Reporting������������������������������������������11
-3.3.2 Self-Inspection (Internal Audit)����������������11
-3.3.3 Management Review Meetings���������������11
-3.4 Supply Chain Partner Management����������������11
-3.4.1 Partner Selection���������������������������������������11
-3.4.2 Quality Audit��������������������������������������������12
-3.4.3 Quality Agreements���������������������������������12
-3.5 Business Review Meetings����������������������������12
+**3.3.2 Self-Inspection (Internal Audit)����������������11**
+**3.3.3 Management Review Meetings���������������11**
+### 3.4 Supply Chain Partner Management����������������11
+**3.4.1 Partner Selection���������������������������������������11**
+**3.4.2 Quality Audit��������������������������������������������12**
+**3.4.3 Quality Agreements���������������������������������12**
+### 3.5 Business Review Meetings����������������������������12
 
 **4.0 Appendix�����������������������������������������������������������13**
-4.1 Good Storage and Shipping
+### 4.1 Good Storage and Shipping
 Practices Checklist�����������������������������������������13
 
 **5.0 Additional Reading���������������������������������������31**
-5.1 Selected Global Laws and Regulations�����������31
-5.2 Selected Publications�������������������������������������31
-5.3 Selected Regulatory Authority Websites��������31
+### 5.1 Selected Global Laws and Regulations�����������31
+### 5.2 Selected Publications�������������������������������������31
+### 5.3 Selected Regulatory Authority Websites��������31
 
 This technical report describes the overall quality system for distribution of pharmaceutical products
 and is meant to assist manufacturers in assuring that quality, integrity, and efficacy of the product are
