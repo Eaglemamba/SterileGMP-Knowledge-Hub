@@ -6,116 +6,72 @@ Figures and Tables Index
 *[Figure 1.2-1 Applicability of ICH Quality Guidelines Relative to the FDA Stage Approach to]*
 
 Process Validation............................................................................................................................................ 4
-
-*[Figure 3.0-1 Overall Sequence of Process Validation Activities .......................................................... 12]*
-
-#### Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Step .................... 15
-
-*[Figure 3.3-1 Example of Process Diagram for a Tangential-Flow Filtration Step ............................... 25]*
-
-*[Figure 3.4-1 Analytical Lifecycle Stages.................................................................................................... 26]*
+Figure 3.0-1 Overall Sequence of Process Validation Activities .......................................................... 12
+Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Step .................... 15
+Figure 3.3-1 Example of Process Diagram for a Tangential-Flow Filtration Step ............................... 25
+Figure 3.4-1 Analytical Lifecycle Stages.................................................................................................... 26
 
 *[Figure 3.5-1 Process Control Elements, Unit Operations, and Relations to Critical Quality]*
 
 Attributes ......................................................................................................................................................... 27
-
-*[Figure 3.5-2 Decision Tree for Designating Parameter Criticality (4) ................................................. 29]*
-
-#### Table 3.8-1 Checklist of Information Necessary for Stage 2 (PPQ) Readiness ................................. 33
-
-*[Figure 4.1-1 Typical System Qualification Sequence ............................................................................. 40]*
-
-#### Table 4.4.2.1-1 Sampling Requirement ..................................................................................................... 49
-
-*[Figure 4.4.2.1-1 Sampling ............................................................................................................................ 50]*
-
-#### Table 4.4.2.1-2 Confidence ......................................................................................................................... 50
-
-#### Table 4.4.2.1.2-1 Example Sample Plan .................................................................................................... 52
-
-#### Table 4.4.2.2-1 Generic Risk Evaluation Table ........................................................................................ 55
+Figure 3.5-2 Decision Tree for Designating Parameter Criticality (4) ................................................. 29
+Table 3.8-1 Checklist of Information Necessary for Stage 2 (PPQ) Readiness ................................. 33
+Figure 4.1-1 Typical System Qualification Sequence ............................................................................. 40
+Table 4.4.2.1-1 Sampling Requirement ..................................................................................................... 49
+Figure 4.4.2.1-1 Sampling ............................................................................................................................ 50
+Table 4.4.2.1-2 Confidence ......................................................................................................................... 50
+Table 4.4.2.1.2-1 Example Sample Plan .................................................................................................... 52
+Table 4.4.2.2-1 Generic Risk Evaluation Table ........................................................................................ 55
 
 *[Figure 4.4.2.2.2-1 Decision Tree for Determination of Number of Process Performance]*
 
 Qualification Lot ............................................................................................................................................. 56
-
-#### Table 4.4.2.7-1 Matrix Design ..................................................................................................................... 59
-
-#### Table 4.4.2.8-1 Equipment Family Example ............................................................................................. 60
-
-*[Figure 5.1.1-1 Sampling Levels ................................................................................................................... 68]*
-
-*[Figure 5.1.3-1 Development of a Continued Process Verification Stage 3a Plan ............................ 70]*
-
-*[Figure 5.1.4-1 Legacy Product Assessment ............................................................................................. 71]*
+Table 4.4.2.7-1 Matrix Design ..................................................................................................................... 59
+Table 4.4.2.8-1 Equipment Family Example ............................................................................................. 60
+Figure 5.1.1-1 Sampling Levels ................................................................................................................... 68
+Figure 5.1.3-1 Development of a Continued Process Verification Stage 3a Plan ............................ 70
+Figure 5.1.4-1 Legacy Product Assessment ............................................................................................. 71
 
 *[Figure 5.2.3-1 Definition of Proven Acceptable Ranges (e.g., elution pH) of an Early Unit]*
 
 Operation ......................................................................................................................................................... 74
+Figure 5.3.1-1 Decision-Tree Guideline (Stage 3b) ................................................................................. 76
+Figure 5.4.1-1 Integration of Data Sources for Improved Process Controls ..................................... 78
 
-*[Figure 5.3.1-1 Decision-Tree Guideline (Stage 3b) ................................................................................. 76]*
-
-*[Figure 5.4.1-1 Integration of Data Sources for Improved Process Controls ..................................... 78]*
-
-#### Table 5.5.3-1 Sample of Annual Product Review or Yearly Biologic Product Report Elements
+**Table 5.5.3-1 Sample of Annual Product Review or Yearly Biologic Product Report Elements**
 
 Supported by Continued Process Verification ......................................................................................... 81
 
 *[Figure 6.1-1 Quality Risk Management: A Lifecycle Approach for Process Development and]*
 
 Validation ......................................................................................................................................................... 86
-
-#### Table 6.1.1-1 Product Attribute Criticality Risk Assessment Example ............................................... 87
-
-#### Table 6.1.2-1 Risk-Based Qualification Planning .................................................................................... 88
-
-#### Table 6.1.2-2 Severity Rating and Sampling Requirements Risk.......................................................... 88
+Table 6.1.1-1 Product Attribute Criticality Risk Assessment Example ............................................... 87
+Table 6.1.2-1 Risk-Based Qualification Planning .................................................................................... 88
+Table 6.1.2-2 Severity Rating and Sampling Requirements Risk.......................................................... 88
 
 viii
-
-#### Table 6.2-1 Statistical Methods and the Typical Stages at Which They are Used ........................... 90
-
-*[Figure 6.2.2-1 Process in Classical Statistical Control, Common Cause Variation Only ................. 94]*
-
-*[Figure 6.2.2-2 Process Not in Statistical Control, Special Cause Variation ....................................... 94]*
-
-*[Figure 6.2.2-3 A Process with Both Within-Lot and Between-Lot Variations .................................. 95]*
-
-*[Figure 6.2.2.3-1 Examples of Process Capability Statistics Cp and CpK ............................................ 97]*
-
-#### Table 6.2.2.3-1 Relationship Between Capability and % or Per Million Nonconforming ............... 98
-
-*[Figure 6.2.3-1 Example of an Operating Characteristic Curve............................................................. 99]*
-
-*[Figure 6.4-1 Distribution of Technology Transfer Activities throughout the Product Lifecycle .... 103]*
-
-#### Table 6.4-1 Technology Transfer Activities throughout the Product Lifecycle .............................. 104
-
-*[Figure 6.5.1-1 Knowledge Management ................................................................................................ 108]*
-
-*[Figure 6.5.3-1 Process Understanding via the Growth of Knowledge ............................................. 111]*
-
-*[Figure 6.5.3-2 Steps Required for Transfer of Tacit Knowledge to Explicit Knowledge .............. 112]*
-
-#### Table 7.1-1 Stage 1: Process Design (Large Molecule Example)........................................................ 114
-
-#### Table 7.1-2 Stage 2: Process Qualification (Large Molecule Example) ............................................. 118
-
-#### Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example) ........................... 121
-
-#### Table 7.2-1 Stage 1: Process Design (Small Molecule Example) ........................................................ 122
-
-#### Table 7.2-2 Stage 2: Process Qualification (Small Molecule Example) ............................................. 126
-
-#### Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example) ........................... 130
-
-#### Table 9.2-1 Expected Between-Lot Variation in Number of Lots ..................................................... 137
-
-#### Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate ................. 140
-
-#### Table 9.8-1 Effect of Between-Lot Variation on the Total Process Variance ................................. 141
-
-#### Table 9.9-1 Sample Size to Estimate a Standard Deviation to Within ±x% of True Value ........... 142
+Table 6.2-1 Statistical Methods and the Typical Stages at Which They are Used ........................... 90
+Figure 6.2.2-1 Process in Classical Statistical Control, Common Cause Variation Only ................. 94
+Figure 6.2.2-2 Process Not in Statistical Control, Special Cause Variation ....................................... 94
+Figure 6.2.2-3 A Process with Both Within-Lot and Between-Lot Variations .................................. 95
+Figure 6.2.2.3-1 Examples of Process Capability Statistics Cp and CpK ............................................ 97
+Table 6.2.2.3-1 Relationship Between Capability and % or Per Million Nonconforming ............... 98
+Figure 6.2.3-1 Example of an Operating Characteristic Curve............................................................. 99
+Figure 6.4-1 Distribution of Technology Transfer Activities throughout the Product Lifecycle .... 103
+Table 6.4-1 Technology Transfer Activities throughout the Product Lifecycle .............................. 104
+Figure 6.5.1-1 Knowledge Management ................................................................................................ 108
+Figure 6.5.3-1 Process Understanding via the Growth of Knowledge ............................................. 111
+Figure 6.5.3-2 Steps Required for Transfer of Tacit Knowledge to Explicit Knowledge .............. 112
+Table 7.1-1 Stage 1: Process Design (Large Molecule Example)........................................................ 114
+Table 7.1-2 Stage 2: Process Qualification (Large Molecule Example) ............................................. 118
+Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example) ........................... 121
+Table 7.2-1 Stage 1: Process Design (Small Molecule Example) ........................................................ 122
+Table 7.2-2 Stage 2: Process Qualification (Small Molecule Example) ............................................. 126
+Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example) ........................... 130
+Table 9.2-1 Expected Between-Lot Variation in Number of Lots ..................................................... 137
+Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate ................. 140
+Table 9.8-1 Effect of Between-Lot Variation on the Total Process Variance ................................. 141
+Table 9.9-1 Sample Size to Estimate a Standard Deviation to Within ±x% of True Value ........... 142
 
 1
 
@@ -848,7 +804,7 @@ defining the manufacturing process in the process description. Data collected fr
 elements of the control strategy and determining process capabilities, set specifications, and design PPQ protocols and acceptance criteria, as well as
 evaluating laboratory models and transfer processes. Strategies and fundamentals of KM are discussed further in Section 6.5.
 
-#### Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Step
+**Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Step**
 
 Process
 Variable
@@ -909,9 +865,7 @@ process impact
 N/A
 Recirculation
 Rate
-
-## 10 L/min
-
+10 L/min
 8 – 12
 L/min
 Non-Key
@@ -925,9 +879,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 10 PSI
-
+10 PSI
 5 – 15 PSI
 Non-Key
 Low risk of product or
@@ -957,9 +909,7 @@ validated range
 N/A
 WFI Flush
 Volume
-
-## 20 L/m2
-
+20 L/m2
 ≥20 L/m2
 Non-Key
 Wide range, directly
@@ -986,9 +936,7 @@ Expected Range
 Pre-Use Qualification
 Integrity Test
 Pressure
-
-## 15 PSIG
-
+15 PSIG
 15 – 18
 PSIG
 Critical
@@ -1000,9 +948,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 10 PSIG
-
+10 PSIG
 8 – 12
 PSIG
 Non-Key
@@ -1067,9 +1013,7 @@ during processing
 N/A
 Buffer
 Volume
-
-## 35 L
-
+35 L
 25 – 50 L
 Non-Key
 Unlikely to affect product or
@@ -1077,9 +1021,7 @@ process; directly controllable
 N/A
 Recirculation
 Rate
-
-## 8 L/min
-
+8 L/min
 4 – 12
 L/min
 Non-Key
@@ -1090,9 +1032,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 12 PSI
-
+12 PSI
 10 – 15
 PSI
 Non-Key
@@ -1142,9 +1082,7 @@ targets
 N/A
 Initial Product
 Volume
-
-## 75 L
-
+75 L
 50 – 100 L
 Key
 In some circumstances, initial
@@ -1160,9 +1098,7 @@ time and or yield
 N/A
 Recirculation
 Rate
-
-## 8 L/min
-
+8 L/min
 6 – 10
 L/min
 Key
@@ -1198,9 +1134,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 12 PSI
-
+12 PSI
 10 – 15
 PSI
 Key
@@ -1242,9 +1176,7 @@ Attribute
 Product
 (Retentate)
 Volume
-
-## 35 L
-
+35 L
 30 – 40 L
 Critical
 Volume must be in range and
@@ -1289,9 +1221,7 @@ ultimately drug product (DP)
 N/A
 Recirculation
 Rate
-
-## 8 L/min
-
+8 L/min
 6 – 10
 L/min
 Key
@@ -1307,9 +1237,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 12 PSI
-
+12 PSI
 10 – 15
 PSI
 Key
@@ -1332,9 +1260,7 @@ Volume
 During
 Diafiltration
 (DF)
-
-## 35 L
-
+35 L
 30 – 40 L
 Critical
 Potential to under-diafilter if
@@ -1403,9 +1329,7 @@ quality
 N/A
 Recirculation
 Rate
-
-## 8 L/min
-
+8 L/min
 6 – 10
 L/min
 Key
@@ -1417,9 +1341,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 10 PSI
-
+10 PSI
 5 – 15 PSI
 Key
 Impacts flux
@@ -1490,9 +1412,7 @@ process
 N/A
 Recirculation
 Rate
-
-## 10 L/min
-
+10 L/min
 8 – 12
 L/min
 Non-Key
@@ -1523,9 +1443,7 @@ Trans-
 membrane
 Pressure
 (TMP)
-
-## 10 PSI
-
+10 PSI
 5 – 15 PSI
 Non-Key
 No impact to cleaning
@@ -1853,13 +1771,12 @@ Considerations for Pharmaceutical Product Lifecycle Management.
 
 ### 3.8 Stage 1 – Process Validation Summary of Activities
 
-#### Table 3.8-1 provides a checklist of the information needed to transition from Stage 1 to Stage 2 in the PV
-
+Table 3.8-1 provides a checklist of the information needed to transition from Stage 1 to Stage 2 in the PV
 lifecycle.
 
 33
 
-#### Table 3.8-1 Checklist of Information Necessary for Stage 2 (PPQ) Readiness
+**Table 3.8-1 Checklist of Information Necessary for Stage 2 (PPQ) Readiness**
 
 Deliverables
 TR 60 Section
@@ -2644,7 +2561,7 @@ performed. This may increase (typically up to n = 5, or 15 total–5B/5M/5E), de
 criticality of the attribute and its variability estimate. Examples are presented in Table 4.4.2.1-1, Table
 4.4.2.1-2, and Figure 4.4.2.1-1.
 
-#### Table 4.4.2.1-1 Sampling Requirement
+**Table 4.4.2.1-1 Sampling Requirement**
 
 Critical Quality Attribute
 (CQA)
@@ -2664,7 +2581,7 @@ Low
 
 50
 
-#### Table 4.4.2.1-2 Confidence
+**Table 4.4.2.1-2 Confidence**
 
 Critical Quality Attribute
 (CQA)
@@ -2720,12 +2637,11 @@ Stage 1 is not limited to new products; it can be an historical evaluation of co
 batches as part of a TT (36)
 •
 Procedure or work instruction to tie CQA criticality to a risk level
-
-#### Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.
+Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.
 
 52
 
-#### Table 4.4.2.1.2-1 Example Sample Plan
+**Table 4.4.2.1.2-1 Example Sample Plan**
 
 Product Attribute
 Minimum Enhanced Process Performance
@@ -2880,7 +2796,7 @@ After Step 3, the number of batches, N, is provisionally set.
 
 55
 
-#### Table 4.4.2.2-1 Generic Risk Evaluation Table
+**Table 4.4.2.2-1 Generic Risk Evaluation Table**
 
 Knowledge
 Risk
@@ -3475,7 +3391,7 @@ performed. This may increase (typically up to n = 5, or 15 total–5B/5M/5E), de
 criticality of the attribute and its variability estimate. Examples are presented in Table 4.4.2.1-1, Table
 4.4.2.1-2, and Figure 4.4.2.1-1.
 
-#### Table 4.4.2.1-1 Sampling Requirement
+**Table 4.4.2.1-1 Sampling Requirement**
 
 Critical Quality Attribute
 (CQA)
@@ -3495,7 +3411,7 @@ Low
 
 50
 
-#### Table 4.4.2.1-2 Confidence
+**Table 4.4.2.1-2 Confidence**
 
 Critical Quality Attribute
 (CQA)
@@ -3551,12 +3467,11 @@ Stage 1 is not limited to new products; it can be an historical evaluation of co
 batches as part of a TT (36)
 •
 Procedure or work instruction to tie CQA criticality to a risk level
-
-#### Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.
+Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.
 
 52
 
-#### Table 4.4.2.1.2-1 Example Sample Plan
+**Table 4.4.2.1.2-1 Example Sample Plan**
 
 Product Attribute
 Minimum Enhanced Process Performance
@@ -3711,7 +3626,7 @@ After Step 3, the number of batches, N, is provisionally set.
 
 55
 
-#### Table 4.4.2.2-1 Generic Risk Evaluation Table
+**Table 4.4.2.2-1 Generic Risk Evaluation Table**
 
 Knowledge
 Risk
@@ -3862,15 +3777,13 @@ selected for inclusion in the PPQ fully represent processes for all combinations
 selection of combinations and the number of batches representing each combination, should be scientifically
 justified, risk-assessed, and documented in the PVMP and PPQ protocols. Some processes require a
 comprehensive PPQ. In those cases, selecting batches or lots from all combinations is advisable.
-
-#### Table 4.4.2.7-1 shows an example of a matrix design for a PPQ of a filling process where evaluation of
-
+Table 4.4.2.7-1 shows an example of a matrix design for a PPQ of a filling process where evaluation of
 three variables results in multiple drug-product strengths. Variables in this example include fill volume, bulk
 DP solution concentration, and final DP strength.
 
 59
 
-#### Table 4.4.2.7-1 Matrix Design
+**Table 4.4.2.7-1 Matrix Design**
 
 Fill
 Volume
@@ -3954,7 +3867,7 @@ CPPs, and the ability to control the parameters within the ranges. For a unit op
 parameters, use of fewer batches may be appropriate. In these cases, the approach should be clearly justified
 with reference to supporting data in the validation protocol.
 
-#### Table 4.4.2.8-1 Equipment Family Example
+**Table 4.4.2.8-1 Equipment Family Example**
 
 Equipment
 Family –
@@ -3968,9 +3881,7 @@ Qualification
 Assessment
 Supporting Data
 Bioreactor #1
-
-## 3 Batches
-
+3 Batches
 Compare:
 •
 Physical design
@@ -3996,12 +3907,9 @@ process characterization
 runs available to support
 ranges
 Bioreactor #2
-
-## 1 Batch
-
+1 Batch
 Bioreactor #3
-
-## 1 Batch
+1 Batch
 
 Example 2: Buffer Family Grouping
 In assessing the stability of solutions and buffers to support commercial-scale bulk-protein DS
@@ -4807,7 +4715,7 @@ action (if required) on those signals to avoid potential process failures.
 
 81
 
-#### Table 5.5.3-1 Sample of Annual Product Review or Yearly Biologic Product Report Elements
+**Table 5.5.3-1 Sample of Annual Product Review or Yearly Biologic Product Report Elements**
 
 Supported by Continued Process Verification
 Report Elements/Sections
@@ -5068,7 +4976,7 @@ scientific studies to reduce the amount of uncertainty for higher-risk attribute
 
 87
 
-#### Table 6.1.1-1 Product Attribute Criticality Risk Assessment Example
+**Table 6.1.1-1 Product Attribute Criticality Risk Assessment Example**
 
 #### 6.1.2 Risk Management in Stage 2 – Process Qualification
 
@@ -5123,7 +5031,7 @@ Critical
 
 88
 
-#### Table 6.1.2-1 Risk-Based Qualification Planning
+**Table 6.1.2-1 Risk-Based Qualification Planning**
 
 Risk assessments performed during Stage 2 not only help prioritize qualification activities but also aid in the
 ongoing collection of knowledge and the planning of statistical sampling. Generally, three factors—
@@ -5148,7 +5056,7 @@ created. The HACCP system is an example of control, as are procedures and traini
 not always technology-based; increase of detectability may as well be driven by procedures and
 training. The HACCP is a useful QRM tool that can help in enhancing controls.
 
-#### Table 6.1.2-2 Severity Rating and Sampling Requirements Risk
+**Table 6.1.2-2 Severity Rating and Sampling Requirements Risk**
 
 Risk Assessment
 Output Ratings
@@ -5209,7 +5117,7 @@ Section 9.0 (Appendix I). Additional information on statistical methods can be f
 
 90
 
-#### Table 6.2-1 Statistical Methods and the Typical Stages at Which They are Used
+**Table 6.2-1 Statistical Methods and the Typical Stages at Which They are Used**
 
 Statistical Tool
 Stage 1
@@ -5571,7 +5479,7 @@ of specification. Table 6.2.2.3-1 assumes the process is in statistical control,
 centered between the lower specification limits (LSL) and upper two-sided specification limits (USL). If the
 process is not normally distributed, process capability methods for nonnormal distributions should be used.
 
-#### Table 6.2.2.3-1 Relationship Between Capability and % or Per Million Nonconforming
+**Table 6.2.2.3-1 Relationship Between Capability and % or Per Million Nonconforming**
 
 USL – LSL
 ±2σ
@@ -5827,7 +5735,7 @@ which outlines the increasing knowledge and process understanding with each tran
 
 104
 
-#### Table 6.4-1 Technology Transfer Activities throughout the Product Lifecycle
+**Table 6.4-1 Technology Transfer Activities throughout the Product Lifecycle**
 
 Process
 Validation
@@ -6266,7 +6174,7 @@ An example of the three stages of PV for a humanized IgG1 is provided in Table 7
 
 114
 
-#### Table 7.1-1 Stage 1: Process Design (Large Molecule Example)
+**Table 7.1-1 Stage 1: Process Design (Large Molecule Example)**
 
 Category
 Activities
@@ -6528,7 +6436,7 @@ N/A
 
 118
 
-#### Table 7.1-2 Stage 2: Process Qualification (Large Molecule Example)
+**Table 7.1-2 Stage 2: Process Qualification (Large Molecule Example)**
 
 Category
 Activities
@@ -6690,7 +6598,7 @@ package.
 
 121
 
-#### Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example)
+**Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example)**
 
 Category
 Activities
@@ -6749,7 +6657,7 @@ specification changes that might occur.
 7.2 Small Molecule (Parenteral)
 An example of the three stages of PV for an organic, parenteral dosage form is provided in Table 7.2-1 (Stage 1), Table 7.2-2 (Stage 2), and Table 7.2-3 (Stage 3).
 
-#### Table 7.2-1 Stage 1: Process Design (Small Molecule Example)
+**Table 7.2-1 Stage 1: Process Design (Small Molecule Example)**
 
 Category
 Activities
@@ -7047,7 +6955,7 @@ was finalized during Stage 2, when all
 attributes, parameters, and systems were
 known.
 
-#### Table 7.2-2 Stage 2: Process Qualification (Small Molecule Example)
+**Table 7.2-2 Stage 2: Process Qualification (Small Molecule Example)**
 
 Category
 Activities
@@ -7207,9 +7115,7 @@ Stages 1 and 2 were:
 •
 3 stability batches
 •
-
-## 5 PPQ batches
-
+5 PPQ batches
 Data was analyzed for the total of both stages.
 A slight variation in the number of development
 and PPQ batches can depend on dosage
@@ -7247,7 +7153,7 @@ used in the submission package on an as-needed basis.
 N/A
 130
 
-#### Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example)
+**Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example)**
 
 Category
 Activities
@@ -7700,7 +7606,7 @@ sampling may be used in PPQ for the first three lots until 50% coverage is reach
 considered complete. Reduced sampling for critical characteristics may continue into Stage 3 CPV for four
 more lots until 75% coverage is reached, at which point, routine sampling begins (2).
 
-#### Table 9.2-1 Expected Between-Lot Variation in Number of Lots
+**Table 9.2-1 Expected Between-Lot Variation in Number of Lots**
 
 Expected
 Coverage
@@ -7818,7 +7724,7 @@ special causes. Table 9.6-1 shows the required number of conforming lots. This m
 
 140
 
-#### Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate
+**Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate**
 
 Confidence
 Conformance
@@ -7896,7 +7802,7 @@ Due to the squaring under the radical, if σb < σw, the impact of the between-l
 process variation decreases rapidly the less it is compared to the within-lot variation σw. Table 9.8-1 shows
 this impact.
 
-#### Table 9.8-1 Effect of Between-Lot Variation on the Total Process Variance
+**Table 9.8-1 Effect of Between-Lot Variation on the Total Process Variance**
 
 Within
 𝝈𝝈𝒘𝒘
@@ -7954,12 +7860,11 @@ criteria could be based on point-estimates of the variance components or confide
 
 ### 9.9 Sample Size
 
-#### Table 9.9-1 shows the sample size n required to estimate a standard deviation to within a specified percent
-
+Table 9.9-1 shows the sample size n required to estimate a standard deviation to within a specified percent
 of its true value with 90% and 95% confidence (13, 14). This method does not require a previous estimate or
 reference sigma since the error is expressed in relative, rather than absolute, terms.
 
-#### Table 9.9-1 Sample Size to Estimate a Standard Deviation to Within ±x% of True Value
+**Table 9.9-1 Sample Size to Estimate a Standard Deviation to Within ±x% of True Value**
 
 Confidence
 ± % Relative Error
@@ -7983,7 +7888,7 @@ n
 33%
 18
 
-#### Table 9.9-1 indicates that a minimum of 32 lots are required for the estimated between-lot standard
+**Table 9.9-1 indicates that a minimum of 32 lots are required for the estimated between-lot standard**
 
 deviation to be within ±25% of its true value σb with 95% confidence. Since the table assumes the lot means
 are estimated exactly, more than 32 lots may be required if the sample size per lot is small or there is
@@ -8320,20 +8225,14 @@ Osamu Shirokizawa
 pda.org
 
 PDA Global Headquarters
-
-## 4350 East West Highway, Suite 600
-
+4350 East West Highway, Suite 600
 Bethesda, MD 20814 USA
 TEL +1 (301) 656-5900
 FAX +1 (301) 986-0296
 PDA Europe
 Am Borsigturm 60
-
-## 13507 Berlin, Germany
-
+13507 Berlin, Germany
 PDA Asia Pacific
-
-## 20 Bendemeer Rd. #04-02  B S
-
+20 Bendemeer Rd. #04-02  B S
 Bendemeer Centre, Singapore
 339914

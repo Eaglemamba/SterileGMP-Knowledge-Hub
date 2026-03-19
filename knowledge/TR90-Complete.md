@@ -1,18 +1,18 @@
 # PDA Technical Report No. 90 (2023): Contamination Control Strategy Development in Pharmaceutical Manufacturing
 
-#### Table 15.0-4	 Path of Materials, Equipment, or Waste���48
+**Table 15.0-4	 Path of Materials, Equipment, or Waste���48**
 
-#### Table 15.0-5	 Maintenance��������������������������������������������49
+**Table 15.0-5	 Maintenance��������������������������������������������49**
 
-#### Table 15.0-6	 Movement and Gowning of Personnel�����50
+**Table 15.0-6	 Movement and Gowning of Personnel�����50**
 
-#### Table 15.0-7	 Composition of DS and DP�����������������������50
+**Table 15.0-7	 Composition of DS and DP�����������������������50**
 
-#### Table 15.0-8	 Cleaning and Sterilization Processes��������50
+**Table 15.0-8	 Cleaning and Sterilization Processes��������50**
 
-#### Table 15.0-9	 Environmental Monitoring�����������������������51
+**Table 15.0-9	 Environmental Monitoring�����������������������51**
 
-#### Table 15.0-10	Testing Controls or Alert Levels/ Action
+**Table 15.0-10	Testing Controls or Alert Levels/ Action**
 
  Limits������������������������������������������������������51
 
@@ -20,15 +20,15 @@
 
 Methodology�������������������������������������������52
 
-#### Table 16.1-1	 Microbial Impact Assessment Example 1�54
+**Table 16.1-1	 Microbial Impact Assessment Example 1�54**
 
-#### Table 16.3-1	 Microbial Impact Assessment Example 2�57
+**Table 16.3-1	 Microbial Impact Assessment Example 2�57**
 
-#### Table 17.4-1	 Example of Categorization of Disruption �60
+**Table 17.4-1	 Example of Categorization of Disruption �60**
 
-#### Table 17.4-2	 Example Recovery Plans��������������������������60
+**Table 17.4-2	 Example Recovery Plans��������������������������60**
 
-#### Table 18.0-1	 Illustration of CCS Tailored to Example
+**Table 18.0-1	 Illustration of CCS Tailored to Example**
 
 Process�����������������������������������������������������61
 
@@ -395,10 +395,9 @@ processes and operate equipment according to procedures to deliver contaminant-f
 mediates and products.
 Personnel awareness is achieved through a combination of training, education, and ongoing diligence.
 Training addresses what a task is and how it is done; education addresses why it is done.
+Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.
 
-#### Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.
-
-#### Table 3.1.3-1	 Example: Personnel Roles and Responsibilities Related to CCS
+**Table 3.1.3-1	 Example: Personnel Roles and Responsibilities Related to CCS**
 
 Leadership Role
 Makes contamination prevention a priority
@@ -646,9 +645,7 @@ End-to-end aseptic processing conditions that should be applied throughout the p
 •
 CCS designed to minimize ingress of foreign particulate matter from all solutions and product contact
 surfaces, e.g., consumables (see PDA Technical Report No. 81: Cell-Based Therapy Control Strategy and
-
-#### Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is
-
+Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is
 addressed by using a holistic approach.
 (Table 4.2-1 Continued)
 12
@@ -785,9 +782,7 @@ tibility to microbial ingress, the growth-promoting ability of the process inter
 and the downstream particle-removal steps. The collection and handling of in-process samples should
 ensure the chain of custody from collection to final review of the test results. Table 4.4.1-1 provides
 more detail on monitoring plans.
-
-#### 4.4.1 Bioburden/Endotoxin Monitoring
-
+4.4.1	 Bioburden/Endotoxin Monitoring
 The control and monitoring of bioburden and endotoxin levels throughout the manufacture of DS
 and DP are important elements of the overall microbial control program. Process monitoring provides
 valuable insight into the microbial status of the manufacturing process, which in turn leads to the mi-
@@ -885,10 +880,9 @@ processes and operate equipment according to procedures to deliver contaminant-f
 mediates and products.
 Personnel awareness is achieved through a combination of training, education, and ongoing diligence.
 Training addresses what a task is and how it is done; education addresses why it is done.
+Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.
 
-#### Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.
-
-#### Table 3.1.3-1	 Example: Personnel Roles and Responsibilities Related to CCS
+**Table 3.1.3-1	 Example: Personnel Roles and Responsibilities Related to CCS**
 
 Leadership Role
 Makes contamination prevention a priority
@@ -1136,9 +1130,7 @@ End-to-end aseptic processing conditions that should be applied throughout the p
 •
 CCS designed to minimize ingress of foreign particulate matter from all solutions and product contact
 surfaces, e.g., consumables (see PDA Technical Report No. 81: Cell-Based Therapy Control Strategy and
-
-#### Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is
-
+Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is
 addressed by using a holistic approach.
 (Table 4.2-1 Continued)
 12
@@ -1275,9 +1267,7 @@ tibility to microbial ingress, the growth-promoting ability of the process inter
 and the downstream particle-removal steps. The collection and handling of in-process samples should
 ensure the chain of custody from collection to final review of the test results. Table 4.4.1-1 provides
 more detail on monitoring plans.
-
-#### 4.4.1 Bioburden/Endotoxin Monitoring
-
+4.4.1	 Bioburden/Endotoxin Monitoring
 The control and monitoring of bioburden and endotoxin levels throughout the manufacture of DS
 and DP are important elements of the overall microbial control program. Process monitoring provides
 valuable insight into the microbial status of the manufacturing process, which in turn leads to the mi-
@@ -1429,7 +1419,7 @@ Manufacturing Systems provides a detailed and thorough guideline for manufacturi
 Technical Report 69 also details how facility design and environmental control contribute to contamina-
 tion control. Table 5.1-1 highlights some characteristics of the holistic approach to facility considerations.
 
-#### Table 5.1-1 Holistic Approach to Facility Considerations
+**Table 5.1-1 Holistic Approach to Facility Considerations**
 
 Non-Holistic Approach
 Holistic Approach
@@ -1506,7 +1496,7 @@ When running well, critical utility systems appear to fade into the background, 
 tained, operated, and monitored properly, they can lead to a shutdown of production or even adulteration
 of products. Table 5.1.4-1 highlights some characteristics of the holistic approach to utility considerations.
 
-#### Table 5.1.4-1	 Holistic Approach to Utility Considerations
+**Table 5.1.4-1	 Holistic Approach to Utility Considerations**
 
 Non-Holistic Approach
 Holistic Approach
@@ -2462,7 +2452,7 @@ pact of the different elements of the manufacturing process should be considered
 outlined in Table 10.2.3-1, and CCI should be demonstrated at worst-case manufacturing operations.
 37
 
-#### Table 10.2.3-1	 Functional CCI Considerations
+**Table 10.2.3-1	 Functional CCI Considerations**
 
 CCI Aspect
 Functional Considerations
@@ -2639,9 +2629,7 @@ other failures; whereas a HACCP is appropriate to determine whether the surround
 gies are sufficient and to identify the in-process sample locations that will monitor the effectiveness
 of the design and controls. When changes are made, a less formal risk tool may be used as part of the
 change control process to assess whether the change will introduce new risks.
-
-#### Table 11.5-1 presents examples of the detailed risk assessments that form the initial foundation of a CCS.
-
+Table 11.5-1 presents examples of the detailed risk assessments that form the initial foundation of a CCS.
 Table 11.5-1
 Examples of Foundational Risk Assessments that Support CCS
 Contamination
@@ -3239,9 +3227,7 @@ Benefit to Preventing Contamination
 •	 Maintenance activities are inherently risky events when nonroutine equipment and materials enter the clean areas, which can bring in
 contamination that overchallenges the normal control measures. Also, maintenance personnel may be inexperienced with cleanroom
 behavior and may be unaware of basic microbiology and how their work can interfere with contamination controls. (Section 17.0—
-
-## Appendix III: presents example cases of contamination after maintenance events, “Clean-up and Return to Service” item #2.)
-
+Appendix III presents example cases of contamination after maintenance events, “Clean-up and Return to Service” item #2.)
 •	 Understanding the potential risks from maintenance activities is important in order to build standard procedures that address how to
 perform all maintenance activities in a way that reduces risk.
 50
@@ -3332,7 +3318,7 @@ Attention should also be paid to monitoring the recovery of microorganisms durin
 •
 When an atypical organism is recovered, the potential risk of product impact should be assessed.
 
-#### Table 15.0-10	 Testing Controls or Alert Levels/ Action Limits
+**Table 15.0-10	 Testing Controls or Alert Levels/ Action Limits**
 
 Setting Levels
 Alert levels and action limits for impurities and contaminants serve to reinforce that purification steps are effective
@@ -3436,9 +3422,7 @@ Characteristics of Microorganism
 Microorganism Identified:
 Stenotrophomonas maltophilia a
 CFU per sample volume:
-
-## 120 CFU/10 mL
-
+120 CFU/10 mL
 Estimated CFU/total working volume
 (50 L):
 6.0 x 105 CFU/50 L
@@ -3640,9 +3624,7 @@ Event Conditions [italics are example text]
 Microorganism Type (Genus, species): Sphingomonas paucimobilus
 Amount Detected: 20 CFU/100 mL
 Total number of microorganisms in batch:
-
-## 10 L/total batch x 200 CFU/L = 2x103 CFU/total batch
-
+10 L/total batch x 200 CFU/L = 2x103 CFU/total batch
 Process Step: UF/DF skid
 Process Step Limit: 10 CFU/100 mL
 Process Step Hold Time: < 24 hours
@@ -3835,9 +3817,7 @@ Define a sequence of activities or steps to be conducted
 Provide instructions for the alternative movement of materials, equipment, and people
 •
 Train personnel involved in the shut-down activities how to prevent contamination
-
-#### Table 17.4-1 describes each level of disruption and offers examples. Specific actions to be taken as part
-
+Table 17.4-1 describes each level of disruption and offers examples. Specific actions to be taken as part
 of recovery activities are shown in the Table 17.4-2. The information in these tables is not all-inclusive
 but is provided as a guidance for consideration.
 Table 17.4-1
@@ -4414,9 +4394,7 @@ Benefit to Preventing Contamination
 •	 Maintenance activities are inherently risky events when nonroutine equipment and materials enter the clean areas, which can bring in
 contamination that overchallenges the normal control measures. Also, maintenance personnel may be inexperienced with cleanroom
 behavior and may be unaware of basic microbiology and how their work can interfere with contamination controls. (Section 17.0—
-
-## Appendix III: presents example cases of contamination after maintenance events, “Clean-up and Return to Service” item #2.)
-
+Appendix III presents example cases of contamination after maintenance events, “Clean-up and Return to Service” item #2.)
 •	 Understanding the potential risks from maintenance activities is important in order to build standard procedures that address how to
 perform all maintenance activities in a way that reduces risk.
 50
@@ -4507,7 +4485,7 @@ Attention should also be paid to monitoring the recovery of microorganisms durin
 •
 When an atypical organism is recovered, the potential risk of product impact should be assessed.
 
-#### Table 15.0-10	 Testing Controls or Alert Levels/ Action Limits
+**Table 15.0-10	 Testing Controls or Alert Levels/ Action Limits**
 
 Setting Levels
 Alert levels and action limits for impurities and contaminants serve to reinforce that purification steps are effective
@@ -4611,9 +4589,7 @@ Characteristics of Microorganism
 Microorganism Identified:
 Stenotrophomonas maltophilia a
 CFU per sample volume:
-
-## 120 CFU/10 mL
-
+120 CFU/10 mL
 Estimated CFU/total working volume
 (50 L):
 6.0 x 105 CFU/50 L
@@ -4815,9 +4791,7 @@ Event Conditions [italics are example text]
 Microorganism Type (Genus, species): Sphingomonas paucimobilus
 Amount Detected: 20 CFU/100 mL
 Total number of microorganisms in batch:
-
-## 10 L/total batch x 200 CFU/L = 2x103 CFU/total batch
-
+10 L/total batch x 200 CFU/L = 2x103 CFU/total batch
 Process Step: UF/DF skid
 Process Step Limit: 10 CFU/100 mL
 Process Step Hold Time: < 24 hours
@@ -5010,9 +4984,7 @@ Define a sequence of activities or steps to be conducted
 Provide instructions for the alternative movement of materials, equipment, and people
 •
 Train personnel involved in the shut-down activities how to prevent contamination
-
-#### Table 17.4-1 describes each level of disruption and offers examples. Specific actions to be taken as part
-
+Table 17.4-1 describes each level of disruption and offers examples. Specific actions to be taken as part
 of recovery activities are shown in the Table 17.4-2. The information in these tables is not all-inclusive
 but is provided as a guidance for consideration.
 Table 17.4-1

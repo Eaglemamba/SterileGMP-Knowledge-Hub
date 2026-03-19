@@ -37,9 +37,7 @@ Diligence Assessment Checklist.......105
 Table 7.7.3-3
 An Interpretation of the SUS
 Implementation Process....................106
-
-#### Table 8.4.3.1-1	Sample Room Classifications............117
-
+Table 8.4.3.1-1	Sample Room Classifications............117
 1
 Single-use technology, often described as single-use systems (SUSs) or single-use equipment, has the
 potential to transform pharmaceutical manufacturing by offering tremendous opportunities to reduce
@@ -770,7 +768,7 @@ materials, they have developed physical and mechanical operations to produce the
 lent unit operation in a format that is designed for an SU. A comparative description of the features of
 SU and MU technologies is presented in Table 4.2-1.
 
-#### Table 4.2-1	 Comparison of MU and SU Systems
+**Table 4.2-1	 Comparison of MU and SU Systems**
 
 Functional Requirement
 MUS
@@ -1000,7 +998,7 @@ integrated unit, may impact the process outcome. A description of a process comp
 is provided in Table 4.5.1-1.
 19
 
-#### Table 4.5.1-1	Assessment of Process Compatibility
+**Table 4.5.1-1	Assessment of Process Compatibility**
 
 Factor
 Design Considerations
@@ -1070,7 +1068,7 @@ Setup includes those activities required to deliver the SUS to the point of use.
 the hands-on steps required to successfully assemble and ready the system for use in a specific SUS
 application. Examples of the facility setup and deployment assessments are described in Table 4.6-1.
 
-#### Table 4.6-1	 Assessment of SUS Facility Setup and Deployment
+**Table 4.6-1	 Assessment of SUS Facility Setup and Deployment**
 
 Factor
 Design Considerations
@@ -1115,7 +1113,7 @@ ual process requirements and facility. Examples of operational requirement asses
 in Table 4.6.1-1.
 21
 
-#### Table 4.6.1-1	Assessment of Operational Requirements
+**Table 4.6.1-1	Assessment of Operational Requirements**
 
 Design Factor
 Design Considerations
@@ -1262,7 +1260,7 @@ commonly used for the production of SU components, along with their trade names,
 breviations, properties, and applications.
 24
 
-#### Table 4.8-1	 Plastics Commonly Used in SUS
+**Table 4.8-1	 Plastics Commonly Used in SUS**
 
 Family
 Chemical
@@ -1434,7 +1432,7 @@ bons, oxidants, and strong acids
 Reduced creep resistance compared
 to LDPE
 
-#### Table 4.8-1 (Continued)
+**Table 4.8-1 (Continued)**
 
 26
 Family
@@ -1526,7 +1524,7 @@ Not autoclavable
 Disposal issues (generates dioxin on
 incineration)
 
-#### Table 4.8-1 (Continued)
+**Table 4.8-1 (Continued)**
 
 27
 Family
@@ -1602,7 +1600,7 @@ are registered trademarks of E.I. Dupont de Nemours and Company. Dowlex® and En
 trademark of Saint-Gobain. Elastollan® and Ultramid® 6,6 are registered trademarks of BASF. Lexan® is a registered trademark of SABIC. Makrolon® is a registered trademark of
 Bayer Material Science. Fluon® is a registered trademark of AGS. Moplen® and Pro-fax® are registered trademarks of Basell NV. Irogran® is a registered trademark of Huntsman.
 
-#### Table 4.8-1 (Continued)
+**Table 4.8-1 (Continued)**
 
 28
 
@@ -1680,7 +1678,7 @@ systems, continue to emerge. They rely on specific bag geometry and other unique
 for liquid movement (e.g., collapsible and expandable bellows sections designed into a container).
 The specific considerations for selecting a mixing technique are summarized in Table 4.8.2.1-1.
 
-#### Table 4.8.2.1-1	 Specific Considerations for Mixing
+**Table 4.8.2.1-1	 Specific Considerations for Mixing**
 
 Factor
 Consideration
@@ -1734,7 +1732,7 @@ in the new generation of SU fermenters and bioreactors. SU fermenters require un
 and mass transfer in order to control temperature and the necessary oxygen transfer rates.
 The specific considerations for fermenters or bioreactors are summarized in Table 4.8.3.1-1.
 
-#### Table 4.8.3.1-1	 Specific Considerations for Fermenters or Bioreactors
+**Table 4.8.3.1-1	 Specific Considerations for Fermenters or Bioreactors**
 
 Factor
 Consideration
@@ -1793,7 +1791,7 @@ ture or in a refrigerator. Long-term storage of process intermediates often requ
 freezing or cryogenic preservation (refer to Section 4.10, Freezing). Factors that affect the storage of
 process intermediates are summarized in Table 4.9.1-1.
 
-#### Table 4.9.1-1	Specific Considerations for the Storage of Process Intermediates
+**Table 4.9.1-1	Specific Considerations for the Storage of Process Intermediates**
 
 Factor
 Consideration
@@ -1909,9 +1907,7 @@ wash, and harvest; and cell separation. These systems utilize a gamma-irradiated
 or polymeric liner for product contact and, as such, eliminate the need for CIP or manual cleaning and
 SIP or hot water for injection (WFI) for bioburden sterilization and control of traditional centrifuges.
 Flow rates vary depending on the manufacture and design of the equipment, ranging from <10 to
-
-## 100 L per minute at <100X to 8000X G force. Continuous and batch centrifugation technologies are
-
+100 L per minute at <100X to 8000X G force. Continuous and batch centrifugation technologies are
 available.
 
 ### 4.13 Chromatography
@@ -2044,7 +2040,7 @@ SUS or an MUS because they can be sterilized by gamma irradiation or autoclaving
 36
 The specific considerations for isolators are summarized in Table 4.15-1.
 
-#### Table 4.15-1	Specific Considerations for Isolators
+**Table 4.15-1	Specific Considerations for Isolators**
 
 Factor
 Consideration
@@ -2333,7 +2329,7 @@ potential areas of concern (Figure 5.2-1). Table 5.2-1 identifies the risk compl
 
 42
 
-#### Table 5.2-1	 Risk Complexities of SUS Items and Applications
+**Table 5.2-1	 Risk Complexities of SUS Items and Applications**
 
 System Complexity
 Low
@@ -3363,7 +3359,7 @@ according to the project scope. The resulting submodels for facility, investment
 costs may then be combined to form the total cost model. The factors to consider for the process
 model are summarized in Table 6.5-1.
 
-#### Table 6.5-1	 Factors That Affect the Process Model
+**Table 6.5-1	 Factors That Affect the Process Model**
 
 Process Model Factors
 Considerations for SUS Implementation
@@ -3429,7 +3425,7 @@ the process model in order to estimate utilization and batch output from the fac
 tion is combined with other cost models, the average batch cost for the various scenarios can then be
 calculated. The main factors that affect the selection of operation model are summarized in Table 6.6-1.
 
-#### Table 6.6-1	 Factors That Affect the Operational Model
+**Table 6.6-1	 Factors That Affect the Operational Model**
 
 Operational Model Factors
 Considerations
@@ -3467,7 +3463,7 @@ facility throughput when technologies are compared.
 A project may involve either the construction of a new facility or the retrofitting of an existing one.
 The main points of consideration for both cases are summarized in Table 6.7-1 (58).
 
-#### Table 6.7-1	 Comparative Evaluation of a New Versus Retrofitted Facility During SUS Implementation
+**Table 6.7-1	 Comparative Evaluation of a New Versus Retrofitted Facility During SUS Implementation**
 
 New Facility
 Retrofitting of an Existing Facility
@@ -3540,12 +3536,10 @@ The first step in evaluating an SU project is normally an equipment-to-equipment
 versus MUS direct investment cost. Reduced demand for cleaning and sterilization allow for simpli-
 fications in piping and instrumentation, which leads to a reduction in the investment cost for SUSs.
 While this will give an estimate of whether the technology is economically feasible for the project,
-
-#### Table 6.8.1-1 shows additional factors for evaluating investment costs that should be considered for
-
+Table 6.8.1-1 shows additional factors for evaluating investment costs that should be considered for
 an SUS project (59).
 
-#### Table 6.8.1-1	Contributory Factors to Investment Costs
+**Table 6.8.1-1	Contributory Factors to Investment Costs**
 
 Investment Costs
 Considerations
@@ -3679,7 +3673,7 @@ Fixed operating costs represent the expenditure on the facility regardless of th
 The main factors involved in evaluating fixed operating costs are summarized in Table 6.10-1.
 69
 
-#### Table 6.10-1	Main Fixed Operating Costs
+**Table 6.10-1	Main Fixed Operating Costs**
 
 Fixed Costs
 Description
@@ -3946,7 +3940,7 @@ estimated to be about 15,000 to 20,000 BTU/lb (34,890 to 46,520 kJ/kg), which co
 of coal at 9,000 to 12,000 BTU/lb (20,934 to 27,912 kJ/kg) and to that of gasoline/petrol (66,70). Table
 6.13-1 shows a comparison of the methods for treating waste from SUSs (64).
 
-#### Table 6.13-1	Treating and Discarding Waste from SUSs
+**Table 6.13-1	Treating and Discarding Waste from SUSs**
 
 Option
 Advantages
@@ -4183,7 +4177,7 @@ and activities of various workflows.
 
 79
 
-#### Table 7.1-1	 Focus and Output for Each SUS Implementation Stage
+**Table 7.1-1	 Focus and Output for Each SUS Implementation Stage**
 
 Stage
 Section
@@ -4388,7 +4382,7 @@ Stakeholder management is important throughout the SUS implementation process. I
 influencing both the external and internal environments, and 2) creating positive relationships with stakeholders by appropriately managing their expectations and
 agreed objectives.
 
-#### Table 7.1-1 (Continued)
+**Table 7.1-1 (Continued)**
 
 81
 A structured approach is important and beneficial to every stage of implementation (Table 7.1-1).
@@ -4494,7 +4488,7 @@ No impact
 Immediate detection
 Continuous verification
 
-#### Table 7.2.3-2 ranks SUS implementation risks by correlating the complexity and process-specific risks
+**Table 7.2.3-2 ranks SUS implementation risks by correlating the complexity and process-specific risks**
 
 of a potential application. The highest level of risk is shown in red, moderate in orange, and the lowest
 83
@@ -4526,9 +4520,7 @@ High
 Manifolds: Self-assembled
 Sterile connectors
 Cell & virus culture
-
-#### Table 7.2.3-3 shows risk-mitigation tools and the levels of control for current and future states in an
-
+Table 7.2.3-3 shows risk-mitigation tools and the levels of control for current and future states in an
 SUS. The risk evaluation of future process states would be lower (i.e., a greater level of control over
 the process or system) if the level of risk were reviewed, assessed, and mitigated on a regular basis.
 Table 7.2.3-3
@@ -4812,7 +4804,7 @@ examples of checklists, implementation experiences, and points to consider can b
 erature (83–89).
 89
 
-#### Table 7.4.1-1	Typical Contents of the SUS Project Execution Plan
+**Table 7.4.1-1	Typical Contents of the SUS Project Execution Plan**
 
 SUS Project Execution Plan
 1. Introduction
@@ -6350,7 +6342,7 @@ cording to EU GMP and PIC/S. The protection classes of electrical equipment in t
 be IP54 and in other areas according to room activity. Table 8.4.3.1-1 gives classification examples.
 117
 
-#### Table 8.4.3.1-1	 Sample Room Classifications
+**Table 8.4.3.1-1	 Sample Room Classifications**
 
 Activity
 Class
@@ -8204,9 +8196,7 @@ Mike Wiebe, Quantum Consulting, LLC
 Hannelore Willkommen, RBS Consulting
 Wendy Zwolenski-Lambert, Novartis
 Bethesda Towers
-
-## 4350 East West Highway
-
+4350 East West Highway
 Suite 200
 Bethesda, MD 20814 USA
 Tel:

@@ -2,18 +2,12 @@
 
 Points to Consider No. 12
 vii
-
-*[Figure 5.3-1 Plate Slider ............................................................................................................................... 64]*
-
-*[Figure 5.4-1 Settle Plate Stand ................................................................................................................... 66]*
-
-*[Figure 6.3-1 Rapid Transfer Port (RTP) for Stopper Loading ................................................................ 76]*
-
-*[Figure 6.3-2 Manual Stopper Transfer System Schematic .................................................................... 77]*
-
-*[Figure 6.3-3 Example of Manual Stopper Transfer System .................................................................. 77]*
-
-*[Figure 6.4-1 E-beam Technology for Introduction of Ready-to-Use Packaging Material .............. 79]*
+Figure 5.3-1 Plate Slider ............................................................................................................................... 64
+Figure 5.4-1 Settle Plate Stand ................................................................................................................... 66
+Figure 6.3-1 Rapid Transfer Port (RTP) for Stopper Loading ................................................................ 76
+Figure 6.3-2 Manual Stopper Transfer System Schematic .................................................................... 77
+Figure 6.3-3 Example of Manual Stopper Transfer System .................................................................. 77
+Figure 6.4-1 E-beam Technology for Introduction of Ready-to-Use Packaging Material .............. 79
 
 *[Figure 6.4-2 Vapor Phase Hydrogen Peroxide (VPHP) Technology for Introduction of Ready-to-]*
 
@@ -22,15 +16,10 @@ Use Packaging Material .........................................................
 *[Figure 6.4-3 No-Touch-Transfer (NTT) Technology for Introduction of Ready-to-Use Packaging]*
 
 Material ............................................................................................................................................................ 80
-
-*[Figure 9.7-1 Approach 1: RABS Door Closed ........................................................................................ 102]*
-
-*[Figure 9.7-2 Example of Approach 1 ....................................................................................................... 102]*
-
-*[Figure 9.7-3 Approach 2: RABS Door Open .......................................................................................... 103]*
-
-*[Figure 9.7-4 Approach 3: RABS Door Closed ........................................................................................ 104]*
-
+Figure 9.7-1 Approach 1: RABS Door Closed ........................................................................................ 102
+Figure 9.7-2 Example of Approach 1 ....................................................................................................... 102
+Figure 9.7-3 Approach 2: RABS Door Open .......................................................................................... 103
+Figure 9.7-4 Approach 3: RABS Door Closed ........................................................................................ 104
 Points to Consider No. 12
 1
 Introduction
@@ -65,9 +54,7 @@ technology to isolators and, consequently, key design, regulatory and operationa
 considerations apply, most notably background environments, cleaning, disinfection and decontamination
 methods, aseptic setup, and strictly defined conditions and controls governing open-door RABS
 interventions.
-
-## 1 The Pharmaceutical Inspection Co-operation Scheme (PIC/S) Good Manufacturing Practice (GMP) Annex 1 is
-
+1 The Pharmaceutical Inspection Co-operation Scheme (PIC/S) Good Manufacturing Practice (GMP) Annex 1 is
 identical to the European Union (EU) Annex 1 and hereafter EU Annex 1 is also understood to mean EU PIC/S
 Annex 1.
 Points to Consider No. 12
@@ -439,10 +426,9 @@ Q 1.2. What are the design criteria considerations for restricted access barrier
 Recommendation
 There are several design criteria attributes that need to be taken into consideration when selecting the type of RABS appropriate for a filling line
 (1, 5, 6).
+Table 1.2-1 summarizes the main design criteria attributes that need to be taken into consideration for each type of RABS.
 
-#### Table 1.2-1 summarizes the main design criteria attributes that need to be taken into consideration for each type of RABS.
-
-#### Table 1.2-1 RABS and Non-Barrier System Design Criteria Attribute Considerations
+**Table 1.2-1 RABS and Non-Barrier System Design Criteria Attribute Considerations**
 
 Design Attribute
 Non-Barrier System*
