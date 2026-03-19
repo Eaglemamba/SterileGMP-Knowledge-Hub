@@ -12,12 +12,14 @@ Before searching, analyse the user's question:
 
 **A) Translate lay terms to technical terms** if needed:
 - "過濾器有沒有破損 / filter broken / filter leak" → "integrity test", "bubble point", "diffusive flow"
-- "媒體充填 / 培養基充填 / 模擬充填" → "media fill", "APS", "aseptic process simulation"
-- "如何證明製程穩定" → "process validation", "CPV", "continued process verification"
-- "一次性 / 拋棄式" → "single-use", "SUS", "disposable"
-- "隔離器 / 屏障系統" → "RABS", "isolator", "barrier system"
+- "培養基充填 / 無菌製程模擬 / media fill / APS" → "media fill", "APS", "aseptic process simulation"
+- "如何證明製程穩定 / 製程驗證" → "process validation", "CPV", "continued process verification"
+- "一次性 / 拋棄式系統" → "single-use", "SUS", "disposable"
+- "隔離器 / 屏障系統 / RABS" → "RABS", "isolator", "barrier system"
 - "預充填針 / 預填充注射器" → "prefilled syringe"
-- "細胞治療 / 基因治療" → "ATMP", "cell therapy", "gene therapy"
+- "細胞治療 / 基因治療 / 先進療法" → "ATMP", "cell therapy", "gene therapy"
+- "優良運銷規範 / 配送管理" → "GDP", "good distribution practices", "cold chain"
+- "污染控制策略" → "CCS", "contamination control strategy"
 - Apply this reasoning to any other lay language the user uses.
 
 **B) Classify the question type:**
