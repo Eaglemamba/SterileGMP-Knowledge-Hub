@@ -383,9 +383,16 @@ def _filter_original_only(md: str) -> str:
             cleaned = re.sub(r'\s{2,}', ' ', cleaned)  # collapse double spaces
             line = '#' * depth + ' ' + cleaned
 
-        # Drop any line containing CJK characters (commentary, Chinese
-        # translations, figure captions with Chinese, etc.)
+        # Handle lines with CJK characters
         if _has_cjk(line):
+            # For pipe-table rows, strip CJK from each cell instead of dropping
+            if line.strip().startswith('|'):
+                cleaned_line = CJK_RE.sub('', line)
+                cleaned_line = re.sub(r'\s{2,}', ' ', cleaned_line)
+                # Only keep if there's meaningful content left after stripping
+                if cleaned_line.replace('|', '').replace('-', '').strip():
+                    result.append(cleaned_line)
+            # Drop non-table lines with CJK entirely
             continue
 
         result.append(line)

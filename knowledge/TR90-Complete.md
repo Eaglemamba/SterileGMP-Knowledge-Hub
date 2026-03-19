@@ -1,47 +1,96 @@
 # PDA Technical Report No. 90 (2023): Contamination Control Strategy Development in Pharmaceutical Manufacturing
 
-**Table 15.0-4 //**
+| Abbreviation | Full Term |
+| --- | --- |
+| API | Active pharmaceutical ingredient |
+| CCS | Contamination control strategy |
+| FMEA | Failure Modes and Effects Analysis |
+| HACCP | Hazard Analysis and Critical Control Points |
+| HVAC | Heating, ventilation, and air conditioning |
+| RABS | Restricted Access Barrier System |
+| QRM | Quality risk management |
 
-**Table 15.0-5 **
+| English | | |
+| --- | --- | --- |
+| Action Limit | | + |
+| Alert Level | | |
+| Aseptic Filling | | Grade A |
+| Aseptic Processing | | |
+| Bioburden | | |
+| Cleanroom | | |
+| Closed System | | |
+| Contamination | | // |
+| CCS | | |
+| Decontamination | | |
+| Disinfection | | |
+| Isolator | | Open/Closed |
+| RABS | | |
+| Sanitization | | |
+| Sterilization | | |
 
-**Table 15.0-6 **
-
-**Table 15.0-7 DS DP **
-
-**Table 15.0-8	 Cleaning and Sterilization Processes��������50**
-
-**Table 15.0-9	 Environmental Monitoring�����������������������51**
-
-**Table 15.0-10	Testing Controls or Alert Levels/ Action**
-
- Limits������������������������������������������������������51
-
-*[Figure 16.1-1	 Microbial Impact Assessment]*
-
-Methodology�������������������������������������������52
-
-**Table 16.1-1	 Microbial Impact Assessment Example 1�54**
-
-**Table 16.3-1	 Microbial Impact Assessment Example 2�57**
-
-**Table 17.4-1: Example of Categorization of Disruption**
-| Level | Description |
+| Role | Responsibilities |
 | --- | --- |
 
-**Table 17.4-2: Example Recovery Plans**
-| Level | Containment Recommendations | Cleaning and Disinfection Recommendation | Monitoring Recommendation |
-| --- | --- | --- | --- |
+| Category | Controls |
+| --- | --- |
 
-**Table 18.0-1: Illustration of CCS Tailored to Example Process**
-| | Process 1 | Process 2 | Process 3 |
-| --- | --- | --- | --- |
+| Non-Holistic Approach | Holistic Approach |
+| --- | --- |
+| Environmental excursions do not impact the DP batch if the final sterility test is passing. | Any failure in a contamination control may indicate a loss of sterility assurance during batch manufacture and requires investigation and assessment for product impact. |
+| The background environment to barrier isolator or RABS is not important because the interior of the barrier system is decontaminated. | Environmental failures in the background may over-challenge the barrier contamination controls and indicate a loss of sterility assurance that requires investigation and assessment for product impact. |
+| Sterility failures cannot happen if the operators and interventions are qualified via an aseptic process simulation (APS). | The APS evaluates the capability of the process to be aseptic, but is limited in its ability to predict impact of future errors, especially where manual interventions are performed. |
+| The DS manufacturing process is not sterile; therefore, the only requirement is to meet the final DS bioburden specification. | Maintaining microbial control at every step of the process helps ensure that a safe, pure, and potent product is consistently manufactured. |
+| Low levels of contamination during early upstream manufacturing steps are a low risk because there is removal downstream. | Contamination during early upstream steps adds an uncertain level of risk and severity that cannot be resolved through testing. |
+| Noncontrolled environments are adequate when conducting closed manufacturing operations. | Closed manufacturing operations lower the risk of microbial ingress in the process; however, most operations considered closed are still vulnerable to breaches (e.g., leaks may occur). Environmental controls will provide for redundancy in the control strategy and further mitigate the risk of contamination. |
+| Testing of raw material is not necessary because the process intermediate will eventually be tested. | Testing of raw materials and buffers will prevent the use of contaminated raw materials that may result in excursions of in-process intermediates, which may impact product quality and result in long and expensive investigation. |
+| WFI is only used in the last step of the DS manufacturing process because potential endotoxin of PW will be removed during the purification step. | While PW may be used in upstream processes, the use of PW in later steps that have an endotoxin action level may result in excursions of in-process intermediates. This may impact product quality and result in long and expensive investigations. |
+| In-process filtrations will eliminate contaminations from the intermediates; therefore, in-process bioburden is irrelevant. | Unacceptable levels of bioburden in the process may result in impurities and in degradation of the product and impact product quality, even if the microbial cells are removed by filtration. |
+| Validation of microbial control at the end of the maximum hold is not necessary because the intermediate will be routinely tested at the end of the hold. | Microbiology hold-time validation studies will provide process knowledge and lower the risk of contamination due to inappropriate hold times. |
+| Sanitization of chromatography resins is adequate because the sanitizing solution results in a 3-log reduction of microorganisms. | Chromatography resins are porous and contact between the microorganisms and the sanitizing solution is limited; therefore, sanitization and storage of resins should be validated and monitored on an ongoing basis. |
+| Microbial control of the resins is demonstrated in the three process performance qualification batches. | Resins at the end of their lifetime may be more prone to contamination than fresh resins because sanitization is not 100% effective, and spore-forming organisms and biofilm may be difficult to remove during sanitization. |
 
-Process�����������������������������������������������������61
+| Non-Holistic Approach | Holistic Approach |
+| --- | --- |
 
-*[Figure 18.0-1	  Illustration of CCS Elements Highlighting]*
+| Non-Holistic Approach | Holistic Approach |
+| --- | --- |
+| A critical utility is a standalone piece of equipment | Critical utilities are a major part of the overall CCS; they can introduce contamination into the facility, equipment, and process stream that are very difficult to correct. |
+| Microbial contamination cannot occur if the utility monitoring test results are passing | Microbiological testing has known limitations; the physical parameter data for HVAC, water, and gas offer early warning signs of performance issues that can lead to serious contamination. Physical parameters are monitored, and atypical trends are responded to in a timely manner. |
+| Only action-level results require investigation and CAPA | Any atypical result or trend, including sub-alert level results, can be an early warning sign and may warrant investigation. |
 
-those that Require Enhance Controls for
-Example Processes�����������������������������������61
+| | | |
+| --- | --- | --- |
+| (Animal) | | Bioburden + + Prion |
+| (Plant) | - | Bioburden + |
+| (Mineral) | | Bioburden |
+| (Synthetic) | | |
+
+| | |
+| --- | --- |
+| Grade A & B | 6 |
+| Grade C & D | 12 |
+
+**Table 8.0-1 — Holistic Approach to Personnel Considerations**
+| Non-Holistic Approach | Holistic Approach |
+| --- | --- |
+| Contamination cannot occur if SOP instructions and batch records are precisely followed by personnel | Contamination can be prevented by understanding and reducing the specific hazards throughout the process, through a combination of strong CCS practices, quality culture, and continuous improvement |
+
+**Table 9.0-1 Holistic Approach to Equipment Considerations**
+| Non-Holistic Approach | Holistic Approach |
+| --- | --- |
+| Nonsterile equipment is always appropriate for nonsterile processes | Design the equipment controls to prevent and reduce contamination risk under worst-case circumstances |
+| Cleaning is validated and therefore cannot be a root cause or contributing factor for contamination | Design the equipment handling procedures with the understanding that validated cleaning practices can be overchallenged by poor equipment hold practices; nonsterile equipment with any residual moisture will foul with biofilm over time |
+| Perform only testing after a clean hold time is exceeded but do not reclean | Perform full cleaning after a clean hold time is exceeded to reduce any build-up of biofilm, which can be more difficult to remove later |
+
+| Predictive Metrics | Reactive Metrics |
+| --- | --- |
+| KPIs related to quality culture | Facility nonconformances related to controls within the CCS (e.g., EM deviations) |
+| Capital reinvestment focused on contamination control including new control and measurement technologies | Process nonconformances related to controls within the CCS (e.g., DS or raw material pyrogen/endotoxin levels) |
+| Mitigation of contamination control risks uncovered through QRM activities | Product nonconformances related to controls within the CCS (e.g., sterility test failure) |
+| CAPA effectiveness and on-time implementation | Process capability and machine performance |
+| Conformance to schedule for planned contamination control qualifications and validations | EM trending across the site and deviations, root cause analysis, risks assessments, and mitigations in response to adverse trends |
+| Conformance to schedule for planned contamination control risk assessments | Other deviations associated with contamination control including, but not limited to, control failures, training gaps, faulty knowledge transfer |
+| Conformance to schedule for maintenance activities related to the CCS | Unplanned/corrective maintenance |
 
 ## 1.0 Introduction
 
@@ -396,21 +445,17 @@ Personnel awareness is achieved through a combination of training, education, an
 Training addresses what a task is and how it is done; education addresses why it is done.
 Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.
 
-**Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.**
-
-Leadership Role
-Makes contamination prevention a priority
-Advocates and practices non-blaming culture
-Assigns personnel with appropriate knowledge and mindset
-Understands the benefit of contamination prevention
-Expert Role Sterility Assurance / Contamination Control (Governance)
-Oversees the performance of contamination controls
-Escalates contamination hazards
-Provides technical leadership to continuously improve
-Shop Floor Operator / Technician Role
-Performs contamination control and acts as guardians
-Escalates contamination hazards
-Provides technical expertise on individual CCS elements
+| Contamination Control Elements | Risk Question | Risk Tool |
+| --- | --- | --- |
+| Process | What is the risk of process contamination? | Process FMEA |
+| Process | What is the risk of cross-contamination between processes in a multiproduct facility? | Cross-contamination FMEA |
+| Personnel | What is the risk of process contamination from personnel? | Process FMEA |
+| Environment | What is the risk of process contamination from the environment? | Process FMEAMonitoring HACCP |
+| Materials, Consumables | What is the risk of process contamination from raw materials and single-use consumables? | Process FMEAConsumables FMEA (for novel or high-risk items)Monitoring HACCP |
+| Containers | What is the risk of process contamination from final product containers? | Process FMEA |
+| Equipment | What is the risk of process contamination from equipment? | Process FMEAEquipment FMEA (for novel or high-risk items) |
+| Utilities | What is the risk of process contamination from product-contact utilities? | Monitoring HACCP |
+| Other | Other targeted risk questions, as needed | Multiple |
 
 ## 4.0 Process Design, Microbial Control, and Monitoring
 
@@ -525,15 +570,19 @@ potency, and purity in the same manner as it does DS. Contamination of the DP af
 may result in infections, which could impact patient safety. Table 4.2-1 describes control elements and
 measures that prevent microbial contamination throughout the manufacturing process.
 
-**Table 4.2-1: Process Control Considerations**
-| Category | Controls |
+| CCS | PDA TR |
 | --- | --- |
+| | TR1, TR3, TR48, TR61 |
+| | TR22, TR26, TR40, TR41, TR45, TR62 |
+| | TR13, TR70, TR69 |
+| | TR44, TR54, TR60 |
+| | TR27, TR73, TR77 |
+| | TR29, TR49 |
+| / | TR34 |
+| | TR41 (), TR71, TR83 |
+| /ATMP | TR81, PtC for ATMP |
+| | TR42 |
 
-Process Control Considerations
-Category
-Controls
-General
-•
 Facility, equipment, and manufacturing process designed and qualified to  control bioburden:
 —	 Facility design (e.g., pressure differential, temperature control, smooth materials, sufficient workspace)
 —	 Manufacturing process design (e.g., barrier technology, closed vs. open system, process and
@@ -648,82 +697,13 @@ Table 4.2-2 provides examples on how microbial control throughout the manufactur
 addressed by using a holistic approach.
 (Table 4.2-1 Continued)
 
-**Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is addressed by using a holistic approach.**
-
-Holistic Approach to Process Considerations
-Non-Holistic Approach
-Holistic Approach
-Environmental excursions do not impact the DP batch if the
-final sterility test is passing.
-Any failure in a contamination control may indicate a loss of sterility
-assurance during batch manufacture and requires investigation and
-assessment for product impact.
-The background environment to barrier isolator or RABS is
-not important because the interior of the barrier system is
-decontaminated.
-Environmental failures in the background may over-challenge the barrier
-contamination controls and indicate a loss of sterility assurance that
-requires investigation and assessment for product impact.
-Sterility failures cannot happen if the operators and
-interventions are qualified via an aseptic process simulation
-(APS).
-The APS evaluates the capability of the process to be aseptic, but is limited
-in its ability to predict impact of future errors, especially where manual
-interventions are performed.
-The DS manufacturing process is not sterile; therefore,
-the only requirement is to meet the final DS bioburden
-specification.
-Maintaining microbial control at every step of the process helps ensure that
-a safe, pure, and potent product is consistently manufactured.
-Low levels of contamination during early upstream
-manufacturing steps are a low risk because there is removal
-downstream.
-Contamination during early upstream steps adds an uncertain level of risk
-and severity that cannot be resolved through testing.
-Noncontrolled environments are adequate when
-conducting closed manufacturing operations.
-Closed manufacturing operations lower the risk of microbial ingress in the
-process; however, most operations considered closed are still vulnerable
-to breaches (e.g., leaks may occur). Environmental controls will provide
-for redundancy in the control strategy and further mitigate the risk of
-contamination
-Testing of raw material is not necessary because the process
-intermediate will eventually be tested.
-Testing of raw materials and buffers will prevent the use of contaminated
-raw materials that may result in excursions of in-process intermediates,
-which may impact product quality and result in long and expensive
-investigation.
-WFI is only used in the last step of the DS manufacturing
-process because potential endotoxin of PW will be removed
-during the purification step.
-While PW may be used in upstream processes, the use of PW in later steps
-that have an endotoxin action level may result in excursions of in-process
-intermediates. This may impact product quality and result in long and
-expensive investigations.
-In-process filtrations will eliminate contaminations from
-the intermediates; therefore, in-process bioburden is
-irrelevant.
-Unacceptable levels of bioburden in the process may result in impurities
-and in degradation of the product and impact product quality, even if the
-microbial cells are removed by filtration.
-Validation of microbial control at the end of the maximum
-hold is not necessary because the intermediate will be
-routinely tested at the end of the hold.
-Microbiology hold-time validation studies will provide process knowledge
-and lower the risk of contamination due to inappropriate hold times.
-Sanitization of chromatography resins is adequate because
-the sanitizing solution results in a 3-log reduction of
-microorganisms.
-Chromatography resins are porous and contact between the
-microorganisms and the sanitizing solution is limited; therefore,
-sanitization and storage of resins should be validated and monitored on an
-ongoing basis.
-Microbial control of the resins is demonstrated in the three
-process performance qualification batches.
-Resins at the end of their lifetime may be more prone to contamination
-than fresh resins because sanitization is not 100% effective, and
-spore-forming organisms and biofilm may be difficult to remove during
-sanitization.
+| | | |
+| --- | --- | --- |
+| | FDA Aseptic Processing Guidance (2004) | EU GMP Annex 1 (2022 rev.) |
+| | USP <1231> + FDA High Purity Water Guide | EMA Water Guideline |
+| | USP <1207> + FDA CCS Guidance | Annex 1 |
+| | FDA CMC Guidance for Gene Therapy | EMA Gene Therapy Guideline |
+| | FDA Process Validation Guidance | EU GMP Annex 15 |
 
 ### 4.3 Nonsterile Drug Product Process Control
 
@@ -878,21 +858,8 @@ Personnel awareness is achieved through a combination of training, education, an
 Training addresses what a task is and how it is done; education addresses why it is done.
 Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.
 
-**Table 3.1.3-1 outlines an example set of roles and responsibilities related to CCS.**
-
-Leadership Role
-Makes contamination prevention a priority
-Advocates and practices non-blaming culture
-Assigns personnel with appropriate knowledge and mindset
-Understands the benefit of contamination prevention
-Expert Role Sterility Assurance / Contamination Control (Governance)
-Oversees the performance of contamination controls
-Escalates contamination hazards
-Provides technical leadership to continuously improve
-Shop Floor Operator / Technician Role
-Performs contamination control and acts as guardians
-Escalates contamination hazards
-Provides technical expertise on individual CCS elements
+| Table 15.0-1 — Structure of the Manufacturing Areas |
+| --- |
 
 ## 4.0 Process Design, Microbial Control, and Monitoring
 
@@ -1007,15 +974,9 @@ potency, and purity in the same manner as it does DS. Contamination of the DP af
 may result in infections, which could impact patient safety. Table 4.2-1 describes control elements and
 measures that prevent microbial contamination throughout the manufacturing process.
 
-**Table 4.2-1: Process Control Considerations**
-| Category | Controls |
-| --- | --- |
+| Table 15.0-2 — Multiuse or Single-Product Facility |
+| --- |
 
-Process Control Considerations
-Category
-Controls
-General
-•
 Facility, equipment, and manufacturing process designed and qualified to  control bioburden:
 —	 Facility design (e.g., pressure differential, temperature control, smooth materials, sufficient workspace)
 —	 Manufacturing process design (e.g., barrier technology, closed vs. open system, process and
@@ -1130,82 +1091,8 @@ Table 4.2-2 provides examples on how microbial control throughout the manufactur
 addressed by using a holistic approach.
 (Table 4.2-1 Continued)
 
-**Table 4.2-2 provides examples on how microbial control throughout the manufacturing process is addressed by using a holistic approach.**
-
-Holistic Approach to Process Considerations
-Non-Holistic Approach
-Holistic Approach
-Environmental excursions do not impact the DP batch if the
-final sterility test is passing.
-Any failure in a contamination control may indicate a loss of sterility
-assurance during batch manufacture and requires investigation and
-assessment for product impact.
-The background environment to barrier isolator or RABS is
-not important because the interior of the barrier system is
-decontaminated.
-Environmental failures in the background may over-challenge the barrier
-contamination controls and indicate a loss of sterility assurance that
-requires investigation and assessment for product impact.
-Sterility failures cannot happen if the operators and
-interventions are qualified via an aseptic process simulation
-(APS).
-The APS evaluates the capability of the process to be aseptic, but is limited
-in its ability to predict impact of future errors, especially where manual
-interventions are performed.
-The DS manufacturing process is not sterile; therefore,
-the only requirement is to meet the final DS bioburden
-specification.
-Maintaining microbial control at every step of the process helps ensure that
-a safe, pure, and potent product is consistently manufactured.
-Low levels of contamination during early upstream
-manufacturing steps are a low risk because there is removal
-downstream.
-Contamination during early upstream steps adds an uncertain level of risk
-and severity that cannot be resolved through testing.
-Noncontrolled environments are adequate when
-conducting closed manufacturing operations.
-Closed manufacturing operations lower the risk of microbial ingress in the
-process; however, most operations considered closed are still vulnerable
-to breaches (e.g., leaks may occur). Environmental controls will provide
-for redundancy in the control strategy and further mitigate the risk of
-contamination
-Testing of raw material is not necessary because the process
-intermediate will eventually be tested.
-Testing of raw materials and buffers will prevent the use of contaminated
-raw materials that may result in excursions of in-process intermediates,
-which may impact product quality and result in long and expensive
-investigation.
-WFI is only used in the last step of the DS manufacturing
-process because potential endotoxin of PW will be removed
-during the purification step.
-While PW may be used in upstream processes, the use of PW in later steps
-that have an endotoxin action level may result in excursions of in-process
-intermediates. This may impact product quality and result in long and
-expensive investigations.
-In-process filtrations will eliminate contaminations from
-the intermediates; therefore, in-process bioburden is
-irrelevant.
-Unacceptable levels of bioburden in the process may result in impurities
-and in degradation of the product and impact product quality, even if the
-microbial cells are removed by filtration.
-Validation of microbial control at the end of the maximum
-hold is not necessary because the intermediate will be
-routinely tested at the end of the hold.
-Microbiology hold-time validation studies will provide process knowledge
-and lower the risk of contamination due to inappropriate hold times.
-Sanitization of chromatography resins is adequate because
-the sanitizing solution results in a 3-log reduction of
-microorganisms.
-Chromatography resins are porous and contact between the
-microorganisms and the sanitizing solution is limited; therefore,
-sanitization and storage of resins should be validated and monitored on an
-ongoing basis.
-Microbial control of the resins is demonstrated in the three
-process performance qualification batches.
-Resins at the end of their lifetime may be more prone to contamination
-than fresh resins because sanitization is not 100% effective, and
-spore-forming organisms and biofilm may be difficult to remove during
-sanitization.
+| Single-Product Facility | Facility design should consider features that prevent introduction of harmful contaminants into products at every stage of the manufacturing process Equipment may require segregation by process |
+| Multiuse and Single-Product Facilities | The difference between contamination in a single-use facility versus a multiuse facility is quite subtle. It is unacceptable in either circumstance to introduce impurities inadvertently from an earlier upstream unit of operation. In both circumstances, if the intermediate or product is of an inferior nature, it is adulterated irrespective of the source of the contaminant. |
 
 ### 4.3 Nonsterile Drug Product Process Control
 
@@ -1294,12 +1181,9 @@ from longer-term manufacturing. Also, a robust metric control plan should be dev
 the facility and the overall network to ensure there is appropriate senior management visibility to the
 microbial/endotoxin state of control.
 
-**Table 4.4.1-1**
+| Table 15.0-3 — Storage of Materials and Equipment |
+| --- |
 
-In-Process Monitoring Considerations
-In-Process Monitoring – Bioburden and Endotoxin
-Type of
-Monitoring
 Bioburden monitoring should be considered for any steps susceptible to microbial ingress and proliferation of
 microorganisms. In some cases, bioburden monitoring is mandatory per regulatory requirements (e.g., pre-sterile
 filtration).
@@ -1413,16 +1297,9 @@ Manufacturing Systems provides a detailed and thorough guideline for manufacturi
 Technical Report 69 also details how facility design and environmental control contribute to contamina-
 tion control. Table 5.1-1 highlights some characteristics of the holistic approach to facility considerations.
 
-**Table 5.1-1 highlights some characteristics of the holistic approach to facility considerations.**
+| Table 15.0-4 — Path of Materials, Equipment, or Waste |
+| --- |
 
-Non-Holistic Approach
-Holistic Approach
-Facility and equipment design
-flaws or issues do not require
-additional control measures if
-the environmental monitoring
-results are below action levels
-•
 Environmental monitoring is a detection control and is only a single indicator of performance
 •
 Emphasis should be on robust engineering controls, monitoring critical facility parameters, establish-
@@ -1489,12 +1366,10 @@ When running well, critical utility systems appear to fade into the background, 
 tained, operated, and monitored properly, they can lead to a shutdown of production or even adulteration
 of products. Table 5.1.4-1 highlights some characteristics of the holistic approach to utility considerations.
 
-**Table 5.1.4-1 highlights some characteristics of the holistic approach to utility considerations.**
+| Table 15.0-5 — Maintenance |
+| --- |
+| Training of Maintenance Personnel | Conduct contamination control training, including behavior in the cleanroom, to ensure that those who have an impact are thoroughly familiar with and able to follow all the processes and procedures of a successful contamination control program while performing activities. This program should include employees and contractors who may need to enter controlled classified areas. |
 
-Non-Holistic Approach
-Holistic Approach
-A critical utility is a standalone piece
-of equipment
 Critical utilities are a major part of the overall CCS; they can introduce contamination into the
 facility, equipment, and process stream that are very difficult to correct.
 Microbial contamination cannot
@@ -1908,12 +1783,6 @@ flow visualization studies. Table 8.0-1 highlights the mindset shift toward holi
 | --- | --- |
 | Contamination cannot occur if SOP instructions and batch records are precisely followed by personnel | Contamination can be prevented by understanding and reducing the specific hazards throughout the process, through a combination of strong CCS practices, quality culture, and continuous improvement |
 
-Holistic Approach to Personnel Considerations
-Non-Holistic Approach
-Holistic Approach
-Contamination cannot occur if SOP
-instructions and batch records are precisely
-followed by personnel
 Contamination can be prevented by understanding and reducing the specific hazards
 throughout the process, through a combination of strong CCS practices, quality culture,
 and continuous improvement
@@ -2180,20 +2049,6 @@ tional microbiological testing. Historically, cleaning validation has primarily 
 | Cleaning is validated and therefore cannot be a root cause or contributing factor for contamination | Design the equipment handling procedures with the understanding that validated cleaning practices can be overchallenged by poor equipment hold practices; nonsterile equipment with any residual moisture will foul with biofilm over time |
 | Perform only testing after a clean hold time is exceeded but do not reclean | Perform full cleaning after a clean hold time is exceeded to reduce any build-up of biofilm, which can be more difficult to remove later |
 
-Holistic Approach to Equipment Considerations
-Non-Holistic Approach
-Holistic Approach
-Nonsterile equipment is always appropriate for
-nonsterile processes
-Design the equipment controls to prevent and reduce contamination risk under
-worst-case circumstances
-Cleaning is validated and therefore cannot be a root
-cause or contributing factor for contamination
-Design the equipment handling procedures with the understanding that validated
-cleaning practices can be overchallenged by poor equipment hold practices;
-nonsterile equipment with any residual moisture will foul with biofilm over time
-Perform only testing after a clean hold time is
-exceeded but do not reclean
 Perform full cleaning after a clean hold time is exceeded to reduce any build-up of
 biofilm, which can be more difficult to remove later
 product residue and less on prevention of biofilms. Additionally, sampling techniques and culture-based
@@ -2438,11 +2293,9 @@ combination. The process should be designed to accommodate normal dimensional va
 pact of the different elements of the manufacturing process should be considered, including the elements
 outlined in Table 10.2.3-1, and CCI should be demonstrated at worst-case manufacturing operations.
 
-**Table 10.2.3-1	 Functional CCI Considerations**
+| Movement and Storage of Materials | Store commonly used maintenance parts and tools within controlled classified environment to prevent contamination risks from frequently transferring these items from unclassified areas to classified areas Stage maintenance parts in a cleanroom covered cart or on shelves Clean the cart, the shelves, and the parts, including the wheels, periodically Cover the parts during storage to help prevent accumulation of dust Clean, dry, cap, and store all hoses appropriately Bring only the items needed into the controlled, classified environment and disinfect each item; large cases of maintenance equipment are difficult to disinfect properly |
+| Protection of Environment and Equipment during Maintenance | Cover all equipment with approved cleanroom materials during system invasion repair or any parts removal or repair |
 
-CCI Aspect
-Functional Considerations
-Component Specifications
 Success of the CCI relies upon the provision of components within the tolerances of established
 specifications. Where components are provided by vendors, appropriate qualification of the vendor
 and the supply chain of components is essential. Vendors should share the same quality culture as the
@@ -2509,43 +2362,9 @@ CCS. Metrics should effectively assess the holistic performance of the CCS and i
 and reactive measurements. Each metric should be assessed during the periodic review; Table 11.1-1
 presents some examples.
 
-**Table 11.1-1: Examples of Metrics to be Assessed during Periodic Review**
-| Predictive Metrics | Reactive Metrics |
-| --- | --- |
-| KPIs related to quality culture | Facility nonconformances related to controls within the CCS (e.g., EM deviations) |
-| Capital reinvestment focused on contamination control including new control and measurement technologies | Process nonconformances related to controls within the CCS (e.g., DS or raw material pyrogen/endotoxin levels) |
-| Mitigation of contamination control risks uncovered through QRM activities | Product nonconformances related to controls within the CCS (e.g., sterility test failure) |
-| CAPA effectiveness and on-time implementation | Process capability and machine performance |
-| Conformance to schedule for planned contamination control qualifications and validations | EM trending across the site and deviations, root cause analysis, risks assessments, and mitigations in response to adverse trends |
-| Conformance to schedule for planned contamination control risk assessments | Other deviations associated with contamination control including, but not limited to, control failures, training gaps, faulty knowledge transfer |
-| Conformance to schedule for maintenance activities related to the CCS | Unplanned/corrective maintenance |
+| Table 15.0-6 — Movement and Gowning of Personnel |
+| --- |
 
-Examples of Metrics to be Assessed during Periodic Review
-Predictive Metrics
-Reactive Metrics
-KPIs related to quality culture
-Facility nonconformances related to controls within the CCS (e.g.,
-EM deviations)
-Capital reinvestment focused on contamination control including
-new control and measurement technologies
-Process nonconformances related to controls within the CCS (e.g.,
-DS or raw material pyrogen/endotoxin levels)
-Mitigation of contamination control risks uncovered through QRM
-activities
-Product nonconformances related to controls within the CCS (e.g.,
-sterility test failure)
-CAPA effectiveness and on-time implementation
-Process capability and machine performance
-Conformance to schedule for planned contamination control
-qualifications and validations
-EM trending across the site and deviations, root cause analysis, risks
-assessments, and mitigations in response to adverse trends
-Conformance to schedule for planned contamination control risk
-assessments
-Other deviations associated with contamination control including, but
-not limited to, control failures, training gaps, faulty knowledge transfer
-Conformance to schedule for maintenance activities related to the CCS
-Unplanned/corrective maintenance
 The goal of trending is to permit a holistic analysis of control information over a period of time or
 across different circumstances. Such analysis facilitates identification of patterns, potential influences,
 and genuine root causes of nonconformances.
@@ -2625,62 +2444,9 @@ of the design and controls. When changes are made, a less formal risk tool may b
 change control process to assess whether the change will introduce new risks.
 Table 11.5-1 presents examples of the detailed risk assessments that form the initial foundation of a CCS.
 
-**Table 11.5-1: Examples of Foundational Risk Assessments that Support CCS**
-| Contamination Control Elements | Risk Question | Risk Tool |
-| --- | --- | --- |
-| Process | What is the risk of process contamination? | Process FMEA |
-| Process | What is the risk of cross-contamination between processes in a multiproduct facility? | Cross-contamination FMEA |
-| Personnel | What is the risk of process contamination from personnel? | Process FMEA |
-| Environment | What is the risk of process contamination from the environment? | Process FMEAMonitoring HACCP |
-| Materials, Consumables | What is the risk of process contamination from raw materials and single-use consumables? | Process FMEAConsumables FMEA (for novel or high-risk items)Monitoring HACCP |
-| Containers | What is the risk of process contamination from final product containers? | Process FMEA |
-| Equipment | What is the risk of process contamination from equipment? | Process FMEAEquipment FMEA (for novel or high-risk items) |
-| Utilities | What is the risk of process contamination from product-contact utilities? | Monitoring HACCP |
-| Other | Other targeted risk questions, as needed | Multiple |
+| Table 15.0-7 — Composition of DS and DP |
+| --- |
 
-Examples of Foundational Risk Assessments that Support CCS
-Contamination
-Control Elements
-Risk Question
-Risk Tool
-Process
-What is the risk of process contamination?
-Process FMEA
-What is the risk of cross-contamination between
-processes in a multiproduct facility?
-Cross-contamination FMEA
-Personnel
-What is the risk of process contamination from
-personnel?
-Process FMEA
-Environment
-What is the risk of process contamination from the
-environment?
-Process FMEA
-Monitoring HACCP
-Materials,
-Consumables
-What is the risk of process contamination from raw
-materials and single-use consumables?
-Process FMEA
-Consumables FMEA (for novel or high-risk items)
-Monitoring HACCP
-Containers
-What is the risk of process contamination from final
-product containers?
-Process FMEA
-Equipment
-What is the risk of process contamination from
-equipment?
-Process FMEA
-Equipment FMEA (for novel or high-risk items)
-Utilities
-What is the risk of process contamination from
-product-contact utilities?
-Monitoring HACCP
-Other
-Other targeted risk questions, as needed
-Multiple
 Other risk assessment tools (e.g., the Preliminary Hazard Analysis outlined in ICH Q9) can be em-
 ployed as appropriate (27).
 
@@ -3061,11 +2827,9 @@ Contamination Control Strategy Elements
 Tables 15.0-1–15.0-10 provide practical considerations for many elements of contamination control
 system (CCS) with an explanation of the relevant benefit of preventing contamination.
 
-**Table 15.0-1 **
+| Growth Source | Determine whether the composition of intermediates and buffers allow microbial growth or inhibit microbial growth, based on nutrient content, pH, water activity Understand that extended hold times create vulnerability to contamination if the composition allows growth Store material in an integral container to prevent contamination ingress |
+| Downstream Processes | Check downstream bioburden or endotoxin reduction steps after introduction of growth-enhancing materials |
 
-Structure of the Manufacturing Areas
-Closed
-Processes
 Closed systems are a physical barrier between the environment and materials in a manufacturing process
 Closed process provides protection from the introduction of contamination from the environment because introduction of
 materials into the equipment is restricted to closed connectors
@@ -3119,10 +2883,10 @@ in direct contact with product and requires temporal or other procedural control
 would include a closed system using single-use equipment from the step that removed contaminants, perhaps as early as DS, until the
 formulated DP is dispensed into primary packaging
 
-**Table 15.0-2 /**
+| Table 15.0-8 — Cleaning and Sterilization Processes |
+| --- |
+| Cleaning | Manual cleaning processes (such as washing) for equipment are difficult to qualify and ensure reproducibility |
 
-Multiuse or Single-Product Facility
-Multiuse Facility
 Facility design should consider features that prevent introduction of harmful contaminants into products at every
 stage of the manufacturing process
 Segregation of areas during manufacture of biologics where adventitious and viral control of downstream mate-
@@ -3141,33 +2905,16 @@ Benefit to Preventing Contamination
 •	 Single-product facilities minimize cross-contamination risk
 (Table 15.0-1 Continued)
 
-**Table 15.0-3 **
+| Characteristics of Microorganism |
+| --- |
 
-Storage of Materials and Equipment
-Control of
-Materials
-Stored in closed/sealed protective containers
-Dispensed in controlled/monitored areas
-Stored in temperature- and humidity-controlled areas
-Storage conditions prevent microbial proliferation
-Control of
-Equipment
-
-Equipment stored clean and dry and protected from the environment
-Cleaning process validated and monitored
-Sterilization processes validated
-Sterile hold times defined and validated
-Benefit to Preventing Contamination
 •	 Materials and equipment are stored in a manner that prevents or minimizes introduction or proliferation of bioburden.
 •	 Sampling and dispensing areas do not add bioburden to raw materials.
 •	 Storage of clean equipment is qualified to ensure that bioburden or endotoxin levels do not increase.
 
-**Table 15.0-4 //**
+| Parameter | Previous Step(s) | Step that Yielded Excursion:Eluate end of hold | Microorganism Growth Requirements | Late Exponential Growth Permitted? |
+| --- | --- | --- | --- | --- |
 
-Path of Materials, Equipment, or Waste
-Materials and/or
-Equipment
-Material air locks separate from personnel air locks
 Qualified disinfection practices (including use of sporicides where appropriate) for transfer into controlled/classified areas
 Shedding layers of packaging as items are transferred into controlled/classified areas
 Unidirectional flow
@@ -3190,12 +2937,9 @@ adventitious agents.
 •	 Separate air locks for personnel and equipment prevents shedding of bioburden onto materials or equipment moved into the facility.
 •	 These concepts are control measures that prevent introduction of adventitious and viral agents into downstream processes.
 
-**Table 15.0-5 **
+| ☑ Low | By-product-generating growth of the microorganism(s) Not permitted by process conditions (a conclusion of "No" above) |
+| --- | --- |
 
-Maintenance
-Training of
-Maintenance
-Personnel
 Conduct contamination control training, including behavior in the cleanroom, to ensure that those who have an
 impact are thoroughly familiar with and able to follow all the processes and procedures of a successful contamination
 control program while performing activities. This program should include employees and contractors who may need to
@@ -3236,14 +2980,10 @@ Appendix III presents example cases of contamination after maintenance events, �
 •	 Understanding the potential risks from maintenance activities is important in order to build standard procedures that address how to
 perform all maintenance activities in a way that reduces risk.
 
-**Table 15.0-6 **
+| Likelihood of Late Exponential Growth | By-product Potential: Toxin Producer? Protease Producer? Penicillin Producer? |
+| --- | --- |
+| No | Yes |
 
-Movement and Gowning of Personnel
-Path of
-Incoming and
-Exiting
-Personnel
-Personnel air locks are separate from air locks for equipment and materials
 Air locks provide a staging area to systematically replace outer garments and gloves
 Unidirectional flow
 Personnel are trained in effective aseptic practices for areas in which they work and instructed to understand the
@@ -3261,10 +3001,9 @@ flows, air locks, and aseptic practices are effective barriers between controlle
 other sources of contaminants will raise awareness.
 •	 Use of air locks to replace gowns along the path to a clean room is an important terminating point for potentially contaminated garments and gloves.
 
-**Table 15.0-7 DS DP **
+| | | |
+| --- | --- | --- |
 
-Composition of DS and DP
-Growth Source
 Determine whether the composition of intermediates and buffers allow microbial growth or inhibit microbial growth,
 based on nutrient content, pH, water activity
 Understand that extended hold times create vulnerability to contamination if the composition allows growth
@@ -3287,10 +3026,9 @@ Understanding the points in the process that are vulnerable to microbial contami
 vulnerable points warrant strict control of the potential sources of microbial ingress (materials, equipment, environment, personnel),
 may warrant a bioburden removal, possibly viral removal, and in-process monitoring
 
-**Table 15.0-8**
+| Severity Score | Criteria |
+| --- | --- |
 
-Cleaning and Sterilization Processes
-Cleaning
 Manual cleaning processes (such as washing) for equipment are difficult to qualify and ensure reproducibility
 Sterilization
 Facility design should consider features that prevent introduction of harmful contaminants into products at every stage of the
@@ -3300,10 +3038,10 @@ Benefit to Preventing Contamination
 •
 Correctly designed and validated cleaning (washing) and sterilization processes helps prevent contamination from equipment.
 
-**Table 15.0-9**
+| Vulnerability Score | Severity Score (Likelihood of Proliferation) |
+| --- | --- |
+| Low | High |
 
-Environmental Monitoring (Viable and Total Particulate Monitoring)
-What It Is
 Provides immediate information on the status of an area from a particle perspective
 Provides a snapshot of the bioburden profile of an area at a specific time
 Provides an ongoing assessment of the routine flora in the manufacturing environment, if an appropriate identification
@@ -3325,9 +3063,9 @@ Attention should also be paid to monitoring the recovery of microorganisms durin
 •
 When an atypical organism is recovered, the potential risk of product impact should be assessed.
 
-**Table 15.0-10	 Testing Controls or Alert Levels/ Action Limits**
+| Score | Impact(s) | Remediation Action |
+| --- | --- | --- |
 
-Setting Levels
 Alert levels and action limits for impurities and contaminants serve to reinforce that purification steps are effective
 control measures in removing untoward substances at each step of the manufacturing process
 Alert levels and action limits for EM allow signals to be monitored and appropriate corrective action to be taken
@@ -3420,17 +3158,10 @@ stream; therefore, it would not secrete negative by-products before the microbia
 filtration. The downstream bioburden results also demonstrated the removal of the microbial cells and
 absence of endotoxin, and an accelerated stability results demonstrated no damage from protease activity.
 
-**Table 16.1-1**
+| ☑ Acceptable | • No patient impact • No product quality impact | Action required to prevent recurrence unless justification approved by the Quality unit |
+| ☐ Acceptable with Action | • No patient impact • No product quality impact | Action required to prevent recurrence |
+| ☐ Unacceptable | • Potential impact on the patient • Unacceptable potential for impact on product quality | Action required to reject product lot and prevent recurrence. Refer to Deviation for product disposition |
 
-Microbial Impact Assessment Example 1
-Vulnerability Scoring: Microorganism Characteristics
-Characteristics of Microorganism
-Microorganism Identified:
-Stenotrophomonas maltophilia a
-CFU per sample volume:
-120 CFU/10 mL
-Estimated CFU/total working volume
-(50 L):
 6.0 x 105 CFU/50 L
 Common Source:
 ☐ Human microbiota
@@ -3622,74 +3353,9 @@ The conclusion was that the overall risk is Low based on the rationales that the
 not expected to grow to a high number due to the short hold time, there are downstream purification
 steps, and the product showed acceptable results in all subsequent testing.
 
-**Table 16.3-1**
-
-Microbial Impact Assessment Example 2
-Event Conditions [italics are example text]
-Microorganism Type (Genus, species): Sphingomonas paucimobilus
-Amount Detected: 20 CFU/100 mL
-Total number of microorganisms in batch:
-10 L/total batch x 200 CFU/L = 2x103 CFU/total batch
-Process Step: UF/DF skid
-Process Step Limit: 10 CFU/100 mL
-Process Step Hold Time: < 24 hours
-Hold Temperature: 2–8 °C
-Material Matrix: 0.9% NaCl buffer
-Attach Process Map, if appropriate, to indicate mitigation steps
-downstream
-Microbial Hazards
-(examples)
-Severity
-Probability
-Controls (Downstream Processing and
-Detection)
-Risk
-(Severity ×
-Probability × Controls)
-Number of
-microorganisms
-Medium
-Low
-Hold time not conducive to
-growth of this organism
-UF/DF process removes
-this size of organism,
-about 0.2 μm
-Bioburden assays
-downstream are
-acceptable
-Low
-Endotoxin
-(if applicable)
-Low
-Low
-Multiple purification
-steps downstream (e.g.,
-TFF, column extraction)
-have removal capacity
-In-process
-endotoxin assays
-downstream are
-acceptable
-Low
-Other metabolites, as
-applicable (myco-
-toxins, exotoxins,
-extracellular enzymes,
-e.g., proteases)
-Low
-Low
-Levels and conditions
-(chemical treatment, low
-pH) do not result in produc-
-tion of other metabolites
-[include references]
-Final product
-protein patterns
-are typical, no
-changes
-Low
-17.0
+| | | |
+| --- | --- | --- |
+| | Vulnerability + Severity | Severity × Probability × Controls |
 
 ## Appendix 3: Case Studies for Contamination Control
 
@@ -3823,14 +3489,10 @@ Table 17.4-1 describes each level of disruption and offers examples. Specific ac
 of recovery activities are shown in the Table 17.4-2. The information in these tables is not all-inclusive
 but is provided as a guidance for consideration.
 
-**Table 17.4-1: Example of Categorization of Disruption**
-| Level | Description |
-| --- | --- |
+| | S. maltophilia | S. paucimobilus |
+| | | UF/DF |
+| | Acceptable | Low Risk |
 
-Example of Categorization of Disruption
-Level
-Description
-Noninvasive Disruption
 An activity that does not breach the integrity of a controlled classified area or critical utilities systems and is performed when
 no activity is occurring in the room/area.
 •	 Classified Areas, e.g., caulking repair, light switch or outlet repair (no cutting), spot painting (no sanding), calibration activities
@@ -3841,55 +3503,8 @@ processing is occurring in the room/area.
 Classified Areas, e.g., opening an electrical panel, equipment repair or maintenance, light bulb change, sprinkler cover replacement
 Critical Utilities, e.g., cutting, welding, piping replacement, derouging, chemical cleaning
 
-**Table 17.4-2: Example Recovery Plans**
-| Level | Containment Recommendations | Cleaning and Disinfection Recommendation | Monitoring Recommendation |
-| --- | --- | --- | --- |
-
-Example Recovery Plans
-Level
-Containment Recommendations
-Cleaning and Disinfection
-Recommendation
-Monitoring Recommendation
-Over-gowning when exposing dirty
-surfaces – in addition to routine gowning,
-additional gloves, frock, booties may be
-applied during the work and removed
-directly after contact with dirty surfaces
-e.g., behind light switch or outlet
-Daily cleaning / disinfection of the area
-and equipment
-Targeted cleaning / disinfection with
-sporicide if dirty surfaces (e.g., behind
-light switch or outlet) are exposed
-Routine daily EM and critical utilities
-monitoring.
-Particle counts may be sufficient to
-initiate activity in the area for minimally
-invasive work
-Over-gowning
-Dust collection and temporary walls
-may be warranted depending on type
-of work
-Construction clean-up (e.g., HEPA
-vacuum, dust horizontal surfaces)
-followed by cleaning and disinfection;
-should include sporicide per local
-procedure.
-Specific EM program covering areas and
-locations that were impacted by the
-construction measures (both static and
-dynamic monitoring) for air and surfaces.
-Additional nonroutine samples should
-be considered. Air balancing/air change
-should be verified, as appropriate.
-3 (Utility) Isolate and limit access to the affected
-utility/portion of utility ports
-Critical utilities should be sanitized to
-ensure system integrity.
-Microbiological and chemical testing
-covering the impacted system
-18.0
+| Microorganism Type (Genus, species): | Sphingomonas paucimobilus |
+| --- | --- |
 
 ## Appendix 4: Illustration of CCS Variability based on Process
 
@@ -3897,97 +3512,9 @@ An effective CCS is tailored to the specific risks of a process, illustrated by 
 examples (Table 18.0-1). DS is used to illustrate this point because the processes vary widely across
 industry. This principle also applies to DP.
 
-**Table 18.0-1: Illustration of CCS Tailored to Example Process**
-| | Process 1 | Process 2 | Process 3 |
-| --- | --- | --- | --- |
+| Microbial Hazards (examples) | Severity | Probability | Controls (Downstream Processing and Detection) | Risk(Severity × Probability × Controls) |
+| --- | --- | --- | --- | --- |
 
-Illustration of CCS Tailored to Example Process
-Process 1
-Process 2
-Process 3
-Key Features
-Open steps at start and end
-Reusable equipment, complex
-piping
-Synthetic product
-Few open steps only at start
-Single-use systems, manual connections
-via thermal welding & connectors
-Biologic process, some animal-derived
-materials
-No open steps
-Single-use systems, pre-assembled
-kits – few manual connections
-Biologic process, synthetic materials
-(other than host system)
-Process 1
-Process 2
-Process 3
-Key Features
-–	 Risks for CCS
-Controls to
-Enhance for CCS
-Multiple open steps throughout
-•	 Ingress from Environment &
-Personnel
-•	 Stricter overall cleanroom
-classification
-•	 CCS Awareness Campaign &
-Coaching (alongside training)
-Reusable equipment, complex
-piping
-•	 Equipment maintenance issues
-•	 Challenges to clean/sterilize
-•	 Deadlegs/misalignments
-•	 Conservative cleaning/
-sanitization/ storage practices
-•	 Periodic equipment audits
-Synthetic product
-•	 Fouling during storage
-•	 Temp, humidity control
-•	 Cleanroom controls for material
-sampling
-Few open steps, only at start
-•	 Ingress from Environment &
-Personnel for open steps
-•	 Stricter cleanroom classification for
-open steps
-•	 CCS Awareness Campaign &
-Coaching (alongside training)
-Single-use systems, manual
-connections via thermal welding
-& connectors
-•	 Leaks, Personnel technique
-•	 Vendor quality defects
-•	 Targeted, hands-on training
-•	 Inspection of consumables, on-site
-pre-use inflation of bags
-•	 Partner with vendors
-Biologic process, some animal-
-derived materials
-•	 Adventitious agents, prions
-•	 Expanded characterization
-•	 Pre-use testing
-•	 Treatment (e.g., gamma irradiation)
-No open steps
-•	 Risks from environment &
-personnel minimized
-•	 Less strict cleanroom classification
-Single-use systems, pre-
-assembled kits, few manual
-connections
-•	 Vendor quality defects (e.g.,
-possible leaks)
-•	 Inspection of consumables, on-
-site pre-use inflation of bags
-•	 Partner with vendors
-Biologic process, synthetic
-materials (other than host
-system)
-•	 Adventitious agents, prions
-•	 Expanded characterization
-•	 Pre-use testing
-•	 Treatment
 All CCS elements apply to each of the example processes, and the blue-highlighted elements in Figure
 18.0-1 warrant enhanced controls for risks that are specific to that process.
 Process 1
@@ -4229,11 +3756,9 @@ Contamination Control Strategy Elements
 Tables 15.0-1–15.0-10 provide practical considerations for many elements of contamination control
 system (CCS) with an explanation of the relevant benefit of preventing contamination.
 
-**Table 15.0-1 **
+| Level | Description |
+| --- | --- |
 
-Structure of the Manufacturing Areas
-Closed
-Processes
 Closed systems are a physical barrier between the environment and materials in a manufacturing process
 Closed process provides protection from the introduction of contamination from the environment because introduction of
 materials into the equipment is restricted to closed connectors
@@ -4287,10 +3812,9 @@ in direct contact with product and requires temporal or other procedural control
 would include a closed system using single-use equipment from the step that removed contaminants, perhaps as early as DS, until the
 formulated DP is dispensed into primary packaging
 
-**Table 15.0-2 /**
+| Level | Containment Recommendations | Cleaning and Disinfection Recommendation | Monitoring Recommendation |
+| --- | --- | --- | --- |
 
-Multiuse or Single-Product Facility
-Multiuse Facility
 Facility design should consider features that prevent introduction of harmful contaminants into products at every
 stage of the manufacturing process
 Segregation of areas during manufacture of biologics where adventitious and viral control of downstream mate-
@@ -4309,33 +3833,17 @@ Benefit to Preventing Contamination
 •	 Single-product facilities minimize cross-contamination risk
 (Table 15.0-1 Continued)
 
-**Table 15.0-3 **
+| | Process 1 | Process 2 | Process 3 |
+| --- | --- | --- | --- |
 
-Storage of Materials and Equipment
-Control of
-Materials
-Stored in closed/sealed protective containers
-Dispensed in controlled/monitored areas
-Stored in temperature- and humidity-controlled areas
-Storage conditions prevent microbial proliferation
-Control of
-Equipment
-
-Equipment stored clean and dry and protected from the environment
-Cleaning process validated and monitored
-Sterilization processes validated
-Sterile hold times defined and validated
-Benefit to Preventing Contamination
 •	 Materials and equipment are stored in a manner that prevents or minimizes introduction or proliferation of bioburden.
 •	 Sampling and dispensing areas do not add bioburden to raw materials.
 •	 Storage of clean equipment is qualified to ensure that bioburden or endotoxin levels do not increase.
 
-**Table 15.0-4 //**
+| Step | Purpose |
+| --- | --- |
+| 1.1 | This document outlines a contamination control strategy to safeguard product quality from microbial, particulate, pyrogen/endotoxin, and viral contamination. |
 
-Path of Materials, Equipment, or Waste
-Materials and/or
-Equipment
-Material air locks separate from personnel air locks
 Qualified disinfection practices (including use of sporicides where appropriate) for transfer into controlled/classified areas
 Shedding layers of packaging as items are transferred into controlled/classified areas
 Unidirectional flow
@@ -4358,12 +3866,10 @@ adventitious agents.
 •	 Separate air locks for personnel and equipment prevents shedding of bioburden onto materials or equipment moved into the facility.
 •	 These concepts are control measures that prevent introduction of adventitious and viral agents into downstream processes.
 
-**Table 15.0-5 **
+| Step | Background |
+| --- | --- |
+| 2.1 | A Contamination Control Strategy (CCS) should be implemented across the facility in order to define all critical control points and assess the effectiveness of all the controls (design, procedural, technical and organizational) and monitoring measures employed to manage risks associated with contamination. The CCS should be actively updated and should drive continuous improvement of the manufacturing and control methods. Contamination control and steps taken to minimize the risk of contamination from microbial and particulate sources are a series of successively linked events or measures. These are typically assessed, controlled and monitored individually but their collective effectiveness should be considered altogether. The development of the CCS requires thorough technical and process knowledge. Potential sources of contamination are attributable to microbial and cellular debris (e.g., pyrogens, endotoxins) as well as foreign particulate matter (e.g., glass and other visible and sub-visible particles). |
 
-Maintenance
-Training of
-Maintenance
-Personnel
 Conduct contamination control training, including behavior in the cleanroom, to ensure that those who have an
 impact are thoroughly familiar with and able to follow all the processes and procedures of a successful contamination
 control program while performing activities. This program should include employees and contractors who may need to
@@ -4404,14 +3910,9 @@ Appendix III presents example cases of contamination after maintenance events, �
 •	 Understanding the potential risks from maintenance activities is important in order to build standard procedures that address how to
 perform all maintenance activities in a way that reduces risk.
 
-**Table 15.0-6 **
+| Step | Scope |
+| --- | --- |
 
-Movement and Gowning of Personnel
-Path of
-Incoming and
-Exiting
-Personnel
-Personnel air locks are separate from air locks for equipment and materials
 Air locks provide a staging area to systematically replace outer garments and gloves
 Unidirectional flow
 Personnel are trained in effective aseptic practices for areas in which they work and instructed to understand the
@@ -4429,10 +3930,11 @@ flows, air locks, and aseptic practices are effective barriers between controlle
 other sources of contaminants will raise awareness.
 •	 Use of air locks to replace gowns along the path to a clean room is an important terminating point for potentially contaminated garments and gloves.
 
-**Table 15.0-7 DS DP **
+| Step | Role | Responsibility |
+| --- | --- | --- |
+| 4.1 | Quality | Ensure this policy remains current |
+| 4.2 | Site Employees involved in GMP activities | Ensure adherence to the principles and policies outlined in this document |
 
-Composition of DS and DP
-Growth Source
 Determine whether the composition of intermediates and buffers allow microbial growth or inhibit microbial growth,
 based on nutrient content, pH, water activity
 Understand that extended hold times create vulnerability to contamination if the composition allows growth
@@ -4455,10 +3957,9 @@ Understanding the points in the process that are vulnerable to microbial contami
 vulnerable points warrant strict control of the potential sources of microbial ingress (materials, equipment, environment, personnel),
 may warrant a bioburden removal, possibly viral removal, and in-process monitoring
 
-**Table 15.0-8**
+| Step | Contamination Control Elements |
+| --- | --- |
 
-Cleaning and Sterilization Processes
-Cleaning
 Manual cleaning processes (such as washing) for equipment are difficult to qualify and ensure reproducibility
 Sterilization
 Facility design should consider features that prevent introduction of harmful contaminants into products at every stage of the
@@ -4468,10 +3969,10 @@ Benefit to Preventing Contamination
 •
 Correctly designed and validated cleaning (washing) and sterilization processes helps prevent contamination from equipment.
 
-**Table 15.0-9**
+| Step | Definitions |
+| --- | --- |
+| 6.1 | <Add relevant site definitions in this document.> |
 
-Environmental Monitoring (Viable and Total Particulate Monitoring)
-What It Is
 Provides immediate information on the status of an area from a particle perspective
 Provides a snapshot of the bioburden profile of an area at a specific time
 Provides an ongoing assessment of the routine flora in the manufacturing environment, if an appropriate identification
@@ -4493,9 +3994,9 @@ Attention should also be paid to monitoring the recovery of microorganisms durin
 •
 When an atypical organism is recovered, the potential risk of product impact should be assessed.
 
-**Table 15.0-10	 Testing Controls or Alert Levels/ Action Limits**
+| Document Number | Title |
+| --- | --- |
 
-Setting Levels
 Alert levels and action limits for impurities and contaminants serve to reinforce that purification steps are effective
 control measures in removing untoward substances at each step of the manufacturing process
 Alert levels and action limits for EM allow signals to be monitored and appropriate corrective action to be taken
@@ -4588,17 +4089,9 @@ stream; therefore, it would not secrete negative by-products before the microbia
 filtration. The downstream bioburden results also demonstrated the removal of the microbial cells and
 absence of endotoxin, and an accelerated stability results demonstrated no damage from protease activity.
 
-**Table 16.1-1**
+| Revision Number | Date Effective | Summary of Changes |
+| --- | --- | --- |
 
-Microbial Impact Assessment Example 1
-Vulnerability Scoring: Microorganism Characteristics
-Characteristics of Microorganism
-Microorganism Identified:
-Stenotrophomonas maltophilia a
-CFU per sample volume:
-120 CFU/10 mL
-Estimated CFU/total working volume
-(50 L):
 6.0 x 105 CFU/50 L
 Common Source:
 ☐ Human microbiota
@@ -4991,9 +4484,7 @@ Table 17.4-1 describes each level of disruption and offers examples. Specific ac
 of recovery activities are shown in the Table 17.4-2. The information in these tables is not all-inclusive
 but is provided as a guidance for consideration.
 
-**Table 17.4-1: Example of Categorization of Disruption**
-| Level | Description |
-| --- | --- |
+**Table 17.4-1**
 
 Example of Categorization of Disruption
 Level
@@ -5009,9 +4500,7 @@ processing is occurring in the room/area.
 Classified Areas, e.g., opening an electrical panel, equipment repair or maintenance, light bulb change, sprinkler cover replacement
 Critical Utilities, e.g., cutting, welding, piping replacement, derouging, chemical cleaning
 
-**Table 17.4-2: Example Recovery Plans**
-| Level | Containment Recommendations | Cleaning and Disinfection Recommendation | Monitoring Recommendation |
-| --- | --- | --- | --- |
+**Table 17.4-2**
 
 Example Recovery Plans
 Level
@@ -5065,9 +4554,7 @@ An effective CCS is tailored to the specific risks of a process, illustrated by 
 examples (Table 18.0-1). DS is used to illustrate this point because the processes vary widely across
 industry. This principle also applies to DP.
 
-**Table 18.0-1: Illustration of CCS Tailored to Example Process**
-| | Process 1 | Process 2 | Process 3 |
-| --- | --- | --- | --- |
+**Table 18.0-1**
 
 Illustration of CCS Tailored to Example Process
 Process 1
