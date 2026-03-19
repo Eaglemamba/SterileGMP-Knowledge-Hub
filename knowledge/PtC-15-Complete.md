@@ -468,7 +468,7 @@ of process validation (PV), if the MMU is intended for multiproduct use, it may 
 PV for every potential product. The choice of the model process for PV should consider its complexity and
 robustness in order to cover a range of product types.
 
-**Appendix A: Regulatory Compliance Expectations**
+## Appendix A: Regulatory Compliance Expectations
 
 The following list provides examples of expectations regarding regulatory compliance for mobile
 manufacturing units (MMU) as per U.S. Food and Drug Administration’s 21 CFR Parts 211 and 610 _**(6)**_ _**(7)**_
