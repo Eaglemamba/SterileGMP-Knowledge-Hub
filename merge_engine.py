@@ -22,6 +22,7 @@ Usage in a report's merge.py:
 
 import os
 import re
+from html.parser import HTMLParser
 
 
 # ============================================================
@@ -126,6 +127,255 @@ STANDARD_JS = """    <script>
         });
     });
     </script>"""
+
+
+# ============================================================
+# HTML → MARKDOWN CONVERTER
+# ============================================================
+
+class _HtmlToMd(HTMLParser):
+    """Minimal HTML-to-Markdown converter (no external deps).
+
+    Strategy: strip <style>/<script>/<head> blocks via regex before parsing,
+    then walk tags to convert headings, lists, tables, inline marks.
+    """
+
+    # Void elements never have a closing tag — do NOT push onto depth stack
+    VOID_TAGS = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img',
+                 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
+
+    BLOCK_TAGS = {'p', 'div', 'section', 'article', 'blockquote',
+                  'header', 'footer', 'main', 'nav', 'aside', 'figure',
+                  'figcaption', 'address', 'details', 'summary'}
+    LIST_TAGS = {'ul', 'ol'}
+
+    def __init__(self):
+        super().__init__()
+        self.result = []
+        self._in_list = []            # stack: 'ul' or 'ol'
+        self._list_counter = []
+        self._in_td = False
+        self._td_buf = []
+        self._table_row = []
+        self._table_header_done = False
+
+    # ---- helpers ----
+
+    def _emit(self, text):
+        if text:
+            self.result.append(text)
+
+    def _nl(self, n=1):
+        combined = ''.join(self.result)
+        trailing = len(combined) - len(combined.rstrip('\n'))
+        needed = n - trailing
+        if needed > 0:
+            self.result.append('\n' * needed)
+
+    # ---- HTMLParser callbacks ----
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
+            self._nl(2)
+            self._emit('#' * int(tag[1]) + ' ')
+
+        elif tag == 'li':
+            self._nl(1)
+            if self._in_list and self._in_list[-1] == 'ol':
+                self._list_counter[-1] += 1
+                indent = '    ' * (len(self._in_list) - 1)
+                self._emit(f'{indent}{self._list_counter[-1]}. ')
+            else:
+                indent = '    ' * (len(self._in_list) - 1)
+                self._emit(f'{indent}- ')
+
+        elif tag in self.LIST_TAGS:
+            self._in_list.append(tag)
+            self._list_counter.append(0)
+            self._nl(1)
+
+        elif tag == 'tr':
+            self._table_row = []
+
+        elif tag in ('td', 'th'):
+            self._in_td = True
+            self._td_buf = []
+
+        elif tag == 'br':
+            self._emit('  \n')
+
+        elif tag == 'hr':
+            self._nl(2)
+            self._emit('---')
+            self._nl(2)
+
+        elif tag in ('strong', 'b'):
+            self._emit('**')
+
+        elif tag in ('em', 'i'):
+            self._emit('*')
+
+        elif tag == 'code':
+            self._emit('`')
+
+        elif tag == 'pre':
+            self._nl(2)
+            self._emit('```\n')
+
+        elif tag in self.BLOCK_TAGS:
+            self._nl(2)
+
+    def handle_endtag(self, tag):
+        if tag in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
+            self._nl(2)
+
+        elif tag == 'li':
+            self._nl(1)
+
+        elif tag in self.LIST_TAGS:
+            if self._in_list:
+                self._in_list.pop()
+                self._list_counter.pop()
+            self._nl(2)
+
+        elif tag in ('td', 'th'):
+            cell_text = ''.join(self._td_buf).strip().replace('\n', ' ')
+            self._table_row.append(cell_text)
+            self._in_td = False
+            self._td_buf = []
+
+        elif tag == 'tr':
+            if self._table_row:
+                self._nl(1)
+                self._emit('| ' + ' | '.join(self._table_row) + ' |')
+                if not self._table_header_done:
+                    self._nl(1)
+                    self._emit('| ' + ' | '.join(['---'] * len(self._table_row)) + ' |')
+                    self._table_header_done = True
+
+        elif tag == 'table':
+            self._table_header_done = False
+            self._nl(2)
+
+        elif tag in ('strong', 'b'):
+            self._emit('**')
+
+        elif tag in ('em', 'i'):
+            self._emit('*')
+
+        elif tag == 'code':
+            self._emit('`')
+
+        elif tag == 'pre':
+            self._nl(1)
+            self._emit('```')
+            self._nl(2)
+
+        elif tag in self.BLOCK_TAGS:
+            self._nl(2)
+
+    def handle_data(self, data):
+        if self._in_td:
+            self._td_buf.append(data)
+        else:
+            self._emit(data)
+
+    def handle_entityref(self, name):
+        entities = {'amp': '&', 'lt': '<', 'gt': '>', 'nbsp': ' ',
+                    'quot': '"', 'apos': "'"}
+        char = entities.get(name, f'&{name};')
+        if self._in_td:
+            self._td_buf.append(char)
+        else:
+            self._emit(char)
+
+    def handle_charref(self, name):
+        try:
+            char = chr(int(name[1:], 16) if name.startswith('x') else int(name))
+        except Exception:
+            char = ''
+        if self._in_td:
+            self._td_buf.append(char)
+        else:
+            self._emit(char)
+
+
+def html_to_markdown(html: str) -> str:
+    """Convert an HTML string to clean Markdown, preserving headings.
+
+    Strips <style>, <script>, and <head> blocks with regex first,
+    then walks the remaining tags for conversion.
+    """
+    # Strip style/script/head blocks entirely (avoids void-element depth bugs)
+    html = re.sub(r'<style[^>]*>.*?</style>', '', html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r'<script[^>]*>.*?</script>', '', html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r'<head[^>]*>.*?</head>', '', html, flags=re.DOTALL | re.IGNORECASE)
+
+    parser = _HtmlToMd()
+    parser.feed(html)
+    md = ''.join(parser.result)
+    # Collapse 3+ consecutive blank lines to 2
+    md = re.sub(r'\n{3,}', '\n\n', md)
+    return md.strip()
+
+
+# ============================================================
+# MARKDOWN GENERATOR
+# ============================================================
+
+def generate_markdown(
+    section_map: list,
+    report_title_en: str,
+    report_subtitle_en: str,
+    report_subtitle_zh: str,
+    output_filename: str,
+    chapter_label: str,
+    base_dir: str,
+):
+    """
+    Generate a clean Markdown version of a merged report for chatbot use.
+    Output is written to <repo_root>/knowledge/<stem>.md
+    where <stem> is output_filename with .html replaced by .md.
+    """
+    sections_dir = os.path.join(base_dir, 'sections')
+    repo_root = os.path.join(base_dir, '..')
+    knowledge_dir = os.path.join(repo_root, 'knowledge')
+    os.makedirs(knowledge_dir, exist_ok=True)
+
+    md_filename = output_filename.replace('.html', '.md')
+    md_path = os.path.join(knowledge_dir, md_filename)
+
+    lines = []
+    lines.append(f'# {report_title_en}: {report_subtitle_en}')
+    lines.append(f'\n> {report_subtitle_zh}\n')
+
+    for files, nav_id, nav_num, label_en, label_zh, pages in section_map:
+        section_parts = []
+        for filename in files:
+            filepath = os.path.join(sections_dir, filename)
+            if not os.path.exists(filepath):
+                continue
+            with open(filepath, 'r', encoding='utf-8') as f:
+                html = f.read()
+            section_parts.append(html_to_markdown(html))
+
+        if not section_parts:
+            continue
+
+        page_info = f' ({pages})' if pages else ''
+        lines.append(f'\n## {chapter_label} {nav_num}: {label_en} {label_zh}{page_info}\n')
+        lines.append('\n\n'.join(section_parts))
+
+    md_content = '\n'.join(lines)
+    # Final cleanup: collapse excess blank lines
+    md_content = re.sub(r'\n{3,}', '\n\n', md_content)
+
+    with open(md_path, 'w', encoding='utf-8') as f:
+        f.write(md_content)
+
+    size_kb = os.path.getsize(md_path) / 1024
+    print(f"  [MD] {md_filename} → knowledge/ ({size_kb:.1f} KB)")
+    return md_path
 
 
 # ============================================================
@@ -273,4 +523,15 @@ def run_merge(
         print(f"\n  [WARNING] Missing files ({len(missing_files)}):")
         for s in missing_files:
             print(f"    - {s}")
+
+    # Auto-generate Markdown for chatbot use
+    generate_markdown(
+        section_map=section_map,
+        report_title_en=report_title_en,
+        report_subtitle_en=report_subtitle_en,
+        report_subtitle_zh=report_subtitle_zh,
+        output_filename=output_filename,
+        chapter_label=chapter_label,
+        base_dir=base_dir,
+    )
     print("=" * 60)
