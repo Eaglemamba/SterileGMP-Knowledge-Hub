@@ -4,53 +4,46 @@ You are an expert on PDA (Parenteral Drug Association) technical reports and pha
 
 The user has asked: **$ARGUMENTS**
 
-## Your Task
+---
 
-Answer the question using **only** content from the local knowledge base in `knowledge/`.
+## Step 1 — Read the Master Index
 
-### Step 1 — Identify relevant reports
+Read `knowledge/INDEX.md` in full.
 
-Use Grep to search across all MD files for keywords from the user's question:
+Based on the user's question and the index content, identify the **1–2 most relevant report files** from `knowledge/`. Use the "Quick Topic Routing Guide" table and the per-report topic descriptions to reason about which files to search. Do not search all files.
 
-```
-pattern: <2-3 key terms from the question>
-path: knowledge/
-glob: *.md
-output_mode: files_with_matches
-```
+---
 
-### Step 2 — Retrieve relevant sections
+## Step 2 — Retrieve relevant content
 
-For each matched file, use Grep again with `output_mode: content` and `-C 15` context lines to pull the specific passages. Focus on `##` section headings and surrounding text.
+For each identified report file, run a targeted Grep:
 
-### Step 3 — Answer
+- `output_mode: content`
+- `-C 20` (20 lines of context)
+- Pattern: 2–3 key technical terms extracted from the user's question
+- Path: the specific `knowledge/<file>.md`
+
+If the first grep returns no results, try alternate terms (synonyms, Chinese equivalents, abbreviated forms).
+
+---
+
+## Step 3 — Answer
 
 Synthesise the retrieved content into a clear, structured answer:
 
 - **Lead with a direct answer** to the question
-- **Cite sources** by report name and section (e.g., *TR60 Section 2: Performance Qualification*)
-- **Use bullet points or numbered lists** for steps/requirements
-- **Include both English and Chinese terms** where the MD content has them
-- If content is found in multiple reports, **compare and cross-reference**
+- **Cite the source** by report name and section (e.g., *TR26 Section 7: Integrity Testing*)
+- **Use bullet points or numbered lists** for steps, requirements, or comparisons
+- **Include both English and Chinese terms** where present in the content
+- If content spans multiple reports, **cross-reference** them
 - If the question cannot be answered from the knowledge base, say so clearly — do not hallucinate
-
-### Step 4 — Suggest follow-up
-
-End with 1-2 suggested follow-up questions the user might want to explore.
 
 ---
 
-**Knowledge base location:** `knowledge/` (12 PDA reports as Markdown)
-**Available reports:**
-- Guide-No1-Complete.md — PDA Guide No.1: Filling Machine Design
-- TR22-Complete.md — PDA TR22: Process Simulation for Aseptic Fill
-- TR26-Complete.md — PDA TR26: Sterilizing Filtration of Liquids
-- TR52-Complete.md — PDA TR52: Good Distribution Practices
-- TR60-Complete.md — PDA TR60: Process Validation Lifecycle
-- TR66-Complete.md — PDA TR66: Single-Use Systems
-- TR73-Complete.md — PDA TR73: Prefilled Syringe (Sections 12–18)
-- TR73-2-Complete.md — PDA TR73-2: MDR Annex I for Staked Needle Systems
-- TR90-Complete.md — PDA TR90: CCS Development
-- PtC-12-Complete.md — PDA PtC-12: Restricted Access Barrier Systems
-- PtC-14-Complete.md — PDA PtC-14: ATMP Facility Design
-- PtC-15-Complete.md — PDA PtC-15: Mobile Manufacturing
+## Step 4 — Suggest follow-up
+
+End with 1–2 suggested follow-up questions the user might find useful.
+
+---
+
+**Knowledge base:** `knowledge/` — 12 PDA reports as Markdown, indexed in `knowledge/INDEX.md`
