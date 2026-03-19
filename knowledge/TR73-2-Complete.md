@@ -44,43 +44,9 @@ evaluated by the NBs, but the medicinal product (drug) is not.
 nents; a backstop can be added if needed.
 Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.
 
-**Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.**
+| Category | In Scope | Out of Scope |
+| --- | --- | --- |
 
-Items In and Out of Scope of TR-73-2, by Category
-Category
-In Scope
-Out of Scope
-Syringe Type
-Staked needle
-Luer lock, luer cone, dual chamber1
-Dosing
-Fixed dose
-Variable dose (with or without measuring function)
-Material of Construction
-Glass
-Polymer
-Additional Components/Features
-Backstop or finger-flange extension
-(Rigid) needle shield
-Plunger rod2
-Autoinjectors
-Sharps injury-protection system (needle safety system)
-Immediate syringe label
-Packaging
-Packaging, such as blister, folding box or carton labels,
-paper tray, leaflets, or sterile barrier
-Regulatory Requirements
-GSPRs in Annex I of Regulation (EU)
-2017/45
-Non-EU regulatory frameworks
-Application
-Injectable medicinal products, as defined
-in Article 1(2), intended for intramuscular,
-intravenous, or subcutaneous injection3
-Veterinary products4
-ATMPs as defined under Article 2(1)(d) of Regulation
-(EC) No 1394/20074,5
-Intravitreal6
 1	 Dual-chamber PFS are out of scope because they are not typically produced in a staked needle configuration.
 2	 Additional components and features are described in Section 5.3.
 3	 Directive 2001/83/EC of the European Parliament and of the Council of 6 November 2001 on the Community Code Relating to Medicinal
@@ -374,14 +340,30 @@ Product Description
 The submission file to NBs should include a description of the product as it is intended to be placed
 on the market (i.e., as a single integral product). The description should contain key information (as in
 
-**Table 4.1-1) as well as references to more detailed information. The summary may be phrased like this:**
+| Category | Status |
+| --- | --- |
+| Invented/trade name of the medicinal product | As per MAA |
+| INN (or common name) of the active substance(s) | As per MAA |
+| Pharmaceutical form(s) and strength(s) | 10 mg of INN in 1.5 mL solution in prefilled syringe |
+| Pharmaco-therapeutic group (ATC code) | D084 C52 |
+| Indication(s) | As per SmPC1 module 4.1 |
+| Marketing Authorisation Holder (MAH) | Name and address of the legal entity holding the Marketing Authorization or respective EU-authorized representative |
+| Marketing Authorisation type | Centralized application |
+| Marketing Authorisation procedure number | EU/xxx/xxx |
 
-Product “Prefilled Syringe XYZ” is intended to be placed on the market in such a
 way that the medicinal product and the device intended to administer the medicinal
 product form a single integral product that is intended exclusively for use in the given
 combination, and is not reusable, as defined by MDR Article 1(9), subparagraph 2.
 
-**Table 4.1-1**
+| Category | Status |
+| --- | --- |
+| Device invented name/trade name/project name1 | Prefilled Syringe XXX 1.5 mL |
+| Device part category | Single-dose prefilled syringe |
+| Risk class of the device part, i.e., "virtual" device part classification and applicable classification rule(s) (per MDR Annex VIII) | Class IIa, per Rule 6: Surgically invasive device intended for transient use and administration of medicinal product is not done in a manner that is potentially hazardous, taking into account the mode of application |
+| Applicable MDA/MDN2 code (single selection according to Commission Implementing Regulation (EU) 2017/2185; CIR 2017/2185) | MDN 1202 |
+| Applicable MDS/MDT3 code (multiple selection according to CIR 2017/2185) | MDT 2001 |
+| Route of Conformity | Conformity will be assessed pursuant to Directive 2001/83/EC, point 12 of Section 3.2 as amended by MDR 2017/745 Article 117, which states that products governed by the Medicinal Products Directive 2001/83/EC shall require an opinion on the conformity of the device part with the relevant General Safety and Performance Requirements (GSPR) set out in Annex I to the MDR, issued by a notified body designated in accordance with that Regulation for the type of device in question. |
+| Notified Body | [insert name of the NB] |
 
 Example of Marketing Authorization Application (MAA) Information Summary on the Medicinal Product
 Category
@@ -411,9 +393,16 @@ subassemblies and a backstop, if needed. The device description may be phrased l
 The device is a single-dose disposable syringe with a staked needle. This device will
 be used to administer a medicinal product as stated in Table 4.2-1. Table 4.2-1 and
 
-**Table 4.2-2 summarize the main device attributes and provide an overview of the**
+| Category | Status |
+| --- | --- |
+| Administration route | Subcutaneous |
+| Needle | Staked; covered with needle shield |
+| Reusable or not reusable | Not reusable |
+| Mode of activation | Non-active: energy for dose delivery is created by human force and directly applied to the plunger |
+| Additional feature | Does not require any additional feature for its intended use |
+| Invasiveness | The needle penetrates inside the body through the surface of the body (intact skin), not through a body orifice |
+| Measuring function (as per MEDDEV 2.1/5 (June 1998)) (19) | No measuring function |
 
-intended use and target patient population of the device. The commercial version
 will consist of the components detailed in Figure 4.2-1 and Figure 4.2-2. As this is
 not a medical device, but a DDC, the classification rules for devices do not formally
 apply and are applied here for the “virtual” device part (18).
@@ -421,38 +410,14 @@ apply and are applied here for the “virtual” device part (18).
 Figure 4.2-1
 Schematic Overview of the Drug and the Device with its Components
 
-**Table 4.2-1**
+| Category | Status |
+| --- | --- |
+| Intended medical indication | Provide as stated in SmPC (Document XXX), e.g., delivery of a predefined fixed dose of a drug product |
+| Intended patient population | Provide as stated in SmPC (Document XXX), e.g., patient with chronic disease xxx |
+| Intended user profile | Provide as stated in SmPC (Document XXX), e.g., patients, caregivers, healthcare professionals |
+| Intended use environment and conditions of use | Provide as stated in SmPC (Document XXX), e.g., clinical setting (private office and/or hospital), home setting |
+| Intended storage conditions | Provide as stated in SmPC (Document XXX), e.g., do not refrigerate or freeze |
 
-Example of Identification of “Virtual” Device
-Category
-Status
-Device invented name/trade name/project name1
-Prefilled Syringe XXX 1.5 mL
-Device part category
-Single-dose prefilled syringe
-Risk class of the device part, i.e., “virtual” device part
-classification and applicable classification rule(s) (per MDR
-Annex VIII)
-Class IIa, per Rule 6: Surgically invasive device intended for transient use and
-administration of medicinal product is not done in a manner that is poten-
-tially hazardous, taking into account the mode of application
-Applicable MDA/MDN2 code (single selection according to
-Commission Implementing Regulation (EU) 2017/2185;
-CIR 2017/2185)
-MDN 1202
-Applicable MDS/MDT3 code (multiple selection according
-to CIR 2017/2185)
-MDT 2001
-Route of Conformity
-Conformity will be assessed pursuant to Directive 2001/83/EC, point 12 of
-Section 3.2 as amended by MDR 2017/745 Article 117, which states that
-products governed by the Medicinal Products Directive 2001/83/EC shall
-require an opinion on the conformity of the device part with the relevant
-General Safety and Performance Requirements (GSPR) set out in Annex I
-to the MDR, issued by a notified body designated in accordance with that
-Regulation for the type of device in question.
-Notified Body
-[insert name of the NB]
 1	 Throughout the development of a product, the product name may be adapted respectively. There is often a project name as well as several
 other terms. Listing several naming options allows an external reviewer to recognize the device part and the integral medicinal product
 throughout the documentation submitted for assessment.
@@ -461,18 +426,16 @@ throughout the documentation submitted for assessment.
 Figure 4.2-2
 Syringe Subassembly Ready for Filling
 
-**Table 4.2-2**
+| Identifier | Component Name/Number | Functional Description | Specifications |
+| --- | --- | --- | --- |
+| 1A | Plunger stopper/PSxxx | Seals the flange end of the syringe and ensures container–closure integrity (CCI)Engages with the plunger rodDetermines break-loose force and contributes to glide force | Document XXXDocument XXY |
+| 1B | Plunger rod/PRxxx | Engages with the plunger stopperConverts kinetic energy into a plunger stopper movement and allows to expel/administer the drugEnables human interaction on thumb pad | Document XXXDocument XXY |
+| 2A | Barrel/Bxxx | Contains the drug productHolds the needle and engages with the needle shieldInteracts with the plunger stopperContributes to glide force | Document XXXDocument XXY |
+| 2B | Needle/Nxxx | Enables perforation of the human skin and drug deposition in the target tissueEnsures proper connection of needle and syringe barrelContributes to glide forceBalances injection pain and injection force (flow rate) | Document XXXDocument XXY |
+| 2C | Needle shield (only soft or also including a rigid part)/NSxxx | Seals the needle tip end of the syringe and ensures CCIEngages with the syringe barrel coneProtects the needle until usePrevents needle stick prior to product useDetermines needle shield removal force | Document XXXDocument XXY |
+| 2D | Backstop/Bxxx | Supports conversion of user force into longitudinal plunger rod movementMay include a feature to prevent plunger removal from the syringe (an optional component) | Document XXXDocument XXY |
+| 3A | Immediate labeling/ILxxx | Is transparent and spacious enough to allow inspection of drug conditionProvides safety information (e.g., drug, strength, expiry date) | Document XXXDocument XXY |
 
-Example of Device Attributes
-Category
-Status
-Administration route
-Subcutaneous
-Needle
-Staked; covered with needle shield
-Reusable or not reusable
-Not reusable
-Mode of activation
 Non-active: energy for dose delivery is created by human force and directly applied to the plunger
 Additional feature
 Does not require any additional feature for its intended use
@@ -495,12 +458,12 @@ be the frequency of use of the DDC to address the cumulative use and exposure to
 intended use locations on the body, contraindications, warnings, and dose and dose ranges (if other
 dosages are available).
 
-**Table 4.2-3**
+| Identifier | Component Name/Number | Description | Specifications |
+| --- | --- | --- | --- |
+| 1 | Plunger stopper/plunger rod/backstopPxxx | Functional unit composed of components 1A, 1B, and 2D | Document XXXDocument XXY |
+| 2 | Barrel/staked needle/needle shieldBxxx | Functional unit composed of components 2A, 2B, and 2C | Document XXXDocument XXY |
+| 3 | SyringeSxxx | Functional unit composed of components 1, 2, and 3A | Document XXXDocument XXY |
 
-Example of Device Intended Use and Intended User Population
-Category
-Status
-Intended medical indication
 Provide as stated in SmPC (Document XXX), e.g., delivery of a predefined fixed dose of a drug product
 Intended patient population
 Provide as stated in SmPC (Document XXX), e.g., patient with chronic disease xxx
@@ -534,101 +497,26 @@ the components stated in Table 4.4-1 and the functional units stated in Table 4.
 Figure 4.4-1
 Components of a Syringe
 
-**Table 4.4-1**
+| Component Name/Number | Material Description (Supplier) | Body Contact (Yes – Type/No) | Drug Product Contact (Yes/No) |
+| --- | --- | --- | --- |
+| Plunger stopper/PSxxx | Elastomer Halobutyl xyz (Supplier xxx)Lubricant: e.g., Silicone oil SOxxx (Supplier xxx)Color/Colorant: Black xyz (Supplier xxx)For more details, see document XXX. | No (indirect body contact via drug product) | Yes |
+| Plunger rod/PRxxx | Polypropylene xyz (Supplier xxx)Color/Colorant: Black xyz (Supplier xxx)For more details, see document XXX. | Yes – intact skin | No |
+| Barrel/Bxxx | Type I Borosilicate Glass (Supplier xxx)Lubricant: Silicone oil SOxxx (Supplier xxx)Ink: Black ink yyy (Supplier xxx)For more details, see document XXX. | Yes – intact skin in contact with outer surface (glass) | Yes |
+| Needle/Nxxx | Stainless Steel X5CrNi18-9 (Supplier xxx)Lubricant: Silicone oil SOxxx (Supplier xxx)Adhesive: Ultraviolet light-reacting curing adhesive xyz (Supplier xxx)For more details, see document XXX. | Yes – surgically invasive | Yes |
+| Needle Shield Soft Part/NSxxx | Synthetic Isoprene Butyl Blend xyz (Supplier xxx)Color/Colorant: Grey (Supplier xxx)Lubricant: Silicone oil SOxxx (Supplier xxx)For more details, refer to document XXX. | No (indirect body contact via drug product) | Yes |
+| Needle Shield Rigid Part/NSxxx | Polypropylene xyz (Supplier xxx)Color/Colorant: Transparent (Supplier xxx)For more details, see document XXX. | Yes – intact skin | No |
+| Immediate Syringe Labeling/ILxxx | Label made of Polypropylene xyz (Supplier xxx)Glue: Adhesive xyz (Supplier xxx)Ink: Black ink yyy (Supplier xxx)For more details, see document XXX. | Yes – intact skin | No |
 
-Example of Component Information
-Identifier
-Component Name/
-Number
-Functional Description
-Specifications
-1A
-Plunger stopper/PSxxx
-Seals the flange end of the syringe and ensures container–closure
-integrity (CCI)
-Engages with the plunger rod
-Determines break-loose force and contributes to glide force
-Document XXX
-Document XXY
-1B
-Plunger rod/PRxxx
-Engages with the plunger stopper
-Converts kinetic energy into a plunger stopper movement and
-allows to expel/administer the drug
-Enables human interaction on thumb pad
-Document XXX
-Document XXY
-2A
-Barrel/Bxxx
-Contains the drug product
-Holds the needle and engages with the needle shield
-Interacts with the plunger stopper
-Contributes to glide force
-Document XXX
-Document XXY
-2B
-Needle/Nxxx
-Enables perforation of the human skin and drug deposition in the
-target tissue
-Ensures proper connection of needle and syringe barrel
-Contributes to glide force
-Balances injection pain and injection force (flow rate)
-Document XXX
-Document XXY
-2C
-Needle shield (only soft or
-also including a rigid part)/
-NSxxx
-Seals the needle tip end of the syringe and ensures CCI
-Engages with the syringe barrel cone
-Protects the needle until use
-Prevents needle stick prior to product use
-Determines needle shield removal force
-Document XXX
-Document XXY
-2D
-Backstop/Bxxx
-Supports conversion of user force into longitudinal plunger rod
-movement
-May include a feature to prevent plunger removal from the syringe
-(an optional component)
-Document XXX
-Document XXY
-3A
-Immediate labeling/ILxxx
-Is transparent and spacious enough to allow inspection of drug
-condition
-Provides safety information (e.g., drug, strength, expiry date)
-Document XXX
-Document XXY
+| Component Name/Number | Presence of CMR, ED, or Nanomaterial (Yes/No) | If Present, Type of Material |
+| --- | --- | --- |
+| Plunger stopper/PSxxx | No | Not applicable |
+| Plunger rod/PRxxx | No | Not applicable |
+| Barrel/Bxxx | No | Not applicable |
+| Needle/Nxxx | Yes | Contains substances that are carcinogenic, mutagenic, or toxic to reproduction (CMR) (per GSPR 10.4.1(a), MDR)For more details, see document XXX. |
+| Needle Shield Soft Part/NSxxx | No | Not applicable |
+| Needle Shield Rigid Part/NSxxx | No | Not applicable |
+| Immediate Labeling/ILxxx | Yes | Incorporates and/or consists of nanomaterials (according to definition in Article 2(18) and to GSPR 10.6, MDR)For more details, see document XXX. |
 
-**Table 4.4-2**
-
-Example of Functional Unit Information
-Identifier
-Component Name/
-Number
-Description
-Specifications
-Plunger stopper/plunger
-rod/backstop
-Pxxx
-Functional unit composed of components 1A, 1B, and 2D
-Document XXX
-Document XXY
-Barrel/staked needle/
-needle shield
-Bxxx
-Functional unit composed of components 2A, 2B, and 2C
-Document XXX
-Document XXY
-Syringe
-Sxxx
-Functional unit composed of components 1, 2, and 3A
-Document XXX
-Document XXY
-4.5
-Materials
 This section provides a description of the (raw) materials of construction that are used for the com-
 ponents, functional units, and subassembled part of the device as presented in the DDC. In addition,
 the type of direct or indirect body contact (via the drug product) is described to allow an overview of
@@ -642,112 +530,23 @@ text of GSPR 10, that is, materials or substances offering concentration limits 
 ing “special attention” (e.g., carcinogenic, mutagenic and reprotoxic chemicals (CMR),
 endocrine-disrupting (ED) substances, nanomaterials) are stated in Table 4.5-2.
 
-**Table 4.5-1**
+| Component Name/Number | Dimensions | Material |
+| --- | --- | --- |
+| Folding Box/FOxxx | 40 mm × 25 mm × 150 mm (Height, Width, Length) | Carton board material xyz (Supplier xxx)For more details, see document XXX. |
+| Tamper-Evident Label/TExxx | 15 mm × 23 mm (Width, Length) | Polymeric material xyz (Supplier xxx)For more details, see document XXX. |
+| Blister/BRxxx | See technical drawing xxx. | Foil xxy (Supplier xxx)For more details, see document xxx. |
+| Blister Lid/BLxxx | 17 mm × 100 mm (Width, Length) | Blister lidding foil Coated Paper (Supplier xxx)For more details, see document XXX. |
+| Package insert/PIxxx | 105 mm × 280 mm (35 mm × 140 mm in folded format) (Width, Length) | Paper xyz (Supplier xxx)For more details, see document XXX. |
 
-Example of Material Information
-Component Name/
-Number
-Material Description (Supplier)
-Body Contact
-(Yes – Type/No)
-Drug Product Contact
-(Yes/No)
-Plunger stopper/
-PSxxx
-Elastomer Halobutyl xyz (Supplier xxx)
-Lubricant: e.g., Silicone oil SOxxx (Supplier xxx)
-Color/Colorant: Black xyz (Supplier xxx)
-For more details, see document XXX.
-No (indirect body
-contact via drug
-product)
-Yes
-Plunger rod/PRxxx
-Polypropylene xyz (Supplier xxx)
-Color/Colorant: Black xyz (Supplier xxx)
-For more details, see document XXX.
-Yes – intact skin
-No
-Barrel/Bxxx
-Type I Borosilicate Glass
-(Supplier xxx)
-Lubricant: Silicone oil SOxxx (Supplier xxx)
-Ink: Black ink yyy (Supplier xxx)
-For more details, see document XXX.
-Yes – intact skin in
-contact with outer
-surface (glass)
-Yes
-Needle/Nxxx
-Stainless Steel X5CrNi18-9 (Supplier xxx)
-Lubricant: Silicone oil SOxxx (Supplier xxx)
-Adhesive: Ultraviolet light-reacting curing adhesive xyz
-(Supplier xxx)
-For more details, see document XXX.
-Yes – surgically invasive
-Yes
-Needle Shield
-Soft Part/ NSxxx
-Synthetic Isoprene Butyl Blend xyz (Supplier xxx)
-Color/Colorant: Grey (Supplier xxx)
-Lubricant: Silicone oil SOxxx (Supplier xxx)
-For more details, refer to document XXX.
-No (indirect body
-contact via drug
-product)
-Yes
-Needle Shield
-Rigid Part/NSxxx
-Polypropylene xyz (Supplier xxx)
-Color/Colorant: Transparent (Supplier xxx)
-For more details, see document XXX.
-Yes – intact skin
-No
-Immediate Syringe
-Labeling/ ILxxx
-Label made of Polypropylene xyz (Supplier xxx)
-Glue: Adhesive xyz (Supplier xxx)
-Ink: Black ink yyy (Supplier xxx)
-For more details, see document XXX.
-Yes – intact skin
-No
+| Component Name/Number | Link to Relevant Information in TR-73 | Manufacturing Related Information |
+| --- | --- | --- |
+| Plunger Stopper/PSxxx | Chapters 3, 11, 13 | Document XXX |
+| Plunger Rod/PRxxx | Chapters 11, 13 | Document XXX |
+| Barrel/Bxxx | Chapters 5, 6, 10, 13 | Document XXX |
+| Needle/Nxxx | Chapters 5, 6, 8, 10, 13 | Document XXX |
+| Needle Shield (Rigid Part)/NSxxx | Chapters 5, 6, 8, 10, 13 | Document XXX |
+| Needle Shield (Soft Part)/NSxxx | Chapters 5, 6, 8, 10, 13 | Document XXX |
 
-**Table 4.5-2**
-
-Example of Materials Relevant in the Context of GSPR 10
-Component Name/ Number
-Presence of CMR, ED, or
-Nanomaterial (Yes/No)
-If Present, Type of Material
-Plunger stopper/ PSxxx
-No
-Not applicable
-Plunger rod/ PRxxx
-No
-Not applicable
-Barrel/ Bxxx
-No
-Not applicable
-Needle/ Nxxx
-Yes
-Contains substances that are carcinogenic, mutagenic, or
-toxic to reproduction (CMR) (per GSPR 10.4.1(a), MDR)
-For more details, see document XXX.
-Needle Shield
-Soft Part/ NSxxx
-No
-Not applicable
-Needle Shield
-Rigid Part/ NSxxx
-No
-Not applicable
-Immediate Labeling/ ILxxx
-Yes
-Incorporates and/or consists of nanomaterials (according
-to definition in Article 2(18) and to GSPR 10.6, MDR)
-For more details, see document XXX.
-4.6
-Packaging
 Section 4.6 provides a description of all covering and protecting packaging components (e.g., blister,
 folding box, instructions for use), including tamper-evident features and other means to identify the
 packaging integrity by the user. The GSPR Table 5.1-1 does not address packaging-related GSPRs, for
@@ -759,39 +558,11 @@ of the DDC, is individually packed in a blister that is placed in a carton box t
 with a product information leaflet (package insert). An overview of the packaging mate-
 rials is given in Table 4.6-1.
 
-**Table 4.6-1**
+| Component Name/Number | Link to Relevant Information in TR-73 | Manufacturing Related Information |
+| --- | --- | --- |
+| Filling/Fixxx | Chapter 13 | Document XXX |
+| Labeling, Plunger Rod Assembly and Packaging/LAPxxx | Chapters 11, 13 | Document XXX |
 
-Example of Overview of Packaging Materials
-Component Name/Number
-Dimensions
-Material
-Folding Box/ FOxxx
-40 mm × 25 mm × 150 mm
-(Height, Width, Length)
-Carton board material xyz (Supplier xxx)
-For more details, see document XXX.
-Tamper-Evident Label/TExxx
-15 mm × 23 mm
-(Width, Length)
-Polymeric material xyz (Supplier xxx)
-For more details, see document XXX.
-Blister/BRxxx
-See technical drawing xxx.
-Foil xxy (Supplier xxx)
-For more details, see document xxx.
-Blister Lid/BLxxx
-17 mm × 100 mm
-(Width, Length)
-Blister lidding foil Coated Paper (Supplier xxx)
-For more details, see document XXX.
-Package insert/PIxxx
-105 mm × 280 mm (35 mm × 140
-mm in folded format)
-(Width, Length)
-Paper xyz (Supplier xxx)
-For more details, see document XXX.
-4.7
-Product Manufacturing
 This section provides an overview of the manufacturing process of the device components and related
 manufacturing control measures as applied by the syringe component suppliers. This information can
 be provided by the component manufacturers. In addition, it covers the pharmaceutical manufactur-
@@ -830,48 +601,18 @@ their information package.
 Table 4.7.1-1 contains an overview of relevant information as presented in TR-73 regarding the man-
 ufacturing of the different components and subassemblies.
 
-**Table 4.7.1-1**
+| GSPR | Scope | Device Part | Syringe Subassembly | Plunger Stoppers |
+| --- | --- | --- | --- | --- |
+| Evidence of Conformity of the Device Part1 of the Prefilled Syringe | Supportive Documents and Methods for the Syringe Subassembly Ready for Filling2 | Supportive Documents and Methods for Plunger Stoppers3 |
+| Provided by Applicant | Provided by Supplier | Provided by Supplier |
+| Chapter I — General Requirements4 |
 
-Example of Overview of Device Part Manufacturing (Components and Subassembly)
-Component Name/ Number
-Link to Relevant Information in TR-73
-Manufacturing Related Information
-Plunger Stopper/PSxxx
-Chapters 3, 11, 13
-Document XXX
-Plunger Rod/PRxxx
-Chapters 11, 13
-Document XXX
-Barrel/Bxxx
-Chapters 5, 6, 10, 13
-Document XXX
-Needle/Nxxx
-Chapters 5, 6, 8, 10, 13
-Document XXX
-Needle Shield
-(Rigid Part)/NSxxx
-Chapters 5, 6, 8, 10, 13
-Document XXX
-Needle Shield
-(Soft Part)/NSxxx
-Chapters 5, 6, 8, 10, 13
-Document XXX
 4.7.2	 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)
 Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and
 packaging of the final DDC. Respective process validation summaries of all steps should be included.
 
-**Table 4.7.2-1	 Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)**
-
-Component Name/ Number
-Link to Relevant Information in TR-73
-Manufacturing Related Information
-Filling/Fixxx
-Chapter 13
-Document XXX
-Labeling, Plunger Rod Assembly and
-Packaging/ LAPxxx
-Chapters 11, 13
-Document XXX
+| 8 | Risks and side-effects | Risk management file, including Risk management report Benefit/risk assessment Usability engineering file, including Information for safety, incl. residual risks Evidence for the implementation of a RMS and a usability engineering process, e.g., according to ISO 14971, ICH Q9 IEC 62366-1 | High-level risk management summary as evidence for the implementation of a RMS Evidence for the implementation of a QMS, e.g., according to the applicable parts of ISO 13485 ISO 15378 | High-level risk management summary as evidence for the implementation of a RMS Evidence for the implementation of a QMS, e.g., according to the applicable parts of ISO 13485 ISO 15378 |
+| Chapter II — Requirements Regarding Design and Manufacture |
 
 #### 4.7.3 Storage and Transport
 
@@ -935,89 +676,9 @@ of the plunger stopper/needle shield to the applicant.
 Documents regarding the plunger rod, the rigid part of the needle shield (if used), and the backstop
 (if used) are listed in Section 5.3.
 
-**Table 5.1-1**
+| 10.6 | Risks related to particles | Risk management file, incl. Design risk analysis Design verification summary report, incl. Biological Evaluation report Control strategy Evidence of compliance with the applicable parts of GMP requirements for medicinal products EMA/CHMP/CVMP/QWP/850374/2015 Evidence for the implementation of a RMS, e.g., according to the applicable parts of ISO 14971, ICH Q9 Evidence of compliance with the applicable parts of ISO 15378 Evidence of compliance with material safety requirements based on supplier information | Specification, incl. particles Quality Certificate Statement on use of nanomaterials Statement on compliance with the applicable parts of ISO 11040-4, -6 | Specification, incl. particles Quality Certificate Statement on use of nanomaterials Statement on compliance with the applicable parts of ISO 8871-3 |
+| 11 — Infection and Microbial Contamination |
 
-Supportive Documents Suggested to Address Relevant GSPRs
-GSPR
-Scope
-Device Part
-Syringe Subassembly
-Plunger Stoppers
-Content Evidence of Conformity of the Device Part1 of the Prefilled Syringe
-Supportive Documents and Methods for the Syringe
-Subassembly Ready for Filling2
-Supportive Documents and Methods for Plunger
-Stoppers3
-Provided by Applicant
-Provided by Supplier
-Provided by Supplier
-Chapter I – General Requirements4
-1 – Intended Performance
-Intended Performance
-•	 Intended Use statement or reference to information provided in Table 4.2-3
-•	 Risk management file
-•	 Design verification summary report
-•	 Biological evaluation report
-•	 Usability engineering file
-•	 Traceability matrix
-•	 Benefit/risk assessment
-•	 Evidence of compliance with the applicable parts of GMP requirements
-for medicinal products
-•	 High-level risk management summary as evidence for the
-implementation of a RMS
-•	 Evidence how suppliers specified and verified performance
-•	 Evidence for the implementation of a QMS, e.g., according
-to the applicable parts of
-o	 ISO 13485
-o	 ISO 15378
-•	 High-level risk management summary as evidence for the
-implementation of a RMS
-•	 Evidence how suppliers specified and verified performance
-•	 Evidence for the implementation of a QMS, e.g., according
-to the applicable parts of
-o	 ISO 13485
-o	 ISO 15378
-o	 ISO 14971, ICH Q9
-o	 ISO 11040-8
-o	 ISO 10993-1
-o	 IEC 62366-1
- 2 – Risk Reduction I
-Risk
-Reduction I
-•	 Risk management file
-•	 Evidence for the implementation of a RMS, e.g., according to
-o	 ISO 14971, ICH Q9
-•	 High-level risk management summary as evidence for the
-implementation of a RMS
-•	 Evidence how suppliers specified and verified performance
-•	 High-level risk management summary as evidence for the
-implementation of a RMS
-•	 Evidence how suppliers specified and verified performance
-3 – Risk Management System
-(a-f)
-Risk management
-system
-•	 Risk management file, including
-•	 High-level risk management summary as evidence for the
-implementation of a RMS
-•	 Evidence for the implementation of a QMS, e.g., according
-to the applicable parts of
-o	 ISO 13485
-o	 ISO 15378
-•	 High-level risk management summary as evidence for the
-implementation of a RMS
-•	 Evidence for the implementation of a QMS, e.g., according
-to the applicable parts of
-o	 ISO 13485
-o	 ISO 15378
-o	 Risk management plan
-o	 Hazard identification
-document
-o	 Use-related risk analysis
-o	 Post-market surveillance
-plan
-•	 Evidence for the implementation of a RMS, e.g., according to
-o	 ISO 14971, ICH Q9
 1	 See Glossary: incl. barrel, lubrication (if needed), needle and adhesive, NS/RNS, plunger stopper, plunger rod, backstop; suggestions for documentation on the rigid part of the RNS, plunger rod and backstop are provided in Section 5.3.
 2	 Incl. lubrication (if existing), needle and adhesive, NS/RNS (for supportive documentation on the soft part of the NS, please use column 3).
 3	 Incl. lubrication, coating and/or lamination
@@ -1787,7 +1448,9 @@ Table 5.3-1 provides examples of requirements that should be addressed and can b
 supplier documentation, for example, general statements, compliance certificates, data sheets, and test
 reports.
 
-**Table 5.3-1 provides examples of requirements that should be addressed and can be supported using supplier documentation, for example, general statements, compliance certificates, data sheets, and test reports.**
+| Material Safety |
+| --- |
+| Category | Requirements & Standards |
 
 Examples of Supportive Documents for Plunger Rod, Rigid Part of RNS and, if used, Finger Flange Extension/Backstop
 Material Safety
@@ -1836,12 +1499,9 @@ Use wording that aligns with the wording of the requirement (same terminology)
 Be precise and keep it simple
 Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.
 
-**Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.**
+| Materials of concern | Statement on the use of/content of: Phthalates CMR/ED substances Substances regulated under REACH: Substances of very high concern ICH Q3D: Elemental Analysis Latex Materials of animal origin (TSE/BSE; EU Note for Guidance EMA/410/01 revision 3) ISO 10993-18: Physical and/or chemical information, incl. ingredients and processing aids MDR Chapter II, GSPR 13: Devices incorporating materials of biological origin (products or derivatives of human origin; devices manufactured utilizing nonviable biological substances) ISO 22442: Medical devices utilizing animal tissues and their derivatives, Parts 1, 2, and 3 Material Safety Data Sheet, Technical Safety Data Sheet |
+| Technical Information and Performance |
 
-Nonapplicable GSPRs and Suggested Justifications
-GSPR Number
-GSPR Content
-Justification of Nonapplicability
 For the devices referred to in Annex XVI, the general safety requirements set out in Sections 1 and 8 shall be
 understood to mean that the device, when used under the conditions and for the purposes intended, does not
 present a risk at all or presents a risk that is no more than the maximum acceptable risk related to the product’s

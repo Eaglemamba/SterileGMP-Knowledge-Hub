@@ -3,20 +3,39 @@
 vii
 Figures and Tables Index
 
-**Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling**
+| | | | |
+| --- | --- | --- | --- |
 
 Equipment ....................................................................................................................................................... 28
 
-**Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with**
+| | Inherent () | Corrective () |
+| --- | --- | --- |
+| | | |
+| | EM | |
+| APS | | |
+| | Major / Moderate / Minor | |
 
 Supplementary Liquid-Fill Capability ......................................................................................................... 29
 
-**Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-Line**
+| | APS | |
+| --- | --- | --- |
+| (Integral rejects) | | — |
+| (Non-integral, e.g., cracked) | | |
+| | | — APS |
 
 Placebo Powder Fill ....................................................................................................................................... 29
 Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill .................... 30
 
-**Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and**
+| | APS | |
+| --- | --- | --- |
+| | | |
+| | | |
+| / | Grade A | UDAF |
+| | 100-200 mbar | |
+| | | |
+| | | |
+| | | |
+| | Grade A | |
 
 Reconstituted to a Liquid Form After the Fill ........................................................................................... 30
 Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics ........... 47
@@ -24,55 +43,95 @@ Figure 8.0-1 APS Personnel Qualification Criteria ..............................
 Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist .................................... 74
 Table 15.1-1 Applying Risk-Based APS Frequency ................................................................................ 83
 
-**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual aseptic manipulations performed during regular aseptic operations (during online filtration, filling, stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions design aspects such as intervention location, tools used, and/or air flow effects may also be considered in establishing a grouping logic.**
+| Table 4.2.5.1-1: Advantages and Disadvantages of Liquid Medium Filled by Powder Filling Equipment |
+| --- |
+| Advantages | Disadvantages |
 
 Evaluation & Management Model .............................................................................................................. 87
 
-**Table 15.3-1 Intervention Risk Criteria with Scores (Example 3)**
-| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
+| Table 4.2.5.2-1: Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with Supplementary Liquid-Fill Capability |
+| --- |
+| Advantages | Disadvantages |
 
 Risk Level (Example 3) ................................................................................................................................... 91
 
-**Table 15.3-2 Recommended Frequencies and Number of Interventions (Example 3)**
-| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
-| --- | --- | --- |
+| Table 4.2.5.3-1: On-Line Liquid Media Fill Followed by On-Line Placebo Powder Fill |
+| --- |
+| Advantages | Disadvantages |
 
 (Example 3) ...................................................................................................................................................... 92
 
-**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in RABS without Built-In IPC (Example 3)**
-| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Table 4.2.5.4-1: On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill |
+| --- |
+| Advantages | Disadvantages |
 
 Barrier Systems without Built-In In-Process Control (Example 3) ....................................................... 92
 
-**Table 15.4-1 Intervention Risk Criteria with Scores (Example 4)**
-| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
+| Table 4.2.5.5-1: Advantages and Disadvantages of Dry Media Filled as a Powder and Reconstituted to a Liquid Form After the Fill |
+| --- |
+| Advantages | Disadvantages |
 
 Risk Level (Example 4) ................................................................................................................................... 95
 
-**Table 15.4-2 Recommended Frequencies and Number of Interventions (Example 4)**
-| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
-| --- | --- | --- |
+| | | | | |
+| --- | --- | --- | --- | --- |
+| 4.2.5.1 | | | | |
+| 4.2.5.2 | | | | |
+| 4.2.5.3 | | | | |
+| 4.2.5.4 | | | | |
+| 4.2.5.5 | + | | | |
 
 (Example 4) ...................................................................................................................................................... 96
 
-**Table 15.4-3 Risk Assessment of Possible Interventions for Vial-Filling in Open RABS without Built-In IPC (Example 4)**
-| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | |
+| --- | --- |
+| | |
+| | |
+| | ≥ 3 APS 2 |
+| | |
+| | bracketing |
+| | |
+| | APS |
 
 Access Barrier Systems without Built-In In-Process Control (Example 4) ......................................... 96
 
-**Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case**
+| | | |
+| --- | --- | --- |
+| | | |
+| | | |
+| | | |
 
 Vial) ................................................................................................................................................................... 98
 
-**Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different Products/Dosage**
+| | | | / |
+| --- | --- | --- | --- |
+| Scenario 1 | + | | |
+| Scenario 2 | + | | |
+| Scenario 3 | + WFI | | WFI |
+| Scenario 4 | APS | | |
 
 Forms (Worst-Case Vial) ............................................................................................................................... 98
 
-**Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to**
+| Activity | Additional Information* | ☐ |
+| --- | --- | --- |
+| Sterilization Process Validation | TR No. 1: Validation of Moist Heat Sterilization ProcessesTR No. 3: Validation of Dry Heat Processes Used for Depyrogenation and Sterilization | ☐ |
+| Standard Operating Procedures (SOPs) are Available | N/A | ☐ |
+| Personnel Training on the Applicable Procedures and Qualification Status | N/A | ☐ |
+| Personnel Aseptic-Gowning Certification | Section 8.0 Personnel Qualification | ☐ |
+| Disinfectant Qualification | TR No. 70: Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities | ☐ |
+| Implementation of Environmental Decontamination Procedures (cleaning, disinfection and isolator decontamination) | PtC for the Aseptic Processing of Sterile Pharmaceutical Products in IsolatorsTR No. 34: Design and Validation of Isolator SystemsTR No. 70: Cleaning and Disinfection Programs | ☐ |
+| Facility Cleaning and Decontamination Program | TR No. 70: Cleaning and Disinfection Programs | ☐ |
+| Equipment Cleaning Validation | TR No. 29: Cleaning ValidationTR No. 49: Biotechnology Cleaning Validation | ☐ |
+| Product, Container-Closure, and Equipment Sterilization | TR No. 1: Moist Heat SterilizationTR No. 3: Dry Heat Processes | ☐ |
+| Manufacturing and Fill-System Qualification | Manufacturing Technology Guide No. 1: Aseptic Filling, Engineering, and Operation | ☐ |
+| Container-Closure Integrity | TR No. 27: Pharmaceutical Package Integrity | ☐ |
+| Environmental Controls (air flow, HEPA filtration, temperature and humidity control, viable and total particulate control (EMPQ)) | TR No. 13: Fundamentals of an Environmental Monitoring Program | ☐ |
+| Airflow Visualization Studies | N/A | ☐ |
+| Utility Gases Sterilization (product-contacting) | TR No. 40: Sterilization Filtration of Gases | ☐ |
+| Materials Disinfection and Transfer Controls | Points to Consider No. 1: Aseptic Processing | ☐ |
+| Filter Integrity for Sterilizing Filters as well as Vent/Gas Filters (where applicable) | PtC for Pre-Use Post-Sterilization Integrity TestingPtC for Risks Associated with Sterilizing Grade FiltersTR No. 26: Sterilizing Filtration of Liquids | ☐ |
+| Definition of Environmental Monitoring (EM) Program | TR No. 13: Fundamentals of an Environmental Monitoring Program | ☐ |
+| Equipment Qualification (especially runnability studies) | N/A | ☐ |
 
 Fill Different Dosage Forms ....................................................................................................................... 100
 Figure 15.7-1 Initial APS Validation: Conservative Approach ............................................................ 103
@@ -90,7 +149,20 @@ Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class ....
 Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score ................................ 109
 Table 15.7-5 Action Level Table based on Overall Risk Score ........................................................... 110
 
-**Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation**
+| Activity | Additional Information* | ☐ |
+| --- | --- | --- |
+| Aseptic Formulation/Compounding Process, Equipment, and Operations | N/A | ☐ |
+| Aseptic Filling Process, Equipment, and Operations | Section 7.0 Aspects of Aseptic Process Simulation | ☐ |
+| Operation Conditions (line speed, pressure, and other critical process variables) | Section 3.4 Risk Assessment for APS DesignSection 5.2 Protocol and Procedure PreparationSection 7.6 Filling SpeedSection 7.7 Fill VolumeSection 7.10 Number of Units | ☐ |
+| Operation Hold Times Impacting Sterility Assurance | Section 7.9.4 Qualification of Maximum Hold Times | ☐ |
+| Number of Operators (maximum room occupancy) or Maximum Simultaneous Isolator-Glove Usage | Section 4.2.6 Other Dosage Forms and Drug/Device CombinationsSection 4.3.7 ATMP ConsiderationsPtC No. 12: RABSPtC for Aseptic Processing in Isolators | ☐ |
+| Process Setup, Interventions (inherent and corrective), Stoppages, and the Frequency with which they need to be executed and/or simulated | Section 4.1.4 InterventionsSection 5.2 Protocol and Procedure PreparationSection 5.3 APS Execution RecordSection 7.8 Interventions | ☐ |
+| Maximum Time Operators are in Clean Room | Section 7.9.2 Human Performance and Fatigue | ☐ |
+| Process Length (including breaks) | Section 7.9 Duration of APS | ☐ |
+| Container-Component Configuration to be Utilized and Target Fill-Volume | Section 7.5 Container-Closure ConfigurationSection 7.7 Fill Volume | ☐ |
+| Stress Conditions on the Routine Aseptic Process | Section 7.9 Duration of APS | ☐ |
+| Environmental Conditions (air flows, temperature and humidity, and pressure-differential requirements) | Section 7.9.3 Environmental and Equipment Considerations | ☐ |
+| Aseptic Process and Associated Intervention Risk Assessment | Section 7.8 Interventions | ☐ |
 
 of Viral Vector Transduction) .................................................................................................................... 111
 
@@ -1472,34 +1544,10 @@ adaptation to the process when contrasted with the modifications necessary for o
 the APS is essentially the same as that described in Section 4.2, which notes the importance of integrating
 all the fill-line activities during the simulation.
 
-**Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling**
-
-Equipment
-Advantages
-Disadvantages
-
-•
-Only a single filling machine is required.
-•
-Simplifies the execution of the APS.
-•
-Avoids the risk of contamination from a
-new system.
-•
-Additional media controls for a separate
-liquid-fill machine are not required.
-•
-Setup may differ from that used for powder fill.
-•
-Any variables or risks posed by the handling and
-filling of dry material may not be captured.
-•
-The powder-filler may be capable, but it may not
-be well-suited for filling liquid.
-•
-Liquid media leakage may occur.
-•
-Cleaning liquid media may be difficult.
+| Activity | Additional Information* | ☐ |
+| --- | --- | --- |
+| Develop a protocol that includes the scope, rationale, justification, and acceptance criteria that establishes APS conditions necessary to qualify normal aseptic operations. The protocol is reviewed and approved by the Quality Unit. | Section 5.2 Protocol and Procedure Preparation | ☐ |
+| Develop an APS batch record that defines scope and execution requirements and captures the actual execution variables. The APS batch record is reviewed and approved by the Quality Unit. If the commercial-process batch record is electronic, the APS batch record should also be electronic. | Section 5.3 APS Execution Record | ☐ |
 
 ##### 4.2.5.2 Liquid Media Filled on Dry-Powder Filler with Supplementary Liquid-Fill
 
@@ -1509,37 +1557,15 @@ advantages and disadvantages of this are listed in Table 4.2.5.2-1. The liquid-f
 machines is not equivalent to conventional liquid fillers and is used only in APSs. In this manner, the same
 filling machine could be used for both the liquid- and solid-filling operation during APS.
 
-**Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler**
-
-with Supplementary Liquid-Fill Capability
-Advantages
-Disadvantages
-•
-A single filler is used, and no
-additional line modifications
-are required.
-•
-The filler may need to be operated at lower speeds due to its
-design.
-•
-Some designs may not fill liquid into every vial that receives
-powder.
-•
-Requires additional processing or handling steps that are not
-part of regular process which may add risk to the simulation
-that is not present in the production process.
-•
-The setup may differ from that used for powder fill.
-•
-Any variables or risks posed by the handling and filling of dry
-material may not be captured.
-•
-The powder filler may be capable but not well-suited for
-filling liquid.
-•
-Liquid media leakage may occur.
-•
-Cleaning liquid media may be difficult.
+| Activity | Additional Information* | ☐ |
+| --- | --- | --- |
+| Conduct and monitor the APS to ensure it is executed in compliance with the APS protocol and batch-record requirements. Filled volume should be sufficient to wet all internal container surfaces and to allow for identification of contamination, but sufficient head space must be ensured to avoid impacts on the growth of potential aerobic contaminants. | Section 5.5 APS ObservationSection 7.7 Fill Volume | ☐ |
+| Intervention-related vials may be rejected (or incubated separately), but ONLY if the same approach is taken during routine manufacturing. Additionally, the number of units rejected must also match (or be lower than) those that would be rejected during routine production. | Section 7.16 Unit Accountability and Reconciliation | ☐ |
+| Perform qualified container-closure integrity inspection, retain acceptable units, and initiate accountability, rejecting only those units with container-closure integrity defects. | Section 7.13 Pre-Incubation InspectionSection 7.15 Post-Incubation InspectionSection 7.16 Unit Accountability and Reconciliation | ☐ |
+| Prior to incubation, invert and swirl APS units to ensure media contact with all internal surfaces. | Section 7.14 Incubation Conditions | ☐ |
+| Incubate acceptably filled units under defined temperatures and duration. If two temperatures are used for the incubation of the media filled units, the units should be incubated for at least 7 days at each temperature (starting with the lower temperature) (1). | Section 7.14 Incubation Conditions | ☐ |
+| Perform inspection (utilizing qualified inspectors and validated inspection conditions) for microbial growth and reconcile the count with units placed into incubation. Segregate any units with positive microbiological growth and submit them for microbial identification. Identify any positive units to the species level and investigate to establish contamination root cause for any acceptably filled units exhibiting positive microbial growth. | Section 7.13 Pre-Incubation InspectionSection 7.15 Post-Incubation InspectionSection 7.16 Unit Accountability and Reconciliation | ☐ |
+| Perform growth-promotion tests on APS media in post-incubation media-filled units. | Section 7.17 Growth Promotion/Positive Control | ☐ |
 
 ##### 4.2.5.3 On-Line Liquid Media Fill followed by On-Line Placebo Powder Fill
 
@@ -1551,26 +1577,11 @@ and a liquid are combined, then the dispersion and dissolution of powder through
 confirmed. This can be achieved manually by inverting the container several times during the pre-inspection
 of containers prior to incubation.
 
-**Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-**
-
-Line Placebo Powder Fill
-Advantages
-Disadvantages
-•
-All processes on-line, with
-no additional handling of
-containers.
-•
-A second filler will need to be set up and qualified.
-•
-The process subjects the open units to additional exposure time.
-•
-Additional processing or handling steps that are not part of regular
-process are added due to liquid filling which may add risks to the
-simulation that are not present in the production process.
-•
-Limited space in the container may result in powder collecting on
-the rim of the container and affecting the seal.
+| Activity | Additional Information* | ☐ |
+| --- | --- | --- |
+| Document APS results, evaluation, and conclusion in a report approved by the Quality Unit. | Section 5.4 Final Report | ☐ |
+| Identify and document operators who participated in the APS by the executed APS and the term of their qualification. | Section 5.3 APS Execution Record | ☐ |
+| Identify and document interventions that were successfully demonstrated by the executed APS. If necessary, update appropriate procedures. | Section 5.3 APS Execution Record | ☐ |
 
 ##### 4.2.5.4 On-line Placebo Powder Fill Followed by On-Line Liquid Media Fill
 
@@ -1580,51 +1591,16 @@ powder and a liquid are combined, then the dispersion and dissolution of powder 
 be confirmed. This can be achieved manually by inverting the container several times during the pre-
 inspection of containers prior to incubation.
 
-**Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill**
-
-Advantages
-Disadvantages
-•
-All processes are on-line,
-with no additional handling
-of containers.
-•
-A second filler will need to be set up and qualified.
-•
-The process subjects the open units to additional exposure time.
-•
-Additional processing or handling steps that are not part of
-regular process are added due to liquid filling which may add risks
-to the simulation that are not present in the production process.
-•
-Limited space in the container may result in media overfill or in
-splash collecting on the rim of the container and affecting the
-seal.
-•
-There is a potential for powder aspiration from the container
-when the liquid is filled last.
-•
-There may be an increased risk for particles impacting the
-inspection after incubation.
+| Risk Factor | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 ##### 4.2.5.5 Dry Media Filled as a Powder and Reconstituted to a Liquid Form After the Fill
 
 In this method, dry media is filled into the units using a powder filler. Sterile water is added under Grade A
 conditions; the main advantages and disadvantages of this are listed in Table 4.2.5.5-1.
 
-**Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and**
-
-Reconstituted to a Liquid Form After the Fill
-Advantages
-Disadvantages
-•
-No additional
-equipment is
-needed.
-•
-Additional steps to add water are burdensome and will add significant,
-and potentially unacceptable, risk to the simulation, which is why this is
-not a recommended practice.
+| Risk Level | Recommended APS Frequency |
+| --- | --- |
 
 #### 4.2.6 Other Dosage Forms and Drug/Device Combinations
 
@@ -2370,31 +2346,9 @@ and closures exhibit different levels of performance, then additional or separat
 to assess those process variables. Examples of containers and closures that may pose increased levels of risk
 are outlined in Table 7.5.1-1.
 
-**Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics**
-
-Container-Closure Characteristic
-Example of Potential Risk
-Containers with larger openings
-Greater potential for microorganism intrusion through the
-opening
-Containers with smaller openings
-Potential contact with the operator’s gloved hands in the case
-of ATMPs with a manual fill
-Larger containers
-Filling of a larger volume of product may take more time,
-increasing the chance that contamination may be introduced
-Smaller containers
-Filling small volumes of product may pose a risk if the product
-accumulates near the top of the vial, if the container opening is
-close to support tracks or rails, or if containers are run at a faster
-speed and/or are less stable and fall over more frequently
-leading to higher rate of interventions
-Containers and closures that exhibit
-higher levels of production process-
-related rejects and/or tend to be
-more difficult or complex to run
-Potential for increased frequency of interventions to address
-container-closure handling issues
+| No. | Intervention Description | Category | Type | Initial # / Freq. | Risk after IREM | Existing Risk / Mitigation | Final Risk | Revised # / Freq. | Rationale |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | Filling machine IPC calibration | Inherent | Open door | 3 / Every APS | High Risk | IPC calibration now performed before decontamination & assembly (no longer during aseptic process) | N/A | N/A | No aseptic process intervention involved; eliminated after mitigation1 |
 
 ##### 7.5.1.1 Container and Closure Bracketing
 
@@ -3545,11 +3499,9 @@ reconstitution and growth-promotion prior to use in an APS.
 
 The activities in a typical APS generally occur in the order presented in Table 14.0-1.
 
-**Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist**
+| 2 | Group-A: Stopper lock adj. / Stopper plate adj. / Improper stoppers | Corrective | Open door | 10 / Every APS | Very High Risk | Additional glove port provided; activity now performed with closed door without breaking first air | Medium | 6 / Once per year | Number revised from 10 to 6 based on trend; risk mitigated |
+| 3 | Fill volume adjustment and initial in process checks | Inherent | Closed door | 1 / Every APS | Low Risk | No human intervention; operator enters command on machine panel | N/A | N/A | No aseptic process intervention involved; removed from APS list |
 
-Activity
-Additional Information*
-Completed
 1. Prior to Initiating Aseptic Process Simulation Confirm Satisfactory Completion of the Qualification, Validation, and Smooth
 Operation of the Aseptic Process and its Support Systems, including (see Section 3.1):
 Sterilization Process Validation
@@ -3887,153 +3839,9 @@ at least 4 APS runs per year for the same process to comply with EU Annex 1 rega
 obtained from the example. In other cases, when the risk is low, such as when using an isolator, a lower
 frequency of shift simulation can be justified.
 
-**Table 15.1-1 Applying Risk-Based APS Frequency**
-| Risk Factor | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
+| 4 | Group-B: Filling machine setup (stoppering station, gassing station, filling station parts assembly) | Inherent | Open door | 1 / Every APS | High Risk | Product-contact surfaces wrapped & opened only after door closure; operators trained on new procedures | High Risk | 1 / Every APS | No change; filling setup is integral part of every batch (inherent intervention) |
+| 5 | Vial breakage at in-feed turntable of filling machine | Corrective | Closed door | 5 / Every APS | Low Risk2,3 | Procedure in place to remove surrounding empty vials; operators trained for aseptic handling | Low Risk | 3 / Once per year | Number & frequency changed based on trend and risk level |
 
-Risk Factor
-Risk Level (Score)
-Assigned
-Risk
-Score
-High (5)
-Medium (3)
-Low (1)
-Process Complexity
-High complexity, large
-number of aseptic
-assemblies, large number
-of inherent interventions
-Medium complexity,
-medium number of aseptic
-assemblies, medium
-number of inherent
-interventions
-Low complexity, low
-number of aseptic
-assemblies, low number of
-inherent interventions
-
-Process Novelty1
-<2 years
-2-5 years
->5 years
-
-Process Frequency2
-<Once every 3 months
-Quarterly to Weekly
-Weekly to Daily
-
-Process Automation
-Low
-(e.g.,high number of
-manual steps)
-Medium
-(e.g., automated filling line
-with medium inherent
-interventions)
-High
-(e.g., dependent on
-robotics)
-
-Degree of Critical Zone
-Protection
-Low
-(e.g., conventional
-unidirectional air flow unit/
-biosafety cabinet)
-Medium
-(e.g., oRABs or cRABs
-without vapor phase
-hydrogen peroxide (VPHP)
-decontamination cycle)
-High
-(e.g., isolator or cRABs
-with VPHP
-decontamination cycle)
-
-Risk Factor
-Risk Level (Score)
-Assigned
-Risk
-Score
-High (5)
-Medium (3)
-Low (1)
-Degree of Experience of
-Technicians in Aseptic
-Processes3
-Low: <2 years
-Medium: 2-5 years
-High: >5 years
-
-Environmental Monitoring
-Compliance History
->1 OOL* per month
-1 OOL every 1 to 6
-months
-<1 OOL every 6 months
-
-Process Compliance History
-APS Failure/ Sterility Test
-Failures in Past 2 Years
->1 OOS* per 6 months
-1 OOS every 6 to 12
-months
-<1 OOS every 12 months
-
-Aseptic Process Compliance
-History (Process-Related Major
-Deviations/Audit Findings/
-483s)
->3 major deviations/audit
-findings/Regulatory
-observations per year
-1-2 major deviations/audit
-findings/Regulatory
-observations per year
-<1 major deviation/audit
-finding/Regulatory
-observation per year
-
-Recent Major Changes in
-Facility/Equipment/Key
-Personnel
->3 per year
-1-3 per year
-<1 per year
-
-Assigned Risk Level Total
->35
-15-35
-<15
-
-Recommended APS Frequency
-Mitigate risk level of the
-process.
-If mitigation is not feasible
-with current technologies,
-and the process is fully
-manual (e.g., ATMPs),
-personnel participation in
-APS should occur every 6
-months (+/- 1 month) per
-shift, rather than increasing
-the overall frequency of
-APS runs.
-Conduct APS every 6
-months, +/- 1 month for
-each shift.
-Lower frequency per shift
-(e.g., every 12 months)
-may be justified, e.g., in
-case of well-established
-closed aseptic process
-inside gloveless isolator
-with no human
-intervention and with no
-history of OOS results.
-N/A
 1 Author’s note: Example: A company historically aseptically filling liquid products using stainless steel systems and recently deciding to use single use
 systems for the first time in their facility.
 2 Author’s note: The process-frequency factor risk-scoring measures the level of proficiency that operators are expected to have with the process, given
@@ -4056,7 +3864,8 @@ number of interventions to be included in the APS are defined based on the prece
 commercial production, and takes into consideration the new risk level of each intervention based on the
 IREM.
 
-**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual aseptic manipulations performed during regular aseptic operations (during online filtration, filling, stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions design aspects such as intervention location, tools used, and/or air flow effects may also be considered in establishing a grouping logic.**
+| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual
 aseptic manipulations performed during regular aseptic operations (during online filtration, filling,
@@ -4066,7 +3875,8 @@ interventions, provided they have similar risk factors like duration, proximity,
 design aspects such as intervention location, tools used, and/or air flow effects may also be considered in
 establishing a grouping logic.
 
-**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual aseptic manipulations performed during regular aseptic operations (during online filtration, filling, stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions design aspects such as intervention location, tools used, and/or air flow effects may also be considered in establishing a grouping logic.**
+| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
+| --- | --- | --- |
 
 Line Type – Aseptic Vial Filling Line with open Restricted Access Barrier System placed in Grade B external environment
 No.
@@ -4428,150 +4238,18 @@ The scoring assignment can vary widely depending on the particulars of the inter
 and the process/product. The intent is not to provide examples of specific scoring, but rather to show how
 the tool can be used.
 
-**Table 15.3-1 Intervention Risk Criteria with Scores (Example 3)**
-| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
-
-Intervention Risk Criteria
-Risk Level (Score)
-Assigned
-Risk
-Score
-High (5)
-Medium (3)
-Low (1)
-Complexity
-High
-(e.g., machine setup)
-Medium
-(e.g., removing a jammed
-rubber stopper)
-Low
-(e.g., removing a toppled
-vial from conveyor belt)
-
-Duration
->10 minutes
-2-10 minutes
-<2 minutes
-
-Proximity to Product/Contact
-Surfaces
-<15 cm
-15-45 cm
->45 cm
-
-Frequency
->4 times per shift
-2-4 times per shift
-≤1 time per shift
-
-Air Flow Visualization (AFV)
-Disruption of first air with
-something that is not in a
-sterile state (e.g., sleeve of
-gown); additional controls
-required
-Disruption of first air with
-a sterilized tool or utensil
-No disruption of first air
-
-Barrier
-Conventional Filling Line*
-RABS
-Isolator
-
-Overall Intervention Risk Level
-Total
->20
-11-20
-<11
+| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 *A conventional aseptic filling line is one without a RABS or isolator barrier. These are legacy systems and are in the process of being phased out of the
 industry.
 
-**Table 15.3-2 Recommended Frequencies and Number of Interventions (Example 3)**
+| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
+
 | Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
 | --- | --- | --- |
 
-Overall Intervention Risk Level
-Recommended Frequency of Simulation
-Recommended Number of Simulations per APS Run
-High
-Biannual*
-At least the same number as in routine production
-Medium
-Biannual*
-May be less than the number in routine production
-Low
-Yearly
-May be less than the number in routine production
-*Biannual: twice a year (approximately every 6 months)
-
-**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in RABS without Built-In IPC (Example 3)**
-| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
-Process Control (Example 3)
-No.
-Intervention
-Complexity
-Duration
-Proximity to
-Product/
-Contact
-Surfaces
-Frequency
-AFV
-Barrier
-Overall
-Intervention
-Risk Level
-Total
-Equipment aseptic
-assembly (open-
-door intervention)*
-Removal of vials
-for IPC using glove
-ports
-Introducing EM
-plates (open-door
-intervention)*
-No.
-Intervention
-Complexity
-Duration
-Proximity to
-Product/
-Contact
-Surfaces
-Frequency
-AFV
-Barrier
-Overall
-Intervention
-Risk Level
-Total
-Changing EM
-plates using glove
-ports
-Change filling
-needle (open-door
-intervention)*
-Removing toppled
-open vial using
-glove ports
-Removing jammed
-rubber stopper
-near stoppering
-station using glove
-ports
-Removing toppled
-closed vial near exit
-using glove ports
-*Open-door Interventions should be avoided when possible.
-Explanation of Interventions included in Table 15.3-3 and Table 15.4-3:
-•
 Interventions 1 & 5 can be simulated every 6 months with at least the same number occurring
 during routine production.
 •
@@ -4611,61 +4289,8 @@ The scoring assignment can vary widely depending on the particulars of the inter
 and the process/product. The intent is not to provide examples of specific scoring, but rather to show how
 the tool can be used.
 
-**Table 15.4-1 Intervention Risk Criteria with Scores (Example 4)**
-| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
-
-Intervention Risk Criteria
-Risk Level (Score)
-Assigned
-Risk
-Score
-High (5)
-Medium (3)
-Low (1)
-Complexity
-High
-(e.g., machine setup)
-Medium
-(e.g., removing a jammed
-rubber stopper)
-Low
-(e.g., removing a toppled
-vial from conveyor belt)
-
-Duration
->10 minutes
-2-10 minutes
-<2 minutes
-
-Proximity to Product/Contact
-Surfaces
-<15 cm
-15-45 cm
->45 cm
-
-Frequency1
->4 times per shift
-2-4 times per shift
-≤1 time per shift
-
-Air Flow Visualization (AFV)
-Interrupt first air (must be
-corrected first)
-Minor flaws but no
-ingress of less clean air
-No flaws
-
-Barrier2
-Conventional Filling Line*
-RABS
-Isolator
-
-Overall Intervention Risk Level
-Total
->20
-11-20
-<11
+| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 1 Author’s note: Frequency may or may not be a risk factor. For this example, it was chosen to be a factor of consideration.
 2 Authors’ note: Using oRABS does not mean that all risks are the same since very few interventions are open-door interventions (e.g., during machine
@@ -4675,86 +4300,12 @@ than the frequency needed when conducted using another line with an isolator.
 *A conventional aseptic filling line is one without a RABS or isolator barrier. These are legacy systems and are in the process of being phased out of the
 industry.
 
-**Table 15.4-2 Recommended Frequencies and Number of Interventions (Example 4)**
-| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
+| | Example 3 AFV | Example 4 AFV |
 | --- | --- | --- |
 
-Overall Intervention Risk Level
-Recommended Frequency of Simulation
-Recommended Number of Simulations per APS Run
-High
-Biannual*
-At least the same number as in routine production
-Medium
-Biannual*
-May be less than the number in routine production
-Low
-Yearly
-May be less than the number in routine production
-*Biannual: twice a year (approximately every 6 months)
-
-**Table 15.4-3 Risk Assessment of Possible Interventions for Vial-Filling in Open RABS without Built-In IPC (Example 4)**
-| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
-In-Process Control (Example 4)
-No.
-Intervention
-Complexity
-Duration
-Proximity to
-Product/
-Contact
-Surfaces
-Frequency
-AFV
-Barrier
-Overall
-Intervention
-Risk Level
-Total
-Equipment aseptic
-assembly (open-
-door intervention)
-Removal of vials
-for IPC using glove
-ports
-Introducing EM
-plates (open-door
-intervention)
-No.
-Intervention
-Complexity
-Duration
-Proximity to
-Product/
-Contact
-Surfaces
-Frequency
-AFV
-Barrier
-Overall
-Intervention
-Risk Level
-Total
-Changing EM
-plates using glove
-ports
-Change filling
-needle (open-door
-intervention)
-Removing toppled
-open vial using
-glove ports
-Removing jammed
-rubber stopper
-near stoppering
-station using glove
-ports
-Removing toppled
-closed vial near exit
-using glove ports
-Note: See the explanation of Interventions in Table 15.3-3 for more information.
+**Table 15.5-1** APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case Vial)**
+| Vial Amount (mL) | Initial Number of Runs |
+| --- | --- |
 
 ### 15.5 Example 5: Aseptic Process Simulation Design for Lines Producing
 
@@ -4765,21 +4316,22 @@ and 10 mL vials will be filled and none of them is assessed to be a worst-case, 
 each of minimum and maximum vial sizes should be done, in addition to at least one run from each other
 vial size (Table 15.5-1).
 
-**Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-**
+| 2 | 3 |
+| 4 | 1 |
+| 8 | 1 |
 
-Case Vial)
-Vial Amount (mL)
-Initial Number of Runs
 However, in the event one of these vials sizes (based on a science-based risk assessment; (see Section 3.4 ))
 is a worst-case (e.g., 10 mL), at least three (3) runs of this vial size plus at least one run of each of the other
 vial sizes should be done in the initial validation study (Table 15.5-2) (see Section 7.5.1.1 for additional
 information on bracketing criteria).
 
-**Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different**
+**Table 15.5-2** Aseptic Process Simulation Design for Lines Producing Different Products/Dosage Forms (Worst-Case Vial)**
+| Vial Amount (mL) | Initial Number of Runs |
+| --- | --- |
+| 2 | 1 |
+| 4 | 1 |
+| 8 | 1 |
 
-Products/Dosage Forms (Worst-Case Vial)
-Vial Amount (mL)
-Initial Number of Runs
 In the examples in both Table 15.5-1 and Table 15.5-2, if a new vial size (e.g., 6 mL) needs to be
 introduced, it should be assessed as to whether it represents a worst-case condition. If so, at least three (3)
 runs of the new vial will be required; otherwise, at least one (1) run will be required as it lies between the
@@ -4799,106 +4351,20 @@ ensure that the APS design will represent worst-case scenarios for all dosage fo
 differences in process steps were considered with other factors fixed. When applying the concept, other
 factors should also be considered that could impact aseptic process and may necessitate more APS runs.
 
-**Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to Fill Different Dosage Forms**
+| Process Step | Vials filled with Solution | Vials filled with Suspension | Lyophilized Vials | Inclusion of APS for Line |
+| --- | --- | --- | --- | --- |
+| Preparation in Grade C | Yes | Yes | Yes | Not an aseptic process step and no need to typically simulate while preparing media |
+| Sterile Filtration | Yes | Yes | Yes | Yes (for aseptic assembly but not necessarily using same filter) |
+| Aseptic Addition | N/A | Yes | N/A | Yes |
+| Homogenization | N/A | Yes | N/A | Yes |
+| Filling | Yes | Yes (may include suspension stirring and recirculation to avoid sedimentation, and may also include automatic rejection of first-filled units after machine stoppage) | Yes | Yes (using worst-case scenarios regarding equipment configuration for suspension dosage forms) |
+| Stopper Insertion | Yes (complete insertion) | Yes (complete insertion) | Yes (half insertion of lyophilization stopper) | Yes* |
+| Capping after Stopper Insertion | Yes | Yes | N/A | Yes+ |
+| Lyophilizer Loading | N/A | N/A | Yes | Yes* |
+| Lyophilizer Cycle | N/A | N/A | Yes | Yes (exposed to partial vacuum and vacuum release)* |
+| Lyophilizer Unloading | N/A | N/A | Yes | Yes* |
+| Capping of Lyophilization Vials | N/A | N/A | Yes | Yes* |
 
-Process Step
-Dosage Forms Manufactured at Line
-Inclusion of APS for Line
-Vials filled
-with
-Solution
-Vials filled with Suspension
-Lyophilized
-Vials
-Preparation in
-Grade C
-Yes
-Yes
-Yes
-Not an aseptic process step and no need
-to typically simulate while preparing
-media
-Sterile Filtration
-Yes
-Yes
-Yes
-Yes (for aseptic assembly but not
-necessarily using same filter)
-Aseptic Addition
-N/A
-Yes
-N/A
-Yes
-Homogenization
-N/A
-Yes
-N/A
-Yes
-Filling
-Yes
-Yes (may include suspension
-stirring and recirculation to avoid
-sedimentation, and may also
-include automatic rejection of
-first-filled units after machine
-stoppage)
-Yes
-Yes (using worst-case scenarios regarding
-equipment configuration for suspension
-dosage forms in terms of suspension
-stirring and recirculation to buffer the
-vessel, and without rejecting first-filled
-units after machine stoppage
-Stopper Insertion
-Yes
-(complete
-insertion)
-Yes (complete insertion)
-Yes (half
-insertion of
-lyophilization
-stopper)
-Yes*
-Capping after
-Stopper Insertion
-Yes
-Yes
-N/A
-Yes+
-Process Step
-Dosage Forms Manufactured at Line
-Inclusion of APS for Line
-Vials filled
-with
-Solution
-Vials filled with Suspension
-Lyophilized
-Vials
-Lyophilizer
-Loading
-N/A
-N/A
-Yes
-Yes*
-Lyophilizer Cycle
-N/A
-N/A
-Yes
-Yes (exposed to partial vacuum and
-vacuum release)*
-Lyophilizer
-Unloading
-N/A
-N/A
-Yes
-Yes*
-Capping of
-Lyophilization
-Vials
-N/A
-N/A
-Yes
-Yes*
 *It might be possible to utilize the lyophilizer configuration as worst case for the line given that it includes all the steps for liquid fill, plus the lyophilization
 specific steps. If this approach is taken, it must be fully documented and justified in the APS program (specifically for the potential difference in the
 container-closure system). Alternatively, both configurations will need to be simulated in the APS program.
@@ -5096,11 +4562,10 @@ Step 3
 Each of the individual aseptic steps (i.e., manipulations) is rated based on three factors - Complexity,
 Duration, and Proximity - as defined in Table 15.7-1.
 
-**Table 15.7-1 Definition of the Aseptic Manipulation Factors**
+**Table 15.7-1** Definition of the Aseptic Manipulation Factors**
+| Factor | Definition |
+| --- | --- |
 
-Factor
-Definition
-Duration
 The time that it takes to perform the overall aseptic procedure when the product or product-contact surfaces are exposed to the
 surrounding environment. The typical or standard times for these aseptic procedures for the processes evaluated was determined to
 be within a range of 1−10 minutes. Any aseptic procedure less than 1 minute was considered as lower in terms of relative risk, while
@@ -5116,84 +4581,41 @@ aseptic procedure, it is first determined whether first air is broken or not. In
 sterile entity or with a nonsterile entity is determined.
 The relative ratings for each of these three factors, based on the input from this AREM Team, were defined as shown in Table 15.7-2.
 
-**Table 15.7-2 Identification of the Risk Ranking for Each of the Factors**
+**Table 15.7-2** Identification of the Risk Ranking for Each of the Factors**
+| Risk Ranking | Duration | Complexity | Proximity |
+| --- | --- | --- | --- |
+| High | >10 minutes | More than 5 steps; highly difficult to perform manual manipulations | Operator breaks first air with a nonsterile entity (e.g., the sanitized isolator glove) |
+| Medium | 1-10 minutes | 2-5 steps; moderate difficulty to perform manual manipulations | Operator breaks first air with a sterile entity (e.g., the sterilized forceps) |
+| Low | <1 minute | 1 step; easy to perform manual manipulation | Operator does not break first air |
 
-Risk
-Ranking
-Duration
-Complexity
-Proximity
-High
->10 minutes
-More than 5 steps; highly difficult to perform manual
-manipulations
-Operator breaks first air with a nonsterile entity (e.g.,
-the sanitized isolator glove)
-Medium
-1-10 minutes
-2–5 steps; moderate difficulty to perform manual
-manipulations
-Operator breaks first air with a sterile entity (e.g., the
-sterilized forceps)
-Low
-<1 minute
-1 step; easy to perform manual manipulation
-Operator does not break first air
-
-Step 4
 Upon determining the risk-ranking of each factor for an aseptic procedure, a preliminary matrix was used to determine the initial Risk Class, as shown
 in Table 15.7-3.
 
-**Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class**
+**Table 15.7-3** Preliminary Matrix Used in Determination of Initial Risk Class**
+| | Duration |
+| --- | --- |
+| | Low | Medium | High |
 
-Duration
-Low
-Medium
-High
-High Complexity
-Risk Class 2
-Risk Class 2
-Risk Class 1
-Medium Complexity
-Risk Class 3
-Risk Class 2
-Risk Class 1
-Low Complexity
-Risk Class 3
-Risk Class 3
-Risk Class 2
 A secondary matrix is then used to determine the overall risk score using the previously determined Risk Class and the proximity, as shown in Table
 15.7-4.
 
-**Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score**
+**Table 15.7-4** Secondary Matrix for Determination of the Overall Risk Score**
+| | Proximity |
+| --- | --- |
+| | Low | Medium | High |
 
-Proximity
-Low
-Medium
-High
-Risk Class 1
-Low
-Medium
-High
-Risk Class 2
-Low
-Medium
-High
-Risk Class 3
-Low
-Low
-Medium
-
-Step 5
 Upon the determination of the overall risk score, the aseptic procedures are ranked by risk, and the following actions are to be taken, as shown in
 
-**Table 15.7-5.**
+**Table 15.7-5** Action Level Table based on Overall Risk Score**
+| Risk Ranking | Action |
+| --- | --- |
+| High | Unacceptable level of risk. A high risk should be reduced through the reduction of one or more risk factors (proximity, duration, and/or complexity) taking into account the effect of residual risk or unintended consequences of action. |
+| Medium | Actions should be taken to reduce the risk to a lower level through the reduction of one or more risk factors, taking into account the effect of residual risk or unintended consequences of action. If risk cannot be reduced practically, it may still be accepted; however, ways to reduce the risk should be considered as a part of periodic risk review. |
+| Low | Acceptable risk. No additional action necessary. |
 
-**Table 15.7-5 Action Level Table based on Overall Risk Score**
+| Description of Aseptic Steps / Manipulations | Complexity | Duration | Risk Class | Proximity | Overall Risk | Mitigation / Actions Taken |
+| --- | --- | --- | --- | --- | --- | --- |
 
-Risk Ranking
-Action
-High
 Unacceptable level of risk. A high risk should be reduced through the reduction of one or more risk factors (proximity, duration,
 and/or complexity) taking into account the effect of residual risk or unintended consequences of action.
 Medium
