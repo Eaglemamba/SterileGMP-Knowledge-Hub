@@ -251,18 +251,18 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Topic (English / 中文 / common lay terms) | Look in... |
 |---|---|
 | Filling machines, pump types, dose accuracy / 充填機、幫浦類型、劑量精準度 | Guide-No1 |
-| Media fill, APS, aseptic simulation / 培養基充填、媒體充填、無菌模擬、模擬充填 | TR22 |
+| Media fill, APS, aseptic simulation / 培養基充填、無菌製程模擬 | TR22 |
 | Filter validation, integrity test, PUPSIT / 過濾器驗證、完整性測試、過濾器破損檢查 | TR26 |
-| Cold chain, GDP, distribution, shipping / 冷鏈、配銷規範、運輸、溫度控制 | TR52 |
-| Process validation, PPQ, CPV, lifecycle / 製程確效、製程驗證、持續確認 | TR60 |
-| Single-use systems, SUS, disposable bags / 一次性系統、拋棄式、SUS袋 | TR66 |
-| Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封、藥品相容性 | TR73 |
+| Cold chain, GDP, distribution, shipping / 冷鏈、優良運銷規範、運輸、溫度控制 | TR52 |
+| Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
+| Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
+| Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
-| Contamination control strategy, CCS, Annex 1 / 污染管制策略、歐盟GMP附錄一 | TR90 |
+| Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | TR90 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 |
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
-| Extractables & leachables / 可萃取物、可滲出物、E&L | TR26 + TR66 |
+| Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
 | Environmental monitoring, EM / 環境監控、微生物監測 | TR90 + PtC-12 + TR22 |
 | Aseptic processing (general) / 無菌製程（一般）| Guide-No1 + TR22 + PtC-12 |
 | Container closure integrity / 容器密封完整性、CCI | TR73 + TR90 |
@@ -287,7 +287,7 @@ If the user asks about these topics, say so clearly and suggest alternatives:
 For these topics, search the PRIMARY report deeply and SECONDARY reports lightly.
 Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
-**Media Fill / APS (無菌製程模擬)**
+**Media Fill / APS (培養基充填 / 無菌製程模擬)**
 → TR22 ★★★ | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
 
 **Extractables & Leachables / E&L (可萃取物與可滲出物)**
@@ -302,13 +302,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Container Closure Integrity / CCI (容器密封完整性)**
 → TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
-**Contamination Control (污染管制)**
+**Contamination Control (污染控制)**
 → TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
-**Single-Use Systems / SUS (一次性系統)**
+**Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → TR66 ★★★ (full SUS guidance) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
-**Process Validation (製程確效)**
+**Process Validation (製程驗證)**
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
@@ -359,5 +359,5 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) — single-report topic in this knowledge base
 
-**GDP / Good Distribution Practices (優良配銷規範)**
+**GDP / Good Distribution Practices (優良運銷規範)**
 → TR52 ★★★ — single-report topic in this knowledge base
