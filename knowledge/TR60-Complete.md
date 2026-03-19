@@ -318,7 +318,7 @@ Table 9.9-1 Sample Size to Estimate a Standard Deviation to Within ±x% of True 
 
 viii **Technical Report No. 60 (Revised 2026)** © 2026 Parenteral Drug Association, Inc.
 
-##### 1.0 Introduction
+**1.0 Introduction**
 
 The United States Food and Drug Administration (FDA) and European Medicines Association (EMA)
 consider process validation (PV) an essential element in the assurance of drug quality and include both
@@ -334,7 +334,7 @@ the changes could be initiated at any part of the process. These changes may inc
 such as PV, the physical equipment requalification, control hardware, and software changes and
 qualification, as all of these systems are subject to GMP controls and the lifecycle approach.
 
-###### 1.1 Purpose and Scope
+**1.1 Purpose and Scope**
 
 Depending on the context, process, and product history, PV activities can differ. The information in this
 technical report applies to the manufacturing processes for drug substances (DSs) and drug products (DPs),
@@ -375,7 +375,7 @@ discussed in TR 60, separate PDA technical reports are available that provide sp
 procedures as cleaning, aseptic process simulation (APS), moist-heat sterilization, and dry-heat sterilization
 _**(6-9)**_ .
 
-###### 1.2 Background
+**1.2 Background**
 
 The lifecycle concept includes all phases in the life of a product from initial development and registration
 through commercial production, including post-approval changes and product discontinuation. The use of a
@@ -517,7 +517,7 @@ _Lifecycle Management._
 
        - _ICH Quality Guideline Q14: Analytical Procedure Development_
 
-##### 2.0 Glossary
+**2.0 Glossary**
 
 Definitions have been provided to help clarify
 the concepts discussed in this document. While
@@ -879,7 +879,7 @@ of approaches to ensure the systems are fit for
 such as qualification, commissioning and
 qualification, verification, system validation, or
 other _**(27)**_ .
-###### 2.1 Abbreviations
+**2.1 Abbreviations**
 
 **API** Active Pharmaceutical Ingredient
 
@@ -953,7 +953,7 @@ necessarily induce product or process failure _**(7)**_ .
 
 **TT** Technology Transfer
 
-##### 3.0 Process Development/Process Design (Stage 1)
+**3.0 Process Development/Process Design (Stage 1)**
 
 **Section 3.0** focuses on approaches used during process development through process performance
 qualification (PPQ) of robust commercial manufacturing. It addresses the first stage of PV in which product
@@ -967,7 +967,7 @@ the control strategy may be re-examined, and changes can be made.
 
 Figure 3.0-1 Overall Sequence of Process Validation Activities
 
-###### 3.1 Establish Quality Target Product Profile
+**3.1 Establish Quality Target Product Profile**
 
 The aim of Stage 1 – Process Design is to design a quality product with a manufacturing process that
 consistently delivers the intended performance of the DP. Pharmaceutical development begins with the
@@ -1036,7 +1036,7 @@ gained during process characterization studies may require additional changes to
 changes to the process should be approved through change control procedures as defined by the
 organization’s quality system.
 
-###### 3.2 Identify Critical Quality Attributes
+**3.2 Identify Critical Quality Attributes**
 
 The QTPP provides an understanding of what will ensure the quality, safety, and efficacy of a specific
 product for the patient. Once the QTPP has been determined, its content can be used to establish the quality
@@ -1067,7 +1067,7 @@ approach that evolves as knowledge about the product and process is generated (r
 for commercial products should be defined prior to the initiation of Stage 2 activities via a subsequent risk
 assessment.
 
-###### 3.3 Define the Manufacturing Process
+**3.3 Define the Manufacturing Process**
 
 A manufacturing process is designed to consistently provide a product that will meet its required quality attributes. **Table 3.3-1** presents an example
 of process parameters for the single-unit operation and provides a sample description table. **Figure 3.3-1** presents a diagram of a single-unit operation
@@ -1179,7 +1179,7 @@ Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Ste
 |*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|*Refer toSection 3.6 for additional information on proven acceptable range (PAR).<br>**Refer to ICH Q12 for additional clarification on critical, key, and non-key parameters. Refer toFigure 3.5.-3 for additional information.|
 
 Figure 3.3-1 Example of Process Diagram for a Tangential-Flow Filtration Step
-###### 3.4 Analytical Methods
+**3.4 Analytical Methods**
 
 Analyses of raw materials, in-process samples, DS, and DP are important aspects of the control strategy and
 process characterization studies (refer to **Section 3.8** ). Analytical methods used for such studies should be
@@ -1235,7 +1235,7 @@ the process, as well as variance posed by the analytical method. ICH Q8(R2) defi
 variability has an impact on a CQA and therefore should be monitored or controlled to ensure the process
 produces the desired quality” _**(35)**_ .
 
-###### 3.5 Risk Assessment and Parameter Criticality Designation
+**3.5 Risk Assessment and Parameter Criticality Designation**
 
 Risk assessment plays an important role in the development of a commercial control strategy. Risk
 assessments are performed by interdisciplinary teams at several points during Stage 1 of the lifecycle and
@@ -1302,7 +1302,7 @@ Note: Where data from Stage 1 is leveraged in later stages (e.g., Stage 2 or 3),
 recording will require the same level of rigor as that used for Stage 2 and onwards.
 
 Figure 3.5-2 Decision Tree for Designating Parameter Criticality (4)
-###### 3.6 Process Characterization
+**3.6 Process Characterization**
 
 Process characterization is a set of documented studies in which process parameters are purposely varied to
 determine their effect on product quality attributes and process performance. The approach uses the
@@ -1386,7 +1386,7 @@ manufacturing may also be informative for the purposes of initiating the process
 will be carried into Stage 3 of the PV lifecycle. For example, representative clinical manufacturing data can
 be used to establish initial control limits for critical quality attributes in the initial stage of CPV _**(1, 30)**_ .
 
-###### 3.7 Process Design Report
+**3.7 Process Design Report**
 
 The process design report, often referred to as a “process development report”, is also a Stage 1 output. The
 process design documents should continually be consulted throughout the lifecycle of the product. Thus,
@@ -1458,7 +1458,7 @@ developing an effective PACMP allows for seamless continuous improvement changes
 process during the lifecycle, as intended by ICH _Quality Guideline Q12: Technical and Regulatory_
 _Considerations for Pharmaceutical Product Lifecycle Management_ .
 
-###### 3.8 Stage 1 – Process Validation Summary of Activities
+**3.8 Stage 1 – Process Validation Summary of Activities**
 
 **Table 3.8-1** provides a checklist of the information needed to transition from Stage 1 to Stage 2 in the PV
 lifecycle.
@@ -1485,7 +1485,7 @@ Table 3.8-1 Checklist of Information Necessary for Stage 2 (PPQ) Readiness
 |Process Validation Master Plan (PVMP)|Section 3.7 Process Design Report|
 |Commercial-Scale Process Control Strategy, including:<br>• <br>Release specifications<br>• <br>In-process controls and limits<br>• <br>Process parameter set points and ranges<br>• <br>Routine monitoring requirements (including in-process sampling and testing, environmental<br>monitoring)<br>• <br>Storage and time limitations for intermediates, process solutions, and process steps<br>• <br>Raw material/component specifications<br>• <br>Design space (if applicable)|Section 3.5Risk Assessment and Parameter<br>Criticality Designation|
 
-###### 3.9 Stage 1 – Manufacturing and Technology Considerations
+**3.9 Stage 1 – Manufacturing and Technology Considerations**
 
 The capability of the production equipment and procedures has a significant influence on the ability to
 maintain process parameters within preset limits. The measurement and control capability of the process
@@ -1600,7 +1600,7 @@ other process-specific performance metrics
        - Materials – Reconciliation and material collected, segregated and diverted report, and actual and
 theoretical percent yield
 
-###### 3.10 Applying Stage 1 Strategy to Address Existing Products
+**3.10 Applying Stage 1 Strategy to Address Existing Products**
 
 The manufacturing considerations at Stage 1 should be based on the lifecycle approach. The changes that
 may arise as the product/process knowledge becomes available may only be relevant to specific parts of the
@@ -1628,7 +1628,7 @@ experimental designs to be applied for those studies in light of the prior knowl
 between the CQAs and the potential CPPs and CMAs (e.g., existence of significant main effects,
 interactions, and/or curvatures in the relations).
 
-###### 3.11 Post-Approval Process Change Management
+**3.11 Post-Approval Process Change Management**
 
 Established conditions are defined as legally binding chemistry, manufacturing, and controls (CMC),
 information provided in the regulatory submission necessary to ensure process performance and product
@@ -1665,7 +1665,7 @@ However, PACMP development requires foresight and robust planning to document an
 anticipated product lifecycle changes and to design suitable tests, studies, and acceptance criteria to
 demonstrate continued control over process performance and product quality per ICH Q12.
 
-##### 4.0 Performance Qualification (Stage 2)
+**4.0 Performance Qualification (Stage 2)**
 
 Performance qualification (PQ) during Stage 2 demonstrates that the process, as designed, works as
 intended and yields reproducible commercial product. It should be successfully completed before the release
@@ -1676,7 +1676,7 @@ PQ
 
        - PPQ, which confirms the process design and demonstrates the ability of the process to manufacture
 product that meets predetermined quality attributes
-###### 4.1 Strategies for System Design and Qualification
+**4.1 Strategies for System Design and Qualification**
 
 Facilities, equipment, utilities, and instruments (collectively referred to as systems) used in the
 manufacturing process should be suitable and capable for their intended process use, and their performance
@@ -1838,7 +1838,7 @@ equipment, utilities, and facilities perspective. In case of an emergency, such 
 outbreaks arising, submitting the proof of the manufacturing equipment qualification, as well as a list of
 critical equipment for a products’ manufacturing, is especially important _**(27)**_ .
 
-###### 4.2 Performance Qualification
+**4.2 Performance Qualification**
 
 Performance qualification (PQ) must be performed at the end of the operational qualification (OQ) or in
 conjunction with the OQ or the PPQ. The following statements from EU GMP Annex 15 contains an
@@ -1888,7 +1888,7 @@ For this reason, it is also prudent to manufacture demonstration lots or enginee
 demonstration lots or engineering lots reflect the proposed process to be qualified, and may be manufactured
 with rejected DS or with non-commercial DS, such as material from engineering runs.
 
-###### 4.3 Process Performance Qualification
+**4.3 Process Performance Qualification**
 
 PPQ marks the transition from development and clinical manufacturing to routine commercial production.
 The PPQ combines the actual facility, utilities, equipment (each now qualified), and trained personnel with
@@ -1997,7 +1997,7 @@ the quality system.
        - Approved Protocols for PPQ Studies: Protocols for each study should be approved, including
 Quality Unit approval, and finalized prior to initiation of PPQ studies. Refer to **Section 4.4** for the
 design and content of PPQ protocols.
-###### 4.4 Design Strategy for Process Performance Qualification
+**4.4 Design Strategy for Process Performance Qualification**
 
 Design Strategy for PPQ refers to a systematic approach used in the pharmaceutical and biopharmaceutical
 industries to ensure that a manufacturing process is capable of consistently producing products that meet
@@ -2688,7 +2688,7 @@ with a short half-life (radiopharmaceuticals). The concurrent release approach m
 which are medically necessary that are manufactured in coordination with the health regulatory agency to
 avoid the short disruption of patient-critical products.
 
-###### 4.5 Process Performance Qualification Protocol
+**4.5 Process Performance Qualification Protocol**
 
 PPQ protocols are a documented plan for executing the PPQ studies. Protocols are reviewed and approved
 by cross-functional groups that include the Quality Unit. Protocols must be approved prior to
@@ -2804,7 +2804,7 @@ or meet acceptance criteria; subsets of these are used to define the PPQ accepta
 should clearly document the acceptance criteria to be met in order for the PPQ to be considered successful.
 Acceptance criteria may be shown in tabular format in the protocol.
 
-###### 4.6 Process Performance Qualification Report
+**4.6 Process Performance Qualification Report**
 
 A report should be prepared for each PPQ study that will typically include the following sections:
 
@@ -2854,7 +2854,7 @@ Pass or fail results should be stated for each acceptance criteria and correspon
 When a unit operation approach is used, PPQ reports are prepared for each unit operation study. A summary
 executive report that unifies all the study results to support the overall process PPQ should be written.
 
-###### 4.7 Transition to Continued Process Verification
+**4.7 Transition to Continued Process Verification**
 
 Following a successful PPQ, the CPV plan can be finalized and implemented. Any adjustments to be made
 based on the PPQ should be in place prior to the manufacture of post-PPQ batches and should be handled
@@ -2863,7 +2863,7 @@ for a period following PPQ (refer to **Section 5.0** ). The CPV plan is develope
 departures during commercial manufacturing from the process as designed. The monitoring measures
 should provide continual assurance that the process remains in a state of control (refer to **Section 5.0** ).
 
-##### 5.0 Continued Process Verification (Stage 3)
+**5.0 Continued Process Verification (Stage 3)**
 
 Continued process verification (CPV) is a regulatory and quality assurance approach used in the
 pharmaceutical and manufacturing industries. It involves ongoing monitoring, assessment, and validation of
@@ -2894,7 +2894,7 @@ savings.
        - To comply with regulatory expectations:
 
 Regulatory agencies, like the FDA, often require CPV as part of GMPs.
-###### 5.1 Establishing a Monitoring Program
+**5.1 Establishing a Monitoring Program**
 
 Establishing a monitoring program for CPV is a critical step in ensuring that manufacturing processes
 remain in control and consistently produce products that meet quality standards. A CPV monitoring
@@ -3073,7 +3073,7 @@ sampling at different manufacturing stages where required. The data collected fr
 and the historical batches are analyzed statistically to identify patterns and insights into the impact of
 potential sources of variability on the CQAs.
 
-###### 5.2 Data Science
+**5.2 Data Science**
 
 Data science plays a crucial role in CPV by leveraging advanced data analytics, machine learning, and
 statistical techniques to optimize manufacturing processes and ensure consistent product quality. In CPV,
@@ -3195,7 +3195,7 @@ approach.
 Note: It is the responsibility of the practitioners that utilize AI to assure that applications of AI are in
 compliance with current regulatory requirements _**(70)**_ .
 
-###### 5.3 Reacting to Continued Process Verification Data Signals
+**5.3 Reacting to Continued Process Verification Data Signals**
 
 The practical implementation of CPV is expected to reduce the cost of quality, provide opportunities to
 improve product quality, increase product and process knowledge, and reduce regulatory compliance risks.
@@ -3238,7 +3238,7 @@ and Stage 3b would need different approaches for each stage because the data set
 3a is less compared to Stage 3b. When limited data is available, a science- and statistics-driven deep dive
 into the available data is warranted to understand what actions can be taken until additional data are
 generated.
-###### 5.4 Applying Continued Process Verification for Lifecycle Change Management
+**5.4 Applying Continued Process Verification for Lifecycle Change Management**
 
 Applying CPV to lifecycle change management refers to the integration of CPV principles and practices to
 monitor and ensure consistent product quality and process stability throughout the entire lifecycle of a
@@ -3283,7 +3283,7 @@ not been fully realized. Additional information and approaches to manage process
 PDA _Technical Report No. 91: Post Approval Change Management and Implementation for Biologics and_
 _Pharmaceutical Drug Products — A User’s Guide_ .
 
-###### 5.5 Continued Process Verification Data Review and Reporting
+**5.5 Continued Process Verification Data Review and Reporting**
 
 Stage 3a is a product-specific, protocol-driven initial assessment following a new product launch that uses
 data from all stages of the PV lifecycle for statistical evaluation to gain deeper product understanding and is
@@ -3477,14 +3477,14 @@ software validation. Some design verification (e.g., bench and/or preclinical te
 human factors testing) should be completed prior to the initiation of clinical studies for the combination
 products _**(76, 77)**_ .
 
-##### 6.0 Process Validation Enabling Systems and Technology
+**6.0 Process Validation Enabling Systems and Technology**
 
 **Section 6.0** presents tools and methods to assist in the planning and performance of the PV program. It
 includes sections on risk and KM, statistical methodology, PAT, and TT. These tools can be used to
 identify, capture, and communicate information needed for the design and assurance of process control.
 They facilitate informed decision-making, prioritization of activities, and interpretation of results related
 to the PV effort.
-###### 6.1 Application of Risk Management
+**6.1 Application of Risk Management**
 
 A detailed explanation of a QRM program used to support the PV effort can be found in TR 54 in the “How
 to Use Quality Risk Management as an Enabler” section. Comprehensive lists of risk management tools can
@@ -3660,7 +3660,7 @@ to ensure that raw materials meet their specifications and CMAs. An important ri
 drug manufacturers to work with their suppliers so that each understands the other’s quality systems and
 demands.
 
-###### 6.2 Statistical Analysis Tools
+**6.2 Statistical Analysis Tools**
 
 Successful PV depends on sound, scientific data and information. **Table** **6.2-1** illustrates where various
 statistical methods are most used in the validation lifecycle process. Three of the methods—DoE, Statistical
@@ -4064,7 +4064,7 @@ These criteria would typically include such statistical comparisons as analysis 
 means, Levene/Brown-Forsythe test, or Bartlett's test to compare the lot standard deviations, SPC charts,
 and equivalence tests to demonstrate that the Stage 1 and PPQ data are similar _**(93, 96, 97)**_ .
 
-###### 6.3 Process Analytical Technology
+**6.3 Process Analytical Technology**
 
 PAT is a method of process control, where the product or in-process material quality attributes are
 monitored and measured during processing, and the process parameters and conditions are adjusted to
@@ -4173,7 +4173,7 @@ should be evaluated, and actions should be implemented to assure that residual r
 process performance or product quality. These actions may include steps to qualify the changed process and
 equipment.
 
-###### 6.4 Technology Transfer
+**6.4 Technology Transfer**
 
 For a lifecycle approach to PV to be effective, all information that is available to support process
 understanding (i.e., including other sites and similar process knowledge), should be considered. This
@@ -4212,7 +4212,7 @@ Table 6.4-1 Technology Transfer Activities throughout the Product Lifecycle
 |---|---|---|---|
 |Stage 3||New site state of compliance:<br>• <br>Product and process description (as designed<br>from Stage 1 and reported in Development<br>Data Report and Validation Reports)<br>• <br>Assessment of site change regulatory<br>requirements: Post-approval, with rationale<br>• <br>Number of batches required to meet transfer<br>requirements, including validation/PPQ<br>strategy/matrix approach<br>• <br>Specifications and methods transfer plan||
 
-###### 6.5 Knowledge Management
+**6.5 Knowledge Management**
 
 KM for CPV refers to the systematic approach of capturing, storing, sharing, and utilizing knowledge
 gained from the CPV process to enhance the efficiency, consistency, and quality of manufacturing
@@ -4396,7 +4396,7 @@ reducing risks, and the risks should be efficiently informed and managed. Preven
 of the probability of occurrence) is key for risk mitigation, but an increase in detectability may be another
 important axis.
 
-##### 7.0 Use of Knowledge Management in Process Validation Examples
+**7.0 Use of Knowledge Management in Process Validation Examples**
 
 Effective QRM approaches, as those described in ICH Q9(R1), can be combined throughout the PV
 lifecycle, covering such numerous aspects as development, equipment and utilities (qualification and
@@ -4411,7 +4411,7 @@ approval must be part of the workflow associated with the required knowledge and
 management policies. Knowledge applied to equipment maintenance is a recurrent example of how crucial
 it is to keep the relevant KM.
 
-###### 7.1 Large Molecule (Biologics (e.g., Proteins, RNA, or Larger Biological Material))
+**7.1 Large Molecule (Biologics (e.g., Proteins, RNA, or Larger Biological Material))**
 
 An example of the three stages of PV for a humanized IgG1 is provided in **Table 7.1-1** (Stage 1), **Table 7.1-**
 **2** (Stage 2), and **Table 7.1-3** (Stage 3).
@@ -4464,7 +4464,7 @@ Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example)
 |Continued<br>Process<br>Verification<br>(CPV)<br>|Product<br>Technical Teams<br>(PTT)|Each commercial product had a Product Technical Team<br>(PTT) that helped to oversee the process for the<br>remainder of the product’s lifetime.<br>The PTT was also responsible for reviewing data from<br>multiple production sites to ensure consistent process<br>performance and product quality.|The PTT is cross-functional, including Operations,<br>Process Development, Technical/Engineering Groups<br>(Manufacturing, Science, and Technology-MSAT),<br>Analytical, Quality, and Statistics. The team is<br>responsible for reviewing the processing data that<br>accumulates during commercial production. The PTT<br>can recommend process changes and helps to ensure<br>continuous improvement.|
 |Continued<br>Process<br>Verification<br>(CPV)<br>|Specification File|A manufacturing process specifications file was<br>generated at the time of the license submission.<br>The file was updated upon approval and contained the<br>licensed parameters that had been agreed to by the<br>agency.|The file is maintained throughout the product’s lifetime<br>and is to be updated to include in-process and<br>specification changes that might occur.|
 
-###### 7.2 Small Molecule (Parenteral)
+**7.2 Small Molecule (Parenteral)**
 
 An example of the three stages of PV for an organic, parenteral dosage form is provided in **Table 7.2-1** (Stage 1), **Table 7.2-2** (Stage 2), and **Table 7.2-3** (Stage 3).
 
@@ -4518,7 +4518,7 @@ Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example)
 |Continued Process<br>Verification (CPV)|Product Technical Teams<br>(PTT)|Each product has a PTT that helps to oversee the<br>process for the remainder of the product’s lifetime.<br>The PTT is cross-functional, with representatives from<br>Manufacturing, Process Development, Analytical,<br>Quality, and Statistics. The team is responsible for<br>reviewing the processing data that accumulates during<br>commercial production. It can recommend process<br>changes and help ensure continuous improvement.<br>The PTT is also responsible for reviewing data from<br>multiple production sites to ensure consistent process<br>performance and product quality.|Additional studies, including PAT, DOEs,<br>continuous processing experiments, and clinical<br>studies were carried out in a long Stage 3 to<br>improve the product line.|
 |Continued Process<br>Verification (CPV)|Specification File/ NDA<br>Supplements|Numerous supplements to the registrations were<br>made to add new manufacturing and testing facilities.<br>Transfers and PVs were carried out during Stage 3.<br>Manufacturing-knowledge documentation files<br>generated at the time of development are updated<br>regularly with all pertinent studies. CQAs and<br>parameters have been agreed to by the Development<br>and Quality organizations. The process-understanding<br>file is maintained throughout the product lifetime and<br>is updated to include any process and/or specification<br>changes.|N/A|
 
-##### 8.0 References
+**8.0 References**
 
 1. U.S. Food and Drug Administration. _Guidance for Industry: Process Validation: General_
 _Principles and Practices_ ; U.S. Department of Health and Human Services: Silver Spring, Md.,
@@ -4768,7 +4768,7 @@ _First Edition_ ; ISPE: Bethesda, Md., 2023.
 105. Wilkinson, M D, et al. The FAIR Guiding Principles for Scientific Data Management and
 Stewardship. _Scientific Data_ 2016.
 
-##### 9.0 Appendix I: Statistical Methods for Determining the Number of Lots
+**9.0 Appendix I: Statistical Methods for Determining the Number of Lots**
 
 Listed below are statistical approaches used to determine the number of lots that may be required at the
 process performance qualification (PPQ) stage. Other approaches may also be suitable. Statistical
@@ -4781,7 +4781,7 @@ recommended, when possible. As there is no standard industry approach to statist
 number of lots, multiple options are offered, and **Section 9.0** (Appendix I) will provide applied statistical
 methods for determining the number of lots. It will also stimulate further discussion on this issue.
 
-###### 9.1 Average Run Length to Detect a p x 100% Lot Failure Rate
+**9.1 Average Run Length to Detect a p x 100% Lot Failure Rate**
 
 The average number of lots, or average run length (ARL), until the first lot failure is ARL = 1/ _p_, where _p_ is
 the lot failure rate that is important to detect.
@@ -4796,7 +4796,7 @@ applicable, this approach may be particularly useful when there are many quality
 than determining the number of lots required separately for each attribute, the PPQ stage is complete when
 all CQAs pass their acceptance criteria for the required number of lots.
 
-###### 9.2 Range of Expected Between-Lot Variation
+**9.2 Range of Expected Between-Lot Variation**
 
 As shown in **Table 9.2-1**, the range of between-lot variation to be covered by number of lots (nL) is
 calculated as: 100 x (nL - 1) / (nL + 1). This follows from the expected percentile of an order statistic. The
@@ -4822,7 +4822,7 @@ Table 9.2-1 Expected Between-Lot Variation in Number of Lots
 |90%|19|
 |95%|39|
 
-###### 9.3 Within-Lot and Between-Lot Tolerance Intervals
+**9.3 Within-Lot and Between-Lot Tolerance Intervals**
 
 Statistical tolerance intervals are commonly used in validation. Tables of normal tolerance interval factors
 for variable data are widely available and implemented in statistical software. Specialized software is
@@ -4860,7 +4860,7 @@ Minitab (C), SAS(C)). If there are statistically significant differences between
 tolerance interval should be constructed with more advanced methods that take the
 between-lot variance component into account _**(6,7)**_ .
 
-###### 9.4 Statistical Process Control Charts
+**9.4 Statistical Process Control Charts**
 
 Most SPC references suggest obtaining data from 20-30 time periods before calculating control limits to
 assess whether the process is in control. Samples could be taken at 30 time periods across three or more lots.
@@ -4879,7 +4879,7 @@ perhaps 5-10, and construct a preliminary I/MR control chart. If it shows an in-
 would be complete, and the control chart would extend into Stage 3 to verify longer-term statistical control
 during CPV.
 
-###### 9.5 Process Performance Index & Process Capability Index Process Capability Metrics
+**9.5 Process Performance Index & Process Capability Index Process Capability Metrics**
 
 PpK is the most common statistic used to assess long-term process capability (refer to **Figure 6.2.2.3-1** ).
 
@@ -4907,7 +4907,7 @@ consecutive lots in a row to meet the PpK acceptance criteria. For example, four
 1.0, provides over 90% confidence that the process median PpK is ≥ 1.0; five lots provide over 95%
 confidence.
 
-###### 9.6 Assure the Lot Conformance Rate is Above an Acceptable Rate with Specified Confidence
+**9.6 Assure the Lot Conformance Rate is Above an Acceptable Rate with Specified Confidence**
 
 An approach commonly referred to as the “confidence for reliability” method, demonstrates that the
 percentage of lot conformance is acceptable. It identifies unacceptable variation due to either common or
@@ -4942,7 +4942,7 @@ useful when there are many quality attributes to assess. Rather than determining
 separately for each attribute, the PPQ stage is complete when all attributes pass for the required number of
 lots.
 
-###### 9.7 Narrow-Limit Gauging
+**9.7 Narrow-Limit Gauging**
 
 Narrow-limit gauging can be used to reduce the sample size or number of lots required in PPQ. The basic
 idea is to use narrowed pseudo-specification limits during PPQ to obtain more statistical power. An example
@@ -4959,7 +4959,7 @@ be 97.5-102.5. If five PPQ lots in a row meet the 50% narrow limits, then the PP
 narrow limits are not used to determine lot acceptance, but only to determine whether the PPQ acceptance
 criteria are met.
 
-###### 9.8 Demonstrate Between-Lot Variation is Less than Within-Lot Variation
+**9.8 Demonstrate Between-Lot Variation is Less than Within-Lot Variation**
 
 Under the classical one-factor random-effects variance components model, the total process standard
 deviation is calculated using the equation:
@@ -4997,7 +4997,7 @@ typically be 75%, 50%, or 25% of the within-lot variation. The sample size withi
 lots required may be determined by the statistical power to detect the differences of interest. Acceptance
 criteria could be based on point-estimates of the variance components or confidence intervals.
 
-###### 9.9 Sample Size
+**9.9 Sample Size**
 
 **Table 9.9-1** shows the sample size _n_ required to estimate a standard deviation to within a specified percent
 of its true value with 90% and 95% confidence _**(13, 14)**_ . This method does not require a previous estimate or
@@ -5021,7 +5021,7 @@ substantial within-lot variation. **Table 9.9-1** shows the difficulty in estima
 sample sizes are required to obtain precise estimates. Again, a phased approach could be used where the
 PPQ is based on five lots, and additional data is collected during CPV to obtain a more precise estimate.
 
-###### 9.10 Demonstrate Between-Lot Standard Deviation is Lower than an Acceptable Value
+**9.10 Demonstrate Between-Lot Standard Deviation is Lower than an Acceptable Value**
 
 Generally, testing enough samples to estimate the within-lot standard deviation _σw_ with reasonable precision
 is easy. Also, estimates of the within-lot variation are often available before PPQ from Stage 1 data or other
@@ -5032,7 +5032,7 @@ The PPQ acceptance criterion for _σb_ may be selected to show that the total pr
 could be chosen to ensure that the between-lot standard deviation is less than the acceptable value with a
 high level of confidence (e.g., 90%).
 
-###### 9.11 Demonstrating Equivalence Between Lots
+**9.11 Demonstrating Equivalence Between Lots**
 
 Differences between PPQ lots can be statistically detectable, but they might be small enough to consider the
 lots equivalent. To use this method, an equivalence test using multiple two-one-sided tests (TOST) or
@@ -5041,12 +5041,12 @@ the statistical power for the equivalence procedure chosen _**(15)**_ . For exam
 means of within-batch SD/5, the necessary sample size to demonstrate equivalence of means of two batches
 with equivalence limits of ± within-batch SD with a power of 80% is equal to n = 21 per batch.
 
-##### 10.0 Appendix II: Types of Control Charts
+**10.0 Appendix II: Types of Control Charts**
 
 **Section 10.0** (Appendix II) lists recommended statistical process control tools, such as control charts, that
 may be utilized for process validation (PV) data trending. Refer to TR 59 for additional information _**(16)**_ .
 
-###### 10.1 Control Charts for Variables Data
+**10.1 Control Charts for Variables Data**
 
 Commonly used control charts for variables data are _**(8,9)**_ :
 
@@ -5062,7 +5062,7 @@ Commonly used control charts for variables data are _**(8,9)**_ :
 
        - Cumulative sum (CUSUM) chart
 
-###### 10.2 Control Charts for Attributes Data
+**10.2 Control Charts for Attributes Data**
 
 The most-used control charts for attributes data are _**(8,9)**_ :
 
@@ -5102,7 +5102,7 @@ in CPV, when it is desirable to detect a significant process change within a sho
 can be used to help select the sample size and frequency of sampling. Tables of ARLs comparing different
 control chart types are available and can also be calculated by software.
 
-##### 11.0 Appendix References
+**11.0 Appendix References**
 
 1. Meeker, W.Q., Hahn, G.J., Escobar, L.A. Statistical Intervals: A Guide for Practitioners and
 Researchers. John Wiley & Sons, 2017.
@@ -5135,7 +5135,7 @@ equivalence trials. Pharmaceut. Statist., 2016, 15: 80–89.
 _Production Monitoring_ ; PDA: Bethesda, Md., 2012.
 17. Laney, D B. Improved Control Chart for Attributes. _Qual Eng_ 2002, _14_ (4), 531-37.
 
-##### Relevant Vendor and Supplier Resources
+**Relevant Vendor and Supplier Resources**
 
 The following paid advertisement is presented to the reader as potential supplemental resources which may
 aid in execution or fulfillment of the concepts, material, and information resented herein.

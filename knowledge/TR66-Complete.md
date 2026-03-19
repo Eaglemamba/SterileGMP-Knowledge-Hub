@@ -1,6 +1,6 @@
 ## **Technical Report No. 66** Application of Single-Use Systems in Pharmaceutical Manufacturing
 
-###### **PDA Application of Single-Use Systems in Pharmaceutical Manufacturing Technical Report Team**
+****PDA Application of Single-Use Systems in Pharmaceutical Manufacturing Technical Report Team****
 
 **Authors**
 
@@ -63,7 +63,7 @@ authoring task force and are not necessarily views of the organizations they rep
 
 # **Application of Single-Use** **Systems in Pharmaceutical** **Manufacturing**
 
-##### **Technical Report No. 66**
+****Technical Report No. 66****
 
 ISBN: 978-0-939459-69-8
 
@@ -699,7 +699,7 @@ Functionally equivalent substitution of an alternative SUS, for an existing SUS 
 contingency or process improvement with equivalent process performance and product quality.
 The end user is responsible to evaluate and determine if appropriate quality requirements are
 met for their application.
-#### **2.1 Acronyms**
+****2.1 Acronyms****
 
 **CIP** Clean-in-Place
 
@@ -869,7 +869,7 @@ SUS may not be applicable
 
 **6** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **3.1 Single-Use Technologies**
+****3.1 Single-Use Technologies****
 
 SUSs differ in many ways from conventional MUSs. When examining whether a technically feasible
 single-use solution exists, the end user should evaluate process operating parameters and requirements in relation to traditional systems:
@@ -915,7 +915,7 @@ process-specific considerations such as _**(4)**_ :
 
         - Factors affecting system design (e.g., process compatibility, component reliability, facility design,
 storage and materials handling, and/or transportation)
-#### **3.2 Business Drivers for the Adoption of Single-Use Systems**
+****3.2 Business Drivers for the Adoption of Single-Use Systems****
 
 The decision between a single-use and a multiple-use process solution is often heavily influenced by a desire
 to reduce costs, increase the flexibility of a facility, and accelerate the drug development process. To that end,
@@ -1074,7 +1074,7 @@ their organization. The following tools and resources may be useful to aid the d
        - Cost-of-goods modeling
 
        - Comprehensive cost models
-#### **3.3 Qualification and Verification of Suppliers, Materials,** **Components, and Completed Assemblies**
+****3.3 Qualification and Verification of Suppliers, Materials,** **Components, and Completed Assemblies****
 
 Any adverse effect on product quality and, hence, patient safety must be the main concern when
 the end user performs a risk assessment of an SUS. An assessment of critical operational parameters
@@ -1082,7 +1082,7 @@ must be performed in order to determine the potential impact of an SUS on produc
 exercise, the end user must take into account the potential for interaction between process fluid and
 the materials of construction of the process equipment.
 
-##### **3.3.1 Product Risk**
+****3.3.1 Product Risk****
 
 The potential impact of the SUS on the product quality is a key area to be assessed through a riskbased approach considering its proximity to the final product, the processing stage, and product requirements. The following are examples of specific considerations for potential interactions between
 SUS and product fluids:
@@ -1140,7 +1140,7 @@ and supply security
 
 **10** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **3.4 Process Control Strategy Considerations**
+****3.4 Process Control Strategy Considerations****
 
 The monitoring capability of single-use and multiple-use systems may differ. Some points to keep in
 mind include the following:
@@ -1167,7 +1167,7 @@ documentation practices for recording sensor calibration may be different for SU
 
         - Account for the possibility of smaller batch sizes with increased frequency or sub-batch or batch
 pooling due to smaller container volumes.
-#### **3.5 Implementation of a Single-Use System**
+****3.5 Implementation of a Single-Use System****
 
 Implementation includes all of the activities required for the realization of the end user’s manufacturing strategy. Since the manufacturing strategy is an assessment of feasibility informed by evaluation
 of the considerations from the sections on technology, business drivers, qualification, and implementation in this report, it provides a framework for implementation of the specific situation evaluated.
@@ -1177,41 +1177,41 @@ Furthermore, since time-to-clinic and time-to-market are becoming increasingly i
 for making implementation decisions, a comparative implementation assessment has become a crucial requirement. A well-thought-out and thorough implementation plan is important for successful
 implementation of an SUS. The implementation process is organized as a road map with a series of
 gateways between stages. The workflow should be organized around the following themes.
-##### **3.5.1 Stakeholder Management**
+****3.5.1 Stakeholder Management****
 
 Successful implementation of an SUS may require an active analysis of the effects of the implementation on the organization and stakeholder management. Broad implementation of SUS across an
 organization can impose certain organizational strains and stresses and problems may arise which
 have to be considered and dealt with.
-##### **3.5.2 Risk Management**
+****3.5.2 Risk Management****
 
 The use of formal risk-assessment methods during SUS implementation provides a means for quantitative comparisons of risk related to MUS versus SUS to assist in decision making and stakeholder
 management _**(7)**_ **.**
 
-##### **3.5.3 Process Validation and Verification (PVV)**
+****3.5.3 Process Validation and Verification (PVV)****
 
 The PVV strategy for an SUS differs from that of an MUS. Therefore, the end user must be aware
 that traditional qualification activities may have limited value for an SUS implementation without the
 confidence that the supplier’s production processes are of a high enough caliber and the end user’s
 process is sufficiently robust to tolerate any variations of the SUS by the supplier _**(8)**_ .
-##### **3.5.4 Scoping**
+****3.5.4 Scoping****
 
 This segment of the implementation plan contains a detailed description of the technical scope of the
 SUS project; it complements the manufacturing strategy by providing global guidance and policies to
 be applied for SU applications across the project.
-##### **3.5.5 Project Execution Plan (PEP)**
+****3.5.5 Project Execution Plan (PEP)****
 
 A PEP provides a detailed description of the project, the execution strategy, management, and compliance in order to attain project goals in terms of budget, time, and quality. This includes a policy for
 the identification and selection of suppliers, which will encourage the creation of a transparent relationship and help prevent the selection of equipment and suppliers from becoming an ad hoc process.
 An example PEP is shown in Section 9, Appendix II: SUS Facility Project Execution Plan Example.
-##### **3.5.6 End-User Requirements**
+****3.5.6 End-User Requirements****
 
 This section of the plan provides a description of the end user’s requirements for the SUS, including
 E&L and standardization in preparation for the equipment procurement process.
-##### **3.5.7 Testing and Documentation**
+****3.5.7 Testing and Documentation****
 
 Following delivery and installation, the user will develop methods and documentation for equipment
 SOPs; maintenance; qualification and process validation; the HSE plan; and personnel training.
-##### **3.5.8 Supplier Management**
+****3.5.8 Supplier Management****
 
 The effective management of SUS suppliers must include periodic review meetings involving the
 analysis of the supplier’s performance during the previous period for quality and punctuality. Business
@@ -1223,7 +1223,7 @@ Drug master files provided by either the polymer compound or film supplier can b
 submission. The polymer compound formulations (type and levels of additives), for example, may
 only list the highest amount of the additives that can be included in the polymer rather than specifying the actual specification range of additives. In any case the information is not available to the end
 user so it is preferable to receive the information in the form of a regulatory support file.
-##### **3.5.9 Logistics Control Requirements**
+****3.5.9 Logistics Control Requirements****
 
 A logistics control strategy is a critical part of the implementation of an SUS because the end user
 relies on the supplier’s production and quality systems to a higher degree than for the implementation
@@ -1294,7 +1294,7 @@ suppliers may help control costs, inventory, and time needed to plan and impleme
 Technical diligence is the process by which the SUS end user obtains a thorough understanding of the
 SUS product, the supplier, and the compatibility of the SUS with the end user’s processes and facility.
 These principles are based on established recommendations and procedures for critical raw materials.
-#### **3.6 Implementation Summary**
+****3.6 Implementation Summary****
 
 Efforts required for implementation of a single-use process solution often differ from what is required for
 a reusable system. Thus, the critical path for the fastest implementation of a process solution might also
@@ -1307,7 +1307,7 @@ practices in process validation and verification, risk management, and stakehold
 
 ### **4.0 Single-Use Technologies and System Integration**
 
-#### **4.1 Introduction**
+****4.1 Introduction****
 
 This section describes strategies for comparing single-use and traditional fixed multiple-use manufacturing methods with particular emphasis on the differences between SUS and the equivalent MUS. It
 also provides a framework for assessing the technical feasibility and risks associated with implementing an SUS. A description of the most common technical attributes of SUSs is also provided. Although
@@ -1315,7 +1315,7 @@ SU manufacturing is undergoing rapid technological changes that may affect the s
 to compare and contrast SU with MU technologies, the fundamental principles used to assess the
 feasibility or development of risk assessment is expected to remain unchanged. The methodology and
 key points presented in this section will continue to be relevant as SUS suppliers continue to innovate.
-#### **4.2 Comparison of MUS and SUS**
+****4.2 Comparison of MUS and SUS****
 
 Most stainless steel systems are available in an SU format. Since SU suppliers use less costly polymeric
 materials, they have developed physical and mechanical operations to produce the functional equivalent unit operation in a format that is designed for an SU. A comparative description of the features of
@@ -1323,7 +1323,7 @@ SU and MU technologies is presented in **Table 4.2-1.**
 
 **Table 4.2-1** Comparison of MU and SU Systems
 
-#### **4.3 SU Components and Assembly**
+****4.3 SU Components and Assembly****
 
 The primary components for the assembly of an SUS include fittings, tubing, filters, connectors, bags
 (film), porting (bags), impellers, spargers, valves, sensors, filling needles, pump heads, docking port
@@ -1360,7 +1360,7 @@ and control strategies for particles, endotoxins, and bioburden. Suppliers shoul
 place to ensure their facilities and procedures meet end-user requirements. It is also critical that quality
 agreements are established between end users and suppliers to ensure that the suppliers’ facilities are
 adequate to deliver an SUS that meets end-user requirements.
-#### **4.4 Technical Feasibility and Risk Assessment Framework**
+****4.4 Technical Feasibility and Risk Assessment Framework****
 
 A technical feasibility assessment is needed to show that a proposed SUS can meet the functional and
 regulatory requirements expected for a particular application. This assessment is performed after the
@@ -1444,7 +1444,7 @@ of SUS
 
 **Figure 4.4-1** Implementation of an SUS and the Assessment of Drug Process and Product Risk
 
-#### **4.5 Factors Affecting SUS Design**
+****4.5 Factors Affecting SUS Design****
 
 A technical feasibility study includes a thorough review of the design of a particular SUS in order to
 prevent mistakes stemming from component selection and system configuration. The scope of this
@@ -1455,7 +1455,7 @@ as proposed by a supplier). In some cases a customized, user-specified component
 identified during a technical feasibility study. Custom SUS configurations with specified components
 require additional efforts from an end user during a technical feasibility study if the supplier is not
 experienced with the user-specified components.
-##### **4.5.1 Process Compatibility**
+****4.5.1 Process Compatibility****
 
 Another factor to consider during the technical feasibility study of an SUS is process compatibility.
 This involves an assessment of how each of the components of the SUS, plus the SUS as a complete
@@ -1466,7 +1466,7 @@ is provided in **Table 4.5.1-1.**
 
 **Table 4.5.1-1** Assessment of Process Compatibility
 
-#### **4.6 Facility Impact for SUS Setup and Deployment**
+****4.6 Facility Impact for SUS Setup and Deployment****
 
 Although SUSs can be set up and deployed in existing manufacturing facilities, a new or renovated facility may be more effective if a high level of SUS integration is required. To manage the risk of damage to the SUS, assessment of facility design and layout should include SUS material management,
 storage, and handling during operational setup. Including a defined setup and deployment stage, with
@@ -1479,7 +1479,7 @@ application. Examples of the facility setup and deployment assessments are descr
 
 **Table 4.6-1** Assessment of SUS Facility Setup and Deployment
 
-##### **4.6.1 Operational Requirements**
+****4.6.1 Operational Requirements****
 
 SUS processes have inherently more manual connection and operational steps than MUS processes,
 which are often highly automated. Although the initial system design of an SUS generates an initial
@@ -1490,7 +1490,7 @@ in **Table 4.6.1-1.**
 
 **Table 4.6.1-1** Assessment of Operational Requirements
 
-#### **4.7 Applications and Technology**
+****4.7 Applications and Technology****
 
 This section discusses several applications that are common in biopharmaceutical manufacturing,
 along with their cognate SU technologies. The structure to discussing these applications and technologies is as follows:
@@ -1500,7 +1500,7 @@ along with their cognate SU technologies. The structure to discussing these appl
 2. A description of current SU technologies available to meet the application needs
 
 3. Specific considerations of the technology that one may use as part of a technical feasibility study
-##### **4.7.1 Process Connections**
+****4.7.1 Process Connections****
 
 Connectors and tube welders are used primarily to connect:
 
@@ -1557,7 +1557,7 @@ material for tube welding, as it is not a thermoplastic.
 thermoplastic tube using heat or energy to fuse together the lumen of one tubing end, segment,
 or fluid path. The sealed area is then separated from the rest of the tube by cutting it away.
 Silicone tubing is not appropriate for tube sealing, as it is not a thermoplastic.
-#### **4.8 Materials of Construction**
+****4.8 Materials of Construction****
 
 Factors concerning the materials used for constructing the SUS may include inherent safety, traceability, physical properties, and compatibility with other components or product and process materials.
 The components used for the construction of SUSs are primarily comprised of plastic materials that
@@ -1614,7 +1614,7 @@ Bayer Material Science. Fluon [®] is a registered trademark of AGS. Moplen [®]
 
 **27** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **4.8.1 Fluid Management**
+****4.8.1 Fluid Management****
 
 Fluid management describes the delivery of process fluids (e.g., buffers and culture media, process
 intermediates, and bulk drug product) to the point of use in the manufacturing stream.
@@ -1641,7 +1641,7 @@ system. The specific considerations for fluid management are summarized in **Tab
 |---|---|
 |Desired integration<br>level<br>Packaging materials<br>Microbial control<br>Sterilization<br>Freedom from leaks|Simplify the design of the SUS by evaluating its functionality and complexity. Explore<br>opportunities for implementing either a standard confguration or an application-specifc<br>confguration.<br>Evaluate SUS or the reuse of storage containers and packaging material.<br>Investigate either the need to use presterilized components or a nonsterile system in<br>a particular application. Compare the value of commercially available presterilized fuid<br>pathway assemblies to that of traditional d fuid pathway assemblies and containers<br>produced in-house.<br>Assess the value of presterilized fuid pathway assemblies supplied by the assembly<br>supplier versus in-house cleaning and sterilization responsibilities.<br>Evaluate supplier steps taken to assure a leak-free assembly.<br>Inspect SUS for leaks through a standardized method prior to implementation.|
 
-##### **4.8.2 Mixing**
+****4.8.2 Mixing****
 
 Mixing is the process used to achieve homogeneity of process liquids and solids. The process can
 involve liquid to liquid, solids dispersion, powder dissolution, powder to powder, or other combinations. Some mixing processes may require temperature regulation. The choice of mixing technology
@@ -1690,7 +1690,7 @@ The specific considerations for selecting a mixing technique are summarized in *
 
 **Table 4.8.2.1-1** Specific Considerations for Mixing
 
-##### **4.8.3 Fermenters and Bioreactors**
+****4.8.3 Fermenters and Bioreactors****
 
 The fermenter or bioreactor is the system that maintains appropriate growth conditions to support
 the drug-product-producing strain.
@@ -1728,7 +1728,7 @@ The specific considerations for fermenters or bioreactors are summarized in **Ta
 
         - KLa = the volumetric mass-transfer coefficient that describes the efficiency with which oxygen can be delivered to a bioreactor for a given set of operating conditions
 
-#### **4.9 Storage**
+****4.9 Storage****
 
 Appropriate storage is necessary in order to maintain the quality of process solutions (e.g., buffers and
 culture media), intermediates, and bulk drug substance until they are ready for further processing.
@@ -1738,7 +1738,7 @@ integrity at the lower of the storage or freezing temperatures.
 
 **30** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **4.9.1 Technological Examples**
+****4.9.1 Technological Examples****
 
 A storage bag with a polyethylene fluid contact layer is normally used to store aqueous-based liquid
 intermediates. Polyethylene polymers (particularly low-density grades) have broad chemical compatibility and very low reactivity to most intermediates and process fluids. Other materials like fluoropolymers are used to address specific process compatibility concerns.
@@ -1755,7 +1755,7 @@ process intermediates are summarized in **Table 4.9.1-1.**
 
 **Table 4.9.1-1** Specific Considerations for the Storage of Process Intermediates
 
-#### **4.10 Freezing**
+****4.10 Freezing****
 
 The end user may use freezing techniques to separate process pools or intermediates and hold them
 for a short time at the process temperature and conditions or for a longer duration before another
@@ -1765,7 +1765,7 @@ plate freezer) is used to regulate the rate of freezing and thawing of the conte
 maintain the integrity of the bag containing the frozen process intermediates or bulk drug substances,
 careful attention must be paid to the reusable storage container design and logistics of shipping and
 handling.
-##### **4.10.1 Technological Examples**
+****4.10.1 Technological Examples****
 
 **• Unprotected small-scale bag** : It is common practice to freeze an unprotected bag (less than 20 L)
 that is not specifically designed for the application. Compared to other technologies, the failure
@@ -1791,13 +1791,13 @@ The specific considerations for freezing are summarized in **Table 4.10.1-1.**
 
 **Table 4.10.1-1** Specific Considerations for Freezing
 
-#### **4.11 Filtration**
+****4.11 Filtration****
 
 Normal flow filtration (NFF) or direct flow filtration (DFF) devices are used in biopharmaceutical
 manufacturing to remove contaminants such as particulates, microbial cells, and virus particles. Cross
 flow filtration (CFF) or tangential flow filtration (TFF) devices are used to reduce the volume of a
 buffer and/or perform buffer exchange as part of the downstream process.
-##### **4.11.1 Technological Examples**
+****4.11.1 Technological Examples****
 
 CFF devices are commercially available in the following structural formats: flat-sheet cassettes, and
 hollow fiber cartridges. Currently, only a hollow-fiber cartridge can be classified as an SU filter device.
@@ -1813,7 +1813,7 @@ available in an SU format for many years, and structurally, they contain a depth
 
 **Table 4.11.1-1** Specific Considerations for Filtration
 
-#### **4.12 Centrifugation**
+****4.12 Centrifugation****
 
 Centrifugation is often used for cell harvest as an alternative to filtration, and SU formats of this
 technology are emerging for low shear separations, including harvest clarification; cell concentration,
@@ -1823,11 +1823,11 @@ SIP or hot water for injection (WFI) for bioburden sterilization and control of 
 Flow rates vary depending on the manufacture and design of the equipment, ranging from <10 to
 100 L per minute at <100X to 8000X G force. Continuous and batch centrifugation technologies are
 available.
-#### **4.13 Chromatography**
+****4.13 Chromatography****
 
 Biomolecules are purified using chromatographic techniques that separate them according to differences in their specific physical or chemical properties. SU formats for various chromatography steps
 are available.
-##### **4.13.1 Technological Examples**
+****4.13.1 Technological Examples****
 
 Chromatographic media can be divided into two main categories: resin- or bead-based and membrane-based. Membrane-based chromatographic devices are also known as membrane adsorbers, and
 because they are membrane-based, they share similar physical and structural features with traditional
@@ -1847,7 +1847,7 @@ Transportation). The specific considerations for chromatography are summarized i
 
 **Table 4.13.1-1** Specific Considerations for Chromatography
 
-#### **4.14 Drug Product Final Filling**
+****4.14 Drug Product Final Filling****
 
 The impact of any failures in final fill operations is high, since further processing cannot reduce quality failures at this stage. Common strategies for reducing the risk of failure include performing filling
 operations in aseptic environments, use of physical barrier systems to separate operators from the
@@ -1856,7 +1856,7 @@ process, and validating the sterility of process components (refer to **Section 
 SU components are widely used in product final filling operations. For example, flexible plastic tubing is used between the filling pump head and needle. Another example is a peristaltic filling system,
 which employs disposable peristaltic tubing inside the pump head. Both types of tubing are normally
 replaced between batches.
-##### **4.14.1 Technological Examples**
+****4.14.1 Technological Examples****
 
 An SU dosing system comprises a product hold bag, supply tubing, and a filling needle. These components are assembled in a cleanroom and sterilized using gamma irradiation. The complete assembly
 is removed from its outer pouch and connected to the filling machine immediately before use. The
@@ -1887,7 +1887,7 @@ The specific considerations for drug product final filling are summarized in **T
 
 **Table 4.14.1-1** Specific Considerations for Drug Product Final Filling
 
-#### **4.15 Isolators**
+****4.15 Isolators****
 
 If the canister of a traditional alpha-beta (A-B) port is replaced with an SU bag or connector, SU technology can be used for the aseptic transfer of liquids, powders, stoppers, plungers, tools, materials, and waste
 into and out of isolators or restricted-access barrier systems (RABS) _**(15).**_ To avoid compromising the sterility of the isolator, SU bags are designed to prevent reuse. Categories of an SU product format include:
@@ -1910,11 +1910,11 @@ The specific considerations for isolators are summarized in **Table 4.15-1.**
 
 **Table 4.15-1** Specific Considerations for Isolators
 
-#### **4.16 Sampling and Laboratory Analysis**
+****4.16 Sampling and Laboratory Analysis****
 
 Sampling is the process of removing a volume of process fluid from an SU assembly. This sample fluid
 is then usually submitted for laboratory analysis.
-##### **4.16.1 Technological Examples**
+****4.16.1 Technological Examples****
 
 Techniques for obtaining a sample fluid include:
 
@@ -1934,11 +1934,11 @@ The specific considerations for sampling and laboratory analysis are summarized 
 
 **Table 4.16.1-1** Specific Considerations for Sampling and Laboratory Analysis
 
-#### **4.17 Transportation**
+****4.17 Transportation****
 
 Transportation is the movement of process solutions such as buffers, culture media, WFI, and process
 intermediates either within a facility or between facilities.
-##### **4.17.1 Technological Examples**
+****4.17.1 Technological Examples****
 
 The supply of process solutions in large-volumes bags (≤1000 L) from the point of manufacture to the
 point of use is a well-established practice involving the following components:
@@ -1961,14 +1961,14 @@ The specific considerations for transportation are summarized in **Table 4.17.1-
 
 **Table 4.17.1-1** Specific Considerations for Transportation
 
-#### **4.18 Sensors**
+****4.18 Sensors****
 
 An SU sensor enhances the functionality of an SUS by providing parametric data that allows for
 manual or automated process control or monitoring. Modern sensors can be directly integrated into
 SU systems, and traditional sensors equipped with a fluid-path barrier can be used to measure factors
 such as temperature and pressure. A hybrid sensor uses a combination of a sensor and a transducer.
 Although sensor and transducer technologies have been available in many industries for a considerable time, the application of SU sensor technology in bioprocessing is relatively recent.
-##### **4.18.1 Technological Examples**
+****4.18.1 Technological Examples****
 
 SU sensor technology is routinely used to measure factors such as temperature, pressure, and conductivity. Recently, advanced sensors for measuring pH, dissolved oxygen, and CO2, as well as other
 sensors that employ chemical and/or optical technologies, have become available in an SU format. As
@@ -1986,7 +1986,7 @@ The specific considerations for sensors are summarized in **Table 4.18.1-1.**
 
 **Table 4.18.1-1** Specific Considerations for Sensors
 
-#### **4.19 System Integration**
+****4.19 System Integration****
 
 System integration encompasses all the activities and components related to creating a functional
 SUS or MUS. A schematic representation of a system integration process is shown in **Figure 4.19-1.**
@@ -2001,13 +2001,13 @@ SUS or MUS. A schematic representation of a system integration process is shown 
 
 **Figure 4.19-1** System Integration
 
-#### **4.20 Supply Chain Integration**
+****4.20 Supply Chain Integration****
 
 The final SUS may involve a large number of supply-chain integration pathways that are currently
 in use. A company with an SU manufacturing strategy should have highly trained procurement and
 quality staff with a good understanding of how to manage the several supply chains related to the
 SUS products that will be used to produce their drug products.
-##### **4.20.1 Factors Which Affect the Quality of Supply Chain**
+****4.20.1 Factors Which Affect the Quality of Supply Chain****
 
 The quality of the supply chain has a profound effect on the quality of the SUS. A SUS supplier will
 typically have a supply chain encompassing aspects of insourcing (i.e., the manufacture or assembly of
@@ -2023,7 +2023,7 @@ and experts, but the partner might be less accessible and require confidential d
 be executed before substantive discussions can begin. What concerns the end user is the availability
 of technical experts to assist in troubleshooting any problems with the SUS.
 
-#### **5.1 Introduction**
+****5.1 Introduction****
 
 The qualification and verification of suppliers, materials, components, and completed assemblies require attention to several factors. It is important to use a risk-based and science-based approach to qualify both materials and completed assemblies for SUSs in pharmaceutical development and manufacture
 _**(18).**_ The assessment of risk must be based on the complexity of the system and its intended use (e.g.,
@@ -2100,7 +2100,7 @@ process constraints, including repetitive use or extended storage (if required)
 
 If the SUS assembly includes SU sensors, calibration and additional verification documentation must
 be supplied.
-#### **5.2 Risks Associated with Using Single-Use Systems**
+****5.2 Risks Associated with Using Single-Use Systems****
 
 The risks associated with the use of SUSs include that to the patient, the process, and operators. The
 risk to the process may occur as a result of process failure, but it rarely affects patients because of
@@ -2177,7 +2177,7 @@ of media)
 
 **42** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **5.3 Single-Use System Assembly**
+****5.3 Single-Use System Assembly****
 
 SUSs include fittings, tubing, filters, connectors, bag material (film), and outer packaging. SU components are normally received and stored in areas with minimal environmental control. It is critical for
 the components to remain in their sealed packaging, and they should be handled with gloves to avoid
@@ -2190,12 +2190,12 @@ sharp edges or corners into the assembly room because they may perforate the SUS
 must be trained and wear appropriate clothing for an ISO 7 operation and the assembly room must
 be cleaned regularly. Where SUSs are preassembled, the supplier takes these steps.
 
-#### **5.4 Supplier Qualification of Single-use Systems**
+****5.4 Supplier Qualification of Single-use Systems****
 
 Since a typical SUS installation requires the acquisition of several components from various external
 suppliers, it is important for the end user to qualify suppliers to ensure that they can deliver SU components that meet or exceed regulatory and customer expectations.
 
-##### **5.4.1 Supplier Audits and Technical Diligence**
+****5.4.1 Supplier Audits and Technical Diligence****
 
 It is important to audit the supplier’s quality systems as part of the supplier qualification process to
 ensure delivery of consistent SU components to the end user. An understanding of the supplier’s capabilities may lead to a better understanding of end-user expectations and can help identify any gaps
@@ -2222,7 +2222,7 @@ minimum requirement.
 Pertinent factors for a technical diligence assessment and an interpretation of its implementation over
 the clinical development lifecycle are reviewed in greater detail in **Section 7.7.3.**
 
-##### **5.4.2 Supplier Quality Agreements and Responsibilities**
+****5.4.2 Supplier Quality Agreements and Responsibilities****
 
 The purpose of a supplier quality agreement is to set quality expectations, identify and develop a
 mutual understanding of pertinent regulations and guidance documents, and provide advice on
@@ -2236,7 +2236,7 @@ if necessary, audit and technical diligence activities should be extended to the
 materials and components. It is important to establish a cordial working relationship between the end
 user and supplier because an SUS supplier will inevitably become an extended part of the end user’s
 manufacturing and quality systems.
-#### **5.5 Qualification of Alternative Suppliers**
+****5.5 Qualification of Alternative Suppliers****
 
 The use of SUS permits considerable flexibility in the choice of materials, designs, and suppliers. This
 flexibility can be used to minimize risk by ensuring that multiple configurations are viable options for
@@ -2253,7 +2253,7 @@ representative samples from different lots as proof of an overall bioburden mana
 Both approaches may be acceptable and should be reflected in the user specifications **(Table 5.5.2-1).**
 An industry effort to standardize SUS testing methods would improve end users’ ability to compare
 alternative SUS suppliers and adequately assess testing differences between suppliers.
-##### **5.5.1 Qualification of Alternative Sources**
+****5.5.1 Qualification of Alternative Sources****
 
 End users typically have two options when it comes to alternative sources: 1) the same SUS supplier
 with alternative sources of raw materials, or 2) an alternative SUS supplier. Regardless of the choice,
@@ -2278,7 +2278,7 @@ For an alternative supplier, data generated for the original material can be use
 data of the alternative supplier source. In high-risk cases (e.g., bioreactor bags or storage of bulk drug
 substance), the second supplier’s component has to be treated as a specific instance, and full-scale
 qualification is required.
-##### **5.5.2 Interchangeability**
+****5.5.2 Interchangeability****
 
 It is important for end users to qualify alternative sources of films to safeguard against supply disruptions and possible shortages. In some situations this may be a minimal risk (e.g., sampling bag used for
 monitoring cell growth or nutrient conditions), so a comparison of extractables and leachables data
@@ -2313,7 +2313,7 @@ not have been expended if quality were perfect.” The additional end-user opera
 and related quality control activities to ensure process comparability for SU interchangeability could
 be included in the cost of quality and should then be considered in the overall SUS implementation
 costs. After all, if a supplier had perfect interchangeability, this end-user cost would be zero.
-##### **5.5.3 Using Supplier Quality Documentation**
+****5.5.3 Using Supplier Quality Documentation****
 
 The end user may employ the supplier documentation as part of the SUS document verification
 process so long as the end user has audited the supplier and collected the requisite evidence of an acceptable supplier quality system, technical capability, and application of Good Engineering Practices
@@ -2324,7 +2324,7 @@ assurance that documentation is accurate and suitable to meet the purpose of ver
 
 **Table 5.5.3-1** Example Supplier Testing and Reference Standards
 
-#### **5.6 Extractables and Leachables (E&L)**
+****5.6 Extractables and Leachables (E&L)****
 
 _Extractables_ may be defined as chemical entities that can be extracted from the components of a material by
 exertion of an exaggerated force (e.g., organic solvent, extreme temperature, ionic strength, pH, contact time).
@@ -2377,7 +2377,7 @@ Potential sources of extractables and leachables include SU materials used in ma
 and long-term storage, containers, filters, transfer tubing, valves, fittings, housings, and so on. Extractables and
 leachables are chemically diverse compounds that may include but are not limited to phthalates (e.g., plasticizers), organic acids, hydrocarbons, cyclic esters derived from urethane adhesives, antioxidants, residual solvents,
 antistatic and cleaning agents, as well as trace metals and degradation products from irradiation.
-##### **5.6.1 Material and Supplier Qualification**
+****5.6.1 Material and Supplier Qualification****
 
 It is important for end users to qualify alternative sources of films to safeguard against supply disruptions and possible shortages. There will be situations where this may be a minimal risk (e.g., bags used
 for sampling), so a comparison of extractables data from different suppliers may be acceptable; other
@@ -2496,7 +2496,7 @@ with modified polyvinylide fluoride membrane.
 ||**Water Extract**<br>2-methyl-2-propanol<br>Butanal<br>Hexanal 2-octanone<br>No peaks<br>Oxalic acid 0.07 ppm<br>Na, B, Mg, K, Ca, and Ba all<br>at ppb levels|**Ethanol Extract**<br>2-methylpentane<br>Hexane<br>Trimethylpentane<br>3-methylheptane<br>1-octene; octane<br>Low MW oligomers of polyethylene;<br>1,3-DTBB<br>2,4-DTBP<br>2-octanone 1-heptadecanol<br>1-octadecanol<br>Succinic, palmitic, and stearic acid all below 0.06<br>ppm<br>B 8.3 ppb|
 |Volatiles<br>Semivolatiles<br>Organic fatty acids<br>Inorganic elements|Volatiles<br>Semivolatiles<br>Organic fatty acids<br>Inorganic elements|Volatiles<br>Semivolatiles<br>Organic fatty acids<br>Inorganic elements|
 
-##### **5.6.2 Toxicity of E&L**
+****5.6.2 Toxicity of E&L****
 
 The toxicity of leachables must be evaluated with regards to the effect on the patient or process.
 Containers and storage bags are a potential source of leachables that may have adverse effects on the
@@ -2538,7 +2538,7 @@ than expected growth in glass bioreactors. In another case, the effect of prefil
 Differences were observed in the surfaces and texture of films, and certain cell lines showed different
 sensitivities to different films _**(39).**_
 
-##### **5.6.3 Using Supplier Documentation for Extractables**
+****5.6.3 Using Supplier Documentation for Extractables****
 
 The end user may rely on extractables data from the supplier as a starting point for general information on E&L components. This kind of data is typically generated using model extraction solvents
 under exaggerated conditions. Given the specificity of each product and diversity of extractables and
@@ -2557,13 +2557,13 @@ original supplier’s manufacturing process. If the potential for adverse result
 need to be generated and supported by actual functional testing to ensure that there would be no
 adverse effect on either the product or the process (e.g., stability test of the final product container,
 cell growth, and the effect of the bioreactor bag on cell viability).
-##### **5.6.4 Extractable Testing Standardization**
+****5.6.4 Extractable Testing Standardization****
 
 To assist in defining common extractable study requirements for biopharma drug substance requirements,
 including test conditions, analytical techniques, and format of the results provided to users, some level of
 standardization is needed in the industry. Such standardization would facilitate SUS implementation _**(36).**_
 
-#### **5.7 Bovine Spongiform Encephalopathy (BSE)/Transmissible** **Spongiform Encephalopathy (TSE) Concerns**
+****5.7 Bovine Spongiform Encephalopathy (BSE)/Transmissible** **Spongiform Encephalopathy (TSE) Concerns****
 
 SUSs have low-risk BSE/TSE concerns and they do not contain high-risk animal-derived components.
 Certain mold release and slip agents and plastics resins (e.g., polypropylene or polycarbonate) may
@@ -2579,7 +2579,7 @@ and Veterinary Medicinal Products” (EMA 410/01 rev 3 ), gives specific conside
 transesterification, or hydrolysis, at not less than 200°C under pressure for not less than twenty minutes) used during their manufacture. A BSE/TSE risk assessment should be completed and periodically updated to reflect whether an SUS supplier is using components in the fluid pathway that were
 fabricated from plastic resins containing bovine-derived additives at trace levels.
 
-#### **5.8 The Quality Systems of the End User and Supplier**
+****5.8 The Quality Systems of the End User and Supplier****
 
 It is important for the end user to have instituted a robust quality system to receive materials, quarantine unreleased and rejected materials, inspect those materials, and release them to production. Since
 the testing and release of an SUS can vary widely from end user to end user, a complete and careful
@@ -2587,8 +2587,8 @@ documentation in the form of a purchase specification and inspection plan should
 off-the-shelf or customized SUS requisition. A supplier quality agreement is another useful way to
 manage the requirements and expectations of both supplier and end user.
 
-#### **5.9 Quality Management for Single-Use System Implementation**
-##### **5.9.1 Determination of Expiration Date and Shelf Life**
+****5.9 Quality Management for Single-Use System Implementation****
+****5.9.1 Determination of Expiration Date and Shelf Life****
 
 The SUS supplier is expected to provide estimates for expiration dates and the shelf life of the SUS
 according to validation of maintenance of sterility tests and key functional properties. The expiration
@@ -2603,7 +2603,7 @@ test for accelerated aging of the plastic components of SUSs _**(49).**_
 The term Ready-To-Use is a marketing term often used to describe the benefits of single-use technology or SUS. This designation has no regulatory or scientific basis supporting suitability for use, and
 end users are responsible for evaluating and determining whether appropriate quality requirements
 have been met for their application.
-##### **5.9.2 Dealing with Particulates**
+****5.9.2 Dealing with Particulates****
 
 The level of particulates found in the SUS depends on the application (fluid path contents) of the
 system. Particles embedded in the bulk plastic as well as the presence of loose particles or fibers in an
@@ -2615,13 +2615,13 @@ and analysis may be extended from lot samples to periodic audits of model SUSs�
 to the bioburden audits that are conducted for the validation of sterilization by irradiation. Applicable
 SUS model system design and particulate audit practices should be established between the supplier
 and the end user.
-##### **5.9.3 Sanitation and Sterilization**
+****5.9.3 Sanitation and Sterilization****
 
 The use of an SUS in biopharmaceutical manufacturing can vary so widely that in one instance there
 may be no need for a specific bioburden control (e.g., as in the mixing of nonsterile buffer formulations or other raw materials) whereas in another, stringent restrictions on the incidence of a bioburden are called for (e.g., validated sterility for final formulation and filling of sterile drug product). It
 is critical for the end user to review processes, fluids, contact, and storage conditions for microbial
 quality to determine the appropriate measures to be taken.
-##### **5.9.4 Bioburden Control**
+****5.9.4 Bioburden Control****
 
 The molding and extrusion of SUS components at high temperatures plus their assembly into a functional SUS in a clean and controlled environment confers advantages such as intrinsically low incidence of bioburden on the fluid paths of the SUS. Although this inherently low degree of bioburden
 may be adequate for nonsterile processes, many SU components or systems may be autoclaved or
@@ -2635,8 +2635,8 @@ ultrafiltration buffers and intermediates.
 
 **54** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **5.10 Sterilization**
-##### **5.10.1 Irradiation Sterilization**
+****5.10 Sterilization****
+****5.10.1 Irradiation Sterilization****
 
 SUSs are especially suitable to sterilization by irradiation because of the relative transparency of plastics to ionizing radiation, which allows complex systems to be sterilized without the risk of spreading
 the sterilizing agent throughout the fluid path. Irradiation may be used to sterilize plastics or SUS
@@ -2660,7 +2660,7 @@ sterility testing of the fluid path of the master system after a low “verifica
 and calculation of a suitable dose to provide a sterility assurance level or a probability of nonsterility of
 10 [-6] for the model product and its variants. The supplier and the end user should review the applicability
 of validation via master system sterilization to the end user’s SUS configuration.
-##### **5.10.2 Sterilization with Moist Heat**
+****5.10.2 Sterilization with Moist Heat****
 
 Several methods of sterilization are acceptable for use with SUS. Each is appropriate for different applications and should be evaluated for suitability.
 
@@ -2695,7 +2695,7 @@ causing significant degradation of physical integrity, creation of extractables,
 life. In addition, irradiation may reduce the resistance of the SUS to subsequent steam exposure,
 which may increase the formation of extractables and leachables. In general, an SUS is not designed
 to be resterilized.
-##### **5.10.3 Sensor Technology**
+****5.10.3 Sensor Technology****
 
 The pace of technological evolution of SU sensors is so rapid that the end user may decide to use
 several strategies at the same time. The end user may:
@@ -2725,7 +2725,7 @@ general, steam sterilization cycles may be more damaging to a reusable sensor th
 sterilization cycle. Some SU sensors may be calibrated using a traditional two-point calibration technique prior to use without any adverse effects on sterility. Thus, SU sensors may be inherently more
 reliable than reusable sensors. The end user must pay attention to the advantages and limitations of a
 chosen SU sensor, including the specific requirements and circumstances of application.
-##### **5.10.4 Qualification and Validation**
+****5.10.4 Qualification and Validation****
 
 The end user is responsible for process validation, and the method for validating an SUS must be
 determined using a risk-based approach, which considers the effective integration of the SUS design
@@ -2763,8 +2763,8 @@ validation data to determine whether any additional process-specific validation 
 
         - Proper handling and manipulation of the SUS by trained operators should be qualified.
 
-#### **5.11 Integrity**
-##### **5.11.1 Testing an SUS for Leaks**
+****5.11 Integrity****
+****5.11.1 Testing an SUS for Leaks****
 
 The requirements for testing an SUS will depend on its intended use. The retention of structural integrity (i.e., containers do not leak) is the main concern and is a key concern in process-contact applications. For low-risk applications (e.g., sample and buffer bags), an understanding of supplier testing,
 performance, and training in appropriate handling procedures may be sufficient.
@@ -2802,7 +2802,7 @@ If the end user determines that a leak was caused by a manufacturing defect, the
 be returned to the supplier for quality investigation and corrective action. The returned sample should
 include full information regarding the conditions of use and location of the leak. Suppliers should
 maintain records of system failures and their root causes for further analysis.
-##### **5.11.2 Leak Prevention in an SUS**
+****5.11.2 Leak Prevention in an SUS****
 
 Leaks in fluid management systems can lead to contamination, personnel safety risk, and product
 loss. A thorough investigation must be conducted to determine the cause, identify the source of the
@@ -2815,7 +2815,7 @@ each leak was mapped and identified according to type and cause _**(57).**_
 
 **Figure 5.11.2-1** Investigation of a Bioprocess Container for Leaks
 
-##### **Distribution of Bioprocess Container Leak Locations**
+****Distribution of Bioprocess Container Leak Locations****
 
 n Bag Chamber
 
@@ -2860,7 +2860,7 @@ setup and deployment stage, with standardized activities for each part, and is a
 factor for SUS implementation. Deployment should be a routine part of the workflow and planning
 for each SUS application.
 
-#### **5.12 Campaigning**
+****5.12 Campaigning****
 
 Although they are disposable systems designed to be used once and discarded, there are a few exceptional circumstances in which an SUS may be reused. Examples would be the use of a container as a
 mixing vessel or reservoir for buffer concentrates, in which there are no broken connections and the
@@ -2908,13 +2908,13 @@ manufacturing company (CMO) may be the elimination of cross-contamination in a m
 multiple-product facility. A stand-alone manufacturer with a facility dedicated to the production of a
 single product may consider a hybrid approach of an SUS and MUS to reduce SU variable costs yet allow for the expansion of production capacity at peak periods. An effective implementation of an SUS
 would help the company to meet important business goals in addition to cost savings.
-#### **6.1 Evaluation of Business Drivers**
+****6.1 Evaluation of Business Drivers****
 
 The decision to implement an SUS tends to be driven by economic incentives such as 1) potential elimination of cleaning and sterilization processes; 2) reduction of dedicated equipment or changeover time; and
 3) increased flexibility and capacity of the manufacturing facility. The end user must consider both tangible cost savings and less quantitative benefits such as low risks of cross contamination. A cost-of-goodsmanufactured (COGM) analysis can be used to support claims of economic savings. Other tools, such as
 risk assessment, value-stream mapping, CO2 footprint, green manufacturing, and value-added analysis, can
 provide invaluable data to inform a business decision on whether to implement SUS or not.
-#### **6.2 Lifecycle Approach**
+****6.2 Lifecycle Approach****
 
 The importance of specific business drivers will depend on the needs of each individual company.
 The scope of the project may be as narrow as using an SUS to boost the capacity of a single process
@@ -2932,14 +2932,14 @@ case because of the uncertainty in product demand. Such flexibility comes with a
 investment for traditional MUSs, whereas the implementation of an SUS tends to reduce the cost of
 operational flexibility because it is less reliant on investment for utilities and equipment installation.
 An SUS is less costly to modify or expand to a new facility when a change in product lifecycle occurs.
-#### **6.3 Opportunity Cost**
+****6.3 Opportunity Cost****
 
 Opportunity cost is defined as the value of the next-best choice available when choosing between
 several mutually exclusive options. These costs are often excluded from estimates of fixed operation costs because they can be difficult for comparative analyses in the overall decision process. For
 example, deciding to expand a facility may result in forgoing the opportunity to invest in other projects, contract batch production at a CMO, or maintain cash reserves. Opportunities can be difficult
 to compare; hence, opportunity cost calculations between competing projects may help identify the
 best path forward.
-#### **6.4 Cost of Quality**
+****6.4 Cost of Quality****
 
 The cost of quality can be defined as any cost that would not have been expended if quality were
 perfect. The inherent advantages of an SUS may lead to reductions in the cost of quality for the end
@@ -2952,7 +2952,7 @@ bag breakage, variations in the profile of extractables and leachables, and effe
 the responsibility of the end user to ensure that the SUS meets applicable quality standards. Any tests
 conducted by the end user to ascertain process compatibility due to changes made by the supplier
 may be included in cost-of-quality estimates.
-#### **6.5 Quantitative Evaluation of Business Drivers**
+****6.5 Quantitative Evaluation of Business Drivers****
 
 A quantitative evaluation of business drivers for an SUS project may be based on determining the
 average cost of a batch in order to examine the feasibility of the SUS project. An overall economic
@@ -3003,19 +3003,19 @@ model are summarized in **Table 6.5-1.**
 
 **Table 6.5-1** Factors That Affect the Process Model
 
-##### **6.5.1 Process Assessment**
+****6.5.1 Process Assessment****
 
 The process model is an assessment of the process with respect to an SUS. The process model forms
 the basis for any cost comparison exercise by defining process setup and deployment for either an SUS
 or an MUS. Data from the process model feeds into the facility, capital cost, and variable cost model
 to provide the basis for the fixed-cost model.
-##### **6.5.2 Batch Frequency**
+****6.5.2 Batch Frequency****
 
 With a higher batch frequency, variable costs arising from using more consumables over time may
 become prohibitive for an SUS design. If the batch frequency is low, varies, or becomes difficult to predict, then an SUS may improve the business case by keeping fixed costs low. For batch sizes exceeding
 feasible SUS volumes, there may be adverse economic effects from frequent use of the SUS.
 
-#### **6.6 Operational Model**
+****6.6 Operational Model****
 
 Operational data about the facility is captured by the operation model and then added to the data from
 the process model in order to estimate utilization and batch output from the facility. When this information is combined with other cost models, the average batch cost for the various scenarios can then be
@@ -3023,14 +3023,14 @@ calculated. The main factors that affect the selection of operation model are su
 
 **Table 6.6-1** Factors That Affect the Operational Model
 
-##### **6.6.1 Single- or Multiple-Product Facility**
+****6.6.1 Single- or Multiple-Product Facility****
 
 The business case may be improved with an SUS because it may reduce downtime and changeover
 time. In a single-product facility, capacity may be increased via a reduction in the time required for
 equipment cleaning. In a multiple-product facility, improved capacity may be achieved through a
 decrease in both changeover and equipment-cleaning time. It is important to factor in differences in
 facility throughput when technologies are compared.
-#### **6.7 Total Cost Model**
+****6.7 Total Cost Model****
 
 A project may involve either the construction of a new facility or the retrofitting of an existing one.
 The main points of consideration for both cases are summarized in **Table 6.7-1** _**(58).**_
@@ -3039,7 +3039,7 @@ The main points of consideration for both cases are summarized in **Table 6.7-1*
 
 **64** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **6.7.1 Shortcut Cost Model Based on Cost of Goods**
+****6.7.1 Shortcut Cost Model Based on Cost of Goods****
 
 In a preliminary evaluation in which the speed of comparison is more important than accuracy, a yesor-no type of feasibility study incorporating a minimum of factors would be sufficient. This approach
 may not be rigorous enough for a final binding decision where funds would be committed. In such a
@@ -3055,7 +3055,7 @@ The minimum factors to consider in the shortcut model are:
 
         - Cost of capital assumptions
 
-##### **6.7.2 Example of a Shortcut Cost Model**
+****6.7.2 Example of a Shortcut Cost Model****
 
 Use the following lists and the preceding paragraphs to estimate the following for each scenario:
 
@@ -3103,14 +3103,14 @@ Use the following lists and the preceding paragraphs to estimate the following f
 
         - Payback time = difference in investment cost/difference in COGM
 
-##### **6.7.3 Comprehensive Cost-of-Goods Model**
+****6.7.3 Comprehensive Cost-of-Goods Model****
 
 A more comprehensive cost model may include factors selected from the preceding sections **(Tables**
 **6.5-1, 6.6-1, 6.7-1** and **Section 6.7.2-1).** The structure of the model must be flexible enough so that it
 can be improved for accuracy with additional data. A sensitivity analysis is the most effective way to
 use an economic model because it incorporates a range of input factors for arriving at a good understanding of the potential risks involved.
-#### **6.8 Investment Costs**
-##### **6.8.1 Process Equipment**
+****6.8 Investment Costs****
+****6.8.1 Process Equipment****
 
 The first step in evaluating an SU project is normally an equipment-to-equipment comparison of SUS
 versus MUS direct investment cost. Reduced demand for cleaning and sterilization allow for simplifications in piping and instrumentation, which leads to a reduction in the investment cost for SUSs.
@@ -3120,7 +3120,7 @@ an SUS project _**(59).**_
 
 **Table 6.8.1-1** Contributory Factors to Investment Costs
 
-##### **6.8.2 Utility Equipment**
+****6.8.2 Utility Equipment****
 
 The effect of utility systems on the investment costs should be explored because it may be possible
 to remove entire system groups from the scope (e.g., clean steam, CIP stations) or achieve enough
@@ -3130,7 +3130,7 @@ may lead to a reduction in the generation of wastewater.
 
 **66** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **6.8.3 Indirect Equipment Costs**
+****6.8.3 Indirect Equipment Costs****
 
 The estimates for engineering and installation costs (e.g., design, commissioning, and qualification
 and validation) are normally calculated as a percentage of the equipment costs. One of the advantages of an SUS is that reductions in piping and instrumentation may decrease the number of both
@@ -3138,7 +3138,7 @@ installed hardware and communication I/O points in the automation system. Howeve
 incur a higher engineering percentage cost compared to similar MUS designs because of lower initial
 investment costs and the cost of validating leachables and extractables for the SUS. The installation
 percentage is lower for an SUS than an MUS. A similar approach can be used to determine the percentage costs for construction and project management _**(60).**_
-##### **6.8.4 Facility**
+****6.8.4 Facility****
 
 An SUS uses stackable rectangular containers, which results in a smaller footprint compared to MUS.
 The absence of a CIP and washing/sterilization function further reduces the space requirements of
@@ -3151,10 +3151,10 @@ contributions to variable operating costs are summarized in **Table 6.8.4-1** _*
 
 **Table 6.8.4-1** Main Variable Operating Costs
 
-##### **6.8.5 Materials**
+****6.8.5 Materials****
 
 Often, input materials (e.g., SUS materials prefilled with hydrated or powdered media and buffer components and chromatography gels) may be independent of SUS or MUS technology _**(62).**_
-##### **6.8.6 Consumables**
+****6.8.6 Consumables****
 
 The best way to determine the component cost of consumables is from the specific SUS process
 design under consideration because there can be a significant discrepancy between the costs of a supplier’s standard configuration and that of the specific assembly required for a particular process step.
@@ -3171,18 +3171,18 @@ suppliers, it is necessary to understand SUS configurations and how they can be 
 individual SUS process requirements. It would be advisable to incorporate a sensitivity analysis for the
 purchase cost of an SUS because final configurations and prices can be difficult to predict. In general,
 the sensitivity analysis should be extended to any variable with uncertain cost estimates _**(63).**_
-##### **6.8.7 Utilities**
+****6.8.7 Utilities****
 
 The reductions in cleaning and sterilization associated with an SUS leads to a decrease in the cost of
 utilities, especially for clean water generation, CIP, and SIP systems. It is important to use carefully
 verified cost data since large volumes may be involved in these processes. The cost of water for injection is significantly lower for large on-site systems than for commercially supplied WFI. It may be
 calculated from system depreciation, labor, and energy costs.
-##### **6.8.8 Waste**
+****6.8.8 Waste****
 
 The cost of inactivating solid waste can be significant depending on the degree of containment required. The solid waste may be 1) inactivated on-site, which will lead to increased load on kill autoclaves; or 2) transported off-site for incineration or disposal at a landfill. Both approaches would incur
 transport and disposal fees. A third approach involves chemical inactivation. The disposal strategy for
 each SUS must comply with the laws and requirements of the municipal authority in charge _**(64–66).**_
-#### **6.9 QC/QA and Cost of Quality**
+****6.9 QC/QA and Cost of Quality****
 
 Since some variable costs (e.g., analyses, preparing batch documentation, and batch release) are rarely
 affected by SUS implementation, the baseline costs of MU and SU systems tend to be similar. Batch
@@ -3190,7 +3190,7 @@ review and investigation efforts may decrease and result in additional savings b
 activities (e.g., quality agreement, supplier audits, SUS documentation review, subsupplier audits, and
 QC-receiving inspection) may increase with an SUS implementation. The operation of several quality activities within the supplier’s quality system rather than that of the end user may make process
 investigations more complex, and this additional effort should be taken into account.
-#### **6.10 Fixed Operating Costs**
+****6.10 Fixed Operating Costs****
 
 Fixed operating costs represent the expenditure on the facility regardless of the state of production.
 The main factors involved in evaluating fixed operating costs are summarized in **Table 6.10-1.**
@@ -3199,13 +3199,13 @@ The main factors involved in evaluating fixed operating costs are summarized in 
 
 **Table 6.10-1** Main Fixed Operating Costs
 
-##### **6.10.1 Cost of Capital**
+****6.10.1 Cost of Capital****
 
 The cost of capital represents a fixed cost that is independent of the number of batches produced.
 The capital required for the investment may be borrowed at a certain interest rate or it could be at
 hand. Because fixed costs are added to variable operating costs to obtain the average batch cost, capital costs would affect batch costs through depreciation and amortization.
 
-##### **6.10.2 Depreciation**
+****6.10.2 Depreciation****
 
 The rate of depreciation may be faster for an SUS compared to an MUS because new models and
 technology appear on the market regularly. In addition, some equipment (e.g., reusable storage containers, SUS holders) undergoes inevitable wear and tear with time. It is important to distinguish
@@ -3213,7 +3213,7 @@ between building and equipment depreciation. SU facilities tend to have more sto
 space but less utility and process space. The type of space required may affect the overall cost of the
 facility and its depreciation.
 
-##### **6.10.3 Staff**
+****6.10.3 Staff****
 
 The cost of staff depends on the number of batches produced through direct processing operations and
 indirectly through activities like sample analyses, preparation of batch documentation, and the release of
@@ -3226,8 +3226,8 @@ The cost of training may increase for an SUS because additional effort may be re
 the facility is established and run in a reproducible manner. Staff costs can be broken into two groups:
 direct-production (production staff) and indirect-production related (e.g., administration, management, automation and maintenance). A time study or production modeling may be used to determine the comparative cost of staff between SUSs and MUSs.
 
-#### **6.11 Project Duration, Time, and Productivity**
-##### **6.11.1 Overall Project Duration**
+****6.11 Project Duration, Time, and Productivity****
+****6.11.1 Overall Project Duration****
 
 Overall project duration may be an overarching decision driver that makes all other economic analysis secondary. The comparison of the project duration for a facility that depends heavily on SUS to
 one that utilizes primarily MUSs may be compelling enough to make further analysis unnecessary.
@@ -3239,7 +3239,7 @@ novel drugs under patent protection, the benefit of reduced time-to-clinic or ti
 calculated based on the assumed revenue and profits to be realized during the period of exclusivity.
 Reduced time-to-clinic and time-to-market effectively extends the period of exclusivity by the difference in the project duration.
 
-##### **6.11.2 Process Operation Time**
+****6.11.2 Process Operation Time****
 
 A SUS may increase the capacity of the facility by reducing process downtime for:
 
@@ -3259,7 +3259,7 @@ in mass and heat transfer capacities may delay important setup or preparative op
 such as hydration, process fluid transfers, temperature adjustments, pH adjustments, and charges and
 discharges.
 
-##### **6.11.3 Time Constraints**
+****6.11.3 Time Constraints****
 
 An SUS may remove time and capacity constraints and improve scheduling because of the reduced
 need for WFI, clean steam, and cleaning. Increases in solid waste may be tackled without any adverse
@@ -3267,21 +3267,21 @@ effects on the main process schedule. In this case, an SUS still requires time t
 the facility for setup and deployment. The planned batch time should account for time spent in set
 up, deployment, process adjustments, temperature and pH control, and dismantling the systems _**(67).**_
 
-##### **6.11.4 Speed of Process Development**
+****6.11.4 Speed of Process Development****
 
 The factors mentioned above, as well as the inherent flexibility of an SUS, lead to an increase in the
 speed of process development without a major change in the design of the facility.
 
 **70** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **6.11.5 Equipment and Process Validation**
+****6.11.5 Equipment and Process Validation****
 
 The implementation of an SUS reduces the need to install support systems, and this leads to a reduction in the time required for validation activities. Similarly, the time required for cleaning and
 sterilization validation as part of the process validation activity is also reduced. These time savings
 are somewhat countered by the need to evaluate E&L during material and equipment qualification
 (refer back to **Section 5).** This additional activity for SUS should be based on a risk assessment that is
 performed prior to process validation.
-##### **6.11.6 Construction Time**
+****6.11.6 Construction Time****
 
 For a retrofitting facility project, the effect of an SUS on construction time may be evaluated by comparing lead times for SU and MU systems. A new facility project may benefit from SU technology
 because processes and buildings are decoupled and many systems then can be installed and validated
@@ -3309,7 +3309,7 @@ qualification activities in parallel
 SUS equipment skids may reduce custom engineering design and computer-aided design piping and
 instrumentation drawing (CAD PID) because they can be built from standardized parts with shorter
 delivery times.
-##### **6.11.7 Self-Assembly**
+****6.11.7 Self-Assembly****
 
 It is possible to create a custom SUS by assembling and sterilizing the various components (e.g., tubing, strips, barbs, filters, and bags). If the quality is similar to that of a commercially available ready-touse SUS, the customized SUS should be evaluated against a combination of time considerations and
 fixed and variable costs incurred from the following factors:
@@ -3330,13 +3330,13 @@ procedures
 The quality system of the end user must be able to source SUS components as well as their assembly,
 testing, and release in-house. This is a good exercise for a quality unit within a company to perform
 as part of developing control strategies for a commercially supplied SUS.
-#### **6.12 Logistics**
+****6.12 Logistics****
 
 A significant difference between SU and MU systems is that the essential components of an SUS must
 be sourced from outside on a continuous basis. An MUS is also dependent on outside supply, but interchangeability between different suppliers is much better. The need for continual sourcing imposes
 another cost, which is addressed in the following paragraphs.
 
-##### **6.12.1 Supply**
+****6.12.1 Supply****
 
 Maintaining a steady supply of an SUS requires additional process activities that comprise a single step
 for an MUS. These include:
@@ -3352,7 +3352,7 @@ for an MUS. These include:
 Apart from the testing of extractables and leachables, the preceding activities may be construed as
 extensions of existing functions with some additional complexities. In addition, the quality system
 will need to interact with the supplier’s quality systems and their supply chain.
-##### **6.12.2 Storage**
+****6.12.2 Storage****
 
 The number of pallet spaces required for storage must be included in the evaluation of the SUS. In
 addition, storage space depends on the lead times and inventory levels of suppliers. In general, an SUS
@@ -3364,7 +3364,7 @@ The end user must be aware that storage space may be required for the following 
 - Local facility storage
 
 - Point-of-use storage
-##### **6.12.3 Transportation**
+****6.12.3 Transportation****
 
 - Storage area for disposal shipping
 
@@ -3382,7 +3382,7 @@ areas may include:
 The transportation of biologically contaminated waste on public roads may result in additional costs
 for an SUS. The physical protection (e.g., trucks capable of cold storage and minimizing vibrations)
 required during the transportation of frozen product bags may also add costs.
-##### **6.12.4 Waste**
+****6.12.4 Waste****
 
 Waste management costs vary significantly according to the specific requirements of the municipality
 in which the facility is located. An SUS tends to increase the costs of solid waste disposal while reducing that of liquid waste inactivation and neutralization. It is important for the end user to consider the
@@ -3404,7 +3404,7 @@ areas for solid waste.
 
 **72** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **6.13 Disposal of an SUS**
+****6.13 Disposal of an SUS****
 
 Despite the recognized benefits in biological and pharmaceutical manufacturing of SU technologies,
 the end user must still address issues such as residual solid waste from used components and systems.
@@ -3455,13 +3455,13 @@ of coal at 9,000 to 12,000 BTU/lb (20,934 to 27,912 kJ/kg) and to that of gasoli
 
 Despite the generation of solid plastics waste, SU manufacturing is considered environmentally
 friendly because it reduces energy consumption and eliminates tedious cleaning and validation studies associated with stainless steel systems.
-#### **6.14 Sustainability**
+****6.14 Sustainability****
 
 Green manufacturing and chemistry are fast becoming important business drivers for the sustainability of SUSs. Green chemistry involves the use of chemicals and chemical processes that reduce or
 eliminate adverse effects on the environment. The use and production of these chemicals may lead
 to reduced waste products, nontoxic components, and improved efficiency. SU manufacturing has the
 advantage of being environmentally friendly and energy efficient.
-#### **6.15 The Value Added**
+****6.15 The Value Added****
 
 Unlike an SUS, an MUS requires several preparative procedures (value-added activities) prior to the
 beginning of each manufacturing batch. In an SUS, these steps are outsourced to the supplier and
@@ -3481,7 +3481,7 @@ dard of quality even though these preoperational activities have been outsourced
 This quality check may be achieved through a combination of verification and trending activities that
 allow the supplier’s quality unit to determine that the steps were performed successfully. Any deviations or weaknesses in the supplier’s quality system or documentation will affect the end user’s cost of
 quality because it is the responsibility of the end user to ascertain that the SUS is fit for purpose.
-##### **6.15.1 Value-Added Analysis**
+****6.15.1 Value-Added Analysis****
 
 It is necessary to assess the value added and how it affects COG and operating cost in order to determine the benefit of an SUS implementation. This can be achieved by mapping both the separate
 value-added activities and the primary reason for which they were performed. For example, a comparison between an SUS and an MUS should include the entire supply chain—from system design
@@ -3529,7 +3529,7 @@ This section provides a framework for the implementation of an SUS. A successful
 an SUS takes into account the unique situation and requirements of the project and then communicates these needs effectively to stakeholders, suppliers, and sponsors. Although good project management skills are essential for any successful project implementation, SUS implementation tends to be
 enhanced by a stage-gate approach in which the details of the application are evaluated and the results
 communicated to the broader team. The approach presented in this section allows for important decisions to be taken at appropriate times to facilitate the success of the overall project.
-#### **7.1 Implementation Road Map**
+****7.1 Implementation Road Map****
 
 **Figure 7.1-1** shows an implementation road map based on a natural progression of workflows. These
 workflows use a manufacturing strategy that provides the foundation for the main SUS implementation process described in this section (see also **Figures 3.0-1** and **3.0-2).** **Table 7.1-1** provides a more
@@ -3572,11 +3572,11 @@ workflow provides a structured and practical approach; however, it may be equall
 of the end user. A subject matter expert (SME) may implement a simplified SUS project plan whereas a fully established and large company may opt for a complete
 project implementation. Note that regardless of the approach the end user adopts, there is a minimum level of project organization and documentation necessary
 to provide structure and clear deliverables without which the implementation process may falter.
-#### **7.2 Implementation Themes**
+****7.2 Implementation Themes****
 
 As shown in **Figure 7.1-1,** three themes represent a series of concepts and principles that span SUS implementation, and each theme can be applied either as a tool
 in support or as part of the implementation method.
-##### **7.2.1 Stakeholder Management**
+****7.2.1 Stakeholder Management****
 
 Stakeholder management is important throughout the SUS implementation process. It helps an organization to achieve strategic objectives by 1) interpreting and
 influencing both the external and internal environments, and 2) creating positive relationships with stakeholders by appropriately managing their expectations and
@@ -3602,7 +3602,7 @@ The power grid allows the project team to identify, gather input from, and manag
 
 Effective stakeholder management may be achieved by 1) evaluating company governance and management processes in order to identify functional areas, and 2) using a responsible, accountable, consulted, and informed (RACI) template to clearly define roles and responsibilities within functional
 areas and between stakeholders _**(71).**_
-##### **7.2.2 Risk Management**
+****7.2.2 Risk Management****
 
 As shown in **Figure 7.1-1,** risk management is important throughout the lifecycle of a project (specifically from **Sections 7.4** to **7.7).** Application of a quality risk management (QRM) program during SUS project implementation confers benefits on the manufacturer, patients, quality auditors, and
 regulators. These benefits come from an understanding of product and process risks, individual assessments, mitigation or acceptance, communication, and review as outlined in Section 3.3.1 _**(4,7,72).**_
@@ -3695,7 +3695,7 @@ the process or system) if the level of risk were reviewed, assessed, and mitigat
 |Future|trol/Desired Tendency|Corrective actions or control strategies|Corrective actions and/or control strate-<br>gies exist|
 |Future|trol/Desired Tendency|Supply or quality agreements or contracts,<br>technical diligence, or audit process|Agreements and contracts in place; tech-<br>nical diligence is ongoing and quality au-<br>dit process is in place|
 
-##### **7.2.3 Process Validation and Verification (PVV)**
+****7.2.3 Process Validation and Verification (PVV)****
 
 In pharmaceutical manufacturing, process validation (PV) is the collection and evaluation of data
 from the process design stage through commercial production that establishes scientific evidence that
@@ -3729,14 +3729,14 @@ S2 that confer greater clarity on SUS implementation.
 
 **84** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **7.3 Implementation S3: Scoping**
+****7.3 Implementation S3: Scoping****
 
 The project scoping process provides a source of information that is complementary to that obtained from a
 definition of the manufacturing strategy (Section 3). Scoping identifies pertinent information that may affect
 conception (e.g., potential materials, science, and facility operational requirements) and establishes the principles for conceiving, selecting, and operating the SUS. Once the basic strategy is defined, this information is
 applied in S4 to define process and facility requirements **(Section 7.4.2).** Technical guides that may assist the
 SUS scoping process are available from the website of Bioprocess Systems Alliance (BPSA) _**(79).**_
-##### **7.3.1 SUS Strategy**
+****7.3.1 SUS Strategy****
 
 The output of the scoping process is the SUS strategy document. This is a primary reference document that
 provides overall guidance and policies for SU applications across the entire project. It may be combined with
@@ -3761,7 +3761,7 @@ components. Such a scenario may represent an SUS-inherited implementation becaus
 acquires the product but does not necessarily have a choice about the technology source.
 
 The following paragraphs describe key subjects that should be addressed in the SUS strategy document.
-##### **7.3.2 Business Drivers**
+****7.3.2 Business Drivers****
 
 It is important to review the business drivers for SUS implementation. Sometimes, an SUS may be
 used for predevelopment prior to a requirement for GMP (e.g., in a small-scale and disposable multireactor robotic screening system). Much larger SUSs can be deployed when process development
@@ -3771,12 +3771,12 @@ selecting either an MUS or an SUS. Other factors are quality-improvement drivers
 this report to their specific situation and review them regularly. This is because it may be necessary to
 determine how the quality system, GMP, and PVV fit into the overall process.
 
-##### **7.3.3 Operating Scenarios and Standardization**
+****7.3.3 Operating Scenarios and Standardization****
 
 Developing operating scenarios and standardization offers end users the opportunity to define specific rules,
 policies, or principles for key issues relevant to the implementation process, for example, the type of multipurpose operations in use or the selection of production by campaign. More examples are described later
 in this section. An example of the practical application of standardization can be found in the literature _**(80).**_
-##### **7.3.4 Process Validation Stage**
+****7.3.4 Process Validation Stage****
 
 It is important to define the SUS project within the process validation lifecycle because it affects the
 subsequent approach to PVV. Predevelopment systems (prior to PVV S1) would not necessarily be
@@ -3784,22 +3784,22 @@ subject to the same quality requirements as that for later-stage processes invol
 the starting materials for some medicinal products, such as those for cell therapy, could be isolated at
 a very early stage in the product development lifecycle, and their exploitation may require extensive
 PVV and careful handling to ensure process compatibility and regulatory compliance.
-##### **7.3.5 Operating Volumes and Storage Requirements**
+****7.3.5 Operating Volumes and Storage Requirements****
 
 The end user should define operating and storage volumes for static and mobile requirements. A
 maximum mobile volume (i.e., the maximum allowable volume for manual transportation within the
 plant) above 500 L may be difficult to transport and may significantly affect the floor space required in
 the facility. In addition, such large equipment may be subject to HSE regulations.
-##### **7.3.6 Hybrid Systems**
+****7.3.6 Hybrid Systems****
 
 The end user should evaluate the requirements for connections that combine SU and MU systems
 (e.g., CIP or SIP). The principles that ensure operator safety and product integrity must be defined.
 Any MUS parts that require manual cleaning and autoclaving must be defined and specified.
-##### **7.3.7 Connection Principles**
+****7.3.7 Connection Principles****
 
 The end user should define the requirements and principles of operation that apply to the various
 connection applications. These principles should include the types of connections allowed or employed, according to process circumstances and regulatory requirements.
-##### **7.3.8 Campaigning**
+****7.3.8 Campaigning****
 
 Although there are specific situations where an SUS container might be refilled and used in a single
 campaign (e.g., where a large buffer tank is used to refill a single SUS storage vessel without breaking
@@ -3807,7 +3807,7 @@ the sterile barrier), reusing SUS is not recommended. It is preferable to define
 used to process several pools from a batch or series of harvests, but SU tubing circuits in processing
 skids may not be able to withstand repeated caustic cycles. Therefore, while the SU columns may be
 campaigned, the SU tubing circuits may need to be replaced for each cycle.
-##### **7.3.9 Future Deployment**
+****7.3.9 Future Deployment****
 
 Significant productivity gains can be achieved by deploying and exploiting SUS over MUS. For example, there can be significant differences in maintenance costs, batch-to-batch turnaround, and staffing requirements _**(81).**_ Standard principles must be reviewed and identified for activities involving the
 hands-on steps required to successfully assemble and make a system ready for use for a specific SUS
@@ -3817,7 +3817,7 @@ workflow and planning for each SUS application.
 
 **86** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.3.10 Sourcing**
+****7.3.10 Sourcing****
 
 The end user should determine whether the SUS would be sourced from exterior suppliers or vendors (i.e., designed, constructed, and delivered) or self-made (i.e., designed, prepared, and operated
 on-site). Some applications and business drivers may implicitly require a clear policy, so a risk-based
@@ -3834,12 +3834,12 @@ approach should always be used. A self-made SUS would have to meet the following
          - Passes stability studies if necessary
 
 It is essential to verify that both internally and externally sourced SUSs meet the same quality standards.
-##### **7.3.11 Testing Strategy**
+****7.3.11 Testing Strategy****
 
 An SUS strategy should define the principles and aims of any in-house testing program that would be
 proposed as part of the implementation process. This may include the collection of supplier testing
 data and controls. Testing strategies should be discussed in detail with the supplier, and quality agreements should allow for the exchange of test data between a supplier and the end user.
-##### **7.3.12 Materials**
+****7.3.12 Materials****
 
 The strategy should define a position on single- or multiple-film usage. Reducing the number of material specifications reduces confusion and errors. For example, using the same product-contact film
 may simplify the subsequent evaluation of extractables and leachables. However, it may also limit
@@ -3848,36 +3848,36 @@ strategy may not be possible where multiple SUSs from different suppliers are us
 process. Finally, the materials should be biocompatible and the end user should be aware of supplier
 testing procedures. Harmonizing the various testing methods that suppliers use could make it easier
 for end users to make comparisons between suppliers (see **Table 5.5.2-1).**
-##### **7.3.13 Shelf-Life Policy**
+****7.3.13 Shelf-Life Policy****
 
 The expiration and shelf-life policy needs to be defined. This is particularly important if the end user
 has a large number of different SUSs (from multiple suppliers or self-made assemblies). Note that
 some SUS suppliers may have their own definition of shelf life, and the end user should address and
 resolve these issues during policy definition.
-##### **7.3.14 Procurement**
+****7.3.14 Procurement****
 
 The procurement process should be standardized. If the project deals with several suppliers, it may be
 necessary to make this a uniform process. The end user may need different strategies for purchasing
 occasional versus routine SUS equipment and components **(Sections 7.4.10, 7.5.3, 7.7.1,** and **7.7.2).**
-##### **7.3.15 Storage**
+****7.3.15 Storage****
 
 The strategy document should define how SUS warehousing and logistical operations would be organized. A dedicated clean and controlled storage area is recommended.
 
-##### **7.3.16 Waste Treatment**
+****7.3.16 Waste Treatment****
 
 The policy for waste treatment (i.e., how SUS solid waste would be handled and inactivated) should
 be defined, and the potential impact of carbon taxes must be taken into account. In addition, the end
 user must explore the feasibility of recycling some of the waste from SUSs.
-##### **7.3.17 Non-GxP Issues**
+****7.3.17 Non-GxP Issues****
 
 The end user should define any non-GxP issues that must be considered as part of the SUS implementation project. These issues are often quite diverse and can be local or country-specific (e.g., permits,
 tax credits, grants or subsidies, imposed supplier preferences, or safety-related concerns).
-##### **7.3.18 Sustainability**
+****7.3.18 Sustainability****
 
 A key point is that in general, SUSs are more sustainable and have less adverse environmental effects
 than traditional MUSs. The SUS strategy should define a policy that includes these principles. Some
 examples would be fossil fuel depletion and energy use, urban land occupation, pollution, greenhouse gas emissions and ozone depletion, water depletion, and so on _**(82).**_
-#### **7.4 Implementation S4: Business Case**
+****7.4 Implementation S4: Business Case****
 
 This stage of implementation concerns the different business and technical scenarios that can influence user requirements and the implementation process. Examples of key business drivers include:
 
@@ -3894,7 +3894,7 @@ The main documentary output from S4 is the project execution plan (PEP). Importa
 preparing the PEP (such as facility and process integration, technological survey, supplier selection,
 and supply chain) are discussed in the paragraphs that follow. Further details on the evaluation of
 business drivers can be found in **Section 5.**
-##### **7.4.1 Project Execution Plan**
+****7.4.1 Project Execution Plan****
 
 The purpose of the PEP is to ensure that the goals of the project (i.e., budget, time, and quality) are
 met. It defines and describes:
@@ -3930,7 +3930,7 @@ The final content of the PEP will depend on the approach to the project, risk-ma
 business drivers such as the nature of the product, lifecycle requirements, engineering policies, and
 project scale.
 
-##### **7.4.2 Process and Facility Requirements: Basis of Approach**
+****7.4.2 Process and Facility Requirements: Basis of Approach****
 
 Process and facility requirements are key business drivers, and their consideration forms an important part of the PEP preparation. SUSs can be integrated and deployed within existing processes and
 manufacturing facilities. However, when a high level of SUS integration is necessary, new facilities
@@ -3939,17 +3939,17 @@ preparation, SUS integration must be considered from the point of view of the en
 suppliers, and the end user. The outputs are three relatively simple documents which outline the
 implementation strategy: facility-, implementation-, and operational-level plans.
 
-##### **7.4.3 Facility-Level Plan**
+****7.4.3 Facility-Level Plan****
 
 This plan shows how the SUS fits into the facility design space together with other process equipment,
 and it summarizes different functional situations.
 
-##### **7.4.4 Implementation-Level Plan**
+****7.4.4 Implementation-Level Plan****
 
 This contains the parameters that affect the supplier during the production, marketing, and supply
 of SUS for off-the-shelf or customized systems. In addition, it describes the parameters that influence
 the end user during the creation of self-made or in-house SUSs.
-##### **7.4.5 Operational-Level Plan**
+****7.4.5 Operational-Level Plan****
 
 This describes the parameters for SUS integration (i.e., assembly, connection, and deployment) in
 readiness for manufacturing. It is essential to review each of these factors thoroughly because they
@@ -3961,7 +3961,7 @@ SUS integration are illustrated in **Figure 7.4.5-1.**
 
 **90** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.4.6 Facility-Level Integration Plan**
+****7.4.6 Facility-Level Integration Plan****
 
 This is normally a concise document that describes the integration of the SUS into the facility design
 space _**(87)**_ . Robust process knowledge is a prerequisite for defining the various operational situations
@@ -4024,7 +4024,7 @@ facility-operating scenarios.
 
 **92** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.4.7 Equipment-Level Integration Plan**
+****7.4.7 Equipment-Level Integration Plan****
 
 This brief document describes factors influencing the supplier or end user during the construction,
 marketing, and supply of the SUS as an off-the-shelf, customized, or self-made system. Some of the
@@ -4097,7 +4097,7 @@ suppliers would increase risk, although this may be mitigated by on-site SUS tes
 the end user to ascertain the compatibility of process, equipment, and facility design space from a
 risk-based perspective **(Sections 7.4.10** and **7.7).**
 
-##### **7.4.8 Operational-Level Integration Plan**
+****7.4.8 Operational-Level Integration Plan****
 
 This describes the parameters for SUS integration (i.e., assembly, connection, and deployment) in readiness for manufacturing. A risk-based approach should be used because of the structural and functional
 diversity of SUSs _**(91).**_ Some of the important parameters to consider during deployment include:
@@ -4127,7 +4127,7 @@ local, self-made assemblies.
 
 **• Quality assurance —** Ensuring quality during deployment should be addressed at an early stage
 of implementation. Technical diligence may enhance this goal **(Section 7.4.10** and **7.7.3).**
-##### **7.4.9 Technological Survey**
+****7.4.9 Technological Survey****
 
 The aim of this document is to complement the information gathered as part of the manufacturing
 strategy **(Sections 3.0, 7.0,** and **7.1).** Depending on when the manufacturing strategy is written, an
@@ -4156,7 +4156,7 @@ Suppliers may be considered as stakeholders.
 
 **94** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.4.10 Supplier Selection and Supply-Chain Review**
+****7.4.10 Supplier Selection and Supply-Chain Review****
 
 The aim of this review is to determine a policy for the identification and selection of suppliers in order
 to complete the PEP and project planning.
@@ -4206,16 +4206,16 @@ maintain business continuity and support the health of patients. SUS equipment t
 occasionally may be done on a contractual basis, but a quality and supply agreement must be used to
 buy routine SUS equipment **(Sections 7.5.7** and **7.7.12).**
 
-##### **7.4.11 Extractables and Leachables Database**
+****7.4.11 Extractables and Leachables Database****
 
 It may be convenient for the end user to begin collecting E&L guidance and testing data. Note that
 this can also be implemented in the next stage, Implementation S5: Development. At a minimum,
 however, the end user should collect extractables data at this stage.
-#### **7.5 Implementation S5: Development**
+****7.5 Implementation S5: Development****
 
 During this stage, the SUS user requirements are developed, including layout and design, specifications, and standardization. Complete user requirements should precede the procurement process
 (e.g., commercial negotiations between strategic project partners or raising a purchase order).
-##### **7.5.1 User Requirements for Implementation**
+****7.5.1 User Requirements for Implementation****
 
 User requirements should be prepared at the start of the development process. The principal user and
 stakeholders must be identified and their requirements obtained. The user requirements are based on
@@ -4236,7 +4236,7 @@ _Validation — A Lifecycle Approach_ _**(8,18).**_ In some cases, the supplier 
 company document. The user requirements are kept current throughout the system’s lifecycle and
 should be reevaluated after any change in intended use, user needs, or altered materials specifications
 (e.g., the films used, functional specifications, regulatory assessments or supplier quality audits, technical diligence). An example of a user requirements document is included in **Section 8, Appendix 1.**
-##### **7.5.2 Preparing User Requirements**
+****7.5.2 Preparing User Requirements****
 
 Brainstorming sessions, workshops, interviews, assessments, and ad hoc discussions may be used
 to gather pertinent information about the needs of the end user. Other useful information may be
@@ -4266,7 +4266,7 @@ would be a bioreactor system in which the hardware and SUS bags are sourced from
 whether they express a regulatory requirement or not. The project team may apply other criteria
 such as priority, clinical development stage, importance to the business, and other factors that may
 influence company decisions.
-##### **7.5.3 Layout and Design**
+****7.5.3 Layout and Design****
 
 The layout and design of the SUS can often be achieved using a standard design format; however, in
 certain cases, process-specific requirements may result in the need for a unique design process (refer
@@ -4333,7 +4333,7 @@ capsule, membrane)
 - Footprint
 
 - Sampling
-##### **7.5.4 Specification**
+****7.5.4 Specification****
 
  - Discharging
 
@@ -4373,7 +4373,7 @@ integrate into the facility.
 
 **98** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.5.5 Standardization Policy**
+****7.5.5 Standardization Policy****
 
 Although the inherent flexibility at the core of SUS design is an advantage, it could degenerate into a
 disadvantage by introducing unwelcome variations in the supply chain if left unchecked. Therefore,
@@ -4391,14 +4391,14 @@ standardized bag design.
 
         - An active standardization policy may have been defined as part of the SUS strategy **(Section 7.2.1).**
 If so, it may not be necessary to implement it at this stage.
-##### **7.5.6 Extractables and Leachables**
+****7.5.6 Extractables and Leachables****
 
 In some cases, an E&L database collection may have begun in S4 **(Sections 5.6** and **7.4.11).** If not,
 E&L data should be compiled now. Although there is no specific regulatory guidance document for
 E&L in SU systems, the USP, FDA, and EMA have extensive E&L guidance documents for SU technology _**(96-100)**_ . In addition, a number of cross-industry initiatives are in place to standardize the
 approach for SUS and achieve industry and regulatory consensus or provide a cross-industry database
 of current knowledge _**(100–102)**_ .
-##### **7.5.7 Procurement**
+****7.5.7 Procurement****
 
 Although procurement procedures will differ from company to company, it is critical to make sure
 that the end user requirements and other relevant specifications are correctly used and that the SUSbased equipment adheres to those specifications. It is important to maintain a close partnership between suppliers and end users in order to facilitate the procurement process. Some of the key points
@@ -4438,11 +4438,11 @@ procurement **(Section 7.7).**
         - Business contingency planning and crisis management should be reviewed for potential problems
 or the need to make necessary changes to project planning, construction, and delivery or receiving
 because these can have profound impact on the end user’s startup and C&Q processes.
-#### **7.6 Implementation S6: Testing and Validation**
+****7.6 Implementation S6: Testing and Validation****
 
 During this stage, methods and documentation must be developed for equipment SOPs, maintenance, qualification and process validation, HSE processes, and personnel training. Some documents
 (e.g., the validation master plan) may require updates at this stage to maintain compliance.
-##### **7.6.1 Delivery**
+****7.6.1 Delivery****
 
 The PEP must cover the delivery process, including responsibilities of the supplier and the end user.
 Transport logistics are sometimes complex, and the procedure by which the equipment will be safely
@@ -4451,7 +4451,7 @@ not take unloading into account, and the end user may need to take particular pr
 ensure that the supplier contractually takes responsibility. There may be specific non-GxP issues to
 resolve such as documentation (delivery notes), inspection for inventory or damage, and insurance or
 the removal and appropriate disposal of crates and other packaging materials _**(103)**_ **.**
-##### **7.6.2 Installation**
+****7.6.2 Installation****
 
 The PEP will also cover all aspects of the startup process, including post-delivery storage, handling
 prior to installation unpacking, and the responsibilities of the supplier and the end user in a more
@@ -4459,7 +4459,7 @@ general manner. Transferring the equipment to its place of use can be problemati
 where the SUS equipment will be used in manufacturing operations, may require specific training.
 The overall strategy and approach will depend on the nature of the SUS and the level of risk associated with this process **(Section 7.4.1).** In some cases, non-GxP documentation may be generated or
 supplied and work permits (e.g., fire safety) secured during the installation processes (e.g., removals).
-##### **7.6.3 Qualification**
+****7.6.3 Qualification****
 
 Qualification of an SUS should include lifecycle testing that reproduces the most impactful steps of
 the system’s lifecycle (e.g., sterilization, transport, freezing/thawing) followed by a verification of the
@@ -4469,14 +4469,14 @@ the SUS qualification process and supplier qualification, respectively.
 
 **100** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.6.4 Training**
+****7.6.4 Training****
 
 Training is a GMP requirement and an integral part of SUS technical implementation. The goal of
 any training program should be to provide specific knowledge and understanding that will support
 successful operations. Although, the specific training needs are normally described in the user requirements, other training requirements (e.g., for project management and risk assessment) may be
 critical for the successful implementation of the project. Training programs for SUS should include
 concepts and principles of operation that might be unique to SUS and unfamiliar to MUS operators.
-##### **7.6.5 Training Workflow**
+****7.6.5 Training Workflow****
 
 Guidelines for a training workflow are as follows:
 
@@ -4499,7 +4499,7 @@ when planning training procedures.
 familiar with SUS implementation. Other training modules may be delivered by suppliers.
 
         - Add completed training modules to the individual training records of each stakeholder.
-##### **7.6.6 An Example of SUS Training**
+****7.6.6 An Example of SUS Training****
 
 Factors that may contribute to the leakage of bags are:
 
@@ -4537,11 +4537,11 @@ Operators should be educated and engaged about:
         - Root-cause analyses
 
 Additional details on training are provided in **Section 6.**
-##### **7.6.7 Safety**
+****7.6.7 Safety****
 
 Health and safety issues involving the control of both recognized and unidentified hazards in order to
 achieve an acceptable level of risk in the workplace are the responsibility of all stakeholders. Ensuring safety in the workplace as required by local laws can be best addressed by preparing an HSE plan.
-##### **7.6.8 Preparation of a Health, Safety, and Environment Plan**
+****7.6.8 Preparation of a Health, Safety, and Environment Plan****
 
 The HSE plan addresses health, safety, and environmental concerns throughout the SUS project. It
 should be prepared at an early stage and incorporated into the user requirements. Published examples
@@ -4594,7 +4594,7 @@ support materials
 
 - Transport
 
-##### **7.6.9 Health and Safety Issues Related to SUS**
+****7.6.9 Health and Safety Issues Related to SUS****
 
 SUSs often consist of plastic components that have low resistance to physical stress, pressure, and
 temperature extremes. A typical setup includes a range of support equipment (e.g., pumps, agitators,
@@ -4647,18 +4647,18 @@ dispensing vessel
 - Lifting heavy or cumbersome objects
 
 - Insufficient work space and surfaces
-#### **7.7 Implementation S7: Launch**
+****7.7 Implementation S7: Launch****
 
 The PEP leads to an initial procurement of equipment for the SUS project in addition to setting out
 a secure supply chain for continuous operation of the SUS. Initial supplier evaluations are part of the
 PEP preparation in S4 **(Section 7.4.10).** In the following paragraphs, these first steps are consolidated
 with a detailed evaluation of the appropriate tools for the routine management of suppliers.
-##### **7.7.1 Management of Materials**
+****7.7.1 Management of Materials****
 
 Since continuous sourcing of supplies is critical to keeping the SUS in a productive state, it is important to maintain an efficient routine supplier management (e.g., technical diligence, quality audits,
 quality and supply agreements, and purchasing, logistical, and waste-handling strategies) to create a
 robust support for SUS manufacturing operations.
-##### **7.7.2 Routine or Operational Procurement**
+****7.7.2 Routine or Operational Procurement****
 
 Routine procurement for SUS (e.g., single-use bioreactors or chromatography systems) requires a supplier qualification program for each of the SUS suppliers included in the PEP. Whenever the risk and
 complexity of the component in question is considered significant, the qualification program should
@@ -4697,7 +4697,7 @@ procedure. This process may have been started as part of the SUS strategy **(Sec
 
         - The end user should adhere to green and sustainable manufacturing policies throughout the entire
 supply chain and evaluate waste disposal for carbon footprint reduction.
-##### **7.7.3 Technical Diligence**
+****7.7.3 Technical Diligence****
 
 A QbD approach is the best way to qualify suppliers for SUSs. It is based on ICH principles (ICH
 Q8) and it embraces the complementary concepts of quality-risk management and pharmaceutical
@@ -4744,14 +4744,14 @@ of the SUS implementation process for a drug substance using a lifecycle approac
 
 **Table 7.7.3-3** An Interpretation of the SUS Implementation Process
 
-##### **7.7.4 Quality and Technical Agreements**
+****7.7.4 Quality and Technical Agreements****
 
 Quality and technical agreements clarify the functional aspects of a business relationship by delineating the responsibilities of quality, regulatory, and production personnel within each company in order
 to enhance communication and prevent ambiguity as referred to in Section 6 _**(109,110–114).**_ A quality
 agreement should not be confused with a business, supply, or manufacturing agreement. Several templates for APIs are available for chemical and biological products, and the end user may adapt them to
 an SUS from the Bulk Pharmaceuticals Task Force (Society of Chemical Manufacturers and Affiliates
 or SOCMA) or the International Pharmaceutical Excipients Council (IPEC) _**(116,117).**_
-##### **7.7.5 Logistics and Storage**
+****7.7.5 Logistics and Storage****
 
 The storage and warehouse facilities required for the efficient operation of the SUS should be defined in
 the PEP. In general, the amount of pallet space required may be calculated as a function of consumption
@@ -4776,7 +4776,7 @@ monitoring and control (a GMP requirement)
 
 **106** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **7.7.6 Waste**
+****7.7.6 Waste****
 
 The SUS strategy and PEP address waste management as an important part of SUS implementation
 because the amount of solid waste increases significantly for an SUS compared to an MUS. Some of
@@ -4816,12 +4816,12 @@ also be addressed at this stage. In addition, consider non-GxP issues (e.g., ref
 an SUS, sale of an SUS, the effect of applicable national tax credits). The end user must be aware of
 international hazard guidance for biologics and chemical entities _**(120–122).**_ A BPSA guide to waste
 disposal for SUS is available for reference _**(65).**_
-##### **7.7.7 Post-launch Review**
+****7.7.7 Post-launch Review****
 
 Regular performance review audits ( **Figure 7.1-1** ) between stakeholders after launching the SUS may
 provide valuable feedback for the implementation of risk-based change-control procedures in the current SUS as well as new SUS projects.
 
-#### **Contents**
+****Contents****
 
 8.1 Description of Document���������������109
 
@@ -4892,7 +4892,7 @@ Requirements�����������������������
 
 **108** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **8.1 Description of Document**
+****8.1 Description of Document****
 
 This appendix contains an example of user requirements (UR) written for an SUS facility. This material is referenced in **Section 7.5.1,** User Requirements, and should be used as an example for how this
 type of document is structured. The complexity and size of the document will change according to
@@ -4904,7 +4904,7 @@ This document describes the UR concerning the new production suite, GMP, SUS (sh
 below). This is an overall UR specification and detailed UR will be written. The requirements stated
 in this document may not be qualified but will form the basis for design.
 
-##### **8.1.1 Abbreviations**
+****8.1.1 Abbreviations****
 
 **API** Active Pharmaceutical Ingredient
 
@@ -4948,8 +4948,8 @@ of Medicinal Products
 **HMI** Human-Machine Interface
 
 **HVAC** Heating, Ventilating, and Air-Conditioning
-#### **8.2 Introduction**
-##### **8.2.1 Description of Facility**
+****8.2 Introduction****
+****8.2.1 Description of Facility****
 
 **MAA** Marketing Authorization Application
 
@@ -5011,17 +5011,17 @@ novel product being developed to deliver a growth factor for use in surgery.
 
 **110** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **8.2.2 Environment**
+****8.2.2 Environment****
 
 As a design basis for the HVAC in Company X, an upper limit of +30°C at 50% RH (63 kJ/kg) in summertime and lower limit of –37°C in wintertime for the outside climate will be used.
-##### **8.2.3 Capacity**
+****8.2.3 Capacity****
 
 The target capacities to fulfill the expected need of the market for the facility are summarized in the
 following list. Total number of vials will be about 130,000.
 
 The process capabilities are limited by the drug substance manufacture. The drug substance manufacture will need 24-hour, 7-day-week control. However, the filling operation will be run on an 8-hour,
 5-day-week basis.
-##### **8.2.4 Process**
+****8.2.4 Process****
 
 **8.2.4.1 Production Process**
 
@@ -5128,7 +5128,7 @@ entering the filling area.
 **8.2.4.8 SIP**
 
 No sterilization-in-place (SIP) is necessary due to the use of disposables and the supply of media, buffer, and elution solutions.
-##### **8.2.5 Material Flows**
+****8.2.5 Material Flows****
 
 The risk of cross-contamination shall be minimized in the layout of the plant area and in the manufacturing areas. Special attention shall be put on straight flows so that possibility for mix-ups between
 products from different process phases or different products is minimized. Line clearance shall be performed between production runs of different products. The facility shall be designed for sequential
@@ -5220,7 +5220,7 @@ one-way type because personnel and the material flow shall be unidirectional. Th
 shall be unpacked and sprayed with ethanol inside the airlock when transporting to a room with class
 C classification. Filling components passed into the class B area shall be washed and depyrogenated, or
 packages of presterilized components shall be subject to a vaporized hydrogen peroxide cycle.
-##### **8.2.6 Personnel Flows**
+****8.2.6 Personnel Flows****
 
 The risk of cross-contamination shall also be minimized in the personnel flows. The main office building area has existing entrance, lunchroom, offices, and other social rooms.
 
@@ -5247,7 +5247,7 @@ can be of the one-way type. There should be unidirectional personnel flow in the
 **8.2.6.3 Estimated Number of Personnel**
 
 About 8–11: cell culture rooms, 2–3 persons; downstream, 3–4 persons; filling, 3–4.
-##### **8.2.7 Training**
+****8.2.7 Training****
 
 In order to assure that the personnel have updated information of their working area, all personnel
 shall be trained in GMP procedures and in using SOPs and instructions concerning them.
@@ -5257,7 +5257,7 @@ utility and automation system. The education level shall be maintained with addi
 
 **114** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **8.3 Regulatory Requirements**
+****8.3 Regulatory Requirements****
 
 The production facilities shall be designed to meet applicable requirements in the US CFR, EU GMP,
 PIC/S, and applicable EU directives and Finnish legislation. All components and systems shall be designed and commissioned according to GEP, GAMP, and ASME standards and shall have a CE mark
@@ -5269,8 +5269,8 @@ ISO 8573-1.
 
 The cleanrooms shall be designed, constructed, and commissioned according to ISO 14644 and 14698,
 to meet cGMPs above.
-#### **8.4 User Requirements**
-##### **8.4.1 Functional Area Requirements**
+****8.4 User Requirements****
+****8.4.1 Functional Area Requirements****
 
 The following areas shall be available in the manufacturing suite:
 
@@ -5342,9 +5342,9 @@ cleanroom HVAC
 
 room routine)
 
-##### **8.4.2 Utilities and Services**
+****8.4.2 Utilities and Services****
 
-##### **8.4.3 Cleanroom and HVAC**
+****8.4.3 Cleanroom and HVAC****
 
 **8.4.3.1 Room Classification**
 
@@ -5382,7 +5382,7 @@ Cleanroom air is prefiltered in four steps: G4, F7, F9, and H12, according to EN
 within the air-handling units. The terminal filter is minimum H13.
 
 Exhaust air from the area where live virus is processed is filtered in two steps: F7 and H14 filter. Exhaust air from the basement is F7 filtered.
-##### **8.4.4 Control and Automation System**
+****8.4.4 Control and Automation System****
 
 **8.4.4.1 Process Control System**
 
@@ -5409,7 +5409,7 @@ critical refrigeration devices also have to be connected to the FMS. The whole G
 controlled by the building monitoring system (BMS). Cleanrooms in grades A and B will be equipped
 with a continuous online particle monitoring system. The operational C grade areas are also equipped
 with online particle monitoring (e.g., manifold system).
-##### **8.4.5 Health, Safety, and Environmental Requirements**
+****8.4.5 Health, Safety, and Environmental Requirements****
 
 **8.4.5.1 General**
 
@@ -5443,7 +5443,7 @@ medical waste from production and equipment or returned medicines.
 
 A risk assessment regarding noise levels shall be performed. Both internal and external noise shall be
 analyzed.
-##### **8.4.6 Maintenance and Service**
+****8.4.6 Maintenance and Service****
 
 A maintenance program for the whole suite shall be developed before start of production. The program shall include the facility and technical equipment within, the ventilation system and equipment,
 the production equipment, and all laboratory equipment. The maintenance system shall produce, in
@@ -5455,8 +5455,8 @@ system. The maintenance personnel are responsible for service of all equipment. 
 
 Spare parts for process equipment for two years of continuous production shall be stored.
 
-#### **8.5 Documentation Requirements**
-##### **8.5.1 General**
+****8.5 Documentation Requirements****
+****8.5.1 General****
 
 All documents shall be marked with a unique name and identity according to the QAP. Documentation shall be in English; user manuals and instructions shall be in English. Documents and backup
 copies of electronic files shall be archived in a fireproof archive.
@@ -5465,7 +5465,7 @@ copies of electronic files shall be archived in a fireproof archive.
 
 All GMP documentation and software shall be version handled according to internal procedures after
 the first approved version.
-##### **8.5.2 Risk Assessment**
+****8.5.2 Risk Assessment****
 
 Every system, equipment, and room shall be evaluated in a GMP risk assessment in order to classify
 the demands for the commissioning and qualification work.
@@ -5480,10 +5480,10 @@ Depending on impact criticality on the product, the systems, equipment, and room
 
 Risk assessments for evaluation of safety of personnel and economical risks shall be carried out for
 every system, piece of equipment, and room.
-##### **8.5.3 SOPs**
+****8.5.3 SOPs****
 
 Existing SOPs are used according to Company X’s internal QMS.
-#### **8.6 Validation and Testing**
+****8.6 Validation and Testing****
 
 Validation and testing are performed according to VMP and internal SOPs. Qualification philosophy
 during the construction, commissioning, and qualification (IQ/OQ) project is according to QAP.
@@ -5492,7 +5492,7 @@ during the construction, commissioning, and qualification (IQ/OQ) project is acc
 
 ### **9.0 Appendix II: Project Execution Plan Example**
 
-#### **Contents**
+****Contents****
 
 9.1 Introduction�����������������������������������122
 
@@ -5597,8 +5597,8 @@ Qualifications����������������������
 9.12 Abbreviations��������������������������������134
 9.13 References������������������������������������134
 
-#### **9.1 Introduction**
-##### **9.1.1 Purpose**
+****9.1 Introduction****
+****9.1.1 Purpose****
 
 This appendix contains an example project execution plan (PEP). This material is referenced in **Sec-**
 **tion 7.4.1,** Project Execution Plan, and should be used as an example for how this type of document
@@ -5610,7 +5610,7 @@ by a sponsor of the end user such as an engineering company or supplier.
 The purpose of this PEP is to define and describe the project execution strategy as well as how the
 project will be managed and how quality control is applied in order to ensure that the project meets
 its goals regarding cost, time, and quality.
-##### **9.1.2 Context of this Document**
+****9.1.2 Context of this Document****
 
 This document provides a road map for the work to be completed. The PEP is a “fit-for-purpose” and
 living document that defines the supervising engineering contractor’s (SEC’s) scope of services and
@@ -5618,7 +5618,7 @@ responsibilities for the project.
 
 This plan describes and defines the project scope, the execution strategy, quality control systems, and
 management plan.
-##### **9.1.3 Revision of the PEP**
+****9.1.3 Revision of the PEP****
 
 All information included in this PEP is current as of the latest issue date of each document referred
 to. If changes are made that significantly affect the execution strategy, project management, and/
@@ -5626,8 +5626,8 @@ or quality control activities as defined herein, a revision shall be made with r
 explained in the new revision. The approval of the new revisions follows the same procedure as the
 approval of the original PEP. If there is a change to an appendix or a referred document to this PEP,
 only the document will be revised.
-#### **9.2 Project Overview**
-##### **9.2.1 General**
+****9.2 Project Overview****
+****9.2.1 General****
 
 Company X wishes to design and equip a new production suite, GMPX, for manufacture of injectable products for viral particle gene therapy.
 
@@ -5635,17 +5635,17 @@ The products manufactured in the new production suite shall be based on modified
 technologies (gene therapies). The manufacturing process shall cover production of biological bulk
 and final filled products for sterile, liquid drug applications. The viral developments are based on adenovirus. The production portfolio covers in the first place two bulk and two final products, which are
 known as Product 1 and Product 2.
-##### **9.2.2 Client**
+****9.2.2 Client****
 
 The client for the GMPX project is Company X.
-##### **9.2.3 Project History**
+****9.2.3 Project History****
 
 A basic design was earlier developed for a traditional non-SUS approach.
 
 **122** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
 The building for GMPX is already constructed alongside building T4, and all basic utility installations are available there.
-##### **9.2.4 Project Scope**
+****9.2.4 Project Scope****
 
 The overall purpose of the project is:
 
@@ -5654,9 +5654,9 @@ manufacture of injectable products for viral particle gene therapy with disposab
 
        - To ffinalize OQ for the manufacturing suite within 18 months from start of basic design
 within agreed project budget
-##### **9.2.5 Project Objectives, Success Criteria, and Focus Areas**
+****9.2.5 Project Objectives, Success Criteria, and Focus Areas****
 
-##### **9.2.6 Steering Committee**
+****9.2.6 Steering Committee****
 
 The SEC and Company X will implement a common steering committee for the project. The purpose
 and responsibilities of the steering committee are to:
@@ -5674,7 +5674,7 @@ and responsibilities of the steering committee are to:
         - Supervise project progress
 
         - Approve monthly project reporting
-#### **9.3 Contract Documents**
+****9.3 Contract Documents****
 
 Basic Design:
 
@@ -5705,7 +5705,7 @@ classification
 
 - List of equipment and materials
 
-##### **9.3.1 Customer X Deliverables**
+****9.3.1 Customer X Deliverables****
 
 Customer X is responsible for providing:
 
@@ -5739,16 +5739,16 @@ Customer X is responsible for providing:
 
 **124** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-#### **9.4 Scope**
-##### **9.4.1 Objectives of the Scope**
+****9.4 Scope****
+****9.4.1 Objectives of the Scope****
 
 The GMPX project activities such as value engineering and thorough schedule control of all design, construction, commissioning and qualification (C&Q), and changes will have a high importance
 throughout the project.
-##### **9.4.2 Scope Supervision**
+****9.4.2 Scope Supervision****
 
 The scope and progress will be supervised by the steering committee. Changes in the scope will be
 handled by change orders as described in **Section 4.6.**
-##### **9.4.3 Scope of Engineering**
+****9.4.3 Scope of Engineering****
 
 All engineering required to supply and build the process building is within the scope of the SEC. The
 scope comprises design development of the technical documents prepared during basic design to a
@@ -5795,7 +5795,7 @@ The SEC will provide engineering with:
         - Approved building layout
 
        - Approved main documents such as UR, PEP, and QAP
-##### **9.4.4 Scope of Equipment and Systems**
+****9.4.4 Scope of Equipment and Systems****
 
 **9.4.4.1 General**
 
@@ -5824,15 +5824,15 @@ will be supported by the project.
 
 **126** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-##### **9.4.5 Change Management**
+****9.4.5 Change Management****
 
 Management of project change is essential to successful project execution. The project will implement a change management process that will provide for timely identification of deviations or changes in project scope.
 
 All change orders shall be recorded in a change-order log.
 
 See QAP for change control of documents and C&Q activities.
-#### **9.5 Project Execution Approach**
-##### **9.5.1 General**
+****9.5 Project Execution Approach****
+****9.5.1 General****
 
 As shown in the diagram below, many project activities will overlap. Detailed design, construction and
 installation, and C&Q will overlap. This figure is schematic and does not apply to the project time frame.
@@ -5854,7 +5854,7 @@ Completion
 **ATO —** Approval to Operate
 **CCC —** Care, Custody, and Control
 
-##### **9.5.2 Detailed Design (DD)**
+****9.5.2 Detailed Design (DD)****
 
 **9.5.2.1 General**
 
@@ -5943,7 +5943,7 @@ Redlined documents can be used as as-built documents for C&Q and handover of the
 work will be a joint effort of the SEC, vendors, and, if applicable, Company X.
 
 These documents will thereafter be reissued (CAD) as revisions as-built by the SEC.
-##### **9.5.3 Supervising Engineering Contractor’s Subcontracting and** **Procurement**
+****9.5.3 Supervising Engineering Contractor’s Subcontracting and** **Procurement****
 
 **9.5.3.1 General**
 
@@ -6003,7 +6003,7 @@ of Company X.
 All purchase orders during detailed design and orders of equipment will be signed by the SEC’s project manager and finally approved by Company X and placed in the name of Company X.
 
 This will be described in more details in the procurement strategy and the purchase plan.
-##### **9.5.4 Commissioning and Qualification**
+****9.5.4 Commissioning and Qualification****
 
 Execution of C&Q is described in the commissioning and qualification plan GMPX-C&Q-07-001 and
 in the QAP Doc. no. GMPX-QAP-07-001. The execution can be summarized as follows.
@@ -6047,19 +6047,19 @@ For systems assessed as direct impact, fulfillment of Q-requirements in relation
 operations shall be demonstrated through installation qualification and operational qualification (IQ/
 OQ). Qualification and especially prerequisites before the qualification can start shall be described in
 the protocols. IQ and OQ must be carried out according to the approved protocols.
-#### **9.6 Organization**
+****9.6 Organization****
 
 For details of the Supervising Engineering Contractor Organization (SEC), refer to the SEC organogram in (4286) S9.13 References.
-##### **9.6.1 Supervising Engineering Contractor’s Roles and Responsibilities**
+****9.6.1 Supervising Engineering Contractor’s Roles and Responsibilities****
 
 An overview of the SEC’s roles and responsibilities is presented in the following table.
 
-##### **9.6.2 Company X Organization**
+****9.6.2 Company X Organization****
 
 For details of the Company X organogram, refer to the Company X organogram in (4286) S9.13 References.
 Roles and responsibilities between the SEC and Company X are defined in **Section 2.6** Steering Committee.
-#### **9.7 Quality**
-##### **9.7.1 Project Quality Strategy**
+****9.7 Quality****
+****9.7.1 Project Quality Strategy****
 
 A validation master plan (VMP) is produced by Company X for the project. This VMP will be used to
 provide the basis for all validation and quality activities during the lifecycle of the project.
@@ -6090,14 +6090,14 @@ may be entered, if relevant.
 Time schedule and economy of the project includes a completed IQ and OQ with the SEC as the final
 step. The validation involves the active participation of the end user and Company X-QA. The scope
 of this is described in the basic design phase.
-##### **9.7.2 Quality Activity Plan (QAP)**
+****9.7.2 Quality Activity Plan (QAP)****
 
 The project’s QAP manages all quality activities and quality documentation to be prepared. The QAP
 is made in compliance with the requirements in the VMP.
-##### **9.7.3 Document Control**
+****9.7.3 Document Control****
 
 Document control is handled in accordance with the QAP.
-#### **9.8 Risk Management**
+****9.8 Risk Management****
 
 There will be a number of risk analyses performed during the project. Their main purpose is to identify risk early and create activities to reduce the risk.
 
@@ -6110,7 +6110,7 @@ The risk analyses are:
         - DD Project Risk Analysis 2
 
        - DD HSE Risk Analysis on the Execution Phase
-##### **9.8.1 Documentation**
+****9.8.1 Documentation****
 
 **• Language and templates—** Project language is UK English with the exception of documents
 used for Finnish craftsmen. The SEC templates are used when adequate.
@@ -6132,12 +6132,12 @@ the contract of the project.
 process, utility, etc.) it is necessary to determine and develop tools and standards to ensure
 continuous engineering of the project parts. The lead engineers manage these tools and standards.
 Specification tools and standards are being prepared in basic design.
-#### **9.9 Health, Safety, and Environment**
+****9.9 Health, Safety, and Environment****
 
 An initial HSE evaluation has been started. The first version of this plan will be issued and approved
 before any construction activity starts. This plan will be updated during the construction with new
 items and activities.
-#### **9.10 Commissioning and Qualification**
+****9.10 Commissioning and Qualification****
 
 When the SEC finds it beneficial, an all-day meeting will be called in order to approve documents
 and/or carry out reviews. This will be scheduled no less than one week in advance and with duration
@@ -6154,7 +6154,7 @@ Company X will participate in the test activities.
 Company X provides QA resources during the OQ test period.
 
 Company X is responsible for the calibration and maintenance after OQ.
-#### **9.11 Handover and Operation Support**
+****9.11 Handover and Operation Support****
 
 The project is handed over to the customer in three steps: 1) ready to run, 2) handover, and 3) final
 handover. Final handover is the last part of the project.
@@ -6182,7 +6182,7 @@ at final handover, and direct to Company X document control. Where the SEC has p
 
 Optimizing program and parameters is not within the scope of this project. Education and training
 are to be defined. (See C&Q plan.)
-#### **9.12 Abbreviations**
+****9.12 Abbreviations****
 
 **BD** **—** Basic Design
 
@@ -6207,7 +6207,7 @@ are to be defined. (See C&Q plan.)
 **GEP** **—** Good Engineering Practice
 
 **GMP** **—** Good Manufacturing Practice
-#### **9.13 References**
+****9.13 References****
 
 **HSE** **—** Health, Safety, and Environment
 
@@ -7068,7 +7068,7 @@ Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East Wes
 
 **142** © 2014 Parenteral Drug Association, Inc. Technical Report No. 66
 
-###### **Technical Report No. 66**
+****Technical Report No. 66****
 
 About PDA Technical Reports
 

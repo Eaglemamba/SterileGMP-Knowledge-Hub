@@ -1,7 +1,7 @@
 # Points to Consider No. 12
 
 ## Restricted Access Barrier Systems
-##### 2025
+**2025**
 
 Authors
 

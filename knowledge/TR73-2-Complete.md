@@ -1,6 +1,6 @@
 # **Technical Report No. 73-2** Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes
 
-##### **Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes**
+****Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes****
 
 **Authors**
 
@@ -71,7 +71,7 @@ Innovation Medicine
 
 # **Application of Medical** **Device Regulation Annex I** **Requirements for Staked** **Needle Syringes**
 
-#### **Technical Report No. 73-2**
+****Technical Report No. 73-2****
 
 ISBN: 978-1-945584-44-2
 
@@ -724,7 +724,7 @@ be provided by the component manufacturers. In addition, it covers the pharmaceu
 Further information on manufacturing considerations can be found in TR-73. **Table 4.7.1-1** maps
 specific information in TR-73 by component.
 
-#### **4.7.1 Components and Subassembly Manufacturing**
+****4.7.1 Components and Subassembly Manufacturing****
 
 The level of detail provided by the component manufacturer shall be appropriate to support the pharmaceutical company in their overall risk evaluation and the derived control strategy. Accordingly, the
 information provided should cover at least:
@@ -755,7 +755,7 @@ their information package.
 
 **Table 4.7.1-1** Example of Overview of Device Part Manufacturing (Components and Subassembly)
 
-#### **4.7.2 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)**
+****4.7.2 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)****
 
 **Table 4.7.2-1** contains an overview of relevant information from TR-73 on the filling, assembly, and
 packaging of the final DDC. Respective process validation summaries of all steps should be included.
@@ -764,7 +764,7 @@ packaging of the final DDC. Respective process validation summaries of all steps
 
 **Table 4.7.2-1** Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)
 
-#### **4.7.3 Storage and Transport**
+****4.7.3 Storage and Transport****
 
 All device components and packaging materials are stored in compliance with the storage conditions
 defined by the respective supplier until filling and assembly. All facilities involved in filling and assembly are qualified and perform such functions, for example, as monitoring of temperature, room pressure, and relative humidity. References to storage and transport validation studies performed, as well as
@@ -1263,7 +1263,7 @@ Whitney Alexis, Publications Manager, +1 (301) 656-5900.
 Written correspondence can be sent to: PDA, Inc. Attn: Whitney Alexis, 4350 East West Highway, Suite 150,
 Bethesda, MD 20814.
 
-##### **Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes**
+****Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes****
 
 About PDA Technical Reports
 
