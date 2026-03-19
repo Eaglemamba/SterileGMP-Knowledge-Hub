@@ -657,6 +657,10 @@ def generate_md_from_pdf(report_id: str, config: dict = None) -> Path:
     )
     content = CJK_RE.sub('', content)
 
+    # --- Convert #### and ##### headings to bold text (same weight as content) ---
+    content = re.sub(r'^#{5,}\s+(.+)$', r'**\1**', content, flags=re.M)
+    content = re.sub(r'^####\s+(.+)$', r'**\1**', content, flags=re.M)
+
     # --- Collapse blank lines ---
     content = re.sub(r'\n{3,}', '\n\n', content)
     content = content.strip()

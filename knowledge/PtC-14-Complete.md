@@ -3,7 +3,7 @@
 ## Manufacturing of ATMPs – Facility Design (Part 1)
 ### 2025
 
-##### Authors
+**Authors**
 
 Lead
 Richard Denk
@@ -72,7 +72,7 @@ Sartorius
 Hartmut F. Zimmerman
 Boehringer Ingelheim
 
-##### Table of Contents
+**Table of Contents**
 
 Introduction ...................................................................................................................................................... 6
 
@@ -180,7 +180,7 @@ Figure 5.3-2 Containment Test Method on a Fume Cupboard (ConT [®] Test) .......
 Figure 5.4-1 Shows the Pressure Difference Measurement Between the Isolator Chamber and
 Above the Supply HEPA Filter ............................................................................................. 51
 
-##### Introduction
+**Introduction**
 
 Advanced Therapy Medicinal Products (ATMPs) are unique because they are based on cells, genes, or
 tissues from animals and human beings. ATMPs are produced either in low-batch volumes, such as products
@@ -304,7 +304,7 @@ This document is organized into topics and various subtopics that address the qu
 of ATMP manufacture. Each question first presents an overall recommendation, which may be followed by
 a rationale for the recommendation and/or appropriate references for further reading.
 
-##### Abbreviations
+**Abbreviations**
 
 **ATMP** Advanced Therapy Medicinal
 Products
@@ -342,7 +342,7 @@ Conditioning
 
 **WFI** Water for Injection
 
-##### Topic 1. Risk Management
+**Topic 1. Risk Management**
 
 Q 1.1. How can a risk assessment be created for an ATMP facility?
 
@@ -531,7 +531,7 @@ Rationale
 Process and product knowledge are important factors to enable the application of science and a risk-based
 approach to determine what controls to apply to the manufacturing facility.
 
-##### Topic 2. Facilities
+**Topic 2. Facilities**
 
 Q 2.1. How do you design facility process flow to minimize extraneous contamination
 and cross-contamination and prevent errors in an ATMP facility?
@@ -941,7 +941,7 @@ patient. The evolving nature of ATMPs means that the systems designed to control
 not fully mature. Therefore, it is incumbent upon the manufacturer to provide appropriate guidance for the
 necessary controls.
 
-##### Topic 3. Utilities
+**Topic 3. Utilities**
 
 Q 3.1. Are there any specific requirements for designing utilities in an ATMP facility?
 
@@ -1126,7 +1126,7 @@ pharmaceutical product, in accordance with their intended use. If utilities such
 “clean” utilities) come in contact with the pharmaceutical product, the quality should be demonstrated to
 meet CGMP requirements through both the system design and routine monitoring.
 
-##### Topic 4. Process Equipment
+**Topic 4. Process Equipment**
 
 Q 4.1. When choosing a biological safety cabinet for the manufacture of ATMPs, what
 factors are important?
@@ -1474,7 +1474,7 @@ validated solution to inactivate any potent product remaining after the end of t
 H2O2 decontamination). Costs may or may not be a discriminating factor as the initial CapEx savings of
 BSC are often offset by the higher lifecycle costs of the OpEx.
 
-##### Topic 5. Supplementary Technical Information
+**Topic 5. Supplementary Technical Information**
 
 Q 5.1. What is important to consider in a mock-up for biosafety cabinets and isolators?
 
@@ -1777,7 +1777,7 @@ contamination and cross-contamination in adjacent areas. A pressure-zone concept
 based on the assigned function of every room, as well as the personnel and material flows, should be part of
 the overall layout of the rooms within the facility.
 
-##### Recommended Reading
+**Recommended Reading**
 
 The following materials are suggested as additional reading with relevant information and regulatory
 guidance from health authorities and references to applicable publications or PDA technical documents.
@@ -1916,7 +1916,7 @@ U.S. Pharmacopeia
 U.S. Pharmacopeial Convention. General Chapter <1231> Water for Pharmaceutical Purposes. In _USP 42–_
 _NF 37_, USP: Rockville, Md., 2016; p 8121.
 
-##### References
+**References**
 
 1. European Commission. _Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4_
 

@@ -38,7 +38,7 @@ were used as the baseline documents in the development of this guidance.
 
 # **Guidance for Good** **Distribution Practices (GDPs)** **For the Pharmaceutical** **Supply Chain**
 
-###### **Technical Report No. 52**
+****Technical Report No. 52****
 
 ISBN: 978-0-939459-33-9
 
@@ -114,7 +114,7 @@ not compromised in the distribution channels.
 
 The document summarizes both regulatory requirements and industry best practices. However
 country-specific regulations should be followed, as applicable.
-##### **1.1 Purpose and Scope**
+****1.1 Purpose and Scope****
 
 The purpose of this guidance is to provide direction for distribution practices, including handling,
 storage, transportation and distribution. This document is intended for use as guidance for the
@@ -133,7 +133,7 @@ and Import/Export Compliance.
 
 **Table 1.1** **Seven Pillars of Good Distribution Practices; this Technical Report covers the frst 4**
 
-##### **1.2 Responsibility**
+****1.2 Responsibility****
 
 This guidance applies to all parties that are involved in the handling, storage and/or transportation of
 regulated products, including, but not limited to, the manufacturer, the holder of the marketing authorization,
@@ -204,12 +204,12 @@ Good Distribution Practices (GDPs) should include written procedures describing 
 operations that may affect the quality of products and/or distribution activity. Refer to the pillars
 table, presented in **Section 1.1.**
 
-##### **3.1 Stability**
+****3.1 Stability****
 
 Data from Stability studies is used to determine the temperature conditions required for product
 storage and transportation.
 
-###### **3.1.1 Storage Temperatures**
+****3.1.1 Storage Temperatures****
 
 When specific temperature conditions are required, storage or cargo areas should be equipped
 to maintain the appropriate temperature. Temperature should be monitored with calibrated
@@ -232,7 +232,7 @@ Equipment used for monitoring should be calibrated at defined intervals.
 All records should be made at the time each operation is done and in such a way that all significant
 activities or events are traceable.
 
-###### **3.1.2 Shipping Temperatures**
+****3.1.2 Shipping Temperatures****
 
 Pharmaceutical products must be transported in a manner that ensures products will be maintained
 within an acceptable temperature range. Temperature should be monitored with calibrated recorders
@@ -270,7 +270,7 @@ Product impact should be addressed and documented for any temperature excursion 
 excursion impact during storage and distribution. Unplanned temperature excursions and planned
 system deviations should be properly documented and approved by the quality function.
 
-###### **3.1.3 Stability Testing to Support Distribution**
+****3.1.3 Stability Testing to Support Distribution****
 
 Packaging should ensure protection against mechanical impact (damage) on product during handling
 and transport. The transportation modes and destination should be considered in determining the
@@ -289,13 +289,13 @@ Refrigeration (TOR) should be defined, controlled and justified through appropri
 and in accordance with appropriate Service Level or Quality Agreements. Data must be available to
 support timeframes outside of labeled temperature and/or humidity.
 
-##### **3.2 Distribution Control Management**
+****3.2 Distribution Control Management****
 
 Distribution control management encompasses the processes and controls necessary to ensure
 product integrity and traceability are maintained from the point of receipt through product
 distribution.
 
-###### **3.2.1 Qualification and Training of Personnel**
+****3.2.1 Qualification and Training of Personnel****
 
 Procedures and conditions of employment, including background checks, should be designed and
 implemented to minimize the possibility of product diversion. SOPs should be in place for all job
@@ -305,7 +305,7 @@ in the safe handling of product spills and other emergency procedures. A trainin
 includes both initial and ongoing training should be developed for each job function. The completion
 of training should be documented and training records should be maintained for each associate.
 
-###### **3.2.2 Premises and Equipment**
+****3.2.2 Premises and Equipment****
 
 Premises and equipment should be qualified as adequate to ensure proper management and
 distribution of products. A warehouse should be:
@@ -328,7 +328,7 @@ distribution of products. A warehouse should be:
 
             - Environmentally controlled (temperature, humidity), where appropriate
 
-###### **3.2.3 Material Handling**
+****3.2.3 Material Handling****
 
 Procedures for the delivery, receipt, storage and shipment of products are collectively referred to as
 material handling
@@ -406,7 +406,7 @@ significant activities or events are traceable. Records should be understandable
 Records retention schedules or equivalent documents should be established and maintained
 according to applicable record retention regulations.
 
-###### **3.2.4 Storage and Inventory Control**
+****3.2.4 Storage and Inventory Control****
 
 Computerized systems and/or written procedures should be implemented to record and track
 product information that is critical to protect products and customers. This information includes
@@ -443,7 +443,7 @@ Computerized systems should be appropriately qualified and validated.
 In-transit storage facilities (e.g., cross-docking center, airplane, airport, distribution hub and other
 facilities which are used to move product from one vehicle to another vehicle) may be used. All intransit storage facilities should have adequate security and environmental control, and must be in
 compliance with all applicable laws and regulations prior to use.
-###### **3.2.5 Transportation**
+****3.2.5 Transportation****
 
 Products should be transported in such a way that product:
 
@@ -479,7 +479,7 @@ vehicle and should support duration of shipment.
 
 Vehicles should be inspected for cleanliness and temperature setting, if applicable, prior to loading
 and transporting product. This inspection should be documented.
-###### **3.2.6 Product Disposition and Distribution**
+****3.2.6 Product Disposition and Distribution****
 
 Product can only be distributed to authorized parties or to persons authorized to supply and/or
 receive products. Products due to expire first should be distributed first (FEFO). Adequate controls
@@ -501,7 +501,7 @@ delays, including those by the U.S. FDA, U.S. Department of Agriculture, health 
 countries, or any other governmental agency resulting from international shipments, must also be
 considered.
 
-###### **3.2.7 Product Protection**
+****3.2.7 Product Protection****
 
 Fundamental to the outcomes of a Quality System surrounding GDP is the need to ensure that
 products are handled, stored, transferred and transported in a manner that does not negatively
@@ -528,7 +528,7 @@ secure and quarantined so that they cannot be sold in error or contaminate other
 
 Sufficient security should be provided to prevent theft and product diversion.
 
-###### **3.2.8 Returns Management**
+****3.2.8 Returns Management****
 
 Any shipped product presented to a storage facility for return must be evaluated in accordance with
 return procedures to determine if the material must be destroyed or if it is eligible for restocking.
@@ -551,7 +551,7 @@ shipment.
 Returns for destruction should be processed by an authorized pharmaceutical destruction company
 
 unless the manufacturer has the means to destroy the goods.
-###### **3.2.9 Exception Management**
+****3.2.9 Exception Management****
 
 Any excursion from the defined process, as identified by the manufacturer, constitutes an exception.
 An exception management system should be put in place to track all non-conformances and the
@@ -605,7 +605,7 @@ trained and authorized by the quality function.
 A system, including documented procedures, should be in place to respond to all product actions,
 including recalls, withdrawals and corrections. The system should include a requirement to segregate
 and secure product requiring action to prevent distribution to customers.
-##### **3.3 Performance Management**
+****3.3 Performance Management****
 
 Methods and procedures should be established to review the performance of the quality system
 
@@ -615,14 +615,14 @@ on a regularly scheduled basis and to identify opportunities for continuous impr
 methods and procedures should include Performance Measurement and Reporting, Self-Inspection
 (Internal Audit), and Management Review Meetings.
 
-###### **3.3.1 Performance Measurement and Reporting**
+****3.3.1 Performance Measurement and Reporting****
 
 Performance of the components of the quality system should be measured against pre-defined goals
 to gauge performance and to identify opportunities for improvement. Reports should be generated
 and reviewed on a regularly scheduled basis to track performance, monitor trends, and identify
 areas for improvement.
 
-###### **3.3.2 Self-Inspection (Internal Audit)**
+****3.3.2 Self-Inspection (Internal Audit)****
 
 The quality assurance program should require self-inspections, which should include the quality
 systems of internal supply chain partners. These self-inspections should be conducted in order to
@@ -631,7 +631,7 @@ necessary CAPA measures and monitor CAPA effectiveness to achieve continuous imp
 This is termed a ‘closed loop supply chain,’ in which the manufacturer is aware of their supply chain
 partners and operations.
 
-###### **3.3.3 Management Review Meetings**
+****3.3.3 Management Review Meetings****
 
 Quality management system reviews should take place on a regularly scheduled basis and should
 cover:
@@ -649,13 +649,13 @@ cover:
             - Changes that may impact the quality systems.
 
             - Opportunities and recommendations for improvement
-##### **3.4 Supply Chain Partner Management**
+****3.4 Supply Chain Partner Management****
 
 The quality of supply chain partners is critical to product safety. Methods and procedures should be
 implemented to provide a consistent and repeatable process for selecting, maintaining and evaluating
 the performance of supply chain partners. These procedures should address the following:
 
-###### **3.4.1 Partner Selection**
+****3.4.1 Partner Selection****
 
 There should be a process in place to evaluate and select service providers that will be able to support
 GDP compliance. The process for selection of a service provider should include satisfactory findings
@@ -672,7 +672,7 @@ Storage and Shipping Practices Checklist). These include but are not limited to:
 
             - Security
 
-###### **3.4.2 Quality Audit**
+****3.4.2 Quality Audit****
 
 External inspection should verify that written agreements have been executed with the service
 providers and that the service providers adhere to the terms and conditions of the agreements (e.g.,
@@ -687,13 +687,13 @@ The attached audit checklist (see **4.0 Appendix** ) covers all sections of the 
 chain. All sections may not be applicable to specific services providers, however if a section is not
 applicable (N/A) justification should be provided. For example, warehousing of commodities like
 expanded polystyrene and corrugate do not need temperature profiles.
-###### **3.4.3 Quality Agreements**
+****3.4.3 Quality Agreements****
 
 It is the responsibility of the manufacturer and/or holder of the marketing authorization to ensure
 that the different aspects of this guideline are appropriately assigned and implemented to the different
 parties of the supply chain. The distribution of responsibilities should be formalized in covenants or
 “Quality Agreements” with all third parties. Such agreements should be periodically updated.
-###### **3.5 Business Review Meetings**
+****3.5 Business Review Meetings****
 
 Business review meetings should take place on a regularly scheduled basis and should cover:
 
@@ -713,7 +713,7 @@ Business review meetings should take place on a regularly scheduled basis and sh
 
 **12** © 2011 Parenteral Drug Association, Inc. Technical Report No. 52
 
-##### **4.1 Good Storage and Shipping Practices Checklist**
+****4.1 Good Storage and Shipping Practices Checklist****
 
 The following is an assessment tool that may be used in the evaluation of pharmaceutical and/or
 biotech distribution centers, wholesalers, 3rd party distributors, related vendors, service providers,
@@ -805,7 +805,7 @@ Signed: Date:
 
 **30** © 2011 Parenteral Drug Association, Inc. Technical Report No. 52
 
-##### **5.1 Selected Global Laws and Regulations**
+****5.1 Selected Global Laws and Regulations****
 
 1. Annex 5, Good Distribution Practices (GDP) for Pharmaceutical Products, World Health
 
@@ -834,7 +834,7 @@ Sec 301 (a)(b)(c).
 10. Food and Drugs. _Code of Federal Regulations,_ Part 211.
 11. Perishable Cargo Regulation. International Air Transport Association (IATA), 2009
 
-##### **5.2 Selected Publications**
+****5.2 Selected Publications****
 
 1. Seevers, Robert H. et al. The Use of Mean Kinetic Temperature (MKT) in the Handling,
 
@@ -848,7 +848,7 @@ _Products to the End User;_ Parenteral Drug Association: Bethesda, MD: 2009.
 
 4. _Technical Report No. 53: Guidance for Industry: Stability Testing to Support Distribution of New Drug_
 _Products;_ Parenteral Drug Association: Bethesda, MD, 2011.
-##### **5.3 Selected Regulatory Authority Websites**
+****5.3 Selected Regulatory Authority Websites****
 
 1. The International Conference on Harmonisation of Technical Requirements for Registration
 

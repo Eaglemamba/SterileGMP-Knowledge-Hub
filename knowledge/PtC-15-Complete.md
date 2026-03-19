@@ -3,7 +3,7 @@
 ## Mobile Manufacturing
 ### 2025
 
-##### Authors
+**Authors**
 
 Co-Leads
 Pete Makowenskyj
@@ -33,7 +33,7 @@ NIIMBL (Ex-FDA)
 Siegfried Schmitt
 Parexel
 
-##### Table of Contents
+**Table of Contents**
 
 Introduction ...................................................................................................................................................... 1
 
@@ -67,7 +67,7 @@ Appendix A: Regulatory Compliance Expectations .................................
 
 References ...................................................................................................................................................... 14
 
-##### Introduction
+**Introduction**
 
 The manufacturing of drugs has historically been fixed in the building in which it is processed and therefore,
 manufacturing was conceptualized as fixed in nature. Specifically, the conventional construction of such
@@ -130,7 +130,7 @@ another. While mobile manufacturing can be considered an enabling technology for
 manufacturing or point-of-care manufacturing, the scope of this paper excludes identifying or elaborating on
 those requirements.
 
-##### Glossary
+**Glossary**
 
 Definitions have been provided to help clarify
 the concepts discussed in this document. While
@@ -211,11 +211,11 @@ pharmaceutical product or set of products.
 **Note:** This is usually a fixed site at a pharma
 company.
 
-##### Abbreviations
+**Abbreviations**
 
 **FEI** FDA Establishment Identification **MMU** Mobile Manufacturing Unit
 
-##### Topic 1. Technology Considerations
+**Topic 1. Technology Considerations**
 
 Q 1.1. What are the available options to build a facility?
 
@@ -370,7 +370,7 @@ MMUs) could potentially be validated during product development such that data t
 could be provided in the original marketing application. Tech-transfer criteria could then be established that
 ensure process performance consistency and comparable product quality that, if met, could reduce postmarketing regulatory submissions.
 
-##### Topic 2. Regulatory Considerations
+**Topic 2. Regulatory Considerations**
 
 Q 2.1. How do current regulations impact the adoption of mobile manufacturing?
 
@@ -450,7 +450,7 @@ Healthcare products Regulatory Agency (MHRA), are creating frameworks for advanc
 products that take into account the scientific and technological advances that are leading to distributed and
 point-of-care manufacturing, both of which could take advantage of mobile manufacturing facilities _**(5)**_ .
 
-##### Topic 3. Implementation
+**Topic 3. Implementation**
 
 Q 3.1. How would one validate a mobile manufacturing unit at a new location?
 
@@ -468,7 +468,7 @@ of process validation (PV), if the MMU is intended for multiproduct use, it may 
 PV for every potential product. The choice of the model process for PV should consider its complexity and
 robustness in order to cover a range of product types.
 
-##### Appendix A: Regulatory Compliance Expectations
+**Appendix A: Regulatory Compliance Expectations**
 
 The following list provides examples of expectations regarding regulatory compliance for mobile
 manufacturing units (MMU) as per U.S. Food and Drug Administration’s 21 CFR Parts 211 and 610 _**(6)**_ _**(7)**_
@@ -509,7 +509,7 @@ or dirt and, in general, any adverse effect on the quality of products.
 manufacturing facilities. The measures to prevent cross-contamination should be commensurate
 with the risks. Quality risk management principles should be used to assess and control the risks.
 
-##### References
+**References**
 
 1. Zentralstelle der Länder für Gesundheitsschutz bei Arzneimitteln und Medizinprodukten.
 https://www.zlg.de/ (accessed 13 Jan 2025).
