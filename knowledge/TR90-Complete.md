@@ -1,4 +1,4 @@
-###### Our team of Global Technical Consultants are highly experienced in Contamination Control Strategies for cleaning, disinfection and bio-decontamination.
+**Our team of Global Technical Consultants are highly experienced in Contamination Control Strategies for cleaning, disinfection and bio-decontamination.**
 
 As part of Ecolab’s comprehensive Contamination Control Strategy
 assessment, our GTCs will assess your current controls and help
@@ -55,7 +55,7 @@ ISBN: 978-1-945584-38-1
 
 All rights reserved.
 
-#### **Table of Contents**
+****Table of Contents****
 
 **1.0 INTRODUCTION����������������������������������������������1**
 
@@ -347,7 +347,7 @@ Process������������������������
 those that Require Enhance Controls for
 Example Processes�����������������������������������61
 
-#### **1.0 Introduction**
+****1.0 Introduction****
 
 Drug manufacturers have employed contamination control measures for decades as a core element
 of good manufacturing practices. Commonly, these are a collection of practices that were developed
@@ -376,13 +376,13 @@ have these elements in various forms and levels of maturity. The many existing g
 hold times, are referenced in **Section 14.0** . This technical report does not replace or reiterate those detailed documents; rather it acts as a roadmap. Appendices are also included that provide valuable case
 studies and practical examples as well as a template for creating a CCS document (see **Section 18.0** ).
 
-###### **1.1 Purpose**
+****1.1 Purpose****
 
 PDA _Technical Report No. 90: Contamination Control Strategy_ _Development in Pharmaceutical Manu-_
 _facturing Technical Report_ provides guidance on how to establish an effective CCS for either a new or
 existing drug manufacturing facility or process.
 
-###### **1.2 Scope**
+****1.2 Scope****
 
 This document focuses on contamination control practices against microbial and other adventitious
 agents, pyrogens such as endotoxin, and foreign particulate matter foreign particulate matter in the
@@ -392,7 +392,7 @@ any drug manufacturing or compounding process.
 
 Secondary and tertiary packaging considerations, chemical contaminants including product crosscontamination, and inherent particulate matter are out of the scope of this technical report.
 
-#### **2.0 Glossary and Abbreviations**
+****2.0 Glossary and Abbreviations****
 
 **Action Limit**
 An established value that, when exceeded, indicates a process is outside of its normal operating
@@ -497,7 +497,7 @@ System that provides an enclosed, but not fully
 sealed, environment meeting defined air quality conditions (for aseptic processing grade A),
 and using a rigid-wall enclosure and integrated
 
-###### **2.1 Abbreviations**
+****2.1 Abbreviations****
 
 **API** Active pharmaceutical ingredient
 
@@ -532,7 +532,7 @@ conditioning
 
 **QRM** Quality risk management
 
-#### **3.0 Elements of a Contamination Control Strategy**
+****3.0 Elements of a Contamination Control Strategy****
 
 The CCS is a combination of interwoven and successively linked elements, which includes many elements of a pharmaceutical quality system and GMP measures. **Figure 3.0-1** illustrates this concept,
 the elements of which are described in this section.
@@ -556,7 +556,7 @@ results, investigations, change controls) to ensure the overall CCS remains holi
 weakness in any of these elements or a mismatch between elements can lead to an ineffective CCS and
 therefore, contamination.
 
-###### **3.1 Foundations of a Contamination Control Strategy**
+****3.1 Foundations of a Contamination Control Strategy****
 
 Understanding the foundational elements of scientific knowledge, quality risk management, and personnel awareness/quality culture is crucial to the development of an effective CCS.
 
@@ -688,7 +688,7 @@ Training addresses what a task is and how it is done; education addresses why it
 
 **Table 3.1.3-1** Example: Personnel Roles and Responsibilities Related to CCS
 
-#### **4.0 Process Design, Microbial Control, and Monitoring**
+****4.0 Process Design, Microbial Control, and Monitoring****
 
 Manufacturing processes should be designed, commissioned, qualified, and monitored by personnel
 with appropriate process, engineering, and microbiological knowledge. The manufacturing process
@@ -731,7 +731,7 @@ manufacturing process from multiple sources—from incoming raw materials, facil
 and **Table 15.0-7** provide further points to consider on bioburden controls for multiuse versus singleproduct facilities. In addition, **Section 4.1.1.2** provides an extensive listing of resources that address
 sterilization processes and other aspects of the diagram below.
 
-###### **4.1 Low-Bioburden Drug Substance Process Control**
+****4.1 Low-Bioburden Drug Substance Process Control****
 
 Drug substances (DS) are active ingredients with pharmacological activity for the prevention and
 treatment of diseases. DS undergo additional manufacturing steps that may include formulation, ster
@@ -791,7 +791,7 @@ of a contamination and all critical personnel well trained on the plan to ensure
 very important. Additional information on virus contamination is available in PDA _Technical Report_
 _No. 83: Virus Contamination in Biomanufacturing: Risk Mitigation, Preparedness, and Response_ .
 
-###### **4.2 Sterile Drug Product Process Control**
+****4.2 Sterile Drug Product Process Control****
 
 The manufacturing process of most parenteral drug products (DPs) includes steps before and after product
 sterilization. The complete process should be under microbial control prior to sterilization, and sterility assurance of the product should be demonstrated through the cumulation of controls after product sterilization. Microbial control of DP prior to the sterilization step is critical because bioburden may impact safety,
@@ -812,7 +812,7 @@ addressed by using a holistic approach.
 
 **12** © 2023 Parenteral Drug Association, Inc. Technical Report No. 90
 
-###### **4.3 Nonsterile Drug Product Process Control**
+****4.3 Nonsterile Drug Product Process Control****
 
 Effective CCS is also important for nonsterile finished products that are susceptible to contamination.
 Microbial contamination can lead to degradation of the product, loss of potency, and potentially unsafe levels of microorganisms and by-products being administered to the patient. Consider that many
@@ -853,7 +853,7 @@ as well as specific microorganisms that are considered objectionable for that pr
 the patient population, based on its route of administration. In-process monitoring of nonsterile product manufacture, which is generally less frequent for low-bioburden drug substance processes, should
 be conducted where specific hazards exist in the nonsterile production process.
 
-###### **4.4 In-Process Monitoring**
+****4.4 In-Process Monitoring****
 
 In-process monitoring provides information about the state of control of the process, facility, and
 product. A holistic control plan includes monitoring for microbial control of the process, facility, and
@@ -947,9 +947,9 @@ many of these products, traditional microbiological test methods may not be suit
 to patient safety; thus, proactive contamination control is of paramount importance. Risk analysis should
 include open versus closed manipulation and the handling and manufacturing of the critical starting materials (e.g., plasmids, cell banks, apheresis material) as they can contaminate the final DP _**(18)**_ .
 
-#### **5.0 Facilities and Utilities**
+****5.0 Facilities and Utilities****
 
-###### **5.1 Facility Design**
+****5.1 Facility Design****
 
 Key elements of the CCS should be decided during the design phase of a production facility to minimize the risk of contamination based on the specific process design and hazards. Facility designs provide environmental control through air pressure cascades, area classifications, cleanability, physical
 segregation, and flows based upon Good Engineering Practices (GEPs). These design features establish
@@ -981,7 +981,7 @@ Technical Report 69 also details how facility design and environmental control c
 |---|---|
 |Facility and equipment design<br>faws or issues do not require<br>additional control measures if<br>the environmental monitoring<br>results are below action levels|•	<br>Environmental monitoring is a detection control and is only a single indicator of performance<br>•	<br>Emphasis should be on robust engineering controls, monitoring critical facility parameters, establish-<br>ing alert levels, and ensuring that there is a process to monitor and remediate alert level events<br>•	<br>Known facility and equipment issues should be proactively evaluated by QRM principles to identify<br>additional controls<br>•	<br>Sub-alert level trends also warrant evaluation<br>•	<br>Focus should be on recovery rates (especially in the critical zones) rather than exceeding action levels|
 
-###### **5.2 Personnel Flow**
+****5.2 Personnel Flow****
 
 During the design phase of any facility, the movement or “flow” of personnel, material, and wastes
 should be established using QRM principles. People are the primary source of microorganisms in
@@ -995,7 +995,7 @@ and design controls are often needed to prevent people with different levels of 
 Gowning and behavior are key controls to limit contamination from personnel; they are discussed in
 **Section 8.0** .
 
-###### **5.3 Material and Waste Controls**
+****5.3 Material and Waste Controls****
 
 Flow paths of material and waste are important to control because they can carry contaminants into and
 around the facility, and the movement of waste out of the facility may cause contamination as it exits. Facility
@@ -1022,13 +1022,13 @@ An equipment flow should be clearly defined for the facility, including a map sh
 and from storage to the area of use, with protection from the areas of greatest risk where contamination
 can occur (e.g., unidirectional material air locks). The surfaces of portable and nondedicated equipment should be maintained, cleaned, and disinfected and staged appropriately.
 
-###### **5.4 Cleaning and Disinfection for Facilities**
+****5.4 Cleaning and Disinfection for Facilities****
 
 The cleaning and disinfection program is essential for an effective CCS. Refer to PDA _Technical Report_
 _No. 70: Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities_ for
 further information and details on developing an effective program.
 
-###### **5.5 Utility Design, Control, and Validation**
+****5.5 Utility Design, Control, and Validation****
 
 Critical utility systems, including water, steam, HVAC, and gas systems, are important elements of the CCS
 because they come in direct contact with the product stream. This may also apply to noncritical “support”
@@ -1039,7 +1039,7 @@ of products. **Table 5.1.4-1** highlights some characteristics of the holistic a
 
 **Table 5.1.4-1** Holistic Approach to Utility Considerations
 
-###### **5.6 Water and Steam**
+****5.6 Water and Steam****
 
 Several detailed guidelines exist for contamination control of water systems because water is one of the
 main raw materials used in drug manufacturing. Valuable information is available in PDA Technical
@@ -1066,7 +1066,7 @@ detect water system problems in real time, potentially avoiding the use of compr
 production. Similar on-line technologies for real-time bioburden and endotoxins are currently being
 investigated; they offer a huge advantage over lengthy lab-based assays in that atypical results are identified immediately and can be corrected, thus addressing contamination issue in a timelier manner.
 
-###### **5.7 Heating, Ventilation, and Air Conditioning**
+****5.7 Heating, Ventilation, and Air Conditioning****
 
 The heating, ventilation, and air conditioning (HVAC) system is a critical element of the contamination control strategy as it is the primary system that attains the appropriate environmental quality. In
 addition, isolators or other barrier technology should be used to protect sterile products.
@@ -1086,7 +1086,7 @@ each area, should be considered. For example, an area with heavy personnel traff
 air changes than a lightly used area, and an area that is routinely exposed to steaming operations may
 require active temperature and humidity control and a robust exhaust system.
 
-###### **5.8 Gases**
+****5.8 Gases****
 
 Compressed gases are often introduced into the manufacturing process stream and into production
 equipment after point-of-use filtration. Noncritical support gases that are not product-contacting may
@@ -1106,7 +1106,7 @@ should be fed gas that meets Grade A air-supply quality.
 More information about gases is provided in _ISO 8573-1: 2010_ _Compressed Air — Part 1: Contami-_
 _nants and Purity Classes_, ISPE’s _Good Practice Guide: Process Gases_, and the major pharmacopeias _._ Information about gas filtration can be found in PDA _Technical Report No. 40:_ _Sterilizing Filtration of Gases_ .
 
-#### **6.0 Raw Materials**
+****6.0 Raw Materials****
 
 Raw materials can introduce contaminants to the process stream and final drug products, so ensuring
 that raw materials are of appropriate quality is crucial to the CCS.
@@ -1123,7 +1123,7 @@ support the CCS, such as testing and processing. Development of a strong collabo
 with the raw material supplier can ensure transparency, knowledge-sharing, and risk mitigation on an
 ongoing basis for contamination control (see **Section 6.7** ) _._
 
-###### **6.1 Specifications**
+****6.1 Specifications****
 
 Raw material specifications are often developed by the material manufacturer and relate to the amount
 of control that is understood by the manufacturer, from the material’s origin through its processing. The
@@ -1147,7 +1147,7 @@ Animal-sourced materials have a higher risk of introducing adventitious agents a
 unless necessary, for the pharmaceutical manufacturing process. If used, animal-sourced excipients
 should be certified by the supplier to be free of contaminants relevant to the excipient origin, for example, bovine spongiform encephalopathy (BSE) _**(7)**_ .
 
-###### **6.2 Biological Contamination Risk**
+****6.2 Biological Contamination Risk****
 
 A formal risk assessment is needed to establish the appropriate control measures for raw materials,
 considering the material properties, origin, supplier history, intended process use, handling, storage,
@@ -1166,7 +1166,7 @@ prions as compared to chemical or physical origin (synthetic or semisynthetic pr
 Choosing raw materials that are inherently not growth-promoting for microorganisms reduces the
 contamination risk and should result in less material testing.
 
-###### **6.3 Sources of Extraneous Bioburden**
+****6.3 Sources of Extraneous Bioburden****
 
 Contamination control is most effective when preventive measures are in place; this principle applies
 across the CCS elements and especially to raw materials. Harvesting, handling, processing, and storage
@@ -1184,14 +1184,14 @@ demonstrated to not lead to irreversible degradation of the material’s quality
 
           - When controls are put in place by the supplier, receiving higher quality raw material more consistently is possible prior to use in pharmaceutical products.
 
-###### **6.4 Other Contaminants**
+****6.4 Other Contaminants****
 
 Material inspections should be performed by the supplier and, upon receipt, by the drug manufacturer
 to identify such nonmicrobiological contaminants as insects, pest residue, machinery residue, and
 other foreign particulate contaminants. Inspection of the finished product should also be performed
 to identify particulate contaminants after the product and packaging components are combined.
 
-###### **6.5 Sampling of Raw Materials and Excipients for Testing**
+****6.5 Sampling of Raw Materials and Excipients for Testing****
 
 Key aspects to consider when sampling raw materials for microbiological testing are technique, location, tools, method, and storage. Microbiological contamination, if present, is commonly found to
 be heterogeneously distributed in materials as well as in the environment. Considering this, the frequency, quantity, and location to sample should be chosen to obtain the most representative samples.
@@ -1208,7 +1208,7 @@ procedure of shedding any additional wrappings (double-/triple-bags or container
 should also be an appropriate procedure for disposal of used wrappings and containers for movement
 out of cleanroom areas to prevent cross-contamination by residual material.
 
-###### **6.6 Importance of Supplier Quality Systems**
+****6.6 Importance of Supplier Quality Systems****
 
 The significance of a supplier’s quality system cannot be overstated. Raw materials can be key sources
 of contamination and are primarily controlled through the supplier’s quality system.
@@ -1219,7 +1219,7 @@ critical raw materials, special attention should be paid to the supplier’s pro
 hazard analysis of critical control points (HACCP) approach), representative sampling and appropriate testing (including sample size, location, and frequency), trends of all specification test results, and
 good packaging and distribution practices.
 
-###### **6.7 Starting Materials Unique to Biopharmaceutical Manufacturing**
+****6.7 Starting Materials Unique to Biopharmaceutical Manufacturing****
 
 The use and control of biological starting materials (i.e., cell banks or virus banks) are unique to
 biopharmaceutical and vaccine manufacturing. The contamination of biological starting material can
@@ -1257,7 +1257,7 @@ packaging is used, additional protective-barrier packaging should be considered 
 _Technical Report No. 66: Application of Single-Use Systems in Pharmaceutical Manufacturing_ can provide
 more information.
 
-###### **6.8 Starting Materials for Advanced Therapy Medicinal Product Manufacturing**
+****6.8 Starting Materials for Advanced Therapy Medicinal Product Manufacturing****
 
 Strong contamination control, based on quality risk assessment, is needed for the biological starting
 materials used in advanced therapy medicinal products (ATMP), also known as cell and gene therapy
@@ -1278,7 +1278,7 @@ Some of the starting materials may not be GMP or compendial-grade, so the risk a
 consider the hazards and controls related to material origin, supply chain, manufacturing controls, and
 analytical testing.
 
-#### **7.0 Environmental Control, Validation, and Monitoring**
+****7.0 Environmental Control, Validation, and Monitoring****
 
 Environmental control is a fundamental part of the CCS because contaminants from the environment
 can enter the utilities, raw materials, equipment, and the process stream from the air and through surface
@@ -1305,7 +1305,7 @@ controls. PDA _Technical Report No. 13 (Revised 2022):_ _Fundamentals of an Envi
 _Program_ also provides extensive guidance on establishing an effective EM program for facilities, critical
 utilities, and personnel.
 
-###### **7.1 Environmental Performance Qualification**
+****7.1 Environmental Performance Qualification****
 
 Environmental monitoring performance qualification (EMPQ) is performed to provide documented
 evidence that the facility design and environmental controls can act together to consistently achieve
@@ -1385,7 +1385,7 @@ of a higher number of particles into the cleanroom than an operator’s garments
 contaminate the environment. Temperature and humidity levels also have an impact on microbial
 proliferation. Both parameters should be monitored against their set limits.
 
-###### **7.2 Environment and Utility Disruption and Recovery Plan**
+****7.2 Environment and Utility Disruption and Recovery Plan****
 
 When a disruption occurs in a controlled, classified environment or to a critical utility, the risk of
 contamination is inherently higher than during daily operations. For this reason, a containment
@@ -1403,7 +1403,7 @@ The level of containment and recovery should be commensurate with the risk. It i
 of risk and outline the appropriate containment strategy and response plan for each tier. An example
 is presented in **Section 17.0–Appendix III** .
 
-#### **8.0 Personnel Training and Qualification**
+****8.0 Personnel Training and Qualification****
 
 Before individuals can enter manufacturing areas, they should have received appropriate training in a
 standard curriculum for manufacturing personnel. The curriculum should be designed to the role the
@@ -1436,7 +1436,7 @@ have additional aseptic operator training and meet qualification requirements, i
 |---|---|
 |Contamination cannot occur if SOP<br>instructions and batch records are precisely<br>followed by personnel|Contamination can be prevented by understanding and reducing the specifc hazards<br>throughout the process, through a combination of strong CCS practices, quality culture,<br>and continuous improvement|
 
-###### **8.1 Basic Microbiology**
+****8.1 Basic Microbiology****
 
 Microbiology is the science and study of microorganisms. Microorganisms can potentially impact
 pharmaceutical facilities, manufacturing processes, and finished drug products. An education program
@@ -1456,14 +1456,14 @@ and BSE statements for all materials that pose a potential risk of contamination
 When employees understand the sources and potential consequences of contamination from microorganisms, they are more capable to prevent contaminations and build practices that support a proactive
 quality culture related to contamination control.
 
-###### **8.2 Personal Hygiene**
+****8.2 Personal Hygiene****
 
 The training program should explain how people and their actions are recognized as one of the greatest
 sources of microbiological contamination within the pharmaceutical industry. Therefore, the program
 should stress the requirements for maintaining a high standard of personal hygiene and how to effectively perform handwashing. The topic of hygiene should list health conditions that would restrict
 personnel from operating in a cleanroom.
 
-###### **8.3 Gowning**
+****8.3 Gowning****
 
 Appropriate garments and the process of gowning provides a barrier between personnel and the cleanroom and, therefore, it should be covered in detail within a training program. The program should
 detail observing wear and tear, use of non-shedding materials, number of uses, frequency of changes,
@@ -1493,7 +1493,7 @@ upon appropriate corrective actions being taken and successful completion of qua
 **8.3.1** ). Additionally, requalification of gowning should be performed routinely on an annual basis or return
 from a long leave / extended absence for personnel to demonstrate their continued capability in gowning.
 
-###### **8.4 Cleanroom Behavior**
+****8.4 Cleanroom Behavior****
 
 To successfully prevent contamination in manufacturing areas, it is critical for operators to always observe appropriate cleanroom behaviors, including, but not limited to, the list below. It should be noted
 that these behaviors apply even when using barrier technologies:
@@ -1604,13 +1604,13 @@ adapt to personnel, facility, and/or process changes. Modifications may include 
 expectations list of behaviors (see **Step #3** ), communication of results, data trending, or effectiveness
 of corrective actions.
 
-#### **9.0 Equipment Design, Validation, and Ongoing Control**
+****9.0 Equipment Design, Validation, and Ongoing Control****
 
 For the CCS, equipment design, validation, and ongoing control considerations should all be developed with the goal of reducing the risk of contamination ( **Section 15.0**, **Table 1, Table 3,** and **Table**
 **4** ). To be effective, these elements should be built in a holistic manner, that is, all the elements should
 work together as interwoven and successively linked events with the common goal of preventing contamination. **Table 9.0-1** outlines a holistic approach to equipment considerations.
 
-###### **9.1 Equipment Design**
+****9.1 Equipment Design****
 
 Process contamination risks that are not controlled by equipment design may result in additional risks
 that need to be mitigated by other controls, such as creation of procedures, use of sterile tools, segregation, or shorter hold times. Not putting these other controls in place could lead to higher operational
@@ -1672,7 +1672,7 @@ equipment computers or keyboards)
 
 - Ways to measure alert/action alarm conditions for all critical operating parameters
 
-###### **9.2 Equipment Cleaning Validation**
+****9.2 Equipment Cleaning Validation****
 
 Cleaning validation is essential, but it is also limited in its value to predict microbial control over the
 lifespan of equipment due to the timing and amount of validation testing and the limitations of traditional microbiological testing. Historically, cleaning validation has primarily focused on the removal of
@@ -1689,7 +1689,7 @@ a low-nutrient environment in as little as three days. PDA Technical Report 69 p
 guideline on biofilm prevention, including scenarios of contamination from equipment. Practical considerations for equipment cleaning are presented in **Section 15.0**, **Table 8.** For further information on
 cleaning validation, refer to PDA Technical Report 29 and PDA Technical Report 49.
 
-###### **9.3 Equipment Ongoing Control**
+****9.3 Equipment Ongoing Control****
 
 While equipment can be well designed and validated, routine and ongoing control of equipment
 during use is also an important consideration in the CCS strategy. Equipment that is not controlled
@@ -1734,7 +1734,7 @@ recovery time set for airflows?
           - Is there a transfer plan in place to ensure equipment storage does not result in the introduction
 of contamination when returning it to the manufacturing area?
 
-###### **9.4 Special Equipment Considerations**
+****9.4 Special Equipment Considerations****
 
 **Section 15.0, Table 1** provides a concise overview of the items discussed in **Section 9.4** .
 
@@ -1775,7 +1775,7 @@ the product pathway should be evaluated for improvements that may reduce or elim
 may involve the use of SUS or rapid transfer ports, sterile-to-sterile connections, or equipment that is
 designed for closed-system dispensing and sampling.
 
-###### **9.5 Maintenance**
+****9.5 Maintenance****
 
 Regular equipment maintenance is the key to preventing failures of the cleanroom environmental
 control systems (HVAC) and production equipment and ensuring the cleanrooms and equipment
@@ -1827,7 +1827,7 @@ that might lead to contamination. Continuous assessments of change control, work
 process improvements should be conducted to ensure that their individual or cumulative effects do
 not impact the CCS.
 
-#### **10.0 Product Containers and Closures**
+****10.0 Product Containers and Closures****
 
 Container closure systems are an essential means of controlling microbial and foreign-particulate contamination of excipients, APIs, DS, process intermediates, and finished DPs _**(19)**_ . In the case of sterile
 products, a failure of container closure systems integrity may impact patient safety due to the potential
@@ -1863,7 +1863,7 @@ products. Considering all these details within a CC system and a CCI program is 
 **Figure 10.2-1** Fishbone Diagram Conveying a Comprehensive View of the Factors that have an Impact on Assuring Adequate CCI (Reprinted with
 permission, ©2018 Degrazio _**(22)**_ )
 
-###### **10.1 Primary Container Closures**
+****10.1 Primary Container Closures****
 
 Components attached to the CC system and those frequently used to seal it, ensuring a continuous
 physical barrier to microorganisms, are frequently polymeric (e.g., vial stoppers, administration ports
@@ -1871,7 +1871,7 @@ on IV bags); however, other materials of construction (e.g., metal syringe needl
 are also used. The potential for microbial and particulate contamination of CC materials should be
 understood and controlled.
 
-###### **10.2 End-to-End Container Closure and Container-Closure Integrity**
+****10.2 End-to-End Container Closure and Container-Closure Integrity****
 
 Comprehensive, holistic, and end-to-end control of the CC system and CCI is essential in sterile
 products because of the critical role they play in the physical prevention of microbial or particulate
@@ -1924,13 +1924,13 @@ During the fill-and-finish process, such continuous monitoring as in-line stoppe
 history, the extent of finished product testing may be significantly reduced _**(25)**_ . Any reduction in testing should be justified on these design controls and objective assessments of risk. However, CC system
 fused on the filling line require 100% integrity testing _**(26)**_ .
 
-#### **11.0 Quality Systems**
+****11.0 Quality Systems****
 
 This section addresses how quality systems provide the framework that drives proper function of all
 aspects of the CCS, including trending and metrics, investigations, corrective and preventive actions
 (CAPA), change control, QRM, quality agreements, and governance. ICH Q10 provides further details and implementation strategies.
 
-###### **11.1 Trending and Metrics**
+****11.1 Trending and Metrics****
 
 Metrics, including key performance indicators (KPIs), permit firms to respond to signals from the
 CCS. Metrics should effectively assess the holistic performance of the CCS and include both predictive
@@ -1952,7 +1952,7 @@ the holistic performance of CCS, for example:
 flora recovered in lower classification cleanroom) and attribute data (e.g., presence or absence of
 colonies recovered in Grade-A location monitoring)
 
-###### **11.2 Investigation**
+****11.2 Investigation****
 
 Investigations related to CCS may arise from multiple sources for e.g. product complaints, product or
 process testing, process validation, cleaning validation, technical studies, environmental or utility monitoring excursions, data trending, or other deviations. Investigation is one feedback loop of the CCS
@@ -1973,7 +1973,7 @@ during the investigational process. PDA _Technical Report No. 88: Microbial Data
 _tions in the Pharmaceutical Industry_ describes a detailed process for conducting microbial deviation
 investigations and the parameters surrounding them.
 
-###### **11.3 Corrective And Preventive Actions**
+****11.3 Corrective And Preventive Actions****
 
 CAPAs are one of the feedback loops that enable ongoing improvement and refinement of the CCS
 based on the information gained during investigations and routine monitoring. **Figure 3.0-1** provides
@@ -1986,7 +1986,7 @@ contamination may also lead to a reduction in testing and oversight, for example
 step. Incorporating any new knowledge and learning derived from the CAPA back into the CCS is an
 important step, one that can be taken during the periodic lifecycle review described in **Section 12.0** .
 
-###### **11.4 Change Control**
+****11.4 Change Control****
 
 There is an inherent risk of contamination when changes are made to any part of the CCS. Any change
 to product, process, or facility that may impact the level of risk related to CCS contamination controls
@@ -1994,7 +1994,7 @@ warrants an ad-hoc risk review. When a change is made to product, process, or fa
 the contamination should be evaluated by SMEs on the system being changed, contamination control,
 and quality.
 
-###### **11.5 Quality Risk Management**
+****11.5 Quality Risk Management****
 
 When initially developing a CCS, the organization should review the existing risk assessments that
 relate to all contamination control elements to understand what risks have been identified, how those
@@ -2029,7 +2029,7 @@ change control process to assess whether the change will introduce new risks.
 
 Other risk assessment tools (e.g., the Preliminary Hazard Analysis outlined in ICH Q9) can be employed as appropriate _**(27)**_ .
 
-###### **11.6 Quality Agreements and Vendor Management**
+****11.6 Quality Agreements and Vendor Management****
 
 To ensure that a firm’s contamination risks and controls from vendor-supplied materials and services
 are actively managed, quality agreements should be in place between the firm and the vendor. Quality
@@ -2042,7 +2042,7 @@ criticality of the supplied materials or service. Vendor audits represent the me
 the contamination control architecture. Routine vendor audits should include those elements of their
 CCS that are fundamentally important to the material or service supplied.
 
-###### **11.7 Quality Controls**
+****11.7 Quality Controls****
 
 All quality control laboratories that generate data to measure or monitor contamination control elements should be governed by GMPs. The potential for erroneous results should be minimized and thoroughly investigated as part of any contamination deviation (see the Governance and Oversight section
 of PDA _Technical Report No. 88: Microbial Data Deviation Investigations in the Pharmaceutical Industry_ ).
@@ -2051,7 +2051,7 @@ of PDA _Technical Report No. 88: Microbial Data Deviation Investigations in the 
 
 ## **_Complete Contamination_**
 
-#### **12.0 CCS Governance and Effectiveness Review**
+****12.0 CCS Governance and Effectiveness Review****
 
 The CCS should include a governance structure to oversee the effectiveness of the contamination controls and to escalate control issues. The person(s) or body governing the CCS should have:
 
@@ -2074,7 +2074,7 @@ personnel, and facility/utilities, including, but not limited to, evaluating qua
 events, change control, and validation activities. A practical way to achieve this and reduce the administrative burden is to formally monitor these elements throughout the year in regular meetings of the
 multi-departmental team that will be involved in the periodic review.
 
-#### **13.0 References**
+****13.0 References****
 
 1. U.S. Pharmacopeial Convention. General
 
@@ -2245,13 +2245,13 @@ _Sci Technol_ **2011,** _May/Jun 65_ (3), 217-26.
 container closure on drug safety. _American_
 _Pharmaceutical Review_ **2020,** _23_ (1), 12-16.
 
-#### **14.0 Relevant Guidance Documents**
+****14.0 Relevant Guidance Documents****
 
 The following regulatory guidance and pharmaceutical industry-created documents are referred to in
 the text and are readily available resources to aid in activities related to developing and maintaining a
 contamination control strategy.
 
-###### **14.1 Associated PDA Technical Publications**
+****14.1 Associated PDA Technical Publications****
 
           - Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes: Cycle
 Design, Development, Qualification and Ongoing Control
@@ -2313,7 +2313,7 @@ Manufacturing Facilities
           - Points to Consider for Aging Facilities
 
           - Points to Consider for Microbial Control in ATMP Manufacturing
-###### **14.2 Relevant Global Guidances**
+****14.2 Relevant Global Guidances****
 
 **14.2.1 International**
 
@@ -2415,7 +2415,7 @@ Use, Annex 1: Manufacture of Sterile Medicinal Products (2022 rev.)
 
           - ANSI/ASQ Z1.4–2003 (R2018): Sampling Procedures and Tables for Inspection by Attributes
 
-#### **15.0 Appendix 1: Practical Considerations of** **Contamination Control Strategy Elements**
+****15.0 Appendix 1: Practical Considerations of** **Contamination Control Strategy Elements****
 
 **Tables 15.0-1–15.0-10** provide practical considerations for many elements of contamination control
 system (CCS) with an explanation of the relevant benefit of preventing contamination.
@@ -2528,7 +2528,7 @@ system (CCS) with an explanation of the relevant benefit of preventing contamina
 |Beneft to Preventing Contamination|Beneft to Preventing Contamination|
 |•	 Testing controls allow an understanding of the materials introduced and the environment in which the process is occurring.<br>•	 Timely trending provides valuable information for decisions on EM programs and contamination risks.<br>•	 Caveat: Laboratories should not be relied upon to detect contamination as a control of the process. Process and engineering controls<br>should be put in place to control bioburden; laboratory testing only verifes the continued performance of those controls.|•	 Testing controls allow an understanding of the materials introduced and the environment in which the process is occurring.<br>•	 Timely trending provides valuable information for decisions on EM programs and contamination risks.<br>•	 Caveat: Laboratories should not be relied upon to detect contamination as a control of the process. Process and engineering controls<br>should be put in place to control bioburden; laboratory testing only verifes the continued performance of those controls.|
 
-#### **16.0 Appendix 2: Examples for Assessing Impact of** **Microbial Excursions**
+****16.0 Appendix 2: Examples for Assessing Impact of** **Microbial Excursions****
 
 Limiting the ingress and proliferation of microorganisms in the manufacturing process is the most
 effective approach to preventing microbial failures. This can be effectively achieved through a holistic
@@ -2556,7 +2556,7 @@ Assessing the process removal capability of potential by-products can be achieve
 characteristics of microbial by-products against the downstream process-removal steps. This includes
 molecular size of by-products against size-exclusion steps, heat tolerance of by-products against process-heating steps, and isoelectric point of by-products against validated-chromatography steps.
 
-###### **16.1 Example 1: Microbial Impact Assessment**
+****16.1 Example 1: Microbial Impact Assessment****
 
 This example presents a methodology for impact assessment of in-process action level bioburden events,
 described first in a workflow diagram ( **Figure 16.1-1** ), then using a detailed example ( **Table 16.1-1** ).
@@ -2675,7 +2675,7 @@ absence of endotoxin, and an accelerated stability results demonstrated no damag
 |☐ Acceptable with Action|•	 No patient impact<br>•	 No product quality impact|Action required to prevent recurrence|
 |☐ Unacceptable|•	 Potential impact on the patient<br>•	 Unacceptable potential for impact on product quality|Action required to reject product lot and prevent recurrence<br>Refer to Deviation for product disposition|
 
-###### **16.2 Microbial Impact Assessment Supporting Documents**
+****16.2 Microbial Impact Assessment Supporting Documents****
 
 Example 1 citations are embedded in the tables above. The following documents informed the creation
 of the tool methodology in Example 1 above.
@@ -2709,7 +2709,7 @@ Malizio, C, et al. Purification of Clostridium botulinum Type A Neurotoxin. _Met
 
 Haggblom, M, et.al. Quantitative Analysis of Cereulide, the Emetic Toxin of Bacillus cereus, produced under Various Conditions. _J Applied and Environmental Microbiology_ **2002**, _68_ (5), 2479-2483.
 
-###### **16.3 Example 2: Microbial Impact Assessment**
+****16.3 Example 2: Microbial Impact Assessment****
 
 Action level _Sphingomonas paucimobilus_ was recovered from a UF/DF equipment-rinse sample directly
 before the UF/DF operation, which includes 0.2-µm filtration (Result: 20 CFU/100 mL, Process limit
@@ -2733,14 +2733,14 @@ steps, and the product showed acceptable results in all subsequent testing.
 |Endotoxin<br>(if applicable)|Low|Low|Multiple purifcation<br>steps downstream (e.g.,<br>TFF, column extraction)<br>have removal capacity|In-process<br>endotoxin assays<br>downstream are<br>acceptable|Low|
 |Other metabolites, as<br>applicable (myco-<br>toxins, exotoxins,<br>extracellular enzymes,<br>e.g., proteases)|Low|Low|Levels and conditions<br>(chemical treatment, low<br>pH) do not result in produc-<br>tion of other metabolites<br>[include references]|Final product<br>protein patterns<br>are typical, no<br>changes|Low|
 
-#### **17.0 Appendix 3: Case Studies for Contamination Control**
+****17.0 Appendix 3: Case Studies for Contamination Control****
 
 The following case studies provide real examples of contamination events that indicate weaknesses in
 contamination control strategies (CCS), particularly around maintenance controls, and the resulting
 root cause investigations (Cases 1–3). An example program to protect manufacturing processes during
 maintenance events, or “disruptions,” is also presented (Case 4).
 
-###### **17.1 Case Study 1: Contamination Related to Equipment Maintenance**
+****17.1 Case Study 1: Contamination Related to Equipment Maintenance****
 
 _Reference: Case Studies of Microbial Contamination in Biologic Product Manufacturing by Kalavati Suvar-_
 _na, PhD, Patricia Hughes, PhD, Richard L. Friedman; American Pharmaceutical Review, January 1, 2011_
@@ -2765,7 +2765,7 @@ demonstrating that the sterility of the fermenter is not compromised. Recent mic
 events at several manufacturing facilities point to breaches in the sterile boundary caused by damaged
 vent filters, O-rings, diaphragms, and elastomers, and by improperly sloped condensate lines.
 
-###### **17.2 Case Study 2: Contamination Related to Blow-Fill-Seal Equipment** **Design and Maintenance**
+****17.2 Case Study 2: Contamination Related to Blow-Fill-Seal Equipment** **Design and Maintenance****
 
 _Reference: Commentary Aseptic Processing Contamination Case Studies and the Pharmaceutical Quality System by_
 _Richard L. Friedman; PDA Journal of Pharmaceutical Science and Technology, Vol. 59, No. 2, March–April 2005_
@@ -2788,7 +2788,7 @@ contaminate the product. The exact date the problem occurred was unknown, making
 and preventive action plan more difficult. Numerous lots were rejected. The firm concluded that frequent visual inspections of BFS molds for leaks had not provided sufficient preventive maintenance, and
 it implemented corrective measures, including regular testing of molding equipment pressure integrity.
 
-###### **17.3 Case Study 3: Contamination Related to Facility Construction**
+****17.3 Case Study 3: Contamination Related to Facility Construction****
 
 _Reference: Commentary Aseptic Processing Contamination Case Studies and the Pharmaceutical Quality System by_
 _Richard L. Friedman, PDA Journal of Pharmaceutical Science and Technology, Vol. 59, No. 2, March–April 2005_
@@ -2820,7 +2820,7 @@ special precautions and increase monitoring to detect any drift in environmental
 **Outcome:** Multiple lots were found to lack the assurance of sterility, and those already distributed
 were recalled. The firm temporarily suspended operations. The firm ultimately restored adequate conditions and resumed aseptic processing following successful media fill-requalification.
 
-###### **17.4 Case Study 4: Disruption Recovery Program**
+****17.4 Case Study 4: Disruption Recovery Program****
 
 _Reference: The PDA TR-90 authoring team developed the following recovery program example based on_
 _their professional experiences._
@@ -2892,7 +2892,7 @@ but is provided as a guidance for consideration.
 
 **60** © 2023 Parenteral Drug Association, Inc. Technical Report No. 90
 
-#### **18.0 Appendix 4: Illustration of CCS Variability based on Process**
+****18.0 Appendix 4: Illustration of CCS Variability based on Process****
 
 An effective CCS is tailored to the specific risks of a process, illustrated by the following three DS
 examples ( **Table 18.0-1** ). DS is used to illustrate this point because the processes vary widely across
@@ -2909,7 +2909,7 @@ All CCS elements apply to each of the example processes, and the blue-highlighte
 
 **Figure 18.0-1** Illustration of CCS Elements Highlighting those that Require Enhance Controls for Example Processes
 
-#### **19.0 Appendix 5: Template Example for Contamination** **Control Strategy Document**
+****19.0 Appendix 5: Template Example for Contamination** **Control Strategy Document****
 
 **Instructions for Template:**
 **Text in gray is instructions for using this template.** Delete from your final document.

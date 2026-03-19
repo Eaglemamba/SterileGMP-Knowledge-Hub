@@ -1286,7 +1286,7 @@ System
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 7
 
-#### Part 1: Technology Selection and Design
+**Part 1: Technology Selection and Design**
 
 8 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
@@ -2946,7 +2946,7 @@ Figure 3.0-3 Inside Closing Needle Schematic and Cutaway
 
 68 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-#### Part 2: Technical Engineering Considerations
+**Part 2: Technical Engineering Considerations**
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 69
 
@@ -5096,7 +5096,7 @@ separate study from the filling-line CCI validation.
 
 134 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-#### Part 3: Operational Considerations Including Interventions, Component Handling, Filtration, Fluid Pathway, and Discards
+**Part 3: Operational Considerations Including Interventions, Component Handling, Filtration, Fluid Pathway, and Discards**
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 135
 
@@ -7441,7 +7441,7 @@ connections should be sought in sensitive zones of the cleanroom to reduce this 
 
 198 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-#### Part 4: Powder Filling Technology Selection and Design
+**Part 4: Powder Filling Technology Selection and Design**
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 199
 
