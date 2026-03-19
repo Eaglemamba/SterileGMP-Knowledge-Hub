@@ -1,6 +1,5 @@
 # PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems
 
-Points to Consider No. 12
 vii
 Figure 5.3-1 Plate Slider ............................................................................................................................... 64
 Figure 5.4-1 Settle Plate Stand ................................................................................................................... 66
@@ -20,8 +19,6 @@ Figure 9.7-1 Approach 1: RABS Door Closed ......................................
 Figure 9.7-2 Example of Approach 1 ....................................................................................................... 102
 Figure 9.7-3 Approach 2: RABS Door Open .......................................................................................... 103
 Figure 9.7-4 Approach 3: RABS Door Closed ........................................................................................ 104
-Points to Consider No. 12
-1
 Introduction
 This document represents the views of the Parenteral Drug Association (PDA). The document is designed to
 communicate PDA’s thoughts and considerations pertaining to the design, operation, and use of Restricted
@@ -57,8 +54,6 @@ interventions.
 1 The Pharmaceutical Inspection Co-operation Scheme (PIC/S) Good Manufacturing Practice (GMP) Annex 1 is
 identical to the European Union (EU) Annex 1 and hereafter EU Annex 1 is also understood to mean EU PIC/S
 Annex 1.
-Points to Consider No. 12
-2
 As such, this PtC is organized by Topics, followed by relevant points for reader consideration. Each point
 begins with a problem statement in the form of a question, representing issues or points needing clarification
 on that specific topic. Recommendations from the authors, who are subject matter experts, are presented in
@@ -74,8 +69,6 @@ equally applicable to RABS for other applications, including products subjected 
 low bioburden processes. In addressing these considerations, the document communicates best practices
 across the lifecycle of RABS systems including their design and application, qualification, and operation,
 and extending to barrier system interfaces for both existing and new systems.
-Points to Consider No. 12
-3
 Glossary
 Definitions have been provided to help clarify
 the concepts discussed in this document. While
@@ -138,8 +131,6 @@ chosen and validated to achieve a level of
 cleanliness appropriate to the intended use of the
 item decontaminated (1). See also Bio-
 decontamination.
-Points to Consider No. 12
-4
 Disinfection
 The process by which the reduction of the
 number of microorganisms is achieved by the
@@ -221,8 +212,6 @@ intervention when critical surfaces are
 exposed within the Grade A RABS. This
 could be a corrective or inherent
 intervention.
-Points to Consider No. 12
-5
 Isolator
 A contained, decontaminated environment
 meeting Grade A/ISO 5 conditions used for
@@ -305,8 +294,6 @@ some installations where the cleanroom, and
 all the equipment it contains including the
 open RABS, is biodecontaminated, but this is
 a special case.
-Points to Consider No. 12
-6
 6-Log Reduction
 The reduction of viable microorganisms with the
 chance of 1:1,000,000 to have a surviving
@@ -341,8 +328,6 @@ where product and/or components are exposed
 (1).
 Note: This is sometimes referred to as “working
 height”.
-Points to Consider No. 12
-7
 Abbreviations
 APS
 Aseptic Process Simulation
@@ -381,8 +366,6 @@ UDAF
 Unidirectional Airflow
 VPHP
 Vapor Phase Hydrogen Peroxide
-Points to Consider No. 12
-8
 Topic 1. Restricted Access Barrier System Design
 Q 1.1. What are the different types of restricted access barrier systems (RABS)?
 Recommendation
@@ -402,18 +385,10 @@ rigid barrier coverage, and typical environmental classifications (4, 5).
 Note: Diagrams are provided to illustrate the ways that air is supplied to and exits from the different types
 of RABS systems. Diagrams are not intended to inform readers how operators should interact with the
 equipment enclosed; that detail follows in later sections.
-Points to Consider No. 12
-9
 
 *[Figure 1.1-1 Passive oRABS]*
 
-Points to Consider No. 12
-10
-
 *[Figure 1.1-2 Active oRABS]*
-
-Points to Consider No. 12
-11
 
 *[Figure 1.1-3 cRABS]*
 
@@ -421,7 +396,6 @@ Rationale
 Product and aseptic procedures could require different designs of RABS systems. The correct execution of
 the RABS needs to be evaluated during the design process of the filling line and should be made based on a
 risk assessment.
-Points to Consider No. 12
 Q 1.2. What are the design criteria considerations for restricted access barrier systems (RABS)?
 Recommendation
 There are several design criteria attributes that need to be taken into consideration when selecting the type of RABS appropriate for a filling line
@@ -505,8 +479,6 @@ integrated into rigid
 barrier
 Material transfer ports
 integrated into rigid barrier
-12
-Points to Consider No. 12
 Environmental
 Control
 •
@@ -586,16 +558,11 @@ Note: Biosafety Cabinets (BSCs) are not covered under the scope of this table.
 Barrier Considerations
 Non-barrier technology is obsolete and is not compliant with regulatory expectations. Non-barrier systems have only individual barriers in place, such
 as polycarbonate, or curtains and aseptic operations are open to the surrounding space of the room.
-13
-Points to Consider No. 12
 All types of RABS have a barrier system in place (e.g., translucent rigid barriers) that surrounds the aseptic
 operations. In oRABS (i.e., passive and active), the barrier system is open to the room via openings below
 the product level that allow the unidirectional airflow to vent to the surrounding space. This type of oRABS
 is not sufficiently sealed during operations, therefore the RABS cannot be subjected to a Leak Rate Test to
 verify enclosure integrity while in operation.
-14
-Points to Consider No. 12
-15
 In cRABS, the barrier system is closed to the room such that the unidirectional airflow is recirculated inside
 the cRABS. The barrier system is sealed, and the cRABS may be subjected to a Leak Rate Test to verify
 closure integrity even during operations. However, the lack of inflatable gaskets can lead to leaking into the
@@ -635,8 +602,6 @@ Bio-decontamination (by gassing or fogging) is possible for non-barrier systems 
 is also bio-decontaminated. In the case of cRABS, it is possible to perform bio-decontamination without the
 room, however, if the cRABS does not utilize inflatable gaskets, there could be leakage around the gaskets
 leading to health safety concerns and adequate precautions are needed to ensure personnel safety.
-Points to Consider No. 12
-16
 Product
 Only nontoxic products are able to be manufactured in non-barrier systems and in oRABS (i.e., active or
 passive). In cRABS, it is possible to manufacture nontoxic or toxic drug products.
@@ -691,8 +656,6 @@ Rationale
 The RABS design attributes as described in Table 1.2-1 are beneficial in assuring that environmental
 conditions are maintained and minimizing microbial contamination associated with direct human
 interventions in the critical zones.
-Points to Consider No. 12
-17
 Q 1.3. What are the design criteria for closed restricted access barrier systems
 (cRABS)?
 Recommendation
@@ -724,8 +687,6 @@ of contamination.
 Rationale
 The cRABS design attributes are beneficial in providing further assurance of environmental conditions and
 minimizing microbial contamination associated with direct human interventions in the critical zones.
-Points to Consider No. 12
-18
 Q 1.4. What are the design considerations for the placement of the restricted access
 barrier system (RABS) glove ports?
 Recommendation
@@ -758,8 +719,6 @@ equipment *
 RAB gloves range of motion
 •
 Weight and orientation of materials and items to be handled via the glove port
-Points to Consider No. 12
-19
 •
 Ability to install RABS gloves and donning RABS gloves in an aseptic manner
 •
@@ -792,8 +751,6 @@ Restriction of airflow interrupting or interfering with adequate distribution of
 vapors, or gases (i.e., typically only seen with cRABS) should be avoided.
 If applicable, select position of glove stretchers to allow for automatic bio-decontamination of the whole
 surface (cRABS only).
-Points to Consider No. 12
-20
 Q 1.5. What are the design considerations for restricted access barrier system (RABS)
 gloves?
 Recommendation
@@ -845,8 +802,6 @@ With the use of RABS gloves, it is possible to perform interventions inside the 
 parts without the introduction of the operator gloves and gown (a potential particle and microbial
 contamination source). For this reason, the manner of usage, construction materials, and installation
 procedures is an important decision point and should, at a minimum, be recorded in the CCS.
-Points to Consider No. 12
-21
 Q 1.6. How should the restricted access barrier system (RABS) be designed to minimize
 the risk posed by interventions?
 Recommendation
@@ -895,8 +850,6 @@ pass from the front to the back of the filling line.
 •
 The RABS design should consider, under risk assessment, a zone of protection using a UDAF unit
 to cover, at a minimum, the open-door radius. The positions must be determined by a risk analysis
-Points to Consider No. 12
-22
 and should consider typical open-door activities, such as the setup of stopper bowls or feeding
 lanes.
 •
@@ -930,8 +883,6 @@ activities through process design, equipment layout, technology, and automation 
 activities cannot be eliminated or reduced, process and equipment design that allows for proper aseptic
 technique and practices can reduce risk. Where interventions cannot be eliminated or reduced in number,
 modifying these activities to reduce risk factors can reduce the overall relative risk.
-Points to Consider No. 12
-23
 Q 1.7. How can open-door interventions be prevented during filling?
 Recommendation
 RABS are designed with the goal of operating predominately as a closed system. Where open-door
@@ -981,8 +932,6 @@ documentation including, but not limited to:
 Preassessment of airflow visualization studies (AVS) and positive-pressure differentials to ensure
 that positive airflow from the enclosure to the external environment can be maintained prior to
 opening doors. A pre-intervention assessment should also extend to a documented review of what
-Points to Consider No. 12
-24
 needs to be performed and whether the activity can be considered comparable to a preexisting
 intervention (1, 4, 9).
 •
@@ -1018,8 +967,6 @@ risk to the aseptic core, the aim of any barrier technology, combined with a sys
 should be to reduce or eliminate any unnecessary interventions. Hence, the use of the barrier technology in
 conjunction with a system of controls comprising suitable design, robust quality systems, and aseptic
 oversight is required.
-Points to Consider No. 12
-25
 Q 1.8. How can contamination risks of Grade A environments and compromise of
 sterilized component sterility be minimized during setup?
 Recommendation
@@ -1062,8 +1009,6 @@ cleanroom).
 •
 After setup, the use of automatic decontamination reduces the risk of ingress of the operator into
 Grade A.
-Points to Consider No. 12
-26
 Figure 1.8-1: Unidirectional Airflow Layout of oRABS Filling Line
 Rationale
 Open-door activities typically necessary for equipment setup are of a higher risk as personnel must ingress
@@ -1089,8 +1034,6 @@ additional information.)
 Having UDAF immediately adjacent to the doors, so that once the door is open, the area remains
 covered by Grade B surrounding the open door, will reduce the risk of introducing bioburden into
 the RABS enclosure.
-Points to Consider No. 12
-27
 Q 1.9. What construction design considerations are required for materials and
 maintenance?
 Recommendation
@@ -1137,8 +1080,6 @@ The RABS and equipment construction materials should be designed to meet such pr
 as cleanability, sanitization, and practicality of use, with the scope to reduce the contamination risk by
 particles that could be released from routine use or from eventual damages and abrasion occurred during
 routine production or maintenance activities.
-Points to Consider No. 12
-28
 Q 1.10. What unique design provisions are required for highly potent compounds
 exposed within closed restricted access barrier systems (cRABS)?
 Recommendation
@@ -1183,8 +1124,6 @@ sterilization cycle. For particulate measurement systems, a different strategy m
 particle counters should be dedicated to certain areas and changed in situ to reduce the movement of the
 equipment and to limit exposure. Particulate filter can be placed after the device to ensure contamination
 prevention of the vacuum lines and pumps.
-Points to Consider No. 12
-29
 
 *[Figure 1.10-1 Filling of Nontoxic vs. Toxic Products]*
 
@@ -1205,8 +1144,6 @@ Potent compounds are hazardous to operators and, while product sterility must be
 important to ensure that operators and the environment they operate in can be protected from exposure.
 Utilization of cRABS, with negative pressure and WIP systems, allows for the operation and cleaning of the
 system, without ever exposing the operator or the environment outside of the RABS to the compound.
-Points to Consider No. 12
-30
 Q 1.11. What are the best engineering design considerations for in-line environmental
 monitoring (EM)?
 Recommendation
@@ -1262,8 +1199,6 @@ Temp/RH/DP/Airflow Velocity (6):
 Sensors should be placed in representative locations—located downstream of UDAF/HEPA filters
 but above product pathway—so as not to interfere with equipment operation and potential
 interventions.
-Points to Consider No. 12
-31
 Alarm and Notification Systems:
 •
 Warnings (alerts and alarms) should be in place to alert operators in the event of any deviations
@@ -1280,8 +1215,6 @@ Alert levels should be established, and then trended, followed by periodic revie
 Rationale
 EM should effectively evaluate the state of environmental conditions within the RABS (e.g., total
 particulates, viables, air quality, airflow and pressure cascade).
-Points to Consider No. 12
-32
 Q 1.12. What are the criteria for retrofitting and design considerations for restricted
 access barrier systems (RABS), including restricted access barrier system (RABS)
 interfaces?
@@ -1328,8 +1261,6 @@ further details on the qualification of interventions.
 For the differential pressure requirement associated with, for example, a Load Accumulation Table to
 Transfer Cart RABS interface (Grade B background), the background environment is the Grade B area with
 the Grade A Load Unload Automatic Transfer representing the critical zone. Consequently, at the interface,
-Points to Consider No. 12
-33
 a positive airflow from the critical zones (i.e., RABS) to the supporting background environment (i.e., Grade
 B area) is required.
 Minimize or consider the possibility of eliminating operator intervention during the freeze-dryer
@@ -1348,8 +1279,6 @@ activities/interventions.
 In a RABS retrofit, the design of the unidirectional airflow protection surrounding the RABS barrier can
 also be a challenge, and it is important to ensure that it can cover the entire area exposed during the opening
 of doors (i.e., Grade B).
-Points to Consider No. 12
-34
 Topic 2. Physical Environment
 Q 2.1. What should be the classification of the room surrounding the restricted access
 barrier system (RABS)?
@@ -1371,8 +1300,6 @@ environment is not impacted by the surrounding environmental conditions since th
 isolated from the surroundings, unlike closed isolators, for example.
 Note: The minimum regulatory expectations (e.g., FDA, EMA) for the classification of manufacturing
 spaces immediately adjacent (i.e., background) to the Grade A critical processing zone is Grade B.
-Points to Consider No. 12
-35
 Q 2.2. Which environmental monitoring criteria are required in extended unidirectional
 airflow surrounding restricted access barrier system (RABS)?
 Recommendation
@@ -1391,8 +1318,6 @@ RABS zone (i.e., during open-door interventions). During times when the doors ar
 can be monitored as a more traditional Grade B environment, whereas during open-door interventions, it
 should be treated as an enhanced Grade B environment with limits (alert and action) defined based on a risk
 assessment.
-Points to Consider No. 12
-36
 Q 2.3. How should airflow pattern visualization/demonstration be performed in a
 restricted access barrier system (RABS) for airflow visualization studies (AVS)?
 Recommendation
@@ -1441,8 +1366,6 @@ The use of foggers that generate glycerin-based vapor is not recommended because
 can leave an oily residue on the test area, personnel, and/or floor areas. Such residues can
 potentially impact equipment performance, equipment cleanliness, and personnel safety and
 should be avoided.
-Points to Consider No. 12
-37
 3. Select Water Vapor-Generating Equipment
 ̶
 Water vapor-generating equipment has a variety of generation mechanisms and design
@@ -1491,8 +1414,6 @@ additional disturbances in airflow that would not occur in routine operations.
 Note: Air will flow slower along the RABS walls, and there will be minor eddies along the
 walls. This is to be expected by the application of physics. Therefore, it should never be
 necessary to perform critical operations immediately adjacent to any RABS walls.
-Points to Consider No. 12
-38
 10. Airflow Visualization Study Frequency
 ̶
 The frequency of re-executing an AVS is not timebound in the first instance; it should be
@@ -1546,8 +1467,6 @@ performed in the background (e.g., maintenance and/or cleaning).
  The video should be taken using two to four (2-4) different camera angles to facilitate, as
 much as possible, a three-dimensional view of the unidirectionality of airflow over the
 critical zones.
-Points to Consider No. 12
-39
 ̶
 Best practice is to synchronize the timing of all filmed scenes, so that direct comparison of
 the airflow visualization can be made from all filmed angles while viewing in a single
@@ -1604,8 +1523,6 @@ Cumulative effect of process and/or facility changes
 Quality of the video footage being improved over time
 •
 Improvements in the methodology of smoke generation and insertion techniques
-Points to Consider No. 12
-40
 Q 2.4. What are the considerations for facility layout design regarding acceptable
 personnel passage through the Grade A restricted access barrier system (RABS)?
 Recommendation
@@ -1627,8 +1544,6 @@ to prevent air external to the RABS from entering the RABS to protect units that
 contamination.
 Using smaller HEPA curtains that reach down to door height would provide some directionality and flush
 airflow without introducing risk to operators or materials.
-Points to Consider No. 12
-41
 Topic 3. Personnel
 Q 3.1. Should operator gloves be disinfected prior to entering the restricted access
 barrier system (RABS) gloves?
@@ -1661,13 +1576,9 @@ a confirmed glove-integrity breach.
 For closed-door interventions that require the use of the RABS gloves, the risk profile associated with a
 potential breach of the Grade A RABS environment owing to a RABS glove integrity failure is high. This
 can be further compounded in the absence of operator glove disinfection, since the physical barrier between
-Points to Consider No. 12
-42
 the operator hand (normally afforded through integral RABS gloves) and the Grade A environment is
 breached. A vector for microbiological contamination is thereby created, with risk profile reduced by
 ensuring adequate glove disinfection.
-Points to Consider No. 12
-43
 Q 3.2. How are personnel qualified for executing interventions?
 Recommendation
 For qualification of personnel for open-door and/or closed-door interventions, an intervention management
@@ -1713,8 +1624,6 @@ Personnel should simulate machine setup and interventions in the aseptic core, w
 qualified personnel, by performing interventions in Grade A when there is no commercial batch-
 manufacturing (e.g., after completion of the routine commercial batch operations, prior to cleaning of the
 filling line). Assessment of nonviable and viable particle-monitoring during those simulations may be
-Points to Consider No. 12
-44
 considered. The number of dry runs to be considered should be based on personnel skill set and prior
 experience before allowing participation in an APS run.
 Level 3 – Practical Assessment in Smaller-Batch and Regular APS
@@ -1760,8 +1669,6 @@ Repeated aseptic processing technique in a manner deemed unacceptable in relatio
 aseptic-process operations or functions.
 4.
 Failure to maintain gowning qualification
-Points to Consider No. 12
-45
 5.
 Failure to maintain training requirements
 6.
@@ -1775,8 +1682,6 @@ Rationale
 The performance of personnel-related activities, manipulations, and interventions in the RABS during
 aseptic operations can pose a risk to the sterility of the product or adversely affect it if it is not performed in
 an aseptic manner. Therefore, proper training and qualification of personnel with APS experience is a must.
-Points to Consider No. 12
-46
 Q 3.3. Is there a clear distinction between the operator qualification for closed- and
 open-door operator interventions, and are operators qualified for closed-door
 interventions allowed to perform open-door interventions (For operators qualified for
@@ -1798,8 +1703,6 @@ Rationale
 Interventions should be designed and performed using proper aseptic techniques to minimize the risk of
 product contamination. Operators should be first performing closed-door interventions and gaining a skillset
 at a later stage to perform open-door interventions. (See Question 3.2 for additional information.)
-Points to Consider No. 12
-47
 Q 3.4. What are the recommendations for qualified and unqualified interventions?
 Recommendation
 Best Practices for Qualified Interventions
@@ -1834,8 +1737,6 @@ Interventions should be designed and performed using proper aseptic techniques t
 production environment and the risk of product contamination. An unqualified intervention does not have
 sufficient data to demonstrate the capability of control, hence, simulating the unqualified intervention in
 APS testing to demonstrate the process capability is recommended.
-Points to Consider No. 12
-48
 Topic 4. Glove Integrity-Testing and Maintenance
 Q 4.1. How do you ensure the integrity of restricted access barrier system (RABS)
 gloves?
@@ -1875,15 +1776,11 @@ the gloves, it is imperative to verify the integrity of the glove itself. Glove 
 performed based on an approved risk assessment. An approved risk assessment should determine the
 frequency of pressure testing, visual inspection, and glove changeout (6, 8). Additional glove visual
 assessments should be performed prior to each use during both campaign and batch production (3).
-Points to Consider No. 12
-49
 Rationale
 It is critical for RABS to maintain integrity in order to support Grade A conditions. The RABS gloves
 design, use, and maintenance are key elements to ensuring appropriate control and overall integrity. RABS-
 related procedures and programs should encompass the continuous review of system and process
 improvements that support product quality.
-Points to Consider No. 12
-50
 Q 4.2. What are the considerations for a restricted access barrier system (RABS) glove-
 management strategy (e.g., selection, integrity, testing, and maintenance program)?
 Recommendation
@@ -1916,8 +1813,6 @@ Rationale
 The selection of the proper gloves, glove testing, and management of gloves is necessary to ensure operator
 safety and to maintain the RABS environmental conditions. The firm should evaluate their process and
 perform a risk assessment to determine an appropriate integrity test that reliably detects glove defects.
-Points to Consider No. 12
-51
 Q 4.3. What should the maintenance program be for restricted access barrier system
 (RABS) gloves?
 Recommendation
@@ -1948,8 +1843,6 @@ Rationale
 Glove integrity can be critical to product quality. A robust risk assessment, including specific process
 parameters, will provide the information needed for maintenance procedures. Site procedures should define
 the maintenance and operational procedures based on risk.
-Points to Consider No. 12
-52
 Q 4.4. What is the response to a glove-integrity failure?
 Recommendation
 In response to a glove-integrity failure, the actions to be taken will vary depending on when and where the
@@ -2011,8 +1904,6 @@ Review of batch bioburden samples data
 The evaluation of these materials and records should be conducted according to the site's QRM system. This
 glove-integrity investigation should be conducted such that the impact on the product is clearly understood
 and suitable corrective and preventive actions are put in place (4).
-Points to Consider No. 12
-53
 Rationale
 When nonintegral gloves or gloves with tears or pinhole leaks are detected, proper QRM must be used to
 determine the potential for contamination of the Grade A environment. While cleaning and disinfecting
@@ -2021,8 +1912,6 @@ should be investigated. The investigation should determine the potential impact 
 quality and whether any other processes or batches are potentially impacted. The reason for including or
 excluding a product or batch from the scope of the investigation should be clearly justified and
 documented.
-Points to Consider No. 12
-54
 Q 4.5. How do you prevent restricted access barrier system (RABS) glove damages
 after installation?
 Recommendation
@@ -2060,8 +1949,6 @@ Rationale
 Integrity of the gloves is key in order to maintain a Grade A environment within the RABS enclosure.
 Maintaining glove integrity includes procedurally controlled glove use and replacement, as well as both
 periodic and routine glove inspection or testing based on an internal risk assessment.
-Points to Consider No. 12
-55
 Q 4.6. What methods should be used for verifying the integrity of restricted access
 barrier system (RABS) gloves?
 Recommendation
@@ -2101,8 +1988,6 @@ Torn
 Color Stain
 Figure 4.6-1: Examples of Glove Defects
 See PDA PTC-Isolators for further details on glove integrity-testing methods.
-Points to Consider No. 12
-56
 Rationale
 RABS have components, including gloves, constructed of various materials that can be prone to wear and
 tear. Glove integrity is critical to maintaining the Grade A environment within the RABS. Integrity issues
@@ -2110,8 +1995,6 @@ during production runs, regardless of type, create a potential contamination ris
 Physical test methods are essential because visual inspection methods can be more subjective and, in some
 cases, are unable to detect holes measuring on the micrometer scale, which cannot completely prevent
 microbiological contamination.
-Points to Consider No. 12
-57
 Q 4.7. What are the acceptance criteria for pinhole detection in restricted access
 barrier system (RABS) gloves?
 Recommendation
@@ -2156,8 +2039,6 @@ other commercially available gloves (e.g., 0.4 mm), the increase in thickness ca
 overall control of the glove. Furthermore, an evaluation of the use of tools to support aseptic operations may
 be appropriate, for example, using a needle recapping device as opposed to an operator manually recapping,
 in order to reduce pinholes.
-Points to Consider No. 12
-58
 If a company is observing a high number of pinholes or experiencing multiple issues with integrity, it may
 be related to other areas of the manufacturing process, which should be evaluated. Areas to consider may
 be:
@@ -2175,8 +2056,6 @@ Rationale
 A pinhole detection system should detect a 200 µm pinhole, at a minimum, and be supported with a risk
 assessment. Sound QRM principles should be in place to investigate a breach in the overall integrity of the
 unit.
-Points to Consider No. 12
-59
 Q 4.8. What is the appropriate process and frequency for restricted access barrier
 system (RABS) gloves sterilization, bio-decontamination, sporicidal disinfection, and/or
 disinfection?
@@ -2220,8 +2099,6 @@ To ensure product quality, gloves should be effectively sterilized before instal
 during usage (e.g., prior to each manufacturing campaign). The effectiveness of this sterilization, bio-
 decontamination, sporicidal disinfection, and disinfection regime should be verified through a qualified EM
 program.
-Points to Consider No. 12
-60
 Topic 5. Environmental Monitoring
 Q 5.1. What should the environmental monitoring (EM) frequency be in a closed or
 open restricted access barrier system (cRABS or oRABS)?
@@ -2252,8 +2129,6 @@ Rationale
 There is no difference in expectations around the frequency of EM inside oRABS and cRABS.
 Once a critical surface is exposed inside the RABS, that surface is potentially at risk of contamination, so
 continuous EM is required.
-Points to Consider No. 12
-61
 The requirement for continuous EM ceases once the last unit is closed for the batch or campaign provided
 any used product-contact parts are reprocessed, and any sterile components are cleared prior to reuse of the
 line.
@@ -2263,8 +2138,6 @@ Additional controls should be considered to reduce risks of such interventions a
 consideration of additional disinfection steps and partial line clearances.
 Monitoring should not interfere with production processes in a way that raises the level of risk by
 introducing an activity in the critical zone, which defeats the purpose of the EM.
-Points to Consider No. 12
-62
 Q 5.2. Which surfaces should be monitored in a restricted access barrier system (RABS)
 (open or closed)?
 Recommendation
@@ -2309,8 +2182,6 @@ potentially puts the product at risk and should be sampled; such events should b
 possible.
 Tools used for critical interventions should be sampled. Consideration should be given to the use of
 dedicated sterile tools that are used exclusively for conducting certain types of interventions (e.g., involving
-Points to Consider No. 12
-63
 direct or indirect product-contact parts). Sterile tools should be kept in Grade A condition and maintained in
 a manner that prevents contamination (i.e., proper aseptic technique).
 RTP doors are not sterile; they are bio-decontaminated inside and out in situ.
@@ -2319,8 +2190,6 @@ sterile and clean until the end of use; the samples allow this to be assessed as
 must be taken to ensure that the act of sampling does not put the surfaces being sampled at risk of
 contamination due to either improper sampling techniques, or the use of wrong or incorrectly prepared
 sampling equipment or consumables.
-Points to Consider No. 12
-64
 Q 5.3. What factors should be taken into consideration when transferring
 environmental monitoring (EM) plates into and out of a restricted access barrier system
 (RABS)?
@@ -2352,8 +2221,6 @@ RABS doors should not be opened after line setup; this includes the transfer of 
 RTPs provide a method for safe entry of materials, including EM plates.
 Transfer chambers provide a method whereby the risk posed by the entry of material previously exposed to
 Grade B conditions can be controlled by a combination of outer bag removal and sporicidal disinfection.
-Points to Consider No. 12
-65
 Entry of the plates prior to line setup can be controlled by a combination of outer-bag removal and
 disinfection at the grade transition point. Plate transfer and placement is reliant on sufficient space being
 available inside the RABS for plate storage and a method for identifying plates that have been used, from
@@ -2363,8 +2230,6 @@ be protected from contamination until the end of incubation. Placing the plates 
 bag for transport is appropriate to reduce the contamination risk. Validation is required to support this
 practice to demonstrate that growth is not inhibited by the packaging. Conducting growth-promotion studies
 on plates sealed in the container or bag specified by the firm will provide the required assurance.
-Points to Consider No. 12
-66
 Q 5.4. How should media plates be stored inside a restricted access barrier system
 (RABS)?
 Recommendation
@@ -2398,12 +2263,8 @@ and the packaging they arrive in, should not be allowed to block air exits or re
 should be considered as part of the AVS.
 The storage of exposed and unexposed plates needs to be considered to prevent mix-ups and the potential
 reuse of a previously exposed plate, which may be dried out if used beyond allowed exposure time. Plate
-Points to Consider No. 12
-67
 stands can aid in this, for example, by stacking plates such that fresh plates are removed from the bottom of
 the stack and used plates are returned to the top of the stack
-Points to Consider No. 12
-68
 Q 5.5. When and how should environmental and personnel monitoring be performed
 during setup and open-door interventions?
 Recommendation
@@ -2443,8 +2304,6 @@ risk of contamination. Performing personnel monitoring after, and active air sam
 activities provides valuable additional data to support batch disposition.
 An approved EM risk assessment should be used to determine the representative locations that require
 sampling meeting Grade A limits (e.g., body parts entering the Grade A environment). Relying only on
-Points to Consider No. 12
-69
 glove-sampling data may not be adequate, especially where RABS gloves are disinfected or changed
 immediately prior to the intervention.
 When sampling occurs close to the point where the person exits the RABS, the data collected will most
@@ -2456,8 +2315,6 @@ ensures that the samples fully represent the risk posed by the first operator to
 been unnecessarily compromised.
 Note: Operators should leave the RABS and change gloves to prevent the spread of media residues after
 finger dabs.
-Points to Consider No. 12
-70
 Q 5.6. Should environmental monitoring (EM) for line setup and filling be kept
 separate?
 Recommendation
@@ -2471,8 +2328,6 @@ zone, whereas filling activities are typically conducted via closed-door interve
 activities for EM allows the data from line setup and filling activities to be visualized and trended
 independently. Where EM recoveries occur, identifying the assignable root cause of the microbiological
 data deviation is aided when the data for the two activities are separate.
-Points to Consider No. 12
-71
 Q 5.7. Where should the fixed environmental monitoring (EM) air-monitoring sampling
 points be located within the restricted access barrier system (RABS)?
 Recommendation
@@ -2512,8 +2367,6 @@ conducting both open- and closed-door interventions.
 Each unique particle size will have a different deposition profile in tubing based on, for example, airflow
 velocity and sample volume, tubing diameter, sampling port arrangement, temperature, bend radius, tube
 length, and tubing material. Because particulate monitoring attempts to assess a range of sizes (e.g., 0.5 µm
-Points to Consider No. 12
-72
 and greater in optical diameter), no single set of radii or length conditions can describe best practices for
 each of these particle sizes. Minimizing the number of tubing bends, maximizing radii, and minimizing
 overall tubing length should be the goal, and it should be done in accordance with the particle-counter
@@ -2528,8 +2381,6 @@ should be avoided.
 International Organization for Standardization (ISO) 14644-1:2015 Cleanrooms and Associated
 Controlled Environments — Part 1: Classification of Air Cleanliness by Particle Concentration also
 states that tube length should be no longer than 1 m.
-Points to Consider No. 12
-73
 Topic 6. Material Transport and Loading
 Q 6.1. How should indirect product contact surfaces be sterilized or decontaminated?
 Recommendation
@@ -2563,16 +2414,12 @@ the RABS is otherwise guaranteed (e.g., via Grade A continuity, typically a proc
 controls), different means of wrapping and/or dry-heat sterilization of the indirect product-contact items may
 be applied. The wrapping materials and removal process should minimize particle generation as much as
 possible.
-Points to Consider No. 12
-74
 In addition to open-door installation, an introduction of indirect product-contact parts via RTP or sterile
 boxes can be considered for the RABS to minimize the risk of potential contamination during installation by
 open doors. This especially applies for smaller parts such as guiding and stopper guardrails, for example.
 Rationale
 Indirect product-contact surfaces are critical for the sterility assurance of the product and must be sterilized
 (1).
-Points to Consider No. 12
-75
 Q 6.2. Can stopper bowls, hoppers, and tracks remain installed between batches?
 Recommendation
 If a campaign manufacture has been justified and there is no risk of contamination during and in between
@@ -2584,8 +2431,6 @@ abrasion from stoppers also needs to be considered.
 Rationale
 Specific principles may be defined for campaign manufacture if product sterility assurance is not
 jeopardized (1).
-Points to Consider No. 12
-76
 Q 6.3. What approaches are recommended for transferring stoppers into a restricted
 access barrier system (RABS)?
 Recommendation
@@ -2610,8 +2455,6 @@ where stopper sterilization cycles are qualified in a closed stopper pod, stoppe
 a docking mechanism that involves docking of the stopper pod to a stopper transfer chute. The sterilization
 of the stopper transfer chute and bottom of the stopper pod must be demonstrated, therein providing a sterile
 passage of the sterilized stoppers directly to the sterilized stopper hopper located in the RABS.
-Points to Consider No. 12
-77
 Manual Transfer Systems
 Other more manual surface-disinfection systems may be used for transferring stoppers into RABS as well.
 For example, where the double-wrapped stopper bag is first transferred from Grade B into a Grade A hatch
@@ -2625,16 +2468,12 @@ drawing of such a system, detailing the use of a UDAF transfer box to access the
 
 *[Figure 6.3-3 Example of Manual Stopper Transfer System]*
 
-Points to Consider No. 12
-78
 Open-door interventions, where the RABS door is to be opened for stopper loading, preferably would be
 avoided by design.
 Rationale
 Design requirements must be considered for new RABS projects to optimize the aseptic stopper transfer.
 Aseptic transfer systems are recommended over manual transfer systems to improve contamination control
 and minimize the risk to sterility assurance.
-Points to Consider No. 12
-79
 Q 6.4. How should bulk containers (e.g., vials) or ready-to-use containers (e.g., syringes,
 vials, cartridges) be transferred into the restricted access barrier system (RABS)?
 Recommendation
@@ -2654,8 +2493,6 @@ lidding/de-lining process, can be employed.
 *[Figure 6.4-2 Vapor Phase Hydrogen Peroxide (VPHP) Technology for Introduction of Ready-]*
 
 to-Use Packaging Material
-Points to Consider No. 12
-80
 
 *[Figure 6.4-3 No-Touch-Transfer (NTT) Technology for Introduction of Ready-to-Use Packaging]*
 
@@ -2669,8 +2506,6 @@ ejecting the contents) applied as a semi-automated or automated process to reduc
 Rationale
 The transfer of bulk containers must ensure that the open containers are rendered sterile (or remain sterile)
 and that introduction into the RABS does not lead to contamination of the Grade A environment.
-Points to Consider No. 12
-81
 Q 6.5. How should equipment, accessories, ancillary items and sterile tools (e.g.,
 forceps) be transferred into a restricted access barrier system (RABS)?
 Recommendation
@@ -2715,8 +2550,6 @@ Miscellaneous items that potentially break First Air (e.g., forceps for removing
 sterile and remain sterile during their intended use inside the RABS. Those items preferably can be sterilized
 by moist heat and wrapped in semi-permeable packaging, or by dry heat in stainless-steel boxes (care should
 be applied on appropriate closure of those boxes). Each individual unit should not contain more items than
-Points to Consider No. 12
-82
 are reasonably needed for the completion of a batch or campaign. To avoid contamination of the sterile
 items during their intended usage, suitable holders should be designed inside the Grade A space to avoid
 reaching over the critical parts of the item with the RABS gloves.
@@ -2747,8 +2580,6 @@ be documented in the Design Qualification and/or CCS.
 Rationale
 Transfer techniques into and out of the RABS are based on the type of material/accessory/equipment, its
 cleanability and disposal. Either sterilization or surface decontamination is needed.
-Points to Consider No. 12
-83
 Q 6.6. Is having an approved list of material that is permitted to enter the restricted
 access barrier system (RABS) required?
 Recommendation
@@ -2761,8 +2592,6 @@ might be brought into the RABS, and those must be controlled through other means
 Rationale
 Control steps are to be implemented for all material that is about to be transferred to the aseptic
 environment.
-Points to Consider No. 12
-84
 Topic 7. Cycle Development and Validation: Cleaning, Bio-
 Decontamination, and Disinfection
 Q 7.1. What are the considerations for planning, designing, and executing a restricted
@@ -2794,8 +2623,6 @@ Grade A conditions must be established and under control before sterilized parts
 filling needles and indirect product-contact parts (e.g., stopper bowls, guides, chutes), are introduced (1).
 Bio-decontamination processes (e.g., VPHP, dry or wet process technologies) should be automated; an
 emphasis should be on a validated cleaning process prior to initiating the bio-decontamination process.
-Points to Consider No. 12
-85
 More automated bio-decontamination processes (e.g., VPHP, dry or wet process technologies) may be
 applied to oRABS (in combination with cleanroom) and cRABS. If disinfection cannot be implemented
 manually (i.e., considered in design), and if enhanced sporicidal efficacy and disinfection assurance is
@@ -2837,8 +2664,6 @@ If RABS are cleaned and disinfected by manual application methods, the prerequis
 assessment is paramount.
 Different combinations of cleaning and disinfectant agents may be applied based on process steps and levels
 of soiling.
-Points to Consider No. 12
-86
 Q 7.2. What are the current options for ensuring consistent execution of cleaning, bio-
 decontamination, disinfection, and sporicidal disinfection of a restricted access barrier
 System (RABS)?
@@ -2878,8 +2703,6 @@ control should result in the sterilized parts that enter during setup remaining 
 Disinfection applied to sterile surfaces could potentially compromise sterility and therefore should be
 avoided, instead focusing on the procedural control and protective airflow that prevents compromise to the
 sterile surfaces in the first place.
-Points to Consider No. 12
-87
 Rationale
 Primarily, RABS are manually cleaned and disinfected using qualified agents and a qualified procedure of
 application of these qualified agents executed by trained operators. EM, in combination with other microbial
@@ -2892,8 +2715,6 @@ The combined cleanroom and oRABS bio-decontamination, using an automated process
 assured aseptic hold times and fast changeovers to reestablish the required conditions for aseptic
 manufacturing. Such processes can be applied, with BI results (negative for growth) defined as the marker,
 to put the line back in operation at risk, rather than waiting for EM results.
-Points to Consider No. 12
-88
 Q 7.3. What considerations are required for qualification of the restricted access
 barrier system (RABS) cleaning, bio-decontamination, disinfection, and sporicidal
 disinfection process, and validation of the bio-decontamination and decontamination
@@ -2940,8 +2761,6 @@ the spectrum of efficacy. Rotation may also reduce occurrence of material damage
 Use of sterile disinfectant agents for Grade A and Grade B areas.
 3.
 A target log reduction for bacteria, spores, and viruses (if applicable) (6, 20).
-Points to Consider No. 12
-89
 4.
 A method of application that assures surface coverage and wet contact time.
 5.
@@ -2991,8 +2810,6 @@ under a state of control. Decisions should be made based on the facilities proce
 process understanding. Based on those decisions, validation programs should be initiated and followed.
 Decisions on the frequency of revalidation should be included in the bio-decontamination validation
 program.
-Points to Consider No. 12
-90
 Topic 8. Aseptic Process Simulation
 Q 8.1. What are the special considerations for aseptic process simulation (APS) in a
 restricted access barrier system (RABS)?
@@ -3032,7 +2849,6 @@ demonstrated in an APS.
 Qualified methods are in place for the transfer of materials that enter the cleanroom, and
 subsequently the RABS, that do not compromise the cleanroom-surrounding environment or the
 RABS Grade A processing zone.
-91
 •
 Risk assessments support the establishment of a comprehensive EM program, which should be
 based on detailed knowledge of the process, facility, and equipment. Sampling locations, sampling
@@ -3064,9 +2880,6 @@ needs mitigation by design, qualifications, and procedural controls, and is subj
 in an APS. Such in-process significant interventions require consideration for sterility samples to be taken
 and should be included in the APS.
 Simulation of the production activities is a necessity for designing the APS studies.
-Points to Consider No. 12
-Points to Consider No. 12
-92
 Q 8.2. What are the special considerations of the aseptic process simulation (APS) for
 multiple shifts and multiple-day campaign production in the restricted access barrier
 system (RABS)?
@@ -3115,8 +2928,6 @@ within a campaign (e.g., fill needles or glove replacement), RABS gloves ergonom
 qualification of personnel, assessment of human factors, and scheduling of breaks and rest periods for
 operators are better tools for controlling the complexity of RABS campaign operations than extended APS
 runs.
-Points to Consider No. 12
-93
 Q 8.3. What are the special considerations for determining worst-case conditions in a
 restricted access barrier system (RABS) aseptic process simulation (APS)?
 Recommendation
@@ -3159,8 +2970,6 @@ closed-door interventions of RABS might provide other worst-case conditions, whi
 in the design of APS. Companies should conduct thoughtful risk assessments to help determine which
 conditions and configurations represent the most useful challenge to the process and how to most effectively
 include them in the APS.
-Points to Consider No. 12
-94
 Q 8.4. What is the best practice when performing the setup and assembly of a
 restricted access barrier system (RABS) filling line?
 Recommendation
@@ -3199,8 +3008,6 @@ tweezers, tongs) and throughout the procedure. First Air protection should not b
 Rationale
 As interventions are such a high-risk activity, best practice is needed in all cases to mitigate risks to an
 acceptable level.
-Points to Consider No. 12
-95
 Topic 9. Best Practices for Aseptic Operations
 Q 9.1. Is it necessary to use the same aseptic techniques and practices when
 performing closed- and open-door interventions in the restricted access barrier system
@@ -3246,8 +3053,6 @@ While a RABS with closed doors provides enhanced protection of the product betwe
 extraneous contamination sources (e.g., operator, environment), proper aseptic technique is still required to
 aid in the overall control of the product. A risk assessment should be documented outlining the necessary
 controls required to maintain product sterility.
-Points to Consider No. 12
-96
 Q 9.2. How should interventions be qualified and approved for use in routine
 production?
 Recommendation
@@ -3279,8 +3084,6 @@ documented risk assessment to be included in a comprehensive CCS. The proper des
 analysis and airflow visualization, will provide the appropriate understanding of the intervention to approve
 its use, during routine production, and for execution in a firm’s APS program. The execution of
 interventions, to be performed during routine production, are to be included in a firm’s APS program.
-Points to Consider No. 12
-97
 Q 9.3. Should interventions that disrupt First Air, as defined in EU Annex 1, be
 permitted?
 Recommendation
@@ -3302,8 +3105,6 @@ shall be designed to meet First Air principles and include proper mitigation if 
 due to mechanical or physical limitations. The proper design followed by risk analysis and airflow
 visualization will provide the appropriate understanding of the intervention to approve for use, during
 routine production, and for execution in a firm’s APS program.
-Points to Consider No. 12
-98
 Q 9.4. Should contact between restricted access barrier system (RABS) gloves and
 critical surfaces during setup or operations be permitted?
 Recommendation
@@ -3320,8 +3121,6 @@ While the CCS for RABS gloves should maintain proper aseptic conditions througho
 is an inherent risk to the product when touching critical surfaces, as the environment and glove materials are
 not sterile. Proper controls (e.g., process flow, equipment design) and use of sterile tools should be in place
 to mitigate the need to touch critical surfaces.
-Points to Consider No. 12
-99
 Q 9.5. What should be performed after open-door interventions?
 Recommendation
 RABS should be designed and operated with doors closed during aseptic processing; however, the process
@@ -3370,8 +3169,6 @@ personnel and the external environment and exposed product or product-contact su
 prevent microbiological contamination of the sterile product by personnel and the environment.
 In the case of open-door interventions, there is no longer a physical separation; therefore, additional control
 measures are required, as described in this section.
-Points to Consider No. 12
-100
 Q 9.6. How should interventions be performed?
 Recommendation
 Prior to performing an intervention, all product and empty containers are to be cleared, as applicable, then
@@ -3403,8 +3200,6 @@ important part of the comprehensive CCS to minimize hazard ingress; therefore, t
 be inspected prior to and after every use. This process must be proceduralized, and each operator is to be
 qualified to perform the inspection process. Each intervention needs to be performed using a sterile tool to
 minimize the likelihood of the RABS glove contacting critical equipment and/or damage the glove.
-Points to Consider No. 12
-101
 Q 9.7. How and when should restricted access barrier system (RABS) gloves be
 installed?
 Recommendation
@@ -3439,8 +3234,6 @@ Glove remains inverted (i.e., turned “inside-out”).
 Glove wrapping is then taken out of the RABS by using the opening below the RABS doors for
 oRABS. For cRABS another method must be used.
 Approach 1 is detailed in Figure 9.7-1.
-Points to Consider No. 12
-102
 
 *[Figure 9.7-1 Approach 1: RABS Door Closed]*
 
@@ -3463,8 +3256,6 @@ O-ring is attached on the inside of the RABS door.
 Upper part of the RABS glove gets decontaminated by wiping or spraying with sporicidal agents.
 7.
 RABS door is then closed.
-Points to Consider No. 12
-103
 8.
 Glove wrapping is aseptically removed inside the RABS.
 9.
@@ -3488,8 +3279,6 @@ RABS glove is connected by the attachment of the o-ring on the outside of the RA
 5.
 Glove remains inverted (i.e., turned “inside-out”).
 Approach 3 is illustrated in Figure 9.7-4.
-Points to Consider No. 12
-104
 
 *[Figure 9.7-4 Approach 3: RABS Door Closed]*
 
@@ -3509,8 +3298,6 @@ to the environment and operator. In order to mitigate contamination by the envir
 three approaches outlined in this section provide practical options to install RABS gloves.
 If RABS gloves are installed following the recommended approaches, any potential contamination of
 product and critical surfaces with microorganisms should be reduced.
-Points to Consider No. 12
-105
 Q 9.8. Are restricted access barrier system (RABS) gloves treated with sporicidal agents
 and/or otherwise disinfected during operations?
 Recommendation
@@ -3539,8 +3326,6 @@ the Grade B environment, and there is no contact with nonsterilized surfaces. Th
 additional wiping, via disinfection or sporicidal disinfection, during operations. If a contamination risk
 results as described above (e.g., RABS glove exposure in Grade B, contact with non-sterilized surfaces, etc.)
 mitigation should follow the recommendations from Questions 9.4 and 9.5.
-Points to Consider No. 12
-106
 References
 1. European Commission. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4
 – EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and
@@ -3577,8 +3362,6 @@ Pharmaceutical Engineering. 2023.
 for the integrity of gloves for isolators. PDA J Pharm Sci Technol. 2011;65(3):227-41.
 15. Parenteral Drug Association. Technical Report No. 22 (Revised 2011): Process Simulation for
 Aseptically Filled Products. Bethesda, Md.: PDA; 2011.
-Points to Consider No. 12
-107
 16. Parenteral Drug Association. Technical Report No. 44: Quality Risk Management for Aseptic
 Processes. Bethesda, Md.: PDA; 2008. Contract No.: S-1.
 17. Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). Annex 1: Manufacture of

@@ -508,7 +508,6 @@ They should also have an integrated timer that enforces the required time in sec
 four to five (4-5) room air-changes occur within the MAL to reduce particles introduced into the higher-
 classified side as well as to control contamination.
 Cleanroom suites should be designed for vapor-phase hydrogen peroxide (VPHP) or chlorine dioxide (ClO )
-2
 compatibility. For product changeover (different vectors) and for replication-competent virus (RCV) to non-
 RCV as well as improving EM performance, whole-suite fumigation should be carried out periodically.
 RCV is a crucial safety concern, especially in gene therapy, which often uses modified viruses as vectors to
@@ -676,17 +675,14 @@ have no adverse impact on the manufactured pharmaceutical product.
 e. Pipes should be marked with gas identity signs and should indicate the flow direction.
 2. Carbon dioxide generation and distribution system
 a. Any carbon dioxide (CO ) distribution lines installed should be tested to confirm that the
-2
 microbial and particulate levels are suitable for the intended use. The quality classification
 of the distribution line generally depends on the intended use (e.g., the classification of the
 air space within the equipment for which the CO is used).
-2
 b. The design of the distribution system should consider the pressure requirements of the
 intended use including any possible future expansion needs. Appropriate pressure
 regulation should be included in the design if equipment with different pressure
 requirements is connected to the distribution system.
 c. The design should include the necessary controls to provide a continuous supply of CO gas
-2
 (e.g., source tank switchover) at the appropriate flow rate (e.g., pressure design to achieve
 flow rate) and such features should be commissioned and/or qualified.
 
@@ -695,13 +691,10 @@ d. Branched-distribution system designs serving different processes or different
 within the process should consider how cross-contamination risk through the piping can be
 prevented.
 e. Pipes must be marked with CO signs and should indicate the flow direction.
-2
 f. An oxygen (O ) sensor with visual and audible alarm should be installed in an appropriate
-2
 location to notify personnel in the room, or those intending to enter, that a low-oxygen
 condition exists and that they should exit (or not enter) the space. Personnel entering the
 room should also be equipped with personal O sensors. A buddy system and/or man-down
-2
 alarms should also be considered.
 g. A risk-based approach should be used for the qualification.
 3. Purified water generation and distribution system
@@ -736,11 +729,8 @@ the valve design should prevent any possible mixing (e.g., double block and blee
 e. Pipes must be marked with “WFI” signs and should indicate the flow direction.
 5. Liquid nitrogen generation and distribution system
 a. Installation of a liquid nitrogen (LN ) generation and distribution system should consider
-2
 the asphyxiation risk. A room O -level monitoring system with visual and audible alarms
-2
 should be available, and personnel should also be equipped with O personal-monitoring
-2
 instruments. Personnel in the room, or intending to enter the room, should be trained to exit
 (or not enter) the room when the alarm is active. A buddy system and/or man-down alarms
 
@@ -749,86 +739,64 @@ should also be considered. Means to detect and isolate any leak in the system sh
 available, including the availability of personal protective equipment (PPE) for routine use
 and emergency-rescue purposes.
 b. LN is extremely cold and contact to bare skin causes severe frostbite. To mitigate this risk,
-2
 signage should be posted throughout the space where LN is in use that reminds operators
-2
 of the appropriate PPE to don when handling materials immersed in LN or when opening
-2
 the equipment. In addition, PPE-donning stations should be prominently positioned within
 the floor plan. First-aid stations should also be available in the floor plan for accidental
 exposures.
 c. The materials that require storage in LN (ultra-low temperature storage) are commonly the
-2
 most critical materials in the process (e.g., cell or viral banks). Therefore, it is common in
 designs to consider the inclusion of back-up equipment (e.g., LN freezers) in case of
-2
 equipment failure. The back-up equipment should be qualified for use and subject to
 routine maintenance so it is ready for deployment should the primary equipment or primary
 equipment’s controllers fail. This approach will require additional footprint and capital
 expenditure at the time of facility design, as well as appropriate piping and valving to
 supply LN to both the primary and the back-up systems.
-2
 d. Piping for distributing LN should be adequately insulated both due to the cold-burn risk
-2
 and to avoid condensation on external surfaces.
 e. Pipes should be marked with “LN ” signs and should indicate the flow direction.
-2
 f. Due to the risk of testing LN and its stability, LN quality through the distribution system
 2 2
 is typically confirmed by the use of a Certificate of Compliance or Certificate of Analysis
 provided by LN supplier.
-2
 g. Design should include controls to provide continuous supply of LN as required (e.g.,
-2
 source-tank switchover), and such features should be commissioned and/or qualified
 accordingly.
 6. Nitrogen
 a. Any nitrogen (N ) distribution line installed should be classified. The classification of the
-2
 distribution line generally depends on the intended use (e.g., classified environment within
 the equipment where the N is used, criticality of the material in contact with the N gas).
 2 2
 Examples of N use include, but are not limited to, N overlay in the product container head
 2 2
 space and N overlaying in the bulk-material containers (i.e., displacement of oxygen to
-2
 reduce oxidation of materials and/or maintain the stability of raw materials).
 b. Installation of an N generation and distribution system should consider the asphyxiation
-2
 risk. An O -level monitoring system room with visual and audible alarms should be
-2
 available, and personnel should also be equipped with O personal-monitoring instruments.
-2
 Personnel in the room, or intending to enter the room, should be trained to exit (or not
 enter) the room when the alarm is active. A buddy system and/or man-down alarms should
 also be considered. The means to detect and isolate any leak in the system should be
 available, including the availability of PPE for emergency-rescue purposes.
 c. Appropriately qualified source and terminal sterile filtration should be considered if N is
-2
 used for product-contact purposes.
 d. Distribution systems serving different processes or different equipment within the process
 should ensure that the design prevents the risk of cross-contamination.
 e. Pipes must be marked with “N ” signs and should indicate the flow direction.
-2
 
 === PAGE 29 ===
 7. Oxygen
 a. Any O distribution line installed should be classified. The classification of the distribution
-2
 line generally depends on the intended use (e.g., O sparging applications during cell
-2
 expansion to maintain oxygen potential in the media/stock solutions).
 b. The design should include the control to provide a continuous supply of O gas (e.g.,
-2
 source-tank switchover) at an appropriate flow rate (e.g., pressure design to achieve flow
 rate) and distribution uniformity.
 c. Appropriately qualified source and terminal sterile filtration should be considered if O is
-2
 used for product-contact purposes.
 d. Distribution systems serving different processes or different equipment within the process
 should ensure that the design prevents the risk of cross-contamination.
 e. Pipes must be marked with “O ” signs and should indicate the flow direction.
-2
 8. Process air and process gas
 a. Any process air/process gas distribution (other than N or O ) line installed should be
 2 2
