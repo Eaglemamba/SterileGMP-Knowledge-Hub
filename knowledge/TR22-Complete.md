@@ -24,31 +24,43 @@ Figure 8.0-1 APS Personnel Qualification Criteria ..............................
 Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist .................................... 74
 Table 15.1-1 Applying Risk-Based APS Frequency ................................................................................ 83
 
-**Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk**
+**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual aseptic manipulations performed during regular aseptic operations (during online filtration, filling, stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions design aspects such as intervention location, tools used, and/or air flow effects may also be considered in establishing a grouping logic.**
 
 Evaluation & Management Model .............................................................................................................. 87
 
-**Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention**
+**Table 15.3-1 Intervention Risk Criteria with Scores (Example 3)**
+| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 Risk Level (Example 3) ................................................................................................................................... 91
 
-**Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level**
+**Table 15.3-2 Recommended Frequencies and Number of Interventions (Example 3)**
+| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
+| --- | --- | --- |
 
 (Example 3) ...................................................................................................................................................... 92
 
-**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access**
+**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in RABS without Built-In IPC (Example 3)**
+| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Barrier Systems without Built-In In-Process Control (Example 3) ....................................................... 92
 
-**Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention**
+**Table 15.4-1 Intervention Risk Criteria with Scores (Example 4)**
+| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 Risk Level (Example 4) ................................................................................................................................... 95
 
-**Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level**
+**Table 15.4-2 Recommended Frequencies and Number of Interventions (Example 4)**
+| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
+| --- | --- | --- |
 
 (Example 4) ...................................................................................................................................................... 96
 
-**Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted**
+**Table 15.4-3 Risk Assessment of Possible Interventions for Vial-Filling in Open RABS without Built-In IPC (Example 4)**
+| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Access Barrier Systems without Built-In In-Process Control (Example 4) ......................................... 96
 
@@ -3876,6 +3888,8 @@ obtained from the example. In other cases, when the risk is low, such as when us
 frequency of shift simulation can be justified.
 
 **Table 15.1-1 Applying Risk-Based APS Frequency**
+| Risk Factor | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 Risk Factor
 Risk Level (Score)
@@ -4042,7 +4056,7 @@ number of interventions to be included in the APS are defined based on the prece
 commercial production, and takes into consideration the new risk level of each intervention based on the
 IREM.
 
-**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine**
+**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual aseptic manipulations performed during regular aseptic operations (during online filtration, filling, stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions design aspects such as intervention location, tools used, and/or air flow effects may also be considered in establishing a grouping logic.**
 
 the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual
 aseptic manipulations performed during regular aseptic operations (during online filtration, filling,
@@ -4052,7 +4066,7 @@ interventions, provided they have similar risk factors like duration, proximity,
 design aspects such as intervention location, tools used, and/or air flow effects may also be considered in
 establishing a grouping logic.
 
-**Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk Evaluation & Management Model**
+**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual aseptic manipulations performed during regular aseptic operations (during online filtration, filling, stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions design aspects such as intervention location, tools used, and/or air flow effects may also be considered in establishing a grouping logic.**
 
 Line Type – Aseptic Vial Filling Line with open Restricted Access Barrier System placed in Grade B external environment
 No.
@@ -4414,7 +4428,9 @@ The scoring assignment can vary widely depending on the particulars of the inter
 and the process/product. The intent is not to provide examples of specific scoring, but rather to show how
 the tool can be used.
 
-**Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 3)**
+**Table 15.3-1 Intervention Risk Criteria with Scores (Example 3)**
+| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 Intervention Risk Criteria
 Risk Level (Score)
@@ -4474,7 +4490,9 @@ Total
 *A conventional aseptic filling line is one without a RABS or isolator barrier. These are legacy systems and are in the process of being phased out of the
 industry.
 
-**Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 3)**
+**Table 15.3-2 Recommended Frequencies and Number of Interventions (Example 3)**
+| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
+| --- | --- | --- |
 
 Overall Intervention Risk Level
 Recommended Frequency of Simulation
@@ -4490,7 +4508,9 @@ Yearly
 May be less than the number in routine production
 *Biannual: twice a year (approximately every 6 months)
 
-**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access Barrier Systems without Built-In In-**
+**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in RABS without Built-In IPC (Example 3)**
+| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Process Control (Example 3)
 No.
@@ -4591,7 +4611,9 @@ The scoring assignment can vary widely depending on the particulars of the inter
 and the process/product. The intent is not to provide examples of specific scoring, but rather to show how
 the tool can be used.
 
-**Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 4)**
+**Table 15.4-1 Intervention Risk Criteria with Scores (Example 4)**
+| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
+| --- | --- | --- | --- | --- |
 
 Intervention Risk Criteria
 Risk Level (Score)
@@ -4653,7 +4675,9 @@ than the frequency needed when conducted using another line with an isolator.
 *A conventional aseptic filling line is one without a RABS or isolator barrier. These are legacy systems and are in the process of being phased out of the
 industry.
 
-**Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 4)**
+**Table 15.4-2 Recommended Frequencies and Number of Interventions (Example 4)**
+| Overall Intervention Risk Level | Recommended Frequency | Recommended Number per APS Run |
+| --- | --- | --- |
 
 Overall Intervention Risk Level
 Recommended Frequency of Simulation
@@ -4669,7 +4693,9 @@ Yearly
 May be less than the number in routine production
 *Biannual: twice a year (approximately every 6 months)
 
-**Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted Access Barrier Systems without Built-In**
+**Table 15.4-3 Risk Assessment of Possible Interventions for Vial-Filling in Open RABS without Built-In IPC (Example 4)**
+| No. | Intervention | Complexity | Duration | Proximity | Frequency | AFV | Barrier | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 In-Process Control (Example 4)
 No.
@@ -5160,7 +5186,8 @@ Medium
 
 Step 5
 Upon the determination of the overall risk score, the aseptic procedures are ranked by risk, and the following actions are to be taken, as shown in
-Table 15.7-5.
+
+**Table 15.7-5.**
 
 **Table 15.7-5 Action Level Table based on Overall Risk Score**
 

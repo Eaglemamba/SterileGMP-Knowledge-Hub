@@ -228,7 +228,9 @@ To ensure the isolation of the product, the assembled syringe is placed into a n
 tamination from the external environment. The nest is then placed into a tub that serves as primary
 packaging. The tub is sealed with a Tyvek® sheet before being placed into a single or double steribag,
 which is also sealed using the system shown in Table 13.1.1-1.
-Table 13.1.1-1
+
+**Table 13.1.1-1**
+
 Packaging methods
 Primary Packaging system
 Material
@@ -422,7 +424,9 @@ moves from a controlled but unclassified area to a Grade C area. The second bag 
 as it moves from a Grade C to a Grade A area. Ideally, a debagging unit should provide the automa-
 tion needed for this critical introduction. In some recent cases, an automated spray tunnel replaces the
 manual spray. Table 13.2.5-1 outlines a possible process for completing these tasks.
-Table 13.2.5-1
+
+**Table 13.2.5-1**
+
 Process for Filling Presterilized Syringes
 Process step
 Description
@@ -695,7 +699,9 @@ To ensure the isolation of the product, the assembled syringe is placed into a n
 tamination from the external environment. The nest is then placed into a tub that serves as primary
 packaging. The tub is sealed with a Tyvek® sheet before being placed into a single or double steribag,
 which is also sealed using the system shown in Table 13.1.1-1.
-Table 13.1.1-1
+
+**Table 13.1.1-1**
+
 Packaging methods
 Primary Packaging system
 Material
@@ -889,7 +895,9 @@ moves from a controlled but unclassified area to a Grade C area. The second bag 
 as it moves from a Grade C to a Grade A area. Ideally, a debagging unit should provide the automa-
 tion needed for this critical introduction. In some recent cases, an automated spray tunnel replaces the
 manual spray. Table 13.2.5-1 outlines a possible process for completing these tasks.
-Table 13.2.5-1
+
+**Table 13.2.5-1**
+
 Process for Filling Presterilized Syringes
 Process step
 Description
@@ -1211,7 +1219,16 @@ Leachables
 Human
 Factors
 
-**Table 14.1-1	 Example of Risk Assessment Output**
+**Table 14.1-1 Example of Risk Assessment Output**
+| Process Step | Process Parameter | Rationale | Criticality | Action |
+| --- | --- | --- | --- | --- |
+| Filter into Filling System | Filter specification | Noncompatibility of filter with formulation that could affect the product | High | Use adequate filter and conduct bacterial retention study over a designated time and range integrity |
+| Filling/Stoppering | Residual vapor hydrogen peroxide (VHP) concentration | Possibility that residual VHP in stopper bowl, chutes, etc., will affect product; Demonstrated effect on product at specified levels | High | Monitor residual levels of VHP after the cycle and the profile of concentration due to air changes |
+| Filter into Filling System | Filter contact time | Restricted time limit from bacterial retention study | Medium | Bacterial retention study over a designated time range |
+| Filling | Fill speed | Need to ensure that appropriate filling speed range is defined for the product to prevent product impact | Medium | Shear level assessment of product for filling process |
+| Filling | UV light exposure level from LPP | Possible effect on product of exposure to UV light | Low | Light level reading during LPP cycle |
+| Stoppering | Stoppering speed | Possible effect on product and process of speed of stoppering | Low | Assessment of stoppering speed during operational qualification runs on isolator |
+| Inspection | Syringe specification | Possible effect on product of specification of the product contact parts | Low | Confirmation that syringe is not damaged during loading and unloading from inspection equipment |
 
 Process
 Step
@@ -1316,7 +1333,20 @@ syringes. Finally, if the syringe will be used in conjunction with a device, the
 sentation can include stability studies as suggested by ICH Q1A(R2), Stability Testing of New Drug
 Substances and Products (107). Table 14.2.1-1 presents an outline of the stability studies that may be
 used to assess a typical PFS program.
-Table 14.2.1-1
+
+**Table 14.2.1-1 Outline of Typical Stability Studies Used to Assess PFSs**
+| Study | Purpose | Considerations |
+| --- | --- | --- |
+| Product Compatibility | Assess impact of product in siliconized PFS | If siliconization is an issue, process optimization should be considered. Options without silicone, such as polymer syringes, may also be considered if process optimization does not adequately address compatibility issues. |
+| Comparability | Compare stability to previous drug product presentation in vials, if available | Leveraging of drug product data in vials may result in an advantage for the shelf-life setting if comparability of dosage forms can be established. |
+| Long-Term Stability | Assess impact of product when stored at recommended temperature and in accelerated and stress conditions over time | The impact on the product and the ability of the syringe to deliver the product after stability testing must be assessed. Potential problems should be noted (e.g., needle clogging, changes in forces). Long-term stability tests should include the volumes used in clinical studies. May include a bracketing approach if the exact dose is not known at the time of the study (58). |
+| Freezing and Thawing | Assess impact of freezing and thawing on product when it is stored in PFS | After the cycling, assuming that the syringes maintain stability, stability testing of the syringes should be considered to assess any reductions in the expected stability based on the initial freeze/thaw cycling of the product in the PFS. |
+| Shear | Assess impact of shear on product in PFS | Shear may be introduced during the drug product manufacturing process and subsequent distribution steps. Shear impact may be different in benchtop testing and commercial processes. |
+| Silicone Sensitivity | Assess impact of silicone levels on product | A PFS with appropriate control of silicone levels must be chosen. |
+| Tungsten Sensitivity | Assess impact of tungsten on product | Select a PFS with minimal tungsten that is compatible with the drug product |
+| Photostability | Required as per ICH guidelines (107) | Provide secondary packaging and include labelling text. Additional studies might be required in typical light conditions if photostability proves to be detrimental to the product. |
+| Device Stability | Required as per ICH guidelines | This study determines whether an ancillary device will be used and must take into account the stability of the device when it is stored in nonrecommended conditions. |
+
 Outline of Typical Stability Studies Used to Assess PFSs
 Study
 Purpose
@@ -1396,7 +1426,17 @@ in Table 14.2.2-1. The tests in the table are examples and include characterizat
 not tested for each batch. Characterization can be conducted only on selected batches until sufficient
 knowledge for this parameter is obtained. Regulatory agencies have requested to consider particulate
 analysis as an additional assessment of the stability of the drug product (82,108).
-Table 14.2.2-1
+
+**Table 14.2.2-1 Stability Analysis for PFS Contents**
+| Category | Parameter | Test Methods Examples |
+| --- | --- | --- |
+| Physical | Appearance/Particulates | Light obscuration, microflow imaging |
+| Physical | Viscosity | Cone or plate viscometer/rheometer, Force measurement |
+| Biochemical | Aggregation | Size exclusion chromatography, dynamic light scattering |
+| Biochemical | Deamidation/Oxidation | Reverse-phase HPLC, capillary isoelectric focusing gel, peptide mapping |
+| Biochemical | Conformation | Fluorescence, circular dichroism (CD) |
+| Potency/Activity | — | Biacore, ELISA, cell-based assays |
+
 Stability analysis for PFS contents
 Category
 Parameter
@@ -1578,7 +1618,13 @@ dispersion. Silicone fluids are identified in major international and national p
 14.6-1 provides the classification of silicone fluids based on their kinematic viscosities (in cSt or mm2
 per second at 25°C).
 
-**Table 14.6-1	Types of Silicone**
+**Table 14.6-1 Types of Silicone**
+| Pharmacopeia | Classification | Viscosity Range at 25°C (cSt) |
+| --- | --- | --- |
+| USP | Dimethicone | 20 – 30,000 |
+| European Pharmacopeia | Dimethicone | 20 – 1,300 |
+| European Pharmacopeia | Silicone oil used as a lubricant | 1,000 – 30,000 |
+| Japanese Pharmacopeia | General | 2 – 5,000 |
 
 Pharmacopeia
 Classification
@@ -1602,7 +1648,21 @@ General
 To verify the compatibility with healthcare application, Table 14.6.1-1 shows common characteristics
 tested as called for in pharmacopeia monographs. The silicone oil supplier typically tests these char-
 acteristics to meet compendial requirements for medical use.
-Table 14.6.1-1
+
+**Table 14.6.1-1 Typical Silicone Oils Tests**
+| Tests to Perform |
+| --- |
+| Identification (infrared absorbance) |
+| Viscosity at 25°C |
+| Colorimetric (violet test) |
+| Reaction of silicates |
+| Acidity (potassium hydroxide titration) |
+| Mineral oils |
+| Phenylated compounds |
+| Refractive index (at 20°C) |
+| Heavy metals |
+| Volatile matter or loss on heating |
+
 Typical Silicone Oils Tests
 Tests to Perform
 Identification (infrared absorbance)
@@ -1721,7 +1781,16 @@ Leachables
 Human
 Factors
 
-**Table 14.1-1	 Example of Risk Assessment Output**
+**Table 14.1-1 Example of Risk Assessment Output**
+| Process Step | Process Parameter | Rationale | Criticality | Action |
+| --- | --- | --- | --- | --- |
+| Filter into Filling System | Filter specification | Noncompatibility of filter with formulation that could affect the product | High | Use adequate filter and conduct bacterial retention study over a designated time and range integrity |
+| Filling/Stoppering | Residual vapor hydrogen peroxide (VHP) concentration | Possibility that residual VHP in stopper bowl, chutes, etc., will affect product; Demonstrated effect on product at specified levels | High | Monitor residual levels of VHP after the cycle and the profile of concentration due to air changes |
+| Filter into Filling System | Filter contact time | Restricted time limit from bacterial retention study | Medium | Bacterial retention study over a designated time range |
+| Filling | Fill speed | Need to ensure that appropriate filling speed range is defined for the product to prevent product impact | Medium | Shear level assessment of product for filling process |
+| Filling | UV light exposure level from LPP | Possible effect on product of exposure to UV light | Low | Light level reading during LPP cycle |
+| Stoppering | Stoppering speed | Possible effect on product and process of speed of stoppering | Low | Assessment of stoppering speed during operational qualification runs on isolator |
+| Inspection | Syringe specification | Possible effect on product of specification of the product contact parts | Low | Confirmation that syringe is not damaged during loading and unloading from inspection equipment |
 
 Process
 Step
@@ -1826,7 +1895,20 @@ syringes. Finally, if the syringe will be used in conjunction with a device, the
 sentation can include stability studies as suggested by ICH Q1A(R2), Stability Testing of New Drug
 Substances and Products (107). Table 14.2.1-1 presents an outline of the stability studies that may be
 used to assess a typical PFS program.
-Table 14.2.1-1
+
+**Table 14.2.1-1 Outline of Typical Stability Studies Used to Assess PFSs**
+| Study | Purpose | Considerations |
+| --- | --- | --- |
+| Product Compatibility | Assess impact of product in siliconized PFS | If siliconization is an issue, process optimization should be considered. Options without silicone, such as polymer syringes, may also be considered if process optimization does not adequately address compatibility issues. |
+| Comparability | Compare stability to previous drug product presentation in vials, if available | Leveraging of drug product data in vials may result in an advantage for the shelf-life setting if comparability of dosage forms can be established. |
+| Long-Term Stability | Assess impact of product when stored at recommended temperature and in accelerated and stress conditions over time | The impact on the product and the ability of the syringe to deliver the product after stability testing must be assessed. Potential problems should be noted (e.g., needle clogging, changes in forces). Long-term stability tests should include the volumes used in clinical studies. May include a bracketing approach if the exact dose is not known at the time of the study (58). |
+| Freezing and Thawing | Assess impact of freezing and thawing on product when it is stored in PFS | After the cycling, assuming that the syringes maintain stability, stability testing of the syringes should be considered to assess any reductions in the expected stability based on the initial freeze/thaw cycling of the product in the PFS. |
+| Shear | Assess impact of shear on product in PFS | Shear may be introduced during the drug product manufacturing process and subsequent distribution steps. Shear impact may be different in benchtop testing and commercial processes. |
+| Silicone Sensitivity | Assess impact of silicone levels on product | A PFS with appropriate control of silicone levels must be chosen. |
+| Tungsten Sensitivity | Assess impact of tungsten on product | Select a PFS with minimal tungsten that is compatible with the drug product |
+| Photostability | Required as per ICH guidelines (107) | Provide secondary packaging and include labelling text. Additional studies might be required in typical light conditions if photostability proves to be detrimental to the product. |
+| Device Stability | Required as per ICH guidelines | This study determines whether an ancillary device will be used and must take into account the stability of the device when it is stored in nonrecommended conditions. |
+
 Outline of Typical Stability Studies Used to Assess PFSs
 Study
 Purpose
@@ -1906,7 +1988,17 @@ in Table 14.2.2-1. The tests in the table are examples and include characterizat
 not tested for each batch. Characterization can be conducted only on selected batches until sufficient
 knowledge for this parameter is obtained. Regulatory agencies have requested to consider particulate
 analysis as an additional assessment of the stability of the drug product (82,108).
-Table 14.2.2-1
+
+**Table 14.2.2-1 Stability Analysis for PFS Contents**
+| Category | Parameter | Test Methods Examples |
+| --- | --- | --- |
+| Physical | Appearance/Particulates | Light obscuration, microflow imaging |
+| Physical | Viscosity | Cone or plate viscometer/rheometer, Force measurement |
+| Biochemical | Aggregation | Size exclusion chromatography, dynamic light scattering |
+| Biochemical | Deamidation/Oxidation | Reverse-phase HPLC, capillary isoelectric focusing gel, peptide mapping |
+| Biochemical | Conformation | Fluorescence, circular dichroism (CD) |
+| Potency/Activity | — | Biacore, ELISA, cell-based assays |
+
 Stability analysis for PFS contents
 Category
 Parameter
@@ -2088,7 +2180,13 @@ dispersion. Silicone fluids are identified in major international and national p
 14.6-1 provides the classification of silicone fluids based on their kinematic viscosities (in cSt or mm2
 per second at 25°C).
 
-**Table 14.6-1	Types of Silicone**
+**Table 14.6-1 Types of Silicone**
+| Pharmacopeia | Classification | Viscosity Range at 25°C (cSt) |
+| --- | --- | --- |
+| USP | Dimethicone | 20 – 30,000 |
+| European Pharmacopeia | Dimethicone | 20 – 1,300 |
+| European Pharmacopeia | Silicone oil used as a lubricant | 1,000 – 30,000 |
+| Japanese Pharmacopeia | General | 2 – 5,000 |
 
 Pharmacopeia
 Classification
@@ -2112,7 +2210,21 @@ General
 To verify the compatibility with healthcare application, Table 14.6.1-1 shows common characteristics
 tested as called for in pharmacopeia monographs. The silicone oil supplier typically tests these char-
 acteristics to meet compendial requirements for medical use.
-Table 14.6.1-1
+
+**Table 14.6.1-1 Typical Silicone Oils Tests**
+| Tests to Perform |
+| --- |
+| Identification (infrared absorbance) |
+| Viscosity at 25°C |
+| Colorimetric (violet test) |
+| Reaction of silicates |
+| Acidity (potassium hydroxide titration) |
+| Mineral oils |
+| Phenylated compounds |
+| Refractive index (at 20°C) |
+| Heavy metals |
+| Volatile matter or loss on heating |
+
 Typical Silicone Oils Tests
 Tests to Perform
 Identification (infrared absorbance)

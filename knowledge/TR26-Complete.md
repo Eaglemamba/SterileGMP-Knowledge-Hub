@@ -502,6 +502,18 @@ capability of the filter membrane is related to the flow Vs, as shown in Equatio
 upstream volume must be known and the temperature in the upstream volume must be constant.
 
 **Table 11.5-1 Nomenclature for Symbols Used in Equations 10-14**
+| Symbol | Meaning | Symbol | Meaning |
+| --- | --- | --- | --- |
+| AF | area of the filter | p2I | pressure at tI |
+| D | diffusion constant for gas/liquid system | p2II | pressure at tII |
+| Hc | Henry's Law coefficient | p2I - p2II | pressure decay |
+| k | membrane specific correction factor | p2I - p1 | entered test pressure |
+| L | length of diffusion path | R | ideal gas constant |
+| N | moles | T | temperature |
+| M | molar mass | tII - tI | entered test time |
+| p1 | atmospheric pressure | Vup | upstream volume |
+| p2 | upstream pressure | Vs | standard volume flow |
+| p2 - p1 | differential pressure | ρS | density of gas in the standard state |
 
 Symbol Meaning Symbol Meaning
 
@@ -544,7 +556,7 @@ When investigating a manual integrity test failure, the following items should b
 
 Table 12.0-1 lists items for consideration when investigating an automatic device integrity-test failure.
 
-**Table 12.0-1 Automatic Device Integrity Test Troubleshooting Guide**
+**Table 12.0-1 lists items for consideration when investigating an automatic device integrity-test failure.**
 
 Issue Possible Cause
 
@@ -1102,7 +1114,7 @@ process-specific validation, only then should a filter be described as a “ster
 Due to the important nuances of these terms, recommended uses of these terms are summarized in Table
 3.1-1.
 
-**Table 3.1-1 Recommended Terminology Related to Sterilizing-Grade Filters**
+**Table 3.1-1 below defines three related but distinct terms that are commonly used — and commonly confused — in the context of sterilizing filtration.**
 
 Term Definition
 
@@ -1260,6 +1272,23 @@ filter user. Table 4.1-1 lists qualification and lot-release tests on membranes 
 performed by manufacturers and validated by filter users.
 
 **Table 4.1-1 Qualification and Validation Recommendations**
+| Criteria | Filter User | Filter Manufacturer - Membrane | Filter Manufacturer - Device |
+| --- | --- | --- | --- |
+| Bacteria Retention in Water or SLB with Integrity Test Correlation | - | Q, L | Q, L |
+| Bacteria Retention in Product with Respective Process | V | - | - |
+| Chemical Compatibility, Effects on Filter Integrity | V | Q | Q |
+| Extractables | E | Q | Q |
+| Leachables | E | - | - |
+| Sterilization Method, Effects on Filter Integrity | E | Q | Q |
+| Integrity Test (Water or Solvent) | E | Q, L | Q, L |
+| Integrity Test (Product) | V | - | - |
+| Toxicity Testing - Bioreactivity Tests | - | Q | Q |
+| USP Bacterial Endotoxin Test | E | - | Q, L |
+| USP Particulate Matter | E | - | Q |
+| USP Nonfiber Release | E | - | Q |
+| Flush Volume | E | - | Q* |
+| Filter Selection / Fit for Purpose | E | - | - |
+| Impact to Product CQAs | E | - | - |
 
 Criteria Filter
 User
@@ -1633,7 +1662,17 @@ development and revalidation of the sterilizing-filtration process as the condit
 lifecycle. Table 5.1.2-1 shows a list of potential factors to consider during the process design phase that can
 help determine operational ranges to study.
 
-**Table 5.1.2-1 Factors to Consider When Developing Operational Ranges for Study During**
+**Table 5.1.2-1 Factors to Consider When Developing Operational Ranges for Study During Sterilizing-Filtration Process Design and Development**
+| Factor | Extent | Rationale |
+| --- | --- | --- |
+| Temperature | Refrigerated to Warmed | Dependent on product quality effects and physical property optimization, can affect filter differential pressures and flow rate due to viscosity differences and also microbial growth rates |
+| Total Product Volume | Minimum and Maximum | Sets limits for bacterial retention study validation and allows proper filter sizing |
+| Flow Rate | Zero to Maximum Expected | Flow rate dependent on application, e.g., in line with sterile filling machine or bulk filtration |
+| Differential Pressure | Minimum to Maximum | Requires appropriate development studies to determine pressure/flow rate relationship; reasonable maximum differential pressure should be defined based on expected conditions as well as a minimum expected to aid, for example, in detection of filter installation errors |
+| Filtration Time | Maximum | Dependent on the processing time required, determines how long the process will take, including process setup and any necessary process stops |
+| Product Contact Time | Maximum | Extended contact time may impact product compatibility, membrane fouling, or filter integrity |
+| Driving Force | Pulsatile and/or Constant Pressure | Determines what type of pump or driving force will be used in the commercial setting; certain filters may be used in more than one manufacturing setup |
+| Configuration | Single or Redundant Filter Setup or Multiple Filter Setup | Knowledge of physical size constraints for the filter may necessitate the use of multiple filters; site, business or procedural factors may also require the use of redundant filtration; and knowing this up front will aid in the design of the filtration process |
 
 Sterilizing-Filtration Process Design and Development
 
@@ -1710,6 +1749,16 @@ differential pressure, flow path design, fluid viscosity, and temperature. Table
 between flow rate and a common list of process parameters.
 
 **Table 5.2-1 Common Factors Affecting Flow Rate**
+| Higher Flow Rate | Lower Flow Rate |
+| --- | --- |
+| High Porosity/Greater Void Volume | Low Porosity/Lesser Void Volume |
+| Large Pore Size | Small Pore Size |
+| Thin Membrane (less hydraulic resistance) | Thick Membrane (greater hydraulic resistance) |
+| Large Effective Filtration Area (EFA) | Low Effective Filtration Area (EFA) |
+| High Differential Pressure (fluid force) | Low Differential Pressure |
+| Straight Flow Path | Tortuous Flow Path |
+| Low Viscosity | High Viscosity |
+| High Temperature | Low Temperature |
 
 Higher Flow Rate Lower Flow Rate
 
@@ -1824,6 +1873,16 @@ the case where no defined maximum filter capacity can be determined, the maximum
 filtered should be specified so it can be covered during the filter-validation studies (see Section 6.8).
 
 **Table 5.3-1 Factors Affecting Throughput**
+| Higher Total Throughput | Lower Total Throughput |
+| --- | --- |
+| High Porosity/Higher Void Volume | Low Porosity/Lesser Void Volume |
+| Large Pore Size | Small Pore Size |
+| Low Nonspecific Adsorption | High Nonspecific Adsorption |
+| Asymmetric Pore Shape | Isotropic Pore Shape |
+| High Effective Filtration Area (EFA) | Low Effective Filtration Area (EFA) |
+| Low Contaminant Load | High Contaminant Load |
+| Nondeformable, Hard Contaminant | Deformable, Soft Contaminant |
+| Low Shear-Stress History | High Shear-Stress History |
 
 Higher Total Throughput Lower Total Throughput
 
@@ -2748,7 +2807,7 @@ the bacterial retention study.
 Table 6.6.6-1 lists examples of factors to consider when selecting worst-case parameters for processspecific
 bacterial retention studies.
 
-**Table 6.6.6-1 Considerations for Selection of Bacterial Retention Study Parameters**
+**Table 6.6.6-1 lists examples of factors to consider when selecting worst-case parameters for process-specific bacterial retention studies.**
 
 Description Parameters Worst-Case Rationale
 
@@ -2948,6 +3007,12 @@ contact time.
 A summary of worst-case conditions for conducting compatibility testing is shown in Table 6.8-1.
 
 **Table 6.8-1 Worst-Case Considerations for Compatibility Testing**
+| Description | Worst-Case | Rationale |
+| --- | --- | --- |
+| Temperature | Higher | Higher temperatures increase potential for chemical reactions |
+| Duration | Higher | Longer durations may increase potential for chemical reactions |
+| Properties of drug product | Consider pH extremes, solvent and product components | Based on risk assessment |
+| Sterilization | Maximum sterilization conditions (e.g., maximum temperature, number of cycles) | Worst-case sterilization conditions may impart more stress on the filter |
 
 Description Worst-Case Rationale
 
@@ -3133,6 +3198,11 @@ being tested, the wetting fluid used, and the capability of the automated integr
 general guidance is provided in Table 7.1.1-1.
 
 **Table 7.1.1-1 Suggested Integrity Test Methods Based on Filtration Surface Area**
+| Surface Area of Filter Media* | Suggested Integrity Test Method |
+| --- | --- |
+| < 0.03 m² | Bubble Point |
+| 0.03 -- 1.8 m² | Bubble Point or Diffusive Flow |
+| > 1.8 m² | Combination of Diffusive Flow and Bubble Point |
 
 Surface Area of Filter Media being Integrity
 Tested*
