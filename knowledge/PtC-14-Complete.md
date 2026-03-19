@@ -1021,7 +1021,9 @@ facility design constraints, size and layout of the facility, new build budgets,
 Regulators are increasingly pushing industry for containment measures similar to isolators, even if
 processing is not performed within an isolator.
 
-**Table 4.3-1 Background Grades and Assurances Considerations**
+**Table 4.3-1: Background Grades and Assurances Considerations**
+| Primary Containment — Grade A | Background Requirements | Considerations Summary (not exhaustive) |
+| --- | --- | --- |
 
 Primary Background Considerations Summary (not exhaustive)
 Containment Requirements
@@ -1091,7 +1093,9 @@ According to EU GMP Annex 1, the BSC is not classified as a barrier technology, 
 === PAGE 40 ===
 Comparison Between Biosafety Cabinet and Isolator for Facility Design
 
-**Table 4.3-2 Comparison Between Biosafety Cabinet and Isolator for Facility Design**
+**Table 4.3-2: Comparison Between BSC and Isolator for Facility Design**
+| Facility Design Factor | Class II BSC | Isolator |
+| --- | --- | --- |
 
 Facility Design Class II BSC Isolator
 Contamination Control
@@ -1119,7 +1123,9 @@ isolator system is placed in a minimum of a Grade D environment.
 
 === PAGE 41 ===
 
-**Table 4.3-3 Capital Expenditure and Operating Cost Considerations**
+**Table 4.3-3: Capital Expenditure and Operating Cost Considerations**
+| Primary Containment — Grade A | Background Requirements | Cost Profile |
+| --- | --- | --- |
 
 Primary Containment – Background Requirements Considerations Summary
 Grade A
@@ -1130,7 +1136,9 @@ Isolator – Closed Grade D* High CapEx and Low OpEx
 and the need for low particulate transfer as defined by the CCS.
 Cost Comparison Between the Use of Biosafety Cabinet and Isolator
 
-**Table 4.3-4 Cost Comparison Between the Use of Biosafety Cabinet and Isolator**
+**Table 4.3-4: Cost Comparison Between the Use of Biosafety Cabinet and Isolator**
+| Consideration | Cost Category | Class II BSC | Isolator |
+| --- | --- | --- | --- |
 
 Consideration Cost Class II BSC Isolator
 Equipment Initial Investment
