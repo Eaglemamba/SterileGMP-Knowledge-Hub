@@ -14,40 +14,25 @@ small openings) ................................................................
 *[Figure 2.3-3 Sample Air-flow Diagrams: (left) Biosafety Cabinet with Grade B Surrounding Area;]*
 
 (right) Closed Isolator with Grade D Surrounding Area .................................................. 21
-
-*[Figure 4.1-1 Biosafety Cabinet ................................................................................................................... 30]*
-
-*[Figure 4.1-2 Airflow Pattern in a Biosafety Cabinet .............................................................................. 31]*
-
-*[Figure 4.2-1 Closed Isolator with Material Air Lock, Centrifuge, and Incubator .............................. 34]*
-
-*[Figure 4.2-2 An Example of a Closed Isolator System for the Manufacturing of ATMPs .............. 34]*
-
-*[Figure 4.2-3 Computational Fluid Dynamics Studies ............................................................................. 35]*
-
-*[Figure 4.2-4 Safety Filter Before the Air-return Ducts .......................................................................... 35]*
-
-#### Table 4.3-1 Background Grades and Assurances Considerations ....................................................... 37
-
-#### Table 4.3-2 Comparison Between Biosafety Cabinet and Isolator for Facility Design ................... 39
-
-#### Table 4.3-3 Capital Expenditure and Operating Cost Considerations ................................................ 40
-
-#### Table 4.3-4 Cost Comparison Between the Use of Biosafety Cabinet and Isolator ........................ 40
+Figure 4.1-1 Biosafety Cabinet ................................................................................................................... 30
+Figure 4.1-2 Airflow Pattern in a Biosafety Cabinet .............................................................................. 31
+Figure 4.2-1 Closed Isolator with Material Air Lock, Centrifuge, and Incubator .............................. 34
+Figure 4.2-2 An Example of a Closed Isolator System for the Manufacturing of ATMPs .............. 34
+Figure 4.2-3 Computational Fluid Dynamics Studies ............................................................................. 35
+Figure 4.2-4 Safety Filter Before the Air-return Ducts .......................................................................... 35
+Table 4.3-1 Background Grades and Assurances Considerations ....................................................... 37
+Table 4.3-2 Comparison Between Biosafety Cabinet and Isolator for Facility Design ................... 39
+Table 4.3-3 Capital Expenditure and Operating Cost Considerations ................................................ 40
+Table 4.3-4 Cost Comparison Between the Use of Biosafety Cabinet and Isolator ........................ 40
 
 *[Figure 4.3-5 Isolator and Biosafety Cabinet Environment Options (positive-pressure cascade and]*
 
 bubble in the air locks) ........................................................................................................... 41
-
-*[Figure 5.1-1 Computerized Mock-Up ....................................................................................................... 43]*
-
-*[Figure 5.1-2 Virtual-Reality Mock-Up ....................................................................................................... 44]*
-
-*[Figure 5.1-3 Physical Mock-Up .................................................................................................................. 44]*
-
-*[Figure 5.3-1 Containment Test Method on a Biosafety Cabinet (KI-Discus-Test) .......................... 49]*
-
-*[Figure 5.3-2 Containment Test Method on a Fume Cupboard (ConT®Test) .................................... 50]*
+Figure 5.1-1 Computerized Mock-Up ....................................................................................................... 43
+Figure 5.1-2 Virtual-Reality Mock-Up ....................................................................................................... 44
+Figure 5.1-3 Physical Mock-Up .................................................................................................................. 44
+Figure 5.3-1 Containment Test Method on a Biosafety Cabinet (KI-Discus-Test) .......................... 49
+Figure 5.3-2 Containment Test Method on a Fume Cupboard (ConT®Test) .................................... 50
 
 *[Figure 5.4-1 Shows the Pressure Difference Measurement Between the Isolator Chamber and]*
 
@@ -507,9 +492,7 @@ continuous material transfer in/out (Figure 2.3-1), or Grade D for a closed isol
 Cleanrooms are designed to maintain positive pressure, preventing "unclean" (contaminated) air from
 flowing inside. The idea is to ensure that filtered air always flows from the cleanest to less-clean spaces (i.e.,
 a pressure cascade). EU GMP Annex 1 states that a positive pressure differential of a minimum of
-
-## 10 Pascals should be maintained between each adjacent space (1). In a multichambered cleanroom, for
-
+10 Pascals should be maintained between each adjacent space (1). In a multichambered cleanroom, for
 example, the cleanest room is kept at the highest pressure. Pressure levels are set so that the cleanest air
 flows into spaces with less-clean air (e.g., air locks that act as a bubble or as a sink). Thus, multiple pressure
 levels may need to be maintained. For potent products or for viral vectors, the pressure concept should be
@@ -1070,7 +1053,7 @@ facility design constraints, size and layout of the facility, new build budgets,
 Regulators are increasingly pushing industry for containment measures similar to isolators, even if
 processing is not performed within an isolator.
 
-#### Table 4.3-1 Background Grades and Assurances Considerations
+**Table 4.3-1 Background Grades and Assurances Considerations**
 
 Primary Background Considerations Summary (not exhaustive)
 Containment Requirements
@@ -1140,7 +1123,7 @@ According to EU GMP Annex 1, the BSC is not classified as a barrier technology, 
 === PAGE 40 ===
 Comparison Between Biosafety Cabinet and Isolator for Facility Design
 
-#### Table 4.3-2 Comparison Between Biosafety Cabinet and Isolator for Facility Design
+**Table 4.3-2 Comparison Between Biosafety Cabinet and Isolator for Facility Design**
 
 Facility Design Class II BSC Isolator
 Contamination Control
@@ -1168,7 +1151,7 @@ isolator system is placed in a minimum of a Grade D environment.
 
 === PAGE 41 ===
 
-#### Table 4.3-3 Capital Expenditure and Operating Cost Considerations
+**Table 4.3-3 Capital Expenditure and Operating Cost Considerations**
 
 Primary Containment – Background Requirements Considerations Summary
 Grade A
@@ -1179,7 +1162,7 @@ Isolator – Closed Grade D* High CapEx and Low OpEx
 and the need for low particulate transfer as defined by the CCS.
 Cost Comparison Between the Use of Biosafety Cabinet and Isolator
 
-#### Table 4.3-4 Cost Comparison Between the Use of Biosafety Cabinet and Isolator
+**Table 4.3-4 Cost Comparison Between the Use of Biosafety Cabinet and Isolator**
 
 Consideration Cost Class II BSC Isolator
 Equipment Initial Investment

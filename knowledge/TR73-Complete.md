@@ -94,7 +94,7 @@ must follow applicable ICH guidelines and regulatory requirements. Complete meth
 studies should enable future long-term routine use in commercial QC laboratories.
 76
 
-#### Table 12.4-1	Comparison of CCI testing methods (101)
+**Table 12.4-1	Comparison of CCI testing methods (101)**
 
 Considerations
 Vacuum/Pressure Decay
@@ -483,7 +483,7 @@ Preparation includes washing, siliconization, and sterilization prior to filling
 direct process control, it also requires a high level of internal subject matter expertise. Table 13.3-1
 outlines a possible process for completing these tasks.
 
-#### Table 13.3-1	Process for Filling Bulk Syringes
+**Table 13.3-1	Process for Filling Bulk Syringes**
 
 Process step
 Description
@@ -550,7 +550,7 @@ For training purposes, operating procedures should provide documentation of defe
 and the handling of rejects. The classification of the defects must include an acceptance criterion for
 the number of rejected syringes per defect before further actions are initiated.
 
-#### Table 13.4-1	Examples of post-filling visual inspection defects
+**Table 13.4-1	Examples of post-filling visual inspection defects**
 
 Inspected
 Area
@@ -960,7 +960,7 @@ Preparation includes washing, siliconization, and sterilization prior to filling
 direct process control, it also requires a high level of internal subject matter expertise. Table 13.3-1
 outlines a possible process for completing these tasks.
 
-#### Table 13.3-1	Process for Filling Bulk Syringes
+**Table 13.3-1	Process for Filling Bulk Syringes**
 
 Process step
 Description
@@ -1027,7 +1027,7 @@ For training purposes, operating procedures should provide documentation of defe
 and the handling of rejects. The classification of the defects must include an acceptance criterion for
 the number of rejected syringes per defect before further actions are initiated.
 
-#### Table 13.4-1	Examples of post-filling visual inspection defects
+**Table 13.4-1	Examples of post-filling visual inspection defects**
 
 Inspected
 Area
@@ -1236,7 +1236,7 @@ Human
 Factors
 88
 
-#### Table 14.1-1	 Example of Risk Assessment Output
+**Table 14.1-1	 Example of Risk Assessment Output**
 
 Process
 Step
@@ -1608,7 +1608,7 @@ dispersion. Silicone fluids are identified in major international and national p
 14.6-1 provides the classification of silicone fluids based on their kinematic viscosities (in cSt or mm2
 per second at 25°C).
 
-#### Table 14.6-1	Types of Silicone
+**Table 14.6-1	Types of Silicone**
 
 Pharmacopeia
 Classification
@@ -1755,7 +1755,7 @@ Human
 Factors
 88
 
-#### Table 14.1-1	 Example of Risk Assessment Output
+**Table 14.1-1	 Example of Risk Assessment Output**
 
 Process
 Step
@@ -2127,7 +2127,7 @@ dispersion. Silicone fluids are identified in major international and national p
 14.6-1 provides the classification of silicone fluids based on their kinematic viscosities (in cSt or mm2
 per second at 25°C).
 
-#### Table 14.6-1	Types of Silicone
+**Table 14.6-1	Types of Silicone**
 
 Pharmacopeia
 Classification
@@ -2363,9 +2363,7 @@ Microbial limits and bioburdens/endotoxins
 •
 •
 •
-
-## 21 CFR 610.12
-
+21 CFR 610.12
 USP <71> Sterility Tests
 EU Annex 1
 Pharmacopeia European 2.6.1
@@ -2519,15 +2517,10 @@ determination of dead space
 •
 General Quality
 Systems
-
-## 21 CFR 210
-
-## 21 CFR 211
-
-## 21 CFR 610
-
-## 21 CFR 820
-
+21 CFR 210
+21 CFR 211
+21 CFR 610
+21 CFR 820
 ICH Q8
 ICH Q9
 ICH Q10
