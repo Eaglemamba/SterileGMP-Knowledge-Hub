@@ -206,3 +206,19 @@ If a new PDF introduces false headings, update `UNIT_WORDS` or the rejection rul
 | Numbered headers | `42 Technical Report No. 60` (page number + report name) |
 
 If a new PDF has different header/footer patterns, add them to `PDF_NOISE_PATTERNS` in `pda_engine.py`.
+
+### Knowledge MD Table Formatting (future improvement)
+Current `pda_engine.py md` generates MDs from raw source text, so PDF tables lose their structure and appear as fragmented lines. For future new reports, use Claude to generate the structured MD instead of pure programmatic extraction:
+
+```bash
+# Step 3 (MD-first): Instead of just running pda_engine.py md,
+# use Claude to read the source text + original PDF and produce
+# a structured MD with proper Markdown tables.
+#
+# This costs ~30-60K tokens per section but produces:
+# - Proper | pipe | table | formatting
+# - Verified heading hierarchy
+# - Clean paragraph flow (no mid-paragraph page breaks)
+```
+
+Existing 12 reports have unformatted tables in their knowledge MDs. These can be upgraded incrementally by re-generating individual report MDs via Claude when time permits.
