@@ -38,7 +38,27 @@ Operation ......................................................................
 Figure 5.3.1-1 Decision-Tree Guideline (Stage 3b) ................................................................................. 76
 Figure 5.4.1-1 Integration of Data Sources for Improved Process Controls ..................................... 78
 
-**Table 5.5.3-1 Sample of Annual Product Review or Yearly Biologic Product Report Elements**
+**Table 5.5.3-1: Annual Product Review or Yearly Biologic Product Report Elements Supported by CPV**
+| Report Elements / Sections | Supported by CPV Data |
+| --- | --- |
+| Manufactured Batches Review | Yes |
+| Raw Material Attribute Review | Yes |
+| Environmental Monitoring Review | Yes |
+| Media Fill Review | Yes |
+| PM / Cal Review | No |
+| Yield Trend Review | Yes |
+| Training Review | No |
+| Change Trend Review (Continuous Improvement included) | Yes |
+| CPP Trend Review | Yes |
+| CQA Trend Review | Yes |
+| Re-Qualification / Validation Results Review | Yes |
+| Non-Conformance / Investigation Review | No |
+| Rejected Batch Review | No |
+| Complaint Trend Review | No |
+| Field Alert / Recall Review | No |
+| Retain Sample Review | No |
+| Quality Agreement Review | No |
+| Review of Previous APR | No |
 
 Supported by Continued Process Verification ......................................................................................... 81
 
@@ -784,6 +804,30 @@ elements of the control strategy and determining process capabilities, set speci
 evaluating laboratory models and transfer processes. Strategies and fundamentals of KM are discussed further in Section 6.5.
 
 **Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Step**
+| Process Variable | Process Parameters | Set Point | PAR* | Parameter Designation** | Rationale | Product/Process Attribute | Expected Range |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| General |
+| Membrane Area | — | 2 m² | N/A | — | — | — | — |
+| Molecular Weight Cut-Off | — | 30 kDa | N/A | — | — | — | — |
+| Membrane Polymer | — | Polysulfone | N/A | — | — | — | — |
+| Pre-Use Cleaning & Flushing |
+| Cleaning Solution: Concentration | — | 0.4 to 0.6 N NaOH | — | Non-Key | Low risk of product or process impact | N/A | — |
+| Recirculation Rate | — | 10 L/min | 8 – 12 L/min | Non-Key | Adequate recirculation is needed to ensure proper cleaning, but acceptable results are achieved over a wide range | N/A | — |
+| Transmembrane Pressure (TMP) | — | 10 PSI | 5 – 15 PSI | Non-Key | Low risk of product or process impact over a wide range | N/A | — |
+| Temperature | — | 30 °C | 25 – 35 °C | Non-Key | May impact cleaning effectiveness if far out of range; procedural controls in place | N/A | — |
+| Time | — | 60 min | 60 – 90 min | Non-Key | Wide range, directly controlled to prevent running outside of the validated range | N/A | — |
+| WFI Flush Volume | — | 20 L/m² | ≥20 L/m² | Non-Key | Wide range, directly controlled | N/A | — |
+| Pre-Use Qualification |
+| Integrity Test Pressure | — | 15 PSIG | 15 – 18 PSIG | Critical | If test pressure is incorrect, the test result is invalid | N/A | — |
+| Water Flux TMP | — | 10 PSIG | 8 – 12 PSIG | Non-Key | Water flux can be corrected for actual pressure | N/A | — |
+| Water Flux Temperature | — | 20 °C | 18 – 22 °C | Non-Key | Water flux can be corrected for actual temperature | N/A | — |
+| Filter Integrity | — | Manufacturer Specifications | Pass | Critical | Verification of filter integrity is crucial to ensure process effectiveness; filter-integrity testing is an output of the prequalification, but an input to processing the feed stream | N/A | — |
+| System Priming |
+| Buffer Conductivity & pH | — | Solution Acceptance Criteria | — | Critical | All process buffer specifications categorized as critical, even though procedural controls are in place to prevent release of nonconforming buffers to production; buffers outside of established ranges may impact product quality during processing | N/A | — |
+| Buffer Volume | — | 35 L | 25 – 50 L | Non-Key | Unlikely to affect product or process; directly controllable | N/A | — |
+| Recirculation Rate | — | 8 L/min | 4 – 12 L/min | Non-Key | Unlikely to affect product or process; directly controllable | N/A | — |
+| Transmembrane Pressure (TMP) | — | 12 PSI | 10 – 15 PSI | Non-Key | Unlikely to affect product or process; directly controllable | N/A | — |
+| Temperature | — | 20 °C | 15 – 25 °C | Non-Key | Unlikely to affect product or process; directly controllable | N/A | — |
 
 Process
 Variable
@@ -4582,7 +4626,27 @@ few of which are identified in Table 5.5.3-1. The opportunity to continually ana
 than in the traditional APQR makes the CPV program critical in detecting drifts and proactively taking
 action (if required) on those signals to avoid potential process failures.
 
-**Table 5.5.3-1 Sample of Annual Product Review or Yearly Biologic Product Report Elements**
+**Table 5.5.3-1: Annual Product Review or Yearly Biologic Product Report Elements Supported by CPV**
+| Report Elements / Sections | Supported by CPV Data |
+| --- | --- |
+| Manufactured Batches Review | Yes |
+| Raw Material Attribute Review | Yes |
+| Environmental Monitoring Review | Yes |
+| Media Fill Review | Yes |
+| PM / Cal Review | No |
+| Yield Trend Review | Yes |
+| Training Review | No |
+| Change Trend Review (Continuous Improvement included) | Yes |
+| CPP Trend Review | Yes |
+| CQA Trend Review | Yes |
+| Re-Qualification / Validation Results Review | Yes |
+| Non-Conformance / Investigation Review | No |
+| Rejected Batch Review | No |
+| Complaint Trend Review | No |
+| Field Alert / Recall Review | No |
+| Retain Sample Review | No |
+| Quality Agreement Review | No |
+| Review of Previous APR | No |
 
 Supported by Continued Process Verification
 Report Elements/Sections
@@ -4834,6 +4898,9 @@ potential severity level for the specific attribute. Part of the output of this 
 scientific studies to reduce the amount of uncertainty for higher-risk attributes (refer to Table 6.1.1-1) (79).
 
 **Table 6.1.1-1 Product Attribute Criticality Risk Assessment Example**
+| Severity | Likelihood |
+| --- | --- |
+| LowLarge amount of in-house knowledge, large body of knowledge in literature | MediumSome in-house knowledge and scientific literature | HighNo/little in-house knowledge, very limited information in scientific literature |
 
 #### 6.1.2 Risk Management in Stage 2 – Process Qualification
 
@@ -4887,6 +4954,11 @@ Critical
 Critical
 
 **Table 6.1.2-1 Risk-Based Qualification Planning**
+| Risk Assessment Output Ratings | Qualification Planning |
+| --- | --- |
+| High | Testing to satisfy validation requirements will occur during qualification. Documentation and sampling requirements are high. |
+| Medium | A blend of Qualification and Commissioning activities can be used to satisfy validation requirements. Sampling requirements are moderate given appropriate controls and risk reviews. |
+| Low | Testing to satisfy validation requirements can occur during commissioning phases. Appropriate controls and risk reviews should be in place. |
 
 Risk assessments performed during Stage 2 not only help prioritize qualification activities but also aid in the
 ongoing collection of knowledge and the planning of statistical sampling. Generally, three factors—
@@ -4912,6 +4984,11 @@ not always technology-based; increase of detectability may as well be driven by 
 training. The HACCP is a useful QRM tool that can help in enhancing controls.
 
 **Table 6.1.2-2 Severity Rating and Sampling Requirements Risk**
+| Severity Rating | Statistical and Sampling Requirements | Example Confidence Level Required |
+| --- | --- | --- |
+| High | +++ | 99% |
+| Medium | ++ | 95% |
+| Low | + | 90% |
 
 Risk Assessment
 Output Ratings
@@ -4969,6 +5046,23 @@ Process Control, and Process Capability—are described in more detail in Sectio
 Section 9.0 (Appendix I). Additional information on statistical methods can be found in TR 59 (63).
 
 **Table 6.2-1 Statistical Methods and the Typical Stages at Which They are Used**
+| Statistical Tool | Stage 1Process Design | Stage 2Performance Qualification (PQ) | Stage 3Continued Process Verification (CPV) |
+| --- | --- | --- | --- |
+| Descriptive Statistics (e.g., mean, standard deviation) | X | X | X |
+| Statistical Process Control Charts | X | X | X |
+| Statistical Power and Sample Size Determination | X | X | X |
+| Process Capability Study and Capability Indices | X | X | X |
+| Design of Experiments (DoE) | X | | |
+| Measurement Systems Analysis (Gage R&R) | X | | |
+| Robust Process Design / Tolerance Analysis / Taguchi Methods | X | | |
+| Multi-Vari Chart | X | | |
+| Regression and Correlation Analysis | X | | |
+| Analysis of Variance (ANOVA) | X | X | X |
+| Levene / Brown-Forsyth, Bartlett, Fmax tests for Variation | X | X | X |
+| Hypothesis Tests / Confidence Intervals | X | X | X |
+| Pareto Analysis* | X | | X |
+| Acceptance Sampling Plans | | X | X |
+| Normal and Nonparametric Tolerance Intervals | | X | X |
 
 Statistical Tool
 Stage 1
@@ -5985,7 +6079,7 @@ Material))
 An example of the three stages of PV for a humanized IgG1 is provided in Table 7.1-1 (Stage 1), Table 7.1-
 2 (Stage 2), and Table 7.1-3 (Stage 3).
 
-**Table 7.1-1 Stage 1: Process Design (Large Molecule Example)**
+**Table 7.1-1 Stage 1**
 
 Category
 Activities
@@ -6400,7 +6494,7 @@ stability data acquired during clinical
 development is also used in the submission
 package.
 
-**Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example)**
+**Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example) — Continued**
 
 Category
 Activities
@@ -6459,6 +6553,8 @@ specification changes that might occur.
 An example of the three stages of PV for an organic, parenteral dosage form is provided in Table 7.2-1 (Stage 1), Table 7.2-2 (Stage 2), and Table 7.2-3 (Stage 3).
 
 **Table 7.2-1 Stage 1: Process Design (Small Molecule Example)**
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 Category
 Activities
@@ -6754,6 +6850,8 @@ attributes, parameters, and systems were
 known.
 
 **Table 7.2-2 Stage 2: Process Qualification (Small Molecule Example)**
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 Category
 Activities
@@ -6947,6 +7045,8 @@ used in the submission package on an as-needed basis.
 N/A
 
 **Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example)**
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 Category
 Activities
@@ -7393,6 +7493,17 @@ considered complete. Reduced sampling for critical characteristics may continue 
 more lots until 75% coverage is reached, at which point, routine sampling begins (2).
 
 **Table 9.2-1 Expected Between-Lot Variation in Number of Lots**
+| Expected Coverage | Number of Lots (nL) |
+| --- | --- |
+| 33% | 2 |
+| 50% | 3 |
+| 60% | 4 |
+| 67% | 5 |
+| 75% | 7 |
+| 80% | 9 |
+| 85% | 12 |
+| 90% | 19 |
+| 95% | 39 |
 
 Expected
 Coverage
@@ -7497,6 +7608,17 @@ special causes. Table 9.6-1 shows the required number of conforming lots. This m
 "confidence for reliability."
 
 **Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate**
+| Confidence | Conformance Rate | Number of Successive Conforming Lots to Ensure Conformance Rate with Stated Confidence |
+| --- | --- | --- |
+| 50% | 90% | 7 |
+| 95% | 14 |
+| 99% | 69 |
+| 90% | 90% | 22 |
+| 95% | 45 |
+| 99% | 230 |
+| 95% | 90% | 29 |
+| 95% | 59 |
+| 99% | 299 |
 
 Confidence
 Conformance

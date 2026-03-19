@@ -42,10 +42,10 @@ evaluated by the NBs, but the medicinal product (drug) is not.
 *[Figure 4.2-1 provides a schematic overview of the drug and the device parts of a PFS and its compo-]*
 
 nents; a backstop can be added if needed.
+Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.
 
 **Table 1.2-1 delineates the items considered in and out of scope of TR-73-2.**
 
-Table 1.2-1
 Items In and Out of Scope of TR-73-2, by Category
 Category
 In Scope
@@ -373,12 +373,16 @@ Ultimately, the responsibility for the entire content of the submission file lie
 Product Description
 The submission file to NBs should include a description of the product as it is intended to be placed
 on the market (i.e., as a single integral product). The description should contain key information (as in
-Table 4.1-1) as well as references to more detailed information. The summary may be phrased like this:
+
+**Table 4.1-1) as well as references to more detailed information. The summary may be phrased like this:**
+
 Product “Prefilled Syringe XYZ” is intended to be placed on the market in such a
 way that the medicinal product and the device intended to administer the medicinal
 product form a single integral product that is intended exclusively for use in the given
 combination, and is not reusable, as defined by MDR Article 1(9), subparagraph 2.
-Table 4.1-1
+
+**Table 4.1-1**
+
 Example of Marketing Authorization Application (MAA) Information Summary on the Medicinal Product
 Category
 Status
@@ -416,7 +420,9 @@ apply and are applied here for the “virtual” device part (18).
 “Drug for injection” is added here for illustration only; drug is not in scope of this document.
 Figure 4.2-1
 Schematic Overview of the Drug and the Device with its Components
-Table 4.2-1
+
+**Table 4.2-1**
+
 Example of Identification of “Virtual” Device
 Category
 Status
@@ -454,7 +460,9 @@ throughout the documentation submitted for assessment.
 3	 MDS/MDT: Code given by EMA to describe technologies or processes
 Figure 4.2-2
 Syringe Subassembly Ready for Filling
-Table 4.2-2
+
+**Table 4.2-2**
+
 Example of Device Attributes
 Category
 Status
@@ -486,7 +494,9 @@ EN 60601-1-2, EN 62366-1, and TR 62366-2) (20-22). Additional aspects to be cons
 be the frequency of use of the DDC to address the cumulative use and exposure to the device parts,
 intended use locations on the body, contraindications, warnings, and dose and dose ranges (if other
 dosages are available).
-Table 4.2-3
+
+**Table 4.2-3**
+
 Example of Device Intended Use and Intended User Population
 Category
 Status
@@ -523,7 +533,9 @@ The single-use, not reusable “Prefilled Syringe XYZ” with a staked needle co
 the components stated in Table 4.4-1 and the functional units stated in Table 4.4-2.
 Figure 4.4-1
 Components of a Syringe
-Table 4.4-1
+
+**Table 4.4-1**
+
 Example of Component Information
 Identifier
 Component Name/
@@ -589,7 +601,9 @@ condition
 Provides safety information (e.g., drug, strength, expiry date)
 Document XXX
 Document XXY
-Table 4.4-2
+
+**Table 4.4-2**
+
 Example of Functional Unit Information
 Identifier
 Component Name/
@@ -622,14 +636,14 @@ the material categorization (e.g., in line with ISO 10993-1:2018). The presence 
 is stated in the context of GSPR 10 is emphasized to allow an assessment of the material criticality.
 A rationale for the choice of material may be added.
 The material description may be phrased like this:
-
-**Table 4.5-1 contains information on the materials used to produce the components,**
-
+Table 4.5-1 contains information on the materials used to produce the components,
 and information on their body–drug product interaction. Materials relevant in the con-
 text of GSPR 10, that is, materials or substances offering concentration limits or requir-
 ing “special attention” (e.g., carcinogenic, mutagenic and reprotoxic chemicals (CMR),
 endocrine-disrupting (ED) substances, nanomaterials) are stated in Table 4.5-2.
-Table 4.5-1
+
+**Table 4.5-1**
+
 Example of Material Information
 Component Name/
 Number
@@ -697,7 +711,9 @@ Ink: Black ink yyy (Supplier xxx)
 For more details, see document XXX.
 Yes – intact skin
 No
-Table 4.5-2
+
+**Table 4.5-2**
+
 Example of Materials Relevant in the Context of GSPR 10
 Component Name/ Number
 Presence of CMR, ED, or
@@ -742,7 +758,9 @@ Each final assembled device, that is, the device being in the final status as an
 of the DDC, is individually packed in a blister that is placed in a carton box together
 with a product information leaflet (package insert). An overview of the packaging mate-
 rials is given in Table 4.6-1.
-Table 4.6-1
+
+**Table 4.6-1**
+
 Example of Overview of Packaging Materials
 Component Name/Number
 Dimensions
@@ -809,11 +827,11 @@ Change communication policy for specification changes/major process changes
 The supplier of the subassembly is responsible for incorporating available information for the respec-
 tive sourced components, for example, needles, adhesives, lubricants, needle shield, and coatings, in
 their information package.
-
-**Table 4.7.1-1 contains an overview of relevant information as presented in TR-73 regarding the man-**
-
+Table 4.7.1-1 contains an overview of relevant information as presented in TR-73 regarding the man-
 ufacturing of the different components and subassemblies.
-Table 4.7.1-1
+
+**Table 4.7.1-1**
+
 Example of Overview of Device Part Manufacturing (Components and Subassembly)
 Component Name/ Number
 Link to Relevant Information in TR-73
@@ -839,9 +857,7 @@ Needle Shield
 Chapters 5, 6, 8, 10, 13
 Document XXX
 4.7.2	 Drug-Device Combination Manufacturing (Filling, Assembly, and Packaging)
-
-**Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and**
-
+Table 4.7.2-1 contains an overview of relevant information from TR-73 on the filling, assembly, and
 packaging of the final DDC. Respective process validation summaries of all steps should be included.
 
 **Table 4.7.2-1	 Example of Overview of DDC Manufacturing (Filling, Assembly, and Packaging)**
@@ -918,7 +934,9 @@ lubrication, coating, and/or lamination if existing. Content listed here is prov
 of the plunger stopper/needle shield to the applicant.
 Documents regarding the plunger rod, the rigid part of the needle shield (if used), and the backstop
 (if used) are listed in Section 5.3.
-Table 5.1-1
+
+**Table 5.1-1**
+
 Supportive Documents Suggested to Address Relevant GSPRs
 GSPR
 Scope
@@ -1768,7 +1786,9 @@ and readability of the GSPR table (Table 5.1-1), they are addressed separately i
 Table 5.3-1 provides examples of requirements that should be addressed and can be supported using
 supplier documentation, for example, general statements, compliance certificates, data sheets, and test
 reports.
-Table 5.3-1
+
+**Table 5.3-1 provides examples of requirements that should be addressed and can be supported using supplier documentation, for example, general statements, compliance certificates, data sheets, and test reports.**
+
 Examples of Supportive Documents for Plunger Rod, Rigid Part of RNS and, if used, Finger Flange Extension/Backstop
 Material Safety
 Biocompatibility information
@@ -1815,7 +1835,9 @@ Use wording that aligns with the wording of the requirement (same terminology)
 •
 Be precise and keep it simple
 Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.
-Table 5.5-1
+
+**Table 5.5-1 provides a few examples of justifications; it is not exhaustive and provides only suggestions for how these justifications may be phrased.**
+
 Nonapplicable GSPRs and Suggested Justifications
 GSPR Number
 GSPR Content

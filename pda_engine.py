@@ -123,7 +123,7 @@ APPENDIX_RE = re.compile(
     r'^(Appendix\s+[A-Z0-9]+(?:\.\d+)?)[:\s]+(.+)$', re.IGNORECASE
 )
 TABLE_HEADING_RE = re.compile(
-    r'^(Table\s+\d+[\.\d]*[-–]\d+)\s+(.+)$'
+    r'^(Table\s+\d+[\.\d]*[-–]\d+\S*)\s*(.*)$'
 )
 FIGURE_HEADING_RE = re.compile(
     r'^(Figure\s+\d+[\.\d]*[-–]\d+)\s+(.+)$'
@@ -158,6 +158,98 @@ def _is_noise(line: str) -> bool:
     return False
 
 
+def _extract_tables_from_html(report_id: str, config: dict) -> dict:
+    """Extract properly formatted MD tables from HTML section files.
+
+    Returns a dict mapping table title (lowercase, normalized) to the
+    full MD pipe-table block including the title line.
+    """
+    from merge_engine import html_to_markdown
+
+    sections_dir = REPO_ROOT / report_id / "sections"
+    if not sections_dir.exists():
+        return {}
+
+    tables = {}
+    section_map = config.get("section_map", [])
+
+    for entry in section_map:
+        for filename in entry["files"]:
+            filepath = sections_dir / filename
+            if not filepath.exists():
+                continue
+            with open(filepath, "r", encoding="utf-8") as f:
+                html = f.read()
+
+            # Strip style/script/head
+            html_clean = re.sub(r'<style[^>]*>.*?</style>', '', html, flags=re.DOTALL | re.IGNORECASE)
+            html_clean = re.sub(r'<script[^>]*>.*?</script>', '', html_clean, flags=re.DOTALL | re.IGNORECASE)
+            html_clean = re.sub(r'<head[^>]*>.*?</head>', '', html_clean, flags=re.DOTALL | re.IGNORECASE)
+
+            # Strip right-column (Chinese commentary) divs
+            html_clean = re.sub(r'<div\s+class="right-column"[^>]*>.*?</div>\s*</div>',
+                                '', html_clean, flags=re.DOTALL)
+
+            md = html_to_markdown(html_clean)
+
+            # Find table blocks: a "Table X.X-X Title" line followed by pipe rows
+            in_table = False
+            table_title = ""
+            table_lines = []
+
+            for line in md.split('\n'):
+                # Detect table title
+                tm = re.match(r'^#{0,4}\s*(Table\s+\d+[\.\d]*[-–]\d+\S*)\s+(.+)', line.strip())
+                if tm and '...' not in line:
+                    if in_table and table_lines:
+                        key = re.sub(r'\s+', ' ', table_title.lower().strip())
+                        tables[key] = '\n'.join(table_lines)
+                    table_title = tm.group(1) + ' ' + tm.group(2)
+                    table_lines = [f"**{table_title.strip()}**", ""]
+                    in_table = True
+                    continue
+
+                if in_table:
+                    if line.strip().startswith('|'):
+                        table_lines.append(line)
+                    elif line.strip() == '':
+                        table_lines.append(line)
+                    else:
+                        # End of table block
+                        if any('|' in tl for tl in table_lines):
+                            key = re.sub(r'\s+', ' ', table_title.lower().strip())
+                            tables[key] = '\n'.join(table_lines)
+                        in_table = False
+                        table_title = ""
+                        table_lines = []
+
+            # Flush last table
+            if in_table and table_lines and any('|' in tl for tl in table_lines):
+                key = re.sub(r'\s+', ' ', table_title.lower().strip())
+                tables[key] = '\n'.join(table_lines)
+
+    # Clean up tables: remove empty lines, strip CJK from all lines
+    CJK_RE = re.compile(
+        r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff'
+        r'\u3000-\u303f\uff00-\uffef\u2e80-\u2eff\u2f00-\u2fdf]'
+    )
+    cleaned = {}
+    for key, tbl in tables.items():
+        clean_lines = []
+        for l in tbl.split('\n'):
+            if not l.strip():
+                continue
+            # Strip CJK characters from table content
+            l = CJK_RE.sub('', l)
+            l = re.sub(r'\s{2,}', ' ', l).strip()
+            if l:
+                clean_lines.append(l)
+        if clean_lines:
+            cleaned[key] = '\n'.join(clean_lines)
+
+    return cleaned
+
+
 def source_to_markdown(
     report_id: str,
     config: dict,
@@ -166,8 +258,15 @@ def source_to_markdown(
 
     Reads all source text files in order, detects heading hierarchy,
     strips PDF noise, and produces clean English-only Markdown.
+    Tables are extracted from HTML sections (which have proper structure)
+    and spliced into the source-text MD at matching table title locations.
     """
     source_dir = REPO_ROOT / report_id / "source"
+
+    # Extract properly formatted tables from HTML sections
+    html_tables = _extract_tables_from_html(report_id, config)
+    if html_tables:
+        print(f"  [INFO] Extracted {len(html_tables)} tables from HTML sections")
 
     title = f"{config['report_title_en']}: {config['report_subtitle_en']}"
     lines = [f"# {title}", ""]
@@ -258,18 +357,30 @@ def source_to_markdown(
                 lines.append("")
                 continue
 
-            # Detect table/figure caption lines — format as bold, NOT headings
-            # Only match if it's a short caption, not a sentence about a table
+            # Detect table caption lines — splice in HTML table if available
             m = TABLE_HEADING_RE.match(stripped)
-            if (
-                m
-                and '...' not in stripped  # not a TOC entry
-                and not re.search(r'\b(provides|lists|shows|presents|describes|outlines|summarizes)\b', stripped, re.I)
-            ):
-                lines.append("")
-                lines.append(f"**{stripped}**")
-                lines.append("")
-                continue
+            if m and '...' not in stripped:
+                title_text = m.group(2).strip() if m.group(2) else ''
+                # Reject sentences about tables ("Table X provides examples...")
+                is_sentence = bool(re.search(r'\b(provides|lists|shows|presents|describes|outlines|summarizes|contains|delineates)\b', title_text, re.I))
+                if not is_sentence:
+                    # Try to find matching HTML table by table number
+                    table_num = re.match(r'(table\s+\d+[\.\d]*[-–]\d+\S*)', stripped, re.I)
+                    table_num_key = table_num.group(1).lower().strip() if table_num else ''
+                    matched_table = None
+                    for key, tbl in html_tables.items():
+                        if table_num_key and table_num_key in key:
+                            matched_table = tbl
+                            break
+                    if matched_table:
+                        lines.append("")
+                        lines.append(matched_table)
+                        lines.append("")
+                    else:
+                        lines.append("")
+                        lines.append(f"**{stripped}**")
+                        lines.append("")
+                    continue
 
             m = FIGURE_HEADING_RE.match(stripped)
             if m and '...' not in stripped:
