@@ -193,3 +193,16 @@ When generating MDs from source text, `source_to_markdown()` auto-detects sectio
 | Length < 150 chars | Paragraph-length lines = rejected |
 
 If a new PDF introduces false headings, update `UNIT_WORDS` or the rejection rules in `pda_engine.py`'s `source_to_markdown()` function, then run `python pda_engine.py md --all` to regenerate.
+
+### PDF Noise Stripping Rules (`pda_engine.py`)
+`PDF_NOISE_PATTERNS` strips these artifacts from source text before generating MDs:
+
+| Pattern | Example |
+|---------|---------|
+| Standalone page numbers | `1`, `42`, `155` (1-3 digit number alone on a line) |
+| License lines | `Licensed to Kuo, Li-Hung/...: Copying and Distribution Prohibited.` |
+| Copyright lines | `© 2025 Parenteral Drug Association, Inc.` |
+| Page headers | `Technical Report No. 26`, `Points to Consider No. 12` |
+| Numbered headers | `42 Technical Report No. 60` (page number + report name) |
+
+If a new PDF has different header/footer patterns, add them to `PDF_NOISE_PATTERNS` in `pda_engine.py`.

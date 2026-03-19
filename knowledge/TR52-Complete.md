@@ -1,6 +1,5 @@
 # PDA Technical Report No. 52 (2011): Guidance for Good Distribution Practices (GDPs) for the Pharmaceutical Supply Chain
 
-2
 This technical report describes the overall quality system for distribution of pharmaceutical products
 and is meant to assist manufacturers in assuring that quality, integrity, and efficacy of the product are
 not compromised in the distribution channels.
@@ -109,7 +108,6 @@ third party Logistics Service Providers (termed 3PLs), wholesale distributors, a
 
 ## 1.0 Introduction
 
-3
 Change Control
 The processes and procedures to manage changes.
 Corrective Action and Preventative Action
@@ -164,7 +162,6 @@ federal laws.
 
 ## 2.0 Glossary of Terms
 
-4
 Good Distribution Practices (GDPs) should include written procedures describing the different
 operations that may affect the quality of products and/or distribution activity. Refer to the pillars
 table, presented in Section 1.1.
@@ -216,7 +213,6 @@ Note: it is necessary to ensure that the local regulatory agency allows the use 
 
 ## 3.0 Requirements
 
-5
 For products that are monitored during transportation, if temperature excursions occur outside of
 the labeled storage conditions or established shipping ranges, an investigation must take place to
 determine:
@@ -269,7 +265,6 @@ Premises and equipment should be qualified as adequate to ensure proper manageme
 distribution of products. A warehouse should be:
 Secure with controlled access and features to protect against invasion, adulteration and theft
 •
-5
 For products that are monitored during transportation, if temperature excursions occur outside of
 the labeled storage conditions or established shipping ranges, an investigation must take place to
 determine:
@@ -322,7 +317,6 @@ Premises and equipment should be qualified as adequate to ensure proper manageme
 distribution of products. A warehouse should be:
 Secure with controlled access and features to protect against invasion, adulteration and theft
 •
-6
 Structurally sound, including hardened and sealed floors and no signs of leaks
 •
 Sufficiently lit to allow accurate and safe operations
@@ -390,7 +384,6 @@ The status of a product is accurately assigned
 The authority and access to perform the status change will be defined by the system tools,
 ––
 procedures and training.
-7
 
 ##### 3.2.3.3 Controlled Drugs
 
@@ -443,7 +436,6 @@ Be under appropriate change control
 Allow changes to product status to be made only by appropriate quality personnel.
 •
 Computerized systems should be appropriately qualified and validated.
-8
 
 ##### 3.2.4.3 In-Transit Storage
 
@@ -495,7 +487,6 @@ pharmaceutical form of the product, the quantity supplied, and the name and addr
 (e.g., bill of lading, purchase order or invoice). Documents should also contain quantity shipped and
 lot number of material.
 It is critical to coordinate shipments throughout the supply chain to ensure proper timing for products
-9
 to be transported and received with regard to holidays, weekends or other forms of interruption,
 such as weather-related delivery delays or customer receipt schedules. Any potential customs-related
 delays, including those by the U.S. FDA, U.S. Department of Agriculture, health ministries in other
@@ -546,7 +537,6 @@ stock by the customer so that chain of custody is maintained. Note: many compani
 receive cold chain back into stock due in part to inconsistencies in controls for the return
 shipment.
 Returns for destruction should be processed by an authorized pharmaceutical destruction company
-10
 unless the manufacturer has the means to destroy the goods.
 
 #### 3.2.9 Exception Management
@@ -605,7 +595,6 @@ and secure product requiring action to prevent distribution to customers.
 ### 3.3 Performance Management
 
 Methods and procedures should be established to review the performance of the quality system
-11
 on a regularly scheduled basis and to identify opportunities for continuous improvement. These
 methods and procedures should include Performance Measurement and Reporting, Self-Inspection
 (Internal Audit), and Management Review Meetings.
@@ -665,7 +654,6 @@ Vehicle and Equipment (to include refrigerated trucks, sea containers, aircrafts
 •
 Security
 •
-11
 on a regularly scheduled basis and to identify opportunities for continuous improvement. These
 methods and procedures should include Performance Measurement and Reporting, Self-Inspection
 (Internal Audit), and Management Review Meetings.
@@ -725,7 +713,6 @@ Vehicle and Equipment (to include refrigerated trucks, sea containers, aircrafts
 •
 Security
 •
-12
 
 #### 3.4.2 Quality Audit
 
@@ -765,7 +752,6 @@ Changes that may impact products or the quality systems
 •
 Opportunities and recommendations for improvement
 •
-13
 
 ### 4.1 Good Storage and Shipping Practices Checklist
 
@@ -791,8 +777,6 @@ Audits conducted (by BoP, Customer, FDA, DEA, etc)
 
 ## 4.0 Appendix
 
-13
-
 ### 4.1 Good Storage and Shipping Practices Checklist
 
 The following is an assessment tool that may be used in the evaluation of pharmaceutical and/or
@@ -817,7 +801,6 @@ Audits conducted (by BoP, Customer, FDA, DEA, etc)
 
 ## 4.0 Appendix
 
-14
 B. Quality System Comments
 Comments
 1.	 Do you have a separate and distinct independent Quality
@@ -866,7 +849,6 @@ controlled processes?
 16.	Do you have management controls in place?
 17.	Do you have tracing, tracking and proper audit trails such
 that faulty product could be recalled?
-15
 I. FACILITIES
 C. Building and Housekeeping
 Comments
@@ -914,7 +896,6 @@ met?
 22.	Is the maintenance performed by in-house staff?
 23.	How are maintenance requirements managed and
 scheduled?
-16
 D. Pest Control
 Comments
 1.	 Is there a regular pest control and rodenticide program?
@@ -953,7 +934,6 @@ pallets to avoid damage, i.e., where pallets are stacked are
 corrugate interleaves used to protect the product?
 7.	 Are products physically segregated to prevent mixing of
 separate products and/or batch numbers?
-17
 8.	 Are outdated and damaged products removed from
 general storage and segregated?
 9.	 Are controlled drugs stored in the facility?
@@ -990,7 +970,6 @@ conditions?
 personnel?
 E. Product Storage (continued)
 Comments
-18
 F. Temperature Control/Calibration Storage
 Comments
 1.	 Is the general warehouse temperature controlled within a
@@ -1038,7 +1017,6 @@ the temperature controlled areas (operation and
 maintenance)?
 18.	Has Mean Kinetic Temperature (MKT) been determined for
 each of the storage areas?
-19
 19.	Are a suitable number of recording devices installed to
 record temperatures?
 20.	Are alarms tested for functionality on a regular and
@@ -1081,7 +1059,6 @@ devices?
 calibration program and/or an exit calibration installed?
 F. Temperature Control/Calibration Storage (continued)
 Comments
-20
 H. Inventory Control
 Comments
 1.	 Is there a first expiration, first out (FEFO) stock system?
@@ -1129,7 +1106,6 @@ in quarantine status?
 subsequent actions, related to #16 above?
 18.	Are procedures in place to prevent distribution of products
 returned due to customer complaints?
-21
 I. Product Distribution
 Comments
 1.	 Are stock distribution records maintained by lot number?
@@ -1167,7 +1143,6 @@ made aware of special handling and storage specifications?
 materials done according to the same control procedures
 and GMP & GDP principles which are applicable to the
 distribution of commercial product presentations?
-22
 J. Systems
 Comments
 1.	 What systems platforms and warehouse management
@@ -1205,7 +1180,6 @@ result of such events.
 22.	Is there active monitoring for suspicious orders of
 controlled substances per DEA regulations?
 23.	Does the system have a disaster recovery program?
-23
 K. Insulated Shipping Systems (ISS) Transportation
 Temperature Controls
 Comments
@@ -1250,7 +1224,6 @@ program to verify temperatures?
 shipping system? If yes, provide details on how failures
 were addressed to include RCA and CAPA.
 27.	Are transportation routes documented and controlled?
-24
 L. Carrier Transportation Temperature Controls
 Comments
 1.	 Are Service Agreements in place with each of the carriers
@@ -1297,7 +1270,6 @@ active, real time, location and temperature tracking?
 event of product diversion or theft?
 23.	Are vehicles inspected prior to loading to assure that no prior
 material or opportunities for contamination are present?
-25
 24.	Are procedures in place to manage product requirements
 in the event of an equipment failure or excursion?
 25.	Are loading patterns defined and documented?
@@ -1338,7 +1310,6 @@ Assurance review and approval of redressing, restock or
 destruction of finished goods?
 L. Carrier Transportation Temperature Controls (continued)
 Comments
-26
 N. Complaints
 Comments
 1.	 Are there separate procedures (details) for addressing
@@ -1379,7 +1350,6 @@ and audit trail?
 2d.	Are records of the destruction maintained?
 3.	 Is there periodic and timely purging of material to be
 destroyed (e.g., not stockpiled)?
-27
 II. PRODUCT CONTROL
 Q. General
 Comments
@@ -1428,7 +1398,6 @@ the same training as regular staff?
 17.	Are there positions or tasks that require certification (i.e.
 safe fork truck driving) prior to performing the task? If so,
 what are they?
-28
 S. Safety
 Comments
 1.	 Is there a Safety Program and Manager associated with
@@ -1459,7 +1428,6 @@ driver has an accident?
 18.	Who is trained in lock out/tag out procedures?
 19.	How is safety training handled for contractors?
 20.	What is your OSHA recordable and lost work day (LWD) rate?
-29
 OBSERVATIONS AND RECOMMENDATIONS
 1.
 2.
@@ -1481,7 +1449,6 @@ OBSERVATIONS AND RECOMMENDATIONS
 18.
 19.
 20.
-30
 NOTES
 1.
 2.
@@ -1513,7 +1480,6 @@ Signed:
 Signed:
 
  Date:
-31
 
 ## 5.0 Additional Reading
 
@@ -1584,7 +1550,6 @@ Health Canada www.hc-sc.gc.ca
 5.
 U.S. Drug Enforcement Agency www.justice.gov/dea
 6.
-31
 
 ## 5.0 Additional Reading
 
@@ -1655,7 +1620,6 @@ Health Canada www.hc-sc.gc.ca
 5.
 U.S. Drug Enforcement Agency www.justice.gov/dea
 6.
-32
 Terms of Usage
 An Authorized User of the electronic PDA Technical Report is a PDA Member in good standing or the purchaser of the Technical
 Report.
