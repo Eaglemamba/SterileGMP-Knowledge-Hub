@@ -657,9 +657,54 @@ def generate_md_from_pdf(report_id: str, config: dict = None) -> Path:
     )
     content = CJK_RE.sub('', content)
 
-    # --- Convert #### and ##### headings to bold text (same weight as content) ---
-    content = re.sub(r'^#{5,}\s+(.+)$', r'**\1**', content, flags=re.M)
-    content = re.sub(r'^####\s+(.+)$', r'**\1**', content, flags=re.M)
+    # --- Detect section headings and normalize to ## / ### ---
+    # pymupdf4llm extracts section headings as ##### or plain text.
+    # Normalize: "##### 1.0 Introduction" or "1.0 Introduction" → "## 1.0 Introduction"
+    UNIT_WORDS = {'L', 'PSI', 'PSIG', 'KG', 'ML', 'MM', 'CM', 'HR', 'MIN'}
+    result_lines = []
+    for line in content.split('\n'):
+        stripped = line.strip()
+        # Strip any existing # prefix to get raw text
+        raw = re.sub(r'^#{1,6}\s+', '', stripped)
+        # Match section number pattern
+        m = re.match(r'^(\d+(?:\.\d+)*)\s+([A-Z].+)$', raw)
+        if (
+            m
+            and '.' in m.group(1)
+            and len(raw) < 150
+            and int(m.group(1).split('.')[0]) > 0
+            and not re.search(r'\.\s*\d+\s*$', raw)  # not TOC
+            and '...' not in raw
+            and m.group(2).split()[0] not in UNIT_WORDS
+        ):
+            sec_num = m.group(1)
+            sec_title = m.group(2).strip()
+            parts = sec_num.strip('.').split('.')
+            depth = len(parts)
+            if len(parts) >= 2 and parts[-1] == '0':
+                depth -= 1
+            if depth <= 1:
+                result_lines.append(f"## {sec_num} {sec_title}")
+            elif depth == 2:
+                result_lines.append(f"### {sec_num} {sec_title}")
+            else:
+                result_lines.append(f"**{sec_num} {sec_title}**")
+            continue
+
+        # Detect "Appendix X: Title"
+        am = re.match(r'^#{0,6}\s*(Appendix\s+[A-Z0-9]+(?:\.\d+)?)[:\s]+([A-Z].+)$', stripped, re.I)
+        if am and '...' not in stripped and len(stripped) < 120:
+            result_lines.append(f"## {am.group(1)}: {am.group(2).strip()}")
+            continue
+
+        # Convert remaining #### / ##### to bold (not section headings)
+        m_h4 = re.match(r'^#{4,}\s+(.+)$', stripped)
+        if m_h4:
+            result_lines.append(f"**{m_h4.group(1)}**")
+            continue
+
+        result_lines.append(line)
+    content = '\n'.join(result_lines)
 
     # --- Collapse blank lines ---
     content = re.sub(r'\n{3,}', '\n\n', content)

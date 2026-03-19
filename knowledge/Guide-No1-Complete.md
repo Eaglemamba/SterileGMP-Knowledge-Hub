@@ -111,7 +111,7 @@ Part 1: Technology Selection and Design ........................................
 
 1.1.3 Physicochemical Properties ................................................................................................. 12
 
-1.2 Materials and Container–Closure Considerations for Aseptic Filling System Selection and
+### 1.2 Materials and Container–Closure Considerations for Aseptic Filling System Selection and
 Design ...................................................................................................................................................... 13
 
 1.2.1 Material Compatibility ........................................................................................................... 13
@@ -234,7 +234,7 @@ iv **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association,
 
 2.4.9 Rolling Diaphragm Pump Single-Use Versus Reusable Strategy .................................. 60
 
-2.4.10 Rolling Diaphragm Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfall
+**2.4.10 Rolling Diaphragm Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfall**
 .............................................................................................................................................................. 61
 
 2.4.11 Rolling Diaphragm Pump Benefits and Risks ................................................................. 61
@@ -344,7 +344,7 @@ Handling, Filtration, Fluid Pathway, and Discards ..............................
 
 8.0 Microbiological Risks for System Operation ............................................................................. 136
 
-8.1 Microbiological Considerations for Aseptic Manipulations Associated with Line Setup
+### 8.1 Microbiological Considerations for Aseptic Manipulations Associated with Line Setup
 ................................................................................................................................................................. 136
 
 8.1.1 Detailed Steps of Line Setup in RABS and Isolators ..................................................... 137
@@ -359,21 +359,21 @@ vi **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association,
 
 8.3 Microbiological Considerations for Filter Changes ................................................................ 140
 
-8.4 Microbiological Considerations for Aseptic Manipulations Associated with Filling Needle
+### 8.4 Microbiological Considerations for Aseptic Manipulations Associated with Filling Needle
 Adjustment, Repair, and Replacement ............................................................................................ 141
 
-8.5 Microbiological Considerations for Aseptic Manipulations Related to Broken or Blocked
+### 8.5 Microbiological Considerations for Aseptic Manipulations Related to Broken or Blocked
 Primary-Packaging Materials ............................................................................................................. 141
 
-8.6 Microbiological Considerations for Aseptic Manipulations Associated with Supply of
+### 8.6 Microbiological Considerations for Aseptic Manipulations Associated with Supply of
 Components.......................................................................................................................................... 142
 
-8.7 Microbiological Considerations for Aseptic Manipulations Associated with Sorting
+### 8.7 Microbiological Considerations for Aseptic Manipulations Associated with Sorting
 Systems for Components ................................................................................................................... 142
 
 8.8 Microbiological Considerations for Mechanical Interventions ............................................ 143
 
-8.9 Microbiological Considerations for Aseptic Manipulations Related to Environmental
+### 8.9 Microbiological Considerations for Aseptic Manipulations Related to Environmental
 Monitoring............................................................................................................................................. 145
 
 9.0 Component and Filling Supply Handling Considerations ........................................................ 147
@@ -398,7 +398,7 @@ Monitoring......................................................................
 
 10.3 Conveyance Considerations for Glassware .......................................................................... 162
 
-10.4 Disinfection, Biodecontamination, and Sterilization Associated with Material Transfer
+### 10.4 Disinfection, Biodecontamination, and Sterilization Associated with Material Transfer
 ................................................................................................................................................................. 163
 
 11.0 Sterile Filtration and Filling System Considerations .............................................................. 165
@@ -471,7 +471,7 @@ Monitoring......................................................................
 
 14.1 Types of Barrier Systems for Aseptic Operations ............................................................... 189
 
-14.2 Design Considerations for the Integration of the Filling System with the Environment
+### 14.2 Design Considerations for the Integration of the Filling System with the Environment
 ................................................................................................................................................................. 190
 
 15.0 Utility Considerations for Aseptic Operations ........................................................................ 197
@@ -496,17 +496,17 @@ viii **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Associatio
 
 16.2.4 Vacuum Pressure Powder Filler: Filling Container Compatibility ............................ 204
 
-16.2.5 Vacuum Pressure Powder Filler Sterility Assurance (Microbial and Total Particles
+**16.2.5 Vacuum Pressure Powder Filler Sterility Assurance (Microbial and Total Particles**
 ............................................................................................................................................................ 204
 
 16.2.6 Vacuum Pressure Powder Filler Efficiency and Impact on Risk ............................... 205
 
 16.2.7 Vacuum Pressure Powder Filler Costs: Initial and Ongoing ...................................... 205
 
-16.2.8 Vacuum Pressure Powder Filler System Complexity: Setup, Handling, and
+**16.2.8 Vacuum Pressure Powder Filler System Complexity: Setup, Handling, and**
 Changeover ..................................................................................................................................... 205
 
-16.2.9 Vacuum Pressure Pump Filler Maintenance and Aging through the Product
+**16.2.9 Vacuum Pressure Pump Filler Maintenance and Aging through the Product**
 Lifecycle ........................................................................................................................................... 206
 
 16.2.10 Vacuum Pressure Pump Filler Strategy: Single-Use Versus Reusable .................. 206
@@ -543,7 +543,7 @@ Lifecycle ......................................................................
 
 16.3.12 Auger Powder Filler Benefits and Risks ...................................................................... 212
 
-17.0 Product Characteristics Compatibility for Vacuum Pressure Powder Filler and Auger
+## 17.0 Product Characteristics Compatibility for Vacuum Pressure Powder Filler and Auger
 Powder Filler Technologies ..................................................................................................... 213
 
 17.1 Influence of Product Attributes on Selected Powder Filling Technology ....................... 213
@@ -1290,7 +1290,7 @@ System
 
 8 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-1.0 Aseptic Filling System Design Elements
+## 1.0 Aseptic Filling System Design Elements
 
 When designing an aseptic filling process, there are many considerations. First, we must recognize that the
 product is intended to be a sterile product and that our target is an optimally designed aseptic filling system
@@ -1321,7 +1321,7 @@ control and opportunities to improve sterility assurance. Therefore **Part 3: Op
 overlooked when identifying an appropriate design. Only as an integrated whole (engineering solutions
 coupled with the required operational behaviors) can an appropriate aseptic design be accomplished.
 
-1.1 Product Considerations for Aseptic Filling System Selection and
+### 1.1 Product Considerations for Aseptic Filling System Selection and
 Design
 
 The physicochemical attributes, sensitivities, and tendencies of each product may dictate special filling
@@ -1331,7 +1331,7 @@ associated with the product that dictate special handling, these considerations 
 desired requirements for flexibility or fulfillment of business desires. **Sections 1.1.1–1.1.3** discuss product
 attributes that may need to be taken into consideration.
 
-1.1.1 Pharmaceutical Activity
+**1.1.1 Pharmaceutical Activity**
 
 Products that are hazardous (e.g., highly potent, toxic, specific designations for occupational exposure band
 (OEB), or occupational exposure level (OEL)) should be filled using a closed Restricted Access Barrier
@@ -1341,13 +1341,13 @@ include special capabilities to clean residual product, handle soiled parts, and
 In such cases, safety of all personnel must be considered in addition to the routine considerations for product
 quality and safety.
 
-1.1.2 Product Sensitivities
+**1.1.2 Product Sensitivities**
 
 Biological or physicochemical requirements for ensuring the quality and safety of the product must be
 assured. **Sections** **1.1.2.1–1.1.2.6** provide examples of product sensitivities that need to be taken into
 consideration.
 
-1.1.2.1 Temperature Sensitivity
+**1.1.2.1 Temperature Sensitivity**
 
 Temperature-sensitive products may require temperature-controlled conditions during filling, (e.g.,
 temperature control may be required on the bulk vessel, product-feed pathway, intermediate vessel and/or
@@ -1358,7 +1358,7 @@ the vessel) (see **Section 4.0** and **Section 4.7** for additional design optio
 
 10 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-1.1.2.2 Oxygen Sensitivity
+**1.1.2.2 Oxygen Sensitivity**
 
 Oxygen-sensitive products can experience oxidation-degradation with a loss of effectiveness of the product
 in the presence of oxygen over time. Steps must be taken during holding and processing to reduce the risk of
@@ -1368,7 +1368,7 @@ may be accomplished with pre-gassing, gassing during filling with a special doub
 post-gassing, and/or gassing during closing. Gassing during closing is the most important and effective
 method for overlay (see **Section 4.0** and **Section 4.9** ).
 
-1.1.2.3 Light Sensitivity
+**1.1.2.3 Light Sensitivity**
 
 Light-sensitive products must be protected from light exposure during the filling and storage process to
 prevent degradation. These products can be filled in a light-absorbent container, such as amber glass, or the
@@ -1382,14 +1382,14 @@ recommended in order to ensure that the most appropriate solution, without compr
 is implemented. For example, the use of light-absorbent containers may make visual inspection more
 difficult and may be contraindicated in some cases.
 
-1.1.2.4 Metal Sensitivity
+**1.1.2.4 Metal Sensitivity**
 
 Metal-sensitive products must be protected from contact with certain metals, which may limit the alloys that
 can be used in the design of the product-contact surfaces. Single-use (SU) disposable elastomers for the
 fluid pathway are often employed, and materials of construction such as ceramics are selected for the filling
 equipment rather than low-iron material parts such as chrome-plated stainless steel.
 
-1.1.2.5 Silicone Sensitivity
+**1.1.2.5 Silicone Sensitivity**
 
 Silicone-sensitive products must be protected from contact with silicone oils or emulsions that are
 commonly applied to glass containers and elastomers. To protect from silicone exposure, polymer
@@ -1406,13 +1406,13 @@ potential of splashing due to rapid air withdrawal from the luer channel during 
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 11
 
-1.1.2.6 Shear Force Sensitivity
+**1.1.2.6 Shear Force Sensitivity**
 
 Shear force-sensitive products include long-chain molecules such as proteins. These products generally do
 not tolerate dosing systems with high shear or long dwell-times within the pump. Therefore, time pressure
 (TP), rolling diaphragm pumps (DP), or peristaltic pumps (PP) are often used as low-shear options.
 
-1.1.3 Physicochemical Properties
+**1.1.3 Physicochemical Properties**
 
 Properties such as viscosity, surface tension, or foaming tendencies for liquids, or products that are
 suspensions, quick-drying, flammable, or explosive may require specialized filling technologies, special
@@ -1492,7 +1492,7 @@ Zone classification, temperature class, and explosion group
 Identification of external influences and ambient temperature
 Safety data sheet
 
-1.2 Materials and Container–Closure Considerations for Aseptic Filling
+### 1.2 Materials and Container–Closure Considerations for Aseptic Filling
 System Selection and Design
 
 Materials of construction and container-closure selection also influence filling-line selection and design.
@@ -1500,7 +1500,7 @@ Whether it is selecting materials that will be in product contact, or preventing
 interactions, care must be taken with the final design. Containers and closures, likewise, have different
 needs to ensure container integrity and smooth operation and handling.
 
-1.2.1 Material Compatibility
+**1.2.1 Material Compatibility**
 
 Compatibility of the product with product-contact materials and compatibility with the primary drugproduct storage container will be critical. For liquids, the wetted fluid pathway may include product vessels
 of stainless-steel, high-density polyethylene or other polymers, multiple hydrophilic filters, polymeric
@@ -1517,7 +1517,7 @@ product degradation caused by free-radicals and ozone (e.g., resulting from ioni
 biodecontamination) or oxidation (e.g., resulting from biodecontamination with hydrogen peroxide) should
 also be considered.
 
-1.2.2 Container–Closure Characteristics
+**1.2.2 Container–Closure Characteristics**
 
 The interface between sterilized primary components (i.e., the container and the closure) is of critical
 importance in ensuring that the integrity of a filled drug product unit can be expected to be maintained over
@@ -1541,14 +1541,14 @@ than one closure system, there may be additional complexity in the mechanical sy
 complete swap-out of mechanical systems or additional change parts to compensate for the differences in
 the containers and/or closures.
 
-1.3 Aseptic Filling System Process Requirements Driving Selection and
+### 1.3 Aseptic Filling System Process Requirements Driving Selection and
 Design
 
 Every aseptic filling system will have specialized process considerations that will need to be evaluated when
 designing a filling process. Some such considerations include, but are not limited to, those discussed in
 **Sections 1.3.1–1.3.4** .
 
-1.3.1 Specialized Applications
+**1.3.1 Specialized Applications**
 
 There may be specific filling requirements that are driven by product characteristics or specialized
 application issues associated with the selected container–closure system or patient delivery system.
@@ -1574,7 +1574,7 @@ the bulk solution and control over product-transfer mechanisms to prevent the re
 gases within the liquid, thereby also excluding the possibility of using TP filling, which uses overpressure
 with gas to control fill level.
 
-1.3.2 Multi-container Considerations
+**1.3.2 Multi-container Considerations**
 
 A key consideration for any filling line is the mechanism of container introduction. Line design is
 contingent upon whether the containers will be introduced as bulk (e.g., needing to be washed, siliconized,
@@ -1596,7 +1596,7 @@ that only processes nested RTU syringes or only bulk cartridges. Depending on th
 it could take several flexible filling-lines (those handling both bulk and RTU) to equal the output of one
 high-speed filling-line that handles one or the other, but not both.
 
-1.3.3 Multiple-Filling Technology Considerations
+**1.3.3 Multiple-Filling Technology Considerations**
 
 In the past, few lines existed that could utilize multiple-filling technologies. With recent technological
 advances, however, many suppliers have filling lines available with multiple installed (or interchangeable)
@@ -1615,7 +1615,7 @@ feasibility before committing to a filling-line design.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 15
 
-1.3.4 Considerations for Wide Range of Filling Volume
+**1.3.4 Considerations for Wide Range of Filling Volume**
 
 Most commercially available filling technologies can fill a wide range of drug product volumes with either:
 
@@ -1643,7 +1643,7 @@ or trayed formats; therefore, wide volume ranges are not typically required of R
 the time this guide was drafted, there were only a few specialized options for 50R or larger vials in an RTU
 format, so the problems of pitch in the above examples would not arise.
 
-1.4 Aseptic Filling Line Business Requirements Driving Selection and
+### 1.4 Aseptic Filling Line Business Requirements Driving Selection and
 Design
 
 The intended operational parameters that govern the business, the operational objectives, and the
@@ -1697,7 +1697,7 @@ classifications, utilities) support the selected filling line?
 Only after creating a capacity model that takes the above factors into consideration can a filling speed target
 be set.
 
-1.5 Aseptic Filling Campaign Requirements Driving Selection and Design
+### 1.5 Aseptic Filling Campaign Requirements Driving Selection and Design
 
 Campaigning is a filling strategy where multiple batches are produced back-to-back on a line without a
 complete teardown and setup between batches. Campaigning is most commonly encountered when the same
@@ -1796,7 +1796,7 @@ conventional batch-based models. However, an analysis of prior-line performance 
 equivalent lines) should be undertaken to fully understand the rates of batch failure-modes that could impact
 the production in campaign mode, for example, isolator-glove integrity-test failure rate.
 
-1.6 Aseptic Filling Line Future-Proofing Requirements Driving Selection
+### 1.6 Aseptic Filling Line Future-Proofing Requirements Driving Selection
 and Design
 
 Flexibility for the future is, of course, desirable and has a long history in manufacturing—parenteral and
@@ -1814,7 +1814,7 @@ incorporating flexibility successfully.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 19
 
-2.0 Aseptic Filling Technologies
+## 2.0 Aseptic Filling Technologies
 
 There are four commonly used filler technologies in the pharmaceutical and biopharmaceutical industries
 for the aseptic filling of liquids. These technologies include:
@@ -1931,7 +1931,7 @@ Table 2.0-3 Comparison of Filling Technologies Based Upon Common Product Types
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 27
 
-2.1 Aseptic Filling Technologies: Peristaltic Pumps
+### 2.1 Aseptic Filling Technologies: Peristaltic Pumps
 
 The principle of operation for the PP is the dynamic rotational squeezing of a flexible tube (in most cases, a
 silicone tube) placed between a backplate and rollers mounted on a rotor and driven by a servo motor to
@@ -1964,7 +1964,7 @@ there may be reasons that installation within the boundary is preferable for pot
 
 28 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.1.1 Peristaltic Pump Design Configurations
+**2.1.1 Peristaltic Pump Design Configurations**
 
 There are two different PP design configurations available: a single-tube PP and a double-tube PP.
 Examples from one manufacturer of both roller configurations are depicted in **Figure 2.1.1-1** . In the roller
@@ -2003,7 +2003,7 @@ support these features, the design will result in at least one (if not two) conn
 
 30 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.1.2 Peristaltic Pump Setup
+**2.1.2 Peristaltic Pump Setup**
 
 The setup for the fluid pathway for a double-tube PP is shown in **Figure 2.1.2-1** . The suction tube is split by
 a Y-connector into two pump tubes, which are installed between the backplate and the rollers. Both pump
@@ -2068,7 +2068,7 @@ number of doses or high pump acceleration or deceleration can lead to internal t
 releasing particles into the product. **Figure 2.1.2-3** includes microscopic images of tubing with external and
 internal wear.
 
-2.1.3 Peristaltic Pump System Positioning
+**2.1.3 Peristaltic Pump System Positioning**
 
 During the design phase of PP systems, the position of the intermediate vessel relative height to the filling
 needles should be evaluated in detail so air gaps in the tube are not created. If the pump has to work to pull
@@ -2085,7 +2085,7 @@ considered depending on the application, product characteristics, and the execut
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 33
 
-2.1.4 Peristaltic Pump Advantages and Disadvantages
+**2.1.4 Peristaltic Pump Advantages and Disadvantages**
 
 **Table 2.1.4-1** identifies the advantages and disadvantages of PPs.
 
@@ -2102,7 +2102,7 @@ Table 2.1.4-1 Advantages and Disadvantages of Peristaltic Pumps
 |Dosing Range|Wide dosing volumes achievable just by<br>changing disposable tubing sets|Very wide dosing ranges may require<br>change of pump occlusion-bed change<br>part|
 |Operability|Can institute feedback control/dosing<br>to compensate for tubing deformation<br>The capability to install outside of the<br>containment simplifies operability and<br>can improve SA by removing<br>mechanical systems from the critical<br>zone|Tubing deforms over time; potentially<br>impacts dosing for long fills<br>Slower filling-speed required to avoid<br>splashing if soft tubing is used between<br>pump and filling needle|
 
-2.1.5 Peristaltic Pump Sterility Assurance: Microbial and Total Particles
+**2.1.5 Peristaltic Pump Sterility Assurance: Microbial and Total Particles**
 
 A major driver in choosing a suitable dosing system is the risk of contamination that is posed during setup,
 handling, and production, as well as clean up or disassembly after the conclusion of the batch. Assuming
@@ -2142,7 +2142,7 @@ position to locate the mechanical components within the containment barrier.
 There is no vertical movement on top of the machine table plate, therefore, machine-generated particles are
 minimized with PP systems. Since PPs can be placed outside of the barrier or isolator, the risk of particlegeneration from the friction on the tubing can be reduced within the critical zone.
 
-2.1.6 Peristaltic Pump Efficiency and Impact on Risk
+**2.1.6 Peristaltic Pump Efficiency and Impact on Risk**
 
 Once personnel have been properly trained in the installation and proper functioning of PP systems, the
 associated risk of contamination to product is relatively low, as no direct contact by personnel with the
@@ -2169,7 +2169,7 @@ The pumps run with very high efficiency due to the direct translation of servo d
 gears as with RPP), and the pump heads show minimal wear and tear over multiple years of use. Therefore,
 pump heads do not normally require regular replacement.
 
-2.1.7 Peristaltic Pump Costs: Initial and Lifecycle
+**2.1.7 Peristaltic Pump Costs: Initial and Lifecycle**
 
 Initial costs are comparable to initial investment costs for other systems for dedicated fill volumes. If
 multiple fill volumes are required, the PP becomes commercially superior, as the same pump head can cover
@@ -2184,7 +2184,7 @@ utilities, cleaning validation, maintenance, process know-how, training of opera
 CIP/SIP cycles, and extended times in cases where parallel processing is not possible (such as not being able
 to run the biodecontamination cycles simultaneously with the CIP/SIP) (see **Section 2.1.10** on SUS).
 
-2.1.8 Peristaltic Pump System Complexity: Setup, Handling, and Changeover
+**2.1.8 Peristaltic Pump System Complexity: Setup, Handling, and Changeover**
 
 System complexity is very low as the pump only consists of a rotor and a housing, which can cover a large
 filling range (e.g., 0.01 mL to 50 mL); therefore, the pump does not need to be changed to accommodate the
@@ -2224,7 +2224,7 @@ critical, and there may be other points of criticality as well, particularly ove
 wear may start to affect performance. An appropriate risk assessment should be performed to justify the
 dose control approach if other than 100% IPC (see **Sections 5.1**       - **5.1.4** for additional content on weightcheck strategies).
 
-2.1.9 Peristaltic Pump Maintenance and Aging
+**2.1.9 Peristaltic Pump Maintenance and Aging**
 
 As described in the preceding sections, the focus for this system must be on the aging and replacement of
 tubing.
@@ -2237,7 +2237,7 @@ recommendations for checking the operation of the roller bearings should be obse
 The original equipment manufacturer (OEM) should provide a replacement strategy for the servo motors
 (although infrequent), to avoid unnecessary downtimes or potential loss of batches.
 
-2.1.10 Peristaltic Pump Single-Use Versus Reusable Strategy
+**2.1.10 Peristaltic Pump Single-Use Versus Reusable Strategy**
 
 Use of the SU strategy is much more common than the reusable strategy with PP due to the simplicity of the
 installation of presterilized components without any need for aseptic connections. The reusable strategy
@@ -2260,7 +2260,7 @@ account not only the initial installation and validation costs, but also the ong
 time of changeover, maintenance of the validated state, and calibration, as well as the associated
 consumables.
 
-2.1.11 Peristaltic Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls
+**2.1.11 Peristaltic Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls**
 
 CIP/SIP may be restricted to cleaning and sterilizing the intermediate vessel, tubes, and dosing needles.
 Because of this, the decision to implement a CIP/SIP system on a PP, and the practicality and the benefits
@@ -2286,7 +2286,7 @@ which again poses risks as a result of aseptic manipulation.
 
 38 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.1.12 Peristaltic Pump Benefits and Risks
+**2.1.12 Peristaltic Pump Benefits and Risks**
 
 **Table 2.1.12-1** highlights the common benefits-and-risks analysis that is pertinent to the use of PP systems.
 
@@ -2304,7 +2304,7 @@ Table 2.1.12-1 Benefits and Risks of Peristaltic Pump Systems
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 39
 
-2.2 Aseptic Filling Technologies: Rotary Piston Pump
+### 2.2 Aseptic Filling Technologies: Rotary Piston Pump
 
 The rotary piston pump consists of a cylindrical housing and a piston, as shown in **Figure 2.2-1** . The
 product is the lubricant between the piston and the cylinder; no other source of lubrication is required or
@@ -2331,7 +2331,7 @@ has low viscosity). This makes the pump unsuitable for installation outside of t
 
 Figure 2.2-3 Rotary Piston Pump Filler Fluid Pathway
 
-2.2.1 Rotary Piston Pump Design Configurations
+**2.2.1 Rotary Piston Pump Design Configurations**
 
 For inline CIP/SIP, a special design is necessary that allows the pump to be cleaned around the full
 circumference of the piston and cylinder. Therefore, two additional connections are required: one in the
@@ -2348,7 +2348,7 @@ In contrast to the PP, the RPP has no drift in delivered dose over time and fill
 at the beginning and at the end of the aseptic filling operation. This means that a statistical IPC is technically
 appropriate (see **Sections 5.1-** **5.1.4** ).
 
-2.2.2 Rotary Piston Pump Setup
+**2.2.2 Rotary Piston Pump Setup**
 
 The tight mechanical tolerances of the piston and cylinder often require that the two parts of each pump be
 scribed with serial numbers (by the OEM), which will ensure that the matching parts are always assembled
@@ -2368,13 +2368,13 @@ execution of the pump.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 43
 
-2.2.3 Rotary Piston Pump System Positioning
+**2.2.3 Rotary Piston Pump System Positioning**
 
 To prevent too much pressure on the product, thereby preventing product release from between the piston and cylinder, the intermediate vessel must
 be ventilated and should be maintained at a consistent fill-level to maintain constant head pressure. This is especially important for low-viscosity
 products. For higher-viscosity products, the intermediate vessel is commonly used with overpressure and might not be ventilated.
 
-2.2.4 Rotary Piston Pump Advantages and Disadvantages
+**2.2.4 Rotary Piston Pump Advantages and Disadvantages**
 
 **Table 2.2.4-1** identifies the advantages and disadvantages of RPP systems.
 
@@ -2396,7 +2396,7 @@ Table 2.2.4-1 Advantages and Disadvantages of Rotary Piston Pump Systems
 |Dosing<br>Range|10-fold filling range for each pump size is typical.|Several pump sizes may be required if wide filling-volume<br>ranges are required, which may restrict campaign flexibility.|
 |Operability|Dosing is stable across the batch, even for campaign<br>manufacture (which may permit statistical weight-check<br>control).<br>Optimized filling curves can control splashing and foaming<br>very effectively while still filling quickly.<br>Separate drives are possible for each pump, which makes<br>individual fine-tuning and operation simpler (including the<br>disconnection of any individual pump mid-run).|Air entrainment in product (e.g., foam, air bubbles, air<br>entrained from mixing or recirculation) can be detrimental to<br>dosing control. Priming is essential for proper dosing control.<br>Separate drives are a more complex design, which is more<br>expensive. Common drives (simpler, less expensive design)<br>are possible but will require physical disconnection of any<br>individual pump in case of failure (e.g., leakage, dose control<br>failure) and does not enable product savings during priming,<br>re-dosing, and emptying.|
 
-2.2.5 Rotary Piston Pump Sterility Assurance: Microbial and Total Particles
+**2.2.5 Rotary Piston Pump Sterility Assurance: Microbial and Total Particles**
 
 The RPP, one of the oldest filling technologies for aseptic filling, is a system where the product has some exposure to the filling environment (even
 though that area is small at the point where the piston inserts in the cylinder). Therefore, the system must be inside the containment (i.e., isolator or
@@ -2427,7 +2427,7 @@ Attention should be given to the airflow above and around the pumps. The mechani
 drive and pump stroke should be designed to prevent particulate from becoming entrained in the air that
 flows over the piston and cylinder to avoid it from entering the product stream.
 
-2.2.6 Rotary Piston Pump Efficiency and Impact on Risk
+**2.2.6 Rotary Piston Pump Efficiency and Impact on Risk**
 
 The RPP is a high-precision dosing system for which the accuracy remains stable throughout the filling
 process. Even though the system is highly accurate, a periodic IPC is recommended to detect any underfills
@@ -2435,7 +2435,7 @@ due to possible air bubbles within the tubing over time (see **Sections 5.1**   
 appropriate rationale should be developed for the timing and frequency of the IPC that reflects the attributes
 of the product being filled and real-world data, when available.
 
-2.2.7 Rotary Piston Pump Costs: Initial and Lifecycle
+**2.2.7 Rotary Piston Pump Costs: Initial and Lifecycle**
 
 An RPP filler, together with CIP/SIP, is the most expensive dosing system. The CIP/SIP components drive
 much of the increase in cost. CIP/SIP-capable pumps have additional connections for the flow of the
@@ -2462,7 +2462,7 @@ to run the biodecontamination cycles simultaneously with the CIP/SIP).
 
 46 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.2.8 Rotary Piston Pump System Complexity: Setup, Handling, and Changeover
+**2.2.8 Rotary Piston Pump System Complexity: Setup, Handling, and Changeover**
 
 The RPP is a two- or three-drive system—hub and rotation (two drives) with CIP/SIP positioning (common
 third drive)—which increases the complexity compared to TP and PP single-drive systems. Setup associated
@@ -2470,7 +2470,7 @@ with CIP/SIP for the RPP is more complex due to the number of connections requir
 through all portions of the cylinder chamber. Additional points on setup, operation, and changeover are
 described in **Sections** **2.2.2-2.2.7** .
 
-2.2.9 Rotary Piston Pump Maintenance and Aging
+**2.2.9 Rotary Piston Pump Maintenance and Aging**
 
 The additional valves that are needed as part of the CIP/SIP system will require that the valve seats be
 replaced periodically, along with the gaskets at the CIP/SIP connection points. Lubrication of gear boxes for
@@ -2488,12 +2488,12 @@ repair or replacement.
 The replacement strategy for servo motors should be provided by the OEM, with appropriate spares kept on
 hand to avoid unnecessary downtime.
 
-2.2.10 Rotary Piston Pump Single-Use Versus Reusable Strategy
+**2.2.10 Rotary Piston Pump Single-Use Versus Reusable Strategy**
 
 RPP is not typically operated as a SUS due to system complexity and cost. Instead, pistons and cylinders
 may be dedicated to given products, when required.
 
-2.2.11 Rotary Piston Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls
+**2.2.11 Rotary Piston Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls**
 
 CIP/SIP is feasible for an RPP that is prepared with two additional connections and the ability to flush the
 piston (see **Figure 2.2.1-1** ). For the two additional connections, additional valves may be required, making
@@ -2501,7 +2501,7 @@ the CIP/SIP system more complex. The advantage of the CIP/SIP is a multiuse dosi
 range of product viscosities and less handling inside the containment barrier when the system is equipped
 with CIP/SIP capability, in compliance with EU regulatory guidance _**(3, 6)**_ .
 
-2.2.12 Rotary Piston Pump Benefits and Risks
+**2.2.12 Rotary Piston Pump Benefits and Risks**
 
 **Table 2.2.12-1** highlights the common benefits and risks analysis that is pertinent to the use of RPP
 systems.
@@ -2517,7 +2517,7 @@ Table 2.2.12-1 Benefits and Risks of Rotary Piston Pumps
 |Low maintenance|Training for assembly, setup, and operation is<br>essential.|
 |Low maintenance|Cleaning and sterilization validation is necessary<br>and may be more complex than for other systems.|
 
-2.3 Aseptic Filling Technologies: Time Pressure
+### 2.3 Aseptic Filling Technologies: Time Pressure
 
 TP filling systems get their name because a slight overpressure is applied to the bulk or intermediate
 product, vessel and a pinch valve is opened and closed for a specified time to control the flow of the product
@@ -2533,7 +2533,7 @@ Without this independent control, a pure time control would lead to deviations i
 the pressure or temperature changes. Temperature fluctuation influences are greater with low-pressure
 systems.
 
-2.3.1 Time Pressure Design Configuration, Setup, and Positioning
+**2.3.1 Time Pressure Design Configuration, Setup, and Positioning**
 
 **Figure 2.3.1-1** depicts a TP filling system from the intermediate vessel to the filling needle. The TP filler
 may be equipped with an intermediate vessel and manifold if desired. Not shown is the proportional
@@ -2543,7 +2543,7 @@ the aseptic barrier advantageous.
 
 48 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.3.2 Time Pressure Advantages and Disadvantages
+**2.3.2 Time Pressure Advantages and Disadvantages**
 
 **Table 2.3.2-1** identifies the advantages and disadvantages of TP filling systems.
 
@@ -2566,7 +2566,7 @@ Table 2.3.2-1 Advantages and Disadvantages of Time Pressure Filling Systems
 
 50 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.3.3 Time Pressure Sterility Assurance: Microbial and Total Particles
+**2.3.3 Time Pressure Sterility Assurance: Microbial and Total Particles**
 
 TP filling systems are typically designed for CIP/SIP. The system is fully closed, therefore, there is no risk
 of extraneous microbial or particulate contamination; however, exercising the pinch valve during filling may
@@ -2582,7 +2582,7 @@ contamination of this “closed system.” This may be problematic with potent o
 require reconsideration of the installation position to locate the mechanical components within the
 containment barrier.
 
-2.3.4 Time Pressure Efficiency and Impact on Risk
+**2.3.4 Time Pressure Efficiency and Impact on Risk**
 
 The TP filling system is a high-precision dosing system that depends on the flow behavior. The flow is
 influenced by temperature and pressure inside the intermediate vessel, which is the reason for the highspeed PLC controller. Changes in temperature, such as during long fill operations or during interruptions in
@@ -2600,7 +2600,7 @@ with other filling systems due to the stressors placed on the hoses within the p
 stressors on the tubing are less than with PPs. Detection systems for leaks can be placed within the isolator
 to alert if a breach in tubing occurs. Should a breach be detected, a specific station can be switched off.
 
-2.3.5 Time Pressure Costs: Initial and Lifecycle
+**2.3.5 Time Pressure Costs: Initial and Lifecycle**
 
 The initial cost of a TP dosing system is similar to a PP or RPP for the system itself (excluding CIP/SIP that
 may or may not be present). The initial capital cost of a CIP/SIP is high, but comparable to the lifecycle
@@ -2620,7 +2620,7 @@ Lifecycle costs are negligible because the drives have a long lifespan. If dedic
 for example, at a contract manufacturing organization, changing the intermediate vessel and piping may be
 difficult, but would be required in addition to the format-size parts (e.g., orifice, tubing, needles).
 
-2.3.6 Time Pressure System Complexity: Setup, Handling, and Changeover
+**2.3.6 Time Pressure System Complexity: Setup, Handling, and Changeover**
 
 The system design and fluid pathway are simple and straightforward with the TP; however, a fast PLC must
 calculate the temperature and pressure in real time as provided by sensors. The temperature compensation
@@ -2630,7 +2630,7 @@ must be established during product evaluation so that the system is able to fill
 Setup is simple, such format parts as the orifice, tubing, and needle must be changed, but they are typically
 assembled prior to CIP/SIP.
 
-2.3.7 Time Pressure Maintenance and Aging
+**2.3.7 Time Pressure Maintenance and Aging**
 
 The pinch valves represent the only moving part of the dosing system requiring routine maintenance. A
 replacement strategy of pinch-valve motors should be provided by the OEM to avoid unnecessary
@@ -2640,13 +2640,13 @@ The system has limited wear-parts, other than the tubing. Sensors for temperatur
 replacement over time. Because the system is subjected to overpressure, the gaskets and pressure relief
 valve will require periodic replacement.
 
-2.3.8 Time Pressure Single-Use Versus Reusable Strategy
+**2.3.8 Time Pressure Single-Use Versus Reusable Strategy**
 
 Usually, a TP dosing system is not suitable as a SUS due to the expense of the pressure-rated intermediate
 vessel and fluid path. As a consequence, most systems are reusable and will require cleaning as well as
 sterilization validation.
 
-2.3.9 Time Pressure Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls
+**2.3.9 Time Pressure Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls**
 
 The TP dosing system is well suited for CIP/SIP, which is the typical design standard. There is limited
 changeover required between different filling volumes and products. When performing CIP/SIP, there is a
@@ -2656,7 +2656,7 @@ this test will not confirm that the orifice is not obstructed. Therefore, the CI
 monitored to ensure no obstruction, as the sensor for conductivity and temperature are located at the
 combined exit flow from the needles.
 
-2.3.10 Time Pressure Benefits and Risks
+**2.3.10 Time Pressure Benefits and Risks**
 
 **Table 2.3.10-1** highlights the common benefits and risks analysis that is pertinent to the use of TP filling
 systems.
@@ -2673,7 +2673,7 @@ Table 2.3.10-1 Benefits and Risks of Time Pressure Filling Systems
 |Wide range of fill volumes with limited change<br>parts.|Rapid temperature or rapid pressure changes to<br>the product may affect accuracy (high-speed PLC<br>control is used to monitor the changes and<br>dynamically adjust the fill). For products requiring<br>active cooling, exposed sections of the fluid<br>pathway that are not actively cooled may<br>influence filling accuracy.|
 |Limited consumables waste in comparison to SUS,<br>such as with PP.<br>|Limited consumables waste in comparison to SUS,<br>such as with PP.<br>|
 
-2.4 Aseptic Filling Technologies: Rolling Diaphragm Pump
+### 2.4 Aseptic Filling Technologies: Rolling Diaphragm Pump
 
 The rolling diaphragm pump (DP) is a positive displacement pump, which generally incorporates a pistondriven pump unit that includes a piston, a fluid chamber, and a body (see **Figure 2.4-1** ). The pump unit is
 used, in combination with timed pinch valves, to direct fluid travel through the pump chamber and the
@@ -2684,7 +2684,7 @@ piston and cylinder from the fluid pathway, making it a closed system.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 53
 
-2.4.1 Rolling Diaphragm Pump Design Configuration
+**2.4.1 Rolling Diaphragm Pump Design Configuration**
 
 The use of a rolling diaphragm provides a number of advantages when used in a positive displacement
 pump. The rolling diaphragm provides a leak-proof seal for the fluid within the pump, separating the fluid
@@ -2702,7 +2702,7 @@ to alternately block and expose the respective ports).
 
 54 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.4.2 Rolling Diaphragm Pump Setup and System Positioning
+**2.4.2 Rolling Diaphragm Pump Setup and System Positioning**
 
 With the DP system, product can be fed directly from a pressurized supply vessel via manifold to the rolling
 diaphragm pumps. Alternatively, the pressurized supply vessel may feed an intermediate vessel or bag that
@@ -2714,7 +2714,7 @@ but installation outside of the barrier is possible and may be preferable.
 
 Figure 2.4.2-1 Fluid Pathway for Rolling Diaphragm Pump Systems
 
-2.4.3 Rolling Diaphragm Pump Advantages and Disadvantages
+**2.4.3 Rolling Diaphragm Pump Advantages and Disadvantages**
 
 **Table 2.4.3-1** identifies the advantages and disadvantages of rolling DPs.
 
@@ -2736,7 +2736,7 @@ Table 2.4.3-1 Advantages and Disadvantages of Rolling Diaphragm Pumps
 
 58 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.4.4 Rolling Diaphragm Pump Sterility Assurance: Microbial and Total Particles
+**2.4.4 Rolling Diaphragm Pump Sterility Assurance: Microbial and Total Particles**
 
 Due to the rolling diaphragm separating the fluid chamber from the piston drive, product is contained within
 a leak-proof chamber without risk of particle contamination from friction wear of the piston or microbial
@@ -2754,7 +2754,7 @@ to locate the mechanical components within the containment barrier. Since the di
 risk of a breach reinforces the importance of monitoring the number of use-cycles for the diaphragm and
 replacing it before the point of failure.
 
-2.4.5 Rolling Diaphragm Pump Efficiency and Impact on Risk
+**2.4.5 Rolling Diaphragm Pump Efficiency and Impact on Risk**
 
 The rolling DP is a high-precision dosing system with stable accuracy throughout the filling process. Even
 with high accuracy, an IPC is recommended when using rolling DPs to detect any underfills. However, as a
@@ -2766,7 +2766,7 @@ contact with the product or product-contacts parts occurs during production. How
 requires training and represents the highest risk when using the pump. To significantly reduce this risk,
 CIP/SIP or SU execution should be implemented.
 
-2.4.6 Rolling Diaphragm Costs: Initial and Lifecycle
+**2.4.6 Rolling Diaphragm Costs: Initial and Lifecycle**
 
 Initial costs are comparable to initial investment costs for other systems for dedicated fill volumes. When
 multiple fill-volumes are required, additional pump sizes are commonly necessary, which can add to system
@@ -2790,7 +2790,7 @@ know-how, training of operators, downtime due to CIP/SIP cycles, and extended ti
 parallel processing is not possible (such as not being able to run the biodecontamination cycle
 simultaneously with the CIP/SIP).
 
-2.4.7 Rolling Diaphragm Pump System Complexity: Setup, Handling, and Changeover
+**2.4.7 Rolling Diaphragm Pump System Complexity: Setup, Handling, and Changeover**
 
 DP is a two-drive system for piston actuation and actuation of the pinch valve. The system design and fluid
 pathway are simple and straightforward; however, it requires proper training for pump assembly and aseptic
@@ -2802,7 +2802,7 @@ For CIP/SIP-configured rolling DPs, installation is different, but not significa
 primary difference is that pumps, which are normally installed vertically, are required to be installed
 horizontally to ensure proper draining after CIP/SIP.
 
-2.4.8 Rolling Diaphragm Pump Maintenance and Aging
+**2.4.8 Rolling Diaphragm Pump Maintenance and Aging**
 
 Rolling DPs are precisely machined to critical tolerances and must be handled gently to prevent damage and
 ensure accurate fills. Reusable rolling DPs are constructed of stainless steel; if any defect is observed on the
@@ -2817,7 +2817,7 @@ Vacuum seal and diaphragms are wear-parts that can be expected to be replaced re
 A replacement strategy for servo motors should be provided by the OEM to avoid unnecessary downtimes
 or potential loss of batches.
 
-2.4.9 Rolling Diaphragm Pump Single-Use Versus Reusable Strategy
+**2.4.9 Rolling Diaphragm Pump Single-Use Versus Reusable Strategy**
 
 The SU application of rolling DPs is gaining adoption and is available from some OEMs. All elements of
 the fluid path (from aseptic connector to the product vessel through intermediate product bag, manifold,
@@ -2839,7 +2839,7 @@ configuration.
 
 60 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-2.4.10 Rolling Diaphragm Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls
+**2.4.10 Rolling Diaphragm Pump Clean-In-Place/Sterilize-In-Place Feasibility and Pitfalls**
 
 CIP/SIP is well-suited for rolling DPs, with an established design standard for tubing attachment
 (compression fitting vs. barbed fitting) and a horizontal setup for proper draining of the cleaning media. Due
@@ -2847,7 +2847,7 @@ to the altered orientation of the CIP/SIP pump within the filler, proper care sh
 cleanroom or isolator airflow in mind. The advantage with the CIP/SIP configuration is less handling and
 reduced aseptic installation complexity _**(3, 6)**_ .
 
-2.4.11 Rolling Diaphragm Pump Benefits and Risks
+**2.4.11 Rolling Diaphragm Pump Benefits and Risks**
 
 **Table 2.4.11-1** highlights the common benefits and risks analysis that is pertinent to the use of rolling DP
 systems.
@@ -2864,7 +2864,7 @@ Table 2.4.11-1 Rolling Diaphragm Pump System Benefits and Risks
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 61
 
-3.0 Filling Needle Designs
+## 3.0 Filling Needle Designs
 
 Filling needles can be customized to specific applications. The intent of the various designs is to provide
 greater control over the filling (e.g., to prevent splashing, prevent foaming, control dripping, aid in filling
@@ -2950,7 +2950,7 @@ Figure 3.0-3 Inside Closing Needle Schematic and Cutaway
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 69
 
-4.0 System Functionality and Design Choice
+## 4.0 System Functionality and Design Choice
 
 There are a variety of aspects to filling system functionality that influence the selection of the liquid
 filling technology and design. As always, the foremost requirement is the ability for both the engineering
@@ -3028,7 +3028,7 @@ Table 4.0-1 Functionality Requirements and Their Influence on Liquid Filling Sys
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 81
 
-4.1 Continuous Filling/Campaign Filling Versus Batch Filling
+### 4.1 Continuous Filling/Campaign Filling Versus Batch Filling
 
 In manufacturing, a batch is defined as the complete production procedure from compounding, product
 filtration, filling-line preparation, filling, and closing all the way up to final packaging (end-to-end). The
@@ -3058,14 +3058,14 @@ filling the same active substance, as a different active substance would pose a 
 different active substances are to be used, appropriate contamination control strategies should be employed
 to minimize the risk.
 
-4.1.1 Environment for Filling
+**4.1.1 Environment for Filling**
 
 Isolators are the most common environment for manufacturers who intend to operate in a continuous filling
 or campaign mode for the production of a sterile product. The use of isolators for prolonged processing is
 the strongest option for SA, as the initial surface biodecontamination provides an extremely high-quality
 environment, and the ability to operate for long periods without opening the doors is assured by the design.
 
-4.1.2 Sterility Assurance
+**4.1.2 Sterility Assurance**
 
 When running a continuous or campaigned process, the major objective SA is to minimize the disruptions
 within the barrier between batches. Therefore, when designing filling systems for continuous/campaign
@@ -3091,7 +3091,7 @@ consideration in the design of the APS. However, the APS should not be used as t
 establish or validate the duration of the aseptic process _**(3)**_ . Continuous manufacturing/campaigns may be
 able to last multiple weeks within an isolated environment if the process is properly designed and validated.
 
-4.1.3 Benefits and Risks
+**4.1.3 Benefits and Risks**
 
 The most significant benefit of continuous or campaign production modes is the total production-time to
 turnaround-time ratio. For example, every time a line is turned around, time is needed to clean, set up,
@@ -3114,7 +3114,7 @@ of some of these components (e.g., sorting systems), it may not be feasible to c
 these constraints. Batch-wise filling would be a better option to reduce risk rather than attempting a
 campaign.
 
-4.1.4 Equipment Design Options
+**4.1.4 Equipment Design Options**
 
 Some OEMs have technologies where format parts are reduced or even eliminated. For example, some
 manufacturers have constructed universal feeding bowls that will feed stoppers of relevant sizes to the
@@ -3156,7 +3156,7 @@ For continuous manufacturing or campaigns, manual interventions associated with 
 represent possible contamination-control risks that should be assessed and evaluated as part of the intended
 control strategy for the line.
 
-4.2 Changeover Functionality
+### 4.2 Changeover Functionality
 
 For any production line, the uptime-to-downtime ratio (e.g., overall equipment effectiveness) is a critical
 factor in the return on investment and profitability of the line. For facilities with the ability to fill in a
@@ -3181,7 +3181,7 @@ facilitate or hinder rapid setup/changeover. When all parts to be changed or adj
 from a limited number of positions on the line, setup/changeover can be performed with less timeinvestment. Similarly, lines that make use of features, such as “tool-less” adjustments for guides and
 conveyance parts, can simplify and speed setup/changeover.
 
-4.3 Functionality Affecting Line Speed
+### 4.3 Functionality Affecting Line Speed
 
 When user requirements specifications designate the speed of filling, it is usually based on calculations that
 either directly or indirectly relate to production (throughput) requirements. Some examples of factors that
@@ -3214,7 +3214,7 @@ The first two categories will have an influence on the selected filling technolo
 the acceptability of the speed of filling but has no significant influence on the selection of the filling
 technology.
 
-4.3.1 Dosing Accuracy, Weight Verification, and Speed
+**4.3.1 Dosing Accuracy, Weight Verification, and Speed**
 
 With some high-volume applications, where dosing accuracy is only of moderate importance (e.g.,
 conventional vaccines or heparins), the batches are typically large and the containers are usually slightly
@@ -3238,7 +3238,7 @@ statistical check. In this case, 100% IPC will only make sense (from a line-spee
 the containers are removed from the nest before filling and are filled in single file on an intermittent
 transport machine.
 
-4.3.2 Product-Conserving Features Which Can Affect Speed
+**4.3.2 Product-Conserving Features Which Can Affect Speed**
 
 Additional controls for high-cost, small-batch products that will conserve product include, but are not
 limited to:
@@ -3276,7 +3276,7 @@ increase the overall duration of the filling and closing operation and, therefor
 “speed” of the fill. However, they each help to ensure product quality and reduce waste, which can be an
 important trade-off for speed.
 
-4.3.3 Filling Curve and Speed
+**4.3.3 Filling Curve and Speed**
 
 The filling time of a single container is governed by the filling curve specific to the product being filled and
 the required volume to be filled in each container. The filling curves are independent of the speed of the
@@ -3308,7 +3308,7 @@ during the filling cycle. Of the four technologies discussed in **Section 2.0** 
 the fewest options to dramatically vary the fill curve. This means that the PP, RPP, and DP are better at
 modifying the fill curve when required to adapt to product attributes.
 
-4.4 Functionality Affecting Foam
+### 4.4 Functionality Affecting Foam
 
 The tendency to foam is a product attribute and, therefore, may be somewhat unavoidable; however, there
 are handling considerations for products with a propensity to foam that can help to control foam formation.
@@ -3344,7 +3344,7 @@ the rise of the fluid level within the container. This needle movement reduces t
 the needle to the bottom of the container or to the surface of the liquid within the container, thereby reducing
 foaming.
 
-4.5 Functionality Affecting Drip Control
+### 4.5 Functionality Affecting Drip Control
 
 Product characteristics (e.g., rheology, elasticity, surface tension, viscosity) may result in a tendency for the
 product to drip during filling. For example, when surface tension is too low, there is little to inhibit a droplet
@@ -3428,7 +3428,7 @@ In summary, dripping can often result when companies try to economize by trying 
 products and dosing volumes with “one-size fits all” setups for filling. It is important to ensure that the
 characteristics of each product and its intended filling-system design are evaluated for suitability.
 
-4.6 Functionality for Maintaining Homogeneity
+### 4.6 Functionality for Maintaining Homogeneity
 
 Maintaining homogeneity in products that tend to sediment (e.g., emulsions, suspensions, ATMPs, cell
 therapy products) may be achieved by keeping the product in constant movement. Typical technologies to
@@ -3517,7 +3517,7 @@ fill without any action)?
 How will it be ensured that the filling is stopped when the batch reaches the minimum
 effective volume for either mixing or recirculation?
 
-4.6.1 Design Options for Maintaining Homogeneity
+**4.6.1 Design Options for Maintaining Homogeneity**
 
 **Figures 4.6.1-1**      - **4.6.1-5** represent just a few examples of common recirculation strategies, although the
 possibilities for system design are nearly limitless.
@@ -3606,7 +3606,7 @@ where avoiding product rejection, as much as possible, is required.
 
 94 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-4.7 Functionality for Controlling Temperature
+### 4.7 Functionality for Controlling Temperature
 
 Products that require temperature control during filling commonly have a restrictive “temperature budget,”
 that is, a specific limited duration that the product is permitted to be outside of active temperature control
@@ -3641,7 +3641,7 @@ managed to optimize the balance between temperature and flowability. The effects
 temperature on filling accuracy and on weight checks should be understood and addressed within the design
 and controls.
 
-4.7.1 Filling Speed, Filling Time, and Temperature
+**4.7.1 Filling Speed, Filling Time, and Temperature**
 
 Filling speed should be designed to ensure that filled containers can be returned to refrigerated conditions
 within a controlled duration of time. Accumulation points that serve to buffer capacity on the line (e.g.,
@@ -3655,7 +3655,7 @@ outside of the containers from affecting the loading.
 
 For all temperature-restricted products, the validation must include demonstration that the time-out-oftemperature period is well controlled and acceptable to the product quality for all containers along the line.
 
-4.8 Design and Functionality for Large Batch Sizes
+### 4.8 Design and Functionality for Large Batch Sizes
 
 The fluid pathway for large batches commonly will include an intermediate holding-vessel that is a fraction
 of the size of the bulk vessel. This is especially true for designs where the bulk vessel is some distance away
@@ -3677,7 +3677,7 @@ a new filter pathway during the batch, should the first filter become blocked wi
 consideration with large batches. There is no practical difference in the design of the fluid pathway(s) based
 on the type of filler.
 
-4.9 Functionality to Control Oxygen Exposure
+### 4.9 Functionality to Control Oxygen Exposure
 
 Additional controls are required for the filling step for oxygen-sensitive products. Products that are sensitive
 to oxygen are typically stored in vessels in an overpressure condition with an inert gas, such as nitrogen,
@@ -3732,7 +3732,7 @@ product and justified within the product’s overall control strategy.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 97
 
-4.10 Enhancing Functionality with Robotics
+### 4.10 Enhancing Functionality with Robotics
 
 People are the greatest source of contamination associated with aseptic filling. Therefore, robotics offers an
 enormous opportunity to improve SA when designed and implemented properly. Recent advances in
@@ -3862,7 +3862,7 @@ beneficial to process robustness in more than just the direct application of the
 
 100 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-5.0 Designs for Dose Control Systems
+## 5.0 Designs for Dose Control Systems
 
 To ensure that the delivered parenteral dose to the patient is highly accurate, the filled volume must be
 controlled during the filling process. Whether filling a SU container (e.g., a prefilled syringe in an
@@ -3878,7 +3878,7 @@ _Container Contents for Injections_ (harmonized with European and Japanese Pharm
 are typically designed for off-line use, are destructive tests, and are not typically employed for in-process
 control purposes.
 
-5.1 Dose Control Systems Risks and Benefits
+### 5.1 Dose Control Systems Risks and Benefits
 
 Whenever possible, 100% of container doses should be checked as an integral part of the filling process, as
 long as line speed and line design permit this approach. If this is not possible, an intermittent statistical dosecheck should be done automatically on-line. Both approaches have advantages and disadvantages that will
@@ -3909,7 +3909,7 @@ configuration _**(7-9)**_ . See TR 54-2 for applied examples of packaging risk a
 The benefits and risks of on-line intermittent and on-line 100% weight-check approaches are described in
 **Sections 5.1.1–5.1.4** .
 
-5.1.1 Benefits of Intermittent Weight Checks
+**5.1.1 Benefits of Intermittent Weight Checks**
 
 The benefits of intermittent statistical weight-check approaches include:
 
@@ -3919,7 +3919,7 @@ process is needed.
        - Filling lines can run at a higher speed as samples are only taken statistically, depending on the IPC
 rate.
 
-5.1.2 Constraints of Intermittent Weight Checks
+**5.1.2 Constraints of Intermittent Weight Checks**
 
 The risks of an intermittent (statistical) weight-check approach include:
 
@@ -3934,7 +3934,7 @@ check-weigh results)
 whether two scales or a single scale are used, potentially resulting in a smaller filling range to
 compensate (see **Section 5.2** and **Section 5.3** for additional details on dose control).
 
-5.1.3 Benefits of 100% Weight Checks
+**5.1.3 Benefits of 100% Weight Checks**
 
 Typically, 100% IPC weight checks are accomplished using a tare scale (which weighs the empty container
 prior to filling) and a gross scale (which weighs the container after filling). Tare and gross scales are
@@ -3989,7 +3989,7 @@ resulted in the need for overfilling. Mass flowmeters are capable of withstandin
 difficult to verify their cleanliness and sterility, so the validation can be challenging. As a result, the
 gravimetric approach is by far the more common approach.
 
-5.1.4 Constraints of 100% Weight Checks
+**5.1.4 Constraints of 100% Weight Checks**
 
 The risks of 100% weight checks include:
 
@@ -4011,7 +4011,7 @@ movement is aligned. To facilitate aligning these elements, ergonomic devices su
 used. Confirming alignment during setup avoids incurring costly replacement or repairs or product-reject
 losses.
 
-5.2 Dose Control System Design Options
+### 5.2 Dose Control System Design Options
 
 For some filling lines with singularized containers, especially in filling rooms with limited size and required
 high throughput, a 100% check-weigh is not possible. In this case, a statistical dose-control model must be
@@ -4053,7 +4053,7 @@ Figure 5.2-2 Statistical In-Process Control for Nested Containers – Dose Outsi
 There are two main methods to control the dose in parenteral containers—gravimetric and volumetric fill—
 to a physical stopping point (e.g., laser-fill endpoint detection on a cartridge).
 
-5.2.1 Method 1: Gravimetric Dose Control Process
+**5.2.1 Method 1: Gravimetric Dose Control Process**
 
 The basics of gravimetric dose control are simple and well understood. An empty container is weighed on a
 load-cell to obtain tare weight; the container is filled, and then the filled container is weighed again on a
@@ -4062,7 +4062,7 @@ load-cell to find gross weight. The net weight is calculated from those numbers.
 The tare and gross load-cells can be the same, as is the case in many nested filling lines. However, on many
 bulk or singularized filling lines, two separate load-cells are used to measure tare and gross weight.
 
-5.2.1.1 Gravimetric Dose Control Considerations
+**5.2.1.1 Gravimetric Dose Control Considerations**
 
 To ensure the dose delivered to the patient is correct, several sources of uncertainty need to be considered.
 These sources of uncertainty, when applied to the label claim and maximum- and minimum-fill weights, can
@@ -4138,7 +4138,7 @@ adjustment occurs.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 107
 
-5.2.2 Method 2: Volumetric Filling Process
+**5.2.2 Method 2: Volumetric Filling Process**
 
 In a volumetric filling process, the volume of product filled into the container is not controlled
 gravimetrically by scales, but instead relies on container geometry, plunger position (for cartridges), and
@@ -4148,7 +4148,7 @@ deflected by the empty neck of the cartridge and does not reach the sensor. As t
 neck fills with product, the laser light is transmitted through the neck of the container, signaling the control
 system to stop dosing.
 
-5.2.2.1 Volumetric Filling Dose-Control Considerations
+**5.2.2.1 Volumetric Filling Dose-Control Considerations**
 
 For a volumetric filling process to deliver repeatable doses to the containers, the container geometry must be
 well understood. This includes both the length and the ID of the container and, for cartridges, the precise
@@ -4160,7 +4160,7 @@ guaranteeing an adequate dose is in the container. Volumetric filling is most ap
 do not have maximum-fill weight limits (e.g., a multi-use cartridge or a vial in which the patient uses a
 syringe to determine the dose delivered).
 
-5.2.2.2 Adjustment of Dosing
+**5.2.2.2 Adjustment of Dosing**
 
 Stability differs across the various filling–pumping systems (see **Section 2.0** ). Consequently, there are also
 differences in philosophy on whether filling machines should automatically correct doses based on feedback
@@ -4184,7 +4184,7 @@ For TP filling, automatic dose-correction is standard, due to the need to perfor
 adjust pinch-valve timing owing to the everchanging intermediate vessel or manifold pressures as they
 empty and fill.
 
-5.3 External and Internal Influences on Dose Control Systems
+### 5.3 External and Internal Influences on Dose Control Systems
 
 On filling machines, the weighing cells are constantly being confronted with external and environmental
 factors that will ultimately negatively influence the ability of the weighing cells to provide accurate
@@ -4229,7 +4229,7 @@ Weighing cell “filters” to identify and cancel out vibrations
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 109
 
-5.3.1 In-Process Control Production Limits and Weighing Accuracy
+**5.3.1 In-Process Control Production Limits and Weighing Accuracy**
 
 Weighing cells during production, if not equipped with a defined recipe and programmable correctionfactor(s) as explained in **Figure 5.3.1-1**, will deviate from the actual weight of the container (empty and
 filled or tare and gross). Therefore, it is not practical to use IPC values as parameters to depict the actual
@@ -4281,7 +4281,7 @@ the widest IPC bell curve (which will mean that the “true” weight of the fil
 within limits). This would represent an actual distribution if weighed on a laboratory balance of the narrow
 bell curve shown in **Figure** **5.3.1-1** .
 
-5.3.2 In-Process Control Production Limits in Relation to Process Capability Index
+**5.3.2 In-Process Control Production Limits in Relation to Process Capability Index**
 
 Some manufacturers will define the robustness of their design in terms of the system’s capability. This is an
 outcome based on upper- and lower-specification limits and the dosing accuracy of the pumps built into the
@@ -4329,7 +4329,7 @@ Standard Deviation for Every One-Million Units Filled in a Stable Process
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 113
 
-6.0 Special Considerations for Advanced Container–Closure
+## 6.0 Special Considerations for Advanced Container–Closure
 Design and Implementation
 
 Container–closure design is an area of intense research and development within the pharmaceutical and
@@ -4339,7 +4339,7 @@ system (see **Section 7.3** ). When considering the use of a novel container and
 involve potential component suppliers as early as practicable with the design and selection of the equipment
 to ensure suitability and compatibility.
 
-6.1 Container–Closure Design
+### 6.1 Container–Closure Design
 
 Some recent examples of advanced container–closure systems in development and in the market include:
 
@@ -4510,7 +4510,7 @@ closure system.
 
 116 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-7.0 Closures and Closing System Design
+## 7.0 Closures and Closing System Design
 
 Closures play an important role in the protection of pharmaceutical and biopharmaceutical products from
 deleterious effects of the environment (e.g., ingress of contaminants, loss of inert headspace, evaporation or
@@ -4521,7 +4521,7 @@ Note: This section provides a broad overview (with some generalizations) of comm
 the purpose of orienting the reader to common components prior to discussing closing system designs. This
 section should not be considered a comprehensive treatment of all closures or their features.
 
-7.1 Common Closure Types
+### 7.1 Common Closure Types
 
 When defining a closure system for vials and bottles, it is generally considered (with some exceptions) to be
 a two-part system with an elastomeric component (which forms the seal to the container) and a mechanical
@@ -4545,7 +4545,7 @@ force to seal the stopper to the container. The seal component can be integrated
 immediate application of both components at the closing station or can be applied at the second sealing
 station after stoppering (e.g., capper or crimping station) that is designed for their application.
 
-7.2 Closure Design Elements Affecting Closing System Design
+### 7.2 Closure Design Elements Affecting Closing System Design
 
 The materials of construction, coatings, design features, and dimensions for elastomers offer a vast variety
 of options to suit all applications.
@@ -4638,7 +4638,7 @@ Table 7.2-1 Attributes Impacting Closing Design
 |Batch/Campaign<br>Details|Size of the batch/campaign will influence the number of times replenishment of<br>the sorting system will be required, which will influence decisions such as<br>whether a bulk hopper should be provided for feeding the sorting system.<br>Filling speed will influence the size of the sorting-system bowl to provide the<br>best balance between continuous operation and replenishment.|
 |Method of<br>Introduction to<br>the Filling Line|Different methods of introduction to the line and different sources of supply<br>(e.g., RTU vs. processed in-house) will influence the necessary connections to<br>the filling line (see**Section 9.0** and**Section 10.0**).|
 
-7.3 Closure Insertion Considerations and their Effect on the Design of
+### 7.3 Closure Insertion Considerations and their Effect on the Design of
 Closing Systems
 
 The selection of the container–closure system will influence the design of the closing system. The use of
@@ -4649,7 +4649,7 @@ more than one closure type on a line may require flexibility in the closing-syst
 cases, the objective is to ensure an integral seal on the container to protect its contents throughout its shelf
 life.
 
-7.3.1 Elastomer Insertion in Vials and Bottles
+**7.3.1 Elastomer Insertion in Vials and Bottles**
 
 The stoppering of vials, whether using serum stoppers or lyophilization stoppers, essentially employ the
 same technique. After orienting the stopper in the stopper track with the finial or flange (the flat top of the
@@ -4686,7 +4686,7 @@ the conclusion of the lyophilization cycle a vacuum is drawn on the containers, 
 containers, and the shelves of the lyophilizer are used to fully seat the stoppers on all of the units in the load
 at once.
 
-7.3.2 Elastomer Insertion in Prefilled Syringes and Cartridges
+**7.3.2 Elastomer Insertion in Prefilled Syringes and Cartridges**
 
 The stoppers (or plungers) for prefilled syringes and cartridges have requirements similar to a traditional
 vial stopper (e.g., protection of the product, prevention of leakage) but also have added functionality. In a
@@ -4806,7 +4806,7 @@ filling, as shown in **Figure 7.3.2-2** .
 In this case, the cartridge is then filled from the top. Whether from the bottom or top, stopper insertion has
 the same risks and required controls as those compared and contrasted in **Table 7.3.2-1** .
 
-7.3.3 Common Defects in Elastomer Placement Operations
+**7.3.3 Common Defects in Elastomer Placement Operations**
 
 There are a number of defects that routinely occur with elastomer placement, among them:
 
@@ -4838,7 +4838,7 @@ system and for the overall integrity of the sterile product.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 127
 
-7.4 Mechanical Seal Application and System Design
+### 7.4 Mechanical Seal Application and System Design
 
 Mechanical seals are inherent components in many container–closure systems. As with the primary
 packaging, the choice of mechanical seal will influence the design of the aseptic filling system. The use of
@@ -4846,7 +4846,7 @@ more than one mechanical closure type on a line may require flexibility in the c
 but, as with primary containers and closures, the objective is to ensure an integral seal on the container to
 protect its contents throughout its shelf life.
 
-7.4.1 Mechanical Seal Application
+**7.4.1 Mechanical Seal Application**
 
 There are specialty closures, such as press-fit caps or cartridge disc seals, that integrate both the elastomer
 and the mechanical seal in a single closure and, often, a single closing step. However, there are other
@@ -4919,7 +4919,7 @@ the mechanical seals to check for, and cull, any sealing defects.
 
 130 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-7.4.2 Mechanical Seals Applied to Nested Containers
+**7.4.2 Mechanical Seals Applied to Nested Containers**
 
 Nested containers may be de-nested for the application of mechanical seals. This is the traditional approach
 for closing nested containers.
@@ -4935,7 +4935,7 @@ the closing specifications, thereby assuring CCI.
 Innovations continue to be made with both containers and closures, therefore, additional features and
 capabilities may also become available (see **Section 6.0** ).
 
-7.5 Cartridge Disc Seal Application and System Design Considerations
+### 7.5 Cartridge Disc Seal Application and System Design Considerations
 
 Cartridge disc seals (also called lined seals) consist of a flat elastomeric disc that is integrated with an
 aluminum seal (see item E of **Figure 7.2-1** ). These combination closures are applied in a single step.
@@ -4956,7 +4956,7 @@ filling station.
 the shear of blades over the metal seal, using seals that minimize particle-generation during
 crimping).
 
-7.6 Container and Closure Defects
+### 7.6 Container and Closure Defects
 
 PDA’s _Technical Report No. 76: Identification and Classification of Visible Nonconformities in Elastomeric_
 _Components and Aluminum Seals for Parenteral Packaging_ and _Technical Report No. 43 (Revised 2023):_
@@ -4968,7 +4968,7 @@ discussed in **Section 7.7** .
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 131
 
-7.7 Requirements for Effective Container–Closure Integrity and Validation
+### 7.7 Requirements for Effective Container–Closure Integrity and Validation
 
 The goal of CCI validation is to ensure that integrity can first be established in packaging development
 studies and, subsequently, can be tested and confirmed with the actual manufacturing equipment and
@@ -5100,7 +5100,7 @@ separate study from the filling-line CCI validation.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 135
 
-8.0 Microbiological Risks for System Operation
+## 8.0 Microbiological Risks for System Operation
 
 Contamination control is the primary objective in aseptic filling. In Section 1.0, it was highlighted that the
 goal of producing a sterile product must remain the target in all design decisions and trade-offs. Successful
@@ -5113,7 +5113,7 @@ changeover complexity. The aseptic system design should be adapted to ensure eff
 control during all phases of the operation for both inherent and corrective interventions that are required
 after the risk assessment and mitigation are successfully concluded.
 
-8.1 Microbiological Considerations for Aseptic Manipulations Associated
+### 8.1 Microbiological Considerations for Aseptic Manipulations Associated
 with Line Setup
 
 Line setup (LSU) is an important part of the filling process because of the extent of operator interaction and
@@ -5162,7 +5162,7 @@ taken in their washing and sterilization. The parts must be dried and wrapped or
 before sterilization. The wraps must remain intact until the time of their installation as it is a vital part of
 their protection as they are transferred from the preparations area to the filling line.
 
-8.1.1 Detailed Steps of Line Setup in RABS and Isolators
+**8.1.1 Detailed Steps of Line Setup in RABS and Isolators**
 
 Depending on the barrier technology for aseptic processing, RABS or Isolators, the parts will be subject to
 different steps. All steps for line setup should be risk assessed in order to identify the risk mitigations and
@@ -5228,7 +5228,7 @@ than Grade C. The risks associated with indirect product contact parts and the c
 their covers becomes even more critical when considering the associated risks with a Grade D background
 environment.
 
-8.1.2 Additional Considerations for Line Setup within a Campaign
+**8.1.2 Additional Considerations for Line Setup within a Campaign**
 
 Within a campaign, limited line setup may occur between batches (i.e., to change container type, to establish
 a new fluid pathway, etc.) (see **Section 4.1** for additional details on campaign requirements).
@@ -5260,7 +5260,7 @@ what disinfection or biodecontamination is appropriate prior to resumption of as
 recent advances in technology including rapid biodecontamination within isolators, for example,
 make it possible to turn around a line within a shorter period of time.
 
-8.1.3 Other Considerations for Line Setup
+**8.1.3 Other Considerations for Line Setup**
 
 When making use of Single Use Systems (SUS), and they are part of the load for the biodecontamination
 cycle, care should be taken to ensure that the packaging is impermeable to the biodecontamination agent
@@ -5274,7 +5274,7 @@ CFD for airflow design within the barrier (both RABS and isolators) and surround
 airflow visualization for the intervention activities, are essential to demonstrate that airflow turbulence is
 minimized.
 
-8.2 General Considerations Regarding Aseptic Interventions
+### 8.2 General Considerations Regarding Aseptic Interventions
 
        - Quality risk management tools should be employed to define the risk level for each planned
 intervention, including the intervention detection, mitigations, and controls (e.g., EM, personnel
@@ -5323,7 +5323,7 @@ process simulation (APS)
 Additional detail on setup, specifically, and interventions, more generally, may be found in industry
 guidance on aseptic practices _**(3, 15)**_ .
 
-8.3 Microbiological Considerations for Filter Changes
+### 8.3 Microbiological Considerations for Filter Changes
 
 The sterilizing filter represents a sterile boundary for the fluid pathway. Filter changes should be avoided,
 when possible, and handled with care when unavoidable. To avoid filter changes, firms will sometimes
@@ -5378,7 +5378,7 @@ environment. If outside, a key consideration is whether the vessel can be cleane
 replacement. If inside the Grade A area, a key consideration is whether the intervention has been
 appropriately qualified.
 
-8.4 Microbiological Considerations for Aseptic Manipulations Associated
+### 8.4 Microbiological Considerations for Aseptic Manipulations Associated
 with Filling Needle Adjustment, Repair, and Replacement
 
 If a liquid filling needle is damaged, there are three options from which to choose:
@@ -5403,7 +5403,7 @@ In the case of powder filling that makes use of powder dosing-needles, turning o
 typically not possible, and full replacement would be required. For liquid needles, repair/replacement is one
 of the highest risk interventions and should not be undertaken lightly.
 
-8.5 Microbiological Considerations for Aseptic Manipulations Related to
+### 8.5 Microbiological Considerations for Aseptic Manipulations Related to
 Broken or Blocked Primary-Packaging Materials
 
 The general considerations for aseptic interventions outlined in **Section 8.2** should be followed for the
@@ -5427,7 +5427,7 @@ conclusion of the filling operation unless they posed a risk of malfunction. An 
 should describe each required intervention and its associated risks and define the required controls. The
 intervention and controls should be included in the CCS.
 
-8.6 Microbiological Considerations for Aseptic Manipulations Associated
+### 8.6 Microbiological Considerations for Aseptic Manipulations Associated
 with Supply of Components
 
 Automated transfer of components to the aseptic filling line is preferred to reduce microbiological risk. An
@@ -5454,7 +5454,7 @@ executed considering the general rules for aseptic manipulations (see **Section 
 of components should be demonstrated in a representative manner and frequency within an appropriately
 designed APS.
 
-8.7 Microbiological Considerations for Aseptic Manipulations Associated
+### 8.7 Microbiological Considerations for Aseptic Manipulations Associated
 with Sorting Systems for Components
 
 Sorting systems are each independently machined (custom made), so there can be small geometric
@@ -5494,7 +5494,7 @@ Biodecontamination effectiveness can be affected by any residues that remain on 
 taken to remove any residual silicone oil from surfaces during cleaning before sterilization as it may inhibit
 effective biodecontamination.
 
-8.8 Microbiological Considerations for Mechanical Interventions
+### 8.8 Microbiological Considerations for Mechanical Interventions
 
 Mechanical interventions to repair or replace parts fall into one of four categories:
 
@@ -5566,7 +5566,7 @@ product hold times to be exceeded or would represent such a high sterility-assur
 operation is discontinued, and the remaining product is rejected, filled via a re-setup of the line, or
 reprocessed (if permissible and justified by site SOPs and by product license).
 
-8.9 Microbiological Considerations for Aseptic Manipulations Related to
+### 8.9 Microbiological Considerations for Aseptic Manipulations Related to
 Environmental Monitoring
 
 EM includes viable particulate-monitoring (e.g., settle plates, volumetric air, swab, and contact plates for
@@ -5647,7 +5647,7 @@ impacted plates should be retained until completion of the investigation _**(18)
 
 146 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-9.0 Component and Filling Supply Handling Considerations
+## 9.0 Component and Filling Supply Handling Considerations
 
 PDA has published several technical reports that deal with the handling of components and supplies for
 aseptic filling (e.g., steam sterilization, depyrogenation, defects in glass, defects in elastomeric closures), as
@@ -5656,7 +5656,7 @@ standard for aseptic filling as it relates to filling technology. **Section 9.0*
 preparing and handling components and filling supplies. **Section 10.0** discusses the mechanisms for getting
 materials to the point of the aseptic fill while minimizing risks.
 
-9.1 Considerations for Component Handling and Impact on System Design
+### 9.1 Considerations for Component Handling and Impact on System Design
 
 The most important considerations for handling the components and supplies for aseptic filling include:
 
@@ -5680,7 +5680,7 @@ of plungers)
 With these considerations in mind, the points to be considered for the selection of handling mechanism are
 outlined in **Section 9.1.1.**
 
-9.1.1 Ready-To-Sterilize or Ready-to-Use Versus In-Line or On-Site Pretreatment
+**9.1.1 Ready-To-Sterilize or Ready-to-Use Versus In-Line or On-Site Pretreatment**
 
 When making the essential decision of selecting either RTU containers—those that have been sterilized,
 depyrogenated, or pretreated (e.g., siliconized), or selecting in-line or on-site treatment of containers—the
@@ -5691,7 +5691,7 @@ components are conveyed or introduced to the line directly.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 147
 
-9.1.1.1 Large Batch Production
+**9.1.1.1 Large Batch Production**
 
 In the case of large batch production in glass, the primary containers are commonly supplied untreated, as
 the economics of handling large quantities of sterile or RTS components can be prohibitive. The glass
@@ -5705,7 +5705,7 @@ by industry has reduced supply costs for the most common sizes and styles. The e
 consider fully absorbed labor, facility costs, equipment life cycle, energy, and reject costs for the on-site
 treatment. Therefore, the break-even point may need to be considered for every project.
 
-9.1.1.2 Specialty Components with Complex Pretreatment, Assembly, or Orientation
+**9.1.1.2 Specialty Components with Complex Pretreatment, Assembly, or Orientation**
 
 Complexities arise with the processing of specialized components, such as syringe barrels. Complex
 interactions such as on-line siliconization of the barrel to provide the necessary lubrication for the plunger,
@@ -5752,7 +5752,7 @@ complex design, fabrication, and operation.
 working in a nested format when undertaking activities such as weight-checks or when handling nests of
 containers at visual inspection stations after filling.
 
-9.1.1.3 Small Batch Production
+**9.1.1.3 Small Batch Production**
 
 RTU glass vials may be well-suited for small batch-size production, as the handling of the pretreated
 components is quite simple. A smaller batch size also shifts the economics of washing and preparing
@@ -5762,7 +5762,7 @@ multiple materials of construction, the assembly and manufacture of the componen
 of pretreatment (e.g., gamma sterilization), which drives the use case even for small batch sizes. As stated
 previously, it is best to evaluate the economics on a case-by-case basis (see **Section 9.1.1.1** ).
 
-9.1.1.4 Considerations for Ready-to-Sterilize
+**9.1.1.4 Considerations for Ready-to-Sterilize**
 
 RTS primary containers (prewashed) are introduced before the depyrogenation step; therefore, it is
 necessary to have a loading section to transfer the primary containers into the tunnel or oven. The loading
@@ -5772,7 +5772,7 @@ Sterilization or depyrogenation of glassware in ovens currently is being discont
 industry due to the contamination risks caused by manual operations, the use of stainless-steel boxes (which
 themselves require washing), and additional controls needed to introduce containers to the line.
 
-9.1.1.5 Cyclic Olefin Copolymer and Plastics
+**9.1.1.5 Cyclic Olefin Copolymer and Plastics**
 
 For COC and other plastics, RTU containers are the most common choice. These materials of construction
 are commonly subjected to a sterilization mechanism, such as gamma irradiation or ethylene oxide (EtO)
@@ -5785,7 +5785,7 @@ become a more standard practice. For COC components, an additional complication 
 they tend to scratch very easily. Because nested processing lowers the risk of damaging the component, this
 must be considered in any on-line pretreatment.
 
-9.1.1.6 Transfer of RTU Primary Containers
+**9.1.1.6 Transfer of RTU Primary Containers**
 
 In the case of RTU primary containers, which are sterile or depyrogenated (regardless of the container
 material of construction), a mechanism must be in place to aseptically transfer the containers directly into
@@ -5810,7 +5810,7 @@ modality during the filling system design stage. Significant delays have occurre
 implementation when suppliers are not capable of providing the correct packaging or the appropriately
 dimensioned transfer device.
 
-9.1.1.7 Advantages and Disadvantages of the Various Approaches
+**9.1.1.7 Advantages and Disadvantages of the Various Approaches**
 
 The advantages and disadvantages of on-site treatment vs. RTU primary containers are highlighted in **Table**
 **9.1.1.7-1** .
@@ -5850,7 +5850,7 @@ Table 9.1.1.7-1 Considerations for In-Line Treated Versus Ready to Used Transfer
 
 154 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-9.1.1.8 Considerations for Closures
+**9.1.1.8 Considerations for Closures**
 
 Closures of all types must be of suitable cleanliness (e.g., low particulate levels) and sterile for use in the
 Grade A environment. As with primary containers, the decision must be made either to provide RTU, RTS
@@ -5894,7 +5894,7 @@ innovation for aseptically-filled products. Like elastomeric closures, the essen
 cleanliness (including particulate level) and sterility apply. Due to the polymeric materials of construction,
 these are typically supplied RTU after being gamma-irradiated.
 
-9.1.2 Condition of Closures Upon Presentation to the Line
+**9.1.2 Condition of Closures Upon Presentation to the Line**
 
 Whether performed in-house or at a vendor site, multiple factors must be considered with regard to the
 condition of the elastomers and closures when they emerge from pretreatment steps (e.g., washing,
@@ -5946,7 +5946,7 @@ Table 9.1.2-1 Considerations for On-Site Treatment Versus Ready-to-Sterilize or 
 
 158 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-9.1.3 Sorting/Supply at Filler and Closing (or Partial-Closing) Stations
+**9.1.3 Sorting/Supply at Filler and Closing (or Partial-Closing) Stations**
 
 Bulk components like plastic containers (such as droptainers for ophthalmics) and elastomers are supplied to
 the filling line in large volume to reduce the frequency of replenishment. Regardless of the type of
@@ -5977,7 +5977,7 @@ during the intermittent (or continuous) vibratory episodes at the equipment loca
 would also apply to other locations that are subject to accumulation (e.g., turntables, bi-flow tables, loader
 unloaders) that might result in intermittent container-on-container contact and generate particulate.
 
-9.1.4 Crimp Seals and Caps
+**9.1.4 Crimp Seals and Caps**
 
 Sterilized crimp seals and caps are required in isolators where the capper is within the Grade A environment
 of the isolator. Sterilized crimp seals and caps are not mandatory for most conventional operations (e.g.,
@@ -5989,7 +5989,7 @@ stainless-steel transport container (with or without sterility). Special care mu
 or deformation of the seals/caps when handling them in bulk; therefore, a RTP with a soft-sided transfer bag
 is not typically recommended.
 
-9.1.5 Considerations for Filters
+**9.1.5 Considerations for Filters**
 
 For certain operations (e.g., nitrogen-gassing, vacuum-filling, product sterile-filtration), filter cartridges
 might need to be transferred into the barrier (see **Section 11.0** ). There are different ways to introduce filters:
@@ -6012,7 +6012,7 @@ CIP/SIP cycle and external biodecontamination after installation before use.
 
 160 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-10.0 Material Transfer System Design
+## 10.0 Material Transfer System Design
 
 **Section 9.0** addressed the various methods of preparing and handling materials and components that are
 needed to supply the aseptic filling line. **Section 10.0** addresses the mechanistic aspects of material transfer.
@@ -6020,7 +6020,7 @@ When considering the mechanisms to introduce sterile or depyrogenated components
 they can be divided into two categories of transfer: conveyance or docking. This section addresses both
 categories as well as the considerations for decontamination based on the method of introduction.
 
-10.1 Conveyance for Material Transfer
+### 10.1 Conveyance for Material Transfer
 
 Conveyors are the traditional mechanism of movement through a filling system. Conveyors permit the direct
 connection from one piece of equipment to another. An example of this is a tunnel conveyor exit across a
@@ -6030,7 +6030,7 @@ presterilized tub or tray within the barrier, that would generally fall within t
 the robotic entry, the tub or tray may be subjected to conventional conveyance or to complete robotic
 movement. Conveyance systems are typically used for components.
 
-10.2 Docking for Material Transfer
+### 10.2 Docking for Material Transfer
 
 Docking is the process of connecting a bag, cannister, or other transport element (e.g., transport isolator) to a
 RABS or isolator wall. The direct connection of equipment discharge-doors, such as autoclaves, ovens, or
@@ -6087,7 +6087,7 @@ be exposed. This may be especially important if the load in the container includ
 hydrogen-peroxide absorptive. PDA has published Points-to-Consider technical documents on oxidation and
 on isolators that provide additional detail on handling indirect-contact parts _**(16, 24)**_ .
 
-10.3 Conveyance Considerations for Glassware
+### 10.3 Conveyance Considerations for Glassware
 
 For nested components, the conveyance system either handles the tub or removes the nest (i.e., the insert
 within the tub) that contains the glassware and conveys the nest alone. The tubs and nests are molded plastic
@@ -6123,7 +6123,7 @@ them less susceptible to scuffing and fracture if this becomes an excessive issu
 silicone may be sprayed on the exterior of containers (e.g., cartridges) to reduce the transport friction in the
 depyrogenation tunnel and along the line.
 
-10.4 Disinfection, Biodecontamination, and Sterilization Associated with
+### 10.4 Disinfection, Biodecontamination, and Sterilization Associated with
 Material Transfer
 
 The more elements associated with the transport system, the greater the risk for cleaning and disinfection or
@@ -6183,13 +6183,13 @@ processes, with subsequent transport and introduction (see **Section 9.0** ).
 
 164 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-11.0 Sterile Filtration and Filling System Considerations
+## 11.0 Sterile Filtration and Filling System Considerations
 
 There is no one filling path that will work for every process. The design and integration of a filtration
 system with the fluid pathway will result from the consideration of a wider variety of factors that will suit
 the product attributes, SA, and risk.
 
-11.1 Overview of the Integration of Sterile Filtration with the Filling
+### 11.1 Overview of the Integration of Sterile Filtration with the Filling
 System
 
 The integration of the product sterilizing filter for subsequent sterile filling is impacted by various
@@ -6270,7 +6270,7 @@ curve monitoring)
        - Compatible with product contact (e.g., limited adsorption or absorption, limited extractables and
 leachables)
 
-11.2 The Influence of Product Attributes on Filtration System Design
+### 11.2 The Influence of Product Attributes on Filtration System Design
 
 One of the first considerations when selecting a filtration system and fluid pathway configuration is to
 understand the product attributes. These product attributes will drive the filtration and fluid pathway
@@ -6304,7 +6304,7 @@ sensitizing, or toxic. Containment and decontamination considerations should be 
 filtration manifolds so that waste associated with PUPSIT or filter-flush at the beginning of processing is
 handled in a way that does not risk the employees, the environment, or the outside of any filled containers.
 
-11.3 Product Transfer Modalities and Influence on System Design
+### 11.3 Product Transfer Modalities and Influence on System Design
 
 The two primary methods to get product from a vessel through the filter-manifold, either to another vessel
 or directly to the filler, are overpressure and pumping. Overpressure is provided by the application of a
@@ -6334,7 +6334,7 @@ Table 11.3-1 Transfer System Design Influences on Filtration Risks
 |Pump|Yes|No|Yes|Start/stop of the pump should be considered relative to the risk to the<br>filter membrane, as the pump will need to be interlocked with the<br>filler. Under certain conditions, if stable pressure on the dosing system<br>cannot be maintained, the dosing accuracy could be affected.|
 |Pump|Yes|Yes|Yes|Rate of transfer controlled by the filtration operation alone to the<br>intermediate vessel; offers less risk of start/stop to the filter<br>membrane.|
 
-11.4 Filter Selection and Influences on System Design
+### 11.4 Filter Selection and Influences on System Design
 
 The two primary filter types are cartridge filters and capsule filters. Cartridge filters are filter membranes installed within a filter housing that is part of
 the equipment. O-rings at the bottom of the filter create the seal with the equipment housing. Cartridge filters can be either sterilized out of place in an
@@ -6355,7 +6355,7 @@ the flush quantities required to standardize the product homogeneity (e.g., thro
 sites). This flush quantity must be proven through validation, and the line length and filter surface area must
 be tightly controlled and standardized by procedure.
 
-11.5 Filter Configuration Alternatives
+### 11.5 Filter Configuration Alternatives
 
 A wide variety of filter configurations are possible. The product attributes will drive the selection of the
 filter configuration, as will considerations for risk mitigation associated with SA. The examples of filter
@@ -6379,7 +6379,7 @@ processing, rather than employing a redundant filtration manifold, should be ass
 breaking into a transfer line and filtration manifold after integrity-testing presents a significant risk (see
 **Section 11.9** ).
 
-11.6 Duration of Fill and Impact on Filtration System Layout
+### 11.6 Duration of Fill and Impact on Filtration System Layout
 
 When considering the configuration for the fluid path and whether to make use of a sterile holding vessel,
 the duration of the filling process and the likely duration of the filtration process should be taken into
@@ -6412,7 +6412,7 @@ maintained while supplying the filler with consistent product flow.
 Aseptic filling operations are expected to have point-of-use filtration, regardless of the filling system design,
 when permitted by the product and filler attributes (see **Section 11.11** ).
 
-11.7 Sterilization of the Filter and Filter Train
+### 11.7 Sterilization of the Filter and Filter Train
 
 When selecting a sterilizing filter, there are multiple options for ensuring the sterility of the filter and its
 associated transfer lines. Filters can be gamma-irradiated SU, or they can be sterilized on site, either through
@@ -6433,7 +6433,7 @@ The method of sterilization should also be evaluated for impact on the product. 
 gamma-irradiation, the formation of free radicals may result in the need to reject the first quantity of filtered
 product as a precautionary measure (see **Section 12.0** for information on discard considerations).
 
-11.8 Overview of Factors Influencing Filtration-Pathway Layout
+### 11.8 Overview of Factors Influencing Filtration-Pathway Layout
 
 When considering the overall fluid pathway for the product to reach the filler, the location of the filter is an
 important design aspect. For SA, the ideal position is to place the filter as close as possible to the filling
@@ -6475,7 +6475,7 @@ can reduce the risk of settling during filtration.
        - Use of sterile intermediate vessels and recirculation loops increase the distance between the
 sterilizing filter and the point of fill, which will require risk assessment.
 
-11.9 Integrity Testing and PUPSIT Implementation
+### 11.9 Integrity Testing and PUPSIT Implementation
 
 The EU Annex 1 expectation for integrity-testing is that it will occur in place, that is, in the filter housing
 _**(3)**_ . The expectation for any filter installed in a removable housing is that they will be tested together in their
@@ -6483,7 +6483,7 @@ installed position, not off-line with the housing removed. All required connecti
 included in the filling system and fluid-pathway design to prevent unnecessary connections during setup and
 testing _**(27, 28)**_ .
 
-11.9.1 PUPSIT Implementation Considerations
+**11.9.1 PUPSIT Implementation Considerations**
 
 The EU Annex 1 requires that filters be integrity-tested both before and after use _**(3)**_ . If pre-use testing
 represents a risk to the product or process, a suitable justification must be available in the quality-system
@@ -6516,7 +6516,7 @@ To ensure consistent configuration of the tubing sets, a shadow board displaying
 and providing the needed hooks that represent the desired configuration could be used by the operator to lay
 out the tubing and connectors during assembly prior to sterilization.
 
-11.9.2 Layout Alternatives for the Filter and Sterile Fluid-Pathway
+**11.9.2 Layout Alternatives for the Filter and Sterile Fluid-Pathway**
 
 Multiple fluid-path configurations are possible that consider the various requirements related to product,
 assembly, integrity, position of the sterilizing filter, and associated header- and hold-vessels or bags. **Figure**
@@ -6596,7 +6596,7 @@ loss. Other product risk factors, such as shear force, should also be considered
 dimensions in order to reduce friction during transfer under pressure. The best balance of the two conditions,
 that is, line loss and shear force, should be sought.
 
-11.10 Aseptic Filling Technology Influence on Filter and Fluid Pathway
+### 11.10 Aseptic Filling Technology Influence on Filter and Fluid Pathway
 Configuration
 
 **Table 11.10-1** summarizes equipment-specific designs that might affect the selection of the fluid pathway
@@ -6655,7 +6655,7 @@ Integrity-testing will be required for each of these additional process filters.
 commonly be performed off-line as these are hydrophobic filters that would commonly be tested with
 alcohol.
 
-11.11 Considerations Regarding Products that are Not Filterable
+### 11.11 Considerations Regarding Products that are Not Filterable
 
 Some products cannot be sterile-filtered, for example, some suspension products and cell therapy products
 where the particle size of the suspension or cells exceeds the porosity rating of the filter. Terminal
@@ -6670,7 +6670,7 @@ risk assessment is recommended to support the robustness of the overall control 
 cases, the process is the product; that is, the combination of all the sterile inputs provides the assurance of
 sterility for the final product. Hence, each must be separately assured.
 
-11.12 Filtration Associated with Powder Filling
+### 11.12 Filtration Associated with Powder Filling
 
 Although there is no filtration associated with a product in powder-filling, filtration is associated with:
 
@@ -6715,7 +6715,7 @@ system design (e.g., location of the filter), and risk.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 177
 
-12.0 Discard Strategies for Aseptic Filling of Liquids
+## 12.0 Discard Strategies for Aseptic Filling of Liquids
 
 The selection of a filling technology and its specific system design can influence the discard strategies that
 are employed for such line events as startup, priming, line stoppage, interventions, and end of the aseptic
@@ -6723,7 +6723,7 @@ fill-unit operation. Products that are very expensive or limited in availability
 disproportionately by systems that have high discard requirements. Therefore, careful consideration of the
 system design and the integration of the filling technology with the filling enclosure/isolator is warranted.
 
-12.1 Discard Strategies at Startup
+### 12.1 Discard Strategies at Startup
 
 Product rejection at the start of the filling operation, immediately after setup, is not uncommon and may
 occur for several reasons. It may be associated with the product formulation, the product’s physicochemical
@@ -6764,7 +6764,7 @@ could require reevaluation of rejection quantities.
 
 178 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-12.2 Discard Strategies at Priming
+### 12.2 Discard Strategies at Priming
 
 Some fillers are equipped with a priming feature that is linked to a discard mode for the units processed
 while in this mode. Other systems are designed to permit rejection directly to a discard vessel. Fillers may
@@ -6787,7 +6787,7 @@ ensure that the filler is rejecting any units that are improperly filled, in acc
 design. Product-development data may be leveraged to ensure that all product attributes have been
 accounted for when determining the discard quantities.
 
-12.3 Discard Strategies During Filling and Interventions
+### 12.3 Discard Strategies During Filling and Interventions
 
 During the filling operation, interruptions that stop the line (e.g., gaps in component supply, interventions,
 operator breaks) or are caused by unexpected events (e.g., particle excursion, loss of temperature in the
@@ -6848,7 +6848,7 @@ the point of headspace-analysis of the containers or at the conclusion of fillin
 headspace controls during the filling operation (e.g., when the filler is shut down) will result in the rejection
 of impacted units during the processing.
 
-12.4 Discard Strategies Associated with Dose Control
+### 12.4 Discard Strategies Associated with Dose Control
 
 The loss of dose control is another reason units may be rejected. In this case, the mechanism for weight
 verification will influence the number of needed rejections. If 100% weight verification is employed, only
@@ -6866,7 +6866,7 @@ filling operation could also result in rejection.
 
 180 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-12.5 Discard Strategies Associated with Conclusion of Fill
+### 12.5 Discard Strategies Associated with Conclusion of Fill
 
 At the end of the aseptic fill-unit operation, as bulk product volume decreases, fillers can encounter a loss of
 fill accuracy. This may be due to:
@@ -6890,7 +6890,7 @@ can also be employed to ensure all aseptic end-of-fill unit-operation containers
 only good-quality containers are produced. These end-of-fill procedures must be included in the validation
 of the process (see **Section 13.0** for more information on the end of fill).
 
-12.6 Discard Strategies Associated with Nested Components
+### 12.6 Discard Strategies Associated with Nested Components
 
 Filling syringes that are nested in tubs can pose discard challenges when the dose-control performance fails
 on an individual filling-needle position. Discarding the affected doses is the minimum action required. This
@@ -6926,7 +6926,7 @@ Table 12.6-1 Common Discard Events and Their Impact Based on Liquid Filling Tech
 
 182 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-12.7 Miscellaneous Discard Strategies while Operating
+### 12.7 Miscellaneous Discard Strategies while Operating
 
 Rejections along the filling line may occur for other reasons that may not be directly related to the operation
 of the filler, for example:
@@ -6944,7 +6944,7 @@ during qualification to ensure that detection and rejection timing is appropriat
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 183
 
-13.0 Considerations for the End of the Aseptic Fill Unit
+## 13.0 Considerations for the End of the Aseptic Fill Unit
 Operation
 
 After the completion of filling, a number of elements should be considered for an orderly completion of the
@@ -6976,7 +6976,7 @@ include:
 
        - Assessing equipment batch reports and audit trails
 
-13.1 Completion of Environmental Monitoring at End of Aseptic Fill
+### 13.1 Completion of Environmental Monitoring at End of Aseptic Fill
 
 EM (both total particle and viable sampling) must continue until all filled containers are fully closed, sealed,
 and have exited the filling line. In the case of campaign production, if the environment will be reused, the
@@ -7000,7 +7000,7 @@ removed and reconciled for submission to the laboratory.
 Exit monitoring for cleanroom personnel will be conducted, as required, when personnel leave the
 environment.
 
-13.2 Handling of Unused Containers and Closures at End of Aseptic Fill
+### 13.2 Handling of Unused Containers and Closures at End of Aseptic Fill
 
 When not being used for the next batch in the campaign, unused containers can often be emptied from the
 line by conveying them to the end of the line, and closures/components can be removed from sorters and
@@ -7021,7 +7021,7 @@ serial number and without further accounting (tracking) within the software. Any
 receive a serialization mark must be included in the rejects, so that the batch serialization records accurately
 reflect the number of filled (tracked) and rejected containers.
 
-13.3 Handling of Batch Samples at End of Aseptic Fill
+### 13.3 Handling of Batch Samples at End of Aseptic Fill
 
 Any batch samples (e.g., filled containers, bulk samples) that remain within the line will need to be
 submitted to the designated laboratory with the appropriate labels and submission paperwork. Samples of
@@ -7033,7 +7033,7 @@ are included in the reconciliation section of the batch record as an important r
 samples can also be removed with an open barrier after EM activities are finished, as appropriate to the
 operation of the line.
 
-13.4 Handling of Residual Product at End of Aseptic Fill
+### 13.4 Handling of Residual Product at End of Aseptic Fill
 
 A small amount of residual product will remain in bulk vessels, transfer lines, filtration apparatus, and the
 filler itself at the conclusion of the batch. The batch record should include the methodology for calculating
@@ -7058,7 +7058,7 @@ If the product is potent or toxic, additional controls may need to be employed, 
 parts to avoid drips (or powder) or to sending excess product to waste treatment (e.g., chemical or heat
 inactivation).
 
-13.5 End of Aseptic Fill for Potent or Hazardous Products
+### 13.5 End of Aseptic Fill for Potent or Hazardous Products
 
 After processing potent or hazardous products, a wash-in-place (WIP) cycle must be performed before the
 containment barrier (e.g., isolator) can be opened. WIP may be used to:
@@ -7119,7 +7119,7 @@ hazardous product, the exterior container washer should be cleaned and dried to 
 to any potent materials, prevent external cross-contamination, or microbial contamination within the washer
 due to residual moisture.
 
-13.6 Line Clearance at End of Aseptic Fill
+### 13.6 Line Clearance at End of Aseptic Fill
 
 Line clearance is the inspection of the line to ensure that no product, containers, or components were missed
 during the clearing of the line after the completion of the aseptic fill and final EM.
@@ -7137,7 +7137,7 @@ all batch-related materials are captured in the documentation and then conduct a
 activity with a double-check by Quality Assurance, or their designee, who is independent of the clearance
 activity, to ensure that the line can be released for further production purposes.
 
-13.7 Close-Out of Documentation at End of Aseptic Fill
+### 13.7 Close-Out of Documentation at End of Aseptic Fill
 
 The master batch-record should provide locations for the capture of usage quantities, usage statistics,
 percentage yield, and reconciliation. Many different item types may need to be recorded, such as inventoried
@@ -7155,7 +7155,7 @@ adjacent process.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 187
 
-13.8 Assessment of Batch Reports and Audit Trails at End of Aseptic Fill
+### 13.8 Assessment of Batch Reports and Audit Trails at End of Aseptic Fill
 
 As part of the batch-record review, printouts or electronic records from a variety of process equipment will
 be included with the batch records. For example, records will be collected from washers, tunnels,
@@ -7170,7 +7170,7 @@ demonstrate that all personnel interacting with the system were qualified and pe
 
 188 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-14.0 Filling System and Environmental Considerations
+## 14.0 Filling System and Environmental Considerations
 
 Aseptic processing is expected to take place in a manner that separates personnel from the process, which is
 commonly accomplished by providing a barrier to attain separation. A barrier is a physical partition that
@@ -7194,7 +7194,7 @@ _and Testing of Health Care Products_
 
        - _PDA Points to Consider No. 12 Restricted Access Barrier Systems (RABS)_
 
-14.1 Types of Barrier Systems for Aseptic Operations
+### 14.1 Types of Barrier Systems for Aseptic Operations
 
 The two barrier systems primarily used by the pharmaceutical and biopharmaceutical industry that provide
 the required separation between operators and aseptic operations in Grade A environments are:
@@ -7233,7 +7233,7 @@ to the critical aseptic zone. See **Section 8.0,** PDA _Points to Consider No.1:
 _2023)_ and PDA _Points to Consider No 12: Restricted Access Barrier Systems (2025)_ for additional details
 on critical interventions and for working within RABS, respectively.
 
-14.2 Design Considerations for the Integration of the Filling System with
+### 14.2 Design Considerations for the Integration of the Filling System with
 the Environment
 
 RABS have historically been designed in two configurations—open (oRABS) and closed (cRABS)—
@@ -7351,7 +7351,7 @@ Society for Pharmaceutical Engineering (ISPE) and the Pharmaceutical and Healthc
 
 196 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-15.0 Utility Considerations for Aseptic Operations
+## 15.0 Utility Considerations for Aseptic Operations
 
 Numerous utilities other than HVAC, light, and electricity may be required to support an aseptic filling
 operation. In general, utilities should not be present in the cleanroom, unless it is unavoidable, and they have
@@ -7406,7 +7406,7 @@ that minimizes disruption to airflow. Slope should be considered to ensure that 
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 197
 
-15.1 Operational Considerations for Utilities Supplied to Aseptic Filling
+### 15.1 Operational Considerations for Utilities Supplied to Aseptic Filling
 Systems
 
 Operational considerations for supplied utilities include:
@@ -7445,13 +7445,13 @@ connections should be sought in sensitive zones of the cleanroom to reduce this 
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 199
 
-16.0 Filling Systems for Powder Filling
+## 16.0 Filling Systems for Powder Filling
 
 **Parts 1**, **2**, and **3** of the _PDA Manufacturing Technology Guide No.1: Aseptic Filling, Engineering and_
 _Operation_ have addressed both liquid-filling technologies and general topics concerning aseptic-filling
 operations. **Part 4** focuses on the aseptic filling of powders.
 
-16.1 Common Elements Between Aseptic Powder and Liquid Filling
+### 16.1 Common Elements Between Aseptic Powder and Liquid Filling
 
 To properly consider the requirements for the aseptic filling of powders, many of the general topics already
 addressed also apply to powders, as listed in **Table 16.1-1** .
@@ -7482,7 +7482,7 @@ system that best matches each product’s needs. These characteristics are descr
 **Section** **16.3** . **Table 17.1-1** provides a side-by-side comparison of product and filling operation
 characteristics for both filler designs.
 
-16.2 Aseptic Filling Technologies: Vacuum Pressure Powder Filling
+### 16.2 Aseptic Filling Technologies: Vacuum Pressure Powder Filling
 
 VPPF technology is depicted in **Figure 16.2-1** .
 
@@ -7504,7 +7504,7 @@ vacuum and pressure to each dosing chamber at the relevant position.
 
 202 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-16.2.1 Vacuum Pressure Powder Filler: Design Configurations
+**16.2.1 Vacuum Pressure Powder Filler: Design Configurations**
 
 There are alternative designs to the configuration shown in **Figure 16.2-1** that include:
 
@@ -7533,7 +7533,7 @@ specialized trolleys must be designed to transfer the super plate into the autoc
 continuous unidirectional Grade A zoning from the unload section of the autoclave to the line when
 transporting the system to the line.
 
-16.2.2 Vacuum Pressure Powder Filler: Setup
+**16.2.2 Vacuum Pressure Powder Filler: Setup**
 
 VPPF is a high-precision dosing system. Accuracy of dosing is mainly impacted by the physical
 characteristics of the powder and the environment. If the powder particle-size varies, agitation in the dosing
@@ -7549,7 +7549,7 @@ Statistical weight-check is a must for all filling operations; however, an in-li
 highly recommended upgrade. Some filler models offer automatic dosing chamber adjustments to address
 trends in weights.
 
-16.2.3 Vacuum Pressure Powder Filler: Product Characteristic Compatibility
+**16.2.3 Vacuum Pressure Powder Filler: Product Characteristic Compatibility**
 
 There are a wide variety of product characteristics that can impact filler design. A combined table of the
 common attributes to consider with the different filling technologies (both VPPF and AF) is included in
@@ -7557,7 +7557,7 @@ common attributes to consider with the different filling technologies (both VPPF
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 203
 
-16.2.4 Vacuum Pressure Powder Filler: Filling Container Compatibility
+**16.2.4 Vacuum Pressure Powder Filler: Filling Container Compatibility**
 
 VPPF systems can be used with a variety of container types, depending on the selected filler design. **Table**
 **16.2.4-1** depicts typical containers and their applicability to the various VPPF system designs.
@@ -7578,7 +7578,7 @@ should be taken with the approach for the IPC weight check, as these approaches 
 perform 100% net-weight capabilities. See **Section 9.0** and **Section 10.0** for more information on the
 introduction of components. See **Section 5.0** for information on dose control strategies.
 
-16.2.5 Vacuum Pressure Powder Filler Sterility Assurance (Microbial and Total Particles)
+**16.2.5 Vacuum Pressure Powder Filler Sterility Assurance (Microbial and Total Particles)**
 
 The dosing disc transports the powder slugs at approximately 10-20 rpm from the powder hopper to the
 point of product delivery. The dosing disc is shrouded from the aseptic environment as it rotates by a dust
@@ -7622,13 +7622,13 @@ tend to be wider than liquid fillers, the ergonomics for microbiological plate p
 part of the initial qualification to avoid the risk of contamination during placement. Monitoring positions
 should be included as part of the filler design (e.g., during mock-up) to ensure effective ergonomics.
 
-16.2.6 Vacuum Pressure Powder Filler Efficiency and Impact on Risk
+**16.2.6 Vacuum Pressure Powder Filler Efficiency and Impact on Risk**
 
 VPPF speed (containers per minute) is quite fast and can be increased with a filler that employs multiple
 dosing lanes and fill heads for larger doses. The use of multiple fill heads will require additional aseptic
 interventions during setup.
 
-16.2.7 Vacuum Pressure Powder Filler Costs: Initial and Ongoing
+**16.2.7 Vacuum Pressure Powder Filler Costs: Initial and Ongoing**
 
 If multiple fill-weights are required, VPPF encounters additional costs for different formats and discs.
 
@@ -7641,7 +7641,7 @@ The mechanical backplate and/or pneumatic rotary joint that is behind the dosing
 friction during the rotation of the dosing disc. Therefore, over time, this rotational mechanism may need
 replacement, generally after multiple millions of cycles.
 
-16.2.8 Vacuum Pressure Powder Filler System Complexity: Setup, Handling, and
+**16.2.8 Vacuum Pressure Powder Filler System Complexity: Setup, Handling, and**
 Changeover
 
 VPPFs are systems with a high complexity during the setup phase. Setup can be lengthy, but by
@@ -7682,7 +7682,7 @@ Once the setup is complete, system handling (governed by procedures) is quite ea
 provided with 100% weight checks and with automatic adjustment of the dosing-piston lengths to maintain
 weight(s) within specified limits.
 
-16.2.9 Vacuum Pressure Pump Filler Maintenance and Aging through the Product
+**16.2.9 Vacuum Pressure Pump Filler Maintenance and Aging through the Product**
 Lifecycle
 
 Maintenance requirements for VPPF are typical of any mechanical system with moving parts. Bearings,
@@ -7691,12 +7691,12 @@ parts. If there are dust boots around any mechanical cams or shafts, the boots m
 integrity and replaced as necessary. The manufacturer’s recommendations on maintenance intervals and
 requirements should be observed.
 
-16.2.10 Vacuum Pressure Pump Filler Strategy: Single-Use Versus Reusable
+**16.2.10 Vacuum Pressure Pump Filler Strategy: Single-Use Versus Reusable**
 
 VPPF is typically cost-prohibitive as a SUS due to the complexity and precision necessary in the dosing
 discs. As a consequence, SUS do not exist, and cleaning validation is necessary.
 
-16.2.11 Vacuum Pressure Pump Filler Clean-In-Place/Sterilize-In-Place
+**16.2.11 Vacuum Pressure Pump Filler Clean-In-Place/Sterilize-In-Place**
 
 CIP/SIP is only possible for the bulk-feed components of the system. The parts that cannot be subjected to
 CIP/SIP must be disassembled and cleaned, either manually or in a parts washer (filters are commonly
@@ -7707,7 +7707,7 @@ cleaned in ultrasonic baths), followed by sterilization. Employing CIP/SIP for a
 increase the costs and complexity related to the implementation of utilities, steam traps, drains,
 thermocouples, additional valving, and validation.
 
-16.2.12 Use of Vacuum Pressure Powder Filler with Potent or Toxic Products
+**16.2.12 Use of Vacuum Pressure Powder Filler with Potent or Toxic Products**
 
 VPPF technology requires cleaning and sterilization off-line. Therefore, it may not be ideal for highly potent
 or toxic applications, although it may be acceptable if the equipment and environment can be rinsed in place
@@ -7724,7 +7724,7 @@ of the dosing-wheel design.
 If there is a very small dose, as is typical of potent products, even with very motile powders, the risk of dust
 exposure is lessened.
 
-16.2.13 Vacuum Pressure Powder Filler Benefits and Risks
+**16.2.13 Vacuum Pressure Powder Filler Benefits and Risks**
 
 Filler designs are highly varied and, depending on the features included with the specific filler, the
 capabilities may vary. Listed in **Table 16.2.13-1** are some generalized features and ranges that may be
@@ -7743,7 +7743,7 @@ Table 16.2.13-1 Benefits and Risks of Vacuum Pressure Powder Filler
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 207
 
-16.3 Aseptic Filling Technologies: Auger Powder Filling
+### 16.3 Aseptic Filling Technologies: Auger Powder Filling
 
 AF technology is illustrated in **Figure 16.3-1** .
 
@@ -7765,7 +7765,7 @@ equipment in place.
 
 208 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-16.3.1 Auger Powder Filler Setup
+**16.3.1 Auger Powder Filler Setup**
 
 AF is high-precision dosing system. Accuracy of dosing is mainly impacted by the physical characteristics
 of the powder and the environment. If the powder particle-size varies, agitation in the dosing hopper(s) is an
@@ -7776,13 +7776,13 @@ weight check is a must for all filling operations; however, an in-line 100% weig
 recommended upgrade. Adjustments to the auger rotation is possible with some filler models to address
 trends in weights.
 
-16.3.2 Auger Powder Filler Product Characteristic Compatibility
+**16.3.2 Auger Powder Filler Product Characteristic Compatibility**
 
 There are a wide variety of product characteristics that can impact filler design. A combined table of the
 common attributes to consider with various filling technologies (both VPPF and AF) is included in **Section**
 **17.0** .
 
-16.3.3 Auger Powder Filler Filling Container Compatibility
+**16.3.3 Auger Powder Filler Filling Container Compatibility**
 
 Auger systems can be used with a variety of container types, depending on the selected filler design. **Table**
 **16.3.3-1** depicts typical containers and their applicability to the various AF system designs.
@@ -7804,7 +7804,7 @@ capabilities.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 209
 
-16.3.4 Auger Powder Filler Sterility Assurance (Microbial and Total Particles)
+**16.3.4 Auger Powder Filler Sterility Assurance (Microbial and Total Particles)**
 
 The AF is mainly a closed system as all components can be subjected to CIP/SIP and the product is not
 exposed up to the point of product delivery. At the point of discharge into the container, there is a small (1-2
@@ -7827,7 +7827,7 @@ tend to be wider than liquid fillers, the ergonomics for microbiological plate p
 part of the initial qualification to avoid the risk of contamination during placement. Monitoring positions
 should be included as part of the filler design (e.g., during mock-up) to ensure effective ergonomics.
 
-16.3.5 Auger Powder Filling Efficiency and Impact on Risk
+**16.3.5 Auger Powder Filling Efficiency and Impact on Risk**
 
 AF speed (containers per minute) is quite fast and can be increased with a filling system that is equipped
 with multiple lanes and augers.
@@ -7836,7 +7836,7 @@ The CIP/SIP unit should be properly designed to consider eventual multiple-dosin
 anticipated for future production. The end user should specify the proper requirements for the intended
 CIP/SIP controls in case of a split-fill system, if any.
 
-16.3.6 Auger Powder Filling Costs: Initial and Ongoing
+**16.3.6 Auger Powder Filling Costs: Initial and Ongoing**
 
 Implementation of AF systems should consider the additional costs associated with the presence of a
 CIP/SIP system. CIP/SIP is highly recommended due to the extreme difficulty in aseptic assembly.
@@ -7846,7 +7846,7 @@ If multiple fill-weights are required, AF will incur costs for different format 
 Lifecycle costs are negligible because the AF has few disposable items (due, in part, to the CIP/SIP, which
 makes SU parts unnecessary) or consumable items.
 
-16.3.7 Auger Powder Filler System Complexity: Setup, Handling, and Changeover
+**16.3.7 Auger Powder Filler System Complexity: Setup, Handling, and Changeover**
 
 AFs are systems with low complexity during the setup phase as the vast majority of the assembly is
 completed prior to CIP/SIP of the system. Only the connection with the powder-supply system needs to be
@@ -7858,7 +7858,7 @@ maintain weight(s) within specified limits.
 
 210 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-16.3.8 Auger Powder Filler Maintenance and Aging through the Product Lifecycle
+**16.3.8 Auger Powder Filler Maintenance and Aging through the Product Lifecycle**
 
 As for VPPF, maintenance requirements for AF are typical of any mechanical system with moving parts.
 Bearings, bushings, and belts may all require replacement. Self-lubrication is a design requirement for
@@ -7866,17 +7866,17 @@ product-contact parts. If there are dust boots around any mechanical cams or sha
 be inspected for integrity and replaced as necessary. The manufacturer’s recommendations on maintenance
 intervals and requirements should be observed.
 
-16.3.9 Auger Powder Filler Strategy: Single-Use Versus Reusable
+**16.3.9 Auger Powder Filler Strategy: Single-Use Versus Reusable**
 
 AF is not suitable as a SUS. As a consequence, SUS do not exist, and cleaning validation is necessary.
 
-16.3.10 Auger Powder Filler Clean-In-Place/Sterilize-In-Place
+**16.3.10 Auger Powder Filler Clean-In-Place/Sterilize-In-Place**
 
 CIP/SIP is considered necessary for this machine design, as the reassembly is extremely difficult to perform
 as an aseptic manipulation. Consequently, cost differences due to CIP/SIP are not generally a significant
 differentiator between different AF models.
 
-16.3.11 Use of Auger Powder Filler with Potent or Toxic Products
+**16.3.11 Use of Auger Powder Filler with Potent or Toxic Products**
 
 AF technology is ideal for potent or toxic products due, in part, to the capability of being able to be cleaned
 in place. In addition, as the system relies on the mechanical transfer of the powder with the auger, there is
@@ -7891,7 +7891,7 @@ with all products, if the product is granular in nature, it is typically less li
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 211
 
-16.3.12 Auger Powder Filler Benefits and Risks
+**16.3.12 Auger Powder Filler Benefits and Risks**
 
 Filler designs are highly varied and, depending on the features included with the specific filler, the
 capabilities may vary. Included in **Table 16.3.12-1** are some generalized features and ranges that may be
@@ -7912,7 +7912,7 @@ Table 16.3.12-1 Benefits and Risks of Auger Powder Filler
 
 212 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-17.0 Product Characteristics Compatibility for Vacuum Pressure
+## 17.0 Product Characteristics Compatibility for Vacuum Pressure
 Powder Filler and Auger Powder Filler Technologies
 
 With all powder filling, the attributes of the powder influence the powder-handling and flow characteristics,
@@ -7935,7 +7935,7 @@ which will drive the selection of the technology. The attributes to be considere
 **Section 17.1** explores powder attributes and their influence on the selection and design of a powder filling
 system.
 
-17.1 Influence of Product Attributes on Selected Powder Filling
+### 17.1 Influence of Product Attributes on Selected Powder Filling
 Technology
 
 During product and process development, the attributes of the powder should be tested to confirm its
@@ -7987,7 +7987,7 @@ Table 17.1-1 Product and Filling Operation Characteristics Versus Filler Design
 
 216 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-18.0 Effect of Powder Transfer on Technology Selection
+## 18.0 Effect of Powder Transfer on Technology Selection
 
 Powder transfer from the bulk source to the powder filler will influence the filler design. There are several
 types of bulk containers that can be used for drug product, including bags and kegs. Typically, bags or kegs
@@ -8016,7 +8016,7 @@ during the process validation and as part of routine batch Quality Control.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 217
 
-19.0 Discard Strategies for Aseptic Filling of Powders
+## 19.0 Discard Strategies for Aseptic Filling of Powders
 
 The selection of a filling technology and its specific system design can influence the discard strategies that
 are employed for such line events as startup, priming, line stoppages, interventions, and end of the aseptic
@@ -8029,7 +8029,7 @@ opening of the container. Both VPPF and AF will encounter some need to reject co
 process. In many cases, the cause of rejection is the same for both technologies. The various points within
 the process at which rejection might occur are included in **Sections 19.1–19.5** .
 
-19.1 Discard Strategies at Startup and Priming
+### 19.1 Discard Strategies at Startup and Priming
 
 During powder-filler setup, standardizing the dose and priming the filler are necessary actions; however,
 both of these actions can result in rejections. Taking the following steps during setup may help avoid
@@ -8063,7 +8063,7 @@ During process validation, careful evaluation of content uniformity (for powder 
 should be performed. Once established, the process parameters that deliver these CQAs should be carefully
 defined in SOPs and batch records.
 
-19.2 Discard Strategies at Filling and Interventions
+### 19.2 Discard Strategies at Filling and Interventions
 
 Changes in powder attributes during the run could also result in dosing inaccuracies due to changes in the
 dynamics of flow, for example, the powder becoming gummy or sticky due to environmental conditions, the
@@ -8123,7 +8123,7 @@ process should be verified intermittently to ensure continued dust control at th
 may be used for nitrogen-flooded containers to ensure that the closure is integral, thereby demonstrating an
 effective seal between elastomer and neck without interference due to the presence of powder.
 
-19.3 Discard Strategies at Dose Control
+### 19.3 Discard Strategies at Dose Control
 
 For net-weight fillers, rejection should be automatic and demonstrated during the qualification of the
 equipment to determine that the correct containers have been rejected. As with liquid filling, if the weightcheck function is statistical (intermittent), the segregation and rejection will need to occur beginning at the
@@ -8139,7 +8139,7 @@ weights within preset weight limits throughout the run. For some AF fillers, the
 capable of occurring dynamically for each dose, whereas the VPPF will react to a trend in weights over
 several cycles.
 
-19.4 Discard Strategies at Conclusion of Fill
+### 19.4 Discard Strategies at Conclusion of Fill
 
 At the end of the filling process, as powder levels start to drop in the hopper, dosing may become
 inconsistent. Proper hopper design is essential to minimize residual powder waste and to maintain filling
@@ -8164,7 +8164,7 @@ Table 19.4-1 Common Discard Events and Their Impact Based on Powder-Filling Tech
 |Risk to dose control<br>based on dose size|Broad range of fill-weight<br>capability; highly effective for low<br>fill weights|Broad range of fill-weight<br>capability|
 |Filler interventions|Broken or blocked screens can<br>present a risk, although proper<br>selection to pair the filter with the<br>powder attributes will mitigate<br>risk|No special concerns for<br>interventions|
 
-19.5 Other Rejection Considerations
+### 19.5 Other Rejection Considerations
 
 Rejections along the filling line may occur for other reasons that may not be directly related to the operation
 of the filler, for example:
@@ -8182,7 +8182,7 @@ during qualification to ensure that detection and rejection timing is appropriat
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 221
 
-20.0 References
+## 20.0 References
 
 1. Parenteral Drug Association. _Technical Report No. 30 (Revised 2012): Parametric Release of_
 _Pharmaceutical and Medical Device Products Terminally Sterilized by Moist Heat_ ; PDA:
@@ -8265,7 +8265,7 @@ _Technical Monograph No. 15_ ; PHSS: Swindon, UK, 2011.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 223
 
-21.0 Appendix 1: Liquid Filling Case Studies
+## 21.0 Appendix 1: Liquid Filling Case Studies
 
 When considering what type of filler would be most appropriate for an application, several considerations
 are important:
@@ -8311,7 +8311,7 @@ selection.
 
 224 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.1 Case 1: Small Volume Parenteral—Liquid in a Syringe
+### 21.1 Case 1: Small Volume Parenteral—Liquid in a Syringe
 
 Specifications for Case 1 are detailed below:
 
@@ -8323,7 +8323,7 @@ Specifications for Case 1 are detailed below:
 
        - **Dosing System:** to be determined
 
-21.1.1 Case 1: Product Characteristics
+**21.1.1 Case 1: Product Characteristics**
 
 **Table 21.1.1-1** provides details on product characteristic considerations. Refer to **Section 1.0** and **Section 4.0** for additional information.
 
@@ -8356,7 +8356,7 @@ Table 21.1.1-1 Case 1: Product Characteristics
 
 226 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.1.2 Case 1: Container–Closure Characteristics
+**21.1.2 Case 1: Container–Closure Characteristics**
 
 **Table 21.1.2-1** provides details on container-closure characteristic considerations. Refer to **Section 1.0**, **Section 6.0** and **Section 7.0** for additional
 information.
@@ -8390,7 +8390,7 @@ Table 21.1.2-1 Case 1: Container–Closure Characteristics
 |---|---|---|
 |Cold-storage Performance and<br>Maintenance of Integrity on Cold-<br>storage Conditions below the<br>Material Properties (i.e., glass<br>transition temperature) for<br>Elastomers|Yes, product will be stored cold; product<br>is not temperature-sensitive during<br>filling, but for shelf life, it is refrigerated|Ambient filling is acceptable<br>Integrity of primary packaging under storage conditions<br>required at desired storage and shipping temperatures by<br>the pharmaceutical manufacturer|
 
-21.1.3 Case 1: Specific Filling Requirements (e.g., headspace, deaeration)
+**21.1.3 Case 1: Specific Filling Requirements (e.g., headspace, deaeration)**
 
 **Table 21.1.3-1** provides guidance on specific filling requirement considerations. Refer to **Section 2.0** and **Section 7.0** for additional information.
 
@@ -8422,7 +8422,7 @@ Table 21.1.3-1 Case 1: Specific Filling Requirements (e.g., headspace, deaeratio
 
 230 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.1.4 Case 1: Requirements for Multi-container/Multi-volume/Multi-product Filling
+**21.1.4 Case 1: Requirements for Multi-container/Multi-volume/Multi-product Filling**
 
 **Table 21.1.4-1** provides guidance regarding multi-container/multi-volume/multi-product filling requirements. Refer to **Section 1.0**, **Section 2.0** and
 **Section 5.0** for additional information.
@@ -8453,7 +8453,7 @@ Table 21.1.4-1 Case 1: Requirements for Multi-container/Multi-volume/Multi-produ
 
 232 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.1.5 Anticipated Batch Sizes and Operating Practices
+**21.1.5 Anticipated Batch Sizes and Operating Practices**
 
 **Table 21.1.5-1** outlines typical batch parameters to consider. Refer to **Section 1.0** and **Section 5.0** for additional information.
 
@@ -8500,7 +8500,7 @@ Table 21.1.5-1 Case 1: Anticipated Batch Sizes and Operating Practices
 
 236 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.1.6 Comparison of Requirements to Filling System Capabilities
+**21.1.6 Comparison of Requirements to Filling System Capabilities**
 
 Now that some of the preliminary design requirements for the product and its intended packaging have been defined, the requirements can be
 compared to the filling-system capabilities and attributes as described in **Section 2.0** . Comparison of the filling system-capabilities to the product
@@ -8558,7 +8558,7 @@ the foaming with the product is severe and SU technology is the desire, then PP 
 contender, as long as the number of cycles between tubing changeout is managed to be within the
 capabilities of the selected tubing and that this works with the intended batch sizes.
 
-21.1.7 Other Design Elements for Consideration
+**21.1.7 Other Design Elements for Consideration**
 
 There are a number of other design decisions that will impact the layout and operation of the filling line,
 such as:
@@ -8576,7 +8576,7 @@ Generally, these decisions should be made as part of the filling-line specificat
 costs and can influence placement of equipment; however, these are generally less of a direct impact on the
 selection of the filling technology itself.
 
-21.2 Case 2: Large Volume Parenteral—Liquid in a Bottle
+### 21.2 Case 2: Large Volume Parenteral—Liquid in a Bottle
 
 Specifications for Case 2 are detailed below:
 
@@ -8590,7 +8590,7 @@ Specifications for Case 2 are detailed below:
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 241
 
-21.2.1 Case 2: Product Characteristics
+**21.2.1 Case 2: Product Characteristics**
 
 **Table 21.2.1-1** provides details on product characteristic considerations. Refer to **Section 1.0**, **Section 3.0** and **Section 4.0** for additional information.
 
@@ -8621,7 +8621,7 @@ Table 21.2.1-1 Case 2: Product Characteristics
 |Shear-Sensitive|Yes|To be verified for future products, different dosing systems could be utilized if future<br>products are not shear sensitive.|
 |Foaming Tendency|Yes|Filling curve (e.g., start, stop, acceleration) to be carefully designed; level of filling start,<br>filling end, and careful needle movement must be incorporated to prevent foam<br>generation.|
 
-21.2.2 Case 2: Container–Closure Characteristics
+**21.2.2 Case 2: Container–Closure Characteristics**
 
 **Table 21.2.2-1** provides details on container-closure characteristic considerations. Refer to **Section 1.0**, **Section 6.0** and **Section 7.0** for additional
 information.
@@ -8658,7 +8658,7 @@ Table 21.2.2-1 Case 2: Container–Closure Characteristics
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 245
 
-21.2.3 Case 2: Specific Filling Requirements (e.g., headspace, deaeration)
+**21.2.3 Case 2: Specific Filling Requirements (e.g., headspace, deaeration)**
 
 **Table 21.2.3-1** provides guidance on specific filling requirement considerations. See **Section 2.0** and **Section 7.0** for additional information.
 
@@ -8680,7 +8680,7 @@ Table 21.2.3-1 Case 2: Specific Filling Requirements (e.g., headspace, deaeratio
 
 246 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.2.4 Case 2: Requirements for Multi-container/Multi-volume/Multi-product Filling
+**21.2.4 Case 2: Requirements for Multi-container/Multi-volume/Multi-product Filling**
 
 **Table 21.2.4-1** provides guidance regarding multi-container/multi-volume/multi-product filling requirements. Refer to **Section 1.0** and **Section 2.0**
 for additional information.
@@ -8713,7 +8713,7 @@ Table 21.2.4-1 Case 2: Requirements for Multi-container/Multi-volume/Multi-produ
 
 248 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc.
 
-21.2.5 Case 2: Anticipated Batch Sizes and Operating Practices
+**21.2.5 Case 2: Anticipated Batch Sizes and Operating Practices**
 
 **Table 21.2.5-1** outlines typical batch parameters to consider. Refer to **Section 1.0**, **Section 3.0**, and **Section 4.0** for additional information.
 
@@ -8766,7 +8766,7 @@ Table 21.2.5-1 Case 2: Anticipated Batch Sizes and Operating Practices
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 253
 
-21.2.6 Case 2: Comparison of Requirements to Filling System Capabilities
+**21.2.6 Case 2: Comparison of Requirements to Filling System Capabilities**
 
 Now that some of the preliminary design requirements for the product and its intended packaging have been defined, the requirements can be
 compared to the filling system capabilities and attributes as described in **Section 2.0** . Comparison of the filling system capabilities to the product
@@ -8815,7 +8815,7 @@ modest batch sizes will result in frequent changeover of the fluid pathway withi
 foaming with the product is severe and SU technology is the desire, then PP will be the strongest contender
 if the cost of SU is not prohibitive based on the planned number of batches.
 
-21.2.7 Other Design Elements for Consideration
+**21.2.7 Other Design Elements for Consideration**
 
 There are a number of other design decisions that will impact the layout and operation of the filling line,
 such as:
@@ -8835,7 +8835,7 @@ selection of the filling technology itself.
 
 **Manufacturing Technology Guide No. 1** © 2025 Parenteral Drug Association, Inc. 257
 
-22.0 Relevant Vendor and Supplier Resources
+## 22.0 Relevant Vendor and Supplier Resources
 
 The following paid advertisements are presented to the reader as potential supplemental resources which
 may aid in execution or fulfillment of the concepts, material, and information presented herein.
