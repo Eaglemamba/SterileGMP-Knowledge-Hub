@@ -89,178 +89,47 @@
 <script src="search-index.js" onerror=""></script>
 <script>
 // ============================================================
-// DOCUMENT DATA -- Each entry = one educational HTML file
-// To add new documents from ANY source, append to this array.
+// LOAD DATA FROM reports.json — single source of truth
 // ============================================================
-const documents = [
-    // One card per PDA Technical Report — links to merged TopNav document
-    { date:"2026-03-15", title:"PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025)", titleZh:"無菌充填工程與操作技術指引",
-      source:"PDA Guide No.1", tags:["Aseptic","Filling","Design","GMP","Dose Control","CDMO"],
-      summary:"完整20章：充填線設計要素、四大液體充填技術(PP/RPP/TP/DP)、功能性考量、劑量控制、容器封閉系統、操作考量、元件導入、無菌液體路徑、批次設置丟棄策略、APS無菌模擬、粉末充填、案例研究。267頁全覆蓋。",
-      sections:20, pages:"p1-p267", figures:0, file:"pda-guide-no1/output/Guide-No1-Complete.html" },
-
-    { date:"2026-03-14", title:"PDA TR26: Sterilizing Filtration of Liquids", titleZh:"液體除菌過濾",
-      source:"PDA TR26", tags:["Filtration","Validation","Integrity Test","Sterilization","QbD"],
-      summary:"完整8章+3附錄：濾膜原理、確效、製程設計(QbD)、驗證測試(細菌截留/E&L)、完整性測試(PUPSIT)、滅菌方法(Steam/Irradiation/EO)。Revised 2025版，73頁。",
-      sections:11, pages:"p1-p73", figures:0, file:"TR26/output/TR26-Complete.html" },
-
-    { date:"2026-03-15", title:"PDA PtC-14: Manufacturing of ATMPs – Facility Design (2025)", titleZh:"ATMP製造設施設計指引",
-      source:"PDA PtC-14", tags:["ATMP","Biosafety","Facility Design","GMP","Cell Therapy","Gene Therapy"],
-      summary:"完整6主題Q&A格式：ATMP風險評估與BSL分級、設施流程設計(開放/封閉/混合系統)、壓力梯度概念、HVAC設計、公用設施、生物安全櫃(BSC)與隔離器選型比較、Mock-Up確效、煙霧測試、壓力穩定性維持。62頁全覆蓋。",
-      sections:6, pages:"p6-p55", figures:0, file:"PtC-14/output/PtC-14-Complete.html" },
-
-    { date:"2026-03-15", title:"PDA PtC-15: Mobile Manufacturing (2025)", titleZh:"移動式製造指引",
-      source:"PDA PtC-15", tags:["Mobile Manufacturing","Modular","Validation","Regulatory","Technology Transfer","CDMO"],
-      summary:"完整3主題Q&A格式：移動式製造設施類型比較(固定/模組/MMU)、MMU優勢與挑戰、現場驗證策略(FAT/SAT)、技術轉移應用、全球法規合規(FDA/EMA/PMDA)、法規路徑建議。22頁全覆蓋。",
-      sections:3, pages:"p1-p16", figures:0, file:"PtC-15/output/PtC-15-Complete.html" },
-
-    { date:"2026-03-18", title:"PDA TR52: Guidance for Good Distribution Practices (GDPs) for the Pharmaceutical Supply Chain (2011)", titleZh:"藥品供應鏈良好配銷規範指引",
-      source:"PDA TR52", tags:["GDP","Cold Chain","Supply Chain","Distribution","Quality","CAPA"],
-      summary:"完整6章節：穩定性(儲存/運輸溫度)、配銷管控(人員/設施/物料處理/庫存/運輸/退貨/例外管理)、績效管理、供應鏈夥伴管理、GDP查核表附錄(18頁完整檢查清單)。37頁全覆蓋。",
-      sections:6, pages:"p1-p31", figures:0, file:"TR52/output/TR52-Complete.html" },
-
-    { date:"2026-03-18", title:"PDA TR73: Prefilled Syringe User Requirements (2015, Sections 12-18)", titleZh:"預充填注射器使用者需求（第12-18章）",
-      source:"PDA TR73", tags:["Prefilled Syringe","CCI","Manufacturing","Compatibility","Visual Inspection","Packaging"],
-      summary:"第12-18章：容器密封完整性(CCI)測試方法比較、製造要求(元件包裝/充填/滅菌/目檢/二次包裝)、藥品相容性(風險評估/穩定性/矽油/鎢/運輸研究)、eCTD/ICH附錄。29頁。",
-      sections:4, pages:"p74-p102", figures:0, file:"TR73/output/TR73-Complete.html" },
-
-    { date:"2026-03-18", title:"PDA TR90: Contamination Control Strategy Development in Pharmaceutical Manufacturing (2023)", titleZh:"藥品製造污染控制策略開發",
-      source:"PDA TR90", tags:["CCS","Contamination Control","Sterile","Bioburden","Environmental Monitoring","Quality Systems"],
-      summary:"完整15章節+5附錄：CCS要素與基礎(科學知識/QRM/品質文化)、製程設計與監控、設施與公用系統、原料管控、環境監控、人員訓練、設備設計、容器密封、品質系統、CCS治理、微生物偏差評估案例、CCS文件範本。75頁全覆蓋。",
-      sections:15, pages:"p1-p65", figures:0, file:"TR90/output/TR90-Complete.html" },
-
-    { date:"2026-03-19", title:"PDA PtC-12: Restricted Access Barrier Systems (2025)", titleZh:"限制進出屏障系統",
-      source:"PDA PtC-12", tags:["RABS","Aseptic","Barrier Systems","Glove Integrity","EM","Interventions"],
-      summary:"完整9主題Q&A格式：RABS設計(oRABS/cRABS/Active)、物理環境(AVS煙霧測試)、人員資格(4級認證)、手套完整性測試與維護、環境監控(7個採樣策略)、物料傳輸(RTP/隧道/滅菌)、清潔/除汙週期開發、APS模擬、無菌操作最佳實務。122頁全覆蓋。",
-      sections:10, pages:"p1-p115", figures:0, file:"PtC-12/output/PtC-12-Complete.html" },
-
-    { date:"2026-03-19", title:"PDA TR22: Process Simulation for Aseptically Filled Products (Revised 2025)", titleZh:"無菌充填產品製程模擬",
-      source:"PDA TR22", tags:["APS","Media Fill","Aseptic","Interventions","Personnel Qualification","Risk Assessment"],
-      summary:"完整9章節+3附錄：APS概念與原則、無菌製程模擬設計(溶液/凍乾/粉末/FFS/BFS/RABS/隔離器/ATMP)、文件與EM、APS要素(18項關鍵參數)、人員資格(4級認證)、判定標準、凍乾考量、培養基選擇、效能序列、8個風險評估實例。130頁全覆蓋。",
-      sections:9, pages:"p1-p115", figures:0, file:"TR22/output/TR22-Complete.html" },
-
-    { date:"2026-03-19", title:"PDA TR66: Application of Single-Use Systems in Pharmaceutical Manufacturing (2014)", titleZh:"一次性使用系統在藥品製造中的應用",
-      source:"PDA TR66", tags:["Single-Use","SUS","E&L","Process Integration","Business Case","Implementation"],
-      summary:"完整9章節+3附錄：SUS製造策略(決策路徑)、SUS技術與系統整合(連接器/混合/生物反應器/過濾/層析/充填)、品質考量(E&L/滅菌/完整性)、商業驅動因素(成本模型)、7階段實施框架(S1-S7)、URS範例、PEP範例、訓練範例。152頁全覆蓋。",
-      sections:9, pages:"p1-p145", figures:0, file:"TR66/output/TR66-Complete.html" },
-
-    { date:"2026-03-19", title:"PDA TR73-2: Application of MDR Annex I Requirements for Staked Needle Systems (2024)", titleZh:"固定式針頭注射器之MDR附錄I要求應用",
-      source:"PDA TR73-2", tags:["MDR","Prefilled Syringe","GSPR","Notified Body","Combination Product","Regulatory"],
-      summary:"完整5章節：MDR法規背景(EU 2017/745)、送件文件內容(產品描述/元件/材料/包裝/製造)、GSPRs要求(Table 5.1-1完整對照表)、風險管理(ISO 14971)、不適用GSPRs論證。41頁全覆蓋。",
-      sections:5, pages:"p1-p33", figures:0, file:"TR73-2/output/TR73-2-Complete.html" },
-
-    { date:"2026-03-19", title:"PDA TR60: Process Validation — A Lifecycle Approach (Revised 2026)", titleZh:"製程驗證：生命週期方法",
-      source:"PDA TR60", tags:["Process Validation","Lifecycle","PPQ","CPV","DOE","SPC"],
-      summary:"完整8章節+2附錄：製程設計Stage 1(QTPP/CQA/風險評估/製程特性化)、效能確認Stage 2(PPQ設計策略/抽樣/判定標準)、持續製程確認Stage 3(監控計畫/SPC/數位孿生/AI應用)、賦能系統(風險管理/統計工具/PAT/技術轉移/知識管理)、實務範例、統計方法與管制圖。162頁全覆蓋。",
-      sections:8, pages:"p1-p155", figures:0, file:"TR60/output/TR60-Complete.html" }
-];
-
-// ============================================================
-// CONFIG
-// ============================================================
-const sourceColors = {
-    "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
-    "PDA TR26": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" },
-    "PDA PtC-14": { bg:"#ede9fe", text:"#5b21b6", bar:"#7c3aed", short:"PtC-14" },
-    "PDA PtC-15": { bg:"#fef3c7", text:"#92400e", bar:"#f59e0b", short:"PtC-15" },
-    "PDA TR52": { bg:"#fce7f3", text:"#9d174d", bar:"#ec4899", short:"TR52" },
-    "PDA TR73": { bg:"#cffafe", text:"#155e75", bar:"#06b6d4", short:"TR73" },
-    "PDA TR90": { bg:"#fee2e2", text:"#991b1b", bar:"#ef4444", short:"TR90" },
-    "PDA PtC-12": { bg:"#e0e7ff", text:"#3730a3", bar:"#6366f1", short:"PtC-12" },
-    "PDA TR22": { bg:"#dcfce7", text:"#166534", bar:"#22c55e", short:"TR22" },
-    "PDA TR66": { bg:"#f0fdf4", text:"#14532d", bar:"#16a34a", short:"TR66" },
-    "PDA TR73-2": { bg:"#fff1f2", text:"#9f1239", bar:"#f43f5e", short:"TR73-2" },
-    "PDA TR60": { bg:"#fefce8", text:"#854d0e", bar:"#eab308", short:"TR60" }
-};
-
-const tagCls={
-    "Aseptic":"bg-blue-50 text-blue-700 border border-blue-200 font-semibold",
-    "Overview":"bg-slate-100 text-slate-600","Glossary":"bg-slate-100 text-slate-600",
-    "GMP":"bg-red-50 text-red-600","Annex 1":"bg-red-50 text-red-600",
-    "Design":"bg-blue-50 text-blue-600","Selection":"bg-blue-50 text-blue-600",
-    "Phase-Appropriate":"bg-blue-50 text-blue-700","Technology":"bg-indigo-50 text-indigo-600",
-    "PP":"bg-violet-50 text-violet-600","RPP":"bg-violet-50 text-violet-600",
-    "TP":"bg-violet-50 text-violet-600","DP":"bg-violet-50 text-violet-600",
-    "Needle":"bg-blue-50 text-blue-600","Single-Use":"bg-emerald-50 text-emerald-600",
-    "Functionality":"bg-indigo-50 text-indigo-600","Changeover":"bg-indigo-50 text-indigo-600",
-    "Foam Control":"bg-indigo-50 text-indigo-600",
-    "Dose Control":"bg-purple-50 text-purple-600","IPC":"bg-purple-50 text-purple-600",
-    "Weight Check":"bg-purple-50 text-purple-600",
-    "Container":"bg-cyan-50 text-cyan-600","Closure":"bg-cyan-50 text-cyan-600",
-    "RTU":"bg-cyan-50 text-cyan-600","Closing":"bg-cyan-50 text-cyan-600",
-    "Elastomer":"bg-cyan-50 text-cyan-600","Stopper":"bg-cyan-50 text-cyan-600",
-    "Interventions":"bg-teal-50 text-teal-600","Line Setup":"bg-teal-50 text-teal-600",
-    "Risk":"bg-orange-50 text-orange-600","Components":"bg-teal-50 text-teal-600",
-    "Sterilization":"bg-teal-50 text-teal-600","Transfer":"bg-teal-50 text-teal-600",
-    "SIP":"bg-teal-50 text-teal-600","VPHP":"bg-teal-50 text-teal-600",
-    "Fluid Path":"bg-teal-50 text-teal-600","Filter":"bg-teal-50 text-teal-600",
-    "PUPSIT":"bg-teal-50 text-teal-600","Operations":"bg-teal-50 text-teal-600",
-    "Priming":"bg-teal-50 text-teal-600","Yield":"bg-teal-50 text-teal-600",
-    "APS":"bg-teal-50 text-teal-600","Media Fill":"bg-teal-50 text-teal-600",
-    "Validation":"bg-teal-50 text-teal-600","EM":"bg-teal-50 text-teal-600",
-    "Microbiology":"bg-teal-50 text-teal-600","Grade A":"bg-teal-50 text-teal-600",
-    "CCS":"bg-teal-50 text-teal-600","Supplier":"bg-teal-50 text-teal-600",
-    "Quality":"bg-teal-50 text-teal-600","SCM":"bg-teal-50 text-teal-600",
-    "IQ/OQ/PQ":"bg-teal-50 text-teal-600","Lifecycle":"bg-teal-50 text-teal-600",
-    "Maintenance":"bg-teal-50 text-teal-600","Calibration":"bg-teal-50 text-teal-600",
-    "Powder":"bg-amber-50 text-amber-600","Lyophilization":"bg-amber-50 text-amber-600",
-    "Reference":"bg-gray-100 text-gray-600","PDA TR":"bg-gray-100 text-gray-600",
-    "ICH":"bg-gray-100 text-gray-600","Case Study":"bg-gray-100 text-gray-600",
-    "Decision":"bg-gray-100 text-gray-600","CDMO":"bg-orange-50 text-orange-700",
-    "Vendor":"bg-gray-100 text-gray-600","Equipment":"bg-gray-100 text-gray-600",
-    "QbD":"bg-green-50 text-green-600","Design Space":"bg-green-50 text-green-600",
-    "CQA":"bg-purple-50 text-purple-600",
-    "Filtration":"bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold",
-    "Membrane":"bg-emerald-50 text-emerald-600","Mechanism":"bg-emerald-50 text-emerald-600",
-    "Qualification":"bg-emerald-50 text-emerald-600","E&L":"bg-emerald-50 text-emerald-600",
-    "Bacterial Retention":"bg-emerald-50 text-emerald-600","Integrity Test":"bg-emerald-50 text-emerald-600",
-    "PUPSIT":"bg-emerald-50 text-emerald-600","Bubble Point":"bg-emerald-50 text-emerald-600",
-    "Process Design":"bg-emerald-50 text-emerald-600","Scale-Up":"bg-emerald-50 text-emerald-600",
-    "Autoclave":"bg-emerald-50 text-emerald-600","Diffusion":"bg-emerald-50 text-emerald-600",
-    "Methods":"bg-emerald-50 text-emerald-600","Troubleshooting":"bg-amber-50 text-amber-600",
-    "Regulatory":"bg-red-50 text-red-600","Operations":"bg-teal-50 text-teal-600",
-    "ATMP":"bg-violet-50 text-violet-700 border border-violet-200 font-semibold",
-    "Cell Therapy":"bg-violet-50 text-violet-600","Gene Therapy":"bg-violet-50 text-violet-600",
-    "Biosafety":"bg-red-50 text-red-700 font-semibold","BSL":"bg-red-50 text-red-600",
-    "BSC":"bg-red-50 text-red-600","Facility Design":"bg-blue-50 text-blue-600",
-    "Risk Management":"bg-orange-50 text-orange-600","Utilities":"bg-slate-100 text-slate-600",
-    "Mock-Up":"bg-slate-100 text-slate-600",
-    "Mobile Manufacturing":"bg-amber-50 text-amber-700 border border-amber-200 font-semibold",
-    "Modular":"bg-amber-50 text-amber-600","MMU":"bg-amber-50 text-amber-600",
-    "Technology Transfer":"bg-indigo-50 text-indigo-600",
-    "GDP":"bg-pink-50 text-pink-700 border border-pink-200 font-semibold",
-    "Cold Chain":"bg-pink-50 text-pink-600","Supply Chain":"bg-pink-50 text-pink-600",
-    "Distribution":"bg-pink-50 text-pink-600","CAPA":"bg-orange-50 text-orange-600",
-    "Prefilled Syringe":"bg-cyan-50 text-cyan-700 border border-cyan-200 font-semibold",
-    "CCI":"bg-cyan-50 text-cyan-600","Visual Inspection":"bg-cyan-50 text-cyan-600",
-    "Packaging":"bg-cyan-50 text-cyan-600","Compatibility":"bg-cyan-50 text-cyan-600",
-    "Contamination Control":"bg-red-50 text-red-700 border border-red-200 font-semibold",
-    "Sterile":"bg-red-50 text-red-600","Bioburden":"bg-red-50 text-red-600",
-    "Environmental Monitoring":"bg-red-50 text-red-600","Quality Systems":"bg-red-50 text-red-600",
-    "RABS":"bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold",
-    "Barrier Systems":"bg-indigo-50 text-indigo-600","Glove Integrity":"bg-indigo-50 text-indigo-600",
-    "Interventions":"bg-indigo-50 text-indigo-600",
-    "APS":"bg-green-50 text-green-700 border border-green-200 font-semibold",
-    "Media Fill":"bg-green-50 text-green-600","Personnel Qualification":"bg-green-50 text-green-600",
-    "Risk Assessment":"bg-orange-50 text-orange-600",
-    "SUS":"bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold",
-    "E&L":"bg-emerald-50 text-emerald-600","Process Integration":"bg-emerald-50 text-emerald-600",
-    "Business Case":"bg-emerald-50 text-emerald-600","Implementation":"bg-emerald-50 text-emerald-600",
-    "MDR":"bg-rose-50 text-rose-700 border border-rose-200 font-semibold",
-    "GSPR":"bg-rose-50 text-rose-600","Notified Body":"bg-rose-50 text-rose-600",
-    "Combination Product":"bg-rose-50 text-rose-600",
-    "Process Validation":"bg-yellow-50 text-yellow-700 border border-yellow-200 font-semibold",
-    "Lifecycle":"bg-yellow-50 text-yellow-600","PPQ":"bg-yellow-50 text-yellow-600",
-    "CPV":"bg-yellow-50 text-yellow-600","DOE":"bg-yellow-50 text-yellow-600",
-    "SPC":"bg-yellow-50 text-yellow-600"
-};
-
-// Dynamic source filters
-const allSources=[...new Set(documents.map(d=>d.source))];
-const filterMap={'all':'all'};
-allSources.forEach(s=>{const sc=sourceColors[s];filterMap[sc?sc.short:s]=s;});
-const filterTags=['all',...allSources.map(s=>(sourceColors[s]||{}).short||s)];
+let documents=[], sourceColors={}, tagCls={};
+let allSources=[], filterMap={'all':'all'}, filterTags=['all'];
 let activeFilter='all';
+
+async function loadReportsJson() {
+    const resp = await fetch('reports.json');
+    const data = await resp.json();
+
+    // Build tagCls
+    tagCls = data.tagClasses || {};
+
+    // Build documents + sourceColors from reports
+    const reports = data.reports || {};
+    for (const [folderId, r] of Object.entries(reports)) {
+        documents.push({
+            date: r.date || '',
+            title: r.title || '',
+            titleZh: r.titleZh || '',
+            source: r.source || '',
+            tags: r.tags || [],
+            summary: r.summary || '',
+            sections: (r.section_map || []).length,
+            pages: r.pages || '',
+            figures: r.figures || 0,
+            file: folderId + '/output/' + r.output_filename,
+        });
+        if (r.source && r.source_color) {
+            sourceColors[r.source] = r.source_color;
+        }
+    }
+
+    // Build filter arrays
+    allSources = [...new Set(documents.map(d=>d.source))];
+    allSources.forEach(s=>{const sc=sourceColors[s];filterMap[sc?sc.short:s]=s;});
+    filterTags = ['all', ...allSources.map(s=>(sourceColors[s]||{}).short||s)];
+
+    // Render
+    initFilters(); renderStats(); renderCards();
+}
 
 // Deep search index
 const sectionsByFile={};
@@ -363,7 +232,7 @@ function renderCards(){
 }
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-initFilters();renderStats();renderCards();
+loadReportsJson();
 </script>
 </body>
 </html>
