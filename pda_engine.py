@@ -161,16 +161,35 @@ def _is_noise(line: str) -> bool:
 def _extract_tables_from_html(report_id: str, config: dict) -> dict:
     """Extract properly formatted MD tables from HTML section files.
 
-    Returns a dict mapping table title (lowercase, normalized) to the
-    full MD pipe-table block including the title line.
+    Returns two dicts:
+    - labeled: table_number_key → cleaned pipe-table block
+    - by_file: filename → list of cleaned pipe-table blocks (in order)
+    Combined into one dict with labeled keys taking priority.
     """
     from merge_engine import html_to_markdown
 
     sections_dir = REPO_ROOT / report_id / "sections"
     if not sections_dir.exists():
-        return {}
+        return {}, {}
 
-    tables = {}
+    CJK_RE = re.compile(
+        r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff'
+        r'\u3000-\u303f\uff00-\uffef\u2e80-\u2eff\u2f00-\u2fdf]'
+    )
+
+    def _clean_table(rows):
+        """Strip CJK and empty lines from table rows."""
+        clean = []
+        for l in rows:
+            l = CJK_RE.sub('', l)
+            l = re.sub(r'\s{2,}', ' ', l).strip()
+            if l and (l.startswith('|') or l.startswith('**')):
+                clean.append(l)
+        return clean
+
+    labeled = {}    # "table 3.3-1" → pipe block
+    by_file = {}    # filename → [pipe block, pipe block, ...]
+
     section_map = config.get("section_map", [])
 
     for entry in section_map:
@@ -186,68 +205,59 @@ def _extract_tables_from_html(report_id: str, config: dict) -> dict:
             html_clean = re.sub(r'<script[^>]*>.*?</script>', '', html_clean, flags=re.DOTALL | re.IGNORECASE)
             html_clean = re.sub(r'<head[^>]*>.*?</head>', '', html_clean, flags=re.DOTALL | re.IGNORECASE)
 
-            # Strip right-column (Chinese commentary) divs
-            html_clean = re.sub(r'<div\s+class="right-column"[^>]*>.*?</div>\s*</div>',
-                                '', html_clean, flags=re.DOTALL)
-
             md = html_to_markdown(html_clean)
+            md_lines = md.split('\n')
+            file_tables = []
 
-            # Find table blocks: a "Table X.X-X Title" line followed by pipe rows
-            in_table = False
-            table_title = ""
-            table_lines = []
+            i = 0
+            while i < len(md_lines):
+                line = md_lines[i]
 
-            for line in md.split('\n'):
-                # Detect table title
-                tm = re.match(r'^#{0,4}\s*(Table\s+\d+[\.\d]*[-–]\d+\S*)\s+(.+)', line.strip())
-                if tm and '...' not in line:
-                    if in_table and table_lines:
-                        key = re.sub(r'\s+', ' ', table_title.lower().strip())
-                        tables[key] = '\n'.join(table_lines)
-                    table_title = tm.group(1) + ' ' + tm.group(2)
-                    table_lines = [f"**{table_title.strip()}**", ""]
-                    in_table = True
-                    continue
+                if line.strip().startswith('|'):
+                    # Look backward for a table title
+                    table_title = ""
+                    for back in range(1, 6):
+                        if i - back >= 0:
+                            prev = md_lines[i - back].strip()
+                            tm = re.match(r'^#{0,4}\s*\*{0,2}(Table\s+\d+[\.\d]*[-–]\d+\S*)\s*(.*?)[\*]*$', prev)
+                            if tm:
+                                table_title = (tm.group(1) + ' ' + (tm.group(2) or '')).strip()
+                                break
 
-                if in_table:
-                    if line.strip().startswith('|'):
-                        table_lines.append(line)
-                    elif line.strip() == '':
-                        table_lines.append(line)
-                    else:
-                        # End of table block
-                        if any('|' in tl for tl in table_lines):
-                            key = re.sub(r'\s+', ' ', table_title.lower().strip())
-                            tables[key] = '\n'.join(table_lines)
-                        in_table = False
-                        table_title = ""
-                        table_lines = []
+                    # Collect all pipe rows
+                    table_rows = []
+                    while i < len(md_lines):
+                        if md_lines[i].strip().startswith('|'):
+                            table_rows.append(md_lines[i])
+                            i += 1
+                        elif md_lines[i].strip() == '':
+                            i += 1  # skip blank lines within table
+                        else:
+                            break
 
-            # Flush last table
-            if in_table and table_lines and any('|' in tl for tl in table_lines):
-                key = re.sub(r'\s+', ' ', table_title.lower().strip())
-                tables[key] = '\n'.join(table_lines)
+                    if len(table_rows) >= 2:  # at least header + separator
+                        if table_title:
+                            block_lines = [f"**{table_title}**"] + table_rows
+                        else:
+                            block_lines = table_rows
 
-    # Clean up tables: remove empty lines, strip CJK from all lines
-    CJK_RE = re.compile(
-        r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff'
-        r'\u3000-\u303f\uff00-\uffef\u2e80-\u2eff\u2f00-\u2fdf]'
-    )
-    cleaned = {}
-    for key, tbl in tables.items():
-        clean_lines = []
-        for l in tbl.split('\n'):
-            if not l.strip():
-                continue
-            # Strip CJK characters from table content
-            l = CJK_RE.sub('', l)
-            l = re.sub(r'\s{2,}', ' ', l).strip()
-            if l:
-                clean_lines.append(l)
-        if clean_lines:
-            cleaned[key] = '\n'.join(clean_lines)
+                        cleaned = _clean_table(block_lines)
+                        if len([l for l in cleaned if l.startswith('|')]) >= 2:
+                            block = '\n'.join(cleaned)
+                            file_tables.append(block)
 
-    return cleaned
+                            if table_title:
+                                # Extract just the table number for matching
+                                tn = re.match(r'(table\s+\d+[\.\d]*[-–]\d+\S*)', table_title, re.I)
+                                if tn:
+                                    labeled[tn.group(1).lower().strip()] = block
+                else:
+                    i += 1
+
+            if file_tables:
+                by_file[filename] = file_tables
+
+    return labeled, by_file
 
 
 def source_to_markdown(
@@ -264,9 +274,12 @@ def source_to_markdown(
     source_dir = REPO_ROOT / report_id / "source"
 
     # Extract properly formatted tables from HTML sections
-    html_tables = _extract_tables_from_html(report_id, config)
-    if html_tables:
-        print(f"  [INFO] Extracted {len(html_tables)} tables from HTML sections")
+    labeled_tables, tables_by_file = _extract_tables_from_html(report_id, config)
+    total_tables = len(labeled_tables) + sum(len(v) for v in tables_by_file.values())
+    if total_tables:
+        print(f"  [INFO] Extracted {len(labeled_tables)} labeled + {total_tables - len(labeled_tables)} unlabeled tables from HTML")
+    # Track which unlabeled tables have been used (per file)
+    file_table_idx = {fn: 0 for fn in tables_by_file}
 
     title = f"{config['report_title_en']}: {config['report_subtitle_en']}"
     lines = [f"# {title}", ""]
@@ -284,6 +297,10 @@ def source_to_markdown(
         print(f"  [WARNING] No source text files found in {source_dir}")
         return ""
 
+    # Track when we're inside raw table data that should be suppressed
+    # (because an HTML table was already spliced for this table)
+    skip_raw_table = False
+
     for txt_file in files_to_read:
         with open(txt_file, "r", encoding="utf-8") as f:
             raw_lines = f.readlines()
@@ -296,6 +313,20 @@ def source_to_markdown(
                 continue
 
             stripped = line.strip()
+
+            # If we're skipping raw table data after an HTML table splice,
+            # check if we've reached normal content again
+            if skip_raw_table:
+                # Resume on: section heading, next table caption, or a real paragraph
+                # (line > 80 chars that doesn't look like a cell value)
+                is_heading = bool(HEADING_RE.match(stripped)) and '.' in stripped
+                is_table_caption = bool(TABLE_HEADING_RE.match(stripped))
+                is_paragraph = len(stripped) > 80 and not stripped.startswith('Table') and not stripped.startswith('Figure')
+                is_appendix = bool(APPENDIX_RE.match(stripped))
+                if is_heading or is_table_caption or is_paragraph or is_appendix:
+                    skip_raw_table = False
+                else:
+                    continue  # still in raw table zone, skip
 
             # Detect section headings — must start with a structured section
             # number (e.g., "3.0", "6.6.1") followed by a capitalized title.
@@ -368,14 +399,23 @@ def source_to_markdown(
                     table_num = re.match(r'(table\s+\d+[\.\d]*[-–]\d+\S*)', stripped, re.I)
                     table_num_key = table_num.group(1).lower().strip() if table_num else ''
                     matched_table = None
-                    for key, tbl in html_tables.items():
-                        if table_num_key and table_num_key in key:
-                            matched_table = tbl
-                            break
+                    # 1. Try labeled match
+                    if table_num_key and table_num_key in labeled_tables:
+                        matched_table = labeled_tables[table_num_key]
+                    # 2. Try next unlabeled table from the current source file
+                    if not matched_table:
+                        # Find which HTML file this source text corresponds to
+                        for fn, tbl_list in tables_by_file.items():
+                            idx = file_table_idx.get(fn, 0)
+                            if idx < len(tbl_list):
+                                matched_table = tbl_list[idx]
+                                file_table_idx[fn] = idx + 1
+                                break
                     if matched_table:
                         lines.append("")
                         lines.append(matched_table)
                         lines.append("")
+                        skip_raw_table = True  # suppress raw text version
                     else:
                         lines.append("")
                         lines.append(f"**{stripped}**")

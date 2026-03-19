@@ -1021,37 +1021,9 @@ facility design constraints, size and layout of the facility, new build budgets,
 Regulators are increasingly pushing industry for containment measures similar to isolators, even if
 processing is not performed within an isolator.
 
-**Table 4.3-1: Background Grades and Assurances Considerations**
-| Primary Containment — Grade A | Background Requirements | Considerations Summary (not exhaustive) |
-| --- | --- | --- |
+| Abbreviation | Full Term |
+| --- | --- |
 
-Primary Background Considerations Summary (not exhaustive)
-Containment Requirements
-– Grade A
-Biological Grade B • Only partial barrier with processing occurring through
-Safety Cabinet the open sash, with gowned forearm and gloved hand
-(BSC) Class II exposure to the inside of the BSC.
-• Manual decontamination.
-• Sanitization of items (and hands) upon entering the
-Grade A environment each time.
-• Wrist rests recommended to fix in place the operator’s
-arms and assist in reproducible airflow patterns (and to
-avoid arms resting on the air exhaust).
-• Considered high-risk by regulators due to the close
-proximity of the operator to the process and the only
-barrier being the operator’s clothing within the Grade A.
-Isolator – Grade D* • Complete barrier between operator, and the process is
-Closed fixed and sealed.
-• Decontamination of items occurs during a validated
-decontamination/sanitization cycle.
-• Gloves can be reliably integrity-tested using automated
-methods.
-• Glove ports are set in place, so airflow movement is
-well-controlled.
-• Considered as the higher sterility assurance provider by
-regulators due to automation of
-decontamination/sanitization and increased physical
-barriers.
 *Note: Grade D is the minimum grade expected. Grades can be higher depending on the nature of the
 ATMP and the need for low-particulate transfer (e.g., such as during isolator loading operations, if any) as
 defined by the CCS.
@@ -1093,22 +1065,16 @@ According to EU GMP Annex 1, the BSC is not classified as a barrier technology, 
 === PAGE 40 ===
 Comparison Between Biosafety Cabinet and Isolator for Facility Design
 
-**Table 4.3-2: Comparison Between BSC and Isolator for Facility Design**
-| Facility Design Factor | Class II BSC | Isolator |
-| --- | --- | --- |
+| | |
+| --- | --- |
+| QRM Facilitator | ICH Q9 |
+| BSO | BSL GMO |
+| | RCV |
+| | HVAC/ |
+| | / |
+| QA | GMP CCS EM |
+| | |
 
-Facility Design Class II BSC Isolator
-Contamination Control
-Operator Protection
-Sustainability
-GMP Annex 1 Compliance
-Cleanroom Footprint
-Integration into an Existing
-Cleanroom
-Equipment Lead Time
-Key:
-Lowest Advantage Highest Advantage
-Capital Expenditure and Operating Cost Considerations
 The capital expenditure (CapEx) and operational expenditure (OpEx) costs for BSCs and isolators need to
 be evaluated considering the individual circumstances (see Table 4.3-3), such as:
 • Manufacturing time (short or long)
@@ -1123,45 +1089,25 @@ isolator system is placed in a minimum of a Grade D environment.
 
 === PAGE 41 ===
 
-**Table 4.3-3: Capital Expenditure and Operating Cost Considerations**
-| Primary Containment — Grade A | Background Requirements | Cost Profile |
+| | BSL | ATMP |
 | --- | --- | --- |
 
-Primary Containment – Background Requirements Considerations Summary
-Grade A
-Biological Safety Cabinet (BSC) Grade B High OpEx and Low CapEx
-Class II
-Isolator – Closed Grade D* High CapEx and Low OpEx
 *Note: This is the minimum grade expected. Grades can be higher depending on the nature of the ATMP
 and the need for low particulate transfer as defined by the CCS.
 Cost Comparison Between the Use of Biosafety Cabinet and Isolator
 
-**Table 4.3-4: Cost Comparison Between the Use of Biosafety Cabinet and Isolator**
-| Consideration | Cost Category | Class II BSC | Isolator |
-| --- | --- | --- | --- |
+| | BSL-1 | BSL-2 |
+| --- | --- | --- |
+| | | |
+| | | |
+| BSC | | |
+| | | |
+| | | |
+| | | |
+| | | BSL-1+ |
+| | | |
+| | | |
 
-Consideration Cost Class II BSC Isolator
-Equipment Initial Investment
-(capital)
-Low-volume Products
-(operational and
-maintenance costs)
-Medium/High-
-volume Products
-(operational and
-maintenance costs)
-Room Initial Investment
-(capital)
-Operational and
-Maintenance Costs
-Gowning Gowning Cost
-Environmental
-Monitoring Cost
-Key:
-Lower Cost Higher Cost
-
-=== PAGE 42 ===
-Facility Layout Considerations
 As the BSC requires a Grade B background and the isolator requires a Grade C/D background (CCS-
 dependent), the room layout of the facility will be different to fulfill CGMP requirements. Additional
 considerations, such as the BSL necessary for the product, may also have an impact on the facility layout

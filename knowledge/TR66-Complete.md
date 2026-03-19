@@ -1,73 +1,52 @@
 # PDA Technical Report No. 66 (2014): Application of Single-Use Systems in Pharmaceutical Manufacturing
 
-**Table 7.2.3-2**
+| Term | Definition |
+| --- | --- |
+| Campaigning | Extending the period of time, or number of cycles a single-use system is operating in a closed process without breaking the sterile barrier processes. The end user is responsible to evaluate and determine if appropriate quality requirements are met for their application. |
+| Closed System | An isolated system that has no interaction with its external environment, preventing contamination and release of the material contained. |
+| Consumables | This refers to items (e.g., SUS, storage bags, tubing, filters, diaphragms, flasks, etc.) that form or are a part of process equipment and are used on a per batch basis. |
+| Deployment | Activities involving the hands-on steps required to successfully assemble and make a system ready for use for a specific SUS application. |
+| Extractables | Chemical substances that can be extracted from components of material process fluid contact surfaces by exertion of an exaggerated force (e.g., organic solvent, extreme elevated temperature, ionic strength, pH, contact time, etc.) Extractables may represent most but not all of the potential leachables that may be seen in process fluids. |
+| Flexible 2D or 3D Bag | A flexible-wall container designed with 2 sides (two dimensional or "pillow" shape) or 6 sides (three dimensional cuboid shape) designed to hold process fluids or product. |
+| In-Process Leachables | Chemicals substances that are leached, from product-contact or non-product-contact materials under typical process conditions and could be cleared or sufficiently diluted by downstream processes so as to be undetected as leachables in the final dosage. Alternate Terms: Transient Leachables, Migrant Leachable. |
+| Packaged Raw Material for Single-Use | Procurement of a product such as liquid or powder format culture media or buffer and that has been supplied in single-use technology. |
+| Leachables | Chemicals substances that are leached, from product-contact or non-product-contact materials, under typical process conditions and detected in final dosage. Leachables may be a subset of Extractables, and can include their reaction or breakdown products. |
+| Multi-Use System (MUS) | An engineered process equipment solution for process management and unit operations designed for repeated use. |
+| Opportunity Costs | This is defined as the value of the next-best choice available when choosing between several mutually exclusive choices (e.g., the decision to expand a facility may result in losing the opportunity to invest the maintenance funds in the financial markets). Opportunity costs are often excluded from estimates of fixed operation costs because they can be difficult for comparative analyses in the overall decision process. |
+| Pressure Decay Test | A leak test in which a container or system is pressurized with air to a preset level. After the pressure has stabilized, the decay in pressure over a preset test time is measured and evaluated to determine if a leak (defect) is present. |
+| Ready-To-Use | A marketing term often used to describe the benefits of single-use technology or SUS. This designation has no regulatory or scientific basis supporting suitability for use and the end user is responsible to evaluate and determine if appropriate quality requirements are met for their application. |
+| Single-Use Component (SUC) | An individual part designed to perform a particular function when assembled into a single-use system. |
 
-Directional Risk Profile of SUS Items
-and Applications.................................83
-
-**Table 7.2.3-3**
-
-Risk Management and Mitigation
-in Current and Future SUS
-Implementation...................................83
-
-*[Figure 7.2.3-1	 SUS Implementation and the Validation]*
-
-Lifecycle..............................................84
-
-**Table 7.4.1-1: Typical Contents of the SUS Project Execution Plan**
-| SUS Project Execution Plan | | |
+| Functional Requirement | MUS | SUS |
 | --- | --- | --- |
+| Connections to sterile envelope | Stainless steel (SS), steam-in-place (SIP) valve arrays | Aseptic connectors, SIP connectors, and tubing welders. Alpha/beta ports |
+| Disconnections from sterile envelope | SS SIP valve arrays | Aseptic disconnects, SIP connectors, and tubing sealers. Alpha/beta ports |
+| Containment, storage, and transportation | SS tanks, fixed or portable | Polymeric film sealed to form 2D or 3D bags, unsupported, or as an insert to an external rigid support container (e.g., large bags, tank liners, and centrifuge liners) |
+| Fluid transfer | SS piping, transfer panels | Tubing (flexible and rigid, polymeric) |
+| Pumping | Multiple, fluid contact | Primarily peristaltic, nonfluid contact |
+| Mixing (mass transfer) | SS impeller | Nonfluid contact (e.g., agitation and pumping) or SU impeller-based technology |
+| Freezing | SS tanks or as integrated freeze-thaw systems | 2D bags with or without shells, or as integrated SU freeze-thaw systems |
+| Filtration | SS filter housings with filter elements (e.g., cartridges and plate/frame) | Capsule filters, hollow fiber cartridges, SU cassette technology |
+| Chromatography | Multiple columns packed on-site with media (resin) | Prepacked columns and membrane adsorbers |
+| Isolators | SS transfer canisters with docking port | 2D bags with docking port and with or without tubing sets |
+| Sampling | SS SIP sample valves | Sample bag or manifolds with or without SU sample valves. Aseptic connectors or tubing welders can be used to attach additional sample bags or manifolds if needed |
+| Measurements | In situ reusable probe; can recalibrate during a process | In situ sensor may include a reusable probe or a single-use recalibrated sensor that cannot be adjusted or recalibrated during a process. Calibration is set during manufacturing and may be influenced by storage of the SUS |
 
-Typical Contents of the SUS Project
-Execution Plan.....................................89
+| Factor | Design Considerations |
+| --- | --- |
 
-*[Figure 7.4.5-1	 SUS Process and Facility Integration..90]*
+| Factor | Design Considerations |
+| --- | --- |
 
-*[Figure 7.4.6-1	 Process and Facility Considerations]*
+| Design Factor | Design Considerations |
+| --- | --- |
 
-for SUS Implementation����������������������91
+| Connector Category | Description |
+| --- | --- |
 
-**Table 7.4.6-1**
+| Factor | Consideration |
+| --- | --- |
 
-Example of a Regulatory
-Assessment Table������������������������������92
-
-*[Figure 7.5.3-1	 Example of SUS Installation]*
-
-Scope Drawing....................................97
-
-**Table 7.7.3-1: Principal Differences Between a Quality Audit and a Technical Diligence Assessment**
-| Description | Quality Audit | Technical Diligence |
-| --- | --- | --- |
-
-Principle Differences Between a
-Quality Audit and a Technical Diligence
-Assessment......................................104
-
-**Table 7.7.3-2: Some Pertinent Factors for a Technical Diligence Assessment Checklist**
-| Supplier Information | Supplier Technical Capability | End-User Product Suitability and Compatibility |
-| --- | --- | --- |
-| CDA implemented | Design: engineering drawings and specifications | Fit with the end user's process |
-| Company and stakeholders | Risk to the end user | Fit with the end user's facility and warehousing |
-| Level of supplier integration | Resins, films, and other components | Prototype testing procedure |
-| Sourcing and supply chain | Manufacturing process overview | Qualification |
-| Contingency planning | Irradiation or other form of sterilization | Deployment method |
-| Plant tour | SUS shelf life | Training and HSE |
-
-Some Pertinent Factors for a Technical
-Diligence Assessment Checklist.......105
-
-**Table 7.7.3-3: An Interpretation of the SUS Implementation Process**
-| Clinical Status of Product | SUS Implementation Stage | FDA PV Stage | Supplier Qualification Activity | Quality Agreement | Risk & Complexity |
-| --- | --- | --- | --- | --- | --- |
-| Preclinical material | Technical assessment (1), detailed investigation (2), and scoping (3) | PV S1 | Collect supplier and SUS product information | Optional | High |
-| IMPs for toxicology and phase I | Business case (4), development (5), and testing and validation (6) | PV S1-2 | Perform technical diligence | Yes | High |
-| IMPs for phases II and III / PPQ conformance batches | Launch (7) | PV S2 | Perform technical diligence and an audit | Yes | Moderate |
-| Licensed product | SUS exploitation stage | PV S3 | Continue supplier verification | Yes | Low |
-
-An Interpretation of the SUS
-Implementation Process....................106
 Table 8.4.3.1-1	Sample Room Classifications............117
 Single-use technology, often described as single-use systems (SUSs) or single-use equipment, has the
 potential to transform pharmaceutical manufacturing by offering tremendous opportunities to reduce
@@ -784,84 +763,8 @@ materials, they have developed physical and mechanical operations to produce the
 lent unit operation in a format that is designed for an SU. A comparative description of the features of
 SU and MU technologies is presented in Table 4.2-1.
 
-**Table 4.2-1 Comparison of MU and SU Systems**
-| Functional Requirement | MUS | SUS |
-| --- | --- | --- |
-| Connections to sterile envelope | Stainless steel (SS), steam-in-place (SIP) valve arrays | Aseptic connectors, SIP connectors, and tubing welders. Alpha/beta ports |
-| Disconnections from sterile envelope | SS SIP valve arrays | Aseptic disconnects, SIP connectors, and tubing sealers. Alpha/beta ports |
-| Containment, storage, and transportation | SS tanks, fixed or portable | Polymeric film sealed to form 2D or 3D bags, unsupported, or as an insert to an external rigid support container (e.g., large bags, tank liners, and centrifuge liners) |
-| Fluid transfer | SS piping, transfer panels | Tubing (flexible and rigid, polymeric) |
-| Pumping | Multiple, fluid contact | Primarily peristaltic, nonfluid contact |
-| Mixing (mass transfer) | SS impeller | Nonfluid contact (e.g., agitation and pumping) or SU impeller-based technology |
-| Freezing | SS tanks or as integrated freeze-thaw systems | 2D bags with or without shells, or as integrated SU freeze-thaw systems |
-| Filtration | SS filter housings with filter elements (e.g., cartridges and plate/frame) | Capsule filters, hollow fiber cartridges, SU cassette technology |
-| Chromatography | Multiple columns packed on-site with media (resin) | Prepacked columns and membrane adsorbers |
-| Isolators | SS transfer canisters with docking port | 2D bags with docking port and with or without tubing sets |
-| Sampling | SS SIP sample valves | Sample bag or manifolds with or without SU sample valves. Aseptic connectors or tubing welders can be used to attach additional sample bags or manifolds if needed |
-| Measurements | In situ reusable probe; can recalibrate during a process | In situ sensor may include a reusable probe or a single-use recalibrated sensor that cannot be adjusted or recalibrated during a process. Calibration is set during manufacturing and may be influenced by storage of the SUS |
-
-Functional Requirement
-MUS
-SUS
-Connections to sterile
-envelope
-Stainless steel (SS), steam-
-in-place (SIP) valve arrays
-Aseptic connectors, SIP connectors, and tubing weld-
-ers. Alpha/beta ports
-Disconnections from
-sterile envelope
-SS SIP valve arrays
-Aseptic disconnects, SIP connectors, and tubing seal-
-ers. Alpha/beta ports
-Containment, storage,
-and transportation
-SS tanks, fixed or portable
-Polymeric film sealed to form 2D or 3D bags, unsupported,
-or as an insert to an external rigid support container (e.g.,
-large bags, tank liners, and centrifuge liners)
-Fluid transfer
-SS piping, transfer panels
-Tubing (flexible and rigid, polymeric)
-Pumping
-Multiple, fluid contact
-Primarily peristaltic, nonfluid contact
-Mixing (mass transfer)
-SS impeller
-Nonfluid contact (e.g., agitation and pumping) or SU
-impeller-based technology
-Freezing
-SS tanks or as integrated
-freeze-thaw systems
-2D bags with or without shells, or as integrated SU
-freeze-thaw systems
-Filtration
-SS filter housings with
-filter elements (e.g., car-
-tridges and plate/frame)
-Capsule filters, hollow fiber cartridges, SU cassette
-technology
-Chromatography
-Multiple columns packed
-on-site with media (resin)
-Prepacked columns and membrane adsorbers
-Isolators
-SS transfer canisters with
-docking port
-2D bags with docking port and with or without tubing
-sets
-Sampling
-SS SIP sample valves
-Sample bag or manifolds with or without SU sample
-valves. Aseptic connectors or tubing welders can be used
-to attach additional sample bags or manifolds if needed
-Measurements
-In situ reusable probe; can
-recalibrate during a process
-In situ sensor may include a reusable probe or a single-use
-recalibrated sensor that cannot be adjusted or recalibrated
-during a process. Calibration is set during manufacturing
-and may be influenced by storage of the SUS
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
 ### 4.3 SU Components and Assembly
 
@@ -1024,14 +927,9 @@ This involves an assessment of how each of the components of the SUS, plus the S
 integrated unit, may impact the process outcome. A description of a process compatibility assessment
 is provided in Table 4.5.1-1.
 
-**Table 4.5.1-1 Assessment of Process Compatibility**
-| Factor | Design Considerations |
-| --- | --- |
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
-Factor
-Design Considerations
-Construction
-materials
 Chemical compatibility with the product and process fluids (liquid and solid), cleaning and
 sanitizing agents; biocompatibility; animal-derived components; extractable and leachable
 profiles; and nonspecific adsorption. Note that films may be permeable to some chemical
@@ -1095,13 +993,9 @@ Setup includes those activities required to deliver the SUS to the point of use.
 the hands-on steps required to successfully assemble and ready the system for use in a specific SUS
 application. Examples of the facility setup and deployment assessments are described in Table 4.6-1.
 
-**Table 4.6-1 Assessment of SUS Facility Setup and Deployment**
-| Factor | Design Considerations |
-| --- | --- |
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
-Factor
-Design Considerations
-Facility
 Room classifications and the level of SUS integration between SUS and MUS and intra-
 facility transport of materials to progressively more stringent clean-room classification.
 Large SUS units may require hoisting or other mechanized deployment and transport.
@@ -1141,15 +1035,9 @@ method of operation, it may be necessary to optimize the process operation for a
 ual process requirements and facility. Examples of operational requirement assessments are reviewed
 in Table 4.6.1-1.
 
-**Table 4.6.1-1 Assessment of Operational Requirements**
-| Design Factor | Design Considerations |
-| --- | --- |
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
-Design Factor
-Design Considerations
-Campaigning
-One use versus multiple fluid passages through an SUS
-Deployment
 Ability of bag and containment system to accommodate bag deployment during an SUS operation
 Fluid integrity
 Limitations in material strength, puncture resistance, and component and system integrity
@@ -1204,14 +1092,9 @@ Connectors with integrated valves and resterilizable SIP connectors have the add
 of enabling aseptic disconnections and reconnection.
 As shown in Table 4.7.1.1-1, connectors may be grouped into three functional categories.
 
-**Table 4.7.1.1-1 Functional Categories of Connectors**
-| Connector Category | Description |
-| --- | --- |
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
-Functional Categories of Connectors
-Connector Category
-Description
-Adapter type
 Hose barb and tri-clamp are the most common insert connection adapters. Hose barbs
 are for making tubing-to-tubing or tubing-to-device connections.
 Tri-clamp adapters are for making direct connections to stainless or filter with tri-clamp
@@ -1244,14 +1127,9 @@ confirm that factors such as the specific connector technology, materials of con
 tor size support end-user design requirements. Table 4.7.1.1-2 contains specific considerations that
 apply to connector technology.
 
-**Table 4.7.1.1-2 Specific Considerations for Connectors**
-| Factor | Consideration |
-| --- | --- |
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
-Specific Considerations for Connectors
-Factor
-Consideration
-Ease of use
 Determine the relative ease of use of the various connectors to ensure minimal operator
 error.
 Technology
@@ -1295,344 +1173,34 @@ range of performance characteristics on the plastic materials. Table 4.8-1 conta
 commonly used for the production of SU components, along with their trade names, chemical ab-
 breviations, properties, and applications.
 
-**Table 4.8-1	 Plastics Commonly Used in SUS**
+| Abbreviation | Chemical Name | Brand | Applications | Reasons to Use | Comments |
+| --- | --- | --- | --- | --- | --- |
 
-Family
-Chemical
-Abbreviation
-Chemical Name
-Brand Name*
-Applications
-Reasons to Use
-Comments
-Fluoropolymers
-PTFE
-Poly(tetrafluoroethylene)
-Teflon®
-Fluon®
-Filters, tubing
-Biologically inert
-Chemically resistant
-Extreme cold or hot temperature re-
-sistance
-Low extractables and leachables
-Cannot be sterilized using gamma ir-
-radiation
-Limited mechanical properties
-PVDF
-Poly(vinylidenefluoride)
-Poly(vinylidene fluoride-co-
-hexafluoropropylene)
-Kynar®
-Kynar Flex®
-Filters, fittings,
-tubing, bags
-Biologically inert
-Greater strength and wear resistance
-than PTFE
-Broad temperature and chemical com-
-patibility
-Low extractables and leachables
-Easily worked, molded, and sealed
-Sterilizable by irradiation, steam, or
-chemical
-Some strong solvents can solubilize
-the material
-Polycarbonate
-PC
-Polycarbonate
-Lexan®
-Makrolon®
-Fittings
-Easily worked, molded, and thermo-
-formed
-Excellent durability
-Temperature and impact resistant
-Autoclavable
-Clear, lightweight
-Limited chemical compatibility range
-Some grades may leach bisphenol A
-(BPA), which has been implicated in
-a variety of adverse effects in some
-studies
-Polyester
-PET, PETE
-PBT
-Poly(ethylene terephthalate)
-Poly(butylene terephthalate)
-Rynite®
-Crastin®
-Bottles,
-filter capsules
-Semirigid to rigid
-Very lightweight
-Good gas barrier
-Naturally colorless with high transpar-
-ency
-High strength
-Excellent stain resistance
-Good wear resistance
-Excellent dimensional stability
-Radiation sterilizable
-Fair moisture barrier
-Naturally hygroscopic—must be dried
-before heat molding
-Copolymer variations include PETG
-(cyclohexane dimethanol co-polymer)
-Family
-Chemical
-Abbreviation
-Chemical Name
-Brand Name*
-Applications
-Reasons to Use
-Comments
-Polyolefin
-(polyalkene)
-PP
-Polypropylene
-Moplen®
-Pro-fax®
-Filters,
-hous-
-ings, piping, fit-
-tings
-Good chemical resistance
-Tough, impact resistant
-Good processing properties
-Higher temperature or chemical resis-
-tance over PE
-Rigidity, hardness
-Autoclavable
-Irradiatable (stabilized formulations only)
-Nonstabilized formulations cannot be
-sterilized by gamma irradiation (re-
-duces shelf life, elevates extractables)
-High thermal expansion
-Poor impact strength at low
-temperature
-PE
-Polyethylene
-Dowlex®
-Engage®
-Bags, fittings
-Good processing properties
-Impact resistant
-Good toughness
-High stress cracking resistance
-Lower extractables than EVA
-Cold temperature performance
-Properties vary by density (high, low,
-ultralow, linear low)
-High thermal expansion
-Cannot be autoclaved
-Copolymers
-EVOH
-Ethylene vinyl alcohols
-Eval®
-Soranol®
-Barrier layer in
-films
-Superior gas barrier properties
-Good chemical resistance
-Very good clarity
-Can be coextruded with many different
-polymers
-Hygroscopic, gas barrier properties
-diminished with moisture
-Moisture barrier properties lower than
-other polymers
-EVA
-Ethylene vinyl acetate
-Evatane®
-Elvax®
-Bags, tubing
-Soft and flexible
-Good clarity and gloss
-Good barrier properties
-Little or no odor
-Excellent cold temperature properties
-Better tear resistance than LDPE
-Excellent resistance to environmental
-stress cracking
-Gamma-irradiated EVA can lower pH
-of contents
-Extractables may be undesirable
-Poor heat resistance
-Reduced barrier properties compared
-to LDPE
-Attacked by polar solvents, hydrocar-
-bons, oxidants, and strong acids
-Reduced creep resistance compared
-to LDPE
+**Table 4.9.1-1 Specific Considerations for the Storage of Process Intermediates**
+| Factor | Consideration |
+| --- | --- |
+| Potential for loss of quality (e.g., chemical, physical, or functional) of the process intermediate | In some cases, the process intermediates may have adverse interactions with the polymeric bag containers of the SUS. A special protective film may have to be applied to a bag containing oxygen-sensitive or photolabile process intermediates. It is vital to make sure that chemicals leaching from the polymer in the course of storage do not have adverse effects on the intermediates, buffer, or culture media that might get carried to unit operations. |
+| Maintenance of system integrity | Ensure the integrity of the SUS by the careful choice and qualification of the bag, use of a supporting structure, and adherence to good laboratory practices. |
+| Microbial quality | Ensure that sterility and bioburden control are maintained. |
 
-**Table 4.8-1 (Continued)**
+**Table 4.10.1-1 Specific Considerations for Freezing**
+| Factor | Consideration |
+| --- | --- |
+| Storage temperature | At the typical storage temperature range of -40°C to -70°C, most polymer films, tubing, and fittings become brittle due to being below their glass transition temperature. Therefore, it is important to perform a structural integrity test on each freezing system. |
+| Handling | Effective staff training is critical to the successful implementation of a freeze-thaw step in an SUS. |
+| Shipping | Cold-chain logistics manufacturers are making robust, off-the-shelf solutions commercially available to the biopharmaceutical industry. |
 
-Family
-Chemical
-Abbreviation
-Chemical Name
-Brand Name*
-Applications
-Reasons to Use
-Comments
-Polyamides
-(nylons)
-PA6,6
-Polyamide 6,6 or
-nylon 6,6
-Zytel®
-Ultramid®6,6
-Films, filters
-High melt point (autoclavable)
-Lower extractables than PA6
-Moldable and extrudeable
-Good mechanical properties and wear
-resistance
-Susceptible to degradation by strong
-acids, bases, and oxidizing agents
-PA6
-Polyamide 6 or nylon 6
-Zytel®
-Films, tubes
-Tough, higher impact resistance
-High-temperature resistant
-Easier to process
-Lower mold shrinkage
-Good fatigue resistance
-Greater elasticity and elastic recovery
-Higher extractables
-Susceptible to degradation by strong
-acids, bases, and oxidizing agents
-Highest rate of water absorption and
-equilibrium water content
-PA11
-Polyamide 11 or
-nylon 11
-Rilsan® 11
-Alamid® 11
-Zytel®
-Films, tubes
-Improved chemical resistance versus
-other polyamides
-Some are bio-based
-Low water adsorption
-More expensive than other PA
-Lower impact strength
-Minimal heat resistance (not auto-
-clavable)
-PVC
-Polyvinyl
-chloride
-Poly(chloroethanediyl)
-Pipes,
-films,
-tubes
-Tough, strong
-Inexpensive raw material and low pro-
-cessing temperature
-Good combination of stiffness and
-impact strength (rigid formulation),
-toughness, extensibility
-High ratio of strength to weight (flex-
-ible formulations)
-Not autoclavable
-High levels of extractants
-Must be free of DEHP for fluid contact
-applications
-Low cost
-Disposal issues (generates dioxin on
-incineration)
-Vinyl
-CPVC
-Chlorinated polyvinyl chloride
-
-Pipes
-Good resistance to acids and bases
-Inexpensive
-Improved chemical resistance over
-PVC
-More flexible than PVC
-Not autoclavable
-Disposal issues (generates dioxin on
-incineration)
-
-**Table 4.8-1 (Continued)**
-
-Family
-Chemical
-Abbreviation
-Chemical Name
-Brand Name*
-Applications
-Reasons to Use
-Comments
-Silicone elas-
-tomers
-Silicone elas-
-tomer
-Poly(dimethylsiloxane)
-(May contain other silicone
-monomers)
-Silastic®
-Tubing, fitting,
-overmolding
-Flexible, elastic
-Broad temperature resistance
-High tensile strength
-Elongation and tear resistant
-Low compression set at elevated and
-reduced temperatures compared to
-many organic rubbers
-Not sealable or weldable
-Peroxide-cured types can have higher
-extractables than platinum-cured types
-Elevated silicone leachables can depress
-bubble point of downstream membranes
-Thermoplastic
-elastomer
-TPU
-Thermoplastic polyurethane
-Ellastolan®
-Irogran®
-Tubing
-Flexible—can be stretched to moder-
-ate elongations and return to close to
-original shape
-Processable as a melt at elevated
-temperature
-Absence of significant creep
-Autoclavable
-TPUs have a large variety of chemical
-structures
-Critical to specify manufacturer and
-grade of TPU resins
-Thermoplastic
-elastmomer
-blends
-SEBS-PP
-Styrene-ethylene-butyl-styre-
-ne + polypropylene
-C-Flex®
-Kraton®
-Tubing, fittings,
-overmolding
-Flexible—can be stretched to moder-
-ate elongations and return to close to
-original shape
-Processable as a melt at elevated
-temperature
-Absence of significant creep
-Weldable
-Autoclave conditions may cause tub-
-ing to deform—tubing should be eval-
-uated on a case-by-case basis.
 Kynar® and Kynar Flex® are registered trademarks of Arkema, Inc. Evatane® and Rilsan® are registered trademarks of Arkema SA. Teflon®, Rynite®, Elvax®, Crastin®, and Zytel®
 are registered trademarks of E.I. Dupont de Nemours and Company. Dowlex® and Engage® are registered trademarks of The Dow Chemical Company. C-Flex® is a registered
 trademark of Saint-Gobain. Elastollan® and Ultramid® 6,6 are registered trademarks of BASF. Lexan® is a registered trademark of SABIC. Makrolon® is a registered trademark of
 Bayer Material Science. Fluon® is a registered trademark of AGS. Moplen® and Pro-fax® are registered trademarks of Basell NV. Irogran® is a registered trademark of Huntsman.
 
-**Table 4.8-1 (Continued)**
+**Table 4.11.1-1 Specific Considerations for Filtration**
+| Factor | Consideration |
+| --- | --- |
+| Device design | Versions of most NFF and hollow fiber CFF devices can be easily accommodated in a self-enclosed sterilized assembly (e.g., tubing, bags, and filters). |
+| Microbial control | In general, flat-sheet devices are not supplied presterilized; however, they can be steam sterilized on-site. As an SU device, they allow a way to integrate a known separations technology into an SU unit operation. |
+| Pre- and post-use integrity testing | From a technical perspective, it is less important to conduct a pre-use integrity test of a sterilizing filter that has been sterilized with gamma radiation. The pre-use test has a primary purpose of detecting a damaged filter, a purpose that has roots in steam sterilization, which has known mechanisms by which filters can be damaged. These mechanisms do not exist with gamma radiation sterilization. |
 
 #### 4.8.1 Fluid Management
 
@@ -1650,13 +1218,12 @@ Transportation).
 A fluid-transfer manifold can be integrated directly with a bag to establish a complete fluid delivery
 system. The specific considerations for fluid management are summarized in Table 4.8.1.1-1.
 
-**Table 4.8.1.1-1**
+**Table 4.13.1-1 Specific Considerations for Chromatography**
+| Factor | Consideration |
+| --- | --- |
+| Scaling | Make sure that the method of choice can be scaled to a larger SUS or to an MUS. |
+| Flow rate and capacity | Membrane adsorbers are used in polishing steps because they have a relatively high flow rate and low binding capacity. |
 
-Specific Considerations for Fluid Management
-Factor
-Consideration
-Desired integration
-level
 Simplify the design of the SUS by evaluating its functionality and complexity. Explore
 opportunities for implementing either a standard configuration or an application-specific
 configuration.
@@ -1709,20 +1276,20 @@ systems, continue to emerge. They rely on specific bag geometry and other unique
 for liquid movement (e.g., collapsible and expandable bellows sections designed into a container).
 The specific considerations for selecting a mixing technique are summarized in Table 4.8.2.1-1.
 
-**Table 4.8.2.1-1	 Specific Considerations for Mixing**
+**Table 4.14.1-1 Specific Considerations for Drug Product Final Filling**
+| Factor | Consideration |
+| --- | --- |
+| Filling environment | Make sure that the filling system has appropriate connectors and disconnectors. Ascertain that the filling system is capable of being transferred into a restricted-access barrier system or an isolator. Check that the filling system is compatible with vapor-phase hydrogen peroxide (shadowing, material compatibility, and permeability). Alternatively, determine that the filling system can be aseptically transferred into a presanitized isolation system. |
+| Sterility assurance | Maintain the integrity of packaging and assembly during transportation and installation. |
+| Particulates | Ensure that filling system particulate contribution is low enough to meet USP <788> requirements. |
+| Endotoxins | Ensure that the filling system endotoxin contribution is low enough to meet USP <85>, EP 2.6.14 requirements, WHO 3.4, and JP XVI 4.01. |
+| Physical properties | Check that the system is compatible with the required pressure and flow rate. |
+| SU Part Lifetime | For SUS to be used in campaign manufacturing, qualify the lifetime of SU parts to be used to ensure they perform properly for the entire process. |
+| Needle design | Ensure that the needle design is compatible with the requirements for fill accuracy, flow rate, integration to filling machine, and vial opening. Make sure that the needle does not induce foaming or dripping. |
+| Product handling and dispensing | Evaluate shear effects on product quality. |
+| Accuracy and precision | Qualify the design and installation of the system to dispense the specified volume from the beginning to the end of the filling process (may need in-line weight check). Account for physical changes to polymeric parts (such as pump tubing) that can lead to a systematic drift in dosing volume. |
+| Throughput | Peristaltic pump-based and most gravimetric dosing systems have relatively high fill times. The resultant throughput constraint may be reduced by using a more highly manifolded flow path compared to an MUS. |
 
-Factor
-Consideration
-Process performance
-Factors such as mixing time, agitator speed, and temperature may have to be ad-
-justed to achieve desired process goals.
-Mixing components
-Because the components are mass produced, the ability to customize each compo-
-nent to suit a particular process may be limited.
-Powder handling
-Evaluate powder containment and handling options for ease of use, recovery, and
-potential interference with SUS materials.
-Temperature control
 Check the system for efficient heat transfer and proper alignment of mixing bags to
 container wall.
 Mixing homogeneity
@@ -1762,11 +1329,15 @@ in the new generation of SU fermenters and bioreactors. SU fermenters require un
 and mass transfer in order to control temperature and the necessary oxygen transfer rates.
 The specific considerations for fermenters or bioreactors are summarized in Table 4.8.3.1-1.
 
-**Table 4.8.3.1-1	 Specific Considerations for Fermenters or Bioreactors**
+**Table 4.15-1 Specific Considerations for Isolators**
+| Factor | Consideration |
+| --- | --- |
+| Sterilization method | The SU transfer bag must withstand the chosen method of sterilization (e.g., gamma irradiation or autoclaving). |
+| Port compatibility | Commercially available aseptic transfer ports have complementary bags that must be obtained from the same suppliers. |
+| Film properties | Films with antistatic properties may be used to transfer small parts or powders. |
+| Sleeve or pipe | Transfer bags may include a sleeve or pipe that extends past the port interface in order to avoid contact between the bag and the mechanical clearance in order to prevent possible contamination. |
+| Port size | For complex SU assemblies containing filters, tubing sets, and needle canisters, make sure that the A-B port size is large enough for ease of use. |
 
-Factor
-Consideration
-Process control
 SU sensors and the mating control systems may have different capabilities from a tradi-
 tional MUS.
 Process limitations
@@ -1827,13 +1398,6 @@ process intermediates are summarized in Table 4.9.1-1.
 | Maintenance of system integrity | Ensure the integrity of the SUS by the careful choice and qualification of the bag, use of a supporting structure, and adherence to good laboratory practices. |
 | Microbial quality | Ensure that sterility and bioburden control are maintained. |
 
-Factor
-Consideration
-Potential for loss of qual-
-ity (e.g., chemical, physi-
-cal, or functional) of the
-process intermediate
-In some cases, the process intermediates may have adverse interactions with the
 polymeric bag containers of the SUS. A special protective film may have to be ap-
 plied to a bag containing oxygen-sensitive or photolabile process intermediates. It is
 vital to make sure that chemicals leaching from the polymer in the course of storage
@@ -1885,11 +1449,6 @@ The specific considerations for freezing are summarized in Table 4.10.1-1.
 | Handling | Effective staff training is critical to the successful implementation of a freeze-thaw step in an SUS. |
 | Shipping | Cold-chain logistics manufacturers are making robust, off-the-shelf solutions commercially available to the biopharmaceutical industry. |
 
-Specific Considerations for Freezing
-Factor
-Consideration
-Storage temperature
-At the typical storage temperature range of -40°C to -70°C, most polymer films,
 tubing, and fittings become brittle due to being below their glass transition tempera-
 ture. Therefore, it is important to perform a structural integrity test on each freezing
 system.
@@ -1919,7 +1478,13 @@ provides the compression and support required for filtration NFF devices have be
 available in an SU format for many years, and structurally, they contain a depth filter media or mem-
 brane for separation via size exclusion. The specific considerations for filtration are summarized in
 
-**Table 4.11.1-1.**
+**Table 4.16.1-1 Specific Considerations for Sampling and Laboratory Analysis**
+| Factor | Consideration |
+| --- | --- |
+| Sterility | Determine the degree to which maintenance of the sterility of the contents of the bioprocess bag or that of the sample is required on a case-by-case basis. Although using alcohol to sanitize a port before entry does not ensure sterility, it tends to reduce bioburden load. One should be cautious of the possibility of contaminating the sampled fluid with alcohol. |
+| Number of samples | Use established standards to determine how many samples are required, and design the sampling aspects of the SUS accordingly. |
+| Sample quality (uniformity and compatibility) | Assess the impact of the sample container and the sample storage conditions on the quality of the eventual analytical results. Evaluate the system for positive or negative interference in the analytical method and for sample degradation related to the sampling technology. Make sure that the sampling apparatus is designed to yield a representative sample. Recognize stagnant parts of the tubing in which fluid accumulation may occur, and flush the fluid out before sampling. |
+| Sample handling | For critical process samples kept in long-term storage in bags or other SU sample containers, conduct a test and/or validation to ascertain sample stability and container integrity during handling and storage. The competence of the laboratory staff at sample handling is critical to the success of the process. |
 
 **Table 4.11.1-1 Specific Considerations for Filtration**
 | Factor | Consideration |
@@ -1928,13 +1493,6 @@ brane for separation via size exclusion. The specific considerations for filtrat
 | Microbial control | In general, flat-sheet devices are not supplied presterilized; however, they can be steam sterilized on-site. As an SU device, they allow a way to integrate a known separations technology into an SU unit operation. |
 | Pre- and post-use integrity testing | From a technical perspective, it is less important to conduct a pre-use integrity test of a sterilizing filter that has been sterilized with gamma radiation. The pre-use test has a primary purpose of detecting a damaged filter, a purpose that has roots in steam sterilization, which has known mechanisms by which filters can be damaged. These mechanisms do not exist with gamma radiation sterilization. |
 
-Specific Considerations for Filtration
-Factor
-Consideration
-Device design
-Versions of most NFF and hollow fiber CFF devices can be easily accommodated in
-a self-enclosed sterilized assembly (e.g., tubing, bags, and filters).
-Microbial control
 In general, flat-sheet devices are not supplied presterilized; however, they can be
 steam sterilized on-site. As an SU device, they allow a way to integrate a known
 separations technology into an SU unit operation.
@@ -1987,12 +1545,6 @@ Transportation). The specific considerations for chromatography are summarized i
 | Scaling | Make sure that the method of choice can be scaled to a larger SUS or to an MUS. |
 | Flow rate and capacity | Membrane adsorbers are used in polishing steps because they have a relatively high flow rate and low binding capacity. |
 
-Specific Considerations for Chromatography
-Factor
-Consideration
-Scaling
-Make sure that the method of choice can be scaled to a larger SUS or to an MUS.
-Flow rate and capacity
 Membrane adsorbers are used in polishing steps because they have a relatively high
 flow rate and low binding capacity.
 
@@ -2046,10 +1598,6 @@ The specific considerations for drug product final filling are summarized in Tab
 | Accuracy and precision | Qualify the design and installation of the system to dispense the specified volume from the beginning to the end of the filling process (may need in-line weight check). Account for physical changes to polymeric parts (such as pump tubing) that can lead to a systematic drift in dosing volume. |
 | Throughput | Peristaltic pump-based and most gravimetric dosing systems have relatively high fill times. The resultant throughput constraint may be reduced by using a more highly manifolded flow path compared to an MUS. |
 
-Specific Considerations for Drug Product Final Filling
-Factor
-Consideration
-Filling environment
 Make sure that the filling system has appropriate connectors and disconnectors. Ascer-
 tain that the filling system is capable of being transferred into a restricted-access barrier
 system or an isolator.
@@ -2113,9 +1661,6 @@ The specific considerations for isolators are summarized in Table 4.15-1.
 | Sleeve or pipe | Transfer bags may include a sleeve or pipe that extends past the port interface in order to avoid contact between the bag and the mechanical clearance in order to prevent possible contamination. |
 | Port size | For complex SU assemblies containing filters, tubing sets, and needle canisters, make sure that the A-B port size is large enough for ease of use. |
 
-Factor
-Consideration
-Sterilization method
 The SU transfer bag must withstand the chosen method of sterilization (e.g., gamma
 irradiation or autoclaving).
 Port compatibility
@@ -2155,10 +1700,6 @@ The specific considerations for sampling and laboratory analysis are summarized 
 | Sample quality (uniformity and compatibility) | Assess the impact of the sample container and the sample storage conditions on the quality of the eventual analytical results. Evaluate the system for positive or negative interference in the analytical method and for sample degradation related to the sampling technology. Make sure that the sampling apparatus is designed to yield a representative sample. Recognize stagnant parts of the tubing in which fluid accumulation may occur, and flush the fluid out before sampling. |
 | Sample handling | For critical process samples kept in long-term storage in bags or other SU sample containers, conduct a test and/or validation to ascertain sample stability and container integrity during handling and storage. The competence of the laboratory staff at sample handling is critical to the success of the process. |
 
-Specific Considerations for Sampling and Laboratory Analysis
-Factor
-Consideration
-Sterility
 Determine the degree to which maintenance of the sterility of the contents of the bio-
 process bag or that of the sample is required on a case-by-case basis. Although using
 alcohol to sanitize a port before entry does not ensure sterility, it tends to reduce biobur-
@@ -2215,10 +1756,6 @@ The specific considerations for transportation are summarized in Table 4.17.1-1.
 | Bioburden and particulate | Ensure that the bioprocess bag is suitable for room classification and protect it from contamination (e.g., by the progressive removal of various packaging layers, wipe and/or sanitize outer container and polybag, as appropriate) before placing it into a classified area. |
 | Material management | This encompasses the complexity of logistics, freight efficiency, and availability and internal flows of supplies to the point of use while taking into account room classifications, in-suite staging, recycling of packaging materials, removal of SU components, and capacity of the staging area for cleaning of outer containers. Material management capability may vary significantly between an existing facility and a new facility when integrating SUS. |
 
-Specific Considerations for Transportation
-Factor
-Consideration
-Mode of transport
 Compare the use of ground and air shipping over long distances versus wheeled dollies
 that are pushed from suite to suite.
 Environmental
@@ -2269,12 +1806,16 @@ the impact of employing multiple sensing technologies, each with different quant
 ease of performing a post-use verification.
 The specific considerations for sensors are summarized in Table 4.18.1-1.
 
-**Table 4.18.1-1**
+**Table 4.17.1-1 Specific Considerations for Transportation**
+| Factor | Consideration |
+| --- | --- |
+| Mode of transport | Compare the use of ground and air shipping over long distances versus wheeled dollies that are pushed from suite to suite. |
+| Environmental controls | This involves temperature and relative humidity regulation and documentation. Check for material compatibility and protection from excessive cold or heat. |
+| Functionality | Ensure forklift access plus the ability to stack outer containers. Make sure that process fluids can be transferred in and out of the bioprocess bag. |
+| Room classification | This involves the deployment of the outer container and bioprocess bag in classified areas, and the transfer of fluids across the same grade level versus transfer across different grade levels (e.g., from a C to B grade). |
+| Bioburden and particulate | Ensure that the bioprocess bag is suitable for room classification and protect it from contamination (e.g., by the progressive removal of various packaging layers, wipe and/or sanitize outer container and polybag, as appropriate) before placing it into a classified area. |
+| Material management | This encompasses the complexity of logistics, freight efficiency, and availability and internal flows of supplies to the point of use while taking into account room classifications, in-suite staging, recycling of packaging materials, removal of SU components, and capacity of the staging area for cleaning of outer containers. Material management capability may vary significantly between an existing facility and a new facility when integrating SUS. |
 
-Specific Considerations for Sensors
-Factor
-Consideration
-Process compatibility
 Assess the compatibility of polymeric materials used in the fluid contact of the sensor.
 Connectivity
 Sensors may come with standard hose barb or TC fittings for integration into a tube fluid
@@ -2413,37 +1954,9 @@ potential areas of concern (Figure 5.2-1). Table 5.2-1 identifies the risk compl
 
 *[Figure 5.2-1	 Example of an Ishikawa (Fishbone) Diagram for Determining Risk Sources]*
 
-**Table 5.2-1 identifies the risk complexities of SUSs.**
+| System Complexity →Impact to Process ↓ | Low | Moderate | High |
+| --- | --- | --- | --- |
 
-System Complexity
-Low
-Moderate
-High
-Impact to Process
-Low
-Buffer/Storage
-UF*/DF†/
-Concentration
-Clarification/ Re-
-covery
-Low
-Impact to Process
-Moderate
-Transport/ Shipping
-Connectors/Mixing/
-Medium Storage
-Cell Culture/
-Fermentation
-Moderate
-High
-Freeze/Thaw
-Purification/ Product
-Storage
-Fill and Finish
-High
-*UF – ultrafiltration
-
-†DF – diafiltration
 For assembly error or individual component failure, complex systems with multiple valves, manifolds, and
 sensors may present more risks than simple systems (horizontal axis). Applications that are more demanding
 or close to the final step may pose higher risks (vertical axis). Condensates may get back to the process if fluid
@@ -2609,67 +2122,9 @@ scale assessment should be conducted on the design for performance parameters an
 ing, pH control, sparging, temperature control, cell growth, viability, titer/yield, etc.). The potential
 impact of differences in growth conditions on product quality should be included.
 
-**Table 5.5.2-1: Component Interchangeability Evaluation**
 | Change | Description | Risk Assessment Focus* | Performance Verification |
 | --- | --- | --- | --- |
 
-Component Interchangeability Evaluation
-Change
-Description
-Risk Assessment
-Focus*
-Performance Verification
-Like-for-like
-Identical components, dimensions,
-and materials of construction made
-by more than one supplier for the
-same processing conditions
-1, 2
-Design and user specification
-monitored through change control
-Functionally
-equivalent
-Combinations of materials with
-the same performance but differ-
-ent material suppliers (e.g., bag/
-filter/tubing) or processing condi-
-tions
-1, 2, 3, 4, 6
-Monitor performance attributes,
-leachables, and CQAs
-Process or
-functional
-modification
-or improvement
-Similar function or performance
-with different design and materi-
-als of construction and may require
-some process or equipment modifi-
-cation for operation (e.g., virus filter
-housing changed)
-1, 2, 3, 4, 5, 6
-Monitor performance attributes,
-leachables, and CQAs in a scaled-
-down development study
-*Risk Assessment Focus Descriptions
-1.
-Design, dimension, performance, and materials
-claims of the proposed substitute (form, fit, and
-function)
-2.
-Materials of construction and process contact
-fluid compatibility, contact area, and time
-Availability and extent of supplier biosafety (USP
-<87> and/or <88>, as appropriate for the ap-
-plication) and extractables data (24,25)
-4.
-Suitability of supplier extractables data to bracket
-process fluid and conditions
-5.
-Application and potential for subsequent leach-
-able removal or dilution
-6.
-Product impact assessment
 When considering interchangeability, in most cases other than like-for-like, the end user will need to
 do some level of operational or extractable/leachable testing to verify fitness for use. Different dimen-
 sions or even top or bottom mixing can have product impact. As discussed in Section 5, Business Driv-
@@ -2687,37 +2142,9 @@ ceptable supplier quality system, technical capability, and application of Good 
 (GEP) guidelines (Table 5.5.3-1) (18). If there is not strict adherence to GEP, then there should be
 assurance that documentation is accurate and suitable to meet the purpose of verification.
 
-**Table 5.5.3-1: Example Supplier Testing and Reference Standards**
 | | Vendor A | Vendor B | Vendor C |
 | --- | --- | --- | --- |
 
-Example Supplier Testing and Reference Standards
-Vendor A
-Vendor B
-Vendor C
-Compendial
-USP <87>, <88>
-USP <88>
-USP <87>,<88>
-Biocompatibility
-ISO 10993-4
-ISO 10993-4
-ISO 10993-4
-Testing
-EP 5.2.8
-EP 5.2.8
-EP 5.2.8
-Extractables
-USP <661>
-11 solvents
-EP 3.1.5
-USP <661>
-Nothing unless the User
-Contracts
-Testing
-90 days at 40°C
-“Pass” no values
-“Pass” no values
 5.6	 Extractables and Leachables (E&L)
 Extractables may be defined as chemical entities that can be extracted from the components of a material by
 exertion of an exaggerated force (e.g., organic solvent, extreme temperature, ionic strength, pH, contact time).
@@ -2859,63 +2286,25 @@ Tables 5.6.1-2 through 5.6.1-4 show examples of testing methods for extractables
 containers from different suppliers (40). The amounts detected would depend on the methods used
 and materials tested.
 
-**Table 5.6.1-2**
+| | |
+| --- | --- |
+| | HPLC-MS |
+| / | GC-MS |
+| | ICP-MS |
+| | FTIR |
+| | TOC |
+| | 1H-NMR |
 
-Example—Quantitation of Extractables from SU Components after 50 kGy Irradiation
-Test
-Compounds Identified
-Concentration
-FTIR spectroscopy
-on ethanol-extracted
-nonvolatile residue (NVR)
-Acrylates (derived from membrane surface modification)
-NVR <0.5 mg (ppm)
-GC-MS on ethanol
-extract
-2-ethylhexanoic acid
-1,3-di-tert-butyl-benzene
-2,4-di-tert-butyl-phenol
-Lauryl acetate
-Lauryl acrylate
-0.56
-0.52
-0.12
-0.13
-0.64
-GC-MS on derivatized
-ethanol extract
-Ethanedioic acid, dibutyl ester (oxalic)
-Propanedioic acid, dibutyl ester (malonic)
-Dodecanoic acid, butyl ester (lauric)
-Butanedioic acid, butyl ester (succinic)
-Tetradecanoic acid, butyl ester (myristic)
-Hexadecanoic acid, butyl ester (palmitic)
-Octadecanoic acid, butyl ester (stearic)
-1,4-benzenedicarboxylic acid, bis(2-methylpropyl) ester
-0.16
-0.10
-0.23
-0.17
-0.09
-0.61
-1.23
-2.24
-LC-MS on ethanol
-extract
-2-ethylhexanoic acid
-Lauric acid
-Myristic acid
-Palmitic acid
-Stearic acid
-144.21
-200.32
-228.37
-256.42
-284.48
 Note: Identity and quantities of compounds derived via ethanol extracts from a polypropylene filter capsule
 with modified polyvinylide fluoride membrane.
 
-**Table 5.6.1-3**
+**Table 6.5-1: Factors That Affect the Process Model**
+| Process Model Factors | Considerations for SUS Implementation |
+| --- | --- |
+| Unit operation | Processes involving large volumes may be done with only one reusable vessel, whereas several vessels may be required for an SUS. The effect on the function, layout, and classification of the facility should be taken into account. |
+| Storage of solution | The storage and distribution of solutions may be performed with mobile tanks or bags or in fixed installations. The concentrations of the solutions may be at use concentration or highly concentrated for subsequent dilution prior to use. |
+| Support system requirements | This includes utility demand, washing and sterilization requirements, and the need for water and steam. |
+| Batch duration and frequency | The time required for performing the process steps in question needs to be determined. |
 
 Identified Extractables from Membrane Filter Cartridges from Several Manufacturers
 Water Extract
@@ -2944,7 +2333,14 @@ Na, Al, K, and Ca no higher than for the negative
 control
 * Irgafos is a proprietary stabilizer and trademark of Ciba Holding AG in Basel, Switzerland.
 
-**Table 5.6.1-4**
+**Table 6.6-1: Factors That Affect the Operational Model**
+| Operational Model Factors | Considerations |
+| --- | --- |
+| Production (weeks/year) | The number of weeks scheduled for production minus holidays and scheduled maintenance. |
+| Downtime duration | The time required for cleaning, dismantling, sterilizing, calibrating, testing, setting up, and deploying the next batch to be processed. |
+| Changeover duration | The time required for switching between campaigns or products. This may include the dismantling and cleaning of the production train (e.g., reusable storage containers, equipment, or instrumentation screens), and clearance of items used in the last batch of production. |
+| Batches per year | An SUS may produce more batches per year compared to an MUS because of the reduction in changeover time. The average cost of a batch does not include variable costs only, but it is influenced by fixed costs and the number of batches processed per year. |
+| Scrap ratio | This refers to the number of batches lost to contamination, loss of integrity, and other problems. It also refers to the cost of materials and labor stemming from the loss of sterility or the integrity of the system. |
 
 Identification of Extractables from Polyethylene Biocontainers with Ethyl Vinyl Alcohol Interlayer
 Water Extract
@@ -3436,22 +2832,14 @@ according to the project scope. The resulting submodels for facility, investment
 costs may then be combined to form the total cost model. The factors to consider for the process
 model are summarized in Table 6.5-1.
 
-**Table 6.5-1: Factors That Affect the Process Model**
-| Process Model Factors | Considerations for SUS Implementation |
+**Table 6.7-1: Comparative Evaluation of a New Versus Retrofitted Facility During SUS Implementation**
+| New Facility | Retrofitting of an Existing Facility |
 | --- | --- |
-| Unit operation | Processes involving large volumes may be done with only one reusable vessel, whereas several vessels may be required for an SUS. The effect on the function, layout, and classification of the facility should be taken into account. |
-| Storage of solution | The storage and distribution of solutions may be performed with mobile tanks or bags or in fixed installations. The concentrations of the solutions may be at use concentration or highly concentrated for subsequent dilution prior to use. |
-| Support system requirements | This includes utility demand, washing and sterilization requirements, and the need for water and steam. |
-| Batch duration and frequency | The time required for performing the process steps in question needs to be determined. |
+| Emphasis on facility model for capital cost estimate | Ability to limit facility model by constraints already given |
+| Ability to eliminate or reduce functions or utilities by using SUS | Possibility to overcome capacity limitations by using an SUS |
+| Design for SUS technology | Interfacing and connecting SUS technology to existing areas and systems |
+| Reduction in total project time as a result of SUS, time to market | Possible reduction of interruptions in productivity |
 
-Process Model Factors
-Considerations for SUS Implementation
-Unit operation
-Processes involving large volumes may be done with only one reusable vessel,
-whereas several vessels may be required for an SUS. The effect on the function,
-layout, and classification of the facility should be taken into account.
-Storage of solution
-The storage and distribution of solutions may be performed with mobile tanks or
 bags or in fixed installations. The concentrations of the solutions may be at use
 concentration or highly concentrated for subsequent dilution prior to use.
 Support system
@@ -3507,21 +2895,18 @@ the process model in order to estimate utilization and batch output from the fac
 tion is combined with other cost models, the average batch cost for the various scenarios can then be
 calculated. The main factors that affect the selection of operation model are summarized in Table 6.6-1.
 
-**Table 6.6-1: Factors That Affect the Operational Model**
-| Operational Model Factors | Considerations |
+**Table 6.8.1-1: Contributory Factors to Investment Costs**
+| Investment Costs | Considerations |
 | --- | --- |
-| Production (weeks/year) | The number of weeks scheduled for production minus holidays and scheduled maintenance. |
-| Downtime duration | The time required for cleaning, dismantling, sterilizing, calibrating, testing, setting up, and deploying the next batch to be processed. |
-| Changeover duration | The time required for switching between campaigns or products. This may include the dismantling and cleaning of the production train (e.g., reusable storage containers, equipment, or instrumentation screens), and clearance of items used in the last batch of production. |
-| Batches per year | An SUS may produce more batches per year compared to an MUS because of the reduction in changeover time. The average cost of a batch does not include variable costs only, but it is influenced by fixed costs and the number of batches processed per year. |
-| Scrap ratio | This refers to the number of batches lost to contamination, loss of integrity, and other problems. It also refers to the cost of materials and labor stemming from the loss of sterility or the integrity of the system. |
+| Process equipment | This refers to the process equipment (e.g., bioreactors, centrifuges, tanks, filters, columns) and support equipment (e.g., welders, sealers, process controller, pumps, and bag supports for SUS) required to run the process. |
+| Utility equipment | This refers to the secondary equipment or systems (e.g., clean steam, CIP, and COP) required to run the process. |
+| Installation | Installations for CIP/SIP and traditional process tanks should be considered. |
+| Engineering design | A SUS may either be customized or purchased with the off-the-shelf configuration. |
+| Commissioning | Implementation of an SUS may eliminate I/O points associated with CIP and SIP. |
+| Validation / quality shop floor | A SUS may require investigations into potential leachables and other studies, and reusable equipment would require CIP and SIP validation. Consider the cost of doing facility acceptance test (FAT) and site acceptance test (SAT) as well as verification activities. |
+| Facility floor space | This refers to the effect on both footprint and cleanliness classification for operation and SUS storage. |
+| Operators | The number of operators affects training considerations as well as the number of workstations and lockers required. |
 
-Operational Model Factors
-Considerations
-Production (weeks/year)
-The number of weeks scheduled for production minus holidays and scheduled
-maintenance.
-Downtime duration
 The time required for cleaning, dismantling, sterilizing, calibrating, testing, set-
 ting up, and deploying the next batch to be processed.
 Changeover duration
@@ -3552,28 +2937,14 @@ facility throughput when technologies are compared.
 A project may involve either the construction of a new facility or the retrofitting of an existing one.
 The main points of consideration for both cases are summarized in Table 6.7-1 (58).
 
-**Table 6.7-1: Comparative Evaluation of a New Versus Retrofitted Facility During SUS Implementation**
-| New Facility | Retrofitting of an Existing Facility |
+**Table 6.8.4-1: Main Variable Operating Costs**
+| Variable Costs | Description |
 | --- | --- |
-| Emphasis on facility model for capital cost estimate | Ability to limit facility model by constraints already given |
-| Ability to eliminate or reduce functions or utilities by using SUS | Possibility to overcome capacity limitations by using an SUS |
-| Design for SUS technology | Interfacing and connecting SUS technology to existing areas and systems |
-| Reduction in total project time as a result of SUS, time to market | Possible reduction of interruptions in productivity |
-
-New Facility
-Retrofitting of an Existing Facility
-Emphasis on facility model for capital cost estimate
-Ability to limit facility model by constraints already given
-Ability to eliminate or reduce functions or utilities by using
-SUS
-Possibility to overcome capacity limitations by using an
-SUS
-Design for SUS technology
-Interfacing and connecting SUS technology to existing
-areas and systems
-Reduction in total project time as a result of SUS, time
-to market
-Possible reduction of interruptions in productivity
+| Raw materials | Input materials such as media, buffer, and various process aids like antifoam and chromatography gels |
+| Consumables | Items such as storage bags, tubing, filters, and diaphragms that form or are a part of process equipment and are used on a per batch basis |
+| Utilities | Steam, water, power, cooling, and chemical consumption for CIP/SIP |
+| Waste | Energy consumption for inactivation systems and costs for disposing of solid waste |
+| QC/QA and cost of quality | Analytical, documentation, batch documentation, release activities, investigations, supplier audits |
 
 #### 6.7.1 Shortcut Cost Model Based on Cost of Goods
 
@@ -3632,21 +3003,9 @@ While this will give an estimate of whether the technology is economically feasi
 Table 6.8.1-1 shows additional factors for evaluating investment costs that should be considered for
 an SUS project (59).
 
-**Table 6.8.1-1: Contributory Factors to Investment Costs**
-| Investment Costs | Considerations |
-| --- | --- |
-| Process equipment | This refers to the process equipment (e.g., bioreactors, centrifuges, tanks, filters, columns) and support equipment (e.g., welders, sealers, process controller, pumps, and bag supports for SUS) required to run the process. |
-| Utility equipment | This refers to the secondary equipment or systems (e.g., clean steam, CIP, and COP) required to run the process. |
-| Installation | Installations for CIP/SIP and traditional process tanks should be considered. |
-| Engineering design | A SUS may either be customized or purchased with the off-the-shelf configuration. |
-| Commissioning | Implementation of an SUS may eliminate I/O points associated with CIP and SIP. |
-| Validation / quality shop floor | A SUS may require investigations into potential leachables and other studies, and reusable equipment would require CIP and SIP validation. Consider the cost of doing facility acceptance test (FAT) and site acceptance test (SAT) as well as verification activities. |
-| Facility floor space | This refers to the effect on both footprint and cleanliness classification for operation and SUS storage. |
-| Operators | The number of operators affects training considerations as well as the number of workstations and lockers required. |
+| Stage | Section Cross-Reference | Project Implementation Focus | Project Description | Outputs: Document Title(s) |
+| --- | --- | --- | --- | --- |
 
-Investment Costs
-Considerations
-Process equipment
 This refers to the process equipment (e.g., bioreactors, centrifuges, tanks, filters, col-
 umns) and support equipment (e.g., welders, sealers, process controller, pumps, and bag
 supports for SUS) required to run the process.
@@ -3702,19 +3061,9 @@ waste prior to final disposal. Storage space for SUS is typically greater than t
 because of the need to manage SUS inventory and associated reusable storage containers. The main
 contributions to variable operating costs are summarized in Table 6.8.4-1 (61).
 
-**Table 6.8.4-1: Main Variable Operating Costs**
-| Variable Costs | Description |
-| --- | --- |
-| Raw materials | Input materials such as media, buffer, and various process aids like antifoam and chromatography gels |
-| Consumables | Items such as storage bags, tubing, filters, and diaphragms that form or are a part of process equipment and are used on a per batch basis |
-| Utilities | Steam, water, power, cooling, and chemical consumption for CIP/SIP |
-| Waste | Energy consumption for inactivation systems and costs for disposing of solid waste |
-| QC/QA and cost of quality | Analytical, documentation, batch documentation, release activities, investigations, supplier audits |
+| | Low Interest / Motivation | High Interest / Motivation |
+| --- | --- | --- |
 
-Main Variable Operating Costs
-Variable Costs
-Description
-Raw materials
 Input materials such as media, buffer, and various process aids like antifoam and
 chromatography gels
 Consumables
@@ -3782,11 +3131,14 @@ investigations more complex, and this additional effort should be taken into acc
 Fixed operating costs represent the expenditure on the facility regardless of the state of production.
 The main factors involved in evaluating fixed operating costs are summarized in Table 6.10-1.
 
-**Table 6.10-1	Main Fixed Operating Costs**
+| Severity | Likelihood of Detection | Recommended Tool |
+| --- | --- | --- |
+| Impacts product quality | May or may not be detectable | FMEA |
+| May impact product quality | Detectable after the event | FMEA |
+| May impact product quality | Detectable during the event. There may be latency | Data mining, process mapping, risk profiling, fishbone analysis |
+| Could impact process yield or robustness | Rapid detection | Data mining, process mapping, ad-hoc risk table |
+| No impact | Immediate detection | Continuous verification |
 
-Fixed Costs
-Description
-Cost of capital
 This is the cost of borrowing capital, and it depends on the internal interest rate of the
 project. Asset capitalization strategies may differ for a CMO, an established producer, or
 a startup.
@@ -4044,44 +3396,9 @@ estimated to be about 15,000 to 20,000 BTU/lb (34,890 to 46,520 kJ/kg), which co
 of coal at 9,000 to 12,000 BTU/lb (20,934 to 27,912 kJ/kg) and to that of gasoline/petrol (66,70). Table
 6.13-1 shows a comparison of the methods for treating waste from SUSs (64).
 
-**Table 6.13-1	Treating and Discarding Waste from SUSs**
+| Directional Risk Profile | Low Complexity | Moderate-Low Complexity | High Complexity |
+| --- | --- | --- | --- |
 
-Option
-Advantages
-Disadvantages
-Landfill, untreated
-Lowest operating cost, no capital
-cost
-Not an option for hazardous waste,
-perceived as environmentally
-unfriendly
-Landfill, treated
-Inexpensive, no capital cost
-Perceived as environmentally
-unfriendly
-Landfill, grind and autoclave
-Generally accepted as safe, re-
-duced landfill volume
-Significant capital cost, extra
-handling
-Recycling
-Environmentally appealing
-Not practical for mixed materials
-Incineration
-Generally accepted as safe
-May be legally restricted, costly
-Incineration with generation of
-steam or electricity (cogeneration)
-Most environmentally benign,
-some return on investment
-May be legally restricted, highest
-capital cost
-Pyrolysis
-Produces usable pure diesel fuel;
-fuel produced is cleaner burning
-than fuel produced from the refinery
-New technology—few options
-available; subpar efficiency
 Despite the generation of solid plastics waste, SU manufacturing is considered environmentally
 friendly because it reduces energy consumption and eliminates tedious cleaning and validation stud-
 ies associated with stainless steel systems.
@@ -4126,103 +3443,9 @@ separate, value-added activities performed (blue), the primary reason for which 
 (green), and the group that normally performs the activity for an SUS and an MUS, respectively (yel-
 low). The last column shows the main attributes affected by a change in manufacturing technology.
 
-**Table 6.15.1-1**
+| Process State | Areas/Subjects for Risk Mitigation | Status |
+| --- | --- | --- |
 
-Comparison of Value-Added Activities
-Activity
-SUS
-MUS
-Value Added
-Value-Added
-Attribute
-Design
-Supplier
-Engineering
-Efficiency
-Overall cycle time
-Vendor audit
-Quality/technology
-Quality
-Process robustness
-Records per cycle
-Factory testing
-Supplier
-Engineering
-Process robustness
-Records per cycle
-Qualification
-Technology
-Technology
-Process robustness
-Process capability
-index
-RM release
-Quality
-Quality
-Product safety
-Records per cycle
-Assembly
-Supplier
-Operations
-Reliability
-Records per cycle
-Cleaning
-Supplier
-Operations
-Product safety
-Records per cycle
-Sterilization
-Supplier
-Operations
-Product safety
-Records per cycle
-Production
-Operations
-Operations
-Product
-Process capability
-index
-Investigation
-Quality/technology
-Quality
-Product safety
-Investigations per
-batch
-Release tests
-Quality
-Quality
-Product safety
-Tests performed per
-cycle
-Disposition
-Quality
-Quality
-Product safety
-Records reviewed
-per cycle
-Post-operations
-Operations
-Operations
-Changeover
-Records reviewed
-per cycle
-SUS change control
-Supplier/quality/
-technology
-Quality
-Process robustness
-Consistency
-Product management
-Operations
-Operations
-Product
-Product capacity
-Verification
-Quality/technology
-Technology
-Process robustness
-Process capability
-index
 A review of the value-added attributes would show a reduction in the number of preoperational steps
 required by operations, thus reducing the overall workload. Although there may be a reduction in the
 number of records produced by manufacturing, the quality unit must still ascertain that these pro-
@@ -4277,17 +3500,11 @@ and activities of various workflows.
 
 *[Figure 7.1-1	 SUS Implementation Road Map]*
 
-**Table 7.1-1	 Focus and Output for Each SUS Implementation Stage**
-
-Stage
-Section
-Cross-Reference
-Project
-Implementation
-Focus
-Project Description
-Outputs:
-Document Title(s)
+| Current | Stakeholders | Unknown |
+| Process status | Not understood or is in initial design phase; no data collection or analysis and no CQAs identified |
+| Risk assessment | Does not exist |
+| Corrective actions or control strategies | Do not exist |
+| Supply or quality agreements or contracts, technical diligence, or audit process | Do not exist |
 
 ### 3.5 Implementation
 
@@ -4474,7 +3691,11 @@ Stakeholder management is important throughout the SUS implementation process. I
 influencing both the external and internal environments, and 2) creating positive relationships with stakeholders by appropriately managing their expectations and
 agreed objectives.
 
-**Table 7.1-1 (Continued)**
+| Future (Desired) | Stakeholders | Identified; stakeholder management ongoing |
+| Process status | Process is understood and CQAs identified; qualification phase and data collection and analysis are in continued verification |
+| Risk assessment | Valid risk assessments are available |
+| Corrective actions or control strategies | Corrective actions and/or control strategies exist |
+| Supply or quality agreements or contracts, technical diligence, or audit process | Agreements and contracts in place; technical diligence is ongoing and quality audit process is in place |
 
 A structured approach is important and beneficial to every stage of implementation (Table 7.1-1).
 Identifying stakeholders who are involved across multiple functional areas would encourage team-
@@ -4554,109 +3775,29 @@ tion 5.2. Some examples of QRM application in SUS implementation are shown in Ta
 Once the severity of the risk and the likelihood of its detection have been assessed, the most suitable
 detection tool can be selected.
 
-**Table 7.2.3-1**
+| SUS Project Execution Plan | | |
+| --- | --- | --- |
 
-Guidelines for the Application of Risk Management During SUS Implementation
-Severity
-Likelihood of Detection
-Recommended Tool
-Impacts product quality
-May or may not be detectable
-FMEA
-May impact product quality
-Detectable after the event
-FMEA
-May impact product quality
-Detectable during the event. There
-may be latency
-Data mining, process mapping, risk
-profiling, fishbone analysis
-Could impact process yield or
-robustness
-Rapid detection
-Data mining, process mapping, ad-
-hoc risk table
-No impact
-Immediate detection
-Continuous verification
-
-**Table 7.2.3-2 ranks SUS implementation risks by correlating the complexity and process-specific risks**
+| Section | Excerpt from ICH Q7A | User Policy for Meeting Each Requirement |
+| --- | --- | --- |
+| 18.30 | "Where aseptic addition of cell substrates, media, buffers, and gases is needed; closed or contained systems should be used where possible. If the inoculation of the initial vessel or subsequent transfers or additions (media, buffers) are performed in open vessels, there should be controls and procedures in place to minimize the risk of contamination." | All aseptic additions will be performed as closed processes within closed systems. SUS must be presterilized; MUS must have received a SIP treatment. |
+| 18.31 | "Where the quality of the API can be affected by microbial contamination, manipulations using open vessels should be performed in a bio-safety cabinet or similarly controlled environment." | A risk-based approach will be used to determine whether a particular manipulation might be affected by microbial contamination. If a process step is considered to be at particular risk, for example, where an open connection should be made, these open steps will always take place in a microbiological safety cabinet under EU-GMP Grade A with background Grade B conditions. |
+| 18.34 | "Cell culture equipment should be cleaned and sterilized after use. As appropriate, fermentation equipment should be cleaned and sanitized or sterilized." | Process equipment used for upstream production runs will be sourced as an SUS and, as such, will be used only once. |
+| 18.38 | "Shared (multiproduct) equipment may warrant additional testing after cleaning between product campaigns, as appropriate, to minimize the risk of cross-contamination." | Some equipment used in the production process may be an SUS-MUS hybrid. The CIP procedures for the MUS components (e.g., steel sampling valves) will consist of a decontamination step by SIP or autoclaving followed by a defined and controlled cleaning procedure. These processes will be validated. |
 
 of a potential application. The highest level of risk is shown in red, moderate in orange, and the lowest
 in green. Such a relative risk ranking may be useful in prioritizing the qualifications of SUS suppliers.
 
-**Table 7.2.3-2**
+| Health | Safety | Environment |
+| --- | --- | --- |
 
-Directional Risk Profile of SUS Items and Applications
-Directional Risk
-Profile
-Complexity of SUS Items
-Low
-Moderate Low
-High
-Risk of SUS Application
-Low
-Tubing & Connectors
-Sampling Systems:
-Not a direct impact
-Clarification/
-Concentration
-Moderate
-Manifolds:
-Externally sourced
-Storage using SUS:
-raw materials, media,
-supplements, buffers, drug
-intermediates, product
-Drug product formulation
-High
-Manifolds: Self-assembled
-Sterile connectors
-Cell & virus culture
 Table 7.2.3-3 shows risk-mitigation tools and the levels of control for current and future states in an
 SUS. The risk evaluation of future process states would be lower (i.e., a greater level of control over
 the process or system) if the level of risk were reviewed, assessed, and mitigated on a regular basis.
 
-**Table 7.2.3-3**
+| Description | Quality Audit | Technical Diligence |
+| --- | --- | --- |
 
-Risk Management and Mitigation in Current and Future SUS Implementation
-Process State
-Examples of Areas or Subjects
-Where Risk Mitigation can be Applied
-Status
-Current
-Stakeholders
-Unknown
-Process status
-Not understood or is in initial design
-phase; no data collection or analysis and
-no CQAs identified
-Risk assessment
-Does not exist
-Corrective actions or control strategies
-Do not exist
-Supply or quality agreements or contracts,
-technical diligence, or audit process
-Do not exist
-Future
-Stakeholders
-Identified; stakeholder management on-
-going
-Process status
-Process is understood and CQAs identified;
-qualification phase and data collection and
-analysis are in continued verification
-Risk assessment
-Valid risk assessments are available
-Corrective actions or control strategies
-Corrective actions and/or control strate-
-gies exist
-Supply or quality agreements or contracts,
-technical diligence, or audit process
-Agreements and contracts in place; tech-
-nical diligence is ongoing and quality au-
-dit process is in place
-Increased Control/Desired Tendency
 7.2.3	 Process Validation and Verification (PVV)
 In pharmaceutical manufacturing, process validation (PV) is the collection and evaluation of data
 from the process design stage through commercial production that establishes scientific evidence that
@@ -4893,74 +4034,15 @@ PEP. An example of a PEP for an SUS facility can be found in Section 9, Appendix
 examples of checklists, implementation experiences, and points to consider can be found in the lit-
 erature (83–89).
 
-**Table 7.4.1-1: Typical Contents of the SUS Project Execution Plan**
-| SUS Project Execution Plan | | |
+| Supplier Information | Supplier Technical Capability | End-User Product Suitability and Compatibility |
 | --- | --- | --- |
+| CDA implemented | Design: engineering drawings and specifications | Fit with the end user's process |
+| Company and stakeholders | Risk to the end user | Fit with the end user's facility and warehousing |
+| Level of supplier integration | Resins, films, and other components | Prototype testing procedure |
+| Sourcing and supply chain | Manufacturing process overview | Qualification |
+| Contingency planning | Irradiation or other form of sterilization | Deployment method |
+| Plant tour | SUS shelf life | Training and HSE |
 
-SUS Project Execution Plan
-1. Introduction
-Purpose
-Context
-Document history
-Languages
-Document templates
-5. Project Execution Approach
-Overview
-Design
-Contractors and subcontractors
-Commissioning and qualification
-9. Health, Safety, and Environment
-Context
-Specific issues
-HSE plan
-HSE stakeholders
-Safety committees
-2. Project Overview
-Introduction
-Client/user overview
-History and scope
-Objectives and drivers
-Steering committee
-6. Organization
-Strategic partnerships
-Organization and governance
-Roles and responsibilities
-Stakeholders
-Conflict resolution
-10. Implementation
-Procurement
-Delivery
-Installation
-Commissioning and qualification
-Training
-3. Contract Documents
-Deliverables
-Policies and strategies
-Impact assessments
-Technical plans
-7. Quality
-Quality strategy
-Supplier qualifications
-Quality activities plan
-Document control
-11.	Handover and Operational
-Support
-Phases
-Planning
-Materials management
-Debriefing
-4. Scope
-Engineering scope
-Equipment and systems
-Change management
-8. Risk Management:
-Approach
-Risk mitigation strategies
-Risk mitigation plan
-12. Annex
-Abbreviations
-References
-Complementary documents
 The PEP, sometimes called a project implementation plan (PIP), provides a thorough and detailed
 description of the project. It complements other project documents such as the VMP, user require-
 ments, and other non-GxP documentation, including environmental safety, waste-handling require-
@@ -5046,61 +4128,13 @@ mon practices, and operations and maintenance) (90). Examples include non-GxP co
 reviews, change management, equipment maintenance, and lifecycle management. Table 7.4.6-1
 shows an example of a RAT.
 
-**Table 7.4.6-1**
+| Clinical Status of Product | SUS Implementation Stage | FDA PV Stage | Supplier Qualification Activity | Quality Agreement | Risk & Complexity |
+| --- | --- | --- | --- | --- | --- |
+| Preclinical material | Technical assessment (1), detailed investigation (2), and scoping (3) | PV S1 | Collect supplier and SUS product information | Optional | High |
+| IMPs for toxicology and phase I | Business case (4), development (5), and testing and validation (6) | PV S1-2 | Perform technical diligence | Yes | High |
+| IMPs for phases II and III / PPQ conformance batches | Launch (7) | PV S2 | Perform technical diligence and an audit | Yes | Moderate |
+| Licensed product | SUS exploitation stage | PV S3 | Continue supplier verification | Yes | Low |
 
-Example of a Regulatory Assessment Table
-ICH Q7A - Basic Requirements for Active Substances Used as Starting Materials:
-Specific Guidance for APIs Manufactured by Cell Culture/Fermentation
-Section
-Excerpt from ICH Q7A
-User Policy for Meeting Each Requirement
-18.30
-“Where aseptic addition of cell substrates, me-
-dia, buffers, and gases is needed; closed or con-
-tained systems should be used where possible. If
-the inoculation of the initial vessel or subsequent
-transfers or additions (media, buffers) are per-
-formed in open vessels, there should be controls
-and procedures in place to minimize the risk of
-contamination.”
-All aseptic additions will be performed as closed
-processes within closed systems. SUS must
-be presterilized; MUS must have received a SIP
-treatment.
-18.31
-“Where the quality of the API [active pharma-
-ceutical ingredient] can be affected by microbial
-contamination, manipulations using open vessels
-should be performed in a bio-safety cabinet or
-similarly controlled environment.”
-A risk-based approach will be used to determine
-whether a particular manipulation might be
-affected by microbial contamination. If a
-process step is considered to be at particular
-risk, for example, where an open connection
-should be made, these open steps will always
-take place in a microbiological safety cabinet
-under EU-GMP Grade A with background Grade
-B conditions.
-18.34
-“Cell culture equipment should be cleaned and ster-
-ilized after use. As appropriate, fermentation equip-
-ment should be cleaned and sanitized or sterilized.”
-Process equipment used for upstream production
-runs will be sourced as an SUS and, as such, will
-be used only once.
-18.38
-“Shared (multiproduct) equipment may warrant
-additional testing after cleaning between product
-campaigns, as appropriate, to minimize the risk of
-cross-contamination.”
-Some equipment used in the production process
-may be an SUS-MUS hybrid. The CIP procedures
-for the MUS components (e.g., steel sampling
-valves) will consist of a decontamination step by
-SIP or autoclaving followed by a defined and con-
-trolled cleaning procedure. These processes will
-be validated.
 This table is an example based on Chapter 18 of ICH Q7A (EU-GMP Part II) (2). Other regulatory
 texts can also be exploited in this manner. A RAT is used to cull the sections of a regulatory text that
 are most applicable to the project and to document the company’s position with regard to each cho-
@@ -5648,9 +4682,51 @@ for installation, and operation at the end user’s facility. Technical diligenc
 portant step in the supplier qualification process and a complement to the quality audit process. The
 principal differences between technical diligence and a quality audit are summarized in Table 7.7.3-1.
 
-**Table 7.7.3-1: Principal Differences Between a Quality Audit and a Technical Diligence Assessment**
-| Description | Quality Audit | Technical Diligence |
-| --- | --- | --- |
+| Abbreviation | Full Term |
+| --- | --- |
+| API | Active Pharmaceutical Ingredient |
+| ASME | American Society of Mechanical Engineers |
+| BMS | Building Management System |
+| BSL | Biosafety Level |
+| CFR | Code of Federal Regulations |
+| CIP | Clean-in-Place |
+| CNC | Controlled but Not Classified |
+| CPE | Cytopathic Effect |
+| EMEA | European Agency for the Evaluation of Medicinal Products |
+| EN | European Norm |
+| FDA | United States Food and Drug Administration |
+| FMS | Facility Monitoring System |
+| GAMP | Good Automated Manufacturing Practice |
+| GEP | Good Engineering Practice |
+| IP | Ingress Protection |
+| ISO | International Organization for Standardization |
+| ISPE | International Society of Pharmaceutical Engineering |
+| HEPA | High-Efficiency Particulate Air |
+| HMI | Human-Machine Interface |
+| HVAC | Heating, Ventilating, and Air-Conditioning |
+| MAA | Marketing Authorization Application |
+| MCB | Master Cell Bank |
+| MVSS | Master Viral Seed Stock |
+| NAM | National Agency for Medicines |
+| PC | Personal Computer |
+| PEP | Project Execution Plan |
+| Ph. Eur. | European Pharmacopoeia |
+| PLC | Programmable Logic Control |
+| PMS | Particle Monitoring System |
+| QA | Quality Assurance |
+| QAP | Quality Activity Plan |
+| QC | Quality Control |
+| QMS | Quality Management System |
+| SCADA | Supervisory Control and Data Application |
+| SIP | Sterilize-in-Place |
+| SOP | Standard Operating Procedure |
+| SPA | Special Protocol Assessment |
+| UDAF | Unidirectional Airflow |
+| UR | User Requirements |
+| USP | United States Pharmacopeia |
+| VHP | Vaporized Hydrogen Peroxide |
+| WFI | Water for Injection |
+| WHO | World Health Organization |
 
 Principle Differences Between a Quality Audit and a Technical Diligence Assessment
 Description
@@ -5673,42 +4749,28 @@ ply-chain transparency, subsuppliers back to source
 Some of the important factors to consider when performing technical diligence are reviewed in Table
 7.7.3-2.
 
-**Table 7.7.3-2: Some Pertinent Factors for a Technical Diligence Assessment Checklist**
-| Supplier Information | Supplier Technical Capability | End-User Product Suitability and Compatibility |
-| --- | --- | --- |
-| CDA implemented | Design: engineering drawings and specifications | Fit with the end user's process |
-| Company and stakeholders | Risk to the end user | Fit with the end user's facility and warehousing |
-| Level of supplier integration | Resins, films, and other components | Prototype testing procedure |
-| Sourcing and supply chain | Manufacturing process overview | Qualification |
-| Contingency planning | Irradiation or other form of sterilization | Deployment method |
-| Plant tour | SUS shelf life | Training and HSE |
+| Type | Purpose | Area | Required? |
+| --- | --- | --- | --- |
+| Compressed air | Instrument air | All | Yes |
+| CO2 | Rocker system | Fermentation | Yes |
+| O2 | Rocker system | Fermentation | Yes |
+| Electrical | Facility power | All | Yes |
+| Process air | Rocker system | Fermentation | Yes |
+| Plant steam | Heating of autoclaves, WFI | Decontamination | Yes |
+| Clean steam | Sterilization | Sterilization | Yes |
+| WFI | Washing machine, final rinse | Washing | Yes |
+| Tap water | Washing, PW production | Changing rooms, utility production, process equipment | Yes |
+| Hot water | Washing | Changing rooms | Yes |
+| Chilled water | Cooling | HVAC | Yes |
+| Drainage | Common wastewater | Changing rooms, utility production, process equipment | Yes |
+| Waste active | Process waste solutions | Manufacturing areas | Yes |
+| Waste inactive | Process waste (including solids) | Manufacturing areas | Yes |
+| Liquid nitrogen | Cooling down and freezing of solutions | Storage before filling | Yes |
+| Vacuum | — | — | No |
+| Heating | Temperature control | Radiators (already installed), HVAC | Yes, existing municipal heating system |
+| Solvents (EEx) | — | — | No |
+| VHP | — | — | Has to be considered |
 
-Some Pertinent Factors for a Technical Diligence Assessment Checklist
-Supplier Information
-Supplier Technical Capability
-End-User Product Suitability and
-Compatibility
-CDA implemented
-Design: engineering drawings and
-specifications
-Fit with the end user’s process
-Company and stakeholders
-Risk to the end user
-Fit with the end user’s facility and
-warehousing
-Level of supplier integration
-Resins, films, and other components
-Prototype testing procedure
-Sourcing and supply chain
-Manufacturing process overview
-Qualification
-Contingency planning
-Irradiation or other form of sterilization
-Deployment method
-Plant tour
-SUS shelf life
-Training and HSE
-Determine the supplier’s degree of integration:
 • Vertical: The supplier manufactures practically everything on-site, from the film to the finished
 and packaged SUS
 • Horizontal: These activities are spread over more than one site
@@ -5726,78 +4788,14 @@ diligence process for phase I IMPs). A practical example of the technical dilige
 Brown’s presentation on Implementation and Technical Diligence (115). Table 7.7.3-3 shows an interpretation
 of the SUS implementation process for a drug substance using a lifecycle approach.
 
-**Table 7.7.3-3: An Interpretation of the SUS Implementation Process**
-| Clinical Status of Product | SUS Implementation Stage | FDA PV Stage | Supplier Qualification Activity | Quality Agreement | Risk & Complexity |
-| --- | --- | --- | --- | --- | --- |
-| Preclinical material | Technical assessment (1), detailed investigation (2), and scoping (3) | PV S1 | Collect supplier and SUS product information | Optional | High |
-| IMPs for toxicology and phase I | Business case (4), development (5), and testing and validation (6) | PV S1-2 | Perform technical diligence | Yes | High |
-| IMPs for phases II and III / PPQ conformance batches | Launch (7) | PV S2 | Perform technical diligence and an audit | Yes | Moderate |
-| Licensed product | SUS exploitation stage | PV S3 | Continue supplier verification | Yes | Low |
-
-An Interpretation of the SUS Implementation Process
-Clinical Status
-of Product
-Manufactured
-SUS Implementation
-Stage According to TR
-Section 7.1, Figure 7.1-1
-FDA Process
-Validation
-Guide Stage
-Supplier
-Qualification
-Activity
-Presence
-of a Quality
-Agreement
-Risk and
-Complexity
-Preclinical
-material
-Technical assessment (1),
-detailed investigation (2),
-and scoping (3)
-PV S1
-Collect
-supplier and
-SUS product
-information
-Optional
-High
-IMPs for
-toxicology and
-phase I
-Business case (4), devel-
-opment (5), and testing
-and validation (6)
-PV S1–2
-Perform
-technical
-diligence
-Yes
-High
-IMPs for phases
-II and III
-PPQ
-conformance
-batches
-Launch (7)
-PV S2
-Perform
-technical
-diligence and
-an audit
-Yes
-Moderate
-Licensed
-product
-SUS exploitation stage
-PV S3
-Continue
-supplier
-verification
-Yes
-Low
+| Activity | Class (ISO 14644-1) | Grade (EU GMP) |
+| --- | --- | --- |
+| UDAF-hood and aseptic filling | Core area 5 | A |
+| Aseptic filling room | 7 | B |
+| Aseptic formulation rooms, chromatography and filter stations, cell growth, buffer preparation | 8 | C |
+| Sampling and weighing of raw material, clean corridors, and washing rooms | 8 (at rest) | D |
+| Visitors corridors, clean utility production, utility production, packaging hall, and all other controlled production areas | Unclassified | Unclassified |
+| HVAC, utility production, social areas | Unclassified | Unclassified |
 
 #### 7.7.4 Quality and Technical Agreements
 
@@ -6429,24 +5427,18 @@ The cleanrooms are designed according to ISO 14644-1 but validated, operated, an
 cording to EU GMP and PIC/S. The protection classes of electrical equipment in the cleanrooms shall
 be IP54 and in other areas according to room activity. Table 8.4.3.1-1 gives classification examples.
 
-**Table 8.4.3.1-1	 Sample Room Classifications**
+| Type | Purpose | Area | Required |
+| --- | --- | --- | --- |
+| Fire alarm | Personnel safety | All | Yes |
+| Intruder alarm system | Security / Biosecurity | Outer walls | Yes |
+| Sprinkler | Fire control | — | No |
+| Cell phones | Personnel safety | All | Yes |
+| Oxygen sensors | Personnel safety | In liquid N2, CO2 presence, excess O2 | Yes |
+| UPS (uninterrupted power supply) | Business contingency, Maintenance of bio-containment, Personnel safety | UDAF-hood, HVAC FMS including PMS, control systems | Yes |
+| Diesel generator | Business contingency, Maintenance of bio-containment, Personnel safety | UDAF-hood, HVAC FMS including PMS, refrigerators, and freezers | Yes |
+| Waste active failure alarm | Business contingency, Maintenance of bio-containment, Personnel safety, Pollution control | Basement | Yes |
+| Leak and other appropriate detectors | To avoid damage to equipment, HSE issues | Basement | Yes |
 
-Activity
-Class
-(ISO 14644-1)
-Grade
-(EU GMP)
-UDAF-hood and aseptic filling
-Core area 5
-A
-Aseptic filling room
-B
-Aseptic formulation rooms, chromatography and filter stations, cell growth,
-buffer preparation
-C
-Sampling and weighing of raw material, clean corridors, and washing rooms
-8 (at rest)
-D
 Visitors corridors, clean utility production, utility production, packaging hall,
 and all other controlled production areas
 Unclassified

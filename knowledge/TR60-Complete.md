@@ -38,27 +38,8 @@ Operation ......................................................................
 Figure 5.3.1-1 Decision-Tree Guideline (Stage 3b) ................................................................................. 76
 Figure 5.4.1-1 Integration of Data Sources for Improved Process Controls ..................................... 78
 
-**Table 5.5.3-1: Annual Product Review or Yearly Biologic Product Report Elements Supported by CPV**
-| Report Elements / Sections | Supported by CPV Data |
-| --- | --- |
-| Manufactured Batches Review | Yes |
-| Raw Material Attribute Review | Yes |
-| Environmental Monitoring Review | Yes |
-| Media Fill Review | Yes |
-| PM / Cal Review | No |
-| Yield Trend Review | Yes |
-| Training Review | No |
-| Change Trend Review (Continuous Improvement included) | Yes |
-| CPP Trend Review | Yes |
-| CQA Trend Review | Yes |
-| Re-Qualification / Validation Results Review | Yes |
-| Non-Conformance / Investigation Review | No |
-| Rejected Batch Review | No |
-| Complaint Trend Review | No |
-| Field Alert / Recall Review | No |
-| Retain Sample Review | No |
-| Quality Agreement Review | No |
-| Review of Previous APR | No |
+| | | |
+| --- | --- | --- |
 
 Supported by Continued Process Verification ......................................................................................... 81
 
@@ -803,7 +784,6 @@ defining the manufacturing process in the process description. Data collected fr
 elements of the control strategy and determining process capabilities, set specifications, and design PPQ protocols and acceptance criteria, as well as
 evaluating laboratory models and transfer processes. Strategies and fundamentals of KM are discussed further in Section 6.5.
 
-**Table 3.3-1 Example Process Parameter Table for a Tangential Flow Filtration Step**
 | Process Variable | Process Parameters | Set Point | PAR* | Parameter Designation** | Rationale | Product/Process Attribute | Expected Range |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | General |
@@ -829,57 +809,6 @@ evaluating laboratory models and transfer processes. Strategies and fundamentals
 | Transmembrane Pressure (TMP) | — | 12 PSI | 10 – 15 PSI | Non-Key | Unlikely to affect product or process; directly controllable | N/A | — |
 | Temperature | — | 20 °C | 15 – 25 °C | Non-Key | Unlikely to affect product or process; directly controllable | N/A | — |
 
-Process
-Variable
-Process Parameters
-Rationale
-Attributes
-Set Point
-Proven
-Acceptable
-Range
-(PAR)*
-Parameter
-Designation**
-Product or
-Process
-Attribute
-Expected Range
-General
-Membrane
-Area
-2 m2
-N/A
-Molecular
-Weight Cut-
-Off
-30 kDa
-N/A
-Membrane
-Polymer
-Polysulfone
-N/A
-
-Process
-Variable
-Process Parameters
-Rationale
-Attributes
-Set Point
-Proven
-Acceptable
-Range
-(PAR)*
-Parameter
-Designation**
-Product or
-Process
-Attribute
-Expected Range
-Pre-Use Cleaning & Flushing
-Cleaning
-Solution:
-Concentration
 0.4 to 0.6 N NaOH
 Non-Key
 Low risk of product or
@@ -1777,13 +1706,42 @@ Considerations for Pharmaceutical Product Lifecycle Management.
 Table 3.8-1 provides a checklist of the information needed to transition from Stage 1 to Stage 2 in the PV
 lifecycle.
 
-**Table 3.8-1 Checklist of Information Necessary for Stage 2 (PPQ) Readiness**
+| Process Variable | Set Point | PAR* | Designation** | Rationale | Attribute / Expected Range |
+| --- | --- | --- | --- | --- | --- |
+| Process – Initial Concentration Step |
+| Initial Product Total Mass | 1225 g | 900 – 1600 g | Critical | Initial product concentrations and volumes (total mass) may be critical due to relationship with system volume constraints and the ability to reach DF and final concentration targets | N/A |
+| Initial Product Volume | 75 L | 50 – 100 L | Key | In some circumstances, initial product concentrations and volumes (total mass) may be critical; may be related to system volume constraints and ability to reach DF and final concentration targets. The initial volume may affect process time and/or yield | N/A |
+| Recirculation Rate | 8 L/min | 6 – 10 L/min | Key | Crossflow rate can impact flux; however, only processing time is impacted unless rate is excessively low (causing significant membrane polarization of protein); depends on impact of TMP on flux | N/A |
+| Trans-membrane Pressure (TMP) | 12 PSI | 10 – 15 PSI | Key | Minor impact on flux unless operated excessively high or low (outside of PAR); at low values, TMP may have a significant impact on flux | N/A |
+| Temperature | 20 °C | 15 – 25 °C | Non-Key | Minor impact on flux (~2% per degree) | N/A |
+| Process Flux (Average) | N/A | — | — | Output of process conditions including TMP, recirculation rate, product concentration; may be used to track batch-to-batch consistency | Process Performance Attribute: 20 – 30 LMH |
+| Product Concentration | N/A | — | — | Output of initial concentration stage, input to DF | CQA: 30–40 g/L |
+| Product (Retentate) Volume | 35 L | 30 – 40 L | Critical | Volume must be in range and validated for proper volume control within the system during DF and within equipment/tankage constraints for total volume of DF buffer needed | N/A |
+| Process – Diafiltration Step (Constant Volume) |
+| DF Buffer pH and Conductivity | Solution Acceptance Criteria | Critical | DF buffer directly impacts the formulation of final bulk drug substance (DS) and ultimately drug product (DP) | N/A |
+| Recirculation Rate | 8 L/min | 6 – 10 L/min | Key | Crossflow rate can impact flux; however, processing time is impacted if rate is excessively low (outside of PAR) causing significant membrane polarization of protein | N/A |
+| TMP | 12 PSI | 10 – 15 PSI | Key | Minor impact on flux unless operated excessively high or low; operating outside of PAR will impact process time | N/A |
+| Temperature | 20 °C | 15 – 25 °C | Non-Key | Minor effect on flux; assume no effect on product quality over a fairly wide range | N/A |
+| System Volume During DF | 35 L | 30 – 40 L | Critical | Potential to under-diafilter if variability or uncertainty in this parameter | N/A |
+| Number of Diavolumes | 7 | 7 – 10 | Critical | Extent of buffer exchange is dependent on number of diavolumes | N/A |
+| Process Flux (Average) | N/A | — | — | Output of process conditions including TMP, recirculation rate, product concentration; may be used to track batch-to-batch consistency | Process Performance Attribute: 25 – 30 LMH |
+| Retentate pH and Conductivity at End of Step | N/A | — | — | Direct impact to product quality | CQA: To Specification |
+| Process – Final Concentration & Product Recovery |
+| Chase Buffer pH and Conductivity | Per solution specification | Critical | Direct impact to product quality | N/A |
+| Recirculation Rate | 8 L/min | 6 – 10 L/min | Key | More likely to significantly affect flux at higher product concentrations | N/A |
+| TMP | 10 PSI | 5 – 15 PSI | Key | Impacts flux | N/A |
+| Temperature | 20 °C | 15 – 25 °C | Non-Key | Minor effect on flux, assume no effect on product quality over fairly wide range | N/A |
+| Process Flux (Average) | N/A | — | — | — | Process Performance Attribute: 15 – 20 LMH |
+| Chase Buffer Volume | Determined by in-process measurement | — | Procedural controls | N/A |
+| Product Concentration After Recovery & Chase | N/A | — | — | Must be in range to facilitate next process step; if final step in DS manufacture, must be consistent with requirements for formulating DP | CQA: To Specification |
+| System Cleaning & Storage |
+| Cleaning Solution | 0.4 to 0.6 N NaOH | Non-Key | Directly controllable and unlikely to affect product or process | N/A |
+| Recirculation Rate | 10 L/min | 8 – 12 L/min | Non-Key | Adequate recirculation is needed to ensure proper cleaning, but range is wide | N/A |
+| TMP | 10 PSI | 5 – 15 PSI | Non-Key | No impact to cleaning effectiveness over a wide range | N/A |
+| Temperature | 30 °C | 25 – 35 °C | Non-Key | May impact cleaning effectiveness if far out of range; procedural controls in place such that the risk of running outside the range is unlikely | N/A |
+| Time | 60 min | 60 – 90 min | Non-Key | Wide range, directly controlled to prevent running outside of the validated range | N/A |
+| Storage Solution Normality | 0.09 to 0.10 N NaOH | Non-Key | Directly controllable, unlikely to affect product or process | N/A |
 
-Deliverables
-TR 60 Section
-Quality Target Product Profile (QTPP) – done at the initiation of Stage 1
-Section 3.1 Establish Quality Target
-Product Profile (QTPP)
 Critical Quality Attributes (CQAs) – with corresponding criticality risk assessment and desired
 confidence
 Section 3.2 Identify Critical Quality
@@ -2542,43 +2500,28 @@ performed. This may increase (typically up to n = 5, or 15 total–5B/5M/5E), de
 criticality of the attribute and its variability estimate. Examples are presented in Table 4.4.2.1-1, Table
 4.4.2.1-2, and Figure 4.4.2.1-1.
 
-**Table 4.4.2.1-1 Sampling Requirement**
+| | | | |
+| --- | --- | --- | --- |
+| QTPP | | Complete / In Progress / Not Started | -- |
+| CQA | / | Complete / In Progress / Not Started | -- |
+| | QC | Complete / In Progress / Not Started | |
+| | / | Complete / In Progress / Not Started | |
+| | | Complete / In Progress / Not Started | PPQ |
 
-Critical Quality Attribute
-(CQA)
-Severity of Potential Harms
-(Effects)
-Statistical Sampling
-Requirements
-Potency
-High
-+++
-Osmolality
-Medium
-++
-pH
-Low
-+
-
-**Table 4.4.2.1-2 Confidence**
-
-Critical Quality Attribute
-(CQA)
-Severity of Potential Harms
-(Effects)
-Example Confidence and
-Proportion Requirements
-Potency
-High
-95/99
-Osmolality
-Medium
-95/95
-pH
-Low
-95/90
-
-*[Figure 4.4.2.1-1 Sampling]*
+| | |
+| --- | --- |
+| | |
+| | |
+| | |
+| | |
+| | |
+| Bracketing / Matrixing | |
+| | |
+| | |
+| | |
+| | |
+| | |
+| | PPQ |
 
 ##### 4.4.2.1.1 Sample-Size Selection Considerations
 
@@ -2617,40 +2560,11 @@ batches as part of a TT (36)
 Procedure or work instruction to tie CQA criticality to a risk level
 Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.
 
-**Table 4.4.2.1.2-1 Example Sample Plan**
-
-Product Attribute
-Minimum Enhanced Process Performance
-Qualification (PPQ) Samples per Batch (n)
-Container Closure Integrity (CCI)
-n = 12 (USP <671>)
-pH
-n = 3 for B/M/E
-9 total results
-Osmolality
-n = 3 for B/M/E
-9 total results
-Total protein
-n = 3 for B/M/E
-9 total results
-High performance size exclusion
-chromatography (HPSEC)
-n = 3 for B/M/E
-9 total results
-Reducing capillary gel electrophoresis
-n = 3 for B/M/E
-9 total results
-Nonreducing capillary gel
-electrophoresis
-n = 3 for B/M/E
-9 total results
-Bioassay
-n = 1 for release
-Subvisible particles
-≥10 µm: ≤6000
-≥25 µm: ≤600
-n = 3 for B/M/E
-9 total results (each)
+| Critical Quality Attribute (CQA) | Severity of Potential Harms (Effects) | Statistical Sampling Requirements |
+| --- | --- | --- |
+| Potency | High | +++ |
+| Osmolality | Medium | ++ |
+| pH | Low | + |
 
 ##### 4.4.2.1.3 Drug Product Process Performance Qualification Analysis of Enhanced Samples
 
@@ -2768,45 +2682,11 @@ This is a non-quality risk-based step.
 •
 After Step 3, the number of batches, N, is provisionally set.
 
-**Table 4.4.2.2-1 Generic Risk Evaluation Table**
-
-Knowledge
-Risk
-Example
-Low Level of
-Knowledge
-High Risk
-Consider additional development or
-preparation activities. Leadership
-approval to start PPQ with risks
-detailed prior to proceeding to PPQ.
-•
-New formulation/equipment
-•
-Technology transfer of poorly
-known platform technology
-Typical / Average
-Level of
-Knowledge
-Moderate Risk
-PPQ: N = Baseline
-Note: Justification for Baseline
-required. See Section 4.4.2.2.2.
-•
-Existing
-formulation/equipment
-•
-Technology transfer of
-moderately known platform
-technology
-High / Very High
-Level of
-Knowledge
-Low Risk
-PPQ: N ≤ Baseline
-•
-Technology transfer of known
-platform technology
+| Critical Quality Attribute (CQA) | Severity of Potential Harms (Effects) | Example Confidence and Proportion Requirements |
+| --- | --- | --- |
+| Potency | High | 95/99 |
+| Osmolality | Medium | 95/95 |
+| pH | Low | 95/90 |
 
 ##### 4.4.2.2.1 Justification of Baseline
 
@@ -3349,43 +3229,20 @@ performed. This may increase (typically up to n = 5, or 15 total–5B/5M/5E), de
 criticality of the attribute and its variability estimate. Examples are presented in Table 4.4.2.1-1, Table
 4.4.2.1-2, and Figure 4.4.2.1-1.
 
-**Table 4.4.2.1-1 Sampling Requirement**
+| Product Attribute | Minimum Enhanced PPQ Samples per Batch (n) |
+| --- | --- |
+| Container Closure Integrity (CCI) | n = 12 (USP <671>) |
+| pH | n = 3 for B/M/E — 9 total results |
+| Osmolality | n = 3 for B/M/E — 9 total results |
+| Total protein | n = 3 for B/M/E — 9 total results |
+| High performance size exclusion chromatography (HPSEC) | n = 3 for B/M/E — 9 total results |
+| Reducing capillary gel electrophoresis | n = 3 for B/M/E — 9 total results |
+| Nonreducing capillary gel electrophoresis | n = 3 for B/M/E — 9 total results |
+| Bioassay | n = 1 for release |
+| Subvisible particles (≥10 µm: ≤6000; ≥25 µm: ≤600) | n = 3 for B/M/E — 9 total results (each) |
 
-Critical Quality Attribute
-(CQA)
-Severity of Potential Harms
-(Effects)
-Statistical Sampling
-Requirements
-Potency
-High
-+++
-Osmolality
-Medium
-++
-pH
-Low
-+
-
-**Table 4.4.2.1-2 Confidence**
-
-Critical Quality Attribute
-(CQA)
-Severity of Potential Harms
-(Effects)
-Example Confidence and
-Proportion Requirements
-Potency
-High
-95/99
-Osmolality
-Medium
-95/95
-pH
-Low
-95/90
-
-*[Figure 4.4.2.1-1 Sampling]*
+| Knowledge | Risk | Example |
+| --- | --- | --- |
 
 ##### 4.4.2.1.1 Sample-Size Selection Considerations
 
@@ -3424,40 +3281,11 @@ batches as part of a TT (36)
 Procedure or work instruction to tie CQA criticality to a risk level
 Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.
 
-**Table 4.4.2.1.2-1 Example Sample Plan**
-
-Product Attribute
-Minimum Enhanced Process Performance
-Qualification (PPQ) Samples per Batch (n)
-Container Closure Integrity (CCI)
-n = 12 (USP <671>)
-pH
-n = 3 for B/M/E
-9 total results
-Osmolality
-n = 3 for B/M/E
-9 total results
-Total protein
-n = 3 for B/M/E
-9 total results
-High performance size exclusion
-chromatography (HPSEC)
-n = 3 for B/M/E
-9 total results
-Reducing capillary gel electrophoresis
-n = 3 for B/M/E
-9 total results
-Nonreducing capillary gel
-electrophoresis
-n = 3 for B/M/E
-9 total results
-Bioassay
-n = 1 for release
-Subvisible particles
-≥10 µm: ≤6000
-≥25 µm: ≤600
-n = 3 for B/M/E
-9 total results (each)
+| | FDA PV Guidance | EU GMP Annex 15 |
+| --- | --- | --- |
+| | Continued Process Verification | Ongoing Process Verification |
+| | | |
+| | (assurance) | (documented evidence) |
 
 ##### 4.4.2.1.3 Drug Product Process Performance Qualification Analysis of Enhanced Samples
 
@@ -3575,45 +3403,13 @@ This is a non-quality risk-based step.
 •
 After Step 3, the number of batches, N, is provisionally set.
 
-**Table 4.4.2.2-1 Generic Risk Evaluation Table**
-
-Knowledge
-Risk
-Example
-Low Level of
-Knowledge
-High Risk
-Consider additional development or
-preparation activities. Leadership
-approval to start PPQ with risks
-detailed prior to proceeding to PPQ.
-•
-New formulation/equipment
-•
-Technology transfer of poorly
-known platform technology
-Typical / Average
-Level of
-Knowledge
-Moderate Risk
-PPQ: N = Baseline
-Note: Justification for Baseline
-required. See Section 4.4.2.2.2.
-•
-Existing
-formulation/equipment
-•
-Technology transfer of
-moderately known platform
-technology
-High / Very High
-Level of
-Knowledge
-Low Risk
-PPQ: N ≤ Baseline
-•
-Technology transfer of known
-platform technology
+| | | CPV |
+| --- | --- | --- |
+| Technical Operations | | |
+| MSAT | | |
+| Quality Unit | | CPV |
+| Development | | Stage 1 |
+| Data Science | | |
 
 ##### 4.4.2.2.1 Justification of Baseline
 
@@ -3724,62 +3520,14 @@ Table 4.4.2.7-1 shows an example of a matrix design for a PPQ of a filling proce
 three variables results in multiple drug-product strengths. Variables in this example include fill volume, bulk
 DP solution concentration, and final DP strength.
 
-**Table 4.4.2.7-1 Matrix Design**
+| | | |
+| --- | --- | --- |
+| Rule 1 | 1 3 sigma | |
+| Rule 2 | 9 | shift |
+| Rule 3 | 6 | trend |
+| Rule 4 | 14 | |
+| Rule 5 | 3 2 2 sigma | |
 
-Fill
-Volume
-(mL)
-Bulk Drug
-Solution
-Concentration
-(mg/mL)
-Final Drug
-Product
-Strength (mg)
-Batch Included
-in Process
-Performance
-Qualification?
-Rationale
-0.10
-2.00
-0.2
-Yes*
-Lowest DP strength
-Lowest bulk DP
-concentration
-Lowest fill volume
-4.00
-0.4
-No
-Covered by matrix
-0.15
-4.00
-0.6
-No
-Covered by matrix
-8.00
-1.2
-Yes*
-Highest drug
-concentration in fill
-solution
-0.30
-4.67
-1.4
-No
-Covered by matrix
-6.00
-1.8
-No
-Covered by matrix
-6.67
-2.0
-Yes*
-Highest drug
-concentration in final
-DP
-Highest fill volume
 *Based on the assumption that process variability is highest at these conditions.
 Rationale for selection of representative groups and number of batches should be scientifically justified and
 outlined in the PVMP and PPQ protocols. Consideration should be given to product stability, as sometimes
@@ -3807,51 +3555,13 @@ CPPs, and the ability to control the parameters within the ranges. For a unit op
 parameters, use of fewer batches may be appropriate. In these cases, the approach should be clearly justified
 with reference to supporting data in the validation protocol.
 
-**Table 4.4.2.8-1 Equipment Family Example**
+| | | |
+| --- | --- | --- |
+| 0-6 | | |
+| 6-12 | / ML SOP | AI/ML |
+| 12-24 | AI CPV | AI/ML CPV |
+| 24+ | AI/ML | Pharma 4.0 |
 
-Equipment
-Family –
-Production
-Bioreactor
-Process
-Performance
-Qualification
-(PPQ) Runs
-(Unit Operation)
-Assessment
-Supporting Data
-Bioreactor #1
-3 Batches
-Compare:
-•
-Physical design
-•
-Design specs
-•
-Materials of
-construction
-•
-IQ
-•
-Acceptance
-criteria
-•
-Operating
-principles
-•
-Process control
-instruments and
-software
-Multiple small-scale
-process characterization
-runs available to support
-ranges
-Bioreactor #2
-1 Batch
-Bioreactor #3
-1 Batch
-
-Example 2: Buffer Family Grouping
 In assessing the stability of solutions and buffers to support commercial-scale bulk-protein DS
 manufacturing, buffers and solutions of similar formulations and storage-vessel types may be assigned to
 family groupings. Following an analysis of concentrations, the potential for interaction with the vessel, the
@@ -4626,7 +4336,6 @@ few of which are identified in Table 5.5.3-1. The opportunity to continually ana
 than in the traditional APQR makes the CPV program critical in detecting drifts and proactively taking
 action (if required) on those signals to avoid potential process failures.
 
-**Table 5.5.3-1: Annual Product Review or Yearly Biologic Product Report Elements Supported by CPV**
 | Report Elements / Sections | Supported by CPV Data |
 | --- | --- |
 | Manufactured Batches Review | Yes |
@@ -4647,69 +4356,6 @@ action (if required) on those signals to avoid potential process failures.
 | Retain Sample Review | No |
 | Quality Agreement Review | No |
 | Review of Previous APR | No |
-
-Supported by Continued Process Verification
-Report Elements/Sections
-Supported by CPV Data
-Yes
-No
-Manufactured Batches Review
-X
-
-Raw Material Attribute Review
-X
-
-Environmental Monitoring Review
-X
-
-Media Fill Review
-X
-
-PM / Cal Review
-
-X
-Yield Trend Review
-X
-
-Training Review
-
-X
-Change Trend Review (Continuous
-Improvement included)
-X
-
-CPP Trend Review
-X
-
-CQA Trend Review
-X
-
-Re-Qualification / Validation Results
-Review
-X
-
-Non-Conformance / Investigation
-Review
-
-X
-Rejected Batch Review
-
-X
-Complaint Trend Review
-
-X
-Field Aer / Recall Review
-
-X
-Retain Sample Review
-
-X
-Quality Agreement Review
-
-X
-Review of Previous APR
-
-X
 
 #### 5.5.4 Process Validation Considerations: Vaccines, Cell Therapies, and Combination
 
@@ -4897,7 +4543,6 @@ on how much information (product knowledge and clinical experience) is available
 potential severity level for the specific attribute. Part of the output of this assessment will be further
 scientific studies to reduce the amount of uncertainty for higher-risk attributes (refer to Table 6.1.1-1) (79).
 
-**Table 6.1.1-1 Product Attribute Criticality Risk Assessment Example**
 | Severity | Likelihood |
 | --- | --- |
 | LowLarge amount of in-house knowledge, large body of knowledge in literature | MediumSome in-house knowledge and scientific literature | HighNo/little in-house knowledge, very limited information in scientific literature |
@@ -4953,7 +4598,6 @@ Critical
 Critical
 Critical
 
-**Table 6.1.2-1 Risk-Based Qualification Planning**
 | Risk Assessment Output Ratings | Qualification Planning |
 | --- | --- |
 | High | Testing to satisfy validation requirements will occur during qualification. Documentation and sampling requirements are high. |
@@ -4983,38 +4627,11 @@ created. The HACCP system is an example of control, as are procedures and traini
 not always technology-based; increase of detectability may as well be driven by procedures and
 training. The HACCP is a useful QRM tool that can help in enhancing controls.
 
-**Table 6.1.2-2 Severity Rating and Sampling Requirements Risk**
 | Severity Rating | Statistical and Sampling Requirements | Example Confidence Level Required |
 | --- | --- | --- |
 | High | +++ | 99% |
 | Medium | ++ | 95% |
 | Low | + | 90% |
-
-Risk Assessment
-Output Ratings
-Qualification Planning
-High
-Testing to satisfy validation requirements will occur during qualification.
-Documentation and sampling requirements are high.
-Medium
-A blend of Qualification and Commissioning activities can be used to satisfy
-validation requirements. Sampling requirements are moderate given
-appropriate controls and risk reviews.
-Low
-Testing to satisfy validation requirements can occur during commissioning
-phases. Appropriate controls and risk reviews should be in place.
-Severity Rating
-Statistical and Sampling Requirements
-Example Confidence Level Required
-High
-+++
-99%
-Medium
-++
-95%
-Low
-+
-90%
 
 #### 6.1.3 Risk Management in Stage 3 – Continued Process Verification
 
@@ -5045,7 +4662,6 @@ statistical methods are most used in the validation lifecycle process. Three of 
 Process Control, and Process Capability—are described in more detail in Sections 6.2.1–6.2.3, as well as in
 Section 9.0 (Appendix I). Additional information on statistical methods can be found in TR 59 (63).
 
-**Table 6.2-1 Statistical Methods and the Typical Stages at Which They are Used**
 | Statistical Tool | Stage 1Process Design | Stage 2Performance Qualification (PQ) | Stage 3Continued Process Verification (CPV) |
 | --- | --- | --- | --- |
 | Descriptive Statistics (e.g., mean, standard deviation) | X | X | X |
@@ -5064,86 +4680,6 @@ Section 9.0 (Appendix I). Additional information on statistical methods can be f
 | Acceptance Sampling Plans | | X | X |
 | Normal and Nonparametric Tolerance Intervals | | X | X |
 
-Statistical Tool
-Stage 1
-Process
-Design
-Stage 2
-Performance
-Qualification (PQ)
-Stage 3
-Continued Process
-Verification (CPV)
-Descriptive Statistics (e.g., mean, standard
-deviation)
-X
-X
-X
-Statistical Process Control Charts
-X
-X
-X
-Statistical Power and Sample Size
-Determination
-X
-X
-X
-Process Capability Study and Capability Indices
-X
-X
-X
-Design of Experiments (DoE)
-X
-
-Measurement Systems Analysis (Gage R&R)
-X
-
-Robust Process Design / Tolerance Analysis /
-Taguchi Methods
-X
-
-Multi-Vari Chart
-X
-
-Regression and Correlation Analysis
-X
-
-Analysis of Variance (ANOVA)
-X
-X
-X
-Levene / Brown-Forsyth, Bartlett, Fmax tests for
-Variation
-X
-X
-X
-
-Statistical Tool
-Stage 1
-Process
-Design
-Stage 2
-Performance
-Qualification (PQ)
-Stage 3
-Continued Process
-Verification (CPV)
-Hypothesis Tests / Confidence Intervals
-X
-X
-X
-Pareto Analysis*
-X
-
-X
-Acceptance Sampling Plans
-
-X
-X
-Normal and Nonparametric Tolerance Intervals
-
-X
-X
 *PPQ data is insufficient to perform a Pareto analysis in general (contrary to the large amount of development and CPV data). If Pareto analysis is
 attempted to be used during PPQ, it may be useful to include Stage 1 data for this kind of analysis.
 
@@ -5410,24 +4946,9 @@ of specification. Table 6.2.2.3-1 assumes the process is in statistical control,
 centered between the lower specification limits (LSL) and upper two-sided specification limits (USL). If the
 process is not normally distributed, process capability methods for nonnormal distributions should be used.
 
-**Table 6.2.2.3-1 Relationship Between Capability and % or Per Million Nonconforming**
+| PV Lifecycle Stage | Activities | Knowledge Development / Data | Application |
+| --- | --- | --- | --- |
 
-USL – LSL
-±2σ
-±3σ
-±4σ
-±5σ
-±6σ
-Process Capability Index (CpK)
-0.67
-1.00
-1.33
-1.67
-2.00
-Nonconforming
-4.55%
-0.27%
-63 ppm
 0.6 ppm
 2 ppb
 % of Specification Used (±3σ limits)
@@ -5653,230 +5174,8 @@ commercial manufacturing phase), the transfer will generally occur during Stage 
 Stage 2 and Stage 3). Table 6.4-1 displays the distribution of TT activities throughout the product lifecycle,
 which outlines the increasing knowledge and process understanding with each transfer.
 
-**Table 6.4-1 Technology Transfer Activities throughout the Product Lifecycle**
-
-Process
-Validation
-(PV) Lifecycle
-Stage
-Activities
-Knowledge Development / Data
-Application
-Stage 1
-Process Design provides product and
-process development knowledge and
-data for TT
-•
-Development Report
-•
-Development history, including criticality
-assessments
-•
-DoE with sources of variation
-•
-Data and knowledge development from
-stability studies and development batches
-•
-Rationale for specifications and methods
-•
-CPPs
-•
-CMAs
-•
-CQAs
-•
-PARs, NORs
-•
-Manufacturing process description, equipment
-training
-TT batches
-manufactured during
-Stage 1 are intended to
-establish comparability
-of product quality
-between sites and
-develop filing/market
-authorization data.
-Development Report
-summarizes activities
-from Stage 1.
-
-Process
-Validation
-(PV) Lifecycle
-Stage
-Activities
-Knowledge Development / Data
-Application
-Stage 2
-Most TT activities in a product lifecycle
-are carried out at Stage 2:
-•
-Development of transfer
-strategy
-•
-Manufacturing of commercial-
-scale PPQ batches
-•
-Site equivalency analysis (from
-Receiving Unit to Sending Unit)
-•
-Transfer and validation of
-analytical methods
-•
-Confirming CPPs at commercial-
-scale
-•
-Conducting stability studies at
-commercial-scale under
-commercial package
-configurations
-•
-Confirming risk assessments,
-criticality analysis
-•
-Establish sampling plans and
-statistical methods at
-commercial-scale
-•
-Comparability protocol (with
-statistical decision procedure)
-and report
-•
-Evaluation of personnel
-qualifications and training
-•
-Validation of microbiology-
-related tests (microbial limit test,
-bacterial endotoxins test,
-bioburden, sterility test)
-
-TT Strategy
-Control strategy and validation plan
-Product and process description (as designed from
-Stage 1 and reported in the Development Report)
-Assessment of site change requirements, e.g., post-
-approval and prior approval with rationale.
-Category under scale-up post-approval (SUPAC)
-guidelines, if applicable
-Number of batches required to meet transfer
-requirements, including validation/PPQ
-strategy/matrix approach
-Specifications and methods transfer plan
-TT batches
-manufactured during
-Stage 2 are intended to
-reproduce the
-manufacturing process,
-including components
-and composition
-configurations at the
-transfer site, and to
-execute PPQ.
-Equivalency between
-sites (gap analysis) is
-intended to compare
-equipment and facilities
-to assure that they are
-equivalent and qualified
-for commercial
-manufacturing.
-
-Process
-Validation
-(PV) Lifecycle
-Stage
-Activities
-Knowledge Development / Data
-Application
-Stage 3
-TT activities at Stage 3 are most likely
-carried out for products that have
-already been validated and are on the
-market. These are known as post-
-approval changes under the SUPAC
-guidelines, ICH Q5E and ICH Q12 and
-apply to changes to alternate
-manufacturing sites within a firm or to
-contract manufacturers.
-Similar to activities in Stage 2, a TT strategy is
-required. The strategy would include data listed under
-Stage 2 of this table. For products at Stage 3,
-additional data and knowledge will be available; care
-should be taken to ensure that the Receiving Unit will
-receive the maximum benefit of this background.
-At Stage 3, TT activities may pose opportunities for
-process improvement at the Receiving site using
-historical control and quality systems data.
-Data to evaluate includes:
-•
-Stage 2 TT and validation reports
-•
-Annual Product Reports, including process
-trending and process capability
-•
-History of investigations, CAPA, change
-control, OOS, complaints reports, field alerts,
-stability studies, yield variations
-•
-Executed batch records
-•
-Sampling and test plans
-•
-Analytical data
-Conduct gap analysis at current sites. Transfer site to
-assess risks and variations, including:
-•
-Scale change
-•
-Manufacturing equipment train design and
-operating principle, as well as qualification
-status
-•
-Confirmation of CPPs and equipment
-operating ranges at new site
-•
-Suppliers
-•
-Personnel
-Transfer to a new
-location within a
-manufacturing site, to
-an alternate site of the
-firm, or to a contract
-manufacturer. Filing
-requirements are
-defined by SUPAC, as
-these have different
-implications from the
-regulatory standpoint.
-Validation requirements
-apply equally to any of
-the scenarios.
-
-Process
-Validation
-(PV) Lifecycle
-Stage
-Activities
-Knowledge Development / Data
-Application
-Stage 3
-
-New site state of compliance:
-•
-Product and process description (as designed
-from Stage 1 and reported in Development
-Data Report and Validation Reports)
-•
-Assessment of site change regulatory
-requirements: Post-approval, with rationale
-•
-Number of batches required to meet transfer
-requirements, including validation/PPQ
-strategy/matrix approach
-•
-Specifications and methods transfer plan
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 ### 6.5 Knowledge Management
 
@@ -6079,836 +5378,25 @@ Material))
 An example of the three stages of PV for a humanized IgG1 is provided in Table 7.1-1 (Stage 1), Table 7.1-
 2 (Stage 2), and Table 7.1-3 (Stage 3).
 
-**Table 7.1-1 Stage 1**
+| Process Development | Establish Target Product Profile (TPP) & Quality Target Product Profile (QTPP) | Humanized Immunoglobin: TPPs and QTPPs were established. Immunological indication: Mechanism of action (MOA) requires both complement-dependent cytotoxicity (CDC) and antibody-dependent cellular cytotoxicity (ADCC) activity; IV administration at a fixed dosage. Liquid formulation with concentration at 20 mg/mL, iso-osmolar solution; material provided in single-use vial with shelf life of at least 24 months at 2-8 °C. | Immunological indication; CDC and ADCC activities; IV at a fixed dosage |
+| Identify CQAs | Presumptive CQAs (inherent attributes from the molecule that provide desired activity, purity, and safety) were identified based on prior knowledge. Potential process parameters that impact the CQAs were identified for each unit operation based on platform information. | Deamidation, aggregate, host-cell protein, residual DNA, etc. |
 
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Development
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
-Establish Target
-Product Profile
-(TPP) & Quality
-Target Product
-Profile (QTPP)
-Humanized Immunoglobin: TPPs and QTPPs were established.
-Immunological indication: Mechanism of action (MOA) requires
-both complement-dependent cytotoxicity (CDC) and antibody-
-dependent cellular cytotoxicity (ADCC) activity; IV administration
-at a fixed dosage.
-Liquid formulation with concentration at 20 mg/mL, iso-osmolar
-solution; material provided in single-use vial with shelf life of at
-least 24 months at 2-8 °C.
-Immunological indication; CDC and ADCC
-activities; IV at a fixed dosage
-Identify CQAs
-Presumptive CQAs (inherent attributes from the molecule that
-provide desired activity, purity, and safety) were identified based
-on prior knowledge.
-Potential process parameters that impact the CQAs were
-identified for each unit operation based on platform information.
-Deamidation, aggregate, host-cell protein,
-residual DNA, etc.
-Define
-Manufacturing
-Process
-(Upstream and
-Downstream)
-Prior knowledge, existing risk assessments for similar molecules,
-and early development data were used to define unit operations:
-seed train, bioreactor, harvest, Protein A, viral inactivation,
-column purification 2, column purification 3, viral filtration, and
-UFDF. In addition:
-•
-NORs identified
-•
-Raw materials identified with specification
-•
-Cell line characterized to show free from adventitious
-agents
-•
-Master and working cell banks prepared and characterized
-•
-Analytical method development started
-•
-Initial formulation development initiated. Due to ease of
-control, frozen condition was initially selected while the
-liquid formulation was being developed in parallel.
-•
-A Process Design Summary Report was created with
-preliminary process information.
-Seed train, bioreactor, harvest, Protein A, viral
-inactivation column purification 2, column
-purification 3, viral filtration, UFDF
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Development
-Define
-Manufacturing
-Process
-(Upstream and
-Downstream)
-Clinical Phase 1 & 2 manufacturing:
-•
-Material was produced for First-in-Human studies, in a
-GMP facility in a 2000L bioreactor facility, using a scaled-
-down version of the intended commercial process.
-Samples were put on stability to establish expiration times.
-•
-Material was produced for Phase 2 in a 2000L bioreactor
-process using the same GMP facility. Samples were taken
-and used for characterization studies in small-scale
-equipment (satellite studies) to define the eventual
-commercial process. Product was analyzed for the
-following (at a minimum):
-o
-Appearance and identity
-o
-Purity (IEC, SEC, CE SDS, endotoxin, bioburden,
-impurities)
-o
-Potency
-•
-Initial product acceptance criteria based on targets were
-set from other molecules and early development studies.
-Stability studies were initiated using a subset of the
-release testing assays.
-•
-Most of the analytical methods were qualified at this
-stage.
-Clinical Phase 3 manufacturing was performed in a different
-2000L bioreactor facility. Prior to the start of Phase 3 material
-manufacture, some of the following activities were performed:
-•
-Tech transfer process was conducted to transfer the
-process from the Phase 2 facility to a Phase 3 facility
-•
-Comparability study (DS & DP) protocols were generated
-•
-Batch records were created
-•
-Operator training was performed
-•
-Primary containers were finalized
-After Phase 3 material manufacture, the Process Design
-Summary Report was updated (e.g., CQAs and CPPs, unit
-operations).
-Most of the analytical methods were qualified at this stage.
-Due to ease of control, frozen condition was
-initially selected while the liquid formulation
-was being developed in parallel
-•
-Upstream Process Parameters:
-o
-Viable cell density
-o
-% Viability
-o
-Temperature
-o
-pH
-o
-Dissolved oxygen
-•
-Downstream Process Parameters:
-o
-Protein load
-o
-Protein concentration
-o
-Elution buffer pH
-o
-Viral inactivation pH
-o
-Diafiltration volumes
-A team of scientists led the tech transfer
-effort by performing facility fit, generating
-technical reports, training operators, and
-transferring manufacturing process and
-associated scale-down models.
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Development
-Quality Risk
-Assessment
-(QRA)
-A modified FMEA was used to perform a QRA.
-A template created for similar products was used as a starting
-material, with appropriate modifications.
-Using the risk assessment process:
-•
-Initial categorization of process parameters was
-performed
-•
-Initial framework for control strategy was created based
-on high risks identified in the risk assessment
-A template created for similar products was
-used as a starting material, with appropriate
-modifications. High and medium risks
-identified in the risk assessment were
-considered to elaborate the control strategy.
-Process
-Characterization
-
-N/A
-Process characterization studies were designed based on
-prioritization developed from risks identified in the QRA.
-Statistical methods involving DoEs (screening designs to full
-factorial) were used to understand interactions of high-risk
-parameters and a design space developed wherever possible.
-Scale-down models were created and tested; some required
-qualification (e.g., virus clearance). In these cases, protocols were
-created and approved by Quality.
-Based on characterization and small-scale model studies,
-operating ranges for process parameters were finalized.
-Acceptance ranges for performance parameters were
-established.
-Downstream process determined that acidic
-variants impacted biological activity.
-Placed tighter controls on in-process hold
-times to control level of acidic variants.
-Updated Quality Risk Assessment and the
-Control Strategy. Increased the concentration
-of final bulk to save on storage capacity.
-Finalize CQAs
-and CPPs
-Based on process characterization and scale-down model studies,
-the QRA was updated, which in several cases required re-scoring.
-In a cross-functional team, the CQAs and CPPs were reviewed
-and finalized. The final CQAs and CPPs were subject to approval
-by the Health Authorities wherever applicable.
-The control strategy was updated based on the understanding of
-CQAs, CPPs, process controls, and detection capabilities.
-
-N/A
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Characterization
-Documenting
-Process Design
-The Process Design Summary Report was updated (CQAs, CPPs,
-unit operations, operating ranges, specifications, and acceptance
-criteria and controls).
-A commercial manufacturing was site was identified (12K
-bioreactor capacity), and a team of scientist and process
-engineers performed a facility fit analysis to identify any gaps in
-equipment capabilities.
-Tech transfer process was initiated to the commercial site. A tech
-transfer risk assessment was performed to understand the high
-risks. Scale-down model process transfer was also started in
-parallel.
-Around this time, the analytical method validation was
-completed.
-N/A
-Process
-Validation
-Master Plan
-(PVMP)
-Specific validation protocols were identified.
-The process validation strategy and ancillary studies were
-described in the plan.
-N/A
-Process
-Qualification
-Equipment,
-Utilities, and
-Facility
-Qualification
-The facility fit assessment identified the requirement of a larger
-scale centrifuge.
-Based on user requirements and design specifications, the new
-centrifuge was ordered. After FAT and SAT, the equipment was
-commissioned and qualified. To understand the control required,
-a risk assessment was performed.
-N/A
-
-**Table 7.1-2 Stage 2: Process Qualification (Large Molecule Example)**
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Performance
-Qualification
-(PPQ)
-Technology
-Transfer and
-Engineering Runs
-The transfer process used engineering runs to demonstrate that
-the process worked and to fine-tune the operation set points.
-Two engineering runs were performed using GMP materials
-with draft batch production records. These runs enabled
-training on the new process for the operators.
-The Process Design Summary Report was updated with any
-changes to process parameters.
-N/A
-Process
-Performance
-Qualification
-Readiness
-Assessment
-At a stage gate, a checklist was used to ensure that all the
-processes and procedures were in place to start the PPQ
-process. PPQ protocols were drafted and approved.
-A sampling plan that described the sample points, number of
-samples, statistical justification of parameters, frequency of
-reviews, and statistical and analytical methods was created and
-approved. A CPV plan was created to identify the parameters
-and attributes to be tested and monitored during PPQ and
-Stage 3 (CPV). Some of the elements included in the plan were
-justification of parameters, frequency of statistical procedures
-used to determine state of control, and handling of excursions.
-A qualitative decision tool was used to determine the number of
-PPQ runs. Some of the factors considered were:
-•
-Process variability (e.g., novel and difficult scale-up unit
-operations)
-•
-Raw material variability
-•
-Age of equipment and facility
-•
-Level of commercial manufacturing experience of
-operators
-•
-Clinical manufacturing experience
-•
-Robustness of control strategy
-The tool suggested a range of 5-6 runs for the PPQ campaign.
-Discussions with the Health Authorities are helpful and,
-generally, a proposal is submitted for the number of runs.
-PPQ batches following the first PPQ batch
-(full-scale) were performed at approximately
-10% scale.
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Performance
-Qualification
-(PPQ)
-Process
-Performance
-Qualification
-Readiness
-Assessment
-A similar approach was taken for the DP PPQ campaign.
-Materials generated during the DP PPQ campaign will likely
-expire before approval. Depending upon a firm’s practices, one
-may perform one run at full scale and others at a reduced
-(approximately 10%) scale.
-Cleaning validation specific to the new process was performed
-concurrently with the PPQ runs.
-Product and process comparability was initiated with approved
-protocols.
-A comparability plan describes the actions to be taken in the
-event of significant process changes (including site change). The
-plan describes the testing program to be used to demonstrate
-comparability between the Phase 3 and commercial processes.
-A qualitative decision tool was used to determine the number of
-PPQ runs.
-Some of the factors considered were:
-•
-Process variability (e.g., novel and difficult scale-up unit
-operations),
-•
-Raw material variability
-•
-Age of equipment and facility
-•
-Level of commercial manufacturing experience of
-operators
-•
-Clinical manufacturing experience
-•
-Robustness of control strategy
-
-PPQ batches following the first PPQ batch
-(full-scale) were performed at approximately
-10% scale.
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Performance
-Qualification
-(PPQ)
-PPQ Campaign
-The qualification lots were scheduled in advance of the targeted
-submission date to allow for sufficient real-time stability data in
-the application.
-The PPQ campaign was conducted as per the protocols.
-The PPQ was concluded to be successful after all the
-acceptance criteria were met. By meeting the statistically
-derived acceptance criteria, the process was demonstrated to
-be in a preliminary state of control. The demonstration of state-
-of-control will continue into Stage 3.
-The PPQ reports were generated and approved.
-The Process Design Summary Report was updated
-appropriately.
-In general, Health Authorities require 6
-months of real-time stability data at the time
-of submission.
-Any excursions were handled according to the
-established procedures.
-Additional sampling is performed for all the
-runs in the event of an unforeseen incident,
-which would have compromised the initial
-PPQ runs.
-Stability
-Three lots of DS and DP from the PPQ campaign were put into
-the stability program.
-Multiple freeze-and-thaw cycles were also performed with
-hold-time studies.
-In addition to real-time testing and the
-designated storage temperature, stability at
-accelerated conditions is performed per ICH
-guidelines.
-The stability program also includes a
-comprehensive study in which the DS is held
-at its longest expiry and then used to prepare
-DP vials that will be held for the entire expiry
-time.
-In addition to the primary stability data
-obtained during the PPQ runs, supportive
-stability data acquired during clinical
-development is also used in the submission
-package.
-
-**Table 7.1-3 Stage 3: Continued Process Verification (Large Molecule Example) — Continued**
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Continued
-Process
-Verification
-(CPV)
-Process
-Monitoring
-The CPV plan that was developed prior to the start of
-the PPQ was submitted to the Health Authorities.
-Testing and monitoring were performed during Stage 3
-according to the CPV plan.
-CPV data review was conducted as described in the
-CPV plan.
-The monitoring reports generated supplemented the
-Annual Product Review.
-The CPV plan was used throughout the product
-lifecycle and helped to ensure that the process was in a
-state of control.
-Preliminary control limits were established after 15
-commercial batches (including PPQ batches) were
-manufactured.
-Final control limits were established after 30 commercial
-batches had been manufactured.
-Product
-Technical Teams
-(PTT)
-Each commercial product had a Product Technical Team
-(PTT) that helped to oversee the process for the
-remainder of the product’s lifetime.
-The PTT was also responsible for reviewing data from
-multiple production sites to ensure consistent process
-performance and product quality.
-The PTT is cross-functional, including Operations,
-Process Development, Technical/Engineering Groups
-(Manufacturing, Science, and Technology-MSAT),
-Analytical, Quality, and Statistics. The team is
-responsible for reviewing the processing data that
-accumulates during commercial production. The PTT
-can recommend process changes and helps to ensure
-continuous improvement.
-Specification File
-A manufacturing process specifications file was
-generated at the time of the license submission.
-The file was updated upon approval and contained the
-licensed parameters that had been agreed to by the
-agency.
-The file is maintained throughout the product’s lifetime
-and is to be updated to include in-process and
-specification changes that might occur.
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 7.2 Small Molecule (Parenteral)
 An example of the three stages of PV for an organic, parenteral dosage form is provided in Table 7.2-1 (Stage 1), Table 7.2-2 (Stage 2), and Table 7.2-3 (Stage 3).
 
-**Table 7.2-1 Stage 1: Process Design (Small Molecule Example)**
 | Category | Activities | Outputs/Deliverables | Rationale/Examples |
 | --- | --- | --- | --- |
 
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Development
+| Process Characterization | N/A | Process characterization studies were designed based on prioritization developed from risks identified in the QRA. Statistical methods involving DoEs (screening designs to full factorial) were used to understand interactions of high-risk parameters and a design space developed wherever possible. Scale-down models were created and tested; some required qualification (e.g., virus clearance). In these cases, protocols were created and approved by Quality. Based on characterization and small-scale model studies, operating ranges for process parameters were finalized. Acceptance ranges for performance parameters were established. | Downstream process determined that acidic variants impacted biological activity. Placed tighter controls on in-process hold times to control level of acidic variants. Updated Quality Risk Assessment and the Control Strategy. Increased the concentration of final bulk to save on storage capacity. |
+| Finalize CQAs and CPPs | Based on process characterization and scale-down model studies, the QRA was updated, which in several cases required re-scoring. In a cross-functional team, the CQAs and CPPs were reviewed and finalized. The final CQAs and CPPs were subject to approval by the Health Authorities wherever applicable. The control strategy was updated based on the understanding of CQAs, CPPs, process controls, and detection capabilities. | N/A |
+| Documenting Process Design | The Process Design Summary Report was updated (CQAs, CPPs, unit operations, operating ranges, specifications, and acceptance criteria and controls). A commercial manufacturing site was identified (12K bioreactor capacity), and a team of scientists and process engineers performed a facility fit analysis to identify any gaps in equipment capabilities. Tech transfer process was initiated to the commercial site. A tech transfer risk assessment was performed to understand the high risks. Scale-down model process transfer was also started in parallel. Around this time, the analytical method validation was completed. | N/A |
 
-Establish TPP &
-QTPP
-Parenteral drug solution dosage form: sterile formulation in three
-different strengths, intended to comply with the USP compendial
-requirements for injection.
-Target shelf life at least 24 months at 25 °C.
-The product development process had no
-clinical trials; therapeutic strength relied on
-bioequivalence. Thus, clinical
-manufacturing experience was minimal
-compared to a new chemical entity.
-Identify Critical
-Quality
-Attributes
-Active collaboration took place between R&D, development,
-formulators, and analytical scientists to identify potential CQAs and
-methods for detection. Experience with past liquid dosage form
-manufacturing was vital in identifying CQAs.
-Assays used to release product and test methods to release API were
-developed and verified at Stage 1 with the intention that they would be
-validated and transferred to the manufacturing site to support PPQ.
-N/A
-Define
-Manufacturing
-Process
-Development was based on experience with previous and existing
-processes, excipients, and capabilities at the firm’s current
-manufacturing sites. The lab-scale formulation batches were produced
-using identical primary packaging material. All raw materials were in the
-firm’s GMP system.
-A DoE concluded that the DP was heat-sensitive and, therefore, would
-be manufactured aseptically and not terminally sterilized. Followed by
-lab feasibility/formulation batches, the pilot-scale formulation stability
-batches (with at least three formulation pH levels) were prepared in an
-R&D pilot plant. The solution stability due to maximum temperature
-during compounding, filtration, and filling and its impact on the drug
-product (DP) degradation rate and impurity profile was established.
-At least two API supplier batches were considered. Intentions were to
-use standard and familiar unit operations and minimize the time to
-develop the process. The process for the formulation studies performed
-at pilot scale (at least 10% of commercial scale) established knowledge
-on process variability, CPP, and CQAs. The process scale-up parameters,
-manufacturing specification, analytical, and biological specifications were
-established through pilot-scale runs.
-Samples from these pilot batches of 400 L
-were analyzed and tested to narrow down
-formulations based on compatibility and
-stability due to:
-•
-Light sensitivity
-•
-Oxygen sensitivity
-•
-Formulation pH
-•
-Container material incompatibility
-•
-Manufacturing material
-incompatibility
-•
-Thermal stability
-•
-Color formation
-•
-Any anticipated stability-limiting
-factors
-Solution temperature controls during
-mixing, filling, and storage were also
-followed as controls.
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Development
-Define
-Manufacturing
-Process
-Scale-up models for unit operations were developed. R&D personnel
-provided justification for the models and documented the limitations
-through design and stage-gate review processes.
-The Process Evaluation studies were initiated prior to manufacturing of
-the stability batch using the bracketing approach at the scale-up
-production GMP manufacturing site. A total of two scale-up batches of
-highest DP concentration using API from two different suppliers were
-manufactured. To establish and understand all CPP and CQA, both
-batches were produced at full scale. The study design was based on a
-risk assessment accompanied by an extended in-process control
-program defined in protocols and product-/batch-specific sampling
-plans. These studies established:
-•
-Drug dissolution profile
-•
-Degradation over the manufacturing process
-•
-Solution–filter compatibility
-•
-Solution hold time
-•
-Solution closure–container compatibility
-Extensive sampling and specification evaluations were conducted.
-Characterization and comparisons among the batches for both active
-ingredient and finished product were performed. The data
-demonstrated that the DP met the finished product specification when
-produced using the worst-case scenario.
-Research personnel were primarily responsible for these batches, but
-manufacturing site personnel were also involved.
-Tests of the quality attributes included:
-•
-Appearance and identity
-•
-Purity test
-•
-Solution pH
-•
-Osmolality
-•
-Dissolution profiles
-•
-Process impurities
-•
-Particulate matter
-•
-Microbiological attributes
-•
-Sterility assurance levels
-These studies established CPPs:
-•
-Mixing speed (RPM)
-•
-Temperature
-•
-Dissolved oxygen
-•
-Mixing time
-There were 10 sampling points throughout
-the PE batch of 2800 L during filling. These
-encompassed multiple (e.g., triplicate)
-samples at the beginning, middle, and end
-of the process step. This approach is
-patterned after other heterogeneous-
-system sampling practices, such as the
-FDA’s bulk-powder blend sampling
-schemes.
-Perform Quality
-Risk
-Assessments
-Formal risk assessments were performed during development. The
-scope was limited to the manufacturing risks of the product and
-processes. An approval of this document indicated that the residual risks
-and associated risk scores with development DOE activities were
-acceptable to proceed with an entry into the stability design phase. Well
-after Stage 2, other formal risk assessments were conducted during
-Stage 3 and during a long and successful commercial manufacturing
-phase. This included linking the worst-case scenario for various
-operations, which aided in the development of the design space.
-
-Risk Ranking and Filtering, which included
-severity and probability components, was
-used. This is a simpler tool to understand as
-it enables focusing on the most important
-factors. Other tools used were FMEAs and
-Cause-and-Effect diagrams.
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Characterization
-
-Perform
-Characterization
-Activities
-Unit operations were optimized to improve efficiency and robustness.
-Using experimental and scale-up studies, scientists were able to
-establish scale-up process parameters and perform evaluations prior to
-stability runs.
-Improvements in the process included enhancing immediate dissolution
-through solution mixing-process optimization, in-tank solution pH, and a
-dissolved oxygen monitoring system. Process characterization or
-evaluation studies were designed using a DOE approach to minimize
-experiments. There were numerous research and scale-up/transfer
-reports, along with qualification and process understanding reports.
-Qualification of the most critical excipients from a different vendor was
-performed on the full-scale DP.
-Qualified excipients were those that
-impacted CQAs, such as the ones that
-controlled pH and osmolality.
-Finalize CQAs
-and CPPs
-Issues with respect to API dissolution occurred during development and
-scale-up due to variations in raw material particle size. The scale-up
-process parameters for agitation and solution temperature were
-modified and evaluated from model calculations. Manufacturing
-procedure specifications were modified and evaluated to confirm
-finished-product CQAs.
-CQAs for the solution product were identified early in development,
-refined during Stage 1, and implemented as final specification in the
-manufacturing procedure. These generally inherent attributes from the
-molecule and formulation provided desired activity, purity, and safety.
-The review and approval of the CQAs was performed by a qualified
-team and documented in a formal report. The process parameters that
-impacted the CQAs were identified in PV protocols and their criticality
-was determined from results of the PV studies.
-
-CQAs were:
-•
-Solution pH
-•
-Dissolved oxygen
-•
-Drug dissolution and homogeneity
-•
-Process (i.e., drug) impurities
-•
-Drug concentration (potency)
-•
-Osmolality
-•
-Microbiological attributes
-•
-Sterility assurance levels
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Characterization
-Document
-Process Design
-Analytical methods were not validated for PE/demonstration batches;
-however, they were validated and transferred from R&D to
-manufacturing sites prior to stability batch production at a GMP site.
-Factors included specificity, forced degradation, precision, linearity,
-LOD/LOQ, accuracy, and robustness.
-Scientists were encouraged to write technical reports that summarized
-different aspects of the process. In general, they focused on a single unit
-operation, describing changes and improvements. A technical review
-reference document was also prepared. It summarized all of the
-developmental reports covering methods, ranges, conditions, and
-knowledge of the entire process.
-These documents are updated each time significant process changes
-occur. The technical review reference document and associated
-specifications and procedures are filed in a central archiving system and
-are then used by manufacturing for generation of batch production
-records.
-Analytical methods were fit-for-purpose
-and dependable but not validated initially
-because:
-•
-The knowledge-gathering phase
-with experimental batches early in
-the lifecycle were carried out.
-•
-Draft specifications were used, and
-case changes were made in the
-ranges.
-•
-It saved on the timeline of analytical
-method validation at this stage.
-Upon site transfer, lab analysts will be
-present for method validation according to
-internal SOPs. These will also meet ICH
-Q2, USP, or other regulatory or
-compendial standards.
-Validation
-Draft Process
-Validation
-Master Plan
-(PVMP)
-A detailed PVMP was developed that identified specific studies to be
-performed. Individual PV protocols were written for each batch. The
-PPQ batches were completed just before the expected NDA approval.
-In addition to new PV studies, the plan identified studies and
-appropriate references that had been executed for other projects but
-would be used to support this product.
-The PV plan was initiated prior to Stage 2
-to identify supportive information needed
-from Stage 1. However, the formal PVMP
-was finalized during Stage 2, when all
-attributes, parameters, and systems were
-known.
-
-**Table 7.2-2 Stage 2: Process Qualification (Small Molecule Example)**
-| Category | Activities | Outputs/Deliverables | Rationale/Examples |
-| --- | --- | --- | --- |
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Process
-Performance
-Qualification
-(PPQ)
-Perform
-Equipment,
-Utilities, and
-Facility
-Qualification
-The extent of the qualification and verification of the equipment was
-based on risk assessment. The critical aspects (e.g., critical functions,
-controls, attributes) and other system components or functions were
-verified to be fit for their intended use. Equipment and utilities had to be
-in qualified states of their own for any product used. This activity was
-carried out according to plant procedures to maintain a state of control.
-Qualifications and calibrations were confirmed. Any system for which
-proper operation was fully ensured through routine calibration and/or
-preventive maintenance programs may not have required formal
-qualification.
-Qualification was performed for:
-•
-Agitator mixing speeds
-•
-Sensors, such as level, volume, and
-temperature measurements
-•
-In-tank pH measurements
-•
-Oxygen measurements
-•
-Solution filling system
-•
-Storage chambers (frozen)
-Execute
-Technology
-Transfer and
-Engineering
-Runs
-Manufacturing, analytical, and biological procedure specs were
-transferred to the manufacturing site based on process evaluation batch
-results.
-Three stability batches of drug-product strength were produced at 10-
-15% of commercial-batch volume.
-Three different batches from various API suppliers were factored in
-among all stability batches (matrix approach). One batch with the
-highest-strength-per-API supplier was performed using the worst-case
-scenario for CPP (e.g., solution hold-time). Stability studies were initiated
-using tank release, in-process testing, and finished-product release-
-testing assays.
-Analytical and microbiological methods were validated. Assays were
-performed by a qualified stability operations group. Long-term stability
-studies for the batches at 2-8 °C/60% RH; 30 °C/65% RH, and
 40 °C/75% RH were initiated. For one batch of each strength, stability
 data were generated for the products, which were stored in an inverted
 orientation. A formal stability plan was prepared prior to entering
@@ -7044,63 +5532,8 @@ Stage 1 runs, supportive stability data acquired during PPQ runs was also
 used in the submission package on an as-needed basis.
 N/A
 
-**Table 7.2-3 Stage 3: Continued Process Verification (Small Molecule Example)**
 | Category | Activities | Outputs/Deliverables | Rationale/Examples |
 | --- | --- | --- | --- |
-
-Category
-Activities
-Outputs/Deliverables
-Rationale/Examples
-Continued Process
-Verification (CPV)
-Process Monitoring
-A process monitoring plan and trending were
-developed during the commercial phase. The
-monitoring plan was used during routine
-manufacturing to help ensure that the process
-remained in a state of control. The process capability
-metric and trend analysis were performed with
-positive outcomes.
-Performance metrics (e.g., yields, complaints,
-deviations) continued during commercial
-production.
-Process-robustness contour plots are used when
-the number of data points is small (e.g., less than
-20-25). Process performance capability indices,
-such as PpK and/or CpK, are used for 25 or
-more data points.
-Product Technical Teams
-(PTT)
-Each product has a PTT that helps to oversee the
-process for the remainder of the product’s lifetime.
-The PTT is cross-functional, with representatives from
-Manufacturing, Process Development, Analytical,
-Quality, and Statistics. The team is responsible for
-reviewing the processing data that accumulates during
-commercial production. It can recommend process
-changes and help ensure continuous improvement.
-The PTT is also responsible for reviewing data from
-multiple production sites to ensure consistent process
-performance and product quality.
-Additional studies, including PAT, DOEs,
-continuous processing experiments, and clinical
-studies were carried out in a long Stage 3 to
-improve the product line.
-Specification File/ NDA
-Supplements
-Numerous supplements to the registrations were
-made to add new manufacturing and testing facilities.
-Transfers and PVs were carried out during Stage 3.
-Manufacturing-knowledge documentation files
-generated at the time of development are updated
-regularly with all pertinent studies. CQAs and
-parameters have been agreed to by the Development
-and Quality organizations. The process-understanding
-file is maintained throughout the product lifetime and
-is updated to include any process and/or specification
-changes.
-N/A
 
 ## 8.0 References
 
@@ -7492,32 +5925,8 @@ sampling may be used in PPQ for the first three lots until 50% coverage is reach
 considered complete. Reduced sampling for critical characteristics may continue into Stage 3 CPV for four
 more lots until 75% coverage is reached, at which point, routine sampling begins (2).
 
-**Table 9.2-1 Expected Between-Lot Variation in Number of Lots**
-| Expected Coverage | Number of Lots (nL) |
-| --- | --- |
-| 33% | 2 |
-| 50% | 3 |
-| 60% | 4 |
-| 67% | 5 |
-| 75% | 7 |
-| 80% | 9 |
-| 85% | 12 |
-| 90% | 19 |
-| 95% | 39 |
-
-Expected
-Coverage
-Number of Lots
-(nL)
-33%
-50%
-60%
-67%
-75%
-80%
-85%
-90%
-95%
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 ### 9.3 Within-Lot and Between-Lot Tolerance Intervals
 
@@ -7607,36 +6016,9 @@ percentage of lot conformance is acceptable. It identifies unacceptable variatio
 special causes. Table 9.6-1 shows the required number of conforming lots. This method is sometimes called
 "confidence for reliability."
 
-**Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate**
-| Confidence | Conformance Rate | Number of Successive Conforming Lots to Ensure Conformance Rate with Stated Confidence |
-| --- | --- | --- |
-| 50% | 90% | 7 |
-| 95% | 14 |
-| 99% | 69 |
-| 90% | 90% | 22 |
-| 95% | 45 |
-| 99% | 230 |
-| 95% | 90% | 29 |
-| 95% | 59 |
-| 99% | 299 |
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
-Confidence
-Conformance
-Rate
-Number of Successive Conforming Lots to Ensure
-Conformance Rate with Stated Confidence
-50%
-90%
-95%
-99%
-90%
-90%
-95%
-99%
-95%
-90%
-95%
-99%
 Example: To demonstrate the process is acceptable, the PPQ acceptance criterion will be to
 show with 90% confidence that the process-lot conformance rate (the lot pass rate) is at
 least 90%. A total of 22 passing lots in a row will demonstrate this.
@@ -7685,52 +6067,8 @@ Due to the squaring under the radical, if σb < σw, the impact of the between-l
 process variation decreases rapidly the less it is compared to the within-lot variation σw. Table 9.8-1 shows
 this impact.
 
-**Table 9.8-1 Effect of Between-Lot Variation on the Total Process Variance**
-
-Within
-𝝈𝝈𝒘𝒘
-Between
-𝝈𝝈𝒃𝒃
-Total Process
-Standard
-Deviation
-𝝈𝝈𝒕𝒕
-Total Variance
-𝝈𝝈𝒕𝒕𝟐𝟐
-Between as %
-of Total
-𝝈𝝈𝒃𝒃
-𝝈𝝈𝒕𝒕
-1.00
-2.00
-2.24
-5.00
-80%
-1.00
-1.50
-1.80
-3.25
-69%
-1.00
-1.00
-1.41
-2.00
-50%
-1.00
-0.75
-1.25
-1.56
-36%
-1.00
-0.50
-1.12
-1.25
-20%
-1.00
-0.25
-1.03
-1.06
-6%
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 If the between-lot variation (σb) is half (50%) of the within-lot variation (σw), the former only accounts for
 20% of the total process variance. Reasonable PPQ acceptance criteria for between-lot variation would
@@ -7744,25 +6082,11 @@ Table 9.9-1 shows the sample size n required to estimate a standard deviation to
 of its true value with 90% and 95% confidence (13, 14). This method does not require a previous estimate or
 reference sigma since the error is expressed in relative, rather than absolute, terms.
 
-**Table 9.9-1 Sample Size to Estimate a Standard Deviation to Within ±x% of True Value**
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
-Confidence
-± % Relative Error
-n
-90%
-20%
-90%
-25%
-90%
-33%
-95%
-20%
-95%
-25%
-95%
-33%
-
-**Table 9.9-1 indicates that a minimum of 32 lots are required for the estimated between-lot standard**
+| Category | Activities | Outputs/Deliverables | Rationale/Examples |
+| --- | --- | --- | --- |
 
 deviation to be within ±25% of its true value σb with 95% confidence. Since the table assumes the lot means
 are estimated exactly, more than 32 lots may be required if the sample size per lot is small or there is
