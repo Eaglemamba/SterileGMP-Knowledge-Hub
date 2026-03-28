@@ -89,47 +89,108 @@
 <script src="search-index.js" onerror=""></script>
 <script>
 // ============================================================
-// LOAD DATA FROM reports.json — single source of truth
+// DOCUMENT DATA -- Each entry = one educational HTML file
+// To add new documents from ANY source, append to this array.
 // ============================================================
-let documents=[], sourceColors={}, tagCls={};
-let allSources=[], filterMap={'all':'all'}, filterTags=['all'];
-let activeFilter='all';
+const documents = [
+    // One card per PDA Technical Report — links to merged TopNav document
+    { date:"2026-03-15", title:"PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025)", titleZh:"無菌充填工程與操作技術指引",
+      source:"PDA Guide No.1", tags:["Aseptic","Filling","Design","GMP","Dose Control","CDMO"],
+      summary:"完整20章：充填線設計要素、四大液體充填技術(PP/RPP/TP/DP)、功能性考量、劑量控制、容器封閉系統、操作考量、元件導入、無菌液體路徑、批次設置丟棄策略、APS無菌模擬、粉末充填、案例研究。267頁全覆蓋。",
+      sections:20, pages:"p1-p267", figures:0, file:"pda-guide-no1/output/Guide-No1-Complete.html" },
 
-async function loadReportsJson() {
-    const resp = await fetch('reports.json');
-    const data = await resp.json();
+    { date:"2026-03-14", title:"PDA TR26: Sterilizing Filtration of Liquids", titleZh:"液體除菌過濾",
+      source:"PDA TR26", tags:["Filtration","Validation","Integrity Test","Sterilization","QbD"],
+      summary:"完整8章+3附錄：濾膜原理、確效、製程設計(QbD)、驗證測試(細菌截留/E&L)、完整性測試(PUPSIT)、滅菌方法(Steam/Irradiation/EO)。Revised 2025版，73頁。",
+      sections:11, pages:"p1-p73", figures:0, file:"TR26/output/TR26-Complete.html" },
 
-    // Build tagCls
-    tagCls = data.tagClasses || {};
+    { date:"2026-03-15", title:"PDA PtC-14: Manufacturing of ATMPs – Facility Design (2025)", titleZh:"ATMP製造設施設計指引",
+      source:"PDA PtC-14", tags:["ATMP","Biosafety","Facility Design","GMP","Cell Therapy","Gene Therapy"],
+      summary:"完整6主題Q&A格式：ATMP風險評估與BSL分級、設施流程設計(開放/封閉/混合系統)、壓力梯度概念、HVAC設計、公用設施、生物安全櫃(BSC)與隔離器選型比較、Mock-Up確效、煙霧測試、壓力穩定性維持。62頁全覆蓋。",
+      sections:6, pages:"p6-p55", figures:0, file:"PtC-14/output/PtC-14-Complete.html" },
 
-    // Build documents + sourceColors from reports
-    const reports = data.reports || {};
-    for (const [folderId, r] of Object.entries(reports)) {
-        documents.push({
-            date: r.date || '',
-            title: r.title || '',
-            titleZh: r.titleZh || '',
-            source: r.source || '',
-            tags: r.tags || [],
-            summary: r.summary || '',
-            sections: (r.section_map || []).length,
-            pages: r.pages || '',
-            figures: r.figures || 0,
-            file: folderId + '/output/' + r.output_filename,
-        });
-        if (r.source && r.source_color) {
-            sourceColors[r.source] = r.source_color;
-        }
-    }
+    { date:"2026-03-15", title:"PDA PtC-15: Mobile Manufacturing (2025)", titleZh:"移動式製造指引",
+      source:"PDA PtC-15", tags:["Mobile Manufacturing","Modular","Validation","Regulatory","Technology Transfer","CDMO"],
+      summary:"完整3主題Q&A格式：移動式製造設施類型比較(固定/模組/MMU)、MMU優勢與挑戰、現場驗證策略(FAT/SAT)、技術轉移應用、全球法規合規(FDA/EMA/PMDA)、法規路徑建議。22頁全覆蓋。",
+      sections:3, pages:"p1-p16", figures:0, file:"PtC-15/output/PtC-15-Complete.html" }
+];
 
-    // Build filter arrays
-    allSources = [...new Set(documents.map(d=>d.source))];
-    allSources.forEach(s=>{const sc=sourceColors[s];filterMap[sc?sc.short:s]=s;});
-    filterTags = ['all', ...allSources.map(s=>(sourceColors[s]||{}).short||s)];
+// ============================================================
+// CONFIG
+// ============================================================
+const sourceColors = {
+    "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
+    "PDA TR26": { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" },
+    "PDA PtC-14": { bg:"#ede9fe", text:"#5b21b6", bar:"#7c3aed", short:"PtC-14" },
+    "PDA PtC-15": { bg:"#fef3c7", text:"#92400e", bar:"#f59e0b", short:"PtC-15" }
+};
 
-    // Render
-    initFilters(); renderStats(); renderCards();
-}
+const tagCls={
+    "Aseptic":"bg-blue-50 text-blue-700 border border-blue-200 font-semibold",
+    "Overview":"bg-slate-100 text-slate-600","Glossary":"bg-slate-100 text-slate-600",
+    "GMP":"bg-red-50 text-red-600","Annex 1":"bg-red-50 text-red-600",
+    "Design":"bg-blue-50 text-blue-600","Selection":"bg-blue-50 text-blue-600",
+    "Phase-Appropriate":"bg-blue-50 text-blue-700","Technology":"bg-indigo-50 text-indigo-600",
+    "PP":"bg-violet-50 text-violet-600","RPP":"bg-violet-50 text-violet-600",
+    "TP":"bg-violet-50 text-violet-600","DP":"bg-violet-50 text-violet-600",
+    "Needle":"bg-blue-50 text-blue-600","Single-Use":"bg-emerald-50 text-emerald-600",
+    "Functionality":"bg-indigo-50 text-indigo-600","Changeover":"bg-indigo-50 text-indigo-600",
+    "Foam Control":"bg-indigo-50 text-indigo-600",
+    "Dose Control":"bg-purple-50 text-purple-600","IPC":"bg-purple-50 text-purple-600",
+    "Weight Check":"bg-purple-50 text-purple-600",
+    "Container":"bg-cyan-50 text-cyan-600","Closure":"bg-cyan-50 text-cyan-600",
+    "RTU":"bg-cyan-50 text-cyan-600","Closing":"bg-cyan-50 text-cyan-600",
+    "Elastomer":"bg-cyan-50 text-cyan-600","Stopper":"bg-cyan-50 text-cyan-600",
+    "Interventions":"bg-teal-50 text-teal-600","Line Setup":"bg-teal-50 text-teal-600",
+    "Risk":"bg-orange-50 text-orange-600","Components":"bg-teal-50 text-teal-600",
+    "Sterilization":"bg-teal-50 text-teal-600","Transfer":"bg-teal-50 text-teal-600",
+    "SIP":"bg-teal-50 text-teal-600","VPHP":"bg-teal-50 text-teal-600",
+    "Fluid Path":"bg-teal-50 text-teal-600","Filter":"bg-teal-50 text-teal-600",
+    "PUPSIT":"bg-teal-50 text-teal-600","Operations":"bg-teal-50 text-teal-600",
+    "Priming":"bg-teal-50 text-teal-600","Yield":"bg-teal-50 text-teal-600",
+    "APS":"bg-teal-50 text-teal-600","Media Fill":"bg-teal-50 text-teal-600",
+    "Validation":"bg-teal-50 text-teal-600","EM":"bg-teal-50 text-teal-600",
+    "Microbiology":"bg-teal-50 text-teal-600","Grade A":"bg-teal-50 text-teal-600",
+    "CCS":"bg-teal-50 text-teal-600","Supplier":"bg-teal-50 text-teal-600",
+    "Quality":"bg-teal-50 text-teal-600","SCM":"bg-teal-50 text-teal-600",
+    "IQ/OQ/PQ":"bg-teal-50 text-teal-600","Lifecycle":"bg-teal-50 text-teal-600",
+    "Maintenance":"bg-teal-50 text-teal-600","Calibration":"bg-teal-50 text-teal-600",
+    "Powder":"bg-amber-50 text-amber-600","Lyophilization":"bg-amber-50 text-amber-600",
+    "Reference":"bg-gray-100 text-gray-600","PDA TR":"bg-gray-100 text-gray-600",
+    "ICH":"bg-gray-100 text-gray-600","Case Study":"bg-gray-100 text-gray-600",
+    "Decision":"bg-gray-100 text-gray-600","CDMO":"bg-orange-50 text-orange-700",
+    "Vendor":"bg-gray-100 text-gray-600","Equipment":"bg-gray-100 text-gray-600",
+    "QbD":"bg-green-50 text-green-600","Design Space":"bg-green-50 text-green-600",
+    "CQA":"bg-purple-50 text-purple-600",
+    "Filtration":"bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold",
+    "Membrane":"bg-emerald-50 text-emerald-600","Mechanism":"bg-emerald-50 text-emerald-600",
+    "Qualification":"bg-emerald-50 text-emerald-600","E&L":"bg-emerald-50 text-emerald-600",
+    "Bacterial Retention":"bg-emerald-50 text-emerald-600","Integrity Test":"bg-emerald-50 text-emerald-600",
+    "PUPSIT":"bg-emerald-50 text-emerald-600","Bubble Point":"bg-emerald-50 text-emerald-600",
+    "Process Design":"bg-emerald-50 text-emerald-600","Scale-Up":"bg-emerald-50 text-emerald-600",
+    "Autoclave":"bg-emerald-50 text-emerald-600","Diffusion":"bg-emerald-50 text-emerald-600",
+    "Methods":"bg-emerald-50 text-emerald-600","Troubleshooting":"bg-amber-50 text-amber-600",
+    "Regulatory":"bg-red-50 text-red-600","Operations":"bg-teal-50 text-teal-600",
+    "ATMP":"bg-violet-50 text-violet-700 border border-violet-200 font-semibold",
+    "Cell Therapy":"bg-violet-50 text-violet-600","Gene Therapy":"bg-violet-50 text-violet-600",
+    "Biosafety":"bg-red-50 text-red-700 font-semibold","BSL":"bg-red-50 text-red-600",
+    "BSC":"bg-red-50 text-red-600","Facility Design":"bg-blue-50 text-blue-600",
+    "Risk Management":"bg-orange-50 text-orange-600","Utilities":"bg-slate-100 text-slate-600",
+    "Mock-Up":"bg-slate-100 text-slate-600",
+    "Mobile Manufacturing":"bg-amber-50 text-amber-700 border border-amber-200 font-semibold",
+    "Modular":"bg-amber-50 text-amber-600","MMU":"bg-amber-50 text-amber-600",
+    "Technology Transfer":"bg-indigo-50 text-indigo-600"
+};
+
+// Category-based filters (group by document type, not individual report number)
+const categoryMap = {
+  'TR': s => s.match(/^PDA TR/i),
+  'PtC': s => s.match(/^PDA PtC/i),
+  'Guide': s => s.match(/Guide/i),
+  'Research': s => s.match(/Research/i)
+};
+const filterTags = ['all', 'TR', 'PtC', 'Guide', 'Research'];
+let activeFilter = 'all';
 
 // Deep search index
 const sectionsByFile={};
@@ -184,7 +245,7 @@ function getFiltered(){
         if(hits.length>0){sc+=Math.min(hits.length,8);ty.push('content');x._hits=hits.map(h=>({sectionTitle:h.sectionTitle,snippet:getSnippet(h.content,s)}));}
         x._score=sc;x._matchTypes=[...new Set(ty)];return sc>0;
     });}
-    if(activeFilter!=='all'){const sf=filterMap[activeFilter];d=d.filter(x=>x.source===sf);}
+    if(activeFilter!=='all'){const fn=categoryMap[activeFilter];if(fn)d=d.filter(x=>fn(x.source));}
     const sort=sortEl.value;
     if(sort==='relevance'&&s)d.sort((a,b)=>b._score-a._score||b.date.localeCompare(a.date));
     else if(sort==='date-desc')d.sort((a,b)=>b.date.localeCompare(a.date));
@@ -232,7 +293,7 @@ function renderCards(){
 }
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-loadReportsJson();
+initFilters();renderStats();renderCards();
 </script>
 </body>
 </html>
