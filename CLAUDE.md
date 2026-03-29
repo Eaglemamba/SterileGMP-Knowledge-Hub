@@ -150,6 +150,8 @@ Report metadata is in `reports.json`. Current reports:
 | `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
 | `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
 | `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
+| `TR85/` | PDA TR85: Enhanced Test Methods for Visible Particle Detection | 6 | Complete |
+| `TR87/` | PDA TR87: Current Best Practices for Glass Vial Handling and Processing | 7 | Complete |
 
 ---
 
