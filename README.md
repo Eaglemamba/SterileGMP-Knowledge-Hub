@@ -14,20 +14,23 @@ A structured knowledge base of PDA (Parenteral Drug Association) technical repor
 
 ## Reports Covered (12 total)
 
-| Report | Topic |
-|--------|-------|
-| PDA Guide No.1 | Filling Machine Design and Operation |
-| PDA TR22 | Process Simulation for Aseptically Filled Products |
-| PDA TR26 | Sterilizing Filtration of Liquids |
-| PDA TR52 | Good Distribution Practices (GDPs) |
-| PDA TR60 | Process Validation — A Lifecycle Approach |
-| PDA TR66 | Single-Use Systems in Pharmaceutical Manufacturing |
-| PDA TR73 | Prefilled Syringe (Sections 12–18) |
-| PDA TR73-2 | MDR Annex I for Staked Needle Systems |
-| PDA TR90 | Contamination Control Strategy (CCS) |
-| PDA PtC-12 | Restricted Access Barrier Systems (RABS) |
-| PDA PtC-14 | Manufacturing of ATMPs — Facility Design |
-| PDA PtC-15 | Mobile Manufacturing |
+| Folder | Report | Sections | MD Generated | Status |
+|--------|--------|----------|--------------|--------|
+| `pda-guide-no1/` | PDA Guide No.1: Filling Machine Design | 20 | ⚠️ manual* | Complete |
+| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | ⚠️ manual* | Complete |
+| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | ⚠️ manual* | Complete |
+| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | ⚠️ manual* | Complete |
+| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | ✅ auto | Complete |
+| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | ✅ auto | Complete |
+| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | ✅ auto | Complete |
+| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | ✅ auto | Complete |
+| `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | ✅ auto | Complete |
+| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | ✅ auto | Complete |
+| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | ✅ auto | Complete |
+| `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | ✅ auto | Complete |
+
+\* These 4 reports use a custom `merge.py` that predates `merge_engine.py` and do not auto-generate MD.
+Their `knowledge/` MD files were generated once via a manual script.
 
 ## Using the Chatbot Skill
 
