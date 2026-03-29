@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR85 - Section 0: Introduction & Glossary</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction & Glossary</h1>
+    <div class="subtitle">導論與詞彙</div>
+    <div class="page-info">PDA Technical Report No. 85 (2021) | p1-p3</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解可見微粒檢查 (Visual Inspection) 在注射劑製造品質管控中的核心角色</li>
+        <li>區分 MVI、SAVI、AVI 三種檢查方法及其適用情境</li>
+        <li>掌握可見微粒的偵測機率 (Probability of Detection) 概念及其對品質決策的影響</li>
+        <li>熟悉 TR85 中關鍵術語定義，包括微粒分類、形態參數及量測技術</li>
+        <li>了解為何 RTS/RTU 元件需要更嚴格的微粒管控規格</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 1.0 INTRODUCTION -->
+<!-- ============================================ -->
+<div class="section-title">1.0 Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Visual inspection</span> of filled injectable products is an important part of the control of the manufacturing process. It offers a means to improve quality by removing noncompliant units and provides information to drive <span class="key-term">continuous process improvement</span>.</p>
+
+        <p><span class="key-term">Visual Inspection (VI)</span> may be accomplished in several ways: manually (<span class="key-term">MVI</span>) with the unaided eye under controlled conditions of lighting and time; <span class="key-term">semi-automated visual inspection (SAVI)</span>, which combines 1) automated handling of the containers to be inspected with human vision, and 2) a means to determine whether an individual unit should be accepted or rejected; and thirdly, <span class="key-term">automated visual inspection (AVI)</span>, which offers a validatable method using digital cameras to acquire images of the product and computational tools to analyze those images against preset criteria to determine if the unit is acceptable. While MVI is the reference method described in all the pharmacopoeias, all three categories are acceptable with appropriate qualification or validation.</p>
+
+        <p>For MVI, the visible range for particles in many filled injectable products is generally agreed to begin at <span class="key-term">100 &micro;m</span> based on studies in clear glass vials (1). However, not all particles of this size can be reliably detected. Nominal <span class="key-term">probability of detection (PoD)</span> for 100 &micro;m particles is often 40-50% with PoD increasing with increasing particle size. Single particles greater than 200 &micro;m in clear solution and in 10 mL clear vials typically achieve a PoD &gt;95% (2).</p>
+
+        <p>To reliably meet visible particle acceptance criterion for filled products, careful control of the components used in the process is required. Criteria must generally be tighter than that of the finished product to compensate for the cumulative effects of multiple components (e.g., container and elastomeric seal), potential sources from the formulation and filling equipment, and the manufacturing environment. Today, most components are not subjected to tighter requirements as part of their incoming inspection and acceptance for use. However, specifications that meet stricter requirements are most critical for <span class="key-term">ready-to-sterilize (RTS)</span> and <span class="key-term">ready-to-use (RTU)</span> components since they do not undergo further particle removal steps.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Visual Inspection, VI (目視檢查):</strong> 注射劑成品製程中不可或缺的品質管控手段。不只是「挑出壞品」，更是持續改善製程的資訊來源。</p>
+            <p><strong>三種檢查方式：</strong></p>
+            <ul>
+                <li><strong>MVI (人工目視檢查):</strong> 以裸眼在受控光源和時間條件下檢查，是各國藥典的參考方法</li>
+                <li><strong>SAVI (半自動目視檢查):</strong> 自動化處理容器 + 人眼判斷 + 接受/拒絕決策</li>
+                <li><strong>AVI (自動目視檢查):</strong> 使用數位相機擷取影像，以計算工具分析是否符合預設標準，可被驗證</li>
+            </ul>
+            <p><strong>Probability of Detection, PoD (偵測機率):</strong> 特定粒子在特定檢查方法與條件下被看見並移除的可能性。100 &micro;m 粒子的 PoD 僅約 40-50%，而 200 &micro;m 粒子可達 >95%。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在餐廳出餐前檢查每道菜是否有異物。<strong>MVI</strong> 就像主廚用肉眼一盤盤看；<strong>SAVI</strong> 就像有輸送帶自動送菜到主廚面前，但仍靠人眼判斷；<strong>AVI</strong> 則像裝了高解析度攝影機和 AI 辨識系統，自動偵測異常。</p>
+            <p>重點在於：即使主廚眼力再好，100 &micro;m 的微小異物（比一根頭髮還細）也只有一半機率被發現。這就是為什麼我們不能只依賴最終檢查，而必須從源頭管控原料和元件的清潔度。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>RTS/RTU 元件為何特別重要？</strong></p>
+            <p>Ready-to-Sterilize (RTS，即用型滅菌) 和 Ready-to-Use (RTU，即用型) 元件在使用前不會再經過額外的清洗或微粒去除步驟。這意味著供應商交付時的微粒水準就是最終水準。</p>
+            <p>對 CDMO 而言，這代表：</p>
+            <ul>
+                <li>進料檢驗規格必須比成品規格更嚴格</li>
+                <li>與元件供應商的品質協議 (Quality Agreement) 中必須明確納入微粒管控要求</li>
+                <li>累積效應 (cumulative effect)：容器 + 膠塞 + 充填設備 + 環境，每個來源的微粒都會加總</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+偵測機率的實務意涵：
+
+100 µm 粒子 → PoD ≈ 40-50%
+  → 每 100 個含此粒子的單位，約有 50-60 個「漏網之魚」
+
+200 µm 粒子 → PoD > 95%
+  → 每 100 個含此粒子的單位，僅約 5 個可能未被偵測
+
+啟示：光靠最終檢查無法達到零缺陷
+      必須從元件和製程源頭控制微粒
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的客戶要求注射劑成品的可見微粒拒絕率 (rejection rate) 不超過 0.1%。如果你使用 RTU 膠塞和 RTU 玻璃瓶，而這兩者各自就可能貢獻微粒，再加上充填設備和環境的微粒來源 -- 每個環節的規格都必須遠嚴於最終成品的 0.1% 目標。這就是「累積效應」的實際商業意義。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 MVI 是各國藥典的參考方法，但在實務上不能僅依賴 MVI 來確保品質？</li>
+                <li>如果你是 CDMO 品質主管，面對一批 RTU 膠塞的進料檢驗，你會特別關注哪些微粒指標？為什麼？</li>
+                <li>AVI 相較於 MVI 的最大優勢是什麼？它是否完全取代了人工檢查的必要性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 1.1 PURPOSE -->
+<!-- ============================================ -->
+<div class="section-title">1.1 Purpose</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This <span class="key-term">technical report</span> addresses test and inspection methods for <span class="key-term">visible particles</span> in <span class="key-term">primary packaging components</span> for injectable products specifically glass vials and syringes, and the <span class="key-term">elastomeric closures</span> used to seal them. This document is most relevant for <span class="key-term">RTS</span> and <span class="key-term">RTU</span> components since these are not subjected to a further cleaning process immediately before use. These studies and methods were developed as part of a larger initiative to <span class="key-term">eliminate visible particles in injectable products</span>. An overview of this initiative was published (3) previously, and a detailed analysis of particle entry points to the manufacturing process was subsequently published (4).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Primary Packaging Components (初級包材元件):</strong> 直接接觸藥品的容器和密封件，包括玻璃瓶 (glass vials)、注射器 (syringes) 和彈性膠塞 (elastomeric closures)。</p>
+            <p><strong>TR85 的定位：</strong>本報告聚焦於「元件端」的微粒檢測與檢驗方法 -- 也就是在充填之前，針對包材本身建立可靠的測試方法。這是整個「消除注射劑可見微粒」大型倡議的一環。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>如果把注射劑製造比喻為做一道料理，TR85 關注的不是最終成品的品質檢查（那是上桌前試吃），而是<strong>食材進廚房前的品質篩選</strong> -- 確保玻璃碗沒有裂痕碎屑、矽膠蓋沒有脫落碎片。食材本身如果帶進異物，不管廚師手藝再好，成品品質都無法保證。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>TR85 的產業背景：</strong>本報告是 PDA 推動的一系列消除可見微粒倡議的具體成果。先前已發表概覽 (reference 3) 及微粒進入製程的詳細分析 (reference 4)。TR85 補足了測試方法的缺口 -- 沒有可靠且標準化的測試方法，就無法設定有意義的規格限度。</p>
+            <p>對 CDMO 業者而言，這意味著你現在可以對供應商說：「我們依據 PDA TR85 的方法來評估你的元件品質。」這提供了一個產業公認的技術基準。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR85 特別強調 RTS 和 RTU 元件？傳統非 RTU 元件在微粒管控上有什麼不同？</li>
+                <li>「沒有可靠的量測方法就不可能建立可靠的管控限度」-- 這個原則如何影響你與包材供應商的品質協議？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 1.2 SCOPE -->
+<!-- ============================================ -->
+<div class="section-title">1.2 Scope</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The use of <span class="key-term">particle</span>, <span class="key-term">particulate</span>, and <span class="key-term">particulate matter</span> all have the same meaning when used within this report. They are used in various global standards and compendia with equivalent meaning. In general, this term applies to foreign material which is unintended and either removable from the surface of a primary packaging component or freely moving within a filled and sealed pharmaceutical dosage form.</p>
+
+        <p>The test and inspection methods discussed within this report are the first step in a <span class="key-term">standard setting process</span>. Once test and inspection methods are available, accepted, and implemented, they can be used to assess <span class="key-term">process capability</span> and establish meaningful <span class="key-term">process control limits</span>. Without reliable measurements, reliable control limits are not possible.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Particle / Particulate / Particulate Matter (微粒/粒狀物質):</strong> 在本報告中三者等義互換。指的是非預期的外來物質，可能附著在初級包材表面或在密封的藥品劑型內自由移動。</p>
+            <p><strong>Standard Setting Process (標準制定流程):</strong> TR85 的方法是這個流程的第一步。邏輯鏈為：</p>
+            <ul>
+                <li>Step 1: 建立可靠的測試方法 (本報告的核心)</li>
+                <li>Step 2: 使用這些方法評估製程能力 (process capability)</li>
+                <li>Step 3: 基於製程能力數據建立有意義的管控限度 (control limits)</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像要管控工廠的室內空氣品質。你不能說「空氣要乾淨」就算設好標準了。你必須先有<strong>可靠的空氣品質檢測儀器</strong>（對應 TR85 的測試方法），用它去量測現有狀況（對應製程能力評估），然後才能設定合理的 PM2.5 限值（對應管控限度）。沒有好的量測，一切限值都是空談。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「Without reliable measurements, reliable control limits are not possible.」</strong></p>
+            <p>這句話是整份報告的核心哲學。在製藥業，我們常常看到規格限度是基於傳統或經驗而非數據。TR85 推動的是<strong>以數據驅動的品質管控</strong>（data-driven quality control）-- 先有方法，再收數據，最後用數據說話。</p>
+            <p>這也與 ICH Q10 的精神一致：持續的品質改善需要建立在客觀量測的基礎上。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR85 要特別澄清 particle、particulate、particulate matter 三者在報告中是同義的？這在跨國法規環境下有什麼實務意義？</li>
+                <li>請描述從「無測試方法」到「有意義的管控限度」的三步驟流程，並舉一個你工作中可能應用的例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 2.0 GLOSSARY AND ABBREVIATIONS -->
+<!-- ============================================ -->
+<div class="section-title">2.0 Glossary and Abbreviations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Definitions have been provided to help clarify the concepts discussed in this technical report. While some of these definitions vary among companies, the definitions described below are consistent for use within this document.</p>
+
+        <h3>Glossary Terms</h3>
+
+        <p><strong>Area</strong><br>
+        Measured surface area of a flat projection of a particle.</p>
+
+        <p><strong><span class="key-term">Aspect Ratio</span></strong><br>
+        The length of a particle or fiber divided by its width.</p>
+
+        <p><strong><span class="key-term">Extrinsic Particle</span> or Fiber</strong><br>
+        Foreign material that comes from outside the primary process. Often these are from the manufacturing environment or incomplete cleaning of components. They are uncontrolled.</p>
+
+        <p><strong><span class="key-term">Feret Min</span> and Max</strong><br>
+        Feret Min is the minimum distance between parallel tangents at opposing particle borders. Feret Max is the maximum distance between parallel tangents at opposing particle borders.</p>
+
+        <p><strong><span class="key-term">Intrinsic Particle</span></strong><br>
+        A particle that comes from within the primary process. These are qualified product contact materials and are often associated with the primary packaging components. They are unplanned but not unexpected.</p>
+
+        <p><strong>Length</strong><br>
+        The measure of the distance along its longest axis.</p>
+
+        <p><strong><span class="key-term">Light obscuration (LO)</span></strong><br>
+        Analytical technique measuring the size and quantity of subvisible particles.</p>
+
+        <p><strong><span class="key-term">Membrane/microscopy (MM)</span></strong><br>
+        Analytical technique to collect particles from a liquid sample on a membrane filter followed by manual examination (sizing and counting) with a microscope.</p>
+
+        <p><strong><span class="key-term">Particle</span></strong><br>
+        Foreign material which is unintended and either removable from the surface of a primary packaging component or freely moving within a filled and sealed pharmaceutical dosage form. The term particle is used interchangeably with "particulate" and "particulate matter" without any intended difference in meaning.</p>
+
+        <p><strong><span class="key-term">Particulate</span></strong><br>
+        See Particle.</p>
+
+        <p><strong>Perimeter</strong><br>
+        Measured length of the outer edges of a particle.</p>
+
+        <p><strong><span class="key-term">Probability of detection (PoD)</span></strong><br>
+        The likelihood that a given particle will be seen and removed with a specific inspection method and under specific conditions. Usually expressed as a percentage (0-100%) but may also be expressed as a probability (0-1).</p>
+
+        <p><strong>Rect A</strong><br>
+        The longest side length when a rectangle is constructed around the particle.</p>
+
+        <p><strong><span class="key-term">Ready-to-sterilize (RTS)</span></strong><br>
+        Washed components supplied in a package suitable for sterilization prior to use with sterile injectable products.</p>
+
+        <p><strong><span class="key-term">Ready-to-use (RTU)</span></strong><br>
+        Washed and sterilized components supplied in a package suitable for transfer into an aseptic processing area and used with sterile injectable products without further processing.</p>
+
+        <p><strong><span class="key-term">Shape factor (SF)/Circularity</span></strong><br>
+        Provides information on the roundness of a particle. The SF value is between 0 and 1, where 1 represents a circle. A is the area of the particle and p is the perimeter.</p>
+
+        <p><strong><span class="key-term">Subvisible particle</span></strong><br>
+        A particle with a size &lt;100 &micro;m in diameter.</p>
+
+        <p><strong><span class="key-term">Visible fiber</span></strong><br>
+        A fiber-like particle with an aspect ratio &ge;5 and a length &gt;300 &micro;m.</p>
+
+        <p><strong><span class="key-term">Visible particle</span></strong><br>
+        A particle with an aspect ratio of &lt;5 and a length &gt;100 &micro;m.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>微粒來源分類 -- Extrinsic vs Intrinsic：</strong></p>
+            <ul>
+                <li><strong>Extrinsic Particle (外來微粒):</strong> 來自製程外部，例如環境空氣中的纖維、清洗不完全殘留。這些是「不可控的」(uncontrolled)。</li>
+                <li><strong>Intrinsic Particle (內在微粒):</strong> 來自製程內部的合格接觸材料，例如膠塞碎片、玻璃微粒。「非計劃但非意外」(unplanned but not unexpected)。</li>
+            </ul>
+            <p>這個分類非常重要，因為不同來源的微粒需要不同的管控策略。外來微粒要靠環境和清潔管控；內在微粒要靠元件品質和製程參數管控。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 -- 微粒形態參數</h4>
+            <p><strong>為什麼需要這麼多形態參數？</strong> 因為微粒不是規則的球體，每種量測方式捕捉到的資訊不同：</p>
+            <ul>
+                <li><strong>Aspect Ratio (長寬比):</strong> 區分纖維和顆粒的關鍵 -- 長寬比 &ge;5 為纖維，&lt;5 為顆粒</li>
+                <li><strong>Feret Min/Max:</strong> 以平行切線量測的最小/最大距離，常用於自動影像分析</li>
+                <li><strong>Shape Factor/Circularity (形狀因子):</strong> 0 到 1 之間，1 代表完美圓形。可幫助判斷微粒來源</li>
+                <li><strong>Area、Perimeter、Length、Rect A:</strong> 不同的尺寸量測方式，各有適用場景</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把微粒分類想像成偵探辦案。你在犯罪現場發現一個可疑物體：</p>
+            <ul>
+                <li><strong>Extrinsic:</strong> 就像窗戶被打破後飛進來的外部碎片 -- 來源在場外</li>
+                <li><strong>Intrinsic:</strong> 就像房間內家具自然磨損掉落的碎屑 -- 來源在場內</li>
+            </ul>
+            <p>而各種形態參數就像偵探的量測工具：有的量長度、有的量面積、有的分析形狀 -- 綜合起來才能判斷「這個異物是什麼、從哪來的」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>可見微粒 vs 不可見微粒的界線：</strong></p>
+            <ul>
+                <li><strong>Visible particle (可見微粒):</strong> 長寬比 &lt;5 且長度 &gt;100 &micro;m</li>
+                <li><strong>Visible fiber (可見纖維):</strong> 長寬比 &ge;5 且長度 &gt;300 &micro;m</li>
+                <li><strong>Subvisible particle (不可見微粒):</strong> 尺寸 &lt;100 &micro;m</li>
+            </ul>
+            <p>注意這裡有一個灰色地帶：100-300 &micro;m 之間、長寬比 &ge;5 的纖維既不是「可見纖維」也不是「不可見微粒」。在實務中，這類邊界情況需要特別注意分類標準的應用。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 -- RTS vs RTU</h4>
+            <p><strong>關鍵差異：</strong></p>
+            <ul>
+                <li><strong>RTS (即用型滅菌):</strong> 已清洗，需自行滅菌後使用</li>
+                <li><strong>RTU (即用型):</strong> 已清洗且已滅菌，可直接轉入無菌區使用</li>
+            </ul>
+            <p>兩者的共同點是：使用前都<strong>不會再清洗</strong>。因此供應商交付時的微粒水準就是你最終面對的水準。這是為什麼 TR85 對這兩類元件特別重要。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你收到一批 RTU 膠塞的微粒檢測報告，報告中使用了 Feret Max 作為尺寸量測依據。但你們內部的 AVI 系統是使用 Length（最長軸）來判定。由於同一個不規則形狀的微粒，Feret Max 和 Length 可能給出不同數值，因此你必須確認量測定義的一致性，否則同一批膠塞可能在供應商端「合格」，在你的系統中「不合格」。</p>
+            <p>這就是為什麼 TR85 花大量篇幅統一術語定義。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個長 250 &micro;m、寬 40 &micro;m 的微粒，其長寬比為多少？它應被分類為「visible particle」還是「visible fiber」？</li>
+                <li>為什麼 Extrinsic Particle 被定義為「uncontrolled」而 Intrinsic Particle 被定義為「unplanned but not unexpected」？這對你的管控策略有什麼不同的啟示？</li>
+                <li>如果你是品保主管，在與供應商簽訂 RTU 膠塞的品質協議時，你會要求使用哪些形態參數來定義微粒規格？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 2.1 ABBREVIATIONS -->
+<!-- ============================================ -->
+<div class="section-title">2.1 Abbreviations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Full Term</th></tr>
+            <tr><td>AQL</td><td>Acceptable Quality Limit</td></tr>
+            <tr><td>AVI</td><td>Automated Visual Inspection</td></tr>
+            <tr><td>cGMP</td><td>Current Good Manufacturing Practices</td></tr>
+            <tr><td>DOE</td><td>Design Of Experiments</td></tr>
+            <tr><td>EP</td><td>European Pharmacopeia or Pharm Europa</td></tr>
+            <tr><td>FDA</td><td>United States Food and Drug Administration</td></tr>
+            <tr><td>IM</td><td>Intramuscular</td></tr>
+            <tr><td>ISO</td><td>International Organization for Standardization</td></tr>
+            <tr><td>IV</td><td>Intravenous</td></tr>
+            <tr><td>JP</td><td>Japanese Pharmacopeia</td></tr>
+            <tr><td>LED</td><td>Light Emitting Diode</td></tr>
+            <tr><td>LO</td><td>Light Obscuration</td></tr>
+            <tr><td>min</td><td>Minutes</td></tr>
+            <tr><td>MM</td><td>Membrane/Microscopy</td></tr>
+            <tr><td>MVI</td><td>Manual Visual Inspection</td></tr>
+            <tr><td>NMT</td><td>Not More Than</td></tr>
+            <tr><td>PMF</td><td>Pharmaceutical Manufacturers Forum</td></tr>
+            <tr><td>PoD</td><td>Probability Of Detection</td></tr>
+            <tr><td>RPM</td><td>Revolutions Per Minute</td></tr>
+            <tr><td>RTS</td><td>Ready-To-Sterilize</td></tr>
+            <tr><td>RTU</td><td>Ready-To-Use</td></tr>
+            <tr><td>SAVI</td><td>Semi-Automated Visual Inspection</td></tr>
+            <tr><td>sec</td><td>Seconds</td></tr>
+            <tr><td>SF</td><td>Shape Factor</td></tr>
+            <tr><td>TR</td><td>Technical Report</td></tr>
+            <tr><td>USP</td><td>United States Pharmacopeia</td></tr>
+            <tr><td>VI</td><td>Visual Inspection</td></tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>縮寫分類整理：</strong></p>
+            <p><strong>檢查方法類：</strong></p>
+            <ul>
+                <li><strong>VI / MVI / SAVI / AVI</strong> -- 從人工到全自動的檢查方法譜系</li>
+                <li><strong>LO</strong> (光遮蔽法) / <strong>MM</strong> (薄膜顯微鏡法) -- 不可見微粒的分析技術</li>
+            </ul>
+            <p><strong>法規與標準類：</strong></p>
+            <ul>
+                <li><strong>cGMP / FDA / ISO</strong> -- 法規與標準組織</li>
+                <li><strong>USP / EP / JP</strong> -- 三大藥典體系</li>
+            </ul>
+            <p><strong>元件與品質類：</strong></p>
+            <ul>
+                <li><strong>RTS / RTU</strong> -- 元件的供應形式</li>
+                <li><strong>AQL</strong> -- 抽樣驗收標準</li>
+                <li><strong>PoD / SF</strong> -- 量測與統計參數</li>
+                <li><strong>DOE</strong> -- 實驗設計</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這些縮寫就像醫院科別的代碼：ER (急診)、ICU (加護病房)、OR (手術室)。對業內人來說是基本語言，但對初學者需要逐一對照學習。建議你把這頁當作「速查表」使用 -- 後續章節大量使用這些縮寫時，隨時回來查閱。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>三大藥典的重要性：</strong>USP (美國)、EP (歐洲)、JP (日本) 分別代表全球三大主要藥品市場的品質標準。CDMO 如果服務全球客戶，必須同時了解三套藥典對微粒的要求差異。TR85 的方法旨在提供一個統一的產業基準，但最終規格仍需符合目標市場的藥典要求。</p>
+            <p><strong>AQL (允收品質限度):</strong> 這是統計抽樣驗收的核心概念，將在後續章節中大量使用。AQL 決定了你需要抽多少樣本、允許多少不良品。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>LO 和 MM 分別適用於量測什麼範圍的微粒？這兩種技術有什麼互補性？</li>
+                <li>為什麼 CDMO 需要同時熟悉 USP、EP 和 JP 三套藥典的微粒規定？如果客戶的目標市場是全球，你的規格應該如何設定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>目視檢查 (VI) 的三種模式：</strong>MVI (人工)、SAVI (半自動)、AVI (全自動) -- 皆為藥典認可方法，但各有偵測極限</li>
+        <li><strong>偵測機率 (PoD) 的現實：</strong>100 &micro;m 微粒僅有 40-50% PoD，這代表最終檢查無法作為唯一的品質保證手段</li>
+        <li><strong>源頭管控是關鍵：</strong>必須從元件端（玻璃瓶、膠塞）建立嚴格的微粒規格，尤其針對不再清洗的 RTS/RTU 元件</li>
+        <li><strong>TR85 的定位：</strong>提供標準化的測試方法，作為建立製程能力評估和管控限度的基礎 -- 沒有可靠量測就沒有可靠管控</li>
+        <li><strong>微粒分類：</strong>Extrinsic (外來) vs Intrinsic (內在) 需要不同管控策略；可見微粒 (&gt;100 &micro;m) vs 不可見微粒 (&lt;100 &micro;m) 需要不同檢測技術</li>
+        <li><strong>形態參數統一：</strong>Aspect Ratio、Feret、Shape Factor 等定義的一致性是跨組織溝通和品質協議的基礎</li>
+    </ul>
+</div>
+
+</body>
+</html>

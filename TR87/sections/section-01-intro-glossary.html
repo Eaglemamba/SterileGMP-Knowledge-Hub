@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDA TR87 — Section 1: Introduction &amp; Glossary</title>
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .formula-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h4 { color: #2e7d32; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+.formula-box pre { background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box p, .practice-box li { font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+
+/* Section summary */
+.section-summary { background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; border-radius: 12px; padding: 1.75rem; margin-top: 2rem; }
+.section-summary h3 { font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.92rem; opacity: 0.95; }
+.abbr-table th { background: linear-gradient(135deg, #2c5282 0%, #1e3a5f 100%); color: white; }
+.abbr-table td:first-child { font-weight: 700; color: var(--primary-blue); font-family: 'Courier New', monospace; }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <h1>PDA Technical Report 87 — Section 1</h1>
+  <div class="subtitle">Introduction &amp; Glossary ／ 簡介與術語彙編</div>
+  <div class="page-info">Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021) &nbsp;|&nbsp; Pages p1–p3</div>
+</div>
+
+<div class="main-content">
+
+  <!-- ===== LEARNING OBJECTIVES ===== -->
+  <div class="learning-objectives">
+    <h3>學習目標 Learning Objectives</h3>
+    <ul>
+      <li>理解玻璃作為注射劑容器的核心優勢與侷限，並能向跨部門團隊說明其選材邏輯。</li>
+      <li>掌握「應力 (stress)」與「缺陷 (flaw)」雙重條件共同決定玻璃破損的核心機制。</li>
+      <li>區分 molded vial 與 tubular vial 的製程差異，並理解表面損傷的累積性影響。</li>
+      <li>熟悉 TR87 所定義的全套術語，確保在生產現場、設備供應商溝通及法規文件中使用一致語言。</li>
+      <li>了解 Eject Bin 與 Reject Bin 在 GMP 流程設計中的明確區別，避免現場混用。</li>
+    </ul>
+  </div>
+
+  <!-- ===== SECTION 1.0 INTRODUCTION ===== -->
+  <h2 class="section-title">1.0 Introduction ／ 簡介</h2>
+
+  <div class="two-column">
+    <!-- LEFT: Original English -->
+    <div class="left-column">
+      <h3>1.0 Introduction</h3>
+      <p>Glass has long been one of the first materials fabricated by humankind to contain valuables—from perfumes, oils, and potions to the most technologically advanced. Glass has many properties that make it an appropriate packaging material for parenteral drugs, including:</p>
+      <ul>
+        <li>Rigidity and durability</li>
+        <li>Stability and compatibility with filling and shipping processes</li>
+        <li>Ease of cleaning and sterilization</li>
+        <li>Gas impermeability and maintenance of <span class="key-term">container-closure integrity</span></li>
+        <li>Compatibility with a wide range of drug products</li>
+        <li>Optical transparency and clean appearance</li>
+        <li>Ease of drug product inspection</li>
+      </ul>
+      <p>Like other packaging materials, glass is not always the appropriate packaging material. Not all glass types are the same in composition and properties. Based on the glass type, some drug formulations can react with glass, particularly those with a high pH or certain buffers.</p>
+      <p>Beyond this consideration is the fact that glass can break. Glass breakage can result in processing downtime, an increased number of production interventions, injury, increased particulate load, and loss of product. Ultimately, patient safety can be put at risk due to a loss of <span class="key-term">container-closure integrity</span> (possibly including sterility breaches), lost or improper doses, or injury from glass shards and particulates.</p>
+      <p>The resistance of glass to breakage is less a property of the material, as glass is inherently strong, but more about the condition of its surface. For glass to break, both a <span class="key-term">stress</span> and a <span class="key-term">flaw</span> must be present at the same place and at the same moment. As will be explained in this technical report, stress, whether from an applied load, impact, or <span class="key-term">thermal shock</span>, is generally temporary and the glass container will retain its initial integrity and strength. Flaws, however, are permanent once induced.</p>
+      <p>As glass is handled through its manufacturing processes and subsequent pharmaceutical processes, it is vulnerable to surface damage. Best handling practices can preserve the inherent strength of the glass, whereas poor glass handling practices can significantly reduce the practical strength of glass containers. Surface damage induced early in the manufacturing process may manifest itself as failure later in the process or in the field as the container is subjected to subsequent stresses.</p>
+    </div>
+
+    <!-- RIGHT: Chinese Commentary -->
+    <div class="right-column">
+      <h3>解析與應用 Commentary</h3>
+
+      <div class="concept-box">
+        <h4>核心概念：為什麼選用玻璃？</h4>
+        <p>玻璃在製藥注射劑 (parenteral drugs) 領域沿用百年，原因在於它同時滿足化學惰性、物理強度、可視檢查及滅菌相容性四大需求。</p>
+        <p>在 CDMO 的 fill-finish 現場，幾乎所有無菌製程都圍繞玻璃小瓶展開——理解玻璃的優勢與侷限，是操作員與工程師最基本的知識基礎。</p>
+        <ul>
+          <li><strong>容器密封完整性 (container-closure integrity, CCI)</strong>：確保無菌屏障不受破壞，直接關乎病患安全。</li>
+          <li><strong>可視化檢查</strong>：玻璃的光學透明度是目視或自動化異物檢查 (visual inspection) 的前提。</li>
+        </ul>
+      </div>
+
+      <div class="note-box">
+        <h4>注意：玻璃並非萬能材料</h4>
+        <p>高 pH 值配方或特定緩衝液 (buffers) 可能與玻璃發生反應，導致玻璃脫層 (delamination) 或離子溶出 (ion leaching)。這是選材時必須進行相容性評估 (compatibility assessment) 的原因之一。</p>
+        <p>在 CDMO 接單階段，應要求客戶提供配方 pH 及緩衝液資訊，並納入包材相容性研究。</p>
+      </div>
+
+      <div class="formula-box">
+        <h4>核心公式：破損的必要條件</h4>
+        <pre>玻璃破損 = 應力 (Stress) ＋ 缺陷 (Flaw)
+          同一位置、同一時刻
+
+移除任一條件 → 不會破損</pre>
+        <p>這個「雙重條件」邏輯是 TR87 全文的核心。工程師能夠控制的主要是：(1) 減少製程中產生的缺陷；(2) 降低不必要的應力施加。</p>
+      </div>
+
+      <div class="analogy-box">
+        <h4>類比：玻璃就像已經刮傷的車漆</h4>
+        <p>想像一輛車的車漆表面有一道細微刮痕——平時沒事，但一旦被石頭高速撞擊（應力），刮痕處就會大面積剝落。玻璃小瓶的道理相同：早期製程中造成的表面刮傷 (flaw)，可能在後段滅菌、凍乾或運輸過程中才爆發破損。</p>
+        <p><strong>操作意涵</strong>：玻璃破損問題往往不發生在「傷害點」，而是在「應力點」。根本原因分析 (RCA) 需往前追溯。</p>
+      </div>
+
+      <div class="practice-box">
+        <h4>現場應用：破損的連鎖影響</h4>
+        <p>生產線上的玻璃破損不只是一顆瓶子的損失，它帶來：</p>
+        <ul>
+          <li>線體停機 (downtime) → 產能損失</li>
+          <li>人工介入 (interventions) 次數增加 → 污染風險上升</li>
+          <li>玻璃微粒 (glass particulates) 汙染周圍批次</li>
+          <li>操作員受傷風險</li>
+          <li>最嚴重：CCI 失效 → 批次報廢或患者安全事件</li>
+        </ul>
+        <p>因此，TR87 強調「預防優於處理」——良好的搬運規範能從根本上降低這些風險。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1.1 PURPOSE AND SCOPE ===== -->
+  <h2 class="section-title">1.1 Purpose and Scope ／ 目的與範疇</h2>
+
+  <div class="two-column">
+    <!-- LEFT: Original English -->
+    <div class="left-column">
+      <h3>1.1 Purpose and Scope</h3>
+      <p>The purpose of this technical report is to provide a technical understanding of glass, its strength, and its limitations, and to provide guidance in best handling practices for glass vials throughout the pharmaceutical process—receipt, storage, preparation, filling, stoppering, freeze-drying, and capping. This document focuses on glass vials, where surface damage may occur, and where excess stresses may be applied during processing and handling. Many of the principles discussed here can be applied to the handling of glass syringes, cartridges, ampoules, and other glass container types.</p>
+      <p>This report also reviews typical pharmaceutical glass handling processes and identifies areas of concern. Points to consider are presented for line, material, and equipment enhancements as well as guidance and practical approaches for using procedural controls to better employ existing equipment.</p>
+    </div>
+
+    <!-- RIGHT: Chinese Commentary -->
+    <div class="right-column">
+      <h3>解析與應用 Commentary</h3>
+
+      <div class="concept-box">
+        <h4>TR87 的涵蓋範圍</h4>
+        <p>本技術報告覆蓋玻璃小瓶 (glass vials) 從<strong>收貨 → 儲存 → 準備 → 灌裝 → 加塞 → 凍乾 → 軋蓋</strong>的完整製程鏈。每個環節都是潛在的表面損傷來源。</p>
+        <p>雖然主焦點是小瓶，但文中原則同樣適用於：</p>
+        <ul>
+          <li>玻璃注射器 (glass syringes)</li>
+          <li>卡匣 (cartridges)</li>
+          <li>安瓿瓶 (ampoules)</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <h4>CDMO 應用視角</h4>
+        <p>TR87 不只是理論文件，它提供三個層次的實際工具：</p>
+        <ul>
+          <li><strong>設備層 (equipment)</strong>：識別設備設計上的風險點</li>
+          <li><strong>物料層 (material)</strong>：評估玻璃規格與包材選擇</li>
+          <li><strong>程序層 (procedural controls)</strong>：透過 SOP 與操作規範補足現有設備的不足</li>
+        </ul>
+        <p>這三層架構也是 FMEA 評估玻璃破損風險時的標準切入框架。</p>
+      </div>
+
+      <div class="analogy-box">
+        <h4>類比：TR87 就像一本玻璃小瓶的「使用說明書」</h4>
+        <p>大多數工廠知道怎麼用玻璃瓶，但不知道「為什麼這樣做」。TR87 的價值在於提供原理背景，讓工程師和操作員從「照規定做」升級為「理解後做」——這是持續改善 (CI) 和 CAPA 有效執行的前提。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2.0 GLOSSARY ===== -->
+  <h2 class="section-title">2.0 Glossary and Abbreviations ／ 術語彙編與縮寫</h2>
+
+  <div class="two-column">
+    <!-- LEFT: Glossary Table -->
+    <div class="left-column">
+      <h3>2.0 Glossary and Abbreviations</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:28%">Term</th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="key-term">Breakage</span></td>
+            <td>An event that happens when the practical strength of the glass is exceeded. This occurs due to a combination of stress (see Stress) and a relevant surface defect.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Break Force</span></td>
+            <td>The force required to break glass, usually given in Newtons (1 kg/v × sec²).</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Brittle</span></td>
+            <td>An attribute of materials that are not able to deform and thus break immediately under excessive stress, even if the material is inherently strong.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Check</span></td>
+            <td>A discontinuity in the glass surface that does not penetrate through the glass wall.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Collection Bin</span></td>
+            <td>A container for collecting vials that have been removed or diverted from the production line.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Eject Bin</span></td>
+            <td>The container for collecting downed vials or vials removed from the production line following an inspection point within the production process <em>with the intent of reinspection and possible reintroduction</em> to the production stream.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Reject Bin</span></td>
+            <td>The container for collecting vials that have been rejected from the production line following an inspection point within the production process wherein the vial <em>will be removed from production</em>.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Concentricity</span></td>
+            <td>Having a common center as circles or spheres (e.g., the finish of a vial should be concentric with the body, otherwise it would be considered offset and/or out-of-round).</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Crack</span></td>
+            <td>Fracture that penetrates completely through the glass wall.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Dead Plate</span></td>
+            <td>A stationary transition platform between two pieces of equipment.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Downed Vial</span></td>
+            <td>A vial that has fallen or tipped over and is no longer vertical within the processing line.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Ductile</span></td>
+            <td>An attribute of materials that are able to deform under stress.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Dwell Mark</span></td>
+            <td>A fracture surface marking representing the site of a fracture discontinuity caused by a sudden shift in the stress distribution or by a fracture stopping for some length of time; also known as an arrest line.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Flaw</span></td>
+            <td>A mark, fault, or other imperfection that mars a substance or object (e.g., scratches, scuffs, checks, bruises).</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Fractography (Fracture Analysis)</span></td>
+            <td>The study of the fractured surfaces that can determine the origin and applied load needed to cause breakage.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Fracture Origin</span></td>
+            <td>The single, unique location at which a fracture system begins.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Glass (Silicates)</span></td>
+            <td>An inorganic product of fusion that has been cooled to a rigid condition without crystallization and softens gradually upon reheating. Most common pharmaceutical glasses consist of silicon dioxide as the primary component and may contain aluminum trioxide, boron trioxide, sodium oxide, potassium oxide, magnesium oxide, calcium oxide, barium oxide, and/or other oxides.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Glass Strength</span></td>
+            <td>The capacity of glass to withstand tensile stress until failure.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Lehr</span></td>
+            <td>A temperature-controlled oven for annealing objects made of glass.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Lyophilization (Freeze-Drying)</span></td>
+            <td>A process to remove the aqueous component in a material by controlling temperature and pressure changes in the water-freezing realm. The result is a powdery cake that needs to be reconstituted in a solution before usage.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Practical Strength</span></td>
+            <td>The resistance to breakage based on geometrical aspects of the glass, flaws inside and outside of the glass, residual stress inside the glass, and the interior and exterior mechanical load.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Screw Feed</span> (Timing Screw / Scroll Feed / Worm Gear)</td>
+            <td>A mechanism that moves vials from one area of the processing line to another in single file and at a specified pace.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Singulation</span></td>
+            <td>The process of arranging vials into single file from a bulk configuration.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Starwheel</span></td>
+            <td>A wheel with pockets used to individually move vials into fixed positions.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Stress</span></td>
+            <td>
+              A force resulting in a dislocation of atoms.<br>
+              <strong>Compressive Stress:</strong> Describes a force that is pushing the atoms together.<br>
+              <strong>Tensile Stress:</strong> Describes a force that is pulling the atoms apart.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Thermal Stress</span></td>
+            <td>The stress produced by a temperature differential within a glass body.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Thermal Shock</span></td>
+            <td>A rapid change in temperature imposed on a glass body that may lead to checking, cracking, or complete breakage.</td>
+          </tr>
+          <tr>
+            <td><span class="key-term">Vial</span></td>
+            <td>
+              Glass container with a finish and bottom that can be either molded or tubular.<br>
+              <strong>Molded Vial:</strong> Glass container formed by a molded process (blow-and-blow or press-and-blow), made directly from the melting furnace.<br>
+              <strong>Tubular Vial:</strong> Glass container converted from a glass tube drawn from a melting furnace in a two-step process.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:1.5rem;">2.1 Abbreviations</h3>
+      <table class="abbr-table">
+        <thead>
+          <tr>
+            <th style="width:20%">Abbreviation</th>
+            <th>Full Term</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>COF</td><td>Coefficient of friction</td></tr>
+          <tr><td>CTE</td><td>Coefficient of thermal expansion</td></tr>
+          <tr><td>FMEA</td><td>Failure Mode and Effects Analysis</td></tr>
+          <tr><td>RPN</td><td>Risk priority number</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RIGHT: Chinese Commentary on Glossary -->
+    <div class="right-column">
+      <h3>術語解析 Glossary Commentary</h3>
+
+      <div class="concept-box">
+        <h4>破損三元組：Breakage、Crack、Check 的層級差異</h4>
+        <p>這三個術語常被混用，但 TR87 定義嚴格區分：</p>
+        <ul>
+          <li><strong>Check（表面不連續）</strong>：未穿透玻璃壁，屬於表面缺陷，仍可能成為後續破損的起點。</li>
+          <li><strong>Crack（裂縫）</strong>：已穿透玻璃壁，CCI 失效，必須報廢。</li>
+          <li><strong>Breakage（破損事件）</strong>：泛指超過 practical strength 後的破損結果，是整個破損機制的終點。</li>
+        </ul>
+        <p>現場文件若只寫「玻璃破掉」是不精確的——應區分是 check、crack 還是 complete breakage，因為根本原因和處置方式不同。</p>
+      </div>
+
+      <div class="note-box">
+        <h4>重要區別：Eject Bin vs. Reject Bin</h4>
+        <p>這是現場最容易混淆的兩個術語，也是 GMP 合規的關鍵：</p>
+        <ul>
+          <li><strong>Eject Bin（退出暫存桶）</strong>：瓶子被暫時移出，<em>可重新檢查後回線</em>。用於倒瓶 (downed vials) 等情況。</li>
+          <li><strong>Reject Bin（拒絕桶）</strong>：瓶子被最終排除，<em>不得回線</em>，必須隔離銷毀或報廢。</li>
+        </ul>
+        <p>若現場 SOP 未明確區分這兩個桶，可能導致品質異常：已被判定缺陷的瓶子意外重新進入生產流。建議在設備標示、SOP 及訓練教材中統一使用 TR87 定義。</p>
+      </div>
+
+      <div class="formula-box">
+        <h4>Practical Strength vs. Glass Strength 的差異</h4>
+        <pre>Glass Strength（材料本質強度）
+  → 理論上非常高（Si-O 鍵結強）
+
+Practical Strength（實際抗破強度）
+  = f(幾何形狀, 表面缺陷, 殘餘應力, 機械負荷)
+  → 遠低於 Glass Strength
+
+操作目標：維持 Practical Strength 接近 Glass Strength
+         = 減少缺陷 + 控制應力</pre>
+        <p>這說明為什麼良好的搬運規範能「保住」玻璃的天然強度，而粗魯搬運會「摧毀」它。</p>
+      </div>
+
+      <div class="analogy-box">
+        <h4>類比：Brittle vs. Ductile — 玻璃 vs. 鋁箔</h4>
+        <p>玻璃是 brittle（脆性）材料：一旦應力超過極限，立刻斷裂，沒有「變形警示」。相比之下，鋁是 ductile（延展性）材料：超過極限前會先產生塑性變形，操作員有時間察覺。</p>
+        <p>這就是為什麼玻璃破損往往「毫無預警」——脆性材料的特性決定了預防比補救重要十倍。</p>
+      </div>
+
+      <div class="concept-box">
+        <h4>製程設備術語：Dead Plate、Screw Feed、Starwheel</h4>
+        <p>這三個設備術語在 fill-finish 生產線上極為常見，但各有特定風險：</p>
+        <ul>
+          <li><strong>Dead Plate（靜止過渡板）</strong>：瓶子在此從動態輸送帶過渡到下一站。若平整度不足或有毛邊，會在瓶底造成刮傷 (flaw)。</li>
+          <li><strong>Screw Feed（螺旋推進器）</strong>：強制單列排瓶，若速度匹配不良，會在瓶身側面產生壓力應力。</li>
+          <li><strong>Starwheel（星形輪）</strong>：精確定位個別小瓶，若口袋尺寸與瓶徑不匹配，會造成夾擊應力。</li>
+        </ul>
+        <p>與設備供應商討論設備改善時，使用這些標準術語可確保溝通精確。</p>
+      </div>
+
+      <div class="concept-box">
+        <h4>Molded Vial vs. Tubular Vial：選擇邏輯</h4>
+        <p>兩種製程導致不同的瓶身特性：</p>
+        <ul>
+          <li><strong>Molded Vial（模製瓶）</strong>：壁厚較均一、機械強度較高，適合大容量或重複震動環境。成本較高。</li>
+          <li><strong>Tubular Vial（管制瓶）</strong>：壁厚較薄、重量輕、光學透明度高，適合小容量高值產品。但製程中玻璃管的拉制和切割步驟會引入更多表面瑕疵風險。</li>
+        </ul>
+        <p>在 CDMO 接單評估時，vial 類型影響整個搬運設備設定、破損率預估及包材驗證策略。</p>
+      </div>
+
+      <div class="note-box">
+        <h4>Lyophilization 與熱應力的特殊風險</h4>
+        <p>凍乾 (lyophilization/freeze-drying) 製程涉及大幅溫度變化（降溫到 −40°C 以下，再昇華回常溫），會在玻璃中產生 <strong>thermal stress（熱應力）</strong>。</p>
+        <p>若瓶子在進入凍乾機前已有表面缺陷 (flaw)，熱循環可能正好提供足夠的應力觸發破損——這種破損往往在凍乾腔室內發現，難以追溯根本原因。定期的 incoming inspection 和防護搬運規範是預防的關鍵。</p>
+      </div>
+
+      <div class="practice-box">
+        <h4>現場應用：縮寫詞的工作脈絡</h4>
+        <p>TR87 使用的四個縮寫在 CDMO 日常工作中的應用場景：</p>
+        <ul>
+          <li><strong>COF（摩擦係數）</strong>：用於評估輸送帶材質、表面塗層對玻璃刮傷的影響。COF 過高 = 刮傷風險上升。</li>
+          <li><strong>CTE（熱膨脹係數）</strong>：評估玻璃與金屬夾具/設備接觸面在溫差環境下的相容性，預防熱應力集中。</li>
+          <li><strong>FMEA（失效模式與效應分析）</strong>：系統性風險評估工具，TR87 後段會引導如何用 FMEA 識別玻璃破損高風險節點。</li>
+          <li><strong>RPN（風險優先數）</strong>：FMEA 的量化輸出（嚴重性 × 發生率 × 偵測性），用於排序改善優先級。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION SUMMARY ===== -->
+  <div class="section-summary">
+    <h3>第一節總結 Section 1 Summary</h3>
+    <ul>
+      <li><strong>玻璃是理想的注射劑容器，但不是萬能的：</strong>它的優勢在於化學惰性、可視檢查、氣體不透過性及易於滅菌；侷限在於高 pH 配方相容性問題和脆性破損風險。</li>
+      <li><strong>破損的雙重必要條件：</strong>玻璃破損需要「應力」與「缺陷」同時存在於同一位置。應力是暫時的，缺陷一旦產生則是永久的——這決定了預防策略的重心應放在減少缺陷。</li>
+      <li><strong>損傷的時間延遲性：</strong>早期製程（如玻璃管拉制、清洗、去熱原）造成的表面缺陷，可能在後段製程（如凍乾、運輸）才引發破損，這是 RCA 必須跨製程追溯的原因。</li>
+      <li><strong>TR87 的應用範疇：</strong>涵蓋收貨到軋蓋的完整製程，提供設備、物料、程序三個層次的改善指引，並適用於注射器、安瓿等其他玻璃容器類型。</li>
+      <li><strong>術語精確性是合規基礎：</strong>Eject Bin 與 Reject Bin 的區分、Check 與 Crack 的層級差異、Molded 與 Tubular Vial 的特性差異，都是現場文件和溝通必須精確使用的語言。</li>
+      <li><strong>FMEA 與 TR87 的結合：</strong>COF、CTE、FMEA、RPN 這四個縮寫預示著 TR87 後段將系統性地引入風險評估方法論，為製程改善提供量化依據。</li>
+    </ul>
+  </div>
+
+</div><!-- end main-content -->
+</body>
+</html>

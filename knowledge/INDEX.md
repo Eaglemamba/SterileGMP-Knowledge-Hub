@@ -246,6 +246,50 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR85-Complete.md
+**Report:** PDA TR85: Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric Closures and Glass Containers (2021)
+**Pages:** p1–p52 | **Sections:** 6
+
+**Covers questions about:**
+- Current state and limitations of visual inspection for visible particles
+- Risk assessment for particulate contamination in parenteral products
+- Enhanced Component Inspection Method (ECIM) for elastomeric closures
+- Enhanced test methods for glass container visible particle inspection
+- Method validation strategy for ECIM and glass inspection methods
+- Statistical design of experiments (DOE) for inspection qualification
+- Defect libraries and reference sets for particle inspection methods
+- Regulatory perspective on visible particle inspection standards
+- Container-closure system particle risk (rubber particles, glass particles)
+- AQL-based vs. risk-based inspection approach comparison
+
+**Key terms:** visible particle inspection, ECIM (Enhanced Component Inspection Method), elastomeric closure, rubber particle, particulate contamination, defect library, AQL, visual inspection qualification, 100% inspection, statistical sampling, particle enumeration, container-closure system (CCS), glass particle, inspection sensitivity, probability of detection
+
+**Sections:** Introduction & Glossary → Current State of Visual Inspection → Elastomeric Closures Test Method → Glass Container Inspection Method → Conclusion & References → Appendices A–D
+
+---
+
+## TR87-Complete.md
+**Report:** PDA TR87: Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021)
+**Pages:** p1–p48 | **Sections:** 7 (incl. 3 appendices)
+
+**Covers questions about:**
+- Best practices for minimizing glass vial damage throughout pharmaceutical processing
+- Glass-to-glass and glass-to-metal contact: when, where, and how to reduce friction
+- Risk assessment (FMEA, RPN) for glass breakage events
+- Glass vial handling process: washing, depyrogenation, filling, lyophilization, capping, inspection
+- Lyophilization-specific risks: product expansion, hydraulic stoppering, shelf levelness
+- Capping failure mechanisms and root causes
+- Ready-to-use (RTU) vials, robotic automation, and surface coatings as damage-prevention technologies
+- Fundamentals of glass science: CTE, annealing, Griffith fracture theory, practical strength
+- Glass breakage investigation: initial assessment, fractography, root cause analysis, CAPA
+- Glass breakage investigation worksheet for operators (Appendix III)
+
+**Key terms:** glass vial, glass breakage, flaw, practical strength, coefficient of friction (COF), coefficient of thermal expansion (CTE), borosilicate glass, Type I glass, depyrogenation, stuck marks, scuff rings, accumulator, star wheel, screw feed, dead plate, lyophilization, hydraulic stoppering, capping, FMEA, RPN, fractography, fracture analysis, CAPA, ready-to-use (RTU) vials, chemical strengthening, adsorption layer, Griffith equation
+
+**Sections:** Introduction & Glossary → Best Practices for Handling → Risk Assessments → Glass Vial Handling Process (5.1–5.6) → Glass Vial Handling Process (5.7–5.15) → Damage Prevention & References → Appendix I (Glass Science) → Appendix II & III (Investigations + Worksheet)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -267,13 +311,16 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Aseptic processing (general) / 無菌製程（一般）| Guide-No1 + TR22 + PtC-12 |
 | Container closure integrity / 容器密封完整性、CCI | TR73 + TR90 |
 | Regulatory submissions EU MDR / 歐盟MDR法規送件 | TR73-2 |
+| Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
+| Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
+| Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
 
 ## Not Covered in This Knowledge Base
 
 If the user asks about these topics, say so clearly and suggest alternatives:
 
 - **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
-- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR54, TR62, TR70, TR83, TR85) — not available; suggest the user consult the official PDA website
+- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR54, TR62, TR70, TR83) — not available; suggest the user consult the official PDA website
 - **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
 - **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
 - **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
@@ -357,7 +404,16 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice)
 
 **Lyophilization / Freeze-drying (凍乾)**
-→ TR22 ★★★ (lyo APS) — single-report topic in this knowledge base
+→ TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
 
 **GDP / Good Distribution Practices (優良運銷規範)**
 → TR52 ★★★ — single-report topic in this knowledge base
+
+**Glass Vial Handling / Glass Breakage (玻璃瓶處理/破損)**
+→ TR87 ★★★ (comprehensive handling best practices, FMEA, investigation) — single primary source
+
+**Visible Particle Inspection / Container Quality (可見微粒目視檢查/容器品質)**
+→ TR85 ★★★ (ECIM, glass container inspection, validation strategy) | TR90 ★★ (CCS particulate control) | PtC-12 ★★ (RABS particulate)
+
+**Risk Assessment / FMEA (風險評估/FMEA)**
+→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)

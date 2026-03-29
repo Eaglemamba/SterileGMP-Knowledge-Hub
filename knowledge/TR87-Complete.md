@@ -1,192 +1,4 @@
-# : 
-
-Current Best Practices for Pharmaceutical Glass Vial
-Handling and Processing
-
-Current Best Practices for Pharmaceutical Glass Vial Handling and Processing Team
-Authors
-Roger Asselta, Genesis Packaging Technologies
-Bettine Boltres, SCHOTT AG, Germany
-Alfred Breunig, Nipro PharmaPackaging Germany GmbH
-Nicholas R. DeBello, DeBello & Associates LLC
-Carol Rea Flynn, Corning Incorporated
-Linda Lesh, Nipro PharmaPackaging Americas
-James McFarland, Gerresheimer Glass, Inc.
-Anthony Perry, SCHOTT AG
-Tina Tubbs, Sanofi Pasteur
-Dawn Watson, Merck & Co., Inc.
-Contributors
-Dave Machak, American Glass Research
-Jim Nadlonek, Integrated Project Services, LLC (retired)
-Joseph Norris, Smart Skin Technologies
-Wendy Sunderland, Amicus Therapeutics
-
-Current Best Practices for
-Pharmaceutical Glass Vial
-Handling and Processing
-ISBN: 978-1-945584-29-9
-All rights reserved.
-
-Table of Contents
-1.0 INTRODUCTION ..............................................1 5.11.3 Automated Inspection .............................23
-5.11.4 Inspected Vial Ejects ................................23
-1.1 Purpose and Scope .............................................1
-5.11.5 Points to Consider ....................................24
-2.0 GLOSSARY AND ABBREVIATIONS ......................2 5.12 Off-Loading ......................................................24
-5.13 Vial Labeling ....................................................24
-2.1 Abbreviations .....................................................3
-5.14 Secondary Packaging .......................................25
-5.14.1 Points to Consider ...................................25
-3.0 BEST PRACTICES FOR HANDLING GLASS VIALS ..3
-5.15 Finished Product Storage and Handling ...........25
-
-### 3.1 New Equipment Design, Installation, and
-
-Qualification .......................................................5
-
-## 6.0 CONSIDERATIONS FOR PREVENTING
-
-### 3.2 Considerations of Component Design and
-
-ADDITIONAL DAMAGE ...................................25
-Variation ............................................................6
-6.1 Ready-to-Use Vials ...........................................25
-3.3 Real-Time Stress Monitoring ..............................6
-6.2 Robotic Automation .........................................25
-6.3 Outer Surface Treatments or Coatings...............26
-4.0 RISK ASSESSMENTS ........................................7
-7.0 REFERENCES .................................................27
-5.0 GLASS VIAL HANDLING PROCESS ....................10
-5.1 Packaging for Transport and Storage ................11
-
-## 8.0 APPENDIX I: FUNDAMENTALS OF
-
-5.2 Integrated Line with Multiple Transfer Points ...11
-GLASS SCIENCE .............................................27
-5.2.1 Accumulators ...........................................12
-8.1 Coefficient of Thermal Expansion .....................28
-5.3 Vial Washing ....................................................13
-8.2 Stress Inside the Glass ......................................29
-5.3.1 Washing Machines ...................................13
-
-#### 8.2.1 Melting and Solidification
-
-5.4 Dry Heat Sterilization and Depyrogenation ......14
-Behavior of Glass .....................................29
-5.4.1 Continuous Convection Tunnel .................15
-8.2.2 Physical Definition of Stress .....................29
-5.4.2 Points to Consider ....................................16
-8.3 Mechanical Strength of Glass ...........................32
-5.4.3 Batch Depyrogenation Oven ....................16
-8.3.1 Ductile versus Brittle Materials ................32
-5.5 Vial Filling .......................................................17
-8.3.2 Practical Strength ....................................32
-5.5.1 Impacts ....................................................17
-8.3.3 Tensile and Compressive Stress ...............33
-5.5.2 Points to Consider ....................................17
-
-#### 8.3.4 Surface Condition and its Impact on
-
-5.6 Stopper Placement ...........................................17
-Practical Strength ....................................34
-5.7 Lyophilization...................................................17
-8.4 Adsorption Layer on the Glass ..........................35
-5.7.1 Loading and Unloading ...........................18
-8.5 Chemical Strengthening ...................................35
-5.7.2 Lyophilization Process Concerns ...............18
-8.6 References for Appendix I ..................................35
-5.7.3 Seating the Stopper .................................18
-5.7.4 Points to Consider ....................................20
-9.0 APPENDIX II: INVESTIGATIONS ......................36
-5.8 Capping ............................................................20
-9.1 Initial Investigation ..........................................36
-5.8.1 Impacts ....................................................20
-9.2 Root Cause Analysis ..........................................37
-5.8.2 Points to Consider ....................................20
-9.3 Corrective and Preventive Actions ....................38
-5.9 Terminal Sterilization ......................................22
-9.4 References for Appendix II ................................38
-5.10 External Washing .............................................22
-5.11 Inspection ........................................................23
-
-## 10.0 APPENDIX III: GLASS BREAKAGE
-
-5.11.1 Manual Inspection ..................................23
-INVESTIGATION WORKSHEET
-5.11.2 Semi-Automated Inspection ....................23
-AND CHECKLIST ..........................................39
-
-FIGURES AND TABLES INDEX
-Table 3.0-1 General Glass Handling Considerations ..4 Figure 5.11.1-1 Manual Inspection Hood .....................23
-Figure 3.1-1 Screw Feed, Star Wheel, and Potential Figure 5.11.3-1 Automated Inspection System .............24
-Pinch Points ...........................................6
-Figure 6.1-1 Ready-to-Use Vial System ....................26
-
-*[Figure 3.3-1 Example of a Vial Diagnostic Drone]*
-
-**Table 8.0-1 Overview of Glasses Used in**
-
-and Associated Data Visualization
-Pharmaceutical Primary Packaging by
-Technology ............................................6
-Classification and Standards ...............28
-Table 4.0-1 Typical Risk Management Tools .............8
-
-*[Figure 8.1-1 Comparison of Different Glass Types and]*
-
-Table 4.0-2 Example of Risk Priority Number (RPN) Wall Thicknesses ..................................29
-Factor Determination .............................9
-
-*[Figure 8.2.1-1 Volume-Temperature Diagram of a]*
-
-Figure 5.0-1 Generic Glass Vial Handling Process .....10 Crystal and of Glass ..............................30
-
-*[Figure 5.2.1-1 Example of a Rotary Accumulation Figure 8.2.2-1 Tensile and Compressive]*
-
-Table ....................................................12 Force Schematic ...................................30
-Figure 5.2.1.1-1 Abrasion rings .....................................13 Figure 8.2.2.1-1 Schematic Representation of Heating and
-Forming of a Glass Tube into a Vial .......31
-
-*[Figure 5.3.1-1 Diving Nozzle Rotary Washing Machine .14]*
-
-*[Figure 8.2.2.1-2 Polarized Light Image of Annealed,]*
-
-Figure 5.4-1 Stuck Marks .........................................15
-Partially Annealed, and Not Annealed
-Figure 5.4.1-1 Typical Depyrogenation Tunnel Layout Vials .....................................................31
-with a Preheat Zone, a Hot Zone, and a
-
-*[Figure 8.3.2-1 Stress intensity Factor (K) According to]*
-
-Cooling Zone ........................................16
-Griffith Theory ....................................33
-
-*[Figure 5.7.2-1 Vial Fracture Due to Expansion of a]*
-
-*[Figure 8.3.3-1 Vial with Compressive and Tensile Stress]*
-
-Product Component .............................19
-Areas ...................................................33
-
-*[Figure 5.7.2-2 Lensed Vial Due to Expansion of a Product]*
-
-*[Figure 8.3.4-1 Example of Decreasing Glass Practical]*
-
-Component ..........................................19
-Strength by Surface Flaws Induced
-Figure 5.7.3-1 Hydraulic Ram for Stoppering through Pharmaceutical Processing ....34
-Lyophilized Vials .................................19
-
-*[Figure 8.4-1 Visualization of the Reaction of Water]*
-
-Figure 5.8-1 Capping Loads .....................................21 Vapor from Humidity and the Glass
-Figure 5.8.1-1 Examples of Vial Variability Surface ................................................34
-from PDA TR 43 ....................................21
-
-*[Figure 5.8.1-2 Examples of Surface Damage and]*
-
-Breakage Due to Contact with Sealing
-Disc or Rail ..........................................22
+# PDA Technical Report No. 87 (2021): Current Best Practices for Pharmaceutical Glass Vial Handling and Processing
 
 ## 1.0 Introduction
 
@@ -329,10 +141,9 @@ containers should be minimized throughout the entire process. To this end, the p
 3.0-1 should be applied to both existing and new equipment. New equipment design and installation
 should include additional considerations that are outlined in Section 3.1.
 
-**Table 3.0-1 General Glass Handling Considerations**
+| Handling Consideration | Points to Address | Topic Section |
+| --- | --- | --- |
 
-Handling Consideration Points to Address Topic Section
-Limit Glass-to-Glass • Avoid areas in process where glass items are dropped or excessively Section 5.1,
 Contact (Frictive and hit one another due to movement through ramps, etc. (gravity used 5.2, 5.4, 5.7,
 Impact) to convey) 6.0
 • Minimize movement of glass via mechanical pushing of large
@@ -512,55 +323,9 @@ into account the known attributes of the process, thoroughly analyze each one. T
 evaluated to ascertain if the risk is acceptable or unacceptable. Mitigation activities are identified and
 completed for those risks deemed unacceptable.
 
-**Table 4.0-1 Typical Risk Management Tools**
+| Tool | Description / Attributes | Potential Applications |
+| --- | --- | --- |
 
-Risk Management Tool Description / Attributes Potential Applications
-Basic Tools
-• Diagram Analysis Simple techniques that are commonly used Compilation of observations,
-• Flowcharts to gather and organize data, structure risk trends, or other empirical
-management processes, and facilitate information to support a variety
-• Check Sheets
-decision-making of less-complex deviations,
-• Process Mapping
-complaints, defects, or other
-• Cause/Effect Diagrams
-circumstances
-(i.e., Ishikawa or
-fishbone diagrams)
-Risk Ranking and Filtering • Method to compare and rank risks Useful for situations when the risks
-• Typically involves evaluation of multiple, and underlying consequences are
-diverse quantitative and qualitative factors for diverse and difficult to compare
-each risk, weighting factors, and risk scores using a single tool
-Statistical Tools • Control Charts Visualization and evaluation of
-• Pareto Charts data to assist in the identification
-of trends, issues, and appropriate
-• Histograms
-corrective actions
-Advanced Tools
-Fault Tree Analysis (FTA) • Method used to identify all root causes of Evaluation of deviations and
-an assumed failure or problem investigations
-• Used to evaluate system and subsystem
-failures one at a time, but can combine
-multiple causes of failure by identifying
-causal chains
-• Relies heavily on complete process
-understanding to identify causal factors
-Hazard Operability • Tool assumes that risk events are caused Commonly used to evaluate
-Analysis by deviations from the design and process safety hazards
-(HAZOP) operating intentions
-• Uses a systematic technique to help
-identify potential deviations from normal
-use or design intentions
-Failure Mode Effects • Assesses potential failure modes for Evaluation of equipment
-Analysis (FMEA) processes and the probable effect on and facilities; analysis of a
-outcomes or product performance manufacturing process to identify
-• Once failure modes are known, risk reduction high-risk steps and critical
-actions can be applied to eliminate, reduce, parameters
-or control potential failures
-• Highly dependent on strong understanding of
-product, process, and facility under evaluation
-• Output is a relative “risk score” for each
-failure mode
 An FMEA should be performed during the initial design and development of the product. Thus,
 critical elements of the container design can be identified to ensure product quality including, but
 not limited to, considerations for processing steps such as filling, blast freezing, lyophilization, and
@@ -595,7 +360,8 @@ spection capabilities throughout the process should be outlined to provide infor
 Finally, the definition and rationale for rankings used to assess each criterion of the RPN should be clearly
 outlined and documented. An example of RPN definitions specific to glass-handling hazards is provided in
 
-**Table 4.0-2; values and definitions may change depending on the individual process or situation.**
+| Criteria | Correlation Factor | Considerations |
+| --- | --- | --- |
 
 **Table 4.0-2 Example of Risk Priority Number (RPN) Factor Determination**
 
@@ -1298,9 +1064,9 @@ packaging nonparenteral drugs. Typical compositional ranges for pharmaceutical g
 various national standards, such as ISO 12775 and ASTM E438 (2-3). Both these standards describe two
 types of borosilicate glass based on their coefficients of mean linear thermal expansion (see Section 8.1).
 
-**Table 8.0-1 Overview of Glasses Used in Pharmaceutical Primary Packaging by Classification and Standards**
+| Glass Type | Subtype / Form | SiO₂ (%) | B₂O₃ (%) | Al₂O₃ (%) | Na₂O/K₂O (%) | MgO/CaO/BaO (%) | CTE [10⁻⁶ K⁻¹](20–300°C) | Annealing Point (°C) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Borosilicate
 3.3 5.0 7.0 Quartz Soda-Lime-
 Aluminosilicate Group Group Group Molded (Fused Silicate Tubular/
 Tubular Tubular Tubular Silica) Molded
@@ -1900,4 +1666,3 @@ Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org
-Web site: www.pda.org
