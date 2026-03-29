@@ -1,171 +1,4 @@
-# : 
-
-Post-Approval Change Management and Implementation
-for Biologics and Pharmaceutical Drug Products —
-A User’s Guide
-
-Post-Approval Change Management and Implementation for Biologics and Pharmaceutical Drug
-Products Team
-Authors and Contributors
-Kara Follmann, PhD, Pfizer (Co-Lead) Morten Munk, Fujifilm Diosynth
-Biotechnologies
-Karolyn Gale, Emergent BioSolutions (Co-
-Lead) Kassidy Polk Good, Mylan
-Sally Anliker, PhD, Eli Lilly and Company Jyoti Sachdeva, PhD, Mylan
-Walter Chambliss, PhD, University of Sandra Maria Santos de Magalhaes Casaca,
-Mississippi MPmarm, Alvotech
-Marcello Colao, GSK Vaccines Marazban Sarkari, PhD, Teva Pharmaceuticals
-Sven Deutschmann, PhD, Roche Diagnostics Naheed Sayeed, Apotex
-GmbH
-Mihaela Simianu, PhD, CONCORDIA,
-Exsandra Elcewicz, Takeda MCS, LLC
-Shishir Gadam, PhD, Genentech Raman Srinivasan, Biocon Biologics Ltd.
-Chandra Kasireddy, Belcher Pharmaceuticals, Gopi Vudathala, PhD, Incyte Corporation
-LLC
-Gresham Weatherly, PhD, Abbvie
-Laura Kelley, Tiefenbacher Pharmaceuticals
-Kim Wolfram, Biogen
-Suzanne Kiani, Mylan
-Mike Yelvigi, Center for Pharmaceutical
-Lorenz Liesum, PhD, Roche Integration, LLC
-José C. Menezes, PhD, Valgenesis Louis Zaczkiewicz, Azzur Group, LLC (retired)
-Brian Mullan, PhD, Yposkesi
-
-Post-Approval Change
-Management and
-Implementation for Biologics and
-Pharmaceutical Drug Products —
-A User’s Guide
-ISBN: 978-1-945584-41-1
-All rights reserved.
-
-Table of Contents
-1.0 INTRODUCTION ...............................................1 8.1 Harmonized Definitions and Consistent
-Requirements for Approval of Changes ..............17
-1.1 Purpose ................................................................1
-
-### 8.2 Mutual Recognition and Consistent Review
-
-1.2 Scope ...................................................................1
-Times of PACs in ICH Regions ................................17
-2.0 GLOSSARY OF TERMS ........................................2
-9.0 CONCLUSION .................................................18
-2.1 Glossary ...............................................................2
-2.2 Abbreviations .......................................................3 10.0 REFERENCES ..................................................18
-3.0 BACKGROUND AND LANDSCAPE FOR PACS .........4 11.0 APPENDIX 1: REPLACEMENT OF
-TRADITIONAL ADVENTITIOUS AGENTS
-
-## 4.0 KEY ELEMENTS OF A PHARMACEUTICAL QUALITY DETECTION METHODS WITH RAPID,
-
-SYSTEM FOR PAC MANAGEMENT .......................5 PCR-BASED DETECTION METHODS .................20
-4.1 Management Review ...........................................5 11.1 Background ......................................................20
-
-### 4.2 Corrective Action and Preventive Action 11.1.1 Description and Rationale of Proposed
-
-Program ...............................................................6 Changes .....................................................21
-4.3 Change Management System ..............................6 11.1.2 Present State of Testing ..............................21
-4.4 Process Performance and Product Quality 11.2 Current Filing Considerations ...........................24
-Monitoring ..........................................................7 11.2.1 Risk Management ......................................25
-
-### 4.5 Quality Risk Management and Knowledge 11.3 Comparability Protocol Strategy Overview
-
-Management .......................................................7 for the Replacement of the Traditional
-Mycoplasma Detection Methods with a
-5.0 PAC PROCESS TOOLS TO ENHANCE REGULATORY PCR-based Method...........................................25
-FLEXIBILITY ....................................................8 11.3.1 Conditions that Need to be Met Prior to
-5.1 Established Conditions ......................................10 Implementation of the Change: Acceptance
-Criteria for the PCR-Based Mycoplasma
-5.1.1 Background ..................................................10
-Detection Method ......................................25
-
-#### 5.1.2 Benefits of Defining Established
-
-11.4 References........................................................31
-Conditions ....................................................10
-
-#### 5.1.3 ECs versus Non-ECs and Change
-
-## 12.0 APPENDIX 2: INTRODUCTION OF A NEW
-
-Management ...............................................11
-ISOLATOR SYSTEM FOR ASEPTIC FILL .............32
-
-### 5.2 Post-Approval Change Management
-
-Protocols ............................................................12 12.1 Background .....................................................32
-5.3 Product Lifecycle Management ..........................13 12.2 Current Regulatory Filing Considerations—
-Improvements to Drug Product Aseptic Filling ....32
-6.0 GLOBAL LIFECYCLE AND PAC MANAGEMENT .....14 12.2.1 U.S. Filing Considerations ...........................32
-12.2.2 Canadian Filing Considerations ..................33
-6.1 ICH Regions ........................................................14
-12.2.3 EU Filing Considerations.............................34
-6.2 Non-ICH Regions ................................................14
-12.2.4 WHO Considerations ..................................34
-7.0 LEGACY MARKETED PRODUCTS AND ICH Q12 ...15 12.3 Strategy ...........................................................34
-12.4 References........................................................61
-
-## 8.0 RECOMMENDATIONS FOR HARMONIZATION
-
-(CATEGORIZATION OF CHANGES) .....................16
-
-FIGURES AND TABLES INDEX
-Figure 3.0-1 Scientific and Risk-Based Approach to Table 12-8 Risk Level Calculation Table .................48
-Categorization of Changes .........................5
-
-**Table 12-9 Evaluation of Risk to Product and/or**
-
-**Table 5.0-1 Tools and Considerations for Decision- Project to Inform Comparability Study**
-
-Making for PAC...........................................9 Design .................................................48
-
-**Table 8.2-1 Proposed Harmonized Standard Table 12-10 Testing Results for OFB Drug Product**
-
-Review Time ............................................18 after Three Pump Cycles .......................50
-Table 11.1.1-1 List of Proposed Changes .....................21 Table 12-11 Filling Conditions for Engineering
-Runs ....................................................51
-Table 11.1.2-1 Summary of Validation Results ............22
-
-*[Figure 12-2 Individual Vial Fill Volumes for]*
-
-**Table 11.1.2-2 Detection Limit/Sensitivity of**
-
-Engineering Run 2 ...............................52
-Mycoplasma Detection Assays .............23
-
-*[Figure 12-3 Distribution of Fill Volumes for]*
-
-**Table 11.2-1 Summary of Current and Future**
-
-Engineering Run 2 ...............................52
-Regulatory Requirements ....................24
-
-**Table 12-12 Filling Conditions for Engineering**
-
-Table 12.3-1 Change in Filling Technology ...............35
-Runs ....................................................53
-Figure 12-1 Considerations and Critical Quality ......37
-
-**Table 12-13 Testing Results for OFB Drug Product**
-
-Table 12-1 Current Process ....................................39
-Engineering Runs ................................53
-Table 12-2 Current Critical Quality Attributes .......40
-
-**Table 12-14 Critical Process Parameters for OFB**
-
-Table 12-3 Current Critical Process Parameters .....40 Drug Product Filling .............................54
-
-**Table 12-4 Primary Container Closure System Used Table 12-15 Critical Quality Attributes and Lifecycle**
-
-on Filling Line .....................................41 Knowledge Management ....................56
-Table 12-5 Proposed Process .................................44 Table 12-16 Release Testing ....................................58
-Table 12-6 Process Change Impact Assessment ....45 Table 12-17 Summary of Changes from
-Currently Approved Process to
-
-**Table 12-7 Impacted CTD Sections and/or**
-
-Proposed Process .................................59
-Established Conditions.........................46
+# PDA Technical Report No. 91 (2023): Post-Approval Change Management and Implementation for Biologics and Pharmaceutical Drug Products — A User's Guide
 
 ## 1.0 Introduction
 
@@ -524,10 +357,9 @@ time-consuming, iterative, and expensive processes and, instead, encourage smoot
 interaction and transparent communication with regulatory authorities.
 When deciding to implement a PAC, thereby aiming for a new desired state, the tools suggested in
 
-**Table 5.0-2 may prove helpful when writing the documentation and scientific justification. The use of**
+| Defining Scope of Change | Regulatory Understanding | Risk Assessment | Definition | Approval Strategy | Implementation |
+| --- | --- | --- | --- | --- | --- |
 
-tools and points for consideration, such as those identified in Table 5.0-2, can aid in identifying and
-presenting, at the outset, the most convincing and thorough documentation required for the regulatory
 approval process. However, while the use of a PACMP as discussed in ICH Q12 (see Section 4.0) and
 presented in Table 5.0-2 continues to gain acceptance, its use is not currently accepted in all countries.
 The decision about change implementation should focus on potential product impact and mainte-
@@ -557,12 +389,12 @@ implementation of changes.
 The control strategy should be designed and implemented based on quality risk management, which is a valuable tool to reflect and evaluate the different steps, by
 linking the process to the established CPPs and understanding impacts and/or changes to CQAs. The control strategy should be reassessed as part of the PAC process.
 
-**Table 5.0-9 Tools and Considerations for Decision-Making for PAC**
+| | | |
+| --- | --- | --- |
+| | EC CPP CQA | Submission |
+| | Dossier | Notification |
+| | EC CQA | PQS |
 
-Defining the Scope of Regulatory
-Understanding Risk Assessment Definition Approval Strategy Implementation
-Change Assessment
-ssecorP
 • What is the scope- • Have Established • Determined • Q12 PAC procedure • Define design • Define approval • Create/update
 background? Conditions (ECs) categorization by or other procedure? space, as strategy for ICH PACMP, as required
 been established/ performing a risk appropriate countries
@@ -975,15 +807,12 @@ of change, which would then be similar throughout the ICH regions and the rest o
 anticipate the timeline for approvals of the PAC, allowing for improved planning, faster introduction
 of innovative technologies, and timelier availability of improved products to patients.
 
-**Table 8.2-1 Proposed Harmonized Standard Review Time**
+| | | |
+| --- | --- | --- |
+| | Do and Record | PQS / Health Canada Level IV |
+| | Do and Tell | Type IA / Annual Report / CBE-30 |
+| | Tell, Wait and Do | Type II / PAS / SNDS |
 
-Consistent PAC Risk-Level Reporting Category and Review Times
-Do and Record Do and Tell – Notification Tell, Wait and Do –
-(Lowest Risk) (Minor to Moderate) Prior-approval (Major)
-Review Not Applicable, documented within Regional timelines apply but NMT Timelines are jurisdiction-
-Time§ a firm’s PQS 90 days# specific#* but NMT 180 days
-NMT=No more than
-§ Excludes potential clock stops due to queries
 # Ranges from implementation upon filing to a specified timeline post-filing; “NMT” timelines are strongly encouraged and
 recommended here
 * Timelines for major prior-approval submissions may be impacted by site evaluations or inspections
@@ -1136,34 +965,8 @@ testing on unprocessed bulk harvest samples as an alternative mycoplasma test me
 registered test for mycoplasma (compliant with both European and U.S. pharmacopeias) will remain
 in the application.
 
-**Table 11.1.1-1 List of Proposed Changes**
-
-Current State Proposed Change Rationale (see details below)
-Traditional PCR-based • Automated handling of the specimens, avoidance of significant
-mycoplasma adventitious manual handling
-detection agent
-• Significantly reduced process time—less than 1 day compared to
-methods (Ph. mycoplasma
-28 days using the traditional, growth-based and indicator-cell-based
-Eur. 2.6.7/USP detection
-mycoplasma detection methods (Mycoplasma, Leptospira, or viruses
-<63> culture method
-could contaminate expensive downstream processing equipment during
-and indicator cell
-the traditional 28-day method, resulting in a possible supply disruption)
-culture methods)
-• Fully automated readout—no need for well-trained analysts with a
-high level of expertise to interpret results
-• No need for specialized equipment and laboratories to perform
-microbiological growth-based and indicator-cell cuture-based assays
-• Less prone to interference—some cytotoxic New Molecular Entities
-(NMEs) interfere with in vitro cell culture assays
-• Increased sensitivity—lower dilution needed to overcome product
-inhibition
-• Increased specificity
-• Less complex sample workflow—only PCR-based assays will be used
-• Fewer safety issues—due to the fully automated sample workflow,
-avoids manual pipetting that might result in repetitive strain injuries
+| Current State | Proposed Change | Rationale |
+| --- | --- | --- |
 
 #### 11.1.2 Present State of Testing
 
@@ -1188,15 +991,13 @@ tional detection assays for adventitious agents. Validation studies of the lack 
 ity have demonstrated the superiority of PCR-based rodent parvovirus detection assays over the tradi-
 tional 324K-cell-based detection assays. Table 11.1.2-1 presents a summary of the validation results.
 
-**Table 11.1.2-1 Summary of Validation Results**
+| Rodent Parvovirus (Species or Strain) | Sensitivity: 324K-Cell-Based Assay (TCID50/mL) | Sensitivity: PCR-Based Assay (TCID50/mL) |
+| --- | --- | --- |
+| Kilham's rat virus (KRV) | >10 | 0.003 |
+| Mouse Minute Virus (MMV17) | >10 | 0.14 |
+| Mouse Minute Virus (MMV52) | >10 | 0.27 |
+| H1-Parvovirus | 0.86 | 0.02 |
 
-Rodent Parvovirus Sensitivity of the 324K-Cell- Sensitivity of the PCR-Based
-(Species or Strain) Based Assay/(TCID50/mL) Assay/(TCID50/mL)
-Kilham’s rat virus (KRV) >10 0.003
-Mouse Minute Virus (MMV17) >10 0.14
-Mouse Minute Virus (MMV52) >10 0.27
-H1-Parvovirus 0.86 0.02
-Regarding the lack of specificity, a biopharmaceutical firm discovered that mouse minute virus (MMV)
 had contaminated its Chinese hamster ovary (CHO) cell production system (3). Neither the in vitro
 general viral screen nor the 324K cell assay detected this MMV strain, though it can be reliably de-
 tected using a PCR assay. This clearly shows that not all viruses can be detected by indicator-cell-based
@@ -1206,28 +1007,19 @@ nants, has been confirmed not only for viral contaminants, but also for bacteria
 example, Spiroplasma citrii cannot be detected by the traditional growth- and cell-based mycoplasma
 detection assays. Table 11.1.2-2 provides a summary of validation results (4).
 
-**Table 11.1.2-2 Detection Limit/Sensitivity of Mycoplasma Detection Assays**
+| Mycoplasma Strain | Reference Strain | Culture Method (CFU/mL) | Indicator-Cell Culture Method (CFU/mL) | Mycoplasma PCR (CFU/mL) |
+| --- | --- | --- | --- | --- |
+| M. hominis | ATCC 23114 | 0.1 | 1 | 0.1 |
+| M. orale | ATCC 23714 | 0.1 | Not detectable | 1 |
+| M. arginini | ATCC 23838 | 0.1 | 10 | 1 |
+| A. laidlawii | EDQM | 0.01 | 0.01 | 0.1 |
+| M. hyorhinis | EDQM | 1 | 1 | 10 |
+| M. pneumoniae | NCTC 10119 | 1 | Not detectable | 1 |
+| M. salivarium | ATCC 23064 | 0.1 | Not detectable | 1 |
+| M. fermentans | ATCC 19989 | 1 | 10 | 0.1 |
+| Sp. citri | ATCC 27556 | Not detectable | Not detectable | 1 |
+| M. hyorhinis (fastidious) | ATCC 29052 | Not detectable | 10 | 10 |
 
-Detection Limit
-Detection Limit Detection Limit
-Indicator-Cell
-Mycoplasma Strain Reference Strain Culture Method Mycoplasma PCR
-Culture Method
-(CFU/mL) (CFU/mL)
-(CFU/mL)
-M. hominis ATCC 23114 0.1 1 0.1
-M. orale ATCC 23714 0.1 Not detectable 1
-M. arginini ATCC 23838 0.1 10 1
-A. laidlawii EDQM 0.01 0.01 0.1
-M. hyorhinis EDQM 1 1 10
-M. pneumoniae NCTC 10119 1 Not detectable 1
-M. salivarium ATCC 23064 0.1 Not detectable 1
-M. fermentans ATCC 19989 1 10 0.1
-Sp. citri ATCC 27556 Not detectable Not detectable 1
-M. hyorhinisa ATCC 29052 Not detectable 10 10
-a Fastidious Strain
-The data summarized in Table 11.1.2-2 illustrate that the culture method and the mycoplasma PCR
-assay are sensitive methods for detecting mycoplasma contamination in preharvest cell-culture fluid
 samples derived from a CHO-cell culture process. Both methods can detect the mycoplasma species
 included in this comparability study with a sensitivity of ≤10 CFU/mL, but the PCR-based myco-
 plasma detection method is superior to the traditional mycoplasma detection methods in regard to
@@ -1280,32 +1072,9 @@ In the current U.S. and EU biologics regulatory guidances, this method change is
 biologic; therefore, it must bear the caveat that the agencies reserve the right to respond with feedback
 to the proposed comparability protocol and approve, deny, and/or ask for more information.
 
-**Table 11.2-1 Summary of Current and Future Regulatory Requirements**
-
-Future Regulatory
-Current Regulatory Requirements
-Requirements
-Existing What’s Supporting Additional Current Filing Justification Proposed Filing
-Established changing? Data Required Tests Required Category w/ Supporting Category
-Conditions to Demonstrate Data, Testing
-or Impacted Equivalence & Risk
-Sections Assessment
-Can be an Replace- See “Com- See details • US: PAS PACMP as Follow up
-in-process ment of mitment and below (Tell, Wait prior approval with post-
-control (IPC) conventional Implementa- and Do) in each juris- change
-or a release mycoplasma tion Plan” in diction prior to data as
-• EU: Type IB
-specification testing the example change imple- “Notification”
-(Tell and Do)
-with more below mentation of fulfilled
-• IPC
-sensitive commitment
-(S.2.2.S.2.4)
-PCR-based (Do & Tell)
-• Relese method
-specifica-
-tion (S.4.1,
-S.7.1, S.7.3)
+| Existing Established Conditions or Impacted Sections | What's Changing? | Supporting Data Required to Demonstrate Equivalence | Additional Tests Required | Current Filing Category with Supporting Data, Testing & Risk Assessment | Justification | Proposed Filing Category |
+| --- | --- | --- | --- | --- | --- | --- |
+| Can be an in-process control (IPC) or a release specification | Replacement of conventional mycoplasma testing with more sensitive PCR-based method | See "Commitment and Implementation Plan" in the example below | See details below | US: PAS (Tell, Wait and Do) in each jurisdiction prior to change implementation EU: Type IB (Tell and Do) IPC (S.2.2, S.2.4) Release specification (S.4.1, S.7.1, S.7.3) | Prior approval required in each jurisdiction prior to change implementation of commitment | PACMP as prior approval followed by post-change data as "Notification" (Do & Tell) if fulfilled |
 
 #### 11.2.1 Risk Management
 
@@ -1699,16 +1468,13 @@ prior to implementation (8).
 In this example, the current regulatory requirements versus the proposed requirements, leveraging
 ICH Q12 principles (9), are summarized in Table 12.3-1.
 
-**Table 12.3-1 Change in Filling Technology**
+| | | | |
+| --- | --- | --- | --- |
+| FDA | PAS | 4 | |
+| EMA | Type II | ~60+ | |
+| HC | SNDS/Notifiable | 180/90 | |
+| WHO | | | |
 
-Current Regulatory Requirements Future Regulatory Requirements
-What supporting Any additional tests Justification, including
-Existing Established
-data are required (e.g., analytical, stability, Supporting Data
-Conditions or Impacted What’s changing? Current Filing Category Proposed Filing Category
-to demonstrate validation) required and Testing & Risk
-Sections
-equivalence? other than existing? Assessment
 Manufacturing Process Replacement of See “Commitment and See detail below US: PAS (Tell, Wait and Provide PACMP as Follow up with post-
 Development (3.2.P.2.3) Conventional Filler Implementation Plan” in Do) prior approval in each change commercial lot
 with New Isolator the example below jurisdiction prior to data as Notification of
@@ -1864,103 +1630,45 @@ are supported by media fills spanning these ranges.
 Fill Process
 The currently approved process is provided in Table 12-1.
 
-**Table 12-1 Current Process**
+**Table 12-11 Filling Conditions for Engineering Runs**
+| Run | Batch Size | Fill Target | Solution |
+| --- | --- | --- | --- |
+| Engineering Run 1 | 750 L | 5 mL (Mid) | Placebo* |
+| Engineering Run 2 | 1250 L | 5 mL (Mid) | Placebo* |
+| Engineering Run 3 | 750 L | 5 mL (Mid) | OFB |
+| Engineering Run 4 | 750 L | 2 mL (Low) | Placebo* |
+| Engineering Run 5 | 1250 L | 2 mL (Low) | OFB |
+| Engineering Run 6 | 1250 L | 9 mL (High) | Placebo* |
+| Engineering Run 7 | 750 L | 9 mL (High) | OFB |
 
-Manufacturing
-Additions/Removals Steps In-Process Tests
-Parameters
-Filling Suite X
-Bulk drug substance Pressure: ≤20 psi Pre-filtration bioburden:
-Product Volume to ≤10 CFU/mL
-Surface Area (V:SA):
-Samples removed for QC Sterile filtration
-≤175 mL/cm2
-testing
-Post-use filter-integrity
-bubble point: ≥50 psi
-Filling Suite – Aseptic Core (Grade A) – No Isolator
-Line speed: Environmental monitoring
-≤60 vials/min
-Filling Weight check-in intervals
-of ~5% of target batch
-size
-Fully stoppered vials Environmental monitoring
-Stoppering
-Capping Room
-Samples removed for QC Capped vials with integral Environmental monitoring
-testing Capping seals Finished product testing
-(Release testing)
-Packaging Suite
-Packaging
 Currently approved CQAs and CPPS are provided in Table 12-2 and Table 12-3, respectively. The
 proposed process is provided in Table 12-5.
 
-**Table 12-2 Current Critical Quality Attributes**
+| Existing Established Conditions or Impacted Sections | What's changing? | What supporting data are required to demonstrate equivalence? | Any additional tests (e.g., analytical, stability, validation) required other than existing? | Current Filing Category | Proposed Filing Category | Supporting Data and Testing & Risk Assessment |
+| --- | --- | --- | --- | --- | --- | --- |
 
-Critical Step Analytical Method Acceptance Criteria
-Pre-sterile Filtration Bioburden ≤10 CFU/mL
-Product Release Criteria
-Identification Conforms to reference standard Meets criteria
-Appearance Visual Solution is clear to colorless to
-yellow-green; there may be a few
-particulates.
-Potency Biological Assay 75-125%
-Purities/Impurities HPLC and GC Meets criteria
-Particulates (subvisible) Light Obscuration (LO) ≥2 µm – N/A
-≥5 µm – N/A
-≥10 µm – ≤6000 particles/container
-≥25 µm – ≤600 particles/container
-pH pH meter 7.6 ± 0.2
-Bacterial Endotoxin Turbidimetric LAL <5 EU/mL
-Sterility Sterility Meets 21 CFR 610.12
-Excipients: Assay 0.100 ± 0.050 mg/mL
-Polysorbate 80
+| | | | | |
+| --- | --- | --- | --- | --- |
+| Open RABS | | | | |
+| Closed RABS | | | | |
+| | | H₂O₂ VHP | | |
+| | | | | |
 
-**Table 12-3 Current Critical Process Parameters**
-
-Process Step Manufacturing Criteria Proven Acceptable Range
-Sterile Filtration Pressure test: Post-use filter-integrity
-≥50 psi
-bubble point following WFI flush
-Filling (Filling uniformity and Vial weight checks: Weight check in
-±1.5%
-homogeneity) intervals of ~5% of target batch size
-Primary Packaging
-OFB is packaged using a standard pharmaceutical container–closure system, specifically, Type 1 clear
-glass vials and bromobutyl rubber stoppers, known to be safe and compatible with liquid protein
 products. The same container–closure components are used for several sterile protein products on this
 filling line as they do not interact and cause changes in the quality of the product.
 Table 12-4 provides a general description of the materials used in the primary container–closure sys-
 tem. No changes are proposed to the currently approved primary container–closure system due to the
 proposed changes to the filling line.
 
-**Table 12-4 Primary Container Closure System Used on Filling Line**
+| Fishbone Branch (Main Cause) | Key Parameters / Sub-causes |
+| --- | --- |
+| Sterility / Decontamination | Automated Decontamination (H₂O₂ VHP cycle) Disinfection vs H₂O₂ Media Fill Vial Entry / Stopper Entry Product Filtration (in-process) Vial Sterilization / Stopper Sterilization Volume of H₂O₂ | H₂O₂ Residues In-line Filtration Method of Sterilization |
+| Fill Weight / Drug Quantity | Fill Weight Variation Fill Weight Check (in-process frequency) Fill Weight Adjustment Fill Weight Process Capability Target Fill Volume (product/strength-dependent) Fill Time | Fill Weight Frequency Stopper Placement Time |
+| Particulates | Intrinsic vs Extrinsic particles Monitoring (Visual Inspection) Air Flow / Velocity Turbulent vs Unidirectional airflow First Air Machine Movements |
+| Extractables & Leachables (E&L) | Product Contact Parts Type of Pumps (diaphragm vs peristaltic) Shear Rate Single-use vs multi-use components Stopper Change | Vial Change Seal Change | Product container Oxidizable Substances | Degradation Product |
+| Container Closure Integrity (CCI) | Residual Seal Force Container Closure Integrity Testing Stopper Change Relative Humidity | Temperature Oxygen Level Product Exposure Time | Product Hold Time | Product storage |
+| Fill-Finish Critical Process Parameters (Core) | Environment Monitoring Manual Interventions Isolator Leak detection Line Speed (vials/min) Product Volume to Surface Area ratio (V:SA) Conveyor speed and time Pressure differentials |
 
-Material Description Dimensions/Sizes
-Type I glass Meets: 3 ml, 6 ml, and 10 ml
-• USP <660>
-(not sulfate or sulfate-treated)
-• Ph. Eur. 3.2.1
-Bromobutyl rubber stopper Meets: 20 mm
-• USP <381>
-(pre-siliconized)
-• Ph. Eur. 3.2.9 (Type l closures)
-• ISO 8871
-Aluminum seal — —
-Polypropylene and resin cap — —
-Washing/Sterilization of Components
-No changes are proposed to the currently approved washing and sterilization of components due to
-the proposed changes to the filling line.
-Vials
-The processing of vials used for filling OFB and all drug products filled in this line consists of:
-• Visual Inspection—100% of vials are visually inspected
-• Sampling—Defined number of vials from any lot are sampled according to vial specifications to
-be released for use in filling
-• Cleaning—Vials for manufacturing use are washed by a validated cycle on the vial washer
-• Sterilization—Washed vials are heat-sterilized and depyrogenated using a depyrogenation oven,
-then fed through a dry-heat tunnel
-• Filling and Closure—Sterilized vials are filled, stoppered, and capped
-Stoppers
 Stoppers are provided prewashed and siliconized. Stoppers are steam-sterilized and stored in sealed
 containers until required for use.
 Container Closure Integrity Testing
@@ -2072,176 +1780,25 @@ installation qualification, operational qualification, and performance qualifica
 assessed in the PPQ, which will confirm that all identified CPPs and CQAs of the drug product are met.
 The current manufacturing process is described in Table 12-1. The proposed process is provided in
 
-**Table 12-5. Further description of the manufacturing filling process CQAs (Table 12-2) and CPPs**
+| Steps | Manufacturing Parameters | Additions/Removals | In-Process Tests |
+| --- | --- | --- | --- |
 
-(Table 12-3) are provided in the Fill Process and Validation sections.
+| Filling Suite | |
+| Sterile filtration | Pressure: ≤20 psiProduct Volume to Surface Area (V:SA): ≤175 mL/cm² | Bulk drug substanceSamples removed for QC testing | Pre-filtration bioburden: ≤10 CFU/mLPost-use filter-integrity bubble point: ≥50 psi |
 
-**Table 12-5 Proposed Process**
-
-Manufacturing
-Additions/Removals Steps In-Process Tests
-Parameters
-Filling Suite X
-Bulk drug substance Pressure: ≤20 psi Pre-filtration bioburden:
-Product Volume to ≤10 CFU/mL
-Samples removed for QC
-Surface Area (V:SA):
-testing Sterile filtration
-≤175mL/cm2
-Post-use filter- integrity
-bubble point: ≥50 psi
-Filling Suite – New Isolator
-Line speed: Environmental monitoring
-≤60 vials/min
-Target Fill Volume:
-Filling Target Fill is product- and
-strength-dependent
-Weight check-in intervals of
-~1% of target batch size
-Fully stoppered vials Environmental monitoring
-Stoppering
-Capping Room
-Samples removed for QC Capped vials with integral Environmental monitoring
-testing Capping seals Finished product testing
-(Release testing)
-Packaging Suite
-Packaging
-
-**Table 12-6 highlights information about the manufacturing and filling of the product OFB and the**
+| Filling Suite – Aseptic Core (Grade A) – No Isolator | |
+| Filling | Line speed: ≤60 vials/min | | Environmental monitoringFill Weight check-in intervals of ~5% of target batch size |
+| Stoppering | | Fully stoppered vials | Environmental monitoring |
 
 proposed changes. The changes will be assessed as per predefined PPQ, taking into consideration the
 CQAs, CPPs, and lifecycle knowledge management of the product and process.
 
-**Table 12-6 Process Change Impact Assessment**
+| Capping Room | |
+| Capping | | Samples removed for QC testingCapped vials with integral seals | Environmental monitoringFinished product testing (Release testing) |
 
-Description (in order of operation) Change Impact
-Manufacturing Site Same filling suite will be used; however, gowning
-areas and space will be reduced. Proposed isolator
-chamber is Grade A, proposed into a Grade C space.
-HVAC changes, air flow), material flow, waste flow,
-and personnel flow changes will be captured in PPQ.
-Processing Rooms and Equipment (product-contact No change proposed
-and non-product-contact) are sanitized
-Environmental Monitoring sampling for equipment No change proposed
-set-up is initiated
-Sterile Equipment is set up; sterile filtration is started Will be confirmed via validation as part of change
-Environmental Monitoring is initiated for filling Will be confirmed via validation as part of change
-operations
-Vials are transferred from sterilization tunnel into vial Sterilization tunnel is a new feature; washed
-feed and depyrogenated vials will be fed through the
-sterilization tunnel
-Target Fill May be less based on new-found efficiencies; will be
-confirmed via validation as part of change in equipment
-Nominal Fill Volume No change proposed; will be confirmed via validation
-as part of change
-Stoppers are loaded No change proposed
-Caps are loaded No change proposed
-Sterile, empty Vials will be fed through filling machine No change proposed
-with 100% weight check
-Filled Vials will be stoppered and capped or sealed
-automatically
-100% Visual Inspection of filled vials per USP <790> No change proposed
-Hold Times Will be confirmed via validation as part of change
-Processing Times No change proposed; however, will be confirmed via
-validation as part of change in equipment
-Batch Size(s) No change proposed; more vials may be available
-based on reduced target fill and new-found
-efficiencies. Will be confirmed via validation as part of
-change in equipment
-Consistent with ICH Q12, the sections of the Common Technical Document (CTD) that will be as-
-sessed to evaluate the impact to ECs are listed in Table 12-7 (9).
+| Packaging Suite | |
+| Packaging | | | |
 
-**Table 12-7 Impacted CTD Sections and/or Established Conditions**
-
-CTD Section Section Title Established Conditions
-Manufacturing Process
-3.2.P.2.3 Update based on final PPQ
-Development
-Description of Manufacturing
-3.2.P.3.3 Update based on final PPQ
-Process and Process Controls
-Controls and Critical Steps and
-3.2.P.3.4 Update based on final PPQ
-Intermediates
-For more details on PPQ
-parameters being assessed, see
-“Process Validation”
-CPPs to be assessed will include:
-Sterilization tunnel: Conveyor speed
-and time, temperature, pressure,
-airflow
-Filler: Conveyor speed, pump
-operation, tubing
-Capping: Conveyor speed,
-compression
-Formulation: Filtered bulk drug
-Process Validation and/or
-3.2.P.3.5 product homogeneity, filtered bulk
-Evaluation
-drug product hold time
-Sterile filtration: Filter validation
-Filling: Drug product filling
-uniformity (fill volume)
-CQAs to be assessed will include:
-Sterilization tunnel: Bioburden and
-endotoxin
-Filler: Bioburden and weight
-Capping: Container closure integrity
-Product: Final drug product release
-specifications
-Release data, as per currently
-approved drug product
-3.2.P.5.4 Batch Analysis specifications for three historical
-commercial lots compared to three
-commercial lots post-change
-At least six months of stability data
-from three Engineering runs under
-nominal, accelerated, and stressed
-conditions Propose to put at least
-3.2.P.8.1
-Stability Summary and Conclusions the first lot from PPQ run into the
-long-term stability program. Real-
-time data available at time of filing
-will be provided. Product has a
-three-year shelf life at 2–8 °C.
-
-(Table 12-7 continued)
-CTD Section Section Title Established Conditions
-Commitment to continue stability
-studies for first three PPQ runs
-and Engineering runs per currently
-approved storage conditions and shelf
-3.2.P.8.2 Stability Commitment life (0, 3, 6, 9, 12, 24, and 36 months
-at 2–8 °C, and accelerated conditions
-for 3 months). Thereafter, at least one
-batch per year will be placed into an
-ongoing long-term stability program.
-3.2.P.8.3 Stability Data See Section 3.2.P.8.1.
-Updates to the facility and suites
-involved in the manufacture of the
-drug product, specifically, current
-state vs proposed new state with
-new filling equipment and impact
-on the following, will be provided:
-Complete set of floor plans and flow
-charts (drawings, room classifications,
-water systems, HVAC systems), as
-appropriate and/or as impacted
-Cleaning validation, as appropriate
-Results of the environmental
-3.2.A.1 Facilities and Equipment
-monitoring studies in classified areas
-Cleaning procedures (including
-data in a summary validation
-report) demonstrating lack of carry-
-over or cross-contamination for
-new filling process if impacted by
-new equipment
-Information describing the change-
-over procedures for the shared
-product-contact equipment, if
-impacted by new filling process in
-line with new equipment
 RISK ASSESSMENT AND MITIGATION PLAN
 Risk Assessment
 The risk of introducing the new filling system was evaluated; two aspects were considered in the risk
@@ -2278,20 +1835,19 @@ is in the firm’s PQS. A risk level was calculated using a risk priority number
 scoring of each risk factor (RPN = Severity × Occurrence × Detection), as seen in Table 12-8:
 
 **Table 12-8 Risk Level Calculation Table**
+| Risk Level | RPN Range |
+| --- | --- |
+| Low | 1–20 |
+| Medium | 24–45 |
+| High | 48–125 |
 
-Risk Level RPN Range
-Low 1-20
-Medium 24-45
-High 48-125
+**Table 12-8 Risk Level Calculation Table**
+| Risk Level | RPN Range |
+| --- | --- |
+| Low | 1–20 |
+| Medium | 24–45 |
+| High | 48–125 |
 
-**Table 12-9 Evaluation of Risk to Product and/or Project to Inform Comparability Study Design**
-
-Risk Level
-Parameter Rationale Mitigation to Support Comparability
-(H, M, L)*
-Product Attributes
-Potency L Although filling equipment is being im- Potency will be confirmed to
-proved, the filling process is not chang- meet specification as a part of
 ing. Further, primary container closure normal batch release and as per
 components remain unchanged. It is comparability protocol.
 very unlikely that the potency would
@@ -2385,32 +1941,9 @@ rently approved diaphragm pump.
 The data for the pump studies, which demonstrate that the pump settings will not impact OFB prod-
 uct quality, are shown in Table 12-10.
 
-**Table 12-10 Testing Results for OFB Drug Product after Three Pump Cycles**
+| Parameter | Risk Level (H/M/L) | Rationale | Mitigation to Support Comparability |
+| --- | --- | --- | --- |
 
-Acceptance Criteria
-Test Results
-(Release and Stability)
-Appearance The solution is clear to colorless to yellow-green.
-Pass
-There may be a few particulates.
-Identification Conforms to reference standard Pass
-Potency 75–125% 102%
-Purity and Impurities Meets HPLC
-GC
-Bacterial Endotoxin <10 EU/mL <5 EU/mL
-Sterility Sterile Sterile
-pH 7.6 ± 0.2 7.6
-
-(Table 12-10 continued)
-Acceptance Criteria
-Test Results
-(Release and Stability)
-Subvisible Particle Testing
-≥2 µm For information only 3587 particles/container*
-≥5 µm For information only 975 particles/container*
-≥10 µm ≤6000 particles/container 134 particles/container
-≥25 µm ≤600 particles/container 12 particles/container
-Polysorbate 80 0.100 ± 0.050 mg/mL 0.090 mg/mL
 * Assessed against data generated on product produced with diaphragm pump and shown to have a highly
 similar subvisible (i.e., ≥2 µm and ≥5 µm) profile
 Engineering Runs
@@ -2418,15 +1951,16 @@ Seven Engineering runs were conducted with the new filling equipment, as per a p
 All vial sizes (3 mL, 6 mL, 10 mL) were run. Table 12-11 shows the conditions used for each run.
 
 **Table 12-11 Filling Conditions for Engineering Runs**
+| Run | Batch Size | Fill Target | Solution |
+| --- | --- | --- | --- |
+| Engineering Run 1 | 750 L | 5 mL (Mid) | Placebo* |
+| Engineering Run 2 | 1250 L | 5 mL (Mid) | Placebo* |
+| Engineering Run 3 | 750 L | 5 mL (Mid) | OFB |
+| Engineering Run 4 | 750 L | 2 mL (Low) | Placebo* |
+| Engineering Run 5 | 1250 L | 2 mL (Low) | OFB |
+| Engineering Run 6 | 1250 L | 9 mL (High) | Placebo* |
+| Engineering Run 7 | 750 L | 9 mL (High) | OFB |
 
-Run Batch Size Fill Target Solution
-Engineering Run 1 750 L 5 mL (Mid) Placebo*
-Engineering Run 2 1250 L 5 mL (Mid) Placebo*
-Engineering Run 3 750 L 5 mL (Mid) OFB
-Engineering Run 4 750 L 2 mL (Low) Placebo*
-Engineering Run 5 1250 L 2 mL (Low) OFB
-Engineering Run 6 1250 L 9 mL (High) Placebo*
-Engineering Run 7 750 L 9 mL (High) OFB
 * Same physical characteristics of OFB (static and dynamic viscosity)
 Engineering Runs 1 and 2 were performed using a placebo solution. The filling conditions identified
 in the laboratory studies were used for Engineering Run 1. The average fill volume was 6.03 mL with
@@ -2465,42 +1999,35 @@ Engineering Runs 4 and 5 evaluated the lower fill-volume range, whereas Engineer
 evaluated the higher fill-volume range. These runs used the same pump parameters that were identified
 in Engineering Run 2. The data for all Engineering Runs is presented in Table 12-12.
 
-**Table 12-12 Filling Conditions for Engineering Runs**
+**Table 12-12 Fill Volume Results for All Engineering Runs**
+| Run | Fill Volume Target | Average Fill Volume ± 1 SD |
+| --- | --- | --- |
+| Engineering Run 1 | 5 mL | 5.00 ± 0.11 mL |
+| Engineering Run 2 | 5 mL | 5.00 ± 0.05 mL |
+| Engineering Run 3 | 5 mL | 4.99 ± 0.04 mL |
+| Engineering Run 4 | 2 mL | 2.02 ± 0.2 mL |
+| Engineering Run 5 | 2 mL | 2.00 ± 0.01 mL |
+| Engineering Run 6 | 9 mL | 9.03 ± 0.10 mL |
+| Engineering Run 7 | 9 mL | 8.99 ± 0.11 mL |
 
-Run Fill Volume Target Average Fill Volume ± 1 Standard Deviation
-Engineering Run 1 5 mL 5.00 ± 0.11 mL
-Engineering Run 2 5 mL 5.00 ± 0.05 mL
-Engineering Run 3 5 mL 4.99 ± 0.04 mL
-Engineering Run 4 2 mL 2.02 ± 0.2 mL
-Engineering Run 5 2 mL 2.00 ± 0.01 mL
-Engineering Run 6 9 mL 9.03 ± 0.10 mL
-Engineering Run 7 9 mL 8.99 ± 0.11 mL
-Samples from the three Engineering runs that used OFB drug product solution were analyzed against
-the CQAs, and additional testing was conducted to evaluate the generation of ≥2 µm and ≥5 µm sub-
 visible particles. The data for these studies are shown in Table 12-13. These data demonstrated that
 the filling process does not impact the OFB product quality.
 
-**Table 12-13 Testing Results for OFB Drug Product Engineering Runs**
+| Test | Acceptance Criteria (Release and Stability) | Test Results |
+| --- | --- | --- |
+| Appearance | The solution is clear to colorless to yellow-green. There may be a few particulates. | Pass |
+| Identification | Conforms to reference standard | Pass |
+| Potency | 75–125% | 102% |
+| Purity and Impurities | Meets HPLC / GC criteria | Meets |
+| Bacterial Endotoxin | <10 EU/mL | <5 EU/mL |
+| Sterility | Sterile | Sterile |
+| pH | 7.6 ± 0.2 | 7.6 |
+| Subvisible ≥2 µm | For information only | 3587 particles/container* |
+| Subvisible ≥5 µm | For information only | 975 particles/container* |
+| Subvisible ≥10 µm | ≤6000 particles/container | 134 particles/container |
+| Subvisible ≥25 µm | ≤600 particles/container | 12 particles/container |
+| Polysorbate 80 | 0.100 ± 0.050 mg/mL | 0.090 mg/mL |
 
-Test Acceptance Criteria Eng Run 3 Eng Run 5 Eng Run 7
-(Release and Stability) (6mL) (3mL) (10mL)
-Appearance The solution is clear to colorless to Pass Pass Pass
-yellow-green; there may be a few
-particulates.
-Identification Conforms to Reference Standard Pass Pass Pass
-Potency 75-125% 102% 99% 115%
-Purity and Impurities Meets Meets Meets Meets
-Bacterial Endotoxin <10 EU/mL <5 EU <5 EU <5 EU
-Sterility Sterile Sterile Sterile Sterile
-pH 7.6 ± 0.2 7.6 7.5 7.6
-Subvisible Particle Testing
-≥2 µm N/A 1958 917 3742
-≥5 µm N/A 443 234 719
-≥10 µm ≤6000 particles/container 58 26 94
-≥25 µm ≤600 particles/container 2 0 4
-Polysorbate 80 0.100 ± 0.020 mg/mL 0.112 0.107 0.098
-The data from the development studies and Engineering runs demonstrated that the filling equipment
-used for the new isolator can successfully fill vials of three different sizes with acceptable accuracy and
 precision. The physicochemical analysis of the OFB product demonstrated that the new filling equip-
 ment does not negatively impact the quality of the product.
 Comparability Plan and Process Validation
@@ -2533,102 +2060,46 @@ therefore, should be monitored or controlled to ensure the process produces the 
 The CPPs for the filling of OFB are provided in Table 12-3. For this PPQ, the CQAs and consideration
 for lifecycle knowledge, with respect to the proposed isolator, will be assessed as outlined in Table 12-14.
 
-**Table 12-14 Critical Process Parameters for OFB Drug Product Filling**
+**Table 12-11 Filling Conditions for Engineering Runs**
+| Run | Batch Size | Fill Target | Solution |
+| --- | --- | --- | --- |
+| Engineering Run 1 | 750 L | 5 mL (Mid) | Placebo* |
+| Engineering Run 2 | 1250 L | 5 mL (Mid) | Placebo* |
+| Engineering Run 3 | 750 L | 5 mL (Mid) | OFB |
+| Engineering Run 4 | 750 L | 2 mL (Low) | Placebo* |
+| Engineering Run 5 | 1250 L | 2 mL (Low) | OFB |
+| Engineering Run 6 | 1250 L | 9 mL (High) | Placebo* |
+| Engineering Run 7 | 750 L | 9 mL (High) | OFB |
 
-Proven Acceptable
-Process Step Manufacturing Criteria Justification for Criteria
-Range
-Sterilization Conveyor speed/time To be determined As per Factory Acceptance Testing and
-Tunnel manufacturer’s validation guide
-Maximum stop time after filling To be determined
-process interruption
-Conveyor temperature and heat To be determined As per Factory Acceptance Testing and
-distribution in tunnel and glass manufacturer’s validation guide
-variation of vials
-Conveyor pressure and airflow To be determined As per Factory Acceptance Testing and
-manufacturer’s validation guide
-
-(Table 12-14 continued)
-Proven Acceptable
-Process Step Manufacturing Criteria Justification for Criteria
-Range
-Filler Conveyor speed To be determined As per Factory Acceptance Testing and
-manufacturer’s validation guide
-Pump operation To be determined As per Factory Acceptance Testing and
-manufacturer’s validation guide, peristaltic
-pumps can be sensitive to tubing changes;
-will be assessed over time and location
-Sterile Pressure test: Post-use filter- ≥50 psi As per filter manufacturer’s validation
-Filtration integrity bubble point following guide
-WFI flush
-Filling (Filling Vial weight checks: Weight ±1.5% The filling accuracy was validated for the
-uniformity and check-in intervals of ~1% of dedicated 3 mL, 6 mL, and 10 mL (re-
-homogeneity) target batch size, sampling spectively) pump assembly by performing
-from each of the filling pumps/ three trials at the minimum volume of
-nozzles in sequence 20 mL, and three trials at the maximum
-volume of 2 mL, 5 mL, and 9 mL, using 3
-mL, 6 mL, and 10 mL vials respectively.
-The check weight system operates by
-removing one vial prior to fill by robotic
-fingers; the tare weight is recorded and
-the vial is then returned to the fill line,
-filled, and removed by robotic fingers
-at the gross weight station. The filling
-accuracy is determined based on the
-programmed target fill weight.
-Hold Times Drug product maximum hold To be determined Controls for this step include:
-times will be confirmed via PPQ
-The tank is stored at 2-8 °C prior to
-the bulk drug being filled. Bacterial and
-endotoxin samples are taken prior to
-final sterile filtration and filling.
-Critical Quality Attributes
-As defined by ICH Q8(R2), a CQA is a physical, chemical, biological, or microbiological property or
-characteristic that should be within an appropriate limit, range, or distribution to ensure the desired
-product quality.
-Importantly, there are no changes proposed that impact the primary, secondary, or tertiary packaging.
-A description of the primary container closure system is provided in the “Container Closure” section.
-As stated, this is a sterile liquid product; no compounding takes place.
-Current and proposed inputs are as follows (see also “Container Closure”):
-• Glass vials: 3 mL, 6 mL, and 10 mL
-• Stoppers: Bromobutyl rubber stoppers
-• Caps: Aluminum seal, flip-off
-• Product filled at ambient temperature, but tank held at 2-8 °C prior to filling; hold times are validated.
-Current and proposed outputs are as follows (see also “Container Closure”):
-• Washed vials from vial washer
-
-• Depyrogenated vials
-• Filled vials within weight tolerance and 100% weight check from the filling machine
-• Fully stoppered vials
-• Capped vials with integral seals
 The associated CQAs for OFB are summarized in Table 12-2. For this PPQ, the CQAs and consid-
 eration for lifecycle knowledge, with respect to the proposed isolator, will be assessed as outlined in
 
-**Table 12-15.**
+**Table 12-12 Fill Volume Results for All Engineering Runs**
+| Run | Fill Volume Target | Average Fill Volume ± 1 SD |
+| --- | --- | --- |
+| Engineering Run 1 | 5 mL | 5.00 ± 0.11 mL |
+| Engineering Run 2 | 5 mL | 5.00 ± 0.05 mL |
+| Engineering Run 3 | 5 mL | 4.99 ± 0.04 mL |
+| Engineering Run 4 | 2 mL | 2.02 ± 0.2 mL |
+| Engineering Run 5 | 2 mL | 2.00 ± 0.01 mL |
+| Engineering Run 6 | 9 mL | 9.03 ± 0.10 mL |
+| Engineering Run 7 | 9 mL | 8.99 ± 0.11 mL |
 
-**Table 12-15 Critical Quality Attributes and Lifecycle Knowledge Management**
+| Test | Acceptance Criteria | Eng Run 3 (6 mL) | Eng Run 5 (3 mL) | Eng Run 7 (10 mL) |
+| --- | --- | --- | --- | --- |
+| Appearance | Clear to colorless to yellow-green; few particulates | Pass | Pass | Pass |
+| Identification | Conforms to Reference Standard | Pass | Pass | Pass |
+| Potency | 75–125% | 102% | 99% | 115% |
+| Purity and Impurities | Meets criteria | Meets | Meets | Meets |
+| Bacterial Endotoxin | <10 EU/mL | <5 EU | <5 EU | <5 EU |
+| Sterility | Sterile | Sterile | Sterile | Sterile |
+| pH | 7.6 ± 0.2 | 7.6 | 7.5 | 7.6 |
+| Subvisible ≥2 µm | N/A | 1958 | 917 | 3742 |
+| Subvisible ≥5 µm | N/A | 443 | 234 | 719 |
+| Subvisible ≥10 µm | ≤6000 particles/container | 58 | 26 | 94 |
+| Subvisible ≥25 µm | ≤600 particles/container | 2 | 0 | 4 |
+| Polysorbate 80 | 0.100 ± 0.020 mg/mL | 0.112 | 0.107 | 0.098 |
 
-Critical Step Analytical Method Acceptance Criteria
-Pre-sterile filtration Bioburden ≤10 CFU/mL
-Sterilization Tunnel and Filler Bioburden and endotoxin Meets criteria
-Container Closure Integrity Microbial ingress challenge Meets criteria
-Product Release Criteria
-Identification Conforms to reference standard Meets criteria
-Appearance Visual The solution is clear to colorless to
-yellow-green; there may be a few
-particulates.
-Potency Biological Assay 75-125%
-Purities Impurities HPLC and GC Meets critera
-Particulates (subvisible) Light Obscuration (LO) ≥2 µm – N/A
-≥5 µm – N/A
-≥10 µm – ≤6000 particles/container
-≥25 µm – ≤600 particles/container
-pH pH meter 7.6 ± 0.2
-Bacterial Endotoxin Turbidimetric LAL <5 EU/mL
-Sterility Sterility Meets 21 CFR 610.12
-Excipients: Assay Meets criteria
-Polysorbate 80
-The results from the first three commercial lots of OFB will be assessed against data from the currently
 approved commercial process (three historical lots). Comparability will be assessed against the preset speci-
 fications described in Table 12-15. Comparability acceptance criteria have been determined based on
 product and process knowledge and data. For quantitative release assays, where applicable, a statistical ap-
@@ -2694,55 +2165,37 @@ of the results to the predefined criteria will allow for an objective assessment
 post-change products are comparable.
 Comparability testing comprises release testing, which is summarized in Table 12-16.
 
-**Table 12-16 Release Testing**
+| Process Step | Manufacturing Criteria | Proven Acceptable Range | Justification |
+| --- | --- | --- | --- |
+| Sterilization Tunnel | Conveyor speed/time | To be determined | As per Factory Acceptance Testing and manufacturer's validation guide |
+| Sterilization Tunnel | Maximum stop time after filling process interruption | To be determined | — |
+| Sterilization Tunnel | Conveyor temperature and heat distribution in tunnel; glass variation of vials | To be determined | As per Factory Acceptance Testing and manufacturer's validation guide |
+| Filler | Conveyor speed | To be determined | As per FAT and manufacturer's validation guide |
+| Filler | Pump operation | To be determined | Peristaltic pumps can be sensitive to tubing changes; will be assessed over time and location |
+| Sterile Filtration | Post-use filter-integrity bubble point (WFI flush) | ≥50 psi | As per filter manufacturer's validation guide |
+| Filling (uniformity & homogeneity) | Vial weight checks: ±1.5% at ~1% of target batch size, sampling from each filling pump/nozzle in sequence | ±1.5% | Filling accuracy validated for dedicated 3 mL, 6 mL, and 10 mL pump assemblies by performing three trials at minimum and maximum volumes. Check weight system uses robotic fingers for tare + gross weight determination. |
+| Hold Times | Drug product maximum hold times confirmed via PPQ | To be determined | Tank stored at 2–8 °C prior to bulk drug being filled. Bacterial and endotoxin samples taken prior to final sterile filtration and filling. |
 
-Standard Claimed (e.g., Professed, House, USP, Ph. Eur.)
-Specification, Reference Number, and/or Version
-Test Acceptance Criteria Analytical Procedure
-(Release and Stability) (Type/Source/Version)
-Appearance The solution is clear to colorless to yellow- Visual Inspection
-green. There may be a few particulates.
-Identification Conforms to Reference Standard IR Spectrum
-Potency 75-125% Biological Assay
-Purity and Impurities E.g., identified impurities, unidentified HPLC
-impurities and total impurities
-GC
-Bacterial Endotoxin ≤5 EU/mL Turbidimetric LAL
-Sterility Sterile Compendial
-pH 7.6 ± 0.2 pH meter
-Excipients: 0.100 ± 0.050 mg/mL Assay
-Polysorbate 80
-Subvisible Particles Light Obscuration (LO)
-≥10 µm ≤6000 particles/container
-≥25 µm ≤600 particles/container
-Additional characterization data (including completion of container–closure integrity testing) is not
 informative to this isolator change as the primary container closure has not changed. Further, the
 process parameters of the new filling equipment will be validated, and the CPPs and CQAs will be
 confirmed accordingly. A summary of the filling process parameters impacted by this change is pro-
 vided in Table 12-17.
 
-**Table 12-17 Summary of Changes from Currently Approved Process to Proposed Process**
+**Table 12-17 Summary of Changes: Current vs. Proposed Process**
+| Parameter | Current Process | Proposed Process |
+| --- | --- | --- |
+| Product Formulation | L-histidine, Polysorbate 80, Maltose | Same |
+| Container Closure — Vial | Type I (not sulfate or sulfate-treated) glass (siliconized) | Same |
+| Container Closure — Stopper | Bromobutyl rubber stopper (pre-siliconized) | Same |
+| Container Closure — Flip cap | Aluminum Seal with Flip-off Cap | Same |
+| Vial Preparation | Glass vials washed and depyrogenated, batch-style, in an oven validated for this purpose | Glass vials washed and depyrogenated in a validated tunnel |
+| In-Process Controls | Prefiltration bioburden; Environmental monitoring | Same |
+| Filling | Conventional filler | Isolator |
+| Fill Volume Limits — Target Fills | 3 mL vials: 2 mL; 6 mL vials: 5 mL; 10 mL vials: 9 mL (Same) |
+| Fill Volume Limits — Alert Limits | 3 mL: 1.9–2.1 mL; 6 mL: 4.7–5.3 mL; 10 mL: 8.5–9.5 mL (Same) |
+| Capping | Reject vials with raised stoppers; 100% visual inspection | Same |
+| Process Hold Times | Maximum hold time from drug substance to filling: 7 days at 28 °C in a stainless steel vessel | Hold times will be validated during process validation |
 
-Parameter Current Process Proposed Process
-Product L-histidine Same
-Formulation Polysorbate 80
-Maltose
-Container Closure Vial: Type I (not sulfate or sulfate-treated) glass Vial: Same
-(siliconized)
-Stopper: Bromobutyl rubber stopper (pre- Stopper: Same
-siliconized)
-Flip cap: Aluminum Seal with Flip-off Cap Flip cap: Same
-Glass vials are washed and depyrogenated, batch- Glass vials are washed and
-style, in an oven validated for this purpose depyrogenated in a validated tunnel
-In-Process Controls Prefiltration bioburden Prefiltration bioburden
-Environmental monitoring Environmental monitoring
-Filling Conventional filler Isolator
-Fill Volume Limits Same
-Target Fills:
-3 mL vials: 2 mL
-6 mL vials: 5 mL
-10 mL vials: 9 mL
-Alert Limits:
 3 mL vials: 1.9–2.1
 6 mL vials: 4.7–5.3 mL
 10 mL vials: 8.5–9.5 mL
@@ -2958,4 +2411,3 @@ Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org
-Web site: www.pda.org
