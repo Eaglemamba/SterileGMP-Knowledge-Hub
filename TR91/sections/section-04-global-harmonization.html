@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR91 Section 4 — Global PAC Management, Harmonization & Conclusion</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    border: 1px solid #f6ad55;
+}
+
+.section-summary h2 {
+    color: #856404;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f6ad55;
+}
+
+.section-summary ul {
+    margin-left: 1.5rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.6rem;
+    font-size: 0.93rem;
+    color: var(--text-dark);
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 91 (2023)</h1>
+    <div class="subtitle">Post-Approval Change Management and Implementation for Biologics and Pharmaceutical Drug Products — A User's Guide</div>
+    <div class="subtitle">Section 4 — Global PAC Management, Harmonization &amp; Conclusion</div>
+    <div class="page-info">Coverage: Sections 6.0–10.0 &nbsp;|&nbsp; p14–p19</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>本節學習目標</h3>
+        <ol>
+            <li>理解 ICH 成員區域（美國、歐盟、日本、加拿大、瑞士）的 PAC 申報分類差異，以及 CDMO 同步管理多地區申報的核心挑戰。</li>
+            <li>掌握非 ICH 地區（巴西、中國、印度、台灣等）在 PAC 審查時程與資料要求上的特殊性，及其對供應鏈的潛在衝擊。</li>
+            <li>了解既有上市產品（Legacy Products）導入 ICH Q12 EC 架構時的實務困難與補充申報策略。</li>
+            <li>熟悉 PDA 對全球法規調和的具體建議，包括統一變更定義、審查時程標準化，以及相互認可機制的潛力。</li>
+            <li>掌握 CDMO 共用設施／設備的 PAC 管理複雜度，以及 Site Master File（SMF）策略在多客戶環境下的關鍵角色。</li>
+        </ol>
+    </div>
+
+    <!-- ===== SECTION 6.0 INTRO ===== -->
+    <h2 class="section-title">6.0 Global Lifecycle and PAC Management</h2>
+
+    <!-- ===== 6.1 ICH Regions ===== -->
+    <h2 class="section-title">6.1 ICH Regions</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.1 ICH Regions</h3>
+            <p>The impact of <span class="key-term">ICH</span> in harmonizing guidelines and aligning ICH member regions has provided significant advantages in both the <span class="key-term">PLCM</span> and the management of <span class="key-term">PACs</span>. The continuing challenge is the wide diversity of expectations of non-ICH regions in both the content and timing of PAC submission approvals. Some common characteristics leveraged in ICH regions that enable efficient PACs include:</p>
+            <ul>
+                <li>Clear guidance for filing changes, including reporting categories based on risk</li>
+                <li>Acceptance of science- and risk-based approaches for developing data to support PACs, such as bracketing and/or matrixing of process validation and stability batches</li>
+                <li>Potential acceptance of limited stability data when justified, such as three or six months of real-time data and three months of accelerated data, to support major changes, and less or no stability data for minor changes</li>
+                <li>Well-defined timelines for review and approval of PACs, in the range of six months for a major change and shorter periods for minor to moderate changes</li>
+                <li>Relatively fewer requests for additional documentation not included in CTD Module 3, such as declarations or GMP certificates, although the latter may be needed for addition of a new facility</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：ICH 成員區域的共同優勢</h4>
+                <p>ICH（國際人用藥品技術要求協調委員會）成員目前涵蓋美國（FDA）、歐盟（EMA）、日本（PMDA）、加拿大（Health Canada）及瑞士（Swissmedic）等主要市場。</p>
+                <p>這些地區共享的關鍵特徵是：<strong>以風險為基礎的申報分類</strong>——同一類變更，可預期的審查路徑是相近的。例如某無菌生產設備的小幅改善，在美國可能走 CBE-30，在歐盟走 Type IB，在加拿大走 Level II，雖名稱不同，但背後邏輯一致。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：國際駕照 vs. 各國考照</h4>
+                <p>ICH 成員就像承認國際駕照的國家——你在一個地方考過了，其他地方認可你的資格、審查你的資料時也用同樣的標準。非 ICH 地區則要求你重新從頭考試，且規則各地不同。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：CDMO 的多地區申報挑戰</h4>
+                <p>即使在 ICH 成員區域之間，同一個變更的申報類別仍可能不同：美國是 <strong>PAS（Prior Approval Supplement）</strong>、歐盟是 <strong>Type II</strong>、加拿大是 <strong>SNDS（Supplement to New Drug Submission）</strong>。CDMO 必須同步管理這些並行申報，時程、資料要求、審查回應各有差異。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的廠區正要進行無菌充填設備的製程參數優化。這個變更需要同時向 FDA、EMA、Health Canada 申報。請思考：你會如何建立一套「一份科學論據，多地區申報包」的策略？哪些文件可以共用，哪些必須客製化？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 6.2 Non-ICH Regions ===== -->
+    <h2 class="section-title">6.2 Non-ICH Regions</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.2 Non-ICH Regions</h3>
+            <p>Regions not participating in <span class="key-term">ICH</span> frequently observe fewer of the characteristics that enable PACs to be managed consistently across multiple regulatory authorities. Examples seen in some non-ICH regions include:</p>
+            <ul>
+                <li>Lack of available post-approval guidance</li>
+                <li>No or very limited provision for a differentiation in filing level, such as allowing for providing notifications rather than submissions for lower-risk changes or recognizing risk-based scientifically valid strategies, such as bracketing or matrixing of process validation and stability data</li>
+                <li>Requirements for extensive amounts of drug product stability data to support even minor changes or drug substance changes, for example, up to the full shelf life</li>
+                <li>Requirements for extensive ancillary documentation to support PACs, such as declarations, certificates of various types, and legalizations</li>
+            </ul>
+            <p>In 2020, PDA completed a survey of industry on this topic. According to survey results, half of the respondents indicated that the authorities that take the most time to approve <span class="key-term">prior-approval supplements</span> require more than a year to grant such approval. Some markets were reported as having extremely long review times for changes, for example, five years. Some markets add extra requirements, such as implementing product changes immediately upon that country's approval, which is not always feasible given the manufacturing schedule or lag in approval by other jurisdictions. The survey also indicated some jurisdictions may not allow for the simultaneous review of multiple changes, instead requiring each change to be submitted for agency review individually, in sequence (26). These types of requirements make it extremely difficult to file global PACs, which can make it very challenging to initiate or even propose process improvements. In some cases, this can impact product supply.</p>
+            <p>When considering the supply chain, extended approval times for products with limited expiry dating can create significant challenges, as it may not be possible to build up sufficient inventory levels. For example, a process or facility change that requires modifications that, when made, no longer allows for the product to be manufactured using the original process. Once the change is made, the inventory of product using the original process is set and, if approval takes an extended time (in some cases years), the chance the inventory will be depleted or will expire before the change is fully approved increases significantly, impacting product availability and affecting the patient.</p>
+            <p>The <span class="key-term">WHO</span> guidances on biotherapeutics and vaccines provide good examples of changes and apply a risk-based approach to PACs, similar in format to the Health Canada Post-Notice of Compliance (NOC) Changes: Quality Document (20). The WHO publications are intended to serve as a guide for establishing national requirements for the regulation of PACs to biotherapeutic products and vaccines. In jurisdictions that do not offer their own guidance, these guidelines can be helpful in applying a risk-based approach to the PAC requirements and approval timing. In these cases, the guidance(s) should be referenced during the PAC process. Also, the WHO PAC guidelines strongly encourage national regulatory authorities to establish requirements commensurate with their own regulatory capacity, experience, and resources and to work toward minimizing any negative impact on access to approved products (4,5). National regulatory authorities are encouraged to consider establishing procedures for the expedited approval of changes based on previous expert review and approval of the same changes by the national authorities of the other countries where those products are licensed or, alternatively, based on the decision of a recognized regional regulatory agency.</p>
+            <p>Where there is a potential for the timing of change approval in non-ICH regions to impact product supply, it is highly recommended that the firm contact those regulatory agencies early to alert them to the potential issues and request their assistance.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：非 ICH 地區的四大挑戰</h4>
+                <ul>
+                    <li><strong>缺乏申報指引</strong>：企業無法預測審查標準，容易被要求補充大量文件。</li>
+                    <li><strong>無低風險快速通道</strong>：即使是微小變更，也可能需要全面申請，無「告知即可」的通道。</li>
+                    <li><strong>穩定性資料要求過高</strong>：小變更也可能要求完整效期（如 24 或 36 個月）的穩定性數據。</li>
+                    <li><strong>大量輔助文件</strong>：公証文件、各類證書、合法化手續，每份都耗費時間與資源。</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：裝潢公司遇到不同建管局</h4>
+                <p>想像你是一家裝潢公司，在台北改了一套標準施工流程。在台北（ICH 地區），只要備查就好；但在某些城市，你要重新送件、等 1-2 年、補送各種文件，還不能同時申請兩個工程的許可——每個案子只能一件一件慢慢排隊。</p>
+                <p>這就是非 ICH 地區的 PAC 現實。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：供應鏈的最高風險場景</h4>
+                <p>最危險的情況是：<strong>製程已切換（舊流程不再使用）+ 審查延遲（長達數年）+ 產品效期短</strong>。舊庫存可能在新申請獲批之前就過期或耗盡，直接衝擊病患可及性。這正是 TR91 強調「提早聯繫非 ICH 法規機構」的原因。</p>
+            </div>
+            <div class="concept-box">
+                <h4>WHO 指引的橋接價值</h4>
+                <p>對於沒有自己 PAC 指引的國家，WHO 的生物製劑與疫苗 PAC 指引（TRS 993 & 1011）提供了一個風險分類框架。企業在申報時可主動引用這些指引，說明自身風險評估的依據，有助於縮短審查時間或建立溝通基礎。</p>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 實務思考</h4>
+                <p>你的客戶在台灣（非 ICH）、巴西（ANVISA）、印度（CDSCO）均有上市許可。一項共用設備的製程改善完成後，ICH 地區已獲批，但這三個市場仍在審查中。你如何管理這段「雙軌並存」的過渡期？哪些風險需要提前與客戶溝通？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 7.0 ===== -->
+    <h2 class="section-title">7.0 Legacy Marketed Products and ICH Q12</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>7.0 Legacy Marketed Products and ICH Q12</h3>
+            <p>One of the challenges with the changing global regulatory landscape relates to marketed products, that is, products that have been approved and are in distribution. The full benefits of the <span class="key-term">ICH Q12</span> PAC processes may initially only apply to products that are newly submitted in jurisdictions that apply ICH guidelines. Consequently, for many older products already on the market, there may be a prolonged period to implement ICH Q12 PAC principles, which may be impacted by the inclusion of specific information in the approved filing. For example, identifying which items should be called out as <span class="key-term">ECs</span> could present a challenge and could require considerable time and resources to accomplish.</p>
+            <p>To take full advantage of ICH Q12, some type of modernization of the regulatory filing around the CMC sections may be needed.</p>
+            <p>Regardless of how they embrace ICH Q12 concepts, in ICH regions, firms will have the option to develop and submit a list of ECs to regulatory agencies in a <span class="key-term">prior-approval submission</span>. This would allow the firm to conduct a full or partial assessment and possibly remove parameters currently in the filing that, based on product knowledge, do not require a submission to change. This could reduce the filing category of some of the parameters, for example, moving from prior approval to notification. The firm could also use a prior-approval submission to change from a parameter-based EC to <span class="key-term">performance-based conditions</span>. This could be done for the entirety of Modules 3.2.S and 3.2.P or only for specific sections.</p>
+            <p>The potential advantage to adding ECs to a marketed product is that more historical data and a better understanding of the product exists for marketed products than would have been available when the initial marketing authorization was submitted. That product history and knowledge can be used to demonstrate that the changes made to certain parameters and quality attributes are low risk and, therefore, should be allowed notification-only status or could be managed solely within the <span class="key-term">PQS</span>. To reduce the regulatory burden of PACs, the historic manufacturing and characterization data would have to be submitted to justify the risk assessment scientifically. This data should be submitted in the development sections of the filing (e.g., Modules 3.2.S.2.6 and 3.2.P.2) to support the proposed ECs and reduced filing category. If these data are submitted in sufficient detail, once the ECs are approved, future PACs could be implemented more quickly.</p>
+            <p>In most cases, prospectively filing a prior-approval submission to add ECs would not be efficient unless it is submitted along with a planned major change. Otherwise, the ECs would have to be approved before a change could be made without needing a submission, which would further increase the regulatory burden. Additionally, regulatory agencies in different jurisdictions may not agree to the same ECs, which would add to the complexity of the maintenance of ECs by the firm.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：Legacy Products 的 ICH Q12 困境</h4>
+                <p>ICH Q12 的精髓是「預先定義 <strong>Established Conditions（ECs）</strong>——哪些參數在 filing 裡、哪些只需 PQS 管理」。但這個框架對已上市的舊產品（Legacy Products）不是免費的：</p>
+                <ul>
+                    <li>舊 filing 沒有正式定義 ECs，必須<strong>回溯重建</strong>。</li>
+                    <li>回溯需要大量歷史製造與特性化數據，並在 CTD Module 3.2.S.2.6 / 3.2.P.2 補充提交。</li>
+                    <li>不同法規機構對 ECs 的認定可能不同，造成跨地區維護的複雜度。</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：舊房子申請新建築規範</h4>
+                <p>新建案可以一開始就符合最新建築法規；但一棟 1980 年代的老建築若想享有新規範的某些彈性（如免申報小幅改建），必須先補做結構安全評估、更新竣工圖——這就是 Legacy Product 導入 EC 的過程。工程浩大，但一旦完成，未來的改裝就輕鬆多了。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：什麼時候值得補做 EC？</h4>
+                <p>TR91 明確指出：<strong>單獨為了加 EC 而提交先前核准申請，通常效益不高</strong>。最佳時機是「搭便車」——當你已經要提交一個重大變更（Major Change）的 PAC 時，順便在同一份申請中加入 EC 清單。這樣既能利用現有審查程序，又能立即享受 EC 帶來的未來申報簡化。</p>
+            </div>
+            <div class="concept-box">
+                <h4>Parameter-Based vs. Performance-Based EC</h4>
+                <p><strong>Parameter-based EC</strong>（參數型）：直接在 filing 中列出具體製程參數值（如攪拌速度 X rpm）——改了就要申報。</p>
+                <p><strong>Performance-based EC</strong>（效能型）：改以產品效能或功能性指標為 EC（如「最終產品無菌性符合 USP &lt;71&gt;」）——製程參數調整只要效能達標，可在 PQS 內管理，無需申報。後者是 ICH Q12 的理想狀態。</p>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 實務思考</h4>
+                <p>你的廠區承接一個已上市 8 年的生物製劑客戶產品。客戶希望利用這次製程優化的機會，同步導入 ICH Q12 EC 框架。你如何協助客戶評估哪些 CTD 章節需要補充歷史數據？這項工作應納入哪個合約里程碑？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 8.0 ===== -->
+    <h2 class="section-title">8.0 Recommendations for Harmonization (Categorization of Changes)</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>8.0 Recommendations for Harmonization</h3>
+            <p>In the current regulatory environment, industry benchmarking shows that it can take up to five years to have a single change approved across all affected countries. Current guidances from regulatory agencies, including the FDA, EMA, WHO, and Health Canada, attempt to clarify how changes are to be evaluated, when they should be reported, and if prior approval from the agency is required to implement the change (4, 5, 11, 13, 20). Based on the severity of the effect of the change to the <span class="key-term">ECs</span> or product quality and, hence, to the safety and efficacy for patients, the changes are generally classified in three categories:</p>
+            <ul>
+                <li><strong>Do and Record (Lowest Risk)</strong> — manage within the PQS (e.g., Health Canada Level IV)</li>
+                <li><strong>Do and Tell (Minor to Moderate)</strong> — notification (e.g., Type IA or Annual Reportable)<br>
+                — <em>Tell, Wait and Do</em> (some Moderate) — (e.g., Type IB or CBE-30)</li>
+                <li><strong>Tell, Wait and Do (Major)</strong> — prior approval (e.g., Type II or Prior Approval Supplement)</li>
+            </ul>
+            <p>The EU's variation regulations and post-authorization guidance and FDA's scale-up and post-approval change (<span class="key-term">SUPAC</span>) guidance documents provide specific details on the scientific data that should be submitted and how it should be presented for specific PACs (27–31). The requirements are consistent with the potential impact of the change on the quality, safety, and efficacy of the product similar to the underlying concepts adopted by the FDA in its Guidance for Industry: Changes to an Approved NDA or ANDA (32).</p>
+            <p>Specific scientific documentation requirements and approval timelines can vary greatly among jurisdictions, however.</p>
+            <p>To allow the industry to continue to modernize and make the needed improvements in both quality and productivity in a timely fashion, action is needed in many of the non-ICH regions. Establishing new regulations or modifying existing regulations to introduce the three mechanisms for change—<span class="key-term">PQS management</span>, <span class="key-term">notification</span>, and <span class="key-term">prior approval</span>—that align with ICH Q12 and other global regulatory expectations is recommended. To fully realize the benefits of ICH Q12, a certain level of regulatory convergence and harmonization is needed.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：全球 PAC 分類的三層架構</h4>
+                <p>儘管各地用詞不同，TR91 歸納出一個普遍適用的三層模型：</p>
+                <table>
+                    <thead>
+                        <tr><th>風險層級</th><th>行動模式</th><th>各地對應</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>最低風險</td><td>Do and Record（做了記錄）</td><td>PQS 內部管理 / Health Canada Level IV</td></tr>
+                        <tr><td>中低風險</td><td>Do and Tell（做了告知）</td><td>Type IA / Annual Report / CBE-30</td></tr>
+                        <tr><td>重大變更</td><td>Tell, Wait and Do（告知、等待、才做）</td><td>Type II / PAS / SNDS</td></tr>
+                    </tbody>
+                </table>
+                <p>PDA 的建議是：全球法規機構應採用這套共同語言，才能實現真正的調和。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：一個變更，五年才能全球上路</h4>
+                <p>想像你的公司在 2026 年初批准了一項製程改善，理論上可以提升品質並降低成本。在美國 6 個月後獲批、歐盟 8 個月後獲批，但在某個非 ICH 市場，你等了 5 年——這 5 年內，你只能對該市場維持舊製程，或面臨供貨中斷。</p>
+                <p>這就是為什麼 PDA 把「全球法規調和」列為行業最緊迫的倡議之一。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：CDMO 的最高複雜度場景</h4>
+                <p>對於 CDMO 來說，挑戰是指數級的：<strong>一項對共用設備或廠房的改善，可能同時觸發所有使用該設備的客戶產品的 PAC 義務</strong>。10 個客戶、5 個市場 = 潛在 50 份並行申報。這就是為什麼 <strong>Site Master File（SMF）策略</strong>對 CDMO 如此關鍵——SMF 提供一個共用的廠房基線文件，客戶申報時可引用，減少重複工作。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的廠區計畫更換一台所有生物製劑產品共用的超濾系統。這個變更會影響 8 個客戶的 12 個產品。你會如何設計「一份科學論據包」讓各客戶可以分別申報？SMF 在這個策略中扮演什麼角色？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 8.1 ===== -->
+    <h2 class="section-title">8.1 Harmonized Definitions and Consistent Requirements for Approval of Changes</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>8.1 Harmonized Definitions and Consistent Requirements for Approval of Changes</h3>
+            <p>The categorization of changes depicted in Figure 3.0-1 as major, moderate, or minor throughout all regions would greatly benefit both regulators and manufacturers globally by providing clear, consistent guidelines.</p>
+            <p>Having a consistent set of requirements in place would allow firms to prepare a single scientific justification for their <span class="key-term">PACs</span> that can be submitted to all regulatory agencies for approval. Specifically, better definition of the requirements for the approval of a major change would clarify data-reporting expectations. With this clarity, firms could better plan for major changes. With this convergence and harmonization using the <span class="key-term">ICH framework</span>, regulatory agencies also could provide guidelines on the requirements for comparability that include a time-period requirement for stability data for each of the three categories of change. Applying the same requirements across ICH and non-ICH regions would also benefit patients.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：定義統一的價值</h4>
+                <p>目前最大的問題之一是：<strong>「major change」在 FDA 的定義，和 EMA 的 Type II，和某些非 ICH 國家的理解，並不完全對等</strong>。這迫使企業為每個地區分別準備科學論據包，大量重複工作。</p>
+                <p>PDA 建議的目標：一份科學論據（Single Scientific Package）可以跨地區提交——這對 CDMO 尤其有價值，因為一次做好可以服務所有客戶。</p>
+            </div>
+            <div class="note-box">
+                <h4>穩定性資料標準化的關鍵性</h4>
+                <p>目前最大的差異之一來自穩定性資料要求。ICH 地區接受 3-6 個月實時數據支持重大變更；部分非 ICH 地區要求完整效期數據（可能長達 24-36 個月）。統一的穩定性資料要求能讓企業提前規劃批次安排，大幅縮短「資料缺口等待期」。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 8.2 ===== -->
+    <h2 class="section-title">8.2 Mutual Recognition and Consistent Review Times of PACs in ICH Regions</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>8.2 Mutual Recognition and Consistent Review Times of PACs in ICH Regions</h3>
+            <p>Most often, product applications are filed across multiple regions. If the classification of changes and requirements for justification of a <span class="key-term">PAC</span> were consistent throughout all ICH regions, a firm would be able to submit the approval evidence of a change from one ICH member to other ICH members, minimizing the repetitious review time for subsequent approvals. If member countries mutually recognize the approval of a PAC, filing the change in one ICH member country could then be sufficient to obtain approval in all ICH regions.</p>
+            <p>Similar concepts could be applied in non-ICH regions. Acceptance of changes approved by recognized regulatory agencies in ICH countries based on sound science- and risk-based principles would result in a lower regulatory burden worldwide. This is an established practice, for example, with issuing Certificates of Pharmaceutical Product. Many jurisdictions accept a Certificate from one jurisdiction and leverage the approval from the Certificate-issuing country to alleviate the regulatory burden in the country accepting the Certificate.</p>
+            <p>Taking this reasoning further, the review timelines for a PAC submission could be defined by the type of change, which would then be similar throughout the ICH regions and the rest of world. (Table 8.2-1 provides an example of such a proposal.) Making this change would ensure that firms can better anticipate the timeline for approvals of the PAC, allowing for improved planning, faster introduction of innovative technologies, and timelier availability of improved products to patients.</p>
+
+            <h4 style="margin-top:1rem; color: var(--primary-blue);">Table 8.2-1: Proposed Harmonized Standard Review Time</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Do and Record<br>(Lowest Risk)</th>
+                        <th>Do and Tell – Notification<br>(Minor to Moderate)</th>
+                        <th>Tell, Wait and Do –<br>Prior-approval (Major)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Review Time</strong></td>
+                        <td>Not Applicable — documented within a firm's PQS</td>
+                        <td>Regional timelines apply but NMT 90 days<sup>#</sup></td>
+                        <td>Timelines are jurisdiction-specific<sup>#*</sup> but NMT 180 days</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.85rem; color: var(--text-medium);">NMT = No more than. § Excludes potential clock stops due to queries. # Ranges from implementation upon filing to a specified timeline post-filing; "NMT" timelines are strongly encouraged and recommended here. * Timelines for major prior-approval submissions may be impacted by site evaluations or inspections.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：相互認可（Mutual Recognition）</h4>
+                <p><strong>相互認可</strong>的邏輯：如果 FDA 已經審查並批准了一項重大變更，EMA 是否需要從頭再審一遍相同的科學論據？PDA 認為不需要——應建立機制讓 EMA 直接「承認 FDA 的審查結論」。</p>
+                <p>這個概念其實已有先例：<strong>藥品出口證明（Certificate of Pharmaceutical Product，CPP）</strong>——許多非 ICH 國家在審查進口藥品時，直接採信發證國（如美國、歐盟）的 GMP 合規證明，不再重複驗廠。PAC 的相互認可是同樣邏輯的延伸。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：大學學歷相互認可</h4>
+                <p>就像部分國家簽訂學歷互認協定——你的台大碩士學歷，不需要在另一個國家重新考試才能認定學術資格。PAC 相互認可是同樣的概念：一個法規機構的嚴格審查，應能作為其他機構的參考依據。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：Table 8.2-1 的實務意義</h4>
+                <p>這張表代表 PDA 的<strong>理想目標狀態</strong>：</p>
+                <ul>
+                    <li>Do and Record：不需審查，PQS 內管理</li>
+                    <li>Do and Tell（通知）：最多 90 天</li>
+                    <li>Tell, Wait and Do（事前核准）：最多 180 天</li>
+                </ul>
+                <p>目前現實與此目標的差距，在部分非 ICH 地區可達 5 年。這個差距就是 PDA 倡議調和的動力所在。</p>
+            </div>
+            <div class="practice-box">
+                <h4>策略思考</h4>
+                <p>假設明年起 ICH 成員間正式建立 PAC 相互認可機制。你的公司應如何調整全球申報策略？你會優先在哪個 ICH 國家首先提交重大變更，以「首先獲批→帶動其他 ICH 成員認可」？這個選擇應考量哪些因素（審查速度、機構能力、產品市場優先順序）？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 9.0 ===== -->
+    <h2 class="section-title">9.0 Conclusion</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>9.0 Conclusion</h3>
+            <p>PACs and the continuing work to harmonize the processes used by the regulatory authorities to govern them is a key enabler to fully implementing a continual improvement model that ensures access to state-of-the-art, high-quality medicines and prevents or mitigates supply disruptions. The principles outlined in <span class="key-term">ICH Q12</span> provide the pathway to harmonization.</p>
+            <p>If implemented globally, the principles set out in ICH Q12, including <span class="key-term">PACMPs</span>, can lead to more consistent reporting requirements, with the level of reporting based on the risk associated with a specific change. This, in addition to increased alignment of regulatory authority processes and approval times, can enable a more rapid implementation of innovative technologies and improvements in the manufacturing process.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心概念：TR91 的最終訊息</h4>
+                <p>TR91 的結論把 PAC 管理提升到「持續改善文化」的高度：</p>
+                <ul>
+                    <li>PAC 不只是法規合規問題，更是<strong>製造卓越與病患可及性</strong>的關鍵推手。</li>
+                    <li>ICH Q12（含 PACMP）是實現全球一致審查的路線圖。</li>
+                    <li>法規調和是目標，CDMO 的職責是在調和完成之前，做好現有多元系統下的管理。</li>
+                </ul>
+            </div>
+            <div class="note-box">
+                <h4>CDMO Operations Director 的視角</h4>
+                <p>TR91 的整個 Section 4 對 CDMO 有一個核心提醒：<strong>你的法規能力本身就是差異化競爭力</strong>。當客戶面對複雜的全球 PAC 管理時，能夠提供「CDMO 主導的 PAC 策略規劃——從 EC 設計到多地區申報包——並有效管理 SMF 與品質協議」的夥伴，遠比只能執行製造的 CDMO 更有價值。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 10.0 REFERENCES ===== -->
+    <h2 class="section-title">10.0 References</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>10.0 References</h3>
+            <ol>
+                <li>European Federation of Pharmaceutical Industries and Associations. <em>Optimising Post-Approval Change Management for Timely Access to Medicines Worldwide</em>; Efpia: Brussels, 2017.</li>
+                <li>International Federation of Pharmaceutical Manufacturers &amp; Associations. <em>IFPMA Position Paper on the Handling of Post-approval Changes to Marketing Authorizations</em>; IFPMA: Geneva, 2016.</li>
+                <li>Ramnarine, E, et al. Effective Management of Post-Approval Changes in the Pharmaceutical Quality System (PQS)—through Enhanced Science and Risk-Based Approaches Industry One-Voice-of-Quality (1VQ) Solutions. <em>PDA J Pharm Sci and Tech</em> 2020, 74(4), 456–67.</li>
+                <li>World Health Organization. <em>Annex 4: Guidelines on Procedures and Data Requirements for Changes to Approved Vaccines</em> (TRS No. 993); WHO: Geneva, 2015.</li>
+                <li>World Health Organization. <em>Annex 3: Guidelines on Procedures and Data Requirements for Changes to Approved Biotherapeutic Products</em>; TRS No. 1011. WHO: Geneva, 2018.</li>
+                <li>International Council for Harmonisation. <em>Quality Guideline Q12: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management</em>; ICH: Geneva, 2019.</li>
+                <li>International Council for Harmonisation. <em>Quality Guideline Q8(R2): Pharmaceutical Development</em>; ICH: Geneva, 2009.</li>
+                <li>International Council for Harmonisation. <em>Quality Guideline Q9: Quality Risk Management</em>; ICH: Geneva, 2005.</li>
+                <li>International Council for Harmonisation. <em>Quality Guideline Q10: Pharmaceutical Quality System</em>; ICH: Geneva, 2008.</li>
+                <li>International Council for Harmonisation. <em>Quality Guideline Q11: Development and Manufacture of Drug Substances (Chemical Entities and Biotechnological/Biological Entities)</em>; ICH: Geneva, 2012.</li>
+                <li>U.S. Food and Drug Administration. <em>Draft Guidance for Industry: Established Conditions: Reportable CMC Changes for Approved Drug and Biologic Products</em>; U.S. DHHS: Silver Spring, Md, 2015.</li>
+                <li>U.S. Food and Drug Administration. <em>Draft Guidance for Industry: Comparability Protocols for Human Drugs and Biologics: Chemistry, Manufacturing, and Controls Information, Revision 1</em>; U.S. DHHS: Silver Spring, Md, 2016.</li>
+                <li>European Medicines Agency. <em>Questions and Answers on Post-Approval Change Management Protocols</em>; Committee for Medicinal Products for Human Use: London, 2012.</li>
+                <li>Ministry of Health, Labour and Welfare of Japan. <em>Act on Securing Quality, Efficacy and Safety of Products Including Pharmaceuticals and Medical Devices</em>, Act No. 145 of August 10, 1960; Pharmaceuticals and Medical Devices (Japanese Law Translation): 1960.</li>
+                <li>International Organization for Standardization. <em>ISO 9000:2015 Quality Management Systems — Fundamentals and Vocabulary</em>; ISO: Geneva, 2015.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: Contract Manufacturing Arrangements for Drugs: Quality Agreements</em>; U.S. DHHS: Silver Spring, Md., 2016.</li>
+                <li>Srinivasan, A; Kurey, B. Creating a Culture of Quality. <em>Harvard Business Review</em> 2014, 92(4), 23–25.</li>
+                <li>Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). <em>How to Evaluate/Demonstrate the Effectiveness of a Pharmaceutical Quality System in relation to Risk-based Change Management</em>; PIC/S: Geneva, 2019.</li>
+                <li>Parenteral Drug Association. <em>Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations</em>; PDA, Inc.: Bethesda, Md., 2012.</li>
+                <li>Health Canada. <em>Guidance Document: Post-Notice of Compliance (NOC) Changes: Quality Document</em>; Minister of Health: Ottawa, Ontario, 2019.</li>
+                <li>U.S. Food and Drug Administration. <em>Pharmaceutical Quality in the 21st Century — A Risk-Based Approach</em>; U.S. DHHS: Silver Spring, Md., 2007.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: CMC Postapproval Manufacturing Changes for Specified Biological Products to be Documented in Annual Reports</em>; U.S. DHHS: Silver Spring, Md., 2017.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: Q12 Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management</em>; U.S. DHHS: Silver Spring, Md., 2021.</li>
+                <li>International Council for Harmonisation. <em>The Common Technical Document for the Registration of Pharmaceuticals for Human Use: Quality — M4Q(R1)</em>; ICH Secretariat: Geneva, 2002.</li>
+                <li>International Council for Harmonisation. <em>Quality Guideline Q12 Annexes: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management</em>; ICH: Geneva, 2019.</li>
+                <li>Parenteral Drug Association. <em>PDA Research: 2021 Post-Approval Change Issues and Impacts Survey</em>; PDA: Bethesda, Md., 2021; p 57.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: SUPAC-MR: Modified Release Solid Dosage Forms, Scale-Up and Postapproval Changes</em>; CDER, U.S. DHHS: Silver Spring, Md., 1997.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: SUPAC-SS: Nonsterile Semisolid Dosage Forms; Scale-Up and Post-Approval Changes: Chemistry, Manufacturing and Controls; In Vitro Release Testing and In Vivo Bioequivalence Documentation</em>; U.S. DHHS: Rockville, Md., 1997.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: SUPAC-SS: Nonsterile Semisolid Dosage Forms Manufacturing Equipment Addendum</em>; U.S. DHHS: Silver Spring, Md., 1998.</li>
+                <li>European Commission. <em>Regulation (EC) No 1234/2008 of 24 November 2008 concerning the examination of variations to the terms of marketing authorisations for medicinal products for human use and veterinary medicinal products</em>; OJ. European Commission: Brussels, 2008.</li>
+                <li>European Medicines Agency. <em>Post-Authorisation Procedural Advice for Users of the Centralised Procedure</em>; EMA: London, 2022.</li>
+                <li>U.S. Food and Drug Administration. <em>Guidance for Industry: Changes to an Approved NDA or ANDA</em>; Center for Drug Evaluation and Research. U.S. DHHS: Silver Spring, Md., 2004.</li>
+            </ol>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+            <div class="concept-box">
+                <h4>核心參考文獻導覽</h4>
+                <p>TR91 的 32 條參考文獻構成了一個完整的全球 PAC 知識體系：</p>
+                <ul>
+                    <li><strong>Ref. 4 &amp; 5（WHO）</strong>：生物製劑與疫苗的 PAC 指引——非 ICH 地區最重要的橋接文件。</li>
+                    <li><strong>Ref. 6（ICH Q12）</strong>：全書核心框架，EC 與 PACMP 的定義來源。</li>
+                    <li><strong>Ref. 11（FDA EC 草稿指引）</strong>：Established Conditions 的美國版詮釋。</li>
+                    <li><strong>Ref. 13（EMA PACMP Q&amp;A）</strong>：歐盟 PACMP 實施細節。</li>
+                    <li><strong>Ref. 20（Health Canada NOC）</strong>：加拿大的 PAC 分類文件，與 WHO 格式相似。</li>
+                    <li><strong>Ref. 26（PDA 2021 Survey）</strong>：行業調查數據來源，支持「部分地區審查超過 5 年」的論述。</li>
+                    <li><strong>Ref. 27–31（SUPAC &amp; EU Variation Regulation）</strong>：藥學 PAC 科學資料的具體要求文件。</li>
+                </ul>
+            </div>
+            <div class="note-box">
+                <h4>CDMO 建議閱讀優先順序</h4>
+                <p>如果你只能精讀三份原始文件，建議優先選擇：<br>
+                <strong>ICH Q12（Ref. 6）→ FDA EC 指引（Ref. 11）→ EMA PACMP Q&amp;A（Ref. 13）</strong>。<br>
+                這三份文件覆蓋了 ICH 成員區域 80% 以上的主要產品市場，也是理解 EC 設計與 PACMP 策略的基礎。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h2>Section 4 總結 — Global PAC Management, Harmonization &amp; Conclusion</h2>
+        <ul>
+            <li><strong>ICH 成員區域的優勢</strong>：以風險為基礎的申報分類、有限穩定性資料接受度、明確審查時程——是高效 PAC 管理的基礎條件。CDMO 必須精通這套系統，並能同時管理美國（FDA）、歐盟（EMA）、加拿大（Health Canada）、日本（PMDA）的並行申報。</li>
+            <li><strong>非 ICH 地區的現實</strong>：缺乏指引、審查可能長達 5 年、逐件序列審查的要求，使全球同步申報極為困難。供應鏈影響是最直接的患者風險，應提早與非 ICH 機構溝通。WHO 指引可作為橋接工具。</li>
+            <li><strong>Legacy Products 的 EC 導入策略</strong>：最佳時機是「搭便車」——與重大 PAC 同步提交 EC 清單。歷史製造數據是論據基礎，Parameter-based EC 可升級為 Performance-based EC 以獲得更大靈活性。</li>
+            <li><strong>PDA 調和建議</strong>：統一 major/moderate/minor 的全球定義，以及相互認可機制——一個 ICH 成員的批准，應能簡化其他成員的審查。目標審查時程：通知類 ≤90 天，事前核准類 ≤180 天。</li>
+            <li><strong>CDMO 的核心競爭力</strong>：共用設備/廠房變更可能同時觸發所有相關產品的 PAC 義務，Site Master File（SMF）策略是管理多客戶複雜度的關鍵工具。法規能力本身是 CDMO 差異化的核心資產。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 91 (2023) — Post-Approval Change Management and Implementation for Biologics and Pharmaceutical Drug Products</p>
+    <p>Section 4: Global PAC Management, Harmonization &amp; Conclusion (p14–p19)</p>
+    <p style="font-size:0.8rem; opacity:0.7;">Licensed to Kuo, Li-Hung / TWi Pharmaceuticals Inc. — Educational Use Only</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+</script>
+
+</body>
+</html>
