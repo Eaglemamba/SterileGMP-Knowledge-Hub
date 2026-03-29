@@ -32,8 +32,7 @@
         .fade-up:nth-child(2) { animation-delay: 0.05s; }
         .fade-up:nth-child(3) { animation-delay: 0.1s; }
         .fade-up:nth-child(4) { animation-delay: 0.15s; }
-        body.search-active #statsRow,
-        body.search-active #categoryBar { display: none; }
+        body.search-active #statsRow { display: none; }
         body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
     </style>
 </head>
@@ -55,9 +54,9 @@
         </div>
     </div>
 
-    <!-- CATEGORY BAR -->
+    <!-- DOCUMENT TYPE FILTERS -->
     <div class="max-w-6xl mx-auto px-6 mt-4">
-        <div class="flex h-2 rounded-full overflow-hidden bg-gray-200" id="categoryBar"></div>
+        <div class="flex gap-2 flex-wrap" id="typeBtns"></div>
     </div>
 
     <!-- SEARCH & FILTERS -->
@@ -325,10 +324,26 @@ function renderStats(){
     const stats=[{v:t,l:'Reports'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'},{v:latestShort,l:'Latest Added'}];
     document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-blue-200 mt-0.5">${s.l}</div></div>`).join('');
     document.getElementById('lastUpdated').textContent=latest.date;
-    const sc={};documents.forEach(d=>{sc[d.source]=(sc[d.source]||0)+1;});
-    const tot=Object.values(sc).reduce((a,b)=>a+b,0);
-    document.getElementById('categoryBar').innerHTML=Object.entries(sc).map(([s,c])=>`<div style="width:${c/tot*100}%;background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>`).join('');
 }
+
+// Document type filters
+const categoryMap = {
+  'TR': s => /^PDA TR/.test(s),
+  'Points to Consider': s => /^PDA PtC/.test(s),
+  'Survey Research': s => /Survey|Research/i.test(s),
+  'Tech Report': s => /Guide/i.test(s)
+};
+const typeLabels = ['all', 'TR', 'Points to Consider', 'Survey Research', 'Tech Report'];
+let activeType = 'all';
+
+function initTypeFilters(){
+    document.getElementById('typeBtns').innerHTML=typeLabels.map(f=>{
+        const a=f===activeType;
+        const c=a?'bg-pda-blue text-white border-pda-blue':'border-gray-300 text-gray-600 bg-white hover:border-pda-blue hover:text-pda-blue';
+        return `<button class="px-3 py-1.5 rounded-lg text-xs font-semibold border ${c} transition-colors" onclick="setType('${f}')">${f==='all'?'All':f}</button>`;
+    }).join('');
+}
+function setType(t){activeType=t;initTypeFilters();renderCards();}
 
 function initFilters(){
     const tagCounts={};
@@ -365,6 +380,7 @@ function getFiltered(){
         if(hits.length>0){sc+=Math.min(hits.length,8);ty.push('content');x._hits=hits.map(h=>({sectionTitle:h.sectionTitle,snippet:getSnippet(h.content,s)}));}
         x._score=sc;x._matchTypes=[...new Set(ty)];return sc>0;
     });}
+    if(activeType!=='all'){const fn=categoryMap[activeType];if(fn)d=d.filter(x=>fn(x.source));}
     if(activeFilter!=='all'){d=d.filter(x=>x.tags.includes(activeFilter));}
     const sort=sortEl.value;
     if(sort==='relevance'&&s)d.sort((a,b)=>b._score-a._score||b.date.localeCompare(a.date));
@@ -416,7 +432,7 @@ function renderCards(){
 }
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-loadData().then(()=>{initFilters();renderStats();renderCards();});
+loadData().then(()=>{initTypeFilters();initFilters();renderStats();renderCards();});
 </script>
 </body>
 </html>
