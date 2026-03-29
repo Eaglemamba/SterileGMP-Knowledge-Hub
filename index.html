@@ -89,10 +89,41 @@
 <script src="search-index.js" onerror=""></script>
 <script>
 // ============================================================
-// DOCUMENT DATA -- Each entry = one educational HTML file
-// To add new documents from ANY source, append to this array.
+// DATA — loaded dynamically from reports.json
 // ============================================================
-const documents = [
+let documents = [], sourceColors = {}, tagCls = {};
+
+async function loadData() {
+    try {
+        const res = await fetch('./reports.json');
+        if (!res.ok) throw new Error('fetch failed');
+        const data = await res.json();
+
+        documents = Object.entries(data.reports)
+            .filter(([, r]) => r.date && r.output_filename && (r.section_map || []).length > 0)
+            .map(([key, r]) => ({
+                date: r.date,
+                title: [r.report_title_en, r.report_subtitle_en].filter(Boolean).join(': '),
+                titleZh: r.titleZh || '',
+                source: r.source,
+                tags: r.tags || [],
+                summary: r.summary || '',
+                sections: (r.section_map || []).length,
+                pages: r.pages || '',
+                figures: r.figures || 0,
+                file: `${key}/output/${r.output_filename}`
+            }));
+
+        sourceColors = {};
+        Object.values(data.reports).forEach(r => {
+            if (r.source && r.source_color) sourceColors[r.source] = r.source_color;
+        });
+
+        tagCls = data.tagClasses || {};
+        return true;
+    } catch(e) {
+        // Fallback: hardcoded data for file:// access
+        documents = [
     // One card per PDA Technical Report — links to merged TopNav document
     { date:"2026-03-15", title:"PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025)", titleZh:"無菌充填工程與操作技術指引",
       source:"PDA Guide No.1", tags:["Aseptic","Filling","Design","GMP","Dose Control","CDMO"],
@@ -193,13 +224,10 @@ const documents = [
       source:"PDA TR70", tags:["Aseptic","GMP","Cleaning","Disinfection","Contamination Control"],
       summary:"無菌設施C&D完整框架：消毒劑/殺菌劑/殺孢子劑分類、供應商確效(懸浮液法/載體表面法/AOAC-EN效力測試)、使用效期管理、各分級區域(A/B/C/D)清潔方法與作業程序、清潔頻率/抗藥性輪替/保存時限/培訓課程，以及氣態除汙(VHP/ClO2)與8個附錄(法規總覽/AOAC/EN標準)。75頁全覆蓋。",
       sections:9, pages:"p1-p75", figures:3, file:"TR70/output/TR70-Complete.html" }
-];
+        ]; // end fallback documents
 
-// ============================================================
-// CONFIG
-// ============================================================
-const sourceColors = {
-    "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
+        sourceColors = {
+            "PDA Guide No.1": { bg:"#dbeafe", text:"#1e40af", bar:"#3b82f6", short:"Guide No.1" },
     "PDA TR26":       { bg:"#d1fae5", text:"#065f46", bar:"#10b981", short:"TR26" },
     "PDA TR52":       { bg:"#fef9c3", text:"#713f12", bar:"#eab308", short:"TR52" },
     "PDA TR60":       { bg:"#fee2e2", text:"#991b1b", bar:"#ef4444", short:"TR60" },
@@ -216,12 +244,12 @@ const sourceColors = {
     "PDA PtC-14":     { bg:"#ede9fe", text:"#5b21b6", bar:"#7c3aed", short:"PtC-14" },
     "PDA PtC-15":     { bg:"#fef3c7", text:"#92400e", bar:"#f59e0b", short:"PtC-15" },
     "PDA PtC-Isolators": { bg:"#f0fdf4", text:"#14532d", bar:"#16a34a", short:"PtC-Isol" },
-    "PDA PtC-9":       { bg:"#fef3c7", text:"#92400e", bar:"#d97706", short:"PtC-9" },
-    "PDA TR39":        { bg:"#ecfdf5", text:"#065f46", bar:"#059669", short:"TR39" },
-    "PDA TR70":        { bg:"#fff7ed", text:"#9a3412", bar:"#ea580c", short:"TR70" }
-};
+            "PDA PtC-9":       { bg:"#fef3c7", text:"#92400e", bar:"#d97706", short:"PtC-9" },
+            "PDA TR39":        { bg:"#ecfdf5", text:"#065f46", bar:"#059669", short:"TR39" },
+            "PDA TR70":        { bg:"#fff7ed", text:"#9a3412", bar:"#ea580c", short:"TR70" }
+        }; // end fallback sourceColors
 
-const tagCls={
+        tagCls = {
     "Aseptic":"bg-blue-50 text-blue-700 border border-blue-200 font-semibold",
     "Overview":"bg-slate-100 text-slate-600","Glossary":"bg-slate-100 text-slate-600",
     "GMP":"bg-red-50 text-red-600","Annex 1":"bg-red-50 text-red-600",
@@ -275,8 +303,11 @@ const tagCls={
     "Mock-Up":"bg-slate-100 text-slate-600",
     "Mobile Manufacturing":"bg-amber-50 text-amber-700 border border-amber-200 font-semibold",
     "Modular":"bg-amber-50 text-amber-600","MMU":"bg-amber-50 text-amber-600",
-    "Technology Transfer":"bg-indigo-50 text-indigo-600"
-};
+            "Technology Transfer":"bg-indigo-50 text-indigo-600"
+        }; // end fallback tagCls
+        return true;
+    } // end catch
+} // end loadData
 
 // Category-based filters (group by document type, not individual report number)
 const categoryMap = {
@@ -375,10 +406,13 @@ function renderCards(){
         const bc2=s&&d._score>0?(d._score/mx>=0.7?'border-pda-blue':d._score/mx>=0.4?'border-blue-300':'border-gray-200'):'border-gray-200';
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
         return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col">
-            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div>`:''}
-            <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
+            ${sm?`<div class="flex items-start justify-between gap-2 mb-1">
+                <span class="mono text-xs text-gray-400 shrink-0 pt-0.5">${d.date}</span>
+                <div class="flex gap-1 flex-wrap justify-end">${tags}${fb}</div>
+            </div>`:''}
+            <h3 class="text-sm font-semibold text-gray-900 leading-snug">${d.title}</h3>
             ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
-            ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
+            ${sm?`<p class="mono text-[10px] text-gray-400 mt-1" style="color:${sc.text}">${sc.short}</p>`:''}
             ${rel}
             ${ss?`<p class="text-xs text-gray-600 leading-relaxed mt-2 flex-1">${d.summary}</p>`:''}
             ${hh}
@@ -389,7 +423,7 @@ function renderCards(){
 }
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-initFilters();renderStats();renderCards();
+loadData().then(()=>{initFilters();renderStats();renderCards();});
 </script>
 </body>
 </html>
