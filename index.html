@@ -415,13 +415,10 @@ function renderCards(){
         const bc2=s&&d._score>0?(d._score/mx>=0.7?'border-pda-blue':d._score/mx>=0.4?'border-blue-300':'border-gray-200'):'border-gray-200';
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
         return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col">
-            ${sm?`<div class="flex items-start justify-between gap-2 mb-1">
-                <span class="mono text-xs text-gray-400 shrink-0 pt-0.5">${d.date}</span>
-                <div class="flex gap-1 flex-wrap justify-end">${tags}${fb}</div>
-            </div>`:''}
-            <h3 class="text-sm font-semibold text-gray-900 leading-snug">${d.title}</h3>
+            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div>`:''}
+            <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
             ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
-            ${sm?`<p class="mono text-[10px] text-gray-400 mt-1" style="color:${sc.text}">${sc.short}</p>`:''}
+            ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
             ${rel}
             ${ss?`<p class="text-xs text-gray-600 leading-relaxed mt-2 flex-1">${d.summary}</p>`:''}
             ${hh}
