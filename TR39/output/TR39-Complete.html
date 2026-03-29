@@ -1,0 +1,3344 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Technical Report No. 39 (Revised 2021) - Guidance for Temperature-Controlled Medicinal Products</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>PDA Technical Report No. 39 (Revised 2021)</h1>
+            <p class="subtitle">Guidance for Temperature-Controlled Medicinal Products | 溫控藥品運輸與配送品質管理指引</p>
+        </div>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec1" class="nav-item" data-section="sec1">
+                <span class="nav-num">1</span>
+                <span class="nav-label">Introduction & Glossary</span>
+            </a>
+            <a href="#sec2" class="nav-item" data-section="sec2">
+                <span class="nav-num">2</span>
+                <span class="nav-label">Process Design & Qualification</span>
+            </a>
+            <a href="#sec3" class="nav-item" data-section="sec3">
+                <span class="nav-num">3</span>
+                <span class="nav-label">Ongoing Process Verification</span>
+            </a>
+            <a href="#sec4" class="nav-item" data-section="sec4">
+                <span class="nav-num">4</span>
+                <span class="nav-label">Conclusion, References & Case Studies</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 1: Introduction & Glossary ========== -->
+    <section class="chapter-section" id="sec1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1</div>
+            <div class="chapter-info">
+                <h2>Section 1: Introduction & Glossary</h2>
+                <p>導論與名詞解釋 | p1-p5</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- ===== SECTION HEADER ===== -->
+<div class="page-info">PDA Technical Report No. 39 (Revised 2021) &nbsp;|&nbsp; Pages 1–6</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>了解 TR39 的適用範圍：從製造商、CMO（委託製造組織）到末端藥局的完整供應鏈溫控責任。</li>
+            <li>掌握「Last Mile（最後一哩路）」概念，以及細胞與基因治療產品對超低溫冷鏈（-80°C 或液態氮）的特殊需求。</li>
+            <li>理解三階段資格驗證框架：製程設計（Process Design）→ 製程資格確認（Process Qualification）→ 持續製程驗證（Ongoing Process Verification, OPV）。</li>
+            <li>能夠正確使用 TR39 核心縮寫（URS、DQ、IQ、OQ、PQ、CAPA、LSP、TPS、VMP 等）並解釋其在冷鏈管理中的意涵。</li>
+            <li>將 TR39 框架連結至 TWi 的 GDP 合規與 TFDA/FDA 稽核準備工作，辨識 CDMO 出貨端的關鍵控制點。</li>
+        </ol>
+    </div>
+
+    <!-- ===== SECTION 1.0 — INTRODUCTION ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1</div>
+            <div class="chapter-info">
+                <h2>1.0 Introduction</h2>
+                <p>Distribution scope, Last Mile, purpose, and stakeholder framework</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- 1.0 Introduction -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>1.0 Introduction</h3>
+                    <p>The distribution of life science products is extremely diverse, ranging from raw materials to finished product through the supply chain to the end user. Typically, as the distribution process moves from shipments on pallets to individual packages to delivery to the end patient, the term <strong>"Last Mile"</strong> is applied. The Last Mile defines the point at which products have reached their final destination (e.g., pharmacy, medical practice, private residence). Product temperature must continue to be maintained within registered storage and/or transport conditions.</p>
+                    <p>This may include shipments from a wholesale distributor to a pharmacy where the products are held awaiting customer pick-up or, as the Last Mile process has become an even more complex system, home delivery of products that also include cell and gene therapy.</p>
+                </div>
+                <div class="right-column">
+                    <h3>重點解析</h3>
+                    <div class="concept-box">
+                        <h4>「Last Mile（最後一哩路）」是什麼？</h4>
+                        <p>Last Mile 指藥品從批發商或物流中心出發後，送達最終目的地（藥局、診所、病患家中）的最後一段路程。這段路程溫控難度最高，因為：</p>
+                        <ul>
+                            <li>包裝從棧板縮小為個別包裹，保溫能力降低</li>
+                            <li>環境條件難以預測（車廂溫度、氣候）</li>
+                            <li>細胞與基因治療（Cell &amp; Gene Therapy）產品需求 -80°C 乾冰或液態氮運輸</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>TWi 的 CDMO 情境</h4>
+                        <p>TWi 作為 CDMO，出貨時即進入客戶的 Last Mile 上游。我們必須確保交貨時溫度記錄完整、出貨文件符合 GDP，才能讓客戶順利通過 TFDA 或 FDA 稽核。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.1 Purpose -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>1.1 Purpose</h3>
+                    <p>This technical report provides guidance for establishing a <strong>quality management system</strong> for distribution of all types of temperature-sensitive medicinal and pharmaceutical products, from preparation of products for transportation at shipping sites to the shipment of products to receiving sites for storage or distribution to patients (end users).</p>
+                    <p>The examples accompanying the points to consider provided herein on how to protect the quality of the product are for demonstrational purposes only.</p>
+                </div>
+                <div class="right-column">
+                    <h3>目的說明</h3>
+                    <p>TR39 的核心目的是為整個配送供應鏈建立<strong>品質管理系統（Quality Management System, QMS）</strong>。範圍涵蓋：</p>
+                    <ul>
+                        <li>出貨端（Shipping Site）的包裝準備</li>
+                        <li>運輸途中的溫度控制</li>
+                        <li>接收端（Receiving Site）的驗收與儲存</li>
+                    </ul>
+                    <div class="note-box">
+                        <h4>注意</h4>
+                        <p>文件中的範例僅供示範，不代表唯一正確作法。企業應根據自身產品特性與法規要求制定符合實際的 SOP。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.2 Scope + Stakeholders -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>1.2 Scope</h3>
+                    <p>This technical report offers a resource for all stakeholders involved in the pharmaceutical supply chain and provides a model for qualifications from the process design through implementation and operation to verification. The stakeholders include, but are not limited to:</p>
+                    <ul>
+                        <li>Pharmaceutical and biotech companies of commercial and clinical medicinal products, including manufacturers, contract manufacture organizations (CMOs), and repackagers</li>
+                        <li>Health care providers (HCPs)</li>
+                        <li>Logistic service providers</li>
+                        <li>Wholesalers</li>
+                        <li>Distributors (including subcontractors)</li>
+                        <li>Pharmacies, including mail order, infusion, specialty, and compounding pharmacies</li>
+                        <li>503B pharmacies currently in the United States</li>
+                        <li>Nongovernmental organizations such as UNICEF and PAHO</li>
+                    </ul>
+                    <p>The stakeholders are responsible and accountable for the processes that control the handling, transport, and storage of the product from the point of manufacture to distribution to the patient. They need to work closely with manufacturers who have all the stability data and knowledge necessary to evaluate excursions.</p>
+                </div>
+                <div class="right-column">
+                    <h3>適用對象 &amp; CDMO 定位</h3>
+                    <p>TR39 明確將 <strong>CMO（委託製造組織）</strong>列為責任利害關係人之一。作為製藥 CDMO，TWi 在冷鏈合規中扮演出貨方角色，需確保：</p>
+                    <ul>
+                        <li>出貨前與客戶（原廠）確認 URS（使用者需求規格）</li>
+                        <li>選用經過資格確認（Qualified）的包裝系統</li>
+                        <li>與 LSP（物流服務供應商）簽訂品質協議（Quality Agreement）</li>
+                        <li>提供穩定性數據（Stability Data）支持溫偏評估</li>
+                    </ul>
+                    <div class="analogy-box">
+                        <h4>503B 藥局是什麼？</h4>
+                        <p>503B 是美國 FDA 為大規模調劑（Outsourcing Facility）設立的特殊認證，介於傳統藥局與製藥廠之間。須遵守 Current Good Manufacturing Practice (cGMP)，與一般零售藥局（503A）不同。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Figure 1.0-1: Qualification Flow -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Figure 1.0-1 — Qualification Process Flow and Key Deliverables</h3>
+                    <div class="qual-flow">
+                        <div class="qual-stage stage-design">
+                            <h4>Process Design</h4>
+                            <ul>
+                                <li>User Requirement Specifications (URS)</li>
+                                <li>Product (primary and secondary package)</li>
+                                <li>Shipping solution</li>
+                                <li>Stability data (PDA TR 53)</li>
+                                <li>Mode of transportation / Route / Lane(s)</li>
+                                <li>Temperature profile(s) / Regulations</li>
+                                <li>Distribution Risk Assessment (PDA TR 58)</li>
+                            </ul>
+                        </div>
+                        <div style="text-align:center; font-size:1.4rem; color:#718096; margin:0.2rem 0;">&#8595;</div>
+                        <div class="qual-stage stage-qual">
+                            <h4>Process Qualification</h4>
+                            <ul>
+                                <li>Validation Master Plan (VMP)</li>
+                                <li>Design Qualification (DQ)</li>
+                                <li>IQ / Operational Qualification (OQ)</li>
+                                <li>Performance Qualification (PQ)</li>
+                                <li>Shipping control strategy (PDA TR 64 &amp; TR 72)</li>
+                            </ul>
+                        </div>
+                        <div style="text-align:center; font-size:1.4rem; color:#718096; margin:0.2rem 0;">&#8595;</div>
+                        <div class="qual-stage stage-opv">
+                            <h4>Ongoing Process Verification (OPV)</h4>
+                            <ul>
+                                <li>Quality Management System (QMS)</li>
+                                <li>Process (SOPs) / Monitoring / Training</li>
+                                <li>Stakeholder management (LSP, SLA, Quality Agreement)</li>
+                                <li>Management of Nonconformances / Complaints</li>
+                                <li>Periodic Quality &amp; Business Review</li>
+                                <li>Change control (Supplier, Shippers, LSP/Carrier, Customer)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>三階段框架解析</h3>
+                    <div class="concept-box">
+                        <h4>第一階段：製程設計（Process Design）</h4>
+                        <p>在正式測試前，先定義產品的溫控需求、選擇包裝方案、評估運輸路線風險。<strong>URS（使用者需求規格）</strong>是整個框架的基石 — 所有後續的資格確認測試都以 URS 為基準。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>第二階段：製程資格確認（Process Qualification）</h4>
+                        <p>依序執行 DQ → IQ → OQ → PQ，確認設計符合需求、設備安裝正確、操作表現一致、真實配送環境下性能達標。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>第三階段：持續製程驗證（OPV）</h4>
+                        <p>資格確認完成後，透過 QMS（SOP、監控、訓練、CAPA）持續維護冷鏈品質。變更控制（Change Control）確保任何供應商或路線改變都經過再評估。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>與 TR60（製程驗證生命週期）的關聯</h4>
+                        <p>TR39 的三階段架構與 TR60 製程驗證生命週期（Stage 1–3）高度一致：設計 = Stage 1，資格確認 = Stage 2，持續驗證 = Stage 3。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- end chapter-section 1 -->
+
+    <!-- ===== SECTION 2.0 — GLOSSARY ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2</div>
+            <div class="chapter-info">
+                <h2>2.0 Glossary &amp; 2.1 Abbreviations</h2>
+                <p>Industry definitions and key abbreviations for cold chain qualification</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <p style="margin-bottom:1.25rem; font-size:0.93rem; color:var(--text-medium);">The terms and definitions below are in common use within the industry and represent industry best practices in the experiences of the technical report team.</p>
+
+            <!-- Glossary table + commentary -->
+            <div class="glossary-grid">
+
+                <!-- LEFT: Glossary Table -->
+                <div class="glossary-table-wrap">
+                    <h3>Glossary of Terms</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:32%;">Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>503B Pharmacy</strong></td>
+                                <td>An FDA designation for outsourcing facilities that must comply with State Board of Pharmacy guidelines; created to distinguish these from conventional drug manufacturers while maintaining standards to protect patients from substandard compounded drug products.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Acceptance Criteria</strong></td>
+                                <td>Predefined criteria that must be met by testing; numerical limits, ranges, or other suitable measures for acceptance of test results.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ambient Temperature Profile</strong></td>
+                                <td>The temperatures selected to simulate the anticipated and experienced extremes used to challenge a thermal protection system in a testing chamber.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Corrective Action/Preventive Action (CAPA)</strong></td>
+                                <td>A corrective action eliminates the root cause of a nonconformance and prevents recurrence. A preventive action eliminates the cause of a <em>potential</em> nonconformance before it occurs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Conditioning / Preconditioning</strong></td>
+                                <td>The process to bring the payload or a thermal protection system component(s) to a specified temperature condition by keeping it for a given period of time in the conditioning environment.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Acquisition System</strong></td>
+                                <td>A combination of sensors, measurement hardware, and software used to measure physical conditions and convert results into digital numeric values (e.g., thermocouples used in TPS qualification).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Loggers</strong></td>
+                                <td>Measurement instruments capable of recording temperature over a defined period based on memory capacity; data can be retrieved and used for accept/reject decision-making and route analysis.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Design Qualification (DQ)</strong></td>
+                                <td>Tests or assessments performed prior to operational qualification to ensure that user requirements are met by the proposed thermal protection system.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equilibration Time</strong></td>
+                                <td>The duration required for a thermal protection system with product load to reach the required product temperature range within the thermal requirements.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Indicators</strong></td>
+                                <td>A measurement instrument capable of comparing environmental conditions (e.g., temperature) to alarm settings to determine if those settings have been exceeded. Limited data may be stored.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Installation Qualification (IQ)</strong></td>
+                                <td>The process of obtaining and documenting evidence that the premises, equipment, and/or supporting systems have been provided and installed in compliance with their design specifications.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Logistics Service Provider (LSP)</strong></td>
+                                <td>Providers that contribute to the transportation and storage/distribution process, including carriers, integrators, forwarders, and custom brokers. LSPs may subcontract aspects of the logistics process.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Management Review</strong></td>
+                                <td>A formal, documented review of the quality system's performance executed periodically at senior management level according to a planned schedule.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mechanical Testing</strong> (also Distribution, Physical, or Dynamic Testing)</td>
+                                <td>Testing that demonstrates and documents the ability of a thermal protection system to withstand the distribution environment (e.g., shock, drop, impact, compression, vibration).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nonconformance</strong></td>
+                                <td>Any unexpected and/or unwanted deviation from established processes, procedures, regulations, requirements, standards, or specifications, including temperature excursions, anomalous trends, and quality system failures.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Operational Qualification (OQ)</strong></td>
+                                <td>Testing that demonstrates and documents, with a high degree of assurance, that a system consistently performs as intended under the anticipated shipping conditions in compliance with user and design requirements.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pack-Out</strong></td>
+                                <td>Detailed instructions on how to precondition and assemble the packaging system with the payload. Seasonal pack-out configurations may change by season, ambient temperature, or lane; universal pack-out remains unchanged year-round.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Passive Thermal Protection System</strong></td>
+                                <td>See Thermal Protection Systems, Passive.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Payload (also Product Load)</strong></td>
+                                <td>The variable amount of product to be transported in the thermal protection system, including the combination of cases, cartons, and product assembled to be packed inside the vehicle or within a passive TPS.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Performance Qualification (PQ)</strong></td>
+                                <td>Transport tests of the thermal packaging system and process conducted in the representative transportation or distribution environment by those executing the day-to-day shipping process, demonstrating effectiveness and reproducibility.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phase Change Material (PCM)</strong></td>
+                                <td>A physical material that absorbs energy when melting and releases thermal energy when freezing; used in TPS to maintain the desired temperature range. Examples: dry ice, gel packs, gel bricks, coolants.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Placebo Product</strong> (Mock / Simulated / Dummy Product)</td>
+                                <td>A product used in place of actual pharmaceutical product during qualification. Should closely imitate the dimensions and thermal behavior of the real product and its packaging to provide a cost-effective qualification approach.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PID Controller</strong> (Proportional Integral Derivative)</td>
+                                <td>The control loop mechanism that provides feedback on the performance of the thermal testing-chamber control system.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Qualification</strong></td>
+                                <td>Documented testing that demonstrates, with a high degree of assurance, that a process or system will function to meet its predetermined acceptance criteria.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shipper</strong></td>
+                                <td>An individual or company that tenders products for transportation (also used to identify the package containing products to be shipped).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stability Budget</strong></td>
+                                <td>Considers results of long-term, accelerated, extreme excursion, and temperature cycling studies to determine the amount of time out of storage that a drug product may experience without significant risk to its quality.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Standard Operating Procedure (SOP)</strong></td>
+                                <td>A written set of step-by-step instructions that describe the requirements necessary to complete an activity, task, or process.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Subcontractor</strong></td>
+                                <td>An entity that takes a portion of a contract from the principal contractor (such as an LSP) or from another subcontractor.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature Excursion</strong></td>
+                                <td>An event in which product is exposed to temperatures outside of the recommended storage and/or transport temperature range.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermal Protection System (TPS)</strong></td>
+                                <td>Any active or passive temperature control system for the distribution of temperature-sensitive products.</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;↳ <em>Active TPS</em></td>
+                                <td>A temperature-controlled container with refrigeration and/or heating capabilities and associated calibrated temperature-control devices (e.g., temperature-controlled trucks/trailers, ocean containers, active unit load devices for airfreight).</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;↳ <em>Passive TPS</em></td>
+                                <td>An insulated container that provides thermal protection for its payload from outside temperatures, comprising insulated container, spacers, dunnage, shipping refrigerants (gel pack, dry ice), packaging, and product payload configured in a specific manner.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transportation Lane</strong></td>
+                                <td>The two points that define the origin and destination for a shipment.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transportation Route</strong></td>
+                                <td>The origin, in-transit, and destination points for a shipment (broader than a lane, includes intermediate stops).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>User Requirements Specifications (URS)</strong></td>
+                                <td>Defines the users' critical parameters of the product, packaging, and transport system for the qualification process.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Validated Equipment</strong></td>
+                                <td>Equipment used to conduct OQ, including thermal test chambers and data acquisition systems, which has undergone IQ/OQ/PQ and periodic revalidation with calibration to NIST or accepted industry standards.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Validation Master Plan (VMP)</strong></td>
+                                <td>A master plan outlining the validation scope, practices, and requirements to ensure the drug substance/product retains all critical quality attributes through the supply chain, including packaging qualification, container selection, route conditions, and temperature monitoring device placement.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary on Key Terms -->
+                <div class="glossary-commentary">
+                    <h3>重要術語深度解析</h3>
+
+                    <h4>URS（使用者需求規格）</h4>
+                    <p><strong>User Requirements Specifications</strong> 是整個冷鏈資格確認的起點。在 TWi 的情境下，URS 應明確定義：產品的溫控範圍（如 2–8°C 或 -20°C）、包裝形式、運輸模式、預期最惡化環境條件。URS 若定義不清，後續所有 DQ/OQ/PQ 都會失去基準。</p>
+
+                    <h4>DQ / IQ / OQ / PQ 四步驟資格確認</h4>
+                    <p>這四個步驟是冷鏈系統（如保溫箱、溫控貨車）的完整驗證路徑：</p>
+                    <ul>
+                        <li><strong>DQ（設計資格確認）</strong>：設計圖、規格符合 URS？</li>
+                        <li><strong>IQ（安裝資格確認）</strong>：設備是否依規格正確安裝？</li>
+                        <li><strong>OQ（操作資格確認）</strong>：在模擬條件下，系統是否如預期運作？（須使用驗證測試箱 + 數據記錄器）</li>
+                        <li><strong>PQ（性能資格確認）</strong>：由實際執行日常出貨的人員，在真實運輸環境中進行測試，確認系統有效且可重複。</li>
+                    </ul>
+
+                    <div class="note-box">
+                        <h4>PQ vs OQ 關鍵差異</h4>
+                        <p>OQ 在受控實驗室環境（測試箱）進行；PQ 在真實配送環境（實際運輸路線）進行，由日常負責出貨的操作人員執行。PQ 更接近「真實世界」的證明。</p>
+                    </div>
+
+                    <h4>CAPA（矯正與預防措施）</h4>
+                    <p>CAPA 分兩類：<strong>矯正行動（Corrective Action）</strong>針對已發生的偏差，消除根本原因防止復發；<strong>預防行動（Preventive Action）</strong>針對潛在風險，在問題發生前消除隱患。在冷鏈中，Temperature Excursion（溫度偏差）是觸發 CAPA 的最常見情境。</p>
+
+                    <h4>LSP（物流服務供應商）</h4>
+                    <p>LSP 包括承運商（Carrier）、整合商（Integrator）、貨運代理（Forwarder）和報關行（Custom Broker）。TR39 要求 CDMO 與 LSP 簽訂正式的<strong>品質協議（Quality Agreement）</strong>與<strong>服務等級協議（SLA）</strong>，並納入年度績效審查，這是 GDP 合規的核心要求。</p>
+
+                    <h4>TPS 主動 vs 被動系統</h4>
+                    <div class="analogy-box">
+                        <h4>用日常例子理解</h4>
+                        <p><strong>主動 TPS</strong> 就像有壓縮機的冰箱，持續主動維溫；適合長途海運或大型托盤。<strong>被動 TPS</strong> 就像保溫箱裡放乾冰，靠相變材料（PCM）吸放熱能維持溫度；適合小批量快遞或 Last Mile 配送。選擇哪種系統是 URS 和風險評估的決策輸出。</p>
+                    </div>
+
+                    <h4>Stability Budget（穩定性預算）</h4>
+                    <p>這是評估溫度偏差（Temperature Excursion）影響的關鍵工具。製造商的穩定性研究結果決定藥品在儲存條件外可以承受多長時間。TWi 出貨時，客戶（原廠）應提供 Stability Budget 數據，作為偏差評估的科學依據。</p>
+
+                    <h4>Placebo Product（安慰劑樣品）</h4>
+                    <p>在 OQ/PQ 測試中，使用價格低廉的安慰劑（Mock）替代真實昂貴的藥品，但尺寸和熱行為必須儘可能模擬真實產品。這既是成本控制，也是資格確認的標準做法。</p>
+
+                    <h4>Pack-Out 的季節性差異</h4>
+                    <p>夏季高溫環境與冬季低溫環境對保溫箱的預冷需求截然不同。<strong>季節性 Pack-Out</strong> 針對不同季節分別驗證；<strong>通用型 Pack-Out</strong> 全年使用同一配置（通常採用更保守的設計）。TWi 若對外出貨，應確認客戶指定的是哪種 Pack-Out 版本。</p>
+                </div>
+
+            </div><!-- end glossary-grid -->
+
+            <!-- Abbreviations -->
+            <div class="two-column" style="margin-top:0.5rem;">
+                <div class="left-column">
+                    <h3>2.1 Abbreviations</h3>
+                    <div class="abbr-grid">
+                        <div class="abbr-item"><span class="abbr-code">CAPA</span><br><span class="abbr-full">Corrective Action/Preventive Action</span></div>
+                        <div class="abbr-item"><span class="abbr-code">CMO</span><br><span class="abbr-full">Contract Manufacture Organization</span></div>
+                        <div class="abbr-item"><span class="abbr-code">DQ</span><br><span class="abbr-full">Design Qualification</span></div>
+                        <div class="abbr-item"><span class="abbr-code">HCP</span><br><span class="abbr-full">Health Care Providers</span></div>
+                        <div class="abbr-item"><span class="abbr-code">IQ</span><br><span class="abbr-full">Installation Qualification</span></div>
+                        <div class="abbr-item"><span class="abbr-code">LSP</span><br><span class="abbr-full">Logistics Service Provider</span></div>
+                        <div class="abbr-item"><span class="abbr-code">NIST</span><br><span class="abbr-full">National Institute of Standards and Technology</span></div>
+                        <div class="abbr-item"><span class="abbr-code">OQ</span><br><span class="abbr-full">Operational Qualification</span></div>
+                        <div class="abbr-item"><span class="abbr-code">PAHO</span><br><span class="abbr-full">Pan American Health Organization</span></div>
+                        <div class="abbr-item"><span class="abbr-code">PCM</span><br><span class="abbr-full">Phase Change Material</span></div>
+                        <div class="abbr-item"><span class="abbr-code">PID</span><br><span class="abbr-full">Proportional Integral Derivative</span></div>
+                        <div class="abbr-item"><span class="abbr-code">PQ</span><br><span class="abbr-full">Performance Qualification</span></div>
+                        <div class="abbr-item"><span class="abbr-code">SLA</span><br><span class="abbr-full">Service Level Agreement</span></div>
+                        <div class="abbr-item"><span class="abbr-code">SOP</span><br><span class="abbr-full">Standard Operating Procedure</span></div>
+                        <div class="abbr-item"><span class="abbr-code">TPS</span><br><span class="abbr-full">Thermal Protection System</span></div>
+                        <div class="abbr-item"><span class="abbr-code">TTI</span><br><span class="abbr-full">Time Temperature Indicator</span></div>
+                        <div class="abbr-item"><span class="abbr-code">UNICEF</span><br><span class="abbr-full">UN International Children's Emergency Fund</span></div>
+                        <div class="abbr-item"><span class="abbr-code">URS</span><br><span class="abbr-full">User Requirements Specifications</span></div>
+                        <div class="abbr-item"><span class="abbr-code">VMP</span><br><span class="abbr-full">Validation Master Plan</span></div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>縮寫快速記憶</h3>
+                    <div class="concept-box">
+                        <h4>資格確認四步驟順序口訣</h4>
+                        <p><strong>D → I → O → P</strong><br>
+                        「<strong>D</strong>esign（設計）→ <strong>I</strong>nstall（安裝）→ <strong>O</strong>perate（操作）→ <strong>P</strong>erform（性能）」<br>
+                        就像蓋房子：先有設計圖（DQ），再蓋好房子（IQ），再測試水電是否正常（OQ），最後住人驗收（PQ）。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>QMS 核心縮寫群組</h4>
+                        <p>冷鏈 QMS 運作依賴以下三個支柱：</p>
+                        <ul>
+                            <li><strong>SOP</strong>：日常操作程序，定義「怎麼做」</li>
+                            <li><strong>CAPA</strong>：偏差後的系統性改善，確保「不再犯」</li>
+                            <li><strong>VMP</strong>：驗證總體計畫，確保「整個系統有計畫地被驗證」</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>TTI 與 Data Logger 的差異</h4>
+                        <p><strong>TTI（時間溫度指示器）</strong>：隨貨附著的簡易指示器，只告訴你「有沒有超過閾值」，通常無法回溯完整溫度曲線。<br>
+                        <strong>Data Logger（數據記錄器）</strong>：可記錄完整時序溫度數據，可下載、分析，用於 OQ/PQ 文件佐證，也用於稽核溫偏事件的根因分析。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- end chapter-section 2 -->
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>Section 1–2 Summary 章節總結</h3>
+        <ul>
+            <li>TR39 適用於所有溫控醫藥品配送利害關係人，包括製藥廠、CMO（TWi）、物流服務供應商（LSP）、藥局與醫療機構，各方均須對溫控合規負責。</li>
+            <li>「Last Mile（最後一哩路）」是冷鏈最脆弱的環節，細胞與基因治療產品的超低溫需求（-80°C 以下）使此問題更加複雜。</li>
+            <li>TR39 的三階段框架（製程設計 → 製程資格確認 → 持續製程驗證）提供了從 URS 到 CAPA 的完整冷鏈品質管理路徑。</li>
+            <li>URS 是整個資格確認體系的基礎；DQ → IQ → OQ → PQ 依序確認設計、安裝、操作與性能，PQ 須由日常負責人員在真實配送環境中執行。</li>
+            <li>主動 TPS 適合長途大批量；被動 TPS 適合 Last Mile 小批量配送；兩者均須完成資格確認並維持持續監控。</li>
+            <li>CDMO 出貨端須備妥：URS（與客戶確認）、VMP、LSP 品質協議、Stability Budget 數據、以及完整的溫度記錄（Data Logger），以支持 GDP 合規與稽核。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- Footer -->
+
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 300);
+    });
+</script>
+        </div>
+    </section>
+
+    <!-- ========== Section 2: Process Design & Qualification ========== -->
+    <section class="chapter-section" id="sec2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2</div>
+            <div class="chapter-info">
+                <h2>Section 2: Process Design & Qualification</h2>
+                <p>製程設計與確效 | p6-p10</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- ===== SECTION HEADER ===== -->
+<div class="page-info">PDA Technical Report No. 39 (Revised 2021) &nbsp;|&nbsp; Sections 3.0–4.4 &nbsp;|&nbsp; Pages 6–11</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解使用者需求規格書（User Requirements Specification, URS）的組成要素，說明為何跨部門審核是啟動確效的必要前提。</li>
+            <li>區分被動式（Passive）與主動式（Active）溫控防護系統（Thermal Protection System, TPS）的設計特性、優劣與適用情境。</li>
+            <li>掌握設計確效（Design Qualification, DQ）的目的與範圍，了解被動系統與主動系統在DQ參數上的關鍵差異。</li>
+            <li>辨別操作確效（Operational Qualification, OQ）與性能確效（Performance Qualification, PQ）的本質差異：前者在受控環境中驗證極端條件，後者在真實運輸環境中確認系統可重複執行。</li>
+            <li>應用TR39框架到CDMO（Contract Development and Manufacturing Organization）實際情境，包含Taiwan→US、Taiwan→EU等跨國航線的季節性最差情況（worst-case）測試策略。</li>
+        </ul>
+    </div>
+
+    <!-- ===== BLOCK 1: 3.0 Process Design ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.0</div>
+            <div class="chapter-info">
+                <h2>Process Design — 流程設計</h2>
+                <p>URS · Risk Assessment · Design Qualification · Passive vs. Active TPS</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- 3.0 Overview -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>3.0 Process Design — Overview</h3>
+                    <p>Process design begins with defining the requirements for shipping a product from the origin to the destination, which will require multiple inputs from development, logistics, etc. The outcomes of all requirements are a proposed <strong>thermal protection system (TPS)</strong> and the inputs for the transportation process qualification.</p>
+                </div>
+                <div class="right-column">
+                    <h3>3.0 流程設計 — 概述</h3>
+                    <p>流程設計的起點，是定義將產品從起運地運送至目的地的所有需求，涵蓋研發、物流等多部門的輸入。所有需求的產出物，是一套擬議的<strong>溫控防護系統（Thermal Protection System, TPS）</strong>，同時為後續的運輸流程確效提供輸入依據。</p>
+                    <div class="concept-box">
+                        <h4>核心概念</h4>
+                        <p>TPS = 整個運輸保溫解決方案的統稱，可以是保麗龍箱＋冰排（被動式），也可以是冷藏貨櫃（主動式），目的都是在運輸過程中維持產品所需溫度。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 3.1 URS -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>3.1 User Requirements Specification (URS)</h3>
+                    <p>The best practice for an organization is to complete a cross-functionally reviewed and approved <strong>User Requirements Specification (URS)</strong> before starting a qualification process. The URS defines the requirements of the product, packaging, and transport system for the qualification process. Examples of considerations may include but are not limited to:</p>
+                    <ul>
+                        <li>Product storage and transportation temperature</li>
+                        <li>Transportation method and/or lanes</li>
+                        <li>Performance duration required to perform activities such as pick, pack, ship, or put away</li>
+                        <li>Expected ambient temperature exposures or ambient temperature profiles</li>
+                        <li>Minimum and maximum expected shipping quantities</li>
+                        <li>Product load thermal characteristics and shapes (i.e., payload capacity)</li>
+                        <li>Temperature monitoring strategy</li>
+                        <li>Operational, safety, and logistical capabilities, including handling and material conditioning</li>
+                        <li>Environmental considerations (i.e., reusable, disposable, compostable, or recyclable)</li>
+                    </ul>
+                    <p><em>Note: Shock, vibration, and atmospheric pressure considerations at the primary- or secondary-packaging level are outside the scope of this document.</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>3.1 使用者需求規格書（URS）</h3>
+                    <p>最佳實務要求在啟動確效程序之前，先完成一份經跨部門審查並核准的 <strong>URS（User Requirements Specification，使用者需求規格書）</strong>。URS 定義了確效過程中對產品、包裝及運輸系統的所有需求。</p>
+                    <div class="concept-box">
+                        <h4>URS 主要涵蓋項目</h4>
+                        <ul>
+                            <li><strong>產品儲運溫度</strong>：如 2–8°C、-20°C、-80°C</li>
+                            <li><strong>運輸方式與航線</strong>：空運/海運、台灣→美國、台灣→歐盟</li>
+                            <li><strong>性能持續時間</strong>：撿貨、包裝、運輸、入庫各步驟的時間預算</li>
+                            <li><strong>環境溫度暴露</strong>：預期經歷的環境溫度範圍或溫度曲線</li>
+                            <li><strong>運輸數量範圍</strong>：最小與最大裝載量</li>
+                            <li><strong>產品熱特性</strong>：載貨量、形狀與熱質量（thermal mass）</li>
+                            <li><strong>溫度監控策略</strong>：數據記錄器的數量、位置</li>
+                            <li><strong>操作與物流能力</strong>：包含材料預處理（conditioning）</li>
+                            <li><strong>環保考量</strong>：可重複使用、可回收、可堆肥</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻</h4>
+                        <p>URS 就像蓋房子前的設計需求書——先寫清楚要幾層樓、要抗幾級地震、要哪些隔熱標準，才能讓設計師畫出符合需求的圖。沒有 URS，後面的確效就沒有明確的驗收標準。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>CDMO 實務提示</h4>
+                        <p>對於 TWi 而言，針對 2–8°C 生物製劑及潛在的 -20°C/-80°C ATMP 產品，每條航線（如台灣→美國東岸、台灣→歐盟）都應有獨立的 URS，明確記錄溫度範圍、最長運輸時間、最差季節的環境溫度預期。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 3.2 Risk Assessment -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>3.2 Quality Risk Assessment</h3>
+                    <p>Risk assessment is the process of identifying, evaluating, and mitigating risks that have the potential to negatively affect product quality, processes, and/or user/patient safety. It requires proactively identifying risks that have the potential to occur, evaluating their relative risk impact (using qualitative or quantitative scoring), and implementing effective design, process, and/or operator/user controls to minimize or eliminate those risks to product quality and user/patient safety.</p>
+                    <p>Risk management procedures should be established to provide a standardized process to conduct, review, and update a risk assessment. A risk assessment is paramount to ensure that patient safety and product quality have been comprehensively considered and met through internal qualification testing, or equivalent vendor qualification testing.</p>
+                    <p>Risk review sessions should be ongoing as well as event-driven (e.g., additional requirements, event-based failures, nonconformances, corrective/preventive actions (CAPA), changes). This will ensure previously evaluated risk levels are still representative of, or updated to reflect, the current state of a product and/or process.</p>
+                    <p>The outcome of the risk assessment should be documented. Plans to handle, store, and distribute the product should be made accordingly. For more information, see PDA TR54, TR58, and ICH Q9.</p>
+                </div>
+                <div class="right-column">
+                    <h3>3.2 品質風險評估（Quality Risk Assessment）</h3>
+                    <p>風險評估是識別、評估、並降低可能對產品品質、流程或患者安全造成負面影響之風險的過程。需主動識別潛在風險，以定性或定量方式評分，並透過設計、流程或人員管控措施降低或消除風險。</p>
+                    <div class="concept-box">
+                        <h4>風險評估的三個關鍵特性</h4>
+                        <ul>
+                            <li><strong>預防性（Proactive）</strong>：在問題發生前識別風險，而非等到事故後才回應</li>
+                            <li><strong>持續性（Ongoing）</strong>：定期審查，確保評估結果反映當前狀態</li>
+                            <li><strong>事件驅動（Event-driven）</strong>：發生偏差、CAPA、或變更時，觸發重新評估</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>常見風險情境（溫控運輸）</h4>
+                        <ul>
+                            <li>夏季高溫導致 PCM（相變材料）提前融化，TPS 失去保冷效果</li>
+                            <li>貨運延誤超過 TPS 設計的性能持續時間</li>
+                            <li>機場轉機等候時間過長，造成環境溫度暴露累積</li>
+                            <li>冷藏車輛故障，產品在裝卸碼頭暴露於室溫</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>參考法規</h4>
+                        <p>PDA TR54（品質風險管理工具）、TR58（風險評估實務）、ICH Q9（品質風險管理指引）均為此處提及的延伸資料。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 3.3 Design Qualification + Table -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>3.3 Design Qualification (DQ)</h3>
+                    <p><strong>Design qualification (DQ)</strong> is the process of obtaining and documenting evidence that the TPS has been designed in accordance with user requirements. Principles discussed in this section apply to both active and passive TPS solutions.</p>
+                    <p>DQ testing may not be necessary for every process qualification, especially if the shipping system has already been developed and qualified for similar applications. If the risk analysis confirms the need for a DQ, a protocol should be written and results documented.</p>
+                    <p>When evaluating a supplier's prequalified TPS, the supplier's DQ does not need to be part of the evaluation package but may be leveraged to evaluate process parameters, as long as they are technically justifiable and representative of the intended use environment.</p>
+                    <p>DQ may be performed to ensure that the URS are met by the proposed solution; it is performed <strong>prior to OQ and PQ</strong>. The outcome of a successful DQ assures a high confidence level for successful OQ.</p>
+                    <p>Design testing must consider both <strong>physical and thermal protection</strong>. Thermal qualification should demonstrate that a TPS can maintain the required temperature range and duration described in the URS.</p>
+                    <p>When a placebo product is used for testing, understanding its thermal dynamic compared to real products is crucial. Assumptions used to design the placebo should be well explained with preliminary test results or thermal calculations.</p>
+                    <p>DQ testing results are also used to define the components to be used as part of the TPS and in the OQ. <strong>Qualification results are only valid for the specific components tested.</strong> Component specifications and diagrams should be written for each component critical to the TPS performance.</p>
+                    <p>For reusable temperature-controlled shippers, the strategy should additionally include assessment on re-certification, recovery, and refurbishment services.</p>
+                </div>
+                <div class="right-column">
+                    <h3>3.3 設計確效（Design Qualification, DQ）</h3>
+                    <p><strong>DQ（Design Qualification，設計確效）</strong>是取得並記錄 TPS 按照使用者需求設計之證據的過程，適用於主動式與被動式系統。</p>
+                    <div class="concept-box">
+                        <h4>DQ 的核心目的</h4>
+                        <ul>
+                            <li>確認設計方案滿足 URS 的所有要求</li>
+                            <li>為 OQ 和 PQ 定義測試條件與最差/最佳位置</li>
+                            <li>確認各組件規格（不可用「類似」組件替代已確效的結果）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>重要原則：組件特異性（Component Specificity）</h4>
+                        <p>一個體積相同但形狀不同的冰排，<strong>不能</strong>被視為等效！形狀改變會影響熱傳導路徑，確效結果僅對測試時所用的具體組件有效。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻</h4>
+                        <p>DQ 就像汽車出廠前的設計驗證測試——先在實驗室模擬碰撞、測量耗油，確認設計圖紙符合法規要求，才讓車子進入量產。沒有 DQ 就直接做 OQ，就像沒看過設計圖就開始考駕照一樣。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table 3.3-1 -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Table 3.3-1: Typical Process Parameters for Design Qualification</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter / 參數</th>
+                                <th>Passive / 被動式</th>
+                                <th>Active / 主動式</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Process duration / 流程持續時間</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Temperature monitoring device / 溫度監控裝置</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Family approach rationale / 系列產品策略依據</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Product quantity / 產品數量</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Temperature-conditioning of product / 產品預處理溫度</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Type of insulated material / 隔熱材料種類</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Product shipping configuration / 產品裝載配置</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Min/Max thermal mass / 最小/最大熱質量</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Ambient temperature profiles (hot &amp; cold) / 環境溫度曲線</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Conditioning of PCM or active container / PCM/主動容器預處理</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Location of refrigerants / 冷媒位置</td><td>Yes</td><td>No</td></tr>
+                            <tr><td>Phase-change materials (PCM) / 相變材料</td><td>Yes</td><td>No</td></tr>
+                            <tr><td>Orientation of package / 包裝方向</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Representative shipper selection / 代表性出貨箱選擇策略</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Refrigeration system capacity / 冷藏系統容量</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Air flow (forced) / 強制氣流</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Diesel or electric power supply / 柴油或電力供應</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Operational modes / 運行模式</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Defrost cycles / 除霜循環</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Power failure and recovery test / 斷電與恢復測試</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Loading and unloading pattern/time / 裝卸貨模式/時間</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><td>Door opening / 開門操作</td><td>No</td><td>Yes</td></tr>
+                        </tbody>
+                    </table>
+                    <p><em>Hybrid active–passive systems also exist where all the items may be applicable.</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>表格解讀：被動式 vs. 主動式 TPS 的 DQ 差異</h3>
+                    <div class="concept-box">
+                        <h4>被動式 TPS（Passive TPS）</h4>
+                        <p><strong>定義</strong>：隔熱容器（insulated container）搭配 PCM（相變材料，如冰排、乾冰、gel pack）。不需電力，結構相對簡單，但溫控能力受時間限制（PCM 融化後失效）。</p>
+                        <p><strong>典型應用</strong>：空運小批次生物製劑（2–8°C），使用預冷 gel pack 保溫 48–96 小時。</p>
+                        <p><strong>DQ 獨有參數</strong>：冷媒（refrigerants）位置、PCM 種類與規格。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>主動式 TPS（Active TPS）</h4>
+                        <p><strong>定義</strong>：具備電力驅動冷藏/加熱機制的容器，如冷藏貨櫃（reefer container）或主動式溫控箱（active controlled container）。可維持溫度更長時間，但需電力基礎設施。</p>
+                        <p><strong>典型應用</strong>：跨洲際海運、超低溫 ATMP 產品（-80°C）。</p>
+                        <p><strong>DQ 獨有參數</strong>：冷藏系統容量、強制氣流、斷電測試、除霜循環、運行模式、開門操作。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>Hybrid 系統</h4>
+                        <p>混合式系統（主動＋被動）兩者的所有參數皆可能適用，需逐一評估。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end chapter-section 3.0 -->
+
+
+    <!-- ===== BLOCK 2: 4.0 Process Qualification ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.0</div>
+            <div class="chapter-info">
+                <h2>Process Qualification — 流程確效</h2>
+                <p>OQ · PQ · Qualification Plan · Shipping Control Strategy</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- 4.0 Overview -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.0 Process Qualification — Overview</h3>
+                    <p>The qualification exercise can be regarded as the deliberate and purposeful collection and evaluation of data from a process in order to establish evidence that the process can <strong>consistently satisfy the user requirements</strong>.</p>
+                    <p>The subtle difference between OQ and PQ is that the former is intended to examine the process at the extremes, and the latter is intended to ensure process technical transfer to the process owner. The OQ of a TPS is typically executed in a <strong>climate chamber</strong> at the anticipated extreme conditions, whereas the PQ is executed in <strong>real life</strong> according to the Validation Master Plan.</p>
+                    <p>A risk assessment should examine events that are exogenous to the process yet may impact product quality, such as equipment failures or unplanned shipping delays.</p>
+                    <p>All qualification processes require a protocol and a report with a clear and precise description of how the tests were done. The methods section must:</p>
+                    <ul>
+                        <li>Describe the materials used in the tests</li>
+                        <li>Explain the conditioning procedure</li>
+                        <li>Describe the testing protocol</li>
+                        <li>Explain how measurements and calculations were achieved</li>
+                        <li>Describe, if necessary, which statistical analyses were used</li>
+                    </ul>
+                    <p>The <strong>Validation Master Plan (VMP)</strong> encompasses all aspects of validation required by an organization, including manufacturing processes, equipment, storage, and distribution.</p>
+                    <p>Thermal qualification should not use a macroscopic approach. Rather, it should target the detection of product temperature excursions at <strong>critical locations</strong>, such as corners and points nearest or farthest from a cold pack (passive) or refrigeration unit (active). In most cases, <strong>more than one temperature measuring point</strong> is needed.</p>
+                </div>
+                <div class="right-column">
+                    <h3>4.0 流程確效 — 概述</h3>
+                    <div class="concept-box">
+                        <h4>OQ vs. PQ — 核心差異一覽</h4>
+                        <table>
+                            <thead>
+                                <tr><th>項目</th><th>OQ（操作確效）</th><th>PQ（性能確效）</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>目的</td><td>驗證系統在極端條件下滿足規格</td><td>確認系統在真實環境中可重複操作</td></tr>
+                                <tr><td>執行環境</td><td>氣候腔（climate chamber）</td><td>實際運輸航線</td></tr>
+                                <tr><td>執行者</td><td>研發/驗證團隊</td><td>日常執行運輸的操作者</td></tr>
+                                <tr><td>測試條件</td><td>最差情況（worst-case）溫度曲線</td><td>代表性真實條件（含季節變化）</td></tr>
+                                <tr><td>重點</td><td>系統能承受嗎？</td><td>實際操作可靠嗎？</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>VMP（驗證主計畫）的角色</h4>
+                        <p>VMP 是組織層級的驗證總覽文件，涵蓋製造、設備、儲存與配送所有需驗證的項目。PQ 必須按照 VMP 執行，確保所有溫控管理活動均已識別、記錄並獲得可接受的結果。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：OQ vs. PQ</h4>
+                        <p>OQ 就像新車在工廠測試賽道上的極限測試，PQ 則是交車後在真實公路上跑 1,000 公里的磨合試駕。前者測試系統極限，後者確認日常駕駛的穩定性。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>測溫點選取原則</h4>
+                        <p>不能只在中心點量溫度！必須在<strong>角落、最遠離冷媒的位置、最靠近冷媒的位置</strong>等臨界點設置探針。先用 DQ 結果確認哪些是高風險位置，再據此規劃 OQ/PQ 的探針佈局。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 4.1 OQ -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1 Operational Qualification (OQ)</h3>
+                    <p>The goal of an OQ is to provide documented testing that demonstrates, with a high degree of assurance, that a process or system will function to meet its predetermined acceptance criteria when exposed to <strong>anticipated environmental extreme conditions</strong> (for example temperature, shock, and vibration).</p>
+                    <p>The location of products or placebo products within the shipper must be clearly documented. Including only the number of products or items is not sufficient; describing their <strong>orientation and positions</strong> with respect to one another (loading configuration) is essential.</p>
+                    <p>The protocol may include but is not limited to a description of:</p>
+                    <ul>
+                        <li>Scope and activities required to complete an OQ test</li>
+                        <li>Clear acceptance criteria</li>
+                        <li>Preconditioning of the test materials</li>
+                        <li>Temperature-monitoring methodology</li>
+                        <li>Ambient temperature profile to stress the active or passive solution</li>
+                        <li>Product payloads</li>
+                        <li>Shipper orientation</li>
+                        <li>Physical protective properties (often tested separately)</li>
+                        <li>Rationale of all tested conditions explained and documented</li>
+                    </ul>
+                    <p>Mechanical performance testing should also be performed as part of the OQ unless otherwise justified.</p>
+                    <p>Not all environmental chambers will provide the same testing conditions, even though they can replicate the same temperature profile. Such parameters as product placement and stacking pattern, airspeed, shelf surface types, and temperature accuracy will have a significant impact on test results.</p>
+                    <p>Most small parcel shipments will experience multiple orientations during handling and should be tested to at least identify potential temperature excursions that were not observed during the original design orientation.</p>
+                </div>
+                <div class="right-column">
+                    <h3>4.1 操作確效（Operational Qualification, OQ）</h3>
+                    <p>OQ 的目標是提供有記錄的測試，以高度保證地證明在預期的<strong>環境極端條件</strong>下，系統能滿足預定的驗收標準。</p>
+                    <div class="concept-box">
+                        <h4>OQ 協議必要要素</h4>
+                        <ul>
+                            <li><strong>驗收標準（Acceptance Criteria）</strong>：明確定義溫度範圍與允許時間，例如「產品溫度需全程維持在 2–8°C」</li>
+                            <li><strong>材料預處理（Preconditioning）</strong>：gel pack 預冷至幾度？持續多少小時？</li>
+                            <li><strong>溫度監控方法</strong>：探針數量、校準狀態、記錄間隔</li>
+                            <li><strong>環境溫度曲線</strong>：最差情況熱曲線（如夏季 +43°C 長時間暴露）</li>
+                            <li><strong>裝載配置</strong>：每個產品/占位體的具體位置與方向，不能只寫「裝了 30 個瓶」</li>
+                            <li><strong>出貨箱方向</strong>：正立、側放、倒置等不同方向均需測試</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>氣候腔的選擇注意事項</h4>
+                        <p>不同氣候腔即使設定相同溫度曲線，實際測試條件可能不同！影響因素包括：氣流速度、貨架材質（金屬/木/塑膠）、產品擺放位置、溫度均一性。更換氣候腔時需評估是否需要重新確效。</p>
+                    </div>
+                    <div class="application-box">
+                        <h4>CDMO 應用：TWi 航線 OQ 策略</h4>
+                        <p>針對台灣→美國航線，OQ 需涵蓋以下最差情況：</p>
+                        <ul>
+                            <li>夏季最高溫曲線（例：ISTA 7D 夏季熱曲線）</li>
+                            <li>冬季最低溫曲線（防止凍結，2–8°C 產品在冬季同樣有凍結風險）</li>
+                            <li>最大貨物延誤時間（例：正常 36 小時 + 緩衝 12 小時 = 48 小時）</li>
+                            <li>各種包裝方向（正立、側放）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 4.2 PQ -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.2 Performance Qualification (PQ)</h3>
+                    <p>Performance qualification (PQ) is done using the <strong>actual transportation or distribution environment</strong> and is performed by those who will be executing the day-to-day shipping process. The PQ serves to demonstrate that the qualified system is effective and reproducible in real-world application.</p>
+                    <p>Testing should be performed using typical parameters including product loads, operational handling, transportation routes, and conditioning procedures.</p>
+                    <p>PQ testing should be performed following a preapproved protocol and the results should be presented in a report. The test plan should incorporate standard operating procedures (SOPs) that include:</p>
+                    <ul>
+                        <li>Actual ambient temperature variances, including <strong>seasonal changes</strong> and cross-hemisphere lanes, if applicable; data should be available to support the lane</li>
+                        <li>Representative transportation load configurations</li>
+                        <li>Defined packaging configurations</li>
+                        <li>Calibrated temperature monitors</li>
+                        <li>Sufficient number of tests to assure reliable results</li>
+                        <li>List of SOPs relevant to the process</li>
+                        <li>Evidence of operator training on the relevant SOPs (extending to all subcontractors)</li>
+                    </ul>
+                    <p>Other procedures may be used and, if so, they need to be justified. For further understanding, see Section 8.0 Case Studies.</p>
+                </div>
+                <div class="right-column">
+                    <h3>4.2 性能確效（Performance Qualification, PQ）</h3>
+                    <p>PQ 在<strong>實際運輸或配送環境</strong>中進行，由日常負責運輸的操作人員執行，目的是確認已確效的系統在真實世界中有效且可重複。</p>
+                    <div class="concept-box">
+                        <h4>PQ SOP 核心要素</h4>
+                        <ul>
+                            <li><strong>季節性溫度變異</strong>：PQ 需在不同季節執行，或以歷史氣象數據支撐最差季節的代表性</li>
+                            <li><strong>跨半球航線</strong>：台灣→歐盟可能跨越亞熱帶→溫帶，需考量不同氣候帶的環境溫度</li>
+                            <li><strong>校準溫度記錄器</strong>：全程使用有效校準的 data logger，確保溫度數據可信</li>
+                            <li><strong>足夠的測試次數</strong>：統計意義上足以代表日常操作的可靠性</li>
+                            <li><strong>操作人員訓練紀錄</strong>：包含所有分包商（如第三方物流）的 SOP 訓練證明</li>
+                        </ul>
+                    </div>
+                    <div class="application-box">
+                        <h4>CDMO 應用：航線 PQ 季節性策略</h4>
+                        <p>TWi 針對台灣→美國和台灣→歐盟航線，PQ 應規劃以下季節性括弧測試（Seasonal Bracketing）：</p>
+                        <ul>
+                            <li><strong>夏季（6–9月）</strong>：台灣高溫高濕，美西/美東機場轉機也處於高溫期，代表最高溫暴露</li>
+                            <li><strong>冬季（12–2月）</strong>：可能遭遇凍結風險（尤其 2–8°C 產品），代表最低溫暴露</li>
+                            <li>如果航線特性穩定，可用歷史數據論證只需一個季節測試，但需充分說明理由</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：PQ 就是「真實跑一次」</h4>
+                        <p>OQ 是在跑步機上跑完馬拉松距離，PQ 是實際去跑一場路跑比賽。真實環境有風吹、坡道、人群推擠，這些都是跑步機無法模擬的。PQ 就是確認你在真實比賽中也能完賽。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 4.3 Qualification Plan Complete -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.3 Qualification Plan Complete</h3>
+                    <p>To close the qualification of the TPS, all completed documentation and the deviations should be summarized in one report, sometimes called <strong>Qualification Assurance Summary Report</strong> or <strong>Validation Summary Report</strong>. The conclusion should indicate the applicability and shortcomings of the TPS and list the deviations from the URS. The report should be approved according to established procedures.</p>
+                </div>
+                <div class="right-column">
+                    <h3>4.3 確效計畫完成（Qualification Plan Complete）</h3>
+                    <p>要正式關閉（close out）一個 TPS 的確效，需將所有完成的文件與偏差彙整成一份總結報告，通常稱為：</p>
+                    <ul class="structure-list">
+                        <li><strong>Qualification Assurance Summary Report（確效保證總結報告）</strong></li>
+                        <li><strong>Validation Summary Report（驗證總結報告）</strong></li>
+                    </ul>
+                    <div class="note-box">
+                        <h4>總結報告應涵蓋</h4>
+                        <ul>
+                            <li>TPS 的適用範圍與限制（applicability and shortcomings）</li>
+                            <li>與 URS 的偏差清單（deviations from URS）</li>
+                            <li>所有已完成文件的清單：URS、風險評估、DQ、OQ、PQ、機械測試</li>
+                            <li>依照既定程序完成核准</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 4.4 Shipping Control Strategy -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4 Shipping Control Strategy</h3>
+                    <p>A <strong>shipping control strategy</strong> (or quality risk control strategy), which is the output of the quality risk assessment, for drug product in the supply chain should define the measures to implement the qualified TPS within the operational environment to ensure that the product is shipped under the intended conditions within the <strong>stability budget</strong>. This means anything that can increase the degradation rate of the medicinal product must be controlled.</p>
+                    <p>A control strategy should include the implementation or update of the VMP, SOPs, contracts (e.g., quality agreement, technical agreement), training, and maintenance protocols including calibrations.</p>
+                    <p>In addition, a control strategy may include, in part, allowable times and temperature exposures expressed in a tabular form that reflects product stability, citing the <strong>stability budget</strong> for the product. This will ensure the qualified TPS will be implemented and used according to the established qualified conditions.</p>
+                </div>
+                <div class="right-column">
+                    <h3>4.4 運輸管控策略（Shipping Control Strategy）</h3>
+                    <p><strong>運輸管控策略</strong>是品質風險評估的輸出物，定義在操作環境中實施已確效 TPS 的具體措施，確保產品在<strong>穩定性預算（Stability Budget）</strong>內，以預定條件完成運輸。</p>
+                    <div class="concept-box">
+                        <h4>穩定性預算（Stability Budget）</h4>
+                        <p>指產品可以承受的<strong>累計溫度偏差時間</strong>的上限，例如：「此生物製劑允許在 25°C 以下最長累積暴露 12 小時」。運輸控制策略必須確保整條供應鏈的累計暴露不超過此預算。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>管控策略的組成要素</h4>
+                        <ul>
+                            <li><strong>VMP</strong>：更新或實施驗證主計畫</li>
+                            <li><strong>SOP</strong>：包裝、出貨、溫度監控的標準作業程序</li>
+                            <li><strong>合約</strong>：品質協議（Quality Agreement）、技術協議（Technical Agreement）</li>
+                            <li><strong>訓練</strong>：確保所有操作人員（含分包商）接受相關訓練</li>
+                            <li><strong>維護與校準</strong>：溫度記錄器、冷藏設備的定期校準計畫</li>
+                            <li><strong>允許暴露時間表</strong>：以表格形式列出各溫度帶的最大允許暴露時間</li>
+                        </ul>
+                    </div>
+                    <div class="application-box">
+                        <h4>CDMO 應用：TWi 管控策略要點</h4>
+                        <p>TWi 作為 CDMO，出貨的是客戶的藥品，因此管控策略必須連結至客戶提供的穩定性數據。建議：</p>
+                        <ul>
+                            <li>在品質協議中明確客戶提供穩定性預算的責任</li>
+                            <li>建立每條航線的「允許累計偏差時間表」，供操作人員現場判斷</li>
+                            <li>將第三方物流（3PL）納入訓練與合約管理範圍</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end chapter-section 4.0 -->
+
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#10003;</div>
+            <div class="chapter-info">
+                <h2>Section Summary — 本節總結</h2>
+                <p>Process Design &amp; Process Qualification: Key Takeaways</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Takeaways — Process Design (3.0)</h3>
+                    <ul>
+                        <li><strong>URS first</strong>: Define all requirements — temperature, lane, duration, payload — before starting any qualification. Cross-functional review and approval is mandatory best practice.</li>
+                        <li><strong>Risk Assessment</strong>: Proactively identify and mitigate risks to product quality and patient safety. Keep risk assessments current and event-driven.</li>
+                        <li><strong>DQ before OQ/PQ</strong>: Design Qualification documents that the proposed TPS meets URS. It establishes the specific components that will govern all subsequent qualification.</li>
+                        <li><strong>Passive vs. Active TPS</strong>: Passive (insulated container + PCM) is simpler but time-limited. Active (powered refrigeration) handles longer durations but requires infrastructure. Hybrid systems combine both.</li>
+                        <li><strong>Component specificity</strong>: A qualification is valid only for the exact components tested. Shape changes in PCM invalidate the result, even if thermal mass is identical.</li>
+                    </ul>
+                    <h3 style="margin-top:1.25rem;">Key Takeaways — Process Qualification (4.0)</h3>
+                    <ul>
+                        <li><strong>OQ in the lab, PQ in real life</strong>: OQ uses a climate chamber to test extreme conditions; PQ executes the real lane under real-world operating conditions.</li>
+                        <li><strong>More than one temperature probe</strong>: Macroscopic (single-point) thermal qualification is misleading. Critical locations (corners, nearest/farthest from cold source) must be monitored.</li>
+                        <li><strong>Seasonal bracketing for PQ</strong>: Cross-hemisphere and cross-season lanes require hot and cold season testing, or robust data-based justification for bracketing.</li>
+                        <li><strong>Stability budget governs control strategy</strong>: The Shipping Control Strategy must ensure cumulative temperature excursions remain within the product's stability budget throughout the supply chain.</li>
+                        <li><strong>Training extends to subcontractors</strong>: All parties executing the shipping process — including 3PLs — must be trained on relevant SOPs.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>重點摘要 — 流程設計（3.0）</h3>
+                    <ul>
+                        <li><strong>先寫 URS</strong>：在啟動任何確效前，先跨部門完成並核准使用者需求規格書，定義溫度、航線、持續時間、載量等所有需求。</li>
+                        <li><strong>風險評估是基礎</strong>：主動識別、量化並降低對產品品質和患者安全的風險；風險評估需持續維護並在事件發生時觸發更新。</li>
+                        <li><strong>DQ 在 OQ/PQ 之前</strong>：設計確效確認擬議的 TPS 符合 URS，並確立後續所有確效必須遵循的具體組件規格。</li>
+                        <li><strong>被動式 vs. 主動式</strong>：被動式（隔熱容器＋PCM）簡單但時間有限；主動式（動力冷藏）可維持更久但需電力基礎設施。混合式系統兩者兼備。</li>
+                        <li><strong>組件特異性</strong>：確效結果僅對測試時所用的具體組件有效，PCM 形狀改變即使熱質量相同也會使確效結果失效。</li>
+                    </ul>
+                    <h3 style="margin-top:1.25rem;">重點摘要 — 流程確效（4.0）</h3>
+                    <ul>
+                        <li><strong>OQ 在實驗室，PQ 在現實</strong>：OQ 用氣候腔測試極端條件；PQ 在實際航線上的真實操作環境中執行。</li>
+                        <li><strong>多點測溫</strong>：單點（巨觀）溫度量測會產生誤導性結論，必須在角落、最遠離/最靠近冷源的臨界位置設置探針。</li>
+                        <li><strong>PQ 需要季節性括弧測試</strong>：跨半球或跨季節航線需在最熱與最冷季節分別執行 PQ，或提供充分的數據依據說明括弧策略。</li>
+                        <li><strong>穩定性預算決定管控策略</strong>：運輸管控策略必須確保整條供應鏈的累計溫度偏差不超過產品穩定性預算。</li>
+                        <li><strong>訓練必須涵蓋分包商</strong>：所有執行運輸流程的人員——包括第三方物流——均須完成相關 SOP 的訓練並留有紀錄。</li>
+                    </ul>
+                    <div class="practice-box">
+                        <h4>思考練習 — 應用到 TWi</h4>
+                        <p>假設 TWi 要為一個 2–8°C 的生物製劑單株抗體（mAb）建立台灣→美國的空運確效計畫，請回答：</p>
+                        <ul>
+                            <li>URS 中應包含哪些關鍵項目？（提示：溫度、航班時間、最大載量、季節）</li>
+                            <li>選擇被動式或主動式 TPS？理由為何？</li>
+                            <li>OQ 測試需要幾個季節的溫度曲線？為什麼？</li>
+                            <li>PQ 需要幾次測試才算「足夠」？（TR39 未給定數字，但需說明統計理由）</li>
+                            <li>誰應該被納入操作訓練範圍中？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end summary section -->
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+        </div>
+    </section>
+
+    <!-- ========== Section 3: Ongoing Process Verification ========== -->
+    <section class="chapter-section" id="sec3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3</div>
+            <div class="chapter-info">
+                <h2>Section 3: Ongoing Process Verification</h2>
+                <p>持續製程驗證 | p11-p17</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- ===== SECTION HEADER ===== -->
+<div class="page-info">PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products &nbsp;|&nbsp; p11–p17</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解 <strong>持續製程驗證（Ongoing Process Verification, OPV）</strong> 的目的，以及它如何延續初始資格認定（Qualification）之後的品質保證工作。</li>
+            <li>掌握運輸監控工具的種類與應用，包括資料記錄儀（data logger）、時間-溫度指示器（TTI）及即時無線監控系統的適用情境。</li>
+            <li>了解如何對 <strong>不符合規定事項（nonconformance）</strong> 進行分類、影響評估與根本原因調查，以及 CAPA 的啟動原則。</li>
+            <li>掌握 <strong>利害關係人管理（Stakeholder Management）</strong> 的核心要素，包括供應商稽核、品質協議與 KPI 定期審查。</li>
+            <li>了解 <strong>變更控制（Change Control）</strong> 與 <strong>定期審查（Periodic Review）</strong> 如何作為 OPV 的閉環機制，觸發重新資格認定或製程改善。</li>
+        </ul>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節子章節 Sub-sections</h3>
+        <div class="toc-grid">
+            <a href="#sec5-0">5.0 OPV Overview</a>
+            <a href="#sec5-1">5.1 SOPs</a>
+            <a href="#sec5-2">5.2 Monitoring</a>
+            <a href="#sec5-3">5.3 Training</a>
+            <a href="#sec5-4">5.4 Stakeholder Mgmt</a>
+            <a href="#sec5-5">5.5 Nonconformances</a>
+            <a href="#sec5-6">5.6 Complaints</a>
+            <a href="#sec5-7">5.7 Periodic Review</a>
+            <a href="#sec5-8">5.8 Change Control</a>
+            <a href="#summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- ===== 5.0 OPV OVERVIEW ===== -->
+    <div id="sec5-0" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.0</div>
+            <div class="chapter-info">
+                <h2>Ongoing Process Verification — Overview</h2>
+                <p>持續製程驗證概述：資格認定後的維持與改善</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.0 Ongoing Process Verification</h3>
+                    <p>After process design and process qualification of a <span class="key-term">TPS (Temperature-Controlled Packaging System)</span>, the shipping organization should implement the TPS in operations according to the control strategy. By applying continuous process verification, this will ensure that the TPS will protect the product throughout transit—from its preparation at the shipping site, during transport, and until its arrival at the receiving site—as intended during the qualification for quality, effectiveness, and safety.</p>
+                    <p>Continuous process verification applies to all transportation modes and to all parties involved in the transportation of medicinal products and its related activities, such as (but not limited to):</p>
+                    <ul>
+                        <li>Preparing the goods for transport</li>
+                        <li>Loading/unloading goods into shipping equipment</li>
+                        <li>Loading/unloading from one piece of shipping equipment to another</li>
+                        <li>In-transit handling between transportation (e.g., airport transit, harbor transit)</li>
+                        <li>Receipt of goods</li>
+                    </ul>
+                    <p>Each participant in the distribution process has an obligation to support the goal of protecting the product, minimizing opportunities for exposure to temperatures outside the required range, and to assess and respond appropriately based on the impact of such exposures, should they occur.</p>
+                    <p>Participants in the transportation process can be categorized as <span class="key-term">shippers</span>, <span class="key-term">logistics service providers (LSP)</span> and <span class="key-term">receivers</span>. LSP refers to the providers that contribute to the transportation and storage–distribution process, including carriers, integrators, forwarders, and customs brokers.</p>
+                    <p>In order to support implementation, shippers must thoroughly document the processes used and improvement modifications made, as well as the reasoning for those changes, during the qualification process. This documentation is the critical reference for the creation of a process SOP, which should include procedures for process monitoring, environmental monitoring, nonconformance management, training, and the application of these procedures by the managing stakeholders.</p>
+                    <p>Process monitoring must demonstrate that the <span class="key-term">state of control</span> is being maintained where the set of controls consistently provides assurance of continued process performance and product quality. Monitoring tools, control systems, and regular trend analysis must be in place to measure performance and establish the level of distribution process capability.</p>
+                </div>
+                <div class="right-column">
+                    <h3>持續製程驗證概述</h3>
+                    <p>完成初始的製程設計與資格認定（Qualification）之後，組織進入 OPV 階段——這是「維持並改善」的持續循環。OPV 確保溫控包裝系統（<strong>TPS，Temperature-Controlled Packaging System</strong>）在每一次實際運輸中，都能持續發揮資格認定時所驗證的保護能力。</p>
+                    <div class="analogy-box">
+                        <h4>比喻：OPV 就像駕照後的行車記錄</h4>
+                        <p>取得駕照（Qualification）只代表你具備駕駛能力；而 OPV 相當於你每次開車後的行車紀錄器資料——持續確認你確實照規矩開車，並在出現偏差時立即追查原因。</p>
+                    </div>
+                    <p>OPV 涵蓋供應鏈中所有角色，包括：</p>
+                    <ul>
+                        <li><strong>託運方（Shipper）</strong>：負責備貨、裝箱、起運</li>
+                        <li><strong>物流服務提供商（LSP，Logistics Service Provider）</strong>：運輸、倉儲、報關等中間環節</li>
+                        <li><strong>收貨方（Receiver）</strong>：確認到貨狀態、記錄驗收數據</li>
+                    </ul>
+                    <div class="note-box">
+                        <h4>CDMO 實務重點</h4>
+                        <p>TWi 作為合約製造商，OPV 數據是向客戶（及 FDA/EMA 稽查員）證明冷鏈持續受控的關鍵證據。這些數據應定期彙整至<strong>年度產品審查（APR，Annual Product Review）</strong>，並作為供應商績效評估的依據。</p>
+                    </div>
+                    <p>製程監控的核心目標是維持「<strong>受控狀態（State of Control）</strong>」——即所有管控措施能持續保證製程表現與產品品質符合預期。趨勢分析、KPI 追蹤與定期審查，是達成此目標的三大工具。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.1 SOPs ===== -->
+    <div id="sec5-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Standard Operating Procedures (SOP)</h2>
+                <p>標準作業程序：OPV 的文件骨架</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.1 Standard Operating Procedures (SOP)</h3>
+                    <p>SOPs should be in place to describe in detail all steps of the process execution. SOPs should be reviewed and revised periodically according to the organization's policies and guidelines.</p>
+                    <p>A key part of an SOP implementation would include training and a comprehension evaluation section to assess the knowledge of the SOP users (e.g., shippers, logistic service providers, carriers). A summary of changes and versioning is required for easier tracking.</p>
+                    <p>The review and approval system requires a defined process of retrieval and removal of obsolete SOP versions.</p>
+                    <p>Transfer of the qualified process to the operational areas and the involvement of service providers (stakeholders) is formally accomplished by means of approved procedures. When those procedures are followed, the controls of critical process parameters will ensure repeatable, successful transport of medicinal products.</p>
+                    <p>The written, approved procedures should be in place, and responsible personnel should be trained prior to implementation of the process. Consideration should be given to the procedures attached to the OQ and PQ reports.</p>
+                    <p>Relevant personnel and organizations participating in the temperature-controlled process should be provided instruction concerning the principles of packaging, qualifying, and transporting temperature-sensitive medicinal products.</p>
+                </div>
+                <div class="right-column">
+                    <h3>標準作業程序（SOP）</h3>
+                    <p>SOP 是 OPV 的文件骨架，詳細規定每一個製程步驟的執行方式。一份完整的溫控運輸 SOP 至少應涵蓋：製程監控、環境監控、不符合規定事項管理（nonconformance management）、人員培訓，以及各利害關係人的職責分工。</p>
+                    <div class="concept-box">
+                        <h4>SOP 管理的四大要素</h4>
+                        <ul>
+                            <li><strong>版本控制（Versioning）</strong>：每次修訂需有變更摘要，廢止版本應有系統性回收與封存機制</li>
+                            <li><strong>培訓驗證（Training Verification）</strong>：不只完成培訓，還需評估理解程度（comprehension evaluation）</li>
+                            <li><strong>定期審查（Periodic Review）</strong>：依組織政策定期更新，反映最新法規與實務變化</li>
+                            <li><strong>與資格認定報告連結</strong>：OQ/PQ 報告中的程序應被納入或引用於 SOP</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>稽查常見缺失</h4>
+                        <p>稽查員最常發現的問題之一：SOP 已修訂但前線人員仍使用舊版，或培訓記錄顯示員工未接受最新版本培訓。版本管理的嚴謹程度直接反映 QMS 成熟度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2 MONITORING ===== -->
+    <div id="sec5-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Monitoring — Data Loggers, TTIs, and Placement Strategy</h2>
+                <p>監控工具與佈點策略：數據記錄的科學</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.2 Monitoring</h3>
+                    <p><span class="key-term">Data loggers and indicators</span>, commonly referred to as monitors, are instruments that use microprocessors with sensors and internal memory capacity to collect data on predefined attributes, such as temperature and/or humidity.</p>
+                    <p>In different circumstances, monitors can be connected wirelessly to a modem, device, or cloud-based system, or monitors can operate independently as stand-alone instruments. Data loggers can record and transmit predefined attributes in a real-time environment providing certain predispositions are fulfilled, such as connectivity to a GSM/Wi-Fi/Bluetooth signal operated within the restrictions of airfreight transport.</p>
+                    <p>Unlike temperature, humidity monitoring and control is predominately reserved for storage premises. Like shock and vibration, humidity monitoring during transport is a product-specific consideration, not a standard attribute.</p>
+                    <p>When supported by the risk assessment, a <span class="key-term">time–temperature indicator (TTI)</span> can be used as an alternative to data loggers. A TTI is a device or smart label that shows the accumulated time–temperature history of a product. TTIs are usually smaller than data loggers and can assist with immediate decision-making due to a clear symbol or color visible on the device.</p>
+                    <p>The number and position of monitors used in a shipment should depend on the qualification studies and control strategy. Conducting a risk assessment is recommended to determine the use of monitors on each shipment. The monitor position in a TPS should be determined by conducting a <span class="key-term">worst-case monitor-position study</span> according to the temperature-mapping qualification data.</p>
+                    <p>The frequency of monitoring or measurement interval should be based on a risk assessment that encompasses:</p>
+                    <ul>
+                        <li>Shipment duration</li>
+                        <li>Interval or frequency mandated by country regulations</li>
+                        <li>Memory capacity</li>
+                        <li>Stability budget of the product</li>
+                    </ul>
+                    <p>Monitors should be started, at the latest, as the container is closed and, in turn, should be stopped when the container is opened at the destination. Each monitor is required to have a certificate of calibration and must not be used beyond the date specified on the certificate.</p>
+                </div>
+                <div class="right-column">
+                    <h3>監控工具與佈點策略</h3>
+                    <p>監控是 OPV 數據收集的核心手段。主要工具分為兩類：</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>工具</th>
+                                <th>特性</th>
+                                <th>適用情境</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>資料記錄儀（Data Logger）</strong></td>
+                                <td>連續記錄、可下載完整歷程、支援無線傳輸</td>
+                                <td>所有受管制藥品運輸的標準配置</td>
+                            </tr>
+                            <tr>
+                                <td><strong>時間-溫度指示器（TTI）</strong></td>
+                                <td>顯色/符號即時判讀、體積小、無需下載數據</td>
+                                <td>風險評估支持下的替代方案，適合快速決策</td>
+                            </tr>
+                            <tr>
+                                <td><strong>即時無線監控</strong></td>
+                                <td>GSM/Wi-Fi/Bluetooth 即時回傳，可設置警報</td>
+                                <td>高風險產品、長途運輸、需要即時干預時</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="concept-box">
+                        <h4>佈點策略的關鍵原則</h4>
+                        <ul>
+                            <li>監控器數量與位置應基於 <strong>資格認定研究結果</strong> 與控制策略決定</li>
+                            <li>位置需通過 <strong>最差情況監控位置研究（worst-case monitor-position study）</strong> 確認，對應溫度圖譜中的最脆弱點</li>
+                            <li>外部資料記錄儀可輔助不符合規定事項的根本原因分析</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>測量頻率的風險考量</h4>
+                        <p>記錄頻率（如每5分鐘 vs. 每15分鐘）需平衡：產品的<strong>穩定性預算（stability budget）</strong>、法規要求、記憶體容量，以及運輸時長。頻率過低可能遺漏短暫溫度偏差（spike），頻率過高則增加數據處理負擔。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>校準比喻：過期的溫度計等於沒有溫度計</h4>
+                        <p>每個監控器都需要有效的校準證書（certificate of calibration），且不得超過校準到期日使用。這就像過期的血壓計——讀數存在但無法信任，所收集的數據在法規上也可能不被接受。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.3 TRAINING ===== -->
+    <div id="sec5-3" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Training</h2>
+                <p>人員培訓：OPV 執行的人為因素管控</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.3 Training</h3>
+                    <p>Training on all SOPs should be completed by all those who will be responsible for implementing the task the SOPs describe. Training records should be maintained and updated promptly so they are complete and available for internal Quality Unit audits and external regulatory inspections.</p>
+                    <p>Relevant personnel and organizations participating in the temperature-controlled process should be provided instruction concerning the principles of packaging, qualifying, and transporting temperature-sensitive medicinal products. The purpose of the training is to ensure that the shippers, transport service providers, and their subcontractors maintain the integrity of the transport chain for medicinal products.</p>
+                </div>
+                <div class="right-column">
+                    <h3>人員培訓</h3>
+                    <p>OPV 能否有效運作，很大程度取決於所有執行者是否都接受了充分的培訓。培訓對象不限於內部員工，還應擴展至：</p>
+                    <ul>
+                        <li>運輸服務提供商（transport service providers）</li>
+                        <li>次承包商（subcontractors）</li>
+                        <li>物流服務提供商（LSP）的操作人員</li>
+                    </ul>
+                    <div class="concept-box">
+                        <h4>培訓記錄管理要求</h4>
+                        <ul>
+                            <li>記錄必須<strong>即時更新</strong>，不得事後補填</li>
+                            <li>應能支援<strong>品質部門內部稽核</strong>及<strong>外部法規查驗</strong>的需求</li>
+                            <li>培訓範圍涵蓋：溫控包裝原則、資格認定程序、運輸完整性維護</li>
+                        </ul>
+                    </div>
+                    <p>培訓不只是完成簽名——有效培訓需確認人員真正理解並能正確執行，這正是 5.1 節所提「理解程度評估（comprehension evaluation）」的意義所在。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.4 STAKEHOLDER MANAGEMENT ===== -->
+    <div id="sec5-4" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4</div>
+            <div class="chapter-info">
+                <h2>Stakeholder Management — Vendor Qualification and KPIs</h2>
+                <p>利害關係人管理：供應商稽核、品質協議與績效指標</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4 Stakeholder Management</h3>
+                    <p>The management process for vendors or service providers is an important component of a <span class="key-term">quality management system (QMS)</span>. Vendors, for the purpose of this document, are defined as qualified contract acceptors and their approved subcontractors.</p>
+                    <p>The contract-acceptor approval process comprises verification of the vendor's QMS system and level of compliance to <span class="key-term">good distribution practices (GDP)</span>. Verification for direct contract acceptors is typically performed through an audit or comparable assessment process based on risk assessment.</p>
+                    <p>The most important elements of the vendor approval process are:</p>
+                    <ul>
+                        <li>Audit</li>
+                        <li>Quality Agreement or Quality Service Level Agreement</li>
+                        <li>Key performance indicators (KPI) or performance metrics for continuous improvement verification</li>
+                    </ul>
+                    <p>A review of KPIs should be conducted periodically. Ad-hoc or for-cause audits could be required based on poor performance or significant changes related to services offered in accordance with an organization's internal procedures.</p>
+                    <p>The main areas of a vendor's QMS verification, typically covered in a quality or GDP audit, include:</p>
+                    <ul>
+                        <li>Organization, staff, training</li>
+                        <li>Quality management system</li>
+                        <li>Deviations/nonconformances</li>
+                        <li>Supplier assessment/auditing program</li>
+                        <li>Record management (paper and electronic)</li>
+                        <li>Change control</li>
+                        <li>Annual reports</li>
+                        <li>Facilities, vehicles, and equipment, including environmental monitoring and qualification</li>
+                        <li>Cleaning, sanitation, hygiene, pest control</li>
+                        <li>Maintenance, including calibration</li>
+                        <li>Deliveries</li>
+                        <li>Warehouse operations and qualification</li>
+                        <li>Safety</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>利害關係人管理</h3>
+                    <p>溫控供應鏈中，LSP 的表現直接影響產品品質。供應商管理體系（Vendor Management）是 QMS 的重要組成部分，核心三要素為：</p>
+                    <div class="concept-box">
+                        <h4>供應商核准三要素</h4>
+                        <ul>
+                            <li><strong>稽核（Audit）</strong>：首次核准時進行，定期重複；高風險供應商頻率更高。可接受第三方稽核報告（如 IATA CEIV）作為補充</li>
+                            <li><strong>品質協議（Quality Agreement）</strong>：明確雙方在溫控、偏差報告、CAPA 等方面的責任界定</li>
+                            <li><strong>KPI 定期審查</strong>：常見指標包括溫度超標率（temperature excursion rate）、準時交付率（on-time delivery）、損壞率（damage rate）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>KPI 監控的實務意義</h4>
+                        <p>KPI 不只是數字——它是早期預警系統。若某條航線的溫度超標率在連續三個月上升，即使每次都在可接受範圍內，趨勢本身就應觸發供應商績效討論，甚至啟動臨時稽核（for-cause audit）。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>稽核範圍比喻：全身健檢而非單科檢驗</h4>
+                        <p>GDP 稽核涵蓋 13 個面向，從組織架構、設施設備到倉儲資格認定，相當於對供應商進行「全身健檢」——不能只看溫控記錄，還要確認整個 QMS 是否健全。</p>
+                    </div>
+                    <p>稽核頻率應與風險等級掛鉤：提供關鍵溫控服務的 LSP 需要更頻繁的監督；僅提供行政服務的供應商風險相對較低。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.5 NONCONFORMANCES ===== -->
+    <div id="sec5-5" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5</div>
+            <div class="chapter-info">
+                <h2>Management of Nonconformances</h2>
+                <p>不符合規定事項管理：分類、評估、CAPA 與產品放行決策</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- 5.5 Intro + 5.5.1 Categorization -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5 Management of Nonconformances</h3>
+                    <p>The distribution process is a complex and dynamic process, where product is exposed to the external environment, less controllable than a typical drug manufacturing process, not managed directly by the product manufacturer and exposed to various entities in the supply chain. Due to the inherent variability of the external environment, <span class="key-term">nonconformances</span> should be expected and documented according to the level of impact on the product.</p>
+                    <p>Written procedures should be in place so that nonconformances are defined, their impact on product quality is assessed, and their root cause investigated, determined and, as applicable, eliminated.</p>
+
+                    <h3>5.5.1 Categorization of Nonconformances</h3>
+                    <p>Nonconformances can be categorized by their <strong>type</strong> (e.g., temperature excursions outside the defined limits, logistic process deviation, equipment breakdown, theft/loss, anomalous trends, noncompliance with a good-practices requirement), as well as their <strong>criticality</strong> (e.g., no impact or potential or determined minor or major impact on product quality or patient safety).</p>
+                    <p>The categorization applied by each company must be described in a written procedure.</p>
+                </div>
+                <div class="right-column">
+                    <h3>不符合規定事項管理</h3>
+                    <p>冷鏈運輸不像無塵室那樣完全受控——外部環境的固有變異性意味著溫度偏差（temperature excursion）是可預期的。關鍵在於：組織是否有完善的程序來識別、分類、評估並回應這些偏差。</p>
+                    <div class="concept-box">
+                        <h4>不符合規定事項的雙維度分類</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>維度</th>
+                                    <th>分類項目</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>類型（Type）</strong></td>
+                                    <td>溫度超標、物流製程偏差、設備故障、貨物遺失/竊盜、異常趨勢、GDP 不符合</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>嚴重程度（Criticality）</strong></td>
+                                    <td>無影響（no impact）、潛在輕微影響、確定輕微影響、確定重大影響（對產品品質或病患安全）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>分類標準必須有書面程序規定——這確保不同人員面對相同事件時，做出一致的分類判斷，也是稽查員在審查不符合規定事項系統時首先要求看的文件之一。</p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- 5.5.2 Impact Assessment -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.2 Impact Assessment</h3>
+                    <p>An impact assessment must be performed following written procedures. The impact assessment must also consider and define the <strong>boundaries of the nonconformance</strong> in terms of which products may have been affected and which are out of scope.</p>
+                    <p>The level of impact determines the level of investigation and correction needed. A prompt correction of the nonconformance to limit its immediate impact is required, and all actions undertaken in that respect must be properly documented.</p>
+                    <p>All products impacted (or potentially impacted) must be individually assessed. An investigation should be conducted involving the appropriate <span class="key-term">subject matter experts (SME)</span> for the product(s) to determine the impact on product quality. Stability data might be used to assess temperature excursions. Nevertheless, the <strong>cumulative impact</strong> of any possible previous excursion must be assessed.</p>
+                    <p>All investigations including temperature excursions should be properly documented and approved by the <span class="key-term">Quality Unit</span>.</p>
+                    <p>When product quality, compliance, or patient safety is not impacted, it is considered acceptable to close the nonconformance with minimal or no root cause investigation (as applicable and described by the procedure).</p>
+                </div>
+                <div class="right-column">
+                    <h3>影響評估</h3>
+                    <p>影響評估是不符合規定事項調查的核心步驟，需確認：</p>
+                    <ul>
+                        <li>哪些產品批次<strong>確認受影響</strong>（in-scope）</li>
+                        <li>哪些批次<strong>排除在外</strong>（out-of-scope，需說明理由）</li>
+                        <li>影響程度如何（依穩定性數據與累積超標歷史評估）</li>
+                    </ul>
+                    <div class="note-box">
+                        <h4>累積影響評估：不能只看單次事件</h4>
+                        <p>這是最常被忽略的要點：評估一次溫度超標的影響時，<strong>必須納入該批產品過去所有溫度超標記錄的累積效應</strong>。若產品已在先前運輸中消耗部分穩定性預算，本次超標的可接受閾值就相應降低。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：穩定性預算就像信用額度</h4>
+                        <p>產品的穩定性預算如同信用額度——每次溫度超標都在消耗這個額度。單次小額超標（如超出冷鏈範圍2°C持續1小時）可能在預算內；但若這已是該批次第三次超標，累積消耗可能已逼近上限，必須重新評估放行可行性。</p>
+                    </div>
+                    <p>調查需由適當的主題專家（SME）參與，並由品質部門（Quality Unit）正式核准後方可結案。</p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- 5.5.3 CAPA -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.3 Corrective and Preventive Actions (CAPA)</h3>
+                    <p>If a root cause of a nonconformance is determined, a <span class="key-term">CAPA</span> should be considered and implemented in order to remove the root cause of the nonconformance. A <strong>corrective action</strong> is taken to prevent recurrence, whereas a <strong>preventive action</strong> is taken to prevent occurrence.</p>
+                    <p>Depending on the CAPA, the implementation should be monitored for its timeliness and effectiveness. The thoroughness of a CAPA must be commensurate with the risk posed by the nonconformance.</p>
+                    <p>A CAPA should result in process improvements and process understanding. It should be used in conjunction with the root cause analysis. To facilitate trend analysis, a root cause should be identified according to:</p>
+                    <ul>
+                        <li>The route where the nonconformance occurred</li>
+                        <li>Root cause location (where it happened)</li>
+                        <li>Root cause owner (who or what is at the origin)</li>
+                    </ul>
+                    <p>The level of effort, formality, and documentation of the actions should be commensurate with the level of impact of the issue on product quality. The development, implementation, and verification of the CAPA's effectiveness will often require collaboration with the LSP(s) and/or packaging/container manufacturers.</p>
+                </div>
+                <div class="right-column">
+                    <h3>矯正預防措施（CAPA）</h3>
+                    <p>CAPA 是不符合規定事項管理的閉環關鍵——找到根本原因後，採取措施確保問題不再發生：</p>
+                    <div class="concept-box">
+                        <h4>矯正行動 vs. 預防行動</h4>
+                        <ul>
+                            <li><strong>矯正行動（Corrective Action）</strong>：針對已發生的問題，消除根本原因，防止<em>再次</em>發生</li>
+                            <li><strong>預防行動（Preventive Action）</strong>：針對潛在風險，在問題<em>尚未</em>發生前主動預防</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>CAPA 有效性驗證</h4>
+                        <p>CAPA 不能「寫完就算完成」——必須追蹤執行時效性（timeliness）與實際效果。常見驗證方式包括：觀察相同問題是否復發、後續 KPI 是否改善、下一次稽核中該缺失是否已消除。</p>
+                    </div>
+                    <p>根本原因的結構化記錄（路線、發生位置、責任方）不只服務於單一事件的處理，更是趨勢分析的數據基礎——例如識別出「A 航線在夏季固定出現超標」這類系統性模式。</p>
+                    <div class="analogy-box">
+                        <h4>CAPA 比例原則</h4>
+                        <p>CAPA 的力道要與風險相稱：一次無影響的輕微超標，可能只需更新操作指引；但若涉及患者安全的重大偏差，則可能需要更換承運商、重新設計包裝方案，或對整條運輸路線重新資格認定。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- 5.5.4 Product Disposition + 5.5.5 Closure -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.4 Product Control and Disposition Decision</h3>
+                    <p>Should an <strong>absence of impact</strong> for products be determined, the product can be distributed after that no-impact determination has been confirmed, according to product specifications and local procedures.</p>
+                    <p>Should an <strong>impact be determined</strong>, product(s) must be held and can be distributed only after a correction of the impact, if possible, has been successfully executed and product quality impact no longer exists.</p>
+                    <p>When correction of the impact is not possible, impacted product(s) must not be released.</p>
+
+                    <h3>5.5.5 Approval and Closure</h3>
+                    <p>The responsibilities for approving nonconformances and their investigations must be described in a local procedure. The Quality Unit is typically responsible for approving all nonconformances as described.</p>
+                    <p>The person responsible for the approval and closure of a nonconformance must have access to all information and investigation elements required to perform the closure. When more information or investigations are needed, these must be requested from and provided by the investigation team.</p>
+                    <p>The approval can be granted only after all investigative elements are available and formalized and all applicable CAPAs have been satisfactorily identified and approved.</p>
+                </div>
+                <div class="right-column">
+                    <h3>產品放行決策與案件結案</h3>
+                    <div class="concept-box">
+                        <h4>產品處置三種情境</h4>
+                        <ul>
+                            <li><strong>無影響確認</strong>：影響評估確認無品質影響 → 可正常放行配送</li>
+                            <li><strong>有影響但可矯正</strong>：產品暫扣（held），待矯正措施成功執行且影響消除後方可放行</li>
+                            <li><strong>有影響且無法矯正</strong>：產品<strong>不得放行</strong>，應予報廢或退回</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>結案條件的嚴格性</h4>
+                        <p>不符合規定事項的結案需同時滿足：所有調查要素已完整記錄、所有適用的 CAPA 已被識別並核准，且品質部門已正式審核。未完成 CAPA 之前不得提前結案——這是常見的稽查發現缺失。</p>
+                    </div>
+                    <p>在 CDMO 情境下，客戶的品質協議通常會要求在指定時限內（如 24–48 小時內）通報重大溫度偏差，並在規定時間內（如 30 天內）完成調查報告。這些時限要求應在品質協議中明確規定。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.6 COMPLAINTS ===== -->
+    <div id="sec5-6" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6</div>
+            <div class="chapter-info">
+                <h2>Complaints</h2>
+                <p>客訴管理：外部反饋的系統性處理</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6 Complaints</h3>
+                    <p>Similar to nonconformances discovered during distribution operations, procedures should be documented that describe the processes for receiving, evaluating, investigating, addressing, and trending of complaints from customers.</p>
+                    <p>A CAPA should be considered to remove root causes of complaints as appropriate.</p>
+                    <p>Products returned due to complaints must be segregated and prevented from subsequent distribution. A comprehensive product quality impact assessment must always be performed by the manufacturer, if product is planned to be further distributed, as defined by local procedure and allowed by local regulation.</p>
+                </div>
+                <div class="right-column">
+                    <h3>客訴管理</h3>
+                    <p>客戶投訴是另一個重要的外部數據來源，處理流程與不符合規定事項類似，但有其獨特要求：</p>
+                    <ul>
+                        <li>需建立書面程序涵蓋：<strong>接收、評估、調查、處理與趨勢分析</strong></li>
+                        <li>適用時應啟動 CAPA 消除根本原因</li>
+                        <li>因投訴退回的產品必須<strong>隔離存放</strong>，禁止重新配送</li>
+                        <li>若製造商評估後認為可以重新配送，必須先完成完整的產品品質影響評估</li>
+                    </ul>
+                    <div class="note-box">
+                        <h4>客訴趨勢分析的價值</h4>
+                        <p>單一客訴可能是偶發事件；但若趨勢分析顯示某類投訴（如「到貨時包裝已損壞」）在特定季節集中出現，這可能揭示系統性問題——例如夏季航運溫度峰值超出 TPS 設計容量，需要觸發重新資格認定評估。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.7 PERIODIC REVIEW ===== -->
+    <div id="sec5-7" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.7</div>
+            <div class="chapter-info">
+                <h2>Periodic Review — KPIs, Trend Analysis, and Management Review</h2>
+                <p>定期審查：KPI 追蹤、趨勢分析與管理審查</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.7 Periodic Review</h3>
+                    <p>Distribution performance must be monitored and reviewed periodically to ensure the state of control is maintained as expected by the qualifications. The extent and frequency of the distribution process capability should be reviewed at regular time intervals using a risk-based approach.</p>
+                    <p>Distribution nonconformances (e.g., number, trends) and the system for the management of nonconformances must be periodically reviewed. The aim of the review is identifying negative patterns or trends in the processes and highlighting areas for improvements.</p>
+                    <p>Implementing a process to monitor the occurrence of nonconformances, by tracking appropriate metrics and KPIs, is necessary. Mechanisms for escalation should be included to discuss the trends.</p>
+                    <p>Aspects to be reviewed include, but not limit to:</p>
+                    <ul>
+                        <li>Number or frequency of nonconformances for each process or product, as applicable</li>
+                        <li>Adequacy (effectiveness) of CAPAs (e.g., by measuring recurrent nonconformances)</li>
+                        <li>Adherence to the standards required by the local procedure (e.g., timeliness for investigating and approving nonconformances)</li>
+                    </ul>
+                    <p>For nonconformances classified as minor, trending should be performed to ensure they do not represent (or hide) a major nonconformance that would warrant more incisive actions.</p>
+                    <p>This periodic review must be an integral part of the management review.</p>
+                </div>
+                <div class="right-column">
+                    <h3>定期審查</h3>
+                    <p>定期審查是 OPV 閉環中的「檢視與改善」環節，確保配送體系持續處於受控狀態。</p>
+                    <div class="concept-box">
+                        <h4>定期審查的三大核心問題</h4>
+                        <ul>
+                            <li><strong>不符合規定事項趨勢</strong>：數量是否上升？特定航線或季節是否集中？</li>
+                            <li><strong>CAPA 有效性</strong>：已執行的 CAPA 是否真正解決問題（以重複偏差率衡量）？</li>
+                            <li><strong>程序遵循度</strong>：不符合規定事項的調查與核准是否在規定時限內完成？</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>「小偏差積累成大風險」的趨勢陷阱</h4>
+                        <p>這是 5.7 節最重要的提醒：對於分類為輕微（minor）的不符合規定事項，必須進行趨勢分析，確認它們不是在掩蓋一個需要更積極處理的系統性重大問題。例如，每月一次「輕微」超標，可能在趨勢分析中顯示為逐步惡化的系統性失效。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>定期審查與 APR 的整合</h4>
+                        <p>對 CDMO 而言，冷鏈 OPV 的定期審查數據應彙整至客戶的<strong>年度產品審查（APR）</strong>。這不只是法規要求，更是向客戶展示供應鏈管理能力的重要機會——數據說話的品質文化是 TWi 區別於普通 CDMO 的差異化優勢之一。</p>
+                    </div>
+                    <p>定期審查必須納入<strong>管理審查（Management Review）</strong>——確保高層管理者了解配送製程的整體表現，並為必要的資源投入提供決策依據。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.8 CHANGE CONTROL ===== -->
+    <div id="sec5-8" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.8</div>
+            <div class="chapter-info">
+                <h2>Change Control — Triggers for Re-qualification</h2>
+                <p>變更控制：觸發重新資格認定的判斷框架</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.8 Change Control</h3>
+                    <p>An effective change control system must be in place to control changes made to the qualified systems. Each change to a qualified system must be described and documented.</p>
+                    <p>In distribution, a good practice is to maintain a list with all the routes/shipping lanes and their description (e.g., shipping/receiving site, LSP, airlines/haulers, cold chain solution).</p>
+                    <p>Changes made to the system may render the distribution process no longer qualified. All changes (planned or unplanned) and their potential impact on the qualification status must be documented and approved by the Quality Unit.</p>
+                    <p>Examples of criteria that could trigger a <strong>change control process</strong> might include:</p>
+                    <ul>
+                        <li>New transportation lane with a specific transportation mode (e.g., air, ocean, rail, road) or major modification of an existing qualified transportation lane (e.g., shift from air to ocean)</li>
+                        <li>New type of data logger</li>
+                        <li>New passive TPS</li>
+                    </ul>
+                    <p><strong>Minor changes</strong> can be followed by a periodic report shared during management reviews:</p>
+                    <ul>
+                        <li>Minor modification of an existing qualified transportation lane (for example change of the transit airport)</li>
+                        <li>Change of the alarm/alert limits of an existing data logger</li>
+                    </ul>
+                    <p>In contingency situations, such as an element for pandemic, proper risk assessment and change control should be assessed.</p>
+                </div>
+                <div class="right-column">
+                    <h3>變更控制</h3>
+                    <p>變更控制確保任何對已驗證系統的修改都經過評估——防止未受控的變更使整個配送體系喪失資格認定狀態。</p>
+                    <div class="concept-box">
+                        <h4>重大變更 vs. 次要變更：觸發點判斷</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>變更類型</th>
+                                    <th>例子</th>
+                                    <th>處理方式</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>重大變更</strong>（Major）</td>
+                                    <td>新增運輸路線、運輸方式轉換（空運→海運）、新型被動式 TPS、新型資料記錄儀</td>
+                                    <td>正式變更控制流程 → 可能需要重新資格認定（re-qualification）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>次要變更</strong>（Minor）</td>
+                                    <td>中轉機場變更、資料記錄儀警報閾值調整</td>
+                                    <td>記錄後於管理審查時匯報</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>路線清單：變更控制的基礎文件</h4>
+                        <p>維護一份完整的運輸路線清單（包含：起/訖點、LSP、航線/承運商、冷鏈方案）是良好實務。這份清單讓組織在任何變更發生時，能即時評估對資格認定狀態的影響，而不是事後才發現問題。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>緊急狀況下的變更控制</h4>
+                        <p>疫情、自然災害等緊急情況可能迫使使用未驗證的替代路線或承運商。即便在緊急狀況下，風險評估與變更控制仍應執行——可以「緊急變更（emergency change）」形式加快流程，但不能完全繞過。事後應補充完整文件並評估是否需要重新資格認定。</p>
+                    </div>
+                    <p>其他常見的重新資格認定觸發條件（雖然 TR39 未明列，但為實務共識）：產品新增或規格變更、季節性極端氣候條件、特定路線持續不合格的 KPI 表現。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div id="summary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge" style="font-size:1rem;">總結</div>
+            <div class="chapter-info">
+                <h2>Section Summary — OPV as a Continuous Improvement Engine</h2>
+                <p>章節總結：OPV 是持續改善的引擎</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Takeaways</h3>
+                    <p>Ongoing Process Verification (OPV) is the "maintain and improve" phase that follows initial qualification. It transforms one-time validation into a living quality system through systematic data collection, analysis, and response.</p>
+                    <p>The core elements of OPV are interconnected:</p>
+                    <ul>
+                        <li><strong>SOPs and Training</strong> ensure consistent execution by all parties in the distribution chain.</li>
+                        <li><strong>Monitoring</strong> (data loggers, TTIs, real-time systems) provides the objective evidence that the TPS continues to perform as qualified.</li>
+                        <li><strong>Nonconformance Management</strong> (categorization → impact assessment → CAPA → disposition) is the structured response system for deviations.</li>
+                        <li><strong>Stakeholder Management</strong> extends quality oversight to LSPs through audits, quality agreements, and KPI reviews.</li>
+                        <li><strong>Periodic Review</strong> aggregates performance data into management-level insight and connects to APR.</li>
+                        <li><strong>Change Control</strong> protects qualification status by evaluating every system change before implementation.</li>
+                    </ul>
+                    <p>OPV data collected across these elements feeds directly into Annual Product Reviews (APR) and supports regulatory inspection readiness.</p>
+                </div>
+                <div class="right-column">
+                    <h3>章節總結</h3>
+                    <p>OPV 是冷鏈管理的持續品質保證引擎——它將一次性的資格認定轉化為動態的品質管理體系。</p>
+                    <div class="concept-box">
+                        <h4>OPV 六大支柱（速記）</h4>
+                        <ul>
+                            <li><strong>文件（SOP）</strong>：所有製程步驟有書面規範，版本受控</li>
+                            <li><strong>監控（Monitoring）</strong>：每批次數據記錄，監控器校準有效</li>
+                            <li><strong>培訓（Training）</strong>：所有執行者訓練完成，記錄可供稽查</li>
+                            <li><strong>供應商（Stakeholder）</strong>：定期稽核、品質協議、KPI 追蹤</li>
+                            <li><strong>偏差處理（Nonconformance）</strong>：分類→影響評估→CAPA→放行決策</li>
+                            <li><strong>變更控制（Change Control）</strong>：任何系統變更須評估對資格認定的影響</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>CDMO 視角：OPV 是競爭差異化的工具</h4>
+                        <p>對 TWi 而言，完善的 OPV 體系不只是法規合規的要求——它是向製藥客戶展示「我們持續管理您產品的冷鏈風險」的能力證明。OPV 數據進入 APR，CAPA 歷史顯示持續改善，趨勢分析展現預測能力——這些共同構成「受信任的冷鏈合作夥伴」的形象。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>假設 TWi 的某條歐洲運輸路線在第三季度出現溫度超標率上升（從 2% 升至 5%），同時該季度正值夏季高溫，請問：</p>
+                        <ul>
+                            <li>這應觸發哪種層級的調查？</li>
+                            <li>CAPA 應考慮哪些可能的解決方案？（提示：包裝升級、路線調整、季節性重新資格認定）</li>
+                            <li>這些數據應如何反映在客戶的 APR 中？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+        </div>
+    </section>
+
+    <!-- ========== Section 4: Conclusion, References & Case Studies ========== -->
+    <section class="chapter-section" id="sec4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4</div>
+            <div class="chapter-info">
+                <h2>Section 4: Conclusion, References & Case Studies</h2>
+                <p>結論、參考文獻與案例研究 | p17-p29</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- ===== PAGE HEADER ===== -->
+<div class="page-info">Sections 6.0–9.0 &nbsp;|&nbsp; Pages 17–29 &nbsp;|&nbsp; Guidance for Temperature-Controlled Medicinal Products</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- Learning Objectives -->
+  <div class="learning-objectives">
+    <h3>學習目標 Learning Objectives</h3>
+    <ul>
+      <li>理解 TR39 的核心目的：為溫控藥品 (temperature-sensitive medicinal products) 的配送資格認證 (distribution qualification) 建立系統化流程。</li>
+      <li>能夠套用 <strong>案例研究 1</strong> 的偏差趨勢分析架構，識別高風險配送航線並觸發 CAPA (糾正與預防措施)。</li>
+      <li>掌握 <strong>案例研究 2</strong> 中被動保溫箱 (passive shipper) SOP 的關鍵要素：組裝圖、人員訓練、凝膠包 (gel pack) 與相變材料 (phase-change materials, PCM) 的調溫程序。</li>
+      <li>了解 <strong>案例研究 3</strong> 的資格認證總計畫 (Qualification Master Plan, QMP) 架構，包含設計確認 (DQ)、操作確認 (OQ)、效能確認 (PQ) 三階段的邏輯連結。</li>
+      <li>識別 TR39 引用的關鍵外部標準 (ICH Q9、ISTA、ISO、WHO 等)，並理解這些標準對 CDMO 冷鏈作業的監管意義。</li>
+    </ul>
+  </div>
+
+  <!-- ===== SECTION 6.0: CONCLUSION ===== -->
+  <div class="section-title">6.0 Conclusion — 結論</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>6.0 Conclusion</h3>
+      <p>This technical report provides guidance for establishing a process for the qualification of distribution of temperature-sensitive medicinal and pharmaceutical products. It offers a resource for all involved stakeholders in the pharmaceutical supply chain, providing a model for qualifications from the process design through implementation and operation to verification including the shipment preparation of the products and thermal protection systems (<span class="key-term">TPS</span>), their transportation and arrival at the receiving site for storage and further distribution to the patient (end user).</p>
+      <p>The technical report addresses <strong>"what"</strong> is needed to qualify thermal protection systems and processes, but not the <strong>"how"</strong> as this may vary depending on local regulations, business requirements, and product characteristics. By applying the guidance provided in this technical report, the reader will ensure that product quality is maintained during the distribution through the pharmaceutical supply chain in compliance with current regulatory expectations.</p>
+    </div>
+    <div class="right-column">
+      <h3>解讀與應用</h3>
+      <p><strong>「What vs. How」的核心邏輯：</strong>TR39 刻意只定義「必須做什麼」，而將「如何做」留給各組織根據當地法規與產品特性自行決定。這是 PDA 技術報告的標準定位——提供框架，不強制規定細節。</p>
+
+      <div class="concept-box">
+        <h4>TR39 覆蓋的完整生命週期</h4>
+        <ul>
+          <li><strong>製程設計 (Process Design)：</strong>選擇合適的熱保護系統</li>
+          <li><strong>實施與操作 (Implementation &amp; Operation)：</strong>裝箱、運輸執行</li>
+          <li><strong>驗證 (Verification)：</strong>OQ / PQ 確認系統有效</li>
+          <li><strong>終點 (End point)：</strong>確保藥品抵達患者時仍符合品質要求</li>
+        </ul>
+      </div>
+
+      <div class="note-box">
+        <h4>對 CDMO 的意義</h4>
+        <p>TWi 提供委託製造服務，冷鏈配送是服務交付的最後一哩路。TR39 的結論提醒我們：資格認證文件不只是內部合規要求，更是對客戶承諾「藥品品質在整個供應鏈中受到保護」的書面證明。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 7.0: REFERENCES ===== -->
+  <div class="section-title">7.0 References — 參考文獻</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>7.0 References</h3>
+      <ol class="ref-list">
+        <li><span class="ref-num">1.</span> E.J. van Asselt et al. (2017). Pharma requirements for temperature-controlled trailers. <em>Journal Pharmaceutical Outsourcing,</em> Vol. 18, Issue 4, Jul/Aug, 12–19.</li>
+        <li><span class="ref-num">2.</span> Parenteral Drug Association. <em>Technical Report No. 58: Risk Management for Temperature-Controlled Distribution;</em> PDA: Bethesda, Md., 2012; p 73.</li>
+        <li><span class="ref-num">3.</span> Parenteral Drug Association. <em>Technical Report No. 54: Implementation of Quality Risk Management For Pharmaceutical and Biotechnology Manufacturing Operations;</em> PDA: Bethesda, Md., 2012; p 62.</li>
+        <li><span class="ref-num">4.</span> International Council for Harmonisation. <em>Quality Guideline Q9: Quality Risk Management;</em> ICH: Geneva, 2005.</li>
+        <li><span class="ref-num">5.</span> International Safe Transit Association. <em>ISTA 7D: Temperature Test for Transport Packaging</em> (Editorial Change, 2013); ISTA: East Lansing, Mich., 2007.</li>
+        <li><span class="ref-num">6.</span> International Safe Transit Association. <em>ISTA 7E: Testing Standard for Thermal Transport Packaging Used in Parcel Delivery System Shipment;</em> ISTA: East Lansing, Mich., 2010.</li>
+        <li><span class="ref-num">7.</span> Majic, Z., Van Asselt, E.J. &amp; Bishara, R.H.: Pharma by Air: Equipment Qualification and Route Risk Assessment. <em>Journal Pharmaceutical Outsourcing,</em> Vol. 17, Issue 5, Sep/Oct, 2016, 26–31.</li>
+        <li><span class="ref-num">8.</span> Van Asselt, E.J., Zvonimir, M, Bishara, R.H., and Stener, E.: Qualification of Pharmaceutical shipping Systems in seven Steps. <em>Pharmaceutical Manufacturing and Packaging Source (PMPS),</em> May 2020 Edition, pp. 56–59.</li>
+        <li><span class="ref-num">9.</span> International Safe Transit Association. <em>ISTA Standard 20 (Revision 2.0): Design and Qualification of Insulated Shipping Containers (ISC);</em> ISTA: East Lansing, Mich., 2014.</li>
+      </ol>
+    </div>
+    <div class="right-column">
+      <h3>關鍵文獻解讀</h3>
+
+      <div class="concept-box">
+        <h4>ICH Q9 — 品質風險管理 (最重要基礎)</h4>
+        <p>TR39 的整個資格認證框架建立在 ICH Q9 的風險管理原則上。「先做風險分析，再設計測試計畫」的邏輯源自此。在 CDMO 環境中，每條新航線都應先進行 <strong>Route Risk Assessment (航線風險評估)</strong>，再決定 TPS 規格。</p>
+      </div>
+
+      <div class="concept-box">
+        <h4>PDA TR58 — 溫控配送風險管理</h4>
+        <p>TR58 是 TR39 的姊妹文件，專注於風險管理方法論。若客戶要求「說明你的冷鏈風險管理依據」，可同時引用 TR39（資格認證框架）+ TR58（風險管理方法）。</p>
+      </div>
+
+      <div class="analogy-box">
+        <h4>ISTA 測試標準的角色</h4>
+        <p>ISTA 7D / 7E / Standard 20 定義了「如何對包裝系統進行溫度測試」的標準方法。就像 ICH Q2 定義分析方法驗證標準一樣——TR39 告訴你「需要做測試」，ISTA 告訴你「用什麼方法測」。</p>
+      </div>
+
+      <div class="note-box">
+        <h4>Van Asselt et al. 七步驟模型</h4>
+        <p>Reference 8（Van Asselt &amp; Bishara 2020, PMPS）提出的「7步驟藥品出貨系統資格認證模型」是 TR39 的核心實務架構來源，值得深入閱讀。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 8.0: CASE STUDIES (intro) ===== -->
+  <div class="section-title">8.0 Case Studies — 案例研究</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>8.0 Case Studies — Introduction</h3>
+      <p>These studies have been included as examples of an approach to Qualification of storage and transport systems, but not to the exclusion of other approaches.</p>
+    </div>
+    <div class="right-column">
+      <h3>案例研究的定位</h3>
+      <p>PDA 明確指出這些案例是「方法範例」，不是唯一正確做法。這給予 CDMO 彈性空間：可以採用不同的具體工具與格式，只要核心邏輯（風險分析 → 設計 → 確認 → 驗證）一致即可。</p>
+      <div class="concept-box">
+        <h4>三個案例的互補關係</h4>
+        <ul>
+          <li><strong>案例 1：</strong>偏差趨勢分析（回顧歷史數據，持續改進）</li>
+          <li><strong>案例 2：</strong>SOP 撰寫（標準化日常操作，防止人為失誤）</li>
+          <li><strong>案例 3：</strong>資格認證總計畫（規劃前瞻性的系統確認架構）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CASE STUDY 1 ===== -->
+  <div class="section-title">8.1 Case Study 1: Distribution Incident Trends Analysis — 配送事件趨勢分析</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>8.1 Case Study 1: Distribution Incident Trends Analysis</h3>
+      <p><span class="key-term">CAPAs</span> (Corrective and Preventive Actions) should be created for major and critical distribution deviations that have an impact on the product quality, for example, temperature excursions with product impact or product damages.</p>
+      <p>For events and minor deviations that happen in the distribution environment, CAPAs are not mandatory, as there is no impact on product quality and integrity as defined by the documented procedure.</p>
+      <p>The objective of monthly trend analysis is to confirm CAPAs opened for major and critical deviations and to prioritize CAPAs according to destinations with the highest reported number of minor deviations.</p>
+
+      <div class="deviation-checklist">
+        <div class="check-group">
+          <div class="check-group-title">Step 1 — Classify the Deviation</div>
+          <ul>
+            <li>Determine if the reported deviation is relative to damage, temperature, or another reason (e.g., logistic split)</li>
+            <li>Determine the root cause based on gathered information</li>
+          </ul>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title">Step 2 — Document Root Cause by Category</div>
+          <ul>
+            <li>Type of freight (air / sea / road / rail)</li>
+            <li>Site of origin</li>
+            <li>Site of destination</li>
+            <li>Logistic service provider</li>
+            <li>Root cause owner (e.g., handling agent, hauler, airline, cold chain solution supplier)</li>
+            <li>Root cause location (e.g., storage or tarmac time at transit airport, motorway rest area, aircraft)</li>
+          </ul>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title">Step 3 — Monthly Review</div>
+          <ul>
+            <li>Perform a monthly review based on a rolling 12-month period of distribution deviations</li>
+            <li>Calculate per site destination the percentage of deviations (= number of deviations / total shipments)</li>
+            <li>Sort the deviation percentage (by decreasing order)</li>
+            <li>Identify the site destinations with the highest deviation percentage</li>
+            <li>Based on a fixed percentile (e.g., Percentile 95 — the 5% of destinations with the highest deviation percentage), count the occurrence for same root cause location and owner</li>
+            <li>If more than one occurrence, identify as a cluster of a potential issue to investigate further</li>
+            <li>If occurrence is more than two within the 12-month rolling period (destination / root cause location / owner), investigate further and create a CAPA accordingly</li>
+          </ul>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title">Step 4 — Biannual Review</div>
+          <ul>
+            <li>Perform a biannual review based on the last 12 months of distribution deviations</li>
+            <li>Calculate per root cause owner and per root cause location the number of deviations / shipments</li>
+            <li>Sort the deviation percentage by decreasing order</li>
+            <li>Identify the root cause owner and root cause location with the highest incident percentage</li>
+            <li>For the top three root cause owners and root cause locations, investigate further and create a CAPA accordingly</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color: var(--text-medium); margin-top:0.5rem;"><em>Figure 8.1-1: Deviation Checklist (p19)</em></p>
+    </div>
+    <div class="right-column">
+      <h3>案例 1 深度解析：趨勢分析框架</h3>
+
+      <div class="concept-box">
+        <h4>三層偏差分類邏輯</h4>
+        <ul>
+          <li><strong>Major/Critical 嚴重偏差：</strong>有產品品質影響 → 強制開 CAPA</li>
+          <li><strong>Minor 輕微偏差：</strong>無產品品質影響 → 不強制 CAPA，但需納入趨勢分析</li>
+          <li><strong>趨勢觸發：</strong>同一目的地/根本原因 12 個月內出現 &gt;2 次 → 升級為 CAPA</li>
+        </ul>
+        <p>這套「分層 + 趨勢觸發」機制避免了為每個小事件開 CAPA 的資源浪費，同時不放過系統性問題。</p>
+      </div>
+
+      <div class="analogy-box">
+        <h4>比喻：如何理解 Percentile 95 規則</h4>
+        <p>想像你有 100 條配送航線。Percentile 95 代表你只聚焦偏差率最高的 5 條（最壞的 5%）。這是一種 <strong>Pareto 原則（80/20 法則）</strong>的應用——集中資源在最高風險的少數航線上，而非平均分散注意力。</p>
+      </div>
+
+      <div class="note-box">
+        <h4>根本原因分類的重要性</h4>
+        <p>TR39 要求同時記錄「根本原因擁有者 (root cause owner)」與「根本原因地點 (root cause location)」。這兩個維度讓你能回答：</p>
+        <ul>
+          <li><strong>是誰造成的？</strong>（航空公司、貨運代理、卡車司機、冷鏈供應商）</li>
+          <li><strong>在哪裡發生的？</strong>（停機坪等待時間、轉運機場、高速公路休息站）</li>
+        </ul>
+        <p>沒有這兩個維度，CAPA 就無法指向正確的改善對象。</p>
+      </div>
+
+      <div class="cdmo-box">
+        <h4>TWi CDMO 應用：年度冷鏈 KPI 報告</h4>
+        <ul>
+          <li>建立每季一次的配送偏差統計表（按客戶、航線、貨運類型分類）</li>
+          <li>使用 12 個月滾動數據計算各目的地偏差率，識別高風險航線</li>
+          <li>將趨勢分析結果納入客戶年度品質報告（Annual Product Quality Review, APQR），展示主動管理能力</li>
+          <li>對 &gt;2 次同類事件的航線，主動提出航線 re-qualification 建議，而非等待客戶詢問</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CASE STUDY 2 ===== -->
+  <div class="section-title">8.2 Case Study 2: Passive Shipper SOPs — 被動保溫箱標準作業程序</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>8.2 Case Study 2: Passive Shipper SOPs</h3>
+      <p>When using <span class="key-term">passive shippers</span> (被動保溫箱), the assembly diagram, photos, and a description should be included within either the SOP or protocol. As with a puzzle, the multiple pieces must be assembled correctly. A written description of the process to assemble a passive shipper must accompany the diagram. Training should be completed and documented for all employees who will assemble passive shippers. Retraining schedules should be developed and maintained. Audits need to be performed on the accuracy of the passive shipper assembly. Random checks may be done after a passive shipper has been assembled and finalized. The Quality Unit should randomly select shippers and open them to verify proper assembly.</p>
+      <p>Transport modes need to be defined prior to the execution of any qualification. A carrier quality agreement may be helpful to understand exactly how logistic service providers and freight forwarders will consistently handle each shipment. Things to consider are the route and the risks with that route related to time in transit and/or security.</p>
+      <p><span class="key-term">Gel packs</span> (凝膠保冷袋) and <span class="key-term">phase-change materials</span> (相變材料, PCM) are used inside passive shippers to maintain temperature. Frozen gel packs and phase-change materials can be at different temperatures, such as −15 °C to −10 °C. Knowing at what temperature these materials should be, according to the passive shipper requirements, is essential to understand. Consistency is needed to assure that equipment used to condition and store gel packs and phase-change materials are capable of producing gel packs and phase-change materials at the proper temperature. The next step is to determine how long gel packs and phase-change materials need to stay inside the equipment to ensure the proper temperature. In most cases, it may require many days to condition these products depending if they are stored on a pallet, in a box, or individually.</p>
+      <p>The goal is to make sure the materials are at the correct temperature prior to use. Using gel packs and phase-change materials prior to being at the proper temperature could result in failed shipments. If gel packs and phase-change materials are used frozen, it is imperative to determine whether or not they will cause irreversible damages to the payload. Gel packs and phase-change materials may freeze if they come in direct contact with products affected by freezing (thermal shock and denaturing the product); this should have been tested during prior qualification processes. Thermal shock can occur unintentionally if the cold bank moves during handling and ends up touching the payload, or if the shipper is placed in a cold room prior to shipping. The layout and written plan should include a process to warn users that the cold bank may require material to separate it from the payload. Introducing gel packs and phase-change materials at the wrong temperature into a pack-out or improperly placing them can result in adverse temperatures.</p>
+    </div>
+    <div class="right-column">
+      <h3>案例 2 深度解析：SOP 關鍵要素</h3>
+
+      <div class="concept-box">
+        <h4>被動保溫箱 SOP 的六大核心要素</h4>
+        <ol style="margin-left: 1.25rem;">
+          <li><strong>組裝圖與照片 (Assembly Diagram &amp; Photos)：</strong>文字描述必須搭配視覺材料，像拼圖一樣每個零件都有正確位置。</li>
+          <li><strong>訓練記錄 (Training Documentation)：</strong>所有組裝人員需完成培訓並留下書面記錄；定期重訓計畫必須建立並維護。</li>
+          <li><strong>隨機查核 (Random Audits)：</strong>品保單位須不定期開箱驗查組裝正確性，這是品質保證的最後一道防線。</li>
+          <li><strong>運輸模式定義 (Transport Mode Definition)：</strong>在執行任何 qualification 前，必須先明確定義運輸方式（空運/陸運/海運）。</li>
+          <li><strong>凝膠包/PCM 調溫程序 (Conditioning Procedure)：</strong>包含目標溫度、調溫時間、儲存方式（棧板/箱裝/單獨）。</li>
+          <li><strong>隔離材料 (Separation Material)：</strong>若 PCM 為冷凍狀態，SOP 必須包含防止直接接觸藥品的隔離層說明。</li>
+        </ol>
+      </div>
+
+      <div class="note-box">
+        <h4>PCM 調溫時間的關鍵細節</h4>
+        <p>TR39 特別強調：PCM 的調溫時間可能需要<strong>數天</strong>，且依儲存方式不同（棧板整批 vs. 箱裝 vs. 單個）而有顯著差異。這是許多機構常忽略的細節——在 SOP 中只寫「放入 2–8°C 冰箱」而未指定時間，等同於未完整記錄關鍵參數。</p>
+      </div>
+
+      <div class="analogy-box">
+        <h4>比喻：Thermal Shock（熱衝擊）的風險</h4>
+        <p>想像你拿一個剛從 −20°C 取出的冷凍 PCM，直接放在玻璃瓶裝的生物製劑旁邊。PCM 表面溫度可能瞬間使接觸點溫度降到冰點以下，造成蛋白質變性——產品外觀可能看起來正常，但生物活性已不可逆損失。這就是「隔離材料」在 SOP 中不可省略的原因。</p>
+      </div>
+
+      <div class="concept-box">
+        <h4>載體品質協議 (Carrier Quality Agreement)</h4>
+        <p>TR39 建議與物流服務提供商簽訂品質協議，明確規定：</p>
+        <ul>
+          <li>處理溫度敏感貨物的標準程序</li>
+          <li>允許的最長過境等待時間</li>
+          <li>溫度監控設備的使用要求</li>
+          <li>異常事件的通報機制</li>
+        </ul>
+        <p>這份協議是 GDP 審核中的常見查驗項目。</p>
+      </div>
+
+      <div class="cdmo-box">
+        <h4>TWi CDMO 應用：通過 GDP 稽核的 SOP 設計</h4>
+        <ul>
+          <li><strong>SOP 結構：</strong>每種被動保溫箱型號建立獨立 SOP，包含 (1) 組裝步驟圖 (2) PCM 調溫矩陣表（型號 × 儲存方式 × 所需時間）(3) 放行查核表</li>
+          <li><strong>訓練記錄：</strong>建立電子化訓練矩陣，可即時顯示哪些人員已完成認證，到期提醒自動觸發</li>
+          <li><strong>GDP 稽核亮點：</strong>隨機查核記錄（品保開箱驗查）是稽核員最喜歡查的文件，建議單獨建立查核 log，並定期統計查核通過率作為 KPI</li>
+          <li><strong>客戶交付：</strong>首次合作客戶可要求提供 PCM 調溫驗證報告，作為技術能力的佐證</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CASE STUDY 3 ===== -->
+  <div class="section-title">8.3 Case Study 3: Qualification Master Plan — 資格認證總計畫</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>8.3 Case Study 3: Qualification Master Plan (QMP)</h3>
+      <p>The following case study is an example of how to implement the information contained in this technical report. Risk analysis and planning for its mitigation should be the first step.</p>
+      <p>To make validation terminology applicable to a good distribution practices (<span class="key-term">GDP</span>) environment, a <span class="key-term">qualification master plan (QMP)</span> (資格認證總計畫) is written to define the qualification strategy. For each qualification step — design, operational, and performance qualifications — a rationale is written to support the qualification program according to the type (active or passive) of thermal protection system (<span class="key-term">TPS</span>).</p>
+      <p>More specifically, when the qualification program addresses winter and summer conditions in the operational qualification (<span class="key-term">OQ</span>) and performance qualification (<span class="key-term">PQ</span>), particular attention is given to the PQ done with commercial batches that can last one year or more.</p>
+      <p>Performing a TPS PQ with consecutive shipments of the product is considered a best practice, because it mimics the real situation and therefore confirms the representative OQ result. However, considering the recommendations from the U.S. Food and Drug Administration and the World Health Organization, which advocate the PQ be completed before commencing commercial distribution of the product, it is necessary to document and develop a rationale to ensure the product quality used during the PQ.</p>
+      <p>After the OQ, an intermediate qualification summary report is written, based on the OQ conclusion, to justify the decision to use commercial product for the PQ. The output of the OQ performed considering winter and summer conditions is to evaluate temperature risk during static conditions (thermal chamber temperature profiles) and performance of the solution in order to define the number of probes and locations that have to be used for routine operations.</p>
+      <p>In order to demonstrate that the OQ results are effective and reproducible over the years, PQ field transportation tests are performed in real shipping conditions (dynamic condition), during which the temperature is monitored and documented in a PQ winter and PQ summer report. PQ will consist of replicated live transportation tests done as defined in the intermediate validation report. Based on a matrix approach, multiple destinations and product loads may be considered. The number of replicate(s) should be governed by the regulatory requirements of the specific country or region. Studies should be done in winter and summer conditions at the time of the year where the weather and route are challenging to assure the results are representative. Regional anomalies should be taken into consideration, e.g., during extreme weather conditions; monsoon.</p>
+      <p>Another option to consider is having a continuous performance verification program in place, where all shipments are monitored, and the performance of a temperature-controlled shipper is verified based on temperature data and the number of nonconformances experienced on regular quarterly/annual basis.</p>
+      <p>The output of the PQ is to evaluate temperature during real shipment and performance of logistics processes with the TPS.</p>
+      <p>Until the final Quality Assurance Summary Report is approved, in addition to the PQ shipments, real transportation shipments will be made based on the output from the OQ validation results. There is no product risk, as every shipment is temperature-monitored in a location defined by the analysis of the thermal mapping results obtained during the OQ phase. In addition, any temperature nonconformance will be documented.</p>
+      <p>A final <span class="key-term">Quality Assurance Summary Report</span> is issued once the PQ is completed and the qualification process is closed.</p>
+    </div>
+    <div class="right-column">
+      <h3>案例 3 深度解析：QMP 架構</h3>
+
+      <div class="concept-box">
+        <h4>QMP 的三階段邏輯鏈</h4>
+        <div class="hierarchy-diagram">
+          <div class="hierarchy-level">
+            <div class="hierarchy-box level-1">DQ — 設計確認 (Design Qualification)<br><small>選擇合適 TPS 類型（主動/被動）</small></div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="hierarchy-level">
+            <div class="hierarchy-box level-2">OQ — 操作確認 (Operational Qualification)<br><small>靜態條件 / 熱腔室測試 / 冬夏兩季</small></div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="hierarchy-level">
+            <div class="hierarchy-box level-3">PQ — 效能確認 (Performance Qualification)<br><small>動態條件 / 真實出貨 / 多目的地矩陣</small></div>
+          </div>
+        </div>
+        <p style="font-size:0.88rem; margin-top: 0.5rem;">每個階段完成後出具報告，OQ → PQ 之間需有「中間資格認證摘要報告 (Intermediate Qualification Summary Report)」作為橋接。</p>
+      </div>
+
+      <div class="note-box">
+        <h4>OQ vs. PQ 的關鍵差異</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>特性</th>
+              <th>OQ</th>
+              <th>PQ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>條件</td>
+              <td>靜態（熱腔室）</td>
+              <td>動態（真實出貨）</td>
+            </tr>
+            <tr>
+              <td>季節</td>
+              <td>冬/夏模擬</td>
+              <td>冬/夏真實時段</td>
+            </tr>
+            <tr>
+              <td>產品</td>
+              <td>可用替代物</td>
+              <td>建議用商業批次</td>
+            </tr>
+            <tr>
+              <td>輸出</td>
+              <td>探針數量與位置</td>
+              <td>最終 QA 摘要報告</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="analogy-box">
+        <h4>比喻：OQ 是「練習賽」，PQ 是「正式比賽」</h4>
+        <p>OQ 在受控熱腔室環境中確認系統設計有效；PQ 在真實航線上用連續出貨確認這個設計在現實條件下仍然成立。就像飛行員先在模擬機（OQ）訓練，再執行真實飛行任務（PQ）。中間的「Intermediate Report」就是模擬訓練的成績單，決定是否可以進入真實飛行。</p>
+      </div>
+
+      <div class="concept-box">
+        <h4>季節與區域異常的考量</h4>
+        <p>TR39 特別強調：PQ 測試必須在<strong>最具挑戰性的時間點</strong>進行——冬季測試要選最冷的時期，夏季測試要選最熱的時期。此外，區域異常天氣（如季風、極端寒流）也必須納入考量。這個原則確保 qualification 結果具有「代表性的最壞情境」涵蓋。</p>
+      </div>
+
+      <div class="concept-box">
+        <h4>持續效能驗證計畫 (Continuous Performance Verification)</h4>
+        <p>TR39 提出一個進階選項：對所有出貨進行溫度監控，定期（季/年）統計不符合事件數量，以此替代週期性重新 qualification。這是一種 <strong>lifecycle approach</strong>（生命週期方法），與 PDA TR60 的工廠製程驗證哲學相同——用持續監控取代一次性驗證。</p>
+      </div>
+
+      <div class="cdmo-box">
+        <h4>TWi CDMO 應用：客戶交付的 QMP 範本</h4>
+        <ul>
+          <li><strong>QMP 文件結構：</strong>建立標準化 QMP 範本，章節包含：(1) TPS 選擇依據 (2) 航線矩陣（目的地 × 季節 × 產品類型）(3) OQ 計畫 (4) Intermediate Report 框架 (5) PQ 計畫 (6) 持續監控架構</li>
+          <li><strong>矩陣方法 (Matrix Approach)：</strong>若多個目的地 / 產品類型共用同一 TPS，使用矩陣法減少重複測試——合理分組，一次 qualification 涵蓋多個場景</li>
+          <li><strong>客戶報告亮點：</strong>在客戶年度技術審查中，提供「冷鏈 qualification 狀態矩陣」（顯示哪些航線已完成 OQ/PQ，哪些在進行中，哪些需要重新 qualification）</li>
+          <li><strong>法規雙語備查：</strong>QMP 建議同時對應 FDA (21 CFR Part 211) 與 EU GDP Guidelines，確保跨區域客戶均可接受</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 9.0: ADDITIONAL READING ===== -->
+  <div class="section-title">9.0 Additional Reading — 延伸閱讀</div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>9.0 Additional Reading</h3>
+      <p style="font-size: 0.9rem; color: var(--text-medium); margin-bottom: 1rem;"><em>Selected key standards and guidelines organized by issuing body:</em></p>
+
+      <div class="addl-reading-section">
+        <h4>FDA — Food and Drug Administration</h4>
+        <ul>
+          <li>21 CFR Part 11: Electronic Records; Electronic Signatures — Scope and Application</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>EC — European Commission</h4>
+        <ul>
+          <li>European Commission GDP: Containers and "qualified equipment (e.g., thermal packaging, temperature-controlled containers or temperature-controlled vehicles)"</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>ICH — International Council for Harmonisation</h4>
+        <ul>
+          <li>Quality Guideline Q10: Pharmaceutical Quality System; ICH: Geneva, 2008</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>IATA — International Air Transport Association</h4>
+        <ul>
+          <li>IATA Perishable Cargo Resources – Chapter 17: Air Transport Logistics for Temperature-Sensitive Healthcare Products (Active container solutions; passive packaging systems)</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>ISO — International Organization for Standardization</h4>
+        <ul>
+          <li>ISO TC122: qualified equipment like thermal packaging, temperature-controlled containers or vehicles</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>ISTA — International Safe Transit Association</h4>
+        <ul>
+          <li>ISTA PCG-01 Rev.00: Reusable Passive Thermal Packaging Best Practice Guideline</li>
+          <li>ISTA PCG-02 Rev.00: Passive Thermal Packaging System Operational Qualification Best Practice Guideline</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>PDA — Parenteral Drug Association</h4>
+        <ul>
+          <li>TR46: Last Mile — Guidance for Good Distribution Practices for Pharmaceutical Products to the End-User</li>
+          <li>TR52: Guidance for Good Distribution Practices (GDPs) for the Pharmaceutical Supply Chain</li>
+          <li>TR53: Stability Testing to Support Distribution of New Drug Products</li>
+          <li>TR64: Active Temperature-Controller Systems: Qualification Guidance</li>
+          <li>TR72: Passive Thermal Protection Systems for Global Distribution — Qualification and Operational Guidance</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>USP — United States Pharmacopeia</h4>
+        <ul>
+          <li>&lt;USP&gt; 659: Packaging and Storage Requirements</li>
+          <li>General Chapter &lt;1079&gt;: Risks and Mitigation Strategies for the Storage and Transportation of Finished Drug Products (USP43–NF38, 2020)</li>
+          <li>&lt;USP&gt; 1160: Pharmaceutical Calculations</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>WHO — World Health Organization</h4>
+        <ul>
+          <li>WHO DIP 818: Guidelines on the international packaging and shipping of vaccines</li>
+          <li>WHO Annex 9: Model Guidance for the Storage and Transport of Time- and Temperature-sensitive pharmaceutical products</li>
+        </ul>
+      </div>
+      <div class="addl-reading-section">
+        <h4>White Papers (Peer-Reviewed)</h4>
+        <ul>
+          <li>Van Asselt et al. (2020): Qualification of Pharmaceutical Shipping Systems in Seven Steps. <em>PMPS,</em> May 2020, pp. 56–59.</li>
+          <li>Majic, Van Asselt &amp; Bishara (2016): Pharma by Air: Equipment Qualification and Route Risk Assessment. <em>JPO,</em> Vol. 17 Issue 5.</li>
+          <li>Majic, Van Asselt, Bishara &amp; Stener (2020): Model for Qualification of Shipping Systems. <em>JPO,</em> Vol. 21 Issue 1, pp. 22–27.</li>
+          <li>van Asselt &amp; Bishara (2015): Establishing and Managing the Drug Product Stability Budget. <em>JPO,</em> Vol. 16 Issue 4.</li>
+          <li>van Diest, van Asselt et al. (2017): Pharmaceutical supply chain security risk assessment for shipping lanes. <em>JPO,</em> Vol. 18 Issue 5.</li>
+          <li>van Asselt, Bishara &amp; Majic (2019): Temperature Data Integrity and Security along the Pharmaceutical Supply Chain. <em>JPO,</em> Vol. 20 Issue 3.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="right-column">
+      <h3>延伸閱讀的戰略價值</h3>
+
+      <div class="concept-box">
+        <h4>必讀優先清單（CDMO 視角）</h4>
+        <ol style="margin-left: 1.25rem;">
+          <li><strong>PDA TR72（被動 TPS）+ PDA TR64（主動 TPS）：</strong>TR39 的技術細節補充，針對你使用的系統類型必讀</li>
+          <li><strong>EU GDP Guidelines：</strong>歐洲客戶的稽核基準，也是全球最嚴格的 GDP 規範之一</li>
+          <li><strong>USP &lt;1079&gt;：</strong>美國客戶最常引用的成品藥儲運風險指引，直接影響 product specification</li>
+          <li><strong>ISTA PCG-02：</strong>被動包裝系統 OQ 的詳細操作指南，是 Case Study 3 的技術細節延伸</li>
+          <li><strong>Van Asselt 2020（七步驟模型）：</strong>TR39 實務操作最完整的白皮書，建議逐段對照 TR39 閱讀</li>
+        </ol>
+      </div>
+
+      <div class="note-box">
+        <h4>監管標準的地域對應</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>區域</th>
+              <th>主要標準</th>
+              <th>關鍵文件</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>美國</td>
+              <td>FDA / USP</td>
+              <td>21 CFR Part 211, USP &lt;1079&gt;</td>
+            </tr>
+            <tr>
+              <td>歐洲</td>
+              <td>EC GDP</td>
+              <td>EU GDP Guidelines 2013</td>
+            </tr>
+            <tr>
+              <td>全球</td>
+              <td>WHO / ICH</td>
+              <td>WHO Annex 9, ICH Q9/Q10</td>
+            </tr>
+            <tr>
+              <td>空運</td>
+              <td>IATA</td>
+              <td>Perishable Cargo Ch.17</td>
+            </tr>
+            <tr>
+              <td>包裝測試</td>
+              <td>ISTA / ASTM</td>
+              <td>ISTA 7D/7E, ASTM F2825</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="analogy-box">
+        <h4>如何使用這份延伸閱讀清單</h4>
+        <p>把 TR39 視為「冷鏈資格認證的地圖」，延伸閱讀清單是各個目的地的「詳細旅遊指南」。TR39 告訴你需要到哪裡（DQ/OQ/PQ），而 ISTA、USP、WHO 等文件告訴你抵達那裡後的具體操作步驟。</p>
+      </div>
+
+      <div class="cdmo-box">
+        <h4>TWi 知識庫建設建議</h4>
+        <ul>
+          <li>建立冷鏈標準文件矩陣：橫軸為標準文件（TR39、TR72、EU GDP 等），縱軸為業務活動（航線 qualification、SOP 撰寫、稽核回應），標示每個交叉點的相關性</li>
+          <li>EU GDP 與 USP &lt;1079&gt; 是最高頻率的客戶稽核查驗項目，建議優先完成內部差距分析</li>
+          <li>將 Van Asselt 七步驟白皮書納入新進冷鏈人員訓練材料，作為 TR39 的閱讀前導</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION SUMMARY ===== -->
+  <div class="summary-box">
+    <h3>Section Summary — 本節精華總結</h3>
+    <ul>
+      <li><strong>TR39 結論的核心訊息：</strong>報告提供「什麼 (what)」的框架，不規定「如何做 (how)」，給組織根據法規與業務需求的彈性空間。目標是確保藥品品質在整個供應鏈中受到保護，直到抵達患者。</li>
+      <li><strong>案例 1 — 偏差趨勢分析：</strong>採用分層管理（Major → 強制 CAPA；Minor → 趨勢追蹤）+ 12 個月滾動窗口 + Percentile 95 觸發機制。同一目的地/根本原因 &gt;2 次 → 觸發 CAPA。CDMO 應用：納入客戶年度品質報告 (APQR) 的冷鏈 KPI 分析。</li>
+      <li><strong>案例 2 — 被動保溫箱 SOP：</strong>六大要素缺一不可：組裝圖+照片、訓練記錄、隨機查核、運輸模式定義、PCM 調溫程序（含時間矩陣）、隔離材料說明。CDMO 應用：可直接作為通過 GDP 稽核的 SOP 設計模板。</li>
+      <li><strong>案例 3 — QMP 框架：</strong>DQ → OQ（靜態/熱腔室/冬夏兩季）→ Intermediate Report → PQ（動態/真實出貨/矩陣方法）→ 最終 QA 摘要報告。CDMO 應用：可作為向客戶交付的冷鏈資格認證總計畫標準格式。</li>
+      <li><strong>延伸閱讀優先級：</strong>PDA TR72（被動 TPS）、EU GDP Guidelines、USP &lt;1079&gt;、ISTA PCG-02、Van Asselt 七步驟白皮書——這五個文件構成冷鏈管理人員的核心知識基礎。</li>
+    </ul>
+  </div>
+
+</div><!-- end main-content -->
+
+<!-- Footer -->
+
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+</script>
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products</p>
+        <p>Educational Material — 教學用途 | 本文件僅供學習參考</p>
+        <p>Generated by Claude Code Automation Pipeline</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            let current = '';
+            sections.forEach(function(section) {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>

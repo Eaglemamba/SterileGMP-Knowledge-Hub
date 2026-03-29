@@ -292,6 +292,29 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR39-Complete.md
+**Report:** PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
+**Pages:** p1–p29 | **Sections:** 4
+
+**Covers questions about:**
+- How to design a temperature-controlled pharmaceutical distribution process (URS, risk assessment, DQ)
+- Passive vs. active temperature-controlled packaging: selection criteria and qualification requirements
+- Operational Qualification (OQ) and Performance Qualification (PQ) for shipping systems and lanes
+- Ongoing Process Verification (OPV): KPIs, temperature excursion monitoring, trend analysis
+- Nonconformance handling and CAPA for cold chain temperature deviations
+- Stability budget concept: cumulative time-out-of-refrigeration across the supply chain
+- Re-qualification triggers: carrier change, route change, seasonal bracketing
+- GDP audit readiness: SOPs, training records, quality agreements with LSPs
+- Case study: distribution incident trends analysis (deviation classification, Percentile-95 trigger)
+- Case study: passive shipper SOP development (PCM conditioning, packaging instructions)
+- Case study: qualification master plan structure for multi-lane, multi-product programs
+
+**Key terms:** temperature-controlled distribution, passive shipper, active shipper, PCM (phase change material), URS (user requirements specification), DQ (design qualification), OQ (operational qualification), PQ (performance qualification), OPV (ongoing process verification), stability budget, lane qualification, seasonal bracketing, temperature excursion, nonconformance, CAPA, LSP (logistics service provider), GDP (good distribution practice), TTI (time-temperature indicator), data logger, cold chain, Last Mile
+
+**Sections:** Section 1 (Intro + Glossary) → Section 2 (Process Design + Qualification) → Section 3 (Ongoing Process Verification) → Section 4 (Conclusion + Case Studies)
+
+---
+
 ## TR87-Complete.md
 **Report:** PDA TR87: Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021)
 **Pages:** p1–p48 | **Sections:** 7 (incl. 3 appendices)
@@ -321,7 +344,9 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Filling machines, pump types, dose accuracy / 充填機、幫浦類型、劑量精準度 | Guide-No1 |
 | Media fill, APS, aseptic simulation / 培養基充填、無菌製程模擬 | TR22 |
 | Filter validation, integrity test, PUPSIT / 過濾器驗證、完整性測試、過濾器破損檢查 | TR26 |
-| Cold chain, GDP, distribution, shipping / 冷鏈、優良運銷規範、運輸、溫度控制 | TR52 |
+| Cold chain, GDP, distribution, shipping / 冷鏈、優良運銷規範、運輸、溫度控制 | TR52 + TR39 |
+| Lane qualification, OQ, PQ, passive shipper, PCM, stability budget / 運輸路線確效、被動式保溫箱、穩定性預算 | TR39 |
+| Temperature excursion, nonconformance, OPV, cold chain KPI / 溫度偏差、持續製程驗證、冷鏈KPI | TR39 |
 | Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
@@ -407,7 +432,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
 
 **Supplier / Vendor Qualification (供應商確認)**
-→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR90 ★★ (raw material suppliers)
+→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
 → TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
@@ -422,7 +447,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
 
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
-→ TR52 ★★★ (GDP cold chain) | PtC-14 ★★ (ATMP cold chain requirements) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution bottlenecks)
+→ TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
 → PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs)
