@@ -292,6 +292,31 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR70-Complete.md
+**Report:** PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
+**Pages:** p1–p75 | **Sections:** 9
+
+**Covers questions about:**
+- Difference between sanitizer, disinfectant, and sporicide — when to use each in aseptic manufacturing
+- Regulatory requirements for cleaning and disinfection programs (FDA, EU GMP Annex 1, USP <1072>)
+- How to qualify a new disinfectant supplier: in-suspension studies, carrier surface studies, AOAC/EN test protocols
+- In-use expiration dating for diluted disinfectants: labeling requirements, bioburden testing, audit observations
+- Cleaning and disinfection procedures by cleanroom grade: Grade A/B (most critical), Grade C, Grade D
+- Application methods: spray-and-wipe, mop, soak — technique, wiping sequence, sterile wiper requirements
+- Cleaning materials: sterile gamma-irradiated wipers, mop head validation, bucket system per grade
+- Disinfectant resistance and rotation strategy: primary/secondary agent rotation + sporicide schedule
+- Cleaning frequency, hold time validation, return-from-shutdown procedures
+- Training curriculum, competency assessment, documentation requirements for GMP audits
+- EM excursion investigation linked to cleaning failures: root cause analysis approach
+- VHP and gaseous decontamination: cycle parameters, biological indicators, large-scale room gassing
+- AOAC vs. EN test method comparison for US and EU market compliance
+
+**Key terms:** sanitizer, disinfectant, sporicide, Grade A/B/C/D cleaning, sterile wiper, in-use expiration, carrier surface study, in-suspension study, log reduction, AOAC, EN 1276, EN 13727, EPA registration, BPR (EU biocidal products regulation), disinfectant rotation, hold time, VHP (vaporized hydrogen peroxide), VPHP, biological indicator (BI), in-situ field study, EM excursion investigation, mop head validation, lyophilizer cleaning
+
+**Sections:** Section 1 (Intro + Glossary + Regulatory) → Section 2 (Supplier Qualification) → Section 3 (In-Use Expiration + Environment + In-Situ) → Section 4a (Cleaning Areas) → Section 4b (Cleaning Surfaces) → Section 5 (Frequency + Resistance + Training) → Section 6a (Investigations + Conclusion + App I–IV) → Section 6b (App V–VII) → Section 6c (App VIII + References)
+
+---
+
 ## TR39-Complete.md
 **Report:** PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
 **Pages:** p1–p29 | **Sections:** 4
@@ -352,7 +377,11 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
 | Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | TR90 |
-| RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 |
+| RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
+| Cleaning disinfection, sanitizer, sporicide, disinfectant rotation / 清潔消毒、消毒劑輪替、殺孢子劑 | TR70 |
+| Disinfectant qualification, efficacy testing, AOAC, EN test / 消毒劑確效、效力測試 | TR70 |
+| Hold time, in-use expiration, cleaning frequency / 保存時限、使用效期、清潔頻率 | TR70 |
+| VHP, gaseous decontamination, biological indicator / 過氧化氫蒸氣、氣態除污、生物指示劑 | TR70 + PtC-12 |
 | COVID-19 pandemic lessons, mRNA manufacturing, LNP, vaccine scale-up / COVID-19疫情經驗、mRNA製造、脂質奈米粒子 | PtC-9 |
 | Remote inspection, pandemic GMP, BCP, workforce shortage / 遠端查廠、疫情GMP、業務持續計畫、人力短缺 | PtC-9 |
 | Supply chain resilience, SUS shortage, cold chain, API shortage / 供應鏈韌性、一次性材料短缺、冷鏈、原料短缺 | PtC-9 |
@@ -402,7 +431,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR70 ★★★ (cleaning & disinfection program) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+
+**Cleaning & Disinfection Programs (清潔與消毒程序)**
+→ TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
 
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → TR66 ★★★ (full SUS guidance) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
@@ -456,7 +488,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
 
 **RABS vs Isolator (隔離系統比較)**
-→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice)
+→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
 
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
