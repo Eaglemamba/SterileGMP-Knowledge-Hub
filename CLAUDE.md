@@ -162,13 +162,13 @@ Report metadata is in `reports.json`. Current reports:
 | `TR88/` | PDA TR88: Microbial Data Deviation Investigations | 6 | Complete |
 | `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
 | `TR91/` | PDA TR91: Post-Approval Change Management | 7 | Complete |
-| `PtC-9/` | PDA PtC-9: Lessons Learned from COVID-19 Pandemic | 6 | In Progress |
+| `PtC-9/` | PDA PtC-9: Lessons Learned from COVID-19 Pandemic | 6 | Complete |
 | `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
 | `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
 | `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
 | `PtC-Isolators/` | PDA PtC-Isolators: Aseptic Processing in Isolators | 7 | Complete |
-| `TR39/` | PDA TR39: Temperature-Controlled Medicinal Products | — | Pending |
-| `TR70/` | PDA TR70: Cleaning and Disinfection | — | Pending |
+| `TR39/` | PDA TR39: Temperature-Controlled Medicinal Products | 4 | Complete |
+| `TR70/` | PDA TR70: Cleaning and Disinfection for Aseptic Facilities | 9 | Complete |
 
 ---
 
