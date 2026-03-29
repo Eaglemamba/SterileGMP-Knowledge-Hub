@@ -268,6 +268,30 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PtC-9-Complete.md
+**Report:** PDA Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic (2024)
+**Pages:** p1–p65 | **Sections:** 6
+
+**Covers questions about:**
+- How GMP controls protect product quality during a pandemic (COVID-19 risk assessments)
+- mRNA and gene therapy drug product rapid development (LNP manufacturing, saRNA)
+- Scaling up vaccine manufacturing capacity rapidly (modular cleanrooms, technology transfer)
+- Workforce shortage management: cohorting, essential worker protocols, remote verification
+- Remote regulatory inspection preparation: hybrid models, FDA/EMA/PMDA approaches
+- Global regulator collaboration during pandemic: ICMRA, PIC/S, bilateral agreements
+- Managing deviation reporting and CAPA commitments during a pandemic
+- Prioritizing regulatory change submissions under pandemic conditions (ICH Q12)
+- Supply chain constraints for single-use systems, container closures, excipients, APIs
+- Cold chain challenges for mRNA vaccine distribution (ultra-low temperature storage)
+- Vertical integration of vaccine supply chains (LNP in-house, captive fill-finish)
+- Business continuity planning (BCP): pandemic preparedness, ICT resilience, cybersecurity
+
+**Key terms:** GMP pandemic controls, mRNA manufacturing, LNP (lipid nanoparticle), saRNA, essential workers, cohorting, remote inspection, ICMRA, PIC/S, deviation reporting, CAPA commitment, ICH Q12, supply chain resilience, single-use systems shortage, cold chain, ultra-cold storage, vertical integration, BCP (business continuity plan), data integrity, cybersecurity, remote workforce
+
+**Sections:** Section 1 (Intro + I. Manufacturing) → Section 2 (II. People) → Section 3 (III. Quality) → Section 4a (IV. Regulatory Part 1) → Section 4b (IV. Regulatory Part 2) → Section 5 (V. Supply Chain + VI. Vendor Resources)
+
+---
+
 ## TR87-Complete.md
 **Report:** PDA TR87: Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021)
 **Pages:** p1–p48 | **Sections:** 7 (incl. 3 appendices)
@@ -304,6 +328,9 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
 | Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | TR90 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 |
+| COVID-19 pandemic lessons, mRNA manufacturing, LNP, vaccine scale-up / COVID-19疫情經驗、mRNA製造、脂質奈米粒子 | PtC-9 |
+| Remote inspection, pandemic GMP, BCP, workforce shortage / 遠端查廠、疫情GMP、業務持續計畫、人力短缺 | PtC-9 |
+| Supply chain resilience, SUS shortage, cold chain, API shortage / 供應鏈韌性、一次性材料短缺、冷鏈、原料短缺 | PtC-9 |
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
 | Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
@@ -383,7 +410,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
-→ TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control)
+→ TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
+
+**Pandemic Preparedness / Business Continuity (疫情準備/業務持續計畫)**
+→ PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) — single primary source
 
 **Statistical Methods / SPC (統計方法)**
 → TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR22 ★★ (APS batch statistics)
@@ -392,7 +422,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
 
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
-→ TR52 ★★★ (GDP cold chain) | PtC-14 ★★ (ATMP cold chain requirements)
+→ TR52 ★★★ (GDP cold chain) | PtC-14 ★★ (ATMP cold chain requirements) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution bottlenecks)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
 → PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs)

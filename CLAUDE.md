@@ -51,7 +51,15 @@ Add an entry for the new report to THREE places in `knowledge/INDEX.md`:
    add it to the relevant rows with appropriate ★ rating. If it introduces a new cross-report topic,
    add a new row.
 
-### 3. Verify Before Commit
+### 3. Move Source PDF to Processed
+
+Move the source PDF from the project root (or wherever it was uploaded) into `Raw pdfs/processed/`:
+
+```bash
+mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
+```
+
+### 4. Verify Before Commit
 
 - [ ] Open `index.html` in browser — confirm new card appears (data comes from reports.json)
 - [ ] Confirm search works for new report content
@@ -126,8 +134,11 @@ python pda_engine.py merge TRXX
 
 # 7. Update knowledge/INDEX.md (new report block + routing table row + cross-report topics)
 
-# 8. Verify in browser, then commit + push
-git add TRXX/ reports.json knowledge/ && git commit -m "Add TRXX: [title]"
+# 8. Move source PDF to processed
+mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
+
+# 9. Verify in browser, then commit + push
+git add TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m "Add TRXX: [title]"
 ```
 
 ---
@@ -139,19 +150,25 @@ Report metadata is in `reports.json`. Current reports:
 | Folder | Report | Sections | Status |
 |--------|--------|----------|--------|
 | `pda-guide-no1/` | PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025) | 20 | Complete |
-| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
-| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
-| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
-| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
-| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | Complete |
-| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
-| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
 | `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
-| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
-| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
+| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
+| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
 | `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
+| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
+| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | Complete |
+| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
 | `TR85/` | PDA TR85: Enhanced Test Methods for Visible Particle Detection | 6 | Complete |
 | `TR87/` | PDA TR87: Current Best Practices for Glass Vial Handling and Processing | 7 | Complete |
+| `TR88/` | PDA TR88: Microbial Data Deviation Investigations | 6 | Complete |
+| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
+| `TR91/` | PDA TR91: Post-Approval Change Management | 7 | Complete |
+| `PtC-9/` | PDA PtC-9: Lessons Learned from COVID-19 Pandemic | 6 | In Progress |
+| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
+| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
+| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
+| `PtC-Isolators/` | PDA PtC-Isolators: Aseptic Processing in Isolators | 7 | Complete |
+| `TR39/` | PDA TR39: Temperature-Controlled Medicinal Products | — | Pending |
+| `TR70/` | PDA TR70: Cleaning and Disinfection | — | Pending |
 
 ---
 
