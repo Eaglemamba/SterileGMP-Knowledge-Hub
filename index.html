@@ -33,8 +33,7 @@
         .fade-up:nth-child(3) { animation-delay: 0.1s; }
         .fade-up:nth-child(4) { animation-delay: 0.15s; }
         body.search-active #statsRow,
-        body.search-active #categoryBar,
-        body.search-active #categoryLegend { display: none; }
+        body.search-active #categoryBar { display: none; }
         body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
     </style>
 </head>
@@ -59,7 +58,6 @@
     <!-- CATEGORY BAR -->
     <div class="max-w-6xl mx-auto px-6 mt-4">
         <div class="flex h-2 rounded-full overflow-hidden bg-gray-200" id="categoryBar"></div>
-        <div class="flex gap-4 flex-wrap mt-2" id="categoryLegend"></div>
     </div>
 
     <!-- SEARCH & FILTERS -->
@@ -309,14 +307,6 @@ async function loadData() {
     } // end catch
 } // end loadData
 
-// Category-based filters (group by document type, not individual report number)
-const categoryMap = {
-  'TR': s => s.match(/^PDA TR/i),
-  'PtC': s => s.match(/^PDA PtC/i),
-  'Guide': s => s.match(/Guide/i),
-  'Research': s => s.match(/Research/i)
-};
-const filterTags = ['all', 'TR', 'PtC', 'Guide', 'Research'];
 let activeFilter = 'all';
 
 // Deep search index
@@ -338,11 +328,14 @@ function renderStats(){
     const sc={};documents.forEach(d=>{sc[d.source]=(sc[d.source]||0)+1;});
     const tot=Object.values(sc).reduce((a,b)=>a+b,0);
     document.getElementById('categoryBar').innerHTML=Object.entries(sc).map(([s,c])=>`<div style="width:${c/tot*100}%;background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>`).join('');
-    document.getElementById('categoryLegend').innerHTML=Object.entries(sc).map(([s,c])=>`<div class="flex items-center gap-1.5 text-xs text-gray-500"><div class="w-2 h-2 rounded-sm" style="background:${(sourceColors[s]||{}).bar||'#6b7280'}"></div>${(sourceColors[s]||{}).short||s} (${c})</div>`).join('');
 }
 
 function initFilters(){
-    document.getElementById('filterBtns').innerHTML=filterTags.map(f=>{
+    const tagCounts={};
+    documents.forEach(d=>d.tags.forEach(t=>{tagCounts[t]=(tagCounts[t]||0)+1;}));
+    const topTags=Object.entries(tagCounts).filter(([,c])=>c>=2).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).map(([t])=>t);
+    const list=['all',...topTags];
+    document.getElementById('filterBtns').innerHTML=list.map(f=>{
         const a=f===activeFilter;
         const c=a?'bg-pda-blue text-white border-pda-blue':'border-gray-200 text-gray-600 bg-white hover:border-pda-blue hover:text-pda-blue';
         return `<button class="px-3 py-1.5 rounded-lg text-xs font-medium border ${c} transition-colors" onclick="setFilter('${f}')">${f==='all'?'All':f}</button>`;
@@ -372,7 +365,7 @@ function getFiltered(){
         if(hits.length>0){sc+=Math.min(hits.length,8);ty.push('content');x._hits=hits.map(h=>({sectionTitle:h.sectionTitle,snippet:getSnippet(h.content,s)}));}
         x._score=sc;x._matchTypes=[...new Set(ty)];return sc>0;
     });}
-    if(activeFilter!=='all'){const fn=categoryMap[activeFilter];if(fn)d=d.filter(x=>fn(x.source));}
+    if(activeFilter!=='all'){d=d.filter(x=>x.tags.includes(activeFilter));}
     const sort=sortEl.value;
     if(sort==='relevance'&&s)d.sort((a,b)=>b._score-a._score||b.date.localeCompare(a.date));
     else if(sort==='date-desc')d.sort((a,b)=>b.date.localeCompare(a.date));
