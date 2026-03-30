@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR54 - Section 2: Overall Strategy &amp; Supply Chain</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SUPPLY CHAIN DIAGRAM (local styles) ===== */
+.sc-diagram {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.sc-diagram .sc-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sc-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.sc-node {
+    background: white;
+    border: 2px solid #3182ce;
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1e3a5f;
+    white-space: nowrap;
+}
+
+.sc-node.highlight {
+    background: #ebf8ff;
+    border-color: #2b6cb0;
+}
+
+.sc-node.end-user {
+    background: #e8f5e9;
+    border-color: #388e3c;
+    color: #1b5e20;
+}
+
+.sc-node.risk {
+    background: #fff3e0;
+    border-color: #f57c00;
+    color: #7c3500;
+}
+
+.sc-arrow {
+    font-size: 1rem;
+    color: #718096;
+    flex-shrink: 0;
+}
+
+.sc-note {
+    font-size: 0.78rem;
+    color: var(--text-medium);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.risk-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.risk-badge.low { background: #d4edda; color: #155724; }
+.risk-badge.medium { background: #fff3cd; color: #856404; }
+.risk-badge.high { background: #f8d7da; color: #721c24; }
+.risk-badge.variable { background: #e2e3f3; color: #383d8b; }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2: Overall Strategy &amp; Supply Chain</h1>
+    <div class="subtitle">整體策略與供應鏈分析</div>
+    <div class="page-info">PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients | p4 - p10</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="main-content">
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-3-0">3.0 Overall Strategy</a>
+            <a href="#sec-3-1">3.1 Risk Areas Beyond Quality</a>
+            <a href="#sec-4-0">4.0 Supply Chain — End to End</a>
+            <a href="#sec-4-1-1">4.1.1 Direct Supply</a>
+            <a href="#sec-4-1-2">4.1.2 Via Distributor</a>
+            <a href="#sec-4-1-3">4.1.3 Via Repackager</a>
+            <a href="#sec-4-1-4">4.1.4 Via Broker</a>
+            <a href="#sec-4-1-5">4.1.5 International Export</a>
+            <a href="#sec-4-1-6">4.1.6 CMO Scenarios</a>
+            <a href="#sec-5-0">5.0 Roles &amp; Information-Gathering</a>
+            <a href="#summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives 學習目標</h3>
+        <ul>
+            <li>Identify the major GMP standards applicable to pharmaceutical excipients and understand their hierarchy.</li>
+            <li>Distinguish between a global vs. local-ownership approach to excipient risk assessment.</li>
+            <li>Map the six types of excipient supply chains and describe the risk profile of each.</li>
+            <li>Explain why legal ownership transfer points are critical junctures in excipient risk management.</li>
+            <li>Define the roles and document responsibilities of each supply chain actor (Table 5.0-1).</li>
+            <li>Apply common information-gathering scenarios and their resolutions when supply chain transparency is limited (Table 5.0-2).</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================
+         SECTION 3.0 — OVERALL STRATEGY
+         ============================================================ -->
+    <div id="sec-3-0" class="two-column">
+        <div class="left-column">
+            <h2>3.0 Overall Strategy</h2>
+
+            <p>Based on the results of the risk assessment, a pharmaceutical manufacturer can determine what level of GMP will be required. The guides and standards most widely accepted for excipient GMPs are:</p>
+
+            <ul>
+                <li><strong>EXCiPACT™</strong>: International Pharmaceutical Excipients Certification Standards for Pharmaceutical Excipient Suppliers</li>
+                <li><strong>NSF/IPEC/ANSI 363</strong>: Good Manufacturing Practices (GMP) for Pharmaceutical Excipients</li>
+                <li><strong>IPEC/PQG</strong>: The Joint Good Manufacturing Practices Guide for Pharmaceutical Excipients</li>
+                <li><strong>USP: USP &lt;1078&gt;</strong> Good Manufacturing Practices for Bulk Pharmaceutical Excipients and &lt;1059&gt; Excipient Performance</li>
+                <li><strong>Japan</strong>: Self-imposed Standards of Good Manufacturing Practices for Pharmaceutical Excipients</li>
+            </ul>
+
+            <p>The pharmaceutical manufacturer may determine that some additional technical considerations beyond those in established GMP guides and standards may be needed. As part of the risk assessment process, the manufacturer or manufacturing authorization holder of the drug product should engage the excipient manufacturer and suppliers to obtain any specifics from the excipient manufacturer's own risk assessment process that the excipient manufacturer is willing to share. Additionally, the complete supply chain profile must be considered for each excipient.</p>
+
+            <p>Should the risk assessment uncover an issue requiring additional action, a control strategy should be put in place and the affected parties should be notified.</p>
+
+            <p>Before being implemented, any actions recommended as a result of the risk assessment must be discussed and agreed upon by the excipient manufacturer and the manufacturer of the drug product or manufacturing authorization holder, in case those actions may impact the supplier. The results of the discussion should be documented in a quality agreement or other document.</p>
+
+            <div class="quote-box">
+                A global risk assessment of all excipients used by the drug product manufacturer or manufacturing authorization holder will ensure a standardized assessment of all excipients in all drug products and provide a holistic view of the supply chain. This enables the excipient user to provide the excipient manufacturer, with one voice, a single (worst case) risk assessment.
+            </div>
+
+            <p>That approach is preferable to having multiple users within a single drug product manufacturer each communicating different assessment results to the excipient manufacturer.</p>
+
+            <p>In a global risk assessment, risk review and improvements of the risk assessment might be more difficult than they would be if separate risk assessments were completed for each drug product or by each site using the excipient. The review and approval workflows for a single global risk assessment may require more time and effort. However, this process could be shortened by instituting a global risk assessment that involves local ownership. In this scenario, the owner of each product or manufacturing site would conduct a separate risk assessment, but all risk assessments would be collected in a single document repository. The local owner would maintain responsibility for the data collection, review, and approval workflows, and for ensuring that updated information is included in the global risk assessment repository. The repository would serve as a knowledge base for all excipients, allowing the drug product manufacturer or manufacturing authorization holder to communicate its requirements to the excipient manufacturer with a single voice representing all local owners.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 Commentary</h2>
+
+            <div class="concept-box">
+                <h4>賦形劑 GMP 標準體系 — 五大規範</h4>
+                <p>這五個標準並非互斥，而是各有適用範圍與地區偏好。理解其層次有助於製藥廠決定對供應商要求什麼等級的認證：</p>
+                <ul>
+                    <li><strong>EXCiPACT™</strong>：國際第三方認證制度，有實地稽核，是目前業界最具公信力的賦形劑 GMP 認證標誌。</li>
+                    <li><strong>NSF/IPEC/ANSI 363</strong>：美國標準，與 IPEC/PQG 聯合指南互相對應，著重製造管控。</li>
+                    <li><strong>IPEC/PQG 聯合指南</strong>：IPEC（國際賦形劑委員會）與 PQG（製藥品質集團）合作制定，歐美通用。</li>
+                    <li><strong>USP &lt;1078&gt; / &lt;1059&gt;</strong>：美國藥典，&lt;1078&gt; 針對製造，&lt;1059&gt; 針對功能表現。在美國 NDA/ANDA 申請中常被引用。</li>
+                    <li><strong>日本自主標準</strong>：由日本賦形劑行業協會制定的自律標準，適用於日本本地供應商。</li>
+                </ul>
+                <p>從 CDMO 角度：客戶合約中應明確要求供應商符合哪一標準，避免模糊空間。EXCiPACT 認證是最容易量化稽核的依據。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：全球評估 vs 本地所有權</h4>
+                <p>想像一間跨國連鎖餐廳集團：</p>
+                <ul>
+                    <li><strong>純全球評估</strong> = 總公司統一決定每間分店的食材供應商標準 → 一致性高，但更新緩慢，各地特殊需求難以反映。</li>
+                    <li><strong>本地所有權模式</strong> = 各分店自己評估當地供應商，但結果集中上報總部知識庫 → 彈性與效率兼顧，總公司仍能以「一個聲音」對外溝通。</li>
+                </ul>
+                <p>TR54-6 推薦的是後者：本地執行、全局匯整、對外統一。這也是大型製藥集團（如 Roche、Pfizer）實際運作方式。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：行動前必須共識，結果必須文件化</h4>
+                <p>TR54-6 特別強調：風險評估發現問題後，任何矯正行動<strong>必須先與賦形劑製造商討論並達成共識</strong>，才能執行。原因是：某些要求（如改變包裝方式、增加測試）會影響供應商成本與作業流程。</p>
+                <p>共識結果應寫入<strong>品質協議（Quality Agreement）</strong>，作為法律與稽核依據。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 3.1 — RISK AREAS BEYOND QUALITY
+         ============================================================ -->
+    <div id="sec-3-1" class="two-column">
+        <div class="left-column">
+            <h3>3.1 Risk Areas Beyond Quality</h3>
+
+            <p>While the focus of the excipient risk assessment is quality, a company also should consider other aspects that can impact the excipient and, with this, product availability for the patient. These include excipient availability; business continuity risk; environmental, socio-economic, environment, health, safety, and geographic risks; and general business data. While consideration of these risks is useful as part of an overall strategy, it is <strong>out of scope</strong> of this document and is not discussed further.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="note-box">
+                <h4>範圍界定：本文件聚焦品質風險</h4>
+                <p>TR54-6 明確將以下風險類別排除於正式討論之外，但提醒讀者這些因素在實務中確實重要：</p>
+                <ul>
+                    <li><strong>業務連續性風險</strong>：供應商倒閉、停產、被收購</li>
+                    <li><strong>環境與地理風險</strong>：天災、港口罷工、地緣政治（如中美貿易摩擦影響原物料供應）</li>
+                    <li><strong>社會經濟風險</strong>：勞動法規、能源成本、匯率波動</li>
+                    <li><strong>職業健康安全風險</strong>：製造廠安全事故</li>
+                </ul>
+                <p>對 CDMO 而言，雖然這些超出本 TR 範疇，但在供應商資格審核（SQA）和業務連續性計畫（BCP）中仍應納入考量。這也是近年來藥品短缺問題的根源之一。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.0 — SUPPLY CHAIN END TO END
+         ============================================================ -->
+    <div id="sec-4-0" class="two-column">
+        <div class="left-column">
+            <h2>4.0 Supply Chain — End to End</h2>
+
+            <p>Section 4.0 provides examples of supply chains, helps identify the various actors in the supply chain, and describes their typical roles. The subsections herein offer examples of the types of information and documentation that the various actors could provide. Additionally, it discusses some aspects of the potential risks that could be introduced by actors in the supply chain.</p>
+
+            <p>Supply chains have become more and more complex over the years. In the past, a manufacturer of pharmaceutical excipients often supplied directly to a drug product manufacturer. Today, in addition to the manufacturer of the excipient, the distributor, broker, and contract manufacturing organization (CMO) each plays a role in the supply chain, and each contributes to the risks to quality in one way or another. Each of these companies also could provide information on the excipient's manufacture, testing, and distribution that might be relevant for the risk assessment.</p>
+
+            <h3>4.1 Types of Supply Chains and Risks Presented</h3>
+
+            <p>Many materials used as excipients are not manufactured specifically for pharmaceutical use, but are intended for other applications such as food, cosmetics, or home care. As such, the direct supply of an excipient from the manufacturer to the end user may be unusual. In addition, the quantities of excipients used by the pharmaceutical end user may be only a fraction of the excipient manufacturer's overall volume; in fact, the original manufacturer may not have a business interest in supplying the pharmaceutical industry. In such cases, intermediaries often become involved, procuring larger quantities of the excipient from the original manufacturer, and then repackaging and relabeling it into quantities more suitable for pharmaceutical use. Thus, the supply chain between the excipient manufacturer and the pharmaceutical end user often is complex. The complexity is magnified for excipients that move internationally.</p>
+
+            <p>In both international and domestic supply chains, <strong>the point at which the legal ownership of the excipient transfers from one organization to another is a critical juncture.</strong> Each organization needs to have defined responsibilities for maintaining records and securing the quality and security of the excipient. In complex supply chains, legal ownership may transfer several times, for example from original manufacturer to distributor to repackager to end user.</p>
+
+            <p>In all cases, the end user needs to identify the intermediaries in the supply chain in order to properly assess the risks. This may be difficult, as some organizations in the supply chain may not want to disclose their sources, even including the original manufacturer of the excipient.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 Commentary</h2>
+
+            <div class="analogy-box">
+                <h4>比喻：為什麼賦形劑供應鏈如此複雜？</h4>
+                <p>想像你要買「食品級白砂糖」（類似於常見的賦形劑蔗糖）。台糖一年生產幾十萬噸，但你的藥廠只需要幾噸。台糖不會為了你這幾噸開一條生產線——他們寧可透過中盤商賣給你。</p>
+                <p>中盤商從台糖大量買入，分裝成 25 kg 藥用等級袋，貼上符合 USP 標準的標籤，再賣給你。這個「分裝/改標」過程就是賦形劑供應鏈複雜化的起源，也是風險引入的主要節點。</p>
+                <p>跨國採購時（如從印度、中國進口微晶纖維素），中間還涉及：出口代理、海運公司、進口報關、在地倉儲、再分裝……每個環節都可能引入汙染、混淆或文件不完整的風險。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>法律所有權移轉 = 風險評估的關鍵節點</h4>
+                <p>TR54-6 明確指出：<strong>法律所有權移轉的時刻，是品質責任轉移的分水嶺。</strong></p>
+                <p>每次所有權轉移，都應對應：</p>
+                <ul>
+                    <li>書面的品質協議（Quality Agreement）</li>
+                    <li>交接點的取樣/放行記錄</li>
+                    <li>儲存條件的確認文件</li>
+                </ul>
+                <p>如果在所有權轉移後才發現品質問題，而又沒有完整的交接記錄，將很難確定責任方，也難以向監管機構解釋。</p>
+                <p>在 CDMO 情境中，如果你代客戶採購賦形劑，你接收貨物的當下即取得法律所有權，相關 GMP 責任也隨之而來。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>供應鏈風險的定性模型</h4>
+                <p>每增加一個中間商，風險即疊加。定性估算：</p>
+                <pre>
+供應鏈風險 ∝ 中間環節數量 × 各環節透明度倒數
+
+風險指數（定性）：
+  直接供應（0個中間商）     → ★☆☆☆☆ 最低
+  經銷商（1個中間商）       → ★★☆☆☆ 低
+  再包裝商（加工環節）      → ★★★☆☆ 中
+  經紀商（透明度低）        → ★★★★☆ 中高
+  國際多段供應鏈            → ★★★★★ 最高（視透明度而定）
+
+每個「不透明」或「難以稽核」的環節
+都是風險乘數，而非風險加數。</pre>
+                <p>這個定性框架說明為何 TR54-6 後續會用 SCRPN（Supply Chain Risk Priority Number）來量化這些因素。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.1.1 — DIRECT SUPPLY
+         ============================================================ -->
+    <div id="sec-4-1-1" class="two-column">
+        <div class="left-column">
+            <h3>4.1.1 Direct Supply from Manufacturer</h3>
+
+            <p>Even when an excipient is supplied directly by a manufacturer to an end user, intermediaries may be involved. Logistics operations may be subcontracted to effect movement of the excipients. One or more warehousing companies also may be involved. Because all intermediaries are subcontracted by either the original manufacturer or the end user, they should have good information about how to safely transport the excipient. The supply chain illustrated in Figure 4.1.1-1 is one of the lowest-risk arrangements due to the small number of intermediaries and the degree of control that can be applied.</p>
+
+            <div class="sc-diagram">
+                <div class="sc-title">Figure 4.1.1-1 — Supply Chain: Direct Supply from Manufacturer</div>
+                <div class="sc-flow">
+                    <div class="sc-node highlight">Original Manufacturer</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Haulier</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node end-user">End User</div>
+                </div>
+                <div class="sc-note">Optional: Warehousing Company may be involved between Haulier and End User</div>
+                <div><span class="risk-badge low">Risk Level: LOW</span></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>直接供應：最理想但不常見</h4>
+                <p>直接供應是風險最低的模式，因為：</p>
+                <ul>
+                    <li>供應鏈環節最少，資訊傳遞失真機率低</li>
+                    <li>物流由製造商或終端使用者直接管控</li>
+                    <li>可建立直接的品質協議，無需透過第三方</li>
+                </ul>
+                <p>即便如此，TR 也提醒：即使是「直接供應」，運輸和倉儲通常也是外包的（Haulier、倉庫公司）。這些服務提供者雖非法律所有權持有人，但仍可能引入溫度偏差、汙染或文件錯誤等風險。</p>
+                <p>因此，品質協議應涵蓋物流服務商的管控要求（如 GDP 合規、溫度記錄器使用等）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.1.2 — VIA DISTRIBUTOR
+         ============================================================ -->
+    <div id="sec-4-1-2" class="two-column">
+        <div class="left-column">
+            <h3>4.1.2 Supply via a Distributor</h3>
+
+            <p>When an excipient moves from manufacturer to distributor, the distributor becomes the legal owner. The distributor then transfers ownership to the end user, possibly after repackaging or relabeling the excipient. The distributor may have an agreement with the original manufacturer to market the excipient using the distributor's tradename and literature; in this instance, the distributor and manufacturer likely will have an agreement to ensure the quality of the excipient. Usually in these cases the entire supply chain can be mapped with some certainty. This type of supply chain, depicted in Figure 4.1.2-1, presents few more risks than the simple manufacturer-to-end user scenario; however, those risks may be magnified if the distributor engages in repacking or relabeling, as discussed in Section 4.1.3.</p>
+
+            <p>If the original manufacturer has not established agreements with distributors, it will be much harder to fully trace all parties in the supply chain, increasing the risks. Other parties may repack and/or relabel the excipient. The original manufacturer may change its distributor, hence the process for notification of such changes should be agreed between the parties. These supply chains are more complex to assess, and the attendant risks are higher than in the previous scenarios.</p>
+
+            <div class="sc-diagram">
+                <div class="sc-title">Figure 4.1.2-1 — Supply Chain: Supply via Distributor</div>
+                <div class="sc-flow">
+                    <div class="sc-node highlight">Original Manufacturer</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Haulier</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Distributor</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Haulier</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node end-user">End User</div>
+                </div>
+                <div class="sc-note">Distributor acquires legal ownership; risk increases if distributor also repackages/relabels.</div>
+                <div><span class="risk-badge medium">Risk Level: LOW-MEDIUM</span></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>經銷商模式的關鍵：有無授權協議</h4>
+                <p>風險差異在於製造商與經銷商之間是否存在正式協議：</p>
+                <ul>
+                    <li><strong>有協議（Authorized Distributor）</strong>：製造商對經銷商進行管控，可追溯整條供應鏈，風險僅略高於直接供應。</li>
+                    <li><strong>無協議（Unofficial Distributor）</strong>：製造商無從控制下游流向，任何人都可能在市場上分裝、改標後轉售，追溯性大幅降低，風險顯著上升。</li>
+                </ul>
+                <p>實務建議：在供應商稽核問卷（SAQ）中，應明確要求經銷商提供其與原廠的授權協議副本。若無法提供，應視為重大風險訊號。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>通知義務：製造商換了經銷商怎麼辦？</h4>
+                <p>TR54-6 特別提到，若原廠更換了授權經銷商，應有正式的通知流程。這一點常被忽略，但對製藥廠非常重要——因為你的品質協議是與特定經銷商簽訂的。</p>
+                <p>建議在品質協議中加入條款：<em>"Supplier shall notify Buyer within [30] days of any change in the authorized distributor relationship with the original manufacturer."</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.1.3 — VIA REPACKAGER
+         ============================================================ -->
+    <div id="sec-4-1-3" class="two-column">
+        <div class="left-column">
+            <h3>4.1.3 Supply Via Repackager</h3>
+
+            <p>Repackaging activities in the supply chain, as illustrated in Figure 4.1.3-1, magnify the risks to excipient quality. The end user needs to understand the GMP controls applied by the repackager in order to minimize the risks to excipient quality, and, if feasible, needs to specify appropriate measures in supply or quality agreements.</p>
+
+            <div class="sc-diagram">
+                <div class="sc-title">Figure 4.1.3-1 — Supply Chain: Supply via Repackager</div>
+                <div class="sc-flow">
+                    <div class="sc-node highlight">Original Manufacturer</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Haulier</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Distributor</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Repacking / Relabeling</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node end-user">End User</div>
+                </div>
+                <div class="sc-note">Repackaging introduces direct material handling risk: contamination, mix-up, incorrect labeling.</div>
+                <div><span class="risk-badge high">Risk Level: MEDIUM-HIGH</span></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="note-box">
+                <h4>再包裝：最容易引入實體污染的環節</h4>
+                <p>再包裝是賦形劑供應鏈中風險最集中的作業之一，因為它涉及對物料的直接物理處理：</p>
+                <ul>
+                    <li><strong>汙染風險</strong>：開包、秤量、再包裝環境若未達 GMP 潔淨等級，易引入微粒或微生物汙染</li>
+                    <li><strong>混淆風險（Mix-up）</strong>：不同批次、不同物料共用同一設備或空間</li>
+                    <li><strong>標籤錯誤</strong>：成分名稱、濃度、批號可能在重新標示時出錯</li>
+                    <li><strong>追溯性斷裂</strong>：原廠批號與再包裝後批號的對應記錄可能不完整</li>
+                </ul>
+                <p>TR54-6 要求終端使用者必須了解再包裝商的 GMP 管控措施，並在可行時將具體要求寫入品質協議。這意味著必須對再包裝商進行稽核。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.1.4 — VIA BROKER
+         ============================================================ -->
+    <div id="sec-4-1-4" class="two-column">
+        <div class="left-column">
+            <h3>4.1.4 Supply Via Broker</h3>
+
+            <p>A broker usually connects the manufacturer with the customer. Figure 4.1.4-1 depicts a possible relationship between a distributor and the end user when a broker is involved.</p>
+
+            <p>The ability to map the supply chain in this scenario will depend on the degree of transparency provided by the broker. When communications are totally open, the supply chain can be traced, and any risks can be assessed clearly. For instance, if the broker is fully transparent and the supplier is the original manufacturer, the risks may be as low as in the direct shipment scenario described in Section 4.1.1. On the other hand, if the broker is less transparent, it may be very difficult to assess the risks, indeed.</p>
+
+            <div class="sc-diagram">
+                <div class="sc-title">Figure 4.1.4-1 — Supply Chain: Supply via Broker</div>
+                <div class="sc-flow">
+                    <div class="sc-node highlight">Original Manufacturer</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Distributor</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Broker</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node end-user">End User</div>
+                </div>
+                <div class="sc-note">Broker transparency is the key variable: full transparency can reduce risk near direct-supply levels; opacity can make risk assessment nearly impossible.</div>
+                <div><span class="risk-badge variable">Risk Level: VARIABLE (depends on transparency)</span></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="analogy-box">
+                <h4>比喻：經紀商 = 黑盒子或透明窗？</h4>
+                <p>經紀商（Broker）在賦形劑市場相當常見，尤其是在亞洲市場。他們通常不持有物料，只負責撮合交易、協調物流與文件。</p>
+                <p>關鍵問題：這個「中間人」願意揭露多少資訊？</p>
+                <ul>
+                    <li><strong>透明型經紀商</strong>：提供原廠聯絡資訊、原廠 CoA、供應鏈地圖 → 風險等同於直接供應</li>
+                    <li><strong>不透明型經紀商</strong>：以「商業機密」為由拒絕揭露原廠身份 → 你根本無法確認這個賦形劑從哪裡來，風險評估形同虛設</li>
+                </ul>
+                <p>在實務中，你可能必須選擇：接受更高風險（加強入廠檢驗），或者換一個透明度更高的供應鏈。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習：如何處理不透明經紀商？</h4>
+                <p>假設你的 CDMO 向某亞洲賦形劑經紀商採購注射用甘露醇，但對方不願揭露原廠資訊。你的評估策略為何？</p>
+                <ul>
+                    <li>你會要求哪些最低文件？（提示：CoA、供應鏈地圖、EXCiPACT 認證？）</li>
+                    <li>如果文件不完整，你是否有能力進行獨立的入廠完整測試？成本是否合理？</li>
+                    <li>這個供應鏈的殘留風險是否在你的客戶可接受範圍內？</li>
+                    <li>你是否會在品質協議中要求經紀商承擔供應鏈透明度的責任？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.1.5 — INTERNATIONAL EXPORT
+         ============================================================ -->
+    <div id="sec-4-1-5" class="two-column">
+        <div class="left-column">
+            <h3>4.1.5 Manufacturer Exporting Excipient Directly to End User</h3>
+
+            <p>An international supply chain such as that illustrated in Figure 4.1.5-1 usually involves many intermediaries. Unlike previous examples in which the parties are relatively fixed, the parties to an international supply chain, including haulers, shipping agents, and ships, may vary from shipment to shipment. In these situations, quantifying the risks may be very difficult. If the intermediaries are fixed, however, suitable inspection controls can be applied at those points, reducing the uncertainty presented by the prior steps.</p>
+
+            <div class="sc-diagram">
+                <div class="sc-title">Figure 4.1.5-1 — Supply Chain: Manufacturer Exporting Excipient Directly to End User</div>
+                <div class="sc-flow">
+                    <div class="sc-node highlight">Original Manufacturer</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Haulier</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Shipping Agent (Export)</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Warehousing (Port of Origin)</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Ship</div>
+                </div>
+                <div class="sc-flow" style="margin-top:0.5rem;">
+                    <div class="sc-node risk">Warehousing (Port of Destination)</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node risk">Shipping Agent (Import)</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node">Haulier</div>
+                    <div class="sc-arrow">&#8594;</div>
+                    <div class="sc-node end-user">End User</div>
+                </div>
+                <div class="sc-note">Parties (haulers, shipping agents, vessels) may vary shipment to shipment. This variability is a primary driver of risk.</div>
+                <div><span class="risk-badge high">Risk Level: HIGH (variable parties)</span></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="note-box">
+                <h4>國際供應鏈的核心風險：當事方每批可能都不同</h4>
+                <p>TR54-6 點出了國際供應鏈最難管控的特點：<strong>每一批貨的運輸公司、船運代理、倉儲設施都可能不同。</strong></p>
+                <p>這意味著：</p>
+                <ul>
+                    <li>你無法對「一個固定的」物流夥伴建立品質協議，因為根本不確定下一批貨是誰執行</li>
+                    <li>溫度記錄器的讀取值可能因不同倉儲設施的設備校準狀況而異</li>
+                    <li>文件追蹤（如原廠封緘記錄）可能在多個換手過程中遺失</li>
+                </ul>
+                <p>TR54-6 的建議解法：若能固定中間方（Fixed Intermediaries），就能在那些固定點設立管控（如固定倉儲的溫度稽核、固定進口代理的文件標準）。</p>
+                <p>對 CDMO 而言，選擇「能固定物流鏈的供應商」是降低國際採購風險的第一步。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.1.6 — CMO SCENARIOS
+         ============================================================ -->
+    <div id="sec-4-1-6" class="two-column">
+        <div class="left-column">
+            <h3>4.1.6 Manufacturer and Contract Manufacturing Organizations</h3>
+
+            <p>When one or more CMOs are involved in the supply chain, it is critically important to clearly identify and understand which party or parties gather information and who owns the risk assessment.</p>
+
+            <p>The manufacturing authorization holder is ultimately responsible for the risk assessment. Depending on the quality agreement and relationship between the CMO and manufacturing authorization holder, there generally are three options for conducting the risk assessment:</p>
+
+            <ul>
+                <li>The CMO might carry out the entire risk assessment, collecting the information about the use and function of the excipient in the final drug product. That risk assessment would be reviewed and approved by the manufacturing authorization holder.</li>
+                <li>The risk assessment might be carried out by the manufacturing authorization holder, incorporating information from the CMO.</li>
+                <li>The risk assessment might be carried out by the manufacturing authorization holder based on the risk assessment delivered by the CMO.</li>
+            </ul>
+
+            <p>In any case, the roles and responsibilities for the CMO and manufacturing authorization holder must be clearly defined, including what actions will be taken if the risk assessments completed by the CMO and manufacturing authorization holder result in different outcomes.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="application-box">
+                <h4>CDMO 情境：你屬於哪一種角色？</h4>
+                <p>這個問題對 CDMO 尤為關鍵。TR54-6 明確說明：<strong>最終責任永遠在製造授權持有人（MAH）</strong>，但執行方式有三種。</p>
+                <p><strong>模式 1：CMO 主導評估，MAH 審核批准</strong><br>
+                適用於：CMO 具備完整技術能力，且 MAH 信任 CMO 的評估品質。CDMO 在這個模式下需要建立完整的賦形劑風險評估 SOP，並確保 MAH 認可你的方法論。</p>
+                <p><strong>模式 2：MAH 主導，CMO 提供資訊</strong><br>
+                適用於：MAH 有強大的品質部門，希望掌控評估流程，CDMO 只提供配方用途、用量等資訊。</p>
+                <p><strong>模式 3：MAH 主導，基於 CMO 先期評估</strong><br>
+                適用於：混合模式，CDMO 先做初步評估交 MAH，MAH 再整合自身資訊完成最終評估。這是目前業界最常見的合作方式。</p>
+                <p>無論哪種模式，<strong>品質協議（Quality Agreement）中必須明確寫明評估分工，以及若雙方結論不一致時的解決機制</strong>。這是稽核時監管機構必看的內容。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>CMO 採購賦形劑的雙重風險</h4>
+                <p>CDMO 替客戶採購賦形劑時，面臨雙重責任：</p>
+                <ul>
+                    <li><strong>作為「End User」的責任</strong>：你需要評估賦形劑的供應鏈風險，確保品質符合要求</li>
+                    <li><strong>作為「CMO」的責任</strong>：你需要與 MAH 協調，確保你的風險評估結論與 MAH 的監管申報檔案一致</li>
+                </ul>
+                <p>若使用一個 MAH 申報檔案中未列入的賦形劑供應商，可能構成未申報的供應鏈變更（Unreported Supply Chain Change），這在 FDA 或 EMA 稽核中是重大缺失。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.0 — ROLES IN SUPPLY CHAIN
+         ============================================================ -->
+    <div id="sec-5-0" class="two-column">
+        <div class="left-column">
+            <h2>5.0 Different Roles in the Supply Chain and Information-Gathering</h2>
+
+            <p>To successfully complete the formalized risk assessment process, the information and evidence obtained must support conclusions on risks, identify gaps in GMP, and determine control strategies. The risk assessment process is applicable throughout the lifecycle of the excipient—from selection to termination of use—and remains the responsibility of the manufacturing authorization holder. This key task, however, requires collaboration from all other parties in the supply chain. Table 5.0-1 delineates the roles in the supply chain, examples of their areas of responsibility, the information for which they are accountable, and the types of documents they may be expected to supply.</p>
+
+            <h3>Table 5.0-1: Roles in the Supply Chain and Examples of Their Responsibilities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supply Chain Role</th>
+                        <th>Areas of Accountability</th>
+                        <th>Information Accountable</th>
+                        <th>Documents Typically Provided</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Subcontractor of the Excipient Manufacturer</strong></td>
+                        <td>
+                            <ul>
+                                <li>Sourcing raw materials</li>
+                                <li>Manufacturing</li>
+                                <li>Testing</li>
+                                <li>Packaging and labeling</li>
+                                <li>Transporting</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Manufacture</li>
+                                <li>Testing certificates</li>
+                                <li>Compliance certificates</li>
+                                <li>Quality standards in use</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Manufacturing flow chart</li>
+                                <li>Certificate of analysis</li>
+                                <li>ISO, GMP, or EXCiPACT™ certificate</li>
+                                <li>Supply chain map</li>
+                                <li>Transport and storage conditions</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manufacturer of the Excipient</strong></td>
+                        <td>
+                            <ul>
+                                <li>Sourcing raw materials</li>
+                                <li>Manufacturing under appropriate standards</li>
+                                <li>Testing</li>
+                                <li>Packaging and labeling</li>
+                                <li>Transporting</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Manufacture</li>
+                                <li>Testing certificates</li>
+                                <li>Compliance certificates</li>
+                                <li>Quality standards in use</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Manufacturing flow chart</li>
+                                <li>Certificate of analysis</li>
+                                <li>ISO, GMP, or EXCiPACT™ certificate</li>
+                                <li>Supply chain map</li>
+                                <li>Transport and storage conditions</li>
+                                <li>Excipient information package (EIP) or comparable information package</li>
+                                <li>Regulatory declaration statement</li>
+                                <li>Technical expert support</li>
+                                <li>Excipient master files (e.g., U.S. DMFs)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Broker</strong></td>
+                        <td>
+                            <ul>
+                                <li>Flow of information</li>
+                                <li>Supply chain overview</li>
+                                <li>Access to suppliers</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Certificate of analysis</li>
+                                <li>Supply chain map</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Certificate of analysis</li>
+                                <li>Supply chain map</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supplier or Distributor</strong></td>
+                        <td>
+                            <ul>
+                                <li>Transporting</li>
+                                <li>Warehousing</li>
+                                <li>Repackaging</li>
+                                <li>Testing</li>
+                                <li>Transport overview</li>
+                                <li>Storage conditions</li>
+                                <li>Direct link to manufacturer/supplier</li>
+                                <li>Packing and labeling</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Testing certificates</li>
+                                <li>Compliance certificates</li>
+                                <li>Quality standards in use</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Access to excipient information package (EIP) or comparable information package</li>
+                                <li>Regulatory declaration statement</li>
+                                <li>Certificate of analysis</li>
+                                <li>ISO, GMP, or EXCiPACT™ certificate</li>
+                                <li>Supply chain map</li>
+                                <li>Transport and storage conditions</li>
+                                <li>Technical expert support</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>CMO or Manufacturer of Drug Product</strong></td>
+                        <td>
+                            <ul>
+                                <li>Sourcing raw materials</li>
+                                <li>Manufacturing drug product</li>
+                                <li>Testing of excipient</li>
+                                <li>Packaging and labeling</li>
+                                <li>Transporting</li>
+                                <li>Conducting excipient risk assessment (Ultimate accountability rests with manufacturing authorization holder)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Excipient information</li>
+                                <li>Supply chain oversight</li>
+                                <li>Formulation information</li>
+                                <li>Special requirements of excipient</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Excipient risk assessment</li>
+                                <li>Supply chain map</li>
+                                <li>Audit of excipient supplier and manufacturer</li>
+                                <li>Quality oversight of supplier and manufacturer</li>
+                                <li>Regulatory filing of excipient</li>
+                                <li>Toxicological data</li>
+                                <li>Excipient quality and performance quality trends of excipient</li>
+                                <li>Formulation information</li>
+                                <li>Specification of excipient</li>
+                                <li>Control strategy</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing Authorization Holder</strong></td>
+                        <td>
+                            <ul>
+                                <li>Submission of dossier</li>
+                                <li>Defining route of administration and function of excipient</li>
+                                <li>Excipient risk assessment</li>
+                                <li>Toxicological data</li>
+                                <li>Maximum daily dose</li>
+                                <li>Excipient use and function</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Technical data</li>
+                                <li>Regulatory file</li>
+                                <li>Manufacturing process flow</li>
+                                <li>Supply chain overview</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Manufacturer and supplier audit documents</li>
+                                <li>Oversight of outsourced activities (e.g., risk assessment, compliance history)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 Commentary</h2>
+
+            <div class="concept-box">
+                <h4>供應鏈各角色的責任分層：關鍵解讀</h4>
+                <p>Table 5.0-1 揭示了一個重要的責任金字塔：</p>
+                <ul>
+                    <li><strong>原廠分包商</strong>：提供最基礎的製造與品質記錄，是品質起點。</li>
+                    <li><strong>賦形劑製造商</strong>：責任最完整，須提供 EIP（賦形劑資訊包）、DMF（藥物主檔）等完整文件，是供應鏈品質的核心保證人。</li>
+                    <li><strong>經紀商</strong>：文件責任最輕（僅 CoA 和供應鏈地圖），但也是透明度最差的環節。</li>
+                    <li><strong>經銷商/供應商</strong>：責任居中，需轉遞製造商的文件，並對倉儲/運輸條件負責。</li>
+                    <li><strong>CMO/藥品製造商</strong>：需執行風險評估（但最終責任在 MAH），提供配方、規格、毒理資料。</li>
+                    <li><strong>MAH（上市許可持有人）</strong>：最終責任人，負責審批所有評估結果，確保與法規申報一致。</li>
+                </ul>
+                <p>這個層次結構說明：即使 CMO 執行了評估，MAH 仍有不可推卸的監督義務。</p>
+            </div>
+
+            <div class="application-box">
+                <h4>CDMO 角色定位 — 文件清單對照</h4>
+                <p>作為 CDMO，你同時扮演「CMO/藥品製造商」角色。根據 Table 5.0-1，你應能提供或產出：</p>
+                <ul>
+                    <li>賦形劑風險評估報告（Excipient Risk Assessment）</li>
+                    <li>供應鏈地圖（Supply Chain Map）— 包含你向下採購的供應商鏈條</li>
+                    <li>供應商稽核記錄（Supplier/Manufacturer Audit Documents）</li>
+                    <li>毒理資料（Toxicological Data）— 可來自藥典或 MAH 提供</li>
+                    <li>賦形劑規格書（Specification of Excipient）</li>
+                    <li>管控策略（Control Strategy）</li>
+                </ul>
+                <p>如果你目前尚未為每一個賦形劑建立完整的供應鏈地圖，這是最值得優先補充的文件。它是所有後續風險評估的基礎。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習：供應鏈風險評估的落地問題</h4>
+                <ul>
+                    <li>你目前的賦形劑供應商清單中，有多少已建立完整的供應鏈地圖（到原廠層級）？</li>
+                    <li>對於使用經紀商採購的賦形劑，你是否有要求提供供應鏈地圖？若對方拒絕，你採取了什麼替代措施？</li>
+                    <li>你的品質協議是否涵蓋供應商通知義務（如更換分包商、更換倉儲等）？</li>
+                    <li>你與客戶（MAH）的品質協議中，賦形劑風險評估的分工是否已明確定義？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TABLE 5.0-2 — INFORMATION GATHERING SCENARIOS
+         ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Table 5.0-2: Common Scenarios in Information-Gathering</h3>
+
+            <p>Information to support the excipient risk assessment process can be obtained using a variety of avenues:</p>
+            <ul>
+                <li>Meetings with manufacturers and suppliers</li>
+                <li>Obligations placed in quality agreements or equivalent documents</li>
+                <li>Chemistry, manufacturing and controls (CMC) documentation</li>
+                <li>Excipient manufacturer customer portals</li>
+                <li>Internet</li>
+                <li>Manufacturing authorization holder supply chain management and quality oversight functions</li>
+                <li>Health Authority portals</li>
+                <li>Quality and technical collaborations between excipient manufacturer and end user</li>
+            </ul>
+
+            <p>That said, when collaboration between the manufacturing authorization holder and other parties in the supply chain is limited, the manufacturing authorization holder may need to consider alternative means for obtaining information. Table 5.0-2 lists some common scenarios and potential resolutions.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:40%">Potential Issues</th>
+                        <th>Resolutions / Approach</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Unable to determine all participants in the supply chain for commercial reasons</strong>, e.g., a distributor enforces supply chain opaqueness for competitive reasons</td>
+                        <td>
+                            When distributors are part of the supply chain, this is a common scenario. The manufacturing authorization holder should identify the supply chain risks and, where appropriate, transfer responsibility for supply chain oversight to the distributor.
+                            <ul>
+                                <li>Allow the distributor to redact information in responses to protect their business advantage</li>
+                                <li>Use the quality agreement with suppliers/distributors to assign accountability and supply chain oversight</li>
+                                <li>Use onsite audit program to challenge and confirm information</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unable to obtain appropriate regulatory declaration statements</strong> (e.g., residual solvent statement) for an excipient due to lack of technical understanding or expertise of a participant in the supply chain</td>
+                        <td>
+                            <ul>
+                                <li>Support the excipient manufacturer/supplier with in-house technical support, if available</li>
+                                <li>Provide the manufacturer/supplier with declaration templates, if available, for manufacturer/supplier to complete</li>
+                                <li>Use the manufacturing authorization holder's internal technical team to assess and/or test material in lieu of supplier regulatory declaration</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unable to obtain all information required to support the risk assessment</strong> because the excipient manufacturer's quality standards do not meet the excipient user's requirements</td>
+                        <td>
+                            <ul>
+                                <li>Determine if the excipient manufacturer is performing additional activities to facilitate alignment of quality standards</li>
+                                <li>Reassess to identify gaps that exist and mitigate through internal or external action, e.g., increase quality oversight, change specifications</li>
+                                <li>If the residual risks identified are unacceptable, change the excipient supply chain</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insufficient provisions in place</strong> (e.g., lack quality agreements or unable to agree on a confidentiality agreement) to support information exchange with manufacturing authorization holder</td>
+                        <td>
+                            <ul>
+                                <li>Review obligations agreed with parties in the supply chain</li>
+                                <li>Put in place an appropriate agreement to support this process</li>
+                                <li>Review manufacturer audit reports and supply management files to determine whether the assessor for the manufacturing authorization holder already possesses required information</li>
+                                <li>Explore other avenues of obtaining information, e.g., manufacturer's standard customer information portals, public domain information</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insufficient or no collaboration between key participants and manufacturing authorization holder in the supply chain</strong> (e.g., no leverage due to low volume purchase, stressed or non-existent commercial relationships)</td>
+                        <td>
+                            <ul>
+                                <li>Use distributor relationship to leverage information transfer</li>
+                                <li>Identify alternative sources for obtaining support and information</li>
+                                <li>Use already-established agreements or put in place appropriate agreement to obligate supply chain party support</li>
+                                <li>Review manufacturer/supplier audit reports/questionnaire/excipient file (e.g., EIP) and supply management files to determine whether the assessor for the manufacturing authorization holder already possesses required information</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unable to support the excipient risk assessment process due to limited oversight of outsourced activity</strong> (e.g., unable to secure an audit)</td>
+                        <td>
+                            <ul>
+                                <li>Ensure adequate resources are allocated to ensure appropriate prioritization of manufacturer/supplier management activities</li>
+                                <li>Use third-party audit program (e.g., EXCiPACT™)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>資訊蒐集的九種管道</h4>
+                <p>TR54-6 列舉了取得賦形劑評估資訊的九種方式，在實務中，這些管道應優先排序使用：</p>
+                <ul>
+                    <li><strong>最直接</strong>：與製造商/供應商面對面會議、品質協議義務條款</li>
+                    <li><strong>次之</strong>：CMC 文件、廠商客戶入口網站、技術合作</li>
+                    <li><strong>補充</strong>：MAH 內部供應鏈管理功能、法規機構公開資料（如 FDA 警告信資料庫）、網路公開資訊</li>
+                </ul>
+                <p>當主要管道受阻時（如供應商拒絕合作），才使用替代方案（Table 5.0-2 的情境）。這不是「偷懶找藉口」，而是有系統地處理資訊缺口。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：Table 5.0-2 是「供應鏈外交手冊」</h4>
+                <p>這張表格本質上是一本「外交談判指南」：當供應鏈對方不合作、不透明、不稱職時，你有哪些應對策略？</p>
+                <p>六個情境可以歸納為三類問題：</p>
+                <ul>
+                    <li><strong>資訊不透明</strong>（情境 1, 4, 5）→ 策略：合約義務化、稽核驗證、轉移責任給供應商</li>
+                    <li><strong>技術能力不足</strong>（情境 2, 3）→ 策略：提供模板與技術支持、自行測試驗證、換供應鏈</li>
+                    <li><strong>資源/管控不足</strong>（情境 6）→ 策略：第三方稽核（EXCiPACT）、重新分配資源</li>
+                </ul>
+                <p>這個框架也提醒我們：沒有萬能的解決方案，每種情境需要個別判斷。但「換供應鏈」永遠是最後一招，不是第一個動作。</p>
+            </div>
+
+            <div class="application-box">
+                <h4>CDMO 最常遇到的情境：低採購量的困境</h4>
+                <p>情境 5（低採購量導致無談判籌碼）是 CDMO 最常遇到的現實困境：</p>
+                <p>當你的某個賦形劑用量只有每年幾百公斤，而原廠年產量是幾萬噸，原廠根本不在乎你。他們不會回覆你的問卷，不會接受你的稽核，不會提供 EIP。</p>
+                <p>TR54-6 的建議解法：</p>
+                <ul>
+                    <li>利用經銷商關係施壓（你買的量雖少，但你的經銷商買的量可能很大）</li>
+                    <li>加入行業協會或共同採購聯盟，以集體力量施壓</li>
+                    <li>查閱已公開的廠商稽核報告（如 EXCiPACT 認證資料庫）</li>
+                    <li>以你自己的技術團隊進行物料評估，彌補文件缺口</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION SUMMARY
+         ============================================================ -->
+    <div id="summary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#10003;</div>
+            <div class="chapter-info">
+                <h2>Section Summary 本節重點總結</h2>
+                <p>Section 2: Overall Strategy &amp; Supply Chain | PDA TR54-6 (2019) p4–p10</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Takeaways (English)</h3>
+                    <ul class="structure-list">
+                        <li><strong>Section 3.0</strong> — Five major GMP standards exist for excipients (EXCiPACT, NSF/IPEC/ANSI 363, IPEC/PQG, USP &lt;1078&gt;, Japan). Risk assessment findings must be agreed with the excipient manufacturer before action. A global assessment with local ownership is the recommended approach.</li>
+                        <li><strong>Section 3.1</strong> — Business continuity, environmental, and geographic risks are acknowledged but are out of scope for this TR. They should be addressed in separate supply chain management frameworks.</li>
+                        <li><strong>Section 4.0</strong> — Supply chains have grown complex due to intermediaries (distributors, brokers, CMOs). The legal ownership transfer point is a critical quality juncture. Tracing the full supply chain may be difficult due to commercial confidentiality.</li>
+                        <li><strong>4.1.1–4.1.5</strong> — Six supply chain types range from direct supply (lowest risk) to international multi-party chains (highest risk). Broker-mediated chains have variable risk entirely dependent on transparency. Fixed intermediaries allow for better control points.</li>
+                        <li><strong>4.1.6</strong> — When CMOs are involved, the manufacturing authorization holder retains ultimate responsibility. Three models exist for dividing the risk assessment work; the division must be clearly documented in the quality agreement.</li>
+                        <li><strong>Table 5.0-1</strong> — Each supply chain role (subcontractor, manufacturer, broker, distributor, CMO, MAH) has defined accountability areas and expected documents. The MAH always holds final responsibility.</li>
+                        <li><strong>Table 5.0-2</strong> — Six common information-gathering failure scenarios and their resolutions: use contractual obligations, provide technical support, conduct independent testing, leverage third-party audits (EXCiPACT), or change the supply chain if residual risks are unacceptable.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>核心學習重點（中文）</h3>
+                    <ul class="structure-list">
+                        <li><strong>3.0 整體策略</strong>：賦形劑 GMP 五大標準。風險評估發現問題後，行動前必須與賦形劑製造商達成共識並文件化。推薦採用「本地所有權的全球評估」模式。</li>
+                        <li><strong>3.1 超越品質的風險</strong>：業務連續性、地理環境等風險超出本文件範疇，但在供應商管理實務中仍應考量。</li>
+                        <li><strong>4.0 端到端供應鏈</strong>：供應鏈複雜化的根源在於賦形劑多非藥用專屬製造，中間商的介入不可避免。法律所有權轉移點是風險管控的關鍵節點。</li>
+                        <li><strong>4.1.1–4.1.5 六種供應鏈類型</strong>：從直接供應（最低風險）到國際多段供應鏈（最高風險）。經紀商模式風險高度依賴透明度。固定中間方可建立管控點。</li>
+                        <li><strong>4.1.6 CMO 情境</strong>：最終責任在 MAH。CMO 與 MAH 的評估分工必須在品質協議中明確寫明，包括結論不一致時的解決機制。</li>
+                        <li><strong>Table 5.0-1</strong>：供應鏈六大角色（分包商、製造商、經紀商、經銷商、CMO、MAH）各有其責任範疇與文件清單。MAH 為最終責任人。</li>
+                        <li><strong>Table 5.0-2</strong>：六種資訊蒐集困境與應對策略——合約義務化、提供技術支援、獨立檢驗、使用第三方稽核（EXCiPACT），或必要時更換供應鏈。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients</p>
+    <p>Section 2: Overall Strategy &amp; Supply Chain | p4–p10</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Licensed educational material — SterileGMP Knowledge Hub</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
