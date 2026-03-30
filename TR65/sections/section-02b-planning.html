@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR65 Section 2b: Planning Stage (5.2)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Section 2b: Planning Stage (5.2)</h1>
+    <div class="subtitle">規劃階段</div>
+    <div class="page-info">PDA Technical Report No. 65 (Revised 2022): Technology Transfer | p22 - p28</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節內容 — Section Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-intro">5.2 Overview</a>
+            <a href="#sec-521">5.2.1 Business</a>
+            <a href="#sec-521-table">Table 5.2-1</a>
+            <a href="#sec-522">5.2.2 TT Project Manager</a>
+            <a href="#sec-523">5.2.3 Process</a>
+            <a href="#sec-524">5.2.4 Analytical</a>
+            <a href="#sec-525">5.2.5 Engineering</a>
+            <a href="#sec-526">5.2.6 Manufacturing</a>
+            <a href="#sec-527">5.2.7 Regulatory</a>
+            <a href="#sec-528">5.2.8 Quality</a>
+            <a href="#sec-529">5.2.9 Sourcing/Supply Chain</a>
+            <a href="#sec-5210">5.2.10 Best Practices</a>
+            <a href="#sec-5210-table">Table 5.2.10-1</a>
+            <a href="#sec-summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- ===== 5.2 OVERVIEW ===== -->
+    <div id="sec-intro" class="two-column">
+        <div class="left-column">
+            <h2>5.2 Planning Stage — Overview</h2>
+            <p>The Planning stage begins after the site selection decision has been made and the initial charter has been approved; it is the start of the knowledge transfer from the SU. At this point, the TT PM is assigned, and the core TT Team at the RU is resourced. The members of the TT Team at the SU or MAH may or may not be the same personnel who performed the initial assessments in the Initiation stage.</p>
+            <p>Building on the risk assessments developed in the Initiation stage, the TT Team collaborates with the SU and/or MAH to perform detailed risk assessments to define all CMC and operational readiness requirements for the TT. This risk assessment becomes a living document that results in a revised and more detailed version of the project plan, which covers project timing, capital required, resource needs, and critical path items. Other key outputs of the Planning stage are the final TT charter and a TT agreement between the SU, RU, and MAH (see Section 5.2.2).</p>
+            <p>Once the Planning stage activities and deliverables have been completed, the TT team should hold a stage gate meeting with the steering committee to obtain agreement for moving to the Knowledge Transfer stage. At this stage gate, the steering committee will approve the final charter and the project plan, which signals acceptance of the risks defined for the TT. Table 5.2-1, excerpted from the Reference Guide (Figure 5.0-1), shows the activities and deliverables for the Planning stage.</p>
+        </div>
+        <div class="right-column">
+            <h2>規劃階段 — 核心解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：規劃階段的本質</h4>
+                <p>規劃階段（Planning Stage）是整個技術移轉（TT）中正式知識傳遞的起點。它在地點選定、初始章程獲批准後才啟動，意味著此時「做不做」已決定，進入的是「怎麼做」的細部規劃。</p>
+                <ul>
+                    <li>TT 專案經理（TT PM）正式指派</li>
+                    <li>接收單位（RU）核心團隊完成組建</li>
+                    <li>詳細風險評估取代高層次評估</li>
+                    <li>專案計畫升級為具體、可執行版本</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：從「選地建廠」到「施工藍圖」</h4>
+                <p>啟動階段（Initiation）如同選定建廠地點，規劃階段則是繪製詳細施工藍圖——每一根鋼筋、每條水電管線都要定位。少了這份藍圖，施工必然混亂且高成本。</p>
+            </div>
+            <div class="note-box">
+                <h4>關鍵輸出（Key Outputs）</h4>
+                <ul>
+                    <li>最終 TT 章程（Final TT Charter）</li>
+                    <li>SU / RU / MAH 三方 TT 協議</li>
+                    <li>詳細專案計畫（含關鍵路徑）</li>
+                    <li>Stage Gate 批准——向 Knowledge Transfer 推進</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.1 BUSINESS ===== -->
+    <div id="sec-521" class="two-column">
+        <div class="left-column">
+            <h2>5.2.1 Business</h2>
+            <p>The MAH Business function coordinates with the Sourcing/Supply Chain function to execute supply agreements (e.g., Master Service Agreement) with the RU and external laboratories. Critical to the outcome of the TT, supply agreements should be reviewed by the TT PM to ensure they contain the same boundaries and assumptions as the TT charter, align with the RU roles and responsibilities in the TT agreement, and support the requirements of the quality agreement. Many RUs ask that the supply agreements guarantee a fixed number of batches for both the initial qualification and the annual commercial production, as this allows for better resource planning.</p>
+            <p>Jointly, the Business functions and steering committee provide oversight of the project by approving resource and capital needs. A resource plan should be developed to understand staffing requirements both for the TT and for the long-term commercial needs, based on the following key inputs:</p>
+            <ul>
+                <li>Personnel required and organization of shifts to be used</li>
+                <li>New equipment to be qualified and degree of automated vs. manual operational requirements</li>
+                <li>Type of expertise needed</li>
+                <li>Complexity of the technical requirements, including risk mitigation requirements</li>
+            </ul>
+            <p>Section 8.3 provides a case study of the importance of incorporating the learnings from previous projects into the resource plan during the Planning stage.</p>
+            <p>The Business function should provide input on the regulatory strategy, including volume requirements, required timing for market release, and the salability of the validation batches.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.1 商務功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：供應協議與資源計畫</h4>
+                <p>商務功能在規劃階段的核心任務有二：</p>
+                <ul>
+                    <li><strong>執行供應協議</strong>（Master Service Agreement, MSA）— 確保協議邊界與 TT 章程一致</li>
+                    <li><strong>批准資源與資本計畫</strong>— 與指導委員會共同監督</li>
+                </ul>
+                <p>許多 RU 要求供應協議承諾固定批次數，涵蓋初始確認批次及年度商業生產，以利資源規劃。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：婚前財產協議</h4>
+                <p>供應協議就像婚前財產協議——在合作開始前把「誰負責什麼、做多少批、給多少錢」全部寫清楚，避免日後合作爭議。TT PM 必須確認協議內容與 TT 章程一致，否則「說一套、做另一套」的矛盾將在執行時爆發。</p>
+            </div>
+            <div class="formula-box">
+                <h4>資源計畫四要素</h4>
+                <pre>資源計畫 =
+  ① 人員配置（人數 + 班次安排）
++ ② 設備資格（自動化 vs. 手動作業比例）
++ ③ 所需專業類型（製程、分析、法規、品保⋯）
++ ④ 技術複雜度（含風險緩解需求）</pre>
+                <p>同時須涵蓋 TT 期間需求 AND 長期商業生產需求，兩者不可偏廢。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：驗證批次可否銷售？</h4>
+                <p>商務功能必須向法規策略提供「驗證批次（validation batches）是否可商業銷售」的資訊。在某些市場，驗證批次可作商業出貨，大幅降低成本；但需法規批准時間配合，必須提前規劃。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TABLE 5.2-1 ===== -->
+    <div id="sec-521-table" style="margin-bottom: 1.5rem;">
+        <div style="background: white; border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem;">Table 5.2-1: Activities and Deliverables for the Planning Stage</h3>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="min-width:110px;">Function</th>
+                            <th>Activities</th>
+                            <th>Deliverables</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Business</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Approve Resource Needs</li>
+                                    <li>Approve Capital Plan</li>
+                                    <li>Interact With Customers</li>
+                                    <li>Sponsoring Steering Committee</li>
+                                    <li>Hold Steering Committee Meetings</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>RU Supply Agreement</li>
+                                    <li>External Lab Supply Agreement</li>
+                                    <li>Resource Plan</li>
+                                    <li>Stage Gate Approval</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>TT PM</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Define Resource Requirements</li>
+                                    <li>Define Critical Path Items</li>
+                                    <li>Develop Detailed Project Plan</li>
+                                    <li>Create Communication Plan</li>
+                                    <li>Implement Documentation Sharing</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Final TT Charter</li>
+                                    <li>Project Plan</li>
+                                    <li>TT Agreement between SU/RU</li>
+                                    <li>Critical Paths Identified</li>
+                                    <li>RACI</li>
+                                    <li>Communication Plan</li>
+                                    <li>Final TT Team Formed</li>
+                                    <li>Kickoff Event</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Process</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Detailed Process Risk Assessment</li>
+                                    <li>Align QTPP and Product Specification with RU</li>
+                                    <li>Define Material Handling Requirements</li>
+                                    <li>Define Commercial Process at RU</li>
+                                    <li>Define Bill of Materials</li>
+                                    <li>Write Change Controls</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>TT Change Control</li>
+                                    <li>Process Risk Assessment Report</li>
+                                    <li>Commercial Process Established</li>
+                                    <li>Initial Bill of Materials</li>
+                                    <li>Change Controls</li>
+                                    <li>Comparability Plan</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Analytical</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Detailed Analytical Risk Assessment</li>
+                                    <li>Define Analytical Equipment Requirements</li>
+                                    <li>Determine External Lab Needs</li>
+                                    <li>Define Sampling Plan</li>
+                                    <li>Develop Stability Plan</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Analytical Risk Assessment Report</li>
+                                    <li>Sampling Plan</li>
+                                    <li>Current Compendial Specifications</li>
+                                    <li>Comparability Protocol</li>
+                                    <li>Stability Plan</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Engineering</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Define RU Requirements</li>
+                                    <li>Develop Capital Plan</li>
+                                    <li>Write Capital Appropriation Request (CAR)</li>
+                                    <li>Initiate Permits</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Capital Project Plan</li>
+                                    <li>Equipment/Facility Change Controls</li>
+                                    <li>CAR Approval</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Manufacturing</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Operational Requirements Analysis</li>
+                                    <li>Perform EHS Assessment</li>
+                                    <li>Define Comparability Requirements</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Operational Requirements Report</li>
+                                    <li>EHS Assessment Report</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Regulatory</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Obtain Current Dossiers</li>
+                                    <li>Interact with RU Regulatory Affairs Function</li>
+                                    <li>Interact with Health Authorities if Necessary</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Current Product Filings and Annual Product Reports</li>
+                                    <li>Current Compendial Specifications</li>
+                                    <li>TT QMS</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Quality</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Perform RU Quality Audit</li>
+                                    <li>Define SU/RU/MAH QMS Responsibilities</li>
+                                    <li>Define Documentation Requirements</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>RU Audit Report</li>
+                                    <li>Quality Agreements SU/RU/MAH/External Labs</li>
+                                    <li>Quality Improvement Plan</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sourcing / Supply Chain</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Production Planning</li>
+                                    <li>Determine Product Logistics</li>
+                                    <li>Source Materials/Disposables/Packaging/Consumables</li>
+                                    <li>Order Long-Lead Materials</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Product Supply Chain Strategy</li>
+                                    <li>Plant Schedule Availability</li>
+                                    <li>Long Lead Material Plan</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.2 TT PROJECT MANAGER ===== -->
+    <div id="sec-522" class="two-column">
+        <div class="left-column">
+            <h2>5.2.2 Technology Transfer Project Manager</h2>
+            <p>Once the Business function determines that a TT will take place and has reached agreement with the RU, the TT PM is assigned. The TT PM provides overall leadership and accountability for the remainder of the project. Therefore, the same qualities are important: knowledge across all relevant functional areas, ability to communicate across organizational levels, and skill in facilitation, negotiation, decision-making, and motivation. Section 4.1 discusses the selection and role of the TT PM.</p>
+            <p>The TT PM should put in place a team representing the relevant cross-functional areas to begin planning and assessing the requirements for knowledge transfer. This team is established in collaboration with each site's functional managers. The case study in Section 8.2 discusses the importance of establishing a cross-functional project team.</p>
+            <p>The TT PM works with the SU and RU to define the roles and responsibilities for all knowledge transfer requirements. If both the SU and RU are external, then the MAH should be included as a third party. A responsibility assignment matrix denoting those to be responsible, accountable, consulted, and informed (RACI) can prove valuable in documenting key responsibilities to ensure alignment and clarity throughout the project. Once negotiated, these roles and responsibilities should be documented in a TT agreement, or in a shared procedure for internal-internal TTs, and personnel can be assigned. The TT agreement can aid significantly in defining resource needs and in facilitating communication.</p>
+            <p>The TT PM plays the lead role during the Planning stage by coordinating the final risk assessments and developing the project plan. Using the detailed risk assessments, the TT PM will work with the TT Team to ensure that the project plan includes the schedule, critical path activities, and resource requirements. The TT PM also will ensure that the project requirements and timeline meet the needs of the business and stakeholders, taking into account the capabilities of the functions and systems supporting the project. The project plan typically covers:</p>
+            <ul>
+                <li>Capital procurement, installation, and qualification timing</li>
+                <li>Procurement and release of all materials and consumables</li>
+                <li>Process development and/or demonstration</li>
+                <li>Analytical method validations, transfers, or qualifications</li>
+                <li>Operational readiness requirements</li>
+                <li>Plant-scale process validation</li>
+                <li>Key milestones and critical path activities</li>
+            </ul>
+            <p>Once the project plan has been developed, the TT charter can be expanded to include the communication plan. A communication plan and a system for sharing documents between the parties is necessary to facilitate knowledge transfer. The communication plan should define modes of escalation to ensure the TT Team can resolve any roadblocks that may occur.</p>
+            <p>At this time, the TT PM should hold a kick-off meeting with the final cross-functional TT team members (including both the SU and RU) and project sponsor.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.2 TT 專案經理 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：TT PM 的角色轉換</h4>
+                <p>TT PM 在規劃階段從「協調者」升格為「主導者」。他/她必須具備：</p>
+                <ul>
+                    <li>跨功能領域的知識（製程、分析、法規、品保⋯）</li>
+                    <li>跨組織層級的溝通能力</li>
+                    <li>談判、決策、激勵等領導技能</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：交響樂團指揮</h4>
+                <p>TT PM 如同交響樂團指揮——不必親自演奏每件樂器，但必須知道每個樂手何時進場、如何配合，並在混亂中維持節奏。RACI 矩陣就是那份樂譜，確保每個人清楚自己的音符。</p>
+            </div>
+            <div class="note-box">
+                <h4>RACI 矩陣的實用價值</h4>
+                <p><strong>R</strong>esponsible（執行）、<strong>A</strong>ccountable（當責）、<strong>C</strong>onsulted（諮詢）、<strong>I</strong>nformed（知會）——在 SU、RU、MAH 三方同時涉及時，若無 RACI，責任重疊與空白幾乎無可避免。</p>
+            </div>
+            <div class="formula-box">
+                <h4>專案計畫七大覆蓋項目</h4>
+                <pre>專案計畫必須涵蓋：
+① 資本採購、安裝、資格認定時程
+② 物料與耗材採購及放行
+③ 製程開發 / 展示
+④ 分析方法驗證、移轉或確認
+⑤ 操作就緒需求
+⑥ 廠規模製程驗證（PV）
+⑦ 關鍵里程碑與關鍵路徑活動</pre>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習：您廠的 Kick-Off 會議夠完整嗎？</h4>
+                <p>PDA TR65 明確要求 TT PM 在規劃階段末召開 Kick-Off 會議，邀集 SU、RU 雙方跨功能成員及專案贊助人。</p>
+                <p>請評估：您上一次或下一次技術移轉的 Kick-Off 會議，是否確實涵蓋 SU 代表？是否有正式溝通計畫（含升級機制）？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.3 PROCESS ===== -->
+    <div id="sec-523" class="two-column">
+        <div class="left-column">
+            <h2>5.2.3 Process</h2>
+            <p>During the Planning stage, the Process function begins to specify the key elements of the commercial manufacturing process for the TT, including batch scale, unit operations needed, cycle time, and material handling requirements, which will result in an initial bill of materials. These knowledge elements are used by the Sourcing/Supply Chain function for production planning and plant logistics and by the Engineering function to design and order the required capital. The Process function aligns QTPP and/or specifications with the RU. Often, Process will develop a comparability plan to identify the information necessary to show that the product made at the RU is comparable to that of the SU.</p>
+            <p>The Process function also performs a more detailed risk assessment to define the changes that will be required at the RU based on its equipment, scale, and capabilities. The risk assessment should include evaluation of the properties and requirements of the product being transferred. This risk assessment not only defines the knowledge transfer requirements from the SU, but also is used by Engineering to estimate the capital requirements. If the TT involves a new product or technology, the process needs to be designed such that it will run reproducibly at the RU to consistently meet the requirements of the QTPP and/or specifications.</p>
+            <p>The Process function, working with Quality and Regulatory, will define strategies for both process and cleaning validation at the Planning stage and ensure that the SU and RU align their change control processes. The Process function will issue the change request for the TT in the change management system as well.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.3 製程功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：商業製程的規格化</h4>
+                <p>製程功能在此階段將 SU 的製程知識「翻譯」成 RU 可執行的規格：</p>
+                <ul>
+                    <li>批量（batch scale）確定</li>
+                    <li>單元操作（unit operations）盤點</li>
+                    <li>週期時間（cycle time）估算</li>
+                    <li>物料處理需求 → 初始物料清單（Bill of Materials）</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：食譜的「在地化」改版</h4>
+                <p>將法式料理食譜改成台灣廚房可以執行的版本——食材換了、爐具不同、份量放大——比較計畫（comparability plan）就是確保「改版後的菜餚口感與原版一致」的驗收標準。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點：變更控制必須現在啟動</h4>
+                <p>製程功能在規劃階段就要在變更管理系統中正式發出「TT 變更申請」，並確保 SU 與 RU 的變更控制流程相互對齊。延遲啟動變更控制常是後期稽核缺失的根源。</p>
+            </div>
+            <div class="application-box">
+                <h4>實務應用：新產品 vs. 既有產品</h4>
+                <p>若 TT 涉及的是<strong>新產品或新技術</strong>，製程必須設計到能在 RU 穩定重現，且持續符合 QTPP 要求。這與移轉既有成熟產品有本質差異——設計自由度更大，但不確定性也更高，風險評估必須更深入。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.4 ANALYTICAL ===== -->
+    <div id="sec-524" class="two-column">
+        <div class="left-column">
+            <h2>5.2.4 Analytical</h2>
+            <p>The Analytical function will perform a more detailed risk assessment to determine final analytical equipment requirements that will help determine analytical testing sites. Testing sites may be located at the SU, RU, MAH, or an external laboratory. The analytical risk assessment needs to include raw materials, packaging, in-process controls, and product, stability, and cleaning test requirements, specifically noting which methods are compendial.</p>
+            <p>Adequate quantities of source materials, reference standards, and critical analytical reagents must be estimated and made available for analytical method validation, transfer, and future manufacturing. As the amount of sample source material can impact yield from validation batches, Analytical will work with the Process and Regulatory functions to develop an initial sampling plan that covers the number of samples taken, amount of sample required, tests performed, sample location, and whether the sample should be assessed only during process validation. This initial assessment of the sampling plan allows for planning of adequate analytical resources during qualification.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.4 分析功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：分析測試地點的決策</h4>
+                <p>分析功能必須決定每一項測試方法在哪裡執行：</p>
+                <ul>
+                    <li>SU 實驗室（已有資格認定）</li>
+                    <li>RU 實驗室（需方法移轉）</li>
+                    <li>MAH 中央實驗室</li>
+                    <li>外部合約實驗室</li>
+                </ul>
+                <p>此決策直接影響資本投入與時程安排。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：血液檢驗的分流</h4>
+                <p>就像醫院決定哪些血液項目自行檢驗、哪些外送中心實驗室——常規項目留院做，罕見或高精度項目外包。分析功能的測試地點決策邏輯相同：依設備能力、成本、時效三角平衡。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點：參考標準品與試劑的前置採購</h4>
+                <p>分析方法驗證、移轉所需的參考標準品（reference standards）及關鍵試劑（critical analytical reagents）必須在規劃階段就估算用量並預排採購。這類物質往往有長交期或特殊儲存需求，拖到執行階段才處理會成為關鍵路徑瓶頸。</p>
+            </div>
+            <div class="formula-box">
+                <h4>取樣計畫六要素</h4>
+                <pre>取樣計畫 =
+① 取樣數量（number of samples）
+② 每次取樣量（amount per sample）
+③ 執行測試項目（tests performed）
+④ 取樣位置（sample location）
+⑤ 是否僅在製程驗證期間評估
+⑥ 對驗證批次產率的衝擊評估</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.5 ENGINEERING ===== -->
+    <div id="sec-525" class="two-column">
+        <div class="left-column">
+            <h2>5.2.5 Engineering</h2>
+            <p>Working closely with the Process function, Engineering will develop the capital requirements for the chosen RU, which are then documented in a capital appropriation request (CAR). Even before the TT user requirements specifications (URS) or CAR are complete, it may be necessary to decide to order long-lead equipment to meet TT timing requirements. Engineering also should be involved in change control for facility retrofits as well as laboratory modifications.</p>
+            <p>If the RU is a CMO or CDMO, the responsibilities of the Engineering function may reside at the contract site with strong oversight from the TT Team. The TT PM works closely with Engineering to coordinate the timing for equipment and facility installation, qualification, and training to align with the overall project plan.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.5 工程功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：CAR 與長交期設備</h4>
+                <p>工程功能的核心任務是將製程需求轉換成資本採購申請（CAR）。關鍵挑戰：</p>
+                <ul>
+                    <li>長交期設備（long-lead equipment）往往需要在 URS / CAR 完成前就先下訂單</li>
+                    <li>設備安裝、資格認定（IQ/OQ/PQ）必須與整體專案時程對齊</li>
+                    <li>廠房改建與實驗室改造均需納入變更控制</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：裝潢前先訂義大利進口磁磚</h4>
+                <p>裝潢設計圖還沒畫完，但義大利磁磚交期18週——先訂。工程功能面對的是同樣邏輯：凍乾機、隔離器、自動化灌裝設備的交期常達12-18個月，等 URS 完成再訂，移轉時程必然推遲。</p>
+            </div>
+            <div class="note-box">
+                <h4>CDMO / CMO 特殊考量</h4>
+                <p>若 RU 為外部 CDMO/CMO，工程功能的執行責任可能移交至合約廠，但 TT Team 必須保持強力監督（strong oversight）。TT PM 需特別協調設備安裝、資格認定與培訓的時程，確保與整體計畫同步。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習：您的 TT 有哪些長交期設備？</h4>
+                <p>在您目前或即將進行的技術移轉中，列出三個可能成為時程瓶頸的長交期設備或基礎設施項目，並估算其交期。這些項目是否已納入 CAR 或提前採購規劃？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.6 MANUFACTURING ===== -->
+    <div id="sec-526" class="two-column">
+        <div class="left-column">
+            <h2>5.2.6 Manufacturing</h2>
+            <p>In the Planning stage, Manufacturing coordinates with the TT PM to ensure that the project timeline considers all necessary steps for full operational readiness of the RU site. Operational requirements of the technology being transferred should be considered relative to the staff capabilities at the RU, permit requirements, and operational training that will be needed for the new process and modified facility. Manufacturing also will work with the Engineering and Process units on plant design to define URS and CAR requirements.</p>
+            <p>EHS considerations must be assessed against the RU's procedures and experience so necessary permits can be prepared. The EHS assessment includes protective equipment, product biosafety, aseptic practices, hazardous materials, and potential vent and waste streams. A report on the operational requirements and an EHS assessment report will focus attention on the areas that need to be addressed in the project plan.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.6 製造功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：操作就緒（Operational Readiness）</h4>
+                <p>製造功能的核心目標是確保 RU 在技術層面就緒之外，<strong>操作層面也同步就緒</strong>：</p>
+                <ul>
+                    <li>員工能力 vs. 新製程/新設備要求的差距分析</li>
+                    <li>環境、健康、安全（EHS）法規許可</li>
+                    <li>操作培訓計畫（新製程 + 改建廠房）</li>
+                    <li>URS / CAR 需求定義（與工程、製程協作）</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：新機型上線前的機師訓練</h4>
+                <p>航空公司引進新機型時，設備本身再好，沒有受訓合格的機師就無法起飛。製造功能的任務就是確保「人員就緒」與「設備就緒」同步——在執行階段正式開始前完成差距訓練。</p>
+            </div>
+            <div class="note-box">
+                <h4>EHS 評估不可拖延</h4>
+                <p>EHS 評估範圍涵蓋：個人防護設備（PPE）、產品生物安全、無菌操作規範、危險物質處理、排放廢氣及廢液處理。許可證（permits）申請往往需要數月時間，若規劃階段未啟動，將成為執行階段的阻礙。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.7 REGULATORY ===== -->
+    <div id="sec-527" class="two-column">
+        <div class="left-column">
+            <h2>5.2.7 Regulatory</h2>
+            <p>The Regulatory function will further define the regulatory strategy in the Planning stage, identifying any items that could impact the Business function's product strategy (see Section 5.1.1). The regulatory strategy should consider the documents that will be needed and include a projected timeline for key milestones such as drafting, review, and approval. These will later be expanded into a detailed submission tracker.</p>
+            <p>The regulatory strategy should include the regulatory risks, with mitigation options, and the regulatory assumptions identified by both the MAH and the RU. Collaboration between the MAH and RU Regulatory and Quality functions at this stage is important in understanding the risk tolerance and concerns of each, both in general and specific to the product. Establishing clear understandings at this stage can help avoid delays and frustration later in the process.</p>
+            <p>The Regulatory function communicates the submission requirements to the Process, Analytical, Engineering, and Manufacturing functions, which will perform detailed risk assessments. Based on the level of risk the MAH is comfortable with, Regulatory may be able to define opportunities to reduce complexity and accelerate regulatory submission and approval. Sources of risk that often are considered in the regulatory strategy include:</p>
+            <ul>
+                <li>Stability strategy</li>
+                <li>Analytical method transfers</li>
+                <li>Number and timing of validation batches</li>
+                <li>Process changes or improvements</li>
+                <li>Amount of data and activities the RU can leverage from the SU</li>
+            </ul>
+            <p>The MAH Regulatory function may meet with regulatory authorities to review the proposed regulatory strategy to ensure success.</p>
+            <p>The RU Regulatory function works with the MAH Regulatory unit to obtain current CMC information from the registered dossiers and to evaluate any compendial or compliance standards that have changed. It also is useful to obtain information about any changes implemented across the product's lifecycle to better understand challenges in manufacturing or testing of the product. Additionally, the outputs in the submission (e.g., CQAs and critical process parameters (CPPs)) should be provided to the RU so the RU can understand any critical challenges with the product and determine the inputs necessary to meet those requirements. If the TT is for a new product, the MAH Regulatory function will define the requirements based on the target markets and manufacturing locations.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.7 法規功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：法規策略從文件變成行動計畫</h4>
+                <p>啟動階段的法規策略是方向性文件；進入規劃階段，法規功能必須將其深化為：</p>
+                <ul>
+                    <li>含草稿、審查、批准時程的詳細提交追蹤表</li>
+                    <li>MAH 與 RU 雙方的風險耐受度對齊</li>
+                    <li>各職能詳細風險評估的需求輸入</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：上市路線圖的精細化</h4>
+                <p>啟動階段畫的是「大陸地圖」，規劃階段要畫「縣市街道圖」——知道每一條路的走法、哪些路段可能塞車（監管機構審查），並決定要走哪條最短路線（加速申請的機會點）。</p>
+            </div>
+            <div class="note-box">
+                <h4>法規風險五大來源</h4>
+                <ul>
+                    <li>穩定性策略（stability strategy）</li>
+                    <li>分析方法移轉（analytical method transfers）</li>
+                    <li>驗證批次數量與時程</li>
+                    <li>製程變更或改進</li>
+                    <li>RU 可從 SU 借用的數據與活動範圍</li>
+                </ul>
+            </div>
+            <div class="application-box">
+                <h4>實務要點：讓 RU 了解 CQA / CPP</h4>
+                <p>法規功能必須確保提交文件中的 CQA（關鍵品質屬性）與 CPP（關鍵製程參數）資訊傳遞給 RU。RU 了解這些關鍵挑戰，才能確認自身輸入條件能否滿足要求。這是避免執行階段「做了才發現做不到」的關鍵防線。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.8 QUALITY ===== -->
+    <div id="sec-528" class="two-column">
+        <div class="left-column">
+            <h2>5.2.8 Quality</h2>
+            <p>The MAH Quality function will work with the RU Process function to document in the QTPP and product specification the requirements that will ensure the quality, safety, and efficacy of the product. In this stage, quality agreements must be developed concurrently and executed, as required, between the MAH and RU, and between the RU or MAH and additional GMP providers and external laboratories.</p>
+            <p>Based on the target market(s), current stability requirements, and commitments made to regulatory authorities, Quality will work with the Process, Analytical, and Regulatory functions to prepare the stability requirements. Regulatory uses the stability plan to further develop the overall regulatory timeline to ensure that all conditions of the current commitments can be met.</p>
+            <p>Using the regulatory strategy, Quality also begins GMP audit-readiness activities at the RU to ensure full inspection readiness when needed in the Execution stage. First, the MAH Quality function performs an audit of the chosen RU so that all compliance gaps impacting the TT can be addressed prior to physical implementation of the cross-functional requirements. When significant quality changes are required, a quality improvement plan will be developed; however, the quality assessment performed during the Initiation stage should have identified if a site has a significant compliance gap.</p>
+            <p>Quality also performs a gap assessment of the SU, RU, and MAH quality systems and negotiates an aligned QMS for the TT. This alignment should be performed even when the SU and RU are both internal sites, as interpretation of the global QMS may differ across regions.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.8 品保功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：品質協議與 QMS 對齊</h4>
+                <p>品保功能在規劃階段的三大任務：</p>
+                <ul>
+                    <li><strong>品質協議</strong>：MAH↔RU、RU/MAH↔外部實驗室，須同步執行</li>
+                    <li><strong>RU 稽核</strong>：找出並在執行前消弭合規缺口</li>
+                    <li><strong>QMS 對齊</strong>：即使 SU 與 RU 同屬內部，不同地區對全球 QMS 的解讀可能不同</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：婚前健康檢查</h4>
+                <p>在正式合作（執行階段）開始前，MAH 對 RU 進行品質稽核，就像婚前健康檢查——提前發現問題，有時間處理，而不是在蜜月旅行（生產驗證）時才發現雙方體質不合。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點：穩定性計畫是法規時程的骨架</h4>
+                <p>品保功能協助制定的穩定性計畫（stability plan）直接影響法規申請時程——加速穩定性研究可縮短申請等待期，但必須確保所有現有承諾條件均能滿足。穩定性計畫是 Quality、Process、Analytical、Regulatory 四功能協作的輸出。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點：內部移轉也需 QMS 對齊</h4>
+                <p>許多公司誤以為「同公司內部廠間移轉」不需要正式的 QMS 對齊。PDA TR65 明確指出：即使 SU 與 RU 同屬內部，區域間對全球 QMS 的解讀差異真實存在，必須正式協商並記錄對齊結果。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.9 SOURCING/SUPPLY CHAIN ===== -->
+    <div id="sec-529" class="two-column">
+        <div class="left-column">
+            <h2>5.2.9 Sourcing/Supply Chain</h2>
+            <p>Once the decision to perform the TT is made, production planning begins. The Sourcing/Supply Chain function works closely with the TT PM to evaluate the time that will be needed for the TT, based on the time needed for Engineering installation and qualification, the number of engineering batches to be performed, the number of qualification batches needed, and the time needed for stability studies and regulatory approvals. Planned downtime in production, such as for maintenance (reactive or preventive) and cleaning, also should be considered.</p>
+            <p>During the Planning stage, the target market volume also is used to determine future RU capacity and resource needs for commercial supply. These requirements typically are part of the supply agreement negotiated with the RU during the Planning stage.</p>
+            <p>During this stage, the sourcing of raw materials, consumables, and packaging components should begin with identification of sources for the items with the longest lead times and sole-sourced items. Any changes to the supply of critical materials identified as part of the TT risk assessment also should be addressed.</p>
+            <p>The Sourcing/Supply Chain function also evaluates overall product logistics to further develop the product supply chain strategy. At this stage, the product supply chain strategy should show import/export considerations, distribution, and interim points involved with both the product and materials. A detailed supply chain map showing distributors and manufacturers for key components is a key output to identify supply chain risks, consider second sources of critical materials, and facilitate future troubleshooting.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.9 採購 / 供應鏈功能 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：生產計畫的四維度評估</h4>
+                <p>供應鏈功能評估 TT 所需時間，必須納入四個維度：</p>
+                <ul>
+                    <li>工程安裝與資格認定時間</li>
+                    <li>工程批次數量</li>
+                    <li>確認批次數量</li>
+                    <li>穩定性研究及法規批准時間</li>
+                </ul>
+                <p>計畫性停機（預防保養、清潔）也必須納入，不可忽略。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：餐廳開幕前的食材備料</h4>
+                <p>新餐廳開幕前，廚師要先確認：哪些食材只有一家供應商（sole-source）？哪些需要提前3個月訂購（long-lead）？一旦開幕後才發現關鍵食材斷貨，代價極高。供應鏈功能在規劃階段做的正是這件事——為技術移轉備好「食材」。</p>
+            </div>
+            <div class="note-box">
+                <h4>供應鏈地圖：預防未來麻煩的地雷圖</h4>
+                <p>規劃階段的關鍵輸出之一是詳細的供應鏈地圖，顯示：</p>
+                <ul>
+                    <li>進出口考量（import/export）</li>
+                    <li>配銷商與關鍵組件製造商</li>
+                    <li>二次供應來源（second sources）機會</li>
+                </ul>
+                <p>這張地圖是未來供應鏈風險識別和故障排除的基礎工具。</p>
+            </div>
+            <div class="application-box">
+                <h4>實務應用：Sole-Source 物料的雙重風險</h4>
+                <p>單一來源（sole-sourced）物料面臨兩重風險：<br>
+                ① 供應中斷風險（廠商停產、品質問題）<br>
+                ② 法規風險（更換供應商需重新驗證、申請變更）<br>
+                在規劃階段盡早識別這類物料，並評估是否需要開發第二供應來源，是供應鏈韌性的核心工作。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2.10 BEST PRACTICES ===== -->
+    <div id="sec-5210" class="two-column">
+        <div class="left-column">
+            <h2>5.2.10 Best Practices and Additional Suggestions</h2>
+            <p>Table 5.2.10-1 describes additional ideas for consideration and best practices for the Planning stage.</p>
+        </div>
+        <div class="right-column">
+            <h2>5.2.10 最佳實踐 — 解說</h2>
+            <div class="concept-box">
+                <h4>核心概念：五大最佳實踐主題</h4>
+                <p>本節彙整規劃階段的最佳實踐，涵蓋：kickoff 品質、既有條件理解、新廠導入先決條件、風險評估更新、以及專案監督與團隊投入。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：工地的安全規範手冊</h4>
+                <p>最佳實踐清單如同工地安全規範——不是每個項目都會出問題，但每一條規範背後都有血淚教訓。跳過任何一項，風險不是零，而是未知。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習：您的 Kickoff 是「儀式」還是「對齊」？</h4>
+                <p>PDA 強調 kickoff 應面對面進行（若不能，預留1-2天討論時間），並建立文件共享平台。回顧您曾參與的 TT kickoff：它是打卡儀式，還是真正對齊計畫與里程碑的工作會議？差距在哪裡？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TABLE 5.2.10-1 ===== -->
+    <div id="sec-5210-table" style="margin-bottom: 1.5rem;">
+        <div style="background: white; border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem;">Table 5.2.10-1: Best Practices and Additional Suggestions for the Planning Stage</h3>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="min-width:160px;">Topic</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hold a well-organized project kick-off</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Kick-off meeting should be well organized to cover all relevant activities and functions</li>
+                                    <li>Meet face to face with the TT Team if possible. In the absence of a face-to-face meeting, allow adequate time (e.g., 1-2 days or half-days) for discussion and alignment around the project plan and key milestones</li>
+                                    <li>Establish an online repository for document-sharing</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Understand established conditions</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Identify and share with the RU the existing manufacturing process conditions at the SU, including material, people, and process flows</li>
+                                    <li>Determine and communicate the changes that may need to be made at the RU</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Define prerequisites for introduction of product to new site</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Ensure that the proposed process, development data, and control strategy meet all expectations and requirements before proceeding</li>
+                                    <li>Ensure requirements for the RU and SU are well understood for all processes, analytical methods, documents, and forms required to initiate activities related to the project start, e.g., change control, material setup</li>
+                                    <li>Ensure key timelines/actions necessary to meet each requirement are understood</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Perform risk assessments</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Conduct or update detailed process and analytical risk assessments so the TT Team will be well informed about the primary areas of risk in this transfer, allowing them to create risk mitigation strategies</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ensure project oversight and team engagement</strong></td>
+                            <td>
+                                <ul style="margin-left:1rem; font-size:0.87rem;">
+                                    <li>Assign one person from both the RU and SU as team leads/PMs to be accountable for the project throughout its lifecycle and to be ultimately accountable to the steering committee</li>
+                                    <li>Ensure that team members are participating, engaged, following through with their assigned actions, and meeting timelines</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div id="sec-summary" style="margin-bottom: 2rem;">
+        <div style="background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 12px; padding: 1.5rem; border: 1px solid #a8dcc9;">
+            <h3 style="color: #117a65; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid #27ae60; padding-bottom: 0.5rem;">Section 5.2 Summary — 規劃階段總結</h3>
+            <div class="two-column" style="margin-bottom: 0;">
+                <div>
+                    <h4 style="color: #1a3a2a; margin-bottom: 0.75rem; font-size: 0.95rem;">Key Takeaways (English)</h4>
+                    <ul style="margin-left: 1.25rem; font-size: 0.9rem;">
+                        <li>Planning stage starts post-site-selection and culminates in a stage gate approval to proceed to Knowledge Transfer</li>
+                        <li>The TT PM is formally assigned and leads cross-functional team formation, RACI creation, and the project plan</li>
+                        <li>All 9 functions contribute detailed deliverables — from supply agreements (Business) to supply chain maps (Sourcing)</li>
+                        <li>Risk assessments become more detailed and drive resource, capital, and timeline decisions</li>
+                        <li>Key agreements executed: supply agreements, TT agreement (SU/RU), quality agreements, and external lab agreements</li>
+                        <li>Long-lead items (equipment, materials) must be identified and ordered even before URS/CAR are finalized</li>
+                        <li>Kick-off meeting formally launches the cross-functional TT team and aligns all parties</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1a3a2a; margin-bottom: 0.75rem; font-size: 0.95rem;">核心要點（繁體中文）</h4>
+                    <ul style="margin-left: 1.25rem; font-size: 0.9rem;">
+                        <li>規劃階段始於地點選定後，終於 Stage Gate 批准，方可進入知識移轉階段</li>
+                        <li>TT PM 正式指派，主導跨職能團隊組建、RACI 制定與專案計畫開發</li>
+                        <li>九大功能各有具體交付物，涵蓋供應協議（商務）到供應鏈地圖（採購）</li>
+                        <li>風險評估深化，驅動資源、資本與時程決策</li>
+                        <li>關鍵協議：供應協議、TT 協議（SU/RU）、品質協議、外部實驗室協議</li>
+                        <li>長交期設備/物料必須在 URS/CAR 完成前提前下訂或規劃</li>
+                        <li>Kick-off 會議正式啟動跨職能 TT 團隊，對齊各方</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 1rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.7); border-radius: 8px; font-size: 0.88rem; color: #2d3748;">
+                <strong>一句話核心：</strong>規劃階段的本質是將啟動階段的高層次方向，轉換為九大功能各自承擔的具體承諾與可執行計畫——在任何實體工作開始之前，確保所有人知道「做什麼、誰來做、何時完成、如何衡量成功」。
+            </div>
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 65 (Revised 2022): Technology Transfer</p>
+    <p>Section 5.2: Planning Stage | Pages 22–28</p>
+    <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.8rem;">SterileGMP Knowledge Hub — Educational Reference Material</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
