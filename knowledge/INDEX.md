@@ -362,6 +362,29 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR13-Complete.md
+**Report:** PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
+**Pages:** p1–p63 | **Sections:** 8
+
+**Covers questions about:**
+- What constitutes a comprehensive Environmental Monitoring (EM) program for aseptic manufacturing
+- ISO and EU GMP cleanroom classification: Grade A/B/C/D, ISO 5–8, particulate and microbial limits
+- Setting alert levels and action limits: statistical methods (Cusum, EWMA, regression, historical data)
+- Qualification of EM equipment and program: IQ/OQ/PQ, BioPhorum 6-factor qualification grid
+- Rapid Microbial Methods (RMM): technology types (ATP, flow cytometry, MALDI-TOF), validation, regulatory status
+- Data management and trending: ALCOA, electronic records, trending rules, CRR reporting
+- EM monitoring applications: Grade A/B air (settle plates, active air samplers), surfaces, personnel, water, utilities
+- Microbial identification: classical methods vs. MALDI-TOF, species significance in investigation
+- Investigation systems: identification, trending, OOS, deviation, and CAPA investigation types
+- Prerequisites for EM: personnel training, gowning qualification, disinfection programs, HVAC, SOP frameworks
+- Regulatory comparison: FDA 2004 Aseptic Guidance, EU GMP Annex 1 (2022), PIC/S, WHO, Japan MHLW
+
+**Key terms:** environmental monitoring (EM), alert level, action limit, Grade A/B/C/D, ISO 14644, particulate limit, microbial limit, settle plate, active air sampler, contact plate, RODAC, dual-temperature incubation, RMM (rapid microbial methods), MALDI-TOF, ATP bioluminescence, flow cytometry, trending, Cusum, EWMA, regression, CRR (cumulative recovery rate), ALCOA, data integrity, OQ/PQ, BioPhorum qualification grid, microbial identification, CAPA, cleanroom qualification, HVAC, EU GMP Annex 1, FDA aseptic guidance, PIC/S, WHO, MHLW
+
+**Sections:** Section 1 (Introduction & Glossary) → Section 3 (Regulatory Classifications & Limits) → Section 4 (EM Program Qualification) → Section 5a (Alert Levels & Data Trending) → Section 5b (RMM & Investigations) → Section 6 (Monitoring Applications) → Section 7 (Prerequisites & References) → Section 9 (Appendices: FMEA, HACCP, OQ/Recertification Tables)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -388,7 +411,11 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
 | Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
-| Environmental monitoring, EM / 環境監控、微生物監測 | TR90 + PtC-12 + TR22 |
+| Environmental monitoring, EM / 環境監控、微生物監測 | TR13 + TR90 + PtC-12 + TR22 |
+| EM program fundamentals, alert levels, action limits, EM qualification / 環境監測計畫基礎、警戒線、行動線、EM確效 | TR13 |
+| EM regulatory limits, Grade A/B/C/D limits, ISO 14644, FDA vs EU vs PIC/S comparison / 環境監測法規、Grade A/B/C/D限值、各國法規比較 | TR13 |
+| RMM, rapid microbial methods, MALDI-TOF, microbial identification / 快速微生物方法、MALDI-TOF、微生物鑑定 | TR13 |
+| Alert level statistics, trending, Cusum, EWMA, CRR / 警戒線統計方法、趨勢分析、累積回收率 | TR13 |
 | Aseptic processing (general) / 無菌製程（一般）| Guide-No1 + TR22 + PtC-12 |
 | Container closure integrity / 容器密封完整性、CCI | TR73 + TR90 |
 | Regulatory submissions EU MDR / 歐盟MDR法規送件 | TR73-2 |
@@ -422,7 +449,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
 
 **Environmental Monitoring / EM (環境監控)**
-→ TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | PtC-14 ★ (ATMP context)
+→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
 → Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
@@ -431,7 +458,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR70 ★★★ (cleaning & disinfection program) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
@@ -455,7 +482,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
 **Annex 1 (2022) EU GMP**
-→ TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR22 ★★ (APS under Annex 1)
+→ TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
 
 **Sterile Filtration / Bioburden Control (除菌過濾/微生物負荷)**
 → TR26 ★★★ (primary filtration guidance) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
@@ -473,7 +500,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) — single primary source
 
 **Statistical Methods / SPC (統計方法)**
-→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR22 ★★ (APS batch statistics)
+→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics)
 
 **Cleaning Validation (清潔確效)**
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
