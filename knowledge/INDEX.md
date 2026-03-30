@@ -362,6 +362,31 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR46-Complete.md
+**Report:** PDA Technical Report No. 46 (Revised 2024): Last Mile: Guidance for Good Distribution Practices for Pharmaceutical Products to End Users
+**Pages:** p1–p39 | **Sections:** 6
+
+**Covers questions about:**
+- What "last mile" distribution means and how it differs from upstream supply chain activities
+- Global pharmaceutical supply chain structures: EU, Africa (Senegal), Brazil (ANVISA/SUS), United States (DSCSA), Canada (Health Canada/College of Pharmacy), China (NMPA/hospital-centric)
+- Product stability budget and MKT (Mean Kinetic Temperature) calculation for evaluating temperature excursions
+- Storage facility requirements, environmental control, and temperature mapping for last-mile points
+- Passive vs. active thermal packaging: selection, qualification, sustainability considerations
+- Transportation modes: road transport, drone delivery, mail-service pharmacy last-mile
+- Temperature monitoring: data loggers vs. TTIs, risk-based approach to monitoring
+- Serialization requirements: EU FMD/EMVS 2D Data Matrix system vs. US DSCSA/EPCIS track-and-trace
+- Data integrity (ALCOA+) for GDP documentation, data governance, electronic records
+- Emerging technologies: RFID, IoT real-time monitoring, blockchain for immutable records, ML for predictive analytics
+- Deviation and complaint management, OTIF and performance KPIs for last-mile operations
+- Training of healthcare professionals and patient information on drug storage
+- Inventory management (FIFO/FEFO), waste stream, recycling/reverse logistics, cost of failure, BCP
+
+**Key terms:** last mile, GDP (Good Distribution Practices), MKT (Mean Kinetic Temperature), stability budget, passive thermal packaging, active thermal packaging, PCM (phase change material), TTI (time-temperature indicator), data logger, serialization, FMD (Falsified Medicines Directive), EMVS, DSCSA, EPCIS, RFID, IoT, blockchain, machine learning, ALCOA+, data governance, FIFO, FEFO, reverse logistics, OTIF, BCP (business contingency plan), ANVISA, SUS (Brazil), NMPA (China), Health Canada, wholesaler authorization, quality agreement
+
+**Sections:** Section 1–2 (Introduction & Glossary) → Section 3a (Supply Chains: Overview, EU & Africa) → Section 3b (Supply Chains: Brazil & USA) → Sections 3.7–5 (Canada/China + Products & Temperature Services) → Section 6 (Data & Knowledge Management) → Sections 7–9 (Cost Management, Sustainability & Summary)
+
+---
+
 ## TR13-Complete.md
 **Report:** PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
 **Pages:** p1–p63 | **Sections:** 8
@@ -414,7 +439,15 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Filling machines, pump types, dose accuracy / 充填機、幫浦類型、劑量精準度 | Guide-No1 |
 | Media fill, APS, aseptic simulation / 培養基充填、無菌製程模擬 | TR22 |
 | Filter validation, integrity test, PUPSIT / 過濾器驗證、完整性測試、過濾器破損檢查 | TR26 |
-| Cold chain, GDP, distribution, shipping / 冷鏈、優良運銷規範、運輸、溫度控制 | TR52 + TR39 |
+| Cold chain, GDP, distribution, shipping / 冷鏈、優良運銷規範、運輸、溫度控制 | TR52 + TR39 + TR46 |
+| Last mile distribution, end user delivery, patient-level cold chain / 最後一哩配送、終端用戶、患者端冷鏈 | TR46 |
+| Global supply chain: EU, US, Brazil, China, Canada, Africa / 全球供應鏈結構、各國GDP法規比較 | TR46 |
+| Serialization, DSCSA, FMD, track and trace, EPCIS / 序列化、美國藥品追蹤法、歐盟防偽指令 | TR46 |
+| MKT, stability budget, temperature excursion evaluation / 平均動力學溫度、穩定性預算、溫度偏差評估 | TR46 + TR39 |
+| Blockchain, IoT, RFID, ML in pharma supply chain / 區塊鏈、物聯網、RFID、機器學習在供應鏈中的應用 | TR46 |
+| Passive shipper, active shipper, PCM, thermal packaging / 被動式保溫、主動式溫控、相變材料、溫控包裝 | TR46 + TR39 |
+| Drone delivery, mail-order pharmacy, last mile transport / 無人機配送、郵購藥局 | TR46 |
+| Reverse logistics, drug take-back, packaging waste, sustainability / 逆向物流、藥品回收、包裝廢棄物 | TR46 |
 | Lane qualification, OQ, PQ, passive shipper, PCM, stability budget / 運輸路線確效、被動式保溫箱、穩定性預算 | TR39 |
 | Temperature excursion, nonconformance, OPV, cold chain KPI / 溫度偏差、持續製程驗證、冷鏈KPI | TR39 |
 | Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
@@ -531,7 +564,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
 
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
-→ TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
+→ TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
 → PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
@@ -546,7 +579,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
 
 **GDP / Good Distribution Practices (優良運銷規範)**
-→ TR52 ★★★ — single-report topic in this knowledge base
+→ TR52 ★★★ (GDP framework, audit checklist) | TR46 ★★★ (last-mile GDP: global supply chains, serialization, technologies, cost) | TR39 ★★ (lane qualification, OQ/PQ, OPV)
 
 **Glass Vial Handling / Glass Breakage (玻璃瓶處理/破損)**
 → TR87 ★★★ (comprehensive handling best practices, FMEA, investigation) — single primary source

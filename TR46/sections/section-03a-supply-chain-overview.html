@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR46 - Section 3a: Global Supply Chains</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== SUPPLY CHAIN DIAGRAM ===== */
+.sc-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 1.25rem 0;
+}
+
+.sc-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.sc-node {
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+    min-width: 130px;
+    line-height: 1.4;
+}
+
+.sc-node.manufacturer {
+    background: #dbeafe;
+    border: 2px solid #3b82f6;
+    color: #1e40af;
+}
+
+.sc-node.internal {
+    background: #ede9fe;
+    border: 2px solid #7c3aed;
+    color: #4c1d95;
+}
+
+.sc-node.wholesaler {
+    background: #fef3c7;
+    border: 2px solid #d97706;
+    color: #78350f;
+}
+
+.sc-node.hcp {
+    background: #d1fae5;
+    border: 2px solid #059669;
+    color: #065f46;
+}
+
+.sc-node.patient {
+    background: #fee2e2;
+    border: 2px solid #dc2626;
+    color: #7f1d1d;
+}
+
+.sc-node.public {
+    background: #fce7f3;
+    border: 2px solid #db2777;
+    color: #831843;
+}
+
+.sc-node.ngo {
+    background: #f0fdf4;
+    border: 2px solid #16a34a;
+    color: #14532d;
+}
+
+.sc-arrow {
+    font-size: 1.4rem;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.sc-arrow-down {
+    font-size: 1.4rem;
+    color: #64748b;
+    text-align: center;
+    padding: 0.1rem 0;
+}
+
+.sc-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    background: #f1f5f9;
+    border-radius: 4px;
+    padding: 2px 6px;
+    border: 1px solid #cbd5e1;
+    white-space: nowrap;
+}
+
+.sc-mile-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.mile-first { background: #dbeafe; color: #1e40af; }
+.mile-middle { background: #fef3c7; color: #78350f; }
+.mile-last { background: #fee2e2; color: #991b1b; }
+
+/* ===== ROLE TABLE ===== */
+.role-table th {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+}
+
+/* ===== TEMP CATEGORY TABLE ===== */
+.temp-table .cold-chain {
+    background: #eff6ff;
+}
+.temp-table .frozen {
+    background: #e0f2fe;
+}
+.temp-table .ambient {
+    background: #f0fdf4;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+
+    .sc-row {
+        flex-wrap: wrap;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE HEADER -->
+<!-- ============================================================ -->
+<div class="header">
+    <h1>TR46 Section 3 (Part A): Global Supply Chains &mdash; Overview, Roles &amp; EU/Africa</h1>
+    <div class="subtitle">全球供應鏈：概述、角色責任、歐盟與非洲供應鏈</div>
+    <div class="page-info">PDA Technical Report No. 46 (Revised 2024) | p3&ndash;p9</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MAIN CONTENT -->
+<!-- ============================================================ -->
+<div class="main-content">
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>本章學習目標</h3>
+        <ul>
+            <li>理解製藥供應鏈的完整結構：從製造商&rarr;批發商&rarr;醫療機構/藥局&rarr;患者的各環節，以及第一哩/中間哩/最後一哩的定義</li>
+            <li>掌握各角色的GDP責任：製造商責任邊界、批發商授權要求、醫療機構的末端責任，以及質量協議的角色</li>
+            <li>了解歐盟GDP指南（2013/C 343/01）的核心要求，包括溫度分類、批發授權與公共服務義務</li>
+            <li>認識非洲供應鏈挑戰：非正規分銷、仿冒藥風險、WHO預認證機制及塞內加爾典型案例</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本頁內容導覽</h3>
+        <div class="toc-grid">
+            <a href="#sec3-0">3.0 Pharmaceutical Supply Chains</a>
+            <a href="#sec3-1">3.1 Distribution in Supply Chains</a>
+            <a href="#sec3-2">3.2 Roles and Responsibilities</a>
+            <a href="#sec3-3">3.3 Supply Chains in Europe</a>
+            <a href="#sec3-4">3.4 Supply Chains in Africa</a>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SECTION 3.0 -->
+    <!-- =========================================================== -->
+    <div id="sec3-0" style="background:white; border-radius:12px; margin-bottom:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.08); overflow:hidden;">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.0</div>
+            <div class="chapter-info">
+                <h2>Pharmaceutical Supply Chains</h2>
+                <p>Complexity &bull; Stakeholders &bull; Public vs. Private &bull; 供應鏈複雜性與雙軌體系</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.0 Pharmaceutical Supply Chains</h3>
+                    <p>The pharmaceutical supply chain has a high level of complexity as it varies regionally and in the number of <span class="key-term">stakeholders</span> including but not limited to manufacturers, distribution centers, wholesalers, points of dispensing, and points of administration. In addition, many countries have public and private pharmaceutical supply chains managed by governmental organizations and wholesale distributors respectively.</p>
+                    <p>Before a patient receives a pharmaceutical product, <span class="key-term">distribution routes</span> should be appropriately managed in the supply chain to maintain product safety, integrity, quality, and efficacy. Therefore, the roles and responsibilities of supply chain partners and the design of the supply chain should be clearly determined to manage the environmental conditions, regulations, and product requirements for delivery to patients.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>解析：供應鏈概述</h3>
+                    <div class="concept-box">
+                        <h4>台灣藥品供應鏈對比：健保制度下的特殊配送結構</h4>
+                        <p>台灣藥品配送與歐盟模式有顯著差異：</p>
+                        <ul>
+                            <li><strong>醫院直接採購</strong>：大型醫學中心（台大、長庚）多從原廠/代理商直接採購，繞過傳統批發商</li>
+                            <li><strong>健保給付驅動</strong>：藥品價格由健保署核定，通路利潤空間有限，批發商角色相對壓縮</li>
+                            <li><strong>藥局配送</strong>：社區藥局透過全國型批發商（如國藥、永信）供貨，最後一哩由藥師直接給付患者</li>
+                            <li><strong>冷鏈相對集中</strong>：因島嶼地形，冷鏈配送距離較短，但偏鄉（原住民部落、離島）仍存在最後一哩挑戰</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>為什麼最後一哩最難控制？</h4>
+                        <p>每往下一層，供應鏈管控能力系統性下降：</p>
+                        <ul>
+                            <li><strong>GDP知識</strong>：製造商100% &rarr; 批發商80% &rarr; 藥局/診所40% &rarr; 患者&lt;5%</li>
+                            <li><strong>設備條件</strong>：工業級冷藏倉庫 &rarr; 商用冷藏車 &rarr; 家用冰箱（溫度不穩定）</li>
+                            <li><strong>監管力度</strong>：製造廠定期GMP查廠 &rarr; 批發商定期GDP稽核 &rarr; 診所/藥局抽查 &rarr; 患者端完全無監管</li>
+                        </ul>
+                        <p>這正是TR46聚焦「最後一哩GDP」的核心原因。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>供應鏈風險累積原理</h4>
+                        <pre>供應鏈節點數量 ↑  →  潛在風險暴露點 ↑
+每個節點 = 潛在溫度偏差點 + 文件斷鏈點 + 責任模糊地帶
+
+風險 = Σ(節點風險) × 節點間交接品質係數</pre>
+                        <p>最後一哩的特殊性：節點數雖少，但每個節點的<strong>管控係數最低</strong>，導致單位節點風險最高。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SECTION 3.1 -->
+    <!-- =========================================================== -->
+    <div id="sec3-1" style="background:white; border-radius:12px; margin-bottom:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.08); overflow:hidden;">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.1</div>
+            <div class="chapter-info">
+                <h2>Distribution in Supply Chains</h2>
+                <p>Internal vs. External &bull; First / Middle / Last Mile &bull; Figure 3.1-1 &bull; 內部與外部配送，三哩定義</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.1 Distribution in Supply Chains</h3>
+                    <p>Distribution of medicinal products in the supply chain can be divided into <span class="key-term">internal distribution</span> and <span class="key-term">external distribution</span>. Internal distribution can be considered as the transport of a commercial product within a pharmaceutical manufacturer's supply chain; that is, all transports from the manufacturing facility to the packaging facility to the warehouse to a distribution center. During internal distribution, the <span class="key-term">marketing authorization holder (MAH)</span> is the owner of the goods at all times.</p>
+                    <p>An internal distribution network with direct distribution to the customer (also called <span class="key-term">direct sales</span>) is subject to review by inspectorates as part of the manufacturer's good manufacturing practices (GMP) and <span class="key-term">good distribution practices (GDP)</span> authorization. Internal distribution is typically called the <strong>"first mile"</strong> and direct distribution from the manufacturer to a point of administration (e.g., hospital) is referred to as the <strong>"last mile."</strong> In some unique circumstances, manufacturers may ship directly to the patient such items as test kits and orphan drugs, for example, in compliance with local laws and regulations.</p>
+                    <p>External distribution, on the other hand, is product that is no longer owned by the manufacturer. It covers the transport of commercial products through various steps in the customer's supply chain — transport from a pharmaceutical manufacturer's distribution center to commercial customers (including wholesalers, retailers, and buying groups like non-governmental organizations (NGO)), clinical facilities, or directly to the patient. External distribution is normally not part of a product filing, and it can be called <strong>"middle mile"</strong> as well as last mile to the end user the patient.</p>
+                    <p>Moving through the supply chain, product volumes decrease from product-pallet shipments in the first mile to single packs in the last mile. Meanwhile, the mix of products typically varies in a shipment from one or a few product(s) in the first mile to multiple or more than a hundred products in the middle mile to one or a few products in the last mile. The distance and duration of shipments typically decrease from thousands of miles and multiple transportation days by air and ocean in the first mile to a few kilometers and hours or minutes in the last mile. Exceptions do exist, however; for example, the last mile can take days in rural and remote areas where transportation by foot or via rivers by boat is the only option.</p>
+                    <p>Within the external distribution network, there may be two supply chains for pharmaceuticals — <span class="key-term">public</span> and <span class="key-term">private</span>. Public supply chains are owned by the government and focus on essential medicines for the population, like vaccines and products for the prevention or treatment of malaria and HIV. Very often NGOs donate products to public supply chains to support the population in low-income and/or developing countries. The public supply chains typically comprise central, regional, and district government distribution centers, public pharmacies, health centers, and public hospitals. Private supply chains typically comprise wholesalers, pharmacies, clinics, and healthcare professionals authorized to dispense medicinal products to the public. The external distribution network is overseen by inspectorates as part of the wholesaler's GDP authorization.</p>
+
+                    <!-- FIGURE 3.1-1 HTML DIAGRAM -->
+                    <div class="figure-container" style="text-align:left;">
+                        <p style="font-weight:600; color:var(--primary-blue); margin-bottom:0.75rem;">Figure 3.1-1: Schematic Representation of the Pharmaceutical Supply Chain</p>
+                        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:1.25rem;">
+                            <!-- INTERNAL / FIRST MILE -->
+                            <div style="margin-bottom:0.75rem;">
+                                <div style="font-size:0.75rem; font-weight:700; color:#1e40af; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                                    <span style="background:#dbeafe; border:1px solid #93c5fd; border-radius:4px; padding:2px 8px;">INTERNAL DISTRIBUTION</span>
+                                    <span style="color:#6b7280;">&#9135;&#9135;&#9135;&#9135;&#9135;</span>
+                                    <span class="sc-mile-badge mile-first">First Mile</span>
+                                </div>
+                                <div class="sc-diagram" style="flex-direction:row; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+                                    <div class="sc-node manufacturer">Manufacturing<br>Facility</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node internal">Packaging<br>Facility</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node internal">Warehouse /<br>DC (MAH owned)</div>
+                                </div>
+                                <div style="font-size:0.78rem; color:#64748b; margin-top:0.4rem; padding-left:0.25rem;">MAH owns product at all times &bull; Subject to GMP + GDP authorization &bull; Pallet-level shipments</div>
+                            </div>
+                            <div style="text-align:center; color:#94a3b8; font-size:1.2rem; margin:0.25rem 0;">&#11015;</div>
+                            <!-- EXTERNAL / MIDDLE MILE -->
+                            <div style="margin-bottom:0.75rem;">
+                                <div style="font-size:0.75rem; font-weight:700; color:#78350f; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                                    <span style="background:#fef3c7; border:1px solid #fcd34d; border-radius:4px; padding:2px 8px;">EXTERNAL DISTRIBUTION</span>
+                                    <span style="color:#6b7280;">&#9135;&#9135;&#9135;&#9135;&#9135;</span>
+                                    <span class="sc-mile-badge mile-middle">Middle Mile</span>
+                                </div>
+                                <div class="sc-diagram" style="flex-direction:row; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+                                    <div class="sc-node wholesaler">Wholesaler /<br>Distributor</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node ngo">NGO /<br>Buying Group</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node public">Public Medical<br>Store</div>
+                                </div>
+                                <div style="font-size:0.78rem; color:#64748b; margin-top:0.4rem; padding-left:0.25rem;">Product ownership transferred &bull; Overseen by GDP inspectorates &bull; Case/carton-level shipments &bull; Multi-product mix</div>
+                            </div>
+                            <div style="text-align:center; color:#94a3b8; font-size:1.2rem; margin:0.25rem 0;">&#11015;</div>
+                            <!-- LAST MILE -->
+                            <div>
+                                <div style="font-size:0.75rem; font-weight:700; color:#991b1b; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                                    <span style="background:#fee2e2; border:1px solid #fca5a5; border-radius:4px; padding:2px 8px;">LAST MILE</span>
+                                    <span style="color:#6b7280;">&#9135;&#9135;&#9135;&#9135;&#9135;</span>
+                                    <span class="sc-mile-badge mile-last">Last Mile (Focus of TR46)</span>
+                                </div>
+                                <div class="sc-diagram" style="flex-direction:row; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+                                    <div class="sc-node hcp">Hospital /<br>Clinic / POA</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node hcp">Pharmacy /<br>POD</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node patient">Patient</div>
+                                </div>
+                                <div style="font-size:0.78rem; color:#64748b; margin-top:0.4rem; padding-left:0.25rem;">Single-pack shipments &bull; Minutes to days duration &bull; Rural/remote exceptions &bull; Lowest GDP oversight</div>
+                            </div>
+                        </div>
+                        <div class="figure-caption">Figure 3.1-1: Schematic Representation of the Pharmaceutical Supply Chain (PDA TR46, p4). POA = Point of Administration; POD = Point of Dispensing; DC = Distribution Center.</div>
+                    </div>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>解析：三哩配送與供應鏈層級</h3>
+                    <div class="concept-box">
+                        <h4>三哩配送：關鍵特徵對比</h4>
+                        <table>
+                            <thead>
+                                <tr><th>特徵</th><th>第一哩<br>First Mile</th><th>中間哩<br>Middle Mile</th><th>最後一哩<br>Last Mile</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>產品擁有者</td><td>MAH（製造商）</td><td>批發商/客戶</td><td>醫療機構/患者</td></tr>
+                                <tr><td>貨物量</td><td>棧板級（pallet）</td><td>箱/紙箱</td><td>單件包裝</td></tr>
+                                <tr><td>產品種類</td><td>1-3種產品</td><td>數十至百餘種</td><td>1-3種產品</td></tr>
+                                <tr><td>距離</td><td>洲際（數千公里）</td><td>國家/地區級</td><td>數公里（城市）至數天（偏遠）</td></tr>
+                                <tr><td>法規框架</td><td>GMP + GDP授權</td><td>GDP批發授權</td><td>最低（藥局執照）</td></tr>
+                                <tr><td>溫控設備</td><td>工業級冷鏈</td><td>冷藏車/倉庫</td><td>家用冰箱/保冷袋</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：物流業的最後一哩困境</h4>
+                        <p>電商物流中，將包裹從倉庫送到客戶家門的「最後一公里」成本佔整個物流成本的28-50%，因為這段路需要最多人力、行程最碎片化。藥品供應鏈的最後一哩面臨相似困境：</p>
+                        <ul>
+                            <li>每筆訂單量小，冷鏈設備利用率低</li>
+                            <li>接收方（患者/診所）專業度參差不齊</li>
+                            <li>問題發生後難以追溯（記錄往往缺失）</li>
+                        </ul>
+                        <p>TR46的目標正是為這段最脆弱的路程建立GDP標準。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>公私雙軌供應鏈（Public vs. Private）</h4>
+                        <p>許多國家同時存在兩套供應鏈，各有不同的GDP監管框架：</p>
+                        <ul>
+                            <li><strong>公共供應鏈</strong>（政府管理）：疫苗、瘧疾/HIV藥物，透過中央&rarr;地區&rarr;區域政府配送中心層層下達，常有NGO捐贈介入</li>
+                            <li><strong>私人供應鏈</strong>（批發商主導）：商業藥品，透過批發商&rarr;藥局/診所&rarr;患者，由GDP批發授權管控</li>
+                        </ul>
+                        <p>兩套體系的最後一哩均面臨相同挑戰，但公共供應鏈在低收入國家的基礎設施落差更顯著。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>MAH（Marketing Authorization Holder）在配送中的責任邊界</h4>
+                        <p>MAH在<strong>內部配送</strong>期間始終擁有產品所有權，責任最重。一旦轉移至外部配送，所有權轉移，但MAH仍需確保：</p>
+                        <ul>
+                            <li>授權有資質的批發商承接外部配送</li>
+                            <li>建立技術協議（Technical Agreement）規定儲存/運輸條件</li>
+                            <li>MAH可在某些國家同時持有批發配送授權，直接管理中間哩和最後一哩</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SECTION 3.2 -->
+    <!-- =========================================================== -->
+    <div id="sec3-2" style="background:white; border-radius:12px; margin-bottom:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.08); overflow:hidden;">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2</div>
+            <div class="chapter-info">
+                <h2>Roles and Responsibilities in Supply Chains</h2>
+                <p>Manufacturer &bull; Wholesaler &bull; 3PL &bull; Inspectorate &bull; Quality Agreement &bull; 各角色定義與質量責任</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.2 Roles and Responsibilities in Supply Chains</h3>
+                    <p>There are a number of discernable roles and responsibilities in the pharmaceutical supply chain:</p>
+
+                    <table>
+                        <thead>
+                            <tr><th>Role / 角色</th><th>Definition (TR46)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Manufacturer</strong><br>製造商</td>
+                                <td>Produces goods in the internal distribution network and executes stability testing to set expiry, storage, and transportation conditions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wholesaler</strong><br>批發商</td>
+                                <td>Procures, holds, supplies, imports, or exports medicinal products in an external private distribution network, apart from supplying medicinal products to the public.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Public Medical Store</strong><br>公共醫藥倉庫</td>
+                                <td>Stores and ships goods in a public distribution network along the health pyramid.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Non-Governmental Organization (NGO)</strong></td>
+                                <td>Professional organization that donates goods to public supply chains.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Service Delivery Point (SDP)</strong><br>服務提供點</td>
+                                <td>Receives goods that are supplied to patients.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Point of Administration (POA)</strong><br>給藥點</td>
+                                <td>Receives goods that are administrated to patients, e.g., hospital, clinic, vaccine center.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Point of Dispensing (POD)</strong><br>配藥點</td>
+                                <td>Location where goods are dispensed to users, e.g., patient.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marketing Authorization Holder (MAH)</strong></td>
+                                <td>The person or company who is licensed to distribute, sell, and commercialize a medical product.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Third-Party Logistic Provider (3PL)</strong><br>第三方物流</td>
+                                <td>Entity that, on behalf of a manufacturer or wholesaler, executes logistics activities like warehousing and transportation in the supply chain.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Customs</strong><br>海關</td>
+                                <td>The official department that administers and collects the duties levied by the government on imported goods.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Insurance Company</strong><br>保險公司</td>
+                                <td>Issues insurance or annuity contracts or reinsures the risks underwritten by other insurance companies.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality Assurance</strong><br>品質保證</td>
+                                <td>Ensures that a quality system is in place to guarantee product is being distributed in compliance with GDP and that the quality, safety, and efficacy of the pharmaceutical product is maintained.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pharmaceutical Products Destruction Commission</strong><br>藥品銷毀委員會</td>
+                                <td>Multisectoral committee oversees the destruction of expired or deteriorated pharmaceutical products in accordance with hygiene laws and regulations.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inspectorate</strong><br>稽查機關</td>
+                                <td>Inspects manufacturers, wholesalers, pharmacies, or processors of regulated products to verify compliance with relevant regulations and provides permits to the MAH to import pharmaceutical products into a specified market.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top:1rem;">All participants in the supply chain are responsible for maintaining product quality and the right storage and transportation conditions for the delivery of effective and safe products to patients. Communication about product quality requirements for all players is essential to achieve this aim. Defining the shared responsibility of the participants in a written <span class="key-term">Quality Agreement</span> is a good practice.</p>
+                    <p>Section 3.3 through Section 3.9 provide examples of pharmaceutical supply chains in various regions around the world.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>解析：各角色的GDP責任矩陣</h3>
+                    <div class="concept-box">
+                        <h4>角色責任矩陣：四大核心角色</h4>
+                        <table class="role-table">
+                            <thead>
+                                <tr>
+                                    <th>角色</th>
+                                    <th>核心GDP職責</th>
+                                    <th>GDP知識水平</th>
+                                    <th>設備水平</th>
+                                    <th>監管強度</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>製造商</strong><br>Manufacturer</td>
+                                    <td>穩定性試驗、設定儲存條件、内部配送GDP合規、授權批發商</td>
+                                    <td><span class="badge green">最高</span></td>
+                                    <td><span class="badge green">工業級</span></td>
+                                    <td><span class="badge green">GMP + GDP查廠</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>批發商/MAH</strong><br>Wholesaler</td>
+                                    <td>批發授權（WDA）合規、冷鏈倉庫管理、運輸溫控、GDP記錄</td>
+                                    <td><span class="badge blue">高</span></td>
+                                    <td><span class="badge blue">商業級</span></td>
+                                    <td><span class="badge blue">定期GDP稽核</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>醫療機構/藥局</strong><br>Hospital / Pharmacy</td>
+                                    <td>適當儲存條件、先進先出（FEFO）管理、超温事件記錄</td>
+                                    <td><span class="badge yellow">中</span></td>
+                                    <td><span class="badge yellow">商用冰箱</span></td>
+                                    <td><span class="badge yellow">不定期抽查</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>患者</strong><br>Patient</td>
+                                    <td>按標示儲存、不轉交他人、按時使用</td>
+                                    <td><span class="badge red">低</span></td>
+                                    <td><span class="badge red">家用設備</span></td>
+                                    <td><span class="badge red">無監管</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>Quality Agreement（質量協議）：每個交接點的關鍵</h4>
+                        <p>在供應鏈每個所有權或責任交接點，書面質量協議是防止「責任真空」的核心工具：</p>
+                        <ul>
+                            <li><strong>MAH &harr; 批發商</strong>：明確產品儲存溫度要求、溫差記錄義務、超温處理程序</li>
+                            <li><strong>批發商 &harr; 3PL</strong>：規定冷藏車溫度範圍、記錄器要求、偏差通報時限</li>
+                            <li><strong>批發商 &harr; 醫院/藥局</strong>：明確交貨時的溫度確認程序、拒收標準</li>
+                        </ul>
+                        <p>沒有質量協議的交接點，就是供應鏈中最脆弱的斷鏈風險點。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>批發商授權（Wholesale Distribution Authorization, WDA）的核心要求</h4>
+                        <p>在歐盟及多數監管體系下，取得WDA的最低要求包括：</p>
+                        <ul>
+                            <li><strong>合格責任人（Qualified Person for Distribution, QPD）</strong>：具備適當資質的GDP負責人</li>
+                            <li><strong>適當的設施</strong>：足夠且符合要求的倉儲空間，包括溫控區域</li>
+                            <li><strong>GDP合規體系</strong>：質量管理體系、SOP、偏差管理、CAPA</li>
+                            <li><strong>應急計畫</strong>：產品召回程序、應對自然災害的業務連續性計畫</li>
+                            <li><strong>可追溯性</strong>：完整的進銷記錄，支持藥品序列化追蹤</li>
+                        </ul>
+                        <p>台灣藥品批發商的許可要求由衛福部食藥署（TFDA）依《藥事法》及相關辦法規定，與歐盟WDA架構高度相似。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>3PL（第三方物流）的特殊地位</h4>
+                        <p>3PL代表製造商或批發商執行物流作業，但<strong>不擁有</strong>產品。在GDP框架下：</p>
+                        <ul>
+                            <li>3PL的行為視同委託方行為，委託方（MAH/批發商）仍負最終責任</li>
+                            <li>必須簽訂書面合約，明確GDP責任分工</li>
+                            <li>3PL必須接受委託方的定期稽核</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SECTION 3.3 -->
+    <!-- =========================================================== -->
+    <div id="sec3-3" style="background:white; border-radius:12px; margin-bottom:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.08); overflow:hidden;">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3</div>
+            <div class="chapter-info">
+                <h2>Supply Chains in Europe</h2>
+                <p>EU GDP 2013/C 343/01 &bull; Full-line Wholesaler &bull; Public Service Obligation &bull; Temperature Categories &bull; 歐盟GDP指南與溫度管理</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.3 Supply Chains in Europe</h3>
+                    <p>Most pharmaceuticals in the European Union (EU) are distributed via private supply chains, while the public supply chains are used primarily to distribute vaccines to vaccine centers for vaccination programs. In addition, NGOs buy pharmaceutical products from manufacturers for donation programs that they then provide to public supply chains on other continents like Africa and Asia.</p>
+                    <p>The <span class="key-term">Guidelines of 5 November 2013 on Good Distribution Practice of Medicinal Products for Human Use</span> (2013/C 343/01) are the most important GDP guidelines in the EU: they are in force in all EU member states and in several other countries as well. The GDP guidelines of the non-EU member states such as Russia and the United Kingdom share many similarities with the EU GDP guidelines.</p>
+                    <p>The EU GDP guidelines require a wholesaler to be licensed to distribute an approved product into the region in which the wholesaler will sell that product. While there are many actors in the supply chain, in the EU:</p>
+                    <ul>
+                        <li><strong>~60%</strong> of all medicinal products sold are distributed to pharmacies through pharmaceutical wholesale distributors</li>
+                        <li><strong>~33%</strong> are distributed by the manufacturer directly to hospitals</li>
+                        <li><strong>~8%</strong> are distributed directly to pharmacies</li>
+                    </ul>
+                    <p><span class="key-term">Pharmaceutical full-line wholesaling</span> activity consists of the purchase, warehousing, storage, order preparation, and delivery of medicines. Full-line wholesalers carry and distribute a complete range and depth of products. They have the capability to deliver all medicines in their geographical area of activity typically on the <strong>same day or within 24 hours</strong> on working days. They also provide working capital, extend financing services, and fund stock and receivables of pharmacies and healthcare professionals.</p>
+                    <p>In most EU member states, pharmaceutical full-line wholesalers respond to <span class="key-term">Public Service Obligations (PSO)</span> or carry a Public Service Function as charged by Article 81 of Directive 2004/27/EC:</p>
+                    <div class="quote-box">
+                        "The holder of a marketing authorization for a medicinal product and the distributors of the said medicinal product actually placed on the market in a Member State shall, within the limits of their responsibilities, ensure appropriate and continued supplies of that medicinal product to pharmacies and persons authorized to supply medicinal products so that the needs of patients in the Member State in question are covered." &mdash; Article 81, Directive 2004/27/EC
+                    </div>
+                    <p>Apart from this provision, many EU member states (e.g., Belgium, France, Germany, Greece, Italy, Slovenia, Spain, Portugal) have appended a separate Public Service Obligation on wholesale distributors to guarantee that certain products be made available across the region through permanently available <span class="key-term">buffer stocks</span>. One of the minimum requirements for wholesalers of medicinal products to obtain their distribution authorization (as set by Article 84 of Directive 2001/83/EC) is compliance with the principles and guidelines of GDP.</p>
+                    <p>The EU GDP guidelines also address the issue of handling and transporting <span class="key-term">temperature-sensitive medicinal products</span>. The general requirement of suitability does not specifically target temperature categories by name, but industry practice has established the following classifications:</p>
+                    <table class="temp-table">
+                        <thead>
+                            <tr><th>Temperature Category / 溫度類別</th><th>Range / 範圍</th><th>Typical Products / 典型產品</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr class="cold-chain"><td><strong>Deep Frozen / 深冷（液氮）</strong></td><td>-196&deg;C (liquid nitrogen)</td><td>細胞治療產品、骨髓、臍帶血</td></tr>
+                            <tr class="frozen"><td><strong>Frozen / 冷凍</strong></td><td>-25&deg;C to -15&deg;C</td><td>特定疫苗（如水痘疫苗）、某些生物製劑</td></tr>
+                            <tr class="cold-chain"><td><strong>Refrigerated / 冷藏</strong></td><td>+2&deg;C to +8&deg;C</td><td>胰島素、疫苗、生物製劑、血液製品</td></tr>
+                            <tr class="ambient"><td><strong>Controlled Room Temperature / 受控常溫</strong></td><td>+15&deg;C to +25&deg;C</td><td>多數口服固體劑型</td></tr>
+                            <tr class="ambient"><td><strong>Ambient / 常溫</strong></td><td>&le;25&deg;C or &le;30&deg;C</td><td>一般藥品（依標示條件）</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>解析：歐盟GDP體系深度解析</h3>
+                    <div class="concept-box">
+                        <h4>EU GDP 2013/C 343/01 vs 主要GDP指南對比</h4>
+                        <table>
+                            <thead>
+                                <tr><th>指南</th><th>發布機構</th><th>適用範圍</th><th>法律效力</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>EU GDP</strong><br>2013/C 343/01</td>
+                                    <td>European Commission</td>
+                                    <td>EU 27國 + EEA</td>
+                                    <td><span class="badge green">具法律約束力</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>WHO GDP</strong><br>2010 (Annex 5)</td>
+                                    <td>World Health Organization</td>
+                                    <td>全球（特別是開發中國家）</td>
+                                    <td><span class="badge blue">建議性指南</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PIC/S GDP</strong><br>PE 011</td>
+                                    <td>PIC/S</td>
+                                    <td>53個PIC/S成員國</td>
+                                    <td><span class="badge yellow">各成員國自行採納</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>UK GDP</strong><br>(post-Brexit)</td>
+                                    <td>MHRA</td>
+                                    <td>英國</td>
+                                    <td><span class="badge green">具法律約束力</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top:0.5rem; font-size:0.85rem; color:#4a5568;">台灣藥品GDP規範主要參考PIC/S GDP（台灣為PIC/S成員）。TFDA的《藥品優良運銷準則》與PIC/S GDP高度接軌。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>溫度類別詳解：從液氮到常溫</h4>
+                        <p>供應鏈溫度管理的五個層級，冷鏈設備需求與成本依序遞減：</p>
+                        <ul>
+                            <li><strong>深冷（-196&deg;C）</strong>：液氮容器（Dewar flask），用於細胞治療產品。最後一哩的超難挑戰——患者端幾乎不可能具備液氮設施，通常需要在醫院完成給藥。</li>
+                            <li><strong>冷凍（-25 ~ -15&deg;C）</strong>：工業/商用冷凍庫、冷凍車。mRNA疫苗（輝瑞/莫德納）的超低溫（-70&deg;C/-20&deg;C）要求在COVID-19期間凸顯了最後一哩挑戰。</li>
+                            <li><strong>冷藏（2~8&deg;C）</strong>：最常見的冷鏈需求。胰島素患者每日自注射，家用冰箱是最後一哩的主要儲存設備，溫度波動風險最高。</li>
+                            <li><strong>受控常溫（15~25&deg;C）</strong>：看似容易，實則夏季台灣室溫常超過28-33&deg;C，需特別注意車輛/物流中心溫控。</li>
+                            <li><strong>常溫（&le;30&deg;C）</strong>：一般藥品，但仍需避光、防潮。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>Qualified Person for Distribution (QPD)：EU GDP的關鍵角色</h4>
+                        <p>類似製造端的Qualified Person（QP），EU GDP要求批發商指定一名具備GDP知識與經驗的<strong>合格責任人（QPD）</strong>，負責：</p>
+                        <ul>
+                            <li>確保批發活動符合EU GDP指南</li>
+                            <li>監督質量管理體系的建立與維護</li>
+                            <li>偏差、投訴及召回的最終責任人</li>
+                            <li>代表公司接受稽查機關查核</li>
+                        </ul>
+                        <p>QPD的存在確保批發配送端有一個「有名有姓」的GDP責任人——這是最後一哩問題中最缺乏的元素。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>EU FMD（Falsified Medicines Directive）序列化要求</h4>
+                        <p>EU Directive 2011/62/EU（防仿冒藥品指令）自2019年起要求：</p>
+                        <ul>
+                            <li><strong>唯一識別碼（Unique Identifier）</strong>：每個藥品包裝的二維碼包含：產品代碼、序列號、批號、有效期</li>
+                            <li><strong>防拆封裝置（Anti-tampering Device）</strong>：包裝一旦開啟即可視覺識別</li>
+                            <li><strong>核實義務</strong>：藥局在配藥前必須掃描驗證序列號（連接歐盟醫藥核實系統EMVS）</li>
+                        </ul>
+                        <p>這是EU最後一哩GDP的重要工具——確保到達患者手中的藥品未被偽造或掉包。台灣目前尚無全面強制藥品序列化，但已在規劃推動。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>Public Service Obligation：為什麼批發商要有「義務」？</h4>
+                        <p>純粹市場機制下，批發商只會服務利潤高的城市地區，偏遠地區或小量需求的藥品可能面臨缺藥。PSO要求批發商：</p>
+                        <ul>
+                            <li>覆蓋指定地理區域的所有藥品需求（不論利潤）</li>
+                            <li>維持「緩衝庫存」（buffer stocks）確保供應連續性</li>
+                            <li>通常在同日或24小時內送達</li>
+                        </ul>
+                        <p>這在本質上是一種「公共服務交叉補貼」機制，確保最後一哩不因商業考量而斷鏈。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SECTION 3.4 -->
+    <!-- =========================================================== -->
+    <div id="sec3-4" style="background:white; border-radius:12px; margin-bottom:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.08); overflow:hidden;">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.4</div>
+            <div class="chapter-info">
+                <h2>Supply Chains in Africa</h2>
+                <p>Informal Supply Chains &bull; Counterfeit Risk &bull; WHO Prequalification &bull; Senegal Case Study &bull; 非洲供應鏈挑戰與WHO預認證</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.4 Supply Chains in Africa</h3>
+                    <p>Pharmaceutical supply chains in Africa present a unique set of challenges that differ substantially from those in high-income regions. While significant progress has been made in strengthening medicines regulatory systems across the continent, a combination of infrastructural limitations, regulatory capacity gaps, and the prevalence of informal distribution networks continues to undermine product quality and patient safety at the last mile.</p>
+
+                    <h4 style="color:var(--primary-blue); margin:1rem 0 0.5rem;">Key Structural Challenges</h4>
+                    <p><strong>Infrastructure limitations</strong> represent the first and most immediate challenge. Reliable electricity supply is inconsistent in many sub-Saharan regions, with frequent power outages disrupting cold chain continuity. Road infrastructure in rural areas limits access for conventional refrigerated vehicles, and alternative last-mile delivery modes — including motorcycles, bicycles, and river transport — offer minimal temperature control.</p>
+                    <p><strong>Regulatory and enforcement capacity</strong> varies widely between and within countries. While several national medicines regulatory authorities (NMRAs) have made notable progress — for example, Tanzania's TFDA (now TMDA), Ghana's FDA, and Nigeria's NAFDAC — enforcement at the sub-national and community level remains inconsistent. The capacity to conduct routine GDP inspections of wholesalers, pharmacies, and informal outlets is constrained by limited budgets and personnel.</p>
+                    <p><strong>Informal markets</strong> constitute a significant share of pharmaceutical distribution in many African countries. Unlicensed vendors, open-air markets, and unregulated retail outlets provide access to medicines for populations that lack proximity to formal healthcare facilities. However, these channels carry significant risks: storage conditions are uncontrolled, product provenance is opaque, and the proportion of <span class="key-term">substandard and falsified (SF) medicines</span> is substantially higher than in formal channels. The WHO has estimated that up to 1 in 10 medicinal products in low- and middle-income countries is substandard or falsified.</p>
+
+                    <h4 style="color:var(--primary-blue); margin:1rem 0 0.5rem;">WHO Prequalification Programme</h4>
+                    <p>The <span class="key-term">WHO Prequalification (PQ) Programme</span> plays a critical role in assuring the quality of medicines supplied to African public health programs, particularly for HIV/AIDS, malaria, tuberculosis, and vaccine programs funded by international donors such as PEPFAR, the Global Fund, and GAVI. Medicines that receive WHO PQ status have been evaluated against internationally accepted standards for quality, safety, and efficacy, and manufacturers are subject to ongoing surveillance inspections.</p>
+                    <p>WHO PQ is particularly significant because many African NMRAs lack the capacity to independently evaluate complex biologics or generic medicines. By relying on WHO PQ as a proxy for quality assurance, national procurement agencies and NGOs can more confidently source medicines that meet international standards, reducing the risk of procuring substandard products even when local regulatory oversight is limited.</p>
+
+                    <h4 style="color:var(--primary-blue); margin:1rem 0 0.5rem;">Figure 3.4-1: Senegal Pharmaceutical Supply Chain (West Africa Example)</h4>
+                    <!-- AFRICA SUPPLY CHAIN DIAGRAM -->
+                    <div class="figure-container" style="text-align:left;">
+                        <div style="background:#fafaf5; border:1px solid #d4d4aa; border-radius:10px; padding:1.25rem;">
+                            <div style="font-size:0.78rem; color:#78716c; margin-bottom:0.75rem; font-style:italic;">Schematic representation of the Senegal pharmaceutical supply chain — a typical West African public/private dual structure (Figure 3.4-1, PDA TR46)</div>
+                            <!-- PUBLIC CHAIN -->
+                            <div style="margin-bottom:1rem;">
+                                <div style="font-size:0.75rem; font-weight:700; color:#1d4ed8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem;">
+                                    <span style="background:#dbeafe; border:1px solid #93c5fd; border-radius:4px; padding:2px 8px;">PUBLIC SUPPLY CHAIN (Pharmacie Nationale d'Approvisionnement)</span>
+                                </div>
+                                <div class="sc-diagram" style="flex-direction:row; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+                                    <div class="sc-node manufacturer" style="font-size:0.78rem; min-width:110px;">International<br>Manufacturer / NGO</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node internal" style="font-size:0.78rem; min-width:110px;">PNA<br>(Central Medical Store)</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node public" style="font-size:0.78rem; min-width:110px;">Regional / District<br>Medical Stores</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node hcp" style="font-size:0.78rem; min-width:100px;">Health Posts /<br>Community Centers</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node patient" style="font-size:0.78rem; min-width:80px;">Patient</div>
+                                </div>
+                            </div>
+                            <!-- PRIVATE CHAIN -->
+                            <div style="margin-bottom:1rem;">
+                                <div style="font-size:0.75rem; font-weight:700; color:#78350f; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem;">
+                                    <span style="background:#fef3c7; border:1px solid #fcd34d; border-radius:4px; padding:2px 8px;">PRIVATE SUPPLY CHAIN</span>
+                                </div>
+                                <div class="sc-diagram" style="flex-direction:row; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+                                    <div class="sc-node manufacturer" style="font-size:0.78rem; min-width:110px;">Manufacturer /<br>Importer</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node wholesaler" style="font-size:0.78rem; min-width:110px;">Licensed<br>Wholesaler (Dakar)</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node hcp" style="font-size:0.78rem; min-width:100px;">Licensed<br>Pharmacy</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node patient" style="font-size:0.78rem; min-width:80px;">Patient</div>
+                                </div>
+                            </div>
+                            <!-- INFORMAL -->
+                            <div>
+                                <div style="font-size:0.75rem; font-weight:700; color:#991b1b; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem;">
+                                    <span style="background:#fee2e2; border:1px solid #fca5a5; border-radius:4px; padding:2px 8px;">INFORMAL / UNREGULATED CHANNEL (HIGH RISK)</span>
+                                </div>
+                                <div class="sc-diagram" style="flex-direction:row; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; align-items:center;">
+                                    <div class="sc-node patient" style="font-size:0.78rem; min-width:130px; border-style:dashed;">Unregistered Importer /<br>Street Vendor</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node patient" style="font-size:0.78rem; min-width:130px; border-style:dashed;">Open Market /<br>Unlicensed Outlet</div>
+                                    <div class="sc-arrow">&#8594;</div>
+                                    <div class="sc-node patient" style="font-size:0.78rem; min-width:80px;">Patient<br>(High SF risk)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="figure-caption">Figure 3.4-1: Senegal pharmaceutical supply chain — illustrating typical West African public/private/informal tri-channel structure. PNA = Pharmacie Nationale d'Approvisionnement (national procurement agency). SF = Substandard and Falsified.</div>
+                    </div>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>解析：非洲供應鏈的三大挑戰</h3>
+                    <div class="note-box">
+                        <h4>挑戰一：基礎設施（Infrastructure）</h4>
+                        <p>非洲最後一哩的基礎設施缺口在全球最為嚴峻：</p>
+                        <ul>
+                            <li><strong>電力不穩</strong>：撒哈拉以南非洲平均每天停電4-8小時，冷藏倉庫溫度波動成為常態。柴油發電機是常見備援，但燃料成本高且供應不穩定。</li>
+                            <li><strong>道路品質</strong>：雨季道路泥濘甚至無法通行，冰鎮箱（Cold box）和疫苗載體（Vaccine carrier）成為唯一可行的最後一哩冷鏈工具。</li>
+                            <li><strong>替代配送模式</strong>：摩托車（motorcycles）、自行車、獨木舟是農村最後一哩的實際配送方式。WHO的EPI（擴大免疫規劃）針對這些場景設計了適合的疫苗包裝規格。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box" style="margin-top:0;">
+                        <h4>挑戰二：監管執法能力（Regulatory Enforcement）</h4>
+                        <p>非洲各國監管能力差異懸殊：</p>
+                        <ul>
+                            <li><strong>NMRAs能力不足</strong>：許多國家的國家藥品監管機構（NMRA）僅有不到20名員工，難以對全國批發商、零售藥局進行系統性GDP稽核</li>
+                            <li><strong>非正規市場管控空白</strong>：露天市場和無牌販售者在許多國家處於監管真空，執法行動偶發且缺乏持續性</li>
+                            <li><strong>進展中的合作</strong>：非洲藥品監管協調（AMRH）計畫與非洲藥品局（AMA，2023年成立）正在推動監管能力建設和協調工作</li>
+                        </ul>
+                    </div>
+                    <div class="note-box" style="margin-top:0;">
+                        <h4>挑戰三：非正規市場與仿冒藥（Informal Market &amp; SF Medicines）</h4>
+                        <p>非洲仿冒/劣質藥品問題在全球最嚴重：</p>
+                        <ul>
+                            <li><strong>規模</strong>：WHO估計低中收入國家每10份藥品中有1份為劣質或偽造（Substandard &amp; Falsified, SF）</li>
+                            <li><strong>高風險品類</strong>：抗瘧疾藥（青蒿素類）、抗生素、抗結核藥是偽造最多的品類，直接導致治療失敗和抗藥性</li>
+                            <li><strong>近端原因</strong>：正規渠道藥品價格不可及（affordability）、供應短缺是患者轉向非正規市場的主因</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box">
+                        <h4>WHO預認證（WHO Prequalification）的作用機制</h4>
+                        <p>WHO PQ計畫是為何非洲公共衛生項目藥品質量相對可靠的關鍵原因：</p>
+                        <table>
+                            <thead>
+                                <tr><th>層面</th><th>WHO PQ的作用</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>品質評估</strong></td><td>對製造商的藥品進行完整的藥學、安全性、有效性評估，等同於ICH標準審評</td></tr>
+                                <tr><td><strong>持續監督</strong></td><td>PQ認證後仍進行定期製造廠監督檢查（surveillance inspections）</td></tr>
+                                <tr><td><strong>採購依據</strong></td><td>PEPFAR、Global Fund、UNICEF等國際採購機構以WHO PQ為最低採購門檻</td></tr>
+                                <tr><td><strong>能力代理</strong></td><td>代替能力不足的NMRA進行技術評估，降低國家監管機構的審評負擔</td></tr>
+                                <tr><td><strong>覆蓋品類</strong></td><td>HIV/AIDS、瘧疾、結核、生殖健康、疫苗、診斷試劑</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top:0.5rem;">WHO PQ確保進入公共供應鏈的藥品（第一哩）符合國際標準——但從公共醫藥倉庫到患者手中的最後一哩仍存在溫控和追溯風險。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>塞內加爾案例：西非藥品配送的典型模式</h4>
+                        <p>塞內加爾（Senegal）的供應鏈代表了西非較為成熟的公共供應體系：</p>
+                        <ul>
+                            <li><strong>PNA（Pharmacie Nationale d'Approvisionnement）</strong>：中央醫藥採購局，統一採購基本藥物清單（EML）品項，向下供應地區醫藥倉庫。PNA實施WHO PQ和/或其他國際標準作為採購門檻。</li>
+                            <li><strong>縱深配送</strong>：中央倉庫（達卡）&rarr; 地區醫藥倉庫（14個地區）&rarr; 區/縣倉庫 &rarr; 衛生站（Health Posts）&rarr; 社區健康工作者（CHW）&rarr; 患者</li>
+                            <li><strong>最後一哩挑戰</strong>：塞內加爾農村衛生站冷鏈依賴太陽能冰箱（Solar Direct Drive Refrigerators），電網不穩時維持疫苗冷鏈。但在最末端（社區健康工作者至患者），冷鏈往往中斷。</li>
+                            <li><strong>私人渠道集中於首都</strong>：達卡（Dakar）的持牌批發商服務絕大多數私人藥局，農村私人藥局依賴達卡批發商的定期配送車，間隔可達1-2週。</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考：非洲最後一哩與台灣的對比</h4>
+                        <p>對照台灣與非洲的最後一哩環境，有助於理解GDP標準的普世性與在地適應性：</p>
+                        <ul>
+                            <li><strong>台灣優勢</strong>：電力穩定、物流基礎設施完善、TFDA監管能力強、全民健保提供藥品可及性</li>
+                            <li><strong>台灣挑戰</strong>：離島（澎湖、金門、馬祖）、原住民部落的最後一哩配送仍存在冷鏈中斷風險</li>
+                            <li><strong>共通挑戰</strong>：無論哪個市場，患者端儲存行為（家用冰箱溫度設定錯誤、停電後繼續使用）都是最難管控的環節</li>
+                        </ul>
+                        <p>TR46的最後一哩GDP指南，核心精神是：<strong>在任何資源條件下，盡可能維護最後一哩的產品品質與患者安全</strong>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 46 (Revised 2024): Last-Mile Good Distribution Practices for Pharmaceutical Products</p>
+    <p>Section 3 (Part A): Global Supply Chains &mdash; Overview, Roles &amp; EU/Africa | p3&ndash;p9</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Educational bilingual commentary &copy; 2026. For training purposes only.</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
