@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>PDA TR62 – Section 7: Design of Manual Aseptic Processes</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 7: Design of Manual Aseptic Processes</h1>
+    <div class="subtitle">手動無菌製程設計原則</div>
+    <div class="page-info">PDA Technical Report No. 62 (2013) | p12–p15</div>
+</div>
+
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives — 學習目標</h3>
+        <ul>
+            <li>Describe the core MAP design philosophy: minimizing contamination risk while enabling required manual operations.</li>
+            <li>Apply first air principles and operator positioning rules for UDAF (Unidirectional Air Flow) hood environments.</li>
+            <li>Distinguish the design requirements for MAP in isolators versus RABS, including transfer systems and decontamination.</li>
+            <li>Evaluate contamination risk levels across UDAF hood, RABS, and closed isolator configurations.</li>
+            <li>Select the appropriate enclosure type for specific MAP scenarios, including high-potency or oncology drug compounding.</li>
+        </ul>
+    </div>
+
+    <!-- Section 7.0 Overview -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>7.0 Design of Manual Aseptic Processes</h2>
+            <p>Sterility assurance requires a holistic approach to the entire manufacturing process, and encompasses appropriate facility/equipment/process design, aseptic practice/validation, and a well-thought-out risk assessment to mitigate contamination.</p>
+            <p>Considering the importance of personnel practices in MAP, the process should be designed to <strong>minimize the impact of personnel</strong>. General process design principles that will reduce the risk of contamination are outlined in sections 7.1 and 7.2.</p>
+            <p>The fundamental design goal is to achieve the required sterile manipulation while keeping the operator's body, hands, and movements as far removed from critical product-contact surfaces as physically possible. Every additional layer of separation — from open cleanroom to UDAF hood to RABS to closed isolator — represents a reduction in the direct biological burden that the operator can contribute to the aseptic zone.</p>
+            <div class="quote-box">
+                "Sterility assurance requires a holistic approach to the entire manufacturing process, and encompasses appropriate facility/equipment/process design, aseptic practice/validation and a well thought out risk assessment to mitigate contamination."
+                <br><em>— PDA TR62, Section 7.0</em>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>7.0 核心概念解析</h2>
+            <div class="concept-box">
+                <h4>MAP 設計的核心哲學</h4>
+                <p>Section 7.0 的核心原則只有一句話：<strong>在物理上盡可能將操作人員與產品隔離</strong>。MAP 設計的每一個決定，都應以「減少人員對製程的影響」為依歸。</p>
+                <p>這不是說人員不重要——恰恰相反，人員是 MAP 中汙染風險最高的變數，因此設計必須主動限制這個風險。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>汙染風險的四層防護階層</h4>
+                <p>TR62 的設計哲學可用一個「隔離距離」的概念來理解：</p>
+                <div class="hierarchy-diagram">
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-1">開放式無塵室（最高風險）</span>
+                    </div>
+                    <div class="arrow-down">↓ 增加物理隔離</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-2">UDAF Hood（第一道屏障）</span>
+                    </div>
+                    <div class="arrow-down">↓ 增加物理屏障</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-2">RABS（限制進出屏障系統）</span>
+                    </div>
+                    <div class="arrow-down">↓ 完全封閉 + VHP 去汙</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-3">密閉型隔離器（最低風險）</span>
+                    </div>
+                </div>
+                <p>每往下一層，操作人員的身體就與無菌區域距離更遠、接觸途徑更少，無菌保證等級也就更高。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 7.1 UDAF Hoods -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>7.1 Manual Aseptic Process Design Principles in Unidirectional Air Flow (UDAF) Hoods</h2>
+            <p>The following design principles apply to MAP conducted in UDAF hood environments (ISO 5 Grade A zones with vertical or horizontal laminar airflow from HEPA filters):</p>
+
+            <h3>Workspace Design and First Air</h3>
+            <ul>
+                <li><strong>Adequate space</strong> must be provided to perform all required work without crowding.</li>
+                <li>All exposed product and product-contacting components should continuously remain in <span class="key-term">First Air</span> — the work location first in the path of HEPA-filtered air, before it has passed over any other object or been disturbed by the operator's hands or body.</li>
+                <li>Aseptic manipulations should be made in First Air, not having passed over any other components or blocked by the operator's hands.</li>
+            </ul>
+
+            <h3>Operator Role Separation</h3>
+            <ul>
+                <li>Operators should work as a team. The <strong>primary operator</strong> performs all tasks inside the ISO 5 environment. The <strong>secondary operator</strong> assists in introduction/removal of items from the ISO 5 environment and may assist with less critical tasks inside. Additional <strong>support operators</strong> work exclusively in the surrounding (non-ISO 5) environment.</li>
+                <li>The primary operator should wear sterile gloves and sleeves and never contact a non-sanitized or non-sterilized item.</li>
+                <li>The hands of the primary operator should remain in the ISO 5 environment at all times. (Exceptions may apply for PET or radioactive products.)</li>
+                <li>The secondary operator should put on sterile gloves/sleeves prior to any activity inside the ISO 5 environment or in transfers of items to/from the primary operator.</li>
+                <li>Any time the primary operator is required to leave the ISO 5 environment, gloves and sleeves should be changed or re-sanitized prior to reentry.</li>
+            </ul>
+
+            <h3>Material Introduction and Handling</h3>
+            <ul>
+                <li>Sterilized items should be introduced to the ISO 5 area by aseptic removal of the final wrap as the item is being introduced.</li>
+                <li>Extra subassemblies and utensils should be sterilized and available for immediate replacement if needed.</li>
+                <li>Sterile tools and utensils should be used wherever possible rather than direct glove contact with sterile materials. Sterile supports or hangers for tools should be provided inside the ISO 5 environment to minimize contact with workspace surfaces.</li>
+                <li>Significant aseptic assembly in the processing environment should be avoided through use of sterilized pre-assembled items, reducing the extent of manual assembly required.</li>
+                <li>Process steps not required to be aseptic should be performed outside the ISO 5 environment by other operators.</li>
+            </ul>
+
+            <h3>Workflow Organization</h3>
+            <ul>
+                <li>Wherever possible, materials being introduced into the process should be pre-measured into tightly sealed containers prior to sterilization and addition.</li>
+                <li>Electrical equipment and controls should be located outside the processing environment if possible. If not, a second operator (not the primary operator) should adjust equipment settings. Pay special attention to equipment that exhausts air (e.g., mixers, blenders) that could contaminate the environment.</li>
+                <li>Liquid transfers should be made using <strong>peristaltic pumps located outside the aseptic environment</strong>, rather than automatic pipettes, due to concerns about exhausted air. Containers can be pre-marked to indicate transfer amounts.</li>
+                <li>Perform as much of the process as possible inside the ISO 5 environment to minimize removal and reentry of in-process materials.</li>
+                <li>When containers must be removed from and later returned to the ISO 5 environment, they should be aseptically wrapped in pre-sterilized covering, or the exterior re-sanitized prior to reentry.</li>
+            </ul>
+
+            <h3>Environmental Controls and Sampling</h3>
+            <ul>
+                <li>Sanitize the operating environment when empty; sanitize each non-sterilizable item/equipment as it is first introduced into the next cleaner level. Do not introduce large items mid-process.</li>
+                <li>Product contact surfaces shall be sterilized. Sterility should be maintained with protective layers removed as materials transition to cleaner environments.</li>
+                <li>The process should be designed so that samples can be taken with minimal contamination risk. When withdrawing samples from a sterile container, take all desired samples in a single step, then subdivide. Alternatively, the residual post-production can serve as the test sample. Sterile septum or connectors should be considered to minimize sampling risk.</li>
+                <li>Environmental monitoring should be non-intrusive. Air sampling may use specially designed equipment including settling plates. Surface monitoring should use contact plates or swabs after processing.</li>
+            </ul>
+
+            <h3>Process Validation and Documentation</h3>
+            <ul>
+                <li>Once the process design is established, it should be rehearsed several times using all required items and placebo materials, documented in airflow studies. Engineering runs are strongly encouraged to refine steps and locations.</li>
+                <li>The manufacturing process should be documented in sufficient detail for operators to understand and conform to desired practices. The secondary or support operator should complete the batch record.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>7.1 中文解析：UDAF Hood 設計原則</h2>
+
+            <div class="analogy-box">
+                <h4>瀑布比喻：了解氣流與汙染方向</h4>
+                <p>將 UDAF Hood 的氣流想像成一道從上而下（或從後往前）的<strong>水流瀑布</strong>。汙染物就像水中的沙粒，隨著氣流方向移動。</p>
+                <ul>
+                    <li><strong>如果你的手在產品的「上游」（氣流先經過你的手）：</strong>你手上的微粒會隨著氣流沖向產品，汙染風險極高。</li>
+                    <li><strong>如果你的手在產品的「下游」（氣流先經過產品）：</strong>汙染物被氣流帶走，遠離產品，這才是正確做法。</li>
+                </ul>
+                <p>TR62 的 <strong>First Air</strong> 原則即是這個概念的正式表達：產品必須接觸到直接來自 HEPA 的氣流，未經任何物體或人手干擾的「第一道氣流」。</p>
+                <p><strong>設計原則核心：「手永遠不在產品上方」</strong> — 無論是垂直流還是水平流 UDAF，操作者的手、手臂絕不能介入 HEPA 濾網與關鍵表面之間的氣流路徑。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>UDAF 操作關鍵技術規則（TR62 §7.1）</h4>
+                <ol>
+                    <li><strong>手臂平行於氣流方向</strong>，不得垂直橫跨氣流路徑（橫跨會阻斷 First Air）。</li>
+                    <li><strong>不得在開口容器上方工作</strong>，任何開口的無菌容器旁，手/手臂必須在其下游位置。</li>
+                    <li><strong>最短時間原則</strong>：手部在關鍵區域（Critical Zone）停留時間越短越好；拿取完畢立即退出。</li>
+                    <li><strong>禁止朝工作區咳嗽或打噴嚏</strong>，即使穿戴面罩，口鼻亂流也可能穿透口罩縫隙。</li>
+                    <li><strong>頻繁換手套</strong>：主操作員應定期去汙或更換手套，不得長時間連續工作後才換。</li>
+                    <li><strong>工具優先於手套接觸</strong>：凡可用無菌工具取代手指直接碰觸的操作，均應使用工具。</li>
+                </ol>
+            </div>
+
+            <div class="concept-box">
+                <h4>主/次/支援操作員的分工邏輯</h4>
+                <p>TR62 明確區分三種操作員角色，這不只是人力分工，更是<strong>汙染管控的系統設計</strong>：</p>
+                <ul>
+                    <li><strong>主操作員（Primary Operator）</strong>：雙手全程留在 ISO 5 區域；穿戴無菌手套及套袖；只接觸已滅菌物品。</li>
+                    <li><strong>次操作員（Secondary Operator）</strong>：傳遞物料進出 ISO 5；協助次要工作；在進入 ISO 5 前必須穿戴無菌手套/套袖；負責填寫批次記錄。</li>
+                    <li><strong>支援操作員（Support Operator）</strong>：在 ISO 5 以外的周邊環境工作；執行不需無菌的操作步驟。</li>
+                </ul>
+                <p>這種分工的目的是：讓主操作員的手套維持在最乾淨的狀態，不因頻繁接觸外部環境而帶入汙染。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>UDAF 適合的 MAP 操作 vs. 困難操作</h4>
+                <p><strong>UDAF Hood 較適合的操作：</strong></p>
+                <ul>
+                    <li>少量注射劑的人工分裝填充（低複雜度）</li>
+                    <li>無菌連接（Aseptic connection）</li>
+                    <li>臨床試驗早期少量批次製造</li>
+                    <li>樣品取樣操作</li>
+                </ul>
+                <p><strong>UDAF Hood 的挑戰與限制：</strong></p>
+                <ul>
+                    <li>高效能毒性藥物（HPAPI/腫瘤用藥）：操作員仍直接暴露於 ISO 5 環境中，無額外含毒保護</li>
+                    <li>操作步驟複雜、需要頻繁介入者：每次介入都打斷 First Air，風險累積</li>
+                    <li>長時間重複性操作：操作員疲勞導致技術劣化</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 7.2 Isolators and RABS -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>7.2 Manual Aseptic Process Design Principles in Isolators and RABS</h2>
+
+            <h3>Isolator Definition and Characteristics</h3>
+            <p>The use of an isolator for manual aseptic processing requires some adaptation to the methods described in 7.1. An isolator is defined as:</p>
+            <div class="quote-box">
+                "An isolator is sealed or is supplied with air through a microbially retentive filtration system (HEPA minimum) and may be reproducibly decontaminated. When closed it uses only decontaminated (where necessary) interfaces or Rapid Transfer Ports (RTPs) for materials transfer. When open it allows for the ingress and/or egress of materials through defined openings ('mouse holes') that have been designed and validated to preclude the transfer of contamination. Isolators can be used for aseptic processing activities, containment of potent compounds, or simultaneously for both asepsis and containment."
+                <br><em>— PDA TR62, §7.2</em>
+            </div>
+
+            <h3>RABS Definition and Design Variation</h3>
+            <p>Restricted Access Barrier Systems (RABS) vary with respect to their design:</p>
+            <ul>
+                <li>Where items are introduced using a <span class="key-term">Rapid Transfer Port (RTP)</span>, their use resembles that of isolators described above.</li>
+                <li>RABS lacking these features may more closely resemble manned clean rooms; their design and operation is more like that described for Unidirectional Air Flow Hoods.</li>
+            </ul>
+            <p>Regardless of the type of isolator or RABS system employed, it should be recognized that these are <strong>aseptic, not sterile, process enclosures</strong>. Therefore good aseptic technique must be used at all aseptic steps. First air principles should be adhered to where unidirectional flow is provided. In the absence of unidirectional flow, aseptic technique must still be followed consistent with the design of the system.</p>
+
+            <h3>Design Principles for Isolators and RABS</h3>
+            <ul>
+                <li>The enclosure should be decontaminated according to a <strong>validated procedure</strong>.</li>
+                <li>Operators should wear fresh sterile gloves prior to entering the enclosure glove ports.</li>
+                <li>Sterile tools and utensils shall be employed rather than direct contact with enclosure gloves. Sterile supports for tools and gloves inside the enclosure minimize contact with horizontal surfaces.</li>
+                <li>All items and equipment should be introduced into the enclosure using <strong>validated decontamination/sterilization methods and/or RTPs</strong>.</li>
+                <li>Perform as much of the process as possible inside the enclosure to minimize removal and reentry of sterile items. When containers must be removed and later returned, reintroduce using validated decontamination/sterilization methods and/or RTPs, or aseptically wrap in pre-sterilized covering.</li>
+                <li>All exposed product and product-contacting components should always remain in First Air (if present). Aseptic manipulations should be made in First Air from HEPA filters, not having passed over other components or blocked by enclosure gloves.</li>
+                <li>Significant aseptic assembly in the ISO 5 environment should be avoided through use of sterilized pre-assembled items.</li>
+                <li>Extra subassemblies and utensils should be sterilized and available for immediate replacement.</li>
+                <li>Electrical equipment and controls should be located outside the processing enclosure if possible. If not, a second operator (not the primary operator) should adjust settings. Pay attention to air-exhausting equipment.</li>
+                <li>Utilize secondary and support operators to supply/remove items to/from the enclosed environment. Materials introduced should be pre-measured into tightly sealed containers prior to sterilization and addition into the barrier.</li>
+                <li>Liquid transfers should be made using <strong>peristaltic pumps outside the enclosure</strong> rather than automatic pipettes (due to exhausted air concerns).</li>
+                <li>The process should be designed so that samples can be taken with minimal contamination risk. Prefer to take all samples in a single step, then subdivide. Alternatively, the post-production residual can serve as the test sample.</li>
+                <li>Once the process design is established, rehearse several times with all required items and placebo materials to refine steps and item locations. Engineering runs are strongly recommended.</li>
+                <li>The manufacturing process should be documented in sufficient detail for operators to understand and conform to desired practices.</li>
+                <li>Environmental monitoring should be non-intrusive. Air sampling may use specially designed equipment including settling plates. Surface monitoring should be performed after processing using contact plates or swabs.</li>
+            </ul>
+
+            <h3>Key Terms: Transfer Systems</h3>
+            <ul>
+                <li><strong>Rapid Transfer Port (RTP)</strong>: A port system that allows materials to be transferred into and out of an isolator without breaking the sterile barrier. Uses alpha (isolator side) and beta (transfer container side) port halves that dock together and open only when mated.</li>
+                <li><strong>Alpha/Beta Port</strong>: The two-component docking mechanism of an RTP. The alpha port is permanently mounted on the isolator; the beta port is on the transfer container or bag.</li>
+                <li><strong>VHP (Vaporized Hydrogen Peroxide)</strong>: The most common decontamination agent for isolator interiors. A validated VHP cycle achieves a minimum 6-log reduction of biological indicators, providing a clean internal environment before MAP begins.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>7.2 中文解析：隔離器與 RABS 設計原則</h2>
+
+            <div class="concept-box">
+                <h4>隔離器 vs. RABS：關鍵區別</h4>
+                <p>許多人混淆這兩種系統，以下是 TR62 §7.2 的核心區分：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>特性</th>
+                            <th>密閉型隔離器（Isolator）</th>
+                            <th>RABS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>密封性</td>
+                            <td>完全密封，操作員永遠不直接接觸產品</td>
+                            <td>物理屏障，但可打開進行介入</td>
+                        </tr>
+                        <tr>
+                            <td>去汙方式</td>
+                            <td>VHP 或其他驗證的去汙程序（必須）</td>
+                            <td>去汙程序（視設計而定）</td>
+                        </tr>
+                        <tr>
+                            <td>物料傳入</td>
+                            <td>僅透過 RTP（Alpha/Beta Port）或已去汙介面</td>
+                            <td>可透過 RTP 或直接開口介入</td>
+                        </tr>
+                        <tr>
+                            <td>操作員接觸</td>
+                            <td>僅透過手套口（glove port）操作</td>
+                            <td>可開門介入（必須記錄評估）</td>
+                        </tr>
+                        <tr>
+                            <td>無菌保證等級</td>
+                            <td>最高（操作員身體完全在外）</td>
+                            <td>高（但介入時風險上升）</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>注意</strong>：TR62 明確指出，「無論是隔離器還是 RABS，這些都是無菌製程封閉體，而非滅菌封閉體（aseptic, not sterile, process enclosures）」。良好的無菌技術在任何情況下都不可省略。</p>
+            </div>
+
+            <div class="concept-box application">
+                <h4>實際應用場景：CDMO 選擇設備類型</h4>
+                <p><strong>情境：</strong>一家 CDMO 正在為高效能腫瘤用藥（高細胞毒性 oncology drug）設計手動無菌配製套間。應該選用 UDAF Hood、RABS，還是密閉型隔離器？</p>
+                <p><strong>TR62 指引的分析框架：</strong></p>
+                <ul>
+                    <li><strong>UDAF Hood（不建議）</strong>：操作員身體完全暴露於環境中；高效能藥物對操作員有職業暴露風險；無法提供含毒保護（containment）。</li>
+                    <li><strong>RABS（可考慮）</strong>：提供物理屏障，減少操作員暴露；但若需頻繁開門介入，每次介入都會打破屏障完整性，且必須完整記錄及風險評估；對於高效能藥物，RABS 介入時的含毒能力有限。</li>
+                    <li><strong>密閉型隔離器（最佳選擇）</strong>：操作員永遠不直接接觸產品或封閉環境內的氣流；VHP 去汙提供最高的起始潔淨度；同時提供最高的無菌保證（SAL）和操作員職業保護（OEL containment）；TR62 §7.2 支持此為 MAP 提供「最高無菌保證」的系統。</li>
+                </ul>
+                <p><strong>結論：</strong>依 TR62 §7.2 的精神，高效能腫瘤用藥的手動無菌製程應優先採用<strong>密閉型隔離器</strong>，兼顧產品無菌保護與操作員職業安全。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>汙染風險比較分析表</h4>
+                <p>依 TR62 §7.0–7.2 的設計原則，三種系統的風險比較如下：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>系統</th>
+                            <th>環境等級</th>
+                            <th>操作員隔離程度</th>
+                            <th>去汙要求</th>
+                            <th>MAP 靈活性</th>
+                            <th>相對汙染風險</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>UDAF Hood</strong></td>
+                            <td>ISO 5 (Grade A) + Grade B背景</td>
+                            <td>低（操作員手臂直接進入 ISO 5）</td>
+                            <td>一般清潔/消毒</td>
+                            <td>高（動作不受限）</td>
+                            <td><span class="badge red">高風險</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>RABS</strong></td>
+                            <td>ISO 5 (Grade A) + 物理屏障</td>
+                            <td>中（透過手套口操作；可開門介入）</td>
+                            <td>驗證去汙程序（必要時）</td>
+                            <td>中（介入受限但可執行）</td>
+                            <td><span class="badge yellow">中等風險</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>密閉型隔離器</strong></td>
+                            <td>ISO 5 (Grade A) + VHP去汙 + 完全封閉</td>
+                            <td>最高（操作員身體完全在外；僅手套口接觸）</td>
+                            <td>VHP 驗證去汙（必須）</td>
+                            <td>低（複雜操作受手套口限制）</td>
+                            <td><span class="badge green">最低風險</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>設計取捨：</strong>無菌保證越高的系統，操作靈活性通常越低。設計決策應基於產品風險評估（毒性、無菌要求、批次規模）與製程複雜度的整體權衡。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>RTP Alpha/Beta Port 運作邏輯</h4>
+                <p>RTP（Rapid Transfer Port）是隔離器無菌物料傳遞的核心機制：</p>
+                <ul>
+                    <li><strong>Alpha Port</strong>：永久安裝在隔離器壁上，是隔離器側的「公頭」接口。</li>
+                    <li><strong>Beta Port</strong>：安裝在傳遞容器或袋子上，是物料側的「母頭」接口。</li>
+                    <li>Alpha 與 Beta 對接後形成密封腔體，兩者共同打開，物料傳入，從不暴露隔離器內部於外部環境。</li>
+                </ul>
+                <p>這個設計讓隔離器可以在不打破無菌屏障的前提下接收物料，是密閉型隔離器優於 RABS 的關鍵技術優勢之一。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Summary and Practice Questions -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>Section 7 — Summary: Key Design Principles</h2>
+            <h3>Key Terms Reference</h3>
+            <ul>
+                <li><span class="key-term">UDAF</span> — Unidirectional Air Flow; laminar airflow from HEPA, providing a continuous stream of particle-free air across the critical zone.</li>
+                <li><span class="key-term">First Air</span> — Air directly from the HEPA filter that has not passed over any object; product and critical surfaces must be in first air at all times.</li>
+                <li><span class="key-term">Critical Zone</span> — The area directly surrounding open containers, exposed product, and product-contact surfaces; must remain in first air and free from obstruction by hands or equipment.</li>
+                <li><span class="key-term">Glove Port</span> — The opening in an isolator or RABS through which an operator inserts hands (wearing sterile over-gloves) to manipulate materials inside without breaching the enclosure.</li>
+                <li><span class="key-term">RTP / Alpha-Beta Port</span> — Rapid Transfer Port; a two-piece docking system (alpha on the isolator, beta on the transfer container) that allows material transfer without opening the enclosure to the environment.</li>
+                <li><span class="key-term">Isolator</span> — A fully enclosed aseptic processing system with validated decontamination (typically VHP), where the operator body is completely outside the critical zone.</li>
+                <li><span class="key-term">RABS</span> — Restricted Access Barrier System; a physical barrier with glove ports and a door that can be opened for interventions (which must be logged and risk-assessed).</li>
+                <li><span class="key-term">VHP</span> — Vaporized Hydrogen Peroxide; the standard validated decontamination agent for isolator interiors, achieving &ge;6-log reduction.</li>
+                <li><span class="key-term">Airflow Visualization / Smoke Studies</span> — Studies using smoke or tracer particles to confirm that airflow patterns protect critical surfaces and that hand movements do not disrupt first air.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>練習問題 — 自我評量</h2>
+            <div class="practice-box">
+                <h4>問題 1：First Air 原則判斷</h4>
+                <p>在一個垂直層流 UDAF Hood 中，操作員需要從一個開口瓶中抽取樣品。以下哪種操作姿勢符合 TR62 §7.1 的 First Air 原則？</p>
+                <ul>
+                    <li>A. 將注射器從瓶口正上方垂直插入，手握住瓶身</li>
+                    <li>B. 手臂從旁側伸入，保持針頭在瓶口上方，手部位於瓶的下游位置（相對氣流方向）</li>
+                    <li>C. 將瓶子移至工作檯邊緣，在主氣流以外的區域操作，減少干擾</li>
+                    <li>D. 讓主操作員和次操作員同時伸手進入 ISO 5 區域協助操作</li>
+                </ul>
+                <p><strong>答案提示：</strong>思考哪種做法能確保氣流在手/手臂之前先到達瓶口，且不阻斷 HEPA 與開口容器之間的氣流路徑。（正確答案：B）</p>
+            </div>
+            <div class="practice-box">
+                <h4>問題 2：隔離器 vs. RABS 選擇</h4>
+                <p>一家公司正在為一個 Phase I 臨床試驗的細胞毒性注射劑（具有高職業暴露限值 OEL 要求）設計手動無菌製程。製程需要多步驟配製，預計每批操作時間約 4 小時，每年執行 20 批。依 TR62 §7.2 原則，哪種系統設計最能同時滿足無菌保證與操作員保護的雙重需求？請說明理由。</p>
+                <p><strong>思考方向：</strong>考量無菌保證等級、含毒能力、VHP 去汙、操作員與產品的隔離程度，以及 RABS 開門介入的含義。</p>
+            </div>
+            <div class="practice-box">
+                <h4>問題 3：Smoke Study 的目的與要求</h4>
+                <p>TR62 §7.1 提到 process design 確立後應進行「airflow studies」（煙霧研究）。請說明：(a) 煙霧研究的目的是什麼？(b) 在什麼時候必須重新執行煙霧研究？</p>
+                <p><strong>答案提示：</strong>煙霧研究用於確認氣流實際路徑與設計預期一致，驗證關鍵表面確實在 First Air 之中，且操作員動作不會擾亂保護性氣流。製程設計修改、設備位置改變、新操作員、或 MAP 步驟變更時，均可能需要重新執行。</p>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes</p>
+    <p>Section 7: Design of Manual Aseptic Processes | p12–p15</p>
+    <p>Educational use only. Source: PDA TR62 &copy; 2013 Parenteral Drug Association, Inc.</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

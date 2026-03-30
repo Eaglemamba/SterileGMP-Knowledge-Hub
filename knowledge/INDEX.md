@@ -432,6 +432,28 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR62-Complete.md
+**Report:** PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes
+**Pages:** p1–p23 | **Sections:** 4
+
+**Covers questions about:**
+- What Manual Aseptic Processing (MAP) is and how it differs from automated aseptic filling
+- Why personnel are the primary contamination risk in MAP and how TR62 addresses this
+- Cleanroom classification requirements for MAP: ISO 5/Grade A zones, UDAF requirements, HEPA filtration, pressure differentials
+- Personnel training and qualification: initial qualification, periodic re-qualification, gowning qualification procedures
+- Aseptic handling challenges: performance drift, complex tasks, duration fatigue, operator variability
+- Equipment and component requirements: sterility, depyrogenation, aseptic connections
+- Process time limitations: bioburden control, maximum compounding-to-filling time
+- MAP design principles in UDAF hoods: airflow visualization, hand positioning, workflow direction (clean to dirty)
+- MAP design in isolators and RABS: glove port use, alpha/beta transfer ports, VHP decontamination, advantages over UDAF for MAP
+- APS (media fill) for MAP: why operator-specific qualification is required, simulation design for manual operations, run frequency, acceptance criteria
+
+**Key terms:** Manual Aseptic Processing (MAP), performance drift, UDAF (Unidirectional Air Flow), HEPA, ISO 5, Grade A, RABS, isolator, gowning qualification, aseptic technique, APS (Aseptic Process Simulation), TSB (tryptic soy broth), media fill, growth promotion, turbidity, VHP (vaporized hydrogen peroxide), alpha/beta port, RTP (rapid transfer port), process time limit, bioburden, first air, critical zone, USP <797>, pharmacy compounding
+
+**Sections:** Sections 1–2 (Introduction & Glossary) → Sections 3–6 (Buildings, Personnel, Equipment & Process Time) → Section 7 (MAP Design: UDAF vs Isolator/RABS) → Sections 8–11 (Process Simulation, Conclusion & References)
+
+---
+
 ## TR54-6-Complete.md
 **Report:** PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients
 **Pages:** Foreword + p1–p36 | **Sections:** 6
@@ -502,6 +524,11 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
 | Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
 | Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
+| Manual aseptic processing, MAP, hand filling, manual aseptic technique / 手動無菌製程、人工充填 | TR62 |
+| MAP design: UDAF hood technique, first air, hand positioning / UDAF工作站手動無菌技術、第一空氣、手部位置 | TR62 |
+| MAP in isolator or RABS, glove port, alpha beta port, VHP decon for MAP / 隔離器或RABS中的手動無菌操作 | TR62 |
+| Operator APS qualification, media fill for manual process, individual operator qualification / 操作員APS確效、手動製程培養基充填 | TR62 |
+| Hospital pharmacy compounding, USP 797, sterile compounding, pharmacist aseptic technique / 醫院藥局調製、無菌調製作業 | TR62 |
 | Excipient risk assessment, excipient qualification / 賦形劑風險評估、賦形劑確認 | TR54-6 |
 | QRM for excipients, excipient RPN, OverallRPN, risk matrix / 賦形劑QRM、風險優先數、整體風險分數 | TR54-6 |
 | Excipient supply chain risk, broker, repackager, distributor / 賦形劑供應鏈風險、中間商、轉包商、分銷商 | TR54-6 |
@@ -513,7 +540,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 If the user asks about these topics, say so clearly and suggest alternatives:
 
 - **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
-- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR62, TR83) — not available; suggest the user consult the official PDA website
+- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR83) — not available; suggest the user consult the official PDA website
 - **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
 - **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
 - **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
@@ -528,7 +555,7 @@ For these topics, search the PRIMARY report deeply and SECONDARY reports lightly
 Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Media Fill / APS (培養基充填 / 無菌製程模擬)**
-→ TR22 ★★★ | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
+→ TR22 ★★★ | TR62 ★★★ (MAP-specific APS: operator-level qualification, manual operation simulation design, zero contamination acceptance) | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
 
 **Extractables & Leachables / E&L (可萃取物與可滲出物)**
 → TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
@@ -537,7 +564,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
-→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | PtC-12 ★★★ (RABS) | TR62 ★★★ (manual aseptic processing: MAP design, operator qualification, APS for manual ops) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
 → TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
@@ -558,7 +585,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR54-6 ★★★ (excipient QRM: RPN scoring, OverallRPN, supply chain risk, 6 real-world examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
-→ PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
+→ PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR62 ★★★ (MAP operator individual qualification, gowning qualification, aseptic handling challenges, performance drift) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
 
 **Equipment Qualification IQ/OQ/PQ (設備確效)**
 → TR60 ★★★ (lifecycle qualification framework) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
@@ -600,7 +627,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
 
 **RABS vs Isolator (隔離系統比較)**
-→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
+→ PtC-12 ★★★ (RABS primary) | TR62 ★★★ (MAP-specific: UDAF vs RABS vs isolator design principles, glove ports, alpha/beta transfers, VHP) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
 
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
@@ -619,3 +646,6 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Excipient Quality / Excipient Risk Assessment (賦形劑品質/賦形劑風險評估)**
 → TR54-6 ★★★ (full excipient QRM framework: intrinsic risk, supply chain risk, RPN calculation, GMP standards tiering, EXCiPACT, real-world examples) — single primary source
+
+**Manual Aseptic Processing / MAP (手動無菌製程)**
+→ TR62 ★★★ (complete MAP guidance: UDAF/RABS/isolator design, operator qualification, APS for manual ops, process time limits) — single primary source | PtC-12 ★★ (RABS design context) | TR22 ★★ (APS general principles applicable to MAP)

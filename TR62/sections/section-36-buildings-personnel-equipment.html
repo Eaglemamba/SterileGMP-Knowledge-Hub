@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>PDA TR62 – Sections 3–6: Buildings, Personnel, Equipment &amp; Process Time</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Sections 3–6: Buildings, Personnel, Equipment &amp; Process Time</h1>
+    <div class="subtitle">廠房設施、人員培訓確效、設備與製程時間限制</div>
+    <div class="page-info">PDA Technical Report No. 62 (2013) | p6–p11</div>
+</div>
+
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives / 學習目標</h3>
+        <ul>
+            <li>Identify the ISO cleanroom classifications required for MAP and correlate them with EU GMP Grades A–D. / 識別 MAP 所需的 ISO 無塵室等級，並與 EU GMP A–D 級對應。</li>
+            <li>Describe the four-step personnel qualification pathway outlined in Sections 4.1–4.4. / 說明 4.1–4.4 節所列之人員確效四步驟流程。</li>
+            <li>Explain the sterility and depyrogenation requirements for all product-contact equipment and components in MAP. / 解釋 MAP 中所有接觸產品之設備與元件的無菌及除熱原要求。</li>
+            <li>Articulate the rationale for process time limits and the bioburden risk framework of Section 6.0. / 闡述 6.0 節製程時間限制的合理性及微生物負載風險框架。</li>
+            <li>Apply ICH Q9 risk-management principles to identify highest-risk MAP operations. / 應用 ICH Q9 風險管理原則識別 MAP 中風險最高的操作。</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================
+         SECTION 3.0 — BUILDINGS AND FACILITIES
+         ============================================================ -->
+    <div class="chapter-section" id="sec3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3</div>
+            <div class="chapter-info">
+                <h2>Section 3.0 — Buildings and Facilities</h2>
+                <p>廠房設施 | PDA TR62 p6–p7</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English original -->
+                <div class="left-column">
+                    <h3>3.0 Buildings and Facilities</h3>
+                    <p>The selection of an appropriate clean environment in which to perform the required manufacturing activities is critical to MAP operations. In general, the minimum requirement is an <span class="key-term">ISO 5</span> environment in which unidirectional air flow protection is provided to critical materials during the manufacturing procedures. In practice, many different locations and equipment for MAP operations are possible, including:</p>
+                    <ul>
+                        <li>A portion of a larger environment of the same class</li>
+                        <li>A localized <span class="key-term">UDAF</span> (Unidirectional Air Flow Hood) protecting a specific area within a lower-classified environment</li>
+                        <li>A table-mounted unidirectional air flow hood (horizontal or vertical flow)</li>
+                        <li>An isolator (open or closed)</li>
+                    </ul>
+
+                    <h3>Table 3.0-1 — Cleanroom Standards Airborne Particulate Limits (particles/m³)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ISO Class</th>
+                                <th>EU GMP Grade</th>
+                                <th>US FDA / USP</th>
+                                <th>At-Rest ≥0.5 µm</th>
+                                <th>At-Rest ≥5 µm</th>
+                                <th>In-Operation ≥0.5 µm</th>
+                                <th>In-Operation ≥5 µm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ISO 5</strong></td>
+                                <td>Grade A / Grade B (at-rest)</td>
+                                <td>Class 100</td>
+                                <td>3,520</td>
+                                <td>29</td>
+                                <td>3,520</td>
+                                <td>20<sup>†</sup></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISO 7</strong></td>
+                                <td>Grade B (in-operation) / Grade C (at-rest)</td>
+                                <td>Class 10,000</td>
+                                <td>352,000</td>
+                                <td>2,900</td>
+                                <td>352,000</td>
+                                <td>2,900</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISO 8</strong></td>
+                                <td>Grade C (in-operation) / Grade D (at-rest)</td>
+                                <td>Class 100,000</td>
+                                <td>3,520,000</td>
+                                <td>29,000</td>
+                                <td>3,520,000</td>
+                                <td>29,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.82rem; color:#666;">† ISO 4.8 based upon reduced limit for ≥5 µm particles. Grade D operational particulate counts are not defined by any guideline. Class 100 / Grade A require unidirectional flow per all applicable guidelines. Source: TR62 Table 3.0-1 (ISO 14644, FDA Aseptic Processing Guidance, EU Annex 1, USP &lt;1116&gt;, JP XVI).</p>
+
+                    <h3>HEPA Filtration and UDAF Requirements</h3>
+                    <p>All air supplied to the <span class="key-term">UDAF</span> is <span class="key-term">HEPA</span>-filtered (minimum 99.97% efficiency at ≥0.3 µm). In operation, all air flows from the UDAF, through the critical manufacturing areas, and exits to the surrounding environment. Aseptic manipulations must be performed in "First Air" — the work location first in the path of HEPA-filtered air — not having passed over any other components or blocked by the operator's hands.</p>
+
+                    <h3>Supporting Environment and Pressure Differentials</h3>
+                    <p>The supporting clean environment outside the critical zone is typically <span class="key-term">ISO 7</span> when a UDAF or BSC is utilized. Use of an isolator under appropriate risk-management procedures may relax the requirements for the surrounding area; most new manufacturing installations employ an <span class="key-term">ISO 8</span> background environment in accordance with the 2004 FDA aseptic processing guidance or European GMP Annex 1.</p>
+                    <p>Open isolators are typically installed in ISO 8 environments in order to maintain ISO 5 conditions for material transfers and operations. Appropriate gowning facilities are required consistent with the background environment classification.</p>
+
+                    <h3>Biological Safety Cabinets (BSC)</h3>
+                    <p>BSCs are designed to protect operators and the external environment from infected or dangerous materials. All air to and from the BSC is HEPA-filtered. Because air flows <em>into</em> the BSC from the surrounding environment, BSCs should be used only when worker safety is a meaningful concern. They are not equivalent to a UDAF for product protection purposes.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese commentary -->
+                <div class="right-column">
+                    <h3>概念解析：ISO 14644 等級與 EU GMP Grade 對應</h3>
+
+                    <div class="concept-box">
+                        <h4>ISO 等級 ↔ EU GMP Grade 對應系統</h4>
+                        <p>ISO 14644 與 EU GMP Annex 1 各自使用不同命名系統，但彼此有明確對應：</p>
+                        <ul>
+                            <li><strong>ISO 5 = Grade A</strong>（靜態下等同 Grade B）— 最關鍵區域，所有 MAP 無菌操作均須在此等級執行</li>
+                            <li><strong>ISO 7 = Grade C</strong>（靜態）/ Grade B（動態）— 背景支援區，Grade A 區的外圍環境</li>
+                            <li><strong>ISO 8 = Grade D</strong>（靜態）/ Grade C（動態）— 最低要求的潔淨區，通常用於隔離器外圍或更衣區</li>
+                        </ul>
+                        <p><strong>為何 MAP 需要 Grade A / ISO 5？</strong> MAP 操作中產品、容器、密封件直接暴露於環境，人員就是最主要的污染源。ISO 5 的 3,520 顆/m³（≥0.5 µm）極限配合 UDAF 單向氣流，確保任何從 HEPA 濾器吹出的「First Air」在接觸產品前未先通過人員或設備，最大程度降低微生物落下污染風險。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Table 3.0-1 解讀：靜態 vs. 動態粒子限度</h4>
+                        <p><strong>靜態（at-rest）</strong>：空室或設備已就位但無人員作業時的基準值，反映潔淨室固有的過濾能力。</p>
+                        <p><strong>動態（in-operation）</strong>：正式製造操作期間量測，人員在場時產生的粒子量可比靜態高出數十倍。</p>
+                        <p>Grade A（ISO 5）要求動態下仍維持 3,520 顆/m³，這在有人員操作的 MAP 環境中極具挑戰性。正是因為人體每分鐘可散發數萬顆粒子，UDAF 的單向氣流設計必須將人員隔離在「First Air」路徑之外，否則幾乎不可能達標。</p>
+                        <p>ISO 8 / Grade D 動態限度則未被任何指引明確定義，因為其風險等級允許較大彈性。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>為什麼選擇隔離器可以放寬背景要求？</h4>
+                        <p>封閉式或開放式隔離器（Isolator）透過物理屏障 + HEPA 過濾系統，將 ISO 5 的無菌環境與外部人員完全隔離。一旦隔離器本身提供足夠的 ISO 5 屏障，外部背景環境的要求即可從 ISO 7 放寬至 ISO 8，因為人員本身不再直接接觸 ISO 5 區域內的產品。</p>
+                        <p>這也是新建廠房越來越傾向採用隔離器配合 ISO 8 背景的原因——總建設成本與維護成本較傳統 ISO 7 潔淨室更低，同時無菌保障水準更高。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4.0 — OPERATIONAL PERSONNEL TRAINING & QUALIFICATION
+         ============================================================ -->
+    <div class="chapter-section" id="sec4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4</div>
+            <div class="chapter-info">
+                <h2>Section 4.0 — Operational Personnel Training and Qualification</h2>
+                <p>操作人員培訓與確效 | PDA TR62 p8–p9</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English original -->
+                <div class="left-column">
+                    <h3>4.0 Operational Personnel Training and Qualification</h3>
+                    <p>People are the most critical operational variable and represent the highest source of contamination in manual aseptic processing. Operational personnel must be highly proficient at their assigned tasks. Therefore, personnel training and qualification become critical to success.</p>
+
+                    <h3>4.1 Personnel Training and Qualification</h3>
+                    <p>The training requirements for operational personnel typically include the usual elements of cGMP:</p>
+                    <ul>
+                        <li>Microbiological principles</li>
+                        <li>Sterility assurance</li>
+                        <li>Sterilization</li>
+                        <li>Gowning practices</li>
+                        <li>Good aseptic practices</li>
+                    </ul>
+                    <p>Theoretical knowledge alone is insufficient. Operators must be able to adapt classroom learning to the real-world manufacturing environment. They must excel in execution of tasks that directly impact sterility assurance: <span class="key-term">aseptic gowning</span>, aseptic assembly, and aseptic technique. They must consistently perform precision tasks without introducing contamination.</p>
+
+                    <h3>4.2 Gowning Qualification</h3>
+                    <p>The most basic qualification task is <span class="key-term">gowning qualification</span>. This involves:</p>
+                    <ul>
+                        <li>Repetitive gowning in full aseptic garb under observation of a fully qualified individual</li>
+                        <li>Monitoring of gown surfaces — typically gloves, forearms, and chest area (body locations closest to aseptic manipulations)</li>
+                        <li>The operator must successfully demonstrate ability to meet defined monitoring levels after each exercise</li>
+                    </ul>
+                    <p>Gowning certifications should be conducted on a periodic basis to confirm consistent gowning practices. Once operators pass initial certification they are granted access to the aseptic core for continued instruction.</p>
+                    <div class="quote-box">
+                        <strong>Note:</strong> The need for operator gowning qualification is based on the nature of the isolator process and should be evaluated by a risk assessment. Following a long-term absence, adverse trend, or out-of-limits gowning results (and based on investigation), operators should be requalified for gowning.
+                    </div>
+
+                    <h3>4.3 Risk Management</h3>
+                    <p>Quality Risk Management (per PDA TR54 and TR44) is highly recommended for MAP. As stated in PDA TR44:</p>
+                    <div class="quote-box">
+                        Process failures that can result in elevated endotoxin levels and lack of sterility assurance pose a significant risk to patient safety. The ability to detect a process failure is low given the current methods for sterility testing. The probability of a process failure that could adversely affect sterility in aseptic processing is higher and less predictable than in terminal sterilization, given the inherent exposure to environmental contaminants. Quality risk management can be an effective method of identifying and reducing aseptic processing risk.
+                    </div>
+                    <p>MAP involves greater risks than automated aseptic processes. A risk-based quality management approach is essential. There must be a thorough and complete understanding of the process, including critical steps and risks, so that any risk assessment is appropriately informed.</p>
+
+                    <h3>4.4 Aseptic Handling Challenges</h3>
+                    <p>The conventional means for establishing personnel proficiency is through participation in an <span class="key-term">APS</span> (Aseptic Processing Simulation, also known as a media fill). The APS requires operators to perform aseptic interventions during the normal course of simulation that are typically conducted during manufacturing.</p>
+                    <p>MAP is particularly challenging because:</p>
+                    <ul>
+                        <li>MAP is more susceptible to human contamination than automated aseptic processing</li>
+                        <li>Interventions on manual aseptic systems are frequent and may be complicated by suboptimal equipment design</li>
+                    </ul>
+                    <p>An individual who has demonstrated proficiency at large-scale industrial aseptic processing must still demonstrate proficiency in the more rigorous requirements of MAP. Challenge tests require the operator to directly handle sterile equipment and materials (usually with media) to demonstrate aseptic technique. These tasks must be representative of actual process steps.</p>
+                    <p>The likelihood of human <span class="key-term">performance drift</span> deviations or failures is linked to:</p>
+                    <ul>
+                        <li>Complex aseptic processing tasks</li>
+                        <li>The continuous span of time during which an operator carries out repetitive aseptic activities</li>
+                        <li>The expected rate of activity</li>
+                        <li>Change in personnel</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese commentary -->
+                <div class="right-column">
+                    <h3>解析：人員確效的核心邏輯</h3>
+
+                    <div class="analogy-box">
+                        <h4>比喻：飛行員機型換照（Type Rating）</h4>
+                        <p>MAP 操作員的確效流程，就像航空業的機型換照制度——</p>
+                        <p>一位資深機長即使已持有 A320 機型執照，若要駕駛 B737，仍必須完成完整的 B737 機型訓練與評估，取得該機型執照後才能獨立飛行。光靠多年的飛行經驗與通用航空知識是不夠的。</p>
+                        <p>同理，MAP 操作員必須針對<strong>每一種特定製程</strong>個別確效，而不能僅憑一般無菌操作經驗就被允許執行新製程。一位在大規模自動化灌裝線上經確效的操作員，仍必須為其所執行的每項 MAP 製程步驟單獨通過確效。</p>
+                        <p>這個類比的核心概念是：<strong>確效對象是「人員 × 製程」的組合</strong>，而非僅針對個人資格或設備性能。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵提醒：MAP 中，確效的是「人」，不是「機器」</h4>
+                        <p>這是 MAP 與自動化製程最根本的差異：</p>
+                        <ul>
+                            <li>自動化製程 → <strong>設備確效</strong>（IQ / OQ / PQ）：只要設備保持在確效狀態，製程即視為受控</li>
+                            <li>MAP → <strong>人員確效</strong>：每位操作員必須個別確效；設備確效並不能取代人員確效</li>
+                        </ul>
+                        <p>因此，若某操作員六個月以上未執行該製程（長期缺席），或近期更衣監測出現不良趨勢（adverse trend），TR62 要求必須重新確效，而非僅憑個人資歷推定其能力仍然維持。</p>
+                        <p>這也意味著 CDMO 在人員排班規劃上必須考量：持有確效資格的操作員人數，直接決定了可安排批次的彈性。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Section 4.3 與 ICH Q9 的連結：風險管理在 MAP 中的應用</h4>
+                        <p>ICH Q9 Quality Risk Management 要求系統性識別、評估、控制製程中的風險。將其應用於 MAP，風險評估應特別關注：</p>
+                        <ul>
+                            <li><strong>最高風險操作</strong>：管路連接（aseptic connections）、手動加入粉末（powder addition）、手工壓蓋（stopper insertion by hand）</li>
+                            <li><strong>風險因素評估維度</strong>：操作複雜度、持續操作時間、人員更換頻率、疲勞累積</li>
+                            <li><strong>控制措施</strong>：透過 APS 中的最壞情況模擬（worst-case simulation）驗證控制措施是否足夠</li>
+                        </ul>
+                        <p>PDA TR54（Quality Risk Management Implementation）提供了以風險矩陣識別 MAP 關鍵步驟的具體案例，建議與 TR62 搭配參照。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>應用情境：CDMO 新操作員確效流程（TR62 建議路徑）</h4>
+                        <p>假設情境：一家 CDMO 需為臨床批次手動灌裝線確效 3 位新操作員。</p>
+                        <ol>
+                            <li><strong>第一步 — cGMP 基礎訓練（Section 4.1）</strong><br>完成微生物學原則、無菌保障、滅菌原理、更衣規範的課堂訓練，並通過書面測驗</li>
+                            <li><strong>第二步 — 更衣確效（Section 4.2）</strong><br>每位操作員在受訓指導員監督下完成多次全套無菌更衣；採樣手套、前臂、胸部，結果需符合限度。通過後方可進入無菌核心區</li>
+                            <li><strong>第三步 — 製程專屬技術培訓（Section 4.4）</strong><br>在無菌核心區接受該製程步驟的操作訓練（使用模擬物料），掌握 First Air 原則、無菌組裝、採樣技術</li>
+                            <li><strong>第四步 — APS（媒體灌填）確效（Section 4.4）</strong><br>3 位操作員在模擬實際製程的條件下執行完整 APS，包含所有干預措施。APS 結果符合接受標準（通常 0 陽性）方完成確效，可正式上線</li>
+                        </ol>
+                        <p>確效後需維持定期更衣再確效（periodic re-qualification），以確認操作員技術水準未因時間而衰退（performance drift）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.0 — EQUIPMENT, COMPONENTS AND CONTAINER/CLOSURE
+         ============================================================ -->
+    <div class="chapter-section" id="sec5">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5</div>
+            <div class="chapter-info">
+                <h2>Section 5.0 — Equipment, Components and Container/Closure</h2>
+                <p>設備、元件與容器密封系統 | PDA TR62 p10</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English original -->
+                <div class="left-column">
+                    <h3>5.0 Equipment, Components and Container/Closure</h3>
+                    <p>The equipment, raw material components, containers, closures and other items required for MAP vary with the requirements of the process. These items are typically reduced in size or quantity, which allows them to be supplied to the processing environment in a sealed package after <span class="key-term">depyrogenation</span>/sterilization.</p>
+
+                    <h3>Preparation and Sterilization Methods</h3>
+                    <p>The preparation methods for such sealed packages prior to depyrogenation/sterilization are similar to those associated with automated aseptic processing, though on a smaller scale. The depyrogenation/sterilization methods for all items are required to be validated.</p>
+                    <ul>
+                        <li><strong>Glass vials and containers</strong>: Must be depyrogenated (typically by dry heat oven at ≥250°C for validated time and temperature cycles) to achieve the required reduction in endotoxin load (≥3-log reduction)</li>
+                        <li><strong>Rubber stoppers and closures</strong>: Typically steam-autoclaved in validated cycles; may also be purchased pre-sterilized from qualified suppliers</li>
+                        <li><strong>Tubing and plastic components</strong>: Sterilized by steam, gamma irradiation, or EO depending on material compatibility; validated for each component type</li>
+                        <li><strong>Stainless steel tools and utensils</strong>: Sterilized by steam autoclave or dry heat; sterile tools must be used wherever possible to handle sterile materials rather than direct glove contact</li>
+                    </ul>
+
+                    <h3>Commercially Purchased Sterile Components</h3>
+                    <p>When sterile containers/closures are purchased from a commercial source, procedures should be in place and implemented to ensure the sterility of these items is maintained when introduced into an aseptic environment and used in production.</p>
+
+                    <h3>Non-Product Contact Surfaces</h3>
+                    <p>Where sterilization or depyrogenation of non-product contact surfaces cannot be utilized, a validated sanitization process is required. All product contact surfaces shall be sterilized. Sterility should be maintained with protective layers that can be removed as materials are transitioned to cleaner environments.</p>
+
+                    <h3>Sterile Solution Filtration</h3>
+                    <p>Sterile filtration of solutions through validated 0.22 µm (or smaller) sterilizing-grade filters is required prior to aseptic dispensing. Filter integrity testing (pre- and/or post-use) must be performed per validated procedures. Aseptic connections between tubing, bags, and filter housings must be made using validated aseptic connection techniques in the ISO 5 zone.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese commentary -->
+                <div class="right-column">
+                    <h3>概念解析：MAP 中的滅菌與除熱原要求</h3>
+
+                    <div class="note-box">
+                        <h4>重點提示：每一個接觸產品的元件都必須有無菌保障</h4>
+                        <p>在 MAP 中，沒有任何「後補救」的機會——產品一旦灌裝完成，終端滅菌通常不可行（否則就不需要 MAP 了）。因此，所有接觸產品的表面、元件、工具必須在引入無菌區前完成滅菌或除熱原確效。</p>
+                        <p><strong>各類物料的常見處理方式：</strong></p>
+                        <ul>
+                            <li><strong>玻璃瓶（vials）</strong>：乾熱隧道除熱原（≥250°C），達到 ≥3-log 內毒素降低；滅菌與除熱原同步完成</li>
+                            <li><strong>橡膠塞（stoppers）</strong>：蒸汽高壓滅菌（autoclave），條件需經驗證；部分廠商提供已滅菌商業化產品，須建立供應商確效程序</li>
+                            <li><strong>矽膠管路（tubing）</strong>：蒸汽滅菌或 gamma 輻射滅菌（視材質相容性）；每批使用前確認滅菌包裝完整性</li>
+                            <li><strong>不鏽鋼工具</strong>：高壓蒸汽滅菌；在 ISO 5 區域內應使用無菌工具操作無菌物料，避免直接手套接觸</li>
+                        </ul>
+                        <p>所有方法均需通過驗證，並納入批次製造記錄（batch record）作為放行依據。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>滅菌 vs. 除熱原：為什麼需要區分？</h4>
+                        <p>這是一個常見的混淆點：</p>
+                        <ul>
+                            <li><strong>滅菌（Sterilization）</strong>：殺滅微生物（包括細菌芽孢）→ 高壓蒸汽、乾熱、gamma 輻射均可</li>
+                            <li><strong>除熱原（Depyrogenation）</strong>：破壞內毒素（endotoxin，即革蘭氏陰性菌的細胞壁碎片）→ 必須使用更高能量的乾熱（≥250°C），普通滅菌條件（121°C 蒸汽）無法有效破壞內毒素</li>
+                        </ul>
+                        <p>玻璃瓶既需要滅菌也需要除熱原，因此乾熱除熱原是首選，可一步到位。橡膠塞的除熱原通常由製造商在原料生產階段控制，使用者需要確認原料供應商的內毒素控制標準。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.0 — PROCESS TIME LIMITATIONS
+         ============================================================ -->
+    <div class="chapter-section" id="sec6">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6</div>
+            <div class="chapter-info">
+                <h2>Section 6.0 — Process Time Limitations</h2>
+                <p>製程時間限制 | PDA TR62 p11</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English original -->
+                <div class="left-column">
+                    <h3>6.0 Process Time Limitations</h3>
+                    <p>Personnel time limitations with MAP are usually more important than with automated aseptic processes. In very short or non-repetitive processes (such as an aseptic connection), time may be of little relevance except as it relates to material stability. However, where operators must perform repetitive tasks such as container filling/stoppering, egg harvesting (as in vaccine manufacturing), or similar tasks, the effect of fatigue must be considered in both routine operation and process simulation.</p>
+
+                    <h3>Operator Fatigue and Performance Drift</h3>
+                    <p>The operator's aseptic technique may deteriorate with the passage of time (<span class="key-term">performance drift</span>). A worst-case evaluation of fatigue should include a process simulation equal to or greater in time duration than the longest period an operator might perform the task without interruption. Similarly, a process simulation conducted at the end of a normal day's production can evaluate the effect of fatigue on aseptic technique.</p>
+
+                    <h3>Equipment and Material Time Limits</h3>
+                    <p>Time limits for holding dirty/clean/sterile equipment and sterile/depyrogenated components shall also be validated. It is also necessary to validate:</p>
+                    <ul>
+                        <li>The maximum time allowed between formulation (addition of the first ingredient, including water) to the point of sterilization by filtration — considering filter grow-through risk</li>
+                        <li>The holding time for sterile bulk prior to and during aseptic dispensing/filling</li>
+                        <li>The maximum time for the aseptic operation itself (from opening sterile packs to completion of filling and stoppering)</li>
+                    </ul>
+                    <p>These topics are discussed further in PDA Technical Report No. 22.</p>
+
+                    <div class="quote-box">
+                        <strong>Note (TR62 Section 6.0):</strong> As part of the process risk assessment, personnel fatigue factors need to be considered, and where possible minimized/eliminated through improvement in ergonomics, an understanding of human factors, etc.
+                    </div>
+
+                    <h3>Bioburden and Process Time Relationship</h3>
+                    <p><span class="key-term">Bioburden</span> in a product solution can increase over time if temperature and time are not controlled. A higher bioburden level entering sterile filtration increases the risk that some organisms may pass through the filter (filter grow-through) or that filter plugging occurs before filtration is complete. The <span class="key-term">process time limit</span> between compounding (first ingredient addition) and filtration/filling must therefore be defined and validated based on:</p>
+                    <ul>
+                        <li>The microbiological growth characteristics of the product formulation</li>
+                        <li>The holding temperature during compounding and pre-filtration steps</li>
+                        <li>The initial bioburden level of raw materials and water</li>
+                        <li>The designed safety margin relative to filter grow-through risk</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese commentary -->
+                <div class="right-column">
+                    <h3>概念解析：製程時間限制的邏輯基礎</h3>
+
+                    <div class="formula-box">
+                        <h4>製程時間限制的核心邏輯：微生物負載風險模型</h4>
+                        <pre>
+微生物負載風險 = f（初始微生物負載量，時間，溫度）
+
+具體而言：
+
+  微生物數量(t) = 初始數量 × 2^(t / 倍增時間)
+
+  其中：
+    t = 製程持續時間（小時）
+    倍增時間 = 微生物在該配方、溫度下的代時
+
+風險臨界點：
+  若 微生物數量(t) 超過過濾器承受上限
+  → 發生 filter grow-through（微生物穿透無菌過濾器）
+  → 灌裝產品無法保證無菌
+        </pre>
+                        <p>因此，TR62 要求在 IND/NDA/MAA 申請中明確定義並驗證：</p>
+                        <ul>
+                            <li>從第一個原料加入（含注射用水）到開始無菌過濾的最長允許時間（通常稱為 compounding hold time）</li>
+                            <li>無菌過濾後到灌裝完成的最長允許時間（sterile bulk hold time）</li>
+                            <li>無菌操作本身（開啟包裝到壓蓋完成）的最長允許持續時間</li>
+                        </ul>
+                        <p>這些時限通常通過微生物挑戰研究（bioburden simulation study）+ 分析穩定性數據共同支撐。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>MAP 特殊考量：疲勞因素是「製程時間限制」的一部分</h4>
+                        <p>在自動化製程中，設備不會「疲勞」——只要機器維持確效狀態，任何時間點的性能都一致。但在 MAP 中，隨著時間增加：</p>
+                        <ul>
+                            <li>操作員專注力下降 → 無菌技術偏差機率上升</li>
+                            <li>重複動作造成肌肉疲勞 → 動作精準度降低</li>
+                            <li>更衣汗水累積 → 更衣屏障效能可能衰退</li>
+                        </ul>
+                        <p>因此，APS（媒體灌填）必須在「最壞情況時間」下執行——也就是模擬操作員在一個工作日末段、連續操作最長時間後的狀態，以評估疲勞對無菌技術的實際影響。</p>
+                        <p>人因工程（Human Factors / Ergonomics）的改善，例如：更符合人體工學的工作台高度、適當的休息間隔設計，都是降低疲勞風險的有效手段，應在製程設計階段（Section 7.0）一併考慮。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>製程時間限制與 PDA TR22 的關係</h4>
+                        <p>TR62 Section 6.0 刻意保持簡短，並明確指向 <strong>PDA Technical Report No. 22</strong>（Process Simulation for Aseptically Filled Products）作為詳細指引。TR22 包含：</p>
+                        <ul>
+                            <li>各類時間限制的驗證方法學（包括 bioburden 研究設計）</li>
+                            <li>APS 持續時間的決定原則（應涵蓋實際製程最長操作時間）</li>
+                            <li>持有時間（hold time）驗證的最差情況設定</li>
+                        </ul>
+                        <p>在閱讀 TR62 第 6 節後，建議同步參閱 TR22 的對應章節，以獲得完整的方法論支撐。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Questions -->
+            <div class="practice-box">
+                <h3>Practice Questions / 練習思考題</h3>
+                <ol>
+                    <li style="margin-bottom:1rem;">
+                        <strong>[Section 3.0 — Cleanroom Classification]</strong><br>
+                        A company is designing a new MAP suite for clinical-scale vaccine preparation. They plan to use a closed isolator installed in a room classified as ISO 8. The isolator itself maintains ISO 5 conditions during operation. Is this design approach consistent with TR62 requirements? What are the key criteria the isolator must meet to justify the ISO 8 background environment?<br>
+                        <em>（一家公司正在設計用於臨床規模疫苗配製的 MAP 套房。計劃使用安裝在 ISO 8 房間中的封閉隔離器，隔離器本身在操作期間維持 ISO 5 條件。此設計方案是否符合 TR62 要求？隔離器必須滿足哪些關鍵標準才能支持 ISO 8 背景環境？）</em>
+                    </li>
+                    <li style="margin-bottom:1rem;">
+                        <strong>[Section 4.2 / 4.4 — Operator Qualification]</strong><br>
+                        An experienced operator was fully qualified for a manual filling process 8 months ago but has been assigned to a different department since then and has not performed any MAP operations. She is now asked to return to the MAP line for an urgent clinical batch. According to TR62, what qualification steps — if any — must be completed before she can perform the critical aseptic manipulations?<br>
+                        <em>（一位有經驗的操作員在 8 個月前完全通過手動灌裝製程確效，但此後被調到其他部門，未執行任何 MAP 操作。現在被要求回到 MAP 生產線執行緊急臨床批次。根據 TR62，在她可以執行關鍵無菌操作之前，必須完成哪些確效步驟？）</em>
+                    </li>
+                    <li style="margin-bottom:1rem;">
+                        <strong>[Section 6.0 — Process Time Limits]</strong><br>
+                        During process development for a new MAP product, the formulation team proposes a 12-hour hold time between compounding completion and sterile filtration (at ambient temperature, approximately 20°C). What studies would you require to validate this proposed hold time from a TR62 / PDA TR22 perspective? What risk factors would most influence whether 12 hours is acceptable?<br>
+                        <em>（在新 MAP 產品的製程開發期間，配方團隊提議從配製完成到無菌過濾之間有 12 小時的保留時間（在環境溫度約 20°C 下）。從 TR62 / PDA TR22 的角度，您需要哪些研究來驗證此擬議保留時間？哪些風險因素最能影響 12 小時是否可接受？）</em>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Summary -->
+    <div class="chapter-section" id="summary">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#10003;</div>
+            <div class="chapter-info">
+                <h2>Sections 3–6 Key Takeaways / 本節重點總結</h2>
+                <p>核心觀念彙整</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Section-by-Section Summary</h3>
+                    <ul>
+                        <li><strong>Section 3.0</strong>: MAP requires a minimum of <span class="key-term">ISO 5</span> / <span class="key-term">Grade A</span> with <span class="key-term">UDAF</span> / <span class="key-term">HEPA</span> filtration for the critical aseptic zone. Background can be ISO 7 (open hood) or ISO 8 (isolator). All particle limits must be met both at-rest and in-operation.</li>
+                        <li><strong>Section 4.1–4.2</strong>: Personnel must complete cGMP theoretical training AND practical <span class="key-term">gowning qualification</span> before entering the aseptic core. Periodic re-qualification is required; long-term absence or adverse trends trigger mandatory re-qualification.</li>
+                        <li><strong>Section 4.3</strong>: ICH Q9 / QRM principles must be applied to MAP. Risk assessment must account for the inherently higher contamination probability of MAP vs. automated processes. Critical steps (tubing connections, powder additions, manual stoppering) require specific risk controls.</li>
+                        <li><strong>Section 4.4</strong>: Operators must pass an APS (media fill) specific to their MAP process. <span class="key-term">Performance drift</span> — caused by task complexity, duration, rate of activity, and personnel changes — is an inherent MAP risk that APS design must address in worst-case conditions.</li>
+                        <li><strong>Section 5.0</strong>: All product-contact items must be sterility-assured via validated sterilization or <span class="key-term">depyrogenation</span>. Non-product contact surfaces require validated sanitization where sterilization is impractical. Commercially sourced sterile components require supplier qualification and verified sterility maintenance during introduction to the aseptic area.</li>
+                        <li><strong>Section 6.0</strong>: <span class="key-term">Process time limits</span> must be validated for (1) compounding-to-filtration hold, (2) sterile bulk hold, and (3) the aseptic operation duration itself. The key driver is <span class="key-term">bioburden</span> growth risk, which increases with time and temperature. Operator fatigue — unique to MAP — must also be incorporated into APS worst-case design (see PDA TR22 for detailed methodology).</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文重點速覽</h3>
+                    <div class="concept-box">
+                        <h4>Sections 3–6 核心原則</h4>
+                        <ul>
+                            <li><strong>第 3 節</strong>：MAP 最低需求為 ISO 5 / Grade A 配合 UDAF + HEPA。隔離器可允許 ISO 8 背景環境。動態粒子限度是最嚴格的考驗點。</li>
+                            <li><strong>第 4.1–4.2 節</strong>：理論培訓 + 實際更衣確效是進入無菌核心區的前提。長期缺席或不良趨勢必須觸發重新確效。</li>
+                            <li><strong>第 4.3 節</strong>：ICH Q9 風險管理不可或缺。MAP 的無菌失敗機率天生高於終端滅菌，必須用系統性風險評估識別並控制最高風險步驟。</li>
+                            <li><strong>第 4.4 節</strong>：APS 確效必須涵蓋最壞情況——包含最長操作時間、人員疲勞、所有干預措施。個人大規模製程確效不能替代 MAP 專屬確效。</li>
+                            <li><strong>第 5 節</strong>：接觸產品的每一個元件都須有滅菌/除熱原驗證。商業預滅菌元件需建立供應商確效制度。</li>
+                            <li><strong>第 6 節</strong>：製程時間限制涵蓋三個層次：配製保留、無菌原液保留、無菌操作時間。核心風險是微生物負載增長；MAP 獨有的疲勞因素亦是時間限制的重要組成。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>Regulatory Citation 參考引用格式</h4>
+                        <p>依本專案記憶規則，引用本節內容時請使用：</p>
+                        <p><strong>PDA TR62, Section X.X</strong>（例如：PDA TR62, Section 4.2 — Gowning Qualification）</p>
+                        <p>完整引用：PDA Technical Report No. 62, <em>Recommended Practices for Manual Aseptic Processes</em>, Parenteral Drug Association, 2013.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<footer class="main-footer">
+    <p>PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes</p>
+    <p>Sections 3–6 | Educational Material — For Training Purposes Only</p>
+    <p>Licensed content. Not for redistribution.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 300);
+    });
+</script>
+
+</body>
+</html>
