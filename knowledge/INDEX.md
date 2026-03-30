@@ -430,6 +430,29 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 **Sections:** Section 1–3 (Introduction, Glossary & Low Bioburden Overview) → Section 4a (Risk Assessment Framework & Criticality Factors) → Section 4b (Worked Examples: Cell Culture & Media Supplementation)
 
+## TR65-Complete.md
+**Report:** PDA Technical Report No. 65 (Revised 2022): Technology Transfer
+**Pages:** p1–p62 | **Sections:** 8
+
+**Covers questions about:**
+- Six types of technology transfers: clinical-clinical, development-commercial, commercial-commercial; internal-internal, internal-external, external-external
+- Six-stage TT process: Initiation → Planning → Knowledge Transfer → Readiness → Execution → Handover
+- Cross-functional roles and responsibilities (Table 4.1-1: PM, Business, Process, Analytical, Engineering, Manufacturing, Regulatory, Quality, Sourcing/SC)
+- TT Charter, success factors, governance structure, project management
+- Initiation Stage: feasibility, process fit assessment, regulatory strategy, site selection
+- Planning Stage: TT plan, RACI, batch records, validation plan, supply agreements
+- Knowledge Transfer Stage: technology package, process qualification batches, analytical method transfer
+- Readiness Stage: equipment qualification, personnel training, regulatory submission readiness
+- Execution Stage: process performance qualification (PPQ), commercial readiness
+- Handover Stage: final documentation, commercial operations handover
+- 12 real-world case studies (8.1–8.12) covering common TT failures and successes
+
+**Key terms:** technology transfer (TT), sending unit (SU), receiving unit (RU), TT Charter, stage gate, technology package, process fit assessment, PPQ, process qualification, knowledge transfer, comparability protocol, regulatory strategy, RACI, TT project manager, analytical method transfer, commercial launch
+
+**Sections:** Section 0 (Intro, Glossary, TT Types) → Section 1 (TT Process & Oversight 4.0) → Section 2a (Initiation 5.1) → Section 2b (Planning 5.2) → Section 3 (Knowledge Transfer & Readiness 5.3–5.4) → Section 4 (Execution & Handover 5.5–5.6) → Section 5 (References) → Section 6 (12 Case Studies)
+
+---
+
 ## TR62-Complete.md
 **Report:** PDA Technical Report No. 62 (2013): Manual Aseptic Processes
 **Pages:** p1–p23 | **Sections:** 5
@@ -521,6 +544,9 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
 | Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
 | Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
+| Technology transfer, TT, sending unit, receiving unit, PPQ, stage gate / 技術移轉、發送端、接收端 | TR65 |
+| TT Charter, TT project management, cross-functional TT roles / 技術移轉憲章、跨職能角色 | TR65 |
+| Process fit assessment, technology package, comparability protocol / 製程適配性評估、技術包 | TR65 |
 | Manual aseptic process, MAP, UAFH, First Air, critical zone / 手動無菌製程、單向氣流操作台 | TR62 |
 | Manual APS, media fill for compounding/compositing/manual filling / 手動製程培養基充填 | TR62 |
 | Excipient risk assessment, ERPN, SCRPN, OverallRPN, excipient GMP / 賦形劑風險評估、賦形劑風險優先數、供應鏈風險 | TR54 |
@@ -596,6 +622,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Supplier / Vendor Qualification (供應商確認)**
 → TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
+
+**Technology Transfer (技術移轉)**
+→ TR65 ★★★ (complete TT framework: 6 stages, cross-functional roles, 12 case studies) — single primary source
 
 **Change Control (變更管制)**
 → TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
