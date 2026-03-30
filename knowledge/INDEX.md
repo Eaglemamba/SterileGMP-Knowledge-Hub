@@ -432,6 +432,28 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR54-6-Complete.md
+**Report:** PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients
+**Pages:** Foreword + p1–p36 | **Sections:** 6
+
+**Covers questions about:**
+- What formalized excipient risk assessment is and why EU GMP Annex 15 (2015) requires it
+- Intrinsic risk factors for excipients: chemical nature, synthetic route, source (animal/plant/mineral/synthetic), known impurities
+- Supply chain risk analysis: types of supply chains (direct, distributor, repackager, broker, CMO) and their risk implications
+- Roles in the excipient supply chain: Manufacturing Authorization Holder, Distributor, Repackager, Broker, Haulier responsibilities
+- Excipient risk scoring methods: RPN (Risk Priority Number), OverallRPN = Excipient RPN × Supply Chain RPN
+- Two risk matrix options for calculating Final Risk Score (Option 1: OverallRPN; Option 2: matrix lookup)
+- GMP standards applicable at each risk level: ISO, EXCiPACT, full pharmaceutical GMP requirements
+- Excipient risk by dosage form: why injectables/parenteral excipients have highest risk vs oral/topical
+- Ongoing lifecycle management: triggers for re-assessment (supplier change, regulatory action, formulation change, audit finding)
+- Six real-world company examples (Companies U–Z) showing how different pharma companies implement TR54-6
+
+**Key terms:** excipient, QRM (Quality Risk Management), RPN (Risk Priority Number), OverallRPN, intrinsic risk factor, Manufacturing Authorization Holder (MAH), Distributor, Repackager, Broker, Haulier, EXCiPACT, ICH Q9, EU GMP Annex 15, risk matrix, risk profile, gap analysis, supply chain risk, Certificate of Analysis (CoA), GMP standard, IPEC Federation, lifecycle review, knowledge management, risk mitigation, dosage form risk
+
+**Sections:** Section 1 (Foreword + Introduction + Glossary) → Sections 3–5 (Overall Strategy, Supply Chain & Roles) → Section 6A (QRM Model: Initiate & Excipient Risk Analysis) → Section 6B (Supply Chain Risk, Evaluation & GMP Standards) → Sections 7–9 (Lifecycle, Benefits & References) → Section 10 (Annex I: Six Real-World Examples)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -480,13 +502,18 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
 | Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
 | Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
+| Excipient risk assessment, excipient qualification / 賦形劑風險評估、賦形劑確認 | TR54-6 |
+| QRM for excipients, excipient RPN, OverallRPN, risk matrix / 賦形劑QRM、風險優先數、整體風險分數 | TR54-6 |
+| Excipient supply chain risk, broker, repackager, distributor / 賦形劑供應鏈風險、中間商、轉包商、分銷商 | TR54-6 |
+| EXCiPACT, IPEC, excipient GMP standards / EXCiPACT認證、IPEC聯盟、賦形劑GMP標準 | TR54-6 |
+| EU GMP Annex 15 excipient requirements, EC Guidelines excipients / 歐盟GMP附錄15賦形劑要求 | TR54-6 |
 
 ## Not Covered in This Knowledge Base
 
 If the user asks about these topics, say so clearly and suggest alternatives:
 
 - **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
-- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR54, TR62, TR70, TR83) — not available; suggest the user consult the official PDA website
+- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR62, TR83) — not available; suggest the user consult the official PDA website
 - **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
 - **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
 - **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
@@ -528,7 +555,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR54-6 ★★★ (excipient QRM: RPN scoring, OverallRPN, supply chain risk, 6 real-world examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
 → PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
@@ -549,7 +576,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
 
 **Supplier / Vendor Qualification (供應商確認)**
-→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
+→ TR66 ★★★ (SUS supplier qualification) | TR54-6 ★★★ (excipient supplier qualification: risk-based GMP tiering, EXCiPACT, audit requirements) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
 → TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
@@ -588,4 +615,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR85 ★★★ (ECIM, glass container inspection, validation strategy) | TR90 ★★ (CCS particulate control) | PtC-12 ★★ (RABS particulate)
 
 **Risk Assessment / FMEA (風險評估/FMEA)**
-→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR54-6 ★★★ (excipient QRM: OverallRPN, supply chain risk matrix, 6 company examples) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+
+**Excipient Quality / Excipient Risk Assessment (賦形劑品質/賦形劑風險評估)**
+→ TR54-6 ★★★ (full excipient QRM framework: intrinsic risk, supply chain risk, RPN calculation, GMP standards tiering, EXCiPACT, real-world examples) — single primary source

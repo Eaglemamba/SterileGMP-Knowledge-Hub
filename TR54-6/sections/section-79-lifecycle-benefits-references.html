@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>PDA TR54-6 – Sections 7–9: Lifecycle, Benefits &amp; References</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Sections 7–9: Lifecycle Review, Benefits &amp; References</h1>
+    <div class="subtitle">生命週期持續回顧、效益與參考文獻</div>
+    <div class="page-info">PDA Technical Report No. 54-6 (2019) | p25–p27</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives / 學習目標</h3>
+        <ul>
+            <li>Explain why excipient risk assessment is a <strong>living document</strong> requiring periodic and event-triggered review — 說明為何賦形劑風險評估是需要定期及事件驅動回顧的「活文件」</li>
+            <li>Identify and categorize all <strong>triggers</strong> that mandate a reassessment under TR54-6 Section 7.1 — 識別並分類觸發重新評估的所有事件</li>
+            <li>Articulate the <strong>business and regulatory value</strong> of a formalized excipient risk assessment program — 闡述正式化賦形劑風險評估的商業與法規價值</li>
+            <li>Locate and interpret the key <strong>regulatory and industry standards</strong> cited in Section 9.0 (EU GMP, ICH Q9, EXCiPACT, USP &lt;1078&gt;, IPEC GMP Guide) — 定位並解讀第9節引用的主要法規與業界標準</li>
+            <li>Apply the <strong>lifecycle review frequency</strong> decision logic based on excipient risk tier — 根據賦形劑風險等級應用生命週期回顧頻率決策邏輯</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7.0 — ONGOING REVIEW / LIFECYCLE                    -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec7">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7</div>
+            <div class="chapter-info">
+                <h2>7.0 Ongoing Review — Formalized Risk Assessment Lifecycle</h2>
+                <p>持續回顧 — 正式風險評估生命週期</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- 7.0 Introduction -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>7.0 The Risk Assessment as a Living Document</h3>
+                    <p>Once the excipient risk assessment is formally in place, it will be used as <span class="key-term">living data</span> and will contribute to a knowledge base through ongoing risk review. Figure 7.0-1 shows the overall generic risk model with respect to risk review only.</p>
+                    <p><span class="key-term">Risk Review</span> generally will be conducted in two modes:</p>
+                    <ul>
+                        <li><strong>Periodic (monitoring-driven):</strong> Scheduled reassessment at defined intervals based on the excipient's risk tier</li>
+                        <li><strong>Event-driven (<span class="key-term">Trigger</span>-based):</strong> Immediate reassessment whenever a qualifying event occurs</li>
+                    </ul>
+                    <p>The lifecycle model mirrors the generic risk management cycle: Initiate → Risk ID → Risk Analysis → Risk Evaluation → Risk Reduction → Risk Acceptance → Communication → <strong>Risk Review</strong> → (loop back). This is not a one-time exercise; <span class="key-term">Lifecycle Management</span> ensures the risk assessment remains current and actionable.</p>
+
+                    <div class="quote-box">
+                        "The risk assessment… will be used as living data and will contribute to a knowledge base through ongoing risk review." — TR54-6, Section 7.0
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>核心概念：活文件與生命週期管理</h3>
+
+                    <div class="concept-box">
+                        <h4>什麼是「活文件」(Living Document)?</h4>
+                        <p><span class="key-term">Lifecycle Management</span>（生命週期管理）的核心觀念是：風險評估不是「做一次就結束」的靜態文件，而是持續更新的活文件。這與 ICH Q10《藥品品質系統》的哲學一致——品質應透過整個產品生命週期持續監控與改進。</p>
+                        <p>可以把它想成汽車的維修記錄：你不只在買車時做一次檢查，每次更換零件、發生事故或達到里程碑時，都需要更新紀錄。賦形劑風險評估也是如此。</p>
+                        <ul>
+                            <li><strong>ICH Q9</strong> QRM 框架要求持續監控風險控制的有效性</li>
+                            <li><strong>ICH Q10</strong> PQS 框架要求建立知識管理系統，使風險評估能隨新知識演進</li>
+                            <li>EU GMP Annex 15（查驗/驗證）也強調定期回顧是法規期望</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：汽車保險年度回顧</h4>
+                        <p>你的汽車保險不會永久不變——每年要回顧保費、保障範圍是否合適。當你「搬家」（新廠址）、「換新車」（新供應商）或「出了事故」（品質異常）時，你會立刻重新評估風險，而不是等到年度回顧。</p>
+                        <p>TR54-6 的邏輯完全相同：定期回顧（如同年度保險審查）+ 觸發事件回顧（如同發生重大事件後立即重評）。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7.1 Triggers -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>7.1 Triggers for Risk Assessment Review</h3>
+                    <p>Trending of excipient and drug product quality plays a key role in the risk assessment to ensure science- and data-based assessments. Key performance indicators or other metrics should be monitored on an ongoing basis to demonstrate the effectiveness of the risk controls. That monitoring should highlight any <span class="key-term">Trigger</span>s that indicate the need to reassess the risk and, possibly, revise the assessment.</p>
+
+                    <p>Internal procedures should define the periodic review and revision process and list the events that would trigger a reassessment, such as:</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Triggering Events</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Product / Formulation</strong></td>
+                                <td>New product; New formulation of existing product; New excipient</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supplier / Supply Chain</strong></td>
+                                <td>New manufacturer/supplier; Change in notification from manufacturer/supplier; Change in supply chain; Change to site</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Regulatory / Compliance</strong></td>
+                                <td>Change in GMP certification status or GMP status of manufacturer/supplier; Regulatory changes; Pharmacopeial changes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>External / Market</strong></td>
+                                <td>Geopolitical/socioeconomic/business changes; Quality events, industry-wide (e.g., TSE); Shifts/changes in trends; New safety information</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>When triggering events occur, both the event and the existing excipient risk assessment should be reviewed, and a decision should be made about the need to revise the excipient risk assessment based on the new knowledge. The process, decision, and rationale should all be documented. Updates to the risk assessment may lead to revised control decisions, including <span class="key-term">CAPA</span> outcomes and revised <span class="key-term">Supplier Qualification</span> requirements.</p>
+                </div>
+                <div class="right-column">
+                    <h3>觸發因素：何時必須重新評估？</h3>
+
+                    <div class="note-box">
+                        <h4>必須記住的六大關鍵觸發因素</h4>
+                        <p>這六類觸發因素是考試與實際工作中最常被測試的知識點：</p>
+                        <ol>
+                            <li><strong>供應商變更</strong> — 新的製造商/供應商，或現有供應商的 GMP 認證狀態改變</li>
+                            <li><strong>規格變更</strong> — 賦形劑規格或藥典標準的修訂（Pharmacopeial changes）</li>
+                            <li><strong>法規行動</strong> — 主管機關的召回、警告信、法規要求更新</li>
+                            <li><strong>新安全資訊</strong> — 出現新的毒理學資料或業界安全事件（如 TSE 疫情）</li>
+                            <li><strong>稽核發現</strong> — 內部稽核或外部查廠發現供應商存在系統性缺陷</li>
+                            <li><strong>產品配方變更</strong> — 現有產品的新配方，或全新產品使用現有賦形劑</li>
+                        </ol>
+                        <p>任何一項觸發均<strong>強制要求</strong>重新評估，且過程、決策與理由必須文件化。</p>
+                    </div>
+
+                    <div class="concept-box.application application-box">
+                        <h4>CDMO 實務情境：FDA 警告信觸發流程</h4>
+                        <p>假設你是 CDMO，賦形劑供應商 X 收到 FDA 警告信，指出其 GMP 系統存在重大缺陷。TR54-6 要求的觸發回應步驟如下：</p>
+                        <ol>
+                            <li><strong>立即啟動</strong> — 警告信發出當日，正式啟動 <span class="key-term">Risk Review</span>，記錄觸發事件</li>
+                            <li><strong>現有庫存評估</strong> — 審查已驗收入庫的批次，判斷是否有品質疑慮</li>
+                            <li><strong>增強測試</strong> — 對後續進貨批次實施強化放行測試，直至風險釐清</li>
+                            <li><strong>替代供應商資格確認</strong> — 啟動備用供應商的 <span class="key-term">Supplier Qualification</span> 程序</li>
+                            <li><strong>法規通知評估</strong> — 評估是否需要通知藥品主管機關（視藥證要求而定）</li>
+                            <li><strong>CAPA 更新</strong> — 將此事件納入 <span class="key-term">CAPA</span> 系統，並更新供應商評估記錄</li>
+                        </ol>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>回顧頻率決策邏輯</h4>
+                        <pre>
+風險等級決定定期回顧週期：
+
+HIGH RISK 高風險賦形劑
+  → 年度回顧 (Annual Review)
+  → 例：注射用賦形劑、功能性賦形劑、
+       單一來源供應商
+
+MEDIUM RISK 中風險賦形劑
+  → 兩年回顧 (Biennial Review)
+  → 例：多來源供應商、非關鍵功能
+
+LOW RISK 低風險賦形劑
+  → 三年回顧 (Triennial Review)
+  → 例：通用輔料、多家認可供應商
+
++ 任何觸發事件 → 立即啟動計畫外回顧
+  (Unscheduled / Event-Triggered Review)
+                        </pre>
+                        <p>此邏輯與 ICH Q9 的風險比例原則（proportionate risk management）一致：高風險 = 更頻繁的監控。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 1</h4>
+                        <p>你的賦形劑供應商通知你，其生產廠址將從德國遷移至印度。根據 TR54-6 Section 7.1，這是否構成觸發事件？如果是，請列出至少三個你需要在重新評估中考量的新風險面向。</p>
+                        <p><em>提示：考慮「Change to site」、「Change in supply chain」、「Change in GMP certification status」三個觸發因素同時成立的情況。</em></p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /chapter-body -->
+    </div><!-- /sec7 -->
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8.0 — BENEFITS AND VALUE                            -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec8">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8</div>
+            <div class="chapter-info">
+                <h2>8.0 Benefits and Value / QRM / Knowledge Management</h2>
+                <p>效益與價值 / QRM / 知識管理</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.0 The Business Case for Formalized Excipient RA</h3>
+                    <p>A global excipient risk assessment throughout the drug product lifecycle delivers the following advantages:</p>
+
+                    <ul>
+                        <li><strong>Documented <span class="key-term">Knowledge Management</span>:</strong> Structured knowledge about the excipient supply chain, building a growing institutional repository</li>
+                        <li><strong>Rapid new-product evaluation:</strong> Ability to rapidly and effectively evaluate the requirements for new products that use existing or new excipients</li>
+                        <li><strong>Preferred supply chain identification:</strong> Identification of supply chains that present lower risks and preferred supply chains with which to build long-term relationships</li>
+                        <li><strong>Focused oversight:</strong> Focus on specific risk mitigation oversight activities for both manufacturer or supplier and user — directing audit resources to where they matter most</li>
+                        <li><strong>Deeper product knowledge:</strong> More detailed product knowledge and increased understanding of how the risks from excipients may affect product quality</li>
+                        <li><strong>Formal trigger database:</strong> Formal assessment and database of risk review triggers, such as major changes and critical investigations (<span class="key-term">CAPA</span> integration)</li>
+                        <li><strong>Knowledge-based decision-making:</strong> Proactive rather than reactive risk management — moving from crisis response to anticipatory control</li>
+                        <li><strong>Common language for stakeholders:</strong> Provides a common language and approach for clear communication with stakeholders throughout the supply chain</li>
+                        <li><strong>Knowledge-sharing opportunities:</strong> Opportunities for comparative assessments between manufacturers, suppliers, and end users</li>
+                    </ul>
+
+                    <div class="quote-box">
+                        "A global excipient risk assessment throughout the drug product lifecycle delivers… knowledge-based and proactive decision-making." — TR54-6, Section 8.0
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>效益解析：為何值得投入？</h3>
+
+                    <div class="concept-box">
+                        <h4>知識管理 (Knowledge Management) 的本質</h4>
+                        <p><span class="key-term">Knowledge Management</span> 在此脈絡中的意義是：建立一個結構化的賦形劑風險資料庫，隨時間累積「機構智慧」，使每次決策都比上一次更有依據。</p>
+                        <p>這個資料庫包含：</p>
+                        <ul>
+                            <li>供應商稽核歷史記錄（Supplier audit history）</li>
+                            <li>分析證書趨勢分析（CoA trend analysis）</li>
+                            <li>客訴記錄與根本原因分析（Complaint records & RCA）</li>
+                            <li>變更通知記錄（Change notification log）</li>
+                            <li>各批次風險評分變化趨勢</li>
+                        </ul>
+                        <p>隨著時間累積，這個資料庫讓你能在幾小時內完成新產品的賦形劑風險評估，而非從零開始花費數週。這就是「<strong>主動式</strong>（proactive）」vs「<strong>被動式</strong>（reactive）」風險管理的差異。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：信用評分系統</h4>
+                        <p>想像銀行的信用評分（Credit Score）系統：每次你的供應商完成一筆交易（準時交貨、CoA 合格）就累積「信用」；每次發生品質事件（批次拒絕、遲交）就扣分。長期累積後，你對每個供應商的「風險評分」越來越精準。</p>
+                        <p>TR54-6 的 <span class="key-term">Knowledge Management</span> 正是建立這樣一套供應商「信用歷史」——讓採購、品保、法規事務部門能用共同的數字語言溝通，而非各自憑直覺判斷。</p>
+                    </div>
+
+                    <div class="concept-box.application application-box">
+                        <h4>法規合規價值：三大主管機關期望</h4>
+                        <p>正式化賦形劑風險評估直接回應以下法規要求：</p>
+                        <ul>
+                            <li><strong>EU GMP Annex 15（查驗/變更控制）：</strong>要求持續回顧與文件化，與 TR54-6 生命週期模型直接對應</li>
+                            <li><strong>EU EC Guidelines (2015)：</strong>明確要求對賦形劑供應商實施「正式化風險評估」以確定適用 GMP 等級，TR54-6 正是其實施指引</li>
+                            <li><strong>ICH Q9 QRM：</strong>要求風險管理為持續性活動，而非單次評估；TR54-6 的觸發機制正是此要求的操作化</li>
+                        </ul>
+                        <p>在稽核中，能展示一套成熟的 <span class="key-term">Lifecycle Management</span> 系統，代表法規成熟度（regulatory maturity）與品質文化的具體證明。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 2</h4>
+                        <p>你的公司管理層質疑：「我們已經有供應商稽核程序了，為何還需要額外建立正式化賦形劑風險評估系統？」請根據 TR54-6 Section 8.0 列舉至少三個理由，說明正式化 RA 提供了稽核程序之外的附加價值。</p>
+                        <p><em>提示：從「新產品評估速度」、「主動 vs 被動」、「共同語言」等角度思考。</em></p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /chapter-body -->
+    </div><!-- /sec8 -->
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9.0 — REFERENCES                                    -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec9">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9</div>
+            <div class="chapter-info">
+                <h2>9.0 References</h2>
+                <p>參考文獻</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <!-- LEFT: Full numbered reference list -->
+                <div class="left-column">
+                    <h3>9.0 Complete Reference List</h3>
+                    <ol>
+                        <li>European Commission. Directive 2011/62/EU of the European Parliament and of the Council of 8 June 2011 amending Directive 2001/83/EC on the Community Code relating to Medicinal Products for Human Use, as Regards the Prevention of the Entry into the Legal Supply Chain of Falsified Medicinal Products; <em>Official Journal of the European Union</em>. 2011.</li>
+
+                        <li>European Commission. Guidelines of 19 March 2015 on the Formalised Risk Assessment for Ascertaining the Appropriate Good Manufacturing Practice for Excipients of Medicinal Products for Human Use; <em>Official Journal of the European Union</em>. European Commission: Brussels, 2015.</li>
+
+                        <li>Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). Guidelines on the Formalised Risk Assessment for Ascertaining the Appropriate Good Manufacturing Practice for Excipients of Medicinal Products for Human Use; PIC/S: Geneva, 2018.</li>
+
+                        <li>U.S. Congress. Food and Drug Administration Safety and Innovation Act; Public Law 112-144—July 9, 2012. U.S. Government Printing Office: Washington, D.C., 2012.</li>
+
+                        <li>The International Pharmaceutical Excipients Council. The IPEC Excipient Information Package (EIP): Template and User Guide; IPEC: Brussels, 2012.</li>
+
+                        <li>Rafidison, P R, S; Holtz, F. A Practical Approach of Implementing GMP for Excipients. <em>Pharmaceutical Technology</em> 2014, 2014 Supplement (3).</li>
+
+                        <li>International Conference for Harmonisation. Quality Guideline Q9: Quality Risk Management; ICH: Geneva, 2005.</li>
+
+                        <li>The International Pharmaceutical Excipients Council. General Glossary of Terms and Acronyms. IPEC: Arlington, Va., 2014.</li>
+
+                        <li>Parenteral Drug Association. Technical Report No. 54: Implementation of Quality Risk Management For Pharmaceutical and Biotechnology Manufacturing Operations; PDA: Bethesda, Md., 2012.</li>
+
+                        <li>Parenteral Drug Association. Technical Report No. 54-4: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations, Annex 3: Case Studies in the Manufacturing of Biotechnological Bulk Drug Substances; PDA: Bethesda, Md., 2014.</li>
+
+                        <li>European Medicines Agency. Medicinal product. About us/Glossary. https://www.ema.europa.eu/en/glossary/medicinal-product (accessed May 30 2019).</li>
+
+                        <li>International Conference for Harmonisation. Quality Guideline Q8(R2): Pharmaceutical Development; ICH: Geneva, 2009.</li>
+
+                        <li>EXCiPACT asbl. Certification Standards for Pharmaceutical Excipient Suppliers: Good Manufacturing Practices, Good Distribution Practices 2017; EXCiPACT asbl: Brussels, 2017.</li>
+
+                        <li>American National Standards Institute. NSF/IPEC/ANSI 363 - 2016 Good Manufacturing Practices (GMP) for Pharmaceutical Excipients; NSF International: Ann Arbor, Mich., 2016.</li>
+
+                        <li>The International Pharmaceutical Excipients Council &amp; The Pharmaceutical Quality Group. Joint IPEC–PQG Good Manufacturing Practices Guide for Pharmaceutical Excipients 2017; IPEC/PQG: Washington, D.C., 2017.</li>
+
+                        <li>U.S. Pharmacopeial Convention. General Chapter &lt;1059&gt; Excipient Performance. In <em>USP 42–NF 37</em>, USP: Rockville, Md., 2018; p 7413.</li>
+
+                        <li>U.S. Pharmacopeial Convention. General Chapter &lt;1078&gt; Good Manufacturing Practices for Bulk Pharmaceutical Excipients. In <em>USP 42-NF 37</em>, USP: Rockville, Md., 2012; p 7497.</li>
+
+                        <li>International Pharmaceutical Excipients Council Japan. Self-Imposed Standards of Good Manufacturing Practices for Pharmaceutical Excipients and its Explanation; IPEC Japan: Tokyo, 2016.</li>
+
+                        <li>U.S. Food and Drug Administration. Inactive Ingredient Search for Approved Drug Products. https://www.accessdata.fda.gov/scripts/cder/iig/index.Cfm (accessed May 25 2019).</li>
+
+                        <li>European Commission. Regulation (EC) No 852/2004 of the European Parliament and of the Council of 29 April 2004 on the hygiene of foodstuffs; OJ L 226. European Commission: Brussels, 2004.</li>
+
+                        <li>European Commission. Part II: Basic Requirements for Active Substances used as Starting Materials, EudraLex – Volume 4 – Guidelines for Good Manufacturing Practices for Medicinal Products for Human and Veterinary Use; European Commission: Brussels, 2014.</li>
+
+                        <li>International Conference on Harmonisation. Quality Guideline Q7: Good Manufacturing Practice Guide for Active Pharmaceutical Ingredients; ICH: Geneva, 2000.</li>
+
+                        <li>European Commission. EudraLex – Volume 4 – Guidelines for Good Manufacturing Practices for Medicinal Products for Human and Veterinary Use, Part I: Basic Requirements for Medicinal Products; European Commission: Brussels, 2015.</li>
+
+                        <li>European Commission. Annex 1: Manufacture of Sterile Medicinal Products (corrected), EudraLex – Volume 4 – EU Guidelines to Good Manufacturing Practice, Medicinal Products for Human and Veterinary Use; European Commission: Brussels, 2008.</li>
+
+                        <li>European Federation for Cosmetic Ingredients. EFfCI GMP for Cosmetic Ingredients including the Certification Scheme for GMP for Cosmetic Ingredients — Revision 2017; EFfCI.: Brussels, 2017.</li>
+
+                        <li>International Food Additives Council. IFAC Quality Systems, Food Safety and Good Manufacturing Practices Guide for Food Additives and GRAS Substances; IFAC: Washington, DC, 2019.</li>
+
+                        <li>International Organization for Standardization. ISO 9001:2015 Quality management systems — Requirements; ISO: Geneva, 2015.</li>
+                    </ol>
+                </div>
+
+                <!-- RIGHT: Commentary on key references -->
+                <div class="right-column">
+                    <h3>關鍵參考文獻解析</h3>
+
+                    <div class="concept-box">
+                        <h4>Ref. 2 — EU EC Guidelines (2015)：TR54-6 的法規根基</h4>
+                        <p>這是整個 TR54-6 最直接的監管依據。2015年歐盟指引明確要求藥品持有人對賦形劑供應商執行「正式化風險評估」，以判斷應適用哪個等級的 GMP 標準。TR54-6 即為此指引的產業實施工具。</p>
+                        <p>對應考點：EU 2015年指引 = TR54-6 的存在理由 (raison d'être)。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 3 — PIC/S Guidelines (2018)：國際採納</h4>
+                        <p>PIC/S（藥品查驗互認合作組織）2018年採用與 EU 相似的正式化賦形劑風險評估要求，代表此方法已獲多個主管機關認可，包括台灣的 TFDA 在內的 PIC/S 成員國均受影響。</p>
+                        <p>對台灣製藥業的意義：TWi Pharmaceuticals 等 CDMO 如有 EU 或 PIC/S 成員國客戶，均須符合此要求。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 7 — ICH Q9 QRM (2005)：風險管理哲學框架</h4>
+                        <p><span class="key-term">Knowledge Management</span> 與 <span class="key-term">Risk Review</span> 的理論基礎。ICH Q9 確立了製藥業 QRM 的五步驟框架（風險識別→分析→評估→控制→溝通/回顧），TR54-6 的生命週期模型正是 Q9 在賦形劑領域的具體落實。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 13 — EXCiPACT (2017)：供應商認證標準</h4>
+                        <p>EXCiPACT 是專為賦形劑供應商設計的第三方 GMP/GDP 認證標準，在 EU 已被許多 MAH 採用作為供應商資格確認工具。取得 EXCiPACT 認證的供應商，在 TR54-6 風險評估中通常可獲得較低的「製造商品質系統」風險評分。</p>
+                        <p>實務提示：若供應商有 EXCiPACT 認證，可在 Section 5.0 的評估矩陣中降低 GMP 合規風險得分。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 14 — NSF/IPEC/ANSI 363 (2016)：美國 GMP 標準</h4>
+                        <p>這是美國市場對賦形劑 GMP 的主要標準，由 NSF International 與 IPEC 共同制定。對於供應美國市場的產品，可用此標準評估賦形劑供應商的 GMP 合規性，作為 TR54-6 製造商評估的依據之一。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 15 — Joint IPEC-PQG GMP Guide (2017)：業界最佳實踐</h4>
+                        <p>IPEC 與英國藥品品質集團（PQG）聯合發布的 GMP 指南，是全球賦形劑製造商自願遵循的最高業界標準。在風險評估中，符合 IPEC-PQG GMP Guide 的供應商代表品質管理體系成熟度高，可在風險矩陣中獲得正面加權。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 17 — USP &lt;1078&gt;：賦形劑 GMP 的藥典標準</h4>
+                        <p>美國藥典 USP General Chapter &lt;1078&gt; 是美國市場賦形劑 GMP 的藥典依據，與 IPEC-PQG GMP Guide 互補。對美國 NDA/ANDA 持有者，USP &lt;1078&gt; 合規是供應商評估的基準要求。</p>
+                        <p>記憶技巧：<strong>1078</strong> = USP 賦形劑 GMP（1059 是賦形劑性能，1078 是賦形劑 GMP）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Ref. 24 — EU GMP Annex 1 (2008)：無菌製造要求</h4>
+                        <p>雖然 Annex 1 主要規範無菌製藥環境，但其對滅菌驗證、環境監控與供應鏈控制的要求，對注射用賦形劑（如無菌賦形劑溶液）的風險評估特別相關。使用無菌賦形劑的製造商，需在風險評估中納入 Annex 1 的合規要求。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 3</h4>
+                        <p>某口服固體劑型的賦形劑供應商聲稱其品質系統符合 ISO 9001:2015（Ref. 27），但未取得任何藥品 GMP 認證。根據 TR54-6 的參考標準體系，ISO 9001 能否作為充分的 <span class="key-term">Supplier Qualification</span> 依據？請說明理由，並指出哪些額外標準（列舉 Ref. 編號）更適合作為評估基礎。</p>
+                        <p><em>提示：ISO 9001 是通用品質管理系統，而 IPEC-PQG GMP Guide (Ref. 15)、EXCiPACT (Ref. 13)、NSF/IPEC/ANSI 363 (Ref. 14) 才是賦形劑專用標準。</em></p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /chapter-body -->
+    </div><!-- /sec9 -->
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION SUMMARY                                             -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="summary">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#10003;</div>
+            <div class="chapter-info">
+                <h2>Section Summary — Key Takeaways</h2>
+                <p>章節總結 — 核心重點</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>What You Must Know</h3>
+                    <ul class="structure-list">
+                        <li><strong>Section 7:</strong> The risk assessment is a <em>living document</em>. It must be reviewed periodically AND whenever a trigger event occurs. Triggers include: new supplier, GMP status change, regulatory action, pharmacopeial change, new safety data, product formulation change, and industry-wide quality events.</li>
+                        <li><strong>Section 7.1:</strong> All triggering events must be documented along with the decision rationale for whether to revise the risk assessment. This documentation trail is a regulatory expectation.</li>
+                        <li><strong>Section 8:</strong> The business case for formalized RA rests on knowledge management, proactive risk identification, supply chain transparency, and regulatory compliance efficiency — not just audit compliance.</li>
+                        <li><strong>Section 9:</strong> Key standards cited: EU EC Guidelines 2015 (Ref. 2), PIC/S 2018 (Ref. 3), ICH Q9 (Ref. 7), EXCiPACT (Ref. 13), IPEC-PQG GMP Guide (Ref. 15), USP &lt;1078&gt; (Ref. 17), ISO 9001 (Ref. 27).</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>核心記憶框架</h3>
+                    <div class="note-box">
+                        <h4>TR54-6 Sections 7–9 一句話記憶法</h4>
+                        <ul>
+                            <li><strong>Section 7</strong>：風險評估是活文件，觸發就重評，一切要文件化</li>
+                            <li><strong>Section 8</strong>：正式化 RA 的價值 = 知識管理 + 主動決策 + 法規合規</li>
+                            <li><strong>Section 9</strong>：依據 EU 2015年指引 + ICH Q9 + EXCiPACT / IPEC-PQG / USP &lt;1078&gt;</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box">
+                        <h4>TR54-6 整體架構回顧</h4>
+                        <p>至此，TR54-6 的完整架構已涵蓋：</p>
+                        <ul>
+                            <li>Sections 1–3：背景、範圍、定義</li>
+                            <li>Section 4：風險評估框架建立</li>
+                            <li>Section 5：供應鏈風險評估要素</li>
+                            <li>Section 6：賦形劑風險評估要素</li>
+                            <li><strong>Section 7：生命週期持續回顧（本節）</strong></li>
+                            <li><strong>Section 8：效益與知識管理（本節）</strong></li>
+                            <li><strong>Section 9：參考文獻（本節）</strong></li>
+                        </ul>
+                        <p>掌握 Section 7 的觸發機制，是在實際工作中維持合規的最關鍵技能。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /summary -->
+
+</div><!-- /main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients</p>
+    <p>Sections 7–9 | Lifecycle Review, Benefits &amp; References | p25–p27</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Educational material for internal training purposes</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
