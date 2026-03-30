@@ -187,6 +187,7 @@ Report metadata is in `reports.json`. Current reports:
 | `TR70/` | PDA TR70: Cleaning and Disinfection for Aseptic Facilities | 9 | Complete |
 | `TR13/` | PDA TR13: Fundamentals of an Environmental Monitoring Program (Revised 2022) | 9 | Complete |
 | `TR13-2/` | PDA TR13-2: EM for Low Bioburden Products — Annex 1 (2020) | 3 | Complete |
+| `TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
 
 ---
 
