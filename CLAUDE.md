@@ -209,6 +209,7 @@ Report metadata is in `reports.json`. Current reports:
 | `TR13-2/` | PDA TR13-2: EM for Low Bioburden Products — Annex 1 (2020) | 3 | Complete |
 | `TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
 | `TR54-6/` | PDA TR54-6: Formalized Risk Assessment for Excipients (2019) | 6 | Complete |
+| `TR62/` | PDA TR62: Recommended Practices for Manual Aseptic Processes (2013) | 4 | Complete |
 
 ---
 
