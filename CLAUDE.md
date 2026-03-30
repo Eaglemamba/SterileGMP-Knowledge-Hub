@@ -1,8 +1,10 @@
-# PDA Technical Report Knowledge — Project Rules
+# SterileGMP Knowledge Hub — Project Rules
+
+This repo covers **multiple GMP guideline sources**: PDA Technical Reports, ISPE Guidelines, FDA Guidance, PIC/S Annex 1, ISO Standards, and ECA Guides. All workflows apply regardless of source. Use the source `id` prefix in folder naming to distinguish (e.g., `ISPE-Vol5/`, `FDA-Aseptic/`).
 
 ## Post-Completion Checklist
 
-When a PDA Technical Report is fully processed (all sections generated, merged, and verified in browser), you MUST complete these steps before committing:
+When any document is fully processed (all sections generated, merged, and verified in browser), you MUST complete these steps before committing:
 
 ### 1. Update `reports.json` (SINGLE source of truth)
 
@@ -80,30 +82,48 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── PROMPT.md               # Master generation instructions
 ├── template.css            # Shared CSS (do not modify per-report)
 ├── README.md               # Repo readme
-├── Raw pdfs/               # Source PDFs
+├── Raw pdfs/               # Source PDFs (all sources)
 ├── knowledge/              # Chatbot knowledge base — English-only original content
-│   ├── INDEX.md            # Master routing index — update manually per new report
-│   ├── TR26-Complete.md    # One .md per report (auto-generated, English only)
+│   ├── INDEX.md            # Master routing index — update manually per new document
+│   ├── TR26-Complete.md    # One .md per document (auto-generated, English only)
 │   └── ...
 ├── .claude/
 │   └── commands/
-│       └── pda-ask.md      # /pda-ask skill — chatbot Q&A via Claude Code
-├── pda-guide-no1/          # One folder per technical report
-│   ├── source/             # Extracted text files
-│   ├── sections/           # Individual section HTMLs
-│   └── output/             # Merged TopNav HTML
-├── TR26/                   # Same structure as above
+│       ├── gmp-ask.md      # /gmp-ask skill — unified chatbot Q&A via Claude Code
+│       └── pda-ask.md      # /pda-ask legacy alias (PDA-only queries)
+├── pda-guide-no1/          # PDA documents
+├── TR26/                   # Same structure: source/ + sections/ + output/
+├── ISPE-Vol5/              # ISPE documents (same structure)
+├── FDA-Aseptic/            # FDA documents (same structure)
 │   └── ...
 ```
 
 ## Naming Conventions
 
-- Report folders: `TR26/`, `TR01/`, `PtC-14/`, etc.
+**PDA documents:**
+- Folders: `TR26/`, `TR01/`, `PtC-14/`, `pda-guide-no1/`
+
+**ISPE documents:**
+- Folders: `ISPE-Vol3/`, `ISPE-Vol5/`, `ISPE-GAMP5/`, `ISPE-HVAC/`, `ISPE-TechTransfer/`
+
+**FDA / Regulatory documents:**
+- Folders: `FDA-Aseptic/`, `PICS-Annex1/`, `ISO-13408/`, `ECA-CCS/`, `USP-382/`
+
+**All sources:**
 - Section files: `section-XX-short-name.html`
 - Split sections: `section-XXa-name.html`, `section-XXb-name.html`
-- Merged output: `TRXX-Complete.html`
-- Source text: `section-X.0-text.txt` or `TRXX-full-text.txt`
-- Knowledge MD: `knowledge/TRXX-Complete.md` (English only, auto-generated)
+- Merged output: `[FOLDER_ID]-Complete.html`
+- Source text: `section-X.0-text.txt` or `[FOLDER_ID]-full-text.txt`
+- Knowledge MD: `knowledge/[FOLDER_ID]-Complete.md` (English only, auto-generated)
+
+**Source colors in reports.json** — use consistent palette per source body:
+- PDA: blue family (`#1e3a5f` / `#3498db`)
+- ISPE: green family (`#1a3a2a` / `#27ae60`)
+- FDA: red family (`#3a1a1a` / `#e74c3c`)
+- PIC/S: orange family (`#3a2a1a` / `#e67e22`)
+- ISO: purple family (`#2a1a3a` / `#9b59b6`)
+- ECA: teal family (`#1a3a3a` / `#1abc9c`)
+- USP: gold family (`#3a3a1a` / `#f39c12`)
 
 ## TopNav Scroll Arrow Rule
 
@@ -117,8 +137,8 @@ When the user says "continue the educational HTML work" or "process new PDFs":
 
 1. **Always `git pull` first** — new PDFs are pushed to the remote repo, not copied locally.
 2. **Unprocessed PDFs** live in `Raw pdfs/` (root level). Already-processed PDFs are moved to `Raw pdfs/processed/`.
-3. **Processing order**: sort by lowest TR/PtC number first (e.g., TR13 before TR46, PtC-9 before PtC-12).
-4. **One PDF at a time** — complete the full workflow for one report before starting the next.
+3. **Processing order**: PDA → sort by lowest TR/PtC number first. ISPE → follow the ranked importance order (Vol.5 C&Q → GEP → Vol.7 Risk → Vol.3 Sterile → Vol.4 Water → HVAC → ...). FDA/PIC/S → process by regulatory significance.
+4. **One PDF at a time** — complete the full workflow for one document before starting the next.
 
 ```bash
 # Quick check for unprocessed PDFs:
