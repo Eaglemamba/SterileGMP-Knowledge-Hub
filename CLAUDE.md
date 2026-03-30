@@ -111,6 +111,22 @@ All merged documents use scroll arrow buttons (‹ ›) in the top nav. This is 
 
 ---
 
+## Starting a New Session — Finding Unprocessed PDFs
+
+When the user says "continue the educational HTML work" or "process new PDFs":
+
+1. **Always `git pull` first** — new PDFs are pushed to the remote repo, not copied locally.
+2. **Unprocessed PDFs** live in `Raw pdfs/` (root level). Already-processed PDFs are moved to `Raw pdfs/processed/`.
+3. **Processing order**: sort by lowest TR/PtC number first (e.g., TR13 before TR46, PtC-9 before PtC-12).
+4. **One PDF at a time** — complete the full workflow for one report before starting the next.
+
+```bash
+# Quick check for unprocessed PDFs:
+ls "Raw pdfs/" | grep -v processed
+```
+
+---
+
 ## Quick Start — Adding a New Report
 
 ```bash
