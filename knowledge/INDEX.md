@@ -385,6 +385,28 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR13-2-Complete.md
+**Report:** PDA Technical Report No. 13-2 (2020): Fundamentals of an Environmental Monitoring Program — Annex 1: Environmental Monitoring of Facilities Manufacturing Low Bioburden Products
+**Pages:** p1–p21 | **Sections:** 3
+
+**Covers questions about:**
+- How to design an EM program for low bioburden products (biologics drug substance, mammalian cell culture, ATMPs) — not covered by TR13 (which focuses on sterile manufacturing)
+- Difference between EM for sterile vs. low bioburden processes: contamination control goal vs. elimination
+- Three system types and their EM implications: Open System / Functionally Closed System / Closed System
+- Environmental Risk Assessment methodology: facility RA + process RA + EM RA as three-tier framework
+- Eight contamination source categories: personnel, materials/waste, and facility design (5 sub-factors)
+- Three-group Criticality Factor matrix: Process Step / Potential Contributors to Contamination / Unusual Sources
+- High/Medium/Low risk criteria for mammalian cell culture environments (Tables 4.3.1-1, 4.3.1-2)
+- Monitoring frequency determination based on risk rating (Table 4.3.3-1)
+- Worked Example 1: Warm Room risk assessment for mammalian cell culture — scoring, site selection, priority designation
+- Worked Example 2: Media supplementation process EM program — step-specific monitoring for open operation in UDF
+
+**Key terms:** low bioburden product, bioburden control, open system, functionally closed system, closed system, unidirectional flow hood (UDF), criticality factors, risk rating, sampling priority, environmental risk assessment, process risk assessment, EM risk assessment, mammalian cell culture, warm room, media supplementation, inoculum preparation, dynamic monitoring, batch-related monitoring, routine monitoring, critical operations monitoring, ISO 14644, Grade A/C, FMEA, HACCP, ICH Q9
+
+**Sections:** Section 1–3 (Introduction, Glossary & Low Bioburden Overview) → Section 4a (Risk Assessment Framework & Criticality Factors) → Section 4b (Worked Examples: Cell Culture & Media Supplementation)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -414,6 +436,9 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Environmental monitoring, EM / 環境監控、微生物監測 | TR13 + TR90 + PtC-12 + TR22 |
 | EM program fundamentals, alert levels, action limits, EM qualification / 環境監測計畫基礎、警戒線、行動線、EM確效 | TR13 |
 | EM regulatory limits, Grade A/B/C/D limits, ISO 14644, FDA vs EU vs PIC/S comparison / 環境監測法規、Grade A/B/C/D限值、各國法規比較 | TR13 |
+| EM for low bioburden products, biologics drug substance, mammalian cell culture EM / 低生物負荷產品環境監測、生物藥原液EM、哺乳動物細胞培養 | TR13-2 |
+| Open system vs closed system vs functionally closed system EM design / 開放式系統vs封閉式系統環境監測設計 | TR13-2 |
+| EM risk assessment methodology, criticality factors, sampling site selection / 環境監測風險評估、關鍵性因子、採樣點選擇 | TR13-2 + TR13 |
 | RMM, rapid microbial methods, MALDI-TOF, microbial identification / 快速微生物方法、MALDI-TOF、微生物鑑定 | TR13 |
 | Alert level statistics, trending, Cusum, EWMA, CRR / 警戒線統計方法、趨勢分析、累積回收率 | TR13 |
 | Aseptic processing (general) / 無菌製程（一般）| Guide-No1 + TR22 + PtC-12 |
@@ -449,7 +474,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
 
 **Environmental Monitoring / EM (環境監控)**
-→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
+→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
 → Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
@@ -470,7 +495,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
 → PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
@@ -509,7 +534,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
-→ PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs)
+→ PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
 
 **Powder Filling (粉末充填)**
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
