@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TR65 Section 4: Execution &amp; Handover Stages</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ANALOGY BOX (Yellow) */
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* CONCEPT BOX (Green) */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* NOTE BOX (Orange) */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* FORMULA BOX (Purple) */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* APPLICATION BOX */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* PRACTICE BOX */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== FOOTER ===== */
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 4: Execution &amp; Handover Stages</h1>
+    <div class="subtitle">執行階段與交接階段</div>
+    <div class="page-info">PDA Technical Report No. 65 (Revised 2022): Technology Transfer | p41 - p49</div>
+</div>
+
+<div class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節內容導覽 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec55">5.5 Execution Stage</a>
+            <a href="#sec551">5.5.1 Business</a>
+            <a href="#sec552">5.5.2 TT PM</a>
+            <a href="#sec553">5.5.3 Process</a>
+            <a href="#sec554">5.5.4 Analytical</a>
+            <a href="#sec555">5.5.5 Engineering</a>
+            <a href="#sec556">5.5.6 Manufacturing</a>
+            <a href="#sec557">5.5.7 Regulatory</a>
+            <a href="#sec558">5.5.8 Quality</a>
+            <a href="#sec559">5.5.9 Sourcing/SC</a>
+            <a href="#sec5510">5.5.10 Best Practices</a>
+            <a href="#sec56">5.6 Handover Stage</a>
+            <a href="#sec561">5.6.1 Business</a>
+            <a href="#sec562">5.6.2 TT PM</a>
+            <a href="#sec563">5.6.3 Process</a>
+            <a href="#sec564">5.6.4 Analytical</a>
+            <a href="#sec565">5.6.5 Engineering</a>
+            <a href="#sec566">5.6.6 Manufacturing</a>
+            <a href="#sec567">5.6.7 Regulatory</a>
+            <a href="#sec568">5.6.8 Quality</a>
+            <a href="#sec569">5.6.9 Sourcing/SC</a>
+            <a href="#sec5610">5.6.10 Best Practices</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.5 EXECUTION STAGE — INTRO -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec55">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5</div>
+            <div class="chapter-info">
+                <h2>Execution Stage — 執行階段</h2>
+                <p>PPQ execution, regulatory filing, and all operational readiness activities | p41–p46</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5 Execution Stage</h3>
+                    <p>PPQ is performed in the Execution stage, during which all operational readiness and compliance requirements are completed to allow for manufacture at the RU. Materials are tested and released to perform the engineering batch and PPQ batches, as defined in the project plan and process VMP. With multiple execution activities taking place in this stage, the team may decide to perform several stage gates, rather than just one, to continually assess the results from Execution stage activities (see Section 5.5.1).</p>
+                    <p>Table 5.5-1 shows the activities and deliverables for the Execution stage, as excerpted from the Reference Guide (Figure 5.0-1). One major deliverable of the Execution stage is the submission of the regulatory filing. After the PPQ batches are complete, the TT Team usually will provide support for both the regulatory filing and the expected regulatory inspections.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>執行階段核心任務</h4>
+                        <p><strong>執行階段（Execution Stage）</strong>是整個技術轉移流程的關鍵驗證環節。主要工作包括：</p>
+                        <ul>
+                            <li>完成所有 <strong>PPQ（製程性能確認）</strong>批次的執行</li>
+                            <li>提交 <strong>法規申請文件</strong>（Regulatory Filing）</li>
+                            <li>確保所有作業準備就緒，達到 RU 商業生產條件</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>多重 Stage Gate 機制</h4>
+                        <p>本階段可設置多個 <strong>Stage Gate</strong>（關口審核），例如：工程批前、PPQ 前、PPQ 後各設一個審核點，確保每個關鍵里程碑均達標才繼續推進。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLE 5.5-1 -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">T</div>
+            <div class="chapter-info">
+                <h2>Table 5.5-1: Activities and Deliverables — Execution Stage</h2>
+                <p>執行階段各職能活動與交付成果對照表</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Table 5.5-1: Activities and Deliverables in the Execution Stage</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Activities</th>
+                                <th>Deliverables</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Business</strong></td>
+                                <td>Develop Launch Strategy; Participate in PAI Audit</td>
+                                <td>Launch Strategy; Approval for Regulatory Filing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TT PM</strong></td>
+                                <td>Ensure All GMP Documentation Is Complete; Review Documentation Package; Lead Execution of PAI Readiness Plan</td>
+                                <td>Stage Gate Approval; TT Report; Close Change Controls; PAI Approval</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Process</strong></td>
+                                <td>Oversee Production Runs; Investigate Deviations; Gather/Analyze Process Data; Perform Shipping Validation</td>
+                                <td>Equivalency Study; Process Validation Report; VMP Closure; Deviation Reports/CAPAs; Cycle Time, Yield; Shipping Validation Report</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analytical</strong></td>
+                                <td>Perform Materials Testing; Perform In-Process Testing; Perform Batch Release Testing; Perform Cleaning Testing; Test Demo/Engineering Batch; Package Stability Samples</td>
+                                <td>Approved Test Results; Stability Program; Deviation Reports/CAPAs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Engineering</strong></td>
+                                <td>Support Process Performance Qualification (PPQ); Write Deviations; Execute Cleaning from PPQ; Review Documentation</td>
+                                <td>Deviation Reports/CAPAs; Cleaning Validation Report; Validation Documents Approval</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Manufacturing</strong></td>
+                                <td>Perform Demo/Engineering Batch; Execute PPQ Batches; Review Batch Data; Review Materials Data</td>
+                                <td>Executed Batch Records; Clean Equipment; Deviation/CAPA Resolution</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Regulatory</strong></td>
+                                <td>Coordinate Regulatory Filing; Assess Deviations/CAPAs</td>
+                                <td>Submit Regulatory Filing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality</strong></td>
+                                <td>Manage Product Storage Requirements Prior to Release</td>
+                                <td>Materials Release; Product Release; Prepare Release &amp; Distribution Plan</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sourcing/Supply Chain</strong></td>
+                                <td>Manage Product Storage Requirements Prior to Release</td>
+                                <td>Store Product</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>執行階段九大職能分工</h4>
+                        <p>執行階段涉及九個職能部門的協同運作，各部門的關鍵交付物包括：</p>
+                        <ul>
+                            <li><strong>流程部門：</strong>製程驗證報告、VMP 結案</li>
+                            <li><strong>分析部門：</strong>批次放行檢測、穩定性計畫啟動</li>
+                            <li><strong>製造部門：</strong>工程批 + PPQ 批次執行記錄</li>
+                            <li><strong>法規部門：</strong>提交法規申請文件</li>
+                            <li><strong>品質部門：</strong>物料與產品放行</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：執行階段如同「上場考試」</h4>
+                        <p>前幾個階段是備考（Planning、Readiness），執行階段就是正式上場應試——PPQ 是最終考試，必須一次性展現所有準備成果。所有職能部門同步運作，缺一不可。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.1 Business -->
+    <div class="chapter-section" id="sec551">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.1</div>
+            <div class="chapter-info">
+                <h2>Business — 商業職能</h2>
+                <p>Launch strategy, stage gates, and steering committee approval</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.1 Business</h3>
+                    <p>The MAH Business function is actively engaged in defining the launch strategy, anticipating completion of PPQ batches, regulatory submission, and PAI. Business will work closely with the Sourcing/Supply Chain function to define the use of the PPQ batches and estimated market demand.</p>
+                    <p>For the Execution stage, multiple stage gates may be used. A stage gate may be performed prior to the engineering run to verify readiness. Another may be conducted before PPQ to verify results of all engineering and process readiness activities. Stage gates also may be executed after the engineering batch and PPQ if any changes to the process occur, risks are identified that must be mitigated, or additional studies are required. After the steering committee approves the regulatory filing, the Business function can proceed to the Handover stage.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>商業部門的執行階段角色</h4>
+                        <p>商業部門在本階段的核心任務是確保 <strong>上市策略（Launch Strategy）</strong> 與 PPQ 進度、法規提交時程同步對齊。與供應鏈部門協同，確認 PPQ 批次用途（臨床供應 vs. 商業用途）及預估市場需求量。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>多重 Stage Gate 時機</h4>
+                        <ul>
+                            <li><strong>工程批前：</strong>確認所有準備工作就緒</li>
+                            <li><strong>PPQ 前：</strong>驗證工程批結果是否滿足進入 PPQ 的條件</li>
+                            <li><strong>PPQ 後：</strong>若有製程變更或新風險，需額外審核</li>
+                        </ul>
+                        <p>通過 Steering Committee 核准法規申請後，方可進入交接階段。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.2 TT PM -->
+    <div class="chapter-section" id="sec552">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.2</div>
+            <div class="chapter-info">
+                <h2>Technology Transfer Project Manager</h2>
+                <p>Operational readiness, compliance, person-in-plant program, TT report</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.2 Technology Transfer Project Manager</h3>
+                    <p>During the Execution stage, the TT PM supports the team to remove any remaining obstacles for the engineering and PPQ batches. The TT PM ensures that all documentation is approved and complies with all operational readiness requirements. All relevant change controls and deviations should be closed, and training should be completed.</p>
+                    <p>As part of Execution, the TT PM ensures that all compliance and operational requirements have been met to perform PPQ with the highest probability of success. Continual communication across all organizational levels is essential. The TT PM also guides the SU and RU teams to define and execute a <strong>person-in-plant program</strong> in which SU personnel are present to support RU execution activities and associated training.</p>
+                    <p>A key deliverable for the TT PM in the Execution stage is approval of the <strong>TT report</strong> documenting completion of the TT requirements defined in the TT protocol.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>TT PM 執行階段三大任務</h4>
+                        <ul>
+                            <li><strong>清除障礙：</strong>確保所有文件核准、變更控制關閉、培訓完成</li>
+                            <li><strong>駐廠計畫（Person-in-Plant Program）：</strong>安排 SU 人員駐在 RU 現場，提供技術支援與培訓</li>
+                            <li><strong>TT 報告：</strong>核准技術轉移報告，記錄 TT 協議中所有要求已完成</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：Person-in-Plant 如「教練進場」</h4>
+                        <p>SU 技術人員駐在 RU 現場，就像球隊教練坐在替補席——不是親自上場踢球，但隨時提供指導、即時解決技術問題，大幅降低執行風險。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.3 Process -->
+    <div class="chapter-section" id="sec553">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.3</div>
+            <div class="chapter-info">
+                <h2>Process — 製程職能</h2>
+                <p>PPQ oversight, deviation investigation, validation reports</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.3 Process</h3>
+                    <p>The RU Process function oversees qualification exercises including shipping validation and PPQ runs. Their responsibilities include investigation of process-related deviations, execution of supporting studies as defined in the process VMP, and troubleshooting. During this stage, the Process function will provide process expertise and technical support for equipment to ensure the process is performing according to planned expectations, evaluating the effectiveness of the control strategy. Throughout the PPQ, having at least one Process staff person present for each shift of operation is recommended. Prior to starting the PPQ, the Process function ensures that the knowledge gained during the Readiness stage is incorporated clearly into the production batch records, procedures, and personnel training.</p>
+                    <p>During this stage, the SU and RU Process functions should analyze data obtained during PPQ to confirm that the outcomes meet expectations. Any significant differences, as defined in the acceptance criteria and plan, should be investigated.</p>
+                    <p>If possible, investigations of process deviations should include members of both the SU and RU across multiple functional areas. For example, Analytical may be needed to determine whether a deviation of an in-process sample result is due to analytical performance or an issue relating to the Manufacturing function. Where genuine process failures are identified, Process and Quality should consult with Regulatory to evaluate the impact of the failure on the status of the PPQ, including parameters under which the PPQ can proceed. The TT PM should immediately communicate any failures to the steering committee.</p>
+                    <p>Any necessary improvements to the process following the Execution stage should be identified before the handover to the RU post-transfer operations team.</p>
+                    <p>After completion of PPQ, the Process function closes all deviations, gathers required data, and issues the process, shipping, and cleaning validation reports. Process also may be a lead author of the CMC sections of the regulatory filing.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>製程職能在執行階段的核心責任</h4>
+                        <ul>
+                            <li>監督 PPQ 及出貨驗證執行</li>
+                            <li>每班至少一名製程人員在場（建議）</li>
+                            <li>SU × RU 跨職能偏差調查</li>
+                            <li>PPQ 完成後發行製程/出貨/清潔驗證報告</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>偏差處理黃金原則</h4>
+                        <p>製程真正失敗時，製程 + 品質須諮詢法規部門，評估 PPQ 狀態是否可繼續推進，並立即由 TT PM 向 Steering Committee 回報。</p>
+                    </div>
+                    <div class="application-box">
+                        <h4>台灣 CDMO 實務應用</h4>
+                        <p>在無菌充填 PPQ 中，製程人員需確認每個班次均有技術人員到場，並在 PPQ 前將 Readiness 階段的所有製程知識整合進批次記錄及 SOP，避免知識斷層。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.4 Analytical -->
+    <div class="chapter-section" id="sec554">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.4</div>
+            <div class="chapter-info">
+                <h2>Analytical — 分析職能</h2>
+                <p>Full testing operations, stability sample packaging</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.4 Analytical</h3>
+                    <p>In the Execution stage, the Analytical function is in full operation, performing testing on all materials for release, in-process samples, finished products, and cleaning samples. Utilities and environmental testing may be required as well. Typically, PPQ requires more testing than is necessary during routine commercial production where a reduced testing program may be implemented provided all PPQ requirements defined in the VMPs have been met.</p>
+                    <p>The Analytical function also has oversight of the packaging of stability samples as defined in the stability protocol.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>分析職能的全面運作</h4>
+                        <p>執行階段的分析部門需執行比商業生產更密集的檢測計畫：</p>
+                        <ul>
+                            <li>物料放行檢測 / 製程中樣品 / 成品 / 清潔樣品</li>
+                            <li>公用系統及環境監測（視需要）</li>
+                            <li>穩定性樣品包裝與管理</li>
+                        </ul>
+                        <p>PPQ 期間的加強測試是為了積累足夠驗證數據；達標後，商業生產可啟用<strong>降低版測試計畫（Reduced Testing Program）</strong>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.5 Engineering -->
+    <div class="chapter-section" id="sec555">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.5</div>
+            <div class="chapter-info">
+                <h2>Engineering — 工程職能</h2>
+                <p>Supporting role, deviation investigation, validation sampling</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.5 Engineering</h3>
+                    <p>Having completed all qualification requirements for the facility and equipment, the Engineering function acts in a supporting role in addressing any issues that occur during the engineering and PPQ runs. Engineering will investigate deviations and issue change controls related to the equipment or facilities. Engineering may support validation-related sampling, data analysis, and reporting to satisfy all requirements of the PPQ and VMP and to ensure all requirements of the PPQ have been met.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>工程職能角色轉換</h4>
+                        <p>進入執行階段，工程部門從前期的「主導設備確認」轉為<strong>支援角色</strong>——重點是處理 PPQ 過程中設備/廠房相關的偏差、變更控制，並協助驗證取樣與數據分析。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.6 Manufacturing -->
+    <div class="chapter-section" id="sec556">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.6</div>
+            <div class="chapter-info">
+                <h2>Manufacturing — 製造職能</h2>
+                <p>Engineering batch and PPQ batch execution, lessons learned</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.6 Manufacturing</h3>
+                    <p>A major deliverable of the Execution stage for the Manufacturing function is execution of the engineering and PPQ batches. At a minimum, the SU team should participate with the RU team during the engineering batch if possible. Knowledge gained from the engineering batch commonly leads to process adjustments and improvements, prompting updates to SOPs and the master batch record. The engineering run should use materials from the suppliers that will be used for PPQ.</p>
+                    <p>The engineering batch may be produced under GMP or non-GMP conditions. If conducted under GMP requirements, the engineering batch may be used to produce product for continued clinical supply. If allowed by both the process VMP and the PPQ protocol, both of which have been approved in advance, an engineering batch run under GMP conditions also may serve as a PPQ batch, particularly when the raw material supply is limited.</p>
+                    <p>The Manufacturing function is a major contributor of feedback on operations, training effectiveness, and batch records following completion of the qualification activities. This feedback should be incorporated into lessons learned prior to handover to the RU post-transfer operations team.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>工程批的雙重功能</h4>
+                        <p>工程批（Engineering Batch）在特定條件下可兼具兩種用途：</p>
+                        <ul>
+                            <li><strong>臨床供應：</strong>GMP 條件下執行，產品可供臨床使用</li>
+                            <li><strong>PPQ 批次：</strong>若 VMP 及 PPQ 協議事先核准，可同時計入 PPQ 批次（原料供應受限時特別有用）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>SU 參與工程批的重要性</h4>
+                        <p>建議 SU 團隊在工程批期間到場參與，確保知識在 SU → RU 之間有效轉移，並在正式 PPQ 前即時修正 SOP 與批次記錄。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.7 Regulatory -->
+    <div class="chapter-section" id="sec557">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.7</div>
+            <div class="chapter-info">
+                <h2>Regulatory — 法規職能</h2>
+                <p>Regulatory submission, PAI preparation, cross-functional filing review</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.7 Regulatory</h3>
+                    <p>During the Execution stage, the Regulatory function is actively drafting the regulatory submission and, based on the submission tracker, actively managing the authoring, reviewing, and finalizing of documents. The submission timing and content should be aligned with the regulatory strategy that was finalized in the Readiness stage. The RU should provide frequent updates to the MAH Regulatory function to ensure that new and evolving information discovered during Execution can be incorporated into the submission. The RU should inform the MAH Regulatory function of the assumptions being made and of their evaluation of regulatory risks.</p>
+                    <p>At the end of the Execution stage, after ensuring that the CMC content has been extensively reviewed cross-functionally, the steering committee will authorize filing of the submission. The steering committee should be apprised of risks and assumptions before authorizing filing.</p>
+                    <p>The Regulatory function also works with Quality on PAI preparation. This may include suggesting high-risk items to include in storyboard development as well as ensuring alignment of the key claims made in the dossier, plant-level documentation, and storyboards. High-risk items and topics likely to arise during PAI include activities associated with deviations during PPQ and subjects that the inspectorate has historically identified as focus areas for the site, manufacturing process, product class, or company.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>法規職能執行階段重點</h4>
+                        <ul>
+                            <li>依提交追蹤表（Submission Tracker）主動管理文件撰寫、審閱與定稿</li>
+                            <li>持續更新 MAH 法規部門，確保執行階段新資訊納入申請文件</li>
+                            <li>Steering Committee 授權提交前，需完成 CMC 內容的跨職能全面審閱</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>PAI 高風險項目準備</h4>
+                        <p><strong>PAI（藥品上市前查廠）</strong>的高風險主題包括：PPQ 期間的偏差事件、稽查機關歷史查廠關注重點（特定廠址、製程類型、產品類別或公司）。法規部門需協助建立 Storyboard，確保申請文件與廠房文件的聲明一致性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.8 Quality -->
+    <div class="chapter-section" id="sec558">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.8</div>
+            <div class="chapter-info">
+                <h2>Quality — 品質職能</h2>
+                <p>Material release, batch disposition, PAI readiness, mock inspection</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.8 Quality</h3>
+                    <p>The Quality function is integral throughout the Execution stage as it releases materials for use. Quality is responsible for product release, including batch record review and overall batch disposition, in accordance with site quality procedures. Quality also is responsible for supporting the review and approval of all documentation for the PPQ, including protocols, reports, batch records, forms, results, change controls, and deviation and investigation close-outs. The Quality function would be expected to close out the quality risk assessment associated with the TT at the end of the PPQ.</p>
+                    <p>At this point in the TT, Quality performs the final inspection readiness activities in anticipation of the regulatory filing which, depending on TT type, may trigger a PAI. A mock inspection (in-depth audit) of the RU performed in anticipation of a PAI may be used to identify issues that should be addressed prior to filing a submission.</p>
+                    <p>Completion of the PAI may be an endpoint to the Execution stage depending on the overall business and regulatory strategies.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>品質部門：執行階段的核心把關者</h4>
+                        <p>品質部門貫穿執行階段全程，關鍵職責：</p>
+                        <ul>
+                            <li>物料放行與批次最終處置（Batch Disposition）</li>
+                            <li>核准所有 PPQ 文件（協議、報告、批記錄、偏差調查）</li>
+                            <li>結案 TT 品質風險評估</li>
+                            <li>執行 <strong>模擬查廠（Mock Inspection）</strong>，提前找出 PAI 可能被查核的問題</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>Mock Inspection 的策略價值</h4>
+                        <p>模擬查廠是一種主動式品質管理工具，可在正式 PAI 前發現文件不一致、記錄缺失等問題，大幅降低查廠風險。PAI 通過可視為執行階段的正式結束點。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.5.9 Sourcing/SC -->
+    <div class="chapter-section" id="sec559">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.9</div>
+            <div class="chapter-info">
+                <h2>Sourcing / Supply Chain — 採購與供應鏈</h2>
+                <p>Shipping requirements, supply chain establishment, production planning standards</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5.9 Sourcing/Supply Chain</h3>
+                    <p>During the Execution stage, the Sourcing/Supply Chain function will work closely with the Business function to finalize shipping requirements. The Sourcing/Supply Chain function also will work with the Manufacturing and Engineering functions on PPQ requirements, including scheduling, material, and storage needs as well as logistics. As outputs of the Execution stage, Sourcing/Supply Chain will have established suppliers, a clear supply chain, and defined standards for production planning in order to move forward to commercial manufacture.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>供應鏈的執行階段三大輸出</h4>
+                        <ul>
+                            <li><strong>確立供應商：</strong>完成供應商資格確認</li>
+                            <li><strong>明確供應鏈路徑：</strong>建立清晰的物流與儲存標準</li>
+                            <li><strong>生產計劃標準：</strong>為商業生產制定排程與計劃基準</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLE 5.5.10-1 Best Practices -->
+    <div class="chapter-section" id="sec5510">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5.10</div>
+            <div class="chapter-info">
+                <h2>Table 5.5.10-1: Best Practices — Execution Stage</h2>
+                <p>執行階段最佳實踐與補充建議</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Table 5.5.10-1: Best Practices and Additional Suggestions for the Execution Stage</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Topic</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Create a technical support plan for qualification</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure SMEs are on the floor prior to Execution to provide training, to support personnel should any technical challenges arise, to ensure KT from SU to RU, and to provide quick availability to resolve issues or escalations in a timely manner to prevent delay to schedule</li>
+                                        <li>Involve technical personnel during qualification for technical support of new equipment if issues arise and to monitor for future improvements</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure the team involved in qualification is trained adequately prior to the first engineering run</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure that technical representatives and SMEs from the TT Team provide formal training on any new equipment and processes to the production personnel who will execute qualification batches</li>
+                                        <li>Ensure sufficient time to train personnel if technology or process steps are new or otherwise present a high risk for human error</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Perform a trial run</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Conduct a mock or trial run with a water batch or rejected material to ensure equipment readiness and adequacy of operations training</li>
+                                        <li>Ensure the production team has sufficient time to practice using new equipment, parameters, batch record, and process steps before using qualification material</li>
+                                        <li>Provide opportunities to ask questions, improve training, incorporate process improvements and lessons learned, and reduce any human error on new process</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Call a readiness meeting before running qualification batches</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure the production team is clear on process requirements prior to execution</li>
+                                        <li>Review and/or update the control strategy</li>
+                                        <li>Avoid introducing new variables not challenged in previous stages</li>
+                                        <li>Plan ahead and reference best practices on the engineering run, in pre-batch readiness meetings, and during operator training</li>
+                                        <li>Use risk assessment to address any new variables that cannot be avoided</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prepare filing and plan for questions from regulatory authorities</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Provide Regulatory with documents that support the filing as they become available, in alignment with the submission tracker</li>
+                                        <li>Begin rolling review of drafted sections of regulatory filings as sections are (nearly) completed to manage resources and avoid unexpected delays due to reviewer availability</li>
+                                        <li>Identify and prepare SMEs to address questions received from regulatory authorities after initial submission</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure adequate development testing from the previous stage</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Provide robust supporting data and rationale from the previous stage through adequate testing to support recommended parameters, process, and instructions</li>
+                                        <li>Ensure a repeatable process that is controlled within its recommended operating parameters</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Provide adequate batch record instructions</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure all requirements and expectations are clearly defined in the batch record, and that training has been conducted and documented</li>
+                                        <li>Use the engineering batch to help identify any missing instructions that can be incorporated prior to the start of qualification</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure adequate training of production personnel</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure hands-on training of personnel on the post-transfer operations team. Operator qualification is recommended over read-only training</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure process performs as expected within requirements and control strategy</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure no changes are made to the final process prior to qualification without first revisiting the Readiness stage or performing an engineering run</li>
+                                        <li>Reference best practices for risk management and use the stage gate to review any uncertainties in final intended process to determine if process is ready for qualification</li>
+                                        <li>Review the control strategy and ensure all variables are adequately controlled with sufficient monitoring, sampling, and other mechanisms</li>
+                                        <li>Monitor data from engineering and PPQ batches and assess against the control strategy. At a minimum, this review should include critical parameters. Consider reviewing all parameters that meet the risk threshold</li>
+                                        <li>Reduce sources of variability where possible, e.g., people, materials, components</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hold stage gates before proceeding to next phase</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Hold a stage gate meeting with the TT Team upon completion of qualification to verify the Execution stage meets all requirements and expectations, and to verify readiness to proceed to the next stage (handover to post-transfer operations team)</li>
+                                        <li>Ensure that all functions are aligned and that the process meets all requirements, is well controlled and repeatable, and is ready for Handover</li>
+                                        <li>Review any process improvements/learnings from qualification before Handover</li>
+                                        <li>Review risk management plan and appropriateness of mitigations</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>執行階段十大最佳實踐重點</h4>
+                        <ol>
+                            <li><strong>SME 提前到場：</strong>在工程批前即部署技術專家，確保即時支援</li>
+                            <li><strong>工程批前完成培訓：</strong>操作人員須在使用驗證物料前完成實際操作訓練</li>
+                            <li><strong>試跑（Trial Run）：</strong>用水批或廢料進行模擬，驗證設備就緒度</li>
+                            <li><strong>批次前準備會議：</strong>執行前再次確認製程要求、控制策略</li>
+                            <li><strong>滾動式法規審閱：</strong>文件完成章節後即開始審閱，避免瓶頸</li>
+                            <li><strong>充足的開發測試數據：</strong>確保前期數據足以支撐 PPQ 推薦參數</li>
+                            <li><strong>完整批次記錄指引：</strong>批記錄須清楚涵蓋所有操作要求</li>
+                            <li><strong>實操培訓優先：</strong>操作員資格認定（OQ）優於閱讀式培訓</li>
+                            <li><strong>製程控制策略驗證：</strong>PPQ 數據應對照控制策略評估，至少涵蓋關鍵參數</li>
+                            <li><strong>Handover 前 Stage Gate：</strong>確認所有職能一致認可製程可進入商業生產</li>
+                        </ol>
+                    </div>
+                    <div class="practice-box">
+                        <h4>自我檢核：你的廠是否做到了？</h4>
+                        <ul>
+                            <li>PPQ 前是否有正式的 Readiness Meeting？</li>
+                            <li>工程批是否安排 SU 技術人員到場？</li>
+                            <li>操作員是否完成實際設備操作訓練（非僅閱讀 SOP）？</li>
+                            <li>Stage Gate 是否有跨職能簽核記錄？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.6 HANDOVER STAGE -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec56">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6</div>
+            <div class="chapter-info">
+                <h2>Handover Stage — 交接階段</h2>
+                <p>Transition from TT Team to RU post-transfer operations team | p46–p50</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6 Handover Stage</h3>
+                    <p>The Handover stage comprises the transition of the product from the TT Team to the RU post-transfer operations team, covering routine production of marketed products. Because the risk assessment is a living document, risk identification and risk mitigation strategies should be constantly reviewed throughout the TT project. The Handover stage includes multiple activities across several functions at the RU site to ensure it is ready to work independently for commercial production or for the next stage of product development. Requirements for a smooth transition will vary depending on the type of TT and the endpoints established in the TT charter. For instance, the extent of Sourcing/Supply Chain requirements will vary based on how quickly the Business function is able to establish the customer base and volume requirements.</p>
+                    <p>Ensuring that all lessons learned from the TT are incorporated into the existing documentation for improved commercial production is a key element of the Handover stage. (This technical report does not address such standard post-transfer requirements as equipment/facility maintenance, APR, lifecycle validation, complaint handling, or CPV programs.)</p>
+                    <p>Table 5.6-1 shows the activities and deliverables described in the Reference Guide for the Handover stage. A stage gate is held with the steering committee and RU site management to approve formal handover of the process to the RU for routine operations.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>交接階段的本質</h4>
+                        <p>交接階段是 TT Team 將產品正式移交給 RU <strong>後轉移營運團隊（Post-Transfer Operations Team）</strong>的過程，核心目標是確保 RU 具備<strong>獨立商業生產能力</strong>。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>風險評估是活的文件</h4>
+                        <p>貫穿整個 TT 專案的風險評估，在交接階段仍持續更新。交接的平滑程度取決於 TT Charter 中定義的端點，不同 TT 類型的要求各有差異。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：交接如「師徒出師」</h4>
+                        <p>TT Team 是師傅，RU 後轉移團隊是徒弟。交接階段就是正式的「出師典禮」——師傅確認徒弟已具備獨立作業的能力，完整交付所有工具（文件、知識、供應鏈），然後退場。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLE 5.6-1 -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">T</div>
+            <div class="chapter-info">
+                <h2>Table 5.6-1: Activities and Deliverables — Handover Stage</h2>
+                <p>交接階段各職能活動與交付成果對照表</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Table 5.6-1: Activities and Deliverables in the Handover Stage</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Activities</th>
+                                <th>Deliverables</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Business</strong></td>
+                                <td>Determine Changes Needed for Commercial Production</td>
+                                <td>Commercial Resourcing to Implement Changes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TT PM</strong></td>
+                                <td>Coordinate Knowledge Transfer to Post-Transfer Operations Team; Document Lessons Learned in TT</td>
+                                <td>Full Handover of Product; Stage Gate Approval</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Process</strong></td>
+                                <td>Set up Continued Process Validation (CPV); Document Potential Process Improvements</td>
+                                <td>CPV Program, Report Template (or initial report when sufficient batches produced)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analytical</strong></td>
+                                <td>Maintain Stability Program; Monitor Stability Data</td>
+                                <td>Stability Results/Report</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Engineering</strong></td>
+                                <td>Define Changeover Requirements for Future Production; Maintain Validation Batch Storage</td>
+                                <td>Product Changeover Plan</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Manufacturing</strong></td>
+                                <td>Knowledge Transfer to Post-Transfer Operations Team</td>
+                                <td>Trained Personnel</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Regulatory</strong></td>
+                                <td>Obtain Regulatory Approval; Consider Post-Approval Changes</td>
+                                <td>Regulatory Approval</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality</strong></td>
+                                <td>Set up Quality Management Review Requirements; Lead Quality Management Reviews</td>
+                                <td>Commercial QMS; Commercial Quality Agreement</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sourcing/Supply Chain</strong></td>
+                                <td>Coordinate Transportation Strategy; Validation Batch Distribution</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>交接階段關鍵交付物一覽</h4>
+                        <ul>
+                            <li><strong>TT PM：</strong>完整產品交接（Full Handover）+ Stage Gate 核准</li>
+                            <li><strong>製程：</strong>CPV 計畫與報告模板</li>
+                            <li><strong>品質：</strong>商業品質管理系統 + 商業品質協議</li>
+                            <li><strong>法規：</strong>法規核准文件</li>
+                            <li><strong>製造：</strong>完成培訓的人員</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>CPV 計畫的重要性</h4>
+                        <p><strong>持續製程驗證（Continued Process Validation, CPV）</strong>是 ICH Q10 要求的生命週期驗證方法，在交接階段由製程部門建立，確保商業生產的長期一致性監控。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.1 Business -->
+    <div class="chapter-section" id="sec561">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.1</div>
+            <div class="chapter-info">
+                <h2>Business — 商業職能</h2>
+                <p>Business contract review, commercial volume planning, resource plan</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.1 Business</h3>
+                    <p>Once the PPQ is completed, the Business function typically performs a review of the business contract with the RU. The Business function ensures estimated commercial volumes can be produced and develops a resource plan for any changes needed to accommodate the product and its associated requirements.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>商業職能交接任務</h4>
+                        <p>PPQ 完成後，商業部門檢視與 RU 的商業合約，確認商業產能規劃可行，並制定因應新產品需求的資源計畫（人員、設備）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.2 TT PM -->
+    <div class="chapter-section" id="sec562">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.2</div>
+            <div class="chapter-info">
+                <h2>Technology Transfer Project Manager</h2>
+                <p>Lessons learned, project closure, full handover</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.2 Technology Transfer Project Manager</h3>
+                    <p>The TT PM ensures that the TT charter elements have been addressed in executing the TT. As part of the Handover stage, the TT PM documents all lessons learned and may help the RU incorporate key improvements prior to the final transfer. The TT PM also will ensure that the project is formally closed out and that all project requirements have been met.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>TT PM 的收尾責任</h4>
+                        <p>TT PM 在交接階段確認 TT Charter 所有要素均已落實，記錄經驗教訓（Lessons Learned），協助 RU 在正式移交前完成流程改善，並正式結案。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.3 Process -->
+    <div class="chapter-section" id="sec563">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.3</div>
+            <div class="chapter-info">
+                <h2>Process — 製程職能</h2>
+                <p>Post-transfer support, process improvements, CPV setup</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.3 Process</h3>
+                    <p>The Process function of the TT Team may continue to support the product following qualification during routine post-transfer production, as Process personnel are critical to KT during the Handover stage. The Process function also may take the lead in executing process improvements identified from the PPQ, including associated change controls.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>製程職能：交接後的延續支援</h4>
+                        <p>製程部門人員在交接階段是知識轉移（KT）的關鍵角色，可能在後轉移常規生產期間持續提供技術支援，並主導 PPQ 識別出的製程改善及相關變更控制。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.4 Analytical -->
+    <div class="chapter-section" id="sec564">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.4</div>
+            <div class="chapter-info">
+                <h2>Analytical — 分析職能</h2>
+                <p>Stability program setup, OOS investigations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.4 Analytical</h3>
+                    <p>Besides identifying lessons learned related to analytical activities, the Analytical function ensures that the new product is set up in the RU's stability-testing program with oversight and execution of the stability protocol. Analytical also investigates out-of-specification events and deviations that may arise from stability testing.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>分析職能：穩定性計畫的關鍵角色</h4>
+                        <p>確保新產品正式納入 RU 的穩定性測試計畫，監督穩定性協議的執行，並調查穩定性測試中出現的 OOS（超規範結果）及偏差事件。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.5 Engineering -->
+    <div class="chapter-section" id="sec565">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.5</div>
+            <div class="chapter-info">
+                <h2>Engineering — 工程職能</h2>
+                <p>Equipment lessons learned, process improvements, change control evaluation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.5 Engineering</h3>
+                    <p>During the Handover stage, the Engineering function should consider any lessons learned relating to equipment operation during qualification. Engineering may identify process improvements, upgrades, or replacements of equipment associated with the new process. These changes will be evaluated against the site change control and filing requirements for impact prior to incorporating ahead of commercial start.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>工程職能的交接任務</h4>
+                        <p>整合確認期間的設備操作經驗教訓，識別設備改善、升級或更換需求，並在商業生產開始前完成變更控制與法規影響評估。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.6 Manufacturing -->
+    <div class="chapter-section" id="sec566">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.6</div>
+            <div class="chapter-info">
+                <h2>Manufacturing — 製造職能</h2>
+                <p>Lessons learned feedback, personnel training for commercial, CAPA ownership</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.6 Manufacturing</h3>
+                    <p>The Manufacturing function is key to providing feedback for lessons learned and potential improvement areas following qualification. This feedback typically focuses on training, equipment operation, and the manufacturing batch record. Manufacturing will ensure all personnel supporting the ongoing commercial needs are trained adequately and are ready to support commercial demand.</p>
+                    <p>Manufacturing may support and/or take ownership of CAPAs resulting from qualification that need to be addressed ahead of commercial production, such as deviations resulting from unclear instructions. The RU Manufacturing function should verify that it is ready to take on all responsibilities for commercial start, including cleaning, product changeovers, sample pulling and submission, media fills, change control, maintenance activities, and batch operations.</p>
+                    <p>The case study in Section 8.12 describes what could go wrong during commercial production if the Handover process with the Manufacturing and Sourcing/Supply Chain functions is inadequate to ensure readiness for post-transfer production.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>製造職能的商業生產就緒確認清單</h4>
+                        <p>RU 製造部門在交接前須確認具備以下所有商業生產能力：</p>
+                        <ul>
+                            <li>清潔作業（Cleaning）</li>
+                            <li>產品切換（Product Changeovers）</li>
+                            <li>樣品採集與提交（Sample Pulling &amp; Submission）</li>
+                            <li>培養基灌裝（Media Fills）</li>
+                            <li>變更控制管理</li>
+                            <li>維護活動（Maintenance）</li>
+                            <li>批次操作（Batch Operations）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>警告：交接不足的風險</h4>
+                        <p>TR65 第 8.12 節案例研究說明，若製造與供應鏈的交接不足，商業生產可能出現嚴重問題。完整的操作準備確認是防止此類風險的關鍵。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.7 Regulatory -->
+    <div class="chapter-section" id="sec567">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.7</div>
+            <div class="chapter-info">
+                <h2>Regulatory — 法規職能</h2>
+                <p>Regulatory approval timing, post-approval changes, ongoing communications</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.7 Regulatory</h3>
+                    <p>The Regulatory function communicates expected timing for regulatory approval. Any potential delays should be communicated to the TT Team in a timely manner. Regulatory also contributes to the launch of products, reviewing promotional materials and medical information for consistency with product labeling.</p>
+                    <p>The MAH Regulatory function will need to identify the RU personnel who will be responsible for ongoing communications on regulatory matters.</p>
+                    <p>The TT Team may review opportunities for efficiencies or cost reductions that may result in post-approval submissions.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>法規職能的交接責任</h4>
+                        <ul>
+                            <li>溝通法規核准的預期時程，及時預警潛在延誤</li>
+                            <li>審閱促銷材料及醫療資訊，確保與產品標籤一致性</li>
+                            <li>確立 RU 的法規事務負責人，建立長期溝通機制</li>
+                            <li>評估上市後申請（Post-Approval Submissions）的效率化機會</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.8 Quality -->
+    <div class="chapter-section" id="sec568">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.8</div>
+            <div class="chapter-info">
+                <h2>Quality — 品質職能</h2>
+                <p>Quality management review, quality agreement update, TT documentation closure</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.8 Quality</h3>
+                    <p>As part of the Handover stage, the MAH Quality function establishes the quality management review process, which should involve both the RU and the SU. The quality agreement may need to be updated to address everything associated with commercial manufacture.</p>
+                    <p>Quality will ensure the closure of all documentation from the TT, including change controls, validation reports, deviations, and CAPAs. It also may play a role in identifying lessons learned from the Execution stage that should be incorporated in future training for the post-transfer operations team to improve process quality.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>品質部門的交接收尾工作</h4>
+                        <ul>
+                            <li><strong>品質管理審查流程：</strong>建立涵蓋 RU 與 SU 的品質管理審查機制</li>
+                            <li><strong>品質協議更新：</strong>確保涵蓋商業生產所有相關事項</li>
+                            <li><strong>文件結案：</strong>關閉所有 TT 文件（變更控制、驗證報告、偏差、CAPA）</li>
+                            <li><strong>知識整合：</strong>將執行階段的經驗教訓納入後轉移團隊的未來培訓</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5.6.9 Sourcing/SC -->
+    <div class="chapter-section" id="sec569">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.9</div>
+            <div class="chapter-info">
+                <h2>Sourcing / Supply Chain — 採購與供應鏈</h2>
+                <p>Production planning, procurement, commercial supply readiness</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.6.9 Sourcing/Supply Chain</h3>
+                    <p>The Sourcing/Supply Chain function continues to perform production planning and material sourcing activities similar to those conducted during the TT process, incorporating any improvements identified from the Execution stage.</p>
+                    <p>Following qualification, any lessons learned should be implemented prior to handover to the RU post-transfer operations team. These might include equipment and personnel standards used in schedule planning, procurement lead times and quantities, and resource planning. The supply plan and procurement plan should take into consideration commercial requirements and release expectations in accordance with business needs following qualification activities.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>供應鏈的交接要點</h4>
+                        <p>交接前須整合執行階段的經驗教訓，更新：</p>
+                        <ul>
+                            <li>排程規劃中的設備與人力標準</li>
+                            <li>採購前置時間與訂購數量</li>
+                            <li>供應計畫與採購計畫（考量商業需求與放行時效）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLE 5.6.10-1 Best Practices -->
+    <div class="chapter-section" id="sec5610">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6.10</div>
+            <div class="chapter-info">
+                <h2>Table 5.6.10-1: Best Practices — Handover Stage</h2>
+                <p>交接階段最佳實踐與補充建議</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Table 5.6.10-1: Best Practices and Additional Suggestions for the Handover Stage</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Topic</th><th>Details</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Host a formal Handover meeting</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Hold a formal meeting between the TT Team and the post-transfer operations team to ensure overall readiness of process</li>
+                                        <li>Provide a Handover package including key documents, process understanding, and learnings</li>
+                                        <li>Provide the regulatory dossier and any critical knowledge to the commercial regulatory group and communicate any post-marketing commitments made to regulatory authorities</li>
+                                        <li>Have the TT Team provide an overview of new equipment, unique requirements, launch timeline, commercial forecast, labor requirements, procurement needs, open actions from risk assessment, process improvement, and lessons learned</li>
+                                        <li>If applicable, have the TT Team provide customer introductions</li>
+                                        <li>Be aware of potential issues: Without an adequate handover, additional risks may arise if the post-transfer operations team is unable to execute production effectively</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Create a formal long-term training plan for production</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Prior to Handover, assess whether the production team needs additional training on the process and equipment</li>
+                                        <li>Use final lessons learned to revise and maintain the training program, which should include adequate hands-on training with batch records and SOPs, not only classroom presentation</li>
+                                        <li>Consider use of demonstrated hands-on training to verify understanding</li>
+                                        <li>Be aware of potential issues: Without proper training, the team runs the risk of requiring additional technical support or potentially experiencing human error, deviations, downtime, or delays upon commercial start</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Perform a lessons-learned meeting</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Set up a formal meeting to discuss lessons learned at project closure, inviting the entire TT Team and involving key supporting team members (e.g., production, labs)</li>
+                                        <li>Discuss successes as well as opportunities for improvement, considering such areas as processes, people, communication, and documentation</li>
+                                        <li>Determine root causes of any challenging areas, obstacles, failures, scope changes, and deviations and discuss how to prevent them in the future</li>
+                                        <li>Capture a summary of lessons learned that the TT PM can drive to the rest of the team. The SU, RU, and MAH should incorporate these learnings into future projects where possible</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure all commercial needs are planned and ready for commercial start</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Verify that the post-transfer operations team has everything needed to begin commercial production</li>
+                                        <li>Work with the key functions at the RU site prior to closure of the project to ensure that key systems of the post-transfer production plan are in place and needs are met</li>
+                                        <li>Include such key functions as site software systems, inventory, procurement plan, resource/labor needs, scheduling standards and equipment capacity needs, spare parts, preventive maintenance, equipment requalification and routine monitoring, vendor/supplier needs, and forecasting per the commercial needs</li>
+                                        <li>Ensure all key aspects are ready, including procurement of materials, spare parts, lead times, scheduling, and third-party planning</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transfer knowledge from TT Team to post-transfer operations team</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure formal training, robust batch-record updates, SOP instruction revisions, and simulation runs as needed are completed prior to commercial start</li>
+                                        <li>Ensure that knowledge has been effectively transferred through experience gained during the TT process, through lessons learned, and through Handover meetings</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure capacity meets commercial needs</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Throughout the project, monitor the commercial forecast and actual cycle times on equipment, including commercial, laboratory, and any support systems at the RU site, to ensure the final process can meet the intended project and commercial requirements</li>
+                                        <li>If this product shares personnel and/or equipment with other products at the site, consider the impacts on equipment capacity, labor capacity, or support (e.g., lab testing, materials)</li>
+                                        <li>Ensure that the TT Team assesses the product's long-term needs throughout the project, involves appropriate commercial personnel and leadership early, and evaluates the commercial forecast to verify requirements are met in the lead-up to launch and Handover</li>
+                                        <li>Ensure all lessons learned from the project are considered in planning for commercial needs</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ensure process turned over performs as expected and is well controlled within specifications/QTPP</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure an adequate process qualification that meets all acceptance criteria is well controlled within the operating ranges specified in the control strategy and is supported by sufficient data</li>
+                                        <li>Ensure that robust monitoring and a control plan are in place to monitor for any out-of-control events that may occur and require attention</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析</h3>
+                    <div class="concept-box">
+                        <h4>交接階段七大最佳實踐</h4>
+                        <ol>
+                            <li><strong>正式交接會議：</strong>提供完整交接包（文件、製程理解、經驗教訓），涵蓋設備、時程、預測、採購等</li>
+                            <li><strong>長期培訓計畫：</strong>強調實際操作培訓，而非僅限課堂教學</li>
+                            <li><strong>經驗教訓會議：</strong>正式討論成功與改進點，記錄根本原因供未來專案參考</li>
+                            <li><strong>商業需求全面確認：</strong>系統軟體、庫存、採購計畫、預防性維護等全部就緒</li>
+                            <li><strong>知識有效轉移：</strong>通過培訓、批記錄更新、SOP 修訂、模擬作業確保知識落地</li>
+                            <li><strong>產能符合商業需求：</strong>貫穿整個 TT 持續監控商業預測與實際週期時間</li>
+                            <li><strong>製程受控移交：</strong>確保移交的製程符合所有驗收標準且在控制策略規定的操作範圍內</li>
+                        </ol>
+                    </div>
+                    <div class="practice-box">
+                        <h4>Operations Director 視角：交接的真正風險</h4>
+                        <p>多數 TT 失敗不是在執行階段，而是在交接後的商業生產初期暴露問題。關鍵風險點：</p>
+                        <ul>
+                            <li>後轉移團隊缺乏實操經驗（僅有閱讀訓練）</li>
+                            <li>產能評估未考慮共用設備的競爭需求</li>
+                            <li>Lessons Learned 僅書面記錄、未真正整合進培訓</li>
+                            <li>供應鏈前置時間在商業初期出現意外斷鏈</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：交接會議如「飛行前後艙交接」</h4>
+                        <p>航空業的駕駛艙交接有嚴格的口頭確認程序——不能只是「留個紙條」。TT 交接會議同樣應有結構化的確認清單，確保接手的後轉移團隊完全了解飛機（製程）的當前狀態與注意事項。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION SUMMARY -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">S</div>
+            <div class="chapter-info">
+                <h2>Section Summary — 本節重點總結</h2>
+                <p>Execution &amp; Handover Stages key takeaways</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Takeaways: Execution &amp; Handover Stages</h3>
+                    <p><strong>Execution Stage (5.5):</strong> The Execution stage is where all readiness work is tested in practice through engineering and PPQ batches. Success requires cross-functional collaboration, adequate training, proper documentation, and continual communication. Major outputs include the process validation report, TT report, and regulatory filing submission.</p>
+                    <p><strong>Handover Stage (5.6):</strong> The Handover stage formalizes the transition from the TT Team to the RU's routine operations team. Effective handover requires comprehensive knowledge transfer, a lessons-learned meeting, formal training plans, and verification that all commercial production capabilities are in place — from supply chain to quality management systems.</p>
+                    <p><strong>Critical success factors across both stages:</strong></p>
+                    <ul>
+                        <li>SME presence during qualification activities</li>
+                        <li>Hands-on operator training (not just read-and-sign)</li>
+                        <li>Stage gates with cross-functional alignment before proceeding</li>
+                        <li>Proactive risk management and lessons-learned documentation</li>
+                        <li>Commercial readiness verified before project closure</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文總結</h3>
+                    <div class="concept-box">
+                        <h4>執行階段 vs. 交接階段的核心差異</h4>
+                        <table>
+                            <thead>
+                                <tr><th>面向</th><th>執行階段</th><th>交接階段</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>主要任務</td><td>PPQ + 法規申請</td><td>知識轉移 + 商業就緒</td></tr>
+                                <tr><td>主導者</td><td>TT Team（SU + RU）</td><td>RU 後轉移團隊接手</td></tr>
+                                <tr><td>關鍵文件</td><td>TT Report、驗證報告</td><td>CPV 計畫、品質協議</td></tr>
+                                <tr><td>結束標誌</td><td>PAI 核准 / Stage Gate</td><td>正式 Handover + 專案結案</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>最終提醒：風險評估貫穿始終</h4>
+                        <p>TR65 強調，風險評估是「活的文件（Living Document）」，必須貫穿整個 TT 專案，直到正式交接完成。交接後的商業生產仍需持續透過 CPV 監控製程狀態。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+    <p>PDA Technical Report No. 65 (Revised 2022): Technology Transfer</p>
+    <p>Section 4: Execution &amp; Handover Stages | p41–p49</p>
+    <p>Educational material for internal training purposes</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>
