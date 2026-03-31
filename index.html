@@ -477,8 +477,9 @@ function renderCards(){
         const tags=d.tags.slice(0,4).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
         const fb=d.figures?`<span class="tag-pill bg-orange-50 text-orange-600">${d.figures} fig</span>`:'';
         const isLV=_lv&&_lv.file===d.file;
-        const btn=d.file?`<a href="${d.file}" target="_blank" data-track-file="${d.file}" data-track-title="${d.title.replace(/"/g,'&quot;')}" data-track-zh="${(d.titleZh||'').replace(/"/g,'&quot;')}"
-            class="track-open text-xs text-white px-3 py-1 rounded no-underline transition-colors opacity-90 hover:opacity-100" style="background:${sc.bar||'#334155'}">Open</a>`:'';
+        const _href=d.file?getOpenHref(d.file):'';
+        const btn=d.file?`<a href="${_href}" target="_blank" data-track-file="${d.file}" data-track-title="${d.title.replace(/"/g,'&quot;')}" data-track-zh="${(d.titleZh||'').replace(/"/g,'&quot;')}"
+            class="track-open text-xs text-white px-3 py-1 rounded no-underline transition-colors opacity-90 hover:opacity-100" style="background:${sc.bar||'#334155'}">${prog?'繼續閱讀':'Open'}</a>`:'';
         let rel='';
         if(s&&d._score>0){const p=Math.round(d._score/mx*100);const bc=p>=70?'#334155':p>=40?'#64748b':'#94a3b8';
             const bm={title:'Title',tag:'Tag',summary:'Summary',content:'Content'};
@@ -492,8 +493,10 @@ function renderCards(){
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
         const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
         const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
+        const prog=getProgress(d.file);
+        const progBadge=prog&&prog.num?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`:'';
         return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}">
-            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${lvBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
+            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
             <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
             ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
             ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
@@ -513,6 +516,17 @@ const LS_KEY = 'sgk_last_viewed';
 
 function trackOpen(file, title, titleZh) {
     try { localStorage.setItem(LS_KEY, JSON.stringify({ file, title, titleZh, ts: Date.now() })); } catch(e) {}
+}
+
+function getProgress(file) {
+    // Derive progress key from file path (matches merged HTML's _pKey)
+    const stem = file.split('/').pop().replace('.html','');
+    try { return JSON.parse(localStorage.getItem('sgk_progress_' + stem) || 'null'); } catch(e) { return null; }
+}
+
+function getOpenHref(file) {
+    const p = getProgress(file);
+    return p && p.id ? file + '#' + p.id : file;
 }
 
 function getLastViewed() {
@@ -537,13 +551,17 @@ function renderResumeBanner() {
     const el = document.getElementById('resumeBanner');
     if (!lv || !wrap || !el) return;
     const displayTitle = lv.titleZh || lv.title;
+    const prog = lv.file ? getProgress(lv.file) : null;
+    const progInfo = prog && prog.num ? `<span class="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Section ${prog.num}: ${prog.label}</span>` : '';
+    const resumeHref = lv.file ? getOpenHref(lv.file) : '';
     const link = lv.file
-        ? `<a href="${lv.file}" target="_blank" data-track-file="${lv.file}" data-track-title="${lv.title}" data-track-zh="${lv.titleZh||''}"
+        ? `<a href="${resumeHref}" target="_blank" data-track-file="${lv.file}" data-track-title="${lv.title}" data-track-zh="${lv.titleZh||''}"
               class="track-open text-xs bg-slate-700 text-white px-3 py-1.5 rounded no-underline hover:bg-slate-600 whitespace-nowrap transition-colors">繼續閱讀</a>`
         : '';
     el.innerHTML = `<div class="flex items-center gap-3 flex-wrap">
         <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest whitespace-nowrap">上次閱讀</span>
         <span class="text-sm font-medium text-slate-800 flex-1 min-w-0 truncate" title="${displayTitle}">${displayTitle}</span>
+        ${progInfo}
         <span class="text-xs text-slate-400 whitespace-nowrap">${timeAgo(lv.ts)}</span>
         ${link}
         <button onclick="localStorage.removeItem('${LS_KEY}');document.getElementById('resumeWrap').style.display='none';renderCards();"
