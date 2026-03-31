@@ -54,7 +54,9 @@ into the dosage form without change, then the dosage form GMP apply to both the 
 dosage form formulation. Figure 1.1 shows the boundary between this ISPE Baseline® Guide and the ISPE Baseline®
 Guide on APIs [8]. Figure 1.1 describes sterile APIs and dosage forms produced by both aseptic processing and
 terminal sterilization.
-Figure 1.1: Diagram to Illustrate Boundary between this ISPE Baseline® Guide and the ISPE Baseline® Guide:
+
+*[Figure 1.1: Diagram to Illustrate Boundary between this ISPE Baseline® Guide and the ISPE Baseline® Guide:]*
+
 Active Pharmaceutical Ingredients (Second Edition)
 Notes for Figure 1.1:
 •
@@ -198,7 +200,7 @@ GEP should be applied to a facility to ensure that the most effective and effici
 with meeting manufacturing and quality needs.
 An overview of the chapter structure of this Guide is given in Figure 1.2.
 
-Figure 1.2: Overview of Chapter Structure
+*[Figure 1.2: Overview of Chapter Structure]*
 
 ### 1.4 Terminology Used in This Guide
 
@@ -764,7 +766,8 @@ improvement step will occur to prepare the transitioning elements for the next z
 Examples of improvement steps include cleaning or sanitization for materials and donning additional gowning articles
 for personnel. (For further information on improvement steps, see Section 4.6.1.)
 The concept of nested manufacturing zones (from ISO 14644-7 [20]) is illustrated in Figure 2.1.
-Figure 2.1: Nested Manufacturing Zones (Diagrammatic)
+
+*[Figure 2.1: Nested Manufacturing Zones (Diagrammatic)]*
 
 #### 2.5.3 Approaches to Environmental Contamination Control
 
@@ -1288,7 +1291,8 @@ can be achieved during unloading and cooling with the addition of LP/GAAS in the
 requires a minimum background environment which can achieve ISO 8 conditions “in operation”. Therefore, for a global facility, an ISO 8/Grade
 C may be the most appropriate. A Grade D environment which is classified as ISO 8 “in operation” as well as “at rest” is also possible.
 
-Figure 2.2: Baseline Environmental Requirements for Capping/Crimping Operations for Aseptically
+*[Figure 2.2: Baseline Environmental Requirements for Capping/Crimping Operations for Aseptically]*
+
 Processed Products
 
 ### 2.7 Hazard and Operator Protection
@@ -1411,7 +1415,8 @@ area.
 A schematic of the typical flow from one area to another is given in Figure 2.3. See Chapter 4 for further information.
 The lifecycle cost of facilities, and not just the initial cost, should be considered. A higher initial cost using better
 materials may mean less operating and maintenance costs and, therefore, can result in a lower lifecycle cost.
-Figure 2.3: Typical Flow Diagram of Personnel and Materials for Aseptic Processing
+
+*[Figure 2.3: Typical Flow Diagram of Personnel and Materials for Aseptic Processing]*
 
 ### 2.10 Other Considerations
 
@@ -1541,10 +1546,13 @@ cleaning and SIP techniques to ensure sterility.
 •
 Use of pre-sterilized, ready-to-use components can eliminate cleaning, sterilization, and aseptic staging steps for
 containers and closures.
-Figure 3.1: Typical Flow Diagram for Aseptically Processed Products
+
+*[Figure 3.1: Typical Flow Diagram for Aseptically Processed Products]*
+
 This figure should be read in conjunction with Table 2.3.
 
-Figure 3.2: Typical Flow Diagram for Terminally Sterilized Products
+*[Figure 3.2: Typical Flow Diagram for Terminally Sterilized Products]*
+
 This figure should be read in conjunction with Table 2.3.
 Terminally sterilized products do not require the same level of environmental control as aseptically processed
 products. Despite these reduced requirements, steps should be taken to reduce the risk of introducing bioburden
@@ -1581,8 +1589,10 @@ These risk factors can generally be mitigated through application of commonly av
 automated filling systems with appropriate barrier technology. In case of elevated or unknown risk, additional
 appropriate controls should be implemented—for example, filling in an open active RABS (LP/GAAS) in an ISO 8/
 Grade C background.
-Figure 3.3 illustrates a typical process flow for an aseptically processed lyophilized vial formulation.
-Figure 3.3: Typical Process Flow for an Aseptically Processed Vial Formulation (Lyophilized)
+
+*[Figure 3.3 illustrates a typical process flow for an aseptically processed lyophilized vial formulation.]*
+
+*[Figure 3.3: Typical Process Flow for an Aseptically Processed Vial Formulation (Lyophilized)]*
 
 #### 3.2.1 Dispensing and Weighing
 
@@ -2122,7 +2132,9 @@ Sealing the container
 6.
 Trimming the container and conveyance to the inspection area
 An illustration of the BFS process is shown in Figure 3.4.
-Figure 3.4: Blow, Fill, and Seal (BFS) Process Steps
+
+*[Figure 3.4: Blow, Fill, and Seal (BFS) Process Steps]*
+
 Used with permission from Weiler Engineering, www.weilerengineering.com
 Advantages of the BFS process include:
 •
@@ -3732,7 +3744,9 @@ programming, to identify the major processing areas, area classifications, key a
 Block flow diagrams document the inputs and outputs for given activities and help designers establish adjacencies
 and facility flows. These activities can later be grouped into individual rooms or buildings as the facility program is
 developed. An example of a block flow diagram is shown in Figure 4.1.
-Figure 4.1: Example Block Flow Diagram (Component Preparation)
+
+*[Figure 4.1: Example Block Flow Diagram (Component Preparation)]*
+
 Note for Figure 4.1: Rest of World (ROW) area classifications are used by regulatory agencies which base their
 requirements on EU Annex 1 [1]. US FDA [3] area classifications are also represented. Designers of global facilities
 should compare the corresponding area classifications and design for the most restrictive. See Chapter 5 for more
@@ -3751,7 +3765,9 @@ Table 4.1: Example of Facility Program
 The transition and zoning diagram identifies all areas that can affect or influence the required space or unit
 operations, defines their interrelationships, and establishes the flow pattern that best represents the process GMP
 and operator requirements.
-Figure 4.2 shows an example of a typical transition and zoning diagram. These types of diagrams should be used
+
+*[Figure 4.2 shows an example of a typical transition and zoning diagram. These types of diagrams should be used]*
+
 to establish the “rules” of the facility and serves as the basis from which the layout is developed. Designers tend to
 create these diagrams in their own style, so actual graphic representations may vary from project to project.
 Personnel, product, and material flows should be fully understood and considered prior to the development of the
@@ -3791,7 +3807,8 @@ ISO 8/Grade C
 Production Consumables
 ISO 8/Grade C
 
-Figure 4.2: Example of Transition and Zoning Diagram (Isolator Technology)
+*[Figure 4.2: Example of Transition and Zoning Diagram (Isolator Technology)]*
+
 Note for Figure 4.2: Rest of World (ROW) area classifications are used by regulatory agencies which base their
 requirements on EU Annex 1 [1]. US FDA [3] area classifications are also represented. Designers of global facilities
 should compare the corresponding area classifications and design for the most restrictive. See Chapter 5 for more
@@ -3805,7 +3822,8 @@ operations and support activities. The team should assess the space impacts of p
 capacity to determine the size and preferred location of specific areas. Figure 4.3 shows an example of typical
 functional room layout.
 
-Figure 4.3: Example of Functional Room Layout (Formulation Room)
+*[Figure 4.3: Example of Functional Room Layout (Formulation Room)]*
+
 A conceptual layout is developed by combining all necessary functional room layouts in an arrangement that meets
 the transition and zoning requirements, and supports the production activities defined by the block flow diagrams. It
 should integrate equipment needs and movement requirements for personnel, materials, components, etc., while also
@@ -4798,7 +4816,8 @@ may prohibit access above processing areas during production, as traffic can dis
 Figure 4.4, Figure 4.5, Figure 4.6, Figure 4.7, and Figure 4.8 provide a graphic approach to the concepts discussed in
 this chapter. These figures are an approach to functional adjacencies and are not layouts or floor plans.
 
-Figure 4.4: Diagram of a Small Scale Open System Aseptic Fill with RABS
+*[Figure 4.4: Diagram of a Small Scale Open System Aseptic Fill with RABS]*
+
 Notes for Figure 4.4:
 •
 All processes are open. Compounding is not prepared aseptically. Product is sterile filtered to the filling area. LP/GAAS is used
@@ -4830,7 +4849,8 @@ For transporting parts, see Table 2.3.
 d.
 For product protection, see Table 2.3.
 
-Figure 4.5: Diagram of a Small Scale Open System Aseptic Fill with Isolators
+*[Figure 4.5: Diagram of a Small Scale Open System Aseptic Fill with Isolators]*
+
 Notes for Figure 4.5:
 •
 Open aseptic processes occur within isolators.
@@ -4858,7 +4878,8 @@ For transporting parts, see Table 2.3.
 c.
 For product protection, see Table 2.3.
 
-Figure 4.6: Diagram of a Large Scale Open System Aseptic Fill with RABS
+*[Figure 4.6: Diagram of a Large Scale Open System Aseptic Fill with RABS]*
+
 Notes for Figure 4.6:
 •
 All processes are open and, therefore, unidirectional flows are provided for the exposed product areas. Compounding is not
@@ -4898,7 +4919,8 @@ For product protection, see Table 2.3.
 e.
 The VHP chamber should be utilized to bring items that cannot be autoclaved into the ISO 7/Grade B areas.
 
-Figure 4.7: Diagram of a Large Scale Open System Aseptic Fill with Isolators
+*[Figure 4.7: Diagram of a Large Scale Open System Aseptic Fill with Isolators]*
+
 Notes for Figure 4.7:
 •
 All processes are closed except for Parts Wash. Filling and stoppering are performed in isolators.
@@ -4929,7 +4951,8 @@ For transporting parts, see Table 2.3.
 c.
 For product protection, see Table 2.3.
 
-Figure 4.8: Diagram of a Large Scale Open Filling for Terminally Sterilized Product with RABS
+*[Figure 4.8: Diagram of a Large Scale Open Filling for Terminally Sterilized Product with RABS]*
+
 Notes for Figure 4.8:
 •
 All processes are open. Filling is performed within a RABS under LP/GAAS. Compounding is not produced aseptically or sterile
@@ -6011,20 +6034,26 @@ Transfer or holding of stoppered, uncapped vials
 •
 Capping of filled vials (see Section 5.7.1.4)
 Once critical areas are identified, appropriate environmental standards can be assigned (see Figures 3.1 and 3.2).
-Figure 5.1A: Cleanliness Cascade Principle
+
+*[Figure 5.1A: Cleanliness Cascade Principle]*
+
 Note for Figure 5.1A: In the cascade arrangement, area flows from area at highest pressure to the area of lowest
 pressure.
 
-Figure 5.1B: Cleanliness Sink Principle
+*[Figure 5.1B: Cleanliness Sink Principle]*
+
 Note for Figure 5.1B: The sink principle is commonly applied to high containment products. The transition zone is at
 lowest pressure; air flows from the cleanroom and corridor.
-Figure 5.1C: Cleanliness Bubble Principle
+
+*[Figure 5.1C: Cleanliness Bubble Principle]*
+
 Note for Figure 5.1C: The bubble principle is commonly applied to high aerosol producing products. The transition
 zone is at highest pressure; air flows to the cleanroom and corridor.
 
 #### 5.6.2 Differential Pressures
 
-Figure 5.2: Airflow Paths for an Example Aseptic Facility Layout
+*[Figure 5.2: Airflow Paths for an Example Aseptic Facility Layout]*
+
 Note for Figure 5.2: See Chapter 4 for layout details and discussion.
 An airflow cascade may be established between rooms of the same classification within a manufacturing suite. For
 example, an aseptic filling room (ISO 7/Grade B) incorporating a RABS would be expected to be maintained at a
@@ -6307,7 +6336,8 @@ Airlocks between classified areas are intended to interpose multiple doors betwe
 Regardless of the airlock classification, there is no need to design for 10 – 15 Pa per door; it is more appropriate to
 divide the target pressurization across the number of doors present.
 
-Figure 5.3: Example of Cascade Pressure Relationships for Airlocks
+*[Figure 5.3: Example of Cascade Pressure Relationships for Airlocks]*
+
 Material pass-throughs (also known as transfer hatches) may be small; while low risk transfers (across a single
 classification change) may feature unventilated units, higher risk transfers (across two or more classes or across
 a containment boundary) should incorporate pass-through ventilated hatches (actively supplied with filtered air/
@@ -7692,7 +7722,8 @@ For example, assume that Process Limits are 22°C ± 4°C (71.6°F ± 7.2°F). T
 to provide 22°C ± 2°C (71.6°F ± 3.6°F); however, control to within 22°C ± 1°C (71.6°F ± 1.8°F) is usual. Alert Limits
 can be set at a lower limit of 21°C (69.8°F) and an upper limit of 23°C (71.4°F), as deviation outside these conditions
 indicates a situation which may require investigation. This relationship between the limits is illustrated in Figure 8.1.
-Figure 8.1: Alert and Alarm Limits
+
+*[Figure 8.1: Alert and Alarm Limits]*
 
 ### 8.3 Instrumentation
 
@@ -7759,7 +7790,8 @@ Using an instrument with an accuracy greater than the Instrument Permitted Limit
 remaining within Process Limits, as illustrated in Figure 8.2.
 5	 Accuracy is a characteristic of instruments and uncertainty is a characteristic of measurements.
 
-Figure 8.2: Instrument Permitted Limits
+*[Figure 8.2: Instrument Permitted Limits]*
+
 For example, consider a temperature control loop associated with a production process. The Process Limits are
 22°C ± 2°C (71.6°F ± 3.6°F), and Alert Limits are 22°C ± 1°C (71.6°F ± 1.8°F). At the extremes of the Alert Limits, the
 instrument measuring temperature should be accurate to at least ± 0.5°C (± 0.9°F), to guarantee that the temperature
@@ -7951,10 +7983,13 @@ The differences between the types of isolators and RABS used in pharmaceutical a
 understood. Isolators and RABS can be broadly classified according to the type of separation they provide and the
 assurance of maintaining that separation, although there may be some overlap in the degrees of separation and
 operator protection.
-Figure 9.1 (from ISO 14644-7 [20]) illustrates increasing levels of separation assurance moving from purely
+
+*[Figure 9.1 (from ISO 14644-7 [20]) illustrates increasing levels of separation assurance moving from purely]*
+
 aerodynamic separation (as in a unidirectional airflow hood) to complete physical separation (as in a closed isolator).
 
-Figure 9.1: Increasing Levels of Separation Assurance
+*[Figure 9.1: Increasing Levels of Separation Assurance]*
+
 ©ISO. This material is reproduced from ISO 14644-7:2004 with permission of the American National Standards
 Institute (ANSI) on behalf of the International Organization for Standardization. The complete standard can be
 purchased from ANSI at https://webstore.ansi.org. All rights reserved.
@@ -7990,7 +8025,9 @@ filters.
 •
 When “open”, isolators may transfer air directly to the surrounding environment through openings (e.g.,
 mouseholes) that prevent the ingress of viable and non-viable particles.
-Figure 9.2: Isolator Types and Surrounding Environment Classifications
+
+*[Figure 9.2: Isolator Types and Surrounding Environment Classifications]*
+
 1.
 Closed Isolators
 
@@ -8060,7 +8097,8 @@ An active RABS with air overspill into the room uses an integral HEPA filtered a
 critical process and air overspill into the room below the critical process.
 
 RABS are not suitable for hazardous products, as they spill air into the surrounding area.
-Figure 9.3: Active RABS with Air Overspill into the Room Classification
+
+*[Figure 9.3: Active RABS with Air Overspill into the Room Classification]*
 
 2.
 Passive RABS with Air Overspill to the Surrounding
@@ -8068,7 +8106,9 @@ Passive RABS with Air Overspill to the Surrounding
 In a passive RABS with air overspill to the surrounding, the airflow to the critical area is provided by ceiling
 mounted HEPA filters and the bottom of the enclosure is open to the room to provide for airflow through the
 system.
-Figure 9.4: Passive RABS with Air Overspill into the Room and Surrounding Environment Classification
+
+*[Figure 9.4: Passive RABS with Air Overspill into the Room and Surrounding Environment Classification]*
+
 3.
 Active RABS with Air Returns Through HEPA Filters
 
@@ -8077,7 +8117,8 @@ the critical process. It also uses air return through HEPA filters to prevent ha
 surrounding or microbial contamination migrating into the RABS.
 This type of RABS can be suitable for hazardous products, based on a risk assessment. Safe change filters should
 be used in the returns to help to protect operators and maintenance personnel.
-Figure 9.5: Active RABS with Air Returns through HEPA Filters and Surrounding Environment Classification
+
+*[Figure 9.5: Active RABS with Air Returns through HEPA Filters and Surrounding Environment Classification]*
 
 ##### 9.2.2.2 Considerations
 
@@ -8118,7 +8159,9 @@ In conventional aseptic filling operations, the filling equipment and gowned per
 environment. There is limited defined separation between the personnel and the production environment (e.g.,
 flexible plastic curtains). The product and product contact exposure areas are locally protected in an ISO 5/Grade A
 environment.
-Figure 9.6: Conventional Filling and Surrounding Environment Classification
+
+*[Figure 9.6: Conventional Filling and Surrounding Environment Classification]*
+
 Isolators and RABS utilize physical or aerodynamic methods (or both) to achieve separation between the inside of the
 containment and the surrounding environment. There are two primary differences between isolators and RABS:
 Decontamination: Isolators are reproducibly decontaminated using an automated system (e.g., using VHP); such
@@ -8604,9 +8647,10 @@ below any critical limits. One possibility is to add a higher pressure zone at t
 can prevent airflow from this additional zone into the critical zone, to avoid any contamination of the surroundings.
 If out of specification results occur, a risk assessment should be performed to define necessary actions. Appropriate
 microbial monitoring results may prevent loss of a batch.
-Figure 9.7 shows a typical open isolator configuration.
 
-Figure 9.7: Example of Arrangement for an Isolator Facility
+*[Figure 9.7 shows a typical open isolator configuration.]*
+
+*[Figure 9.7: Example of Arrangement for an Isolator Facility]*
 
 ### 9.5 Equipment Design for Inside an Isolator or RABS
 
@@ -9692,43 +9736,57 @@ This should be read in conjunction with Section 5.3.
 
 #### 11.2.1 Internal Sources
 
-Figure 11.1 gives an indication of particulates generated by personnel within a cleanroom.
-Figure 11.1: Number of Particles Generated per Second and per Person
+*[Figure 11.1 gives an indication of particulates generated by personnel within a cleanroom.]*
+
+*[Figure 11.1: Number of Particles Generated per Second and per Person]*
+
 Used with permission from Camfil, www.camfil.com
 
 Appendix 1
-Figure 11.1 is but a single data point for the cleanroom designer; there have been numerous studies regarding human
+
+*[Figure 11.1 is but a single data point for the cleanroom designer; there have been numerous studies regarding human]*
+
 shedding and the impacts of proper gowning. The authors recommend reviewing current research and gowning
 manufacturer’s data to establish the particle shedding rate to be used in calculations or modeling. Development of a
 robust contamination assumption is a key step in cleanroom design.
 To put this generation of particulates into perspective, the following example attempts to quantify the implications of
 personnel shedding on cleanroom classification.
-Figure 11.2 and contamination estimates are provided to illustrate the impact of personnel to airborne contamination
+
+*[Figure 11.2 and contamination estimates are provided to illustrate the impact of personnel to airborne contamination]*
+
 levels in cleanroom zones, particularly ISO 5/Grade A unidirectional airflow zones. The model considers the space
 immediately around an operator as the worst case within a clean zone.
-Figure 11.2: Human Particle Generation
+
+*[Figure 11.2: Human Particle Generation]*
+
 Note for Figure 11.2: Consider the space around an operator as the worst case within a cleanroom.
 
 #### 11.2.2 External Sources
 
-Figure 11.3 provides typical particulate counts for fresh air. It is important that these figures be taken as a range, and
+*[Figure 11.3 provides typical particulate counts for fresh air. It is important that these figures be taken as a range, and]*
+
 that local site conditions of the facility are taken into consideration, in order to optimize the filtration design.
 Although a HEPA filter is capable of capturing over 99.97% of particles (both larger and smaller than 0.3 μm), it
 is GEP to provide the system with pre-filters to capture larger particles representing most of the mass, therefore
 extending the life of the final HEPA filter.
 
 Appendix 1
-Figure 11.3: Outdoor Air – Number of Particles
+
+*[Figure 11.3: Outdoor Air – Number of Particles]*
+
 Used with permission from Camfil, www.camfil.com
 While Figure 11.3 provides an approximation of outdoor contamination levels, actual outdoor particulate levels are
 tracked by the EPA [64] in many areas. The EPA collects data for Particulate Matters (PM) in two size ranges, PM2.5
 and PM10 (particles ≤ 2.5 or 10 µm in size); the most relevant to the cleanroom designer is PM2.5, which can serve as
 an indication of outdoor 0.5 µm particle concentration.
 With proper filtration, the percentage of outside air has little impact on cleanroom performance.
-Figure 11.4 shows the effect of outdoor air percentage of supply air on room particle concentration.
+
+*[Figure 11.4 shows the effect of outdoor air percentage of supply air on room particle concentration.]*
 
 Appendix 1
-Figure 11.4: Effect of Outdoor Air Percentage of Air Supply on Room Particle Concentration
+
+*[Figure 11.4: Effect of Outdoor Air Percentage of Air Supply on Room Particle Concentration]*
+
 Courtesy Wei Sun, ASHRAE Technical Committee on Cleanrooms (TC 9.11).
 
 ### 11.3 HVAC Design Principles
@@ -9741,7 +9799,8 @@ particle/ft3), are achieved by a displacement system.
 In a displacement design, “dirty” air is displaced by “cleaner” air (i.e., UAF).
 In a dilution design, “dirty” room air is mixed continuously with “clean” air to reduce the particulate load in the room air
 by turbulent air mixing.
-Figure 11.5: Displacement or Dilution System Designs
+
+*[Figure 11.5: Displacement or Dilution System Designs]*
 
 Appendix 1
 The type of cleanroom design shown in Figure 11.5 using dilution is known as a “mixed flow” room. Turbulent air is
@@ -9832,8 +9891,11 @@ is a simplified model for calculating the relationship between air change rate a
 based on the two major assumptions given above (good mixing efficiency with clean supply air).
 
 Appendix 1
-Figure 11.6: Recovery Period versus Air Change Rates
-Figure 11.6 shows, by assuming a simple exponential decay, how the recovery period changes greatly with
+
+*[Figure 11.6: Recovery Period versus Air Change Rates]*
+
+*[Figure 11.6 shows, by assuming a simple exponential decay, how the recovery period changes greatly with]*
+
 air change rate. For example, a 100-fold recovery, from ISO 7/Grade B to ISO 5/Grade A, with 20 ACH, takes
 approximately 14 minutes. With 30 ACH, it takes approximately 9 minutes.
 In general, it is more important to achieve target recovery than to achieve target air change rate.
@@ -9942,7 +10004,9 @@ upon whether the machine is on or off, and when on, at what temperature it is op
 machine dynamic with respect to the rooms at the in-feed and outflow points. Changes in air volume drawn into the
 machine under differing operating conditions must be considered fully, and stabilizing measures taken. If not, DPs
 relative to the aseptic area may be lost or change dramatically, ultimately with a potential for reverse airflow.
-Figure 11.7: Typical Radiant Heat Sterilizing Tunnel Airflows
+
+*[Figure 11.7: Typical Radiant Heat Sterilizing Tunnel Airflows]*
+
 Notes for Figure 11.7:
 •
 All air volume flow rates are shown in m3/hr.
@@ -9985,7 +10049,8 @@ Conditioning [28].
 The location of HEPA filters within a system should be at points such that there is no chance of the air becoming re-
 contaminated. Hence, the use of terminal supply (ceiling) HEPA filters is recommended for classification of ISO 7/Grade
 B and cleaner. These also have the additional advantage of maintaining the sealed envelope of the aseptic area.
-Figure 11.8: A Typical Aseptic Area Filter Arrangement
+
+*[Figure 11.8: A Typical Aseptic Area Filter Arrangement]*
 
 Appendix 1
 Note: Poly Alpha Olefin (PAO) and Diethylhexyl Sebacat (DEHS) penetration tests use a high concentration of
@@ -10001,7 +10066,9 @@ and, in particular, recovery periods (as the particle count differential from su
 will be smaller.
 Another potential problem to be addressed, if only terminal HEPA filters are used, is that of uneven filter loading, that
 can result in reversed DPs putting environmental conditions at risk.
-Figure 11.9: Example of the Effects of Terminal Filter Differential Loading
+
+*[Figure 11.9: Example of the Effects of Terminal Filter Differential Loading]*
+
 As Figure 11.9 demonstrates, terminal filter loading can result in design DPs being reversed. Active room pressure
 controls can compensate for this issue.
 
@@ -10114,21 +10181,26 @@ The items or operations to be protected are the deciding factor, particularly re
 potential source of contamination. Ideally, critical activities should be located as close as possible to the face of the
 UAF unit and keep the operator on the downstream side or totally removed, as shown in Figure 11.10. UAF, once
 contaminated, may also contaminate anything downstream.
-Figure 11.10: Horizontal versus Vertical Unidirectional Airflow
+
+*[Figure 11.10: Horizontal versus Vertical Unidirectional Airflow]*
+
 Where a large thermal load is being cooled (e.g., a trolley of vials from a hot air oven), thermal currents caused by the
 load may interfere with forced UAF, as illustrated in Figure 11.11. Hence, the design should ensure that forced airflow
 fully protects the lower items on the trolley. In such cases, the careful use of protective barriers in the form of mobile
 passive RABs are recommended. The walls of these systems extend up to within approximately 30 cm of the bank
 of ceiling HEPAs and direct a UAF down onto and around the load, protecting and separating it from the surrounding
 environment.
-Figure 11.11: Thermal Currents versus Unidirectional Airflow
+
+*[Figure 11.11: Thermal Currents versus Unidirectional Airflow]*
+
 There also are potential problems with obstruction when an obstacle in a UAF creates a dead area downstream, as
 illustrated in Figure 11.12. In this case, even very high air change rates may not dilute the particle count adequately,
 and high particle values may be recorded in areas surrounding the critical point being protected. Hoods covering a
 larger area may be advisable.
 
 Appendix 1
-Figure 11.12: Unidirectional Airflow Shading
+
+*[Figure 11.12: Unidirectional Airflow Shading]*
 
 ### 11.8 Airflow Velocity Considerations
 
