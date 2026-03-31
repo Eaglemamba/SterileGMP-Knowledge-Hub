@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-1 — Section III Topics A–H: APS Acceptance Criteria & Design</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE LABEL (amber/gold for PtC-1) ===== */
+.source-label {
+    display: inline-block;
+    background: #fef3c7;
+    color: #78350f;
+    border: 1px solid #d97706;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+}
+
+/* topic badge strip */
+.topic-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.75rem 0 1.25rem 0;
+}
+
+.topic-badge {
+    background: #fef3c7;
+    color: #78350f;
+    border: 1px solid #d97706;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <div class="source-label">PDA Points to Consider No. 1 (Revised 2023)</div>
+    <h1>Section III: Validation — Aseptic Process Simulation (APS) Topics A–H</h1>
+    <div class="subtitle">第三章：驗證 — 無菌製程模擬主題 A 至 H</div>
+    <div class="page-info">PDA Points to Consider No. 1: Aseptic Processing (Revised 2023) | p54 – p65</div>
+</div>
+
+<!-- TOPIC STRIP -->
+<div class="main-content" style="padding-bottom:0;">
+    <div class="topic-strip">
+        <span class="topic-badge">A: Acceptance Criteria 驗收標準</span>
+        <span class="topic-badge">B: Duration 時程長度</span>
+        <span class="topic-badge">C: Incubation Temperatures 培養溫度</span>
+        <span class="topic-badge">D: Nonintegral &amp; Rejected Units 非完整容器</span>
+        <span class="topic-badge">E: Reconciliation 核對計算</span>
+        <span class="topic-badge">F: Inversion 倒置操作</span>
+        <span class="topic-badge">G: Aerobic vs Anaerobic 好氧 vs 厭氧</span>
+        <span class="topic-badge">H: APS Boundaries 範圍界定</span>
+    </div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content" style="padding-top:0.5rem; padding-bottom:0;">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 APS（Aseptic Process Simulation，無菌製程模擬）驗收標準的統計學基礎，以及「零汙染」目標背後的監管邏輯</li>
+        <li>能夠設計符合生產最差狀況的 APS 執行時間，理解「事件驅動」而非「時間驅動」的原則</li>
+        <li>解釋雙溫培養（20–25°C + 30–35°C）的科學理由，並能判斷何時採用單一溫度</li>
+        <li>辨別哪些容器應納入培養（含宇宙組、cosmetic 缺陷組），哪些可合理排除（破損/非完整），並掌握核對（Reconciliation）計算</li>
+        <li>理解 APS 範圍的起訖點：從滅菌後組件到最終容器密封；PUPSIT 須納入 APS</li>
+        <li>說明為何好氧培養基（如 SCDA）足以應對大多數製程，以及採用厭氧培養的罕見例外</li>
+    </ul>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC A: ACCEPTANCE CRITERIA                                  -->
+<!-- ============================================================ -->
+<div class="main-content" style="padding-top:0.5rem;">
+
+<div class="section-title" id="topic-a">Topic A: Acceptance Criteria — 驗收標準</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What are the <span class="key-term">acceptance criteria</span> for aseptic process simulations?</p>
+
+        <p><strong>Recommendation:</strong> The objective of APS is to produce <span class="key-term">zero contaminated units</span>, irrespective of run size. Therefore, the target involving such simulations should be zero positive units.</p>
+
+        <p>Upon discovery of any positive units, an investigation that includes a comprehensive <span class="key-term">risk assessment</span> should be performed to assess any potential root causes, implementation of <span class="key-term">corrective and preventive actions (CAPA)</span>, and respective documentation.</p>
+
+        <p>In addition to other qualification requirements, it may be advisable to include multiple process-simulation runs to verify the robustness of the implemented corrective actions with consideration of the following:</p>
+        <ul>
+            <li>Potential for multiple root causes</li>
+            <li>Unintended consequences inherently introduced by CAPAs that are otherwise not sufficiently challenged, or that may represent a departure from the original qualified state</li>
+        </ul>
+
+        <p>Investigations that determine a definitive and readily identifiable root cause might provide grounds for a reduced number of repeat run(s). However, CAPAs should be put in place to avoid such issues and prevent deviations to studies and processes from reoccurring.</p>
+
+        <p>In all cases, the execution of additional run(s) without the undertaking of a comprehensive risk-based investigation to identify and correct any potential root causes is not acceptable.</p>
+
+        <p><strong>Rationale:</strong> Process simulation contamination rates resulting in zero positive units should be achievable in <span class="key-term">well-designed and well-operated production lines</span>.</p>
+
+        <p>The APS provides additional, but <span class="key-term">not absolute</span>, assurance of process control on a periodic basis. While part of the overall approach to process validation, process simulation is only one of the many tools or approaches designed to evaluate the processing steps for aseptic manufacture.</p>
+
+        <p>The necessarily high degree of control and assurance for aseptic processes relies collectively on the qualification and validation of many systems, including product, equipment and component sterilization, personnel training and aseptic behavior, and environmental controls, and extends to facility design, inclusive of personnel, material, and equipment flows.</p>
+
+        <div class="quote-box">
+            "Since these processes are linked to the overall control and assurance of asepsis, the occurrence of even a single contaminated unit in an APS may be indicative of an underlying issue in any one of these systems and should be viewed as a significant event."
+        </div>
+
+        <p>Owing to the complexity and interdependencies of all aspects of aseptic processing and the limited diagnostic capability of the process simulation, a <span class="key-term">correlation between a specific event and a positive unit</span> is challenging. All positive units must be comprehensively investigated using the principles of <span class="key-term">quality risk management</span> with a purpose of identifying the root cause(s), implementing CAPAs, and verification of the effectiveness and impact of those CAPAs, as applicable.</p>
+
+        <p>In the event that a root cause cannot be established, the expectation is that all reasonable potential causal factors of the failure have been considered and steps have been taken to improve any and all identified issues arising from the investigation, including a comprehensive risk assessment.</p>
+
+        <div class="quote-box">
+            NOTE: Based on the limitations of aseptic processing, a comprehensive investigation may conclude that the discovery of a single contaminated unit is not indicative of a failed process.
+        </div>
+
+        <p><span class="key-term">Recurring positive units</span> in successive process simulations indicate a problem and should be investigated and resolved, even when the acceptance criteria are met for each individual simulation.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 零汙染的本質</h4>
+            <p><strong>Acceptance Criteria（驗收標準）</strong>在 APS 中等同於：<strong>每次執行，汙染單位數 = 0</strong>。</p>
+            <p>但這並不代表製程是「100% 完美無缺」。PDA PtC-1 明確指出，APS 提供的是「additional, but <em>not absolute</em>, assurance」。換言之，APS 通過只表示在那次模擬情境下製程受控，並不能保證真實生產中每支都無菌。</p>
+            <p>正確的認知框架是：APS 是「周期性佐證」，而非「絕對保證」。無菌保證（Sterility Assurance）的真正基礎是整個系統的設計與管控——設備滅菌、人員訓練、環境監控、設施設計——而 APS 只是其中一個檢核工具。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 汙染就像劇場後台的失火警報</h4>
+            <p>想像一場外科手術演練（模擬 APS）：整個流程中只要有任何一個步驟發生汙染（哪怕只是一個培養基瓶陽性），就等同於手術演練中有人在無菌區域沒戴手套。</p>
+            <p>這不一定代表真正手術會失敗，但一定代表有某個環節出了問題——可能是人員行為、可能是設備設計、可能是環境控制。不追根究柢、不提出 CAPA，就直接重跑一次「希望這次過」，是完全不被接受的做法。</p>
+            <p>這正是 PtC-1 說的：「沒有調查就直接補做 APS = 不可接受。」</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與思維 — Poisson 統計視角</h4>
+            <pre>
+Poisson 公式：
+P(0 個陽性 | N 單位，每單位汙染率 p)
+  = e^(−N × p)
+
+範例：
+  N = 3,000 單位，p = 0.001（0.1%汙染率）
+  P(0 正) = e^(−3,000 × 0.001) = e^(−3) ≈ 0.05 (5%)
+
+意涵：
+  若汙染率高達 0.1%，即使填了 3000 支，
+  「全部陰性」的機率只有 5% → 跑出 0 正的
+  可能性本就極低。
+  因此，若真的能跑出 0 正，代表製程汙染率
+  遠低於 0.1%，才是有意義的結果。
+
+FDA 立場：
+  傾向以 0 positive = pass 作為絕對標準。
+  1 positive = 需調查，通常須重新執行。
+
+EU Annex 1 立場（2022版）：
+  與 FDA 相近，但允許深入調查後
+  基於科學判斷認定「未必代表製程失敗」；
+  不過仍須進行完整 CAPA 並重新確認。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「1 支陽性」的後果</h4>
+            <p>根據 FDA 2004 年無菌製程指引，1 支陽性 = 重大事件，需要：</p>
+            <ul>
+                <li>全面根本原因調查（含 QRM 工具）</li>
+                <li>制定並執行 CAPA</li>
+                <li>視情況重新執行多次 APS 以驗證 CAPA 有效性</li>
+            </ul>
+            <p>EU Annex 1 (2022) 語氣相似，但增加一個重要補充：若根本原因無法確立，仍須對所有可能的成因採取行動，不能以「找不到原因」為由放棄改善。</p>
+            <p>CDMO 業者注意：若客戶的 APS 出現 1 支陽性，影響遠不止於「重跑一次」，整批商業製造批次的上市時程可能延誤數週到數月。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>APS 驗收標準是「零汙染」，但 PtC-1 又說 1 支陽性「可能不代表製程失敗」——這兩個說法矛盾嗎？請解釋其中邏輯。</li>
+                <li>若某次 APS 執行 3,000 支，出現 1 支陽性，根本原因調查顯示是某位操作員的手部動作不規範。請問至少需要哪些 CAPA，以及後續應補做幾次 APS？</li>
+                <li>為何「連續多次 APS 都各有 1 支陽性但各自未超標」仍屬嚴重問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC B: DURATION                                             -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-b">Topic B: Duration of Process Simulations versus Production — APS 時程長度</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What is the appropriate duration of an APS run? How should APS address <span class="key-term">multiple shifts</span> and <span class="key-term">campaign production runs</span>?</p>
+
+        <p><strong>Recommendation:</strong> The duration of the process simulation should be sufficient to adequately challenge the complete aseptic production process. Process simulation should focus on assessing the <span class="key-term">highest risk events</span> that would be permitted during routine processing.</p>
+
+        <p>Human interventions pose a risk to aseptic operation; therefore, consideration should be given to human variability in performance as well as the level of automation and barrier technology. If multiple personnel and shifts are involved, these should be addressed in the risk evaluation and process simulation design. Batches filled over multiple days without intermediate sterilization (i.e., <span class="key-term">campaign manufacturing</span>) should be evaluated in the risk assessment and process simulation design.</p>
+
+        <p>The duration of the process simulation should be risk-based and designed to simulate the conditions that provide the greater likelihood of uncovering process contamination (i.e., <span class="key-term">worst-case conditions</span>). Each company must determine appropriate rationale and approaches applicable to their unique operations by means of a documented risk assessment and process simulation design.</p>
+
+        <ul>
+            <li>The duration should be long enough to allow the simulation of the predetermined interventions, take into consideration the filling platform (i.e., closed isolators, RABS, automated, traditional/conventional cleanroom, or manual filling operations), as well as other intrinsic characteristics of the containers and closure systems.</li>
+            <li>The duration of the process simulation should be long enough to fill the required number of units to ensure that the necessary activities and interventions are covered (even if longer than normal production).</li>
+            <li>The risk assessment of the aseptic process should determine the number and frequency of interventions for each media fill, as well as any duration-related conditions or activities that should be included in the media fill. For lyophilization processes, consideration should be given to duration-related process variables, such as transport and handling of units and a representative chamber dwell time.</li>
+            <li>Where there are no risk-based duration-related effects, and/or where longer duration does not add any scientific merit, it should not be necessary for a process simulation to be equal to or be longer than the maximum production duration.</li>
+            <li>Operations that extend over multiple days should also include an assessment of the maintenance of environmental conditions over the extended period of time.</li>
+            <li>Manual aseptic filling or closing processes are highly dependent on the operator's individual performance of the process. Therefore, it is recommended that <span class="key-term">full-duration media fills</span> be used to qualify these processes.</li>
+        </ul>
+
+        <p><strong>Rationale:</strong> Contamination of an aseptic process is primarily a function of <span class="key-term">events</span> rather than time. Therefore, the duration of the APS should be sufficient to assess the performance of those activities identified in a risk assessment as having the potential to introduce contamination.</p>
+
+        <p>Properly designed automation and barrier technology should reduce the frequency of, or risk associated with human interventions. These factors should be addressed in the risk assessment and process simulation design.</p>
+
+        <p>Good process design, including <span class="key-term">human-factor assessment</span>, adherence to first-air principles, training, operations experience, monitoring, and ergonomics, and the scheduling of breaks and rest periods are better tools for controlling the performance of cleanroom operators, operations, and the potential effects of human fatigue, than the passage of longer-duration media fills.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 事件驅動 vs 時間驅動</h4>
+            <p>這是 Topic B 最關鍵的一句話：<strong>「Contamination is primarily a function of events, not time.」</strong></p>
+            <p>汙染的根本風險來自「干預事件」（interventions）——例如人員進出、設備調整、管路重新連接——而不是單純「跑了多少小時」。因此，APS 的長度不是要「等於或超過最長生產時間」，而是要「涵蓋所有高風險事件」。</p>
+            <p>重要推論：
+                <ul>
+                    <li>高度自動化製程（Isolator）：干預少 → APS 可能比生產短，只要事件都被涵蓋</li>
+                    <li>手動充填製程（Manual Filling）：操作員就是最大風險源 → 必須跑全時長（full-duration）</li>
+                    <li>多班次（Multiple Shifts）：不同操作員有不同行為變異 → 都需要被模擬</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 如果演練比演出短，如何驗證真實表演？</h4>
+            <p>想像一部音樂劇的技術彩排（Technical Rehearsal）：目的是確保舞台效果萬無一失。彩排不一定要跑完全劇，但一定要跑到每個「高風險場景」——煙霧機啟動、演員從高處降落、燈光快速切換。</p>
+            <p>APS 的邏輯相同：不是比賽誰的 Media Fill 跑最久，而是確保每一個「有可能讓汙染溜進去的場景」都被真實挑戰過。如果你的生產有 campaign 製造（連續多天不中途滅菌），那彩排也要跑多天——因為那個「第三天疲勞的操作員」就是風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 冷凍乾燥（Lyophilization）的特殊考量</h4>
+            <p>凍乾製程的 APS 有額外挑戰：需要評估「代表性的凍乾艙停留時間（chamber dwell time）」以及容器在艙外的搬運過程。這意味著凍乾的 APS 不只是充填這一步，還包含：</p>
+            <ul>
+                <li>從充填到推入凍乾艙的搬運</li>
+                <li>凍乾艙內停留（代表性時間）</li>
+                <li>出艙後加蓋密封</li>
+            </ul>
+            <p>CDMO 在承接凍乾品項時，APS 設計複雜度顯著高於一般液態充填，Protocol 設計需特別謹慎。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 的 APS 時程設計決策</h4>
+            <p>當客戶帶著一個新品項來詢問「你們的 Media Fill 需要跑多久？」時，正確答案不是一個固定數字，而是：</p>
+            <ol>
+                <li>先做風險評估：列出所有生產中的干預事件與頻率</li>
+                <li>確認填充平台：Isolator / RABS / 傳統潔淨室 / 手動</li>
+                <li>確認是否涉及 campaign 製造、多班次、多操作員</li>
+                <li>設計 APS 確保涵蓋所有高風險事件（不一定等於最長生產時間）</li>
+                <li>有科學文件支撐時程設計的合理性</li>
+            </ol>
+            <p>這一整套文件就是「Process Simulation Design（製程模擬設計）」，是 CDMO 自行準備的文件，不是監管機構提供的。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某 CDMO 的液態充填製程使用 Isolator，生產批次通常需要 8 小時。他們的 APS 設計為 4 小時，但涵蓋了所有預定干預項目。這樣可以接受嗎？為什麼？</li>
+                <li>若改為傳統潔淨室（Conventional Cleanroom）手動充填，同樣 8 小時生產，APS 設計為 4 小時是否合適？請說明理由。</li>
+                <li>什麼是「worst-case conditions」在 APS 時程設計中的實際意義？請舉兩個具體例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC C: INCUBATION TEMPERATURES                              -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-c">Topic C: Incubation Temperatures — 培養溫度</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What are suitable <span class="key-term">incubation temperatures</span> for an APS?</p>
+
+        <p><strong>Recommendation:</strong> Incubation conditions should be suitable for recovery of all potential microbial contamination. Generally, incubation conditions should be <span class="key-term">not less than 14 days</span> at a designated temperature range between <span class="key-term">20°C and 35°C</span>. Each aseptic processing manufacturer should provide a scientific rationale for the selection of the incubation conditions including temperature.</p>
+
+        <p>Literature data or growth promotion tests of <span class="key-term">environmental isolates</span> may be used to support the selection of temperature range. Growth-promoting tests should be performed to confirm the suitability of the incubation temperatures and conditions. This may involve multiple temperatures. When multiple temperatures are used, the sequence and duration of temperature incubation should be justified.</p>
+
+        <p><strong>Rationale:</strong> Temperature conditions should be selected based on the knowledge of the characteristics of potential contaminants and process conditions. Most <span class="key-term">mesophilic environmental contaminants</span> will grow at any temperature within the range of 20–35°C spanning 14 days.</p>
+
+        <p>If incubation takes place at two different temperatures within the range of 20–35°C, <span class="key-term">each temperature should include a minimum of seven days each</span>.</p>
+
+        <p>The selection of incubation temperature should be qualified through <span class="key-term">growth promotion testing</span> performed as part of design of the APS incubation procedure.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為什麼需要兩個溫度？</h4>
+            <p>潔淨室環境中的微生物汙染物大多屬於「中溫菌（Mesophilic Organisms）」，但其最適生長溫度各有不同：</p>
+            <ul>
+                <li><strong>20–25°C（低溫段）：</strong>偏好溫度較低的環境菌，例如某些黴菌（Molds）、酵母菌（Yeasts）及皮膚表面的常見菌株</li>
+                <li><strong>30–35°C（高溫段）：</strong>偏好接近人體體溫的腸道菌、葡萄球菌等，這些是人員污染最常見的來源</li>
+            </ul>
+            <p>若只用單一溫度培養，可能無法偵測到在該溫度生長緩慢的物種，造成假陰性。因此，雙溫培養（至少各 7 天）是目前的業界最佳實踐。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 用兩種培養基「釣魚」</h4>
+            <p>想像你在一個湖裡釣魚，但不知道湖裡有什麼魚。如果你只帶一種魚餌，可能只釣到某些魚種。如果你帶兩種不同的魚餌（一個適合底棲魚，一個適合表層魚），釣到的魚種就更全面。</p>
+            <p>雙溫培養的邏輯就是如此：用兩種不同的「溫度環境」，讓各類型的微生物汙染物都有機會生長並被偵測到。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>培養條件設計規則</h4>
+            <pre>
+標準雙溫培養設計：
+  總培養天數 ≥ 14 天
+  溫度範圍：20°C – 35°C
+
+  選項 1（建議方案）：
+    第 1 段：20–25°C × 7 天
+    第 2 段：30–35°C × 7 天
+    （順序可調換，需文件支撐）
+
+  選項 2（單一溫度方案）：
+    20–35°C 範圍內的任一溫度 × ≥ 14 天
+    需附科學文獻或環境菌株生長促進試驗
+    作為科學理由
+
+驗證要求：
+  Growth Promotion Test（生長促進試驗）
+  必須使用以下試驗菌株確認培養基有效性：
+  - Staphylococcus aureus（ATCC 6538）
+  - Bacillus subtilis（ATCC 6633）
+  - Candida albicans（ATCC 10231）
+  等 BP/EP/USP 指定菌株
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 培養基選擇與生長促進試驗</h4>
+            <p>培養溫度不是唯一要驗證的，培養基本身的「生長促進能力（Growth Promotion）」也需要在每批 APS 使用的培養基批次上驗證。這是確認：</p>
+            <ul>
+                <li>培養基在儲存、配製、充填過程中沒有失去其促進微生物生長的能力</li>
+                <li>充填完成後的培養基仍具有足夠的營養成分支持生長</li>
+            </ul>
+            <p>常用培養基：<strong>SCDA（Soybean Casein Digest Agar/Broth，大豆酪蛋白消化培養液）</strong>，俗稱 TSB（Tryptic Soy Broth）。適合大多數好氧環境菌的生長。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某 CDMO 的環境監控（EM）歷史記錄顯示，分離到的菌株全部都是 30–35°C 最適生長，是否可以改為只用 30–35°C 培養 14 天？需要哪些文件支撐？</li>
+                <li>雙溫培養的「順序」（先低後高 vs 先高後低）有差別嗎？若要調換順序，需要做哪些事？</li>
+                <li>為什麼 Growth Promotion Test 必須對每一批次培養基進行，而不是在開發階段一次性驗證就夠？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC D: NONINTEGRAL AND REJECTED UNITS                       -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-d">Topic D: Incubation of Nonintegral and Rejected Units — 非完整容器與剔退容器的培養</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> Should <span class="key-term">nonintegral units</span> and/or units that are otherwise procedurally deemed "rejected" units (during routine operations) be incubated and evaluated as part of the APS study?</p>
+
+        <p><strong>Recommendation:</strong> As part of the APS design, every effort should be made to ensure that all <span class="key-term">integral</span> media-filled units are incubated. Procedurally defined nonintegral units, which are detected and discarded as part of the routine operation, should not be incubated (e.g., cracked vials or unsealed containers). Units that are rejected for other reasons (e.g., cosmetic or fill volume), which otherwise would not impact container–closure integrity and therefore sterility assurance, <span class="key-term">should be incubated</span> and included in the study.</p>
+
+        <p>The exclusion of any units from incubation requires justification and documentation. It is important to include higher-risk conditions of the operation (e.g., first-filled units following setup operations or following significant interventions), if their inclusion does not introduce an artificially greater challenge to aseptic control than commercial operation (e.g., units removed by an automated process).</p>
+
+        <p>Any exclusion of units should be based on the reproducibility of any exclusion in routine production. If written procedures and batch documentation adequately describe the removal of units not filled or sealed during an intervention, then those units do not need to be incubated. However, in no case should more units be removed, or a larger zone cleared, during a media-fill intervention than would be cleared during a production run.</p>
+
+        <p><strong>Rationale:</strong> The purpose of the APS is to evaluate those production steps that can have an effect on sterility and microbiological contamination of product. All process steps that may have an effect on sterility of the final product should be included in the simulation.</p>
+
+        <p>By design, the APS study should include process conditions that provide the most challenge to the aseptic process and product sterility without introducing an <span class="key-term">artificially stringent challenge</span>.</p>
+
+        <p>The incubation of nonintegral units will not provide any meaningful measure of the aseptic process, since these units do not represent either acceptable production practices or acceptable container-closure integrity. The removal of such nonintegral units is appropriate, as failure to do so may inaccurately represent the sterility control of normal operations.</p>
+
+        <div class="quote-box">
+            NOTE: Nonintegral units that are not discovered and removed prior to incubation, remain part of the study and, if found to be contaminated, are investigated as positives.
+        </div>
+
+        <p>For the APS, other defects that may routinely be rejected during commercial operations, via inspection processes or otherwise (e.g., cosmetic, particulate, and <span class="key-term">fill-volume defects</span>), should be incubated and included in the evaluation and overall determination of contamination rate.</p>
+
+        <p>If a company does choose to incubate integral units that are normally rejected during interventions, the <span class="key-term">traceability</span> of those units should be maintained in case those units exhibit post incubation contamination. In that case, an investigation of the contamination must be performed.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 什麼是「Integral（完整的）」？</h4>
+            <p>在 APS 語境中，<strong>Integral（完整容器）</strong>= 已充填且容器密封完整（filled and sealed, no physical breach of container-closure system）。</p>
+            <p>分類決策樹：</p>
+            <ul>
+                <li>破裂、未封口的瓶 → <strong>Nonintegral → 不需培養</strong>（培養結果無意義）</li>
+                <li>外觀缺陷（顆粒、fill volume 偏差、cosmetic）→ 容器仍封口完整 → <strong>Integral → 需培養</strong></li>
+                <li>干預前後「第一支/最後一支」 → 高風險，<strong>原則上需培養</strong>（除非自動化排除可重現且有文件）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 餐廳的破盤 vs 賣相不好的菜</h4>
+            <p>想像餐廳的食安衛生稽查：</p>
+            <ul>
+                <li>破掉的盤子裡的食物 → 廢棄，不需要做食安檢驗（相當於 Nonintegral，培養無意義）</li>
+                <li>賣相不好但盤子完整的菜 → 仍需檢驗食安是否合格（相當於 cosmetic defect，仍需培養）</li>
+            </ul>
+            <p>APS 要測的是「製程是否能防止汙染進入產品」，破掉的容器本身就已不是密閉系統，培養到的陽性說明不了任何製程問題；但賣相差的容器雖然外觀不好，其密封完整性仍代表真實製程狀態，必須納入評估。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「人工加難」的紅線</h4>
+            <p>PtC-1 特別提到「artificially stringent challenge（人工加難的挑戰）」是不允許的。</p>
+            <p>什麼是人工加難？例如：</p>
+            <ul>
+                <li>APS 中故意多清掉比生產多 3 倍的容器（擴大干預範圍）</li>
+                <li>故意讓干預事件發生得更頻繁（超過真實生產頻率）</li>
+            </ul>
+            <p>為什麼不可以？因為 APS 的目的是「模擬真實生產」，如果 APS 做到比真實生產更嚴苛，通過了也沒有代表性；如果做比真實生產更寬鬆，則無法保護患者安全。目標是：<strong>最壞情況（worst-case），但不超過真實生產可能的範圍。</strong></p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>APS 執行中，第 15 支（充填開始後的干預後第一支）因 fill volume 偏低被自動系統剔除。這支容器是否需要培養？判斷邏輯為何？</li>
+                <li>若某批 APS 中有 5 支未封口的容器（nonintegral）在培養前被發現並移除，這需要如何記錄？若這 5 支未被發現而進入培養箱，後來 2 支陽性，該怎麼處理？</li>
+                <li>「人工加難」（artificially stringent challenge）對 APS 有效性有什麼影響？請從監管角度和品質保證角度分別說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC E: APS RECONCILIATION                                   -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-e">Topic E: Aseptic Process Simulation Reconciliation — 核對計算</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What are the <span class="key-term">reconciliation/accountability</span> requirements for APS?</p>
+
+        <p><strong>Recommendation:</strong> The target for reconciliation of filled units should be <span class="key-term">100%</span>. Lacking 100% accountability is a deviation and must be investigated. The number of units rejected should be documented.</p>
+
+        <p>At a minimum, the following information should be documented:</p>
+        <ul>
+            <li>Number of units filled</li>
+            <li>Number of units rejected and reasons for each rejection</li>
+            <li>Number of units incubated</li>
+            <li>Number of units inspected after incubation</li>
+            <li>Number of units positive for microbial contamination</li>
+        </ul>
+
+        <p><span class="key-term">100% reconciliation of incubated units</span> is required.</p>
+
+        <p><strong>Rationale:</strong> Since any positive unit in a process simulation would exceed the acceptance criteria, 100% reconciliation/accountability of all incubated units should be the target.</p>
+
+        <p>Reconciliation of total processed units can be challenging based upon the variability and accuracy of counting systems, but efforts should be made to account for all units processed within <span class="key-term">normal production tolerances</span>.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Reconciliation（核對）的目的</h4>
+            <p><strong>APS Reconciliation（APS 核對）</strong>是確保「每一支充填的培養基容器，我們都知道它在哪裡」的過程。</p>
+            <p>為什麼 100% 核對如此重要？</p>
+            <p>因為 APS 的驗收標準是「零陽性」。如果有容器無法追蹤（lost accountability），就無法確認這些容器是否為陽性。若它們是陽性的，就可能讓 APS 錯誤地「通過」——這是對患者安全的威脅。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — APS Reconciliation 計算</h4>
+            <pre>
+核對公式：
+  充填總數 = 剔退數 + 培養數
+  培養數 = 培養後檢驗數
+  培養後檢驗數 = 陰性數 + 陽性數
+
+計算範例：
+  充填：3,150 支
+  剔退（破損/非完整）：30 支
+  剔退（fill volume 偏差，仍需培養）：20 支
+  ─────────────────────────────
+  應培養數 = 3,150 − 30 = 3,120 支
+  （含 fill volume 偏差的 20 支）
+
+  培養後檢驗：3,120 支
+  陰性：3,120 支
+  陽性：0 支
+
+  核對結果：
+  3,150（充填）= 30（不培養）+ 3,120（培養）
+  ✔ 100% 核對通過
+
+  若培養後只找到 3,118 支（少 2 支）：
+  ✘ 偏差！需調查那 2 支去哪裡了。
+  （它們可能是陽性——無法排除，
+   因此整個 APS 結果存疑）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「正常生產容差」的解讀</h4>
+            <p>PtC-1 提到充填總數的核對可以有「normal production tolerances（正常生產容差）」，但培養後的 incubated units 核對則是 <strong>100% 無容差</strong>。</p>
+            <p>實際意義：</p>
+            <ul>
+                <li>充填計數器可能有 ±0.X% 的機械誤差 → 對「充填數」有一定寬容度</li>
+                <li>但進入培養箱的每一支都必須有記錄，出培養箱的每一支也必須有記錄 → <strong>進出數量必須 100% 吻合</strong></li>
+                <li>任何短少都是偏差，必須調查</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 的核對文件設計</h4>
+            <p>建議 APS 批次記錄（Batch Record）中包含一張「APS Reconciliation 表格」，欄位包含：</p>
+            <ul>
+                <li>充填開始 / 結束時間</li>
+                <li>充填計數器顯示數（含誤差說明）</li>
+                <li>各原因剔退數（每筆有理由記錄）</li>
+                <li>送入培養箱的容器批號 / 數量清單</li>
+                <li>培養箱位置/貨架號</li>
+                <li>培養結束取出的容器數量清單</li>
+                <li>陽性 / 陰性判定數</li>
+                <li>最終核對計算（以公式形式呈現）</li>
+            </ul>
+            <p>這份文件在 FDA 或 EU Annex 1 查廠時是第一個被要求看的 APS 記錄之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某次 APS 充填 5,000 支，剔退 75 支（含 10 支破損、65 支 cosmetic），培養箱放入 4,990 支，培養後取出 4,988 支（短少 2 支）。請判斷此次 APS 的核對狀態，並說明需要採取哪些行動。</li>
+                <li>為什麼「incubated units 的核對」比「filled units 的核對」要求更嚴格？</li>
+                <li>若充填計數器的機械誤差已知為 ±0.5%，且充填了 4,000 支，充填計數誤差範圍是多少？這是否影響核對結論？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC F: INVERTING UNITS                                       -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-f">Topic F: Inverting Units Prior to or During Incubation — 培養前後倒置操作</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> Should APS units be <span class="key-term">inverted</span> prior to or during some or all of the incubation period?</p>
+
+        <p><strong>Recommendation:</strong> All filled units should be <span class="key-term">sufficiently manipulated</span> prior to incubation to assure the contact of all sterile surfaces by the growth media. Such manipulations should be documented.</p>
+
+        <p><strong>Rationale:</strong> A single inversion of test units is typically sufficient to allow the media to contact any microorganisms present on the <span class="key-term">upper inner surfaces</span> of the container–closure system. Requiring inverted incubation should not be mandatory.</p>
+
+        <p>If a method other than inversion (e.g., agitation or swirling) is used, then that method should be demonstrated to show that all interior product-contact surfaces are exposed to media.</p>
+
+        <p>For certain <span class="key-term">complex containers or configurations</span>, inversion alone may not be sufficient to ensure complete media contact. In these cases, special consideration should be given to selecting a dynamic and/or combination of manipulation methods.</p>
+
+        <div class="quote-box">
+            NOTE: The integrity of the container-closure system should be assessed in a separate evaluation.
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為什麼需要倒置？</h4>
+            <p>APS 充填的是液態培養基（Liquid Culture Media，如 SCDA/TSB）。充填並密封後，培養基液體主要在容器底部，<strong>而瓶蓋（stopper）的內側、上部玻璃內壁</strong>等位置不一定有液體接觸。</p>
+            <p>問題是：如果充填過程中有微生物汙染落在 stopper 內側或上部容器壁，但培養基從未接觸這個位置，微生物就無法生長，陽性就無法被偵測 → <strong>假陰性（False Negative）</strong>。</p>
+            <p>解決方案：充填後、培養前進行至少一次「180° 倒置（inversion）」，讓培養基接觸容器所有內部表面，確保任何微生物都有機會生長並被偵測。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 油漆刷每個角落</h4>
+            <p>想像用液體清潔劑清洗一個有複雜內部結構的容器（例如有角落、溝槽的瓶子）：如果清潔劑只流到底部，角落和頂端的汙垢就洗不到。</p>
+            <p>倒置操作就是「讓清潔劑（培養基）流到每個角落」。對於形狀複雜的容器（如預填充注射器、雙腔袋），單純倒置可能還不夠，需要設計特殊的旋轉或搖動方式來確保全面接觸。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「倒置培養」不是強制要求</h4>
+            <p>PtC-1 明確說：「Requiring inverted incubation should not be mandatory（倒置培養不應作為強制要求）」。</p>
+            <p>也就是說，倒置的目的是「確保培養基接觸所有內部表面」，達到這個目的即可。如果其他方式（搖動、旋轉）能達到同等效果，且有文件證明，就可以使用其他方式。</p>
+            <p>對複雜容器（如：有 luer lock 的預填充注射器、雙倉瓶 dual-chamber vial、lyophilization 半封口狀態的特殊容器），需要特別設計媒體接觸方式並進行驗證。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「培養基接觸所有內部表面」對 APS 偵測能力如此重要？請解釋其與「假陰性（False Negative）」的關係。</li>
+                <li>若某廠的 APS 採用預填充注射器（Pre-filled Syringe），單次倒置是否足夠？應如何設計操作程序並驗證培養基接觸的完整性？</li>
+                <li>容器密封完整性測試（Container-Closure Integrity Test, CCIT）與 APS 的倒置操作是否相關？兩者分別在驗證什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC G: AEROBIC VS ANAEROBIC                                  -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-g">Topic G: Aerobic versus Anaerobic — 好氧與厭氧</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> When should <span class="key-term">anaerobic APS fills</span> be performed?</p>
+
+        <p><strong>Recommendation:</strong> In rare circumstances, where true <span class="key-term">anaerobic conditions</span> are achieved in production, an anaerobic media (e.g., fluid thioglycolate) should be considered, for example, where production is entirely in an anaerobic environment or where a confirmed, <span class="key-term">obligate anaerobe</span> was isolated in a sterility test.</p>
+
+        <p>Process simulation units should be processed and incubated under <span class="key-term">aerobic conditions</span> using a general media such as <span class="key-term">SCDA</span>. In those instances where inert gas headspace is used in production, that gas should be replaced with sterile air during media fills.</p>
+
+        <div class="quote-box">
+            NOTE: Nitrogen overlay processes do not represent anaerobic conditions. If inert gas overlay is used in a process simulation, growth-promotion studies should be employed to ensure that inert-gas overlay does not inhibit aerobic or microaerophilic microbiological growth.
+        </div>
+
+        <p><strong>Rationale:</strong> The purpose of an APS is to assess the ability of the aseptic production process to <span class="key-term">prevent the introduction of microorganisms</span>. Since that production occurs in aerobic environments, aerobic processes should be used for media fills.</p>
+
+        <p>Any isolated microbial contamination that may be present is more likely to consist of <span class="key-term">aerobes and microaerophilic microorganisms</span> than true anaerobes. Conducting an anaerobic media fill provides little or no significant scientific information, except possibly under the conditions noted in the Recommendation section.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為何好氧培養就夠了？</h4>
+            <p>大多數藥廠的無菌充填製程是在<strong>有氧環境（Aerobic Environment）</strong>中進行的——潔淨室的空氣含有大量氧氣，人員皮膚、設備表面的微生物也主要是好氧菌（Aerobes）或微好氧菌（Microaerophiles）。</p>
+            <p>真正的厭氧菌（Obligate Anaerobes）在有氧環境中無法存活，因此在典型無菌充填設施中幾乎不會出現。若使用厭氧培養基（如 Fluid Thioglycolate）進行 APS，對多數製程而言提供不了更多科學資訊。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 用正確的工具做正確的事</h4>
+            <p>想像你的廚房（無菌充填室）主要存在的害蟲是蟑螂（好氧菌）。用蟑螂藥（好氧培養基）就能有效偵測和殺滅蟑螂。</p>
+            <p>但如果你的廚房並沒有深埋地底的厭氧環境，使用針對土壤厭氧菌（Obligate Anaerobes）的特殊捕蟲器，只是多此一舉，既浪費資源又提供不了實質資訊。</p>
+            <p>唯一需要用厭氧方法的情況是：你確定廚房裡有厭氧蟲——例如真的有厭氧生產製程，或無菌測試真的分離出專性厭氧菌。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 氮氣覆蓋（Nitrogen Overlay）≠ 厭氧條件</h4>
+            <p>許多注射劑產品使用氮氣覆蓋（Nitrogen Overlay）來保護對氧化敏感的藥品。PtC-1 明確指出：<strong>氮氣覆蓋不等於厭氧製程。</strong></p>
+            <p>關鍵點：</p>
+            <ul>
+                <li>在 APS 中，若生產使用氮氣覆蓋，在媒體充填時應改用<strong>無菌空氣（Sterile Air）</strong>取代氮氣</li>
+                <li>若硬要保留氮氣覆蓋進行 APS，需要用 Growth Promotion Study 確認氮氣覆蓋不會抑制好氧菌的生長</li>
+                <li>理由：SCDA（TSB）需要氧氣才能有效支持好氧菌生長；氮氣會抑制這個過程，造成假陰性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某客戶的製程是在氮氣覆蓋下充填（保護氧化敏感的蛋白質藥品）。在設計 APS 時，應如何處理這個氮氣覆蓋的問題？至少提出兩個選項並比較其優缺點。</li>
+                <li>若某次無菌試驗（Sterility Test）中分離出疑似厭氧菌，這對 APS 設計有什麼影響？需要採取哪些額外行動？</li>
+                <li>SCDA（Soybean Casein Digest Agar/Broth）在好氧和微好氧條件下均能生長，為什麼它是 APS 的首選培養基？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC H: APS BOUNDARIES                                        -->
+<!-- ============================================================ -->
+<div class="section-title" id="topic-h">Topic H: Aseptic Process Simulation Boundaries — APS 範圍界定</div>
+
+<div class="two-column">
+    <!-- LEFT -->
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What are the <span class="key-term">boundaries</span> for APS? Can the APS be performed in discrete segments?</p>
+
+        <p><strong>Recommendation:</strong> The APS begins after the <span class="key-term">sterilization of materials and components</span> and ends with the <span class="key-term">closure of the final container</span>.</p>
+
+        <p>Any downstream aseptic connection of the sterile filter assembly or downstream aseptic manipulation, such as those associated with the performance of a <span class="key-term">pre-use post-sterilization integrity test (PUPSIT)</span>, represents an intervention, and it must be represented in the APS. The efficacy of the sterilizing filtration of the product should be demonstrated by a separate validation. The use of a different filter for sterilizing the media is acceptable.</p>
+
+        <p>The primary objective is to simulate the routine production process (i.e., <span class="key-term">non-segmented</span>) during the performance of an APS. Consequently, segmentation should be avoided if feasible. However, if justified and documented, then the APS might be performed as <span class="key-term">discrete segments</span>. In this case, each segment should overlap the previous one and the following one. This approach should be described in a protocol that includes a rationale or risk assessment for adopting a segmented approach.</p>
+
+        <p><strong>Rationale:</strong> An APS must start at the point where the aseptic process starts. The filter should not be considered part of the APS, as qualification of filter sterilization and filter-sterilizing capabilities are separate activities. The performance of PUPSIT presents a potential risk downstream of the filtration and, therefore, should be included in the APS.</p>
+
+        <p>In some cases, it may be appropriate to perform an APS, for instance, where the overall segments cover all process steps (i.e., <span class="key-term">each segment should overlap the previous one and the following one</span>, so that the media passes through the contiguous/consecutive stages of the aseptic manufacturing process).</p>
+
+        <p>For example, aseptic holding studies may be conducted separately from aseptic filling. This ensures all microbial ingress risks are encountered by the media as would normally be encountered by the product. The strategy, rationale, and acceptance criteria for this approach must be clear and identified in advance of execution.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — APS 的起點與終點</h4>
+            <p>APS 的界定非常清楚：</p>
+            <ul>
+                <li><strong>起點：</strong>滅菌後的組件（材料）開始接觸無菌環境的那一刻（即滅菌步驟完成後、進入無菌區域開始操作）</li>
+                <li><strong>終點：</strong>最終容器密封完成（Closure of Final Container）</li>
+            </ul>
+            <p>注意：除菌過濾器（Sterilizing Filter）本身<strong>不</strong>是 APS 的一部分——過濾器的滅菌效力是獨立驗證的。但 PUPSIT（使用前滅菌後完整性測試）因為發生在過濾器下游（即無菌區域），屬於干預行為，<strong>必須</strong>納入 APS。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — APS 是「無菌區域的演習」</h4>
+            <p>把整個無菌生產流程想像成一場火災逃生演習：演習的範圍是從「人員進入逃生區域」到「安全撤離建築物」，不包括「訓練消防員的課程」（那是獨立的）。</p>
+            <p>APS 的範圍類似：從「無菌組件進入無菌區」到「容器密封」，是「在無菌環境中的所有操作步驟」。之前的滅菌步驟（用高壓蒸汽滅菌組件、過濾器滅菌）是獨立的驗證活動，不是 APS 演習的一部分。</p>
+            <p>但如果消防演習中有一個步驟是「打開緊急逃生門檢查是否正常」（相當於 PUPSIT），這個動作發生在演習區域內，必須納入演習考核——這正是 PUPSIT 必須在 APS 中模擬的原因。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 分段 APS（Segmented APS）的條件</h4>
+            <p>分段執行 APS 是允許的，但有嚴格條件：</p>
+            <ul>
+                <li><strong>必要性：</strong>只有在完整連續模擬不可行時才考慮分段（如設備限制、廠房設計）</li>
+                <li><strong>重疊原則：</strong>每個分段必須與前一段和後一段有重疊（Overlap）——確保培養基流過所有連續的無菌步驟，沒有「空白區間」</li>
+                <li><strong>文件要求：</strong>分段的理由、每段的範圍、重疊設計，必須在 Protocol 中事先明確</li>
+                <li><strong>驗收標準：</strong>每段各自有驗收標準，且事先定義</li>
+            </ul>
+            <p>CDMO 實務上最常見的分段情況：無菌保留研究（Aseptic Holding Study）與充填操作分開執行，但兩者的重疊部分確保整個無菌流程都被涵蓋。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>APS 邊界與 PUPSIT 的關係</h4>
+            <pre>
+無菌製程時間軸：
+
+[滅菌] ──── [APS 起點] ────────────────── [APS 終點]
+  ↑             ↑                               ↑
+除菌過濾       PUPSIT（必須在 APS 內模擬）    容器密封
+(獨立驗證)
+             無菌連接（Aseptic Connection）
+             也必須在 APS 範圍內
+
+完整 APS 涵蓋範圍：
+ ┌─────────────────────────────────────────────┐
+ │  • 無菌接管（Aseptic Connection）           │
+ │  • PUPSIT 操作                              │
+ │  • 所有人員干預（Interventions）            │
+ │  • 充填（Filling）                          │
+ │  • 加蓋（Stoppering）                       │
+ │  • 軋蓋（Capping）                          │
+ │  → 最終容器密封完成                         │
+ └─────────────────────────────────────────────┘
+不含：
+ × 除菌過濾器的滅菌驗證
+ × 組件滅菌（蒸汽、輻射等）
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 的 APS Boundary 文件</h4>
+            <p>CDMO 在提交 APS Protocol 時，應明確標示：</p>
+            <ul>
+                <li>APS 開始事件（Start Event）的定義——通常是「滅菌後容器進入充填線的時刻」或「除菌過濾後培養基開始流向充填頭」</li>
+                <li>APS 結束事件（End Event）——「最後一支容器軋蓋完成」</li>
+                <li>是否有 PUPSIT 及其在 APS 中的模擬方式</li>
+                <li>若採分段方式，各段重疊設計的說明</li>
+                <li>哪些活動不在 APS 範圍內（需另列其獨立驗證活動）</li>
+            </ul>
+            <p>這份文件是監管機構 APS 審查的核心文件，定義不清楚是最常見的缺陷觀察項目（Observation）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某廠的 APS Protocol 將「除菌過濾」納入 APS 的起始步驟，監管機構對此提出觀察。請解釋為何過濾步驟不應包含在 APS 範圍內，及應如何修正 Protocol。</li>
+                <li>PUPSIT 是在除菌過濾器滅菌後、正式生產前執行的完整性測試。為什麼它必須包含在 APS 中，而過濾器滅菌本身不需要包含？</li>
+                <li>某工廠由於設備限制，必須將 APS 分為「無菌保留研究（Aseptic Holding）」和「充填操作（Filling）」兩段執行。請設計這兩段的重疊（Overlap）方式，並說明如何確保整個無菌流程沒有未被評估的空白。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY                                                -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #d97706;">
+    <h3 style="color: #78350f;">本節重點回顧 Section Summary — Topics A–H</h3>
+    <ul>
+        <li><strong>Topic A（驗收標準）：</strong>APS 目標是零汙染，但並非「絕對保證」。1 支陽性 = 重大事件，必須調查 + CAPA；不可在未調查的情況下直接重跑。FDA 與 EU Annex 1 立場相近，調查結論可以是「未必代表製程失敗」，但改善行動不可省略。</li>
+        <li><strong>Topic B（時程長度）：</strong>「汙染是事件的函數，不是時間的函數。」APS 長度要涵蓋所有高風險干預事件，而非一律等於最長生產時間。手動充填必須跑全時長；高度自動化製程只要事件都被涵蓋，可以比生產短。</li>
+        <li><strong>Topic C（培養溫度）：</strong>14 天，20–35°C。雙溫培養（各至少 7 天）是業界最佳實踐，確保偵測到不同最適溫度的環境菌。使用前需用 Growth Promotion Test 驗證培養基有效性。</li>
+        <li><strong>Topic D（非完整容器）：</strong>密封破損（Nonintegral）→ 不培養。容器完整但外觀缺陷（cosmetic、fill volume）→ 仍需培養，因其密封完整性未受影響。所有排除均需文件理由，且排除範圍不得超過真實生產。</li>
+        <li><strong>Topic E（核對計算）：</strong>充填 = 剔退（不培養）+ 培養數，培養後必須 100% 核對。任何短少均為偏差，需調查。這是確保「不會因未追蹤的陽性容器而讓 APS 錯誤通過」的保護機制。</li>
+        <li><strong>Topic F（倒置操作）：</strong>培養基需接觸容器所有內部表面以避免假陰性。一次倒置通常足夠，但不是唯一方法；複雜容器需特殊設計。倒置培養（全程倒置放置）不是強制要求。</li>
+        <li><strong>Topic G（好氧 vs 厭氧）：</strong>絕大多數製程用 SCDA 好氧培養即可，因環境菌以好氧菌和微好氧菌為主。氮氣覆蓋 ≠ 厭氧環境；APS 時應將生產用氮氣改為無菌空氣，否則需驗證氮氣不抑制培養基生長。</li>
+        <li><strong>Topic H（範圍界定）：</strong>APS 起點 = 滅菌後組件開始接觸無菌區域；終點 = 最終容器密封完成。PUPSIT 屬干預行為，必須納入 APS；除菌過濾器滅菌是獨立活動，不在 APS 範圍內。分段 APS 必須確保各段重疊，且事先以風險評估文件支撐。</li>
+    </ul>
+</div>
+
+<!-- Regulatory Reference Table -->
+<div style="margin: 1.5rem 0; background: white; border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Topics A–H 監管參考文件對照</h3>
+    <div style="overflow-x:auto;">
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>關鍵議題</th>
+                <th>FDA (2004)</th>
+                <th>EU Annex 1 (2022)</th>
+                <th>PDA TR22</th>
+                <th>PDA PtC-1 立場</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>A</strong></td>
+                <td>驗收標準</td>
+                <td>0 positive = pass; 1 = 重大事件</td>
+                <td>相近；調查後可判定非製程失敗</td>
+                <td>詳細統計討論</td>
+                <td>科學理由可支持 1 支不代表失敗，但必須調查</td>
+            </tr>
+            <tr>
+                <td><strong>B</strong></td>
+                <td>APS 時程</td>
+                <td>需涵蓋最差情況</td>
+                <td>風險導向；需涵蓋干預事件</td>
+                <td>詳細事件vs時間論述</td>
+                <td>事件導向；手動充填需全時長</td>
+            </tr>
+            <tr>
+                <td><strong>C</strong></td>
+                <td>培養溫度</td>
+                <td>20–35°C, ≥14天</td>
+                <td>20–35°C; 兩溫各≥7天</td>
+                <td>相同</td>
+                <td>雙溫為最佳實踐</td>
+            </tr>
+            <tr>
+                <td><strong>D</strong></td>
+                <td>非完整容器</td>
+                <td>Nonintegral 不培養；cosmetic 需培養</td>
+                <td>相同原則</td>
+                <td>詳細分類</td>
+                <td>排除需文件；不得超過生產排除範圍</td>
+            </tr>
+            <tr>
+                <td><strong>E</strong></td>
+                <td>核對</td>
+                <td>需 100% 核對</td>
+                <td>相同</td>
+                <td>詳細核對要求</td>
+                <td>100% 目標；任何短少需調查</td>
+            </tr>
+            <tr>
+                <td><strong>F</strong></td>
+                <td>倒置</td>
+                <td>需確保媒體接觸所有表面</td>
+                <td>相同</td>
+                <td>相同</td>
+                <td>單次倒置通常足夠；複雜容器需特殊設計</td>
+            </tr>
+            <tr>
+                <td><strong>G</strong></td>
+                <td>好氧/厭氧</td>
+                <td>好氧為主；N₂需換無菌空氣</td>
+                <td>相同</td>
+                <td>相同</td>
+                <td>N₂覆蓋≠厭氧；罕見情況才考慮厭氧</td>
+            </tr>
+            <tr>
+                <td><strong>H</strong></td>
+                <td>APS範圍</td>
+                <td>起點：滅菌後；終點：密封完成</td>
+                <td>相同；PUPSIT需納入</td>
+                <td>相同</td>
+                <td>分段需重疊；PUPSIT必須模擬</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" title="回到頁面頂部">&#8679;</button>
+
+<script>
+const backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backBtn.classList.add('visible');
+    } else {
+        backBtn.classList.remove('visible');
+    }
+});
+backBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
