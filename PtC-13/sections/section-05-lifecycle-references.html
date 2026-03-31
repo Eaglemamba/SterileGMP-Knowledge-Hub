@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-13 — Section 5: Lifecycle Management &amp; References</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SECTION-SPECIFIC: Sky-blue source accent ===== */
+.source-accent {
+    color: #0284c7;
+    font-weight: 600;
+}
+
+.ref-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ref-list li {
+    padding: 0.55rem 0.75rem;
+    margin-bottom: 0.4rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #0284c7;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.ref-list li .ref-num {
+    font-weight: 700;
+    color: #0284c7;
+    margin-right: 0.4rem;
+}
+
+.ref-highlight {
+    background: linear-gradient(to right, #e0f2fe, #bae6fd);
+    border-left: 4px solid #0284c7 !important;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header" style="background: linear-gradient(135deg, #075985 0%, #0284c7 100%);">
+    <h1>Section 5 — Topic 5: Lifecycle Management for Commercial Manufacturing + References</h1>
+    <div class="subtitle">商業化生產的生命週期管理考量 及 參考文獻</div>
+    <div class="page-info">PDA Points to Consider No. 13: Materials in ATMP Manufacturing (2025) | p26 – p35</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 ATMP 原物料生命週期管理的整體框架，以及商業化階段需重新審視的要素。</li>
+        <li>掌握當供應商無法提供 GMP 等級服務（僅提供 RUO 等級）時，如何實施風險評估與補償性控制措施。</li>
+        <li>了解如何透過「GMP 原則」的落實，為 IND/BLA 申報提供充分的製程文件與品質紀錄。</li>
+        <li>熟悉交叉汙染 (cross-contamination) 與微生物汙染的風險緩解策略，特別是針對基因編輯材料（gRNA、核酸酶）的品質保證方法。</li>
+        <li>能辨識 ATMP 原物料監管的核心法規文件（EudraLex、ICH Q7、PIC/S Annex 2A、USP &lt;1043&gt;&lt;1046&gt;&lt;1047&gt; 等），並了解各自適用範圍。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC 5 OVERVIEW -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">Topic 5 — Lifecycle Management Considerations for Commercial Manufacturing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Ideally, <span class="key-term">lifecycle management</span> of raw materials starts early in the development of an ATMP product. It evolves as the product moves through the early clinical phases, through commercialization, and continues throughout the lifecycle of the product as more data and understanding are gained.</p>
+
+        <p>When an ATMP product is commercialized, the raw materials should be reviewed from the perspective of lifecycle management and potential new industry guidance. New information may be available that will change the risk-rating for raw materials and, therefore, testing and/or mitigation requirements. Topics to consider include:</p>
+
+        <ul>
+            <li>Raw material that was <span class="key-term">single-sourced</span> may now have additional suppliers that can be considered as a secondary or tertiary source.</li>
+            <li>Suppliers may now offer a raw material as <span class="key-term">GMP grade</span> that was previously labeled for <span class="key-term">RUO</span> (Research Use Only).</li>
+            <li>Historical data will now be available on raw materials that may allow for updates to the <span class="key-term">incoming testing requirements</span> and reassessment of testing specifications, including the widening of specifications.</li>
+            <li>Historical data will now be available for reassessment of a supplier's qualification that may allow for <span class="key-term">reduced testing</span> on the receipt of raw materials.</li>
+        </ul>
+
+        <p>Product regulatory filings are important to consider with any raw material reassessment, as it may require updates in multiple markets. The timing of these <span class="key-term">regulatory submissions</span> should also be considered from the perspective of how it will impact the manufacturing and planning schedule and, by extension, <span class="key-term">patient supply</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 生命週期管理 (Lifecycle Management)</h4>
+            <p><strong>生命週期管理 (Lifecycle Management)</strong> 不是一次性的工作，而是貫穿產品從研發到商業化全程的持續活動。在 ATMP 的原物料管理中，這意味著：</p>
+            <ul>
+                <li>早期臨床階段：建立初步供應商評估與風險評估基礎</li>
+                <li>後期臨床/BLA 準備：強化 GMP 合規要求、補充歷史數據</li>
+                <li>商業化後：隨市場成熟、新供應商出現、監管指引更新而持續優化</li>
+            </ul>
+            <p>PDA PtC-13 特別強調：<strong>商業化後仍需定期重審原物料的風險等級</strong>，因為市場環境（如新供應商提供 GMP 等級同款物料）與法規環境都會持續演變。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 學生成長為職業人士的歷程</h4>
+            <p>把 ATMP 原物料管理比喻成一位學生的成長歷程：</p>
+            <ul>
+                <li><strong>大學時期（IND 臨床早期）</strong>：用最基本的工具完成任務，買最便宜的二手教材（RUO 等級物料）——重要的是能完成功課，不是追求完美設備。</li>
+                <li><strong>畢業初入職場（Phase II/III 臨床）</strong>：開始升級裝備，評估是否有更好的供應來源，建立工作規範 (SOP)。</li>
+                <li><strong>成為資深專業人士（商業化上市）</strong>：選用符合專業標準的工具（GMP 等級物料），建立完整供應鏈管理，並定期複查是否有更優質的選項。</li>
+            </ul>
+            <p>重點：<strong>每個階段的標準不同，但都需要有意識地管理</strong>，而非到了商業化才突然「補課」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 監管申報時機的重要性</h4>
+            <p>原物料的任何重大變更（如更換供應商、升級等級、調整規格）都可能觸發多個市場的<strong>法規申報義務</strong>。CDMO 在協助客戶管理此類變更時，必須事先評估：</p>
+            <ul>
+                <li>哪些市場需要補充申報（歐盟、美國 FDA、日本 PMDA 要求各異）</li>
+                <li>申報審查期間是否影響商業化生產排程與<strong>患者供藥 (patient supply)</strong></li>
+                <li>是否可透過批准前的變更管理計畫降低斷貨風險</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家 ATMP 廠商在 Phase I 時採用 RUO 等級的 Fibronectin，商業化後供應商推出了 GMP 等級版本。這個升級決策需要考慮哪些因素（技術面、法規面、供應鏈面）？</li>
+                <li>若原本 single-sourced 的物料現在有第二供應商可選，廠商應如何評估是否引入雙供應商策略？這與患者供藥保障有何關聯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q5.1 RUO GRADE MANAGEMENT -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">Q5.1 — Managing Suppliers Without GMP Service (RUO Grade Only)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.1. How do you manage the situation when the supplier does not provide GMP service for the material, for example, if only Research Use Only grade is available?</h3>
+
+        <p>The sponsor (i.e., cell-therapy drug manufacturer) can identify the risks on-site and figure out the pathway for enabling the material to be fit for purpose. The following case study will provide an example of <span class="key-term">quality risk management</span>.</p>
+
+        <div class="quote-box">
+            <strong>Case Study: Example of Implementation of GMP Principles for ATMP Raw Materials</strong>
+        </div>
+
+        <p>This fictional case study is about raw materials used in <span class="key-term">genome-editing</span> for <span class="key-term">induced pluripotent stem cells (iPSCs)</span>, which is an upstream cell-engineering process followed by single-cell cloning and, finally, differentiation to a <span class="key-term">CAR-T cell</span> drug product. Health authorities give allowance for manufacturing materials, such as genome-editing materials, generation of iPSCs, and the subsequent selection of process cells, under the <span class="key-term">principles of GMP operation</span> rather than full GMP compliance (5, 6, 15). In Japan, PMDA does not specify GMP or non-GMP adherence during the clinical phase, and the clinical-study sponsor owns the responsibility to secure the product quality for patients.</p>
+
+        <p>This case study is an example of the implementation of "Principles of GMP" for <span class="key-term">gRNA</span> and <span class="key-term">nuclease</span> used in the genome-editing of iPSCs. In this context, <span class="key-term">principles of GMP</span> refer to the application of specific GMP elements, such as robust documentation practices and contamination-control measures, even when a fully GMP-compliant environment is not available.</p>
+
+        <p><strong>Statement:</strong> Certified GMP facility and its established GMP-compliant quality management system is not available for a kind of custom-made small-volume production at the supplier. The only existing development laboratories can be used for manufacturing a product of appropriate quality for fit-for-purpose.</p>
+
+        <p><strong>Approach:</strong> Instead of performing a normal GMP audit, strict sponsor's Quality team oversight is required on gap identification and definition of control measures. After those measures are completed, the sponsor's Quality confirms readiness on site prior to initiation of the contract manufacturing work. Agreed measures are spelled out in a <span class="key-term">Scope of Work</span> (or ideally, a <span class="key-term">Quality Agreement</span>) with the signatures of both parties.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — RUO 與 GMP 等級的根本差異</h4>
+            <p><strong>RUO (Research Use Only，僅供研究用)</strong>：供應商不保證生產過程符合 GMP 規範，無批次放行測試、無完整生產紀錄、無正式供應商資格審查義務。用於藥品生產時，需由買方自行承擔合規風險。</p>
+            <p><strong>GMP Grade 物料</strong>：供應商在 GMP 認證設施中生產，有完整的批次紀錄、CoA（Certificate of Analysis）、變更控制系統，可接受藥廠的定期稽核。</p>
+            <p>在 ATMP 早期開發中，許多關鍵試劑（gRNA、核酸酶、Cas9 蛋白質）僅有 RUO 等級可用，這是行業現實，<strong>並非違規，但需要透過補償性措施管理風險</strong>。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 高端餐廳使用農夫市集食材</h4>
+            <p>想像一家米其林餐廳（藥廠）必須使用農夫市集（RUO 供應商）的食材，因為特定稀有食材根本不存在「超市標準包裝版」。怎麼辦？</p>
+            <ul>
+                <li>主廚（Quality Team）親自前往農場視察，確認生產環境衛生</li>
+                <li>建立書面採購協議，約定農民的生產標準與農藥使用規範</li>
+                <li>每批食材到貨後，廚房自行進行安全檢測再使用</li>
+                <li>詳細記錄每道菜使用了哪批食材，做到可追溯</li>
+            </ul>
+            <p>這就是 PDA PtC-13 對 RUO 物料管理的核心邏輯：<strong>無法改變供應商現況，就強化自身的監控與文件化能力</strong>。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — GMP 原則 vs. 完整 GMP 合規</h4>
+            <p>本案例研究的關鍵詞是 <strong>"Principles of GMP"</strong>（GMP 原則），而非 "full GMP compliance"（完整 GMP 合規）。這一區別至關重要：</p>
+            <ul>
+                <li><strong>完整 GMP 合規</strong>：需要 ISO 等級設施、完整 QMS、主管機關稽核資格</li>
+                <li><strong>GMP 原則</strong>：在現有條件下，至少做到健全的文件記錄、污染控制措施、批次可追溯性</li>
+            </ul>
+            <p>EMA（Reference 5）和 PIC/S Annex 2A（Reference 6）明確允許 ATMP 製造中的某些原物料（如基因編輯材料）採用 GMP 原則而非完整 GMP 合規，這給了廠商合法的操作空間。</p>
+            <p><strong>Quality Agreement（品質協議）</strong>是這個策略的法律骨架——沒有簽署的書面協議，一切口頭承諾在稽核中都不算數。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 的 RUO 物料管理實踐</h4>
+            <p>以一個 CDMO 客戶（iPSC-based CAR-T 開發商）的真實情境為例：</p>
+            <ul>
+                <li>客戶使用 Cas9/gRNA 進行基因編輯，供應商僅提供 RUO 等級</li>
+                <li>CDMO 的 Quality 團隊與供應商簽訂 Quality Agreement，約定：生產文件記錄格式、批次取樣要求、變更通知義務</li>
+                <li>每批物料到廠後，CDMO 自行進行補充測試（內毒素、無菌性、身分確認）</li>
+                <li>在 IND 申報的 CMC 部分，詳細說明補償性控制措施，讓 FDA 了解風險已被充分管理</li>
+            </ul>
+            <p>這種做法既符合 PDA PtC-13 的建議，也通過了 FDA OTAT 的審查（Reference 15）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 Q5.1 的案例研究中，sponsor 的 Quality 團隊「現場確認準備就緒」(confirms readiness on site) 指的是哪些具體動作？與一般 GMP 供應商稽核有何差異？</li>
+                <li>為什麼 Quality Agreement 比 Scope of Work 更為理想（"ideally, a Quality Agreement"）？兩者在法律責任和品質管理上有何差別？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q5.2 IMPLEMENTING GMP PRINCIPLES / IND FILING -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">Q5.2 — How to Implement GMP Principles and Enable IND Filing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.2. How to implement principles of GMP and enable IND filing?</h3>
+
+        <ul>
+            <li>Identify <span class="key-term">gaps on site</span> and address them by measures for upgrade to principles of GMP. See contamination control strategy below as an example.</li>
+            <li>Provide detailed and complete <span class="key-term">production records</span> with sufficient information for enabling an <span class="key-term">IND/BLA filing</span>, which is traceable for all aspects of the manufacturing process and any incidents.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — IND 申報的 CMC 要求</h4>
+            <p>IND (Investigational New Drug Application，新藥臨床試驗申請) 中的 CMC（Chemistry, Manufacturing and Controls）章節要求申請人說明：</p>
+            <ul>
+                <li>原物料的來源、規格與品質控制方法</li>
+                <li>生產製程的詳細描述與製程控制</li>
+                <li>對於 ATMP，需說明基因編輯材料等關鍵原物料的品質保證策略</li>
+            </ul>
+            <p>Q5.2 的核心訊息是：<strong>即使使用 RUO 等級物料，只要生產紀錄足夠詳細、可追溯，同樣可以支持 IND 申報</strong>。文件完整性是打通法規關卡的關鍵。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>IND 申報物料文件框架</h4>
+            <pre>
+IND/BLA CMC 原物料文件要求（最低標準）
+─────────────────────────────────────
+1. 物料身分 (Identity)
+   - 化學名稱、CAS 號、分子式
+   - 供應商資訊（即使為 RUO）
+
+2. 規格書 (Specification)
+   - 外觀、純度、效價（bioactivity）
+   - 安全性指標（內毒素、無菌/生物負荷）
+
+3. 分析方法 (Analytical Methods)
+   - 驗證程度：Phase I → 適當，Phase III → 完整驗證
+
+4. 批次紀錄 (Batch Records)
+   - 所有製造步驟的完整記錄
+   - 任何偏差 (Deviation) 的記錄與調查
+
+5. 穩定性資料 (Stability Data)
+   - 至少足夠支持臨床試驗期間的使用期限
+─────────────────────────────────────
+原則：Phase 越後期 → 文件要求越嚴格
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 製程可追溯性的實務意義</h4>
+            <p><strong>可追溯性 (Traceability)</strong> 是 IND/BLA 文件的靈魂：每一批藥品使用了哪批原物料、在什麼條件下生產、是否有異常事件，都必須能從紀錄中完整追溯。</p>
+            <p>對 CDMO 而言，這意味著電子批次紀錄（eBR）系統的完整性至關重要——萬一發生不良事件，監管機構可能要求追溯到所有相關批次，甚至追溯到供應商端的生產記錄。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 食品召回的黑心油事件</h4>
+            <p>台灣 2014 年黑心油事件的啟示：問題之所以擴大，部分原因是下游廠商無法快速追溯哪些產品使用了問題原料。</p>
+            <p>在 ATMP 的 IND 申報中，類似邏輯適用：<strong>若未來臨床試驗中出現嚴重不良事件 (SAE)，FDA/EMA 會立即要求追溯所有相關物料批次</strong>。只有在事前建立完整可追溯系統的廠商，才能在 24-48 小時內提出清晰的根本原因分析。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Q5.2 提到要識別 "gaps on site"（現場差距），請列舉三個 RUO 供應商生產環境中常見的 GMP 差距，以及對應的補償性措施。</li>
+                <li>IND 申報的 CMC 章節需要包含哪些關於原物料的核心資訊？Phase I 和 Phase III 的要求有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q5.3 CROSS-CONTAMINATION / MICROBIAL CONTAMINATION -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">Q5.3 — Mitigating Cross-Contamination and Microbial Contamination Risks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.3. How to mitigate risks for cross-contamination and microbial contamination?</h3>
+
+        <ul>
+            <li>As a minimum requirement, use a <span class="key-term">non-ISO-grade certified facility</span> (i.e., controlled research and development (R&amp;D) laboratory) but <span class="key-term">dedicate its use for one product at a time</span>. Replace all tubing of instruments with brand new tubing dedicated for the contract work.</li>
+            <li>Make the bulk product in the controlled R&amp;D lab and transfer it into a <span class="key-term">qualified isolator</span> for <span class="key-term">sterile filtration</span> and <span class="key-term">fill–finishing</span>. The adequacy of the aseptic operation and environmental control is confirmed through <span class="key-term">aseptic process simulation</span> before actual production.</li>
+        </ul>
+
+        <div class="quote-box">
+            <strong>Note:</strong> The supplier will not commit to producing "sterile" product; however, the sponsor is confident with the patient safety-based assurance on the material control, downstream manufacturing control, and overall quality control strategy of the final drug product.
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 兩層汙染風險</h4>
+            <p>在 ATMP 製造中，汙染風險主要來自兩個層面：</p>
+            <ul>
+                <li><strong>交叉汙染 (Cross-contamination)</strong>：來自同一設施中其他產品或物料（尤其危險的是異體（allogeneic）細胞療法，不同患者的細胞不能混批）</li>
+                <li><strong>微生物汙染 (Microbial contamination)</strong>：細菌、真菌、黴菌等微生物污染，對患者安全構成直接威脅</li>
+            </ul>
+            <p>Q5.3 的策略核心是：<strong>設施隔離 + 最終步驟的無菌保護</strong>——即使原物料生產環境不理想，只要最終充填環節（fill-finish）在合格隔離器中完成，就能確保患者用到的物料是安全的。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 醫院的感染管控計畫</h4>
+            <p>類比醫院的感染控制策略：</p>
+            <ul>
+                <li>普通病房（R&amp;D 實驗室）可以處理一般患者——但每次使用後徹底清潔，一次只處理一位患者（一次只做一個產品）</li>
+                <li>手術室（合格隔離器）處理高風險操作——嚴格的無菌環境，事前做無菌製程模擬（Aseptic Process Simulation）確認操作可靠性</li>
+                <li>所有管路（Tubing）一次性使用——每個患者/批次使用全新管路，消除殘留汙染風險</li>
+            </ul>
+            <p>這個策略符合 PDA PtC-13 的風險分層邏輯：<strong>在資源有限的情況下，把最嚴格的控制集中在風險最高的環節</strong>。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 自體 vs. 異體 ATMP 的差異</h4>
+            <p>交叉汙染的風險管理在不同類型的 ATMP 中有重要差異：</p>
+            <ul>
+                <li><strong>自體療法 (Autologous)</strong>：患者自身細胞，最大風險是<em>同一患者</em>的細胞在生產過程中受到微生物汙染</li>
+                <li><strong>異體療法 (Allogeneic)</strong>：使用健康捐贈者細胞，最大風險是<em>不同批次之間</em>的交叉汙染（患者 A 的細胞污染患者 B 的批次，後果嚴重）</li>
+            </ul>
+            <p>Q5.3 提到的「一次只做一個產品 (dedicate its use for one product at a time)」對異體 ATMP 尤其關鍵。異體 ATMP 的 CDMO 通常需要設計更嚴格的<strong>防交叉汙染物理屏障</strong>（Dedicated Room 或 Closed System）。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — iPSC-CAR-T 基因編輯材料的汙染控制實踐</h4>
+            <p>以 Q5.3 的案例情境為例：供應商在 R&amp;D 實驗室生產 gRNA 和 Cas9 核酸酶（RUO 等級）：</p>
+            <ul>
+                <li><strong>專用設施</strong>：合約生產期間，該 R&amp;D 實驗室不處理其他產品，所有儀器的 Tubing 全數更換</li>
+                <li><strong>最終步驟升級</strong>：bulk 產品完成後，轉移至合格隔離器（Qualified Isolator）進行無菌過濾與充填</li>
+                <li><strong>APS 驗證</strong>：充填操作前進行無菌製程模擬（Aseptic Process Simulation），確認操作人員和設備可達到無菌保證</li>
+                <li><strong>風險溝通</strong>：供應商明確聲明「不保證無菌」，但 sponsor 在整體品質策略中已覆蓋此風險</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Q5.3 中，為何要求「Replace all tubing with brand new tubing」？這個措施主要防範哪類汙染風險？</li>
+                <li>一個 CDMO 同時承接自體和異體 CAR-T 客戶的生產，在設施設計和調度安排上需要考慮哪些差異化的交叉汙染防控措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q5.4 QUALITY ASSURANCE FOR gRNA / NUCLEASE -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">Q5.4 — Assuring Quality of Critical Raw Materials (gRNA, Nuclease)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 5.4. How to assure the quality of the product (i.e., gRNA, nuclease)?</h3>
+
+        <ul>
+            <li>Define the <span class="key-term">material specifications</span> and perform <span class="key-term">quality control release-testing</span> at a <span class="key-term">GMP-compliant laboratory</span>.</li>
+            <li>Store the product in a <span class="key-term">GMP-controlled warehouse</span> once it is manufactured.</li>
+            <li>Conduct a <span class="key-term">stability study</span> to ensure the quality of the raw material during storage when no stability data is available from the supplier.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — gRNA 與核酸酶的關鍵品質屬性</h4>
+            <p><strong>gRNA (Guide RNA，指引 RNA)</strong> 和 <strong>nuclease（核酸酶，如 Cas9）</strong> 是 CRISPR 基因編輯的核心工具，其品質直接決定基因編輯的精確性與安全性。主要 CQA 包括：</p>
+            <ul>
+                <li><strong>身分 (Identity)</strong>：序列確認（gRNA 必須與靶點精確匹配）</li>
+                <li><strong>純度 (Purity)</strong>：蛋白質殘留、核酸殘留、內毒素</li>
+                <li><strong>效價 (Potency/Activity)</strong>：體外基因編輯效率（切割活性）</li>
+                <li><strong>安全性指標</strong>：無菌性（或生物負荷）、病毒安全</li>
+            </ul>
+            <p>Q5.4 的策略是：<strong>即使生產環境不理想（RUO），放行測試必須在合規的 GMP 實驗室中完成</strong>——這是品質保證的最後防線。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 食品出廠前的第三方檢測</h4>
+            <p>即使食品工廠（RUO 供應商）的生產環境未達到最高標準，負責任的進口商（藥廠/CDMO）在產品入庫前，還是會委託有資質的第三方實驗室（GMP-compliant laboratory）做完整的安全性和品質檢測，才讓產品上架。</p>
+            <p>這正是 Q5.4 第一點的邏輯：<strong>生產方式不達標，但放行標準必須達標</strong>。這個放行測試（Release Testing）在 GMP 合規實驗室完成，結果具有法規可信度，可用於 IND/BLA 申報文件。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 為何穩定性研究尤其重要</h4>
+            <p>gRNA 和 Cas9 蛋白質都是<strong>生物大分子</strong>，對儲存條件（溫度、pH、冷凍次數）極為敏感：</p>
+            <ul>
+                <li>gRNA 易被 RNase 降解，需要在特定冷凍條件下保存（通常 -80°C）</li>
+                <li>Cas9 蛋白在多次凍融後活性會顯著下降</li>
+            </ul>
+            <p>當<strong>供應商未提供穩定性資料</strong>時（RUO 供應商的常態），藥廠必須自行開展穩定性研究，建立：</p>
+            <ul>
+                <li>建議儲存條件（溫度、光照、容器材質）</li>
+                <li>有效期限（Shelf Life / Retest Date）</li>
+                <li>降解規律與關鍵降解指標</li>
+            </ul>
+            <p>這個穩定性資料不僅用於日常管理，也是 IND/BLA 申報中 CMC 章節的必要內容。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>gRNA/核酸酶品質保證框架</h4>
+            <pre>
+gRNA / Nuclease 品質保證三支柱
+─────────────────────────────────
+支柱一：放行測試 (Release Testing)
+  → 在 GMP-compliant 實驗室執行
+  → 項目：identity, purity, potency,
+    endotoxin, sterility/bioburden
+
+支柱二：儲存管理 (Storage Control)
+  → GMP-controlled warehouse
+  → 溫度記錄、進出庫管制、FIFO 原則
+
+支柱三：穩定性研究 (Stability Study)
+  → 確認儲存期間品質不衰退
+  → 建立 Retest Date / Shelf Life
+  → 支持 IND/BLA 申報
+─────────────────────────────────
+注意：若供應商無法提供穩定性資料，
+藥廠必須自行建立，否則無法合規使用
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>gRNA 的 "Potency" CQA 如何在體外測試中評估？這個測試與最終 CAR-T 產品的療效有何關聯？</li>
+                <li>若 gRNA 供應商無法提供穩定性資料，藥廠應如何設計最小化的穩定性研究方案以支持 IND Phase I 申報？（考慮樣本量、時間點、儲存條件組合）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- REFERENCES -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">References — 參考文獻</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <ul class="ref-list">
+            <li><span class="ref-num">1.</span> European Commission. Guidelines on Good Manufacturing Practice Specific to Advanced Therapy Medicinal Products, EudraLex – Volume 4 – Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use; European Commission: Brussels, 2017.</li>
+
+            <li><span class="ref-num">2.</span> International Council for Harmonisation. Quality Guideline Q7: Good Manufacturing Practice Guide for Active Pharmaceutical Ingredients; ICH: Geneva, 2000.</li>
+
+            <li><span class="ref-num">3.</span> Parenteral Drug Association. Technical Report No. 83: Virus Contamination in Biomanufacturing: Risk Mitigation, Preparedness, and Response; PDA: Bethesda, Md., 2019.</li>
+
+            <li class="ref-highlight"><span class="ref-num">4.</span> Council of Europe. Raw Materials for the Production of Cell-Based and Gene Therapy Medicinal Products, Chapter 5.2.12. In European Pharmacopoeia, 5th Edition, Council of Europe: Strasbourg, 2016; p 627.</li>
+
+            <li class="ref-highlight"><span class="ref-num">5.</span> European Medicines Agency. Questions and answers on the principles of GMP for the manufacturing of starting materials of biological origin used to transfer genetic material for the manufacturing of ATMPs; EMA: London, 2021.</li>
+
+            <li class="ref-highlight"><span class="ref-num">6.</span> Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). Annex 2A: Manufacture of Advanced Therapy Medicinal Products for Human Use, GMP Guide to Good Manufacturing Practice for Medicinal Products; PIC/S: Geneva, 2021.</li>
+
+            <li><span class="ref-num">7.</span> U.S. Food and Drug Administration. 21 CFR 1271 Subpart C - Donor Eligibility; Government Publishing Office: Washington, D.C., 2004.</li>
+
+            <li><span class="ref-num">8.</span> Council of Europe. Methods of Preparation of Sterile Products, Chapter 5.1.1. In European Pharmacopoeia (Ph. Eur.), Council of Europe: Strasbourg, 2008; p 575.</li>
+
+            <li><span class="ref-num">9.</span> European Commission. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4 – EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use; European Commission: Brussels, 2022.</li>
+
+            <li><span class="ref-num">10.</span> European Medicines Agency. Guideline on the Sterilisation of the Medicinal Product, Active Substance, Excipient and Primary Container; EMA: Amsterdam, 2019.</li>
+
+            <li><span class="ref-num">11.</span> U.S. Food and Drug Administration. 21 CFR 210.2 § 210.2 Applicability of Current Good Manufacturing Practice Regulations. Code of Federal Regulations. https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-210/section-210.2 (accessed 7 May 2025).</li>
+
+            <li class="ref-highlight"><span class="ref-num">12.</span> U.S. Pharmacopeial Convention. General Chapter &lt;1046&gt; Cellular and Tissue-Based Products. In USP 43–NF 38, USP: Rockville, Md., 2020.</li>
+
+            <li class="ref-highlight"><span class="ref-num">13.</span> U.S. Pharmacopeial Convention. General Chapter &lt;1047&gt; Gene Therapy Products. In USP 43–NF 38, USP: Rockville, Md., 2020.</li>
+
+            <li class="ref-highlight"><span class="ref-num">14.</span> U.S. Pharmacopeial Convention. General Chapter &lt;1043&gt; Ancillary Materials for Cell, Gene, and Tissue-Engineered Products. In USP 34–NF 29, USP: Rockville, Md., 2011.</li>
+
+            <li class="ref-highlight"><span class="ref-num">15.</span> U.S. Food and Drug Administration. OTAT Town Hall: Gene Therapy – Chemistry, Manufacturing, and Controls, Presented at FDA CBER OTAT Town Hall: Gene Therapy Chemistry, Manufacturing, and Controls, Online, 29 Sept 2022; U.S. Department of Health and Human Services: 2022.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 15 篇參考文獻分類速覽</h4>
+            <p>PDA PtC-13 的 15 篇參考文獻涵蓋四大監管體系，理解其各自定位有助於快速定位適用的法規依據：</p>
+            <table>
+                <tr>
+                    <th>文獻</th>
+                    <th>機構</th>
+                    <th>核心主題</th>
+                    <th>適用地區</th>
+                </tr>
+                <tr>
+                    <td>Ref. 1</td>
+                    <td>European Commission</td>
+                    <td>EudraLex Vol.4 ATMP GMP</td>
+                    <td>EU</td>
+                </tr>
+                <tr>
+                    <td>Ref. 2</td>
+                    <td>ICH Q7</td>
+                    <td>API GMP</td>
+                    <td>全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 3</td>
+                    <td>PDA TR83</td>
+                    <td>病毒汙染風險</td>
+                    <td>全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 4</td>
+                    <td>Ph. Eur. 5.2.12</td>
+                    <td>細胞/基因治療原物料</td>
+                    <td>EU/全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 5</td>
+                    <td>EMA Q&amp;A</td>
+                    <td>ATMP GMP 原則（生物來源起始物料）</td>
+                    <td>EU</td>
+                </tr>
+                <tr>
+                    <td>Ref. 6</td>
+                    <td>PIC/S Annex 2A</td>
+                    <td>ATMP GMP</td>
+                    <td>PIC/S 成員國</td>
+                </tr>
+                <tr>
+                    <td>Ref. 7</td>
+                    <td>21 CFR 1271</td>
+                    <td>捐贈者資格 (Donor Eligibility)</td>
+                    <td>US</td>
+                </tr>
+                <tr>
+                    <td>Ref. 8</td>
+                    <td>Ph. Eur. 5.1.1</td>
+                    <td>無菌製品製備方法</td>
+                    <td>EU/全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 9</td>
+                    <td>EU GMP Annex 1</td>
+                    <td>無菌藥品製造（2022 版）</td>
+                    <td>EU</td>
+                </tr>
+                <tr>
+                    <td>Ref. 10</td>
+                    <td>EMA Guideline</td>
+                    <td>藥品/原料/容器滅菌</td>
+                    <td>EU</td>
+                </tr>
+                <tr>
+                    <td>Ref. 11</td>
+                    <td>21 CFR 210.2</td>
+                    <td>cGMP 法規適用範圍</td>
+                    <td>US</td>
+                </tr>
+                <tr>
+                    <td>Ref. 12</td>
+                    <td>USP &lt;1046&gt;</td>
+                    <td>細胞與組織產品</td>
+                    <td>US/全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 13</td>
+                    <td>USP &lt;1047&gt;</td>
+                    <td>基因治療產品</td>
+                    <td>US/全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 14</td>
+                    <td>USP &lt;1043&gt;</td>
+                    <td>細胞/基因/組織工程產品輔助物料</td>
+                    <td>US/全球</td>
+                </tr>
+                <tr>
+                    <td>Ref. 15</td>
+                    <td>FDA OTAT</td>
+                    <td>基因治療 CMC 要求（Town Hall）</td>
+                    <td>US</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — ATMP 從業者必須熟悉的 5 大核心文獻</h4>
+            <p>在 15 篇文獻中，以下 5 篇對日常工作影響最大（以藍底標示於左欄）：</p>
+            <ol>
+                <li><strong>Ref. 5（EMA Q&amp;A on ATMP GMP Principles）</strong>：直接回答「什麼情況下可以用 GMP 原則替代完整 GMP 合規」，是 Q5.1 策略的法規依據。</li>
+                <li><strong>Ref. 6（PIC/S Annex 2A）</strong>：PIC/S 成員國（包括台灣 TFDA）參考的 ATMP GMP 指引，定義製造商的合規義務。</li>
+                <li><strong>Ref. 14（USP &lt;1043&gt;）</strong>：專門針對 ATMP 輔助原物料（Ancillary Materials）的品質指引，包含風險分類框架。</li>
+                <li><strong>Ref. 4（Ph. Eur. 5.2.12）</strong>：歐洲藥典對細胞/基因治療原物料的測試要求，特別是無菌性和生物安全性。</li>
+                <li><strong>Ref. 15（FDA OTAT Town Hall）</strong>：FDA CBER 對基因治療 CMC 的最新期望，雖非正式指引但代表監管趨勢。</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 法規文獻如地圖導航</h4>
+            <p>面對 ATMP 製造的法規迷宮，這 15 篇文獻就像不同解析度的地圖：</p>
+            <ul>
+                <li><strong>EudraLex Vol.4 ATMP GMP（Ref. 1）</strong>：大比例尺全覽地圖——歐盟 ATMP 的整體框架</li>
+                <li><strong>PIC/S Annex 2A（Ref. 6）</strong>：適用 PIC/S 成員國的區域地圖（台灣 TFDA 適用）</li>
+                <li><strong>USP &lt;1043&gt;&lt;1046&gt;&lt;1047&gt;</strong>：詳細街道圖——具體物料/產品類型的測試要求</li>
+                <li><strong>EMA Q&amp;A（Ref. 5）</strong>：導航 App 的最新更新——直接回答常見路況問題</li>
+            </ul>
+            <p>一位 ATMP 品質專家應該能在 5 分鐘內，根據問題性質找到正確的「地圖」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>ATMP 原物料法規決策樹</h4>
+            <pre>
+遇到 ATMP 原物料法規問題時，如何選擇文獻？
+
+Q: 這個問題是關於…
+
+  歐盟 ATMP 製造整體框架？
+    → Ref. 1 (EudraLex ATMP GMP)
+
+  是否允許使用 GMP 原則而非完整 GMP？
+    → Ref. 5 (EMA Q&amp;A) + Ref. 6 (PIC/S Annex 2A)
+
+  細胞/基因治療原物料的 Ph. Eur. 測試要求？
+    → Ref. 4 (Ph. Eur. 5.2.12)
+
+  美國 FDA 的 ATMP 原物料觀點？
+    → Ref. 14 (USP &lt;1043&gt;) + Ref. 15 (FDA OTAT)
+    → Ref. 12 (USP &lt;1046&gt;) 或 Ref. 13 (USP &lt;1047&gt;)
+
+  捐贈者資格審查？
+    → Ref. 7 (21 CFR 1271)
+
+  無菌充填 / 滅菌方法？
+    → Ref. 8 (Ph. Eur. 5.1.1) + Ref. 9 (EU Annex 1)
+
+  病毒安全性？
+    → Ref. 3 (PDA TR83)
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家台灣 CDMO 正在協助客戶申請歐盟的 ATMP 臨床試驗授權（CTA），在原物料章節中，哪些參考文獻最應該被引用和遵循？</li>
+                <li>USP &lt;1043&gt;、&lt;1046&gt;、&lt;1047&gt; 各自的適用對象和核心內容是什麼？三者之間的關係如何理解？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- COMPREHENSIVE FINAL SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — Topic 5 &amp; References</h3>
+    <ul>
+        <li><strong>生命週期管理</strong>：ATMP 原物料管理不是一次性工作，商業化後仍需定期重審風險等級、更新測試要求，並關注新供應商和法規更新。</li>
+        <li><strong>RUO 物料管理（Q5.1）</strong>：當 GMP 等級物料不可得時，透過 Quality Agreement 建立書面控制框架，嚴格的 sponsor Quality 監督替代正式 GMP 稽核，是合法且可行的策略。</li>
+        <li><strong>IND 申報準備（Q5.2）</strong>：即使生產環境採用 GMP 原則（非完整 GMP 合規），只要生產紀錄詳盡、可追溯，同樣可支持 IND/BLA 申報。文件完整性是核心。</li>
+        <li><strong>汙染控制策略（Q5.3）</strong>：設施隔離（一次一產品）+ 最終充填步驟在合格隔離器中完成，是 RUO 環境下保障患者安全的實用策略。交叉汙染風險在異體 ATMP 中需特別重視。</li>
+        <li><strong>gRNA/核酸酶品質保證（Q5.4）</strong>：放行測試必須在 GMP 合規實驗室完成；產品儲存於 GMP 倉庫；若無供應商穩定性資料，藥廠必須自行開展穩定性研究。</li>
+        <li><strong>核心法規文獻</strong>：EMA Q&amp;A (Ref. 5) 和 PIC/S Annex 2A (Ref. 6) 提供「GMP 原則」策略的法規依據；USP &lt;1043&gt;&lt;1046&gt;&lt;1047&gt; 提供具體測試框架；FDA OTAT Town Hall (Ref. 15) 代表美國 CMC 監管趨勢。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- COMPREHENSIVE FINAL PRACTICE QUESTIONS (all 5 topics) -->
+<!-- ============================================================ -->
+<div class="section-title" style="color:#075985; border-bottom-color:#0284c7;">綜合練習題 — Tying Together All 5 Topics</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>全章綜合思考題</h2>
+        <p>以下題目整合 PDA PtC-13 所有五個主題，用於自我評估對整份文件的掌握程度。</p>
+
+        <div class="quote-box">
+            <strong>案例情境：</strong> 一家台灣 CDMO（以下稱 CDM-TW）承接客戶委託，為一款 iPSC 來源的 NK 細胞療法進行代工開發與製造。該產品使用 CRISPR 技術（Cas9 + gRNA）進行基因工程，目標先在美國申請 IND，後續延伸至歐盟 CTA 申請。Cas9 蛋白和 gRNA 均為 RUO 等級，無 GMP 認證供應商。
+        </div>
+
+        <ol>
+            <li style="margin-bottom:1rem;">
+                <strong>[Topic 1 — 原物料風險分類]</strong><br>
+                CDM-TW 應如何建立 Cas9 蛋白和 gRNA 的風險分類（Risk Category）？它們屬於 Critical Raw Materials 嗎？依據哪些考量？（參考 Topics 1-2 的 Risk-Based Approach 框架）
+            </li>
+            <li style="margin-bottom:1rem;">
+                <strong>[Topic 2 — 供應商管理]</strong><br>
+                面對 RUO 等級的 Cas9 供應商，CDM-TW 的 Supplier Qualification 流程應包含哪些要素？與一般 GMP 供應商的稽核流程有何差異？（參考 Q5.1）
+            </li>
+            <li style="margin-bottom:1rem;">
+                <strong>[Topic 3 — 檢驗策略]</strong><br>
+                設計 Cas9 和 gRNA 的入廠檢驗（Incoming Testing）方案，包含測試項目、方法要求、合格標準設定原則。（參考 Topics 3 和 Q5.4）
+            </li>
+            <li style="margin-bottom:1rem;">
+                <strong>[Topic 4 — TSE/BSE 考量]</strong><br>
+                若 Cas9 蛋白在製備過程中使用了牛源培養基成分，CDM-TW 需要進行哪些 TSE/BSE 風險評估？相關的 Ph. Eur. 要求是什麼？（參考 Topic 4）
+            </li>
+            <li style="margin-bottom:1rem;">
+                <strong>[Topic 5 — 生命週期與 IND 申報]</strong><br>
+                為支持美國 IND 申報，CDM-TW 需要準備哪些原物料相關的 CMC 文件？若未來供應商升級至 GMP 等級，這個變更需要通知 FDA 嗎？如何管理跨市場（US + EU）的申報時機？（參考 Q5.2 和 Topics 5 整體）
+            </li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h2>解題提示 Commentary</h2>
+
+        <div class="concept-box">
+            <h4>題目一解題框架 — 風險分類決策</h4>
+            <p>評估 Cas9/gRNA 是否為 Critical Raw Materials，需考量：</p>
+            <ul>
+                <li><strong>對產品品質的直接影響性</strong>：gRNA 決定編輯靶點精確性，Cas9 決定切割效率 → 直接影響 CQA（基因編輯效率、脫靶率）→ 屬於 Critical Raw Materials</li>
+                <li><strong>患者安全影響</strong>：若 gRNA 序列錯誤或 Cas9 活性不足，可能導致治療無效甚至致癌性脫靶 → 高患者安全風險</li>
+                <li><strong>供應鏈脆弱性</strong>：RUO 等級唯一來源 → 同時是 Single-source Risk</li>
+            </ul>
+            <p>結論：Cas9 和 gRNA 均應被歸類為 <strong>Critical Raw Materials with High Risk</strong>，需要最嚴格的控制策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>題目三解題要點 — gRNA/Cas9 入廠測試清單</h4>
+            <p>最低限度的入廠測試方案（支持 IND Phase I）：</p>
+            <ul>
+                <li><strong>gRNA</strong>：序列確認（質譜或定序）、純度（PAGE 或 HPLC）、內毒素、生物負荷/無菌性</li>
+                <li><strong>Cas9 蛋白</strong>：純度（SDS-PAGE）、身分確認（Western Blot 或質譜）、效價（In vitro cleavage assay）、內毒素、殘留宿主蛋白</li>
+                <li><strong>共同項目</strong>：外觀、濃度、pH（若有）</li>
+            </ul>
+            <p>Phase III 前，上述方法需完成完整的<strong>方法驗證 (Method Validation)</strong>，特別是效價測試的準確性和重複性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>題目五解題思路 — 跨市場申報時機管理</h4>
+            <p>跨市場（US + EU）的原物料變更申報，如同在不同國家路口等待通行許可：</p>
+            <ul>
+                <li>美國（FDA）：通常需要 Prior Approval Supplement（PAS）或 CBE-30/CBE-0（視重大程度而定）</li>
+                <li>歐盟（EMA/各國 CA）：Type IA/IB/II 變更申請，審查時間差異顯著（Type II 可達 12-18 個月）</li>
+            </ul>
+            <p>策略建議：在供應商升級計畫確定後，<strong>提前 12-18 個月開始準備申報文件</strong>，並評估是否需要維持雙供應商（新舊並行）以保障過渡期的患者供藥。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>全章總結 — PDA PtC-13 的核心學習</h4>
+            <p>完成 PDA PtC-13 五個主題的學習後，以下是最重要的三個核心訊息：</p>
+            <ol>
+                <li><strong>風險驅動，非一刀切</strong>：ATMP 原物料管理的本質是 Risk-Based Approach——物料的風險等級決定控制強度，而非一律追求最高 GMP 標準。</li>
+                <li><strong>文件即合規</strong>：在 ATMP 早期開發中，即使生產條件不理想，完整且可追溯的文件記錄是通過法規審查的關鍵。"If it's not written down, it didn't happen."</li>
+                <li><strong>供應鏈韌性</strong>：從單一供應商策略到商業化的多元供應鏈，是 ATMP 成功商業化的必經之路。生命週期管理不是一次性工作，而是持續演進的過程。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end .main-content -->
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+(function(){
+    var btn = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', function(){
+        if(window.scrollY > 300){
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+})();
+</script>
+
+</body>
+</html>

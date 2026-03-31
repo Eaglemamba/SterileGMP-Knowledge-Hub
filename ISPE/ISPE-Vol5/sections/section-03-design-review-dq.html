@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.5 - Chapter 5: Design Review and Design Qualification</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   ISPE Green Override applied below CSS variables
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active {
+    color: white; border-bottom-color: #2ecc71;
+    background: rgba(255,255,255,0.05);
+}
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #2ecc71; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #a8d5b5;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container {
+    max-width: 100%; padding: 0; margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #d4edda);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.concept-box:not(.analogy):not(.application),
+.term-box, .key-term-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* ===== APPLICATION BOX (Blue) ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION SUMMARY (Yellow) ===== */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 12px; padding: 1.5rem; margin-top: 2rem;
+    border: 1px solid #ffd966;
+}
+.section-summary h3 { color: #856404; margin-bottom: 1rem; font-size: 1.1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #d4edda;
+    border-radius: 6px; color: #1a3a2a; text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #1e8449; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- Section Header -->
+<div class="header" id="top">
+    <h1>ISPE Baseline&reg; Guide Vol.5 &mdash; Commissioning and Qualification (2nd Edition)</h1>
+    <div class="subtitle">Chapter 5: Design Review and Design Qualification 設計審查與設計確認</div>
+    <div class="page-info">Pages 35&ndash;40 &nbsp;|&nbsp; Sections 5.1 &ndash; 5.5</div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>&#127891; 本章學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解設計審查（DR）與設計確認（DQ）的根本區別：DR 涵蓋所有設計面向，DQ 僅聚焦於直接影響系統的 CAs/CDEs，並需 Quality Unit 核准。</li>
+            <li>掌握三階段設計流程（概念 → 設計基礎 BOD → 詳細設計）及各階段產出文件（IFD、IFC）的意義。</li>
+            <li>了解 ASTM E2500-13 對設計審查的定義，以及跨職能 SME 團隊在 DR 中的角色與 QA 出席建議。</li>
+            <li>說明 DQ 的三大目標、前提要件（URS、SRA、completed DRs）及最終 DQ 報告應包含的內容。</li>
+            <li>能夠解讀 Table 5.1 所示的專案階段與 DR/DQ 交付成果時序，並應用於 CDMO 資本專案規劃。</li>
+        </ol>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>&#128196; 本章結構</h3>
+        <div class="toc-grid">
+            <a href="#sec51">5.1 Introduction</a>
+            <a href="#sec52">5.2 Design Process</a>
+            <a href="#sec53">5.3 Design Review</a>
+            <a href="#sec54">5.4 Design Qualification</a>
+            <a href="#sec55">5.5 Timing (Table 5.1)</a>
+            <a href="#summary">章節總結</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.1 — Introduction
+         ============================================================ -->
+    <div class="chapter-section" id="sec51">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Introduction &mdash; 簡介</h2>
+                <p>DR and DQ: purposes, scope, and the critical distinction</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- Left: Original Text -->
+                <div class="left-column">
+                    <h3>5.1 Introduction <span style="font-size:0.8rem;color:#666;">(p.35)</span></h3>
+                    <p>This chapter provides guidance for performing and documenting <span class="key-term">Design Reviews (DRs)</span> and <span class="key-term">Design Qualification (DQ)</span>. This Guide emphasizes the importance of DRs leading to DQ as a continual process throughout all phases in the design of new or modified systems.</p>
+                    <p><span class="key-term">DRs</span> provide assurance that the design deliverables are consistent with the <span class="key-term">URS</span> and the mitigation control strategies developed during the System Risk Assessment. When properly performed, DRs reduce the need for costly design-related change orders.</p>
+                    <p><span class="key-term">DQ</span> is performed only for <strong>direct impact systems</strong> (as determined through system classification described in Chapter 3). DQ involves more formal documentation, with Quality Unit approval, to show traceability of the <span class="key-term">CAs</span> and relevant <span class="key-term">CDEs</span> in the design to the <span class="key-term">CPPs</span> and <span class="key-term">CQAs</span>.</p>
+                    <div class="quote-box">
+                        DR and DQ are not intended to be separate activities, but rather <strong>separate documentation</strong> in which DQ is focused on CAs/CDEs and involves the Quality Unit as an approver. There should be minimal duplication of work; the final report from DR is a key input into the DQ process.
+                    </div>
+                </div>
+                <!-- Right: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>&#35299;&#35712;&#35222;&#35266; Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>&#128273; 核心概念：DR vs. DQ 根本區別</h4>
+                        <p><strong>設計審查 DR（Design Review）</strong>：涵蓋所有設計面向，包含工程、操作、安全、品質——所有系統皆適用。</p>
+                        <p><strong>設計確認 DQ（Design Qualification）</strong>：只針對「直接影響系統（Direct Impact Systems）」，且聚焦於 CAs（關鍵特性）和 CDEs（關鍵設計要素）——需要 Quality Unit 核准，屬正式驗證文件。</p>
+                        <p>&#128161; <em>記憶口訣：DR 看全局；DQ 看品質關鍵點，只限直接影響系統。</em></p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#9888; 重點提示：「非各別活動，而是各別文件」</h4>
+                        <p>原文這句話在實務中的意思：<strong>DR 和 DQ 在時間上可以重疊，工程師不需要「做完 DR 再做 DQ」</strong>。</p>
+                        <p>實務運作：DR 會議記錄 → 整理出 CAs/CDEs → DQ 報告直接引用 DR 結果，避免重複紀錄。DQ 不是另起爐灶，而是對 DR 的聚焦與升格（加入 QA 核准）。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#128218; 比喻：建築審查 vs. 消防安全認證</h4>
+                        <p>DR 如同<strong>全面建築審查</strong>：結構、水電、消防、美觀一起看。DQ 如同<strong>消防安全認證</strong>：只針對消防相關設計（逃生出口、噴淋系統）做正式認可，並由主管機關（Quality Unit）蓋章。兩者共用同一套建築圖，不需要畫兩次。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.2 — Design Process
+         ============================================================ -->
+    <div class="chapter-section" id="sec52">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Design Process &mdash; 設計流程</h2>
+                <p>Three phases: Concept → BOD → Detailed Design; GEP and risk-based approach</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- Left: Original Text -->
+                <div class="left-column">
+                    <h3>5.2 Design Process <span style="font-size:0.8rem;color:#666;">(p.35–36)</span></h3>
+                    <p>The design process can be divided into several phases to ensure the design deliverables are sufficiently developed, the risks are identified and mitigated, and the project (as defined) meets financial objectives. The phases of the design process are:</p>
+                    <ol>
+                        <li><strong>Concept</strong></li>
+                        <li><strong>Basis of Design (<span class="key-term">BOD</span>)</strong></li>
+                        <li><strong>Detailed Design</strong></li>
+                    </ol>
+                    <p>The concept and BOD phases define the Scope of Work (SOW) for the project.</p>
+                    <p>In the <strong>concept phase</strong>, several approaches (scope options) to meeting the URS may be evaluated. These alternatives should be evaluated for their impact on the business objective, project cost, and risk to quality. The project stakeholders should select the preferred scope option; the project then progresses to the BOD phase.</p>
+                    <p>In the <strong>BOD phase</strong>, additional engineering work provides a more developed SOW. The BOD design package contains <span class="key-term">Issued for Design (IFD)</span> documents; it is the basis for the detailed design phase which delivers <span class="key-term">Issued for Construction (IFC)</span> documents.</p>
+
+                    <h3>5.2.1 Importance of Good Engineering Practice</h3>
+                    <p>During the design process, it is important to follow <span class="key-term">GEP</span> to support the integrity of related data and documentation. DR activities include evaluating deliverables against engineering standards and business, operations, and quality requirements as well as identifying gaps and proposing required corrective actions. Documenting these activities using Good Documentation Practice concepts (as described in Chapter 13) supports the overall effort to ensure the system is suitable for the intended purpose.</p>
+
+                    <h3>5.2.2 Science and Risk-Based Approach to Design Reviews</h3>
+                    <p>A quality risk assessment of the manufacturing process (including the environmental conditions supporting the process and/or critical systems) is a significant activity outside of the C&amp;Q scope that can influence the early phase of design. Design stage System Risk Assessment typically uses knowledge from process risk assessments and other process knowledge to evaluate system design with respect to process control failure modes. These assessments are an integral part of the science and risk-based C&amp;Q approach.</p>
+                    <p>Design stage quality risk reviews are an <strong>iterative process</strong> that is linked to the design development of the process system. The review of the System Risk Assessments and how the results affect the proposed design should be included in the scope of DRs.</p>
+                </div>
+                <!-- Right: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>&#35299;&#35712;&#35222;&#35266; Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>&#128336; 三階段設計流程圖解</h4>
+                        <p><strong>1. 概念階段（Concept）</strong>：評估多種方案，選出最符合 URS、成本與品質風險平衡的方案。</p>
+                        <p><strong>2. 設計基礎階段（BOD）</strong>：輸出 <em>IFD（Issued for Design，設計用圖）</em>，確立工程範圍（SOW）。</p>
+                        <p><strong>3. 詳細設計階段（Detailed Design）</strong>：輸出 <em>IFC（Issued for Construction，建造用圖）</em>，可直接用於施工。</p>
+                        <p>DR 在三個階段都應執行；DQ 通常在詳細設計完成後正式執行。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>&#128295; 術語解析：IFD vs. IFC</h4>
+                        <ul>
+                            <li><strong>IFD（Issued for Design）</strong>：尚在設計階段，供工程師內部使用、審查，可能仍有修訂。</li>
+                            <li><strong>IFC（Issued for Construction）</strong>：已完成設計審查、凍結版本，可交付給承包商施工。</li>
+                        </ul>
+                        <p>IFD 是 DR 的主要審查對象；IFC 是 DQ 的最終確認對象。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#128218; GEP 在設計審查中的角色</h4>
+                        <p><strong>GEP（良好工程規範）</strong>不是一份法規文件，而是工程界公認的最佳實踐標準。DR 的功能之一就是確認設計符合 GEP：對照業界規範（如 ASME、ASTM、ISO 標準）找出缺口並提出修正行動。</p>
+                        <p>GEP 加上良好文件實踐（GDP）= 確保「系統適合其預期用途」的基礎。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#129504; 5.2.2 迭代風險評估的重要性</h4>
+                        <p>設計階段的風險評估不是「做一次就結束」。隨著設計從概念演進到詳細設計，新的失效模式可能浮現。DR 應定期納入最新的系統風險評估（SRA）結果，確保設計決策與風險控制策略保持一致。</p>
+                        <p>&#128161; <em>實務提示：將 SRA 版本號列入每次 DR 的審查範圍，確保可追溯性。</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.3 — Design Review
+         ============================================================ -->
+    <div class="chapter-section" id="sec53">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Design Review &mdash; 設計審查</h2>
+                <p>Objectives, SME roles, process, and outcome including Figure 5.1</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- Left: Original Text -->
+                <div class="left-column">
+                    <h3>5.3.1 Objectives of Design Review <span style="font-size:0.8rem;color:#666;">(p.36)</span></h3>
+                    <p>DRs are defined in <span class="key-term">ASTM E2500-13</span> [5] as follows:</p>
+                    <div class="quote-box">
+                        "Planned and systematic reviews of specifications, design, and design development and continuous improvement changes performed as appropriate throughout the life-cycle of the manufacturing system. Design reviews evaluate deliverables against standards and requirements, identify problems, and propose required corrective actions."
+                    </div>
+                    <p>DRs include both <strong>quality critical</strong> and <strong>non-critical</strong> aspects of the system design.</p>
+                    <p>The documented results of the DR should be the basis for any design modifications/additions performed to correct any deficiencies in the design under review.</p>
+
+                    <h3>5.3.2 Role of Subject Matter Experts and Quality Unit</h3>
+                    <p>Throughout the design process, a <span class="key-term">cross-functional project team</span> (refer to Section 6.4 for example approval matrix) reviews the design of the system to ensure that the product and process user requirements, GMP, and regulatory requirements are included. Thus, it is important that this team includes technical <span class="key-term">SMEs</span> that have the appropriate experience and correct knowledge of the process, process equipment, control strategies, and facilities to ensure that the design under review will meet the requirements of the URS, function efficiently, and consistently produce quality product.</p>
+                    <p>If the system being reviewed is direct impact, then the team should also include a <span class="key-term">Quality Unit</span> representative to ensure that all quality requirements are met. This can help to facilitate the review and approval of the DQ.</p>
+
+                    <h3>5.3.3 Design Review Process <span style="font-size:0.8rem;color:#666;">(p.36–37)</span></h3>
+                    <p>Prior to the DR, design documents should be circulated to the DR project team for their review to ensure a comprehensive review process. It is the responsibility of the project manager and the design leads to ensure that the appropriate participants are part of the DR. Senior management from the Quality Unit, operations, and production are responsible for ensuring the proper representatives with the appropriate experience are present during the DR.</p>
+                    <p>The project team should define the method for conducting DR according to the <strong>system type, size, and risk</strong>. This method should be documented and approved in applicable plans (e.g., Project Execution Plan, C&amp;Q Plan).</p>
+                    <p>The effort, formality, and documentation of DRs should follow the <span class="key-term">ICH Q9</span> [3] principles of being <strong>commensurate with the level of risk</strong>. DR documentation may take the form of engineering meeting minutes or notes. For highly critical novel systems, DRs may be more focused and detailed.</p>
+                    <p>For off-the-shelf equipment, DR should consider the complexity and/or risk to system or facility operation and to quality. Vendor documents are typically used to conduct these reviews and, if necessary, a technical vendor representative could attend the DR. The focus should be on the CPPs controlled by the equipment and the CAs/CDEs required for the product.</p>
+                    <p>DRs focus on both <strong>engineering design</strong> and <strong>quality aspects</strong> of the design.</p>
+                    <p>The <em>engineering design focus</em> is the technical aspects of the system; the objective is to verify the operability, maintainability, and safety aspects of the system. Technical SMEs, system owners, and any other stakeholders need to be present. It is optional for the Quality Unit to attend these reviews that focus on the technical aspects; however, their presence is beneficial and can simplify the DQ step.</p>
+                    <p>The <em>quality focus</em> of the DRs is on compliance elements and the CAs/CDEs of the system design that affect product quality; the objective is to verify that all regulatory requirements are addressed by the design. It is <strong>strongly recommended</strong> the Quality Unit attends these reviews with quality focus, and that these reviews are documented.</p>
+
+                    <h3>5.3.4 Design Review Outcome <span style="font-size:0.8rem;color:#666;">(p.37)</span></h3>
+                    <p>The DR project team should have appropriate methods for recording and distributing the results of the DRs and managing any consequent changes. The results should confirm the continuing suitability of the design and confirm that the design is suitable for the intended purpose.</p>
+                    <p>The team is responsible for communicating to their management any issues affecting design.</p>
+                    <p><strong>Figure 5.1</strong> provides an overview of the DR process. The figure illustrates a sequential process flow: starting from design deliverables, proceeding through the DR meeting (with SME and QA participation), generating action items / open issues, resolving deficiencies, and concluding with a documented DR report that feeds into the DQ process.</p>
+                    <p><em>Note (from Figure 5.1):</em> The <span class="key-term">Traceability Matrix</span> is a document format which compares the product and process requirements for the system with the CAs/CDEs.</p>
+                    <p>Refer to Chapter 20 (Appendix 6) for examples of DR reports.</p>
+                </div>
+                <!-- Right: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>&#35299;&#35712;&#35222;&#35266; Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>&#128218; ASTM E2500-13 定義解析</h4>
+                        <p>ASTM E2500-13 是美國材料試驗協會發布的製藥設備驗證標準，其 DR 定義強調三個關鍵詞：</p>
+                        <ul>
+                            <li><strong>Planned（計劃性）</strong>：非臨時性，應事先排程並有明確範圍。</li>
+                            <li><strong>Systematic（系統性）</strong>：有結構的審查方法，非隨意瀏覽文件。</li>
+                            <li><strong>Throughout the life-cycle（貫穿全生命週期）</strong>：包含新建、改造、持續改善。</li>
+                        </ul>
+                        <p>重點：DR <strong>涵蓋品質關鍵與非關鍵</strong>兩類設計面向，這與 DQ（只看 CAs/CDEs）形成對比。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>&#128101; SME 與 Quality Unit 的角色分工</h4>
+                        <p><strong>SME（主題專家）</strong>：來自工程、製程、設備、設施等各領域，確保設計技術上可行且符合操作需求。</p>
+                        <p><strong>Quality Unit（品質部門）</strong>：</p>
+                        <ul>
+                            <li>工程技術導向 DR → 出席為<em>可選</em>（但有益）</li>
+                            <li>品質合規導向 DR → <em>強烈建議出席</em>，並應記錄</li>
+                            <li>直接影響系統的 DR → <em>必須</em>有 QA 代表參與</li>
+                        </ul>
+                        <p>&#128161; QA 提早介入 DR，可大幅簡化後續的 DQ 核准流程。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#9889; ICH Q9 原則在 DR 中的應用</h4>
+                        <p>DR 的投入程度（effort）、正式程度（formality）、記錄詳細度，應與<strong>系統風險等級相稱</strong>：</p>
+                        <ul>
+                            <li>低風險輔助系統 → 會議記錄即可（engineering meeting minutes）</li>
+                            <li>高度關鍵新型系統 → 需要更聚焦、更詳細的 DR 文件</li>
+                            <li>現貨設備（off-the-shelf）→ 以供應商文件為基礎進行審查</li>
+                        </ul>
+                        <p>這體現了 ISPE Vol.5「基於科學與風險」的核心哲學。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#128196; Figure 5.1 流程說明（無圖版）</h4>
+                        <p>雖然原文圖示無法嵌入，其流程可描述如下：</p>
+                        <p><strong>設計交付物</strong> → DR 規劃（確定範圍/參與者）→ <strong>DR 會議</strong>（SME + 可能含 QA）→ 產生行動項目/開放問題 → 問題解決/設計修訂 → <strong>DR 報告</strong>（記錄審查結果）→ 輸入至 <strong>DQ 流程</strong>（若為直接影響系統）</p>
+                        <p>其中「追溯矩陣（Traceability Matrix）」在 DR 報告中用於比對 URS 需求與 CAs/CDEs。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>&#128269; 追溯矩陣（Traceability Matrix）簡介</h4>
+                        <p>追溯矩陣是一個表格工具，橫向連結：</p>
+                        <ul>
+                            <li>URS 中的產品/製程需求</li>
+                            <li>系統設計中對應的 CAs/CDEs</li>
+                            <li>驗收標準（acceptance criteria）</li>
+                        </ul>
+                        <p>它<strong>不是法規強制要求</strong>，但是強大的專案管理工具，確保每個品質需求都有對應的設計控制，且不遺漏。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.4 — Design Qualification
+         ============================================================ -->
+    <div class="chapter-section" id="sec54">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4</div>
+            <div class="chapter-info">
+                <h2>Design Qualification &mdash; 設計確認</h2>
+                <p>Objectives, prerequisites, DQ process, and final DQ report</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- Left: Original Text -->
+                <div class="left-column">
+                    <h3>5.4.1 Objectives of Design Qualification <span style="font-size:0.8rem;color:#666;">(p.38)</span></h3>
+                    <p>DQ provides documented verification that the design of a new or modified direct impact system will result in a system that is suitable for the intended purpose. The objectives of DQ are to:</p>
+                    <ul>
+                        <li>Verify the design will meet the quality user requirements as listed in the <span class="key-term">URS</span></li>
+                        <li>Verify the design will adequately control risks to product quality and patient safety, as identified during the <span class="key-term">System Risk Assessment</span></li>
+                        <li>Verify the <span class="key-term">CAs/CDEs</span> necessary to implement these requirements and risk controls</li>
+                    </ul>
+
+                    <h3>5.4.2 Prerequisites</h3>
+                    <p>The prerequisites for DQ include:</p>
+                    <ul>
+                        <li>Approved <span class="key-term">URS</span></li>
+                        <li>Functional requirements (for automated systems)</li>
+                        <li>System Risk Assessments with identification of design (CAs/CDEs) and procedural controls that will be used to mitigate the unacceptable risks</li>
+                        <li>Completed DRs, with verification that all open design issues that affect CAs/CDEs, CPPs, and CQAs are closed and included in the final design</li>
+                    </ul>
+                    <p>It is the responsibility of the project manager to ensure that all prerequisites have been completed and are made available to the participants prior to the DQ for their review. The DQ should be scheduled to allow adequate time for preliminary review of the material to be covered.</p>
+
+                    <h3>5.4.3 Design Qualification Process <span style="font-size:0.8rem;color:#666;">(p.38–39)</span></h3>
+                    <p>DQ is the documented process for the review and approval of the final system design to verify the following:</p>
+                    <ul>
+                        <li>All process and product requirements in the system URS have been incorporated into the design</li>
+                        <li>Quality and regulatory requirements in the system URS have been incorporated into the design</li>
+                        <li>Any changes to the design approach for the CAs and any associated CDEs have been reviewed, as appropriate</li>
+                    </ul>
+                    <p>The DR documentation should be reviewed to confirm the Quality Unit was included in the DR, as defined in the project plan, and has provided the appropriate input to the design.</p>
+                    <p>The approach for performing DQ should be defined in planning documents. For small projects, there may be one DQ performed after all the design is completed. For larger projects, the design may be broken into several areas or functions, with the DQ performed when each design is completed.</p>
+                    <p>A formal protocol document to check requirements against the design is <strong>not a regulatory requirement</strong>. However, the following information should be defined: plan for conducting the DQ, scope of the DQ, and Quality Unit approval of the DQ. This information could be documented for individual systems or for specified integrated systems.</p>
+                    <p>A <span class="key-term">Traceability Matrix</span> can be used to document traceability of the CAs and any associated CDEs, and CPPs to the CQAs. The CA and CDE acceptance criteria can also be documented in the Traceability Matrix.</p>
+
+                    <h3>5.4.4 Final Design Qualification Report <span style="font-size:0.8rem;color:#666;">(p.39)</span></h3>
+                    <p>The final DQ report should include or refer to the following, as applicable:</p>
+                    <ul>
+                        <li>Any needed risk reviews to document the incorporation of design control elements to support quality product manufacturing</li>
+                        <li>Identification of each <span class="key-term">CDE</span> (critical aspect of the physical and functional design) that serves to control identified potential process failures</li>
+                        <li>Description of each <span class="key-term">CA</span> and any supporting CDEs in terms that are verifiable through inspections or testing (acceptance criteria)</li>
+                        <li>The CDEs that serve to meet a product or process user requirement in terms that are verifiable (mainly through performance testing)</li>
+                    </ul>
+                    <p>A final DQ report should be issued stating the design is suitable for the intended purpose; the report should be <strong>approved by representatives (from the appropriate level) in Engineering, Manufacturing and the Quality Unit</strong>.</p>
+                    <p><strong>Figure 5.2</strong> provides an overview of the DQ process: beginning with DQ prerequisites (approved URS, completed SRA, completed DRs), proceeding through the DQ review of CAs/CDEs against URS requirements, using the Traceability Matrix, and concluding with the final DQ report bearing tri-party approval.</p>
+                    <p>Refer to Chapter 20 (Appendix 6) for an example of a DQ summary.</p>
+                </div>
+                <!-- Right: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>&#35299;&#35712;&#35222;&#35266; Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>&#127919; DQ 三大目標深度解析</h4>
+                        <p>DQ 的三個目標形成一個完整的驗證邏輯鏈：</p>
+                        <ul>
+                            <li><strong>目標一（符合 URS）</strong>：連結 URS → 設計，確保每條品質需求都被「設計進去了」。</li>
+                            <li><strong>目標二（風險控制）</strong>：連結 SRA 識別的風險 → 設計中的控制措施（CAs/CDEs），確保無遺漏。</li>
+                            <li><strong>目標三（CAs/CDEs 確認）</strong>：明確列出哪些是關鍵特性/關鍵設計要素，為後續 IQ/OQ/PQ 的測試計劃奠基。</li>
+                        </ul>
+                        <p>&#128161; DQ 是「設計與驗證之橋」：它確保進入建造/採購前，品質需求已被完整設計進去。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#128203; DQ 前提要件清單</h4>
+                        <p>在啟動 DQ 前，專案經理必須確認以下文件已完成且可取得：</p>
+                        <ul>
+                            <li>&#9989; 已核准的 URS</li>
+                            <li>&#9989; 功能需求（自動化系統適用）</li>
+                            <li>&#9989; 含 CAs/CDEs 識別的系統風險評估（SRA）</li>
+                            <li>&#9989; 已完成的 DR，且所有影響 CAs/CDEs/CPPs/CQAs 的開放問題均已關閉</li>
+                        </ul>
+                        <p>&#128161; <em>實務提示：建立 DQ 入場檢查表（DQ entry checklist），提前確認所有前提要件，避免 DQ 被迫中斷。</em></p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>&#128196; 追溯矩陣在 DQ 中的應用</h4>
+                        <p>追溯矩陣在 DQ 中扮演核心工具角色，典型欄位包括：</p>
+                        <ul>
+                            <li>URS 需求編號 &amp; 描述</li>
+                            <li>對應的 CA（關鍵特性）</li>
+                            <li>對應的 CDE（關鍵設計要素）</li>
+                            <li>CPP（關鍵製程參數）</li>
+                            <li>CQA（關鍵品質屬性）</li>
+                            <li>驗收標準（acceptance criteria）</li>
+                            <li>後續測試引用（IQ/OQ/PQ 協議編號）</li>
+                        </ul>
+                        <p>再次強調：<strong>非法規強制要求，但強烈建議使用</strong>。它讓稽核員一眼看清需求→設計→驗證的完整追溯鏈。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#128394; 最終 DQ 報告的三方核准</h4>
+                        <p>DQ 報告需要由三個部門的適當層級代表核准：</p>
+                        <ul>
+                            <li><strong>工程（Engineering）</strong>：確認設計技術上可行且完整</li>
+                            <li><strong>生產（Manufacturing）</strong>：確認設計符合操作需求</li>
+                            <li><strong>品質（Quality Unit）</strong>：確認設計符合品質、法規要求</li>
+                        </ul>
+                        <p>三方核准使 DQ 報告成為正式的「品質系統文件」，不同於 DR 報告（可能只是工程會議記錄）。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>&#127970; CDMO 應用：DQ 在資本專案中的定位</h4>
+                        <p>在 CDMO 的資本專案中，DQ 通常落在以下節點：</p>
+                        <ul>
+                            <li><strong>IFC 圖發布後</strong>：設計已凍結，可進行最終 DQ 審查。</li>
+                            <li><strong>採購/長交期設備訂單前</strong>：確認設計中的 CAs/CDEs 已鎖定，避免事後設計變更（costly change orders）。</li>
+                            <li><strong>FAT 前</strong>：DQ 核准代表設計面已完整驗證，FAT 可聚焦於製造品質確認。</li>
+                        </ul>
+                        <p>DQ 報告也是 FDA/EMA 稽查時「設計文件包」的核心元件之一。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5.5 — Timing of DR and DQ (Table 5.1)
+         ============================================================ -->
+    <div class="chapter-section" id="sec55">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5</div>
+            <div class="chapter-info">
+                <h2>Timing of DR and DQ &mdash; 時序規劃</h2>
+                <p>Table 5.1: Project phases and DR/DQ deliverables</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- Left: Table 5.1 -->
+                <div class="left-column">
+                    <h3>5.5 Timing of DR and DQ &mdash; Table 5.1 <span style="font-size:0.8rem;color:#666;">(p.40)</span></h3>
+                    <p>Table 5.1 summarizes the key project phases and the corresponding DR and DQ deliverables. The table illustrates the timing of these activities throughout the design lifecycle, from project initiation through detailed design completion.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Deliverable / Activity</th>
+                                <th>Project Initiation</th>
+                                <th>Concept</th>
+                                <th>BOD (Basis of Design)</th>
+                                <th>Detailed Design</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>URS</strong></td>
+                                <td>Initiated</td>
+                                <td>Developed &amp; Approved</td>
+                                <td>Reviewed / Updated</td>
+                                <td>Final / Approved</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Classification</strong></td>
+                                <td>&mdash;</td>
+                                <td>Preliminary</td>
+                                <td>Confirmed</td>
+                                <td>Finalized</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Risk Assessment (SRA)</strong></td>
+                                <td>&mdash;</td>
+                                <td>Initiated</td>
+                                <td>Developed (IFD-based)</td>
+                                <td>Updated &amp; Finalized</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Design Review (DR)</strong></td>
+                                <td>&mdash;</td>
+                                <td>Concept DR</td>
+                                <td>BOD DR (IFD documents)</td>
+                                <td>Detailed Design DR (IFC documents)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Design Documents</strong></td>
+                                <td>Project brief</td>
+                                <td>Concept drawings / scope options</td>
+                                <td>IFD package (P&amp;IDs, layouts, specs)</td>
+                                <td>IFC package (construction-ready)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Design Qualification (DQ)</strong></td>
+                                <td>&mdash;</td>
+                                <td>&mdash;</td>
+                                <td>&mdash; (DQ planning may begin)</td>
+                                <td><strong>DQ executed &amp; approved</strong> (direct impact systems only)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>C&amp;Q Plan</strong></td>
+                                <td>&mdash;</td>
+                                <td>Initiated</td>
+                                <td>Developed</td>
+                                <td>Approved</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Traceability Matrix</strong></td>
+                                <td>&mdash;</td>
+                                <td>&mdash;</td>
+                                <td>Draft (CAs/CDEs identified)</td>
+                                <td>Finalized (acceptance criteria defined)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="font-size:0.85rem;color:#666;margin-top:0.5rem;"><em>Note: Table 5.1 content reconstructed from Chapter 5 descriptions. Original table appears on p.40 of ISPE Baseline Guide Vol.5, 2nd Edition.</em></p>
+                </div>
+                <!-- Right: Commentary on Table 5.1 -->
+                <div class="right-column">
+                    <h3>&#35299;&#35712;&#35222;&#35266; Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>&#128336; Table 5.1 關鍵洞察：時序的重要性</h4>
+                        <p>Table 5.1 傳達了一個核心訊息：<strong>DR/DQ 活動要與設計進度同步推進，而非在設計完成後才補做。</strong></p>
+                        <ul>
+                            <li><strong>概念階段</strong>：已開始 URS 和概念 DR——早期識別設計方向的品質風險。</li>
+                            <li><strong>BOD 階段</strong>：以 IFD 文件進行 DR——這是最重要的 DR 時機，因為此時設計變更成本最低。</li>
+                            <li><strong>詳細設計階段</strong>：DR 確認最終 IFC 文件；DQ 正式執行——這是直接影響系統的品質「里程碑關卡」。</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#9888; 常見錯誤：過晚執行 DR</h4>
+                        <p>許多企業的 DR 只在 IFC（建造用圖）完成後才進行，此時發現設計缺陷的修改成本極高：</p>
+                        <ul>
+                            <li>設計變更單（Change Orders）費用高昂</li>
+                            <li>施工進度被迫延誤</li>
+                            <li>可能觸發重新採購已訂購的設備</li>
+                        </ul>
+                        <p>&#128161; 最佳實踐：<strong>在 IFD 階段即進行關鍵 DR</strong>，趁設計還有彈性時解決問題。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>&#127970; CDMO 資本專案時序應用</h4>
+                        <p>典型 CDMO 新建工廠或改造專案的 DR/DQ 里程碑建議：</p>
+                        <ul>
+                            <li><strong>FEL-1（Front-End Loading 1）</strong> = 概念階段 → 完成概念 DR</li>
+                            <li><strong>FEL-2（BOD 完成）</strong> → 完成 BOD DR，確認所有系統分類和 SRA</li>
+                            <li><strong>FEL-3（詳細設計完成）</strong> → 完成最終 DR；對直接影響系統執行 DQ；取得三方（Engineering/Mfg/QA）核准</li>
+                            <li><strong>FAT/SAT 前</strong> → DQ 報告必須已核准，作為進入 IQ/OQ 的先決條件</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>&#128176; 思考練習</h4>
+                        <p>在您的機構中，DR 是否有跟上設計進度？以下是自我評估問題：</p>
+                        <ul>
+                            <li>上次 DR 是在 IFD 還是 IFC 之後才做？</li>
+                            <li>DR 有 QA 代表參與嗎（至少品質導向的 DR）？</li>
+                            <li>DR 結果有被整合進追溯矩陣，並連結到後續 IQ/OQ/PQ 測試嗎？</li>
+                            <li>DQ 是正式的三方核准文件，還是只是一份工程報告？</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#128161; 整章總結比喻</h4>
+                        <p>把整個 C&amp;Q 設計驗證過程想像成蓋房子：</p>
+                        <ul>
+                            <li><strong>URS</strong> = 屋主的需求清單（幾房幾廳、要有停車位）</li>
+                            <li><strong>SRA</strong> = 風險評估（土地是否有問題、颱風設計標準）</li>
+                            <li><strong>DR</strong> = 建築師審查圖紙（所有人一起看，確認沒有設計缺陷）</li>
+                            <li><strong>DQ</strong> = 消防局/結構技師的正式認可（只看安全關鍵項目，蓋章核准）</li>
+                        </ul>
+                        <p>DQ 的「蓋章」讓建造得以正式啟動，後續 IQ/OQ/PQ 才能按計劃進行。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION SUMMARY
+         ============================================================ -->
+    <div class="section-summary" id="summary">
+        <h3>&#128218; 章節總結 — Chapter 5 Key Takeaways</h3>
+        <ul>
+            <li><strong>DR vs. DQ 的根本區別</strong>：DR 覆蓋所有設計面向，適用所有系統；DQ 只針對直接影響系統的 CAs/CDEs，需 Engineering + Manufacturing + QA 三方核准。兩者是「各別文件」而非「各別活動」，應最小化重複工作。</li>
+            <li><strong>三階段設計流程</strong>：概念 → BOD（含 IFD 文件）→ 詳細設計（含 IFC 文件）。DR 應在每個階段進行，DQ 在詳細設計完成後正式執行。</li>
+            <li><strong>DR 基於 ICH Q9 原則</strong>：DR 的投入程度與記錄詳細度應與風險等級相稱。低風險系統可用會議記錄；高度關鍵系統需更詳細的 DR 文件。QA 應至少出席品質導向的 DR。</li>
+            <li><strong>DQ 的四項前提要件</strong>：(1) 已核准 URS；(2) 功能需求（自動化系統）；(3) 含 CAs/CDEs 的 SRA；(4) 所有相關開放問題已關閉的 DR 記錄。</li>
+            <li><strong>追溯矩陣（Traceability Matrix）</strong>：非法規強制要求，但是連結 URS 需求 → CAs/CDEs → 驗收標準的最佳工具，在 DQ 中強烈建議使用，也為後續 IQ/OQ/PQ 奠定基礎。</li>
+            <li><strong>時序是關鍵</strong>：Table 5.1 顯示 DR/DQ 應與設計進度同步，而非事後補做。在 BOD/IFD 階段即進行關鍵 DR，可大幅降低後期設計變更成本。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- Footer -->
+<footer class="main-footer">
+    <p>ISPE Baseline&reg; Guide: Commissioning and Qualification, 2nd Edition &copy; 2019 ISPE. All rights reserved.</p>
+    <p style="font-size:0.8rem;opacity:0.7;">Educational bilingual commentary for internal training use. Chapter 5 (pp.35–40).</p>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    // Back-to-top visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

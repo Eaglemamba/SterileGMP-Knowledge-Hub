@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TR68 Section 3A: Risk Triage Model — Steps 1–4</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== TR68 ORANGE THEME OVERRIDES ===== */
+.header {
+    background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+}
+
+.section-bar {
+    background: #ea580c;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+}
+
+/* Risk level cell colors */
+.risk-a {
+    background-color: #fee2e2 !important;
+    color: #991b1b;
+    font-weight: 700;
+    text-align: center;
+}
+.risk-b {
+    background-color: #fef3c7 !important;
+    color: #92400e;
+    font-weight: 700;
+    text-align: center;
+}
+.risk-c {
+    background-color: #dcfce7 !important;
+    color: #166534;
+    font-weight: 700;
+    text-align: center;
+}
+.priority-1 {
+    background-color: #fee2e2 !important;
+    color: #991b1b;
+    font-weight: 700;
+    text-align: center;
+}
+.priority-2 {
+    background-color: #fef3c7 !important;
+    color: #92400e;
+    font-weight: 700;
+    text-align: center;
+}
+.priority-3 {
+    background-color: #dcfce7 !important;
+    color: #166534;
+    font-weight: 700;
+    text-align: center;
+}
+
+.risk-header-col {
+    background: #fff7ed !important;
+    font-weight: 700;
+    color: #7c2d12;
+}
+
+/* Summary section */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-top: 2rem;
+    border: 1px solid #f6ad55;
+}
+
+.section-summary h2 {
+    color: #92400e;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    border-bottom: 2px solid #f6ad55;
+    padding-bottom: 0.5rem;
+}
+
+.section-summary ul {
+    margin-left: 1.5rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #78350f;
+}
+
+.worked-example {
+    background: #fff7ed;
+    border: 2px solid #ea580c;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+}
+
+.worked-example h4 {
+    color: #c2410c;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.step-badge {
+    display: inline-block;
+    background: #ea580c;
+    color: white;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.92rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 3A: Risk Triage Model — Steps 1–4</h1>
+    <div class="subtitle">風險分流模型：步驟一至四</div>
+    <div class="page-info">PDA Technical Report No. 68 (Revised 2024) &nbsp;|&nbsp; Section 6.0–6.1.4 &nbsp;|&nbsp; Pages 16–26</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解「風險分流（Risk Triage）」的概念，及其在藥品短缺預防中的角色，並能區分哪些產品需要主動管理。</li>
+            <li>掌握風險分流模型的四步驟框架（PHA 初步危害分析法），能從衝擊評估到風控策略系統化執行。</li>
+            <li>能正確使用 Table 6.1.1-1 的衝擊矩陣，根據治療用途與替代品可及性，將產品分級為風險等級 A、B 或 C。</li>
+            <li>能應用 Table 6.1.3-1 的優先順序矩陣，結合衝擊等級與短缺可能性，判定風險優先等級 1、2 或 3。</li>
+            <li>了解各優先等級對應的控制策略，包括 CPV、VSM、多元供應源及藥品短缺預防與應變計畫的應用時機。</li>
+        </ul>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-6-0">6.0 Risk Triage Model 概述</a>
+            <a href="#sec-6-1">6.1 模型描述與四步驟</a>
+            <a href="#sec-6-1-1">6.1.1 Step 1: 定義衝擊</a>
+            <a href="#sec-6-1-2">6.1.2 Step 2: 評估可能性</a>
+            <a href="#sec-6-1-3">6.1.3 Step 3: 風險優先等級</a>
+            <a href="#sec-6-1-4">6.1.4 Step 4: 預防性風控策略</a>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION 6.0 — Risk Triage Model Overview
+         =================================================================== -->
+    <div id="sec-6-0">
+        <div class="section-bar">6.0 &nbsp; Risk Triage Model &nbsp;｜&nbsp; 風險分流模型概述</div>
+
+        <div class="two-column">
+            <!-- LEFT: English original -->
+            <div class="left-column">
+                <h3>6.0 Risk Triage Model</h3>
+                <p>A preventive approach to managing the risk of drug shortages caused by manufacturing or quality issues includes a risk assessment method called <span class="key-term">triage</span>. A triage approach allows a quick and easy assessment of the shortage risks of a product and prioritizes actions for proactive drug shortage management (<span class="key-term">risk control</span>). Not all products require proactive drug shortage management. Only medically necessary and critical products and those with the greatest impact to patients require commensurate levels of effort and planning to ensure that the supply is adequate, and the availability component of the risk calculus is assessed and appropriately managed. The method and tools proposed in Section 6.0 are intended to help determine whether a proactive <span class="key-term">Drug Shortage Prevention and Response Plan</span> is required for a product.</p>
+
+                <p>Companies should have robust <span class="key-term">QRM</span> and knowledge management systems to both prevent (proactive) and respond (reactive) to drug shortages (see Section 5.0). Proactive QRM for drug shortage prevention should involve the following:</p>
+                <ul>
+                    <li>Categorizing each product by criticality based on its indication, marketplace importance, profile, current supply situation, and patients' needs</li>
+                    <li>Establishing and periodically reviewing a <span class="key-term">Drug Shortage Risk Register</span>—a single source of information on hazards and the related risks that can result in drug shortages—by proactively identifying and assessing risks to quality, compliance, and supply that could lead to a shortage. A Drug Shortage Risk Register (see Section 11.0: Appendix 1 for a sample risk register template) should provide the following information, which should be updated and reviewed on a regular basis:
+                        <ul>
+                            <li>Description of potential drug shortage risks for a product, including API, excipients, and sources of risk</li>
+                            <li>Countries or regions that could be affected</li>
+                            <li>Description of the current controls that are or are not in place, with respect to the prevention of shortages, and the known effectiveness of such controls</li>
+                            <li>Risk level for a potential drug shortage, considering the current controls, new risk control actions that are required, owners, and due-date status</li>
+                            <li>Key leading and lagging indicators that would trigger early and timely responses to potential shortages, including near-misses on a batch release or the ability to meet product demand</li>
+                        </ul>
+                    </li>
+                    <li>Ensuring timely reduction and management of risks by completing risk control actions defined in the risk control plan based on criticality of product availability. Issues to address in the risk control plan could include:
+                        <ul>
+                            <li>Inventory and safety stock planning</li>
+                            <li>Demand and supply planning for all relevant markets using a sourcing strategy (e.g., dual sourcing)</li>
+                            <li>Capacity planning for manufacturing and distribution (capacity reserve)</li>
+                            <li>Availability of alternative therapies</li>
+                            <li>Acceleration of health authority actions (e.g., approval of post-approval changes, inspections)</li>
+                        </ul>
+                    </li>
+                    <li>Establishing a <span class="key-term">Drug Shortage Prevention and Response Plan</span>, at least for medically necessary products, which could include early warning systems for potential shortages of certain products (see Section 12.0: Appendix 2 for a sample prevention and response plan template).</li>
+                </ul>
+                <p>Responding to and disseminating information about a potential drug shortage in a timely and effective manner is especially important for medically necessary, life supporting, or life sustaining therapies. Since some shortages need to be addressed quickly, a preestablished and well-structured drug shortage response plan can be very valuable in laying out a clear path of actions to take to minimize the impact of a shortage, end the shortage, and quickly return product supply to its normal state.</p>
+            </div>
+
+            <!-- RIGHT: Chinese commentary -->
+            <div class="right-column">
+                <h3>解說與重點 Commentary</h3>
+
+                <div class="analogy-box">
+                    <h4>比喻：急診室分流（Triage）</h4>
+                    <p>「Triage（分流）」源自急診醫學。急診室每天湧入大量病患，護理師必須快速判斷——哪些人需要立刻處置，哪些人可以等候？這個優先排序的過程就叫「triage」。</p>
+                    <p>TR68 將同樣的概念搬進藥品供應鏈管理：面對成百上千個品項，企業必須先快速評估「哪些產品一旦短缺，對病患的傷害最大？」，再集中資源在這些高風險品項上。</p>
+                    <p><strong>核心邏輯：並非每個產品都需要同等資源，資源應流向最需要保護的地方。</strong></p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：QRM 的雙向角色</h4>
+                    <p>TR68 強調 QRM（Quality Risk Management）必須同時具備兩個面向：</p>
+                    <ul>
+                        <li><strong>主動預防（Proactive）</strong>：短缺發生前，建立防線。例如識別高風險產品、建立庫存緩衝、評估供應商穩定性。</li>
+                        <li><strong>被動應變（Reactive）</strong>：短缺已發生時，啟動應變計畫，最小化損害。</li>
+                    </ul>
+                    <p>本節（6.0）聚焦主動預防端，而應變計畫的細節則在 Section 7.0 說明。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：Drug Shortage Risk Register 的五大內容</h4>
+                    <p>藥品短缺風險登記表（Risk Register）是整個 QRM 體系的「單一資訊來源（Single Source of Truth）」，必須涵蓋：</p>
+                    <ul>
+                        <li>潛在短缺風險的描述（含 API、賦形劑及其來源）</li>
+                        <li>可能受影響的國家/地區</li>
+                        <li>現行控制措施及其有效性評估</li>
+                        <li>風險等級（考量現行控制後的殘餘風險）</li>
+                        <li>早期預警指標（leading indicators）與落後指標（lagging indicators）</li>
+                    </ul>
+                    <p>此登記表應定期更新與審查，不是「一次性文件」。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：Risk Control Plan 的六大要素</h4>
+                    <p>風控計畫（Risk Control Plan）中應處理的議題包括：</p>
+                    <ul>
+                        <li>庫存與安全庫存規劃</li>
+                        <li>需求與供應規劃（含雙重採購策略 dual sourcing）</li>
+                        <li>製造與配送的產能規劃（產能儲備）</li>
+                        <li>替代療法的可及性</li>
+                        <li>加速法規機關行動（例如批准批准後變更）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION 6.1 — Description of the Risk Triage Model
+         =================================================================== -->
+    <div id="sec-6-1">
+        <div class="section-bar">6.1 &nbsp; Description of the Risk Triage Model &nbsp;｜&nbsp; 風險分流模型描述</div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>6.1 Description of the Risk Triage Model</h3>
+                <p>The risk triage method uses a <span class="key-term">preliminary hazards analysis (PHA)</span> approach, which simplifies the process after information is collected on the potential or actual drug shortage. A four-step PHA triage approach is used to evaluate the relationship of three risk elements—<span class="key-term">therapeutic use</span> of a product, <span class="key-term">availability of alternatives</span>, and <span class="key-term">likelihood of occurrence</span>—to determine the risk of a drug shortage. The steps in the triage process depicted in Figure 6.1-1 are as follows:</p>
+                <ol>
+                    <li>Identify impact level (impact on a patient) based on therapeutic use and availability of alternatives.</li>
+                    <li>Determine the likelihood of a drug shortage for the product, taking into account any drug shortage prevention controls that are in place and their likely effectiveness.</li>
+                    <li>Determine the risk priority level based on a combination of impact on the patient and the likelihood of a drug shortage for the product.</li>
+                    <li>Plan and implement the suggested risk controls for the assessed product based on the risk priority level.</li>
+                </ol>
+                <p>The details of the triage model displayed in Figure 6.1.1-1 are described step by step in Sections 6.1.1–6.1.4.</p>
+                <p>The triage method incorporates key words used to create a simple risk assessment design approach. Rather than using very general, subjective terms to describe priority levels for each of the three elements used in the triage model (e.g., high, medium, and low severity), using discrete information allows the assessment to focus on product information rather than defining "high," "medium," and "low." Table 6.1-1 shows how the key words are used to assign a priority level for each of the three elements in the risk triage model. The current Shortage Prevention Controls will be listed in the drug shortage prevention plan.</p>
+
+                <!-- TABLE 6.1-1 -->
+                <p><strong>Table 6.1-1 &nbsp; Key Words used in the Risk Triage and the Link to the Likelihood of Shortages</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk Triage</th>
+                            <th>Therapeutic Use of Product</th>
+                            <th>Availability of Alternatives</th>
+                            <th>Likelihood of Shortage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="risk-header-col"><strong>High</strong></td>
+                            <td>Medically necessary, life supporting, or life sustaining:<br>
+                                <ul>
+                                    <li>Used in acute or chronic situations of stable conditions or disease with a fatal outcome where the product has been shown to affect the progression of the disease or survival</li>
+                                </ul>
+                            </td>
+                            <td>No alternatives available</td>
+                            <td>High likelihood of shortage</td>
+                        </tr>
+                        <tr>
+                            <td class="risk-header-col"><strong>Medium</strong></td>
+                            <td>Acute short-term or chronic long-term:<br>
+                                <ul>
+                                    <li>Part of a treatment for or prevention of a disease that is life-threatening or irreversibly progressive, or without which public health could be severely harmed</li>
+                                </ul>
+                            </td>
+                            <td>Alternative products or APIs available, e.g.:<br>
+                                <ul>
+                                    <li>Alternative dosing (lower dose/temporary break from treatment) or limiting the use to high risk patients could be explored; consider this might depend on the expected duration</li>
+                                    <li>Other products in the same class or even other classes, consider adverse events, or narrow therapeutic range or contra-indications</li>
+                                </ul>
+                            </td>
+                            <td>Medium likelihood of shortage</td>
+                        </tr>
+                        <tr>
+                            <td class="risk-header-col"><strong>Low</strong></td>
+                            <td>Other indications</td>
+                            <td>Same product or API available, e.g.:<br>
+                                <ul>
+                                    <li>Sourced from an alternative manufacturing site</li>
+                                    <li>Consider manufacturing capacity and technical and regulatory times to switch</li>
+                                    <li>Different strengths or formulations; consider need for formulations suitable for use in special populations</li>
+                                </ul>
+                            </td>
+                            <td>Low likelihood of shortage</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="right-column">
+                <h3>解說與重點 Commentary</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：PHA（初步危害分析）</h4>
+                    <p><strong>Preliminary Hazards Analysis（PHA）</strong>是一種來自系統安全工程的風險評估方法，適用於在詳細資訊不足時進行快速、早期的危害識別與排序。</p>
+                    <p>TR68 採用 PHA 的精神：在短缺發生之前，僅需三項關鍵資訊（治療用途、替代品可及性、短缺可能性）即可快速評估產品風險，不需要耗費大量資源進行深入分析。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：三個風險要素</h4>
+                    <p>風險分流模型的核心是三個維度的交集評估：</p>
+                    <ul>
+                        <li><strong>治療用途（Therapeutic Use）</strong>：這個藥品是為了什麼疾病使用的？後果有多嚴重？</li>
+                        <li><strong>替代品可及性（Availability of Alternatives）</strong>：如果這個產品缺貨，有沒有其他可替代的治療選項？</li>
+                        <li><strong>短缺可能性（Likelihood of Occurrence）</strong>：考量現行控制措施後，這個產品實際發生短缺的機率有多高？</li>
+                    </ul>
+                    <p>前兩者合併決定「衝擊等級（Risk Level A/B/C）」，再與第三者結合產生「優先等級（Priority 1/2/3）」。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：為何使用關鍵字而非「高/中/低」評分？</h4>
+                    <p>傳統風險評估常使用主觀的「高/中/低」評分，導致不同評估者之間結果不一致。TR68 改用<strong>具體的描述性關鍵字</strong>（如「無替代品可用」、「有類似療法」），讓評估聚焦在產品的實際特性，減少主觀判斷的空間，提高評估的一致性與可重複性。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習 1：識別關鍵字</h4>
+                    <p>請根據 Table 6.1-1，為以下場景選擇正確的關鍵字描述：</p>
+                    <ol>
+                        <li>抗癌標靶藥物 Trastuzumab（賀癌平），目前市面上僅此一種，無可替代的治療方案。<br>→ 治療用途：＿＿＿ / 替代品：＿＿＿</li>
+                        <li>普通感冒咳嗽糖漿，藥局貨架上有多種品牌可選。<br>→ 治療用途：＿＿＿ / 替代品：＿＿＿</li>
+                        <li>帕金森氏症口服藥（慢性用藥），同類藥物尚有其他廠牌可選。<br>→ 治療用途：＿＿＿ / 替代品：＿＿＿</li>
+                    </ol>
+                    <p><em>參考答案：1. High / No alternatives available；2. Low / Same product available；3. Medium / Alternative products available</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION 6.1.1 — Step 1: Define Impact to the Patient
+         =================================================================== -->
+    <div id="sec-6-1-1">
+        <div class="section-bar">6.1.1 &nbsp; Step 1: Define Impact to the Patient &nbsp;｜&nbsp; 步驟一：定義病患衝擊</div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>6.1.1 Step 1: Define Impact to the Patient</h3>
+                <p>Companies can benefit from categorizing their products by therapeutic use, which makes it possible to apply a risk-based approach for managing drug shortage risks for their portfolio of products. A <span class="key-term">risk level</span> indicating the severity of the impact of a shortage on the patient is assigned based on two factors: therapeutic use of the product and availability of alternatives, as shown in Table 6.1.1-1.</p>
+
+                <!-- TABLE 6.1.1-1: Step 1 Define Impact on Patient -->
+                <p><strong>Table 6.1.1-1 &nbsp; Step 1: Define Impact on Patient</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2" style="vertical-align:middle;">Therapeutic Use &amp; Consequences if Product not Available</th>
+                            <th colspan="3" style="text-align:center;">Availability of Alternatives</th>
+                        </tr>
+                        <tr>
+                            <th style="text-align:center;">No Alternatives Available</th>
+                            <th style="text-align:center;">Alternative Products / API Available</th>
+                            <th style="text-align:center;">Same Product / API Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Medically necessary product, life supporting or life sustaining</strong><br><em>Fatal or severe irreversible harm if the patient is not treated with the product</em></td>
+                            <td class="risk-a">Risk Level A</td>
+                            <td class="risk-a">Risk Level A</td>
+                            <td class="risk-b">Risk Level B</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acute short term or chronic long term</strong><br><em>Severe harm but reversible if patient is not treated with the product</em></td>
+                            <td class="risk-a">Risk Level A</td>
+                            <td class="risk-b">Risk Level B</td>
+                            <td class="risk-c">Risk Level C</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Other indications</strong><br><em>Inconvenience if patient is not treated with the product</em></td>
+                            <td class="risk-b">Risk Level B</td>
+                            <td class="risk-c">Risk Level C</td>
+                            <td class="risk-c">Risk Level C</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>"<span class="key-term">Medically necessary products</span>," "critical medicines," and "<span class="key-term">life supporting or life sustaining products</span>" have the highest criticality based on patient need; therefore, their shortages present the greatest risk. (Definitions of terms are provided in Section 3.0.) Ensuring an uninterrupted, reliable supply of these products at all times to all patients who need them is key; therefore, robust controls must be in place to proactively manage the risk of shortages of these drugs.</p>
+
+                <p>Products used to treat <span class="key-term">acute short-term conditions</span> or manage <span class="key-term">chronic long-term diseases</span> (e.g., Parkinson's disease, diabetes, multiple sclerosis) constitute the next level of product indication-based criticality. Although the criticality of these products is not at the same level as that of life supporting or life sustaining therapies, the unavailability of these products over an extended period could harm patients; therefore, shortages of these products cannot be tolerated for long periods.</p>
+
+                <p>The lowest level of product indication-based criticality is assigned to medicinal products used for other minor indications (e.g., self-care therapies for minor ailments such as cough and cold). If a product is registered for more than one indication with different levels of indication-based criticality, the more conservative or higher level of criticality should generally be applied for this assessment. For example, if one of the product indications classifies a product as medically necessary, and the second indication classifies it for treatment of a chronic long-term condition, risk planning should be done assuming the higher level of product indication-based criticality, that is, for its use as a medically necessary product.</p>
+
+                <p>In addition to the therapeutic use of the product, the second dimension in ranking the impact of a shortage to patients is access to and availability of alternative therapies. Relevant health authorities may need to be consulted to determine where alternatives may exist for a product and for what markets they are available. Where no alternatives are available, especially for products that are medically necessary, life supporting, life sustaining, or used to treat acute short-term or chronic long-term conditions, the impact to the patient is the highest (<span class="key-term">Risk Level A</span> – red). Therefore, the margin for tolerance of a drug shortage with these products is minimal, and controls for these risks should ensure that:</p>
+                <ul>
+                    <li>Focus is on proactive prevention of a shortage</li>
+                    <li>Time to remedy and return supply conditions toward normal is as short as possible in the event of a shortage</li>
+                </ul>
+
+                <p>Where an alternative therapy is available in the form of a similar product or other presentations of the same product, the impact to the patient is lower (<span class="key-term">Risk Level B</span> – yellow). In the event of a shortage, it is important to ensure that these alternatives are accessible to patients in a timely manner to minimize impact (e.g., by preventing interruptions in treatment).</p>
+
+                <p>The lowest level of impact (<span class="key-term">Risk Level C</span> – green) is assigned to medicinal products used for other indications (e.g., self-care therapies for minor ailments such as cough and cold) for which alternatives are readily available or for products used to treat acute short-term or chronic-long terms conditions that have the same product readily available in other presentations.</p>
+
+                <p>Table 6.1.1-2 provides examples of risk level assignments to products based on their therapeutic use and the availability of alternative therapies. These examples are presented only for illustrative purposes; actual rankings may vary.</p>
+
+                <!-- TABLE 6.1.1-2: Examples of Risk Levels -->
+                <p><strong>Table 6.1.1-2 &nbsp; Examples of Risk Levels Assigned to Products Based on Therapeutic Use and Availability of Alternatives</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Therapeutic Use</th>
+                            <th>Consequences if Product not Available</th>
+                            <th>Availability of Alternatives</th>
+                            <th>Impact Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Targeted biologics for oncology treatment (e.g., Trastuzumab)</td>
+                            <td>Medically necessary, life supporting, or life sustaining product</td>
+                            <td>Death or severe irreversible harm</td>
+                            <td>No alternatives available</td>
+                            <td class="risk-a">Risk Level A</td>
+                        </tr>
+                        <tr>
+                            <td>Antibiotics (e.g., Azithromycin or Ciprofloxacin)</td>
+                            <td>Medically necessary, life supporting, or life sustaining product</td>
+                            <td>Death or severe irreversible harm</td>
+                            <td>Alternative products available: similar therapy</td>
+                            <td class="risk-a">Risk Level A</td>
+                        </tr>
+                        <tr>
+                            <td>Diabetes treatment (e.g., Insulin)</td>
+                            <td>Medically necessary, life supporting, or life sustaining product</td>
+                            <td>Death or severe irreversible harm</td>
+                            <td>Alternative products available: similar therapy</td>
+                            <td class="risk-a">Risk Level A</td>
+                        </tr>
+                        <tr>
+                            <td>Congestive heart failure medicine (e.g., Digoxin)</td>
+                            <td>Medically necessary, life supporting, or life sustaining product</td>
+                            <td>Death or severe irreversible harm</td>
+                            <td>Exact product available but in other presentations</td>
+                            <td class="risk-b">Risk Level B</td>
+                        </tr>
+                        <tr>
+                            <td>Epilepsy medicine (e.g., Diazepam)</td>
+                            <td>Acute short-term or chronic long-term condition</td>
+                            <td>Severe, reversible harm</td>
+                            <td>Alternative products available: similar therapy</td>
+                            <td class="risk-b">Risk Level B</td>
+                        </tr>
+                        <tr>
+                            <td>Plasma protein therapies</td>
+                            <td>Acute short-term or chronic long-term condition</td>
+                            <td>Severe, reversible harm</td>
+                            <td>Exact product available but in other presentations</td>
+                            <td class="risk-c">Risk Level C</td>
+                        </tr>
+                        <tr>
+                            <td>OTC cough suppressants (e.g., cough syrup)</td>
+                            <td>Minor indications</td>
+                            <td>Inconvenience</td>
+                            <td>Alternative products available: similar therapy</td>
+                            <td class="risk-c">Risk Level C</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="right-column">
+                <h3>解說與重點 Commentary</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：衝擊矩陣的邏輯</h4>
+                    <p>Table 6.1.1-1 是一個 3×3 的矩陣，縱軸（列）是<strong>治療用途嚴重性</strong>，橫軸（欄）是<strong>替代品可及性</strong>。交叉點即為衝擊等級。</p>
+                    <p>矩陣的設計邏輯很直觀：</p>
+                    <ul>
+                        <li>治療越關鍵（救命用途）+ 替代品越少 → 衝擊越高 → <span style="background:#fee2e2;padding:2px 6px;border-radius:4px;color:#991b1b;font-weight:700;">Risk Level A（紅）</span></li>
+                        <li>治療次重要 + 有相似替代品可選 → <span style="background:#fef3c7;padding:2px 6px;border-radius:4px;color:#92400e;font-weight:700;">Risk Level B（黃）</span></li>
+                        <li>輕微用途 + 替代品充足 → <span style="background:#dcfce7;padding:2px 6px;border-radius:4px;color:#166534;font-weight:700;">Risk Level C（綠）</span></li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：用三個藥品理解 A/B/C</h4>
+                    <p><strong>Risk Level A — 胰島素（Insulin）</strong><br>
+                    第一型糖尿病患者每天需要注射胰島素，若缺貨且沒有完全等效的替代品，患者可能在數日內陷入酮酸中毒危及生命。衝擊是即時且不可逆的。→ Risk Level A。</p>
+                    <p><strong>Risk Level B — 地高辛（Digoxin）錠劑</strong><br>
+                    心衰竭用藥。假設 0.25mg 錠劑缺貨，但市面上仍有 0.125mg 錠劑（需調整劑量）或注射劑型可轉換，衝擊降低但仍需謹慎管理。→ Risk Level B。</p>
+                    <p><strong>Risk Level C — OTC 咳嗽糖漿</strong><br>
+                    感冒咳嗽用，症狀輕微，藥局有多種品牌可選，缺一不礙事。→ Risk Level C。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：多用途產品取最高等級</h4>
+                    <p>若一個產品同時有多種適應症，且不同適應症對應不同風險等級，應採用<strong>最高的等級</strong>（保守原則）。</p>
+                    <p>例如：某抗生素在甲適應症屬「醫療必需品（Risk A）」，在乙適應症則屬「慢性病管理（Risk B）」，整體應按 <strong>Risk Level A</strong> 規劃。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：替代品評估須諮詢法規機關</h4>
+                    <p>替代品的可及性並非僅靠藥品本身判斷，還需考慮：</p>
+                    <ul>
+                        <li>替代品在各市場的上市許可狀態</li>
+                        <li>療效與安全性的等效程度（是否有相似的副作用或禁忌症）</li>
+                        <li>特殊族群（小兒、老年、腎衰竭患者）的劑型適用性</li>
+                        <li>需要諮詢相關主管機關，確認替代品在當地市場的可及性</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習 2：衝擊等級分類</h4>
+                    <p>請查閱 Table 6.1.1-1，判斷以下產品的 Risk Level（並說明原因）：</p>
+                    <ol>
+                        <li><strong>Trastuzumab（賀癌平）</strong>：用於 HER2 陽性乳癌，目前無任何等效生物相似藥上市。</li>
+                        <li><strong>血漿蛋白療法</strong>：急/慢性用途，但市面上有不同廠牌的相同規格產品可取代。</li>
+                        <li><strong>Metformin（二甲雙胍）</strong>：第二型糖尿病一線用藥（慢性），同藥理機轉之替代藥物（如 SGLT-2 抑制劑）有限但存在。</li>
+                    </ol>
+                    <p><em>參考答案：1. Risk Level A（救命用途 + 無替代品）；2. Risk Level C（急慢性用途 + 相同產品可取得）；3. Risk Level B（急慢性用途 + 有替代品但非完全等效）</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION 6.1.2 — Step 2: Assess the Likelihood of Shortage
+         =================================================================== -->
+    <div id="sec-6-1-2">
+        <div class="section-bar">6.1.2 &nbsp; Step 2: Assess the Likelihood of Shortage &nbsp;｜&nbsp; 步驟二：評估短缺可能性</div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>6.1.2 Step 2: Assess the Likelihood of Shortage</h3>
+                <p>In the second step of the triage, the <span class="key-term">likelihood of shortage</span> for a product is assessed. Hazards that could increase the likelihood of a shortage should be assessed and current controls should be assessed to identify the hazards. Where good, robust controls exist for a hazard, the likelihood of occurrence would be low; if there are limited to no controls for a hazard, the likelihood of occurrence increases. Historical data may be available for certain hazards, and this historical data should be leveraged to assess the relative likelihood of risks.</p>
+
+                <p>For example, product sourcing may be one of the controls assessed to determine the likelihood of a shortage. <span class="key-term">Single-sourcing</span> of a product or key material supplier increases the likelihood of occurrence of a shortage in the event of an issue at that sole-sourced facility or supplier. Other controls may be related to:</p>
+                <ul>
+                    <li>Infrastructure maintenance and improvements</li>
+                    <li>Technology updates</li>
+                    <li>Business continuity planning and capacity assessment</li>
+                    <li>Process capability</li>
+                    <li>Inventory levels</li>
+                    <li>Supplier diversification</li>
+                </ul>
+
+                <p>This assessment of likelihood of occurrence may not be quantitative, which is considered acceptable because it is more important to assess the controls and their likely effectiveness and to understand the relative likelihood of the occurrence of a shortage for identified hazards. In this risk triage model, a simple <span class="key-term">three-level (high, medium, low)</span> scale for assessing the likelihood of occurrence has been proposed.</p>
+            </div>
+
+            <div class="right-column">
+                <h3>解說與重點 Commentary</h3>
+
+                <div class="analogy-box">
+                    <h4>比喻：單引擎 vs 雙引擎飛機</h4>
+                    <p>想像兩架飛機橫越太平洋：</p>
+                    <ul>
+                        <li><strong>單引擎飛機</strong>：只要那一具引擎故障，飛機立刻面臨危機，沒有後備。→ 單一來源（Single-source）供應，短缺可能性<strong>高（High）</strong>。</li>
+                        <li><strong>雙引擎飛機 + 備用燃料</strong>：一具引擎故障，另一具可繼續飛行，加上有備用燃料，危機耐受度高。→ 多元來源（Multi-source）+ 充足安全庫存，短缺可能性<strong>低（Low）</strong>。</li>
+                    </ul>
+                    <p>藥品供應鏈的邏輯相同：現行控制措施越完善，短缺可能性越低。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：短缺可能性的影響因子</h4>
+                    <p>評估短缺可能性時，需考量以下控制措施是否到位及其有效性：</p>
+                    <table style="margin-top:0.5rem;">
+                        <thead>
+                            <tr><th>控制面向</th><th>高可能性（控制不足）</th><th>低可能性（控制充足）</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>供應來源</td><td>單一來源（Single-source）</td><td>多元來源（Multi-source）</td></tr>
+                            <tr><td>庫存水準</td><td>庫存不足，無緩衝</td><td>充足安全庫存（Safety Stock）</td></tr>
+                            <tr><td>製造能力</td><td>無備用廠房，切換時間長（&gt;6個月）</td><td>備用廠房已就緒（&lt;4個月）</td></tr>
+                            <tr><td>流程穩定性</td><td>製程能力不足，良率低</td><td>CPV 監控完善，流程穩定</td></tr>
+                            <tr><td>基礎設施</td><td>設備老舊，維護不足</td><td>定期維護，現代化設備</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：定性評估即可，不須量化</h4>
+                    <p>TR68 明確指出，短缺可能性的評估<strong>不一定需要量化</strong>（例如給出 30% 概率），重要的是：</p>
+                    <ul>
+                        <li>理解現有控制措施是否有效</li>
+                        <li>能夠相對比較各危害的可能性高低</li>
+                    </ul>
+                    <p>使用三級尺度（高/中/低）即可滿足分流模型的需求。這與傳統精細的 FMEA 計分方式不同，強調的是實用性與效率。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION 6.1.3 — Step 3: Assess Risk Priority Levels
+         =================================================================== -->
+    <div id="sec-6-1-3">
+        <div class="section-bar">6.1.3 &nbsp; Step 3: Assess Risk Priority Levels &nbsp;｜&nbsp; 步驟三：評定風險優先等級</div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>6.1.3 Step 3: Assess Risk Priority Levels</h3>
+                <p>In Step 3, outputs from Step 1 (i.e., <span class="key-term">Risk Level A, B, or C</span>), in combination with the likelihood of shortage, are used to assign a <span class="key-term">Risk Priority Level (1, 2, or 3)</span> as shown in Table 6.1.3-1.</p>
+
+                <!-- TABLE 6.1.3-1 -->
+                <p><strong>Table 6.1.3-1 &nbsp; Assess Likelihood of Shortages (Step 2) and Risk Priority Levels (Step 3)</strong></p>
+                <p><em>Process Steps:</em></p>
+                <ol>
+                    <li>Take the impact to patient (Risk level A, B or C)</li>
+                    <li>At each risk level, consider the likelihood of drug shortage (Step 2)</li>
+                    <li>Define priority (Step 3)</li>
+                </ol>
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2" style="vertical-align:middle;">Therapeutic Use &amp; Consequences if Alternate Product not Available</th>
+                            <th colspan="3" style="text-align:center;">Likelihood of Shortage</th>
+                        </tr>
+                        <tr>
+                            <th style="text-align:center;">High</th>
+                            <th style="text-align:center;">Medium</th>
+                            <th style="text-align:center;">Low</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="risk-header-col"><strong>Risk Level A</strong></td>
+                            <td class="priority-1">Risk Priority Level 1</td>
+                            <td class="priority-1">Risk Priority Level 1</td>
+                            <td class="priority-2">Risk Priority Level 2</td>
+                        </tr>
+                        <tr>
+                            <td class="risk-header-col"><strong>Risk Level B</strong></td>
+                            <td class="priority-1">Risk Priority Level 1</td>
+                            <td class="priority-2">Risk Priority Level 2</td>
+                            <td class="priority-3">Risk Priority Level 3</td>
+                        </tr>
+                        <tr>
+                            <td class="risk-header-col"><strong>Risk Level C</strong></td>
+                            <td class="priority-2">Risk Priority Level 2</td>
+                            <td class="priority-3">Risk Priority Level 3</td>
+                            <td class="priority-3">Risk Priority Level 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>A <span class="key-term">single-sourced product</span> with no backup or a product with insufficient safety stock presents the highest risk and, in combination with Risk Levels A and B (from Step 1 of the triage), would result in the highest risk priority level (<span class="key-term">Risk Priority Level 1</span>). A <span class="key-term">multisourced product</span> with a low capacity reserve (e.g., preparation of a backup manufacturing facility to produce the product will take at least six months) or with sufficient short-term inventory has a medium likelihood of occurrence and, in combination with Risk Levels A and B (from Step 1 of the triage), would result in a medium risk priority level (<span class="key-term">Risk Priority Level 2</span>). A multisourced product with an adequate capacity reserve (e.g., an active backup manufacturing facility or will require less than four months to prepare to produce the product) and a sufficient inventory level represents the lowest risk and, in combination with Risk Levels B and C, would result in the lowest risk priority level (<span class="key-term">Risk Priority Level 3</span>).</p>
+
+                <p>A simple example of an assessment is shown in Figure 6.1.3-1. In this example, no alternative therapies are currently marketed or are in clinical trials for a biological drug product used to treat late-stage cancer. The product is dual-sourced but does not have enough inventory reserves to cover a major manufacturing or quality issue.</p>
+
+                <p>These risk ratings are used in the two-step triage risk analysis shown in Figure 6.1.3-1. The high risk categorization for therapeutic use and availability of potential alternatives results in designating the risk level as high (<span class="key-term">Risk Level A</span>) from Step 1 of the triage. This likelihood of a shortage is then assessed as medium in Step 2 of the triage. In Step 3, Risk Level A combined with the medium likelihood of a drug shortage results in the overall <span class="key-term">Risk Priority Level 1</span>. Given this risk priority level, a Drug Shortage Prevention and Response Plan needs to be developed for this product (see Section 7.0).</p>
+            </div>
+
+            <div class="right-column">
+                <h3>解說與重點 Commentary</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：兩軸合一，產出優先等級</h4>
+                    <p>步驟三是步驟一與步驟二的「交叉點」——將衝擊等級（A/B/C）與短缺可能性（高/中/低）對應到 Table 6.1.3-1，即可得出：</p>
+                    <ul>
+                        <li><span style="background:#fee2e2;padding:2px 8px;border-radius:4px;color:#991b1b;font-weight:700;">Priority Level 1（紅）</span>：必須制定預防措施與應變計畫</li>
+                        <li><span style="background:#fef3c7;padding:2px 8px;border-radius:4px;color:#92400e;font-weight:700;">Priority Level 2（黃）</span>：建議制定措施；可選擇接受殘餘風險</li>
+                        <li><span style="background:#dcfce7;padding:2px 8px;border-radius:4px;color:#166534;font-weight:700;">Priority Level 3（綠）</span>：一般可接受的風險水準</li>
+                    </ul>
+                </div>
+
+                <!-- Worked Example -->
+                <div class="worked-example">
+                    <h4>實際計算範例：晚期癌症生物製劑</h4>
+                    <div class="step-row">
+                        <span class="step-badge">1</span>
+                        <div><strong>Step 1 衝擊評估</strong>：晚期癌症治療用生物製劑，市面上無替代品（無論上市或在臨床試驗中）。<br>→ 治療用途：救命（Medically Necessary）；替代品：無（No Alternatives Available）<br>→ <strong>Risk Level A</strong></div>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-badge">2</span>
+                        <div><strong>Step 2 可能性評估</strong>：產品為雙重來源（dual-sourced），但庫存儲備不足以應對重大製造或品質問題。<br>→ 有兩個製造商（中度控制），但無充足安全庫存（控制不足）<br>→ <strong>中度可能性（Medium Likelihood）</strong></div>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-badge">3</span>
+                        <div><strong>Step 3 優先等級</strong>：查表 6.1.3-1，Risk Level A × Medium Likelihood<br>→ <strong>Risk Priority Level 1</strong>（必須制定預防與應變計畫）</div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：備用廠房切換時間的判斷基準</h4>
+                    <p>TR68 提供了可能性評估的具體時間參考值：</p>
+                    <ul>
+                        <li><strong>短缺可能性高</strong>：單一來源，無備用廠房</li>
+                        <li><strong>短缺可能性中</strong>：有備用廠房，但準備投產至少需要 <strong>6 個月</strong>以上；或短期庫存充足但長期不足</li>
+                        <li><strong>短缺可能性低</strong>：備用廠房已啟動，或在 <strong>4 個月內</strong>即可投產；且庫存水準充足</li>
+                    </ul>
+                    <p>這些時間門檻可作為企業制定備用廠房啟動計畫的參考基準。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習 3：走一遍完整流程</h4>
+                    <p>情境：一款用於多發性硬化症（MS）的口服藥，長期慢性使用，市面上有另外兩種不同機轉的 MS 療法可替代。該藥目前單一來源製造，且庫存僅剩 2 個月供應量。</p>
+                    <ol>
+                        <li>Step 1：治療用途 → ＿＿＿ ；替代品 → ＿＿＿ ；Risk Level → ＿＿＿</li>
+                        <li>Step 2：單一來源 + 庫存不足 → 可能性 → ＿＿＿</li>
+                        <li>Step 3：查表 6.1.3-1 → Risk Priority Level → ＿＿＿</li>
+                        <li>結論：需要哪種層級的應對措施？</li>
+                    </ol>
+                    <p><em>參考答案：1. Acute/Chronic / Alternative Products Available / Risk Level B；2. High；3. Priority Level 1；4. 必須制定預防措施與應變計畫。</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION 6.1.4 — Step 4: Develop and Implement Preventive Risk Control Strategies
+         =================================================================== -->
+    <div id="sec-6-1-4">
+        <div class="section-bar">6.1.4 &nbsp; Step 4: Develop and Implement Preventive Risk Control Strategies &nbsp;｜&nbsp; 步驟四：制定與執行預防性風控策略</div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>6.1.4 Step 4: Develop and Implement Preventive Risk Control Strategies</h3>
+                <p>After the risk priority levels are assigned to the product in Steps 1–3 of the triage, appropriate <span class="key-term">risk control strategies</span> (may be predetermined in some instances) should be developed and implemented. Some actions to consider based on the risk priority level are:</p>
+
+                <p><strong>Risk Priority Level 1</strong></p>
+                <ul>
+                    <li>Develop a <span class="key-term">value stream map (VSM)</span> (starting materials through final drug product packaging and distribution) to identify and reduce inventory and manufacturing risk stress points. Identify appropriate inventory levels for each manufacturing stage based on the current state of controls, probability of drug shortage, and how long a shortage can be tolerated without adverse effects on patients. In addition, the need for a <span class="key-term">multisourcing strategy</span> should be assessed, taking business considerations into account with senior management involvement.</li>
+                    <li>Review <span class="key-term">supplier management controls</span> for high risk products and high risk suppliers of the components of these high risk products. Implement controls for these products where gaps are identified in supplier management controls.</li>
+                    <li>Proactively create and maintain a plan to communicate shortage risks with health authorities, distribution channels, and users. The guide <em>Quality and Manufacturing Driven Supply Disruptions: Industry Communication to Authorities</em>, developed by the European industry collaboration of EFPIA, EGA, AESGP, and PTTA, provides principles and a framework to harmonize reporting and communications between MAHs and health authorities about drug shortages due to quality and/or manufacturing disruptions.</li>
+                    <li>Implement an effective Stage 3 <span class="key-term">continuous process verification (CPV)</span> or ongoing process-verification monitoring program for CPV data that could help identify manufacturing issues before they occur.</li>
+                </ul>
+
+                <p><strong>Risk Priority Level 2</strong></p>
+                <ul>
+                    <li>Consider additional proactive inventory management controls and a <span class="key-term">multisourcing cost–benefit analysis</span>.</li>
+                    <li>Consider VSM for specific manufacturing processes to identify inventory stress points and potential manufacturing problems.</li>
+                    <li>At a minimum, ensure that CPV plans for these products to undergo additional review as part of the company's drug shortage management activities.</li>
+                </ul>
+
+                <p><strong>Risk Priority Level 3</strong></p>
+                <ul>
+                    <li>A Drug Shortage Prevention and Response Plan is not necessary, but these risks should be reviewed regularly.</li>
+                </ul>
+
+                <p>High and medium risks, along with the risk control actions and level of residual risk in the Drug Shortage Risk Register, should be tracked, periodically reviewed, and managed.</p>
+
+                <p>Examples of risk control strategies are provided in Table 6.1.4. The level of effort and formality required for each product assessment depends on the level of risk identified. These examples are not all-inclusive. Organizations should evaluate and determine which strategies for drug shortage control will be the most effective for the risks identified for their specific product and its use. Where appropriate, these strategies should be documented in procedures, integrated into the quality system and/or business processes, implemented in a consistent manner across the company, and actively managed using a Drug Shortage Risk Register. Section 11.0: Appendix 1 provides a template for creating a Drug Shortage Risk Register.</p>
+
+                <p>In general, risk control strategies vary, based on product specifics or its node in the supply chain. The listed factors and stakeholders in the root causes for shortages should also be considered.</p>
+
+                <!-- TABLE 6.1.4 -->
+                <p><strong>Table 6.1.4 &nbsp; Examples of Areas to Assess for Potential Risk Control Measures (not all-inclusive)</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:30%;">Area of Focus</th>
+                            <th>Examples of Areas to Assess for Potential Risk Control Measures</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Infrastructure and QMS Controls</strong></td>
+                            <td>
+                                <ul>
+                                    <li>API and medicinal product production (material receipt and testing, dispensing, bulk product manufacturing, packaging, quality control, release)</li>
+                                    <li>Storage and logistics locations (e.g., near to key transport hubs)</li>
+                                    <li>Manufacturing facility and equipment</li>
+                                    <li>Maintenance</li>
+                                    <li>Aging facilities</li>
+                                    <li>Management priorities</li>
+                                    <li>Personnel resources</li>
+                                    <li>Time for external quality assurance testing as appropriate (e.g., Official Medicines Control Laboratories, import testing)</li>
+                                    <li>Qualification and validation</li>
+                                    <li>Production planning</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technology</strong></td>
+                            <td>
+                                <ul>
+                                    <li>Innovative manufacturing (including digitalization) and testing</li>
+                                    <li>Emerging technology</li>
+                                    <li>Outdated technology</li>
+                                    <li>Device sourcing and assembly when highly fragmented across different suppliers and manufacturers</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Supply Chain</strong></td>
+                            <td>
+                                <ul>
+                                    <li>Single-source vs. multi-source API/excipient/packaging supplier</li>
+                                    <li>Geographic concentration of key suppliers</li>
+                                    <li>Lead times for key materials</li>
+                                    <li>Supplier qualification and audit status</li>
+                                    <li>Supply agreements and business continuity provisions</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Inventory &amp; Capacity</strong></td>
+                            <td>
+                                <ul>
+                                    <li>Safety stock levels at each manufacturing stage</li>
+                                    <li>Capacity reserve at primary and backup facilities</li>
+                                    <li>Demand forecasting accuracy</li>
+                                    <li>Finished goods distribution buffer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Process &amp; Quality</strong></td>
+                            <td>
+                                <ul>
+                                    <li>Process capability (Cpk) and yield data trends</li>
+                                    <li>Continuous Process Verification (CPV) program status</li>
+                                    <li>Batch failure rate and deviation trends</li>
+                                    <li>Change control impact on supply continuity</li>
+                                    <li>Regulatory post-approval change timelines</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Regulatory &amp; Communication</strong></td>
+                            <td>
+                                <ul>
+                                    <li>Speed of health authority approvals for changes</li>
+                                    <li>Proactive shortage notification plan to authorities</li>
+                                    <li>Communication protocols with distribution channels and healthcare providers</li>
+                                    <li>Alignment with industry frameworks (e.g., EFPIA/EGA/AESGP/PTTA guidance)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="right-column">
+                <h3>解說與重點 Commentary</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：三個優先等級的應對策略摘要</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>優先等級</th>
+                                <th>必要行動</th>
+                                <th>強制程度</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="priority-1">Level 1</td>
+                                <td>制定預防措施 + 應變計畫（Required）</td>
+                                <td>強制必做</td>
+                            </tr>
+                            <tr>
+                                <td class="priority-2">Level 2</td>
+                                <td>建議制定措施；可選擇接受殘餘風險（Recommended）</td>
+                                <td>強烈建議</td>
+                            </tr>
+                            <tr>
+                                <td class="priority-3">Level 3</td>
+                                <td>一般可接受風險等級，定期審查即可</td>
+                                <td>持續監控</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：三大關鍵工具</h4>
+                    <p><strong>1. VSM（Value Stream Mapping，價值流程圖）</strong></p>
+                    <p>VSM 是精實製造（Lean Manufacturing）的工具，用於繪製從起始原料到成品配送的完整供應流，以視覺化方式識別庫存與製造的風險壓力點（stress points）。對 Priority 1 產品為<strong>強制執行</strong>，Priority 2 建議用於特定製程節點。</p>
+                    <p><strong>2. CPV（Continuous Process Verification，持續製程確效）</strong></p>
+                    <p>ICH Q10 所定義的 Stage 3 製程確效。CPV 透過持續收集與分析製程數據，在問題真正導致批次失敗之前，提前偵測製造異常趨勢。對 Priority 1 產品必須實施完整 CPV 計畫；Priority 2 至少要將 CPV 計畫納入藥品短缺管理活動的額外審查。</p>
+                    <p><strong>3. 多元供應源（Multisourcing）</strong></p>
+                    <p>建立備用 API 供應商、備用製造廠，降低單點故障（single point of failure）風險。Priority 1 產品須進行多元供應源需求評估，並納入高階管理層決策；Priority 2 產品進行成本效益分析。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：風控策略需嵌入 QMS</h4>
+                    <p>TR68 強調，風控策略不能只是紙上談兵——應：</p>
+                    <ul>
+                        <li>以書面程序（SOP）文件化</li>
+                        <li>整合進公司品質系統（QMS）及業務流程</li>
+                        <li>以一致方式在全公司推行</li>
+                        <li>透過 Drug Shortage Risk Register 主動管理</li>
+                    </ul>
+                    <p>Risk Register（Section 11.0 附錄一有範本）是所有風控措施的追蹤中心，應定期審查。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：Priority 1 = 飛行前預檢 vs Priority 3 = 一般例行保養</h4>
+                    <p>航空業有嚴格分級：</p>
+                    <ul>
+                        <li><strong>長程國際客機</strong>（高影響、高可見度）：每次飛行前都要做詳細安全檢查（CPV 類比），飛行員和工程師都要確認備用系統就緒（VSM + 多元來源類比）。</li>
+                        <li><strong>地面服務車輛</strong>（低影響）：按月保養，不用每次出車前做航前檢查。</li>
+                    </ul>
+                    <p>TR68 的 Priority 1/2/3 分層，就是讓企業像航空業一樣：把最嚴格的控制，放在最關鍵的地方。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習 4：制定風控行動</h4>
+                    <p>承接思考練習 3 的 MS 口服藥（Risk Priority Level 1，單一來源，庫存不足），請列出至少 <strong>4 項</strong>具體的優先控制行動，並說明應用哪個工具或策略：</p>
+                    <ol>
+                        <li>行動 1：＿＿＿（工具：＿＿＿）</li>
+                        <li>行動 2：＿＿＿（工具：＿＿＿）</li>
+                        <li>行動 3：＿＿＿（工具：＿＿＿）</li>
+                        <li>行動 4：＿＿＿（工具：＿＿＿）</li>
+                    </ol>
+                    <p><em>可能的答案方向：1. 繪製完整供應鏈 VSM，識別庫存壓力點（VSM）；2. 評估備用 API 供應商，啟動雙重採購（Multisourcing）；3. 建立持續製程確效計畫，提前偵測製程異常（CPV）；4. 制定藥品短缺預防與應變計畫，並建立與法規機關的溝通機制（Drug Shortage Prevention &amp; Response Plan）。</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SECTION SUMMARY
+         =================================================================== -->
+    <div class="section-summary">
+        <h2>Section 3A 章節總結 Summary</h2>
+        <p style="color:#78350f;margin-bottom:1rem;font-size:0.95rem;">本節涵蓋 TR68 Section 6.0–6.1.4，介紹風險分流模型（Risk Triage Model）的理論基礎與四步驟操作框架。</p>
+        <ul>
+            <li><strong>6.0 Risk Triage Model</strong>：採用「分流（Triage）」概念，讓企業快速識別哪些產品需要主動的藥品短缺預防管理。並非所有產品都需要同等資源，QRM 體系應同時具備主動預防（Drug Shortage Risk Register）與被動應變（Drug Shortage Prevention and Response Plan）兩個面向。</li>
+            <li><strong>6.1 四步驟 PHA 分流框架</strong>：使用初步危害分析（PHA）方法，評估三個風險要素（治療用途、替代品可及性、短缺可能性），並以關鍵字描述代替主觀評分，提高評估一致性。</li>
+            <li><strong>6.1.1 Step 1 — 衝擊等級（Risk Level A/B/C）</strong>：透過 3×3 矩陣交叉評估治療用途嚴重性與替代品可及性。Risk Level A（紅）= 最高衝擊；C（綠）= 最低衝擊。多用途產品取最高等級。</li>
+            <li><strong>6.1.2 Step 2 — 短缺可能性（High/Medium/Low）</strong>：評估現行控制措施（供應來源、庫存、製造備援、流程穩定性）。單一來源 + 庫存不足 → 高可能性；多元來源 + 充足備援 → 低可能性。定性三級評估即可，不需量化。</li>
+            <li><strong>6.1.3 Step 3 — 風險優先等級（Priority 1/2/3）</strong>：查對矩陣 Table 6.1.3-1，Risk Level 與 Likelihood 的交叉點決定優先等級。Priority 1 = 必須制定預防措施；Priority 3 = 一般可接受風險，定期審查即可。</li>
+            <li><strong>6.1.4 Step 4 — 風控策略</strong>：Priority 1 需要 VSM + 多元供應源評估 + CPV + 應變計畫 + 法規溝通機制；Priority 2 考量 VSM 及成本效益分析；Priority 3 定期審查。所有策略應嵌入 QMS 並透過 Drug Shortage Risk Register 主動管理。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to Top">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

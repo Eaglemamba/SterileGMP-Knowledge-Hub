@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR43 Section 0 — Introduction &amp; Classification Framework | 導論與分類框架</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: var(--accent-blue);
+    color: white; border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+
+/* ===== TR43 GREEN THEME OVERRIDES ===== */
+:root {
+    --tr43-bg: #f0fdf4;
+    --tr43-text: #14532d;
+    --tr43-bar: #16a34a;
+    --tr43-light: #dcfce7;
+    --tr43-mid: #86efac;
+    --tr43-accent: #15803d;
+}
+
+body { background: var(--tr43-bg); }
+
+.header {
+    background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
+}
+
+.section-summary {
+    background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+    border: 2px solid #facc15;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+.section-summary h3 {
+    color: #713f12;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #facc15;
+}
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.93rem; color: #78350f; }
+
+/* Risk level table cells */
+.risk-critical { background-color: #fee2e2; }
+.risk-major-a  { background-color: #fed7aa; }
+.risk-major-b  { background-color: #fef3c7; }
+.risk-minor    { background-color: #fefce8; }
+.risk-acceptable { background-color: #dcfce7; }
+
+/* Process flow diagram */
+.process-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+}
+.flow-box {
+    background: white;
+    border: 2px solid var(--tr43-bar);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--tr43-text);
+    text-align: center;
+    min-width: 120px;
+}
+.flow-arrow {
+    font-size: 1.4rem;
+    color: var(--tr43-bar);
+    font-weight: 700;
+}
+@media (max-width: 700px) {
+    .process-flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+}
+
+/* Subheading badge */
+.sub-badge {
+    display: inline-block;
+    background: var(--tr43-light);
+    color: var(--tr43-text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 43 (Revised 2023)</h1>
+    <div class="subtitle">Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing</div>
+    <div class="subtitle">玻璃容器不合格項目之辨識與分類 — 完整教學版</div>
+    <div class="page-info">Section 0: Introduction &amp; Classification Framework（導論與分類框架）&nbsp;|&nbsp;Pages p1–p14</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec10">1.0 Introduction 導論</a>
+            <a href="#sec11">1.1 Purpose 目的</a>
+            <a href="#sec12">1.2 Scope 適用範圍</a>
+            <a href="#sec20">2.0 Glossary 詞彙表</a>
+            <a href="#sec30">3.0 Specification Development 規格開發</a>
+            <a href="#sec31">3.1 Dimensional Development 尺寸開發</a>
+            <a href="#sec32">3.2 Sampling 抽樣</a>
+            <a href="#sec33">3.3 AQLs</a>
+            <a href="#sec40">4.0 Risk Levels 風險等級</a>
+            <a href="#sec50">5.0 Conclusion 結論</a>
+            <a href="#sec60">6.0 References 參考文獻</a>
+        </div>
+    </div>
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 TR43 的歷史沿革與2023年修訂重點，說明為何標準化分類對製藥供應鏈至關重要。</li>
+            <li>掌握核心術語（AQL、不合格品、可接受瑕疵、批次定義），並能在實際驗貨場景中正確運用。</li>
+            <li>描述玻璃容器規格開發流程（尺寸設計 → 抽樣計畫 → AQL協議），說明玻璃廠與藥廠各自的責任。</li>
+            <li>識別並區分五種不合格風險等級（Critical、Major A、Major B、Minor、Acceptable Imperfection），並能舉例說明每個等級對病患安全的潛在影響。</li>
+            <li>運用分類框架，判斷實際玻璃瓶缺陷（如封口缺口、瓶身刮痕）應歸屬於哪個風險等級，並說明相應的處置方式。</li>
+        </ol>
+    </div>
+
+    <!-- =========================================================
+         SECTION 1.0 — INTRODUCTION
+         ========================================================= -->
+    <div class="chapter-section" id="sec10">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.0</div>
+            <div class="chapter-info">
+                <h2>Introduction — 導論</h2>
+                <p>Background, revision history, and rationale for TR43</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <!-- LEFT: English source -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>PDA Technical Report No. 43 (Revised 2023): <em>Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing</em> provides an updated approach to a quality decision-making process and represents best practices for the identification and classification of visual nonconformities for glass containers.</p>
+                    <p>This technical report was originally published in 2007 and applied only to moulded bottles and tubular vials. The document was revised in 2013 to address industry feedback. The 2023 revision addresses evolving standards and container types, including:</p>
+                    <ul>
+                        <li>Reduced reliance on limit samples; additional guidance on minimum sizes for nonconformities.</li>
+                        <li>Harmonized risk levels for glass particle defects based on contemporary risk assessment.</li>
+                        <li>Broader concepts on ready-to-use (RTU) vials and cartridges — RTU formats require different standards for particular types of defect.</li>
+                        <li>Minor changes in descriptions to improve precise identification of nonconformities.</li>
+                        <li>Standardized terminology, replacing "N/A" with <strong>"acceptable imperfection."</strong></li>
+                        <li>Condensed lexicons removing redundant or out-of-scope defects (e.g., Residual Stress eliminated).</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：為什麼需要 TR43？</h4>
+                        <p>想像一下：玻璃廠業務說這個缺陷是「cosmetic issue」，藥廠QA說這是「major defect」。雙方各說各話，進貨驗收卡關，批次差點被廢棄。這就是 TR43 誕生的原因——建立一套<span class="key-term">共同語言</span>，讓所有人對同一個玻璃瓶缺陷有相同的理解與分類。</p>
+                        <p>TR43 提供的不是強制標準，而是業界共識的<span class="key-term">最佳實踐指南</span>，幫助製藥公司與玻璃供應商建立一致的驗收基準。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>2023年修訂重點提醒</h4>
+                        <ul>
+                            <li><strong>RTU容器</strong>（Ready-to-Use，即用型）正式納入：RTU容器已完成清洗、除熱原、滅菌，直接進入藥廠灌裝線，因此對某些缺陷類型要求更高標準。</li>
+                            <li><strong>「N/A」→「Acceptable Imperfection」</strong>：術語標準化，明確表達「此項目不構成不合格」，避免審計時的誤解。</li>
+                            <li><strong>減少對「限量樣品（Limit Sample）」的依賴</strong>：改以文字描述最小尺寸，增加可操作性與跨廠一致性。</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：學術評分標準</h4>
+                        <p>TR43 就像大學的「評分標準（Rubric）」。沒有統一評分標準，不同教授給同一份作業可能打出70分到90分的差異。有了 TR43 這份「玻璃缺陷評分標準」，無論是玻璃廠的出廠QC，還是藥廠的進貨IQC，都用同一把尺量，大幅減少爭議。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 1.1 — PURPOSE
+         ========================================================= -->
+    <div class="chapter-section" id="sec11">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.1</div>
+            <div class="chapter-info">
+                <h2>Purpose — 目的</h2>
+                <p>Intended use of TR43 quality criteria and lexicons</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>The standardized quality criteria in TR-43 are intended as guidance for container manufacturers and for incoming container acceptance inspection at pharmaceutical companies. The attributes identified in this lexicon are not intended to represent the defect after a theoretical extrapolation of further damage during processing, rather just the defect when discovered.</p>
+                    <p>Five detailed lexicons have been updated which visually illustrate glass nonconformities — one for moulded glass bottles and vials, and four for tubular glass vials, ampoules, cartridges, and syringes. Additionally, defects specific to RTU containers and their categorization are included.</p>
+                    <p>Consulting with the appropriate regulatory authorities for agreement on the strategies employed for identification and classification of visual nonconformities of glass containers is always advisable.</p>
+                    <p>The identification and classification of glass imperfections represents only a part of the overall acceptance criteria. Other aspects include adherence to dimensional standards, visual nonconformance inspection programs, acceptable quality limits, and reinspection.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>TR43 的使用場景</h4>
+                        <p>TR43 主要服務兩個使用情境：</p>
+                        <ul>
+                            <li><strong>玻璃廠出廠品管（Outgoing QC）</strong>：依據 TR43 分類，設定製程管制標準。</li>
+                            <li><strong>藥廠進貨驗收（IQC — Incoming Quality Control）</strong>：依據 TR43 詞彙表與分類，建立驗收規格，判斷是否接受或退回貨批。</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要限制：缺陷「當下狀態」原則</h4>
+                        <p>TR43 明確指出：分類是基於<span class="key-term">發現當下的缺陷狀態</span>，而非推測該缺陷在後續製程（如清洗、滅菌、灌裝）中可能進一步惡化後的樣貌。</p>
+                        <p>例如：一個微小的表面刮痕，在驗收時可能是 Minor，但不代表在高壓滅菌後不會成為更大問題——藥廠需在驗收規格中自行評估此類風險。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>五個詞彙表（Lexicons）對應容器類型</h4>
+                        <ul>
+                            <li>模製玻璃瓶與小瓶（Moulded Glass Bottles and Vials）</li>
+                            <li>管製玻璃小瓶（Tubular Glass Vials）</li>
+                            <li>安瓿（Ampoules）</li>
+                            <li>卡匣（Cartridges）</li>
+                            <li>預充注射筒（Syringes）</li>
+                        </ul>
+                        <p>各類容器因成型方式、用途不同，缺陷定義與分類標準亦有差異。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 1.2 — SCOPE
+         ========================================================= -->
+    <div class="chapter-section" id="sec12">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.2</div>
+            <div class="chapter-info">
+                <h2>Scope — 適用範圍</h2>
+                <p>What TR43 covers — and what it does not</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>These guidelines are not intended to establish mandatory standards for the classification and identification of glass nonconformities but, instead, are intended to provide an overview that complements existing guidelines, standards, and referenced materials.</p>
+                    <p>TR-43 applies solely to <strong>empty glass containers</strong>. It does not address:</p>
+                    <ul>
+                        <li>Drug product interaction with containers</li>
+                        <li>Quality attributes introduced by pharmaceutical manufacturing processes</li>
+                        <li>Container design dimensions or tolerances</li>
+                        <li>Nonconformities in glass container secondary packaging materials</li>
+                    </ul>
+                    <p>Pharmaceutical manufacturers are responsible for ensuring that container quality attributes are compatible with drug products and the subsequent processing of the containers such that finished drug product specifications are met.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：TR43 是「空杯標準」</h4>
+                        <p>TR43 只管<span class="key-term">空玻璃容器</span>本身的外觀缺陷，就像是評估一個空杯子是否有裂縫、氣泡、尖銳邊緣。至於裝進去的飲料（藥品）和杯子的相容性問題，不在 TR43 的討論範圍內。</p>
+                        <p>這個邊界劃定非常重要：容器與藥品的相容性（Compatibility）、萃出物（Extractables）等議題，需參考其他法規與指南（如 ICH Q3D、USP 660）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>藥廠的責任邊界</h4>
+                        <p>即使玻璃容器符合 TR43 標準，藥廠仍需自行確認：</p>
+                        <ul>
+                            <li>容器與藥品的相容性（化學、物理、微生物）</li>
+                            <li>容器在各製程步驟（清洗、滅菌、灌裝、西林瓶軋蓋）後的品質狀態</li>
+                            <li>最終成品規格的符合性</li>
+                        </ul>
+                        <p>CDMO（委託開發製造組織）在協助客戶建立進貨驗收標準（IQC Specification）時，需特別注意將 TR43 的框架與客戶藥品的特殊需求結合。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 2.0 — GLOSSARY
+         ========================================================= -->
+    <div class="chapter-section" id="sec20">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.0</div>
+            <div class="chapter-info">
+                <h2>Glossary and Abbreviations — 詞彙與縮寫</h2>
+                <p>Key definitions from FDA, ANSI, ISO and TR43 itself</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Wherever appropriate, terms are derived from current definitions of FDA, ANSI, ISO, and other regulatory or standards-setting organizations. Terms often differ from company to company and must be clearly defined in internal SOPs, specifications, and regulatory filings.</p>
+
+                    <table>
+                        <thead>
+                            <tr><th>Term</th><th>Definition (Abbreviated)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Acceptance Quality Limit (AQL)</strong></td><td>The worst-tolerable process average when a continuing series of lots are submitted for acceptance sampling.</td></tr>
+                            <tr><td><strong>Annealing</strong></td><td>Controlled heating to remove residual thermal stress after glass-forming (synonymous with "Lehred").</td></tr>
+                            <tr><td><strong>Attribute Sampling</strong></td><td>Inspection classifying each container as conforming or nonconforming (pass/fail).</td></tr>
+                            <tr><td><strong>Container Closure Integrity (CCI)</strong></td><td>Ability of a closed container to prevent drug loss, block microorganism ingress, and prevent detrimental gas ingress.</td></tr>
+                            <tr><td><strong>Defect / Nonconformity</strong></td><td>Defect: departure causing product not to satisfy intended usage requirements. Nonconformity: departure causing product not to meet a specification requirement.</td></tr>
+                            <tr><td><strong>Incoming Inspection</strong></td><td>Preventive program evaluating glass containers upon receipt.</td></tr>
+                            <tr><td><strong>Limit Sample</strong></td><td>Physical unit, reference photo, or description defining the approximate maximum degree of acceptability for an "acceptable imperfection."</td></tr>
+                            <tr><td><strong>Ready-to-Use (RTU) Containers</strong></td><td>Glass containers processed beyond typical bulk supply — including washing, depyrogenation, sterilization — packaged for direct introduction into pharmaceutical filling processes.</td></tr>
+                            <tr><td><strong>Sampling Plan</strong></td><td>Indicates the number of units to inspect (sample size) and the criteria for determining lot acceptability (acceptance and rejection numbers).</td></tr>
+                            <tr><td><strong>Visual Inspection</strong></td><td>Inspection under agreed-upon illumination, background, inspection time, and distance — using the naked eye (corrected if necessary), without magnification.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：詞彙表是「通關密語本」</h4>
+                        <p>藥廠的QA與玻璃廠業務每天都在用「defect」、「nonconformity」、「lot」這些詞溝通，但各公司的定義可能不同。Section 2.0 的詞彙表就像是一本<span class="key-term">共同的通關密語本</span>——確保雙方說的「批次（lot）」、「AQL」是同一個概念，避免在供應商審計或偏差調查時各說各話。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>核心術語精解</h4>
+                        <p><strong>AQL（Acceptance Quality Limit，驗收品質限）</strong><br>
+                        AQL 不是「零缺陷」——它是一個統計上允許的最大製程平均不良率。例如 AQL = 0.65% 代表：在一系列連續批次中，製程平均不良率最高可容忍到0.65%，超過此值批次就應被拒收。</p>
+                        <p><strong>Defect vs. Nonconformity</strong><br>
+                        這兩個詞常被混用，但有細微差異。「缺陷（Defect）」強調影響<em>預期使用</em>；「不合格（Nonconformity）」強調不符合<em>規格要求</em>。在實務上，TR43 主要討論的是 Nonconformity（不符合規格的缺陷）。</p>
+                        <p><strong>RTU 容器</strong>：已完成清洗、除熱原、滅菌，直接進入灌裝線，因此對某些缺陷類型（如微粒、微生物）有更嚴格要求。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>進貨查驗（Incoming Inspection）的法規基礎</h4>
+                        <p>根據 21 CFR 211.84 及 211.82，FDA 要求藥廠對每批進料（包含玻璃容器）進行抽樣測試與核可。即便玻璃廠已通過認證，藥廠仍須有<span class="key-term">書面的進貨驗收程序</span>，且該程序必須基於預先確定的品質規格。TR43 提供的詞彙與分類框架，正是建立這些規格的基礎工具。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 3.0 — SPECIFICATION DEVELOPMENT
+         ========================================================= -->
+    <div class="chapter-section" id="sec30">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.0</div>
+            <div class="chapter-info">
+                <h2>Glass Container Specification Development Process — 玻璃容器規格開發流程</h2>
+                <p>Collaborative quality agreements between pharma and glass manufacturers</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Process Flow Diagram -->
+            <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:10px; padding:1.25rem; margin-bottom:1.5rem;">
+                <p style="font-weight:600; color:#14532d; margin-bottom:0.75rem; font-size:0.95rem;">規格開發流程示意圖 Specification Development Process Flow</p>
+                <div class="process-flow">
+                    <div class="flow-box">玻璃廠<br><small>Glass Manufacturer</small></div>
+                    <div class="flow-arrow">⟷</div>
+                    <div class="flow-box">藥廠<br><small>Pharma Company</small></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">聯合規格<br><small>Joint Specification</small></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">驗收標準<br><small>Acceptance Criteria</small></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">AQL抽樣查驗<br><small>AQL Inspection</small></div>
+                </div>
+                <p style="font-size:0.82rem; color:#166534; margin-top:0.5rem;">此流程需雙方透過品質協議（Quality Agreement）正式確認，並涵蓋尺寸規格、抽樣計畫、不合格分類與AQL設定。</p>
+            </div>
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Pharmaceutical/biopharmaceutical manufacturers should collaborate with their glass manufacturing vendors to develop a quality agreement that defines the responsibilities of both parties and includes a glass container conformance specification. Both parties should establish a container quality specification based on patient safety, product requirements, and process capabilities and create a suitable agreement that:</p>
+                    <ul>
+                        <li>Develops the dimensional design of glass containers</li>
+                        <li>Establishes the sampling plan the supplier uses for manufacturing control and release of finished lots</li>
+                        <li>Defines glass container lots and acceptable quality limits (AQLs)</li>
+                        <li>Determines the classification and disposition of nonconformities and the criteria for rework/reinspection</li>
+                        <li>Decides on the criteria for documentation and training</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>品質協議（Quality Agreement）的核心要素</h4>
+                        <p>藥廠（或CDMO）與玻璃廠之間的品質協議，必須涵蓋以下五大領域：</p>
+                        <ol>
+                            <li><strong>尺寸設計</strong>：容器幾何尺寸的公差範圍（依 ISO/ANSI 標準）</li>
+                            <li><strong>抽樣計畫</strong>：供應商製程控制用的抽樣方式（連續抽樣 vs. 批次抽樣）</li>
+                            <li><strong>批次定義與AQL</strong>：「一批」的定義、各缺陷類別的AQL值</li>
+                            <li><strong>不合格處置</strong>：退貨、重新查驗（Reinspection）、挑揀（Sorting）的標準</li>
+                            <li><strong>文件與培訓</strong>：雙方如何記錄、溝通缺陷發現與處置結果</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CDMO的特殊角色</h4>
+                        <p>CDMO（委託開發製造公司）同時面對「上游」（玻璃廠供應商）與「下游」（客戶藥廠）的雙重要求。在制定進貨驗收標準時，CDMO需：</p>
+                        <ul>
+                            <li>確認客戶的藥品對容器缺陷的敏感性（如凍乾製劑對底部缺陷特別敏感）</li>
+                            <li>將客戶要求轉化為可操作的AQL規格，寫入對玻璃廠的採購規格</li>
+                            <li>定期審查進貨數據，評估是否需要收緊或放寬AQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 3.1 — DIMENSIONAL DEVELOPMENT
+         ========================================================= -->
+    <div class="chapter-section" id="sec31">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.1</div>
+            <div class="chapter-info">
+                <h2>Glass Container Dimensional Development — 尺寸規格開發</h2>
+                <p>ISO standards as the foundation for dimensional design and control</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Published standards are the foundation for the design and control of dimensional product quality for manufacturing moulded and tubular glass containers. The principal focus of these standards is to establish uniform dimensional design to ensure product safety and efficacy as a prerequisite to development of packaging specifications.</p>
+                    <p>ISO establishes stringent dimensional requirements for glass containers (ISO 8362-1, 8362-4, 9187-1, 9187-2, 11040-1, 11040-4, 13926-1). These references provide universal dimensional standards for glass manufacturers to produce uniform containers supplied to pharmaceutical manufacturers.</p>
+                    <p><strong>Important limitation:</strong> These standards only cover the dimensional aspect and handling of glass containers — not the visual imperfections or nonconformities that can occur during glass manufacturing.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>ISO尺寸標準 vs. TR43視覺缺陷標準</h4>
+                        <p>這是理解 TR43 定位的關鍵：</p>
+                        <ul>
+                            <li><span class="key-term">ISO標準</span>（如ISO 8362-1 管製玻璃小瓶）：規定容器的<strong>幾何尺寸</strong>——瓶口直徑、瓶高、壁厚等公差。這是「能不能裝進填充機」的問題。</li>
+                            <li><span class="key-term">TR43</span>：規定容器的<strong>視覺外觀缺陷</strong>——氣泡、裂紋、刮痕等。這是「容器品質是否符合藥用標準」的問題。</li>
+                        </ul>
+                        <p>兩者互補，都需要納入品質協議。驗收一批玻璃瓶，既要量尺寸，也要看外觀。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：房屋驗收</h4>
+                        <p>就像驗收新房子時，既要確認房間尺寸符合建築圖（ISO尺寸標準），也要檢查牆面是否有裂縫、瓷磚是否完整（TR43視覺缺陷標準）。兩個面向缺一不可，但屬於不同的評估範疇。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 3.2 — SAMPLING
+         ========================================================= -->
+    <div class="chapter-section" id="sec32">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2</div>
+            <div class="chapter-info">
+                <h2>Glass Container Sampling — 玻璃容器抽樣</h2>
+                <p>Lot definition, sampling plan types, and dPPM limits</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>The responsibility for glass container quality rests primarily with glass manufacturers. However, regulatory agencies hold pharmaceutical manufacturers responsible for ensuring the suitability of glass containers. Therefore, pharmaceutical manufacturers should have a process to confirm containers meet specified requirements — including sampling of incoming lots or procedures to verify acceptability according to a predetermined quality specification.</p>
+
+                    <h3><span class="sub-badge">3.2.1</span> Definition of Lots</h3>
+                    <p>A glass container production lot is usually assumed to have a connotation of completeness and separateness. Many glass containers are manufactured in long runs (days or weeks), resulting in very large supplier batches that resemble continuously manufactured items. Incoming lots from large supplier batches are typically defined by pharmaceutical companies for the convenience of logistics and shipping, not based on uniqueness.</p>
+                    <p>Since an incoming lot for a pharma company may not be the same as that of a glass manufacturer, it is important to establish an agreement on the definition of a lot. <strong>"Pocket conditions"</strong> can exist: some portions may exceed acceptance limits while adjacent portions remain within limits.</p>
+
+                    <h3><span class="sub-badge">3.2.2</span> Sampling Plans</h3>
+                    <p>Two types: <strong>Variable</strong> (quantitative attributes — weight, height, diameter) and <strong>Attribute</strong> (pass/fail against specification). Subtypes include:</p>
+                    <ul>
+                        <li><strong>Continuous sampling:</strong> For inspection throughout glass manufacturing; designed for the manufacturer at time of production.</li>
+                        <li><strong>Lot-to-lot sampling:</strong> Each lot evaluated independently; applicable for pharmaceutical companies' incoming inspection (ASQ/ANSI Z1.4 or ISO 2859-1).</li>
+                        <li><strong>dPPM (Defective Parts Per Million):</strong> Alternative to Z1.4; agreed-upon metric between drug company and glass manufacturer; assumes high confidence in glass manufacturer's consistent quality capability.</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="note-box">
+                        <h4>RTU容器的特殊考量</h4>
+                        <p>RTU（即用型）容器繞過了藥廠原本執行的清洗與滅菌步驟，直接進入灌裝環境。因此：</p>
+                        <ul>
+                            <li>RTU容器的進貨檢驗比標準容器有更嚴格的微粒與微生物要求。</li>
+                            <li>批次定義與抽樣頻率須特別考量，因為任何容器缺陷直接影響無菌工藝的保護屏障。</li>
+                            <li>TR43在2023年修訂中正式將RTU容器的特殊缺陷標準納入各詞彙表。</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>批次定義的實務難題</h4>
+                        <p>玻璃容器通常連續生產數天甚至數週，一個「製造批次」可能有數百萬支。藥廠收到的每一車（pallet）或每一箱，不一定對應到玻璃廠的完整批次。</p>
+                        <p>因此，品質協議中必須明確定義：「對藥廠而言，一個<span class="key-term">進貨批次（Incoming Lot）</span>是什麼？」常見定義方式：</p>
+                        <ul>
+                            <li>一個採購訂單（PO）</li>
+                            <li>一個棧板（pallet）或固定數量的棧板</li>
+                            <li>玻璃廠的一個製造批次編號（Batch Number）</li>
+                        </ul>
+                        <p>「Pocket conditions（局部條件）」——一個批次中某些箱子有問題、其他箱子沒有問題——正是說明為什麼單純仰賴整批AQL抽樣存在風險。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>dPPM 計算公式</h4>
+                        <pre>dPPM = (批次中發現的不合格容器總數 / 批次容器總數) × 1,000,000
+
+例：一批 50,000 支玻璃小瓶，在製程中發現 15 支不合格：
+dPPM = (15 / 50,000) × 1,000,000 = 300 dPPM</pre>
+                        <p>dPPM 適合用於供應商成熟、製程穩定的情況。若玻璃廠尚未建立穩定的品質能力，應先採用傳統 AQL 抽樣計畫（ASQ/ANSI Z1.4）。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：連續製造的抽樣困境</h4>
+                        <p>想像玻璃廠就像一條永不停歇的輸送帶，連續生產數週。藥廠收到的是這條輸送帶上某一段時間的產品。用「整批接受/拒絕」的概念來評估連續製程的產品，就像用單次考試成績來判斷一整學期的學習表現——有一定的統計限制。這正是 AQL 抽樣「只能提供統計上界，不能保證零缺陷」的根本原因。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 3.3 — AQLs
+         ========================================================= -->
+    <div class="chapter-section" id="sec33">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3</div>
+            <div class="chapter-info">
+                <h2>AQLs — 驗收品質限</h2>
+                <p>Setting and negotiating AQL values for glass nonconformity classifications</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Separating the philosophy of zero defects from the practical reality of real-world manufacturing is important. Sampling plans generally enumerate nonconformities, their description, and based on severity, the corresponding AQLs.</p>
+                    <p>The agreed-upon AQLs for glass containers are often a compromise between the needs of the pharmaceutical producer and the process capability of the glass manufacturer. AQL specifications require a supplier quality agreement to minimize risk.</p>
+                    <p>AQL percentages may be established for each nonconformance classification. However, each company's process or product may have unique glass quality requirements. For example, a bottom nonconformance limit for a lyophilized product may be significantly different than that for a nonlyophilized product — in one case the nonconformity may have a functional impact, whereas the other may be a cosmetic nonconformance.</p>
+                    <p>For nonconformities that are unacceptable at any level, <strong>"None Allowed"</strong> is the appropriate classification. Finding zero nonconformities in the sample does not ensure zero nonconformities in the batch — it can only provide a statistical upper bound. Therefore, it is not statistically possible to define AQL = 0.0%.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>AQL 的本質：風險妥協的數字</h4>
+                        <p>AQL 值的設定，本質上是在兩個現實之間取得平衡：</p>
+                        <ul>
+                            <li><strong>藥廠的期望</strong>：越低的不良率越好，保護病患安全</li>
+                            <li><strong>玻璃廠的製程能力</strong>：玻璃成型是高溫製程，完全零缺陷在統計上不可能</li>
+                        </ul>
+                        <p>AQL 值代表「統計上可接受的最差製程平均值」，不是目標值，更不代表藥廠「接受」這個不良率的存在。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「None Allowed」vs. AQL = 0%</h4>
+                        <p>這是很多人混淆的地方：</p>
+                        <ul>
+                            <li><strong>AQL = 0%</strong>：在統計上<span class="key-term">不可能</span>。抽樣計畫只能提供統計上界，無法保證批次中絕對零缺陷。</li>
+                            <li><strong>"None Allowed"（禁止出現）</strong>：適用於 Critical 缺陷的描述——在抽樣樣本中發現任何一個，就立即拒絕批次。這是操作層面的規定，與統計學的「AQL = 0%」不同。</li>
+                        </ul>
+                        <p>因此，TR43 在描述 Critical 缺陷時，使用 "None Allowed" 而非 "AQL = 0.0%"。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：客製化AQL的必要性</h4>
+                        <p>同一個「瓶底輕微氣泡」缺陷：對裝液體針劑的標準小瓶，可能只是 Minor 級別（AQL 4.0）；但對凍乾製劑（Lyophilized Product），凍乾過程需要良好的瓶底接觸面，這個缺陷可能影響傳熱效率，就可能被提升為 Major B 甚至 Major A。這說明為什麼 AQL 不能「一體適用」，必須根據藥品特性和製程需求客製化設定。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 1：AQL值的影響</h4>
+                        <p>假設你是藥廠QA，針對玻璃小瓶的「瓶口缺口（Finish Chip）」缺陷，評估以下兩種AQL設定方案：</p>
+                        <ul>
+                            <li><strong>方案A：AQL = 0.65%</strong>（Major A），採用 ASQ/ANSI Z1.4 Level II</li>
+                            <li><strong>方案B：AQL = 1.0%</strong>（Major B），採用 ASQ/ANSI Z1.4 Level II</li>
+                        </ul>
+                        <p>問題：若每批進貨量為 5,000 支，哪個方案需要抽驗更多支？接受標準（Acceptance Number）各是多少？放寬AQL對病患安全有何潛在影響？</p>
+                        <p><em>提示：查閱 ASQ/ANSI Z1.4 表格，找到對應的樣本大小字母碼（Sample Size Code Letter）與接受/拒絕數（Ac/Re）。</em></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 4.0 — RISK LEVELS (CRITICAL)
+         ========================================================= -->
+    <div class="chapter-section" id="sec40">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.0</div>
+            <div class="chapter-info">
+                <h2>Glass Nonconformity Risk Levels — 玻璃不合格項目風險等級</h2>
+                <p>The five-tier classification framework — core of TR43</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Sharing a common terminology of glass nonconformities between glass manufacturers and pharmaceutical manufacturers is recommended in order to identify and classify nonconformance attributes.</p>
+                    <p>Nonconformities should be reviewed and classified (with rationale) using a <strong>quality risk management approach</strong>. Verification of nonconformity classifications may warrant additional testing.</p>
+                    <p>The following list provides the rationale for each classification of nonconformance risk level:</p>
+                    <ul>
+                        <li><strong>Critical:</strong> A nonconformity that is likely to result in personal injury or potential hazard. Includes any nonconformity that compromises the integrity of the container, as well as risks of microbiological contamination of a sterile product.</li>
+                        <li><strong>Major A:</strong> A nonconformity leading to serious impairments, for example, a malfunction that makes the packaging unusable.</li>
+                        <li><strong>Major B:</strong> A nonconformity leading to impairments of a lesser degree, for example, reduced efficiency in production.</li>
+                        <li><strong>Minor:</strong> A nonconformity that does not impact product quality or process capability.</li>
+                        <li><strong>Acceptable Imperfection:</strong> An imperfection below the minimum nonconformity size or limit sample — considered not applicable. Therefore, it is acceptable.</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="note-box">
+                        <h4>風險分類的核心邏輯</h4>
+                        <p>TR43 的五級分類，本質上是一個<span class="key-term">病患危害風險由高到低</span>的階梯：</p>
+                        <ul>
+                            <li><strong>Critical</strong>：直接危及病患生命安全（CCI破壞、玻璃碎片、污染）</li>
+                            <li><strong>Major A/B</strong>：影響容器功能性，可能間接危及藥品品質</li>
+                            <li><strong>Minor</strong>：不影響功能，但不符合規格</li>
+                            <li><strong>Acceptable Imperfection</strong>：不構成不合格，無需拒絕</li>
+                        </ul>
+                        <p>每個等級都應有明確的處置方式，且分類需有風險評估的書面理由（Rationale）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Critical缺陷 = 立即拒批，無例外</h4>
+                        <p>在抽樣樣本中發現任何一個 Critical 缺陷，該批次應<span class="key-term">立即拒絕（Immediate Batch Rejection）</span>，不得協商或特殊讓步（Special Dispensation）。</p>
+                        <p>典型 Critical 缺陷例子：</p>
+                        <ul>
+                            <li>容器封閉完整性（CCI）受損的裂縫或破損</li>
+                            <li>尖銳玻璃碎片（可能刺穿注射器，傷害病患）</li>
+                            <li>外來污染物（金屬碎片、異物）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：交通號誌</h4>
+                        <p>五個等級就像交通號誌的階層：</p>
+                        <ul>
+                            <li><strong>Critical</strong> = 紅燈（立即停止，批次拒絕）</li>
+                            <li><strong>Major A</strong> = 深橙燈（AQL 0.65，嚴格把關）</li>
+                            <li><strong>Major B</strong> = 橙燈（AQL 1.0，謹慎通過）</li>
+                            <li><strong>Minor</strong> = 黃燈（AQL 4.0，注意觀察）</li>
+                            <li><strong>Acceptable Imperfection</strong> = 綠燈（無限制，正常通行）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Risk Level Summary Table -->
+            <h3 class="section-title">五級風險等級完整對照表 Comprehensive Risk Level Reference Table</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>風險等級<br>Risk Level</th>
+                        <th>英文定義<br>English Definition</th>
+                        <th>中文說明</th>
+                        <th>典型AQL<br>Typical AQL</th>
+                        <th>典型缺陷範例<br>Example Defects</th>
+                        <th>處置原則<br>Disposition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="risk-critical">
+                        <td><strong>Critical<br>嚴重缺陷</strong></td>
+                        <td>Likely to result in personal injury or potential hazard; compromises container integrity or microbiological safety of sterile product.</td>
+                        <td>可能導致人身傷害或危害；破壞容器密封完整性或無菌產品的微生物安全。</td>
+                        <td><strong>None Allowed<br>（禁止出現）</strong></td>
+                        <td>CCI破壞性裂縫、尖銳玻璃碎片、外來金屬污染物、穿透性破損</td>
+                        <td>發現即拒批，不得讓步</td>
+                    </tr>
+                    <tr class="risk-major-a">
+                        <td><strong>Major A<br>主要缺陷A</strong></td>
+                        <td>Leading to serious impairments — malfunction making packaging unusable.</td>
+                        <td>導致嚴重功能損害，使容器無法正常使用（如無法填充、無法密封）。</td>
+                        <td><strong>AQL ≤ 0.65</strong></td>
+                        <td>嚴重瓶口缺口（影響密封）、尺寸嚴重偏差、嚴重封口缺陷</td>
+                        <td>嚴格抽樣，超過AQL即拒批</td>
+                    </tr>
+                    <tr class="risk-major-b">
+                        <td><strong>Major B<br>主要缺陷B</strong></td>
+                        <td>Leading to impairments of a lesser degree — reduced efficiency in production.</td>
+                        <td>導致較輕程度的功能損害，例如降低生產效率或邊際可接受功能。</td>
+                        <td><strong>AQL ≤ 1.0<br>（或≤2.5）</strong></td>
+                        <td>影響加工效率的缺陷、較大但未影響密封的氣泡、表面嚴重破損</td>
+                        <td>抽樣查驗，超過AQL即拒批</td>
+                    </tr>
+                    <tr class="risk-minor">
+                        <td><strong>Minor<br>輕微缺陷</strong></td>
+                        <td>Does not impact product quality or process capability; departs from specifications.</td>
+                        <td>不影響產品品質或製程能力，但不符合規格要求（通常為外觀問題）。</td>
+                        <td><strong>AQL ≤ 4.0</strong></td>
+                        <td>輕微表面刮痕、較小且不影響功能的氣泡、輕微色澤差異</td>
+                        <td>抽樣查驗，超過AQL即拒批</td>
+                    </tr>
+                    <tr class="risk-acceptable">
+                        <td><strong>Acceptable Imperfection<br>可接受瑕疵</strong></td>
+                        <td>Below minimum nonconformity size or limit sample; considered not applicable — therefore acceptable.</td>
+                        <td>低於最小不合格尺寸或限量樣品標準；視為不適用，因此為可接受狀態。</td>
+                        <td><strong>無（不設拒收標準）</strong></td>
+                        <td>極微小氣泡（未達最小缺陷尺寸）、輕微模具痕跡（在可接受範圍內）</td>
+                        <td>不拒批，記錄備查即可</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="two-column" style="margin-top:1.5rem;">
+                <div class="left-column">
+                    <!-- Additional context from source text -->
+                    <div class="column-header">補充說明 Additional Context</div>
+                    <p>Classification of glass nonconformities as critical, major A, major B, or minor (with associated AQLs) <strong>does not necessarily signify that this level of nonconformance would be considered acceptable</strong> as an outgoing quality level in pharmaceutical or diagnostic products.</p>
+                    <p>However, using those classifications does allow for a distinction based on their potential impact on product quality and patient safety. The drug company and glass manufacturer need to establish the classifications and AQLs based on the drug product and process requirements.</p>
+                    <p>Nonconformities should be reviewed and classified using a <strong>quality risk management approach</strong> (per ICH Q9). Verification of nonconformity classifications may warrant additional testing to establish their rationale.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="note-box">
+                        <h4>AQL ≠ 可接受不良率</h4>
+                        <p>TR43 明確指出：設定 AQL 不代表藥廠「接受」這個程度的不良率存在。AQL 是一種<span class="key-term">統計抽樣工具</span>，幫助判斷整批貨物是否可能超過預定品質水準——不是藥廠對缺陷存在的背書。</p>
+                        <p>理想目標仍是零缺陷（Zero Defects），AQL 是在現實製程能力下的統計保護機制。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 2：缺陷分類判斷</h4>
+                        <p>根據 TR43 的五級分類框架，請判斷以下兩種缺陷各應歸屬哪個等級，並說明理由：</p>
+                        <ol>
+                            <li><strong>瓶口封口區缺口（Chip on the Vial Finish）</strong>：一個明顯的缺口，位於瓶口與西林蓋接觸的封口面，缺口深度約0.5mm，可能影響鋁蓋的密封完整性。</li>
+                            <li><strong>瓶身表面刮痕（Scratch on the Vial Body）</strong>：一條細小的表面刮痕，位於瓶身中段，長度約3mm，不影響容器壁厚，不涉及封口功能。</li>
+                        </ol>
+                        <p><em>參考分類：(1) 瓶口缺口影響CCI，可能為Major A甚至Critical，視缺口大小與深度而定；(2) 瓶身刮痕通常為Minor或Acceptable Imperfection，取決於尺寸是否超過最小缺陷門檻。</em></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 5.0 — CONCLUSION
+         ========================================================= -->
+    <div class="chapter-section" id="sec50">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.0</div>
+            <div class="chapter-info">
+                <h2>Conclusion — 結論</h2>
+                <p>Overall significance of TR43 and its lexicons for the industry</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Acceptance or rejection of moulded and tubular glass containers is more than just the identification and classification of glass nonconformities. A larger process is involved that requires the drug manufacturer and glass manufacturer to create a glass-container quality specification together — employing existing standards for dimensional requirements and creating quality criteria including AQLs, nonconformity definitions, and reinspection.</p>
+                    <p>The use of TR-43 lexicons should result in:</p>
+                    <ul>
+                        <li>Minimizing confusion about quality terms by establishing a consensus lexicon created by glass and pharmaceutical/biopharmaceutical manufacturers</li>
+                        <li>Identifying nonconformity classifications by severity based on potential impact on pharmaceutical/biopharmaceutical container application</li>
+                        <li>Creating a common nomenclature that can be used throughout the industry for the definition and classification of glass container attributes</li>
+                        <li>Serving as an important supplement to existing guidance documents for the evaluation and classification of nonconforming glass containers</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>TR43的三層價值</h4>
+                        <ol>
+                            <li><strong>語言層</strong>：建立藥廠與玻璃廠的共同術語，避免溝通誤差導致錯誤的批次決策。</li>
+                            <li><strong>風險層</strong>：五級分類框架直接連結病患安全風險，使每個驗收決定都有風險管理依據（符合 ICH Q9）。</li>
+                            <li><strong>系統層</strong>：TR43 只是完整驗收體系的一部分——還需要搭配尺寸標準、AQL程序、重新查驗流程、培訓計畫，才能形成完整的玻璃容器品質管理系統。</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>TR43 ≠ 完整驗收標準</h4>
+                        <p>TR43 是一份<span class="key-term">補充指南</span>，不是完整的驗收標準。在實際應用中，還需要：</p>
+                        <ul>
+                            <li>公司內部的玻璃容器驗收 SOP</li>
+                            <li>與玻璃廠簽訂的品質協議（Quality Agreement）</li>
+                            <li>基於產品特性的客製化 AQL 規格</li>
+                            <li>人員培訓與視覺查驗認證計畫</li>
+                            <li>偏差/NCR調查流程</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 6.0 — REFERENCES
+         ========================================================= -->
+    <div class="chapter-section" id="sec60">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.0</div>
+            <div class="chapter-info">
+                <h2>References &amp; Additional Reading — 參考文獻與延伸閱讀</h2>
+                <p>Key standards and guidance documents cited in TR43</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Key References</div>
+                    <ul>
+                        <li>ASQ/ANSI Z1.4-2003 (R2018): Sampling Procedures and Tables for Inspection by Attributes</li>
+                        <li>ICH Q9: Quality Risk Management (2005)</li>
+                        <li>ISO 8362-1:2018 — Injection Vials Made of Glass Tubing</li>
+                        <li>ISO 8362-4:2011 — Injection Vials Made of Moulded Glass</li>
+                        <li>ISO 9187-1:2010 — Ampoules for Injectables</li>
+                        <li>ISO 11040-4:2015 — Glass Barrels for Prefilled Syringes</li>
+                        <li>ISO 13926-1:2018 — Glass Cylinders for Pen-Injectors</li>
+                        <li>ISO 2859-1:1999 — Sampling Procedures for Inspection by Attributes (AQL Indexed)</li>
+                        <li>21 CFR 211.84 — Testing and Approval or Rejection of Components, Drug Product Containers, and Closures</li>
+                        <li>21 CFR 211.82 — Receipt and Storage of Untested Components, Drug Product Containers, and Closures</li>
+                    </ul>
+                    <p><strong>Additional Reading:</strong></p>
+                    <ul>
+                        <li>Harl et al., <em>Defect Evaluation List for Containers Made of Tubular Glass</em>, 5th Ed. (2016)</li>
+                        <li>Jansen et al., <em>Defect Evaluation List for Containers Made of Moulded Glass</em> (2018)</li>
+                        <li>PDA TR85: Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric Closures and Glass Containers (2021)</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>參考標準層次架構</h4>
+                        <p>TR43 引用的標準形成一個層次結構：</p>
+                        <ul>
+                            <li><strong>法規層（Regulatory）</strong>：21 CFR 211.84/211.82 — 法規要求基礎</li>
+                            <li><strong>抽樣標準層</strong>：ASQ/ANSI Z1.4、ISO 2859-1 — 提供統計抽樣方法</li>
+                            <li><strong>容器尺寸標準層</strong>：ISO 8362、9187、11040、13926系列 — 各類容器尺寸規格</li>
+                            <li><strong>風險管理層</strong>：ICH Q9 — 不合格分類的風險管理方法論</li>
+                            <li><strong>最佳實踐層</strong>：TR43本身 + TR85、Harl/Jansen手冊 — 視覺缺陷辨識與分類</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>PDA TR85 與 TR43 的關聯</h4>
+                        <p>PDA TR85 專注於可見粒子的增強測試方法（包括彈性體閉合件與玻璃容器），與 TR43 在粒子相關缺陷的分類上相互補充。在制定粒子相關的驗收標準時，建議同時參考這兩份報告。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION SUMMARY
+         ========================================================= -->
+    <div class="section-summary">
+        <h3>本節重點整理 Section Summary</h3>
+        <ul>
+            <li><strong>TR43的核心價值</strong>：為玻璃廠與藥廠提供統一的「不合格項目辨識語言」，是業界最佳實踐指南（非強制標準），適用於空玻璃容器的進貨驗收與製程管制。</li>
+            <li><strong>2023年修訂重點</strong>：RTU容器正式納入、減少對限量樣品依賴、術語標準化（"N/A" → "Acceptable Imperfection"）、玻璃粒子風險等級協調。</li>
+            <li><strong>核心術語</strong>：AQL（統計抽樣允許的最差製程平均不良率）、批次定義（需雙方協議）、Limit Sample、RTU容器、屬性抽樣（ASQ/ANSI Z1.4、ISO 2859-1）、dPPM。</li>
+            <li><strong>規格開發流程</strong>：玻璃廠與藥廠共同建立品質協議，涵蓋尺寸設計（ISO標準）、抽樣計畫、批次定義、AQL設定、不合格處置、文件培訓五大要素。</li>
+            <li><strong>五級風險分類框架</strong>（核心）：Critical（禁止出現）→ Major A（AQL≤0.65）→ Major B（AQL≤1.0/2.5）→ Minor（AQL≤4.0）→ Acceptable Imperfection（無限制）。分類須依 ICH Q9 風險管理方法進行，且須有書面理由。</li>
+            <li><strong>AQL的正確理解</strong>：AQL是統計工具，不是對缺陷的背書；Critical缺陷用"None Allowed"（非AQL=0%）；AQL值需根據藥品特性和製程要求客製化設定，不能一體適用。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 43 (Revised 2023)</p>
+    <p>Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Section 0: Introduction &amp; Classification Framework | Educational Version — For Internal Training Use Only</p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

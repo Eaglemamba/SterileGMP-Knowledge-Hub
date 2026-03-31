@@ -1,0 +1,2053 @@
+# PDA Points to Consider No. 9 (2024): Lessons Learned from the COVID-19 Pandemic
+
+Introduction
+As a result of the COVID-19 pandemic, many industries–the pharmaceutical industry included–went
+through a substantial disruption. Some of these disruptions included facility shutdowns, unprecedent-
+ed supply chain challenges, worker availability, and quality system limitations (e.g., physical signa-
+tures, investigations, document originals, risk assessments, audits). For many pharmaceutical compa-
+nies, challenges increased as they raced to provide a vaccine or a therapeutic treatment for COVID-19.
+Their manufacturing operations were changed over to accommodate the creation of the vaccine and,
+in order to get the vaccine to patients quickly, many logistical challenges arose.
+As the pandemic has progressed, our understanding of the virus, its control, and treatment options
+have changed and advanced. When reading this document, it is important to remember that its intent
+is to describe the lessons learned for future benefit, especially at times when the understanding of the
+virus and treatment options were extremely limited. Even today, as we enter what is believed to be the
+last phase of the pandemic, moving into an endemic state, it is difficult to comprehend the amount
+of anxiety and risk that existed during the initial 12 to 16 months. During that time, some types of
+government-imposed state of emergency were mandated in many countries that restricted the move-
+ment of individuals and closed nonessential businesses. Hospitals operated at capacity, a significant
+number of Covid-related deaths occurred, and a limited amount of personal protective equipment
+(e.g., mask, gloves) was available.
+The specifics of the pandemic or the COVID-19 virus are not detailed here, as that information
+is widely available. One point that does need to be made is that this pandemic, like the pandemic
+of 1918, went through waves, and the exact timing of each wave and the number of waves experi-
+enced varied by country. Provided below is an example of the COVID-19 waves for the United States
+(Figure 1), published in the Morbidity and Mortality Weekly Report, that shows the seven-day mov-
+ing average number of cases in the United States over a two-year period (1). These waves were not
+unexpected but how the operation of manufacturing facilities should react to these first waves was not
+immediately clear; that developed over time. This document intends to convey the understanding and
+evolution of thought in response to the new data and observations presented as we worked our way
+through 2019, 2020, 2021, and 2022.
+Scope
+This document applies lessons learned from the COVID-19 pandemic to pharmaceutical manufactur-
+ing. Areas covered include manufacturing, people, quality, regulatory, and supply chain.
+Figure 1
+Seven-day moving average number of COVID-19 cases, emergency department visits, hospital admissions,
+and deaths, December 1, 2020–January 15, 2022 (1)
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+References
+1.	 Juliano, A; Brunkard, J, et al. Trends in Disease Severity and Health Care Utilization During
+the Early Omicron Variant Period Compared with Previous SARS-CoV-2 High Transmission
+Periods - United States, December 2020-January 2022. MMWR Morb Mortal Wkly Rep 2022
+Jan 28;71 (4), 146-52.
+Additional Reading
+Cacciapaglia, G, et al. Multiwave pandemic dynamics explained: how to tame the next wave of infec-
+tious diseases. Sci Rep 2021, 11, 6638.
+Gouglas, D, et al. The 100 Days Mission—2022 Global Pandemic Preparedness Summit. Emerg
+Infect Dis 2023, 29 (3). https://doi.org/10.3201/eid2903.221142
+Parenteral Drug Association. Technical Report No. 89: Strategies for Vaccine Development and Lifecycle
+Management; PDA: Bethesda, MD, 2023.
+Popkin, M E, et al. Chemistry Manufacturing and Controls Development, Industry Reflections on
+Manufacture, and Supply of Pandemic Therapies and Vaccines. The AAPS Journal 2022, 24 (101).
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9514697/pdf/12248_2022_Article_751.pdf
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+I.  Manufacturing
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 1-1:  Are GMP controls sufficient to protect the product?
+Background
+Due to the novelty of the coronavirus, at the start of the pandemic, the potential impact to the safety and
+quality of the drugs produced as a result of infected manufacturing employees was uncertain. The virus
+was found to spread very efficiently, which resulted in a much higher percentage of the population being
+infected than with common or seasonal viral infections. As a result, the risk of a manufacturing process
+being exposed to the coronavirus was considered to be higher than usual, depending on the process.
+Therefore, most drug manufacturers moved quickly to perform risk assessments to evaluate the established
+good manufacturing practices (GMP) controls in their manufacturing facilities with respect to the new
+potential contaminant. The expectation of risk mitigation was also later reflected in a COVID-19-specific
+guidance published by the U.S. Food and Drug Administration (FDA) that stated “as a consequence of the
+COVID-19 pandemic, drug manufacturers were also expected to perform these risk assessments to ensure
+that product quality and safety, including employees’ safety, are not impacted due to the pandemic” (1).
+Fortunately for the industry, and for most of the manufacturing operations that would be considered
+at risk, careful implementation of GMP principles and practices are likely to protect product against
+the SARS-CoV-2 virus that causes COVID-19, as well as mitigate the risk caused by asymptomatic
+SARS-CoV-2-infected personnel. Some of these include:
+•
+General hygiene measures and procedures in case of illness, feeling sick, open lesions, or sneezing
+and coughing
+•
+Procedures for thorough handwashing and subsequent hand sanitization before entering produc-
+tion areas, and regular glove disinfection during production
+•
+Use of environmentally controlled rooms within GMP-classified areas with specific gowning re-
+quirements (e.g., cleanroom gowns, overalls, lab coats, gloves, mask, gowning procedures) based
+on the operation performed
+•
+Restriction of access to production areas to authorized personnel only
+•
+Frequent cleaning cycles of the manufacturing areas and process equipment
+•
+Design of general process equipment to ensure manufacturing areas are as closed as possible to
+prevent the potential entry of contamination
+•
+Use of closed systems and, where product is exposed, use of isolators, restricted access barrier
+systems, and HEPA-filtered laminar airflow to protect the product
+•
+Frequent cleaning cycles of the area and of the processing equipment to further prevent con-
+tamination from spreading
+•
+Environmental and personnel monitoring to ensure strict adherence to GMP processes
+•
+Use of air cascades and pressure differentials to allow air to flow from critical to less-critical areas
+•
+Production flow in facilities designed to allow efficient movement and control of materials, per-
+sonnel, products, equipment, and waste to prevent contamination
+•
+Use of gamma-irradiated, single-use process equipment interconnected with aseptic connections
+and typically designated as functionally closed systems
+•
+Stainless-steel equipment processes typically being cleaned and connected, followed by an in-situ
+steam sterilization cycle
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Process venting points outfitted with hydrophobic-membrane filters that act as barriers to poten-
+tial ingress into the process
+Additional considerations are also taken when working with mammalian cell lines:
+•
+Industry is expected to conduct adventitious-agent testing of a typical panel at the end of pro-
+duction cell bank. Additional risk assessment may need to be considered for banks manufactured
+after 2019.
+•
+Measures to prevent and avoid viral cross-contamination during processing are well established,
+including deactivation and removal of viruses. These measures are likely to prove effective against
+COVID-19 as well. The large size of the COVID-19 virus makes it a prime candidate for removal
+by a 20-nm viral filter. Reports of the stability of COVID-19 over a wide range of pH values cre-
+ates some potential concern around the effectiveness of a low-pH step for viral deactivation; thus,
+relying fully on this step for clearance is not recommended (2-4). Further studies in this area will
+enhance confidence in the effectiveness of the current processing steps. Alternatively, detergent
+or solvent deactivation is effective (4). Clearance of viruses through protein-A chromatography-
+capture and/or anion exchange are both functions of viral particle properties as well as protein
+and solution conditions. Using a panel of viruses that incorporates the physical characteristics of
+a coronavirus provides assurance of viral safety.
+All these measures reduce the likelihood of an impact to product quality and safety due to pathogenic
+contamination to acceptable levels.
+Learnings
+The emergence of a pandemic or similar disaster must mobilize industry to assess the continued abil-
+ity of their processes and quality systems to protect product quality and patient safety. Industry must
+be prepared to rapidly perform such assessments in the future when a similar situation emerges. In
+the case of SARS-CoV-2, manufacturing processes employing strict GMP adherence in their design,
+personnel controls, and the environments in which they are performed likely present an extremely low
+risk for possible SARS-CoV-2 product contamination. In most cases, when conforming to existing
+GMP, no additional measures are necessary to protect product and patient. In the event of an employ-
+ee operating within the GMP manufacturing environment testing positive, a specific risk assessment
+should be performed to identify, analyze, and evaluate hazards that might need to be considered based
+on the specific circumstances.
+References
+1.	 U.S. Food and Drug Administration. Guidance for Industry: Good Manufacturing Practice Consid-
+erations for Responding to COVID-19 Infection in Employees in Drug and Biological Products
+Manufacturing; U.S. Department of Health and Human Services: Silver Spring, Md., 2020.
+2.	 Chin, A W H; Chu, J T S, et al. Stability of SARS-CoV-2 in Different Environmental Condi-
+tions. Lancet Microbe 2020, May, 1 (1).
+3.	 Michen, B; Graule, T. Isoelectric Points of Viruses. J Appl Microbiol 2010, Aug, 109 (2), 388-97.
+4.	 Miriam, E R; Darnell, M E, et al. Evaluation of inactivation methods for severe acute respiratory
+syndrome coronavirus in noncellular blood products. Transfusion 2006, Oct; 46 (10), 1770-7.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 1-2:  How do you develop a mRNA/gene therapy drug product
+rapidly (Part 1)?
+Background
+Using messenger RNA (mRNA) to encode proteins for vaccination or protein replacement received its
+first in-vivo validation in 1990, when Wolff et al. demonstrated the production of a target protein after
+intramuscular injection in mice (1). The exact advantages of using mRNA products were discovered
+later, including:
+•
+Allowing human post-translational modification of protein products with the potential for less
+immunogenicity and full functionality
+•
+Permitting multimeric proteins that are not amendable to production in a bioreactor to be trans-
+lated, folded, and assembled correctly in the patient’s cells
+•
+Producing transmembrane and intracellular proteins and trafficking them to their appropriate
+site in the cellular environment (2)
+Learnings
+The preparation of plasmid DNA (pDNA) is the first step in the production of mRNA, where func-
+tional synthetic mRNA is obtained by the in-vitro transcription of a pDNA template. The pDNA
+template is transcribed into the mRNA mixture containing RNA polymerase and nucleoside triphos-
+phates. Then, a cap may be performed during the reaction, or it can be added enzymatically post-tran-
+scription. Capping improves translation initiation by recruiting translation-initiation factors, thereby
+protecting the synthetic mRNA against degradation. Post-transcription, the pDNA template and bac-
+terial DNA is digested by DNase. To be used as a drug substance, mRNA has to be purified to remove
+contaminating transcripts, which can be done by using a single chromatographic step that will separate
+the mRNA based on size and result in a pure, single mRNA product.
+Two forms of mRNA are being studied for use in vaccines: nonreplicating (traditional) mRNA and
+self-amplifying mRNA. The traditional mRNA form presents two advantages: the molecule is quite
+simple and small, and the possibility of an unwanted immune response is lowered because there are
+no other proteins encoded. However, the traditional mRNA form is limited by its transient nature.
+The advantage of self-amplifying mRNA is that it performs self-replication and creates high levels of
+the antigen not found with traditional mRNA. The self-amplifying RNA vaccine was found to show
+a 64-fold lower dose required for an immunologic response compared to its mRNA counterpart (2).
+References
+1.	 Wolff, J; Malone, R, et al. Direct Gene Transfer into Mouse Muscle in Vivo. Science 1990, 247
+(4949), 1465-68.
+2.	 Barbier, A; Jiang, A, et al. The clinical progress of mRNA vaccines and immunotherapies. Nat
+Biotechnol 2022, 40, 840–54.
+Additional Reading
+Rosa, S, et al. mRNA vaccines manufacturing: Challenges and bottlenecks. Vaccine 2021, 39 (16),
+2190-200.
+Fang, E, et al. Advances in COVID-19 mRNA Vaccine Development. Signal Transduction and
+Targeted Therapy 2022, 7 (94). https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8940982/
+pdf/41392_2022_Article_950.pdf
+Centers for Disease Control and Prevention. Understanding How COVID-19 Vaccines Work. CO-
+VID-19. https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/how-they-work.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+html#mrna (accessed 9 Oct 2023). https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-
+vaccines/how-they-work.html#mrna
+Schlake, T, et al. Developing mRNA-Vaccine Technologies. RNA Biol 2012, 9 (11), 1319–30.
+U.S. Food and Drug Administration. Guidance for Industry: Human Gene Therapy Products Incorpo-
+rating Human Genome Editing; U.S. Department of Health and Human Services: Silver Spring, Md.,
+2022. https://www.fda.gov/media/144886/download.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 1-3:  How do you develop a mRNA/gene therapy drug product
+rapidly (Part 2)?
+Background
+Gene therapy products seek to insert genetic material into a patient’s cells to treat or prevent a specific
+disease state. There are several types of gene-therapy products, which includes plasmid DNA, viral vec-
+tors, bacterial vectors, human gene-editing technology, and patient-derived cellular gene therapy (1).
+In much the same way, mRNA therapy products seek to insert mRNA material into a patient’s cells to
+induce the production of a specific protein to treat or prevent a specific disease state.
+The COVID-19 mRNA vaccine, for example, is made of mRNA and, to allow introduction into the
+cell, is encompassed by lipid nanoparticles. Once in the cells, it works by instructing the cells to make
+a protein that will trigger an immune response to COVID-19 (2). While there is no specific formula
+for the creation of a successful mRNA lipid nanoparticle (LNP) vaccine, there are items to keep in
+mind when designing such a product.
+The mRNA LNP design is characterized by three main elements:
+•
+mRNA sequence design and nucleotide modification choice
+•
+Optimization of a LNP formulation to encapsulate and deliver mRNA
+•
+Long-term storage (3)
+The first step in developing a mRNA therapy product is focusing on the API, as it is the most important
+part of the formulation. Considerations for designing or choosing the mRNA sequence should include
+the expression of encoded mRNA, immunogenicity due to recognition of mRNA as a foreign entity
+by intracellular RNA sensors, and mRNA stability. Nucleotide modification is equally important for
+this, as nonmodified mRNA molecules are recognized by the cellular RNA sensors, which nulls the
+effect of their expression. The translation efficiency and intracellular-mRNA stability can be increased
+substantially by mRNA capping. Additionally, the decay and translation efficiency are greatly affected
+by the untranslated region selection as well as the open-reading-frames sequence design.
+The purpose of the LNP formulation is to design a nanoparticle that will shield the mRNA from
+degradation and enable efficient delivery into targeted cells. These formulations typically comprise a
+neutral structural lipid, cholesterol, a PEG-lipid, and an ionizable lipid. The ionizable lipid is incred-
+ibly important for enhancing the expression and provides the most-optimal immune response. The
+PEG-lipid component is helpful in increasing the shelf life of the solution by preventing aggregation.
+Considerations for PEG-lipids used in these formulations should take into account that, at high con-
+centrations, they can prevent delivery of the mRNA.
+The speed at which knowledge regarding mRNA vaccine development was gained during the pan-
+demic was significant. This was a clear result of the unprecedented amount of global private and gov-
+ernment funding that was made available for vaccine development.
+Throughout the process of formulation, long-term storage and stability should be major considerations
+in design. The ultra-low storage requirement currently approved for mRNA vaccines due to instability
+at room temperature is a system constraint. To freeze LNPs, a cryoprotectant such as sucrose or trehalose
+should be added to the formulation. When added, these cryoprotectants preserve the physiochemical
+properties of the particles and allow maintenance of in-vivo delivery efficacy for three months.
+Lessons Learned
+In the case of a future pandemic, the availability of global and private funding to advance the develop-
+ment of research for a potential vaccine will again be critical. Governmental agencies globally should
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+develop or revise plans related to the emergency funding of such research should the need arise. Where
+possible, governments should work together on such plans.
+While the most desired mRNA vaccine would be one that could be provided in a lyophilized or a
+liquid formulation stored under refrigerated or room-temperature conditions, such formulations can
+take significant periods of time to develop, if even possible. Under pandemic conditions, when a
+vaccine is needed quickly, the initial use of an ultra-low storage condition should be considered as it
+removes many of the formulation challenges that would otherwise need to be overcome.
+References
+1.	 ASGCT Staff. COVID-19 Vaccine Candidates Show Gene Therapy is a Viable Strategy. COV-
+ID Symposium. https://asgct.org/research/news/november-2020/covid-19-moderna-nih-vaccine
+(accessed 27 May 2022).
+2.	 Centers for Disease Control and Prevention. Understanding mRNA COVID-19 Vaccines.
+COVID-19. https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/mrna.
+html#print (accessed 27 May 2022).
+3.	 Kon, E; Elia, U, et al. Principles for designing an optimal mRNA lipid nanoparticle vaccine.
+Curr Opin Biotechnol 2022, 73, 329-36.
+Additional Reading
+Singhai, M; Bhattacharya, S. Polysarcosine: The Best Alternative of Poly (Ethylene Glycol). Current
+Applied Polymer Science 2020, 4, 1-5.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 1-4:  How did the route of administration of the vaccine impact
+the manufacturing operations needed and how did companies work
+together to allow rapid commercialization?
+Background
+The COVID-19 vaccine is considered a biologic parenteral drug formulated as a solution with the
+route of administration being sterile injections. Therefore, manufacturing of a parental drug is much
+more complex than the production of solid oral dosage forms such as tablets for oral ingestion. Apart
+from the significant differences in manufacturing a solution versus a tablet, there are many more con-
+trols required to ensure the product remains entirely sterile, including the control and use of sterile
+components such as vials and stoppers.
+A vital step for these types of parenteral drugs that cannot be terminally sterilized is the aseptic fill–fin-
+ish process in which solution is filled into containers, such as vials, and sealed with an aseptic closure,
+such as a stopper, as the final step before the product is packaged and shipped for patients. For several
+of the vaccine products developed, rapid freezing and long-term, ultra-low storage was also required.
+The formulation of a drug product can have a significant impact on the sterile fill–finish capabilities of
+the system. For instance, a product may require different sizes and composition of filters (membranes)
+to achieve sterilization of the product. Different characteristics of the drug product will also affect the
+parameters of the system used to fill the vials, such as flow rate and pressure. In many cases, the filling
+process requires specialized equipment due to specific product characteristics, such as solubility, viscos-
+ity, and the tendency of a product formulation to foam.
+The fill–finish of millions of doses of vaccines is no small task; it requires significant manufacturing
+capacity, technical capabilities, and rigorous quality-control measures to ensure product quality. To
+achieve the volume of production needed, smaller pharmaceutical companies developing the vaccine
+teamed up with larger companies that had the capacity and technical expertise needed to produce it.
+Moderna, for example, utilized the sterile fill–finish capabilities of the contract manufacturer Thermo
+Fisher Scientific to aid in this incredibly important part of the manufacturing process (1). BioNTech
+partnered with Pfizer, an expert in the manufacture of sterile drug products (2).
+Lessons Learned
+One very valuable learning point during the pandemic was the importance and willingness of com-
+panies to partner with one another to rapidly develop the manufacturing process needed for vaccine
+production. In the event of a future pandemic, this will again be a crucial factor in the speed with
+which a novel vaccine can be commercialized.
+References
+1.	 Higgins-Dunn, N. On a roll, Moderna taps Thermo Fisher for fill-finish duties and Lonza for
+booster shot manufacturing. Fierce Pharma. https://www.fiercepharma.com/pharma/a-role-
+moderna-taps-thermo-fisher-to-help-covid-19-vaccine-fill-finish-packaging-and (accessed 17 Jul
+2022).
+2.	 Etherington, D. Pfizer and BioNTech announce joint development of a potential COVID-19
+vaccine. TechCrunch. https://techcrunch.com/2020/03/17/pfizer-and-biontech-announce-joint-
+development-of-a-potential-covid-19-vaccine/ (accessed 17 Jul 2022).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 1-5:  Can vaccine manufacturing capacities be scaled up rapidly?
+Background
+Technology is rapidly evolving. Since 1990, when mRNA was first used in vivo, decades of research
+have gone into understanding mRNA–LNPs, so much was already known about mRNA before the
+start of the 2020 pandemic. Consequently, when the need for a COVID-19 vaccine arose, it did not
+take nearly as long as it would have if researchers were starting from scratch. Moderna’s vaccine took
+only two days to finalize the sequence, 25 days to manufacture the first dose, and 63 days to be made
+available for the first patient to be dosed in a Phase 1 Clinical Study (1-3). Although the vaccine was
+made quickly, it was held to rigorous standards by the FDA as stated in Guidance for Industry: Develop-
+ment and Licensure of Vaccines to Prevent COVID-19 (2).
+To be effective, scaling up manufacturing of the novel drug product required a platform technology
+approach and available facilities in which to perform the operations. Such was the case with the CO-
+VID-19 vaccines.
+Without considering process validation and regulatory approval timelines, the design, construction,
+and installation of a typical manufacturing facility requires a minimum of two to three years. In the
+case of COVID-19, however, the capacities needed to be scaled up much more rapidly. In 2010, the
+U.S. government started an initiative to fund sites that could be activated either for other vaccine pur-
+poses or to fulfill the needs of a pandemic-vaccine requirement. These sites were funded by the federal
+government to assure that they were built and able to operate without being a burden to the companies
+that owned the sites. Unfortunately, when these sites were activated, they were not able to fulfill the
+mission for which they had been created.
+Based on the need to respond quickly, approaches were leveraged to bring new facilities online faster.
+The use of standard designs for cleanroom infrastructure by suppliers significantly abbreviated design
+timelines. These standard designs allowed the in-depth knowledge of all material components needed,
+the logistics to get the components to the site, and the site installation and qualification. The absence
+of the need for a design phase and the use of a repeat build and qualification strategy reduced normal
+facility construction timelines considerably. To accelerate the timeline further, standard designs of
+off-site, prefabricated, modular cleanroom infrastructures were used, as was the case in the Pfizer Ka-
+lamazoo site (4). These types of building modes not only halved the construction timeline but allowed
+them to be prequalified and used within a high-beam shell building, like a warehouse. This allowed
+the processing infrastructure to be added into existing shell buildings, with only slight modifications
+to building utilities, instead of constructing a new building.
+Some companies, such as Thermo Fisher Scientific, actively worked to overcome this challenge and
+scaled up their manufacturing efforts quickly to meet the unprecedented demand. Initially, Thermo
+Fisher Scientific scaled up the manufacture of raw materials, relying on their current working supply of
+nucleotides and enzymes for early therapeutics development, which required no infrastructure chang-
+es. The company also built a 57,000-sq. ft. facility to manufacture the needed enzymes and nucleotides
+at industrial-scale levels using a platform approach to ensure a continued supply (4).
+Lessons Learned
+The pandemic situation emphasized the need for pharmaceutical companies and regulatory authorities
+to be prepared to encourage facility design, construction, and process installations that leverage and
+expedite innovation and the adoption of new technology with the goal of bringing the manufacturing
+facilities online rapidly.
+For example, the use of modular facilities that allows manufacturers to continuously customize and
+reconfigure equipment to accommodate new products or processes could be encouraged. This use of
+portable modular manufacturing suites also provides new options for geographic diversification and
+facility reconfiguration.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+In addition, global governments should think about how to incentivize companies to design facili-
+ties in the future that are flexible enough to be repurposed during a pandemic if needed. This should
+be possible if the types of drug substance technology for the vaccine are not too different from the
+production techniques in use. The benefit of building flexibility into an operating facility is that the
+processes surrounding those manufacturing operations are upgraded over time including aspects of
+the quality systems. Building plants that are not routinely used and maintaining them in a hibernated
+state creates many unforeseen issues (e.g., equipment reliability, availability of trained staff, up-to-date
+quality systems).
+A recent McKinsey report addressed the issue of being always prepared, with upfront investments
+over two years, followed by maintenance investments into the preparedness level. One of the issues
+addressed was the need for scaled-up vaccine facilities and having these facilities ready for use to sup-
+ply 15 billion doses in six months. The investment over 10 years would be substantial, but the analysis
+also showed that the minimum economic loss globally would be 40 times higher if this investment
+was not made (4).
+References
+1.	 Kon, E; Elia, U, et al. Principles for designing an optimal mRNA lipid nanoparticle vaccine.
+Curr Opin Biotechnol 2022, 73, 329-36.
+2.	 Rosa, S; Prazeres, D, et al. mRNA vaccines manufacturing: Challenges and bottlenecks. Vaccine
+2021, 39 (16), 2190-200.
+3.	 U.S. Food and Drug Administration. Guidance for Industry: Development and Licensure of Vac-
+cines to Prevent COVID-19; U.S. Department of Health and Human Services: Silver Spring,
+Md., 2020.
+4.	 Sealy, A. Manufacturing moonshot: How Pfizer makes its millions of Covid-19 vaccine doses.
+CNN Health. https://www.cnn.com/2021/03/31/health/pfizer-vaccine-manufacturing/index.
+html (accessed 27 May 2022).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+II.  People
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 2-1:  How do we overcome the workforce shortage induced by
+COVID-19?
+Background
+The pandemic created an unexpected and prolonged shortage of workers. This shortage occurred be-
+cause companies were neither prepared or equipped to ensure that workers could return to a safe
+environment. The initial worker shortage continued through the pandemic due, in part, to the impact
+of unvaccinated essential workers not being able to return to the workplace. Compounding this in
+some countries was government-augmented unemployment and housing benefits for workers, which
+created an economic driver for some vaccinated workers to delay their return to the workforce. The
+decreased availability of workers was largely also due to:
+•
+Lack of available childcare causing parents to stay at home
+•
+People voluntarily leaving the workforce entirely
+•
+People going into early retirement
+•
+People choosing to move from an essential job to a nonessential job
+Low vaccination rates lengthened the severity of the pandemic as virus mutations (e.g., Beta, Delta,
+and Omicron) developed and moved through the population. This phenomenon of vaccine hesitancy
+was not limited to the United States but was also seen in many other countries where vaccines were
+available. In addition to the low vaccination rates, breakthrough infections of individuals who were
+vaccinated also resulted in a high infection rate and absence from work.
+The pandemic has been emotionally challenging for many people and has changed many aspects of every-
+day life in unprecedented ways. One positive method to encourage employees and decrease worker short-
+ages is to protect employees and create an atmosphere of safety. Companies began reimplementing certain
+aspects of their safety plans, such as wearing masks, social distancing, and frequent hand-sanitizing. Main-
+taining flexibility is important during transitional times while the right policies and support for workers
+are identified. Communicating with employees to ensure their needs are addressed is extremely important.
+As a result of the worker shortages, companies began offering bonuses and other incentives to entice
+existing workers to return and to attract new workers during the pandemic. While this was effective,
+with the shift to remote working, it also created an opportunity for employees to change jobs for in-
+creased pay and presented opportunities outside their local areas without the need to relocate. Many
+called this phenomenon “the great resignation.” Another form of enticement, once legally allowed,
+was a provision that permitted companies in the United States and select other countries the ability to
+mandate that workers be vaccinated and return to work or lose their employment. Some companies
+used a combination of requiring vaccination or weekly testing. This was an effective tool in that it
+incentivized many employees to take the vaccine and return to work.
+Lessons Learned
+To reduce the level of pandemic-induced worker shortages, companies should have plans in place to
+minimize employee risk in the face of potential pandemics, not only for an initial outbreak but also
+for the recurring waves of a pandemic that might be expected. The external environment should then
+be continually evaluated to determine what specific steps need to be taken to minimize the risk to em-
+ployees, such as returning to specific requirements, like wearing masks and social distancing, that were
+implemented during the initial wave of the pandemic and then relaxed as the initial wave subsided.
+Ensuring that workers feel safe in the workplace is essential to maintaining the workforce.
+As needed, there are also other approaches that companies can use to entice workers to return, thus
+reducing worker shortages. One such approach is the use of special bonuses to entice workers to return
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+as well as to attract new employees to fill openings. To further encourage workers, companies should
+consider other added benefits such as more flexible work-from-home options (hybrid models seem
+to be the most accepted in the industry when nonessential work can be done from home a few days
+a week), childcare funding, company cell phones, and college tuition assistance. These were all used
+effectively by various companies as the pandemic progressed.
+Companies may require disclosure of employee vaccination status, where allowed, to encourage work-
+ers to get vaccinated. In the United States, requiring the disclosure of COVID-19 vaccination status
+was allowed (1-2). Ultimately, companies may mandate that workers return to work or forfeit their
+employment if no remote work opportunities are available.
+References
+1.	 Vasconcellos, S; Zadikany, R, et al. Can Employers Ask for Proof of COVID-19 Vaccination
+Status Under HIPAA? Benefits & Compensation Blog. https://www.usbenefits.law/2021/10/
+can-employers-ask-for-proof-of-covid-19-vaccination-status-under-hipaa/#more-2552 (accessed
+27 May 2022).
+2.	 U.S. Department of Health and Human Services. HIPAA, COVID-19 Vaccination, and the
+Workplace. Health Information Privacy. https://www.hhs.gov/hipaa/for-professionals/privacy/
+guidance/hipaa-covid-19-vaccination-workplace/index.html (accessed 21 Jul 2022).
+Additional Reading
+U.S. Department of Health and Human Services. Summary of the HIPAA Privacy Rule. Health
+Information Privacy. https://www.hhs.gov/hipaa/for-professionals/privacy/index.html (accessed 27
+May 2022).
+Craven, M, et al. Not the last pandemic: Investing now to reimagine public-health systems; McKinsey &
+Company: New York, 2020.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 2-2:  What restrictions should be considered for essential workers
+to ensure continued operation?
+Background
+At the start of the pandemic, few companies outlined what roles were considered essential for ensuring
+continued operations or what actions should be taken to protect those individuals.
+Disruptions caused some companies to lose weeks and even months of manufacturing productivity
+as operations were shut down, limiting the spread of the virus. Even companies manufacturing the
+vaccine, such as Pfizer and Moderna, announced a worker shortage and difficulty recruiting people in
+Boston, Massachusetts (1).
+The lack of personnel created a strain on the activities required to support production and batch release
+in the following areas:
+•
+Lack of trained and qualified operators on the manufacturing lines
+•
+Lack of trained technical support for setup and changeover
+•
+Lack of qualified personnel for batch-records review
+Without the required personnel, the operations will be interrupted and items like changeovers, techni-
+cal support, and batch disposition cannot be provided or performed. Additionally, batch records can-
+not be reviewed, manufacturing processes are interrupted, product testing will not be completed, and
+product is held in the warehouse and cannot be released.
+Lessons Learned
+To prevent a strain on activities supporting production and batch release, sites must be ready to quickly
+apply new approved technologies (e.g., cameras to replace second-person verifications, implementation
+of electronic signatures for approval of batch records, augmented reality (AR) glasses or handheld de-
+vices for problem-solving on the line). New technologies, such as cameras and AR glasses, can support
+manufacturing-line operations by reducing the number of staff who need to be physically at the factory.
+Because of this, the qualified personnel can provide instructions remotely. The remote support could be
+used for such functions as line clearance, second-person approval, and on-the-job training. Dispensing
+of raw materials can be performed by having the second operator perform the verification remotely.
+A risk assessment would define what activities can be performed remotely and what activities cannot.
+Automation of dispensing and filling lines can continue to be performed with a very limited number
+of resources on site and can ensure continued manufacturing using these principles.
+Additionally, companies should have plans in place that outline and define what roles are considered
+essential for manufacturing operations. The plan should outline the emergency procedures to be im-
+plemented to protect those essential workers and account for any possible governmentally mandated
+regulations. While the exact characteristics of the infectious agent and its mode of transmission may
+not be known with all certainty, common-sense measures should be put in place, such as:
+•
+Use of face coverings (if not already in place) in GMP areas
+•
+Increased cleaning of facilities and equipment
+•
+Nonessential workers working remotely
+•
+Cafeteria, conference rooms, and other common areas closed, or the number of personnel allowed
+to be present restricted
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+A review of how essential workers commute to work should be evaluated. Where the normal mode of
+transportation is via mass transportation (e.g., trains, buses, subways) or carpools, alternative modes of
+transportation to reduce the chance of workers being exposed should be considered. Plans to provide
+written documentation for employees to keep on their person for transit should be in place to comply
+with local, state, and federal requirements. All actions should be aligned with official government guid-
+ance (local, state, country).
+During a company’s evaluation of the risk, measures that may be more stringent than those outlined
+in official guidances may be warranted. Based on the critical nature of the products produced, a con-
+servative approach should be used. Consideration should be given to scheduling groups of employees
+in shifts or units (i.e., having a defined group of people working together, while the other group is
+working from home and vice versa). If the shifts or units remain unchanged, the risk of the entire team
+being impacted is reduced. Personnel movement should be restricted to specific buildings or areas to
+minimize the possibility of a super-spreader event occurring. In some cases, personnel should be reas-
+signed to minimize movement between buildings or areas.
+Social distancing, visual cues of vaccination status, floor markers for the flow of personnel, and dis-
+tance between individuals, should be implemented. If possible, electronic proximity detectors should
+be used to alert individuals when they are too close to one another. Physical barriers, such as plexiglass,
+should be installed to minimize exposure between individuals. Additionally, the speed of programs to
+screen workers on site should be established quickly (e.g., temperature, contact-tracing, quarantine
+requirements, daily health questionnaires). Considerations should be made during building design or
+renovations to ensure adequate air exchanges, and appropriate filtrations can be utilized if needed. In
+cases where the facility has not been designed with this in mind, other changes should be considered,
+such as upgrading the type of filters used or adding local filtration units.
+References
+1.	 Kansteiner, F. Pfizer, Moderna and Alnylam flag pharma labor shortage in Massachusetts–and
+the people bottleneck doesn’t stop there. Manufacturing. https://www.fiercepharma.com/manu-
+facturing/pfizer-moderna-and-alnylam-flag-pharma-labor-shortage-ma-and-people-bottleneck-
+doesn (accessed 27 May 2022).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 2-3:  What actions can be taken to minimize the risk of spreading
+contagions in the workplace?
+Background
+At the onset of the pandemic, the steps taken to minimize the spread of infection varied regionally.
+Companies referred to the guidance from public officials, world regulatory authorities, and regional
+health departments in an attempt to minimize the spread of COVID-19. In many cases, workplaces
+were temporarily closed, or the occupancy was limited to try and slow the spread of the infection in
+the population. Some companies also limited the operations to only essential workers, with supporting
+personnel working from home.
+Some workers were classified as “essential” to the continuation of critical functions for society, and
+thus were required to be physically present to conduct business activities. Individuals with functions
+directly related to the manufacturing, testing, warehousing, and distribution of critical supplies, such
+as medicines, medical treatments, and medical supplies (including raw materials and test reagents),
+were classified in this way and continued to enter the workplace throughout the pandemic. Many
+workplaces instituted measures to try to minimize the spread of infectious agents. Workers who were
+deemed “nonessential” could, in many cases, continue to conduct their responsibilities virtually and
+were only permitted access on site when deemed absolutely necessary.
+Lessons Learned
+Manufacturers of pharmaceutical and medical-device products already have robust contamination
+controls in place for their manufacturing areas. These controls (e.g., gowning, high airflow and ex-
+change, documented cleaning, disinfection programs) are already effective strategies to reduce the risk
+of spreading contaminants in the manufacturing area. A greater risk of transmission is in the office
+space and other communal areas, where controls are not commonly in place to minimize the spread of
+contaminants within the area or between personnel.
+To be prepared for another such event, companies should have a health and safety plan for their of-
+fice spaces and other areas that follows the guidance of the World Health Organization (WHO),
+U.S. Centers for Disease Prevention and Control (CDC), U.S. Occupational Safety and Health Ad-
+ministration (OSHA), or other regional government agencies. These plans should be based on risk
+assessments identifying contamination risks in the manufacturing process. A hazard analysis should be
+conducted as part of the development of the safety plan to identify where and how workers might be
+exposed to an infectious agent.
+Work activities and common areas should be identified where employees come into close contact with
+others—for example, open-space workplaces, laboratories, meeting rooms, break rooms, cafeterias, lock-
+er rooms, and routes of entry and exit—where staff may congregate, or where a bottleneck might occur.
+Actions that can be taken to help minimize the risk of spreading infectious agents in a workplace are
+outlined below. These actions should be taken as preventive steps at the beginning of the pandemic,
+even before the means of transmission is widely understood.
+Engineering Controls
+•
+Modify seat or workstation placement
+•
+Construct physical separations, such as plexiglass partitions
+•
+Install floor markers for flow of personnel with the required distancing between individuals
+•
+Close or impose restrictions (number of allowable personnel present) on cafeterias, common
+areas, and conference rooms areas
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Mandate the use of electronic proximity detectors to alert individuals when they are too close to
+one another (e.g., watches or other devices that will vibrate when workers get to within a speci-
+fied distance of one another)
+•
+Disinfect shared filing or storage spaces between uses
+•
+Replace high-touch communal items, such as coffee pots or bulk snacks, with prepackaged single
+servings or encourage staff to bring in their own items
+•
+Improve ventilation in the building and consider air-filtration systems
+•
+Consider local filtration systems where the HVAC system cannot be improved or modified
+•
+Ensure that adequate ventilation, air changes, and appropriate filtration can be used during the
+design of new facilities or those being renovated
+•
+Open windows frequently in office spaces with windows that are not connected to controlled manu-
+facturing facilities and keep doors open for as long as possible in office spaces without windows
+Administrative Controls
+•
+Mandate face coverings
+•
+Require staff to stay home if they or a family member at home are ill; consider requiring testing
+before a return to site is permitted
+•
+Limit maximum occupancy in common areas such as breakrooms
+•
+Add additional shifts or stagger shifts, start times, and break times to reduce worker density
+•
+Restrict personnel movement to specific buildings or areas and/or segregate working groups to avoid
+unnecessary interaction of personnel to minimize the possibility or impact of a super-spreader event
+•
+Reassign personnel to minimize movement between buildings or areas
+•
+Provide personnel training on correct masking, hand sanitization, and social distancing
+•
+Implement programs to screen workers upon entering the site (e.g., temperature check, quick
+evaluation of health status using polymerase chain reaction (PCR) or antigen, and completion of
+daily health questionnaires)
+•
+Establish infection notification, contact-tracing, and quarantine requirements
+•
+Institute a cleaning and disinfection program for common areas and office areas
+•
+Clean daily high-touch surfaces, such as door handles, desks, light switches, faucets, toilets,
+workstations, keyboards, telephones, handrails, printer/copier machines, and drinking fountains
+•
+Post instructions and reminders at entrances and strategic places in the building on masking,
+hand sanitization, and cough-and-sneeze etiquette
+Consideration should also be given to sanitation concerns, such as hand hygiene and surface disinfec-
+tion. The strategic placement of hand-hygiene stations should be reviewed to reduce the spread of
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+contaminants. Hand-hygiene stations should be placed at the entry and exits of high-traffic areas and
+in communal areas. Employees should be encouraged to sanitize their hands regularly.
+The cleaning and disinfection of communal areas and workspace surfaces should be reviewed to ensure
+that it is adequate and effective against contagions of concern. The frequency of disinfection should be
+based on risk. For example, high-contact points (e.g., door handles, communal equipment, common
+areas) are likely to require more frequent disinfection compared to a dedicated office or workstation.
+Proof of cleaning and disinfection of common areas, workstations, and desks should be made evident
+with use of status cards or color indicators. The cleaning and disinfection regime should be made avail-
+able to any personnel with interest or concern.
+Having a cleaning and disinfectant program in place is not enough. The products used should be
+efficacious. Product efficacy against a specific virus can often be provided from the biocide supplier,
+health regulatory authority, or other governmental agency, for example, the Environmental Protec-
+tion Agency in the United States. As the SARS-CoV-2 was a novel virus, none of the biocides on the
+market had label claims for efficacy against the virus at the beginning of the pandemic. However, the
+U.S. Environmental Protection Agency issued a list (List N) of all products that the agency expected
+to kill the SARS-CoV-2 coronavirus (COVID-19) when used in accordance with label directions until
+the disinfectant claims could be obtained (1). In cases where a new infectious agent is detected for
+which the biocide supplier does not have data, it is important for companies to look at other sources
+to identify if a specific biocide is expected to be effective.
+When selecting products for use in an office setting, efficacy is of high importance and, during a
+pandemic, virucidal efficacy continues to be a key consideration. In addition to efficacy, consideration
+should be given to the format, health and safety requirements, material compatibility, and residues left
+behind by any disinfectants that are used. As these products are likely to be used on many different
+surfaces and material types, it is important to have a full understanding of how the biocides are to be
+applied (e.g., impregnated wipe, spray-and-wipes) and the material compatibility of the products to
+prevent adverse effects to surfaces (e.g., electronic touch pads, metals).
+Requiring nonessential-worker vaccination was not commonly considered by companies until the
+COVID-19 vaccines were made widely available. Assuming that a vaccine is commercially available,
+before allowing workers to physically return to the workplace, it is recommended that the vaccine sta-
+tus of employees is cataloged for business continuity and safety purposes. Vaccine status is considered
+private information; however, in many countries, employers can require vaccine-status declaration
+without violating privacy laws by using either their company health care professionals or a privatized
+source. To improve their vaccine uptake rate, some companies provided space on site for health care
+professionals to administer vaccinations to employees.
+Due to the long-term social-distancing already experienced by employees, it is recommended that
+companies discuss this with their employees and share the measures that will be taken to control the
+spread of infectious agents.
+Employees and companies may prefer a staggered return to work. This can be achieved by surveying
+employees on when and how they would like to return to the workplace setting. Staggering the return
+of employees will also allow the company to evaluate the effectiveness of their control measures in place.
+References
+1.	 Centers for Disease Control and Prevention. Community, Work, and School. COVID-19.
+https://www.cdc.gov/coronavirus/2019-ncov/community/index.html (accessed 27 May 2022).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 2-4:  Who gets the vaccine first?
+Background
+As the first vaccines were developed and approved for emergency use, the number of doses available
+were limited. The question of who should receive the first doses was a topic of great discussion and de-
+bate. After health care workers and those at greatest risk, such as the elderly in long-term care facilities,
+came essential workers and those over 65. It was not clear during the vaccine roll-out exactly where
+pharmaceutical manufacturing personnel stood in regard to their priority in receiving the vaccine.
+Lessons Learned
+As the continued supply of pharmaceutical products is critical, it is important that the pharmaceuti-
+cal industry workers within the manufacturing facility who are directly supporting the manufacturing
+floor operations and whose jobs cannot be performed remotely should be on the list to receive the
+vaccine early, and they should be the first vaccinated within the company based on their importance
+to the manufacturing operations. The line of workers that comprise manufacturing-floor operations
+should include the technicians directly performing testing of the products, the warehousing and ship-
+ping personnel responsible for moving and shipping the product, and other individuals who must be
+present for the product to be produced, released, and shipped. These workers are essential to ensure
+product supply. Companies should have plans in place to quickly identify these individuals in the
+event of another pandemic.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 2-5:  How do safety and human resource policies change after a
+vaccine is readily available?
+Background
+As the pandemic progressed and vaccines became widely available, a significant percentage of the
+population refused to receive the vaccination. There were multiple underlying reasons for this, among
+them, religious beliefs, general fear of vaccinations, and fears specific to the COVID-19 vaccine due to
+the lack of long-term clinical data. Compounding these challenges was a preexisting and active anti-
+vaccination movement that caused many individuals to avoid receiving the vaccine based on incorrect
+safety information. A strain on the availability of vaccinated employees resulted.
+Because the COVID-19 virus is highly infectious, the percentage of the population required to obtain
+“herd immunity” to the virus would be expected to be very high. Adding to the percentage required to
+achieve this is the question of the vaccine’s protection against infection over time as well as the poten-
+tial of reinfection over time (See Q 3-5). Based on these factors, governments have taken the unusual
+step of allowing employers to request the vaccination status of workers, apply restrictions and, in some
+countries, require vaccinations as a term of continued employment.
+For many, this was a paradigm shift and a significant change in expectations between employers and
+employees.
+Lessons Learned
+When on-site workers or visitors test positive for SARS-CoV-2, certain preventive measures need to
+take place. It is important to have processes in place for contact-tracing to let other employees know
+that they have been in contact with this individual, that they are at risk, and that they need to quaran-
+tine as well. The infected person should stay at home until they are no longer infectious. The duration
+may vary depending on the strain. Companies should follow the quarantine durations established
+by their public health authorities. The work area where this person was located needs to be cleaned
+and disinfected with an effective disinfectant. People identified through contact-tracing may need to
+provide a negative COVID-19 test result prior to returning to work. Personnel should be trained on
+masking, hand sanitization, and social distancing to lower the risk of future outbreaks and potential
+super-spreader events.
+Companies should put processes in place where legally permitted to restrict the access to individuals
+(employees and visitors) who have not been vaccinated. For employees who have chosen not to receive
+the vaccination, companies should consider requiring a PCR or antigen test no older than 48 or 72
+hours to be shown or, in some cases, should seek to replace them with employees who have been vac-
+cinated. The vaccination status of all employees and visitors should be verified, and the records of the
+verification should be kept on file. Any exceptions should be rare and specific restrictions should be
+applied.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+III.  Quality
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 3-1:  How should companies assess their risk ahead of their next
+regulatory authority inspection?
+Background
+During the pandemic, the majority of global regulatory authorities eliminated most on-site inspec-
+tions. Those that were conducted focused on new-product approvals, “high-risk” production sites, or
+inspections required to facilitate emergency authorization of COVID-19-related products. Because
+of this, the routine inspection schedule to which many organizations were accustomed did not occur.
+During this period, two other factors impacted manufacturing facilities and their traditional operating
+model:
+1.	 Manufacturing facilities that were involved with COVID-19 vaccine production were required, in
+some cases, to rapidly scale up facilities, people, and processes in order to respond to the pandem-
+ic. The speed at which this was required created circumstances that made it difficult at times to op-
+erate in full compliance with all current expectations regarding quality processes and procedures.
+2.	 The change in the staffing model—to have all employees work remotely except those deemed
+essential for on-the-floor manufacturing operations, combined with an overall shortage of work-
+ers—created challenges to the manufacturing process quality systems that led to an increase in
+nonconformances to established processes and procedures.
+Lessons Learned
+Companies must remain aware of the actions that must be taken in their efforts to continue to supply
+the market with necessary pharmaceutical products. As operations return to a more normal, pre-pan-
+demic state and in preparation for the return of regulatory authority inspections, companies should
+review the nonconformances and changes that have occurred and ensure there is adequate documenta-
+tion to describe the event, the assessment made in its evaluation, the final decision, and any follow-up
+actions taken. Where there are gaps, identified action should be taken to eliminate or reduce those
+gaps. In many cases, this may include adding detail to the description, assessment, decision, and
+follow-up actions present in the original nonconformance. Any additions should be made as amend-
+ments to the original documentation. Where appropriate, if not already included, the documentation
+should clearly identify the pandemic as being the cause of or a contributing factor in the noncon-
+formance. In addition, companies should perform a gap assessment of their current process against
+the applicable regulations and expectations. Any gaps identified should be closed or a plan should be
+established to close these gaps. These reviews and assessments, as well as the plans for closing any gaps,
+should be available for review during the regulatory authority inspections if needed.
+Companies that are required to rapidly scale up, should perform a comparative assessment, if ap-
+propriate, against existing facilities, personnel, and processes to understand the similarities and differ-
+ences in the approach used to bring the new capabilities online. Any differences should be evaluated
+and, where compliance gaps are identified, plans should be developed to close these gaps. These plans
+should be available for review during regulatory authority inspections if needed.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 3-2:  How will the “remote inspection” and/or “remote
+assessment” paradigm shift impact the industry?
+Background
+During the pandemic, regulators adapted their GMP and good distribution practices (GDP) inspec-
+tion routines due to travel restrictions and safety concerns. In March 2020, the FDA paused most in-
+person inspections to safeguard its employees, according to a Government Accounting Office report.
+To continue to provide oversight, in many cases, the FDA began performing remote assessments (1).
+Similar reductions in on-site inspections were noted in the European Union with the relevant lo-
+cal agencies moving to more remote and hybrid inspections (2). Per regulations in place at the time
+of this publication, remote inspections of pharmaceutical manufacturing facilities by FDA were not
+permitted, as regulations require inspectors to be physically on site within the facility as part of any
+inspection.
+This shift to remote assessments and inspections provided many advantages in terms of planning and
+flexibility but, as with all major shifts made within very narrow timelines, unanticipated challenges
+were encountered.
+Lessons Learned
+During the initial stages of the pandemic in 2020, it quickly became apparent that remote assessments
+and inspections required more thorough preparation than on-site inspections. From an operational
+perspective, some of the challenges GMP/GDP remote inspections and assessments can present are
+related to:
+•
+Planning: Preparatory conference calls, connectivity tests, and a redundancy strategy are very im-
+portant.
+•
+Qualification Audits: Brand new manufacturing sites have no historical background on the GMP
+compliance level of the site being inspected.
+•
+Communications: Cultural issues, poor clarity in requests from inspectors lacking local knowl-
+edge, and the quality of electronic connections can present obstacles.
+•
+Online Tools: The use of different tools to share confidential documents, data, and information
+and use of mobile phones to capture live images from potentially hazardous manufacturing areas
+may be needed.
+•
+Overall Conduct and Compliance to Agenda: Adapting to different time zones can be easily over-
+come; however, in many circumstances, the difference can lead to longer meetings.
+As highlighted in the results of the European Federation of Pharmaceutical Industries and Associa-
+tions’ annual regulatory inspection survey, both industry and regulators are on a learning curve when
+applying virtual tools (3). From the experiences gained over the duration of the pandemic, companies
+will continue to benefit from investments they have made in facilities, equipment, and procedures for
+hosting live remote interactions with regulatory authorities. Nonetheless, firms may need to refine
+their hosting capabilities as they gain experience and as the approaches of global regulators evolve
+(2,4). In preparation for future pandemics, regulators should revise regulations and develop proce-
+dures that allow for a rapid shift to remote inspections if needed.
+References
+1.	 Denigan-Macauley, M. Drug Safety: FDA‘s Future Inspection Plans Need to Address Issues Pre-
+sented by COVID-19 Backlog, Statement of Mary Denigan-Macauley, Director, Health Care;
+U.S. Government Accountability Office: www.gao.gov, 2021.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+2.	 European Directorate for the Quality of Medicines & HealthCare. EDQM and real-time remote
+GMP inspections of API manufacturers during the COVID-19 pandemic: Innovation overcom-
+ing adversity. EDQM. https://www.edqm.eu/en/edqm-and-real-time-remote-gmp-inspections-
+of-api-manufacturers-during-the-covid-19-pandemic-innovation-overcoming-adversity (accessed
+27 May 2022).
+3.	 MQEG Inspections Topic Team. Annual Regulatory GMP/GDP Inspection Survey, 2020 Data.
+efpia. https://www.efpia.eu/media/602634/efpia-2020-reg-inspection-survey_v1a.pdf (accessed
+27 May 2022).
+4.	 Parenteral Drug Association. Points to Consider for Remote and Hybrid GMP/GDP Inspec-
+tions; Bethesda, Md., 2021.
+Additional Reading
+European Medicines Agency. Guidance Related to GMP/GDP and PMF Distant Assessments; EMA:
+London, 2020.
+Cox, B. World’s Pharmaceutical Inspectorates Prepare for Post-Pandemic Remote Site Assessments.
+Pink Sheet: Informa Pharma Intelligence 2021, 03 May 2021 | Analysis.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 3-3:  What cybersecurity changes have become necessary because
+of COVID-19?
+Background
+The increased level of digitalization in the pharmaceutical industry over the last decade has been
+unparalleled as computer-controlled processes, electronic batch records, information management
+systems, documentation and investigations systems, and the like have been implemented. With the
+increase in digitalization has come the increased risk of cybersecurity threats.
+Due to the commercial benefits of new technologies developed during the COVID-19 pandemic, a
+surge of cybersecurity attacks directly related to acquiring COVID-19 information from regulatory
+bodies ensued. This affected both regulators, such as the European Medicines Agency (EMA), and
+private companies involved in the development of COVID-19 vaccines (1-2). Cybersecurity experts
+saw a 63 percent increase in cyberattacks related to the pandemic (3). From a human-error standpoint,
+even the change in environment has led to increases in successful phishing scams with a reported 47
+percent of individuals being taken in by a phishing scam while working at home (4).
+The rapid implementation of nonmanufacturing employees working remotely during the pandemic
+presented unanticipated challenges to corporate cybersecurity. A few of the many examples include:
+•
+Instituting a “Bring Your Own Device,” or maybe a better term would be “Use Your Own De-
+vice,” approach enabled employees to access corporate data using their personal devices, which
+bypassed the standard “Corporate Owned Personally Enabled” approach.
+•
+The use of new and, in most cases, rapidly evolving web-conferencing and information-sharing
+platforms has become commonplace. The emergence and rapid adoption of these new platforms
+was needed to keep pace with the proliferation of remote workers—a productive situation, but
+one that presented new cybersecurity risks.
+•
+The vulnerability of home networks presented challenges as the security and reliability of these
+networks varied greatly.
+•
+Sophisticated IT systems are susceptible to human error, especially systems that require a repeti-
+tive manual step like connecting to a company’s virtual private network (VPN) before sending
+data. Simple errors can leave a system open to potential threats.
+Lessons Learned
+Based on the issues that arose during the COVID-19 pandemic, plans related to cybersecurity need to
+be developed so action can be taken early. Because situations can change rapidly, a strong cybersecurity
+plan should be in place long before a pandemic occurs and updated routinely. Likewise, risk assess-
+ments should be conducted that can direct priority actions, which should be reviewed regularly and
+updated with more pandemic-specific information as circumstances emerge.
+Specific points relevant to a pandemic that should be considered for inclusion in risk assessments
+include:
+•
+The expected increase in the number and complexity of cyberattacks related to external interest
+in new pandemic-related technologies the company may be developing
+•
+Any changes in the way employees will work and interact with the company’s electronic systems
+that may concern cybersecurity systems
+•
+The current level of cybersecurity surveillance and its ability to rapidly identify cyberattacks
+based on expected changes due to the pandemic conditions
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+The preparedness of the company to respond to and contain a cyberattack based on expected
+changes in the way employees work and their locations (remote vs. in-person) due to the pandemic
+•
+A review of the respective business continuity and crisis management plans should a successful
+cyberattack occur that shuts down critical systems, which should take into account the expected
+changes in the way employees work and their locations (remote vs. in-person) due to the pandemic
+References
+1.	 European Medicines Agency, “Cyberattack on EMA – Update 5, 2021.” www.ema.europa.eu/en/
+news/cyberattack-ema-update-5.
+2.	 Pfizer, “Statement on EMA Cyberattack, 2020.” https://www.pfizer.com/news/announcements/
+statement-ema-cyberattack.
+3.	 Help Net Security, “The COVID-19 pandemic and its impact on cybersecurity - Help Net Secu-
+rity, 2020.” https://www.helpnetsecurity.com/2020/08/03/pandemic-impact-cybersecurity/.
+4.	 Deloitte, “Impact of COVID-19 on Cybersecurity.” https://www2.deloitte.com/ch/en/pages/
+risk/articles/impact-covid-cybersecurity.html.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 3-4:  What new data-integrity risks are present because of a more
+remote workforce?
+Background
+Many work activities shifted from in-person to remote access because of the pandemic. This trend
+continues even though workers have been allowed to return to the workplace. This hybrid mode
+of working involves the application of various information and communication technologies (ICT)
+that are used for gathering, storing, retrieving, processing, analyzing, and transmitting information. It
+comprises the variety of software and hardware that drives ICT, for example, smartphones, handheld
+devices, laptop computers, desktop computers, video cameras, and wearable technology. ICT enables
+the remote work environment that allows employees to perform activities using remote access, and
+many of its components act as temporary or long-term depositories of data.
+The increase in remote work activities utilizing ICT presents an inherent increase in risk as workers
+have moved from company-owned office equipment and a structured environment to home offices
+where the company has less control over the ICT. This increase in the use of ICT by remote workers
+adds more layers of data-handling and storage which, in turn, increases the risk of potential data-integ-
+rity issues. The risk to data integrity has been further impacted by the increasing number of audits and
+inspections taking place remotely; with these, a high number of external personnel and stakeholders
+require access to critical data, each using their own ICT, adding to the complexity. Companies have
+faced numerous challenges as a result of the sudden transition of having to assess—in many cases after
+the fact—potential risks and the available mitigation strategies available to address them.
+Lessons Learned
+Based on these challenges, some companies need to proactively evaluate the ICT currently in use
+within the company or those being planned to enable both in-person and remote work. A set of read-
+ily available ICT solutions approved for use by a company’s IT units should be readily available and
+updated on a periodic basis. Senior leadership needs to ensure adequate resources (headcount and
+funding) are available for this activity. For this to be effective, it must be applied not only within the
+company but also to cross-company activities.
+For example, prior to a remote audit, assessment, or inspection where external entities are involved,
+an agreement on mutually approved ICT solutions should be in place to minimize the risk of data-
+integrity issues. While this requires additional effort prior to the event, it greatly reduces the risk of
+issues occurring during or after the event.
+Finally, in situations where paper-based systems remain (e.g., parts of or even the entire pharmaceuti-
+cal quality system (PQS), additional attention should be placed on changing them over to electronic
+systems. Where that is not possible or practical, developing a process for how to ensure paper-based
+systems can be effectively performed remotely will minimize the potential for data-integrity issues, for
+example, how the ICT and related procedures generate the PDF-type documents to implement ap-
+propriate e-signature solutions.
+Additional Reading
+Parenteral Drug Association. Points to Consider for Remote and Hybrid GMP/GDP Inspections; Bethesda,
+Md., 2021.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 3-5:  How can companies ensure optimal performance of business
+continuity plans during a pandemic?
+Background
+As an immediate response to the pandemic crisis, business continuity plans (BCPs) were activated, and
+their specific actions were implemented in order to shorten recovery time and mitigate the correspond-
+ing impact on respective pharmaceutical operations and activities. For many companies, the level of
+disruption created by the pandemic had not been envisioned in their existing BCPs. For example,
+few BCPs for companies with multiple manufacturing and warehousing locations envisioned a set of
+circumstances where all locations would be significantly impacted at the same time or one where the
+majority of personnel would need to work remotely. The situations and responses the BCPs detailed
+and how those related to the issues that occurred during the pandemic is a critical issue that needs to
+be assessed to ensure their future applicability in similar situations.
+Prior to the pandemic, the development of detailed and executable plans in BCPs varied greatly among
+companies. In some cases, very robust BCPs were in place and, in other cases, their scope and detail
+were very limited; the need and requirements for BCPs were primarily driven by the business owner.
+For specific areas of BCPs, robust plans were required based on expectations from regulatory agencies
+and insurers. In the case of some regulatory authorities, a limited checkbox exercise was conducted in
+regard to the BCP and product supply. Before the pandemic, these types of reviews were logical; BCPs
+were not expected to be in place for a global disruption no one could have foreseen.
+One interesting point related to the designs of prepandemic BCPs is that their structures differed
+greatly. Some were holistic and well-integrated across functions; many were not, with each function
+having its own standalone BCP. Some were focused more on the health and safety aspects, while oth-
+ers were aimed more on recovery of the IT infrastructure. These different BCP designs had a direct
+impact not only on the speed of response, but on the overall effectiveness of the response of the various
+pharmaceutical organizations.
+Also, BCPs impacted whether the activities of the affected corporate organizations were disrupted
+or if they were able to implement the already formalized actions. It identified the need to conduct
+mock-up actions prior to the actual challenge in a defined frequency, providing the opportunity to the
+effectiveness of the arrangements in place, and to confirm that they remain robust and fit for use. This
+evaluation should be documented and justified.
+As a result of the pandemic, the pressure put on the respective pharmaceutical organizations to develop
+or update BCPs had a direct impact on the overall activities performed. Even organizations that lacked
+BCPs or had very basic, though outdated, plans were forced to develop actions to ensure manufactur-
+ing continuity under pressure while developing or upgrading their BCPs. This led to testing BCPs in
+the field, which were developed, matured, and implemented in a very short period of time. This was by
+no means an efficient method, nor one developed with a full understanding of all the potential impacts
+it might have on the process, on other parts of the organization, or on larger operations.
+Lessons Learned
+While BCPs cannot cover all situations, they are critical in providing contingency plans for what ac-
+tions to take when unexpected events occur. In the case of the pandemic, companies that had robust
+BCPs in place were better prepared to address the unexpected and unplanned situations that were not
+covered while implementing the actions for those that were. Companies that had not prepared had to
+build robust BCPs and test them in the field as the events were occurring, which is never the desired
+state as it may result in unanticipated consequences.
+The pandemic provided a clear understanding of how critical BCPs are for an organization and indi-
+vidual companies. BCPs need to be holistic and, while different functions may have their own BCPs,
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+they all need to fit together into one overarching BCP. For regulated aspects of the business, the BCPs
+need to consider how the requirements will be met for the actions being implemented, for example,
+how the requirements of the PQS will be met to ensure GMP compliance. BCPs must have built-in
+flexibility and adaptability, where appropriate, as well as a defined governance structure to oversee its
+implementation. The fact is that all remediation actions applied at every step, apart from ensuring
+the health and safety aspects, must sustain the respective GMP-compliance levels. This dual scope of
+compliance and adaptability needs to be highlighted in each step involved.
+The recommendations below are designed to fill gaps about BCPs learned during the pandemic; the
+list is not intended to be all-encompassing, but these items should be considered. BCPs need to:
+•
+Be developed, accessible, and ready for use
+•
+Be detailed, reflective of current operations, and holistic
+•
+Be flexible and adaptable with a defined governance structure to oversee its implementation; it is
+not possible to plan for every event, but it is important to have a plan for how to adjust the plan
+based on unforeseen challenges
+•
+Take regulatory requirements into consideration to ensure the actions implemented continue to
+meet those requirements
+•
+Take into consideration that the location of the workforce may be disrupted and the computer
+systems, hardware, and support that will be needed to enable it
+•
+Include actions to be taken to keep employees safe in the event of a regional, national, or global
+outbreak of a pathogen (e.g., virus)
+•
+Include detailed actions to be taken related to sustainability of suppliers, service providers, and
+the supply chain
+•
+Be reviewed periodically and updated appropriately
+Numerous references are available that can be of assistance when developing a BCP. One such docu-
+ment is standardISO 22301:2019: Security and resilience — Business continuity management systems
+— Requirements (1).
+References
+1.	 International Organization for Standardization. ISO 22301:2019: Security and resilience — Busi-
+ness continuity management systems — Requirements; ISO: Geneva, 2019.
+Additional Reading
+Shivji, R, et al. Considerations for the Chemistry, Manufacturing and Controls (CMC) - Qual-
+ity Package for COVID-19 Vaccines – Interim Lessons Learnt by the European Medicines Agency
+(EMA). Vaccine 2022, 40 (38), 5539-41.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+IV.  Regulatory
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 4-1:  How will regulatory authorities pivot between on-site and
+remote inspections?
+Background
+The COVID-19 pandemic necessitated a change in the world’s working habits, and pharmaceutical in-
+dustry regulators were no exception. To maintain regulatory oversight of both GMP and good clinical
+practice (GCP) activities, regulators worldwide adopted remote assessments, using video-conferencing
+software and devices to enable continuity of compliance oversight. Such technologies enabled remote
+inspections, evaluations, and assessments of certain activities and sites, even as the world was locked
+down with social distancing and travel restrictions.
+To accommodate the changes made by regulators, manufacturing sites had to be prepared for desktop
+audits and/or remote interactive evaluations and remote audits, if requested. Tools (e.g., virtual glasses,
+translators) should be kept available should regulators wish to continue with these inspection methods
+in the future (1). Desktop audits (a high-level documentary review of policies and procedures) have
+been conducted prior to the COVID-19 outbreak; however, FDA has created new tools that can be
+used in combination with the desktop audits to better evaluate the sites and products in scope.
+The FDA limiting unnecessary contact by conducting only prioritized domestic and foreign facility
+inspections and those that are deemed mission-critical (2).
+When a planned inspection is not mission-critical, is not a prioritized domestic inspection, or is impacted by
+travel restrictions resulting from the public health emergency, the FDA will use other available methods and
+information to support regulatory decisions and the oversight of facilities, and it will supplement the inspec-
+tion with other available tools. The FDA has developed a Guidance for Industry: Remote Interactive Evaluations
+of Drug Manufacturing and Bioresearch Monitoring Facilities During COVID-19 Public Health Emergency that
+describes the various remote interactive tools that the industry may request be used to conduct an evalua-
+tion. Within the guidance, any combination of these interactive tools can be used in a remote interactive
+evaluation. The FDA may ask to conduct a remote interactive evaluation prior to or following other types of
+regulatory oversight activities (e.g., an inspection or a request for records or other information) (3).
+Lessons Learned
+International regulatory authorities adapted their inspection approaches to ensure regulatory oversight
+of GxP activities, especially for high-priority products. Due to restrictions to protect public health, regu-
+latory authorities used digital technologies, such as video-conferencing software and devices, to enable
+continuity of compliance oversight. The International Coalition of Medicines Regulatory Authorities
+(ICMRA) established the COVID-19 Working Group: Remote GCP and GMP Regulatory Oversight
+Inspections to review the adaptation of both GCP and GMP inspections during the pandemic to
+evaluate remote approaches. The team was chaired by the United Kingdom’s Medicines and Healthcare
+products Regulatory Agency (MHRA) and had representatives of global regulatory agencies from the
+FDA, EMA, Health Canada, Swissmedic, HPRA Ireland, AEMPS Spain, ANSM France, PEI Germa-
+ny, MHLW/PMDA Japan, TGA Australia, ANVISA Brazil, HSA Singapore, WHO, and Saudi-FDA.
+The reflection paper from this working group presents the various factors that were considered by the
+inspectorates to assess the need for inspection on a case-by-case basis and apply established quality
+risk management principles and tools in their decisions on their regulatory oversight approach. This
+decision-making process has typically been performed by the lead inspector in consultation with op-
+erational management following discussions with the company being inspected. Factors considered by
+regulatory authorities during the pandemic have included:
+•
+Local or international restrictions that have been in place to deal with the public health emergency
+•
+The need to protect the health and safety of the inspector, inspectorate staff, and staff at the
+inspected facility, including reducing burden while dealing with the pandemic itself
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+The regulatory compliance history of the inspected; for example, considering if there have been
+repeat deficiencies identified or issues associated with information provided that could have
+potentially been misleading to an inspector
+•
+The scope and objectives (preapproval, routine, or for cause) of the inspection
+•
+The type of site (e.g., investigator, bioanalytical, sterile manufacturing) and intrinsic risks/suit-
+ability for remote assessment in order to fulfill the inspection objective
+•
+The complexity of the activities of the site in terms of how challenging it may be to observe and
+adequately assess these remotely and by considering factors that may indicate regulatory compli-
+ance-related risks associated with the site
+•
+How recently the site was inspected on site as well as the findings from that inspection
+•
+Changes at the site since the previous inspection
+•
+Activities delegated to contract research organizations (CROs) and service providers
+•
+Accessibility of electronic systems owned and managed by service providers, CROs, and spon-
+sors and whether these are accessible remotely owing to confidentiality rules
+•
+Access to source documents (e.g., validation methods, process performance qualification data)
+while complying with applicable regulations and/or institutional policies
+•
+Where redaction of documents must be performed to safeguard privacy and confidentiality
+•
+The inherent risk associated with the activities conducted by the site, the types of products, and
+the need for the product (e.g., high unmet medical need)
+•
+Ability of inspectors and the inspected facility to conduct inspections remotely considering
+resources, technical proficiency, and suitability of the site
+•
+Whether the location of the site to be inspected made it more efficient or practical to use the
+remote approach to enable regulatory compliance verification (4)
+If the risk assessment determined that the use of the remote oversight approaches was not suitable for
+regulatory compliance activities, two approaches were typically taken. Either the inspection or regula-
+tory compliance activity was postponed until the risk assessment changed or the pandemic conditions
+ensured that an on-site approach was suitable; or a hybrid approach was adopted. The primary factor
+that altered the initial risk assessment was the change in national or local rules to manage the public-
+health emergency, which typically resulted in the postponement of the inspection until the rules were
+changed.
+The inspectorates have thus prioritized mission-critical domestic inspections, which might generally
+include preapproval, prelicense, surveillance, and for-cause inspections. The relevant agency will pre-
+announce such prioritized domestic inspections to the company to be inspected to help ensure the
+safety of the investigator and the firm’s employees. This will provide the safest possible environment
+to accomplish the agency’s regulatory activities, while also ensuring the appropriate staff are on site to
+assist the agency staff with inspection activities. In-person foreign inspections would be placed on hold
+as long as it was necessary and mandated by local pandemic restrictions (2–3).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Based on the experiences of the authorities in 2020-2021, the ICMRA COVID-19 Working Group
+stated that remote inspections were an “enabling tool” that allowed the maintenance of “at least a
+minimal regulatory oversight during the pandemic, it is not the view of the group that remote inspec-
+tions would fully replace an on-site inspection programme” (1). They explained that is because of
+limitations with the current technologies that hampered remote assessment of compliance. Using the
+remote approach to supplement typical in-person visits could be beneficial in post-pandemic times,
+but the extent of its use in situations outside of a public-health emergency would need to be evaluated.
+Remote inspection tools have been adopted by several national regulatory authorities (e.g., MHRA,
+TGA Australia, EMA, Russia’s Roszdravnadzor, ANVISA Brazil), though other regulatory agencies
+may not align with them. Companies should communicate in advance with the relevant national
+regulatory authority (NRA) about recertification inspections to learn if desktop audits and/or remote
+interactive evaluations will be acceptable. Until on-site inspections resume, manufacturing sites should
+discuss the determination of certification extensions with both local and national regulators if desktop
+audits and remote inspections are not feasible.
+Manufacturers may also want to consider using the Mutual Reliance regulatory tool, where one au-
+thority can unilaterally rely on another authority’s inspection reports, as promoted by the Pharmaceu-
+tical Inspection Co-operation Scheme (PIC/S). The WHO has been a major supporter of regulatory
+reliance and defines it as
+…the act whereby a NRA in one jurisdiction may take into account and give significant
+weight to assessments performed by another authority or trusted institution, or to any other
+authoritative information in reaching its own decision. The relying authority remains inde-
+pendent, responsible, and accountable regarding the decisions taken, even when it relies on
+the decisions and information of others (5).
+The WHO Guidance on Good Reliance Practices, published in June 2021, is a comprehensive key docu-
+ment that elaborates on these principles further and provides greater detail on reliance in the “Quality”
+section of the document (5).
+As part of trade agreements, Mutual Recognition Agreements (MRA) between the FDA and foreign
+NRAs allow drug inspectors to rely upon information from drug inspections conducted within each
+other’s borders. Under the U.S. Food and Drug Administration Safety and Innovation Act, enacted
+in 2012, the FDA has the authority to enter into agreements to recognize drug inspections conducted
+by foreign regulatory authorities if the FDA determines those authorities are capable of conducting
+inspections that meet U.S. requirements (6). This concept has been used, and firms have received
+extensions of recognition based on these principles.
+When an MRA or Mutual Reliance tool is employed, sites should propose to the NRA the use of
+the agreements to continue supply. Since the COVID-19 outbreak, MRAs have been used by several
+regulatory agencies that have resulted in waiving of audits.
+References
+1.	 European Medicines Agency. Guidance related to GMP/GDP and PMF distant assessments; EMA:
+London, 2020.
+2.	 U.S. Food and Drug Administration. Guidance for Industry: Manufacturing, Supply Chain, and
+Drug and Biological Product Inspections During COVID-19 Public Health Emergency Ques-
+tions and Answers; U.S. Department of Health and Human Services: Silver Spring, Md., 2021.
+3.	 U.S. Food and Drug Administration. Guidance for Industry: Remote Interactive Evaluations
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+of Drug Manufacturing and Bioresearch Monitoring Facilities During the COVID-19 Public
+Health Emergency; U.S. Department of Health and Human Services: Silver Spring, Md., 2021.
+4.	 International Coalition of Medicines Regulatory Authorities. Reflections on the regulatory experi-
+ence of remote approaches to GCP and GMP regulatory oversight during the COVID-19 Pandemic;
+ICMRA: Online, 2021. https://www.icmra.info/drupal/sites/default/files/2021-12/remote_in-
+spections_reflection_paper.pdf (accessed 27 May 2022).
+5.	 World Health Organization. Annex 10: WHO general guidance on variations to multisource
+pharmaceutical products (TRS No. 966); WHO: Geneva, 2016.
+6.	 U.S. Food and Drug Administration. Food and Drug Administration Safety and Innovation Act
+(FDASIA), Title VII. FDASIA Title VII Overview. https://www.fda.gov/regulatoryinformation/
+lawsenforcedbyfda/significantamendmentstothefdcact/fdasia/ucm366058.htm (accessed Apr 24
+2019).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 4-2:  How did global regulators collaborate during the pandemic?
+Background
+An unprecedented global pandemic of the twenty-first century required international regulatory agen-
+cies to take unprecedented collaborative actions. These collaborations played a momentous role in
+bringing the necessary countermeasures to the global population.
+The ICMRA is an international executive-level coalition of key regulators from almost every region in
+the world. In 2021, it comprised 30 separate NRAs—including those of the United States, European
+Union, Canada, Australia, Japan, Singapore, and Brazil to name a few—with the WHO as an observer
+(1). The ICMRA provides a global strategic focus for medicine regulators and offers strategic leadership
+on shared regulatory issues and challenges. Priorities include a coordinated response to crisis situations.
+During the pandemic, ICMRA played a key role and acted as a forum to support strategic coordina-
+tion and to promote international cooperation among global medicine regulatory authorities. The aim
+of these activities was to expedite and streamline the development, authorization, and availability of
+COVID-19 treatments and vaccines worldwide. ICMRA members also worked towards increasing the
+efficiency and effectiveness of regulatory processes and decision-making (2).
+During this period, other groups were also actively bringing together both industry and regulators such
+as the Regulatory Advisory Group (RAG) established by COVID-19 Vaccines Global Access (COVAX)
+and co-led by the WHO and the Coalition for Epidemic Preparedness Innovations (CEPI) (3).
+Lessons Learned
+The COVID-19 pandemic emphasized the importance of regulatory cooperation and information-
+sharing, which are essential elements of mutual recognition and mutual reliance. In early 2020, IC-
+MRA emphasized the relevance of reliance in streamlining responses and facilitating efforts to multiple
+regulatory activities during public-health emergencies. For example, ICMRA and the WHO pub-
+lished reports, described agreements on common approaches from workshops, and discussed regula-
+tory considerations related to the development of SARS-CoV-2 vaccine candidates and treatments
+among its members.
+The following were some of the industry topics raised to regulators at the ICMRA workshop on En-
+abling Manufacturing Capacity in the COVID-19 Pandemic in 2021:
+•
+Expanding reliance practices to include on-site inspection alternatives (e.g., virtual inspections)
+•
+Adopting reliance practices for NRA-issued queries and associated manufacturer responses for
+supplements/variations
+•
+Establishing collaborative review arrangements, similar to ACCESS and Project Orbis, for the
+review of supplements/variations for post-approval changes (PAC) of COVID-19 therapeutics
+and vaccines, as well as for non-COVID-19 products impacted by the pandemic
+•
+Reducing the need for duplicative import and release testing (4)
+As many vaccines and therapeutics were rolled out beginning in early 2021, ICMRA further espoused
+the reliance principles among global regulators for efficient quality and manufacturing lifecycle man-
+agement of these products (5). This included support for establishing a collective pharmaceutical qual-
+ity knowledge management capability that could have the following benefits:
+•
+Transitioning to harmonized, structured, and standardized electronic formats across regulatory
+authorities
+•
+Sharing secure information about pharmaceutical manufacturing facilities, which can be con-
+tributed to, and accessed by, multiple participating regulators
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Developing a framework that might, in time, support full harmonization of data elements
+submitted in the quality modules of the common technical document. This could pave the way
+for sponsors to make simultaneous submissions within a marketing authorization application to
+all associated NRAs and provide improved capabilities for both industry and regulators in the
+management of PACs
+•
+Enabling more extensive mutual reliance among regulators by working to harmonize specific
+data expectations for sponsors and standards for review among regulators, so that regulators can
+be assured of the comparability of the assessments and related determinations of other regulatory
+authorities on whom they intend to rely (6)
+Beyond ICMRA, several regional collaborations among the regulators were also seen, such as in the
+Asia-Pacific Economic Cooperation (APEC) region (7). Several global organizations, such as the In-
+ternational Council for Harmonisation (ICH) and International Medical Device Regulators Forum
+also aided global collaboration and harmonization (8). There was also unprecedented regulator en-
+gagement with manufacturers developing pandemic vaccines and therapeutics from the beginning of
+the pandemic, as well as support offered in terms of regulatory expectations and abridged approvals.
+References
+1.	 International Coalition of Medicines Regulatory Authorities. Fact Sheet. ICMRA Structure.
+https://www.icmra.info/drupal/sites/default/files/2021-06/icmra_fact_sheet_2021.pdf (accessed
+27 May 2022).
+2.	 International Coalition of Medicines Regulatory Authorities. COVID-19. https://www.icmra.
+info/drupal/en/covid-19 (accessed 27 Sep 2022).
+3.	 The Global Health Network. COVAX Regulatory Advisory Group. Epidemic Preparedness In-
+novations. https://epi.tghn.org/covax-overview/regulatory-advisory-group/ (accessed 9 Oct 2023).
+4.	 International Coalition of Medicines Regulatory Authorities. ICMRA-Industry Virtual Workshop
+Report on Enabling Manufacturing Capacity in the COVID19 Pandemic; ICMRA: Online, 2021.
+5.	 Doerr, P; Valentin, M, et al. Reliance: a smarter way of regulating medical products - The IPRP
+survey. Expert Review of Clinical Pharmacology 2021, 14 (1), 173-77.
+6.	 International Coalition of Medicines Regulatory Authorities. Global Pharmaceutical Quality
+Knowledge Management: Enhancing Regulatory Reliance and Agility. Pharmaceutical Quality
+Knowledge Management System (PQKMS). https://www.icmra.info/drupal/strategicinitatives/
+pqkms/statement (accessed 26 May 2022).
+7.	 Chong, S; Limoli, M, et al. Measuring Progress of Regulatory Convergence and Cooperation
+Among Asia–Pacific Economic Cooperation (APEC) Member Economies in the Context of the
+COVID-19 Pandemic. Ther Innov Regul Sci 2021, 55, 786–98.
+8.	 World Trade Organization. Summary Session 4: Promoting Transparency and Convergence in the
+Regulatory Landscape, Presented at COVID-19 Vaccine Supply Chain and Regulatory Transpar-
+ency Technical Symposium, Online, 29 Jun 2021; World Trade Organization: 2021.
+Additional Reading
+McGoldrick, M, et al. How to Accelerate the Supply of Vaccines to All Populations Worldwide? Part
+1: Initial Industry Lessons Learned and Practical Overarching Proposals Leveraging the COVID-19
+Situation. Vaccine 2022, 40 (9), 1215-22.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+McGoldrick, M, et al. How to Accelerate the Supply of Vaccines to All Populations Worldwide? Part
+II: Initial Industry Lessons Learned and Detailed Technical Reflections Leveraging the COVID-19
+Situation. Vaccine 2022, 40 (9), 1223-30.
+The Global Health Network. COVAX Regulatory Advisory Group. Epidemic Preparedness Innova-
+tions. https://epi.tghn.org/covax-overview/regulatory-advisory-group/ (accessed 9 Oct 2023)
+World Health Organization. Technical Brief: Regulation of COVID-19 Vaccines, Synopsis from the
+August 2020-February 2021 COVAX RAG Meetings; WHO: Geneva, 2021.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 4-3:  How do you manage the reporting of deviations and other
+changes to the regulatory agencies during a pandemic?
+Background
+As a result of the first wave of the COVID-19 pandemic, there were many unexpected emergency situ-
+ations for which many firms were not prepared. The ensuing staff and material shortages significantly
+impacted manufacturing operations.
+After operations resumed, performing site-wide and organization-wide risk assessments with a cross-func-
+tional team helped many firms identify, group, and prioritize investigations. Deviations were resolved and
+reported based on their criticality and priority in terms of public health and manufacturing continuity. The
+existing knowledge on processes, products, quality by design, established conditions, quality metrics trends,
+and annual report information helped firms avoid reporting specific deviations and shortened the length of
+time needed for deviation investigations. The types of deviations companies encountered included a broad
+range of situations and areas impacted (e.g., suppliers, warehousing, manufacturing, quality, distribution).
+Companies revised deviation procedures to adapt to the new normal of the pandemic in regard to criticality
+and priority in terms of public health and manufacturing continuity, reducing the burden on the internal
+quality function as well as on regulatory authorities. For the deviations or events identified as low risk, devia-
+tion reporting procedures and categories were revised to acknowledge (or log) and proceed or to document
+and proceed. These deviations were captured within the PQS. Some companies regularized specific events
+for short periods of time either through temporary change controls or by amending the procedures.
+Deviations that were identified as moderate risk were in many cases reported as expected events and
+investigated with prior knowledge, requiring minimal new investigation activities. In general, if re-
+porting was required, these deviations were reported in annual reports. Deviations that were identified
+as high risk were evaluated for their severity using existing knowledge where possible. If reporting was
+required, these deviations were generally reported as post-approval supplements.
+To assist the industry, most regulatory agencies released guidances and Q&A documents or posted
+information on their websites related to deviation management and deviation-and-change reporting
+relief during the pandemic. These actions took time to implement, which created some challenges,
+especially during the initial phases of the pandemic.
+Regulatory authorities eased up on PAC reporting about suppliers and manufacturing or control sites not
+listed in the existing regulatory filings, allowing for rapid implementation when it was critical to prevent or
+mitigate drug product shortages. For example, the EMA provided guidance under the Exceptional Change
+Management Process (ECMP) to cover regulatory strategies during pandemics to continue supply in the
+market. “The ECMP will permit the swift implementation of changes to suppliers and/or manufacturing/
+control sites necessary to reduce the risks of shortages under certain conditions intended to ensure the
+quality of the medicinal product while deferring the full assessment of the variation” (1).
+Lessons Learned
+Responding to a pandemic quickly and providing the flexibility needed in regard to deviation manage-
+ment and deviation and change reporting is critical for ensuring product supply. Several elements that
+should be considered are:
+•
+Inclusion of the regulatory and quality functions in the BCPs
+The quality and regulatory functions should be included in the BCPs with a focus on the types
+of adjustments in processes related to deviations, as well as to deviation and change reporting,
+based on expected impacts caused by a pandemic. For many manufacturers, these areas were not
+a significant focus in past BCPs and, as such, plans were not readily available regarding the types
+of changes needed.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Rapid issuance or activation by regulatory authorities of temporary guidance and Q&A documents
+This includes specific information on changes in the regulatory reporting and handling of devia-
+tions.
+Most major regulatory authorities released temporary guidances and Q&A documents but, as
+was industry, they were not prepared for the speed at which changes occurred and industry’s
+urgent need for direction from the regulatory authorities.
+Of particular importance is the reporting of changes in suppliers and manufacturing control sites
+not listed in the regulatory filings, as this can have a significant impact on product availability.
+•
+Development of process to allow manufacturers to meet with authorities at an early stage when
+issues arise to understand regulatory expectations and propose innovative strategies for PAC
+submission and approvals
+While it is important for regulatory authorities to take broad actions, such as the issuance of
+temporary guidances, a process also needs to be put in place to allow the marketing authoriza-
+tion holder (MAH) to closely engage with those authorities early on about specific issues so they
+understand regulatory expectations and can propose innovative strategies for PAC submission
+and approval. This could involve such strategies as lower reporting categories, use of flexible sub-
+mission strategies (e.g., ECMPs), reduced submission data requirements based on a risk assess-
+ment evaluation, and expedited assessments. Manufacturing operations within the pharmaceuti-
+cal industry are diverse due to the diverse nature of the products; as such, situations will emerge
+during a pandemic that are specific and unique to any given product and will require unique
+solutions that can only be resolved on a case-by-case basis.
+•
+Regulatory authority acceptance of temporary changes in quality controls
+MAHs facing difficulties performing the quality controls recorded in the regulatory filings, for
+example, due to a significant increase of manufacturing capacity to meet the demands of patients
+or other circumstances related to a pandemic, should contact the responsible regulatory authori-
+ties to seek temporary relief. They should be prepared to present an adapted control scheme,
+founded on a risk-based approach, with the goal of reaching agreement with the regulatory
+authority on the proposed strategy and the needed documentation to implement it.
+•
+Regulatory authority acceptance of bundling changes for regulatory filings
+To reduce the resources needed to prepare, review, and approve individual submissions, regula-
+tory authorities should allow for and encourage MAHs to bundle any changes, with the needed
+supporting rationale and data, to allow them to be implemented more rapidly.
+•
+Regulatory authorities granting relief from specific routine reporting requirements
+MAHs, for justified reasons relating to a pandemic, may be unable to continue the expected
+full reporting requirements for specific items (e.g., full pharmacovigilance reporting, report of
+temporary disruptions/closures). In cases where the regulatory agency has not published relief
+through issuance of a temporary guidance or other document, the MAH should contact the
+regulatory authorities to explain the proposed temporary changes in reporting and request relief
+based on circumstances related to the pandemic. Relief may be in the actual reporting require-
+ment or the method of reporting.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Regulatory authorities granting temporary acceptance status of specific anticipated deviations
+To assist the industry, regulatory agencies should consider granting acceptance status of specific
+types of anticipated deviations allowing companies to focus their resources on their manufactur-
+ing activities. A few examples are the drug supply chain security requirements waiver provided
+by FDA, extension of shelf life, or usage of expired product in clinical trials (2).
+•
+Comprehensive risk assessment processes to determine deviation criticality and reporting
+Manufacturers should plan on carrying out a comprehensive risk assessment to evaluate the
+deviations being generated, allowing them to be divided into low-, medium-, and high-risk cat-
+egories with decisions on reporting being made for medium- and high-risk deviations only.
+—	 Deviations classified as low risk could be handled as acknowledged (or log) and proceed, or
+document and proceed (e.g., missing process checks, second-individual in-person checking,
+annual reports filing, missing calibrations if equipment is found compliant in the subse-
+quent schedule).
+—	 Deviations classified as medium-risk events may be grouped and addressed under a single
+deviation and, where required, reported to the respective regulatory authority as a grouped
+submission (e.g., FDA has provided clearance to, and faster approval time for, MAHs’ filing
+for alternate lab and manufacturing sites for several applications grouped together).
+—	 Deviations classified as a major-risk category are handled case by case (e.g., change in source
+for an API, change in manufacturing site for vaccine or sterile-product manufacturing).
+References
+1.	 European Commission. Notice to Stakeholders: Questions and answers on regulatory expecta-
+tions for medicinal products for human use during the COVID-19 pandemic European Com-
+mission/European Medicines Agency: Brussels, 2021.
+2.	 U.S. Food and Drug Administration. Guidance for Industry: Exemption and Exclusion from
+Certain Requirements of the Drug Supply Chain Security Act During the COVID-19 Public
+Health Emergency; U.S. Department of Health and Human Services: Silver Spring, Md., 2020.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 4-4:  How can the industry self-ease the burden of handling
+deviations?
+Background
+As a result of the COVID-19 pandemic, some parts of the industry experienced an increase in de-
+viations related to the quickly changing environment such as reduced on-site staff presence, supplier
+delays, and supply chain interruptions. The resulting volume of deviations, many of which had no
+impact on product quality, required companies to act and develop new processes for the evaluation,
+completion, and reporting of deviations with a focus on working to maintain product supply. In many
+cases, new processes were developed on how to approach and how to categorize deviations based on
+their impact to product quality.
+Lessons Learned
+Looking ahead, industry should have plans in place (BCPs) to quicky assess the anticipated impacts of
+a pandemic, especially regarding its impact on the volume and type of deviations expected, how devia-
+tions are handled, and how they are reported.
+Some actions to consider that allow self-easement of deviation handling are:
+•
+If a deviation is already open and the manufacturer can simply expand the scope of deviation to
+cover many similar changes in one deviation
+•
+If minor deviations can be documented by the temporary change control to continue manufac-
+turing operation
+•
+If procedures that govern investigations covering discrepancies, deviations, and nonconformanc-
+es are suitable during this public-health emergency or if they need to be updated
+•
+If delayed and reduced testing can be implemented with sufficient data available (e.g., micro-
+biological testing of environmental monitoring plates from low-criticality clean areas or routine
+stability testing supporting a marketed drug with a robust history of minimal degradation)
+•
+If an on-site audit of a new or existing supplier is not possible due to pandemic-related travel
+restrictions, then using any measures that can be implemented (e.g., remote supplier audit, reas-
+sessment, or revision of the quality agreement so the qualification program can be updated)
+•
+If the use of equipment changed or was reconfigured and it was not qualified prior to use to
+check the possibility of retrospective evaluation of equipment performance, if change control
+should be considered
+•
+If servicing equipment requires a technician with special expertise and that individual is unable
+to be on site, are there alternative means to ensure that the equipment is suitable for use (e.g.,
+when service that is normally performed on site was conducted with remote assistance)
+•
+If a delay is acceptable in preventive maintenance or calibration activities for facilities or equip-
+ment impacting the function (e.g., adequacy for use) of facilities or equipment
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 4-5:  How do you make sure that commitments are met, reported,
+and documented with deviations?
+Background
+Sites that are commercially approved for the release of drug products typically require a periodic re-
+certification to continue release of supply in some markets (as regulated by their NRA). During the
+pandemic, there have been instances where markets required an on-site inspection to recertify the site.
+Some NRAs conduct audits using a risk-based approach while others may schedule audits.
+COVID-19 created profound disruption across the pharmaceutical industry in general, but it also
+impacted two specific areas of commitments from a regulatory and drug license prospective:
+1.	 Regulatory Commitment—a specific description of how a company intends to manufacture
+and control the drug product that is defined in the dossier and is subject to regulatory action if
+changed after approval
+2.	 Post-Approval Commitments—covers the elements of any agreement made with the regulatory
+authority during the drug review to fulfill after approval. For example, the FDA has a guidance for
+PACs that allows tracking of a new medicine’s safety, efficacy, or optimal use. Similarly, commit-
+ments can be agreed upon from a chemistry, manufacturing, and controls (CMC) perspective as
+well as between the applicant and the regulatory authority during drug registration.
+According to ICH Quality Guideline Q12, legally binding information considered necessary to assure
+product quality can be considered an established condition (EC). Therefore, any change to an EC
+requires a submission to the regulatory authority, similar to EMA variations (1). While the examples
+here are specific to EMA and MHRA, an applicant can reach out to the relevant NRA to request relief
+in registering changes if any deviation is observed for ECs based on the specific circumstances.
+According to the European Medicines Regulatory Network COVID-19 Business Continuity Plan, varia-
+tion can be delayed if it is in the interest of the applicant.
+Furthermore, it is exceptionally agreed for DCP/MRP/RUP, renewal and type II variation
+procedures to allow a “freezing” (holding the timetable at the same procedure Day and re-
+starting it as soon as the response is received or as soon as the RMS AR is finalised) or “roll-
+ing back” (bring the procedure back to validation phase or back to clock stop with the usual
+timeframe of handling responses in the clock stop) of the procedure timetable due to unex-
+pected and COVID-19-related capacity issues within the RMS, or when it is not possible for
+applicants to submit responses due to the COVID-19 pandemic (2).
+All manufacturers are obligated to release batches with the Qualified Person (QP) declaration whenever
+major CMC changes are registered for a license, in keeping with EMA guidance EMA/196292/2014
+(3). During COVID-19, certain exemptions were granted to submit QP declarations for post-approv-
+al commitments:
+•
+Exceptional circumstances, when an on-site audit is not practical (e.g., atypical actives), are out of
+the scope of the declaration template
+•
+An off-site, remote, or “paper-based” audit may be justifiable of benefit risk, but this can only be
+considered on a case-by-case basis
+•
+In these cases, a suitable quality system is expected to be applied by the active substance and fin-
+ished product manufacturers. As a principle, such controls must provide confidence that the active
+substance is fit for purpose and will not negatively affect the safety and efficacy of the medicinal
+product. The QP is expected to justify the controls in place on a scientific basis and record a risk
+assessment on a product-specific basis (3)
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+The MHRA allowed applicants the following flexibility to register post-approval commitments:
+•
+Suspending the 30-day limit for replies to questions on Type 1B variations
+•
+Waiving the requirement for leaflet mock-ups to be submitted to support variations; only text
+versions will be accepted and uploaded to the MHRA Products website
+•
+Extending the permitted implementation period for label/leaflet changes following a variation
+from 6 months to 9 months (4)
+These scenarios may be limited to non-pandemic therapy, where applicants wish to delay registration
+of commitment due to resource constraints; however, there may be cases where pandemic-related
+therapies require accelerated approval. In such cases, using multiple tools to facilitate the implementa-
+tion of manufacturing changes, such as risk-based reduction in supplement reporting categories and
+flexible assessment practices, may be allowed (5).
+During the COVID-19 public-health emergency, the FDA has been willing to consider requests from
+applicants to submit certain changes using a lower reporting category based on such risk-mitigation
+information for marketing applications related to products in shortage or intended to diagnose, treat,
+mitigate, cure, or prevent pandemic (6).
+Health agencies acknowledged challenges faced by applicants to register and manage PACs and devia-
+tion from commitments during the pandemic. Health agencies issued guidances and allowed some
+flexibility to manage and register these changes. Based on different scenarios, applicants were able to
+utilize a risk-based approach and then discuss applications with regulatory authorities to make sure
+that commitments were met and reported during the pandemic.
+Lessons Learned
+The importance of quick action by the regulators and industry to identify areas where flexibility is
+needed in regard to how regulatory commitments are met, reported, and documented cannot be
+stressed enough. While the actions taken significantly helped in working to minimize product disrup-
+tion and minimize product shortages, the initial delay at the start of the pandemic created signifi-
+cant challenges. Developing processes to allow rapid implementation earlier, based on the knowledge
+gained during the COVID-19 pandemic, would be of significant benefit.
+References
+1.	 International Council for Harmonisation. Quality Guideline Q12: Technical and Regulatory Con-
+siderations for Pharmaceutical Product Lifecycle Management; ICH: Geneva, 2019.
+2.	 European Medicines Agency. European Medicines Regulatory Network COVID-19 Business
+Continuity Plan; EMA and European Commission. EMA: London, 2020. www.ema.europa.eu/
+en/documents/other/european-medicines-regulatory-network-covid-19-business-continuity-
+plan_en.pdf (accessed 25 Jul 2020).
+3.	 European Medicines Agency. Guidance for the Template for the Qualified Person’s Declaration concerning
+GMP Compliance of Active Substance Manufacture “The QP Declaration Template”; EMA: London, 2014.
+4.	 Medicines & Healthcare products Regulatory Agency. Guidance: MHRA Regulatory Flexibilities
+resulting from Coronavirus (COVID-19); MHRA: Online, 2020.
+5.	 Ramnarine, E; Vinther, A, et al. Effective Management of Post-Approval Changes in the Pharma-
+ceutical Quality System (PQS) - Through Enhanced Science and Risk-Based Approaches Industry
+One-Voice-of-Quality (1VQ) Solutions. PDA J Pharm Sci Tech 2020, pdajpst.2020.011734.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+6.	 U.S. Food and Drug Administration. Guidance for Industry: Chemistry, Manufacturing, and Con-
+trols Changes to an Approved Application: Certain Biological Products; U.S. Department of Health
+and Human Services: Silver Spring, Md., 2021.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 4-6:  How do you prioritize submissions of changes in process
+during the pandemic?
+Background
+During the pandemic, the pharmaceutical industry was affected at many levels. MAHs for products
+against the SARS-CoV-2 virus (therapeutics, vaccines) had to prioritize submissions against unprec-
+edented, shortened timelines, while those companies involved in non-COVID-19 products were met
+with a depleted workforce at the production sites, raw material shortages, and logistics delays due to
+cross-border movement restrictions. They also faced potential delays from regulators due to the shift in
+focus as a result of the pandemic and suffering similar restrictions in workforce mobility and availability.
+Lessons Learned
+For MAHs dealing with pandemic-related products, timing will be a highly critical factor in getting
+the different PACs through to submission and approved by the authorities in various jurisdictions.
+During the COVID-19 pandemic, in many cases vaccine MAHs adopted the grouping or bundling
+of product variations to reduce the number of submission packages. That, in turn, reduced the bur-
+den on regulators for individual assessments, aided timely approval, and ensured the maintenance of
+critical supply to the population. An excerpt presented at a regulators-industry workshop organized
+by ICMRA in 2021 shows the numbers of different PACs that were grouped in submissions for the
+different COVID-19 vaccines in the EU (1).
+For MAHs of non-pandemic products, prioritizing changes based on the criticality of the change to
+ensure that an up-to-date and safe product can be placed on the shelves is recommended. Risk is best
+managed by coupling it with a scientific understanding of the process and product design for optimal
+product performance (e.g., as highlighted in ICH Q12, Chapter 2). Thus, risk-based assessments such as
+safety, integrity, strength, purity, quality (SISPQ) and safety, quality, integrity, purity, potency (SQuIPP)
+should be undertaken, and agreed-upon criteria should be documented in impact assessment tools that
+can be archived for inspections and Response-to-Questions submissions as needed by regulators.
+For manufacturers with worldwide product supply and submission requirements, aligning with WHO
+guidelines on procedures and data requirements for changes and variations is recommended (2-4).
+Changes with no SISPQ/SQuIPP impact can be documented in the company’s PQS (2). Minor
+changes, such as changes to the product composition, manufacturing process, quality controls, facili-
+ties, or equipment that have a minimal potential to impact the quality, safety, or efficacy of the biother-
+apeutic product, may be implemented by the MAH without prior authority review for biotherapeutic
+products (3). However, a notification to the authority within a specified time is recommended (2,4).
+The justification and supporting documentation for minor quality changes are not needed for such
+notifications, but the MAH should make them available to the regulatory agency upon request. Me-
+dium or major changes that need to be approved before implementation can be staggered and bundled
+in view of similarity or sequence of changes.
+Additional novel tools that can be used for quick submissions and approval are:
+•
+Matrix approaches to rationally reduce the number of lots required to support a manufacturing
+change for validation and stability (e.g., for vaccine combination products) can reduce the number
+of vaccine lots that are analyzed (2), which, in turn, can lead to faster submission and approval
+timelines and less destruction of lots that would reduce the vaccine supply
+•
+Stability data approach and structured approach from ICH Q12, Chapters 8 and 9 (5)
+•
+Established conditions as part of ICH Q12 implementation (5)
+Combining these approaches for submissions that can be approved quickly according to pre-agreed
+change management protocols (or comparability protocols for the FDA) can enable multiple changes
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+to be assessed and approved at the same time. For both pandemic and non-pandemic product sce-
+narios, the MAH will need to provide a clear prioritization of changes, based on supply impact and
+predictive and strategic planning (6).
+A best practice is for the MAH to clearly engage with the authorities at an early stage to understand
+regulatory expectations and flexibility based on the specific circumstances the MAH is facing.
+References
+1.	 International Coalition of Medicines Regulatory Authorities. ICMRA-Industry Virtual Workshop
+Report on Enabling Manufacturing Capacity in the COVID19 Pandemic; ICMRA: Online, 2021.
+2.	 World Health Organization. Annex 4: Guidelines on Procedures and Data Requirements for
+Changes to Approved Vaccines (TRS No. 993); WHO: Geneva, 2015.
+3.	 World Health Organization. Annex 3: Guidelines on procedures and data requirements for changes
+to approved biotherapeutic products (TRS No. 1011); WHO Technical Report Series No. 1011.
+WHO: Geneva, 2018.
+4.	 World Health Organization. Annex 10: WHO general guidance on variations to multisource phar-
+maceutical products (TRS No. 966); WHO: Geneva, 2016.
+5.	 International Council for Harmonisation. Quality Guideline Q12: Technical and Regulatory Con-
+siderations for Pharmaceutical Product Lifecycle Management; ICH: Geneva, 2019.
+6.	 European Federation of Pharmaceutical Industries and Associations. Optimising Post-Approval
+Change Management for Timely Access to Medicines Worldwide; Efpia: Brussels, 2017.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+V.  Supply Chain
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 5-1:  Why have there been supply constraints for incoming
+materials, such as single-use systems, container closures, resins and
+filters, excipients, and APIs?
+Background
+During the COVID-19 pandemic, the demand for consumables and raw materials necessary for the
+production of vaccines and in need across the globe put a major stress on supply chains. Manufactur-
+ers of these single-use systems (SUS) and excipients were not prepared for fast turnaround times and
+large production; they were accustomed to consistent and repeatable orders and delivery. Lead times
+for consumables extended by up to 12 months, and lead times for sterile filters went from 2-3 months
+to 9-12 months (1).
+The system as a whole was not ready for “emergency” supply chain management and, as demand in-
+creased, old methods became ineffective (1). Prior to the pandemic, the demand for incoming materi-
+als was increasing, especially plastic-based SUS and primary glass containers, such as vials and rubber
+components, a result of emerging applications in cell and gene therapies, monoclonal antibodies, and
+vaccines. Since the pandemic, local authorities have prioritized incoming materials for pandemic sup-
+ply and established export bans on specific items. For example, the U.S. government has been using
+such measures as rated orders under the Defense Production Act to prioritize COVID-19 vaccine
+production, which primarily use SUS. That led to a very limited allocation of SUS to other biolog-
+ics development programs and commercial manufacturing. The same applies to all drug substances,
+excipients, starting materials, intermediates, and devices.
+Lessons Learned
+Drug manufacturers and suppliers should work together on pandemic preparedness to assess demand
+and capacity, plan for supply manufacturing expansion, and act quickly on implementation. End us-
+ers should understand their forecast and communicate with suppliers. Suppliers should anticipate the
+market demand, evaluate against their existing capacity, and fill in the gaps in a timely fashion.
+Drug manufacturers should conduct a holistic risk assessment that includes alternative solutions, aside
+from safety stock; for example, they should anticipate validation of multiple sourcing on strategic
+components to increase their chances of meeting pandemic demand and maintaining continuity of
+supply for essential treatments.
+There are a few reasons why lead times of materials were so severely affected, starting with restrictions
+in transportation globally and the movement of specific goods from vendors, which affected delivery
+times of critical raw materials or consumables (2). In the months leading up to the pandemic, the
+supply chain in the medical industry was growing far more complex around the world, with more
+third-party vendors competing for business with lower pricing and faster turnaround. This growing
+spiderweb of supply chains and the uncertainty of demand resulting from the pandemic accounted for
+delays that cascaded throughout the network, such as uncertainty of demand, inconsistency of supply,
+scarcity of material, delays in transportation, constraints in capacity, and shortage of labor.
+The number of facilities that could meet manufacturing capabilities was limited, and the gaps in avail-
+able workforce meant it took longer to hire and train qualified personnel to meet manufacturing needs
+(3). Several suggestions were made to mitigate the situation:
+•
+Drug manufacturers should establish a cross-functional task force that includes procurement,
+supply chain, technical, quality, regulatory, and operations groups to respond to risks. The task
+force should be sponsored by corporate executives.
+•
+Mitigation plans should include building safety stocks (wherever possible) and providing alterna-
+tive supply solutions. Since all products and processes would be impacted, companies should
+prioritize based on a product’s medical criticality and patients’ usage volume.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Additional suppliers should be evaluated and qualified when deemed necessary. An emergency
+use guideline should be generated to allow faster turnaround of qualification.
+Using the category of SUS as an example, some items to consider might include:
+•
+Technical teams should categorize SUS using the product-family approach, evaluate component
+interchangeability, and use the available, functionally equivalent parts as a like-for-like change.
+Drug manufacturers and suppliers should systematically start working together to build a library
+of interchangeable components. This would facilitate the qualification process and shorten the
+overall lead time significantly.
+•
+In some cases, drug manufacturers may be able to assemble and then steam-sterilize SUS in
+house. When the supplier has a limited capacity to perform SUS assembly, drug manufacturers
+should investigate if it could be done internally while maintaining the same level of quality.
+•
+Currently, the shelf life of SUS post-gamma irradiation is typically 24 months, a conservative
+estimate that sometimes resulted in waste. Drug manufacturers and suppliers should work to-
+gether to standardize the approach used to qualify shelf life with the aim of lengthening it. In the
+meantime, drug manufacturers and suppliers should collaborate to potentially extend the shelf
+life of recently expired SUS, based on scientific study or justification.
+•
+SUS are designed to be used once and then disposed. When considering the reuse of SUS, the
+original technical and quality requirements should be met. Otherwise, SUS should not be reused.
+Securing global pharmaceutical supply chains during a pandemic is a primary function of the pharma-
+ceutical industry. Industry shares this responsibility with government agencies. Pharmaceutical com-
+panies must develop BCPs in order to maintain uninterrupted supply chain distribution during pan-
+demics. BCPs provide a roadmap for senior management to understand and implement approaches to
+mitigate numerous potential risks related to supply in the event of a specific disruption.
+Given the evolving nature of global pandemics, it is important to strengthen existing BCPs in order
+to ensure that they adequately address and assure robust supply chains that mitigate risk to ongoing
+product supply. Pharmaceutical manufacturers’ BCPs were stressed during the pandemic, given the
+disruption to numerous routine operations and were often found lacking in detail and scope. Legacy
+BCPs developed strategies to react to multiple potential risks; however, these plans were typically
+related to individual risks and not scoped to deal with failures of multiple operational areas. Global
+supply chain activities were uniquely impacted during this time, and existing BCPs did not address the
+numerous risk factors encountered.
+Pharmaceutical manufacturers remain responsible for developing strategies to mitigate supply-chain
+issues, which requires careful assessment of the interactions among the many existing business nodes.
+The interaction among logistics, manufacturing, packaging, warehousing, quality-control testing,
+product release, distribution, transportation routes, and importation activities are further complicated
+by segmentation of activities that are often owned by different entities at different stages of the supply
+chain. BCPs must be enhanced from the current state to include the learnings from the pandemic and
+work in synergy with BCPs of third-party suppliers to provide maximum assurance of an ongoing sup-
+ply of pharmaceutical products. Several factors should be considered when deploying BCPs, among
+them, prioritization of medically critical products, product safety-stock levels, warehousing capacity,
+logistics, location of patient population centers, and third-party supplier robustness.
+The BCP should detail stages of activity. For example, pharmaceutical manufacturers must act swiftly
+at the onset of a potential pandemic to ensure appropriate actions are taken immediately to limit the
+risk to product supply. This could include, to name a few, raising inventory levels to minimize the
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+risk to manufacture and distribution, engaging third-party logistic providers to ensure BCPs are being
+activated, and inventorying available warehousing capacity.
+The following items should be considered as part of a pharmaceutical manufacturer’s BCP:
+•
+Assess the need to increase inventory levels (commonly called safety stock) of materials used
+throughout the supply chain. Medically critical medicines should be prioritized; however, BCP
+risk mitigation should assess safety stock for all medicinal products.
+•
+Assess the location where the safety stock is kept, as transportation might be impacted during a
+pandemic as well.
+•
+Review safety-stock levels. Medical criticality and safety-stock levels should be assessed constant-
+ly throughout the pandemic to ensure necessary levels are maintained and changes in classifica-
+tion are fully understood and evaluated.
+•
+Ensure alternative suppliers are qualified for all materials, as applicable, not only APIs, but even
+a lesser-priority excipient might become critical if it is missing.
+•
+Assess medical criticality in each market as the supply needs may differ depending on local sup-
+ply logistics, number of approved suppliers, and generic availability.
+•
+Consider warehousing and distribution space needed for any increase in safety-stock inventory,
+including both cold-chain and controlled-room-temperature conditions.
+•
+Consider the wider need for warehousing. This is especially important for cold-chain product where
+local intervention to provide storage for vaccine and other treatment may be given the highest priority.
+•
+Consider locating finished product storage closer to the intended patient populations earlier in
+the product lifecycle. Moving the materials closer to the market prevents route and import dis-
+ruptions from delaying treatment. Controls must be established to ensure robust approval and
+release processes to prevent unauthorized distribution prior to final product release.
+•
+If third parties are involved, ensure controls are in place and are covered in existing agreements
+with third-party suppliers. The controls should be part of both internal and external company
+audit programs and should be detailed in procedures and signed agreements between parties.
+Where third parties are used, controls for product quarantine, release, and rejection procedures
+need to be fully understood. This is especially important if third-party warehouses will hold
+quarantined material pending release status change.
+•
+Consider options for shipping lanes due to the real possibility of disruptions to shipping part-
+ners, potential changes in importation and customs procedures, port shutdown, protectionism,
+port-of-entry closures, and staffing shortages.
+•
+Consider working with local governments to ensure transparent supply of materials and to make
+risk-based decisions that overcome disruptions, including deploying different ports of entry.
+•
+Consider other supply options, including adding third-party suppliers and employing redundant
+sourcing options; pursuing these options during the initial stages of a pandemic may be ap-
+propriate. Given potentially lengthy approval times, consider building redundant options into
+routine operations. Redundant operations for the manufacture of medically critical medicines
+must be reviewed with consideration to building capability and gaining regulatory approval of
+local and regional sites of manufacture.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+•
+Assess stability beyond current shelf-life limits where possible. In the event of shortages during a
+pandemic, this data could be essential when working with local government authorities to allow
+a pandemic-related extension in the market where necessary.
+•
+Identify markets that require import release-testing. Should there be a risk of shortages, firms
+should engage with local authorities to request waivers of import-testing requirements with
+justification based on supply dynamics. This could help offset local quality-control laboratory
+operations (including third-party laboratories), supply-chain impact, and customs and import
+delays that can be expected during pandemic periods, and the risk is very low for products where
+release-testing has already been performed.
+•
+Consider the risk of counterfeits and product theft, which increase during pandemic times.
+BCPs should include a detailed plan for working with third-party logistic providers, warehouses,
+and distribution providers to ensure safe and effective transport of products with rapid notifica-
+tion and response over and above normal procedures.
+•
+Consider building multiple BCPs to allow for variation; for example, firms may have one BCP
+for routine product supply and a separate BCP for clinical-trial supply.
+References
+1.	 Dakin, J. Supply Chain Challenges Creating Hurdles to COVID-19 Vaccine Production. Pharm
+Tech 2021, 45 (4), 60-64.
+2.	 Raj, A; Mukherjee, A, et al. Supply chain management during and post-COVID-19 pandemic:
+Mitigation strategies and practical lessons learned. J Bus Res 2022, 2022 Mar (142), 1125-39.
+3.	 Hippold, S. Coronavirus: How to Secure Your Supply Chain. Insights/Supply Chain. https://
+www.gartner.com/smarterwithgartner/coronavirus-how-to-secure-your-supply-chain (accessed
+26 Jul 2022).
+Additional Reading
+Casey, C A; Cimino-Isaacs, C D. Export Restrictions in Response to the COVID-19 Pandemic; Con-
+gressional Research Service: Washington, DC, 2021. https://crsreports.congress.gov/product/pdf/IF/
+IF11551 (accessed 27 Aug 2022).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 5-2:  What impact did cold-chain custody and manufacturing
+bottlenecks have on vaccine supply?
+Background
+Current supply-chain capabilities were assumed to be sufficient to effectively distribute the COV-
+ID-19 vaccines during the pandemic. This was not the case, however, as the current supply chain for
+vaccines is quite complex and was undergoing issues before the onset of the pandemic. As a result of
+globalization, supply chains have become increasingly complex. According to Dr. Robert Handfield
+from Poole College of Management and Dr. Daniel J. Finkenstadt from Naval Postgraduate School,
+there are several key challenges associated with vaccine supply chain: national security issues, personnel
+shortages, lack of coordination, shortage of supplies, limited capacity, vaccine damage, gaps for rural
+areas, and misinformation about vaccines (1). Specifically, cold-chain products are very sensitive to
+movement and high-touch handling. Processes had to be validated to prove that the vaccine was still
+effective after being handled in dry-ice packages. A narrow window existed between getting the vac-
+cine out of cold storage and into patients before it deteriorated; this was a big challenge and a crucial
+step for vaccination of the population. Cold-chain issues presented an even greater challenge in rural
+areas than in highly populated cities, where the routes were longer and access points for citizens were
+more difficult. Consequently, vaccine inequality is more prevalent in lower-income countries that
+have a less-developed cold supply chain (2). Even in the United States, the capacity for temperature-
+monitored cold rooms could not handle the mass volume of vaccines that needed cold storage.
+Lessons Learned
+When redesigning or looking to improve the cold supply chain for events such as the COVID-19
+pandemic, there are several key points to consider:
+•
+Design distribution around freezer requirements. Consider planning the distribution of vaccines
+en masse as soon as they arrive in the district. Reduce storage time after arrival by hosting events
+for mass immunization. Be creative with distribution techniques, such as the case in Ghana where
+drones were used for deliveries (2).
+•
+Optimize shipment size to limit requirements for cold-chain capacity. Transition packaging to
+smaller units by dividing bulk shipments into smaller packages shipped more frequently.
+•
+Increase cold-chain storage capacity. Increasing freezer or cold-room capacity can help to ensure
+the cold chain can handle planned or unplanned incremental volume changes associated with
+vaccines. Increasing storage capabilities is important for mass immunization events and to protect
+against delays in vaccine distribution. Possible solutions for increasing cold chain include renting
+temporary warehouse capacity from the private sector, using portable freezers or mobile cold stor-
+age, or evaluating the cost effectiveness of repairing existing cold-chain units.
+References
+1.	 Barnhill, C. The COVID-19 Vaccine Supply Chain: Potential Problems and Bottlenecks. Poole
+Thought Leadership. https://poole.ncsu.edu/thought-leadership/article/the-covid-19-vaccine-
+supply-chain-potential-problems-and-bottlenecks/ (accessed 26 Jul 2022).
+2.	 Fleming, M; Okebukola, P, et al. Port to patient: Improving country cold chains for COVID-19
+vaccines. McKinsey & Company: Our Insights 2021.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Q 5-3:  How have vaccine manufacturing supply chains become
+more vertically integrated?
+Background
+To get vaccine manufacturing up to the demand required during the COVID-19 pandemic, many
+companies, such as Pfizer and Merck, had to take on some of the responsibility of obtaining the con-
+sumables and raw materials that were required to manufacture their drug products. With extended
+delays from suppliers overseas, the need grew for companies to supply materials in house where they
+could control their own lead times.
+Lessons Learned
+Pfizer needed extremely large quantities of a cationic lipid that was essential to their COVID-19 vac-
+cine, which was not readily available at the start of the pandemic. Consequently, Pfizer developed a
+process to create the lipid needed based on one that had already been devised by a Pfizer research and
+development (R&D) facility. Assembling a team of 50 people, they performed a tech transfer from the
+R&D facility to a larger manufacturing facility to create the cationic lipid needed for the Pfizer vac-
+cine. To expedite the timeline, the team found ways to consolidate steps wherever possible and, soon
+after, the facility was producing 20 kg of cationic lipids each week. Instead of relying on vendors, Pfizer
+was able to control the output production of lipid that served their purpose in creating the COVID-19
+vaccine (1).
+Similarly, acquisition of companies that produced important raw materials needed for the creation of
+vaccines helped reduce lead times by streamlining communication between the two entities. Merck
+started production of a high-purity synthetic cholesterol product; the launch of this product followed
+Merck’s acquisition of AmpTec, which combined AmpTec’s mRNA technology with Merck’s extensive
+expertise in lipid manufacturing.
+References
+1.	 Silver, K. Shot of a Lifetime: How Pfizer Developed its Own Raw Materials to Ensure a Steady
+Supply for the COVID-19 Vaccine. Shot of a Lifetime. https://www.pfizer.com/news/articles/
+shot_of_a_lifetime_how_pfizer_developed_its_own_raw_materials_to_ensure_a_steady_sup-
+ply_for_the_covid_19_vaccine (accessed 26 Jul 2022).
+Additional Reading
+Klossek, A; Gasparon, M. EIT RawMaterials Supports the World after COVID-19 in Securing a Sus-
+tainable Supply of Raw Materials and Advanced Materials – for Europe’s Green Future and Competitive-
+ness European Institute of Innovation and Technology (EIT): Brussels, 2020. https://eitrawmaterials.
+eu/wp-content/uploads/2020/04/EIT-RawMaterials-Position-Paper-on-COVID-19.pdf (accessed 26
+Jul 2022).
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+VI.  Relevant Vendor and Supplier Resources
+The following paid advertisement is presented to the reader as potential supplemental resources which may aid in execution or
+fulfillment of the concepts, material, and information presented herein.
+The inclusion of these resources does not imply any endorsement or preference on the part of PDA or the authors of this
+technical document.
+Whatever you need – wherever you are – we can help.
+Our holistic contamination control products and services include the right tools, technologies
+and expertise you need to ensure your success.
+Comprehensive offerings. Integrated support.
+Visit us at sterislifesciences.com
+mediation  |  Biological Indicators  |  Certification  |  cGMP Sterilizers  |  cGMP Washers  |  Chemical Indicators  |  CIP 100™  |  Cl
+ Disinfection  |  Cleanroom Apparel & Supplies  |  Cleanroom Certification  |  Compliance  |  Component Prep  |  Consultati
+tamination Control Support  |  Controlled Environment Services  |  Critical Cleaning  |  Disinfectant Efficacy Testing  |  Envi
+nitoring  |  Equipment Service and Parts  |  Finn-Aqua™  |  Global  |  Guidance  |  Holistic  |  Innovation  |  Installation  |  Mainten
+Low-Temperature Terminal Sterilization  |  Manual Cleaning Detergents  |  On-Site Training  |  Optimization  |  Partnership
+rmaceutical Detergents  |  Process Cleaners   |  ProKlenz™  |  Pure Steam Generators  |  Purefit™  |  Qualification  |  Reduced Ri
+ptic Processing  |  Compliance  |  Regulatory Support  |  Reliance™  |  Remote Factory Acceptance Testing  |  Remote Monito
+earch Sterilizers  |  Research Washers  |  Risk-Based Approach  |  Septihol™  |  Smart AR™  |  Spordex™  |  Sporicides  |  T
+Sterilants  |  Spor-Klenz™  |  Stainless-Steel Maintenance  |  Steraffirm™  |  Sterility Assurance  |  Sterility Maintenance  |  Ste
+apping  |  Support  |  Training  |  Validation  |  Vesta-Syde™  |  VHP™ Equipment  |  VHP™ Flex  |  VHP™ Biodecontamination Serv
+asher Loading Equipment  |  Water for Injection Stills  |  We’re Here for You.  |  AMSCO™  |  Annex
+mpliance  |  Vaprox™  |  Aseptic Processing  |  Autoclave Bags, Pouches and Covers  |  Biodecontamination  |  Biofilm Remediati
+ogical Indicators  |  Certification  |  cGMP Sterilizers  |  cGMP Washers  |  Chemical Indicators  |  CIP 100™  |  Cleaning and Di
+eanroom Apparel & Supplies  |  Compliance  |  Component Prep  |  Consultation  |  Contamination Control Support  |  Contro
+ironment Services  |  Cleanroom Certification  |  Critical Cleaning  |  Environmental Monitoring  |  Equipment Service and Parts  |
+a™  |  Global  |  Guidance  |  Disinfectant Efficacy Testing  |  Holistic  |  Innovation  |  Installation  |  Low-Temperature Term
+rilization  |  Certification  |  Manual Cleaning Detergents  |  On-Site Training  |  Optimization  |  Partnership  |  Pharmaceutical Dete
+rocess Cleaners   |  ProKlenz Two™  |  Pure Steam Generators  |  Purefit™  |  Qualification  |  Reduced Risk  |  Regulatory Suppo
+ance™  |  Remote Factory Acceptance Testing  |  Remote Monitoring  |  Research Sterilizers  |  Research Washers  |  Risk-Based
+Spordex™  |  Septihol™  |  Smart AR™  |  Sporicides  |  Spor-Klenz™  |  Stainless-Steel Maintenance  |  Steraffirm™  |  S
+Sterility Assurance  |  Sterility Maintenance  |  Sterilization Wrapping  |  Support  |  Technical  |  Training  |  Validation  |  Vaprox™
+e™  |  Installation  | Aseptic Processing  |  VHP™ Equipment  |  VHP™ Flex  |  Washer Loading Equipment  |  Water for Injec
+s  | AMSCO™  |  Annex 1 Compliance  |  Aseptic Processing  |  Autoclave Bags, Pouches and Covers  |  Biodecontamination  |  Bio
+mediation  |  Biological Indicators  |  Certification  |  cGMP Sterilizers  |  cGMP Washers  |  Chemical Indicators  |  CIP 100™  |  C
+Disinfection  |  Optimization  |  Cleanroom Apparel & Supplies  |  Cleanroom Certification  |  Compliance  |  Component Pre
+sultation  |  Contamination Control Support  |  Controlled Environment Services  |  VestaSyde SQ Ready-to-Use   |  Environm
+nitoring  |  On-Site Training  |  Equipment Service and Parts  |  Finn-Aqua™  |  Guidance  |  Holistic  |  Innovation  |  Installat
+ow-Temperature Terminal Sterilization  |  Manual Cleaning Detergents  |  VHP™ Facility Biodecontamination Services
+rmaceutical Detergents  |  Process Cleaners   |  ProKlenz™ Two  |  Pure Steam Generators  |  Purefit™  |  Qualification  |  Red
+ritical Cleaning  |  AMSCO™  |  Regulatory Support  |  Reliance™  |  Remote Factory Acceptance Testing  |  Remote Monitorin
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
+An Authorized User of this electronic publication is the purchaser.
+Authorized Users are permitted to do the following:
+•	 Search and view the content of the PDA Electronic Publication
+•	 Download the PDA Electronic Publication for the individual use of an Authorized User
+•	 Print the PDA Electronic Publication for the individual use of an Authorized User
+•	 Make a reasonable number of photocopies of a printed PDA Electronic Publication for the individual use of an
+Authorized User
+Authorized Users are not permitted to do the following:
+•	 Allow anyone other than an Authorized User to use or access the PDA Electronic Publication
+•	 Display or otherwise make any information from the PDA Electronic Publication available to anyone other
+than an Authorized User
+•	 Post the PDA Electronic Publication or portions of the PDA Electronic Publication on websites, either available
+on the Internet or an Intranet, or in any form of online publications without a license from PDA, Inc.
+•	 Transmit electronically, via e-mail or any other file transfer protocols, any portion of the PDA Electronic
+Publication
+•	 Create a searchable archive of any portion of the PDA Electronic Publication
+•	 Use robots or intelligent agents to access, search and/or systematically download any portion of the PDA
+Electronic Publication
+•	 Sell, re-sell, rent, lease, license, sublicense, assign or otherwise transfer the use of the PDA Electronic Publication
+or its content
+•	 Use or copy the PDA Electronic Publication for document delivery, fee-for-service use, or bulk reproduction or
+distribution of materials in any form, or any substantially similar commercial purpose
+•	 Alter, modify, repackage or adapt any portion of the PDA Electronic Publication
+•	 Make any edits or derivative works with respect to any portion of the PDA Electronic Publication including any
+text or graphics
+•	 Delete or remove in any form or format, including on a printed article or photocopy, any copyright information
+or notice contained in the PDA Electronic Publication
+•	 Combine any portion of the PDA Electronic Publication with any other material
+To License or purchase Reprints
+•	 Licensing: Site licenses and licenses to distribute PDA Electronic Publication can be obtained for a fee.
+To learn more about licensing options and rates, please contact:
+Tehya Enger, Publications Manager, +1 (301) 656-5900.
+Written correspondence can be sent to: PDA, Inc. Attn: Tehya Enger, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+•	 Reprints: Reprints of PDA Electronic Publication can be purchased for a fee.
+To order reprints, please contact:
+Tehya Enger, Publications Manager, +1 (301) 656-5900.
+Written correspondence can be sent to: PDA, Inc. Attn: Tehya Enger, 4350 East West Highway, Suite 150,
+Bethesda, MD 20814.
+Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
+About PDA Points to Consider
+PDA Points to Consider are global consensus documents which reflect current industry best practices and think-
+ing regarding a particular topic. These documents are prepared by member-driven Task Forces (listed on inside
+front cover) comprised of content experts, including scientists and engineers working in the pharmaceutical/
+biopharmaceutical industry, regulatory authorities, and academia.
+The final working draft is reviewed by the PDA Advisory Board or Boards that sanctioned the project. PDA’s
+Advisory Boards are: Science Advisory Board, Advanced Therapy Medicinal Products Advisory Board, Biophar-
+maceutical Advisory Board, and Regulatory Affairs and Quality Advisory Board. Following this stage of review,
+the PDA Board of Directors conducts the final review and determines whether or not to publish the document
+as an official PDA Points to Consider.
+While PDA goes to great lengths to ensure each Points to Consider is of the highest quality, all readers are en-
+couraged to contact PDA about any scientific, technical, or regulatory inaccuracies, discrepancies, or mistakes
+that might be found in any of the documents. Readers can email PDA at: TRfeedback@pda.org.
+PDA Officers and Directors
+Officers
+Chair: Susan Schniepp, RCA
+Chair-Elect: Anil Sawant, PhD, Merck & Co./Merck
+Treasurer: Melissa Seymour, Biogen, Inc.
+Secretary: Emma Ramnarine, Genentech/Roche
+Immediate Past-Chair: Jette Christensen, Novo Nordisk A/S
+President: Glenn Wright
+Directors
+Bettine Boltres, PhD, West Pharmaceutical Services
+Christiana Campa, PhD, GSK
+Javier Camposano, Celltrion
+Mirko Gabriele, PhD, Thermo Fisher Scientific
+Marc Gloglovsky, ValSource, Inc.
+Andrew Hopkins, Abbvie
+Stephan O. Krause, PhD, AstraZeneca Diagnostics
+Ivy Louis, VIENNI Taining & Consulting LLP
+Amy McDaniel, BMS
+Cylia Chen Ooi, Amgen
+Mathias Romacker, (Retired)
+Osamu Shirokizawa, Life Scientia
+PDA Publication Production and Editing
+Carrie Horton, Project Manager, Regulatory Affairs
+Josh Eaton, Senior Director, Scientific & Regulatory Affairs
+Walter Morris, Senior Director of Publishing and Press
+Relations
+Katja Yount, Publication Designer
+Marilyn Foster, Technical Editor/Writer
+Sanctioning Advisory Board: RAQAB
+Anette Yan Marcussen, NNE A/S, (Chair)
+Denyse Baker, Eli Lilly and Company Limited,
+(Vice-Chair)
+Jacqueline Veivia-Panter, Biocentriq, (Past-Chair)
+Masahiro Akimoto, Heartseed, Inc.
+Lisa Benette, SeerPharma
+Chuck Bornhoeft, Rion
+Marcello Colao, GSK Vaccines
+Rosane Cuber, Bio-Manguinhos/FIOCRUZ
+Karolyn Gale, Emergent BioSolutions, Inc
+Kir Henrici, The Henrici Group, LLC
+Dinesh Khokal, Amgen, Inc.
+Beth Kirschenheiter, Bristol Myers Squibb
+Amanda McFarland, ValSource, Inc.
+Catriona Murphy, Eli Lilly and Company Limited
+Ajay Pazhayattil, Capcium Inc.
+Vishal Sharma, Vienni Training and Consulting LLP
+Michele Simone, Bracco
+Eva Urban, CSL Behring AG
+Gopi Vudathala, Incyte
+Kelly Waldron, ValSource
+Bethesda Towers
+4350 East West Highway
+Suite 600
+Bethesda, MD 20814 USA
+Tel: +1 (301) 656-5900
+Fax: +1 (301) 986-0296
+E-mail: info@pda.org
+Web site: www.pda.org
