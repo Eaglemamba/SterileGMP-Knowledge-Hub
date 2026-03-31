@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 """
-pda_engine.py — Unified PDA Technical Report processing engine
-===============================================================
-Replaces: merge_engine.py (library), new_report.py, regenerate_knowledge.py,
-          and per-report merge.py files.
+gmp_engine.py — Unified GMP document processing engine
+=======================================================
+Supports all guideline sources: PDA, ISPE, FDA, PIC/S, ISO, ECA, USP.
 
-Each report is defined by a config.json in its folder (no more per-report .py).
+Each report is defined by an entry in reports.json with a `folder` field.
 
 Usage:
-    python pda_engine.py scaffold TRXX             # Create new report folder + config.json
-    python pda_engine.py md TRXX                   # Generate knowledge MD from source text
-    python pda_engine.py md --all                   # Regenerate all knowledge MDs from source
-    python pda_engine.py merge TRXX                # Merge HTML sections → Complete.html + MD
-    python pda_engine.py merge --all               # Merge all reports
+    python gmp_engine.py scaffold TRXX             # Create new report folder
+    python gmp_engine.py scaffold ISPE-Vol5 --source ISPE
+    python gmp_engine.py md TRXX                   # Generate knowledge MD from source text
+    python gmp_engine.py md --all                  # Regenerate all knowledge MDs
+    python gmp_engine.py merge TRXX                # Merge HTML sections → Complete.html + MD
+    python gmp_engine.py merge --all               # Merge all reports
 
-MD-first workflow (recommended for new reports):
-    1. pda_engine.py scaffold TRXX
-    2. Extract PDF text → TRXX/source/
-    3. pda_engine.py md TRXX                        # structured English MD, review hierarchy
+Workflow:
+    1. gmp_engine.py scaffold ID [--source SOURCE]
+    2. Extract PDF text → <SOURCE>/ID/source/
+    3. gmp_engine.py md ID                          # structured English MD
     4. Generate bilingual HTML sections (Claude agents)
-    5. pda_engine.py merge TRXX                     # merge HTML + refresh MD from source
+    5. gmp_engine.py merge ID                       # merge HTML + refresh MD from source
 """
 
 import argparse
@@ -851,9 +851,9 @@ def cmd_scaffold(args):
     print(f"\nNext steps:")
     print(f"  1. Edit reports.json → fill in '{report_id}' entry (title, sections, tags, colors)")
     print(f"  2. Extract PDF text → {report_id}/source/")
-    print(f"  3. python pda_engine.py md {report_id}       # generate knowledge MD, review hierarchy")
+    print(f"  3. python gmp_engine.py md {report_id}       # generate knowledge MD, review hierarchy")
     print(f"  4. Generate bilingual HTML sections (Claude agents)")
-    print(f"  5. python pda_engine.py merge {report_id}    # merge HTML + refresh MD")
+    print(f"  5. python gmp_engine.py merge {report_id}    # merge HTML + refresh MD")
     print(f"  6. Update knowledge/INDEX.md")
 
 
@@ -938,7 +938,7 @@ def cmd_merge(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="PDA Technical Report processing engine",
+        description="SterileGMP Knowledge Hub — document processing engine",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

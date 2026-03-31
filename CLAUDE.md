@@ -76,8 +76,8 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ```
 /
 ├── reports.json            # SINGLE SOURCE OF TRUTH — all report metadata, dashboard data, section maps
-├── pda_engine.py           # Unified CLI: scaffold, md, merge
-├── merge_engine.py         # Shared HTML merge library (imported by pda_engine.py)
+├── gmp_engine.py           # Unified CLI: scaffold, md, merge
+├── merge_engine.py         # Shared HTML merge library (imported by gmp_engine.py)
 ├── index.html              # Dashboard — reads from reports.json (no hardcoded data)
 ├── PROMPT.md               # Master generation instructions
 ├── template.css            # Shared CSS (do not modify per-report)
@@ -92,7 +92,7 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── .claude/
 │   └── commands/
 │       ├── gmp-ask.md      # /gmp-ask skill — unified chatbot Q&A via Claude Code
-│       └── pda-ask.md      # /pda-ask legacy alias (PDA-only queries)
+│       └── gmp-ask.md      # /gmp-ask skill — multi-source GMP Q&A
 ├── PDA/                    # All PDA documents
 │   ├── TR26/               # Each subfolder: source/ + sections/ + output/
 │   ├── PtC-14/
@@ -104,8 +104,8 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ```
 
 > **reports.json `folder` field**: Every report entry must include `"folder": "PDA/TR26"` (or `"ISPE/ISPE-Vol5"` etc.).
-> `pda_engine.py` uses this field to resolve all paths. `index.html` uses it to build the Open button link.
-> Use `python pda_engine.py scaffold ISPE-Vol5 --source ISPE` to auto-populate `folder` for new reports.
+> `gmp_engine.py` uses this field to resolve all paths. `index.html` uses it to build the Open button link.
+> Use `python gmp_engine.py scaffold ISPE-Vol5 --source ISPE` to auto-populate `folder` for new reports.
 
 ## Naming Conventions
 
@@ -153,9 +153,9 @@ ls "Raw pdfs/" | grep -v processed
 
 ```bash
 # 1. Scaffold the folder structure + add skeleton to reports.json
-python pda_engine.py scaffold TRXX
+python gmp_engine.py scaffold TRXX
 #    ISPE reports:
-python pda_engine.py scaffold ISPE-Vol5 --source ISPE
+python gmp_engine.py scaffold ISPE-Vol5 --source ISPE
 
 # 2. Edit reports.json — fill in TRXX entry (title, tags, colors, section_map)
 
@@ -163,14 +163,14 @@ python pda_engine.py scaffold ISPE-Vol5 --source ISPE
 #    Use any external tool (e.g., pdftotext, PyMuPDF, or manual copy-paste)
 
 # 4. Generate knowledge MD — review hierarchy before proceeding
-python pda_engine.py md TRXX
+python gmp_engine.py md TRXX
 #    Review knowledge/PDA/TRXX-Complete.md — confirm sections/headings match PDF
 
 # 5. Generate bilingual HTML sections (Claude agents, parallel dispatch)
 #    Use PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
 
 # 6. Merge HTML → PDA/TRXX/output/TRXX-Complete.html
-python pda_engine.py merge TRXX
+python gmp_engine.py merge TRXX
 
 # 7. Update knowledge/INDEX.md (new block using "PDA/TRXX-Complete.md" header + routing table row + cross-report topics)
 
@@ -206,14 +206,14 @@ If `.nav-container` has `justify-content: center`, overflow is clipped symmetric
 reach leftmost tabs. Always use `justify-content: flex-start` + scroll arrows (handled by merge_engine.py).
 
 ### Regenerating All Knowledge MDs
-To regenerate all knowledge MDs at once (e.g. after updating `pda_engine.py` heading detection):
+To regenerate all knowledge MDs at once (e.g. after updating `gmp_engine.py` heading detection):
 ```bash
-python pda_engine.py md --all
+python gmp_engine.py md --all
 ```
 Note: `pda-guide-no1` has no source text — its MD is generated via HTML-stripping fallback in `merge_engine.generate_markdown()`.
 
 ### Knowledge MDs — English Only
-Knowledge MDs in `knowledge/` must contain **only original English text** from the PDF. No Chinese translations or commentary. The `pda_engine.py md` command generates these from `source/*.txt` files. The `merge_engine.generate_markdown()` fallback strips CJK from HTML sections.
+Knowledge MDs in `knowledge/` must contain **only original English text** from the PDF. No Chinese translations or commentary. The `gmp_engine.py md` command generates these from `source/*.txt` files. The `merge_engine.generate_markdown()` fallback strips CJK from HTML sections.
 
 ### Heading Detection & PDF Noise Rules
-Rules are documented in `pda_engine.py` source code (`source_to_markdown()`, `HEADING_RE`, `PDF_NOISE_PATTERNS`, `UNIT_WORDS`). If a new PDF introduces false headings or noise, update the code and run `python pda_engine.py md --all`.
+Rules are documented in `gmp_engine.py` source code (`source_to_markdown()`, `HEADING_RE`, `PDF_NOISE_PATTERNS`, `UNIT_WORDS`). If a new PDF introduces false headings or noise, update the code and run `python gmp_engine.py md --all`.

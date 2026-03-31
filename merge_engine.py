@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-merge_engine.py — Shared merge library for PDA Technical Report Knowledge
+merge_engine.py — Shared merge library for SterileGMP Knowledge Hub
 =========================================================================
 Import this module in any report's merge.py to avoid code duplication.
 
