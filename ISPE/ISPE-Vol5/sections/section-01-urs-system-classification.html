@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.5 - Chapter 2: URS &amp; Chapter 3: System Classification</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin: 0.3rem 0 0.3rem 1.25rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box (Yellow) */
+.analogy-box,
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* Concept Box (Green) */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* Note Box (Orange) */
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Application Box (Blue solid) */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* Practice Box (Blue dashed) */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+
+/* Q number badge in table */
+.q-badge {
+    display: inline-block; width: 32px; height: 32px;
+    background: #1a3a2a; color: white;
+    border-radius: 50%; text-align: center; line-height: 32px;
+    font-weight: 700; font-size: 0.85rem;
+}
+
+/* Learning Objectives */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Section summary (yellow gradient) */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem;
+    border-left: 4px solid #f6ad55;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Structure list */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* TOC */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* Footer */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header" id="top">
+    <h1>ISPE Baseline&reg; Guide Vol.5 — Commissioning and Qualification (2nd Edition)</h1>
+    <div class="subtitle">Chapter 2: User Requirements Specification &amp; Chapter 3: System Classification</div>
+    <div class="subtitle">第二章：使用者需求規格 &amp; 第三章：系統分類</div>
+    <div class="page-info">Pages 19–26 &nbsp;|&nbsp; ISPE 2019</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ol>
+            <li>說明 URS（使用者需求規格）在 C&amp;Q 流程中的角色，以及它與 CQA、CPP、系統風險評估的關聯。</li>
+            <li>區分 URS「應包含」與「不應包含」的內容，並能辨識常見的錯誤寫法。</li>
+            <li>理解 URS 核准流程、變更管理要求，以及遺留系統（Legacy Systems）的處置方式。</li>
+            <li>解釋「直接衝擊系統」與「非直接衝擊系統」兩類分類方式，並說明為何舊版元件分類已被系統風險評估取代。</li>
+            <li>應用 Table 3.1 八個判定問題（Q1–Q8）對給定系統進行分類判斷。</li>
+        </ol>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>章節導覽 Section Navigator</h3>
+        <div class="toc-grid">
+            <a href="#sec-2-1">2.1 URS Introduction</a>
+            <a href="#sec-2-2">2.2 Development of URS</a>
+            <a href="#sec-2-3">2.3 Approval &amp; Changes</a>
+            <a href="#sec-2-4">2.4 Legacy Systems</a>
+            <a href="#sec-3-1">3.1 Classification Intro</a>
+            <a href="#sec-3-2">3.2 System Boundaries</a>
+            <a href="#sec-3-3">3.3 Criteria (Q1–Q8)</a>
+        </div>
+    </div>
+
+    <!-- ===== CHAPTER 2 DIVIDER ===== -->
+    <div class="chapter-section" id="sec-2-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2</div>
+            <div class="chapter-info">
+                <h2>Chapter 2 — User Requirements Specification (URS)</h2>
+                <p>第二章：使用者需求規格 &nbsp;|&nbsp; pp. 19–22</p>
+            </div>
+        </div>
+
+        <!-- 2.1 Introduction -->
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>2.1 Introduction</h3>
+                    <p>The <span class="key-term">User Requirements Specification (URS)</span> brings together system requirements from multidisciplinary sources to support system design, C&amp;Q, operations, and maintenance. Within the C&amp;Q process, it is a foundational document that identifies the product and process requirements for the system. These product quality related user requirements are based on product knowledge (<span class="key-term">CQAs</span>), process knowledge (<span class="key-term">CPPs</span>), regulatory requirements, and organization/site quality requirements. The product and process requirements in the URS are inputs to the C&amp;Q process; they provide the science-based knowledge that forms the basis for applying <span class="key-term">QRM</span> to C&amp;Q.</p>
+                    <p>It is recommended that a URS is developed for each system that has the potential to impact product quality, or a <span class="key-term">direct impact system</span> (as determined through system classification described in Chapter 3). A formal URS document is not always necessary. A statement of the URS may be contained in various forms, e.g., purchase request, functional specification, change request, or data sheet. For standard off-the-shelf or simple catalog systems, a statement of the URS may be a purchase order, vendor cut sheet, or catalog data. The system would be verified against this document.</p>
+                    <p>Figure 2.1 shows the relationship between the activities and documents in the C&amp;Q process for direct impact systems.</p>
+                    <p><em>Figure 2.1: Relational Diagram for C&amp;Q Activities and Documents – User Requirements Specification</em></p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：URS 是什麼？</h4>
+                        <p><strong>URS（使用者需求規格）</strong>是整個 C&amp;Q 流程的起點文件，由多學科團隊共同制定，整合來自品質、工程、法規、HSE 等各方面的系統需求。</p>
+                        <ul>
+                            <li><strong>CQAs</strong>（關鍵品質屬性）→ 來自產品知識，定義最終產品必須符合的品質標準</li>
+                            <li><strong>CPPs</strong>（關鍵製程參數）→ 來自製程知識，定義必須被控制的製程變數</li>
+                            <li><strong>QRM</strong>（品質風險管理）→ URS 提供科學依據，使風險評估有所根據</li>
+                        </ul>
+                        <p>URS 的核心價值：它告訴系統「要做什麼」，而不是「怎麼做」。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：蓋房子的需求清單</h4>
+                        <p>URS 就像屋主委託建築師前寫的需求清單：「我需要 4 個臥室、2 個浴室、開放式廚房、無障礙坡道」。這份清單說明<strong>要什麼</strong>，但不說「牆要用哪種磚」或「水管要走哪條路」——那是設計師的事（Basis of Design, BOD）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：URS 不一定要是獨立文件</h4>
+                        <p>對於標準現貨品或簡單設備，URS 可以是：採購申請單、廠商型錄頁、功能規格書、或變更申請單。重要的是：系統最終必須對照該文件進行驗證。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>一家製藥廠採購一台新型生物反應器，URS 應該由哪些部門的人共同制定？各部門應提供哪類需求？</p>
+                        <p><strong>Q2：</strong>為什麼 ISPE 說 URS 是「C&amp;Q 流程的基礎文件」？如果沒有 URS，會對後續的 FAT、IQ、OQ 造成什麼影響？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2.2 Development of URS -->
+    <div class="chapter-section" id="sec-2-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.2</div>
+            <div class="chapter-info">
+                <h2>2.2 Development of the User Requirements Specification</h2>
+                <p>URS 的制定方法 &nbsp;|&nbsp; pp. 20–22</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>2.2 Development of the User Requirements Specification</h3>
+                    <p>The URS defines the requirements that must be met for a system to be suitable for the intended purpose; it should not detail how those requirements are met. The URS is developed by a project team that includes <span class="key-term">SMEs</span> (refer to Section 6.4 for an example approval matrix). It can be revised throughout the system lifecycle.</p>
+
+                    <h3>The URS document SHOULD include:</h3>
+                    <ul>
+                        <li>Describe the intended purpose of the system</li>
+                        <li>State the requirements in verifiable terms without describing how the requirements will be met</li>
+                        <li>State the category and source of each requirement
+                            <ul>
+                                <li>Categories may include, for example:
+                                    <ul>
+                                        <li>Quality</li>
+                                        <li>Business</li>
+                                        <li>Health, Safety, and Environmental (HSE)</li>
+                                    </ul>
+                                </li>
+                                <li>Sources may include, for example:
+                                    <ul>
+                                        <li>Product and process requirements derived from:
+                                            <ul>
+                                                <li>Product and process knowledge (CQAs, CPPs, CAs)</li>
+                                                <li>GMP regulatory requirements</li>
+                                                <li>Organization/site quality requirements</li>
+                                            </ul>
+                                        </li>
+                                        <li>System Risk Assessment (includes CAs and associated CDEs)</li>
+                                        <li>Range and accuracy for any controlled parameters</li>
+                                        <li>National, local and site requirements, as applicable</li>
+                                        <li>Business, HSE, system owner, and SME requirements</li>
+                                        <li>Engineering specifications and industry standards (e.g., ASME, ASTM, ISO)</li>
+                                        <li>Project requirements document or project charter</li>
+                                        <li>Legacy system evaluations</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p>The URS should also include the following:</p>
+                    <ul>
+                        <li><span class="key-term">Data integrity</span> requirements</li>
+                        <li>Data storage/display requirements</li>
+                        <li>Alarm requirements, with identification of the critical alarms</li>
+                        <li>System automation requirements
+                            <ul>
+                                <li>If there are any connections (e.g., data archiving) and interactions (e.g., alarm initiation) to a larger automation control system, then that system can have a separate URS. There needs to be clearly defined boundaries between the systems.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="quote-box">
+                        Note: System software development and testing is outside of the scope of this Guide. Refer to ISPE GAMP&reg; 5: A Risk-Based Approach to Compliant GxP Computerized Systems.
+                    </div>
+
+                    <p>The URS, which may be further detailed during early project phases, provides the foundation for the <span class="key-term">Basis of Design (BOD)</span> and becomes a reference used to establish that a system is suitable for the intended purpose. To be suitable for the intended purpose, systems need to meet their URS.</p>
+
+                    <h3>The URS should NOT include the following information as requirements:</h3>
+                    <ul>
+                        <li>How a requirement is to be met</li>
+                        <li>Detailed design specifications</li>
+                        <li>Sequence of operations</li>
+                        <li>Generic statements (e.g., must comply with local codes, must meet all GxPs)</li>
+                        <li>General references to government/national standards (e.g., nonspecific reference to ASME code, ISO standards)</li>
+                        <li>Contractual terms and deliverables</li>
+                        <li>Unverifiable parameters</li>
+                        <li>Standard functionality of the equipment type</li>
+                    </ul>
+                    <p>Refer to Chapter 16 (Appendix 2) for an example URS template. It is the responsibility of the organization/site to designate quality impacting elements of their URS in a manner that is most appropriate for their integrated C&amp;Q process.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：URS 的三類需求分類</h4>
+                        <p>每條需求都應標明<strong>類別（Category）</strong>與<strong>來源（Source）</strong>：</p>
+                        <ul>
+                            <li><strong>品質（Quality）</strong>：與 GMP 法規、CQA、CPP 相關的要求</li>
+                            <li><strong>商業（Business）</strong>：產能、效率、成本相關要求</li>
+                            <li><strong>HSE</strong>：健康、安全、環境相關要求</li>
+                        </ul>
+                        <p>來源標註的重要性：若 QU（品質單位）已核准 CQA/CPP 來源文件，則 URS 可不需 QU 再次核准（見 2.3 節）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：CDE 與 CA 是什麼？</h4>
+                        <p><strong>CA（關鍵特性, Critical Attribute）</strong>：系統的關鍵性質或特徵，若偏離可能影響產品品質。</p>
+                        <p><strong>CDE（關鍵設計要素, Critical Design Element）</strong>：系統中用來控制或達到 CA 的具體設計元素。來自系統風險評估（SRA）。</p>
+                        <p>URS 應引用 SRA 的輸出結果（包含 CA 和相關 CDE），確保設計要求有科學風險依據。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要對比：URS 應包含 vs. 不應包含</h4>
+                        <table style="margin-top:0.5rem;">
+                            <thead>
+                                <tr>
+                                    <th style="width:50%">應包含 (SHOULD)</th>
+                                    <th style="width:50%">不應包含 (SHOULD NOT)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>「純水系統出口電導率應 ≤ 1.3 μS/cm」</td>
+                                    <td>「純水系統應使用 RO + EDI + 迴流設計」</td>
+                                </tr>
+                                <tr>
+                                    <td>「CIP 溫度應達到 80°C 並維持 30 分鐘」</td>
+                                    <td>「CIP 應符合 GxP 要求」（過於通用）</td>
+                                </tr>
+                                <tr>
+                                    <td>「壓縮空氣含油量應 ≤ 0.01 mg/m³」</td>
+                                    <td>「壓縮空氣應符合 ISO 8573 標準」（無指定等級）</td>
+                                </tr>
+                                <tr>
+                                    <td>「系統應具備 21 CFR Part 11 稽核追蹤功能」</td>
+                                    <td>「操作順序：步驟一、步驟二…」</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top:0.5rem;"><strong>關鍵原則</strong>：URS 說「要什麼結果」，不說「怎麼達到」。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：餐廳點餐 vs. 廚房食譜</h4>
+                        <p>URS 是顧客的點餐單：「我要一份不加洋蔥、熟度五分的牛排」——這是<em>需求</em>，是可驗證的。廚師如何備料、用什麼鍋、醃幾分鐘，那是廚房的<em>設計規格（DS）</em>，不屬於 URS。把「使用鑄鐵鍋煎」寫進顧客點餐單，就是混淆了 URS 與 DS 的邊界。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>CDMO 實務應用：制定 URS 的挑戰</h4>
+                        <p>在 CDMO（委託開發製造服務）環境中，URS 制定特別複雜，因為：</p>
+                        <ul>
+                            <li><strong>客戶知識不足</strong>：客戶可能對自己產品的 CPP 尚未完全確立（早期臨床階段），URS 需預留彈性。</li>
+                            <li><strong>多產品共用設備</strong>：同一系統服務多個客戶的不同分子，URS 需涵蓋最嚴格的需求（worst case）。</li>
+                            <li><strong>資訊保密</strong>：客戶 CQA/CPP 屬商業機密，CDMO 需在 NDA 架構下取得足夠資訊以寫出正確 URS。</li>
+                            <li><strong>實務建議</strong>：建立標準 URS 範本（含品質需求主清單），再依各客戶/產品需求調整，可大幅提升效率並確保一致性。</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>以下哪些屬於合格的 URS 需求，哪些不符合規定？（a）「滅菌釜內腔溫度均一性應在設定點 ±1°C 以內」；（b）「滅菌釜應採用重力排氣式設計」；（c）「必須符合所有適用法規」；（d）「SIP 溫度 122°C 應維持至少 30 分鐘」。</p>
+                        <p><strong>Q2：</strong>軟體與電腦化系統的開發和測試為何不在本指南範圍內？應參考哪份文件？這對 URS 的撰寫有何影響？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2.3 Approval -->
+    <div class="chapter-section" id="sec-2-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.3</div>
+            <div class="chapter-info">
+                <h2>2.3 Approval of URS and Changes Post-Approval</h2>
+                <p>URS 的核准與核准後變更 &nbsp;|&nbsp; p. 22</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>2.3 Approval of User Requirements Specification and Changes Post-Approval</h3>
+                    <p>The URS should be approved by the <span class="key-term">system owner</span>, an appropriate <span class="key-term">SME</span>, and the <span class="key-term">Quality Unit</span>. However, if the Quality Unit has already approved the source documents from which the quality requirements within the URS were obtained, then the Quality Unit does not need to approve the URS. Refer to Section 6.4 for an example document approval matrix.</p>
+                    <p>The URS should be updated through the <span class="key-term">system lifecycle</span> (from development through sustaining operations) until decommissioning of the system. After approval of the URS, changes or additions with the potential to impact product quality are evaluated against the <span class="key-term">System Risk Assessment</span> (refer to Chapter 4) to confirm if risks are acceptable or to determine if additional risk controls are required. Changes to the URS are performed through <span class="key-term">change management</span> (refer to Chapter 12).</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：URS 的核准機制</h4>
+                        <p>URS 通常需要三方簽核：</p>
+                        <ul>
+                            <li><strong>系統擁有者（System Owner）</strong>：通常是工程或製造部門主管，對系統的商業和技術需求負責</li>
+                            <li><strong>SME（主題專家）</strong>：視系統類型，可能是製程工程師、設備工程師、自動化工程師等</li>
+                            <li><strong>Quality Unit（品質單位）</strong>：確認品質需求已被正確納入</li>
+                        </ul>
+                        <p><strong>例外條款</strong>：若 QU 已核准 CQA/CPP 等來源文件（例如製程描述文件），則 URS 可免 QU 核准。這是風險比例原則的體現。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：URS 是活文件</h4>
+                        <p>URS 在系統整個生命週期中都應保持更新，直到系統退役（Decommissioning）。核准後若有變更：</p>
+                        <ul>
+                            <li>凡可能影響產品品質的變更 → 須透過<strong>系統風險評估（SRA）</strong>評估影響</li>
+                            <li>所有變更 → 須走<strong>變更管理（Change Management）</strong>流程（見 Chapter 12）</li>
+                        </ul>
+                        <p>這確保 URS 始終反映系統的實際設計意圖，並與 QRM 掛鉤。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>一個純水系統在商業生產兩年後，業主希望將產水量從 500 L/hr 提升至 800 L/hr。這個變更是否需要更新 URS？應走哪些流程？</p>
+                        <p><strong>Q2：</strong>何種情況下，QU 可以不需要核准 URS？這個例外條款的設計意圖是什麼？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2.4 Legacy Systems -->
+    <div class="chapter-section" id="sec-2-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.4</div>
+            <div class="chapter-info">
+                <h2>2.4 Legacy Systems</h2>
+                <p>遺留系統的處理 &nbsp;|&nbsp; p. 22</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>2.4 Legacy Systems</h3>
+                    <p>For a <span class="key-term">legacy system</span> without a documented URS, a URS for any scope changes may be developed and incorporated into the <span class="key-term">C&amp;Q Plan</span> (see Chapter 6) or change record.</p>
+                    <p>Based on the magnitude of the change and the extent of the C&amp;Q required, it may be beneficial to create a new URS. Refer to Chapter 14 for implementation recommendations.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Legacy System（遺留系統）的定義與挑戰</h4>
+                        <p><strong>遺留系統</strong>是指在本指南方法論建立之前就已運行、且缺乏完整 C&amp;Q 文件（包括 URS）的既有系統。常見情境：</p>
+                        <ul>
+                            <li>工廠收購或合併時繼承的設備</li>
+                            <li>舊版指南（如第一版 ISPE Vol.5）時期安裝的系統</li>
+                            <li>當時認為不需要正式文件的系統，後來被重新分類為 Direct Impact</li>
+                        </ul>
+                        <p><strong>處理原則</strong>：不需要補全所有歷史文件，但針對任何範圍變更，應制定對應的 URS，並納入 C&amp;Q Plan 或變更記錄中。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：老屋翻新的設計圖</h4>
+                        <p>遺留系統就像一棟沒有原始建築圖紙的老房子。你不需要重新繪製整棟房子的圖，但如果你要加蓋一間房間（範圍變更），就必須為那個新的部分畫設計圖，並且確保它符合現行建築法規（當前 GMP 要求）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：何時應建立全新 URS？</h4>
+                        <p>若變更規模很大（例如：系統全面升級、從批次改為連續製程），建立一份全新的 URS 往往比在舊文件上修改更有效率、也更清晰。詳見 Chapter 14（實施建議）。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>一家公司於 2008 年安裝了一套純蒸汽系統，當時沒有制定 URS。現在要更換熱交換器並新增一個使用點，應如何處理 URS 文件？</p>
+                        <p><strong>Q2：</strong>遺留系統的重新評估應參考本指南哪個章節？決定是否建立全新 URS 的關鍵因素是什麼？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CHAPTER 3 DIVIDER ===== -->
+    <div class="chapter-section" id="sec-3-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3</div>
+            <div class="chapter-info">
+                <h2>Chapter 3 — System Classification</h2>
+                <p>第三章：系統分類 &nbsp;|&nbsp; pp. 23–26</p>
+            </div>
+        </div>
+
+        <!-- 3.1 Introduction -->
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.1 Introduction</h3>
+                    <p>This Guide presents an approach for classifying systems into two categories depending on the system capability to impact product quality. <span class="key-term">System classification</span> establishes whether a system is commissioned and qualified or only commissioned, as follows:</p>
+                    <ul>
+                        <li><span class="key-term">Direct impact systems</span> are commissioned and qualified</li>
+                        <li><span class="key-term">Not direct impact systems</span> are commissioned</li>
+                    </ul>
+                    <div class="quote-box">
+                        Note: In the previous edition of this Baseline® Guide, component classification could be carried out as a subset of system classification. <strong>Component classification is no longer necessary</strong> since the System Risk Assessment (as described in Chapter 4) identifies CDEs for the system in a more efficient manner.
+                    </div>
+                    <p>For systems that are not direct impact, the scope of commissioning is determined by SMEs and is based on the business and HSE criticality of the system. For example, a chilled water system serving an administrative building (not direct impact) may be balanced only. Meanwhile, a chilled water system (not direct impact) serving direct impact process equipment may be balanced, with the balancing confirmed at the minimum and maximum design flow rates to ensure reliable system performance during operation.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：兩類系統分類</h4>
+                        <p>ISPE Vol.5 第二版將系統分為兩類（取代舊版的三類）：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>分類</th>
+                                    <th>英文</th>
+                                    <th>C&amp;Q 要求</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>直接衝擊系統</td>
+                                    <td>Direct Impact System</td>
+                                    <td>試車（C）+ 確效（Q）</td>
+                                </tr>
+                                <tr>
+                                    <td>非直接衝擊系統</td>
+                                    <td>Not Direct Impact System</td>
+                                    <td>僅試車（C）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top:0.5rem;">這個二分法的核心問題是：<strong>「這個系統的故障是否直接影響最終產品品質或病人安全？」</strong></p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要變更：元件分類（Component Classification）已廢除</h4>
+                        <p>舊版（第一版）ISPE Vol.5 允許在系統分類之後，進一步對系統內的元件進行分類（Critical / Non-critical）。</p>
+                        <p><strong>第二版已取消此做法</strong>，理由是：系統風險評估（SRA，第四章）以更有效率的方式識別出 CDE（關鍵設計要素），直接替代了元件分類的功能。</p>
+                        <p>換言之：SRA 做得更細、更有科學依據，不需要再額外做元件分類這個中間步驟。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：機場管制 vs. 停車場</h4>
+                        <p>機場的跑道燈光系統（直接影響飛機起降安全）= Direct Impact，需要嚴格的試車 + 確效。機場停車場的照明系統（不影響飛機安全）= Not Direct Impact，只需要基本試車（燈能亮就好）。兩者都是「燈光系統」，但因衝擊程度不同，監管要求完全不同。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>一套服務注射劑填充間的 HVAC 系統，與一套服務倉庫的 HVAC 系統，分類結果會相同嗎？為什麼？</p>
+                        <p><strong>Q2：</strong>為什麼 ISPE 第二版取消了元件分類？SRA（系統風險評估）如何替代了這個功能？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3.2 System Boundaries -->
+    <div class="chapter-section" id="sec-3-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2</div>
+            <div class="chapter-info">
+                <h2>3.2 System Boundaries</h2>
+                <p>系統邊界的定義 &nbsp;|&nbsp; pp. 23–24</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.2 System Boundaries</h3>
+                    <p>Projects are commonly divided up into systems to facilitate construction management, document collation, turnover, and C&amp;Q. <span class="key-term">System boundaries</span> are markings on design drawings to distinguish systems from one another; this includes all components and piping to logically define what is included and what is not included within the system. System boundaries should be defined and documented early on in the project (at the <span class="key-term">BOD</span> phase) to enable development of the systems list and subsequent execution of System Risk Assessments. The systems are usually listed in the <span class="key-term">C&amp;Q Plan</span> (refer to Chapter 6). System boundaries should be defined such that the systems cover the entirety of the project scope; this is typically documented in the system <span class="key-term">Process and Instrumentation Diagram (P&amp;ID)</span> or <span class="key-term">Process Flow Diagram (PFD)</span>.</p>
+                    <p>The scope of supply from vendors is often used as the basis for defining system boundaries; however, these boundaries should be carefully reviewed as there may be benefits in defining the boundaries differently. For example, boundary considerations for a direct impact compressed air system are as follows:</p>
+                    <ul>
+                        <li>A <span class="key-term">Point of Use (POU)</span> filter is typically outside the vendor scope of supply for a compressed air system but may or may not be included in the system boundaries.</li>
+                        <li>The POU filter could be included within the boundaries for the compressed air distribution system. All compressed air testing and verification activities would be part of the compressed air system.</li>
+                        <li>Alternatively, the POU filter could be included in the process system for which the air is being supplied to. All compressed air testing and verification activities for the POU filter would then be part of the process system.</li>
+                    </ul>
+                    <p>During the early stages of a project, system boundaries may also be subdivided to facilitate development of C&amp;Q documentation by different suppliers. For example, the URS for a compressed air system can include generation and distribution sections, each of which may have its own set of C&amp;Q documentation.</p>
+                    <p>The optimum approach for the project should be evaluated and then defined in the <span class="key-term">C&amp;Q Plan</span>. In the compressed air system example discussed earlier, it may be simpler to provide a URS/C&amp;Q package for the generation system from one supplier and a separate URS/C&amp;Q package for the storage and distribution system that is built on-site by a separate supplier.</p>
+                    <div class="quote-box">
+                        Regardless of the C&amp;Q documentation strategy, systems need to meet their URS.
+                    </div>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：系統邊界的定義</h4>
+                        <p><strong>系統邊界（System Boundaries）</strong>是在設計圖（P&amp;ID 或 PFD）上標示的範圍，明確界定：</p>
+                        <ul>
+                            <li><strong>哪些設備、管道、儀表屬於這個系統</strong>（included）</li>
+                            <li><strong>哪些不屬於這個系統</strong>（excluded）</li>
+                        </ul>
+                        <p>邊界應在 <strong>BOD（設計基準）階段</strong>就定義清楚，並列入 C&amp;Q Plan 的系統清單中。</p>
+                        <p>邊界定義直接影響：</p>
+                        <ul>
+                            <li>系統風險評估的範圍</li>
+                            <li>IQ/OQ 測試的範圍</li>
+                            <li>文件整包（C&amp;Q package）的責任歸屬</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：P&amp;ID 與 PFD 的差異</h4>
+                        <p><strong>P&amp;ID（管道與儀表圖）</strong>：顯示所有管道、儀表、控制閥、設備連接關係，是系統邊界標示的主要圖面，細節程度高。</p>
+                        <p><strong>PFD（製程流程圖）</strong>：顯示物料流向與主要設備，較概念性，用於早期設計階段。</p>
+                        <p>系統邊界通常以<strong>雲線（cloud/bubble）</strong>或<strong>邊界線</strong>標示在 P&amp;ID 上。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：POU 過濾器的歸屬問題</h4>
+                        <p>壓縮空氣末端使用點（POU）過濾器就像公寓大樓的電錶：它可以屬於「大樓公共系統」，也可以屬於「個別住戶系統」——兩種做法都合理，但必須明確選擇一種，不能模糊。ISPE 的核心訊息：<strong>邊界怎麼劃不是最重要的，重要的是必須清楚說明並記錄在 C&amp;Q Plan 中</strong>。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>實務警示：廠商供貨範圍 ≠ 系統邊界</h4>
+                        <p>很多工程師直接用廠商的供貨範圍（Vendor Scope of Supply）當系統邊界，這可能造成問題：</p>
+                        <ul>
+                            <li>POU 過濾器、管道接頭、控制面板等可能落在供貨範圍之外，但功能上屬於同一系統</li>
+                            <li>若邊界定義不清，驗證文件會出現「空白地帶」——沒有人負責的設備</li>
+                        </ul>
+                        <p>建議：以<strong>功能完整性</strong>為原則定義邊界，再對照廠商供貨範圍調整。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>CDMO 實務應用：多供應商系統的邊界管理</h4>
+                        <p>在 CDMO 新建廠或擴建案中，壓縮空氣系統往往由多個供應商分段建造（主機組 + 廠內管路 + POU 過濾器）。建議做法：</p>
+                        <ul>
+                            <li>在 C&amp;Q Plan 中明確列出每個子系統的邊界，並標示在 P&amp;ID 上</li>
+                            <li>若分拆為多個 URS/C&amp;Q 包，確保各包的邊界相接處有明確的交接驗證要求</li>
+                            <li>主系統 URS 中應說明各子系統 URS 的關係（例如：「壓縮空氣主機組 URS 見 DOC-001，配氣管路 URS 見 DOC-002」）</li>
+                            <li>無論如何分拆，<strong>所有系統最終都必須符合其 URS</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>一個注射用水（WFI）系統的 P&amp;ID 應在哪個設計階段被定義出系統邊界？邊界劃定後應記錄在哪份文件中？</p>
+                        <p><strong>Q2：</strong>若 WFI 系統的 POU 取水點被劃入製程設備系統邊界，而非 WFI 分配系統邊界，會對 IQ/OQ 測試產生什麼影響？哪種做法更合理？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3.3 Criteria for System Classification -->
+    <div class="chapter-section" id="sec-3-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3</div>
+            <div class="chapter-info">
+                <h2>3.3 Criteria for System Classification — Table 3.1 (Q1–Q8)</h2>
+                <p>系統分類判定標準 &nbsp;|&nbsp; pp. 24–26</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.3 Criteria for System Classification</h3>
+                    <p>This Guide presents criteria for system classification that consist of <span class="key-term">eight questions</span>; a <strong>YES response to at least one question</strong> indicates that the system is a <span class="key-term">direct impact system</span>. Table 3.1 lists the questions that can be used to determine system classification for a given system.</p>
+                    <div class="quote-box">
+                        These criteria should be used to inform a judgment based on a comprehensive understanding of the product, process, and the nature of the system. They should not be used to replace the exercise of informed judgment by appropriately qualified personnel.
+                    </div>
+
+                    <h3>Table 3.1: Criteria for System Classification</h3>
+                    <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:8%">No.</th>
+                                <th style="width:35%">Question</th>
+                                <th style="width:57%">Additional Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="q-badge">Q1</span></td>
+                                <td>Does the system contain CAs/CDEs or perform functions that serve to meet one or more process requirements (CQAs) including CPPs?</td>
+                                <td>
+                                    <ul>
+                                        <li>There are two inputs to this question: product and process knowledge (CQAs and CPPs)</li>
+                                        <li>If the system controls or monitors a CPP, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q2</span></td>
+                                <td>Does the system have direct contact with the product or process stream and does such contact have the potential to impact the final product quality or pose a risk to the patient?</td>
+                                <td>
+                                    <ul>
+                                        <li>Risk factors to consider:
+                                            <ul>
+                                                <li>GMP requirement that product contact materials are non-reactive, non-additive, and non-absorptive such that the safety, identity, strength, quality, or purity of the drug product is not affected</li>
+                                                <li>Whether the materials that contact the manufacturing process can corrode and impart corrosion products into the manufacturing process</li>
+                                            </ul>
+                                        </li>
+                                        <li>If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q3</span></td>
+                                <td>Does the system provide an excipient or produce an ingredient or solvent (e.g., WFI) and could the quality (and compliance with the required specifications thereof) of this substance impact the final product quality or pose a risk to the patient?</td>
+                                <td>
+                                    <ul>
+                                        <li>Risk factors to consider:
+                                            <ul>
+                                                <li>Whether the excipient, ingredient, or solvent needs to be of defined requirements in order to produce a quality product</li>
+                                                <li>Whether the excipient, ingredient, or solvent can introduce excipients into the process stream (e.g., microbial contamination, corrosion products, residues from improper cleaning of the system)</li>
+                                            </ul>
+                                        </li>
+                                        <li>If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q4</span></td>
+                                <td>Is the system used in cleaning, sanitizing, or sterilizing, and could malfunction of the system result in failure to adequately clean, sanitize, or sterilize such that a risk to the patient would result?</td>
+                                <td>
+                                    <ul>
+                                        <li>Risk factors to consider:
+                                            <ul>
+                                                <li>Whether proper functioning of cleaning, sanitizing, and sterilizing systems is critical to product quality (YES in most cases)</li>
+                                                <li>Whether the quality of the substance used to perform the cleaning, sanitizing, or sterilizing (e.g., WFI, purified water, pure steam, cleaning or sterilizing chemicals):
+                                                    <ul>
+                                                        <li>Imparts any impurities to the process equipment</li>
+                                                        <li>Impacts the effectiveness and repeatability of the cleaning, sanitizing, or sterilizing process</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q5</span></td>
+                                <td>Does the system establish a proper environment (e.g., nitrogen blanket, closed process, exposed filling zone air quality, maintenance of temperature, humidity when such parameter is part of the product CPPs) for the process and could failure of the system to function properly pose a risk to the patient?</td>
+                                <td>
+                                    <ul>
+                                        <li>At different stages of a process, there may be requirements for a controlled temperature, humidity, aseptic, oxygen-free, or pressurized environment; systems that provide this environment (including providing sterile air, unidirectional flow/HEPA filtered air in a clean room or nitrogen that contacts a process stream) would fall into this category</li>
+                                        <li>If failure of the system to function properly or to provide the required environment of requisite quality means that a risk to product quality exists, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q6</span></td>
+                                <td>Does the system use, produce, process, or store data used to accept or reject product, CPPs, or electronic records subject to 21 CFR Part 11 and EU GMP Vol. 4, Annex 11 or the local equivalent?</td>
+                                <td>
+                                    <ul>
+                                        <li>This criterion is aimed at firmware, software, PLC, SCADA, PCS, BAS, networks, spreadsheets, and databases</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q7</span></td>
+                                <td>Does the system provide container closure or product protection, the failure of which would pose a risk to the patient or degradation of product quality?</td>
+                                <td>
+                                    <ul>
+                                        <li>Risk factors to consider:
+                                            <ul>
+                                                <li>Whether the system provides the closure or seal</li>
+                                                <li>Whether the system controls or provides the outside environment during shipping or product movement</li>
+                                            </ul>
+                                        </li>
+                                        <li>If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="q-badge">Q8</span></td>
+                                <td>Does the system provide product identification information (e.g., lot number, expiration date, counterfeit prevention features) without independent verification or is the system used to verify this information?</td>
+                                <td>
+                                    <ul>
+                                        <li>Risk factors to consider:
+                                            <ul>
+                                                <li>Whether any packaging components, if compromised, would lead to an impact on product quality or identity</li>
+                                                <li>Systems that perform operations such as label verification of lot number/expiration date and proper packaging insert</li>
+                                            </ul>
+                                        </li>
+                                        <li>If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <p style="font-size:0.85rem; color:#555; margin-top:0.5rem;">
+                        <em>Note: BAS, Building Automation System; PCS, Process Control System; PLC, Programmable Logic Controller; SCADA, Supervisory Control and Data Acquisition.</em>
+                    </p>
+                    <p>Refer to Chapter 17 (Appendix 3) for an example system classification form. Refer to Chapter 18 (Appendix 4) for an example list of direct impact systems with typical CQAs and CPPs.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Q1–Q8 分類邏輯</h4>
+                        <p><strong>判定規則</strong>：任一題答「是（YES）」→ 直接衝擊系統（Direct Impact）。全部答「否（NO）」→ 非直接衝擊系統（Not Direct Impact）。</p>
+                        <p><strong>八個問題涵蓋的風險維度</strong>：</p>
+                        <ul>
+                            <li><strong>Q1</strong>：系統功能是否控制/監測 CQA 或 CPP？（功能關聯）</li>
+                            <li><strong>Q2</strong>：系統與產品或製程物流是否直接接觸？（接觸污染）</li>
+                            <li><strong>Q3</strong>：系統是否產製輔料、原料或溶劑？（供給品質）</li>
+                            <li><strong>Q4</strong>：系統是否用於清潔/消毒/滅菌？（清潔完整性）</li>
+                            <li><strong>Q5</strong>：系統是否建立受控環境？（環境控制）</li>
+                            <li><strong>Q6</strong>：系統是否處理用於放行判定的資料？（數據完整性）</li>
+                            <li><strong>Q7</strong>：系統是否提供容器密封或產品保護？（包裝完整性）</li>
+                            <li><strong>Q8</strong>：系統是否提供或驗證產品身分資訊？（產品標識）</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Q1–Q8 實例對照：常見系統的分類</h4>
+                        <table>
+                            <thead>
+                                <tr><th>系統</th><th>主要觸發問題</th><th>分類</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>注射用水（WFI）系統</td><td>Q3（製造溶劑）、Q2</td><td>Direct Impact</td></tr>
+                                <tr><td>SIP / 純蒸汽系統</td><td>Q4（滅菌）、Q3</td><td>Direct Impact</td></tr>
+                                <tr><td>填充間 HVAC（A/B 級）</td><td>Q5（環境控制）</td><td>Direct Impact</td></tr>
+                                <tr><td>CIP 系統</td><td>Q4（清潔）、Q3</td><td>Direct Impact</td></tr>
+                                <tr><td>SCADA/PLC（製程控制）</td><td>Q6（數據）、Q1</td><td>Direct Impact</td></tr>
+                                <tr><td>西林瓶封蓋機</td><td>Q7（容器密封）</td><td>Direct Impact</td></tr>
+                                <tr><td>標籤驗證系統</td><td>Q8（產品標識）</td><td>Direct Impact</td></tr>
+                                <tr><td>行政大樓冷凍水系統</td><td>全部為 NO</td><td>Not Direct Impact</td></tr>
+                                <tr><td>廠務純水（工業用）</td><td>視用途而定</td><td>需個案判斷</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：分類須依賴專業判斷</h4>
+                        <p>ISPE 明確聲明：Q1–Q8 是「輔助判斷的工具」，而非「機械式清單」。分類必須基於對<strong>產品、製程、系統本質</strong>的全面理解。</p>
+                        <p>例如：同樣是冷凍水系統，服務行政大樓 → Not Direct Impact；服務生物反應器冷卻套管 → 需評估 Q1（CPP 溫度控制）→ 可能是 Direct Impact。</p>
+                        <p>分類應由「具備適當資格的人員」執行——不能只靠工程師，必須有品質與製程專家參與。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：醫院分診八問</h4>
+                        <p>Q1–Q8 就像急診室的分診問卷：護士依序問「有沒有胸痛？有沒有呼吸困難？有沒有昏迷？」——只要任一項「有」，就進急救室（= Direct Impact，需完整 C&amp;Q）。全部「沒有」，才能去普通候診區（= Not Direct Impact，只需試車）。分診問卷是輔助工具，最終還是需要醫師判斷。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>CDMO 實務應用：系統分類工作坊</h4>
+                        <p>在 CDMO 新建廠案中，系統分類通常透過跨部門工作坊進行：</p>
+                        <ul>
+                            <li><strong>參與者</strong>：工程（設計）、製程開發、品質、法規事務、HSE</li>
+                            <li><strong>工具</strong>：系統清單（Systems List）+ 分類表（Chapter 17 範本）+ P&amp;ID</li>
+                            <li><strong>流程</strong>：逐一對每個系統回答 Q1–Q8，記錄判定依據（特別是 YES 的原因）</li>
+                            <li><strong>常見挑戰</strong>：
+                                <ul>
+                                    <li>壓縮空氣系統：工廠壓縮空氣（Not DI）vs. 製程壓縮空氣（DI）— 邊界劃分至關重要</li>
+                                    <li>HVAC：依區域等級不同，同一建築內可能有 DI 和 Non-DI 系統並存</li>
+                                    <li>BMS/SCADA：Q6 的觸發點是「用於放行判定的數據」，需確認數據流向</li>
+                                </ul>
+                            </li>
+                            <li><strong>文件輸出</strong>：系統分類紀錄，連同 Q&amp;A 依據，存入 C&amp;Q Plan 附件</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>一套氮氣保護系統（在原料藥結晶槽上方提供氮氣保護，防止氧化），應對 Q1–Q8 哪幾個問題回答「YES」？最終分類為何？請說明理由。</p>
+                        <p><strong>Q2：</strong>一套倉庫溫濕度監控系統（監測成品儲存條件，數據用於批次放行決策），主要觸發哪個問題（Q1–Q8）？這與一般倉庫空調系統有何本質差異？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>本節重點摘要 Section Summary</h3>
+        <ul>
+            <li><strong>URS</strong> 是 C&amp;Q 的基礎文件，整合 CQA、CPP、法規要求與組織品質需求，說明系統「要做什麼」而非「怎麼做」。</li>
+            <li>URS <strong>應包含</strong>：意圖目的、可驗證需求、類別與來源標示（品質/商業/HSE）、數據完整性、關鍵警報等；<strong>不應包含</strong>：設計規格、操作順序、通用聲明、不可驗證參數。</li>
+            <li>URS 須由系統擁有者、SME 及品質單位核准，並在系統整個生命週期中維持更新；變更須走 SRA 評估與變更管理流程。</li>
+            <li><strong>遺留系統</strong>若無原始 URS，應針對任何範圍變更制定 URS，並納入 C&amp;Q Plan 或變更記錄。</li>
+            <li>系統分類採用<strong>兩類制</strong>：直接衝擊系統（C+Q）vs. 非直接衝擊系統（C only）；第二版已廢除元件分類，由 SRA 替代。</li>
+            <li><strong>系統邊界</strong>應在 BOD 階段定義，記錄於 P&amp;ID/PFD，並列入 C&amp;Q Plan；廠商供貨範圍不等於系統邊界。</li>
+            <li><strong>Q1–Q8</strong> 提供系統分類的判定架構：任一題 YES → Direct Impact；須結合專業判斷，不能機械式套用。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- Footer -->
+<div class="main-footer">
+    <p>ISPE Baseline&reg; Guide: Commissioning and Qualification, 2nd Edition (2019)</p>
+    <p>Chapter 2: User Requirements Specification | Chapter 3: System Classification | Pages 19–26</p>
+    <p style="opacity:0.6; font-size:0.8rem;">Educational material — for training purposes only. All content &copy; ISPE 2019.</p>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+(function() {
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

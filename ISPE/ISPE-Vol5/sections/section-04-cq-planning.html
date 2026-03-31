@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.5 - Chapter 6: C&amp;Q Planning</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+.nav-num {
+    width: 24px; height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a3a2a;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a3a2a; }
+
+.chapter-body .container, .chapter-body .main-container {
+    max-width: 100%; padding: 0; margin: 0;
+}
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e6f9f0, #d0f0e0);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box,
+.key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* ===== NOTE BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* ===== APPLICATION BOX (Blue) ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.55rem 0.7rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.83rem;
+}
+tr:nth-child(even) { background: #f7faf8; }
+.table-container { overflow-x: auto; margin: 1rem 0; }
+.approval-table th { background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%); color: white; text-align: center; font-size: 0.8rem; }
+.approval-table td { text-align: center; font-size: 0.85rem; }
+.approval-table td:first-child { text-align: left; font-weight: 500; }
+.approval-table .group-header { background: #e8f5e9; font-weight: 600; color: #1a3a2a; text-align: center; font-size: 0.82rem; }
+.approval-table .a-mark { color: #1a7a3a; font-weight: 700; font-size: 1rem; }
+.approval-table .na-mark { color: #999; font-size: 0.8rem; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f5e9 0%, #d0f0e0 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION SUMMARY (yellow) ===== */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-left: 4px solid #f6ad55;
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary p, .section-summary li { font-size: 0.92rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.35rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 4px; font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #ffe0b2; color: #e65100; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: #27ae60; color: white; border: none;
+    border-radius: 50%; cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1, .top-header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header {
+        background: #1a3a2a !important;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .chapter-section {
+        break-inside: avoid; page-break-inside: avoid;
+        box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem;
+    }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header" id="top">
+    <h1>ISPE Baseline Guide Vol.5 — Commissioning and Qualification (2nd Edition)</h1>
+    <div class="subtitle">Chapter 6: C&amp;Q Planning</div>
+    <div class="page-info">Pages 41–48 &nbsp;|&nbsp; Chapter 6 of ISPE Baseline Vol.5</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+    <div class="learning-objectives">
+        <h3>學習目標 (Learning Objectives)</h3>
+        <ol>
+            <li>理解 <strong>C&amp;Q Plan（確效與委試計畫）</strong> 的目的、效益，以及在整體專案生命週期中的角色與位置。</li>
+            <li>掌握 C&amp;Q Plan 的<strong>審批時序規則</strong>（計畫 → 測試指令 → 執行），並了解為何此順序在業界常被違反。</li>
+            <li>了解 C&amp;Q Plan 的<strong>核心內容要素</strong>：範疇、策略、文件管理、測試描述，以及差異處理程序。</li>
+            <li>熟悉 <strong>Table 6.1 核准矩陣</strong>的架構與使用方式，包括事前審批者（Pre-Approver）與事後審批者（Post-Approver）的區別。</li>
+            <li>將 C&amp;Q Planning 的原則應用於 CDMO 實務場景，例如新充填線安裝或公用系統擴建專案。</li>
+        </ol>
+    </div>
+
+    <!-- SECTION TOC -->
+    <div class="toc">
+        <h3>本章節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec-6-1">6.1 Introduction</a>
+            <a href="#sec-6-1-1">6.1.1 Purpose &amp; Benefits</a>
+            <a href="#sec-6-2">6.2 C&amp;Q Planning Approach</a>
+            <a href="#sec-6-2-1">6.2.1 Timing</a>
+            <a href="#sec-6-2-2">6.2.2 Lifecycle</a>
+            <a href="#sec-6-2-3">6.2.3 Elements</a>
+            <a href="#sec-6-3">6.3 C&amp;Q Plan</a>
+            <a href="#sec-6-3-1">6.3.1 Scope</a>
+            <a href="#sec-6-3-2">6.3.2 Strategy</a>
+            <a href="#sec-6-3-3">6.3.3 Documentation</a>
+            <a href="#sec-6-3-4">6.3.4 Contents</a>
+            <a href="#sec-6-4">6.4 Approval Matrix</a>
+        </div>
+    </div>
+
+    <!-- ===================== 6.1 INTRODUCTION ===================== -->
+    <div class="chapter-section" id="sec-6-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.1</div>
+            <div class="chapter-info">
+                <h2>Introduction</h2>
+                <p>Why planning is essential — C&amp;Q as a managed engineering activity from URS to acceptance</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.1 Introduction</h3>
+                    <p><span class="key-term">C&amp;Q</span> is a planned, documented, and managed engineering activity that starts with the establishment of the <span class="key-term">URS</span> and continues to start-up and acceptance and release of systems. A well-planned program is essential and leads to an efficient, "right the first time", and cost-effective C&amp;Q effort; the result is the delivery of systems that operate in a safe manner, meet established design requirements and stakeholder expectations, and are suitable for the intended purpose.</p>
+                    <p>Planning provides the ties between process understanding and system design; it focuses qualification efforts to enhance the likelihood that the system will deliver quality products while maintaining a controlled operating state. It also acts as a means for communication between members of the multidisciplinary project team.</p>
+                    <p>This chapter focuses on the formal <span class="key-term">C&amp;Q Plan</span>. There are other plans that can be generated, such as overall project plans or cleanliness plans, which have great value but are not covered in this chapter. Refer to Chapter 21 (Appendix 7) for a listing of supporting plans and general concepts for each.</p>
+                    <p>Regulatory expectations for C&amp;Q planning are described in Chapter 15 (Appendix 1).</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>C&amp;Q 的本質：有計畫的工程活動</h4>
+                        <p>ISPE 強調 C&amp;Q（Commissioning and Qualification，委試與確效）不是一個「做完測試就結束」的程序，而是一個<strong>有計畫、有文件、有管理</strong>的工程活動，從 URS 寫好的那一天起，一直延伸到系統正式接收釋放為止。</p>
+                        <p>這個視角很重要：它把 C&amp;Q 定位為<strong>工程專案的一部份</strong>，而不是質量部門在最後補做的文書工作。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：蓋房子的施工計畫</h4>
+                        <p>C&amp;Q Planning 就像建設公司在動工前要先做的「施工計畫書」。</p>
+                        <p>你不能邊做邊想：「今天澆混凝土，明天再決定要不要驗收」。每一道工序都要排程、明確誰負責、何時完成、驗收標準是什麼。</p>
+                        <p>C&amp;Q Plan 就是那份施工計畫書，確保整個團隊（工程、品保、生產、廠商）都照同一份劇本走。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>注意：本章聚焦正式 C&amp;Q Plan</h4>
+                        <p>書中提醒讀者，還有很多其他計畫（例如清潔計畫、整體專案計畫），但本章只討論正式的 <strong>C&amp;Q Plan</strong>。其他計畫請參考 Chapter 21（Appendix 7）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.1.1 PURPOSE AND BENEFITS ===================== -->
+    <div class="chapter-section" id="sec-6-1-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.1.1</div>
+            <div class="chapter-info">
+                <h2>Purpose and Benefits</h2>
+                <p>Integrated schedule, critical path method, cross-team communication, and stakeholder expectations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.1.1 Purpose and Benefits</h3>
+                    <p>A well-conceived and executed <span class="key-term">C&amp;Q Plan</span> can greatly facilitate a timely and cost-effective qualification effort. It is essential to have excellent communication, planning, and coordination between the Quality Unit, vendors, operations, automation, engineering, construction, commissioning, and qualification personnel, to name a few, to deliver a project on time, within budget, and meeting all expectations. A C&amp;Q plan facilitates this communication.</p>
+                    <p>An important secondary goal of the C&amp;Q Plan is to foster an <strong>interdisciplinary team approach</strong> to C&amp;Q. Well-planned project logistics are crucial to the success of every project. A well-coordinated effort leads to a high quality, effective, and efficient C&amp;Q project.</p>
+                    <p>A single, integrated, overall schedule should be developed with input from the entire project team. This schedule should cover all systems (utilizing defined system boundaries as discussed in Section 3.2) and phases of the projects lifecycle from construction to Process Validation/PPQ completion. This schedule should be updated and issued regularly. These updates should not drive a C&amp;Q Plan revision, but the C&amp;Q Plan should identify how the schedule updates will be captured and communicated.</p>
+                    <p>An integrated schedule, using a <span class="key-term">critical path method</span>, can increase the awareness of dependent activities and provide a clear understanding of the critical path. Including all project team members in the schedule development will engage the team members and foster better planning. All team members should comprehend the schedule format. Ordering long delivery time items early can help timelines, but consideration should be made to ensure the process requirements for those items are understood and included in the requisition. Understanding when to engage support for C&amp;Q helps to support the success of the project.</p>
+                    <p>A well-planned effort can ensure that the user, business, regulatory, and patient expectations are met. All efforts to ensure the system is suitable for the intended purpose (e.g., start-up, balancing, trial runs, establishing maintenance programs) should be included in the planning phase since this is where the formality of the documentation can be established. These expectations include:</p>
+                    <ul>
+                        <li>Systems are delivered on time and within budget</li>
+                        <li>Systems meet approved user requirements and are suitable for the intended purpose</li>
+                        <li>Stakeholder needs, including speed to market, are met</li>
+                        <li>Products produced from the systems meet defined quality standards</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>C&amp;Q Plan 的三大效益</h4>
+                        <ul>
+                            <li><strong>跨部門溝通橋樑</strong>：讓品保、廠商、生產、自動化、工程、施工等不同團隊，有共同遵循的計畫文件</li>
+                            <li><strong>跨學科團隊整合</strong>：打破部門壁壘，建立一個整合性的 C&amp;Q 專案團隊</li>
+                            <li><strong>利害關係人期望管理</strong>：準時交付、符合預算、符合預期用途、確保產品品質</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>關鍵術語：Critical Path Method（關鍵路徑法）</h4>
+                        <p><strong>CPM</strong> 是專案管理中常用的排程技術。它找出專案中最長的依賴活動鏈，這條鏈上任何一個活動的延遲，都會直接導致整個專案延遲。</p>
+                        <p><strong>在 C&amp;Q 中的意義</strong>：例如，HVAC 調試必須在無菌充填區 IQ 之前完成；IQ 完成才能做 OQ；OQ 完成才能做 PQ。這條鏈就是關鍵路徑。提早辨識它，才能及早採購長交期設備、安排人力資源。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：排程失控的後果</h4>
+                        <p>想像一條填充線安裝專案，業主希望 10 月開始 PQ，但沒有人提前排好關鍵路徑：結果 8 月才發現水系統的 EP（認可廠商評估）還沒做，設備還沒到廠，OQ 就不能開始。</p>
+                        <p>Critical Path Method 的目的，就是讓這種「到最後才發現問題」的狀況，在計畫階段就被發現和處理。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>重點：排程更新 ≠ 計畫修訂</h4>
+                        <p>ISPE 特別指出：定期更新排程是正常的，但<strong>排程更新不應觸發 C&amp;Q Plan 的版本修訂</strong>。C&amp;Q Plan 應說明排程更新如何被紀錄與傳達，而非每次更新排程就重新審批計畫。這是很實用的操作建議。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.2 C&Q PLANNING APPROACH ===================== -->
+    <div class="chapter-section" id="sec-6-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2</div>
+            <div class="chapter-info">
+                <h2>C&amp;Q Planning Approach</h2>
+                <p>Level of planning based on project size, complexity, and risk — when a separate C&amp;Q Plan is needed</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.2 C&amp;Q Planning Approach</h3>
+                    <p>The amount of planning, documentation, reporting, and level of detail of the <span class="key-term">C&amp;Q Plan</span> should be based on expectations of the organization/site, size and complexity of the system or project, and the potential impact on product quality and patient safety.</p>
+                    <p>A C&amp;Q Plan should not repeat details that are in other documents but needs to capture the organization of those documents in order to facilitate an efficient project execution.</p>
+                    <p>A <strong>separate C&amp;Q Plan is not always necessary</strong>. Aspects of C&amp;Q planning can be included with other documents, such as a validation plan or change control. For example, the simple change of adding a small system would not need a separate C&amp;Q Plan; the requirements could be incorporated into a change control plan. More complex systems would benefit from a separate C&amp;Q Plan, for example, the installation of a filling line with terminal sterilization and secondary packaging or the doubling in capacity of a manufacturing site including additional utilities to support the expansion.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>計畫深度應與專案規模成比例</h4>
+                        <p>ISPE 採取風險比例原則（risk-proportionate approach）：計畫的詳盡程度取決於：</p>
+                        <ul>
+                            <li>組織/廠址的期望（公司內規）</li>
+                            <li>系統或專案的大小與複雜度</li>
+                            <li>對產品品質和病患安全的潛在影響</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>什麼情況需要獨立的 C&amp;Q Plan？</h4>
+                        <p><strong>不需要獨立計畫（納入變更管制即可）：</strong><br>新增一台小型輔助設備（例如，更換一台蠕動泵）</p>
+                        <p><strong>需要獨立 C&amp;Q Plan：</strong></p>
+                        <ul>
+                            <li>新安裝含最終滅菌和二次包裝的充填線</li>
+                            <li>廠址產能倍增，含公用系統擴建（WFI、純蒸汽、潔淨空調）</li>
+                        </ul>
+                        <p>判斷標準：專案越複雜、影響越大，越需要一份獨立的正式計畫文件來統籌管理。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>C&amp;Q Plan 不應重複其他文件</h4>
+                        <p>計畫的功能是「組織文件架構」，而非「複製文件內容」。它告訴讀者「哪個文件在哪裡、誰負責、什麼時候要完成」，而不是把 URS 或 SRA 的內容再抄一遍。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.2.1 TIMING ===================== -->
+    <div class="chapter-section" id="sec-6-2-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2.1</div>
+            <div class="chapter-info">
+                <h2>Timing of C&amp;Q Plan</h2>
+                <p>The approval sequence rule: C&amp;Q Plan approved BEFORE test instructions, test instructions approved BEFORE execution</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.2.1 Timing of C&amp;Q Plan</h3>
+                    <p>In an overall scheme, the creation of the C&amp;Q Plan falls in the process map as shown in Figure 1.1 (Chapter 1).</p>
+                    <p>It is important to note that C&amp;Q planning begins <strong>prior to</strong> the creation of any formal written plans. C&amp;Q planning starts during the planning and design phase of a project and continues through project implementation. A documented strategy may be developed as a precursor to a C&amp;Q Plan, to help align team members with the process and personnel who will be responsible for C&amp;Q.</p>
+                    <p>A <span class="key-term">C&amp;Q Plan</span> should begin early in a project in the <strong>concept or early basic engineering phase</strong>.</p>
+                    <div class="quote-box">
+                        The C&amp;Q Plan needs to be <strong>approved before</strong> the respective testing documents (i.e., test instructions) are approved, and such test instructions need to be <strong>approved before</strong> test execution starts to support qualification. This is recommended for commissioning plans and test instructions.
+                    </div>
+                    <p>The C&amp;Q Plan should address how existing test documentation and test results from commissioning (including FAT, SAT, etc.) are referenced in qualification documents, as appropriate.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="note-box">
+                        <h4>審批時序規則（業界最常被違反的規定之一）</h4>
+                        <p>ISPE 明確規定了三個必須依序進行的審批步驟：</p>
+                        <ol style="margin-left:1.2rem;">
+                            <li><strong>C&amp;Q Plan 審批完成</strong>（計畫核准）</li>
+                            <li><strong>測試指令（Test Instructions）審批完成</strong>（IQ/OQ/PQ Protocol 核准）</li>
+                            <li><strong>開始執行測試</strong></li>
+                        </ol>
+                        <p>這個序列不能顛倒，更不能跳過。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>為什麼業界常違反這個規則？</h4>
+                        <p>在實際 CDMO 或設備安裝專案中，常見情況：</p>
+                        <ul>
+                            <li>設備到廠了，工程師急著「先跑一下 IQ」，Protocol 還在品保審批中</li>
+                            <li>C&amp;Q Plan 還沒最終核准，但委試工程師已開始 FAT</li>
+                            <li>為了趕上 Launch 時程，OQ 執行完才補做 Protocol 審批</li>
+                        </ul>
+                        <p>這些行為在法規稽查時，都可能被認定為<strong>程序不合規</strong>（Protocol not approved prior to execution）。一旦被 FDA 483 或 Warning Letter 點名，補救成本遠大於當初多等幾天審批的時間。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>計畫應從概念階段或基本工程初期開始</h4>
+                        <p>C&amp;Q 計畫不是在設備到廠前幾週才開始寫的文件。ISPE 建議在<strong>概念階段（Concept Phase）或基本工程初期（Early Basic Engineering）</strong>就開始規劃。</p>
+                        <p>這是因為：URS 的品質要求、系統分類結果、SRA 的 CDE 辨識，都必須在計畫階段就確定，才能定義測試的範疇與接受標準。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.2.2 LIFECYCLE ===================== -->
+    <div class="chapter-section" id="sec-6-2-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2.2</div>
+            <div class="chapter-info">
+                <h2>Lifecycle of C&amp;Q Plan</h2>
+                <p>Kept up-to-date through the project; minor departures documented in Qualification Summary Report</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.2.2 Lifecycle of C&amp;Q Plan</h3>
+                    <p>The C&amp;Q Plan is not finalized until after the risk management process has reached a point to capture the impact of product quality decisions or of establishing the CDEs.</p>
+                    <p>C&amp;Q Plans are expected to be kept up-to-date as changes to the project are made. Revisions of the C&amp;Q Plan may be necessary as new information is learned or as modifications to the design are made, e.g., changes in scope (additions or removals), timing, or identification of additional CAs/CDEs.</p>
+                    <p>Approval is recommended for these early plans and for subsequent changes made by the revision process; this ensures agreement at various stages of the C&amp;Q approach. Changes to the C&amp;Q Plan should be reviewed and approved by the original approvers (or their designate) and a <strong>revision history should be maintained</strong> of significant changes to the Plan.</p>
+                    <p>It should be noted that revisions may not always be necessary. <strong>Minor departures</strong> from the C&amp;Q Plan may be documented in the <span class="key-term">Qualification Summary Report</span> with appropriate justification and rationale, as deemed appropriate by the project team.</p>
+                    <p>At the end of a project, a written document capturing the completion and closure of the project should be created. See Chapter 8 for more details regarding acceptance and release.</p>
+                    <p>Changes to the C&amp;Q Plan should be handled under change management (as discussed in Chapter 12) to ensure that as changes are implemented, the impact to C&amp;Q efforts is addressed.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>C&amp;Q Plan 是活文件（Living Document）</h4>
+                        <p>C&amp;Q Plan 不是寫完就鎖起來的文件。隨著專案進展，當設計變更、範疇調整、新的 CDE 被辨識時，計畫需要相應更新。</p>
+                        <p>版本修訂原則：</p>
+                        <ul>
+                            <li>有重大變更 → 啟動正式版本修訂，由原核准者（或其代理人）審批</li>
+                            <li>輕微偏離 → 可記錄在 <strong>Qualification Summary Report</strong>（確效總結報告）中，加上理由說明，不一定要重改計畫</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>關鍵術語：Qualification Summary Report（確效總結報告）</h4>
+                        <p>確效總結報告是在整個確效活動完成後，彙整所有測試結果、偏差處理、執行摘要的最終報告文件。</p>
+                        <p>ISPE 允許將<strong>輕微偏離 C&amp;Q Plan 的情況</strong>記錄在這份報告中（加上說明），而不需要每次都修訂 C&amp;Q Plan。這是一個務實的彈性規定。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>計畫變更須走變更管理</h4>
+                        <p>C&amp;Q Plan 的任何修訂都應透過<strong>變更管理（Change Management，Chapter 12）</strong>處理，以確保變更對 C&amp;Q 工作的影響被適當評估和記錄。</p>
+                        <p>這防止了「私下改計畫卻沒通知品保」的情形發生。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.2.3 ELEMENTS ===================== -->
+    <div class="chapter-section" id="sec-6-2-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2.3</div>
+            <div class="chapter-info">
+                <h2>Elements to be Addressed</h2>
+                <p>Scope of testing, document source identification, coordination with overall project execution plan</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.2.3 Elements to be Addressed</h3>
+                    <p>This section is intended to be a discussion of the elements that need to be addressed as part of C&amp;Q planning, not the documents where they are captured.</p>
+
+                    <h4>6.2.3.1 Scope of Testing</h4>
+                    <p><span class="key-term">System classification</span> (as described in Chapter 3) identifies which systems require qualification. The <span class="key-term">System Risk Assessment</span> (as described in Chapter 4) identifies which elements in those systems require qualification. The URS (as described in Chapter 2) and System Risk Assessment establish the scope of testing for qualification. The equipment specifications establish the scope of testing for commissioning.</p>
+                    <p>The testing approach is based on the most efficient method to test the system and should be captured in the C&amp;Q Plan. If systems are tested separately, the C&amp;Q Plan should include a final test verifying that all systems are able to work together prior to acceptance and release. If PPQ is included in a separate plan, the linkage to the execution of that critical phase should be captured.</p>
+
+                    <h4>6.2.3.2 Identification of Document Source</h4>
+                    <p>Engineering firms, vendors, contractors, quality, engineering, and owners provide the documentation necessary for design, construction, commissioning, qualification, operation, and technical support of the systems. It is important to identify the documentation source early in the process so the impact on the testing of the system is understood and thus the quality of the documentation understood. This understanding will allow for utilization of the documentation to support qualification.</p>
+                    <p>For example, the decision should be made during planning if any FAT, construction, SAT, or commissioning testing results and documentation will be used to satisfy the requirements to declare the system qualified or suitable for the intended purpose. This decision is based on <span class="key-term">vendor assessments</span> for C&amp;Q documentation purposes (as described in Chapter 10) and the criticality of the testing. It is often desirable to minimize the amount of retesting performed.</p>
+                    <p>The C&amp;Q Plan may also address the expectations of the documentation. It should be noted that pristine documentation, i.e., documentation that has minimal errors or corrections, is not essential but the documentation needs to be easy to follow and understand.</p>
+
+                    <h4>6.2.3.3 Coordination with Overall Project Execution Plan</h4>
+                    <p>Another important aspect is working with the project manager to ensure that the planning of C&amp;Q activities, whether a separate plan or part of another plan, fits seamlessly into the overall <span class="key-term">Project Execution Plan</span>. C&amp;Q activities should be properly reflected in the Project Execution Plan at an appropriate level of detail to be able to identify interdependencies between C&amp;Q as well as to other project activities. Commissioning is normally occurring throughout construction and needs to occur when it is appropriate; e.g., commissioning the agitation system cannot be completed until it is energized.</p>
+                    <p>Having these activities in the Project Execution Plan supports:</p>
+                    <ul>
+                        <li>Coordination of test activities among C&amp;Q to prepare for FAT or SAT events</li>
+                        <li>Ability to schedule sequence of testing for multiple systems (e.g., electrical supply before energizing a system)</li>
+                        <li>Schedule review cycles for qualification documents with Quality Unit representatives</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>測試範疇的決定邏輯</h4>
+                        <p>測試範疇（Scope of Testing）由以下文件決定：</p>
+                        <ul>
+                            <li><strong>系統分類（System Classification）</strong> → 決定哪些系統需要確效（直接影響 vs 非直接影響）</li>
+                            <li><strong>系統風險評估（System Risk Assessment, SRA）</strong> → 決定系統中哪些元素需要確效（CDE 的辨識）</li>
+                            <li><strong>URS + SRA</strong> → 共同建立確效測試的範疇</li>
+                            <li><strong>設備規格</strong> → 決定委試（Commissioning）的測試範疇</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>文件來源決策（Document Source）</h4>
+                        <p>規劃階段必須決定：<strong>FAT、SAT、或委試文件是否可以用來支援確效結論？</strong></p>
+                        <p>這個決定的依據是：</p>
+                        <ul>
+                            <li>廠商評估（Vendor Assessment）的結果 → 廠商文件品質是否足夠？</li>
+                            <li>測試的關鍵性 → 是否涉及 CDE？</li>
+                        </ul>
+                        <p>目的是<strong>減少重複測試</strong>（minimize retesting）。如果 FAT 已有充分記錄，就不需要到廠再做一次相同測試。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>文件不需要完美無缺</h4>
+                        <p>ISPE 明確指出：「Pristine documentation is NOT essential.」 文件允許有更正記錄，重點是<strong>易於閱讀和理解</strong>。這是一個務實的立場，避免因過度追求「無更正文件」而浪費資源，或更糟糕地：將更正直接消除而非正式記錄。</p>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>與整體 Project Execution Plan（PEP）的協調</h4>
+                        <p>C&amp;Q 活動必須整合進整體 PEP（專案執行計畫），這樣才能：</p>
+                        <ul>
+                            <li>識別 C&amp;Q 活動與建設、採購、操作之間的相依性（interdependencies）</li>
+                            <li>合理排序多系統的測試順序（先供電，才能啟動）</li>
+                            <li>為品保文件審查排出時間窗口（QA review cycle）</li>
+                        </ul>
+                        <p>CDMO 實務上，這意味著 C&amp;Q 計畫工程師需要參加 PEP 的排程會議，而不是單獨在品保部門內部討論。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.3 C&Q PLAN ===================== -->
+    <div class="chapter-section" id="sec-6-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3</div>
+            <div class="chapter-info">
+                <h2>C&amp;Q Plan</h2>
+                <p>Typical contents of a C&amp;Q Plan — the 8 key elements</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.3 C&amp;Q Plan</h3>
+                    <p>The C&amp;Q Plan typically encompasses:</p>
+                    <ul>
+                        <li>Description of the <strong>scope</strong> of the plan (identification of the systems included)</li>
+                        <li>Description of the <strong>C&amp;Q execution strategy</strong></li>
+                        <li>C&amp;Q related <strong>documentation requirements</strong> for each identified system (e.g., URS, FAT, SAT, Installation/Operational Testing, PQ, SOPs, etc.)</li>
+                        <li><strong>Roles and responsibilities</strong>, e.g., approval matrix (see Section 6.4 for example)</li>
+                        <li>Reference necessary C&amp;Q <strong>document templates</strong> (e.g., test instructions, test scripts, reports, discrepancy form)</li>
+                        <li>Planned <strong>inspections and tests</strong>
+                            <ul>
+                                <li>Documentation requirements for the inspection and test results</li>
+                                <li>Reference procedures for inspections and tests to be performed</li>
+                                <li>Identification of SMEs for review of the inspection and test results</li>
+                                <li>For tests to be used to support qualification, include the acceptance criteria to be met for all CDEs (Note: The plan may defer to individual test instructions)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>The specific structure and content of the C&amp;Q Plan is typically driven by organization/site requirements.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>C&amp;Q Plan 的典型內容架構</h4>
+                        <p>一份完整的 C&amp;Q Plan 應包含以下主要元素：</p>
+                        <ol style="margin-left:1.2rem;">
+                            <li>計畫範疇（系統清單）</li>
+                            <li>執行策略與方法</li>
+                            <li>各系統的文件需求清單（URS、FAT、SAT、IQ/OQ/PQ、SOP）</li>
+                            <li>角色與責任（含核准矩陣）</li>
+                            <li>文件範本參考</li>
+                            <li>計畫中的檢查與測試（含驗收標準、負責 SME、測試程序參考）</li>
+                        </ol>
+                    </div>
+                    <div class="application-box">
+                        <h4>CDMO 應用：新充填線 C&amp;Q Plan 範例架構</h4>
+                        <p>以 CDMO 承接新無菌充填線安裝專案為例，C&amp;Q Plan 可能包含：</p>
+                        <ul>
+                            <li><strong>範疇</strong>：充填機、凍乾機、去熱原烘箱、CIP/SIP 系統、隔離器（直接影響）；HVAC、純水系統、壓縮空氣（直接影響）；冷卻水（非直接影響）</li>
+                            <li><strong>策略</strong>：凍乾機採 FAT（在廠商場地）+ SAT + IQ/OQ/PQ；充填機採廠商 FAT + 現場 IQ/OQ/PQ</li>
+                            <li><strong>文件矩陣</strong>：列出每個系統的文件清單、負責部門、預計完成日期</li>
+                            <li><strong>核准矩陣</strong>：依 Table 6.1 格式，明確每份文件的事前/事後核准者</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>CDE 的接受標準可延伸到個別測試指令</h4>
+                        <p>計畫中對 CDE 測試的接受標準，可以「轉引」（defer）至個別的測試指令（test instructions）中定義，不一定要在 C&amp;Q Plan 中一一列明。這給了實際操作上的彈性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.3.1 SCOPE ===================== -->
+    <div class="chapter-section" id="sec-6-3-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.1</div>
+            <div class="chapter-info">
+                <h2>Scope of the Effort</h2>
+                <p>Both direct and not-direct impact systems; PQ for utilities; cycle development considerations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.3.1 Scope of the Effort</h3>
+                    <p>The scope captures all systems that are covered within the scope of the project. This includes both <strong>direct impact</strong> and <strong>not direct impact</strong> systems (as described in Chapter 3). More details are provided below.</p>
+
+                    <h4>6.3.1.1 Additional Scope Considerations</h4>
+                    <p>PQ activities may be included in a C&amp;Q Plan for <strong>pharmaceutical grade utilities</strong> (e.g., WFI, Purified Water), support systems (e.g., autoclaves, depyrogenation ovens, washers), environments (e.g., non-environmental monitoring in clean rooms), and non-product PQ (e.g., media fills for filling lines). Individual organizations/sites need to decide if these are in qualification or a separate validation program.</p>
+                    <p>Cycle development for areas such as sterilization and cleaning also need to be considered. Cycle development can identify factors that require qualification or that modify the qualification. These are often executed after the equipment qualification effort. It is recommended to not perform the final qualification testing until after cycle development since changes identified by cycle development can be captured in the Engineering Change Management system (see Chapter 12). Individual organizations/sites need to decide if cycle development is part of the C&amp;Q effort and capture the decision in the C&amp;Q Plan.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>範疇包含直接與非直接影響系統</h4>
+                        <p>C&amp;Q Plan 的範疇不能只列直接影響（Direct Impact）系統。非直接影響（Not Direct Impact）的系統（如冷卻水、普通壓縮空氣）雖然不需要正式確效，但仍在 C&amp;Q 計畫的管理範圍內，需要委試（Commissioning）。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>PQ 活動可納入 C&amp;Q Plan</h4>
+                        <p>以下項目的 PQ（Performance Qualification，性能確效）可以（但不強制）納入 C&amp;Q Plan 管理：</p>
+                        <ul>
+                            <li>藥品級公用系統：WFI（注射用水）、純水（PW）</li>
+                            <li>支援系統：高壓滅菌器、去熱原烘箱、清洗機</li>
+                            <li>環境：無菌室的環境確認（非環境監控）</li>
+                            <li>非產品 PQ：無菌模擬充填（Media Fill）</li>
+                        </ul>
+                        <p>各廠址需自行決定這些是否納入 C&amp;Q 計畫，或另立獨立驗證計畫（Validation Program）。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>周期開發應在最終確效測試之前完成</h4>
+                        <p>ISPE 特別建議：<strong>不要在 Cycle Development（周期開發）完成之前就進行最終確效測試</strong>。因為周期開發（如滅菌周期、清潔周期）可能發現需要修改設計的問題。若先做確效再改設計，就必須重做確效，成本很高。</p>
+                        <p>正確順序：Cycle Development → 確認無設計變更 → 最終 IQ/OQ/PQ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.3.2 STRATEGY ===================== -->
+    <div class="chapter-section" id="sec-6-3-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.2</div>
+            <div class="chapter-info">
+                <h2>Strategy and Approach</h2>
+                <p>Commissioned-only vs commissioned+qualified; vendor documentation criteria; testing dependencies</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.3.2 Strategy and Approach</h3>
+                    <p>The C&amp;Q Plan needs to define C&amp;Q strategy and approach to aid in overall project planning. The C&amp;Q Plan captures whether systems will be <strong>commissioned only</strong> or <strong>commissioned and qualified</strong>. The system classification (as described in Chapter 3) and System Risk Assessment (as described in Chapter 4) have identified the CPPs and CDEs that need to be supported by the C&amp;Q effort.</p>
+                    <p>The rigor of testing depends on the user requirements, CDEs, and system characteristics (e.g., packaged system, modular, or installed system) as well as experiences with the vendor.</p>
+                    <p>An aspect that needs to be captured in the C&amp;Q Plan is the <strong>identification of the documentation source</strong> that will be utilized to satisfy the C&amp;Q requirements. Appropriate prerequisites, means, and checks should be described in the plan to ensure reliable results, e.g., the pre-approval of vendor/manufacturer documents by an SME. If vendor-provided documentation or testing is to be accepted to support qualification, the criteria for determining if it can be utilized needs to be established in the Plan. Refer to Chapter 10 for details regarding vendor assessments for C&amp;Q documentation purposes.</p>
+                    <p>The C&amp;Q Plan should also capture if individual pieces of equipment or systems will be tested separately because they are delivered and installed at different times by different vendors or if testing will be executed once all components are installed. <strong>Dependencies</strong> within the scope of work (e.g., if one system needs to be tested before another system is tested) should also be included.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>策略決策：只做委試，還是委試＋確效？</h4>
+                        <p>C&amp;Q Plan 必須明確定義每個系統的策略：</p>
+                        <ul>
+                            <li><strong>Commissioned Only（僅委試）</strong>：適用於非直接影響系統（如冷卻水、普通電力）</li>
+                            <li><strong>Commissioned + Qualified（委試＋確效）</strong>：適用於直接影響系統（如無菌充填線、WFI 系統）</li>
+                        </ul>
+                        <p>決定依據：系統分類（Chapter 3）＋ SRA 的 CDE 辨識結果。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>確效嚴格度取決於多項因素</h4>
+                        <p>測試的嚴格程度（rigor of testing）受以下因素影響：</p>
+                        <ul>
+                            <li>使用者需求（URS 的要求）</li>
+                            <li>CDEs 的數量和關鍵性</li>
+                            <li>系統特性（套裝系統 vs 模組化 vs 現場安裝）</li>
+                            <li>與廠商的過往合作經驗（有認可的廠商，文件可更多採用）</li>
+                        </ul>
+                    </div>
+                    <div class="application-box">
+                        <h4>廠商文件使用標準：提前在計畫中定義</h4>
+                        <p>如果計畫採用廠商文件（如 FAT 報告、廠商 IQ）來支援確效結論，<strong>必須在計畫中預先定義使用標準</strong>，例如：</p>
+                        <ul>
+                            <li>廠商文件須由 SME 事前審批（pre-approval）</li>
+                            <li>廠商評估報告（Vendor Assessment）需達到什麼標準才能採用其文件</li>
+                            <li>接受哪種程度的廠商資質（Audit 結果、ISO 認證等）</li>
+                        </ul>
+                        <p>這些標準必須在計畫中寫明，而非事後補救。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>測試依賴性（Dependencies）必須明確記錄</h4>
+                        <p>例如：HVAC 系統的 OQ 必須在無菌室壓差和換氣次數確認之後，充填線的 IQ 才能開始。這種依賴關係必須在 C&amp;Q Plan 中明確記載，以支援正確的測試排序。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.3.3 DOCUMENTATION ===================== -->
+    <div class="chapter-section" id="sec-6-3-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.3</div>
+            <div class="chapter-info">
+                <h2>Documentation</h2>
+                <p>Document matrix, electronic storage, 14-item tracking list</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.3.3 Documentation</h3>
+                    <p>The C&amp;Q Plan should capture document planning and control as well as execution of testing. The C&amp;Q Plan should reference appropriate document control and content procedures to satisfy engineering, commissioning, qualification, operations, and maintenance requirements. Utilizing <strong>electronic storage of documents is recommended</strong> as it allows for searching and easier retrieval. If electronic storage will be utilized, ensure the vendors and contracting companies are aware and can support the delivery of their documentation in that means.</p>
+                    <p>The Plan should define responsibilities for document preparation, collection, review and approval, and how the documents will be organized. This Guide recommends that a <span class="key-term">document matrix</span> be considered as a means of planning and communicating these responsibilities. Documents also need to be tracked to ensure they are completed when they are needed.</p>
+                    <p>Documents that are typically tracked include:</p>
+                    <ul>
+                        <li>URS</li>
+                        <li>System Risk Assessments</li>
+                        <li>Drawings</li>
+                        <li>Equipment specifications including any automation specifications (e.g., functional specifications)</li>
+                        <li>Vendor correspondence and transmittals</li>
+                        <li>Requests for information</li>
+                        <li>Submittals (e.g., shop drawings, manufacturers data sheets, user manuals)</li>
+                        <li>Required procedures (e.g., equipment operating procedures, maintenance)</li>
+                        <li>Change management (see Chapter 12)</li>
+                        <li>Schedules</li>
+                        <li>Open items / punch list</li>
+                        <li>Commissioning/qualification execution documents</li>
+                        <li>Discrepancies</li>
+                        <li>Turnover packages</li>
+                        <li>Project reports</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="term-box">
+                        <h4>關鍵術語：Document Matrix（文件矩陣）</h4>
+                        <p><strong>Document Matrix（文件矩陣）</strong>是一份表格，列出專案中所有需要的文件，以及每份文件的：</p>
+                        <ul>
+                            <li>負責編寫部門/人員</li>
+                            <li>審批者（含事前/事後）</li>
+                            <li>預計完成日期</li>
+                            <li>文件狀態追蹤</li>
+                        </ul>
+                        <p>它是 C&amp;Q Plan 中最實用的工具之一，讓專案經理能一眼掌握所有文件的進度。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>關鍵術語：Turnover Package（移交文件包）</h4>
+                        <p><strong>Turnover Package（TOP）</strong>是施工或安裝完成後，由承包商/廠商移交給業主的文件集合，通常包含：</p>
+                        <ul>
+                            <li>As-built 竣工圖</li>
+                            <li>材質証書（Material Certificates）</li>
+                            <li>焊接記錄（Weld Records）</li>
+                            <li>設備手冊（User Manuals）</li>
+                            <li>校正記錄（Calibration Records）</li>
+                            <li>測試報告（FAT/SAT Reports）</li>
+                        </ul>
+                        <p>TOP 是 IQ（安裝確效）的重要輸入文件，必須在確效開始前完成並通過審查。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>15 類需追蹤的文件</h4>
+                        <p>ISPE 列出的追蹤清單涵蓋了整個 C&amp;Q 生命週期的文件類型，從設計前的 URS 到最後的 Project Reports，確保沒有任何文件被遺漏。</p>
+                        <p>特別值得注意的是清單中包含了：</p>
+                        <ul>
+                            <li><strong>Punch List（待辦清單）</strong>：施工中發現的缺失項目</li>
+                            <li><strong>Discrepancies（偏差）</strong>：測試中的偏差記錄</li>
+                            <li><strong>Turnover Packages（移交文件包）</strong>：正式的系統移交文件</li>
+                        </ul>
+                    </div>
+                    <div class="application-box">
+                        <h4>建議採用電子文件儲存</h4>
+                        <p>ISPE 建議使用電子儲存（如 EDMS，電子文件管理系統）。但要注意：若使用電子系統，必須提前告知所有廠商和承包商，確保他們能以電子格式提交文件。</p>
+                        <p>實務上，在 CDMO 的大型建設專案中，光是追蹤和管理廠商文件，就需要一個專職的文件控制工程師（Document Control Engineer）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.3.4 CONTENTS ===================== -->
+    <div class="chapter-section" id="sec-6-3-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.4</div>
+            <div class="chapter-info">
+                <h2>C&amp;Q Plan Contents</h2>
+                <p>System overview, installation phase, operational phase, discrepancy handling</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.3.4 C&amp;Q Plan Contents</h3>
+                    <p>The C&amp;Q Plan should define the systems that will be commissioned and qualified based on the system or area boundaries. The plan should include a description of systems including their means of automation. The <strong>system overview</strong> should be a high-level process narrative, including system boundaries, based on operational/functional requirements. The C&amp;Q team representatives should provide input in defining system boundaries (which can be in a system description, marked on P&amp;IDs, or highlighted on system drawings) in the early project phases to develop an executable plan. It is often possible to gather much of the system overview information from other project documentation.</p>
+                    <p>The C&amp;Q Plan should address the <strong>level of testing</strong> for each system. This may range from detailed descriptions to references to standard tests. An alternative is to provide only high-level descriptions in the C&amp;Q Plan and leave the detailed descriptions to execution documents. The selected approach should increase the level of efficiency and effectiveness. The plan should also include project schedules by system (as defined by the system boundaries) that capture the dependencies between systems.</p>
+                    <p>Commissioning is an important aspect that requires planning, documentation, and managed resources. Commissioning encompasses testing from FAT, testing during construction, SAT, installation testing, and much of the start-up activities of a project lifecycle including those that will be used to assess the qualification of a direct impact system.</p>
+                    <p>Testing during commissioning should be used to support qualification. If commissioning documentation will be used to support qualification, it is critical to involve the leader of the qualification effort and the Quality Unit in the planning and coordination of commissioning activities and deliverables. A periodic commissioning planning and status meeting should be established.</p>
+                    <p>The C&amp;Q Plan needs to include C&amp;Q steps. There are two typical phases:</p>
+                    <ul>
+                        <li><strong>Installation:</strong> Documentation supporting installation is successfully completed. This may include FAT and SAT documentation as well as site commissioning for systems built at the site.</li>
+                        <li><strong>Operational:</strong> Documentation supporting the functionality and performance of the system after the system has been mechanically completed. This may include testing performed in FAT and SAT.</li>
+                    </ul>
+                    <p>The plan should address the steps to follow when test results do not meet the expected results or acceptance criteria (<strong>discrepancy</strong>). There should be a predefined methodology for how discrepancies should be handled (see Section 7.4).</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>系統概述（System Overview）的作用</h4>
+                        <p>系統概述是一個高層次的系統描述，說明系統的功能、邊界（System Boundary）、及自動化方式。</p>
+                        <p>它可以標示在：</p>
+                        <ul>
+                            <li>文字說明中</li>
+                            <li>P&amp;ID（管道與儀表圖）上劃定範圍</li>
+                            <li>系統圖紙上標示邊界</li>
+                        </ul>
+                        <p>早期定義系統邊界，是確保後續 IQ/OQ/PQ 不會「有漏網之魚」或「測試範疇過大」的關鍵。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>兩個典型測試階段</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>階段</th>
+                                    <th>英文</th>
+                                    <th>對應確效活動</th>
+                                    <th>包含文件</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>安裝階段</strong></td>
+                                    <td>Installation Phase</td>
+                                    <td>IQ（安裝確效）</td>
+                                    <td>FAT、SAT、現場安裝委試</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>運行階段</strong></td>
+                                    <td>Operational Phase</td>
+                                    <td>OQ（運行確效）</td>
+                                    <td>功能測試、性能測試（含部分 FAT/SAT）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>委試文件用於確效的必要條件</h4>
+                        <p>若委試文件要用來支援確效結論，ISPE 強調：</p>
+                        <ul>
+                            <li>確效負責人和品質部門必須從<strong>計畫階段</strong>就參與委試活動的規劃與協調</li>
+                            <li>需要定期召開委試計畫與進度會議</li>
+                        </ul>
+                        <p>這是因為委試文件的品質（格式、接受標準、審批程序）必須符合確效要求，而這只能在事前約定，不能事後補救。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>差異處理程序（Discrepancy Handling）</h4>
+                        <p>C&amp;Q Plan 必須預先定義：當測試結果不符合期望或接受標準時，應遵循的處理步驟。</p>
+                        <p>這個「差異處理程序（Discrepancy Handling Procedure）」必須在執行前就寫好（predefined），而不是等到出現偏差才臨時決定怎麼做。詳見 Section 7.4。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 6.4 APPROVAL MATRIX ===================== -->
+    <div class="chapter-section" id="sec-6-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4</div>
+            <div class="chapter-info">
+                <h2>Example Approval Matrix — Table 6.1</h2>
+                <p>Who needs to sign what: Pre-Approvers and Post-Approvers for each C&amp;Q document</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>6.4 Example Approval Matrix</h3>
+                    <p><strong>Table 6.1: Example Approval Matrix</strong></p>
+                    <p>General Note: <strong>A = Approver</strong></p>
+
+                    <div class="table-container">
+                        <table class="approval-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" style="min-width:160px;">Document</th>
+                                    <th colspan="3" class="group-header">Pre-Approvers</th>
+                                    <th colspan="3" class="group-header">Post-Approvers</th>
+                                    <th rowspan="2" style="min-width:80px;">Typical Document Preparation</th>
+                                    <th rowspan="2" style="min-width:70px;">Guide Chapter Reference</th>
+                                </tr>
+                                <tr>
+                                    <th>Quality Unit</th>
+                                    <th>Production User</th>
+                                    <th>Technical<sup>1</sup></th>
+                                    <th>Quality Unit</th>
+                                    <th>Production User</th>
+                                    <th>Technical<sup>1</sup></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>C&amp;Q Plan</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 6</td>
+                                </tr>
+                                <tr>
+                                    <td>User Requirements Specification (URS)</td>
+                                    <td class="na-mark">Not applicable<sup>2</sup></td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 2</td>
+                                </tr>
+                                <tr>
+                                    <td>System Classification</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 3</td>
+                                </tr>
+                                <tr>
+                                    <td>System Risk Assessment (SRA)</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Quality Unit<sup>3</sup></td>
+                                    <td>Chapter 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Design Review (DR)</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Design Qualification (DQ)</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Quality Unit<sup>3</sup></td>
+                                    <td>Chapter 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Commissioning inspection/testing documentation (e.g., FAT, SAT)</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Qualification testing documentation where used<sup>4</sup></td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td>Quality Unit<sup>3</sup></td>
+                                    <td>Chapter 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Turnover Package (TOP)</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Commissioning Acceptance and Release Report</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Qualification Acceptance and Release Report (including testing from commissioning)</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Quality Unit<sup>3</sup></td>
+                                    <td>Chapter 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Traceability Matrix</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Vendor Assessment (when vendor documentation utilized for C&amp;Q)</td>
+                                    <td class="na-mark">Not applicable</td>
+                                    <td class="na-mark">—</td>
+                                    <td class="a-mark">A</td>
+                                    <td class="a-mark">A<sup>1</sup></td>
+                                    <td class="na-mark">—</td>
+                                    <td class="na-mark">—</td>
+                                    <td>Technical</td>
+                                    <td>Chapter 10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin-top:1rem; font-size:0.85rem;"><strong>Notes:</strong></p>
+                    <ol style="margin-left:1.25rem; font-size:0.85rem; margin-top:0.5rem;">
+                        <li>Technical includes Engineering, Process, and SME. SME may be Engineering, Automation, Validation, Research and Development, Safety, or Manufacturing Technical Lead; therefore, a second signature is not required from the same discipline.</li>
+                        <li>If the Quality Unit has already approved the source documents from which the quality requirements within the URS were obtained, then the Quality Unit does not need to approve the URS. Quality approval is not required for systems that are not direct impact systems (e.g., boilers).</li>
+                        <li>In many cases, the responsibility for developing the document is given to Technical or Validation.</li>
+                        <li>If IQ and OQ test protocols are required by the organization/site policy, many organizations also require that these protocols are pre and post-approved by the Quality Unit.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="term-box">
+                        <h4>關鍵術語：Pre-Approver vs Post-Approver</h4>
+                        <p><strong>事前審批者（Pre-Approver）</strong>：在文件執行或發放之前完成審批。確保計畫合理、標準正確、執行前已獲授權。</p>
+                        <p><strong>事後審批者（Post-Approver）</strong>：在文件執行完成後審批。確認結果符合要求、偏差已處理、可以接受結論。</p>
+                        <p>最嚴格的文件（如確效測試文件）同時需要<strong>事前和事後</strong>審批，代表「執行前批准計畫，執行後批准結果」。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>核准矩陣的三個角色</h4>
+                        <ul>
+                            <li><strong>Quality Unit（品質部門）</strong>：負責確保法規符合性和品質標準</li>
+                            <li><strong>Production User（生產用戶）</strong>：確保系統符合操作需求</li>
+                            <li><strong>Technical<sup>1</sup>（技術）</strong>：包含工程、製程、SME（學科專家）；同一學科只需一個簽名</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>Table 6.1 重要觀察</h4>
+                        <p><strong>1. 確效測試文件最嚴格</strong>：IQ/OQ/PQ 文件同時需要所有三方（QA、User、Technical）的<strong>事前和事後</strong>審批，顯示其最高的法規重要性。</p>
+                        <p><strong>2. C&amp;Q Plan 只需事前審批</strong>：計畫文件只有「事前」審批，完成後不需要再次審批（因為計畫本身是用來指導後續工作的，不是「結果文件」）。</p>
+                        <p><strong>3. 追溯矩陣不需要正式審批</strong>：Traceability Matrix 的核准欄位全部是 "Not applicable"，因為它是技術部門內部使用的追蹤工具。</p>
+                        <p><strong>4. 品保對 URS 的審批有條件性</strong>（注2）：若品保已批准過 URS 的來源文件（如品質需求文件），則 URS 本身可不需品保二次審批。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>關鍵術語：Traceability Matrix（追溯矩陣）</h4>
+                        <p>追溯矩陣是一份文件，將每個 URS 需求項目，追溯到對應的設計文件、風險評估、測試項目，和測試結果。</p>
+                        <p>它回答了「我的每一個使用者需求，是否都有對應的測試驗證？」這個問題。Table 6.1 顯示它不需要正式的 Pre/Post-Approval，由 Technical 負責製作即可。</p>
+                    </div>
+                    <div class="application-box">
+                        <h4>CDMO 實務：如何使用核准矩陣</h4>
+                        <p>對 CDMO 的品保部門而言，Table 6.1 提供了一個<strong>最低限度的參考架構</strong>。實際操作時：</p>
+                        <ul>
+                            <li>公司 SOP 可以比 Table 6.1 要求更嚴格（增加更多審批者），但不應比它寬鬆</li>
+                            <li>稽查時，稽查員可能要求展示核准矩陣，並驗證實際簽名記錄是否符合</li>
+                            <li>若某文件缺少 Pre-Approval 就已執行，屬於重大程序違規（Protocol executed without prior approval）</li>
+                            <li>建議在新專案啟動時，以 Table 6.1 為基礎，製作公司特定的核准矩陣</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SECTION SUMMARY ===================== -->
+    <div class="section-summary">
+        <h3>本章重點摘要 (Chapter Summary)</h3>
+        <ul>
+            <li><strong>C&amp;Q Plan 是專案的核心治理文件</strong>，定義範疇、策略、文件要求、角色責任，和測試方法。</li>
+            <li><strong>審批時序規則</strong>：C&amp;Q Plan 核准 → 測試指令核准 → 開始執行。此順序在業界常被違反，但稽查時後果嚴重。</li>
+            <li><strong>計畫深度應與風險成比例</strong>：簡單變更納入變更管制即可；複雜系統（填充線、公用系統擴建）需要獨立的正式 C&amp;Q Plan。</li>
+            <li><strong>C&amp;Q Plan 是活文件</strong>：隨專案進展更新；輕微偏離可記錄在 Qualification Summary Report 中，不必每次修訂計畫。</li>
+            <li><strong>Document Matrix（文件矩陣）</strong>是管理所有文件進度的最有效工具。</li>
+            <li><strong>Turnover Package（移交文件包）</strong>是 IQ 的重要輸入，必須在確效開始前完成。</li>
+            <li><strong>Table 6.1 核准矩陣</strong>明確定義了每份文件的事前/事後審批者，是 CDMO 建立公司特定核准程序的最佳參考範本。</li>
+            <li><strong>確效測試文件</strong>是唯一同時需要所有三方（QA、User、Technical）事前和事後審批的文件。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>ISPE Baseline&reg; Guide: Commissioning and Qualification (2nd Edition)</p>
+    <p>Chapter 6: C&amp;Q Planning &nbsp;|&nbsp; Pages 41&ndash;48</p>
+    <p style="opacity:0.6; font-size:0.8rem;">For educational purposes. &copy; ISPE 2019. All rights reserved.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
