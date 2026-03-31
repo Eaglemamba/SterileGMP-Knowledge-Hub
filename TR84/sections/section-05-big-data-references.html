@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR84 Section 5: Big Data &amp; References | PDA Technical Report No. 84</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== REFERENCE LIST ===== */
+.ref-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ref-list li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.ref-list li:last-child {
+    border-bottom: none;
+}
+
+.ref-num {
+    font-weight: 700;
+    color: var(--primary-blue);
+    min-width: 2rem;
+    flex-shrink: 0;
+}
+
+.ref-group-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    background: #edf2f7;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    margin: 1rem 0 0.5rem 0;
+    display: inline-block;
+}
+
+.section-summary {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+}
+
+.section-summary h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    opacity: 0.95;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 5: Big Data &amp; References / 大數據管控與參考資料</h1>
+    <div class="subtitle">PDA Technical Report No. 84 — Data Integrity in Manufacturing and Packaging Operations</div>
+    <div class="page-info">PDA Technical Report No. 84 | p38 – p40</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解大數據 (Big Data) 對製藥製造資料完整性管控的挑戰，並說明為何傳統人工稽核軌跡審查方法無法因應大量資料的監管需求。</li>
+            <li>辨識 TR84 第 6.0 節對大數據治理框架的定位，以及後續 PDA 技術報告將涵蓋的核心議題（資料分類、資料所有權、存取管理、變更管理）。</li>
+            <li>掌握 TR84 參考文獻體系的結構：識別 FDA、MHRA、WHO、PIC/S、ICH、EMA、ISPE 等各主管機關 / 組織的核心資料完整性指引文件，及其在 CDMO 法規遵循中的應用優先順序。</li>
+            <li>在 CDMO 無菌充填環境中，能夠運用本節知識評估現有資料管控措施是否具備因應未來大數據時代的擴充能力，並識別需要強化治理架構的關鍵領域。</li>
+        </ol>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-6">6.0 大數據管控</a>
+            <a href="#sec-7">7.0 參考文獻</a>
+            <a href="#ref-regulatory">法規指引類</a>
+            <a href="#ref-ich">ICH 品質指引</a>
+            <a href="#ref-industry">業界指南類</a>
+            <a href="#summary">章節總結</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.0: BIG DATA ===== -->
+    <div id="sec-6" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.0</div>
+            <div class="chapter-info">
+                <h2>Controls for Big Data as it Relates to Data Integrity</h2>
+                <p>大數據管控與資料完整性 | p38</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>Pharmaceutical manufacturing data is being collected at an accelerated rate, beyond <span class="key-term">human processing capability</span> using traditional mechanisms. These challenges increasingly drive the need for <span class="key-term">governance and active controls</span> of data and information. Processes, roles, and standards must be created to allow the effective and efficient use of information and technology tools to enable an organization to achieve its goals.</p>
+
+                    <p>A forthcoming PDA technical report will provide additional guidance on <span class="key-term">governance and controls for big data</span> in manufacturing. That technical report will address topics such as <span class="key-term">data classification</span>, <span class="key-term">data ownership</span>, <span class="key-term">access management</span>, <span class="key-term">source data</span>, results and data insights, and <span class="key-term">change management</span>, within the framework of governance and controls of big data in manufacturing.</p>
+
+                    <p>Collectively, these two technical reports will provide guidance on the management of data and <span class="key-term">big data</span> in a regulated pharmaceutical or biopharmaceutical facility.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解說與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：什麼是大數據 (Big Data) 的挑戰？</h4>
+                        <p>TR84 第 6.0 節是全份文件的<strong>前瞻性節點</strong>。PDA 在此承認：傳統資料完整性管控框架（人工審查、紙本稽核軌跡、二次見證）已無法因應製藥製造數位化後產生的資料量。</p>
+                        <p>大數據 (Big Data) 在製藥製造中的典型來源包括：</p>
+                        <ul>
+                            <li>物聯網 (IoT) 感測器連續監測（溫度、壓力、濕度、粒子計數）</li>
+                            <li>連續製造 (Continuous Manufacturing) 設備每秒生成的製程參數紀錄</li>
+                            <li>即時放行測試 (Real-Time Release Testing, RTRT) 的光譜與近紅外線資料流</li>
+                            <li>環境監測系統 (EMS) 的長期趨勢資料</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：傳統 DI 方法遇上大數據，像什麼情況？</h4>
+                        <p>想像你的倉庫每天進出 100 筆記錄，品管人員可以逐筆核對。現在同一個倉庫安裝了 IoT 感測器，每分鐘自動產生 2,000 筆溫度讀值——每天就是 288 萬筆。</p>
+                        <p>要求 QA 人員「逐筆人工審查稽核軌跡」等於要求一個人在 8 小時內讀完一本 10,000 頁的書。物理上不可能；監管要求卻未因此消失。</p>
+                        <p>這就是為什麼 Big Data 需要一套全新的治理框架，而不只是「更多人力」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規現況的空白：21 CFR 第11部分的時代侷限</h4>
+                        <p>21 CFR Part 11（21 CFR 第11部分）制定於 1997 年，歐盟附件11 (EU Annex 11) 最後修訂於 2011 年——兩者均早於 IoT、連續製造、大規模光譜資料的普及。</p>
+                        <p>這些法規對「電子記錄的稽核軌跡」、「資料備份」有明確要求，但對<strong>如何管理每秒千筆以上的資料流</strong>幾乎沒有具體操作指引。</p>
+                        <p>TR84 的誠實態度：明確指出這個空白，並宣告「後續 PDA 技術報告將提供進一步指引」，而非虛假地套用現有框架。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>後續 PDA 技術報告將涵蓋的大數據治理核心議題</h4>
+                        <ul>
+                            <li><strong>資料分類 (Data Classification)</strong>：哪些大數據屬於 GMP 關鍵資料，哪些屬於監測/趨勢用途？</li>
+                            <li><strong>資料所有權 (Data Ownership)</strong>：誰對資料的完整性負最終責任？</li>
+                            <li><strong>存取管理 (Access Management)</strong>：大規模資料湖 (Data Lake) 的權限架構如何設計？</li>
+                            <li><strong>原始資料 (Source Data)</strong>：感測器原始讀值如何被保護不受竄改？</li>
+                            <li><strong>變更管理 (Change Management)</strong>：大數據系統升級時如何維護資料連續性與合規性？</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 應用場景：你的工廠準備好了嗎？</h4>
+                        <p>以一個典型的無菌充填 CDMO 為例，評估大數據準備度：</p>
+                        <ul>
+                            <li><strong>隔離器 (Isolator) 監測資料</strong>：過氧化氫濃度、壓差、粒子計數每分鐘記錄一次，批次生產期間產生約 50,000 筆——現有 QA 審查流程如何處理？</li>
+                            <li><strong>凍乾機 (Lyophilizer) 製程資料</strong>：溫度、真空度、冷凍速率每 30 秒採樣，一個 5 天凍乾週期產生約 14,400 筆——誰審查，審查什麼？</li>
+                            <li><strong>自動化警報管理 (Automated Alarm Management)</strong>：現有 EBR 系統是否能設定例外事件報告 (Exception-Based Reporting)，讓 QA 只審查超出趨勢的異常點？</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <p>TR84 第 6.0 節的正文只有三段，但意義重大。思考以下問題：</p>
+                        <ol>
+                            <li>為什麼 PDA 選擇在「資料完整性」技術報告中單獨列出「大數據管控」章節，而不是整合到現有的管控框架？</li>
+                            <li>「資料所有權」在跨系統、跨部門的大數據環境中為什麼特別重要？以 CDMO 的製程開發 (PD) 與 QA 部門為例說明。</li>
+                            <li>如果稽查員問你「貴公司如何確保 IoT 感測器資料的完整性？」，你的標準答案應包含哪些要素？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 7.0: REFERENCES ===== -->
+    <div id="sec-7" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.0</div>
+            <div class="chapter-info">
+                <h2>References</h2>
+                <p>參考文獻 | p39 – p40</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Sub-intro: context -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">References Overview</h3>
+                    <p>TR84 cites 29 references spanning regulatory guidance, international harmonization guidelines, industry standards, and PDA technical reports. The references underpin the risk-based data integrity framework presented throughout this technical report.</p>
+                </div>
+                <div class="right-column">
+                    <h3 class="column-header">參考文獻體系解說</h3>
+                    <div class="concept-box">
+                        <h4>TR84 參考文獻的四個層次</h4>
+                        <ul>
+                            <li><strong>法規指引層</strong>：FDA、MHRA、WHO、PIC/S 的 DI 指引——稽查標準的直接依據</li>
+                            <li><strong>GMP 法規層</strong>：21 CFR Part 11、21 CFR Part 211、EU Annex 11——電子記錄與 GMP 紀錄要求</li>
+                            <li><strong>ICH 品質指引層</strong>：Q8、Q9、Q10、Q12——品質系統、風險管理、產品生命週期</li>
+                            <li><strong>業界標準層</strong>：ISPE、APIC、PDA 自身技術報告——最佳實務指引</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== REGULATORY GUIDANCE REFS (1-6, 9-16, 17-21) ===== -->
+            <div id="ref-regulatory" class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Regulatory Guidance &amp; GMP Regulations</h3>
+
+                    <p class="ref-group-label">Primary DI Guidance Documents</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">1.</span>
+                            <span>Parenteral Drug Association. <em>Technical Report No. 80: Data Integrity Management System for Pharmaceutical Laboratories</em>; PDA: Bethesda, Md., 2018; p 63.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">2.</span>
+                            <span>U.S. Food and Drug Administration. <em>Data Integrity and Compliance with cGMP: Questions and Answers, Guidance for Industry</em>; U.S. Department of Health and Human Services: Silver Spring, Md., 2018.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">3.</span>
+                            <span>Medicines and Healthcare products Regulatory Agency. <em>'GXP' Data Integrity Guidance and Definitions, Rev. 1</em>; MHRA: London, 2018.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">4.</span>
+                            <span>World Health Organization. <em>Annex 5: Draft Guidance on Good Data and Record Management Practices</em>; WHO: Geneva, 2016 p46.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">5.</span>
+                            <span>Pharmaceutical Inspection Convention/Co-operation Scheme (PIC/S). <em>Draft PIC/S Good Practices for Data Management and Integrity in Regulated GMP/GDP Environments</em>; PIC/S: Geneva, 2018.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">6.</span>
+                            <span>Parenteral Drug Association. <em>Technical Report No. 54-2: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations, Annex 1: Case Study Examples for Quality Risk Management in Packaging and Labeling</em>; PDA: Bethesda, Md., 2013.</span>
+                        </li>
+                    </ol>
+
+                    <p class="ref-group-label">GMP Regulations (21 CFR &amp; EU)</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">9.</span>
+                            <span>U.S. Food and Drug Administration. <em>21 CFR Part 211 – Current Good Manufacturing Practice for Finished Pharmaceuticals, Subpart J – Records and Reports</em>; Government Publishing Office: Washington, D.C., 2005.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">10.</span>
+                            <span>U.S. Food and Drug Administration. PART 133—Drugs; Current Good Manufacturing Practice in Manufacture, Processing, Packing, or Holding. <em>Fed Regist</em> 1963, 28 (120, Part II), 6385-87.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">11.</span>
+                            <span>U.S. Food and Drug Administration. Current Good Manufacturing Practice in Manufacture, Processing, Packing, or Holding. <em>Fed Regist</em> 1978, 43 (44813 (Sept. 29, 1978), Book 2), 45014-336.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">12.</span>
+                            <span>U.S. Food and Drug Administration. <em>FDA Compliance Program Guidance Manual</em>; 7346.832 (5/12/2010), Pre-Approval Inspections. U.S. Department of Health and Human Services: Silver Spring, Md., 2010.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">13.</span>
+                            <span>U.S. Food and Drug Administration. <em>21 CFR Part 11, Electronic Records; Electronic Signatures — Scope and Application; Pharmaceutical CGMPs</em>. Government Publishing Office: Washington, D.C., 2003.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">17.</span>
+                            <span>U.S. Food and Drug Administration. <em>21 CFR 58 Good Laboratory Practice for Nonclinical Laboratory Studies</em>; U.S. Department of Health &amp; Human Services: Washington, DC, 1978.</span>
+                        </li>
+                    </ol>
+
+                    <p class="ref-group-label">FDA Warning Letters &amp; Enforcement Actions</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">14.</span>
+                            <span>F-D-C Reports, Inc. Data Manipulation is Being Uncovered and Referred for Criminal Investigation. <em>The Gold Sheet</em> 2007, 41 (4).</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">15.</span>
+                            <span>U.S. Food and Drug Administration. Warning Letter No. 320-19-29 to Indoco Remedies Limited, dated 7/9/2019; Office of Compliance, Center for Drug Evaluation and Research. U.S. Department of Health and Human Services: Silver Spring, Md., 2019.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">16.</span>
+                            <span>U.S. Food and Drug Administration. Warning Letter No. 320-20-15 to Apollo Health and Beauty Care, Inc., dated 12/23/2019; Office of Compliance, Center for Drug Evaluation and Research. U.S. Department of Health and Human Services: Silver Spring, Md., 2019.</span>
+                        </li>
+                    </ol>
+
+                    <p class="ref-group-label">International Regulatory Agencies</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">18.</span>
+                            <span>World Health Organization. <em>Good Chromatography Practices, Draft for Comments (July 2019)</em>; WHO: Geneva, 2019.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">19.</span>
+                            <span>China National Medical Products Administration. <em>Draft Drug Data Management Standard</em>; NMPA: Beijing, 2016.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">20.</span>
+                            <span>Australian Therapeutic Goods Administration. <em>Data Management and Data Integrity (DMDI)</em>; TGA: Symonston ACT, Australia, 2017.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">21.</span>
+                            <span>Federal State Institute of Drugs and Good Practices. <em>Guidelines: Data Integrity &amp; Computer System Validation</em>; SID&amp;GP: Moscow, 2018.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- RIGHT: Commentary on Regulatory Refs -->
+                <div class="right-column">
+                    <h3 class="column-header">法規參考文獻解說</h3>
+
+                    <div class="concept-box">
+                        <h4>文獻 1：PDA TR80 — 實驗室 DI 管理系統</h4>
+                        <p>TR84（製造 &amp; 包裝的 DI）與 TR80（實驗室的 DI）是 PDA 的「DI 雙塔」。TR80 聚焦於分析儀器（HPLC、GC、溶離度測試）的電子資料管控；TR84 則涵蓋製造製程的 DI 風險。兩份報告合併閱讀，才能建立完整的製藥設施 DI 框架。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>文獻 2：FDA 2018 DI Q&amp;A — 稽查最高優先文件</h4>
+                        <p>FDA 的《Data Integrity and Compliance with cGMP: Questions and Answers》(2018) 是目前 FDA 稽查員現場引用頻率最高的 DI 文件。它以 Q&amp;A 形式澄清了許多實務爭議，包括：</p>
+                        <ul>
+                            <li>「原始資料」的定義是否包含電子元數據？（答：是）</li>
+                            <li>稽核軌跡的審查是否必須在放行前完成？（答：視情況而定，但需有 SOP）</li>
+                            <li>Excel 試算表是否符合 21 CFR Part 11？（答：通常不符合）</li>
+                        </ul>
+                        <p>CDMO 建議：將此文件作為內部 DI SOP 的首要參考，確保語言與 FDA 一致。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 3：MHRA GXP DI 指引 — 歐洲 DI 的定義標準</h4>
+                        <p>英國 MHRA 的《'GXP' Data Integrity Guidance and Definitions》是 ALCOA+ 原則中文版教材最常引用的英文原典。MHRA 於 2015 年首版、2018 年更新，首次清晰定義：</p>
+                        <ul>
+                            <li><strong>ALCOA+</strong>：Attributable（可歸屬）、Legible（可讀）、Contemporaneous（即時）、Original（原始）、Accurate（準確）+ Complete（完整）、Consistent（一致）、Enduring（持久）、Available（可取得）</li>
+                            <li><strong>Audit Trail</strong> 的最低要求</li>
+                            <li><strong>Static vs. Dynamic data</strong> 的區分方式</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 5：PIC/S DI 指引 — GDP 環境的擴展</h4>
+                        <p>PIC/S（藥物稽查合作計畫）的 DI 指引特別重要，因為它同時涵蓋 <strong>GMP 與 GDP（優良配銷規範）環境</strong>，對 CDMO 的倉儲、冷鏈管理、物流分包商管理均有規範意義。台灣 PIC/S 會員身份使此文件對台灣 CDMO 具直接法規效力。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>文獻 13：21 CFR Part 11 — 電子記錄法規的原點</h4>
+                        <p>21 CFR Part 11 是「電子記錄與電子簽章」的核心法規，制定於 1997 年。它規定了：</p>
+                        <ul>
+                            <li>電子記錄何時可等同於紙本記錄</li>
+                            <li>電子簽章的法律效力條件</li>
+                            <li>稽核軌跡的最低要求（可讀、只能新增不可修改）</li>
+                        </ul>
+                        <p>重要注意：21 CFR Part 11 本身並不要求「所有製程必須電子化」，而是規定「若使用電子記錄，必須符合這些最低標準」。這個區別在稽查應答中很重要。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 15–16：FDA 警告信 — 真實 DI 違規案例</h4>
+                        <p>TR84 引用了真實的 FDA 警告信作為佐證。這反映了 PDA 的務實態度：資料完整性不只是理論框架，而是有真實的法規後果。</p>
+                        <p>對 CDMO 的啟示：建議建立一份「DI 警告信資料庫」，定期追蹤 FDA 對競業或同類設施的執法行動，作為內部風險評估的預警訊號。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：國際 DI 法規的多邊地圖</h4>
+                        <p>TR84 引用了 FDA（美國）、MHRA（英國）、WHO（全球）、PIC/S（國際互認）、NMPA（中國）、TGA（澳洲）、俄羅斯 SID&amp;GP 七個主管機關的 DI 文件。</p>
+                        <p>對一個服務全球客戶的 CDMO 而言，這張「多邊法規地圖」意味著：你的 DI 系統必須同時滿足不同市場的要求，或者清楚知道你的主要目標市場以設定優先順序。FDA + EU + 台灣 TFDA 通常是無菌充填 CDMO 最優先需要對齊的三個法規體系。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <p>FDA (文獻2)、MHRA (文獻3)、WHO (文獻4)、PIC/S (文獻5) 都發布了各自的 DI 指引，且内容有部分重疊。在你的 CDMO 中：</p>
+                        <ol>
+                            <li>你的 DI SOP 主要參考哪個機構的定義？為什麼？</li>
+                            <li>如果 FDA 和 MHRA 的定義有細微差異（例如「原始記錄」的範圍），你會如何在 SOP 中處理？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== ICH QUALITY GUIDELINES (7-8, 27-28) ===== -->
+            <div id="ref-ich" class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">ICH Quality Guidelines &amp; Related Harmonization</h3>
+
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">7.</span>
+                            <span>International Conference for Harmonisation. <em>Quality Guideline Q10: Pharmaceutical Quality System</em>; ICH: Geneva, 2008.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">8.</span>
+                            <span>International Conference for Harmonisation. <em>Quality Guideline Q9: Quality Risk Management</em>; ICH: Geneva, 2005.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">27.</span>
+                            <span>International Conference for Harmonisation. <em>Quality Guideline Q8(R2): Pharmaceutical Development</em>; ICH Geneva, 2009.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">28.</span>
+                            <span>International Conference for Harmonisation. <em>Quality Guideline Q12: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management, Draft Version</em>; ICH: Geneva, 2017.</span>
+                        </li>
+                    </ol>
+
+                    <p class="ref-group-label">EU Computerised Systems Regulation</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">29.</span>
+                            <span>European Commission. <em>Annex 11: Computerised Systems, EudraLex – Volume 4 – Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use</em>; European Commission: Brussels, 2011.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">ICH 指引與 EU Annex 11 解說</h3>
+
+                    <div class="concept-box">
+                        <h4>文獻 8：ICH Q9 — TR84 風險分析框架的理論基礎</h4>
+                        <p>ICH Q9（品質風險管理）是 TR84 整個「9-Box 脆弱性網格」方法論的根基。TR84 的核心貢獻是將 ICH Q9 的風險管理原則具體應用到資料完整性領域：</p>
+                        <ul>
+                            <li>風險辨識 → 識別資料脆弱性因素</li>
+                            <li>風險評估 → 資料重要性 × 管控水準 = 脆弱性等級</li>
+                            <li>風險控制 → 選擇適當的 DI 管控措施</li>
+                            <li>風險回顧 → 定期重新評估脆弱性狀態</li>
+                        </ul>
+                        <p>理解 ICH Q9 是正確應用 TR84 框架的先決條件。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 7：ICH Q10 — 製藥品質系統對 DI 的要求</h4>
+                        <p>ICH Q10 確立了製藥品質系統 (PQS) 的四大要素，其中<strong>「知識管理」</strong>與<strong>「品質風險管理」</strong>兩項直接關聯資料完整性：</p>
+                        <ul>
+                            <li>知識管理要求資料在整個生命週期中被妥善捕獲、儲存、分析</li>
+                            <li>偏差管理流程要求完整、即時、可歸屬的記錄</li>
+                            <li>CAPA 系統的有效性依賴於準確的原始資料</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 27–28：ICH Q8 &amp; Q12 — DI 在產品生命週期中的延伸</h4>
+                        <p><strong>ICH Q8(R2)</strong>（藥品開發）引入了設計空間 (Design Space) 概念，要求開發資料的完整可追溯性——這正是 DI 原則的延伸應用。</p>
+                        <p><strong>ICH Q12</strong>（產品生命週期管理）涉及上市後變更管理，而變更的支持數據必須符合 DI 要求。在 CDMO 中，協助客戶進行技術轉移時，歷史製程資料的 DI 合規性直接影響 NDA/MAA 補件審查結果。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>文獻 29：EU Annex 11 — 電腦化系統的歐盟標準</h4>
+                        <p>EU Annex 11（歐盟附件11）是對應美國 21 CFR Part 11 的歐盟法規，但在某些方面要求更嚴格：</p>
+                        <ul>
+                            <li>明確要求對電腦化系統進行<strong>驗證 (Validation)</strong>，包括供應商評估</li>
+                            <li>要求稽核軌跡的可讀性與回溯性</li>
+                            <li>涵蓋雲端服務與外包系統的管控要求（在 2011 年版本中已有前瞻性規定）</li>
+                            <li>要求<strong>數據備份與災難復原</strong>計畫的文件化驗證</li>
+                        </ul>
+                        <p>對同時服務 FDA 與 EMA 市場的 CDMO：EU Annex 11 + 21 CFR Part 11 的對比分析是 CSV (Computer System Validation) 專案的必要前置作業。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 應用場景：ICH Q9 × TR84 的實務整合</h4>
+                        <p>在你的年度品質系統審查 (Annual Product Review / PQR) 中，如何將 ICH Q9 的風險管理工具應用於資料完整性監控？</p>
+                        <ul>
+                            <li><strong>定期重新評估</strong>：每年對所有製程的 9-Box 定位進行一次正式審查，確認是否因系統升級或新設備引進而改變脆弱性等級</li>
+                            <li><strong>趨勢分析觸發</strong>：稽核軌跡異常頻率若超過預設閾值，應自動觸發 CAPA</li>
+                            <li><strong>供應商 DI 評估</strong>：將 ICH Q9 的供應商風險評估整合進 DI 稽查清單，特別針對提供電子批次記錄軟體的供應商</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== INDUSTRY STANDARDS & PDA REFS ===== -->
+            <div id="ref-industry" class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Industry Standards, PDA Technical Reports &amp; Other Sources</h3>
+
+                    <p class="ref-group-label">PDA Technical Reports</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">26.</span>
+                            <span>Parenteral Drug Association. <em>Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations</em>; PDA: Bethesda, Md., 2012; p 60.</span>
+                        </li>
+                    </ol>
+
+                    <p class="ref-group-label">ISPE Guides</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">23.</span>
+                            <span>International Society for Pharmaceutical Engineering. <em>GAMP Guide: Records &amp; Data Integrity</em>; ISPE: Bethesda, Md., 2017.</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">24.</span>
+                            <span>International Society for Pharmaceutical Engineering. <em>Good Practice Guide: Data Integrity — Key Concepts</em>; ISPE: Bethesda, Md., 2018.</span>
+                        </li>
+                    </ol>
+
+                    <p class="ref-group-label">Other Industry &amp; Academic Sources</p>
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">22.</span>
+                            <span>Parenteral Drug Association. <em>Elements of a Code of Conduct for Data Integrity in the Pharmaceutical Industry</em>; PDA: Bethesda, Md., 2016. https://www.pda.org/scientific-and-regulatory-affairs/regulatory-resources/code-of-conduct/elements-of-a-code-of-conduct-for-data-integrity-in-the-pharmaceutical-industry (accessed Aug 15 2019).</span>
+                        </li>
+                        <li>
+                            <span class="ref-num">25.</span>
+                            <span>Active Pharmaceutical Ingredients Committee (APIC). <em>Practical Risk-Based Guide for Managing Data Integrity</em>; APIC/Cefic: Online, 2019.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">業界標準與 PDA 自身文件解說</h3>
+
+                    <div class="concept-box">
+                        <h4>文獻 23：ISPE GAMP Guide: Records &amp; Data Integrity — 技術實作的橋樑</h4>
+                        <p>ISPE GAMP（電腦化系統驗證優良自動化製造實務）的資料完整性指南是「法規要求」與「IT 系統實作」之間最重要的橋樑文件。它具體說明了：</p>
+                        <ul>
+                            <li>各類電腦化系統（Category 1–5）的 DI 控制要求差異</li>
+                            <li>稽核軌跡的技術設計規範</li>
+                            <li>電子記錄的元數據管理要求</li>
+                            <li>雲端與 SaaS 系統的特殊 DI 考量</li>
+                        </ul>
+                        <p>對負責 CSV 的工程師和 IT 人員，此文件的優先級高於 TR84。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 24：ISPE GPG: Data Integrity Key Concepts — 入門學習首選</h4>
+                        <p>ISPE《Data Integrity Key Concepts》是寫給管理層和非 IT 專業人員的 DI 教育文件。它清晰定義了業界最常混淆的概念：</p>
+                        <ul>
+                            <li>Data vs. Record（資料 vs. 記錄）的區分</li>
+                            <li>Dynamic vs. Static data（動態 vs. 靜態資料）</li>
+                            <li>Critical data elements（關鍵資料要素）的識別方法</li>
+                        </ul>
+                        <p>建議作為新進 QA/QC 人員的 DI 訓練教材的補充讀物。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 26：PDA TR54 — QRM 應用於製造作業</h4>
+                        <p>PDA TR54 是品質風險管理 (QRM) 在製藥製造的應用指南。TR84 引用它是為了確立方法論一致性：TR84 的資料脆弱性評估方法是 TR54 QRM 工具的具體應用實例。</p>
+                        <p>若你的設施已導入 TR54 的 QRM 框架，將 DI 脆弱性評估整合進現有的風險評估 SOP 是最有效率的合規路徑。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>文獻 22：PDA DI 行為準則 — 企業文化層面</h4>
+                        <p>PDA 的《Elements of a Code of Conduct for Data Integrity》是業界少見從<strong>企業文化與倫理</strong>角度探討 DI 的文件。它強調：</p>
+                        <ul>
+                            <li>DI 不只是技術問題，更是組織文化問題</li>
+                            <li>管理層的承諾與示範效應對 DI 文化的決定性影響</li>
+                            <li>「心理安全感」（員工願意回報 DI 問題而不受懲罰）是持久 DI 合規的基礎</li>
+                        </ul>
+                        <p>許多 DI 違規的根本原因不是技術失敗，而是文化壓力（趕工、隱瞞偏差、目標壓力）。這份文件是提升組織 DI 文化的起點。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：APIC 文獻25 的實用價值</h4>
+                        <p>APIC（活性藥物成份委員會）的《Practical Risk-Based Guide for Managing Data Integrity》特別針對 API 製造環境，語言務實，案例豐富。</p>
+                        <p>如果說 FDA Q&amp;A 是「法條解釋」，MHRA 指引是「監管哲學」，那麼 APIC 指南就是「工廠操作手冊」——更接近 CDMO 現場實際需要解決的問題。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 應用場景：建立你的 DI 文獻優先閱讀清單</h4>
+                        <p>針對無菌充填 CDMO 的不同角色，以下是基於 TR84 參考文獻體系的建議閱讀優先順序：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>角色</th>
+                                    <th>優先文獻（文獻編號）</th>
+                                    <th>理由</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>QA Manager</td>
+                                    <td>2（FDA Q&amp;A）、3（MHRA）、13（CFR Part 11）、29（EU Annex 11）</td>
+                                    <td>稽查應答的直接依據</td>
+                                </tr>
+                                <tr>
+                                    <td>IT / CSV Engineer</td>
+                                    <td>13（CFR Part 11）、23（GAMP DI）、29（EU Annex 11）</td>
+                                    <td>系統設計規範</td>
+                                </tr>
+                                <tr>
+                                    <td>Operations Director</td>
+                                    <td>7（ICH Q10）、8（ICH Q9）、22（PDA Code of Conduct）</td>
+                                    <td>策略框架與文化建立</td>
+                                </tr>
+                                <tr>
+                                    <td>製程工程師</td>
+                                    <td>25（APIC 實用指南）、26（PDA TR54）、8（ICH Q9）</td>
+                                    <td>現場 DI 評估工具</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div id="summary" class="section-summary">
+        <h3>章節總結：Section 5 大數據管控與參考文獻</h3>
+        <ul>
+            <li><strong>大數據的挑戰已是現在進行式：</strong>TR84 第 6.0 節明確承認傳統 DI 管控機制無法因應製藥製造數位化後的大數據量，並宣告後續 PDA 技術報告將提供大數據治理框架（涵蓋資料分類、資料所有權、存取管理、變更管理）。</li>
+            <li><strong>IoT 與連續製造正在重新定義 DI 的邊界：</strong>每秒數千筆的感測器資料、光譜資料、RTRT 資料流，使傳統的「逐筆稽核軌跡審查」在物理上不可能完成，需要以例外事件報告 (Exception-Based Reporting) 和統計抽樣方法取代全面人工審查。</li>
+            <li><strong>21 CFR Part 11 與 EU Annex 11 是必要但不充分的：</strong>兩者均制定於大數據時代之前，對海量資料流的管控沒有具體操作指引；CDMO 需要結合 ISPE GAMP DI 指南等業界標準進行落地設計。</li>
+            <li><strong>TR84 的 29 份參考文獻構成完整的 DI 知識地圖：</strong>從法規指引（FDA、MHRA、WHO、PIC/S）、GMP 法規（21 CFR Part 11/211、EU Annex 11）、ICH 品質指引（Q8/Q9/Q10/Q12），到業界實務指南（ISPE GAMP、APIC），每份文件在不同層次支撐 TR84 的框架。</li>
+            <li><strong>CDMO 的行動重點：</strong>建立以 FDA Q&amp;A (文獻2) 為核心、MHRA 指引 (文獻3) 為補充的 DI SOP 語言體系；對照 ISPE GAMP DI 指南 (文獻23) 審查電腦化系統的稽核軌跡設計；以 ICH Q9 (文獻8) 為方法論基礎，定期重新評估 9-Box 脆弱性定位。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 84 — Data Integrity in Manufacturing and Packaging Operations (2020)</p>
+    <p>Section 5: Big Data &amp; References | 大數據管控與參考資料 | p38 – p40</p>
+    <p style="font-size:0.8rem; opacity:0.65; margin-top:0.5rem;">Educational material for internal training purposes. PDA TR84 &copy; 2020 Parenteral Drug Association, Inc.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

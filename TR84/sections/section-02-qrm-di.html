@@ -1,0 +1,2287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR84 Section 2: Quality Risk Management Applied to Data Integrity | 品質風險管理應用於資料完整性</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: 9-Box Grid Styling ===== */
+.grid-9box {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr;
+    gap: 0;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+}
+.grid-9box .grid-header {
+    background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+.grid-9box .grid-cell {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+.grid-9box .cell-red { background: #fee2e2; }
+.grid-9box .cell-orange { background: #fff3e0; }
+.grid-9box .cell-green { background: #e8f5e9; }
+.grid-9box .cell-blue { background: #e3f2fd; }
+.grid-9box .row-label {
+    background: #f7fafc;
+    font-weight: 600;
+    color: var(--primary-blue);
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    writing-mode: horizontal-tb;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Section 2: Quality Risk Management Applied to Data Integrity / 品質風險管理應用於資料完整性</h1>
+    <div class="subtitle">PDA Technical Report No. 84 — Data Integrity in Manufacturing and Packaging Operations</div>
+    <div class="page-info">PDA Technical Report No. 84 | p11 – p21</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 ICH Q9 品質風險管理（QRM）原則如何應用於資料完整性的全生命週期管理，掌握資料擷取、記錄、轉抄、歸檔各階段的風險控制策略。</li>
+            <li>熟練運用 9-Box 脆弱性評估矩陣（Vulnerability Grid），根據資料關鍵性（Data Criticality）與資料管控等級（Data Control Level）評估資料脆弱程度，並擬定對應的緩解措施。</li>
+            <li>掌握資料流程圖（Data Process Flow Map, DPFM）的建構方法，能針對特定製程單元操作識別資料完整性的高風險節點。</li>
+            <li>區分三大資料完整性風險類別——技術面（Data Management Technology）、人為因素（Human Factors）、GMP 製程（GMP Process）——並能將其對應至無菌充填廠的實際場景。</li>
+        </ol>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>本節結構 Section Structure</h3>
+        <div class="toc-grid">
+            <a href="#sec-4-0">4.0 QRM Applied to DI</a>
+            <a href="#sec-4-1">4.1 Considerations in Assessing Risk</a>
+            <a href="#sec-4-1-1">4.1.1 Human Factors</a>
+            <a href="#sec-4-1-2">4.1.2 Risk Control Strategies</a>
+            <a href="#sec-4-2">4.2 DI Risk Management Model</a>
+            <a href="#sec-4-2-1">4.2.1 Data Criticality</a>
+            <a href="#sec-4-2-2">4.2.2 Data Control Levels</a>
+            <a href="#sec-4-3">4.3 Data Vulnerability (9-Box)</a>
+            <a href="#sec-4-4">4.4 Using the 9-Box Grid</a>
+            <a href="#sec-4-5">4.5 Data Process Flow Maps</a>
+            <a href="#sec-4-5-1">4.5.1 DPFM Examples</a>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.0: QRM Applied to Data Integrity ===== -->
+    <div id="sec-4-0" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.0</div>
+            <div class="chapter-info">
+                <h2>Quality Risk Management Applied to Data Integrity / 品質風險管理應用於資料完整性</h2>
+                <p>ICH Q9 principles applied across the full data lifecycle</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The principles of <span class="key-term">QRM</span> apply to the <span class="key-term">data lifecycle</span>, which includes the capture, recording, transcription, archiving, and other aspects of data management. This section uses examples to describe how certain elements could pose a risk to the integrity of pharmaceutical and biopharmaceutical data. Risk should be controlled regardless of whether the data are managed using a manual system or an automated electronic system. Any potential breach related to data integrity—particularly the loss, omission, deletion, or alteration of data—must be investigated, addressed, and accounted for in the quality system and, as necessary, reflected in the risk management documentation. Given that data may be managed and/or transferred between different formats or systems, efforts should be made to mitigate the risk to the integrity of the data during these transfers. Therefore, judicious application of these concepts and targeted application of data integrity principles is warranted as the industry transitions from paper to hybrid (manual and electronic) and, eventually, to fully electronic systems. Data integrity risk also should be addressed during the transfer of data between electronic systems.</p>
+
+                    <p>The PDA Technical Report No. 54 series describes QRM more broadly, including how to conduct an appropriate risk assessment and formulate a mitigation strategy to reduce the risks identified. For more information on QRM generally and other important elements, such as risk communication, please see the TR 54 series and <span class="key-term">ICH Quality Guideline Q9: Quality Risk Management</span>.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：QRM 與資料生命週期</h4>
+                        <p>Quality Risk Management（品質風險管理）並非獨立於資料完整性（Data Integrity, DI）之外的體系，而是貫穿資料生命週期（Data Lifecycle）的管理框架。資料從產生、記錄、轉抄、傳輸到歸檔，每一環節都有潛在風險。</p>
+                        <p><strong>資料生命週期的關鍵階段：</strong></p>
+                        <ul>
+                            <li><strong>Capture（擷取）</strong>：原始數據產生點，如感測器讀值、秤重結果</li>
+                            <li><strong>Recording（記錄）</strong>：將數據寫入正式文件或系統</li>
+                            <li><strong>Transcription（轉抄）</strong>：數據從一個系統或格式轉移到另一個</li>
+                            <li><strong>Archiving（歸檔）</strong>：長期保存與可檢索性</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「快遞包裹的完整性」</h4>
+                        <p>把資料想成一個珍貴包裹。從寄件人（資料產生）到收件人（最終使用），途經攬收、分揀、轉運、配送等環節。任何一個環節出問題——包裹遺失（deletion）、內容被掉包（alteration）、寄錯地址（transfer error）——都破壞了包裹的完整性。QRM 就是在每個轉運點設置品質檢查站。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：紙本到電子的過渡期風險</h4>
+                        <p>TR84 特別強調產業從紙本 → 混合式（Hybrid）→ 全電子化的過渡期間，資料完整性風險尤其高。許多 CDMO 目前處於混合式系統階段，既有手寫批次記錄又有電子系統，數據在兩者之間轉抄時最容易出錯。</p>
+                        <p><strong>注意：</strong>ICH Q9（品質風險管理指南）與 PDA TR54 系列是本節的上位參考文件。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景</h4>
+                        <p>在無菌充填廠，常見的混合式資料流程包括：</p>
+                        <ul>
+                            <li>充填機 PLC 自動記錄充填重量 → 操作員手抄至批次記錄</li>
+                            <li>環境監控系統（EM）自動採樣 → 實驗室手動記錄結果至 LIMS</li>
+                            <li>溫度記錄器電子數據 → 列印後附於批次記錄</li>
+                        </ul>
+                        <p>每一個「系統間轉抄」節點都是資料完整性的高風險區域。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.1: Considerations in Assessing Risk ===== -->
+    <div id="sec-4-1" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.1</div>
+            <div class="chapter-info">
+                <h2>Considerations in Assessing Risk / 風險評估的考量因素</h2>
+                <p>Proactive and reactive risk assessments for data management systems</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p><span class="key-term">Risk assessments</span> should be conducted proactively at the time any new data management system is implemented and should be captured by the overarching change control. At this stage in the process, risk assessments can serve as preventive measures to ensure that data integrity is maintained throughout the system lifecycle. When performed on existing data management systems, the assessments should identify potential <span class="key-term">data vulnerabilities</span> based on the existing level of controls and the criticality of the data for its intended use.</p>
+
+                    <p>Organizations also should consider performing a risk assessment after a deviation or incident to identify potential gaps in the data management system. Assessment of data integrity risks also should be done in conjunction with the <span class="key-term">change management process</span> of a data management system to avoid creating new or additional risks. This will enable informed decision-making regarding the extent of the issue and the potential impact. Key objectives of this assessment are to determine if the root cause is related to a gap in data management and, if so, to identify the extent of the gap and the impact to the data.</p>
+
+                    <p>Data integrity controls should be considered from both the <span class="key-term">behavioral</span> and <span class="key-term">technical</span> perspectives. From a behavioral perspective, the overall quality culture, including communications and training, is intimately related to the effectiveness of the data integrity program.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：風險評估的三大時機</h4>
+                        <p>TR84 明確指出風險評估不是一次性動作，而是在三個關鍵時機執行：</p>
+                        <ol>
+                            <li><strong>預防性（Proactive）</strong>：新系統導入時，透過變更管制（Change Control）同步進行</li>
+                            <li><strong>反應性（Reactive）</strong>：偏差或事件發生後，識別資料管理系統中的潛在缺口</li>
+                            <li><strong>變更連動（Change-Linked）</strong>：資料管理系統變更時，避免引入新風險</li>
+                        </ol>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「房屋檢查的時機」</h4>
+                        <p>想像買房子：你會在交屋前做房屋檢查（預防性）、水管漏水後請水電師傅來查（反應性）、裝修改建時重新評估結構安全（變更連動）。資料管理系統的風險評估遵循完全相同的邏輯。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：行為面與技術面的雙軌管控</h4>
+                        <p>TR84 強調資料完整性管控必須同時涵蓋兩個面向：</p>
+                        <ul>
+                            <li><strong>技術面（Technical）</strong>：系統驗證、存取控制、稽核軌跡等硬體/軟體管控</li>
+                            <li><strong>行為面（Behavioral）</strong>：品質文化、溝通、教育訓練等人為管控</li>
+                        </ul>
+                        <p>僅依賴技術手段而忽略品質文化，終將無法有效防範資料完整性問題。這也是為什麼 FDA 近年在查廠時越來越重視對品質文化的評估。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>你的工廠最近將環境監控系統從紙本記錄升級為電子系統。請問：</p>
+                        <ol>
+                            <li>在系統切換的變更管制中，應進行哪些資料完整性風險評估？</li>
+                            <li>過渡期間，紙本與電子數據並存時，最大的 DI 風險點在哪裡？</li>
+                            <li>如何確保舊系統的歷史資料在遷移後仍保持完整性？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.1.1: Human Factors ===== -->
+    <div id="sec-4-1-1" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.1.1</div>
+            <div class="chapter-info">
+                <h2>Considering Human Factors in Assessing Risk / 風險評估中的人為因素</h2>
+                <p>Unintentional vs. intentional acts and the Human Factors Matrix</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>In considering the human behavioral influence when examining the elements that pose risk to data integrity, two categories need to be examined: <span class="key-term">unintentional</span> and <span class="key-term">intentional acts</span> (see Table 4.1.1-1):</p>
+
+                    <h3>Table 4.1.1-1: Human Factors Matrix</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Unintentional Act</th>
+                                <th>Intentional Act</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thinking Errors</strong></td>
+                                <td><strong>Procedure Gap</strong> — Error caused by gaps in rules stating what tasks should be performed and by whom, e.g., lack of or inadequate standard operating procedures (SOPs)<br><br><strong>Knowledge Gap</strong> — Error caused by knowledge gaps in how to perform a task, e.g., lack of or inadequate training</td>
+                                <td><strong>Fraud</strong> — Violations caused by malicious intent to perform a fraudulent act, e.g., falsifying data for personal gain or avoid personal pain</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Action Errors</strong></td>
+                                <td><strong>Attention Failure</strong> — Error caused by taking the wrong action, e.g., unfocused state of mind or a frequently performed action goes wrong or multitasking or aggressive deadlines<br><br><strong>Memory Failure</strong> — Error caused by taking no action, e.g., failure to perform a routine task due to forgetting its place in the sequence</td>
+                                <td><strong>Misconduct</strong> — Violations caused by knowingly ignoring procedures or controls due to misplaced priority, e.g., ignoring established controls to compensate for aggressive target or time pressure</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>One category is the <span class="key-term">unintentional act</span>. Risk may be unintentionally introduced in a variety of ways. The unintentional act may take the form of an "action error" caused by a slip in attention or lapse of memory, or a "thinking error" caused by gaps in governing procedures (knowing what or who) or knowledge (knowing how). For instance, numbers might be reversed in an entry or entered in the wrong spot due to a slip in attention. A bar code might have been applied incorrectly to materials that are brought into the processing room, and the operation started before operators realize that the materials were for a different batch. Another example could be that one operator sets up the equipment believing it will be used for one product, but a different product is brought in and processed.</p>
+
+                    <p>Appropriate procedures should be in place to require a documented investigation in the event of any mishandling or misuse of the data generated through such unintentional acts. The investigation should identify the root cause, determine the impact and criticality of the deviation, and assign appropriate <span class="key-term">CAPAs</span>. Where human error is suspected or identified as the cause, this should be justified, having taken care to ensure that process, procedural, or system-based errors or problems have not been overlooked, if present.</p>
+
+                    <p>The other category is the <span class="key-term">intentional act</span>. Risk may be introduced intentionally through misconduct, by failing to follow established procedures and controls due to misplaced priorities or through malicious acts. For example, to personally benefit or to avoid personal consequences associated with having made the mistake, an employee may cover up a mistake by creating false entries showing that the desired activity or result occurred. In one misconduct scenario, the operator was not paying attention to the mixing or blending operation and allowed it to run for longer than the validated time, but entered a value within the required range. Another example could be an overworked operator who is struggling to keep up with the manufacturing schedule and, in an effort to catch up, reprints the last acceptable in-process test result with the batch number of the new sample. Determining the reason for an intentional or malicious act may not always be possible.</p>
+
+                    <p>When a data integrity incident is identified, the most important information to learn is the <span class="key-term">what</span> (event and systems affected), <span class="key-term">when</span> (timelines), <span class="key-term">who</span> (persons involved), <span class="key-term">why</span> (gaps that contributed to the events occurring), <span class="key-term">how</span> (specifics, step-by-step explanation of occurrence), <span class="key-term">where</span> (systems affected) and <span class="key-term">impact</span> (product quality and patient safety). These elements are essential to determine the need for market action and, ultimately, lead to implementing corrective actions, which will assist in mitigating a recurrence of the data integrity issues.</p>
+
+                    <p>In the case of unintentional risks to data integrity, it will suffice to follow the process described for risk assessment in this section. Provided the "right" people are in the room—whether operators, technicians, mechanics, programmers, and/or supervisors—the risk assessment is likely to identify the areas in which an accident in data capture and recording is possible. The purpose of the risk assessment is to determine the probability of that accidental error occurring.</p>
+
+                    <p>When the risk to data integrity is the result of an intentional action, a comprehensive investigation is needed. <span class="key-term">Intentional manipulation</span> of data is hard to detect and may require the use of <span class="key-term">forensic detection techniques</span>. The risk assessment process may uncover some of the circumstances in which deliberate acts have occurred, but solid assurances that no repercussions will occur for contributing such information during a risk assessment requires a great deal of trust.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：人為因素矩陣（Human Factors Matrix）</h4>
+                        <p>TR84 將人為因素造成的資料完整性風險分為兩大類、四小類：</p>
+                        <table>
+                            <thead>
+                                <tr><th></th><th>非故意（Unintentional）</th><th>故意（Intentional）</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>思考錯誤</strong></td>
+                                    <td>程序缺口（SOP 不完善）<br>知識缺口（訓練不足）</td>
+                                    <td>詐欺（Fraud）<br>惡意偽造數據</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>行動錯誤</strong></td>
+                                    <td>注意力失誤（Slip）<br>記憶失誤（Lapse）</td>
+                                    <td>行為不端（Misconduct）<br>明知故犯、跳過管控</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「交通事故的分類」</h4>
+                        <p>非故意行為就像交通事故：</p>
+                        <ul>
+                            <li><strong>注意力失誤（Slip）</strong>= 開車分心滑手機，不小心闖紅燈</li>
+                            <li><strong>記憶失誤（Lapse）</strong>= 忘記打方向燈就轉彎</li>
+                            <li><strong>程序缺口</strong>= 路口沒有交通號誌，駕駛不知該讓誰先行</li>
+                            <li><strong>知識缺口</strong>= 新手駕駛不熟悉圓環規則</li>
+                        </ul>
+                        <p>故意行為則像酒駕（明知違法但心存僥倖）或蓄意衝撞（惡意破壞）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管警示：「人為錯誤」不能成為萬用藉口</h4>
+                        <p>TR84 特別強調：當調查將根本原因歸結為「人為錯誤（Human Error）」時，必須先確認沒有遺漏製程、程序或系統面的根本原因。FDA 查廠員對於過度使用「human error」作為根因深感不滿——這往往意味著企業未深入挖掘系統性問題。</p>
+                        <p><strong>正確做法：</strong>先排除系統性原因（SOP 不清、設備缺陷、系統漏洞），才能將根因歸於人為因素。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>DI 事件調查的 6W1H 框架</h4>
+                        <p>TR84 提出調查 DI 事件時必須回答的核心問題：</p>
+                        <ul>
+                            <li><strong>What（什麼）</strong>：事件內容與受影響的系統</li>
+                            <li><strong>When（何時）</strong>：時間線與持續期間</li>
+                            <li><strong>Who（誰）</strong>：涉及人員</li>
+                            <li><strong>Why（為何）</strong>：導致事件發生的管理缺口</li>
+                            <li><strong>How（如何）</strong>：逐步說明事件發生經過</li>
+                            <li><strong>Where（哪裡）</strong>：受影響的系統範圍</li>
+                            <li><strong>Impact（影響）</strong>：對產品品質與病患安全的影響</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景</h4>
+                        <p><strong>情境一：非故意行為</strong></p>
+                        <p>無菌充填線操作員在記錄充填重量時，將「5.02 mL」誤寫為「5.20 mL」（注意力失誤/Slip）。第二人確認時未發現，因為兩個數值都在可接受範圍內。</p>
+                        <p><strong>情境二：故意行為（Misconduct）</strong></p>
+                        <p>夜班操作員在充填作業中發現粒子數超標，但因為排程壓力且主管不在場，選擇重新取樣直到結果合格，並只記錄合格的結果。這不是 Fraud（無個人獲利動機），而是 Misconduct（因為不當的優先排序而故意忽略管控）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>故意行為的偵測挑戰</h4>
+                        <p>TR84 坦承：故意的資料操縱（Intentional Manipulation）極難偵測，可能需要使用數位鑑識技術（Forensic Detection Techniques），例如：</p>
+                        <ul>
+                            <li>比對 Audit Trail 時間戳記與操作員上班記錄</li>
+                            <li>分析重複登入/登出模式</li>
+                            <li>追蹤已刪除或覆蓋的電子記錄</li>
+                        </ul>
+                        <p>風險評估過程中也需要建立信任環境，讓參與者願意坦白分享可能的漏洞，而不擔心遭受懲罰。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.1.2: Risk Control Strategies ===== -->
+    <div id="sec-4-1-2" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.1.2</div>
+            <div class="chapter-info">
+                <h2>Risk Control Strategies / 風險管控策略</h2>
+                <p>Balancing automation, procedural controls, and supervisory review</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The potential impact on data must be determined and documented and, following the <span class="key-term">risk assessment</span>, mitigations must be determined to reduce risk. For risks that have been identified as having a high probability of occurrence and a high impact on product quality or patient safety, a balanced <span class="key-term">risk control strategy</span> will need to be implemented. Understanding the manufacturing process and data lifecycle processes is crucial to developing successful risk control strategies.</p>
+
+                    <p>Although <span class="key-term">automation</span> is not the solution to every problem, it can be a useful tool as part of a risk control strategy. <span class="key-term">Intelligent barcodes</span> can be used to confirm product and component identity and can prevent a process from proceeding until the error is rechecked and corrected. The time-honored use of a <span class="key-term">second person checking</span> or a supervisor reviewing is also important, provided that it is timely. Frequently, the supervisory review takes place too long after an event to confirm that it occurred as recorded. Moving further into the digital age, electronic automation will replace such reviews when implemented and qualified appropriately.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：風險管控的三層策略</h4>
+                        <p>TR84 的風險管控策略可歸納為三個層次：</p>
+                        <ol>
+                            <li><strong>自動化管控（Automation）</strong>：透過系統設計消除人為介入點，如智慧條碼（Intelligent Barcode）強制核對物料身分</li>
+                            <li><strong>程序性管控（Procedural）</strong>：第二人確認（Second Person Checking）、主管審核</li>
+                            <li><strong>文化性管控（Cultural）</strong>：品質文化建設、教育訓練、開放報告環境</li>
+                        </ol>
+                        <p>最有效的策略是從上而下——優先消除風險源（自動化），其次偵測風險（程序），最後依賴人的行為（文化）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管警示：「事後審核」的時效性問題</h4>
+                        <p>TR84 特別點出一個常見問題：主管審核（Supervisory Review）往往發生在事件之後太久，已經無法有效確認記錄的真實性。</p>
+                        <p>例如：批次記錄的 QA 審核在生產完成後兩週才進行，此時即使發現異常，也很難追溯當時的實際狀況。</p>
+                        <p><strong>最佳實踐：</strong>審核應盡可能即時（Real-time），或至少在同一班次內完成。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景</h4>
+                        <p><strong>智慧條碼在無菌充填線的應用：</strong></p>
+                        <ul>
+                            <li>每個藥液容器貼有唯一 2D 條碼，充填機在開始作業前必須掃描確認</li>
+                            <li>如果條碼不符合批次配方，系統自動鎖定、無法啟動充填</li>
+                            <li>這個「防呆機制（Poka-yoke）」消除了操作員拿錯藥液的可能性</li>
+                        </ul>
+                        <p>這比傳統的「第二人目視確認物料標籤」可靠度高出許多數量級。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「飛機駕駛艙的演化」</h4>
+                        <p>早期飛機完全依賴飛行員手動操控（=手動記錄）。後來加入副駕駛覆核（=第二人確認）。現代客機有自動駕駛、地面警告系統、自動防撞系統（=自動化管控）。TR84 鼓勵的方向就是：讓系統替人把關，而非依賴人永遠不犯錯。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.2: Data Integrity Risk Management Model ===== -->
+    <div id="sec-4-2" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.2</div>
+            <div class="chapter-info">
+                <h2>Data Integrity Risk Management Model / 資料完整性風險管理模型</h2>
+                <p>The framework connecting data criticality, data controls, and data vulnerability</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>All data, whether recorded electronically or on paper, requires a <span class="key-term">risk management approach</span> to determine what controls are important to assure data integrity.</p>
+
+                    <p>In order to estimate the level of exposure to potential data integrity issues, the following elements must be considered, as illustrated in Figure 4.2-1:</p>
+
+                    <ul>
+                        <li><span class="key-term">Data criticality</span></li>
+                        <li>Current (existing) level of <span class="key-term">data controls</span>, including:
+                            <ul>
+                                <li><span class="key-term">Data management</span> – how data is recorded (manual or automated)</li>
+                                <li><span class="key-term">Human factors</span> – the amount of human intervention involved in the manufacturing process (manual or automated)</li>
+                                <li><span class="key-term">GMP process</span> – including written procedures, training, validation, etc.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p>Thus, data criticality and current level of data controls, taken together, can aid in identifying the risk of <span class="key-term">data vulnerability</span>. Data vulnerability can indicate the level of exposure to data integrity issues due to intrinsic weaknesses in the control of three key elements: data capture technology (data management), human factors, manufacturing processes, or a combination of all three.</p>
+
+                    <h3>Figure 4.2-1: Data Integrity Risk Management Model (Flowchart)</h3>
+                    <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.88rem;">
+                        <p><strong>Step 1:</strong> Identify a GMP process in a unit operation needing DI assessment</p>
+                        <p style="text-align:center;">&#8595;</p>
+                        <p><strong>Step 2:</strong> GEMBA Walk + Data Process Flow Mapping</p>
+                        <p style="text-align:center;">&#8595;</p>
+                        <p><strong>Step 3:</strong> Determine Data Criticality (Section 4.2.1)</p>
+                        <p style="text-align:center;">&#8595;</p>
+                        <p><strong>Step 4:</strong> Determine current level of Data Controls (Section 4.2.2) — assess Data Management, Human Factors, GMP Process</p>
+                        <p style="text-align:center;">&#8595;</p>
+                        <p><strong>Step 5:</strong> Map Data Vulnerability to 9-Box (Section 4.3)</p>
+                        <p style="text-align:center;">&#8595;</p>
+                        <p><strong>Decision:</strong> In Red/Orange zones?</p>
+                        <p>&nbsp;&nbsp;&#8594; <strong>Yes:</strong> Define risk control strategy to avoid Red/Orange zones (Sections 4.1.2 &amp; 4.5)</p>
+                        <p>&nbsp;&nbsp;&#8594; <strong>No:</strong> Level of Controls in place ensures inadvertent data integrity issues are unlikely to occur but may not prevent intentional falsification. See Section 5.2 for potential differentiated controls.</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：DI 風險管理模型的三要素</h4>
+                        <p>TR84 的核心模型建立在三個要素的交互評估上：</p>
+                        <ol>
+                            <li><strong>資料關鍵性（Data Criticality）</strong>：該資料對產品品質的重要程度</li>
+                            <li><strong>資料管控等級（Data Control Level）</strong>：現有的管控措施強度</li>
+                            <li><strong>資料脆弱性（Data Vulnerability）</strong>：前兩者結合後的風險暴露程度</li>
+                        </ol>
+                        <p>資料管控等級又細分為三個子面向：資料管理技術（Data Management）、人為因素（Human Factors）、GMP 製程（GMP Process）。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>模型邏輯公式</h4>
+                        <pre>資料脆弱性 = f（資料關鍵性, 資料管控等級）
+
+其中：
+  資料管控等級 = g（資料管理技術, 人為因素, GMP 製程）
+
+評估結果 → 9-Box 脆弱性矩陣定位
+  → 紅/橘區 → 必須制定風險管控策略
+  → 綠/藍區 → 管控等級與資料關鍵性相稱</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「保險評估」</h4>
+                        <p>把資料完整性風險想像成保險公司評估理賠風險：</p>
+                        <ul>
+                            <li><strong>資料關鍵性</strong> = 保險標的的價值（一棟豪宅 vs. 一台腳踏車）</li>
+                            <li><strong>資料管控等級</strong> = 現有防護措施（保全系統、消防設備、鄰里守望）</li>
+                            <li><strong>資料脆弱性</strong> = 綜合評估後的風險等級（保費高低）</li>
+                        </ul>
+                        <p>價值越高、防護越弱 → 風險越大（紅區）；價值一般、防護完善 → 風險低（藍區）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：GEMBA Walk 的重要性</h4>
+                        <p>Figure 4.2-1 流程圖的第一步提到 GEMBA Walk（現場走訪）。GEMBA 是日文「現場」的意思，強調必須實地觀察製造流程，而非僅靠文件和會議室討論來進行風險評估。</p>
+                        <p>在 CDMO 環境中，GEMBA Walk 意味著走到充填線旁，親眼觀察操作員如何記錄數據、系統如何擷取參數、紙本與電子系統如何銜接。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.2.1: Classification of Data Criticality ===== -->
+    <div id="sec-4-2-1" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.2.1</div>
+            <div class="chapter-info">
+                <h2>Classification of Data Criticality / 資料關鍵性分類</h2>
+                <p>High, Medium, and Low criticality based on impact to product quality and patient safety</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p><span class="key-term">Data criticality</span> is a function of the relationship between the specific data and product quality. It is based on knowledge of the product gained from process development, validation, and quality processes throughout the product lifecycle and is facilitated by a set of relevant questions leading to a classification of data criticality as <span class="key-term">High</span>, <span class="key-term">Medium</span>, or <span class="key-term">Low</span> (see Table 4.2.1-1).</p>
+
+                    <p>All data related to manufacturing is critical as it is necessary to allow for the reconstruction of actual events; however, the criticality level may differ due to the data's use and the controls under which it was generated. Data that is related to product quality (or supports a disposition decision) and patient safety would generally be classified as High criticality. <span class="key-term">Critical quality attributes (CQAs)</span> and <span class="key-term">critical process parameters (CPPs)</span> would be classified as High criticality. Data that is related to process robustness and consistency would be considered Medium criticality. Data that is related to neither would be considered general GMP and of Low criticality.</p>
+
+                    <p>Data criticality is a measure of the significance of a data point or data set in supporting the safety, quality, identity, purity, potency, and/or effectiveness of the product being manufactured. The manufacturer can best determine the criticality of the data generated by its own processes since it knows the <span class="key-term">quality target product profile</span>, CQAs, critical processes, and CPPs for the product being manufactured. This concept also applies to clinical trial manufacturing. While CPPs and CQAs may not be fully established in that context, initial information should be available to determine the critical aspects of the manufacturing processes and existing controls.</p>
+
+                    <h3>Table 4.2.1-1: Classification of Data Criticality</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Criticality</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge red">High</span></td>
+                                <td>When the intended use of the data directly impacts product quality and/or product safety:
+                                    <ul>
+                                        <li>Product quality monitoring and control of processes that may be responsible for causing variability during manufacturing, release, or distribution impacting critical quality attributes, critical material attributes, critical process parameters, or critical process controls, including those that may be linked with the product registration dossier (where applicable)</li>
+                                        <li>Product safety monitoring and control of processes that ensure effective management of field alerts, recalls, complaints, or adverse events</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge yellow">Medium</span></td>
+                                <td>When the intended use of the data relates to quality attributes, material attributes, process parameters, key process parameters, or process controls that are not CQAs/Critical Processes (CPs)/CPPs and may or may not be in the product registration dossier; this includes parameters of the manufacturing process that "may not be directly linked to critical product quality attributes but need to be tightly controlled to assure process consistency"</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge green">Low</span></td>
+                                <td>When the intended use of the data is to provide evidence of GMP compliance relating to monitoring and control of processes that do not fall into the High or Medium category</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：資料關鍵性（Data Criticality）三級分類</h4>
+                        <p>資料關鍵性是衡量某一筆資料對產品安全性、品質、純度、效力的支撐程度。TR84 將其分為三級：</p>
+                        <ul>
+                            <li><strong>High（高）</strong>：直接影響 CQA/CPP 與產品安全決策的資料</li>
+                            <li><strong>Medium（中）</strong>：影響製程穩健性但非 CQA/CPP 的資料</li>
+                            <li><strong>Low（低）</strong>：一般 GMP 合規性證據</li>
+                        </ul>
+                        <p><strong>重要原則：</strong>所有 GMP 資料都是「關鍵的（Critical）」，差別只在關鍵程度。即使是 Low 級資料，也不代表可以不管控。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景：無菌充填廠的資料分類範例</h4>
+                        <table>
+                            <thead>
+                                <tr><th>關鍵性</th><th>資料範例</th><th>原因</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge red">High</span></td>
+                                    <td>充填重量、無菌測試結果、滅菌溫度/時間、粒子計數</td>
+                                    <td>直接影響 CQA（無菌性、劑量準確性）與 CPP（滅菌參數）</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge yellow">Medium</span></td>
+                                    <td>房間壓差、HEPA 風速、設備清潔記錄</td>
+                                    <td>影響製程穩健性但不直接決定產品品質</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge green">Low</span></td>
+                                    <td>人員更衣記錄、物料倉儲溫度日誌、設備維護排程</td>
+                                    <td>一般 GMP 合規性證據</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管警示：臨床試驗製造也適用</h4>
+                        <p>TR84 明確指出，資料關鍵性分類同樣適用於臨床試驗製造。雖然在臨床階段 CQA 和 CPP 可能尚未完全確立，但已有的初始資訊仍應用於識別製程的關鍵面向。</p>
+                        <p>對 CDMO 而言，這意味著即使是 Phase I/II 的小規模試製批，也需要進行資料關鍵性評估，不能以「尚在開發中」為由省略。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>判斷資料關鍵性的決策邏輯</h4>
+                        <pre>問題 1：該資料是否直接影響 CQA/CPP？
+  → 是 → High
+
+問題 2：該資料是否與製程穩健性/一致性相關？
+  → 是 → Medium
+
+問題 3：該資料僅為 GMP 合規性記錄？
+  → 是 → Low
+
+注意：企業可自訂更細的分級（如5級），但不可
+削弱本框架的核心精神。</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.2.2: Data Control Levels ===== -->
+    <div id="sec-4-2-2" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.2.2</div>
+            <div class="chapter-info">
+                <h2>Data Control Levels / 資料管控等級</h2>
+                <p>High, Medium, and Low levels of data controls based on automation and human intervention</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>An assessment must be performed to determine the existing level of <span class="key-term">data controls</span> (Table 4.2.2-1). High-level data controls are those associated with <span class="key-term">validated automated processes</span> and minimal human intervention throughout the data lifecycle, whereas low-level data controls are those that involve manual processes with a high degree of human intervention throughout the data lifecycle. Section 5.0 provides some examples of high-, medium-, and low-level data controls that may be appropriate for the criticality of the activity.</p>
+
+                    <h3>Table 4.2.2-1: Data Control Levels</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Control Level</th>
+                                <th>Definition / Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge green">High</span></td>
+                                <td>High degree of validated process automation; electronic data lifecycle (e.g., capture, analysis, reporting); minimal human intervention</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge yellow">Medium</span></td>
+                                <td>Hybrid—some manual processes; semi-automated data lifecycle processes; partial or lack of system interfaces</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge red">Low</span></td>
+                                <td>Manual data lifecycle (e.g., capture, transcription, second-person witnessing); manual process measurements and testing; manual processes with a high degree of human intervention</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：資料管控等級（Data Control Level）</h4>
+                        <p>資料管控等級是衡量現有管控措施「強度」的指標，核心維度是<strong>自動化程度</strong>與<strong>人為介入程度</strong>的對比：</p>
+                        <ul>
+                            <li><strong>High（高）</strong>：經驗證的自動化流程，人為介入最少</li>
+                            <li><strong>Medium（中）</strong>：混合式系統，部分自動化、部分手動</li>
+                            <li><strong>Low（低）</strong>：全手動的資料生命週期，高度依賴人為操作</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景：無菌充填廠的管控等級範例</h4>
+                        <table>
+                            <thead>
+                                <tr><th>管控等級</th><th>場景</th><th>說明</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge green">High</span></td>
+                                    <td>充填機 → SCADA → MES → 電子批次記錄</td>
+                                    <td>全程自動擷取、自動分析、電子審核。操作員僅監控異常。</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge yellow">Medium</span></td>
+                                    <td>充填機自動記錄 → 列印報表 → 手動附於批次記錄</td>
+                                    <td>擷取自動化，但轉抄與歸檔仍為手動。系統介面不完整。</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge red">Low</span></td>
+                                    <td>操作員目視讀取充填機顯示值 → 手寫於批次記錄 → 第二人確認</td>
+                                    <td>全手動操作，每個步驟都依賴人工。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「考試監考的三種方式」</h4>
+                        <ul>
+                            <li><strong>High 管控</strong> = 線上考試系統：自動計時、防切換視窗、AI 偵測作弊 → 人為作弊機會極低</li>
+                            <li><strong>Medium 管控</strong> = 教室考試 + 監考老師：有人監督，但監考員可能分心、覆蓋範圍有限</li>
+                            <li><strong>Low 管控</strong> = 帶回家的開書考試：完全信任學生自律 → 風險最高</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.3: Data Vulnerability (9-Box) ===== -->
+    <div id="sec-4-3" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.3</div>
+            <div class="chapter-info">
+                <h2>Data Vulnerability (9-Box) / 資料脆弱性（九宮格矩陣）</h2>
+                <p>The core vulnerability assessment grid mapping criticality vs. control levels</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p><span class="key-term">Data vulnerability</span> is an indicator of the level of exposure to data integrity issues due to intrinsic weaknesses in three key elements: data management technology, human factors, GMP manufacturing processes, or a combination thereof.</p>
+
+                    <p>To determine the vulnerability of the data being collected, the user first must assess the level of <span class="key-term">data criticality</span> and the existing level of <span class="key-term">data control</span>. Each will be assessed as High, Medium, or Low, using the definitions in Tables 4.2.1-1 and 4.2.2-1.</p>
+
+                    <p>Subsequently, a <span class="key-term">9-Box grid</span> can be created by mapping the data criticality level with the data control level. The 9-Box grid helps visualize how data criticality and data controls interact to rank levels of risk. The criticality of the data will determine the row of the vulnerability grid, while the level of control associated with the data will dictate the appropriate column.</p>
+
+                    <p>This grid includes nine unique combinations (pairs) of data criticality and data control levels, as illustrated in Table 4.3-1, that can be grouped into four different categories:</p>
+
+                    <ul>
+                        <li><span class="badge red">Red</span>: <span class="key-term">Significant data vulnerability</span>—the level of data controls is Low for High criticality data.</li>
+                        <li><span class="badge yellow">Orange</span>: <span class="key-term">Moderate data vulnerability</span>—the level of controls is not commensurate with the criticality of the data.</li>
+                        <li><span class="badge green">Green</span>: <span class="key-term">Acceptable data vulnerability</span>—the level of controls is commensurate with the criticality of the data.</li>
+                        <li><span class="badge blue">Blue</span>: <span class="key-term">Negligible data vulnerability</span>—there may be more controls in place than the minimum required; this applies only for data that is not High criticality.</li>
+                    </ul>
+
+                    <p>The objective is to have the right level of controls in place based on the criticality of the data, and avoid being in the red or orange boxes. The goal of mitigation strategies, then, is to move from right to left by increasing the level of data control. In this assessment, all data relevant to GMP is critical, even if it relates to routine operations.</p>
+
+                    <p>The 9-Box grid in Table 4.3-1 provides a visual depiction of the vulnerability of data given the current level of data management controls and the criticality of the data. The 9-Box grid does not provide any opportunity or cover for falsification of data.</p>
+
+                    <p>Table 4.3-1 depicts only the data controls relating to data management technology. For a holistic assessment of vulnerability, the data controls relating to human factors and the GMP process should be similarly assessed. Appendix 1 provides further instructions for using the 9-Box grid, with illustrative examples.</p>
+
+                    <h3>Table 4.3-1: Data Vulnerability Grid (9-Box)</h3>
+
+                    <!-- 9-Box Grid -->
+                    <div class="grid-9box">
+                        <!-- Header Row -->
+                        <div class="grid-header"></div>
+                        <div class="grid-header">High Control</div>
+                        <div class="grid-header">Medium Control</div>
+                        <div class="grid-header">Low Control</div>
+
+                        <!-- High Criticality Row -->
+                        <div class="row-label">High<br>Criticality</div>
+                        <div class="grid-cell cell-green"><strong>(H/H)</strong> CQA/CP/CPP impacting quality &amp; safety. Validated &amp; effective automated or hybrid data capture &amp; analysis system in place.</div>
+                        <div class="grid-cell cell-orange"><strong>(H/M)</strong> CQA/CP/CPP impacting quality &amp; safety. Hybrid systems or manual data capture, limited automated data analysis, manual data transcription.</div>
+                        <div class="grid-cell cell-red"><strong>(H/L)</strong> CQA/CP/CPP impacting quality &amp; safety. Manual data capture, no automated data analysis, manual data transcription, heavy reliance on second-person witnessing.</div>
+
+                        <!-- Medium Criticality Row -->
+                        <div class="row-label">Medium<br>Criticality</div>
+                        <div class="grid-cell cell-blue"><strong>(M/H)</strong> Processes not CQA/CP/CPP but need tight control. Validated automated system. More controls than may be required.</div>
+                        <div class="grid-cell cell-green"><strong>(M/M)</strong> Processes not CQA/CP/CPP but need tight control. Hybrid systems or manual data capture, limited automated data analysis.</div>
+                        <div class="grid-cell cell-orange"><strong>(M/L)</strong> Processes not CQA/CP/CPP but need tight control. Manual data capture, no automated data analysis, heavy reliance on second-person witnessing.</div>
+
+                        <!-- Low Criticality Row -->
+                        <div class="row-label">Low<br>Criticality</div>
+                        <div class="grid-cell cell-blue"><strong>(L/H)</strong> GMP compliance data not high or medium. Validated automated system. More controls than may be required.</div>
+                        <div class="grid-cell cell-blue"><strong>(L/M)</strong> GMP compliance data not high or medium. Hybrid systems. More controls than may be required.</div>
+                        <div class="grid-cell cell-green"><strong>(L/L)</strong> GMP compliance data not high or medium. Manual data capture, manual transcription, heavy reliance on second-person witnessing.</div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：9-Box 脆弱性評估矩陣（Vulnerability Grid）</h4>
+                        <p>9-Box 是 TR84 最核心的風險評估工具。它將<strong>資料關鍵性</strong>（Y 軸，3 級）與<strong>資料管控等級</strong>（X 軸，3 級）交叉配對，產生 9 種組合，歸入 4 種顏色類別：</p>
+                        <table>
+                            <thead>
+                                <tr><th>顏色</th><th>中文</th><th>含義</th><th>行動</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span class="badge red">紅</span></td><td>顯著脆弱</td><td>高關鍵性 + 低管控</td><td>立即改善</td></tr>
+                                <tr><td><span class="badge yellow">橘</span></td><td>中度脆弱</td><td>管控與關鍵性不相稱</td><td>優先改善</td></tr>
+                                <tr><td><span class="badge green">綠</span></td><td>可接受</td><td>管控與關鍵性相稱</td><td>維持現狀</td></tr>
+                                <tr><td><span class="badge blue">藍</span></td><td>可忽略</td><td>管控超出最低要求</td><td>可考慮資源重新分配</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管警示：三個面向需分別評估</h4>
+                        <p>Table 4.3-1 僅針對資料管理技術（Data Management Technology）一個面向。TR84 要求對<strong>三個面向</strong>分別進行 9-Box 評估：</p>
+                        <ol>
+                            <li>資料管理技術（自動化程度）</li>
+                            <li>人為因素（人為介入程度）</li>
+                            <li>GMP 製程（製程複雜度與穩健性）</li>
+                        </ol>
+                        <p>三個 9-Box 的綜合結果才能提供完整的脆弱性評估。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>9-Box 定位邏輯</h4>
+                        <pre>Y 軸（列）= 資料關鍵性 → High / Medium / Low
+X 軸（欄）= 資料管控等級 → High / Medium / Low
+
+紅區（1格）：H/L → 必須立即補救
+橘區（2格）：H/M, M/L → 應優先改善
+綠區（3格）：H/H, M/M, L/L → 管控適當
+藍區（3格）：M/H, L/H, L/M → 可能過度管控
+
+改善方向：從右向左移動（提升管控等級）
+  例：H/L（紅）→ H/M（橘）→ H/H（綠）</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「安全帶等級搭配車速」</h4>
+                        <ul>
+                            <li><strong>紅區（H/L）</strong>= 高速公路上不繫安全帶 → 極度危險</li>
+                            <li><strong>橘區（H/M）</strong>= 高速公路上只有腰帶沒有肩帶 → 不夠安全</li>
+                            <li><strong>綠區（H/H）</strong>= 高速公路上有三點式安全帶+氣囊 → 適當</li>
+                            <li><strong>藍區（L/H）</strong>= 停車場低速行駛卻穿全套賽車安全帶 → 過度但無害</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要限制：9-Box 無法防偽造</h4>
+                        <p>TR84 明確指出：9-Box 矩陣<strong>不能</strong>為資料偽造提供任何機會或掩護。即使某資料被歸類為「低關鍵性/低管控」（綠區），仍然不允許偽造。9-Box 是風險分級工具，不是放寬合規要求的藉口。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>在你的無菌充填廠中，以下資料各落在 9-Box 的哪個區域？</p>
+                        <ol>
+                            <li>滅菌釜溫度記錄（CQA），由經驗證的溫度探針自動記錄並傳至 SCADA</li>
+                            <li>充填重量（CPP），操作員手動秤重並手寫於批次記錄</li>
+                            <li>更衣室壓差日誌，每班人工抄錄壓差計讀數</li>
+                            <li>設備維護記錄，技術員手寫於維護日誌本</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.4: Using the Data Vulnerability Grid ===== -->
+    <div id="sec-4-4" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>Using the Data Vulnerability Grid / 如何使用資料脆弱性矩陣</h2>
+                <p>Practical application of the 9-Box for each process and subprocess</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The <span class="key-term">data vulnerability grid (9-Box)</span>, as depicted in the flowchart in Figure 4.2-1, will not provide one overall categorization of a company's data vulnerability, but offers a tool to use for each process and subprocess of operations that involve GMP data. The 9-Box is a holistic approach that allows users to categorize the risk to the data in their current manufacturing processes and data lifecycle processes using internal data criticality and data control assessments. Companies can leverage the information captured in previous risk assessments and <span class="key-term">data flow maps</span> to provide information on the manufacturing process, methods of data capture, data migration, transfer of data from production to analysis tools, and archiving. The 9-Box can also be used before implementing new or revised processes. The outcome of the assessments will be only as good as the completeness and objectivity of the internal assessments. Underestimating risk factors and overestimating current data integrity controls will diminish the effectiveness of the outcome.</p>
+
+                    <p>The 9-Box also allows users to identify controls that could be implemented to decrease the risk to data in the manufacturing process. Implementation of those controls could decrease data vulnerability from a high level to a lower level (from right to left in the grid). Examples for implementing the 9-Box in specific scenarios are included in Appendix I.</p>
+
+                    <p>This technical report recommends, as the first step, selecting a product and identifying the data that is critical for that product to meet its approved specifications and its intended use (see Section 4.2.1.) The critical data for the product should have been identified already as part of the <span class="key-term">product development process</span> and included in corresponding documentation. After identifying the data that impacts the product CQAs and the processes that are critical in its manufacture, the user can prioritize internal assessments, identify risk factors, and categorize the data vulnerability for these critical processes.</p>
+
+                    <p>Because three main elements impact data vulnerability—<span class="key-term">data management technology</span>, <span class="key-term">human factors</span>, and <span class="key-term">GMP process</span>—the next step is to consider these three categories when assessing the specific data management process for the operation being evaluated. After completing this analysis for a specific process or unit operation, the completed information may be leveraged for the same process or unit operation used for another product, giving due consideration to potential differences.</p>
+
+                    <p>For <span class="key-term">data management</span>, the full lifecycle of the data needs to be considered to determine areas of vulnerability. This includes how the data is captured (manual/automated/hybrid system), frequency of collection, validation of any automated systems used to capture the data, migration of production data to data analysis tools, data transcription, and data archiving. Here, again, existing data flow maps from previous assessments can be leveraged.</p>
+
+                    <p>For <span class="key-term">human factors</span>, points of human intervention in the data lifecycle need to be considered to determine data vulnerability. As people are prone to error, processes that rely heavily on manual data capture and review are considered inherently more vulnerable than those that are automated. To determine the reliability of the current processes, the assessment should consider trends related to data transcription errors and poor application of good documentation practices. Conversely, automated data collection, properly validated, will be less prone to error and more likely to yield high quality data.</p>
+
+                    <p>For <span class="key-term">GMP process</span>, the complexity and robustness of the manufacturing process being evaluated should be considered to determine areas of data vulnerability. More complex processes are likely to produce a larger volume of data, which could increase the number of factors that impact the data vulnerability. The assessment needs to look at all aspects of the manufacturing process and evaluate each process on a case-by-case basis. A newer manufacturing process that has been validated recently and that lacks a history of robustness will have greater data vulnerability than an established process with a high-process capability. Trends related to change control, out of specification (OOS) results, alarms, and out-of-calibration instances can also illustrate the vulnerability of data being collected for the manufacturing process. Once identified, the trends should be investigated to determine their relationship to data vulnerability.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：9-Box 的正確使用方式</h4>
+                        <p>TR84 強調幾個關鍵原則：</p>
+                        <ul>
+                            <li>9-Box 不是給「整家公司」一個整體評級，而是針對<strong>每個製程/子製程</strong>個別評估</li>
+                            <li>評估結果的品質取決於內部評估的<strong>完整性與客觀性</strong></li>
+                            <li>低估風險因子或高估現有管控 → 評估結果失真</li>
+                            <li>三個面向（技術、人為、GMP 製程）需<strong>分別評估</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>三步驟評估流程</h4>
+                        <p><strong>Step 1：選擇產品，識別關鍵資料</strong></p>
+                        <p>從產品開發文件中找出 CQA 和 CPP 對應的關鍵資料。</p>
+                        <p><strong>Step 2：評估三個面向的管控等級</strong></p>
+                        <ul>
+                            <li>資料管理技術：擷取方式、收集頻率、系統驗證狀態、資料遷移與歸檔</li>
+                            <li>人為因素：人為介入點、轉抄錯誤趨勢、GDP 實踐品質</li>
+                            <li>GMP 製程：製程複雜度、驗證歷史、OOS/偏差/校正失效趨勢</li>
+                        </ul>
+                        <p><strong>Step 3：9-Box 定位 → 擬定行動方案</strong></p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：跨產品資訊的借用</h4>
+                        <p>TR84 允許將某一產品/製程的評估結果「借用」到使用相同製程的另一產品，但必須審慎考量潛在差異。這對 CDMO 特別有利——當多個客戶產品使用相同的充填線和相同的資料管理系統時，可以建立一次基礎評估，再針對各產品的特殊要求做差異分析。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景：無菌充填線的三面向評估</h4>
+                        <p><strong>目標製程：</strong>西林瓶無菌充填作業</p>
+                        <table>
+                            <thead>
+                                <tr><th>評估面向</th><th>現狀</th><th>管控等級</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>資料管理技術</td>
+                                    <td>充填機自動擷取重量 → 列印報表 → 手動附於 BPR</td>
+                                    <td><span class="badge yellow">Medium</span></td>
+                                </tr>
+                                <tr>
+                                    <td>人為因素</td>
+                                    <td>操作員需手動抄錄環境監控數據；近3月轉抄錯誤3件</td>
+                                    <td><span class="badge red">Low</span></td>
+                                </tr>
+                                <tr>
+                                    <td>GMP 製程</td>
+                                    <td>已驗證5年、製程穩健；近年 OOS 趨勢穩定</td>
+                                    <td><span class="badge green">High</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>→ 資料關鍵性為 High（充填重量是 CPP），三個面向的 9-Box 定位分別為：</p>
+                        <ul>
+                            <li>技術面：H/M（橘區）→ 優先改善</li>
+                            <li>人為面：H/L（紅區）→ 立即改善</li>
+                            <li>GMP 面：H/H（綠區）→ 維持</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「健康檢查不能只看一個指標」</h4>
+                        <p>9-Box 對三個面向的分別評估，就像健康檢查不能只看血壓。即使血壓正常（GMP 製程 = 綠區），如果血糖偏高（人為因素 = 紅區）、膽固醇偏高（技術面 = 橘區），整體健康狀況仍有風險。三個指標必須都「過關」，才能說健康。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table 4.4-1: Potential Areas of Data Integrity Vulnerability -->
+            <h3 style="color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;">Table 4.4-1: Potential Areas of Data Integrity Vulnerability / 資料完整性脆弱性的潛在領域</h3>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <h3>Table 4.4-1: Potential Areas of Data Integrity Vulnerability</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categories</th>
+                                <th>Example Areas of Consideration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Data Management Technology</strong> (consider the full data lifecycle)</td>
+                                <td>
+                                    <ul style="margin-left:1rem;">
+                                        <li>Data transcription</li>
+                                        <li>Frequency of periodic reviews and change management based on intended use</li>
+                                        <li>Hybrid systems (e.g., discrepancies between paper printout and corresponding electronic record, data duplication)</li>
+                                        <li>New or complex manufacturing technology (causing repeat errors)</li>
+                                        <li>Overwriting existing electronic data</li>
+                                        <li>System validation age</li>
+                                        <li>System controls related to data export, calculation, reporting, transfer, archiving and retrieval</li>
+                                        <li>Appropriate access level</li>
+                                        <li>Technologies with inadequate data integrity elements such as unique access, audit trail, data backup &amp; restore, electronic data review, date &amp; time stamp, among others (e.g., spreadsheets, LIMS)</li>
+                                        <li>Unexplained discrepancies between electronic raw data and reported data</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Human Factors</strong></td>
+                                <td>
+                                    <ul style="margin-left:1rem;">
+                                        <li>Lack of supervisory review</li>
+                                        <li>Manual observations or measurements (e.g., weighing)</li>
+                                        <li>Repeat human errors (e.g., due to multitasking, high personnel turnover, inadequate training, time pressures)</li>
+                                        <li>Training and procedures (complex, long, unclear, incomplete, or difficult-to-access instructions)</li>
+                                        <li>Unclear role definition or segregation of duties</li>
+                                        <li>Culture (fear, frustration, intent, unacceptable local documentation practices)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>GMP Process</strong></td>
+                                <td>
+                                    <ul style="margin-left:1rem;">
+                                        <li>Aborted runs (e.g., due to lack of planning, understanding system operation, suitability of equipment and process)</li>
+                                        <li>Complex process (e.g., many interfaces, high level of human intervention, high levels of manual data entry)</li>
+                                        <li>Data flows and ownership not well defined</li>
+                                        <li>Inadequate line clearance checks</li>
+                                        <li>Negative trends related to changes, deviations, out of specification, alarms, out of calibration</li>
+                                        <li>New or complex processes (causing repeat errors)</li>
+                                        <li>Operation switching (GMP vs. non-GMP)</li>
+                                        <li>Unavailability of quality-related data requested during regulatory inspections</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Once the risk factors have been identified, the third step is to assess the existing controls as described in Section 4.2.2. The controls in place should have been identified, for instance, by using a data flow map as discussed in Section 4.5. A historical review of the information related to data integrity issues contained in the <span class="key-term">quality management system (QMS)</span> can be valuable in determining the adequacy of the existing data integrity controls.</p>
+
+                    <p>After identifying the manufacturing process being evaluated and the criticality of the data; the data management, human, and GMP process risk factors associated with the process; and the data controls in place, the user can evaluate this information to determine where in the 9-Box grid the unit operation best fits, then mitigate the risks deemed unacceptable.</p>
+
+                    <p>If the operation being evaluated fits into a <span class="key-term">red box (H/L)</span> as shown in Table 4.3-1, the controls in place are insufficient for the highly critical data and risk factors that have been identified. If it fits into one of the two <span class="key-term">orange boxes (H/M or M/L)</span>, the data integrity controls in place for that operation could be improved, based on the criticality of the data and the risk factors identified. If the operation fits into one of the <span class="key-term">green boxes (H/H, M/M, L/L)</span>, the controls in place are sufficient for the criticality of the data and identified risk factors. If the process fits into one of the <span class="key-term">blue boxes (M/H, L/H, L/M)</span>, the controls in place may be more than required for the criticality of the data and the minimal risk factors identified. This does not imply that the controls for these processes should be decreased, but that resources potentially could be shifted to other processes, such as those in the orange and red boxes.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>三大脆弱性領域的完整清單</h4>
+                        <p>Table 4.4-1 是一份極具實用價值的「自我檢查清單」。以下將每個領域的重點項目以 CDMO 語言重新詮釋：</p>
+
+                        <p><strong>一、資料管理技術面</strong></p>
+                        <ul>
+                            <li>資料轉抄（從電子到紙本、從系統 A 到系統 B）</li>
+                            <li>混合式系統的不一致性（列印值 ≠ 電子原始值）</li>
+                            <li>Excel 試算表缺乏 Audit Trail 的問題</li>
+                            <li>系統驗證的「年齡」（驗證太久未更新）</li>
+                            <li>存取權限管理不當</li>
+                        </ul>
+
+                        <p><strong>二、人為因素面</strong></p>
+                        <ul>
+                            <li>缺乏主管即時審核</li>
+                            <li>重複性人為錯誤（高流動率、訓練不足、時間壓力）</li>
+                            <li>SOP 過長/過複雜/難以取用</li>
+                            <li>文化問題（恐懼、挫折、不當的文件實踐）</li>
+                        </ul>
+
+                        <p><strong>三、GMP 製程面</strong></p>
+                        <ul>
+                            <li>中止批次（Aborted Runs）的頻率</li>
+                            <li>資料流向與歸屬定義不清</li>
+                            <li>OOS、偏差、校正失效的負面趨勢</li>
+                            <li>GMP 與非 GMP 作業切換</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管警示：藍區不代表「可以降級管控」</h4>
+                        <p>TR84 特別澄清：落在藍區（如 M/H、L/H）不代表應該降低該製程的管控等級。而是意味著企業可以考慮<strong>重新分配資源</strong>——將過度管控區域的資源轉移到紅區/橘區的製程上。</p>
+                        <p>這是一個很務實的觀點：合規資源是有限的，應該投注在風險最高的地方。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景：資源重新分配</h4>
+                        <p>假設貴公司的設備維護記錄（Low 關鍵性）已全面導入 CMMS 電子系統（High 管控等級），落在 L/H 藍區。同時，無菌測試結果（High 關鍵性）仍由實驗室人員手動登錄於紙本 worksheet（Low 管控等級），落在 H/L 紅區。</p>
+                        <p><strong>合理的資源重新分配：</strong>將用於維護 CMMS 系統額外功能開發的預算，轉而優先投資實驗室 LIMS 系統，讓無菌測試結果實現電子化擷取與 Audit Trail 管控。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>9-Box 結果對應的行動矩陣</h4>
+                        <pre>紅區（H/L）→ 管控嚴重不足
+  行動：立即制定補救計畫，提升至 H/M 或 H/H
+
+橘區（H/M, M/L）→ 管控可改善
+  行動：列入改善優先清單，排定時程
+
+綠區（H/H, M/M, L/L）→ 管控適當
+  行動：維持現有管控，定期複審
+
+藍區（M/H, L/H, L/M）→ 可能過度管控
+  行動：不需降級，但可將多餘資源
+        轉移至紅/橘區製程</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.5: Data Process Flow Maps ===== -->
+    <div id="sec-4-5" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.5</div>
+            <div class="chapter-info">
+                <h2>Data Process Flow Maps / 資料流程圖（DPFM）</h2>
+                <p>Visualizing data movement through operations to identify high-risk points</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p><span class="key-term">Data process flow maps</span>, a GMP requirement in certain parts of the world, are an extremely useful tool for visualizing the movement of data through a given operation and can facilitate the identification of areas of high risk to the data. Every step from start to end of a given process (e.g., from order creation to release of finished product) should be identified and documented in order to obtain a complete picture of the data flow in the process. For each step, the data process flow map should identify the activity performed, how the activity is performed, the systems used to perform the activity, the data created, the method of recording the activity, and the decisions made from the data. It also should include details on how data flows between systems or process steps and the means used to transfer data, taking the data lifecycle into consideration as part of the supporting documentation. The data process flow map should start with the point of origin of the data and include the systems (e.g., equipment, devices, applications) used in the process. Documenting the data flows related to manufacturing processes and systems through personal observation, such as through a <span class="key-term">Gemba walk</span>, can prove helpful in this process.</p>
+
+                    <p>Points in the process where data integrity could be compromised should be identified. Asking a series of critical-thinking questions at each stage of the data flow throughout the lifecycle can facilitate the process, for example:</p>
+
+                    <ul>
+                        <li>Are unique accounts assigned to each user?</li>
+                        <li>Is an <span class="key-term">audit trail</span> available that demonstrates if and when data is manipulated in any way, and does it identify who has performed the operation?</li>
+                        <li>Is data held in <span class="key-term">temporary memory</span>? What happens if there is no power to this unit?</li>
+                    </ul>
+
+                    <p>For instance, unauthorized access to a system could potentially allow for manipulation of batch-related data. These points where data integrity could be compromised represent areas of risk. For each, a risk assessment should be conducted, and mitigations to reduce risk identified and implemented. Differences in detectability (including elements related to electronic vs. manual processes) should be considered as part of the risk assessment.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：資料流程圖（Data Process Flow Map, DPFM）</h4>
+                        <p>DPFM 是將資料從產生到歸檔的完整旅程「視覺化」的工具。對每個步驟，DPFM 必須記錄：</p>
+                        <ul>
+                            <li><strong>活動內容</strong>（Activity）：做了什麼</li>
+                            <li><strong>執行方式</strong>（How）：手動/自動/混合</li>
+                            <li><strong>使用系統</strong>（Systems）：設備、裝置、應用程式</li>
+                            <li><strong>產生的資料</strong>（Data Created）：哪些數據被產生</li>
+                            <li><strong>記錄方式</strong>（Recording Method）：紙本/電子</li>
+                            <li><strong>資料決策</strong>（Decisions）：基於此資料做出什麼決定</li>
+                            <li><strong>系統間傳輸</strong>（Transfer）：資料如何從 A 系統流到 B 系統</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「物流追蹤系統」</h4>
+                        <p>DPFM 就像網購包裹的物流追蹤：</p>
+                        <ul>
+                            <li>出貨倉庫（資料產生點）→ 攬收站（初始記錄）→ 分揀中心（資料轉換/計算）→ 配送站（資料審核）→ 收件人（最終使用/歸檔）</li>
+                            <li>每個節點都有時間戳記、經手人、狀態更新</li>
+                            <li>如果某個節點「斷鏈」（沒有追蹤資訊），就是資料完整性的風險點</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：關鍵提問清單</h4>
+                        <p>TR84 建議在 DPFM 的每個節點提出以下問題：</p>
+                        <ol>
+                            <li>是否每位使用者都有唯一帳號？（存取控制）</li>
+                            <li>是否有 Audit Trail 記錄資料的任何操作？（可追溯性）</li>
+                            <li>資料是否暫存在揮發性記憶體中？斷電後會怎樣？（資料持久性）</li>
+                        </ol>
+                        <p>這些問題看似簡單，卻是 FDA 查廠時最常追問的方向。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景：無菌充填線的 DPFM 範例</h4>
+                        <p><strong>從藥液配製到成品放行的資料流程：</strong></p>
+                        <ol>
+                            <li><strong>配製室</strong>：秤重系統自動記錄原料重量 → 資料傳至 MES</li>
+                            <li><strong>混合槽</strong>：PLC 自動記錄攪拌速度/時間 → 操作員確認螢幕數值並簽名於批次記錄</li>
+                            <li><strong>充填機</strong>：自動擷取充填重量/速度 → 列印即時報表 → 操作員比對後附於 BPR</li>
+                            <li><strong>環境監控</strong>：粒子計數器自動記錄 → 資料手動匯出至 Excel → 手動轉抄至 EM 報告</li>
+                            <li><strong>QC 實驗室</strong>：分析儀器自動產生結果 → 分析師手動登錄 LIMS → QA 審核</li>
+                            <li><strong>QA 放行</strong>：彙整所有資料 → 審核批次記錄 → 放行決定</li>
+                        </ol>
+                        <p><strong>高風險節點識別：</strong>Step 4 的「手動匯出至 Excel」與「手動轉抄」是最脆弱的環節——Excel 無 Audit Trail、手動轉抄易出錯。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要提醒：DPFM 在部分地區已是法規要求</h4>
+                        <p>TR84 提到 DPFM 在「某些地區」已經是 GMP 要求。例如 MHRA 的 Data Integrity Guidance（英國）和 WHO 的 Data Integrity Guidance 都建議企業建立資料流程圖。這意味著 DPFM 不僅是「最佳實踐」，在某些市場已具有法規強制性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 4.5.1: Examples of Process and Data Flow Mapping ===== -->
+    <div id="sec-4-5-1" style="scroll-margin-top: 2rem;">
+        <div class="chapter-divider" style="border-radius: 10px 10px 0 0; margin-top: 0;">
+            <div class="chapter-badge">4.5.1</div>
+            <div class="chapter-info">
+                <h2>Examples of Process and Data Flow Mapping / 製程與資料流程圖範例</h2>
+                <p>Case 1 (paper-based manual) vs. Case 2 (PLC-controlled automated) granulation operations</p>
+            </div>
+        </div>
+        <div class="chapter-body" style="background: white; border-radius: 0 0 10px 10px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The following examples show process or data flow maps for solid oral dosage granulation operations. The three main steps in developing and using these tools are:</p>
+
+                    <ol>
+                        <li>Identify the key stakeholders involved in the process and hold a brief interview to obtain an overview of the process.</li>
+                        <li>Create a process data flow map to determine:
+                            <ul>
+                                <li>If the data is captured in paper or electronic format,</li>
+                                <li>If the data flow takes place in real-time (solid line) or later (dashed lines),</li>
+                                <li>If automated printed outputs are available with out-of-validated-range alert, and</li>
+                                <li>If procedural controls are already in place or in use.</li>
+                            </ul>
+                        </li>
+                        <li>Once the process/data flow is graphed, areas of data integrity vulnerabilities can be highlighted and used as input to build a remediation plan.</li>
+                    </ol>
+
+                    <h3>Case 1: Paper-Based Manual Process (Figure 4.5.1-1)</h3>
+
+                    <p><span class="key-term">Case 1</span> depicts a paper-based, manually controlled granulation process with an endpoint of total granulation time that has been derived from process validation work, included in the master batch record, and approved by the quality unit. Case 1 relies on the data being captured by the operator, with second-operator verification, by wet ink recordings directly into the paper batch production record in real time. In this example, the endpoint of the granulation operation is a <span class="key-term">CPP</span> that impacts the CQA of the finished product and would therefore be considered <span class="key-term">High-criticality data</span>. The existing level of controls would be considered <span class="key-term">Low</span> because of the total manual operation (see Section 4.2.2.). The only controls in this case are the second-person verification and a review by the quality unit.</p>
+
+                    <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.85rem;">
+                        <p><strong>Case 1 Flowchart (Paper-Based Manual Process):</strong></p>
+                        <p><strong>Quality Unit:</strong> Approve Validated Process (CPP/CQA) → Review BPR for total granulation time → Full BPR Review → Product Impact? → Pass/Fail → Release/Reject Batch</p>
+                        <p><strong>Operator 1:</strong> Confirm Components → Confirm process parameters in MBR (paper based) → Enter Start &amp; End Times (start granulation) → Total time within VAL range? → If No: Initiate Deviation</p>
+                        <p><strong>Operator 2:</strong> Peer Review</p>
+                        <p><em>All data flows are real-time (wet ink). After-the-fact review by QU only.</em></p>
+                    </div>
+
+                    <h3>Case 2: PLC-Controlled Automated Process (Figure 4.5.1-2)</h3>
+
+                    <p>In <span class="key-term">Case 2</span>, the same validated granulation process has been automated. The total granulation time has been included in a recipe, approved by the quality unit, and programmed into a <span class="key-term">PLC</span> that controls the process. This programming includes an automated alert when the validated range is exceeded. The control level is now considered <span class="key-term">High</span> because the validated PLC automated-data collection system does not depend on any human intervention. With this level of control and the PLC's printout of the granulation process, which includes the data on the total granulation time and an out-of-range alert, second-person verification is not necessary. The automated data collection further protects the integrity of this High-criticality data by preventing changes to the total granulation-time data in the system. The full batch production record is still reviewed by the quality unit as part of the release process.</p>
+
+                    <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.85rem;">
+                        <p><strong>Case 2 Flowchart (PLC-Controlled Automated Process):</strong></p>
+                        <p><strong>Quality Unit:</strong> Approve Validated Process (CPP/CQA) → Confirm process parameters in MBR (PLC recipe) → Full BPR Review → Product Impact? → Pass/Fail → Release/Reject Batch</p>
+                        <p><strong>Operator 1:</strong> Confirm Components → Perform Granulation → PLC printout of total granulation time → Printout shows out of VAL range alert? → If Yes: Initiate Deviation</p>
+                        <p><em>No Operator 2 (peer review) needed. PLC captures data automatically. After-the-fact review by QU.</em></p>
+                    </div>
+
+                    <p>Automated data capture of the granulation time, printouts of the data, and automated alerts when the total granulation time exceeds the validated range can reduce the procedural burden as well as improve data integrity assurance. This becomes obvious when comparing the data flow of Case 1 to that of Case 2. In Case 2, where the PLC controls the process, captures and stores the data, and generates a printout with automated alerts that is attached to the paper batch production record, there is no need for peer review of the data on a per-batch basis.</p>
+                </div>
+
+                <!-- RIGHT: Traditional Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">解析與應用（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：建立 DPFM 的三步驟方法</h4>
+                        <ol>
+                            <li><strong>利害關係人訪談</strong>：與操作員、QA、工程師等關鍵人員進行簡短訪談，了解製程概況</li>
+                            <li><strong>繪製資料流程圖</strong>：標註資料格式（紙本/電子）、即時/延遲流動、自動警報、程序性管控</li>
+                            <li><strong>識別脆弱點</strong>：在流程圖上標出 DI 風險區域，作為補救計畫的輸入</li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Case 1 vs. Case 2 對比分析</h4>
+                        <table>
+                            <thead>
+                                <tr><th>項目</th><th>Case 1（手動）</th><th>Case 2（PLC 自動化）</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>資料擷取</td><td>操作員手動記錄</td><td>PLC 自動擷取</td></tr>
+                                <tr><td>超範圍警報</td><td>操作員自行比對</td><td>PLC 自動警報</td></tr>
+                                <tr><td>第二人確認</td><td>需要（Peer Review）</td><td>不需要</td></tr>
+                                <tr><td>資料保護</td><td>依賴濕墨記錄</td><td>系統鎖定，防竄改</td></tr>
+                                <tr><td>資料關鍵性</td><td>High（CPP）</td><td>High（CPP）</td></tr>
+                                <tr><td>管控等級</td><td><span class="badge red">Low</span></td><td><span class="badge green">High</span></td></tr>
+                                <tr><td>9-Box 定位</td><td><span class="badge red">H/L 紅區</span></td><td><span class="badge green">H/H 綠區</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「手動溫度計 vs. 智慧溫控系統」</h4>
+                        <p>Case 1 就像用傳統水銀溫度計量體溫：你得自己讀數、自己記錄、自己判斷是否發燒。Case 2 則像智慧體溫貼片：自動量測、自動記錄、體溫異常時自動推播警報到手機。後者不僅更準確，還消除了「讀錯數字」或「忘記記錄」的風險。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：自動化如何降低程序負擔</h4>
+                        <p>TR84 通過 Case 1 vs. Case 2 的對比，直觀展示自動化帶來的雙重效益：</p>
+                        <ol>
+                            <li><strong>降低程序負擔</strong>：不再需要每批次的第二人確認（Peer Review），釋放人力</li>
+                            <li><strong>提升 DI 保障</strong>：PLC 鎖定資料，操作員無法修改已記錄的造粒時間</li>
+                        </ol>
+                        <p>這正是 9-Box 從「紅區到綠區」的典型改善路徑。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #22c55e;">
+                        <h4>CDMO 實務場景：從 Case 1 到 Case 2 的升級路線圖</h4>
+                        <p>在無菌充填廠，類似的升級場景可能是：</p>
+                        <p><strong>現狀（Case 1 等級）：</strong>操作員目視讀取充填機顯示值 → 手寫於批次記錄 → 第二人確認簽名 → QA 事後審核</p>
+                        <p><strong>目標（Case 2 等級）：</strong>充填機自動擷取每瓶重量 → 資料直接寫入 MES → 超範圍自動停機警報 → QA 電子審核 → Audit Trail 完整追蹤</p>
+                        <p><strong>過渡階段（Medium 管控）：</strong>充填機自動擷取 → 列印報表附於 BPR → 操作員仍需手動比對/簽名。此階段 9-Box 定位為 H/M（橘區），雖然已有改善但仍有提升空間。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>請為你工廠的一個關鍵製程單元操作繪製 DPFM：</p>
+                        <ol>
+                            <li>選擇一個單元操作（如：滅菌、充填、目視檢查）</li>
+                            <li>列出該操作中所有產生資料的步驟</li>
+                            <li>標註每個步驟的資料擷取方式（手動/自動/混合）</li>
+                            <li>識別資料在系統間轉移的節點</li>
+                            <li>在每個節點標註：有無 Audit Trail？有無唯一帳號？有無斷電風險？</li>
+                            <li>圈出最脆弱的 2-3 個節點，提出改善建議</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div style="background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.5rem; margin-top: 2rem;">
+        <h3 style="color: #117a65; margin-bottom: 1rem; font-size: 1.1rem;">本節重點摘要</h3>
+
+        <p style="margin-bottom: 0.75rem; font-size: 0.95rem;"><strong>一、QRM 應用於資料完整性的核心原則</strong></p>
+        <ul style="margin-left: 1.25rem; margin-bottom: 1rem; font-size: 0.92rem;">
+            <li>ICH Q9 品質風險管理原則貫穿資料生命週期的每個環節（擷取、記錄、轉抄、傳輸、歸檔）</li>
+            <li>風險評估必須在三個時機執行：新系統導入時（預防性）、偏差/事件後（反應性）、系統變更時（連動性）</li>
+            <li>管控策略必須同時涵蓋技術面與行為面</li>
+        </ul>
+
+        <p style="margin-bottom: 0.75rem; font-size: 0.95rem;"><strong>二、人為因素矩陣</strong></p>
+        <ul style="margin-left: 1.25rem; margin-bottom: 1rem; font-size: 0.92rem;">
+            <li>非故意行為分為思考錯誤（程序/知識缺口）與行動錯誤（注意力/記憶失誤）</li>
+            <li>故意行為分為行為不端（Misconduct, 因不當優先排序而跳過管控）與詐欺（Fraud, 惡意偽造）</li>
+            <li>「人為錯誤」不能成為萬用根因——必須先排除系統性原因</li>
+        </ul>
+
+        <p style="margin-bottom: 0.75rem; font-size: 0.95rem;"><strong>三、DI 風險管理模型與 9-Box 矩陣</strong></p>
+        <ul style="margin-left: 1.25rem; margin-bottom: 1rem; font-size: 0.92rem;">
+            <li>資料關鍵性（Data Criticality）= 資料對產品品質的重要程度（High/Medium/Low）</li>
+            <li>資料管控等級（Data Control Level）= 現有管控措施的強度（High/Medium/Low）</li>
+            <li>9-Box 將兩者交叉配對，分為紅（顯著脆弱）、橘（中度脆弱）、綠（可接受）、藍（可忽略）四區</li>
+            <li>三個面向（技術、人為、GMP 製程）需分別進行 9-Box 評估</li>
+            <li>改善方向：從右到左，提升管控等級</li>
+        </ul>
+
+        <p style="margin-bottom: 0.75rem; font-size: 0.95rem;"><strong>四、資料流程圖（DPFM）</strong></p>
+        <ul style="margin-left: 1.25rem; margin-bottom: 1rem; font-size: 0.92rem;">
+            <li>DPFM 是將資料完整旅程視覺化的工具，在部分地區已是 GMP 法規要求</li>
+            <li>每個節點需記錄活動、執行方式、使用系統、產生資料、記錄方式、決策內容</li>
+            <li>關鍵提問：唯一帳號？Audit Trail？暫存記憶體斷電風險？</li>
+            <li>Case 1（紙本手動）vs. Case 2（PLC 自動化）：從 H/L 紅區升級為 H/H 綠區的標準範例</li>
+        </ul>
+
+        <p style="margin-bottom: 0; font-size: 0.92rem;"><strong>核心結論：</strong>資料完整性風險管理不是一次性專案，而是持續性的、基於風險的、涵蓋技術與行為雙面向的管理體系。9-Box 矩陣與 DPFM 是兩個最實用的工具——前者幫助「定位風險」，後者幫助「發現風險」。</p>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 84 (2020): Data Integrity in Manufacturing and Packaging Operations</p>
+    <p>Section 2: Quality Risk Management Applied to Data Integrity — Bilingual Educational Material</p>
+    <p>For educational purposes only. Original content copyright PDA.</p>
+</div>
+
+</body>
+</html>
