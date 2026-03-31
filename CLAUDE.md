@@ -125,14 +125,7 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 - Source text: `section-X.0-text.txt` or `[FOLDER_ID]-full-text.txt`
 - Knowledge MD: `knowledge/<SOURCE>/[FOLDER_ID]-Complete.md` (English only, auto-generated)
 
-**Source colors in reports.json** — use consistent palette per source body:
-- PDA: blue family (`#1e3a5f` / `#3498db`)
-- ISPE: green family (`#1a3a2a` / `#27ae60`)
-- FDA: red family (`#3a1a1a` / `#e74c3c`)
-- PIC/S: orange family (`#3a2a1a` / `#e67e22`)
-- ISO: purple family (`#2a1a3a` / `#9b59b6`)
-- ECA: teal family (`#1a3a3a` / `#1abc9c`)
-- USP: gold family (`#3a3a1a` / `#f39c12`)
+**Source colors** — follow existing palette per source org in `reports.json` (PDA=blue, ISPE=green, FDA=red, PIC/S=orange, ISO=purple, ECA=teal, USP=gold).
 
 ## TopNav Scroll Arrow Rule
 
@@ -192,54 +185,8 @@ git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m
 
 ## Current Reports Inventory
 
-Report metadata is in `reports.json`. Current reports:
-
-| Folder | Report | Sections | Status |
-|--------|--------|----------|--------|
-| `PDA/pda-guide-no1/` | PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025) | 20 | Complete |
-| `PDA/TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
-| `PDA/TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
-| `PDA/TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
-| `PDA/TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
-| `PDA/TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
-| `PDA/TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | Complete |
-| `PDA/TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
-| `PDA/TR85/` | PDA TR85: Enhanced Test Methods for Visible Particle Detection | 6 | Complete |
-| `PDA/TR87/` | PDA TR87: Current Best Practices for Glass Vial Handling and Processing | 7 | Complete |
-| `PDA/TR88/` | PDA TR88: Microbial Data Deviation Investigations | 6 | Complete |
-| `PDA/TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
-| `PDA/TR91/` | PDA TR91: Post-Approval Change Management | 7 | Complete |
-| `PDA/PtC-9/` | PDA PtC-9: Lessons Learned from COVID-19 Pandemic | 6 | Complete |
-| `PDA/PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
-| `PDA/PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
-| `PDA/PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
-| `PDA/PtC-Isolators/` | PDA PtC-Isolators: Aseptic Processing in Isolators | 7 | Complete |
-| `PDA/TR39/` | PDA TR39: Temperature-Controlled Medicinal Products | 4 | Complete |
-| `PDA/TR70/` | PDA TR70: Cleaning and Disinfection for Aseptic Facilities | 9 | Complete |
-| `PDA/TR13/` | PDA TR13: Fundamentals of an Environmental Monitoring Program (Revised 2022) | 9 | Complete |
-| `PDA/TR13-2/` | PDA TR13-2: EM for Low Bioburden Products — Annex 1 (2020) | 3 | Complete |
-| `PDA/TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
-| `PDA/TR54-6/` | PDA TR54-6: Formalized Risk Assessment for Excipients (2019) | 6 | Complete |
-| `PDA/TR62/` | PDA TR62: Recommended Practices for Manual Aseptic Processes (2013) | 4 | Complete |
-| `PDA/TR43/` | PDA TR43: Identification and Classification of Nonconformities in Glass Containers (Revised 2023) | 6 | Complete |
-| `PDA/TR68/` | PDA TR68: Risk-Based Approach for Prevention and Management of Drug Shortages (Revised 2024) | 6 | Complete |
-| `PDA/TR84/` | PDA TR84: Data Integrity in Manufacturing & Packaging (2020) | 8 | Complete |
-| **ISPE** | | | |
-| `ISPE/ISPE-Vol3/` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities (3rd Ed. 2018) | 21 | Complete |
-| `ISPE/ISPE-Vol4/` | ISPE Baseline Vol.4: Water & Steam Systems | — | Planned |
-| `ISPE/ISPE-Vol5/` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 11 | Complete |
-| `ISPE/ISPE-Vol6/` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | — | Planned |
-| `ISPE/ISPE-Vol7/` | ISPE Baseline Vol.7: Risk-Based Manufacture of Pharmaceutical Products | — | Planned |
-| `ISPE/ISPE-GAMP5/` | ISPE GAMP 5 (2nd Ed.): Computerized Systems Validation | — | Planned |
-| `ISPE/ISPE-HVAC/` | ISPE GPG HVAC: Heating, Ventilation and Air Conditioning | — | Planned |
-| `ISPE/ISPE-SUT/` | ISPE GPG Single-Use Technology: Single-Use Systems | — | Planned |
-| `ISPE/ISPE-Sampling/` | ISPE GPG Sampling: Pharmaceutical Water, Steam & Process Gases | — | Planned |
-| `ISPE/ISPE-CTC/` | ISPE GPG CTC: Mapping and Monitoring | — | Planned |
-| `ISPE/ISPE-TechTransfer/` | ISPE GPG Technology Transfer (3rd Ed.) | — | Planned |
-| `ISPE/ISPE-GEP/` | ISPE Good Engineering Practice: GEP Framework | — | Planned |
-| `ISPE/ISPE-ProcessGas/` | ISPE Process Gases: Process Gas Systems | — | Planned |
-| `ISPE/ISPE-IT/` | ISPE IT Infrastructure: Control and Compliance | — | Planned |
-| `ISPE/ISPE-QualityCulture/` | ISPE-PDA Quality Culture: Guide to Improving Quality Culture | — | Planned |
+**Do NOT duplicate the full inventory here.** `reports.json` is the single source of truth.
+To check current status: `python3 -c "import json; d=json.load(open('reports.json')); [print(f'{k}: {v.get(\"folder\",k)}') for k,v in d['reports'].items() if v.get('section_map')]"`
 
 ---
 
@@ -268,47 +215,5 @@ Note: `pda-guide-no1` has no source text — its MD is generated via HTML-stripp
 ### Knowledge MDs — English Only
 Knowledge MDs in `knowledge/` must contain **only original English text** from the PDF. No Chinese translations or commentary. The `pda_engine.py md` command generates these from `source/*.txt` files. The `merge_engine.generate_markdown()` fallback strips CJK from HTML sections.
 
-### Heading Detection Rules (`pda_engine.py`)
-When generating MDs from source text, `source_to_markdown()` auto-detects section headings. A line like `3.1 Pore Size Rating` becomes `### 3.1 Pore Size Rating`. The rules reject false positives:
-
-| Pattern | Example | Action |
-|---------|---------|--------|
-| Must have a dot in number | `1.0`, `3.1.2` = valid; bare `1`, `10` = rejected |
-| First number > 0 | `0.2 µm`, `0.45 μm` = rejected |
-| Title starts uppercase | `3.1 pore size` = rejected |
-| Not a TOC entry | Lines with `...` or trailing page number = rejected |
-| Not a unit/value | `10 L/min`, `35 L`, `15 PSIG` = rejected |
-| Not a sentence | `Table 4.2-2 provides examples...` = rejected |
-| Not a cross-reference | `5.4.1 for additional information).` = rejected |
-| Length < 150 chars | Paragraph-length lines = rejected |
-
-If a new PDF introduces false headings, update `UNIT_WORDS` or the rejection rules in `pda_engine.py`'s `source_to_markdown()` function, then run `python pda_engine.py md --all` to regenerate.
-
-### PDF Noise Stripping Rules (`pda_engine.py`)
-`PDF_NOISE_PATTERNS` strips these artifacts from source text before generating MDs:
-
-| Pattern | Example |
-|---------|---------|
-| Standalone page numbers | `1`, `42`, `155` (1-3 digit number alone on a line) |
-| License lines | `Licensed to Kuo, Li-Hung/...: Copying and Distribution Prohibited.` |
-| Copyright lines | `© 2025 Parenteral Drug Association, Inc.` |
-| Page headers | `Technical Report No. 26`, `Points to Consider No. 12` |
-| Numbered headers | `42 Technical Report No. 60` (page number + report name) |
-
-If a new PDF has different header/footer patterns, add them to `PDF_NOISE_PATTERNS` in `pda_engine.py`.
-
-### Knowledge MD Table Formatting (future improvement)
-Current `pda_engine.py md` generates MDs from raw source text, so PDF tables lose their structure and appear as fragmented lines. For future new reports, use Claude to generate the structured MD instead of pure programmatic extraction:
-
-```bash
-# Step 3 (MD-first): Instead of just running pda_engine.py md,
-# use Claude to read the source text + original PDF and produce
-# a structured MD with proper Markdown tables.
-#
-# This costs ~30-60K tokens per section but produces:
-# - Proper | pipe | table | formatting
-# - Verified heading hierarchy
-# - Clean paragraph flow (no mid-paragraph page breaks)
-```
-
-Existing 12 reports have unformatted tables in their knowledge MDs. These can be upgraded incrementally by re-generating individual report MDs via Claude when time permits.
+### Heading Detection & PDF Noise Rules
+Rules are documented in `pda_engine.py` source code (`source_to_markdown()`, `HEADING_RE`, `PDF_NOISE_PATTERNS`, `UNIT_WORDS`). If a new PDF introduces false headings or noise, update the code and run `python pda_engine.py md --all`.
