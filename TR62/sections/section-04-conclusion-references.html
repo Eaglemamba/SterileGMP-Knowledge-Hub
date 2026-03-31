@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR62 Section 4: Conclusion &amp; References | PDA Technical Report No. 62</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SECTION-SPECIFIC: REFERENCES ===== */
+.ref-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ref-list li {
+    padding: 0.6rem 0.75rem 0.6rem 2.5rem;
+    margin-bottom: 0.4rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #3182ce;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    position: relative;
+}
+
+.ref-list li .ref-num {
+    position: absolute;
+    left: 0.6rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+.ref-list li .ref-type {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.ref-type.pda { background: #cce5ff; color: #004085; }
+.ref-type.fda { background: #f8d7da; color: #721c24; }
+.ref-type.eu  { background: #d4edda; color: #155724; }
+.ref-type.usp { background: #fff3cd; color: #856404; }
+.ref-type.iso { background: #e2d9f3; color: #4a1d96; }
+.ref-type.pic { background: #d1ecf1; color: #0c5460; }
+.ref-type.other { background: #e2e8f0; color: #2d3748; }
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    border-top: 3px solid var(--accent-blue);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.summary-card h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.4rem;
+}
+
+.summary-card p,
+.summary-card li {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+.summary-card ul {
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+}
+
+.summary-card li {
+    margin-bottom: 0.2rem;
+}
+
+.full-summary {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.full-summary h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.full-summary h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: #90cdf4;
+}
+
+.full-summary p {
+    font-size: 0.92rem;
+    opacity: 0.92;
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.full-summary ul {
+    margin-left: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.full-summary li {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+    line-height: 1.65;
+}
+
+.topic-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin: 2px 3px 2px 0;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Section 4: Conclusion &amp; References</h1>
+    <div class="subtitle">結論與參考資料</div>
+    <div class="page-info">PDA Technical Report No. 62 (2013): Manual Aseptic Processes | p22 - p23</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand TR62's conclusions on personnel-centric risk in manual aseptic processing and why isolation technology is strongly encouraged. | 理解 TR62 對人員主導風險的結論，以及為何強烈建議使用隔離技術。</li>
+            <li>Navigate the complete reference list spanning FDA, EU GMP, USP, PDA, ISO, and PIC/S guidance documents. | 掌握涵蓋 FDA、EU GMP、USP、PDA、ISO 及 PIC/S 的完整參考文獻清單。</li>
+            <li>Apply the document summary to consolidate knowledge of Sections 1–9 across all major MAP topics. | 運用全文摘要，鞏固第 1–9 節所有 MAP 主題的知識。</li>
+        </ul>
+    </div>
+
+    <!-- ===== SECTION 9.0 CONCLUSION ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9</div>
+            <div class="chapter-info">
+                <h2>9.0 Conclusion</h2>
+                <p>Summary of manual aseptic process principles and key industry position | p21–p22</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: ENGLISH -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>This technical report is one of the first attempts to address the subject of manual aseptic processing in a comprehensive manner. As such, it includes recommendations that may establish recommended practices in the absence of guidance from regulators or industry organizations.</p>
+
+                    <p>Manufacturers that use manual aseptic processing to produce products used in patients must be aware of the uncertainties associated with a manufacturing process so heavily reliant on personnel performance.</p>
+
+                    <p>In new installations, we strongly encourage the use of isolation technology to minimize the risk of microbial contamination from personnel involved in the manufacturing operations.</p>
+
+                    <div class="quote-box">
+                        The operators are the primary means of production in MAP — and therefore the primary variable. Human performance is inherently variable, making process control and contamination prevention fundamentally different from automated aseptic processing.
+                    </div>
+
+                    <p>The preceding sections of this report have addressed the full lifecycle of manual aseptic processing: regulatory context, facility and environment design, personnel training and qualification, equipment and materials considerations, aseptic technique, and process simulation (Aseptic Process Simulation / APS). Each of these elements must function together to maintain sterility assurance throughout manufacturing.</p>
+
+                    <p>Key technical positions established in this report:</p>
+                    <ul>
+                        <li>APS acceptance criterion for MAP: <strong>zero contaminated units</strong> — the statistical assumptions allowing low non-zero limits in automated filling do not apply to manual operations.</li>
+                        <li>Operator qualification frequency: <strong>semi-annually</strong> for each operator (primary and secondary), with three initial replicates for new qualification.</li>
+                        <li>Each operator must individually perform and pass APS — shared or grouped qualification is insufficient where operator variability is the key risk.</li>
+                        <li>Isolation technology (RABS / isolators) is strongly preferred over open cleanroom environments for all new MAP installations.</li>
+                        <li>Media fill simulation scope must cover the maximum production duration and replicate all critical interventions encountered during routine manufacturing.</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: CHINESE COMMENTARY -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析與學習輔助</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念 — TR62 的歷史定位</h4>
+                        <p>TR62 是業界首份系統性處理手動無菌操作（MAP）的技術報告。在此之前，監管指引（如 FDA 2004 無菌指南）主要針對自動化設備，MAP 的相關規範存在空白。TR62 的角色是以業界共識填補這個空白，為監管機構尚未明文規範的情況提供建議實踐。</p>
+                        <p>在監管環境中，此類共識文件具有重要地位：雖非法律強制，但在查廠時往往被視為業界現行最佳實踐的參考基準。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻 — MAP 就像外科手術</h4>
+                        <p>想像一台外科手術：無論手術室設備多先進，最終的無菌性在很大程度上取決於外科醫師的技術、紀律與即時判斷。同樣地，MAP 的無菌保證核心在「人」。</p>
+                        <p>自動化無菌充填就像機械手臂輔助手術——人的影響降到最低；而 MAP 就像完全徒手操作——每一個動作都是變數。這正是 TR62 為何對 APS 採用比 TR22 更嚴格標準（零汙染）的根本原因。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>最關鍵的合規要求</h4>
+                        <ul>
+                            <li><strong>APS 零汙染標準不可妥協</strong>：MAP 的 APS 結果必須是零陽性，不接受任何統計性允許值。</li>
+                            <li><strong>個別操作員各自合格</strong>：不能以「批次」方式通過 APS，每位操作員必須獨立完成並通過。</li>
+                            <li><strong>半年一次再確認</strong>：已合格的操作員每半年須重新執行 APS，確保技術維持。</li>
+                            <li><strong>新設施強烈建議隔離技術</strong>：若計畫新建 MAP 設施，TR62 明確建議採用隔離器或 RABS，而非傳統開放式潔淨室。</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>自我評估問題（涵蓋全文 Sections 1–9）</h4>
+                        <ol>
+                            <li>MAP 的定義為何？它與全自動無菌充填的本質差異是什麼？</li>
+                            <li>ISO 5 環境對 MAP 的意義為何？在哪些情況下可考慮使用 RABS 或隔離器取代開放式潔淨室？</li>
+                            <li>一位新操作員在首次執行 MAP 生產前，必須完成哪些訓練與資格確認步驟？</li>
+                            <li>「無菌技術」的關鍵動作有哪些？列舉至少五項容易違規的行為。</li>
+                            <li>MAP 的 APS 與自動化充填的 APS（TR22）在接受標準上有何根本差異？原因為何？</li>
+                            <li>APS 媒體充填量、持續時間與觀察要求應如何設計，才能真實模擬 MAP 的最惡劣情境？</li>
+                            <li>環境監測在 MAP 中有哪些特殊挑戰？為何監測方式的選擇必須考慮對環境的衝擊？</li>
+                            <li>分裝粉針劑（powder fill）的 MAP 在 APS 設計上面臨哪些獨特挑戰？</li>
+                            <li>什麼情況下應將操作員移出生產、啟動調查並重新執行 APS？</li>
+                            <li>如果你是 CDMO 的驗證主管，你會如何設計一套 MAP APS 程序，使其同時滿足 FDA、EU GMP Annex 1 與 PIC/S 的要求？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 10.0 REFERENCES ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">10</div>
+            <div class="chapter-info">
+                <h2>10.0 References</h2>
+                <p>All cited documents | p22–p23</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: ENGLISH -->
+                <div class="left-column">
+                    <h3 class="column-header">References (Original)</h3>
+
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">1.</span>
+                            <span class="ref-type fda">FDA</span>
+                            Guideline on Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice; U.S. FDA: 2004. www.fda.gov/downloads/Drugs/.../Guidances/ucm070342.pdf (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">2.</span>
+                            <span class="ref-type eu">EU GMP</span>
+                            EudraLex, The Rules Governing Medicinal Products in the European Union: Volume 4, EC Guidelines to Good Manufacturing Practice (GMP) for Human and Veterinary Medicinal Products Annex 1 Manufacture of Sterile Medicinal Products; European Commission: 2008. ec.europa.eu/health/files/eudralex/vol-4/2008_11_25_gmp-an1_en.pdf (accessed Jan. 30, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">3.</span>
+                            <span class="ref-type eu">Ph. Eur.</span>
+                            Clause 5.1.1, Methods of Preparation of Sterile Products; European Pharmacopoeia; EDQM: 2012. www.edqm.eu/en/european-pharmacopoeia-publications-1401.html (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">4.</span>
+                            <span class="ref-type usp">USP</span>
+                            General Chapter &lt;797&gt; Pharmaceutical Compounding — Sterile Preparations. USP 35/NF 30; U.S. Pharmacopeia: 2012. www.usp.org. (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">5.</span>
+                            <span class="ref-type usp">USP</span>
+                            General Chapter &lt;823&gt; Radiopharmaceuticals for Positron Emission Tomography — Compounding. USP 35/NF 30; U.S. Pharmacopeia: 2012. www.usp.org. (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">6.</span>
+                            <span class="ref-type pda">PDA TR22</span>
+                            PDA Technical Report No. 22 (Revised 2011): Process Simulation Testing for Aseptically Filled Products; Parenteral Drug Association: 2011. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">7.</span>
+                            <span class="ref-type other">CDC</span>
+                            HHS Publication No. (CDC) 21-1112; Biosafety in Microbiological and Biomedical Laboratories; U.S. Department of Health and Human Services, Public Health Service, Centers for Disease Control and Prevention &amp; National Institutes of Health: 2009. www.cdc.gov/biosafety/publications/bmbl5/bmbl.pdf (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">8.</span>
+                            <span class="ref-type other">NASA</span>
+                            NASA-TM-X-66397, NHB-5340.2; NASA Standards for Clean Rooms and Work Stations for the Microbially Controlled Environment; National Aeronautics and Space Administration: 1967. ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19700078206_1970078206.pdf (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">9.</span>
+                            <span class="ref-type other">HF/E</span>
+                            Stramler, J. The Dictionary for Human Factors Ergonomics: A Significant Reference Work in Human Factors. In Human Factors and Ergonomics Society Annual Meeting Proceedings, Human Factors and Ergonomics Society: 1992.
+                        </li>
+                        <li>
+                            <span class="ref-num">10.</span>
+                            <span class="ref-type pda">PDA/DHI</span>
+                            Moldenhauer, J.; Environmental Monitoring: A Comprehensive Handbook, Vol. 3; PDA/DHI. 2009, pp. 1–77. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">11.</span>
+                            <span class="ref-type pda">PDA TR54</span>
+                            PDA Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operation; Parenteral Drug Association: 2012. www.pda.org/bookstore (accessed May 29, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">12.</span>
+                            <span class="ref-type pda">PDA TR44</span>
+                            PDA Technical Report No. 44; Quality Risk Management for Aseptic Processes; Parenteral Drug Association: 2008. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">13.</span>
+                            <span class="ref-type fda">FDA/PET</span>
+                            PET Drugs — Current Good Manufacturing Practice (CGMP); U.S. Food and Drug Administration: December 2009. www.fda.gov/downloads/Drugs/GuidanceComplianceRegulatoryInformation/Guidances/ucm070306.pdf (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">14.</span>
+                            <span class="ref-type pda">PDA TR34</span>
+                            PDA Technical Report No. 34: Design and Validation of Isolator Systems for the Manufacturing and Testing of Health Care Products; Parenteral Drug Association: 2001. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">15.</span>
+                            <span class="ref-type pda">PDA TR28</span>
+                            PDA Technical Report No. 28: Process Simulation Testing for Sterile Bulk Pharmaceutical Chemicals; Parenteral Drug Association: 2009. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- RIGHT: COMMENTARY -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析 — 參考文獻導讀</h3>
+
+                    <div class="concept-box">
+                        <h4>參考文獻的監管生態系統</h4>
+                        <p>TR62 的 15 篇參考文獻構成 MAP 監管框架的完整生態圖，理解這些文獻的相互關係，有助於在查廠或 CAPA 中正確引用：</p>
+                        <ul>
+                            <li><strong>[1] FDA 2004 無菌指南</strong>：美國最核心的無菌製程監管文件，MAP 的所有設施、人員、環境要求均以此為基礎。</li>
+                            <li><strong>[2] EU GMP Annex 1 (2008版)</strong>：歐盟標準，2022年已更新。TR62引用舊版，現行合規應參考2022年版。</li>
+                            <li><strong>[4] USP &lt;797&gt;</strong>：適用於藥房調配的無菌製程，許多 MAP（如醫院調配、放射藥劑）直接受此規範。</li>
+                            <li><strong>[6] PDA TR22</strong>：APS（媒體充填）的母文件，TR62多處引用。MAP的APS規則在TR22基礎上加嚴。</li>
+                            <li><strong>[14] PDA TR34</strong>：隔離器設計與驗證，與 TR62 推薦使用隔離技術的結論直接呼應。</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>為何引用 NASA 1967 年文件？</h4>
+                        <p>參考文獻 [8] 是 1967 年的 NASA 潔淨室標準——看似過時，但這正說明潔淨室科學的根基早在航太工業建立。ISO 14644 系列（ISO 5 = Class 100）的邏輯源自 NASA 當年的分類體系。引用此文件是對潔淨室科學發展歷史的致敬，也說明 MAP 的環境控制原則橫跨數十年、具有穩定的科學基礎。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CDMO 查廠必知：參考文獻的實務意義</h4>
+                        <ul>
+                            <li>FDA 查廠時，483 觀察項往往引用 [1] FDA 無菌指南作為標準依據。</li>
+                            <li>歐盟 GMP 查廠（如 EMA、MHRA）引用 [2] Annex 1（注意：現在應引用 2022 年更新版）。</li>
+                            <li>放射藥劑（PET drugs）生產必須同時符合 [5] USP &lt;823&gt; 與 [13] FDA PET CGMP。</li>
+                            <li>風險評估報告中，[11] TR54 和 [12] TR44 是 ICH Q9 風險管理工具應用於無菌製程的最佳實踐來源。</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 實施清單 — MAP 法規遵循</h4>
+                        <ul class="checklist">
+                            <li>確認 SOP 中 APS 章節明確引用 TR62 及 TR22 作為設計依據</li>
+                            <li>APS 接受標準明訂「零汙染」，並說明此標準高於 TR22 一般規定的理由</li>
+                            <li>操作員資格確認計畫（OQ plan）載明半年頻率、三次初始 APS 要求</li>
+                            <li>媒體充填批次記錄（BPR）設計涵蓋所有關鍵干預的文件化要求</li>
+                            <li>新設施評估是否採用 RABS 或隔離器，並留存決策記錄</li>
+                            <li>環境監測計畫已評估採樣方法對 MAP 環境的衝擊（選用低衝擊採樣器）</li>
+                            <li>APS 失敗應對流程（CAPA）已建立，包含重新訓練與重新資格確認步驟</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 11.0 ADDITIONAL READING ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11</div>
+            <div class="chapter-info">
+                <h2>11.0 Additional Reading</h2>
+                <p>Supplementary resources for deeper study | p23</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: ENGLISH -->
+                <div class="left-column">
+                    <h3 class="column-header">Additional Reading (Original)</h3>
+
+                    <ol class="ref-list">
+                        <li>
+                            <span class="ref-num">1.</span>
+                            <span class="ref-type usp">USP</span>
+                            General Chapter &lt;71&gt; Sterility Tests. USP 35/NF 30; U.S. Pharmacopeia: 2012. www.usp.org. (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">2.</span>
+                            <span class="ref-type usp">USP</span>
+                            General Chapter &lt;1072&gt; Disinfectants and Antiseptics. USP 35/NF 30; U.S. Pharmacopeia: 2012. www.usp.org. (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">3.</span>
+                            <span class="ref-type usp">USP</span>
+                            General Chapter &lt;1116&gt; Microbiological Evaluation of Clean Rooms and Other Controlled Environments. USP 35/NF 30; U.S. Pharmacopeia: 2012. www.usp.org. (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">4.</span>
+                            <span class="ref-type usp">USP</span>
+                            General Chapter &lt;1211&gt; Sterilization and Sterility Assurance of Compendial Articles. USP 35/NF 30; U.S. Pharmacopeia: 2012. www.usp.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">5.</span>
+                            <span class="ref-type eu">Ph. Eur.</span>
+                            Clause 2.6.1, Sterility, European Pharmacopoeia, 7th Edition: 2012. www.edqm.eu/en/european-pharmacopoeia-publications-1401.html (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">6.</span>
+                            <span class="ref-type pda">PDA TR13</span>
+                            PDA Technical Report No. 13: Fundamentals of an Environmental Monitoring Program; Parenteral Drug Association: 1990. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">7.</span>
+                            <span class="ref-type pda">PDA TR34</span>
+                            PDA Technical Report No. 34: Design and Validation of Isolators Systems for the Manufacturing and Testing of Healthcare Products; Parenteral Drug Association: 2001. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">8.</span>
+                            <span class="ref-type pda">PDA TR36</span>
+                            PDA Technical Report No. 36: Current Practices in the Validation of Aseptic Processing; Parenteral Drug Association: 2002. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">9.</span>
+                            <span class="ref-type pda">PDA TR28</span>
+                            PDA Technical Report No. 28: Process Simulation Testing for Sterile Bulk Pharmaceutical Chemicals; Parenteral Drug Association: 2006. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">10.</span>
+                            <span class="ref-type pda">PDA TR26</span>
+                            PDA Technical Report No. 26: Sterilizing Filtration of Liquids; Parenteral Drug Association: 2008. www.pda.org/bookstore (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">11.</span>
+                            <span class="ref-type pic">PIC/S</span>
+                            PE 010-3, PIC/S Guide to Good Practices for the Preparation of Medicinal Products in Healthcare Establishments; Pharmaceutical Inspection Convention/Cooperation Scheme: 2008. www.picscheme.org/publication.php?id=8 (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">12.</span>
+                            <span class="ref-type other">MHLW</span>
+                            Guidance on the Manufacture of Sterile Pharmaceutical Products by Aseptic Processing; Ministry of Health, Labour and Welfare: 2010. www.pmda.go.jp/english/service/pdf/Guidance_on_the_Manufacture_of_Sterile_Pharmaceutical_Products_by_Aseptic_Processing.pdf (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">13.</span>
+                            <span class="ref-type pic">PIC/S</span>
+                            PI 014-3 Recommendation — Isolators used for Aseptic Processing and Sterility Testing; Pharmaceutical Inspection Convention/Cooperation Scheme: 25 September 2007. www.picscheme.org/publication.php?id=8 (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">14.</span>
+                            <span class="ref-type pic">PIC/S</span>
+                            PI 007-6, Recommendation on the Validation of Aseptic Processes; Pharmaceutical Inspection Convention/Co-Operation Scheme: 12 December 2010. www.picscheme.org/publication.php?id=8 (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">15.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 14644-1:1999, Cleanrooms and associated controlled environments — Part 1: Classification of air cleanliness; International Organization for Standardization: 1999. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">16.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 14644-2:2000, Cleanrooms and associated controlled environments — Part 2: Specifications for testing and monitoring to prove continued compliance with ISO 14644-1; International Organization for Standardization: 2000. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">17.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 14644-3:2005, Cleanrooms and associated controlled environments — Part 3: Test methods; International Organization for Standardization: 2005. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">18.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 14644-4:2001, Cleanrooms and associated controlled environments — Part 4: Design, construction, and start-up; International Organization for Standardization: 2001. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">19.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 14644-7:2004, Cleanrooms and associated controlled environments — Part 7: Separative devices (clean air hoods, gloveboxes, isolators and mini-environments); International Organization for Standardization: 2004. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">20.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 13408-1:2008, Aseptic processing of health care products — Part 1: General requirements; International Organization for Standardization: 2008. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">21.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 13408-2:2003, Aseptic processing of health care products — Part 2: Filtration; International Organization for Standardization: 2003. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">22.</span>
+                            <span class="ref-type iso">ISO</span>
+                            ISO 13408-6:2005, Aseptic processing of health care products — Part 6: Isolator systems; International Organization for Standardization: 2005. www.iso.org (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">23.</span>
+                            <span class="ref-type fda">FDA/PET</span>
+                            Guidance for Industry for Media Fills for Validation of Aseptic Preparations for Positron Emission Tomography (PET) Drugs; U.S. Food and Drug Administration: 2012. www.fda.gov/Drugs/GuidanceComplianceRegulatoryInformation/Guidances/ucm064971.htm (accessed Jan. 25, 2013).
+                        </li>
+                        <li>
+                            <span class="ref-num">24.</span>
+                            <span class="ref-type other">Ph. Soc.</span>
+                            Technical Monograph No. 4: The Use of Process Simulation Tests in the Evaluation of Processes for the Manufacture of Sterile Products; The Parenteral Society: 1993.
+                        </li>
+                        <li>
+                            <span class="ref-num">25.</span>
+                            <span class="ref-type other">ICH</span>
+                            Quality Guideline Q9: Quality Risk Management; International Conference on Harmonisation: 2005. www.ich.org.
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- RIGHT: COMMENTARY -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析 — 延伸閱讀導讀</h3>
+
+                    <div class="concept-box">
+                        <h4>延伸閱讀的學習路徑建議</h4>
+                        <p>Additional Reading 共 25 篇，分為以下幾個學習路徑：</p>
+                        <p><strong>路徑一：無菌測試與藥典要求</strong><br>
+                        [1] USP &lt;71&gt; 無菌試驗 + [5] Ph. Eur. 2.6.1 是 MAP 產品放行的法定測試標準，兩者互為補充。[4] USP &lt;1211&gt; 提供無菌保證（SAL）的概念框架。</p>
+                        <p><strong>路徑二：環境控制</strong><br>
+                        [3] USP &lt;1116&gt; 為潔淨室微生物評估標準；[15–19] ISO 14644 系列為潔淨室分類、監測與設計的完整技術體系。</p>
+                        <p><strong>路徑三：隔離技術</strong><br>
+                        [7] PDA TR34 + [13] PIC/S PI 014-3 + [19] ISO 14644-7 構成隔離器設計、驗證與法規要求的三角框架。</p>
+                        <p><strong>路徑四：無菌製程驗證</strong><br>
+                        [8] PDA TR36 + [14] PIC/S PI 007-6 + [24] Parenteral Society Monograph No.4 提供 APS 歷史脈絡與不同法規視角。</p>
+                        <p><strong>路徑五：風險管理</strong><br>
+                        [25] ICH Q9 是所有風險評估的基礎框架，在撰寫 MAP 風險評估報告時應優先引用。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要更新提醒（2013 → 2026）</h4>
+                        <ul>
+                            <li><strong>EU GMP Annex 1</strong>：原文引用 2008 版，現已由 2022 年版取代。2022 版大幅強化 CCS（Contamination Control Strategy）要求，是目前合規的唯一版本。</li>
+                            <li><strong>PDA TR13</strong>：原文引用 1990 年版，已於 2022 年更新為 TR13（Revised 2022），增加 Annex 1 對齊內容。</li>
+                            <li><strong>ISO 14644 系列</strong>：多個版本已更新（如 ISO 14644-1:2015 取代 1999 版）。</li>
+                            <li><strong>ICH Q9</strong>：已於 2023 年更新為 Q9(R1)，強化主觀性（subjectivity）管理內容。</li>
+                            <li><strong>USP &lt;797&gt;</strong>：2023 年大幅修訂，對調配無菌製劑的環境要求有重要變化。</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>給 CDMO 的文獻管理建議</h4>
+                        <ul class="checklist">
+                            <li>建立參考文獻版本追蹤清單，每年審查是否有新版本發布</li>
+                            <li>SOP 引用文件時，同時標明版本年份（如 EU GMP Annex 1, 2022）</li>
+                            <li>EU GMP Annex 1 (2022) 應作為目前無菌設施設計的首要參考</li>
+                            <li>查廠前確認所有引用文件均為現行有效版本</li>
+                            <li>ICH Q9(R1) 已是無菌風險評估的新基準，建議更新現有風險評估範本</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPREHENSIVE FINAL SUMMARY ===== -->
+    <div class="full-summary">
+        <h2>TR62 全文綜合摘要 — Sections 1–9 完整回顧</h2>
+        <p>以下摘要涵蓋 PDA TR62 所有主要章節的核心內容，供學習後的自我測試與快速複習使用。</p>
+
+        <div class="summary-grid">
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 1–2：範疇與背景</h4>
+                <ul>
+                    <li>MAP 定義：人員直接參與開放無菌環境操作</li>
+                    <li>適用對象：小批量、特殊劑型、臨床試驗用製品</li>
+                    <li>法規背景：FDA 無菌指南、EU GMP Annex 1、USP &lt;797&gt;</li>
+                    <li>MAP vs 自動化：人員是最大變數，無菌保證方法必須對應調整</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 3：設施與環境</h4>
+                <ul>
+                    <li>MAP 操作區必須維持 ISO 5（Class 100）環境</li>
+                    <li>HEPA 過濾、單向氣流、正壓梯度為基本要求</li>
+                    <li>RABS 與隔離器能提供額外的人員隔離屏障</li>
+                    <li>設施設計需考量人員動線、更衣流程與材料進出路徑</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 4：人員訓練與資格確認</h4>
+                <ul>
+                    <li>所有接觸無菌區的人員必須完成正式無菌技術訓練</li>
+                    <li>訓練涵蓋：更衣程序、無菌操作行為、干預技術</li>
+                    <li>資格確認須通過 APS（媒體充填）——個別操作員各自測試</li>
+                    <li>持續訓練與再資格確認為維持合規的必要機制</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 5：無菌技術</h4>
+                <ul>
+                    <li>第一氣流（First Air）原則：不得遮蔽 HEPA 出風口與暴露物品之間的氣流路徑</li>
+                    <li>禁止動作：快速移動、不必要說話、觸碰已滅菌表面</li>
+                    <li>正確干預手法：所有干預必須以無菌方式執行並記錄</li>
+                    <li>PPE 要求：手套、口罩、無塵衣的正確穿戴順序</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 6：設備與材料</h4>
+                <ul>
+                    <li>所有接觸產品的設備必須滅菌（SAL ≤ 10⁻⁶）</li>
+                    <li>容器與封蓋系統的選擇需考量手動操作的相容性</li>
+                    <li>滅菌方法：蒸氣滅菌（首選）、乾熱滅菌、輻射滅菌</li>
+                    <li>設備轉移入 ISO 5 區的流程必須驗證以防止汙染</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 7：製程控制</h4>
+                <ul>
+                    <li>批次記錄（BPR）必須即時記錄所有關鍵操作步驟</li>
+                    <li>在線觀察員：建議指定獨立觀察員全程監控並記錄</li>
+                    <li>關鍵控制點（CCP）識別：哪些步驟若出錯將直接影響無菌性</li>
+                    <li>偏差處理：任何觀察到的無菌技術偏差必須立即記錄並評估</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 8：無菌製程模擬（APS）</h4>
+                <ul>
+                    <li>媒體充填設計：必須涵蓋最長生產時間、最壞情況干預</li>
+                    <li>頻率：半年一次，初始三次重複 APS 通過後方可正式生產</li>
+                    <li>接受標準：MAP 的 APS 必須達到零汙染（不接受統計允許值）</li>
+                    <li>培養條件：最低 14 天，20–35°C，事前目視檢查去除缺陷品</li>
+                    <li>生長促進試驗：APS 後以藥典方法（USP &lt;71&gt;）確認培養基有效性</li>
+                </ul>
+            </div>
+            <div class="summary-card" style="background: rgba(255,255,255,0.08); border-color: #90cdf4; color: white;">
+                <h4 style="color: #90cdf4;">Section 9：結論與策略方向</h4>
+                <ul>
+                    <li>TR62 是 MAP 領域首份系統性業界共識文件</li>
+                    <li>人員是 MAP 的核心變數，也是最大的無菌風險來源</li>
+                    <li>所有新 MAP 設施應優先考慮隔離技術（RABS/隔離器）</li>
+                    <li>製造商必須充分認識 MAP 製程的不確定性並建立相應控制體系</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>TR62 的核心主題標籤</h3>
+        <div style="margin-top: 0.5rem;">
+            <span class="topic-tag">手動無菌操作 MAP</span>
+            <span class="topic-tag">ISO 5 環境</span>
+            <span class="topic-tag">第一氣流原則</span>
+            <span class="topic-tag">操作員資格確認</span>
+            <span class="topic-tag">APS 零汙染標準</span>
+            <span class="topic-tag">半年再確認</span>
+            <span class="topic-tag">隔離器 / RABS</span>
+            <span class="topic-tag">媒體充填設計</span>
+            <span class="topic-tag">環境監測</span>
+            <span class="topic-tag">無菌技術</span>
+            <span class="topic-tag">干預管理</span>
+            <span class="topic-tag">更衣程序</span>
+            <span class="topic-tag">批次記錄即時性</span>
+            <span class="topic-tag">FDA 無菌指南</span>
+            <span class="topic-tag">EU GMP Annex 1</span>
+            <span class="topic-tag">PDA TR22 APS</span>
+            <span class="topic-tag">ICH Q9 風險管理</span>
+        </div>
+    </div>
+
+</div><!-- /.main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 62 (2013): Manual Aseptic Processes</p>
+    <p>Section 4: Conclusion &amp; References | 結論與參考資料 | p22 – p23</p>
+    <p style="font-size:0.8rem; opacity:0.6; margin-top:0.5rem;">Educational use only. For compliance purposes, always consult the current version of all referenced standards and guidelines.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

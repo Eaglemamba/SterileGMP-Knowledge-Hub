@@ -1,6 +1,71 @@
-# PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes
+# PDA Technical Report No. 62 (2013): Manual Aseptic Processes
 
---- PAGE 5 ---
+1.0  INTRODUCTION...................................................1
+2.0  GLOSSARY OF TERMS.........................................3
+3.0	 BUILDINGS AND FACILITIES...............................6
+
+## 4.0 OPERATIONAL PERSONNEL TRAINING AND
+
+QUALIFICATION...................................................8
+4.1	 Personnel Training and Qualification............... 8
+4.2	 Gowning Qualification ................................... 8
+4.3	 Risk Management.......................................... 8
+4.4	 Aseptic Handling Challenges.......................... 9
+
+## 5.0 EQUIPMENT, COMPONENTS
+
+AND CONTAINER/CLOSURE..............................10
+6.0	 PROCESS TIME LIMITATIONS...........................11
+7.0	 DESIGN OF MANUAL ASEPTIC PROCESSES....12
+
+### 7.1 Manual Aseptic Process Design Principles in
+
+Unidirectional Air Flow Hoods...................... 12
+
+### 7.2 Manual Aseptic Process Design Principles
+
+in Isolators and RABS................................... 14
+
+## 8.0 EVALUATION OF MANUAL ASEPTIC
+
+PROCESSING–PROCESS SIMULATION.............16
+8.1	 Simulation Design ....................................... 16
+8.1.1	 Compositing/Assembly Activities........... 16
+8.1.2	 Formulation/Compounding Activities...... 16
+8.1.3	 Filling/Subdivision Activities
+(Including Lyophilization if Needed) ........ 16
+
+#### 8.1.4 Manual Manipulation Steps Performed in
+
+Conjunction with Other Processes ......... 16
+8.2	 Media Sterilization ....................................... 17
+8.3	 Frequency and Number of APS Runs .......... 17
+8.3.1	 Duration of Runs .................................... 17
+8.3.2	 Size of Runs............................................ 17
+8.4	 Observation of the Process Simulation......... 17
+8.5	 Media Fill Volume......................................... 18
+8.6	 Anaerobes/Inert Gassing ............................. 18
+8.7	 Environmental Monitoring............................ 18
+8.8	 Execution of the Simulation.......................... 18
+8.9	 Pre-Incubation Inspection............................. 18
+8.10	Incubation Time/Temperature ...................... 19
+8.11	Post-Incubation Inspection .......................... 19
+8.12	Growth Promotion........................................ 19
+8.13	Interpretation of Test Results ....................... 19
+9.0	 CONCLUSION.....................................................21
+10.0	REFERENCES....................................................22
+11.0	ADDITIONAL READING....................................23
+Table of Contents
+TABLE INDEX
+
+| ISO | EU Grade | US Class | |
+| --- | --- | --- | --- |
+| ISO 5 | Grade A/B(at rest) | Class 100 | |
+| ISO 7 | Grade B(op)/C(rest) | Class 10,000 | ISO 5 |
+| ISO 8 | Grade C(op)/D(rest) | Class 100,000 | |
+
+Cleanroom Standards Airborne Particulate Limits��������������������������������������������������������������������������������6
+
 The purpose of this technical report is to outline methods and approaches for control and evalua-
 tion of aseptic processing operations for drug products/medicinal products which use all or partially
 manual procedures. The goal of aseptic processing is to prevent the contamination of sterile materials
@@ -47,7 +112,6 @@ rective activities during line stoppages, and so on. Operator activities and int
 
 ## 1.0 Introduction
 
---- PAGE 6 ---
 should be integrated into the aseptic process simulation (APS) of the respective automated processes
 and they will not be addressed further in this report (6).
 The guidance provided in this report builds upon, and is intended to supplement, published guidance
@@ -57,7 +121,6 @@ In conclusion, for adequate evaluation of the manual aseptic process it is impor
 tors, such as those described above, are fully accounted for in both the design of an MAP and also in
 the design of the APS program. The sections that follow include points to consider in that evaluation.
 
---- PAGE 7 ---
 Aerobic Microorganism
 A microorganism that utilizes oxygen as the final
 electron acceptor during metabolism; a micro-
@@ -148,7 +211,6 @@ mum 0.3 μm particle retaining efficiency of
 
 ## 2.0 Glossary of Terms
 
---- PAGE 8 ---
 Human Factors
 A science discipline that examines human psy-
 chological, social, physical, and biological char-
@@ -236,7 +298,93 @@ Sterility Test
 Test performed to determine if viable microor-
 ganisms are present (6).
 
---- PAGE 9 ---
+Human Factors
+A science discipline that examines human psy-
+chological, social, physical, and biological char-
+acteristics to evaluate the design, operation, or
+use of products or systems for optimizing hu-
+man performance, health, safety, and/or habit-
+ability (9). [Synonym: Ergonomics]
+Intervention
+An aseptic manipulation or activity that occurs
+within the critical area. This technical report re-
+gards interventions as either corrective or inher-
+ent (6).
+Intervention, Corrective
+An intervention that is performed to correct or
+adjust an aseptic process during its execution.
+Examples include such activities as: clearing
+component misfeed, adjusting sensors, and re-
+placing equipment components (6).
+Intervention, Inherent
+An intervention that is an integral part of the
+aseptic process and is required for set-up or rou-
+tine operation and/or monitoring, e.g., aseptic
+assembly, container replenishment, environ-
+mental sampling, etc. Inherent interventions are
+required by batch record, procedure, or work
+instruction for the proper conduct of the aseptic
+process (6).
+ISO 5
+Environmental operating conditions defined in
+ISO 14644-1, “Cleanrooms and associated con-
+trolled environments.” Note: For total particu-
+lates, ISO 5 approximates the Class 100 descrip-
+tion from the now obsolete U.S. Federal Standard
+209, and is roughly comparable to Grade A as
+defined in European GMP Annex 1–“Manufac-
+ture of Sterile Medicinal Products” (6).
+ISO 7
+Environmental operating conditions defined in
+ISO 14644-1, “Cleanrooms and associated con-
+trolled environments.” Note: For total particu-
+lates, ISO 7 approximates Class 10,000 from the
+now obsolete Federal Standard 209.
+ISO 8
+Environmental operating conditions defined in
+ISO 14644-1, “Cleanrooms and associated con-
+trolled environments.” Note: For total particulates,
+ISO 8 approximates Class 100,000 from the now
+obsolete Federal Standard 209.
+Isolator, Closed
+A decontaminated unit meeting ISO 5 condi-
+tions that provides uncompromised, continuous,
+isolation of its interior from the surrounding
+environment. Any air exchange with the sur-
+rounding environment takes place only through
+microbially retentive filters (6).
+Isolator, Open
+A decontaminated unit meeting ISO 5 condi-
+tions that provides uncompromised, continu-
+ous isolation of its interior from the surround-
+ing environment. It may transfer air directly to
+the surrounding environment through openings
+(e.g., “mouseholes”) that preclude the ingress of
+microbial contamination (6).
+Positive Unit
+Unit filled in an aseptic processing simulation
+that exhibits detectable microbial growth after
+incubation (6).
+Restricted Access Barrier System (RABS)
+RABS are aseptic processing systems (ISO 5) intend-
+ed to substantially reduce human borne contamina-
+tion within the aseptic environment where sterile
+product, containers, closures and equipment are ex-
+posed by the use of separative devices and defined
+mechanical features and operating procedures (6).
+Shift
+Scheduled periods of work or production, usu-
+ally less than 12 hours in length, staffed by alter-
+nating groups of workers (6).
+Sterile
+Absence of life; usually refers to absence of viable
+microorganisms. Note: In practice, no such abso-
+lute statement regarding the absence of microor-
+ganisms can be proven (see “Sterilization”) (6).
+Sterility Test
+Test performed to determine if viable microor-
+ganisms are present (6).
+
 Sterilization
 Validated process used to render a product free
 of viable microorganisms.
@@ -271,7 +419,6 @@ or product failure (when compared to ideal con-
 ditions). Such conditions do not necessarily in-
 duce product or process failure (6).
 
---- PAGE 10 ---
 The selection of an appropriate clean environment in which to perform the required manufacturing
 activities is critical to MAP operations. In general, the minimum requirement is an ISO 5 environment
 in which unidirectional air flow protection is provided to critical materials during the manufacturing
@@ -283,99 +430,9 @@ portion/area within a lower classified environment
 • A table mounted unidirectional air flow hood (with either horizontal or vertical air flow)
 • An isolator (open or closed)
 
-**Table 3.0-1**
+| ISO 14644 | US FDA(Aseptic Processing Guidance) | USP <1116> | EU Annex 1 and WHO | Japan (Aseptic Processing Guidance) / JP XVI |
+| --- | --- | --- | --- | --- |
 
-Cleanroom Standards Airborne Particulate Limits (particles/m3) (10)
-ISO 14644
-US FDA
-(Aseptic
-Processing
-Guidance)
-USP <1116>
-EU Annex 1
-and WHO
-Japan
-(Aseptic
-Processing
-Guidance)
-JP XVI
-ISO 5
-≥0.5 µm 3520
-≥5 µm 29
-ISO 5 /Class 1001
-35202
-not specified
-ISO 5/Class 100
-3520
-not specified
-Grade A
-Grade B (at rest)
-3520
-Grade A
-Grade B (at rest)
-3520
-Grade A
-Grade B (at rest)
-3520
-not specified
-ISO 7
-≥0.5 µm 352,000
-≥5µm 2,900
-ISO 7/Class 10,000
-352,000 not
-specified
-Class 10,000
-352,000 not
-specified
-Grade B
-(operation)
-Grade C (at rest)
-352,000
-2,900
-Grade B
-(operation)
-Grade C (at rest)
-352,000
-2,900
-Grade B
-(operation)
-Grade C (at rest)
-352,000
-not specified
-ISO 8
-≥0.5 µm
-3,520,000
-≥5µm 29,000
-Class 100,000
-3,520,000
-not specified
-Class 100,000
-3,520,000 not
-specified
-Grade C
-(operation)
-Grade D (at rest)4
-3,520,000
-29,000
-Grade C
-(operation)
-Grade D (at rest)4
-3,520,000
-29,000
-Grade C
-(operation)
-Grade D (at rest)4
-3,520,000
-not specified
-1.
-Class 100 and Grade A are defined as requiring unidirectional flow by all applicable guidelines
-2.
-Class titles for US FDA and USP indicate equivalent particle counts per ft3
-3.
-ISO 4.8 based upon reduced limit for particles ≥5 µm
-4.
-Grade D operational particulate counts are dependent upon the operation and are not defined by any
-guideline
 Each of the above is in current use in the industry for the conduct of MAP operations. In general, as
 MAP operations become more complex, a more sophisticated and complex operating environment
 will be required. The manual processes considered in this report are commonly carried out in either
@@ -388,7 +445,7 @@ and continuous isolation of its interior from the surrounding environment. A clo
 lows air exchanges with the surrounding environment through microbially retentive filters. An open
 3.0
 Buildings And Facilities
---- PAGE 11 ---
+
 isolator may transfer air directly to the surrounding environment through openings (commonly called
 “mouse holes”) that preclude the ingress of microbial contamination. All these environments provide
 appropriate conditions for the execution of MAP operations which are considered critical zones.
@@ -414,7 +471,31 @@ The overall flow of the MAP facility, personnel and equipment is consistent with
 ments utilized for equipment-based aseptic filling, whether in a cleanroom or an isolator, but on a
 much smaller scale.
 
---- PAGE 12 ---
+isolator may transfer air directly to the surrounding environment through openings (commonly called
+“mouse holes”) that preclude the ingress of microbial contamination. All these environments provide
+appropriate conditions for the execution of MAP operations which are considered critical zones.
+Biological Safety Cabinets (BSC) are designed to protect operators and the external environment
+from infected or dangerous materials inside the cabinet. All air to and from the BSC is HEPA filtered
+before entering the cabinet or exhausting to the external environment. Some BSC designs provide
+some measure of protection to the materials being handled. Since air flows into the BSC from the sur-
+rounding environment, biosafety cabinets should be used only when worker safety from the material
+being handled is a meaningful concern. Worker safety must also be considered if the toxicity of the
+compound has not yet been determined.
+The supporting clean environment outside the critical zone is typically ISO 7 when a UAFH or BSC
+is utilized for the manual process. The use of an isolator under appropriate risk-management proce-
+dures may relax the requirements for the surrounding area; most new manufacturing installations
+employ an ISO 8 background environment in accordance with the 2004 FDA aseptic processing guid-
+ance (1) or European GMP Annex 1 (2).
+Open isolators are typically installed in ISO 8 (Table 3.0-1) environments in order to maintain ISO 5
+conditions for material transfers and operations. The surrounding clean area is where the personnel
+performing the manual processes are located. Appropriate gowning facilities are required which are
+consistent with the background environment requirements. The execution of the MAP is ordinarily
+supported by various sterilization processes for the materials and equipment required, and these ster-
+ilization processes may also be located in the support areas.
+The overall flow of the MAP facility, personnel and equipment is consistent with large-scale environ-
+ments utilized for equipment-based aseptic filling, whether in a cleanroom or an isolator, but on a
+much smaller scale.
+
 People are the most critical operational variable and represent the highest source of contamination
 in manual aseptic processing. Operational personnel must be highly proficient at their assigned tasks.
 Therefore, personnel training and qualification become critical to success.
@@ -465,7 +546,6 @@ risk, thus improving the assurance of  sterility, endotoxin control, and subsequ
 
 ## 4.0 Operational Personnel Training and Qualification
 
---- PAGE 13 ---
 Manual aseptic processing involves greater risks than automated aseptic processes. A risk-based qual-
 ity management approach can be very helpful. It is therefore essential that there is a thorough and
 complete understanding of the process, including critical steps and risks, so that any risk assessment
@@ -487,7 +567,6 @@ and materials (usually with media) to demonstrate his/her aseptic technique. The
 representative of the actual process steps. The operators are required to demonstrate aseptic practice
 proficiency in these evaluations regardless of the technology utilized.
 
---- PAGE 14 ---
 The equipment, raw material components, containers, closures and other items required for MAP
 vary with the requirements of the process. These items are typically reduced in size or quantity,
 which allows so they can be supplied to the processing environment in a sealed package after depyro-
@@ -502,7 +581,6 @@ required to be performed.
 5.0
 Equipment, Components and Container/Closure
 
---- PAGE 15 ---
 Personnel time limitations with MAP are usually more important than with automated aseptic pro-
 cesses. In very short or nonrepetitive processes, such as an aseptic connection, time may be of little
 relevance (except as it may relate to material stability) and its impact lessened. Where operators must
@@ -524,7 +602,27 @@ human factors, etc.
 6.0
 Process Time Limitations
 
---- PAGE 16 ---
+Personnel time limitations with MAP are usually more important than with automated aseptic pro-
+cesses. In very short or nonrepetitive processes, such as an aseptic connection, time may be of little
+relevance (except as it may relate to material stability) and its impact lessened. Where operators must
+perform repetitive tasks such as container filling/stoppering, egg harvesting (as in vaccine manufac-
+turing) or similar tasks, the effect of fatigue must be considered in both routine operation and process
+simulation. The operator’s aseptic technique may deteriorate with the passage of time. A “worst-
+case” evaluation of fatigue would include a process simulation equal or greater in time duration
+to the longest period an operator might perform the task without interruption. Similarly, a process
+simulation conducted at the end of a normal day’s production can evaluate the effect of fatigue on the
+operator’s aseptic technique (1,5,6,13).
+Time limits for holding dirty/clean/sterile equipment and sterile/depyrogenated components shall
+also be validated. It is also necessary to validate the maximum time allowed between formulation
+(addition of the first ingredient, which includes water) to the point of sterilization (filtration consid-
+ering filter grow-through) and the validation of holding sterile bulk through usage. These topics are
+discussed in PDA Technical Report No. 22 (6).
+Note: As part of the process risk assessment, personnel fatigue factors need to be considered, and
+where possible minimized/eliminated through improvement in ergonomics, an understanding of
+human factors, etc.
+6.0
+Process Time Limitations
+
 Sterility assurance requires a holistic approach to the entire manufacturing process, and encompasses
 appropriate facility/equipment/process design, aseptic practice/validation and a well thought out
 risk assessment to mitigate contamination. Considering the importance of personnel practices in
@@ -573,7 +671,6 @@ such as sterile septum or connectors should be considered to minimize the risk d
 
 ## 7.0 Design of Manual Aseptic Processes
 
---- PAGE 17 ---
 • Wherever possible materials being introduced into the process should be pre-measured into a
 tightly sealed container prior to sterilization and addition.
 • Electrical equipment and controls pose a contamination risk and should be located outside the
@@ -614,8 +711,6 @@ contamination in the ISO 5 environment. Air sampling during processing may be pe
 specially designed equipment that does not compromise the environment and may include settling
 plates. Surface monitoring should be performed using contact plates or swabs after processing has
 been completed.
-
---- PAGE 18 ---
 
 ### 7.2 Manual Aseptic Process Design Principles in Isolators
 
@@ -670,7 +765,7 @@ a replacement is needed.
 •
 Electrical equipment and controls pose a contamination risk and should be located outside the
 processing enclosure if possible. If that is not possible a second operator (not the primary op-
---- PAGE 19 ---
+
 erator) should adjust equipment settings as necessary. Pay special attention to equipment which
 exhausts air (e.g., mixers, blenders, etc.) that could contaminate the environment.
 •
@@ -700,7 +795,6 @@ designed equipment that does not compromise the environment and may include sett
 Surface monitoring should be performed using contact plates or swabs after processing has been
 completed.
 
---- PAGE 20 ---
 The following are the elements of a MAP simulation that involve extensive participation of person-
 nel in the aseptic process. Details of study design provided in the APS reports on aseptic processing
 for either filling or sterile bulk production should be consulted for those activities that are essentially
@@ -749,8 +843,6 @@ of the elements addressed within the overall process evaluation protocol/procedu
 ## 8.0 Evaluation of Manual Aseptic Processing–
 
 Process Simulation
-
---- PAGE 21 ---
 
 ### 8.2 Media Sterilization
 
@@ -802,7 +894,56 @@ formed by individuals having the knowledge and competency to assess if operators
 conduct in their activities. These individuals should also be able to assess that aseptic interventions have been
 executed consistent with good practice so as to provide for realistic assessments of sterility control.
 
---- PAGE 22 ---
+### 8.2 Media Sterilization
+
+The preparation of media for use in a MAP simulation is normally managed with few problems. If the
+media bulk container is small enough it can be sterilized in an autoclave prior to introduction into the
+process. In other cases non-sterile bulk media may be filtered into the process in a manner similar to
+the drug product. Where possible, sterilization methods, such as autoclaving or irradiating, should be
+combined with filtration to remove mycoplasma contamination from media components (for a more
+detailed discussion, see PDA Technical Report No. 22). For compositing/assembly processes, suitable
+sterile materials to use in the process simulation may be unavailable. In such cases the choice may be
+to use the production materials themselves suitably sterilized/adapted (if possible and necessary) in
+the simulation, if they do not inhibit the growth of microorganisms. For the APS each of the liquid
+containers containing sterile materials for the process should have their contents replaced with media.
+
+### 8.3 Frequency and Number of APS Runs
+
+The recommendation for frequency and number of simulation studies (runs) for manual processing is
+that each operator (primary and secondary) should be qualified semi-annually (or in accordance with
+the applicable regulatory requirements). Typically, three replicate APS studies are performed to initially
+qualify an operator and process. The combined duration and size of the APS runs will support both op-
+erator and process qualification.
+Note: Operator qualification is critical since the operators are the primary means of production. More
+frequent studies may be required for infrequent manufacturing operations.
+
+#### 8.3.1 Duration of Runs
+
+Simulation studies should meet or exceed the expected maximum duration of a single working ses-
+sion by a single operator.
+
+#### 8.3.2 Size of Runs
+
+The size of the process simulation is largely dictated by the time period that a single operator would
+remain performing the same activity. The actual numbers of units produced in that time period
+should meet or exceed the production quantity that the operator(s) would normally handle in that
+time period. As the operator is an integral part of the process and a key variable in MAP, it may be
+that each operator will have to perform the whole process simulation for the process to be considered
+valid especially where only small numbers are filled.
+
+### 8.4 Observation of the Process Simulation
+
+Considerations for observation of MAP simulations are consistent with observations of automated
+simulations, as described in PDA Technical Report No. 22 (6):
+The process simulation should be observed to assure that all planned activities are properly executed and
+represent an appropriate challenge to the process capability. Observation may also be used to augment aseptic
+conduct and technique training.
+Observation should commence upon the initiation of the process simulation, including equipment set-up,
+and continue until the process simulation has completed. Observation of the simulation should be per-
+formed by individuals having the knowledge and competency to assess if operators have used proper aseptic
+conduct in their activities. These individuals should also be able to assess that aseptic interventions have been
+executed consistent with good practice so as to provide for realistic assessments of sterility control.
+
 The process simulation observation should be documented and/or video recorded. The use of video re-
 cording of the APS allows activities to be reviewed in detail to assist with training or failure investigation (6).
 
@@ -850,7 +991,6 @@ tion units for the same reasons. Units with defective seals should be removed fr
 for incubation. Units with cosmetic defects should be treated as integral and included in the incubation.
 Note: Generally, the number and type(s) of defective units should not exceed those generated during
 routine manufacturing.
---- PAGE 23 ---
 
 ### 8.10 Incubation Time/Temperature
 
@@ -900,7 +1040,6 @@ logical growth-support properties. Media differ in many respects from the produc
 to simulate; for example, there are differences in solubility, pH, filtration rates and filterability and
 viscosity. With powdered products, the process simulation involves reconstituting powdered media or
 
---- PAGE 24 ---
 simulated product, introducing extra processing equipment or manipulation, with the inherent risk
 of contamination. Since a microbiological medium is designed specifically to support or stimulate
 the growth of microorganisms, it is a more rigorous challenge than processed products, which often
@@ -910,7 +1049,6 @@ case of manual aseptic processing this criterion must be set to zero due to the 
 operation. The assumptions used for low numerical acceptance are not applicable for manual aseptic
 processing operations.
 
---- PAGE 25 ---
 This technical report is one of the first attempts to address the subject of manual aseptic processing
 in a comprehensive manner. As such, it includes recommendations that may establish recommended
 practices in the absence of guidance from regulators or industry organizations. Manufacturers that
@@ -920,8 +1058,6 @@ installations, we strongly encourage the use of isolation technology to minimize
 contamination from personnel involved in the manufacturing operations.
 
 ## 9.0 Conclusion
-
---- PAGE 26 ---
 
 ## 10.0 References
 
@@ -1006,8 +1142,6 @@ Health Care Products, Parenteral Drug Association:
 Testing for Sterile Bulk Pharmaceutical Chemicals;
 Parenteral Drug Association: 2009. www.pda.org/
 bookstore (accessed Jan. 25, 2013).
-
---- PAGE 27 ---
 
 ## 11.0 Additional Reading
 
@@ -1140,7 +1274,6 @@ co.uk/?cart=yes&do=cat&cid=1 (accessed Jan. 25,
 International Conference on Harmonisation: 2005.
 www.ich.org.
 
---- PAGE 28 ---
 Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
 An Authorized User of this electronic publication is the purchaser.
 Authorized Users are permitted to do the following:
@@ -1176,7 +1309,6 @@ To order reprints, please contact:
 Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
 Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150, Bethesda, MD 20814.
 
---- PAGE 29 ---
 About PDA Technical Reports
 PDA Technical Reports are global consensus documents, prepared by member-driven Task Forces (listed on inside front cover) com-
 prised of content experts, including scientists and engineers working in the pharmaceutical/biopharmaceutical industry, regulatory
@@ -1238,7 +1370,7 @@ Christopher Smalley, Merck
 Edward Tidswell, Baxter
 Brenda Uratani, U.S. FDA
 Glenn Wright, Eli Lilly and Company
---- PAGE 30 ---
+
 Bethesda Towers
 4350 East West Highway
 Suite 200
