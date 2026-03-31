@@ -477,6 +477,7 @@ function renderCards(){
         const tags=d.tags.slice(0,4).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
         const fb=d.figures?`<span class="tag-pill bg-orange-50 text-orange-600">${d.figures} fig</span>`:'';
         const isLV=_lv&&_lv.file===d.file;
+        const prog=getProgress(d.file);
         const _href=d.file?getOpenHref(d.file):'';
         const btn=d.file?`<a href="${_href}" target="_blank" data-track-file="${d.file}" data-track-title="${d.title.replace(/"/g,'&quot;')}" data-track-zh="${(d.titleZh||'').replace(/"/g,'&quot;')}"
             class="track-open text-xs text-white px-3 py-1 rounded no-underline transition-colors opacity-90 hover:opacity-100" style="background:${sc.bar||'#334155'}">${prog?'繼續閱讀':'Open'}</a>`:'';
@@ -493,7 +494,6 @@ function renderCards(){
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
         const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
         const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
-        const prog=getProgress(d.file);
         const progBadge=prog&&prog.num?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`:'';
         return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}">
             ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
