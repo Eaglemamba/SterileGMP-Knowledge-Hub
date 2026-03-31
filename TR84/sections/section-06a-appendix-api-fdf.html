@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 6a: Appendix I — API & FDF Examples | PDA TR84</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #ffe5cc; color: #8a3a00; }
+.badge.purple { background: #e8d5f0; color: #5b1a7a; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+/* Vulnerability level badges */
+.vuln-significant { background: #fee2e2; color: #b91c1c; border: 1px solid #ef4444; }
+.vuln-moderate { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+.vuln-acceptable { background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+.vuln-negligible { background: #dbeafe; color: #1e40af; border: 1px solid #3b82f6; }
+.example-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.example-table th {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.83rem;
+}
+.example-table td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; vertical-align: top; }
+.example-table tr:nth-child(even) { background: #f7fafc; }
+.example-label {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 700; margin-bottom: 0.25rem;
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Section 6a: Appendix I — API &amp; Finished Dosage Form Examples</h1>
+  <div class="subtitle">附錄一：原料藥與製劑案例（前段）</div>
+  <div class="page-info">PDA Technical Report No. 84 | p40 – p48</div>
+</div>
+
+<div class="main-content">
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="learning-objectives">
+    <h3>學習目標 Learning Objectives</h3>
+    <ol>
+      <li>理解如何依據資料關鍵性（高／中／低）與現有管控層級，將製程資料定位於 9-Box 脆弱性矩陣的正確位置。</li>
+      <li>能分析 API（原料藥）製造中反應器控制、烘乾及批次間清潔等操作的資料完整性風險，並識別對應的控制措施。</li>
+      <li>能分析 FDF（最終劑型）製造中篩分操作濕度監測資料的完整性風險，並比較不同技術解決方案對脆弱性等級的影響。</li>
+      <li>掌握從紙本記錄 → PLC 列印輸出 → 電子批次記錄（EBR）的數位化升級路徑，以及各階段對 CDMO 現場稽核就緒程度的實務意義。</li>
+    </ol>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>本節內容 Contents</h3>
+    <div class="toc-grid">
+      <a href="#ex1">Example 1: API Reaction (High)</a>
+      <a href="#ex2">Example 2: API Drying (Medium)</a>
+      <a href="#ex3">Example 3: API Cleaning (Low)</a>
+      <a href="#ex4">Example 4: FDF Sieving Humidity (High)</a>
+      <a href="#ex5">Example 5: FDF Sieving Humidity (Medium)</a>
+      <a href="#ex6">Example 6: FDF Sieving Humidity (Low)</a>
+      <a href="#summary">Section Summary 總結</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 8.1 API EXAMPLES HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section">
+    <div class="chapter-divider">
+      <div class="chapter-badge">8.1</div>
+      <div class="chapter-info">
+        <h2>API Examples — Active Pharmaceutical Ingredient</h2>
+        <p>原料藥 (Active Pharmaceutical Ingredient) 案例 | Examples 1–3</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="concept-box">
+        <h4>API 案例概述</h4>
+        <p>第 8.1 節提供三組 API 製造案例，每組各含三個子案例（a/b/c），代表相同製程操作在不同資料完整性控制水準下的脆弱性評估結果。三組分別對應 9-Box 矩陣的高（High）、中（Medium）、低（Low）資料關鍵性行列。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXAMPLE 1: HIGH CRITICALITY API REACTION
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="ex1">
+    <div class="chapter-divider">
+      <div class="chapter-badge">Ex1</div>
+      <div class="chapter-info">
+        <h2>Example 1: High Criticality — API Reaction Controls Impurity Level</h2>
+        <p>高關鍵性：原料藥反應器操作控制雜質生成 | Table 8.1-1 | p42</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Context paragraph -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <p>Table 8.1-1 provides worked examples for high-criticality data in API manufacturing. The reactor operation controls impurity levels, directly impacting a <span class="key-term">Critical Quality Attribute (CQA)</span> through a <span class="key-term">Critical Process Parameter (CPP)</span>. Three sub-examples (1a, 1b, 1c) illustrate progressively improved data integrity controls, moving from a manually controlled reactor with paper records, to a <span class="key-term">PLC</span>-controlled reactor with paper records, to a PLC-controlled reactor with a fully electronic batch record (<span class="key-term">EBR</span>).</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+          <div class="concept-box">
+            <h4>核心情境</h4>
+            <p>反應器操作直接控制雜質生成，屬於 CPP（關鍵製程參數, Critical Process Parameter），影響 CQA（關鍵品質屬性, Critical Quality Attribute）。這是 API 製造中最高風險的資料類型，位於 9-Box 矩陣頂列。</p>
+            <p>三個子案例展示同一操作在不同數位化程度下的資料脆弱性結果，是理解「技術升級如何降低風險」的最佳範本。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 8.1-1 -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Table 8.1-1: Example 1 — High Criticality API Reaction</div>
+          <table class="example-table">
+            <thead>
+              <tr>
+                <th>Ex</th>
+                <th>Mfg Operation</th>
+                <th>Data Criticality</th>
+                <th>Data Vulnerability Factors</th>
+                <th>Data Controls in Place</th>
+                <th>Vulnerability Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1a</strong></td>
+                <td>Manually controlled reactor and <span class="key-term">paper BPR</span></td>
+                <td><strong>High:</strong> Impacts CQA &amp; is a CPP that controls <span class="key-term">impurity formation</span></td>
+                <td>
+                  <em>Human Factor:</em> Manual transfer of CPP data from production instrumentation &amp; gauges into paper BPR.<br>
+                  <em>GMP Process:</em> Reactor is manually controlled by operator<br>
+                  <em>Data Mgmt:</em> Paper BPR
+                </td>
+                <td>
+                  <strong>Low:</strong><br>
+                  <em>Human Factor:</em> Supervisory review &amp; quality unit review at release<br>
+                  <em>GMP Process:</em> Controlled with written procedures and training<br>
+                  <em>Data Mgmt:</em> Reliance on second-person witnessing of data entries &amp; quality unit review at release
+                </td>
+                <td><span class="badge vuln-significant">Significant</span></td>
+              </tr>
+              <tr>
+                <td><strong>1b</strong></td>
+                <td><span class="key-term">PLC</span>-controlled reactor and paper BPR</td>
+                <td><strong>High:</strong> Impacts CQA &amp; is a CPP that controls impurity formation</td>
+                <td>
+                  <em>Human Factor:</em> Manual transfer of CPP data from <span class="key-term">HMI</span> into BPR<br>
+                  <em>GMP Process:</em> PLC-controlled reactor of new or complex process<br>
+                  <em>Data Mgmt:</em> Manual data entry into paper BPR from HMI; no <span class="key-term">audit trail</span> or electronic analysis of data in PLC
+                </td>
+                <td>
+                  <strong>Medium:</strong><br>
+                  <em>Human Factor:</em> Supervisory review &amp; quality unit review at release<br>
+                  <em>GMP Process:</em> PLC validated with printout attached to paper BPR<br>
+                  <em>Data Mgmt:</em> Reliance on second-person witnessing of data entries; quality unit review of BPR &amp; PLC printout at release
+                </td>
+                <td><span class="badge vuln-moderate">Moderate</span></td>
+              </tr>
+              <tr>
+                <td><strong>1c</strong></td>
+                <td>PLC-controlled reactor &amp; <span class="key-term">electronic BPR</span></td>
+                <td><strong>High:</strong> Impacts CQA &amp; is a CPP that controls impurity formation</td>
+                <td>
+                  <em>Human Factor:</em> Electronic BPR mitigates human error to a residual level<br>
+                  <em>GMP Process:</em> PLC-controlled reactor of robust process<br>
+                  <em>Data Mgmt:</em> Data automatically captured in EBR &amp; data mgmt lifecycle is controlled
+                </td>
+                <td>
+                  <strong>High:</strong><br>
+                  <em>Human Factor:</em> EBR reviewed by quality unit at release<br>
+                  <em>GMP Process:</em> PLC validated &amp; production data captured automatically<br>
+                  <em>Data Mgmt:</em> Access controls on PLC; electronic analysis of data; automatic data storage &amp; <span class="key-term">audit trail</span>
+                </td>
+                <td><span class="badge vuln-acceptable">Acceptable</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="concept-box">
+            <h4>DI 問題核心：手動抄錄的斷鏈風險</h4>
+            <p><strong>1a 問題：</strong>操作員從儀表板讀取數值後手寫到紙本批次記錄（BPR, Batch Production Record）。這個「人工轉錄」步驟是資料完整性的最大漏洞——數值可能被錯誤抄寫、事後補填、甚至刻意竄改，而無法追溯原始來源。</p>
+            <p><strong>1b 改善：</strong>加入 PLC（可程式邏輯控制器）後，設備本身已有電子記錄，但數據仍需人工從 HMI（人機介面）抄錄到紙本 BPR。問題縮小但未消除，且 PLC 本身若無稽核軌跡設定，電子資料仍可能被覆寫。</p>
+            <p><strong>1c 最佳：</strong>EBR（電子批次記錄, Electronic Batch Record）直接與 PLC 整合，數據自動寫入，人工介入降至殘餘水準。稽核軌跡完整，任何修改均有記錄。</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：溫度計讀數的三種記錄方式</h4>
+            <p>想像病房護理師每小時量體溫：</p>
+            <ul>
+              <li><strong>1a：</strong>看著水銀溫度計，憑記憶一小時後補寫在紙上。</li>
+              <li><strong>1b：</strong>有電子體溫計顯示數值，但護理師仍需手抄到護理記錄。</li>
+              <li><strong>1c：</strong>電子體溫計直接藍牙傳輸到電子病歷，護理師確認即可。</li>
+            </ul>
+            <p>製藥界要求的就是 1c 的可靠程度——尤其當這個「體溫」直接關係到病人用藥安全（= 產品 CQA）時。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>稽核警示：1b 的常見陷阱</h4>
+            <p>許多 CDMO 處於 1b 狀態：有 PLC 但沒有設定稽核軌跡，或稽核軌跡功能被關閉「以節省儲存空間」。FDA 483 觀察項目中，這是高頻缺失之一。關鍵提醒：PLC 有記錄能力不等於 DI 合規——必須啟用、驗證、並確保記錄不可被刪除。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 1</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+1a: High × Low   → Significant（紅）
+1b: High × Medium → Moderate（橙）
+1c: High × High  → Acceptable（綠）
+
+注意：高關鍵性資料在任何管控水準下，
+最高只能達到 Acceptable（無法達到 Negligible）</pre>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CDMO 現有 API 反應器屬於 1a、1b 還是 1c？若是 1b，PLC 的稽核軌跡是否已驗證並啟用？</li>
+              <li>若客戶要求你提供反應溫度的原始電子記錄（raw data），你能提供嗎？從哪個系統匯出？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：如何從 1b 升級到 1c</h4>
+            <ul>
+              <li>盤點現有 PLC 系統是否支援 21 CFR Part 11 或 Annex 11 稽核軌跡功能</li>
+              <li>若支援但未啟用，立即安排 CSV（電腦化系統驗證）變更評估</li>
+              <li>評估 EBR 系統（如 Syncade、MasterControl、Tulip）的整合可行性與投資報酬率</li>
+              <li>短期過渡方案：為 HMI 列印輸出設計受控的「黏貼驗證」程序，確保列印品即時、完整、不可竄改</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXAMPLE 2: MEDIUM CRITICALITY API DRYING
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="ex2">
+    <div class="chapter-divider">
+      <div class="chapter-badge">Ex2</div>
+      <div class="chapter-info">
+        <h2>Example 2: Medium Criticality — Drying of API (LOD not a CQA)</h2>
+        <p>中關鍵性：原料藥烘乾操作（乾燥失重非 CQA）| Table 8.1-2 | p42–43</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Context paragraphs -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <p>Example 2 covers the oven drying of an API (Table 8.1-2). The <span class="key-term">loss on drying (LOD)</span> of the API is not a CQA and the drying operation is not a CPP, but the LOD does impact the <span class="key-term">flow characteristics</span> of the API, which affects the downstream processing of the API into the finished product. Therefore, the data regarding the drying of the API is of <span class="key-term">Medium criticality</span> and belongs in the middle row of the 9-Box vulnerability grid.</p>
+          <p>Example 2a describes Medium-criticality data with the manual operation of the drying oven, manual data capture, and manual transcription of data into a paper manufacturing record. In addition, the existing data integrity controls are Low-level, with reliance on second-person witnessing of the manufacturing operation, human oversight of the manufacturing process, and human review at release. The Medium criticality of the data plus the Low level of controls yields <span class="key-term">Moderate data vulnerability (Orange)</span>, as described in Section 4.3.</p>
+          <p>Example 2b considers the same Medium-criticality data. Here, though, the data integrity controls have increased with the addition of a <span class="key-term">validated PLC</span>, and the inclusion of the PLC printouts with the BPR for the review and release process. The additional controls yield an <span class="key-term">Acceptable level of data vulnerability (Green)</span>.</p>
+          <p>Example 2c illustrates the same Medium-criticality data but with more than the required controls in place: a <span class="key-term">validated EBR</span> with automatic data capture, the inability to erase any data, activated <span class="key-term">audit trails</span>, automated data archiving, and the ability to trend the electronically stored production data. These controls yield a <span class="key-term">Negligible level of data vulnerability (Blue)</span>.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+          <div class="concept-box">
+            <h4>中關鍵性的定義邏輯</h4>
+            <p>LOD（乾燥失重, Loss on Drying）不直接是 CQA，但影響 API 的流動性，進而影響後續製劑製程（混合、壓片）。這種「間接影響品質」的資料屬於中關鍵性，位於 9-Box 矩陣中列。</p>
+            <p><strong>關鍵洞察：</strong>中關鍵性資料在低管控時仍會達到 Moderate（橙色）——代表即使不是 CQA，忽視 DI 管控仍有顯著風險。</p>
+          </div>
+          <div class="note-box">
+            <h4>2c 的重要啟示：超過要求的控制</h4>
+            <p>2c 的控制水準（EBR + 稽核軌跡 + 自動存檔）超過中關鍵性資料的最低要求。結果達到 Negligible（藍色）。TR84 特別指出：這並非「必要」，而是展示技術能力上限。對於 CDMO，這意味著若已有整合式 EBR 系統，中低關鍵性資料可「順帶」達到最高合規水準，無需額外成本。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 8.1-2 -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Table 8.1-2: Example 2 — Medium Criticality Drying of API</div>
+          <table class="example-table">
+            <thead>
+              <tr>
+                <th>Ex</th>
+                <th>Mfg. Operation</th>
+                <th>Data Criticality</th>
+                <th>Data Vulnerability Factors</th>
+                <th>Data Controls in Place</th>
+                <th>Vulnerability Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2a</strong></td>
+                <td>Manually controlled <span class="key-term">oven drying</span> of API &amp; paper BPR</td>
+                <td><strong>Medium:</strong> Moisture (LOD) is not a CQA or CPP but impacts <span class="key-term">flow characteristics</span> of API during downstream processing</td>
+                <td>
+                  <em>Human Factor:</em> Manual transfer of oven temperature into paper BPR<br>
+                  <em>GMP Process:</em> Oven is manually controlled by operator<br>
+                  <em>Data Mgmt:</em> Paper BPR
+                </td>
+                <td>
+                  <strong>Low:</strong><br>
+                  <em>Human Factor:</em> Supervisory review &amp; quality unit review at release<br>
+                  <em>GMP Process:</em> Controlled with written procedures and training<br>
+                  <em>Data Mgmt:</em> Reliance on second-person witnessing of data entries &amp; quality unit review at release
+                </td>
+                <td><span class="badge vuln-moderate">Moderate</span></td>
+              </tr>
+              <tr>
+                <td><strong>2b</strong></td>
+                <td>PLC-controlled oven drying of API &amp; paper BPR</td>
+                <td><strong>Medium:</strong> Moisture (LOD) is not a CQA or CPP but impacts flow characteristics of API during downstream processing</td>
+                <td>
+                  <em>Human Factor:</em> Manual transfer of oven temperature data from HMI into BPR<br>
+                  <em>GMP Process:</em> PLC-controlled oven<br>
+                  <em>Data Mgmt:</em> Manual data entry into paper BPR from HMI; no audit trail or electronic analysis of data in PLC
+                </td>
+                <td>
+                  <strong>Medium:</strong><br>
+                  <em>Human Factor:</em> Supervisory review &amp; quality unit review at release<br>
+                  <em>GMP Process:</em> PLC validated with printout attached to paper BPR<br>
+                  <em>Data Mgmt:</em> Reliance on second-person witnessing of data entries; quality unit review BPR &amp; PLC printout at release
+                </td>
+                <td><span class="badge vuln-acceptable">Acceptable</span></td>
+              </tr>
+              <tr>
+                <td><strong>2c</strong></td>
+                <td>PLC-controlled oven drying &amp; <span class="key-term">electronic BPR</span></td>
+                <td><strong>Medium:</strong> Moisture (LOD) is not a CQA or CPP but impacts flow characteristics of API during downstream processing</td>
+                <td>
+                  <em>Human Factor:</em> EBR mitigates human error to a residual level<br>
+                  <em>GMP Process:</em> PLC-controlled oven of robust process<br>
+                  <em>Data Mgmt:</em> Data automatically captured in EBR &amp; data mgmt lifecycle is controlled
+                </td>
+                <td>
+                  <strong>High:</strong><br>
+                  <em>Human Factor:</em> EBR reviewed by quality unit at release<br>
+                  <em>GMP Process:</em> PLC validated &amp; production data captured automatically<br>
+                  <em>Data Mgmt:</em> Access controls on PLC, electronic analysis of data, automatic data storage &amp; audit trail
+                </td>
+                <td><span class="badge vuln-negligible">Negligible</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="analogy-box">
+            <h4>比喻：廚房麵粉的濕度管理</h4>
+            <p>LOD 對 API 流動性的影響，就像麵粉含水量對揉麵的影響：麵粉本身的品質（CQA）沒問題，但太潮濕的麵粉在後段製程會結塊、難以定量——影響的是製程一致性，而非最終成品的直接安全性。這就是「中關鍵性」的核心含義。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 2</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+2a: Medium × Low    → Moderate（橙）
+2b: Medium × Medium → Acceptable（綠）
+2c: Medium × High   → Negligible（藍）
+
+中關鍵性資料在高管控下可達 Negligible，
+優於高關鍵性（最高只到 Acceptable）</pre>
+          </div>
+
+          <div class="concept-box">
+            <h4>LOD 管控的 DI 重點</h4>
+            <ul>
+              <li><strong>溫度記錄：</strong>烘乾溫度與時間是主要記錄對象，需確保儀器校驗狀態有效</li>
+              <li><strong>取樣測試記錄：</strong>LOD 測試結果本身也需完整稽核軌跡，特別是重測（retest）情形</li>
+              <li><strong>批次間一致性：</strong>趨勢分析（trending）在 2c 的 EBR 環境中自動可行，是預防性品質管理的基礎</li>
+            </ul>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 LOD 測試儀（如水分分析儀）是否有電子記錄功能？測試結果是直接匯入系統還是手抄？</li>
+              <li>若客戶審計要求提供某批次 API 烘乾的完整製程數據趨勢圖，你能在 24 小時內提供嗎？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：中關鍵性資料的合理投資策略</h4>
+            <p>對於中關鍵性資料，2b（PLC + 列印輸出）通常是最具成本效益的合規解決方案。升級到 2c 的 EBR 整合是好的，但應以系統整合的整體效益為決策依據，而非單純為了提升 DI 等級。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXAMPLE 3: LOW CRITICALITY API CLEANING
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="ex3">
+    <div class="chapter-divider">
+      <div class="chapter-badge">Ex3</div>
+      <div class="chapter-info">
+        <h2>Example 3: Low Criticality — Small Molecule API Batch-to-Batch Cleaning</h2>
+        <p>低關鍵性：小分子原料藥批次間設備清潔 | Table 8.1-3 | p44–45</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Context paragraphs -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <p>Example 3 depicts the <span class="key-term">batch-to-batch cleaning</span> of API manufacturing equipment of a small molecule during a product campaign within the <span class="key-term">validated campaign length</span> (Table 8.1-3). Since this type of data is neither directly nor indirectly related to a CQA or CPP, it is considered <span class="key-term">routine GMP data</span> and of Low criticality, according to the definitions in Section 4.2.1. Therefore, this data resides in the bottom row of the 9-Box vulnerability grid.</p>
+          <p>In Example 3a, the cleaning is performed manually, then the Low-critical data is captured by the operator who transcribes it into the paper manufacturing record. The reliance on second-person witnessing, human oversight of the manufacturing process, and human review at release provide a Low level of data integrity controls. The Low criticality of the data plus the Low level of controls yields <span class="key-term">Acceptable data vulnerability (Green)</span>.</p>
+          <p>Example 3b illustrates the same Low-critical data but the level of controls in place are more than required. The process is better controlled through a <span class="key-term">validated clean-in-place (CIP)</span> process. The data integrity controls have increased with the PLC printouts from the CIP system, which are included with the BPR for the review and release process. The additional controls yield <span class="key-term">Negligible data vulnerability (Blue)</span>.</p>
+          <p>Example 3c illustrates the same Low-critical data but with the addition of a validated EBR with automatic data capture, inability to erase any data, activated audit trails, automated data archiving, and ability to trend the electronically stored production data. The vulnerability of the data remains unchanged, and the vulnerability remains at a <span class="key-term">Negligible level (Blue)</span>. In this example, there are significantly more controls in place than are required.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+          <div class="concept-box">
+            <h4>低關鍵性的定義重點：「驗證活動期間內」</h4>
+            <p>此案例的低關鍵性前提是：清潔操作在<strong>已驗證的活動期間（campaign length）內</strong>執行。這個限制條件至關重要——若超出驗證的連續批次數，殘留物的累積可能影響 API 品質，資料關鍵性就會提升。</p>
+            <p>這提醒我們：DI 風險評估不能只看操作類型，還必須考慮操作的邊界條件是否仍在驗證範圍內。</p>
+          </div>
+          <div class="note-box">
+            <h4>3a 的重要洞察：低 × 低 = 可接受（非問題）</h4>
+            <p>TR84 明確指出：低關鍵性資料搭配低管控水準，結果是 Acceptable（綠色），不是問題。這挑戰了「所有 GMP 記錄都需要電子化」的誤解。監管者關注的是<strong>風險相稱性</strong>——過度控制低風險資料是浪費資源，甚至可能引入新的系統複雜性風險。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 8.1-3 -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Table 8.1-3: Example 3 — Low Criticality API Batch-to-Batch Cleaning</div>
+          <table class="example-table">
+            <thead>
+              <tr>
+                <th>Ex</th>
+                <th>Mfg. Operation</th>
+                <th>Data Criticality</th>
+                <th>Data Vulnerability Factors</th>
+                <th>Data Controls in Place</th>
+                <th>Vulnerability Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>3a</strong></td>
+                <td>Manual <span class="key-term">batch-to-batch cleaning</span> of equipment within a campaign</td>
+                <td><strong>Low:</strong> Batch-to-batch carryover will not impact the quality of the final API for validated campaign length</td>
+                <td>
+                  <em>Human Factor:</em> Manual recording of cleaning into paper BPR<br>
+                  <em>GMP Process:</em> Equipment cleaning manually performed by operator<br>
+                  <em>Data Mgmt:</em> Paper BPR
+                </td>
+                <td>
+                  <strong>Low:</strong><br>
+                  <em>Human Factor:</em> Supervisory review &amp; quality unit review at release<br>
+                  <em>GMP Process:</em> Controlled with written procedures and training<br>
+                  <em>Data Mgmt:</em> Reliance on second-person witnessing of data entries &amp; quality unit review at release
+                </td>
+                <td><span class="badge vuln-acceptable">Acceptable</span></td>
+              </tr>
+              <tr>
+                <td><strong>3b</strong></td>
+                <td><span class="key-term">CIP</span> batch-to-batch cleaning of equipment within a campaign</td>
+                <td><strong>Low:</strong> Batch-to-batch carryover will not impact the quality of the final API for validated campaign length</td>
+                <td>
+                  <em>Human Factor:</em> Manual transfer of cleaning data from HMI into BPR<br>
+                  <em>GMP Process:</em> PLC-controlled CIP cleaning process<br>
+                  <em>Data Mgmt:</em> Manual data entry into paper BPR from HMI; no audit trail or electronic analysis of data in PLC
+                </td>
+                <td>
+                  <strong>Medium:</strong><br>
+                  <em>Human Factor:</em> Supervisory review &amp; quality unit review at release<br>
+                  <em>GMP Process:</em> PLC validated with printout attached to paper BPR<br>
+                  <em>Data Mgmt:</em> Reliance on second-person witnessing of data entries; quality unit review BPR &amp; PLC printout at release
+                </td>
+                <td><span class="badge vuln-negligible">Negligible</span></td>
+              </tr>
+              <tr>
+                <td><strong>3c</strong></td>
+                <td>PLC-controlled CIP batch-to-batch cleaning &amp; <span class="key-term">electronic BPR</span></td>
+                <td><strong>Low:</strong> Batch-to-batch carryover will not impact the quality of the final API for validated campaign length</td>
+                <td>
+                  <em>Human Factor:</em> EBR mitigates human error to a residual level<br>
+                  <em>GMP Process:</em> PLC-controlled CIP cleaning process is robust<br>
+                  <em>Data Mgmt:</em> Data automatically captured in EBR &amp; data mgmt lifecycle is controlled
+                </td>
+                <td>
+                  <strong>High:</strong><br>
+                  <em>Human Factor:</em> EBR reviewed by quality unit at release<br>
+                  <em>GMP Process:</em> PLC validated &amp; cleaning data captured automatically<br>
+                  <em>Data Mgmt:</em> Access controls on PLC, electronic analysis of data, automatic data storage &amp; audit trail
+                </td>
+                <td><span class="badge vuln-negligible">Negligible</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="analogy-box">
+            <h4>比喻：餐廳廚具的班次間清洗</h4>
+            <p>同一間餐廳同一天烹調同一道菜，廚具班次間的沖洗記錄屬於「例行清潔」，不需要和跨菜品或跨天的深層清潔（相當於「活動結束清潔」）一樣嚴格的記錄體系。TR84 的低關鍵性邏輯正是如此：在已驗證的使用週期內，簡單記錄已足夠。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>3b 與 3c 的差異：Negligible 已是頂點</h4>
+            <p>3b（CIP + PLC 列印）和 3c（EBR 整合）都達到 Negligible（藍色）。這說明對低關鍵性資料，從 3b 升級到 3c 在 DI 脆弱性上不帶來額外效益——只有在系統整合或效率提升上才有意義。TR84 的訊息是：<strong>不要為了升色塊而過度投資。</strong></p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 3</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+3a: Low × Low    → Acceptable（綠）✓ 已合規
+3b: Low × Medium → Negligible（藍）超過要求
+3c: Low × High   → Negligible（藍）超過要求
+
+低關鍵性 + 低管控 = 已合規。
+紙本 BPR 對此類資料是完全可接受的解決方案。</pre>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CIP 系統是否已驗證？驗證報告中是否明確定義了活動期間（campaign length）的上限？</li>
+              <li>若你的設備清潔記錄目前是紙本，是否有必要升級為電子系統？依據 TR84，答案應如何論證？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：清潔記錄的風險分類管理</h4>
+            <ul>
+              <li>建立清潔記錄的風險分類清單：區分「活動期間內批次間清潔」vs「產品切換清潔」vs「定期深層清潔」</li>
+              <li>對批次間清潔維持紙本記錄是合理的；對產品切換清潔需考量是否有 CQA 影響（可能升為中關鍵性）</li>
+              <li>確保每份清潔記錄都有「清潔類型」和「活動批次序號」，以利追溯是否仍在驗證範圍內</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION 8.2 FDF EXAMPLES HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section">
+    <div class="chapter-divider">
+      <div class="chapter-badge">8.2</div>
+      <div class="chapter-info">
+        <h2>FDF Examples — Finished Dosage Form</h2>
+        <p>最終劑型 (Finished Dosage Form) 案例 | Examples 4–6 | p46–49</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="concept-box">
+        <h4>FDF 案例概述</h4>
+        <p>第 8.2 節使用相同製程（篩分操作中的濕度監測）作為跨三組案例的統一背景，藉此清晰呈現「資料關鍵性改變」（而非操作改變）對 9-Box 定位的影響。Examples 4、5、6 分別對應高、中、低關鍵性，每組同樣含三個控制水準子案例（a/b/c）。</p>
+        <p>藥物的吸濕性（hygroscopicity）決定了濕度是否為 CPP，進而決定資料關鍵性——這是 FDF 案例組的核心設計邏輯。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXAMPLE 4: HIGH CRITICALITY FDF HUMIDITY
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="ex4">
+    <div class="chapter-divider">
+      <div class="chapter-badge">Ex4</div>
+      <div class="chapter-info">
+        <h2>Example 4: High Criticality — Humidity Monitoring During Sieving</h2>
+        <p>高關鍵性：篩分操作濕度監測（吸濕性藥物）| Table 8.2-1 | p46–47</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Context paragraphs -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <p>Examples 4–6 demonstrate where High-, Medium-, and Low-criticality data from a <span class="key-term">sieving operation</span> are placed in the 9-Box vulnerability grid, based on the level of controls in place. The examples are for <span class="key-term">humidity monitoring</span> during sieving of a drug substance, prior to blending and compression.</p>
+          <p>In Example 4, humidity is a <span class="key-term">CPP</span> that will impact CQA (Table 8.2-1). The drug substance is <span class="key-term">hygroscopic</span> and will <span class="key-term">degrade with elevated levels of moisture</span>. Therefore, the High-criticality data goes in the top row of the 9-Box vulnerability grid.</p>
+          <p>Example 4a illustrates High-criticality data with the operator manually inserting <span class="key-term">analog humidity data</span> from a chart recorder and transcribing this data to a paper manufacturing record. A Low level of data controls exist, relying on a second person to verify the data. The High criticality of the data combined with the Low level of controls creates <span class="key-term">Significant data vulnerability (Red)</span>, as defined in Section 4.3.</p>
+          <p>Example 4b illustrates the same High-criticality data. In this example, the data controls have increased compared to Example 4a. The humidity data is now digitized and captured using a <span class="key-term">validated building management system (BMS)</span>, using audit trail and access controls. Also, a printout of the humidity data is attached to the manufacturing record. The additional controls yield <span class="key-term">Moderate data vulnerability (Orange)</span>.</p>
+          <p>Example 4c illustrates the same High-criticality data with the additional controls of a <span class="key-term">validated electronic manufacturing record</span> with automated data capture, audit trail, and access controls. These additional controls yield <span class="key-term">Acceptable vulnerability (Green)</span>.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+          <div class="concept-box">
+            <h4>吸濕性 = CPP 的判定邏輯</h4>
+            <p>藥物具有吸濕性（hygroscopic）時，製程環境中的相對濕度直接影響降解速率，因此濕度成為 CPP，其監測資料屬於高關鍵性。這與同樣的濕度監測在非吸濕性藥物（Example 6）中只屬低關鍵性形成鮮明對比。</p>
+            <p><strong>設計重點：</strong>TR84 刻意用「同一操作、不同藥物屬性」的設計，強調關鍵性評估必須以產品特性為基礎，而非操作類型。</p>
+          </div>
+          <div class="note-box">
+            <h4>4a 的 Red 警示：最需立即行動</h4>
+            <p>Significant（紅色）是 9-Box 中最高風險等級，代表需要立即採取 CAPA（矯正與預防措施）。若你的 CDMO 正在處理吸濕性藥物，且濕度監測仍依賴紙本圖表記錄，這個案例就是你現在的處境——需要優先升級。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 8.2-1 -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Table 8.2-1: Example 4 — High Criticality Humidity Monitoring</div>
+          <table class="example-table">
+            <thead>
+              <tr>
+                <th>Ex</th>
+                <th>Mfg. Operation</th>
+                <th>Data Criticality</th>
+                <th>Data Vulnerability Factors</th>
+                <th>Data Controls in Place</th>
+                <th>Vulnerability Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>4a</strong></td>
+                <td>Humidity data is displayed and recorded on a <span class="key-term">paper chart</span> and a paper manufacturing record is used</td>
+                <td><strong>High:</strong> Humidity is a CPP that impacts CQA; drug substance is <span class="key-term">hygroscopic</span> and will degrade with elevated moisture levels</td>
+                <td>
+                  <em>Human Factor:</em> Analogue humidity data is added from chart recording, and data is transcribed to paper record<br>
+                  <em>GMP Process:</em> Humidity data is captured manually<br>
+                  <em>Data Mgmt:</em> Periodic manual entry of data into BPR
+                </td>
+                <td>
+                  <strong>Low:</strong><br>
+                  <em>Human Factor:</em> Supervisor review and quality unit review at release<br>
+                  <em>GMP Process:</em> Chart paper is attached to paper record<br>
+                  <em>Data Mgmt:</em> Second-person verification of data entry and quality unit review at release
+                </td>
+                <td><span class="badge vuln-significant">Significant</span></td>
+              </tr>
+              <tr>
+                <td><strong>4b</strong></td>
+                <td>Humidity data is displayed and recorded using <span class="key-term">BMS</span>, and a paper manufacturing record is used</td>
+                <td><strong>High:</strong> Humidity is a CPP that impacts CQA; drug substance is hygroscopic and will degrade with elevated moisture levels</td>
+                <td>
+                  <em>Human Factor:</em> Digital humidity data is printed out from HMI, and data is transcribed to paper record<br>
+                  <em>GMP Process:</em> Humidity data is captured both manually and electronically<br>
+                  <em>Data Mgmt:</em> Periodic manual data entry into paper BPR
+                </td>
+                <td>
+                  <strong>Medium:</strong><br>
+                  <em>Human Factor:</em> Supervisor review and quality unit review at release<br>
+                  <em>GMP Process:</em> HMI printout is attached to paper record; validated BMS with <span class="key-term">audit trail</span> and access controls<br>
+                  <em>Data Mgmt:</em> Second-person verification of printout and quality unit review at release
+                </td>
+                <td><span class="badge vuln-moderate">Moderate</span></td>
+              </tr>
+              <tr>
+                <td><strong>4c</strong></td>
+                <td>Humidity data is displayed and recorded using BMS, and a <span class="key-term">paper manufacturing record</span> is used</td>
+                <td><strong>High:</strong> Humidity is a CPP that impacts CQA; drug substance is hygroscopic and will degrade with elevated moisture levels</td>
+                <td>
+                  <em>Human Factor:</em> An <span class="key-term">electronic manufacturing record</span> mitigates human error to a residual level<br>
+                  <em>GMP Process:</em> Humidity data is captured electronically<br>
+                  <em>Data Mgmt:</em> Humidity data is automatically uploaded into electronic manufacturing record
+                </td>
+                <td>
+                  <strong>High:</strong><br>
+                  <em>Human Factor:</em> Use of electronic record minimizes manual entry of data<br>
+                  <em>GMP Process:</em> Validated BMS with audit trail and access controls; automated data capture in electronic record<br>
+                  <em>Data Mgmt:</em> Humidity data is managed per <span class="key-term">Part 11</span> requirements
+                </td>
+                <td><span class="badge vuln-acceptable">Acceptable</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="analogy-box">
+            <h4>比喻：博物館文物的濕度管控</h4>
+            <p>吸濕性藥物對濕度的敏感程度，如同博物館中的古代羊皮紙文件——濕度一旦超標，損害立即且不可逆。這種情況下，監控記錄不只是行政要求，而是保存完整性的直接保障。類比到製藥：不只是監管合規，而是產品品質的最後防線。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>BMS（樓宇管理系統）的 DI 關鍵要素</h4>
+            <p>4b 和 4c 都使用了 BMS（Building Management System，樓宇管理系統）。BMS 的 DI 合規要求包括：</p>
+            <ul>
+              <li>系統需經過 CSV（電腦化系統驗證）</li>
+              <li>稽核軌跡必須啟用且不可關閉</li>
+              <li>存取控制需基於使用者角色（role-based access）</li>
+              <li>電子簽名功能若使用，須符合 21 CFR Part 11</li>
+              <li>資料備份與還原程序需驗證</li>
+            </ul>
+            <p>4b 中，BMS 有這些功能但製造記錄仍是紙本，因此停留在 Moderate；4c 連製造記錄也電子化，才達到 Acceptable。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 4</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+4a: High × Low    → Significant（紅）⚠ 需立即 CAPA
+4b: High × Medium → Moderate（橙）需改善計畫
+4c: High × High   → Acceptable（綠）✓ 合規目標
+
+高關鍵性資料的合規路徑：
+BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
+          </div>
+
+          <div class="note-box">
+            <h4>4c 的 Part 11 要求提醒</h4>
+            <p>4c 明確提到「managed per Part 11 requirements」。這代表除了技術控制，還需要相對應的程序文件：電子簽名 SOP、稽核軌跡審查程序、系統存取管理程序、以及定期的記錄完整性自我稽核。技術實施與程序文件缺一不可。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CDMO 廠房 BMS 是否已完成 CSV？最後一次 BMS 稽核軌跡審查是什麼時候？</li>
+              <li>對於吸濕性原料，你的製造現場是否有即時濕度警報系統？警報記錄如何歸檔？</li>
+              <li>若 BMS 數據與紙本手抄記錄出現差異，SOP 中的調查程序是什麼？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：從 4a 升級的優先行動</h4>
+            <ul>
+              <li><strong>第一步：</strong>立即盤點哪些客戶產品具有吸濕性，對應製程環境的濕度記錄方式</li>
+              <li><strong>第二步：</strong>若目前為 4a 狀態，評估 BMS 升級或感測器直接串接的技術可行性</li>
+              <li><strong>第三步：</strong>向客戶揭露目前 DI 管控狀態，討論改善時程（客戶稽核前主動溝通優於被動發現）</li>
+              <li><strong>第四步：</strong>製訂 CAPA，以達到 4b（BMS）為短期目標，4c（EBR 整合）為長期目標</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXAMPLE 5: MEDIUM CRITICALITY FDF HUMIDITY
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="ex5">
+    <div class="chapter-divider">
+      <div class="chapter-badge">Ex5</div>
+      <div class="chapter-info">
+        <h2>Example 5: Medium Criticality — Humidity Monitoring During Sieving</h2>
+        <p>中關鍵性：篩分操作濕度監測（影響流動性但非 CPP）| Table 8.2-2 | p48</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Context paragraphs -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <p>Example 5, shown in Table 8.2-2, uses the same sieving operation, the same vulnerability factors, and the same data controls as Example 4, except the humidity is <span class="key-term">Medium-criticality data</span>. At elevated humidity levels, the drug substance will become <span class="key-term">sticky, giving poor flow properties</span>, which will impact manufacturing consistency. Humidity, however, is <span class="key-term">not a CPP</span>. As a result, this Medium-criticality data resides in the middle row of the 9-Box vulnerability grid.</p>
+          <p>Example 5a illustrates Medium-criticality data with the operator manually interpolating analogue humidity data from a chart recorder and transcribing the data to a paper manufacturing record. In addition, a Low level of data controls exist, relying on a second person to verify the data. The Medium criticality of the data combined with a Low level of control creates <span class="key-term">Moderate data vulnerability (Orange)</span>.</p>
+          <p>Example 5b illustrates the same Medium-critical data, but the data controls have increased compared to Example 5a. The humidity data is now digitized and captured using a validated BMS, with audit trail and access controls. Also, a printout of the humidity data is attached to the manufacturing record. The additional controls yield <span class="key-term">Acceptable data vulnerability (Green)</span>.</p>
+          <p>Example 5c illustrates the same Medium-criticality data with the added controls of a validated electronic manufacturing record with automated data capture, audit trail, and access controls. The additional controls yield <span class="key-term">Negligible vulnerability (Blue)</span>.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+          <div class="concept-box">
+            <h4>Example 4 vs 5：唯一差異在於藥物屬性</h4>
+            <p>5a/5b/5c 的操作、脆弱性因素、管控措施與 4a/4b/4c 完全相同——唯一差異是藥物不具吸濕性降解風險，濕度只影響流動性而非 CQA。因此整組下移一行：Moderate → Acceptable → Negligible（相較 Example 4 的 Significant → Moderate → Acceptable）。</p>
+            <p>這種設計讓讀者清晰看見：<strong>產品知識（product knowledge）是 DI 風險評估的基礎，不是形式。</strong></p>
+          </div>
+          <div class="note-box">
+            <h4>5a 仍是 Moderate：勿輕視</h4>
+            <p>雖然濕度不是 CPP，但 Moderate（橙色）仍代表需要改善計畫。若客戶或稽查員詢問，「濕度不是 CPP 所以我們用紙本就好」是不完整的答案——還需要說明管控水準為何在低層級，以及何時計畫升級。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 8.2-2 -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Table 8.2-2: Example 5 — Medium Criticality Humidity Monitoring</div>
+          <table class="example-table">
+            <thead>
+              <tr>
+                <th>Ex</th>
+                <th>Mfg. Operation</th>
+                <th>Data Criticality</th>
+                <th>Data Vulnerability Factors</th>
+                <th>Data Controls in Place</th>
+                <th>Vulnerability Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>5a</strong></td>
+                <td>Humidity data is displayed and recorded on a paper chart; a paper manufacturing record is used</td>
+                <td><strong>Medium:</strong> Humidity is <span class="key-term">not a CPP</span>; at elevated humidity levels, drug substance will become <span class="key-term">sticky, giving poor flow properties</span></td>
+                <td>
+                  <em>Human Factor:</em> Analogue humidity data is interpolated from chart recording, and data is transcribed to paper record<br>
+                  <em>GMP Process:</em> Humidity data is captured manually<br>
+                  <em>Data Mgmt:</em> Periodic manual entry of data into BPR
+                </td>
+                <td>
+                  <strong>Low:</strong><br>
+                  <em>Human Factor:</em> Supervisor review and quality unit review at release<br>
+                  <em>GMP Process:</em> Chart paper is attached to paper record<br>
+                  <em>Data Mgmt:</em> Second-person verification of data entry. Quality unit review at release
+                </td>
+                <td><span class="badge vuln-moderate">Moderate</span></td>
+              </tr>
+              <tr>
+                <td><strong>5b</strong></td>
+                <td>Humidity data is displayed and recorded using BMS; a paper manufacturing record is used</td>
+                <td><strong>Medium:</strong> Humidity is not a CPP; at elevated humidity levels, drug substance will become sticky, giving poor flow properties</td>
+                <td>
+                  <em>Human Factor:</em> Digital humidity data is printed out from HMI, and data is transcribed to paper record<br>
+                  <em>GMP Process:</em> Humidity data is captured both manually and electronically<br>
+                  <em>Data Mgmt:</em> Periodic manual data entry into paper BPR
+                </td>
+                <td>
+                  <strong>Medium:</strong><br>
+                  <em>Human Factor:</em> Supervisor review and quality unit review at release<br>
+                  <em>GMP Process:</em> HMI printout is attached to paper record; validated BMS with audit trail and access controls<br>
+                  <em>Data Mgmt:</em> Second-person verification of printout and quality unit review at release
+                </td>
+                <td><span class="badge vuln-acceptable">Acceptable</span></td>
+              </tr>
+              <tr>
+                <td><strong>5c</strong></td>
+                <td>Humidity data is displayed and recorded using BMS; an <span class="key-term">electronic manufacturing record</span> is used</td>
+                <td><strong>Medium:</strong> Humidity is not a CPP; at elevated humidity levels, drug substance will become sticky, giving poor flow properties</td>
+                <td>
+                  <em>Human Factor:</em> An electronic manufacturing record mitigates human error to a residual level<br>
+                  <em>GMP Process:</em> Humidity data is captured electronically<br>
+                  <em>Data Mgmt:</em> Humidity data is automatically uploaded into electronic manufacturing record
+                </td>
+                <td>
+                  <strong>High:</strong><br>
+                  <em>Human Factor:</em> Use of electronic record minimizes manual entry of data<br>
+                  <em>GMP Process:</em> Validated BMS with audit trail and access controls; automated data capture in electronic record<br>
+                  <em>Data Mgmt:</em> Humidity data is managed per Part 11 requirements
+                </td>
+                <td><span class="badge vuln-negligible">Negligible</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 5</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+5a: Medium × Low    → Moderate（橙）需改善計畫
+5b: Medium × Medium → Acceptable（綠）✓ 合規目標
+5c: Medium × High   → Negligible（藍）超過最低要求
+
+對中關鍵性資料，5b（BMS + 列印輸出）
+是最具成本效益的合規終點。</pre>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：5a 與 4a 的關鍵比較</h4>
+            <p>同樣是手抄濕度記錄、同樣是低管控——但 5a 只有 Moderate（橙色），而 4a 是 Significant（紅色）。差別只在藥物的吸濕性。就像同樣的「不鎖門」行為，在一般住宅是低風險，在核電廠控制室就是重大危機。風險等級來自於資產的關鍵程度，而不只是行為本身。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>5b 的「合理管控」原則</h4>
+            <p>TR84 認可 5b 狀態（BMS 數位記錄 + 列印輸出附於紙本記錄）對中關鍵性資料已達 Acceptable。這是一個重要的監管立場：不要求所有設備都與 EBR 整合。對於資源有限的 CDMO，這提供了清晰的合規路徑：優先確保 BMS 已驗證、稽核軌跡已啟用、列印輸出程序受控。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你如何確定某個藥物的濕度影響屬於 CQA（如降解）還是製程一致性（如流動性）？這個判斷在哪份文件中記載？</li>
+              <li>若同一製程用於不同客戶的藥物，一個吸濕一個不吸濕，你的製程記錄系統是否分別設定了不同的 DI 管控要求？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：多客戶 FDF 製程的 DI 差異化管理</h4>
+            <ul>
+              <li>建立產品 DI 關鍵性矩陣，以藥物屬性（吸濕性、光敏性、氧敏性等）為行，以製程步驟為列，系統性填入資料關鍵性等級</li>
+              <li>同一製程步驟若服務多個客戶，以最高關鍵性等級設定管控基準（向上取齊原則）</li>
+              <li>每年更新此矩陣，納入新上線客戶的產品特性評估</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXAMPLE 6: LOW CRITICALITY FDF HUMIDITY
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="ex6">
+    <div class="chapter-divider">
+      <div class="chapter-badge">Ex6</div>
+      <div class="chapter-info">
+        <h2>Example 6: Low Criticality — Humidity Monitoring During Sieving</h2>
+        <p>低關鍵性：篩分操作濕度監測（非吸濕性、穩定藥物）| Table 8.2-3 | p49</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Context paragraphs -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <p>Example 6 uses the same sieving operation, the same vulnerability factors, and the same data controls as Examples 4 and 5; however, the humidity is <span class="key-term">Low-critical data</span> (Table 8.2-3). The drug substance is <span class="key-term">not hygroscopic</span> and is very stable, with <span class="key-term">good flow properties over a wide humidity range</span>. Humidity is not a CPP. The data will reside in the bottom row of the 9-Box vulnerability grid.</p>
+          <p>Example 6a illustrates Low-critical data with the operator manually adding analogue humidity data from a chart recorder and transcribing this data to a paper manufacturing record. In addition, a Low level of existing data controls exist, and a second person must verify the data. The Low criticality of the data combined with a Low level of controls creates an <span class="key-term">Acceptable data vulnerability risk (Green)</span>.</p>
+          <p>Example 6b illustrates the same Low-critical data; however, the data controls have increased compared to Example 6a. The humidity data is now digitized and captured using a validated BMS, with audit trail and access controls. Also, a printout of the humidity data is attached to the manufacturing record. The additional controls yield a <span class="key-term">Negligible data vulnerability risk (Blue)</span>.</p>
+          <p>Example 6c illustrates the same Low-critical data with the added controls of a validated electronic manufacturing record with automated data capture, audit trail, and access controls. The vulnerability of the data remains unchanged at a <span class="key-term">Negligible level (Blue)</span>. In this example, significantly more controls are in place than are required.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+          <div class="concept-box">
+            <h4>低關鍵性的判定：寬容濕度範圍</h4>
+            <p>藥物非吸濕性且在寬廣濕度範圍內穩定，濕度既不影響 CQA 也不影響關鍵製程一致性，因此屬於低關鍵性例行 GMP 數據。這是 9-Box 最底列的典型場景。</p>
+            <p><strong>對 CDMO 的啟示：</strong>在藥物開發早期就明確記錄此類穩定性數據，有助於為 DI 風險評估提供科學依據，而非憑直覺判斷。</p>
+          </div>
+          <div class="note-box">
+            <h4>6c 的警示：超額投資的反面教材</h4>
+            <p>TR84 在描述 6c 時特別說明：「significantly more controls are in place than are required」。EBR + 稽核軌跡對低關鍵性資料是過度設計。這句話的監管含義是：若審計員發現你對低風險資料投入了大量資源，卻對高風險資料管控不足，這本身就是一個風險管理判斷失誤的訊號。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 8.2-3 -->
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Table 8.2-3: Example 6 — Low Criticality Humidity Monitoring</div>
+          <table class="example-table">
+            <thead>
+              <tr>
+                <th>Ex</th>
+                <th>Mfg Operation</th>
+                <th>Data Criticality</th>
+                <th>Data Vulnerability Factors</th>
+                <th>Data Controls in Place</th>
+                <th>Vulnerability Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>6a</strong></td>
+                <td>Humidity data is displayed and recorded on a paper chart; a paper manufacturing record is used</td>
+                <td><strong>Low:</strong> Humidity is not a CPP; drug substance is <span class="key-term">not hygroscopic</span> and is very stable with good flow properties over a wide humidity range</td>
+                <td>
+                  <em>Human Factor:</em> Analogue humidity data is interpolated from chart recording, and data is transcribed to paper record<br>
+                  <em>GMP Process:</em> Humidity data is captured manually<br>
+                  <em>Data Mgmt:</em> Periodic manual entry of data into BPR
+                </td>
+                <td>
+                  <strong>Low:</strong><br>
+                  <em>Human Factor:</em> Supervisor review and quality unit review at release<br>
+                  <em>GMP Process:</em> Chart paper is attached to paper record<br>
+                  <em>Data Mgmt:</em> Second-person verification of data entry; quality unit review at release
+                </td>
+                <td><span class="badge vuln-acceptable">Acceptable</span></td>
+              </tr>
+              <tr>
+                <td><strong>6b</strong></td>
+                <td>Humidity data is displayed and recorded using BMS; a paper manufacturing record is used</td>
+                <td><strong>Low:</strong> Humidity is not a CPP; drug substance is not hygroscopic and is very stable with good flow properties over a wide humidity range</td>
+                <td>
+                  <em>Human Factor:</em> Digital humidity data is printed out from HMI, and data is transcribed to paper record<br>
+                  <em>GMP Process:</em> Humidity data is captured both manually and electronically<br>
+                  <em>Data Mgmt:</em> Periodic manual data entry into paper BPR
+                </td>
+                <td>
+                  <strong>Medium:</strong><br>
+                  <em>Human Factor:</em> Supervisor review and quality unit review at release<br>
+                  <em>GMP Process:</em> HMI printout is attached to paper record; validated BMS with audit trail and access controls<br>
+                  <em>Data Mgmt:</em> Second-person verification of printout; quality unit review at release
+                </td>
+                <td><span class="badge vuln-negligible">Negligible</span></td>
+              </tr>
+              <tr>
+                <td><strong>6c</strong></td>
+                <td>Humidity data is displayed and recorded using BMS; an electronic manufacturing record is used</td>
+                <td><strong>Low:</strong> Humidity is not a CPP; drug substance is not hygroscopic and is very stable with good flow properties over a wide humidity range</td>
+                <td>
+                  <em>Human Factor:</em> An electronic manufacturing record mitigates human error to a residual level<br>
+                  <em>GMP Process:</em> Humidity data is captured electronically<br>
+                  <em>Data Mgmt:</em> Humidity data is automatically uploaded into electronic manufacturing record
+                </td>
+                <td>
+                  <strong>High:</strong><br>
+                  <em>Human Factor:</em> Use of electronic record minimizes manual entry of data<br>
+                  <em>GMP Process:</em> Validated BMS with audit trail and access controls; automated data capture in electronic record<br>
+                  <em>Data Mgmt:</em> Humidity data is managed per Part 11 requirements
+                </td>
+                <td><span class="badge vuln-negligible">Negligible</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 6</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+6a: Low × Low    → Acceptable（綠）✓ 已合規
+6b: Low × Medium → Negligible（藍）超過最低要求
+6c: Low × High   → Negligible（藍）顯著超過要求
+
+對低關鍵性資料，紙本記錄是完全合規的選擇。
+投資 EBR 整合應以整體效率為依據，而非 DI 合規壓力。</pre>
+          </div>
+
+          <div class="analogy-box">
+            <h4>三組案例的整體比較</h4>
+            <p>把 Examples 4、5、6 放在一起，就像同一間倉庫存放三種貨物：</p>
+            <ul>
+              <li><strong>Example 4（高）：</strong>易燃化學品——必須有完整的電子監控、即時警報、稽核軌跡</li>
+              <li><strong>Example 5（中）：</strong>一般化工原料——需要基本電子記錄，紙本備份可接受</li>
+              <li><strong>Example 6（低）：</strong>穩定的金屬零件——紙本入庫記錄完全足夠，不需要溫濕度監控系統</li>
+            </ul>
+            <p>倉庫管理的原則是：根據貨物特性決定管控等級，而不是用同一套最高標準管理所有東西。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>三組 FDF 案例的横向比較總結</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>藥物屬性</th>
+                  <th>a（紙本）</th>
+                  <th>b（BMS+列印）</th>
+                  <th>c（EBR整合）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>吸濕性（高）</td>
+                  <td><span class="badge vuln-significant">Significant</span></td>
+                  <td><span class="badge vuln-moderate">Moderate</span></td>
+                  <td><span class="badge vuln-acceptable">Acceptable</span></td>
+                </tr>
+                <tr>
+                  <td>影響流動（中）</td>
+                  <td><span class="badge vuln-moderate">Moderate</span></td>
+                  <td><span class="badge vuln-acceptable">Acceptable</span></td>
+                  <td><span class="badge vuln-negligible">Negligible</span></td>
+                </tr>
+                <tr>
+                  <td>穩定寬容（低）</td>
+                  <td><span class="badge vuln-acceptable">Acceptable</span></td>
+                  <td><span class="badge vuln-negligible">Negligible</span></td>
+                  <td><span class="badge vuln-negligible">Negligible</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="font-size:0.85rem; margin-top:0.5rem;">右移（升級技術）和上移（藥物更敏感）對風險等級的影響完全對稱。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CDMO 是否有一份文件，明確列出每個客戶產品對應的製程資料關鍵性等級？若無，如何開始建立？</li>
+              <li>若現有製程中有些資料是 Significant（紅色），你有 CAPA 計畫嗎？時程是否合理？</li>
+              <li>你認為在你的 CDMO，哪一個製程步驟的 DI 管控最薄弱？它在 9-Box 的位置在哪裡？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：建立 DI 風險優先順序清單</h4>
+            <ul>
+              <li><strong>第一優先：</strong>識別所有 Significant（紅色）資料——這些需要立即 CAPA，應在下次客戶稽核前完成改善</li>
+              <li><strong>第二優先：</strong>Moderate（橙色）資料——制訂 12-18 個月的改善計畫，與客戶溝通時程</li>
+              <li><strong>長期規劃：</strong>評估 EBR 平台整合的 ROI，優先整合高關鍵性製程步驟</li>
+              <li><strong>維持現狀：</strong>Acceptable + 低關鍵性的紙本記錄，確保程序受控即可，無需強制升級</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SECTION SUMMARY
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-section" id="summary">
+    <div class="chapter-divider">
+      <div class="chapter-badge">總結</div>
+      <div class="chapter-info">
+        <h2>Section Summary — 本節重點總結</h2>
+        <p>Appendix I: API &amp; FDF Worked Examples 案例學習總結</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="concept-box">
+        <h4>核心學習：9-Box 矩陣的實務應用邏輯</h4>
+        <p>六組案例共同展示了 TR84 的核心訊息：<strong>資料完整性管控應與資料關鍵性相稱</strong>。高關鍵性資料需要高管控（EBR + 稽核軌跡），而低關鍵性資料以紙本加人工審查就足夠。</p>
+        <ul>
+          <li><strong>API 案例（Ex1-3）：</strong>從反應控制（高）→ 烘乾（中）→ 批次間清潔（低），展示相同技術路徑（紙本 → PLC → EBR）在不同關鍵性下產生不同的脆弱性結果。</li>
+          <li><strong>FDF 案例（Ex4-6）：</strong>從吸濕性藥物（高）→ 影響流動性（中）→ 穩定藥物（低），展示相同製程在不同產品屬性下的風險差異。</li>
+          <li><strong>關鍵洞察：</strong>高關鍵性資料無法達到 Negligible；低關鍵性資料無需達到 Negligible。這是「合理合規」而非「最高標準」的體現。</li>
+        </ul>
+      </div>
+
+      <div class="note-box">
+        <h4>CDMO 稽核就緒的三個關鍵問題</h4>
+        <ol>
+          <li><strong>你的每個製程步驟，資料關鍵性等級是否已書面評估？</strong>（有依據的科學判斷，而非假設）</li>
+          <li><strong>現有管控水準是否與關鍵性相稱？</strong>（不能只有最低管控卻有高關鍵性資料）</li>
+          <li><strong>若存在 Significant 或 Moderate 風險，CAPA 計畫是否有時程和負責人？</strong>（有問題不可怕，無行動才是問題）</li>
+        </ol>
+      </div>
+
+      <div class="analogy-box">
+        <h4>最終比喻：DI 管控是安全帶，不是防彈玻璃</h4>
+        <p>TR84 Appendix I 的案例告訴我們：數據完整性管控不是「越多越好」，而是「恰到好處」。開車時繫安全帶是必要的；但要求每輛家用車都安裝賽車防滾架，既不現實也不必要。製藥 DI 管控的藝術，在於準確識別哪些是「高速賽車」（高關鍵性資料），為它們配備完整防護；並認識到哪些是「市區代步車」（低關鍵性資料），維持基本安全即可。</p>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+  <p>PDA Technical Report No. 84 — Data Integrity in Manufacturing &amp; Packaging</p>
+  <p>Section 6a: Appendix I — API &amp; FDF Examples (p40–p48)</p>
+  <p style="opacity:0.6; font-size:0.8rem;">Licensed to TWi Pharmaceuticals Inc. | Educational Use Only</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) { btn.classList.add('visible'); }
+  else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

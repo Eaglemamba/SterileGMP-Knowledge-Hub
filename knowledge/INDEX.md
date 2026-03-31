@@ -496,6 +496,28 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## TR84-Complete.md
+**Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
+**Pages:** p1–p57 | **Sections:** 8 (including split appendix)
+
+**Covers questions about:**
+- What is data integrity in pharmaceutical manufacturing context (ALCOA+ principles)
+- Data integrity regulatory trends: FDA warning letters, EU GMP inspections, MHRA guidance
+- Quality Risk Management (QRM) applied to data integrity: 9-Box vulnerability grid, data criticality classification
+- Data Process Flow Maps (DPFMs): mapping data creation, storage, transfer, review
+- Human factors in DI risk: unintentional errors vs. intentional falsification
+- DI controls framework: prevention vs. detection controls, differentiation for paper/electronic/hybrid systems
+- 13 specific DI control areas: audit trail, access controls, system clock, data backup, CSV, blank controls, printouts, raw data, true copies, data transfer, error/alarm management, periodic review, training
+- ATRA tool (Assess, Track, Remediate, Accelerate) for audit trail risk assessment
+- Big Data considerations: IoT sensors, continuous manufacturing, automated alarm management
+- 54 worked examples across API, FDF, sterility assurance, and tablet packaging operations
+
+**Key terms:** ALCOA+, data integrity, audit trail, 21 CFR Part 11, EU GMP Annex 11, MHRA, data lifecycle, data criticality, data vulnerability, 9-Box grid, DPFM, FMEA, ATRA, access control, system clock, true copy, raw data, electronic batch record (EBR), hybrid system, CSV, GDocP, looped memory, Big Data, IoT
+
+**Sections:** Section 0 (Intro & Glossary) → Section 1 (DI Regulatory Trends) → Section 2 (QRM Applied to DI) → Section 3 (DI Controls Framework) → Section 4 (DI Controls Specific Areas) → Section 5 (Big Data & References) → Section 6a (Appendix: API & FDF Examples) → Section 6b (Appendix: Sterility & Packaging Examples)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -552,13 +574,23 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Excipient risk assessment, ERPN, SCRPN, OverallRPN, excipient GMP / 賦形劑風險評估、賦形劑風險優先數、供應鏈風險 | TR54 |
 | Excipient supply chain, broker, distributor, repackager, EXCiPACT / 賦形劑供應鏈、中間商、轉包裝商 | TR54 |
 | EU FMD, EC Guidelines 2015, formalized risk assessment, MAH accountability / 歐盟偽藥指令、賦形劑正式化風險評估 | TR54 |
+| Data integrity, ALCOA+, data lifecycle, data governance / 資料完整性、ALCOA+、資料生命週期 | TR84 |
+| Audit trail review, ATRA tool, audit trail risk assessment / 稽核軌跡審查、ATRA工具 | TR84 |
+| 21 CFR Part 11, EU Annex 11, electronic records, e-signatures / 電子記錄、電子簽章、21 CFR Part 11 | TR84 |
+| Data integrity warning letters, FDA DI trends, inspection findings / 資料完整性警告信、FDA DI趨勢 | TR84 |
+| 9-Box vulnerability grid, data criticality, data process flow map / 9格脆弱性矩陣、資料關鍵性分類 | TR84 |
+| Access control, user administration, shared logins, system clock / 存取控制、共用帳號、系統時鐘管理 | TR84 |
+| Paper vs electronic vs hybrid system DI controls / 紙本vs電子vs混合系統資料完整性管控 | TR84 |
+| CSV, computer system validation, data backup, true copy / 電腦系統驗證、資料備份、真實副本 | TR84 |
+| Big Data, IoT in pharma manufacturing, continuous manufacturing data / 大數據、製藥物聯網、連續製造資料 | TR84 |
+| DI worked examples: API, FDF, sterility assurance, packaging / 資料完整性實務案例：原料藥、製劑、無菌、包裝 | TR84 |
 
 ## Not Covered in This Knowledge Base
 
 If the user asks about these topics, say so clearly and suggest alternatives:
 
 - **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
-- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR54, TR62, TR70, TR83) — not available; suggest the user consult the official PDA website
+- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR83) — not available; suggest the user consult the official PDA website
 - **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
 - **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
 - **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
@@ -600,7 +632,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk assessment: 9-Box vulnerability grid, data criticality, DPFM) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
 → TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
@@ -666,4 +698,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR54 ★★★ (complete excipient QRM framework: ERPN, SCRPN, OverallRPN, supply chain mapping, 6 real case studies) — single primary source
 
 **Risk Assessment / FMEA (風險評估/FMEA)**
-→ TR54 ★★★ (excipient RA: risk ranking/filtering, supply chain RA) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+→ TR54 ★★★ (excipient RA: risk ranking/filtering, supply chain RA) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+
+**Data Integrity / ALCOA+ / Electronic Records (資料完整性/電子記錄)**
+→ TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) — single primary source
+
+**Computer System Validation / CSV (電腦系統驗證)**
+→ TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | TR60 ★★ (CSV in process validation context)

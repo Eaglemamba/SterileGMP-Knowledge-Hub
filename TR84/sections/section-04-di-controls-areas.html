@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR84 Section 4: DI Controls — Specific Areas</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 4: DI Controls &mdash; Specific Areas</h1>
+    <div class="subtitle">DI 控制：具體管控領域詳解</div>
+    <div class="page-info">PDA Technical Report No. 84 | p25 &ndash; p39</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解紙本轉電子的 True Copy（真實副本）要求，包括 High / Medium / Low 三級關鍵性下的審查標準、原件銷毀條件，以及品質單位的監督職責。</li>
+            <li>掌握電子系統 Access Control（使用者存取控制）的分級策略，包括密碼政策、帳戶鎖定、週期性審查頻率等差異化管控措施，並理解 CDMO 多客戶環境下的特殊挑戰。</li>
+            <li>學會運用 Audit Trail Review Assessment (ATRA) 工具，透過 Detectability / Severity / Probability 三維度評分，判定 Audit Trail（稽核軌跡）的審查頻率與範圍。</li>
+            <li>理解 Data Backup（資料備份）、Data Export（資料匯出）、Data Transfer/Migration（資料傳輸與遷移）等電子資料管控的風險分級邏輯及實務應用。</li>
+        </ol>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節子目錄 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-5-3-3-3">5.3.3.3 True Copy</a>
+            <a href="#sec-5-3-4">5.3.4 Access Controls</a>
+            <a href="#sec-5-3-5">5.3.5 Audit Trail Review</a>
+            <a href="#sec-5-3-5-1">5.3.5.1 ATRA Tool</a>
+            <a href="#sec-5-3-5-2">5.3.5.2 ATRA Examples</a>
+            <a href="#sec-5-3-6">5.3.6 Data Backup</a>
+            <a href="#sec-5-3-7">5.3.7 Use of Electronic Data</a>
+            <a href="#sec-5-3-7-1">5.3.7.1 Reports &amp; Records</a>
+            <a href="#sec-5-3-7-2">5.3.7.2 Data Transfer</a>
+            <a href="#sec-summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.3.3: True Copy (Paper to Electronic) -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-3-3" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.3.3 True Copy (Paper to Electronic)</h2>
+                <p>真實副本（紙本轉電子）：掃描、審查與原件銷毀</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.3.3 True Copy (Paper to Electronic)</h3>
+
+                    <p>Table 5.3.3.3-1 illustrates the controls needed for creation of a <span class="key-term">true copy</span>, going from a paper record to an electronic record. True copies must be maintained using the same controls that applied to the original paper record.</p>
+
+                    <p>For <span class="key-term">High-criticality</span> records, such as paper batch records that may be needed for downstream use by a sister site or another department, a trained user can make the true copy, but a second person from the <span class="key-term">quality unit</span> must perform a documented review. The review must ensure the scan is legible, accurate, and complete (all pages, all entries) and confirm that all entries on the true copy provide all information and data that are contained on the original record. For example, if data is color-coded or highlighted, the true copy must reflect the same color-coding or highlighting, with the intent of capturing the context and meaning. In addition, the original record may be discarded with quality unit oversight, unless the original document has a seal, watermark, or similar identifying mark that cannot be accurately reproduced electronically, in which case it cannot be discarded. The quality unit should determine the level of oversight required for destruction, which may range from quality unit presence during destruction to periodic confirmation of compliance with procedures.</p>
+
+                    <p>For <span class="key-term">Medium-criticality</span> records, like a validation protocol, a trained user can make the true copy. A documented second-person review is required, though the second person need not be from the quality unit. The original record may be discarded by the operating unit unless the original document has a seal, watermark, or identifying mark. While the quality unit does not need to be directly involved in the destruction process, it must retain a suitable level of oversight to ensure the procedures are followed.</p>
+
+                    <p>For <span class="key-term">Low-criticality</span> records, such as completed user access authorization forms where evidence of training exists in another system, the person making the true copy must document that they reviewed the scan for legibility, accuracy, and completeness. The original may be discarded by the individual, with quality unit oversight to ensure that procedures are followed.</p>
+
+                    <p>As with all controls relating to data integrity, processes relating to true copies, regardless of criticality, must be documented in <span class="key-term">SOPs</span>. A record must be maintained to reflect when each document was destroyed and who destroyed it.</p>
+
+                    <!-- Table 5.3.3.3-1 -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.3.3-1 &mdash; Data Integrity Control Grid for True Copy (Paper to Electronic)</caption>
+                        <thead>
+                            <tr>
+                                <th>True Copy (Paper to Electronic)</th>
+                                <th>High Data Criticality</th>
+                                <th>Medium Data Criticality</th>
+                                <th>Low Data Criticality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prevention Control</strong></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>Review requirements</td>
+                                <td>Documented review by second person from the quality unit for legibility, accuracy, and completeness</td>
+                                <td>Documented review by second person (not necessarily from the quality unit) for legibility, accuracy, and completeness</td>
+                                <td>Documented verification by person performing the scan for legibility, accuracy, and completeness</td>
+                            </tr>
+                            <tr>
+                                <td>Discard of original allowed</td>
+                                <td>Yes, as defined by quality unit oversight, unless there is a seal, watermark, or other identifier that can't be accurately reproduced electronically</td>
+                                <td>Yes, performed by the operating unit, unless there is a seal, watermark, or other identifier that can't be accurately reproduced electronically. Quality unit oversight required</td>
+                                <td>Yes, individual can discard original. Quality unit oversight required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：True Copy（真實副本）</h4>
+                        <p><strong>True Copy（真實副本）</strong>是指能夠完整保留原始記錄所有資訊的副本，其管控等級必須等同於原件。TR84 在此聚焦「紙本轉電子」的情境，即透過掃描將紙本記錄數位化。</p>
+                        <p>關鍵判斷要素：</p>
+                        <ul>
+                            <li><strong>可讀性 (Legibility)</strong>：掃描後文字與數據清晰可辨</li>
+                            <li><strong>準確性 (Accuracy)</strong>：內容與原件完全一致，包括色碼、螢光標記等</li>
+                            <li><strong>完整性 (Completeness)</strong>：所有頁面、所有欄位均已掃描</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：掃描就像翻拍古籍</h4>
+                        <p>想像你要將一本珍貴的古籍翻拍成數位檔案：</p>
+                        <ul>
+                            <li><strong>High</strong>：博物館級古籍 &rarr; 專業攝影師翻拍，館長親自逐頁核對，若原件有浮水印或鋼印則必須保留原件</li>
+                            <li><strong>Medium</strong>：圖書館藏書 &rarr; 訓練過的工作人員翻拍，另一位同事覆核</li>
+                            <li><strong>Low</strong>：一般借閱登記表 &rarr; 自行翻拍並確認清晰即可</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：原件銷毀的三大前提</h4>
+                        <p>TR84 明確指出，即便是 High 級別的記錄，只要滿足以下條件，原件可以銷毀：</p>
+                        <ol>
+                            <li>True Copy 經品質單位 (Quality Unit) 審查確認通過</li>
+                            <li>原件無法以電子方式準確重現的特徵（印章、浮水印等）不存在</li>
+                            <li>銷毀過程有記錄（何時、何人銷毀）</li>
+                        </ol>
+                        <p>但若原件帶有印章、浮水印或其他無法電子化的識別標記，則<strong>不得銷毀原件</strong>。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用</h4>
+                        <p>在 CDMO 環境中，True Copy 管理尤其重要：</p>
+                        <ul>
+                            <li><strong>客戶批次記錄</strong>：客戶提供的紙本 Master Batch Record 掃描後，屬 High 級別，需品質單位逐頁覆核</li>
+                            <li><strong>技術移轉文件</strong>：來自客戶的驗證方案書 (Validation Protocol) 屬 Medium 級別，需第二人覆核</li>
+                            <li><strong>多客戶管理</strong>：確保不同客戶的 True Copy 檔案有明確的存取權限區隔，避免交叉存取</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考題</h4>
+                        <p>你的工廠有一份客戶提供的紙本批次記錄，上面蓋有該公司的鋼印。掃描後，品質單位覆核通過。請問：可以銷毀原件嗎？為什麼？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.4: Access Controls for Electronic Systems -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-4" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.4 Access Controls for Electronic Systems</h2>
+                <p>電子系統使用者存取控制：帳號、密碼與權限分級</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.4 Access Controls for Electronic Systems</h3>
+
+                    <p><span class="key-term">Access controls</span> to electronic systems are required to prevent potential data integrity issues from occurring. Table 5.3.4-1 describes several differentiable controls related to access to electronic systems.</p>
+
+                    <p>For systems storing <span class="key-term">High-criticality</span> data, such as an MES, historian, or filter integrity tester used during sterile filling, unique identification and authentication controls should be in place for each individual user. Other features also should be available for use, such as mandatory password changes every 90 days, lock-out after five failed attempts, password recycling only allowed after 10 cycles, and an annual review of user accounts.</p>
+
+                    <p>For systems storing <span class="key-term">Medium-criticality</span> data, like parameter-setting or executed run files for a washing machine, many of the controls for systems storing Highly critical data likewise should be applied. Certain measures can be less stringent: mandatory password changes can occur every 180 days (instead of 90), passwords can be recycled after 5 cycles (instead of 10), and users locked-out after 10 incorrect tries (instead of 5).</p>
+
+                    <p>For <span class="key-term">Low-critical</span> systems, for example, an HMI on a secondary packaging line that controls conveyor speed but does not store data, the access controls may be far less rigorous. For these types of systems, a <span class="key-term">passcode or group accounts</span> are acceptable. Controls must be in place, however, to ensure segregation of duties between user levels (i.e., administrator vs. engineer vs. operator). The passcode or group accounts should be changed annually. These controls may also be used for other Low-critical activities that do not require the action to be attributable. For example, a group account may be used to press the start/stop button on a packaging line when the system requires a log-in to activate the stop/start function.</p>
+
+                    <p><span class="key-term">Automatic log-out</span> is not discussed as a differentiated control but should be considered as an overall control factor. The amount of time that should be allowed to pass before an inactive user is automatically logged-out should be commensurate with the risks identified, and documented accordingly.</p>
+
+                    <p>As stated above, the suggested frequencies at which certain activities should take place are illustrative only. Organizations should determine the frequencies that are most applicable to their operations using a <span class="key-term">risk-based approach</span> to ensure that the periodicity of activities is commensurate with the risks identified. This assessment should consider the overall system architecture, the interfaces between systems, criticality of access by unauthorized persons, and the potential for network security breaches.</p>
+
+                    <!-- Table 5.3.4-1 -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.4-1 &mdash; Data Integrity Control Grid for Access Controls for Electronic Systems</caption>
+                        <thead>
+                            <tr>
+                                <th>Access Controls for Electronic Systems</th>
+                                <th>High Data Criticality</th>
+                                <th>Medium Data Criticality</th>
+                                <th>Low Data Criticality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prevention Control</strong></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>Access to Electronic systems &mdash; HOW</td>
+                                <td>Identification and authentication (User ID + Password)</td>
+                                <td>Identification and authentication (User ID + Password)</td>
+                                <td>Passcode/group account based on role &amp; information access</td>
+                            </tr>
+                            <tr>
+                                <td>Password change frequency</td>
+                                <td>Every 90 days</td>
+                                <td>Every 180 days</td>
+                                <td>Annually</td>
+                            </tr>
+                            <tr>
+                                <td>Periodic user account access review</td>
+                                <td>Annually</td>
+                                <td>Annually</td>
+                                <td>Every 2 years</td>
+                            </tr>
+                            <tr>
+                                <td>Account lock-out after repeated incorrect password entries</td>
+                                <td>5 incorrect password entries</td>
+                                <td>10 incorrect password entries</td>
+                                <td>Never</td>
+                            </tr>
+                            <tr>
+                                <td>Password recycling &mdash; Reuse of previously used passwords</td>
+                                <td>10 cycles</td>
+                                <td>5 cycles</td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：User Access Control（使用者存取控制）</h4>
+                        <p><strong>Access Control（存取控制）</strong>是 Data Integrity 的第一道防線。TR84 將其定義為「預防性管控」(Prevention Control)，核心目的是確保：</p>
+                        <ul>
+                            <li><strong>身分識別 (Identification)</strong>：每個使用者有唯一帳號</li>
+                            <li><strong>身分驗證 (Authentication)</strong>：透過密碼確認為本人操作</li>
+                            <li><strong>職責分離 (Segregation of Duties)</strong>：不同角色有不同權限</li>
+                        </ul>
+                        <p>High 與 Medium 級別均要求個人帳號 (User ID + Password)；Low 級別允許群組帳號 (Group Account)，但仍需區分操作者與管理者權限。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：門禁卡與鑰匙</h4>
+                        <p>把電子系統的存取控制想像成大樓門禁：</p>
+                        <ul>
+                            <li><strong>High</strong>（如 MES、製程歷史資料庫）：指紋+感應卡雙重認證，90 天換一次密碼，輸錯 5 次鎖定</li>
+                            <li><strong>Medium</strong>（如洗瓶機參數設定）：感應卡認證，180 天換密碼，輸錯 10 次鎖定</li>
+                            <li><strong>Low</strong>（如包裝線 HMI 速度控制）：共用門禁密碼即可，一年換一次</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：自動登出 (Automatic Log-out)</h4>
+                        <p>TR84 特別強調，雖然自動登出不屬於差異化管控項目，但它是一項<strong>整體性的管控要素</strong>。閒置多久後自動登出應與風險相稱。</p>
+                        <p>實務上，無菌充填區的 MES 終端通常設定 5-10 分鐘自動登出；而辦公區域的系統可以設定 15-30 分鐘。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用：多客戶環境的存取控制挑戰</h4>
+                        <p>CDMO 的最大挑戰在於：<strong>同一套電子系統上可能儲存多個客戶的製程資料</strong>。這帶來額外的管控需求：</p>
+                        <ul>
+                            <li><strong>專案隔離</strong>：不同客戶的操作人員只能存取該客戶的批次資料，不得跨客戶查看</li>
+                            <li><strong>權限矩陣</strong>：需建立「客戶 x 角色 x 系統」的三維權限矩陣</li>
+                            <li><strong>帳號審查</strong>：人員輪調頻繁，年度帳號審查需特別確認離職或轉調人員的權限是否已移除</li>
+                            <li><strong>保密協定</strong>：存取控制是履行客戶保密協定 (CDA) 的技術手段之一</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考題</h4>
+                        <p>你的工廠的濾膜完整性測試儀 (Filter Integrity Tester) 用於無菌充填線。該設備同時儲存多個客戶的批次測試資料。請問：</p>
+                        <ol>
+                            <li>此設備的資料屬於哪一個關鍵性等級？</li>
+                            <li>密碼變更頻率應設定為多少天？</li>
+                            <li>除了 TR84 列出的標準管控外，CDMO 還需要增加哪些額外管控？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.5: Electronic Audit Trail Review -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-5" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.5 Electronic Audit Trail Review</h2>
+                <p>電子稽核軌跡審查：基本概念與審查範圍</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.5 Electronic Audit Trail Review</h3>
+
+                    <p><span class="key-term">Audit trails</span> are a form of metadata that records details such as the creation, addition, deletion, or alteration of data within a system. An audit trail provides controls for secure recording of lifecycle details, without overwriting the original record. Where equipment (e.g., instruments, devices) are used to capture, create, process, report, store, or archive relevant GMP data electronically, the system design must always include the provision and retention of a suitable audit trail.</p>
+
+                    <p>Secure, computer-generated, time-stamped <span class="key-term">audit trails</span> must allow for reconstruction of the history of events relating to the record, including the <span class="key-term">"who, what, and when"</span> of the action. Where technically possible, comments should be added, in the case of modifications or corrections, so that the <span class="key-term">why</span> of the activity also is recorded as part of the audit trail. Where not technically possible to record in the audit trail the reasons for changes or deletions to GMP-relevant data, alternate documentation should be used.</p>
+
+                    <p>The electronic audit trail may comprise multiple sources related to the equipment; that is, the information may be held in files called something other than "Audit Trail," for example, <span class="key-term">event log</span>, <span class="key-term">alarm log</span>, <span class="key-term">system log</span>, history file, trends, or reports. Understanding where the information is recorded within the system, at both the operating system and application level, is important to help protect the data and understand where in the system to look when performing an audit trail review.</p>
+
+                    <p>In the following sections, audit trail review is discussed for three different types of data contained within the electronic audit trails:</p>
+                    <ul>
+                        <li>Data associated with <span class="key-term">batch setup</span>, for example, the recipe used, and the set-points or times planned for specific activities during the batch</li>
+                        <li><span class="key-term">Batch run data</span>, which is data from the manufacturing process, for example, temperatures, duration of activities, who performed the activities</li>
+                        <li><span class="key-term">System configuration data</span>, which are not batch-relevant data but the data associated with the configuration of the system, for example, user-account information, privileges granted to users, where data is stored</li>
+                    </ul>
+
+                    <p>Reviewing audit trails enables detection of potential data integrity issues. Some regulations require that audit trails be reviewed on a periodic basis. There is no expectation that every part of the audit trail will be reviewed for every batch; rather, it is expected that a <span class="key-term">risk-based approach</span> will be taken to identify the appropriate level of review to conduct.</p>
+
+                    <p>The person performing the audit trail review must be <span class="key-term">independent</span> and technically capable of understanding the audit trail. The person should not have been involved in the creation or verification of the data being reviewed.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Audit Trail（稽核軌跡）</h4>
+                        <p><strong>Audit Trail（稽核軌跡）</strong>是一種 metadata（元資料），自動記錄資料生命週期中的所有關鍵事件：建立、新增、刪除、修改。其核心要求是 <strong>"Who, What, When, Why"</strong>（何人、何事、何時、為何）。</p>
+                        <p>TR84 特別強調：</p>
+                        <ul>
+                            <li>Audit Trail 不一定叫做 "Audit Trail"，可能以 Event Log、Alarm Log、System Log 等名稱存在</li>
+                            <li>需在作業系統 (OS) 層級與應用程式 (Application) 層級分別理解 Audit Trail 的存放位置</li>
+                            <li>並非每批都要審查所有 Audit Trail，而是採取<strong>風險導向方法</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>三類 Audit Trail 資料</h4>
+                        <p>TR84 將 Audit Trail 涵蓋的資料分為三大類：</p>
+                        <ol>
+                            <li><strong>Batch Setup Data（批次設定資料）</strong>：配方 (Recipe)、設定值 (Set-points)、計畫時間等</li>
+                            <li><strong>Batch Run Data（批次執行資料）</strong>：溫度、操作時間、操作者身分等製程數據</li>
+                            <li><strong>System Configuration Data（系統組態資料）</strong>：帳號管理、權限設定、資料儲存位置等</li>
+                        </ol>
+                        <p>這三類資料的審查方式與頻率各不相同，需透過 ATRA 工具分別評估。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：審查者的獨立性</h4>
+                        <p>執行 Audit Trail Review 的人員必須具備兩個條件：</p>
+                        <ul>
+                            <li><strong>獨立性</strong>：不得參與該批資料的建立或驗證</li>
+                            <li><strong>技術能力</strong>：能理解 Audit Trail 的內容與意義</li>
+                        </ul>
+                        <p>這意味著不能由操作者自己審查自己的操作紀錄，也不能由完全不懂系統的人來審查。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：銀行交易明細</h4>
+                        <p>Audit Trail 就像你的銀行帳戶交易明細：</p>
+                        <ul>
+                            <li>每筆交易都記錄了<strong>誰</strong>（帳戶持有人）、<strong>做了什麼</strong>（存款/提款/轉帳）、<strong>何時</strong>（時間戳記）、<strong>為何</strong>（備註用途）</li>
+                            <li>你不需要每天逐筆核對，但可以定期抽查異常交易</li>
+                            <li>核對的人不應該是你自己，而是獨立的稽核人員</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.5.1: Audit Trail Review Assessment (ATRA) -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-5-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.5.1 Audit Trail Review Assessment (ATRA)</h2>
+                <p>稽核軌跡審查評估：ATRA 三維度評分工具</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.5.1 Audit Trail Review Assessment</h3>
+
+                    <p>An <span class="key-term">audit trail review assessment (ATRA)</span> is a risk-based tool that can help determine which elements within the audit trail should be reviewed, and the appropriate frequency. The tool may be used for any system that has an electronic audit trail, for example, systems directly used in manufacturing as well as supporting systems such as building automation and water for injection.</p>
+
+                    <p>The ATRA focuses on the <span class="key-term">detectability</span> of changes to the data, the <span class="key-term">criticality</span> of the data (in terms of patient safety or product quality), and the <span class="key-term">probability</span> or capability for changes to the data to occur.</p>
+
+                    <p>A cross-functional team should be assembled to conduct the ATRA. The team should comprise people who fully understand the technical capabilities and limitations of the system, how the system is set up (from a user management perspective), where the data is stored, what type of data is part of the audit trail. The team also should include users who are familiar with operating the system.</p>
+
+                    <p>The first step in the process is to score each of the three factors&mdash;detectability, severity, and probability&mdash;that may require review based on the system controls in place for each element in the audit trail. For each factor, a lower score represents lower risk. Examples of scores that may be used are provided in this section, although each entity may modify the scoring based on its own analysis and risk tolerance.</p>
+
+                    <h3>Detectability Score</h3>
+                    <p><span class="key-term">Detectability Score</span> is based upon the likelihood that modification or deletion of data will be detected. There are two possible Detectability Scores: 1 or zero.</p>
+                    <p>If it is possible to detect any modifications or deletions to the data contained within the audit trail, and this data is already reviewed as part of an existing review as required by SOP, performing additional review of the audit trail to detect potential data integrity issues is not required. For example, if the batch report lists the critical parameters used during manufacturing and shows any changes made to these parameters during batch manufacturing, an audit trail review of the same information need not be conducted. (This assumes that the batch report is generated automatically from the equipment and cannot be manipulated.) <strong>Score = 0.</strong></p>
+                    <p>If the data has not already been reviewed or has only been partially reviewed (i.e., not all critical data is in scope of the batch-wise data review), further assessment of the audit trail may be required. <strong>Score = 1.</strong></p>
+
+                    <h3>Severity Score</h3>
+                    <p><span class="key-term">Severity Score</span> is based upon the data criticality; it assesses the potential impact if data is modified or deleted. There are three possible Severity Scores: 10, 4, or 1.</p>
+                    <p>If the data is considered Highly critical or has a direct impact on patient safety or product quality (e.g., changing the temperature to make it appear it was within the validated range, despite being outside the range), the potential impact is of high severity. <strong>Score = 10.</strong></p>
+                    <p>If the data has an indirect impact on patient safety or product quality, i.e., changes to data that result in a compliance risk only, with indirect impact to only product quality or patient safety (e.g., changes to time zone where the raw data and batch-related data is not affected), it is of medium potential severity. <strong>Score = 4.</strong></p>
+                    <p>If the data has negligible or no impact on patient safety or product quality (e.g., the start time of an operation, provided that this is not a CPP and does not affect duration), it is of low potential severity. <strong>Score = 1.</strong></p>
+
+                    <h3>Probability Score</h3>
+                    <p><span class="key-term">Probability Score</span> is based on the capability of the data to be modified or deleted by system users and administrators. There are three possible Probability Scores: 10, 2, or 1.</p>
+                    <p>If the data can be modified or deleted by a user, the chance that such changes will happen is higher. "User" refers to any person not identified as an independent administrator; "power users" are considered users. <strong>Score = 10.</strong></p>
+                    <p>If the data cannot be modified or deleted by a user but can be modified or deleted by an independent administrator (i.e., an individual with no direct interest in the data), the chance that such changes will occur is lower. <strong>Score = 2.</strong></p>
+                    <p>If the data cannot be modified or deleted by any user or administrator, it is considered a very low probability. <strong>Score = 1.</strong></p>
+
+                    <p>Next, the three scores (Detectability, Severity, and Probability) are multiplied to provide the <span class="key-term">ATRA final score</span>. The lower the score, the lower the risk.</p>
+
+                    <!-- Table 5.3.5.1-1 -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.5.1-1 &mdash; ATRA Final Score and Frequency Review</caption>
+                        <thead>
+                            <tr>
+                                <th>Frequency of System Use</th>
+                                <th>0&ndash;10 Score</th>
+                                <th>11&ndash;20 Score</th>
+                                <th>40 Score</th>
+                                <th>100 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Daily / Weekly</td>
+                                <td>Event-based</td>
+                                <td>Twice per year</td>
+                                <td>Weekly</td>
+                                <td>Batch-wise</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly</td>
+                                <td>Event-based</td>
+                                <td>Yearly</td>
+                                <td>Monthly</td>
+                                <td>Batch-wise</td>
+                            </tr>
+                            <tr>
+                                <td>Less Than Monthly</td>
+                                <td>Event-based</td>
+                                <td>Every 2 years</td>
+                                <td>Quarterly</td>
+                                <td>Batch-wise</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The timeframes indicated are illustrative only. Organizations should assess their systems and apply critical thinking when considering the criticality of the activity being performed as well as the potential for impact on product quality and patient safety. Using a risk-based approach, the periodicity of reviews should be commensurate with the risks identified.</p>
+
+                    <p>If during <span class="key-term">periodic review</span> a number of data integrity breaches are discovered, the controls that are (or should be) in place and/or the frequency of the review should be reevaluated to prevent future breaches or to detect breaches sooner.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：ATRA 三維度評分</h4>
+                        <p><strong>Audit Trail Review Assessment (ATRA)</strong> 是 TR84 提出的風險評估工具，用於決定 Audit Trail 中每個元素的審查頻率。其邏輯類似 FMEA 的風險優先數 (RPN)，以三個維度相乘：</p>
+                        <ul>
+                            <li><strong>Detectability（可偵測性）</strong>：修改或刪除是否會被其他現有審查流程發現？<br/>分數：0（已有審查涵蓋）或 1（尚未被審查涵蓋）</li>
+                            <li><strong>Severity（嚴重度）</strong>：若資料被修改或刪除，對病人安全/產品品質的影響？<br/>分數：10（直接影響）、4（間接影響）、1（可忽略影響）</li>
+                            <li><strong>Probability（發生機率）</strong>：資料被修改或刪除的可能性？<br/>分數：10（一般使用者可修改）、2（僅獨立管理員可修改）、1（無人可修改）</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>ATRA 計算公式</h4>
+                        <pre>ATRA Final Score = Detectability x Severity x Probability
+
+分數範圍：0（最低風險）~ 100（最高風險）
+
+常見結果：
+  0 = 已有審查涵蓋 → 無需額外 Audit Trail 審查
+  1-10 = 低風險 → Event-based（事件觸發時審查）
+  11-20 = 中風險 → 每半年至每年
+  40 = 高風險 → 每週至每月
+  100 = 最高風險 → 每批審查 (Batch-wise)</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：居家保全系統</h4>
+                        <p>ATRA 就像決定「多久巡邏一次」的邏輯：</p>
+                        <ul>
+                            <li><strong>Detectability</strong>：有沒有監視器已經在拍？（有 = 0，沒有 = 1）</li>
+                            <li><strong>Severity</strong>：這個區域放的是金庫 (10)、辦公設備 (4)、還是花園雜物 (1)？</li>
+                            <li><strong>Probability</strong>：外人容易進入 (10)、只有管理員有鑰匙 (2)、還是密封區域 (1)？</li>
+                        </ul>
+                        <p>金庫 + 無監視器 + 外人可進入 = 1 x 10 x 10 = 100 &rarr; 每次都要巡邏（每批審查）</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：ATRA 不是一勞永逸</h4>
+                        <p>TR84 明確指出：若在 Periodic Review（定期審查）中發現多起 DI 違規事件，必須重新評估：</p>
+                        <ul>
+                            <li>現有管控措施是否足夠？</li>
+                            <li>審查頻率是否需要提高？</li>
+                        </ul>
+                        <p>這代表 ATRA 是一個<strong>動態工具</strong>，需隨系統風險狀態持續更新。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用：跨功能 ATRA 團隊</h4>
+                        <p>TR84 建議組建跨功能團隊執行 ATRA。在 CDMO 環境中，團隊應包含：</p>
+                        <ul>
+                            <li><strong>IT/自動化</strong>：了解系統技術限制與 Audit Trail 儲存架構</li>
+                            <li><strong>品保 (QA)</strong>：定義資料關鍵性等級</li>
+                            <li><strong>製造</strong>：了解日常操作流程與潛在風險</li>
+                            <li><strong>CSV 專員</strong>：確保 ATRA 與電腦系統驗證 (CSV) 文件一致</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.5.2: Practical Examples of ATRA -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-5-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.5.2 Practical Examples of ATRA</h2>
+                <p>ATRA 實務案例：濾膜完整性測試儀的評分範例</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.5.2 Practical Examples of ATRA</h3>
+
+                    <p>An audit trail contains data from (1) batch setup data, (2) batch run data, and (3) system configuration data. Each of these parts of the audit trail have a number of elements that could be considered for audit trail review. Hence, the ATRA tool should be used for each individual element to determine the final score.</p>
+
+                    <p>Elements for the <span class="key-term">batch setup data</span> and <span class="key-term">batch run data</span> parts of the audit trail, where data controls may be vulnerable and may have an impact on critical batch data, might include:</p>
+                    <ul>
+                        <li>Were any of the recipe parameters modified outside the validated range during the execution of the batch?</li>
+                        <li>Were changes made to CPPs (set points or allowed tolerance ranges) during manufacturing? Were these within the validated ranges?</li>
+                        <li>Were the calculation parameters edited or modified?</li>
+                        <li>Were changes to the time made that impact the duration of (time-sensitive) parts of manufacturing, i.e., an operation ran longer or shorter than was expected?</li>
+                        <li>Were segregation of duties in place where required and was the person who performed the activity authorized to perform it (e.g., different reviewer and approver)?</li>
+                        <li>Were there GMP-relevant incidents, for example, GMP critical alarms?</li>
+                        <li>Was any data relevant to batch quality modified or deleted?</li>
+                    </ul>
+
+                    <p>Similarly, for the <span class="key-term">system configuration data</span>, a number of elements may be vulnerable and should be considered when using the ATRA tool, such as:</p>
+                    <ul>
+                        <li>Were changes made to the system date or time?</li>
+                        <li>Was the report template or any batch report modified, edited, deleted, or renamed?</li>
+                        <li>What changes have been made to user access accounts or the privileges assigned at the user level? Do these changes still ensure segregation of duties?</li>
+                        <li>Were any edits, modifications, or deletions made to the system configuration (e.g., administration changes, database settings, change of data storage location, system settings or functionality)?</li>
+                        <li>Were there changes, edits, or deletions of audit trails, history logs, or files? Were any renamed?</li>
+                        <li>Was any unusual activity recorded in the user activities log (login, logoff, unauthorized logins)?</li>
+                    </ul>
+
+                    <p>Systems with high technical capabilities that are being fully utilized (e.g., strong access control, segregation of duties) are less vulnerable, therefore, a significantly reduced frequency of audit trail review is acceptable. On the other hand, if the system has limited technical capabilities (e.g., no difference between administrator and operator privileges), the system is more vulnerable, and a more extensive review of the audit trail would be appropriate.</p>
+
+                    <p>Table 5.3.5.2-1 contains a few examples of how the ATRA tool can be used for a <span class="key-term">filter integrity tester</span>. The example does not represent a full ATRA review for a filter integrity tester but covers a few audit trail elements for demonstrative purposes to clarify the use of an ATRA.</p>
+
+                    <!-- Table 5.3.5.2-1 (simplified for readability) -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.5.2-1 &mdash; Example of How ATRA Tool is Used to Score a Filter Integrity Tester</caption>
+                        <thead>
+                            <tr>
+                                <th>Audit Trail Element</th>
+                                <th>D</th>
+                                <th>S</th>
+                                <th>P</th>
+                                <th>Final</th>
+                                <th>Outcome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Batch Setup:</strong> Changes to recipes</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>2</td>
+                                <td>20</td>
+                                <td>Twice per year</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Batch Run:</strong> Changes to test result</td>
+                                <td>0</td>
+                                <td>10</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>Not required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Batch Run:</strong> Repeated or aborted tests</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>100</td>
+                                <td>Batch-wise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Config:</strong> Changes to user access/permissions</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>2</td>
+                                <td>20</td>
+                                <td>Twice per year</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Config:</strong> Changes to data storage location</td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>2</td>
+                                <td>8</td>
+                                <td>Event-based</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Conclusions that can be drawn from the examples in Table 5.3.5.2-1 are:</p>
+                    <ul>
+                        <li>An audit trail review should be performed batchwise to check for any aborted or repeat tests or aborted runs not included as part of the batch data package.</li>
+                        <li>An audit trail review should be performed every six months to check for changes made by the administrator to recipes, user accounts, or privilege levels assigned to users.</li>
+                        <li>A review of the audit trail for changes to pass/fail results is not required.</li>
+                        <li>A review of the audit trail to check the storage location for data is only required should a triggering event prompt a specific review of this data.</li>
+                    </ul>
+
+                    <p>Completing the ATRA for the other elements of the audit trail will allow the user to more fully understand the parts of the audit trail that require review and the necessary frequency of that review.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：ATRA 審查問題清單</h4>
+                        <p>TR84 列出了 Audit Trail 審查時應關注的具體問題，可分為兩大類：</p>
+                        <p><strong>批次相關（Batch Setup + Run Data）：</strong></p>
+                        <ul>
+                            <li>配方參數是否在批次執行中被修改至驗證範圍外？</li>
+                            <li>CPP（關鍵製程參數）的設定值或容許範圍是否被變更？</li>
+                            <li>計算參數是否被編輯或修改？</li>
+                            <li>時間修改是否影響時間敏感製程的持續時間？</li>
+                            <li>職責分離是否落實？操作者是否有授權？</li>
+                        </ul>
+                        <p><strong>系統組態（System Configuration）：</strong></p>
+                        <ul>
+                            <li>系統日期或時間是否被變更？</li>
+                            <li>報告範本是否被修改、刪除或更名？</li>
+                            <li>使用者帳號或權限是否有異動？</li>
+                            <li>是否有 Audit Trail 本身被修改或刪除的紀錄？</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：濾膜完整性測試儀的 ATRA 關鍵發現</h4>
+                        <p>TR84 透過 Filter Integrity Tester 的範例，展現了 ATRA 的威力：</p>
+                        <ul>
+                            <li><strong>重複/中止測試 (Score=100)</strong>：操作員可能隱藏不合格的列印報告，這是最高風險，<strong>每批都要審查</strong></li>
+                            <li><strong>配方變更 (Score=20)</strong>：操作員無法變更配方（僅管理員可），但無其他審查涵蓋，<strong>每半年審查一次</strong></li>
+                            <li><strong>測試結果 (Score=0)</strong>：結果自動生成且不可修改，已在批次報告中審查，<strong>無需額外 Audit Trail 審查</strong></li>
+                        </ul>
+                        <p>核心啟示：<strong>技術管控越強的系統，Audit Trail 審查頻率越低。</strong></p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：考試防弊系統</h4>
+                        <p>ATRA 的邏輯就像評估「考場需要多少監考人員」：</p>
+                        <ul>
+                            <li><strong>重複/中止測試</strong>就像學生可以偷偷重新考一次 &rarr; 必須每場都監考（每批審查）</li>
+                            <li><strong>配方變更</strong>就像修改考題答案 &rarr; 只有老師能改，但仍需定期檢查（每半年）</li>
+                            <li><strong>測試結果</strong>就像電腦自動閱卷，不可竄改 &rarr; 無需額外監督</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用：建立 ATRA 標準模板</h4>
+                        <p>建議 CDMO 為常見設備建立 ATRA 標準模板：</p>
+                        <ul>
+                            <li><strong>Filter Integrity Tester</strong>：如上述範例，重點關注重複測試與配方變更</li>
+                            <li><strong>MES / Historian</strong>：重點關注批次參數修改、使用者權限異動</li>
+                            <li><strong>BMS（建築管理系統）</strong>：重點關注溫濕度數據修改、警報確認紀錄</li>
+                            <li><strong>秤重系統</strong>：重點關注校正參數修改、Tare 值變更</li>
+                        </ul>
+                        <p>模板化可大幅減少每個客戶專案的 ATRA 工作量。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考題</h4>
+                        <p>你的無菌充填線使用某品牌的 Filter Integrity Tester。該設備的 Audit Trail 中記錄了「操作員 A 在 14:30 開始測試，14:32 中止測試，14:35 重新開始測試並於 14:40 通過」。</p>
+                        <ol>
+                            <li>這筆紀錄屬於 ATRA 的哪一個元素？其 Final Score 為何？</li>
+                            <li>若 Batch Review 流程中未包含此 Audit Trail 的審查，可能有什麼風險？</li>
+                            <li>你會建議將此項的審查頻率定為多少？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.6: Backup of Electronic Data -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-6" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.6 Backup of Electronic Data</h2>
+                <p>電子資料備份：頻率策略與迴圈記憶體管控</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.6 Backup of Electronic Data</h3>
+
+                    <p>The next category relates to preventive controls associated with the <span class="key-term">backup of electronic data</span>. Two different scenarios have been identified where it is acceptable to differentiate the controls applied based on criticality.</p>
+
+                    <p>The first scenario relates to the frequency of performing the backup of the manufacturing data stored electronically. Companies should consider developing a <span class="key-term">principle-based backup strategy</span> in order to differentiate the frequency of backups. This strategy should take into account the company's risk tolerance, i.e., how manufacturing activities can be recreated in the event of a system failure when data has not been backed up. If the only evidence of an activity that impacts the safety and/or quality of the product is through the lost electronic data, the company must be prepared to reject the batch, and a more frequent backup may be warranted. On the other hand, if the major activities can be recreated using other means (e.g., printouts, manually recorded information), that may be used to justify a less-frequent backup of electronic data.</p>
+
+                    <p>In addition, the volume of data being generated within a given time period and the capability of the electronic system to store that volume of data without overwriting existing data should also be considered. This situation will be further discussed in the second scenario.</p>
+
+                    <p>If the equipment is capable of automated backups, backups are recommended at the same frequency at which data is being generated. If new data is being generated daily (e.g., using an MES or historian), a daily backup is warranted.</p>
+
+                    <p>The second scenario is associated with <span class="key-term">looped memory</span>. For the purposes of this technical report, looped memory is used in an electronic system with a limited storage capacity. Once the capacity limit is reached, new data automatically overwrites older data. For example, in a compression machine capable of storing 10 batches worth of data, the data for Batch 11 automatically overwrites the data for Batch 1.</p>
+
+                    <p>Table 5.3.6-1 describes controls for systems with a looped memory. For systems storing Highly critical data, like certain makes or models of filter integrity testers used in sterile filling operations, the backup should occur before the data is overwritten. A similar expectation should be in place for systems storing Medium-critical data, such as a pH meter used on the shop floor. For systems storing Low-critical data, like secondary packaging systems that do not store data relating to quality attributes or such parameters as expiry dates, the backup should ensure that the data will not be overwritten before batch disposition has occurred.</p>
+
+                    <!-- Table 5.3.6-1 -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.6-1 &mdash; Data Integrity Control Grid for Data Backup for System with Limited Storage Capacity</caption>
+                        <thead>
+                            <tr>
+                                <th>Backup of Electronic Data</th>
+                                <th>High Data Criticality</th>
+                                <th>Medium Data Criticality</th>
+                                <th>Low Data Criticality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prevention Control</strong></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>Looped Memory</td>
+                                <td>Perform backup before data is overwritten</td>
+                                <td>Perform backup before data is overwritten</td>
+                                <td>Ensure availability until batch disposition is complete</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Data Backup（資料備份）策略</h4>
+                        <p>TR84 將 Data Backup（資料備份）的管控分為兩個情境：</p>
+                        <ol>
+                            <li><strong>備份頻率策略</strong>：根據「若資料遺失，製造活動能否透過其他方式重建？」來決定備份頻率</li>
+                            <li><strong>迴圈記憶體 (Looped Memory) 管控</strong>：針對儲存容量有限、新資料自動覆蓋舊資料的設備</li>
+                        </ol>
+                        <p>核心原則：<strong>備份頻率應與資料生成頻率相稱</strong>。若設備每天產生新資料（如 MES），則需每日備份。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：行車紀錄器</h4>
+                        <p>Looped Memory（迴圈記憶體）就像行車紀錄器的記憶卡：</p>
+                        <ul>
+                            <li>記憶卡滿了之後，新的影像會自動覆蓋最舊的影像</li>
+                            <li>如果你發生交通事故但忘了備份，關鍵證據可能已被覆蓋</li>
+                            <li><strong>High</strong>：像計程車的行車紀錄器，每天下班前必須備份（因為是營業用途的法律證據）</li>
+                            <li><strong>Low</strong>：像自家轎車的行車紀錄器，只要在需要調閱前不被覆蓋即可</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：資料遺失 = 批次拒放</h4>
+                        <p>TR84 提出一個非常實際的警告：</p>
+                        <p><strong>若影響產品安全/品質的活動唯一證據是電子資料，而該資料因未備份而遺失，企業必須準備拒放該批次。</strong></p>
+                        <p>這是備份策略的最佳風險論述：「不備份的成本 = 整批產品報廢的損失」。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用：常見迴圈記憶體設備</h4>
+                        <p>CDMO 環境中常見的迴圈記憶體設備：</p>
+                        <ul>
+                            <li><strong>Filter Integrity Tester</strong>（High）：某些型號僅能儲存 10-50 組測試結果，必須在覆蓋前備份</li>
+                            <li><strong>pH Meter / 導電度計</strong>（Medium）：生產現場使用的手持式設備，儲存容量有限</li>
+                            <li><strong>壓錠機 (Compression Machine)</strong>：可能僅儲存固定批次數的資料</li>
+                            <li><strong>自動秤重系統</strong>：某些型號的內部記憶體有限</li>
+                        </ul>
+                        <p>建議：建立「設備儲存容量清單」，標註各設備的最大儲存批次數及建議備份週期。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考題</h4>
+                        <p>你的無菌充填線有一台 Filter Integrity Tester，最多可儲存 20 組測試結果。該充填線每天執行 2-3 批，每批測試 2 個濾膜。請問：</p>
+                        <ol>
+                            <li>大約幾天後舊資料會開始被覆蓋？</li>
+                            <li>你會建議什麼樣的備份頻率？</li>
+                            <li>若某批測試資料因未及時備份而遺失，對批次放行有何影響？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.7: Use of Electronic Data -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-7" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.7 Use of Electronic Data</h2>
+                <p>電子資料的使用：報告產出與資料傳輸</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.7 Use of Electronic Data</h3>
+
+                    <p>Once electronic data is generated, the information may be further processed in numerous ways. In the two scenarios described in Sections 5.3.7.1 and 5.3.7.2, the controls to be applied may be differentiated based on criticality: when electronic data is <span class="key-term">exported to generate reports or records</span>, and when data is <span class="key-term">transferred or migrated between electronic systems</span>. These controls are targeted at the data and record levels to help prevent a data integrity incident from occurring.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：電子資料的後端處理</h4>
+                        <p>電子資料生成後，後續處理可能帶來 DI 風險。TR84 在此聚焦兩個關鍵場景：</p>
+                        <ol>
+                            <li><strong>資料匯出產生報告/記錄</strong>（Section 5.3.7.1）：如從 MES 匯出批次記錄</li>
+                            <li><strong>系統間資料傳輸或遷移</strong>（Section 5.3.7.2）：如從獨立設備傳輸至中央系統</li>
+                        </ol>
+                        <p>兩者的管控核心都在於：確保資料在處理過程中<strong>不被改變、不會遺失</strong>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.7.1: Exporting Electronic Data to Generate Reports and Records -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-7-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.7.1 Exporting Electronic Data to Generate Reports and Records</h2>
+                <p>資料匯出與報告產出：驗證、變更管控與範本管理</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.7.1 Exporting Electronic Data to Generate Reports and Records</h3>
+
+                    <p>Table 5.3.7.1-1 identifies prevention controls related to reports and records generation. For reports and records used to display <span class="key-term">High-critical data</span>, such as a batch record from an MES used for making release decisions, <span class="key-term">validation</span> with <span class="key-term">change control</span> and appropriate test plans is required for changes to the report template. The validation should ensure that the report or record is accurate, and that all data displayed will remain unchanged from the electronic raw data. IT or automation personnel should perform these changes to the template and ensure that the content of the reports and records are static and cannot be altered in any way.</p>
+
+                    <p>For reports and records related to <span class="key-term">Medium-critical data</span>, such as a building management system monitoring temperature and humidity, IT or automation personnel should perform an initial validation. Any changes to the report template should be performed following SOPs, but revalidation of the template would not be required. That the report contains limited flexibility (via filters or drop downs) and is working as intended is acceptable, so the user may run these reports based on a predefined set of filters or criteria.</p>
+
+                    <p>For reports and records displaying <span class="key-term">Low-critical data</span>, verification governed by work instructions should suffice. The business unit creates these reports and records, and their content may be flexible in nature, for example, exporting data into a data lake for future non-GMP analysis.</p>
+
+                    <p>Regardless of the criticality, the <span class="key-term">quality unit</span> should review and approve changes to report templates, especially for any changes that could impact the information displayed.</p>
+
+                    <!-- Table 5.3.7.1-1 -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.7.1-1 &mdash; Data Integrity Control Grid for Data Export for Generation of Reports and Records</caption>
+                        <thead>
+                            <tr>
+                                <th>Data Export / Report Generation</th>
+                                <th>High Data Criticality</th>
+                                <th>Medium Data Criticality</th>
+                                <th>Low Data Criticality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prevention Control</strong></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>Report validation, verification</td>
+                                <td>Validation, revalidation if changed</td>
+                                <td>Initial validation only</td>
+                                <td>Verification</td>
+                            </tr>
+                            <tr>
+                                <td>Documentation of changes in reports</td>
+                                <td>Change control and test plan</td>
+                                <td>Procedural control</td>
+                                <td>Work instructions</td>
+                            </tr>
+                            <tr>
+                                <td>Modification of template performed by</td>
+                                <td>IT/Automation unit</td>
+                                <td>IT/Automation unit</td>
+                                <td>Business unit</td>
+                            </tr>
+                            <tr>
+                                <td>Report content flexibility</td>
+                                <td>Static/fixed</td>
+                                <td>Limited flexibility, drop-downs or predefined selection criteria</td>
+                                <td>Flexible, based on criteria defined in the work instructions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：報告範本管控的三級差異</h4>
+                        <p>TR84 將報告/記錄產出的管控從四個面向分級：</p>
+                        <ul>
+                            <li><strong>驗證層級</strong>：High 需要完整驗證 + 變更後重新驗證；Medium 僅需初始驗證；Low 僅需確認 (Verification)</li>
+                            <li><strong>變更管控</strong>：High 需要 Change Control + Test Plan；Medium 需要程序管控；Low 僅需作業指導書</li>
+                            <li><strong>修改權限</strong>：High 與 Medium 由 IT/自動化單位執行；Low 可由業務單位自行執行</li>
+                            <li><strong>內容彈性</strong>：High 為靜態固定；Medium 有限彈性（下拉選單）；Low 可彈性調整</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：Excel 報表模板管理</h4>
+                        <p>想像你的工廠有三類 Excel 報表模板：</p>
+                        <ul>
+                            <li><strong>High</strong>（批次放行報告）：像銀行對帳單模板 &rarr; IT 鎖定格式，任何修改需要完整驗證 + 變更管控</li>
+                            <li><strong>Medium</strong>（環境監測報告）：像預設的月報模板 &rarr; 有固定的篩選條件，使用者可選擇日期範圍</li>
+                            <li><strong>Low</strong>（趨勢分析匯出）：像分析用的 Pivot Table &rarr; 使用者可自由調整欄位和篩選</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：品質單位的跨級監督</h4>
+                        <p>TR84 強調一個重要原則：<strong>無論資料關鍵性等級高低，品質單位 (Quality Unit) 都應審查和核准報告範本的變更</strong>，特別是可能影響資訊呈現方式的變更。</p>
+                        <p>這代表即使是 Low 級別的報告，若範本變更會改變所顯示的資訊內容，品質單位仍需介入。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用：多客戶報告範本管理</h4>
+                        <p>CDMO 面臨的報告管理挑戰：</p>
+                        <ul>
+                            <li><strong>客戶專屬報告格式</strong>：不同客戶可能要求不同的批次報告格式，每個格式都需獨立驗證</li>
+                            <li><strong>範本版本控制</strong>：同一系統上可能有 5-10 個客戶的報告範本，版本管控複雜度倍增</li>
+                            <li><strong>Raw Data 不可變原則</strong>：報告範本的修改僅影響呈現方式，底層原始資料 (Raw Data) 不得因範本變更而被改變</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SUBSECTION 5.3.7.2: Data Transfer and Migration -->
+    <!-- =========================================================== -->
+    <div id="sec-5-3-7-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>5.3.7.2 Data Transfer and Migration Between Electronic Systems</h2>
+                <p>電子系統間資料傳輸與遷移：確保資料完整傳遞</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3.7.2 Data Transfer and Migration Between Electronic Systems</h3>
+
+                    <p>The technical report team also identified different levels of control that may be applicable for the <span class="key-term">transfer or migration</span> of electronic data based on criticality, as illustrated in Table 5.3.7.2-1.</p>
+
+                    <p>For <span class="key-term">High- or Medium-critical</span> data transfers and migrations, the transfer of the electronic data should be prepared using full <span class="key-term">change control</span>, with a test plan in place to ensure that all data is transferred. It also is advisable to use a <span class="key-term">verification tool</span>, such as a <span class="key-term">checksum</span>, to confirm that all data sent was received. Two examples of this type of transfer are presented in this section.</p>
+
+                    <p>One example is the <span class="key-term">migration of data from one platform to another</span> as part of a software or hardware upgrade, for example, when moving from one software version to another, moving from an old server to a new server, or moving to the cloud is one type of transfer. This is generally considered a once-off activity specifically associated with the upgrade.</p>
+
+                    <p>A second example is the transfer of High- and Medium-critical batch data (e.g., CPPs, calibration records, environmental monitoring data) from a <span class="key-term">standalone system to an upper-level system</span> like an MES or data historian. This type of data transfer occurs on a defined periodic basis (e.g., once a day, once a week, after each batch) based on how the data transfer has been set up. For both examples, the transfer or migration of the data should be safeguarded by change control, a test plan, and a tool to verify that all the data have been transferred or migrated.</p>
+
+                    <p>Data of varying criticalities are regularly transferred into different formats for making <span class="key-term">continuous process verification</span> conclusions, for example, transferring data into a data lake for further trending or analysis. These are considered Low-critical transfers, so a procedural control is adequate for describing the steps to be taken to transfer the data.</p>
+
+                    <!-- Table 5.3.7.2-1 -->
+                    <table>
+                        <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; font-size:0.9rem;">Table 5.3.7.2-1 &mdash; Data Integrity Control Grid for Data Transfer and Migration Between Electronic Systems</caption>
+                        <thead>
+                            <tr>
+                                <th>Data Transfer and Migration</th>
+                                <th>High Data Criticality</th>
+                                <th>Medium Data Criticality</th>
+                                <th>Low Data Criticality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Prevention Control</strong></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>Data migration &mdash; How executed to ensure complete transfer of data</td>
+                                <td>Under change control with test plan</td>
+                                <td>Under change control with test plan</td>
+                                <td>Under procedural control</td>
+                            </tr>
+                            <tr>
+                                <td>Verification of data migration</td>
+                                <td>Checksum, or equivalent tool, that confirms all data sent was received</td>
+                                <td>Checksum, or equivalent tool, that confirms all data sent was received</td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Data Transfer vs. Data Migration</h4>
+                        <p>TR84 討論了兩種電子資料傳輸情境：</p>
+                        <ul>
+                            <li><strong>Data Migration（資料遷移）</strong>：一次性的平台轉換，如軟體升級、伺服器更換、上雲端。通常伴隨 CSV（電腦系統驗證）活動。</li>
+                            <li><strong>Data Transfer（資料傳輸）</strong>：週期性的資料傳送，如從獨立設備定期將批次資料上傳至 MES 或 Historian。</li>
+                        </ul>
+                        <p>兩者的共同管控要求（High/Medium）：<strong>Change Control + Test Plan + Checksum 驗證</strong></p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>關鍵術語：Checksum（校驗碼）</h4>
+                        <p><strong>Checksum（校驗碼）</strong>是一種資料完整性驗證工具，透過數學演算法計算出一個固定長度的代碼。若傳輸前後的 Checksum 相同，代表資料完整無誤。</p>
+                        <p>常見類型：MD5、SHA-256 等。在 GMP 環境中，Checksum 是確認「所有發出的資料都已被接收」的技術手段。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活化比喻：搬家時的物品清單</h4>
+                        <p>資料傳輸就像搬家：</p>
+                        <ul>
+                            <li><strong>High/Medium</strong>（重要物品搬遷）：搬家前列清單 (Test Plan)，搬家公司簽約 (Change Control)，搬到新家後逐一核對清單 (Checksum)</li>
+                            <li><strong>Low</strong>（雜物轉移到儲藏室）：按照步驟搬過去即可 (Procedural Control)，不需要逐件核對</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規重點：High 與 Medium 的管控一致性</h4>
+                        <p>值得注意的是，在資料傳輸/遷移的管控上，<strong>High 與 Medium 的要求完全相同</strong>。這反映了 TR84 的立場：即使是間接影響產品品質的資料（Medium），在系統間傳輸時也不容許任何遺失或變更。</p>
+                        <p>唯有 Low 級別（如傳輸至 Data Lake 做趨勢分析）可以採用較簡化的程序管控。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e">
+                        <h4>CDMO 實務應用：資料傳輸的常見場景</h4>
+                        <p>CDMO 中常見的資料傳輸/遷移場景：</p>
+                        <ul>
+                            <li><strong>Filter Integrity Tester &rarr; MES</strong>（High）：每批測試資料上傳至 MES，需 Checksum 驗證</li>
+                            <li><strong>EM 系統 &rarr; LIMS</strong>（Medium）：環境監測資料定期傳輸至 LIMS，需 Change Control</li>
+                            <li><strong>MES 升級</strong>（High）：從舊版 MES 遷移至新版，屬一次性活動，需完整驗證計畫</li>
+                            <li><strong>製程數據 &rarr; Data Lake</strong>（Low）：用於 CPV（持續製程確效）分析，程序管控即可</li>
+                        </ul>
+                        <p>特別注意：CDMO 在系統升級時，需確認所有客戶的歷史批次資料均完整遷移。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考題</h4>
+                        <p>你的工廠正在將 MES 從 Version 3.0 升級至 Version 4.0。系統中儲存了 5 個客戶、共 200 批的歷史批次記錄。請問：</p>
+                        <ol>
+                            <li>此次資料遷移屬於哪一個關鍵性等級？</li>
+                            <li>你會使用什麼驗證工具確認資料完整遷移？</li>
+                            <li>遷移完成後，需要通知客戶嗎？為什麼？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- SECTION SUMMARY -->
+    <!-- =========================================================== -->
+    <div id="sec-summary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">S</div>
+            <div class="chapter-info">
+                <h2>Section Summary</h2>
+                <p>本節重點總結</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="concept-box">
+                <h4>Section 4 核心要點回顧</h4>
+                <p>本節涵蓋 TR84 第 5.3.3.3 至 5.3.7.2 的具體管控領域，為 Data Integrity 管控體系的實務操作核心。以下為各領域的關鍵管控摘要：</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>管控領域</th>
+                        <th>High 級別核心要求</th>
+                        <th>核心管控原則</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>True Copy（真實副本）</strong></td>
+                        <td>品質單位逐頁覆核可讀性、準確性、完整性</td>
+                        <td>原件銷毀需記錄；帶印章/浮水印者不可銷毀</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Access Control（存取控制）</strong></td>
+                        <td>個人帳號 + 90 天換密碼 + 5 次鎖定 + 年度審查</td>
+                        <td>自動登出為整體管控；CDMO 需多客戶資料隔離</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audit Trail Review（稽核軌跡審查）</strong></td>
+                        <td>以 ATRA 工具評估審查範圍與頻率</td>
+                        <td>審查者需獨立且具技術能力；ATRA 為動態工具</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ATRA 工具</strong></td>
+                        <td>D x S x P = Final Score (0-100)</td>
+                        <td>技術管控越強 &rarr; Probability 越低 &rarr; 審查頻率越低</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Backup（資料備份）</strong></td>
+                        <td>備份頻率 = 資料生成頻率；迴圈記憶體需於覆蓋前備份</td>
+                        <td>未備份 + 資料遺失 = 批次拒放</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Report/Record 產出</strong></td>
+                        <td>完整驗證 + Change Control + IT 執行 + 靜態格式</td>
+                        <td>品質單位審查報告範本變更（跨級適用）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Transfer/Migration</strong></td>
+                        <td>Change Control + Test Plan + Checksum</td>
+                        <td>High 與 Medium 管控一致；Low 僅需程序管控</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note-box">
+                <h4>CDMO 從業者的三大行動重點</h4>
+                <ol>
+                    <li><strong>建立跨客戶的 Access Control 矩陣</strong>：確保同一系統上不同客戶的資料隔離，每年審查帳號權限</li>
+                    <li><strong>為關鍵設備完成 ATRA 評估</strong>：優先針對 Filter Integrity Tester、MES、Historian 等設備，建立 Audit Trail 審查 SOP</li>
+                    <li><strong>建立迴圈記憶體設備清單</strong>：盤點所有具有限儲存容量的設備，制定預防性備份計畫，避免資料覆蓋導致批次拒放</li>
+                </ol>
+            </div>
+
+            <div class="practice-box">
+                <h4>綜合思考題</h4>
+                <p>假設你是一家 CDMO 的品保經理，即將接受客戶的 Data Integrity Audit。稽核員要求你展示以下內容：</p>
+                <ol>
+                    <li>你的工廠如何管理紙本記錄轉電子化 (True Copy) 的流程？</li>
+                    <li>你的 MES 系統的存取控制策略為何？如何確保不同客戶的資料隔離？</li>
+                    <li>你的 Filter Integrity Tester 的 Audit Trail Review 頻率是如何決定的？請出示 ATRA 文件。</li>
+                    <li>你的備份策略如何確保迴圈記憶體設備的資料不會遺失？</li>
+                    <li>你的批次報告範本的變更管控流程為何？</li>
+                </ol>
+                <p>針對上述每一點，你能否清楚說明現有管控措施？若有不足之處，你的改善計畫是什麼？</p>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 84 (2020): Data Integrity in Manufacturing and Packaging</p>
+    <p>Section 4: DI Controls &mdash; Specific Areas | Bilingual Educational Material</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

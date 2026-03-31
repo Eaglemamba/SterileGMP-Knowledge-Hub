@@ -208,6 +208,10 @@ Report metadata is in `reports.json`. Current reports:
 | `TR13/` | PDA TR13: Fundamentals of an Environmental Monitoring Program (Revised 2022) | 9 | Complete |
 | `TR13-2/` | PDA TR13-2: EM for Low Bioburden Products — Annex 1 (2020) | 3 | Complete |
 | `TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
+| `TR54/` | PDA TR54-6: Excipient GMP Risk Assessment (Joint PDA-IPEC) | 7 | Complete |
+| `TR62/` | PDA TR62: Manual Aseptic Processes (Revised 2020) | 5 | Complete |
+| `TR65/` | PDA TR65: Technology Transfer (2014) | 8 | Complete |
+| `TR84/` | PDA TR84: Data Integrity in Manufacturing & Packaging (2020) | 8 | Complete |
 
 ---
 
