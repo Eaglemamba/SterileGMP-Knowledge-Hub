@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISPE Vol.3 - Chapter 3a: Process Equipment Considerations (3.1-3.2.3)</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== PRACTICE BOX GREEN SOLID (CDMO Application) ===== */
+.practice-box.cdmo {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+
+.practice-box.cdmo h3, .practice-box.cdmo h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== PROCESS FLOW DIAGRAM ===== */
+.process-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f7fafc;
+    border-radius: 8px;
+}
+
+.process-step {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border: 1px solid #90caf9;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #1565c0;
+    text-align: center;
+}
+
+.process-step.highlight {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-color: #ffb74d;
+    color: #e65100;
+    font-weight: 600;
+}
+
+.process-arrow {
+    font-size: 1.1rem;
+    color: #90a4ae;
+    margin: 0 0.15rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Chapter 3a: Process Equipment Considerations (3.1&ndash;3.2.3) / 製程設備考量（上）</h1>
+    <div class="subtitle">ISPE Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities (3rd Ed. 2018)</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p37 &ndash; p49</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="learning-objectives">
+    <h3>學習目標 Learning Objectives</h3>
+    <ol>
+        <li>理解無菌製造製程設備的選型與整合原則，掌握性能、功能、結構、儀器、空氣品質、佈局及服務等七大考量面向</li>
+        <li>掌握典型無菌產品製程流程（從配製到檢查），區分無菌製程與最終滅菌製程之差異，並了解微生物負荷控制的關鍵風險因子</li>
+        <li>了解配製/秤量操作的集中式與分散式設計策略，以及交叉汙染防控措施與稱量方法選擇</li>
+        <li>理解滅菌後元件無菌控制的要求，包括傳遞方式、包覆策略及 ISO 5/Grade A 環境維護原則</li>
+    </ol>
+</div>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc">
+    <h3>Section Navigation</h3>
+    <div class="toc-grid">
+        <a href="#sec-3-1">3.1 Introduction</a>
+        <a href="#sec-3-2">3.2 Process Description</a>
+        <a href="#sec-3-2-1">3.2.1 Dispensing &amp; Weighing</a>
+        <a href="#sec-3-2-2">3.2.2 Post-Sterilization Aseptic Control</a>
+        <a href="#sec-3-2-3">3.2.3 Compounding</a>
+        <a href="#sec-summary">Section Summary</a>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SECTION 3.1: INTRODUCTION                                      -->
+<!-- ============================================================= -->
+<div id="sec-3-1" class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.1</div>
+        <div class="chapter-info">
+            <h2>Introduction</h2>
+            <p>Process Equipment Considerations Overview | p37&ndash;p38</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <!-- LEFT: English Original -->
+            <div class="left-column">
+                <div class="column-header">Original Text</div>
+
+                <h3>3.1 Introduction</h3>
+                <p>This chapter focuses on process equipment aspects. The use of integrated component washing, depyrogenation, siliconizing, and transport technology should be considered where applicable and feasible.</p>
+
+                <p>Process descriptions are provided to assist in understanding the process equipment considerations. Detailed <span class="key-term">User Requirements Specification (URS)</span> documents should be the defining source for process equipment requirements and operating parameters. For catalog equipment, use of a data sheet in lieu of a URS may be acceptable.</p>
+
+                <p>The information contained within this chapter is intended to:</p>
+                <ul>
+                    <li>Recommend baseline practices intended to apply to sterile processes</li>
+                    <li>Inform the facility design team of typical sterile product manufacturing schemes</li>
+                    <li>Provide points for consideration in selecting sterile processing equipment</li>
+                    <li>Provide points for consideration when integrating sterile processing equipment into the facility design</li>
+                </ul>
+
+                <p>Section 3.2 provides a general description of each process stage and some aspects of process equipment selection for typical aseptic processing and processing with terminal sterilization. Illustrative process flows for both schemes, aseptic processing and terminally sterilized, are provided in Figure 3.1 and Figure 3.2, respectively.</p>
+
+                <p>Section 3.2 also includes information on equipment selection for isolators, and reference is made to RABS selection and to BFS operations. The use of separation and customization to supplement processes that allow direct personnel interventions should be utilized to the extent possible to minimize intervention impact.</p>
+
+                <h3>General Points for Equipment Selection and Integration</h3>
+                <ul>
+                    <li><strong>Performance:</strong> This may include more detailed capacity attributes, but also covers specification of machine performance criteria, which controls product and container quality and cleanliness. Consideration should also be given to the extent of aseptic preparation activities that are routinely required for production use, due to the potential adverse impact of these manipulations on product sterility.</li>
+                    <li><strong>Functionality:</strong> This includes key functional attributes, such as the ability to maintain equipment from outside critical areas. Sampling and access points for qualification and validation testing should be incorporated in the equipment design.</li>
+                    <li><strong>Construction:</strong> This includes the durability, cleanability, and sterilizability of the materials of construction of the equipment that may contact product. Release of particulate from surfaces inside the cleanroom during operating and cleaning can be detrimental to the process; materials should be selected to minimize release.</li>
+                    <li><strong>Instrumentation:</strong> This includes a consideration of process parameter criticality and, therefore, the need for instrumented monitoring/detection. Instrumentation also may support a <span class="key-term">Process Analytical Technology (PAT)</span> approach.</li>
+                    <li><strong>Air Quality:</strong> Equipment location within the facility is controlled by process and material flows, the criticality of operations performed, and by the consequent requirements for local and room air quality control. When designing an HVAC system, the heat loads and the particle generation from both operators and equipment should be considered along with humidity requirements.</li>
+                    <li><strong>Layout:</strong> Where possible, facility layouts should be designed to support functionality of the process equipment. Personnel and material flows needed for a particular process significantly affect the equipment layout and, therefore, the overall facility layout.</li>
+                    <li><strong>Services:</strong> Definition of both the instantaneous and daily demands of the equipment and on connecting services should be considered to support the sizing of the supporting services infrastructure. Consideration should be given to designs that allow maintenance access without impacting critical process areas.</li>
+                </ul>
+            </div>
+
+            <!-- RIGHT: Chinese Commentary -->
+            <div class="right-column">
+                <div class="column-header">導讀與實務解析</div>
+
+                <h3>本節重點導讀</h3>
+                <p>本章是 ISPE Vol.3 的製程設備核心章節，建立了設備選型的整體框架。重點不在於列舉特定品牌或型號，而是提供<strong>系統性的思考架構</strong>，讓設計團隊在選擇設備時有明確的評估面向。</p>
+
+                <div class="concept-box">
+                    <h4>核心概念：URS 是設備規格的根本依據</h4>
+                    <p><strong>使用者需求規格書（User Requirements Specification, URS）</strong>是設備採購與設計的起點。URS 定義了「我們需要設備做什麼」，而非「設備能做什麼」。</p>
+                    <p>對於目錄型設備（catalog equipment），可用設備規格表（data sheet）替代完整 URS，但仍需確認規格符合製程需求。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：設備選型的七維雷達圖</h4>
+                    <p>想像設備選型如同為運動員做體能評估 — 不能只看單一指標。ISPE 提出的七個面向（性能、功能、結構、儀器、空氣品質、佈局、服務）就像雷達圖的七個軸，每個面向都需要達到最低基準才能確保整體適用性。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：設備選型七大面向摘要</h4>
+                    <ul>
+                        <li><strong>性能（Performance）：</strong>不只看產能，更要看機器對產品品質的控制能力，以及無菌準備操作的複雜度</li>
+                        <li><strong>功能（Functionality）：</strong>維護能否從潔淨區外進行？取樣點和驗證接口是否已設計在內？</li>
+                        <li><strong>結構（Construction）：</strong>產品接觸面（product contact surface）的材質必須耐久、可清洗、可滅菌、低粒子釋放</li>
+                        <li><strong>儀器（Instrumentation）：</strong>關鍵製程參數需有監測能力，PAT 技術可即時監控品質</li>
+                        <li><strong>空氣品質（Air Quality）：</strong>HVAC 設計須考慮設備和人員的熱負荷與微粒產生量</li>
+                        <li><strong>佈局（Layout）：</strong>人流、物流決定設備佈局，佈局決定廠房佈局</li>
+                        <li><strong>服務（Services）：</strong>公用系統的瞬時與日需求量須匹配，維護通道不應影響關鍵製程區</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box cdmo">
+                    <h4>CDMO 應用觀點</h4>
+                    <p>對 CDMO 而言，設備選型的「功能」面向特別重要：</p>
+                    <ul>
+                        <li><strong>多產品彈性：</strong>設備須能快速轉換不同容器型式（西林瓶、預充填針筒、卡匣）和不同產品</li>
+                        <li><strong>轉換效率：</strong>changeover 時間直接影響產能利用率，CIP/SIP 能力是關鍵</li>
+                        <li><strong>驗證負擔：</strong>每新增一個客戶產品就需要額外的設備驗證，選型時應考慮驗證的可擴展性</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SECTION 3.2: PROCESS DESCRIPTION                               -->
+<!-- ============================================================= -->
+<div id="sec-3-2" class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2</div>
+        <div class="chapter-info">
+            <h2>Process Description</h2>
+            <p>Sterile Dosage Form Process Stages | p38&ndash;p42</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <!-- LEFT: English Original -->
+            <div class="left-column">
+                <div class="column-header">Original Text</div>
+
+                <h3>3.2 Process Description</h3>
+                <p>The model process flow adopted as the basis of this chapter is that of a typical vial formulation, either aseptically processed or terminally sterilized. Designers may use this as the basis for design conditions for other processes and presentations&mdash;for example, APIs in bags or drums, glass or plastic ampoules, or syringes.</p>
+
+                <p>The general list of process stages for a sterile dosage form (not including equipment contact parts cleaning and preparation) is:</p>
+                <ul>
+                    <li>Dispensing</li>
+                    <li>Post-sterilization aseptic control of components/change parts</li>
+                    <li>Compounding (including aseptic compounding or buffer preparation, when applicable)</li>
+                    <li>Sterile filtration</li>
+                    <li>Sterile product bulk holding</li>
+                    <li>Container preparation</li>
+                    <li>Closure preparation</li>
+                    <li>Transfer of components and equipment into aseptic area or across the isolator boundary</li>
+                    <li>Filling and sealing</li>
+                    <li>Transfer of uncrimped vials within aseptic area (for lyophilized product, transfer of partially stoppered vials from the filling line to lyophilizer, with subsequent transfer/unloading of fully stoppered, uncrimped vials)</li>
+                    <li>BFS</li>
+                    <li>Lyophilization, if applicable (this step is not assumed for terminally sterilized products)</li>
+                    <li>Capping and crimping</li>
+                    <li>Coding and code checking</li>
+                    <li>Terminal sterilization</li>
+                    <li>Inspection (may include cosmetic, particulate, container integrity, head space analysis, etc.)</li>
+                    <li>Secondary packaging</li>
+                    <li>Cleaning, sterilization and sanitization</li>
+                </ul>
+
+                <p><strong>Note:</strong> Application of continuous processing, automation and advanced processing techniques can eliminate or combine many of the above steps, to provide superior sterility assurance. For example:</p>
+                <ul>
+                    <li>For BFS, container/closure preparation and filling/stoppering are performed within the BFS filling machine.</li>
+                    <li>For sterile APIs, it is usual for process steps&mdash;that is, from sterilize-in-place (SIP) of the process train through sterile bulk holding&mdash;to be truly closed, relying on the integrity of the closed system and of the associated cleaning and SIP techniques to ensure sterility.</li>
+                    <li>Use of pre-sterilized, ready-to-use components can eliminate cleaning, sterilization, and aseptic staging steps for containers and closures.</li>
+                </ul>
+
+                <h3>Terminally Sterilized Products</h3>
+                <p>Terminally sterilized products do not require the same level of environmental control as aseptically processed products. Despite these reduced requirements, steps should be taken to reduce the risk of introducing <span class="key-term">bioburden</span> and/or endotoxin to the product. These steps commonly include sterilization and depyrogenation of components, sterilizing grade or bioburden reduction filtration of solution, and provision of LP/GAAS for filling operations. Bioburden control is particularly important when the terminal sterilization process has been validated for a specific bioburden, rather than using a standard overkill approach.</p>
+
+                <p>The background environment for filling should be ISO 8/Grade C, at a minimum.</p>
+
+                <p>Regulated companies may fill terminally sterilized products on the same production line as aseptically filled products, because of available production capacity. Aseptic environmental controls are then applied to maintain the more rigorous conditions required for aseptic filling of lyophilized product. However, this practice should not be construed as meaning that these controls are necessary for terminally sterilized products.</p>
+
+                <p>A documented risk assessment is recommended, to fully understand potential risks to a product.</p>
+
+                <h3>Conditions that Elevate Bioburden Risk</h3>
+                <ul>
+                    <li>Slow filling operations, including manual filling, where product and container/closure components are exposed to the environment for sustained durations</li>
+                    <li>Open filling lines where operators are in close proximity to critical surfaces, product, and container/closure components</li>
+                    <li>Use of semi-manual fill lines which require routine operator intervention</li>
+                    <li>Long fill durations with products that are susceptible to bioburden; bulk bioburden reduction filtration may reduce bioburden levels and/or extend the allowable filling interval</li>
+                    <li>Extended hold times prior to any pre-filtration or filling step</li>
+                </ul>
+                <p>These risk factors can generally be mitigated through application of commonly available technology, such as automated filling systems with appropriate barrier technology.</p>
+            </div>
+
+            <!-- RIGHT: Chinese Commentary -->
+            <div class="right-column">
+                <div class="column-header">導讀與實務解析</div>
+
+                <h3>製程全貌：從秤量到包裝</h3>
+                <p>本節描述的是一個<strong>典型西林瓶（vial）製程</strong>的完整流程。雖然以 vial 為模型，但設計者可以此為基礎延伸到預充填針筒、安瓶、軟袋等其他容器型式。</p>
+
+                <!-- Process Flow Diagram -->
+                <div class="process-flow">
+                    <span class="process-step">秤量/配料</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step highlight">配製/調配</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step highlight">除菌過濾</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step">藥液暫存</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step highlight">充填/加塞</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step">凍乾(如適用)</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step">封蓋/壓蓋</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step">檢查</span>
+                    <span class="process-arrow">&rarr;</span>
+                    <span class="process-step">包裝</span>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：無菌製程 vs. 最終滅菌的環境要求差異</h4>
+                    <table>
+                        <tr>
+                            <th>項目</th>
+                            <th>無菌製程（Aseptic）</th>
+                            <th>最終滅菌（Terminal）</th>
+                        </tr>
+                        <tr>
+                            <td>充填環境</td>
+                            <td>ISO 5/Grade A（核心區）</td>
+                            <td>ISO 8/Grade C（最低要求）</td>
+                        </tr>
+                        <tr>
+                            <td>滅菌時機</td>
+                            <td>充填前各元件分別滅菌</td>
+                            <td>充填封裝後整體滅菌</td>
+                        </tr>
+                        <tr>
+                            <td>無菌保證</td>
+                            <td>仰賴全流程無菌控制</td>
+                            <td>仰賴最終滅菌步驟</td>
+                        </tr>
+                        <tr>
+                            <td>微生物負荷管控</td>
+                            <td>極嚴格（目標零汙染）</td>
+                            <td>重要但有一定容許範圍</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：微生物負荷（Bioburden）風險升高的五大情境</h4>
+                    <ol>
+                        <li><strong>慢速充填/手動充填：</strong>產品暴露時間長，汙染風險倍增</li>
+                        <li><strong>開放式充填線：</strong>操作員靠近關鍵表面，人員是最大汙染源</li>
+                        <li><strong>半自動充填線：</strong>需要例行性人員介入操作</li>
+                        <li><strong>長時間充填：</strong>微生物敏感產品在長批次中風險累積</li>
+                        <li><strong>過濾前/充填前長時間暫存：</strong>微生物在暫存期間可能增殖</li>
+                    </ol>
+                    <p>緩解措施：自動化充填系統 + 適當屏障技術（RABS/隔離器）是最有效的風險控制手段。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：先進技術如何簡化流程</h4>
+                    <p>想像傳統製程像是在露天廚房做菜 — 每個步驟都暴露在環境中。而 BFS（吹灌封）技術像是在密封的自動販賣機裡完成容器成型、充填和密封，一氣呵成，大幅減少汙染風險。同樣地，使用預滅菌即用型（RTU）元件就像直接使用已消毒的免洗餐具，省去了自己清洗和消毒的步驟。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ul>
+                        <li>一家公司同時生產最終滅菌產品和無菌充填產品，為何可以共用同一條充填線？共用時應以哪個標準為設計基準？</li>
+                        <li>如果您的產品是奈米藥物（nano-medicine），為何 ISPE 建議可能需要重複進行微生物負荷降低過濾？</li>
+                        <li>Figure 3.3 所示的凍乾產品製程流程中，哪些步驟是凍乾產品特有而液態產品不需要的？</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box cdmo">
+                    <h4>CDMO 應用觀點</h4>
+                    <p>CDMO 的設備策略需要特別注意「共用線」的挑戰：</p>
+                    <ul>
+                        <li><strong>產品排程邏輯：</strong>通常將最終滅菌產品排在無菌充填產品之後，因為清潔驗證需求不同</li>
+                        <li><strong>環境控制切換：</strong>共用線意味著始終維持最高標準（ISO 5），這增加了營運成本但簡化了管理</li>
+                        <li><strong>風險評估文件化：</strong>每位客戶的產品都需要獨立的風險評估文件，文件管理是一大挑戰</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SECTION 3.2.1: DISPENSING AND WEIGHING                         -->
+<!-- ============================================================= -->
+<div id="sec-3-2-1" class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2.1</div>
+        <div class="chapter-info">
+            <h2>Dispensing and Weighing</h2>
+            <p>Raw Material Handling Strategies | p42&ndash;p44</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <!-- LEFT: English Original -->
+            <div class="left-column">
+                <div class="column-header">Original Text</div>
+
+                <h3>3.2.1 Dispensing and Weighing</h3>
+                <p>Components that undergo a subsequent sterilization step (e.g., filtration or terminal sterilization) are normally dispensed in an <span class="key-term">ISO 8/Grade C</span> environment, at a minimum, with local protection (such as High Efficiency Particulate Air (HEPA) filtered unidirectional air) and the use of aseptic technique. The air cleanliness classification within the dispensary depends upon the process and product.</p>
+
+                <p>Consideration should be given to operator protection and mitigation of cross-contamination risk. In cases where additional separation/containment technologies (e.g., gloveboxes or isolators) are used for handling sensitive or high potency materials, lower background grade classifications may be appropriate.</p>
+
+                <p>Aseptically processed products that cannot be sterile filtered (e.g., sterile powders or suspensions) should be dispensed in an <span class="key-term">ISO 5/Grade A</span> environment. In such cases, operator segregation via use of separation technology is generally considered to be necessary.</p>
+
+                <p>Two major concepts are generally applied in the industry for dispensing:</p>
+                <ul>
+                    <li><strong>Centralized dispensing</strong></li>
+                    <li><strong>Decentralized dispensing</strong></li>
+                </ul>
+
+                <p>Centralized dispensing is usually confined to solid actives and excipients. Decentralized dispensing is usually used for liquids (water, solvents, pH adjustment solutions), which are dispensed within the production areas (compounding room).</p>
+
+                <h3>Advantages of Centralized Dispensing</h3>
+                <ul>
+                    <li>It identifies dispensing as a separate process step that needs to be controlled.</li>
+                    <li>It is easier to maintain a good working environment for operators.</li>
+                    <li>Specialists with specific training and experience can be dedicated to one dispensing area, thereby reducing risk of mix-ups.</li>
+                </ul>
+
+                <h3>Advantages of Decentralized Dispensing</h3>
+                <ul>
+                    <li>If compounding is for a single product, the risk of mix-ups and cross-contamination should be reduced, as only the specified raw materials are handled.</li>
+                    <li>High hazard materials, that need to be contained (e.g., handled in gloveboxes) to protect operators, may be easier to control in a decentralized dispensing approach.</li>
+                </ul>
+
+                <h3>Liquid Measurement Methods</h3>
+                <ul>
+                    <li><strong>Gravimetric measurement</strong> may be performed using load cell(s), a balance, or a floor scale. The effect that attached components (cables, hoses, filter housing, valves) can have on the linearity and accuracy of the weighing range should be considered.</li>
+                    <li><strong>Volumetric measurement</strong> may be performed with flow meters or guided wave radar systems. If these types of instruments are used, calibration and desired accuracy should be reviewed.</li>
+                </ul>
+
+                <h3>Risk Reduction Methods for Cross-Contamination</h3>
+                <ul>
+                    <li>Use of dedicated HVAC systems to handle airborne powders</li>
+                    <li>Physical separation of dispensing areas</li>
+                    <li>Cleaning (and inactivation, where appropriate) regime between products</li>
+                    <li>System to separate dirty dispensing utilities from clean ones</li>
+                    <li>System to compensate for room pressure changes due to loading of HVAC powder capture filters</li>
+                    <li>Use of single-use disposable containers and weighing utensils</li>
+                    <li>Use of appropriate local exhaust ventilation at point of generation sources</li>
+                </ul>
+
+                <p>Enterprise Resource Planning (ERP) software may be used to control and track raw materials; these systems can be particularly advantageous for high volume operations that use many different types of raw materials.</p>
+            </div>
+
+            <!-- RIGHT: Chinese Commentary -->
+            <div class="right-column">
+                <div class="column-header">導讀與實務解析</div>
+
+                <h3>秤量/配料：製程的起點</h3>
+                <p>秤量看似簡單，但它是製程中第一個可能引入交叉汙染的步驟。環境要求取決於後續是否有滅菌步驟可以「補救」。</p>
+
+                <div class="concept-box">
+                    <h4>核心概念：秤量環境等級的決定邏輯</h4>
+                    <table>
+                        <tr>
+                            <th>產品類型</th>
+                            <th>後續有滅菌步驟？</th>
+                            <th>秤量環境要求</th>
+                        </tr>
+                        <tr>
+                            <td>可過濾產品</td>
+                            <td>是（除菌過濾/最終滅菌）</td>
+                            <td>ISO 8/Grade C + 局部 HEPA 保護</td>
+                        </tr>
+                        <tr>
+                            <td>不可過濾產品（粉末、懸浮液）</td>
+                            <td>否（無後續滅菌機會）</td>
+                            <td>ISO 5/Grade A + 隔離技術</td>
+                        </tr>
+                        <tr>
+                            <td>高效價/高毒性原料</td>
+                            <td>視情況</td>
+                            <td>手套箱/隔離器 + 可降低背景環境等級</td>
+                        </tr>
+                    </table>
+                    <p>關鍵原則：<strong>後續沒有「殺菌網」可接住的步驟，前端就必須做到最嚴格。</strong></p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：集中式 vs. 分散式秤量</h4>
+                    <table>
+                        <tr>
+                            <th>面向</th>
+                            <th>集中式（Centralized）</th>
+                            <th>分散式（Decentralized）</th>
+                        </tr>
+                        <tr>
+                            <td>適用對象</td>
+                            <td>固體原料（API、賦形劑）</td>
+                            <td>液體（水、溶劑、pH調整液）</td>
+                        </tr>
+                        <tr>
+                            <td>優勢</td>
+                            <td>專人操作、減少混淆風險</td>
+                            <td>單一產品時減少交叉汙染</td>
+                        </tr>
+                        <tr>
+                            <td>適用場景</td>
+                            <td>多產品設施</td>
+                            <td>單一產品設施/高毒性物料</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：稱量方法的選擇陷阱</h4>
+                    <p><strong>重量法（Gravimetric）注意事項：</strong></p>
+                    <ul>
+                        <li>連接在容器上的管線、閥門、過濾器殼體會影響秤重的線性度和準確度</li>
+                        <li>夾套容器（jacketed vessel）的冷/熱介質充填狀態也會影響重量讀數</li>
+                    </ul>
+                    <p><strong>容積法（Volumetric）注意事項：</strong></p>
+                    <ul>
+                        <li>導波雷達（guided wave radar）的準確度受容器設計和批次大小影響</li>
+                        <li>流量計需要定期校正，且流體特性會影響測量結果</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：集中式秤量像中央廚房</h4>
+                    <p>集中式秤量就像餐廳的中央廚房 — 由專業廚師統一備料，減少出錯。分散式秤量則像每桌自助取餐 — 適合單一菜色（單一產品），但多菜色時容易混亂。對於處理高危險性食材（高效價藥物），分散式反而更好，因為可以在專屬區域嚴格控管。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：交叉汙染防控的七道防線</h4>
+                    <ol>
+                        <li>專用 HVAC 系統處理粉塵</li>
+                        <li>物理隔離秤量區域</li>
+                        <li>產品間清潔（含去活化）程序</li>
+                        <li>乾淨/髒汙器具分離系統</li>
+                        <li>粉塵收集過濾器負載導致的壓差補償</li>
+                        <li>一次性容器和秤量工具</li>
+                        <li>產生源頭的局部排風</li>
+                    </ol>
+                    <p>ERP 系統可實現即時庫存狀態、電子追溯矩陣和條碼追蹤，大幅降低秤量錯誤風險。</p>
+                </div>
+
+                <div class="practice-box cdmo">
+                    <h4>CDMO 應用觀點</h4>
+                    <ul>
+                        <li><strong>多產品設施的最大挑戰：</strong>不同客戶的 API 和賦形劑在同一秤量區交替操作，交叉汙染風險是稽核重點</li>
+                        <li><strong>高效價藥物趨勢：</strong>越來越多客戶委託 ADC（抗體藥物複合體）等高效價產品，需要手套箱或隔離器，投資決策須提前規劃</li>
+                        <li><strong>一次性系統（SUS）的策略：</strong>使用拋棄式秤量容器和工具可簡化清潔驗證，但增加耗材成本 — CDMO 需在每個客戶合約中權衡</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SECTION 3.2.2: POST-STERILIZATION ASEPTIC CONTROL              -->
+<!-- ============================================================= -->
+<div id="sec-3-2-2" class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2.2</div>
+        <div class="chapter-info">
+            <h2>Post-Sterilization Aseptic Control of Components/Change Parts</h2>
+            <p>Maintaining Sterility After Sterilization | p44&ndash;p45</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <!-- LEFT: English Original -->
+            <div class="left-column">
+                <div class="column-header">Original Text</div>
+
+                <h3>3.2.2 Post-Sterilization Aseptic Control of Components/Change Parts</h3>
+                <p>For equipment that cannot be SIP, equipment and materials should be sterilized through pass-through style heat sterilizers, which open directly into an <span class="key-term">ISO 5/Grade A</span> zone. Where sterilizers are not directly adjacent to the location where aseptic operations are performed, ISO 5/Grade A continuity should be maintained for the transfer of materials from the sterilizer to the place of storage or use.</p>
+
+                <p>Barrier protected carts which have active or passive airflow protection may be used; such carts should be qualified and routinely monitored. Where autoclave and oven carts are withdrawn from the sterilizer chamber into an ISO 7/Grade B room, there should be localized unidirectional ISO 5/Grade A airflow protection at the chamber outlet, so items may remain under these controlled conditions until the load has cooled. See Section 9.5.1 for equipment and component transfer on barrier and isolator style lines.</p>
+
+                <p>Autoclaved materials and components should be suitably wrapped to maintain sterile integrity of the contents from the point of removal from the autoclave to the point of use, including any intermediate staging steps. Multiple layer wrappings are recommended, as these provide redundant protection and permit removal of outer layers during transfer of materials into successively cleaner zones. The wrappings should permit air removal, steam ingress, and condensate removal as required for effective sterilization. Examples of suitable covering types include Tyvek, nonwoven Spunbond/Melt-blown/Spunbond (SMS) fabric sterilization wraps, sterilization bags, etc.</p>
+
+                <p>Items that are pre-sterilized by other methods, such as gamma irradiation or ethylene oxide, should be protected with appropriate wrappings to maintain their sterile integrity from the completion of the sterilization process until transfer into the ISO 5/Grade A environment. These items should be passed into the aseptic area via dedicated interlocked transfer hatches designed to prevent bio-contamination of the ISO 5/Grade A environment.</p>
+
+                <p>The packaging should be subjected to thorough surface disinfection&mdash;for example, using liquid chemical, VHP, or electron beam (e-beam)&mdash;which is validated for the control of bio-contamination of the ISO 5/Grade A environment. The transfer of the wrapped items into the ISO 5/Grade A zone should be performed in such a way as to ensure that the outer wrap can be taken off without introducing bio-contamination into the ISO 5/Grade A zone where product, product contact surfaces, containers or closures are exposed.</p>
+            </div>
+
+            <!-- RIGHT: Chinese Commentary -->
+            <div class="right-column">
+                <div class="column-header">導讀與實務解析</div>
+
+                <h3>滅菌後的無菌維護：最容易被忽略的風險環節</h3>
+                <p>元件滅菌「成功」只是起點 — 從高壓鍋取出到實際使用之間的轉運過程，才是無菌保證的真正考驗。</p>
+
+                <div class="concept-box">
+                    <h4>核心概念：滅菌後物料轉運的三大原則</h4>
+                    <ol>
+                        <li><strong>連續 ISO 5 保護：</strong>從滅菌器到使用點，物料始終處於 ISO 5/Grade A 氣流保護下</li>
+                        <li><strong>多層包覆策略：</strong>多層包裝提供冗餘保護，每進入更潔淨的區域就脫去一層外包裝</li>
+                        <li><strong>互鎖傳遞設計：</strong>預滅菌物品透過互鎖傳遞艙進入無菌區，防止環境交叉汙染</li>
+                    </ol>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：洋蔥式穿衣法</h4>
+                    <p>多層包覆策略就像登山的洋蔥式穿衣法 — 每一層都有特定功能。最外層是防汙層（在非潔淨區穿著），中間層是保護層，最內層是無菌層（在 ISO 5 區域最後才拆開）。每進入一個更乾淨的區域，就像從戶外進入室內，脫掉一件外套。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：不同滅菌方式的轉運要求</h4>
+                    <table>
+                        <tr>
+                            <th>滅菌方式</th>
+                            <th>典型物品</th>
+                            <th>轉運要求</th>
+                        </tr>
+                        <tr>
+                            <td>高壓蒸汽（Autoclave）</td>
+                            <td>設備零件、膠塞、工具</td>
+                            <td>穿越式滅菌器直通 ISO 5；若非直通則需屏障保護推車 + 出口局部 ISO 5</td>
+                        </tr>
+                        <tr>
+                            <td>乾熱（Oven）</td>
+                            <td>玻璃瓶、金屬零件</td>
+                            <td>同上，但需等待冷卻 — 冷卻期間必須維持 ISO 5 保護</td>
+                        </tr>
+                        <tr>
+                            <td>伽瑪射線/環氧乙烷</td>
+                            <td>預滅菌 RTU 元件</td>
+                            <td>適當包裝維護無菌性 + 互鎖傳遞艙 + 表面消毒（VHP / 化學品 / e-beam）</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：包覆材料的雙重需求</h4>
+                    <p>滅菌包覆材料必須同時滿足兩個看似矛盾的需求：</p>
+                    <ul>
+                        <li><strong>滅菌穿透性：</strong>允許空氣排出、蒸汽滲入、冷凝水排除（否則滅菌不完全）</li>
+                        <li><strong>微生物屏障性：</strong>滅菌完成後必須阻擋微生物進入（否則無菌性被破壞）</li>
+                    </ul>
+                    <p>常見材料：Tyvek（杜邦特衛強）、SMS 不織布滅菌包、滅菌袋等。這些材料的微孔結構允許蒸汽通過但阻擋微生物。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ul>
+                        <li>為什麼高壓鍋推車從滅菌器取出進入 ISO 7/Grade B 房間時，必須在出口處提供局部 ISO 5 氣流保護？</li>
+                        <li>如果您使用預滅菌的即用型（RTU）注射器元件，表面消毒驗證的關鍵挑戰是什麼？</li>
+                        <li>「屏障保護推車（barrier protected cart）」如何同時實現物料保護和操作便利性？</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box cdmo">
+                    <h4>CDMO 應用觀點</h4>
+                    <ul>
+                        <li><strong>RTU 元件的戰略價值：</strong>對 CDMO 而言，使用預滅菌即用型容器和膠塞可大幅減少洗滌/滅菌設備投資和驗證負擔，同時縮短產品轉換時間</li>
+                        <li><strong>滅菌後暫存管理：</strong>多客戶產品排程下，滅菌後物料的暫存時間管理是挑戰 — 需要明確的最長暫存時間限制和追蹤系統</li>
+                        <li><strong>穿越式滅菌器佈局：</strong>CDMO 廠房設計時，穿越式高壓鍋/烘箱的位置直接影響多條充填線的操作效率</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SECTION 3.2.3: COMPOUNDING                                     -->
+<!-- ============================================================= -->
+<div id="sec-3-2-3" class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2.3</div>
+        <div class="chapter-info">
+            <h2>Compounding</h2>
+            <p>Formulation and Mixing Operations | p45&ndash;p49</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <!-- LEFT: English Original -->
+            <div class="left-column">
+                <div class="column-header">Original Text</div>
+
+                <h3>3.2.3 Compounding</h3>
+                <p>The purpose of compounding is to formulate together API, excipients, and solvent components, to be subsequently filled. This may involve simple liquid mixing or dissolution of a solid active. It also may include more complex operations such as emulsification or liposome formation. <span class="key-term">Water for Injection (WFI)</span> should be used as the solvent for most aqueous-based sterile products. Low endotoxin purified water is sometimes used for sterile ophthalmic and nasal products.</p>
+
+                <p>Product contacting surfaces of equipment and components (such as vessels, housings, and process piping) should be cleaned prior to use. See Section 3.2.15 for additional details on cleaning and sterilization.</p>
+
+                <p>If the subsequent compounding is an aseptic process, process equipment should be sterilized using a validated sterilizing cycle. The integrity of the sterile boundary should be ensured from the completion of sterilization through the end of processing.</p>
+
+                <p>Air cleanliness and cross-contamination prevention should be considered. Use of localized HEPA (ISO 5/Grade A air supply) protection is recommended to protect non-sterile product contact surfaces areas (e.g., vessel openings), where possible. For example, in many cases HEPA filters required to meet area cleanliness classifications can be located over tank manways, to reduce risk of contamination of product contact surfaces.</p>
+
+                <p>When handling dry powders, the design should minimize release of any fine particles into the air. Use of containment devices may be appropriate.</p>
+
+                <p>If, for product reasons, an aseptically processed product cannot be sterile filtered or sterilized by some other means (e.g., bulk heat) after compounding, then the charging of raw materials should be performed in an ISO 5/Grade A environment, preferably using a RABS or closed isolator. Special consideration should be given to the airflow inside the barrier when handling fine powders, as air speeds lower than 0.45 meters/second might be beneficial to better control the process.</p>
+
+                <h3>Compounding Sequence</h3>
+                <p>Compounding is normally performed in the following sequence:</p>
+                <ul>
+                    <li>Solvent, usually water, is metered into the compounding tank, to a pre-determined level that is less than the final batch size.</li>
+                    <li>Excipients and API in powder or liquid form are charged into the compounding tank in a specified sequence.</li>
+                    <li>The solution is mixed to make a homogenous solution.</li>
+                    <li>Additional solvent is added, if necessary, to achieve the desired concentration and final batch size.</li>
+                </ul>
+
+                <p>Additional steps such as temperature adjustment, pH adjustment, or oxygen displacement may be required during formulation. Sample collection should be performed only as required for in-process measurements or testing, to minimize risk of contamination of the bulk solution. Equipment for sampling should be easily cleaned.</p>
+
+                <h3>Compounding Area Design Considerations</h3>
+                <ul>
+                    <li>Powder handling may create airborne particulates. Airflows should be carefully managed to reduce the risk of cross-contamination and harmful exposure to operators. Use of Computational Fluid Dynamic (CFD) simulation(s) may be of benefit for optimizing airflow patterns.</li>
+                    <li>Biologically active substances should not be vented to the atmosphere.</li>
+                    <li>The compounding area should be easy to clean.</li>
+                    <li>If tanks are to be sterilized, vents on tanks should be fitted with gas/vent filters of sterilizing grade that are arranged to facilitate integrity testing.</li>
+                </ul>
+
+                <p>Use of flammable solvents in the formulation process requires specialized design activities to ensure personnel and facility safety.</p>
+            </div>
+
+            <!-- RIGHT: Chinese Commentary -->
+            <div class="right-column">
+                <div class="column-header">導讀與實務解析</div>
+
+                <h3>配製：將原料變成可充填藥液</h3>
+                <p>配製（Compounding）是將 API、賦形劑和溶劑按配方混合的步驟。從簡單的溶解到複雜的乳化或脂質體製備都屬於此範圍。</p>
+
+                <div class="concept-box">
+                    <h4>核心概念：配製用水的選擇</h4>
+                    <ul>
+                        <li><strong>注射用水（WFI）：</strong>大多數水性無菌產品的標準溶劑 — 內毒素限值最嚴格</li>
+                        <li><strong>低內毒素純化水：</strong>僅用於某些眼科和鼻腔產品 — 這是例外而非常規</li>
+                    </ul>
+                    <p>選擇依據：最終產品的給藥途徑決定用水等級。注射劑 = WFI，眼科/鼻腔用 = 可考慮低內毒素純化水。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：產品接觸面的「先清後滅」原則</h4>
+                    <p>所有產品接觸面（product contact surface）— 包括容器、殼體、製程管路 — 必須在使用前清潔。如果後續是無菌製程，還必須經過<strong>驗證過的滅菌循環</strong>處理，且從滅菌完成到製程結束，必須維持無菌邊界的完整性。</p>
+                    <p>這就是 <span class="key-term">CIP（就地清洗）</span>和 <span class="key-term">SIP（就地滅菌）</span>的核心應用場景。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：不可過濾產品的特殊配製要求</h4>
+                    <p>當產品因物理特性（如懸浮液、脂質體）無法進行除菌過濾時，原料投入（charging）必須在 ISO 5/Grade A 環境下進行，最好使用 RABS 或封閉式隔離器。</p>
+                    <p><strong>粉末處理的氣流速度陷阱：</strong>處理細粉時，隔離器內的氣流速度可能需要低於 0.45 m/s。這違背了一般「氣流越快越乾淨」的直覺 — 因為過快的氣流會將粉末吹散，反而增加汙染風險且影響投料精度。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：配製像精密的烘焙程序</h4>
+                    <p>配製的標準順序就像做蛋糕：先加水（溶劑）到預定量 &rarr; 按順序加入粉料（賦形劑和 API）&rarr; 攪拌均勻 &rarr; 最後補水到目標總量。不能把所有材料一股腦倒進去 — 投料順序影響溶解效率和產品品質。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>核心概念：配製區設計的四大考量</h4>
+                    <ol>
+                        <li><strong>粉塵管理：</strong>粉末處理會產生空氣微粒，需要 CFD（計算流體力學）模擬來優化氣流模式</li>
+                        <li><strong>生物活性物質排放：</strong>不可排放到大氣中 — 需要密閉系統或適當的廢氣處理</li>
+                        <li><strong>可清潔性：</strong>配製區必須易於清潔 — 設計時就要考慮，不能事後補救</li>
+                        <li><strong>槽體通氣過濾器：</strong>需滅菌的槽體上的通氣口必須裝設滅菌級氣體過濾器，且便於完整性測試</li>
+                    </ol>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：取樣的風險平衡</h4>
+                    <p>取樣是製程中控（IPC）的必要操作，但每次取樣都是一次汙染風險。ISPE 建議：</p>
+                    <ul>
+                        <li>僅在必要時取樣（in-process measurement or testing）</li>
+                        <li>取樣設備必須易於清潔</li>
+                        <li>取樣點的設計應最小化對藥液的汙染風險</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <h4>關鍵參數：配製過程中可能需要調整的項目</h4>
+                    <ul>
+                        <li><strong>溫度調整：</strong>某些 API 需要特定溫度才能溶解</li>
+                        <li><strong>pH 調整：</strong>使用酸/鹼溶液調整到目標 pH 範圍</li>
+                        <li><strong>氧氣置換：</strong>對氧敏感產品需用氮氣置換瓶頭空間和溶液中溶解氧</li>
+                        <li><strong>濃度調整：</strong>最終補加溶劑至目標批量和濃度</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ul>
+                        <li>為什麼配製區的 HEPA 過濾器最好安裝在槽體人孔（manway）正上方？這與一般的房間層流送風有何不同？</li>
+                        <li>使用易燃溶劑進行配製時，除了防爆設計，還需要考慮哪些安全面向？</li>
+                        <li>如果您正在配製一個脂質奈米粒（LNP）產品，為什麼不能使用除菌過濾？配製環境需要如何調整？</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box cdmo">
+                    <h4>CDMO 應用觀點</h4>
+                    <ul>
+                        <li><strong>配製槽的彈性設計：</strong>CDMO 需要不同大小的配製槽來應對不同批量需求（從數十升到數千升），可移動式配製槽或模組化設計提高靈活性</li>
+                        <li><strong>CIP/SIP 驗證的規模效應：</strong>每個新客戶產品可能需要針對其特定配方驗證 CIP 循環 — 殘留限值因產品而異</li>
+                        <li><strong>一次性配製系統的機會：</strong>對小批量或臨床試驗階段產品，單次使用混合袋（single-use mixer bag）可免除 CIP/SIP 驗證，加速從接單到生產的時間</li>
+                        <li><strong>複雜配方的能力建設：</strong>隨著 mRNA 疫苗和 LNP 等複雜產品需求增加，CDMO 需要投資乳化、微流體混合等專業配製設備</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY                                                -->
+<!-- ============================================================= -->
+<div id="sec-summary" class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">S</div>
+        <div class="chapter-info">
+            <h2>Section Summary / 本節總結</h2>
+            <p>Key Takeaways from Sections 3.1&ndash;3.2.3</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header">Key Takeaways</div>
+
+                <h3>Equipment Selection Framework</h3>
+                <p>ISPE Vol.3 Chapter 3 establishes a seven-dimension framework for process equipment selection: Performance, Functionality, Construction, Instrumentation, Air Quality, Layout, and Services. Each dimension must be evaluated against the URS.</p>
+
+                <h3>Process Flow Understanding</h3>
+                <p>The typical sterile dosage form process involves 18+ discrete stages from dispensing through secondary packaging. Advanced technologies (BFS, RTU components, closed systems) can combine or eliminate steps to improve sterility assurance.</p>
+
+                <h3>Environmental Requirements</h3>
+                <p>Aseptic processing requires ISO 5/Grade A at the point of fill; terminal sterilization requires ISO 8/Grade C minimum. Bioburden control is critical for both approaches, with five key risk-elevating conditions identified.</p>
+
+                <h3>Dispensing Strategies</h3>
+                <p>Centralized vs. decentralized dispensing each have advantages depending on product type and facility design. Cross-contamination prevention requires a multi-layered approach including dedicated HVAC, physical separation, and procedural controls.</p>
+
+                <h3>Post-Sterilization Control</h3>
+                <p>The chain of sterile custody from sterilizer to point of use is maintained through pass-through sterilizers, barrier-protected carts, multi-layer wrapping strategies, and validated surface disinfection procedures.</p>
+
+                <h3>Compounding Design</h3>
+                <p>Equipment surfaces must be cleaned and sterilized (CIP/SIP). Products that cannot be sterile filtered require ISO 5/Grade A compounding with barrier technology. Airflow speed may need reduction for powder handling.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header">重點回顧</div>
+
+                <h3>設備選型架構</h3>
+                <p>ISPE Vol.3 第三章建立了製程設備選型的<strong>七維評估架構</strong>：性能、功能、結構、儀器、空氣品質、佈局、服務。URS 是一切的起點。</p>
+
+                <h3>製程流程全貌</h3>
+                <p>典型無菌劑型製程包含 18 個以上的離散步驟。BFS、RTU 元件、密閉系統等先進技術可合併或省略步驟，提升無菌保證水準。</p>
+
+                <h3>環境等級邏輯</h3>
+                <p>無菌製程充填點需 ISO 5/Grade A；最終滅菌最低需 ISO 8/Grade C。微生物負荷控制對兩種方式都至關重要。</p>
+
+                <h3>秤量策略選擇</h3>
+                <p>集中式適合多產品設施的固體原料；分散式適合液體和高毒性物料。交叉汙染防控需要多層防線的系統性方法。</p>
+
+                <h3>滅菌後無菌鏈維護</h3>
+                <p>穿越式滅菌器、屏障保護推車、多層包覆、驗證過的表面消毒 — 四道機制確保物料從滅菌到使用的無菌完整性。</p>
+
+                <h3>配製區設計</h3>
+                <p>CIP/SIP 是產品接觸面準備的基礎。不可過濾產品須在 ISO 5 + RABS/隔離器中配製。粉末處理時的氣流速度需特別評估。</p>
+
+                <div class="note-box">
+                    <h4>下一節預告</h4>
+                    <p>Section 3.2.4 起將進入<strong>除菌過濾、充填、加塞、凍乾</strong>等核心無菌操作步驟的設備考量 — 這些是無菌製造的「黃金地帶」，設備設計直接決定產品的無菌保證水準。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities</p>
+    <p>Chapter 3a: Process Equipment Considerations (3.1&ndash;3.2.3) &mdash; Bilingual Educational Material</p>
+    <p>For educational purposes only. Refer to the original ISPE publication for official guidance.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+// Back to top button visibility
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

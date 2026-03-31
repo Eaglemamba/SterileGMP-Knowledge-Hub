@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 5c: HVAC Monitoring &amp; Qualification</title>
+    <style>
+    /* =============================================================
+       PDA Educational Material - Shared CSS Template
+       Version: 2.0 (for Claude Code automation)
+       Last Updated: 2025
+
+       Usage: Embed this entire file inside <style> tags in each
+       section HTML. This ensures each file works standalone
+       AND merges correctly into the final TopNav document.
+       ============================================================= */
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+        --primary-blue: #1e3a5f;
+        --accent-blue: #3498db;
+        --light-gray: #fafafa;
+        --light-blue: #f0f7ff;
+        --yellow-start: #fff9e6;
+        --yellow-end: #fff3cd;
+        --green-bg: #e8f5e9;
+        --green-border: #4caf50;
+        --orange-bg: #fff3e0;
+        --orange-border: #ff9800;
+        --purple-bg: #f3e5f5;
+        --purple-border: #9c27b0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --header-height: 60px;
+        --nav-height: 50px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.75;
+        color: var(--text-dark);
+        background: #f0f2f5;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+    }
+
+    .header .subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 0.3rem;
+    }
+
+    .header .page-info {
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+
+    /* ===== TOP HEADER (for merged TopNav) ===== */
+    .top-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    .top-header h1 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .top-header .subtitle {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    /* ===== TOP NAVIGATION (for merged TopNav) ===== */
+    .top-nav {
+        background: #2d3748;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: stretch;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 1;
+        padding: 0 0.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-scroll-btn {
+        background: #2d3748;
+        border: none;
+        color: rgba(255,255,255,0.7);
+        padding: 0 0.9rem;
+        cursor: pointer;
+        font-size: 1.3rem;
+        line-height: 1;
+        flex-shrink: 0;
+        transition: background 0.2s, color 0.2s, opacity 0.2s;
+    }
+
+    .nav-scroll-btn:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-scroll-btn.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-item.active {
+        color: white;
+        border-bottom-color: var(--accent-blue);
+        background: rgba(255,255,255,0.05);
+    }
+
+    .nav-num {
+        width: 24px;
+        height: 24px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .nav-item.active .nav-num {
+        background: var(--accent-blue);
+    }
+
+    .nav-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    /* ===== MAIN CONTENT WRAPPER ===== */
+    .main-content {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .main-container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    /* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+    .chapter-section {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+        scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+
+    .chapter-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+        color: white;
+    }
+
+    .chapter-badge {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .chapter-info h2 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+
+    .chapter-info p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    .chapter-body {
+        padding: 1.5rem;
+    }
+
+    /* ===== TWO COLUMN LAYOUT ===== */
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ===== LEFT COLUMN - Original Content ===== */
+    .left-column,
+    .original-content {
+        background: var(--light-gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .left-column h2,
+    .left-column h3,
+    .original-content h2,
+    .original-content h3 {
+        color: var(--primary-blue);
+        border-bottom: 2px solid #3182ce;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .left-column p,
+    .original-content p {
+        margin-bottom: 0.85rem;
+        text-align: justify;
+        font-size: 0.95rem;
+    }
+
+    .left-column ul, .left-column ol,
+    .original-content ul, .original-content ol {
+        margin: 0.75rem 0 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .left-column li,
+    .original-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* ===== RIGHT COLUMN - Commentary ===== */
+    .right-column,
+    .commentary {
+        background: var(--light-blue);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #bee3f8;
+    }
+
+    .right-column h2,
+    .right-column h3,
+    .commentary h2,
+    .commentary h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #63b3ed;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .right-column p,
+    .commentary p {
+        margin-bottom: 0.85rem;
+        font-size: 0.95rem;
+    }
+
+    /* ===== COLUMN HEADERS ===== */
+    .column-header {
+        font-weight: 600;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid currentColor;
+        font-size: 1rem;
+    }
+
+    .right-column .column-header,
+    .commentary .column-header {
+        color: #2c5282;
+    }
+
+    /* Hide original container padding in merged mode */
+    .chapter-body .container,
+    .chapter-body .main-container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* ===== KEY TERMS (inline highlight) ===== */
+    .key-term,
+    .highlight-term {
+        background: linear-gradient(to right, #d4edda, #c3e6cb);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #155724;
+        font-size: 0.9em;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote-box,
+    .important-quote {
+        background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+        border-left: 4px solid #3182ce;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    /* ===== CONCEPT BOXES - Unified Base ===== */
+    .concept-box,
+    .analogy-box,
+    .note-box,
+    .key-note,
+    .term-box,
+    .formula-box,
+    .key-term-box,
+    .key-point-box,
+    .highlight-box {
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 0.92rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .concept-box h3, .concept-box h4,
+    .analogy-box h3, .analogy-box h4,
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .term-box h3, .term-box h4,
+    .formula-box h3, .formula-box h4,
+    .key-term-box h3, .key-term-box h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        margin-bottom: 0.6rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .concept-box p,
+    .analogy-box p,
+    .note-box p,
+    .key-note p,
+    .term-box p,
+    .formula-box p,
+    .key-term-box p,
+    .key-point-box p,
+    .highlight-box p {
+        margin-bottom: 0.5rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box ul, .concept-box ol,
+    .analogy-box ul, .analogy-box ol,
+    .note-box ul, .note-box ol,
+    .key-note ul, .key-note ol,
+    .term-box ul, .term-box ol,
+    .formula-box ul, .formula-box ol,
+    .key-term-box ul, .key-term-box ol,
+    .key-point-box ul, .key-point-box ol,
+    .highlight-box ul, .highlight-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box li,
+    .analogy-box li,
+    .note-box li,
+    .key-note li,
+    .term-box li,
+    .formula-box li,
+    .key-term-box li,
+    .key-point-box li,
+    .highlight-box li {
+        margin-bottom: 0.35rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== ANALOGY BOX (Yellow) ===== */
+    .analogy-box,
+    .concept-box[class*="analogy"],
+    .concept-box.analogy,
+    div[class*="analogy"]:not(.content-grid):not(.two-column) {
+        background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+        border-left: 4px solid #f6ad55 !important;
+    }
+
+    .analogy-box h3, .analogy-box h4,
+    .concept-box.analogy h3, .concept-box.analogy h4 {
+        color: #856404 !important;
+    }
+
+    /* ===== TERM/CONCEPT BOX (Green) ===== */
+    .term-box,
+    .key-term-box,
+    .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+        background: var(--green-bg) !important;
+        border-left: 4px solid var(--green-border) !important;
+    }
+
+    .concept-box:not(.analogy):not(.application) h3,
+    .concept-box:not(.analogy):not(.application) h4,
+    .term-box h3, .term-box h4,
+    .key-term-box h3, .key-term-box h4 {
+        color: #2e7d32 !important;
+    }
+
+    /* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+    .note-box,
+    .key-note,
+    .key-point-box,
+    .concept-box[class*="note"],
+    .concept-box[class*="highlight"],
+    .key-point,
+    .highlight-box {
+        background: var(--orange-bg) !important;
+        border-left: 4px solid var(--orange-border) !important;
+    }
+
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        color: #c65102 !important;
+    }
+
+    /* ===== FORMULA BOX (Purple) ===== */
+    .formula-box,
+    .concept-box[class*="formula"] {
+        background: var(--purple-bg) !important;
+        border-left: 4px solid var(--purple-border) !important;
+    }
+
+    .formula-box h3, .formula-box h4 {
+        color: #7b1fa2 !important;
+    }
+
+    .formula-box pre {
+        background: rgba(156, 39, 176, 0.08);
+        padding: 0.75rem;
+        border-radius: 6px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        white-space: pre-wrap;
+    }
+
+    /* ===== APPLICATION BOX ===== */
+    .concept-box.application,
+    .application-box {
+        background: #e3f2fd !important;
+        border-left: 4px solid #1976d2 !important;
+    }
+
+    .concept-box.application h3,
+    .concept-box.application h4,
+    .application-box h3,
+    .application-box h4 {
+        color: #1565c0 !important;
+    }
+
+    /* ===== PRACTICE BOX (Blue dashed) ===== */
+    .practice-box {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+        border: 2px dashed #3182ce !important;
+        border-radius: 10px !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        font-size: 0.92rem !important;
+    }
+
+    .practice-box h3, .practice-box h4 {
+        color: #2c5282 !important;
+        margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .practice-box p,
+    .practice-box li {
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== PRACTICE BOX GREEN (solid) ===== */
+    .practice-box-green {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+        border: 2px solid #4caf50 !important;
+        border-radius: 10px !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        font-size: 0.92rem !important;
+    }
+
+    .practice-box-green h3, .practice-box-green h4 {
+        color: #2e7d32 !important;
+        margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .practice-box-green p,
+    .practice-box-green li {
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #e2e8f0;
+        text-align: left;
+    }
+
+    th {
+        background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        font-weight: 600;
+        color: var(--primary-blue);
+        font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+        background: #f7fafc;
+    }
+
+    /* ===== LEARNING OBJECTIVES ===== */
+    .learning-objectives {
+        background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .learning-objectives h3 {
+        color: #117a65;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .learning-objectives ul,
+    .learning-objectives ol {
+        margin-left: 1.25rem;
+    }
+
+    .learning-objectives li {
+        margin-bottom: 0.4rem;
+        font-size: 0.92rem;
+    }
+
+    /* ===== STRUCTURE LIST ===== */
+    .structure-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .structure-list li {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        background: white;
+        border-radius: 6px;
+        border-left: 4px solid #3182ce;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        font-size: 0.9rem;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title,
+    .section-divider {
+        font-size: 1.1rem;
+        color: var(--primary-blue);
+        margin: 1.5rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .section-divider {
+        border-bottom: 1px solid #e2e8f0;
+        margin: 2rem 0;
+    }
+
+    /* ===== TABLE OF CONTENTS (per section) ===== */
+    .toc {
+        background: white;
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .toc h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .toc-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .toc-grid a {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        background: #edf2f7;
+        border-radius: 6px;
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+    }
+
+    .toc-grid a:hover {
+        background: var(--accent-blue);
+        color: white;
+    }
+
+    /* ===== FIGURE CONTAINERS ===== */
+    .figure-container {
+        margin: 1.25rem 0;
+        text-align: center;
+    }
+
+    .figure-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .figure-caption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+
+    /* ===== HIERARCHY DIAGRAM ===== */
+    .hierarchy-diagram {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .hierarchy-level {
+        margin: 0.5rem 0;
+    }
+
+    .hierarchy-box {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .hierarchy-box.level-1 {
+        background: #fee2e2;
+        border: 2px solid #ef4444;
+        color: #b91c1c;
+    }
+
+    .hierarchy-box.level-2 {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        color: #92400e;
+    }
+
+    .hierarchy-box.level-3 {
+        background: #d1fae5;
+        border: 2px solid #10b981;
+        color: #065f46;
+    }
+
+    .arrow-down {
+        font-size: 1.2rem;
+        color: var(--text-medium);
+        margin: 0.25rem 0;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .badge.green {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .badge.red {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .badge.blue {
+        background: #cce5ff;
+        color: #004085;
+    }
+
+    .badge.yellow {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .checklist li {
+        padding: 0.3rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .checklist li::before {
+        content: "\2610";
+        position: absolute;
+        left: 0;
+        color: var(--accent-blue);
+    }
+
+    /* ===== CARDS ===== */
+    .pump-card,
+    .tech-card,
+    .info-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 0.75rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+        background: var(--primary-blue);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .main-footer p {
+        opacity: 0.9;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+        background: var(--accent-blue);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.3rem;
+        box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: #2980b9;
+        transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            gap: 1rem;
+        }
+
+        .left-column, .right-column,
+        .original-content, .commentary {
+            padding: 1.25rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr;
+        }
+
+        .top-header h1,
+        .header h1 {
+            font-size: 1.1rem;
+        }
+
+        .nav-label {
+            display: none;
+        }
+
+        .nav-item {
+            padding: 0.75rem;
+        }
+
+        .nav-num {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+        }
+
+        .chapter-divider {
+            padding: 0.85rem 1rem;
+        }
+
+        .chapter-badge {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info h2 {
+            font-size: 1rem;
+        }
+
+        .main-content,
+        .main-container {
+            padding: 1rem;
+        }
+
+        .chapter-body {
+            padding: 1rem;
+        }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+        .top-nav, .back-to-top, .header {
+            display: none !important;
+        }
+
+        .top-header {
+            background: var(--primary-blue) !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .chapter-section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .main-content,
+        .main-container {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 5c: HVAC &mdash; Monitoring &amp; Qualification (5.8&ndash;5.10)</h1>
+    <div class="subtitle">HVAC &mdash; 監測與確效（下）</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p137 &ndash; p142</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives / 本章學習目標</h3>
+    <ul>
+        <li>Understand the rationale for continuous vs. periodic monitoring of HVAC parameters (particle counts, differential pressure, temperature, humidity) and how each contributes to sterility assurance / 理解連續監測與定期監測的差異，以及各環境參數（粒子計數、壓差、溫濕度）如何共同保障無菌水準</li>
+        <li>Know the recommended test frequencies for HEPA filter integrity testing, airflow pattern analysis, recovery time testing, and open door testing / 掌握 HEPA 過濾器完整性測試、氣流型態分析、恢復時間測試和開門測試的建議頻率</li>
+        <li>Describe the role of Environmental Monitoring Systems (EMS) and their compliance with 21 CFR Part 11 / 描述環境監測系統（EMS）的角色及其符合 21 CFR Part 11 的要求</li>
+        <li>Explain the IQ/OQ/PQ approach for HVAC qualification, including airflow visualization (smoke studies) and recovery testing / 說明 HVAC 確效的 IQ/OQ/PQ 方法，包括氣流可視化（煙霧測試）和恢復測試</li>
+        <li>Identify critical considerations for differential pressure monitoring: sensor placement, accuracy, reference points, and alarm management / 辨識壓差監測的關鍵考量：感測器位置、精度、參考點及警報管理</li>
+        <li>Understand HVAC cleaning, maintenance philosophy, and HEPA filter integrity testing as ongoing operational requirements / 理解 HVAC 清潔、維護哲學及 HEPA 過濾器完整性測試作為持續營運要求的重要性</li>
+    </ul>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5.8: MONITORING                       -->
+<!-- ============================================ -->
+<div class="section-title">5.8 Monitoring &mdash; HVAC Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>It is not possible to assess product sterility on-line. The level of <span class="key-term">sterility assurance</span> required for sterile products means it is unlikely that random sampling of the finished product will detect any sterility failure resulting from processing.</p>
+
+        <p>Such techniques as <span class="key-term">particle counting</span> (per ISO 14644-2), active and &ldquo;at rest&rdquo; air sampling, surface sampling, and personnel sampling provide useful data. Even with this essential and informative data, final product sterility cannot be assured. Hence, aseptic operations rely upon <span class="key-term">validated procedures</span> carried out in strictly controlled environments for all critical stages to minimize potential product risk.</p>
+
+        <p>Certain environmental parameters may be considered critical. These parameters should be monitored and documented, but it is not always possible to do so continuously. Aseptic manufacturing HVAC should have a robust design to minimize potential problems, and a well-considered and qualified monitoring/documenting program.</p>
+
+        <p>Parameters that are often continuously or frequently monitored include:</p>
+        <ul>
+            <li>Temperature</li>
+            <li>Humidity</li>
+            <li>Differential pressure (DP) between air classes where a contamination path exists</li>
+            <li>Airflow volume rate (volume/time) &mdash; continuous monitoring is optional</li>
+            <li>Airborne non-viable particle levels</li>
+            <li>Grade A air supply velocity at 100&ndash;150 mm below the filter face &mdash; continuous monitoring is optional</li>
+        </ul>
+
+        <p>Typically, periodic requalification may repeat some tests carried out as part of the original equipment qualification, such as:</p>
+        <ul>
+            <li>Integrity testing of terminal <span class="key-term">HEPA filters</span></li>
+            <li>Confirming airflow or air change rates</li>
+            <li>Checking ISO 5/Grade A and LP/GAAS velocities at a defined distance proximal to the work surface and below the filter face (typically 300 mm above vial, 100&ndash;150 mm below filter)</li>
+            <li>Checking ISO 5/Grade A and LP/GAAS airflow patterns</li>
+            <li>Checking airflow patterns at the interface between ISO 5/Grade A and ISO 7/Grade B as well as between ISO 7/Grade B and surrounding areas</li>
+            <li>Recording room airflow patterns (optional in ISO 7/Grade B and ISO 8/Grade C)</li>
+            <li>Confirming room recovery time</li>
+            <li>Open door testing (confirming how long a door can remain open without need for an alarm)</li>
+            <li>Checking operator product exposure levels</li>
+            <li>Airborne non-viable particle levels (classification)</li>
+            <li>Shut down and restart testing</li>
+            <li>Reduced flow rate testing</li>
+            <li>Verification of impact of loss of HVAC on environmental control (time before triple clean is required)</li>
+        </ul>
+
+        <div class="quote-box">
+            "Airflow pattern analysis (visualization) outside of the Grade A zone may be undertaken as a qualification activity or as an engineering study."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>教學解析</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念：為什麼不能只靠產品測試？</h4>
+            <p>無菌產品的無菌保證水準（SAL）通常要求達到 10<sup>-6</sup>，代表每一百萬個單位中不超過一個非無菌品。這意味著你幾乎不可能透過隨機抽樣在成品中檢測到污染。</p>
+            <p>因此，整個無菌製造的品質保證邏輯是<strong>過程導向</strong>而非<strong>結果導向</strong>：我們監測環境條件來確保製程始終處於受控狀態，而非事後檢驗產品是否無菌。</p>
+            <p>這就是 HVAC 監測如此重要的根本原因 &mdash; 它是過程控制的基石。</p>
+        </div>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>連續監測 vs 定期監測</h4>
+            <p>ISPE 將監測分為兩大類：</p>
+            <ul>
+                <li><strong>連續監測（Continuous）：</strong>溫度、濕度、壓差、粒子計數 &mdash; 這些參數變化快，需要即時偵測異常</li>
+                <li><strong>定期再確效（Periodic Requalification）：</strong>HEPA 完整性測試、氣流型態分析、恢復時間測試 &mdash; 這些是較深入的系統性能驗證</li>
+            </ul>
+            <p>連續監測告訴你「現在正常嗎？」，定期再確效告訴你「系統本質上還好嗎？」</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>健康監測 vs 年度體檢：</strong></p>
+            <p>連續監測就像你每天戴的智慧手錶 &mdash; 持續追蹤心率、血氧、體溫。一旦數值異常，立刻警示。</p>
+            <p>定期再確效則像每年一次的全面健康檢查 &mdash; 包括 X 光、血液檢查、心電圖等深入檢查項目。</p>
+            <p>你不會因為手錶每天都顯示正常就跳過年度體檢；同樣地，你不會因為壓差每天都在規格內就跳過 HEPA 完整性測試。兩者互補，缺一不可。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示：再確效測試清單</h4>
+            <p>ISPE 列出了 13 項定期再確效測試項目。對於 CDMO 營運而言，最關鍵的幾項：</p>
+            <ul>
+                <li><strong>HEPA 過濾器完整性測試</strong> &mdash; 一個洩漏的 HEPA 可以污染整個區域</li>
+                <li><strong>氣流型態分析（煙霧測試）</strong> &mdash; 確認單向流確實存在且未被干擾</li>
+                <li><strong>恢復時間測試</strong> &mdash; 潔淨室在受到污染事件後多快能回到分類標準</li>
+                <li><strong>開門測試</strong> &mdash; 確認門開啟多久不會觸發環境失控</li>
+            </ul>
+            <p>這些項目直接關係到是否需要啟動偏差調查。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5.8.2: TYPICAL FREQUENCIES            -->
+<!-- ============================================ -->
+<div class="section-title">5.8.2 Typical Frequencies for Testing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The test frequency for each test depends upon plant operating experience, the process/equipment qualification findings, and regulatory expectations. It may also vary from area to area. Considerations for testing frequencies are as follows:</p>
+
+        <ul>
+            <li>Room airborne particles should be checked frequently as established by the EM plan. Use of <span class="key-term">automated continuous particle monitoring</span> is recommended. Automated particle monitoring systems provide extensive relevant data on the state of the environment and are generally more reliable than manual monitoring.</li>
+            <li><span class="key-term">Integrity testing of terminal HEPA filters</span> should typically be performed <strong>twice per year</strong> in aseptic fill environments and <strong>once every year or two</strong> in less critical areas. The rationale for the testing frequency should be supported by ongoing data.</li>
+            <li>Checking ISO 5/Grade A and LP/GAAS velocities and uniformity at the filter face should be performed when integrity testing the HEPA filters.</li>
+            <li>Checking room airflow patterns is usually performed at HVAC qualification, but may be justified when room equipment layouts change.</li>
+            <li>The need for retesting ISO 5/Grade A and LP/GAAS patterns should be assessed whenever the process physically changes (such as new or relocated equipment) or when operator procedures change; otherwise, the frequency should be <strong>every 3 to 5 years</strong>.</li>
+            <li>Determining how long a door may remain open should be performed at qualification and <strong>every 3 to 5 years</strong> thereafter.</li>
+            <li>Confirmation of <span class="key-term">recovery time</span> (EU) should be performed at qualification. There is no fixed requirement for re-verification frequency; this should be determined by risk assessment.</li>
+            <li>Parameters such as operator product exposure levels should be tested frequently for reasons other than GMP.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>教學解析</h2>
+
+        <!-- CONCEPT BOX (Green) - Frequency Table -->
+        <div class="concept-box">
+            <h4>測試頻率總覽表</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>測試項目</th>
+                        <th>建議頻率</th>
+                        <th>備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>粒子計數（Particle Count）</td>
+                        <td>連續 / 依 EM 計畫</td>
+                        <td>自動化連續監測為佳</td>
+                    </tr>
+                    <tr>
+                        <td>HEPA 完整性（無菌充填區）</td>
+                        <td>每年 2 次</td>
+                        <td>依數據支持調整</td>
+                    </tr>
+                    <tr>
+                        <td>HEPA 完整性（次要區域）</td>
+                        <td>每 1-2 年</td>
+                        <td>風險評估決定</td>
+                    </tr>
+                    <tr>
+                        <td>氣流速度/均勻度</td>
+                        <td>隨 HEPA 測試同步</td>
+                        <td>與完整性測試併做</td>
+                    </tr>
+                    <tr>
+                        <td>氣流型態（Grade A）</td>
+                        <td>每 3-5 年</td>
+                        <td>設備變更時重測</td>
+                    </tr>
+                    <tr>
+                        <td>開門測試</td>
+                        <td>每 3-5 年</td>
+                        <td>確效時執行</td>
+                    </tr>
+                    <tr>
+                        <td>恢復時間</td>
+                        <td>確效時 + 風險評估</td>
+                        <td>無固定再驗證頻率</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>HEPA 完整性測試（DOP/PAO）為何如此關鍵？</h4>
+            <p><strong>DOP/PAO 完整性測試</strong>（Dioctyl Phthalate / Poly-Alpha Olefin 氣溶膠挑戰測試）是驗證 HEPA 過濾器是否有洩漏的唯一可靠方法。</p>
+            <p>一個洩漏的 HEPA 不會在壓差監測中顯現異常 &mdash; 壓差可能仍然正常，但大量粒子已經穿透。這就是為什麼 ISPE 建議無菌充填區每年測試兩次。</p>
+            <p><strong>常見洩漏位置：</strong></p>
+            <ul>
+                <li>濾材本身的針孔或破損</li>
+                <li>濾框與天花板框架之間的密封墊</li>
+                <li>框架本身的裂縫或變形</li>
+            </ul>
+            <p>任何一處洩漏都可能讓外界粒子直接進入 Grade A 區域，等同於失去最後一道防線。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明：防彈背心的定期檢查</h4>
+            <p>HEPA 過濾器就像無菌區的「防彈背心」。即使你穿著它感覺很好（壓差正常），你仍然需要定期檢查背心有沒有磨損或裂縫（DOP/PAO 測試）。</p>
+            <p>一件看起來完好但內部纖維已經劣化的防彈背心，在被子彈（微粒）擊中時可能完全無效。同樣，一個看起來正常但有微小洩漏的 HEPA 過濾器，在面對真實生產環境的微粒挑戰時可能無法保護產品。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5.8.3-5.8.4: EMS & DP MONITORING      -->
+<!-- ============================================ -->
+<div class="section-title">5.8.3&ndash;5.8.4 Environmental Monitoring Systems &amp; Typical EMS Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>5.8.3 Environmental Monitoring Systems</h3>
+        <p>From an engineering perspective, automated environmental monitoring should provide feedback on the HVAC system&rsquo;s overall performance. It should highlight lack of performance in an individual system or room and notify the occupants of the condition.</p>
+
+        <p>An automated <span class="key-term">Environmental Monitoring System (EMS)</span> is recommended to provide a GMP record of critical environmental parameters. Automated monitoring systems should comply with <span class="key-term">US FDA 21 CFR Part 11</span> and be subject to validation to assure the accuracy of the readings and records produced by the system.</p>
+
+        <p>EU Annex 1 requires that HVAC monitoring systems notify occupants when the HVAC has failed. The monitoring system should notify the occupants when any critical parameter is out of specified range for more than a predetermined period of time. The system should be equipped with <span class="key-term">colored warning lights</span> to indicate the state of the HVAC system.</p>
+
+        <h3>5.8.4 Typical EMS Monitoring for Aseptic HVAC</h3>
+
+        <h3>Differential Pressures</h3>
+        <p>All DPs within a sterile area environmental cascade should be <span class="key-term">continuously measured, indicated, recorded, and alarmed</span>. It may be advisable to select a representative number of particular DP measurements as key indicators of overall HVAC system &ldquo;health.&rdquo;</p>
+
+        <p>Additional considerations for monitoring of DPs include:</p>
+        <ul>
+            <li>Monitor DP across airlocks; DP should not go to zero as long as one door in the contamination path remains closed.</li>
+            <li>DP sensors can be employed to detect door opening and control the time that doors remain open.</li>
+            <li>Only one DP sensor is needed per room, but it should be located to minimize impact of air currents at the sensor.</li>
+            <li>The monitoring system should document the duration of an unexpected loss (reduction) in pressure differential.</li>
+            <li>Reversed direction of airflow across a door is undesirable and should only occur for brief intervals.</li>
+            <li>The accuracy of differential measurement devices is critical. For control to &plusmn; 2.5 Pa, an accuracy of 0.25 Pa is desirable.</li>
+            <li>The reference point selected for DP measurements is critical. If measurements are made to a central reference, this reference point should be located in a large stable space.</li>
+        </ul>
+
+        <h3>Airflow to Rooms</h3>
+        <p>While continuous measurement of airflow is not required, assurance of a consistent airflow supply is an indirect indicator of the ability to dilute contaminants and of room environmental control. Airflow monitoring is usually continuous since an airflow volume/velocity monitor is often installed to adjust fan delivery to compensate for air filter loading.</p>
+
+        <p>If a variable airflow scheme (such as <span class="key-term">idle airflow setback</span>) is utilized, room airflow measurement is recommended. These schemes typically are not implemented until 15&ndash;20 minutes after cessation of use to allow for recovery.</p>
+
+        <h3>Temperature and Humidity</h3>
+        <p>Temperature and humidity for rooms with critical operations should be monitored to ensure control of operator comfort, product temperature, humidity requirements, and bioburden. Monitoring and data collection at short intervals (minutes instead of seconds) should provide adequate data without creating data overload.</p>
+
+        <p>The accuracy of temperature and humidity instruments is critical. <span class="key-term">Platinum RTD</span> are preferred for temperature reading and <span class="key-term">capacitance sensors</span> are preferred for RH.</p>
+
+        <h3>Airborne Particle Count (Total or Non-viable)</h3>
+        <p>In critical zones (e.g., ISO 5/Grade A and at ISO 5/Grade A to ISO 7/Grade B interface), the use of <span class="key-term">automated continuous particle monitoring</span> is recommended. Automated particle monitoring systems provide extensive relevant data on the state of the environment and are generally more reliable than manual monitoring.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>教學解析</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>EMS 系統的三大功能</h4>
+            <p>環境監測系統（EMS）不只是「記錄數據」，它扮演三個關鍵角色：</p>
+            <ol>
+                <li><strong>即時回饋（Real-time Feedback）：</strong>持續監控 HVAC 系統整體性能，發現問題立即通知</li>
+                <li><strong>GMP 記錄（GMP Records）：</strong>符合 21 CFR Part 11 的電子記錄要求，包括審計追蹤、電子簽名、資料完整性保護</li>
+                <li><strong>警報管理（Alarm Management）：</strong>當關鍵參數超出規格時，透過彩色警示燈和聲響通知作業人員</li>
+            </ol>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>壓差（DP）監測的關鍵細節</h4>
+            <p>壓差是無菌區環境控制中最重要的連續監測參數之一。ISPE 對 DP 監測提出了多項關鍵要求：</p>
+            <ul>
+                <li><strong>精度要求：</strong>控制範圍 &plusmn;2.5 Pa 時，感測器精度需達 0.25 Pa（即控制範圍的 10%）</li>
+                <li><strong>參考點選擇：</strong>應選擇大型穩定空間作為參考點。室外因風速不穩定是不良參考點；機械室因溫控通風也不適合</li>
+                <li><strong>氣閘壓差：</strong>只要污染路徑上有一扇門保持關閉，壓差就不應降至零</li>
+                <li><strong>反向氣流：</strong>門開啟時可能短暫出現反向氣流，但應僅維持極短時間</li>
+            </ul>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明：壓差就像水壩的水位差</h4>
+            <p>想像無菌區是一座位於高處的水庫，而外界環境是低處的河流。壓差就像水庫和河流之間的水位差 &mdash; 只要水位差存在（正壓），水（空氣/微粒）只會從高處流向低處，外界的污染物無法逆流進入無菌區。</p>
+            <p>如果水位差降到零甚至反轉，河水就會倒灌 &mdash; 這就是壓差反轉（reversed airflow）為什麼被視為嚴重事件。</p>
+            <p>DP 感測器就像水庫上的水位計，必須安裝在不受水流湍動影響的穩定位置，才能提供準確讀數。</p>
+        </div>
+
+        <!-- CONCEPT BOX (Green) - DP Reference Points -->
+        <div class="concept-box">
+            <h4>壓差參考點的好壞比較</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>參考點類型</th>
+                        <th>適合度</th>
+                        <th>原因</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>中間夾層（Interstitial）</td>
+                        <td><span class="badge green">最佳</span></td>
+                        <td>壓力穩定、少門、無機械通風</td>
+                    </tr>
+                    <tr>
+                        <td>大型走廊</td>
+                        <td><span class="badge yellow">可接受</span></td>
+                        <td>門不開向不同壓力大空間時適用</td>
+                    </tr>
+                    <tr>
+                        <td>機械室</td>
+                        <td><span class="badge red">不佳</span></td>
+                        <td>溫控通風造成壓力波動</td>
+                    </tr>
+                    <tr>
+                        <td>室外</td>
+                        <td><span class="badge red">不佳</span></td>
+                        <td>風速造成的速度壓影響讀數</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>溫濕度與粒子監測實務要點</h4>
+            <ul>
+                <li><strong>溫度感測器：</strong>推薦使用鉑電阻溫度計（Platinum RTD），精度高且穩定</li>
+                <li><strong>濕度感測器：</strong>推薦使用電容式感測器（Capacitance Sensor），回應快且耐用</li>
+                <li><strong>數據採集頻率：</strong>以分鐘為間隔即可（非秒級），避免資料過載同時確保足夠解析度</li>
+                <li><strong>大型房間：</strong>應進行溫度映射（Temperature Mapping）以確定最具代表性的監測位置</li>
+                <li><strong>粒子監測：</strong>關鍵區域（ISO 5/Grade A）強烈建議使用自動連續粒子計數器，比手動監測更可靠</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5.8.5: HVAC CONTROLS (BAS/BMS)        -->
+<!-- ============================================ -->
+<div class="section-title">5.8.5 HVAC Controls (Building Automation System / Building Management System)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>When considering the HVAC control system, it is important to consider it as another service supporting environmental condition control. Automatic controllers may indirectly affect patient safety and product quality, but performance can be monitored by a qualified EMS. <span class="key-term">HVAC controls would not need to be qualified</span>; HVAC field devices would only need to be qualified when HVAC control and environmental monitoring are shared.</p>
+
+        <p>HVAC automatic controls may be employed to control variables such as temperature and humidity. In more complex designs, other variables may also be controlled:</p>
+        <ul>
+            <li>Room DP (especially where airflows to/from rooms are expected to vary)</li>
+            <li>Constant supply and extract fan volume control (to compensate for air filter loading)</li>
+            <li>Filter blinding condition (pressure drop) monitoring</li>
+            <li>Active room pressure control</li>
+        </ul>
+
+        <p>During design, <span class="key-term">risk assessment</span> should be performed to assess the positive and negative impacts of an automatic control system. Considerations include:</p>
+        <ul>
+            <li>What would happen if constant fan volume control were not employed?</li>
+            <li>What would happen if an active pressure control system failed?</li>
+            <li>Does the system incorporate fail safe features?</li>
+            <li>Does the control design prevent catastrophic failures such as duct collapse and airflow reversals?</li>
+            <li>Are visible and audible alarms included to monitor environmental control changes?</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>教學解析</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>BAS/BMS vs EMS &mdash; 分清角色</h4>
+            <p>這是一個容易混淆的概念。ISPE 做了明確區分：</p>
+            <ul>
+                <li><strong>BAS/BMS（樓宇自動化系統）：</strong>負責<strong>控制</strong> HVAC &mdash; 調節溫度、濕度、風量、壓差。它是執行者。</li>
+                <li><strong>EMS（環境監測系統）：</strong>負責<strong>監測並記錄</strong>環境參數 &mdash; 產生 GMP 合規記錄。它是監督者。</li>
+            </ul>
+            <p>關鍵原則：<strong>BAS/BMS 本身不需要確效</strong>（因為 EMS 可以獨立驗證其性能），但如果 BAS 和 EMS 共用現場設備（如同一個感測器），則該設備需要確效。</p>
+            <p>這體現了基於風險的方法 &mdash; 只確效直接影響 GMP 記錄的部分。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>設計階段的風險評估問題</h4>
+            <p>ISPE 列出的五個風險評估問題本質上都在問同一件事：<strong>「如果這個控制失效了，最壞會發生什麼？」</strong></p>
+            <p>最嚴重的兩個失效模式：</p>
+            <ul>
+                <li><strong>風管塌陷（Duct Collapse）：</strong>可能由風扇控制失效導致負壓過大引起，會造成整個 HVAC 系統癱瘓</li>
+                <li><strong>氣流反轉（Airflow Reversals）：</strong>污染物從低潔淨度區域流向高潔淨度區域，直接威脅產品無菌性</li>
+            </ul>
+            <p>設計時必須內建故障安全（Fail-safe）機制，例如：風扇故障時自動開啟旁通、壓差過低時自動關閉送風門等。</p>
+        </div>
+
+        <!-- PRACTICE BOX (Blue dashed) -->
+        <div class="practice-box">
+            <h4>情境思考</h4>
+            <ol>
+                <li>你的工廠在審計時被問到：「BAS 有沒有做確效？」你會如何回答？依據是什麼？</li>
+                <li>如果 BAS 和 EMS 共用同一個壓差感測器，確效範圍會有什麼變化？為什麼？</li>
+                <li>一個主動壓力控制系統突然故障，你預期會看到哪些環境參數的變化？應該如何回應？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5.9: QUALIFICATION OF HVAC SYSTEMS    -->
+<!-- ============================================ -->
+<div class="section-title">5.9 Qualification of HVAC Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>HVAC systems serving an aseptic manufacturing suite should be considered as a system which may affect patient safety and product quality. <span class="key-term">Qualification, testing, and commissioning</span>, in line with GEP, should be considered.</p>
+
+        <p>For additional information, refer to ISPE Baseline Guide: <span class="key-term">Commissioning and Qualification</span> [34]. Field qualification procedures are detailed in <span class="key-term">ISO 14644-3</span> (Cleanrooms and Associated Environments, Part 3 &ndash; Test Methods).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>教學解析</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>HVAC 確效的 IQ/OQ/PQ 架構</h4>
+            <p>雖然 ISPE 在此節僅做概述並引用其他指南，但 HVAC 確效的標準流程值得完整理解：</p>
+            <ul>
+                <li><strong>IQ（安裝確效）：</strong>驗證 HVAC 系統是否按照設計規格正確安裝。包括：設備型號/序號確認、管線連接檢查、HEPA 過濾器安裝密封性、電氣接線、控制系統配置</li>
+                <li><strong>OQ（操作確效）：</strong>驗證系統在設計的操作範圍內能否正確運行。包括：送風量測試、壓差梯度驗證、溫濕度控制測試、警報功能測試、故障模式測試</li>
+                <li><strong>PQ（性能確效）：</strong>驗證系統在實際生產條件下的持續性能。包括：<strong>氣流可視化（煙霧測試）</strong>、<strong>恢復時間測試</strong>、粒子分類測試、HEPA 完整性測試</li>
+            </ul>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>煙霧測試（Smoke Study）&mdash; 氣流可視化的核心</h4>
+            <p><strong>氣流可視化（Airflow Visualization）</strong>是 PQ 階段最具視覺衝擊力的測試。透過在關鍵區域釋放煙霧，可以直接觀察到：</p>
+            <ul>
+                <li>Grade A 區域是否真正維持單向流（Unidirectional Flow）</li>
+                <li>操作人員介入時，氣流是否被擾動</li>
+                <li>Grade A 與 Grade B 交界處的氣流方向</li>
+                <li>是否存在渦流（Turbulence）或死角（Dead Zone）</li>
+            </ul>
+            <p>煙霧測試的結果通常以影片記錄，作為確效文件的一部分。這是法規查核時最常被要求檢視的文件之一。</p>
+        </div>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>恢復測試（Recovery Testing）</h4>
+            <p><strong>恢復時間</strong>是指潔淨室在受到污染事件後，回復到其分類標準所需的時間。</p>
+            <p>EU Annex 1 的要求：</p>
+            <ul>
+                <li><strong>Grade A：</strong>恢復時間應少於 15 分鐘（從「靜態」到粒子計數達標）</li>
+                <li><strong>Grade B：</strong>恢復時間應少於 15-20 分鐘</li>
+            </ul>
+            <p>恢復時間直接反映了 HVAC 系統的換氣能力和過濾效率。恢復時間越短，代表系統越強健，能越快消除異常事件的影響。</p>
+            <p>在實務中，恢復測試通常以人工產生氣溶膠粒子來模擬污染事件，然後測量粒子計數器回到基線水準所需的時間。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明：游泳池的自淨能力</h4>
+            <p>恢復時間就像游泳池的自淨能力。如果有人在泳池裡撒了一瓶墨水（污染事件），循環過濾系統需要多久才能把水恢復到清澈透明（達到分類標準）？</p>
+            <p>一個配備強力循環泵和高效過濾器的泳池（高換氣次數 + HEPA）可能在幾分鐘內就恢復清澈；而一個循環能力不足的泳池可能需要好幾個小時。</p>
+            <p>這就是為什麼換氣次數（Air Change Rate）和 HEPA 過濾效率是決定恢復時間的兩大關鍵因素。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5.10: CLEANING AND MAINTENANCE        -->
+<!-- ============================================ -->
+<div class="section-title">5.10 Cleaning and Maintenance of HVAC Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>5.10.1 Air System Cleaning and Sanitization</h3>
+        <ul>
+            <li>Ductwork should be manufactured, inspected, and installed according to GEP.</li>
+            <li>To minimize potential for growth of bioburden within the duct, ductwork should be <span class="key-term">cleaned internally prior to assembly</span>, and temporarily sealed after installation.</li>
+            <li>Periodic cleaning of duct systems is <span class="key-term">not normally required</span> due to the performance of pre-filtration.</li>
+            <li>Fumigating production rooms may be desirable for control of microorganisms. The HVAC system should be specially designed to <span class="key-term">isolate rooms</span> to allow fumigation without circulation of the agent to surrounding spaces. Room pressurization may need to be controlled to prevent migration of sanitizing agent.</li>
+            <li>Fumigating some or all of the system may be desirable where highly potent or pathogenic materials are handled. The system should be designed to allow fumigation through the HVAC system without circulation to surrounding spaces. HVAC system materials should be selected with this procedure in mind.</li>
+        </ul>
+
+        <h3>5.10.2 Maintenance Philosophy</h3>
+        <ul>
+            <li>As much of the system as possible should be accessible and maintained from <span class="key-term">outside the aseptic processing area</span>.</li>
+            <li>When replacement of terminal air filters (and lighting) are expected to be more frequent than planned maintenance shutdowns, access to these items from outside the processing area should be considered.</li>
+            <li>Access should not require working directly on ceilings from above.</li>
+            <li>HVAC designers should understand the planned facility maintenance philosophy.</li>
+            <li>An effective and fast-response breakdown maintenance plan can minimize the economic impact of unplanned HVAC shutdowns.</li>
+            <li>HVAC maintenance personnel should be trained on the system and its effect on the product/process.</li>
+            <li>Critical components in systems which affect patient safety and product quality should be under <span class="key-term">quality change control</span>.</li>
+            <li>Thoroughly investigate the impact of filter leaks to determine patient and product risk. Proper investigation of <span class="key-term">filter leaks</span> can determine if contamination that penetrates HEPA filters has the potential to jeopardize patient safety.</li>
+            <li>Refer to ISO 14644-3 for suggested commissioning and retesting procedures.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>教學解析</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>風管清潔的實務原則</h4>
+            <p>一個常見的誤解是認為潔淨室的風管需要定期清洗。ISPE 明確指出：<strong>由於預過濾的效能，風管系統通常不需要定期清潔。</strong></p>
+            <p>但這建立在幾個前提上：</p>
+            <ul>
+                <li>風管在安裝前已經過內部清潔</li>
+                <li>安裝後暫時密封，防止施工灰塵進入</li>
+                <li>預過濾器（Pre-filter）和中效過濾器（Medium Filter）正常運作，攔截了絕大部分粒子</li>
+            </ul>
+            <p>如果這些前提不成立（例如預過濾器長期未更換），風管內部可能累積灰塵甚至滋生微生物。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>燻蒸（Fumigation）的 HVAC 設計考量</h4>
+            <p>燻蒸是控制微生物的有效手段，但對 HVAC 設計提出特殊要求：</p>
+            <ul>
+                <li><strong>房間隔離：</strong>HVAC 系統必須能將待燻蒸的房間與其他區域完全隔離，防止燻蒸劑擴散</li>
+                <li><strong>壓力控制：</strong>燻蒸過程中需控制房間壓力，防止燻蒸劑遷移至其他空間</li>
+                <li><strong>材質相容性：</strong>處理高毒性或致病性材料時，HVAC 系統材料必須能承受燻蒸劑（如 VHP/甲醛）的腐蝕</li>
+            </ul>
+            <p>常見燻蒸劑：過氧化氫蒸氣（VHP）、甲醛（Formaldehyde）、二氧化氯（ClO<sub>2</sub>）。</p>
+        </div>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>維護哲學的核心原則</h4>
+            <p>ISPE 提出的維護哲學可歸納為一個核心理念：<strong>「盡可能從潔淨區外部進行維護。」</strong></p>
+            <p>這意味著在設計階段就必須考慮：</p>
+            <ul>
+                <li><strong>走入式天花板（Walk-on Ceiling）：</strong>讓維護人員可以從上方夾層更換 HEPA 過濾器和燈具，無需進入潔淨室</li>
+                <li><strong>維護通道設計：</strong>設備的維護側面朝向非潔淨區或技術走廊</li>
+                <li><strong>更換頻率考量：</strong>如果 HEPA 更換頻率高於計畫停機頻率，必須提供外部更換通道</li>
+            </ul>
+            <p>每次進入潔淨區進行維護都會帶來污染風險和停產損失，因此好的設計應該最小化這種需求。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>HEPA 過濾器洩漏調查</h4>
+            <p>ISPE 特別強調要「<strong>徹底調查過濾器洩漏的影響</strong>」。這不是簡單地更換過濾器就了事：</p>
+            <ul>
+                <li>需要判斷洩漏何時開始（回溯至上次合格的 DOP/PAO 測試）</li>
+                <li>需要評估洩漏期間的所有生產批次是否受到影響</li>
+                <li>需要分析穿透 HEPA 的污染物是否具有影響病患安全的潛力</li>
+                <li>需要評估是否需要擴大環境監測數據的回顧範圍</li>
+            </ul>
+            <p>這是為什麼 HEPA 完整性測試的頻率和記錄完整性如此重要 &mdash; 它們決定了洩漏調查的時間窗口和影響範圍。</p>
+        </div>
+
+        <!-- PRACTICE BOX GREEN (solid) -->
+        <div class="practice-box-green">
+            <h4>實務應用：HEPA 洩漏的影響評估</h4>
+            <p>假設你的無菌充填區 Grade A HEPA 在半年度 DOP 測試中發現洩漏。以下是你需要執行的關鍵步驟：</p>
+            <ol>
+                <li><strong>確認上次合格日期：</strong>回溯至最近一次通過 DOP/PAO 測試的日期</li>
+                <li><strong>列出受影響批次：</strong>該時間段內在此區域充填的所有批次</li>
+                <li><strong>回顧 EM 數據：</strong>檢視該期間的粒子計數和微生物監測是否有異常趨勢</li>
+                <li><strong>風險評估：</strong>根據洩漏大小、位置和 EM 數據，評估產品風險</li>
+                <li><strong>CAPA：</strong>更換過濾器、分析根本原因（密封墊老化？安裝不當？振動損壞？）、調整測試頻率</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION SUMMARY                               -->
+<!-- ============================================ -->
+<div class="section-title">Section Summary / 本章總結</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Key Takeaways</h2>
+
+        <div class="concept-box">
+            <h4>Core Principles from Sections 5.8&ndash;5.10</h4>
+            <ol>
+                <li><strong>Sterility cannot be tested into the product.</strong> Environmental monitoring through validated HVAC systems is the primary assurance mechanism for aseptic manufacturing.</li>
+                <li><strong>Continuous monitoring + periodic requalification</strong> provide complementary assurance. Key continuous parameters: DP, temperature, humidity, particle counts. Key periodic tests: HEPA integrity (DOP/PAO), airflow visualization (smoke studies), recovery testing.</li>
+                <li><strong>HEPA filter integrity testing</strong> is the most critical periodic test. Recommended frequency: twice per year for aseptic fill areas. A leaking HEPA can compromise an entire zone without triggering DP alarms.</li>
+                <li><strong>DP monitoring accuracy and reference point selection</strong> are engineering decisions with direct GMP impact. Accuracy should be 10% of the control range; reference points must be in stable pressure zones.</li>
+                <li><strong>EMS must comply with 21 CFR Part 11</strong> and be validated. BAS/BMS does not require qualification unless it shares field devices with EMS.</li>
+                <li><strong>HVAC maintenance should be performed from outside the aseptic area</strong> wherever possible, to minimize contamination risk from maintenance activities.</li>
+                <li><strong>HEPA filter leaks require thorough investigation</strong> &mdash; not just replacement, but retrospective assessment of all production batches since the last passing integrity test.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>重點回顧</h2>
+
+        <div class="concept-box">
+            <h4>5.8&ndash;5.10 節核心要點</h4>
+            <ol>
+                <li><strong>無菌性無法透過成品檢驗來保證。</strong>通過經確效的 HVAC 系統進行環境監測，是無菌製造的主要保證機制。</li>
+                <li><strong>連續監測 + 定期再確效</strong>提供互補的保證。連續監測：壓差、溫度、濕度、粒子。定期測試：HEPA 完整性（DOP/PAO）、氣流可視化（煙霧測試）、恢復測試。</li>
+                <li><strong>HEPA 過濾器完整性測試</strong>是最關鍵的定期測試。無菌充填區建議每年兩次。洩漏的 HEPA 可能在壓差正常的情況下污染整個區域。</li>
+                <li><strong>壓差監測的精度和參考點選擇</strong>是直接影響 GMP 的工程決策。精度應為控制範圍的 10%；參考點必須位於壓力穩定區域。</li>
+                <li><strong>EMS 必須符合 21 CFR Part 11</strong>並經過驗證。BAS/BMS 不需要確效，除非與 EMS 共用現場設備。</li>
+                <li><strong>HVAC 維護應盡可能從潔淨區外部執行</strong>，以最小化維護活動帶來的污染風險。</li>
+                <li><strong>HEPA 過濾器洩漏需要徹底調查</strong> &mdash; 不僅是更換過濾器，還需回溯評估自上次合格完整性測試以來的所有生產批次。</li>
+            </ol>
+        </div>
+
+        <!-- PRACTICE BOX (Blue dashed) - Final -->
+        <div class="practice-box">
+            <h4>綜合練習題</h4>
+            <ol>
+                <li>請列出無菌充填區中需要連續監測的四個關鍵 HVAC 參數，並說明每個參數的監測目的。</li>
+                <li>解釋為什麼 DOP/PAO 測試能發現壓差監測無法偵測的問題。提供一個具體情境。</li>
+                <li>你的工廠正在設計新的無菌區。針對 HEPA 過濾器的更換維護，你會建議採用什麼設計方案？依據是什麼？</li>
+                <li>一位品質人員提議將 HEPA 完整性測試頻率從每年兩次降為每年一次，以節省成本。你會如何評估這個提議？需要什麼數據來支持決定？</li>
+                <li>說明恢復時間測試（Recovery Testing）的執行方式，以及為什麼它是 HVAC 性能確效的關鍵指標。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div> <!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities</p>
+    <p>Chapter 5c: HVAC &mdash; Monitoring &amp; Qualification (Sections 5.8&ndash;5.10) | Educational Material</p>
+    <p>For training purposes only. Refer to original ISPE publication for official guidance.</p>
+</div>
+
+</body>
+</html>

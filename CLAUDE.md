@@ -225,7 +225,7 @@ Report metadata is in `reports.json`. Current reports:
 | `PDA/TR68/` | PDA TR68: Risk-Based Approach for Prevention and Management of Drug Shortages (Revised 2024) | 6 | Complete |
 | `PDA/TR84/` | PDA TR84: Data Integrity in Manufacturing & Packaging (2020) | 8 | Complete |
 | **ISPE** | | | |
-| `ISPE/ISPE-Vol3/` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | — | Planned |
+| `ISPE/ISPE-Vol3/` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities (3rd Ed. 2018) | 21 | Complete |
 | `ISPE/ISPE-Vol4/` | ISPE Baseline Vol.4: Water & Steam Systems | — | Planned |
 | `ISPE/ISPE-Vol5/` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 11 | Complete |
 | `ISPE/ISPE-Vol6/` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | — | Planned |

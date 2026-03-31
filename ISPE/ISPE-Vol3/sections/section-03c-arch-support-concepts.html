@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 4c: Architecture — Support Areas &amp; Concept Diagrams</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #a7d7c5;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c36; border-bottom: 2px solid #66bb6a;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c36; }
+
+.chapter-body .container, .chapter-body .main-container {
+    max-width: 100%; padding: 0; margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #27ae60; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application):not(.note):not(.formula):not(.practice):not(.highlight) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== PRACTICE BOX GREEN (solid green border) ===== */
+.practice-box.green {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #43a047 !important;
+}
+.practice-box.green h3, .practice-box.green h4 { color: #2e7d32 !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+/* ===== CARDS ===== */
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== FLOW DIAGRAM ===== */
+.flow-diagram {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; padding: 1rem;
+    background: #f8f9fa; border-radius: 8px;
+}
+.flow-step {
+    display: inline-block; padding: 0.5rem 1rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+    text-align: center;
+}
+.flow-step.unclass { background: #e2e8f0; color: #4a5568; }
+.flow-step.grade-d { background: #dbeafe; color: #1e40af; }
+.flow-step.grade-c { background: #d1fae5; color: #065f46; }
+.flow-step.grade-b { background: #fef3c7; color: #92400e; }
+.flow-step.grade-a { background: #fee2e2; color: #991b1b; }
+.flow-arrow { font-size: 1.2rem; color: var(--text-medium); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 4c: Architecture &mdash; Support Areas &amp; Concept Diagrams (4.7&ndash;4.8)</h1>
+    <div class="subtitle">建築佈局 &mdash; 輔助區域與概念圖（下）</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p101 &ndash; p106</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>Learning Objectives / 本節學習目標</h3>
+    <ul>
+        <li>Understand the design principles for support areas (gowning rooms, equipment prep, parts washing, buffer preparation, component staging) and their role in maintaining cleanroom integrity / 了解輔助區域的設計原則及其對潔淨室完整性的重要性</li>
+        <li>Explain why technical support areas should remain separate and unclassified, and how service chases minimize contamination risk / 說明為何技術輔助區域應保持分離與非分級，以及服務通道如何降低污染風險</li>
+        <li>Interpret five concept diagrams (Figures 4.4&ndash;4.8) showing functional adjacencies for different manufacturing configurations: small/large scale, RABS/isolator, aseptic/terminally sterilized / 解讀五種不同製造配置的概念圖</li>
+        <li>Apply the unidirectional flow principle to material and personnel movement in facility layout / 將單向流動原則應用於物料與人員動線設計</li>
+        <li>Differentiate between segregation by physical barrier, procedural control, and time separation / 區分物理屏障隔離、程序控制隔離與時間隔離三種方式</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.7 Support Areas -->
+<!-- ============================================================ -->
+<div class="section-title">4.7 Support Areas</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p><span class="key-term">Technical support areas</span> for the cleanrooms should be proximal to minimize service runs, but kept separate in unclassified areas.</p>
+
+        <p><span class="key-term">Process support areas</span> should be isolated from the aseptic area. If necessary, they can be adjacent, with vision panels and transfer hatches, and should generally be unclassified. Access would normally be provided by the facility corridor.</p>
+
+        <p>Services to equipment, such as <span class="key-term">autoclaves</span>, may be provided by using a <span class="key-term">service chase</span> (ideally accessed from outside the production areas).</p>
+
+        <p>Autoclaves, tunnels, and washers with access from two sides may have mechanical support rooms accessible from clean areas. Access should be from the <span class="key-term">less clean of the two areas</span>, with tight seals on the critical side. Such service areas should be kept at pressures <span class="key-term">negative to the areas</span> to which they connect.</p>
+
+        <p>The location of <span class="key-term">clean utility and CIP/SIP systems</span> should consider the proximity to utility users and serviceability from unclassified areas. Locating these systems above or below the production area may be desirable.</p>
+
+        <p><span class="key-term">Walkable ceilings</span> can be an optimal solution for the overhead maintenance of cleanrooms. Regulated companies may prohibit access above processing areas during production, as traffic can dislodge particles.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：輔助區域的定位</h4>
+            <p>輔助區域是潔淨室的「後勤供應鏈」。ISPE 將其分為兩類：</p>
+            <ul>
+                <li><strong>技術輔助區域（Technical Support）</strong>：機電維修、設備後端服務，應保持非分級（Unclassified）並與潔淨室分離</li>
+                <li><strong>製程輔助區域（Process Support）</strong>：緩衝液配製、零件清洗、組件暫存等，可與無菌區相鄰但須隔離</li>
+            </ul>
+            <p>關鍵原則：<strong>靠近但隔離</strong>——縮短管路與搬運距離，同時防止污染回流。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：醫院手術室的配套空間</h4>
+            <p>想像一間醫院手術室：手術房本身是最高等級潔淨區域，但它周圍還需要：器械消毒間（零件清洗）、藥品準備區（緩衝液配製）、更衣區（更衣室）、以及設備維修通道。</p>
+            <p>這些空間都不需要與手術房同等級的空氣品質，但必須<strong>緊鄰</strong>手術房以便快速支援，同時<strong>隔離</strong>以防止外界污染進入。藥廠的輔助區域邏輯完全一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：雙面設備的壓差策略</h4>
+            <p>滅菌鍋（Autoclave）、隧道烘箱（Tunnel）、清洗機（Washer）這類橫跨兩個區域的設備，其維修側必須遵守兩條規則：</p>
+            <ol>
+                <li><strong>從較低等級側進入</strong>——避免維修人員穿越高等級區域</li>
+                <li><strong>維修側壓差為負壓</strong>——確保氣流方向是「從潔淨到非潔淨」，微粒不會從維修通道回流到生產區</li>
+            </ol>
+            <p>這是 Annex 1 壓差階梯（Pressure Cascade）原則在設備層級的直接應用。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>可行走天花板（Walkable Ceiling）</h4>
+            <p>可行走天花板讓維修人員從上方進入潔淨室的 HEPA 過濾器、燈具和感測器，而不必進入潔淨室本身。</p>
+            <p>限制條件：<strong>生產期間禁止進入</strong>——行走產生的振動可能使微粒穿透天花板密封件落入潔淨室。這就是為何許多公司將天花板維修排在批次之間或停機期間進行。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.7 Support Areas — Detailed Design Considerations -->
+<!-- ============================================================ -->
+<div class="section-title">4.7 Support Areas &mdash; Design Summary Table</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text &mdash; Summary</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Support Area</th>
+                    <th>Classification</th>
+                    <th>Key Design Feature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Technical Support (mechanical, electrical)</td>
+                    <td>Unclassified</td>
+                    <td>Proximal to cleanroom; use service chases</td>
+                </tr>
+                <tr>
+                    <td>Process Support (compounding, parts wash)</td>
+                    <td>Generally unclassified</td>
+                    <td>Vision panels + transfer hatches; corridor access</td>
+                </tr>
+                <tr>
+                    <td>Autoclave / Tunnel / Washer service rooms</td>
+                    <td>Negative pressure to connected areas</td>
+                    <td>Access from less clean side; tight seals on critical side</td>
+                </tr>
+                <tr>
+                    <td>Clean Utility / CIP / SIP systems</td>
+                    <td>Unclassified (preferred)</td>
+                    <td>Above or below production; proximal to users</td>
+                </tr>
+                <tr>
+                    <td>Walkable Ceilings</td>
+                    <td>Unclassified</td>
+                    <td>Overhead maintenance access; no access during production</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The overarching principle: support areas should be <span class="key-term">close enough to serve</span> the cleanroom efficiently, but <span class="key-term">separated enough to prevent contamination</span>. Physical barriers, pressure differentials, and procedural controls are the three tools to achieve this balance.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="analogy-box">
+            <h4>比喻說明：餐廳的前場與後場</h4>
+            <p>任何高檔餐廳都有嚴格的前場（用餐區）與後場（廚房、洗碗間、儲藏室）分區。後場要離前場近（上菜速度），但絕對不能讓油煙、噪音或髒碗回流到用餐區。</p>
+            <p>藥廠的輔助區域就是潔淨室的「後場」：</p>
+            <ul>
+                <li>零件清洗區 = 洗碗間</li>
+                <li>緩衝液配製 = 備料區</li>
+                <li>服務通道 = 員工動線</li>
+                <li>可行走天花板 = 屋頂維修通道</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>Your facility has an autoclave that spans between a Grade C filling support room and an unclassified maintenance corridor. Which side should maintenance personnel access it from, and what pressure differential should the maintenance side maintain relative to Grade C?</li>
+                <li>A CIP skid is currently located inside the Grade D production area. Based on Section 4.7 guidance, would you recommend relocating it? What are the pros and cons?</li>
+            </ol>
+        </div>
+
+        <div class="practice-box green">
+            <h4>實務應用：輔助區域佈局查核清單</h4>
+            <ul class="checklist">
+                <li>所有雙面設備（滅菌鍋、清洗機）維修側是否保持負壓？</li>
+                <li>服務通道（Service Chase）是否可從生產區外部進入？</li>
+                <li>CIP/SIP 系統是否可從非分級區域進行維修？</li>
+                <li>潔淨室天花板上方維修是否排除在生產時間之外？</li>
+                <li>製程輔助區域是否使用視窗（Vision Panel）和傳遞窗（Transfer Hatch）與無菌區通訊？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.8 Concept Diagrams — Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">4.8 Concept Diagrams &mdash; Overview</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Figure 4.4, Figure 4.5, Figure 4.6, Figure 4.7, and Figure 4.8 provide a graphic approach to the concepts discussed in this chapter. These figures are an approach to <span class="key-term">functional adjacencies</span> and are <span class="key-term">not layouts or floor plans</span>.</p>
+
+        <p>The five concept diagrams cover the following configurations:</p>
+        <ul>
+            <li><strong>Figure 4.4</strong> &mdash; Small Scale Open System Aseptic Fill with RABS</li>
+            <li><strong>Figure 4.5</strong> &mdash; Small Scale Open System Aseptic Fill with Isolators</li>
+            <li><strong>Figure 4.6</strong> &mdash; Large Scale Open System Aseptic Fill with RABS</li>
+            <li><strong>Figure 4.7</strong> &mdash; Large Scale Open System Aseptic Fill with Isolators</li>
+            <li><strong>Figure 4.8</strong> &mdash; Large Scale Open Filling for Terminally Sterilized Product with RABS</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：概念圖 vs. 平面圖</h4>
+            <p>ISPE 特別強調這些是<strong>功能鄰接關係圖</strong>，不是實際平面圖。它們回答的問題是「哪些房間應該彼此相鄰？」而不是「房間尺寸是多少？」</p>
+            <p>這種方法的價值在於：先確定功能邏輯（物料流、人員流、隔離需求），再進入具體的建築設計。許多設施設計失敗的根源就是跳過功能鄰接分析，直接畫平面圖。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：五張圖的分類邏輯</h4>
+            <p>ISPE 用兩個維度將無菌製造設施分成五種典型配置：</p>
+            <table>
+                <thead>
+                    <tr><th>維度</th><th>選項</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>規模</td><td>小規模（Small Scale）vs. 大規模（Large Scale）</td></tr>
+                    <tr><td>屏障技術</td><td>RABS vs. Isolator</td></tr>
+                    <tr><td>滅菌策略</td><td>無菌充填（Aseptic Fill）vs. 終端滅菌（Terminally Sterilized）</td></tr>
+                </tbody>
+            </table>
+            <p>理解這三個維度，就能快速判斷你的設施最接近哪個概念圖，再依此為基礎進行細部設計。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 4.4 — Small Scale RABS -->
+<!-- ============================================================ -->
+<div class="section-title">Figure 4.4: Small Scale Open System Aseptic Fill with RABS</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Notes for Figure 4.4:</p>
+        <ul>
+            <li>All processes are open. Compounding is not prepared aseptically. Product is <span class="key-term">sterile filtered</span> to the filling area. <span class="key-term">LP/GAAS</span> is used to minimize bioburden.</li>
+            <li>The <span class="key-term">Parts Wash and Compounding rooms</span> contain open processes with product exposure and should be segregated from other areas. Separate PAL In and PAL Out rooms are provided for the Compounding room, to prevent contamination of clean gowning supplies during de-gowning.</li>
+            <li>The airlocks into the Compounding room can also prevent the transportation of residual product into the corridor and allow for <span class="key-term">concurrent formulation and filling</span> of multiple products.</li>
+            <li>Dirty parts and utensils are transferred to the Pre-Wash room through the <span class="key-term">Process Corridor</span>. The Pre-Wash room can be a CNC or Grade D area, provided the final wash/rinse occurs within the pass-through washer which can be unloaded in an ISO 8/Grade C area.</li>
+            <li>The Process Corridor is a <span class="key-term">shared concurrent path</span> for all non-product exposed items and personnel.</li>
+            <li>If waste cannot be considered closed, then it is an open system and segregation can be provided by procedural means or by transporting waste across the Process Corridor during "off hours" &mdash; this is <span class="key-term">segregation achieved by time separation</span>.</li>
+        </ul>
+        <p>Component transport notes:</p>
+        <ul>
+            <li>Transportation of components shall be within <span class="key-term">RTP canisters</span> or other closed transfer devices which can be docked with the RABS barrier system.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>小規模 RABS 設施的關鍵特徵</h4>
+            <p>這是最基礎的無菌充填配置，適合小型 CDMO 或臨床試驗生產。核心特徵：</p>
+            <ul>
+                <li><strong>全開放製程</strong>——產品在非封閉環境下暴露，因此環境控制至關重要</li>
+                <li><strong>非無菌配製</strong>——配製室不需無菌等級，但需要隔離以防止交叉污染</li>
+                <li><strong>無菌過濾作為關鍵控制點</strong>——產品在進入充填區前經過除菌過濾</li>
+                <li><strong>RTP 密閉容器轉運</strong>——組件通過密封容器進入 RABS</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：時間隔離（Time Separation）</h4>
+            <p>當物理隔離不可行（例如廢棄物必須通過製程走廊），ISPE 允許「時間隔離」——在非生產時段（off hours）搬運開放性廢棄物。這並非理想方案，但在空間受限的小型設施中是實用的折衷。</p>
+            <p>如果廢棄物污染了走廊，則<strong>必須在恢復生產前完成清潔</strong>。這意味著需要經過驗證的清潔程序和放行標準。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：共用走廊的管理</h4>
+            <p>Process Corridor 就像醫院的公共走廊——醫護人員、訪客、推車都使用同一條路。但手術器械會放在密封推車裡運送，醫療廢棄物則在特定時段由專人清運。</p>
+            <p>藥廠的 Process Corridor 採用相同邏輯：<strong>非暴露品共用</strong>，暴露品密封運送，廢棄物時間隔離。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 4.5 — Small Scale Isolators -->
+<!-- ============================================================ -->
+<div class="section-title">Figure 4.5: Small Scale Open System Aseptic Fill with Isolators</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Notes for Figure 4.5:</p>
+        <ul>
+            <li>Open aseptic processes occur within <span class="key-term">isolators</span>.</li>
+            <li>The Parts Wash room contains an open process with product exposure and should be a separate room.</li>
+            <li>A Compounding room directly connected to the Filling Suite is for a <span class="key-term">single product or campaign basis</span>. Compounding of one product and filling for another product cannot be performed simultaneously.</li>
+            <li>The Process Corridor is a shared concurrent path for all non-product exposed items and personnel. It is primarily used to connect personnel from the locker rooms to the ISO 8/Grade C production suite and to transfer materials into the same suite.</li>
+            <li>Having the corridor <span class="key-term">eliminates the complicated procedures frequently involved with multiple in-line airlocks</span> and allows for proper transitioning through areas of increasing cleanliness.</li>
+            <li>Product containers, stoppers, and caps are either <span class="key-term">pre-sterilized and ready-to-use</span>, or are batch processed within RTP containers. Pre-wrapped ready-to-use components can be transferred into the isolator via <span class="key-term">VHP decontamination airlocks</span> built into the isolator.</li>
+            <li>This figure shows the capping process inside the ISO 5/Grade A isolator. Therefore, caps should be sterilized.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>隔離器配置 vs. RABS 配置的關鍵差異</h4>
+            <p>比較 Figure 4.4（RABS）和 Figure 4.5（Isolator）：</p>
+            <table>
+                <thead>
+                    <tr><th>面向</th><th>RABS（Fig 4.4）</th><th>Isolator（Fig 4.5）</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>屏障完整性</td><td>半開放，人員可從背板介入</td><td>完全封閉，密封系統</td></tr>
+                    <tr><td>背景環境</td><td>需要 ISO 7/Grade B</td><td>ISO 8/Grade C 即可</td></tr>
+                    <tr><td>物料轉入</td><td>RTP 對接 RABS</td><td>VHP 氣閘 + RTP 端口</td></tr>
+                    <tr><td>加蓋位置</td><td>可在 RABS 外進行</td><td>圖中顯示在隔離器內進行</td></tr>
+                </tbody>
+            </table>
+            <p>隔離器提供更高的產品保護，但犧牲了操作靈活性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：製程走廊消除了多級氣閘</h4>
+            <p>ISPE 指出，Process Corridor 的一個重要好處是<strong>取代串聯式氣閘（in-line airlocks）</strong>。傳統設計中，人員從更衣區到生產區可能需要通過三到四個氣閘，每個都有壓差控制和程序要求。</p>
+            <p>一條設計良好的 Process Corridor 能讓人員在「逐漸增加潔淨度」的空間中自然過渡，既簡化程序又降低人為錯誤風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：campaign 生產的限制</h4>
+            <p>「配製室直接連接充填套間」的設計，就像餐廳只有一個備料區。如果今天備料做牛排，就不能同時備料做海鮮——否則交叉污染。你必須「一個產品做完、清潔完、再做下一個」，這就是 Campaign 生產。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 4.6 — Large Scale RABS -->
+<!-- ============================================================ -->
+<div class="section-title">Figure 4.6: Large Scale Open System Aseptic Fill with RABS</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Notes for Figure 4.6:</p>
+        <ul>
+            <li>All processes are open and, therefore, <span class="key-term">unidirectional flows</span> are provided for the exposed product areas. Compounding is not performed aseptically. Product is sterile filtered to the filling area and <span class="key-term">aseptic connectors</span> are used.</li>
+            <li>RABS barrier technology is used along with RTP containers for material transfers to minimize manual handling of exposed and sterilized components and <span class="key-term">reduce the ISO 5/Grade A zones</span>.</li>
+            <li>Automated loading and unloading of the <span class="key-term">lyophilizer (LYO)</span> eliminates manual handling of filled, partially stoppered vials.</li>
+            <li>The Parts Wash and Compounding rooms contain open processes with product exposure and should be segregated. Separate PAL In and PAL Out rooms are provided for the Compounding room.</li>
+            <li>Dirty parts and utensils are transferred to the Pre-Wash room through the Process Corridor. The Pre-Wash can be a CNC or Grade D area, provided the final wash/rinse occurs within the pass-through washer.</li>
+            <li>This figure assumes the use of <span class="key-term">ready-to-sterilize stoppers</span> which are sterilized in the pass-through autoclave.</li>
+            <li>The <span class="key-term">VHP chamber</span> should be utilized to bring items that cannot be autoclaved into the ISO 7/Grade B areas.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>大規模 RABS 的升級設計</h4>
+            <p>從 Figure 4.4（小規模）升級到 Figure 4.6（大規模），ISPE 增加了幾項關鍵設計：</p>
+            <ul>
+                <li><strong>單向流動（Unidirectional Flow）</strong>——所有產品暴露區域的物料和人員流動方向一致，不允許回流</li>
+                <li><strong>無菌連接器（Aseptic Connectors）</strong>——取代開放式管路連接，減少暴露風險</li>
+                <li><strong>自動化冷凍乾燥裝載</strong>——消除人工搬運半加塞小瓶的風險</li>
+                <li><strong>VHP 傳遞艙</strong>——處理無法高壓滅菌的物品</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：為何大規模設施必須單向流動？</h4>
+            <p>小規模設施可以用 Process Corridor 共用路徑，因為人流物流量小，可透過程序控制管理。但大規模設施的交通量高，<strong>共用雙向路徑的交叉污染風險急劇增加</strong>。</p>
+            <p>因此 ISPE 在大規模配置中明確要求單向流動：乾淨物料只往高等級方向走，髒污物料只往低等級方向走。這就是「物料流」和「人員流」分離的具體實踐。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>Figure 4.6 mentions the use of "ready-to-sterilize stoppers" that are sterilized in a pass-through autoclave. What would change in the facility layout if you switched to pre-sterilized ready-to-use (RTU) stoppers instead?</li>
+                <li>Why does ISPE recommend automated LYO loading/unloading for large-scale facilities but not necessarily for small-scale? What risk does manual handling introduce?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 4.7 — Large Scale Isolators -->
+<!-- ============================================================ -->
+<div class="section-title">Figure 4.7: Large Scale Open System Aseptic Fill with Isolators</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Notes for Figure 4.7:</p>
+        <ul>
+            <li>All processes are closed except for <span class="key-term">Parts Wash</span>. Filling and stoppering are performed in isolators.</li>
+            <li>The Parts Wash room contains an open process with product exposure and should be segregated from other areas. The bidirectional entry airlock to the Pre-Wash room is provided to allow personnel to <span class="key-term">over-gown upon entering and de-gown upon exiting</span> to prevent the transportation of exposed product into the Process Corridor.</li>
+            <li>The Process Corridor is a shared concurrent path for all non-product exposed items and personnel.</li>
+            <li>If waste cannot be considered closed, segregation can be provided by <span class="key-term">temporal means</span> or by transporting waste during "off hours" to the MAL Out.</li>
+            <li>The product transitions from the ISO 5/Grade A isolator to crimping under LP/GAAS. <span class="key-term">Capping can occur within a RABS within the ISO 8/Grade C environment</span> and the caps do not need to be sterile.</li>
+            <li>Particulates generated by crimping are prevented from entering the isolator by the <span class="key-term">positive pressure of the isolator</span> and the exiting airflow at the <span class="key-term">mousehole</span>.</li>
+            <li>This figure shows the option of having capping inside the filling room instead of outside in a Grade D room.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>隔離器 + 大規模：最高保護等級</h4>
+            <p>Figure 4.7 代表了無菌充填的最高保護配置。關鍵特徵：</p>
+            <ul>
+                <li><strong>幾乎全封閉製程</strong>——只有零件清洗是開放製程</li>
+                <li><strong>隔離器正壓保護</strong>——即使加蓋產生微粒，隔離器內的正壓和出口氣流（mousehole）防止微粒回流</li>
+                <li><strong>加蓋在 ISO 8/Grade C 環境中的 RABS 內進行</strong>——因為此時小瓶已完全加塞，瓶蓋不需無菌</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Mousehole 的概念</h4>
+            <p>Mousehole（鼠洞）是隔離器與外部環境之間的小開口，讓產品容器通過。想像一棟建築的通風口——總是有氣流向外吹出，所以灰塵不會從外面吹進來。</p>
+            <p>隔離器的 mousehole 利用同樣原理：隔離器內部正壓使空氣持續從 mousehole 向外流出，阻止加蓋區的微粒進入無菌充填區域。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：雙向氣閘（Bidirectional Airlock）</h4>
+            <p>Pre-Wash 區的雙向氣閘設計精妙：人員進入時加穿防護衣（over-gown），離開時脫掉。目的是確保接觸過暴露產品的防護衣不會被帶入 Process Corridor，避免殘留產品交叉污染。</p>
+            <p>這是「人員流」管理中的重要細節——不只是控制人往哪走，還要控制人身上帶了什麼。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 4.8 — Terminally Sterilized -->
+<!-- ============================================================ -->
+<div class="section-title">Figure 4.8: Large Scale Open Filling for Terminally Sterilized Product with RABS</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Notes for Figure 4.8:</p>
+        <ul>
+            <li>All processes are open. Filling is performed within a RABS under LP/GAAS. <span class="key-term">Compounding is not produced aseptically or sterile filtered.</span></li>
+            <li>The Parts Wash and Compounding rooms contain open processes with product exposure and should be segregated. The bidirectional entry airlock into the Pre-Wash room prevents the transportation of exposed product into the Production Hallway.</li>
+            <li><span class="key-term">Only one product can be made at a time.</span></li>
+            <li>The Process Corridor is a common concurrent path for all non-product exposed items and personnel.</li>
+            <li>If waste cannot be considered closed, segregation by temporal means or transport during "off hours" to the MAL Out.</li>
+            <li><span class="key-term">Gowning into the ISO 8/Grade C area is unidirectional</span> so the personnel exiting the area do not contaminate the gowning supplies of those who enter the production areas.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>終端滅菌 vs. 無菌充填：設施設計的根本差異</h4>
+            <p>Figure 4.8 是唯一的終端滅菌（Terminally Sterilized）配置，與前四張圖的無菌充填有本質差異：</p>
+            <table>
+                <thead>
+                    <tr><th>面向</th><th>無菌充填（Fig 4.4-4.7）</th><th>終端滅菌（Fig 4.8）</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>產品滅菌點</td><td>充填前（除菌過濾）</td><td>充填後（整瓶滅菌）</td></tr>
+                    <tr><td>配製要求</td><td>部分需無菌配製</td><td>不需無菌配製或除菌過濾</td></tr>
+                    <tr><td>充填環境</td><td>ISO 5/Grade A + ISO 7/B 或 ISO 8/C</td><td>ISO 5/Grade A (RABS) + ISO 8/C</td></tr>
+                    <tr><td>產品暴露風險容忍度</td><td>極低——任何微生物污染都不可接受</td><td>相對較高——終端滅菌可消除大部分污染</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：終端滅菌不代表可以放鬆環境控制</h4>
+            <p>雖然終端滅菌提供了額外的安全網，ISPE 仍然要求：</p>
+            <ul>
+                <li>充填在 RABS + LP/GAAS 下進行</li>
+                <li>開放製程區域需要隔離</li>
+                <li>更衣流程單向設計</li>
+                <li>同一時間只能生產一個產品</li>
+            </ul>
+            <p>這反映了現代法規趨勢：即使是終端滅菌產品，也應盡可能降低充填前的微生物負荷（bioburden），以確保滅菌保證水準（SAL）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：更衣流程的單向設計</h4>
+            <p>想像游泳池的更衣室：進入泳池前走淋浴通道（穿上泳衣、淋浴），離開泳池後走另一條出口（沖洗、換回便服）。如果進出走同一條路，濕淋淋的泳客會弄髒準備進場的乾淨區域。</p>
+            <p>藥廠更衣室的單向設計原理完全一樣——<strong>進入的人不會與離開的人在更衣區交會</strong>，確保潔淨更衣用品不被污染。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Cross-Diagram Comparison -->
+<!-- ============================================================ -->
+<div class="section-title">Cross-Diagram Comparison &mdash; Five Configurations at a Glance</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text &mdash; Synthesis</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Figure</th>
+                    <th>Scale</th>
+                    <th>Barrier</th>
+                    <th>Sterilization</th>
+                    <th>Background</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4.4</td>
+                    <td>Small</td>
+                    <td>RABS</td>
+                    <td>Aseptic</td>
+                    <td>ISO 7/Grade B</td>
+                </tr>
+                <tr>
+                    <td>4.5</td>
+                    <td>Small</td>
+                    <td>Isolator</td>
+                    <td>Aseptic</td>
+                    <td>ISO 8/Grade C</td>
+                </tr>
+                <tr>
+                    <td>4.6</td>
+                    <td>Large</td>
+                    <td>RABS</td>
+                    <td>Aseptic</td>
+                    <td>ISO 7/Grade B</td>
+                </tr>
+                <tr>
+                    <td>4.7</td>
+                    <td>Large</td>
+                    <td>Isolator</td>
+                    <td>Aseptic</td>
+                    <td>ISO 8/Grade C</td>
+                </tr>
+                <tr>
+                    <td>4.8</td>
+                    <td>Large</td>
+                    <td>RABS</td>
+                    <td>Terminal</td>
+                    <td>ISO 8/Grade C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Common themes across all five diagrams:</p>
+        <ul>
+            <li>Parts Wash rooms with open product exposure must always be segregated</li>
+            <li>Process Corridor serves as shared concurrent path for non-exposed items</li>
+            <li>Waste handling requires either closed containment or time separation</li>
+            <li>RTP canisters or closed transfer devices are required for all component transport</li>
+            <li>PAL In/Out separation prevents gowning contamination</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>五張圖的共通設計原則</h4>
+            <p>無論選擇哪種配置，ISPE 強調的核心設計原則始終不變：</p>
+            <ol>
+                <li><strong>隔離開放製程</strong>——任何產品暴露的房間都需要獨立隔離</li>
+                <li><strong>密封轉運</strong>——所有組件在潔淨區間的移動都必須在密閉容器中進行</li>
+                <li><strong>更衣分流</strong>——進入與離開的更衣路徑分開，避免污染潔淨更衣用品</li>
+                <li><strong>廢棄物管理</strong>——密封或時間隔離，二擇一</li>
+                <li><strong>Process Corridor 共用</strong>——但僅限非暴露品與人員</li>
+            </ol>
+        </div>
+
+        <div class="practice-box green">
+            <h4>實務應用：選擇你的設施配置</h4>
+            <p>你正在規劃一座新的無菌充填設施。請根據以下場景，判斷最適合的概念圖：</p>
+            <ol>
+                <li>年產量 500 萬瓶注射劑，產品熱穩定，可承受終端滅菌 &rarr; <strong>?</strong></li>
+                <li>年產量 10 萬瓶生物製劑，不耐熱，需無菌充填，預算有限 &rarr; <strong>?</strong></li>
+                <li>年產量 2,000 萬瓶大輸液，需冷凍乾燥，要求最高產品保護等級 &rarr; <strong>?</strong></li>
+            </ol>
+            <p><em>（提示：考慮規模、產品特性、屏障技術選擇三個維度）</em></p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>Why does using isolators allow a lower background classification (ISO 8/Grade C) compared to RABS (ISO 7/Grade B)? What risk trade-off is being made?</li>
+                <li>All five diagrams mention the Process Corridor as a "shared concurrent path." Under what circumstances would you need to abandon the shared corridor concept and implement fully segregated corridors?</li>
+                <li>Figure 4.8 (terminally sterilized) is the only configuration that explicitly states "only one product can be made at a time." Why is concurrent production feasible in aseptic configurations (Figs 4.4, 4.6) but not here?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-title">Section Summary / 本節總結</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Key Takeaways</h2>
+
+        <div class="concept-box">
+            <h4>Section 4.7 &mdash; Support Areas</h4>
+            <ul>
+                <li>Technical support areas should be proximal to cleanrooms but unclassified and separated</li>
+                <li>Process support areas (compounding, parts wash, buffer prep) should be isolated from aseptic areas, with vision panels and transfer hatches if adjacent</li>
+                <li>Dual-access equipment (autoclaves, washers, tunnels) should be serviced from the less clean side, with the service area at negative pressure</li>
+                <li>Clean utility and CIP/SIP systems should be serviceable from unclassified areas</li>
+                <li>Walkable ceilings enable overhead maintenance without entering cleanrooms, but access must be prohibited during production</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>Section 4.8 &mdash; Concept Diagrams</h4>
+            <ul>
+                <li>Five concept diagrams illustrate functional adjacencies (not floor plans) for small/large scale facilities using RABS or isolators for aseptic or terminally sterilized products</li>
+                <li>All configurations share common principles: segregation of open processes, closed material transfer, unidirectional gowning, and waste management by containment or time separation</li>
+                <li>Isolators permit lower background classification than RABS due to superior barrier integrity</li>
+                <li>Large-scale facilities require unidirectional flow for product-exposed areas</li>
+                <li>The Process Corridor concept reduces airlock complexity while maintaining contamination control</li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>重點回顧</h2>
+
+        <div class="concept-box">
+            <h4>4.7 輔助區域 &mdash; 核心要點</h4>
+            <ul>
+                <li>技術輔助區域（機電維修）應靠近潔淨室但保持非分級與物理分離</li>
+                <li>製程輔助區域（配製、零件清洗、緩衝液配製）必須與無菌區隔離</li>
+                <li>雙面設備從較低等級側維修，維修側保持負壓</li>
+                <li>CIP/SIP 系統宜設於生產區上方或下方，可從非分級區域維修</li>
+                <li>可行走天花板在生產期間禁止進入</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>4.8 概念圖 &mdash; 核心要點</h4>
+            <ul>
+                <li>五張概念圖涵蓋小/大規模 + RABS/隔離器 + 無菌充填/終端滅菌的典型配置</li>
+                <li>所有配置共享：開放製程隔離、密閉轉運、單向更衣、廢棄物密封或時間隔離</li>
+                <li>隔離器因屏障完整性高，允許較低的背景環境等級</li>
+                <li>大規模設施必須實施單向流動</li>
+                <li>Process Corridor 概念簡化了傳統多級氣閘設計</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重要術語速查</h4>
+            <table>
+                <tbody>
+                    <tr><td><strong>Support Area</strong></td><td>輔助區域</td></tr>
+                    <tr><td><strong>Gowning Room</strong></td><td>更衣室</td></tr>
+                    <tr><td><strong>Equipment Preparation</strong></td><td>設備準備區</td></tr>
+                    <tr><td><strong>Parts Washing</strong></td><td>零件清洗</td></tr>
+                    <tr><td><strong>Buffer Preparation</strong></td><td>緩衝液配製</td></tr>
+                    <tr><td><strong>Component Staging</strong></td><td>組件暫存區</td></tr>
+                    <tr><td><strong>Material Flow</strong></td><td>物料流</td></tr>
+                    <tr><td><strong>Personnel Flow</strong></td><td>人員流</td></tr>
+                    <tr><td><strong>Unidirectional Flow</strong></td><td>單向流動</td></tr>
+                    <tr><td><strong>Service Chase</strong></td><td>服務通道</td></tr>
+                    <tr><td><strong>Process Corridor</strong></td><td>製程走廊</td></tr>
+                    <tr><td><strong>Mousehole</strong></td><td>鼠洞（隔離器出口）</td></tr>
+                    <tr><td><strong>Time Separation</strong></td><td>時間隔離</td></tr>
+                    <tr><td><strong>RTP Canister</strong></td><td>快速轉運容器</td></tr>
+                    <tr><td><strong>VHP Chamber</strong></td><td>過氧化氫蒸氣傳遞艙</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities</p>
+    <p>Chapter 4c: Architecture &mdash; Support Areas &amp; Concept Diagrams (Sections 4.7&ndash;4.8) | Pages 101&ndash;106</p>
+    <p>Educational material for GMP professional development</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

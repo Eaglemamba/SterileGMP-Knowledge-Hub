@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 4b: Architecture — Room Functions &amp; Transfer Zones</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin: 0.3rem 0 0.3rem 1.25rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box (Yellow) */
+.analogy-box,
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* Concept Box (Green) */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* Note Box (Orange) */
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Application Box (Blue solid) */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* Practice Box (Blue dashed) */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* Practice Box Green (solid green border) */
+.practice-box.green {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+.practice-box.green h3, .practice-box.green h4 {
+    color: #2e7d32 !important;
+}
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+
+/* Learning Objectives */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Section summary (yellow gradient) */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem;
+    border-left: 4px solid #f6ad55;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Structure list */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* TOC */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* Footer */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header" id="top">
+    <h1>Chapter 4b: Architecture &mdash; Room Functions &amp; Transfer Zones (4.4&ndash;4.6)</h1>
+    <div class="subtitle">房間功能與傳遞區（中）</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p92 &ndash; p100</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives / 本節學習目標</h3>
+        <ol>
+            <li>Identify the five general functional categories of facility areas and their roles in sterile manufacturing. / 辨識設施區域的五大功能分類及其在無菌製造中的角色。</li>
+            <li>Explain the design requirements for changing rooms, including gowning philosophy and ingress/egress control. / 說明更衣室的設計要求，包括更衣策略與進出動線控制。</li>
+            <li>Describe how surface finishes and materials of construction vary by area classification (Grade D through Grade A). / 描述不同區域等級（D 級至 A 級）的表面處理與建材要求差異。</li>
+            <li>Compare airlock types (PAL, MAL, pass-through) and their design philosophies for contamination control. / 比較各類氣閘（人員氣閘、物料氣閘、傳遞窗）及其污染控制設計策略。</li>
+            <li>Apply the concept of "improvement step" and sequential transitions to design compliant transfer zone procedures. / 將「改善步驟」與逐級轉換概念應用於傳遞區程序的合規設計。</li>
+        </ol>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>Section Navigator / 章節導覽</h3>
+        <div class="toc-grid">
+            <a href="#sec-4-4">4.4 Room Function</a>
+            <a href="#sec-4-4-2">4.4.2 Changing Rooms</a>
+            <a href="#sec-4-4-3">4.4.3 Bulk Storage</a>
+            <a href="#sec-4-5">4.5 Surface Finishes</a>
+            <a href="#sec-4-5-table">Table 4.2</a>
+            <a href="#sec-4-5-2">4.5.2 Room Finishes</a>
+            <a href="#sec-4-6">4.6 Transfer Zones</a>
+            <a href="#sec-4-6-1">4.6.1 Improvement Step</a>
+            <a href="#sec-4-6-2">4.6.2 Sequential Transitions</a>
+            <a href="#sec-4-6-3">4.6.3 Airlock Design</a>
+            <a href="#sec-4-6-4">4.6.4 Pass Boxes</a>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.4: ROOM FUNCTION                                    -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>4.4 Room Function</h2>
+                <p>房間功能分類 &nbsp;|&nbsp; p. 92&ndash;93</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <h3>4.4.1 Room Function</h3>
+                    <p>Facility areas are divided into five general functional categories:</p>
+                    <ul>
+                        <li>Areas for <span class="key-term">aseptic processing</span> of product or components</li>
+                        <li>Areas immediately adjacent to the above, comprised of material/personnel airlocks</li>
+                        <li>Preparation areas closely related to the aseptic processing area</li>
+                        <li>Areas immediately adjacent to the above, comprising material airlocks, personnel clean change, inspection, and other associated areas ("pharmaceutical" areas)</li>
+                        <li>General ancillary/support functions, including warehousing, offices, plant utilities, and circulation areas with no protection requirements other than, perhaps, a factory change/uniform for unclassified areas</li>
+                    </ul>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>房間功能五大分類</h3>
+                    <p>ISPE 將無菌設施分成五個層級，從最核心的無菌製程區到最外圈的一般支援區，層層遞進。理解這五層結構是設計潔淨室布局的基礎。</p>
+
+                    <div class="concept-box">
+                        <h4>核心概念：由內到外五圈防護</h4>
+                        <ul>
+                            <li><strong>第一圈</strong>：無菌製程核心（Grade A/B）&mdash; 產品直接暴露區</li>
+                            <li><strong>第二圈</strong>：緊鄰氣閘與人員/物料轉換區</li>
+                            <li><strong>第三圈</strong>：準備區（配液、清洗、組裝）</li>
+                            <li><strong>第四圈</strong>：製藥區（檢驗、乾淨更衣、物料暫存）</li>
+                            <li><strong>第五圈</strong>：一般輔助區（倉庫、辦公室、公用工程）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：洋蔥式防護</h4>
+                        <p>想像整個設施是一顆洋蔥 &mdash; 每一層都是一道屏障。越靠近中心（無菌核心），環境控制越嚴格；每跨越一層，都必須經過一個「轉換站」（氣閘或更衣室）。這就是為什麼設施布局必須從核心向外規劃。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.4.2: CHANGING ROOMS                                 -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-4-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>4.4.2 Changing Rooms</h2>
+                <p>更衣室設計 &nbsp;|&nbsp; p. 93</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.2 Changing Rooms</h3>
+                    <p>Changing rooms should be designed to accommodate the <span class="key-term">gowning philosophy</span> and changing regimes determined by process operations. They should be arranged to support procedures which prevent the ingress of outside environmental contaminant. Personnel should pass from facility changing rooms (where street clothes are replaced with facility uniforms) to clean environment or aseptic changing rooms in a logical progression.</p>
+
+                    <p>Changing rooms into open process aseptic areas (including RABS) should, where possible, have separate ingress/egress routes to prevent chemical or bio-contamination of clean garments. Clean and aseptic processing change areas can be sequential and in separate rooms. HVAC and personnel movements should be controlled.</p>
+
+                    <p>Changing facilities can range from CNC or Grade D to ISO 7/Grade B or higher, so the changing area standards and finishes should be appropriate for the highest cleanliness processing area into which it opens. The flow and storage of gowning materials should also be considered in the design.</p>
+
+                    <p>Personal showering and toilet facilities should not be directly connected to classified cleanroom locker room or gowning areas.</p>
+                </div>
+                <div class="right-column">
+                    <h3>更衣室設計要點</h3>
+
+                    <div class="concept-box">
+                        <h4>更衣室設計四大原則</h4>
+                        <ul>
+                            <li><strong>邏輯遞進</strong>：人員從一般更衣室（換廠服）逐步進入潔淨更衣室（穿無塵衣），分階段完成。</li>
+                            <li><strong>進出分離</strong>：進入無菌區（含 RABS）的更衣室應盡可能設計獨立的進入與離開路線，避免乾淨衣物被汙染。</li>
+                            <li><strong>等級匹配</strong>：更衣室的環境控制標準應匹配它所通往的最高潔淨等級。</li>
+                            <li><strong>隔離廁所</strong>：淋浴間與廁所不得直接連通分級潔淨室或更衣區。</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>實務提醒</h4>
+                        <p>更衣室的「進出分離」原則在稽核中是常見缺失項。許多舊廠因空間限制，進出共用同一條走廊。若無法實體分離，至少需要有 SOP 規定同時只允許單向通行（gowning 或 de-gowning），並以 HVAC 正壓流向作為補償措施。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.4.3: BULK STORAGE                                   -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-4-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>4.4.3 Bulk Storage Areas</h2>
+                <p>散裝儲存區 &nbsp;|&nbsp; p. 93</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.3 Bulk Storage Areas</h3>
+                    <p>Bulk storage areas within warehouses are generally remote from the clean core. Some intermediate, product, and components storage may be required within the preparation and aseptic processing areas. Storage within these areas should have dedicated floor space and may need special HVAC provisions.</p>
+                </div>
+                <div class="right-column">
+                    <h3>散裝儲存區設計</h3>
+                    <p>大宗物料倉儲區通常遠離潔淨核心。但某些中間產品、成品或零組件可能需要暫存於準備區或無菌製程區內。此類暫存區需有專屬空間並可能需要特殊的 HVAC 設計（如溫濕度控制）。</p>
+
+                    <div class="analogy-box">
+                        <h4>比喻：廚房的食材暫存</h4>
+                        <p>大倉庫像是餐廳後方的冷藏庫（遠離料理區），但廚房內通常還需要一個小型工作台冰箱來暫放即將使用的食材。潔淨室內的暫存區就是這個「工作台冰箱」&mdash; 空間小、控管嚴、只放即將投入製程的物料。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.5: SURFACE FINISHES & MATERIALS OF CONSTRUCTION     -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-5">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.5</div>
+            <div class="chapter-info">
+                <h2>4.5 Surface Finishes and Materials of Construction</h2>
+                <p>表面處理與建材 &nbsp;|&nbsp; p. 93&ndash;94</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.5.1 Architectural Detailing</h3>
+                    <p>In detailing the architectural aspects of cleanrooms, key factors which should be addressed include:</p>
+                    <ul>
+                        <li>The principal function of the room is to provide an enclosure to contain the defined activity and its associated equipment.</li>
+                        <li>Finish materials should be <span class="key-term">non-shedding</span>, <span class="key-term">non-porous</span>, and resistant to sustaining microbial growth.</li>
+                        <li>Surfaces should be smooth and easy to clean, with minimal ledges and joints. Corners at walls, ceilings, and floors should be <span class="key-term">coved</span> with a sufficient radius to facilitate cleaning and minimize areas that are difficult to access, particularly near the product and process equipment.</li>
+                        <li>Finishes should be able to withstand repeated cleaning and sanitization with various chemicals and resist surface oxidization.</li>
+                        <li>Attention should be given to these issues when detailing any interface between the facility and the equipment and services.</li>
+                        <li>Wall protection and guarding to prevent mechanical failure should be considered to maintain the integrity of the finishes and minimize damage or premature wearing.</li>
+                    </ul>
+
+                    <p>Door hardware should be carefully considered for ease of cleaning. "Hands off" proximity sensors and openers should be installed, where possible. Normally, doors should swing towards higher room pressures, to assist in maintaining differential pressurization. Fire regulations governing escape in an emergency, however, usually take precedence, requiring door closers of sufficient force to overcome the pressure. Door interlocks should have emergency override features in case of fire.</p>
+
+                    <p>A risk assessment should be made when doors swing into ISO 7/Grade B or higher areas as these doors may contaminate the aseptic area, having been exposed to lower classified areas.</p>
+
+                    <p>The goal of architectural detailing is to help protect the product by providing finishes which can withstand cleaning and sanitization requirements, providing details which minimize horizontal ledges and provide tight seals at penetration points or where different systems are integrated.</p>
+
+                    <p>Higher quality, robust finishes can evoke an environment of cleanliness and control, where lesser finishes which do not hold up as well to use and cleaning can make a facility look dated and in need of repair. Higher quality finishes demonstrate a dedication to quality to inspectors.</p>
+                </div>
+                <div class="right-column">
+                    <h3>建築細節設計</h3>
+
+                    <div class="concept-box">
+                        <h4>潔淨室表面處理六大原則</h4>
+                        <ul>
+                            <li><strong>不脫落</strong>（Non-shedding）：材料不會釋出微粒</li>
+                            <li><strong>不滲透</strong>（Non-porous）：表面不吸收液體或微生物</li>
+                            <li><strong>抗微生物</strong>：不利於微生物在表面附著生長</li>
+                            <li><strong>易清潔</strong>：表面光滑、接縫最少、牆角圓弧化（Coved）</li>
+                            <li><strong>耐化學品</strong>：能承受反覆清潔消毒，不氧化腐蝕</li>
+                            <li><strong>耐衝擊</strong>：需考慮防撞設施，尤其是高流量區域</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>門的設計 &mdash; 壓差與消防的兩難</h4>
+                        <p>門應朝壓力較高的一側開啟，以維持壓差。但消防法規要求門朝逃生方向開啟。這兩個需求常互相衝突，尤其在 Grade B 以上區域。解決方案通常是加裝足夠力量的門弓器（Door Closer）來克服壓差，並且設置緊急開門覆蓋功能。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：表面處理像選「防水手機殼」</h4>
+                        <p>潔淨室的表面處理就像選手機保護殼一樣 &mdash; 你需要它防水（不滲透）、防摔（耐衝擊）、好擦拭（易清潔），而且不能掉漆（不脫落）。越高等級的潔淨室，就像越昂貴的手機，需要越高規格的保護。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>稽核觀點：外觀即品質</h4>
+                        <p>ISPE 特別指出：高品質的表面處理可以向稽核員傳達對品質的承諾。反之，老舊脫落的牆面或生鏽的門框會讓稽核員對整個設施的管理水準產生懷疑。這不只是美觀問題，更是 GMP 文化的展現。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- TABLE 4.2: ARCHITECTURAL MATERIALS AND FINISHES GUIDE         -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-5-table">
+        <div class="chapter-divider">
+            <div class="chapter-badge">T4.2</div>
+            <div class="chapter-info">
+                <h2>Table 4.2: Architectural Materials and Finishes Guide</h2>
+                <p>建材與表面處理指引表 &nbsp;|&nbsp; p. 94&ndash;97</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Table 4.2 &mdash; Floors</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Element</th>
+                                    <th>Unclassified / Support</th>
+                                    <th>CNC / Grade D</th>
+                                    <th>ISO 8 / Grade C</th>
+                                    <th>ISO 7/Grade B &amp; ISO 5/Grade A</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Floors</strong></td>
+                                    <td>Standard construction practice. Sealed concrete or coatings with high wear resistance. Locker rooms: welded seam vinyl, vinyl composition tile.</td>
+                                    <td>Resinous coatings (epoxy, MMA, urethane), vinyl composition tile, welded seam vinyl, terrazzo. Easily cleanable.</td>
+                                    <td>Smooth, cleanable. Resinous coatings, welded seam vinyl, chemically resistant coatings, terrazzo. Floor drains capped if required.</td>
+                                    <td>Solid, non-porous, sanitizable. Terrazzo, welded seam vinyl, resinous coatings. Coved wall bases integral with floor. <strong>No floor drains or sinks.</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Table 4.2 &mdash; Interior Walls</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Element</th>
+                                    <th>Unclassified / Support</th>
+                                    <th>CNC / Grade D</th>
+                                    <th>ISO 8 / Grade C</th>
+                                    <th>ISO 7/Grade B &amp; ISO 5/Grade A</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Interior Walls</strong></td>
+                                    <td>Moisture/mold-resistant gypsum board or concrete block with latex paint.</td>
+                                    <td>Latex painted gypsum board, metal panels, glazed tile. Suitable durability and cleanability.</td>
+                                    <td>Smooth, solid, non-porous. Concrete block, gypsum board, metal panels. Chemical resistant coatings, welded seam vinyl, sprayed-on finishes. Glass cleanroom panels acceptable.</td>
+                                    <td>Crevice-free, smooth, non-porous, robust. No joints/seams for microbial growth. Resistant to corrosion from cleaning/bio-decontamination agents. Curved/rounded corners for cleanability.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Table 4.2 &mdash; Ceilings</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Element</th>
+                                    <th>Unclassified / Support</th>
+                                    <th>CNC / Grade D</th>
+                                    <th>ISO 8 / Grade C</th>
+                                    <th>ISO 7/Grade B &amp; ISO 5/Grade A</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Ceilings</strong></td>
+                                    <td>Not required if material not exposed. Lay-in ceiling for personnel areas. Locker rooms: mylar/vinyl encapsulated tiles.</td>
+                                    <td>Suspended grid systems (mylar/vinyl lay-in, FRP, metal). Hold-down clips where pressure differential required.</td>
+                                    <td>FRP, metal, sealed/epoxy painted gypsum board. Non-porous, cleanable/sanitizable. No joints for microbial growth. Fixtures flush-mounted. Sprinklers concealed, gasketed, fusibly capped (not caulked).</td>
+                                    <td>Smooth, solid, cleanable, sanitizable, non-porous. Fixtures flush mounted, maintenance from outside. ISO 5/Grade A: ceiling is HEPA/ULPA filter grid for UAF. Sprinklers concealed and non-disruptive to UAF.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Table 4.2 &mdash; Junctions, Doors, Hardware, Lighting, Sprinklers, Penetrations</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Element</th>
+                                    <th>Unclassified / Support</th>
+                                    <th>CNC / Grade D</th>
+                                    <th>ISO 8 / Grade C</th>
+                                    <th>ISO 7/Grade B &amp; ISO 5/Grade A</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Junction Details</strong></td>
+                                    <td>Standard practice. Coved bases not required but recommended.</td>
+                                    <td>Coved integral floor bases required. Wall protection in high traffic areas. Rounded wall/wall, wall/ceiling details required.</td>
+                                    <td colspan="2">Caulked coved integral floor bases. Wall/wall and wall/ceiling covings. Minimal wall protection to maintain cleanability.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Doors &amp; Windows</strong></td>
+                                    <td>General building code.</td>
+                                    <td>General building code.</td>
+                                    <td>Metal with epoxy finish, FRP in corrosive areas. Flush glazing; drop sills problematic. All-glass door panels acceptable.</td>
+                                    <td>Corrosion-resistant metals (stainless steel), vinyl, PVC. All surfaces accessible for cleaning. Stainless steel for doors, hardware, kick/mop plates.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Door Hardware</strong></td>
+                                    <td>General purpose, building code compliant.</td>
+                                    <td>General purpose, building code compliant.</td>
+                                    <td>Designed for cleaning access. Plated metals or stainless steel.</td>
+                                    <td>Recessed, concealed where possible, accessible for cleaning. Automated touchless actuators recommended. Stainless steel.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lighting</strong></td>
+                                    <td>Industrial suspended fixtures.</td>
+                                    <td>Flush or surface mounted to ceiling.</td>
+                                    <td>Flush mounted, sealed fixtures considered. Maintenance access from outside.</td>
+                                    <td>Sealed fixtures. Positioned to avoid UAF disruption. Maintenance from outside.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fire Sprinklers</strong></td>
+                                    <td>Conventional wet/dry, exposed.</td>
+                                    <td>Conventional, concealed pipes, through ceiling.</td>
+                                    <td>Concealed pipes, recessed/flush heads. No caulking on caps.</td>
+                                    <td>Concealed, gasketed (not caulked), fusibly capped. ISO 5: specialized heads that do not disrupt UAF.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Penetrations</strong></td>
+                                    <td>Sealing not required except for fire/thermal. Locker rooms: sealed for cleanability.</td>
+                                    <td>Sealed with caulk for pest/contamination prevention. Escutcheon plates recommended.</td>
+                                    <td>Silicone caulk acceptable. Fire-resistant sealant with silicone overlay or escutcheon plate.</td>
+                                    <td>All penetrations sealed. Silicone caulking generally acceptable. Fire-resistant sealant with smooth finish overlay.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>Table 4.2 關鍵解讀</h3>
+
+                    <div class="concept-box">
+                        <h4>建材等級速查邏輯</h4>
+                        <p>隨著區域等級從「未分級」升至 Grade A，建材要求呈現明確的階梯式升級：</p>
+                        <ul>
+                            <li><strong>地板</strong>：密封混凝土 &rarr; 環氧樹脂/乙烯基 &rarr; 焊縫乙烯基+圓弧踢腳板 &rarr; <strong>禁止排水口</strong></li>
+                            <li><strong>牆壁</strong>：乳膠漆石膏板 &rarr; 金屬面板/釉面磚 &rarr; 化學抗性塗料 &rarr; <strong>無縫隙、圓角、抗腐蝕</strong></li>
+                            <li><strong>天花板</strong>：懸吊式天花 &rarr; FRP/金屬面板 &rarr; 密封齊平安裝 &rarr; <strong>HEPA 過濾器陣列（UAF）</strong></li>
+                            <li><strong>門</strong>：標準五金 &rarr; 環氧塗裝金屬 &rarr; <strong>全不鏽鋼 + 免接觸感應器</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Grade A 的獨特要求</h4>
+                        <ul>
+                            <li><strong>禁止</strong>排水口和水槽（Floor drains and sinks are not permitted）</li>
+                            <li>天花板由 HEPA/ULPA 過濾器陣列組成，提供單向氣流（UAF）</li>
+                            <li>消防噴頭必須為不擾動 UAF 的特殊設計</li>
+                            <li>所有門把五金為凹入式、免接觸致動器</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：從一般廚房到手術室</h4>
+                        <p>未分級區就像家裡的廚房 &mdash; 用瓷磚地板、塗漆牆壁就足夠了。Grade C/D 像是餐廳後廚 &mdash; 需要不鏽鋼檯面和可沖洗地板。Grade A 則像手術室 &mdash; 天花板就是層流出風口、牆角全部圓弧化、地上不能有一個排水孔。每升一級，就更接近「零死角、零藏污」的極致標準。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>常見稽核缺失：石膏板發霉</h4>
+                        <p>Table 4.2 的 Note 2 特別警告：石膏板（Gypsum Board）在高濕度或頻繁清潔消毒區域有發霉風險。若必須使用，應選擇玻璃面或抗菌石膏板。這是新廠設計時最容易忽略、舊廠最常出問題的建材議題。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.5.2: ROOM FINISHES                                  -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-5-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.5</div>
+            <div class="chapter-info">
+                <h2>4.5.2 Room Finishes</h2>
+                <p>房間表面規格 &nbsp;|&nbsp; p. 98</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.5.2 Room Finishes</h3>
+                    <p>While specifying room finishes for cleanrooms, key factors which should be addressed include:</p>
+                    <ul>
+                        <li>The nature of the process performed in the room should be considered. Manufacturing or preparation activity in an ISO 8/Grade C room places more demands on housekeeping, cleaning, disinfection, and environmental monitoring than if an aseptic processing isolator were placed in the same room.</li>
+                        <li>The balance of installation costs against maintainability and ease with which repair or replacement can be performed.</li>
+                        <li>Finishes should allow for the ease of installation of building services, grilles, controls/switches, and piped penetrations.</li>
+                        <li>Finishes should accommodate integration of fixtures such as CCTV, intercom panels, key pads, telephones, sprinkler heads and covers, and emergency showers.</li>
+                        <li>Wall or floor mounted wall protection is recommended in high traffic areas.</li>
+                        <li>Fire protection aspects should be accommodated: surface flame spread, fire resistant construction (doors and vision panels), detectors, sprinkler heads, and alarm sounders.</li>
+                        <li>Air tightness of room fabric, particularly around door openings and sprinkler heads, and the choice of finish materials that are not adversely affected by sanitizing chemicals.</li>
+                        <li>All wall penetrations (electrical outlets, data ports, fire extinguisher cabinets, etc.) should be sealed to maintain air pressure control and prevent pest infiltration.</li>
+                        <li>Electrically conductive and grounded flooring should be considered in areas where explosion control is required.</li>
+                        <li>Method and frequency of cleaning, cleaning agents, and details such as equipment surface fixings and floor drains should be considered. <span class="key-term">Floor drains are not permitted inside the aseptic processing area.</span> In other areas, floor drains should be minimized with concave, minimum 2" air break on process drain lines. Back flow preventers and trap controllers should be utilized.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>房間表面規格選擇要點</h3>
+
+                    <div class="concept-box">
+                        <h4>表面規格選擇的決策因素</h4>
+                        <ul>
+                            <li><strong>製程需求</strong>：同一等級房間內，開放式製程 vs. 隔離器操作，對表面要求天差地別</li>
+                            <li><strong>安裝 vs. 維護成本</strong>：選材時需平衡初始安裝成本與長期維護/更換的便利性</li>
+                            <li><strong>系統整合</strong>：牆面必須容納 CCTV、對講機、門禁、消防噴頭等多種設備</li>
+                            <li><strong>氣密性</strong>：門框、噴頭、穿管等所有開口都必須密封，維持壓差控制</li>
+                            <li><strong>防爆</strong>：有溶劑的區域需考慮防靜電導電地板</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>排水口管控 &mdash; 微生物風險熱點</h4>
+                        <p>排水口是潔淨室微生物汙染的高風險點。ISPE 的立場非常明確：</p>
+                        <ul>
+                            <li>無菌製程區（Aseptic Area）：<strong>完全禁止</strong>排水口</li>
+                            <li>準備區等其他區域：排水口應最小化，且必須使用凹面設計、至少 2 吋空氣斷口、逆流防止器與存水彎控制器</li>
+                        </ul>
+                        <p>排水口的微生物回溯汙染（Backsplash/Backflow）是導致無菌測試失敗與批次報廢的常見原因之一。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p>你的 Grade C 準備區目前使用環氧樹脂地板搭配排水口，用於清洗作業排水。最近連續兩次環境監測發現排水口附近的微生物計數偏高。你會考慮哪些改善措施？</p>
+                        <ul>
+                            <li>增加排水口的清潔消毒頻率</li>
+                            <li>安裝逆流防止器與存水彎監控器</li>
+                            <li>評估是否能減少排水口數量或重新配置位置</li>
+                            <li>在排水口上加裝密封蓋，僅在排水時打開</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.6: TRANSFER ZONES                                   -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-6">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>4.6 Transfer Zones</h2>
+                <p>傳遞區（氣閘系統） &nbsp;|&nbsp; p. 98&ndash;99</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6 Transfer Zones</h3>
+                    <p>Transfer zones and <span class="key-term">airlocks</span> into and out of cleanroom areas should provide suitable transition for materials, personnel, equipment and waste. Airlocks are used to maintain pressure differentials between areas of differing classifications and to provide a controlled environment for the transfer of materials or the transition/gowning of personnel between classified areas.</p>
+
+                    <p>Personnel and material (including components, raw materials, equipment and waste) require airlocks to enter and exit areas of different classifications. The staging and movement of personnel and materials should be designed to minimize errors, maintain gowning room hygiene, and minimize the risk of cross-contamination. Airlocks should be appropriately sized and environmentally controlled depending upon the activity occurring within the airlock.</p>
+                </div>
+                <div class="right-column">
+                    <h3>傳遞區總論</h3>
+
+                    <div class="concept-box">
+                        <h4>氣閘（Airlock）的三大功能</h4>
+                        <ul>
+                            <li><strong>維持壓差</strong>：作為不同等級區域之間的緩衝空間，防止一開門就破壞壓差梯度</li>
+                            <li><strong>提供轉換環境</strong>：人員更衣、物料清潔消毒等「改善步驟」在此完成</li>
+                            <li><strong>降低交叉污染風險</strong>：通過門互鎖、單向流動等機制，確保低等級空氣不進入高等級區域</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：潛水艇的壓力艙</h4>
+                        <p>氣閘就像潛水艇上的壓力艙（Airlock）&mdash; 你不能直接從海水中走進潛艇內部，必須先進入壓力艙、關閉外門、調整壓力、再打開內門。潔淨室的氣閘也是一樣的概念：關門 &rarr; 執行清潔/更衣 &rarr; 等待壓差恢復 &rarr; 再開另一扇門。兩扇門永遠不能同時打開。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.6.1: IMPROVEMENT STEP                               -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-6-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>4.6.1 Improvement Step</h2>
+                <p>改善步驟 &nbsp;|&nbsp; p. 99</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.1 Improvement Step</h3>
+                    <p>There is an expectation that when personnel and materials transition from a lower area classification to a higher area classification that an <span class="key-term">improvement step</span> occurs.</p>
+
+                    <p><strong>For materials</strong>, the improvement step can be a cleaning and/or sanitization activity:</p>
+                    <ul>
+                        <li>Depending on the cleanliness of the intended area, it can consist of removing an outer cover or wrapping, a manual wipe down, or fumigation/decontamination.</li>
+                        <li>A <span class="key-term">transition line</span> is recommended for airlocks moving into ISO 8/Grade C and higher areas. Materials should be transferred over the line after they have been cleaned/sanitized.</li>
+                        <li>For materials going into a CNC or Grade D space, cleaning can take place outside of the Grade D airlock.</li>
+                    </ul>
+
+                    <p><strong>For personnel</strong>, the improvement step can include putting on an additional layer of protective clothing.</p>
+                </div>
+                <div class="right-column">
+                    <h3>改善步驟 &mdash; 每次跨級都要「升級」</h3>
+
+                    <div class="concept-box">
+                        <h4>「改善步驟」核心規則</h4>
+                        <p>從低等級區域進入高等級區域時，必須執行一項能提升清潔度的具體行動（Improvement Step）：</p>
+                        <ul>
+                            <li><strong>物料</strong>：拆除外包裝 / 擦拭消毒 / 燻蒸除汙</li>
+                            <li><strong>人員</strong>：加穿一層防護衣物</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>轉換線（Transition Line）</h4>
+                        <p>氣閘內應設置視覺明確的「轉換線」&mdash; 物料必須在清潔消毒完成後才能跨越此線。這是一個簡單但極為有效的防汙染措施。在 ISO 8/Grade C 及更高等級的氣閘中，ISPE 明確建議設置轉換線。</p>
+                        <p>實務上，轉換線可以是地板上一條醒目的彩色膠帶或嵌入式標線。有些設施甚至使用不同顏色的地板來區分「髒側」和「乾淨側」。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：機場安檢線</h4>
+                        <p>就像過機場安檢一樣 &mdash; 行李（物料）要過 X 光機（消毒），人要脫外套過金屬探測門（換穿防護衣）。安檢線前後是不同管制等級的區域，你不能帶著未經檢查的東西越過那條線。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.6.2: SEQUENTIAL TRANSITIONS                         -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-6-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>4.6.2 Sequential Transitions</h2>
+                <p>逐級轉換 &nbsp;|&nbsp; p. 99</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.2 Sequential Transitions</h3>
+                    <p>Airlock transitions should occur <span class="key-term">one grade at a time</span> when transitioning from lower to higher (cleaner) classifications, for both personnel and materials. When exiting, it is often acceptable to step down in classification. Although, when exiting from an ISO 7/Grade B production room, an ISO 7/Grade B exit airlock is preferred to protect the critical area.</p>
+
+                    <p>An airlock should be provided for transitioning from an unclassified environment into CNC or Grade D.</p>
+
+                    <p><span class="key-term">ISO 5/Grade A</span> environments may only be accessed from ISO 7/Grade B environments. Airlocks are generally not provided between ISO 5/Grade A and ISO 7/Grade B; however, clear visual indications and physical barriers should be provided so that the boundary between these environments can be seen and understood by personnel.</p>
+
+                    <p><span class="key-term">ISO 7/Grade B</span> environments should be accessed from ISO 8/Grade C, through airlocks. There should be separate entry airlocks for personnel and materials for entry to ISO 7/Grade B from ISO 8/Grade C rooms. The entry airlock into an ISO 7/Grade B aseptic area should demonstrate ISO 7 "at rest" conditions in the location where the final stages of gowning occurs.</p>
+
+                    <p>Regular access to mechanical rooms should be from unclassified areas, or provisions should be made to accommodate required airlocks and gowning.</p>
+                </div>
+                <div class="right-column">
+                    <h3>逐級轉換的關鍵規則</h3>
+
+                    <div class="concept-box">
+                        <h4>等級轉換路徑圖</h4>
+                        <p>進入時必須逐級升級：</p>
+                        <p style="text-align: center; font-weight: 600; font-size: 1rem; margin: 0.75rem 0;">
+                            未分級 &rarr; CNC/Grade D &rarr; ISO 8/Grade C &rarr; ISO 7/Grade B &rarr; ISO 5/Grade A
+                        </p>
+                        <ul>
+                            <li>每一個「&rarr;」都代表一個氣閘轉換</li>
+                            <li>不可跳級（例如不可從 Grade D 直接進入 Grade B）</li>
+                            <li>退出時可以跳級，但 Grade B 出口仍建議設 Grade B 氣閘以保護核心區</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Grade A 與 Grade B 的特殊關係</h4>
+                        <p>Grade A 與 Grade B 之間通常<strong>不設氣閘</strong>（因為 Grade A 本身就在 Grade B 環境內），但必須有：</p>
+                        <ul>
+                            <li>清晰的視覺指示（如地板標線、顏色區分）</li>
+                            <li>物理屏障（如 RABS 擋板、懸掛式隔簾）</li>
+                        </ul>
+                        <p>Grade C 進入 Grade B 時，必須設置<strong>人員與物料分離的獨立氣閘</strong>。Grade B 人員氣閘中最後階段更衣處需達到 ISO 7「靜態」條件。</p>
+                    </div>
+
+                    <div class="practice-box green">
+                        <h4>快速自測</h4>
+                        <p>一名技術人員需要從倉庫（未分級）進入 Grade B 無菌充填室。請列出他需要經過的所有氣閘和更衣步驟：</p>
+                        <ol>
+                            <li>未分級 &rarr; Grade D 氣閘（換廠服）</li>
+                            <li>Grade D &rarr; Grade C 人員氣閘（穿第一層無塵衣）</li>
+                            <li>Grade C &rarr; Grade B 人員氣閘（穿完整無菌衣 + 手套 + 護目鏡，最後更衣處達 ISO 7 靜態）</li>
+                            <li>Grade B &rarr; Grade A：無氣閘，但有視覺標示與物理屏障</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.6.3: AIRLOCK DESIGN PHILOSOPHIES                    -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-6-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>4.6.3 Airlock Design Philosophies</h2>
+                <p>氣閘設計策略 &nbsp;|&nbsp; p. 99&ndash;101</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+
+            <!-- 4.6.3 General -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.3 Airlock Design Philosophies</h3>
+                    <p>Airflow direction is generally from higher grade to lower grade. A higher grade room or airlock should be positive to a lower grade room or airlock. Airlock doors should be <span class="key-term">interlocked or alarmed</span> to prevent both sets of doors from being opened simultaneously, to control the ingress of potential contaminates to the cleaner zones.</p>
+
+                    <p>Alternate airlock pressurization schemes are often required for containment or the mitigation of cross-contamination between different products. A risk assessment should be performed on such airlocks to evaluate the risk of product contamination versus the potential for cross-contamination or the requirements for containment.</p>
+                </div>
+                <div class="right-column">
+                    <h3>氣閘設計基本原則</h3>
+
+                    <div class="concept-box">
+                        <h4>氣閘壓差與門互鎖</h4>
+                        <ul>
+                            <li><strong>氣流方向</strong>：從高等級流向低等級（正壓向外推）</li>
+                            <li><strong>壓差維持</strong>：氣閘本身應對低等級側保持正壓</li>
+                            <li><strong>門互鎖</strong>（Interlock）：兩扇門不得同時打開，可用機械互鎖或電子連鎖+警報</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>密閉 vs. 防護 &mdash; 壓差方向的例外</h4>
+                        <p>當需要「防護」（Containment）時，壓差方向可能反轉 &mdash; 例如處理高活性或高毒性產品時，氣閘需要對產品區保持負壓，防止有害物質外洩。此時需要風險評估來權衡：</p>
+                        <ul>
+                            <li>產品汙染風險（外界進入）</li>
+                            <li>交叉汙染風險（產品間）</li>
+                            <li>操作人員安全（有害物質外洩）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.6.3.1 PAL -->
+            <h2 class="section-title" id="sec-4-6-3-1">4.6.3.1 Personnel Airlocks (PAL)</h2>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.3.1 Personnel Airlocks (PAL) from Lower Grade to Higher Grade</h3>
+                    <p><span class="key-term">Unidirectional flow</span> is suggested for ISO 8/Grade C and higher personnel airlocks (i.e., personnel should not gown and de-gown in the same PAL). If a single airlock is provided, procedures should be established to prevent simultaneous gowning and de-gowning.</p>
+
+                    <p>PAL considerations include:</p>
+                    <ul>
+                        <li>PALs should have clearly defined changing areas, adequate garment storage, dressing mirrors, and access control.</li>
+                        <li><span class="key-term">Step-over benches</span> should be used in ISO 8/Grade C and ISO 7/Grade B PALs to put on shoe covers, boot covers, etc.</li>
+                        <li>Toilet rooms should not be directly accessed from locker rooms or transfer zones where personnel will change for entry into ISO 8/Grade C or higher areas.</li>
+                        <li>Hand washing sinks should be limited to CNC or Grade D areas.</li>
+                        <li>Hand sanitizing gels and solutions should be used in higher (cleaner) classifications.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>人員氣閘（PAL）設計</h3>
+
+                    <div class="concept-box">
+                        <h4>PAL 設計五要素</h4>
+                        <ul>
+                            <li><strong>單向流動</strong>：進入與離開應使用不同路線（Grade C 以上）</li>
+                            <li><strong>跨越板凳</strong>（Step-over Bench）：Grade C 與 Grade B 的 PAL 中用於穿鞋套，劃分乾淨側與髒側</li>
+                            <li><strong>更衣鏡</strong>：讓人員自我檢查更衣完整性</li>
+                            <li><strong>門禁控制</strong>：確保只有經過更衣訓練的人員進入</li>
+                            <li><strong>洗手設施</strong>：洗手水槽僅限 Grade D 以下；Grade C 以上使用乾洗手液</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為什麼高等級區不能有水槽？</h4>
+                        <p>水槽是微生物的溫床 &mdash; 水、有機物、溫度三者結合，是理想的微生物培養環境。排水管線更可能藏匿 Pseudomonas 等水源性微生物。因此 ISPE 規定 Grade C 以上區域以乾洗手液取代水洗。這也呼應了 4.5.2 中「無菌區禁止排水口」的原則。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：Step-over Bench 就像鞋店的試穿凳</h4>
+                        <p>跨越板凳的功能就像鞋店的試穿凳 &mdash; 你坐下來，把街上穿的鞋脫掉放在凳子的「髒側」，腳跨過凳子到「乾淨側」穿上無塵鞋套。這個簡單的物理隔離確保地板上的汙染物不會被鞋底帶進潔淨區。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.6.3.2 MAL -->
+            <h2 class="section-title" id="sec-4-6-3-2">4.6.3.2 Material Airlocks (MAL)</h2>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.3.2 Material Airlocks (MAL) from Lower Grade to Higher Grade</h3>
+                    <p>Airlocks should be sized appropriately to allow materials to be staged in the airlocks during <span class="key-term">disinfectant dwell times</span> and to allow personnel adequate space for movement without compromising the materials or airflows.</p>
+
+                    <p>Personnel gowning is allowed in a material airlock exclusively to allow personnel access to higher grade airlocks to support the movement of material. Personnel may not enter the production suite through this path.</p>
+
+                    <p>A <span class="key-term">transition line</span> should be established when an improvement step takes place within the airlock. Transition across the line requires an improvement activity, either unwrapping or wiping of all materials.</p>
+
+                    <p>For sequential, adjacent MALs, personnel on the entry side of a MAL may pass through the MAL to the entry side of the higher grade MAL for the purpose of facilitating material movement. For example, CNC or Grade D personnel can go to the entry side of the ISO 8/Grade C MAL (without crossing the transition line).</p>
+
+                    <p><strong>Note:</strong> Manual transfers into ISO 7/Grade B are often inferior to <span class="key-term">automated sterilization systems</span> or decontamination chambers; these should be used where practical. Decontamination should allow for the required dwell time to assure the effectiveness of disinfection for manual transfers.</p>
+                </div>
+                <div class="right-column">
+                    <h3>物料氣閘（MAL）設計</h3>
+
+                    <div class="concept-box">
+                        <h4>MAL 的獨特設計要求</h4>
+                        <ul>
+                            <li><strong>空間尺寸</strong>：必須能容納物料在消毒劑停留時間（Dwell Time）內暫存，同時讓人員有足夠操作空間</li>
+                            <li><strong>轉換線</strong>：MAL 內設置轉換線，物料必須經過擦拭或拆除外包裝後才能越線</li>
+                            <li><strong>人員限制</strong>：人員可以在 MAL 內更衣（僅為協助物料移動），但<strong>不可</strong>經由 MAL 路線進入生產區</li>
+                            <li><strong>逐級通行</strong>：低等級人員可進入 MAL 的入口側（髒側），但不可跨越轉換線</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>自動化 vs. 手動傳遞</h4>
+                        <p>ISPE 明確指出：手動將物料傳入 Grade B 的方式，通常不如自動滅菌系統或除汙腔室可靠。建議在可行情況下使用自動化方案（如 VHP 除汙傳遞艙、隧道式烘箱）。若仍需手動傳遞，必須確保消毒劑有足夠的接觸停留時間（Dwell Time），以達到有效的消毒效果。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.6.3.3 Same Grade -->
+            <h2 class="section-title" id="sec-4-6-3-3">4.6.3.3 &amp; 4.6.3.4 Same Grade / Exit Airlocks</h2>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.3.3 PAL or MAL within the Same Grade</h3>
+                    <p>No additional gowning is required when moving between areas of the same grade, except where required for personnel protection or material containment.</p>
+
+                    <h3>4.6.3.4 Exit Airlocks from Higher Grade to Lower Grade</h3>
+                    <p>Generally, personnel and materials can share exit airlocks. Separate personnel and material exit airlocks are preferred at higher classifications where the de-gowning activity is substantial and in areas of high material movement activity.</p>
+
+                    <p>Separate airlocks must be provided when there is a <span class="key-term">dwell time</span> associated with material decontamination using chemical disinfectants.</p>
+                </div>
+                <div class="right-column">
+                    <h3>同級通行與出口氣閘</h3>
+
+                    <div class="concept-box">
+                        <h4>同級通行</h4>
+                        <p>在相同等級區域之間移動，不需要額外更衣。但如果涉及人員防護（如高活性藥物）或物料防護（防止交叉汙染），仍需額外措施。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>出口氣閘設計原則</h4>
+                        <ul>
+                            <li>原則上，人員與物料可共用出口氣閘</li>
+                            <li>高等級區域建議分開 &mdash; 因為脫衣程序繁複且物料流量大</li>
+                            <li>當物料需要化學消毒且有停留時間要求時，<strong>必須</strong>分設獨立氣閘</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>出口設計常被忽略</h4>
+                        <p>許多設施在設計時把重點放在「入口」，卻忽略了「出口」的汙染控制。其實出口也是風險點 &mdash; 脫衣過程中釋放的微粒、廢棄物料的處理、以及開門時的氣流擾動，都可能影響高等級區域的環境完整性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.6.4: PASS BOXES                                     -->
+    <!-- ============================================================= -->
+    <div class="chapter-section" id="sec-4-6-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>4.6.4 Pass Boxes</h2>
+                <p>傳遞窗 &nbsp;|&nbsp; p. 100&ndash;101</p>
+            </div>
+        </div>
+
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6.4 Pass Boxes</h3>
+                    <p><span class="key-term">Pass boxes</span> (also known as pass-through boxes or transfer hatches) may be used in lieu of material airlocks for smaller materials, equipment, product containers, waste, samples, etc.</p>
+
+                    <p>The materials and construction should be compatible with the cleaning regime and consistent with the standards of the room(s) they are located in.</p>
+
+                    <p>For detailed information about pass boxes, refer to Chapters 5 and 11.</p>
+                </div>
+                <div class="right-column">
+                    <h3>傳遞窗（Pass Box）</h3>
+
+                    <div class="concept-box">
+                        <h4>傳遞窗 vs. 物料氣閘</h4>
+                        <ul>
+                            <li><strong>傳遞窗</strong>（Pass Box / Pass-Through）：用於小型物品（樣品、容器、廢棄物等），體積較小，通常嵌入牆壁</li>
+                            <li><strong>物料氣閘</strong>（MAL）：用於大型設備、整批物料，需要人員進入操作</li>
+                            <li>兩者都必須具備<strong>門互鎖</strong>功能，兩扇門不得同時開啟</li>
+                            <li>傳遞窗的建材與表面處理必須符合其所在房間的等級要求</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：銀行的氣動傳遞筒</h4>
+                        <p>傳遞窗就像銀行得來速（Drive-through）的氣動傳遞筒 &mdash; 你把文件放進去、關上你這邊的門、銀行行員打開另一邊取出。兩端的門永遠不會同時打開，物品在密閉通道中完成轉移。差別在於潔淨室的傳遞窗還可能內建 UV 燈或 HEPA 過濾器來進一步降低汙染風險。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>綜合練習：設計一個 Grade C 到 Grade B 的傳遞方案</h4>
+                        <p>你的設施需要將以下三類物品從 Grade C 傳入 Grade B 無菌充填室。請為每類物品選擇適當的傳遞方式：</p>
+                        <ol>
+                            <li><strong>環境監測培養皿（小型）</strong> &mdash; 適合使用傳遞窗（Pass Box），內部可擦拭消毒</li>
+                            <li><strong>不鏽鋼充填零件（中型，需滅菌）</strong> &mdash; 建議使用自動除汙傳遞艙或隧道式乾熱滅菌爐</li>
+                            <li><strong>整托盤的玻璃瓶（大型批量）</strong> &mdash; 需使用物料氣閘（MAL），搭配轉換線與擦拭消毒程序</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- SECTION SUMMARY                                               -->
+    <!-- ============================================================= -->
+    <div class="section-summary">
+        <h3>Section Summary / 本節重點摘要</h3>
+        <ul>
+            <li><strong>Five functional zones</strong>: Sterile facilities are organized from the aseptic core outward through preparation, pharmaceutical, and support zones, each requiring progressively less stringent controls. / 五大功能區：無菌設施從核心無菌區向外依序為準備區、製藥區、支援區，環境控制逐步遞減。</li>
+            <li><strong>Changing room design</strong>: Ingress/egress separation, logical gowning progression, grade-matched finishes, and isolation from toilet facilities are essential. / 更衣室設計：進出分離、邏輯更衣動線、等級匹配的表面處理、與廁所隔離為四大要件。</li>
+            <li><strong>Surface finishes escalate by grade</strong>: From standard construction (unclassified) to seamless, non-porous, coved, stainless steel finishes (Grade A), with no drains permitted in aseptic areas. / 表面處理隨等級升級：從標準建材到無縫、不滲透、圓弧化、不鏽鋼處理，無菌區禁止排水口。</li>
+            <li><strong>Transfer zones maintain contamination barriers</strong>: Airlocks use pressure differentials, door interlocks, and improvement steps (cleaning/gowning) to prevent contamination ingress. / 傳遞區維持汙染屏障：氣閘利用壓差、門互鎖、改善步驟來防止汙染侵入。</li>
+            <li><strong>Sequential one-grade-at-a-time transitions</strong>: Entry must progress one classification step at a time; Grade A is accessed only from Grade B without a separate airlock but with clear visual/physical barriers. / 逐級轉換：進入必須逐級升級；Grade A 只能從 Grade B 進入，無獨立氣閘但需明確視覺/物理屏障。</li>
+            <li><strong>PAL vs. MAL vs. Pass Box</strong>: Personnel and material airlocks serve different functions; pass boxes replace MALs for smaller items; all require door interlocks and grade-appropriate construction. / 人員氣閘、物料氣閘與傳遞窗各有適用場景，均需門互鎖與等級匹配建材。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Baseline&reg; Guide Volume 3: Sterile Product Manufacturing Facilities (3rd Edition, 2018)</p>
+    <p>Educational Material &mdash; Bilingual English/Traditional Chinese</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
