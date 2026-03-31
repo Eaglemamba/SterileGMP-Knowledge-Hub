@@ -1,8 +1,8 @@
-# PDA Manufacturing Technology Guide No. 1 - Educational Material Generator
+# SterileGMP Knowledge Hub — Bilingual Educational Material Generator
 
 ## MISSION
 
-You are creating bilingual educational materials for specific **PDA technical report**. Transform dense technical pharmaceutical content into accessible learning resources for CDMO professionals.
+You are creating bilingual educational materials for a specific **GMP guideline document** (PDA, ISPE, FDA, PIC/S, ISO, etc.). Transform dense technical pharmaceutical content into accessible learning resources for CDMO professionals.
 
 ---
 
@@ -314,7 +314,7 @@ Update this checklist as sections are completed.
 
 ## TOKEN ESTIMATION & AGENT DISPATCH PLANNING
 
-Before processing a new PDA document, estimate token consumption per section to plan parallel agent dispatch within the 200K context window.
+Before processing a new document, estimate token consumption per section to plan parallel agent dispatch within the 200K context window.
 
 ### Estimation Formula
 
@@ -426,18 +426,18 @@ Use these Chinese translations consistently across ALL sections:
 ### MD-first workflow (recommended):
 ```bash
 # 1. Scaffold + extract PDF text
-python pda_engine.py scaffold TRXX
+python gmp_engine.py scaffold TRXX
 # Edit reports.json with report metadata + section_map
 # Extract PDF text → TRXX/source/
 
 # 2. Generate knowledge MD — review hierarchy before HTML generation
-python pda_engine.py md TRXX
+python gmp_engine.py md TRXX
 
 # 3. Process sections into bilingual HTML
 claude "Read PROMPT.md for full instructions. Process Section X.X (Title, pN-pM) from TRXX/source/section-X.0-text.txt. Copy full CSS from template.css into the HTML style tag. Save output to TRXX/sections/section-XX-name.html"
 
 # 4. Merge all completed sections
-python pda_engine.py merge TRXX
+python gmp_engine.py merge TRXX
 
 # 5. Verify output
 open TRXX/output/TRXX-Complete.html

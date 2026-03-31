@@ -41,11 +41,11 @@ Last updated: 2026-03-31
 
 ## Processing Workflow (per document)
 
-1. `python pda_engine.py scaffold ISPE-XXX --source ISPE` ← already done for all 15
+1. `python gmp_engine.py scaffold ISPE-XXX --source ISPE` ← already done for all 15
 2. Edit `reports.json` — fill in title, tags, colors (green family), section_map
 3. Extract PDF text → `ISPE/ISPE-XXX/source/` (use pdftotext or PyMuPDF)
 4. Generate bilingual HTML sections using PROMPT.md template
-5. `python pda_engine.py merge ISPE-XXX`
+5. `python gmp_engine.py merge ISPE-XXX`
 6. Update `knowledge/INDEX.md` — add block with `ISPE/ISPE-XXX-Complete.md` header
 7. Move source PDF to `Raw pdfs/processed/` (optional — keep in source/ for reference)
 8. Verify in browser → commit + push

@@ -1,11 +1,10 @@
 # ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition): Science and Risk-Based C&Q for Pharmaceutical Facilities, Systems, Utilities, and Equipment
 
-ISPE Baseline® Guide:
-Page 9
 Commissioning and Qualification
 Introduction
-1.1
-Background
+
+### 1.1 Background
+
 It is a universal regulatory expectation that pharmaceutical manufacturing facilities, systems, utilities, and equipment
 are designed, constructed and qualified to be suitable for the intended purpose. Regulatory authorities have indicated
 in their guidances and regulations that organizations must build quality into their processes and products.1 This Guide
@@ -23,8 +22,9 @@ Commissioning and qualification differ only in that the qualification process ha
 on the system risk to product quality. The Quality Unit ultimately decides whether systems are suitable for the
 intended purpose, based on the identification, testing, and documentation of the system features deemed critical to
 product quality.
-1.2
-Purpose and Objectives
+
+### 1.2 Purpose and Objectives
+
 This Guide intends to offer a compliant, integrated C&Q approach to making the qualification process efficient and
 cost-effective. The approach includes a System Risk Assessment process that identifies the Critical Aspects
 (CAs) and/or Critical Design Elements (CDEs). CDEs are system functions and features identified as having the
@@ -49,8 +49,6 @@ which provide the ability to deliver the product Critical Quality Attributes (CQ
 2	 For the purposes of this Guide, the term systems is used to refer to facilities, systems, utilities, and/or equipment.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 10
-ISPE Baseline® Guide:
 Commissioning and Qualification
 •
 Defining best practices for User Requirements Specification (URS), Design Review (DR), Design Qualification
@@ -68,8 +66,9 @@ Providing examples of appropriate C&Q deliverables
 The authors of this Guide believe that there is value in employing the concepts described in the individual chapters
 even if all aspects of the program are not implemented, e.g., identification of CAs/CDEs through System Risk
 Assessments, better definition of the URS, etc.
-1.3
-Scope
+
+### 1.3 Scope
+
 This Guide applies to systems used by pharmaceutical manufacturers of human and veterinary drugs, including
 biological drug products.
 Medical devices have separate regulatory requirements and are outside of the scope of this Guide. For combination
@@ -97,11 +96,10 @@ Decommissioning activities (refer to ISPE Good Practice Guide: Decommissioning o
 and Facilities [8])
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 11
 Commissioning and Qualification
-1.4
-Process Overview and Structure of the Guide
+
+### 1.4 Process Overview and Structure of the Guide
+
 An overview of the integrated C&Q approach is shown in Figure 1.1.
 Figure 1.1: Science and Risk-Based C&Q Process Map
 Note for Figure 1.1: Shaded boxes indicate the major blocks within the process maps that are addressed by
@@ -130,8 +128,6 @@ Also included in this Guide are the support programs and strategies for implemen
 Vendor Assessment for C&Q Documentation Purposes (Chapter 10)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 12
-ISPE Baseline® Guide:
 Commissioning and Qualification
 •
 Engineering Quality Process (Chapter 11)
@@ -170,8 +166,6 @@ confirmed in DQ (also Chapter 5) for direct impact systems. The Quality Unit app
 completed, the C&Q Plan can be finalized.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 13
 Commissioning and Qualification
 C&Q testing and documentation (Chapter 7) is initiated once construction (including fabrication of equipment
 at vendor facilities) has reached a point that the testing is meaningful and all prerequisites are met. Testing and
@@ -210,11 +204,10 @@ the concepts as applied to example systems. Individuals creating documentation f
 those in their organization/site to adapt the examples to meet their needs.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 14
-ISPE Baseline® Guide:
 Commissioning and Qualification
-1.5
-Rationale for this Second Edition
+
+### 1.5 Rationale for this Second Edition
+
 This Guide, the second edition of the ISPE Baseline® Guide: Commissioning and Qualification, has been designed to
 present industry best practices for C&Q. It also combines concepts from regulatory guidances (e.g., from EMA [10],
 FDA [11], ICH [12) and the following ISPE documents that are superseded with this revision:
@@ -248,10 +241,11 @@ V-Model
 The integrated C&Q approach provides a lifecycle C&Q approach and is represented by a different process map
 (see Figure 1.1). The V-model appropriately represented the links between the design process and testing, but
 did not incorporate a risk assessment process based on product quality.
-1.6
-Key Concepts
-1.6.1
-Efficient Approach without Redundant Testing
+
+### 1.6 Key Concepts
+
+#### 1.6.1 Efficient Approach without Redundant Testing
+
 The foundation of this Guide is based on the expectation that engineers and system vendors ensure systems are
 installed and operate to the meet the design specifications and user requirements. This is commonly referred to
 as commissioning. Best industry practice is to utilize such an approach when installing any new system. However,
@@ -260,8 +254,6 @@ rationale and a methodology for aligning testing and documentation expectations 
 system.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 15
 Commissioning and Qualification
 When a system has direct impact on product quality (direct impact system), the CDEs of the system can be verified
 by the approach described in this Guide. This approach ensures that identified CPPs are maintained; CPPs
@@ -269,8 +261,9 @@ ensure that CQAs are attained. Testing of system CDEs is utilized to support qua
 documentation of the testing performed in commissioning needs to be acceptable to be presented in a regulatory
 audit or inspection. The acceptance of that documentation is based on adherence with Good Documentation
 Practices fundamentals (as described in Chapter 10).
-1.6.2
-Terminology for Product Impacting Attributes
+
+#### 1.6.2 Terminology for Product Impacting Attributes
+
 A common source of debate is regarding the terminology for CPPs and CQAs. For systems that are directly used
 to manufacture pharmaceutical products, these terminologies are easily identified and supported. However, there is
 also a recognition that critical utilities, such as Water for Injection (WFI) systems, may not have product CQAs but
@@ -284,8 +277,9 @@ equipment. It is important for individual organizations/sites to define what is 
 systems (e.g., CQAs, CPPs, Critical Parameters, Key Operating Parameters, System Process Parameters, etc.). The
 criticality designation should drive the activities related to design, installation, and operation throughout the system
 lifecycle.
-1.6.3
-Quality Unit Oversight
+
+#### 1.6.3 Quality Unit Oversight
+
 Another common source of debate within the C&Q effort is which group should approve what document. The Quality
 Unit is expected to have oversight of the entire validation lifecycle including qualification. Because the Quality Unit is
 not expected to have expertise in all aspects of pharmaceutical manufacturing systems, identified SMEs (including
@@ -296,8 +290,9 @@ engaged in the process, be considered part of the C&Q team, approve the appropri
 for systems that directly affect product quality, and approve the final acceptance of the qualified state and release
 to support pharmaceutical manufacturing operations. The authors see this as a Quality Assurance (QA) role, not a
 documentation quality control role. An example approval matrix is provided in Chapter 6.
-1.7
-Key Terms
+
+### 1.7 Key Terms
+
 This section introduces key terms as they are used in the context of this Guide. Refer to Chapter 31 (Appendix 17) for
 an expanded listing of definitions.
 Acceptance Criteria
@@ -309,8 +304,6 @@ utilities, and equipment to the end-user that results in a safe and functional e
 design requirements and stakeholder expectations.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 16
-ISPE Baseline® Guide:
 Commissioning and Qualification
 Critical Aspects (CAs)
 As defined in ASTM E2500-13 [5]:
@@ -345,8 +338,6 @@ A system that directly impacts product CQAs, or directly impacts the quality of 
 system. All other systems are considered to be not direct impact.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 17
 Commissioning and Qualification
 Discrepancy
 As defined in FDA 2006 Quality Systems Guidance [15]:
@@ -381,9 +372,6 @@ As defined in ICH Q9 [3]:
 (medicinal) product across the product lifecycle.”
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 18
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Suitable for the Intended Purpose
 The system requirements are defined, the design is appropriate for control of the manufacturing process, and the
@@ -399,12 +387,11 @@ An activity that is performed within the C&Q process to document that the manufa
 and equipment are suitable for the intended purpose.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 19
 Commissioning and Qualification
 2	 User Requirements Specification
-2.1
-Introduction
+
+### 2.1 Introduction
+
 The User Requirements Specification (URS) brings together system requirements from multidisciplinary sources to
 support system design, C&Q, operations, and maintenance. Within the C&Q process, it is a foundational document
 that identifies the product and process requirements for the system. These product quality related user requirements
@@ -422,12 +409,10 @@ Figure 2.1: Relational Diagram for C&Q Activities and Documents – User Require
 Used with permission from Amgen, Inc., www.amgen.com.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 20
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-2.2
-Development of the User Requirements Specification
+
+### 2.2 Development of the User Requirements Specification
+
 The URS defines the requirements that must be met for a system to be suitable for the intended purpose; it should
 not detail how those requirements are met. The URS is developed by a project team that includes SMEs (refer to
 Section 6.4 for an example approval matrix). It can be revised throughout the system lifecycle.
@@ -473,8 +458,6 @@ Legacy system evaluations
 Figure 2.2 shows the data sources typically used as inputs to an individual system URS.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 21
 Commissioning and Qualification
 Figure 2.2: Data Sources Used to Develop the User Requirements Specification
 Note for Figure 2.2: Shaded boxes indicate product and process requirements and sources.
@@ -508,9 +491,6 @@ Sequence of operations
 Generic statements (e.g., must comply with local codes, must meet all GxPs)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 22
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 •
 General references to government/national standards (e.g., nonspecific reference to ASME [16] code, ISO [18]
@@ -524,8 +504,9 @@ Standard functionality of the equipment type
 Refer to Chapter 16 (Appendix 2) for an example URS template. It is the responsibility of the organization/site to
 designate quality impacting elements of their URS in a manner that is most appropriate for their integrated C&Q
 process.
-2.3
-Approval of User Requirements Specification and Changes Post-Approval
+
+### 2.3 Approval of User Requirements Specification and Changes Post-Approval
+
 The URS should be approved by the system owner, an appropriate SME, and the Quality Unit. However, if the Quality
 Unit has already approved the source documents from which the quality requirements within the URS were obtained,
 then the Quality Unit does not need to approve the URS. Refer to Section 6.4 for an example document approval
@@ -535,20 +516,20 @@ decommissioning of the system. After approval of the URS, changes or additions w
 quality are evaluated against the System Risk Assessment (refer to Chapter 4) to confirm if risks are acceptable or to
 determine if additional risk controls are required. Changes to the URS are performed through change management
 (refer to Chapter 12).
-2.4
-Legacy Systems
+
+### 2.4 Legacy Systems
+
 For a legacy system without a documented URS, a URS for any scope changes may be developed and incorporated
 into the C&Q Plan (see Chapter 6) or change record.
 Based on the magnitude of the change and the extent of the C&Q required, it may be beneficial to create a new URS.
 Refer to Chapter 14 for implementation recommendations.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 23
 Commissioning and Qualification
 3	 System Classification
-3.1
-Introduction
+
+### 3.1 Introduction
+
 This Guide presents an approach for classifying systems into two categories depending on the system capability to
 impact product quality. System classification establishes whether a system is commissioned and qualified or only
 commissioned, as follows:
@@ -564,8 +545,9 @@ business and HSE criticality of the system. For example, a chilled water system 
 (not direct impact) may be balanced only. Meanwhile, a chilled water system (not direct impact) serving direct impact
 process equipment may be balanced, with the balancing confirmed at the minimum and maximum design flow rates
 to ensure reliable system performance during operation.
-3.2
-System Boundaries
+
+### 3.2 System Boundaries
+
 Projects are commonly divided up into systems to facilitate construction management, document collation, turnover,
 and C&Q. System boundaries are markings on design drawings to distinguish systems from one another; this
 includes all components and piping to logically define what is included and what is not included within the system.
@@ -591,17 +573,15 @@ documentation by different suppliers. For example, the URS for a compressed air 
 distribution sections, each of which may have its own set of C&Q documentation.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 24
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 The optimum approach for the project should be evaluated and then defined in the C&Q Plan. In the compressed
 air system example discussed earlier, it may be simpler to provide a URS/C&Q package for the generation system
 from one supplier and a separate URS/C&Q package for the storage and distribution system that is built on-site by a
 separate supplier.
 Regardless of the C&Q documentation strategy, systems need to meet their URS.
-3.3
-Criteria for System Classification
+
+### 3.3 Criteria for System Classification
+
 This Guide presents criteria for system classification that consist of eight questions; a YES response to at least
 one question indicates that the system is a direct impact system. Table 3.1 lists the questions that can be used to
 determine system classification for a given system.
@@ -660,8 +640,6 @@ cleaning of the system)
 then the answer to this question should be a YES
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 25
 Commissioning and Qualification
 Number
 Question
@@ -765,12 +743,11 @@ Refer to Chapter 17 (Appendix 3) for an example system classification form. Refe
 example list of direct impact systems with typical CQAs and CPPs.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 27
 Commissioning and Qualification
 4	 System Risk Assessment
-4.1
-Introduction
+
+### 4.1 Introduction
+
 The System Risk Assessment is the application of QRM to examine the product quality risk controls for direct impact
 systems. This assessment identifies the critical design controls (CAs/CDEs) and procedural controls that are required
 to mitigate system risks to an acceptable level. It is important for the project team performing the System Risk
@@ -791,9 +768,6 @@ been included; if they are not included, then the URS should be revised to add t
 should be added to the C&Q scope.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 28
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Acceptance and release of the system (described in more detail in Chapter 8) involves confirming that the controls
 identified in the System Risk Assessment are in place as follows:
@@ -801,8 +775,9 @@ identified in the System Risk Assessment are in place as follows:
 The design controls (CAs/CDEs) have been shown to operate as specified
 •
 The procedural controls are in place
-4.1.1
-Rationale
+
+#### 4.1.1 Rationale
+
 The traditional approach to qualification did not directly utilize commissioning documentation; instead, it often relied
 on an additional set of documents, the Installation Qualification (IQ) and Operational Qualification (OQ) protocols.
 These protocols provided the documented evidence that the system was installed and operating according to its
@@ -818,8 +793,9 @@ installed and operates to meet the specifications. The CQAs and related CPPs are
 a System Risk Assessment is developed to define potential risks to the CQAs and identify design (CAs/CDEs) and
 procedural controls used to mitigate these risks. Qualification confirms the system is suitable for the intended purpose
 and that the risk controls (design and procedural controls) are in place and functioning as specified.
-4.1.2
-Purpose and Benefits
+
+#### 4.1.2 Purpose and Benefits
+
 The System Risk Assessment has multiple purposes and is a means to:
 •
 Identify, assess, and record the quality risks to CQAs and associated controls
@@ -843,11 +819,10 @@ that would mitigate those risks to product quality to an acceptable level. By ve
 confirmed to match that risk profile.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 29
 Commissioning and Qualification
-4.2
-System Risk Assessment Process
+
+### 4.2 System Risk Assessment Process
+
 As a prerequisite, the CQAs and associated CPPs should be identified and documented in the URS.
 This Guide presents the following approach to performing the System Risk Assessment:
 •
@@ -860,8 +835,9 @@ As a general guide, the initial session by the small team and the review session
 exceed more than a few hours each if the preparation work is complete and teams with the correct level of expertise
 are used.
 An example System Risk Assessment format is presented in Section 4.4.
-4.2.1
-Developing the Baseline Draft
+
+#### 4.2.1 Developing the Baseline Draft
+
 The small team that develops the initial baseline draft should consist of the following:
 •
 Experienced facilitator to guide the process
@@ -870,8 +846,9 @@ Quality Unit representative
 •
 Process/system SME (may be one SME or could additionally include a system vendor representative)
 Refer to Chapter 19 (Appendix 5) for an example baseline System Risk Assessment.
-4.2.2
-Performing the System Risk Assessment
+
+#### 4.2.2 Performing the System Risk Assessment
+
 After the initial baseline is completed, a broader team reviews the document and determines the risk profile. This
 review team generally consists of representatives from a broader group with different experiences to provide a
 balanced perspective; this team could include:
@@ -892,9 +869,6 @@ design aspects and/or procedural controls that would mitigate or eliminate the r
 definitions shown in Table 4.1.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 30
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Table 4.1: Risk Level Definitions
 Note: The risk level is defined considering the overall process; thus, if the process is changed, the System Risk
@@ -909,8 +883,9 @@ should be updated to include these controls. If a Traceability Matrix is used as
 process, the CDEs could be added to the Traceability Matrix only and updating the URS would not be needed.
 Procedural controls identified during the System Risk Assessment need to be included in the C&Q Plan scope and
 could also be added to the Traceability Matrix.
-4.2.3
-Using Completed Assessments as a Starting Point for New System Baseline Drafts
+
+#### 4.2.3 Using Completed Assessments as a Starting Point for New System Baseline Drafts
+
 The experience and documentation gained from completing System Risk Assessments can be applied to future
 systems. In addition, many systems used for pharmaceutical manufacturing and packaging are standard systems that
 have been in use for a reasonable period of time, have built-in control strategies, and are developed by experienced
@@ -942,13 +917,12 @@ challenges, or other reasons. The SMEs may recommend acceptance of the system wi
 high risk; in this case, the assessment needs to be accepted by high-level management.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 31
 Commissioning and Qualification
-4.3
-Timing of System Risk Assessments
-4.3.1
-Development of the System Risk Assessment
+
+### 4.3 Timing of System Risk Assessments
+
+#### 4.3.1 Development of the System Risk Assessment
+
 The System Risk Assessment can be developed after completion of concept design and prior to the start of detailed
 engineering. It can be updated later as required. The System Risk Assessment can be completed when the Issued
 for Construction (IFC) design drawings and specifications are available, whether for new or modified systems. These
@@ -970,19 +944,16 @@ system risk controls are adequate.
 The sequence of activities for direct impact systems is shown in Figure 4.2.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 32
-ISPE Baseline® Guide:
 Commissioning and Qualification
 Figure 4.2: Sequence of Activities for Direct Impact Systems
-4.3.2
-Lifecycle of the System Risk Assessment
+
+#### 4.3.2 Lifecycle of the System Risk Assessment
+
 Depending on the project size, timing, and complexity, additional product/process or system knowledge may become
 available after completion of the System Risk Assessment. If this additional knowledge impacts the system risk
 profile, the System Risk Assessment needs to be reviewed and updated.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 33
 Commissioning and Qualification
 System Risk Assessments are not subject to time-based periodic review; it is more efficient to reassess the risk
 profile in the event of a deviation related to the system performance and determine if an update is required. The
@@ -990,8 +961,9 @@ System Risk Assessment can also be used as a reference document for assessing po
 For any changes to the system, the URS and System Risk Assessment should both be reviewed as part of the
 change management process (refer to Chapter 12). If the proposed change introduces additional risks or impacts
 existing risk controls, the System Risk Assessment (and associated URS) needs to be reviewed and updated.
-4.4
-Example System Risk Assessment Format
+
+### 4.4 Example System Risk Assessment Format
+
 This Guide presents an example System Risk Assessment format that consists of thirteen columns. Table 4.2
 summarizes the risk assessment process and how the contents of the example System Risk Assessment are
 developed.
@@ -1037,9 +1009,6 @@ Controls will normally be incorporated into the design and verified to work to e
 met.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 34
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Table 4.2: Contents of Example System Risk Assessment Format (continued)
 Column
@@ -1083,12 +1052,11 @@ procedural), and the reliability of the detection mechanisms.
 Refer to Table 4.1 for guidance on defining the risk level.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 35
 Commissioning and Qualification
 5	 Design Review and Design Qualification
-5.1
-Introduction
+
+### 5.1 Introduction
+
 This chapter provides guidance for performing and documenting Design Reviews (DRs) and Design Qualification
 (DQ). This Guide emphasizes the importance of DRs leading to DQ as a continual process throughout all phases in
 the design of new or modified systems.
@@ -1101,8 +1069,9 @@ CDEs in the design to the CPPs and CQAs.
 DR and DQ are not intended to be separate activities, but rather separate documentation in which DQ is focused on
 CAs/CDEs and involves the Quality Unit as an approver. There should be minimal duplication of work; the final report
 from DR is a key input into the DQ process.
-5.2
-Design Process
+
+### 5.2 Design Process
+
 The design process can be divided into several phases to ensure the design deliverables are sufficiently developed,
 the risks are identified and mitigated, and the project (as defined) meets financial objectives. The phases of the
 design process are:
@@ -1119,8 +1088,9 @@ stakeholders should select the preferred scope option; the project then progress
 In the BOD phase, additional engineering work provides a more developed SOW. The BOD design package
 contains Issued for Design (IFD) documents; it is the basis for the detailed design phase which delivers Issued for
 Construction (IFC) documents.
-5.2.1
-Importance of Good Engineering Practice
+
+#### 5.2.1 Importance of Good Engineering Practice
+
 During the design process, it is important to follow GEP to support the integrity of related data and documentation.
 DR activities include evaluating deliverables against engineering standards and business, operations, and quality
 requirements as well as identifying gaps and proposing required corrective actions. Documenting these activities
@@ -1128,12 +1098,10 @@ using Good Documentation Practice concepts (as described in Chapter 13) supports
 system is suitable for the intended purpose.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 36
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-5.2.2
-Science and Risk-Based Approach to Design Reviews
+
+#### 5.2.2 Science and Risk-Based Approach to Design Reviews
+
 A quality risk assessment of the manufacturing process (including the environmental conditions supporting the
 process and/or critical systems) is a significant activity outside of the C&Q scope that can influence the early phase
 of design. Design stage System Risk Assessment typically uses knowledge from process risk assessments and other
@@ -1142,10 +1110,11 @@ an integral part of the science and risk-based C&Q approach.
 Design stage quality risk reviews are an iterative process that is linked to the design development of the process
 system. The review of the System Risk Assessments and how the results affect the proposed design should be
 included in the scope of DRs.
-5.3
-Design Review
-5.3.1
-Objectives of Design Review
+
+### 5.3 Design Review
+
+#### 5.3.1 Objectives of Design Review
+
 DRs are defined in ASTM E2500-13 [5] as follows:
 “Planned and systematic reviews of specifications, design, and design development and continuous
 improvement changes performed as appropriate throughout the life-cycle of the manufacturing system. Design
@@ -1154,8 +1123,9 @@ corrective actions.”
 DRs include both quality critical and non-critical aspects of the system design.
 The documented results of the DR should be the basis for any design modifications/additions performed to correct
 any deficiencies in the design under review.
-5.3.2
-Role of Subject Matter Experts and Quality Unit
+
+#### 5.3.2 Role of Subject Matter Experts and Quality Unit
+
 Throughout the design process, a cross-functional project team (refer to Section 6.4 for example approval matrix)
 reviews the design of the system to ensure that the product and process user requirements, GMP, and regulatory
 requirements are included. Thus, it is important that this team includes technical SMEs that have the appropriate
@@ -1164,8 +1134,9 @@ the design under review will meet the requirements of the URS, function efficien
 product.
 If the system being reviewed is direct impact, then the team should also include a Quality Unit representative to
 ensure that all quality requirements are met. This can help to facilitate the review and approval of the DQ.
-5.3.3
-Design Review Process
+
+#### 5.3.3 Design Review Process
+
 Prior to the DR, design documents should be circulated to the DR project team for their review to ensure a
 comprehensive review process. It is the responsibility of the project manager and the design leads to ensure that the
 appropriate participants are part of the DR. Senior management from the Quality Unit, operations, and production are
@@ -1177,8 +1148,6 @@ the level of risk. DR documentation may take the form of engineering meeting min
 novel systems, DRs may be more focused and detailed.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 37
 Commissioning and Qualification
 For off-the-shelf equipment, DR should consider the complexity and/or risk to system or facility operation and
 to quality. Vendor documents are typically used to conduct these reviews and, if necessary, a technical vendor
@@ -1192,8 +1161,9 @@ their presence is beneficial and can simplify the DQ step.
 The quality focus of the DRs is on compliance elements and the CAs/CDEs of the system design that affect
 product quality; the objective is to verify that all regulatory requirements are addressed by the design. It is strongly
 recommended the Quality Unit attends these reviews with quality focus, and that these reviews are documented.
-5.3.4
-Design Review Outcome
+
+#### 5.3.4 Design Review Outcome
+
 The DR project team should have appropriate methods for recording and distributing the results of the DRs and
 managing any consequent changes. The results should confirm the continuing suitability of the design and confirm
 that the design is suitable for the intended purpose.
@@ -1205,13 +1175,12 @@ requirements for the system with the CAs/CDEs.
 Refer to Chapter 20 (Appendix 6) for examples of DR reports.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 38
-ISPE Baseline® Guide:
 Commissioning and Qualification
-5.4
-Design Qualification
-5.4.1
-Objectives of Design Qualification
+
+### 5.4 Design Qualification
+
+#### 5.4.1 Objectives of Design Qualification
+
 DQ provides documented verification that the design of a new or modified direct impact system will result in a system
 that is suitable for the intended purpose. The objectives of DQ are to:
 •
@@ -1221,8 +1190,9 @@ Verify the design will adequately control risks to product quality and patient s
 System Risk Assessment
 •
 Verify the CAs/CDEs necessary to implement these requirements and risk controls
-5.4.2
-Prerequisites
+
+#### 5.4.2 Prerequisites
+
 The prerequisites for DQ include:
 •
 Approved URS
@@ -1237,8 +1207,9 @@ and included in the final design
 It is the responsibility of the project manager to ensure that all prerequisites have been completed and are made
 available to the participants prior to the DQ for their review. The DQ should be scheduled to allow adequate time for
 preliminary review of the material to be covered.
-5.4.3
-Design Qualification Process
+
+#### 5.4.3 Design Qualification Process
+
 DQ is the documented process for the review and approval of the final system design to verify the following:
 •
 All process and product requirements in the system URS have been incorporated into the design
@@ -1256,13 +1227,12 @@ following information should be defined: plan for conducting the DQ, scope of th
 the DQ. This information could be documented for individual systems or for specified integrated systems.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 39
 Commissioning and Qualification
 A Traceability Matrix can be used to document traceability of the CAs and any associated CDEs, and CPPs to the
 CQAs. The CA and CDE acceptance criteria can also be documented in the Traceability Matrix.
-5.4.4
-Final Design Qualification Report
+
+#### 5.4.4 Final Design Qualification Report
+
 The final DQ report should include or refer to the following, as applicable:
 •
 Any needed risk reviews to document the incorporation of design control elements to support quality product
@@ -1283,12 +1253,10 @@ Figure 5.2: Design Qualification Process Flow
 Refer to Chapter 20 (Appendix 6) for an example of a DQ summary.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 40
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-5.5
-Timing of Design Review and Design Qualification
+
+### 5.5 Timing of Design Review and Design Qualification
+
 The DR is performed during development of the concept and BOD packages and near the completion of detailed
 design. These design packages should be reviewed to ensure all action items from the DR are included. These
 actions include business, Quality, and HSE related items.
@@ -1354,12 +1322,11 @@ and specifications
 •	 Risk review
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 41
 Commissioning and Qualification
 6	 C&Q Planning
-6.1
-Introduction
+
+### 6.1 Introduction
+
 C&Q is a planned, documented, and managed engineering activity that starts with the establishment of the URS
 and continues to start-up and acceptance and release of systems. A well-planned program is essential and leads to
 an efficient, “right the first time”, and cost-effective C&Q effort; the result is the delivery of systems that operate in a
@@ -1371,8 +1338,9 @@ This chapter focuses on the formal C&Q Plan. There are other plans that can be g
 plans or cleanliness plans, which have great value but are not covered in this chapter. Refer to Chapter 21 (Appendix
 7) for a listing of supporting plans and general concepts for each.
 Regulatory expectations for C&Q planning are described in Chapter 15 (Appendix 1).
-6.1.1
-Purpose and Benefits
+
+#### 6.1.1 Purpose and Benefits
+
 A well-conceived and executed C&Q Plan can greatly facilitate a timely and cost-effective qualification effort. It is
 essential to have excellent communication, planning, and coordination between the Quality Unit, vendors, operations,
 automation, engineering, construction, commissioning, and qualification personnel, to name a few, to deliver a project
@@ -1403,14 +1371,12 @@ Systems meet approved user requirements and are suitable for the intended purpos
 Stakeholder needs, including speed to market, are met
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 42
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 •
 Products produced from the systems meet defined quality standards
-6.2
-C&Q Planning Approach
+
+### 6.2 C&Q Planning Approach
+
 The amount of planning, documentation, reporting, and level of detail of the C&Q Plan should be based on
 expectations of the organization/site, size and complexity of the system or project, and the potential impact on
 product quality and patient safety.
@@ -1422,8 +1388,9 @@ a separate C&Q Plan; the requirements could be incorporated into a change contro
 would benefit from a separate C&Q Plan, for example, the installation of a filling line with terminal sterilization and
 secondary packaging or the doubling in capacity of a manufacturing site including additional utilities to support the
 expansion.
-6.2.1
-Timing of C&Q Plan
+
+#### 6.2.1 Timing of C&Q Plan
+
 In an overall scheme, the creation of the C&Q Plan falls in the process map as shown in Figure 1.1 (Chapter 1).
 It is important to note that C&Q planning begins prior to the creation of any formal written plans. C&Q planning starts
 during the planning and design phase of a project and continues through project implementation. A documented
@@ -1435,8 +1402,9 @@ approved, and such test instructions need to be approved before test execution s
 This is recommended for commissioning plans and test instructions. The C&Q Plan should address how existing
 test documentation and test results from commissioning (including FAT, SAT, etc.) are referenced in qualification
 documents, as appropriate.
-6.2.2
-Lifecycle of C&Q Plan
+
+#### 6.2.2 Lifecycle of C&Q Plan
+
 The C&Q Plan is not finalized until after the risk management process has reached a point to capture the impact of
 product quality decisions or of establishing the CDEs.
 C&Q Plans are expected to be kept up-to-date as changes to the project are made. Revisions of the C&Q Plan may
@@ -1451,15 +1419,14 @@ documented in the Qualification Summary Report with appropriate justification an
 by the project team.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 43
 Commissioning and Qualification
 At the end of a project, a written document capturing the completion and closure of the project should be created.
 See Chapter 8 for more details regarding acceptance and release.
 Changes to the C&Q Plan should be handled under change management (as discussed in Chapter 12) to ensure that
 as changes are implemented, the impact to C&Q efforts is addressed.
-6.2.3
-Elements to be Addressed
+
+#### 6.2.3 Elements to be Addressed
+
 This section is intended to be a discussion of the elements that need to be addressed as part of C&Q planning, not
 the documents where they are captured.
 
@@ -1504,14 +1471,12 @@ Coordination of test activities among C&Q to prepare for FAT or SAT events
 Ability to schedule sequence of testing for multiple systems (e.g., electrical supply before energizing a system)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 44
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 •
 Schedule review cycles for qualification documents with Quality Unit representatives
-6.3
-C&Q Plan
+
+### 6.3 C&Q Plan
+
 The C&Q Plan typically encompasses:
 •
 Description of the scope of the plan (identification of the systems included)
@@ -1537,12 +1502,14 @@ Identification of SMEs for review of the inspection and test results
 For tests to be used to support qualification, include the acceptance criteria to be met for all CDEs
 (Note: The plan may defer to individual test instructions)
 The specific structure and content of the C&Q Plan is typically driven by organization/site requirements.
-6.3.1
-Scope of the Effort
+
+#### 6.3.1 Scope of the Effort
+
 The scope captures all systems that are covered within the scope of the project. This includes both direct impact and
 not direct impact systems (as described in Chapter 3). More details are provided below.
-6.3.1.1
-Additional Scope Considerations
+
+##### 6.3.1.1 Additional Scope Considerations
+
 PQ activities may be included in a C&Q Plan for pharmaceutical grade utilities (e.g., WFI, Purified Water), support
 systems (e.g., autoclaves, depyrogenation ovens, washers), environments (e.g., non-environmental monitoring in
 clean rooms), and non-product PQ (e.g., media fills for filling lines). Individual organizations/sites need to decide if
@@ -1555,11 +1522,10 @@ Chapter 12). Individual organizations/sites need to decide if cycle development 
 the decision in the C&Q Plan.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 45
 Commissioning and Qualification
-6.3.2
-Strategy and Approach
+
+#### 6.3.2 Strategy and Approach
+
 The C&Q Plan needs to define C&Q strategy and approach to aid in overall project planning. The C&Q Plan captures
 whether systems will be commissioned only or commissioned and qualified. The system classification (as described
 in Chapter 3) and System Risk Assessment (as described in Chapter 4) have identified the CPPs and CDEs that
@@ -1576,8 +1542,9 @@ The C&Q Plan should also capture if individual pieces of equipment or systems wi
 they are delivered and installed at different times by different vendors or if testing will be executed once all
 components are installed. Dependencies within the scope of work (e.g., if one system needs to be tested before
 another system is tested) should also be included.
-6.3.3
-Documentation
+
+#### 6.3.3 Documentation
+
 The C&Q Plan should capture document planning and control as well as execution of testing. The C&Q Plan should
 reference appropriate document control and content procedures to satisfy engineering, commissioning, qualification,
 operations, and maintenance requirements. Utilizing electronic storage of documents is recommended as it allows for
@@ -1608,8 +1575,6 @@ Required procedures (e.g., equipment operating procedures, maintenance)
 Change management (see Chapter 12)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 46
-ISPE Baseline® Guide:
 Commissioning and Qualification
 •
 Schedules
@@ -1623,8 +1588,9 @@ Discrepancies
 Turnover packages
 •
 Project reports
-6.3.4
-C&Q Plan Contents
+
+#### 6.3.4 C&Q Plan Contents
+
 The C&Q Plan should define the systems that will be commissioned and qualified based on the system or area
 boundaries. The plan should include a description of systems including their means of automation. The system
 overview should be a high-level process narrative, including system boundaries, based on operational/functional
@@ -1658,11 +1624,10 @@ The plan should address the steps to follow when test results do not meet the ex
 (discrepancy). There should be a predefined methodology for how discrepancies should be handled (see Section 7.4).
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 47
 Commissioning and Qualification
-6.4
-Example Approval Matrix
+
+### 6.4 Example Approval Matrix
+
 Table 6.1: Example Approval Matrix
 Document
 Pre-Approvers
@@ -1801,12 +1766,11 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 49
 Commissioning and Qualification
 7	 C&Q Testing and Documentation
-7.1
-Introduction
+
+### 7.1 Introduction
+
 This chapter provides guidance on C&Q testing and inspection activities and associated documentation for recording
 the results of the testing/inspection. The goal of testing and inspection is to confirm that the system has been installed
 and operates to meet the requirements.
@@ -1814,8 +1778,9 @@ Although this chapter provides some general guidance on the safety aspects (e.g.
 requirements for safety aspects and any local requirements (e.g., signage, access control, equipment protection,
 Material Safety Data Sheets) are outside the scope of this Guide. It is the responsibility of the system designer to
 produce a system that is compliant with any related local regulations.
-7.1.1
-Approach and Scope
+
+#### 7.1.1 Approach and Scope
+
 C&Q testing and documentation starts as early as design and ends with the acceptance and release of the system
 to the end-user. The process includes planning, document review, and static and dynamic testing of the installation,
 function, and performance, including testing of any defined worst-case scenarios.
@@ -1831,8 +1796,7 @@ utilities, manufacturing equipment and their associated automation or process co
 Testing activities and rigor will depend on the type of system (e.g., manufacturing, automated, utilities), potential to
 impact product quality, and on the project (e.g., green field, brown field, relocation, stick-built, modular, off-the-shelf
 system).
-7.1.2
-Principles/Concepts
+7.1.2 Principles/Concepts
 The C&Q testing and documentation approach described in this Guide is based on the following principles:
 •
 Testing is an engineering driven activity that produces the documented evidence that the installation and
@@ -1850,9 +1814,6 @@ Chapter 10)
 System changes need to be managed through Engineering Change Management after approval of the design
 (see Chapter 12)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 50
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 •
@@ -1938,13 +1899,12 @@ WFI Distribution
 specifications. It is completed before the system is used for production.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 51
 Commissioning and Qualification
 Other documentation required to support acceptance and release (e.g., drawings and procedures) is managed
 through other processes (see Chapter 8).
-7.1.3
-Quality Unit Oversight
+
+#### 7.1.3 Quality Unit Oversight
+
 To ensure that the deliverables meet quality expectations, it is good practice to ensure engagement of the Quality Unit
 as part of an integrated team during the generation of test documentation that will be used to support qualification.
 The organization/site needs to determine how Quality Unit oversight will be provided for the testing and associated
@@ -1965,8 +1925,9 @@ approval
 Inspection and test records can be marked up to show the tests that are used to demonstrate the CAs/CDEs
 identified in the System Risk Assessment, or these tests can be assembled in a subsection of the test document
 for Quality Unit pre and post-execution review and approval
-7.1.4
-Roles and Responsibilities
+
+#### 7.1.4 Roles and Responsibilities
+
 The planning, execution, and closeout of testing should be performed by a multidisciplinary team (which includes
 vendors, engineering, and users) with appropriate Quality Unit oversight. Refer to Section 6.4 (Example Approval
 Matrix) for an example of the roles and responsibilities for the review and approval of deliverables.
@@ -1990,19 +1951,18 @@ that documentation (such as operational procedures and batch records) are develo
 acceptance and release.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 52
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Technical experts are part of or support the testing team, as appropriate. Where testing activities are performed by
 vendors or third parties, the responsibilities between both parties need to be defined and documented.
 The Quality Unit representative provides oversight to ensure that all CAs/CDEs identified in the System Risk
 Assessment are tested.
-7.2
-Prerequisites
+
+### 7.2 Prerequisites
+
 This section describes the activities that should be completed prior to execution of C&Q testing.
-7.2.1
-Planning
+
+#### 7.2.1 Planning
+
 When C&Q testing is executed as a planned, documented, and managed engineering approach to the start-up
 and turnover of systems, the result is a safe and functional environment that meets established requirements and
 stakeholder expectations in a cost-effective way. Where such systems are direct impact (as determined through
@@ -2014,21 +1974,24 @@ manufacturer, model number, materials of construction) at the vendor site during
 be used to support qualification activities, and do not need to be repeated provided there is justification that the
 functionality will not be affected by any subsequent activities prior to acceptance and release.
 See Chapter 6 for details regarding C&Q planning.
-7.2.2
-Training
+
+#### 7.2.2 Training
+
 Each individual taking a role in the scope of C&Q testing needs have the appropriate training and experience to
 be able to complete their tasks effectively. Additional training may be required for setup and operation of a specific
 system, safety, and documentation standards required for a project.
-7.2.3
-Design Review/Design Qualification
+
+#### 7.2.3 Design Review/Design Qualification
+
 DR/DQ should be completed with approval of the design before purchasing or starting construction of the system.
 This approved design then provides the basis for any subsequent engineering changes.
 Fast track projects may proceed with construction or assembly at risk. However, the basis for approving system
 design and initiating change management needs to be clearly defined and, for direct impact systems, approved by
 the Quality Unit.
 See Chapter 5 for details regarding DR and DQ.
-7.2.4
-Use of Vendor Documentation and Testing
+
+#### 7.2.4 Use of Vendor Documentation and Testing
+
 Vendor documentation, including protocols and/or test plans (e.g., FAT, SAT), can be used. The strategy should be
 captured in the C&Q Plan. It is acceptable for the vendor to use their own format for conducting and documenting the
 testing provided that the vendor company documentation standards are acceptable. The protocol or test plan should
@@ -2037,17 +2000,17 @@ testing starts.
 See Chapter 10 for details regarding the use of vendor documentation.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 53
 Commissioning and Qualification
-7.2.5
-Changes
+
+#### 7.2.5 Changes
+
 Before testing, it is recommended that the relevant System Risk Assessment and change management records are
 reviewed to ensure that the testing documents reflect the installed system and no changes have been made that may
 impact the testing.
 See Chapter 12 for details regarding change management.
-7.3
-Execution
+
+### 7.3 Execution
+
 This section describes the testing and inspection activities. Each organization/project should dictate the testing and
 inspection required, when it should be performed, and the titles of the record documents.
 Tests should be planned and performed so that the results remain valid throughout subsequent phases of the project.
@@ -2060,10 +2023,11 @@ Any outstanding activities and critical discrepancies are noted and tracked with
 There is documented evidence that the outstanding activities and critical discrepancies will not impact the
 subsequent work. For direct impact systems, this justification should be approved by the Quality Unit.
 See Chapter 8 for information on the review and closure of testing documentation.
-7.3.1
-Vendor and System Construction Phase Documents
-7.3.1.1
-Turnover Packages
+
+#### 7.3.1 Vendor and System Construction Phase Documents
+
+##### 7.3.1.1 Turnover Packages
+
 The purpose of the Turnover Package (TOP) is to provide complete documentation on system components,
 equipment, and setup. This documentation should also include as-built documentation (agreed upon data, drawings,
 software, etc.) turned over to the end-user. The TOP may be used throughout the system lifecycle, including ongoing
@@ -2084,9 +2048,6 @@ Vendor-provided SOPs
 •
 Spare parts lists
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 54
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 •
@@ -2121,24 +2082,22 @@ the various TOPs that are submitted. The owner organization can propose a standa
 format if it meets internal requirements. The format might be system-based. The format of TOPs should ensure
 that they are user friendly with tabulated sections. TOPs should be obtained for all operating systems. To facilitate
 storage, electronic versions of these documents are often required by the owner organization.
-7.3.1.2
-Cleaning
+
+##### 7.3.1.2 Cleaning
+
 Where appropriate, the specifications should include clean construction or post-construction cleaning requirements to
 ensure that systems are ready to test and/or turn over to the owner organization.
 Clean construction cleaning requirements may include pre-installation checks/inspection, sealing all openings during
 construction, etc. Post-construction cleaning may include system cleaning, flushing, sanitation, and passivation,
 where applicable. The activities should be documented.
 Cleaning of any systems that will be moved into a classified area should be performed to prevent contamination.
-7.3.2
-Installation Testing (Acceptance Testing, Commissioning, and Qualification)
+7.3.2 Installation Testing (Acceptance Testing, Commissioning, and Qualification)
 The verification of installation provides documentation that the system (or system components) is installed correctly,
 is ready to start-up, and meets the design requirements including those identified as CDEs.
 Testing may be conducted within a single record/plan or separated into FAT, SAT, commissioning, and qualification
 phases.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 55
 Commissioning and Qualification
 The scope of installation testing includes all system installation requirements within the system boundaries, as
 defined in the specifications or C&Q Plan. Installation testing should include all mechanical, electrical, and automation
@@ -2182,17 +2141,15 @@ Communication loss and recovery testing
 Loop testing, calibration, or tuning
 •
 Data integrity and audit trail testing
-7.3.2.1
-Pre-Delivery Inspections
+
+##### 7.3.2.1 Pre-Delivery Inspections
+
 PDIs are construction checks (inspection and testing) of systems or major system components before delivery to the
 owner site. These are typically done to verify construction progress and quality standards and to ensure delivery as
 scheduled. PDIs include inspection of parts (e.g., baffles in a heating jacket) that would not be able to be inspected
 during FAT or where a FAT cannot be performed for the system. This allows for remedy of any failings and avoids the
 delays to schedule (and associated costs) that would result from discovering problems later on-site.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 56
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 
@@ -2246,11 +2203,10 @@ Calibration of critical instruments (calibration could also be verified at the s
 the commencement of testing)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 57
 Commissioning and Qualification
-7.3.3
-System Start-Up
+
+#### 7.3.3 System Start-Up
+
 System start-up is a GEP approach to ensure that the system is energized and started up in a safe manner. The
 system start-up includes all mechanical, electrical, automation, and HSE related system functionalities. This is also
 where adjustments to the system, settings to regulate the system, or any balancing needed are made. A prerequisite
@@ -2282,8 +2238,7 @@ Energizing the System
 Pre-Functional Testing Checklist
 Any issues identified during system start-up activities should be verified to not impact future testing and addressed
 during the following testing steps.
-7.3.4
-Operational/Functional Testing
+7.3.4 Operational/Functional Testing
 Operational/functional testing verifies that the system functionality matches what has been approved in the
 specifications (including those identified as CAs) and is suitably documented in a test plan/record for the full desired
 range of system operations in the target environment.
@@ -2293,9 +2248,6 @@ calibrations defined in the respective plan have been completed.
 Testing may be conducted within a single report/test plan or separated into FAT, SAT, commissioning, and
 qualification phases. Installation and operational testing may be combined in a single document.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 58
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 The scope of functional testing includes verifying system functionality. Functional testing may include mechanical,
@@ -2334,8 +2286,9 @@ testing.
 Operational tests that demonstrate the ability of the system to meet the CAs/CDE functionalities are considered part
 of the qualification of the system and require Quality Unit oversight. Complex or novel systems may require formal
 system integrated operational testing to document PQ/PPQ operational criteria/control strategy.
-7.3.5
-Performance Qualification Testing
+
+#### 7.3.5 Performance Qualification Testing
+
 Performance Qualification (PQ) testing is the documented verification that manufacturing systems (e.g., when they
 are connected to other manufacturing systems) perform effectively and reproducibly, based on the approved process
 or analytical method and product specification, applying either original product or representative placebo. Cycle
@@ -2345,8 +2298,6 @@ required before performing cycle development; PQ testing can then be conducted. 
 during PQ.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 59
 Commissioning and Qualification
 Examples of systems where PQ is usually required before acceptance and release include:
 •
@@ -2355,8 +2306,9 @@ Autoclaves
 Filling machines
 •
 Pharmaceutical water and steam systems
-7.4
-Discrepancy Management
+
+### 7.4 Discrepancy Management
+
 This section describes how to handle C&Q test results that do not meet the expected results or acceptance criteria,
 also referred to in this Guide as discrepancies. Organizations may have different terminology for these occurrences.
 Discrepancies related to CAs/CDEs are critical and require Quality Unit approval prior to closure.
@@ -2377,9 +2329,6 @@ This is a quality requirement (CA) because a negative pressure means a potential
 if a valve is opened
 Table 7.3 provides suggested actions depending on the type of discrepancy.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 60
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 Table 7.3: Discrepancy Types and Suggested Actions
@@ -2443,12 +2392,11 @@ change requests for direct impact systems.
 •	 Critical discrepancies relate to CAs/CDEs.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 61
 Commissioning and Qualification
 8	 Acceptance and Release
-8.1
-Introduction
+
+### 8.1 Introduction
+
 This chapter provides guidance on the acceptance and release phase which is where all testing is formally
 reviewed and accepted. The conclusion of the acceptance and release phase is that the system can be released for
 manufacturing operations, the next stage of qualification (e.g., for a WFI system), or for use in the manufacture of
@@ -2467,8 +2415,9 @@ The acceptance and release phase is not intended to be a catchall for closeout o
 documentation. For a commissioned system, the engineering SME will make a determination as to the requirements
 prior to release. For a qualified system, the Quality Unit and an engineering/process SME should determine the
 minimum requirements.
-8.2
-Prerequisites for the Acceptance and Release Phase
+
+### 8.2 Prerequisites for the Acceptance and Release Phase
+
 The installation, operational, and performance (as required) testing activities that should be completed prior to the
 acceptance and release phase include:
 •
@@ -2481,20 +2430,19 @@ Discrepancies to the testing plan should be addressed
 Engineering changes should be closed
 •
 Discrepancies should be addressed through Engineering Change Management and/or adjusted and retested
-8.3
-Requirements to Complete the Acceptance and Release Phase
+
+### 8.3 Requirements to Complete the Acceptance and Release Phase
+
 In order to complete the acceptance and release phase, the following items are required to be addressed: completion
 of test documentation, closure of discrepancies and changes, and implementation of quality system elements. This
 section of the chapter describes these items and establishes minimum requirements to include in reports. Options for
 organizing and documenting these items are presented in the next section (Section 8.4).
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 62
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-8.3.1
-Completion of Testing Documentation
+
+#### 8.3.1 Completion of Testing Documentation
+
 All of the planned testing needs to be successfully executed and the documentation completed. Typically, a team of
 SMEs including the Quality Unit representative (for testing related to CAs/CDEs) reviews the documentation prior to
 release. At least one SME review should be documented within the executed tests.
@@ -2519,8 +2467,9 @@ test data should be assembled into package(s) and presented with the report.
 A more detailed report for each of the items noted above and that includes data to demonstrate that the
 acceptance criteria were met. In this case, the report may be presented alone without requiring the executed
 tests.
-8.3.2
-Closure of Discrepancies
+
+#### 8.3.2 Closure of Discrepancies
+
 Discrepancies from the protocol acceptance criteria should be categorized by potential impact.
 Discrepancies that do not impact product quality may remain open. The report should contain an indication of
 any open discrepancies along with potential manufacturing planning implications. These discrepancies should be
@@ -2529,8 +2478,9 @@ Discrepancies that could impact product quality need to be closed.
 All discrepancies impacting product quality should be recorded, addressed, retested where necessary, and
 successfully closed prior to completing the acceptance and release phase.
 All discrepancies should be listed with status (closed or open) within the summary report.
-8.3.3
-Closure of Engineering Changes
+
+#### 8.3.3 Closure of Engineering Changes
+
 All changes should be handled in accordance with change management (as described in Chapter 12). The system
 changes that have occurred during the testing phase should be closed as part of the acceptance and release phase,
 unless there is agreement with the Quality Unit for these open changes to be carried forward. These changes should
@@ -2538,11 +2488,10 @@ be assigned to a responsible individual with defined responsibility for resoluti
 All engineering changes should be listed with status (closed or open) within the summary report.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 63
 Commissioning and Qualification
-8.3.4
-Implementation of Quality System Elements
+
+#### 8.3.4 Implementation of Quality System Elements
+
 For systems that contain CAs/CDEs, the implementation of quality systems is required prior to releasing a system for
 manufacturing operations; this ensures that the system can operate and be maintained consistently and remains in a
 qualified state. These aspects are referred to as quality system elements and may include (as applicable), but are not
@@ -2562,8 +2511,9 @@ Completion of any other organization requirements to add the system into the ope
 A statement that all required quality system elements are in place should be included in the summary report for
 systems with CAs/CDEs. If a system is released with outstanding items (this requires Quality Unit approval), a quality
 system should be in place to track these items to closure with an appropriate level of Quality Unit oversight.
-8.4
-Summary Report Organization
+
+### 8.4 Summary Report Organization
+
 The acceptance and release process is completed through a summary report. The contents and complexity of the
 report may vary, but it needs to include SME review and approval of the following items:
 •
@@ -2579,8 +2529,9 @@ Documented formal release of the system
 The summary report can be accomplished in several different ways depending on the scale and complexity of the
 project. A separate document for the summary report is not always necessary. This section describes example
 options for the summary report.
-8.4.1
-Example Option #1: Commissioning Summary Report – Systems with No Critical Aspects/
+
+#### 8.4.1 Example Option #1: Commissioning Summary Report – Systems with No Critical Aspects/
+
 Critical Design Elements
 For systems with no CAs/CDEs (not direct impact), the acceptance and release can be included within the
 Commissioning Summary Report, as shown in Figure 8.1, and which includes:
@@ -2591,9 +2542,6 @@ Closure of punch list items and discrepancies
 •
 Closure of engineering changes
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 64
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 •
@@ -2620,12 +2568,11 @@ Quality System Elements implementation (or reference to change control record)
 Clear statement of formal release of the system (or reference to change control record)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 65
 Commissioning and Qualification
 Figure 8.2: Example Option #2: Documents with Use of Qualification Summary Report
-8.4.3
-Example Option #3: Formal Release of System with Use of Change Control – Existing Facility
+
+#### 8.4.3 Example Option #3: Formal Release of System with Use of Change Control – Existing Facility
+
 When new systems or changes to existing systems are implemented through QA-managed Quality Change Control
 (as described in Chapter 12), some or all of the requirements (as described in Section 8.3) may be contained within
 the change control.
@@ -2635,9 +2582,6 @@ Qualification Summary Report should include a reference to the change control re
 allows for closure of the testing phase in a timely manner.
 Figure 8.3: Example Option #3: Documents with Use of Change Control
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 66
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 
@@ -2664,18 +2608,18 @@ integration of systems.
 Figure 8.4: Example Option #4: Documents with Use of Acceptance and Release Report
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 67
 Commissioning and Qualification
-8.5
-Acceptance and Release Completion
+
+### 8.5 Acceptance and Release Completion
+
 Approval and release is completed when the Quality Unit approves and signs the summary report, which could be
 the Qualification Summary Report, change control closure, or Acceptance and Release Summary Report. This final
 approval releases the system for use. Refer to Section 6.4 for an example document approval matrix.
 Quality Unit acceptance and release represents the initiation of the “qualified state” and the beginning of QA-
 managed Quality Change Control (described in Chapter 12), continuous performance monitoring, and periodic review.
-8.6
-Traceability Matrix
+
+### 8.6 Traceability Matrix
+
 A Traceability Matrix may be used as a tool to identify CAs/CDEs, acceptance criteria, and includes reference to
 the testing document (planned or completed). Best practice is to create the matrix early in the project or as soon as
 the CAs/CDEs are identified. The Traceability Matrix can be used throughout the project as an engineering tool to
@@ -2693,12 +2637,11 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 69
 Commissioning and Qualification
 9	 Periodic Review
-9.1
-Introduction
+
+### 9.1 Introduction
+
 There is a regulatory requirement to maintain qualified systems in a validated state, i.e., the qualification documents
 remain valid and the system remains suitable for the intended purpose (refer to Chapter 15 for the regulatory basis).
 Quality systems are in place to maintain that status and should be subject to internal audit to ensure robustness.
@@ -2715,16 +2658,14 @@ It is regulatory expectation that there is also a periodic review process to ens
 qualified (refer to Chapter 15 for the regulatory basis).
 This chapter describes an approach for periodic review where the frequency of review or requalification is established
 based on risk, the current level of process understanding and process performance, and regulatory requirements.
-9.1.1
-Rationale
+
+#### 9.1.1 Rationale
+
 Certain systems have regulatory expectations to confirm ongoing system performance through periodic verification;
 such systems include sterilizing autoclaves, depyrogenation tunnels/ovens, and equipment with a Sterilize-in-Place
 (SIP) functionality (e.g., freeze dryer). Table 9.1 summarizes examples of periodic verification frequencies for systems
 with regulatory expectations.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 70
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 Table 9.1: Examples of Periodic Verification Frequencies for Systems with Regulatory Expectations
@@ -2797,14 +2738,11 @@ Processing – Current Good Manufacturing Practice [23], and Annex 1 of the EU G
 3.	 If the SIP process is continuously monitored, it is usually not revalidated.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 71
 Commissioning and Qualification
 This proposed approach is a triage process that looks for any unusual performance signals at a high level. If none
 are observed, then the review is complete. If there are signals observed, then a deeper review is conducted that may
 result in detailed investigation and testing.
-9.1.2
-Principles/Concepts
+9.1.2 Principles/Concepts
 This periodic review approach is most efficient if the organization/site has mature quality systems and the associated
 quality system performance metrics. These metrics could include:
 •
@@ -2848,13 +2786,11 @@ as efficient.
 Figure 9.1 provides an overview of the periodic review process.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 72
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Figure 9.1: Periodic Review Process Overview
-9.2
-Periodic Review Approach
+
+### 9.2 Periodic Review Approach
+
 The periodic review approach proposed in this Guide consists of two phases:
 •
 Phase 1: System Categorization and Schedule Assignment
@@ -2875,11 +2811,10 @@ minimum, by the system owner and the Quality Unit. This approach is intended to 
 the overall review is accomplished in a timely manner.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 73
 Commissioning and Qualification
-9.2.1
-Prerequisites
+
+#### 9.2.1 Prerequisites
+
 The required prerequisites for the periodic review process include:
 •
 List of validated manufacturing systems
@@ -2900,8 +2835,9 @@ investigation has highlighted equipment performance as a root cause)
 System validation/qualification documents
 -
 Risk assessment (if available)
-9.3
-Phase 1: System Categorization and Schedule Assignment
+
+### 9.3 Phase 1: System Categorization and Schedule Assignment
+
 The systems are categorized based on the potential to impact product quality. Typically, due to in-process testing,
 systems used for early stages of manufacture are considered lower risk that those used for stages closer to the
 finished product.
@@ -2935,9 +2871,6 @@ Sterile Filtration*
 post-use integrity tests used to
 monitor system performance
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 74
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 Table 9.2: Examples of Periodic Review Categories (continued)
@@ -3025,12 +2958,11 @@ monitored
 performance; therefore, periodic review would not be not required.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 75
 Commissioning and Qualification
 Table 9.3: Example Periodic Review Schedule
-9.4
-Phase 2: Periodic Review Execution
+
+### 9.4 Phase 2: Periodic Review Execution
+
 Using the frequency schedules established in Phase 1 (System Categorization and Schedule Assignment), the
 periodic reviews can be performed using a three-tier approach which involves reviewing the following four quality
 systems:
@@ -3074,12 +3006,8 @@ Perform reviews at two-year intervals.
 Perform reviews at three-year intervals.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 76
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-9.4.1
-Initial Assessment (Tier A)
+9.4.1 Initial Assessment (Tier A)
 To perform the initial assessment, the records from the four quality systems are reviewed to identify any concerns
 related to the qualified state of the system being assessed.
 GMP Compliance Expectations (Tier A)
@@ -3122,8 +3050,6 @@ Note: Deviations that have already been determined to have little or no risk to 
 reviewed as part of the periodic review process.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 77
 Commissioning and Qualification
 After this initial assessment of each quality system:
 •
@@ -3132,8 +3058,7 @@ second level assessment needs to be performed. Note that the scope of the second
 to the quality system(s) of concern.
 •
 If no concerns are identified, then the assessment for that quality system is complete.
-9.4.2
-Second Level Assessment (Tier B)
+9.4.2 Second Level Assessment (Tier B)
 The second level assessment should only be performed on each quality system category that was determined during
 the initial assessment to require further assessment. All second level assessment activities should be performed by
 representatives (SMEs) from the same departments as the initial assessment team.
@@ -3168,9 +3093,6 @@ In the judgment of the assessment team, determine if the deviations indicate tha
 not consistent and thus may not be performing in a qualified state
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 78
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 After this second level assessment of applicable quality system(s):
 •
@@ -3180,8 +3102,7 @@ assessment is limited to the quality system(s) of concern.
 •
 If there is confidence that the qualified state of the system has not been impacted, then the assessment for that
 quality system is complete.
-9.4.3
-Third Level Assessment (Tier C)
+9.4.3 Third Level Assessment (Tier C)
 The third level assessment should only be performed on each quality system category that was determined during
 the second level assessment to require further assessment. All third level assessment activities should be performed
 by representatives (SMEs) from the departments who have conducted the initial and second level assessments.
@@ -3190,14 +3111,13 @@ required to restore the system to a qualified state. A non-conformance record sh
 process.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 79
 Commissioning and Qualification
 10	 Vendor Assessment for C&Q
 
 Documentation Purposes
-10.1
-Introduction
+
+### 10.1 Introduction
+
 This chapter describes vendor assessments3 and controls for work where vendors follow their own procedures to
 perform testing and produce documentation that may be used to support system qualification. When vendor tests are
 used to directly support qualification where appropriate, the result is reduced on-site testing and reduced cost and
@@ -3215,8 +3135,9 @@ Note: It is not necessary to perform vendor assessments, as described in this Gu
 qualification services (sometimes referred to as secondary services) when those vendors are contracted to follow the
 regulated owner organization procedures and practices or applicable specialist standards, such as the US National
 Environmental Balancing Bureau (NEBB) [28].
-10.1.1
-Purpose and Benefits
+
+#### 10.1.1 Purpose and Benefits
+
 The objective of a vendor assessment is to establish confidence in the vendor and the vendor quality systems to
 perform testing, manage changes, and provide documentation that is accurate, complete, and unambiguous, with
 results matching what was expected. Vendor verification documentation assessments are highly recommended when
@@ -3234,9 +3155,6 @@ be unnecessary.
 3	 The use of the term vendor assessment throughout this chapter relates specifically to the use of vendor-provided documentation to support system C&Q.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 80
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 10.1.2	 Principles/Concepts
 It is good engineering practice to assess vendor’s capability for testing and documenting the systems they provide for
@@ -3252,8 +3170,9 @@ documented as early as possible.
 Quality Unit oversight in the use of vendor verification documentation is a risk-based decision, with consideration of
 risk to product quality. For example, there is less product quality risk in documenting pipe boroscoping or passivation
 activities as compared to an SAT for a sterile filling isolator.
-10.2
-Communication of Requirements, Scope, and Deliverables
+
+### 10.2 Communication of Requirements, Scope, and Deliverables
+
 The project team should ensure that the fundamental project requirements are communicated effectively to all parties,
 both internal and external. In addition to the overall project requirements, specific items that should be communicated
 to vendors involved in the project should include, at a minimum:
@@ -3274,8 +3193,9 @@ confirm comprehension by the vendor.
 From a project risk perspective and to help to ensure that quality is built in at the outset, arrangements should be
 made for supervision, inspections, and/or surveillance for the scope of work and associated deliverables across the
 lifecycle of their development.
-10.3
-Vendor Assessment Factors
+
+### 10.3 Vendor Assessment Factors
+
 As part of the vendor assessment for verification documentation purposes, the owner organization should assess
 the robustness of the vendor’s Quality Management System (QMS). This provides insight into the strengths and
 weaknesses of the vendor capability and provides an opportunity to align or, if necessary, impose procedures or
@@ -3285,8 +3205,6 @@ When performing a vendor assessment, the following factors should be evaluated:
 Degree of novelty of the system provided by the vendor
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 81
 Commissioning and Qualification
 •
 Training and experience of the staff who will conduct the testing
@@ -3315,8 +3233,9 @@ As discussed in Section 10.1, a vendor assessment for verification documentation
 qualification/audit. It is different than a product-focused vendor assessment for raw materials, packaging components,
 Active Pharmaceutical Ingredients (APIs), etc.
 Refer to Chapter 27 (Appendix 13) for an example vendor assessment for verification documentation.
-10.4
-Vendor Assessment Strategy
+
+### 10.4 Vendor Assessment Strategy
+
 A risk-based approach should be taken in determining the project-specific vendor assessment strategy.
 There are several approaches for completing vendor assessments; examples include:
 •
@@ -3337,12 +3256,10 @@ the C&Q Plan or as a standalone activity. This may be part of an owner organizat
 System) procedures and routine practices.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 82
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-10.5
-Use of Vendors Unfamiliar with GMP
+
+### 10.5 Use of Vendors Unfamiliar with GMP
+
 The use of vendor assessments, quality assurance plans, and/or vendor quality plans provide a means either to
 accept or reject a vendor, or to identify where additional resources should be applied to ensure success. Certain
 vendors may not operate within a GMP environment for most of their products and services to customers. A QMS
@@ -3364,8 +3281,9 @@ Attending/witnessing critical phases of the design, fabrication, and testing at 
 Support by third-party service providers
 •
 Additional owner testing to compensate for being unable to rely on vendor generated test documentation
-10.6
-Vendor Training
+
+### 10.6 Vendor Training
+
 In addition to the communication of project and quality requirements, training may be needed for vendor personnel.
 Such training requirements should be identified during the vendor assessment. Key areas of training include:
 •
@@ -3390,12 +3308,11 @@ reviews, tank entry, etc.) should be carefully planned and scheduled to ensure a
 specialist skills are available to meet project schedules.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 83
 Commissioning and Qualification
 11	 Engineering Quality Process
-11.1
-Introduction
+
+### 11.1 Introduction
+
 When the C&Q process is considered as a part of an organization-wide PQS, the result is an achievement of both
 GMP and GEP concepts. A separate quality system is not required for C&Q; instead, it can be part of the overall PQS
 or a subset of the PQS. For the purposes of this Guide, the term Engineering Quality Process is used to describe
@@ -3411,8 +3328,9 @@ quality practices and methods through the PQS produce robust reliable systems an
 Engineering Quality Process needs to be established as part of the PQS; the Engineering Quality Process can then
 be used for developing sustainable, consistent, cost-effective, and practical engineering processes for project and
 operational lifecycle management.
-11.1.1
-Rationale
+
+#### 11.1.1 Rationale
+
 Current regulatory authority and ICH [12] guidances emphasize a focus on building quality into the product4 and
 not by inspection. ICH Q10 [9] augments the defined GMPs by describing specific quality system elements and
 management responsibilities that should be in place to achieve three main objectives; it states:
@@ -3435,9 +3353,6 @@ Quality should be built into the product, and testing alone cannot be relied on 
 4	 The term “building quality into processes” was first coined in June 1960 by Eiji Toyoda.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 84
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Another useful resource in understanding Engineering Quality Process as a philosophy is the work of Dr. W.
 Edwards Deming [29]. Deming believed in improving the process and in doing so using process measures to guide
@@ -3451,8 +3366,9 @@ The approach presented in this Guide embraces regulatory guidance and Deming’s
 conformance to specifications can be achieved by developing a process, which addresses causes and concerns for
 variability and reduces reliance on inspection. Thus, the focus of the Quality Unit should be to ensure adherence to a
 process that identifies CAs/ CDEs and confirms that they have been satisfactorily tested.
-11.2
-Application
+
+### 11.2 Application
+
 The Engineering Quality Process should include aspects that support the C&Q effort, such as maintenance and
 calibration, change management program, critical utilities, and the procedures for the C&Q process.
 The approach described in this section is based on the six-system inspection model described in the FDA 2006
@@ -3486,8 +3402,6 @@ Provide a lean framework to foster innovation, encourage (rather than obstruct) 
 facilitate the effective, cost-efficient, and focused application of time and resources
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 85
 Commissioning and Qualification
 •
 Provide the framework for linking the CAs to the CDEs and the mechanism to capture the traceability
@@ -3542,12 +3456,10 @@ the C&Q activity currently being undertaken. This referencing of knowledge impos
 assessment, management, and maintenance of the knowledge, particularly on the change management practices used.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 86
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-11.3
-Deliverables
+
+### 11.3 Deliverables
+
 The main deliverable from a quality system is to ensure that systems are operating as intended as captured
 in documentation. A document hierarchy within the Engineering Quality Process helps to identify where the
 requirements/expectations are derived. Figure 11.1 illustrates a typical document hierarchy for a quality system.
@@ -3582,8 +3494,6 @@ Protocols/Plans
 Engineering Change Management
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 87
 Commissioning and Qualification
 •
 Reports
@@ -3617,8 +3527,9 @@ control plan to measure progress
 •
 Ensure continual improvement – senior management should be responsible for the quality system governance
 through management review to ensure continuing suitability and effectiveness of Engineering Quality Process
-11.4
-Roles and Responsibilities
+
+### 11.4 Roles and Responsibilities
+
 The roles and responsibilities for the Engineering Quality Process should be defined. The functions that contribute to
 the Engineering Quality Process are:
 •
@@ -3639,12 +3550,11 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 89
 Commissioning and Qualification
 12	 Change Management
-12.1
-Introduction
+
+### 12.1 Introduction
+
 Change management processes should be established and applied throughout the lifecycle of manufacturing
 systems. The risk-based application of SME-led change management is one of the biggest challenges in the
 implementation of QRM-based C&Q as it applies the principles of ICH Q9 [3]. This Guide presents an approach which
@@ -3659,8 +3569,9 @@ A system is considered to be changed when it is modified, altered, added to, rem
 makes its functions, physical features, or performance different from what they were prior to the change.
 Replacing an existing part of a system with an identical one (like-for-like) may not be considered as a change.
 Organizations should define and follow a robust assessment process for classifying changes as like-for-like.
-12.1.1
-Purpose and Benefits
+
+#### 12.1.1 Purpose and Benefits
+
 Change management is a documented program that:
 •
 Defines what is subject to change
@@ -3686,9 +3597,6 @@ continual improvement. All stakeholders in the change management system should u
 benefits of effective change management. Efficient use of change management adds value by delivering technically
 sound solutions in an efficient manner and makes innovation and continual improvement less cost or time prohibitive.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 90
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 At the same time, management of change is crucial to maintaining control of risks to product quality and patient
@@ -3729,11 +3637,10 @@ for non-critical aspects, components or functions
 through a System Risk Assessment
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 91
 Commissioning and Qualification
-12.2
-Engineering Change Management
+
+### 12.2 Engineering Change Management
+
 ECM is a key component of the Engineering Quality Process (as described in Chapter 11). It provides the primary
 control mechanism within the overall Engineering Quality Process and is fundamental in supporting the execution of
 regulatory/quality change control for CQAs. Appropriate SMEs, process owners, and the Quality Unit (where CAs/
@@ -3782,13 +3689,11 @@ type of change. These examples are provided for illustrative purposes; actual ap
 mechanisms should be based on organization procedures.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 92
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Table 12.2: Example Changes and Suggested Change Management Application
-12.3
-Change Management during C&Q Projects
+
+### 12.3 Change Management during C&Q Projects
+
 Before new systems are used for commercial or clinical operations, there is no risk to the patient associated with
 changes to design or function during the C&Q or project lifecycle. There is therefore no regulatory requirement for
 Quality Unit approval prior to implementation of a change.
@@ -3844,8 +3749,6 @@ The differences between QCC and ECM with Quality Unit Approval are:
 acceptance and release or after approval of the project-related activity in question
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 93
 Commissioning and Qualification
 Test results from commissioning that do not meet acceptance criteria require:
 •
@@ -3862,8 +3765,9 @@ acceptance criteria cannot be met after corrective actions have been made, an SM
 determine if it can be accepted as-is. A note should be made in the commissioning record to indicate why the item is
 acceptable as-is.
 For more information on handling of discrepancies, refer to Section 7.4.
-12.4
-Change Management during Operation
+
+### 12.4 Change Management during Operation
+
 After acceptance and release and after the system is placed into production use, any changes to the qualified
 system has the potential to affect product quality and patient safety. GMP regulations usually require Quality Unit
 pre-approval (approval prior to non-emergency implementation) of changes with the potential to affect product quality
@@ -3883,8 +3787,9 @@ acceptance and release documentation
 When QCC is used to manage changes, a log or tracking system should be used to maintain change histories for
 systems with CAs/CDEs. IT tools providing this functionality may be commercially available. A complete record of all
 changes to qualified systems should be able to be retrieved on demand.
-12.5
-Engineering Change Management Process
+
+### 12.5 Engineering Change Management Process
+
 ECM is defined as a process by which qualified representative(s) reviews proposed changes for its impact, approves
 or denies the requests, and manages and tracks their implementation. ECM is a good engineering practice to
 effectively manage project execution and the associated costs and schedule.
@@ -3892,9 +3797,6 @@ An ECM process may contain the following attributes:
 •
 Recorded name of the originator and date
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 94
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 •
@@ -3945,8 +3847,6 @@ At the completion of the design phase, DR/DQ is completed. At this point, ECM is
 ECM with Quality Unit approval is applied to changes in CAs/CDEs (with Quality Unit approval).
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 95
 Commissioning and Qualification
 •
 Construction, C&Q Phase: During this phase, for large projects, the site and project are primarily under
@@ -4005,12 +3905,11 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 97
 Commissioning and Qualification
 13	 Good Documentation Practice for C&Q
-13.1
-Introduction
+
+### 13.1 Introduction
+
 The goal of Good Documentation Practice is to create clear, concise documents that a knowledgeable peer may
 review without questions. Good Documentation Practice supports data integrity. Documents should be:
 •
@@ -4023,8 +3922,9 @@ Contemporaneous
 Original
 •
 Accurate
-13.1.1
-Scope and Purpose
+
+#### 13.1.1 Scope and Purpose
+
 This chapter applies to all C&Q documentation, including test documents and reports. In this chapter, GEP
 documents are considered to be the engineering records used to support commissioning and GMP records are
 considered to be the documentation supporting qualification. Table 13.1 provides more details on the differences
@@ -4068,9 +3968,6 @@ Commissioning documents are typically not approved by the Quality Unit. The test
 criteria are generally approved by Engineering.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 98
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 The purpose of this chapter is to provide specific guidance on Good Documentation Practice so that documentation
 generated during commissioning (GEP) testing can be used to meet the requirements for qualification (GMP).
@@ -4090,8 +3987,9 @@ Vendor technical capability
 Vendor application of GEP such that information obtained from the vendor will be accurate and suitable to meet
 the purpose of qualification
 Refer to Chapter 7 for details on testing and verification.
-13.2
-C&Q Document Development Basics
+
+### 13.2 C&Q Document Development Basics
+
 Testing and verification documentation are usually written in the local language. Summary documents are generally in
 English to facilitate regulatory review.
 The use of forms/templates is encouraged to promote consistency. Forms/templates can be approved once when
@@ -4115,11 +4013,9 @@ The test document should indicate the order that the cases are to be executed. A
 established and it should be clear that the tests demonstrate that the acceptance criteria have been met.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 99
 Commissioning and Qualification
-13.3
-Document Execution
+
+### 13.3 Document Execution
 
 #### 13.3.1 Test Execution Basics
 
@@ -4149,9 +4045,6 @@ manually transcribing single entries from computer generated printouts). Transcr
 dated. The date of the actual data should be included. Transcribed data should be checked by a second person. If
 data is transcribed, the raw data should be included –labeled, initialed and dated.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-Page 100
-ISPE Baseline® Guide:
 
 Commissioning and Qualification
 
@@ -4209,8 +4102,6 @@ If a signature log is maintained (with the signature, initials, and printed name
 the document), initials are acceptable in lieu of signatures everywhere except for document approvals.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 101
 Commissioning and Qualification
 •
 Initial and date any handwritten changes to changes or comments. Where the reason for the change is not clear,
@@ -4269,17 +4160,15 @@ when there is a different person responsible for testing, the final step should 
 the executor responsible for each test step is clearly identifiable.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 102
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 •
 Test reports should include a summary of the results including a conclusion that the system is or is not suitable
 for the intended purpose.
 •
 The completed record should be able to be copied/scanned legibly.
-13.4
-Attachments and Supporting Documentation
+
+### 13.4 Attachments and Supporting Documentation
+
 The integrity of all original records should be maintained.
 Printouts should indicate data dates. Data dates should coincide with test step execution. It is acceptable for printout
 dates to be later.
@@ -4303,8 +4192,9 @@ Every page should include Page X of Y pagination. If records are paginated as de
 identifier, it is acceptable to initial and date only the first and last pages. Multiple attachments should have a summary
 cover sheet.
 Use of sticky notes or other unofficial media for recording original data or information should not be permitted.
-13.5
-Corrections
+
+### 13.5 Corrections
+
 Mistakes and errors happen. Do not erase, overwrite, or corrupt original recorded data. Correction fluid, correction
 tape, pencil, and erasable ink should be avoided. Data should not be altered, obliterated, erased, or overwritten.
 Corrections are acceptable when:
@@ -4318,8 +4208,6 @@ Correcting test/sampling instructions
 Correcting test data with no impact on interpretation
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 103
 Commissioning and Qualification
 Corrections can be handled in the following manner:
 •
@@ -4337,8 +4225,9 @@ Situations may arise where the person needed for making a correction is no longe
 by a different person than the one making the initial entry needs to be compliant with the document/protocol and/or
 site procedures.
 Refer to Section 7.4 for more information regarding discrepancy resolution.
-13.6
-Document Review and Approval
+
+### 13.6 Document Review and Approval
+
 Approvers should have the education, training, experience, or any combination thereof to review and/or approve
 the record [32]. Quality review of commissioning documents can be limited to the product impact relevant tests by
 executing pre-approved test scripts or by assembling specific test scripts into a separate test plan.
@@ -4346,8 +4235,9 @@ Reviewers and approvers should ensure that all appendices and registers have bee
 applicable procedures and that the document is complete, legible, and unambiguous. All test results should conform
 to established acceptance criteria; all discrepancies should be closed and approvals for discrepancy closure should
 have been obtained.
-13.7
-Storage, Retrieval, and Retention of Documents
+
+### 13.7 Storage, Retrieval, and Retention of Documents
+
 Methods of document storage should be established, as dictated by organization/site policies and procedures and
 in a manner that allows documents to be located and retrieved within a reasonable time period, as required. The
 methods should include access control and tracking. The storage area should be secure.
@@ -4356,8 +4246,9 @@ and archived as electronic records in a validated document management system. On
 hard copy can be destroyed. Retention of records should follow organization/site specific records management policy.
 Check the specific requirements of authorities for the regions that the site will supply before destroying GMP records/
 documents.
-13.8
-Disaster Recovery
+
+### 13.8 Disaster Recovery
+
 There should be a system in place to handle the reconstruction of records. All measures should be taken to recover
 the original document. For a record that is lost or destroyed and not recoverable, a copy of the original record is
 acceptable as the official copy, which should be approved by Management.
@@ -4367,14 +4258,13 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 105
 Commissioning and Qualification
 14	 Strategies for Implementation of Science
 
 and Risk-Based C&Q Process
-14.1
-Introduction
+
+### 14.1 Introduction
+
 This chapter describes strategies how organizations can effectively transition to the science and risk-based C&Q
 process described in this Guide. Implementing change successfully often requires high-level sponsorship due to the
 numerous stakeholders impacted.
@@ -4390,18 +4280,14 @@ Figure 14.1 provides a flow chart of the suggested steps for implementation of t
 approach described in this Guide.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 106
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
 Figure 14.1: Implementation Flow Chart for Science and Risk-Based C&Q Approach
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 107
 Commissioning and Qualification
-14.2
-Preparing for Implementation
+
+### 14.2 Preparing for Implementation
+
 The suggested steps for implementation preparation are described in more detail as follows:
 1.
 Define the organization approach:
@@ -4452,12 +4338,10 @@ The relevant staff should be sufficiently trained on the new procedures and have
 overall program and its goals.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 108
-ISPE Baseline® Guide:
-
 Commissioning and Qualification
-14.3
-Approaches for Implementation
+
+### 14.3 Approaches for Implementation
+
 For new projects or facilities, the use of a champion for the new approach is recommended. This individual helps
 with the transition and implementation of the new approach and should have a good understanding of the process
 concepts/goals.
@@ -4481,8 +4365,6 @@ Table 14.1 shows the typical situations that may arise when implementing the sci
 within organizations with legacy systems, and the suggested approach.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 109
 Commissioning and Qualification
 Table 14.1: Suggested Approach for Implementation of Science and Risk-Based C&Q Approach
 Refer to Chapter 28 (Appendix 14) for an organizational maturity model and Chapter 29 (Appendix 15) for an
@@ -4567,8 +4449,6 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 111
 Commissioning and Qualification
 Appendix 1
 Appendix 1
@@ -4600,8 +4480,9 @@ Computerized Systems [6]; detailed regulatory expectations for computerized syst
 In addition, the FDA 2011 Process Validation Guidance [2] notes that ASTM E2500-13 [5] may be a useful reference.
 The principles described in ASTM E2500-13 [5] are consistent with the regulatory references and provide additional
 clarity on the topics of this Guide.
-15.1
-Chapter 1: Introduction
+
+### 15.1 Chapter 1: Introduction
+
 The following texts detail the regulatory basis for employing a science and risk-based approach to qualification and
 validation over the lifecycle of a drug:
 •
@@ -4618,8 +4499,6 @@ based on a justified and documented risk assessment of the facilities, equipment
 5	 PIC/S adopted the EU GMP Annex 15 [1] (PIC/S Annex 15 [33]), and from Version 12 onwards, they are identical documents.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 112
-ISPE Baseline® Guide:
 Appendix 1
 Commissioning and Qualification
 •
@@ -4650,8 +4529,9 @@ Regarding computerized systems: “A computerised system is a set of software an
 together fulfill certain functionalities. The application should be validated; IT infrastructure should be qualified.” [21]
 •
 “[T]here should be appropriate quality oversight over the whole validation life cycle.” [1, 33]
-15.2
-Chapter 2: User Requirements Specification
+
+### 15.2 Chapter 2: User Requirements Specification
+
 It is a regulatory expectation that facilities, systems, utilities, and equipment used for product manufacturing
 are suitable for the intended purpose. The URS defines the intended purpose of facilities, systems, utilities, and
 equipment and is addressed as follows:
@@ -4670,12 +4550,11 @@ their intended use and perform properly.” [2]
 vendor site, if applicable.” [1, 33]
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 113
 Commissioning and Qualification
 Appendix 1
-15.3
-Chapter 3: System Classification
+
+### 15.3 Chapter 3: System Classification
+
 The expectation for qualification and validation is based on whether equipment has a direct impact on product quality
 (consistently delivers a product that meets its quality attributes). Direct impact systems have CDEs (CAs) involved
 with the control of CPPs related to product CQAs. System classification is a tool for making this determination.
@@ -4691,8 +4570,9 @@ product or in-process material, and reevaluated as new information becomes avail
 -
 Selecting utilities and equipment construction materials, operating principles, and performance
 characteristics based on whether they are appropriate for their specific uses.” [2]
-15.4
-Chapter 4: System Risk Assessments
+
+### 15.4 Chapter 4: System Risk Assessments
+
 The System Risk Assessment is used in this Guide for two purposes:
 •
 To determine the scope and extent of qualification
@@ -4723,8 +4603,6 @@ recognizes that terminology usage can vary and expects that each manufacturer wi
 and intent of its terminology and categorization to the Agency.” [2]
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 114
-ISPE Baseline® Guide:
 Appendix 1
 Commissioning and Qualification
 •
@@ -4769,8 +4647,9 @@ class, and finally the specific product.” [3]
 “Quality Risk Management for Facilities, Equipment and Utilities – Qualification of facility/equipment/utilities:
 To determine the scope and extent of qualification of facilities, buildings, and production equipment and/or
 laboratory instruments (including proper calibration methods).” [3]
-15.5
-Chapter 5: Design Review and Design Qualification
+
+### 15.5 Chapter 5: Design Review and Design Qualification
+
 The following texts from regulatory references apply to DR and DQ:
 •
 “The CGMP regulations require that manufacturing processes be designed and controlled to assure that in-
@@ -4782,8 +4661,6 @@ on Buildings and Facilities. It is essential that activities performed to assure
 commissioning precede PPQ [Process Performance Qualification].” [2]
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 115
 Commissioning and Qualification
 Appendix 1
 •
@@ -4791,8 +4668,9 @@ Appendix 1
 the design with GMP should be demonstrated and documented.” [1, 33]
 There is minimal regulatory guidance on how specifically to perform a GMP design review. Refer to ASTM E2500-13
 [5] for additional detailed industry best practice on this topic.
-15.6
-Chapter 6: C&Q Planning
+
+### 15.6 Chapter 6: C&Q Planning
+
 Planning is critical to the C&Q program. Planning is also a regulatory expectation. The following texts from regulatory
 references apply to C&Q planning:
 •
@@ -4838,8 +4716,6 @@ v.
 Guidance on developing acceptance criteria;
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 116
-ISPE Baseline® Guide:
 Appendix 1
 Commissioning and Qualification
 vi.	 References to existing documents;
@@ -4847,8 +4723,9 @@ vii.	 The qualification and validation strategy, including requalification, wher
 
 For large and complex projects, planning takes on added importance and separate validation plans may enhance
 clarity.” [1, 33]
-15.7
-Chapter 7: C&Q Testing and Documentation
+
+### 15.7 Chapter 7: C&Q Testing and Documentation
+
 There is an abundance of guidance information on testing and documentation to support C&Q.
 The FDA Process Validation Guidance [2] states the following:
 •
@@ -4893,8 +4770,6 @@ approved procedures.”
 data obtained.”
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 117
 Commissioning and Qualification
 Appendix 1
 •
@@ -4948,8 +4823,6 @@ v.
 Verification of the materials of construction.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 118
-ISPE Baseline® Guide:
 Appendix 1
 Commissioning and Qualification
 
@@ -4981,8 +4854,9 @@ used to confirm process control should be justified;
 ii.
 Tests should cover the operating range of the intended process, unless documented evidence from the
 development phases confirming the operational ranges is available.”
-15.8
-Chapter 8: Acceptance and Release
+
+### 15.8 Chapter 8: Acceptance and Release
+
 There is a regulatory expectation that equipment, facilities, utilities, and systems are accepted as being qualified prior
 to starting process validation (or PPQ), as described below:
 •
@@ -5001,12 +4875,11 @@ significant impact on the next activity.” [1, 33]
 “The quality control unit must review and approve the qualification plan and report (§ 211.22).” [2]
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 119
 Commissioning and Qualification
 Appendix 1
-15.9
-Chapter 9: Periodic Review
+
+### 15.9 Chapter 9: Periodic Review
+
 Part of the product lifecycle is ensuring that the process remains under control and that facilities, equipment, systems,
 and utilities remain in a qualified state for the full duration of manufacturing operations, as described below:
 •
@@ -5059,13 +4932,12 @@ procedures before approval. Vendor protocols may be supplemented by additional d
 before use.” [1, 33]
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 120
-ISPE Baseline® Guide:
 Appendix 1
 Commissioning and Qualification
 Refer to ASTM E2500-13 [5] for additional detailed industry best practice on this topic.
-15.11
-Chapter 11: Engineering Quality Process
+
+### 15.11 Chapter 11: Engineering Quality Process
+
 The involvement of the Quality Unit in the C&Q process is detailed as follows:
 •
 “In all stages of the product lifecycle, good project management and good archiving that capture scientific
@@ -5114,8 +4986,6 @@ or testing, batch size, design space or any other change during the lifecycle th
 reproducibility.” [1, 33]
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 121
 Commissioning and Qualification
 Appendix 1
 •
@@ -5173,8 +5043,6 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 123
 Commissioning and Qualification
 Appendix 2
 Appendix 2
@@ -5223,8 +5091,6 @@ EXAMPLE: Several similar chromatography columns could have multiple URS document
 single URS with sections describing the different requirements for each system.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 124
-ISPE Baseline® Guide:
 Appendix 2
 Commissioning and Qualification
 The URS document provides input to the System Risk Assessment process, the URS may be in draft form. After the
@@ -5249,8 +5115,7 @@ Definitions, Abbreviations, References: Populate tables for definitions, abbrevi
 they appear and are used in the body of the URS.
 1.1.4
 Requirements: Populate the template with information identified below.
-
-### 1.2 Requirements must be classified as Quality or Business in the type column.
+1.2	 Requirements must be classified as Quality or Business in the type column.
 
 ### 1.3 Include the following requirement categories. If a category is not applicable, enter “not applicable” in the template
 
@@ -5267,8 +5132,6 @@ Operations and Maintenance
 Miscellaneous (e.g., documentation, procedural)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 125
 Commissioning and Qualification
 Appendix 2
 User Requirements Specification
@@ -5322,8 +5185,6 @@ This information should not be disclosed to any third party without the prior wr
 <Company Name>.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 126
-ISPE Baseline® Guide:
 Appendix 2
 Commissioning and Qualification
 1.
@@ -5370,8 +5231,6 @@ Each table contains user requirements for a functional area or discipline such a
 Operations and Maintenance, etc.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 127
 Commissioning and Qualification
 Appendix 2
 The tables are structured as follows:
@@ -5415,8 +5274,6 @@ Subject Matter Experts (SME) should establish their requirements through the pro
 PRD.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 128
-ISPE Baseline® Guide:
 Appendix 2
 Commissioning and Qualification
 6.
@@ -5425,15 +5282,17 @@ ID No.
 Requirement
 Type
 Source
-6.1
-This requirement is appropriate:
+
+### 6.1 This requirement is appropriate:
+
 <The system must process batches in the range of 50 to 83
 containers per minute.>
 Business
 Project
 Charter
-6.2
-This requirement is appropriate:
+
+### 6.2 This requirement is appropriate:
+
 <The tank must have a working volume of 15,000 liters.>
 Business
 Product and
@@ -5445,8 +5304,9 @@ ID No.
 Requirement
 Type
 Source
-7.1
-This requirement is appropriate:
+
+### 7.1 This requirement is appropriate:
+
 <The equipment will be capable of handling a range of clinical
 products with the following key physical properties.
 Density: 0.9 – 1.2 g/ml
@@ -5462,16 +5322,18 @@ ID No.
 Requirement
 Type
 Source
-8.1
-This requirement is appropriate:
+
+### 8.1 This requirement is appropriate:
+
 <The maximum shear rate is 122 000 s-1 based on water at 20 ±
 2°C.>
 Quality
 Product and
 Process
 Requirements
-8.2
-This requirement is appropriate:
+
+### 8.2 This requirement is appropriate:
+
 <The E-Beam shall have a mechanism that eliminates
 the possibility of non-decontaminated tubs crossing the
 decontamination boundary under all foreseeable operational and
@@ -5480,8 +5342,9 @@ Quality
 Company
 Quality
 Standard
-8.3
-This requirement is appropriate:
+
+### 8.3 This requirement is appropriate:
+
 <The E-Beam GMP tunnel and internal mechanical components
 shall be capable of decontamination > 6 log bioburden reduction
 using Bacillus Stearothermophilus Biological Indicators, from start
@@ -5497,8 +5360,9 @@ ID No.
 Requirement
 Type
 Source
-9.1
-This requirement is not appropriate:
+
+### 9.1 This requirement is not appropriate:
+
 <The control system must be operable in automatic or manual
 modes – manual will allow stepping through the control sequence
 for each recipe.>
@@ -5509,8 +5373,6 @@ N/A
 N/A
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 129
 Commissioning and Qualification
 Appendix 2
 9.
@@ -5519,16 +5381,18 @@ ID No.
 Requirement
 Type
 Source
-9.2
-This requirement is not appropriate:
+
+### 9.2 This requirement is not appropriate:
+
 <All the workstations should be designed to facilitate inspection and
 avoid areas that components could be hidden.>
 Why: Requirement is subjective, not well defined, not measurable,
 testable or verifiable.
 N/A
 N/A
-9.3
-This requirement is not appropriate:
+
+### 9.3 This requirement is not appropriate:
+
 <The HMIs shall have a minimum resolution of 1280 × 1024 and be
 capable of displaying 256 colors at a minimum.>
 Why: Standard requirements should not be specified within
@@ -5536,52 +5400,59 @@ URS. This requirement should be defined in the detailed design
 documents/engineering standards.
 N/A
 N/A
-9.4
-This requirement is not appropriate:
+
+### 9.4 This requirement is not appropriate:
+
 <The number of HMIs to be provided shall be adequate to support
 simultaneous production operations.>
 Why: Requirement is subjective, and number of HMIs required for
 simultaneous operations not defined.
 N/A
 N/A
-9.5
-This requirement is appropriate:
+
+### 9.5 This requirement is appropriate:
+
 <Each authorized user must have a unique user ID and an
 associated password.>
 Quality
 21 CFR Part
-9.6
-This requirement is not appropriate:
+
+### 9.6 This requirement is not appropriate:
+
 <The automation system shall provide ability to configure security.>
 Why: Requirement is not well defined, not measurable, and borders
 on standard functionality which most automation systems provide.
 N/A
 N/A
-9.7
-This requirement is appropriate:
+
+### 9.7 This requirement is appropriate:
+
 <The automation system shall provide tools and utilities for
 configuring, categorizing, prioritizing, logging, annunciating,
 displaying, acknowledging, disabling, and reporting alarms and
 events.>
 Business
 Manufacturing
-9.8
-This requirement is not appropriate:
+
+### 9.8 This requirement is not appropriate:
+
 <The automation system shall provide the ability to configure
 alarms.>
 Why: Requirement is not well defined, not measurable, and borders
 on standard functionality which most automation systems provide.
 N/A
 N/A
-9.9
-This requirement is appropriate, but it should define which
+
+### 9.9 This requirement is appropriate, but it should define which
+
 parameters require reporting.
 <Reports shall be generated via the company reporting system.>
 Business
 Company
 Standard
-9.10
-This requirement is not appropriate:
+
+### 9.10 This requirement is not appropriate:
+
 <The automation system shall provide reports.>
 Why: Requirement is too general, not measurable or verifiable, and
 does not provide any requirements for what the reports need to
@@ -5590,8 +5461,6 @@ N/A
 N/A
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 130
-ISPE Baseline® Guide:
 Appendix 2
 Commissioning and Qualification
 10.	 Design and Considerations
@@ -5599,8 +5468,9 @@ ID No.
 Requirement
 Type
 Source
-10.1
-This requirement is appropriate and must be included for all
+
+### 10.1 This requirement is appropriate and must be included for all
+
 systems with product contact surfaces:
 <Product contact materials of construction must not be reactive,
 additive or absorptive with the product or the following cleaning
@@ -5608,8 +5478,9 @@ solutions: x, y, and z as to alter product quality.>
 Quality
 21 CFR Part
 211/Eudralex
-10.2
-This requirement is appropriate:
+
+### 10.2 This requirement is appropriate:
+
 <All product contact elastomers and gasket materials shall be
 pharmaceutical grade, animal derivative free and compliant with
 USP Sec <88> Class V1 and CFR 177.2600.>
@@ -5617,16 +5488,18 @@ Quality
 Company
 Quality
 Standard
-10.3
-This requirement is appropriate:
+
+### 10.3 This requirement is appropriate:
+
 <The equipment must be of hygienic design, smooth, cleanable,
 impervious, non-reactive, non-additive and resistant to cleaning/
 sterilizing agents.>
 Quality
 21 CFR Part
 211/Eudralex
-10.4
-This requirement is not appropriate:
+
+### 10.4 This requirement is not appropriate:
+
 <If an ASME pressure vessel, the recirculation vessel on the CIP
 skid will be fitted with a suitable pressure relief device, vented to
 a safe location, to prevent catastrophic failure of the vessel and
@@ -5635,15 +5508,17 @@ Why: The requirement would be addressed by overall project code
 requirements.
 N/A
 N/A
-10.5
-This requirement is appropriate:
+
+### 10.5 This requirement is appropriate:
+
 <The design must comply with the company manual handling
 requirements.>
 HSE
 Company HSE
 Standard
-10.6
-This requirement is not appropriate:
+
+### 10.6 This requirement is not appropriate:
+
 <Electrical drawings shall include but not be limited to:
 •	 Simplified machine layout showing the location of components
 •	 Drawings showing component layouts in panels
@@ -5658,8 +5533,9 @@ Why: This requirement should be included in Engineering
 Specifications and not a URS.
 N/A
 N/A
-10.7
-This requirement is not appropriate:
+
+### 10.7 This requirement is not appropriate:
+
 <All electrical equipment must be designed and installed in accordance
 with US National Consensus Standards (NEC, ANSI, NFPA, IEEE,
 NEMA, UL), US Federal codes (OSHA), State codes (California), local
@@ -5675,8 +5551,6 @@ N/A
 N/A
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 131
 Commissioning and Qualification
 Appendix 2
 10.	 Design and Considerations (continued)
@@ -5684,8 +5558,9 @@ ID No.
 Requirement
 Type
 Source
-10.8
-This requirement is appropriate where the company may have
+
+### 10.8 This requirement is appropriate where the company may have
+
 specific requirements:
 <Noise levels generated by the equipment shall be less than 75
 dBA.>
@@ -5694,15 +5569,17 @@ HSE document.
 HSE
 Company HSE
 Standard
-10.9
-This requirement is appropriate:
+
+### 10.9 This requirement is appropriate:
+
 <The skid shall have a hard-wired emergency stop to immediately
 shut down the skid when triggered and release all stored energy.>
 HSE
 Company HSE
 Standard
-10.10
-This requirement is appropriate:
+
+### 10.10 This requirement is appropriate:
+
 <The system must be able to operate from the utility supply. In the
 event of power failure it must auto restart when the backup supply
 is available.>
@@ -5710,8 +5587,9 @@ Business
 Company
 Engineering
 Standard
-10.11
-This requirement is appropriate:
+
+### 10.11 This requirement is appropriate:
+
 <The system and instrument shall not lose configuration when
 power is cycled.>
 Business
@@ -5723,22 +5601,25 @@ ID No.
 Requirement
 Type
 Source
-11.1
-This requirement is appropriate:
+
+### 11.1 This requirement is appropriate:
+
 <Potable water is available at 5 bar.>
 N/A
 Site
 Engineering
 Records
-11.2
-This requirement is appropriate:
+
+### 11.2 This requirement is appropriate:
+
 <Site steam is available at 6 bar.>
 N/A
 Site
 Engineering
 Records
-11.3
-This requirement is appropriate:
+
+### 11.3 This requirement is appropriate:
+
 <240/380 V 50 Hz with maximum additional consumption of 800 kW
 as installed.>
 N/A
@@ -5750,16 +5631,18 @@ ID No.
 Requirement
 Type
 Source
-12.1
-This requirement is appropriate (for a granulator):
+
+### 12.1 This requirement is appropriate (for a granulator):
+
 <The system must be capable of a chopper speed range of 1500
 and 3000 rpm ± 10%.>
 Business
 Product and
 Process
 Requirements
-12.2
-This requirement is not appropriate:
+
+### 12.2 This requirement is not appropriate:
+
 <The vendor should supply appropriate Operation and Maintenance
 manuals, with adequate drawings for operation, maintenance, and
 troubleshooting in English.>
@@ -5769,8 +5652,6 @@ N/A
 N/A
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 132
-ISPE Baseline® Guide:
 Appendix 2
 Commissioning and Qualification
 13.	 Miscellaneous
@@ -5778,24 +5659,27 @@ ID No.
 Requirement
 Type
 Source
-13.1
-This requirement is appropriate for identifying a required procedural
+
+### 13.1 This requirement is appropriate for identifying a required procedural
+
 control.
 <The operational SOP shall include the requirement to inspect the
 impellor seal before use of the equipment.>
 Quality
 System Risk
 Assessment
-13.2
-This requirement is not appropriate:
+
+### 13.2 This requirement is not appropriate:
+
 <The operational SOP should include a definition of actions
 required in the event of an alarm.>
 Why: It is a generic procedural practice that is not a specific
 requirement.
 N/A
 N/A
-13.3
-This requirement is appropriate:
+
+### 13.3 This requirement is appropriate:
+
 <The operational SOP should include a definition of actions
 required in the event of a high temperature alarm.>
 Quality
@@ -5810,8 +5694,6 @@ Justification
 <Insert reason/justification for change.>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 133
 Commissioning and Qualification
 Appendix 3
 Appendix 3
@@ -5879,8 +5761,6 @@ For individual use only. © Copyright ISPE 2019. All rights reserved.
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 135
 Commissioning and Qualification
 Appendix 4
 Appendix 4
@@ -5962,8 +5842,6 @@ be measured using PAT or off-line)
 •	 Bed density
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 136
-ISPE Baseline® Guide:
 Appendix 4
 Commissioning and Qualification
 System Name
@@ -6049,8 +5927,6 @@ Dilution System
 •	 Flow
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 137
 Commissioning and Qualification
 Appendix 4
 System Name
@@ -6146,8 +6022,6 @@ yield
 •	 Temperature
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 138
-ISPE Baseline® Guide:
 Appendix 4
 Commissioning and Qualification
 System Name
@@ -6241,8 +6115,6 @@ above a predefined diameter
 •	 Sieve size
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 139
 Commissioning and Qualification
 Appendix 4
 System Name
@@ -6333,8 +6205,6 @@ oxidization:
 -	 DO
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 140
-ISPE Baseline® Guide:
 Appendix 4
 Commissioning and Qualification
 System Name
@@ -6414,8 +6284,6 @@ SAL = Sterility Assurance Level
 WFI = Water for Injection
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 141
 Commissioning and Qualification
 Appendix 5
 Appendix 5
@@ -6465,8 +6333,6 @@ Hydrocarbon content (depends on the design approach, i.e., oil free compressor o
 filtration)
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 142
-ISPE Baseline® Guide:
 Appendix 5
 Commissioning and Qualification
 The System Risk Assessment should align the sequence of operations/process flow with the CQAs and their
@@ -6563,8 +6429,6 @@ where air pressure (flow) is critical has a low pressure switch that is consider
 appropriate function defined if low pressure is detected.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 143
 Commissioning and Qualification
 Appendix 5
 Table 19.2: Process Air System Example: Baseline System Risk Assessment
@@ -6806,8 +6670,6 @@ None
 Low
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 144
-ISPE Baseline® Guide:
 Appendix 5
 Commissioning and Qualification
 Table 19.2: Process Air System Example: Baseline System Risk Assessment (continued)
@@ -6922,16 +6784,15 @@ systems fed by the air system
 Note: Quality Critical indicates that the alarm is triggered from a parameter that has direct impact on the CQA.
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 145
 Commissioning and Qualification
 Appendix 6
 Appendix 6
 20	Appendix 6 – Design Review/Design
 
 Qualification Examples
-20.1
-Design Review for Equipment
+
+### 20.1 Design Review for Equipment
+
 Company: <Insert information>
 Title: <Equipment GMP Design
 Review Meeting Minute Template
@@ -6950,8 +6811,6 @@ Project Number
 Issue Date: <DD-MMM-YYYY>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 146
-ISPE Baseline® Guide:
 Appendix 6
 Commissioning and Qualification
 Capital Project Name:
@@ -6983,8 +6842,6 @@ Page 2 of <X>
 
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 147
 Commissioning and Qualification
 Appendix 6
 Capital Project Name:
@@ -7030,8 +6887,6 @@ Date: <DD-MMM-YYYY>
 Page 3 of <X>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 148
-ISPE Baseline® Guide:
 Appendix 6
 Commissioning and Qualification
 Capital Project Name:
@@ -7044,8 +6899,9 @@ Item No.
 Description
 Responsible
 Date
-1.0
-Agenda
+
+## 1.0 Agenda
+
 Suggested topics include (but are not limited to):
 • General Equipment GMP Requirements (intended use)
 • Applicable Policies, Guidelines and Standards
@@ -7065,8 +6921,7 @@ for C&Q)
 • Testing and Verification Approach
 • Miscellaneous
 For the record
-2.0
-Topic (Presenter)
+2.0 Topic (Presenter)
 • Minutes (general information or issue including resolution)
 Conclusion
 Provide an assessment of the equipment design against GMP requirements, company policies, guidelines and
@@ -7075,8 +6930,6 @@ Date: <DD-MMM-YYYY>
 Page 4 of <X>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 149
 Commissioning and Qualification
 Appendix 6
 
@@ -7098,8 +6951,6 @@ Project Number>
 Issue Date: <DD-MMM-YYYY>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 150
-ISPE Baseline® Guide:
 Appendix 6
 Commissioning and Qualification
 Capital Project Name:
@@ -7130,8 +6981,6 @@ Date: <DD-MMM-YYYY>
 Page 2 of <X>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 151
 Commissioning and Qualification
 Appendix 6
 Capital Project Name:
@@ -7177,8 +7026,6 @@ Date: <DD-MMM-YYYY>
 Page 3 of <X>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-Page 152
-ISPE Baseline® Guide:
 Appendix 6
 Commissioning and Qualification
 Capital Project Name:
@@ -7191,8 +7038,9 @@ Item No.
 Description
 Responsible
 Date
-1.0
-Agenda
+
+## 1.0 Agenda
+
 Suggested topics include (but are not limited to):
 • General Project GMP Requirements
 • Applicable Policies, Guidelines and Standards
@@ -7208,8 +7056,7 @@ For more detailed descriptions of suggested design review
 items, see next section (Detailed Meeting Agenda Items for GMP
 Design Review Meetings).
 For the record
-2.0
-Topic (Presenter)
+2.0 Topic (Presenter)
 • Minutes (general information or issue including resolution)
 Conclusion
 Provide an assessment of the equipment design against GMP requirements, company policies, guidelines and
@@ -7218,8 +7065,6 @@ Date: <DD-MMM-YYYY>
 Page 4 of <X>
 For individual use only. © Copyright ISPE 2019. All rights reserved.
 
-ISPE Baseline® Guide:
-Page 153
 Commissioning and Qualification
 Appendix 6
 Capital Project Name:
