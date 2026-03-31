@@ -210,6 +210,33 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PDA/PtC-1-Complete.md
+**Report:** PDA Points to Consider No. 1: Aseptic Processing (Revised 2023)
+**Pages:** p1–p119 | **Sections:** 9
+
+**Covers questions about:**
+- Airflow velocity (0.45 m/s ±20%), airflow visualization (smoke studies), HEPA filter integrity testing
+- Differential pressure requirements between cleanroom grades
+- RABS vs Isolator: when to use each, regulatory preference, VHP decontamination
+- Blow-Fill-Seal (BFS): Grade A air shroud, parison design, APS for BFS
+- Air locks, at-rest vs in-operation classification, ≥0.5 µm and ≥5 µm particle monitoring
+- Environmental monitoring: alert levels, action limits, Grade A/B/C/D limits, excursion investigation
+- EM disinfection rotation, identification of environmental isolates (Table H-1)
+- APS/Media fill: acceptance criteria, duration, incubation temps, reconciliation, interventions, PUPSIT APS
+- Personnel qualification (AAPP), glove monitoring, gowning, occupancy, hygiene
+- Material transfer into aseptic area; sterile hold times for components
+- Cleaning & disinfection: sporicide rotation, sterilization of disinfectants
+- Steam sterilization: F0 concept, overkill vs bioburden-based, lyophilizer leak qualification
+- PUPSIT: EU Annex 1 requirement, FDA vs EU regulatory comparison, alternatives
+- Filter integrity testing: pre-use, post-use, gas filters, two-filter redundancy
+- WFI production methods (distillation vs cold membrane), WFI quality requirements
+
+**Key terms:** airflow velocity, smoke study, HEPA patching, differential pressure, Grade A/B/C/D, RABS, open RABS, closed RABS, isolator, BFS, blow-fill-seal, air shroud, at-rest, in-operation, APS, media fill, acceptance criteria, interventions, PUPSIT, reconciliation, alert level, action limit, EM excursion, sporicide, F0, overkill, WFI, TOC, endotoxin, aseptic personnel qualification, AAPP, glove monitoring, sterile hold time, filter integrity
+
+**Sections:** Section 0 (Intro/Glossary) → I-A–H (Airflow/HEPA) → I-I–O (RABS/BFS/Airlocks) → II (EM) → III-A–H (APS Acceptance) → III-I–P (APS Interventions) → IV (Personnel) → V+VI-A–H (Material/CDS) → VI-I–L+VII (PUPSIT/Filters/WFI)
+
+---
+
 ## PDA/PtC-13-Complete.md
 **Report:** PDA PtC-13: Materials in ATMP Manufacturing (2025)
 **Pages:** p1–p35 | **Sections:** 5
@@ -610,10 +637,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
 **Annex 1 (2022) EU GMP**
-→ TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
+→ PtC-1 ★★★ (comprehensive Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
 
 **Sterile Filtration / Bioburden Control (除菌過濾/微生物負荷)**
-→ TR26 ★★★ (primary filtration guidance) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
+→ TR26 ★★★ (primary filtration guidance) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
 
 **Prefilled Syringe (預充填注射器)**
 → TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
@@ -649,7 +676,16 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
 
 **RABS vs Isolator (隔離系統比較)**
-→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
+→ PtC-1 ★★★ (Topic I: full RABS/Isolator comparison, regulatory position, APS in isolators) | PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
+
+**Aseptic Processing — Regulatory Positions & Best Practices (無菌製程法規立場)**
+→ PtC-1 ★★★ (comprehensive PDA best practices across all 7 domains: environment, EM, APS, personnel, materials, CDS, utilities) — single primary source for current industry position
+
+**Blow-Fill-Seal (BFS 製程)**
+→ PtC-1 ★★★ (K.1-K.3: design, resin handling, APS for BFS, Grade A air shroud) — single primary source
+
+**Water for Injection (WFI / 注射用水)**
+→ PtC-1 ★★★ (production methods: distillation vs cold membrane; quality limits; monitoring) — primary source for WFI questions
 
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
