@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-1 - Section II: Environmental Monitoring</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* ===== CONCEPT BOX (Green) ===== */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* ===== NOTE BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+/* ===== CARDS ===== */
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+/* ===== AMBER SOURCE TAG ===== */
+.source-tag {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    background: #fef3c7; color: #78350f; font-size: 0.78rem; font-weight: 600;
+    border: 1px solid #d97706; margin-left: 0.5rem; vertical-align: middle;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header" style="background: linear-gradient(135deg, #92400e 0%, #d97706 100%);">
+    <h1>Section II: Environmental Monitoring <span class="source-tag">PDA PtC-1 (2023)</span></h1>
+    <div class="subtitle">環境監測（Environmental Monitoring）完整解析</div>
+    <div class="page-info">PDA Points to Consider No. 1: Aseptic Processing (Revised 2023) | p37 – p53 | Topics A.1, B.1, C, D, E, F, G, H, I, J</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="margin: 1.5rem; border-left: 4px solid #d97706;">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解警報水準（Alert Level）與行動限度（Action Limit）的本質差異，並能說明為何兩者均不等於產品規格（Specification）</li>
+        <li>掌握 EU Annex 1 (2022) 對環境監測的新要求，包括 CCS 驅動的警報水準制定方法</li>
+        <li>能設計涵蓋 Grade A/B/C/D 的 EM 監測計劃，包括地點、頻率、持續時間及取樣方式的風險決策</li>
+        <li>了解 EM 超標事件的調查流程與記錄要求，以及對批次放行的影響評估</li>
+        <li>掌握終端滅菌產品的房間分級需求、消毒劑輪替策略、環境菌株鑑定分級方案，以及培養基與培養條件的科學選擇</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc" style="margin: 0 1.5rem 1.5rem;">
+    <h3>本節內容索引</h3>
+    <div class="toc-grid">
+        <a href="#topic-a1">A.1 設定警報/行動限度</a>
+        <a href="#topic-b1">B.1 EM 限度性質</a>
+        <a href="#topic-c">C 批次放行關係</a>
+        <a href="#topic-d">D 監測地點/頻率/持續時間</a>
+        <a href="#topic-e">E 超標調查與記錄</a>
+        <a href="#topic-f">F 終端滅菌產品分級</a>
+        <a href="#topic-g">G 清潔消毒計劃</a>
+        <a href="#topic-h">H 環境菌株鑑定</a>
+        <a href="#topic-i">I 培養基生長促進測試</a>
+        <a href="#topic-j">J 培養溫度</a>
+    </div>
+</div>
+
+<div class="main-content">
+
+<!-- ============================================================ -->
+<!-- TOPIC A.1 -->
+<!-- ============================================================ -->
+<div id="topic-a1" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic A.1 — Setting Alert Levels and Action Limits | 設定警報水準與行動限度
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What are the recommended alert levels and action limits for aseptic processing areas?</p>
+
+        <p><strong>Recommendation:</strong> Each manufacturer should have a formal program that stipulates the EM monitoring <span class="key-term">alert</span> and <span class="key-term">action limits</span> and the methods used to determine them. However, any contamination in a <span class="key-term">Grade A</span> area (and in Grade B areas surrounding the Grade A area) or on product-contact surfaces should be investigated and the impact on any product batches should be assessed prior to batch release.</p>
+
+        <p>If new technologies are used for EM, the action limits for these methods should be at least comparable with the levels set for the established methods, with adjustments considered based on greater sensitivity of the new methods and agreed upon with regulators.</p>
+
+        <p><span class="key-term">Alert levels</span> should be based on historical data but should be lower than action limits so that it is possible to react before action limits are reached. PDA Technical Report No. 13 (Revised 2022) suggests statistical methods to be used for determination of alert levels.</p>
+
+        <p>For new facilities, production lines, or other aseptic processing areas where historical data are not available, alert levels can be based on similar aseptic processing areas within the facility or at another facility or can be established by use of environmental data generated during validation studies. In any of these situations, EM data from the new area are generated and should eventually be used to reset the alert levels.</p>
+
+        <p>Periodically thereafter, data should be reviewed and, if needed, alert levels may be adjusted (e.g., be made tighter or looser) based on the historical data. Caution should be used when limits are tightened to a level that approaches process capability. Alert limits that are significantly higher than trend data should also be avoided to ensure that a warning is triggered as soon as an abnormal situation occurs.</p>
+
+        <p><strong>Rationale:</strong> Some agencies have published recommended action limits for conventional monitoring methods; such limits should be considered levels because they are not product specifications and may not be adequate for newer testing methods.</p>
+
+        <p>In general, as a company designs its EM program, alert and action limits should be determined on the basis of an assessment of product contamination risk that takes into consideration product and process characteristics, process robustness, level of gowning, historical data, and other information relevant to product contamination risk.</p>
+
+        <p>Not all situations require use of both alert and action limits; for example, it may not be possible to set alert levels for microorganisms in Grade A environments because any microorganisms present would require action.</p>
+
+        <div class="quote-box">
+            "In general, EM trends are an important element in the evaluation of cleanroom performance. Due to the limited recovery capacity and the sampling nature of the methods, special attention should be given to the trends but without neglect of the single count result for the critical zones (Grade A or Grade B)."
+        </div>
+
+        <p><strong>Key References:</strong> EU Annex 1 (2022) | PDA TR-13 (Revised 2022) | PDA TR-59 (Statistical Methods) | USP &lt;1116&gt;</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 警報水準 vs 行動限度</h4>
+            <p><strong>Alert Level（警報水準）：</strong>根據歷史資料以統計方法設定的早期預警值。超過此值代表環境出現潛在不正常趨勢，需啟動調查，但不必然立即停止生產。</p>
+            <p><strong>Action Limit（行動限度）：</strong>超過此值代表環境管控可能已失效，必須立即採取行動（CAPA），並評估對批次的影響。</p>
+            <p><strong>重要原則：</strong>Alert Level 必須低於 Action Limit，才能在問題惡化至需要行動之前提供緩衝時間。</p>
+            <p><strong>Grade A 特例：</strong>Grade A 區因任何微生物的存在都構成潛在風險，通常無法設定有意義的 Alert Level——任何菌落出現即觸發 Action 層級的回應。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 警報與緊急疏散</h4>
+            <p>想像一棟大樓的火災安全系統：</p>
+            <ul>
+                <li><strong>煙霧偵測器響起（Alert Level）</strong>：某處有煙，保全人員前往確認，可能只是廚房蒸氣，但需要調查。大樓不需要立即疏散。</li>
+                <li><strong>灑水頭啟動（Action Limit）</strong>：確認有火災，立即啟動緊急疏散，同時保全介入處理。</li>
+            </ul>
+            <p>EM 計劃的設計邏輯完全相同——建立「早期預警」讓你有時間反應，而不是等到問題失控才行動。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU Annex 1 (2022) 新要求</h4>
+            <p>EU Annex 1 2022 版本要求 Alert Level 的設定必須與設施的<strong>污染控制策略（CCS, Contamination Control Strategy）</strong>相連結。這意味著：</p>
+            <ul>
+                <li>不能只是照抄監管機關公佈的參考值</li>
+                <li>必須根據自家設施的歷史數據、製程特性、屏障技術（RABS/Isolator）設計</li>
+                <li>新設施可以用驗證數據或同類設施數據作為起始點，但必須定期根據實際數據更新</li>
+            </ul>
+            <p>這是一個重大的思維轉變：從「達標」到「主動管理」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>統計方法設定 Alert Level（TR-13 建議）</h4>
+            <pre>
+常用方法（PDA TR-13 Revised 2022）：
+
+方法一：均值 + 標準差法
+  Alert Level = Mean + 3×SD（適用常態分佈資料）
+
+方法二：百分位數法
+  Alert Level = 95th 或 97.5th 百分位數
+  （適用計數型資料，如 CFU）
+
+方法三：上控制限（UCL）
+  使用 Poisson 或負二項分佈計算
+  適用於稀疏計數（多數值為零）的環境資料
+
+設定原則：
+  • 至少需要 30 個以上的資料點
+  • 排除異常值（已確認調查的超標事件）
+  • 定期重新評估（建議每年或累積足夠資料時）
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 新廠設定情境</h4>
+            <p>假設您的 CDMO 剛完成一條新的無菌充填線驗證，尚無歷史 EM 資料。依據 PtC-1 建議，您可以：</p>
+            <ol>
+                <li>引用同廠區另一條已運作線的歷史均值作為起始 Alert Level</li>
+                <li>或使用驗證研究期間（至少 3 批 APS）收集的 EM 資料計算初始統計值</li>
+                <li>設定 6-12 個月的「磨合期」，持續收集數據後重新計算並更新</li>
+                <li>確保 Alert Level 遠低於 EU Annex 1 表格中的行動限度參考值</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果某 Grade B 監測點的歷史均值非常低（例如 0.1 CFU/m³），是否應該將 Alert Level 設為 0？這樣的設定有什麼實務問題？</li>
+                <li>引進新型即時微粒偵測技術（如 RMM）後，其 Action Limit 應如何與傳統培養法比較？</li>
+                <li>為什麼說「Alert Limit 顯著高於趨勢數據」也是需要避免的？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC B.1 -->
+<!-- ============================================================ -->
+<div id="topic-b1" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic B.1 — EM Alert and Action Limits: Not Specifications | EM 限度非產品規格
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> Should EM alert and action limits be considered specifications?</p>
+
+        <p><strong>Recommendation:</strong> EM alert and action limits should <strong>not</strong> be considered <span class="key-term">specifications</span>. However, any contamination in a Grade A or surrounding Grade B area or on product-contact surfaces should be investigated and the impact on any product batches should be assessed prior to batch release.</p>
+
+        <p><strong>Rationale:</strong> Alert and action limits are used to monitor and control processes. <span class="key-term">Specifications</span> relate to a direct measurement of product quality that is required to be met by an official monograph or filed application. Exceeding an alert or action limit does not produce an "out-of-specification" result.</p>
+
+        <p>However, any contamination in a Grade A area or on product-contact surfaces may be indicative of a potential product contamination and should be investigated, and the impact on any product batches should be thoroughly assessed prior to batch release.</p>
+
+        <p>EM alert and action limits are established for the purpose of detecting potential adverse changes or drifts in a <span class="key-term">validated aseptic processing environment</span>. These levels are typically derived from historical data and are set conservatively. As such, alert and action limits are occasionally exceeded.</p>
+
+        <p>These situations provide early warning mechanisms that allow corrective actions to be taken before product quality is adversely affected. It is not appropriate to consider EM alert and action limits as extensions of product specifications because a cause-effect relationship does not automatically exist between EM level excursions and product contamination.</p>
+
+        <div class="quote-box">
+            "This is evidenced by situations in which EM action limits are exceeded during zero-contamination-process simulations. Conversely, there are instances in which process simulation failures occur and no contamination is detected by EM."
+        </div>
+
+        <p><strong>Key References:</strong> PDA TR-13 (Revised 2022) | PDA TR-88 | USP &lt;1116&gt;</p>
+
+        <p><strong>Recommended EU Annex 1 (2022) Grade Limits for Reference:</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Grade</th>
+                <th>Active Air Sampling (CFU/m³)</th>
+                <th>Settle Plates 90mm, 4h (CFU/plate)</th>
+                <th>Contact Plates 55mm (CFU/plate)</th>
+                <th>Glove Print 5 fingers (CFU/glove)</th>
+            </tr>
+            <tr><td><strong>A</strong></td><td>&lt;1</td><td>&lt;1</td><td>&lt;1</td><td>&lt;1</td></tr>
+            <tr><td><strong>B</strong></td><td>10</td><td>5</td><td>5</td><td>5</td></tr>
+            <tr><td><strong>C</strong></td><td>100</td><td>50</td><td>25</td><td>—</td></tr>
+            <tr><td><strong>D</strong></td><td>200</td><td>100</td><td>50</td><td>—</td></tr>
+        </table>
+        </div>
+        <p style="font-size:0.82rem; color:#4a5568;"><em>Source: EU GMP Annex 1 (2022), Table 1. These are action limits for in-operation conditions. Alert levels are set separately by each facility based on historical data.</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — EM 限度 vs 產品規格的根本差異</h4>
+            <p><strong>產品規格（Specification）：</strong>寫在 NDA/ANDA/MAA 等申請文件中，必須符合才能放行產品。超出即為 OOS（Out-of-Specification），觸發強制性調查程序，且通常導致批次拒絕。</p>
+            <p><strong>EM 行動限度（Action Limit）：</strong>由廠商根據自身歷史數據設定的製程管控工具。超出觸發調查，但不自動等同於 OOS，也不必然導致批次拒絕。</p>
+            <p><strong>關鍵邏輯：</strong>EM 超標 ≠ 產品污染。文件中明確指出：在 APS（無菌製程模擬）中可能出現 EM 超標但無培育失敗的情況，反之亦然。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 交通警告標誌 vs 法律速限</h4>
+            <p>EM 限度就像高速公路上的「建議速度」標誌（如「彎道建議時速 60km」）：超過它不一定違法，但代表潛在風險增加，應該放慢速度並調查原因。</p>
+            <p>產品規格則像法定速限：超過就是違規，無論其他情況如何，都會有法律後果。</p>
+            <p>混淆兩者的危險：若把 EM 限度當成規格，超標時就必須自動拒批，這會造成大量不必要的產品損失，且無法區分真正的品質風險與偶發的環境波動。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Grade A 超標：行動但非規格</h4>
+            <p>Grade A 區任何微生物的存在（即便只有 1 CFU）雖然技術上不是「OOS」，但：</p>
+            <ul>
+                <li>必須進行完整調查</li>
+                <li>必須評估對所有相關批次的影響</li>
+                <li>批次放行決定需由 QP（歐盟）或負責人員基於調查結論做出</li>
+                <li>單一 Grade A 超標不自動導致拒批，但調查結果若顯示製程失控，則必須拒批</li>
+            </ul>
+            <p>這個「非規格但必須行動」的邏輯是無菌製造管控哲學的核心。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 批次放行決策情境</h4>
+            <p>某批產品在充填期間，Grade B 空氣採樣結果為 12 CFU/m³（Action Limit = 10 CFU/m³）。此時：</p>
+            <ul>
+                <li>這不是 OOS，不觸發強制性 21 CFR 211.192 的 OOS 調查程序</li>
+                <li>但必須啟動 EM 超標調查（偏差報告）</li>
+                <li>調查需包含：菌株鑑定、HVAC 系統檢查、人員操作記錄、相鄰 Grade A 數據回顧</li>
+                <li>若調查結論顯示無產品污染風險，批次可以在完整調查記錄的基礎上考慮放行</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>EM Action Limit 超標後，哪些情況下可以考慮放行批次？哪些情況下應該拒批？</li>
+                <li>如果一個 APS（媒體灌裝）出現培育失敗，但 EM 數據完全正常，這說明了什麼？應採取什麼行動？</li>
+                <li>Grade A 的 Action Limit 為 &lt;1 CFU/m³，如果檢測結果恰好是 1 CFU/m³，是否超標？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC C -->
+<!-- ============================================================ -->
+<div id="topic-c" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic C — EM Relationship to Batch Release | 環境監測與批次放行的關係
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What is the relationship between EM data from Grade A and Grade B areas and batch release?</p>
+
+        <p><strong>Recommendation:</strong> Microbiological and particulate EM data generated in <span class="key-term">Grade A and Grade B environments</span> should be reviewed as part of the <span class="key-term">batch-release process</span>. Microbiological and particulate EM data from lower-grade areas may also be considered. EM results that exceed established action limits in Grade A and Grade B areas should be investigated and reviewed, and the risk to product safety should be evaluated.</p>
+
+        <p>A microbial count excursion of an established level, even in Grade A and Grade B zones, does not, by itself, mandate a batch rejection, provided that the investigation determines that there is no impact on product quality and safety. Excursions from action limits in lower-grade areas also require investigation, and this investigation may include impact on batch release.</p>
+
+        <p><strong>Rationale:</strong> A carefully planned and executed EM program can provide a better understanding of the production environment. EM data are just one of many indicators used to evaluate an aseptic manufacturing process. Given the lack of accuracy and precision of a microbial count result, a single result alone may not be significant. However, any contamination in a Grade A and Grade B area or on product-contact surfaces should be investigated and the impact on any product batches should be assessed prior to batch release.</p>
+
+        <p>Reaching or exceeding an environmental action limit does not necessarily indicate that the product is adversely affected. An action-level excursion should precipitate an investigation. The overall purpose of the investigation is to determine the source of contamination and establish, insofar as possible, the <span class="key-term">cause-effect relationship</span> between the observed action-level microbial count and cause(s) of product impact of the excursion.</p>
+
+        <p>The significance of an action-level excursion in EM and its impact on batch release is determined by a comprehensive investigation of all conditions that might impact the acceptability of the process and the batch(es) produced by that process.</p>
+
+        <p><strong>Key References:</strong> PDA TR-13 (Revised 2022) | USP &lt;71&gt; | USP &lt;1116&gt;</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 風險導向的批次放行決策</h4>
+            <p>PtC-1 明確採取風險導向（Risk-Based）立場：EM 超標本身不等同於批次拒絕。批次放行決策應基於<strong>完整調查的綜合判斷</strong>，而非單一數字。</p>
+            <p><strong>必須納入批次放行審查的 EM 數據：</strong></p>
+            <ul>
+                <li>Grade A 和 Grade B 的微生物監測數據（強制性）</li>
+                <li>Grade A 和 Grade B 的微粒監測數據（強制性）</li>
+                <li>Grade C/D 數據（視情況考慮，非強制）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 飛機黑盒子與事故調查</h4>
+            <p>EM 數據就像飛機的飛行記錄器（黑盒子）：它記錄了飛行過程中的環境狀態，但黑盒子顯示某個瞬間的數據異常，不代表飛機一定墜毀了。</p>
+            <p>事故調查員需要結合黑盒子數據、機師報告、氣象記錄、機械檢查等所有資訊，才能得出最終結論。</p>
+            <p>同理，批次放行審查員需要結合 EM 數據、APS 記錄、人員操作日誌、維修記錄、菌株鑑定結果，才能做出科學決策。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 三種批次放行情境</h4>
+            <p><strong>情境一：EM 正常，無超標</strong> → 常規批次放行審查，一般可放行。</p>
+            <p><strong>情境二：Grade C/D 超標，Grade A/B 正常</strong> → 啟動調查，評估根本原因；若調查顯示無產品影響，可考慮放行，但需完整記錄。</p>
+            <p><strong>情境三：Grade A/B 超標</strong> → 必須完整調查；若調查結論確認有產品污染風險（例如超標點直接鄰近開放容器），應考慮拒批或進行無菌性測試作為追加評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果批次放行時 EM 數據尚未完全取得（例如某些培養板仍在培養中），是否可以先放行？此時如何管理風險？</li>
+                <li>一個 Grade B 的 settle plate 顯示 6 CFU（Action Limit = 5 CFU），但 Grade A 數據完全正常，您會如何處理這個批次？</li>
+                <li>「原因-效果關係（cause-effect relationship）不自動存在」的邏輯，對 CDMO 的客戶溝通有何影響？如何向客戶解釋？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC D -->
+<!-- ============================================================ -->
+<div id="topic-d" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic D — Location, Frequency, and Duration of EM | 監測地點、頻率與持續時間
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What should the location, frequency, and duration of viable and total-particulate EM be in classified cleanroom areas?</p>
+
+        <div class="quote-box">
+            NOTE: The principles presented in this topic are applicable to decision-making and criteria selection for EM conducted in cleanroom areas, including Grade A filling areas and adjacent support areas. These principles are applicable to various processing technologies, including conventional fill rooms, RABS, blow-fill-seal, and isolators.
+        </div>
+
+        <p><strong>Recommendation:</strong> The location, frequency, and duration of EM should be based on <span class="key-term">scientific analysis and risk-based decision-making</span>.</p>
+
+        <ul>
+            <li>The monitoring program should be designed to provide evidence of control within the environment without compromising the safety of the product, regardless of the technology used to maintain the environment. The monitoring method should capture data in a manner that is effective in determining environmental control. <span class="key-term">Trend analysis</span> should be performed to assess the capability of contamination-control measures.</li>
+            <li>An understanding of the process and the inherent risk factors that can adversely affect product quality must exist. This includes selecting monitoring locations that will provide the best chance of detecting contamination in proximity to the product.</li>
+        </ul>
+
+        <p>Companies should use risk assessment and analysis to determine which factors provide the needed information to make these decisions. Risk factors may include but are not necessarily limited to:</p>
+        <ul>
+            <li>Frequency and duration of human activities in the monitored area</li>
+            <li>Efficiency of the barrier and other control systems designed to protect the product</li>
+            <li>Impact on the product of environment-borne contamination</li>
+            <li>Historical data related to process failures</li>
+            <li>Effectiveness of and risk associated with monitoring techniques</li>
+            <li>Regulatory and organizational commitments</li>
+            <li>Work (personnel, material, and process) flow</li>
+            <li>Airflow and differential pressure</li>
+            <li>Proximity to exposed components, products, or product-contact surfaces</li>
+        </ul>
+
+        <p>NOTE: For more prescriptive criteria, practices, and requirements, see PDA TR-13.</p>
+
+        <ul>
+            <li>The risk of performing the interventions associated with EM versus the benefit that EM information may provide should be considered. Location, frequency, and duration should be adequate to demonstrate control without the introduction of additional risk of microbial contamination by additional monitoring.</li>
+            <li><span class="key-term">Duration is not a consideration for surface sampling</span>; however, timing should be considered. Viable monitoring of sterilized product-contact surfaces should be performed only at the end of production.</li>
+        </ul>
+
+        <p><strong>Rationale:</strong> Although the Grade A and Grade B aseptic processing area is not sterile, well-controlled Grade A and Grade B conditions are an important factor in ensuring product sterility. Monitoring, although necessary to demonstrate control, also requires interventions that themselves present risk. Therefore, monitoring location, frequency, and duration must be carefully considered to optimize the benefit while the risk is managed.</p>
+
+        <p><span class="key-term">Trend analysis</span> is also recommended because of the inherent inaccuracy of any single microbiological EM result (i.e., colony-forming unit). Although a single microbial result may not be indicative of a problem, an adverse trend is much more likely to be an early warning of a potential degradation or loss of control within the environment.</p>
+
+        <p>The level of human activity and the potential risk of media residue needed to perform surface monitoring in the Grade A and Grade B environment pose a risk of contamination of products, components, and product-contact surfaces. Therefore, this activity should be performed at the completion of the aseptic process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — EM 計劃設計的三大維度</h4>
+            <p><strong>1. 地點（Location）：</strong>應選在最可能偵測到污染的位置，且需最靠近產品暴露區。Grade A 的關鍵採樣點包括：充填針頭上方、容器開口上方、停機位置等。</p>
+            <p><strong>2. 頻率（Frequency）：</strong>Grade A 需連續監測（微粒）；Grade B/C/D 頻率依風險評估決定。高風險操作（如人工介入）需增加臨時採樣。</p>
+            <p><strong>3. 持續時間（Duration）：</strong>主動空氣採樣需定義取樣體積（通常 1 m³）；沉降碟有最長暴露時間限制（EU Annex 1 要求最多 4 小時）。表面採樣無持續時間概念，但時機（生產結束後）至關重要。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Grade A 的 24 小時監視器</h4>
+            <p>Grade A 的連續微粒監測就像監控攝影機（CCTV）：全程錄影，不是每小時才拍一張照片。</p>
+            <p>為什麼？因為污染事件往往是瞬間發生的（例如人員介入、設備故障），如果監測不連續，可能完全錯過最關鍵的時刻。</p>
+            <p>EU Annex 1 (2022) 進一步要求 Grade A 的微粒監測系統必須能夠實時（real-time）顯示並警報，而不只是事後讀取數據。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EM 介入本身是污染風險</h4>
+            <p>這是一個容易被忽略的矛盾：為了證明環境受控，我們進行 EM；但 EM 的操作（人員進入、放置培養板、操作空氣採樣器）本身就是污染的來源。</p>
+            <p><strong>實務應對：</strong></p>
+            <ul>
+                <li>Grade A 優先考慮無需人員介入的方法（如固定式連續微粒計數器）</li>
+                <li>沉降碟暴露量（數量×時間）應最小化</li>
+                <li>表面採樣應在充填完成後、滅菌前進行，不在充填過程中進行</li>
+                <li>取樣動作應由訓練有素的人員以標準化方式執行，以降低操作引入的變異</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>沉降碟 vs 主動空氣採樣的比較</h4>
+            <pre>
+沉降碟（Settle Plate）：
+  優點：簡單、成本低、可模擬粒子沉降到產品的風險
+  缺點：無法定量（無採樣體積概念）
+       長時間暴露有培養基乾燥問題
+       EU Annex 1 限制最多 4 小時
+  適用：作為主動採樣的補充，尤其是地面/工作台面評估
+
+主動空氣採樣（Active Air Sampling）：
+  優點：定量（CFU/m³）、時間彈性
+  缺點：需要設備、採樣本身需人員操作
+       流量和取樣體積影響回收率
+  適用：Grade A/B 定量微生物監測主要方法
+
+Grade A 要求：連續微粒監測（≥0.5 µm 和 ≥5.0 µm）
+              微生物採樣每批次或每操作段
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>使用隔離器（Isolator）進行無菌充填時，EM 計劃的設計與使用 RABS 有何不同？哪些監測點可以省略或調整？</li>
+                <li>如果一條充填線一天生產三個班次，Grade B 的 EM 應以何種頻率採樣才算足夠？</li>
+                <li>為什麼表面採樣必須在「生產結束後」而非「生產過程中」進行？如果違反這個原則會有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC E -->
+<!-- ============================================================ -->
+<div id="topic-e" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic E — Investigation and Documentation of EM Excursions | 超標調查與記錄
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> How should EM excursions be investigated and documented?</p>
+
+        <p><strong>Recommendation:</strong> Elements to include in the investigation depend on the sample type where the action-level excursion occurred. Suggestions on which elements to include in the investigation can be found in PDA TR-13. The <span class="key-term">corrective and preventive actions</span> must be documented and kept as GMP documentation for investigations in relation to exceeding action limits. Additional details on investigation elements can be found in PDA Technical Report No. 88.</p>
+
+        <p>Records should be maintained as part of the routine EM program, including results for samples exceeding action limits and include:</p>
+        <ul>
+            <li>Description of the deficiency</li>
+            <li>Possible causes</li>
+            <li>Action steps and their schedule for implementation</li>
+            <li>Identification of persons responsible for relevant corrective action</li>
+            <li>Evaluation of effectiveness of action steps</li>
+        </ul>
+
+        <p><span class="key-term">Evaluation of trends</span> of the sample location and adjacent room/area and microbial excursion identification results should be included and documented in the investigation.</p>
+
+        <p>The risk for product safety must be evaluated for EM results exceeding action limits in Grade A and Grade B. The investigation should include <span class="key-term">product impact assessment</span> and evaluate the risk to other products manufactured in the same time frame.</p>
+
+        <p><strong>Rationale:</strong> EM is a critical element of the sterility assurance program and is one of the most important measures of control in clean areas. It provides meaningful information on the quality of the environment and should promptly identify potential routes of contamination, allowing for corrective action to prevent product contamination.</p>
+
+        <p>The documentation is used for recording and demonstrating that the environment has been in control during production of products, and also that the impact on product quality has been evaluated. Furthermore, the documentation should be used for checking the effectiveness of the corrective and preventive actions taken by reviewing previous investigations for similar occurrences.</p>
+
+        <p><strong>Key References:</strong> EU Annex 1 (2022) | ISO 13408-1 | PDA TR-13 (Revised 2022) | PDA TR-88 | FDA Aseptic Processing Guidance (2004)</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — EM 超標調查的五個核心要素</h4>
+            <p>PtC-1 列出的調查記錄要素，對應了 GMP 調查的標準架構：</p>
+            <ol>
+                <li><strong>問題描述（What）：</strong>哪個採樣點，哪種方法，結果數值</li>
+                <li><strong>可能原因（Why）：</strong>根本原因分析（RCA），使用魚骨圖等工具</li>
+                <li><strong>行動計劃（How）：</strong>CAPA 清單，包含責任人和完成時限</li>
+                <li><strong>責任人（Who）：</strong>每個行動步驟均有指定負責人</li>
+                <li><strong>有效性評估（Does it work?）：</strong>CAPA 完成後的追蹤驗證</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — EM 超標調查決策樹</h4>
+            <p>想像 EM 超標調查就像醫師的診斷流程：</p>
+            <ul>
+                <li><strong>症狀出現</strong>（超標數據）→ 先排除假陽性（採樣錯誤？培養問題？）</li>
+                <li><strong>初步評估</strong> → 超標發生在哪個 Grade？哪個時間點？</li>
+                <li><strong>鑑別診斷</strong> → 菌株鑑定：是皮膚菌（人員）？水菌（管路）？孢子菌（環境持久性問題）？</li>
+                <li><strong>病因追蹤</strong> → 查閱當日操作日誌、HVAC 記錄、人員 gowning 記錄</li>
+                <li><strong>治療方案</strong> → CAPA：清潔消毒加強、人員培訓、設備維修</li>
+                <li><strong>康復追蹤</strong> → 後續 EM 數據確認 CAPA 有效</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 調查的時間性與範圍延伸</h4>
+            <p><strong>時間性：</strong>EM 超標調查不能只看發現超標的那一個時間點。需要回顧相鄰批次、相鄰時段的趨勢，以確認是偶發事件還是系統性問題。</p>
+            <p><strong>空間延伸：</strong>Grade A/B 超標時，必須評估對同一時間段在該設施生產的其他批次（包括不同產品）的影響。</p>
+            <p><strong>GMP 文件要求：</strong>調查報告必須是正式的 GMP 記錄，可供監管機構審查。不充分的調查記錄是 FDA 483 觀察項目的常見來源。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 調查報告的常見缺失（FDA 483 觀察項目）</h4>
+            <ul>
+                <li>根本原因分析不足（僅記錄「偶發事件」，未深入探討）</li>
+                <li>CAPA 缺乏具體時限和責任人</li>
+                <li>未評估對同期生產批次的影響</li>
+                <li>未追蹤 CAPA 的有效性（無 follow-up EM 數據）</li>
+                <li>趨勢分析缺失（未與歷史數據比較）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 EM 調查中發現超標菌株為 Bacillus 孢子菌（難以被一般消毒劑殺滅），您的 CAPA 計劃應包含哪些特殊措施？</li>
+                <li>如果相同採樣點連續三次超標，根本原因調查的重點應從哪裡著手？</li>
+                <li>EM 超標事件發生在週五下午，批次準備週一放行。您需要在週末完成哪些評估才能做出放行決定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC F -->
+<!-- ============================================================ -->
+<div id="topic-f" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic F — Room Classification for Terminally Sterilized Products | 終端滅菌產品的房間分級
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What is the appropriate cleanliness grade for areas used in the manufacturing of terminally sterilized liquid products?</p>
+
+        <p><strong>Recommendation:</strong></p>
+        <ul>
+            <li>A <span class="key-term">Grade D</span> environment or better is typically suitable for the control of environmental microbiological risks during <strong>compounding</strong> of a terminally sterilized product formulation as long as microbial ingress and growth risks at this stage of manufacturing are properly mitigated.</li>
+            <li>A <span class="key-term">Grade C</span> environment or better is typically suitable for the control of environmental microbiological risks during the <strong>filling</strong> of terminally sterilized liquid product formulations as long as microbial ingress and growth risks are properly mitigated at this stage of manufacture.</li>
+            <li>Based on risk assessment and historical data, higher environmental classifications may be required for compounding and filling operations.</li>
+        </ul>
+
+        <p>The compounding and solution transmission system should be a <span class="key-term">closed system</span> (the compounding portion open to the environment only when actively adding ingredients), thereby minimizing the potential for ingress of microorganisms into the process stream.</p>
+
+        <p><strong>Rationale:</strong> The manufacturing process for terminally sterilized solution products typically consists of:</p>
+        <ol>
+            <li>Compounding of pharmaceutical ingredients in WFI to appropriate formulation requirements</li>
+            <li>Filtration of solution (0.45 μm or better)</li>
+            <li>Filling and sealing of solution into the container–closure system</li>
+            <li>Terminal sterilization (PNSU ≤10⁻⁶) of the solution and container–closure system</li>
+        </ol>
+
+        <p>The greatest microbiological risks for this process include:</p>
+        <ol>
+            <li>Ingress of microorganisms into the process through WFI and other raw-material ingredients</li>
+            <li>Ingress of microorganisms into the compounding system</li>
+            <li>Growth of microorganisms in the aqueous formulation during the time between compounding and terminal sterilization</li>
+            <li>Ingress of microorganisms into the product during filling</li>
+            <li>Ingress of microorganisms into the product from microorganisms resident on the container–closure system</li>
+        </ol>
+
+        <p>A <span class="key-term">microbial retentive filter</span> (0.45 μm or 0.2 μm) should be used prior to filling as a critical control point. An active <span class="key-term">filter-integrity testing</span> program must be in effect with passing integrity results a critical requirement for product release.</p>
+
+        <p>Microbiological testing should be performed upstream of the microbial retentive filter and also on filled containers (<span class="key-term">presterilized product bioburden</span>) immediately prior to exposure to the terminal sterilization process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 終端滅菌 vs 無菌充填的環境要求差異</h4>
+            <p><strong>無菌充填（Aseptic Filling）：</strong>無滅菌步驟補救，充填區需要 Grade A 環境，對 EM 有最嚴格要求。</p>
+            <p><strong>終端滅菌（Terminal Sterilization）：</strong>最後一道滅菌步驟（PNSU ≤10⁻⁶）提供了強大的安全網，因此充填區僅需 Grade C（通常），配製區僅需 Grade D。</p>
+            <p><strong>但仍需管控！原因：</strong>如果充填前的生物負荷（Bioburden）過高，即使 D-value 正常的高壓滅菌也可能無法達到 PNSU ≤10⁻⁶，尤其對耐熱孢子菌而言。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 微波爐重新加熱 vs 無菌手術</h4>
+            <p>終端滅菌就像用微波爐重新加熱食物：即使準備過程不夠乾淨，最終加熱步驟可以殺死大多數細菌。但如果食物已經腐爛到極點（生物負荷極高），微波爐也無法完全補救。</p>
+            <p>無菌充填就像外科手術：整個過程必須維持無菌，因為沒有最後一道「滅菌」步驟可以補救任何失誤。</p>
+            <p>這就是為什麼終端滅菌產品的環境要求雖然不如無菌充填嚴格，但仍然需要系統性的微生物管控。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 生物負荷管控是關鍵防線</h4>
+            <p>對終端滅菌產品而言，<strong>生物負荷（Bioburden）測試</strong>是最重要的製程管控指標之一：</p>
+            <ul>
+                <li>必須在過濾器之前（upstream）和充填後（presterilized）兩個點測試</li>
+                <li>Action Limit 的設定需與滅菌週期設計相符</li>
+                <li>耐熱孢子數量（moist-heat-resistant spore count）需特別關注</li>
+                <li>配製到滅菌之間的時間（hold time）需有最大時限，超過需重新評估</li>
+                <li>過濾器完整性測試（IFT/FFT）是批次放行的關鍵條件</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果終端滅菌產品的充填線安裝在一個 Grade B 環境中（比要求更嚴格），這有什麼商業利弊？</li>
+                <li>滅菌前生物負荷超出 Action Limit 時，是否可以延長滅菌時間來補救？這樣做有什麼風險？</li>
+                <li>配製用水（WFI）的微生物控制為什麼對終端滅菌產品特別重要？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC G -->
+<!-- ============================================================ -->
+<div id="topic-g" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic G — Cleaning and Disinfection Program for Grade A and B | 清潔與消毒計劃
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> How is a cleaning and disinfection program for a Grade A and Grade B room designed and qualified?</p>
+
+        <p><strong>Recommendation:</strong> A disinfection program for Grade A and Grade B rooms should be designed to achieve an acceptable level of decontamination.</p>
+
+        <p>The disinfection program should be designed based on a risk assessment that includes consideration of the following:</p>
+        <ul>
+            <li>Cleaning of surfaces within the Grade A and Grade B rooms is a prerequisite for effective disinfection</li>
+            <li>Disinfectant should be capable of achieving a <span class="key-term">2 log reduction for bacterial spores</span>, <span class="key-term">3 log reduction for vegetative/fungi</span> to a spectrum of microbial flora (including site isolates) on representative surfaces</li>
+            <li>Disinfecting procedure should be capable of achieving not less than a <span class="key-term">1 log reduction</span> of bacterial spores or vegetative/fungi in a 1–5 minute contact time</li>
+            <li>Chemical compatibility with the surfaces</li>
+            <li>Effectiveness on different surfaces taking into account surface characteristics and necessary dwell time, wetting time, or contact time; this should be confirmed with in-house studies against actual surfaces using the actual application process in each facility and may be supplemented with reference to vendor literature</li>
+            <li>Feasibility and safety of application</li>
+            <li>Efficacy and reproducibility of the application procedure</li>
+            <li>Potential disinfectant residues</li>
+            <li>Procedures defined in sufficient detail about the sequence and specific locations to be disinfected and the detailed disinfection records (e.g., logbooks)</li>
+        </ul>
+
+        <p>Initial qualification typically includes the actual disinfection process, including the <span class="key-term">maximum time between disinfections</span>, followed by more intensive environmental sampling.</p>
+
+        <p>EM evaluates the efficacy of the disinfection program in an ongoing manner. The EM program should include <span class="key-term">trend analysis</span> and periodic evaluation of changes in the environmental flora.</p>
+
+        <p><strong>Rationale:</strong> A disinfection program is dependent on a combination of the disinfecting chemicals selected, the physical surfaces to be disinfected, the cleaning of the physical surfaces, and the reproducibility of the disinfectant application process.</p>
+
+        <p>Caution should be used when employing a vigorous wiping application during the validation of the effectiveness of the disinfectant agent because the wiping action may enhance the removal of contaminating entities.</p>
+
+        <p><strong>Key References:</strong> EU Annex 1 (2022) | PDA TR-13 (Revised 2022) | PDA TR-70 | FDA Aseptic Processing Guidance | USP &lt;1072&gt;</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 消毒計劃的層次架構</h4>
+            <p><strong>第一層：清潔（Cleaning）</strong> — 必須先清潔才能有效消毒。有機物（蛋白質、油脂）會保護微生物免受消毒劑作用。</p>
+            <p><strong>第二層：一般消毒劑（General Disinfectant）</strong> — 殺滅蔬菌（Vegetative bacteria）和真菌，如 70% 異丙醇（IPA）、季銨鹽（Quats）。</p>
+            <p><strong>第三層：孢子殺滅劑（Sporicide）</strong> — 殺滅 Bacillus 等孢子菌，如過氧化氫（H₂O₂）氣體、過氧乙酸（Peracetic acid）。EU Annex 1 (2022) 明確要求 Grade A/B 必須定期使用孢子殺滅劑。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 消毒劑輪替如同抗生素輪替</h4>
+            <p>長期使用同一種消毒劑，環境中的微生物可能逐漸產生適應性或耐受性（雖然與抗生素耐藥機制不完全相同，但同樣的後果：效力降低）。</p>
+            <p>就像醫院的感染管控計劃會輪替使用不同抗生素來避免耐藥菌的產生，無菌製造設施也應定期輪替不同類別的消毒劑，確保廣譜有效性。</p>
+            <p>EU Annex 1 (2022) 明確規定消毒劑輪替的概念，並要求每種消毒劑均需進行有效性驗證（對場地分離菌株的驗證尤為重要）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU Annex 1 (2022) 對消毒的新要求</h4>
+            <p>EU Annex 1 (2022) 相比舊版有幾個重要的清潔消毒新要求：</p>
+            <ul>
+                <li><strong>孢子殺滅劑（Sporicide）必須定期使用</strong>於 Grade A 和 Grade B，不再只是「建議」</li>
+                <li>消毒劑必須針對<strong>設施自身的環境菌株（site isolates）</strong>進行有效性驗證，不能只依賴通用數據</li>
+                <li>消毒劑的有效性必須與 CCS（污染控制策略）整合考量</li>
+                <li>對消毒後的接觸時間（contact time/dwell time）需明確規定並遵守</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>消毒效力要求總結</h4>
+            <pre>
+PtC-1 消毒劑效力最低要求：
+
+對細菌孢子（Bacterial Spores）：
+  ≥ 2 log 殺滅（在代表性表面）
+  ≥ 1 log 殺滅（在 1-5 分鐘接觸時間內）
+
+對蔬菌和真菌（Vegetative bacteria & Fungi）：
+  ≥ 3 log 殺滅（在代表性表面）
+  ≥ 1 log 殺滅（在 1-5 分鐘接觸時間內）
+
+驗證對象必須包含：
+  ✓ 法定標準菌株（Compendial organisms）
+  ✓ 設施自身分離菌株（Site isolates）
+  ✓ 設施實際使用的表面材質
+  ✓ 設施實際的應用程序（抹布/噴霧/泡沫）
+
+注意：過度用力的擦拭動作可能誇大消毒劑效力
+（PtC-1 明確警告）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您設施的 EM 趨勢顯示 Grade B 出現 Bacillus 孢子菌的比例升高，您會如何調整消毒計劃？</li>
+                <li>消毒劑驗證通常使用供應商提供的數據是否足夠？PtC-1 對此有何立場？</li>
+                <li>如果清潔人員在擦拭消毒時用力過猛（vigorous wiping），驗證數據會如何受影響？這對設定例行操作規程有何啟示？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC H -->
+<!-- ============================================================ -->
+<div id="topic-h" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic H — Identification of Environmental Isolates | 環境菌株鑑定策略
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What microbial identification strategy is appropriate for the EM of samples?</p>
+
+        <p><strong>Recommendation:</strong> The characterization, identification, strain typing, potential source, and cause of microorganisms recovered from environmental and personnel monitoring are important parts of surveillance programs. The characterization and identification program selected by the laboratory should be defined in writing.</p>
+
+        <p>This written description should specify:</p>
+        <ul>
+            <li>The frequency of characterization and identification</li>
+            <li>The standard procedures for the methods used</li>
+            <li>The consistency with regulatory expectations for identification</li>
+        </ul>
+
+        <p>A characterization beyond the species level, a comparison of microorganism identification profiles, and the creation of a <span class="key-term">user-database</span> may be useful in tracking and evaluating monitoring trends.</p>
+
+        <p>Table H-1 gives an example of a scheme for the extent of characterization that may be used for the recovered microbial isolates:</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Isolate and Origin</th>
+                <th>Extent of Identification/Characterization (Minimum Expectations)</th>
+            </tr>
+            <tr>
+                <td>Environmental monitoring of Grade C and D classification areas for <strong>alert-level excursions</strong></td>
+                <td>Characterization (Gram stain reaction and morphology) only</td>
+            </tr>
+            <tr>
+                <td>Environmental monitoring for <strong>action-level excursions</strong> for Grade C and Grade D classification areas</td>
+                <td>Identification to <span class="key-term">species level</span></td>
+            </tr>
+            <tr>
+                <td>Grade A and Grade B classification areas and alert- and/or action-level isolates from excipient, finished product, environment, and water samples</td>
+                <td>Identification to <span class="key-term">species level</span></td>
+            </tr>
+            <tr>
+                <td>Significant product or process contamination failure (e.g., media fills or sterility tests) and significant adverse trends in environment and water monitoring</td>
+                <td>Identification to <span class="key-term">strain level</span> using such methods as strain typing, molecular fingerprinting (genotypic method), riboprinting</td>
+            </tr>
+        </table>
+        </div>
+
+        <p>NOTE: Care should be used in comparisons of results from different identification methods.</p>
+
+        <div class="quote-box">
+            NOTE: As noted in EU Annex 1, "Consideration should also be given to the identification of microorganisms detected in grade C and D areas (for example where action limits or alert levels are exceeded) or following the isolation of organisms that may indicate a loss of control, deterioration in cleanliness or that may be difficult to control such as spore-forming microorganisms and moulds and at a sufficient frequency to maintain a current understanding of the typical flora of these areas."
+        </div>
+
+        <p><strong>Rationale:</strong> Characterizations can be useful clues to the possible source of isolates. For example, <em>Staphylococcus</em> species are commonly found on skin, and <em>Pseudomonas</em> species are usually associated with water.</p>
+
+        <p>A change in the microbial flora might signify a change in a system that should be investigated. Initially, many isolates may be characterized and identified to establish a database of the microorganisms found in the area. Periodic identifications should be performed on routine monitoring to check for changes in predominant groups of microflora.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 鑑定層次與觸發條件</h4>
+            <p>Table H-1 建立了一個「比例原則」的鑑定策略——分析深度與風險程度相匹配：</p>
+            <ul>
+                <li><strong>形態學（Gram stain + 菌落形態）：</strong>Grade C/D 警報水準超標的初步篩選</li>
+                <li><strong>菌種鑑定（Species level）：</strong>Grade C/D 行動限度超標；Grade A/B 的任何超標；水及賦形劑的超標</li>
+                <li><strong>菌株鑑定（Strain level）：</strong>重大失敗事件（APS 失敗、無菌性測試失敗）；顯著不良趨勢</li>
+            </ul>
+            <p>菌株鑑定方法包括：脈衝場膠電泳（PFGE）、MALDI-TOF MS、16S rRNA 定序、全基因組定序（WGS）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 警方犯罪調查的層次</h4>
+            <p>菌株鑑定就像警方的犯罪偵查：</p>
+            <ul>
+                <li><strong>形態學</strong> = 目擊者描述（「高個子男性」）：快速粗略，無法確認身份</li>
+                <li><strong>菌種鑑定</strong> = 照片比對（「和嫌疑人同類型外觀」）：更精確，但仍可能有多人符合</li>
+                <li><strong>菌株鑑定</strong> = DNA 指紋比對：可確認「就是這個人」，並追溯來源</li>
+            </ul>
+            <p>當 APS 失敗或產品無菌性測試失敗時，必須進行「DNA 指紋比對」（菌株鑑定），才能確認污染源並設計精準 CAPA。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 建立設施菌株資料庫</h4>
+            <p><strong>為什麼要建立 user-database（設施菌株資料庫）？</strong></p>
+            <ul>
+                <li>了解設施的「正常菌相」（typical flora），才能偵測到異常</li>
+                <li>新菌種出現 → 可能有新的污染源（新原材料、新人員、施工等）</li>
+                <li>特定菌株反覆出現 → 提示設施中存在持續性污染點（niche/reservoir）</li>
+                <li>消毒後孢子菌比例上升 → 提示消毒計劃對孢子菌效力不足</li>
+            </ul>
+            <p><strong>EU Annex 1 (2022) 新增要求：</strong>即使是 Grade C/D 的正常監測（非超標），也應定期進行菌株鑑定以建立並維護菌相理解。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>常見環境菌株與污染源指示關係</h4>
+            <pre>
+菌種 → 典型來源 / 意義
+
+Staphylococcus spp.   → 人員皮膚 / gowning 失效
+Micrococcus spp.      → 人員皮膚、毛髮
+Bacillus spp.         → 環境孢子 / 消毒劑效力不足
+Aspergillus spp.      → 空氣（過濾器失效？）/ 外部帶入
+Pseudomonas spp.      → 水系統 / 表面潮濕點
+Burkholderia spp.     → 水系統 / 消毒劑污染
+Penicillium spp.      → 原材料 / 外包裝帶入
+Candida spp.          → 人員皮膚 / 黏膜
+
+關鍵原則：
+菌種鑑定提供「來源假說」，需結合
+現場調查（操作記錄、設備狀態、物料來源）
+才能確認根本原因。
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>APS（媒體灌裝）出現一個培育失敗，分離到 Staphylococcus epidermidis，同時 EM 數據正常。您的調查重點應集中在哪裡？</li>
+                <li>如果 Grade B 監測連續三個月都出現 Pseudomonas 菌，但每次都在 Action Limit 以下，這代表什麼？應採取什麼行動？</li>
+                <li>MALDI-TOF MS 與傳統生化鑑定方法在結果比較上有什麼注意事項？（提示：PtC-1 中有相關警語）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC I -->
+<!-- ============================================================ -->
+<div id="topic-i" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic I — Growth-Promotion Testing of EM Media | 培養基生長促進測試
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What constitutes a scientifically appropriate program for routine growth promotion testing of EM media?</p>
+
+        <p><strong>Recommendation:</strong> A quality management program for all incoming or in-house prepared media should be in place for evaluating media for its intended use and for its acceptance. Lots of media should be tested for their ability to reliably recover microorganisms. The <span class="key-term">growth-promotion test</span> is one of the tests conducted by the microbiology laboratory that is used to achieve this.</p>
+
+        <p>For growth-promotion testing of media used for EM, there should be a predefined list of test organisms. This list should include:</p>
+        <ul>
+            <li><span class="key-term">Compendial organisms</span> (required)</li>
+            <li>Environmental isolates if those isolates differ materially from compendial microorganisms (may be included)</li>
+            <li>A range of "representative" microorganisms that could be encountered in manufacturing environments (e.g., Gram-positive rod; Gram-positive coccus; filamentous mold and yeast; Gram-negative rod)</li>
+        </ul>
+
+        <p>Growth-promotion testing may also demonstrate that the <span class="key-term">transportation route</span> and different processing methods do not adversely impact the ability of the media to recover microorganisms.</p>
+
+        <p><span class="key-term">Skip-lot testing</span>, in which not all of the lots are tested, might be justified based on consideration of risk elements, including but not limited to:</p>
+        <ul>
+            <li>A robust supplier quality system</li>
+            <li>Audit program</li>
+            <li>Communication/notification policy</li>
+            <li>Experience with the vendor</li>
+        </ul>
+
+        <p><strong>Rationale:</strong> EM media should have demonstrated the capability to recover a range of potential microbial contaminants.</p>
+
+        <p><strong>Key References:</strong> USP &lt;61&gt; | USP &lt;71&gt; | USP &lt;1116&gt; | USP &lt;1227&gt;</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 培養基本身也需要品質管控</h4>
+            <p>EM 結果的可靠性完全依賴培養基的品質。如果培養基無法有效回收微生物，則所有 EM 數據都是虛假的安全感。</p>
+            <p><strong>Growth-Promotion Test（生長促進測試）的目的：</strong>確認培養基能夠支持目標微生物的生長，且回收率符合要求（通常為 70%-200% 的接種量回收，或 USP 要求的計數標準）。</p>
+            <p><strong>測試時機：</strong></p>
+            <ul>
+                <li>每個新批號（lot）收貨時</li>
+                <li>供應商允許的情況下可進行 Skip-lot testing</li>
+                <li>運輸後（如懷疑溫度超標）</li>
+                <li>媒體製備後（in-house 製備）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 培養基就像偵測器的電池</h4>
+            <p>想像您的 EM 計劃是一個火災偵測系統，培養基就是偵測器裡的電池。如果電池沒電（培養基失效），偵測器永遠不會響——不是因為沒有火災，而是因為偵測器根本無法工作。</p>
+            <p>定期的 Growth-Promotion Test 就是「定期更換電池並測試偵測器功能」，確保 EM 系統處於功能性狀態。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Skip-Lot Testing 的合理化</h4>
+            <p>並非每一個批號都必須進行 100% 的 GPT。PtC-1 允許在以下條件下進行 Skip-lot testing（部分批次測試）：</p>
+            <ul>
+                <li>供應商有健全的品質體系（QMS）</li>
+                <li>定期對供應商進行稽核</li>
+                <li>有效的溝通/通知政策（供應商必須主動通知任何製造變更）</li>
+                <li>有長期良好的供應商使用記錄</li>
+            </ul>
+            <p><strong>風險管控：</strong>即使進行 Skip-lot，仍需要統計計劃（如每 N 批測試一批）並記錄合理化依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 GPT 結果顯示某批培養基的回收率偏低（例如只有 50%），已經用這批培養基採集的 EM 樣品結果應如何處理？</li>
+                <li>除了法定標準菌株（Compendial organisms），為什麼可能需要加入設施自身分離菌株進行 GPT？</li>
+                <li>培養基從供應商到使用之間的運輸過程（transportation route）可能造成哪些問題？如何驗證？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC J -->
+<!-- ============================================================ -->
+<div id="topic-j" class="section-title" style="color: #92400e; border-bottom-color: #d97706;">
+    Topic J — Incubation Temperatures for EM Samples | EM 樣品培養溫度
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Problem Statement:</strong> What incubation conditions are scientifically appropriate for EM samples?</p>
+
+        <p><strong>Recommendation:</strong> <span class="key-term">Mesophilic incubation conditions</span> (a single temperature within the range of 20°C to 35°C ± 2.5°C for three to seven days) are suitable for recovery of microorganisms from normal ambient-temperature manufacturing environments.</p>
+
+        <p>Although detection of yeasts and molds can be improved by the use of specialized recovery media, a <span class="key-term">nonselective microbiological growth medium</span>, such as casein soybean digest agar (or soybean casein digest agar (SCDA)), is suitable in most cases for the total aerobic flora.</p>
+
+        <p>Assessment of environmental isolates and the incubation temperature regimen is recommended to confirm that the use of the nonselective media is sufficient to address the risk posed by any unique conditions in a particular cleanroom environment.</p>
+
+        <p>Each manufacturer should select appropriate media and incubation regimens. The media used by various monitoring methods should be exposed and incubated according to the established EM program, and <span class="key-term">growth-promotion tests</span> should be conducted using compendial standard organisms; these tests may include environmental isolates.</p>
+
+        <div class="quote-box">
+            NOTE: Some studies have shown that recovery of yeast and mold may be hampered by incubation at higher temperatures (above 30°C), but scientific consensus has not yet been established.
+        </div>
+
+        <p><strong>Rationale:</strong> There is no universal set of incubation conditions that will reliably detect all types of environmental microorganisms that could be present from a given sampling site at a given point in time.</p>
+
+        <p>The use of a non-selective medium should be sufficient to achieve this objective. An assessment of environmental isolates should be performed to confirm that the use of the nonselective medium is sufficient to address the risk posed by any unique conditions in a particular cleanroom environment.</p>
+
+        <p>The recovery of environmental molds should be considered in the selection of the incubation temperature range and sequence of incubation temperatures, with a procedure and frequency based on risk assessment.</p>
+
+        <p><strong>Key References:</strong> PDA TR-13 (Revised 2022) | PDA TR-22 (Revised 2011) | USP &lt;1116&gt;</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 為什麼培養溫度有爭議？</h4>
+            <p>不同的微生物有不同的最適生長溫度：</p>
+            <ul>
+                <li><strong>嗜溫菌（Mesophiles）如大多數細菌：</strong>最適 30-37°C</li>
+                <li><strong>嗜冷菌（Psychrotrophs）如某些環境菌：</strong>最適 20-25°C</li>
+                <li><strong>酵母菌和黴菌：</strong>最適 22-25°C，高溫（&gt;30°C）可能抑制生長</li>
+            </ul>
+            <p>PtC-1 的立場：單一溫度（20-35°C 範圍內任何一點）對大多數製造環境已足夠，但需要根據設施的環境菌相評估是否需要雙溫培養。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 雙溫培養 vs 單溫培養</h4>
+            <p>培養溫度的選擇就像設定食物保存溫度：</p>
+            <p>如果你只用 37°C 的溫箱培養，就像只在夏天（高溫）測試食品安全——會看到嗜溫菌，但可能錯過在 4°C 冰箱中也能生長的嗜冷菌。</p>
+            <p>EU Annex 1 歷史上建議雙溫培養（20-25°C 培養後再 30-35°C），以確保同時捕捉酵母/黴菌和細菌。PtC-1 採取更靈活的立場——只要科學評估支持，單一溫度也可以接受。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU Annex 1 (2022) 與 PDA PtC-1 的異同</h4>
+            <p><strong>EU Annex 1 (2022) 立場：</strong>推薦雙溫培養（先 20-25°C 培養約 5 天，再 30-35°C 培養約 2 天），以確保黴菌和細菌均被有效回收。這是一個更保守的方法。</p>
+            <p><strong>PDA PtC-1 立場：</strong>認為單一溫度在大多數情況下已足夠，但需要科學評估支持。採用非選擇性培養基（如 SCDA）在 20-35°C 之間的任一溫度培養 3-7 天，是科學上合理的。</p>
+            <p><strong>實務建議：</strong>如果您的產品在歐盟市場銷售，建議採用 EU Annex 1 的雙溫培養方案，以滿足監管預期。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>培養條件設計決策框架</h4>
+            <pre>
+步驟一：了解設施環境菌相
+  → 對現有 EM 分離菌株進行溫度耐受性評估
+  → 查看歷史數據：是否有酵母/黴菌超標？
+
+步驟二：選擇培養基
+  → SCDA（Soybean Casein Digest Agar）= 最通用選擇
+  → Sabouraud Dextrose Agar（SDA）= 若需強化酵母/黴菌回收
+
+步驟三：選擇培養條件
+  選項A（PDA TR-13 / USP 建議）：
+    30-35°C × 3-5 天（細菌優先）
+    + 20-25°C × 5-7 天（酵母/黴菌）
+
+  選項B（EU Annex 1 2022）：
+    先 20-25°C × ~5 天 → 再 30-35°C × ~2 天
+
+  選項C（單一溫度，需科學評估支持）：
+    22-25°C × 5-7 天
+
+步驟四：生長促進測試（GPT）驗證所選條件
+  → 確認所選培養基+溫度能回收目標菌株
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 客戶監管市場差異</h4>
+            <p>CDMO 通常同時服務多個市場的客戶。以 EM 培養溫度為例：</p>
+            <ul>
+                <li><strong>美國 FDA 市場：</strong>USP &lt;1116&gt; 允許靈活的培養條件，科學評估支持即可</li>
+                <li><strong>歐盟 EMA 市場：</strong>EU Annex 1 (2022) 傾向雙溫培養，監查員可能期待看到</li>
+                <li><strong>日本 PMDA 市場：</strong>JPE 與 USP 接近，但監查員有時有更嚴格的期待</li>
+            </ul>
+            <p>建議：在驗證階段就建立能滿足最嚴格要求的培養條件（EU Annex 1），並在法規文件中說明選擇依據，以應對多市場客戶的需求。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您設施的歷史 EM 數據顯示從未分離到黴菌，是否可以用這個理由省略低溫培養？您需要什麼數據來支持這個決定？</li>
+                <li>如果培養時間從 5 天縮短至 3 天，可能會錯過哪些類型的微生物？在什麼情況下這樣的縮短是合理的？</li>
+                <li>非選擇性培養基（Nonselective media）的優點和缺點各是什麼？什麼情況下應該考慮使用選擇性培養基？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin-top: 2rem; border-left: 4px solid #d97706;">
+    <h3 style="color: #78350f;">本節重點回顧 Section II Summary</h3>
+    <ul>
+        <li><strong>Alert Level vs Action Limit：</strong>兩者均非產品規格（Specification）；Alert Level 基於統計/歷史數據，需低於 Action Limit；Grade A 通常無 Alert Level（任何菌落均需行動）。EU Annex 1 (2022) 要求警報水準設定需與 CCS 整合。</li>
+        <li><strong>EM 與批次放行：</strong>Grade A/B 的 EM 數據必須納入批次放行審查；超標不自動等同於拒批，但必須完整調查並評估產品影響。風險導向決策是核心原則。</li>
+        <li><strong>監測計劃設計（地點/頻率/持續時間）：</strong>需基於風險評估，Grade A 需連續微粒監測；EM 本身也帶來介入風險，需平衡監測效益與操作風險；表面採樣必須在生產結束後進行。</li>
+        <li><strong>EM 超標調查：</strong>必須包含根本原因分析、CAPA（含責任人和時限）、產品影響評估、趨勢分析和 CAPA 有效性追蹤。調查記錄是正式 GMP 文件。</li>
+        <li><strong>終端滅菌產品：</strong>配製區 Grade D、充填區 Grade C 通常已足夠，但生物負荷管控（包括過濾前和充填後的 Bioburden 測試）是關鍵安全防線。</li>
+        <li><strong>清潔消毒：</strong>EU Annex 1 (2022) 要求 Grade A/B 定期使用孢子殺滅劑；消毒劑有效性必須針對設施自身菌株驗證；消毒劑應輪替使用；清潔是消毒的前提。</li>
+        <li><strong>環境菌株鑑定：</strong>Table H-1 的分級鑑定策略——從形態學到菌株分型，深度與風險相匹配；建立設施菌株資料庫是追蹤菌相變化的基礎工具。</li>
+        <li><strong>培養基 GPT：</strong>每批培養基需通過生長促進測試；測試菌株需包含法定標準菌株並可加入設施環境菌株；Skip-lot testing 在滿足條件下可以接受。</li>
+        <li><strong>培養溫度：</strong>20-35°C 範圍內的單一溫度培養在大多數情況下已科學合理；EU Annex 1 (2022) 傾向雙溫（20-25°C 先行後 30-35°C）以強化酵母/黴菌回收；選擇需要根據設施菌相評估支持。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

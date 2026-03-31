@@ -68,7 +68,7 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 - [ ] Confirm filter buttons include the new source
 - [ ] Confirm stats numbers are correct
 - [ ] Confirm "Open" button links to the correct file
-- [ ] Confirm `knowledge/<TRXX>-Complete.md` was generated with **English-only** content (no Chinese)
+- [ ] Confirm `knowledge/PDA/<TRXX>-Complete.md` was generated with **English-only** content (no Chinese)
 - [ ] Confirm `knowledge/INDEX.md` has been updated with the new report
 
 ## File Structure Convention
@@ -85,36 +85,45 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── Raw pdfs/               # Source PDFs (all sources)
 ├── knowledge/              # Chatbot knowledge base — English-only original content
 │   ├── INDEX.md            # Master routing index — update manually per new document
-│   ├── TR26-Complete.md    # One .md per document (auto-generated, English only)
-│   └── ...
+│   ├── PDA/                # PDA Technical Reports & Points to Consider
+│   │   ├── TR26-Complete.md    # One .md per document (auto-generated, English only)
+│   │   └── ...
+│   └── ISPE/               # ISPE Guidelines (same structure, future)
 ├── .claude/
 │   └── commands/
 │       ├── gmp-ask.md      # /gmp-ask skill — unified chatbot Q&A via Claude Code
 │       └── pda-ask.md      # /pda-ask legacy alias (PDA-only queries)
-├── pda-guide-no1/          # PDA documents
-├── TR26/                   # Same structure: source/ + sections/ + output/
-├── ISPE-Vol5/              # ISPE documents (same structure)
-├── FDA-Aseptic/            # FDA documents (same structure)
+├── PDA/                    # All PDA documents
+│   ├── TR26/               # Each subfolder: source/ + sections/ + output/
+│   ├── PtC-14/
+│   └── pda-guide-no1/
+├── ISPE/                   # All ISPE documents (same structure as PDA/)
+│   ├── ISPE-Vol3/
+│   ├── ISPE-Vol5/
 │   └── ...
 ```
 
+> **reports.json `folder` field**: Every report entry must include `"folder": "PDA/TR26"` (or `"ISPE/ISPE-Vol5"` etc.).
+> `pda_engine.py` uses this field to resolve all paths. `index.html` uses it to build the Open button link.
+> Use `python pda_engine.py scaffold ISPE-Vol5 --source ISPE` to auto-populate `folder` for new reports.
+
 ## Naming Conventions
 
-**PDA documents:**
-- Folders: `TR26/`, `TR01/`, `PtC-14/`, `pda-guide-no1/`
+**PDA documents** — under `PDA/`:
+- Folders: `PDA/TR26/`, `PDA/TR01/`, `PDA/PtC-14/`, `PDA/pda-guide-no1/`
 
-**ISPE documents:**
-- Folders: `ISPE-Vol3/`, `ISPE-Vol5/`, `ISPE-GAMP5/`, `ISPE-HVAC/`, `ISPE-TechTransfer/`
+**ISPE documents** — under `ISPE/`:
+- Folders: `ISPE/ISPE-Vol3/`, `ISPE/ISPE-Vol5/`, `ISPE/ISPE-GAMP5/`, `ISPE/ISPE-HVAC/`, `ISPE/ISPE-TechTransfer/`
 
-**FDA / Regulatory documents:**
-- Folders: `FDA-Aseptic/`, `PICS-Annex1/`, `ISO-13408/`, `ECA-CCS/`, `USP-382/`
+**FDA / Regulatory documents** — under their own top-level folder (future):
+- Folders: `FDA/FDA-Aseptic/`, `PICS/PICS-Annex1/`, etc.
 
 **All sources:**
 - Section files: `section-XX-short-name.html`
 - Split sections: `section-XXa-name.html`, `section-XXb-name.html`
 - Merged output: `[FOLDER_ID]-Complete.html`
 - Source text: `section-X.0-text.txt` or `[FOLDER_ID]-full-text.txt`
-- Knowledge MD: `knowledge/[FOLDER_ID]-Complete.md` (English only, auto-generated)
+- Knowledge MD: `knowledge/<SOURCE>/[FOLDER_ID]-Complete.md` (English only, auto-generated)
 
 **Source colors in reports.json** — use consistent palette per source body:
 - PDA: blue family (`#1e3a5f` / `#3498db`)
@@ -152,29 +161,31 @@ ls "Raw pdfs/" | grep -v processed
 ```bash
 # 1. Scaffold the folder structure + add skeleton to reports.json
 python pda_engine.py scaffold TRXX
+#    ISPE reports:
+python pda_engine.py scaffold ISPE-Vol5 --source ISPE
 
 # 2. Edit reports.json — fill in TRXX entry (title, tags, colors, section_map)
 
-# 3. Extract PDF text into TRXX/source/
+# 3. Extract PDF text into PDA/TRXX/source/
 #    Use any external tool (e.g., pdftotext, PyMuPDF, or manual copy-paste)
 
 # 4. Generate knowledge MD — review hierarchy before proceeding
 python pda_engine.py md TRXX
-#    Review knowledge/TRXX-Complete.md — confirm sections/headings match PDF
+#    Review knowledge/PDA/TRXX-Complete.md — confirm sections/headings match PDF
 
 # 5. Generate bilingual HTML sections (Claude agents, parallel dispatch)
 #    Use PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
 
-# 6. Merge HTML → TRXX/output/TRXX-Complete.html
+# 6. Merge HTML → PDA/TRXX/output/TRXX-Complete.html
 python pda_engine.py merge TRXX
 
-# 7. Update knowledge/INDEX.md (new report block + routing table row + cross-report topics)
+# 7. Update knowledge/INDEX.md (new block using "PDA/TRXX-Complete.md" header + routing table row + cross-report topics)
 
 # 8. Move source PDF to processed
 mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 
 # 9. Verify in browser, then commit + push
-git add TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m "Add TRXX: [title]"
+git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m "Add TRXX: [title]"
 ```
 
 ---
@@ -185,33 +196,50 @@ Report metadata is in `reports.json`. Current reports:
 
 | Folder | Report | Sections | Status |
 |--------|--------|----------|--------|
-| `pda-guide-no1/` | PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025) | 20 | Complete |
-| `TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
-| `TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
-| `TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
-| `TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
-| `TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
-| `TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | Complete |
-| `TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
-| `TR85/` | PDA TR85: Enhanced Test Methods for Visible Particle Detection | 6 | Complete |
-| `TR87/` | PDA TR87: Current Best Practices for Glass Vial Handling and Processing | 7 | Complete |
-| `TR88/` | PDA TR88: Microbial Data Deviation Investigations | 6 | Complete |
-| `TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
-| `TR91/` | PDA TR91: Post-Approval Change Management | 7 | Complete |
-| `PtC-9/` | PDA PtC-9: Lessons Learned from COVID-19 Pandemic | 6 | Complete |
-| `PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
-| `PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
-| `PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
-| `PtC-Isolators/` | PDA PtC-Isolators: Aseptic Processing in Isolators | 7 | Complete |
-| `TR39/` | PDA TR39: Temperature-Controlled Medicinal Products | 4 | Complete |
-| `TR70/` | PDA TR70: Cleaning and Disinfection for Aseptic Facilities | 9 | Complete |
-| `TR13/` | PDA TR13: Fundamentals of an Environmental Monitoring Program (Revised 2022) | 9 | Complete |
-| `TR13-2/` | PDA TR13-2: EM for Low Bioburden Products — Annex 1 (2020) | 3 | Complete |
-| `TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
-| `TR54/` | PDA TR54-6: Excipient GMP Risk Assessment (Joint PDA-IPEC) | 7 | Complete |
-| `TR62/` | PDA TR62: Manual Aseptic Processes (Revised 2020) | 5 | Complete |
-| `TR65/` | PDA TR65: Technology Transfer (2014) | 8 | Complete |
-| `TR84/` | PDA TR84: Data Integrity in Manufacturing & Packaging (2020) | 8 | Complete |
+| `PDA/pda-guide-no1/` | PDA Guide No.1: Aseptic Filling, Engineering & Operation (2025) | 20 | Complete |
+| `PDA/TR22/` | PDA TR22: Process Simulation for Aseptically Filled Products | 9 | Complete |
+| `PDA/TR26/` | PDA TR26: Sterilizing Filtration of Liquids | 11 | Complete |
+| `PDA/TR52/` | PDA TR52: Good Distribution Practices (GDPs) | 6 | Complete |
+| `PDA/TR60/` | PDA TR60: Process Validation — A Lifecycle Approach | 8 | Complete |
+| `PDA/TR66/` | PDA TR66: Single-Use Systems in Pharma Manufacturing | 9 | Complete |
+| `PDA/TR73/` | PDA TR73: Prefilled Syringe (Sections 12-18, p74-p102) | 4 | Complete |
+| `PDA/TR73-2/` | PDA TR73-2: MDR Annex I for Staked Needle Systems | 5 | Complete |
+| `PDA/TR85/` | PDA TR85: Enhanced Test Methods for Visible Particle Detection | 6 | Complete |
+| `PDA/TR87/` | PDA TR87: Current Best Practices for Glass Vial Handling and Processing | 7 | Complete |
+| `PDA/TR88/` | PDA TR88: Microbial Data Deviation Investigations | 6 | Complete |
+| `PDA/TR90/` | PDA TR90: CCS Development in Pharmaceutical Manufacturing | 15 | Complete |
+| `PDA/TR91/` | PDA TR91: Post-Approval Change Management | 7 | Complete |
+| `PDA/PtC-9/` | PDA PtC-9: Lessons Learned from COVID-19 Pandemic | 6 | Complete |
+| `PDA/PtC-12/` | PDA PtC-12: Restricted Access Barrier Systems | 10 | Complete |
+| `PDA/PtC-14/` | PDA PtC-14: Manufacturing of ATMPs – Facility Design | 6 | Complete |
+| `PDA/PtC-15/` | PDA PtC-15: Mobile Manufacturing | 3 | Complete |
+| `PDA/PtC-Isolators/` | PDA PtC-Isolators: Aseptic Processing in Isolators | 7 | Complete |
+| `PDA/TR39/` | PDA TR39: Temperature-Controlled Medicinal Products | 4 | Complete |
+| `PDA/TR70/` | PDA TR70: Cleaning and Disinfection for Aseptic Facilities | 9 | Complete |
+| `PDA/TR13/` | PDA TR13: Fundamentals of an Environmental Monitoring Program (Revised 2022) | 9 | Complete |
+| `PDA/TR13-2/` | PDA TR13-2: EM for Low Bioburden Products — Annex 1 (2020) | 3 | Complete |
+| `PDA/TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
+| `PDA/TR54-6/` | PDA TR54-6: Formalized Risk Assessment for Excipients (2019) | 6 | Complete |
+| `PDA/TR62/` | PDA TR62: Recommended Practices for Manual Aseptic Processes (2013) | 4 | Complete |
+| `PDA/TR43/` | PDA TR43: Identification and Classification of Nonconformities in Glass Containers (Revised 2023) | 6 | Complete |
+| `PDA/TR68/` | PDA TR68: Risk-Based Approach for Prevention and Management of Drug Shortages (Revised 2024) | 6 | Complete |
+| `PDA/TR84/` | PDA TR84: Data Integrity in Manufacturing & Packaging (2020) | 8 | Complete |
+| **ISPE** | | | |
+| `ISPE/ISPE-Vol3/` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | — | Planned |
+| `ISPE/ISPE-Vol4/` | ISPE Baseline Vol.4: Water & Steam Systems | — | Planned |
+| `ISPE/ISPE-Vol5/` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 11 | Complete |
+| `ISPE/ISPE-Vol6/` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | — | Planned |
+| `ISPE/ISPE-Vol7/` | ISPE Baseline Vol.7: Risk-Based Manufacture of Pharmaceutical Products | — | Planned |
+| `ISPE/ISPE-GAMP5/` | ISPE GAMP 5 (2nd Ed.): Computerized Systems Validation | — | Planned |
+| `ISPE/ISPE-HVAC/` | ISPE GPG HVAC: Heating, Ventilation and Air Conditioning | — | Planned |
+| `ISPE/ISPE-SUT/` | ISPE GPG Single-Use Technology: Single-Use Systems | — | Planned |
+| `ISPE/ISPE-Sampling/` | ISPE GPG Sampling: Pharmaceutical Water, Steam & Process Gases | — | Planned |
+| `ISPE/ISPE-CTC/` | ISPE GPG CTC: Mapping and Monitoring | — | Planned |
+| `ISPE/ISPE-TechTransfer/` | ISPE GPG Technology Transfer (3rd Ed.) | — | Planned |
+| `ISPE/ISPE-GEP/` | ISPE Good Engineering Practice: GEP Framework | — | Planned |
+| `ISPE/ISPE-ProcessGas/` | ISPE Process Gases: Process Gas Systems | — | Planned |
+| `ISPE/ISPE-IT/` | ISPE IT Infrastructure: Control and Compliance | — | Planned |
+| `ISPE/ISPE-QualityCulture/` | ISPE-PDA Quality Culture: Guide to Improving Quality Culture | — | Planned |
 
 ---
 

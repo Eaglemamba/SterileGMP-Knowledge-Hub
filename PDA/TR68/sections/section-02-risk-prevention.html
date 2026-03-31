@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR68 Section 2 – Risk-Based Prevention Framework | 風險導向預防框架</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== TR68 ORANGE THEME OVERRIDES ===== */
+.tr68-header {
+    background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 5px solid #ea580c;
+}
+
+.tr68-header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.tr68-header .subtitle {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.tr68-header .page-info {
+    font-size: 0.82rem;
+    opacity: 0.75;
+}
+
+/* Section subsection dividers */
+.subsection-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem;
+    background: linear-gradient(135deg, #7c2d12 0%, #b45309 100%);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+}
+
+.subsection-bar .sec-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 0.25rem 0.6rem;
+    flex-shrink: 0;
+}
+
+.subsection-bar .sec-title-en {
+    font-size: 1rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+.subsection-bar .sec-title-zh {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* Value chain diagram */
+.value-chain-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.value-chain {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-width: 700px;
+    flex-wrap: nowrap;
+}
+
+.vc-node {
+    background: linear-gradient(135deg, #fff7ed, #fed7aa);
+    border: 2px solid #ea580c;
+    border-radius: 8px;
+    padding: 0.45rem 0.6rem;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #7c2d12;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 80px;
+}
+
+.vc-node.patient-node {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    border-color: #dc2626;
+    color: #991b1b;
+    font-weight: 700;
+}
+
+.vc-arrow {
+    color: #ea580c;
+    font-size: 1.2rem;
+    padding: 0 0.2rem;
+    flex-shrink: 0;
+}
+
+.enablers-bar {
+    background: linear-gradient(135deg, #fff7ed, #ffedd5);
+    border: 1px solid #fb923c;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+}
+
+.enablers-bar strong {
+    color: #7c2d12;
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+}
+
+.enablers-bar ul {
+    margin: 0 0 0 1.25rem;
+    padding: 0;
+}
+
+.enablers-bar li {
+    margin-bottom: 0.2rem;
+    color: #9a3412;
+}
+
+/* E2E controls strip */
+.e2e-strip {
+    background: linear-gradient(90deg, #7c2d12, #c2410c, #7c2d12);
+    color: white;
+    text-align: center;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    letter-spacing: 0.04em;
+}
+
+/* Risk ranking table styles */
+.risk-table th {
+    background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+    color: white;
+    font-size: 0.85rem;
+}
+
+.risk-high {
+    background: #fee2e2 !important;
+    border-left: 4px solid #dc2626;
+}
+
+.risk-high td:first-child {
+    font-weight: 700;
+    color: #991b1b;
+}
+
+.risk-medium {
+    background: #fef3c7 !important;
+    border-left: 4px solid #f59e0b;
+}
+
+.risk-medium td:first-child {
+    font-weight: 700;
+    color: #92400e;
+}
+
+.risk-low {
+    background: #d1fae5 !important;
+    border-left: 4px solid #10b981;
+}
+
+.risk-low td:first-child {
+    font-weight: 700;
+    color: #065f46;
+}
+
+/* Section summary */
+.section-summary {
+    background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+    border: 2px solid #ea580c;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.section-summary h3 {
+    color: #7c2d12;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ea580c;
+    padding-bottom: 0.4rem;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    color: #431407;
+}
+
+/* Two column block wrapper with orange top bar */
+.block-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(124,45,18,0.1);
+}
+
+.block-wrapper .two-column {
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 0;
+    background: transparent;
+}
+
+.block-wrapper .left-column {
+    border-radius: 0;
+    border-top: none;
+}
+
+.block-wrapper .right-column {
+    border-radius: 0;
+    border-top: none;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="tr68-header">
+    <h1>PDA Technical Report No. 68 (Revised 2024)</h1>
+    <div class="subtitle">Section 2: Risk-Based Prevention Framework｜風險導向預防框架</div>
+    <div class="page-info">Source Pages: p12–p15 &nbsp;|&nbsp; Covers: §5.0 Risk-Based Approaches, §5.1 Risk &amp; Knowledge Management, §5.2 Interacting with Health Authorities</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解整體性 (holistic) 藥品短缺預防框架的雙層架構：產品層級（end-to-end 價值鏈控制）與系統層級（藥品品質系統 PQS）。</li>
+            <li>掌握圖 5.0-1 所呈現的端對端 (E2E) 製造與配送價值鏈各節點，以及賦能要素 (Enablers) 的作用。</li>
+            <li>說明品質風險管理 (QRM) 與知識管理 (Knowledge Management) 如何根據 ICH Q10 成為 PQS 的雙支柱，並與 PDCA 持續改善循環連結。</li>
+            <li>解讀表 5.1-1 三級風險排序（高/中/低），並說明各等級對 CDMO 或 MAH 實際偏差管理的意涵。</li>
+            <li>瞭解歐美法規對上市許可持有人 (MAH) 通報藥品短缺的法律義務，以及與衛生主管機關早期互動的最佳實務。</li>
+        </ul>
+    </div>
+
+    <!-- ===================== SECTION 5.0 ===================== -->
+    <div class="block-wrapper" id="sec50">
+        <div class="subsection-bar">
+            <span class="sec-num">5.0</span>
+            <span class="sec-title-en">Risk-Based Approaches for Prevention of Drug Shortages</span>
+            <span class="sec-title-zh">藥品短缺預防之風險導向方法</span>
+        </div>
+
+        <div class="two-column">
+            <!-- LEFT: English original -->
+            <div class="left-column">
+                <h3>5.0 Risk-Based Approaches for Prevention of Drug Shortages</h3>
+
+                <p>A <span class="key-term">holistic approach</span> to the prevention and management of drug shortages focused on patient safety is important and complex. There are multiple elements, both at the system and product levels, that work individually or in combination to prevent a shortage:</p>
+
+                <ul>
+                    <li>At the <span class="key-term">product level</span>, an end-to-end understanding of the value chain for manufacturing and distribution provides the ability to understand and implement end-to-end controls.</li>
+                    <li>At the <span class="key-term">system level</span>, appropriate oversight and a robust <span class="key-term">pharmaceutical quality system (PQS)</span> ensure compliance with applicable laws and regulations.</li>
+                </ul>
+
+                <p>Both approaches should also establish mechanisms that provide <span class="key-term">early warning signals</span> of potential shortages, including near-misses, assess potential root causes for the shortage considering multiple aspects, drive targeted manufacturing and product quality improvements (e.g., introduction of new technologies, continual improvement, innovation), and enable timely communications with key stakeholders and health authorities. Other foundational elements should:</p>
+
+                <ul>
+                    <li>Ensure strong <span class="key-term">management accountability</span></li>
+                    <li>Foster a sustainable <span class="key-term">quality culture</span> that enables employees to speak up</li>
+                    <li>Reward behaviors that drive joint ownership between operations and quality units for timely issue resolution</li>
+                    <li>Build people skills and capabilities that drive change leadership and excellence in pharmaceutical operations</li>
+                    <li>Establish a <span class="key-term">governance model</span> that tracks operational and quality performance with appropriate metrics</li>
+                </ul>
+
+                <p>As part of a robust quality system, companies should implement <span class="key-term">QRM principles</span> and <span class="key-term">knowledge management</span> capabilities to accomplish the following:</p>
+
+                <ul>
+                    <li>Proactively identify what controls are, and are not, in place for shortage prevention (for critical products at least)</li>
+                    <li>Proactively identify and control risks of interruption in manufacturing and product supply</li>
+                    <li>Link to clinical and safety risk assessments for their products</li>
+                    <li>Facilitate <span class="key-term">risk-based decision-making</span> by companies and health authorities in response to shortages in order to control and reduce harm to patients</li>
+                </ul>
+
+                <p>Opportunities for informed and timely decision-making based on QRM principles, knowledge management, and a good understanding of patient impact in the event of a shortage allow companies to proactively manage and prevent drug shortages. When drugs become unexpectedly unavailable in the manufacturing supply chain, risk-based decision-making enables companies to provide key risk-indicating information to health authorities in a timely manner before the shortage becomes severe.</p>
+
+                <p>In addition to internal risk and knowledge management, it is helpful to have systems that generate reliable and up-to-date information about the marketplace for a company's products (e.g., trends in demand, usage volumes, market-share data). This combined body of information can also be very useful in decision-making for both the company and health authorities in order to respond to a shortage. It can help both parties understand what the risks of a shortage are to patients, what advice to communicate to healthcare providers, and what measures to take in order to respond quickly to a drug shortage. Information about the supply position for competitor products and alternative therapies is also important for assessing the risks of shortage-related issues.</p>
+
+                <p>Figure 5.0-1 depicts the key components of a holistic framework at the <span class="key-term">end-to-end product-value-chain</span> level and in terms of the end-to-end product, process, system, inventory, and diversification controls for proactive prevention and management of drug shortages.</p>
+
+                <!-- Figure 5.0-1 reproduced as structured HTML -->
+                <div class="figure-container">
+                    <p style="font-size:0.82rem;font-weight:600;color:#7c2d12;margin-bottom:0.5rem;">Figure 5.0-1 — Holistic Framework for End-to-End Drug Shortage Prevention</p>
+
+                    <!-- Outer factors row -->
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                        <div style="background:#fef9c3;border:1px solid #eab308;border-radius:6px;padding:0.3rem 0.6rem;font-size:0.75rem;font-weight:600;color:#713f12;">People</div>
+                        <div style="background:#fef9c3;border:1px solid #eab308;border-radius:6px;padding:0.3rem 0.6rem;font-size:0.75rem;font-weight:600;color:#713f12;">Oversight &amp; Early Signals</div>
+                        <div style="background:#fef9c3;border:1px solid #eab308;border-radius:6px;padding:0.3rem 0.6rem;font-size:0.75rem;font-weight:600;color:#713f12;">Mfg. &amp; Quality Improvements</div>
+                        <div style="background:#fef9c3;border:1px solid #eab308;border-radius:6px;padding:0.3rem 0.6rem;font-size:0.75rem;font-weight:600;color:#713f12;">Enforce Laws &amp; Regulations</div>
+                        <div style="background:#fef9c3;border:1px solid #eab308;border-radius:6px;padding:0.3rem 0.6rem;font-size:0.75rem;font-weight:600;color:#713f12;">Technology &amp; Innovation</div>
+                    </div>
+
+                    <!-- E2E strip -->
+                    <div class="e2e-strip">E2E Controls: Product | Process | Systems | Inventory | Diversification</div>
+
+                    <!-- Value chain -->
+                    <div class="value-chain-wrapper">
+                        <div class="value-chain">
+                            <div class="vc-node">Raw<br>Materials</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Drug<br>Substance</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Packaging</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Drug<br>Product</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Warehouse /<br>Distribution</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Storage &amp;<br>Transportation</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Affiliates</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Wholesaler</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Pharmacy</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node patient-node">Patient<br>Focused</div>
+                        </div>
+                    </div>
+
+                    <!-- Enablers -->
+                    <div class="enablers-bar">
+                        <strong>Enablers:</strong>
+                        <ul>
+                            <li>Timely targeted Communication</li>
+                            <li>Understand Root Causes</li>
+                            <li>Make Risk-based Decision and Manage Knowledge</li>
+                        </ul>
+                        <div style="margin-top:0.4rem;font-size:0.78rem;color:#7c2d12;"><em>Economy &nbsp;|&nbsp; Business &nbsp;|&nbsp; Value Chain of Manufacturing &amp; Distribution</em></div>
+                    </div>
+
+                    <div class="figure-caption">Figure 5.0-1: Holistic Framework for End-to-End Drug Shortage Prevention (p14, TR68 Revised 2024)</div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Chinese commentary -->
+            <div class="right-column">
+                <h3>中文解析：整體性預防框架</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：雙層架構</h4>
+                    <p>TR68 的預防框架同時運作於<strong>兩個層面</strong>，缺一不可：</p>
+                    <ul>
+                        <li><strong>產品層級 (Product Level)</strong>：對製造與配送<strong>端對端價值鏈</strong> (end-to-end value chain) 有深入理解，從原物料到病患均納入管控視野。</li>
+                        <li><strong>系統層級 (System Level)</strong>：建立健全的<strong>藥品品質系統</strong> (Pharmaceutical Quality System, PQS)，確保符合適用法規，並形成組織文化支柱。</li>
+                    </ul>
+                    <p>兩者並非替代關係，而是相輔相成——產品層級的控制依賴系統層級的制度支撐，系統層級的有效性則透過產品層級的實際表現來驗證。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：消防系統 vs. 建築安全文化</h4>
+                    <p>想像一棟建築的防火管理：</p>
+                    <ul>
+                        <li><strong>產品層級</strong>就像每條走廊都安裝了偵煙器、灑水頭、逃生指示燈——針對每個「節點」設置具體控制。</li>
+                        <li><strong>系統層級</strong>則像整棟建築的安全文化、定期演練、管理階層的問責機制——確保所有控制措施持續有效運作。</li>
+                    </ul>
+                    <p>藥品短缺預防亦同：光有產品控制點卻缺乏系統性支撐，危機發生時依然會手足無措。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>圖 5.0-1 解讀：端對端價值鏈</h4>
+                    <p>圖示呈現從<strong>原物料 → 藥品原料 → 包裝 → 藥品成品 → 倉儲配送 → 儲運 → 子公司 → 批發商 → 藥局 → 病患</strong>的完整鏈條。每個節點均可能成為短缺的發生點或放大點。</p>
+                    <p><strong>三大賦能要素 (Enablers)</strong>橫跨整條鏈：</p>
+                    <ul>
+                        <li>及時、有針對性的溝通</li>
+                        <li>根本原因理解</li>
+                        <li>風險導向決策與知識管理</li>
+                    </ul>
+                    <p>最外圍的黃色欄位代表支持性力量：人員能力、早期預警機制、製造品質改善、法規執行、技術創新。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：近未遂事件 (Near-Miss) 的價值</h4>
+                    <p>框架要求納入<strong>「近未遂」(near-miss)</strong>的早期預警訊號，而不只是等到實際短缺才行動。這呼應了航空安全管理的「事件報告文化」：大部分重大事故前，都有多次被忽視的近未遂訊號。</p>
+                    <p>對 CDMO 而言，這意味著：每一次原物料延遲、設備停機、偏差發生，都應評估其<strong>潛在供應影響</strong>，而非僅從 GMP 合規角度審查。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：市場情報的重要性</h4>
+                    <p>TR68 特別強調，除了內部風險管理，還需建立<strong>市場資訊系統</strong>，包含：需求趨勢、使用量、市占率數據，以及競爭者與替代療法的供應狀況。這些資訊對公司與衛生主管機關在短缺時共同決策至關重要。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <p>假設您任職的 CDMO 同時承接 10 個客戶品項，請思考：</p>
+                    <ul>
+                        <li>哪些品項屬於「醫療必需品」？您目前是否已將其標記為高優先監控？</li>
+                        <li>當原物料廠商通知交貨延誤 2 週時，您的 SOP 中是否有觸發「供應風險評估」的機制？</li>
+                        <li>您的組織是否有跨部門（採購、生產、品保、業務）的短缺預防委員會？</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SECTION 5.1 ===================== -->
+    <div class="block-wrapper" id="sec51">
+        <div class="subsection-bar">
+            <span class="sec-num">5.1</span>
+            <span class="sec-title-en">Concepts of Risk and Knowledge Management</span>
+            <span class="sec-title-zh">風險管理與知識管理的核心概念</span>
+        </div>
+
+        <div class="two-column">
+            <!-- LEFT: English original -->
+            <div class="left-column">
+                <h3>5.1 Concepts of Risk and Knowledge Management</h3>
+
+                <p>According to <span class="key-term">ICH Quality Guideline Q10: Pharmaceutical Quality System</span>, <span class="key-term">QRM</span> and <span class="key-term">knowledge management</span> are enablers of the PQS. As such, QRM and knowledge management are intended to facilitate the practical integration of all elements of the PQS "to enhance the quality and availability of medicines around the world in the interest of public health."</p>
+
+                <p>A good understanding of the manufacturing process and end-to-end supply chain, up to the transfer of product from the <span class="key-term">MAH</span> to the first economic customer (i.e., to wholesale distributors), is necessary for appropriate QRM to identify, assess, control, and review the risks of potential drug shortages. Once the hazards are identified and the risks are assessed, appropriate <span class="key-term">risk control measures</span> can be implemented to reduce (control, mitigate, or eliminate) the risks of potential drug shortages before they lead to actual drug shortages. Of course, not all hazards can be anticipated; in such instances, as soon as new information on a hazard becomes available, <span class="key-term">risk-review activities</span> can ensure timely assessment and implementation of risk control actions.</p>
+
+                <p><span class="key-term">Knowledge management</span> supports the PQS by facilitating easier access to product and process knowledge throughout the product's lifecycle. This availability of knowledge regarding process-performance and product-quality monitoring systems can enhance process understanding. In addition, ICH Q10 calls for process and product monitoring throughout product development and commercial manufacturing, so the information can be used to establish and actively manage a timely <span class="key-term">control strategy</span> for manufacturing. Finally, management review of process performance and product quality should identify appropriate actions for <span class="key-term">continual improvement</span>, such as the capture and dissemination of knowledge and the identification of post-approval changes (PAC).</p>
+
+                <p>Most companies have mechanisms to respond to drug shortages when they occur; however, these mechanisms might not be comprehensive or fully integrated into company procedures. A comprehensive approach for managing potential drug shortages should involve:</p>
+                <ul>
+                    <li>Ability to respond quickly to minimize the impact of a shortage</li>
+                    <li>Framework for anticipating drug shortage triggers and risks and for establishing mechanisms to control risks and prevent shortages</li>
+                    <li>Mechanisms and processes for timely communications</li>
+                </ul>
+
+                <p>The EFPIA Good Practice Guide: Reducing Risk for Drug Product Shortages describes a "good practice" model that a company can adopt to prevent and/or manage potential drug shortage situations.</p>
+
+                <p>A company's <span class="key-term">QRM policy</span> and related procedures should address risks to patient safety in the context of product quality and availability. Typically, risk ranking levels in a company's QRM policy include ranking for GMP and regulatory compliance risks and patient safety risks based on product quality. Table 5.1-1 provides an example of a risk ranking scale that incorporates considerations for both product quality and product availability in the ranking of patient safety risks.</p>
+
+                <p>While manufacturing and quality issues could impact product quality or patient safety, there may be instances when product quality or patient safety are not impacted. Still, there may be issues with regard to compliance with GMP or GDP or regulatory commitments provided in the product dossier. When handling GMP and regulatory compliance issues or deviations that may negatively impact the release of a product, the company must quickly identify the potential issue and work on a solution(s) to mitigate the risk of a drug shortage. Hence, it is important that the education and qualification of employees who manage deviations include aspects associated with the assessment of potential supply impact in case an issue evolves further. It is also important to establish mechanisms for escalating these GMP, GDP, and regulatory compliance issues to the appropriate level of management, as solutions might often require the allocation of resources and identification of alternatives. Companies often handle such issues internally, but they should involve the relevant health authorities early on in case there is a potential risk of a drug shortage, and a solution is unachievable in a short timeframe.</p>
+
+                <!-- Table 5.1-1 -->
+                <h3 style="margin-top:1.25rem;">Table 5.1-1: Examples of Risk Ranking — Patient Safety Ranking Incorporates Product Quality and Product Availability</h3>
+
+                <table class="risk-table">
+                    <thead>
+                        <tr>
+                            <th style="width:12%;">Risk Ranking</th>
+                            <th style="width:44%;">Impact to Patients (Product Quality and/or Product Availability)</th>
+                            <th style="width:44%;">Impact to GMP Compliance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="risk-high">
+                            <td><strong>High</strong></td>
+                            <td>
+                                <ul style="margin:0 0 0 1rem;padding:0;">
+                                    <li>Irreparable patient harm or death</li>
+                                    <li>Shortage of a medically necessary (life supporting or life sustaining) product</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin:0 0 0 1rem;padding:0;">
+                                    <li>Consent decree or warning letter</li>
+                                    <li>Withdrawal of GMP certificate or manufacturing authorization</li>
+                                    <li>Critical health authority observations or repeat inspection observations</li>
+                                    <li>Systemic breakdown of GMP systems</li>
+                                    <li>Recall</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="risk-medium">
+                            <td><strong>Medium</strong></td>
+                            <td>
+                                <ul style="margin:0 0 0 1rem;padding:0;">
+                                    <li>Reversible patient harm</li>
+                                    <li>Shortage of product used for acute short-term or chronic long-term product indications</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin:0 0 0 1rem;padding:0;">
+                                    <li>Major health authority observations</li>
+                                    <li>High complaint rate</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="risk-low">
+                            <td><strong>Low</strong></td>
+                            <td>
+                                <ul style="margin:0 0 0 1rem;padding:0;">
+                                    <li>No product or patient impact</li>
+                                    <li>No shortage or multiple sources available for products that are not medically necessary</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin:0 0 0 1rem;padding:0;">
+                                    <li>Minor observations</li>
+                                    <li>Minor departures from GMPs</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>The process of knowledge management follows the QRM process according to <span class="key-term">ICH Q9(R1)</span>. Understanding and managing risks provides knowledge that can then be used to appropriately prevent and manage risks on an ongoing basis. Thus, the QRM process explained in <span class="key-term">PDA TR-54</span> is a foundation for the understanding and implementation of appropriate knowledge management. It is important in this context to understand which questions are answered by the knowledge available and who needs the knowledge to enable the prevention and management of risks, including the risks of drug shortages. Therefore, an understanding of quality risks based on the available knowledge about the product, manufacturing process, value chain, and overall effectiveness of the quality system forms the foundation for all efforts performed and resources spent. Without this fundamental understanding, activities related to risk and knowledge management may not be fruitful.</p>
+            </div>
+
+            <!-- RIGHT: Chinese commentary -->
+            <div class="right-column">
+                <h3>中文解析：QRM 與知識管理雙支柱</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：ICH Q10 的兩大賦能要素</h4>
+                    <p>根據 <strong>ICH Q10 藥品品質系統</strong>，有兩項要素被定義為 PQS 的「賦能要素 (Enablers)」：</p>
+                    <ul>
+                        <li><strong>品質風險管理 (Quality Risk Management, QRM)</strong>：識別、評估、控制與審查潛在風險的系統性方法，依據 ICH Q9(R1) 執行。</li>
+                        <li><strong>知識管理 (Knowledge Management)</strong>：確保產品/製程知識在整個生命週期中可被存取、傳遞並用於決策。</li>
+                    </ul>
+                    <p>兩者都是達成 PQS 目標的工具，而非目的本身——終極目標是「提升全球藥品品質與可及性，保障公眾健康」。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：PDCA 循環與藥品短缺預防</h4>
+                    <p>QRM 流程與知識管理的關係，可用 <strong>PDCA 持續改善循環</strong>來理解：</p>
+                    <ul>
+                        <li><strong>Plan（計畫）</strong>：根據現有知識識別危害、評估風險 → 制訂風險控制措施。</li>
+                        <li><strong>Do（執行）</strong>：實施控制措施，例如建立備用供應商、增加安全庫存。</li>
+                        <li><strong>Check（查核）</strong>：風險審查活動，確認控制措施有效；監控製程表現與產品品質。</li>
+                        <li><strong>Act（行動）</strong>：管理審查識別改善機會，擷取並傳播新知識，識別上市後變更 (PAC)。</li>
+                    </ul>
+                    <p>「知識管理」就是這個循環的「記憶體」——確保每一輪 PDCA 的學習成果不流失，能被下一輪利用。</p>
+                </div>
+
+                <div class="formula-box">
+                    <h4>QRM 核心公式框架</h4>
+                    <p>根據 ICH Q9(R1) 與 PDA TR-54，QRM 的標準流程包含四個步驟：</p>
+                    <pre>QRM Process =
+  ① Identify Hazards（識別危害）
++ ② Assess Risks（評估風險：嚴重性 × 發生率 × 可偵測性）
++ ③ Control Risks（控制風險：消除 / 降低 / 接受）
++ ④ Review Risks（持續審查）
+
+Risk Priority = Severity × Probability × Detectability
+（風險優先數 = 嚴重程度 × 發生機率 × 可偵測性）</pre>
+                    <p>供應中斷的「嚴重程度」評估，必須納入該品項的<strong>醫療必要性</strong>——生命支持類產品一律歸入最高嚴重等級。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>表 5.1-1 解讀：三級風險對 CDMO 的意涵</h4>
+
+                    <p><strong>高風險 (High)</strong> — 需即時啟動緊急應變</p>
+                    <ul>
+                        <li>產品面：涉及死亡/永久傷害，或生命支持/維持產品短缺。CDMO 必須在最短時間內通知客戶 MAH，並共同評估是否需要向衛生機關通報。</li>
+                        <li>GMP 面：警告函 (Warning Letter)、召回、GMP 證書撤銷、重複查驗缺失——任何一項都可能直接導致停產，進而觸發高風險短缺。</li>
+                    </ul>
+
+                    <p><strong>中風險 (Medium)</strong> — 需加速處理，密切監控升級風險</p>
+                    <ul>
+                        <li>產品面：可逆性傷害，或用於急性/慢性適應症產品的短缺。這類短缺雖非立即危及生命，但時間拉長後影響仍可能很大。</li>
+                        <li>GMP 面：主要查驗缺失 (Major observation)、高抱怨率——需在 CAPA 計畫中評估潛在供應衝擊。</li>
+                    </ul>
+
+                    <p><strong>低風險 (Low)</strong> — 常規管理，但仍需記錄</p>
+                    <ul>
+                        <li>非醫療必需品且有多個替代來源的短缺，或次要 GMP 偏差。即使列為低風險，仍應追蹤，避免累積效應升級。</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：偏差評估必須涵蓋供應影響</h4>
+                    <p>TR68 明確指出：負責處理偏差的員工<strong>教育訓練中必須包含供應影響評估</strong>。這是一個常被忽視的缺口——傳統偏差訓練著重於 GMP 合規面，而非患者層面的影響分析。</p>
+                    <p>實務建議：在偏差調查表單中，加入「是否可能影響產品放行時程或供應連續性？」的評估欄位，並設定觸發升級的門檻。</p>
+                </div>
+
+                <div class="concept-box application">
+                    <h4>實務應用：知識管理 ≠ 文件管理</h4>
+                    <p>許多公司誤將「知識管理」等同於「文件管理」。TR68 的定義更廣：</p>
+                    <ul>
+                        <li><strong>顯性知識</strong>：SOP、驗證報告、批次記錄——傳統文件管理的範疇。</li>
+                        <li><strong>隱性知識</strong>：老員工對設備特性的經驗、歷年製程變異的模式認知——需要透過跨部門分享、導師制度、製程分析技術 (PAT) 來捕捉。</li>
+                        <li><strong>動態知識</strong>：市場需求趨勢、競爭者供應狀況——需要建立即時資訊蒐集系統。</li>
+                    </ul>
+                    <p>ICH Q10 要求三種知識都需管理，才能形成有效的短缺預防能力。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習：對應表 5.1-1</h4>
+                    <p>以下情境，請判斷風險等級並說明理由：</p>
+                    <ul>
+                        <li><strong>情境 A</strong>：某批注射用胰島素（生命維持藥品）因無菌充填設備故障，預計延誤出貨 3 週。</li>
+                        <li><strong>情境 B</strong>：某批口服維生素補充品因標籤印刷錯誤（不含健康聲明），需重新加工，預計延誤 1 週。</li>
+                        <li><strong>情境 C</strong>：某批慢性病用降壓藥因原料供應商稽核缺失，正在進行替代供應商資格評估，預計缺貨 6 週。</li>
+                    </ul>
+                    <p><em>參考答案：A = High；B = Low；C = Medium（慢性病長期用藥短缺 6 週影響顯著）</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SECTION 5.2 ===================== -->
+    <div class="block-wrapper" id="sec52">
+        <div class="subsection-bar">
+            <span class="sec-num">5.2</span>
+            <span class="sec-title-en">The Importance of Interacting with Health Authorities</span>
+            <span class="sec-title-zh">與衛生主管機關互動的重要性</span>
+        </div>
+
+        <div class="two-column">
+            <!-- LEFT: English original -->
+            <div class="left-column">
+                <h3>5.2 The Importance of Interacting with Health Authorities</h3>
+
+                <p>There is a <span class="key-term">legal requirement</span> for <span class="key-term">MAHs</span> to notify relevant health authorities of any potential drug shortages in the <span class="key-term">European Union</span> and in the <span class="key-term">United States</span>. Therefore, early interactions should take place between a pharmaceutical company and relevant health authorities when a <span class="key-term">meaningful disruption in supply</span> is expected. Laws and regulations related to drug shortages are continuing to evolve and are defining or clarifying responsibilities for stakeholders, such as industry, patient, and healthcare professional organizations, with respect to ensuring uninterrupted drug supplies to patients.</p>
+
+                <p>Health authorities generally prefer to be involved in several aspects of drug shortage management and response. For example, they might want to:</p>
+                <ul>
+                    <li>Oversee how the company or MAH is managing the shortage</li>
+                    <li>Engage other manufacturers of the same product or alternatives to increase their production</li>
+                    <li>Coordinate actions, communications, and responses to the shortage among various stakeholders, including other MAHs and manufacturers, as well as patients, healthcare professionals, and government agencies that purchase medicines</li>
+                    <li>Ensure that adequate <span class="key-term">corrective actions</span> are taken to prevent recurrences</li>
+                </ul>
+
+                <p>At a higher level, health authorities may wish to contribute to an environment in which supply chains become more robust and shortages can generally be prevented. This can support the primary goal of health authorities, which is generally the protection of public health and the availability of medicinal products.</p>
+
+                <p>Health authorities usually take a <span class="key-term">risk-based approach</span> to shortages. For example, they participate in the management of and response to shortages that may have an impact on patients now or in the near future. Health authorities, however, generally do not have the resources to become closely involved in all aspects of shortages. <span class="key-term">Risk assessments</span> can help identify shortages that require their attention. Health authorities and industry have a mutual interest in understanding the causes of shortages, even where there is little to no impact on the patient population, to prevent them from recurring.</p>
+
+                <p>Knowing which shortages may or may not impact patients requires careful analysis as well as effective <span class="key-term">multistakeholder</span> and <span class="key-term">media communications management</span>, and the situation may vary from country to country. Robust risk assessment based on robust knowledge management of the manufacturing and supply processes and active, timely dialog with health authorities and other relevant stakeholders can facilitate this determination.</p>
+            </div>
+
+            <!-- RIGHT: Chinese commentary -->
+            <div class="right-column">
+                <h3>中文解析：法規義務與監管互動實務</h3>
+
+                <div class="concept-box">
+                    <h4>核心概念：通報短缺是法律義務，非選項</h4>
+                    <p>TR68 明確指出，在<strong>歐盟 (EU)</strong> 與<strong>美國 (US)</strong>，MAH 向衛生主管機關通報藥品短缺是<strong>法律要求</strong>，而非自願性最佳實務。</p>
+                    <ul>
+                        <li><strong>美國 FDA</strong>：依據 21 CFR 314.81(b)(3)(iii) 及 FDA Safety and Innovation Act (FDASIA) Section 506C，製造商必須在預期產品短缺前 6 個月（或盡早）通知 FDA；仿製藥則依 GDUFA 相關規範執行。</li>
+                        <li><strong>歐盟 EMA/各國主管機關</strong>：依據歐盟藥品短缺架構 (EU Regulatory Framework on Shortages)，MAH 必須向相關成員國主管機關通報可能造成供應中斷的情況；部分國家另有特定通報時限。</li>
+                    </ul>
+                    <p>「及早通報」的重要性不只在合規——越早通報，衛生機關越有時間協調替代方案，對患者的衝擊越小。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：班機延誤通報</h4>
+                    <p>想像一架飛機面臨機械故障，可能延誤起飛：</p>
+                    <ul>
+                        <li><strong>不好的做法</strong>：讓旅客在登機門等到出發前 10 分鐘才宣布延誤，旅客措手不及、轉機全泡湯。</li>
+                        <li><strong>好的做法</strong>：航空公司一發現潛在問題就通報地勤，提前 2 小時告知旅客，並協助安排轉機選項。</li>
+                    </ul>
+                    <p>藥品短缺的通報邏輯完全相同：衛生主管機關是「協調中心」，越早掌握資訊，越能有效調度資源（如協調其他製造商增產、發布臨床替代建議）。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>衛生主管機關希望介入的面向</h4>
+                    <p>TR68 列出衛生機關在短缺管理中的典型角色：</p>
+                    <ul>
+                        <li><strong>監督 MAH 的應對措施</strong>：確認公司的 CAPA 計畫是否充分且可執行。</li>
+                        <li><strong>協調其他製造商增產</strong>：如有相同品項的其他製造商，衛生機關可扮演協調者角色，鼓勵或要求增加產能。</li>
+                        <li><strong>多方溝通協調</strong>：統一對患者、醫療人員、採購機關的訊息發布，避免資訊混亂。</li>
+                        <li><strong>確保根本原因改善</strong>：要求公司採取足夠的 CAPA 防止再發。</li>
+                    </ul>
+                    <p>從長期來看，衛生機關也希望透過這些互動，推動整體供應鏈韌性的提升。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：衛生機關的資源有限，需要風險分級</h4>
+                    <p>TR68 坦率指出：衛生主管機關的<strong>資源有限，無法深度介入所有短缺事件</strong>。因此，公司提交的風險評估報告品質至關重要——它是衛生機關決定介入程度的依據。</p>
+                    <p>一份優質的短缺通報應包含：</p>
+                    <ul>
+                        <li>受影響產品的醫療必要性評估</li>
+                        <li>預估短缺期間與受影響患者數量</li>
+                        <li>現有替代療法/替代供應來源評估</li>
+                        <li>公司已採取或規劃的緩解措施</li>
+                        <li>解決時程的最佳/最差預估</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：各國情況有所差異</h4>
+                    <p>TR68 提醒，短缺對患者的實際影響「因國而異」。在某國已有充足替代品的情況，可能在另一國根本無替代選擇。這意味著：</p>
+                    <ul>
+                        <li>多國上市的 MAH 必須逐一評估每個市場的影響程度。</li>
+                        <li>通報義務的時限與格式在各國法規下可能不同，須建立<strong>各市場通報矩陣</strong>。</li>
+                        <li>媒體溝通管理在各國文化背景下也需因地制宜。</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box application">
+                    <h4>實務應用：台灣 TFDA 的對應規範</h4>
+                    <p>相較於歐美法規，台灣食品藥物管理署 (TFDA) 亦有藥品短缺通報機制。持有藥品許可證之製造商或進口商，若預見供應中斷，應依相關辦法向 TFDA 通報。重要對應點：</p>
+                    <ul>
+                        <li>TFDA 藥品供應短缺通報系統（藥物食品安全週報資訊）</li>
+                        <li>醫療必需藥品短缺認定標準</li>
+                        <li>緊急輸入或暫時通融措施的申請流程</li>
+                    </ul>
+                    <p>建議：將 TR68 的風險排序架構（表 5.1-1）與 TFDA 通報觸發條件整合，建立內部的<strong>短缺通報決策樹</strong>。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習：何時通報？</h4>
+                    <p>以下哪些情境應主動通報衛生主管機關（美國 FDA / 歐盟相關機關）？</p>
+                    <ul>
+                        <li>A：生產線計畫性維護，預計停機 1 週，現有庫存足以涵蓋空窗期。</li>
+                        <li>B：主要原料供應商遭 FDA 警告函，需緊急尋找替代供應商，預估缺貨 3 個月，品項為化療用針劑。</li>
+                        <li>C：某非處方保健食品因包裝材料短缺，延誤出貨 2 週。</li>
+                        <li>D：廠房擴建工程導致某處方慢性病用藥預計缺貨 4 個月，但競爭廠商尚有供應。</li>
+                    </ul>
+                    <p><em>建議答案：B 一定須通報（High Risk）；D 建議諮詢後通報（Medium Risk，確認替代供應充足程度）；A 與 C 通常不需通報，但應留存評估記錄。</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>第二節總結 — 風險導向預防框架 (§5.0–5.2) Section Summary</h3>
+        <ul>
+            <li><strong>雙層架構</strong>：藥品短缺預防需同時從<strong>產品層級</strong>（E2E 價值鏈控制）與<strong>系統層級</strong>（PQS）著手；圖 5.0-1 呈現了從原物料到患者的完整節點，以及三大賦能要素（溝通、根本原因、風險決策）。</li>
+            <li><strong>QRM 雙支柱</strong>：根據 ICH Q10，<strong>品質風險管理 (QRM)</strong> 與<strong>知識管理</strong>是 PQS 的兩大賦能要素；知識管理遵循 ICH Q9(R1) 的 QRM 流程，形成「理解風險 → 產生知識 → 防止再發」的正向循環。</li>
+            <li><strong>三級風險排序（表 5.1-1）</strong>：高風險涉及不可逆患者傷害或生命支持品項短缺；中風險為可逆傷害或急慢性病用藥短缺；低風險為無患者影響或有多個替代來源的非必需品項。偏差管理人員須接受供應影響評估的訓練。</li>
+            <li><strong>通報是法律義務</strong>：歐盟與美國均有 MAH 通報藥品短缺的法律要求，且應在<strong>「預期」出現供應中斷時即提前通報</strong>，而非等到短缺發生後才行動。</li>
+            <li><strong>衛生機關角色多元</strong>：主管機關不只接受通報，還可協調多方製造商增產、統一對外溝通、要求 CAPA；公司提交的風險評估報告品質，決定了機關的介入程度——優質的風險分析是最有效的溝通工具。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="回到頂端">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

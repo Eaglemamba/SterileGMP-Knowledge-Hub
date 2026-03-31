@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDA TR68 – Section 4: Prevention Plan &amp; Stakeholder Management</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== TR68 ORANGE THEME OVERRIDES ===== */
+:root {
+    --tr68-bg: #fff7ed;
+    --tr68-text: #7c2d12;
+    --tr68-bar: #ea580c;
+    --tr68-accent: #c2410c;
+    --tr68-light: #fed7aa;
+    --tr68-mid: #fb923c;
+}
+
+.header.tr68 {
+    background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+}
+
+.chapter-divider.tr68 {
+    background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+}
+
+/* Cycle Diagram */
+.cycle-diagram {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin: 1.25rem 0;
+    position: relative;
+}
+
+.cycle-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110px;
+    position: relative;
+}
+
+.cycle-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 0.4rem;
+    border: 3px solid white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    line-height: 1.3;
+}
+
+.cycle-circle.step1 { background: #fde68a; color: #78350f; }
+.cycle-circle.step2 { background: #fed7aa; color: #7c2d12; }
+.cycle-circle.step3 { background: #fca5a5; color: #7f1d1d; }
+.cycle-circle.step4 { background: #a5f3fc; color: #164e63; }
+.cycle-circle.step5 { background: #bbf7d0; color: #14532d; }
+
+.cycle-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.cycle-arrow {
+    font-size: 1.4rem;
+    color: #ea580c;
+    align-self: center;
+    margin: 0 2px;
+    margin-top: -30px;
+}
+
+.cycle-desc {
+    font-size: 0.72rem;
+    text-align: center;
+    color: #4a5568;
+    margin-top: 0.35rem;
+    max-width: 100px;
+    line-height: 1.3;
+}
+
+/* Value Chain */
+.value-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    margin: 1.25rem 0;
+    justify-content: center;
+}
+
+.vc-node {
+    background: white;
+    border: 2px solid #ea580c;
+    border-radius: 8px;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #7c2d12;
+    text-align: center;
+    min-width: 70px;
+    white-space: nowrap;
+}
+
+.vc-node.highlight {
+    background: #fff7ed;
+    border-color: #c2410c;
+    border-width: 2.5px;
+}
+
+.vc-node.patient {
+    background: #fde68a;
+    border-color: #d97706;
+    color: #78350f;
+}
+
+.vc-arrow {
+    font-size: 1.1rem;
+    color: #ea580c;
+    margin: 0 2px;
+    flex-shrink: 0;
+}
+
+/* HA Decision Table */
+.ha-decision-table th {
+    background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+    color: white;
+}
+
+/* Summary Box */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border: 2px solid #f6ad55;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.section-summary h3 {
+    color: #92400e;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f6ad55;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    color: #78350f;
+}
+
+/* Risk Priority Table */
+.risk-priority-table th {
+    background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%);
+    color: white;
+}
+
+.risk-priority-table tr.level-1 td:first-child { font-weight: 700; color: #b91c1c; }
+.risk-priority-table tr.level-2 td:first-child { font-weight: 700; color: #92400e; }
+.risk-priority-table tr.level-3 td:first-child { font-weight: 700; color: #065f46; }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header tr68">
+    <h1>PDA Technical Report No. 68 (Revised 2024)</h1>
+    <div class="subtitle">Section 4: Prevention Plan &amp; Stakeholder Management</div>
+    <div class="subtitle">預防應對計劃與利害關係人管理</div>
+    <div class="page-info">Pages 33–37 &nbsp;|&nbsp; Covers: 7.0 Drug Shortage Prevention and Response Plan &nbsp;+&nbsp; 8.0 Stakeholder Management and Communications (8.1, 8.2)</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節內容導覽</h3>
+        <div class="toc-grid">
+            <a href="#sec7">7.0 Prevention &amp; Response Plan</a>
+            <a href="#sec7-components">7.0 Plan Components (5-Step)</a>
+            <a href="#sec7-figures">7.0 Figures (Cycle + Value Chain)</a>
+            <a href="#sec8">8.0 Stakeholder Management</a>
+            <a href="#sec81">8.1 Key Risk-Indicating Information</a>
+            <a href="#sec82">8.2 Risk-Based Decision-Making</a>
+            <a href="#summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>說明藥品短缺預防與應對計劃（Drug Shortage Prevention and Response Plan）的五大核心組成要素，以及其如何形成持續運作的循環機制。</li>
+            <li>理解端對端（E2E）價值鏈（從原料到病患）在藥品短缺風險識別中的關鍵作用，並能解釋 CDMO 作為供應鏈節點的責任定位。</li>
+            <li>引用美國《聯邦食品、藥品及化妝品法》第 506C 條及歐盟 GMP 指南第 13 條關於 MAH 法定通報義務的核心要求。</li>
+            <li>整理向衛生主管機關通報短缺事件所需的三大類關鍵資訊（病患資訊、配銷資訊、庫存資訊），並能計算庫存天數（Days of Supply）。</li>
+            <li>分析衛生主管機關在短缺事件中的四類決策情境，特別是「缺陷產品繼續使用」與「無產品可用」的臨床利益風險權衡。</li>
+        </ul>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 7.0 — OVERVIEW                                          -->
+    <!-- ================================================================ -->
+    <div id="sec7">
+        <div class="chapter-section">
+            <div class="chapter-divider tr68">
+                <div class="chapter-badge">7.0</div>
+                <div class="chapter-info">
+                    <h2>Drug Shortage Prevention and Response Plan</h2>
+                    <p>藥品短缺預防與應對計劃 — 概述</p>
+                </div>
+            </div>
+            <div class="chapter-body">
+
+                <div class="two-column">
+                    <!-- LEFT -->
+                    <div class="left-column">
+                        <h3>7.0 Overview — Plan Purpose and Scope</h3>
+                        <p>The risk assessment triage results in an assignment of a drug shortage risk priority level to each product based on the product's indication, availability of alternative therapies, and probability of a shortage. Section 7.0 describes how a Drug Shortage Prevention and Response Plan should be developed based on the outcomes of the risk triage. While agencies are working on new guidances, such a plan might also be known as a Shortage Prevention Plan or Mitigation Plan in the future.</p>
+                        <p>A Drug Shortage Prevention and Response Plan can provide a holistic framework at a product level to address both the proactive and reactive management of a drug shortage. This plan should be proactively developed for medically necessary, life supporting, or life sustaining products and shared with health authorities during inspections. Medium risk products used for short-term acute conditions or long-term chronic conditions can also benefit from a Drug Shortage Prevention and Response Plan, especially if the risk triage has identified potential drug shortage risks at Risk Priority Level 1.</p>
+                        <p>A Drug Shortage Prevention and Response Plan can be an effective mechanism for managing a product's continuously changing drug shortage risk profile. Drug shortages may present potential opportunities for product diversion and counterfeiting. Therefore, a company's surveillance program can leverage the Drug Shortage Risk Register as useful input into its process for managing product diversion and counterfeiting risks that may arise due to shortages.</p>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class="right-column">
+                        <h3>中文解析：為什麼需要這份計劃？</h3>
+                        <div class="concept-box">
+                            <h4>核心定義：Drug Shortage Prevention and Response Plan</h4>
+                            <p>這是一份以<strong>產品為單位</strong>的整合性框架文件，同時涵蓋：</p>
+                            <ul>
+                                <li><strong>主動預防（Proactive）</strong>：提前識別風險、建立韌性</li>
+                                <li><strong>被動應對（Reactive）</strong>：發生短缺時的應急流程</li>
+                            </ul>
+                            <p>未來可能以「Shortage Prevention Plan」或「Mitigation Plan」命名，實質內容相同。</p>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>重點提示：哪些產品「必須」有此計劃？</h4>
+                            <ul>
+                                <li><strong>必須（Should proactively develop）</strong>：醫療必需品、維生用藥、生命支持用藥</li>
+                                <li><strong>建議（Can also benefit）</strong>：中等風險、急性或慢性病用藥 — 尤其當 Risk Triage 顯示 Risk Priority Level 1</li>
+                            </ul>
+                            <p>在衛生主管機關稽查時，此計劃應主動揭露，展示廠商的風險管理成熟度。</p>
+                        </div>
+
+                        <div class="analogy-box">
+                            <h4>比喻：藥品短缺計劃如同「颱風應變計劃」</h4>
+                            <p>平時（非颱風季）就要備妥疏散路線、物資清單、聯絡電話；颱風來臨時才能有條不紊應對。Drug Shortage Prevention and Response Plan 就是製藥廠的「供應鏈颱風應變計劃」——不是危機發生後才臨時抱佛腳，而是提前建立、定期演練、隨時更新。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>CDMO 的特殊角色</h4>
+                            <p>CDMO（合約研發製造機構）在此計劃中是<strong>關鍵供應鏈節點</strong>。當 MAH（上市許可持有人）制定本計劃時，CDMO 應主動提供以下資訊：</p>
+                            <ul>
+                                <li>自身產能狀況與瓶頸（Capacity bottlenecks）</li>
+                                <li>原料及關鍵物料的供應風險</li>
+                                <li>備用製程或供應商切換方案</li>
+                            </ul>
+                            <p>CDMO 若被動等待指令，可能造成計劃中存在「盲點」，導致短缺風險被低估。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 7.0 — 5 COMPONENTS                                      -->
+    <!-- ================================================================ -->
+    <div id="sec7-components">
+        <div class="chapter-section">
+            <div class="chapter-divider tr68">
+                <div class="chapter-badge">7.0</div>
+                <div class="chapter-info">
+                    <h2>The 5-Component Structure of a Drug Shortage Prevention and Response Plan</h2>
+                    <p>預防與應對計劃的五大組成要素</p>
+                </div>
+            </div>
+            <div class="chapter-body">
+
+                <div class="two-column">
+                    <!-- LEFT -->
+                    <div class="left-column">
+                        <h3>Plan Components — English Source Text (p34–35)</h3>
+                        <p>A Drug Shortage Prevention and Response Plan consists of the following information:</p>
+
+                        <ol>
+                            <li><strong>Identification of drug shortage hazards:</strong> An end-to-end risk assessment of the product's value chain until the first economic customer — its manufacturing operations, storage, and transportation — should identify potential sources of drug shortages. The Drug Shortage Prevention and Response Plan should address the management of the drug shortage risks listed in the Drug Shortage Risk Register. Typical visibility for a MAH ends after shipment to wholesale distributors.</li>
+
+                            <li><strong>Assessment of the impact of a potential drug shortage:</strong> Based on the product indications, an assessment should be made and documented of which patient population would be affected by a drug shortage and what this effect would be. Application of the risk triage model would identify the risk priority levels described in Section 6.2. In addition, clinical risk assessments would be helpful in understanding the clinical impact of a drug shortage.</li>
+
+                            <li><strong>Risk control plan (short-term and long-term):</strong> This section should describe the controls identified from the end-to-end risk assessments of the product, how the risk control strategy will proactively control drug shortage risks, what measures can be taken to ensure product supply resilience, and a plan to respond to a shortage and ensure a prompt return to normal operations in the event of a shortage.</li>
+
+                            <li><strong>Communication plan:</strong> The Drug Shortage Prevention and Response Plan should include a communication plan for drug shortages. The AESGP, EFPIA, EGA, and PPTA collaborative document provides guidance on communications related to product shortages, including possible triggers for communication strategies.</li>
+
+                            <li><strong>Risk review and monitoring:</strong> The Drug Shortage Prevention and Response Plan should be a living document that is reviewed and updated whenever a product's risk profile changes. Potential causes include approval of a new product or dosage form, a new indication, a new market, shutdown of a facility, increase in product usage, or new quality or manufacturing issues.</li>
+                        </ol>
+
+                        <p><em>Section 12.0: Appendix 2 provides a template for a Drug Shortage Prevention and Response Plan.</em></p>
+
+                        <h3 style="margin-top:1.25rem;">Risk Priority Suggested Controls (from Figure 7.0-1)</h3>
+                        <table class="risk-priority-table">
+                            <thead>
+                                <tr><th>Risk Priority Level</th><th>Suggested Controls / Preventative Actions</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr class="level-1"><td>Level 1</td><td>Preventative actions and/or response plan <strong>required</strong></td></tr>
+                                <tr class="level-2"><td>Level 2</td><td>Preventative actions and/or response plan <strong>recommended</strong></td></tr>
+                                <tr class="level-3"><td>Level 3</td><td>Generally accepted risk level</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h3 style="margin-top:1.25rem;">Risk Review Triggers (from Figure 7.0-1)</h3>
+                        <ul>
+                            <li>New product indication or new market approval</li>
+                            <li>Approval of a new alternate product or new unlicensed product</li>
+                            <li>Shortage of an alternate product</li>
+                            <li>New risks to product quality/availability</li>
+                            <li>Shutdown of a facility or withdrawal of GMP certificate / Marketing Authorization (MA)</li>
+                            <li>Below inventory/safety stock level targets</li>
+                            <li>Usage volumes change</li>
+                        </ul>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class="right-column">
+                        <h3>中文解析：五大組成要素詳解</h3>
+
+                        <div class="concept-box">
+                            <h4>要素 1：識別危害 — Drug Shortage Risk Register</h4>
+                            <p>這是整個計劃的<strong>起點</strong>。透過端對端（E2E）風險評估，涵蓋價值鏈中的製造、儲存、運輸等環節，系統性列出所有潛在短缺風險來源，形成「藥品短缺風險登記冊（Risk Register）」。</p>
+                            <p><strong>MAH 的可視範圍通常在貨物出售給批發商後即終止</strong>，這代表零售藥局到病患的最後一哩路資訊，往往需要倚賴其他通路夥伴提供。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>要素 2：評估病患衝擊 — Patient Impact Assessment</h4>
+                            <p>根據藥品適應症，評估「哪些病患族群」會受到短缺影響，以及「影響程度為何」。此評估須<strong>書面化</strong>，並與 Section 6.2 的風險優先等級（Risk Priority Level）掛鉤。</p>
+                            <p>臨床風險評估（Clinical Risk Assessment）在此尤為重要，尤其是針對危重症病患或無替代療法的情境。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>要素 3：風險控制計劃 — Short-term &amp; Long-term</h4>
+                            <p>分為<strong>短期應急</strong>（例如：緊急庫存調配、優先排程）與<strong>長期韌性建設</strong>（例如：雙供應商策略、備用產線認證）兩個層次。</p>
+                            <p>此要素需回答：「萬一短缺，如何最快恢復正常供應（Return to Normal Operations）？」</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>要素 4：溝通計劃 — Communication Plan</h4>
+                            <p>明確定義「What（通報什麼）、Who（通報給誰）、When（何時通報）、How（如何通報）」，以及觸發溝通的條件（Triggers）。參考組織：AESGP、EFPIA、EGA、PPTA 聯合文件提供了溝通框架指引。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>要素 5：風險審查與監控 — Living Document</h4>
+                            <p>此計劃是「活文件」，須在產品風險輪廓（Risk Profile）發生變化時隨時更新。觸發審查的事件包括：新適應症核准、新市場進入、設施關閉、GMP 認證撤銷、庫存低於安全水位、使用量異常等。</p>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>重點提示：CDMO 如何融入這五個要素？</h4>
+                            <ul>
+                                <li><strong>要素 1</strong>：CDMO 須主動揭露自身的製程瓶頸、設備單點失效（SPOF）風險</li>
+                                <li><strong>要素 3</strong>：CDMO 與 MAH 共同協商備用產能或替代製程的認證計劃</li>
+                                <li><strong>要素 5</strong>：CDMO 發生任何影響供應的事件（如設備故障、原料缺貨）時，須立即觸發計劃更新</li>
+                            </ul>
+                        </div>
+
+                        <div class="practice-box">
+                            <h4>思考練習 1：CDMO 的計劃整合</h4>
+                            <p>假設您是 TWi Pharmaceuticals（CDMO）的品質主管。您的一位客戶 MAH 要求您協助其制定 Drug Shortage Prevention and Response Plan 中的「要素 3：風險控制計劃」部分。</p>
+                            <p><strong>請思考：</strong></p>
+                            <ul>
+                                <li>您會提供哪些 CDMO 特定的短期應急措施（例如：加班排程、庫存緩衝）？</li>
+                                <li>您會提出哪些長期韌性建設方案（例如：備用供應商、次要產線認證）？</li>
+                                <li>如果 CDMO 端發生設備故障，觸發「要素 5」審查，通報流程應如何設計？</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 7.0 — FIGURES                                           -->
+    <!-- ================================================================ -->
+    <div id="sec7-figures">
+        <div class="chapter-section">
+            <div class="chapter-divider tr68">
+                <div class="chapter-badge">7.0</div>
+                <div class="chapter-info">
+                    <h2>Figure 7.0-1: 5-Step Cycle &amp; Figure 7.0-2: E2E Value Chain</h2>
+                    <p>循環流程圖與端對端價值鏈示意圖</p>
+                </div>
+            </div>
+            <div class="chapter-body">
+
+                <!-- Figure 7.0-1: Cycle Diagram -->
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>Figure 7.0-1: Drug Shortage Prevention and Response Plan — 5-Step Cycle</h3>
+                        <p><em>Suggested Controls and Preventive Actions for a Drug Shortage Prevention and Response Plan</em></p>
+
+                        <div class="cycle-diagram">
+                            <div class="cycle-step">
+                                <div class="cycle-circle step1">
+                                    <span class="cycle-num">1</span>
+                                    <span>Identify<br>Hazards</span>
+                                </div>
+                                <div class="cycle-desc">Drug Shortage Risk Register — list all potential sources</div>
+                            </div>
+                            <div class="cycle-arrow">&#8594;</div>
+                            <div class="cycle-step">
+                                <div class="cycle-circle step2">
+                                    <span class="cycle-num">2</span>
+                                    <span>Assess<br>Impact</span>
+                                </div>
+                                <div class="cycle-desc">Which patient population could be impacted and how?</div>
+                            </div>
+                            <div class="cycle-arrow">&#8594;</div>
+                            <div class="cycle-step">
+                                <div class="cycle-circle step3">
+                                    <span class="cycle-num">3</span>
+                                    <span>Control<br>Plan</span>
+                                </div>
+                                <div class="cycle-desc">E2E controls — prevention, resilience, return to normal ops</div>
+                            </div>
+                            <div class="cycle-arrow">&#8594;</div>
+                            <div class="cycle-step">
+                                <div class="cycle-circle step4">
+                                    <span class="cycle-num">4</span>
+                                    <span>Create<br>Comm.<br>Plan</span>
+                                </div>
+                                <div class="cycle-desc">What, who, when, how — HA visibility to Risk Register</div>
+                            </div>
+                            <div class="cycle-arrow">&#8594;</div>
+                            <div class="cycle-step">
+                                <div class="cycle-circle step5">
+                                    <span class="cycle-num">5</span>
+                                    <span>Review<br>&amp; Monitor</span>
+                                </div>
+                                <div class="cycle-desc">Ongoing triggers — new indication, stock level, facility shutdown</div>
+                            </div>
+                            <div class="cycle-arrow" style="color:#856404; font-weight:700;">&#8635;</div>
+                        </div>
+
+                        <p style="font-size:0.82rem; color:#718096; text-align:center; margin-top:0.5rem;"><em>Figure 7.0-1 — Adapted from PDA TR68 (Revised 2024), p34</em></p>
+                    </div>
+
+                    <div class="right-column">
+                        <h3>中文解析：循環機制的意義</h3>
+
+                        <div class="concept-box">
+                            <h4>這是一個「閉環（Closed Loop）」系統</h4>
+                            <p>五個步驟並非線性流程，而是<strong>持續循環</strong>：步驟 5「審查與監控」的結果，直接觸發步驟 1「重新識別危害」，形成持續改善的閉環機制。</p>
+                            <p>這與 PDCA（Plan-Do-Check-Act）循環的精神一致，也與 ICH Q9(R1) 風險管理的生命週期方法相呼應。</p>
+                        </div>
+
+                        <div class="analogy-box">
+                            <h4>比喻：緊急應變小組（ERT）定期演練</h4>
+                            <p>工廠的緊急應變小組（Emergency Response Team, ERT）不只在火災發生時才啟動，而是定期演練、更新疏散圖、重新確認人員角色。Drug Shortage Prevention and Response Plan 的五步驟循環，就像 ERT 的「年度演練 &rarr; 更新應變計劃 &rarr; 再演練」程序——<strong>平時的準備決定危機時的應對品質</strong>。</p>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>步驟 5 的觸發條件清單</h4>
+                            <p>以下任一事件發生，均應觸發計劃審查：</p>
+                            <ul>
+                                <li>獲批新適應症或進入新市場</li>
+                                <li>新替代產品或未授權替代品核准上市</li>
+                                <li>替代產品本身發生短缺</li>
+                                <li>產品品質或可得性出現新風險</li>
+                                <li>製造設施關閉或 GMP 認證/上市許可（MA）撤銷</li>
+                                <li>庫存跌破安全庫存水位目標</li>
+                                <li>使用量發生顯著變化</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Figure 7.0-2: Value Chain -->
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>Figure 7.0-2: End-to-End Value Chain for a Product</h3>
+                        <p>端對端價值鏈（從原料到病患）</p>
+
+                        <div class="value-chain">
+                            <div class="vc-node highlight">Raw<br>Materials</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node highlight">Drug<br>Substance</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node highlight">Drug<br>Product</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node highlight">Packaging</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Warehouse<br>Distribution</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Affiliates</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Wholesaler</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node">Pharmacy</div>
+                            <div class="vc-arrow">&#8594;</div>
+                            <div class="vc-node patient">Patient</div>
+                        </div>
+
+                        <div style="margin-top:0.75rem; background:#fff7ed; border-radius:6px; padding:0.75rem; border:1px solid #fed7aa;">
+                            <p style="font-size:0.83rem; color:#7c2d12; margin:0;"><strong>Storage &amp; Transportation</strong> applies throughout — from Drug Substance through to Wholesale Distribution. Typical MAH visibility ends at the Wholesaler node.</p>
+                        </div>
+                        <p style="font-size:0.82rem; color:#718096; text-align:center; margin-top:0.5rem;"><em>Figure 7.0-2 — Adapted from PDA TR68 (Revised 2024), p35</em></p>
+                    </div>
+
+                    <div class="right-column">
+                        <h3>中文解析：價值鏈中的 CDMO 定位</h3>
+
+                        <div class="concept-box">
+                            <h4>CDMO 在價值鏈中的位置</h4>
+                            <p>CDMO 通常承接<strong>Drug Substance（原料藥）、Drug Product（藥品製劑）、Packaging（包裝）</strong>等節點的委託製造業務。這意味著：</p>
+                            <ul>
+                                <li>CDMO 的製程中斷，可直接影響 3 個關鍵節點</li>
+                                <li>CDMO 發生問題，MAH 對下游（Wholesaler → Patient）的供應影響可能是連鎖性的</li>
+                                <li>CDMO 必須對 MAH 保持高度透明，提供即時的供應狀態回報</li>
+                            </ul>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>MAH 的可視性邊界</h4>
+                            <p>根據 TR68 原文，「<em>Typical visibility for a MAH ends after shipment to wholesale distributors.</em>」</p>
+                            <p>這代表 MAH 通常無法直接監控零售藥局、醫院藥局及病患端的庫存狀況。因此，Pharmacy 與 Patient 節點的資訊，需透過批發商或地區聯繫機構（Affiliates）回饋，形成資訊缺口（Information Gap）。</p>
+                        </div>
+
+                        <div class="analogy-box">
+                            <h4>比喻：供應鏈如同「水管系統」</h4>
+                            <p>從原料到病患，就像水從源頭流向用戶。CDMO 是供水管網中的主要加壓站——若加壓站出問題，不論下游管線多完善，最終用戶（病患）仍會斷水。因此，CDMO 的穩健性直接決定了整條供應鏈的韌性。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 8.0 — STAKEHOLDER MANAGEMENT                            -->
+    <!-- ================================================================ -->
+    <div id="sec8">
+        <div class="chapter-section">
+            <div class="chapter-divider tr68">
+                <div class="chapter-badge">8.0</div>
+                <div class="chapter-info">
+                    <h2>Stakeholder Management and Communications related to Drug Shortages</h2>
+                    <p>利害關係人管理與藥品短缺溝通 — 法規義務與協作對話</p>
+                </div>
+            </div>
+            <div class="chapter-body">
+
+                <div class="two-column">
+                    <!-- LEFT -->
+                    <div class="left-column">
+                        <h3>8.0 Legal Obligations and Collaborative Dialog</h3>
+
+                        <p>Multiple stakeholders are affected by, and need to be involved in, addressing a drug shortage — manufacturers, health authorities, distributors, pharmacies, healthcare providers and, sometimes, patients, depending on the cause(s) and level of the shortage.</p>
+
+                        <p>The legal obligations for MAHs to notify the relevant health authorities of a potential drug shortage are described in:</p>
+                        <ul>
+                            <li><strong>Article 13 of Commission Directive 2003/94/EC</strong> — for the European Union</li>
+                            <li><strong>Section 506C of the Federal Food, Drug, and Cosmetic Act</strong> — for the United States</li>
+                        </ul>
+                        <p>In addition, <strong>Part 1, Section 5.71 of the EU GMP Guidelines</strong> has been updated to provide guidance on notification of restrictions in supply.</p>
+
+                        <p>A collaborative dialog between the company and the relevant health authorities is key to facilitating the control and/or prevention of a shortage and, ultimately, ensuring a continued supply of medicinal products for patients.</p>
+
+                        <p>Companies need to consider many things when reacting to a current or impending shortage of one of their medicines in a given country or region. Developing a harmonized risk communication mechanism to alert health authorities of a potential or existing shortage is important to creating a shared understanding of the shortage.</p>
+
+                        <p>The guidance paper <em>Quality and Manufacturing Driven Supply Disruptions: Industry Communication Principles to Authorities</em> provides communication principles and a framework to harmonize reporting and communications between MAHs and health authorities regarding drug shortages arising from quality and/or manufacturing disruptions. The paper proposes a harmonized trigger point, time point, and recipient(s) for communicating potential drug shortage events for nationally and centrally approved products in Europe.</p>
+
+                        <p>Relevant health authorities, those where the product is marketed and where the shortage is expected to occur, must be notified when a meaningful disruption could occur in the supply of medicines due to manufacturing and quality issues, that is, when normal volumes of medicines cannot be delivered for further distribution.</p>
+
+                        <p>A safety or clinical risk assessment should inform the risk communication strategy so that appropriate risk mitigation actions can be taken at the healthcare provider and/or patient level. For defective products (e.g., those with a potential lack of sterility assurance), a comparison might be needed of the clinical benefits and risks for patients of continued product use, especially when no alternative product or treatment is available.</p>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class="right-column">
+                        <h3>中文解析：法規義務與協作精神</h3>
+
+                        <div class="concept-box">
+                            <h4>兩大法規通報義務對照</h4>
+                            <table>
+                                <thead>
+                                    <tr><th>地區</th><th>法規依據</th><th>義務主體</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>歐盟 (EU)</td><td>委員會指令 2003/94/EC 第 13 條<br>+ EU GMP 指南 Part 1, §5.71</td><td>MAH</td></tr>
+                                    <tr><td>美國 (US)</td><td>聯邦食品、藥品及化妝品法第 506C 條</td><td>MAH / 製造商</td></tr>
+                                </tbody>
+                            </table>
+                            <p>注意：這些法規針對 <strong>MAH</strong>，而非 CDMO。但 CDMO 必須確保能及時向 MAH 提供通報所需的相關資訊。</p>
+                        </div>
+
+                        <div class="analogy-box">
+                            <h4>比喻：緊急應變小組（ERT）啟動 — 協作而非單向通報</h4>
+                            <p>傳統觀念認為「通報衛生主管機關」是單向的合規動作。TR68 強調的是<strong>「協作對話（Collaborative Dialog）」</strong>，更像工廠 ERT 啟動後，消防隊、廠務、安全人員共同指揮的場景——每個角色有各自專業，但共同目標是將危害最小化。</p>
+                            <p>與衛生主管機關建立這種「夥伴關係」，遠比事後被動應對來得更有效率。</p>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>重點提示：何時必須通報？</h4>
+                            <p>觸發通報的條件是：<strong>「因製造或品質問題，可能發生有意義的供應中斷（meaningful disruption），即無法正常配送正常量」</strong>時。</p>
+                            <p>風險矩陣（Table 6.1.1-1）按照療效分類與替代療法可得性，分層決定通報的緊迫程度（Risk Level A / B / C）。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>缺陷產品的特殊情境：臨床利益 vs. 短缺風險</h4>
+                            <p>當一個產品存在潛在品質缺陷（例如：無菌保證不足），但<strong>完全沒有替代療法</strong>時，TR68 要求進行「臨床利益與風險比較」（Clinical Benefit vs. Risk Comparison）：</p>
+                            <ul>
+                                <li><strong>繼續使用</strong>：可能有品質風險，但病患至少有藥可用</li>
+                                <li><strong>停止供應</strong>：確保無品質風險，但病患可能面臨更嚴重的治療中斷</li>
+                            </ul>
+                            <p>此決定需由公司與衛生主管機關<strong>共同協商</strong>，而非單方面決定。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 8.1 — KEY RISK-INDICATING INFORMATION                  -->
+    <!-- ================================================================ -->
+    <div id="sec81">
+        <div class="chapter-section">
+            <div class="chapter-divider tr68">
+                <div class="chapter-badge">8.1</div>
+                <div class="chapter-info">
+                    <h2>Key Risk-Indicating Information to Compile for Health Authorities</h2>
+                    <p>向衛生主管機關提交的關鍵風險指示資訊</p>
+                </div>
+            </div>
+            <div class="chapter-body">
+
+                <div class="two-column">
+                    <!-- LEFT -->
+                    <div class="left-column">
+                        <h3>8.1 Information Framework</h3>
+
+                        <p>When anticipating a shortage may occur, companies should compile key pieces of information for health authorities when their involvement is needed. Knowing the reasons for the stock shortage or depletion not only facilitates the implementation of corrective and preventive actions (CAPA), but it can also help develop practical marketplace solutions for the shortage.</p>
+
+                        <p>Based on product ownership, it is important to openly clarify communication accountabilities between the health authority and the (1) manufacturer or first distributor; (2) wholesaler, agent, trader, distributor, repackager, or relabeler; and (3) suppliers of the product to the patient (e.g., retail pharmacies, hospital pharmacies, physicians).</p>
+
+                        <h3 style="margin-top:1rem;">Patient-Related Information</h3>
+                        <ul>
+                            <li>Types of patients (e.g., by disease, demographics, age, genetics, origin) using the medicine. A good level of clinical understanding is important to assess whether any patient groups may be particularly affected (e.g., neonates, patients with cancer or diabetes).</li>
+                            <li>Scale of the problem:
+                                <ul>
+                                    <li>Likely number of patients treated with the product each month and the percentage of patients that may be affected</li>
+                                    <li>Current market share, usage profile, and monthly volume of prescriptions</li>
+                                    <li>Monthly sales volume of the product and the proportion affected</li>
+                                    <li>Possible local, regional, or global impact on product supplies</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3 style="margin-top:1rem;">Distribution Information in the Country or Region</h3>
+                        <ul>
+                            <li>Name and address of the primary distributor of the product, if any</li>
+                            <li>If other distributors (i.e., secondary wholesalers) supply the product</li>
+                            <li>If the product is supplied only to hospitals or to both hospital and retail pharmacies</li>
+                            <li>If the product is supplied through other channels, such as clinics and nursing homes</li>
+                            <li>Opportunities for parallel import, repackaging, and relabeling, depending on regulations</li>
+                        </ul>
+
+                        <h3 style="margin-top:1rem;">Current Stock in Each Country or Region</h3>
+                        <ul>
+                            <li>Whether the product is currently out of stock in the country or region, or if another version of the product or process is available during the stock-out period</li>
+                            <li>Whether the product stock is expected to be depleted in the near future (e.g., within the next few weeks or months) because of the supply issue</li>
+                            <li>Whether the product is in stock but available quantities are insufficient to meet patient needs</li>
+                            <li>Whether stockpiling is requested by the government, legislation, or guidance or as result of the Drug Shortage Prevention and Response Plan</li>
+                        </ul>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class="right-column">
+                        <h3>中文解析：CDMO 應維護的資訊清單</h3>
+
+                        <div class="note-box">
+                            <h4>通報責任分層（Communication Accountability）</h4>
+                            <p>TR68 明確要求釐清通報責任鏈：</p>
+                            <ol>
+                                <li><strong>製造商/首個配銷商</strong>（即 CDMO 或 MAH 自有工廠）</li>
+                                <li><strong>批發商、代理商、再包裝商</strong></li>
+                                <li><strong>末端供應者</strong>（零售藥局、醫院藥局、醫師）</li>
+                            </ol>
+                            <p>CDMO 屬於第 1 層，須確保第 1 層的資訊完整、正確，作為 MAH 向衛生主管機關通報的基礎。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>CDMO 應維護的三類資訊清單</h4>
+                            <p><strong>A. 病患相關資訊（Patient-Related）</strong></p>
+                            <ul class="checklist">
+                                <li>本產品的主要適應症與目標病患族群說明</li>
+                                <li>月處方量（Monthly Prescription Volume）估計</li>
+                                <li>特殊脆弱族群識別（如新生兒、癌症病患、糖尿病病患）</li>
+                            </ul>
+                            <p><strong>B. 配銷資訊（Distribution Information）</strong></p>
+                            <ul class="checklist">
+                                <li>主要批發商名稱與地址</li>
+                                <li>次要批發商清單（若有）</li>
+                                <li>供應通路說明（醫院 vs. 零售 vs. 診所）</li>
+                                <li>平行進口可能性評估（各市場法規不同）</li>
+                            </ul>
+                            <p><strong>C. 庫存資訊（Current Stock）</strong></p>
+                            <ul class="checklist">
+                                <li>目前庫存量（各市場/倉庫）</li>
+                                <li>預計庫存耗盡日期</li>
+                                <li>現有庫存是否足以滿足病患需求</li>
+                                <li>是否有政府要求的戰備儲量</li>
+                            </ul>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4>公式：庫存天數計算（Days of Supply）</h4>
+                            <pre>
+庫存天數（Days of Supply）
+= 現有庫存量（Current Inventory）
+  ÷ 每日消耗率（Daily Consumption Rate）
+
+其中：
+  每日消耗率 = 月銷售量（Monthly Sales Volume） ÷ 30
+
+範例：
+  現有庫存 = 150,000 單位
+  月銷售量 = 30,000 單位
+  每日消耗率 = 30,000 ÷ 30 = 1,000 單位/天
+  庫存天數 = 150,000 ÷ 1,000 = 150 天
+            </pre>
+                            <p>CDMO 應在系統中定期計算各產品的庫存天數，當天數低於警戒水位（例如：30 天或 60 天）時，自動觸發通報流程。</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <h4>思考練習 2：庫存天數警報設計</h4>
+                            <p>您正在為一個 Risk Priority Level 1 的藥品設計庫存監控警報系統。假設生命支持用藥的監管要求是至少保持 90 天庫存。</p>
+                            <p><strong>請計算以下情境的庫存天數，並判斷是否需要通報：</strong></p>
+                            <table>
+                                <thead>
+                                    <tr><th>情境</th><th>現有庫存</th><th>月銷售量</th><th>庫存天數</th><th>需通報？</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>A</td><td>270,000 單位</td><td>90,000 單位</td><td>___</td><td>___</td></tr>
+                                    <tr><td>B</td><td>200,000 單位</td><td>120,000 單位</td><td>___</td><td>___</td></tr>
+                                    <tr><td>C</td><td>90,000 單位</td><td>60,000 單位</td><td>___</td><td>___</td></tr>
+                                </tbody>
+                            </table>
+                            <p style="font-size:0.82rem; color:#4a5568; margin-top:0.5rem;"><em>參考答案：A = 90天（剛好達標，建議觀察）；B = 50天（低於90天，需通報）；C = 45天（低於90天，需通報）</em></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 8.2 — RISK-BASED DECISION-MAKING                       -->
+    <!-- ================================================================ -->
+    <div id="sec82">
+        <div class="chapter-section">
+            <div class="chapter-divider tr68">
+                <div class="chapter-badge">8.2</div>
+                <div class="chapter-info">
+                    <h2>Risk-Based Decision-Making by the Company and Health Authorities</h2>
+                    <p>公司與衛生主管機關的風險決策框架</p>
+                </div>
+            </div>
+            <div class="chapter-body">
+
+                <div class="two-column">
+                    <!-- LEFT -->
+                    <div class="left-column">
+                        <h3>8.2 Four HA Decision Points</h3>
+
+                        <p>In the event of a shortage, having a product risk assessment developed proactively using the triage method and the risk matrices in Section 6.1, and the key risk-indicating information compiled in Section 8.1 becomes very useful in determining the appropriate actions to take. In addition to the manufacturer or MAHs, CAPAs to address the risks may need to be owned by other stakeholders in the supply chain. Therefore, communication between the stakeholders — including affiliates of the MAH in a country or region, distribution centers, or pharmacies as well as the press — is most important to detect unintended consequences of a corrective or preventive measure early in the system.</p>
+
+                        <p>Several decisions may need to be made by health authorities in response to reports of actual or pending product shortages:</p>
+
+                        <h3 style="margin-top:1rem;">HA Decision Point 1: Formal Involvement</h3>
+                        <p>Whether to become formally involved in managing the shortage or in coordinating a response. The risk triage method will be useful in determining:</p>
+                        <ul>
+                            <li>Whether health authorities need to become <strong>directly involved</strong> (e.g., by taking direct measures, coordinating responses, developing work plans and action items)</li>
+                            <li>Whether becoming directly involved is <strong>not necessary</strong> at that time</li>
+                            <li>Whether health authorities need to <strong>monitor the situation closely</strong> without becoming directly involved</li>
+                        </ul>
+
+                        <h3 style="margin-top:1rem;">HA Decision Point 2: Alternative Supply Sourcing</h3>
+                        <p>Whether to facilitate the sourcing of alternative supplies of the product, involving determining:</p>
+                        <ul>
+                            <li>Whether the MAH should be allowed to import and supply a version of the product intended for a <strong>different market</strong> that may not be authorized in the country</li>
+                            <li>Whether this product could be <strong>batch packaged</strong> for the other market and supplied in that country's packaging and delivery</li>
+                            <li>Whether the imported product needs to be <strong>repackaged</strong> and, if so, the level of regulatory approval and oversight required</li>
+                            <li>Whether healthcare professionals should be advised that an <strong>unlicensed version</strong> of the product or a clinically equivalent product is available</li>
+                        </ul>
+
+                        <h3 style="margin-top:1rem;">HA Decision Point 3: Expedite Regulatory Approvals</h3>
+                        <p>Whether to expedite approval of a request to use an <strong>alternate unlicensed facility</strong> or a <strong>post-approval change</strong> submitted by the MAH. A related decision is whether the approval should be <strong>conditional, temporary, or permanent</strong>.</p>
+
+                        <h3 style="margin-top:1rem;">HA Decision Point 4: Communication Strategy</h3>
+                        <p>What communication strategies will be required and how those strategies will ensure that companies, health authorities, healthcare professionals, and/or patients can take appropriate risk mitigation actions. After the clinical risk assessment, the health authority may decide to advise healthcare professionals to:</p>
+                        <ul>
+                            <li>Give priority to certain groups of patients (e.g., patients already treated) for continued treatment</li>
+                            <li>Use a different medicine or treatment for new (or all) patients</li>
+                            <li>If a product is defective (e.g., loss of sterility assurance), weigh the <strong>clinical benefits and risks for patients of continued use</strong> when no alternative product or treatment is available</li>
+                        </ul>
+
+                        <p style="margin-top:1rem;"><em>Any time a shortage situation is encountered it should be viewed as an opportunity for the organization to review their risk register and, where relevant, assess suitable updates to their risk control program to improve prevention practices.</em></p>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class="right-column">
+                        <h3>中文解析：四大 HA 決策節點</h3>
+
+                        <div class="note-box">
+                            <h4>CAPA 所有權的擴展</h4>
+                            <p>TR68 特別指出：<strong>CAPA 的所有者不應只是製造商或 MAH</strong>，可能還需要包含供應鏈中其他利害關係人。例如：</p>
+                            <ul>
+                                <li>地區附屬機構（Affiliates）負責當地庫存調配的 CAPA</li>
+                                <li>配銷中心負責物流優化的 CAPA</li>
+                                <li>藥局負責藥物替換諮詢的 CAPA</li>
+                            </ul>
+                            <p>CDMO 也可能需要承擔部分 CAPA 所有權，尤其是當短缺根因在於 CDMO 端的製程問題時。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>四大決策節點概覽</h4>
+                            <table class="ha-decision-table">
+                                <thead>
+                                    <tr><th>#</th><th>決策核心問題</th><th>決策選項</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight:700; color:#7c2d12;">1</td>
+                                        <td>HA 是否正式介入管理短缺？</td>
+                                        <td>直接介入 / 不介入（監控） / 觀望不介入</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:700; color:#7c2d12;">2</td>
+                                        <td>是否協助取得替代供應來源？</td>
+                                        <td>允許進口他市場版本 / 批次包裝 / 再包裝 / 通知HCP</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:700; color:#7c2d12;">3</td>
+                                        <td>是否加速審批備用設施或變更申請？</td>
+                                        <td>有條件批准 / 臨時批准 / 永久批准</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:700; color:#7c2d12;">4</td>
+                                        <td>採取哪種溝通策略？</td>
+                                        <td>優先族群分配 / 改用替代療法 / 缺陷產品繼續使用的臨床衡量</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="analogy-box">
+                            <h4>比喻：「缺陷產品 vs. 無產品」的艱難抉擇</h4>
+                            <p>想像急診室只剩下一批「標示可能有誤」的 Epinephrine（腎上腺素）注射劑，但沒有任何替代品。醫師面臨的選擇是：用這批有標示風險的藥救治過敏性休克病患，還是什麼都不做？</p>
+                            <p>TR68 的 HA Decision Point 4 正是處理這種「<strong>使用缺陷產品的臨床利益是否大於短缺帶來的傷害</strong>」情境。這個決定不應由製造商單獨做出，必須是公司與衛生主管機關<strong>共同協商</strong>的結果。</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>HA Decision Point 3 的 CDMO 實務影響</h4>
+                            <p>當 MAH 向衛生主管機關申請「加速使用備用未授權設施（Alternate Unlicensed Facility）」時，CDMO 可能就是那個「備用設施」。這意味著：</p>
+                            <ul>
+                                <li>CDMO 須預先準備好接受衛生主管機關的緊急查廠或文件審查</li>
+                                <li>CDMO 與 MAH 的合約中，應明確規範緊急狀況下的快速授權流程</li>
+                                <li>批准可能是「有條件（Conditional）」或「臨時（Temporary）」的，CDMO 須了解相應義務</li>
+                            </ul>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>短缺事件是改善機會（Continuous Improvement）</h4>
+                            <p>TR68 結語特別強調：<strong>每次短缺事件都應被視為組織審查風險登記冊、更新風險控制計劃的機會</strong>。具體行動包括：</p>
+                            <ul>
+                                <li>深入調查短缺的真正根本原因（True Root Cause）</li>
+                                <li>修訂 CAPA，防止相似產品再度發生短缺</li>
+                                <li>識別並修補本次短缺事件所揭露的系統缺口（Gaps）</li>
+                            </ul>
+                            <p>這一原則與 ICH Q10 中持續改善（Continual Improvement）的精神完全吻合。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION SUMMARY                                                  -->
+    <!-- ================================================================ -->
+    <div id="summary" class="section-summary">
+        <h3>Section 4 Summary — 本節重點回顧</h3>
+        <ul>
+            <li><strong>7.0 五步驟循環：</strong>Drug Shortage Prevention and Response Plan 由「識別危害 → 評估病患衝擊 → 風險控制計劃（短期+長期）→ 溝通計劃 → 審查與監控」五個步驟構成，是持續循環的活文件，應在衛生主管機關稽查時主動分享。</li>
+            <li><strong>7.0 E2E 價值鏈：</strong>從原料 → 原料藥 → 藥品製劑 → 包裝 → 倉儲配送 → 關係企業 → 批發商 → 藥局 → 病患。CDMO 通常涵蓋前三至四個節點，是供應鏈的關鍵風險集中點；MAH 的直接可視範圍通常止於批發商。</li>
+            <li><strong>8.0 法規義務：</strong>MAH 依法須通報衛生主管機關（EU: Directive 2003/94/EC Art.13 + EU GMP §5.71；US: FD&amp;C Act §506C）。通報精神是「協作對話（Collaborative Dialog）」，而非被動的單向通知。</li>
+            <li><strong>8.1 三類關鍵資訊：</strong>向衛生主管機關通報時需備妥（1）病患相關資訊（族群、規模、影響百分比）、（2）配銷資訊（通路、批發商、替代進口可能性）、（3）庫存資訊（現有庫存量、耗盡日期）。CDMO 應建立系統化維護機制，庫存天數 = 現有庫存 ÷ 每日消耗率。</li>
+            <li><strong>8.2 四大 HA 決策點：</strong>①正式介入程度、②替代供應來源（含他市場版本進口）、③加速監管審批（有條件/臨時/永久）、④溝通策略（含缺陷產品繼續使用的臨床利益風險衡量）。每次短缺都是更新風險登記冊的改善機會。</li>
+            <li><strong>CDMO 核心責任：</strong>積極貢獻各要素的 CDMO 端資訊、維護庫存透明度、預先準備緊急稽查就緒狀態，並在合約中明確規範緊急授權流程。</li>
+        </ul>
+    </div>
+
+</div><!-- /main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages</p>
+    <p>Section 4: Prevention Plan &amp; Stakeholder Management (預防應對計劃與利害關係人管理) — Pages 33–37</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Educational material for internal training use. Source: &copy; 2024 Parenteral Drug Association, Inc.</p>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
