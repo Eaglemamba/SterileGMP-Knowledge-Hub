@@ -221,6 +221,8 @@ Report metadata is in `reports.json`. Current reports:
 | `PDA/TR46/` | PDA TR46: Last Mile GDP for Pharma Products to End Users (Revised 2024) | 6 | Complete |
 | `PDA/TR54-6/` | PDA TR54-6: Formalized Risk Assessment for Excipients (2019) | 6 | Complete |
 | `PDA/TR62/` | PDA TR62: Recommended Practices for Manual Aseptic Processes (2013) | 4 | Complete |
+| `PDA/TR43/` | PDA TR43: Identification and Classification of Nonconformities in Glass Containers (Revised 2023) | 6 | Complete |
+| `PDA/TR68/` | PDA TR68: Risk-Based Approach for Prevention and Management of Drug Shortages (Revised 2024) | 6 | Complete |
 | **ISPE** | | | |
 | `ISPE/ISPE-Vol3/` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | — | Planned |
 | `ISPE/ISPE-Vol4/` | ISPE Baseline Vol.4: Water & Steam Systems | — | Planned |

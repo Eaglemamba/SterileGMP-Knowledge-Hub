@@ -553,6 +553,33 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PDA/TR43-Complete.md
+**Report:** PDA Technical Report No. 43 (Revised 2023): Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing
+**Pages:** p1–p199 | **Sections:** 6
+
+**Covers questions about:**
+- How to classify glass container nonconformities using 5-level system (Critical / Major A / Major B / Minor / Acceptable Imperfection)
+- What are the risk/impact categories for glass defects: CCI/Sterility, User Injury, Remote Risk, Functional, Machinability, Negligible, Aesthetic
+- How to identify specific glass defects by name, definition, location, and inspection method
+- Moulded glass bottle & vial defects (Table 8.0-1): ~30+ defect types
+- Tubular ampoule defects (Table 8.0-2): tip quality, seal integrity, glass particle risks
+- Tubular cartridge defects (Table 8.0-3): plunger compatibility, RTU cartridge standards
+- Tubular syringe defects (Table 8.0-4): cone/flange/barrel integrity, prefilled syringe (PFS) quality
+- Tubular vial defects (Table 8.0-5): the largest lexicon (~50+ defects), RTU vial stricter standards
+- RTU (Ready-to-Use) container classification differences vs. standard containers
+- Glass container specification development: quality agreements between pharma and glass suppliers
+- AQL-based sampling programs for incoming glass container inspection
+- Visual inspection methods: calibrated measurement, TAPPI chart, tactile, limit sample, flat surface
+
+**Key terms:** nonconformity, nonconformance, defect classification, Critical, Major A, Major B, Minor, Acceptable Imperfection, AQL (Acceptance Quality Limit), CCI (Container Closure Integrity), RTU (Ready-to-Use), moulded glass, tubular glass, ampoule, cartridge, syringe, vial, adhered glass, loose glass, crack, check, chip, delamination, glass stringer, spiticule, bird swing, reboil, stone, knot, airline, seed, bump check, bruise, contamination, limit sample, visual inspection
+
+**Sections:**
+0. Introduction & Classification Framework (Sections 1.0–7.0, p1–p14)
+1. Moulded Glass Containers — Table 8.0-1 (p15–p48)
+2. Tubular Ampoules — Table 8.0-2 (p49–p76)
+3. Tubular Cartridges — Table 8.0-3 (p77–p98)
+4. Tubular Syringes — Table 8.0-4 (p99–p122)
+5. Tubular Vials — Table 8.0-5 (p123–p199)
 
 ---
 
@@ -646,7 +673,16 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Regulatory submissions EU MDR / 歐盟MDR法規送件 | TR73-2 |
 | Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
 | Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
-| Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
+| Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 + TR43 |
+| Glass defect classification, nonconformity, Critical Major A Major B Minor / 玻璃缺陷分類、不符合項、Critical/Major A/Major B/Minor | TR43 |
+| Glass defect lexicon, moulded glass, tubular glass, defect identification / 玻璃缺陷詞典、模造玻璃、管制玻璃、缺陷辨識 | TR43 |
+| Adhered glass, loose glass, crack, check, chip, delamination / 附著玻璃、鬆動玻璃、裂紋、裂痕、崩片、脫層 | TR43 |
+| Glass ampoule defects, tip quality, seal integrity / 安瓿缺陷、封口品質、密封完整性 | TR43 |
+| Glass cartridge defects, pen injector, auto-injector, RTU cartridge / 卡匣缺陷、胰島素筆、自動注射器、RTU卡匣 | TR43 |
+| Glass syringe defects, PFS quality, cone crack, flange, barrel / 注射器缺陷、預充填注射器品質、錐部裂紋、翼緣 | TR43 + TR73 |
+| Glass vial defect lexicon, vial nonconformity, RTU vial / 小瓶缺陷詞典、小瓶不符合項、RTU小瓶 | TR43 + TR87 |
+| AQL sampling, incoming glass inspection, quality specification / AQL抽樣、進料玻璃檢驗、品質規格 | TR43 |
+| Limit sample, visual inspection method, TAPPI chart / 限度樣品、目視檢查方法、TAPPI圖表 | TR43 |
 | Manual aseptic process, MAP, UAFH, First Air, critical zone / 手動無菌製程、單向氣流操作台 | TR62 |
 | Manual APS, media fill for compounding/compositing/manual filling / 手動製程培養基充填 | TR62 |
 | Excipient risk assessment, ERPN, SCRPN, OverallRPN, excipient GMP / 賦形劑風險評估、賦形劑風險優先數、供應鏈風險 | TR54 |
@@ -685,7 +721,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
-→ TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+→ TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
 → TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
@@ -718,7 +754,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR26 ★★★ (primary filtration guidance) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
 
 **Prefilled Syringe (預充填注射器)**
-→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
+→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine)
 
 **Supplier / Vendor Qualification (供應商確認)**
 → PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
@@ -737,6 +773,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Cleaning Validation (清潔確效)**
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
+
+**Glass Container Quality / Nonconformity (玻璃容器品質/不符合項)**
+→ TR43 ★★★ (5 defect lexicons: moulded glass, ampoules, cartridges, syringes, vials; classification framework, RTU standards) | TR87 ★★★ (glass vial handling, breakage prevention, depyrogenation, capping best practices) | TR85 ★★ (visible particle inspection methods for glass containers) | TR73 ★★ (syringe-specific glass container requirements) | Guide-No1 ★ (vial washing and depyrogenation tunnel)
 
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
 → TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
