@@ -1985,9 +1985,8 @@ neering Run 3, which was performed with OFB drug product solution.
 5.8
 5.7
 5.6
-5.5
 
-*[Figure 12-3 Distribution of Fill Volumes for Engineering Run 2]*
+### 5.5 Figure 12-3 Distribution of Fill Volumes for Engineering Run 2
 
 )Lm(
 emuloV

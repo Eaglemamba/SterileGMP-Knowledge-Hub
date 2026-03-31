@@ -11,16 +11,18 @@ within registered storage and/or transport conditions. This may include shipment
 distributor to a pharmacy where the products are held awaiting customer pick-up or, as the Last Mile
 process has become an even more complex system, home delivery of products that also include cell
 and gene therapy.
-1.1
-Purpose
+
+### 1.1 Purpose
+
 This technical report provides guidance for establishing a quality management system for distribu-
 tion of all types of temperature-sensitive medicinal and pharmaceutical products, from preparation of
 products for transportation at shipping sites to the shipment of products to receiving sites for storage
 or distribution to patients (end users).
 The examples accompanying the points to consider provided herein on how to protect the quality of
 the product are for demonstrational purposes only.
-1.2
-Scope
+
+### 1.2 Scope
+
 This technical report offers a resource for all stakeholders involved in the pharmaceutical supply chain
 and provides a model for qualifications from the process design through implementation and opera-
 tion to verification. The stakeholders include, but are not limited to, the following organization types:
@@ -326,8 +328,9 @@ packaging, the choice between active and passive
 shipping containers, the route chosen, the weather
 and traffic conditions anticipated, and the selection
 and location of temperature monitoring devices.
-2.1
-Abbreviations
+
+### 2.1 Abbreviations
+
 CAPA
 Corrective Action/Preventive Action
 CMO
@@ -374,8 +377,7 @@ Process design begins with defining the requirements for shipping a product from
 destination, which will require multiple inputs from development, logistics, etc. The outcomes of all
 requirements are a proposed thermal protection system (TPS) and the inputs for the transportation
 process qualification.
-3.1
-User Requirements Specification (URS)
+3.1 User Requirements Specification (URS)
 The best practice for an organization is to complete a cross-functionally reviewed and approved User
 Requirements Specification (URS) before starting a qualification process (1). The URS defines the
 requirements of the product, packaging, and transport system for the qualification process. Examples
@@ -392,8 +394,9 @@ of considerations may include but are not limited to:
 • Other product specific considerations that should have been evaluated at the primary- or second-
 ary-packaging level, such as shock, vibration, atmospheric pressure, are outside the scope of this
 document.
-3.2
-Quality Risk Assessment
+
+### 3.2 Quality Risk Assessment
+
 Risk assessment is the process of identifying, evaluating, and mitigating risks that have the potential
 to negatively affect product quality, processes, and/or user/patient safety. It requires proactively iden-
 tifying risks that have the potential to occur, evaluating their relative risk impact (using qualitative or
@@ -411,8 +414,7 @@ strates the product and/or process is kept in an acceptable state of control.
 The outcome of the risk assessment should be documented. Plans to handle, store, and distribute the
 product should be made accordingly. For more information about risk management, see PDA Techni-
 cal Reports No. 54 and No. 58 and ICH Quality Guideline Q9: Quality Risk Management (2-4).
-3.3
-Design Qualification (DQ)
+3.3 Design Qualification (DQ)
 Design qualification (DQ) is the process of obtaining and documenting evidence that the TPS has
 been designed in accordance with user requirements. Principles discussed in this section apply to both
 active and passive TPS solutions.
@@ -483,8 +485,9 @@ not required prior to design testing.
 A qualification strategy for reusable temperature-controlled shippers should additionally include as-
 sessment on re-certified for use, recovery, and refurbishment services provided by the shipper, packag-
 ing vendor, or logistics service providers.
-4.0
-Process Qualification
+
+## 4.0 Process Qualification
+
 The qualification exercise can be regarded as the deliberate and purposeful collection and evaluation
 of data from a process in order to establish evidence that the process can consistently satisfy the user
 requirements. The subtle difference between OQ and PQ is that the former is intended to examine the
@@ -532,8 +535,7 @@ ing preliminary test results, thermal simulation software, or other guidance fro
 ISTA Standard 20 (Revision 2.0): Design and Qualification of Insulated Shipping Containers (ISC) (9). It
 means that, in most cases, more than one temperature measuring point is needed for the qualification
 process.
-4.1
-Operational Qualification (OQ)
+4.1 Operational Qualification (OQ)
 The goal of an OQ is to provide documented testing that demonstrates, with a high degree of as-
 surance, that a process or system will function to meet its predetermined acceptance criteria when
 exposed to anticipated environmental extreme conditions (for example temperature, shock, and vi-
@@ -580,8 +582,7 @@ orientation, temporary storage conditions, and stacking before shipping. For exa
 shipments will experience multiple orientations during handling and should be tested to at least identify
 potential temperature excursions that were not observed during the original design orientation. Such
 observations should be communicated to the design team for possible design revaluation.
-4.2
-Performance Qualification (PQ)
+4.2 Performance Qualification (PQ)
 Performance qualification (PQ) is done using the actual transportation or distribution environment
 and is performed by those who will be executing the day-to-day shipping process. The PQ serves to
 demonstrate that the qualified system is effective and reproducible in real-world application. Testing
@@ -606,14 +607,16 @@ List of SOPs relevant to the process
 Evidence of operator training on the relevant SOPs (extending to all subcontractors)
 Other procedures may be used and, if so, they need to be justified.
 For further understanding, see Section 8.0 Case Studies.
-4.3
-Qualification Plan Complete
+
+### 4.3 Qualification Plan Complete
+
 To close the qualification of the TPS, all completed documentation and the deviations should be
 summarized in one report, sometimes called Qualification Assurance Summary Report or Validation
 Summary Report. The conclusion should indicate the applicability and shortcomings of the TPS and
 list the deviations from the URS. The report should be approved according to established procedures.
-4.4
-Shipping Control Strategy
+
+### 4.4 Shipping Control Strategy
+
 A shipping control strategy or quality risk control strategy, which is the output of the quality risk assessment,
 for drug product in the supply chain should define the measures to implement the qualified TPS within the
 operational environment to ensure that the product is shipped under the intended conditions within the
@@ -623,8 +626,9 @@ be controlled. A control strategy should include the implementation or update of
 In addition, a control strategy may include, in part, allowable times and temperature exposures expressed in
 a tabular form that reflects product stability, citing the stability budget for the product. This will ensure the
 qualified TPS will be implemented and used according to the established qualified conditions.
-5.0
-Ongoing Process Verification
+
+## 5.0 Ongoing Process Verification
+
 After process design and process qualification of a TPS, the shipping organization should implement
 the TPS in operations according to the control strategy. By applying continuous process verification,
 this will ensure that the TPS will protect the product throughout transit—from its preparation at the
@@ -677,16 +681,16 @@ provided instruction concerning the principles of packaging, qualifying, and tra
 ture-sensitive medicinal products. The purpose of the training is to ensure that the shippers, transport
 service providers, and their subcontractors maintain the integrity of the transport chain for medicinal
 products.
-5.1
-Standard Operating Procedures (SOP)
+5.1 Standard Operating Procedures (SOP)
 SOPs should be in place to describe in detail all steps of the process execution. SOPs should be re-
 viewed and revised periodically according to the organization’s policies and guidelines. A key part of
 an SOP implementation would include training and a comprehension evaluation section to assess the
 knowledge of the SOP users (e.g., shippers, logistic service providers, carriers). A summary of changes
 and versioning is required for easier tracking. The review and approval system requires a defined pro-
 cess of retrieval and removal of obsolete SOP versions.
-5.2
-Monitoring
+
+### 5.2 Monitoring
+
 Data loggers and indicators, commonly referred to as monitors, are instruments that use micropro-
 cessors with sensors and internal memory capacity to collect data on predefined attributes, such as
 temperature and/or humidity. They can be connected to a computer system and use software to col-
@@ -733,13 +737,15 @@ tions should be controlled to preserve the quality of the product according to i
 Each monitor is required to have a certificate of calibration and must not be used beyond the date
 specified on the certificate. The expiration of the calibration should be based on the sensor manufac-
 turer’s recommendation and/or local regulations.
-5.3
-Training
+
+### 5.3 Training
+
 Training on all SOPs should be completed by all those who will be responsible for implementing the
 task the SOPs describe. Training records should be maintained and updated promptly so they are com-
 plete and available for internal Quality Unit audits and external regulatory inspections.
-5.4
-Stakeholder Management
+
+### 5.4 Stakeholder Management
+
 The management process for vendors or service providers is an important component of a quality
 management system (QMS). Vendors, for the purpose of this document, are defined as qualified con-
 tract acceptors and their approved subcontractors. The contract-acceptor approval process comprises
@@ -790,8 +796,9 @@ Deliveries
 Warehouse operations and qualification
 •
 Safety
-5.5
-Management of Nonconformances
+
+### 5.5 Management of Nonconformances
+
 From a temperature perspective, distribution must be designed to keep the product within the defined
 limits described by the manufacturers, applicable regulations, or visible on the outer packaging. The
 distribution process is a complex and dynamic process, where product is exposed to the external envi-
@@ -862,16 +869,18 @@ or investigations are needed to enable the approval and closure of a nonconforma
 requested from and provided by the investigation team.
 The approval can be granted only after all investigative elements are available and formalized and all
 applicable CAPAs have been satisfactorily identified and approved.
-5.6
-Complaints
+
+### 5.6 Complaints
+
 Similar to nonconformances discovered during distribution operations, procedures should be documented
 that describe the processes for receiving, evaluating, investigating, addressing, and trending of complaints
 from customers. A CAPA should be considered to remove root causes of complaints as appropriate.
 Products returned due to complaints must be segregated and prevented from subsequent distribution, A
 comprehensive product quality impact assessment must always be performed by the manufacturer, if prod-
 uct is planned to be further distributed, as defined by local procedure and allowed by local regulation.
-5.7
-Periodic Review
+
+### 5.7 Periodic Review
+
 Distribution performance must be monitored and reviewed periodically to ensure the state of control
 is maintained as expected by the qualifications. The extent and frequency of the distribution process
 capability should be reviewed at regular time intervals using a risk-based approach.
@@ -891,8 +900,9 @@ approving nonconformances)
 For nonconformances classified as minor, trending should be performed to ensure they do not repre-
 sent (or hide) a major nonconformance that would warrant more incisive actions.
 This periodic review must be an integral part of the management review.
-5.8
-Change Control
+
+### 5.8 Change Control
+
 An effective change control system must be in place to control changes made to the qualified systems.
 Each change to a qualified system must be described and documented.
 According to the type of change, different systems can be used to record and manage changes (e.g.,
@@ -918,8 +928,9 @@ airport)
 Change of the alarm/alert limits of an existing data logger
 In contingency situations, such as an element for pandemic, proper risk assessment and change control
 should be assessed.
-6.0
-Conclusion
+
+## 6.0 Conclusion
+
 This technical report provides guidance for establishing a process for the qualification of distribution
 of temperature-sensitive medicinal and pharmaceutical products. It offers a resource for all involved
 stakeholders in the pharmaceutical supply chain, providing a model for qualifications from the process
@@ -931,8 +942,9 @@ but not the “how” as this may vary depending on local regulations, business 
 characteristics. By applying the guidance provided in this technical report, the reader will ensure that
 product quality is maintained during the distribution through the pharmaceutical supply chain in
 compliance with current regulatory expectations.
-7.0
-References
+
+## 7.0 References
+
 1.	 E.J. van Asselt et al. (2017). Pharma re-
 quirements for temperature-controlled trail-
 ers, Journal Pharmaceutical Outsourcing,
@@ -972,12 +984,14 @@ May 2020 Edition, pp.56 – 59.
 Standard 20 (Revision 2.0): Design and
 Qualification of Insulated Shipping Contain-
 ers (ISC); ISTA: East Lansing, Mich., 2014.
-8.0
-Case Studies
+
+## 8.0 Case Studies
+
 These studies have been included as examples of an approach to Qualification of storage and transport
 systems, but not to the exclusion of other approaches.
-8.1
-Case Study 1: Distribution Incident Trends Analysis
+
+### 8.1 Case Study 1: Distribution Incident Trends Analysis
+
 CAPAs should be created for major and critical distribution deviations that have an impact on the
 product quality, for example, temperature excursions with product impact or product damages.
 For events and minor deviations that happen in the distribution environment, CAPAs are not manda-
@@ -986,8 +1000,9 @@ The objective of monthly trend analysis is to confirm CAPAs opened for major and
 tions and to prioritize CAPAs according to destinations with the highest reported number of minor
 deviations.
 For every deviation reported, follow the checklist on page 19 (Figure 8.1-1).
-8.2
-Case Study 2: Passive Shipper SOPs
+
+### 8.2 Case Study 2: Passive Shipper SOPs
+
 When using passive shippers, the assembly diagram, photos, and a description should be included
 within either the SOP or protocol. As with a puzzle, the multiple pieces must be assembled correctly. A
 written description of the process to assemble a passive shipper must accompany the diagram. Training
@@ -1056,8 +1071,8 @@ and create a CAPA accordingly
 
 *[Figure 8.1-1	 Deviation Checklist]*
 
-8.3
-Case Study 3: Qualification Master Plan
+### 8.3 Case Study 3: Qualification Master Plan
+
 The following case study is an example of how to implement the information contained in this techni-
 cal report. Risk analysis and planning for its mitigation should be the first step.
 To make validation terminology applicable to a good distribution practices (GDP) environment, a
@@ -1104,8 +1119,9 @@ cause analysis will be conducted, for example, for major excursions or trends, t
 transportation system is under control.
 A final Quality Assurance Summary Report is issued once the PQ is completed and the qualification
 process is closed.
-9.0
-Additional Reading
+
+## 9.0 Additional Reading
+
 ANVISA – Brazilian Health Regulatory Agency
 •
 ANVISA Guide 02: Transportation system

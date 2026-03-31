@@ -1,5 +1,207 @@
 # PDA Technical Report No. 22 (Revised 2025): Process Simulation for Aseptically Filled Products
 
+=== PDF PAGE 1 ===
+
+pda.org
+©PDA 2025
+Process Simulation for
+Aseptically Filled
+Products
+Technical Report
+No. 22
+Revised 2025
+
+=== PDF PAGE 2 ===
+i
+Technical Report
+No. 22
+Process Simulation for
+Aseptically Filled
+Products
+Revised 2025
+
+ISBN: 978-1-945584-55-8
+All rights reserved
+
+=== PDF PAGE 3 ===
+ii
+Authors
+Co-Leads
+Marcia Baroni
+Emergent BioSolutions, Inc.
+Gabriele Gori
+Chiesi Pharmaceuticals SpA
+Harold S. Baseman
+ValSource, Inc.
+Subrata Chakraborty, PhD
+Inophar Consulting and Training
+Biswarup DasGupta
+Vertex Pharmaceuticals
+Michael Dekner
+Independent Expert
+Caroline Elsabe Dreyer
+Novo Nordisk
+Vanessa Vasadi Figueroa
+VVF Science, LLC
+Benoit Franquin
+CSL Behring
+Guenther Gapp
+Gapp Quality GmbH
+Ian Hudson
+Thermo Fisher Scientific
+Stephen E. Langille, PhD
+ValSource, Inc.
+Morcos Loka
+Minapharm
+James Matthews
+Cardinal Health
+William Miele
+Pfizer
+Patrizia Muscas, PhD
+Eli Lilly
+Darius Pillsbury
+ValSource, Inc.
+Christine Sherman
+Takeda Manufacturing USA, Inc.
+
+=== PDF PAGE 4 ===
+iii
+Table of Contents
+1.0 Introduction ............................................................................................................................................... 1
+1.1 Purpose ................................................................................................................................................... 1
+1.1 Scope ....................................................................................................................................................... 2
+2.0 Glossary ...................................................................................................................................................... 3
+2.1 Abbreviations ......................................................................................................................................... 8
+3.0 Aseptic Process Simulation Concepts and Principles ...................................................................... 9
+3.1 Prerequisites .......................................................................................................................................... 9
+3.2 Number and Frequency of Simulations ............................................................................................ 9
+3.3 Worst-Case Scenarios ........................................................................................................................ 10
+3.4 Risk Assessment for Aseptic Process Simulation Design ............................................................ 11
+3.5 Ongoing Evaluation ............................................................................................................................ 12
+4.0 Overview of Aseptic Process Simulation for Aseptically Produced Products ......................... 14
+4.1 General Requirements ....................................................................................................................... 14
+4.1.1 Scope of Aseptic Process Simulation ...................................................................................... 14
+4.1.2 Design of Aseptic Process Simulation ..................................................................................... 14
+4.1.3 Interventions ................................................................................................................................ 15
+4.1.4 Sterile Bulk Aseptic Process Simulation .................................................................................. 21
+4.2 Aseptic Process Simulation Design with Regard to Products .................................................... 21
+4.2.1 Solutions ........................................................................................................................................ 22
+4.2.2 Lyophilized Products................................................................................................................... 22
+4.2.3 Suspensions .................................................................................................................................. 24
+4.2.4 Semisolids—Ointments, Creams, and Gels ............................................................................. 25
+4.2.5 Powders ......................................................................................................................................... 26
+4.2.6 Other Dosage Forms and Drug/Device Combinations ....................................................... 30
+4.3 Aseptic Process Simulation Design Based on Aseptic Processing Technologies ................... 32
+
+=== PDF PAGE 5 ===
+iv
+4.3.1 Form-Fill-Seal and Blow-Fill-Seal ............................................................................................. 32
+4.3.2 Restricted Access Barrier Systems........................................................................................... 33
+4.3.3 Isolator Technology .................................................................................................................... 33
+4.3.4 Closed Systems ............................................................................................................................ 34
+4.3.5 Single-Use Systems Technologies ............................................................................................ 35
+4.3.6 Pre-Use Post-Sterilization Integrity Test Assembly ............................................................. 35
+4.3.7 Considerations for Advanced Therapy Medicinal Products ............................................... 35
+5.0 Aseptic Process Simulation Documentation .................................................................................... 38
+5.1 Process Definition ............................................................................................................................... 38
+5.2 Protocol and Procedure Preparation .............................................................................................. 38
+5.3 Aseptic Process Simulation Execution Record .............................................................................. 39
+5.4 Final Report .......................................................................................................................................... 40
+5.5 Aseptic Process Simulation Observation ....................................................................................... 40
+5.5.1 Video Recording of Aseptic Process Simulations ................................................................. 41
+6.0 Environmental Monitoring ................................................................................................................... 43
+7.0 Elements of Aseptic Process Simulations ......................................................................................... 44
+7.1 Facility and Filling Machine Considerations .................................................................................. 44
+7.2 Equipment Setup ................................................................................................................................. 44
+7.3 Media Selection and Preparation ..................................................................................................... 45
+7.4 Inert Gassing ........................................................................................................................................ 45
+7.5 Container-Closure Configuration .................................................................................................... 46
+7.5.1 Inclusion of Multiple Container-Closure Sizes ...................................................................... 46
+7.5.2 Pigmented or Limited Observation Containers ..................................................................... 48
+7.5.3 Components from Varying Suppliers and of Different Designs and Compositions ...... 49
+7.6 Filling Speed ......................................................................................................................................... 49
+7.7 Fill Volume ............................................................................................................................................ 49
+7.8 Interventions ........................................................................................................................................ 49
+7.9 Duration of Aseptic Process Simulations ....................................................................................... 50
+7.9.1 Aseptic Process Validation Limitations ................................................................................... 51
+7.9.2 Human Performance and Fatigue ............................................................................................ 51
+7.9.3 Environmental and Equipment Considerations ..................................................................... 51
+7.9.4 Qualification of Maximum Hold Times ................................................................................... 51
+
+=== PDF PAGE 6 ===
+v
+7.10 Number of Units ............................................................................................................................... 52
+7.11 Means to Achieve Full or Longer Duration APS Fills ................................................................ 52
+7.12 Campaign Operations ...................................................................................................................... 54
+7.13 Pre-Incubation Container Inspection ........................................................................................... 54
+7.14 Incubation Conditions ...................................................................................................................... 55
+7.15 Post-Incubation Inspection ............................................................................................................. 55
+7.16 Unit Accountability and Reconciliation ........................................................................................ 56
+7.17 Growth Promotion/Positive Control ............................................................................................ 56
+7.17.1 Sample Collection ..................................................................................................................... 57
+7.17.2 Method Criteria ......................................................................................................................... 57
+7.17.3 Acceptance Criteria .................................................................................................................. 57
+7.18 Post-Simulation Cleaning ................................................................................................................ 57
+8.0 Personnel Qualification  ....................................................................................................................... 58
+8.1 Qualification Level 1 ........................................................................................................................... 59
+8.2 Qualification Level 2 ........................................................................................................................... 60
+8.3 Qualification Level 3 ........................................................................................................................... 60
+8.4 Ongoing Qualification ........................................................................................................................ 60
+9.0 Aseptic Processing Simulation Acceptance Criteria ...................................................................... 61
+9.1 Recommendations .............................................................................................................................. 61
+9.2 Invalidating an Aseptic Process Simulation Run ........................................................................... 62
+9.3 Aborting or Discontinuing an Aseptic Process Simulation ......................................................... 62
+10.0 Considerations for Investigation ...................................................................................................... 64
+11.0 The Use of Aseptic Process Simulation in Ongoing Process Evaluation ................................. 67
+11.1 The Role of Aseptic Process Simulation in Ongoing Process Evaluation .............................. 67
+11.2 Periodic (Time-Driven) Ongoing Aseptic Process Simulation Assessment ........................... 67
+11.3 Event-Driven and For-Cause Ongoing Aseptic Process Simulation Assessment ................ 68
+11.4 Other Considerations....................................................................................................................... 68
+12.0 References ............................................................................................................................................. 69
+13.0 Appendix 1: Media and Placebo Considerations .......................................................................... 71
+13.1 Selection of Placebo or Surrogate Material ................................................................................ 71
+13.2 Sterilization of Placebo or Surrogate Material ............................................................................ 71
+
+=== PDF PAGE 7 ===
+vi
+13.3 Growth-Promotion Testing of the Placebo or Surrogate Material ......................................... 71
+13.4 Solubility Testing of the Placebo or Surrogate Material ........................................................... 72
+13.5 Media Preparation and Sterilization ............................................................................................. 72
+14.0 Appendix 2: Aseptic Process Simulation Performance Sequence ............................................ 74
+
+## 15.0 Appendix 3: Practical Examples of Using Risk Assessment in Aseptic Process
+
+Simulation….. .................................................................................................................................................. 81
+15.1 Example 1: Applying Risk-Based Aseptic Process Simulation Frequency ............................. 81
+
+### 15.2 Example 2: Intervention Simulation Frequency Based on Application of Intervention Risk
+
+Evaluation & Management Model ............................................................................................ 86
+
+### 15.3 Example 3: Use of QRM to Define Inclusion and Frequency of Interventions During
+
+Aseptic Process Simulation ........................................................................................................ 90
+
+### 15.4 Example 4: Use of Quality Risk Management to Define Inclusion and Frequency of
+
+Interventions during Aseptic Process Simulation .................................................................. 94
+
+### 15.5 Example 5: Aseptic Process Simulation Design for Lines Producing Single Dosage Form
+
+with Different Fill Volume .......................................................................................................... 98
+
+### 15.6 Example 6: Aseptic Process Simulation Design for Lines Producing Different Products or
+
+Dosage Forms ............................................................................................................................... 99
+15.7 Example 7: Campaign Strategy Example for an Isolator Line ................................................ 102
+
+### 15.8 Example 8: Design of the Aseptic Process Simulation for an Advanced Therapy Medicinal
+
+Product ......................................................................................................................................... 105
+16.0 Appendices References .................................................................................................................... 114
+17.0 Relevant Vendor and Supplier Resources .................................................................................... 115
+
+=== PDF PAGE 8 ===
 vii
 Figures and Tables Index
 
@@ -32,8 +234,7 @@ Figure 8.0-1 APS Personnel Qualification Criteria ..............................
 Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist .................................... 74
 Table 15.1-1 Applying Risk-Based APS Frequency ................................................................................ 83
 
-| | | | |
-| --- | --- | --- | --- |
+**Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk**
 
 Evaluation & Management Model .............................................................................................................. 87
 
@@ -82,6 +283,8 @@ Fill Different Dosage Forms ....................................................
 Figure 15.7-1 Initial APS Validation: Conservative Approach ............................................................ 103
 Figure 15.7-2 Initial APS Validation: Risk-Based Approach ................................................................ 103
 Figure 15.7-3 Periodic APS Revalidation Setup Once the Full-Validation Criteria are Met ........ 105
+
+=== PDF PAGE 9 ===
 viii
 
 *[Figure 15.7-4 Process Flow Diagram of the Major Unit Operations of the Manufacturing Process]*
@@ -97,6 +300,8 @@ Table 15.7-5 Action Level Table based on Overall Risk Score ....................
 **Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation**
 
 of Viral Vector Transduction) .................................................................................................................... 111
+
+=== PDF PAGE 10 ===
 
 ## 1.0 Introduction
 
@@ -135,6 +340,8 @@ system, well-defined process controls, process monitoring and data evaluation, p
 includes the APS. The APS alone should not be considered as the primary means to validate the aseptic
 
 1 The PIC/S GMP Annex 1 is identical to the EU Annex 1 and, hereafter, EU Annex 1 means EU-PIC/S Annex 1.
+
+=== PDF PAGE 11 ===
 process or aspects of the aseptic process; it is simply a final demonstration of the sum of the controls. The
 effectiveness of the aseptic process should be determined through process design, adherence to the
 pharmaceutical quality system and process controls, training, and evaluation of monitoring data (1).
@@ -150,6 +357,8 @@ industry, application of the concepts and principles to the preparation of steri
 diagnostics may be appropriate. Readers are encouraged to review PDA’s Points to Consider No 1: Aseptic
 Processing (Revised 2023) for a more detailed discussion on aseptic processing related topics that could
 have an impact on the APS exercise.
+
+=== PDF PAGE 12 ===
 
 ## 2.0 Glossary
 
@@ -213,6 +422,7 @@ materials, equipment, and personnel are
 regulated to control microbial and particulate
 contamination.
 
+=== PDF PAGE 13 ===
 Aseptic Process Simulation (APS)
 A simulation of the entire aseptic manufacturing
 process in order to demonstrate the capability of
@@ -290,6 +500,7 @@ foreign particulates derived from current product
 and process understanding, that assures process
 performance and product quality.
 
+=== PDF PAGE 14 ===
 Contamination Rate
 The percentage of units filled in an aseptic
 process simulation that are positive for microbial
@@ -367,6 +578,8 @@ aseptic process and is required for setup or
 routine operation and/or monitoring, for
 example, aseptic assembly, container
 replenishment, or environmental sampling.
+
+=== PDF PAGE 15 ===
 Inherent interventions are required by batch
 record, procedure, or work instruction for
 the proper conduct of the aseptic process.
@@ -445,6 +658,7 @@ Quality Unit
 A group organized within an organization to
 promote quality in general practice (6).
 
+=== PDF PAGE 16 ===
 Restricted Access Barrier System (RABS)
 System that provides an enclosed, but not fully
 sealed, environment meeting defined air quality
@@ -518,6 +732,8 @@ conditions have the highest potential to, but do
 not necessarily always, result in product or
 process failure.
 
+=== PDF PAGE 17 ===
+
 ### 2.1 Abbreviations
 
 APA
@@ -579,6 +795,8 @@ WFI
 Water for Injection
 * Note: SCDM and TSB are equivalent.
 
+=== PDF PAGE 18 ===
+
 ## 3.0 Aseptic Process Simulation Concepts and Principles
 
 The validation of an aseptic process should include simulation using a microbial growth media and where
@@ -625,6 +843,8 @@ and may require more than 3.
 While it is allowed by regulations to combine dynamic environmental qualification with APS, this is not
 recommended for new facilities or in general when the reliability of the controls to ensure proper
 environmental conditions during operation is not yet known. APS (periodic requalification) should be
+
+=== PDF PAGE 19 ===
 repeated twice per year (approximately every six months) for each aseptic process, each filling line, and
 each shift. Each operator should participate in at least one successful APS annually. Consideration should be
 given to performing an APS after the last batch prior to shut down, before long periods of inactivity, or
@@ -672,6 +892,8 @@ Such assessments can benefit from the application of QRM principles. The assessm
 outline the variables selected as worst-case and the considerations or rationale for their selection. The risk
 assessment may also identify CAPA for reducing the "worst-case" situation such as improved operability
 leading to less interventions.
+
+=== PDF PAGE 20 ===
 Note: In cases where it may not be possible to define one or two worst-case scenarios, it may be necessary
 to include several (or even all) scenarios in the APS program.
 
@@ -721,6 +943,8 @@ A critical success factor for such an exercise is sponsorship by the senior mana
 support resource allocation, appropriate team formation, any financial needs for managing the risk-
 assessment outcome and, most importantly, motivating the team towards the ultimate objective of protecting
 product quality and patient safety. It is important to note that this process can be jeopardized by individual
+
+=== PDF PAGE 21 ===
 subjectiveness, focus on predetermined outcomes, and the lack of meaningful participation by those most
 involved in the performance of the activities being assessed (e.g., line operators, mechanics). Hence, the best
 practice for APS design is to include people who are directly involved in the process and have a good
@@ -772,12 +996,16 @@ systems, facility, and critical utilities should be performed as part of the cha
 the risk of such changes to the assurance of sterility. This assessment should be used to justify the type of
 response or simulation of the process change needed to ensure that the change willnot adversely affected the
 aseptic process. A risk assessment may be beneficial in presenting a rationale for the need and extent of an
+
+=== PDF PAGE 22 ===
 APS as a result of change control. The risk-assessment and risk-management decisions should be recorded,
 approved, and incorporated into the change-control documentation. The assessment should include periodic
 evaluation of the type and frequency of interventions that must be executed or simulated in the APS to
 ensure it remains representative of routine operations. When assessing potential improvements, the
 assessment of risk should include consideration for effectiveness of the change and any unintended
 consequences that may occur. (See Section 4.1.3).
+
+=== PDF PAGE 23 ===
 
 ## 4.0 Overview of Aseptic Process Simulation for Aseptically
 
@@ -816,6 +1044,8 @@ these changes do not enhance the aseptic process or eliminate a process step tha
 sterility assurance of the product.
 A company must determine the appropriate rationale and approaches applicable to their unique operations
 and APS design based on a sound risk assessment. Process-flow diagrams showing the routine
+
+=== PDF PAGE 24 ===
 manufacturing process and steps in parallel with the APS steps are very useful for an APS illustration and
 design assessment and to explicitly highlight the potential differences between both processes.
 
@@ -861,6 +1091,8 @@ microbiology, engineering, and quality assurance. These instructions can be in t
 procedures, visual aids, videos, other media such as virtual reality, or any combination thereof. The
 instructions must be periodically reviewed and updated to reflect the current processes and interventions.
 This ensures consistency for operators and the interventions they are required to perform.
+
+=== PDF PAGE 25 ===
 Companies should identify interventions and determine their frequency and duration of inclusion in the APS
 based on process design and historical performance documentation, such as completed batch records, batch-
 related documentation, SOPs, and discussions with operating personnel. The goal of this activity is to list all
@@ -910,6 +1142,8 @@ Change of EM plates preferably via manipulation through a glove port
 Addition of components
 •
 Closure resupply requiring manual handling when opening the container/bag and during loading
+
+=== PDF PAGE 26 ===
 •
 For isolators and restricted access barrier systems (RABS):
 ̶
@@ -956,6 +1190,8 @@ than during the aseptic process may no longer be a true representation and simul
 Where a lower-risk intervention has an established rate, leading to it potentially being challenged multiple
 times during an APS, one or more replicates could be dropped to allow additional higher-risk interventions
 to be included more frequently (although care should be taken to ensure that the APS design does not
+
+=== PDF PAGE 27 ===
 become artificially such a worst-case that it is no longer representative of the process). The selection of
 interventions and frequency that each intervention is performed during APS should be fully justified.
 Where the need to perform a new corrective intervention arises during product manufacture, a proactive
@@ -1011,6 +1247,8 @@ required or if the intervention poses an unacceptable risk
 Interventions that are required in a production run to continue manufacturing and have not been previously
 qualified should be considered unqualified and unapproved. Procedures should be in place to address
 unqualified and unapproved interventions, including personnel and departments responsible for input and
+
+=== PDF PAGE 28 ===
 approval and actions required to perform the intervention if it is possible to do it with an acceptable risk. If
 such interventions are required or are contemplated, the company should do one or more of the following:
 •
@@ -1068,6 +1306,8 @@ case" strategy for equipment arrangement and intervention to mimic the risks ass
 line configuration. For example, two sets of filling parts of similar design sourced from different vendors
 may present a similar overall processing risk and may not require a separate APS to demonstrate the
 acceptability of the interventions associated with the use of each filling set.
+
+=== PDF PAGE 29 ===
 Interventions to be included in the APS protocol should be considered in terms of the expected frequency
 and duration with which they are performed during production based on process design, production logs,
 batch records, observations of the aseptic filling process, and the microbiological risk to the product and
@@ -1110,6 +1350,8 @@ and qualified individuals.
 Note: This may not be the case for highly complex specialized activities where only individuals who have
 performed that activity successfully (as supported by acceptable APS results) are considered qualified (see
 Section 8.0).
+
+=== PDF PAGE 30 ===
 
 ##### 4.1.3.4 Handling of Intervention-Related Units
 
@@ -1155,6 +1397,8 @@ however, is covered in Section 4.2.3.
 The following are aspects to consider in the design of the APS which are specific to the simulated product
 dosage form.
 
+=== PDF PAGE 31 ===
+
 #### 4.2.1 Solutions
 
 The APS should include and mimic all process steps, activities, interventions, and conditions used or present
@@ -1199,6 +1443,8 @@ performed using closed-environment systems, and some cannot be fully performed d
 inhibition.
 The conditions, interventions, and activities that pose a risk to product sterility, including shelf-loading,
 cycle-dwell activities and conditions, condenser operation, vacuum activation, pulsing, venting and
+
+=== PDF PAGE 32 ===
 introduction of gas overlay, and shelf movement should be considered for inclusion withing the APS. A risk
 assessment should be used to determine the worst-case conditions to be used in the simulation for each of
 the lyophilization process steps and to decide whether to include the step, the extent of inclusion, and the
@@ -1254,6 +1500,8 @@ time that the units are exposed in the chamber in the absence of activity (14).
 •
 Full Stopper Insertion: After the dwell period, the filled vial units are stoppered by chamber shelf
 compression.
+
+=== PDF PAGE 33 ===
 •
 Unit Unloading: The units are removed from the lyophilizer and transported to the capping station
 or area. The unloading and transfer can be performed manually using tools to manipulate the boxes,
@@ -1310,6 +1558,8 @@ The APS for the filling of suspensions requires the simulation of these aseptic 
 procedures in addition to the simulation of the aseptic filling process.
 In aseptic compounding operations, the APS procedures should include the aspects of suspension
 manufacturing including sterilization of the vehicle, addition of the sterile component, and homogenization
+
+=== PDF PAGE 34 ===
 of the suspension. The most basic adaptation of the standard liquid APS is the addition of a sterile placebo
 powder or sterile media (instead of sterile product powder) to a tank of medium. If a sterile liquid
 component is added to the suspension, adding media is recommended so as not to alter the final media
@@ -1353,6 +1603,8 @@ operations. This may involve the use of surrogate materials, including agents to
 media needed to simulate the filling properties of the product. Where drug product processing steps and
 conditions may adversely affect the growth of microbiological contamination, modification of the steps or
 use of alternative steps may need to be incorporated in place of those steps in the APS.
+
+=== PDF PAGE 35 ===
 
 ##### 4.2.4.1 Compounding
 
@@ -1399,6 +1651,8 @@ source.
 Aseptically produced sterile dry drug products, such as powders, microspheres, liposomes, or other solid
 materials, are dry nonliquid materials that are typically filled into vials, syringe cartridges, or other types of
 sterilized containers. These products will be collectively referred to here as “sterile powders.”
+
+=== PDF PAGE 36 ===
 Section 4.2.5 covers simulation of the handling, transfer, filling, and sealing of sterile powders. Some
 options and approaches for performing the APS will be presented, along with their respective advantages
 and disadvantages. Unless otherwise noted, the steps and precautions noted in the APS of solution products
@@ -1456,6 +1710,8 @@ sterility are covered in the simulations.
 •
 Inspectors should be trained to inspect filled media-containing placebo or surrogate material, since
 the material could create the appearance of turbidity that resembles microbial growth. Ideally, the
+
+=== PDF PAGE 37 ===
 material used should not create the appearance of turbidity; however, if that is not possible, it should
 be clearly distinguished from microbial turbidity, and inspectors should be specifically trained to
 recognize the difference between product precipitation (from the placebo) and microbial
@@ -1488,6 +1744,8 @@ advantages and disadvantages of this are listed in Table 4.2.5.2-1. The liquid-f
 machines is not equivalent to conventional liquid fillers and is used only in APSs. In this manner, the same
 filling machine could be used for both the liquid- and solid-filling operation during APS.
 
+=== PDF PAGE 38 ===
+
 | Table 4.2.5.2-1: Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with Supplementary Liquid-Fill Capability |
 | --- |
 | Advantages | Disadvantages |
@@ -1513,6 +1771,8 @@ main advantages and disadvantages of this are listed in Table 4.2.5.4-1 As with 
 powder and a liquid are combined, then the dispersion and dissolution of powder through the media should
 be confirmed. This can be achieved manually by inverting the container several times during the pre-
 inspection of containers prior to incubation.
+
+=== PDF PAGE 39 ===
 
 | Table 4.2.5.4-1: On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill |
 | --- |
@@ -1544,6 +1804,8 @@ steps and conditions should be designed. Section 4.2.6 presents some of these fe
 
 Products that are terminally sterilized or otherwise treated to destroy microbiological contamination after
 filling typically do not require APS because the process does not primarily rely on aseptic processing to
+
+=== PDF PAGE 40 ===
 ensure product sterility. While the use of APS may not be required for the terminal sterilization cycle, it may
 still be useful as a tool to evaluate the effectiveness in case any aseptic process steps are applied.
 
@@ -1593,6 +1855,8 @@ The following are some of the key considerations for designing ATMP APS studies:
 •
 Unless otherwise justified, the design, performance, and evaluation of the APS should follow the
 same steps and principles for other drug product APS.
+
+=== PDF PAGE 41 ===
 •
 The process simulation should be designed to resemble the routine manufacturing process
 associated with open-processing steps and any other steps and conditions that pose a risk to product
@@ -1656,6 +1920,8 @@ Fill volume, including lower-than-normal volume, that may affect the formation o
 Media exposure to heat and open-container dwell time
 •
 Longer campaign (usually)
+
+=== PDF PAGE 42 ===
 •
 EM sampling within Grade A, if appropriate
 
@@ -1704,6 +1970,8 @@ for simulation of the process during media-filled conditions.
 •
 Any interventions that take place during this period should be executed appropriately, documented,
 and assessed for impact to the process.
+
+=== PDF PAGE 43 ===
 •
 Reconciliation of all units should clearly identify those filled with media and those that are empty.
 •
@@ -1749,6 +2017,8 @@ compromising the integrity due to transportation, sterilization, assembly, or us
 contamination of the interior of the sterile closed system by an ingress from the environment, closed
 connectors/disconnectors (e.g., rapid transfer ports (RTP)) and continuous controlled overpressure should be
 considered. The means by which this is achieved should be determined and captured in the CCS.
+
+=== PDF PAGE 44 ===
 The APS in a closed system should simulate process flow and aseptic filling into sterile containers, either by
 using closed connectors (e.g., single-use system (SUS)) or by direct connections, when the containers are
 sterilized together with the closed system (e.g., a SUS manifold system with multiple bags or fixed vessels)
@@ -1795,6 +2065,8 @@ operations are provided within this section. Different types of products are man
 aseptic operations including many of those defined and regulated as advanced therapy medicinal products
 (ATMPs) which is a broad class of therapies inclusive of somatic cell therapies, gene therapies, and tissue-
 engineered medicinal products. While the considerations for manual operations discussed within this section
+
+=== PDF PAGE 45 ===
 are focused to ATMPs, these may also be applied to other product types that utilize manual aseptic
 processing. In addition, recommended practices for manual aseptic processes are detailed in TR 62.
 Many ATMPs cannot be terminally sterilized (e.g., autologous cellular-based therapies) thus requiring
@@ -1846,6 +2118,8 @@ sterility of product in a manual aseptic process and not just a passed APS run a
 •
 Simulation with anaerobic conditions is not systematically required, as most cell and gene therapies
 are manufactured entirely in the presence of atmospheric oxygen.
+
+=== PDF PAGE 46 ===
 •
 In the case of a multiproduct facility, if a bracketing approach is used for APS, strategies like risk-
 based worst-case challenge combining the common processing steps or intervention types, could be
@@ -1886,6 +2160,8 @@ risk assessment.
 A case study for the design of an APS for an ATMP (autologous gene-modified cellular therapy such as a
 CAR-T product) is provided in Example 8.
 
+=== PDF PAGE 47 ===
+
 ## 5.0 Aseptic Process Simulation Documentation
 
 Documentation is an important element of an APS program, since it serves as a record of the simulation’s
@@ -1923,6 +2199,8 @@ for the APS must be prepared, approved, and issued prior to the start of the stu
 identified for traceability and approved prior to execution by Quality Unit representatives. Other
 stakeholders may review and approve the document at the discretion of the company. The document should
 include, but not be limited to, the following information:
+
+=== PDF PAGE 48 ===
 •
 Groups responsible for execution, microbial testing, and approval of the study
 •
@@ -1995,6 +2273,8 @@ of the process) or corrective (required to maintain operation), and stoppages sh
 batch record as to the type of intervention, time the intervention occurred, aseptic operators involved,
 duration of the intervention or stoppage, and the number of the box or tray being filled. The batch record
 should include information relevant to the performance and completion of the study. The protocol and report
+
+=== PDF PAGE 49 ===
 should be properly filled out following appropriate good manufacturing practice (GMP) documentation
 practices. This record should include, but is not limited to:
 •
@@ -2055,6 +2335,8 @@ in accordance with the firm’s policies and regulatory requirements.
 
 The APS should be observed to ensure that all planned activities are properly executed and represent an
 appropriate challenge to process capability. Observations may also be used to augment training for aseptic
+
+=== PDF PAGE 50 ===
 practices and can be a valuable tool during the investigation of an APS failure. Observation should
 commence upon initiation of the APS, including equipment setup (and loading for isolators), and continue
 until the entire aseptic process has been completed (see Section 4.1.1). Observation of the simulation should
@@ -2108,9 +2390,13 @@ cameras to avoid risk of contamination.
 If used, video recording should be combined with people performing real-time observations. If used as part
 of an investigation, the applicable sections of the video recording should be retained just as any other GMP
 documentation. The video recording may then be referenced in any deviation raised. Each manufacturer
+
+=== PDF PAGE 51 ===
 should have a procedure that defines the purpose of the video recording, how it is to be used, and its
 retention period. Artificial intelligence (machine learning/deep learning) may also be used to analyze, detect,
 and classify interventions, and then to indicate whether or not the intervention was performed correctly.
+
+=== PDF PAGE 52 ===
 
 ## 6.0 Environmental Monitoring
 
@@ -2146,6 +2432,8 @@ results.
 routinely performed in such an environment and should not be used as justification for doing so. Similarly,
 passing an APS simulation with EM results significantly below production limits does not establish those
 lower levels as the new production limits.
+
+=== PDF PAGE 53 ===
 
 ## 7.0 Elements of Aseptic Process Simulations
 
@@ -2183,6 +2471,8 @@ spare parts) and involve the same activities or interventions, should not requir
 studies. However, where there are potential differences in the use or condition of these parts, for example,
 parts from different supplier sources or evidence of differences from process performance records, a risk
 assessment should be used to help determine if additional or separate APS studies are required.
+
+=== PDF PAGE 54 ===
 Consideration should be given to parts that are used in routine production rather than for APS studies alone,
 if risk related characteristics such as wear or condition vary.
 Where there are differences in variables, such as the size of filler parts and closure placement and insertion
@@ -2227,6 +2517,8 @@ considerations are fully considered in the simulation. If it is necessary to use
 an oxygen-free process, testing should confirm the ability of the medium selected (e.g., an anaerobic media)
 to support microbial growth when the inert gas is utilized. Any replacement of gases should not result in
 additional risk to the equipment, process, or personnel. It is important to note that the sterility of the inert
+
+=== PDF PAGE 55 ===
 gas system should be through filter validation, integrity testing, and sterilization of connecting lines
 downstream of the filter, not by means of the APS.
 A risk assessment should specifically describe the aerobic or anaerobic nature of the aseptic process. The
@@ -2271,12 +2563,33 @@ and closures exhibit different levels of performance, then additional or separat
 to assess those process variables. Examples of containers and closures that may pose increased levels of risk
 are outlined in Table 7.5.1-1.
 
-| | | | / |
-| --- | --- | --- | --- |
-| Scenario 1 | + | | |
-| Scenario 2 | + | | |
-| Scenario 3 | + WFI | | WFI |
-| Scenario 4 | APS | | |
+=== PDF PAGE 56 ===
+
+**Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics**
+
+Container-Closure Characteristic
+Example of Potential Risk
+Containers with larger openings
+Greater potential for microorganism intrusion through the
+opening
+Containers with smaller openings
+Potential contact with the operator’s gloved hands in the case
+of ATMPs with a manual fill
+Larger containers
+Filling of a larger volume of product may take more time,
+increasing the chance that contamination may be introduced
+Smaller containers
+Filling small volumes of product may pose a risk if the product
+accumulates near the top of the vial, if the container opening is
+close to support tracks or rails, or if containers are run at a faster
+speed and/or are less stable and fall over more frequently
+leading to higher rate of interventions
+Containers and closures that exhibit
+higher levels of production process-
+related rejects and/or tend to be
+more difficult or complex to run
+Potential for increased frequency of interventions to address
+container-closure handling issues
 
 ##### 7.5.1.1 Container and Closure Bracketing
 
@@ -2307,6 +2620,8 @@ The decision can be complex, and risk-based decision-making should be used to en
 process variables that could pose a risk to product sterility are addressed within the bracketed
 process conditions. The selection of bracketing sizes or configurations should be justified by risk
 assessment. Variables to consider include such process and component aspects as component
+
+=== PDF PAGE 57 ===
 material-of-construction, container height, proximity to transport rails, ease of transport,
 interventions required, fill-system setup, production yields, and rejection rates.
 •
@@ -2358,6 +2673,8 @@ from one container into another increases the risk of contamination and, if not 
 result in positive media-filled units that may be difficult to unequivocally attribute to the emptying activity,
 rather than to an aseptic process failure.
 
+=== PDF PAGE 58 ===
+
 #### 7.5.3 Components from Varying Suppliers and of Different Designs and Compositions
 
 An assessment should be conducted of containers and closures that have the same dimensions, but different
@@ -2408,6 +2725,8 @@ assessed to add risk from such characteristics as splash or foaming.
 
 As a general rule, interventions (inherent and corrective) should be minimized during routine aseptic
 processing. Interventions that would represent an unreasonable risk of contamination should not be included
+
+=== PDF PAGE 59 ===
 in either APS or routine production. The choice of interventions to be included in an APS should be the
 result of a risk assessment. Where an intervention, even if rarely performed, poses a higher risk to the
 product or process due to its complexity and infrequent execution, the company may consider including the
@@ -2465,6 +2784,8 @@ heavily dependent on operator performance, the full process duration must be rep
 The APS should be carefully designed to account for variables unique to manual operations using tools and
 manipulations to ensure accurate simulation of real-world challenges.
 
+=== PDF PAGE 60 ===
+
 #### 7.9.1 Aseptic Process Validation Limitations
 
 It is equally important to understand the constraints placed upon the APS. An APS is not designed to
@@ -2509,6 +2830,8 @@ sterility throughout the maximum hold duration, while accommodating the handling
 and operational needs of the process. Periodically, the APS should include materials held for the maximum
 qualified time to ensure that no duration-related variables are overlooked (13); however, APS runs should
 not be used as the sole method to qualify maximum hold times.
+
+=== PDF PAGE 61 ===
 
 ### 7.10 Number of Units
 
@@ -2561,6 +2884,8 @@ The line first fills media intermittently throughout the run, alternating with p
 interventions and other critical activities are performed during the media-filling portion only. Media is filled
 periodically throughout the process, including at the beginning and end of the routine process duration, as
 well as during and immediately after any planned interventions.
+
+=== PDF PAGE 62 ===
 Rationale: Under this approach, the aseptic personnel, procedures, and processing environment continue to
 be evaluated, but the number of media-filled units produced is reduced.
 Caution: The time the machine remains idle does not present the same level of challenge (to the process,
@@ -2600,6 +2925,8 @@ Rationale: This is an evaluation of units filled with media, occurring at the en
 operation of long duration. Therefore, variables associated with the length of the filling operation may be
 captured and evaluated in the APS, without the necessity of running, incubating, and inspecting a large
 number of media-filled units.
+
+=== PDF PAGE 63 ===
 Caution: This option is of limited benefit because running an APS after a production lot will not necessarily
 capture all relevant process variables associated with process start-up, including such activities as certain
 material transfer, fill-system setup, equipment assembly, and others occurring during the early parts of the
@@ -2650,6 +2977,8 @@ or misaligned closures, cracks in glass, poor crimps, empty containers) due to t
 sterility, and other non-container integrity related defects (e.g., presence of particulate, fill volume, cake
 shape in lyophilized products, cosmetic defects). The routine inspection process should be maintained for
 APS-filled units, with only nonintegral APS units removed during the preincubation inspection. Alternative
+
+=== PDF PAGE 64 ===
 inspection processes may also be used as long as the inspectors have been appropriately qualified to remove
 only nonintegral units. The removal of nonintegral units is appropriate because the evaualtion of these units
 in the APS would yield no valuable scientific information. For the purpose of the APS, cosmetic,
@@ -2693,6 +3022,8 @@ At the end of the incubation period, visual inspection of all APS units for grow
 the outcome of the APS. The inspection process should be performed by qualified inspectors who have
 demonstrated the ability to detect both low- and high-level microbial-growth patterns. Oversight should be
 provided by personnel adequately trained in microbiology and quality assurance.
+
+=== PDF PAGE 65 ===
 The analysis of filled containers for visible particulates may be used to gauge overall process control for
 intrinsic and extrinsic particle contamination. However, the presence of visible particulate matter should not
 result in APS failure unless microbiological contamination is detected.
@@ -2749,6 +3080,8 @@ validated mixing times and temperatures to ensure that the media retains its abi
 should be of appropriate quality; a vegetable-based medium is the standard because it has the advantage of
 being mycoplasma, BSE- and TSE-free.
 
+=== PDF PAGE 66 ===
+
 #### 7.17.1 Sample Collection
 
 Demonstration of the growth-promoting properties of the media used for APS should occur at meaningful
@@ -2797,6 +3130,8 @@ spillage during filling should be in place to avoid media entering difficult to 
 possible to clean surfaces that may have been contacted by media, such as for gaskets and seals, these
 should be replaced.
 
+=== PDF PAGE 67 ===
+
 ## 8.0 Personnel Qualification
 
 The qualification program should be risk-based and commensurate with the complexity and the level of
@@ -2819,6 +3154,8 @@ documented qualification program to ensure that those personnel can perform thei
 reliably, using appropriate technique, methods, and behaviors that minimize the potential risk of
 microbiological contamination to product. Company-specific qualification acceptance criteria should be
 established in a phased qualification process.
+
+=== PDF PAGE 68 ===
 
 *[Figure 8.0-1 APS Personnel Qualification Criteria]*
 
@@ -2852,6 +3189,8 @@ beginning with a visual inspection of the individual’s ability to properly don
 with a microbial assessment to verify compliance with aseptic standards. This comprehensive approach
 ensures personnel are adequately prepared for working in controlled environments while also meeting
 regulatory and operational requirements.
+
+=== PDF PAGE 69 ===
 
 ### 8.2 Qualification Level 2
 
@@ -2894,6 +3233,8 @@ abnormalities, determining root causes, and implementing corrective actions, as 
 in APSs to ensure continued proficiency in critical aseptic techniques under production conditions. A
 structured ongoing qualification program ensures that aseptic processing personnel remain proficient,
 reliable, and compliant and contribute to product quality and patient safety.
+
+=== PDF PAGE 70 ===
 
 ## 9.0 Aseptic Processing Simulation Acceptance Criteria
 
@@ -2942,6 +3283,8 @@ implemented to eliminate the cause or potential causes.
 •
 The investigation, conclusion, and CAPAs required to eliminate the cause of the contamination
 should be supported by scientific evaluation and risk assessment.
+
+=== PDF PAGE 71 ===
 •
 Where these CAPAs change the aseptic process, those changes should be qualified, reflected in
 changes to relevant SOPs and training and, if required, validated.
@@ -2998,6 +3341,8 @@ Power outage
 Air-handling stoppage
 •
 Material shortage
+
+=== PDF PAGE 72 ===
 •
 Product line or vessel leakage or disruption
 •
@@ -3008,6 +3353,8 @@ considered as failed, regardless of the number of units filled and would need to
 However, if an aborted APS shows no positive units, then the aborted APS should not be considered as a
 passing, unless the requisite number of units have been filled and all other conditions and requirements of
 the APS have been met.
+
+=== PDF PAGE 73 ===
 
 ## 10.0 Considerations for Investigation
 
@@ -3055,6 +3402,8 @@ microorganisms should also be compared to that of microorganisms obtained from t
 programs, including testing of sterility and bioburden (e.g., water, gases, raw materials,
 drug substance, drug product), as well as any prior APS recovery, to help identify the
 potential sources of the contaminant.
+
+=== PDF PAGE 74 ===
 ̶
 Isolates should be checked for possible identification matches, especially from areas that
 exceed their limits or are trending upward.
@@ -3121,6 +3470,8 @@ practices, if detected, should be addressed.
 •
 If an APS fails, potential batch impact to previously manufactured batches must be evaluated, as
 well as any that may have been manufactured after the APS.
+
+=== PDF PAGE 75 ===
 The investigation report should contain:
 •
 Summary of the occurrence
@@ -3153,6 +3504,8 @@ process. If the investigation determines that the cause of the contamination is 
 of the aseptic process, for example, the contaminated units are a result of laboratory error or the use of
 nonsterile media, then the aseptic process has not been determined to be unacceptable. However, the APS
 run should be considered invalidated and replaced with a single APS.
+
+=== PDF PAGE 76 ===
 
 ## 11.0 The Use of Aseptic Process Simulation in Ongoing Process
 
@@ -3197,6 +3550,8 @@ prevent microbiological contamination. The periodic APS time-interval range and 
 for any time-interval deviation should be risk-based and defined in a procedure. If no process changes are
 noted and unless there is evidence or reason to the contrary, a single APS run should be sufficient.
 
+=== PDF PAGE 77 ===
+
 ### 11.3 Event-Driven and For-Cause Ongoing Aseptic Process Simulation
 
 Assessment
@@ -3233,6 +3588,8 @@ cases, one approach may be to perform APSs for these processes on a rotational b
 challenged at least annually. Depending upon individual circumstances, however, more frequent APSs may
 be necessary. The rationale for the rotation or alternation of different permutations should be documented in
 the overall APS approach of the company or site, for example, in the Site Validation Master Plan.
+
+=== PDF PAGE 78 ===
 
 ## 12.0 References
 
@@ -3291,6 +3648,8 @@ Bethesda, MD, 2022.
 16.
 Parenteral Drug Association. Technical Report No. 66: Application of Single-Use Systems in
 Pharmaceutical Manufacturing; PDA: Bethesda, Md., 2014.
+
+=== PDF PAGE 79 ===
 17.
 Prout, G, et al. The Use of Process Simulation Tests in the Evaluation of Processes for the
 Manufacture of Sterile Products: No. 4: Technical Monograph. The Parenteral Society: Brazil,
@@ -3317,6 +3676,8 @@ Liquids; PDA: Bethesda, Md., 2025.
 24.
 Parenteral Drug Association. Technical Report No. 69: Bioburden and Biofilm Management in
 Pharmaceutical Manufacturing Operations; PDA: Bethesda, Md., 2015.
+
+=== PDF PAGE 80 ===
 
 ## 13.0 Appendix 1: Media and Placebo Considerations
 
@@ -3356,6 +3717,8 @@ for negative-control sterility testing, if necessary.
 Growth-promotion testing of the surrogate and media combination should be performed using
 pharmacopeial methods. Consideration should be given to include in-house isolates recovered from EM,
 personnel monitoring, and sterility-test failures. If the initial concentration of the growth-promoting media is
+
+=== PDF PAGE 81 ===
 different from the end concentration (i.e., double strength because of subsequent dilution steps), the initial
 concentration should also be challenged for growth promotion (see Section 7.17).
 
@@ -3400,6 +3763,8 @@ cycles delivering higher levels of lethality may cause a Maillard reaction (incl
 medium and adversely affect growth promotion. It can also be useful to combine sterilization methods, for
 example, purchasing irradiated powder media (to ensure no mycoplasma) and generating a very low
 bioburden solution by dissolution in WFI, followed by a final sterile filtration prior to filling.
+
+=== PDF PAGE 82 ===
 The filtration system used to produce sterile products is validated independently of the APS and does not
 require further validation by virtue of an APS (23). However, any post-filtration aseptic manipulation of
 products, such as disconnection, reconnection, and transfer (e.g., using a transfer loop) shall be covered
@@ -3423,31 +3788,17 @@ radiation. The radiation sterilization process should be validated, and each lot
 information included in its certificate of analysis. It may be advisable to sample and evaluate media for
 reconstitution and growth-promotion prior to use in an APS.
 
+=== PDF PAGE 83 ===
+
 ## 14.0 Appendix 2: Aseptic Process Simulation Performance Sequence
 
 The activities in a typical APS generally occur in the order presented in Table 14.0-1.
 
-| Activity | Additional Information* | ☐ |
-| --- | --- | --- |
-| Sterilization Process Validation | TR No. 1: Validation of Moist Heat Sterilization ProcessesTR No. 3: Validation of Dry Heat Processes Used for Depyrogenation and Sterilization | ☐ |
-| Standard Operating Procedures (SOPs) are Available | N/A | ☐ |
-| Personnel Training on the Applicable Procedures and Qualification Status | N/A | ☐ |
-| Personnel Aseptic-Gowning Certification | Section 8.0 Personnel Qualification | ☐ |
-| Disinfectant Qualification | TR No. 70: Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities | ☐ |
-| Implementation of Environmental Decontamination Procedures (cleaning, disinfection and isolator decontamination) | PtC for the Aseptic Processing of Sterile Pharmaceutical Products in IsolatorsTR No. 34: Design and Validation of Isolator SystemsTR No. 70: Cleaning and Disinfection Programs | ☐ |
-| Facility Cleaning and Decontamination Program | TR No. 70: Cleaning and Disinfection Programs | ☐ |
-| Equipment Cleaning Validation | TR No. 29: Cleaning ValidationTR No. 49: Biotechnology Cleaning Validation | ☐ |
-| Product, Container-Closure, and Equipment Sterilization | TR No. 1: Moist Heat SterilizationTR No. 3: Dry Heat Processes | ☐ |
-| Manufacturing and Fill-System Qualification | Manufacturing Technology Guide No. 1: Aseptic Filling, Engineering, and Operation | ☐ |
-| Container-Closure Integrity | TR No. 27: Pharmaceutical Package Integrity | ☐ |
-| Environmental Controls (air flow, HEPA filtration, temperature and humidity control, viable and total particulate control (EMPQ)) | TR No. 13: Fundamentals of an Environmental Monitoring Program | ☐ |
-| Airflow Visualization Studies | N/A | ☐ |
-| Utility Gases Sterilization (product-contacting) | TR No. 40: Sterilization Filtration of Gases | ☐ |
-| Materials Disinfection and Transfer Controls | Points to Consider No. 1: Aseptic Processing | ☐ |
-| Filter Integrity for Sterilizing Filters as well as Vent/Gas Filters (where applicable) | PtC for Pre-Use Post-Sterilization Integrity TestingPtC for Risks Associated with Sterilizing Grade FiltersTR No. 26: Sterilizing Filtration of Liquids | ☐ |
-| Definition of Environmental Monitoring (EM) Program | TR No. 13: Fundamentals of an Environmental Monitoring Program | ☐ |
-| Equipment Qualification (especially runnability studies) | N/A | ☐ |
+**Table 14.0-1 Aseptic Process Simulation Performance Sequence Checklist**
 
+Activity
+Additional Information*
+Completed
 1. Prior to Initiating Aseptic Process Simulation Confirm Satisfactory Completion of the Qualification, Validation, and Smooth
 Operation of the Aseptic Process and its Support Systems, including (see Section 3.1):
 Sterilization Process Validation
@@ -3472,6 +3823,8 @@ Disinfectant Qualification
 •
 Disinfection Programs for Aseptic Manufacturing Facilities
 ☐
+
+=== PDF PAGE 84 ===
 Activity
 Additional Information*
 Completed
@@ -3521,6 +3874,8 @@ Environmental Monitoring Program
 Airflow Visualization Studies
 N/A
 ☐
+
+=== PDF PAGE 85 ===
 Activity
 Additional Information*
 Completed
@@ -3575,6 +3930,8 @@ Operation Hold Times Impacting Sterility Assurance
 •
 Section 7.9.4 Qualification of Maximum Hold Times
 ☐
+
+=== PDF PAGE 86 ===
 Activity
 Additional Information*
 Completed
@@ -3634,6 +3991,8 @@ Considerations
 •
 Section 7.8 Interventions
 ☐
+
+=== PDF PAGE 87 ===
 Activity
 Additional Information*
 Completed
@@ -3676,6 +4035,8 @@ production.
 •
 Section 7.16 Unit Accountability and Reconciliation
 ☐
+
+=== PDF PAGE 88 ===
 Activity
 Additional Information*
 Completed
@@ -3722,6 +4083,8 @@ incubation media-filled units.
 •
 Section 7.17 Growth Promotion/Positive Control
 ☐
+
+=== PDF PAGE 89 ===
 Activity
 Additional Information*
 Completed
@@ -3746,6 +4109,8 @@ Record
 ☐
 *TR 22 Section or Relevant PDA Technical Document
 N/A = no relevant PDA Technical Documents for this activity
+
+=== PDF PAGE 90 ===
 
 ## 15.0 Appendix 3: Practical Examples of Using Risk Assessment in
 
@@ -3782,12 +4147,160 @@ cannot be mitigated due to highly manual steps in ATMPs, a higher APS frequency 
 qualify each operator every 6 months rather than every 12 months. This will be indirectly reflected on the
 total number of APS runs per year, example: a company that has two operators will be required to conduct
 at least 4 APS runs per year for the same process to comply with EU Annex 1 regardless of risk level
+
+=== PDF PAGE 91 ===
 obtained from the example. In other cases, when the risk is low, such as when using an isolator, a lower
 frequency of shift simulation can be justified.
 
-| Risk Factor | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
+=== PDF PAGE 92 ===
 
+**Table 15.1-1 Applying Risk-Based APS Frequency**
+
+Risk Factor
+Risk Level (Score)
+Assigned
+Risk
+Score
+High (5)
+Medium (3)
+Low (1)
+Process Complexity
+High complexity, large
+number of aseptic
+assemblies, large number
+of inherent interventions
+Medium complexity,
+medium number of aseptic
+assemblies, medium
+number of inherent
+interventions
+Low complexity, low
+number of aseptic
+assemblies, low number of
+inherent interventions
+
+Process Novelty1
+<2 years
+2-5 years
+>5 years
+
+Process Frequency2
+<Once every 3 months
+Quarterly to Weekly
+Weekly to Daily
+
+Process Automation
+Low
+(e.g.,high number of
+manual steps)
+Medium
+(e.g., automated filling line
+with medium inherent
+interventions)
+High
+(e.g., dependent on
+robotics)
+
+Degree of Critical Zone
+Protection
+Low
+(e.g., conventional
+unidirectional air flow unit/
+biosafety cabinet)
+Medium
+(e.g., oRABs or cRABs
+without vapor phase
+hydrogen peroxide (VPHP)
+decontamination cycle)
+High
+(e.g., isolator or cRABs
+with VPHP
+decontamination cycle)
+
+=== PDF PAGE 93 ===
+Risk Factor
+Risk Level (Score)
+Assigned
+Risk
+Score
+High (5)
+Medium (3)
+Low (1)
+Degree of Experience of
+Technicians in Aseptic
+Processes3
+Low: <2 years
+Medium: 2-5 years
+High: >5 years
+
+Environmental Monitoring
+Compliance History
+>1 OOL* per month
+1 OOL every 1 to 6
+months
+<1 OOL every 6 months
+
+Process Compliance History
+APS Failure/ Sterility Test
+Failures in Past 2 Years
+>1 OOS* per 6 months
+1 OOS every 6 to 12
+months
+<1 OOS every 12 months
+
+Aseptic Process Compliance
+History (Process-Related Major
+Deviations/Audit Findings/
+483s)
+>3 major deviations/audit
+findings/Regulatory
+observations per year
+1-2 major deviations/audit
+findings/Regulatory
+observations per year
+<1 major deviation/audit
+finding/Regulatory
+observation per year
+
+Recent Major Changes in
+Facility/Equipment/Key
+Personnel
+>3 per year
+1-3 per year
+<1 per year
+
+=== PDF PAGE 94 ===
+Assigned Risk Level Total
+>35
+15-35
+<15
+
+Recommended APS Frequency
+Mitigate risk level of the
+process.
+If mitigation is not feasible
+with current technologies,
+and the process is fully
+manual (e.g., ATMPs),
+personnel participation in
+APS should occur every 6
+months (+/- 1 month) per
+shift, rather than increasing
+the overall frequency of
+APS runs.
+Conduct APS every 6
+months, +/- 1 month for
+each shift.
+Lower frequency per shift
+(e.g., every 12 months)
+may be justified, e.g., in
+case of well-established
+closed aseptic process
+inside gloveless isolator
+with no human
+intervention and with no
+history of OOS results.
+N/A
 1 Author’s note: Example: A company historically aseptically filling liquid products using stainless steel systems and recently deciding to use single use
 systems for the first time in their facility.
 2 Author’s note: The process-frequency factor risk-scoring measures the level of proficiency that operators are expected to have with the process, given
@@ -3796,6 +4309,8 @@ how often it is being executed.
 * OOL = Out-of-Limit
 * OOS = Out-of-Specification
 While this example focuses on results above action limit, similar considerations should be given to significant negative trends of results above alert level.
+
+=== PDF PAGE 95 ===
 
 ### 15.2 Example 2: Intervention Simulation Frequency Based on Application
 
@@ -3810,25 +4325,370 @@ number of interventions to be included in the APS are defined based on the prece
 commercial production, and takes into consideration the new risk level of each intervention based on the
 IREM.
 
-| Risk Level | Recommended APS Frequency |
-| --- | --- |
+**Table 15.2-1 represents a risk-based APS intervention simulation plan that was developed to help determine**
 
+the frequency of the inclusion of interventions and to ensure that simulations are representative of all actual
+aseptic manipulations performed during regular aseptic operations (during online filtration, filling,
 stoppering, and sealing). Interventions that commonly occur would be routinely simulated, while those
 occurring rarely can be simulated periodically. A grouping logic can be established for the similar nature of
 interventions, provided they have similar risk factors like duration, proximity, and complexity. Interventions
 design aspects such as intervention location, tools used, and/or air flow effects may also be considered in
 establishing a grouping logic.
 
-| No. | Intervention Description | Category | Type | Initial # / Freq. | Risk after IREM | Existing Risk / Mitigation | Final Risk | Revised # / Freq. | Rationale |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Filling machine IPC calibration | Inherent | Open door | 3 / Every APS | High Risk | IPC calibration now performed before decontamination & assembly (no longer during aseptic process) | N/A | N/A | No aseptic process intervention involved; eliminated after mitigation1 |
+=== PDF PAGE 96 ===
 
+**Table 15.2-1 Intervention Simulation Frequency-Based on Application of Intervention Risk Evaluation & Management Model**
+
+Line Type – Aseptic Vial Filling Line with open Restricted Access Barrier System placed in Grade B external environment
+No.
+Intervention
+Description
+Intervention
+Category
+Type of
+Intervention
+APS Simulation Plan
+Risk
+Categorization
+after IREM*
+Evaluation
+Existing Risk/Risk
+Mitigation Actions
+Final Risk
+Categorization
+after IREM*
+Reevaluation
+Revised APS Plan
+Total No. of
+Interventions
+Simulation
+Frequency
+Revised No.
+of
+Interventions
+Revised
+Simulation
+Frequency
+Rationale for
+Change
+Filling
+machine in-
+process-
+control
+(IPC)
+calibration
+Inherent
+Open door
+Every
+APS
+High Risk
+Intervention of filling
+machine IPC calibration
+was performed after
+completion of the
+machine parts
+assembly.
+It is now performed
+before
+decontamination
+procedure and
+assembly.
+N/A
+-
+N/A
+No aseptic
+process
+intervention
+involved,
+hence, not
+evaluated in
+the APS for
+the same.1
+Group-A
+Stopper
+lock
+adjustment
+Stopper
+plate
+adjustment
+Improper
+stoppers
+for vials
+Corrective
+Open door
+Every
+APS
+Very High
+Risk
+Activity was performed
+with open door due to
+infeasibility with
+existing glove port.
+Additional glove port
+provided to perform
+this activity with gloved
+hand in closed door
+condition without
+breaking first air over
+critical surfaces.
+Medium
+Once per
+year
+Number of
+interventions
+is revised
+from 10 to 6
+based on the
+trend of
+interventions
+in the
+commercial
+batches.
+Risk of
+intervention
+mitigated.
+Fill volume
+adjustment
+and initial
+in process
+checks
+Inherent
+Closed
+door
+Every
+APS
+Low Risk
+No human intervention
+is performed during fill-
+volume adjustment and
+initial in-process
+checks. This activity is
+done by the operator
+entering the command
+on the machine panel.
+N/A
+-
+N/A
+No aseptic
+process
+intervention
+involved.
+Removed
+from APS
+list.
+
+=== PDF PAGE 97 ===
+
+Line Type – Aseptic Vial Filling Line with open Restricted Access Barrier System placed in Grade B external environment
+No.
+Intervention
+Description
+Intervention
+Category
+Type of
+Intervention
+APS Simulation Plan
+Risk
+Categorization
+after IREM*
+Evaluation
+Existing Risk/Risk
+Mitigation Actions
+Final Risk
+Categorization
+after IREM*
+Reevaluation
+Revised APS Plan
+Total No. of
+Interventions
+Simulation
+Frequency
+Revised No.
+of
+Interventions
+Revised
+Simulation
+Frequency
+Rationale for
+Change
+Group-B
+Filling
+machine
+setup:
+Machine
+parts
+assembling
+(stoppering
+station,
+gassing
+station, and
+filling
+station)
+Inherent
+Open door
+Every
+APS
+High Risk
+Machine set up with
+open door by process
+design. Risk is
+recognized as “High”
+and, hence, shall be
+simulated in every APS.
+Risk mitigation action is
+to adopt new
+procedure as follows:
+1. There is no open
+product-contact part
+exposed to the
+environment during
+machine setup.
+2. All product-contact
+surfaces are wrapped,
+and those are opened
+only after door closure.
+3. Operators trained on
+new procedures.
+High Risk
+Every
+APS
+No change
+considering
+filling setup
+is an integral
+part of every
+batch
+processing
+(inherent
+intervention).
+Vial
+breakage at
+in-feed
+turntable
+of filling
+machine
+Corrective
+Closed
+door
+Every
+APS
+Low Risk2,3
+Risk is accepted.
+Procedure is in place to
+remove other empty
+vials in the turntable.
+Operators are trained
+to perform the
+intervention aseptically.
+Low Risk
+Once per
+year
+Number
+changed
+based on the
+trend.
+Frequency
+of simulation
+changed
+based on risk
+level.
+
+=== PDF PAGE 98 ===
+
+Line Type – Aseptic Vial Filling Line with open Restricted Access Barrier System placed in Grade B external environment
+No.
+Intervention
+Description
+Intervention
+Category
+Type of
+Intervention
+APS Simulation Plan
+Risk
+Categorization
+after IREM*
+Evaluation
+Existing Risk/Risk
+Mitigation Actions
+Final Risk
+Categorization
+after IREM*
+Reevaluation
+Revised APS Plan
+Total No. of
+Interventions
+Simulation
+Frequency
+Revised No.
+of
+Interventions
+Revised
+Simulation
+Frequency
+Rationale for
+Change
+Group-C
+Vial Jam
+Vial
+overload/
+breakage
+Sensor-
+format
+parts
+adjustment
+at in-feed
+turntable
+Adjustment
+of in-feed
+star wheel
+of filling
+machine
+Corrective
+Open door
+Every
+APS
+Very High
+Risk
+Procedural mitigation
+implemented to discard
+all surrounding
+exposed vials and
+sanitization of inner
+surfaces of Restricted
+Access Barrier System
+(RABS) door.
+Operators trained to
+perform the
+intervention aseptically.
+Controls are in place to
+detect microbial
+excursion in the
+environment during
+handling of
+intervention.
+Medium
+Risk
+Once per
+year
+Number of
+interventions
+changed
+based on
+trend.
+Simulation
+frequency
+changed
+based on
+mitigated
+risk level.
 Note: Other types of interventions that can be evaluated utilizing a similar approach are, for example, stopper-track minimum accumulation, loading of the stopper in the hopper through a rapid transfer port (RTP), an object falling
 on the in-feed turntable filling machine, and an empty-run machine-run check for vial transfer.
 1 Author’s note: This Intervention simulation is eliminated after mitigation actions since this is no longer done as a part of the aseptic process in regular production.
 2 Author’s note: The risk is rated low in this particular case. However, the risk level can increase depending on the frequency and extent of vial breakage and the procedure adopted to discard the adjacent empty vials.
 3 Author’s note: During the evaluation of this example, it was suggested that the installation of a physical barrier and removal of all vials in the same sector be considered as a mitigation to prevent the risk of glass particles and other
 contamination from contacting open vials or other product-contact surfaces.
+
+=== PDF PAGE 99 ===
 
 ### 15.3 Example 3: Use of QRM to Define Inclusion and Frequency of
 
@@ -3845,21 +4705,150 @@ The scoring assignment can vary widely depending on the particulars of the inter
 and the process/product. The intent is not to provide examples of specific scoring, but rather to show how
 the tool can be used.
 
-| 2 | Group-A: Stopper lock adj. / Stopper plate adj. / Improper stoppers | Corrective | Open door | 10 / Every APS | Very High Risk | Additional glove port provided; activity now performed with closed door without breaking first air | Medium | 6 / Once per year | Number revised from 10 to 6 based on trend; risk mitigated |
-| 3 | Fill volume adjustment and initial in process checks | Inherent | Closed door | 1 / Every APS | Low Risk | No human intervention; operator enters command on machine panel | N/A | N/A | No aseptic process intervention involved; removed from APS list |
+=== PDF PAGE 100 ===
+
+**Table 15.3-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 3)**
+
+Intervention Risk Criteria
+Risk Level (Score)
+Assigned
+Risk
+Score
+High (5)
+Medium (3)
+Low (1)
+Complexity
+High
+(e.g., machine setup)
+Medium
+(e.g., removing a jammed
+rubber stopper)
+Low
+(e.g., removing a toppled
+vial from conveyor belt)
+
+Duration
+>10 minutes
+2-10 minutes
+<2 minutes
+
+Proximity to Product/Contact
+Surfaces
+<15 cm
+15-45 cm
+>45 cm
+
+Frequency
+>4 times per shift
+2-4 times per shift
+≤1 time per shift
+
+Air Flow Visualization (AFV)
+Disruption of first air with
+something that is not in a
+sterile state (e.g., sleeve of
+gown); additional controls
+required
+Disruption of first air with
+a sterilized tool or utensil
+No disruption of first air
+
+Barrier
+Conventional Filling Line*
+RABS
+Isolator
+
+Overall Intervention Risk Level
+Total
+>20
+11-20
+<11
 
 *A conventional aseptic filling line is one without a RABS or isolator barrier. These are legacy systems and are in the process of being phased out of the
 industry.
 
-| 4 | Group-B: Filling machine setup (stoppering station, gassing station, filling station parts assembly) | Inherent | Open door | 1 / Every APS | High Risk | Product-contact surfaces wrapped & opened only after door closure; operators trained on new procedures | High Risk | 1 / Every APS | No change; filling setup is integral part of every batch (inherent intervention) |
-| 5 | Vial breakage at in-feed turntable of filling machine | Corrective | Closed door | 5 / Every APS | Low Risk2,3 | Procedure in place to remove surrounding empty vials; operators trained for aseptic handling | Low Risk | 3 / Once per year | Number & frequency changed based on trend and risk level |
+=== PDF PAGE 101 ===
 
+**Table 15.3-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 3)**
+
+Overall Intervention Risk Level
+Recommended Frequency of Simulation
+Recommended Number of Simulations per APS Run
+High
+Biannual*
+At least the same number as in routine production
+Medium
+Biannual*
+May be less than the number in routine production
+Low
+Yearly
+May be less than the number in routine production
 *Biannual: twice a year (approximately every 6 months)
 
-| Intervention Risk Criteria | High (5) | Medium (3) | Low (1) | Assigned Risk Score |
-| --- | --- | --- | --- | --- |
+**Table 15.3-3 Risk Assessment of Possible Interventions for Vial-Filling in Restricted Access Barrier Systems without Built-In In-**
 
+Process Control (Example 3)
+No.
+Intervention
+Complexity
+Duration
+Proximity to
+Product/
+Contact
+Surfaces
+Frequency
+AFV
+Barrier
+Overall
+Intervention
+Risk Level
+Total
+Equipment aseptic
+assembly (open-
+door intervention)*
+Removal of vials
+for IPC using glove
+ports
+Introducing EM
+plates (open-door
+intervention)*
+
+=== PDF PAGE 102 ===
+No.
+Intervention
+Complexity
+Duration
+Proximity to
+Product/
+Contact
+Surfaces
+Frequency
+AFV
+Barrier
+Overall
+Intervention
+Risk Level
+Total
+Changing EM
+plates using glove
+ports
+Change filling
+needle (open-door
+intervention)*
+Removing toppled
+open vial using
+glove ports
+Removing jammed
+rubber stopper
+near stoppering
+station using glove
+ports
+Removing toppled
+closed vial near exit
+using glove ports
 *Open-door Interventions should be avoided when possible.
+
+=== PDF PAGE 103 ===
 Explanation of Interventions included in Table 15.3-3 and Table 15.4-3:
 •
 Interventions 1 & 5 can be simulated every 6 months with at least the same number occurring
@@ -3901,9 +4890,61 @@ The scoring assignment can vary widely depending on the particulars of the inter
 and the process/product. The intent is not to provide examples of specific scoring, but rather to show how
 the tool can be used.
 
-**Table 15.5-1** APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case Vial)**
-| Vial Amount (mL) | Initial Number of Runs |
-| --- | --- |
+=== PDF PAGE 104 ===
+
+**Table 15.4-1 Use of Intervention Risk Criteria with Scores to Define the Overall Intervention Risk Level (Example 4)**
+
+Intervention Risk Criteria
+Risk Level (Score)
+Assigned
+Risk
+Score
+High (5)
+Medium (3)
+Low (1)
+Complexity
+High
+(e.g., machine setup)
+Medium
+(e.g., removing a jammed
+rubber stopper)
+Low
+(e.g., removing a toppled
+vial from conveyor belt)
+
+Duration
+>10 minutes
+2-10 minutes
+<2 minutes
+
+Proximity to Product/Contact
+Surfaces
+<15 cm
+15-45 cm
+>45 cm
+
+Frequency1
+>4 times per shift
+2-4 times per shift
+≤1 time per shift
+
+Air Flow Visualization (AFV)
+Interrupt first air (must be
+corrected first)
+Minor flaws but no
+ingress of less clean air
+No flaws
+
+Barrier2
+Conventional Filling Line*
+RABS
+Isolator
+
+Overall Intervention Risk Level
+Total
+>20
+11-20
+<11
 
 1 Author’s note: Frequency may or may not be a risk factor. For this example, it was chosen to be a factor of consideration.
 2 Authors’ note: Using oRABS does not mean that all risks are the same since very few interventions are open-door interventions (e.g., during machine
@@ -3913,18 +4954,88 @@ than the frequency needed when conducted using another line with an isolator.
 *A conventional aseptic filling line is one without a RABS or isolator barrier. These are legacy systems and are in the process of being phased out of the
 industry.
 
-| 2 | 3 |
-| 4 | 1 |
-| 8 | 1 |
+=== PDF PAGE 105 ===
 
+**Table 15.4-2 Recommended Frequencies and Number of Interventions for Each Risk Level (Example 4)**
+
+Overall Intervention Risk Level
+Recommended Frequency of Simulation
+Recommended Number of Simulations per APS Run
+High
+Biannual*
+At least the same number as in routine production
+Medium
+Biannual*
+May be less than the number in routine production
+Low
+Yearly
+May be less than the number in routine production
 *Biannual: twice a year (approximately every 6 months)
 
-**Table 15.5-2** Aseptic Process Simulation Design for Lines Producing Different Products/Dosage Forms (Worst-Case Vial)**
-| Vial Amount (mL) | Initial Number of Runs |
-| --- | --- |
-| 2 | 1 |
-| 4 | 1 |
-| 8 | 1 |
+**Table 15.4-3 Risk Assessment of Possible Interventions for a Vial-Filling in Open Restricted Access Barrier Systems without Built-In**
+
+In-Process Control (Example 4)
+No.
+Intervention
+Complexity
+Duration
+Proximity to
+Product/
+Contact
+Surfaces
+Frequency
+AFV
+Barrier
+Overall
+Intervention
+Risk Level
+Total
+Equipment aseptic
+assembly (open-
+door intervention)
+Removal of vials
+for IPC using glove
+ports
+Introducing EM
+plates (open-door
+intervention)
+
+=== PDF PAGE 106 ===
+No.
+Intervention
+Complexity
+Duration
+Proximity to
+Product/
+Contact
+Surfaces
+Frequency
+AFV
+Barrier
+Overall
+Intervention
+Risk Level
+Total
+Changing EM
+plates using glove
+ports
+Change filling
+needle (open-door
+intervention)
+Removing toppled
+open vial using
+glove ports
+Removing jammed
+rubber stopper
+near stoppering
+station using glove
+ports
+Removing toppled
+closed vial near exit
+using glove ports
+Note: See the explanation of Interventions in Table 15.3-3 for more information.
+
+=== PDF PAGE 107 ===
 
 ### 15.5 Example 5: Aseptic Process Simulation Design for Lines Producing
 
@@ -3953,6 +5064,8 @@ minimum and maximum vials, each of which had three (3) successful consecutive ru
 schedule to cover all of them (e.g., over two years). When risk-based evaluation indicates a worst-case
 container size, its APS frequency should be higher than other container sizes.
 
+=== PDF PAGE 108 ===
+
 ### 15.6 Example 6: Aseptic Process Simulation Design for Lines Producing
 
 Different Products or Dosage Forms
@@ -3964,25 +5077,117 @@ ensure that the APS design will represent worst-case scenarios for all dosage fo
 differences in process steps were considered with other factors fixed. When applying the concept, other
 factors should also be considered that could impact aseptic process and may necessitate more APS runs.
 
-| Process Step | Vials filled with Solution | Vials filled with Suspension | Lyophilized Vials | Inclusion of APS for Line |
-| --- | --- | --- | --- | --- |
-| Preparation in Grade C | Yes | Yes | Yes | Not an aseptic process step and no need to typically simulate while preparing media |
-| Sterile Filtration | Yes | Yes | Yes | Yes (for aseptic assembly but not necessarily using same filter) |
-| Aseptic Addition | N/A | Yes | N/A | Yes |
-| Homogenization | N/A | Yes | N/A | Yes |
-| Filling | Yes | Yes (may include suspension stirring and recirculation to avoid sedimentation, and may also include automatic rejection of first-filled units after machine stoppage) | Yes | Yes (using worst-case scenarios regarding equipment configuration for suspension dosage forms) |
-| Stopper Insertion | Yes (complete insertion) | Yes (complete insertion) | Yes (half insertion of lyophilization stopper) | Yes* |
-| Capping after Stopper Insertion | Yes | Yes | N/A | Yes+ |
-| Lyophilizer Loading | N/A | N/A | Yes | Yes* |
-| Lyophilizer Cycle | N/A | N/A | Yes | Yes (exposed to partial vacuum and vacuum release)* |
-| Lyophilizer Unloading | N/A | N/A | Yes | Yes* |
-| Capping of Lyophilization Vials | N/A | N/A | Yes | Yes* |
+=== PDF PAGE 109 ===
 
+**Table 15.6-1 Assessing Number of Aseptic Process Simulation Requirements for a Line Used to Fill Different Dosage Forms**
+
+Process Step
+Dosage Forms Manufactured at Line
+Inclusion of APS for Line
+Vials filled
+with
+Solution
+Vials filled with Suspension
+Lyophilized
+Vials
+Preparation in
+Grade C
+Yes
+Yes
+Yes
+Not an aseptic process step and no need
+to typically simulate while preparing
+media
+Sterile Filtration
+Yes
+Yes
+Yes
+Yes (for aseptic assembly but not
+necessarily using same filter)
+Aseptic Addition
+N/A
+Yes
+N/A
+Yes
+Homogenization
+N/A
+Yes
+N/A
+Yes
+Filling
+Yes
+Yes (may include suspension
+stirring and recirculation to avoid
+sedimentation, and may also
+include automatic rejection of
+first-filled units after machine
+stoppage)
+Yes
+Yes (using worst-case scenarios regarding
+equipment configuration for suspension
+dosage forms in terms of suspension
+stirring and recirculation to buffer the
+vessel, and without rejecting first-filled
+units after machine stoppage
+Stopper Insertion
+Yes
+(complete
+insertion)
+Yes (complete insertion)
+Yes (half
+insertion of
+lyophilization
+stopper)
+Yes*
+Capping after
+Stopper Insertion
+Yes
+Yes
+N/A
+Yes+
+
+=== PDF PAGE 110 ===
+Process Step
+Dosage Forms Manufactured at Line
+Inclusion of APS for Line
+Vials filled
+with
+Solution
+Vials filled with Suspension
+Lyophilized
+Vials
+Lyophilizer
+Loading
+N/A
+N/A
+Yes
+Yes*
+Lyophilizer Cycle
+N/A
+N/A
+Yes
+Yes (exposed to partial vacuum and
+vacuum release)*
+Lyophilizer
+Unloading
+N/A
+N/A
+Yes
+Yes*
+Capping of
+Lyophilization
+Vials
+N/A
+N/A
+Yes
+Yes*
 *It might be possible to utilize the lyophilizer configuration as worst case for the line given that it includes all the steps for liquid fill, plus the lyophilization
 specific steps. If this approach is taken, it must be fully documented and justified in the APS program (specifically for the potential difference in the
 container-closure system). Alternatively, both configurations will need to be simulated in the APS program.
 +The capping process, whether for liquid or lyophilized configurations should be practically identical, as in both cases fully seated stoppers are being
 capped.
+
+=== PDF PAGE 111 ===
 The type of media used may also impact the number of runs and frequency of APSs. For example, if there
 are types of products (e.g., oxygen-sensitive) exposed to anaerobic conditions (less than 0.1% residual
 oxygen levels) during the entire process (e.g., nitrogen purging of WFI before preparation, nitrogen blanket
@@ -4032,6 +5237,8 @@ isolator campaign product-fill are schematically presented below:
 Example 1A: Initial APS Validation – The Conservative Approach
 This approach is recommend for a facility with little to no experience or historical data for production in
 isolators. In this case, the APS with media is executed for the same duration of time that it takes to execute
+
+=== PDF PAGE 112 ===
 four consecutive product batches, with the same established and validated supporting processes. This means
 four consecutive media-filled batches. The campaign may be simulated only by the filling of media
 separated by batch changeovers. The interventions and activities are based on a risk assessment of presumed
@@ -4053,6 +5260,7 @@ validation.
 
 *[Figure 15.7-2 Initial APS Validation: Risk-Based Approach]*
 
+=== PDF PAGE 113 ===
 Note: This validation plan does not include reverting to the previous state due to irreversible changes or a
 completely new line. If the initial APS is triggered by a change, at least one APS for decommissioning the
 previous design should be completed before the design change. Product batches run in a campaign ending
@@ -4112,6 +5320,8 @@ to the end of four product fills to mimic worst-case conditions with respect to 
 7.12) Both APS studies are repeated every six months in the periodic revalidation (see Section 3.2), with a
 total of four APS studies for this line annually. In this way, the “start and end” of the campaign is simulated,
 and a number of units and the duration of the APS can be kept at a reasonable level. All activities, including
+
+=== PDF PAGE 114 ===
 setups and interventions normally performed, are represented in those two media batches of typically 10,000
 units each.
 Periodic revalidation will be the same regardless of how the company established their initial validation
@@ -4138,6 +5348,8 @@ cell (CAR-T) products as well as other cellular therapies including T-cell recep
 lymphocytes (TILs), and regulatory T-cells. An APS should be conducted once an acceptable manufacturing
 process and corresponding interventions have been designed and established. In this case, the manufacturing
 process for GMCT-A is being transferred from the manufacturing site where early clinical trial material was
+
+=== PDF PAGE 115 ===
 produced (“sending site”) to a cGMP-compliant manufacturing facility (“receiving site”) for the purposes of
 later-stage clinical and potential commercial drug product manufacturing.
 GMCT-A is manufactured using a process performed predominantly using aseptic processing and sterility
@@ -4159,6 +5371,8 @@ leverages collective product knowledge and process understanding, is compliant w
 regulatory landscape, and is based on industry best practices. The steps of the AREM are detailed in Figure
 15.7-5.
 
+=== PDF PAGE 116 ===
+
 *[Figure 15.7-5 Aseptic Risk Evaluation Model – Steps in the Risk Assessment Process]*
 
 Step 1
@@ -4174,6 +5388,8 @@ available) step by step to determine each individual aseptic manipulation perfor
 Step 3
 Each of the individual aseptic steps (i.e., manipulations) is rated based on three factors - Complexity,
 Duration, and Proximity - as defined in Table 15.7-1.
+
+=== PDF PAGE 117 ===
 
 **Table 15.7-1** Definition of the Aseptic Manipulation Factors**
 | Factor | Definition |
@@ -4219,9 +5435,7 @@ A secondary matrix is then used to determine the overall risk score using the pr
 
 Upon the determination of the overall risk score, the aseptic procedures are ranked by risk, and the following actions are to be taken, as shown in
 
-**Table 15.7-1** Definition of the Aseptic Manipulation Factors**
-| Factor | Definition |
-| --- | --- |
+**Table 15.7-5.**
 
 **Table 15.7-5** Action Level Table based on Overall Risk Score**
 | Risk Ranking | Action |
@@ -4244,13 +5458,175 @@ The outputs from the risk assessment were documented by a risk assessment facili
 operations of the GMCT-A manufacturing process, the transduction of the target cells (recovered post-selection and activation) using a viral vector for
 purposes of gene transfer is provided in Table 15.7-6.
 
-**Table 15.7-2** Identification of the Risk Ranking for Each of the Factors**
-| Risk Ranking | Duration | Complexity | Proximity |
-| --- | --- | --- | --- |
-| High | >10 minutes | More than 5 steps; highly difficult to perform manual manipulations | Operator breaks first air with a nonsterile entity (e.g., the sanitized isolator glove) |
-| Medium | 1-10 minutes | 2-5 steps; moderate difficulty to perform manual manipulations | Operator breaks first air with a sterile entity (e.g., the sterilized forceps) |
-| Low | <1 minute | 1 step; easy to perform manual manipulation | Operator does not break first air |
+=== PDF PAGE 120 ===
 
+**Table 15.7-6 Aseptic Risk Evaluation Method for the GMCT-A Process (Example: Unit Operation of Viral Vector Transduction)**
+
+Description of
+Aseptic Steps/
+Manipulations
+Complexity
+Duration
+Risk Class
+Proximity
+Overall
+Risk
+Mitigation/ Actions
+Taken
+De-crimp multiple
+vials of the viral
+vector and remove
+the cap of each.
+Transfer contents of
+each vial to a single
+(pooled) conical tube
+using a pipet.
+High
+Medium
+Risk Class 1
+Medium
+High
+Alternate supply of the
+viral vector filled in a
+container that can be
+aseptically connected to
+the cell suspension (to be
+assessed for future use).
+Additionally, a closed,
+automated transduction
+process (to be evaluated as
+a potential long-term
+optimization).
+Risk is accepted at this time
+based on a Risk-Benefit
+evaluation approved by the
+Quality Unit.
+Each transfer
+constitutes
+an aseptic
+step with up
+to ten (10)
+vials of viral
+vector to be
+used
+Up to (but no
+more than)
+ten (10)
+minutes to
+pool
+maximum
+number of
+vials of viral
+vector
+Risk Class 1
+Operator
+breaks first air
+with a sterile
+entity (e.g., the
+sterilized
+forceps)
+
+=== PDF PAGE 121 ===
+Description of
+Aseptic Steps/
+Manipulations
+Complexity
+Duration
+Risk Class
+Proximity
+Overall
+Risk
+Mitigation/ Actions
+Taken
+Gently swirl conical
+tube with pooled
+viral vector solution.
+Use a syringe and
+needle to collect
+pooled viral vector
+solution. Remove
+needle from syringe
+and then connect
+syringe containing
+the viral vector
+solution to the
+product bag with the
+target-cell
+suspension (prior to
+vector addition)
+using the Luer-lock
+connector. Dispense
+pooled viral vector
+into product bag.
+Medium
+Medium
+Risk Class 2
+Medium
+Medium
+The mitigation noted above
+is also applicable to this
+step.
+Risk is accepted.
+Three (3)
+aseptic steps
+are
+performed
+3–5 minutes
+based on
+simulation
+performed by
+multiple
+operators
+Risk Class 2
+Operator
+breaks first air
+with a sterile
+entity (e.g., the
+sterilized
+forceps)
+Gently mix the
+product bag now
+containing target
+cells and pooled viral
+vector. Remove a
+sample (for quality
+control testing) using
+a syringe via the
+Luer-lock connector.
+Low
+Low
+Risk Class 3
+Low
+Low
+Risk is accepted. This is a
+common aseptic step
+performed throughout the
+manufacturing process for
+the purpose of obtaining a
+product sample.
+A single (1)
+aseptic step
+to connect
+the syringe
+via Luer-lock
+connector
+Less than one
+(1) minute for
+aseptic step
+to be
+performed
+Risk Class 3
+Operator does
+not break first
+air
+
+=== PDF PAGE 122 ===
+Design of the Aseptic Process Simulation Based on Outputs of the Risk Assessment
+The outputs and learning from the AREM for the GMCT-A manufacturing process are then used to develop
+and focus on proper process design and on the training for the aseptic personnel/operators who will be
+responsible for performing and supporting this manufacturing process.
+Based on the relative risk of the aseptic process identified for this unit operation, per the AREM, these
+aseptic steps will focus on the proper performance of higher-risk activities and the effectiveness of the
 training of aseptic operators. In addition, successful demonstration of these aseptic steps is required for the
 qualification of the operators prior to their participation in cGMP manufacturing.
 APS batch records are constructed based on the output of the AREM. As part of the successful technology
@@ -4294,3 +5670,308 @@ More detailed information on aseptic processing risk assessments is available in
 44: Quality Risk Management for Aseptic Processing, PDA Technical Report No. 54: Implementation of
 Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations, and the PDA
 ANSI/PDA Standard 03-2025: Standard Practice for Quality Risk Management of Aseptic Processes.
+
+=== PDF PAGE 123 ===
+
+## 16.0 Appendices’ References
+
+1. European Commission. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4
+– EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and
+Veterinary Use; European Commission: Brussels, 2022.
+2. Baseman, H, et al. A Line of Sight Approach for Assessing Aseptic Processing Risk: Part I. PDA
+Letter 2016.
+3. Baseman, H, et al. A Line of Sight Approach for Assessing Aseptic Processing Risk: Part II. PDA
+Letter 2016.
+4. Baseman, H, et al. Interventions Risk Evaluation and Management in Aseptic Manufacturing - A
+Case Study. PDA J Pharm Sci Technol 2022, 76 (6), 485-96.
+5. Baseman, H; Chakraborty, S. Interventions Risk Evaluation and Management in Aseptic
+Manufacturing - Part 2. PDA J Pharm Sci and Tech 2024, (3).
+6. Baker, T; Pillsbury, D. A Novel Approach to Managing Risks in Aseptic Processing of Cell and
+Gene Therapies. Cell & Gene 2024.
+
+=== PDF PAGE 124 ===
+
+## 17.0 Relevant Vendor and Supplier Resources
+
+The following paid advertisement is presented to the reader as potential supplemental resources which may
+aid in execution or fulfillment of the concepts, material, and information presented herein.
+The inclusion of these resources does not imply any endorsement or preference on part of PDA or the
+authors of this technical document.
+
+=== PDF PAGE 125 ===
+BFPC: Redefining
+Grade A Air Testing
+Discover why industry leaders are rapidly adopting
+biofluorescent particle counters (BFPCs) to help
+ensure Grade A microbiological control and
+achieve Annex 1 compliance.
+The TSI BioTrak™ Real-Time Viable Particle
+Counter is the industry’s most trusted BFPC—and
+the only proven alternative to traditional active
+and passive air sampling in Grade A. The BioTrak™
+BFPC delivers:
+▪Real-time viable results for confident
+process control
+▪Reduced risk by eliminating environmental
+monitoring interventions
+▪A strong track record of regulatory acceptance
+as the industry-standard BFPC
+Visit tsi.news/4nkCjk9 for more information.
+TSI ©2025     9901233028
+Scan QR code to
+check out industry
+published papers
+Scan QR code to
+check out industry
+published papers
+USA
+Tel:	+1 800 874 2811
+UK
+Tel: +44 149 4 459200
+France
+Tel: +33 1 41 19 21 99
+Germany
+Tel:	+49 241 523030
+India
+Tel:	+91 80 67877200
+China
+Tel:	+86 10 8219 7688
+Singapore
+Tel:	+65 6595 6388
+BFPC: Redefining
+Grade A Air Testing
+Discover why industry leaders are rapidly adopting
+biofluorescent particle counters (BFPCs) to help
+ensure Grade A microbiological control and
+achieve Annex 1 compliance.
+The TSI BioTrak™ Real-Time Viable Particle
+Counter is the industry’s most trusted BFPC—and
+the only proven alternative to traditional active
+and passive air sampling in Grade A. The BioTrak™
+BFPC delivers:
+▪Real-time viable results for confident
+process control
+▪Reduced risk by eliminating environmental
+monitoring interventions
+▪A strong track record of regulatory acceptance
+as the industry-standard BFPC
+
+=== PDF PAGE 126 ===
+Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
+An Authorized User of this electronic publication in the purchase.
+Authorized Users are permitted to do the following:
+•
+Search and view the content of the PDA Electronic Publication
+•
+Download the PDA Electronic Publication for the individual use of an Authorized User
+•
+Print the PDA Electronic Publication for the individual use of an Authorized User
+•
+Make a reasonable number of photocopies of a printed PDA Electronic Publication for the
+individual use of an Authorized User
+Authorized Users are not permitted to do the following:
+•
+Allow anyone other than an Authorized User to use or access the PDA Electronic Publication
+•
+Display or otherwise make any information from the PDA Electronic Publication available to
+anyone other than an Authorized User
+•
+Post the PDA Electronic Publication or portions of the PDA Electronic Publication on websites,
+either available on the Internet or an Intranet, or in any form of online publications without a license
+from PDA, Inc.
+•
+Transmit electronically, via e-mail or any other file transfer protocols, any portion of the PDA
+Electronic Publication
+•
+Create a searchable archive of any portion of the PDA Electronic Publication
+•
+Use robots or intelligent agents to access, search and/or systematically download any portion of the
+PDA Electronic Publication
+•
+Sell, re-sell, rent, lease, license, sublicense, assign or otherwise transfer the use of the PDA
+Electronic Publication or its content
+•
+Use or copy the PDA Electronic Publication for document delivery, fee-for-service use, or bulk
+reproduction or distribution of materials in any form, or any substantially similar commercial
+purpose
+•
+Alter, modify, repackage or adapt any portion of the PDA Electronic Publication
+•
+Make any edits or derivative works with respect to any portion of the PDA Electronic Publication
+including any texts or graphics
+•
+Delete or remove in any form or format, including on a printed article or photocopy, any copyright
+information or notice contained in the PDA Electronic Publication
+•
+Combine any portion of the PDA Electronic Publication with any other material
+To License or purchase Reprints
+•
+Licensing: Site licenses and licenses to distribute PDA Electronic Publication can be obtained for a
+fee.
+•
+To learn more about licensing options and rates, please contact:
+Whitney Alexis, Publications Manager, +1 (301) 656-5900.
+Written correspondence can be sent to: PDA, Inc. Attn: Whitney Alexis, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+•
+Reprints: Reprints of PDA Electronic Publication can be purchased for a fee.
+To order reprints, please contact:
+Whitney Alexis, Publications Manager, +1 (301) 656-5900.
+Written correspondence can be sent to: PDA, Inc. Attn: Whitney Alexis, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+
+=== PDF PAGE 127 ===
+About PDA Technical Reports
+PDA Technical Reports are global consensus documents, prepared by member-driven Teams (listed on
+inside front cover) comprised of content experts, including scientists and engineers working in the
+pharmaceutical/biopharmaceutical industry, regulatory authorities and academia. The viewpoints and
+strategies presented in this document are those of the authors as independent subject matter experts and do
+not necessarily represent the policies and practices of their respective companies.
+While in development, PDA Technical Reports are subjected to a global review by PDA members and other
+topic-specific experts, often including regulatory officials. Comments from the global review are then
+considered by the authoring Team during the preparation of the final working draft. The level of expertise of
+the Team and those participating in the global review ensure a broad perspective reflecting best thinking and
+practices currently available.
+The final working draft is next reviewed by the PDA Advisory Board(s) that sanctioned the project. PDA’s
+Advisory Boards are: Science Advisory Board, Advanced Therapy Medicinal Products Advisory Board,
+Biopharmaceutical Advisory Board, and Regulatory Affairs and Quality Advisory Board. Following this
+stage of review, the PDA Board of Directors conducts the final review and determines whether or not to
+publish the document as an official PDA Technical Report.
+While PDA goes to great lengths to ensure each Technical Report is of the highest quality, all readers are
+encouraged to contact PDA about any scientific, technical, or regulatory inaccuracies, discrepancies, or
+mistakes that might be found in any of the documents. Readers can email PDA at: TRfeedback@pda.org.
+PDA thanks the following peer reviewers for lending their time and expertise to ensure the quality and
+relevance of this technical report:
+Peer Reviewers
+
+James Agalloco
+Agalloco & Associates Inc.
+Irving Ford
+Adaptimmune
+Maria Ginnelly
+Bristol Myers and Squibb (BMS)
+Vaibhav Patel
+University of Minnesota
+Julian Petersen
+groninger & co. gmbh
+Maria del Mar Cortada Mut, PhD
+Novo Nordisk
+Améziane Ould Ouali
+LFB
+Alicia Ruiz Mahillo
+FAMAR GROUP
+Alexander Stoll
+Fresenius Kabi
+Milind Suryawanshi
+GlaxoSmithKline
+
+=== PDF PAGE 128 ===
+Sanctioning Advisory Board: SAB
+Chair
+Ivy Louis
+VIENNI Training & Consulting LLP
+Vice-Chair
+Ken Paddock
+Merz Therapeutics
+Frederic Ayers
+ValSource, Inc.
+Tiffany Baker
+ValSource, Inc.
+Subrata Chakraborty, PhD
+Inophar Consulting & Training
+Emily Cheah, PhD
+Charles River Laboratories
+Thomas Damratoski
+Civica
+Cheryl Essex
+Sanofi
+David Exline
+Gateway Analytical, LLC.
+Mauro Giusti
+Eli Lilly Italia
+Gabriele Gori
+Chiesi Farmaceutici, S.p.A.
+
+Rishikesh Jaiwant
+Glaxo Smith Kline
+Austin Kuo
+Eli Lilly & Company
+Beth Kirschenheiter
+Bristol Myers Squibb
+Gitte Letting
+Novo Nordisk A/S
+Bruce Loxley
+Glaxo Smith Kline
+Vincent O’Shaughnessy
+Amgen
+Julian Petersen
+groninger & co. gmbh
+Jim Polarine Jr.
+STERIS Co.
+Jack Prior
+Sanofi
+Alexander Stoll, PhD
+Fresenius Kabi
+Kristin Valente
+Merck & Co., Inc.
+Rick Watson
+Merck & Co., Inc.
+
+=== PDF PAGE 129 ===
+ PDA Officers
+Chair
+Anil Sawant, PhD
+Chair-Elect
+Melissa Seymour
+Secretary
+Bettine Boltres, PhD
+Treasurer
+Emma Ramnarine, PhD
+Immediate Past-Chair
+Sue Schniepp
+President
+Glenn E. Wright
+
+PDA Publication
+Production and Editing
+Jessie Lindner
+Project Manager, SAB
+Josh Eaton
+Senior Director, Scientific
+& Regulatory Affairs
+Walter Morris
+Senior Director, Publishing
+and Press Relations
+Marilyn Foster
+Technical Editor/Writer
+
+PDA Directors
+Marcia Baroni
+Lisa Bennett
+Cristiana Campa, PhD
+Andrew Chang, PhD
+Cylia Chen Ooi
+Marc Glogovsky
+Andrew Hopkins
+Ivy Louis
+Amy McDaniel, PhD
+Morten Munk
+Brigitte Reuter-Haerle
+Osamu Shirokizawa
+
+=== PDF PAGE 130 ===
+
+pda.org
+
+PDA Global Headquarters
+4350 East West Highway, Suite 600
+Bethesda, MD 20814 USA
+TEL +1 (301) 656-5900
+FAX +1 (301) 986-0296
+PDA Europe
+Am Borsigturm 60
+13507 Berlin, Germany
+PDA Asia Pacific
+20 Bendemeer Rd. #04-02  B S
+Bendemeer Centre, Singapore
+339914

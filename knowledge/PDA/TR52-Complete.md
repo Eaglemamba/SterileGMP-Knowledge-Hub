@@ -165,8 +165,9 @@ federal laws.
 Good Distribution Practices (GDPs) should include written procedures describing the different
 operations that may affect the quality of products and/or distribution activity. Refer to the pillars
 table, presented in Section 1.1.
-3.1
-Stability
+
+### 3.1 Stability
+
 Data from Stability studies is used to determine the temperature conditions required for product
 storage and transportation.
 
@@ -265,6 +266,9 @@ Premises and equipment should be qualified as adequate to ensure proper manageme
 distribution of products. A warehouse should be:
 Secure with controlled access and features to protect against invasion, adulteration and theft
 •
+
+## 5.0 Technical Report No. 52
+
 For products that are monitored during transportation, if temperature excursions occur outside of
 the labeled storage conditions or established shipping ranges, an investigation must take place to
 determine:
@@ -654,6 +658,9 @@ Vehicle and Equipment (to include refrigerated trucks, sea containers, aircrafts
 •
 Security
 •
+
+## 11.0 Technical Report No. 52
+
 on a regularly scheduled basis and to identify opportunities for continuous improvement. These
 methods and procedures should include Performance Measurement and Reporting, Self-Inspection
 (Internal Audit), and Management Review Meetings.
@@ -735,8 +742,9 @@ It is the responsibility of the manufacturer and/or holder of the marketing auth
 that the different aspects of this guideline are appropriately assigned and implemented to the different
 parties of the supply chain. The distribution of responsibilities should be formalized in covenants or
 “Quality Agreements” with all third parties. Such agreements should be periodically updated.
-3.5
-Business Review Meetings
+
+### 3.5 Business Review Meetings
+
 Business review meetings should take place on a regularly scheduled basis and should cover:
 Results of quality audits
 •
@@ -776,6 +784,8 @@ Audits conducted (by BoP, Customer, FDA, DEA, etc)
 3.	 What system is used to maintain licensure?
 
 ## 4.0 Appendix
+
+## 13.0 Technical Report No. 52
 
 ### 4.1 Good Storage and Shipping Practices Checklist
 
