@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR84 Section 3: Data Integrity Controls — Framework &amp; Methodology</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 3: Data Integrity Controls — Framework &amp; Methodology</h1>
+    <div class="subtitle">DI 控制框架與方法論</div>
+    <div class="page-info">PDA Technical Report No. 84 | p21 – p25</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 Data Integrity (數據完整性) 管控的核心目的：為何需要同時防範人為錯誤、系統失效與蓄意造假，以及 PDA 如何建立以品質文化為基礎的 DI 框架。</li>
+            <li>區分哪些 DI 管控要求是「全面一致」適用（不分重要性等級），哪些可依資料關鍵性高低進行「差異化管控」（Differentiated Controls），並說明兩者的判斷依據。</li>
+            <li>掌握 Section 5.2 方法論中七大差異化管控類別（紙本、混合、電子系統各自涵蓋的類別），以及如何以 High / Medium / Low 三級關鍵性評估決定管控強度。</li>
+            <li>理解 Preventive Control (預防性管控) 與 Detective Control (偵測性管控) 的功能差異，並能舉例說明兩者在製造批次記錄管理中的具體應用。</li>
+        </ol>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節子目錄 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-5-0">5.0 DI Controls Overview</a>
+            <a href="#sec-5-1">5.1 Differentiation of Controls</a>
+            <a href="#sec-5-2">5.2 Methodology</a>
+            <a href="#sec-5-3">5.3 Areas of Differentiated Controls</a>
+            <a href="#sec-summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 5.0 ===== -->
+    <div id="sec-5-0" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.0</div>
+            <div class="chapter-info">
+                <h2>Data Integrity Controls — Overview</h2>
+                <p>DI 管控總覽：成因、文化與核心要求</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.0 Data Integrity Controls</h3>
+                    <p>Many events during manufacturing may compromise the integrity of the data. Any number of factors may cause these events, including <span class="key-term">human error</span>, <span class="key-term">insufficient training</span>, <span class="key-term">system failure</span>, inappropriate qualification or configuration of systems, poor procedures, or people not following procedures, as well as <span class="key-term">intentional acts of falsification</span>.</p>
+
+                    <p>PDA recognizes that <span class="key-term">quality culture</span> is critically important in the prevention and detection of data integrity breaches; however, this technical report is designed to identify risk and potential mitigation of a data integrity breach regardless of where on the spectrum of data integrity (system error, individual error, individual or institutional malfeasance) that breach occurs. Of course, intentional fraud and intentional manipulation of data are unacceptable under any circumstances, regardless of data criticality, vulnerability, or existing level of controls.</p>
+
+                    <p>In supporting and communicating expectations around a culture of quality for data integrity, PDA recommends that entities use the PDA publication, <em>Elements of a Code of Conduct for Data Integrity in the Pharmaceutical Industry</em>, which outlines key elements necessary to help ensure the reliability and integrity of data throughout all aspects of a product's lifecycle. It can be used, in whole or in part, as a control approach to guide a company's internal practices, to create or modify an existing data integrity code of conduct, or to develop agreements with outsourcing partners or other suppliers. The elements identified throughout that document are intended to reinforce a culture of quality and trust within the pharmaceutical industry.</p>
+
+                    <p>An important part of preventing data integrity breaches is identifying, establishing, and maintaining proper controls, whether the data elements are <span class="key-term">electronic</span>, <span class="key-term">paper-based</span>, or a combination of the two. Ensuring data integrity means protecting the original data from accidental or intentional modification, falsification, and deletion. Requirements specifying that data need to be <span class="key-term">ALCOA+</span> throughout the data lifecycle have been included in regulations around the world for several decades. The WHO, FDA, MHRA, and PIC/S have all released documents to reeducate the industry on current data integrity concepts and expectations. These are the "what"—what is required to ensure the integrity of data.</p>
+
+                    <p><span class="key-term">Data integrity controls</span> can be embedded in working procedures and practices or included as part of computer system validation and equipment qualification or usage. These controls may be used to minimize the potential that a data integrity issue will occur and to increase the probability of detecting an issue that does occur. The data integrity controls are the <em>"how"</em>—how to ensure that these requirements are implemented in practice.</p>
+
+                    <p>Regulations convey the core elements that must be in place to ensure data integrity and a robust <span class="key-term">QMS</span>, including some of the following examples:</p>
+                    <ul>
+                        <li>Standard operating procedures (SOPs) are in place for completion and retention of records.</li>
+                        <li>People are suitably trained for their intended job purpose.</li>
+                        <li>Systems are validated or qualified for their intended purpose.</li>
+                        <li>People have access to the records required to perform their activities.</li>
+                        <li>If electronic signatures will be used, they should be attributable to an individual, unable to be altered, permanently linked to the document, and have a time and date stamp.</li>
+                        <li>Data integrity risks should be identified as part of the <span class="key-term">QRM</span> process and dealt with accordingly.</li>
+                        <li>A management review process allows data integrity issues to be elevated to the highest levels of the organization.</li>
+                        <li>The data governance policy is endorsed at the highest levels of the organization, empowering a strong data integrity culture at all levels of the organization.</li>
+                        <li>An anonymous reporting program, supported by company policy, encourages personnel to bring breaches in data integrity to the attention of management.</li>
+                        <li>Routine data verification and periodic surveillance checks should be performed.</li>
+                        <li>Self-inspections should include verification of the effectiveness of the data integrity controls.</li>
+                        <li>A strong change management system is required.</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：DI 違規的三大成因光譜</h4>
+                        <p>TR84 開宗明義點出數據完整性 (Data Integrity, DI) 違規的三個層次：</p>
+                        <ul>
+                            <li><strong>系統錯誤</strong>（System Error）：設備或軟體本身的缺失</li>
+                            <li><strong>個人錯誤</strong>（Individual Error）：人為疏失、訓練不足</li>
+                            <li><strong>蓄意造假</strong>（Malfeasance / Falsification）：個人或機構層面的數據竄改</li>
+                        </ul>
+                        <p>三種成因需要不同的管控策略，但本報告的框架設計涵蓋全光譜。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：「What」vs.「How」的區別</h4>
+                        <p>法規（WHO、FDA、MHRA、PIC/S）告訴我們數據必須符合 ALCOA+——這是「<strong>What</strong>」（要達到什麼）。</p>
+                        <p>TR84 的 DI 管控體系則是「<strong>How</strong>」——如何在日常作業中落實這些要求。</p>
+                        <p>就像餐廳衛生法規規定食物必須保持一定溫度（What），但冰箱保養 SOP、溫度記錄表、定期校驗才是 How。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ALCOA+ 快速複習</h4>
+                        <ul>
+                            <li><strong>A</strong>ttributable — 可歸屬（誰做的）</li>
+                            <li><strong>L</strong>egible — 清晰可讀</li>
+                            <li><strong>C</strong>ontemporaneous — 同步記錄</li>
+                            <li><strong>O</strong>riginal — 原始記錄</li>
+                            <li><strong>A</strong>ccurate — 正確</li>
+                            <li><strong>+</strong> Complete, Consistent, Enduring, Available</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：文化 + 技術雙軌並行</h4>
+                        <p>PDA 特別強調：蓄意造假在任何情況下都不可接受，無論資料的關鍵性高低或現有管控強度如何。</p>
+                        <p>技術管控（系統驗證、存取限制）可以降低機會，但品質文化（Quality Culture）才是根本防線。因此 PDA 另有《Code of Conduct for Data Integrity》專門處理行為層面。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>法規要求的 QMS 核心要素（12 項）</h4>
+                        <p>文中列舉的 12 項要求，可歸納為四個維度：</p>
+                        <ul>
+                            <li><strong>程序面</strong>：SOP 完整、變更管理</li>
+                            <li><strong>人員面</strong>：訓練、存取授權、匿名通報</li>
+                            <li><strong>系統面</strong>：系統驗證、電子簽名、資料備份</li>
+                            <li><strong>稽核面</strong>：定期數據驗證、自我查核、管理審查</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 實務應用情境</h4>
+                        <p>在無菌充填 CDMO 環境中，DI 管控需跨越多個客戶委託案（多品項、多系統、多 SOP 版本），挑戰遠超過單一品牌藥廠。例如：</p>
+                        <ul>
+                            <li>A 客戶要求紙本批次記錄，B 客戶要求 MES 電子記錄——兩套管控並行</li>
+                            <li>同一條灌裝線在不同班次、不同產品之間的 Access Control (存取控制) 如何區隔</li>
+                            <li>當發現某批次 Audit Trail (稽核軌跡) 異常時，是系統問題還是操作員行為？</li>
+                        </ul>
+                        <p>TR84 的框架幫助 CDMO 系統性地回答這些問題。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>理解測驗</h4>
+                        <p>思考以下問題：</p>
+                        <ul>
+                            <li>為什麼 PDA 說「品質文化」雖重要，但 TR84 仍涵蓋所有 DI 違規類型（包括蓄意造假）？</li>
+                            <li>DI 管控被嵌入 SOP 與嵌入 CSV 之間，有何實務上的差異？哪種更難稽核？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 5.1 ===== -->
+    <div id="sec-5-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Potential Differentiation of Controls</h2>
+                <p>管控差異化的概念：何時可以、何時不行</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.1 Potential Differentiation of Controls</h3>
+                    <p>While there are many requirements to ensure a robust QMS, Section 5.0 only focuses on data integrity controls where it is acceptable to <span class="key-term">differentiate the level of controls</span> that may be applied. This means that the levels of controls applied (e.g., frequency of review, number of items to check, who performs the review) may differ depending on the <span class="key-term">criticality</span> of the data, system, or activity. Consistent with <span class="key-term">ICH Q9</span>, which promotes a risk-based approach, highly critical data, systems, or activities require more controls, while less critical data or activities require fewer controls.</p>
+
+                    <p>This portion of the technical report focuses on only a small part of all data integrity controls required by regulations. Most data integrity controls required by health authority regulations apply in the same manner for any GMP data, that is, the controls do not differ based on the criticality of the processes performed by the organization. Such controls are not discussed further in this technical report.</p>
+
+                    <p>The following examples illustrate why the same level of controls may be applied, regardless of the criticality of the activity:</p>
+
+                    <ul>
+                        <li>GMP regulations require that entries in records should be indelible, made in the appropriate spaces, identify the person making the entry and, if different, identify the person who performed the task(s). Corrections, if required, should be dated and signed, leaving the original entry still readable, with a comment added to explain the correction. <em>Envision two different scenarios in which a person makes a correction because of a typographical error: One person has recorded a critical parameter during aseptic filling, while another has documented a training, a less critical activity. In both circumstances, the individuals involved should make the necessary correction, explain why the correction was made, and sign with the time the correction was made, leaving the original entry still legible.</em></li>
+                        <li>GMP regulations also require that, in electronic systems, a user's privileges should be limited to allow the employee to perform the work, without any additional unnecessary privileges. <span class="key-term">Access to change the date or time of the system</span>, for example, should be limited to a very small group of people, ideally independent administrators. Regardless of whether the system is highly critical (e.g., granulation) or less critical (e.g., secondary packaging systems that do not store data relating to quality attributes or parameters such as expiry dates), the same controls should be in place to restrict access.</li>
+                    </ul>
+
+                    <p>Any given system may have some controls for which it is possible to differentiate the level of controls applied, and some controls that will be the same regardless of the criticality of the activity.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：「可差異化」vs.「不可差異化」管控</h4>
+                        <p>TR84 的核心框架區分兩類 DI 管控：</p>
+                        <ul>
+                            <li><strong>固定管控</strong>（Non-Differentiable）：無論資料關鍵性高低，所有 GMP 數據都必須一視同仁遵守。例如：記錄需清晰、更正需劃線保留原文並簽名日期。</li>
+                            <li><strong>差異化管控</strong>（Differentiated Controls）：可依資料關鍵性高低調整管控強度、頻率、執行者。TR84 的重點就在這裡。</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：速限 vs. 車道管制</h4>
+                        <p>「不管你開貨車還是轎車，都必須在線內行駛」——這是固定要求，相當於「記錄更正必須劃線」。</p>
+                        <p>「載危險物品的貨車必須走指定路線，但一般轎車可以自由選擇」——這是差異化管控，相當於「高關鍵性批次記錄需要 QU 二次審核，低關鍵性只需作業員自查」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點：兩個具體案例說明「不可差異化」</h4>
+                        <p><strong>案例一：記錄更正</strong><br>
+                        不論是無菌充填的 CPP（Critical Process Parameter）記錄，還是一般訓練記錄，更正方式完全相同——劃線、保留原文可讀、簽名加日期並說明原因。關鍵性不影響這個要求。</p>
+                        <p><strong>案例二：系統時間更改權限</strong><br>
+                        不論系統用於高關鍵性（造粒製程）或低關鍵性（無品質屬性數據的二次包裝），更改系統時間的 Access Control (存取控制) 都必須限制在極少數獨立管理員手中。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ICH Q9 風險管理原則的延伸</h4>
+                        <p>TR84 明確對齊 ICH Q9（品質風險管理）的基礎：</p>
+                        <ul>
+                            <li>高關鍵性 = 更多管控、更高頻率、更嚴格審核</li>
+                            <li>低關鍵性 = 管控仍存在，但可適度降低強度</li>
+                            <li>關鍵性由組織自行評估（非法規直接規定）</li>
+                        </ul>
+                        <p>這使 TR84 成為 ICH Q9 在 DI 領域的具體實踐指南。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 實務應用情境</h4>
+                        <p>在 CDMO 的日常稽核中，這個區分非常實用：</p>
+                        <ul>
+                            <li>當客戶或 FDA 查核員問「你們為何高低關鍵性批次記錄的審查頻率不同？」——可以引用 TR84 Section 5.1 和 ICH Q9 為依據</li>
+                            <li>當你想降低某些低關鍵性文件的管控頻率以節省資源時，必須先確認它屬於「可差異化」類別，而非固定要求類別</li>
+                            <li>系統時間更改權限是常見的 Warning Letter 來源，無論系統關鍵性高低都必須嚴格管控</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>理解測驗</h4>
+                        <p>判斷以下管控屬於「固定」或「可差異化」：</p>
+                        <ul>
+                            <li>批次記錄更正的劃線規則</li>
+                            <li>Audit Trail (稽核軌跡) 審查的頻率（每日 vs. 每月）</li>
+                            <li>電子簽名的個人歸屬要求</li>
+                            <li>紙本記錄保存的環境條件（是否需要空調房）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 5.2 ===== -->
+    <div id="sec-5-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Methodology Used to Determine Differentiated Controls</h2>
+                <p>差異化管控的判斷方法論：七大類別框架</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.2 Methodology Used to Determine Differentiated Controls</h3>
+                    <p>To determine the controls required for data, records, or systems, existing regulations and guidelines for data integrity were reviewed. The recommended controls were categorized against the <span class="key-term">type of document control system</span> being employed: <span class="key-term">paper-based</span>, <span class="key-term">electronic-based</span>, and a <span class="key-term">hybrid</span>. Some of the controls identified apply to paper-only systems and some apply to electronic-only systems. Hybrid systems incorporated many of the controls for paper- and electronic-based systems.</p>
+
+                    <p>The data integrity requirements specifically relating to controls required for paper, electronic, and hybrid systems were further identified and analyzed. Only requirements where it is acceptable to differentiate the level of control applied, proportional to the criticality, were selected. Where the level of control cannot be differentiated, the controls are considered core elements in ensuring a robust QMS and out of scope for this technical report.</p>
+
+                    <p>The authors identified <span class="key-term">seven categories of controls</span> for which it is acceptable to differentiate the level of control applied. Each category was assessed to determine whether the data, record, or system was being controlled and then was further scrutinized to determine which controls within that category may be differentiated. For example, based on criticality, the technical report team considered whether it is acceptable to differentiate between the <span class="key-term">frequency of control</span> (daily vs. monthly), <span class="key-term">who performs the control</span> (manufacturing vs. quality unit), or <span class="key-term">what needs to be controlled</span> (more-detailed vs. less-detailed review).</p>
+
+                    <p>Where differentiation is acceptable, details of how the controls differ based on criticality are discussed in detail in Section 5.3. The level of controls required may be applied at the data, record, or system level, depending on which of the seven categories are being discussed. Any requirements within a category that remain consistent across the criticality levels are considered basic elements in ensuring a robust QMS and are out of scope for this technical report.</p>
+
+                    <h3>Table 5.2-1: Categories Where Different Levels of DI Controls are Acceptable</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type of System</th>
+                                <th>Category</th>
+                                <th>Short Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2"><strong>Paper</strong></td>
+                                <td>1 — Storage of and access to completed/archived paper records</td>
+                                <td>Controls associated with storage of and access to completed/archived paper records, and who has access to these documents</td>
+                            </tr>
+                            <tr>
+                                <td>2 — Generation and reconciliation of documents</td>
+                                <td>Guidance on controls associated with generation and reconciliation of documents to prevent potential misuse</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hybrid</strong></td>
+                                <td>3 — Manual activities when recording or transferring data between paper and electronic formats</td>
+                                <td>Data accuracy associated with manually recording data without a controlled second format, transcription of manually recorded data into an electronic system, and controls around True Copy (paper to electronic)</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4"><strong>Electronic</strong></td>
+                                <td>4 — <span class="key-term">Access controls</span> for electronic systems</td>
+                                <td>Different levels of controls to ensure the right level of access to electronic records and systems is applied</td>
+                            </tr>
+                            <tr>
+                                <td>5 — <span class="key-term">Audit trail</span> review</td>
+                                <td>Risk-based approach to identify which items to review as part of manufacturing batch data and parameter/configuration settings audit trail reviews, and how frequently to perform the review</td>
+                            </tr>
+                            <tr>
+                                <td>6 — Backup of electronic data</td>
+                                <td>Controls to ensure electronic raw data is backed up so a copy remains available and can be retrieved in its original format</td>
+                            </tr>
+                            <tr>
+                                <td>7 — Use of electronic data</td>
+                                <td>Data integrity controls associated with using electronic raw data to generate system reports/records and controls associated with transfer/migration of raw data to another location</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Sections 5.3.1–5.3.7 have been developed with manufacturing operations in mind; however, many of the concepts discussed can also be applied to other functional areas (e.g., analytical laboratories).</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：三種系統類型 × 七大管控類別</h4>
+                        <p>TR84 的方法論建立在一個清晰的分類架構上：先按<strong>系統類型</strong>區分，再按<strong>關鍵性</strong>調整管控強度。</p>
+                        <ul>
+                            <li><strong>Paper-based System (紙本系統)</strong>：Category 1–2</li>
+                            <li><strong>Hybrid System (混合系統)</strong>：Category 3（電子記錄 + 紙本並存）</li>
+                            <li><strong>Electronic System (電子系統)</strong>：Category 4–7</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>七大差異化管控類別速覽</h4>
+                        <ul>
+                            <li><strong>Cat. 1</strong>：紙本記錄的實體儲存與存取管控（保存位置、門禁、logbook）</li>
+                            <li><strong>Cat. 2</strong>：紙本表單的發放與核對（受控列印、reconciliation、空白表單銷毀）</li>
+                            <li><strong>Cat. 3</strong>：手動記錄與數據轉錄的準確性（four-eye check、真本副本）</li>
+                            <li><strong>Cat. 4</strong>：電子系統的 Access Control (存取控制)（帳號權限、分級管理）</li>
+                            <li><strong>Cat. 5</strong>：Audit Trail (稽核軌跡) 審查（審查頻率、審查內容、執行者）</li>
+                            <li><strong>Cat. 6</strong>：電子數據備份（備份頻率、備份驗證、還原測試）</li>
+                            <li><strong>Cat. 7</strong>：電子數據使用（報表生成、數據遷移管控）</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>差異化管控的三個維度</h4>
+                        <p>TR84 用三個維度來描述管控如何因關鍵性而不同：</p>
+                        <pre>差異化維度：
+  頻率 (Frequency)：每日 vs. 每月
+  執行者 (Who)：製造部門 vs. 品保單位 (QU)
+  內容深度 (What)：詳細審查 vs. 一般確認</pre>
+                        <p>例如：Audit Trail 審查，高關鍵性可能要求 QU 每批次審查，低關鍵性則每季由製造部門抽查即可。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：醫院病歷 vs. 行政表單</h4>
+                        <p>醫院的<strong>手術紀錄</strong>（高關鍵性）：需鎖在專用檔案室、有存取記錄、每年審查誰有存取權。</p>
+                        <p>同醫院的<strong>員工休假申請表</strong>（低關鍵性）：放在辦公室普通抽屜即可，每兩年確認一次鑰匙管理就夠。</p>
+                        <p>這正是 Category 1 的差異化邏輯。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要提醒：管控層級的適用對象</h4>
+                        <p>七大類別的管控可能作用於不同層級：</p>
+                        <ul>
+                            <li><strong>Data level（數據點層級）</strong>：例如單筆測量值的二次確認</li>
+                            <li><strong>Record level（記錄層級）</strong>：例如整份批次記錄的審查</li>
+                            <li><strong>System level（系統層級）</strong>：例如整個 LIMS 的存取控制政策</li>
+                        </ul>
+                        <p>Section 5.3 中每個子節都會明確標示該管控作用於哪個層級，這對 SOP 撰寫非常重要。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 實務應用情境</h4>
+                        <p>CDMO 通常同時運作 Paper-based System (紙本系統)、Hybrid System (混合系統) 和 Electronic System (電子系統)——有時甚至在同一條生產線上：</p>
+                        <ul>
+                            <li>環境監測數據：手動記錄到紙本（Cat. 3） + 後續輸入 EM 系統（Cat. 3.2 轉錄）</li>
+                            <li>灌裝機 PLC：電子紀錄（Cat. 5 Audit Trail review）</li>
+                            <li>滅菌爐記錄：電子打印 + 紙本批次記錄簽核（Hybrid，Cat. 3）</li>
+                        </ul>
+                        <p>掌握七大類別，就能系統性地評估每個數據流的管控缺口。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>理解測驗</h4>
+                        <ul>
+                            <li>你的 CDMO 使用 MES 記錄充填數據，但有些補充資訊仍手寫後掃描存入 MES。這屬於哪個 Category？</li>
+                            <li>如果你要設計一個「稽核軌跡審查 SOP」，依據 TR84，你需要區分哪三個維度？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUBSECTION 5.3 ===== -->
+    <div id="sec-5-3" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Areas of Differentiated Data Integrity Controls</h2>
+                <p>差異化 DI 管控的適用範圍、框架邏輯與整體原則</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>5.3 Areas of Differentiated Data Integrity Controls</h3>
+                    <p>While all data potentially impacts the quality of the product, the impact to the manufacturing processes governing product quality and patient safety varies depending on the <span class="key-term">type of data, record, or system</span> being used to govern the process. For the seven categories identified where different levels of data integrity controls are acceptable, a criticality rating of <span class="key-term">High, Medium, or Low</span> was used. (See Section 4.2.1 for definitions of criticality.)</p>
+
+                    <p>Sections 5.3.1–5.3.7 detail how differentiated controls may be applied for different levels of criticality. Most of the controls discussed are <span class="key-term">prevention controls</span>, but a few <span class="key-term">detection controls</span> are included as well. Some of the differentiated data integrity controls should be applied at the system level, others relate to records, and some are relevant to data points. Each table provides the necessary details concerning detection vs. prevention and the level where the control should be applied (data point, record, or system).</p>
+
+                    <p>Those sections provide examples of critical activities designated as High, Medium, and Low for illustrative purposes and are not prescriptive; the examples are intended to stimulate thinking. Each entity should assess its own data and apply the concepts in this technical report to determine the controls necessary for their operations. In addition, suggestions are provided throughout, illustrative only, regarding the frequencies at which certain activities should take place. Organizations should determine the frequencies that are most applicable to their operations using a <span class="key-term">risk-based approach</span> to ensure that the periodicity of activities is commensurate with the risks identified.</p>
+
+                    <p>Sections 4.3 and 4.4 discuss that, in the <span class="key-term">data vulnerability model</span>, the risks associated with data management, human factors, and GMP process must be identified, and the controls in place must be assessed to confirm they are sufficient for the risks identified. Sections 5.3.1–5.3.7 primarily discuss <span class="key-term">data management controls</span>.</p>
+
+                    <p>The controls discussed below would result in data being placed in one of the green boxes (H/H; M/M; L/L) of the <span class="key-term">9-Box grid</span> (Table 4.3-1). That is, the controls would be adequate for the criticality of the data and the identified risk factors. If fewer controls are in place than those recommended in Sections 5.3.1–5.3.7, the level of data management controls is not adequate for that level of data criticality. On the other hand, if more controls than required are in place, the data vulnerability in these specific areas is very low.</p>
+
+                    <p>The controls discussed in Sections 5.3.1–5.3.7 are only one part of the controls that need to be considered to assess the overall data vulnerability. Organizations also must consider the data management controls, human factor controls, and GMP process controls that apply without any possible differentiation in level of control. Whether the levels of control required are differentiated or not, all controls must be described in SOPs.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">解析與導讀（繁體中文）</div>
+
+                    <div class="concept-box">
+                        <h4>Preventive Control (預防性管控) vs. Detective Control (偵測性管控)</h4>
+                        <p>TR84 Section 5.3 明確區分兩種管控類型，這在設計 DI 管控體系時非常重要：</p>
+                        <ul>
+                            <li><strong>Preventive Control (預防性管控)</strong>：在 DI 問題發生之前就阻止它。例如：限制誰能修改 Audit Trail 設定（防止篡改機會）、受控列印文件（防止空白表單遭濫用）。</li>
+                            <li><strong>Detective Control (偵測性管控)</strong>：DI 問題發生後能夠被發現。例如：定期 Audit Trail (稽核軌跡) 審查（發現異常操作）、批次記錄的 QU 審查。</li>
+                        </ul>
+                        <p>Section 5.3 以預防性管控為主，但也包含部分偵測性管控。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：保險箱 vs. 保全錄影</h4>
+                        <p><strong>預防性管控</strong>像保險箱——鎖住機密，未經授權根本無法接觸。</p>
+                        <p><strong>偵測性管控</strong>像保全錄影——事後可以回溯查看誰在何時做了什麼，但無法阻止當下的行為。</p>
+                        <p>最理想的 Defense in Depth (縱深防禦) 是兩者並用：先預防，再偵測，最後還有矯正（CAPA）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>9-Box Grid 概念回顧</h4>
+                        <p>TR84 提到的 9-Box Grid（九宮格）是評估數據脆弱性的核心工具（Section 4.3）：</p>
+                        <ul>
+                            <li>X 軸：資料關鍵性（High / Medium / Low）</li>
+                            <li>Y 軸：風險因子（High / Medium / Low）</li>
+                            <li>目標：管控措施足夠，使數據落在對角線「綠格」（H/H、M/M、L/L）</li>
+                            <li>若管控不足：數據落在「紅格」，代表管控強度低於關鍵性要求</li>
+                        </ul>
+                        <p>Section 5.3 提供的管控建議，就是讓數據停留在綠格的具體操作指引。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵提醒：示例非強制規定</h4>
+                        <p>TR84 明確指出：Section 5.3 中所有 High/Medium/Low 的活動分類<strong>僅為示例</strong>，不具規範性，不能直接套用。</p>
+                        <p>每個組織必須：</p>
+                        <ul>
+                            <li>根據自身業務特性評估資料關鍵性</li>
+                            <li>以風險為基礎決定管控頻率</li>
+                            <li>將所有管控（無論是否差異化）都寫入 SOP</li>
+                        </ul>
+                        <p>這是法規稽核時的重要依據——你的 SOP 必須反映你的風險評估結論。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Defense in Depth (縱深防禦) 概念</h4>
+                        <p>TR84 Section 5.3 隱含的「縱深防禦」理念：</p>
+                        <ul>
+                            <li><strong>第一層</strong>：技術預防（系統設計阻止問題發生）</li>
+                            <li><strong>第二層</strong>：程序預防（SOP 規範正確行為）</li>
+                            <li><strong>第三層</strong>：偵測機制（Audit Trail、審查、自我查核）</li>
+                            <li><strong>第四層</strong>：矯正回應（CAPA、偏差管理）</li>
+                        </ul>
+                        <p>在 CDMO 環境中，多客戶、多系統的複雜性更需要每一層都嚴密設計。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 實務應用情境</h4>
+                        <p>在進行 DI 差距分析（Gap Analysis）時，可以用以下架構評估每個數據流：</p>
+                        <ol>
+                            <li>確認此數據屬於七大類別中的哪一類</li>
+                            <li>評估資料關鍵性（High / Medium / Low），並記錄依據</li>
+                            <li>對照 TR84 Table 5.3.X-1，確認現有管控是否與關鍵性等級相稱</li>
+                            <li>確認現有管控是否已記載於 SOP 中</li>
+                            <li>若管控不足，啟動 CAPA；若管控過度，評估是否可合理降低（節省資源）</li>
+                        </ol>
+                        <p>這個框架可作為年度 DI 內部稽核的結構性工具。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>理解測驗</h4>
+                        <ul>
+                            <li>若你的 QU 要求所有批次記錄（包括低關鍵性的訓練記錄）都進行相同頻率的審查，根據 TR84，這屬於合理的謹慎做法，還是資源浪費？如何判斷？</li>
+                            <li>「Audit Trail 審查」屬於 Preventive Control (預防性管控) 還是 Detective Control (偵測性管控)？請說明理由。</li>
+                            <li>TR84 說「所有管控都必須寫入 SOP」，這對你的 CDMO 意味著什麼具體行動？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div id="sec-summary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge" style="font-size:1rem;">總結</div>
+            <div class="chapter-info">
+                <h2>Section Summary — 本節重點整理</h2>
+                <p>Section 3 核心概念回顧（TR84 p21–p25）</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="concept-box">
+                <h4>本節三大主題整合</h4>
+                <p>TR84 Section 3（對應原文 Section 5.0–5.3 框架部分）建立了一個完整的 DI 管控思維架構：</p>
+                <ol>
+                    <li><strong>5.0 DI 管控總覽</strong>：為什麼需要管控？成因多元（人為、系統、蓄意），品質文化是基礎，但技術管控不可或缺。法規說明「What」，TR84 說明「How」。</li>
+                    <li><strong>5.1 差異化的概念</strong>：並非所有 DI 管控都可以因關鍵性而不同——有「固定管控」（如記錄更正規則、系統時間存取限制），也有「可差異化管控」（頻率、審查者、審查深度）。</li>
+                    <li><strong>5.2 方法論與七大類別</strong>：依系統類型（Paper-based / Hybrid / Electronic）分為七大差異化管控類別，管控作用對象可在數據點、記錄或系統層級。</li>
+                    <li><strong>5.3 差異化管控適用原則</strong>：High/Medium/Low 三級關鍵性對應不同管控強度；預防性為主、偵測性為輔；所有管控必須入 SOP；9-Box Grid 確保管控與風險相稱。</li>
+                </ol>
+            </div>
+
+            <div class="note-box">
+                <h4>給 CDMO 專業人員的核心提醒</h4>
+                <ul>
+                    <li>TR84 的差異化管控框架不是「鬆綁」，而是幫助合理分配有限的 QA 資源——把最嚴格的管控留給真正高關鍵性的數據。</li>
+                    <li>蓄意造假永遠不可接受，無論關鍵性高低；Defense in Depth (縱深防禦) 是應對各種 DI 風險的最佳策略。</li>
+                    <li>CDMO 同時管理多個客戶的數據系統，更需要這個框架來進行系統性的差距分析（Gap Analysis）和年度 DI 稽核。</li>
+                    <li>Section 5.3.1–5.3.7 提供具體的管控建議表格——在與客戶討論 DI 控制方案或回應 FDA Warning Letter 時，可直接引用作為依據。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>關鍵術語速查表</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>中文</th>
+                            <th>English</th>
+                            <th>出現位置</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>預防性管控</td>
+                            <td>Preventive Control</td>
+                            <td>5.3</td>
+                        </tr>
+                        <tr>
+                            <td>偵測性管控</td>
+                            <td>Detective Control</td>
+                            <td>5.3</td>
+                        </tr>
+                        <tr>
+                            <td>存取控制</td>
+                            <td>Access Control</td>
+                            <td>5.1, 5.2 Cat.4</td>
+                        </tr>
+                        <tr>
+                            <td>稽核軌跡</td>
+                            <td>Audit Trail</td>
+                            <td>5.2 Cat.5, 5.3</td>
+                        </tr>
+                        <tr>
+                            <td>縱深防禦</td>
+                            <td>Defense in Depth</td>
+                            <td>5.3（隱含）</td>
+                        </tr>
+                        <tr>
+                            <td>紙本系統</td>
+                            <td>Paper-based System</td>
+                            <td>5.2</td>
+                        </tr>
+                        <tr>
+                            <td>電子系統</td>
+                            <td>Electronic System</td>
+                            <td>5.2</td>
+                        </tr>
+                        <tr>
+                            <td>混合系統</td>
+                            <td>Hybrid System</td>
+                            <td>5.2</td>
+                        </tr>
+                        <tr>
+                            <td>差異化管控</td>
+                            <td>Differentiated Controls</td>
+                            <td>5.1, 5.2, 5.3</td>
+                        </tr>
+                        <tr>
+                            <td>數據關鍵性</td>
+                            <td>Data Criticality</td>
+                            <td>5.1, 5.3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>下一節預告：Section 5.3.1–5.3.7 具體管控表格</h4>
+                <p>本節建立了 DI 管控的整體框架與思維。下一節將逐一展開七大差異化管控類別的具體規範表格，包括：</p>
+                <ul>
+                    <li>紙本記錄的實體儲存（Category 1）與文件發放管控（Category 2）</li>
+                    <li>混合系統中手動記錄、轉錄與真本副本的管控（Category 3）</li>
+                    <li>電子系統的 Access Control、Audit Trail 審查、備份與數據使用（Categories 4–7）</li>
+                </ul>
+                <p>每個類別都有 High / Medium / Low 三欄對照表，是 SOP 設計與差距分析的最直接參考工具。</p>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 84 — Data Integrity in Manufacturing and Packaging Operations</p>
+    <p>Section 3: Data Integrity Controls — Framework &amp; Methodology | p21–p25</p>
+    <p style="font-size:0.8rem; opacity:0.65; margin-top:0.5rem;">Licensed educational material. For internal training use only.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

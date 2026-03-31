@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Introduction &amp; Glossary — PDA TR84</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY TERM ENTRY ===== */
+.glossary-entry {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.glossary-entry:last-child {
+    border-bottom: none;
+}
+
+.glossary-term-title {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.glossary-source-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #edf2f7;
+    color: #4a5568;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-right: 0.4rem;
+    margin-bottom: 0.25rem;
+}
+
+.glossary-def {
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.abbrev-table {
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+.abbrev-table td {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.abbrev-table tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+.abbrev-code {
+    font-weight: 700;
+    color: var(--primary-blue);
+    white-space: nowrap;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Glossary / 導論與術語詞彙表</h1>
+    <div class="subtitle">PDA Technical Report No. 84 — Data Integrity Management System for Pharmaceutical Manufacturing and Packaging Operations</div>
+    <div class="page-info">p1 – p5 &nbsp;|&nbsp; Sections 1.0, 1.1, 1.2, 2.0, 2.1</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解資料完整性（Data Integrity）的核心定義，以及 ALCOA+ 原則（可歸屬性、可辨識性、同步性、原始性、準確性，加上完整性、一致性、持久性、可用性）在製藥製造中的實際意義。</li>
+            <li>掌握 TR84 的適用範圍——僅涵蓋製造與包裝作業，並區分其與實驗室（TR80）及品質管理系統資料完整性文件的差異。</li>
+            <li>能夠正確使用並解釋本章關鍵術語：Audit Trail（稽核軌跡）、Data Lifecycle（資料生命週期）、Hybrid System（混合系統）、True Copy（真實副本）、Data Vulnerability（資料脆弱性）等。</li>
+            <li>了解主要監管機構（FDA、MHRA、WHO）對資料完整性定義的異同，以及以風險為基礎（QRM）方法在建立資料完整性控制措施上的重要性。</li>
+        </ol>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節內容索引</h3>
+        <div class="toc-grid">
+            <a href="#sec-10">1.0 Introduction</a>
+            <a href="#sec-11">1.1 Purpose</a>
+            <a href="#sec-12">1.2 Scope</a>
+            <a href="#sec-20">2.0 Glossary</a>
+            <a href="#sec-21">2.1 Abbreviations</a>
+            <a href="#sec-summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.0: INTRODUCTION ===== -->
+    <div id="sec-10" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.0</div>
+            <div class="chapter-info">
+                <h2>Introduction and Scope / 導論與範疇</h2>
+                <p>PDA TR84 — p1</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT: English original -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p><span class="key-term">Data integrity</span> is the cornerstone of establishing and maintaining confidence in the reliability of the data that assures product quality and patient safety. The reliability of manufacturing production and control data depends on the procedures, systems, processes, and controls in place to ensure data integrity. In production, these controls start at the point of data creation and continue through the entire <span class="key-term">data lifecycle</span>, including the storage of data and the ability to retrieve it later to support the quality of the products manufactured.</p>
+
+                    <p>The term "<span class="key-term">data integrity</span>" has evolved to denote the degree to which data are complete, consistent, enduring, and available (<span class="key-term">ALCOA+</span>) as well as the degree to which the characteristics of the data are maintained for all operations throughout the data lifecycle. Pharmaceutical manufacturers need to ensure that relevant data are available to document and provide traceability to what occurred, that the data are attributable to the person who performed the activity and entered the data, and that the data cannot be deleted, omitted, or in any way modified to misrepresent what occurred. All breaches of <span class="key-term">data integrity</span>, whether intentional or unintentional, must be investigated.</p>
+
+                    <p>Advances in information technology and in-process monitoring sensors, coupled with lower costs of computer memory and better processors, has resulted in explosive growth in electronic data generation, acquisition, and storage. Applying a one-size-fits-all approach to data integrity controls established on principles developed decades ago may be neither valuable nor, in certain instances, feasible. Therefore, the use of a <span class="key-term">risk-based approach</span> is essential to developing a robust data integrity program, considering the requirements from a data-lifecycle perspective. Risk-based concepts apply even as industry transitions from manual documentation systems to fully electronic or <span class="key-term">hybrid</span> (manual and electronic) systems.</p>
+
+                    <p>This technical report addresses data integrity from the perspective of manufacturing operations. It discusses regulatory trends, risk management concepts, and recommendations for implementing appropriate data integrity controls in manufacturing operations applicable to paper-based, electronic-based and <span class="key-term">hybrid systems</span>. The case studies included in this technical report provide examples of how to assess current data integrity risks and implement the concepts presented here.</p>
+                </div>
+
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析與應用</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：資料完整性 (Data Integrity)</h4>
+                        <p>TR84 開宗明義：資料完整性是「確立並維持對產品品質與病患安全信心」的基石。換言之，沒有可信賴的資料，GMP 合規就是空話。</p>
+                        <p>資料完整性的現代定義已從早期的 ALCOA 擴展為 <strong>ALCOA+</strong>：</p>
+                        <ul>
+                            <li><strong>A</strong>ttributable（可歸屬性）— 可識別執行者</li>
+                            <li><strong>L</strong>egible（可辨識性）— 清楚可讀</li>
+                            <li><strong>C</strong>ontemporaneous（同步性）— 即時記錄</li>
+                            <li><strong>O</strong>riginal（原始性）— 第一手記錄</li>
+                            <li><strong>A</strong>ccurate（準確性）— 正確無誤</li>
+                            <li>+ <strong>C</strong>omplete（完整性）、<strong>C</strong>onsistent（一致性）、<strong>E</strong>nduring（持久性）、<strong>A</strong>vailable（可用性）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管重點：所有違規均須調查</h4>
+                        <p>「All breaches of data integrity, whether <strong>intentional or unintentional</strong>, must be investigated.」</p>
+                        <p>這句話至關重要——不論是人員疏失還是蓄意造假，都必須啟動調查。許多公司誤以為「無意的錯誤」可以不調查，這本身就是 GMP 違規。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：資料像工廠的「DNA」</h4>
+                        <p>想像一個無菌充填廠，每一批次的生產記錄就像是那批藥品的 DNA。若這個 DNA 有缺陷（資料不完整、被竄改），你就無法証明這批藥是安全的——不管藥品本身多好。</p>
+                        <p>資料完整性控制措施，就是保護這份「生產 DNA」從誕生到保存期滿，始終真實可信。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>風險導向 (Risk-based) 方法的必要性</h4>
+                        <p>TR84 明確指出：「一刀切」的資料完整性控制在今日不可行。隨著：</p>
+                        <ul>
+                            <li>電子資料爆炸性成長</li>
+                            <li>記憶體成本大幅降低</li>
+                            <li>混合系統 (Hybrid System) 普及</li>
+                        </ul>
+                        <p>必須以 <strong>QRM（品質風險管理）</strong>為基礎，依資料的「關鍵性」與「脆弱性」決定控制強度。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 實務情境</h4>
+                        <p>您的廠區正在使用紙本批次記錄（BPR），同時部分設備已配備電子記錄系統（如環境監控 BMS）。這就是典型的「混合系統 (Hybrid System)」。TR84 的資料完整性控制原則同樣適用——不能因為「這部分是紙本」就降低要求。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.1: PURPOSE ===== -->
+    <div id="sec-11" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.1</div>
+            <div class="chapter-info">
+                <h2>Purpose / 目的</h2>
+                <p>PDA TR84 — p1–2</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The continuous and rapid advances in automation and information technology, availability of economical data storage, and superiority of electronic <span class="key-term">audit trail</span> capabilities over paper records have compelled the pharmaceutical industry to rethink <span class="key-term">good manufacturing practices (GMP)</span> controls. Among the consequences is a heightened awareness of the need to establish and maintain effective data integrity controls at every stage of the manufacturing process for drug products. While the requirement to maintain accurate and complete data is well recognized by industry, what is not universally understood is the level of data integrity control needed at each step to comply with GMP regulations. Many companies continue to struggle when deciding what controls are appropriate for each manufacturing operation and what levels of review and verification are necessary to ensure reliable manufacturing control data.</p>
+
+                    <p>This technical report describes an approach using <span class="key-term">quality risk management (QRM)</span> for establishing and assessing the appropriateness of data integrity controls for each manufacturing operation based on the criticality and vulnerability of the data for its intended use.</p>
+
+                    <p>Developed by subject matter experts from global industry and regulatory agencies, this technical report summarizes manufacturing data integrity risks and identifies best practices that can be used to develop and sustain robust documentation as well as data integrity management procedures, systems, processes, and controls. Employing these practices will help users achieve compliance with applicable laws, regulations, and directives for pharmaceutical products such as active pharmaceutical ingredients (APIs), solid oral dosage forms, sterile injectables, biologics, and vaccines.</p>
+
+                    <p>Assuring data integrity is an organizational responsibility. Employees at any facility that manufactures, processes, packages, or holds a finished pharmaceutical, intermediate ingredient, or API are responsible for ensuring that data collected throughout the manufacturing process are accurate and reliable. Managers, quality assurance personnel, operators, technicians, and support staff alike must remain aware of the significance of maintaining and documenting data integrity for the quality and safety of their products.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析與應用</h3>
+
+                    <div class="concept-box">
+                        <h4>TR84 的三大目的</h4>
+                        <ol>
+                            <li><strong>診斷問題</strong>：協助業界識別每個製造步驟的資料完整性風險</li>
+                            <li><strong>提供工具</strong>：以 QRM（品質風險管理）框架評估各步驟所需的控制強度</li>
+                            <li><strong>建立最佳實踐</strong>：整合來自全球業界與監管機構的專家意見，提供最佳實務指引</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>業界普遍的困惑點</h4>
+                        <p>TR84 坦承：「many companies continue to struggle」——許多公司知道資料要準確完整，<strong>但不清楚每個步驟需要多少控制</strong>。</p>
+                        <p>這正是本報告的核心價值：提供一個系統化的 QRM 方法，讓決策有依據，而非靠感覺。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：QRM 就像保險精算</h4>
+                        <p>QRM（品質風險管理）用於資料完整性，就像保險公司做精算：不是每個風險都要買最高保額，而是根據「發生機率 × 嚴重度 × 可偵測性」來決定保多少。</p>
+                        <p>例如：無菌充填的關鍵製程參數記錄，風險高 → 需要電子稽核軌跡；倉儲搬運的非關鍵記錄，風險低 → 紙本雙人確認可能已足夠。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>資料完整性是組織責任，不只是 QA 的事</h4>
+                        <p>TR84 明確說明：<strong>所有人</strong>都有責任——</p>
+                        <ul>
+                            <li>管理者（Managers）</li>
+                            <li>品保人員（QA personnel）</li>
+                            <li>操作員（Operators）</li>
+                            <li>技術員（Technicians）</li>
+                            <li>支援人員（Support staff）</li>
+                        </ul>
+                        <p>這不是 QA 部門的獨立責任；資料完整性需要全廠文化的支持。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <p>在您的 CDMO 廠區，目前是否有一份文件明確列出每個製造步驟的資料完整性控制要求（包含控制類型與審查頻率）？若無，TR84 的 QRM 方法可作為建立此文件的起點。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 應用情境</h4>
+                        <p>適用範圍涵蓋 APIs、固體口服劑型、<strong>無菌注射劑</strong>、生物製劑及疫苗。作為無菌充填 CDMO，TR84 的每一條原則都直接適用於您的日常作業——從充填機的製程參數記錄，到滅菌紀錄的電子稽核軌跡管理。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.2: SCOPE ===== -->
+    <div id="sec-12" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.2</div>
+            <div class="chapter-info">
+                <h2>Scope / 適用範圍</h2>
+                <p>PDA TR84 — p2</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The information in this technical report applies to the management of data at pharmaceutical facilities that manufacture, process, package, or hold a finished pharmaceutical, API, or intermediate. Specifically, it addresses data pertaining to <span class="key-term">manufacturing operations</span>, materials, facilities and equipment, production, and <span class="key-term">packaging and labeling</span>, including in-process controls and process analytical testing. It also applies to the procedures, systems, processes, and controls used at a drug facility to ensure that the drugs conform to applicable laws, regulations, and directives and that the data support the drug's identity, strength, quality, and purity.</p>
+
+                    <p>The methods and processes described here can be applied to facilities that manufacture drugs intended for use both in clinical trials and for commercial distribution. The principles may be extended to facilities engaged in other activities (such as distribution of finished products to customers) or products (such as components, raw materials, medical devices, and combination products), though these were not a principal consideration.</p>
+
+                    <p>This technical report is <strong>not intended to apply</strong> to data integrity management in clinical practice and the implementation of clinical trials. <span class="key-term">Data integrity management in laboratory systems</span> is discussed in <em>PDA Technical Report No. 80: Data Integrity Management System for Pharmaceutical Laboratories</em>, and data integrity management in quality management systems will be discussed in a future technical report.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析與應用</h3>
+
+                    <div class="concept-box">
+                        <h4>TR84 適用範圍：製造與包裝作業</h4>
+                        <p>TR84 的涵蓋範圍包括：</p>
+                        <ul>
+                            <li>製造作業（Manufacturing operations）</li>
+                            <li>物料管理（Materials）</li>
+                            <li>廠房與設備（Facilities &amp; equipment）</li>
+                            <li>生產記錄（Production）</li>
+                            <li>包裝與標示（Packaging &amp; labeling）</li>
+                            <li>製程中控制（In-process controls）</li>
+                            <li>製程分析檢測（Process analytical testing）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要排除項：TR84 不涵蓋實驗室</h4>
+                        <p>TR84 <strong>不</strong>涵蓋：</p>
+                        <ul>
+                            <li>實驗室/QC 的資料完整性 → 請參閱 <strong>PDA TR80</strong></li>
+                            <li>臨床試驗的資料完整性管理</li>
+                            <li>品質管理系統（QMS）的資料完整性（規劃於未來報告）</li>
+                        </ul>
+                        <p>稽核時，若查驗員問起實驗室 OOS 記錄的資料完整性，應引用 TR80 而非 TR84。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：TR84 是「生產線上的指南」</h4>
+                        <p>把 PDA 的資料完整性系列想成一套工具箱——TR84 是專門給「生產線現場」使用的工具，TR80 是給「實驗室」的工具。兩套工具設計原理相同（ALCOA+），但應用場景不同，不能混用。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 實務對照</h4>
+                        <p>身為無菌充填 CDMO，TR84 直接適用於以下作業：</p>
+                        <ul>
+                            <li>充填機操作記錄（電子或紙本 BPR）</li>
+                            <li>高壓蒸氣滅菌器的滅菌循環電子記錄</li>
+                            <li>環境監控（BMS/DeltaV 系統）的資料管理</li>
+                            <li>包裝線的批號標示驗証記錄</li>
+                            <li>製程中重量/體積檢查的紀錄</li>
+                        </ul>
+                        <p>而 QC 實驗室的 HPLC、微生物測試等記錄，則由 TR80 規範。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.0: GLOSSARY ===== -->
+    <div id="sec-20" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.0</div>
+            <div class="chapter-info">
+                <h2>Glossary and Abbreviations / 術語詞彙表與縮寫</h2>
+                <p>PDA TR84 — p2–5</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT: Glossary English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English) — Glossary</h3>
+
+                    <!-- Audit Trail -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Audit Trail</span></div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">FDA</span>
+                            A secure, computer-generated, time-stamped electronic record that allows for reconstruction of the course of events relating to the creation, modification, or deletion of an electronic record.
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">MHRA</span>
+                            Metadata containing information associated with actions that relate to the creation, modification or deletion of GXP records. An audit trail provides for secure recording of life-cycle details such as creation, additions, deletions or alterations of information in a record, either paper or electronic, without obscuring or overwriting the original record. An audit trail facilitates the reconstruction of the history of such events relating to the record regardless of its medium, including the "who, what, when and why" of the action.
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">WHO</span>
+                            The audit trail is a form of metadata that contains information associated with actions that relate to the creation, modification or deletion of GXP records. An audit trail provides for secure recording of life-cycle details such as creation, additions, deletions, or alterations of information in a record, either paper or electronic, without obscuring or overwriting the original record.
+                        </div>
+                    </div>
+
+                    <!-- ATRA -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Audit Trail Review Assessment (ATRA)</span></div>
+                        <div class="glossary-def">A tool that can be used to help determine what elements within the audit trail should be reviewed, and the frequency at which the review should take place for each part of the audit trail where a review is required.</div>
+                    </div>
+
+                    <!-- ALCOA+ -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">ALCOA+</span></div>
+                        <div class="glossary-def"><strong>Attributable</strong> — It should be possible to identify the individual or computerized system that performed the recorded task. The need to document who performed the task/function is, in part, to demonstrate that the function was performed by trained and qualified personnel. This applies to changes made to records as well: corrections, deletions, changes, etc.</div>
+                        <div class="glossary-def"><strong>Legible</strong> — All records must be legible – the information must be readable in order for it to be of any use. This applies to all information that would be required to be considered Complete, including all Original records or entries. Where the 'dynamic' nature of electronic data is important to the content and meaning of the record, the ability to interact with the data using a suitable application is important to the 'availability' of the record.</div>
+                        <div class="glossary-def"><strong>Contemporaneous</strong> — The evidence of actions, events or decisions should be recorded as they take place. This documentation should serve as an accurate attestation of what was done, or what was decided and why, i.e., what influenced the decision at that time.</div>
+                        <div class="glossary-def"><strong>Original</strong> — The original record can be described as the first-capture of information, whether recorded on paper (static) or electronically (usually dynamic, depending on the complexity of the system). Information that is originally captured in a dynamic state should remain available in that state.</div>
+                        <div class="glossary-def"><strong>Accurate</strong> — Ensuring results and records are accurate is achieved through many elements of a robust pharmaceutical quality system: equipment-related factors such as qualification, calibration, maintenance and computer validation; policies and procedures; deviation management including root cause analysis, impact assessments and CAPA; trained and qualified personnel.</div>
+                        <div class="glossary-def"><strong>Complete</strong> — All information that would be critical to recreating an event is important when trying to understand the event. The level of detail required depends on the criticality of the information. A complete record of data generated electronically includes relevant metadata.</div>
+                        <div class="glossary-def"><strong>Consistent</strong> — Good Documentation Practices should be applied throughout any process, without exception, including deviations that may occur during the process. This includes capturing all changes made to data.</div>
+                        <div class="glossary-def"><strong>Enduring</strong> — Records must be kept in a manner such that they exist for the entire period during which they might be needed. They need to remain intact and accessible as an indelible/durable record throughout the record retention period.</div>
+                        <div class="glossary-def"><strong>Available</strong> — Records must be available for review at any time during the required retention period, accessible in a readable format to all applicable personnel who are responsible for their review whether for routine release decisions, investigations, trending, annual reports, audits or inspections.</div>
+                    </div>
+
+                    <!-- Critical Process / CPP / CQA -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Critical Process (CP)</span></div>
+                        <div class="glossary-def">A process that impacts a critical quality attribute of the intermediate, drug substance or drug product being manufactured and therefore should have established critical process parameters that can be monitored or controlled to ensure that the process produces the desired quality.</div>
+                    </div>
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Critical Process Parameter (CPP)</span></div>
+                        <div class="glossary-def">A process parameter whose variability has an impact on a critical quality attribute and therefore should be monitored or controlled to ensure the process produces the desired quality.</div>
+                    </div>
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Critical Quality Attribute (CQA)</span></div>
+                        <div class="glossary-def">A physical, chemical, biological or microbiological property or characteristic that should be within an appropriate limit, range, or distribution to ensure the desired product quality.</div>
+                    </div>
+
+                    <!-- Data Integrity -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Data Integrity</span></div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">FDA</span>
+                            Refers to the completeness, consistency, and accuracy of data. Complete, consistent, and accurate data should be attributable, legible, contemporaneously recorded, original or a true copy, and accurate (ALCOA).
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">MHRA</span>
+                            The degree to which data are complete, consistent, accurate, trustworthy, reliable and that these characteristics of the data are maintained throughout the data life cycle. The data should be collected and maintained in a secure manner, so that they are attributable, legible, contemporaneously recorded, original (or a true copy) and accurate. Assuring data integrity requires appropriate quality and risk management systems, including adherence to sound scientific principles and good documentation practices.
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">WHO</span>
+                            The degree to which data are complete, consistent, accurate, trustworthy and reliable and that these characteristics of the data are maintained throughout the data life cycle. The data should be collected and maintained in a secure manner, such that they are attributable, legible, contemporaneously recorded, original or a true copy and accurate. Assuring data integrity requires appropriate quality and risk management systems, including adherence to sound scientific principles and good documentation practices.
+                        </div>
+                    </div>
+
+                    <!-- Data Integrity Controls -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Data Integrity Controls</span></div>
+                        <div class="glossary-def">Controls put in place to either minimize the potential for a data integrity issue to occur or, if an issue does occur, the controls applied to increase the probability of detection.</div>
+                    </div>
+
+                    <!-- Data Lake -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Data Lake</span></div>
+                        <div class="glossary-def">A storage repository that holds, in a structured way, a vast amount of raw data, including metadata, in its native format until it is needed.</div>
+                    </div>
+
+                    <!-- Data Lifecycle -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Data Lifecycle</span></div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">MHRA</span>
+                            All phases in the life of the data (including raw data) from initial generation and recording through processing (including transformation or migration), use, data retention, archive/retrieval and destruction.
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">WHO</span>
+                            All phases of the process by which data is created, processed, reviewed, analyzed and reported, transferred, stored and retrieved and monitored until retirement or disposal. There should be a planned approach to assessing, monitoring and managing the data and the risks to those data in a manner commensurate with potential impact on patient safety, product quality and/or the reliability of the decisions made throughout all phases of the data life cycle.
+                        </div>
+                    </div>
+
+                    <!-- Data Process Flow Map -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Data Process Flow Map</span></div>
+                        <div class="glossary-def">A flow map that uses a baseline process flow map and overlays the data flow.</div>
+                    </div>
+
+                    <!-- Data Vulnerability -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Data Vulnerability</span></div>
+                        <div class="glossary-def">An indicator of data's level of exposure to data integrity failures due to intrinsic weaknesses in manufacturing processes, data-capture technology, and human factors or a combination thereof.</div>
+                    </div>
+
+                    <!-- Detectability -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Detectability</span></div>
+                        <div class="glossary-def">The ability to discover or determine the existence, presence, or fact of a hazard. For purposes of this technical report, a hazard typically would be a data integrity breach.</div>
+                    </div>
+
+                    <!-- Gemba Walk -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Gemba Walk</span></div>
+                        <div class="glossary-def">A method of walking through and personally observing processes.</div>
+                    </div>
+
+                    <!-- Historian -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Historian</span></div>
+                        <div class="glossary-def">A database/software program that archives automation and process data.</div>
+                    </div>
+
+                    <!-- Looped Memory -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Looped Memory</span></div>
+                        <div class="glossary-def">An electronic system with limited storage capacity that overwrites older data when it reaches that capacity.</div>
+                    </div>
+
+                    <!-- Mitigation -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Mitigation</span></div>
+                        <div class="glossary-def">Systematic steps taken or in place to reduce or limit the identified risk.</div>
+                    </div>
+
+                    <!-- Peer Review -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Peer Review</span></div>
+                        <div class="glossary-def">A review of data by a colleague who has a similar level of responsibilities as the person performing the activity or capturing the data.</div>
+                    </div>
+
+                    <!-- Quality Unit -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Quality Unit</span></div>
+                        <div class="glossary-def">An independent quality unit/structure with authority to fulfill certain pharmaceutical quality system responsibilities.</div>
+                    </div>
+
+                    <!-- Risk Control -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">Risk Control</span></div>
+                        <div class="glossary-def">Actions implementing risk management decisions.</div>
+                    </div>
+
+                    <!-- True Copy -->
+                    <div class="glossary-entry">
+                        <div class="glossary-term-title"><span class="key-term">True Copy</span></div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">FDA</span>
+                            21 CFR 211.180(d) requires records to be retained "either as original records or true copies such as photocopies, microfilm, microfiche, or other accurate reproductions of the original records." Electronic copies can be used as true copies of paper or electronic records, provided the copies preserve the content and meaning of the original or raw data, which includes metadata required to reconstruct the CGMP activity and the static or dynamic nature of the original records.
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">MHRA</span>
+                            A copy (irrespective of the type of media used) of the original record that has been verified (i.e., by a dated signature or by generation through a validated process) to have the same information, including data that describe the context, content, and structure, as the original.
+                        </div>
+                        <div class="glossary-def">
+                            <span class="glossary-source-label">WHO</span>
+                            A copy of an original recording of data that has been verified and certified to confirm it is an exact and complete copy that preserves the entire content and meaning of the original record including, in the case of electronic data, all essential metadata and the original record format as appropriate.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: Chinese Commentary for Glossary -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析與應用</h3>
+
+                    <div class="concept-box">
+                        <h4>稽核軌跡 (Audit Trail) — 監管核心</h4>
+                        <p>三大監管機構（FDA、MHRA、WHO）定義的核心一致：</p>
+                        <ul>
+                            <li>安全、防竄改</li>
+                            <li>時間戳記（time-stamped）</li>
+                            <li>記錄「誰、什麼、何時、為何」（who, what, when, why）</li>
+                            <li>不得覆蓋原始記錄</li>
+                        </ul>
+                        <p>MHRA 版本最完整，強調「who, what, when and why」四要素，是稽核員最常引用的標準。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>ATRA — 稽核軌跡審查評估</h4>
+                        <p>ATRA（Audit Trail Review Assessment）是 TR84 引入的實用工具，解決了一個常見問題：<strong>「我需要審查稽核軌跡中的哪些內容？多久審查一次？」</strong></p>
+                        <p>很多公司開啟了電子稽核軌跡，卻沒有定期、有系統地審查，這在 FDA/MHRA 稽查中是一個常見的觀察缺失。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ALCOA+ 完整解說（繁中對照）</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>英文</th>
+                                    <th>中文</th>
+                                    <th>關鍵要求</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>A</strong>ttributable</td>
+                                    <td>可歸屬性</td>
+                                    <td>可識別執行者（人或系統）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>L</strong>egible</td>
+                                    <td>可辨識性</td>
+                                    <td>清楚可讀，包含動態資料的互動能力</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C</strong>ontemporaneous</td>
+                                    <td>同步性</td>
+                                    <td>發生時即時記錄，不得事後補填</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>O</strong>riginal</td>
+                                    <td>原始性</td>
+                                    <td>第一手記錄；動態資料應維持動態狀態</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>A</strong>ccurate</td>
+                                    <td>準確性</td>
+                                    <td>設備校驗、SOP 遵循、CAPA 管理</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C</strong>omplete</td>
+                                    <td>完整性</td>
+                                    <td>重建事件所需的所有資訊，含 metadata</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>C</strong>onsistent</td>
+                                    <td>一致性</td>
+                                    <td>GDocP 始終如一，包含偏差事件</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>E</strong>nduring</td>
+                                    <td>持久性</td>
+                                    <td>保存期限內完整可存取，不得毀損</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>A</strong>vailable</td>
+                                    <td>可用性</td>
+                                    <td>有權人員可隨時查閱，格式可讀</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：Contemporaneous 就像監視錄影</h4>
+                        <p>「同步性」要求事發當下即時記錄，不能事後回憶補填。就像交通事故——監視器錄下的是真實情況，但事後憑記憶寫的陳述書，即使誠實，法律效力也低得多。</p>
+                        <p>在製藥製造中，補填批次記錄（back-dating entries）是最常見的資料完整性違規之一。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>CP / CPP / CQA — 製藥製造三角關係</h4>
+                        <p>理解這三個概念的層次關係，對資料完整性的風險評估至關重要：</p>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-1">CQA 關鍵品質屬性<br><small>（產品品質目標）</small></span>
+                            </div>
+                            <div class="arrow-down">↑ 影響</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-2">CP 關鍵製程<br><small>（影響 CQA 的製程）</small></span>
+                            </div>
+                            <div class="arrow-down">↑ 控制</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-3">CPP 關鍵製程參數<br><small>（需監控的參數）</small></span>
+                            </div>
+                        </div>
+                        <p>CPP 的資料記錄，因為直接影響 CQA（產品品質），需要最嚴格的資料完整性控制。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>資料完整性 (Data Integrity) — 三大監管機構定義比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>機構</th>
+                                    <th>定義重點</th>
+                                    <th>額外強調</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>FDA</td>
+                                    <td>完整性、一致性、準確性</td>
+                                    <td>ALCOA 原則</td>
+                                </tr>
+                                <tr>
+                                    <td>MHRA</td>
+                                    <td>+ 可信賴性、可靠性</td>
+                                    <td>整個資料生命週期；GDocP</td>
+                                </tr>
+                                <tr>
+                                    <td>WHO</td>
+                                    <td>同 MHRA</td>
+                                    <td>QRM 系統；科學原則</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>MHRA 和 WHO 的定義比 FDA 更廣泛，強調「整個資料生命週期」和「品質風險管理系統」。全球 CDMO 應以最嚴格的要求為準。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>資料完整性控制 (Data Integrity Controls) — 雙重目的</h4>
+                        <p>TR84 明確定義資料完整性控制有兩種目的：</p>
+                        <ol>
+                            <li><strong>預防（Prevention）</strong>：最小化資料完整性問題發生的可能性</li>
+                            <li><strong>偵測（Detection）</strong>：若問題發生，提高被發現的機率</li>
+                        </ol>
+                        <p>這與 QRM 中的「風險控制」思維一致：優先預防，但也要有能力偵測。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>資料生命週期 (Data Lifecycle) — 從生到終</h4>
+                        <p>MHRA 定義（較簡潔）：從初始產生 → 記錄 → 處理 → 使用 → 保留 → 歸檔/取用 → 銷毀</p>
+                        <p>WHO 定義（較完整）：強調應有<strong>「計劃性的方法」</strong>來評估、監控並管理資料及其風險——要與病患安全、產品品質及決策可靠性的影響相稱。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Looped Memory — 高風險陷阱</h4>
+                        <p>「循環記憶體（Looped Memory）」是許多老舊設備（如老型充填機、天平）的內建儲存方式：儲滿了就自動覆蓋最舊的資料。</p>
+                        <p>這直接違反 ALCOA+ 的「Enduring（持久性）」要求。解決方案：</p>
+                        <ul>
+                            <li>定期下載並儲存到受控系統</li>
+                            <li>或升級為具備更大容量或即時傳輸能力的設備</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>True Copy（真實副本）— 必須保留內容與意義</h4>
+                        <p>三大監管機構的共識：真實副本必須保留原始記錄的<strong>全部內容與意義</strong>。</p>
+                        <p>對電子記錄特別重要：</p>
+                        <ul>
+                            <li>必須包含所有必要的 metadata</li>
+                            <li>必須保留靜態或動態格式（如 PDF 列印紙本不等同於原始電子檔）</li>
+                            <li>電子副本需透過驗證流程產生，或有日期簽核</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：Gemba Walk 就是「走動管理」</h4>
+                        <p>Gemba Walk 源自日文「現場」，是管理者親自到生產現場觀察的方法。在資料完整性管理中，Gemba Walk 是發現「書面 SOP 和實際操作差距」的最有效手段。</p>
+                        <p>很多資料完整性問題不是政策層面的問題，而是現場執行的習慣問題——只有走到現場才能看到。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 應用情境 — Historian 系統</h4>
+                        <p>Historian（歷史資料庫）在 CDMO 中通常是 DCS（如 DeltaV）或 SCADA 系統的一部分，自動記錄：</p>
+                        <ul>
+                            <li>充填機的填充重量趨勢</li>
+                            <li>高壓蒸氣滅菌器的溫度/壓力曲線</li>
+                            <li>環境控制系統（BMS）的溫濕度數據</li>
+                        </ul>
+                        <p>Historian 系統本身也必須納入 CSV（電腦系統驗證）範疇，確保其記錄的資料完整性。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <p>在您廠區的製造系統中，哪些設備可能存在「Looped Memory（循環記憶體）」問題？這些資料目前是如何確保在覆蓋前被完整保存的？</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.1: ABBREVIATIONS ===== -->
+    <div id="sec-21" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.1</div>
+            <div class="chapter-info">
+                <h2>Abbreviations / 縮寫對照表</h2>
+                <p>PDA TR84 — p5</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English) — Abbreviations</h3>
+                    <table class="abbrev-table">
+                        <thead>
+                            <tr>
+                                <th>Abbreviation</th>
+                                <th>Full Term</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="abbrev-code">AHU/HVAC</td><td>Air Handling Unit / Heating, Ventilation, and Air Conditioning</td></tr>
+                            <tr><td class="abbrev-code">ALCOA</td><td>Attributable, Legible, Contemporaneous, Original, and Accurate</td></tr>
+                            <tr><td class="abbrev-code">API</td><td>Active Pharmaceutical Ingredient</td></tr>
+                            <tr><td class="abbrev-code">APIC</td><td>Active Pharmaceutical Ingredients Committee</td></tr>
+                            <tr><td class="abbrev-code">APR</td><td>Annual Product Review</td></tr>
+                            <tr><td class="abbrev-code">BMS</td><td>Building Management System</td></tr>
+                            <tr><td class="abbrev-code">BPR</td><td>Batch Processing Record</td></tr>
+                            <tr><td class="abbrev-code">CAPA</td><td>Corrective Action, Preventive Action</td></tr>
+                            <tr><td class="abbrev-code">CFR</td><td>Code of Federal Regulations</td></tr>
+                            <tr><td class="abbrev-code">CP</td><td>Critical Process</td></tr>
+                            <tr><td class="abbrev-code">EBR</td><td>Electronic Batch Recording</td></tr>
+                            <tr><td class="abbrev-code">FDA</td><td>U.S. Food and Drug Administration</td></tr>
+                            <tr><td class="abbrev-code">GAMP</td><td>Good Automated Manufacturing Practice</td></tr>
+                            <tr><td class="abbrev-code">GMP</td><td>Good Manufacturing Practices</td></tr>
+                            <tr><td class="abbrev-code">GxP</td><td>Good practice quality guidelines for various fields</td></tr>
+                            <tr><td class="abbrev-code">HMI</td><td>Human Machine Interface</td></tr>
+                            <tr><td class="abbrev-code">ICH</td><td>International Conference on Harmonization</td></tr>
+                            <tr><td class="abbrev-code">IS/IT</td><td>Information Security / Information Technology</td></tr>
+                            <tr><td class="abbrev-code">ISPE</td><td>International Society for Pharmaceutical Engineering</td></tr>
+                            <tr><td class="abbrev-code">MES</td><td>Manufacturing Execution System</td></tr>
+                            <tr><td class="abbrev-code">MHRA</td><td>Medicines and Healthcare products Regulatory Agency</td></tr>
+                            <tr><td class="abbrev-code">NCR</td><td>Noncompliance Report</td></tr>
+                            <tr><td class="abbrev-code">NMPA</td><td>National Medical Products Administration (China)</td></tr>
+                            <tr><td class="abbrev-code">OOS</td><td>Out of Specification</td></tr>
+                            <tr><td class="abbrev-code">PIC/S</td><td>Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme</td></tr>
+                            <tr><td class="abbrev-code">PLC</td><td>Programmable Logic Controller</td></tr>
+                            <tr><td class="abbrev-code">QMS</td><td>Quality Management Systems</td></tr>
+                            <tr><td class="abbrev-code">QRM</td><td>Quality Risk Management</td></tr>
+                            <tr><td class="abbrev-code">SOP</td><td>Standard Operating Procedure</td></tr>
+                            <tr><td class="abbrev-code">TGA</td><td>Australian Therapeutic Goods Administration</td></tr>
+                            <tr><td class="abbrev-code">WHO</td><td>World Health Organization</td></tr>
+                            <tr><td class="abbrev-code">WL</td><td>Warning Letter</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3 class="column-header">中文解析與應用</h3>
+
+                    <div class="concept-box">
+                        <h4>CDMO 人員必懂縮寫</h4>
+                        <p>以下縮寫在 TR84 全文反覆出現，須熟記其含義：</p>
+                        <ul>
+                            <li><strong>ALCOA</strong>：資料完整性核心原則縮寫，加 + 號為 ALCOA+</li>
+                            <li><strong>BPR</strong>（批次生產記錄）：製造作業的核心文件</li>
+                            <li><strong>EBR</strong>（電子批次記錄）：BPR 的電子化版本</li>
+                            <li><strong>BMS</strong>（建築管理系統）：廠房溫濕度、壓差等環境監控系統</li>
+                            <li><strong>MES</strong>（製造執行系統）：整合生產排程、批次記錄的中介系統</li>
+                            <li><strong>HMI</strong>（人機介面）：設備操作介面，常見於充填機、滅菌器</li>
+                            <li><strong>PLC</strong>（可程式化邏輯控制器）：設備自動化控制核心，其記錄需 CSV</li>
+                            <li><strong>QRM</strong>（品質風險管理）：TR84 的核心評估方法論</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>監管機構縮寫 — 全球視野</h4>
+                        <p>TR84 是國際性文件，引用的監管機構包括：</p>
+                        <ul>
+                            <li><strong>FDA</strong>（美國）— 21 CFR Part 11、211 等</li>
+                            <li><strong>MHRA</strong>（英國）— Data Integrity Guidance 業界公認最詳細</li>
+                            <li><strong>WHO</strong>（世界衛生組織）— 適用於開發中國家市場</li>
+                            <li><strong>TGA</strong>（澳洲）</li>
+                            <li><strong>NMPA</strong>（中國）— 大陸市場合規需額外注意</li>
+                            <li><strong>PIC/S</strong> — 歐洲藥廠互查協定，歐盟 GMP 框架基礎</li>
+                        </ul>
+                        <p>作為 CDMO，您的客戶可能來自不同市場，需同時符合多個監管機構要求。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：MES vs EBR vs BMS</h4>
+                        <p>這三個系統的層級關係：</p>
+                        <ul>
+                            <li><strong>BMS</strong>：記錄廠房環境（溫濕度、壓差）— 就像「氣象站」</li>
+                            <li><strong>EBR</strong>：記錄批次生產過程（投料、操作、檢查）— 就像「航行日誌」</li>
+                            <li><strong>MES</strong>：整合兩者並管理生產排程 — 就像「指揮艦橋」</li>
+                        </ul>
+                        <p>三者的資料完整性控制要求各有不同，都需納入 CSV 驗證範疇。</p>
+                    </div>
+
+                    <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+                        <h4>CDMO 盤點建議</h4>
+                        <p>建議您的 IT/QA 團隊建立一份「系統清單」，列出廠區中每個涉及資料記錄的系統（HMI、BMS、Historian、EBR、LIMS 等），並標示：</p>
+                        <ul>
+                            <li>是否已完成 CSV 驗證</li>
+                            <li>Audit Trail 是否已啟用並定期審查</li>
+                            <li>資料保存期限與備份機制</li>
+                        </ul>
+                        <p>這份清單是建立資料完整性程序的起點，也是稽查時的關鍵文件。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div id="sec-summary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#8721;</div>
+            <div class="chapter-info">
+                <h2>Section Summary / 本節總結</h2>
+                <p>關鍵概念整合回顧</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="concept-box" style="margin-bottom:1.5rem;">
+                <h4>本節核心要點總整理</h4>
+                <p><strong>1. 資料完整性是 GMP 的基石</strong><br>
+                TR84 第一句話就點明：資料完整性（Data Integrity）是確立並維持對產品品質與病患安全信心的基石。所有資料完整性違規，無論有意或無意，都必須調查。</p>
+
+                <p><strong>2. ALCOA+ 是九項原則，不只五項</strong><br>
+                ALCOA（可歸屬性、可辨識性、同步性、原始性、準確性）是基礎，加上 Complete（完整性）、Consistent（一致性）、Enduring（持久性）、Available（可用性）構成 ALCOA+。每一項都有其特定的控制要求。</p>
+
+                <p><strong>3. TR84 的範疇是製造與包裝，不包含實驗室</strong><br>
+                實驗室的資料完整性管理由 PDA TR80 規範。兩份文件合讀，才能覆蓋整個藥廠的資料完整性管理需求。</p>
+
+                <p><strong>4. 混合系統（Hybrid System）是常態，需特別管理</strong><br>
+                大多數藥廠仍在紙本與電子系統的過渡期，混合系統的資料完整性控制是 TR84 的重點之一。過渡期間不能以「我們還沒全電子化」為藉口降低要求。</p>
+
+                <p><strong>5. QRM（品質風險管理）是評估框架</strong><br>
+                資料完整性控制的強度應與資料的「關鍵性」和「脆弱性」相稱。QRM 是 TR84 全文的核心評估方法，避免「一刀切」的過度或不足控制。</p>
+            </div>
+
+            <div class="note-box" style="margin-bottom:1.5rem;">
+                <h4>稽查高頻問題預警</h4>
+                <p>FDA/MHRA 稽查員在製造作業中最常問的資料完整性問題：</p>
+                <ul>
+                    <li>您的稽核軌跡（Audit Trail）是否已啟用？審查頻率是多少？（ATRA 評估是否存在）</li>
+                    <li>操作員的電腦登入帳號是否共用？（Attributable 要求）</li>
+                    <li>是否有設備因 Looped Memory 導致資料被覆蓋的風險？</li>
+                    <li>紙本批次記錄的修改是否符合「單線劃除、簽名、日期、原因」原則？</li>
+                    <li>電子記錄的備份機制是否驗證過？True Copy 是否符合監管定義？</li>
+                </ul>
+            </div>
+
+            <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e; margin-bottom:1.5rem;">
+                <h4>本節學後行動 — CDMO 實踐建議</h4>
+                <ol>
+                    <li><strong>做系統盤點</strong>：列出廠區所有產生 GMP 記錄的系統（電子 + 紙本），確認每個系統的資料完整性控制狀態。</li>
+                    <li><strong>驗證 Audit Trail 啟用狀態</strong>：確認所有電子系統的稽核軌跡已啟用，並建立 ATRA（稽核軌跡審查評估）程序。</li>
+                    <li><strong>識別 Looped Memory 設備</strong>：找出廠區中使用循環記憶體的老舊設備，建立資料定期備份程序。</li>
+                    <li><strong>宣導「資料完整性是全員責任」</strong>：確保操作員到管理階層都理解 ALCOA+ 要求，特別是「Contemporaneous（同步性）」——不得事後補填記錄。</li>
+                </ol>
+            </div>
+
+            <div class="analogy-box">
+                <h4>最後比喻：資料完整性就像建築的地基</h4>
+                <p>無論你的製程技術多先進、設備多新穎，若資料完整性這塊「地基」不穩，整棟 GMP 大樓就可能倒塌。FDA Warning Letter 和進口禁令，許多不是因為產品本身有問題，而是因為記錄無法被信任——監管機構無法確認那批藥是否真的按照 GMP 製造。</p>
+                <p>TR84 的核心訊息：<strong>資料的可信度，決定了產品的可信度。</strong></p>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 84 — Data Integrity Management System for Pharmaceutical Manufacturing and Packaging Operations</p>
+    <p>Section 0: Introduction &amp; Glossary (p1–p5) | Bilingual Educational Version</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">© 2020 Parenteral Drug Association, Inc. | Educational commentary in Traditional Chinese added for learning purposes.</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
