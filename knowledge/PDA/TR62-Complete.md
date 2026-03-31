@@ -1,4 +1,4 @@
-# PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes
+# PDA Technical Report No. 62 (2013): Manual Aseptic Processes
 
 --- PAGE 5 ---
 The purpose of this technical report is to outline methods and approaches for control and evalua-
