@@ -147,7 +147,7 @@ TABLE_HEADING_RE = re.compile(
     r'^(Table\s+\d+[\.\d]*[-–]\d+\S*)\s*(.*)$'
 )
 FIGURE_HEADING_RE = re.compile(
-    r'^(Figure\s+\d+[\.\d]*[-–]\d+)\s+(.+)$'
+    r'^(Figure\s+\d+[\.\d]*(?:[-–]\d+)?[A-Za-z]?)\s*[:\s]\s*(.+)$'
 )
 
 
@@ -377,8 +377,11 @@ def source_to_markdown(
                 if j < len(raw_lines):
                     next_line = raw_lines[j].strip()
                     # Title should start with uppercase, be short, and not a sentence
+                    # Reject figure/table captions — they are not section headings
+                    not_caption = not re.match(r'^(Figure|Table|Note\s+for)\s', next_line)
                     if (next_line and re.match(r'[A-Z]', next_line) and len(next_line) < 100
-                            and not re.search(r'\.\s+[a-z]', next_line) and not next_line.endswith('.')):
+                            and not re.search(r'\.\s+[a-z]', next_line) and not next_line.endswith('.')
+                            and not_caption):
                         num = m.group(1) if is_dotted else f"{m.group(1)}.0"
                         merged_lines.append(f"{num} {next_line}\n")
                         first_content_seen = True
@@ -507,6 +510,8 @@ def source_to_markdown(
                 not_unit = first_word not in UNIT_WORDS and not re.match(r'^[A-Z][a-z]*/[A-Za-z²³]+$', first_word)
                 # Reject lines that look like sentences (footnotes, body text)
                 not_sentence = not re.search(r'\.\s+[a-z]', sec_title) and not sec_title.endswith('.')
+                # Reject figure/table captions embedded with a section number
+                not_caption = not re.match(r'^(Figure|Table|Note\s+for)\s', sec_title)
                 # Reasonable length
                 not_long = len(stripped) < 150
 
@@ -518,6 +523,7 @@ def source_to_markdown(
                     and not_toc
                     and not_unit
                     and not_sentence
+                    and not_caption
                     and not_long
                 ):
                     depth = _heading_depth(sec_num)
