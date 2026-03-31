@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.5 - Chapter 1: Introduction &amp; Key Concepts</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 1: Introduction &amp; Key Concepts</h1>
+    <div class="subtitle">導論與關鍵概念</div>
+    <div class="page-info">ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition) | p9 – p18</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 C&amp;Q（Commissioning and Qualification，試車與確效）的核心定義，以及它與傳統 IQ/OQ/PQ 方法的本質差異</li>
+        <li>掌握 CDE（Critical Design Element，關鍵設計要素）、CA（Critical Aspect，關鍵特性）與 CPP/CQA 之間的層級關係</li>
+        <li>了解本指引第二版的主要改版邏輯——為何廢除 V-Model、重視 QRM，以及何謂「不重複測試」原則</li>
+        <li>熟悉本章定義的 15 個關鍵術語，並能區分 Commissioning、Qualification、Verification 三者的異同</li>
+        <li>理解 Quality Unit（品質單位）在 C&amp;Q 過程中的正確角色定位</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.1 Background -->
+<!-- ============================================================ -->
+<div class="section-title">1.1 Background（背景）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>It is a universal regulatory expectation that pharmaceutical manufacturing facilities, systems, utilities, and equipment are designed, constructed and qualified to be <span class="key-term">suitable for the intended purpose</span>. Regulatory authorities have indicated in their guidances and regulations that organizations must build quality into their processes and products. This Guide intends to offer a compliant, integrated commissioning and qualification process that is based on a <span class="key-term">science and risk-based approach</span>. This process supports <span class="key-term">Quality by Design (QbD)</span> and ensures that risks to product quality from the systems are adequately addressed.</p>
+
+        <p>It is recognized that the terminologies for the commissioning and qualification process are varied. The overall process has traditionally been called <span class="key-term">commissioning and qualification</span>; ASTM E2500-13 refers to the process as <span class="key-term">verification</span>. This second edition of the Baseline® Guide focuses on the approach; the terminology used is not as important as the approach. For the purposes of this Guide, the term <strong>Commissioning and Qualification (C&amp;Q)</strong> is used to describe the process for establishing that facilities, systems, utilities, and equipment are suitable for the intended purpose. The term <strong>verification</strong> is used to describe an activity performed during the C&amp;Q process to establish suitability for the intended purpose.</p>
+
+        <p><span class="key-term">Commissioning and qualification differ only in that the qualification process has oversight by the Quality Unit</span>, focused on the system risk to product quality. The Quality Unit ultimately decides whether systems are suitable for the intended purpose, based on the identification, testing, and documentation of the system features deemed critical to product quality.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：C&amp;Q 的本質</h4>
+            <p><strong>Commissioning（試車）</strong>：工程師確認系統按設計安裝並正常運作的過程。強調技術符合性，不需要 QA 審批。</p>
+            <p><strong>Qualification（確效）</strong>：在 Commissioning 基礎上，由 Quality Unit 監督，聚焦於產品品質風險，證明系統「適合預定用途」。</p>
+            <p>兩者的關鍵差異只有一個：<strong>Quality Unit 的參與程度</strong>。這個洞見是本版 ISPE 指引最重要的訊息之一。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：工廠安裝如同蓋新廚房</h4>
+            <p>想像你開一家餐廳，安裝全新廚房設備。<br>
+            <strong>Commissioning</strong> = 水電師傅確認瓦斯爐點火正常、冰箱溫度正確——這是工程驗收。<br>
+            <strong>Qualification</strong> = 衛生局稽查員確認設備符合食安標準，並核發許可——這是法規合規層面。<br>
+            藥廠的 C&amp;Q 就是把「工程驗收」和「法規合規」整合成一個有效率的流程，避免重複測試。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：名稱不重要，方法才重要</h4>
+            <p>ISPE 刻意說「術語不如方法重要」，是因為各公司、各國法規對 IQ/OQ/PQ/FAT/SAT 的叫法差異極大。ISPE Vol.5 2nd Ed. 提供的是一套<strong>方法論框架</strong>，讓你不管用什麼名詞，都能做到符合法規的確效。</p>
+            <p>ASTM E2500 將整個過程稱為「verification」，與 ICH Q10 用語不同——這種差異在稽查時常造成混淆，本指引明確統一使用 C&amp;Q 框架。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一台新安裝的 WFI 系統，工程師完成了管路焊接檢查與水質確認，但尚未通知 QA 審核，這個活動屬於 Commissioning 還是 Qualification？為什麼？</li>
+                <li>如果一個系統不影響產品品質（例如廠務用自來水管），它是否需要進行 Qualification？請根據本節的定義解釋你的答案。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2 Purpose and Objectives -->
+<!-- ============================================================ -->
+<div class="section-title">1.2 Purpose and Objectives（目的與目標）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This Guide intends to offer a compliant, integrated C&amp;Q approach to making the qualification process efficient and cost-effective. The approach includes a <span class="key-term">System Risk Assessment</span> process that identifies the <span class="key-term">Critical Aspects (CAs)</span> and/or <span class="key-term">Critical Design Elements (CDEs)</span>. CDEs are system functions and features identified as having the potential to control risks to product quality and therefore ensure patient safety. Qualification confirms that the CDEs and design risk controls identified through the System Risk Assessment have all been checked, tested, and found to be installed and operating as specified.</p>
+
+        <p>This Guide recognizes industry best practices regarding C&amp;Q and presents concepts that can assist organizations in meeting current regulatory expectations for system qualification by:</p>
+        <ul>
+            <li>Providing guidance on how to apply <span class="key-term">Quality Risk Management (QRM)</span> to C&amp;Q to establish CDEs</li>
+            <li>Defining the focus of an integrated C&amp;Q effort to be the CAs/CDEs and <span class="key-term">Critical Process Parameters (CPPs)</span> which provide the ability to deliver the product <span class="key-term">Critical Quality Attributes (CQAs)</span></li>
+            <li>Defining best practices for <span class="key-term">User Requirements Specification (URS)</span>, Design Review (DR), Design Qualification (DQ), and acceptance and release of the system</li>
+            <li>Clarifying the change management processes required to support the C&amp;Q process</li>
+            <li>Providing <span class="key-term">Good Engineering Practice (GEP)</span> documentation standards</li>
+            <li>Describing where testing should be duplicated and where it is acceptable to test once</li>
+            <li>Addressing integration of equipment automation systems</li>
+            <li>Providing examples of appropriate C&amp;Q deliverables</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：CQA → CPP → CA → CDE 層級關係</h4>
+            <p>這是 ISPE Vol.5 整個框架的邏輯主軸，必須完全理解：</p>
+            <ul>
+                <li><strong>CQA（關鍵品質屬性）</strong>：藥品必須符合的品質特性，如無菌性、含量、pH</li>
+                <li><strong>CPP（關鍵製程參數）</strong>：影響 CQA 的製程參數，如滅菌溫度、充填重量</li>
+                <li><strong>CA（關鍵特性）</strong>：製程中必須確保的功能或能力（來自 ASTM E2500）</li>
+                <li><strong>CDE（關鍵設計要素）</strong>：設備/系統中直接影響 CA 的具體設計功能或物理特徵</li>
+            </ul>
+            <p>確效的核心任務就是：<strong>驗證所有 CDE 都已按設計安裝並正常運作</strong>。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>關係鏈示意圖</h4>
+            <pre>
+CQA（藥品品質要求）
+  ↓ 由 QRM 識別
+CPP（製程關鍵參數）
+  ↓ 由 SME 分析
+CA（系統關鍵特性）
+  ↓ 由設計工程師轉化
+CDE（設備關鍵設計要素）
+  ↓ 由 C&Q 計畫驗證
+System Qualification（系統確效）</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：聚焦 CDE 就像電動車安全稽核</h4>
+            <p>稽核一台電動車的安全性，你不需要測試每一顆螺絲。你只需要確認那些<strong>真正影響行車安全的關鍵元件</strong>（剎車系統、電池過熱保護、方向盤轉向機構）都按規格安裝並正常運作。</p>
+            <p>CDE 就是這些「關鍵元件」的藥廠版本——只測試真正重要的，不做無意義的重複測試。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 C&amp;Q 效益</h4>
+            <p>對 CDMO 而言，採用 ISPE C&amp;Q 框架的直接商業效益：</p>
+            <ul>
+                <li><strong>縮短驗證時間</strong>：FAT 廠驗數據可直接作為 IQ 證據，不需到廠重做</li>
+                <li><strong>降低成本</strong>：只聚焦 CDE，避免對非關鍵元件的過度測試</li>
+                <li><strong>加速新客戶引進</strong>：標準化的 URS → DQ → C&amp;Q 流程，讓客戶稽查更順暢</li>
+                <li><strong>強化法規辯護性</strong>：System Risk Assessment 文件是 FDA 483 最佳防禦工具</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一台新型凍乾機的「擱板溫度均勻性」屬於 CA 還是 CDE？請說明你的分析邏輯。</li>
+                <li>GEP（Good Engineering Practice）與 GMP 文件要求有何本質差異？ISPE 為何要特別強調 GEP 標準？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.3 Scope -->
+<!-- ============================================================ -->
+<div class="section-title">1.3 Scope（適用範圍）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This Guide applies to systems used by pharmaceutical manufacturers of human and veterinary drugs, including <span class="key-term">biological drug products</span>.</p>
+
+        <p>Medical devices have separate regulatory requirements and are outside of the scope of this Guide. For <span class="key-term">combination devices</span>, this Guide can be applied to the manufacturing equipment for the combination device, but not to the device itself.</p>
+
+        <p>The following areas are <strong>not in the scope</strong> of the C&amp;Q process as described in this Guide:</p>
+        <ul>
+            <li>Product and process development, including identification of any process requirements that influence system design</li>
+            <li>Computerized systems software development and testing (refer to ISPE GAMP® 5)</li>
+            <li>Process validation, including Process Performance Qualification (PPQ) and Continued/Ongoing Process Verification (refer to ISPE Good Practice Guide: Practical Implementation of the Lifecycle Approach to Process Validation)</li>
+            <li>Cleaning validation</li>
+            <li>Sanitization and sterilization validation</li>
+            <li>Analytical procedures and methods validation</li>
+            <li>Decommissioning activities (refer to ISPE Good Practice Guide: Decommissioning of Pharmaceutical Equipment and Facilities)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：C&amp;Q 的邊界劃定</h4>
+            <p>本節最重要的學習是：<strong>C&amp;Q 結束的地方，PPQ 才開始</strong>。</p>
+            <p>C&amp;Q 確認的是「系統符合設計規格並適合使用」，而 PPQ（製程性能確認）確認的是「這個系統可以穩定生產出符合規格的產品」。兩者的對象不同：前者是「設備/系統」，後者是「製程/產品」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：電腦系統軟體開發不在此範圍</h4>
+            <p>軟體的 V&amp;V（Validation &amp; Verification）屬於 <strong>ISPE GAMP 5</strong> 的管轄範圍，而非本指引。這個邊界劃定非常重要——當你在確效一台 SCADA 系統時：</p>
+            <ul>
+                <li>硬體部分（感測器、閥門、控制盤安裝）→ ISPE Vol.5 C&amp;Q</li>
+                <li>軟體部分（控制邏輯、配方管理、稽核追蹤）→ GAMP 5</li>
+            </ul>
+            <p>實務上兩者常需要整合規劃，避免重複測試或遺漏。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：C&amp;Q 是交屋驗屋，PPQ 是入住後的試住</h4>
+            <p>C&amp;Q 就像你買新房子時的「交屋驗屋」——確認水電、牆壁、窗戶都按圖施工且正常運作。</p>
+            <p>PPQ 則是「入住後連住三個月」，確認冬天不漏風、夏天不悶熱、每天用水都足夠。</p>
+            <p>兩者都必要，但性質完全不同，不能混為一談。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個新藥品的製造廠正在引進用於生物製劑的單次使用生物反應器（SUB）。請列出哪些活動屬於 C&amp;Q 範圍，哪些不屬於？</li>
+                <li>清潔驗證（Cleaning Validation）為何被排除在 C&amp;Q 範圍外？這兩個活動的對象有何本質差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.4 Process Overview -->
+<!-- ============================================================ -->
+<div class="section-title">1.4 Process Overview and Structure of the Guide（流程概述與指引架構）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>An overview of the integrated C&amp;Q approach is shown in Figure 1.1 (Science and Risk-Based C&amp;Q Process Map).</p>
+
+        <p>The inputs to the integrated C&amp;Q process include product and process CQAs/CPPs (established through research and development and/or the technology transfer process) and the application of QRM to define the control strategy.</p>
+
+        <p>The steps in the integrated C&amp;Q process are:</p>
+        <ul>
+            <li><span class="key-term">URS</span> (Chapter 2)</li>
+            <li><span class="key-term">System Classification</span> (Chapter 3)</li>
+            <li><span class="key-term">System Risk Assessment</span> (Chapter 4)</li>
+            <li><span class="key-term">DR/DQ</span> (Chapter 5)</li>
+            <li><span class="key-term">C&amp;Q Planning</span> (Chapter 6)</li>
+            <li><span class="key-term">C&amp;Q Testing and Documentation</span> (Chapter 7)</li>
+            <li><span class="key-term">Acceptance and Release</span> (Chapter 8)</li>
+            <li><span class="key-term">Periodic Review</span> (Chapter 9)</li>
+        </ul>
+
+        <p>Also included are support programs:</p>
+        <ul>
+            <li>Vendor Assessment for C&amp;Q Documentation Purposes (Chapter 10)</li>
+            <li>Engineering Quality Process (Chapter 11)</li>
+            <li>Change Management (Chapter 12)</li>
+            <li>Good Documentation Practices for C&amp;Q (Chapter 13)</li>
+            <li>Strategies for Implementation (Chapter 14)</li>
+        </ul>
+
+        <p>The process begins with the development of the <span class="key-term">URS</span>. The next step is <span class="key-term">system classification</span> — categorizing systems as direct impact or not direct impact. <span class="key-term">Direct impact systems</span> are commissioned and qualified while systems that are not direct impact are commissioned only.</p>
+
+        <p>C&amp;Q testing may include pre-delivery inspection, <span class="key-term">Factory Acceptance Testing (FAT)</span>, construction quality document verification, and <span class="key-term">Site Acceptance Testing (SAT)</span>. C&amp;Q planning should identify aspects of the FAT and SAT that will be utilized to satisfy qualification requirements.</p>
+
+        <p>Completion of testing leads to <span class="key-term">acceptance and release</span>, the last phase of C&amp;Q. Systems then go through a <span class="key-term">Periodic Review</span> to ensure they remain suitable for the intended purpose.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：整合式 C&amp;Q 流程地圖解讀</h4>
+            <p>整個 ISPE C&amp;Q 流程是一個<strong>由需求驅動、風險聚焦、迭代執行</strong>的架構：</p>
+            <ul>
+                <li><strong>URS</strong>（第 2 章）→ 定義「我要什麼」</li>
+                <li><strong>System Classification</strong>（第 3 章）→ 判斷「這個系統有多重要」</li>
+                <li><strong>System Risk Assessment</strong>（第 4 章）→ 識別「什麼地方可能出錯」</li>
+                <li><strong>DR/DQ</strong>（第 5 章）→ 確認「設計有沒有滿足需求」</li>
+                <li><strong>C&amp;Q Planning</strong>（第 6 章）→ 規劃「怎麼驗」</li>
+                <li><strong>Testing</strong>（第 7-8 章）→ 執行驗證並放行</li>
+                <li><strong>Periodic Review</strong>（第 9 章）→ 持續確保有效</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：FAT 可作為 IQ 證據！</h4>
+            <p>這是 ISPE Vol.5 最具實務價值的概念之一：<strong>在供應商工廠完成的 FAT（工廠驗收測試），可以直接作為 IQ（安裝確認）的部分證據</strong>，無需到廠重複測試。</p>
+            <p>但前提是：</p>
+            <ul>
+                <li>FAT 在廠商有明確 QA 監督下執行</li>
+                <li>FAT 協議（protocol）按 C&amp;Q 計畫的 GEP 要求撰寫</li>
+                <li>C&amp;Q 計畫中明確記錄哪些 FAT 結果被接受作為確效證據</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：直接衝擊系統就像手術室設備</h4>
+            <p><strong>Direct Impact System（直接衝擊系統）</strong>：直接影響藥品品質的系統，如純水系統、滅菌釜、充填機。必須執行完整 Commissioning + Qualification。</p>
+            <p><strong>Not Direct Impact System（非直接衝擊系統）</strong>：如辦公室空調、廠務用水管、照明系統。只需 Commissioning，不需 Qualification 文件。</p>
+            <p>就像醫院只有手術室才需要層流空調稽核，辦公室走廊的通風系統不需要同樣嚴格的驗收程序。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：整合 FAT/SAT 節省 30-50% 確效時間</h4>
+            <p>CDMO 在規劃新設備導入時，如能在簽訂採購合約時就要求供應商依據 ISPE C&amp;Q 框架撰寫 FAT 協議，並在 FAT 時派遣 QA 人員陪同，可將這些數據直接納入 IQ 報告。</p>
+            <p>實際案例顯示，與傳統做法相比（FAT 後到廠再做完整 IQ），此方法可節省 30-50% 的驗證工時，並顯著縮短設備啟動時程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一台新採購的高效液相色層儀（HPLC），其安裝在 QC 實驗室，用於放行檢驗。它是 Direct Impact 還是 Not Direct Impact System？請說明判斷依據。</li>
+                <li>廠商在工廠完成了完整的 FAT，記錄了所有感測器的校正資料。如果你是確效工程師，你需要哪些條件才能接受這份 FAT 報告作為 IQ 的一部分？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.5 Rationale for Second Edition -->
+<!-- ============================================================ -->
+<div class="section-title">1.5 Rationale for this Second Edition（第二版改版說明）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This Guide, the second edition of the ISPE Baseline® Guide: Commissioning and Qualification, has been designed to present industry best practices for C&amp;Q. It also combines concepts from regulatory guidances (e.g., from EMA, FDA, ICH) and the following ISPE documents that are superseded with this revision:</p>
+        <ul>
+            <li>ISPE Baseline® Guide: Volume 5 – Commissioning and Qualification (First Edition)</li>
+            <li>ISPE Guide: Science and Risk-Based Approach for the Delivery of Facilities, Systems, and Equipment</li>
+            <li>ISPE Good Practice Guide: Applied Risk Management for Commissioning and Qualification</li>
+        </ul>
+
+        <p>Certain aspects of the C&amp;Q approach described in the previous edition are <strong>retired and replaced</strong>:</p>
+        <ul>
+            <li><span class="key-term">Component Criticality Assessment</span> — Since CDEs are identified as an output of the System Risk Assessment, assessment of the criticality of each system component is unnecessary.</li>
+            <li><span class="key-term">Enhanced Commissioning</span> — This Guide describes how the level of testing can be aligned with criticality and intended purpose of the system.</li>
+            <li><span class="key-term">Enhanced Design Review</span> — This Guide describes an approach for performing effective DRs using the System Risk Assessment to achieve DQ.</li>
+            <li><span class="key-term">Enhanced Documentation</span> — Good Documentation Practices are defined in the Guide.</li>
+            <li><span class="key-term">Indirect Impact</span> — The term is not used. The Guide describes C&amp;Q for systems based on whether a system has direct product impact or not.</li>
+            <li><span class="key-term">V-Model</span> — The integrated C&amp;Q approach provides a lifecycle C&amp;Q approach and is represented by a different process map. The V-model appropriately represented the links between the design process and testing, but did not incorporate a risk assessment process based on product quality.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：V-Model 的終結與新框架的誕生</h4>
+            <p>V-Model（V 型模型）是 1990-2010 年代確效的黃金標準，將設計階段文件與測試階段文件對應成 V 字型：</p>
+            <ul>
+                <li>URS ↔ PQ</li>
+                <li>Functional Spec ↔ OQ</li>
+                <li>Design Spec ↔ IQ</li>
+            </ul>
+            <p>ISPE 第二版<strong>廢除 V-Model</strong> 的原因：V-Model 強調文件對應，但沒有整合「產品品質風險評估」，導致不關鍵的系統也做了大量確效測試，效率極低。</p>
+            <p>新框架以 <strong>QRM（品質風險管理）為核心</strong>，只對真正影響產品品質的 CDE 進行確效。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「Indirect Impact」術語被廢除</h4>
+            <p>第一版有三分類：Direct Impact / Indirect Impact / No Impact。第二版簡化為兩分類：<strong>Direct Impact / Not Direct Impact</strong>。</p>
+            <p>原因：「Indirect Impact」在實務上定義模糊，常造成確效工程師爭議——清潔用水算 Indirect 還是 Direct？廠房 HVAC 呢？</p>
+            <p>新分類更清晰：「有沒有直接影響產品品質？」只有兩個答案。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：從「全身健康檢查」到「針對性精密檢查」</h4>
+            <p>傳統 V-Model 確效就像每年做全身健康檢查：腦部、心臟、腸胃、骨質……每個器官都掃一遍，不管你有沒有症狀。費時費錢。</p>
+            <p>ISPE 新框架就像根據你的個人健康風險做針對性精密檢查：有心臟病家族史→重點檢查心臟；有糖尿病風險→重點監控血糖。其他沒有風險的部位，例行檢查就夠了。</p>
+            <p>這就是「Science and Risk-Based C&amp;Q」的本質——聚焦真正的風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的公司目前用傳統 V-Model 進行確效，有一批老舊的 Legacy 系統（按第一版 ISPE 完成確效）。你的稽查員問：「這些系統需要按第二版重新確效嗎？」本節給了什麼指引？</li>
+                <li>為什麼廢除「Component Criticality Assessment（元件關鍵性評估）」能提升效率？請解釋 System Risk Assessment 如何取代它的功能。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.6 Key Concepts -->
+<!-- ============================================================ -->
+<div class="section-title">1.6 Key Concepts（關鍵概念）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>1.6.1 Efficient Approach without Redundant Testing</h2>
+        <p>The foundation of this Guide is based on the expectation that engineers and system vendors ensure systems are installed and operate to meet the design specifications and user requirements. This is commonly referred to as <span class="key-term">commissioning</span>. Best industry practice is to utilize such an approach when installing any new system.</p>
+
+        <p>When a system has <span class="key-term">direct impact on product quality (direct impact system)</span>, the CDEs of the system can be verified by the approach described in this Guide. This approach ensures that identified CPPs are maintained; CPPs ensure that CQAs are attained. Testing of system CDEs is utilized to support qualification of the system. Thus, the documentation of the testing performed in commissioning needs to be acceptable to be presented in a <span class="key-term">regulatory audit or inspection</span>.</p>
+
+        <h2 style="margin-top:1.5rem;">1.6.2 Terminology for Product Impacting Attributes</h2>
+        <p>There is a recognition that critical utilities, such as <span class="key-term">Water for Injection (WFI)</span> systems, may not have product CQAs but do have compendial requirements and CPPs. These parameters can directly influence the system's ability to deliver product meeting those attributes.</p>
+        <p>The authors continue to use the terminology of CPPs and CQAs for all systems, including WFI and upstream equipment. It is important for individual organizations/sites to define what is critical for their products, processes, and systems.</p>
+
+        <h2 style="margin-top:1.5rem;">1.6.3 Quality Unit Oversight</h2>
+        <p>The <span class="key-term">Quality Unit</span> is expected to have oversight of the entire validation lifecycle including qualification. Because the Quality Unit is not expected to have expertise in all aspects of pharmaceutical manufacturing systems, identified <span class="key-term">SMEs (Subject Matter Experts)</span> should be responsible for determining how best to design and test systems to ensure they are suitable for the intended purpose.</p>
+        <p>The Quality Unit needs to be engaged in the process, be considered part of the C&amp;Q team, approve the appropriate testing plans and documents for systems that directly affect product quality, and approve the final acceptance of the qualified state. <strong>The authors see this as a Quality Assurance (QA) role, not a documentation quality control role.</strong></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>1.6.1 核心概念：Commissioning 文件 = 可提交稽查的品質文件</h4>
+            <p>這是最容易被誤解的地方。許多工程師認為試車文件是「工程文件」，只要技術上正確就夠，不需要按 GMP 標準撰寫。</p>
+            <p>ISPE 的立場非常明確：<strong>當試車測試用來支持確效時，這些文件必須能接受法規稽查</strong>。意思是：</p>
+            <ul>
+                <li>數據必須真實、及時記錄（no backdating）</li>
+                <li>偏差（Discrepancy）必須有記錄和處理</li>
+                <li>簽核程序必須完整</li>
+            </ul>
+            <p>工程師完成的試車報告品質直接決定確效效率——好的 FAT 報告可省掉大量重複測試。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>1.6.2 重點提示：WFI 系統的 CPP 如何定義？</h4>
+            <p>WFI 系統本身不直接生產藥品，但其輸出水質影響所有使用 WFI 的製程。因此：</p>
+            <ul>
+                <li>WFI <strong>的 CQA</strong> = WFI 的內毒素限值、導電度、TOC（這些是「中間品質屬性」）</li>
+                <li>WFI <strong>的 CPP</strong> = 蒸餾溫度、循環流速、循環壓力</li>
+                <li>WFI <strong>的 CDE</strong> = 溫度感測器精度、熱交換器完整性、迴路材質（316L 不鏽鋼）</li>
+            </ul>
+            <p>理解這個延伸應用，有助於確效工程師在面對 utility 系統時不會束手無策。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>1.6.3 核心概念：QA 是品質保證角色，不是文件審查機器</h4>
+            <p>ISPE 特別強調：Quality Unit 的角色是 <strong>Quality Assurance（品質保證）</strong>，不是 <strong>Documentation Quality Control（文件品管）</strong>。</p>
+            <p>實務意義：</p>
+            <ul>
+                <li>QA 不需要逐字審查所有技術細節（那是 SME 的責任）</li>
+                <li>QA 需要確認 C&amp;Q 計畫是否涵蓋了所有產品品質風險</li>
+                <li>QA 負責最終的放行決定，基於風險評估結果，不是基於文件厚度</li>
+            </ul>
+            <p>這個觀念轉變對很多台灣 CDMO 的 QA 部門是重要的文化挑戰。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：QA 是法官，SME 是鑑定人</h4>
+            <p>法庭上，法官（QA）不需要自己做 DNA 鑑定，但必須評估鑑定人（SME）提交的報告是否可信、是否足夠支持裁決。</p>
+            <p>最終放行決定由法官（QA）做出，責任歸屬明確。鑑定人（SME）提供技術判斷，不應該被要求超出自己專業範圍之外。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個新的 CIP（就地清洗）系統正在完成 FAT，供應商提交了測試報告，但其中有 3 項偏差未按 ISPE GEP 標準記錄（只有口頭說明，無書面記錄）。作為確效工程師，你應如何處理？</li>
+                <li>你的 QA Director 說：「每一份確效報告我都要逐行審查才放心。」根據 ISPE 1.6.3 的精神，這種做法有何風險？應如何調整？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.7 Key Terms -->
+<!-- ============================================================ -->
+<div class="section-title">1.7 Key Terms（關鍵術語定義）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:30%;">Term</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td><span class="key-term">Acceptance Criteria</span></td>
+                <td>"Measurable terms under which a test result may be considered acceptable" (WHO Annex 5)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Commissioning</span></td>
+                <td>A well-planned, documented, and managed engineering approach to the start-up and turnover of facilities, systems, utilities, and equipment to the end-user that results in a safe and functional environment that meets established design requirements and stakeholder expectations.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Critical Aspects (CAs)</span></td>
+                <td>"Functions, features, abilities, and performance or characteristics necessary for the manufacturing process and systems to ensure consistent product quality and patient safety." (ASTM E2500-13)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Critical Design Elements (CDEs)</span></td>
+                <td>Design functions or features of an engineered system that are necessary to consistently manufacture products with the desired quality attributes. CDEs are identified and documented based on technical understanding of the product CQAs, process CPPs, and equipment design/automation. CDEs are verified through C&amp;Q.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Critical Process Parameter (CPP)</span></td>
+                <td>"A process parameter whose variability has an impact on a critical quality attribute and therefore should be monitored or controlled to ensure the process produces the desired quality." (ICH Q8)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Critical Quality Attribute (CQA)</span></td>
+                <td>"A physical, chemical, biological or microbiological property or characteristic that should be within an appropriate limit, range, or distribution to ensure the desired product quality." (ICH Q8)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Design Qualification (DQ)</span></td>
+                <td>A documented process that verifies the proposed design of the facilities, systems, utilities, and equipment is suitable for the intended purpose.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Design Review (DR)</span></td>
+                <td>"Formal, documented, comprehensive, and systematic examination of a design to determine if the design meets the applicable requirements, to identify problems, and to propose solutions." (ISO/IEC/IEEE 24765)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Deviation</span></td>
+                <td>A departure from specification, or a critical discrepancy that cannot be corrected, that affects a CA/CDE. Deviations require Quality Unit approval prior to closure.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Direct Impact System</span></td>
+                <td>A system that directly impacts product CQAs, or directly impacts the quality of the product delivered by a critical utility system. All other systems are considered to be not direct impact.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Discrepancy</span></td>
+                <td>"Datum or result outside of the expected range; an unfulfilled requirement; may be called non-conformity, defect, deviation, out-of-specification, out-of-limit, out-of-trend." (FDA 2006 Quality Systems Guidance)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Installation Qualification (IQ)</span></td>
+                <td>A documented process that verifies that the facilities, systems, utilities, and equipment, as installed or modified, comply with the approved design and the manufacturer's recommendations.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Operational Qualification (OQ)</span></td>
+                <td>A documented process that verifies that the facilities, systems, utilities, and equipment, as installed or modified, perform as intended throughout the anticipated operating ranges.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Performance Qualification (PQ)</span></td>
+                <td>A documented process that verifies that the facilities, systems, utilities, and equipment, as connected together, can perform effectively and reproducibly, based on the approved process method and product specification.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Qualification</span></td>
+                <td>A process to demonstrate and document that the critical manufacturing facilities, systems, utilities, and equipment are suitable for the intended purpose.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Quality Risk Management (QRM)</span></td>
+                <td>"A systematic process for the assessment, control, communication and review of risks to the quality of the drug (medicinal) product across the product lifecycle." (ICH Q9)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Suitable for the Intended Purpose</span></td>
+                <td>The system requirements are defined, the design is appropriate for control of the manufacturing process, and the system is fabricated and installed as designed, and performs as intended throughout the anticipated operating ranges.</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Verification</span></td>
+                <td>An activity that is performed within the C&amp;Q process to document that the manufacturing facilities, systems, utilities, and equipment are suitable for the intended purpose.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>術語辨析：IQ / OQ / PQ 與 C&amp;Q 的關係</h4>
+            <p>ISPE 第二版保留了 IQ/OQ/PQ 的定義，但在<strong>實際執行上，它們是 C&amp;Q 過程的輸出文件，而非獨立步驟</strong>。</p>
+            <p>傳統思維：先做 IQ → 再做 OQ → 再做 PQ（三段式串列）<br>
+            ISPE 新思維：FAT、SAT、現場測試按邏輯規劃，IQ/OQ/PQ 文件是這些測試的<strong>結果整理</strong>，不是強制的執行順序。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Deviation vs. Discrepancy 的關鍵差異</h4>
+            <p><strong>Discrepancy（偏差事項）</strong>：任何不符合預期的結果，可以是輕微的，可能可以直接修正。</p>
+            <p><strong>Deviation（確效偏差）</strong>：ISPE 特別定義為「影響 CA/CDE 的嚴重差異，且無法直接修正」——必須獲得 Quality Unit 批准才能關閉。</p>
+            <p>在確效報告中混用這兩個術語是常見錯誤，容易在稽查時引發不必要的問題。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>術語速查表（繁體中文對照）</h4>
+            <pre>
+C&amp;Q       = 試車與確效（Commissioning and Qualification）
+CDE       = 關鍵設計要素（Critical Design Element）
+CA        = 關鍵特性（Critical Aspect）
+CPP       = 關鍵製程參數（Critical Process Parameter）
+CQA       = 關鍵品質屬性（Critical Quality Attribute）
+DQ        = 設計確認（Design Qualification）
+DR        = 設計審查（Design Review）
+FAT       = 工廠驗收測試（Factory Acceptance Testing）
+SAT       = 現場驗收測試（Site Acceptance Testing）
+IQ        = 安裝確認（Installation Qualification）
+OQ        = 操作確認（Operational Qualification）
+PQ        = 性能確認（Performance Qualification）
+QRM       = 品質風險管理（Quality Risk Management）
+SME       = 主題專家（Subject Matter Expert）
+URS       = 使用者需求規格（User Requirements Specification）
+GEP       = 良好工程規範（Good Engineering Practice）</pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：如何在稽查中使用這些定義</h4>
+            <p>當 FDA 查員詢問：「你們如何定義 Direct Impact System？」，最佳回答方式：</p>
+            <ol>
+                <li>引用 ISPE Vol.5 2nd Ed. 的定義（直接影響產品 CQA 的系統）</li>
+                <li>展示你們的 System Classification 工具表（第 3 章）</li>
+                <li>說明哪些系統被分類為 Direct Impact，以及判斷依據</li>
+            </ol>
+            <p>事先建立一份<strong>系統分類清冊</strong>，在每次稽查前更新，可大幅提升稽查效率。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請將以下系統分類為 Direct Impact 或 Not Direct Impact，並說明理由：(a) 注射用水系統 (b) 廠房壓差監控系統 (c) 無菌室 HVAC (d) 辦公室中央空調 (e) 自動化充填機 PLC</li>
+                <li>一台滅菌釜在 PQ 測試中，某個循環的最冷點溫度為 120.8°C（規格 ≥121°C），屬於 Discrepancy 還是 Deviation？這份文件應如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>C&amp;Q 的核心定義</strong>：Commissioning（工程試車）+ Qualification（品質確效）整合為一個科學與風險驅動的流程，核心差異在於 Quality Unit 的參與</li>
+        <li><strong>CDE 是確效的聚焦點</strong>：透過 QRM → CQA → CPP → CA → CDE 的層級識別，確保只對真正重要的系統特性進行確效測試</li>
+        <li><strong>第二版主要改版</strong>：廢除 V-Model、廢除「Indirect Impact」分類、廢除 Component Criticality Assessment，以 QRM 整合為核心</li>
+        <li><strong>FAT 可作為確效證據</strong>：供應商工廠完成的測試在 GEP 標準下可直接作為 IQ 文件，避免重複測試，縮短確效週期</li>
+        <li><strong>QA 的角色定位</strong>：QA 是品質保證的最終決策者，不是文件逐字審查員；SME 負責技術判斷，QA 負責風險評估與放行批准</li>
+        <li><strong>關鍵術語必記</strong>：CDE、CA、Deviation vs. Discrepancy、Direct Impact System 的精確定義是法規稽查時的必備知識</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
