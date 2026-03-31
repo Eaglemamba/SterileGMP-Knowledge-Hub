@@ -494,7 +494,19 @@ def run_merge(
         raise ValueError("base_dir must be provided. Pass os.path.dirname(os.path.abspath(__file__))")
 
     sections_dir = os.path.join(base_dir, 'sections')
-    css_path = os.path.join(base_dir, '..', 'template.css')
+    # template.css lives at repo root. base_dir may be 1 or 2 levels deep
+    # (e.g. PDA/TR26 → ../template.css works; ISPE/ISPE-Vol5 → ../../template.css needed).
+    # Walk up the tree until template.css is found (max 3 levels).
+    _search = base_dir
+    css_path = None
+    for _ in range(3):
+        _search = os.path.dirname(_search)
+        _candidate = os.path.join(_search, 'template.css')
+        if os.path.exists(_candidate):
+            css_path = _candidate
+            break
+    if css_path is None:
+        css_path = os.path.join(base_dir, '..', 'template.css')  # fallback (original)
     output_dir = os.path.join(base_dir, 'output')
     output_path = os.path.join(output_dir, output_filename)
 

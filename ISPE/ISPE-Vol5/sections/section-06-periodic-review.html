@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.5 - Chapter 9: Periodic Review</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   ISPE Green Color Override applied below.
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #2e7d52 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4 { color: #1a5c3a; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ANALOGY BOX - Yellow */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* TERM/CONCEPT BOX - Green */
+.concept-box:not(.analogy):not(.application):not(.note) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application):not(.note) h3,
+.concept-box:not(.analogy):not(.application):not(.note) h4 { color: #2e7d32 !important; }
+.term-box, .key-term-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* NOTE BOX - Orange */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* APPLICATION BOX - Blue */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* PRACTICE BOX - Dashed Blue */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TRIAGE DIAGRAM ===== */
+.triage-flow {
+    display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0;
+}
+.triage-box {
+    border-radius: 8px; padding: 0.75rem 1rem;
+    font-size: 0.9rem; font-weight: 600;
+    display: flex; align-items: center; gap: 0.75rem;
+}
+.triage-box.tier-a { background: #e8f5e9; border-left: 5px solid #27ae60; color: #1b5e20; }
+.triage-box.tier-b { background: #fff3e0; border-left: 5px solid #ff9800; color: #e65100; }
+.triage-box.tier-c { background: #fce4ec; border-left: 5px solid #e91e63; color: #880e4f; }
+.triage-badge {
+    min-width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+}
+.tier-a .triage-badge { background: #27ae60; color: white; }
+.tier-b .triage-badge { background: #ff9800; color: white; }
+.tier-c .triage-badge { background: #e91e63; color: white; }
+.triage-arrow { text-align: center; font-size: 1.2rem; color: #888; line-height: 1; }
+
+/* ===== CATEGORY BADGE ===== */
+.cat-badge {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 0.82rem; font-weight: 700; margin-right: 4px;
+}
+.cat-0 { background: #e8f5e9; color: #1b5e20; border: 1px solid #4caf50; }
+.cat-1 { background: #fff3e0; color: #bf360c; border: 1px solid #ff7043; }
+.cat-2 { background: #e3f2fd; color: #0d47a1; border: 1px solid #42a5f5; }
+.cat-3 { background: #f3e5f5; color: #4a148c; border: 1px solid #ab47bc; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-note { font-size: 0.82rem; color: var(--text-medium); margin-top: 0.5rem; font-style: italic; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 10px; padding: 1.25rem 1.5rem;
+    border: 1px solid #ffe082; margin-top: 2rem;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary p { font-size: 0.92rem; margin-bottom: 0.4rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { font-size: 0.92rem; margin-bottom: 0.35rem; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px; color: var(--primary-blue);
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white; padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: var(--accent-blue);
+    color: white; border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219150; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1, .top-header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body id="top">
+
+<!-- ===== SECTION HEADER ===== -->
+<div class="header">
+    <h1>ISPE Baseline&reg; Guide: Commissioning and Qualification (2nd Edition)</h1>
+    <div class="subtitle">Chapter 9: Periodic Review</div>
+    <div class="page-info">Pages 69–78 &nbsp;|&nbsp; Science &amp; Risk-Based Approach to Maintaining Qualified State</div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="main-content">
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解「定期審查 (Periodic Review)」的法規依據，以及四個維護確效狀態的品質系統（變更管制、維護、校正、偏差）</li>
+            <li>掌握 ISPE 科學與風險導向的分類方式：Cat 0–3 及其審查週期，並能說明 Cat 0（持續監測取代正式審查）的邏輯</li>
+            <li>熟悉 A→B→C 三層篩選流程（Triage）的設計理念，說明為何此方式比傳統全面年度審查更有效率</li>
+            <li>詳述第 A 層初步評估中四大品質系統的查詢要點，以及電腦稽核追蹤審查 (Computer Audit Trail Review) 的八個必查項目</li>
+            <li>應用本章知識，說明 CDMO 如何在既有設施中建立分級定期審查計畫，包括需要建立哪些量化指標與 SOP</li>
+        </ol>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本章節內容導覽</h3>
+        <div class="toc-grid">
+            <a href="#sec91">9.1 Introduction</a>
+            <a href="#sec911">9.1.1 Rationale</a>
+            <a href="#sec912">9.1.2 Principles/Concepts</a>
+            <a href="#sec92">9.2 Approach &amp; Prerequisites</a>
+            <a href="#sec93">9.3 Phase 1: System Categorization</a>
+            <a href="#sec94">9.4 Phase 2: Execution</a>
+            <a href="#sec941">9.4.1 Tier A: Initial Assessment</a>
+            <a href="#sec942">9.4.2 Tier B: Second Level</a>
+            <a href="#sec943">9.4.3 Tier C: Third Level</a>
+            <a href="#summary">Section Summary</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ========== 9.1 INTRODUCTION ========== -->
+    <div class="chapter-section" id="sec91">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.1</div>
+            <div class="chapter-info">
+                <h2>Introduction — 簡介</h2>
+                <p>Regulatory requirement to maintain qualified state | 維護確效狀態的法規要求</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 69</div>
+                    <p>There is a regulatory requirement to maintain qualified systems in a <span class="key-term">validated state</span>, i.e., the qualification documents remain valid and the system remains suitable for the intended purpose (refer to Chapter 15 for the regulatory basis). Quality systems are in place to maintain that status and should be subject to internal audit to ensure robustness. These quality systems are:</p>
+                    <ul>
+                        <li><span class="key-term">Change control</span></li>
+                        <li><span class="key-term">Maintenance</span></li>
+                        <li><span class="key-term">Calibration</span></li>
+                        <li><span class="key-term">Deviation</span></li>
+                    </ul>
+                    <p>It is regulatory expectation that there is also a <span class="key-term">periodic review process</span> to ensure that systems can be considered qualified (refer to Chapter 15 for the regulatory basis).</p>
+                    <p>This chapter describes an approach for periodic review where the frequency of review or requalification is established based on risk, the current level of process understanding and process performance, and regulatory requirements.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>確效狀態 (Validated / Qualified State) 的法規要求</h4>
+                        <p>法規（ICH Q7、EU GMP Annex 15、FDA Process Validation Guidance）明確要求：<strong>確效工作不是一次性事件</strong>，而是需要持續維護。一旦系統完成確效並取得資格後，須透過品質系統確保其持續適用。</p>
+                        <p>ISPE 指出四個維護確效狀態的品質系統：</p>
+                        <ul>
+                            <li><strong>變更管制 (Change Control)</strong>：任何對設備、系統、製程的變更都必須評估對確效狀態的影響</li>
+                            <li><strong>維護 (Maintenance)</strong>：預防性與矯正性維護，確保設備功能正常</li>
+                            <li><strong>校正 (Calibration)</strong>：量測設備的定期校正，確保數據可信</li>
+                            <li><strong>偏差 (Deviation)</strong>：偏差調查揭露系統問題並採取矯正措施</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>重點提示：定期審查 vs. 再確效</h4>
+                        <p><strong>定期審查 (Periodic Review)</strong>是確認系統仍維持在確效狀態的評估活動；而<strong>再確效 (Requalification)</strong>是當發現問題後需要重新執行確效測試的活動。定期審查的目的是「確認不需要再確效」或「識別需要再確效的觸發點」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.1.1 RATIONALE ========== -->
+    <div class="chapter-section" id="sec911">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.1.1</div>
+            <div class="chapter-info">
+                <h2>Rationale — 目的與理由</h2>
+                <p>Regulatory expectations &amp; science/risk-based approach | 法規期望與科學風險導向方法</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 69–71</div>
+                    <p>Certain systems have regulatory expectations to confirm ongoing system performance through <span class="key-term">periodic verification</span>; such systems include sterilizing autoclaves, depyrogenation tunnels/ovens, and equipment with a <span class="key-term">Sterilize-in-Place (SIP)</span> functionality (e.g., freeze dryer). Table 9.1 summarizes examples of periodic verification frequencies for systems with regulatory expectations.</p>
+
+                    <h4>Table 9.1: Examples of Periodic Verification Frequencies for Systems with Regulatory Expectations</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Periodic Verification Scope</th>
+                                <th>Frequency</th>
+                                <th>Regulatory Basis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Facilities — Room classification</td>
+                                <td>Room classification</td>
+                                <td>No period defined<sup>1</sup></td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>HEPA filter leak testing (aseptic fill environments)</td>
+                                <td>ISO 5/Grade A and ISO 7/Grade B: Semi-annual; ISO 8/Grade C: Annual (industry practice)</td>
+                                <td>Semi-annual<sup>2</sup></td>
+                                <td>[23] FDA Aseptic Guidance</td>
+                            </tr>
+                            <tr>
+                                <td>ISO 5/Grade A cabinets (BSC, LAF hoods, isolators, downflow hoods)</td>
+                                <td>HEPA filter testing</td>
+                                <td>Semi-annual</td>
+                                <td>[23]</td>
+                            </tr>
+                            <tr>
+                                <td>Steam Sterilizers</td>
+                                <td>All sterilization cycles</td>
+                                <td>Annual</td>
+                                <td>[24] EU GMP Annex 1</td>
+                            </tr>
+                            <tr>
+                                <td>Equipment SIP</td>
+                                <td>SIP cycle</td>
+                                <td>Annual<sup>3</sup></td>
+                                <td>[24]</td>
+                            </tr>
+                            <tr>
+                                <td>Depyrogenation Tunnel</td>
+                                <td>Depyrogenation cycle</td>
+                                <td>Annual</td>
+                                <td>[24]</td>
+                            </tr>
+                            <tr>
+                                <td>Aseptic Filling Lines</td>
+                                <td>Aseptic process simulation (APS/media fill)</td>
+                                <td>Semi-annual</td>
+                                <td>[23]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-note"><sup>1</sup> For additional information, refer to ISPE Baseline Guide: Sterile Product Manufacturing Facilities. <sup>2</sup> Industry practice for ISO 8/Grade C is annual. <sup>3</sup> If the SIP process is continuously monitored, it is usually not revalidated. Local requirements should be verified.</p>
+
+                    <p>For other types of systems, organizations have traditionally used an <span class="key-term">annual detailed review</span> of the change history, maintenance, and operational records to provide this confirmation. However, this approach has typically provided a <em>small return when compared to the considerable investment</em> to conduct the review process. In addition, there is concern that, due to the scale of the effort involved, there is a significant risk that <em>important performance signals may be missed</em>.</p>
+
+                    <p>This Guide proposes applying a <span class="key-term">science and risk-based approach</span> to periodic review:</p>
+                    <ul>
+                        <li>For a <span class="key-term">critical utilities system</span> (such as HVAC, clean compressed air, pharmaceutical water and steam systems), routine monitoring includes:
+                            <ul>
+                                <li>Regular reviews of the results</li>
+                                <li>Regular reporting of system performance trends, preventative maintenance and calibration metrics</li>
+                                <li>Regular check of qualification drawings (typically biannually) and of system tagging (typically annually)</li>
+                            </ul>
+                            <p>If routine monitoring is performed, then <strong>no additional review is considered necessary</strong>. The monitoring confirms system performance and the drawing verification confirms that documentation is up-to-date.</p>
+                        </li>
+                        <li>For other systems (e.g., manufacturing systems), the relative potential risk to product quality for different system types is evaluated and the <span class="key-term">frequency of review is defined based on the risk</span>.</li>
+                    </ul>
+
+                    <p>This proposed approach is a <span class="key-term">triage process</span> that looks for any unusual performance signals at a high level. If none are observed, then the review is complete. If there are signals observed, then a deeper review is conducted that may result in detailed investigation and testing.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>Table 9.1 解讀：哪些系統有明確法規要求？</h4>
+                        <p>Table 9.1 列出的系統都是<strong>無菌製造中高風險的關鍵設備</strong>，因此法規直接規定其定期驗證頻率，不需要透過分類判斷：</p>
+                        <ul>
+                            <li><strong>滅菌釜 (Autoclave) / SIP / 除熱原隧道</strong>：每年年度再驗證（EU GMP Annex 1 [24]）</li>
+                            <li><strong>無菌充填線</strong>：每半年媒體充填 (APS)（FDA 無菌指南 [23]）</li>
+                            <li><strong>ISO 5/Grade A 環境 HEPA 過濾器</strong>：每半年洩漏測試</li>
+                        </ul>
+                        <p>關鍵說明：SIP 若<strong>連續監控</strong>中，通常不需要再驗證——這正是 ISPE 「監測取代審查」邏輯的具體例子。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：傳統年度審查 = 年底一次性大掃除</h4>
+                        <p>傳統方式是每年花大量人力把一年內所有紀錄翻出來審一遍，就像年底大掃除。問題是：</p>
+                        <ul>
+                            <li>工作量龐大，審查人員容易疲勞，反而<strong>漏掉真正重要的異常訊號</strong></li>
+                            <li>大部分系統運作良好，年度審查不產生附加價值——<strong>低回報、高投入</strong></li>
+                        </ul>
+                        <p>ISPE 的科學/風險導向方法像是「設置警報器」：平時持續監控，有警報才深入調查。效率更高、同樣符合法規。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>Cat 0 的核心邏輯：持續監測 = 定期審查</h4>
+                        <p>WFI、純化水、HVAC 等<strong>關鍵公用設施</strong>已經有嚴格的日常監測計畫（TOC、電導度、微生物、粒子計數等）。ISPE 認為：<strong>這些持續監測本身就是最好的定期審查</strong>。因此這些系統被列為 <span class="cat-badge cat-0">Cat 0</span>，不需要額外的正式定期審查。</p>
+                        <p>這個邏輯相當重要——它讓組織可以將資源集中在真正需要審查的高風險系統上。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.1.2 PRINCIPLES/CONCEPTS ========== -->
+    <div class="chapter-section" id="sec912">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.1.2</div>
+            <div class="chapter-info">
+                <h2>Principles / Concepts — 原則與概念</h2>
+                <p>Mature quality systems &amp; 8 performance metrics | 成熟品質系統與8項績效指標</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 71–72</div>
+                    <p>This periodic review approach is most efficient if the organization/site has <span class="key-term">mature quality systems</span> and the associated <span class="key-term">quality system performance metrics</span>. These metrics could include:</p>
+                    <ul>
+                        <li>Monitoring of <span class="key-term">maintenance</span> to ensure scheduled activities are not delayed beyond the permitted calendar window
+                            <ul>
+                                <li>Monitoring of breakdown/<span class="key-term">unplanned maintenance activities</span> for frequency and recurrence of specific issues</li>
+                            </ul>
+                        </li>
+                        <li>Monitoring of <span class="key-term">calibration</span> to ensure any scheduled checks/activities are not delayed beyond the permitted calendar window</li>
+                        <li>Robust <span class="key-term">change control system</span> with categorization of changes</li>
+                        <li>Robust <span class="key-term">deviation system</span> with categorization of deviations</li>
+                        <li>Robust review of <span class="key-term">computer system audit trails</span> and security at procedurally controlled intervals including:
+                            <ul>
+                                <li>Confirming users are not using <span class="key-term">generic names or shared accounts</span></li>
+                                <li>Ensuring that there are no <span class="key-term">redundant users or obsolete users</span>, e.g. for staff who have changed roles or left the organization (i.e., good <span class="key-term">user access management</span>)</li>
+                                <li>Reviewing the <span class="key-term">audit trail of administrator actions</span>, ensuring a quality system record justifies each action, and listing the audit trails reviewed</li>
+                                <li>Reviewing the <span class="key-term">audit trail of other user category actions</span>, ensuring a quality system record justifies the actions (if applicable), and listing the audit trails reviewed</li>
+                                <li>Reviewing the audit trail for <span class="key-term">changes to critical configuration settings</span> identified in the data integrity assessment, ensuring a quality system record justifies the changes, and listing the audit trails reviewed</li>
+                                <li>Verifying that <span class="key-term">audit trail reviews were performed</span> as dictated in the system administrator SOP and operational SOP</li>
+                                <li>Making sure the <span class="key-term">Quality Unit reviews the audit trail</span> as verifier</li>
+                                <li><span class="key-term">Verifying backup and archiving</span> of GMP critical data</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>The use of these performance metrics can <strong>minimize the amount of effort required</strong> to obtain the information for the periodic review.</p>
+                    <p>Where these mature quality systems are not in place, the same principles can be used, but the process may not be as efficient.</p>
+                    <p><em>Figure 9.1 provides an overview of the periodic review process.</em></p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>8 大品質系統績效指標</h4>
+                        <p>ISPE 列出定期審查最有效率的前提條件是擁有<strong>成熟的品質系統</strong>，以下 8 項指標是核心衡量點：</p>
+                        <ul>
+                            <li>維護計畫完成率（排程維護是否準時執行）</li>
+                            <li>非計畫性維護 / 故障維護的頻率與重複性</li>
+                            <li>校正計畫完成率（是否在允許時窗內完成）</li>
+                            <li>變更管制的類別與數量分布</li>
+                            <li>偏差的類別與數量（根本原因是否指向設備）</li>
+                            <li>電腦系統稽核追蹤審查（詳見右側專欄）</li>
+                            <li>備份與歸檔驗證（GMP 關鍵數據）</li>
+                            <li>品質系統整體內稽結果</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>電腦稽核追蹤審查 (Computer Audit Trail Review) — 8 個必查項目</h4>
+                        <p>這是 Section 9.1.2 中最常被忽略的部分，FDA 21 CFR Part 11 及 EU GMP Annex 11 均有相關要求，以下 8 點必須逐項審查：</p>
+                        <ol>
+                            <li><strong>通用帳號/共用帳號</strong>：確認無人使用 "admin" 或共用帳號登入</li>
+                            <li><strong>使用者存取管理</strong>：已離職或轉職員工是否已停用帳號（用戶存取管理 UAM）</li>
+                            <li><strong>管理員操作稽核追蹤</strong>：每筆管理員操作是否均有品質系統紀錄佐證</li>
+                            <li><strong>一般用戶操作稽核追蹤</strong>：如適用，每筆操作是否均有紀錄佐證</li>
+                            <li><strong>關鍵組態設定變更</strong>：來自數據完整性評估的關鍵設定，任何變更均須有品質系統記錄支持</li>
+                            <li><strong>稽核追蹤審查執行確認</strong>：系統管理員 SOP 與操作 SOP 規定的審查是否確實執行</li>
+                            <li><strong>品質部門審查者確認</strong>：品質部門是否作為驗證者審查了稽核追蹤</li>
+                            <li><strong>備份與歸檔</strong>：GMP 關鍵數據的備份與歸檔已驗證</li>
+                        </ol>
+                    </div>
+                    <div class="practice-box">
+                        <h4>CDMO 實務思考：稽核追蹤審查的挑戰</h4>
+                        <p>許多 CDMO 擁有多個電腦化系統（LIMS、MES、SCADA、EBR 等），每個系統都需要執行上述 8 項審查。常見缺失包括：</p>
+                        <ul>
+                            <li>沒有 SOP 定義審查頻率（「定期」沒有明確定義）</li>
+                            <li>IT 部門執行審查但品質部門未作為驗證者</li>
+                            <li>共用帳號問題未被視為 GMP 違規</li>
+                        </ul>
+                        <p><strong>建議</strong>：建立電腦化系統清單，每個系統指定責任人，定義審查頻率並記入 SOP。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.2 APPROACH & PREREQUISITES ========== -->
+    <div class="chapter-section" id="sec92">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.2</div>
+            <div class="chapter-info">
+                <h2>Periodic Review Approach &amp; Prerequisites</h2>
+                <p>Two-phase overview &amp; required inputs | 兩階段架構與先決條件</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 72–73</div>
+                    <p>The periodic review approach proposed in this Guide consists of two phases:</p>
+                    <ul>
+                        <li><strong>Phase 1:</strong> <span class="key-term">System Categorization and Schedule Assignment</span></li>
+                        <li><strong>Phase 2:</strong> <span class="key-term">Periodic Review Execution</span>
+                            <ul>
+                                <li>Initial Assessment (<span class="key-term">Tier A</span>)</li>
+                                <li>Second Level Assessment (<span class="key-term">Tier B</span>)</li>
+                                <li>Third Level Assessment (<span class="key-term">Tier C</span>)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>It is strongly recommended that the period review process be led by an individual who has a <span class="key-term">broad range of experience</span>.</p>
+                    <p>The Tier B and Tier C reviews should be conducted by a <span class="key-term">small team</span> where necessary. This small team should consist of individuals who are knowledgeable in the system operating, maintenance, and calibration history; these are typically the <span class="key-term">system owner, maintenance, and a Quality Unit representative</span>. The review should be approved, at a minimum, by the system owner and the Quality Unit.</p>
+
+                    <h4>9.2.1 Prerequisites</h4>
+                    <p>The required prerequisites for the periodic review process include:</p>
+                    <ul>
+                        <li>List of <span class="key-term">validated manufacturing systems</span></li>
+                        <li>Copy of relevant <span class="key-term">current regulations</span> (i.e., those for the markets the facility supplies)</li>
+                        <li>For each system:
+                            <ul>
+                                <li><span class="key-term">As-built or as-is record drawing</span> (qualification record drawing)</li>
+                                <li><span class="key-term">Change system metrics</span> or system change history</li>
+                                <li><span class="key-term">Maintenance and calibration system metrics</span> or system maintenance and calibration history</li>
+                                <li><span class="key-term">Deviation system metrics</span> or deviations related to the system performance</li>
+                                <li>System <span class="key-term">validation/qualification documents</span></li>
+                                <li><span class="key-term">Risk assessment</span> (if available)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>兩階段架構總覽</h4>
+                        <p><strong>Phase 1（系統分類）</strong>：決定哪些系統需要審查、多久審查一次，是整個計畫的「前置規劃」。</p>
+                        <p><strong>Phase 2（執行）</strong>：實際執行審查，採用 A→B→C 三層篩選流程。大多數系統在 Tier A 即可完成（若無異常訊號），只有真正有問題的系統才需要深入到 Tier B 或 Tier C。</p>
+                        <div class="triage-flow">
+                            <div class="triage-box tier-a">
+                                <div class="triage-badge">A</div>
+                                <div>Tier A 初步評估：查詢四大品質系統，找訊號</div>
+                            </div>
+                            <div class="triage-arrow">↓ 若有異常訊號</div>
+                            <div class="triage-box tier-b">
+                                <div class="triage-badge">B</div>
+                                <div>Tier B 深入評估：SME 團隊評估影響程度</div>
+                            </div>
+                            <div class="triage-arrow">↓ 若有確效狀態疑慮</div>
+                            <div class="triage-box tier-c">
+                                <div class="triage-badge">C</div>
+                                <div>Tier C 矯正行動：定義行動、開立不符合紀錄</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-box">
+                        <h4>先決條件的實務意義</h4>
+                        <p>ISPE 列出的先決條件看似基本，卻常常是 CDMO 的痛點：</p>
+                        <ul>
+                            <li><strong>確效系統清單</strong>：是否有完整且最新的清單？系統退役時是否及時移除？</li>
+                            <li><strong>現行法規版本</strong>：是否追蹤各目標市場（FDA/EMA/PMDA）的最新版法規？</li>
+                            <li><strong>As-built 圖面</strong>：圖面是否隨每次變更維護更新？這是最常見的缺失之一。</li>
+                            <li><strong>風險評估</strong>：若有，可以大幅加速分類決策；若無，分類仍可進行但較費時。</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：多專科醫療團隊</h4>
+                        <p>ISPE 建議 Tier B/C 審查由小型跨功能團隊（系統負責人、維護、品質）共同執行，就像醫院處理複雜病例時會召集<strong>多科會診</strong>。不同背景的人看到不同角度的問題，比單人審查更全面，同時也控制規模。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.3 PHASE 1: SYSTEM CATEGORIZATION ========== -->
+    <div class="chapter-section" id="sec93">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.3</div>
+            <div class="chapter-info">
+                <h2>Phase 1: System Categorization and Schedule Assignment</h2>
+                <p>Table 9.2 Categories &amp; Table 9.3 Schedule | 系統分類與審查頻率</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 73–75</div>
+                    <p>The systems are categorized based on the <span class="key-term">potential to impact product quality</span>. Typically, due to in-process testing, systems used for <span class="key-term">early stages of manufacture</span> are considered lower risk than those used for stages <span class="key-term">closer to the finished product</span>.</p>
+                    <p>The category defines the periodic review frequency schedule. These frequencies should be based on <span class="key-term">SME determination</span>, considering the potential for the system to impact product quality. Systems that have requirements defined in the relevant local regulations and/or regulatory guidance must be managed to meet those requirements.</p>
+
+                    <h4>Table 9.2: Examples of Periodic Review Categories</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Process</th>
+                                <th>Category</th>
+                                <th>System Types (Examples)</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sterilization</strong></td>
+                                <td><span class="cat-badge cat-1">Cat 1</span></td>
+                                <td>Autoclave; Decontamination/sterilization system (including equipment sterilization)</td>
+                                <td>Complex systems with quality critical function subject to regulatory guidance; routine revalidation already established</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sterile Filtration*</strong></td>
+                                <td><span class="cat-badge cat-0">Cat 0</span></td>
+                                <td>Filter/filter housing; Filtration system</td>
+                                <td>Standard systems with pre- and post-use integrity tests used to monitor system performance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tablet Manufacturing (standard)</strong></td>
+                                <td><span class="cat-badge cat-0">Cat 0</span></td>
+                                <td>Sieve; Granulator; Dryer; Mill; Blender</td>
+                                <td>Standard equipment with minimal configuration; system performance monitored through in-process controls</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tablet Manufacturing (complex)</strong></td>
+                                <td><span class="cat-badge cat-3">Cat 3</span></td>
+                                <td>Coater; Tablet press; Capsule filler</td>
+                                <td>Operationally and/or mechanically complex systems that process the final oral solid dose product</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fermentation</strong></td>
+                                <td><span class="cat-badge cat-3">Cat 3</span></td>
+                                <td>Fermentation systems; Bioreactors</td>
+                                <td>Standard equipment; system performance generally monitored through in-process controls</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Purification</strong></td>
+                                <td><span class="cat-badge cat-2">Cat 2</span></td>
+                                <td>Chromatography skids; TFF systems</td>
+                                <td>Standard equipment with minimal configuration; performance monitored through in-process controls</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fill/Finish</strong></td>
+                                <td><span class="cat-badge cat-2">Cat 2</span></td>
+                                <td>Buffer preparation/hold systems; Capper; Filler</td>
+                                <td>Systems generally constructed from standard components; quality of output routinely monitored</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Utilities and HVAC</strong></td>
+                                <td><span class="cat-badge cat-0">Cat 0</span></td>
+                                <td>Compressed air; Gas systems (Argon, CO₂, N₂, O₂, etc.); Clean steam; Deionized/purified water; WFI; HVAC system; Vacuum; Ethanol</td>
+                                <td>Systems constructed from standard components; quality of output routinely monitored</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Packaging</strong></td>
+                                <td><span class="cat-badge cat-0">Cat 0</span></td>
+                                <td>Packaging systems</td>
+                                <td>Systems constructed from standard components; quality of output routinely monitored</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-note">*Where filters are used for quality critical applications, pre- and post-use integrity testing is used to confirm system performance; therefore, periodic review would not be required.</p>
+
+                    <h4>Table 9.3: Example Periodic Review Schedule</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Periodic Review Category</th>
+                                <th>Periodic Review Schedule</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="cat-badge cat-0">Cat 0</span></td>
+                                <td>This category relies on existing quality systems and performance monitoring programs; <strong>periodic review is not required</strong>, e.g., critical utility systems such as compressed air, purified water or WFI.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="cat-badge cat-1">Cat 1</span></td>
+                                <td>This category has established requirements from <strong>regulations specific to the system</strong> and is not subject to additional periodic assessment activities, e.g., autoclaves and depyrogenation tunnels.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="cat-badge cat-2">Cat 2</span></td>
+                                <td>Perform reviews at <strong>two-year intervals</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="cat-badge cat-3">Cat 3</span></td>
+                                <td>Perform reviews at <strong>three-year intervals</strong>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>系統分類 (System Categorization) 的核心邏輯</h4>
+                        <p>分類的判斷依據是<strong>對產品品質的潛在影響程度</strong>，而製程的位置（早期 vs 後期）是重要判斷因子：</p>
+                        <ul>
+                            <li><strong>早期製程</strong>（發酵、粗純化）：後續有多道製程和測試作為篩網，設備問題較不易直接影響最終產品 → 較低風險</li>
+                            <li><strong>後期製程</strong>（Fill/Finish、滅菌）：直接影響最終產品品質，且後面無緩衝 → 較高風險</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>四個分類說明</h4>
+                        <ul>
+                            <li><span class="cat-badge cat-0">Cat 0</span> <strong>無需正式定期審查</strong>：已有持續監測或每次使用均有完整性測試（如無菌過濾的完整性測試）。WFI、HVAC、壓縮空氣、包裝系統均屬此類。</li>
+                            <li><span class="cat-badge cat-1">Cat 1</span> <strong>遵照法規規定頻率</strong>：如滅菌釜依 EU GMP Annex 1 每年再驗證，無需在此基礎上再加定期審查。</li>
+                            <li><span class="cat-badge cat-2">Cat 2</span> <strong>每2年審查</strong>：Fill/Finish 充填系統、層析純化設備等——重要但有監測作為安全網。</li>
+                            <li><span class="cat-badge cat-3">Cat 3</span> <strong>每3年審查</strong>：錠劑塗裝機、錠片壓製機、發酵槽等複雜系統。注意：<em>頻率低≠不重要</em>，而是因為系統有足夠的製程監控作為早期預警。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>常見誤解：Cat 3 頻率最低 = 最不重要？</h4>
+                        <p>發酵槽 (Bioreactor) 被列為 Cat 3（每3年），並非因為它不重要，而是因為<strong>製程本身有大量連續監控</strong>（pH、DO、溫度、攪拌等），這些監控數據本身就是持續的性能確認。因此不需要像高風險的 Fill/Finish (Cat 2) 那樣頻繁地正式定期審查。</p>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>CDMO 應用：如何建立系統分類清單</h4>
+                        <p>CDMO 實施步驟：</p>
+                        <ol>
+                            <li>建立所有已確效設備/系統的完整清單（連結到確效文件 IQ/OQ/PQ）</li>
+                            <li>對每個系統進行分類（Cat 0–3），記錄分類依據（SME 評估意見）</li>
+                            <li>根據 Table 9.3 設定審查排程，將 Cat 2 和 Cat 3 系統排入多年計畫</li>
+                            <li>Cat 1 系統追蹤法規規定的年度再驗證時程，不另行定期審查</li>
+                            <li>定期（至少每兩年）複審分類是否仍適當</li>
+                        </ol>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：汽車保養 vs. 航空器大修</h4>
+                        <p>Cat 0 如同汽車的油表警示燈——持續監測，有問題才進廠。Cat 1 如同飛機的法定大修（MRO）——法規規定固定週期，不可商量。Cat 2/3 則像高鐵的定期維護——依複雜程度設定不同頻率，在排定時間進行全面評估。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.4 PHASE 2: EXECUTION OVERVIEW ========== -->
+    <div class="chapter-section" id="sec94">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.4</div>
+            <div class="chapter-info">
+                <h2>Phase 2: Periodic Review Execution — Overview</h2>
+                <p>Three-tier triage across four quality systems | 三層篩選流程與四大品質系統</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 75–76</div>
+                    <p>Using the frequency schedules established in Phase 1, the periodic reviews can be performed using a <span class="key-term">three-tier approach</span> which involves reviewing the following four quality systems:</p>
+                    <ul>
+                        <li><span class="key-term">GMP compliance expectations</span></li>
+                        <li><span class="key-term">Change control system</span></li>
+                        <li><span class="key-term">Maintenance/calibration system</span></li>
+                        <li><span class="key-term">Deviation system</span></li>
+                    </ul>
+                    <p>The three-tier approach is summarized as follows:</p>
+                    <ul>
+                        <li>An <span class="key-term">initial assessment (Tier A)</span> is done at a high level. If this initial assessment shows any signs that the system is not operating consistently, then the assessment progresses to the next level; if not, then the review is considered <strong>complete</strong>.</li>
+                        <li>The <span class="key-term">second level assessment (Tier B)</span> is more detailed. If this assessment shows that there are any issues, then the assessment progresses to the next level. If this assessment concludes that the system is still performing satisfactorily, then the review is <strong>complete</strong>.</li>
+                        <li>The <span class="key-term">third level assessment (Tier C)</span> involves defining and completing the actions required to determine the system to be suitable for the intended purpose, with the necessary supporting documentation updated as necessary.</li>
+                    </ul>
+                    <p>The <span class="key-term">assessment period</span> is the time period since the previous periodic review or since the original qualification.</p>
+                    <p><em>Note: When a periodic review program is initially introduced, it is typical to cover the systems in each schedule class within the associated timeframe. For example, for systems with a two-year review period, the initial review of all systems in that schedule class can be completed in the first two years.</em></p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>三層篩選流程：核心創新</h4>
+                        <p>這是 ISPE 定期審查方法的<strong>最核心創新</strong>。傳統做法是對所有系統執行同樣深度的年度審查；ISPE 的三層篩選則是：</p>
+                        <div class="triage-flow">
+                            <div class="triage-box tier-a">
+                                <div class="triage-badge">A</div>
+                                <div><strong>初步評估 (Tier A)</strong>：高層次查詢，大多數系統在此完成</div>
+                            </div>
+                            <div class="triage-arrow">↓ 若發現異常訊號（Signal）</div>
+                            <div class="triage-box tier-b">
+                                <div class="triage-badge">B</div>
+                                <div><strong>深入評估 (Tier B)</strong>：SME 評估，若無疑慮即完成</div>
+                            </div>
+                            <div class="triage-arrow">↓ 若對確效狀態有疑慮</div>
+                            <div class="triage-box tier-c">
+                                <div class="triage-badge">C</div>
+                                <div><strong>矯正行動 (Tier C)</strong>：制定行動計畫，開立不符合紀錄</div>
+                            </div>
+                        </div>
+                        <p>關鍵點：<strong>沒有訊號 = 審查完成</strong>，不需要為了「看起來做了很多工作」而進行無謂的深入審查。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>四大品質系統 × 三個層級 = 12 個評估模塊</h4>
+                        <p>這個矩陣結構讓審查工作模組化：每個品質系統獨立評估，發現訊號的才升級到下一層，未發現訊號的即完成。例如：Tier A 查完四個系統，發現只有「偏差系統」有訊號，則只有偏差系統升級到 Tier B 評估，其餘三個系統的審查已完成。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：急診分診 (Triage) 機制</h4>
+                        <p>ISPE 直接使用了 "triage process" 這個詞。急診分診的邏輯是：不是所有病人都需要立即手術，而是依嚴重程度分配醫療資源。同樣地，定期審查不是所有系統都需要深度調查，而是<strong>有訊號才深入，無訊號即完成</strong>，確保資源用在真正需要的地方。</p>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>「評估期間」的重要性</h4>
+                        <p><strong>評估期間 (Assessment Period)</strong> = 自上次定期審查結束（或原始確效完成）至今的時間段。所有查詢均針對此期間的紀錄，確保審查的全面性且不遺漏過渡期的問題。</p>
+                        <p>當首次導入定期審查計畫時，ISPE 允許<strong>在類別規定的時間框架內分批完成</strong>（例如 Cat 2 系統可在前兩年內陸續完成首次審查），不需要立刻全部完成。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.4.1 TIER A ========== -->
+    <div class="chapter-section" id="sec941">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.4.1</div>
+            <div class="chapter-info">
+                <h2>Initial Assessment — Tier A</h2>
+                <p>High-level signal detection across four quality systems | A 層：高層次異常訊號偵測</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 76–77</div>
+                    <p>To perform the initial assessment, the records from the four quality systems are reviewed to identify any <span class="key-term">concerns related to the qualified state</span> of the system being assessed.</p>
+
+                    <h4>GMP Compliance Expectations (Tier A)</h4>
+                    <p>If there is an organization/site quality system that monitors changes in regulatory requirements/expectations and proactively addresses changes within the organization/site, then this category <strong>does not need to be reviewed</strong> as part of periodic review.</p>
+                    <p>If this system is not in place, then the Quality Unit should:</p>
+                    <ul>
+                        <li>Review changes in the relevant regulatory regulations and guidances for the assessment period, with the current scope of qualification reviewed to ensure it meets any changes in the requirements where necessary.</li>
+                        <li>Review related audit observations and determine if there are any changes in regulatory expectations.</li>
+                    </ul>
+
+                    <h4>Change Control System (Tier A)</h4>
+                    <p>For the system being assessed:</p>
+                    <ul>
+                        <li>Perform a query in the change control system database for the assessment period</li>
+                        <li>Review the query results and determine if there have been any <span class="key-term">reportable change requests with qualification impact</span> that can affect the system quality attributes</li>
+                    </ul>
+                    <p><em>Note: Change records that have been determined to be low risk, and thus are not reportable to regulatory agencies, do not need to be reviewed as part of the periodic review process.</em></p>
+
+                    <h4>Maintenance/Calibration System (Tier A)</h4>
+                    <p>For the system being assessed:</p>
+                    <ul>
+                        <li>Perform a query in the maintenance management system for the assessment period</li>
+                        <li>Determine if there were <span class="key-term">repeated corrective maintenance</span> and/or calibration records</li>
+                    </ul>
+
+                    <h4>Deviation System (Tier A)</h4>
+                    <p>For the system being assessed:</p>
+                    <ul>
+                        <li>Perform a query of the deviations for the assessment period</li>
+                        <li>Review the query results for <span class="key-term">deviations with potential product quality impact</span> where the <span class="key-term">root cause has been attributed to the system</span> being assessed</li>
+                    </ul>
+                    <p><em>Note: Deviations that have already been determined to have little or no risk to product quality do not need to be reviewed as part of the periodic review process.</em></p>
+
+                    <p>After this initial assessment of each quality system:</p>
+                    <ul>
+                        <li>If any concerns (regarding the potential impact to the qualified state) within a quality system are identified, then a <strong>second level assessment needs to be performed</strong>. Note that the scope of the second level assessment is limited to the quality system(s) of concern.</li>
+                        <li>If <strong>no concerns are identified</strong>, then the assessment for that quality system is <strong>complete</strong>.</li>
+                    </ul>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>Tier A：四大品質系統的查詢重點</h4>
+                        <p>Tier A 是純粹的<strong>查詢與篩選</strong>，不需要深度分析，目的是找到「訊號 (Signal)」：</p>
+                        <ul>
+                            <li><strong>GMP 合規</strong>：若組織已有主動追蹤法規變化的系統，此項可<strong>免查</strong>。若無，則需檢視評估期間是否有法規修訂影響目前的確效範疇。</li>
+                            <li><strong>變更管制</strong>：查詢評估期間是否有<strong>需申報且影響確效的變更</strong>。低風險/不可申報的變更<strong>不需要審查</strong>。</li>
+                            <li><strong>維護/校正</strong>：查詢是否有<strong>重複的矯正性維護 (Corrective Maintenance)</strong>——這是設備退化的早期警訊。</li>
+                            <li><strong>偏差</strong>：查詢根本原因<strong>指向設備的偏差</strong>，且有產品品質影響。已評估為低風險的偏差<strong>不需要審查</strong>。</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>關鍵術語：矯正性維護 vs. 預防性維護</h4>
+                        <ul>
+                            <li><strong>預防性維護 (Preventive Maintenance, PM)</strong>：依預定排程執行的例行維護，如定期更換耗材、潤滑保養。PM 按時完成是品質系統成熟的指標。</li>
+                            <li><strong>矯正性維護 (Corrective Maintenance, CM)</strong>：設備故障後才執行的維修。<strong>重複發生的 CM（Repeated CM）</strong>是 Tier A 審查的觸發訊號——表示設備可能有系統性退化問題，需要進一步評估是否影響確效狀態。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>GMP 合規評估的條件邏輯（重要！）</h4>
+                        <p>ISPE 允許組織用「主動法規追蹤系統」取代 Tier A 的 GMP 合規評估。這意味著：若公司已建立<strong>定期追蹤 FDA/EMA/各地衛生主管機關法規更新並採取行動的程序</strong>，則這個品質系統的 Tier A 評估可以免除。這是 ISPE 避免重複工作的實用設計。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>CDMO 實務：建立 Tier A 查詢模板</h4>
+                        <p>建議為每個系統建立標準化查詢模板，內容包含：</p>
+                        <ul>
+                            <li>系統名稱與識別碼</li>
+                            <li>評估期間（起始日期 ~ 當前日期）</li>
+                            <li>各品質系統查詢結果（有/無訊號）</li>
+                            <li>若有訊號：列出訊號描述，決定是否升級至 Tier B</li>
+                            <li>審查者簽名與日期</li>
+                        </ul>
+                        <p>大多數系統在 Tier A 應可在 <strong>15–30 分鐘</strong>內完成查詢（假設品質系統已良好維護且可快速查詢）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.4.2 TIER B ========== -->
+    <div class="chapter-section" id="sec942">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.4.2</div>
+            <div class="chapter-info">
+                <h2>Second Level Assessment — Tier B</h2>
+                <p>Deeper SME review of flagged quality systems | B 層：SME 深入評估有訊號的品質系統</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 77</div>
+                    <p>The second level assessment should only be performed on each quality system category that was <span class="key-term">determined during the initial assessment to require further assessment</span>. All second level assessment activities should be performed by representatives (<span class="key-term">SMEs</span>) from the same departments as the initial assessment team.</p>
+
+                    <h4>GMP Compliance Expectations (Tier B)</h4>
+                    <p>Using the information from the initial assessment:</p>
+                    <ul>
+                        <li>Evaluate the <span class="key-term">impact of the regulatory changes</span> identified in the initial assessment</li>
+                        <li>In the judgment of the assessment team, determine if the changes present <span class="key-term">concerns about the qualified state</span> of the system</li>
+                    </ul>
+
+                    <h4>Change Control System (Tier B)</h4>
+                    <p>Using the information from the initial assessment:</p>
+                    <ul>
+                        <li>Evaluate the changes identified in the initial assessment</li>
+                        <li>In the judgment of the assessment team, determine if the number and/or type of changes identified present <span class="key-term">concerns about the qualified state</span> of the system</li>
+                    </ul>
+
+                    <h4>Maintenance/Calibration System (Tier B)</h4>
+                    <p>Using the information from the initial assessment:</p>
+                    <ul>
+                        <li>Review the <span class="key-term">maintenance and calibration records</span> identified in the initial assessment (including corrective maintenance)</li>
+                        <li>In the judgment of the assessment team, determine if the records present <span class="key-term">concerns about the qualified state</span> of the system</li>
+                    </ul>
+
+                    <h4>Deviation System (Tier B)</h4>
+                    <p>Using the information from the initial assessment:</p>
+                    <ul>
+                        <li>Review the <span class="key-term">deviations with potential product impact</span> identified in the initial assessment</li>
+                        <li>In the judgment of the assessment team, determine if the deviations indicate that the system performance is <span class="key-term">not consistent</span> and thus may not be performing in a qualified state</li>
+                    </ul>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>Tier B：從「有訊號」到「有疑慮」的判斷</h4>
+                        <p>Tier B 的核心問題是：<strong>「這個訊號是否影響系統的確效狀態？」</strong></p>
+                        <p>Tier A 只是確認「有訊號存在」，而 Tier B 需要 SME 團隊做出<strong>品質判斷</strong>：</p>
+                        <ul>
+                            <li>變更的數量/類型是否顯示系統已超出確效範疇？</li>
+                            <li>重複的矯正性維護是否代表設備已無法穩定執行關鍵功能？</li>
+                            <li>偏差的發生是否呈現系統性趨勢，顯示系統不再處於確效狀態？</li>
+                        </ul>
+                        <p>Tier B 結論分兩種：<strong>無疑慮→完成</strong> 或 <strong>有疑慮→升級至 Tier C</strong>。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>Tier B 的「範圍限制」原則</h4>
+                        <p>重要：Tier B 只針對 <strong>Tier A 中被標記的品質系統</strong> 執行。若 Tier A 評估四個品質系統，只有「維護/校正系統」發現訊號，則 Tier B 只需評估維護/校正，不需要重新評估其他三個。</p>
+                        <p>這個設計確保審查工作與風險對應——有問題才深入，有效控制總工作量。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：醫療診斷的逐步深入</h4>
+                        <p>Tier A 是抽血檢查報告（快速篩選），Tier B 是看診時醫生詳細問診與理學檢查（深入評估），Tier C 是安排進一步檢查與治療（矯正行動）。醫生（SME）在 Tier B 做出臨床判斷：這個異常是否需要進一步處置？</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>Tier B 評估的文件要求</h4>
+                        <p>Tier B 需要形成<strong>書面評估記錄</strong>，記錄：</p>
+                        <ul>
+                            <li>升級原因（來自 Tier A 的哪個訊號）</li>
+                            <li>SME 團隊成員（系統負責人、維護代表、品質部門）</li>
+                            <li>評估依據（具體審查的紀錄編號或數據）</li>
+                            <li>結論：有無確效狀態疑慮</li>
+                            <li>若無疑慮：記錄審查完成，系統仍處於確效狀態</li>
+                            <li>若有疑慮：升級至 Tier C，啟動矯正行動</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 9.4.3 TIER C ========== -->
+    <div class="chapter-section" id="sec943">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.4.3</div>
+            <div class="chapter-info">
+                <h2>Third Level Assessment — Tier C</h2>
+                <p>Defining actions to restore qualified state | C 層：制定矯正行動恢復確效狀態</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — pp. 77–78</div>
+                    <p>The third level assessment involves <span class="key-term">defining and completing the actions required</span> to determine the system to be suitable for the intended purpose, with the necessary <span class="key-term">supporting documentation updated</span> as necessary.</p>
+                    <p>At this level:</p>
+                    <ul>
+                        <li>Actions are defined to <span class="key-term">restore</span> or <span class="key-term">confirm the qualified state</span> of the system</li>
+                        <li>A <span class="key-term">non-conformance record</span> is generated to capture and track the required actions</li>
+                        <li>Actions may include requalification testing, documentation updates, or other corrective measures as determined by the assessment team</li>
+                        <li>All supporting documentation must be updated to reflect the current state of the system</li>
+                    </ul>
+                    <p><em>Refer to Chapter 25 (Appendix 11) for an example periodic review form. Refer to Chapter 26 (Appendix 12) for information regarding periodic review of Controlled Temperature Chambers (CTCs).</em></p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">中文解說與學習重點</div>
+                    <div class="concept-box">
+                        <h4>Tier C：從「疑慮」到「行動」的閉環</h4>
+                        <p>Tier C 是品質系統的<strong>矯正循環</strong>，確保發現的問題得到正式追蹤與解決：</p>
+                        <ul>
+                            <li><strong>開立不符合紀錄 (Non-Conformance Record)</strong>：正式記錄問題，確保可追蹤</li>
+                            <li><strong>定義矯正行動</strong>：可能包括再確效測試、文件更新、設備修復等</li>
+                            <li><strong>更新文件</strong>：確效文件、圖面、SOP 必須反映系統現狀</li>
+                            <li><strong>追蹤完成狀態</strong>：透過 CAPA 系統確認行動完成並有效</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>Tier C 可能觸發的行動類型</h4>
+                        <p>依據問題嚴重程度，Tier C 可能觸發：</p>
+                        <ul>
+                            <li><strong>文件更新</strong>：更新 as-built 圖面、SOPs、確效計畫</li>
+                            <li><strong>補充確效測試</strong>：針對特定功能執行補充 OQ 或 PQ 測試</li>
+                            <li><strong>完整再確效 (Requalification)</strong>：若系統已顯著變更或性能嚴重偏離</li>
+                            <li><strong>設備更換或升級</strong>：若矯正性維護已無法解決根本問題</li>
+                            <li><strong>製程調整</strong>：若問題來自製程參數而非設備本身</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>CDMO 應用：Tier C 與 CAPA 系統的整合</h4>
+                        <p>建議將 Tier C 的矯正行動直接整合入公司的 <strong>CAPA (Corrective and Preventive Action)</strong> 系統：</p>
+                        <ul>
+                            <li>以「定期審查」作為 CAPA 觸發來源類別</li>
+                            <li>在 CAPA 中記錄根本原因分析（如偏差/維護趨勢）</li>
+                            <li>設定行動完成期限與責任人</li>
+                            <li>CAPA 關閉前需有效性評估（Effectiveness Check）</li>
+                            <li>關閉後更新定期審查記錄，確認系統已恢復確效狀態</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION SUMMARY ========== -->
+    <div id="summary" class="section-summary">
+        <h3>章節總結 Section Summary — Chapter 9: Periodic Review</h3>
+        <p>本章介紹了 ISPE 科學與風險導向的定期審查方法，主要架構如下：</p>
+        <ul>
+            <li><strong>法規基礎</strong>：法規要求維護確效狀態，四大品質系統（變更管制、維護、校正、偏差）加上定期審查共同支撐這個要求。</li>
+            <li><strong>關鍵創新 — Cat 0 的邏輯</strong>：WFI、HVAC 等關鍵公用設施已有持續監測計畫，持續監測本身即為最佳定期審查，因此 Cat 0 系統<strong>無需正式定期審查</strong>。</li>
+            <li><strong>系統分類 (Phase 1)</strong>：依產品品質影響風險分為 Cat 0–3；Cat 2 每2年、Cat 3 每3年執行定期審查；Cat 1 遵照法規規定的固定頻率（如滅菌釜年度再驗證）。</li>
+            <li><strong>三層篩選流程 (Phase 2)</strong>：Tier A → B → C 的漸進深入設計，大多數系統在 Tier A 即完成審查（無訊號），只有真正有問題的系統才需要深入調查，大幅提升效率。</li>
+            <li><strong>電腦稽核追蹤審查</strong>：Section 9.1.2 列出的 8 個必查項目（含使用者存取管理、管理員操作追蹤、備份驗證等）是數據完整性合規的重要組成，常被忽略。</li>
+            <li><strong>先決條件</strong>：完整的確效系統清單、最新法規版本、as-built 圖面、品質系統歷史紀錄是執行本方法的基礎。</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>對 CDMO 的啟示</strong>：導入此方法的優先事項是 (1) 建立系統分類清單 (2) 確保品質系統可快速查詢 (3) 建立電腦稽核追蹤 SOP (4) 培訓跨功能審查團隊。初次導入可依 Cat 2/3 的時間框架分批完成所有系統的首次審查。</p>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Baseline&reg; Guide: Commissioning and Qualification, 2nd Edition</p>
+    <p>Chapter 9: Periodic Review &nbsp;|&nbsp; Pages 69–78</p>
+    <p style="font-size:0.8rem; opacity:0.6; margin-top:0.5rem;">&copy; 2019 ISPE. For individual use only. Educational commentary in Traditional Chinese added for learning purposes.</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+// Back-to-top button visibility
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>

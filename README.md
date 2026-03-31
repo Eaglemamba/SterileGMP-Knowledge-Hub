@@ -8,9 +8,9 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 | Layer | Format | Purpose |
 |-------|--------|---------|
-| Section HTMLs | `*/sections/*.html` | Source content — bilingual, styled, educational |
-| Merged documents | `*/output/*-Complete.html` | Human reading — sticky nav, bilingual layout |
-| Knowledge base | `knowledge/*.md` | Chatbot Q&A — clean Markdown, searchable |
+| Section HTMLs | `PDA/*/sections/*.html`, `ISPE/*/sections/*.html` | Source content — bilingual, styled, educational |
+| Merged documents | `PDA/*/output/*-Complete.html` | Human reading — sticky nav, bilingual layout |
+| Knowledge base | `knowledge/PDA/*.md`, `knowledge/ISPE/*.md` | Chatbot Q&A — clean Markdown, searchable |
 | Dashboard | `index.html` | Browse all documents, keyword search, filter by source |
 | Skill | `.claude/commands/gmp-ask.md` | `/gmp-ask` chatbot via Claude Code |
 
@@ -95,11 +95,12 @@ The skill reads `knowledge/INDEX.md` to route your question to the right documen
 
 ```bash
 # 1. Scaffold folder (works for any source — PDA, ISPE, FDA, etc.)
-python pda_engine.py scaffold FOLDER_ID
+python pda_engine.py scaffold FOLDER_ID              # PDA (default)
+python pda_engine.py scaffold ISPE-Vol5 --source ISPE  # ISPE
 
 # 2. Edit reports.json — fill in entry (title, tags, source, colors, section_map)
 
-# 3. Extract PDF text into FOLDER_ID/source/
+# 3. Extract PDF text into PDA/FOLDER_ID/source/  (or ISPE/FOLDER_ID/source/)
 
 # 4. Generate knowledge MD
 python pda_engine.py md FOLDER_ID
@@ -114,7 +115,7 @@ python pda_engine.py merge FOLDER_ID
 # 8. Move source PDF to Raw pdfs/processed/
 
 # 9. Verify in browser, then commit + push
-git add FOLDER_ID/ reports.json knowledge/ && git commit -m "Add [SOURCE] [ID]: [title]"
+git add PDA/FOLDER_ID/ reports.json knowledge/ && git commit -m "Add [SOURCE] [ID]: [title]"
 ```
 
 See `CLAUDE.md` for detailed rules, naming conventions, and known pitfalls.

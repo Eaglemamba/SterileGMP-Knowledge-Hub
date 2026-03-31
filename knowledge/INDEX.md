@@ -5,7 +5,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## Guide-No1-Complete.md
+## PDA/Guide-No1-Complete.md
 **Report:** PDA Manufacturing Technology Guide No. 1: Filling Machine Design and Operation
 **Pages:** p1–p267 | **Sections:** 20 topics
 
@@ -28,7 +28,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR22-Complete.md
+## PDA/TR22-Complete.md
 **Report:** PDA TR22: Process Simulation for Aseptically Filled Products
 **Pages:** p1–p115 | **Sections:** 9
 
@@ -49,7 +49,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR26-Complete.md
+## PDA/TR26-Complete.md
 **Report:** PDA TR26: Sterilizing Filtration of Liquids (Revised 2025)
 **Pages:** p1–p73 | **Sections:** 8 + 3 appendices
 
@@ -70,7 +70,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR52-Complete.md
+## PDA/TR52-Complete.md
 **Report:** PDA TR52: Good Distribution Practices (GDPs)
 **Pages:** p1–p31 | **Sections:** 5
 
@@ -90,7 +90,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR60-Complete.md
+## PDA/TR60-Complete.md
 **Report:** PDA TR60: Process Validation — A Lifecycle Approach (Revised 2026)
 **Pages:** p1–p155 | **Sections:** 8
 
@@ -110,7 +110,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR66-Complete.md
+## PDA/TR66-Complete.md
 **Report:** PDA TR66: Single-Use Systems in Pharmaceutical Manufacturing
 **Pages:** p1–p145 | **Sections:** 9
 
@@ -131,7 +131,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR73-Complete.md
+## PDA/TR73-Complete.md
 **Report:** PDA TR73: Prefilled Syringe Technology (Sections 12–18, p74–p102)
 **Pages:** p74–p102 | **Sections:** 4 (partial report — Sections 12–18 only)
 
@@ -148,7 +148,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR73-2-Complete.md
+## PDA/TR73-2-Complete.md
 **Report:** PDA TR73-2: MDR Annex I Essential Requirements for Staked Needle Systems
 **Pages:** p1–p33 | **Sections:** 5
 
@@ -165,7 +165,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR90-Complete.md
+## PDA/TR90-Complete.md
 **Report:** PDA TR90: Contamination Control Strategy (CCS) Development in Pharmaceutical Manufacturing
 **Pages:** p1–p65 | **Sections:** 15
 
@@ -188,7 +188,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## PtC-12-Complete.md
+## PDA/PtC-12-Complete.md
 **Report:** PDA PtC-12: Restricted Access Barrier Systems (RABS)
 **Pages:** p1–p115 | **Sections:** 10
 
@@ -210,7 +210,58 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## PtC-14-Complete.md
+## PDA/PtC-1-Complete.md
+**Report:** PDA Points to Consider No. 1: Aseptic Processing (Revised 2023)
+**Pages:** p1–p119 | **Sections:** 9
+
+**Covers questions about:**
+- Airflow velocity (0.45 m/s ±20%), airflow visualization (smoke studies), HEPA filter integrity testing
+- Differential pressure requirements between cleanroom grades
+- RABS vs Isolator: when to use each, regulatory preference, VHP decontamination
+- Blow-Fill-Seal (BFS): Grade A air shroud, parison design, APS for BFS
+- Air locks, at-rest vs in-operation classification, ≥0.5 µm and ≥5 µm particle monitoring
+- Environmental monitoring: alert levels, action limits, Grade A/B/C/D limits, excursion investigation
+- EM disinfection rotation, identification of environmental isolates (Table H-1)
+- APS/Media fill: acceptance criteria, duration, incubation temps, reconciliation, interventions, PUPSIT APS
+- Personnel qualification (AAPP), glove monitoring, gowning, occupancy, hygiene
+- Material transfer into aseptic area; sterile hold times for components
+- Cleaning & disinfection: sporicide rotation, sterilization of disinfectants
+- Steam sterilization: F0 concept, overkill vs bioburden-based, lyophilizer leak qualification
+- PUPSIT: EU Annex 1 requirement, FDA vs EU regulatory comparison, alternatives
+- Filter integrity testing: pre-use, post-use, gas filters, two-filter redundancy
+- WFI production methods (distillation vs cold membrane), WFI quality requirements
+
+**Key terms:** airflow velocity, smoke study, HEPA patching, differential pressure, Grade A/B/C/D, RABS, open RABS, closed RABS, isolator, BFS, blow-fill-seal, air shroud, at-rest, in-operation, APS, media fill, acceptance criteria, interventions, PUPSIT, reconciliation, alert level, action limit, EM excursion, sporicide, F0, overkill, WFI, TOC, endotoxin, aseptic personnel qualification, AAPP, glove monitoring, sterile hold time, filter integrity
+
+**Sections:** Section 0 (Intro/Glossary) → I-A–H (Airflow/HEPA) → I-I–O (RABS/BFS/Airlocks) → II (EM) → III-A–H (APS Acceptance) → III-I–P (APS Interventions) → IV (Personnel) → V+VI-A–H (Material/CDS) → VI-I–L+VII (PUPSIT/Filters/WFI)
+
+---
+
+## PDA/PtC-13-Complete.md
+**Report:** PDA PtC-13: Materials in ATMP Manufacturing (2025)
+**Pages:** p1–p35 | **Sections:** 5
+
+**Covers questions about:**
+- ATMP material categories: starting materials, ancillary materials, excipients, single-use components, CCS
+- Primary/Secondary/Tertiary Animal-Derived and Human-Derived material classification
+- What is a "critical raw material" under EU vs US regulatory definitions
+- Risk-based material qualification strategy for ATMP: phase-appropriate approach
+- TSE/BSE safety requirements for animal-derived ATMP materials
+- Microbial and viral safety testing requirements (Table 3.2-1 cross-regulatory overview)
+- ID testing: US (21 CFR 211.84(d)(2)) vs EU (EudraLex Vol.4 CoA-based) requirements
+- Single-use component qualification for ATMP (cryobags, vials, extractables & leachables)
+- Risk-based supplier qualification: tiering, audit strategy, SQA requirements
+- Managing RUO-grade material suppliers with immature GMP systems
+- Lifecycle management for commercial ATMP manufacturing (Q5.1–Q5.4)
+- IND filing material requirements, cross-contamination control, gRNA/nuclease quality
+
+**Key terms:** ATMP, critical raw material, ancillary material, primary animal-derived, secondary animal-derived, TSE, BSE, CJD, sterility assurance, ID testing, CoA, CoO, RUO (Research Use Only), IND, single-use component, extractables and leachables, supplier qualification, SQA, gRNA, AAV, CAR-T, autologous, allogeneic, phase-appropriate, PIC/S Annex 2A, EudraLex Vol.4
+
+**Sections:** Section 0 (Intro, Glossary, Abbreviations) → Topic 1-2 (Categories & Strategy) → Topic 3a (Q3.1-Q3.2 Qualification) → Topic 3b-4 (Single-Use & Supplier) → Topic 5 (Lifecycle & References)
+
+---
+
+## PDA/PtC-14-Complete.md
 **Report:** PDA PtC-14: Manufacturing of ATMPs — Facility Design
 **Pages:** p6–p55 | **Sections:** 6
 
@@ -228,7 +279,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## PtC-15-Complete.md
+## PDA/PtC-15-Complete.md
 **Report:** PDA PtC-15: Mobile Manufacturing
 **Pages:** p1–p16 | **Sections:** 3
 
@@ -246,7 +297,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR85-Complete.md
+## PDA/TR85-Complete.md
 **Report:** PDA TR85: Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric Closures and Glass Containers (2021)
 **Pages:** p1–p52 | **Sections:** 6
 
@@ -268,7 +319,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## PtC-9-Complete.md
+## PDA/PtC-9-Complete.md
 **Report:** PDA Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic (2024)
 **Pages:** p1–p65 | **Sections:** 6
 
@@ -292,7 +343,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR70-Complete.md
+## PDA/TR70-Complete.md
 **Report:** PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
 **Pages:** p1–p75 | **Sections:** 9
 
@@ -317,7 +368,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR39-Complete.md
+## PDA/TR39-Complete.md
 **Report:** PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
 **Pages:** p1–p29 | **Sections:** 4
 
@@ -340,7 +391,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR87-Complete.md
+## PDA/TR87-Complete.md
 **Report:** PDA TR87: Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021)
 **Pages:** p1–p48 | **Sections:** 7 (incl. 3 appendices)
 
@@ -362,7 +413,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR46-Complete.md
+## PDA/TR46-Complete.md
 **Report:** PDA Technical Report No. 46 (Revised 2024): Last Mile: Guidance for Good Distribution Practices for Pharmaceutical Products to End Users
 **Pages:** p1–p39 | **Sections:** 6
 
@@ -387,7 +438,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR13-Complete.md
+## PDA/TR13-Complete.md
 **Report:** PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
 **Pages:** p1–p63 | **Sections:** 8
 
@@ -410,7 +461,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR13-2-Complete.md
+## PDA/TR13-2-Complete.md
 **Report:** PDA Technical Report No. 13-2 (2020): Fundamentals of an Environmental Monitoring Program — Annex 1: Environmental Monitoring of Facilities Manufacturing Low Bioburden Products
 **Pages:** p1–p21 | **Sections:** 3
 
@@ -430,30 +481,7 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 **Sections:** Section 1–3 (Introduction, Glossary & Low Bioburden Overview) → Section 4a (Risk Assessment Framework & Criticality Factors) → Section 4b (Worked Examples: Cell Culture & Media Supplementation)
 
-## TR65-Complete.md
-**Report:** PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-**Pages:** p1–p62 | **Sections:** 8
-
-**Covers questions about:**
-- Six types of technology transfers: clinical-clinical, development-commercial, commercial-commercial; internal-internal, internal-external, external-external
-- Six-stage TT process: Initiation → Planning → Knowledge Transfer → Readiness → Execution → Handover
-- Cross-functional roles and responsibilities (Table 4.1-1: PM, Business, Process, Analytical, Engineering, Manufacturing, Regulatory, Quality, Sourcing/SC)
-- TT Charter, success factors, governance structure, project management
-- Initiation Stage: feasibility, process fit assessment, regulatory strategy, site selection
-- Planning Stage: TT plan, RACI, batch records, validation plan, supply agreements
-- Knowledge Transfer Stage: technology package, process qualification batches, analytical method transfer
-- Readiness Stage: equipment qualification, personnel training, regulatory submission readiness
-- Execution Stage: process performance qualification (PPQ), commercial readiness
-- Handover Stage: final documentation, commercial operations handover
-- 12 real-world case studies (8.1–8.12) covering common TT failures and successes
-
-**Key terms:** technology transfer (TT), sending unit (SU), receiving unit (RU), TT Charter, stage gate, technology package, process fit assessment, PPQ, process qualification, knowledge transfer, comparability protocol, regulatory strategy, RACI, TT project manager, analytical method transfer, commercial launch
-
-**Sections:** Section 0 (Intro, Glossary, TT Types) → Section 1 (TT Process & Oversight 4.0) → Section 2a (Initiation 5.1) → Section 2b (Planning 5.2) → Section 3 (Knowledge Transfer & Readiness 5.3–5.4) → Section 4 (Execution & Handover 5.5–5.6) → Section 5 (References) → Section 6 (12 Case Studies)
-
----
-
-## TR62-Complete.md
+## PDA/TR62-Complete.md
 **Report:** PDA Technical Report No. 62 (2013): Manual Aseptic Processes
 **Pages:** p1–p23 | **Sections:** 5
 
@@ -475,7 +503,102 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR54-Complete.md
+## PDA/PtC-Isolators-Complete.md
+**Report:** PDA Points to Consider: Aseptic Processing in Isolators (2020)
+**Pages:** p1–p72 | **Sections:** 7 topics
+
+**Covers questions about:**
+- What is an isolator system for aseptic processing and how it differs from RABS
+- Isolator design: pressure differential (>10 Pa positive), glove design, minimizing interventions
+- Physical environment: surrounding room classification (ISO 8), unidirectional airflow in fill zone, airflow visualization
+- Personnel gowning requirements and glove disinfection for isolator operations
+- Integrity testing of isolator enclosure and gloves: visual, mechanical, pressure decay methods
+- Glove maintenance programs, replacement frequency (6–12 months), response to integrity failure
+- Environmental monitoring inside isolators: risk-based frequency, surface sampling, EM plate transfer
+- Material transport and loading: RTP (rapid transfer port), VHP decontamination of surfaces, stopper transfer, tub transfer
+- Cleaning, disinfection, and decontamination cycle development: VHP and peracetic acid parameters
+- Temperature and humidity mapping during decontamination qualification
+
+**Key terms:** isolator, aseptic processing, VHP (vaporized hydrogen peroxide), peracetic acid, Grade A, ISO 5, ISO 8, RABS, glove port, glove integrity testing, pressure decay, pressure differential, rapid transfer port (RTP), decontamination, biological indicator (BI), unidirectional airflow, airflow visualization, environmental monitoring, material transfer, stopper transfer, ready-to-use, intervention
+
+**Sections:** Topic 1 (Isolator Design Q1-1–Q1-3) → Topic 2 (Physical Environment Q2-1–Q2-5) → Topic 3 (Personnel Q3-1–Q3-2) → Topic 4 (Integrity Testing Q4-1–Q4-3) → Topic 5 (EM Q5-1–Q5-5) → Topic 6 (Material Transport Q6-1–Q6-4) → Topic 7 (Cleaning & Decontamination Q7-1–Q7-3)
+
+---
+
+## PDA/TR65-Complete.md
+**Report:** PDA Technical Report No. 65 (Revised 2022): Technology Transfer
+**Pages:** p1–p50+ | **Sections:** 8 + 12 case studies
+
+**Covers questions about:**
+- What is technology transfer (TT) and the types: clinical-clinical, development-commercial, commercial-commercial
+- Site types for TT: internal-internal, internal-external, external-internal, external-external (most challenging)
+- Six-stage TT process: Initiation, Planning, Knowledge Transfer, Readiness, Execution, Handover
+- Stage gate review process: steering committee decision-making at each stage boundary
+- Cross-functional roles: Business, PM, Process, Analytical, Engineering, Manufacturing, Regulatory, Quality, Sourcing
+- Facility fit assessment: equipment, utilities, automation, capacity evaluation at receiving unit
+- Knowledge transfer package: tacit knowledge, process history, master batch records, PPQ data
+- Sending unit (SU) vs receiving unit (RU) roles and responsibilities
+- CDMO/CMO technology transfer: managing differences in quality systems and procedures
+- Regulatory strategy for TT: filing categories, CMC requirements, health authority interactions
+- Comparability plan development and PPQ protocol design for receiving unit
+- 12 real-world case studies covering charter development, failed qualification lessons, effective KT, stage gates
+
+**Key terms:** technology transfer (TT), sending unit (SU), receiving unit (RU), CDMO, CMO, QTPP (quality target product profile), stage gate, facility fit assessment, knowledge transfer (KT), knowledge management (KM), PPQ (process performance qualification), comparability, URS (user requirements specification), MAH, CMC, FAT, SAT, engineering batch, control strategy, VMP (validation master plan), EHS
+
+**Sections:** Section 1–2 (Introduction & Glossary) → Section 3 (Types of TT: Lifecycle & Site Types) → Section 4 (TT Process & Oversight) → Section 5.1–5.2 (Initiation & Planning Stages) → Section 5.3 (Knowledge Transfer Stage) → Section 5.4–5.6 (Readiness, Execution & Handover) → Section 7–8 (References & 12 Case Studies)
+
+---
+
+## PDA/TR88-Complete.md
+**Report:** PDA Technical Report No. 88 (2022): Investigation of Microbial Data Deviations
+**Pages:** p1–p54 | **Sections:** 6
+
+**Covers questions about:**
+- What constitutes a microbial data deviation (OOS/OOL) and when investigation is required
+- Microbiologist roles: laboratory microbiologist, manufacturing investigator, SME, QCU responsibilities
+- Phase I: Laboratory investigation — confirming test validity (sampling, methodology, equipment, personnel, environment)
+- Phase I specific tests: sterility testing (USP <71>), bacterial endotoxin (USP <85>), antimicrobial effectiveness (USP <51>), mycoplasma, biological indicators
+- Sterility test invalidation criteria and decision trees based on microorganism identification
+- Bacterial endotoxin testing investigation: LAL vs recombinant methods, MVD calculation issues
+- APS / media fill failure investigation approach
+- Environmental monitoring excursion investigation: trending, root cause, CAPA
+- Utilities monitoring: pharmaceutical water system investigation (sample handling, test methods, trending data)
+- Phase II: Manufacturing investigation — root cause analysis when lab test is confirmed valid
+- Sterility-positive manufacturing investigation workflow
+- Evidence-based investigation principles: avoiding confirmation bias and hindsight bias
+
+**Key terms:** microbial data deviation, OOS (out-of-specification), OOL (out-of-limit), Phase I investigation, Phase II investigation, sterility test (USP <71>), BET (bacterial endotoxin test, USP <85>), LAL (Limulus amoebocyte lysate), antimicrobial effectiveness (USP <51>), mycoplasma, biological indicator (BI), media fill, APS, environmental monitoring (EM), water system monitoring, root cause analysis (RCA), CAPA, QCU, SME, WFI, FTM, SCDM, microbial identification, polyphasic identification
+
+**Sections:** Section 1–2 (Introduction, Purpose, Scope & Glossary) → Section 3 (Microbiologist Roles 3.1–3.5) → Section 4a (Phase I Lab Investigation: Microbial ID, Sterility, BET) → Section 4b (Phase I: AET, Mycoplasma, BI, APS, EM, Utilities) → Section 5 (Phase II: Manufacturing Investigation & Root Cause) → Section 6 (Conclusion & References)
+
+---
+
+## PDA/TR91-Complete.md
+**Report:** PDA Technical Report No. 91 (2023): Post-Approval Changes — A Global Perspective
+**Pages:** p1–p60 | **Sections:** 10 + 2 appendix case studies
+
+**Covers questions about:**
+- What are post-approval changes (PACs) and why they take 2–5 years to approve globally
+- Pharmaceutical Quality System (PQS) elements enabling PAC: management review, CAPA, change management, process monitoring
+- Quality Risk Management (QRM) and Knowledge Management (KM) as key enablers for PAC decisions
+- Established Conditions (ECs): legally binding parameters vs non-ECs managed internally
+- Benefits of defining ECs: reducing non-value-added regulatory submissions
+- Post-Approval Change Management Protocol (PACMP / Comparability Protocol): prospective change planning
+- Product Lifecycle Management (PLCM): strategy documents for monitoring and managing ECs over product life
+- Global PAC landscape: ICH regions (clearer guidance, 6-month timelines) vs non-ICH regions (longer, less defined)
+- Legacy marketed products: challenges applying ICH Q12 principles to already-approved products
+- Harmonization recommendations: three change categories — "Do and Record", "Do and Tell", "Tell, Wait and Do"
+- Mutual recognition of PAC approvals across ICH jurisdictions
+- Case Study 1: Replacing traditional mycoplasma detection with PCR-based methods (NAT)
+- Case Study 2: Introducing new isolator system for aseptic filling of biologically active therapeutics
+
+**Key terms:** post-approval change (PAC), established conditions (EC), PACMP (post-approval change management protocol), comparability protocol, ICH Q12, PLCM (product lifecycle management), PQS (pharmaceutical quality system), CMC, CQA, CPP, change management, CAPA, QRM, KM, prior approval supplement (PAS), CBE (changes being effected), variation, CTD, CDMO, CMO, regulatory harmonization, NAT (nucleic acid amplification techniques), PCR, mycoplasma, isolator
+
+**Sections:** Section 1–2 (Introduction & Glossary) → Section 3 (Background & PAC Landscape) → Section 4 (PQS Elements: Management Review, CAPA, Change Management, Monitoring, QRM/KM) → Section 5 (PAC Tools: Established Conditions, PACMP, PLCM) → Section 6 (Global PAC: ICH vs Non-ICH Regions) → Section 7–9 (Legacy Products, Harmonization Recommendations & Conclusion) → Appendix 1 (Case Study: PCR Mycoplasma) → Appendix 2 (Case Study: Isolator Introduction)
+
+---
+
+## PDA/TR54-6-Complete.md
 **Report:** PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients (Joint PDA–IPEC)
 **Pages:** p1–p36 | **Sections:** 7
 
@@ -496,7 +619,100 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
-## TR84-Complete.md
+## PDA/TR68-Complete.md
+**Report:** PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages
+**Pages:** p1–p54 | **Sections:** 6
+
+**Covers questions about:**
+- How to assess drug shortage risk using the 4-step Risk Triage Model (PHA approach)
+- Classifying products by Risk Level A/B/C (patient impact) and Priority Level 1/2/3 (risk triage output)
+- How to develop a Drug Shortage Risk Register — single source of truth for shortage risks
+- How to create a Drug Shortage Prevention and Response Plan (DSPR Plan): 5 components
+- Supply chain mapping using Value Stream Mapping (VSM) to identify inventory stress points
+- Managing risks from aging manufacturing facilities and legacy analytical technologies
+- Expedited Post-Approval Changes (PACs) and the ICH Q12 regulatory flexibility framework
+- Stakeholder management: when and how to notify FDA/EMA of a potential drug shortage
+- Global regulatory landscape for shortage notification (US Section 506C, EU GMP Article 13)
+- Management responsibilities and quality culture elements for shortage prevention
+- Risk-based decision-making by companies and health authorities during active shortages
+
+**Key terms:** drug shortage, Risk Triage Model, Risk Level A/B/C, Risk Priority Level 1/2/3, Drug Shortage Risk Register, Drug Shortage Prevention and Response Plan, Value Stream Mapping (VSM), meaningful disruption, medically necessary drug, critical medicine, Marketing Authorization Holder (MAH), Post-Approval Change (PAC), ICH Q9(R1), ICH Q10, ICH Q12, continuous process verification (CPV), global change protocol (gCP), Quality Risk Management (QRM), Pharmaceutical Quality System (PQS), supply chain resilience, preliminary hazards analysis (PHA)
+
+**Sections:**
+0. Introduction & Glossary (Sections 1.0–2.0, p1–p5)
+1. Drug Shortage — Global Problem & Management Responsibilities (Sections 3.0–4.0, p6–p11)
+2. Risk-Based Prevention Framework (Section 5.0, p12–p15)
+3. Risk Triage Model — Steps 1–4 & Supply Chain/Aging/PAC (Sections 6.0–6.4, p16–p32)
+4. Prevention Plan & Stakeholder Management (Sections 7.0–8.0, p33–p37)
+5. Conclusions, References & Appendices (Sections 9.0–12.0, p38–p54)
+
+---
+
+## PDA/TR43-Complete.md
+**Report:** PDA Technical Report No. 43 (Revised 2023): Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing
+**Pages:** p1–p199 | **Sections:** 6
+
+**Covers questions about:**
+- How to classify glass container nonconformities using 5-level system (Critical / Major A / Major B / Minor / Acceptable Imperfection)
+- What are the risk/impact categories for glass defects: CCI/Sterility, User Injury, Remote Risk, Functional, Machinability, Negligible, Aesthetic
+- How to identify specific glass defects by name, definition, location, and inspection method
+- Moulded glass bottle & vial defects (Table 8.0-1): ~30+ defect types
+- Tubular ampoule defects (Table 8.0-2): tip quality, seal integrity, glass particle risks
+- Tubular cartridge defects (Table 8.0-3): plunger compatibility, RTU cartridge standards
+- Tubular syringe defects (Table 8.0-4): cone/flange/barrel integrity, prefilled syringe (PFS) quality
+- Tubular vial defects (Table 8.0-5): the largest lexicon (~50+ defects), RTU vial stricter standards
+- RTU (Ready-to-Use) container classification differences vs. standard containers
+- Glass container specification development: quality agreements between pharma and glass suppliers
+- AQL-based sampling programs for incoming glass container inspection
+- Visual inspection methods: calibrated measurement, TAPPI chart, tactile, limit sample, flat surface
+
+**Key terms:** nonconformity, nonconformance, defect classification, Critical, Major A, Major B, Minor, Acceptable Imperfection, AQL (Acceptance Quality Limit), CCI (Container Closure Integrity), RTU (Ready-to-Use), moulded glass, tubular glass, ampoule, cartridge, syringe, vial, adhered glass, loose glass, crack, check, chip, delamination, glass stringer, spiticule, bird swing, reboil, stone, knot, airline, seed, bump check, bruise, contamination, limit sample, visual inspection
+
+**Sections:**
+0. Introduction & Classification Framework (Sections 1.0–7.0, p1–p14)
+1. Moulded Glass Containers — Table 8.0-1 (p15–p48)
+2. Tubular Ampoules — Table 8.0-2 (p49–p76)
+3. Tubular Cartridges — Table 8.0-3 (p77–p98)
+4. Tubular Syringes — Table 8.0-4 (p99–p122)
+5. Tubular Vials — Table 8.0-5 (p123–p199)
+
+---
+
+## ISPE/ISPE-Vol5-Complete.md
+**Report:** ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition)
+**Pages:** p9–p212 | **Sections:** 11 sections (Ch1-Ch14 + Appendices)
+
+**Covers questions about:**
+- C&Q (Commissioning and Qualification) process framework and how it differs from traditional IQ/OQ/PQ
+- System Classification: Direct Impact vs Not Direct Impact systems; 8 classification criteria (Q1-Q8)
+- User Requirements Specification (URS): development, approval, what to include and what NOT to include
+- System Risk Assessment (SRA): identifying CDEs and CAs through QRM; risk levels Low/Medium/High; 13-column SRA format
+- Design Review (DR) and Design Qualification (DQ): objectives, process, timing, Traceability Matrix
+- C&Q Planning: plan contents, approval matrix, timing sequence, document strategy
+- C&Q Testing: FAT/SAT/PDI/RI, Turnover Packages, Installation/Operational/Performance testing, Discrepancy Management
+- Acceptance and Release: qualified state initiation, 4 report options, Quality System Elements
+- Periodic Review: 3-tier approach (Tier A/B/C), system categorization (Cat 0/1/2/3), risk-based frequency
+- Vendor Assessment: using vendor FAT docs for qualification, assessment factors, GMP-unfamiliar vendors
+- Engineering Quality Process (EQP): relationship to PQS, document hierarchy, Deming's principle
+- Change Management: Engineering Change Management (ECM) vs Quality Change Control (QCC)
+- Good Documentation Practice (GDocP): ALCOA+, data integrity, electronic records, corrections
+
+**Key terms:** C&Q, CDE (Critical Design Element), CA (Critical Aspect), Direct Impact System, URS, System Risk Assessment, SRA, DQ, DR, C&Q Plan, FAT, SAT, PDI, TOP (Turnover Package), Acceptance and Release, Qualified State, Periodic Review, Traceability Matrix, Engineering Quality Process, QRM, GEP, ALCOA+, GDocP, ECM, QCC
+
+**Sections:**
+0. Introduction & Key Concepts (Ch1, p9-18)
+1. URS & System Classification (Ch2-3, p19-26)
+2. System Risk Assessment (Ch4, p27-34)
+3. Design Review & Design Qualification (Ch5, p35-40)
+4. C&Q Planning (Ch6, p41-48)
+5a. C&Q Testing & Documentation Part 1 (Ch7a, p49-56)
+5b. C&Q Testing Part 2 + Acceptance & Release (Ch7b-8, p57-68)
+6. Periodic Review (Ch9, p69-78)
+7. Vendor Assessment & Engineering Quality Process (Ch10-11, p79-88)
+8. Change Management & Good Documentation Practice (Ch12-13, p89-104)
+9. Implementation Strategies & Key Appendices (Ch14+App, p105+)
+
+## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
 
@@ -508,11 +724,11 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 - Human factors in DI risk: unintentional errors vs. intentional falsification
 - DI controls framework: prevention vs. detection controls, differentiation for paper/electronic/hybrid systems
 - 13 specific DI control areas: audit trail, access controls, system clock, data backup, CSV, blank controls, printouts, raw data, true copies, data transfer, error/alarm management, periodic review, training
-- ATRA tool (Assess, Track, Remediate, Accelerate) for audit trail risk assessment
+- ATRA tool for audit trail risk assessment
 - Big Data considerations: IoT sensors, continuous manufacturing, automated alarm management
 - 54 worked examples across API, FDF, sterility assurance, and tablet packaging operations
 
-**Key terms:** ALCOA+, data integrity, audit trail, 21 CFR Part 11, EU GMP Annex 11, MHRA, data lifecycle, data criticality, data vulnerability, 9-Box grid, DPFM, FMEA, ATRA, access control, system clock, true copy, raw data, electronic batch record (EBR), hybrid system, CSV, GDocP, looped memory, Big Data, IoT
+**Key terms:** ALCOA+, data integrity, audit trail, 21 CFR Part 11, EU GMP Annex 11, MHRA, data lifecycle, data criticality, data vulnerability, 9-Box grid, DPFM, FMEA, ATRA, access control, system clock, true copy, raw data, EBR, hybrid system, CSV, GDocP, looped memory, Big Data, IoT
 
 **Sections:** Section 0 (Intro & Glossary) → Section 1 (DI Regulatory Trends) → Section 2 (QRM Applied to DI) → Section 3 (DI Controls Framework) → Section 4 (DI Controls Specific Areas) → Section 5 (Big Data & References) → Section 6a (Appendix: API & FDF Examples) → Section 6b (Appendix: Sterility & Packaging Examples)
 
@@ -548,7 +764,16 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | VHP, gaseous decontamination, biological indicator / 過氧化氫蒸氣、氣態除污、生物指示劑 | TR70 + PtC-12 |
 | COVID-19 pandemic lessons, mRNA manufacturing, LNP, vaccine scale-up / COVID-19疫情經驗、mRNA製造、脂質奈米粒子 | PtC-9 |
 | Remote inspection, pandemic GMP, BCP, workforce shortage / 遠端查廠、疫情GMP、業務持續計畫、人力短缺 | PtC-9 |
-| Supply chain resilience, SUS shortage, cold chain, API shortage / 供應鏈韌性、一次性材料短缺、冷鏈、原料短缺 | PtC-9 |
+| Supply chain resilience, SUS shortage, cold chain, API shortage / 供應鏈韌性、一次性材料短缺、冷鏈、原料短缺 | PtC-9 + TR68 |
+| Drug shortage prevention, shortage risk management, shortage triage / 藥品短缺預防、短缺風險管理、短缺分流 | TR68 |
+| Drug shortage notification, FDA EMA shortage reporting / 藥品短缺通知、FDA EMA通報義務 | TR68 |
+| Risk triage model, Risk Level A B C, Risk Priority Level 1 2 3 / 風險分流模型、風險等級A/B/C、風險優先等級1/2/3 | TR68 |
+| Drug Shortage Risk Register, DSPR Plan, shortage prevention plan / 藥品短缺風險登記表、短缺預防應對計劃 | TR68 |
+| Value Stream Mapping VSM, supply chain mapping, inventory stress points / 價值流圖、供應鏈映射、庫存壓力點 | TR68 |
+| Aging facilities, legacy equipment, continual improvement, equipment obsolescence / 老化設施、老舊設備、持續改進 | TR68 |
+| Post-approval change PAC expedited review, ICH Q12, regulatory flexibility, gCP / 法規變更申請、ICH Q12、法規彈性 | TR68 |
+| Medically necessary drug, critical medicine, life sustaining product / 醫療必需品、關鍵藥品、維生藥品 | TR68 |
+| MAH accountability supply chain, CDMO contract manufacturer shortage / MAH供應鏈責任、CDMO合約製造商短缺責任 | TR68 |
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
 | Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
@@ -565,25 +790,41 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Regulatory submissions EU MDR / 歐盟MDR法規送件 | TR73-2 |
 | Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
 | Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
-| Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
-| Technology transfer, TT, sending unit, receiving unit, PPQ, stage gate / 技術移轉、發送端、接收端 | TR65 |
-| TT Charter, TT project management, cross-functional TT roles / 技術移轉憲章、跨職能角色 | TR65 |
-| Process fit assessment, technology package, comparability protocol / 製程適配性評估、技術包 | TR65 |
+| Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 + TR43 |
+| Glass defect classification, nonconformity, Critical Major A Major B Minor / 玻璃缺陷分類、不符合項、Critical/Major A/Major B/Minor | TR43 |
+| Glass defect lexicon, moulded glass, tubular glass, defect identification / 玻璃缺陷詞典、模造玻璃、管制玻璃、缺陷辨識 | TR43 |
+| Adhered glass, loose glass, crack, check, chip, delamination / 附著玻璃、鬆動玻璃、裂紋、裂痕、崩片、脫層 | TR43 |
+| Glass ampoule defects, tip quality, seal integrity / 安瓿缺陷、封口品質、密封完整性 | TR43 |
+| Glass cartridge defects, pen injector, auto-injector, RTU cartridge / 卡匣缺陷、胰島素筆、自動注射器、RTU卡匣 | TR43 |
+| Glass syringe defects, PFS quality, cone crack, flange, barrel / 注射器缺陷、預充填注射器品質、錐部裂紋、翼緣 | TR43 + TR73 |
+| Glass vial defect lexicon, vial nonconformity, RTU vial / 小瓶缺陷詞典、小瓶不符合項、RTU小瓶 | TR43 + TR87 |
+| AQL sampling, incoming glass inspection, quality specification / AQL抽樣、進料玻璃檢驗、品質規格 | TR43 |
+| Limit sample, visual inspection method, TAPPI chart / 限度樣品、目視檢查方法、TAPPI圖表 | TR43 |
 | Manual aseptic process, MAP, UAFH, First Air, critical zone / 手動無菌製程、單向氣流操作台 | TR62 |
 | Manual APS, media fill for compounding/compositing/manual filling / 手動製程培養基充填 | TR62 |
 | Excipient risk assessment, ERPN, SCRPN, OverallRPN, excipient GMP / 賦形劑風險評估、賦形劑風險優先數、供應鏈風險 | TR54 |
 | Excipient supply chain, broker, distributor, repackager, EXCiPACT / 賦形劑供應鏈、中間商、轉包裝商 | TR54 |
 | EU FMD, EC Guidelines 2015, formalized risk assessment, MAH accountability / 歐盟偽藥指令、賦形劑正式化風險評估 | TR54 |
+| Isolator design, decontamination cycle, isolator EM, glove integrity / 隔離器設計、去污循環、隔離器環境監測、手套完整性 | PtC-Isolators + PtC-12 |
+| Technology transfer, sending/receiving unit, facility fit, CDMO TT / 技術轉移、發送方/接收方、設施適配性、CDMO技轉 | TR65 |
+| Microbial data deviation, OOS investigation, sterility test failure / 微生物數據偏差、OOS調查、無菌試驗失敗 | TR88 |
+| Sterility test invalidation, BET investigation, mycoplasma OOS / 無菌試驗失效判定、內毒素調查、黴漿菌OOS | TR88 |
+| Phase I lab investigation, Phase II manufacturing investigation / 第一階段實驗室調查、第二階段製造調查 | TR88 |
+| Water system microbiology, pharmaceutical water OOS trending / 製藥用水微生物、水系統OOS趨勢分析 | TR88 + TR13 |
+| Post-approval change, PAC, established conditions, ICH Q12 / 上市後變更、已確立條件、ICH Q12 | TR91 |
+| PACMP, comparability protocol, product lifecycle management / 上市後變更管理方案、比較性方案、產品生命週期管理 | TR91 |
+| Regulatory harmonization, global change categories, non-ICH filing / 法規協調、全球變更分類、非ICH區域申報 | TR91 |
+| PCR mycoplasma detection, NAT replacement, adventitious agent / PCR黴漿菌檢測、核酸檢測替代 | TR91 (Appendix 1) |
 | Data integrity, ALCOA+, data lifecycle, data governance / 資料完整性、ALCOA+、資料生命週期 | TR84 |
 | Audit trail review, ATRA tool, audit trail risk assessment / 稽核軌跡審查、ATRA工具 | TR84 |
-| 21 CFR Part 11, EU Annex 11, electronic records, e-signatures / 電子記錄、電子簽章、21 CFR Part 11 | TR84 |
-| Data integrity warning letters, FDA DI trends, inspection findings / 資料完整性警告信、FDA DI趨勢 | TR84 |
-| 9-Box vulnerability grid, data criticality, data process flow map / 9格脆弱性矩陣、資料關鍵性分類 | TR84 |
-| Access control, user administration, shared logins, system clock / 存取控制、共用帳號、系統時鐘管理 | TR84 |
-| Paper vs electronic vs hybrid system DI controls / 紙本vs電子vs混合系統資料完整性管控 | TR84 |
-| CSV, computer system validation, data backup, true copy / 電腦系統驗證、資料備份、真實副本 | TR84 |
-| Big Data, IoT in pharma manufacturing, continuous manufacturing data / 大數據、製藥物聯網、連續製造資料 | TR84 |
-| DI worked examples: API, FDF, sterility assurance, packaging / 資料完整性實務案例：原料藥、製劑、無菌、包裝 | TR84 |
+| 21 CFR Part 11, EU Annex 11, electronic records, e-signatures / 電子記錄、電子簽章 | TR84 |
+| Data integrity warning letters, FDA DI trends / 資料完整性警告信、FDA DI趨勢 | TR84 |
+| 9-Box vulnerability grid, data criticality, DPFM / 9格脆弱性矩陣、資料關鍵性分類 | TR84 |
+| Access control, shared logins, system clock / 存取控制、共用帳號、系統時鐘管理 | TR84 |
+| Paper vs electronic vs hybrid system DI controls / 紙本vs電子vs混合系統DI管控 | TR84 |
+| CSV, data backup, true copy, raw data / 電腦系統驗證、資料備份、真實副本 | TR84 |
+| Big Data, IoT in pharma, continuous manufacturing data / 大數據、製藥物聯網 | TR84 |
+| DI worked examples: API, FDF, sterility, packaging / 資料完整性案例：原料藥、製劑、無菌、包裝 | TR84 |
 
 ## Not Covered in This Knowledge Base
 
@@ -611,19 +852,19 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
 
 **Environmental Monitoring / EM (環境監控)**
-→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
+→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
-→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
-→ TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+→ TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
-→ TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
+→ TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
 
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → TR66 ★★★ (full SUS guidance) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
@@ -632,37 +873,37 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk assessment: 9-Box vulnerability grid, data criticality, DPFM) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
-→ TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
+→ TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-Isolators ★★★ (isolator gowning, glove disinfection) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
 
 **Equipment Qualification IQ/OQ/PQ (設備確效)**
 → TR60 ★★★ (lifecycle qualification framework) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
 
 **Regulatory Background — FDA/EMA GMP (法規)**
-→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
+→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
 **Annex 1 (2022) EU GMP**
-→ TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
+→ PtC-1 ★★★ (comprehensive Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
 
 **Sterile Filtration / Bioburden Control (除菌過濾/微生物負荷)**
-→ TR26 ★★★ (primary filtration guidance) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
+→ TR26 ★★★ (primary filtration guidance) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
 
 **Prefilled Syringe (預充填注射器)**
-→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
+→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine)
 
 **Supplier / Vendor Qualification (供應商確認)**
-→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
-
-**Technology Transfer (技術移轉)**
-→ TR65 ★★★ (complete TT framework: 6 stages, cross-functional roles, 12 case studies) — single primary source
+→ PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR65 ★★ (vendor/CDMO assessment in TT: facility fit, quality system evaluation) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
-→ TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
+→ TR91 ★★★ (post-approval change management: ECs, PACMP, PLCM, ICH Q12, global harmonization) | TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | TR68 ★★ (PAC expediting for shortage prevention: ICH Q12, gCP framework) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
 
 **Pandemic Preparedness / Business Continuity (疫情準備/業務持續計畫)**
-→ PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) — single primary source
+→ PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) | TR68 ★★★ (drug shortage prevention framework, VSM, DSPR Plan) | TR91 ★★ (PAC expediting to prevent supply disruption)
+
+**Drug Shortage Prevention & Supply Chain Resilience (藥品短缺預防/供應鏈韌性)**
+→ TR68 ★★★ (risk triage model, Risk Register, DSPR Plan, VSM, aging facilities, PAC expediting) | PtC-9 ★★ (pandemic supply chain, SUS/API shortage lessons)
 
 **Statistical Methods / SPC (統計方法)**
 → TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics)
@@ -670,17 +911,35 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Cleaning Validation (清潔確效)**
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
 
+**Glass Container Quality / Nonconformity (玻璃容器品質/不符合項)**
+→ TR43 ★★★ (5 defect lexicons: moulded glass, ampoules, cartridges, syringes, vials; classification framework, RTU standards) | TR87 ★★★ (glass vial handling, breakage prevention, depyrogenation, capping best practices) | TR85 ★★ (visible particle inspection methods for glass containers) | TR73 ★★ (syringe-specific glass container requirements) | Guide-No1 ★ (vial washing and depyrogenation tunnel)
+
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
 → TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
-→ PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
+→ PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
+
+**ATMP Raw Materials / Material Qualification (ATMP原材料/材料資格認定)**
+→ PtC-13 ★★★ (complete material strategy: categories, risk-based qualification, supplier, lifecycle) — single primary source
+
+**TSE/BSE / Animal-Derived Materials (TSE/BSE/動物源材料)**
+→ PtC-13 ★★★ (safety requirements, regulatory overview Table 3.2-1, human/animal-derived classification) — single primary source
 
 **Powder Filling (粉末充填)**
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
 
 **RABS vs Isolator (隔離系統比較)**
-→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
+→ PtC-1 ★★★ (Topic I: full RABS/Isolator comparison, regulatory position, APS in isolators) | PtC-Isolators ★★★ (isolator-specific: design, EM, glove integrity, material transfer, decontamination) | PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
+
+**Aseptic Processing — Regulatory Positions & Best Practices (無菌製程法規立場)**
+→ PtC-1 ★★★ (comprehensive PDA best practices across all 7 domains: environment, EM, APS, personnel, materials, CDS, utilities) — single primary source for current industry position
+
+**Blow-Fill-Seal (BFS 製程)**
+→ PtC-1 ★★★ (K.1-K.3: design, resin handling, APS for BFS, Grade A air shroud) — single primary source
+
+**Water for Injection (WFI / 注射用水)**
+→ PtC-1 ★★★ (production methods: distillation vs cold membrane; quality limits; monitoring) — primary source for WFI questions
 
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
@@ -698,10 +957,31 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR54 ★★★ (complete excipient QRM framework: ERPN, SCRPN, OverallRPN, supply chain mapping, 6 real case studies) — single primary source
 
 **Risk Assessment / FMEA (風險評估/FMEA)**
-→ TR54 ★★★ (excipient RA: risk ranking/filtering, supply chain RA) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+→ TR54 ★★★ (excipient RA: risk ranking/filtering, supply chain RA) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+
+**C&Q / Commissioning and Qualification / 確效 (ISPE)**
+→ ISPE/ISPE-Vol5 ★★★ (complete C&Q lifecycle framework: URS→SRA→DR/DQ→Testing→Release→Periodic Review) | PDA/TR60 ★★ (process validation lifecycle, overlaps with C&Q philosophy)
+
+**Technology Transfer (技術轉移)**
+→ TR65 ★★★ (complete TT framework: 6 stages, cross-functional roles, facility fit, 12 case studies) | TR60 ★★ (PV context for TT validation) | PtC-15 ★★ (mobile manufacturing TT considerations)
+
+**Microbial Investigation / OOS (微生物調查/OOS)**
+→ TR88 ★★★ (Phase I/II investigation framework: sterility, BET, EM, APS, water system) | TR13 ★★★ (EM investigation and trending) | TR70 ★★ (EM excursion linked to cleaning failure) | TR22 ★★ (APS failure investigation)
+
+**Post-Approval Changes / Regulatory Filing (上市後變更/法規申報)**
+→ TR91 ★★★ (global PAC management: ECs, PACMP, PLCM, ICH Q12, harmonization) | TR68 ★★ (PAC expediting for shortage prevention) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools) | TR60 ★★ (lifecycle PV change control)
+
+**Commissioning & Qualification / IQ/OQ/PQ / 系統確效**
+→ ISPE/ISPE-Vol5 ★★★ (complete C&Q framework, replaces V-model with risk-based approach) | PDA/TR60 ★★ (validation lifecycle) | PDA/TR22 ★ (APS qualification)
+
+**FAT / SAT / Factory Acceptance Testing (工廠驗收測試)**
+→ ISPE/ISPE-Vol5 ★★★ (FAT as IQ evidence, SAT, PDI, integration with qualification)
+
+**System Risk Assessment / CDE (系統風險評估)**
+→ ISPE/ISPE-Vol5 ★★★ (CDE identification via QRM, 13-column SRA format, risk levels)
 
 **Data Integrity / ALCOA+ / Electronic Records (資料完整性/電子記錄)**
 → TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) — single primary source
 
 **Computer System Validation / CSV (電腦系統驗證)**
-→ TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | TR60 ★★ (CSV in process validation context)
+→ TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)

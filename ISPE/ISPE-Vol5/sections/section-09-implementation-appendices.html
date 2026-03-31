@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISPE Vol.5 — Ch.14 Implementation Strategies + Appendix Overview</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES — ISPE GREEN OVERRIDE ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: 1rem;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #a3e6bb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #d4edda);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box (Yellow) */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* Concept Box (Green) */
+.concept-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+
+/* Note Box (Orange) */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Application Box (Blue) */
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.application-box h3, .application-box h4 { color: #1565c0 !important; margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.application-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.application-box ul, .application-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.application-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+
+/* Practice Box */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== SECTION SUMMARY (Yellow) ===== */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border: 1px solid #f6e09a;
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary p { font-size: 0.93rem; margin-bottom: 0.5rem; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>ISPE Baseline Guide Vol.5: Commissioning and Qualification (2nd Ed.)</h1>
+    <div class="subtitle">Chapter 14: Strategies for Implementation + Appendix Overview (Ch.15–31)</div>
+    <div class="page-info">Pages 105+ | Section 9 of 9</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 ISPE 科學與風險基礎 C&amp;Q 導入策略的六大準備步驟，以及「無需重複確效」原則對遺留系統的意義。</li>
+            <li>掌握針對新系統、既有系統（小改動）、既有系統（重大改動）三種情境的不同 C&amp;Q 導入路徑與文件要求。</li>
+            <li>了解 ISPE C&amp;Q 方法與主要法規（FDA 21 CFR、EU GMP Annex 15、ICH Q8/Q9/Q10）之間的對應關係，掌握法規基礎。</li>
+            <li>能夠規劃一個分階段的組織導入計畫，以促進高階管理層的支持與跨部門協作。</li>
+            <li>能將 ISPE 導入策略應用於 CDMO 情境，制定從傳統 V-Model 過渡至 ISPE 2nd Ed. 方法的實際步驟。</li>
+        </ol>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-141">14.1 Introduction</a>
+            <a href="#sec-142">14.2 Preparing for Implementation</a>
+            <a href="#sec-143">14.3 Approaches for Implementation</a>
+            <a href="#sec-144">14.4 Table 14.1 — Implementation Matrix</a>
+            <a href="#sec-app1">Appendix 1: Regulatory Basis</a>
+            <a href="#sec-app1-ch14">Ch.14 Regulatory Basis</a>
+            <a href="#sec-appoverview">Appendix Overview Table</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>章節摘要 Section Summary</h3>
+        <p>第 14 章（策略導入）說明組織如何有效轉型至科學與風險基礎的 C&amp;Q 流程。核心訊息是：採用本指引方法並不會使現有文件失效——確效文件代表系統在某一時間點的狀態，只要配合現有品質系統（變更管理、維護、校正、定期審查），現有文件仍可繼續使用。</p>
+        <p>Appendix 1（第 15 章）提供本指引與主要法規（EU GMP Annex 15、FDA Process Validation Guidance、ICH Q8/Q9/Q10）的對應，從法規角度確認 ISPE C&amp;Q 方法的合規性基礎。本節末提供 Appendix 2–17 的概覽總表。</p>
+    </div>
+
+    <!-- ===================================================================
+         CHAPTER 14.1 — Introduction
+         =================================================================== -->
+    <div class="chapter-section" id="sec-141">
+        <div class="chapter-divider">
+            <div class="chapter-badge">14.1</div>
+            <div class="chapter-info">
+                <h2>14.1 Introduction</h2>
+                <p>Transitioning to the science and risk-based C&amp;Q approach | Page 105</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>14.1 Introduction</h3>
+                    <p>This chapter describes strategies how organizations can effectively transition to the science and risk-based C&amp;Q process described in this Guide. Implementing change successfully often requires high-level sponsorship due to the numerous stakeholders impacted.</p>
+                    <p>The key to a successful transition is to recognize that there are multiple ways that the regulatory expectations can be met; adopting the science and risk-based approach does <strong>not invalidate current work or existing documentation</strong>. It should be noted that any process used for C&amp;Q is expected to be science and risk-based.</p>
+                    <div class="quote-box">
+                        Qualification documents represent a picture of the system at a point in time; this information changes with time and there are quality systems in place to manage this change (including associated revision of the qualification and engineering record documents), such as change management, maintenance, calibration, and periodic review. Therefore, existing documentation can remain acceptable to provide the documented evidence that the system is suitable for the intended purpose.
+                    </div>
+                    <p>Figure 14.1 provides a flow chart of the suggested steps for implementation of the science and risk-based C&amp;Q approach described in this Guide.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>核心原則：不需重複確效 (No Need to Repeat Qualification)</h4>
+                        <p>這是第 14 章最重要的一句話，也是許多企業最擔心的問題：「採用 ISPE 新方法，是否意味著我過去做的 IQ/OQ/PQ 都要重做？」</p>
+                        <p><strong>答案是否定的。</strong>ISPE 明確指出：採用科學與風險基礎方法，並不會使現有確效文件失效。確效文件代表「系統在某一時間點的狀態快照」，只要配合現有的品質系統（變更管理、維護、校正、定期審查），現有文件仍可繼續作為系統適用性的有效證明。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：高階贊助的重要性</h4>
+                        <p>ISPE 特別指出，成功的轉型「往往需要高階贊助」，因為涉及眾多利害關係人。這不只是技術問題，更是組織變革管理（Change Management）的挑戰：</p>
+                        <ul>
+                            <li><strong>研發部門：</strong>需要提供科學與製程知識</li>
+                            <li><strong>品質部門：</strong>需要接受不同的文件交付物</li>
+                            <li><strong>工程部門：</strong>需要按 GDocP 標準交付文件</li>
+                            <li><strong>系統負責人：</strong>需要接受訓練以執行必要審查</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：確效文件如同「體檢報告」</h4>
+                        <p>把確效文件想像成體檢報告：去年的體檢報告不會因為今年有了新的體檢標準就「失效」。舊報告仍然記錄了當時的身體狀況。只要在此期間有持續的健康管理（維護、校正、定期審查），就可以認定系統仍處於受控狀態。</p>
+                        <p>新方法就像更好的體檢問卷——它幫助你更精準地找出關鍵指標（CDEs）並驗證它們，但並不要求你把所有舊報告全部推翻重做。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         CHAPTER 14.2 — Preparing for Implementation
+         =================================================================== -->
+    <div class="chapter-section" id="sec-142">
+        <div class="chapter-divider">
+            <div class="chapter-badge">14.2</div>
+            <div class="chapter-info">
+                <h2>14.2 Preparing for Implementation</h2>
+                <p>Six suggested steps for implementation preparation | Page 107</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>14.2 Preparing for Implementation</h3>
+                    <p>The suggested steps for implementation preparation are described in more detail as follows:</p>
+                    <ol>
+                        <li>
+                            <strong>Define the organization approach:</strong><br>
+                            This Guide describes a suggested approach for organizations to adopt, but it may need to be tailored to fit the specific structure of the organization.
+                        </li>
+                        <li>
+                            <strong>Evaluate the organizational maturity:</strong><br>
+                            It is useful to perform a documented assessment of organizational maturity, considering the quality systems and GEP, to determine the degree and pace of organizational transition. The assessment should consider all relevant aspects (e.g., experience, personnel resources, organizational culture). Examples of criteria for relevant departments include:
+                            <ul>
+                                <li><em>Research and Development/Process Development:</em> Does this department have robust documentation and clear communication channels to provide data to enable the process?</li>
+                                <li><em>Quality:</em> Is the Quality Unit open to an alternative approach to C&amp;Q and to the different documentation deliverables?</li>
+                                <li><em>Engineering:</em> Is the engineering department ready to deliver documents per Good Documentation Practice? Do they have adequate change management systems in place? Is there adequate document storage?</li>
+                                <li><em>System Owners:</em> Are the system owners adequately trained to perform the necessary reviews?</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Develop an implementation plan:</strong><br>
+                            A critical requirement for successful implementation is to have a well-defined implementation strategy with support from senior management. The use of initial small-scale proof of concept projects can help to identify any program aspects that require augmentation for a specific organization.
+                        </li>
+                        <li>
+                            <strong>Develop supporting quality systems and associated procedures:</strong><br>
+                            The procedures defining the engineering, quality, and documentation standards, as covered in this Guide, should be developed.
+                        </li>
+                        <li>
+                            <strong>Train staff on the approach:</strong><br>
+                            An important aspect for implementation is to provide overview training and ensure there is a good understanding of the key concepts. Considerations should also be made for how to present the approach to regulatory inspectors.
+                        </li>
+                        <li>
+                            <strong>Train staff on the procedures:</strong><br>
+                            The relevant staff should be sufficiently trained on the new procedures and have a good understanding of the overall program and its goals.
+                        </li>
+                    </ol>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>六步驟準備框架</h4>
+                        <p>ISPE 提出六個實施準備步驟，本質上是一個組織成熟度評估與計畫制定的框架：</p>
+                        <ul>
+                            <li><strong>步驟 1：</strong>定義組織方法（客製化指引）</li>
+                            <li><strong>步驟 2：</strong>評估組織成熟度（從四個部門角度）</li>
+                            <li><strong>步驟 3：</strong>制定導入計畫（含試點專案）</li>
+                            <li><strong>步驟 4：</strong>建立支持性品質系統與 SOP</li>
+                            <li><strong>步驟 5：</strong>對方法論進行員工培訓</li>
+                            <li><strong>步驟 6：</strong>對具體程序進行員工培訓</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>組織成熟度評估的四個維度</h4>
+                        <p>步驟 2 的組織成熟度評估要從四個部門同時審視，任何一個短板都會影響整體導入：</p>
+                        <ul>
+                            <li><strong>研發/製程開發：</strong>科學知識是否有足夠的文件基礎？資訊傳遞通道是否順暢？</li>
+                            <li><strong>品質部門：</strong>是否願意接受「不一樣的文件交付物」？這需要品質部門的思維轉變。</li>
+                            <li><strong>工程部門：</strong>是否有足夠的 GDocP 文件能力？變更管理系統是否完善？</li>
+                            <li><strong>系統負責人：</strong>是否具備足夠訓練以執行審查？</li>
+                        </ul>
+                        <p>評估結果決定轉型的「程度與速度」——這是非常務實的考量，允許不同成熟度的組織以不同步調推進。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>試點專案（Pilot Project）的策略價值</h4>
+                        <p>步驟 3 特別強調「初始小規模概念驗證試點專案」的重要性。這如同軟體開發中的 MVP（最小可行產品）：</p>
+                        <ul>
+                            <li>在一個小型、低風險的系統上先行試跑</li>
+                            <li>找出組織特有的流程障礙</li>
+                            <li>獲得實際成果作為說服高階管理層的依據</li>
+                            <li>培養內部「先行者」成為方法論的推廣者</li>
+                        </ul>
+                        <p>建議選擇新購設備或下一個小型確效專案作為試點，而非從最複雜的關鍵系統開始。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習：如何說服高階管理層？</h4>
+                        <p>如果您需要向公司高階管理層提案採用 ISPE 2nd Ed. 方法，您會如何建構商業論述？提示：</p>
+                        <ul>
+                            <li>舊方法有哪些痛點（過度確效、文件冗余、成本過高）？</li>
+                            <li>新方法帶來哪些效益（聚焦關鍵、降低成本、符合稽查趨勢）？</li>
+                            <li>風險是什麼？如何降低風險（從試點專案開始）？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         CHAPTER 14.3 — Approaches for Implementation
+         =================================================================== -->
+    <div class="chapter-section" id="sec-143">
+        <div class="chapter-divider">
+            <div class="chapter-badge">14.3</div>
+            <div class="chapter-info">
+                <h2>14.3 Approaches for Implementation</h2>
+                <p>New projects, existing systems, and the champion model | Page 108</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>14.3 Approaches for Implementation</h3>
+                    <p>For new projects or facilities, the use of a <strong>champion</strong> for the new approach is recommended. This individual helps with the transition and implementation of the new approach and should have a good understanding of the process concepts/goals.</p>
+                    <p>While implementation is more straightforward for new systems (for which there are no existing procedures/documentation), organizations also need to determine how the approach can be applied to a change on an existing qualified system. The most cost-effective way for implementation of the risk-based approach is to <strong>supplement the legacy approach as gaps are identified or changes to the system are made</strong>, thus maximizing the use of existing documentation.</p>
+                    <p>A best practice approach would be to first assess if the system requires qualification — does the system have the potential to impact product quality? (see Chapter 3 for system classification criteria)</p>
+                    <ul>
+                        <li>If it does <strong>not</strong> have the potential to impact product quality, then recategorize the system and commission the changes.</li>
+                        <li>If it <strong>has</strong> the potential to impact product quality, then it requires qualification:
+                            <ul>
+                                <li>Review the existing documentation to determine if it meets current expectations.</li>
+                                <li>If it does not, then qualify the system using the new approach, and remediate any gaps identified.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Table 14.1 shows the typical situations that may arise when implementing the science and risk-based C&amp;Q approach within organizations with legacy systems, and the suggested approach.</p>
+                    <p><em>Refer to Chapter 28 (Appendix 14) for an organizational maturity model and Chapter 29 (Appendix 15) for an approach to qualifying legacy systems or systems with inadequate qualification.</em></p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>三種導入情境</h4>
+                        <p>ISPE 區分了三種情境，每種情境的導入路徑不同：</p>
+                        <ul>
+                            <li><strong>新系統（New System）：</strong>最直接，沒有現有文件包袱，從一開始就全面使用新方法。</li>
+                            <li><strong>既有系統 + 小幅改動（Minor Change）：</strong>最常見，以現有文件為基礎，僅針對變更部分補充新方法要求。</li>
+                            <li><strong>既有系統 + 重大改動（Major Change）：</strong>需要更全面地審查現有確效文件，找出差距並補充確效。</li>
+                        </ul>
+                        <p>核心策略：<strong>最大化利用現有文件</strong>，只在發現差距或系統發生變更時才補充。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「Champion」角色的重要性</h4>
+                        <p>ISPE 特別提到「champion」（方法論推廣者/倡導者）這個角色。在組織轉型中，這個人至關重要：</p>
+                        <ul>
+                            <li>深入理解 ISPE C&amp;Q 的概念與目標</li>
+                            <li>協助解決跨部門的阻力與誤解</li>
+                            <li>作為試點專案的技術主導</li>
+                            <li>建立組織的內部能力</li>
+                        </ul>
+                        <p>通常由資深工程師或品質保證人員擔任，最好曾接受 ISPE 培訓或有相關實際經驗。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>遺留系統的決策樹</h4>
+                        <p>面對遺留系統時，ISPE 提供了一個清晰的決策邏輯：</p>
+                        <ol>
+                            <li><strong>第一步：</strong>判斷系統是否有潛力影響產品品質？</li>
+                            <li><strong>如否：</strong>重新分類（可能降為 Indirect/No Impact），按 Commissioning 處理，不需要確效。</li>
+                            <li><strong>如是：</strong>需要確效 → 審查現有文件是否符合現行要求</li>
+                            <li><strong>文件符合：</strong>現有文件繼續有效，配合現有品質系統維護</li>
+                            <li><strong>文件不符合：</strong>使用新方法確效，並補救已識別的差距</li>
+                        </ol>
+                        <p>這個邏輯避免了「一刀切」的重新確效，同時確保法規合規性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         CHAPTER 14.4 — Table 14.1: Implementation Matrix
+         =================================================================== -->
+    <div class="chapter-section" id="sec-144">
+        <div class="chapter-divider">
+            <div class="chapter-badge">14.4</div>
+            <div class="chapter-info">
+                <h2>Table 14.1 — Suggested Approach for Implementation of Science and Risk-Based C&amp;Q</h2>
+                <p>Three-scenario matrix: Major Change / Minor Change / New System | Page 109</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>Table 14.1: Suggested Approach for Implementation of Science and Risk-Based C&amp;Q Approach</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Step</th>
+                                <th>Major Change<br><small>(major change to an existing qualified system or existing system with potential compliance gaps)</small></th>
+                                <th>Minor Change<br><small>(minor change to existing system with good qualification package)</small></th>
+                                <th>New System</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>URS</strong></td>
+                                <td>Review process requirements and gaps; identify CAs (based on risk) and proposed technical (CDEs) and procedural controls</td>
+                                <td>Requirements definition of the change control is required to describe the change</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Risk Assessment</strong></td>
+                                <td>Risk assessment is required to determine the impact of the change</td>
+                                <td>Risk assessment is required to determine the impact of the change</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DR/DQ</strong></td>
+                                <td>Review the design to ensure change requirements are met</td>
+                                <td>Review the design to ensure change requirements are met</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>C&amp;Q Plan</strong></td>
+                                <td>Develop the plan to describe the approach</td>
+                                <td>Content is typically included in the change control</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Test Plan</strong></td>
+                                <td>Develop the plan</td>
+                                <td>Content is typically contained in change control (depending on complexity of testing required)</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Testing</strong></td>
+                                <td>Review existing qualification documentation to confirm technical controls (CDEs) that were identified based on risk have been tested; supplement with additional testing if required; review procedures to confirm procedural controls are in place; update if required</td>
+                                <td>Required to address the change</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Procedures (operations and maintenance)</strong></td>
+                                <td>Revise to address the change as required</td>
+                                <td>Revise to address the change as required</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Acceptance and Release (Qualification Summary Report)</strong></td>
+                                <td>Required</td>
+                                <td>Recorded and approved through closeout of the change control</td>
+                                <td>Required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><em>Note: Any of these aspects may be combined depending on the magnitude and complexity of the project.</em></p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>Table 14.1 解讀：三種情境比較</h4>
+                        <p>這張表是第 14 章最核心的實務工具，清楚地說明了不同情境下的 C&amp;Q 文件要求差異：</p>
+                        <ul>
+                            <li><strong>新系統：</strong>全套文件均為「Required」——URS、SRA、DR/DQ、C&amp;Q Plan、Test Plan、Testing、程序文件、最終報告</li>
+                            <li><strong>小幅改動：</strong>大部分內容可以整合進「變更控制（Change Control）」文件，不需要獨立的完整確效文件包</li>
+                            <li><strong>重大改動：</strong>需要補充審查——重點是確認現有確效文件已涵蓋基於風險識別的 CDEs，如有不足則補充</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重大改動情境的關鍵動作：Gap Review</h4>
+                        <p>對於重大改動（Major Change），Table 14.1 的 Testing 欄位特別強調：</p>
+                        <ol>
+                            <li>審查現有確效文件，確認基於風險識別的 CDEs 已被測試</li>
+                            <li>如有不足，補充額外測試</li>
+                            <li>審查 SOP，確認程序性控制措施已就位</li>
+                            <li>如有需要，更新 SOP</li>
+                        </ol>
+                        <p>這種「差距審查（Gap Review）」方式比全面重做更有效率，也是 ISPE 推薦的遺留系統處理方式。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 實務應用：三類系統的分類處理策略</h4>
+                        <p>對於一家中型 CDMO，建議按以下方式將現有設備分類處理：</p>
+                        <ul>
+                            <li><strong>A 類（新購設備）：</strong>全面導入 ISPE 2nd Ed. 方法，從 URS 開始即採用風險基礎分類與 SRA</li>
+                            <li><strong>B 類（既有設備 + 計畫變更）：</strong>在下一次變更控制時，附帶執行「Gap Review」，審查是否有未被涵蓋的 CDEs</li>
+                            <li><strong>C 類（既有設備 + 無計畫變更）：</strong>在下一次定期審查（Periodic Review）時評估現有文件的充分性，記錄評估結論</li>
+                        </ul>
+                        <p>這種分類方式確保資源集中在最有價值的地方，同時逐步完成全廠系統的方法論轉型。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         APPENDIX 1 — Regulatory Basis (Overview)
+         =================================================================== -->
+    <div class="chapter-section" id="sec-app1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">App.1</div>
+            <div class="chapter-info">
+                <h2>Chapter 15 / Appendix 1: Regulatory Basis</h2>
+                <p>Key regulatory citations supporting the ISPE C&amp;Q approach | Pages 111–122</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>15. Appendix 1 — Regulatory Basis</h3>
+                    <p>This Guide is intended to assist organizations in achieving compliance with regulatory expectations regarding C&amp;Q. This appendix references key regulatory and guidance documents, highlighting text associated with the topics covered in each chapter of this Guide.</p>
+                    <p>These lists are not intended to be all inclusive. It is recognized that there are ongoing developments with regulatory guidelines and this Guide reflects an understanding of them as of the publication date.</p>
+
+                    <h4>Primary Regulatory References</h4>
+                    <p>The regulatory expectations for C&amp;Q are primarily described in the following documents:</p>
+                    <ul>
+                        <li><strong>EU GMP Annex 15</strong> Qualification and Validation (October 2015)</li>
+                        <li><strong>PIC/S Annex 15</strong> Qualification and validation (July 2018) — identical to EU GMP Annex 15 from Version 12</li>
+                        <li><strong>US FDA</strong> Guidance for Industry: Process Validation: General Principles and Practices (January 2011)</li>
+                        <li><strong>ICH Q8</strong> Pharmaceutical Development (August 2009)</li>
+                        <li><strong>ICH Q9</strong> Quality Risk Management (November 2005)</li>
+                        <li><strong>ICH Q10</strong> Pharmaceutical Quality System (June 2008)</li>
+                        <li>EU GMP Annex 3 (Radiopharmaceuticals)</li>
+                        <li>EU GMP Annex 11 (Computerised Systems)</li>
+                    </ul>
+                    <p><em>Note: ASTM E2500-13 is consistent with the regulatory references and provides additional clarity on the topics of this Guide.</em></p>
+
+                    <h4>Key Regulatory Citations — Chapter 1 (Introduction)</h4>
+                    <div class="quote-box">"The CGMP regulations require that manufacturing processes be designed and controlled to assure that in-process materials and the finished product meet predetermined quality requirements and do so consistently and reliably." [FDA Process Validation Guidance 2011]</div>
+                    <div class="quote-box">"A quality risk management approach should be applied throughout the lifecycle of a medicinal product. As part of a quality risk management system, decisions on the scope and extent of qualification and validation should be based on a justified and documented risk assessment of the facilities, equipment, utilities and processes." [EU GMP Annex 15]</div>
+                    <div class="quote-box">"Quality by Design (QbD): A systematic approach to development that begins with predefined objectives and emphasizes product and process understanding and process control, based on sound science and quality risk management." [ICH Q8]</div>
+
+                    <h4>Key Regulatory Citations — Chapter 2 (URS)</h4>
+                    <div class="quote-box">"The specification for equipment, facilities, utilities or systems should be defined in a URS and/or a functional specification. The essential elements of quality need to be built in at this stage and any GMP risks mitigated to an acceptable level. The URS should be a point of reference throughout the validation life cycle." [EU GMP Annex 15]</div>
+
+                    <h4>Key Regulatory Citations — Chapter 4 (Risk Assessment)</h4>
+                    <div class="quote-box">"With a lifecycle approach to process validation that employs risk based decision making throughout that lifecycle, the perception of criticality as a continuum rather than a binary state is more useful. All attributes and parameters should be evaluated in terms of their roles in the process and impact on the product or in-process material, and reevaluated as new information becomes available." [FDA Process Validation Guidance 2011]</div>
+                    <div class="quote-box">"The level of effort, formality and documentation of the quality risk management process should be commensurate with the level of risk." [ICH Q9]</div>
+
+                    <h4>Key Regulatory Citations — Chapter 6 (C&amp;Q Planning)</h4>
+                    <div class="quote-box">"Project plans, along with the full support of senior management, are essential elements for success." [FDA Process Validation Guidance 2011]</div>
+                    <div class="quote-box">"The key elements of the site qualification and validation programme should be clearly defined and documented in a validation master plan (VMP) or equivalent document." [EU GMP Annex 15]</div>
+
+                    <h4>Key Regulatory Citations — Chapter 8 (Acceptance and Release)</h4>
+                    <div class="quote-box">"A formal release for the next stage in the qualification and validation process should be authorised by the relevant responsible personnel either as part of the validation report approval or as a separate summary document." [EU GMP Annex 15]</div>
+
+                    <h4>Key Regulatory Citations — Chapter 9 (Periodic Review)</h4>
+                    <div class="quote-box">"Equipment, facilities, utilities and systems should be evaluated at an appropriate frequency to confirm that they remain in a state of control." [EU GMP Annex 15]</div>
+                    <div class="quote-box">"Once established, qualification status must be maintained through routine monitoring, maintenance, and calibration procedures and schedules (21 CFR part 211, subparts C and D)." [FDA Process Validation Guidance 2011]</div>
+
+                    <h4>Key Regulatory Citations — Chapter 12 (Change Management)</h4>
+                    <div class="quote-box">"Quality risk management should be used to evaluate planned changes to determine the potential impact on product quality, pharmaceutical quality systems, documentation, validation, regulatory status, calibration, maintenance and on any other system to avoid unintended consequences." [EU GMP Annex 15]</div>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>Appendix 1 的作用：法規基礎的「對應表」</h4>
+                        <p>Appendix 1 逐章列出 ISPE C&amp;Q 方法與主要法規的對應引用，其核心訊息是：<strong>ISPE C&amp;Q 方法並非更寬鬆的替代品，而是法規期望的體現。</strong></p>
+                        <p>這份對應表的戰略意義在於：當稽查員質疑新方法的合規性時，可以直接引用這些法規原文作為依據。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>主要法規文件解析</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>法規文件</th>
+                                    <th>全名與重點</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>EU GMP Annex 15</strong></td>
+                                    <td>歐盟 GMP 附錄 15（確效與驗證，2015）— 最詳細的 IQ/OQ/PQ 要求，是歐盟市場的核心法規</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FDA PV Guidance 2011</strong></td>
+                                    <td>美國 FDA 製程驗證指引（2011）— 引入生命週期方法，支持科學與風險基礎方法</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ICH Q8</strong></td>
+                                    <td>藥品開發（QbD 的概念來源）— 將科學設計原則帶入 C&amp;Q</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ICH Q9</strong></td>
+                                    <td>品質風險管理（QRM）— 提供風險評估框架，是 SRA 的法規基礎</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ICH Q10</strong></td>
+                                    <td>藥品品質系統（PQS）— 生命週期方法與知識管理的法規基礎</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>21 CFR 210/211</strong></td>
+                                    <td>美國 cGMP 法規（藥品製造與管制的基本要求）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵法規訊息解讀</h4>
+                        <p>Appendix 1 中有幾段引文特別值得注意：</p>
+                        <ul>
+                            <li><strong>「風險程度相稱原則」（ICH Q9）：</strong>品質風險管理的力度、正式程度和文件要求，應與風險程度相稱。這直接支持了 ISPE 的比例原則——低風險系統不需要過度確效。</li>
+                            <li><strong>「連續而非二元」（FDA 2011）：</strong>FDA 明確指出，關鍵性是一個「連續體」而非「非此即彼的二元狀態」。這為 CDEs 的風險分級提供了法規支持。</li>
+                            <li><strong>「高階管理層的支持」（FDA 2011）：</strong>FDA 直接在法規指引中提到，「專案計畫以及高階管理層的全力支持是成功的關鍵要素」。</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：法規是地圖，ISPE 是導航</h4>
+                        <p>把主要法規（FDA、EU GMP Annex 15、ICH）想像成「地圖」：它們說明了你需要到達的目的地（確保品質、管理風險、生命週期管理），但沒有詳細說明如何開車。</p>
+                        <p>ISPE C&amp;Q 指引就像「導航系統」：它根據地圖規劃出一條具體、高效的路線。Appendix 1 就是在確認這條路線確實通往法規要求的目的地，沒有走捷徑，也沒有繞遠路。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         APPENDIX 1 — Chapter 14 Regulatory Basis (specific)
+         =================================================================== -->
+    <div class="chapter-section" id="sec-app1-ch14">
+        <div class="chapter-divider">
+            <div class="chapter-badge">15.14</div>
+            <div class="chapter-info">
+                <h2>15.14 Regulatory Basis for Chapter 14 (Implementation)</h2>
+                <p>Regulatory grounding for the implementation strategy itself | Page 122</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>15.14 Chapter 14: Implementation of Science and Risk-Based C&amp;Q Process</h3>
+                    <p>Regulatory guidance highlights the importance of product quality risk management and risk assessment to determine the scope and extent of qualification as described in the following regulatory text:</p>
+                    <div class="quote-box">
+                        "A quality risk management approach should be applied throughout the lifecycle of a medicinal product. As part of a quality risk management system, decisions on the scope and extent of qualification and validation should be based on a justified and documented risk assessment of the facilities, equipment, utilities and processes." [EU GMP Annex 15]
+                    </div>
+                    <p>The entire framework of Chapter 14's implementation strategy is underpinned by this single principle: the scope and extent of C&amp;Q activities should be proportionate to risk, determined by a justified and documented risk assessment. This applies equally to the decision of how to implement the new approach — whether for new systems, existing systems with minor changes, or existing systems requiring major remediation.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>法規授權：以風險決定 C&amp;Q 的範圍與程度</h4>
+                        <p>第 14 章的法規基礎只有一段核心引文，但這段話實際上授權了整個 ISPE 方法論的核心邏輯：</p>
+                        <p><strong>「確效的範圍與程度，應基於有正當理由且有文件記錄的風險評估。」</strong></p>
+                        <p>這意味著：</p>
+                        <ul>
+                            <li>不是所有系統都需要完整的 IQ/OQ/PQ</li>
+                            <li>不是所有測試都需要相同的嚴格程度</li>
+                            <li>這不是在放寬標準——而是在更準確地將資源聚焦在真正重要的地方</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>給稽查準備的核心論述</h4>
+                        <p>如果在 FDA 或 EMA 稽查中被質疑「為何你的確效文件與傳統 IQ/OQ/PQ 格式不同？」，正確的回應論述是：</p>
+                        <ol>
+                            <li>我們遵循 EU GMP Annex 15（或 FDA Process Validation Guidance）的要求</li>
+                            <li>法規明確要求以有文件記錄的風險評估來決定確效的範圍與程度</li>
+                            <li>我們的方法（ISPE C&amp;Q）正是該法規期望的體現</li>
+                            <li>我們的 SRA 文件（系統風險評估）就是「有正當理由且有文件記錄的風險評估」</li>
+                        </ol>
+                        <p>這個論述將方法論的合法性建立在法規原文之上，而非僅依賴 ISPE 指引本身的權威性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         APPENDIX OVERVIEW TABLE
+         =================================================================== -->
+    <div class="chapter-section" id="sec-appoverview">
+        <div class="chapter-divider">
+            <div class="chapter-badge">App.</div>
+            <div class="chapter-info">
+                <h2>Overview of Key Appendices (Chapters 15–31)</h2>
+                <p>Summary of all appendices in ISPE Baseline Vol.5 C&amp;Q 2nd Ed.</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>Appendices Overview Table</h3>
+                    <p>The following appendices are referenced throughout the ISPE Baseline Guide Vol.5 Commissioning and Qualification (2nd Edition). Each appendix provides example templates, forms, or reference material to support the implementation of the C&amp;Q process described in Chapters 1–14.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Appendix</th>
+                                <th>Chapter</th>
+                                <th>Topic</th>
+                                <th>Primary Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Appendix 1</strong></td>
+                                <td>Ch. 15</td>
+                                <td>Regulatory Basis</td>
+                                <td>Map ISPE approach to FDA, EU GMP Annex 15, ICH Q8/Q9/Q10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 2</strong></td>
+                                <td>Ch. 16</td>
+                                <td>Example URS Template</td>
+                                <td>Template for User Requirements Specification with example requirements (good/bad)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 3</strong></td>
+                                <td>Ch. 17</td>
+                                <td>Example System Classification Form</td>
+                                <td>Form for classifying systems as Direct / Indirect / No Impact</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 4</strong></td>
+                                <td>Ch. 18</td>
+                                <td>Example Direct Impact Systems List</td>
+                                <td>Sample list of systems typically classified as Direct Impact</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 5</strong></td>
+                                <td>Ch. 19</td>
+                                <td>Example System Risk Assessment</td>
+                                <td>Template for System Risk Assessment (SRA) identifying CDEs and CAs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 6</strong></td>
+                                <td>Ch. 20</td>
+                                <td>Example DR/DQ Summary</td>
+                                <td>Template for Design Review and Design Qualification summary</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 7</strong></td>
+                                <td>Ch. 21</td>
+                                <td>C&amp;Q Planning Support</td>
+                                <td>Planning tools and templates for C&amp;Q programs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 8</strong></td>
+                                <td>Ch. 22</td>
+                                <td>Example C&amp;Q Test Documents</td>
+                                <td>Example test protocol and report templates for commissioning and qualification testing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 9</strong></td>
+                                <td>Ch. 23</td>
+                                <td>Example Discrepancy Form</td>
+                                <td>Form for recording and resolving test discrepancies/deviations during C&amp;Q execution</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 11</strong></td>
+                                <td>Ch. 25</td>
+                                <td>Example Periodic Review Form</td>
+                                <td>Form for conducting periodic reviews to confirm continued qualified state</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 13</strong></td>
+                                <td>Ch. 27</td>
+                                <td>Example Vendor Assessment</td>
+                                <td>Template for assessing vendor documentation and C&amp;Q capabilities</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 14</strong></td>
+                                <td>Ch. 28</td>
+                                <td>Organizational Maturity Model</td>
+                                <td>Framework for assessing organizational readiness for science/risk-based C&amp;Q</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 15</strong></td>
+                                <td>Ch. 29</td>
+                                <td>Legacy System Qualification Approach</td>
+                                <td>Guidance for qualifying legacy systems or systems with inadequate qualification documentation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Appendix 17</strong></td>
+                                <td>Ch. 31</td>
+                                <td>Expanded Definitions</td>
+                                <td>Comprehensive glossary of terms used throughout the Guide</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>導讀與解析</h3>
+
+                    <div class="concept-box">
+                        <h4>附錄體系的整體架構</h4>
+                        <p>ISPE Vol.5 的附錄體系（Appendix 1–17）提供了完整的「工具箱」，對應主體各章節：</p>
+                        <ul>
+                            <li><strong>法規依據類（App.1）：</strong>提供合規論述的法規引文基礎</li>
+                            <li><strong>文件模板類（App.2, 3, 5, 6, 7, 8, 9, 11, 13）：</strong>可直接修改使用的 SOP 表格與模板</li>
+                            <li><strong>參考清單類（App.4）：</strong>提供典型 Direct Impact 系統清單供參考</li>
+                            <li><strong>成熟度評估類（App.14）：</strong>用於評估組織轉型準備度</li>
+                            <li><strong>遺留系統專用類（App.15）：</strong>專門處理遺留系統確效問題</li>
+                            <li><strong>術語定義類（App.17）：</strong>確保全組織使用一致的術語</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>最重要的附錄：App.2（URS）與 App.5（SRA）</h4>
+                        <p>從實務角度，新導入 ISPE 方法的組織最常使用的兩個附錄：</p>
+                        <ul>
+                            <li><strong>Appendix 2（URS 模板）：</strong>提供完整的 URS 文件格式，包含「合適」與「不合適」需求的範例說明，非常有教學價值。例如，純粹的工程規格（如 HMI 解析度）不應寫在 URS 中。</li>
+                            <li><strong>Appendix 5（SRA 模板）：</strong>系統風險評估是 ISPE 方法的核心工具，決定了哪些系統元件是 CDEs，進而決定確效測試的範圍。有了標準模板可以確保評估的一致性。</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 導入路線圖：從零到全面導入的 12 個月計畫</h4>
+                        <p>建議中型 CDMO 按以下時程推進 ISPE 2nd Ed. 導入：</p>
+                        <ul>
+                            <li><strong>月 1-2：</strong>組織準備 — 指定 Champion、完成組織成熟度評估（App.14）、高階管理層簡報</li>
+                            <li><strong>月 3-4：</strong>SOP 建立 — 依據本指引修訂確效主計畫（VMP）、制定系統分類 SOP、SRA SOP</li>
+                            <li><strong>月 5-6：</strong>試點專案 — 選定一個新購設備，全程採用 ISPE 方法（URS → SRA → DR → C&amp;Q）</li>
+                            <li><strong>月 7-8：</strong>稽查準備 — 整理法規對應文件（App.1 引文）、培訓稽查應對話術</li>
+                            <li><strong>月 9-12：</strong>全面推廣 — 對所有新系統採用新方法；對既有系統在下次 Periodic Review 或變更時按 Table 14.1 處理</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>附錄如同「標準套件」</h4>
+                        <p>把 ISPE 附錄體系想像成一個品質管理「標準套件」，類似 ISO 9001 的文件模板包。你不需要從頭發明文件格式，只需要按照組織需求客製化這些模板，再加上適當的版本控制與審核流程，即可建立符合 ISPE 標準的 C&amp;Q 文件體系。</p>
+                        <p>對於資源有限的中小型製造商或 CDMO，直接使用這些模板可以節省大量的文件開發時間，並確保符合業界最佳實踐。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full CDMO Implementation Commentary -->
+            <div class="two-column" style="margin-top: 1.5rem;">
+                <div class="left-column">
+                    <h3>Implementation Summary: The ISPE Vol.5 Complete Lifecycle</h3>
+                    <p>This section represents the culmination of the ISPE Baseline Guide Vol.5 Commissioning and Qualification (2nd Edition). The Guide has described a complete, science and risk-based framework for C&amp;Q that:</p>
+                    <ul>
+                        <li>Starts with understanding intended use (URS, Chapter 2)</li>
+                        <li>Classifies systems by GMP impact (Chapter 3)</li>
+                        <li>Uses risk assessment to scope qualification activities (Chapter 4)</li>
+                        <li>Reviews and qualifies design (Chapter 5)</li>
+                        <li>Plans C&amp;Q activities systematically (Chapter 6)</li>
+                        <li>Executes testing based on risk-identified CDEs (Chapter 7)</li>
+                        <li>Formally accepts and releases qualified systems (Chapter 8)</li>
+                        <li>Maintains qualified state through periodic review (Chapter 9)</li>
+                        <li>Leverages vendor data appropriately (Chapter 10)</li>
+                        <li>Ensures engineering quality throughout (Chapter 11)</li>
+                        <li>Manages changes systematically (Chapter 12)</li>
+                        <li>Documents everything per GDocP (Chapter 13)</li>
+                        <li>Implements strategically with legacy consideration (Chapter 14)</li>
+                    </ul>
+                    <p>All of this is underpinned by regulatory expectations from FDA, EU GMP Annex 15, and ICH Q8/Q9/Q10, as documented in Appendix 1 (Chapter 15).</p>
+                </div>
+                <div class="right-column">
+                    <h3>完整學習旅程回顧</h3>
+
+                    <div class="concept-box">
+                        <h4>ISPE Vol.5 全章節學習地圖</h4>
+                        <p>完成本節的學習後，您已掌握 ISPE Baseline Vol.5 的完整框架：</p>
+                        <table>
+                            <thead>
+                                <tr><th>章節</th><th>主題</th><th>核心工具</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Ch.1-3</td><td>基礎概念 + 系統分類</td><td>Direct/Indirect/No Impact 分類</td></tr>
+                                <tr><td>Ch.4</td><td>系統風險評估</td><td>SRA → CDEs 識別</td></tr>
+                                <tr><td>Ch.5</td><td>設計審查與設計確效</td><td>DR/DQ → 設計驗證</td></tr>
+                                <tr><td>Ch.6</td><td>C&amp;Q 規劃</td><td>VMP / C&amp;Q Plan</td></tr>
+                                <tr><td>Ch.7-8</td><td>測試、文件、接受放行</td><td>Test Protocol / Qualification Report</td></tr>
+                                <tr><td>Ch.9</td><td>定期審查</td><td>Periodic Review Form</td></tr>
+                                <tr><td>Ch.10-11</td><td>廠商管理、工程品質</td><td>Vendor Assessment</td></tr>
+                                <tr><td>Ch.12-13</td><td>變更管理、GDocP</td><td>Change Control + 文件完整性</td></tr>
+                                <tr><td>Ch.14</td><td>導入策略</td><td>Table 14.1 三情境矩陣</td></tr>
+                                <tr><td>App.1 (Ch.15)</td><td>法規基礎</td><td>FDA / EU Annex 15 / ICH 引文</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>最終綜合應用練習</h4>
+                        <p>假設您是一家 CDMO 的驗證部門主管，剛收到以下三個任務，請根據 Table 14.1 判斷各應採用哪種方法：</p>
+                        <ol>
+                            <li>公司新購入一台全自動灌裝機，尚未安裝。</li>
+                            <li>既有凍乾機（15 年前做過 IQ/OQ/PQ）需要更換一個冷凝器，屬於非設計變更的同規格替換。</li>
+                            <li>既有 WFI 系統計畫擴建新的分配迴路，新增 3 個使用點。</li>
+                        </ol>
+                        <p><strong>提示：</strong>情境 1 = 新系統；情境 2 = 小幅改動；情境 3 = 重大改動（重新評估 URS 和 SRA）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Baseline Guide Vol.5: Commissioning and Qualification, 2nd Edition (2019)</p>
+    <p>Chapter 14: Strategies for Implementation | Appendix 1: Regulatory Basis | Appendices Overview</p>
+    <p style="font-size: 0.8rem; opacity: 0.7;">For individual use only. &copy; Copyright ISPE 2019. All rights reserved. Educational commentary in Traditional Chinese added for learning purposes.</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">&#8679;</button>
+
+<script>
+// Back to top visibility
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>

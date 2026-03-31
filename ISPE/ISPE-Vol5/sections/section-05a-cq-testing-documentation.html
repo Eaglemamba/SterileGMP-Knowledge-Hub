@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISPE Vol.5 Chapter 7 Part 1 — C&Q Testing and Documentation</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES — ISPE Green Override ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER — Green gradient ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.left-column h4 {
+    color: #2e7d32;
+    margin: 0.8rem 0 0.5rem;
+    font-size: 0.95rem;
+}
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column {
+    background: #f0fff4;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3 {
+    color: #1a3a2a;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.5rem 0 0.75rem 1.5rem; font-size: 0.93rem; }
+.right-column li { margin-bottom: 0.4rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+.right-column .column-header { color: #1a3a2a; }
+
+/* ===== KEY TERMS ===== */
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .term-box,
+.key-term-box, .key-point-box, .highlight-box, .practice-box, .application-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4,
+.practice-box h3, .practice-box h4,
+.application-box h3, .application-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .term-box p,
+.key-term-box p, .key-point-box p, .highlight-box p, .practice-box p, .application-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.term-box ul, .term-box ol,
+.practice-box ul, .practice-box ol,
+.application-box ul, .application-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li,
+.term-box li, .practice-box li, .application-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Green concept box */
+.concept-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+
+/* Yellow analogy box */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* Orange note box */
+.note-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4 { color: #c65102 !important; }
+
+/* Blue practice box */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+}
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; }
+
+/* Blue application box */
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION SUMMARY (yellow) ===== */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.55rem 0.7rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600;
+    color: #1a3a2a;
+    font-size: 0.84rem;
+}
+tr:nth-child(even) { background: #f7faf7; }
+.table-caption {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1a3a2a;
+    margin-bottom: 0.4rem;
+    padding: 0.4rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #ffe0cc; color: #7a3300; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: #27ae60; color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ===== SECTION HEADER ===== -->
+<div class="header">
+    <h1>ISPE Baseline® Guide Vol.5 — Commissioning and Qualification (2nd Edition)</h1>
+    <div class="subtitle">Chapter 7 Part 1: C&amp;Q Testing and Documentation</div>
+    <div class="page-info">pp. 49–56 &nbsp;|&nbsp; Sections 7.1 – 7.3.2.1</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>📚 本節學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 C&amp;Q 測試的整體方法與範疇——從設計階段起始、以系統驗收結束，靜態與動態測試的分工。</li>
+            <li>掌握七大測試原則（工程驅動、預定義標準、培訓、見證要求、供應商評估、變更管理、偏差管理），並能在實務中套用。</li>
+            <li>理解品保單位（Quality Unit）在 CDE 測試文件中的四種監督模式，以及多功能 C&amp;Q 團隊的四個角色定位。</li>
+            <li>掌握移交文件包（TOP）的目的、15 項典型內容與格式要求，以及「先期交貨檢查（PDI）」的時機與價值。</li>
+            <li>能運用 Table 7.2 判斷不同設備類型（高壓滅菌器、HVAC、凍乾機、秤量器、WFI 製造/分配）應採用哪些測試/檢查文件組合。</li>
+        </ol>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec71">7.1 Introduction</a>
+            <a href="#sec711">7.1.1 Approach &amp; Scope</a>
+            <a href="#sec712">7.1.2 Principles/Concepts</a>
+            <a href="#sec713">7.1.3 QU Oversight</a>
+            <a href="#sec714">7.1.4 Roles &amp; Responsibilities</a>
+            <a href="#sec72">7.2 Prerequisites</a>
+            <a href="#sec721">7.2.1 Planning</a>
+            <a href="#sec722-725">7.2.2–7.2.5</a>
+            <a href="#sec73">7.3 Execution</a>
+            <a href="#sec731">7.3.1 Vendor &amp; Construction Docs</a>
+            <a href="#sec7311">7.3.1.1 TOPs</a>
+            <a href="#sec7312">7.3.1.2 Cleaning</a>
+            <a href="#sec732">7.3.2 Installation Testing</a>
+            <a href="#sec7321">7.3.2.1 PDIs</a>
+            <a href="#summary">Section Summary</a>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.1 INTRODUCTION
+    ========================================================== -->
+    <div class="chapter-section" id="sec71">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.1</div>
+            <div class="chapter-info">
+                <h2>Introduction</h2>
+                <p>Purpose and safety scope of C&amp;Q testing</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>This chapter provides guidance on <span class="key-term">C&amp;Q testing</span> and inspection activities and associated documentation for recording the results of the testing/inspection. The goal of testing and inspection is to confirm that the system has been installed and operates to meet the requirements.</p>
+                    <p>Although this chapter provides some general guidance on the safety aspects (e.g., pre-start-up checks), the specific requirements for safety aspects and any local requirements (e.g., signage, access control, equipment protection, Material Safety Data Sheets) are outside the scope of this Guide. It is the responsibility of the system designer to produce a system that is compliant with any related local regulations.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📌 核心目標</h4>
+                        <p>本章聚焦於「測試與檢查」本身及其記錄文件。終極目標簡潔明確：<strong>確認系統已按規範安裝，且能按要求運作</strong>。</p>
+                        <p>安全面向（如標示、門禁、MSDS）屬各地法規管轄，不在本指南討論範圍內——這是 ISPE 指南常見的「範疇劃定」做法，讀者應特別留意。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>💡 比喻說明</h4>
+                        <p>C&amp;Q 測試就像新房屋的「竣工驗收」——水電管線有沒有接對、門窗能不能關緊、消防設備是否達標。「安裝符合規範」是 IQ 的任務，「運作符合要求」是 OQ/PQ 的任務，兩者都要有書面記錄才算完成。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.1.1 APPROACH AND SCOPE
+    ========================================================== -->
+    <div class="chapter-section" id="sec711">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.1.1</div>
+            <div class="chapter-info">
+                <h2>Approach and Scope</h2>
+                <p>From design to release — static, dynamic, integrated system testing</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p><span class="key-term">C&amp;Q testing and documentation</span> starts as early as design and ends with the acceptance and release of the system to the end-user. The process includes planning, document review, and <span class="key-term">static and dynamic testing</span> of the installation, function, and performance, including testing of any defined worst-case scenarios.</p>
+                    <p>The requirements and stage of the testing/inspection should be predefined in the planning phase to avoid duplication of testing. Testing should only be repeated if necessary. For example, retesting may be necessary if there are changes that may impact a test result, e.g., differing utilities or disconnecting equipment and control systems after FAT to facilitate shipping.</p>
+                    <p>For systems where the automation is an integral part of the system (typical for manufacturing equipment, e.g., WFI storage and distribution system with a dedicated control panel), the entire system is tested as an <span class="key-term">integrated system</span> comprising the mechanical, electrical, and associated automation.</p>
+                    <p>The scope of testing varies depending on the project scope, but for a new process area would include facilities, utilities, manufacturing equipment and their associated automation or process control systems.</p>
+                    <p>Testing activities and rigor will depend on the type of system (e.g., manufacturing, automated, utilities), potential to impact product quality, and on the project (e.g., green field, brown field, relocation, stick-built, modular, off-the-shelf system).</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📐 靜態 vs 動態測試</h4>
+                        <ul>
+                            <li><strong>靜態測試（Static Testing）</strong>：文件審查、圖面核對、材料符合性驗證——設備「靜止」狀態下的確認。</li>
+                            <li><strong>動態測試（Dynamic Testing）</strong>：設備實際運轉，測試功能表現與最壞情境——設備「動起來」的確認。</li>
+                        </ul>
+                        <p>兩者都是 C&amp;Q 的一部分，不可偏廢。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>⚠️ 重點：避免重複測試</h4>
+                        <p>計劃階段預先定義測試要求，是節省成本的關鍵。但以下情況<strong>必須</strong>重新測試：</p>
+                        <ul>
+                            <li>FAT 後設備拆解出廠（斷開自控系統）</li>
+                            <li>現場公用設施規格與原設計不符</li>
+                            <li>任何可能影響測試結果的後續變更</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box">
+                        <h4>🔗 整合系統測試</h4>
+                        <p>WFI 分配系統（機械管路 + 電氣 + SCADA）必須作為一個整體來測試，不能只驗機械部分，因為控制邏輯才是實際運作的核心。ISPE 特別強調此點，因為工廠往往分包機械承包商與自動化承包商，容易出現「各自測試、整合漏洞」的問題。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>💡 Green field vs Brown field</h4>
+                        <ul>
+                            <li><strong>Green field</strong>（綠地）：全新廠址，從零開始建設</li>
+                            <li><strong>Brown field</strong>（棕地）：既有廠址改建或擴建，舊有設備與新建工程並存</li>
+                            <li><strong>Modular / Off-the-shelf</strong>：模組化採購或現成設備，測試深度相對較低</li>
+                        </ul>
+                        <p>專案類型直接影響測試嚴格程度（rigor）的設定。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.1.2 PRINCIPLES/CONCEPTS
+    ========================================================== -->
+    <div class="chapter-section" id="sec712">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.1.2</div>
+            <div class="chapter-info">
+                <h2>Principles / Concepts</h2>
+                <p>Seven foundational principles for C&amp;Q testing — with Tables 7.1 &amp; 7.2</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>The C&amp;Q testing and documentation approach described in this Guide is based on the following principles:</p>
+                    <ul>
+                        <li>Testing is an <span class="key-term">engineering driven</span> activity that produces the documented evidence that the installation and operation meet the requirements</li>
+                        <li>Documentation standards need to be predefined (see Chapter 13)</li>
+                        <li>Training on the documentation standards need to be completed</li>
+                        <li>Test witness and the associated notification requirements need to be predefined</li>
+                        <li>Where vendor data will be used to support qualification, a <span class="key-term">vendor assessment</span> needs to be performed (see Chapter 10)</li>
+                        <li>System changes need to be managed through <span class="key-term">Engineering Change Management</span> after approval of the design (see Chapter 12)</li>
+                        <li>The process used to manage test failures needs to be predefined (see Section 7.4)</li>
+                    </ul>
+                    <p>GEP should be defined and applied to all phases of C&amp;Q to provide a high degree of assurance that the system meets user requirements while being cost-effective, compliant with regulations, and appropriately documented.</p>
+                    <p>Organizations/sites may use different terminology and deliverables for C&amp;Q testing/inspection. Table 7.1 provides a comparison of the documentation terminology and Table 7.2 provides example options for inspection/test record documents depending on the system type.</p>
+
+                    <!-- TABLE 7.1 -->
+                    <p class="table-caption">Table 7.1: C&amp;Q Testing and Inspection — Documentation Terminology Comparison</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Document Type</th>
+                                <th>Description / Context</th>
+                                <th>Oversight Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Document Reviews</strong></td>
+                                <td>Confirming that the testing/inspection has been carried out and is recorded per agreed Good Documentation Practices standards (e.g., material certifications, vendor documentation)</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FAT / SAT</strong></td>
+                                <td>Testing to demonstrate that a system meets established design requirements and contractual obligations</td>
+                                <td>Vendor involvement and technical oversight</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Testing and Balancing Reports</strong></td>
+                                <td>Testing to demonstrate that a system meets established design requirements</td>
+                                <td>Technical oversight</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Qualification (CAs/CDEs)</strong></td>
+                                <td>Testing to demonstrate that the CAs/CDEs meet established design requirements</td>
+                                <td>Quality Unit oversight</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- TABLE 7.2 -->
+                    <p class="table-caption">Table 7.2: Example Options for Testing/Inspection Record Documents</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>System Type</th>
+                                <th>Option 1</th>
+                                <th>Option 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Autoclave</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>FAT</li>
+                                        <li>SAT</li>
+                                        <li>Cycle Development</li>
+                                        <li>PQ</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>FAT</li>
+                                        <li>Installation and Operational Testing Summary</li>
+                                        <li>Cycle Development</li>
+                                        <li>PQ</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>HVAC</strong><br><small>(Air Handling Unit up to the final filters)</small></td>
+                                <td>
+                                    <ul>
+                                        <li>Turnover Package</li>
+                                        <li>Testing and Balancing Report</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Turnover Package</li>
+                                        <li>Commissioning</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lyophilization</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>FAT</li>
+                                        <li>SAT</li>
+                                        <li>Cycle Development</li>
+                                        <li>PQ</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>FAT</li>
+                                        <li>Commissioning</li>
+                                        <li>Cycle Development</li>
+                                        <li>Installation and Operational Testing Summary</li>
+                                        <li>PQ</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scale</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Receipt Inspection</li>
+                                        <li>Calibration Report</li>
+                                        <li>Installation Testing Summary</li>
+                                    </ul>
+                                </td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>WFI Generation</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>FAT</li>
+                                        <li>SAT</li>
+                                        <li>PQ<sup>1</sup></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>SAT</li>
+                                        <li>PQ<sup>1</sup></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>WFI Distribution</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Turnover Package</li>
+                                        <li>PQ<sup>1</sup>*</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Turnover Package</li>
+                                        <li>Receipt Inspection</li>
+                                        <li>Operational Testing Summary</li>
+                                        <li>PQ<sup>1</sup></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><small>*PQ1 refers to the initial stage of PQ used to demonstrate that the water from the use points meets the specifications. It is completed before the system is used for production.</small></p>
+                    <p>Other documentation required to support acceptance and release (e.g., drawings and procedures) is managed through other processes (see Chapter 8).</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📋 七大 C&amp;Q 測試原則</h4>
+                        <ol>
+                            <li><strong>工程驅動（Engineering Driven）</strong>：測試是工程活動，產生文件化證據——不是品保「事後審查」，而是工程實作的一部分。</li>
+                            <li><strong>預定義文件標準</strong>：測試前必須確立文件規範（格式、簽名要求等），防止後期補救。</li>
+                            <li><strong>培訓先行</strong>：執行測試前，相關人員需完成文件標準的培訓。</li>
+                            <li><strong>見證與通知要求預定義</strong>：哪些測試需要 QA/客戶見證？通知期多長？都要事先書面規定。</li>
+                            <li><strong>供應商評估（Vendor Assessment）</strong>：若採用廠商數據支持驗證，需先評估廠商能力（見第 10 章）。</li>
+                            <li><strong>工程變更管理</strong>：設計批准後的所有更動，必須走正式的工程變更管理流程。</li>
+                            <li><strong>偏差管理流程預定義</strong>：測試失敗的處理程序需在執行前明確規定（見 7.4 節）。</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>⚠️ Table 7.1 解讀：三層監督架構</h4>
+                        <p>ISPE 用三種「監督深度」區分文件類型：</p>
+                        <ul>
+                            <li><strong>文件審查</strong>（Document Review）：最基本，確認做了且有記錄</li>
+                            <li><strong>FAT/SAT</strong>：需要廠商參與 + 技術監督</li>
+                            <li><strong>資格確認（Qualification）</strong>：需要品保單位監督——這是法規要求的核心</li>
+                        </ul>
+                        <p>監督層級越高，代表對產品品質影響越直接（CDE 越重要）。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>🏭 Table 7.2 實務應用指南</h4>
+                        <p>這張表是 CDMO 採購/驗證規劃的實用參考工具：</p>
+                        <ul>
+                            <li><strong>高壓滅菌器 &amp; 凍乾機</strong>：複雜設備，兩個選項都需要 FAT + PQ；Option 2 以 「Installation and Operational Testing Summary」整合 SAT 功能。</li>
+                            <li><strong>HVAC（AHU 至末端過濾器）</strong>：不一定需要正式 SAT/PQ，以 Turnover Package + Testing and Balancing Report 為主。</li>
+                            <li><strong>秤量器（Scale）</strong>：最簡單，Receipt Inspection + Calibration 即可，不需 FAT。</li>
+                            <li><strong>WFI 製造系統</strong>：Option 2 可省略 FAT（若廠商能在廠內預先完成 SAT）。</li>
+                            <li><strong>WFI 分配系統</strong>：以 TOP 為核心；Option 2 增加 Receipt Inspection 和 Operational Testing Summary，適合較複雜的迴路設計。</li>
+                        </ul>
+                        <p><em>關鍵點：「哪個選項都可以」——重要的是在 C&amp;Q Plan 中提前決定並文件化。</em></p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>💡 GEP（良好工程實踐）</h4>
+                        <p>GEP = Good Engineering Practice，是 ISPE 的核心概念。它不是一份標準文件，而是業界認可的「工程常識」——確保系統設計、安裝、測試兼顧功能、成本、合規與文件品質。</p>
+                        <p>可參考 ISPE GPG: Good Engineering Practice 專刊（文中注 [22]）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.1.3 QUALITY UNIT OVERSIGHT
+    ========================================================== -->
+    <div class="chapter-section" id="sec713">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.1.3</div>
+            <div class="chapter-info">
+                <h2>Quality Unit Oversight</h2>
+                <p>Four methods for QA oversight of CDE testing documentation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>To ensure that the deliverables meet quality expectations, it is good practice to ensure engagement of the Quality Unit as part of an integrated team during the generation of test documentation that will be used to support qualification.</p>
+                    <p>The organization/site needs to determine how <span class="key-term">Quality Unit oversight</span> will be provided for the testing and associated documentation of the CAs/CDEs. There are several appropriate methods, some of which are described below:</p>
+                    <ul>
+                        <li>Procedures that define GEP and the approach that will be used can be approved by the Quality Unit
+                            <ul>
+                                <li>Standard test procedures (test scripts) and the associated results templates can be pre-approved by the Quality Unit</li>
+                            </ul>
+                        </li>
+                        <li>Test strategy and acceptance criteria can be defined in the C&amp;Q Plan for the Quality Unit to approve; the Quality Unit can then review the results as part of the development of the C&amp;Q summary report</li>
+                        <li>Testing used to demonstrate that the CAs/CDEs identified in the System Risk Assessment can be covered in an <span class="key-term">Installation and Operational Qualification (IOQ)</span> protocol for Quality Unit pre and post-execution review and approval</li>
+                        <li>Inspection and test records can be marked up to show the tests that are used to demonstrate the CAs/CDEs identified in the System Risk Assessment, or these tests can be assembled in a subsection of the test document for Quality Unit pre and post-execution review and approval</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📊 品保單位監督 CDE 測試的四種模式</h4>
+                        <p>ISPE 明確提供四種不同深度的 QA 介入方式，企業可依組織規模與系統風險選擇：</p>
+                        <ol>
+                            <li>
+                                <strong>模式一：程序預核（GEP SOP + 測試腳本預批准）</strong><br>
+                                QA 事先批准定義 GEP 的 SOP，以及標準測試程序（test scripts）與結果模板。測試期間 QA 不需逐一參與，事後審核結果即可。<br>
+                                <span class="badge green">適用：成熟廠房，已建立標準化測試程序的組織</span>
+                            </li>
+                            <li>
+                                <strong>模式二：C&amp;Q Plan 批准 + 摘要報告審核</strong><br>
+                                QA 批准 C&amp;Q Plan（含測試策略與接受標準），之後審核 C&amp;Q 摘要報告中的結果。<br>
+                                <span class="badge blue">適用：中型專案，QA 資源有限，希望分散介入時間點</span>
+                            </li>
+                            <li>
+                                <strong>模式三：獨立 IOQ 協議（前後審批）</strong><br>
+                                針對 SRA 識別的 CDE，單獨寫成 IOQ Protocol，QA 執行前批准、執行後審核。最傳統的驗證路徑。<br>
+                                <span class="badge yellow">適用：直接影響系統，法規審查風險較高的場合</span>
+                            </li>
+                            <li>
+                                <strong>模式四：標記法（Marking up）</strong><br>
+                                在工程測試記錄上直接標注哪些測試涵蓋哪個 CDE，或將 CDE 相關測試集中於子章節，供 QA 前後批准。最輕量的整合模式。<br>
+                                <span class="badge orange">適用：商業化廠商設備，測試記錄已相當完整</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="note-box">
+                        <h4>⚠️ 重點提醒</h4>
+                        <p>四種模式並非互斥——同一個專案中，不同系統可採用不同模式。關鍵是在 C&amp;Q Plan 中明確說明選擇哪種模式以及理由。</p>
+                        <p>「整合團隊（integrated team）」的概念貫穿本章：QA 不是在測試完成後才出現的「審判者」，而是從文件生成階段就參與的夥伴。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.1.4 ROLES AND RESPONSIBILITIES
+    ========================================================== -->
+    <div class="chapter-section" id="sec714">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.1.4</div>
+            <div class="chapter-info">
+                <h2>Roles and Responsibilities</h2>
+                <p>The four C&amp;Q team roles — coordinator, user, technical expert, quality unit</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>The planning, execution, and closeout of testing should be performed by a multidisciplinary team (which includes vendors, engineering, and users) with appropriate Quality Unit oversight. Refer to Section 6.4 (Example Approval Matrix) for an example of the roles and responsibilities for the review and approval of deliverables.</p>
+                    <p>The following roles are typically included in a C&amp;Q team:</p>
+                    <ul>
+                        <li><span class="key-term">Testing Coordinator</span></li>
+                        <li>Production user (system user)</li>
+                        <li>Technical experts (engineering, automation, validation, or other SME)</li>
+                        <li>Quality Unit representative</li>
+                    </ul>
+                    <p>The <strong>testing coordinator</strong> represents the project manager in this scope of work. In small projects it is possible that the testing coordinator and the system owner is the same person, whereas for large projects it may be reasonable to designate the role to another individual. The testing coordinator is responsible for the coordination of all testing and ensuring that all tests are completed to meet the schedule.</p>
+                    <p><strong>Production users</strong> represent the system owners who will operate the system. In large construction projects, this group may be the engineering representatives that designed the system, due to their knowledge of the planned operation and requirements. Production users are responsible for ensuring the system operates as expected and that documentation (such as operational procedures and batch records) are developed so that they are approved for acceptance and release.</p>
+                    <p><strong>Technical experts</strong> are part of or support the testing team, as appropriate. Where testing activities are performed by vendors or third parties, the responsibilities between both parties need to be defined and documented.</p>
+                    <p>The <strong>Quality Unit representative</strong> provides oversight to ensure that all CAs/CDEs identified in the System Risk Assessment are tested.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>👥 C&amp;Q 團隊四大角色</h4>
+                        <table>
+                            <thead>
+                                <tr><th>角色</th><th>中文名稱</th><th>核心職責</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Testing Coordinator</td>
+                                    <td>測試協調員</td>
+                                    <td>代表專案經理，協調所有測試活動，確保如期完成</td>
+                                </tr>
+                                <tr>
+                                    <td>Production User</td>
+                                    <td>生產使用者／系統所有人</td>
+                                    <td>確保系統運作符合預期；負責 SOP、批次記錄開發至批准</td>
+                                </tr>
+                                <tr>
+                                    <td>Technical Experts</td>
+                                    <td>技術專家（工程/自動化/驗證/SME）</td>
+                                    <td>提供專業支援；若由廠商或第三方執行，需書面定義雙方責任</td>
+                                </tr>
+                                <tr>
+                                    <td>Quality Unit Rep.</td>
+                                    <td>品保代表</td>
+                                    <td>監督所有 SRA 識別的 CDE 均已測試</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>💡 角色彈性：小專案 vs 大專案</h4>
+                        <p>ISPE 特別說明：小型專案中，Testing Coordinator 與 System Owner 可以是同一人。這體現了指南的務實精神——強調職責被履行，而非強制要求人員分設。</p>
+                        <p>在 CDMO 場景中，測試協調員通常由驗證工程師（Validation Engineer）或專案工程師擔任，而 Production User 則由製造部門的製程工程師代表。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>⚠️ 第三方執行測試時的注意事項</h4>
+                        <p>當廠商或第三方執行測試時，必須以書面定義雙方責任範圍（例如：誰簽名、誰見證、誰發現問題由誰負責 CAPA）。這通常寫入合約或測試計劃（Test Plan）的 Roles &amp; Responsibilities 章節中。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.2 PREREQUISITES
+    ========================================================== -->
+    <div class="chapter-section" id="sec72">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.2</div>
+            <div class="chapter-info">
+                <h2>Prerequisites</h2>
+                <p>Activities to be completed prior to C&amp;Q testing execution</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>This section describes the activities that should be completed prior to execution of C&amp;Q testing.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📋 測試前提條件概覽</h4>
+                        <p>7.2 節涵蓋五項前提條件：計劃（7.2.1）、培訓（7.2.2）、設計審查/設計確認（7.2.3）、廠商文件運用（7.2.4）、變更管理（7.2.5）。這五項缺一不可，任何一項未完成都可能導致測試結果無效或需要重做。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.2.1 PLANNING
+    ========================================================== -->
+    <div class="chapter-section" id="sec721">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.2.1</div>
+            <div class="chapter-info">
+                <h2>Planning</h2>
+                <p>PDI and FAT supporting on-site inspection; minimizing repeat testing</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>When C&amp;Q testing is executed as a planned, documented, and managed engineering approach to the start-up and turnover of systems, the result is a safe and functional environment that meets established requirements and stakeholder expectations in a cost-effective way. Where such systems are direct impact (as determined through system classification described in Chapter 3), qualification is required.</p>
+                    <p>The optimum test strategy can minimize repeat testing and help to reduce time in project schedules. For example, <span class="key-term">Pre-Delivery Inspection (PDI)</span> and <span class="key-term">FAT</span> may be used to support on-site inspection if appropriate approvals are obtained prior to execution. Components such as instruments can be verified (for aspects such as, e.g., manufacturer, model number, materials of construction) at the vendor site during a PDI or FAT. These checks can be used to support qualification activities, and do not need to be repeated provided there is justification that the functionality will not be affected by any subsequent activities prior to acceptance and release.</p>
+                    <p>See Chapter 6 for details regarding C&amp;Q planning.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>🎯 「最佳測試策略」的核心邏輯</h4>
+                        <p>計劃階段的目標是設計一套能<strong>最小化重複測試</strong>的策略。關鍵工具是 PDI 和 FAT——在廠商廠房完成的測試，若有適當核准，可以作為現場資格確認的依據，不需要到現場重做。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>⚠️ 「不需重複」的前提條件</h4>
+                        <p>PDI/FAT 數據可替代現場測試，必須滿足：</p>
+                        <ol>
+                            <li>測試執行前取得適當批准（appropriate approvals prior to execution）</li>
+                            <li>有書面理由說明：後續作業（如拆解運輸、現場重新組裝）不會影響已測試的功能</li>
+                        </ol>
+                        <p>若設備拆解出廠，功能性測試通常需要在現場重做。</p>
+                    </div>
+                    <div class="application-box">
+                        <h4>🏭 CDMO 採購實務應用</h4>
+                        <p>在採購合約中，應明確要求廠商提供 PDI 機會，並列明哪些項目可以在 PDI 期間完成驗證。這能節省現場啟動時間——在廠商廠房發現問題，修復成本遠低於設備到現場後才發現。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.2.2 – 7.2.5
+    ========================================================== -->
+    <div class="chapter-section" id="sec722-725">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.2.2–5</div>
+            <div class="chapter-info">
+                <h2>Training / DR-DQ / Vendor Documentation / Changes</h2>
+                <p>Remaining prerequisites before C&amp;Q test execution</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>7.2.2 Training</h3>
+                    <p>Each individual taking a role in the scope of C&amp;Q testing needs have the appropriate training and experience to be able to complete their tasks effectively. Additional training may be required for setup and operation of a specific system, safety, and documentation standards required for a project.</p>
+
+                    <h3>7.2.3 Design Review / Design Qualification</h3>
+                    <p><span class="key-term">DR/DQ</span> should be completed with approval of the design before purchasing or starting construction of the system. This approved design then provides the basis for any subsequent engineering changes.</p>
+                    <p>Fast track projects may proceed with construction or assembly at risk. However, the basis for approving system design and initiating change management needs to be clearly defined and, for direct impact systems, approved by the Quality Unit.</p>
+                    <p>See Chapter 5 for details regarding DR and DQ.</p>
+
+                    <h3>7.2.4 Use of Vendor Documentation and Testing</h3>
+                    <p>Vendor documentation, including protocols and/or test plans (e.g., FAT, SAT), can be used. The strategy should be captured in the C&amp;Q Plan. It is acceptable for the vendor to use their own format for conducting and documenting the testing provided that the vendor company documentation standards are acceptable. The protocol or test plan should be reviewed and approved by the owner and vendor (and Quality Unit if necessary, see Section 7.1.3) before the testing starts.</p>
+                    <p>See Chapter 10 for details regarding the use of vendor documentation.</p>
+
+                    <h3>7.2.5 Changes</h3>
+                    <p>Before testing, it is recommended that the relevant <span class="key-term">System Risk Assessment</span> and change management records are reviewed to ensure that the testing documents reflect the installed system and no changes have been made that may impact the testing.</p>
+                    <p>See Chapter 12 for details regarding change management.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>🎓 7.2.2 培訓要求</h4>
+                        <p>「適當的培訓與經驗」是執行 C&amp;Q 測試的基本前提。培訓範圍包含：</p>
+                        <ul>
+                            <li>特定系統的設置與操作（設備相關）</li>
+                            <li>安全事項（safety）</li>
+                            <li>文件標準（documentation standards）</li>
+                        </ul>
+                        <p>在法規稽查中，稽查員常會要求查看「執行測試人員的培訓記錄」。這是基本的文件要求，不可輕忽。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>💡 7.2.3 DR/DQ 為變更管理的基準點</h4>
+                        <p>DR（Design Review）＝ 設計審查（工程內部）<br>DQ（Design Qualification）＝ 設計確認（品保介入，適用直接影響系統）</p>
+                        <p>批准的設計文件是「基準線（baseline）」——此後所有變更都必須對照這份文件，走工程變更管理（ECM）程序。</p>
+                        <p><strong>快速軌道（Fast Track）風險</strong>：若在設計批准前就開始採購或施工（「at risk」執行），組織必須清楚定義風險由誰承擔，且直接影響系統需 QA 批准。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>⚠️ 7.2.4 廠商文件的可接受條件</h4>
+                        <p>廠商可以用自己的格式進行並記錄測試，但必須滿足：</p>
+                        <ol>
+                            <li>廠商的文件標準是可接受的（需事先評估）</li>
+                            <li>協議/測試計劃在測試開始<strong>前</strong>由業主和廠商雙方審核批准</li>
+                            <li>若必要，QA 也需批准（依 7.1.3 的四種模式判斷）</li>
+                        </ol>
+                        <p>「事後補簽」是稽查常見缺失，應極力避免。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>🔄 7.2.5 測試前的變更審查</h4>
+                        <p>執行測試前，必須回顧：</p>
+                        <ul>
+                            <li><strong>系統風險評估（SRA）</strong>：確認 CDE 清單是否有更新</li>
+                            <li><strong>變更管理記錄</strong>：確認實際安裝的系統與測試文件所描述的一致</li>
+                        </ul>
+                        <p>這一步驟防止「測試文件版本落後於實際安裝狀態」的常見問題。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.3 EXECUTION
+    ========================================================== -->
+    <div class="chapter-section" id="sec73">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.3</div>
+            <div class="chapter-info">
+                <h2>Execution</h2>
+                <p>Testing and inspection activities — scope, sequencing, and phase transitions</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>This section describes the testing and inspection activities. Each organization/project should dictate the testing and inspection required, when it should be performed, and the titles of the record documents.</p>
+                    <p>Tests should be planned and performed so that the results remain valid throughout subsequent phases of the project. Where this is not possible, there should be an evaluation to identify necessary retesting that may be required.</p>
+                    <p>It is not necessary to complete each stage before proceeding to the next (e.g., moving from installation testing to operational testing) as long as:</p>
+                    <ul>
+                        <li>Any outstanding activities and critical discrepancies are noted and tracked with scheduled completion dates.</li>
+                        <li>There is documented evidence that the outstanding activities and critical discrepancies will not impact the subsequent work. For direct impact systems, this justification should be approved by the Quality Unit.</li>
+                    </ul>
+                    <p>See Chapter 8 for information on the review and closure of testing documentation.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📋 階段轉換的彈性原則</h4>
+                        <p>ISPE 允許在前一階段未完全結束時就進入下一階段（例如：安裝測試有少數未完項目，但可以先開始操作測試），前提是：</p>
+                        <ol>
+                            <li><strong>所有未完項目</strong>必須被記錄並設定完成期限</li>
+                            <li><strong>書面確認</strong>：這些未完項目不會影響後續工作</li>
+                            <li><strong>直接影響系統</strong>：上述確認需 QA 批准</li>
+                        </ol>
+                        <p>這體現了 ISPE 的風險基礎思維——不是教條式的「一定要完成才能繼續」，而是「有理由、有文件」地管理風險。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>⚠️ 「Punch List」管理</h4>
+                        <p>未完成項目通常記錄在「Punch List（缺失清單）」中。CDMO 常見實務：分為「關鍵缺失（Critical）」和「非關鍵缺失（Non-Critical）」兩類——關鍵缺失須在下一階段開始前解決，非關鍵缺失可設定後續完成日期。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.3.1 VENDOR AND SYSTEM CONSTRUCTION PHASE DOCUMENTS
+    ========================================================== -->
+    <div class="chapter-section" id="sec731">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.3.1</div>
+            <div class="chapter-info">
+                <h2>Vendor and System Construction Phase Documents</h2>
+                <p>Turnover Packages and construction cleaning requirements</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- This section has two subsections, shown separately below -->
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.3.1.1 TURNOVER PACKAGES (TOPs)
+    ========================================================== -->
+    <div class="chapter-section" id="sec7311">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.3.1.1</div>
+            <div class="chapter-info">
+                <h2>Turnover Packages (TOPs)</h2>
+                <p>Purpose, typical contents (15 items), and format requirements</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>The purpose of the <span class="key-term">Turnover Package (TOP)</span> is to provide complete documentation on system components, equipment, and setup. This documentation should also include as-built documentation (agreed upon data, drawings, software, etc.) turned over to the end-user. The TOP may be used throughout the system lifecycle, including ongoing maintenance, system change management, and retirement.</p>
+                    <p>TOPs should be reviewed to ensure that they are complete and represent the installed system. Once completed, the TOP should be accepted and approved. Updates to the TOP should be included in the change management of the system where appropriate. Where documentation from the TOP is used to support operations or represent the basis for qualification, they should be stored in a suitable location that provides adequate control and access.</p>
+
+                    <h4>Contents of the TOP</h4>
+                    <p>The TOP contents are usually determined by factors such as organization/site procedures, end-user preferences, GEP, system type, and contracts with the vendors. Information included in a TOP should ensure controlled operation, maintenance, and change. A complex novel system would, therefore, require more types of information than a simple off-the-shelf pump. Due to the variability of systems, vendors, and documentation, the TOP contents need to be flexible.</p>
+                    <p>A typical TOP may include the following lifecycle related documents:</p>
+                    <ul>
+                        <li>Vendor-provided SOPs</li>
+                        <li>Spare parts lists</li>
+                        <li>Maintenance requirements</li>
+                        <li>Maintenance records for work conducted prior to turnover</li>
+                        <li>As-built drawings</li>
+                        <li>Material of construction certificates</li>
+                        <li>Construction test and inspection records (e.g., pressure tests)</li>
+                        <li><span class="key-term">Loop calibration</span> documentation</li>
+                        <li>Material safety data sheets</li>
+                        <li>System start-up and shutdown information</li>
+                        <li>Warranties</li>
+                        <li>Records of adjustable settings</li>
+                        <li>Any specific documentation required by local regulations</li>
+                    </ul>
+                    <p>The TOP contents should be clearly set out and agreed upon by all parties prior to placement of orders. The delivery of the documentation requirements should not present a risk to the project at a later stage, from either content or timing aspects.</p>
+
+                    <h4>TOP Formats</h4>
+                    <p>System vendors typically have their own format for TOPs, but the owner organization should clearly define a standardized format that aligns with their document control processes. This can help to ensure consistency between the various TOPs that are submitted. The owner organization can propose a standard format or accept the vendor format if it meets internal requirements. The format might be system-based. The format of TOPs should ensure that they are user friendly with tabulated sections. TOPs should be obtained for all operating systems. To facilitate storage, electronic versions of these documents are often required by the owner organization.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>📦 TOP（移交文件包）是什麼？</h4>
+                        <p>TOP 是系統從承包商/廠商移交給業主時所附帶的完整文件集合。它記錄了系統在移交當下的完整狀態，是系統全生命週期（安裝、操作、維護、變更、除役）的重要參考基礎。</p>
+                        <p>TOP 的核心價值：</p>
+                        <ul>
+                            <li><strong>驗證基礎</strong>：As-built 圖面是 IQ 的重要依據</li>
+                            <li><strong>維護支援</strong>：備品清單、維護要求讓 PM 部門有所依循</li>
+                            <li><strong>變更管理</strong>：設備更改時，TOP 是基準文件</li>
+                            <li><strong>法規合規</strong>：材料符合性證書（CoC）支持法規申報</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>🏭 TOP 15 項清單：CDMO 採購合約必備</h4>
+                        <p>下表整理 TOP 典型內容，建議列入採購合約的「Document Requirements」章節：</p>
+                        <table>
+                            <thead>
+                                <tr><th>#</th><th>TOP 項目</th><th>用途說明</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>廠商提供的 SOP</td><td>操作、清潔、維護程序</td></tr>
+                                <tr><td>2</td><td>備品清單（Spare Parts List）</td><td>採購備品、確保持續供應</td></tr>
+                                <tr><td>3</td><td>維護要求</td><td>預防性維護計劃制定</td></tr>
+                                <tr><td>4</td><td>移交前維護記錄</td><td>設備歷史記錄起點</td></tr>
+                                <tr><td>5</td><td>竣工圖面（As-built）</td><td>IQ 依據、設備更改基準</td></tr>
+                                <tr><td>6</td><td>材料符合性證書（CoC）</td><td>法規申報材料符合性驗證</td></tr>
+                                <tr><td>7</td><td>施工測試/檢查記錄（壓力測試等）</td><td>IQ 支持性文件</td></tr>
+                                <tr><td>8</td><td><strong>迴路校正文件（Loop Calibration）</strong></td><td>儀表校正記錄，CDE 驗證依據</td></tr>
+                                <tr><td>9</td><td>物質安全資料表（MSDS/SDS）</td><td>安全合規、廢棄物管理</td></tr>
+                                <tr><td>10</td><td>啟動/停機程序</td><td>日常操作指引</td></tr>
+                                <tr><td>11</td><td>保固文件（Warranties）</td><td>設備缺陷索賠依據</td></tr>
+                                <tr><td>12</td><td>可調設定記錄</td><td>PID 設定值、警報閾值等</td></tr>
+                                <tr><td>13</td><td>地方法規要求的特定文件</td><td>依當地法規彈性增補</td></tr>
+                            </tbody>
+                        </table>
+                        <p><em>注意：原文清單共 13 項條目（部分合併計算），總體涵蓋上述所有面向。</em></p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>⚠️ 關鍵實務：合約下單前確認 TOP 內容</h4>
+                        <p>原文明確指出：「TOP 內容應在下訂單前清楚確定並由各方同意」。這是非常重要的採購管理原則：</p>
+                        <ul>
+                            <li>若等到設備快要交貨才要求廠商補充文件，往往面臨廠商不配合、文件不完整或延遲交付的問題</li>
+                            <li>建議：在 RFQ（報價邀請書）中即列出 TOP 文件清單作為合約要求</li>
+                            <li>付款條款可與 TOP 文件完整性掛鉤</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>💡 Loop Calibration（迴路校正）是什麼？</h4>
+                        <p>Loop = 一個完整的量測/控制迴路，例如：溫度感測器 → 傳輸器 → DCS 訊號輸入卡 → 顯示值。</p>
+                        <p>Loop Calibration 驗證的是這整個迴路的準確性，而非只是感測器本身。這對 CDE（如 WFI 系統溫度、高壓滅菌器壓力）尤其重要，因為任何環節的誤差都可能導致製程失控。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.3.1.2 CLEANING
+    ========================================================== -->
+    <div class="chapter-section" id="sec7312">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.3.1.2</div>
+            <div class="chapter-info">
+                <h2>Cleaning</h2>
+                <p>Clean construction and post-construction cleaning requirements</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Where appropriate, the specifications should include <span class="key-term">clean construction</span> or <span class="key-term">post-construction cleaning</span> requirements to ensure that systems are ready to test and/or turn over to the owner organization.</p>
+                    <p>Clean construction cleaning requirements may include pre-installation checks/inspection, sealing all openings during construction, etc. Post-construction cleaning may include system cleaning, flushing, sanitation, and passivation, where applicable. The activities should be documented.</p>
+                    <p>Cleaning of any systems that will be moved into a classified area should be performed to prevent contamination.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>🧹 兩種清潔策略</h4>
+                        <table>
+                            <thead>
+                                <tr><th>策略</th><th>定義</th><th>措施示例</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Clean Construction（潔淨建設）</strong></td>
+                                    <td>施工過程中即保持潔淨</td>
+                                    <td>施工前進行預安裝檢查；施工期間封閉所有開口；分區施工管制</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Post-Construction Cleaning（施工後清潔）</strong></td>
+                                    <td>施工完成後執行清潔</td>
+                                    <td>系統清洗（cleaning）、沖洗（flushing）、殺菌（sanitation）、鈍化（passivation）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>⚠️ 進入潔淨區系統的特別注意</h4>
+                        <p>移入潔淨區的設備，必須事先進行清潔以防止污染——這不只是文件要求，也是防止整個潔淨區受損的預防措施。此要求應反映在「移入程序（Move-in Procedure）」中，並記錄清潔活動。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.3.2 INSTALLATION TESTING
+    ========================================================== -->
+    <div class="chapter-section" id="sec732">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.3.2</div>
+            <div class="chapter-info">
+                <h2>Installation Testing</h2>
+                <p>Acceptance Testing, Commissioning, and Qualification phases — mechanical, construction, automation scope</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>The verification of installation provides documentation that the system (or system components) is installed correctly, is ready to start-up, and meets the design requirements including those identified as CDEs.</p>
+                    <p>Testing may be conducted within a single record/plan or separated into <span class="key-term">FAT</span>, <span class="key-term">SAT</span>, commissioning, and qualification phases.</p>
+                    <p>The scope of installation testing includes all system installation requirements within the system boundaries, as defined in the specifications or C&amp;Q Plan. Installation testing should include all mechanical, electrical, and automation components, and verify that they are in a state that as-built drawings and punch lists may be established.</p>
+
+                    <h4>Mechanical aspects may include, but are not limited to:</h4>
+                    <ul>
+                        <li>Connection to appropriate utilities, services, and IT infrastructure</li>
+                        <li>Installation (e.g., pressure testing, slope verification, valve drain verification)</li>
+                        <li>System walk down with results marked to record the current system status, redline drawings updated, and identified issues captured as discrepancies</li>
+                    </ul>
+
+                    <h4>Construction records may include, but are not limited to:</h4>
+                    <ul>
+                        <li>Component details</li>
+                        <li>Room finishes, e.g., flooring, coving, doors, windows, ceilings, drains, panels, penetrations (wall, ceiling, floor), etc. are installed as specified</li>
+                        <li>Construction records, e.g., welding records, material verification, leak/pressure test records, passivation records, component certificates of conformity</li>
+                    </ul>
+
+                    <h4>Automation and electrical records may include, but are not limited to:</h4>
+                    <ul>
+                        <li>Electrical drawing walk down, e.g., data communication, alarm systems connections, cable trays, and conduits are installed and labeled</li>
+                        <li>Electrical cabinet construction and installation, e.g., are of appropriate waterproof classification</li>
+                        <li>Software version and configuration settings identification and backup</li>
+                        <li>Control panel wiring diagrams</li>
+                        <li>Screen navigation testing</li>
+                        <li>Hard-wired alarm and interlock testing</li>
+                        <li>Power/utility loss and recovery testing</li>
+                        <li>Communication loss and recovery testing</li>
+                        <li>Loop testing, calibration, or tuning</li>
+                        <li><span class="key-term">Data integrity and audit trail testing</span></li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>🏗️ 安裝測試三大範疇</h4>
+                        <p>安裝測試（Installation Testing）覆蓋三個面向，缺一不可：</p>
+                        <ul>
+                            <li><strong>機械面（Mechanical）</strong>：管線連接、坡度驗證、壓力測試——確認「裝好了」</li>
+                            <li><strong>施工記錄面（Construction Records）</strong>：建築完成度、焊接記錄、材料符合性——確認「裝得對」</li>
+                            <li><strong>自動化/電氣面（Automation &amp; Electrical）</strong>：軟體、接線、警報、資料完整性——確認「控制系統正確」</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>⚠️ 自動化 10 項清單重點解析</h4>
+                        <ul>
+                            <li><strong>軟體版本與備份</strong>：必須記錄版本號並建立備份，這是 GAMP 5 的基本要求</li>
+                            <li><strong>Hard-wired alarm and interlock testing</strong>：硬接線警報（如超溫切斷）必須獨立於軟體測試，確認即使 PLC 故障也能動作</li>
+                            <li><strong>Power/Communication loss and recovery</strong>：停電或通訊中斷後的系統恢復行為，是製藥設備的關鍵安全測試</li>
+                            <li><strong>資料完整性 &amp; 稽核追蹤（Audit Trail）</strong>：FDA/EMA 法規重點，任何人工輸入或系統事件都必須有不可篡改的記錄</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>💡 Audit Trail（稽核追蹤）是什麼？</h4>
+                        <p>Audit Trail 是系統自動記錄的操作日誌，例如：「2026-01-15 14:32, 操作員 A 將溫度設定值從 121°C 改為 123°C」。</p>
+                        <p>FDA 21 CFR Part 11 與 EMA Annex 11 都要求：</p>
+                        <ul>
+                            <li>記錄不可刪除或修改（只能新增，不能覆蓋）</li>
+                            <li>記錄應包含：時間戳記、使用者 ID、舊值、新值、變更原因（若有）</li>
+                            <li>測試時必須驗證 Audit Trail 功能正確運作且防止篡改</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>🏭 FAT vs SAT vs Commissioning vs Qualification 的關係</h4>
+                        <table>
+                            <thead>
+                                <tr><th>階段</th><th>地點</th><th>目的</th><th>QA 介入</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>FAT</td><td>廠商廠房</td><td>驗收設備符合設計要求</td><td>視系統而定</td></tr>
+                                <tr><td>SAT</td><td>業主現場</td><td>驗收現場安裝</td><td>視系統而定</td></tr>
+                                <tr><td>Commissioning</td><td>業主現場</td><td>系統功能性調試、系統交付</td><td>工程主導</td></tr>
+                                <tr><td>Qualification (IQ/OQ/PQ)</td><td>業主現場</td><td>法規要求的書面確認</td><td>QA 批准</td></tr>
+                            </tbody>
+                        </table>
+                        <p>安裝測試可以整合在一份文件中，也可以分散於各階段——由 C&amp;Q Plan 決定。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         7.3.2.1 PRE-DELIVERY INSPECTIONS (PDIs)
+    ========================================================== -->
+    <div class="chapter-section" id="sec7321">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.3.2.1</div>
+            <div class="chapter-info">
+                <h2>Pre-Delivery Inspections (PDIs)</h2>
+                <p>Construction checks at the vendor site before delivery — value and scope</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p><span class="key-term">PDIs</span> are construction checks (inspection and testing) of systems or major system components before delivery to the owner site. These are typically done to verify construction progress and quality standards and to ensure delivery as scheduled. PDIs include inspection of parts (e.g., <em>baffles in a heating jacket</em>) that would not be able to be inspected during FAT or where a FAT cannot be performed for the system. This allows for remedy of any failings and avoids the delays to schedule (and associated costs) that would result from discovering problems later on-site.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">中文解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>🔍 PDI（交貨前檢查）：為什麼要去廠商工廠？</h4>
+                        <p>PDI 的核心邏輯是：<strong>「在問題最容易解決的地方發現問題」</strong>。</p>
+                        <p>在廠商廠房發現缺陷：</p>
+                        <ul>
+                            <li>修復成本低（廠商設備、工具、人員齊全）</li>
+                            <li>不影響現場施工進度</li>
+                            <li>可以檢查「交貨後就看不到」的隱藏部件（如加熱夾套內的擋板）</li>
+                        </ul>
+                        <p>等設備到現場才發現問題：</p>
+                        <ul>
+                            <li>可能需要拆機返廠（高成本）</li>
+                            <li>佔用現場空間與進度</li>
+                            <li>可能拖延整個廠房啟動計劃</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>💡 比喻：PDI 像汽車出廠前的「出廠檢驗」</h4>
+                        <p>就像汽車在離開組裝線前進行全車品質檢驗，PDI 讓業主有機會在「設備出廠前」確認品質。差別在於：製藥設備往往是定製品，廠商不會庫存同型號備品，一旦出廠後發現問題，修復時間和成本都遠高於汽車行業。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>⚠️ PDI vs FAT 的區別</h4>
+                        <table>
+                            <thead>
+                                <tr><th>面向</th><th>PDI</th><th>FAT</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>時機</td><td>設備建造中（進度確認）</td><td>設備完成後（功能驗收）</td></tr>
+                                <tr><td>焦點</td><td>施工進度、品質標準、隱藏部件</td><td>功能運作、設計要求達成</td></tr>
+                                <tr><td>正式性</td><td>較非正式，工程性質</td><td>正式，依協議/測試計劃執行</td></tr>
+                                <tr><td>可替代現場測試</td><td>部分可以（如材料符合性）</td><td>部分可以（需適當核准）</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>🤔 思考題：PDI 的價值何時最高？</h4>
+                        <p>以下哪種情況最值得安排 PDI？</p>
+                        <ol>
+                            <li>採購一台現成的蠕動泵（off-the-shelf peristaltic pump）</li>
+                            <li>訂製一套 10,000L WFI 蒸餾水機（multi-column still，需定製設計）</li>
+                            <li>採購標準 316L 不鏽鋼管件和閥門</li>
+                        </ol>
+                        <p><em>答案：情況 2 最值得安排 PDI。定製複雜設備的製造偏差風險高，且交貨後發現問題的修復成本極高。標準現成品（情況 1、3）風險相對低，PDI 的邊際效益較小。</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION SUMMARY
+    ========================================================== -->
+    <div class="section-summary" id="summary">
+        <h3>本節摘要 Section Summary (Chapter 7, Part 1: pp. 49–56)</h3>
+        <ul>
+            <li><strong>C&amp;Q 測試定義</strong>：從設計到系統驗收的完整測試過程，涵蓋靜態測試（文件審查）與動態測試（實際運作），並以整合系統的方式進行（機械+電氣+自動化）。</li>
+            <li><strong>七大測試原則</strong>：工程驅動、預定義文件標準、培訓、見證要求預定義、廠商評估、變更管理、偏差管理程序預定義。</li>
+            <li><strong>Table 7.1 &amp; 7.2</strong>：提供不同系統類型（高壓滅菌器、HVAC、凍乾機、秤量器、WFI）所需測試/檢查文件組合的參考選項——靈活選擇，重要的是在 C&amp;Q Plan 中預先定義。</li>
+            <li><strong>QU 監督四種模式</strong>：程序預核、C&amp;Q Plan 批准+摘要報告審核、IOQ 協議前後審批、標記法整合工程記錄——依系統風險與組織能力靈活選用。</li>
+            <li><strong>C&amp;Q 團隊四角色</strong>：測試協調員（進度管理）、生產使用者（系統所有人）、技術專家（SME 支援）、品保代表（CDE 確認監督）。</li>
+            <li><strong>測試前提條件</strong>：計劃先行（PDI/FAT 策略）、培訓完成、DR/DQ 批准、廠商文件策略確認、SRA 和變更記錄審查——五項缺一不可。</li>
+            <li><strong>TOP 移交文件包</strong>：系統生命週期基礎文件，13 類典型內容應在合約下訂前確認；Loop Calibration 文件是 CDE 驗證的重要支持。</li>
+            <li><strong>PDI（交貨前檢查）</strong>：在廠商廠房提前發現問題，可避免現場啟動延誤和高額修復成本；尤其對定製複雜設備（如 WFI 系統）效益最高。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline® Guide Vol.5: Commissioning and Qualification (2nd Edition)</p>
+    <p>Chapter 7 Part 1 — C&amp;Q Testing and Documentation (pp. 49–56)</p>
+    <p>For individual use only. © Copyright ISPE 2019. All rights reserved.</p>
+    <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.7;">Educational bilingual commentary — Traditional Chinese annotations for training purposes.</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂端">↑</button>
+
+<script>
+// Back to top button visibility
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
