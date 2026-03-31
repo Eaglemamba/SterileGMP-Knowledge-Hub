@@ -89,26 +89,26 @@ In Claude Code, from the repo directory:
 
 The skill reads `knowledge/INDEX.md` to route your question to the right document(s), then greps the relevant Markdown for precise content. Uses your Claude Max plan — no API key needed.
 
-> Legacy: `/pda-ask` still works for PDA-only queries.
+> Use `/gmp-ask` for all sources — PDA, ISPE, FDA, and more.
 
 ## Adding a New Document
 
 ```bash
 # 1. Scaffold folder (works for any source — PDA, ISPE, FDA, etc.)
-python pda_engine.py scaffold FOLDER_ID              # PDA (default)
-python pda_engine.py scaffold ISPE-Vol5 --source ISPE  # ISPE
+python gmp_engine.py scaffold FOLDER_ID              # PDA (default)
+python gmp_engine.py scaffold ISPE-Vol5 --source ISPE  # ISPE
 
 # 2. Edit reports.json — fill in entry (title, tags, source, colors, section_map)
 
 # 3. Extract PDF text into PDA/FOLDER_ID/source/  (or ISPE/FOLDER_ID/source/)
 
 # 4. Generate knowledge MD
-python pda_engine.py md FOLDER_ID
+python gmp_engine.py md FOLDER_ID
 
 # 5. Generate bilingual HTML sections using PROMPT.md template
 
 # 6. Merge sections
-python pda_engine.py merge FOLDER_ID
+python gmp_engine.py merge FOLDER_ID
 
 # 7. Update knowledge/INDEX.md (new block + routing table + cross-topic rows)
 
