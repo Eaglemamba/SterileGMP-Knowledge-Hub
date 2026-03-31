@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 10: General Considerations</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+.practice-box.green-solid {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+.practice-box.green-solid h3, .practice-box.green-solid h4 {
+    color: #2e7d32 !important;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 10: General Considerations</h1>
+    <div class="subtitle">一般考量</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p189 &ndash; p198</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>Learning Objectives / 本章學習目標</h3>
+    <ul>
+        <li>Understand non-GMP regulatory considerations (environmental, health &amp; safety) that affect sterile facility design / 理解影響無菌設施設計的非GMP法規考量（環境、健康與安全）</li>
+        <li>Identify key waste water management strategies and the GMP-vs-GEP conflict in recycling / 辨識廢水管理策略，以及回收再利用與GMP之間的潛在衝突</li>
+        <li>Recognize noise control challenges unique to sterile facilities with large HVAC systems / 認識無菌設施大型HVAC系統的噪音控制挑戰</li>
+        <li>Apply health &amp; safety design principles including containment, fire prevention, and means of escape / 運用含密閉、防火與逃生路線之健康安全設計原則</li>
+        <li>Evaluate site selection factors critical for sterile product manufacturing / 評估無菌產品製造之廠址選擇關鍵因素</li>
+        <li>Understand energy conservation, security, and auditing/reporting requirements / 理解能源節約、安全防護與稽核報告要求</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.1 Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">10.1 Introduction</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This chapter covers other considerations that may affect GMP issues outlined in this Guide. These include key non-GMP regulatory/compliance design issues, such as <span class="key-term">environmental, health and safety</span>, that should be considered for successful facility design, and which may otherwise indirectly affect GMPs.</p>
+        <p>It is assumed that the reader of this Guide understands and applies the principles of <span class="key-term">GEP (Good Engineering Practice)</span>; it is not the intent of this section to offer GEP guidance or to list the vast array of regulations with which engineers work.</p>
+        <p>Specific country or region regulations may apply that are not covered within this chapter. Note that a facility should adhere to the legislative requirements of the country in which it is based, even if the product will be exported to another country. For example, some legislation in the country of manufacture may be more stringent than the country into which the pharmaceutical product is being imported.</p>
+        <p>This chapter generally refers to US and EU regulations and includes a brief tabulation of comparable references; Tables 10.1 and 10.2 are provided as examples, for illustrative purposes only.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：非GMP法規也會影響GMP合規</h4>
+            <p>本章的關鍵訊息：一個無菌設施可能完全符合GMP，但如果忽略了環境法規、職業安全法規或消防法規，仍然無法合法運營。設施設計必須同時滿足<strong>GMP</strong>和<strong>GEP</strong>兩個層面的要求。</p>
+            <p>更複雜的是，GEP要求有時會與GMP產生衝突（例如：廢水回收 vs. 交叉污染風險），需要在設計階段預先協調。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：餐廳不只要衛生合格</h4>
+            <p>一家餐廳即使食安評鑑滿分（= GMP合規），如果消防設備不合格、噪音擾鄰被投訴、廚餘油水直排下水道，一樣會被停業。藥廠也是如此——GMP只是合規拼圖的一塊，環安衛是另一塊不可或缺的部分。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：屬地原則（Local Legislation Prevails）</h4>
+            <p>ISPE明確指出：設施必須遵守<strong>所在國</strong>的法規，即使產品出口到其他國家。這在CDMO特別重要——客戶可能來自不同國家，但廠房必須先符合當地法規。有時當地法規比目標出口國更嚴格。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.2 Environmental - General + Particulate + VOC + Ozone -->
+<!-- ============================================================ -->
+<div class="section-title">10.2 Environmental &ndash; General</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.2.1 General Discussion</strong></p>
+        <p>The environmental impact of the processing should be considered. There is significant pressure, both statutory and voluntary, on the pharmaceutical industry to reduce the environmental load from processes, including energy usage. All areas of the product supply chain and product lifecycle should be considered, for example:</p>
+        <ul>
+            <li>Processing waste</li>
+            <li>Environmentally friendly packaging</li>
+            <li>Facility energy usage</li>
+            <li>Emissions, such as greenhouse gases or acidic gases</li>
+            <li>Facility water usage</li>
+            <li>Non-processing waste</li>
+            <li>Facility and equipment disposal</li>
+        </ul>
+        <p>Options for pre-sterilized processing system waste disposal, incineration, inactivation, or depolymerization should be considered.</p>
+        <p>Sterile processes may be completely GMP compliant, but may still not be completely within other regulations if the environmental impacts are not considered during the design process (product, process, and facility). There may also be instances where the requirements of GEP in this area conflict or contradict GMPs.</p>
+        <p>The engineering solution should consider both GEP and GMP.</p>
+
+        <p><strong>10.2.2 Particulate Emissions &ndash; Air</strong></p>
+        <p>At-source containment of solid materials is recommended as the best means of controlling particulate emissions. Where this is not possible and high airborne concentrations are unavoidable, regulations may require efficient exhaust filtration. In addition, <span class="key-term">HEPA filtration</span> may be required before discharge to atmosphere. Permissible emission levels for pharmaceutical dusts are particularly low in most regulations.</p>
+
+        <p><strong>10.2.3 Volatile Organic Compounds (VOC), Odors, and Combustion Products</strong></p>
+        <p>Typically, sterile product facilities do not generate major amounts of these substances; however, consideration should be given for formulations of drug products which may contain organic solvents. More commonly, they can arise from cleaning, disinfection, and fumigation activities. Disposal or removal of fumigants (liquid or airborne) is a particular challenge. Storage of combustible materials may require control zones within a facility with maximum quantities per control zone.</p>
+
+        <p><strong>10.2.4 Ozone Depleters</strong></p>
+        <p>HVAC cooling systems, freeze dryers, and other process equipment may contain refrigerants that affect atmospheric ozone. Local regulations may require certified repair and service personnel. It is recommended that efforts be taken to eliminate <span class="key-term">Ozone Depleting Substances (ODS)</span>.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：GMP vs. GEP 潛在衝突</h4>
+            <p>無菌製程天生就是「高環境負擔」的：</p>
+            <ul>
+                <li><strong>大量用水</strong>：WFI製備、清洗、滅菌都需要純水</li>
+                <li><strong>高能耗</strong>：HVAC系統24/7運轉維持潔淨度</li>
+                <li><strong>一次性耗材</strong>：Single-Use Systems的塑膠廢棄物</li>
+            </ul>
+            <p>環保法規要求減量回收，但GMP要求防止交叉污染。設計工程師必須在兩者之間找到平衡。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：排氣管理的三層邏輯</h4>
+            <ul>
+                <li><strong>第一優先</strong>：源頭密閉（At-source containment）——在產生點就控制住</li>
+                <li><strong>第二層</strong>：高效排氣過濾（Exhaust filtration）——捕捉逃逸的顆粒</li>
+                <li><strong>第三層</strong>：HEPA過濾後排放——排入大氣前的最終防線</li>
+            </ul>
+            <p>這個邏輯與製程污染控制策略（CCS）完全一致：源頭控制 > 過程控制 > 末端控制。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：VOC與薰蒸劑的挑戰</h4>
+            <p>無菌設施常用VHP（汽化過氧化氫）進行房間薰蒸消毒。薰蒸後，如何安全地去除殘留薰蒸劑是一個工程與環保的雙重挑戰——既要確保房間殘留量低到可以安全進入（職安要求），又要確保排放不超標（環保要求）。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：臭氧層破壞物質（ODS）淘汰</h4>
+            <p>凍乾機和HVAC冷媒是無菌設施中最常見的ODS來源。現代設施應使用HFC或HFO替代冷媒。台灣依《蒙特婁議定書》已全面管制CFC，新設施必須確認所有設備冷媒符合最新環保法規。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.3 Environmental - Waste Water -->
+<!-- ============================================================ -->
+<div class="section-title">10.3 Environmental &ndash; Waste Water</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.3.1 Waste Water Volumes</strong></p>
+        <p>Waste water discharges are regulated in most countries. Design should address the control of discharges and consider the <span class="key-term">assimilative capacity of receiving waters</span>. Use of solvents to clean process equipment increases the risk of solvent losses from the facility and, potentially, into the environment. There may be a local requirement to recycle solvent. This introduces cross-contamination issues into the processes, which could have a GMP impact and should be addressed.</p>
+        <p>Water treatment, cleaning, and washing operations can generate significant volumes of waste water from sterile product facilities. Waste water volumes can be reduced by the application of a <span class="key-term">water quality cascade</span>. Cleaner water streams are reused in lower specification applications. Examples include WFI blow down as boiler feed water, final rinse water as first wash water, and reverse osmosis reject as irrigation water.</p>
+        <p>Treatment of biologically active waste should also be considered; due to risk to public health, these systems should be designed for high integrity and treated as GMP systems.</p>
+
+        <p><strong>10.3.2 Spill Prevention</strong></p>
+        <p>Regulatory authorities may require measures for spill prevention or containment within manufacturing and storage areas.</p>
+
+        <p><strong>10.3.3 Fire Water Retention Facilities</strong></p>
+        <p>Retention facilities (e.g., ponds, dikes) may be required to avoid storm water or surface water contamination in the event of fire.</p>
+
+        <p><strong>10.3.4 Effluent Treatment</strong></p>
+        <p>Effluent treatment may be required, depending upon projected loads and local discharge standards. Treatment steps may be chemical, biological, or combinations of both. The location of treatment facilities, in relation to facility air/HVAC intakes, should be given careful consideration.</p>
+
+        <p><strong>10.3.5 Waste Water Segregation</strong></p>
+        <p>Varying levels or types of contamination from different operations may require segregation of waste water streams within manufacturing and utilities areas. Suitable waste streams may be considered as feedstock to bio-digester plants, which generate fuel in the form of biogas.</p>
+
+        <p><strong>10.3.6 Recycling/Waste Minimization</strong></p>
+        <p>Authorities may seek the application of the principles of clean manufacturing and resource conservation. In sterile product facilities, these principles, initially, may conflict with GMP requirements. These potential conflicts should be reconciled during the design stage.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：水質梯級利用（Water Quality Cascade）</h4>
+            <p>這是無菌設施節水的核心策略——將較高品質的排放水降級再利用：</p>
+            <ul>
+                <li><strong>WFI排放水</strong> &rarr; 鍋爐給水</li>
+                <li><strong>最終沖洗水</strong> &rarr; 第一道清洗水</li>
+                <li><strong>RO濃排水</strong> &rarr; 灌溉用水或冷卻塔補水</li>
+            </ul>
+            <p>但每一步降級再利用都必須評估GMP風險——特別是交叉污染的可能性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：生物活性廢棄物需按GMP系統管理</h4>
+            <p>處理含活性生物製劑（如活病毒疫苗、細胞培養液）的廢水系統，ISPE建議以<strong>GMP系統</strong>的標準來設計和驗證。這是因為洩漏可能造成公共衛生風險，系統完整性必須與製程系統同等嚴謹。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：廢水分流如同垃圾分類</h4>
+            <p>家庭垃圾分為一般垃圾、廚餘和回收物；工廠廢水同樣需要「分流」。含有機溶劑的廢水、含活性藥物成分的廢水、一般清洗廢水——各有不同的處理路徑和排放標準。混在一起不僅增加處理成本，更可能觸犯環保法規。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：廢水處理設施選址與HVAC進氣口</h4>
+            <p>ISPE特別警告：廢水處理設施的位置必須遠離廠房HVAC進氣口。化學或生物處理過程產生的異味、微生物氣膠，若被HVAC系統吸入潔淨區，將直接衝擊產品品質和環境監測結果。</p>
+        </div>
+
+        <div class="practice-box green-solid">
+            <h4>CDMO實務檢核</h4>
+            <ul>
+                <li>你的設施是否已建立廢水分流系統？高風險廢水（含API）是否有獨立處理流程？</li>
+                <li>廢水處理設施與HVAC進氣口的相對位置是否經過風險評估？</li>
+                <li>溶劑回收再利用是否有交叉污染風險評估文件？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.4 Environmental Noise -->
+<!-- ============================================================ -->
+<div class="section-title">10.4 Environmental Noise</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.4.1 External Noise</strong></p>
+        <p>Due to their large air handling requirements, sterile product facilities may be a source of objectionable noise outside the building. Fans, compressors, and other utilities equipment can generate unacceptable noise levels, in terms of both volume and frequency. Check local regulations to ensure boundary noise levels do not exceed acceptable levels. Suitable <span class="key-term">attenuation techniques</span> should be employed to comply with the appropriate levels.</p>
+
+        <p><strong>10.4.2 Noise Sensitive Areas</strong></p>
+        <p>In addition to regulatory requirements, sensitivity of the surrounding community to noise should be assessed at the site selection and early design stage. Existing and potential residential developments should be considered, and the surrounding topography should be assessed for rural sites.</p>
+
+        <p><strong>10.4.3 Noise in the Working Environment</strong></p>
+        <p>Strict standards are applied by health and safety bodies with respect to noise in the working environment. Manufacturing and utilities equipment specifications should comply with the appropriate standards, and localized attenuation implemented where needed. Processing equipment may be the major source of noise in the workplace, especially where glassware is handled.</p>
+
+        <p><strong>10.4.4 Noise Reduction</strong></p>
+        <p>If possible, noise generating equipment should be located remotely from work areas. As sound attenuation usually contains soft material, <span class="key-term">cleanable non-shedding materials</span> may be used as noise reduction measures in the facility or in HVAC. Typical clean area finishes offer little sound absorption potential, so noise is addressed in equipment specifications (e.g., larger fans running at lower speeds in the HVAC air handler). If noise cannot be controlled in other ways, sound attenuation materials in air handling systems should provide optimum cleanability and not harbor bioburden.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：無菌設施的噪音矛盾</h4>
+            <p>無菌設施天生就是「吵」的——維持ISO 5/7/8潔淨度需要大量換氣，這意味著：</p>
+            <ul>
+                <li><strong>大型AHU風扇</strong>持續運轉</li>
+                <li><strong>壓縮機</strong>（冷凍、壓縮空氣）24/7運作</li>
+                <li><strong>製程設備</strong>（特別是玻璃瓶/安瓿處理線）產生撞擊噪音</li>
+            </ul>
+            <p>而潔淨室的硬質光滑表面（不鏽鋼、環氧樹脂）幾乎沒有吸音能力，反而會反射放大噪音。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：降噪材料 vs. 潔淨度的衝突</h4>
+            <p>傳統吸音材料（泡棉、纖維板）會脫屑（shedding）且容易藏菌，不適合用在潔淨區。ISPE建議的解決方案是<strong>從源頭控制</strong>：</p>
+            <ul>
+                <li>使用較大尺寸的風扇以較低轉速運行（同樣風量，更低噪音）</li>
+                <li>將噪音設備遠離工作區域</li>
+                <li>使用可清洗、不脫屑的特殊吸音材料</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：潔淨室如同「瓷磚浴室」</h4>
+            <p>想像在全貼瓷磚的浴室裡說話——聲音迴盪放大。潔淨室就是這樣。你不能像客廳一樣掛窗簾或鋪地毯來吸音，因為那些東西會脫屑污染環境。所以唯一的辦法是——讓聲源本身變安靜。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考題</h4>
+            <p>你的無菌充填線附近的噪音水準是否曾經量測？如果操作人員需要長時間在ISO 7/Grade B區域工作，工作環境噪音是否超過85 dBA（通常是需要佩戴護耳設備的門檻）？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.5 Environmental - Solid and Concentrated Wastes -->
+<!-- ============================================================ -->
+<div class="section-title">10.5 Environmental &ndash; Solid and Concentrated Wastes</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.5.1 Responsibility</strong></p>
+        <p>Offsite disposal of some wastes from sterile facilities may be necessary. In general, facility site operators remain responsible for downstream environmental and safety hazards arising from offsite disposal. Disposal contractors should be controlled carefully and, in some instances, licensed. Disposal operations may require certification.</p>
+
+        <p><strong>10.5.2 Landfill Sites</strong></p>
+        <p>Landfill sites are subject to an increasing level of control by authorities, and their location, suitability, and management should be assessed. In some areas, even innocuous solid wastes from pharmaceutical operations are subject to strict control.</p>
+
+        <p><strong>10.5.3 Shipments of Wastes</strong></p>
+        <p>US and EU regulations apply controls for both internal and trans-border shipments of hazardous materials. These should be considered in the logistics planning of facility operation.</p>
+
+        <p><strong>10.5.4 Incineration</strong></p>
+        <p>Incineration may be essential for the disposal of toxic/potent solids or liquids, and may be located on or offsite. Onsite incineration can raise particularly sensitive environmental issues, and disposal in this manner may require an increased level of licensing and certification.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：廢棄物的「搖籃到墳墓」責任</h4>
+            <p>ISPE強調一個關鍵法律原則：即使廢棄物已交給外部處理商，<strong>產生者仍需負最終責任</strong>。這意味著：</p>
+            <ul>
+                <li>必須審慎篩選和監督廢棄物處理承包商</li>
+                <li>處理商需具備適當的許可證和認證</li>
+                <li>跨境運輸危險廢棄物有額外的法規要求</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Single-Use Systems的廢棄物挑戰</h4>
+            <p>現代無菌設施越來越多使用一次性系統（SUS），產生大量塑膠廢棄物。這些廢棄物可能接觸過活性藥物成分，需要特殊處理（去活化或焚燒）。ISPE在10.2.1已提到「depolymerization」——這是一種將塑膠分解回單體以回收再利用的新興技術。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：毒性廢棄物焚化如同「最後手段」</h4>
+            <p>就像醫院的感染性廢棄物必須焚化處理而非丟入一般垃圾場，含有高活性藥物成分（如ADC藥物、細胞毒性藥物）的固態廢棄物也必須透過焚燒徹底銷毀。廠內設置焚化爐雖然便利，但面臨更嚴格的環保許可和社區接受度問題。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.6 Health and Safety -->
+<!-- ============================================================ -->
+<div class="section-title">10.6 Health and Safety</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.6.1 Training and Safe Behaviors</strong></p>
+        <p>An essential element of safe behaviors is driven by attitude and a core value that safety should not be compromised. Operator safety during normal operations and mishaps also should be reviewed. Training should be evaluated for manual and material handling operations, including potential operational exposure, knowledge of universal precautions, and the use of <span class="key-term">PPE</span>.</p>
+
+        <p><strong>10.6.2 Hazardous Products</strong></p>
+        <p>Hazardous products, which include potent and toxic products, require special design consideration. <span class="key-term">Containment</span> considerations may conflict with cleanroom design principles, such as positive pressure cascades, and require special attention to HVAC and building design. <span class="key-term">Operator exposure limits</span> should be established for the material being handled, and should form the basis for design of containment or isolation measures.</p>
+
+        <p><strong>10.6.3 Cleaning and Disinfectant Materials</strong></p>
+        <p>Many materials used for cleaning and disinfecting purposes are hazardous chemicals, and safe handling methods should be incorporated in the design and operating procedures. As cleaning and sanitizing dilutions should be made up fresh daily, there is potential for personnel to have frequent exposure to these chemicals.</p>
+
+        <p><strong>10.6.4 Materials Handling</strong></p>
+        <p>Mechanical handling methods help avoid unsafe lifting practices. Enhanced ergonomics in production, logistics, and maintenance should be considered. Material handling methods should be addressed in early design phases as they may affect building layout and structure.</p>
+
+        <p><strong>10.6.5 Surfaces and Safe Access</strong></p>
+        <p>Cleaning and sanitization requirements should be combined with non-slip properties when specifying floor surfaces. Dedicated access routes for the operation and maintenance of equipment should be incorporated in building layouts.</p>
+
+        <p><strong>10.6.6 Fire Prevention</strong></p>
+        <p>The requirements for fire protection (e.g., sprinklers) in clean areas may have the potential to create problems with cleaning and maintaining room pressurization if not designed properly. <span class="key-term">Sealed and concealed sprinklers</span> which maintain a flush ceiling profile are recommended. Building and fire code regulations often drive construction with fire resistive materials, addressing flame spread and smoke generation properties of surface finishes, avoiding combustible materials, and limiting storage and use of regulated physical and health hazards.</p>
+
+        <p><strong>10.6.7 Means of Escape</strong></p>
+        <p>The requirements for exiting a facility in an emergency may conflict with GMP considerations when considering the philosophy of protecting the product in open processing. Design of sterile facilities should overcome the conflict between complex entry and exit routines to preserve air pressure cascades and fire escape routes to get people safely out of the facility. Door interlocks should be overridden when emergency exit is necessary. It is recommended that doors are <span class="key-term">fail safe</span> and are de-energized during an emergency.</p>
+        <p>Consideration should be given to means for emergency eye wash and emergency shower availability in controlled areas that do not compromise the integrity of the area. In an ISO 7/Grade B space, the risk during cleaning is reduced since personnel are usually wearing goggles. Where eyewash is judged to be needed in highly classified space, consideration should be taken to deploy portable sterile water/saline eyewash stations.</p>
+
+        <p><strong>10.6.8 Protection of Machinery</strong></p>
+        <p>Operators should be protected from moving components in manufacturing and utility equipment. Adequate guarding, interlocking, and safe maintenance access should be provided. Equipment design should address particularly potential hand injuries and be provided with adequate means of isolation for electrical supply and other hazard sources and release of stored energy (e.g., <span class="key-term">Lock-Out/Tag-Out</span>).</p>
+
+        <p><strong>10.6.9&ndash;10.6.11</strong></p>
+        <p>Electrical safety codes (IEEE or European equivalents) should be incorporated in facility design. Recognized standards and local requirements should be implemented for boilers, pressure vessels, and piping systems. Dust explosion and static hazards should be addressed carefully when handling solid materials in powder form, with adequate explosion venting to the atmosphere and, in some instances, explosion containing systems or process inerting.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：密閉（Containment）vs. 正壓梯度的衝突</h4>
+            <p>這是無菌設施設計中最具挑戰性的矛盾之一：</p>
+            <ul>
+                <li><strong>GMP要求</strong>：潔淨區維持正壓梯度，防止外部污染進入（保護產品）</li>
+                <li><strong>密閉要求</strong>：處理高活性/毒性產品時需要負壓，防止有害物質外洩（保護操作員）</li>
+            </ul>
+            <p>解決方案通常是<strong>隔離器（Isolator）</strong>或<strong>RABS</strong>——在正壓潔淨室內建立一個獨立的負壓操作空間，同時保護產品和人員。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵術語：職業暴露限值（OEL）</h4>
+            <p><span class="key-term">OEL（Occupational Exposure Limit）</span>是設計密閉系統的基礎：</p>
+            <ul>
+                <li><strong>OEL &gt; 10 &mu;g/m&sup3;</strong>：一般通風控制可能足夠</li>
+                <li><strong>OEL 1&ndash;10 &mu;g/m&sup3;</strong>：需要局部排氣或密閉操作</li>
+                <li><strong>OEL &lt; 1 &mu;g/m&sup3;</strong>：需要全密閉系統（隔離器）</li>
+            </ul>
+            <p>OEL數值直接決定了設施設計的複雜度和成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：消防灑水器與潔淨室的衝突</h4>
+            <p>標準灑水器頭突出天花板會破壞潔淨室的平整天花板設計，造成清潔死角和壓差洩漏點。ISPE推薦使用<strong>嵌入式隱藏灑水器（Sealed &amp; Concealed Sprinklers）</strong>，維持天花板平整的同時符合消防法規。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：緊急逃生 vs. 門互鎖（Interlock）</h4>
+            <p>潔淨室常設有門互鎖（兩道門不能同時打開，以維持壓差）。但在緊急逃生時，<strong>所有互鎖必須可以被覆蓋（Override）</strong>。ISPE建議門採用<strong>失效安全（Fail Safe）</strong>設計——斷電時自動解鎖，確保人員可以立即撤離。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：LOTO如同關電箱鎖門</h4>
+            <p><span class="key-term">Lock-Out/Tag-Out（LOTO）</span>就像你在修理家裡電器前，先把總開關關掉並鎖住，貼上「維修中勿開」的標示。在藥廠，這套程序確保維修人員不會被突然啟動的機器傷害——所有能量源（電力、壓縮空氣、蒸氣）都必須被隔離和鎖定。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考題</h4>
+            <ol>
+                <li>你的設施是否有處理高活性藥物（如ADC payload、細胞毒性藥物）？如果有，OEL是多少？密閉等級是否足夠？</li>
+                <li>潔淨區的緊急出口門是否設計為fail safe？斷電時互鎖是否自動解除？</li>
+                <li>清潔消毒人員每天配製消毒液時，是否有適當的PPE和通風措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.7 Site Selection and Location -->
+<!-- ============================================================ -->
+<div class="section-title">10.7 Site Selection and Location</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.7.1 Ambient Air Quality</strong></p>
+        <p><span class="key-term">Ambient air quality</span> is a primary requirement in site selection for a sterile product facility. If the facility is located in an industrial or agricultural area, the impact of activities in those areas should be considered. Air sampling and analysis for the presence of objectionable levels of chemicals and dust may be appropriate prior to site selection.</p>
+
+        <p><strong>10.7.2 Water Supply</strong></p>
+        <p>A reliable supply of good quality water should be available for pharmaceutical facilities. Local water sources should be assessed prior to site selection, taking into account that the quality may be subject to seasonal variation. If municipal water is available, in addition to quality, the level of its pretreatment should be assessed. Excessive chlorination may cause difficulties in water treatment and purification for sterile products.</p>
+
+        <p><strong>10.7.3 Environmental Sensitivity</strong></p>
+        <p>Site selection should address the potential environmental sensitivity of the selected area. The existence of recreational areas, nature preserves, watersheds, flood plains, endangered species, etc., may require investigation.</p>
+
+        <p><strong>10.7.4 Other Selection Considerations</strong></p>
+        <p>Other considerations in the selection of sites for sterile product facilities include:</p>
+        <ul>
+            <li>Climatic conditions</li>
+            <li>Local geographic conditions (e.g., local lakes/rivers may increase capacity requirements)</li>
+            <li>Suitability of the site for building foundations</li>
+            <li>Requirements for special structural or seismic design</li>
+        </ul>
+        <p>Communities and industrial parks may require adherence to specific architectural standards.</p>
+
+        <p><strong>10.7.5 Local Code Officials</strong></p>
+        <p>Depending on the geographical location of the sterile product manufacturing facility, the learning curve of local officials may be quite steep. Local code officials may not have the knowledge or the experience to understand the scope of work, or how to apply the current codes, standards, and regulations to the permitting, inspection, and approval of these facilities. It helps to develop a relationship with local code officials early in the programming and conceptual design stage of the project to build trust and alignment.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：無菌設施選址的五大關鍵因素</h4>
+            <ol>
+                <li><strong>環境空氣品質</strong>——工業區或農業區的粉塵、化學物質影響HVAC預過濾負荷</li>
+                <li><strong>水源品質與可靠性</strong>——季節性水質變化會影響WFI系統設計</li>
+                <li><strong>環境敏感性</strong>——周邊是否有保護區、水源地、防洪區</li>
+                <li><strong>氣候與地理條件</strong>——地震帶、高濕度、極端溫差都影響設施設計</li>
+                <li><strong>基礎設施與法規環境</strong>——電力穩定性、天然氣供應、當地官員的配合度</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：水源的隱藏陷阱</h4>
+            <p>ISPE特別提到「過度加氯」問題。自來水公司為確保飲用水安全而大量加氯，但高氯量會：</p>
+            <ul>
+                <li>增加水處理系統（RO/EDI）的負擔</li>
+                <li>縮短RO膜壽命</li>
+                <li>需要額外的脫氯處理步驟</li>
+            </ul>
+            <p>台灣的自來水餘氯量通常在0.2-1.0 ppm之間，需要在URS中明確規範進水水質。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：廠址選擇如同選擇住家</h4>
+            <p>就像選房子不能只看房屋本身——要看學區、交通、鄰居、是否在洪水區、空氣品質等。選藥廠廠址也是一樣：空氣品質決定了HVAC過濾成本，水質決定了純水系統複雜度，地理位置決定了建築結構成本。選錯地方，後續的營運成本會遠超預期。</p>
+        </div>
+
+        <div class="practice-box green-solid">
+            <h4>CDMO實務經驗：與地方官員的溝通</h4>
+            <p>ISPE用了很大篇幅強調與<strong>地方建管/消防/環保官員</strong>的早期溝通。這在實務中極其重要——無菌設施的設計（例如潔淨室壓差門互鎖、特殊通風系統、危險物品儲存）對不熟悉製藥業的地方官員來說可能難以理解。</p>
+            <p>建議：在概念設計階段就邀請地方官員參訪類似設施，建立互信，避免在審批階段產生不必要的延誤。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.8 Energy Sources -->
+<!-- ============================================================ -->
+<div class="section-title">10.8 Energy Sources</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.8.1 Natural Gas</strong></p>
+        <p>A nearby natural gas source is an advantage and should be assessed as a part of the initial site selection. Oil or other energy sources are normally transportable and should be easily accessible on the site.</p>
+
+        <p><strong>10.8.2 Fuel Storage</strong></p>
+        <p>Storage facilities should be specified on the basis of incoming supply usage and reliability. Storage facilities should be designed in accordance with recognized standards and provide adequate environmental protection against spillage.</p>
+
+        <p><strong>10.8.3 Electrical Supplies and Characteristics</strong></p>
+        <p>The key requirement for electrical power supplied to a sterile facility is <span class="key-term">reliability</span>. The consequences of power failures are serious (especially if frequent or extended) and should be evaluated prior to site selection. Characteristics of the available supply should be checked. Misunderstandings can occur due to incorrect specification of voltages and frequencies. In addition to nominal values, the tolerance range for local supplies should be evaluated. <span class="key-term">Backup power supplies</span> should be provided for critical energy sources, such as UPS for automation, backup generators, etc.</p>
+
+        <p><strong>10.8.4 Energy Conservation</strong></p>
+        <p>A level of <span class="key-term">energy conservation</span> should be incorporated into the facility design, in anticipation of increasing regulatory requirements and economic pressure in this respect. Non-contaminating heat recovery arrangements and combined heat and power systems (also known as <span class="key-term">cogeneration</span>) should be considered for installation in the future.</p>
+        <p>Facilities in the EU should consider workplace access to a window to the outdoors. This can be an energy saving feature, but usually is driven by operator health and safety requirements.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：電力可靠性是無菌設施的生命線</h4>
+            <p>無菌設施斷電的後果極其嚴重：</p>
+            <ul>
+                <li><strong>HVAC停止</strong> &rarr; 潔淨室壓差消失 &rarr; 環境失控 &rarr; 整批產品可能報廢</li>
+                <li><strong>冷鏈中斷</strong> &rarr; 溫度敏感性產品（生物製劑）可能降解</li>
+                <li><strong>自動化系統停擺</strong> &rarr; 製程參數失去監控</li>
+                <li><strong>凍乾機斷電</strong> &rarr; 正在凍乾的產品可能全部報廢</li>
+            </ul>
+            <p>因此電力備援系統（UPS + 柴油發電機）是基本配置，而非可選項目。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：能源效率的永續趨勢</h4>
+            <p>ISPE提到的<strong>熱回收</strong>和<strong>汽電共生（Cogeneration）</strong>在2018年出版時還是「未來考量」，但到了今天已成為許多新建藥廠的標準配置。無菌設施的HVAC系統是最大能耗來源（通常佔總能耗60-70%），熱回收系統可顯著降低營運成本。</p>
+            <p>ESG報告要求也推動了藥廠投資太陽能板、LED照明、高效馬達等節能設備。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：電壓/頻率如同語言差異</h4>
+            <p>ISPE警告「電壓和頻率的誤解」——全球不同國家使用不同的電力規格（例如台灣110V/60Hz，歐洲230V/50Hz）。這就像購買進口設備時的「語言障礙」——設備的電氣規格必須與當地供電相容，否則會造成設備損壞或性能異常。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考題</h4>
+            <ol>
+                <li>你的設施備用發電機能支持多長時間的全負載運作？是否足以完成關鍵製程批次？</li>
+                <li>UPS系統覆蓋了哪些關鍵設備？是否包含環境監測系統和BMS？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.9 Auditing, Monitoring, and Reporting -->
+<!-- ============================================================ -->
+<div class="section-title">10.9 Auditing, Monitoring, and Reporting</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.9.1 Freedom of Access to Information</strong></p>
+        <p>The US and EU regulations incorporate legal requirements for freedom of access to information. These should be addressed at the design stage, and procedures developed to comply with their operational requirements.</p>
+
+        <p><strong>10.9.2 Environmental Impact Statements</strong></p>
+        <p>Both US and EU regulations require <span class="key-term">environmental impact assessments</span> prior to proceeding with industrial developments. These requirements, and the time for processing the information and procuring permits, should be allowed for in the design schedules.</p>
+
+        <p><strong>10.9.3 Emergency Planning</strong></p>
+        <p>For regulatory reasons and good operating practice, emergency response plans should be prepared for the facility.</p>
+
+        <p><strong>10.9.4 Environmental Management Systems</strong></p>
+        <p>Most authorities require some level of management system for an environmental program. This requirement should be addressed at the design stage.</p>
+
+        <p><strong>10.9.5 Emissions Register</strong></p>
+        <p>The regulatory standards of a country may require comprehensive records for monitoring of ongoing emissions, as well as documenting and explaining deviations from accepted standards.</p>
+
+        <p><strong>10.9.6 Documentation</strong></p>
+        <p>It is good engineering practice to document both the design and the operation of a facility. Specific documentation may be required in order to comply with GEP, in addition to that required by GMP. Commissioning documents should reflect adherence to non-GMP regulations, as described in the user requirements documentation created at the start of the project.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：環評時程對專案的影響</h4>
+            <p>ISPE特別提醒：<strong>環境影響評估（EIA）需要時間</strong>。許多藥廠新建或擴建專案的時程延誤，不是因為工程問題，而是因為環評許可的審批時間被低估。在台灣，環評審查可能需要6-18個月，必須在專案規劃初期就納入時程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：GEP文件 vs. GMP文件</h4>
+            <p>設施的文件系統不僅要滿足GMP（例如確效文件、品質記錄），還需要滿足GEP要求（例如壓力容器檢驗報告、環保排放記錄、消防系統維護記錄）。ISPE建議在<strong>URS階段</strong>就將非GMP法規要求納入，確保試車文件同時反映GMP和GEP合規。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：環境管理系統（EMS）</h4>
+            <p>大多數藥廠會採用<strong>ISO 14001</strong>環境管理系統。對CDMO而言，具備ISO 14001認證不僅是法規要求，更是客戶稽核時展現環境責任的重要證據。EMS應在設施設計階段就開始規劃，而非建廠完成後才補做。</p>
+        </div>
+
+        <div class="practice-box green-solid">
+            <h4>CDMO實務檢核</h4>
+            <ul>
+                <li>新建或擴建專案的時程是否已包含環評審查所需時間？</li>
+                <li>設施的試車文件是否同時記錄了GMP和非GMP（消防、環保、職安）合規項目？</li>
+                <li>是否建立了排放登記簿（Emissions Register）以持續監測和記錄？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.10 Security -->
+<!-- ============================================================ -->
+<div class="section-title">10.10 Security</div>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><strong>10.10.1 Controlled Substances</strong></p>
+        <p>Where appropriate, secure storage areas should be provided for controlled narcotics and other listed dangerous substances, and should be designed to meet government standards (e.g., Drug Enforcement Agency) based on the level of security they are used for.</p>
+
+        <p><strong>10.10.2 Document Storage</strong></p>
+        <p>Consideration should be given to secure fireproof storage for hard copy manufacturing documents. Backup procedures and offsite storage may be necessary for electronically stored data. Refer to US FDA <span class="key-term">21 CFR Part 11</span> and <span class="key-term">EU GMP Volume 4 (Chapter 4 and Annex 11)</span> for more information on requirements for integrity of records maintained electronically.</p>
+
+        <p><strong>10.10.3 Logical Security</strong></p>
+        <p>In addition to providing physical security for a sterile pharmaceutical facility, <span class="key-term">logical security</span> should also be considered. The appropriate safeguards for information and automation systems should be part of the facility design. Safeguards may include information network firewalls, use of usernames and passwords to log into computer systems, and controls for downloading and changing process recipes. Systems should provide a means to change usernames and passwords on a periodic basis. Systems should be designed to be validated in accordance with governing regulatory requirements.</p>
+
+        <p><strong>10.10.4 Label Storage</strong></p>
+        <p>Secure facilities are required for labels and printed packaging materials. In addition to internal accountability, storage of labels and printed packaging materials should be secured against external interference. Proper location, security, and environment are important considerations that may help to mitigate labeling errors.</p>
+    </div>
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：實體安全（Physical Security）vs. 邏輯安全（Logical Security）</h4>
+            <p>藥廠安全防護有兩個層面：</p>
+            <ul>
+                <li><strong>實體安全</strong>：門禁系統、監視器、管制藥品保險櫃、文件防火櫃、標籤/印刷包材鎖定儲存</li>
+                <li><strong>邏輯安全</strong>：網路防火牆、使用者帳號密碼、製程配方下載權限控制、資料備份</li>
+            </ul>
+            <p>兩者缺一不可。ISPE在2018年就已強調邏輯安全的重要性，隨著藥廠數位化和工業4.0的推進，這個議題只會越來越關鍵。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：標籤安全——防止標示錯誤的最後防線</h4>
+            <p>標示錯誤（Labeling Error）是藥品召回的主要原因之一。ISPE建議標籤和印刷包材必須：</p>
+            <ul>
+                <li>儲存在<strong>專門的安全區域</strong></li>
+                <li>防止<strong>外部干擾</strong>（unauthorized access）</li>
+                <li>有適當的<strong>環境控制</strong>（溫濕度，防止標籤變質）</li>
+                <li>建立<strong>數量管控</strong>（發出與退回的數量核對）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：21 CFR Part 11 與 Annex 11</h4>
+            <p>電子記錄和電子簽章的法規要求適用於所有電子化的品質和製程記錄。設施設計時應確保自動化系統（BMS、SCADA、MES）從一開始就符合資料完整性要求——包括審計軌跡（Audit Trail）、權限分級、定期密碼更新等。後期補做比設計階段就納入困難得多。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：藥廠安全如同銀行金庫</h4>
+            <p>管制藥品的儲存就像銀行金庫——需要專用保險櫃、門禁記錄、雙人管控。標籤儲存則像印鈔廠的紙張管理——每一張都要追蹤去向。電子資料安全則像網路銀行——防火牆、密碼、權限控制缺一不可。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考題</h4>
+            <ol>
+                <li>你的設施的自動化系統（BMS/SCADA/MES）是否已通過21 CFR Part 11合規驗證？</li>
+                <li>管制藥品儲存區是否有雙重門禁和即時庫存記錄？</li>
+                <li>製程配方（Recipe）的修改權限是否受到嚴格控管？是否有審計軌跡？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-title">Section Summary / 章節總結</div>
+
+<div class="concept-box">
+    <h4>Chapter 10 Key Takeaways / 第十章核心要點</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Key Point (EN)</th>
+                <th>重點摘要（中文）</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>10.1 Introduction</strong></td>
+                <td>Non-GMP regulations (environmental, H&amp;S) indirectly affect GMP compliance; local legislation prevails</td>
+                <td>非GMP法規間接影響GMP合規；屬地原則優先</td>
+            </tr>
+            <tr>
+                <td><strong>10.2 Environmental</strong></td>
+                <td>At-source containment for particulates; GEP and GMP may conflict on waste minimization</td>
+                <td>顆粒排放以源頭密閉為首選；GEP與GMP在減廢上可能衝突</td>
+            </tr>
+            <tr>
+                <td><strong>10.3 Waste Water</strong></td>
+                <td>Water quality cascade for conservation; biologically active waste treated as GMP system</td>
+                <td>水質梯級再利用節水；生物活性廢水需按GMP系統管理</td>
+            </tr>
+            <tr>
+                <td><strong>10.4 Noise</strong></td>
+                <td>Sterile facilities are inherently noisy; use low-speed fans and non-shedding attenuation</td>
+                <td>無菌設施天生高噪音；使用低速風扇和不脫屑吸音材料</td>
+            </tr>
+            <tr>
+                <td><strong>10.5 Solid Waste</strong></td>
+                <td>Generator retains cradle-to-grave responsibility; SUS waste is an emerging challenge</td>
+                <td>廢棄物產生者負搖籃到墳墓責任；一次性系統廢棄物是新挑戰</td>
+            </tr>
+            <tr>
+                <td><strong>10.6 Health &amp; Safety</strong></td>
+                <td>OEL drives containment design; fire sprinklers and door interlocks need cleanroom-compatible solutions</td>
+                <td>OEL決定密閉等級；灑水器和門互鎖需潔淨室相容設計</td>
+            </tr>
+            <tr>
+                <td><strong>10.7 Site Selection</strong></td>
+                <td>Ambient air quality, water supply reliability, and local official engagement are critical</td>
+                <td>環境空氣品質、水源可靠性、地方官員配合度是關鍵</td>
+            </tr>
+            <tr>
+                <td><strong>10.8 Energy</strong></td>
+                <td>Power reliability is non-negotiable; backup systems (UPS + generators) are mandatory</td>
+                <td>電力可靠性不可妥協；備援系統為必要配置</td>
+            </tr>
+            <tr>
+                <td><strong>10.9 Auditing</strong></td>
+                <td>EIA timeline impacts project schedule; commissioning docs must cover both GMP and GEP</td>
+                <td>環評時程影響專案進度；試車文件須涵蓋GMP和GEP</td>
+            </tr>
+            <tr>
+                <td><strong>10.10 Security</strong></td>
+                <td>Physical + logical security; 21 CFR Part 11 compliance from design stage</td>
+                <td>實體+邏輯安全並重；設計階段就納入電子記錄法規</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="practice-box green-solid">
+    <h4>Chapter 10 Integration Checklist / 第十章整合檢核表</h4>
+    <p>Use this checklist when designing or auditing a sterile manufacturing facility:</p>
+    <ul class="checklist">
+        <li>Environmental impact assessment completed and timeline integrated into project schedule</li>
+        <li>Waste water segregation system designed with GMP risk assessment for recycling streams</li>
+        <li>Noise survey conducted; equipment specified with acceptable dBA levels for work areas</li>
+        <li>OEL established for all handled substances; containment design matched to OEL bands</li>
+        <li>Fire prevention systems (sealed/concealed sprinklers) compatible with cleanroom requirements</li>
+        <li>Emergency exit doors designed fail-safe with interlock override capability</li>
+        <li>Site selection criteria documented: air quality, water supply, seismic risk, power reliability</li>
+        <li>Backup power (UPS + generators) sized for critical systems and worst-case duration</li>
+        <li>Controlled substance storage meets DEA/local authority standards</li>
+        <li>Automation systems designed for 21 CFR Part 11 / Annex 11 compliance from day one</li>
+        <li>Label storage area secured with access control and inventory reconciliation procedures</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities (3rd Edition, 2018)</p>
+    <p>Chapter 10: General Considerations | Pages 189&ndash;198</p>
+    <p>Educational Material &mdash; For Learning Purposes Only</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

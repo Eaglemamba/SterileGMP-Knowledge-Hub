@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 6: Utility Systems</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   ISPE Green Color Override applied below.
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #2e7d52 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4 { color: #1a5c3a; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ANALOGY BOX - Yellow */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* TERM/CONCEPT BOX - Green */
+.concept-box:not(.analogy):not(.application):not(.note) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application):not(.note) h3,
+.concept-box:not(.analogy):not(.application):not(.note) h4 { color: #2e7d32 !important; }
+.term-box, .key-term-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* NOTE BOX - Orange */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* FORMULA BOX - Purple */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* APPLICATION BOX - Blue */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* PRACTICE BOX - Dashed Blue */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* PRACTICE BOX - Green Solid */
+.practice-box.green {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+.practice-box.green h3, .practice-box.green h4 { color: #2e7d32 !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: var(--accent-blue);
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39, 174, 96, 0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Chapter 6: Utility Systems / 公用工程系統</h1>
+    <div class="subtitle">ISPE Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities (3rd Ed. 2018)</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p143 – p150</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives / 學習目標</h3>
+        <ol>
+            <li>Distinguish between Process Systems and Process Support Systems and understand the criteria for classification / 區分製程系統與製程支援系統，理解分類標準</li>
+            <li>Understand the critical quality attributes of WFI, clean steam, and process gases in sterile manufacturing / 了解注射用水、潔淨蒸汽與製程氣體在無菌製造中的關鍵品質屬性</li>
+            <li>Identify key design considerations for utility distribution, filtration, and point-of-use requirements / 辨識公用工程分配、過濾及使用點需求的關鍵設計考量</li>
+            <li>Recognize the importance of risk-based approaches to utility system qualification and sterile boundary definition / 認識風險基礎方法在公用工程系統確效與無菌邊界定義中的重要性</li>
+            <li>Apply CDMO-relevant principles: utility capacity planning for multi-product facilities / 應用CDMO相關原則：多產品設施的公用工程產能規劃</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 6.1: INTRODUCTION -->
+    <!-- ============================================================= -->
+    <div class="section-title">6.1 Introduction / 導論</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.1 Introduction</h3>
+            <p>Utility systems used in sterile facility operations may be categorized as either <span class="key-term">Process Systems</span> or <span class="key-term">Process Support Systems</span>. The sterile product manufacturer should review the various systems within the facility and determine their respective categories. This provides the basis for determining the design, construction, commissioning, verification, and documentation requirements for the system.</p>
+
+            <h4>Process Systems are systems that:</h4>
+            <ul>
+                <li>Contact the product (as defined by the ASME BPE Standard as a surface that contacts raw materials, process materials, and/or product)</li>
+                <li>Contact materials or components which ultimately become part of the product
+                    <ul>
+                        <li>Process components include piping, fittings, valves, gaskets, vessels, pumps, filter housings, and instruments</li>
+                    </ul>
+                </li>
+                <li>Control contamination of surfaces that contact the product</li>
+                <li>Could otherwise directly affect product quality as determined through risk assessment (e.g., systems that prepare components and equipment for production)</li>
+            </ul>
+
+            <h4>Process Support Systems are systems that:</h4>
+            <ul>
+                <li>Do not contact the product or materials which ultimately become part of the product</li>
+                <li>Are generally site or building systems that are not specifically tailored to sterile manufacturing operations</li>
+                <li>Deal with an ancillary manufacturing process (e.g., waste disposal)</li>
+                <li>Do not explicitly affect product quality as determined through risk assessment</li>
+            </ul>
+
+            <h4>Examples of system categorization:</h4>
+            <ul>
+                <li>Purified water (depending on use), WFI, and clean steam are normally categorized as Process Systems.</li>
+                <li>Airflow of a depyrogenation tunnel or barrier isolator is generally a Process System since air contacts product contact components.</li>
+                <li>Compressed air and inert gases may be either Process or Process Support Systems, depending on use.
+                    <ul>
+                        <li>Sterile compressed air for post-SIP sterilization or pressure transfer of product to filling = Process System.</li>
+                        <li>Compressed air used as instrument air without product contact = Process Support System.</li>
+                    </ul>
+                </li>
+                <li>Breathing air, chilled water, instrument air, potable water, and floor drains are normally Process Support Systems.</li>
+            </ul>
+
+            <p>Systems should be defined with clear system boundaries, indicating the scope of the sections that are subject to more stringent testing and commissioning activities.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.1 導論解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：製程系統 vs. 製程支援系統</h4>
+                <p>本章將無菌設施中的公用工程分為兩大類：</p>
+                <ul>
+                    <li><strong>製程系統（Process Systems）</strong>：直接接觸產品或影響產品品質的系統，需要嚴格的設計、建造、調試與確效。</li>
+                    <li><strong>製程支援系統（Process Support Systems）</strong>：不接觸產品的輔助系統，依照良好工程規範（GEP）設計即可。</li>
+                </ul>
+                <p>分類的關鍵問題：<strong>該系統是否會接觸產品？是否會影響產品品質？</strong></p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：餐廳的水源分類</h4>
+                <p>想像一間餐廳：</p>
+                <ul>
+                    <li><strong>製程系統</strong>好比廚房用的純淨水——直接用於料理食材，必須符合飲用水標準。</li>
+                    <li><strong>製程支援系統</strong>好比沖洗地板的自來水——不直接接觸食物，清潔用途即可。</li>
+                </ul>
+                <p>但如果自來水意外濺到食材上，就會造成污染風險。同理，製程支援系統若設計不當（例如儀器空氣排入ISO 5區域），也可能影響產品。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：系統邊界定義</h4>
+                <p>ISPE強調必須為每個系統定義<strong>清楚的系統邊界（system boundaries）</strong>。這決定了：</p>
+                <ul>
+                    <li>哪些部分需要嚴格的調試與確效（commissioning & qualification）</li>
+                    <li>哪些部分只需遵循GEP</li>
+                    <li>文件化要求的範圍</li>
+                </ul>
+                <p>在CDMO環境中，同一條壓縮空氣管路可能同時服務製程用途和儀器用途——必須在系統邊界處清楚劃分。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 6.2: DESCRIPTIONS -->
+    <!-- ============================================================= -->
+    <div class="section-title">6.2 Descriptions / 系統描述</div>
+
+    <!-- 6.2.1 Process Systems -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.2.1 Process Systems</h3>
+            <p>Process Systems are considered to affect patient safety and product quality, and therefore, should be designed, constructed, commissioned, and verified to provide a service that meets a defined specification (considering product quality requirements) and prevents product contamination accordingly.</p>
+
+            <h4>Design considerations for Process Systems:</h4>
+            <ul>
+                <li>Appropriate materials of construction for process contact surfaces that allow systems to be cleaned, sterilized if required, operated, and maintained</li>
+                <li>Appropriate materials of construction for non-product contact surfaces that could affect the particulate count within the cleanroom</li>
+                <li>Exposure to cleaning materials of the room</li>
+                <li>Access for removal or maintenance</li>
+                <li>Particulates generated from rotating parts of equipment exhausts which could affect the particulate count of the cleanroom</li>
+                <li>Control of the system in service, out of service, and returned to service cases</li>
+                <li>Functional use and operator interaction</li>
+                <li>Ergonomic functionality</li>
+            </ul>
+
+            <p>For material selection, refer to the ASME BPE Standard. Selection of materials for fluid storage and distribution systems should consider the nature of the fluid being conveyed. For non-corrosive liquids and gases (such as nitrogen), typical materials include copper, plastics, and stainless steel.</p>
+
+            <p>Regulated companies should consider the type of cleaning agents and sterilants to be used and how those chemicals affect the surface of the equipment contacting the process. Each piping component and connection should be reviewed to determine how the system should be sterilized and whether the materials of construction are appropriate.</p>
+
+            <p>Service components and piping should be located outside the aseptic area, where possible. Surfaces inside the cleanroom should be sanitized or sterilized to meet or exceed allowable limits for bioburden.</p>
+
+            <p>Single-use systems should be designed to protect product integrity and prevent contamination from interrupted connections. Single-use systems and connections should be designed for routine operator interaction and functionality.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.2.1 製程系統設計考量</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：製程系統設計八大考量</h4>
+                <p>設計製程系統時，需系統性地檢視以下面向：</p>
+                <ol>
+                    <li><strong>接觸面材質</strong>——可清洗、可滅菌、耐操作與維護</li>
+                    <li><strong>非接觸面材質</strong>——不會增加潔淨室微粒數</li>
+                    <li><strong>耐清潔劑</strong>——能承受潔淨室清潔化學品</li>
+                    <li><strong>維護可及性</strong>——方便拆卸或維修</li>
+                    <li><strong>微粒控制</strong>——旋轉零件排氣不影響潔淨度</li>
+                    <li><strong>服務狀態管理</strong>——運行中、停機中、恢復使用三種狀態</li>
+                    <li><strong>操作員互動</strong>——功能性與人因工程</li>
+                    <li><strong>人因設計</strong>——符合人體工學原則</li>
+                </ol>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：材質選擇原則</h4>
+                <ul>
+                    <li>接觸產品面：依ASME BPE標準選擇，通常為316L不銹鋼</li>
+                    <li>非腐蝕性流體（如氮氣）：可用銅、塑膠或不銹鋼</li>
+                    <li>必須考慮清潔劑和滅菌劑對表面的影響</li>
+                    <li>管路與元件盡可能設於無菌區域之外</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO觀點：單次使用系統</h4>
+                <p>對CDMO而言，單次使用系統（Single-Use Systems）是多產品製造的重要策略：</p>
+                <ul>
+                    <li>減少交叉污染風險——無需產品轉換間的清潔確效</li>
+                    <li>降低設備共用的複雜度</li>
+                    <li>但必須確保連接完整性——中斷的連接是污染的主要來源</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.2.2 Process Support Systems -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.2.2 Process Support Systems</h3>
+            <p>Process Support Systems generally do not affect patient safety and product quality, and should be designed and constructed in compliance with GEP and applicable codes and standards. Such systems typically are not located within a cleanroom; therefore, the materials of construction depend upon service requirements.</p>
+
+            <p>If these services or their points-of-use need to be located in the aseptic area, the materials of construction should be:</p>
+            <ul>
+                <li>Non-additive</li>
+                <li>Non-reactive</li>
+                <li>Non-absorptive</li>
+                <li>Able to withstand repeated sanitation with harsh chemicals</li>
+            </ul>
+
+            <p>Care should also be taken to prevent accidental spills and possible contaminant release into the area (e.g., point of use or vent filters for an instrument air supply line where instrument air may vent into an ISO 5/Grade A critical zone).</p>
+
+            <p>Preventative maintenance and equipment integrity should be established at locations where the process can be impacted (e.g., process heat exchanger integrity, piping integrity, equipment seals between process and process support systems).</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.2.2 製程支援系統</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：支援系統的材質要求</h4>
+                <p>製程支援系統通常依GEP設計即可，但若其使用點位於無菌區域內，材質必須符合四項要求：</p>
+                <ul>
+                    <li><strong>不添加</strong>（Non-additive）——不會釋出物質到環境中</li>
+                    <li><strong>不反應</strong>（Non-reactive）——不與清潔劑或環境發生化學反應</li>
+                    <li><strong>不吸附</strong>（Non-absorptive）——不會吸收液體或微生物</li>
+                    <li><strong>耐消毒</strong>——能承受反覆的強效化學消毒</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：意外洩漏防護</h4>
+                <p>即使是「非製程」系統，也可能因設計不良而造成污染。典型風險場景：</p>
+                <ul>
+                    <li>儀器空氣排放到ISO 5/Grade A區域——必須加裝使用點過濾器</li>
+                    <li>熱交換器洩漏——製程與支援系統之間的密封完整性</li>
+                    <li>管路接頭鬆脫——支援流體進入製程區域</li>
+                </ul>
+                <p>預防性維護（PM）計畫必須涵蓋所有可能影響製程的交界點。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.2.3 Common System Classifications Table -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.2.3 Common System Classifications</h3>
+            <p>Table 6.1 provides general guidance on typical system classifications. A risk-based approach should be used to define the critical aspects of each system to determine the GMP importance and requirements for documentation, commissioning, and sterile boundary conditions.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>System</th>
+                        <th>Type</th>
+                        <th>GMP Important</th>
+                        <th>Documentation</th>
+                        <th>Sterilizing Grade Filter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Purified Water</td>
+                        <td>Depends on use</td>
+                        <td>Depends on use</td>
+                        <td>Enhanced/Qualified</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WFI</strong></td>
+                        <td><span class="badge red">P</span></td>
+                        <td>Yes</td>
+                        <td>Enhanced/Qualified</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pure/Clean Steam</strong></td>
+                        <td><span class="badge red">P</span></td>
+                        <td>Yes</td>
+                        <td>Enhanced/Qualified</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Process Gases</strong></td>
+                        <td><span class="badge red">P</span></td>
+                        <td>Yes</td>
+                        <td>Enhanced/Qualified</td>
+                        <td>0.2 &mu;m endpoint; 5 &mu;m pre-filtration</td>
+                    </tr>
+                    <tr>
+                        <td>Instrument Air</td>
+                        <td><span class="badge blue">PS</span></td>
+                        <td>No</td>
+                        <td>GEP</td>
+                        <td>N/A unless vented to ISO 5</td>
+                    </tr>
+                    <tr>
+                        <td>Breathing Air</td>
+                        <td><span class="badge blue">PS</span></td>
+                        <td>No</td>
+                        <td>GEP</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>Heating/Cooling</td>
+                        <td>P or PS</td>
+                        <td>Depends</td>
+                        <td>Depends</td>
+                        <td>Not unless product contact</td>
+                    </tr>
+                    <tr>
+                        <td>Process Vacuum</td>
+                        <td>P or PS</td>
+                        <td>Depends on use</td>
+                        <td>Enhanced/Qualified</td>
+                        <td>N/A (sterile boundary to valve)</td>
+                    </tr>
+                    <tr>
+                        <td>Potable Water</td>
+                        <td><span class="badge blue">PS</span></td>
+                        <td>No</td>
+                        <td>GEP</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>Drains (Sanitary/Process)</td>
+                        <td><span class="badge blue">PS</span></td>
+                        <td>No (See Note)</td>
+                        <td>GEP</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>Chilled Water</td>
+                        <td><span class="badge blue">PS</span></td>
+                        <td>No</td>
+                        <td>GEP</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Note: Poor design of sanitary plumbing drains and process drains or poor procedures can lead to contamination of cleanrooms due to back flow of liquids or vapors that lead to microbial ingress.</em></p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.2.3 常見系統分類解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：分類表的實務應用</h4>
+                <p>此表是設施設計的起點，但<strong>實際分類必須透過風險評估確定</strong>。關鍵觀察：</p>
+                <ul>
+                    <li><strong>WFI、潔淨蒸汽、製程氣體</strong>——永遠是製程系統（P），需要完整確效</li>
+                    <li><strong>純化水</strong>——依使用目的而定（最終沖洗用 = P；一般沖洗 = PS）</li>
+                    <li><strong>壓縮空氣</strong>——可能是P或PS，取決於是否接觸產品</li>
+                    <li><strong>排水</strong>——雖標記為PS，但設計不良會導致潔淨室微生物污染</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：過濾器要求</h4>
+                <p>製程氣體的過濾要求是本表最嚴格的部分：</p>
+                <ul>
+                    <li><strong>預過濾</strong>：5 &mu;m——控制微粒</li>
+                    <li><strong>使用點過濾</strong>：0.2 &mu;m——確保無菌</li>
+                    <li>兩道過濾缺一不可：第一道保護系統，第二道保護產品</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO觀點：多重分類的經濟決策</h4>
+                <p>壓縮空氣系統常見的CDMO決策：</p>
+                <ul>
+                    <li><strong>多條製造線</strong>：可能值得建設獨立的製程級壓縮空氣系統</li>
+                    <li><strong>少數製造用途</strong>：使用支援系統 + 使用點過濾器 + 不銹鋼管路更經濟</li>
+                    <li>決策取決於：製造用點數量、產品敏感度、設施規模</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.2.4 Multiple Categorization -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.2.4 Multiple Categorization</h3>
+            <p>The design of systems that can be multi-categorized should be considered with regard to the cost/benefit derived from installing separate utility systems or distribution networks versus special treatment at points of use. Filters, with break tanks or non-return valves, are widespread applications.</p>
+
+            <p>For example, an oil-free compressed air system may be used as both a Process and a Process Support system. If there are many manufacturing uses, there may be economical justification for running separate compressed air systems throughout the facility. If there are only a few manufacturing uses, utilizing a Process Support system (with point of use filters and stainless steel piping after the filter at the manufacturing use points) may be the more economical design.</p>
+
+            <p>Due consideration should be given to the upstream piping materials to ensure the air quality is not compromised.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.2.4 多重分類決策</h3>
+
+            <div class="analogy-box">
+                <h4>生活比喻：自來水 vs. 淨水器</h4>
+                <p>就像家中的用水：</p>
+                <ul>
+                    <li>可以裝設全屋淨水系統（獨立製程級系統）——成本高但管理簡單</li>
+                    <li>或在廚房水龍頭加裝淨水器（使用點過濾）——成本低但需逐點管理</li>
+                </ul>
+                <p>選擇取決於「使用點數量」和「品質要求」。無菌製造也是同樣邏輯。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習：您的設施需要幾套壓縮空氣系統？</h4>
+                <p>假設您的CDMO設施有以下壓縮空氣用途：</p>
+                <ol>
+                    <li>充填線乾燥——製程用途</li>
+                    <li>滅菌器真空破壞——製程用途</li>
+                    <li>門驅動氣缸——儀器用途</li>
+                    <li>控制閥驅動——儀器用途</li>
+                    <li>產品壓力轉移——製程用途</li>
+                </ol>
+                <p>考量因素：3個製程用途是否足以支持獨立系統？使用點方案的管理負擔如何？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 6.3: SPECIFIC SERVICE CONSIDERATIONS -->
+    <!-- ============================================================= -->
+    <div class="section-title">6.3 Specific Service Considerations / 特定服務考量</div>
+
+    <!-- 6.3.1 Purified Water and WFI -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.1 Purified Water and Water for Injection (WFI)</h3>
+            <p>Water used in the manufacture of sterile pharmaceutical parenteral products should meet <span class="key-term">USP WFI</span> grade requirements or relevant pharmacopeia standard. Water used for cleaning product contact surfaces should be from a controlled source and meet WFI standards during the final rinse or rinses.</p>
+
+            <p>Water used to clean non-product contact surfaces should not increase the background flora within the facility.</p>
+
+            <p>For further information, refer to ISPE Baseline Guide: Water and Steam Systems (Second Edition) and ISPE Good Practice Guide: Approaches to Commissioning and Qualification of Pharmaceutical Water and Steam Systems (Second Edition).</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.1 純化水與注射用水</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：WFI——最關鍵的公用工程</h4>
+                <p><strong>注射用水（WFI）</strong>是無菌製造中最關鍵的公用工程，因為它：</p>
+                <ul>
+                    <li>直接用於產品配方</li>
+                    <li>用於清洗產品接觸表面的<strong>最終沖洗</strong></li>
+                    <li>必須在使用點保持無菌</li>
+                </ul>
+                <p>水的使用層級：</p>
+                <ul>
+                    <li><strong>產品製造</strong> → 必須符合USP WFI標準</li>
+                    <li><strong>產品接觸面清洗</strong> → 最終沖洗必須達WFI標準</li>
+                    <li><strong>非產品接觸面清洗</strong> → 不得增加設施內的背景菌量</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：WFI系統的CDMO挑戰</h4>
+                <p>CDMO面對的WFI挑戰：</p>
+                <ul>
+                    <li><strong>需求波動</strong>——不同產品的WFI用量差異大</li>
+                    <li><strong>儲存與分配</strong>——系統必須維持循環以防止微生物生長</li>
+                    <li><strong>死角管理</strong>——每個使用點的死管（dead leg）長度必須最小化</li>
+                    <li><strong>溫度控制</strong>——通常維持在80°C以上循環或定期消毒</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.2 Pure Steam / Clean Steam -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.2 Pure Steam or Clean Steam</h3>
+            <p>Pure steam (also referred to as clean steam) is predominantly used for sterilization. Pure steam should be free of boiler additives and have no impurities beyond that of the purified water used in production. The condensed steam should meet WFI specifications and clean/pure steam should be made from a controlled source feed.</p>
+
+            <p>Design practices (such as sloping lines and minimizing steam traps) should eliminate potential microbial growth in condensate within the system. Process steam for sterilization should contain minimal superheat entering the autoclave.</p>
+
+            <p><span class="key-term">Non-Condensable Gases (NCG)</span> should be controlled by preheat/pretreatment of feed water or vented from the system, preferably at the steam generator. The values for NCGs, dryness fraction, and superheating of the steam supply should be periodically tested and controlled within specified limits where the steam is used for the direct sterilization of product contact equipment and components.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.2 潔淨蒸汽</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：潔淨蒸汽的品質要求</h4>
+                <p><strong>潔淨蒸汽（Clean Steam）</strong>主要用於SIP（就地滅菌），其品質要求：</p>
+                <ul>
+                    <li>不含鍋爐添加劑</li>
+                    <li>冷凝水必須符合WFI規格</li>
+                    <li>來源水必須受控</li>
+                    <li>進入滅菌器時應含最少的過熱度（superheat）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：三大品質參數</h4>
+                <p>潔淨蒸汽用於直接滅菌產品接觸設備時，必須定期測試並控制：</p>
+                <ol>
+                    <li><strong>非凝結氣體（NCG）</strong>——形成氣袋阻礙蒸汽穿透</li>
+                    <li><strong>乾燥度（Dryness Fraction）</strong>——水分過多降低滅菌效率</li>
+                    <li><strong>過熱度（Superheat）</strong>——過熱蒸汽無法有效傳遞潛熱</li>
+                </ol>
+                <p>NCG可透過進水預處理或在蒸汽產生器處排放來控制。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：蒸汽就像「熱的清潔劑」</h4>
+                <p>想像用蒸汽清潔衣物：</p>
+                <ul>
+                    <li>蒸汽必須是<strong>純淨</strong>的（不能含有化學添加物）</li>
+                    <li>必須是<strong>濕熱</strong>的（乾蒸汽殺菌效果差）</li>
+                    <li>必須能<strong>均勻穿透</strong>（不能有氣泡阻擋）</li>
+                </ul>
+                <p>NCG就像衣服裡的氣泡——蒸汽到不了被氣泡隔開的地方，那裡就無法被滅菌。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.3 Nitrogen and Other Process Gases -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.3 Nitrogen and Other Process Gases</h3>
+            <p>If process gas is to be used in an aseptic or sterile process, it should be <span class="key-term">sterile filtered at the point of use</span>. The filter and downstream components need sterilization or sanitization, as well as in situ or off-line integrity testing on a regular basis. If the service is not used in an aseptic process, but is a Process Support utility, standard materials of construction may be used.</p>
+
+            <h4>Process gas system design considerations:</h4>
+            <ul>
+                <li>Process gas quality should meet product requirements.</li>
+                <li>Filtration may be used for several reasons: particulate control, environmental protection, or microbial control. For pre-filtration, 5 &mu;m or better is recommended. For aseptic or sterile applications, 0.2 &mu;m filtration is required at point of use.</li>
+                <li>One 0.2 &mu;m filter can be used at the system boundary for particulate control, and a second 0.2 &mu;m filter at the process system boundary for microbial control.</li>
+                <li>The gas distribution system design should include sampling points. Sterile filtered points of use should also permit downstream aseptic sampling for physical and biological quality.</li>
+                <li>Back flow from other systems into process gas systems should be prevented.</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.3 氮氣與製程氣體</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：雙重過濾策略</h4>
+                <p>製程氣體的過濾採用<strong>兩道防線</strong>：</p>
+                <ul>
+                    <li><strong>第一道 0.2 &mu;m 過濾器</strong>——設於系統邊界，用於微粒控制與取樣</li>
+                    <li><strong>第二道 0.2 &mu;m 過濾器</strong>——設於製程系統邊界（使用點），用於微生物控制</li>
+                </ul>
+                <p>過濾器及其下游元件必須：</p>
+                <ul>
+                    <li>定期滅菌或消毒</li>
+                    <li>定期進行完整性測試（就地或離線）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：防止逆流（Backflow Prevention）</h4>
+                <p>必須防止其他系統的物質逆流進入製程氣體系統。實務做法：</p>
+                <ul>
+                    <li>安裝逆止閥（non-return valves）</li>
+                    <li>維持正壓差</li>
+                    <li>使用斷流槽（break tanks）</li>
+                </ul>
+                <p>在CDMO中，多產品共用氣體系統時，逆流防護尤為重要——避免產品交叉污染。</p>
+            </div>
+
+            <div class="practice-box green">
+                <h4>實務檢查清單：製程氣體系統</h4>
+                <ul class="checklist">
+                    <li>使用點是否配置0.2 &mu;m無菌過濾器？</li>
+                    <li>過濾器完整性測試頻率是否已定義？</li>
+                    <li>是否設有下游無菌取樣點？</li>
+                    <li>是否安裝逆流防止裝置？</li>
+                    <li>預過濾（5 &mu;m）是否就位？</li>
+                    <li>氣體品質規格是否符合產品要求？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.4 Compressed Air -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.4 Compressed Air</h3>
+
+            <h4>Process Compressed Air</h4>
+            <p>Compressed air (such as used for drying or transferring product, for vacuum break, or for inlets into sterilizers) should be treated as a process gas.</p>
+            <p>For determination of compressed air attributes, refer to ISO 8573-1, ICH Q8, ICH Q9, and site-specific guidelines. The site location of the system should support maintaining these attributes. Air intake should not be located near traffic, shipping/receiving lanes, or emission-producing equipment. Hydrocarbon contamination should be prevented and monitored.</p>
+
+            <h4>Instrument Air</h4>
+            <p>Properly designed and maintained systems should prevent instrument air from coming into contact with product; therefore, these systems may be designed in accordance with GEP. Instrument air should be vented away from ISO 5/Grade A areas, to preserve low particulate and microbial levels.</p>
+
+            <h4>Breathing Air</h4>
+            <p>Breathing air is a Process Support system important to operator safety. It should be labeled and easily identifiable. Maximum contaminant levels per OSHA and CSA standards:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Contaminant</th>
+                        <th>OSHA</th>
+                        <th>CSA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Carbon Monoxide (ppm v/v)</td>
+                        <td>10</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Carbon Dioxide (ppm v/v)</td>
+                        <td>1000</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Oil (mg/m<sup>3</sup>)</td>
+                        <td>5</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.4 壓縮空氣系統</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：壓縮空氣的三種用途</h4>
+                <p>壓縮空氣在無菌設施中有三種截然不同的用途，分類也不同：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>用途</th>
+                            <th>分類</th>
+                            <th>設計標準</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>製程壓縮空氣</td>
+                            <td>製程系統（P）</td>
+                            <td>比照製程氣體</td>
+                        </tr>
+                        <tr>
+                            <td>儀器空氣</td>
+                            <td>支援系統（PS）</td>
+                            <td>GEP</td>
+                        </tr>
+                        <tr>
+                            <td>呼吸空氣</td>
+                            <td>支援系統（PS）</td>
+                            <td>OSHA/CSA安全標準</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：空氣進氣口位置</h4>
+                <p>壓縮空氣品質始於進氣口。必須遠離：</p>
+                <ul>
+                    <li>交通區域（車輛廢氣）</li>
+                    <li>裝卸貨區（粉塵）</li>
+                    <li>其他排放設備（化學物質）</li>
+                </ul>
+                <p>碳氫化合物污染必須被預防和監測。在設施選址時，進氣口位置是關鍵的設計決策。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：三種空氣如同三種水</h4>
+                <ul>
+                    <li><strong>製程壓縮空氣</strong>好比瓶裝礦泉水——直接接觸「食物」，品質最高</li>
+                    <li><strong>儀器空氣</strong>好比洗手用水——不入口，但品質仍需控管</li>
+                    <li><strong>呼吸空氣</strong>好比空調過濾——保護人員安全</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.5 Vents -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.5 Vents</h3>
+            <p>Nitrogen, compressed air, instrument air, and other gases are vented at several locations during operation (e.g., pneumatically operated parts on filling lines). In the case where these gases are vented during an aseptic process, vents should be released to a non-critical area outside of the equipment. A risk assessment should be performed to assess venting locations.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.5 排氣設計</h3>
+            <div class="note-box">
+                <h4>重點提示：排氣位置的風險評估</h4>
+                <p>氣動元件（如充填線的氣動閥門）在運作中會排出氣體。若此排氣發生在無菌製程中：</p>
+                <ul>
+                    <li>排氣口必須導向<strong>非關鍵區域</strong>，遠離設備內部</li>
+                    <li>必須進行風險評估以確認排氣位置是否適當</li>
+                    <li>避免排氣直接進入ISO 5/Grade A區域</li>
+                </ul>
+                <p>許多充填線的偏差事件可追溯至排氣位置不當，導致微粒或微生物進入關鍵區域。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.6 Heating and Cooling Systems -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.6 Heating and Cooling Systems</h3>
+            <p>Heating and cooling systems (including cooling and chilled water, glycol systems, and heat transfer fluid systems) should not contact the product. It is usually a Process Support utility, but can directly affect the product.</p>
+
+            <p>Equipment used for indirect heat transfer should not leak into the atmosphere or the product. Selection of the heat transfer medium should consider the potential risk of leakage. Provisions should be made to monitor such system leakage through pressure testing and level monitoring.</p>
+
+            <p>Designers should consider that a heat transfer fluid that would leak from a tank jacket into a batch of formulated product would contaminate the batch, regardless of the properties of the fluid, so jacket integrity should be assured.</p>
+
+            <p>For temperature-sensitive products, the temperature of the heating/cooling medium may be a critical parameter if it is not possible to monitor the product temperature at the heat transfer surface.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.6 加熱與冷卻系統</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：間接接觸的風險</h4>
+                <p>加熱/冷卻系統雖然<strong>不應</strong>接觸產品，但它們可能：</p>
+                <ul>
+                    <li>控制去熱原隧道的空氣溫度</li>
+                    <li>控制製程槽內的產品溫度</li>
+                    <li>因夾套洩漏直接污染整批產品</li>
+                </ul>
+                <p>因此必須建立洩漏監控機制：壓力測試與液位監控。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：夾套完整性</h4>
+                <p>ISPE明確指出：<strong>無論熱傳介質的性質如何</strong>，從夾套洩漏到配方產品中都會污染整批。這意味著：</p>
+                <ul>
+                    <li>即使使用「食品級」熱傳介質，洩漏仍是批次報廢的原因</li>
+                    <li>夾套完整性測試是預防性維護的關鍵項目</li>
+                    <li>管路位置應避免架設於無菌加工區域上方</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.7 Facility Steam & Hot Water + 6.3.8 Vacuum + 6.3.9 Potable Water -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.7 Facility Steam and Hot Water Systems</h3>
+            <p>Facility steam and hot water systems should not be used in applications where there is exposure to the product. These systems should be designed using GEP.</p>
+            <p>Care should be taken in the selection of boiler additives, especially when facility steam is used for HVAC humidification. The location of condensate and pressure controlling systems should be in facility areas, not within cleanrooms. These devices should not be located above aseptic areas, in case of leakage.</p>
+
+            <h3>6.3.8 Process Vacuum Systems</h3>
+            <p>If a single vacuum source is used for a mixture of process uses, the contamination risk increases. Steps should be taken to prevent pressure reversals or reverse flow (e.g., non-return valves or fail-safe vacuum pump/pressure arrangements) and to prevent material dropping from the system into the process.</p>
+            <p>Sanitization or sterilization is recommended for points of use upstream (nearer to the process) of the local vacuum isolation valve. Appropriate steps should be designed to prevent possible cross-contamination.</p>
+
+            <h3>6.3.9 Potable Water</h3>
+            <p>Potable water should be designed with GEP. Proper labeling and identification of these services is required. Potable water should not be used in the aseptic processing area. The chemical and microbiological profiles should exceed drinking water standards. A risk assessment should determine if the local drinking water quality increases risk of chemical and microbial contamination events.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.7–6.3.9 設施蒸汽、真空與飲用水</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：位置配置原則</h4>
+                <p>設施蒸汽與冷凝水系統的配置有一個關鍵原則：</p>
+                <ul>
+                    <li>冷凝水排放與壓力控制裝置 → 放在機械區，<strong>不在潔淨室內</strong></li>
+                    <li>這些裝置<strong>不應位於無菌區域上方</strong>——防止洩漏風險</li>
+                    <li>鍋爐添加劑若用於HVAC加濕，須謹慎選擇（避免引入化學污染物）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：真空系統的交叉污染風險</h4>
+                <p>共用真空源的風險最容易被忽略：</p>
+                <ul>
+                    <li><strong>壓力反轉</strong>——真空泵停機時可能產生逆流</li>
+                    <li><strong>物料倒流</strong>——其他製程的物料可能經真空系統進入</li>
+                    <li><strong>防護措施</strong>：逆止閥、故障安全真空泵配置、使用點上游滅菌</li>
+                </ul>
+                <p>在CDMO中，多產品共用真空系統是常見配置，必須有嚴格的交叉污染防護設計。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO觀點：飲用水的標示管理</h4>
+                <p>飲用水系統看似簡單，但在製藥設施中有兩個常見問題：</p>
+                <ul>
+                    <li><strong>標示混淆</strong>——操作人員可能誤用飲用水進行製程清洗</li>
+                    <li><strong>水質風險</strong>——當地自來水品質可能引入化學或微生物風險</li>
+                </ul>
+                <p>正確的管路標示與識別是最基本但最容易被忽略的GEP要求。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6.3.10 Mechanical Seal Fluids + 6.3.11 Drains -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>6.3.10 Mechanical Seal Fluids</h3>
+            <p>If a pump is used for product transfer, the seal fluid should be of the same quality standards as the product. Double mechanical seals or equivalent are preferred. Typically for aseptic facilities, sterile alcohol, USP purified water, or WFI is used as a seal fluid.</p>
+            <p>If the pump is not for product transfer (i.e., for a Process Support service), then vendor recommended fluids should be considered.</p>
+
+            <h3>6.3.11 Drains</h3>
+            <p>There are several types of drains that can be located within process space. The US FDA suggests that drains should not occur within ISO 5/Grade A, ISO 6, or ISO 7/Grade B spaces, but allows exceptions.</p>
+
+            <p>Drains within the process spaces should be minimized. Drains within a classified process space should be sealed and capped. Where possible, drains should be located within mechanical spaces instead of within process spaces.</p>
+
+            <p>Waste transfer lines should be sloped to gravity flow and should not vent gases into the process space. Cleanouts should be located within mechanical space. Drain points should be designed to prevent capillary action and should be free flowing.</p>
+
+            <p>For products produced for use in the EU, Annex 1 requires that any drain connected to a sterile area should have an <span class="key-term">air gap</span>. For locations where splash or condensate would cause contamination concerns, the drain should be enclosed while maintaining the air gap.</p>
+
+            <p>Where drains are placed within maintenance space (usually uncontrolled, non-ventilated), the need for point ventilation or enhanced biological control should be evaluated.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>6.3.10–6.3.11 機械密封液與排水系統</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：機械密封液——產品級品質</h4>
+                <p>用於產品轉移的泵浦，其密封液品質標準必須與產品相同：</p>
+                <ul>
+                    <li>首選<strong>雙機械密封</strong>（double mechanical seals）</li>
+                    <li>密封液通常使用：無菌酒精、USP純化水或WFI</li>
+                    <li>非產品用泵浦可使用供應商推薦的密封液</li>
+                </ul>
+                <p>原因：密封液一旦洩漏就會直接接觸產品——這是最後一道防線。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：排水系統——被低估的污染源</h4>
+                <p>排水系統是潔淨室微生物污染最容易被忽略的來源：</p>
+                <ul>
+                    <li>FDA建議：ISO 5/Grade A、ISO 6、ISO 7/Grade B區域<strong>不應有排水口</strong></li>
+                    <li>必須存在時：排水口應<strong>密封加蓋</strong></li>
+                    <li>EU Annex 1要求：連接無菌區域的排水必須設有<strong>空氣斷流（air gap）</strong></li>
+                    <li>廢液管線必須有坡度、重力流動，不得向製程空間排放氣體</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習：排水系統設計審查</h4>
+                <p>在設計審查中，您注意到以下排水配置。哪些需要改善？</p>
+                <ol>
+                    <li>ISO 7/Grade B走廊有一個未加蓋的排水口</li>
+                    <li>隔離器內有一個排水連接，帶空氣斷流</li>
+                    <li>機械空間的清潔排水口直接排入無菌區域下方的管道</li>
+                    <li>充填室有一個密封加蓋的地排，每週維護一次</li>
+                </ol>
+                <p><em>提示：考慮FDA建議、Annex 1要求、以及微生物逆流風險。</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION SUMMARY -->
+    <!-- ============================================================= -->
+    <div class="section-title">Section Summary / 章節總結</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Key Takeaways</h3>
+            <ol>
+                <li><strong>Dual classification system:</strong> Every utility must be classified as Process (P) or Process Support (PS) based on risk assessment, which determines design, qualification, and documentation requirements.</li>
+                <li><strong>WFI is the most critical utility</strong> in sterile manufacturing — it must meet pharmacopeial standards and be sterile at the point of use.</li>
+                <li><strong>Clean steam quality</strong> is defined by three parameters: NCG content, dryness fraction, and superheat — all must be periodically tested.</li>
+                <li><strong>Process gases require dual filtration:</strong> 5 &mu;m pre-filtration plus 0.2 &mu;m sterilizing-grade filtration at the point of use.</li>
+                <li><strong>System boundaries</strong> must be clearly defined to delineate qualification scope from GEP-only scope.</li>
+                <li><strong>Backflow prevention</strong> is essential across all shared utility systems — especially vacuum and compressed gas systems.</li>
+                <li><strong>Drains are underestimated contamination sources:</strong> minimize in classified areas, seal and cap when present, maintain air gaps per Annex 1.</li>
+                <li><strong>Location matters:</strong> condensate systems, pressure devices, and heat transfer piping should not be above aseptic areas.</li>
+            </ol>
+        </div>
+
+        <div class="right-column">
+            <h3>章節重點回顧</h3>
+
+            <div class="concept-box">
+                <h4>一句話總結</h4>
+                <p>公用工程系統的設計核心是<strong>「分類決定標準，風險決定範圍」</strong>——透過風險評估將系統分為製程級（P）與支援級（PS），再據此決定設計、確效與文件化的嚴格程度。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>CDMO應用重點</h4>
+                <ul>
+                    <li><strong>產能規劃</strong>：多產品製造需考慮WFI、潔淨蒸汽、製程氣體的尖峰需求</li>
+                    <li><strong>交叉污染防護</strong>：共用真空與壓縮氣體系統的逆流防護設計</li>
+                    <li><strong>經濟決策</strong>：獨立系統 vs. 使用點處理——依據製造線數量決定</li>
+                    <li><strong>單次使用策略</strong>：降低公用工程交叉污染風險的有效方法</li>
+                    <li><strong>變更管理</strong>：新產品導入可能改變公用工程的分類——必須重新評估</li>
+                </ul>
+            </div>
+
+            <div class="practice-box green">
+                <h4>自我檢測：您能回答這些問題嗎？</h4>
+                <ol>
+                    <li>WFI與純化水在系統分類上的差異是什麼？</li>
+                    <li>潔淨蒸汽的三大品質參數分別是什麼？</li>
+                    <li>製程氣體為何需要兩道0.2 &mu;m過濾器？</li>
+                    <li>為什麼排水口不應出現在ISO 5/Grade A區域？</li>
+                    <li>CDMO在公用工程設計上面對的獨特挑戰是什麼？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities</p>
+    <p>Chapter 6: Utility Systems | Educational Material</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
