@@ -95,7 +95,9 @@ and Facilities [8])
 ### 1.4 Process Overview and Structure of the Guide
 
 An overview of the integrated C&Q approach is shown in Figure 1.1.
-Figure 1.1: Science and Risk-Based C&Q Process Map
+
+*[Figure 1.1: Science and Risk-Based C&Q Process Map]*
+
 Note for Figure 1.1: Shaded boxes indicate the major blocks within the process maps that are addressed by
 chapters in this Guide.
 The inputs to the integrated C&Q process include product and process CQAs/CPPs (established through research
@@ -145,9 +147,13 @@ inserts or variable data such as lot number and expiration date on labeling). Th
 from the CPPs, and the CDEs of the system can be identified from the CAs. CDEs can also include features such as
 product contact materials of construction. Unacceptable risks are mitigated through the application of risk controls,
 which include the CDEs.
-Figure 1.2 provides an example that illustrates the relationship between CQAs, CPPs, CAs, CDEs, and the
+
+*[Figure 1.2 provides an example that illustrates the relationship between CQAs, CPPs, CAs, CDEs, and the]*
+
 associated testing.
-Figure 1.2: Example of Automated Temperature Control and Monitoring of a Process Step
+
+*[Figure 1.2: Example of Automated Temperature Control and Monitoring of a Process Step]*
+
 A C&Q Plan (Chapter 6) or strategy can be initiated once sufficient design information exists. The plan/strategy can
 be modified as more information is collected during the project execution lifecycle. Design finalization of the system
 can be performed in parallel with C&Q planning based on the system-specific design requirements that include CDEs,
@@ -381,8 +387,11 @@ not always necessary. A statement of the URS may be contained in various forms, 
 specification, change request, or data sheet. For standard off-the-shelf or simple catalog systems, a statement of
 the URS may be a purchase order, vendor cut sheet, or catalog data. The system would be verified against this
 document.
-Figure 2.1 shows the relationship between the activities and documents in the C&Q process for direct impact systems.
-Figure 2.1: Relational Diagram for C&Q Activities and Documents – User Requirements Specification
+
+*[Figure 2.1 shows the relationship between the activities and documents in the C&Q process for direct impact systems.]*
+
+*[Figure 2.1: Relational Diagram for C&Q Activities and Documents – User Requirements Specification]*
+
 Used with permission from Amgen, Inc., www.amgen.com.
 
 ### 2.2 Development of the User Requirements Specification
@@ -429,9 +438,11 @@ Engineering specifications and industry standards (e.g., ASME [16], ASTM [17], I
 Project requirements document or project charter
 >
 Legacy system evaluations
-Figure 2.2 shows the data sources typically used as inputs to an individual system URS.
 
-Figure 2.2: Data Sources Used to Develop the User Requirements Specification
+*[Figure 2.2 shows the data sources typically used as inputs to an individual system URS.]*
+
+*[Figure 2.2: Data Sources Used to Develop the User Requirements Specification]*
+
 Note for Figure 2.2: Shaded boxes indicate product and process requirements and sources.
 The URS should also include the following:
 •
@@ -720,10 +731,14 @@ classification described in Chapter 3). For standard off-the-shelf or simple cat
 consider it unnecessary to perform the System Risk Assessment; a simple protocol or report (e.g., Installation and
 Operational Verification) could be used to provide the documented evidence that the installation and operation meet
 the system requirements.
-Figure 4.1 shows the relationship between the activities and documents in the C&Q process for direct impact
+
+*[Figure 4.1 shows the relationship between the activities and documents in the C&Q process for direct impact]*
+
 systems. C&Q inspection and testing activities can take place during fabrication and construction as well as during
 the commissioning/testing activities.
-Figure 4.1: Relational Diagram for C&Q Activities and Documents – System Risk Assessment
+
+*[Figure 4.1: Relational Diagram for C&Q Activities and Documents – System Risk Assessment]*
+
 Used with permission from Amgen, Inc., www.amgen.com.
 After the System Risk Assessment is completed, the URS should be checked to ensure that the CAs/CDEs have
 been included; if they are not included, then the URS should be revised to add them. Procedural control elements
@@ -895,7 +910,7 @@ Alternatively, an Installation and Operational Verification document could be us
 system risk controls are adequate.
 The sequence of activities for direct impact systems is shown in Figure 4.2.
 
-Figure 4.2: Sequence of Activities for Direct Impact Systems
+*[Figure 4.2: Sequence of Activities for Direct Impact Systems]*
 
 #### 4.3.2 Lifecycle of the System Risk Assessment
 
@@ -1107,8 +1122,11 @@ The DR project team should have appropriate methods for recording and distributi
 managing any consequent changes. The results should confirm the continuing suitability of the design and confirm
 that the design is suitable for the intended purpose.
 The team is responsible for communicating to their management any issues affecting design.
-Figure 5.1 provides an overview of the DR process.
-Figure 5.1: Design Review Process Flow
+
+*[Figure 5.1 provides an overview of the DR process.]*
+
+*[Figure 5.1: Design Review Process Flow]*
+
 Note for Figure 5.1: The Traceability Matrix is a document format which compares the product and process
 requirements for the system with the CAs/CDEs.
 Refer to Chapter 20 (Appendix 6) for examples of DR reports.
@@ -1182,8 +1200,11 @@ The CDEs that serve to meet a product or process user requirement in terms that 
 performance testing)
 A final DQ report should be issued stating the design is suitable for the intended purpose; the report should be
 approved by representatives (from the appropriate level) in Engineering, Manufacturing and the Quality Unit.
-Figure 5.2 provides an overview of the DQ process.
-Figure 5.2: Design Qualification Process Flow
+
+*[Figure 5.2 provides an overview of the DQ process.]*
+
+*[Figure 5.2: Design Qualification Process Flow]*
+
 Refer to Chapter 20 (Appendix 6) for an example of a DQ summary.
 
 ### 5.5 Timing of Design Review and Design Qualification
@@ -2424,7 +2445,8 @@ Closure of engineering changes
 Confirmation of documentation in place to ensure the system can operate and be maintained properly
 •
 Clear statement of formal release of the system
-Figure 8.1: Example Option #1: Documents with Use of Commissioning Summary Report
+
+*[Figure 8.1: Example Option #1: Documents with Use of Commissioning Summary Report]*
 
 #### 8.4.2 Example Option #2: Qualification Summary Report – Systems with Critical Aspects/Critical
 
@@ -2443,7 +2465,7 @@ Quality System Elements implementation (or reference to change control record)
 •
 Clear statement of formal release of the system (or reference to change control record)
 
-Figure 8.2: Example Option #2: Documents with Use of Qualification Summary Report
+*[Figure 8.2: Example Option #2: Documents with Use of Qualification Summary Report]*
 
 #### 8.4.3 Example Option #3: Formal Release of System with Use of Change Control – Existing Facility
 
@@ -2454,7 +2476,8 @@ For existing facilities, it is common to verify the implementation of quality sy
 release of the system in the change control rather than in the Qualification Summary Report. In this case, the
 Qualification Summary Report should include a reference to the change control record. The use of the change control
 allows for closure of the testing phase in a timely manner.
-Figure 8.3: Example Option #3: Documents with Use of Change Control
+
+*[Figure 8.3: Example Option #3: Documents with Use of Change Control]*
 
 #### 8.4.4 Example Option #4: Acceptance and Release Report – Large Projects with Interconnected
 
@@ -2476,7 +2499,8 @@ changes. The grouping would also require presenting information from all systems
 when only a single system is requested. The advantages are that qualification would more closely reflect the grouping
 created by the process risk assessment as well as the batch record structure and eliminate potential gaps with the
 integration of systems.
-Figure 8.4: Example Option #4: Documents with Use of Acceptance and Release Report
+
+*[Figure 8.4: Example Option #4: Documents with Use of Acceptance and Release Report]*
 
 ### 8.5 Acceptance and Release Completion
 
@@ -2643,9 +2667,10 @@ The use of these performance metrics can minimize the amount of effort required 
 periodic review.
 Where these mature quality systems are not in place, the same principles can be used, but the process may not be
 as efficient.
-Figure 9.1 provides an overview of the periodic review process.
 
-Figure 9.1: Periodic Review Process Overview
+*[Figure 9.1 provides an overview of the periodic review process.]*
+
+*[Figure 9.1: Periodic Review Process Overview]*
 
 ### 9.2 Periodic Review Approach
 
@@ -3290,7 +3315,9 @@ assessment, management, and maintenance of the knowledge, particularly on the ch
 The main deliverable from a quality system is to ensure that systems are operating as intended as captured
 in documentation. A document hierarchy within the Engineering Quality Process helps to identify where the
 requirements/expectations are derived. Figure 11.1 illustrates a typical document hierarchy for a quality system.
-Figure 11.1: Typical Document Hierarchy for Quality System
+
+*[Figure 11.1: Typical Document Hierarchy for Quality System]*
+
 On the top of the hierarchy are policies/directives, which are the high-level documents that capture the expectations
 of the organization. The expectations for C&Q may be that the systems used to manufacture products have been
 qualified to be suitable for the intended purpose. These expectations may be part of an overall validation policy or
@@ -3422,9 +3449,13 @@ At the same time, management of change is crucial to maintaining control of risk
 safety. Demonstrating suitability for the intended purpose initially is not sufficient; maintaining its suitability and
 actually improving it over time are key concepts in the lifecycle approach.
 12.1.2	 Principles/Concepts
-Figure 12.1 shows the change management application during the C&Q project execution lifecycle and illustrates the
+
+*[Figure 12.1 shows the change management application during the C&Q project execution lifecycle and illustrates the]*
+
 differences between the two basic types of change management processes presented in this chapter, ECM and QCC.
-Figure 12.1: Change Management Application during C&Q Project Execution Lifecycle
+
+*[Figure 12.1: Change Management Application during C&Q Project Execution Lifecycle]*
+
 Table 12.1 outlines the differences between ECM and QCC in more detail.
 Table 12.1: Comparison of Change Management Processes
 Engineering Change Management (ECM)
@@ -3490,7 +3521,9 @@ International GMPs require that changes that have the potential to impact produc
 handled within the PQS (refer to Chapter 15 (Appendix 1) for the regulatory basis). This drives the need to establish
 a defined endpoint for application of ECM to GMP and non-GMP changes within the project lifecycle; from this point
 forward, full application of QCC to CAs/CDEs within systems commences.
-Figure 12.1 (in Section 12.1) highlights the potential benefits to be gained when applying an SME-led science and
+
+*[Figure 12.1 (in Section 12.1) highlights the potential benefits to be gained when applying an SME-led science and]*
+
 risk-based approach, by not commencing QA-managed QCC until the acceptance and release phase at the earliest.
 From a regulatory perspective, it is only after the acceptance and release of a system (for execution of PQ/Process
 Validation, if applicable, or for manufacturing for commercial use) that changes to systems with CAs/CDEs should go
@@ -3820,7 +3853,8 @@ established and it should be clear that the tests demonstrate that the acceptanc
 
 The basic flow of GEP testing to verify that acceptance criteria have been established and have been met is shown in
 Figure 13.1.
-Figure 13.1: Basic Flow Chart for GEP Testing
+
+*[Figure 13.1: Basic Flow Chart for GEP Testing]*
 
 ##### 13.3.1.1 Executor Qualification and Signature Log
 
@@ -4062,10 +4096,12 @@ and there are quality systems in place to manage this change (including associat
 and engineering record documents), such as change management, maintenance, calibration, and periodic review.
 Therefore, existing documentation can remain acceptable to provide the documented evidence that the system is
 suitable for the intended purpose.
-Figure 14.1 provides a flow chart of the suggested steps for implementation of the science and risk-based C&Q
+
+*[Figure 14.1 provides a flow chart of the suggested steps for implementation of the science and risk-based C&Q]*
+
 approach described in this Guide.
 
-Figure 14.1: Implementation Flow Chart for Science and Risk-Based C&Q Approach
+*[Figure 14.1: Implementation Flow Chart for Science and Risk-Based C&Q Approach]*
 
 ### 14.2 Preparing for Implementation
 
