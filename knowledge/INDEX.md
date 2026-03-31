@@ -430,49 +430,46 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 **Sections:** Section 1–3 (Introduction, Glossary & Low Bioburden Overview) → Section 4a (Risk Assessment Framework & Criticality Factors) → Section 4b (Worked Examples: Cell Culture & Media Supplementation)
 
----
-
 ## TR62-Complete.md
-**Report:** PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes
-**Pages:** p1–p23 | **Sections:** 4
+**Report:** PDA Technical Report No. 62 (2013): Manual Aseptic Processes
+**Pages:** p1–p23 | **Sections:** 5
 
 **Covers questions about:**
-- What Manual Aseptic Processing (MAP) is and how it differs from automated aseptic filling
-- Why personnel are the primary contamination risk in MAP and how TR62 addresses this
-- Cleanroom classification requirements for MAP: ISO 5/Grade A zones, UDAF requirements, HEPA filtration, pressure differentials
-- Personnel training and qualification: initial qualification, periodic re-qualification, gowning qualification procedures
-- Aseptic handling challenges: performance drift, complex tasks, duration fatigue, operator variability
-- Equipment and component requirements: sterility, depyrogenation, aseptic connections
-- Process time limitations: bioburden control, maximum compounding-to-filling time
-- MAP design principles in UDAF hoods: airflow visualization, hand positioning, workflow direction (clean to dirty)
-- MAP design in isolators and RABS: glove port use, alpha/beta transfer ports, VHP decontamination, advantages over UDAF for MAP
-- APS (media fill) for MAP: why operator-specific qualification is required, simulation design for manual operations, run frequency, acceptance criteria
+- What constitutes a "manual aseptic process" and how it differs from automated/semi-automated operations
+- Cleanroom environment requirements for manual aseptic operations (ISO 5 minimum, Table 3.0-1 particle limits)
+- Personnel qualification, gowning qualification, fingertip sampling for manual aseptic operators
+- Human factors and risk management specific to manual interventions
+- Equipment/component preparation and sterilization for manual operations
+- Process time limitations: personnel time in Grade A, equipment hold times
+- Design principles for manual aseptic processes in LAF/UAFH (First Air rules, operator tiers)
+- Design principles in Isolators and RABS (glove ports, half-suit, VHP decontamination)
+- Process Simulation (APS/media fill) for manual aseptic processes: all 13 design elements (8.1–8.13)
+- Acceptance criterion for MAP APS: absolute zero contamination (no statistical allowance)
 
-**Key terms:** Manual Aseptic Processing (MAP), performance drift, UDAF (Unidirectional Air Flow), HEPA, ISO 5, Grade A, RABS, isolator, gowning qualification, aseptic technique, APS (Aseptic Process Simulation), TSB (tryptic soy broth), media fill, growth promotion, turbidity, VHP (vaporized hydrogen peroxide), alpha/beta port, RTP (rapid transfer port), process time limit, bioburden, first air, critical zone, USP <797>, pharmacy compounding
+**Key terms:** manual aseptic process (MAP), unidirectional airflow hood (UAFH), Grade A, ISO 5, First Air, critical zone, gowning qualification, fingertip sampling, APS, media fill, TSB, compositing, formulation simulation, filling simulation, incubation, growth promotion, operator qualification, RABS, isolator, VHP, process time limitation, aseptic technique
 
-**Sections:** Sections 1–2 (Introduction & Glossary) → Sections 3–6 (Buildings, Personnel, Equipment & Process Time) → Section 7 (MAP Design: UDAF vs Isolator/RABS) → Sections 8–11 (Process Simulation, Conclusion & References)
+**Sections:** Section 0 (Introduction & Glossary) → Section 1 (Facilities & Personnel 3.0–4.0) → Section 2 (Equipment, Time Limits & Process Design 5.0–7.0) → Section 3 (APS Process Simulation 8.0) → Section 4 (Conclusion & References)
 
 ---
 
-## TR54-6-Complete.md
-**Report:** PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients
-**Pages:** Foreword + p1–p36 | **Sections:** 6
+## TR54-Complete.md
+**Report:** PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients (Joint PDA–IPEC)
+**Pages:** p1–p36 | **Sections:** 7
 
 **Covers questions about:**
-- What formalized excipient risk assessment is and why EU GMP Annex 15 (2015) requires it
-- Intrinsic risk factors for excipients: chemical nature, synthetic route, source (animal/plant/mineral/synthetic), known impurities
-- Supply chain risk analysis: types of supply chains (direct, distributor, repackager, broker, CMO) and their risk implications
-- Roles in the excipient supply chain: Manufacturing Authorization Holder, Distributor, Repackager, Broker, Haulier responsibilities
-- Excipient risk scoring methods: RPN (Risk Priority Number), OverallRPN = Excipient RPN × Supply Chain RPN
-- Two risk matrix options for calculating Final Risk Score (Option 1: OverallRPN; Option 2: matrix lookup)
-- GMP standards applicable at each risk level: ISO, EXCiPACT, full pharmaceutical GMP requirements
-- Excipient risk by dosage form: why injectables/parenteral excipients have highest risk vs oral/topical
-- Ongoing lifecycle management: triggers for re-assessment (supplier change, regulatory action, formulation change, audit finding)
-- Six real-world company examples (Companies U–Z) showing how different pharma companies implement TR54-6
+- What is a formalized excipient risk assessment and why is it required (EU FMD, EC Guidelines 2015, PIC/S, FDA FDASIA 2012)
+- How to define the risk question: "Is the excipient fit for use in the drug product?"
+- Supply chain mapping: types of supply chains (direct, distributor, repackager, broker, international, CMO)
+- Intrinsic excipient risk factors (ERPN): route of administration, function, CQA impact, drug product type
+- Supply chain risk analysis (SCRPN): calculate risk from each supply chain actor
+- Risk matrix: combining ERPN × SCRPN to determine OverallRPN (Option 1) or weighted Final Risk Score (Option 2)
+- Risk mitigation: selecting appropriate GMP standard (EXCiPACT, NSF/IPEC/ANSI 363, USP <1078>)
+- Ongoing review triggers: product deviations, recalls, supply chain changes, regulatory updates
+- Six real-world anonymized case studies (Companies U–Z) showing diverse risk assessment implementations
 
-**Key terms:** excipient, QRM (Quality Risk Management), RPN (Risk Priority Number), OverallRPN, intrinsic risk factor, Manufacturing Authorization Holder (MAH), Distributor, Repackager, Broker, Haulier, EXCiPACT, ICH Q9, EU GMP Annex 15, risk matrix, risk profile, gap analysis, supply chain risk, Certificate of Analysis (CoA), GMP standard, IPEC Federation, lifecycle review, knowledge management, risk mitigation, dosage form risk
+**Key terms:** excipient, MAH (manufacturing authorization holder), ERPN (excipient risk priority number), SCRPN (supply chain risk priority number), OverallRPN, risk ranking and filtering, EU FMD, EC Guidelines, EXCiPACT, IPEC, broker, distributor, repackager, CMO, quality agreement, excipient information package (EIP), residual risk, ICH Q9, QRM, supply chain transparency, risk lifecycle
 
-**Sections:** Section 1 (Foreword + Introduction + Glossary) → Sections 3–5 (Overall Strategy, Supply Chain & Roles) → Section 6A (QRM Model: Initiate & Excipient Risk Analysis) → Section 6B (Supply Chain Risk, Evaluation & GMP Standards) → Sections 7–9 (Lifecycle, Benefits & References) → Section 10 (Annex I: Six Real-World Examples)
+**Sections:** Section 0 (Foreword & Introduction) → Section 1 (Glossary) → Section 2 (Overall Strategy & Supply Chain 3.0–5.0) → Section 3 (QRM Model: Risk ID & Analysis 6.0–6.3) → Section 4 (QRM Model: Evaluation & Mitigation 6.4–6.6) → Section 5 (Lifecycle, Benefits & References 7.0–9.0) → Section 6 (Annex I: 6 Case Studies)
 
 ---
 
@@ -524,23 +521,18 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Glass vial handling, glass breakage, depyrogenation, capping / 玻璃瓶處理、玻璃破損、去熱原、封蓋 | TR87 |
 | Visible particle inspection, elastomeric closure inspection, ECIM / 可見微粒目視檢查、彈性體封蓋檢測 | TR85 |
 | Glass container, container closure system, RTU vials / 玻璃容器、容器密封系統、即用型小瓶 | TR87 + TR73 |
-| Manual aseptic processing, MAP, hand filling, manual aseptic technique / 手動無菌製程、人工充填 | TR62 |
-| MAP design: UDAF hood technique, first air, hand positioning / UDAF工作站手動無菌技術、第一空氣、手部位置 | TR62 |
-| MAP in isolator or RABS, glove port, alpha beta port, VHP decon for MAP / 隔離器或RABS中的手動無菌操作 | TR62 |
-| Operator APS qualification, media fill for manual process, individual operator qualification / 操作員APS確效、手動製程培養基充填 | TR62 |
-| Hospital pharmacy compounding, USP 797, sterile compounding, pharmacist aseptic technique / 醫院藥局調製、無菌調製作業 | TR62 |
-| Excipient risk assessment, excipient qualification / 賦形劑風險評估、賦形劑確認 | TR54-6 |
-| QRM for excipients, excipient RPN, OverallRPN, risk matrix / 賦形劑QRM、風險優先數、整體風險分數 | TR54-6 |
-| Excipient supply chain risk, broker, repackager, distributor / 賦形劑供應鏈風險、中間商、轉包商、分銷商 | TR54-6 |
-| EXCiPACT, IPEC, excipient GMP standards / EXCiPACT認證、IPEC聯盟、賦形劑GMP標準 | TR54-6 |
-| EU GMP Annex 15 excipient requirements, EC Guidelines excipients / 歐盟GMP附錄15賦形劑要求 | TR54-6 |
+| Manual aseptic process, MAP, UAFH, First Air, critical zone / 手動無菌製程、單向氣流操作台 | TR62 |
+| Manual APS, media fill for compounding/compositing/manual filling / 手動製程培養基充填 | TR62 |
+| Excipient risk assessment, ERPN, SCRPN, OverallRPN, excipient GMP / 賦形劑風險評估、賦形劑風險優先數、供應鏈風險 | TR54 |
+| Excipient supply chain, broker, distributor, repackager, EXCiPACT / 賦形劑供應鏈、中間商、轉包裝商 | TR54 |
+| EU FMD, EC Guidelines 2015, formalized risk assessment, MAH accountability / 歐盟偽藥指令、賦形劑正式化風險評估 | TR54 |
 
 ## Not Covered in This Knowledge Base
 
 If the user asks about these topics, say so clearly and suggest alternatives:
 
 - **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
-- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR83) — not available; suggest the user consult the official PDA website
+- **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR54, TR62, TR70, TR83) — not available; suggest the user consult the official PDA website
 - **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
 - **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
 - **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
@@ -555,7 +547,7 @@ For these topics, search the PRIMARY report deeply and SECONDARY reports lightly
 Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Media Fill / APS (培養基充填 / 無菌製程模擬)**
-→ TR22 ★★★ | TR62 ★★★ (MAP-specific APS: operator-level qualification, manual operation simulation design, zero contamination acceptance) | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
+→ TR22 ★★★ (automated/semi-automated APS) | TR62 ★★★ (manual process APS: zero contamination criterion, all 13 design elements) | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
 
 **Extractables & Leachables / E&L (可萃取物與可滲出物)**
 → TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
@@ -564,7 +556,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
-→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | PtC-12 ★★★ (RABS) | TR62 ★★★ (manual aseptic processing: MAP design, operator qualification, APS for manual ops) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
 → TR73 ★★★ (prefilled syringe CCI methods) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
@@ -582,10 +574,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR54-6 ★★★ (excipient QRM: RPN scoring, OverallRPN, supply chain risk, 6 real-world examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
-→ PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR62 ★★★ (MAP operator individual qualification, gowning qualification, aseptic handling challenges, performance drift) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
+→ TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
 
 **Equipment Qualification IQ/OQ/PQ (設備確效)**
 → TR60 ★★★ (lifecycle qualification framework) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
@@ -603,7 +595,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
 
 **Supplier / Vendor Qualification (供應商確認)**
-→ TR66 ★★★ (SUS supplier qualification) | TR54-6 ★★★ (excipient supplier qualification: risk-based GMP tiering, EXCiPACT, audit requirements) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
+→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
 → TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
@@ -627,7 +619,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic
 
 **RABS vs Isolator (隔離系統比較)**
-→ PtC-12 ★★★ (RABS primary) | TR62 ★★★ (MAP-specific: UDAF vs RABS vs isolator design principles, glove ports, alpha/beta transfers, VHP) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
+→ PtC-12 ★★★ (RABS primary) | TR90 ★★ (CCS context) | TR22 ★ (APS equipment choice) | TR70 ★ (VHP decontamination context)
 
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
@@ -641,11 +633,8 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Visible Particle Inspection / Container Quality (可見微粒目視檢查/容器品質)**
 → TR85 ★★★ (ECIM, glass container inspection, validation strategy) | TR90 ★★ (CCS particulate control) | PtC-12 ★★ (RABS particulate)
 
+**Excipient Risk Assessment / Supplier Quality (賦形劑風險評估/供應商品質)**
+→ TR54 ★★★ (complete excipient QRM framework: ERPN, SCRPN, OverallRPN, supply chain mapping, 6 real case studies) — single primary source
+
 **Risk Assessment / FMEA (風險評估/FMEA)**
-→ TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR54-6 ★★★ (excipient QRM: OverallRPN, supply chain risk matrix, 6 company examples) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
-
-**Excipient Quality / Excipient Risk Assessment (賦形劑品質/賦形劑風險評估)**
-→ TR54-6 ★★★ (full excipient QRM framework: intrinsic risk, supply chain risk, RPN calculation, GMP standards tiering, EXCiPACT, real-world examples) — single primary source
-
-**Manual Aseptic Processing / MAP (手動無菌製程)**
-→ TR62 ★★★ (complete MAP guidance: UDAF/RABS/isolator design, operator qualification, APS for manual ops, process time limits) — single primary source | PtC-12 ★★ (RABS design context) | TR22 ★★ (APS general principles applicable to MAP)
+→ TR54 ★★★ (excipient RA: risk ranking/filtering, supply chain RA) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDA_Technical-Report-Knowledge</title>
+    <title>SterileGMP Knowledge Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { theme: { extend: { colors: {
@@ -15,10 +15,10 @@
         body { font-family: 'DM Sans', 'Noto Sans TC', -apple-system, sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .doc-card { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-        .doc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(30,58,95,0.15); }
+        .doc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(51,65,85,0.12); }
         .tag-pill { font-size: 0.65rem; padding: 2px 8px; border-radius: 9999px; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; }
-        .search-hits { margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: #f0f7ff; border-left: 3px solid #1e3a5f; border-radius: 0 0.375rem 0.375rem 0; font-size: 0.7rem; line-height: 1.6; color: #475569; }
-        .search-hits .hit-title { font-weight: 600; color: #1e3a5f; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .search-hits { margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: #f8fafc; border-left: 3px solid #64748b; border-radius: 0 0.375rem 0.375rem 0; font-size: 0.7rem; line-height: 1.6; color: #475569; }
+        .search-hits .hit-title { font-weight: 600; color: #334155; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
         .search-hits mark { background: #fde68a; color: #92400e; padding: 0 2px; border-radius: 2px; }
         .relevance-bar { height: 3px; border-radius: 2px; margin-top: 2px; transition: width 0.3s ease; }
         .match-badges { display: flex; gap: 0.25rem; flex-wrap: wrap; }
@@ -34,21 +34,23 @@
         .fade-up:nth-child(4) { animation-delay: 0.15s; }
         body.search-active #statsRow { display: none; }
         body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
+        .last-viewed-badge { font-size: 0.6rem; padding: 1px 7px; border-radius: 9999px; font-weight: 700; background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; letter-spacing: 0.03em; white-space: nowrap; }
+        .doc-card.is-last-viewed { border-color: #fcd34d !important; box-shadow: 0 0 0 2px #fef3c7; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
     <!-- HEADER -->
-    <div class="bg-gradient-to-br from-pda-blue via-pda-blue-light to-pda-blue text-white px-6 py-8 relative overflow-hidden">
+    <div class="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-white px-6 py-8 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-1/2 translate-x-1/3"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-1/2 -translate-x-1/4"></div>
         </div>
         <div class="max-w-6xl mx-auto relative">
             <div class="text-center">
-                <h1 class="text-2xl font-bold tracking-tight">PDA_Technical-Report-Knowledge</h1>
-                <p class="text-blue-200 text-sm mt-1">Pharma Manufacturing x Education -- Bilingual Educational Document Index</p>
-                <p class="text-xs text-blue-300 mt-2">Last updated: <span id="lastUpdated"></span></p>
+                <h1 class="text-2xl font-bold tracking-tight">SterileGMP Knowledge Hub</h1>
+                <p class="text-slate-300 text-sm mt-1">Sterile Manufacturing GMP — Bilingual Educational Document Index</p>
+                <p class="text-xs text-slate-400 mt-2">Last updated: <span id="lastUpdated"></span></p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5" id="statsRow"></div>
         </div>
@@ -62,16 +64,21 @@
     <!-- SEARCH & FILTERS -->
     <div class="max-w-6xl mx-auto px-6 mt-4 flex gap-3 flex-wrap items-center">
         <input type="text" id="searchBox" placeholder="Search titles, sources, tags, and full content..."
-               class="flex-1 min-w-[250px] px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-800 text-sm focus:outline-none focus:border-pda-blue focus:ring-1 focus:ring-pda-blue">
-        <span id="resultCount" class="text-xs text-pda-blue font-medium" style="display:none"></span>
+               class="flex-1 min-w-[250px] px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-800 text-sm focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-400">
+        <span id="resultCount" class="text-xs text-slate-600 font-medium" style="display:none"></span>
         <div class="flex gap-2 flex-wrap" id="filterBtns"></div>
         <select id="sortSelect" onchange="this._userChanged=true;renderCards()"
-                class="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-gray-700 text-xs focus:outline-none focus:border-pda-blue">
+                class="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-gray-700 text-xs focus:outline-none focus:border-slate-500">
             <option value="relevance">Relevance</option>
             <option value="date-desc">Newest first</option>
             <option value="date-asc">Oldest first</option>
             <option value="source">By Source</option>
         </select>
+    </div>
+
+    <!-- RESUME BANNER -->
+    <div class="max-w-6xl mx-auto px-6 mt-3" id="resumeWrap" style="display:none">
+        <div id="resumeBanner" class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3"></div>
     </div>
 
     <!-- DOCUMENT CARDS -->
@@ -359,31 +366,57 @@ function renderStats(){
     const t=documents.length;
     const tp=documents.reduce((s,d)=>{const m=d.pages?d.pages.match(/p(\d+)\s*-\s*p(\d+)/):null;return s+(m?parseInt(m[2])-parseInt(m[1])+1:0);},0);
     const allTags=[...new Set(documents.flatMap(d=>d.tags))];
+    const srcCount=new Set(documents.map(d=>getSourceOrg(d.source))).size;
     const latest=documents.reduce((a,b)=>a.date>b.date?a:b);
-    const latestShort=(sourceColors[latest.source]||{}).short||latest.source;
-    const stats=[{v:t,l:'Reports'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'},{v:latestShort,l:'Latest Added'}];
-    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-blue-200 mt-0.5">${s.l}</div></div>`).join('');
+    const stats=[{v:t,l:'Documents'},{v:srcCount,l:'Sources'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'}];
+    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-slate-300 mt-0.5">${s.l}</div></div>`).join('');
     document.getElementById('lastUpdated').textContent=latest.date;
 }
 
-// Document type filters
-const categoryMap = {
-  'TR': s => /^PDA TR/.test(s),
-  'Points to Consider': s => /^PDA PtC/.test(s),
-  'Survey Research': s => /Survey|Research/i.test(s),
-  'Tech Guide': s => /Guide/i.test(s)
+// Source org helpers
+const sourceOrgColors = {
+  'PDA':   { bg: '#1e3a5f', text: '#ffffff', light: '#dbeafe', border: '#3b82f6' },
+  'ISPE':  { bg: '#1a3a2a', text: '#ffffff', light: '#d1fae5', border: '#10b981' },
+  'FDA':   { bg: '#3a1a1a', text: '#ffffff', light: '#fee2e2', border: '#ef4444' },
+  'PIC/S': { bg: '#3a2a1a', text: '#ffffff', light: '#fed7aa', border: '#f97316' },
+  'ISO':   { bg: '#2a1a3a', text: '#ffffff', light: '#ede9fe', border: '#8b5cf6' },
+  'ECA':   { bg: '#1a3a3a', text: '#ffffff', light: '#ccfbf1', border: '#14b8a6' },
+  'USP':   { bg: '#3a3a1a', text: '#ffffff', light: '#fef9c3', border: '#eab308' },
 };
-const typeLabels = ['all', 'TR', 'Points to Consider', 'Survey Research', 'Tech Guide'];
-let activeType = 'all';
+function getSourceOrg(source) {
+  if (/^PDA/i.test(source)) return 'PDA';
+  if (/^ISPE/i.test(source)) return 'ISPE';
+  if (/^FDA/i.test(source)) return 'FDA';
+  if (/^PIC\/S|^PICS/i.test(source)) return 'PIC/S';
+  if (/^ISO/i.test(source)) return 'ISO';
+  if (/^ECA/i.test(source)) return 'ECA';
+  if (/^USP/i.test(source)) return 'USP';
+  return source.split(/[\s\-]/)[0];
+}
 
-function initTypeFilters(){
-    document.getElementById('typeBtns').innerHTML=typeLabels.map(f=>{
-        const a=f===activeType;
-        const c=a?'bg-pda-blue text-white border-pda-blue':'border-gray-300 text-gray-600 bg-white hover:border-pda-blue hover:text-pda-blue';
-        return `<button class="px-3 py-1.5 rounded-lg text-xs font-semibold border ${c} transition-colors" onclick="setType('${f}')">${f==='all'?'All':f}</button>`;
+let activeSource = 'all';
+
+function initSourceFilters(){
+    const orgs = ['all', ...new Set(documents.map(d => getSourceOrg(d.source)))];
+    document.getElementById('typeBtns').innerHTML = orgs.map(org => {
+        const isActive = org === activeSource;
+        const oc = sourceOrgColors[org] || {};
+        let cls = 'px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors';
+        let style = '';
+        if (isActive && org !== 'all') {
+            style = `background:${oc.bg};color:${oc.text};border-color:${oc.bg}`;
+        } else if (isActive) {
+            cls += ' bg-slate-700 text-white border-slate-700';
+        } else if (org !== 'all' && oc.light) {
+            style = `background:${oc.light};color:${oc.bg};border-color:${oc.border}60`;
+            cls += ' hover:opacity-80';
+        } else {
+            cls += ' border-gray-300 text-gray-600 bg-white hover:border-slate-500 hover:text-slate-700';
+        }
+        return `<button class="${cls}" style="${style}" onclick="setSource('${org}')">${org === 'all' ? 'All Sources' : org}</button>`;
     }).join('');
 }
-function setType(t){activeType=t;initTypeFilters();renderCards();}
+function setSource(s){activeSource=s;initSourceFilters();renderCards();}
 
 function initFilters(){
     const tagCounts={};
@@ -392,7 +425,7 @@ function initFilters(){
     const list=['all',...topTags];
     document.getElementById('filterBtns').innerHTML=list.map(f=>{
         const a=f===activeFilter;
-        const c=a?'bg-pda-blue text-white border-pda-blue':'border-gray-200 text-gray-600 bg-white hover:border-pda-blue hover:text-pda-blue';
+        const c=a?'bg-slate-700 text-white border-slate-700':'border-gray-200 text-gray-600 bg-white hover:border-slate-500 hover:text-slate-700';
         return `<button class="px-3 py-1.5 rounded-lg text-xs font-medium border ${c} transition-colors" onclick="setFilter('${f}')">${f==='all'?'All':f}</button>`;
     }).join('');
 }
@@ -420,7 +453,7 @@ function getFiltered(){
         if(hits.length>0){sc+=Math.min(hits.length,8);ty.push('content');x._hits=hits.map(h=>({sectionTitle:h.sectionTitle,snippet:getSnippet(h.content,s)}));}
         x._score=sc;x._matchTypes=[...new Set(ty)];return sc>0;
     });}
-    if(activeType!=='all'){const fn=categoryMap[activeType];if(fn)d=d.filter(x=>fn(x.source));}
+    if(activeSource!=='all'){d=d.filter(x=>getSourceOrg(x.source)===activeSource);}
     if(activeFilter!=='all'){d=d.filter(x=>x.tags.includes(activeFilter));}
     const sort=sortEl.value;
     if(sort==='relevance'&&s)d.sort((a,b)=>b._score-a._score||b.date.localeCompare(a.date));
@@ -437,25 +470,30 @@ function renderCards(){
     document.body.classList.toggle('search-active',!!s);
     if(!docs.length){document.getElementById('docGrid').innerHTML='<div class="col-span-full text-center py-12 text-gray-400">No documents match.</div>';return;}
     const mx=Math.max(...docs.map(d=>d._score||0),1);
+    const _lv=getLastViewed();
 
     document.getElementById('docGrid').innerHTML=docs.map((d,i)=>{
         const sc=sourceColors[d.source]||{bg:'#f1f5f9',text:'#475569',short:d.source};
         const tags=d.tags.slice(0,4).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
         const fb=d.figures?`<span class="tag-pill bg-orange-50 text-orange-600">${d.figures} fig</span>`:'';
-        const btn=d.file?`<a href="${d.file}" target="_blank" class="text-xs bg-pda-blue text-white px-3 py-1 rounded hover:bg-pda-blue-light no-underline transition-colors">Open</a>`:'';
+        const isLV=_lv&&_lv.file===d.file;
+        const btn=d.file?`<a href="${d.file}" target="_blank" data-track-file="${d.file}" data-track-title="${d.title.replace(/"/g,'&quot;')}" data-track-zh="${(d.titleZh||'').replace(/"/g,'&quot;')}"
+            class="track-open text-xs text-white px-3 py-1 rounded no-underline transition-colors opacity-90 hover:opacity-100" style="background:${sc.bar||'#334155'}">Open</a>`:'';
         let rel='';
-        if(s&&d._score>0){const p=Math.round(d._score/mx*100);const bc=p>=70?'#1e3a5f':p>=40?'#3182ce':'#93c5fd';
+        if(s&&d._score>0){const p=Math.round(d._score/mx*100);const bc=p>=70?'#334155':p>=40?'#64748b':'#94a3b8';
             const bm={title:'Title',tag:'Tag',summary:'Summary',content:'Content'};
             const bl={title:'match-badge-title',tag:'match-badge-tag',summary:'match-badge-summary',content:'match-badge-content'};
             const mb=d._matchTypes.map(t=>`<span class="match-badge ${bl[t]}">${bm[t]}</span>`).join('');
             rel=`<div class="flex items-center gap-2 mt-2"><div class="match-badges">${mb}</div><div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="relevance-bar h-1.5 rounded-full" style="width:${p}%;background:${bc}"></div></div><span class="mono text-[10px] text-gray-400">#${i+1}</span></div>`;}
         let hh='';
         if(d._hits&&d._hits.length>0){const sh=d._hits.slice(0,3);const mo=d._hits.length>3?`<div class="text-[10px] text-gray-400 mt-1">+${d._hits.length-3} more</div>`:'';
-            hh=`<div class="search-hits"><div class="hit-title">Content matches (${d._hits.length})</div>${sh.map(h=>`<div class="text-[10px]"><span class="font-medium text-pda-blue">${h.sectionTitle}</span>: ${h.snippet}</div>`).join('')}${mo}</div>`;}
-        const bc2=s&&d._score>0?(d._score/mx>=0.7?'border-pda-blue':d._score/mx>=0.4?'border-blue-300':'border-gray-200'):'border-gray-200';
+            hh=`<div class="search-hits"><div class="hit-title">Content matches (${d._hits.length})</div>${sh.map(h=>`<div class="text-[10px]"><span class="font-medium text-slate-700">${h.sectionTitle}</span>: ${h.snippet}</div>`).join('')}${mo}</div>`;}
+        const bc2=s&&d._score>0?(d._score/mx>=0.7?'border-slate-500':d._score/mx>=0.4?'border-slate-300':'border-gray-200'):'border-gray-200';
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
-        return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col">
-            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div>`:''}
+        const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
+        const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
+        return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}">
+            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${lvBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
             <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
             ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
             ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
@@ -468,8 +506,64 @@ function renderCards(){
     }).join('');
 }
 
+// ============================================================
+// LAST VIEWED TRACKING
+// ============================================================
+const LS_KEY = 'sgk_last_viewed';
+
+function trackOpen(file, title, titleZh) {
+    try { localStorage.setItem(LS_KEY, JSON.stringify({ file, title, titleZh, ts: Date.now() })); } catch(e) {}
+}
+
+function getLastViewed() {
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || 'null'); } catch(e) { return null; }
+}
+
+function timeAgo(ts) {
+    const mins = Math.floor((Date.now() - ts) / 60000);
+    if (mins < 2) return '剛才';
+    if (mins < 60) return `${mins} 分鐘前`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs} 小時前`;
+    const days = Math.floor(hrs / 24);
+    if (days === 1) return '昨天';
+    if (days < 30) return `${days} 天前`;
+    return `${Math.floor(days / 30)} 個月前`;
+}
+
+function renderResumeBanner() {
+    const lv = getLastViewed();
+    const wrap = document.getElementById('resumeWrap');
+    const el = document.getElementById('resumeBanner');
+    if (!lv || !wrap || !el) return;
+    const displayTitle = lv.titleZh || lv.title;
+    const link = lv.file
+        ? `<a href="${lv.file}" target="_blank" data-track-file="${lv.file}" data-track-title="${lv.title}" data-track-zh="${lv.titleZh||''}"
+              class="track-open text-xs bg-slate-700 text-white px-3 py-1.5 rounded no-underline hover:bg-slate-600 whitespace-nowrap transition-colors">繼續閱讀</a>`
+        : '';
+    el.innerHTML = `<div class="flex items-center gap-3 flex-wrap">
+        <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest whitespace-nowrap">上次閱讀</span>
+        <span class="text-sm font-medium text-slate-800 flex-1 min-w-0 truncate" title="${displayTitle}">${displayTitle}</span>
+        <span class="text-xs text-slate-400 whitespace-nowrap">${timeAgo(lv.ts)}</span>
+        ${link}
+        <button onclick="localStorage.removeItem('${LS_KEY}');document.getElementById('resumeWrap').style.display='none';renderCards();"
+                class="text-slate-300 hover:text-slate-500 text-xl leading-none ml-1 transition-colors">&times;</button>
+    </div>`;
+    wrap.style.display = 'block';
+}
+
+// Delegated click handler for all Open buttons (incl. resume banner)
+document.addEventListener('click', e => {
+    const a = e.target.closest('a.track-open');
+    if (!a) return;
+    const file  = a.dataset.trackFile;
+    const title = a.dataset.trackTitle;
+    const zh    = a.dataset.trackZh || '';
+    if (file) trackOpen(file, title, zh);
+});
+
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-loadData().then(()=>{initTypeFilters();initFilters();renderStats();renderCards();});
+loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderResumeBanner();});
 </script>
 </body>
 </html>

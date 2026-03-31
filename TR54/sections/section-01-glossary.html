@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR54 - Section 1: Glossary &amp; Abbreviations</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1: Glossary &amp; Abbreviations</h1>
+    <div class="subtitle">術語定義與縮寫</div>
+    <div class="page-info">PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients | p3 - p5</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解供應鏈中各角色（Broker、Distributor、Manufacturer 等）的法規定義與責任邊界</li>
+            <li>區分 Risk、Risk Analysis 與 Risk Assessment 三者的層次關係</li>
+            <li>掌握 CQA、QTPP、RPN 等關鍵品質術語，連結 ICH Q8/Q9 框架</li>
+            <li>了解 EXCiPACT 認證體系與主要輔料 GMP 標準</li>
+            <li>理解 Section 3.0 整體策略：全球性風險評估的邏輯與實施框架</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#glossary-main">2.0 詞彙表</a>
+            <a href="#abbrev">2.1 縮寫表</a>
+            <a href="#strategy">3.0 整體策略</a>
+            <a href="#risk-areas">3.1 品質以外的風險領域</a>
+            <a href="#summary">本節摘要</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BLOCK 1: Section 2.0 Intro + First Half of Glossary
+         ============================================================ -->
+    <div id="glossary-main" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.0</div>
+            <div class="chapter-info">
+                <h2>Glossary and Abbreviations — Supply Chain Roles</h2>
+                <p>詞彙表 — 供應鏈角色定義 | p3–p4</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <!-- LEFT: Original English Content -->
+                <div class="left-column">
+                    <h3>2.0 Glossary and Abbreviations</h3>
+                    <p>Terms used in this technical report are defined in this section. Where a definition is taken verbatim from another source, the source is cited and included in Section 9.0 References. All other definitions are specific to Technical Report 54-6. Some definitions are based on those in the IPEC General Glossary of Terms and Acronyms but modified by substituting the term "excipient" for such words as "material" and "product" to aid readability and limit the context.</p>
+                    <p>A listing of all glossary terms used in current PDA technical reports can be found on the PDA Member website. The IPEC General Glossary of Terms and Acronyms is available on the IPEC website.</p>
+
+                    <h3 style="margin-top:1.25rem;">Supply Chain Roles — Glossary Table</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:28%;">Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="key-term">Broker</span></td>
+                                <td>An individual who acts as an intermediary. Brokers resell excipients <strong>without conducting physical handling</strong> of the excipient such as warehousing, transport, and repackaging. A broker may also be referred to as a trader.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Composite</span></td>
+                                <td>A composite excipient has two or more components and is designed for enhanced functionality.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Distribution</span></td>
+                                <td>The division and movement of excipients from the premises of the manufacturer, or from another central point, to the end user or to an intermediate point.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Distributor</span></td>
+                                <td>An entity engaged in distribution that <strong>takes legal ownership</strong> of the excipient. For purposes of this report, the term distributor does not include the original excipient manufacturer.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Drug Product</span></td>
+                                <td>A finished dosage form (e.g. tablet, capsule, or solution) that contains a drug substance, generally in association with one or more other ingredients. EU equivalent term: "medicinal product" (EMA).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">EXCiPACT™</span></td>
+                                <td>A nonprofit organization that manages a certification scheme available to pharmaceutical excipient manufacturers and distributors worldwide. www.excipact.org</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Excipient</span></td>
+                                <td>Any constituent of a medicinal product other than the active substance and the packaging material (EC). A substance other than an API which has been appropriately evaluated for safety and is intentionally included in a drug delivery system (IPEC).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">End User</span></td>
+                                <td>Organization using the excipient in the manufacture of a drug product.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Haulier / Hauler</span></td>
+                                <td>Logistics company involved in the movement of an excipient from one location to another.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Original Manufacturer</span></td>
+                                <td>Person or company manufacturing a material to the stage at which it is designated as an excipient.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Shipping Agent</span></td>
+                                <td>Designated person or agency responsible for handling shipments, cargo, and general interests of customers at ports/harbors on behalf of ship owners. May also transport the excipient and/or hold it in their warehouse.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Supplier</span></td>
+                                <td>Person or company providing excipients on request. Generic term covering distributors or traders, among others. For this report, it does <strong>not</strong> include the manufacturer.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Trader</span></td>
+                                <td>See <em>Broker</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Warehousing Company</span></td>
+                                <td>Organization providing a warehouse that may be used to store excipients and other materials.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：供應鏈角色的法規意義</h4>
+                        <p>TR54-6 的詞彙定義不是學術性的，而是直接決定你的供應商資格審查（Supplier Qualification）範圍。作為 MAH 或 CDMO，你需要明確判定每一個供應鏈參與者屬於哪種角色，因為不同角色對應不同的稽核要求與品質協議（Quality Agreement）義務。</p>
+                        <p>最需要清楚區分的三組關係：</p>
+                        <ul>
+                            <li><strong>Original Manufacturer</strong> vs <strong>Distributor</strong>：後者取得法律所有權但不製造</li>
+                            <li><strong>Distributor</strong> vs <strong>Broker/Trader</strong>：前者有實體操作，後者完全沒有</li>
+                            <li><strong>Supplier</strong>（廣義）vs 以上所有角色：Supplier 是通用詞，但在本報告中不包含原廠</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比：供應鏈角色像房地產市場</h4>
+                        <p>想像輔料供應鏈像一個房地產市場：</p>
+                        <ul>
+                            <li><strong>Original Manufacturer</strong> = 建商（實際蓋房子的人）</li>
+                            <li><strong>Distributor</strong> = 房仲公司（買下房產、持有所有權、可進行裝修後再賣）</li>
+                            <li><strong>Broker/Trader</strong> = 純仲介（媒合買賣雙方、從不持有房產、不搬家具）</li>
+                            <li><strong>Haulier</strong> = 搬家公司（只負責從 A 到 B 的移動）</li>
+                            <li><strong>Warehousing Company</strong> = 倉儲業者（只提供儲存空間）</li>
+                            <li><strong>Shipping Agent</strong> = 報關行（港口清關、文件處理，有時也短暫持有貨物）</li>
+                            <li><strong>End User</strong> = 最終買家（使用房子的人，即藥廠）</li>
+                        </ul>
+                        <p>關鍵差異：Broker 永遠不「碰」貨；Distributor 有法律所有權；Haulier 只是運輸。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：Broker 的特殊風險</h4>
+                        <p>Broker（仲介商）在風險評估中特別棘手，原因在於：</p>
+                        <ul>
+                            <li>他們<strong>沒有實體操作</strong>輔料——沒有倉庫、不搬運、不再包裝</li>
+                            <li>但他們控制文件流、可能影響可追溯性（Traceability）</li>
+                            <li>如果 Broker 不提供進入其品質系統的管道，你作為 End User 就無法追溯到 Original Manufacturer</li>
+                            <li>這直接影響 Supply Chain Profile（供應鏈剖析）的完整性——這是 Section 6.0 風險評估的基礎</li>
+                        </ul>
+                        <p>實務結論：對 Broker 的 Supplier Qualification 重點在於<strong>文件透明度與品質協議</strong>，而非 GMP 廠房稽核。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Relabeling 與 Repackaging 的可追溯性風險</h4>
+                        <p><span class="key-term">Relabeling</span>：換貼新標籤。可追溯性只有在 Relabeler 提供品質系統存取管道時才能保證。</p>
+                        <p><span class="key-term">Repacking/Repackaging</span>：換不同包裝。通常伴隨重新貼標，兩者在實務上常同時發生。</p>
+                        <p>風險點：一旦貼上新標籤，如果沒有 CoA（Certificate of Analysis）鏈，就無法確認批次來源。CDMO 在採購非原廠包裝輔料時，必須要求完整的 CoA 追溯鏈直至原廠。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 應用場景</h4>
+                        <p>假設你的輔料供應商是一家台灣進口商（Distributor），他們從德國原廠採購後重新分裝成小包裝販售。在這個供應鏈裡：</p>
+                        <ul>
+                            <li>德國廠 = Original Manufacturer（需評估其 GMP 等級）</li>
+                            <li>台灣進口商 = Distributor（取得法律所有權、進行 Repacking）</li>
+                            <li>若台灣進口商只是媒合、貨從德國直送你的工廠 = Broker/Trader</li>
+                        </ul>
+                        <p>這個區分決定你的 Supplier Questionnaire 要問哪些問題，以及是否需要到台灣進口商做現場稽核。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BLOCK 2: Quality & Risk Terms
+         ============================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.0</div>
+            <div class="chapter-info">
+                <h2>Glossary — Quality &amp; Risk Terms</h2>
+                <p>品質與風險術語 | p3–p4</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Quality &amp; Risk Terms</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:32%;">Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="key-term">Critical Quality Attribute (CQA)</span></td>
+                                <td>A physical, chemical, biological, or microbiological property or characteristic that should be within an appropriate limit, range, or distribution to ensure the desired product quality (TR54, TR54-4; ICH Q8 R2).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Quality Target Product Profile (QTPP)</span></td>
+                                <td>A prospective summary of the quality characteristics of a drug product that ideally will be achieved to ensure the desired quality, taking into account safety and efficacy (ICH Q8 R2).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Residual Risk</span></td>
+                                <td>Risk remaining after risk control measures have been implemented.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Risk</span></td>
+                                <td>The combination of the <strong>probability of occurrence of harm</strong> and the <strong>severity of that harm</strong> (ICH Q9).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Risk Analysis</span></td>
+                                <td>The estimation of the risk associated with the identified hazards.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Risk Assessment</span></td>
+                                <td>A systematic process of organizing information to support a risk decision within a risk management process. Consists of: (1) identification of hazards, (2) analysis of risks, and (3) evaluation of risks associated with exposure to those hazards.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Risk Priority Number (RPN)</span></td>
+                                <td>A quantitative measure used when assessing the level of risk.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Storage</span></td>
+                                <td>The storing of excipients up to the point of use.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">Supply Chain</span></td>
+                                <td>All steps in the entire chain of distribution starting from the point at which an excipient is transferred outside the control of the original manufacturer's material management system downstream to the final user (IPEC). A system of organizations, people, technology, activities, information, and resources involved in moving an excipient from the original manufacturer to the end user.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>風險三層次：Risk → Risk Analysis → Risk Assessment</h4>
+                        <p>這三個術語在 ICH Q9 框架下有明確的階層關係，不能混用：</p>
+                        <ul>
+                            <li><strong>Risk</strong>（風險）= 危害發生的機率 × 嚴重性。這是一個<em>數值或程度概念</em>。</li>
+                            <li><strong>Risk Analysis</strong>（風險分析）= 針對已識別的危害，估算其風險大小。這是<em>計算過程</em>。</li>
+                            <li><strong>Risk Assessment</strong>（風險評估）= 更完整的系統性程序，包含：危害識別 → 風險分析 → 風險評價。這是<em>整個框架</em>，包含了 Risk Analysis。</li>
+                        </ul>
+                        <p>TR54-6 做的正是 Risk Assessment：系統性評估輔料在供應鏈每個節點的危害，最終回答「這個輔料是否適合用於藥品？」</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比：CQA 與 QTPP 的關係</h4>
+                        <p>QTPP 是「理想的最終產品長什麼樣」——你希望這個注射劑的 pH、滲透壓、無菌性都符合什麼規格。</p>
+                        <p>CQA 是「哪些特性必須受控以確保達到 QTPP」——例如輔料的粒徑分佈（影響溶解度）、水分含量（影響穩定性）。</p>
+                        <p>TR54-6 的風險評估邏輯是：先確立 QTPP → 推導輔料的 CQA → 評估供應鏈是否會危害這些 CQA。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>RPN 的計算與限制</h4>
+                        <p><span class="key-term">RPN</span>（Risk Priority Number）是量化風險的工具，常見公式為：</p>
+                        <p style="text-align:center; font-weight:600; font-size:1.05rem; padding:0.5rem 0;">RPN = Severity × Probability × Detectability</p>
+                        <p>TR54-6 在 Section 6.0 中使用 Risk Ranking and Filtering 方法，RPN 用於排序危害的優先順序。注意：RPN 本身的絕對數值不重要，重要的是<strong>相對排序</strong>與<strong>閾值設定</strong>——哪個 RPN 以上需要採取控制措施。</p>
+                        <p>Residual Risk = 採取控制措施後，剩餘的 RPN 或風險程度。你的 QRM 程序需要定義可接受的 Residual Risk 水準。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Supply Chain 定義的起點與終點</h4>
+                        <p>TR54-6 對 Supply Chain 的定義有明確的時間邊界：</p>
+                        <ul>
+                            <li><strong>起點</strong>：輔料離開原廠物料管理系統的控制範圍之後</li>
+                            <li><strong>終點</strong>：End User 實際使用時</li>
+                        </ul>
+                        <p>這意味著原廠內部的製造過程不在 TR54-6 供應鏈評估範圍內（原廠製造有其他 GMP 標準管轄）。TR54-6 關注的是輔料「出廠後到你手上」這段旅程中的所有風險節點。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習：術語辨識</h4>
+                        <p>Q1：你的輔料採購部門說「我們做了風險分析」，但他們只是列出了潛在危害清單，還沒有評估每個危害的機率與嚴重性。根據 TR54-6 定義，他們完成的是哪個步驟？</p>
+                        <p>Q2：一家公司既從原廠採購輔料、存放在自己倉庫、再分拆販售給藥廠，同時也替另一家原廠僅作媒合（不持有貨物）。這家公司在不同業務中分別是哪種角色？</p>
+                        <p>Q3：Residual Risk 等於零是否可能？在實務中應如何處理？</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BLOCK 3: Section 2.1 Abbreviations
+         ============================================================ -->
+    <div id="abbrev" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.1</div>
+            <div class="chapter-info">
+                <h2>Abbreviations</h2>
+                <p>縮寫對照表 | p4</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>2.1 Abbreviations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:18%;">Abbreviation</th>
+                                <th>Full Term</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="key-term">EC</span></td>
+                                <td>European Commission</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">CMO</span></td>
+                                <td>Contract Manufacturing Organization</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">CQA</span></td>
+                                <td>Critical Quality Attributes</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">GMP</span></td>
+                                <td>Good Manufacturing Practices</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">QMS</span></td>
+                                <td>Quality Management System</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">QRM</span></td>
+                                <td>Quality Risk Management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>縮寫的法規語境</h4>
+                        <p>TR54-6 是 <strong>PDA–IPEC 聯合文件</strong>，因此縮寫清單反映了歐美兩個監管體系的用語融合：</p>
+                        <ul>
+                            <li><strong>EC</strong>（European Commission）：輔料的 EC 定義是 TR54-6 引用的官方基礎定義之一，代表歐盟監管觀點</li>
+                            <li><strong>CMO</strong>：在本報告語境中指代 End User 的一種類型——替藥廠代工製造藥品的組織。CDMO 是 CMO 的延伸（含開發服務）</li>
+                            <li><strong>QRM</strong>（Quality Risk Management）：對應 ICH Q9，是本報告的方法論支柱</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CMO 在 TR54-6 中的定位</h4>
+                        <p>TR54-6 列出 CMO 這個縮寫，但在 Section 3.0 中使用的是「pharmaceutical manufacturer」和「manufacturing authorization holder（MAH）」兩個概念，且有不同的責任分工：</p>
+                        <ul>
+                            <li><strong>MAH</strong>（製造授權持有人）= 對藥品品質負最終責任的法律實體，通常是品牌藥廠或上市許可持有人</li>
+                            <li><strong>Pharmaceutical manufacturer</strong> = 實際進行製造的機構，可以是 MAH 本身，也可以是 CMO/CDMO</li>
+                        </ul>
+                        <p>作為 CDMO，你在輔料風險評估上通常是 pharmaceutical manufacturer 的角色，但風險評估的最終核准責任可能落在客戶（MAH）端——這需要在品質協議中明確劃分。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 場景：縮寫的實務應用</h4>
+                        <p>當客戶（MAH）委託你（CDMO）生產注射劑，輔料風險評估的責任歸屬通常是：</p>
+                        <ul>
+                            <li>你（CDMO）負責建立並執行輔料 QRM 程序，使用 RPN 量化風險</li>
+                            <li>客戶（MAH）的 QMS 需認可你的評估結果或共同參與</li>
+                            <li>最終確認文件需納入 MAH 的 GMP 文件體系</li>
+                        </ul>
+                        <p>這就是 Section 3.0 強調「pharmaceutical manufacturer or manufacturing authorization holder」應共同參與風險評估的原因。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BLOCK 4: Section 3.0 Overall Strategy
+         ============================================================ -->
+    <div id="strategy" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.0</div>
+            <div class="chapter-info">
+                <h2>Overall Strategy — A Holistic View</h2>
+                <p>整體策略：全觀視角 | p4–p5</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>3.0 Overall Strategy – A Holistic View</h3>
+                    <p>TR 54-6 provides guidance on quality risk management principles that can be used to assess the risks to the quality, safety, and function of an excipient in a drug product. The proposed generic model allows the user to answer the risk question: <em>"Is the excipient fit for use in the drug product?"</em> through the use of a formalized risk assessment.</p>
+                    <p>The model (Section 6.0 and Figure 6.0-1) describes the steps involved in identifying whether an excipient is fit for use considering:</p>
+                    <ul>
+                        <li>An assessment of its <strong>use and function</strong> for the excipient user</li>
+                        <li>An assessment of the <strong>entire supply chain</strong></li>
+                    </ul>
+                    <p>In the model, the potential hazards from the excipient itself, as well as the supply chain, are ranked and evaluated using a <strong>risk ranking and filtering approach</strong> to evaluate the overall risk of harm to the drug product and, through that, to patient safety.</p>
+
+                    <h3 style="margin-top:1.25rem;">GMP Standards Referenced</h3>
+                    <p>Based on the results of the risk assessment, a pharmaceutical manufacturer can determine what level of GMP will be required. The widely accepted guides/standards for excipient GMPs include:</p>
+                    <ul>
+                        <li><strong>EXCiPACT™</strong>: International Pharmaceutical Excipients Certification Standards for Pharmaceutical Excipient Suppliers</li>
+                        <li><strong>NSF/IPEC/ANSI 363</strong>: Good Manufacturing Practices (GMP) for Pharmaceutical Excipients</li>
+                        <li><strong>IPEC/PQG</strong>: The Joint Good Manufacturing Practices Guide for Pharmaceutical Excipients</li>
+                        <li><strong>USP</strong>: USP &lt;1078&gt; Good Manufacturing Practices for Bulk Pharmaceutical Excipients and &lt;1059&gt; Excipient Performance</li>
+                        <li><strong>Japan</strong>: Self-imposed Standards of Good Manufacturing Practices for Pharmaceutical Excipients</li>
+                    </ul>
+
+                    <h3 style="margin-top:1.25rem;">Collaboration and Documentation Requirements</h3>
+                    <p>As part of the risk assessment process, the manufacturer or MAH should engage the excipient manufacturer and suppliers to obtain specifics from the excipient manufacturer's own risk assessment. The complete supply chain profile must be considered for each excipient.</p>
+                    <p>Any actions recommended as a result of the risk assessment must be discussed and agreed upon by the excipient manufacturer and the manufacturer of the drug product or MAH before being implemented, in case those actions may impact the supplier. The results should be documented in a <strong>quality agreement or other document</strong>.</p>
+
+                    <h3 style="margin-top:1.25rem;">Global vs. Local Risk Assessment</h3>
+                    <p>A global risk assessment of all excipients used by the drug product manufacturer or MAH will ensure a standardized assessment of all excipients in all drug products and provide a holistic view of the supply chain. This enables the excipient user to communicate with one voice to the excipient manufacturer — a single (worst case) risk assessment.</p>
+                    <p>In a global risk assessment, risk review and improvements may be more difficult. This process could be shortened by instituting a <strong>global risk assessment that involves local ownership</strong>: each product or manufacturing site conducts a separate risk assessment, all results are collected in a single document repository, and local owners maintain responsibility for data collection, review, and approval workflows.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心問題：輔料是否適合用於藥品？</h4>
+                        <p>TR54-6 的整體策略圍繞一個核心問題：<strong>「Is the excipient fit for use in the drug product?」</strong>。這不是一個是/否的問題，而是一個需要系統性評估兩個維度的問題：</p>
+                        <ul>
+                            <li><strong>維度一：輔料本身的用途與功能</strong>——這個輔料的 CQA 是否符合製劑的 QTPP？</li>
+                            <li><strong>維度二：供應鏈完整性</strong>——從原廠到你手上的每個節點是否引入了新的危害？</li>
+                        </ul>
+                        <p>只有兩個維度都通過評估，才能判定輔料「適合使用」。這也解釋了為什麼 Broker（沒有實體操作）仍然需要評估——因為它影響供應鏈的文件可追溯性。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>五大輔料 GMP 標準的定位</h4>
+                        <p>TR54-6 列出的五個標準並非互相競爭，而是各有適用場景：</p>
+                        <ul>
+                            <li><strong>EXCiPACT™</strong>：第三方認證體系，有稽核+認證機制，適合快速確認供應商資格</li>
+                            <li><strong>NSF/IPEC/ANSI 363</strong>：美國標準，ISO 格式，常見於北美市場</li>
+                            <li><strong>IPEC/PQG</strong>：歐洲導向，PQG（Pharmaceutical Quality Group）是英國 CQI 分支</li>
+                            <li><strong>USP &lt;1078&gt;</strong>：專注於散裝輔料製造，有法規強制性（美國 NDA/ANDA）</li>
+                            <li><strong>日本自主標準</strong>：適用於日本市場輔料採購稽核</li>
+                        </ul>
+                        <p>TR54-6 的風險評估結果決定你<em>需要</em>輔料供應商符合哪個等級的標準。高風險輔料需要更嚴格的 GMP（如 EXCiPACT 認證）；低風險輔料可能一般 GDP 即足夠。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比：全球風險評估 vs 各地獨立評估</h4>
+                        <p>想像一家跨國連鎖餐廳（MAH）在全球 20 個城市使用同一款食鹽（輔料）：</p>
+                        <ul>
+                            <li><strong>全球統一評估</strong>：總部做一份完整評估，所有分店套用。效率高，但更新時需要全球審批，流程慢。</li>
+                            <li><strong>各地獨立評估</strong>：每個分店各自評估。彈性高，但可能造成「台北分店認為高風險、上海分店認為低風險」的矛盾。</li>
+                            <li><strong>TR54-6 推薦的混合模式</strong>：各地做評估（Local Ownership）→ 彙整到統一的文件庫（Single Repository）→ 對外以「一個聲音」溝通原廠。</li>
+                        </ul>
+                        <p>這個模式的精髓是：用最壞情況（Worst Case）代表所有評估結果，避免同一個供應商收到矛盾的要求。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>品質協議（Quality Agreement）的角色</h4>
+                        <p>Section 3.0 明確指出：風險評估建議的任何行動，必須在實施前與輔料製造商（或供應商）討論並達成共識，結果需記錄於<strong>品質協議或其他文件</strong>中。</p>
+                        <p>這意味著：</p>
+                        <ul>
+                            <li>你不能單方面要求供應商增加測試項目而不知會對方</li>
+                            <li>任何變更（如抽樣計畫調整）需要雙方同意</li>
+                            <li>品質協議是風險控制措施的法律基礎文件</li>
+                        </ul>
+                        <p>對 CDMO 而言，這通常意味著你的 QA 部門需要與客戶（MAH）及輔料供應商同時維持兩份品質協議，明確各方在輔料風險管理中的責任邊界。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 的全球評估策略設計</h4>
+                        <p>如果你的 CDMO 有多個製造廠址（如台灣廠 + 中國廠），且都使用同一批輔料供應商，TR54-6 的建議是：</p>
+                        <ul>
+                            <li>各廠址由本地 QA 負責人（Local Owner）維護各自的輔料風險評估</li>
+                            <li>所有評估彙整至集團層級的文件庫（如 QMS 平台）</li>
+                            <li>與供應商溝通時，以<strong>最嚴格的那份評估</strong>（Worst Case）作為集團統一立場</li>
+                            <li>避免台灣廠和中國廠向同一供應商傳遞不同的風險等級信號</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BLOCK 5: Section 3.1 Risk Areas Beyond Quality
+         ============================================================ -->
+    <div id="risk-areas" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.1</div>
+            <div class="chapter-info">
+                <h2>Risk Areas Beyond Quality</h2>
+                <p>品質以外的風險領域 | p5</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>3.1 Risk Areas Beyond Quality</h3>
+                    <p>While the focus of the excipient risk assessment is quality, a company also should consider other aspects that can impact the excipient and, with this, product availability for the patient. These include:</p>
+                    <ul>
+                        <li>Excipient availability</li>
+                        <li>Business continuity risk</li>
+                        <li>Environmental, socio-economic, health, safety, and geographic risks</li>
+                        <li>General business data</li>
+                    </ul>
+                    <p>While consideration of these risks is useful as part of an overall strategy, it is <strong>out of scope</strong> of this document and is not discussed further.</p>
+
+                    <div class="quote-box">
+                        "While the focus of the excipient risk assessment is quality, a company also should consider other aspects that can impact the excipient and, with this, product availability for the patient."
+                        <br><em>— TR54-6, Section 3.1</em>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="note-box">
+                        <h4>品質以外的風險：範圍邊界說明</h4>
+                        <p>Section 3.1 是一個重要的「範圍聲明」：TR54-6 <strong>只</strong>處理品質風險（Quality Risk），以下這些風險雖然重要，但不在本文件討論範圍內：</p>
+                        <ul>
+                            <li><strong>輔料供應可用性</strong>（Availability）：例如單一來源供應商、原物料短缺</li>
+                            <li><strong>業務連續性風險</strong>（Business Continuity）：供應商倒閉、工廠停工</li>
+                            <li><strong>環境/社會/地緣政治風險</strong>：天災、貿易戰、地區不穩定</li>
+                        </ul>
+                        <p>這意味著如果你要做完整的輔料供應商管理，TR54-6 只是品質面向的工具，你還需要額外的 Business Continuity Planning（BCP）和 Supply Chain Risk Management（SCRM）框架。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比：TR54-6 的適用邊界</h4>
+                        <p>TR54-6 就像汽車的<strong>煞車系統檢查</strong>——它確保煞車（品質）功能正常，但它不評估你的備胎是否夠用（供應可用性），也不評估你的行車路線是否安全（地緣政治風險）。</p>
+                        <p>完整的供應鏈風險管理需要「全車系統檢查」，TR54-6 只是其中一個專項工具。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 實務：品質風險與業務風險並行管理</h4>
+                        <p>在實務中，CDMO 通常需要建立兩套平行的輔料評估機制：</p>
+                        <ul>
+                            <li><strong>品質風險評估</strong>（TR54-6 範疇）：由 QA/QRM 部門主導，產出 Risk Assessment Report</li>
+                            <li><strong>供應鏈業務風險評估</strong>（超出 TR54-6 範疇）：由採購/供應鏈部門主導，評估供應穩定性、單一來源風險、替代供應商資格等</li>
+                        </ul>
+                        <p>兩套評估的結果應在輔料主文件（Excipient Master File）或採購策略文件中整合呈現，確保決策者看到完整風險圖像。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BLOCK 6: Section Summary
+         ============================================================ -->
+    <div id="summary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">Sum</div>
+            <div class="chapter-info">
+                <h2>Section Summary</h2>
+                <p>本節重點回顧 | Sections 2.0–3.1</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Takeaways (English)</h3>
+
+                    <div class="structure-list" style="list-style:none; padding:0;">
+                        <ul class="structure-list">
+                            <li><strong>Broker = no physical handling.</strong> This is the single most important operational distinction in the supply chain role taxonomy. Brokers may still affect traceability through document control.</li>
+                            <li><strong>Distributor = legal ownership.</strong> Unlike brokers, distributors take ownership and may perform warehousing, transport, and repackaging.</li>
+                            <li><strong>Risk Assessment is broader than Risk Analysis.</strong> Risk Assessment encompasses hazard identification + Risk Analysis + risk evaluation. Do not conflate the terms.</li>
+                            <li><strong>CQA is the bridge between QTPP and supply chain.</strong> The excipient risk assessment asks: which CQAs could be compromised by supply chain events?</li>
+                            <li><strong>The central risk question:</strong> "Is the excipient fit for use in the drug product?" — answered via a formalized risk assessment covering both excipient function and supply chain integrity.</li>
+                            <li><strong>Global risk assessments with local ownership</strong> are the recommended model: standardize the assessment, communicate with one voice to the excipient manufacturer.</li>
+                            <li><strong>Section 3.1 sets the scope boundary:</strong> TR54-6 addresses quality risk only. Business continuity, availability, and geopolitical risks are out of scope.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3>重點回顧（繁體中文）</h3>
+
+                    <div class="concept-box">
+                        <h4>七個核心記憶點</h4>
+                        <ol style="margin-left:1.2rem; font-size:0.92rem; line-height:1.9;">
+                            <li><strong>Broker = 零實體操作</strong>：這是術語辨識中最重要的一點。Broker 不碰貨，只處理文件與商業關係。</li>
+                            <li><strong>Distributor = 法律所有權</strong>：有所有權才有倉儲、運輸、再包裝的動機與能力。</li>
+                            <li><strong>Risk Assessment ≠ Risk Analysis</strong>：前者包含後者。Assessment 是完整的三步驟框架。</li>
+                            <li><strong>CQA 連接 QTPP 與供應鏈</strong>：哪些輔料特性（CQA）可能因供應鏈事件而被破壞？這是評估的核心邏輯。</li>
+                            <li><strong>核心問題</strong>：「輔料適合用於這個藥品嗎？」需從功能性與供應鏈兩個維度回答。</li>
+                            <li><strong>全球評估 + 地方所有權</strong>：標準化評估，以最壞情況向供應商發一個聲音。</li>
+                            <li><strong>TR54-6 只管品質風險</strong>：供應可用性、業務連續性不在範圍內，需另外管理。</li>
+                        </ol>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>自我測驗</h4>
+                        <p><strong>Q1：</strong>你的輔料供應商告訴你他們「只負責媒合，不碰貨」。他們在 TR54-6 中屬於哪種角色？你的 Supplier Qualification 重點應放在哪裡？</p>
+                        <p><strong>Q2：</strong>你在做輔料採購審查時，發現某個賦形劑來自三個不同的供應鏈節點（原廠→分銷商→再包裝商）。依照 TR54-6 定義，Supply Chain 從哪裡開始計算？</p>
+                        <p><strong>Q3：</strong>客戶（MAH）要求你評估一個高風險注射用輔料。你完成了 Risk Assessment，決定需要要求供應商取得 EXCiPACT 認證。下一步你需要做什麼，才符合 Section 3.0 的要求？</p>
+                        <p><strong>Q4：</strong>某個輔料的 Residual Risk 評估結果為「低」。這個評估結果需要記錄在哪裡？多久應該重新審查一次？</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients</p>
+    <p>Joint PDA–IPEC Document | Section 1: Glossary &amp; Abbreviations | p3–p5</p>
+    <p style="opacity:0.6; font-size:0.8rem;">Licensed educational material — for internal training use only</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
