@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PtC-Isolators Section 3 — Environmental Monitoring & Material Transport</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.5rem; }
+
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+.right-column .column-header { color: #2c5282; }
+
+.section-title {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.term-box h3, .term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p,
+.term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.term-box ul, .term-box ol,
+.key-point-box ul, .key-point-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li,
+.term-box li, .key-point-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4 { color: #2e7d32 !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    border: 1px solid #f6e49b;
+}
+.section-summary h2 {
+    color: #856404;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    border-bottom: 2px solid #f6ad55;
+    padding-bottom: 0.5rem;
+}
+.section-summary ul { margin-left: 1.5rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.93rem; color: #4a3800; }
+
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+.approach-block {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.85rem;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #3182ce;
+    font-size: 0.92rem;
+}
+.approach-block h4 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    font-weight: 700;
+}
+.approach-block ul { margin: 0.4rem 0 0 1.25rem; }
+.approach-block li { margin-bottom: 0.3rem; font-size: 0.91rem; }
+
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>PDA Points to Consider: Aseptic Processing in Isolators (2020)</h1>
+    <div class="subtitle">Section 3 — Topic 5: Environmental Monitoring &amp; Topic 6: Material Transport and Loading</div>
+    <div class="page-info">Questions Q5-1, Q5-2, Q5-3, Q5-5 &amp; Q6-1, Q6-2, Q6-3, Q6-4 &nbsp;|&nbsp; p22–p38</div>
+</div>
+
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解隔離器環境監測（EM）的頻率設計原則，以及它與傳統潔淨室的根本差異。</li>
+            <li>掌握隔離器表面監測選點邏輯：哪些表面要採樣、哪些可豁免，以及為何手套是最高優先。</li>
+            <li>分析隔離器內 EM 偏差（excursion）的雙重意涵——批次放行判斷 vs. 系統失效調查。</li>
+            <li>熟悉 EM 培養皿進出隔離器的正確轉移程序，避免假陽性或假陰性。</li>
+            <li>比較四種間接接觸面（stopper bowl、tracks）滅菌/除污方案的風險層級，以及 VHP 與 E-beam 在物料轉移中的實際應用。</li>
+        </ul>
+    </div>
+
+    <!-- ========================================================
+         TOPIC 5: ENVIRONMENTAL MONITORING
+    ========================================================= -->
+    <h2 class="section-title">Topic 5 — Environmental Monitoring（環境監測）</h2>
+
+    <!-- Q5-1 -->
+    <h3 class="section-title" id="q5-1">Q5-1: EM 監測頻率應如何設定？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q5-1: What should the environmental monitoring frequency be in an isolator?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>A risk-based approach should be employed to determine the frequency of surface monitoring in an isolator as well as the frequency and duration of airborne monitoring. The approach is similar to that used for conventional filling lines and cleanrooms, although the results of the risk assessment may be different.</p>
+            <p>In some cases, the design of the isolator (e.g., gloveless isolators) may not allow the performance of some airborne monitoring methods, such as settling plates. Therefore, less intrusive methods may be advantageous.</p>
+            <p>Surface sampling of the isolator interior and equipment in the isolator (including gloves) should be conducted at the end of the production batch or campaign, but prior to decontaminating or opening the isolator. Surface sampling may also occur after an intervention or activity that requires decontamination of the isolator prior to resuming production.</p>
+            <p>Airborne monitoring should start prior to any aseptic processing activities performed in the decontaminated isolator, including any equipment or parts setup being performed after decontamination. Total particulate monitoring should be continuous over the duration of critical activities (i.e., when product or product contact surfaces are exposed). Airborne viables should be sampled in a manner that provides a representative record of air purity for the duration of the run while not introducing added risk to product.</p>
+            <p>Trending of environmental monitoring results should be analyzed regularly to assess contamination control performance.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>Although the interior of an isolator is decontaminated by a chemical agent, monitoring throughout the run is necessary to demonstrate continuing contamination control. This is particularly important as an isolator may allow for extended runs beyond those normally associated with more traditional lines. Monitoring frequency and duration must be carefully considered to optimize benefit while risk is managed. The contamination risk introduced by required sampling interventions, as well as for sample media, must be assessed.</p>
+            <p>Sampling of gloves and other surfaces at the end of the production run will provide adequate evidence of contamination while not introducing risk to product whether or not media is introduced (e.g., use of swabs wetted with buffer solution).</p>
+            <p>For airborne viables, sampling methodology should be selected from various alternatives (e.g., settling plates, active air samplers) to ensure adequately characterized air purity while limiting the necessary number and type of interventions. The daily or batch-wise monitoring of air is considered to be an adequate level of contamination control during campaign production/batch filling over several days.</p>
+            <p>Modern particulate-monitoring systems allow for continuous airborne monitoring for total particulate without introducing risk to product. Such systems should be employed wherever possible.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>核心邏輯：為什麼隔離器的 EM 頻率可以「相對降低」？</h4>
+                <p>傳統 Grade A 潔淨室的 EM 之所以頻繁，是因為周圍環境（Grade B）仍存在人員、氣流擾動等污染源；每次干預都是高風險事件。</p>
+                <p>隔離器的情況截然不同：內部已經過 VHP 化學除污，外部操作員無法直接接觸產品。污染風險大幅降低，因此 EM 頻率可以透過<strong>風險評估</strong>來決定，不必照搬傳統標準。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>表面採樣的時機：為什麼要「批次結束後、除污前」？</h4>
+                <p>原則很直觀：你要取得<strong>生產過程的真實紀錄</strong>，而非除污後的乾淨表面。若先除污再採樣，數據就失去意義了。這和 FDA 2004 年無菌指引的立場一致。</p>
+                <p>例外情況：發生需要中途除污的介入（intervention）之後，也應補做採樣。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：非活性 vs. 活性粒子監測</h4>
+                <p>想像你在錄影（非活性：總顆粒數，連續監測）和定期做文化培養（活性：微生物，批次/每日採樣）。</p>
+                <p>現代粒子計數器可以全程 24 小時連續記錄，不需要介入——這就是「無干擾監測」的理想。活性微生物採樣則需要放置培養皿或使用 SAS/RCS 主動採樣器，每次介入都帶來額外風險，因此頻率應謹慎設計。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>長時間連續生產（Campaign）的挑戰</h4>
+                <p>隔離器的優勢之一是可以做 multi-day campaign（跨天連續批次），但這也意味著 EM 程序需要支持長時間操作。PDA 認為：<strong>每日或每批次</strong>的活性空氣監測即屬足夠。</p>
+                <p>這對你的 CDMO 作業有直接意涵：如果你的 campaign 跨 3 天，活性採樣可能每天做一次，而非每幾小時做一次。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q5-2 -->
+    <h3 class="section-title" id="q5-2">Q5-2: 哪些表面應納入監測？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q5-2: Which surfaces should be monitored in an isolator?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>Risk-based approaches should be used to select surface monitoring locations in an isolator. Emphasis should be placed on product contact surfaces (i.e., surfaces that directly contact product or a primary filling component), although risk analysis may determine that not all direct contact surfaces need to be sampled. Other locations may also be chosen if they are considered to present significant risk to product or to confirm overall contamination control.</p>
+            <p>Gloves are of particular interest, because they are involved in setup and both routine and non-routine interventions. Filling needles are also important as they provide the most direct product contact and, potentially, the greatest risk.</p>
+            <p>Sampling of filling needles or other surfaces where product may have accumulated should be considered for the possibility of growth inhibition inherent to the product itself (i.e., preservative action). In this case, a location adjacent to the needles (e.g., the needle rack) that has not been exposed to product may be chosen.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>Besides the risk of product contact, determination of surface sampling locations may take into account other mitigating or exacerbating factors. For example, sampling of every contact surface may not be necessary if other samples are deemed to adequately represent the location in question. Risk factors to consider may include the proximity of the locations, if they are subjected to the same potential airflow disturbances, and if they are exposed to higher risk interventions.</p>
+            <p>Where interventions are necessary, sampling locations may be selected based on the associated risk. If these interventions are not routine, additional surface sampling may be required.</p>
+            <p>If a surface has been sterilized and not threatened by an intervention, it may not need to be sampled. Conversely, if a surface has been decontaminated but not sterilized, as may be the case with certain filling component-handling devices, surface monitoring would usually be performed.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>選點優先順序（風險由高到低）</h4>
+                <ul>
+                    <li><strong>手套（Gloves）</strong>：每次介入都要經過手套——是污染最可能的入口，優先採樣。</li>
+                    <li><strong>灌裝針（Filling needles）</strong>：與產品最直接接觸，風險最高。</li>
+                    <li><strong>其他直接接觸面</strong>：可用風險評估判斷是否需要全數採樣。</li>
+                    <li><strong>間接接觸面</strong>：如已滅菌且未受介入威脅，可豁免採樣。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>含防腐劑產品的陷阱</h4>
+                <p>如果你的產品含防腐劑（如 benzalkonium chloride），直接從灌裝針採樣可能導致<strong>假陰性</strong>——微生物根本長不起來。</p>
+                <p>解法：改採<strong>針架（needle rack）</strong>或其他沒有直接接觸產品的鄰近位置。這是一個需要在 EM 計畫中明確說明的技術決策。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>「已滅菌 vs. 僅除污」的實務差異</h4>
+                <p>已滅菌（如高壓滅菌後密封轉入）的表面，若沒有發生任何介入威脅，監測優先級可降低。但如果某設備只接受了 VHP 除污（非 steam sterilization），監測還是必要的——因為 VHP 的保證水平（SAL）與高壓滅菌不同。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>介入風險分層</h4>
+                <p>常規介入（routine intervention，如更換廢棄物袋）vs. 非常規介入（non-routine，如突發性修復）——後者風險更高，需要增加臨時採樣點。這個邏輯應寫入你的 EM 計畫 SOP 中。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q5-3 -->
+    <h3 class="section-title" id="q5-3">Q5-3: 隔離器 EM 偏差與傳統產線的處理方式有何不同？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q5-3: Should environmental monitoring excursions in isolators be treated differently compared to excursions in conventional filling lines?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>Regarding batch disposition, environmental monitoring excursions in an isolator must be treated the same as excursions on a more traditional line. A deviation investigation should take into account all relevant information pertaining to the risk that product may be contaminated, and an appropriate decision made as to batch release.</p>
+            <p>Regarding system performance, environmental monitoring excursions in an isolator may raise deeper concerns beyond those for a more traditional line. Because an isolator is specifically designed and operated to ensure environmental control and eliminate contamination, the likelihood of environmental monitoring excursions should be significantly reduced. Therefore, environmental monitoring excursions that are detected in isolators are of heightened concern and should be investigated at a more detailed systemic level, taking into account the structure and function of the isolator itself, as well as the more traditional routes of contamination.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>An environmental excursion in a critical zone, as for an isolator, requires an investigation regardless of the technology employed. Environmental monitoring is a critical element of the sterility assurance program and an important measure associated with control in clean areas. Monitoring provides meaningful information about the quality of the environment and helps identify routes of contamination which, in turn, allows for corrective and preventative actions to ensure product safety.</p>
+            <p>Isolators are designed and qualified to separate product from sources of contamination. Any contamination detected inside an isolator must be considered a system failure and trigger respective investigation and corrective action. These include, but are not limited to, effectiveness of decontamination, air flow and pressurization, isolator integrity, glove integrity, and interventions.</p>
+            <p>If an isolator system failure is the root cause for the environmental recovery, then broader potential product impact (i.e., prior batches) may need to be considered, as well as a more complex corrective and preventive action.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>雙軌思考：批次放行 vs. 系統失效</h4>
+                <p>PDA 在這裡劃了一條很重要的界線：</p>
+                <ul>
+                    <li><strong>批次放行決策</strong>：與傳統產線<em>相同</em>——需要偏差調查，根據污染風險做出判斷。一個陽性結果不自動否決批次，但必須調查。</li>
+                    <li><strong>系統層面的意涵</strong>：比傳統產線<em>更嚴重</em>——隔離器本來就不應該有 excursion，因此一旦發生，代表某個系統屏障（VHP 除污、正壓、手套完整性）可能已失效。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>為什麼隔離器的 excursion 訊號更強？</h4>
+                <p>在 Grade B 開放環境中偶爾出現一個陽性，可能只是偶發性的空氣擾動。但在隔離器內部——一個被設計成<strong>幾乎不可能污染</strong>的封閉系統——出現陽性，幾乎必然代表<strong>系統性失效</strong>（systemic failure）。</p>
+                <p>這也意味著你需要追溯：這個失效點在多久之前就已存在？之前的批次是否也受影響？</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>調查清單（隔離器專屬）</h4>
+                <ul>
+                    <li>VHP 除污循環效果是否確認？（生物指示劑結果）</li>
+                    <li>隔離器壓力差（正壓）是否全程維持？</li>
+                    <li>隔離器本體完整性（integrity test）是否合格？</li>
+                    <li>手套完整性是否在批次前後均經測試？</li>
+                    <li>有無非常規介入？轉移埠開關紀錄是否完整？</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：火災警報器響了</h4>
+                <p>在開放廚房（傳統潔淨室）偶爾冒煙，可能只是烹飪過程的正常現象。但如果是防火保險庫（隔離器）內警報響起，那就是重大事件——你必須假設系統已被突破，而不能只看局部的煙。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q5-5 -->
+    <h3 class="section-title" id="q5-5">Q5-5: 將 EM 培養皿轉移進出隔離器時，應注意哪些因素？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q5-5: What factors should be taken into consideration when transferring environmental monitoring plates into and out of an isolator?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>In general, rigorous procedures and precautions should be employed when transferring any sterile item into a critical (i.e., aseptic) zone. Transfer into an isolator, however, typically requires special procedures due to the isolator's built-in access restrictions.</p>
+            <p>Where the use of settling plates has been determined to be valuable, they may be contained within a sterile outer bag and moved from a transfer isolator through a rapid transfer port into a previously decontaminated isolator. Care should be taken to ensure that the media is not contaminated with microorganisms or chemical disinfectants during the transfer and handling.</p>
+            <p>Alternatively, plates within a nonsterile bag may be placed in the main isolator (or an external airlock) prior to decontamination. In this case, the bag is hung so that all external surfaces are decontaminated effectively. The bag material must be selected to avoid penetration by the decontaminating agent to preserve the growth promotion capability of the media. If a media additive is used to neutralize the decontaminant, its effectiveness in preserving media function must be demonstrated.</p>
+            <p>At the end of the batch, plates must be secured appropriately (e.g., in a sterilized bag) before they are removed from the isolator to avoid any risk of false positive results from contact with the surrounding environment.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>The design, confined space, and restrictive access of the isolator present unique challenges for the effective transfer of media plates into and out of the isolator. Improper handling and transfer may result in false positive or false negative results.</p>
+            <p>When it is necessary to use plates of nutrient media in an isolator, it is important that the transfer of the plates into and out of the isolator results in neither contamination of the media nor of the isolator.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>兩種轉移路徑比較</h4>
+                <table>
+                    <thead>
+                        <tr><th>方法</th><th>轉移時機</th><th>關鍵風險</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>無菌袋 + RTP 轉入</td>
+                            <td>除污後（aseptic transfer）</td>
+                            <td>培養基被化學消毒劑污染（VHP 殘留）</td>
+                        </tr>
+                        <tr>
+                            <td>非無菌袋，除污前放入</td>
+                            <td>除污循環之前</td>
+                            <td>VHP 穿透袋材、破壞培養基促長能力</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>假陽性 vs. 假陰性的雙重陷阱</h4>
+                <ul>
+                    <li><strong>假陽性</strong>：取出時培養皿接觸外部環境（未適當密封），或帶入了不屬於生產過程的污染。</li>
+                    <li><strong>假陰性</strong>：VHP 滲入袋內破壞培養基，微生物即使存在也長不出來。</li>
+                </ul>
+                <p>這兩種錯誤都會破壞 EM 數據的可信度，導致錯誤的批次決策或遺漏真實污染。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>袋材選擇與中和劑驗證</h4>
+                <p>如果選擇「除污前放入」的方式，袋材必須有能力阻擋 H₂O₂ 滲透（通常需要氣密性測試）。若使用中和劑（neutralizer）來抵消 VHP 對培養基的影響，必須<strong>驗證中和劑不影響促長能力（growth promotion）</strong>——這是一個獨立的實驗室驗證需求。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：法醫採集證據</h4>
+                <p>培養皿就像犯罪現場採集的 DNA 樣本——採集過程的每個環節都可能污染或破壞證據。轉移程序的嚴謹程度，決定了這份「法庭證據」能否成立。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         TOPIC 6: MATERIAL TRANSPORT AND LOADING
+    ========================================================= -->
+    <h2 class="section-title" style="margin-top:2.5rem;">Topic 6 — Material Transport and Loading（物料轉移與裝載）</h2>
+
+    <!-- Q6-1 -->
+    <h3 class="section-title" id="q6-1">Q6-1: 間接接觸面應如何滅菌或除污？（四種方案）</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q6-1: How should indirect product contact surfaces be sterilized or decontaminated?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>Equipment surfaces like stopper bowls and tracks are considered indirect product contact surfaces because they contact sterile components. These surfaces should not contaminate or pose an unacceptable risk of contaminating sterile product. To eliminate microbiological contamination, indirect product contact surfaces should be treated to achieve and maintain a state that does not contaminate the sterile components.</p>
+            <p>The predominant method for sterilization of indirect product contact surfaces outside of the isolator is moist heat/autoclave sterilization, although dry heat sterilization or irradiation may also be appropriate. Additionally, or as an alternative, the decontamination of these indirect product contact surfaces in the isolator can be largely achieved through or during the isolator decontamination process by methods such as VHP.</p>
+            <p>The approach for treating, transferring, handling, and installing indirect product contact equipment depends on the design of the isolator and facility. A risk assessment should be used to determine an effective approach for treatment of the indirect product contact equipment given those design considerations.</p>
+
+            <div class="approach-block">
+                <h4>Approach 1: Equipment sterilized → aseptically transferred directly into isolator through Grade A/ISO 5</h4>
+                <ul>
+                    <li>Equipment cleaned, wrapped, and autoclave-sterilized.</li>
+                    <li>Transferred directly into decontaminated isolator through a transfer section or port connected to autoclave.</li>
+                    <li>Precautions for moisture/heat ingress; aseptic unwrapping and assembly inside.</li>
+                    <li>Manipulations must be within scope of process simulation (APS).</li>
+                </ul>
+            </div>
+
+            <div class="approach-block">
+                <h4>Approach 2: Equipment sterilized → transferred through classified environment → assembled → decontaminated</h4>
+                <ul>
+                    <li>Equipment cleaned, wrapped, sterilized. Transferred into open isolator (classified background).</li>
+                    <li>Run unidirectional flow during loading to create outward airflow to protect against ingress.</li>
+                    <li>Remove overwrap; assemble using Good Aseptic Practices. Then run full VHP decontamination cycle.</li>
+                    <li>Operators handling sterile components should wear additional hood, sterile goggles, and sterile gloves.</li>
+                </ul>
+            </div>
+
+            <div class="approach-block">
+                <h4>Approach 3: Equipment sterilized → transferred through non-Grade A → decontaminated while wrapped → assembled</h4>
+                <ul>
+                    <li>Equipment cleaned, wrapped, sterilized. Validated decontamination cycle performed with equipment still wrapped.</li>
+                    <li>Note: wrapped materials may absorb H₂O₂ and impact cycle; occluded surfaces must be considered.</li>
+                    <li>After decontamination, wraps removed and parts assembled aseptically.</li>
+                </ul>
+            </div>
+
+            <div class="approach-block">
+                <h4>Approach 4: Large equipment — periodically sterilized via in-place decontamination cycle</h4>
+                <ul>
+                    <li>For equipment too large to remove: clean with validated process, then decontaminate in place with validated VHP cycle.</li>
+                    <li>Frequency of sterilization is risk-based.</li>
+                    <li>Cleaning must remove silicone, oily residues, fingerprints that inhibit VHP effectiveness.</li>
+                    <li>Bioburden of indirect contact surfaces must be controlled.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>名詞釐清：直接 vs. 間接接觸面</h4>
+                <ul>
+                    <li><strong>直接接觸面（Direct contact）</strong>：灌裝針、stopper、container — 必須 steam sterilization（高壓蒸汽）。</li>
+                    <li><strong>間接接觸面（Indirect contact）</strong>：stopper bowl、stopper track——接觸的是 stopper 而非藥液本身。可用 autoclave 或 VHP 處理。</li>
+                </ul>
+                <p>這個區分是本題的核心：間接接觸面的滅菌要求略低，但必須確保它們不會污染直接接觸面。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>四個方案的風險層級比較</h4>
+                <table>
+                    <thead>
+                        <tr><th>方案</th><th>主要滅菌方式</th><th>輔助除污</th><th>特殊風險</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Approach 1</td><td>Autoclave（主）</td><td>無</td><td>水分/熱帶入、手套操作風險</td></tr>
+                        <tr><td>Approach 2</td><td>Autoclave（主）</td><td>VHP（次）</td><td>開放隔離器時外部污染風險</td></tr>
+                        <tr><td>Approach 3</td><td>Autoclave（主）</td><td>VHP（次，帶包裝）</td><td>包裝吸 H₂O₂、遮蔽面除污不均</td></tr>
+                        <tr><td>Approach 4</td><td>VHP（原位）</td><td>無 autoclave</td><td>油脂殘留影響 VHP 效果</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>Approach 4 的關鍵限制：清潔第一</h4>
+                <p>VHP 是強氧化劑，但它有「弱點」：<strong>油脂、矽膠、指紋</strong>都會在表面形成保護層，降低 VHP 對微生物的殺滅效果。因此，Approach 4 能否成功，完全取決於清潔步驟的品質。這也是為什麼清潔必須「驗證」，而非僅「確認」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：盔甲下的弱點</h4>
+                <p>Autoclave 是「完整盔甲」——物理滲透，殺滅保證最高（SAL 10⁻⁶）。VHP 是「化學噴霧」——覆蓋廣但容易被油脂擋住。選方案時，要看你的武器能不能到達目標表面。</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>APS（Aseptic Process Simulation）涵蓋範疇</h4>
+                <p>Approach 1 和 3 都明確要求：設備轉移和組裝的手套操作必須納入 APS（無菌工藝模擬）。這不只是文件要求——你的 media fill 設計必須真實再現這些步驟，否則驗證結果不具代表性。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q6-2 -->
+    <h3 class="section-title" id="q6-2">Q6-2: 包裝材料完整性是否需要測試 VHP 滲透？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q6-2: Should a test for packaging material integrity of load items be carried out with respect to potential for VHP ingress?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>Packaging integrity should be qualified for items being decontaminated and transferred for subsequent processing (e.g., decontamination chamber). When items are placed in heat-sealed breather bags, it is important to validate that package integrity is not compromised during the heat-sealing process.</p>
+            <p>For VHP processes in isolators, the integrity of the packaging materials to prevent ingress, and their compatibility with VHP, should be tested prior to use. If a robust materials compatibility evaluation has been conducted, routine testing during the process should not be required.</p>
+            <p>Whether or not packaging material should be tested post-decontamination would depend on the decontamination process. Specifically, if a pressure differential is created across the exterior/interior of the package, it could potentially impart a force that creates integrity concerns.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>If packaging is not integral, sterility could be compromised because decontamination gasses could reach the inside of the package and impact materials.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>為什麼包裝完整性對 VHP 特別重要？</h4>
+                <p>VHP（氣化過氧化氫）是一種氣體——它可以滲透密封不完整的包裝袋，進入並破壞內容物（培養基、stopper 表面、已滅菌器械等）。</p>
+                <p>這裡有一個雙向風險：</p>
+                <ul>
+                    <li><strong>VHP 滲入</strong>：破壞無菌物品的無菌狀態或功能性。</li>
+                    <li><strong>壓差造成完整性失效</strong>：若 VHP 循環中產生壓差，可能將袋材撐破或密封處剝離。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>驗證一次 vs. 每次測試</h4>
+                <p>PDA 的立場很務實：若已做過完整的<strong>材料相容性評估（materials compatibility evaluation）</strong>，日常生產不需要每次都測試袋材完整性。一次驗證搞定，降低日常操作負擔。但這個前提是——驗證本身必須夠嚴謹，且覆蓋實際使用條件。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>熱封袋的特殊風險</h4>
+                <p>Breather bag（透氣袋，用於高壓滅菌）以熱封封口。熱封過程本身可能造成密封不完整（邊緣燒焦、未完全熔合）。驗證時必須測試：熱封後的袋材在 VHP 壓差條件下是否仍維持完整。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q6-3 -->
+    <h3 class="section-title" id="q6-3">Q6-3: Stopper 如何從 Grade C/D 轉移進入 Grade A？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q6-3: What approaches are recommended for transferring stoppers from outside Grade C or D to inside Grade A/ISO 5 — manual or automated rapid transfer system?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p><strong>Approach A: Ready-to-use, sterilized stoppers packed in a bag connected to a rapid transfer port (RTP)</strong></p>
+            <p>The packaging and sterilization process is typically performed by a supplier at a different location before being shipped to the pharmaceutical company. The ready-to-use stoppers are delivered in a second bag for protection of the primary packaging and for safe transfer from a lower to a higher cleanroom class.</p>
+            <p>Before connecting the beta port on the bag to the alpha port of the isolator RTP, the external surfaces of the ports can be cleaned with a sporicidal agent. After the ports are connected and locked, the RTP door can be opened. Good practice recommends having a protective sleeve on the stopper bag to avoid contact with the area of greatest potential for contamination.</p>
+            <p>During packaging, transport, storage, and debagging, either the primary and secondary package could be damaged and, thus, open to potential microbiological contamination. Therefore, inspecting the integrity of the bag prior to use is a good practice.</p>
+            <p>The RTP and the protective liner are opened and positioned manually. During this positioning process, the stoppers could potentially come into contact with the gloves, which should be avoided.</p>
+
+            <p style="margin-top:0.85rem;"><strong>Approach B: Ready-to-sterilize stoppers packed in a Tyvek bag connected to an RTP</strong></p>
+            <p>The stopper supplier washes and packages the stoppers, but the stoppers would be sterilized at the manufacturing site in an autoclave. The port system for the transfer must be prepared and handled in the same manner as for the ready-to-use stoppers. The distinction from the ready-to-use approach is that the sterilization would be performed in-house rather than at the supplier.</p>
+
+            <p style="margin-top:0.85rem;"><strong>Approach C: In-house stopper processing with washing, sterilization, and docking of the process and transport container to the isolator for unloading</strong></p>
+            <p>This approach prevents the risk of microbiological contamination from the transfer process associated with ready-to-use or ready-to-sterilize solutions. The stopper processing system is equipped with all the utilities needed to clean, siliconize, sterilize, and dry the stoppers. The process can be validated and performed in-house at the manufacturing site.</p>
+            <p>Sterilized stoppers remain in the pressurized container until the container is connected through a butterfly valve to an RTP beta port. The RTP beta port connects directly to the RTP alpha port on the isolator. The RTP alpha-beta port can be opened automatically without human intervention, which prevents any contamination risk by gloved operations. A transfer pipe is inserted in the alpha-beta port connection to cover the RTP ring of concern to prevent the stoppers from coming in contact with it. Once the container, valve, pipe, and ports are in place, the transfer valve is opened slowly to avoid an instantaneous release of pressure, and the stoppers are transferred to the stopper bowl.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>These three approaches are commonly used in aseptic processing to reduce the risk of contamination ingress when transferring stoppers using RTPs. The relative level of risk of each approach will depend on the capability of the manufacturing site and the processing vendor. Companies should assess and take into consideration the relative risks when deciding which approach to use.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>RTP（Rapid Transfer Port）是什麼？</h4>
+                <p>RTP 是隔離器物料進出的專用轉移埠，採用 <strong>Alpha-Beta 雙埠設計</strong>：</p>
+                <ul>
+                    <li><strong>Alpha port</strong>：固定在隔離器本體上，始終維持在無菌 Grade A 狀態。</li>
+                    <li><strong>Beta port</strong>：連接在要轉入的容器/袋子上，由外部操作員對接。</li>
+                </ul>
+                <p>對接後，兩個埠的內表面形成一個「封閉通道」，Alpha 門打開後，外部環境永遠不會直接接觸隔離器內部。這是隔離器物料轉移的黃金標準。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>三種方案的風險梯度</h4>
+                <table>
+                    <thead>
+                        <tr><th>方案</th><th>滅菌地點</th><th>人工介入</th><th>整體風險</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>A: RTU（現成滅菌）</td><td>供應商</td><td>手動定位，手套可能接觸 stopper</td><td>中（依賴供應鏈）</td></tr>
+                        <tr><td>B: RTS（自行高壓）</td><td>製造廠</td><td>同 A</td><td>中（滅菌可控）</td></tr>
+                        <tr><td>C: 全廠內處理</td><td>製造廠（全程）</td><td>自動對接，<strong>無手套介入</strong></td><td>最低</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>Approach A 的關鍵弱點：供應鏈完整性</h4>
+                <p>RTU stopper 的滅菌是在供應商端完成的，到你工廠之前要經過包裝、運輸、儲存、入庫。每個環節都可能造成袋材損傷。<strong>使用前的袋材完整性目視檢查</strong>不是可選步驟，而是必要的品質控制。</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>Approach C 的技術亮點</h4>
+                <p>全廠內處理的最大優勢：stopper 在加壓容器中保持無菌，直到自動 alpha-beta 對接完成。Alpha 門<strong>自動打開，無需手套操作</strong>——這完全排除了「手套觸碰 stopper」的風險，是目前污染風險最低的方案。缺點是設備投資大，需要現場 stopper 清洗/矽化/滅菌系統。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：太空站對接艙口</h4>
+                <p>Alpha-Beta 對接就像太空站的對接艙口——兩邊各自密封，對接時形成一個安全通道，宇航員（stopper）從容器移到太空站（隔離器）全程不接觸外太空（外部環境）。這個機械設計本身就是污染控制的一道屏障。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q6-4 -->
+    <h3 class="section-title" id="q6-4">Q6-4: 預裝盤（tub）的注射器或小瓶如何除污並轉移進隔離器？</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text (English)</div>
+            <h3>Q6-4: How should tubs of sterilized syringes or vials be decontaminated and transferred into the isolator?</h3>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Recommendation</h4>
+            <p>Surface decontamination for ready-to-use items, like nested vials or syringes in tubs, has become more common in aseptic processing in recent years. These tubs are packed in a single- or double-liner for transport. For the tubs to be transferred into the isolator via pass-through with VHP or electronic beam (E-beam), the outside packaging (liners) are removed.</p>
+
+            <p><strong>VHP Airlock:</strong></p>
+            <p>For a VHP airlock, the tubs are positioned inside the airlock and then decontaminated on the outer surface using VHP. The VHP airlock is a batch unit for the safe transfer of tubs into a filling-line isolator; with this method, a 6 log reduction of surface contamination and a cycle time of less than 30 minutes can be reached. For prefilled pharmaceutical products that are sensitive to VHP, it is recommended that precautions be taken to avoid penetration of VHP inside the tub.</p>
+
+            <p><strong>E-beam (Electronic Beam):</strong></p>
+            <p>If the outside surfaces of the tubs are decontaminated by E-beam, they should be positioned in front of the E-beam and, then, automatically transferred inside the E-beam where the outer surface of the tubs are decontaminated with beta electrons. The E-beam is a fast and continuous decontamination system to transfer the tubs inside a filling-line isolator; with this system, a 6 log reduction (25 kGy) and capacity of six tubs per minute can be reached.</p>
+
+            <p>Alternate methods for transferring presterilized and bagged materials that do not involve VHP decontamination or E-beam may be considered. Where alternate methods are considered, a risk-based assessment should be performed to determine their capability and effectiveness. Any alternate method must be qualified and validated.</p>
+
+            <h4 style="color:var(--primary-blue);margin-top:1rem;margin-bottom:0.5rem;">Rationale</h4>
+            <p>Both the VHP airlock and E-beam technologies can be used and validated as an efficient outside decontamination process for tubs. The E-beam process has two advantages: it is continuous, as opposed to using a batch process, and it circumvents VHP penetrating the insides of vials and other types of containers. VHP airlock and E-beam technologies are currently the only automated technologies that can be validated and those that are considered fully GMP-compliant.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">解說與評析（繁體中文）</div>
+
+            <div class="term-box">
+                <h4>VHP Airlock vs. E-beam：技術對比</h4>
+                <table>
+                    <thead>
+                        <tr><th>特性</th><th>VHP Airlock</th><th>E-beam</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>處理模式</td><td>批次（Batch）</td><td>連續（Continuous）</td></tr>
+                        <tr><td>殺滅效果</td><td>6 log reduction</td><td>6 log reduction（25 kGy）</td></tr>
+                        <tr><td>循環時間</td><td>&lt;30 分鐘/批</td><td>6 tubs/分鐘</td></tr>
+                        <tr><td>VHP 滲透風險</td><td>有（需防護）</td><td>無</td></tr>
+                        <tr><td>適用對象</td><td>大多數 tub</td><td>VHP 敏感性產品</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h4>為什麼 E-beam 是更現代的選擇？</h4>
+                <p>E-beam（電子束）用 beta 電子直接撞擊表面微生物，無需化學氣體，因此：</p>
+                <ul>
+                    <li>不存在 VHP 滲入內部的風險——對玻璃瓶內乾燥無影響。</li>
+                    <li>連續作業，產能更高（6 tubs/min），與高速灌裝線更匹配。</li>
+                    <li>已有完整驗證框架，符合 GMP 要求。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>何謂「外表面除污」？</h4>
+                <p>重要概念：VHP 和 E-beam 的目標都是 tub 的<strong>外包裝表面</strong>（outer liner 去除後的 tub 外壁），而非內部的注射器或小瓶。內部的無菌狀態是由供應商的滅菌工藝保證的。轉移過程只是確保「外壁帶入隔離器時不會污染 Grade A 環境」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：食品外包裝消毒</h4>
+                <p>就像無塵室食品工廠在食品進入作業區之前，先對外包裝噴酒精消毒——目的是讓「外部帶菌的包裝」不污染內部環境，而非重新滅菌食品本身。E-beam 就是更強版、更可驗證的外包裝消毒工具。</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>CDMO 選型建議</h4>
+                <p>如果你的 CDMO 未來要處理 VHP 敏感藥品（如某些蛋白質製劑、含有機物的組合產品），E-beam 通道是值得投資的設備。批次 VHP airlock 雖然成本較低，但在連續高速灌裝場景下可能成為產能瓶頸。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h2>Section 3 — 重點總結 Key Takeaways</h2>
+        <ul>
+            <li><strong>EM 頻率可降低，但不可省略：</strong>隔離器的 VHP 除污降低了 EM 基線風險，允許採用比傳統 Grade A 更低的頻率——但連續非活性監測（粒子）仍為必要，活性採樣可每日或每批次執行。</li>
+            <li><strong>表面採樣選點三優先：</strong>手套 &gt; 灌裝針 &gt; 其他直接接觸面；已滅菌且未受威脅的表面可豁免；含防腐劑產品需改採鄰近替代位置。</li>
+            <li><strong>EM excursion 雙重調查框架：</strong>批次放行邏輯與傳統相同（風險評估決定）；但系統層面調查更嚴格——任何隔離器內的陽性都視為系統失效，需追溯至 VHP、壓差、完整性、手套、介入等各屏障。</li>
+            <li><strong>培養皿轉移程序決定數據品質：</strong>轉入時防 VHP 滲透（袋材驗證、中和劑驗證）；轉出時防外部接觸（密封袋保護）；任何失誤均可能造成假陽性或假陰性。</li>
+            <li><strong>間接接觸面四方案：</strong>Autoclave 為主要滅菌方式；VHP 為補充除污；Approach 4 完全依賴 VHP 原位除污（大型設備），清潔品質是成敗關鍵。</li>
+            <li><strong>物料轉移黃金標準是 Alpha-Beta RTP：</strong>Stopper 轉移三方案中，全廠內處理（Approach C）的自動對接方案污染風險最低；RTU 方案依賴供應鏈完整性，使用前袋材目視檢查是必要步驟。</li>
+            <li><strong>VHP vs. E-beam：</strong>兩者都能達到 6 log reduction；E-beam 連續、無 VHP 滲透風險，更適合 VHP 敏感品或高速灌裝線；VHP airlock 投資成本較低，適合批次生產場景。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Points to Consider: Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)</p>
+    <p>Section 3 — Environmental Monitoring &amp; Material Transport | p22–p38</p>
+    <p style="opacity:0.6;font-size:0.8rem;margin-top:0.5rem;">Educational bilingual document for internal learning purposes</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+});
+btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>

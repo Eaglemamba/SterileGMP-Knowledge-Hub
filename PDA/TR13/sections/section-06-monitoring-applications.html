@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR13 — Section 6: Environmental Monitoring by Manufacturing Application</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY TABLE ===== */
+.glossary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.glossary-table th {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+}
+
+.glossary-table td {
+    padding: 0.55rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.glossary-table tr:nth-child(even) td {
+    background: #f7fafc;
+}
+
+.glossary-table .term-name {
+    font-weight: 700;
+    color: #1e3a5f;
+    white-space: nowrap;
+}
+
+.glossary-table .term-abbr {
+    color: #718096;
+    font-size: 0.82rem;
+}
+
+/* ===== AGENT CLASSIFICATION CARDS ===== */
+.agent-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.agent-card {
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    border-left: 5px solid;
+}
+
+.agent-card.sanitizer {
+    background: #e8f5e9;
+    border-color: #43a047;
+}
+
+.agent-card.disinfectant {
+    background: #fff3e0;
+    border-color: #fb8c00;
+}
+
+.agent-card.sporicide {
+    background: #fce4ec;
+    border-color: #e53935;
+}
+
+.agent-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.agent-card.sanitizer h4 { color: #2e7d32; }
+.agent-card.disinfectant h4 { color: #e65100; }
+.agent-card.sporicide h4 { color: #b71c1c; }
+
+.agent-card p {
+    font-size: 0.88rem;
+    margin: 0;
+    color: #4a5568;
+}
+
+/* ===== REGULATION CITATION BOX ===== */
+.reg-citation {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-left: 4px solid #3182ce;
+    border-radius: 0 8px 8px 0;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.88rem;
+}
+
+.reg-citation .reg-label {
+    font-weight: 700;
+    color: #1e3a5f;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.reg-citation p {
+    margin: 0;
+    color: #4a5568;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-top: 2rem;
+}
+
+.section-summary h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    opacity: 0.95;
+}
+
+.section-summary .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+    .section-summary .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.summary-col h4 {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 13 (Revised 2022)</h1>
+    <div class="subtitle">Fundamentals of an Environmental Monitoring Program</div>
+    <div class="page-info">Section 6 &mdash; Environmental Monitoring by Manufacturing Application &bull; p30&ndash;p38</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>區分終端滅菌（Terminal Sterilization）與無菌加工（Aseptic Processing）的環境監控重點與範圍差異，包括隔離器技術的特殊監控要求。</li>
+            <li>理解空氣監控中主動採樣（Active Sampling）與被動採樣（Passive Sampling）的原理、優缺點及 d50 值的意義，並掌握 Grade A 區域連續監控的法規要求。</li>
+            <li>比較四種表面監控方法——接觸盤（Contact Plate）、軟性培養膜（Flexible Film）、棉棒（Swab）、表面沖洗（Surface Rinse）——各自的適用場景與優缺點。</li>
+            <li>認識人員作為主要污染來源的意涵，掌握人員培訓、認證及再認證觸發條件。</li>
+            <li>掌握製藥用水（WFI、純化水、潔淨蒸汽）的藥典規格、取樣策略及壓縮氣體監控的要求，並理解 Annex 1 新引入之「Grade A Air Supply」概念。</li>
+        </ol>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>本節目錄 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec61">6.1 Terminal Sterilization</a>
+            <a href="#sec62">6.2 Aseptic Processing</a>
+            <a href="#sec621">6.2.1 Isolation Technology</a>
+            <a href="#sec63">6.3 Air Monitoring</a>
+            <a href="#sec631">6.3.1 Total Airborne Particulate</a>
+            <a href="#sec632">6.3.2 Viable Particulates</a>
+            <a href="#sec64">6.4 Surface Monitoring</a>
+            <a href="#sec641">6.4.1 Monitoring Considerations</a>
+            <a href="#sec65">6.5 Personnel Considerations</a>
+            <a href="#sec66">6.6 EM During Sterility Testing</a>
+            <a href="#sec67">6.7 Grade A Air Supply</a>
+            <a href="#sec68">6.8 Water</a>
+            <a href="#sec69">6.9 Compressed Gas</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.0 INTRO + 6.1 Terminal Sterilization ===== -->
+    <div id="sec61" class="two-column">
+        <div class="left-column">
+            <h2>6.0 Environmental Monitoring by Manufacturing Application</h2>
+            <p>The levels and types of monitoring conducted may vary based on the type of product being manufactured, the attributes of the product, and the manufacturing areas and processes used.</p>
+
+            <h3>6.1 Terminal Sterilization</h3>
+            <p>Environmental monitoring in support of terminal sterilization monitors microflora from all sources — manufacturing environment, process gases, water used in product formulations, sterilizer feed and cooling water — that have the potential to contribute to product bioburden or endotoxin. This includes testing of air, surfaces, and water for pharmaceutical use.</p>
+            <p>Microbial levels of incoming containers and closures may also be monitored periodically (e.g., if the product is not terminally sterilized using an overkill cycle). While control of the environment in which the products are prepared is important, the most critical aspect of the program is the <span class="key-term">bioburden</span> of the product and components to be sterilized, including both the number and type of microorganisms found.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：製造應用類別決定監控深度</h2>
+            <p>TR13 Section 6 依製程類型分門別類地說明 EM 要求，這是本報告最具實務導向的章節。核心邏輯：<strong>產品風險等級愈高，EM 範圍愈廣、頻率愈高</strong>。</p>
+
+            <div class="concept-box">
+                <h4>終端滅菌 vs. 無菌加工的根本差異</h4>
+                <p><strong>終端滅菌（Terminal Sterilization）</strong>：產品於最終容器中接受滅菌處理。EM 的目的是監控對 <span class="key-term">bioburden</span>（生物負載）及 endotoxin（內毒素）有貢獻的所有來源。</p>
+                <p>最關鍵的指標不是環境本身，而是<strong>待滅菌產品與組件的生物負載總量與種類</strong>——因為這直接決定滅菌製程是否能達到要求的無菌保證水準（SAL）。</p>
+                <p>若採用 overkill cycle（過殺滅菌），對容器/密封件的定期微生物監測可彈性處理；若非 overkill 製程，則應定期監測容器/密封件的菌量。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：廚房食材 vs. 外科手術室</h4>
+                <p>終端滅菌猶如把食材放入高壓鍋蒸煮滅菌——食材本身的污染程度（bioburden）才是能否煮熟的關鍵，廚房環境的清潔程度是次要的。無菌加工則像外科手術，每一個步驟都必須在絕對無菌的環境中進行，因為沒有最後的「煮沸」步驟。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.2 Aseptic Processing ===== -->
+    <div id="sec62" class="two-column">
+        <div class="left-column">
+            <h3>6.2 Aseptic Processing</h3>
+            <p>Environmental monitoring in support of aseptic processing is specifically designed to determine the number and type of microorganisms associated with the direct assembly or preparation of product prior to sealing the filled containers. The number of sample sites and frequency of monitoring are <strong>considerably greater</strong> than those for established terminal sterilization programs.</p>
+            <p>Air, water, personnel, compressed gases, machinery, and other surfaces within the filling room and associated support areas are routinely monitored. Microbial levels may be periodically checked on incoming containers and closures. Adequate environmental control is an integral part of the aseptic manufacturing process and is critical to sterility assurance.</p>
+            <p>EM data must be reviewed prior to product batch release and investigation of excursions closed. EM should also be conducted when operator interventions are required during aseptic processing.</p>
+
+            <h3 id="sec621">6.2.1 Isolation Technology</h3>
+            <p>The EM program for isolators differs from conventional aseptic filling operations and is based on the risks associated with isolator technology — especially the <strong>physical integrity of half-suits (if applicable) and gloves</strong>. Monitoring of air, surfaces, and personnel <em>outside</em> of the isolator environment is not required after each filling operation.</p>
+            <p>However, monitoring of <strong>isolator gloves and half-suits is required at the end of each filling operation or campaign</strong> (as applicable) to detect potential contamination. Product contact surfaces that are sterilized or changed out between batches in a campaign should be monitored at the end of the batch specific activities, prior to sterilization / change out.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：無菌加工的全面監控要求</h2>
+            <p>無菌加工的 EM 範圍涵蓋：<strong>空氣、水、人員、壓縮氣體、機械設備及所有表面</strong>。這是因為產品在填充與密封之間的每一個接觸點都有污染風險。</p>
+
+            <div class="note-box">
+                <h4>重要法規要求：批次放行前必須審查 EM 數據</h4>
+                <p>TR13 明確指出：<strong>EM 資料必須在產品批次放行前完成審查，且所有超標調查必須結案</strong>。這意味著 EM 不只是事後統計工具，而是批次放行（batch release）的前提條件之一。</p>
+                <p>此外，操作員進行干預（interventions）時，也應同步進行 EM，以捕捉干預動作可能帶來的污染風險。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>6.2.1 隔離器技術的特殊監控邏輯</h4>
+                <p>隔離器（Isolator）透過物理屏障將操作人員與產品完全隔離，因此：</p>
+                <ul>
+                    <li>隔離器<strong>外部</strong>的空氣、表面、人員監控，不需在每次填充操作後進行</li>
+                    <li>隔離器<strong>手套與半身防護服</strong>（half-suits）每次填充或每個 campaign 結束時<strong>必須</strong>監控——這是最關鍵的污染入侵路徑</li>
+                    <li>產品接觸面在批次間進行滅菌或更換前，應在批次特定作業結束後監控</li>
+                </ul>
+                <p>這種差異反映了 EM 的風險導向原則：監控重心隨著物理屏障的存在而轉移。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.3 Air Monitoring + 6.3.1 ===== -->
+    <div id="sec63" class="two-column">
+        <div class="left-column">
+            <h3>6.3 Air Monitoring</h3>
+            <p>Effectively designed air-handling units and use of HEPA filters or ultralow particulate air (ULPA) filters bring air of appropriate quality to cleanrooms. People are considered a <strong>major contributor of particulates</strong>, especially microorganisms, to the environment in aseptic areas.</p>
+            <p>Air monitoring determines if there are viable and/or total airborne particulates in locations that would allow them to settle on product-contact surfaces and thereby find their way into process intermediates or final product. The analysis of trends and frequencies is also vital to the understanding of the environmental impact of personnel behavior and process activities. Air-sampling methods and frequencies of monitoring will depend on manufacturing process needs and should be risk-based.</p>
+
+            <h3 id="sec631">6.3.1 Total Airborne Particulate Monitoring</h3>
+            <p>Monitoring of total airborne particulates is a necessary component of an EM program. It demonstrates control of potential contaminants in the environment to which the product is exposed during the manufacturing process. Classified areas must consistently meet particulate levels (see Section 3.0).</p>
+            <p>ISO Standard 14644-1 describes the classification of air cleanliness for cleanrooms based on specified concentrations of airborne particulates per volume of air sampled. The sample volume for routine monitoring does not need to be the same as that used for formal classification.</p>
+            <p>For the United States, FDA requires measurements of particles &ge;0.5 &mu;m. EU and PIC/S Annex 1 also include measurements for particles &ge;5 &mu;m for both classification and monitoring purposes.</p>
+            <p>For remote particle counter systems, the distance from the sample collection port to the detection technology should be considered for potential particle loss. The length of tubing should typically not exceed one meter and the radius should be greater than 15 cm, aligned with ISO 14644.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：空氣監控的雙重任務</h2>
+            <p>空氣監控同時追蹤兩件事：<strong>總微粒（非活性 + 活性）</strong>和<strong>活性微粒（viable particulates）</strong>。兩者搭配才能完整評估環境品質。</p>
+
+            <div class="analogy-box">
+                <h4>人員是最大污染源</h4>
+                <p>即使 HEPA 過濾系統效率高達 99.97%，人員本身仍是潔淨室最主要的微粒與微生物來源。每個人每分鐘可釋放數千至數百萬個微粒，穿著不符規定的潔淨服更會大幅增加此數量。</p>
+                <p>這也是為何人員行為監控（Personnel Behavior Monitoring）和 EM 趨勢分析必須相互搭配——當 EM 出現上升趨勢，第一個檢查對象往往是人員。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重要：Grade A (ISO 5) 必須連續監控微粒</h4>
+                <p>法規要求：<strong>Grade A（ISO 5）無菌加工區域在操作期間必須進行連續微粒監控（continuous monitoring）</strong>。</p>
+                <p>例外情況：若操作本身會產生大量產品微粒（如粉末填充），且這些微粒本身不構成污染風險，可在暴露前後分別監控，而非持續監控——因為此時無法區分外來污染與製程固有微粒。連續監控還可能損壞量測設備。</p>
+                <p>遠端計數系統（remote counting systems）的管路長度不得超過 1 公尺、半徑須大於 15 cm（依 ISO 14644）。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>美國 vs. 歐盟/PIC/S 粒徑要求差異</h4>
+                <ul>
+                    <li><strong>美國 FDA</strong>：&ge;0.5 &mu;m 粒徑（分類 + 例行監控）</li>
+                    <li><strong>EU Annex 1 / PIC/S</strong>：&ge;0.5 &mu;m 及 &ge;5 &mu;m（兩者均需監控）</li>
+                </ul>
+                <p>這是市場差異化設計點，在台灣以外銷為主的廠商需特別注意歐盟要求。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.3.2 Viable Particulates ===== -->
+    <div id="sec632" class="two-column">
+        <div class="left-column">
+            <h3>6.3.2 Viable Particulates</h3>
+            <p>Viable particulate determinations are critical in monitoring air quality in controlled environments. Traditional growth-based techniques for monitoring viable particulates in air are limited by:</p>
+            <ul>
+                <li>Type of equipment</li>
+                <li>Growth media</li>
+                <li>Incubation time</li>
+                <li>Operator contamination of the capture media</li>
+            </ul>
+
+            <h4>6.3.2.2 Methods</h4>
+            <p>Regulatory agencies currently require <strong>active air sampling</strong> of environments on a routine basis to demonstrate control of viable airborne particulates. Some agencies require that <strong>passive sampling methods</strong> such as settling plates should be performed, with justification provided if a company does not use passive sampling for select operations.</p>
+            <p>Active sampling methods have the benefit of sampling large homogeneous volumes of air in short amounts of time, but these methods may cause disruptions in the airflow of the environment being sampled. Therefore, these sampling methods should be included in airflow visualization studies.</p>
+            <p>Passive sampling methods can be used for <strong>prolonged periods (up to four hours)</strong> in close proximity to critical processes without affecting the airflow. An additional advantage of passive sampling is that it <strong>mimics the potential pathway of contamination</strong> to a critical process.</p>
+
+            <h4>6.3.2.3 Equipment</h4>
+            <p>Microbial air samplers are typically based on two principles — <strong>inertial or centrifugal impaction</strong> — to capture and deposit organisms onto the agar or filter surface. No microbial air samplers are 100% efficient at detection or collection of all viable particles present.</p>
+            <p>The physical efficiency of an air sampler is referred to as the <span class="key-term">"cutoff size" or "d50 value"</span> — the size of a particle in microns that the sampler has a <strong>50% chance of recovering</strong> — which is supplied by the equipment manufacturer.</p>
+            <p>Equipment user requirements include: calibration of the instrument and verification of volume accuracy.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：活性微粒採樣方法比較</h2>
+
+            <div class="concept-box">
+                <h4>主動採樣（Active Sampling）vs. 被動採樣（Passive Sampling）</h4>
+                <table style="font-size:0.88rem;">
+                    <thead>
+                        <tr>
+                            <th>特性</th>
+                            <th>主動採樣</th>
+                            <th>被動採樣（沉降盤）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>採樣原理</td>
+                            <td>機械抽氣，收集定量體積空氣</td>
+                            <td>開放培養盤，靠重力沉降收集</td>
+                        </tr>
+                        <tr>
+                            <td>結果單位</td>
+                            <td>CFU / 體積（定量）</td>
+                            <td>CFU / 時間面積（半定量）</td>
+                        </tr>
+                        <tr>
+                            <td>採樣時長</td>
+                            <td>短（分鐘級）</td>
+                            <td>長（最多 4 小時）</td>
+                        </tr>
+                        <tr>
+                            <td>對氣流影響</td>
+                            <td>可能干擾層流</td>
+                            <td>幾乎無影響</td>
+                        </tr>
+                        <tr>
+                            <td>模擬污染路徑</td>
+                            <td>否</td>
+                            <td>是（模擬落菌至關鍵表面）</td>
+                        </tr>
+                        <tr>
+                            <td>法規要求</td>
+                            <td>必要（常規基準）</td>
+                            <td>部分法規要求；需提供未使用的理由</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>實務建議：<strong>兩者搭配使用</strong>，主動採樣提供基準定量數據，被動採樣揭示操作期間的動態落菌風險。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>d50 值的意義</h4>
+                <p><strong>d50 值</strong>是空氣採樣器的物理效率指標：代表採樣器有 50% 機率捕獲的粒徑大小（單位：μm）。d50 值愈小，代表採樣器能捕獲更小粒徑的微粒，效率愈高。</p>
+                <p>此值由設備製造商提供，用於評估設備是否適合特定監控場景。沒有任何空氣採樣器能達到 100% 收集效率——這是傳統生長法採樣固有的限制之一。</p>
+                <p>主動採樣器須經設備確效（qualification），包括：儀器校準（calibration）及體積準確性驗證（volume accuracy verification）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.4 Surface Monitoring ===== -->
+    <div id="sec64" class="two-column">
+        <div class="left-column">
+            <h3>6.4 Surface Monitoring</h3>
+            <p>Surface monitoring is conducted to determine the bioburden of surfaces — walls, floors, ceilings, non-product-contact and product-contact surfaces of equipment — in the manufacturing area.</p>
+
+            <h3 id="sec641">6.4.1 Monitoring Considerations</h3>
+            <p>When periodic surface monitoring is performed, it should be done <strong>after the filling operation or a campaign has been completed</strong> so no extraneous contamination or residual growth media are introduced during filling activities. The basic methods provide surface monitoring data (qualitative or quantitative) that can be used to assess environmental quality.</p>
+            <p>Neutralizers are typically added to media to inactivate chemical disinfectant residues on surfaces. Recovery levels of surface-monitoring methods are typically low due to variability of surfaces, sampling procedures, and growth-based techniques.</p>
+
+            <h4>6.4.1.1 Contact Plates</h4>
+            <p>Contact plates are easy to use and can provide quantitative results (CFU per surface area). The plate is pressed against a flat surface by gently rolling from front to back. Prior to use, media and incubation conditions must be qualified.</p>
+            <p>The use of <strong>irradiated plates in ISO 5 areas is required</strong> and is recommended in ISO 7 and ISO 8 areas. Contact plates must be allowed to acclimate to room temperature before use. Contact plates are <strong>not suitable for irregular surfaces</strong>; swabs are recommended for that situation. Media residue must be removed after sampling.</p>
+
+            <h4>6.4.1.2 Flexible Films</h4>
+            <p>A flexible film containing media can be used similarly to a contact plate or to provide a defined sampling area. The film is pressed against a flat surface in a rolling motion. Like contact plates, flexible films leave a media residue that must be removed post-sampling.</p>
+
+            <h4>6.4.1.3 Swabs</h4>
+            <p>Swabs are employed for <strong>equipment and irregular surfaces</strong> not suitable for contact plates or flexible films. Swabbing may also be performed on flat surfaces using a template of approximately 2 in &times; 2 in (~25 cm&sup2;). Swabs are composed of Dacron&reg; or nylon in flocked or spun format. Prior to plating, each swab is vortexed in an appropriate diluent (e.g., sodium chloride, phosphate buffer, or peptone solutions with neutralizers). Swabs may provide qualitative or quantitative results depending on how they are processed.</p>
+
+            <h4>6.4.1.4 Surface Rinse Method</h4>
+            <p>The surface rinse method is best used when a <strong>large surface area sample is required</strong> (e.g., kettles, equipment, trains, tanks). A sterile diluent is used as the rinsing fluid, collected from the interior surface, and tested by membrane filtration because of the large sample volume. The holding time of rinsing samples prior to plating should be qualified.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：四種表面監控方法比較</h2>
+
+            <div class="concept-box">
+                <h4>表面監控的共同原則</h4>
+                <ul>
+                    <li>監控時機：必須在填充操作<strong>結束後</strong>進行，避免生長培養基污染產品</li>
+                    <li>培養基內須加入<strong>中和劑（neutralizers）</strong>以抵銷消毒劑殘留的抑制效應</li>
+                    <li>回收率普遍偏低（受表面材質、操作手法、分析方法影響），但一致的採樣技術能產生可趨勢分析的數據</li>
+                    <li>趨勢分析揭示清潔消毒程序的有效性及製造活動對環境的衝擊</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>四種方法比較表</h4>
+                <table style="font-size:0.87rem;">
+                    <thead>
+                        <tr>
+                            <th>方法</th>
+                            <th>適用表面</th>
+                            <th>結果類型</th>
+                            <th>特殊注意</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>接觸盤</strong> (Contact Plate)</td>
+                            <td>平整表面</td>
+                            <td>定量（CFU/面積）</td>
+                            <td>ISO 5 須用輻照盤；採樣後移除培養基殘留</td>
+                        </tr>
+                        <tr>
+                            <td><strong>軟性培養膜</strong> (Flexible Film)</td>
+                            <td>平整表面（可定義面積）</td>
+                            <td>定量</td>
+                            <td>採樣後移除培養基殘留；與接觸盤相似</td>
+                        </tr>
+                        <tr>
+                            <td><strong>棉棒</strong> (Swab)</td>
+                            <td>不規則/凹凸表面、設備</td>
+                            <td>定性或定量</td>
+                            <td>需使用模板定義採樣面積（~25 cm&sup2;）；需稀釋/渦旋後培養</td>
+                        </tr>
+                        <tr>
+                            <td><strong>表面沖洗</strong> (Surface Rinse)</td>
+                            <td>大面積容器內壁（槽體、設備）</td>
+                            <td>定量（膜過濾後計數）</td>
+                            <td>大體積→膜過濾法；持液時間須確效</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>ISO 5 區域特別要求</h4>
+                <p>在 ISO 5（Grade A）區域使用接觸盤時，<strong>必須使用輻照（irradiated）接觸盤</strong>，ISO 7 和 ISO 8 區域亦建議使用。原因：輻照盤本身已滅菌，降低因接觸盤引入外來污染的風險。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.5 Personnel ===== -->
+    <div id="sec65" class="two-column">
+        <div class="left-column">
+            <h3>6.5 Personnel Considerations</h3>
+            <p>Personnel are the <strong>primary source of contamination</strong>, which is why all cleanroom personnel (including maintenance workers and others who enter periodically) must be carefully trained and qualified before entering an aseptic environment.</p>
+            <p>The qualification training should include:</p>
+            <ul>
+                <li>Attention to personal hygiene</li>
+                <li>Basic microbiology education or background</li>
+                <li>Aseptic techniques</li>
+                <li>Appropriate cleanroom behavior</li>
+                <li>Patient safety hazards posed by a contaminated product</li>
+                <li>Gowning certification</li>
+                <li>Participation in aseptic processing simulation (APS or media fill) activities, where applicable</li>
+            </ul>
+            <p>After initial training, personnel should participate regularly in an ongoing training and monitoring program. Routine microbiological monitoring of personnel garments and gloves should also be completed. Supervisory personnel should routinely evaluate each operator's conformance to written procedures. The quality unit should provide regular oversight.</p>
+
+            <h4 id="sec651">6.5.1 Training and Certification of Personnel for Aseptic Manufacturing Areas</h4>
+            <p>All training and certification activities should be documented and kept as part of the employee file.</p>
+
+            <h4 id="sec652">6.5.2 Causes for Requalification or Retraining</h4>
+            <p>Companies should have a policy stating when requalification or retraining is necessary, for example:</p>
+            <ul>
+                <li>Retraining on general aseptic practices and techniques should be provided <strong>at least annually</strong></li>
+                <li>Recertification should be required after <strong>extended absences</strong> (e.g., for illness or family leave)</li>
+                <li>Recertification and/or retraining should be considered as <strong>corrective action for trends in personnel monitoring excursions</strong></li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：人員管控是 EM 的核心</h2>
+
+            <div class="analogy-box">
+                <h4>人員是潔淨室最大的「污染製造機」</h4>
+                <p>TR13 明確指出人員是<strong>主要污染來源（primary source of contamination）</strong>。這不是一個理論假設，而是無數污染事件的共同根因。</p>
+                <p>想像潔淨室就像醫院開刀房：不論設備多先進，只要有一位手術人員疏忽了無菌操作，感染風險就立即升高。因此，所有進入潔淨室的人員——包括偶爾進入的維護人員——都必須先完成訓練與認證。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>人員訓練的七大要素</h4>
+                <ol>
+                    <li>個人衛生習慣</li>
+                    <li>基礎微生物學教育</li>
+                    <li>無菌操作技術</li>
+                    <li>適當的潔淨室行為規範</li>
+                    <li>污染產品對病患安全的危害認知</li>
+                    <li>潔淨服穿著認證（Gowning Certification）</li>
+                    <li>參與無菌製程模擬（APS / Media Fill）</li>
+                </ol>
+                <p>所有訓練與認證記錄必須存入員工個人檔案。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>再認證觸發條件</h4>
+                <p>公司必須制定明確政策，規定以下情況需重新認證或再訓練：</p>
+                <ul>
+                    <li><strong>至少每年一次</strong>：無菌操作技術複訓</li>
+                    <li><strong>長期缺勤後</strong>（病假、育嬰假等）：返崗前重新認證</li>
+                    <li><strong>人員監控超標趨勢</strong>：作為糾正措施（CAPA）的一部分</li>
+                </ul>
+                <p>第三點特別重要：人員監控數據若呈現上升趨勢，再訓練是最直接的糾正行動之一。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.6 Sterility Testing ===== -->
+    <div id="sec66" class="two-column">
+        <div class="left-column">
+            <h3>6.6 Environmental Monitoring During Product Sterility Testing</h3>
+            <p>Sterility-testing facilities should be monitored to demonstrate the absence of microbial contamination. Routine types of monitoring conducted are:</p>
+            <ul>
+                <li>Viable air monitoring</li>
+                <li>Surface monitoring (including isolator gloves if applicable)</li>
+                <li>Personnel monitoring</li>
+            </ul>
+            <p><strong>Total airborne particulate monitoring is not mandatory</strong> in sterility testing environments; however, it may provide useful information regarding the HEPA filters in the ISO 5 testing environment or the integrity of isolators. Lab materials may generate particles that are not representative of actual manufacturing conditions, and there is no risk to marketed product in the testing environment.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：無菌試驗環境的監控特殊性</h2>
+            <div class="concept-box">
+                <h4>為何無菌試驗區微粒監控非強制？</h4>
+                <p>無菌試驗實驗室的目的是<strong>確認產品是否無菌</strong>，而非製造產品，因此：</p>
+                <ul>
+                    <li>實驗室使用的試劑、培養基等材料本身可能產生大量微粒，但這些微粒<strong>不代表實際製造污染</strong></li>
+                    <li>即使微粒計數偏高，也不會對市售產品造成直接風險</li>
+                    <li>因此，總微粒監控雖然非強制，但仍有助於評估 HEPA 過濾器效能或隔離器完整性</li>
+                </ul>
+                <p>活性微粒監控（viable air）、表面監控（含隔離器手套）及人員監控仍為必要項目，確保試驗結果的有效性不受環境污染影響。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.7 Grade A Air Supply ===== -->
+    <div id="sec67" class="two-column">
+        <div class="left-column">
+            <h3>6.7 Environmental Monitoring in Grade A Air Supply</h3>
+            <p>The term <span class="key-term">"Grade A air supply"</span> is introduced in <strong>Annex 1</strong> and is specifically used to support the capping of fully stoppered vials until the cap has been crimped — providing additional protection without the requirement to meet all criteria related to a Grade A area.</p>
+            <p>Grade A air supply provides air passed through a filter qualified as capable of producing Grade A total particulate quality air, but where there is <strong>no requirement to perform continuous total particulate monitoring</strong> or meet Grade A viable monitoring limits, and the area itself is not classified.</p>
+            <p>As Grade A Air Supply is not a clean room category (e.g., according to ISO 14644), no guidelines for viable and total particulate limits exist. In order to confirm Grade A total particulate quality air is supplied, <strong>testing at the point of supply should be performed as a minimum during qualification and requalification</strong>.</p>
+            <p>At-rest viable (air and surfaces) and total particulate monitoring may be performed based upon a risk assessment. Routine monitoring, limits, and positioning should reflect the requirements for this "clean process" and be aligned with the contamination control strategy, meeting criteria applied for the background of the Grade A Air supply (usually Grade C, but minimum Grade D).</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：Annex 1 新概念——Grade A Air Supply</h2>
+
+            <div class="application-box">
+                <h4>什麼是 Grade A Air Supply？</h4>
+                <p>EU Annex 1（2022年修訂版）引入了「Grade A Air Supply」概念，這是一個<strong>功能性概念而非分類等級</strong>。其核心用途：在已完全加塞（fully stoppered）的小瓶上軋蓋（crimping）期間提供額外的空氣品質保護。</p>
+                <p><strong>關鍵區別</strong>：</p>
+                <ul>
+                    <li>Grade A <em>Area</em>（區域）：需連續微粒監控 + 活性微粒限值 + 空間分類</li>
+                    <li>Grade A <em>Air Supply</em>（氣源）：空氣品質達 Grade A 微粒標準，但<strong>不需連續監控、不設活性限值、空間本身不分類</strong></li>
+                </ul>
+                <p>背景環境通常為 Grade C，最低需達 Grade D。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>監控要求最低標準</h4>
+                <p>Grade A Air Supply 的最低確認要求：<strong>在資格確認（qualification）及再確認（requalification）期間，於空氣供應點進行測試</strong>，確認能達到 Grade A 總微粒品質。</p>
+                <p>靜態（at-rest）活性微粒與總微粒監控可基於風險評估執行，但不強制作為常規監控項目。這使製造商在合規設計上有更大彈性，同時不降低污染控制的有效性。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.8 Water ===== -->
+    <div id="sec68" class="two-column">
+        <div class="left-column">
+            <h3>6.8 Water</h3>
+            <p>This document addresses only the <strong>process monitoring of water for microbial attributes</strong>. Most countries have compendial requirements for evaluation of water quality. The recently published EMA Guideline for the Quality of Water for Pharmaceutical Use should be consulted as to the type of pharmaceutical-grade water used in manufacturing.</p>
+            <p>The type of water selected for manufacturing is based on the type of product and process. Water quality should be evaluated for microbial, bacterial endotoxin, and chemical attributes in accordance with applicable compendial or regulatory requirements. Water quality is critical for the manufacturing of parenteral drugs and selected devices because it is used in product formulation, component and equipment washing, and final rinsing.</p>
+            <p>The quality of laboratory water should meet the needs of analytical methods and technologies, which may require compendial-quality laboratory water.</p>
+
+            <h4>Table 6.8-1: Examples of Measurements Critical to WFI Manufacturing and Distribution</h4>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Critical Parameter / Quality Attribute</th>
+                        <th>USP 2021</th>
+                        <th>EP 9:8 / 10 &amp; JP 17, 2016</th>
+                        <th>ChP 2015</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Source water</strong></td>
+                        <td>Drinking water / Purified water (suitable for human consumption)</td>
+                        <td>JP Drinking water spec. or purified water</td>
+                        <td>Purified water</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purification Process</strong></td>
+                        <td>Distillation or equivalent/superior process</td>
+                        <td colspan="2">Distillation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>pH</strong></td>
+                        <td>N/A</td>
+                        <td>5.0–7.0</td>
+                        <td>5.0–7.0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conductivity at 25°C</strong></td>
+                        <td>1.3 &mu;S/cm In-line Stage 1 (Stage 2–3 offline)<sup>1,2</sup></td>
+                        <td colspan="2">1.3 &mu;S/cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WFI Microbial Limit</strong></td>
+                        <td>NMT 10 CFU/100 mL</td>
+                        <td colspan="2">NMT 10 CFU/100 mL</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maximum TOC</strong></td>
+                        <td>500 ppb (0.5 mg/L)<sup>3</sup></td>
+                        <td colspan="2">500 ppb</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bacterial Endotoxin Limit</strong></td>
+                        <td>&lt; 0.25 EU/mL</td>
+                        <td colspan="2">&lt; 0.25 EU/mL</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nitrates Limit (ppm)</strong></td>
+                        <td>NA</td>
+                        <td>0.2</td>
+                        <td>0.06</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nitrites Limit (ppm)</strong></td>
+                        <td>N/A</td>
+                        <td>0.02</td>
+                        <td>0.02</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ammonia Limit (ppm)</strong></td>
+                        <td>N/A</td>
+                        <td>0.2</td>
+                        <td>0.2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Heavy Metals Limit (ppm)</strong></td>
+                        <td>N/A</td>
+                        <td>0.1</td>
+                        <td>0.1</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p style="font-size:0.82rem;color:#666;margin-top:0.5rem;">
+                <sup>1</sup> In-line/Stage 1 conductivity at 25°C; USP also has off-line Stage 2 and 3 specs.<br>
+                <sup>2</sup> JP Chapter 21: may be performed in-line at 25°C; no separate Stage 3 option in JP.<br>
+                <sup>3</sup> No specification for in-line TOC in USP 2021 Issue 1; JP recommends &le;300 ppb (in-line), &le;400 ppb (off-line).
+            </p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：製藥用水的監控策略</h2>
+
+            <div class="concept-box">
+                <h4>製藥用水的三個層次</h4>
+                <ul>
+                    <li><strong>注射用水（WFI, Water for Injection）</strong>：最高品質要求，用於注射劑配方、設備最終沖洗。細菌內毒素 &lt; 0.25 EU/mL，微生物限值 NMT 10 CFU/100 mL。</li>
+                    <li><strong>純化水（Purified Water）</strong>：用於非注射產品製造、API、固體劑型。需控制微生物品質以防止工廠污染蔓延。</li>
+                    <li><strong>潔淨蒸汽（Clean Steam）</strong>：用於滅菌設備與管路；通過化學與 LAL 測試，不建議微生物測試。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>各藥典 WFI 規格差異重點</h4>
+                <p><strong>USP vs. EP/JP 主要差異</strong>：</p>
+                <ul>
+                    <li>USP：允許蒸餾法<strong>或</strong>同等/更優製程（如膜過濾）製備 WFI；EP 傳統上僅允許蒸餾法（2017年後 EP 10 也開放膜過濾）</li>
+                    <li>EP 和 ChP 設有 pH 限制（5.0–7.0），USP 不設 pH 要求</li>
+                    <li>EP 設有硝酸鹽（0.2 ppm）、亞硝酸鹽（0.02 ppm）、氨（0.2 ppm）、重金屬（0.1 ppm）限值；USP 均為 N/A</li>
+                    <li>ChP 硝酸鹽限值（0.06 ppm）較 EP 更嚴格</li>
+                </ul>
+                <p>台灣廠商若同時出口美國（FDA）與歐洲（EMA），需滿足兩者要求中較嚴格的一方。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.8.1 + 6.8.2 ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3 id="sec681">6.8.1 Sample Site Selection and Frequency of Monitoring</h3>
+            <p>The sampling and frequency of monitoring for water systems should be sufficient to ensure that water quality meets its intended use specifications and appropriate regulatory requirements. The frequency depends on the type of water, manufacturing process, system configuration, and facility design.</p>
+            <p>High-purity water systems should be validated to demonstrate that design requirements are consistently met and maintain a state of control. Site selection and frequency determination should be justified by thorough review of water system validation and risk-based approaches.</p>
+            <p>Once a water system is validated in a state of control, appropriate samples should be taken from:</p>
+            <ul>
+                <li>Water source or generation system</li>
+                <li>Holding and storage tanks</li>
+                <li>Distribution system (all point-of-use sites for high-purity water systems)</li>
+            </ul>
+            <p>Initial testing of water systems typically includes sampling after each process step.</p>
+
+            <h3 id="sec682">6.8.2 Sample Collection and Testing</h3>
+            <p>Water samples should be collected in a manner consistent with manufacturing practices. If manufacturing flushes use points prior to use, samples should be collected with the same flush cycle. All sample sites should be in a good state of repair and fully functional.</p>
+            <p>It is recommended to <strong>not use IPA on gloves or sample port prior to TOC sampling</strong> to avoid generating false positives. Microbiological examination of water should be initiated as soon as possible after sample collection. If immediate processing is not possible, samples should be refrigerated at <strong>2–8°C</strong>. The time elapsed between collection and examination should be justified.</p>
+
+            <h4>Table 6.8.2-1: Typical Pharmaceutical Water and Clean Steam Distribution System Guidelines</h4>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Clean Steam</th>
+                        <th>Purified Water</th>
+                        <th>USP WFI</th>
+                        <th>EP WFI</th>
+                        <th>JP WFI</th>
+                        <th>ChP WFI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Site</strong></td>
+                        <td>Point of generation and furthest point of use</td>
+                        <td>Representative use points in distribution system</td>
+                        <td colspan="4">All accessible use ports in the distribution system</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Methods</strong></td>
+                        <td>Chemistry and LAL</td>
+                        <td>Chemistry, pour plate (1.0 mL) or membrane filter (100 mL)</td>
+                        <td>Chemistry, LAL, and membrane filter (200 mL)</td>
+                        <td>Chemistry, LAL, and membrane filtration (100 mL)</td>
+                        <td>Chemistry, LAL, and membrane filtration (&ge;100 mL)</td>
+                        <td>Chemistry, LAL, and membrane filtration (&ge;100 mL)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microbiological Test (10 CFU/100 mL limit)</strong></td>
+                        <td>Not recommended</td>
+                        <td>PCA/TGYA, 48–72 h at 30–35°C<sup>1,2,3</sup></td>
+                        <td colspan="2">R2A agar, 30–35°C, &ge;5 days</td>
+                        <td>Standard agar 30–35°C 48–72 h, or R2A agar 20–25°C or 30–35°C for 4–7 days</td>
+                        <td>R2A agar, 30–35°C, &ge;5 days</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p style="font-size:0.82rem;color:#666;margin-top:0.5rem;">
+                <sup>1</sup> Alternative medium (e.g., m-HPC, TSA/SCDA, R2A) may give better recovery.<br>
+                <sup>2</sup> Alternative incubation times may be needed for optimum recovery.<br>
+                <sup>3</sup> Alternative incubation temperatures may be needed for optimum recovery.
+            </p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：用水取樣策略與實驗室操作</h2>
+
+            <div class="concept-box">
+                <h4>取樣策略的三個核心原則</h4>
+                <ol>
+                    <li><strong>代表性</strong>：取樣點需涵蓋水源、儲槽、分配系統全路徑。高純度水系統（WFI）需涵蓋所有使用點（point-of-use）。</li>
+                    <li><strong>與製造實務一致</strong>：若製造操作前會沖洗水管，取樣也應按相同沖洗步驟進行。反之亦然。</li>
+                    <li><strong>風險導向頻率設定</strong>：頻率需足以偵測化學屬性、微生物菌相及內毒素的趨勢變化。</li>
+                </ol>
+            </div>
+
+            <div class="note-box">
+                <h4>取樣操作重要細節</h4>
+                <ul>
+                    <li><strong>TOC 取樣前不得使用 IPA</strong>：手套或取樣口的酒精殘留會造成 TOC 假陽性，導致不必要的調查。</li>
+                    <li><strong>儘快處理樣品</strong>：若無法立即檢測，應冷藏於 2–8°C，並對從採樣到檢測的時間間隔進行驗證。</li>
+                    <li><strong>潔淨蒸汽不做微生物測試</strong>：高溫蒸汽環境不支持微生物生長，僅做化學與 LAL 測試即可。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>各藥典培養基與培養條件差異</h4>
+                <table style="font-size:0.86rem;">
+                    <thead>
+                        <tr>
+                            <th>水種</th>
+                            <th>培養基</th>
+                            <th>條件</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>純化水（USP）</td>
+                            <td>PCA/TGYA（或替代）</td>
+                            <td>30–35°C, 48–72 h</td>
+                        </tr>
+                        <tr>
+                            <td>WFI (USP/EP/ChP)</td>
+                            <td>R2A agar</td>
+                            <td>30–35°C, &ge;5 days</td>
+                        </tr>
+                        <tr>
+                            <td>WFI (JP)</td>
+                            <td>標準培養基或 R2A</td>
+                            <td>多種溫度/時間組合</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>R2A 培養基（Reasoner's 2A）是低營養培養基，特別適合生長緩慢、對高溫敏感的水中貧營養菌（oligotrophs），更能反映實際水質微生物組成。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.9 Compressed Gas ===== -->
+    <div id="sec69" class="two-column">
+        <div class="left-column">
+            <h3>6.9 Compressed Gas Monitoring</h3>
+            <p>The use of compressed air and compressed gas in the aseptic ISO 5 environment may adversely affect environmental conditions if appropriate precautions, routine testing, and critical assurances are not developed into a system.</p>
+            <p>Using a <strong>0.2 &mu;m filter on the compressed gas line prior to entry into the cleanroom</strong> is common practice. Integrity testing of the filter and sanitization of the line post-filtration may reduce the need for sampling.</p>
+            <p>The sampling equipment must be compatible for use with compressed gases. A <strong>pre-filter</strong> may be installed in the system to reduce the bioburden to the point-of-use filter, extending its life and reducing the possibility of higher contamination reaching the area.</p>
+            <p>The particulate or bioburden level of any gas or air expelled into the environment should be <strong>equal to or better than the classification level of the room</strong>.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析：壓縮氣體監控的關鍵控制點</h2>
+
+            <div class="concept-box">
+                <h4>壓縮氣體的污染風險</h4>
+                <p>壓縮空氣與壓縮氣體（如氮氣、CO₂）直接噴入 ISO 5 無菌區域，若未適當過濾，可能成為微粒與微生物的引入途徑。</p>
+                <p><strong>標準防護措施</strong>：</p>
+                <ul>
+                    <li>進入潔淨室前安裝 <strong>0.2 &mu;m 過濾器</strong></li>
+                    <li>定期進行過濾器完整性測試（integrity testing）</li>
+                    <li>過濾後管路進行消毒（sanitization）</li>
+                    <li>安裝<strong>前置過濾器（pre-filter）</strong>降低最終過濾器的生物負載，延長使用壽命</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>核心法規要求</h4>
+                <p>噴入環境的氣體或空氣，其微粒或生物負載水準必須<strong>等於或優於該房間的分類等級</strong>。例如在 ISO 5 區域使用的壓縮氣體，排放品質需達 ISO 5 或更優。</p>
+                <p>採樣設備必須與壓縮氣體相容——某些活性空氣採樣器可透過轉接頭同時適用於壓縮氣體取樣。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRACTICE BOX ===== -->
+    <div class="practice-box">
+        <h3>思考練習 Practice Questions</h3>
+        <ol>
+            <li>一家工廠同時生產終端滅菌製劑與無菌分裝製劑。請說明這兩條生產線在 EM 監控範圍、頻率及關鍵指標上的主要差異，並指出哪條生產線的 EM 負擔更重及原因。</li>
+            <li>某無菌填充線採用隔離器技術（Isolator Technology）。請問在每批填充結束後，哪些 EM 項目是必須執行的？哪些項目相較於傳統開放式填充線可以省略或降低頻率？理由為何？</li>
+            <li>Grade A 區域的空氣監控中，為何主動採樣（active sampling）必須納入氣流可視化研究（airflow visualization study）？若連續監控系統（remote particle counter）的管路超過 1 公尺，可能帶來什麼問題？</li>
+            <li>某無菌廠採用 Surface Rinse 方法監控配製槽內壁，但發現監控數據波動很大、難以設定警戒限值。請根據 TR13 6.4.1 的內容分析可能的根本原因，並提出改善建議。</li>
+            <li>某工廠的人員監控數據顯示，同一位操作員在過去 3 個月中出現 4 次手套超標。根據 TR13 6.5.2，應採取哪些措施？這些措施如何記錄以符合法規要求？</li>
+            <li>一家台灣藥廠的 WFI 系統需同時符合 USP 和 EP 要求。請列出兩者在 pH、硝酸鹽限值及微生物培養條件上的差異，並說明廠商應如何設計取樣計劃以同時滿足兩者要求。</li>
+            <li>Annex 1（2022）引入「Grade A Air Supply」概念用於已加塞小瓶的軋蓋操作。請解釋此概念與「Grade A Area（Grade A 區域）」的本質差異，以及為何後者不需要連續微粒監控。</li>
+        </ol>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program</p>
+    <p>Section 6.0–6.9 &mdash; Environmental Monitoring by Manufacturing Application &mdash; p30&ndash;p38</p>
+    <p style="margin-top:0.75rem;font-size:0.8rem;opacity:0.65;">Educational bilingual HTML &mdash; for internal training use only. Source: &copy; 2022 Parenteral Drug Association, Inc.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

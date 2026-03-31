@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Section 7: Cycle Development and Validation</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Topic 7: Cycle Development and Validation: Cleaning, Bio-Decontamination, and Disinfection</h1>
+    <div class="subtitle">週期開發與確效：清潔、生物去污染與消毒</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025) &mdash; RABS | p84 - p89 | Q7.1 - Q7.3</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 RABS 清潔與消毒程式規劃、設計與執行的關鍵考量因素</li>
+        <li>掌握手動消毒與自動化生物去污染 (Bio-decontamination) 之間的差異與應用場景</li>
+        <li>了解消毒劑確效 (Disinfectant Qualification) 的方法論，包含 BI 挑戰試驗與 EI 相關性研究</li>
+        <li>認識 RABS 清潔、消毒與去污染確效的完整架構，以及如何與 CCS、EM 和 APS 銜接</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本章內容導覽</h3>
+    <div class="toc-grid">
+        <a href="#q7-1">Q7.1 清潔與消毒計畫</a>
+        <a href="#q7-2">Q7.2 一致性執行與確效選項</a>
+        <a href="#q7-3">Q7.3 確效與驗證要求</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q7.1 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q7-1">Q 7.1 Cleaning and Disinfection Program Planning</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Q 7.1. What are the considerations for planning, designing, and executing a restricted access barrier system (RABS) cleaning and disinfection program?</strong></p>
+
+        <h3>Recommendation</h3>
+
+        <p>Before implementing a <span class="key-term">cleaning and disinfection program</span>, a RABS <span class="key-term">cleanability assessment</span> should be performed. This assessment should include the suitability of material surfaces to be cleaned as described in Question 1.2. In addition, cleaning accessibility in terms of ergonomics, the extent of reach required into the RABS, and areas that need cleaning tools to reach should be considered. Hard to clean mechanical spaces and surfaces in processing areas should have been eliminated by design as a basic GMP requirement (4). As disinfection programs must include the use of an approved <span class="key-term">sporicidal</span>, the materials of construction within the RABS should be assessed to be compatible with such disinfectant agents.</p>
+
+        <div class="quote-box">
+            *Note: Sensitive equipment (e.g., environmental monitoring equipment) must be considered during cleaning, disinfection and/or decontamination and may need to be covered at a certain cleaning step. This should be documented in the CCS.
+        </div>
+
+        <p>Typically, RABS will include installed process equipment (e.g., filling lines) that are also subjected to cleaning and disinfection together with the RABS barrier. Cleanability assessments will therefore include suitability and access of process equipment surfaces for cleaning and disinfection procedures.</p>
+
+        <p><span class="key-term">Cleaning</span> is a prerequisite to effective bio-decontamination processes. Initially, at start-up and after shutdowns, a cleaning agent with a surfactant will assist with the removal of bonded layers of soiling (e.g., lubricants, grease, fatty acids from human contact). Cleaning agents are likely to leave residues that may require a follow-up wipe removal step with sterile 70% IPA for example, and such actions should be included in SOP control design (1, 6).</p>
+
+        <p>Agents will be validated to demonstrate the appropriate <span class="key-term">log reduction</span>, including bacteria, spores, and viruses (as required), with the target of achieving Grade A conditions in the RABS. The process in which agents are manually applied must be qualified to ensure appropriate environmental conditions are rendered (6). RABS Grade A conditions must be established and under control before sterilized parts, including fluid path or filling needles and indirect product-contact parts (e.g., stopper bowls, guides, chutes), are introduced (1).</p>
+
+        <p><span class="key-term">Bio-decontamination</span> processes (e.g., VPHP, dry or wet process technologies) should be automated; an emphasis should be on a validated cleaning process prior to initiating the bio-decontamination process.</p>
+
+        <p>More automated bio-decontamination processes (e.g., VPHP, dry or wet process technologies) may be applied to oRABS (in combination with cleanroom) and cRABS. If disinfection cannot be implemented manually (i.e., considered in design), and if enhanced sporicidal efficacy and disinfection assurance is required.</p>
+
+        <p>In such applications, cleaning is not replaced by automated disinfection alone and remains an essential pre-step. In first application or following shutdowns cleaning, where more surface-soiling may be present, a neutral detergent with a surfactant may be appropriate, but inevitability it will leave residues, so a following residue-removal step would be required, typically with isopropanol.</p>
+
+        <p>A cleanability assessment, selection of cleaning and disinfectant agents, and associated methods of application should be defined in a <span class="key-term">cleaning risk assessment</span> to cover the risk-based decision-making requirement as part of the QRM. Having a rationale in place, a qualification methodology can be developed ahead of qualification protocols and execution.</p>
+
+        <h3>Manual Cleaning and Disinfections of RABS</h3>
+
+        <p>RABS require cleaning and disinfection to establish and maintain <span class="key-term">Grade A conditions</span>. Manual processes for these steps are described below.</p>
+
+        <p><strong>Cleaning</strong> is the removal of soiling, residual product, and nonviable contaminants. The process is typically manual, completed with wipes that apply cleaning agents and a physical removal (i.e., collection in a wipe) of contaminants (1, 6).</p>
+
+        <p><strong>Disinfection</strong> is a process of applying, via a qualified procedure, a laboratory-validated disinfectant that provides an appropriate log reduction of bioburden to specified levels. All disinfection programs for RABS should include a <span class="key-term">sporicidal agent</span> (1, 6). Appropriate residue removal is required after cleaning using purified/sterile water (e.g., WFI) or sterile isopropanol.</p>
+
+        <p>There are two stages of RABS disinfection:</p>
+        <ol>
+            <li><strong>Establishing control</strong> of the Grade A processing environment on first installation, after shutdown, and between batches and campaigns. This first step of disinfection should include a sporicidal agent, hence, sporicidal disinfection of the complete internal processing area within the RABS.</li>
+            <li><strong>Routine disinfection</strong> in production, which includes after open-barrier interventions and wiping down the barrier door before closing. The selection of the disinfectant should be based on a risk assessment and assurance that Grade A conditions are not compromised.</li>
+        </ol>
+
+        <p>It is recommended that primary and secondary operators carry out these disinfection tasks related to interventions. Interventions into Grade A processing zones should be undertaken by a primary operator with the necessary localized internal-zone disinfection followed by personnel monitoring, based on an approved risk assessment, prior to closing the operations. The secondary operator should complete the internal RABS door disinfection before closing the RABS barrier.</p>
+
+        <h3>Rationale</h3>
+
+        <p>If RABS are cleaned and disinfected by manual application methods, the prerequisite of a cleanability assessment is paramount.</p>
+
+        <p>Different combinations of cleaning and disinfectant agents may be applied based on process steps and levels of soiling.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Cleanability Assessment (可清潔性評估):</strong> 在任何清潔消毒程式實施之前，必須先進行系統性的可清潔性評估。這不僅是評估表面材質是否適合清潔，更重要的是評估人體工學上操作者能否有效地觸及 RABS 內部所有區域。這個步驟常被忽略，但它是整個清潔確效的基礎。</p>
+            <p><strong>Sporicidal Agent (殺孢子劑):</strong> EU Annex 1 明確要求 RABS 的消毒程式必須包含殺孢子劑。這是因為細菌孢子是最難殺滅的微生物形態，也是無菌保證最大的威脅。常用的殺孢子劑包括過氧化氫 (H2O2)、過氧乙酸等。</p>
+            <p><strong>Log Reduction (對數降低):</strong> 衡量消毒劑效力的標準指標。例如 6-log reduction 代表將微生物數量從 1,000,000 降至 1，即 99.9999% 的殺滅率。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要清潔一間手術室。你不會直接噴消毒水就開始手術 &mdash; 你必須先做「可清潔性評估」：哪些角落容易藏污？設備底部碰得到嗎？清潔工具夠長嗎？這就像 RABS 的 Cleanability Assessment。接著，你先用清潔劑去除可見的髒污（Cleaning），然後再用消毒劑殺菌（Disinfection）。順序絕不能顛倒，就像你不會在滿是油漬的桌面上直接噴酒精消毒一樣 &mdash; 油漬會阻擋消毒劑接觸表面，效果大打折扣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>清潔永遠是消毒的先決條件！</strong> 本節反覆強調 "Cleaning is a prerequisite to effective bio-decontamination processes"。這是因為表面殘留物（潤滑劑、油脂、人體接觸殘留的脂肪酸）會形成保護層，降低消毒劑的效力。</p>
+            <p><strong>兩階段消毒策略：</strong></p>
+            <ul>
+                <li><strong>第一階段（建立控制）：</strong> 首次安裝、停機後、批次/製程轉換時 &mdash; 必須使用殺孢子劑對 RABS 內部全面消毒</li>
+                <li><strong>第二階段（日常維護）：</strong> 生產中開門介入後、關門前擦拭 &mdash; 消毒劑選擇基於風險評估</li>
+            </ul>
+            <p><strong>Grade A 必須先建立：</strong> 在將已滅菌零件（如充填針頭、膠塞斗）引入 RABS 之前，Grade A 條件必須已經確認建立且受控。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>操作人員分工 Operator Roles</h4>
+            <p>文件特別提到 Primary Operator（主要操作員）和 Secondary Operator（次要操作員）的角色分工：</p>
+            <ul>
+                <li><strong>主要操作員：</strong> 負責 Grade A 區域的介入操作，以及介入後的局部消毒與人員監測</li>
+                <li><strong>次要操作員：</strong> 負責 RABS 門內側的消毒與關門操作</li>
+            </ul>
+            <p>這種雙人互相監督的設計，是為了確保消毒程序的完整性和可追溯性。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，當你接手一條新的 RABS 產線或準備上新產品時，清潔消毒程式的規劃是無法跳過的關鍵步驟。常見的失誤包括：</p>
+            <ul>
+                <li>設備設計時未考慮清潔可及性，導致某些死角根本無法手動清潔</li>
+                <li>使用的殺孢子劑與 RABS 內部材料不相容，造成腐蝕或表面損傷</li>
+                <li>清潔劑殘留未有效去除，影響後續消毒效果</li>
+            </ul>
+            <p>因此，在 RABS 採購階段就應將 Cleanability Assessment 納入設計審查 (Design Review)。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼清潔 (Cleaning) 必須在消毒 (Disinfection) 之前執行？如果順序顛倒會有什麼後果？</li>
+                <li>在什麼情況下，自動化生物去污染 (如 VPHP) 會比手動消毒更適合 RABS？</li>
+                <li>為什麼敏感設備（如 EM 設備）在清潔消毒時需要特別保護？這應記錄在哪個文件中？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q7.2 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q7-2">Q 7.2 Consistent Execution of Cleaning, Bio-Decontamination, and Disinfection</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Q 7.2. What are the current options for ensuring consistent execution of cleaning, bio-decontamination, disinfection, and sporicidal disinfection of a restricted access barrier system (RABS)?</strong></p>
+
+        <h3>Recommendation</h3>
+
+        <p><span class="key-term">Disinfectant agents</span> will require qualification or validation to provide evidence of efficacy on surfaces for a defined contact time, typically referred to as <span class="key-term">"wet contact time"</span> (2). Different disinfectant qualification methodologies can be applied based on the best combination of international standards and guidance.</p>
+
+        <p>Aseptic-process filling would require Grade A particulate and microbial cleanliness levels inside the RABS, with cleaning and disinfection considered as the surface-contamination control measure (1). The outside of the RABS barrier would require following the cleanroom grading level (in filling Grade B).</p>
+
+        <p>Disinfectant agents are validated for efficacy in <span class="key-term">laboratory studies</span>, including material coupon surface-disinfection studies, with subsequent qualification of the application method and procedure. <span class="key-term">EM</span> is used to assess the effectiveness of the cleaning and disinfection program (1, 6). In-field efficacy challenge studies are not typically implemented for manual disinfection applied to RABS in contrast to automated VPHP process technologies, bio-decontamination, and alternative sporicidal-agent processes that require <span class="key-term">biological-indicator (BI) inactivation challenge studies</span> (4).</p>
+
+        <p>The bio-decontamination processes of <span class="key-term">VPHP</span> process technologies have the potential of achieving <span class="key-term">6-log reduction</span> when combined with the required qualification of the automated gaseous-disinfection system and method of application with associated control parameters (6). Once the bio-decontamination-equipment integration is qualified, a process of <span class="key-term">cycle development</span> should be applied, followed by an efficacy-performance qualification (PQ) with a BI reference challenge of <span class="key-term">Geobacillus stearothermophilus</span> spores on stainless coupons. VPHP BI's are described in PDA Technical Report No. 51 <em>Biological Indicators for Gas and Vapor-Phase Decontamination Processes: Specification, Manufacture, Control and Use</em>.</p>
+
+        <p><span class="key-term">Enzymatic indicators (EIs)</span> are increasingly playing a role in cycle development to improve efficiency (time savings) and assessment of location-to-location efficacy. However, accepting the initial BI/EI correlation studies is required, and the final cycle qualification currently requires BI challenge studies.</p>
+
+        <p>The outcome of manual disinfection, following the application of a qualified agent according to a qualified SOP, is assessed by the <span class="key-term">EM program</span>. The EM program assesses the effectiveness of the qualified disinfection and bio-decontamination process. RABS cleaning and disinfection qualification should align with <span class="key-term">ISO 14644-1</span> requirements for cleanrooms and associated controlled environments and with <span class="key-term">EU Annex 1</span> and FDA guidances on manufacturing sterile products by aseptic processing for qualification before conducting APS qualification in readiness for production activities.</p>
+
+        <p>Open-door interventions into a RABS barrier during aseptic processing, a rare occurrence, requires additional cleaning and disinfection of the open barrier door, including the inside of the barrier door, before it is closed to reestablish Grade A conditions of the complete barrier. Protective airflow and procedure control should result in the sterilized parts that enter during setup remaining sterile without compromise. Disinfection applied to sterile surfaces could potentially compromise sterility and therefore should be avoided, instead focusing on the procedural control and protective airflow that prevents compromise to the sterile surfaces in the first place.</p>
+
+        <h3>Rationale</h3>
+
+        <p>Primarily, RABS are manually cleaned and disinfected using qualified agents and a qualified procedure of application of these qualified agents executed by trained operators. EM, in combination with other microbial challenges (e.g., gowning, material transfers, and environmental control systems), is used to monitor the outcome (effectiveness).</p>
+
+        <p>Some of the enhanced attributes in contamination control that isolators provide, are sometimes applied to RABS to enhance the assurance of sterility. In particular, cRABS and oRABS (in combination with cleanroom) with VPHP can align elements of isolators and RABS technology.</p>
+
+        <p>The combined cleanroom and oRABS bio-decontamination, using an automated process, can support more assured aseptic hold times and fast changeovers to reestablish the required conditions for aseptic manufacturing. Such processes can be applied, with BI results (negative for growth) defined as the marker, to put the line back in operation at risk, rather than waiting for EM results.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Wet Contact Time (濕潤接觸時間):</strong> 消毒劑必須在表面保持濕潤狀態的最短時間，才能達到宣稱的殺菌效力。這不是「噴上去等它乾」，而是要確保整個接觸時間內表面都是濕的。在大面積 RABS 內部進行手動擦拭時，這是最大的操作挑戰之一。</p>
+            <p><strong>Biological Indicator, BI (生物指示劑):</strong> 使用已知數量的高抗性微生物孢子（通常是 <em>Geobacillus stearothermophilus</em>）來挑戰消毒/去污染製程的效力。BI 是 VPHP 週期確效的「金標準」。</p>
+            <p><strong>Enzymatic Indicator, EI (酶指示劑):</strong> 較新的技術，利用酶活性的變化來快速評估去污染效力。EI 的最大優勢是結果更快（數分鐘 vs. BI 的 7 天培養），可大幅加速週期開發階段。但最終確效仍需 BI 挑戰。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像手動消毒 RABS 就像用濕拖把拖整棟房子的地板 &mdash; 你可以做得很好，但結果取決於拖把是否乾淨、地板是否先掃過、你是否真的拖到了每個角落、以及地板是否保持夠久的濕潤。而 VPHP 自動化去污染就像是整棟房子放煙霧彈式的殺蟲 &mdash; 氣體會均勻擴散到每個角落，效果更一致、更可靠。但即使用了煙霧彈，你仍然要先把地板掃乾淨（清潔仍是前提！）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>手動 vs. 自動化的確效差異：</strong></p>
+            <ul>
+                <li><strong>手動消毒：</strong> 實驗室確效 (coupon study) + 應用方法確效 + EM 監測結果評估。不需要 in-field BI 挑戰。</li>
+                <li><strong>VPHP 自動化：</strong> 實驗室確效 + 設備整合確效 + Cycle Development + PQ（含 BI 挑戰）。需要 6-log reduction 證明。</li>
+            </ul>
+            <p><strong>關鍵警告 &mdash; 不要對已滅菌表面消毒！</strong> 文件明確指出 "Disinfection applied to sterile surfaces could potentially compromise sterility"。這是因為消毒擦拭的動作本身會引入污染風險，反而不如維持氣流保護和程序管控來得安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>RABS 與 Isolator 的融合趨勢</h4>
+            <p>Rationale 中提到一個重要的產業趨勢：cRABS 和 oRABS 正在借鑑 Isolator 的 VPHP 技術。這種「混合型」方案帶來兩大實務優勢：</p>
+            <ul>
+                <li><strong>更可靠的無菌保持時間 (Aseptic Hold Time)：</strong> 自動化去污染提供比手動消毒更高的保證</li>
+                <li><strong>更快速的批次轉換 (Changeover)：</strong> BI 結果（無菌）可作為重新開線的依據，不需等待 EM 結果（通常需 5-7 天）</li>
+            </ul>
+            <p>對 CDMO 而言，這意味著更高的產線利用率和更快的交付時間。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>6-log Reduction 的意義：</strong></p>
+            <pre>
+初始孢子數: 10^6 = 1,000,000 CFU
+6-log reduction 後: 10^0 = 1 CFU
+殺滅率 = 99.9999%
+
+實務意義：
+- 若 BI 上接種 10^6 個 G. stearothermophilus 孢子
+- VPHP 週期後 BI 培養結果必須為「無生長」
+- 這是 PQ 通過的判定標準
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>BI vs. EI 的實務決策：</strong> 在 CDMO 中進行 VPHP 週期開發時，EI 可以大幅縮短開發時間。典型的週期開發流程為：</p>
+            <ul>
+                <li>使用 EI 快速篩選不同的 VPHP 參數組合（H2O2 濃度、溫度、暴露時間）</li>
+                <li>找到最佳參數後，執行 BI/EI 相關性研究（Correlation Study）</li>
+                <li>最終 PQ 仍以 BI 挑戰（G. stearothermophilus, 10^6 孢子）為判定標準</li>
+            </ul>
+            <p>另外，文件提到可以用 BI 結果（陰性）作為 "at risk" 重新開線的依據，而不必等 EM 結果。這在多產品 CDMO 中是一個重要的產能優化策略。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼手動消毒不需要 in-field BI 挑戰，而 VPHP 需要？兩者的確效邏輯有何根本差異？</li>
+                <li>為什麼不應該對已滅菌的表面進行消毒擦拭？這違反了什麼核心原則？</li>
+                <li>cRABS 搭配 VPHP 的「混合型」方案，在什麼類型的 CDMO 場景中最具價值？試從產能與無菌保證兩方面分析。</li>
+                <li>EI 的結果能否取代 BI 作為 PQ 的最終判定標準？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- Q7.3 -->
+<!-- ============================================================= -->
+<div class="section-title" id="q7-3">Q 7.3 Qualification and Validation of Cleaning, Disinfection, and Decontamination</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Q 7.3. What considerations are required for qualification of the restricted access barrier system (RABS) cleaning, bio-decontamination, disinfection, and sporicidal disinfection process, and validation of the bio-decontamination and decontamination process?</strong></p>
+
+        <h3>Recommendation</h3>
+
+        <p>The qualification of the RABS cleaning and disinfection process is critical to ensuring a <span class="key-term">Grade A environment</span> within the RABS. The planning of the qualification should begin as early as possible prior to implementation. A key output of the design phase of a RABS installation is a <span class="key-term">quality risk assessment</span> detailing the RABS physical attributes and usage scenarios that may have an impact on product quality. This risk assessment then feeds into a <span class="key-term">validation plan</span> of which cleaning and disinfection validation is a major component.</p>
+
+        <p>There are different facets to the RABS cleaning and disinfection (bio-decontamination) and decontamination validation process:</p>
+        <ul>
+            <li>Establishing Grade A conditions for aseptic manufacturing</li>
+            <li>Applying cleaning validation for drug-product residue removal as a cross-contamination control measure</li>
+        </ul>
+
+        <p>Decontamination may be applied as a cross-contamination control measure and/or a measure to manage operator exposure to toxic or biologically hazardous products. Where aseptic-containment is required to process toxic or biohazard products, it may be more appropriate to apply <span class="key-term">isolator barrier technology</span> because of the inherent limitations of containment measures (e.g., air-overspill to the surrounding environment) in RABS.</p>
+
+        <h3>RABS Cleaning Process</h3>
+
+        <p>The qualification of the RABS cleaning process should provide confidence of the:</p>
+        <ul>
+            <li>Removal of any residue (chemical, including lubricants) or debris that would detrimentally impact the effectiveness of the disinfecting agent to be used. The target should be <span class="key-term">visibly clean</span> (1).</li>
+            <li>Reduction of bioburden before the disinfection process step, as determined by the end-user.</li>
+        </ul>
+
+        <h3>RABS Disinfection Process</h3>
+
+        <p>The qualification and validation of the RABS disinfection process should provide confidence that the disinfection procedure demonstrates its effectiveness in reducing any microbiological contamination within the RABS to an acceptable level. The disinfection process should include:</p>
+        <ol>
+            <li>Use of a <span class="key-term">sporicidal agent</span>, possibly in rotation with other disinfectant agents that together provide broad spectrum efficacy (7). The selection and frequency of use should be based on EM data (quantitative/qualitative), trends, cleanroom materials, and the efficacy of the disinfectant procedures (2).</li>
+        </ol>
+
+        <div class="quote-box">
+            Note: Rotation of the disinfectants is not considered due to increasing microbial resistance but because different disinfectants have different modes of action, and their combination can increase the spectrum of efficacy. Rotation may also reduce occurrence of material damage.
+        </div>
+
+        <ol start="2">
+            <li>Use of sterile disinfectant agents for Grade A and Grade B areas.</li>
+            <li>A target log reduction for bacteria, spores, and viruses (if applicable) (6, 20).</li>
+            <li>A method of application that assures <span class="key-term">surface coverage</span> and wet contact time.</li>
+            <li>A disinfection waste management procedure dealing with wipes, residual agents, and disinfection tools.</li>
+            <li>Any associated <span class="key-term">aseptic RABS hold-time qualification</span>.</li>
+            <li>Environmental control/EMPQ should be qualified and established before implementation of an APS; confidence that the cleaning and disinfection process meets this objective of environmental control is critical to GMP compliance (4).</li>
+        </ol>
+
+        <h3>RABS Decontamination Process</h3>
+
+        <p>The qualification and validation of a RABS decontamination process applied post-production for product-residue removal as a <span class="key-term">cross-contamination control</span> measure requires cleaning-validation studies. The following are points to consider:</p>
+        <ul>
+            <li>Cleaning methods may be manual (wiping) or more automated CIP systems (e.g., spray balls, spray wands). In both cases, the target is to remove residual products from surfaces.</li>
+            <li>Cleaning validation includes surface-swabbing studies and chemical analysis to confirm removal of product residuals to target levels considered as safe exposure to operators and/or not at risk of cross-contaminating other products or subsequent batches.</li>
+            <li>Where more automated CIP systems apply, control system development will be required with subsequent qualification.</li>
+        </ul>
+
+        <p>WFI may be used as an agent for product-residual removal for treatment off-line:</p>
+        <ul>
+            <li>Chemical agents that denature products in RABS may need a follow-up residue removal step.</li>
+            <li>If CIP systems are applied, sloping surfaces and "zero" dead-leg valves may be required to mitigate collected water that may exacerbate microbial contamination or proliferation.</li>
+        </ul>
+
+        <div class="quote-box">
+            Note: Disinfectant efficacy studies or validation studies should be conducted as well to demonstrate that the disinfectants used on surfaces in manufacturing areas, laboratories, and other facility areas are effective in the inactivation or removal of such microorganisms as bacteria, fungi (yeast and molds), and bacterial spores. (See PDA Technical Report No. 70: <em>Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities</em> for further details.)
+        </div>
+
+        <h3>Rationale</h3>
+
+        <p>The primary purpose of a RABS is to provide people-operator and process-product-barrier separation so that the risk of contaminating sterile product is mitigated to acceptable levels. As such, it is important to determine the most appropriate bio-decontamination method for the RABS. The qualification and validation of the bio-decontamination methods should consider the cleaning agents, the cleaning application processes, and the associated processes and equipment risks. These requirements and processes should be documented and proceduralized for repeatability and monitored to ensure continuous compliance.</p>
+
+        <p>Strong process understanding is the best basis for determining RABS validation requirements. Robust monitoring and aseptic manufacturing processes will add to the confidence that the manufacturing process is under a state of control. Decisions should be made based on the facilities process, control structure, and process understanding. Based on those decisions, validation programs should be initiated and followed. Decisions on the frequency of revalidation should be included in the bio-decontamination validation program.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Validation Plan (確效計畫):</strong> RABS 清潔消毒確效不是一個獨立活動，而是整體 RABS 安裝確效 (Installation Qualification) 的重要組成部分。它源自設計階段的品質風險評估 (QRA)，並與設備確效、環境監測確效、APS 確效環環相扣。</p>
+            <p><strong>Cross-contamination Control (交叉污染控制):</strong> 除了建立無菌環境，RABS 的清潔確效還有第二個重要目的：去除前一批產品的殘留物，防止交叉污染。這在 CDMO 多產品共線生產的場景中尤其關鍵。</p>
+            <p><strong>Visibly Clean (目視潔淨):</strong> 清潔確效的最低標準。雖然聽起來簡單，但在 RABS 透過手套操作的情境下，如何確認所有表面都達到「目視潔淨」是一個實際挑戰。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>RABS 確效的三層架構就像一棟大樓的維護管理：</p>
+            <ul>
+                <li><strong>清潔 (Cleaning) = 日常打掃：</strong> 去除灰塵、垃圾、可見污物。標準是「看起來乾淨」</li>
+                <li><strong>消毒 (Disinfection) = 定期消毒：</strong> 用殺菌劑殺滅微生物。目標是達到特定的微生物降低水準</li>
+                <li><strong>去污染 (Decontamination) = 深度清潔/化學去除：</strong> 換住戶（換產品）時，確保前一位住戶的所有痕跡都被清除，新住戶不會接觸到殘留物</li>
+            </ul>
+            <p>三者的目的不同，方法不同，確效要求也不同 &mdash; 但都必須做到位。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>消毒劑輪換的真正原因：</strong> 許多人誤以為輪換消毒劑是為了防止微生物產生抗藥性。文件澄清了這個常見誤解 &mdash; 輪換的原因是：</p>
+            <ul>
+                <li>不同消毒劑有不同的作用機制 (mode of action)，組合使用可擴大殺菌譜</li>
+                <li>輪換也可以減少對 RABS 材料的損害（長期使用單一強效消毒劑可能腐蝕某些材質）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>確效七大要素 Seven Elements of Disinfection Validation</h4>
+            <p>本節列出了 RABS 消毒確效必須涵蓋的七個面向，這是一個非常實用的檢查清單：</p>
+            <ol>
+                <li>殺孢子劑的使用（含輪換策略）</li>
+                <li>Grade A/B 區域使用無菌消毒劑</li>
+                <li>目標 log reduction（細菌、孢子、病毒）</li>
+                <li>確保表面覆蓋率與濕潤接觸時間的方法</li>
+                <li>消毒廢棄物管理程序</li>
+                <li>無菌保持時間 (Aseptic Hold Time) 確效</li>
+                <li>EM/EMPQ 必須在 APS 之前完成</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>毒性/生物危害產品的限制</h4>
+            <p>文件特別指出，當需要處理高毒性或生物危害性產品時，RABS 的密封性 (containment) 存在固有限制（如空氣外溢至周圍環境），此時更適合使用 Isolator 技術。這對 CDMO 的設備選型策略有重要影響：如果客戶產品組合中包含 ADC、高效能藥物或活性生物製劑，在選擇 RABS 或 Isolator 時需將此因素納入考量。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>去污染 (Decontamination) 確效要點</h4>
+            <p>去污染確效與消毒確效的目的不同 &mdash; 它針對的是產品殘留物的去除，是交叉污染控制的核心：</p>
+            <ul>
+                <li><strong>方法：</strong> 手動擦拭或自動化 CIP 系統（噴球、噴棒）</li>
+                <li><strong>確效手段：</strong> 表面擦拭取樣 (Swab Study) + 化學分析，確認殘留量低於安全暴露限值</li>
+                <li><strong>CIP 設計注意：</strong> 斜面設計和零死角閥門，防止積水造成微生物孳生</li>
+            </ul>
+            <p>WFI 可用於產品殘留去除。若使用會使蛋白質變性的化學劑，需額外進行殘留去除步驟。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 多產品轉換場景：</strong> 假設你的 RABS 產線剛完成一個單株抗體產品的充填，下一批是胰島素。你需要的確效資料包括：</p>
+            <ul>
+                <li><strong>清潔確效：</strong> 表面擦拭後，前一產品的殘留量低於 PDE/ADE 限值</li>
+                <li><strong>消毒確效：</strong> 確認 Grade A 環境重新建立</li>
+                <li><strong>設備目視檢查：</strong> 確認所有表面達到 "visibly clean" 標準</li>
+            </ul>
+            <p>若你的 RABS 搭配 VPHP，可以在清潔後執行自動化去污染週期，用 BI 結果作為放行依據，大幅縮短批次轉換時間。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>消毒劑輪換的主要目的是什麼？它與「抗藥性」的關係為何？</li>
+                <li>為什麼 RABS 對高毒性/生物危害產品的適用性有限？Isolator 在這方面的優勢是什麼？</li>
+                <li>在 RABS 去污染確效中，表面擦拭取樣 (Swab Study) 的目的是什麼？它驗證的是哪個風險？</li>
+                <li>為什麼 CIP 系統需要斜面設計和零死角閥門？積水會帶來什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>清潔是一切的前提：</strong> 無論手動消毒或自動化 VPHP，清潔 (Cleaning) 永遠是消毒/去污染的必要先行步驟，不可被取代或跳過</li>
+        <li><strong>兩階段消毒策略：</strong> 第一階段建立 Grade A 控制（含殺孢子劑全面消毒），第二階段為日常維護（介入後局部消毒）</li>
+        <li><strong>手動 vs. VPHP 的確效路徑不同：</strong> 手動依賴實驗室確效 + EM 監測；VPHP 需要完整的 Cycle Development + BI 挑戰 PQ（6-log reduction）</li>
+        <li><strong>EI 加速開發但不能取代 BI：</strong> 酶指示劑可加速週期開發效率，但最終確效判定仍需生物指示劑挑戰試驗</li>
+        <li><strong>確效是系統工程：</strong> 清潔/消毒確效源自設計階段的 QRA，並與 EM 確效、APS 確效形成完整鏈條，必須在 APS 之前全部到位</li>
+        <li><strong>去污染針對交叉污染：</strong> 不同於消毒（針對微生物），去污染旨在去除前批產品殘留，是多產品共線生產的關鍵控制措施</li>
+        <li><strong>RABS 的密封限制：</strong> 處理高毒性或生物危害產品時，因 RABS 的空氣外溢風險，應考慮採用 Isolator 技術</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems (RABS)</p>
+    <p>Topic 7: Cycle Development and Validation &mdash; Educational Reference Material</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

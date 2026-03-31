@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide - Section 17–19: Powder Filling — Functionality, Dose Control &amp; Operations</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 17–19: Powder Filling — Functionality, Dose Control &amp; Operations</h1>
+    <div class="subtitle">粉末充填：產品功能相容性、劑量管控與操作棄料策略</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | doc p210 – p221</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握影響粉末充填技術選擇的七大產品特性，以及 VPPF 與 AF 各自的適用條件。</li>
+        <li>理解粉末批量傳送（Bulk Transfer）方式對充填機設計的影響，以及含量均一性管控的關鍵。</li>
+        <li>說明粉末充填各階段（開機 / 充填中 / 劑量管控 / 填畢 / 其他）的棄料策略與風險控制方法。</li>
+        <li>將決策層次（無菌保證 &gt; 產品 CQA &gt; 商業彈性）應用於粉末充填技術的日常操作決策。</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc" style="max-width:1800px; margin:0 auto 1.5rem;">
+    <h3>章節架構</h3>
+    <div class="toc-grid">
+        <a href="#sec17">17.0 Product Characteristics Compatibility</a>
+        <a href="#sec17-1">17.1 Influence of Product Attributes</a>
+        <a href="#sec18">18.0 Effect of Powder Transfer</a>
+        <a href="#sec19">19.0 Discard Strategies Overview</a>
+        <a href="#sec19-1">19.1 Startup &amp; Priming</a>
+        <a href="#sec19-2">19.2 Filling &amp; Interventions</a>
+        <a href="#sec19-3">19.3 Dose Control</a>
+        <a href="#sec19-4">19.4 Conclusion of Fill</a>
+        <a href="#sec19-5">19.5 Other Rejection Considerations</a>
+    </div>
+</div>
+
+<div class="main-content">
+
+<!-- ============================================================ -->
+<!-- SECTION 17.0 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec17">17.0 Product Characteristics Compatibility for Vacuum Pressure Powder Filler and Auger Powder Filler Technologies</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>With all powder filling, the attributes of the powder influence the <span class="key-term">powder-handling and flow characteristics</span>, which will drive the selection of the technology. The attributes to be considered include:</p>
+        <ul>
+            <li>Density (tap and bulk)</li>
+            <li>Particle size</li>
+            <li>Porosity and particle surface area</li>
+            <li>Angle of repose (flowability)</li>
+            <li>Friction effects and temperature sensitivity</li>
+            <li>Electrostatic charge</li>
+            <li>Hygroscopicity</li>
+        </ul>
+        <p>Section 17.1 explores powder attributes and their influence on the selection and design of a powder filling system.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>粉末物理特性七要素：</strong>這七個屬性並非獨立存在，而是同時影響粉末在充填機中的行為。密度（Density）決定每次充填的體積量，流動性（Angle of Repose，休止角，即粉末堆積時與水平面形成的角度）決定粉末能否順暢移動，靜電荷（Electrostatic Charge）則直接影響劑量準確度與粉末是否會附著在瓶頸。</p>
+            <p><strong>技術選擇邏輯：</strong>粉末屬性不一定決定「哪種機器能用」，但往往決定「哪種機器更划算、更穩定」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>選擇充填技術就像選烹飪工具：液體用量杯，但粉末（麵粉、糖、鹽）卻各有不同特性。麵粉容易結塊（hygroscopic），鹽流動性好（free-flowing），糖容易產生靜電。廚師要根據食材特性選工具，粉末充填工程師也是一樣的邏輯。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的產品是高吸濕性（hygroscopic）粉末，在 VPPF 與 AF 之間，哪個技術在環境控制上要求更嚴格？為什麼？</li>
+                <li>一個充填工程師在面對靜電荷嚴重的產品時，最優先應確認充填系統的哪個設計特徵？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 17.1 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec17-1">17.1 Influence of Product Attributes on Selected Powder Filling Technology</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>During <span class="key-term">product and process development</span>, the attributes of the powder should be tested to confirm its handling characteristics and to establish the <span class="key-term">critical process parameters</span> and machine setup (e.g., mesh sizing and material for VPPF or auger selection for AF) that will be required for successful filling. While the powder characteristics may not limit the selection of the filling technology, the restrictions on certain process parameters, such as speed of filling, may make one technology more favorable than another. Often, equipment suppliers can perform this testing for the company if the equipment is not available within the development department to confirm the appropriate equipment settings.</p>
+
+        <p>The selection of the container and its <span class="key-term">neck size</span> are more critical for powder filling than for liquid filling. The centering of the container is essential to the delivery of the powder to the container. The size of the neck opening will impact the quantity of powder that can be dosed with each rotation for VPPF. For both VPPF and AF, a small neck opening may affect the speed at which the machine can be operated. The neck opening does not necessarily impact the selection of the specific filling technology, although with very small neck openings, such as ampoules, there may be some practical limits for each technology.</p>
+
+        <p>Table 17.1-1 evaluates the attributes of the product, one aspect at a time, with each filling technology. In reality, however, the powder has aspects of each attribute simultaneously, and the best technology will be the most suitable compromise for all characteristics. In practice, it is not always possible to determine the appropriate technology from a list of attributes; often, testing the powder with the selected technologies is the best way to determine handling and behavior. Finally, cost, flexibility, fill speed, containment considerations, and availability of the technology within the factory may also be deciding factors.</p>
+
+        <!-- Table 17.1-1 -->
+        <div style="overflow-x:auto;">
+            <table>
+                <caption style="font-weight:600; color:#1e3a5f; padding:0.5rem; text-align:left;">Table 17.1-1 Product and Filling Operation Characteristics Versus Filler Design</caption>
+                <thead>
+                    <tr>
+                        <th>Consideration</th>
+                        <th>Vacuum Pressure Powder Filler (VPPF)</th>
+                        <th>Auger Powder Filler (AF)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Density (tap and bulk) &amp; Porosity / Particle Surface Area</strong></td>
+                        <td>Independent of powder-flow characteristics. High-porosity products will result in good control with effective formation of the plug with the vacuum. However, high porosity will result in less-dense plugs, which may reduce the quantity of product that it is possible to dose with a single shot.</td>
+                        <td>Largely independent of powder-flow characteristics; particularly suitable for free-flowing powder. There are no limits as to the number of rotations that can be performed to compensate for high-porosity powders to deliver the needed dose.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Angle of Repose (flowability)</strong></td>
+                        <td>Independent of powder-flow characteristics, although filling-needle technology is best suited for free-flowing powders. Initial charge to the hopper may be a challenge and may require vibratory feeder.</td>
+                        <td>Largely independent of powder-flow characteristics; particularly suitable for free-flowing powder. Initial charge to the hopper may be a challenge and may require vibratory feeder.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friction Effects</strong></td>
+                        <td>Mixing is the only source of consistent friction; therefore, VPPF does not typically encounter higher temperatures from high-friction products.</td>
+                        <td>Friction effects can be higher (due to both mixing and movement of the auger) and can potentially result in slightly elevated temperatures, which may represent concerns for thermosensitive products.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hygroscopicity</strong></td>
+                        <td>Ensure that relative humidity of compressed air (or nitrogen) is controlled for hygroscopic powders. Environmental controls to manage relative humidity are critical.</td>
+                        <td>No compressed air is typically in contact with the powder during the transfer of the powder. Environmental controls to manage relative humidity are critical.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrostatic Control</strong></td>
+                        <td>Electrostatic control is critical for VPPF dosing accuracy linked to proper plug formation and release; risk will be that powder gets on the neck of the container. Can be equipped with electrostatic control at the point of fill.</td>
+                        <td>Electrostatic control is less challenging for auger as the delivery is directly to the container opening. Can be equipped with electrostatic control at the point of fill.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>High Potency/Toxicity</strong></td>
+                        <td>Requires off-line cleaning and sterilization, which may represent a risk. Improved containment possible.</td>
+                        <td>Capable of CIP/SIP. Improved containment possible.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speed</strong></td>
+                        <td>Tied to weight of fill. Higher number of fill stations will enable higher speeds for large fill-weights that require more shots per container. Machine footprint, the number of connections, and the number or rate of bulk-container connections will be rate-limiting.</td>
+                        <td>Tied to weight of fill. Higher number of fill stations will enable higher speeds for large fill-weights. Machine footprint, the number of connections, and the number or rate of bulk-container connections will be rate-limiting.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight of Fill</strong></td>
+                        <td>Large weights will require multiple "shots" during the filling. Typically, 1 cc is the largest single shot with current technology, with an approximate 0.050 cc as the effective minimum single shot.</td>
+                        <td>Large weights will require a number of rotations of the auger. Auger size can be modified to support different fill weights (a single machine can accommodate several auger sizes).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight Control</strong></td>
+                        <td>Highly accurate weight control. With very small weights of powder, off-line weight check is required (see Section 5.0) and accuracy may be more variable.</td>
+                        <td>With very small weights of powder, off-line weight check is required (see Section 5.0) and accuracy may be more variable.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Powder Overspray on Neck of Container</strong></td>
+                        <td>May occur if the powder is not well compressed or doesn't form a plug. Needle-dosing systems are a specialty adaptation for small-neck containers and for precision-dosing that will also prevent overspray.</td>
+                        <td>Less likely to occur as the auger is within the mouth of the container.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>關鍵洞察：屬性不決定技術，但決定成本與穩定性。</strong>書中明確指出：粉末屬性通常不會「排除」某種技術，而是讓其中一種在特定情境下「更有優勢」。這意味著 CDMO 在技術選擇時，應同時評估產品屬性、設備可用性、充填速度需求與含毒性考量，再做最終決定。</p>
+            <p><strong>容器頸口尺寸（Neck Size）：</strong>粉末充填中，頸口大小比液體充填更關鍵。頸口太小會限制每次充填量（VPPF）或充填速度（兩者皆然）。安瓿瓶（ampoule）因頸口極窄，可能對兩種技術都有實際限制。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>靜電荷 vs 吸濕性 — 兩個最常見的充填失敗根本原因：</strong></p>
+            <ul>
+                <li><strong>VPPF 靜電風險：</strong>靜電會干擾真空塞（plug）的形成與釋放，導致劑量不準，且粉末可能沾附瓶頸，影響密封。</li>
+                <li><strong>AF 摩擦熱風險：</strong>螺旋推進（auger）產生的摩擦力比 VPPF 高，對熱敏感（thermosensitive）產品（如凍乾粉末前的預充填）是潛在問題。</li>
+                <li><strong>兩者共同：</strong>高吸濕性產品都需要嚴格的相對濕度環境控制，差異在於 VPPF 還需控制壓縮空氣或氮氣的濕度。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>VPPF vs AF 的技術選擇，就像在餐廳選調味料分裝方式：VPPF 像用量測杯靠真空吸附固定體積分裝（精準但對粉末壓縮性要求高），AF 像用螺旋給料機（screw feeder）以旋轉圈數控制量（靈活但會產生摩擦熱）。最好的分裝方式取決於你在分裝的是鹽（流動性好）還是玉米澱粉（易結塊）。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+VPPF 單次充填範圍：
+  最大單次劑量 ≈ 1 cc（約 1 mL體積）
+  最小有效單次劑量 ≈ 0.050 cc
+
+AF 大劑量策略：
+  多次旋轉（Multiple rotations）× 每轉充填量 = 目標劑量
+  旋轉圈數可依密度變化動態調整
+
+含毒性產品選擇優先考量：
+  AF（支援CIP/SIP）> VPPF（需離線清洗，增加曝露風險）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個新產品的粉末具高靜電荷且對溫度敏感，在不考慮其他因素的情況下，VPPF 和 AF 各有什麼風險？你會如何評估？</li>
+                <li>高毒性（highly potent）粉末產品在 CDMO 評估充填技術時，為什麼 AF 的 CIP/SIP 能力是「決策層次第一優先」的體現？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 18.0 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec18">18.0 Effect of Powder Transfer on Technology Selection</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Powder transfer</span> from the bulk source to the powder filler will influence the filler design. There are several types of bulk containers that can be used for drug product, including bags and kegs. Typically, bags or kegs are loaded and connected manually; therefore, when considering machine speed, the rate of replenishment and duration of reconnection should also be considered.</p>
+
+        <p><span class="key-term">Split valve connections</span> will require that the hopper receiving the product from the bag or keg be placed in the Grade A environment to maintain the connection in an aseptic state. <span class="key-term">Intrinsic sterile connection devices</span> may permit the charge-point to be located in a lower grade. During disconnection, either connector type might have exposed product on the surfaces, so containment should be considered for highly potent or toxic products. A risk analysis should be performed to determine the microbiological and containment needs for the product.</p>
+
+        <p>Powder transfer can be accomplished by <span class="key-term">gravity</span> or with augmented feeding, such as <span class="key-term">vibratory feeders</span> or <span class="key-term">positive displacement with compressed air</span>. There are practical limitations for gravity-fed powders with regard to the distance that can be traversed. With augmented feed systems the distances can be extended, but it is still best to keep the distance as short as possible. In some factories, the manufacturing process and facility layout may dictate the position and distance that the bulk powder needs to travel, which will mandate feeder augmentation.</p>
+
+        <p>Minimization of the transfer distances will also help to ensure that <span class="key-term">segregation of powders</span> (i.e., separation of powders by particle size, possibly resulting in the separation of one molecule from another within the transfer) does not occur. The filler designs incorporate mixers, which also help to ensure <span class="key-term">homogeneity</span> of the powders at the point of fill. Homogeneity and <span class="key-term">content uniformity</span> are important measures that will be tested during the process validation and as part of routine batch Quality Control.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>粉末傳送（Powder Transfer）對設計的三個衝擊點：</strong></p>
+            <ul>
+                <li><strong>連接點分類等級（Grade）：</strong>Split valve 需在 Grade A 環境連接；具內建無菌連接裝置（Intrinsic Sterile Connection Device）者可允許在較低等級完成，直接影響廠房佈局成本。</li>
+                <li><strong>傳送距離：</strong>距離越長，粉末偏析（segregation）風險越高，混合均一性（content uniformity）越難保證。最好的設計是「讓粉末走最短的路」。</li>
+                <li><strong>補料速度（Replenishment Rate）：</strong>換桶/換袋的頻率和時間會影響整線產能（throughput），在評估充填速度時必須一併計入。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>粉末偏析（Powder Segregation）是含量均一性最大隱形敵人：</strong>當混合粉末（blend）在管道中傳送時，不同粒徑的粒子會因重力、振動或氣流而分離。粒子大的往外沉，細粉往中心聚集，最終導致每個瓶子中的活性成分比例不一致——這直接影響患者劑量，屬於 CQA 層級問題。充填機內建的攪拌器（mixer）是最後一道防線。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>粉末偏析就像搖晃一盒麥片：大片穀物往上跑，細小碎屑沉到底部。如果你每次只從底部取用，每碗的口感（成分比例）都不一樣。粉末充填系統中的 mixer 就是用來「重新搖均」的機制，但最根本的解法是讓粉末走最短的路，減少被「晃動」的機會。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 在承接新粉末充填專案時，廠房佈局評估應包含：① 粉末來源桶（keg/bag）的放置位置與充填機料斗（hopper）的垂直距離，② 連接裝置類型（split valve 或無菌連接器）對潔淨室等級的需求，③ 批量大小對補料頻率的影響（補料越頻繁 = 停機風險越高 = 棄料越多）。這三點直接影響項目報價和風險矩陣。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 19.0 Overview -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec19">19.0 Discard Strategies for Aseptic Filling of Powders — Overview</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The selection of a filling technology and its specific system design can influence the <span class="key-term">discard strategies</span> that are employed for such line events as startup, priming, line stoppages, interventions, and end of the aseptic fill-unit operation. Products that are very expensive or limited in availability will be impacted disproportionately by systems that have high discard requirements. Therefore, careful consideration of the system design and the integration of the filling technology with the filling enclosure or isolator is warranted.</p>
+
+        <p>VPPF and AF are selected based on the attributes of the powder to be filled, the required fill weight, and the opening of the container. Both VPPF and AF will encounter some need to reject containers during the process. In many cases, the cause of rejection is the same for both technologies. The various points within the process at which rejection might occur are included in Sections 19.1–19.5.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>棄料策略（Discard Strategy）是 CDMO 報價的隱藏成本：</strong>對於高價藥物（如孤兒藥、生物製劑）或原料極稀缺的產品，每瓶棄料的成本可能從數百到數萬美元不等。設計審查（Design Review）階段必須量化預估棄料率，並作為技術選擇的決策因素之一。這是「商業與彈性」層次但影響 CQA 的重要考量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Section 19.0 強調：充填系統與隔離器/RABS 的整合設計，直接決定棄料量。這不是單純的設備問題，而是設施、設備、製程三者協同設計的結果。在 CMO 報價時，「棄料率」是量化風險的關鍵指標，與產品批量大小和藥物成本直接掛鉤。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 19.1 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec19-1">19.1 Discard Strategies at Startup and Priming</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>During powder-filler setup, standardizing the dose and <span class="key-term">priming the filler</span> are necessary actions; however, both of these actions can result in rejections. Taking the following steps during setup may help avoid rejections or minimize their number during the priming and dose-standardization steps:</p>
+        <ul>
+            <li>Adjust the conveyance mechanism to ensure the proper centering of the container under the dosing station</li>
+            <li>Ensure that the correct distance of the dose delivery system from the container is established</li>
+            <li>Adjust the agitator type (should be part of system design) and speed to ensure homogeneous delivery of the powder for powder blends</li>
+        </ul>
+
+        <p>Startup rejection may also occur as a consequence of the risk that the initial product has been degraded due to exposure to conditions that would adversely impact the product. To avoid or minimize rejections, an <span class="key-term">inert gas overlay</span> (for products that are oxygen-sensitive) should be established and any product that was exposed to air during the priming should be eliminated.</p>
+
+        <p>For VPPF, during setup, the <span class="key-term">piston depth</span> may be set with a fixture or gauge which will expedite the process of establishing the weight within the specified range. As standardizing the dose is undertaken, the piston is adjusted to change the volume of the dosing chamber. Typically, a progressive increase in the depth of piston-movement occurs to adjust the dose. For some piston and filter designs, the potential exists for powder to be retained between the piston-filter OD and the dosing-chamber ID, which may create difficulties in reducing piston depth.</p>
+
+        <p>For AF, the dose is adjusted by changing the number of rotations of the auger. Some fillers are equipped with a <span class="key-term">100% net-weight filling</span>, which will minimize priming rejects due to an underfilled or inaccurate dose.</p>
+
+        <p>During process validation, careful evaluation of <span class="key-term">content uniformity</span> (for powder blends) and fill accuracy should be performed. Once established, the process parameters that deliver these CQAs should be carefully defined in SOPs and batch records.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>開機棄料（Startup/Priming Rejects）的兩個根本原因：</strong></p>
+            <ul>
+                <li><strong>機械未穩定（dose not standardized）：</strong>VPPF 靠調整活塞深度（piston depth）來標定劑量體積；AF 靠調整旋轉圈數。兩者都需要幾個充填循環才能達到穩定輸出。</li>
+                <li><strong>產品品質受損（degraded product）：</strong>開機過程中若氧氣敏感產品暴露於空氣，即使重量正確也必須棄料。惰性氣體覆蓋（nitrogen overlay）必須在充填開始前就建立。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>VPPF 活塞深度調整的機械陷阱：</strong>如果粉末卡在活塞濾網外徑（filter OD）與充填腔內徑（dosing-chamber ID）之間，縮小活塞行程（減少劑量）可能變得困難。這是 VPPF 設備選型時需確認的設計細節——好的設計應避免此類粉末滯留空間。</p>
+            <p><strong>100% 淨重充填（Net-Weight Filling）的戰略價值：</strong>配備 100% 淨重量測的充填機可大幅減少開機棄料，對高成本產品尤其重要。這是設備採購時值得額外投資的功能。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>假設你的產品是氧氣敏感的抗生素粉末，在 SOP 中，氮氣覆蓋的建立應在哪個步驟之前完成？這在 VPPF 和 AF 的操作序列上有什麼差異嗎？</li>
+                <li>為什麼製程驗證中含量均一性（Content Uniformity）的評估，對於粉末混合物（powder blend）比單一成分粉末更為關鍵？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 19.2 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec19-2">19.2 Discard Strategies at Filling and Interventions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Changes in powder attributes during the run could also result in dosing inaccuracies due to changes in the dynamics of flow, for example, the powder becoming gummy or sticky due to environmental conditions, the presence of an <span class="key-term">undissipated electrostatic charge</span>, or an increase in density due to an increase in fines, particularly at the end of bulk containers.</p>
+
+        <p>Modern filling lines are equipped with adequate environmental controls (i.e., humidity, temperature, deionization technology), making environmental and electrostatic failure modes less likely. However, care should be taken to ensure that the filling system operation does not increase the temperature of the powder (e.g., due to friction forces).</p>
+
+        <p>Electrostatic build-up may not be associated with the powder or filler itself but is often due to dry conditions and the conveyance of glassware. Electrostatics, if left undissipated, can affect dust on the container neck and closure surfaces, can affect the environment, and can affect the <span class="key-term">weigh-cell accuracy</span>.</p>
+
+        <p>For powder-density changes on VPPF, once cavity sizes are set, an increase in density will require a reduction in dose size (which may be automatic on some models). During setup, the potential exists for powder to be retained between the piston-filter OD and the dosing chamber ID, which may create difficulties in reducing piston depth with some piston–filter designs. For AF, changes in product density may require an adjustment to the number of rotations of the auger to adjust the fill weight (may be an automatic function with some models).</p>
+
+        <p>As with liquid filling, during powder-filling operations, interruptions in the filling operation that result in stoppage on the line (e.g., gaps in component supply, interventions, breaks) or other unforeseen events (e.g., particle excursion, loss of temperature in the tunnel resulting in an equipment stoppage, jams or collisions at the capper) may result in rejections.</p>
+
+        <p>When interventions occur during powder-filling, the powder, or the powder-filler itself is not generally impacted detrimentally. If the intervention requires an open door, such as might occur within a <span class="key-term">RABS</span>, consideration should be given to ensuring that the environment surrounding the RABS is also well-controlled to avoid any powder characteristic changes. If the product requires <span class="key-term">inert gas overlay</span> (e.g., nitrogen), the overlay must be maintained through any intervention or stoppage, or it will require rejection of containers and filled unsealed units that have potentially been exposed to air.</p>
+
+        <p>With some systems, an <span class="key-term">automated clearance mode</span> is available that will stop the infeed to the filler and reject all containers within the conveyor system in front of the filler. With legacy systems, the rejection may be entirely manual, and care must be taken to perform the intervention, picking up each rejected container with a sterile tool and following appropriate aseptic techniques, while taking care not to cause any spills.</p>
+
+        <p>If there are filled, fully sealed containers within the line's clearance zone, the decision to reject or keep those containers must be based on an appropriate <span class="key-term">risk assessment</span> and documented in intervention SOPs at the site.</p>
+
+        <p>For oxygen-sensitive products, an inert gas overlay (e.g., nitrogen) may need to be established to purge air from the headspace of the container. When analyzing container headspace at the conclusion of filling, containers with too much oxygen in the headspace may need to be rejected. Any failure in the inert-gas headspace controls during the filling operation (e.g., when the filler is shut down) will result in rejections during the processing.</p>
+
+        <p>If there is powder at the neck of the container during filling (e.g., due to inaccurate fill-targeting into the container opening or uncontrolled electrostatic charge), the powder may cause a <span class="key-term">poor seal around the elastomer</span>, which can result in an ingress of oxygen during the shelf life of the product. Powder at the necks of containers may be difficult to observe during initial visual inspection due to the crimp seal. Therefore, additional controls should be put in place for targeting delivery of the powder to the container-opening during setup, and electrostatic control should be part of the standard environmental controls. The filling process should be verified intermittently to ensure continued dust control at the neck. <span class="key-term">Headspace analysis</span> may be used for nitrogen-flooded containers to ensure that the closure is integral, thereby demonstrating an effective seal between elastomer and neck without interference due to the presence of powder.</span></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>充填中棄料的三大觸發因素：</strong></p>
+            <ul>
+                <li><strong>粉末特性動態變化：</strong>批量末端細粉增加 → 密度升高 → VPPF/AF 劑量偏重。現代設備可自動補償，但老舊設備需人工介入。</li>
+                <li><strong>靜電荷（Electrostatic Build-up）：</strong>靜電不僅影響劑量準確性，還會讓粉末吸附在瓶頸和塞子上，破壞彈性體密封，導致長期儲存中氧氣滲入——這是一個隱藏的 CQA 失效風險，在目視檢查時可能完全看不出來。</li>
+                <li><strong>線體停機（Line Stoppages）：</strong>氮氣覆蓋中斷 = 所有暴露容器必須棄料。這是氧氣敏感產品在干預（intervention）中最高優先的管控點。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>瓶頸粉末（Powder at Neck）是無菌保證的隱性威脅：</strong>粉末卡在瓶頸 → 彈性體（stopper/elastomer）無法完全貼合玻璃 → 氧氣長期滲入 → 藥品降解。這在加蓋後目視幾乎不可見。Headspace 氧氣分析是唯一能驗證密封完整性的方法。決策層次：無菌保證 #1——此情況即屬此類。</p>
+            <p><strong>自動清除模式（Automated Clearance Mode）vs 人工清除：</strong>現代設備的自動清除減少了人員在 Grade A 環境中的干預時間，直接降低無菌風險。採購設備時，自動清除功能應列為規格要求，尤其是高頻干預產品。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一批抗生素粉末充填過程中，充填機因外部原因停機 20 分鐘。你的 SOP 應如何定義：哪些容器保留、哪些棄料？需要什麼文件支持？</li>
+                <li>若氮氣 headspace 分析顯示某些容器氧氣含量偏高，但目視檢查看不出粉末在瓶頸，你會如何溯源問題根因（root cause）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 19.3 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec19-3">19.3 Discard Strategies at Dose Control</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>For <span class="key-term">net-weight fillers</span>, rejection should be automatic and demonstrated during the qualification of the equipment to determine that the correct containers have been rejected. As with liquid filling, if the weight-check function is statistical (intermittent), the segregation and rejection will need to occur beginning at the last confirmed correct-weight check (see Section 5.0).</p>
+
+        <p>One of the key reasons that dosing becomes inaccurate for VPPF is <span class="key-term">blinding of the screen</span>, which affects both powder compression and powder expulsion. Another, less-frequent reason could be <span class="key-term">screen breakage</span>. (Screens should be changed as part of routine preventive maintenance and inspected regularly after cleaning to verify screen integrity.) Either condition can result in rejections during the run due to inaccurate dosing.</p>
+
+        <p>AF primarily encounters dosing inaccuracies when the conditions of the powder change during the run. Both the VPPF and AF are available with net-weight models that enable automatic adjustments to keep the weights within preset weight limits throughout the run. For some AF fillers, the weight adjustment may be capable of occurring <span class="key-term">dynamically for each dose</span>, whereas the VPPF will react to a trend in weights over several cycles.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>VPPF 劑量失準的特有風險：濾網堵塞（Screen Blinding）：</strong>VPPF 利用真空吸附粉末透過濾網形成充填塞（plug）。若濾網被細粉堵塞（blinding），粉末無法被正確壓縮或推出，導致劑量不準。濾網是 VPPF 的關鍵耗材，必須納入預防性維護計畫（PM）並在每次清洗後確認完整性。</p>
+            <p><strong>AF 的動態劑量調整（Dynamic Weight Adjustment）：</strong>先進 AF 可在每一劑後立即根據淨重量測結果調整下一劑的旋轉圈數，反應速度遠快於 VPPF（VPPF 需要幾個循環的趨勢才能觸發調整）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>統計 IPC vs 100% 淨重量測——棄料範圍的關鍵差異：</strong>統計抽樣（intermittent）發現超重/欠重時，必須從「上一次確認合格的量測點」開始回溯棄料，可能導致大量合格品被一起棄料。100% 淨重量測（net-weight）則可精確識別並自動棄料單個問題容器，大幅降低損失。對高價粉末產品，100% 淨重量測的設備溢價往往在第一批就能回收。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>VPPF 的濾網應在何時更換？哪些清洗後的檢查步驟可以預防充填中的突發棄料？</li>
+                <li>若你的充填機採用統計 IPC（每 10 個量一次），在充填 500 個容器後發現第 480 個重量不合格，你必須棄料哪個範圍？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 19.4 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec19-4">19.4 Discard Strategies at Conclusion of Fill</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>At the end of the filling process, as powder levels start to drop in the hopper, dosing may become inconsistent. Proper <span class="key-term">hopper design</span> is essential to minimize residual powder waste and to maintain filling accuracy for as long as possible. It is important during development of the filling process parameters that the level at which this occurs is noted and defined (measurable). Shutting down when this level is reached must become a normal part of the operation and must be defined in the site SOPs or batch record.</p>
+
+        <p>For net-weight fillers, there may be an option to continue to fill until the rejection level becomes too high to be practicable and compliant. The company must establish procedures to handle the end of fill consistently to ensure that only good-quality containers are produced (see Section 13.0).</p>
+
+        <p>Table 19.4-1 summarizes common discard events and the specific risks represented by primary powder-filling technologies.</p>
+
+        <!-- Table 19.4-1 -->
+        <div style="overflow-x:auto;">
+            <table>
+                <caption style="font-weight:600; color:#1e3a5f; padding:0.5rem; text-align:left;">Table 19.4-1 Common Discard Events and Their Impact Based on Powder-Filling Technology</caption>
+                <thead>
+                    <tr>
+                        <th>Considerations</th>
+                        <th>Vacuum-Pressure Powder Filler (VPPF)</th>
+                        <th>Auger Powder Filler (AF)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Priming, loss of dose control</strong></td>
+                        <td>Dependent on powder attributes and airflow management (including filter selection)</td>
+                        <td>Dependent on powder attributes and flow characteristics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>End-of-process dose accuracy when powder levels are low</strong></td>
+                        <td>Dependent on hopper and agitator design; some risk for end of aseptic-fill-unit operation when powder levels are low unless controlled by net-weight surveillance</td>
+                        <td>Dependent on hopper and agitator design; some risk for end of aseptic-fill-unit operation when powder levels are low and back-pressure on the auger is reduced unless controlled by net-weight surveillance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Powder discard at end of process</strong></td>
+                        <td>Dependent on hopper and agitator design; very efficient (i.e., little waste) for low-weight fills or low fill speeds</td>
+                        <td>Dependent on hopper and agitator design; the requirement for back-pressure on the auger may result in more losses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risk to dose control based on dose size</strong></td>
+                        <td>Broad range of fill-weight capability; highly effective for low fill weights</td>
+                        <td>Broad range of fill-weight capability</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Filler interventions</strong></td>
+                        <td>Broken or blocked screens can present a risk, although proper selection to pair the filter with the powder attributes will mitigate risk</td>
+                        <td>No special concerns for interventions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>料斗底部效應（Hopper End-of-Fill Effect）：</strong>當料斗（hopper）內粉末量減少，粉末床（powder bed）的重量壓力降低，對 VPPF 的真空充填和對 AF 的螺旋背壓（back-pressure）都會產生影響，導致劑量開始不穩定。「定義可量測的停機液位」是製程開發的必要輸出，必須記錄在批次記錄（batch record）中。</p>
+            <p><strong>VPPF vs AF 在填畢廢料上的差異：</strong>VPPF 對小劑量充填廢料極低（料斗可被清空至很小量）；AF 因螺旋需要一定背壓才能精確輸送，料斗需保留更多殘餘量，因此 AF 在填畢廢棄的粉末量相對較多。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Table 19.4-1 的關鍵啟示：</strong>VPPF 的主要風險在「濾網」（blinding/breakage），而 AF 在填畢階段因背壓不足可能導致更多粉末殘留浪費。對高成本藥物，應在設備評估時計算每批次的預估粉末廢棄量，並納入 TCO（總擁有成本）分析。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>製程驗證（Process Validation）中，填畢停機液位（shutdown level）的確認方法：在三批驗證批次中，分別記錄料斗達到某液位後劑量變異係數（CV%）的變化趨勢，找出 CV% 開始超出規格（specification）的臨界點，將此液位定義為強制停機液位，並寫入 SOP。這是讓批次記錄「能說話」的關鍵資料。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 19.5 -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec19-5">19.5 Other Rejection Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Rejections along the filling line may occur for other reasons that may not be directly related to the operation of the filler, for example:</p>
+        <ul>
+            <li>Raised stopper or plunger placement detection</li>
+            <li>Missing stopper or plunger</li>
+            <li>Fallen components</li>
+            <li>Bad crimp seals or closures (at capper)</li>
+        </ul>
+        <p>These sensors and rejection stations should be integrated into the filling conveyance system and tested during qualification to ensure that detection and rejection timing is appropriately integrated.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>線體整合性棄料（Line-Integrated Rejections）：</strong>這類棄料與充填機本身無關，而是由下游工站的感測器觸發——塞子位置異常、壓蓋不良等。這些感測器必須在設備確效（Qualification）時驗證：在已知缺陷容器通過時，系統必須 100% 偵測並棄料到正確位置（timing 正確）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「Bad Crimp Seals」是密封完整性的最後防線：</strong>壓蓋不良（bad crimp）的瓶子，即使粉末充填完全正確，也代表容器-密封系統（Container-Closure System, CCS）已失效。這是無菌保證的最終關鍵控制點。壓蓋後的 100% 目視檢查或線上視覺系統，加上定期破壞性試驗（crimp pull-off force），是標準的確效策略。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在充填線確效（IQ/OQ/PQ）中，如何驗證「壓蓋不良偵測感測器」的拒料時序（rejection timing）是正確的？什麼是可接受的偵測率？</li>
+                <li>一個瓶子被感測器偵測為「塞子浮起（raised stopper）」，但目視看起來正常，你應該如何處理？這個決定應記錄在哪裡？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin:0 auto 2rem;">
+    <h3>本節重點回顧 Section Summary (Sec 17–19)</h3>
+    <ul>
+        <li><strong>Sec 17.0–17.1：</strong>粉末物理特性（密度、流動性、靜電荷、吸濕性等七要素）共同決定充填技術選擇的最佳妥協點；Table 17.1-1 是 VPPF vs AF 全方位比較的系統化工具。實驗測試（powder testing with actual equipment）是理論分析之外不可或缺的驗證步驟。</li>
+        <li><strong>Sec 18.0：</strong>粉末批量傳送（bag/keg transfer）的連接方式影響潔淨室等級需求；傳送距離越長、偏析風險越高；含量均一性（content uniformity）是製程驗證與批次放行 QC 的核心量測指標。</li>
+        <li><strong>Sec 19.1–19.5：</strong>粉末充填的棄料觸發點橫跨五個階段：開機/充填中/劑量管控/填畢/其他線體事件。100% 淨重量測與自動清除模式是現代設備降低棄料的關鍵功能；靜電管控和氮氣頭空保護是氧氣敏感產品的雙重防線；決策層次貫穿全節——無菌保證永遠優先。</li>
+    </ul>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

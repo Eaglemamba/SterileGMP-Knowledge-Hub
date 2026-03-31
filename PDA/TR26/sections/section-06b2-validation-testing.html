@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR26 - Section 6.0 (Part B2): Validation Testing - Bacterial Retention Worst-Case, Study Design, Series Filters, Compatibility, Revalidation</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6.0 (Part B2): Product &amp; Process-Specific Validation Testing</h1>
+    <div class="subtitle">產品與製程專屬驗證測試 — 細菌截留最差條件、試驗設計、串聯濾膜、化學相容性與再驗證</div>
+    <div class="page-info">PDA Technical Report No. 26 (Revised 2025) — Sterilizing Filtration of Liquids | p49 - p56</div>
+</div>
+
+<div class="main-content">
+
+<!-- ============================================================= -->
+<!-- 6.6.6 Bacterial Retention Worst-Case Considerations            -->
+<!-- ============================================================= -->
+<div class="section-title">6.6.6 Bacterial Retention Validation Studies: Considerations for Selection of Worst-Case Test Conditions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>There are different levels of risk associated with <span class="key-term">process-filtration parameters</span>. Some are associated with microbial proliferation in the product prior to filtration, while others are associated with a higher risk of passage of bacteria through the filter. While some generalizations can be made with respect to selection of <span class="key-term">worst-case test parameters</span>, it is important that worst-case parameters are determined on a <span class="key-term">case-by-case basis</span>. Further, the worst-case parameters should be selected such that the intended manufacturing conditions are covered by the process-specific bacterial retention studies but should be reflective of the processing parameters established during PD (with an appropriate and justified <span class="key-term">safety factor</span>). Bacterial challenge over the full process time assesses the potential for time-dependent factors, such as filter compatibility, maintenance of integrity and occurrence of <span class="key-term">time-dependent penetration</span>.</p>
+
+        <p>The <span class="key-term">pressure differential</span> across the test filters demonstrated during bacterial retention studies should meet or exceed the maximum pressure differential permitted during processing, within the filter manufacturer's design specifications. The intended process flow rates should be incorporated when designing the challenge conditions. It may not be possible to maintain both the target pressure and flux for the full duration of a retention study, while also achieving the desired total filter wet time and (scaled) batch size. In such cases, <span class="key-term">static wet hold times</span>, recirculation, or <span class="key-term">intermittent filtration</span>, can be incorporated into the study design when justified.</p>
+
+        <p>Bacterial retention study conditions should simulate the production process as closely as possible, but variations may be acceptable when they are well-justified and unlikely to affect the risk of bacterial penetration. Since bacterial retention studies are generally performed in a laboratory, the methodology should be <span class="key-term">scaled accordingly</span>. The flux should be scaled to an equivalent flow rate per unit area, expressed for example in (ml/min)/cm<sup>2</sup>. If filtration is regulated by pressure, the challenge test pressure should represent the NOR with consideration to the maximum filtration pressure allowed within the process and the likelihood of operating the filtration process at the PAR. <span class="key-term">Product recovery by blowdown</span> may be performed at a higher pressure than maximum pressure during normal filtration and should be simulated at the end of the bacterial retention study.</p>
+
+        <p>Table 6.6.6-1 lists examples of factors to consider when selecting worst-case parameters for process-specific bacterial retention studies.</p>
+
+        <h3>Table 6.6.6-1 Considerations for Selection of Bacterial Retention Study Parameters</h3>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Parameters</th>
+                <th>Worst-Case</th>
+                <th>Rationale</th>
+            </tr>
+            <tr><td colspan="4" style="background:#e2e8f0; font-weight:600;">Drug Product Properties</td></tr>
+            <tr>
+                <td>Viscosity</td>
+                <td>Viscosity</td>
+                <td>Higher</td>
+                <td>Potential to cause higher pressure to the filter</td>
+            </tr>
+            <tr>
+                <td>Surface Tension</td>
+                <td>Surface Tension</td>
+                <td>Lower</td>
+                <td>Potential to contribute to bacterial penetration (based on higher-risk fluids, such as liposomes)</td>
+            </tr>
+            <tr>
+                <td>Osmolarity</td>
+                <td>Osmolarity</td>
+                <td>Higher</td>
+                <td>Potential for reduction in cell size over prolonged exposure</td>
+            </tr>
+            <tr>
+                <td>Components</td>
+                <td>Liposomes, Emulsions with Lipids</td>
+                <td>&mdash;</td>
+                <td>Potential to contribute to bacterial penetration</td>
+            </tr>
+            <tr>
+                <td>Bioburden</td>
+                <td>Diminutive Organisms</td>
+                <td>&mdash;</td>
+                <td>Potential to contribute to bacterial penetration</td>
+            </tr>
+            <tr>
+                <td>pH</td>
+                <td>pH</td>
+                <td>Neutral</td>
+                <td>Neutral pH more likely to support bioburden</td>
+            </tr>
+            <tr>
+                <td>Ionic Strength</td>
+                <td>Ionic Strength</td>
+                <td>Consider Extremes</td>
+                <td>Potential impact to adsorptive retention</td>
+            </tr>
+            <tr><td colspan="4" style="background:#e2e8f0; font-weight:600;">Process Conditions</td></tr>
+            <tr>
+                <td>Temperature</td>
+                <td>Temperature</td>
+                <td>Case-specific</td>
+                <td>Lower temperatures may increase product viscosity leading to increased pressure to filter; Ambient temperature more likely to support bioburden; High temperatures may identify any potential compatibility issues</td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>Duration</td>
+                <td>Longer</td>
+                <td>Extended durations may increase possibility of bacterial penetration. Consideration should be given to the total filter/product contact time (e.g., account for time needed for any potential product-wet integrity-testing prior to filtration)</td>
+            </tr>
+            <tr>
+                <td>Pressure</td>
+                <td>Pressure</td>
+                <td>Higher</td>
+                <td>Higher pressures may contribute to bacterial penetration under specific conditions (e.g., higher-risk fluids)</td>
+            </tr>
+            <tr>
+                <td>Flow rate</td>
+                <td>Flow rate</td>
+                <td>Higher</td>
+                <td>Higher flow rates may contribute to bacterial penetration under specific conditions (e.g., higher risk fluids)</td>
+            </tr>
+            <tr>
+                <td>Throughput</td>
+                <td>Throughput</td>
+                <td>Higher</td>
+                <td>Increased volume throughput may increase potential prefiltration bioburden to the filter</td>
+            </tr>
+            <tr>
+                <td>Intermittency</td>
+                <td>On/Off Cycles</td>
+                <td>Case Specific</td>
+                <td>Consider if pressure spikes following an "off" cycle could impact potential filter performance; exact simulation of "on/off" cycles may not be possible in scale-down test</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Worst-Case Test Parameters (最差條件測試參數):</strong> 在設計細菌截留驗證研究時，必須選擇能「涵蓋」實際製造條件的最差情境參數。這些參數不是隨意放大，而是基於製程開發 (PD) 階段確定的數據，加上合理且有依據的安全係數 (safety factor)。</p>
+            <p><strong>Time-Dependent Penetration (時間依賴性穿透):</strong> 隨著過濾時間延長，細菌可能逐漸通過濾膜。這與濾膜相容性劣化、完整性維持能力下降等因素有關，因此挑戰試驗必須涵蓋完整的製程時間。</p>
+            <p><strong>Flux Scaling (通量縮放):</strong> 實驗室規模的細菌截留研究需要將流量縮放為單位面積通量 (ml/min)/cm<sup>2</sup>，以確保與生產規模具有等效性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>最差條件設計就像<strong>防火演習時選擇最困難的撤離路線</strong>：你不會只演練最簡單的出口，而是模擬煙霧最濃、距離最遠、人數最多的情境。如果在這種極端條件下都能安全撤離，日常情況自然沒問題。同樣地，如果濾膜在最高壓力、最長時間、最高黏度的組合下仍能完全截留細菌，正常製程條件就更有把握了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Table 6.6.6-1 是實務設計的「檢查清單」：</strong></p>
+            <ul>
+                <li><strong>黏度 &uarr;</strong> = 壓力 &uarr; = 穿透風險 &uarr;</li>
+                <li><strong>表面張力 &darr;</strong> = 脂質體等高風險流體更容易讓細菌穿過</li>
+                <li><strong>滲透壓 &uarr;</strong> = 細菌細胞可能縮小，更容易通過</li>
+                <li><strong>pH 中性</strong> = 最支持微生物生長，因此是最差條件</li>
+                <li><strong>離子強度極端值</strong> = 可能影響吸附截留 (Adsorptive Sequestration) 機制</li>
+            </ul>
+            <p>特別注意溫度是「Case-specific」的三向考量：低溫增加黏度、室溫支持微生物生長、高溫可能暴露相容性問題。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Blowdown Simulation</h4>
+            <p>Product recovery by blowdown（用氣壓將殘液吹出）往往使用比正常過濾更高的壓力。這個步驟必須在細菌截留研究的最後模擬，因為它代表了製程中濾膜承受的「最後一擊」。如果只測試正常過濾壓力而忽略 blowdown，就是漏掉了最差條件中的一個關鍵環節。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 實務情境：</strong> 你的客戶有一個脂質體 (liposome) 製劑，要進行除菌過濾驗證。根據 Table 6.6.6-1，你需要特別關注：</p>
+            <ul>
+                <li>表面張力較低 -- 脂質體本身就是高風險流體</li>
+                <li>產品可能含有脂質成分 -- 直接列為考量因素</li>
+                <li>溫度設定需三方考量</li>
+                <li>Blowdown 壓力可能高於正常過濾壓力</li>
+            </ul>
+            <p>身為 CDMO，你需要在驗證方案中逐項說明每個參數的最差條件選擇理由，這就是 QbD (Quality by Design) 思維在過濾驗證中的體現。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 pH 中性被認為是最差條件，而不是極端酸鹼值？</li>
+                <li>如果實驗室無法同時維持目標壓力和通量達到完整製程時間，有哪些替代方法可以納入研究設計？</li>
+                <li>為什麼離子強度要考慮「極端值」而非單一方向（高或低）？這與哪種截留機制有關？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.6.7 Factors to Consider for Bacterial Retention Study Design -->
+<!-- + 6.6.7.1 through 6.6.7.5                                     -->
+<!-- ============================================================= -->
+<div class="section-title">6.6.7 Factors to Consider for Bacterial Retention Study Design (incl. 6.6.7.1 &ndash; 6.6.7.5)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>6.6.7 Factors to Consider for Bacterial Retention Study Design</h3>
+
+        <p>If questions arise during protocol development regarding the acceptability of a testing methodology, it may be advisable to contact the appropriate regulatory agency for guidance. Figure 6.6.7-1 reflects key steps to be considered when selecting the appropriate <span class="key-term">validation strategy</span> for a specific filter and product/process combination.</p>
+
+        <p><em>*Note: Concurrence of the appropriate regulatory agency should be sought prior to using this methodology.</em></p>
+
+        <p><em>Figure 6.6.7-1 Sterilizing Filtration Process Validation Strategy</em></p>
+
+        <p>Irrespective of the test design used, it is important to include a <span class="key-term">0.4/0.45 &micro;m positive control filter</span> in parallel with the test filters to assure organism size, monodispersion and viability. Other modifications for the 0.45 &micro;m control filter may be appropriate if fully justified and still demonstrate the challenge organism is fit for purpose.</p>
+
+        <h3>6.6.7.1 Non-bactericidal Processes and Fluids</h3>
+
+        <p><span class="key-term">Direct inoculation</span> of the product with the challenge microorganism is the preferred method of validating microbial retention of a sterilizing-grade filter. This is possible with products and process fluids that have demonstrated no bactericidal effects from the product or processing conditions. For these processes, the product should be directly inoculated with the challenge organism at sufficient concentration and under simulated processing conditions, including time, pressure, flow rate, volume throughput and other critical variables (e.g., temperature) as indicated in Table 6.6.6-1. Dilution from bacterial inoculation should be minimized to prevent altering the product any more than necessary.</p>
+
+        <h3>6.6.7.2 Bacteriostatic/Bactericidal/Nondispersive Challenge Fluids</h3>
+
+        <p>Performing bacterial retention studies on <span class="key-term">bactericidal products</span> makes it more difficult to answer questions relating to validation, such as What effect does the product have on the filter and what effect does the product have on flora within the product? Bacterial retention studies performed on a bactericidal formulation, or under challenge conditions adverse to microbial viability (e.g., elevated temperature), may not produce valid results.</p>
+
+        <p>To evaluate the potential effect of the product/process on the filter, the filter may be <span class="key-term">preconditioned</span> with the product under simulated processing conditions, including flow rate, pressure, temperature, volume throughput and time. This preconditioning may be performed by recirculating the product through the test filter in a closed-loop system or by a single pass (which could include a static soak to meet required contact time) through the test filter, followed by the bacterial challenge. Section 6.6.7.3, Section 6.6.7.4, and Section 6.6.7.5 discuss examples of test-method modifications that may be used to accommodate this type of bacterial retention study. Other modification methods may be equally appropriate, however, if justified.</p>
+
+        <h3>6.6.7.3 Reduced Exposure Time</h3>
+
+        <p>In some instances, the challenge organism may not survive in the product for the total processing time. The product should be inoculated directly with the challenge organism at sufficient concentration near the end of the preconditioning phase of the challenge (see Figure 6.6.7-1). The duration of the bacterial retention study should be supported by the viability data.</p>
+
+        <p>An alternative is to expose the challenge microorganisms in the challenge fluid under static conditions. After exposing the challenge bacteria in the product at process temperature and preconditioning the filter by recirculating the product (without the bacteria) under simulated processing conditions, the filter could be challenged under worst-case processing conditions (e.g., differential pressure and flow rate). The challenge duration should be minimized to ensure the challenge microorganisms remain viable during the actual exposure, challenge, and recovery periods.</p>
+
+        <h3>6.6.7.4 Modify Test Method Parameters</h3>
+
+        <p><span class="key-term">Test-method parameter modification</span> is useful for challenging bactericidal products, since it can involve changing only one process variable, such as temperature. Using this approach maintains the product/challenge organism interaction. This approach does not account for all possible process/product interactions but should allow the use of the standard challenge organism. After preconditioning the filter with the product under actual process conditions, the bactericidal component of the process (e.g., temperature) is modified and the bacterial retention study performed. The product should be inoculated directly with the bacterial retention study microorganism at a sufficient concentration (see Figure 6.6.7-1).</p>
+
+        <h3>6.6.7.5 Modifying Test Product Formulation</h3>
+
+        <p>Another modified method is to remove the <span class="key-term">bactericidal component</span> from the product for the bacterial retention study following preconditioning of the filter with the actual product. This may be as simple as adjusting the pH to a nonbactericidal range, removing or diluting the bactericidal component, or using a <span class="key-term">surrogate fluid</span>. Whatever approach is used should be supported by a technical rationale.</p>
+
+        <p>The modified formulation should be inoculated directly with the challenge organism at a sufficient concentration under simulated product processing conditions (see Figure 6.6.7-1). The bactericidal agent should be removed to a level that eliminates its interference with the challenge microorganism.</p>
+
+        <p>Another option is to precondition the test and control filters with the bactericidal process fluid under simulated worst-case processing conditions. After removing the bactericidal fluid from the test rig, the filters can then be challenged with the test organism suspended in surrogate fluid that has been justified to resemble the process fluid (e.g., chemical or physical properties). Other test modifications may also be acceptable if justified.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Positive Control Filter (正對照濾膜，0.45 &micro;m):</strong> 在每次細菌截留研究中，必須與測試濾膜並行使用 0.45 &micro;m 對照濾膜。這不是為了測試截留能力，而是為了確認挑戰菌株的大小、分散性和活性符合要求。如果對照濾膜無法回收細菌，就無法確認測試結果的有效性。</p>
+            <p><strong>Direct Inoculation (直接接種法):</strong> 最理想的方法 -- 直接將挑戰微生物加入產品中，在模擬製程條件下進行過濾。這種方法最能反映真實情境，但前提是產品本身不會殺死或抑制挑戰微生物。</p>
+            <p><strong>Preconditioning (預處理/預調理):</strong> 當產品具有殺菌性時，先用實際產品在模擬條件下處理濾膜，讓濾膜「暴露」於產品對其可能產生的影響，再進行細菌挑戰。這樣分開兩步的設計，既評估了產品對濾膜的影響，又確保挑戰微生物的活性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>細菌截留研究的三種策略就像<strong>教練針對不同場地設計測試</strong>：</p>
+            <ul>
+                <li><strong>6.6.7.1 直接接種法</strong> = 在標準球場上直接比賽（產品不殺菌，條件最理想）</li>
+                <li><strong>6.6.7.2 殺菌產品的預處理法</strong> = 球場上有刺激性物質，所以先讓球員在場地上適應，再開始比賽</li>
+                <li><strong>6.6.7.3-5 修改方法</strong> = 因為場地太危險，所以要麼縮短比賽時間、改變一個場地條件、或者用類似但安全的場地進行測試</li>
+            </ul>
+            <p>無論用哪種方法，都要有「裁判」（正對照濾膜）確認比賽規則有效。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 殺菌產品的三種修改策略</h4>
+            <p>當產品會殺死挑戰微生物時，TR26 提供了三種漸進式的修改策略：</p>
+            <ul>
+                <li><strong>6.6.7.3 縮短暴露時間：</strong>在預處理階段結束前才加入細菌，縮短細菌與殺菌產品的接觸時間。需要活性數據支持所選的時間長度。</li>
+                <li><strong>6.6.7.4 修改測試方法參數：</strong>只改變一個製程變數（如溫度），維持產品/微生物的交互作用。例如產品在 60°C 有殺菌性，則預處理後降至 25°C 再做挑戰。</li>
+                <li><strong>6.6.7.5 修改產品配方：</strong>移除殺菌成分（如調整 pH、稀釋殺菌劑）或使用替代流體 (Surrogate Fluid)。必須有技術理由支持修改的合理性。</li>
+            </ul>
+            <p>這三種方法的共同前提是：濾膜必須先用實際產品在實際條件下預處理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 法規溝通</h4>
+            <p>TR26 特別提到：如果在方案開發過程中對測試方法的可接受性有疑問，<strong>建議聯繫適當的法規機構</strong>尋求指導。這在使用修改方法（6.6.7.3-5）時尤其重要，因為這些方法偏離了「直接接種」的金標準，需要充分的科學論證。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 決策樹：</strong>收到客戶的新產品進行除菌過濾驗證時，第一步就是做 Bactericidal/Bacteriostatic 測試：</p>
+            <ul>
+                <li><strong>結果：不殺菌</strong> &rarr; 直接走 6.6.7.1，用直接接種法，最簡單明確</li>
+                <li><strong>結果：殺菌</strong> &rarr; 評估殺菌速度和機制，選擇 6.6.7.3（縮短時間）、6.6.7.4（改條件）或 6.6.7.5（改配方）</li>
+                <li><strong>不確定</strong> &rarr; 先與法規機構溝通，確認方法可接受性</li>
+            </ul>
+            <p>選擇哪種修改方法取決於產品的殺菌機制和嚴重程度。通常優先嘗試改最少變數的方法（6.6.7.3 > 6.6.7.4 > 6.6.7.5）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼正對照濾膜（0.45 &micro;m）在每次細菌截留研究中都是必要的？如果正對照沒有回收到細菌，試驗結果還有效嗎？</li>
+                <li>一個含有 0.1% 苯酚作為防腐劑的注射液產品，你會選擇哪種修改策略？為什麼？</li>
+                <li>比較 6.6.7.4（修改參數）和 6.6.7.5（修改配方）：哪一種保留了更多原始產品/濾膜交互作用的資訊？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.6.8 Filtrate Sampling                                        -->
+<!-- ============================================================= -->
+<div class="section-title">6.6.8 Filtrate Sampling</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Analysis of the entire challenge effluent is necessary to determine the ability of a sterilizing-grade filter to retain the bacterial challenge. This can be done either by <span class="key-term">direct passage through an appropriate analytical membrane</span> installed downstream of the test filter (whereby any penetrating bacteria would be captured on the analytical membrane) or by filtrate collection in a sterile vessel and subsequent filtration through analytical membrane(s). The analytical membranes should have been qualified as fit for purpose and will usually have a maximum rating of <span class="key-term">0.4 &micro;m or 0.45 &micro;m</span>. Selection of the size and porosity should be based on the application conditions and should not prevent achieving the desired differential pressure across the test filter. <span class="key-term">Sampling a portion of the filtrate is insufficient</span> to validate sterilizing filtration, because a small number of cells may have penetrated the filter and remain undetected in the portion of the filtrate not sampled and analyzed.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Entire Effluent Analysis (全量濾液分析):</strong> 細菌截留驗證要求分析<strong>全部</strong>的挑戰濾液，不允許只取部分樣品。這是因為即使只有極少數細菌穿透濾膜，部分取樣可能完全錯過這些穿透菌，導致假陰性結果。</p>
+            <p><strong>Analytical Membrane (分析膜):</strong> 安裝在測試濾膜下游的 0.4/0.45 &micro;m 膜，用於捕獲任何穿透測試濾膜的細菌。可以直接串聯安裝，也可以先收集濾液再過濾分析。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像<strong>機場安檢的行李全檢 vs 抽檢</strong>：如果機場只 X 光掃描 10% 的行李（部分取樣），那 90% 未檢查的行李中可能藏著危險物品。除菌過濾驗證的邏輯完全一樣 -- 你必須「掃描」100% 的濾液，因為即使只有 1 個細菌穿透，也代表濾膜驗證失敗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「部分取樣不足以驗證除菌過濾」</strong> -- 這是 TR26 的明確聲明。在實務中，有兩種全量分析方式：</p>
+            <ul>
+                <li><strong>線上法 (In-line):</strong> 分析膜直接串聯在測試濾膜下游，濾液直接通過分析膜 -- 簡單直接</li>
+                <li><strong>離線法 (Off-line):</strong> 先將濾液收集到無菌容器中，再通過分析膜 -- 適合大量濾液或需要特殊處理的情況</li>
+            </ul>
+            <p>注意分析膜的選擇不能影響測試濾膜的跨膜壓差，否則會改變測試條件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果分析膜的孔徑選擇不當（例如太小），可能對測試結果產生什麼影響？</li>
+                <li>為什麼 TR26 強調「分析膜應不影響測試濾膜的跨膜壓差」？這與 worst-case 設計有什麼關係？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.6.9 Results Interpretation                                   -->
+<!-- ============================================================= -->
+<div class="section-title">6.6.9 Results Interpretation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Acceptance criteria for <span class="key-term">sterilizing-grade filter performance</span> are met when no passage of the bacterial challenge is detected in <span class="key-term">three test filters</span> with a valid positive control (i.e., bacterial recovery through the 0.45 &micro;m-rated control filter). If passage is detected in one filter, and <span class="key-term">no assignable cause</span> can be determined, retesting may be conducted (e.g., three filters from the failed membrane lot) following an investigation and risk assessment to determine a potential root cause. If bacterial penetration occurs in any of the triplicate tests, then the filter cannot be considered validated under the specified conditions. If an <span class="key-term">assignable cause</span> for the failure can be determined (e.g., damage to the filter or breach in aseptic technique), the suspect lot of filters should also be retested for confirmation of the proposed root cause for the initial failure. If the filter <span class="key-term">fouls prior to achieving the target volume throughput</span>, the bacterial retention study should be terminated and the resultant total challenge determined. An investigation into the cause of fouling should be performed and documented, and a new bacterial retention study design should be proposed to ensure volume throughput is met based on filterability test results.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Acceptance Criteria (接受標準):</strong> 三支測試濾膜全部零穿透 + 正對照有效回收 = 通過。這是「全有或全無」的標準，沒有「允許少量穿透」的灰色地帶。</p>
+            <p><strong>Assignable Cause (可歸因原因):</strong> 當一支濾膜出現穿透時，需要調查是否有明確的外部原因（如濾膜損壞、無菌操作失誤）。有可歸因原因 vs 無可歸因原因，走的是不同的後續路徑。</p>
+            <p><strong>Filter Fouling (濾膜堵塞):</strong> 如果濾膜在達到目標體積通量前就堵塞了，研究必須終止。這不代表「通過」，而是需要重新設計研究方案。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>結果判讀就像<strong>考駕照的路考</strong>：</p>
+            <ul>
+                <li><strong>三人同時考試</strong>（三支濾膜），全部通過才算這個型號合格</li>
+                <li>如果一人犯規（一支穿透），要調查是<strong>考場問題</strong>（可歸因原因，如車輛故障）還是<strong>能力不足</strong>（無可歸因原因）</li>
+                <li>如果是考場問題，可以換一批考生重考；如果能力不足，代表這個駕訓班的教學方法（驗證條件）需要重新檢討</li>
+                <li>如果車子在考試中途拋錨（濾膜堵塞），考試無效，必須查明原因後重新安排</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>結果判讀決策樹：</strong></p>
+            <ul>
+                <li><strong>3/3 通過 + 正對照有效</strong> &rarr; 驗證成功</li>
+                <li><strong>1/3 失敗 + 有可歸因原因</strong> &rarr; 調查 &rarr; 用該批次重測 3 支確認根本原因</li>
+                <li><strong>1/3 失敗 + 無可歸因原因</strong> &rarr; 調查 + 風險評估 &rarr; 可重測（如用失敗批次的 3 支濾膜）</li>
+                <li><strong>重測任何一支仍失敗</strong> &rarr; 該濾膜在該條件下無法被驗證</li>
+                <li><strong>濾膜堵塞</strong> &rarr; 調查堵塞原因 &rarr; 基於可過濾性測試重新設計方案</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Triplicate Testing Logic</h4>
+            <pre>
+驗證測試要求：
+  測試濾膜數量：  3 支（triplicate）
+  正對照濾膜：    0.45 μm × 1 支（並行測試）
+
+判定邏輯：
+  穿透 = 0 / 3 支  →  PASS（驗證通過）
+  穿透 = 1 / 3 支  →  INVESTIGATE → 可能 RETEST
+  穿透 ≥ 2 / 3 支  →  FAIL（該條件下驗證失敗）
+  堵塞（未達目標體積）→  VOID → 重新設計
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼要求使用三支測試濾膜（triplicate）而非單支？這與統計信心有什麼關係？</li>
+                <li>如果正對照濾膜（0.45 &micro;m）也沒有回收到細菌，整個試驗的結果應如何判定？</li>
+                <li>濾膜堵塞為什麼不能直接判定為「通過」（既然沒有細菌穿透）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.7 Considerations for Sterilizing-Grade Filters in Series     -->
+<!-- ============================================================= -->
+<div class="section-title">6.7 Considerations for Sterilizing-Grade Filters Configured in Series</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>When two final sterilizing-grade filters are configured in series, it is necessary to clarify whether the setup is <span class="key-term">redundant filtration</span> or <span class="key-term">double filtration</span>, sometimes referred to as <span class="key-term">additive filtration</span> (see Section 5.5.1 for detailed descriptions of various filter train designs). When redundant filtration is used (i.e., only one filter is required to meet sterility and only one filter must meet post-use integrity-test specifications), the process-specific bacterial retention study should be based on only one filter. Double filtration means both filters are required to achieve sterility (usually determined from process-specific bacterial retention study), and both filters must therefore meet post-use integrity test specifications.</p>
+
+        <p>Regardless of whether the setup is redundant filtration or double filtration, <span class="key-term">extractables should be considered for both filters</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Redundant Filtration (冗餘過濾):</strong> 兩支濾膜串聯，但任何一支單獨就能達到無菌要求。第二支是「備份」，就像飛機有兩個引擎但一個就能飛。只需要一支通過使用後完整性測試。</p>
+            <p><strong>Double Filtration / Additive Filtration (雙重過濾 / 加成過濾):</strong> 兩支濾膜串聯，兩支都是必要的才能達到無菌。兩支都必須通過使用後完整性測試。這通常發生在單支濾膜的細菌截留研究無法達到零穿透的情況。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像<strong>雙重安全帶</strong>的概念：</p>
+            <ul>
+                <li><strong>Redundant Filtration</strong> = 安全帶 + 安全氣囊：安全帶本身就夠了，安全氣囊是額外保障。你只需要確認安全帶功能正常。</li>
+                <li><strong>Double Filtration</strong> = 兩道安全帶（因為一道不夠強）：兩道都必須檢查確認功能正常，缺一不可。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>關鍵區別對驗證的影響：</strong></p>
+            <ul>
+                <li><strong>Redundant：</strong>細菌截留研究基於單支濾膜；使用後完整性測試只需一支通過</li>
+                <li><strong>Double：</strong>細菌截留研究可能顯示單支不足；使用後完整性測試兩支都必須通過</li>
+                <li><strong>共同點：</strong>無論哪種，兩支濾膜的 Extractables (可萃取物) 都必須評估 -- 因為藥液會接觸到兩支濾膜</li>
+            </ul>
+            <p>在決策層級中，這直接關聯到<strong>無菌濾液保證 (Sterile Filtrate Assurance)</strong> -- 如果不清楚是 redundant 還是 double，就無法正確設計驗證方案和完整性測試策略。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>客戶要求在無菌充填線上使用兩支 0.2 &micro;m 串聯濾膜。你必須先確認：</p>
+            <ul>
+                <li>這是 redundant 還是 double？查看細菌截留驗證數據。</li>
+                <li>如果是 redundant：每批只需測一支的使用後完整性，但 E&amp;L 需評估兩支。</li>
+                <li>如果是 double：每批兩支都要測使用後完整性，且兩支都要通過。失敗任一支 = 批次面臨風險。</li>
+            </ul>
+            <p>這個定義直接影響批次放行決策，務必在驗證方案中清楚定義。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼即使是 redundant filtration，extractables 仍然需要考慮兩支濾膜？</li>
+                <li>如果你的 double filtration 中第二支濾膜使用後完整性測試失敗，該批次的處置方式與 redundant filtration 有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.8 Chemical Compatibility of Filter                           -->
+<!-- ============================================================= -->
+<div class="section-title">6.8 Chemical Compatibility of Filter</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>While compatibility of the filter is assessed during initial filter-selection by the end user, <span class="key-term">compatibility testing</span> may also be performed as part of the final sterilizing-grade filter validation testing. Chemical compatibility testing should encompass the <span class="key-term">entire device</span> and depends on the fluid, filtration temperature and contact time.</p>
+
+        <p>A summary of worst-case conditions for conducting compatibility testing is shown in Table 6.8-1.</p>
+
+        <h3>Table 6.8-1 Worst-Case Considerations for Compatibility Testing</h3>
+
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Worst-Case</th>
+                <th>Rationale</th>
+            </tr>
+            <tr>
+                <td>Temperature</td>
+                <td>Higher</td>
+                <td>Higher temperatures increase potential for chemical reactions</td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>Higher</td>
+                <td>Longer durations may increase potential for chemical reactions</td>
+            </tr>
+            <tr>
+                <td>Properties of drug product</td>
+                <td>Consider pH extremes, solvent and product components</td>
+                <td>Based on risk assessment</td>
+            </tr>
+            <tr>
+                <td>Sterilization</td>
+                <td>Maximum sterilization conditions (e.g., maximum temperature, number of cycles)</td>
+                <td>Worst-case sterilization conditions may impart more stress on the filter</td>
+            </tr>
+        </table>
+
+        <p>An assessment of chemical compatibility could include <span class="key-term">bacterial retention study data</span>, <span class="key-term">post-exposure integrity-testing</span>, tensile strength, <span class="key-term">nonvolatile residue (NVR)</span>, extractables, particulates, flow rate, optical or scanning electron microscopy (SEM), <span class="key-term">burst pressure</span>, and membrane/O-ring thickness (23).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Chemical Compatibility (化學相容性):</strong> 評估濾膜及其整個裝置（包含外殼、O-ring、支撐結構）在接觸藥液和經歷滅菌條件後，是否仍維持結構完整性和功能性。這不僅是膜材本身的問題，而是整個過濾裝置的問題。</p>
+            <p><strong>NVR (Nonvolatile Residue, 非揮發性殘留物):</strong> 將濾膜浸泡液蒸發後剩餘的固體物質，是化學相容性評估的指標之一。NVR 增加可能暗示濾膜材料在溶解或降解。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>化學相容性測試就像<strong>泡茶時茶壺的材質選擇</strong>：紫砂壺泡普洱茶沒問題，但用來泡高酸性的水果茶可能會溶出有害物質。同樣地，一支濾膜與 pH 7 的緩衝液完美相容，但接觸 pH 2 的酸性溶液可能會導致材料降解。你必須用最具挑戰性的條件（最高溫、最長時間、最極端 pH）來測試，確保「茶壺」在任何「茶」的條件下都安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>化學相容性評估的完整工具箱：</strong></p>
+            <ul>
+                <li><strong>功能性指標：</strong>細菌截留數據、暴露後完整性測試、流量變化</li>
+                <li><strong>物理性指標：</strong>抗張強度、爆破壓力、膜厚/O-ring 厚度</li>
+                <li><strong>化學性指標：</strong>NVR、可萃取物、微粒</li>
+                <li><strong>顯微鏡觀察：</strong>光學或 SEM（掃描電子顯微鏡）檢查膜結構變化</li>
+            </ul>
+            <p>注意 Table 6.8-1 中滅菌條件也是最差條件之一 -- 濾膜先經歷最大次數的滅菌循環，再接觸最具挑戰性的藥液，這代表了累積壓力的最差情境。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼化學相容性測試必須涵蓋「整個裝置」而非只有濾膜本身？想想 O-ring 和外殼材質可能帶來什麼風險。</li>
+                <li>Table 6.8-1 中的四個最差條件因素，哪一個最容易在實務中被忽略？為什麼？</li>
+                <li>如果暴露後完整性測試通過但 SEM 顯示膜表面有明顯變化，你會如何判定相容性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.9 Revalidation Considerations                                -->
+<!-- ============================================================= -->
+<div class="section-title">6.9 Revalidation Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Once a filter is validated for use in a given application, further validation may be required if changes to the filter or manufacturing process are made. Some changes that may require <span class="key-term">revalidation</span> include, but are not limited to:</p>
+
+        <ul>
+            <li>Change in <span class="key-term">membrane type or filter materials of construction</span>.</li>
+            <li>Increase in <span class="key-term">process parameters</span> (e.g., volume to be filtered through a given filter area, flux, pressure, duration)</li>
+            <li>Change in <span class="key-term">filter configuration</span> (e.g., cartridge to encapsulated device). While the process-specific bacterial retention study data will likely not be impacted, consideration should be given to a reassessment of extractables/leachables and compatibility.</li>
+            <li><span class="key-term">Product formulation changes</span> (e.g., change in product concentration, pH)</li>
+            <li>Change in <span class="key-term">sterilization method</span> (revalidation of the extractables/leachables assessment and filter-integrity post-sterilization should be considered based on risk assessment with appropriate justification)</li>
+            <li>Temperature of filtration.</li>
+            <li>Use of a filter with the <span class="key-term">same membrane type but not from the same supplier</span>.</li>
+        </ul>
+
+        <p>A well-structured <span class="key-term">risk assessment</span> should be performed by process and filtration experts to evaluate the potential impact of these changes. In line with internal policy for filter management, the filter end user should approve all changes that potentially impact the current <span class="key-term">good manufacturing processes (GMP)</span> compliance of the system.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Revalidation (再驗證):</strong> 當已驗證的過濾製程發生變更時，需要評估是否需要重新進行部分或全部驗證測試。這不是「自動全部重做」，而是基於風險評估，判斷哪些驗證要素受到影響。</p>
+            <p><strong>Same Membrane, Different Supplier (同膜不同供應商):</strong> 這是容易被忽略但非常重要的觸發條件。即使膜材規格相同，不同供應商的製造條件、品質控制可能不同，因此需要重新驗證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>再驗證的邏輯就像<strong>汽車保固條款</strong>：你買了一台車並通過了安全檢驗（初始驗證），但如果你改裝了引擎（膜材變更）、換了更大的輪胎（製程參數增加）、把手排改成自排（配置變更）、換了不同品牌的零件（同膜不同供應商），保固可能失效 -- 你需要重新送檢確認改裝後的車輛仍然安全。</p>
+            <p>關鍵是：不是所有改裝都需要全面重檢。換個車內芳香劑（微小變更）不需要，但換引擎（重大變更）一定需要。這就是風險評估的價值。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>變更類型 vs 再驗證範圍對照：</strong></p>
+            <ul>
+                <li><strong>膜材/材料變更</strong> &rarr; 可能需要全面再驗證（細菌截留 + E&amp;L + 相容性 + 完整性）</li>
+                <li><strong>製程參數增加</strong> &rarr; 主要影響細菌截留驗證（需重新評估最差條件）</li>
+                <li><strong>配置變更（如匣式改為封裝式）</strong> &rarr; 細菌截留可能不受影響，但 E&amp;L 和相容性需重新評估</li>
+                <li><strong>配方變更</strong> &rarr; 可能影響細菌截留、化學相容性和 E&amp;L</li>
+                <li><strong>滅菌方法變更</strong> &rarr; 主要影響 E&amp;L 和滅菌後完整性</li>
+                <li><strong>同膜不同供應商</strong> &rarr; 需要評估所有驗證要素，可能需要全面再驗證</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 變更控制情境：</strong>供應商通知你，原來使用的 PES 膜濾芯將停產，建議更換為「等效」產品。你應該：</p>
+            <ol>
+                <li>啟動變更控制程序</li>
+                <li>評估新濾芯與原濾芯的差異（膜材、外殼材料、結構設計）</li>
+                <li>進行風險評估：是「同膜同供應商不同型號」還是「不同供應商的同膜材」？</li>
+                <li>制定再驗證方案：至少需要 E&amp;L 重新評估和化學相容性確認，可能需要重新進行細菌截留研究</li>
+                <li>確保所有受影響產品的技術文件都更新</li>
+            </ol>
+            <p>身為 CDMO，你可能同時服務多個客戶的產品，一個濾芯供應商變更可能觸發多個產品的再驗證 -- 這是營運規劃中必須考量的影響範圍。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR26 特別提到「同膜不同供應商」需要再驗證？膜材規格相同不代表什麼？</li>
+                <li>如果製程參數的變更是「降低」而非「增加」（例如降低壓力），是否仍需要再驗證？為什麼？</li>
+                <li>在 CDMO 環境中，客戶發起的配方變更 vs 供應商發起的濾膜變更，各自的再驗證責任歸屬如何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 6.10 Miscellaneous                                             -->
+<!-- ============================================================= -->
+<div class="section-title">6.10 Miscellaneous</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>With the introduction of newer manufacturing modalities, such as <span class="key-term">advanced therapy medicinal products (ATMPs)</span>, additional factors may need to be considered for the purposes of filter validation. For example, <span class="key-term">small batch sizes</span>, <span class="key-term">short shelf life</span>, and physical properties (e.g., <span class="key-term">shear sensitivity</span>) may require careful planning and potentially modified test procedures to achieve the goals of filter validation while meeting regulatory expectations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>ATMPs (Advanced Therapy Medicinal Products, 先進治療藥品):</strong> 包括基因治療、細胞治療、組織工程等新型態藥品。這些產品的特性（小批量、短效期、剪切力敏感）對傳統的過濾驗證方法提出了新挑戰。</p>
+            <p><strong>Shear Sensitivity (剪切力敏感性):</strong> 某些生物製品（如細胞治療產品）在過濾過程中可能因剪切力而受損，這增加了濾膜選擇和驗證設計的複雜性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>傳統藥品的過濾驗證就像<strong>測試標準尺寸的包裹能否安全通過郵局分揀系統</strong>。但 ATMPs 是像<strong>活體動物運送</strong> -- 包裹（產品）本身有生命，怕擠壓（剪切力敏感）、不能久放（短效期）、每次只運少量（小批量）。你不能用同樣的標準分揀速度和壓力來處理它，需要全新的操作規範。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>6.10 雖然篇幅短，但釋放了重要訊號：<strong>TR26 的原則適用於所有除菌過濾，但具體方法需要隨產品類型調整</strong>。對 CDMO 而言，如果你的業務發展方向包含細胞/基因治療產品，過濾驗證能力的建設必須提前規劃，因為：</p>
+            <ul>
+                <li>小批量意味著實驗室縮放比更小，可能需要特殊的小面積測試裝置</li>
+                <li>短效期意味著驗證時間表必須與生產時間表緊密協調</li>
+                <li>剪切力敏感性可能限制了可用的過濾壓力和流量範圍</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>對一個剪切力敏感的細胞治療產品，Table 6.6.6-1 中的哪些最差條件參數需要重新定義？</li>
+                <li>小批量產品的過濾驗證中，「全量濾液分析」（6.6.8）的執行會比大批量更容易還是更難？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 6.0 COMPLETE SUMMARY                                   -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>Section 6.0 完整重點回顧 Complete Section Summary</h3>
+    <p style="margin-bottom:0.75rem; font-size:0.93rem;"><strong>Section 6.0 Product &amp; Process-Specific Validation Testing（產品與製程專屬驗證測試）</strong>是 TR26 的核心章節，涵蓋了除菌過濾驗證的全部要素。以下是整個 Section 6.0 的系統性回顧：</p>
+
+    <ol>
+        <li><strong>驗證測試的目的與 QbD 思維 (6.1-6.2):</strong> 除菌過濾驗證不是單純的「通過/不通過」測試，而是基於品質源於設計 (Quality by Design) 的系統性方法。驗證必須證明在最差條件下，特定濾膜與特定產品/製程的組合能可靠地達成無菌保證。</li>
+
+        <li><strong>吸附性考量 (6.3):</strong> 濾膜可能吸附藥品中的有效成分或配方組分，影響產品品質。吸附評估是驗證不可或缺的一環，特別是對於低劑量或高價值生物製品。</li>
+
+        <li><strong>可萃取物與可溶出物 (Extractables &amp; Leachables, 6.4):</strong> 濾膜及其組件在製程條件下可能釋出化學物質到藥液中。E&amp;L 評估遵循「E 為 L 的最差條件預測」原則，需要在製程條件下進行系統性研究，並與毒理學評估結合。</li>
+
+        <li><strong>細菌截留驗證 (Bacterial Retention, 6.5-6.6):</strong> 整個驗證的核心 -- 證明濾膜能在模擬最差條件下完全截留挑戰微生物 (<em>Brevundimonas diminuta</em>, 短小單胞菌)。關鍵要素包括：
+            <ul>
+                <li>ASTM F838 作為基礎方法論（濾膜的「駕照考試」）</li>
+                <li>必須使用三支測試濾膜 (triplicate) + 0.45 &micro;m 正對照</li>
+                <li>最差條件選擇必須基於 Table 6.6.6-1 的系統性評估</li>
+                <li>殺菌產品需使用修改方法（縮短時間 / 改參數 / 改配方）</li>
+                <li>全量濾液分析，不允許部分取樣</li>
+                <li>結果判讀遵循嚴格的決策樹</li>
+            </ul>
+        </li>
+
+        <li><strong>串聯濾膜 (Series Filters, 6.7):</strong> 必須明確區分冗餘過濾 (redundant) 與雙重過濾 (double)，這直接影響驗證範圍和使用後完整性測試策略。無論哪種配置，E&amp;L 都需要兩支濾膜共同評估。</li>
+
+        <li><strong>化學相容性 (Chemical Compatibility, 6.8):</strong> 評估整個過濾裝置（不僅是濾膜）在接觸藥液和滅菌條件後的完整性。最差條件包括最高溫度、最長時間、最極端 pH 和最大滅菌次數的組合。</li>
+
+        <li><strong>再驗證 (Revalidation, 6.9):</strong> 任何對濾膜、製程參數、產品配方或滅菌方法的變更都需要透過風險評估決定再驗證範圍。特別注意「同膜不同供應商」也是觸發條件。</li>
+
+        <li><strong>新型態藥品 (ATMPs, 6.10):</strong> 細胞/基因治療等先進療法藥品的小批量、短效期、剪切力敏感性對傳統驗證方法提出新挑戰，需要創新的驗證策略。</li>
+    </ol>
+
+    <p style="margin-top:1rem; font-size:0.93rem; padding:0.75rem; background:rgba(255,255,255,0.5); border-radius:6px;"><strong>決策層級提醒：</strong>在整個 Section 6.0 中，所有驗證決策始終遵循 TR26 決策層級 -- (1) 無菌濾液保證 (Sterile Filtrate Assurance) 永遠是最高優先級，(2) 產品品質/CQAs 保護患者安全，(3) 製程穩健性確保可靠運營，(4) 商業與效率只在前三者都滿足後才考量。驗證測試的根本目的，就是為這個決策層級提供科學證據基礎。</p>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

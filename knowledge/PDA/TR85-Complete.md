@@ -1,0 +1,2550 @@
+# PDA Technical Report No. 85 (2021): Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric Closures and Glass Containers
+
+## 1.0 Introduction
+
+Visual inspection of filled injectable products is an important part of the control of the manufacturing
+process. It offers a means to improve quality by removing noncompliant units and provides informa-
+tion to drive continuous process improvement.
+Visual Inspection (VI) may be accomplished in several ways: manually (MVI) with the unaided eye
+under controlled conditions of lighting and time; semi-automated visual inspection (SAVI), which
+combines 1) automated handling of the containers to be inspected with human vision, and 2) a means
+to determine whether an individual unit should be accepted or rejected; and thirdly, automated visual
+inspection (AVI), which offers a validatable method using digital cameras to acquire images of the
+product and computational tools to analyze those images against preset criteria to determine if the
+unit is acceptable. While MVI is the reference method described in all the pharmacopoeias, all three
+categories are acceptable with appropriate qualification or validation.
+For MVI, the visible range for particles in many filled injectable products is generally agreed to begin
+at 100 µm based on studies in clear glass vials (1). However, not all particles of this size can be reliably
+detected. Nominal probability of detection (PoD) for 100 µm particles is often 40-50% with PoD
+increasing with increasing particle size. Single particles greater than 200 µm in clear solution and in 10
+mL clear vials typically achieve a PoD >95% (2).
+To reliably meet visible particle acceptance criterion for filled products, careful control of the compo-
+nents used in the process is required. Criteria must generally be tighter than that of the finished prod-
+uct to compensate for the cumulative effects of multiple components (e.g., container and elastomeric
+seal), potential sources from the formulation and filling equipment, and the manufacturing environ-
+ment. Today, most components are not subjected to tighter requirements as part of their incoming
+inspection and acceptance for use. However, specifications that meet stricter requirements are most
+critical for ready-to-sterilize (RTS) and ready-to-use (RTU) components since they do not undergo
+further particle removal steps.
+
+### 1.1 Purpose
+
+This technical report addresses test and inspection methods for visible particles in primary packaging
+components for injectable products specifically glass vials and syringes, and the elastomeric closures
+used to seal them. This document is most relevant for RTS and RTU components since these are not
+subjected to a further cleaning process immediately before use. These studies and methods were de-
+veloped as part of a larger initiative to eliminate visible particles in injectable products. An overview
+of this initiative was published (3) previously, and a detailed analysis of particle entry points to the
+manufacturing process was subsequently published (4).
+
+### 1.2 Scope
+
+The use of particle, particulate, and particulate matter all have the same meaning when used within
+this report. They are used in various global standards and compendia with equivalent meaning. In gen-
+eral, this term applies to foreign material which is unintended and either removable from the surface
+of a primary packaging component or freely moving within a filled and sealed pharmaceutical dosage
+form.
+The test and inspection methods discussed within this report are the first step in a standard setting
+process. Once test and inspection methods are available, accepted, and implemented, they can be used
+to assess process capability and establish meaningful process control limits. Without reliable measure-
+ments, reliable control limits are not possible.
+
+## 2.0 Glossary and Abbreviations
+
+Definitions have been provided to help clarify the concepts discussed in this technical report. While
+some of these definitions vary among companies, the definitions described below are consistent for use
+within this document.
+Area Particulate
+Measured surface area of a flat projection of a See Particle.
+particle.
+Perimeter
+Aspect Ratio Measured length of the outer edges of a particle.
+The length of a particle or fiber divided by its width.
+Probability of detection (PoD)
+Extrinsic Particle or Fiber The likelihood that a given particle will be seen
+Foreign material that comes from outside the and removed with a specific inspection method
+primary process. Often these are from the manu- and under specific conditions. Usually expressed
+facturing environment or incomplete cleaning of as a percentage (0-100%) but may also be ex-
+components. They are uncontrolled. pressed as a probability (0-1).
+Feret Min and Max Rect A
+Feret Min is the minimum distance between par- The longest side length when a rectangle is con-
+allel tangents at opposing particle borders. Feret structed around the particle.
+Max is the maximum distance between parallel
+tangents at opposing particle borders. Ready-to-sterilize (RTS)
+Washed components supplied in a package suit-
+Intrinsic Particle able for sterilization prior to use with sterile in-
+A particle that comes from within the primary jectable products.
+process. These are qualified product contact ma-
+terials and are often associated with the primary Ready-to-use (RTU)
+packaging components. They are unplanned but Washed and sterilized components supplied in a
+not unexpected. package suitable for transfer into an aseptic pro-
+cessing area and used with sterile injectable prod-
+Length ucts without further processing.
+The measure of the distance along its longest axis.
+Shape factor (SF)/Circularity
+Light obscuration (LO) Provides information on the roundness of a par-
+Analytical technique measuring the size and quan- ticle. The SF value is between 0 and 1, where 1,
+tity of subvisible particles. represents a circle. A is the area of the particle
+and p is the perimeter.
+Membrane/microscopy (MM)
+Analytical technique to collect particles from a Subvisible particle
+liquid sample on a membrane filter followed by A particle with a size <100 µm in diameter.
+manual examination (sizing and counting) with
+a microscope. Visible fiber
+A fiber-like particle with an aspect ratio ≥5 and a
+Particle length >300 µm.
+Foreign material which is unintended and either
+removable from the surface of a primary packag- Visible particle
+ing component or freely moving within a filled A particle with an aspect ratio of <5 and a length
+and sealed pharmaceutical dosage form. The term >100 µm.
+particle is used interchangeably with “particulate”
+and “particulate matter” without any intended
+difference in meaning.
+
+### 2.1 Abbreviations
+
+AQL Acceptable Quality Limit min Minutes
+AVI Automated Visual Inspection MM Membrane/Microscopy
+cGMP Current Good Manufacturing Practices MVI Manual Visual Inspection
+DOE Design Of Experiments NMT Not More Than
+EP European Pharmacopeia or Pharm PMF Pharmaceutical Manufacturers Forum
+Europa PoD Probability Of Detection
+FDA United States Food and Drug RPM Revolutions Per Minute
+Administration RTS Ready-To-Sterilize
+IM Intramuscular RTU Ready-To-Use
+ISO International Organization for SAVI Semi-Automated Visual Inspection
+Standardization sec Seconds
+IV Intravenous SF Shape Factor
+JP Japanese Pharmacopeia TR Technical Report
+LED Light Emitting Diode USP United States Pharmacopeia
+LO Light Obscuration VI Visual Inspection
+
+## 3.0 Current State of Visual Inspection for Particles
+
+A review of recalls of injectable products over the last ten years provides a useful measure of the current
+state of manufacturing and particle control. Figure 3.0-1 shows this information for product regulated
+by the U.S. Food and Drug Administration (FDA). The major contributors to these recalls are lack of
+sterility/sterility assurance and particles.
+Particle recalls alone in Figure 3.0-2 shows a notable upward trend in 2013 with a peak in 2014. This
+was driven by an increased occurrence of both glass and metal particles. This resulted in greater aware-
+ness by both manufacturers and regulators and contributed to the higher number of particle recalls in
+following years. This situation was exacerbated by the nonspecific requirements for particles found in
+the global pharmacopeias but improved with the official publication of USP <790> in 2014 (6). At
+present, annual recalls for particles have returned to historical levels, but still account for a significant
+amount of product removed from the market and does not consider lots rejected while still within the
+control of the manufacturer.
+
+*[Figure 3.0-1 FDA Recall Notices For Injectable Products, Years 2010-2019 (5)]*
+
+*[Figure 3.0-2 FDA Recall Notices For Particles In Injectable Products, Years 2010-2019 (5)]*
+
+### 3.1 Patient Risk Assessment
+
+All parenteral drug preparations contain particulate matter. Particles ultimately administered to a pa-
+tient may originate from the primary packaging components or may enter through the manufacturing
+process and during administration from the syringe or infusion set apparatus. Therefore, the potential
+patient particulate exposure burden derives from the sum of these sources.
+The clinical implications of visible particulate matter in injectables have been reviewed in several recent
+publications (7,8). Historically the presence of unintended visible particulate matter has been regarded
+as a quality defect which can impact safety resulting in additional batch-related actions, including
+batch reinspection, rejection, or recall. Visible product defects such as cracked or leaking containers or
+product discoloration often point to a product quality and possible safety issue. While the presence of
+a rare or isolated visible particle induces a similar instinctive response, the potential safety implication
+requires a comprehensive and contextually-based evaluation.
+Patient exposure to particles occurs across a size continuum from submicron to millimeters, while risk
+assessments are generally conducted on particles reported as visible or subvisible components and not
+the aggregated risk of both subgroups. Assessing the potential risk that patient exposure to particles
+might present requires identifying the source of the particle; determining particle-specific attributes
+such as size, number, and composition; and ascertaining the intended use including the route and
+frequency of administration and relevant patient population characteristics (9). Any impact to the
+final product’s benefit-risk profile that might result from the presence of particulate matter arises from
+the combination of these elements and calculated once the reference product and characteristics of the
+intended recipient are known.
+In all instances of injections, the size of the particle is a restricting attribute. The particle must be small
+enough (or nonrigid) to pass through the bore of the needle (i.e., the particle must be less than the
+internal diameter of the needle in at least two dimensions). Detection probability increases with size
+such that larger particles are more likely to be identified with a detection probability (under ideal condi-
+tions) typically exceeding 95% for particles that are 200 µm and larger (2). Consequently, the product
+is either rejected during manufacture or found during dose preparation and discarded. There have been
+no reports identifying patient harm from randomly administered visible particulate matter in pharma-
+ceutical preparations (8). Therefore, particles that are ultimately injected will be at or below the limit
+of detection of the qualified manufacturing environment with most of those particles being subvisible.
+In most instances, the greatest risk to patients receiving injectable medicines is related to a lack of prod-
+uct sterility. For this reason alone, a robust inspection program is not sufficient; but rather, a broad
+
+range of other visible attributes is assessed along with laboratory testing of microbiological, chemical,
+and physical parameters. These are based on statistical sampling plans to assess the risk of elevated
+bioburden or other related harms in the batch. The risks to product sterility may be mitigated through
+processing decisions such as qualified component and product terminal sterilization processes (e.g.,
+moist or dry heat, irradiation, or gaseous or vapor treatments). While the presence of a single particle is
+unlikely to provide a sufficient substrate to support microbiologic proliferation, multiple units identi-
+fied with extrinsic particles should raise an alarm since the source is likely from a nonsterile environ-
+ment. Appropriately qualified depyrogenation and autoclaving processes preclude the introduction of
+bioburden through primary packaging components.
+Inert particles such as those from elastomers or glass generally pose little concern when introduced into
+a patient’s subcutaneous tissue or muscle because they are typically sterile or sanitized. However, the
+particles could potentially stimulate a local immunologic reaction consisting of macrophages and for-
+eign body giant cells at the interface of the particulate material (e.g., a granuloma), but it is likely that
+such a reaction would remain asymptomatic (10). More commonly, complications from subcutaneous
+and intramuscular medications arise from the irritating properties of the drug product and are often
+drug-specific but generally have a minimal impact (11).
+Intravenous (IV) infusion of particles may induce phlebitis due to the particles causing direct traumatic
+irritation to the vein or from chemical damage by undissolved particles (12). Recent observational studies
+have also described instances in select patient cohorts where morbidity has been reduced through the use
+of infusion filters, suggesting that particles in the infusate were responsible for the difference in outcomes
+(13). Other studies have failed to corroborate these findings in additional patient populations (14).
+A particle introduced intravenously that exceeds the internal diameter of a pulmonary capillary (7–12
+µm) will lodge in that capillary or a more proximal pulmonary arteriole. While clinical outcomes are
+generally benign, such matter introduced into the systemic circulation might stimulate a local immuno-
+logic reaction (e.g., a granuloma) in the lung (15). These isolated, small parenchymal lesions generally
+remain asymptomatic. In addition, as demonstrated in animal studies, the massive infusion of particu-
+lates has been accompanied by histologic evidence of injury to pulmonary capillary endothelial cells (16),
+microscopic thrombi in the pulmonary capillaries (17), pulmonary microscopic granulomata (18), and
+hepatic inflammatory effects (19). An important distinction to note is that most of the studies above
+infused massive amounts of subvisible particles. While an all-inclusive review of the clinical implications
+of particulate infusions is beyond the intended scope of this technical report, the potential exists for the
+intravascular infusion of particulate matter to cause pathophysiologic injury depending upon the size and
+quantity of the particles, and, therefore, should be included as an element in any clinical risk assessment.
+In summary, particulate matter will be present in every injectable dose. The risk of visible particles in
+injections to a patient is low from products manufactured and inspected under appropriately qualified
+current Good Manufacturing Practices conditions (20,21). Their origin, composition, size, numbers,
+and characteristics of the intended patient population are all important factors to weigh when assessing
+the clinical import from exposure.
+
+### 3.2 Existing Test Methods and Limitations
+
+Visual inspection of primary packaging components prior to use is hindered by four factors: the lack
+of a standardized industry inspection method for particle detection; the diversity of potential particle
+defects introduced through the manufacturing process; decreased visual detection capabilities on iso-
+lated or empty components; and the probabilistic nature of particle detection (3). Visual inspection
+of the packaging components is generally conducted by sampling and not inspection of every piece
+(100% inspection), thereby limiting the information necessary to construct an adequate library of the
+type and number of particles the process produces. Detection of particles by MVI, SAVI, or AVI is a
+
+cumulative function of the particles’ visible attributes including particle size, shape, color, density, and
+reflectivity. Particle detection can also be more difficult in the empty components because the particles
+cannot be put in motion as with particles in a liquid product (22).
+The absence of standardized methods or visible particle acceptance criteria leaves it to each supplier and
+pharmaceutical manufacturer to establish these requirements for each product supplied. While regula-
+tory guidance documents and industry publications may provide useful perspectives, the absence of a
+clearly articulated standard results in manufacturers subsequently adopting a hybrid approach using
+various portions of the published pharmacopeial (6,23) and International Standards Organization
+(ISO) methods (24). Identifying the limitations of test methods adapted for the evaluation of primary
+packaging components provides the opportunity to develop component-specific methods that would
+serve as a common standard for supplier-customer quality consideration.
+Understanding the particle attributes is essential for each manufacturer when developing and adopting
+appropriate test methods, characterizing particle defect attributes, defining achievable detection capabili-
+ties, and assessing the potential impact of particles to the product’s benefit-risk profile. The use of standard
+forensic methods of particle characterization (22) can be beneficial to inform the clinical risk assessment
+and direct allocation of resources to critical visual inspection and process control strategies. Additionally,
+the forensic datasets are important components to identify potential sources of particle ingress or genera-
+tion, variability in raw material components, and monitor the stability of manufacturing processes (4).
+
+#### 3.2.1 ISO Test Method 8871-3
+
+ISO 8871-3 Elastomeric parts for parenterals and for devices for pharmaceutical use — Part 3: Determination
+of released-particle count (24) provides analytical methods for the extraction of loose particulates from the
+surface of elastomeric components used in pharmaceutical packaging applications. The ISO standard is split
+into subvisible particle extraction using light extinction (or light obscuration (LO)) and visible particle ex-
+traction followed by membrane filtration and microscopic examination (MM) for particle detection. Once
+particle extraction is complete, quantification is performed with an optical microscope and a calibrated reticle
+at approximately 50x magnification. Particle counts can be conducted either manually or via a validated
+automated microscopic method. Both the particle extraction and the counting technique are considered
+optimized in evaluating elastomer-associated visible particles. However, the method would require some level
+of enhancement for visible particles (i.e., particles >100 µm and fibers >300 µm as defined in this report)
+through the design of a reticle capable of differentiating particles from fibers and identifying a shaker for use
+in Europe that is comparable to that specified in ISO 8871-3. Additionally, further concern exists regarding
+the sensitivity of the method based on the surface area/number of stoppers sampled. Currently, there is no
+similar ISO method for particle extraction or characterization for parenteral container inspection.
+
+#### 3.2.2 U.S. Pharmacopeia Methods
+
+USP Chapters <788> and <790> are generally used to provide analytical method guidance for packag-
+ing component particle assessment. USP <788> Particulate Matter in Injections (23) provides for two
+test methods for the detection of particles ≥ 10 µm in size: LO and MM. The methods do not appear
+suitable for elastomeric component particles since surface particle extraction methods are not outlined,
+and the sample preparation and counting techniques do not appear applicable for particles >100 µm.
+Likewise, the applicability of these methods in the evaluation of glass-related components hold limited
+utility for visible particles. While nonfixed particles in glass components might be identified using
+these methods, the diversity of particle morphology and container design significantly impact the
+sensitivity and applicability of these methods to glass components.
+USP <790> Visible Particulates in Injections (6) became official in 2014 Chapter <790>, along with
+Chapter <1790> Visual Inspection of Injections (1) established requirements and provides supporting
+information to be used along with 100% inspection during the manufacturing process to demonstrate
+that the process has produced a batch that is “essentially free” of visible particulates.
+
+Table 3.2.2-1 provides a comparison of current inspection conditions and acceptance criteria for visible
+particles contained in the USP, EP, and JP. The chapters describe the manual inspection environment
+(lighting, background, and handling methods) that many component manufacturers have adapted for
+the inspection of empty containers and loose components. However, particle detection can also be more
+difficult in these components because the particles cannot be put in motion as with particles in a liquid
+product and the broad range of potential manufacturing defects generated by glass primary packaging
+suppliers. Additionally, these chapters are intended for filled-finished product and do not include defined
+test methods with clear requirements and specifications directly applicable to the individual packaging
+components used to manufacture injectable products. Therefore, the need for packaging component vi-
+sual inspection guidance, which is currently lacking in the pharmacopeias, is critical to help characterize
+risk associated with these components and their impact on overall product quality assurance.
+
+| Inspection Conditions | USP <790> | EP 2.9.20 | JP 6.06 |
+| --- | --- | --- | --- |
+| Illumination Intensity (lux) | 2,000 – 3,750 | 2,000 – 3,750 | 2,000 – 3,7508,000 – 10,000* |
+| Inspection Time (sec) | 10(5 white, 5 black) | 10(5 white, 5 black) | 10(5 white, 5 black) |
+| Backgrounds | black and white | black and white | black and white |
+| Acceptance Criteria | "essentially free from visible particulates"ANSI/ASQ Z1.4AQL=0.65% | "clear and practically particle-free" | "free of readily detectable foreign insoluble matter" |
+
+* Higher illumination intensity recommended for plastic containers.
+
+#### 3.2.3 European Pharmacopeia Methods
+
+Two EP chapters govern subvisible and visible particles in sterile injectable products; EP 2.9.19 Parti-
+culate contamination: sub-visible particles (25) and EP 2.9.20 Particulate contamination: visible particles
+(26), respectively. The chapter on subvisible particles is harmonized with similar chapters found in the
+USP and JP, describing the same methods and containing the same acceptance criteria.
+Chapter 2.9.20 describes the same inspection conditions as found in the USP and JP but does not
+provide a numeric acceptance criterion.
+
+#### 3.2.4 Japanese Pharmacopeia Methods
+
+Like the USP and EP, the JP provides two chapters to address subvisible and visible particles. These are
+JP 6.07 Insoluble Particulate Matter Test for Injections (27) for subvisible particles and 6.06 Foreign In-
+soluble Matter Test for Injections (28) for visible particles. The subvisible particle test is also harmonized
+with the USP and EP while the test for visible particles has harmonized inspection conditions, again
+without a numeric acceptance criterion.
+
+### 3.3 Conclusion
+
+The observations documented in this report are intended to result in a standard test method. Such stan-
+dardization is needed to produce reliable and comparable test results. The benefits of such a standard
+include clearer communication between supplier and users of pharmaceutical packaging components. It
+also permits setting meaningful limits and acceptance criteria for receipt and use of these important pack-
+aging components. Such limits would better align with the expectations for the finished products they are
+intended to protect and ultimately lead to more reliable supply of particle free sterile medicinal products.
+
+## 4.0 Elastomeric Closures Test Method
+
+To standardized a method that will allow both elastomer suppliers and pharmaceutical companies
+to have meaningful data where it is reasonable to make comparisons, a new method was developed
+leveraging accepted aspects of the existing USP <788> Method 2 (23) and the ISO 8871-3 methods
+(24). The new method described in Section 4.1 (the Enhanced Closures Testing Method) is specific to
+characterizing the visible particle load present in elastomeric closures and establishes a test to perform
+specifically on elastomeric closures after they are collected in their final packaging to ensure test results
+are representative of the product as used by pharmaceutical manufacturers.
+
+### 4.1 Enhanced Closures Testing Method Development
+
+Currently, specific but different guidance requirements exist for visible and subvisible particulates in
+parenterals. For final product inspection, the distinction between visible and subvisible is established
+by what can be seen by the unaided human eye when performing the compendial method inspection
+of approximately 10 sec per container in front of black and white backgrounds under controlled light-
+ing. If a particle is observed in a final-filled container by the unaided eye of a qualified inspector, it is
+classified as a visible particulate defect and considered against the visible particle requirements such as
+those defined in USP <790> (6).
+In the case of packaging components for injectable products, suppliers of these components often per-
+form an inspection for particulate matter at the time of release. Likewise, pharmaceutical manufactur-
+ing companies often perform a particulate test at incoming receipt. The testing of these components
+is intended to demonstrate that they meet specification and are appropriate for their intended use. As
+with final product testing, component testing should be capable of classifying any particulate on the
+components as either visible or subvisible. In cases where the packaging components are inspected by
+the unaided human eye for particulate, the same principles for classification apply. Namely, any par-
+ticulate observed by the unaided human eye as part of packaging component testing will be considered
+visible.
+In some cases, testing for particulate in packaging components will use analytical methods that exceed the
+ability of the unaided human eye. The most common example of such testing is a method that involves
+rinsing packaging components, filtering this rinsate, and then examining the filter under a microscope
+to measure and count any observed particulates. Microscopic examination will detect a wide range of
+particles including some which are not visible to the unaided human eye (i.e., subvisible) in addition to
+particles that are visible to the unaided eye. For this reason, the microscope confounds the ability of the
+test method to make the important distinction of visible versus subvisible. This challenge is common to
+any analytical or inspection method that exceeds human detection capability. Examples include current
+AVI systems, artificial intelligence applications, and numerous chemical and microbial assays.
+
+#### 4.1.1 Size Threshold
+
+To allow for differences between visible and subvisible particles when using instrumental methods
+with capability that exceeds the unaided human eye, a size threshold is required to determine a visible
+particulate. The particulate size which is visible during inspection in filled product containers is the
+basis for the size thresholds. This approach ensures that particulate classification (i.e., visible and sub-
+visible) in packaging components will more clearly connect to the regulations for visible and subvisible
+particulates in filled product containers.
+Multiple studies (2) have been performed on the detectability of particulate matter of various sizes
+in the final containers of parenteral products when inspected by qualified inspectors following the
+compendial methods (6,26,28). These studies have demonstrated that under controlled conditions,
+the smallest size standard sphere that could be reliably detected (i.e., average PoD >70%) is 150 µm
+(2). The same studies demonstrated negligible detection of 50 µm particulates and variable detection
+for 100 µm particulates.
+
+Based on this understanding of detection as a function of particle size in parenterals, the value of 100
+µm was selected as the threshold above which particles would be classified as visible when using an
+analytical method that exceeds the capability of the unaided human eye. The 100 µm threshold was
+conservatively selected to ensure that most particulate matter, even those with a moderate chance of
+being seen by the unaided human eye in a filled container, would be classified as “visible” by the ana-
+lytical method using this threshold value. The 100 µm threshold is considered conservative because it
+is derived from the best case inspection conditions (i.e., clear solution, clear 10 mL vial, compendial
+lighting, background, and inspection time) and because it is lower than the 150 µm value established
+as the lower limit where detection in final containers is considered reliable (i.e., average PoD >70%).
+When establishing a threshold defining a particle as visible, the particle geometry must also be considered.
+The 100 µm threshold was derived from studies of the detectability of standard spheres in liquid filled
+containers. Therefore, the 100 µm value is most applicable for an equant particulate which has an approxi-
+mate 1:1:1 aspect ratio (length:width:thickness). This is similar to the ratio of a circle when considering the
+profile of the particulate in two dimensions. However, fibrous particles can have much higher aspect ratios.
+Such fiber-like particles need to be much longer in length as compared to an equivalent spherical diameter
+to be reliably detected in final product containers (1). The lower ability to detect a fiber-like particle versus
+that of a spherical particle is related to the two-dimensional profile of the two shapes and how this profile
+presents to the inspector. For example, a single 100 µm sphere has nearly eight times the two-dimensional
+surface area as a 100 µm fiber-like particle with an aspect ratio of 10:1 (length:width).
+Based on the reduced detectability of fiber-like particles, a second threshold size to classify a particulate
+as visible was established for particulate with fiber-like geometries (i.e., those with a length to width
+aspect ratios >5). The size threshold to consider a fiber-like particulate visible was derived by calculat-
+ing the length of a fiber with an equivalent two-dimensional surface area as the 150 µm spheres which
+were established as the lower limit where detection in final containers is considered reliable. For this
+calculation, an aspect ratio of 5 was used as a conservative limit such that higher aspect ratios would
+result in the classification of even longer fiber lengths as subvisible. Based on this approach, a particu-
+late with fiber-like geometry would need to be greater than 300 µm to be considered visible when
+observed using analytical methods more capable than the unaided human eye. Table 4.1.1-1 shows
+the two size limits that define a particle classified as visible or subvisible when using analytical methods
+to test primary packaging components for particulates.
+The threshold values shown in Table 4.1.1-1 apply to the testing of packaging components for partic-
+ulates when an analytical method is used that exceeds the capability of the unaided human eye. These
+thresholds should not be applied to drug product final-filled container inspection, where the unaided
+human eye is the standard method used to assess whether visible particle levels meet the “essentially
+free” requirement and inspection performance may vary from the thresholds established here. Specifi-
+cally, finished product inspection performance may be affected by the container color and design and
+the product type (e.g., solution color, opacity, density). These confounding characteristics are removed
+from the test described herein. Additionally, the size thresholds should not be applied to any particu-
+late that is detected by the unaided human eye during testing of the packaging components, as the act
+of detecting the particulate would be definitive proof that the particulate is visible. That classification
+should not be overridden by subsequent analytical characterization.
+
+| Category | Aspect Ratio (length:width) | Visible Threshold | Subvisible |
+| --- | --- | --- | --- |
+
+#### 4.1.2 Novel Particle Size Measurement Tool
+
+The assessment of particles in elastomer components traditionally involves rinsing the components,
+then filtering the rinsate, and finally examining the filter under a microscope. No thresholds to dif-
+ferentiate visible from subvisible, as discussed above, have been established. To consistently apply the
+principles of the visible particle size thresholds defined in Section 4.1, a novel measurement tool was
+developed for use in elastomer particle testing involving microscopic analysis of the filtrate.
+
+*[Figure 4.1.2-1 depicts a novel reticle design that enables an analyst to readily determine whether]*
+
+particles observed microscopically on a filter should be considered visible or subvisible. The reticle has
+two shapes in the view field: a circle, and a rectangle. The circle is to be sized such that for a given mi-
+croscope under the intended magnification, the circle is equivalent to a diameter of 100 µm. Similarly,
+the rectangle is 300 µm × 60 µm to address both size and aspect ratio thresholds for fiber-like particles.
+The reticle design shown in Figure 4.1.2-1 allows for rapid and consistent application of the particle
+size and aspect ratio thresholds established for this test. When an analyst examines the filter through
+a microscope, they simply compare any particle observed against the rectangle and circle templates in
+the reticle. Any particle that fits entirely within either of the two shapes is considered subvisible and is
+not to be counted as visible. Those that extend beyond the boundaries of either template are counted
+as visible, and depending on the aspect ratio as a particle or fiber.
+
+### 4.2 Summary for Performing the Enhanced Closures Testing Method
+
+A summary of the Enhanced Closure Testing Method for counting visible particles on elastomeric clo-
+sures follows. Refer to 8.1 Appendix A for a detailed discussion on the development of this method.
+A number of parts (normalized for surface area) are placed in an Erlenmeyer Flask, and 50 ml of sur-
+factant solution is dispensed and added to the flask. The flask is then placed on an orbital shaker to
+agitate the parts and remove visible particles from the surface. After 20 seconds of shaking the flask is
+removed from the shaker and the surfactant solution is immediately filtered through a membrane filter
+(a gray filter was used to enhance contrast for both light and dark colored particles and fibers). The
+rinsing process is repeated and the filter is allowed to dry. Once the filter is dry, any visible particles
+present are counted by using a specialized reticle and an optical stereomicroscope.
+A thorough discussion of the sample preparation process and the counting methodology used to eva-
+luate within and between operator replicate samples can also be found in 8.2 Appendix B.
+Rectangle template for fibers:
+300 µm x 60 µm
+Circle template for particles: 100 µm
+
+*[Figure 4.1.2-1 Microscope Reticle Design For Elastomer Component Particle Analysis]*
+
+### 4.3 Method Qualification Strategy and Lessons Learned
+
+Preliminary studies for attribute agreement revealed that rigorous training and easy-to-follow instruc-
+tions reduces the subjectivity of the analyst’s counting technique. counting techniques. Detailed in-
+structions and the use of the unique counting reticle described in Section 4.1 are key to this training.
+Repeatability of the particle and fiber count data was proven when multiple analysts inspected each
+other’s filter samples. The material found to be best suited for training analysts and qualification of the
+method was to select stopper populations prior to their pharmaceutical washing step. These stoppers
+provided particle counts that were sufficiently high to yield meaningful statistical evaluation.
+In attempting to measure repeatability when performing multiple sample extractions from a single
+stopper bag or across multiple stopper bags, significant variability was observed. Specific factors con-
+tributing to this variability in the particle counts were identified through the multiple design of experi-
+ments (DOE) based investigations and subsequent review of the findings with the operators involved.
+The inherent lack of homogeneity of particle and fiber deposition on the surface of elastomeric com-
+ponents that are packaged within a bag or collectively transported in multiple cartons from the same
+batch was one of the underlying root causes for the inconsistent initial results observed early in the
+development of this test method. Repetitive handling, sampling, and shipping greatly increases vari-
+ability and localization of particles.
+Another challenge identified during development and qualification of this method was to determine the
+number of stoppers needed for training and qualification. Because it is common for commercial stop-
+per batches to have particle counts near zero, these batches are not ideal to train analysts or qualify the
+method. There were several attempts made to purposely seed particles into stopper batches, but these
+were not successful. Generating appropriate particulate loading through various attempts at artificially
+seeding with shredded fragments of rubber and aliquots of a cellulose emulsion proved to be ineffective
+due to inconsistent distribution within the bag, which in turn resulted in highly variable recovery.
+Additional detail on the development of this method and the evaluation of contributions to method
+variability can be found in 8.1 Appendix A.
+
+## 5.0 Glass Container Inspection Method
+
+Today, no alignment exists within the pharmaceutical industry on a method to inspect empty glass
+containers. This is of special importance for RTU containers since they will not undergo any further
+cleaning procedure(s). Inspection of empty glass containers may be performed by the glass manufac-
+turer/converter or by the pharmaceutical company prior to use. It may be performed on all units or a
+statistically valid sample collected from a larger batch.
+
+### 5.1 Inspection of Ready-to-Use Empty Glass Containers
+
+The proposed visual inspection method which follows was based largely on the method and inspection
+conditions defined in the EP (26), USP (6), and JP (28) for filled containers. Table 5.1-1 summarizes
+the key requirements established to improve the performance of the method employed in the study.
+The procedure is a manual inspection method where the quality decision to either accept or reject the
+container is made by a trained person. MVI is a probabilistic process where detection rates less than
+100% are to be expected (3,29,30). To understand the probabilistic nature of this type of inspection
+a comprehensive study was performed using the defined method to inspect defect kits of empty glass
+containers seeded with different types of particles of varying size and location on and in the container.
+
+| Attribute | Requirement |
+| --- | --- |
+
+• Pass a medical eye examination before beginning visual inspection activities. Near vision
+acuity should be equivalent or better than 20/20 ft (or 6/6 meters) or equivalent. Inspectors
+should be retested and meet this criterion at least every two years.
+Inspectors • Use of optical correction such as prescription glasses is optional if needed to achieve normal vision.
+• Avoid direct viewing of the light source.
+• Take regular breaks to avoid fatigue and eye strain. Do not exceed one hour of continuous
+inspection.
+• Train inspectors on the specific method and materials used.
+Training and • Qualify inspectors with test sets with representative defect examples and good containers.
+Qualification • Define and document qualification requirements.
+• Evaluate inspector performance at least every two years.
+• Perform inspection in a clean and quiet area.
+Inspection
+• Reduce ambient lighting.
+Environment
+• The use of gloves and gowning are recommended.
+• An inspection workstation which provides a light intensity between 2,000 and 3,750 lux.
+Equipment
+• Black and white backgrounds.
+• Perform inspection without magnification.
+• Inspect containers for approximately 5 sec against each background.
+Method • Hold containers approximately 30 cm from the eye.
+• Hold containers 10-20 cm from the light source.
+• Rotate container to examine all visible areas.
+This was necessary to better understand the capability of the method for empty containers and to es-
+tablish criteria for inspector qualification. Section 5.3 outlines the results of this cross-industry study.
+
+#### 5.1.1 Operator Training for the Enhanced Container Inspection Method
+
+To achieve reliable and consistent results, inspectors must be trained on the inspection method before
+performing routine inspection and their inspection performance verified by testing both initially and
+then every two years (minimum) thereafter. This requalification interval is less frequent than that
+for inspectors assessing filled units but is considered a practical interval since empty containers are
+reassessed when filled both by 100% and a subsequent acceptance sampling (AQL) inspection. The
+qualification testing should be performed using seeded test kits containing both good (blank) and bad
+(defective) samples. Clear acceptance requirements should be defined against which the inspectors
+are evaluated. Limits on the number of missed defects and good containers incorrectly rejected (false
+rejects) are necessary when setting the acceptance criteria.
+
+#### 5.1.2 Equipment and Setup
+
+The results of manual inspection are highly influenced by the light intensity in the inspection zone.
+Light intensity between 2,000-3,750 lux at 10 cm from the light source is recommended based on
+current finished product inspection conditions found in the USP, EP, and JP. The light intensity should
+be confirmed prior to use and the intensity recorded at the point of inspection.
+Container samples should be examined against both black and white backgrounds to maximize the
+contrast between the glass and the defect of interest. A matte, nonglossy background is recommended
+to avoid interference from glare or reflection.
+
+*[Figure 5.1.2-1 shows a typical visual inspection workstation with diffuse top lighting and black and]*
+
+white backgrounds. A light table may also be used to provide diffuse light upwards to and through the
+object under inspection to supplement the diffuse illumination from above. Eight of the eleven com-
+panies engaged in the study used the light table in addition to the standard inspection workstation.
+
+*[Figure 5.1.2-2 shows a container being inspected in the workstation using the recommended method]*
+
+and conditions. Figure 5.1.2-3 provides additional detail on the location of the container under in-
+spection relative to the light source and viewing position of the inspector.
+
+*[Figure 5.1.2-1 Visual Inspection Workstation]*
+
+*[Figure 5.1.2-2 Example Of Container Inspection Using Recommended Method And Relative Placement In The]*
+
+Inspection Hood
+
+*[Figure 5.1.2-3 Placement Of Container Within The Inspection Hood During Inspection]*
+
+The work area should be neatly organized. For example, samples for inspection may be placed on the
+left of the inspection area and two empty trays placed on the right: one for passing and one for failing
+units. Trays should always be clearly labeled and preferably color coded. Discard all samples good and
+bad after the inspection and any follow-up investigation completed.
+
+#### 5.1.3 Magnification Requirements To Inspect Glass Containers
+
+Magnification, other than that for optical correction to normal vision, is prohibited for routine release
+inspection. This is recommended to keep alignment with the pharmacopeial inspection conditions. USP
+General Chapter <790> (6)] states that inspection should be performed without magnification. How-
+ever, USP Information Chapter <1790> (1) adds that while “not recommended for use during routine
+inspections, magnification can be helpful for critical examination of a small number of units, as may be
+needed during an investigation”. If magnification is used for investigational purposes, strict guidance
+should be provided to avoid it becoming an uncontrolled part of the routine inspection process.
+
+#### 5.1.4 Glass Container Inspection Procedure
+
+Detailed instructions for empty glass container inspection can be found in 8.4 Appendix D. Informa-
+tion recorded during or after inspection may include details such as the type and location of any par-
+ticles observed, and any other defects observed. On completion of the inspection, the data should be
+evaluated against the established acceptance criteria to determine the disposition of the batch. During
+inspection, the operator should avoid direct viewing of the light source and take regular eye breaks to
+avoid eye strain which may adversely influence the results of the inspection. Inspection time should be
+based on the parameters defined in the qualification.
+
+### 5.2 Method Qualification Strategy and Detection Capability
+
+To set realistic targets for human inspection performance, the detection capability of the method be-
+ing used for inspection must be understood. A significant portion of the work reported here centered
+on performing inspections on seeded containers assembled into test kits to better assess the detection
+capability of the method described.
+For all observations reported in this study, the light intensity was confirmed as ≥3,000 lux at the point
+of verification which is at the upper end of the inspection conditions defined in the EP (26), USP (6),
+and JP (28), of 2,000-3,750 lux.
+Three equivalent test kits were created representing a wide range of visible particles types and sizes
+commonly found in glass containers. Specific examples were based on survey results (31) and the ex-
+perience of glass team members. Eight different particulate types (glass, metal, cellulose, hair, plastic,
+and rubber [black, grey, and orange]), were defined and used when preparing the kits. The kits were
+prepared without any visible adhesive which might bias the measured detection rate. Each container
+was checked for particles prior to seeding, each unit was seeded with a single particle and then sealed
+to prevent further contamination. For these studies, each kit contained 60 each of vials, syringes, and
+cartridges, making a total of 180 pieces. The kits were compared and checked against each other to
+ensure that they were of similar composition. The locations of seeded particles are shown in Figure
+5.2-1 and the type and nominal size of particles are detailed in Table 5.2-1. Only seeded containers
+were used in these kits to assess differences in ability to detect particles when compared with others of
+varying type and size.
+The sample kits were inspected by five pharmaceutical companies and six tubular glass convertors.
+Each of the organizations taking part in the study had the kits examined by five inspectors, six times
+each for a total of thirty inspections per company. To better blind the inspection results, the inspec-
+tions were not performed consecutively. A total of 59,400 independent observations were made. How-
+ever, some data points were excluded from the study because they did not meet the stated inspection
+requirements (e.g., the inspection time was out of the specified range). Ultimately, 49,360 valid data
+points were used to analyze the performance of the inspectors and the inspection method.
+Particle size measurement. Because of the unique optical properties and geometric configuration of
+both containers and particles, different methods were used to determine the nominal size of seeded
+
+*[Figure 5.2-1 Locations Where Particles Were Seeded Into Or Onto Containers (Vials, Cartridges, And Syringes) In]*
+
+Prepared Test Kits
+
+| Particle Type | Material / Color | Particle/Fiber Size (μm) |
+| --- | --- | --- |
+| | | 100 | 200 | 300 | 500 | 700 | 800 | 1,000 |
+
+particles. Table 5.2-2 shows the methods used for the various materials incorporated into the test kits.
+These were chosen to best represent how these particles appear to the human eye during inspection.
+Length is simply a measure of the distance along the longest axis. Feret Max is the maximum distance between
+parallel tangents at opposing particle borders and Rect A, the longer side of a rectangle constructed around the
+particle which is in contact with the two points used to define Feret Max as shown in Figure 5.2-2.
+
+| Particles | Glass (Transparent) | | | X | X | | | X |
+| Rubber (Orange - Cartridges; Black - Syringes; Gray - Vials) | X | X | X | X | | | |
+| Metal (Silver/Gray) | | | X | X | | | X |
+
+*[Figure 5.2-2 Examples of Feret Max And Rect A And B Particle Size Measurements.]*
+
+### 5.3 Study Design
+
+A total of eleven companies participated in the study: five from the pharmaceutical industry and six
+manufactures of the primary packaging materials. Each company used five inspectors for the study,
+each inspector performed the inspection six times, producing a total of 59,400 data points. The data
+was reviewed and confirmed as valid prior to being used in the statistical analysis.
+Based on the inspection results, non-fibrous particles of 125 µm in size had an average PoD of ap-
+proximately 70%. The PoD increases to 95% for a particle of 300 µm. Figure 5.3-1 shows inspection
+performance for both particles and fibers and confirms past studies with filled containers (2) showing
+increasing PoD with increasing particle and fiber size. The diameter of the circles at specific x-y loca-
+tions is proportional to the number of data points which occurred at that location. For fibers, the PoD
+is 70% for 300 µm fibers and increases to 90% for fibers between 800-1,000 µm in length. This differ-
+ence in detectability can be shown to be largely due to the aspect ratio. Fibers such as hair and plastics
+(tub residues) were more easily detected while cellulose fibers were harder to detect.
+
+*[Figure 5.3-1 Probability Of Detection For Particles And Fibers Of Varying Size During Inspection Of Empty Glass]*
+
+Containers (Circle diameter is proportional to the number of data points falling at a specific x-y location)
+
+Analysis of study results further discussed in 8.3 Appendix C also found that variability between in-
+spectors from different companies was negligible, suggesting this method should provide robust results
+across the industry.
+
+#### 5.3.1 Normalizing the Particle Size
+
+To better understand the difference in detectability between fibers and particles the impact of the as-
+pect ratio on detectability (which is the relationship between the width and length of the fiber) must
+be considered. To address the impact of the aspect ratio the data was normalized by multiplying the
+Key Dimension of each particle by its SF. This conversion was applied to both particles and fibers to
+create the approximate area that would be seen by the inspector’s unaided eye.
+Normalized Particle Size = Key Dimension × Shape Factor (SF)
+Using this transformation, the PoD for fibers and particles is similar to the PoD seen in Figure 5.3.1-1
+The combined PoD then becomes 80% for 100 µm particulate and 95% for particulates of 200 µm.
+The diameter of the circles at specific x-y locations is proportional to the number of data points which
+occurred at that location.
+In summary, a core element of the study was the creation of sample kits containing realistic defect ex-
+amples where the PoD was not compromised or biased by the sample preparation (e.g., if the glue hold-
+ing the particle is visible). By preparing these kits with defects that appear as those found during routine
+inspection the performance of the inspector using this method could be verified in a controlled way.
+The study produced an extensive database with 49,360 validated data points, thereby providing a high
+degree of statistical confidence in the conclusions drawn on inspection performance. This study found
+that using the compendial inspection conditions the PoD for visible particles ranged from 70% for
+
+*[Figure 5.3.1-1 Probability Of Detection For Particles And Fibers Of Varying Size During Inspection Of Empty Glass]*
+
+Containers With Size Normalized To Apparent Area (Circle diameter is proportional to the number of data points falling at a
+specific x-y location)
+
+125 µm particles to 95% for particles >300 µm. Due to their aspect ratios, fibers are more difficult to
+detect and their corresponding PoD are 80% for 300 µm fibers to 90% for fibers >800 µm.
+These results align well with detectability studies performed on filled containers following the com-
+pendial methods (6,26,28). These earlier studies demonstrated that under controlled conditions, the
+smallest size standard sphere that could be reliably detected (i.e., average PoD >70%) was 150 µm.
+In conclusion, from this study with empty containers and the previous work on filled containers, this
+method can be used successfully for the inspection of unfilled RTU containers by both the pharma-
+ceutical manufacturing companies and the glass component suppliers. Inspectors using this method
+should be trained and qualified using test kits with well characterized and representative samples that
+accurately simulate routine defects and defect free samples. Additional review and discussion of the
+data analysis on inspection performance can be found in Section 8.3 Appendix C.
+
+## 6.0 Conclusion
+
+Visual inspection continues to be an important step in the manufacture and delivery of safe and ef-
+fective injectable medicines. Current inspection methods, manual and machine assisted, can provide
+reliable monitoring and control of the visual characteristics of injectable products, including visible
+particles. The work described in this technical report is intended to further the development of meth-
+ods to increase reliable supply and reduced rejection of injectable drug products. Reliable detection
+and control of visible particles in and on the components used to contain these products is essential
+to meeting this goal.
+This technical report provides an improved method to assess visible particle burden on elastomeric clo-
+sures. This method uses much that is known and available but provides standardization of key param-
+eters including extraction, agitation, and size thresholds (100 µm for particles and 300 µm for fibers)
+to aid in consistent enumeration. This is expected to assist both the manufacturers of such closures and
+the pharmaceutical companies who use them in packaging their drug products. A standard method to
+assess visible particles will hopefully lead to a practical working standard which incorporates risk-based
+limits suitable for the intended application.
+This report also describes a study to better assess the ability to inspect empty glass containers. While
+several studies have looked at PoD in finished, filled containers, little has been done with empty con-
+tainers to-date. This study shows similar inspection performance between empty and filled containers
+and supports the use of standard compendial visual inspection conditions to perform inspection of
+empty glass containers. An average PoD of 70% was achieved for 125 µm particles and
+300 µm fibers. These agree with and support the thresholds chosen for the Enhanced Closure Testing
+Method. Further analysis of the study data shows that PoD of particles and fibers can be related to each
+other through assessment of the apparent visible area.
+Continued advancement in visual inspection and particle control will require broad industry support.
+Ongoing engagement with additional companies and regulatory organizations would further the work
+that was described herein and lead to acceptance of common methods and acceptance limits for visible
+particles on or in primary packaging components.
+
+## 7.0 References
+
+1. U.S. Pharmacopeial Convention. Informa- 10. Miliauskas, J.; Mukherjee, T.; Dixon, B.;
+tion Chapter <1790> Visual Inspection Postimmunization (Vaccination) Injection-
+of Injections. In USP 42–NF 37, USP: Site Reactions: A Report of Four Cases
+Rockville, Md., 2019. and Review of the Literature. Am. J. Surg.
+2. Shabushnig, J.; Melchore, J.; Geiger, M.; Pathol. 1993, 17 (5), 516 –524.
+Chrai, S.; Gerger, M.; A Proposed Work- 11. Greenblatt, D.; Divoll-Allen,
+ing Standard for Validation of Particulate M.; Intramuscular Injection-Site
+Inspection in Sterile Solutions. Presented at Complications. JAMA. 1978.
+the 1995 PDA Annual Meeting. Philadel- 240 (6), 542-44. DOI:10.1001/
+phia, PA.; 1995. jama.1978.03290060044011. Published
+3. Johns, J.; Golfetto, P.; Bush, T.; Fantozzi, Online: August 11, 1978. https://jama-
+G.; Shabushnig, J.; Perry, A.; DeGrazio, network.com/journals/jama/article-ab-
+F.; Streich, D.; Miller, J.; Soukiassian, H.; stract/360782.
+Stanton, A.; Watson, R.; Achieving “Zero” 12. Allcutt, D.; Lort, D.; McCollum, C.; Final
+Defects for Visible Particles in Injectables. In-line Filtration for Intravenous Infusions:
+PDA J. Pharm. Sci. and Technol. Nov 2018, A Prospective Hospital Study. 1983, Br. J.
+72 (6), 640-650. Surg. 70, 111–113.
+4. Anger, S.; Begat, C.; Crnko, V.; Fantozzi, 13. Boehne, M.; Jack, T.; Köditz,
+G.; Farach, W.; Fitzpatrick, S.; Gallagher, H.;Seidemann, K.; Schmidt, F.; Abura,
+B.; Huelsmann, S.; Kinsey, P.; Langlade, M.;Bertram, H.; Sasse, M.; In-line filtra-
+V.; Lefevre, G.; Legendre, E.; McLean, K.; tion minimizes organ dysfunction: New
+Miller, J.; Patel, R.; Perry, A.; Soukiassian, aspects from a Prospective, Randomized,
+H; Stanton, A; Streich, D; Timmons, C; Controlled Trial. BMC Pediatr. 2013, 21.
+Vaneylen, D; van Hoose, T; Wildling, L; Published February 6, 2013. https://doi.
+Windover, M.; Points to Consider: Best org/10.1186/1471-2431-13-21.
+Practices to Identify Particle Entry Routes 14. Niel-Weise, B.; Stijnen, T.; van den Broek,
+along the Manufacturing Process for Paren- P.; Should in-line filters be used in pe-
+teral Formulations. PDA J. Pharm. Sci. and ripheral intravenous catheters to prevent
+Technol. Nov 2019, 73 (6), 635-647. infusion-related phlebitis? A systematic
+5. Shabushnig, J.; from data obtained from review of randomized controlled trials.
+the FDA Recalls, Market Withdrawals, & Anesthesia and Analgesia. 2010, 110(6):
+Safety Alerts Database, https://www.fda. 1624-1629.
+gov/safety/recalls-market-withdrawals-safe- 15. Puntis, J.; Wilkins, K.; Ball, P.; Rush-
+ty-alerts. Accessed February 1, 2020. ton, D.; Booth, I.; Hazards of Parenteral
+6. U.S. Pharmacopeial Convention. General Treatment: Do Particles Count? Arch. Dis.
+Chapter <790> Visual Particulates in Injec- Child. 1992, 67 (12), 1475–1477.
+tions. In USP 42–NF 37, USP: Rockville, 16. Liu, J.; Su, Z.; Ding, W.; Quantitation of
+Md., 2019 . Particulate Microemboli during Cardiopul-
+7. Langille, S.; Particulate Matter in Inject- monary Bypass: Experimental and Clinical
+able Drug Products. J. Pharm. Sci. Technol. Studies. Ann. Thorac. Sur. 1992, 54 (6),
+2013, 67, 186-200. 1196-2002.
+8. Bukofzer, S.; Ayres, J.; Chavez, A.; Devera, 17. Walpot, H.; Franke, R.; Burchard, W.;
+A.; Miller, J.; Ross, D.; Shabushnig, J.; Var- Agternkamp, C.; Muller, F.; Mittermayer,
+go, S.; Watson, H.; Watson. R.; Industry C.; Kalff, G.; Particulate Contamination
+Perspectives on the Medical Risk of Visible of Infusion Solutions and Drug Additives
+Particles in Injectable Drug Products. J. in the Framework of Long-Term Intensive
+Pharm. Sci. Technol. 2015, 69, 123-139. Therapy. An Animal Model. [German]
+9. Ayres, J.; Conducting Clinical Risk As- Anaesthesist. 1989, 38 (11), 617-621.
+sessments for Visible Particulate Mat- 18. Jones M, Warren J; Monocyte Chemoat-
+ter in Parenteral Preparations. PDA J tractant Protein 1 in a Rat Model of
+Pharm Sci Technol. 2018, 72(6):626-639. Pulmonary Granulomatosis. Laboratory
+DOI:10.5731/pdajpst.2018.008615 Investigation. 1992, 66 (4), 498-503.
+
+19. Bautista, A.; Schuler, A.; Spolarics, Z.; 26. European Pharmacopeia (Ph. Eur.), 10th
+Spitzer, J.; In Vivo Latex Phagocytosis Edition. Chapter 2.9.20. Particulate Con-
+Primes the Kupffer Cells and Hepatic Neu- tamination: Visible Particles, Council of
+trophils to Generate Superoxide Anion. J. Europe : Strasbourg, France, 2019.
+Leukocyte Biol. 1992, 51 (1), 39-45. 27. Japanese Pharmacopeia (Ph. Jap.), Chapter
+20. U.S. Food and Drug Administration, 21 6.07. Insoluble Particulate Matter Test for
+CFR Part 210–Current Good Manufactur- Injections, 17th Edition [English], Japan
+ing Practice in Manufacturing, Processing, Ministry of Health Labour and Welfare,
+Packaging, or Holding of Drugs–General. 2006.
+U.S. Department of Health and Human 28. Japanese Pharmacopeia (Ph. Jap.),
+Services. Government Publishing Office: Chapter 6.06. Foreign Insoluble Matter
+Washington, D.C., 2017. Test for Injections, 17th Edition [English],
+21. U.S. Food and Drug Administration, 21 Japan Ministry of Health Labour and Wel-
+CFR Part 211–Current Good Manufactur- fare, 2006
+ing Practice for Finished Pharmaceuticals. 29. Knapp, J.; Kushner, H.; Generalized
+U.S. Department of Health and Human Methodology for Evaluation of Parenteral
+Services. Government Publishing Office: Inspection Procedures. J. Parent. Sci and
+Washington, D.C., 2017. Technol. 1980, 34 (1), 14-61.
+22. Aldrich, S.D.; Cherris, R.T.; Shabushnig, 30. Knapp, J.; Kushner, H.; Implementation
+J.G.; Visual Inspection and Particulate and Automation of a Particle Detection
+Control. DHI Publishing, LLC. River System for Parenteral Products. J. Parent.
+Grove, IL, 2016. Sci and Technol. 1980, 34 (5), 369-393.
+23. U.S. Pharmacopeial Convention General 31. Shabushnig, J.; PDA Survey: 2014 Vi-
+Chapter <788> Particulate Matter in Injec- sual Inspection. Parenteral Drug Associa-
+tions, USP 42-NF37, USP: Rockville, Md, tion (PDA), Bethesda, Md., 2015. DOI:
+2019. 10.18637/jss.v036.i11. Published Online:
+24. International Organization for Standard- Sept 16, 2010. https://www.jstatsoft.org/
+ization. ISO 8871-3: 2003 Elastomeric article/view/v036i11
+parts for parenterals and for devices for 32. International Organization for Standard-
+pharmaceutical use – Part 3: Determi- ization. ISO 3696:1987, Water for analyti-
+nation of released particle count; ISO. cal use— Specification and Test Methods;
+Geneva, Switzerland, 2003. ISO: Geneva, Switzerland, 1987.
+25. European Pharmacopeia (Ph. Eur.), 10th 33. Kursa, M.; Rudnicki, W.; Feature Selec-
+Edition. Chapter 2.9.19. Particulate Con- tion with the Boruta Package. J Statistical
+tamination: Sub-visible Particles, Council Software, 2010, 36 (11).
+of Europe : Strasbourg, France, 2019.
+
+## 8.0 Appendices
+
+### 8.1 Appendix A. Additional Information on Enhanced Closures Testing
+
+Method Development
+Test methods that yield variable data with great certainty, such as dimensional measurements or po-
+tency, can be simply qualified or validated. However, human performance, such as visual inspection, is
+not directly measurable or validated. As such, the strategy for qualifying a methodology based on at-
+tribute data required an initial verification of the sample preparation process and the counting method
+that would ultimately be used to evaluate the comparability of within operator replicates or between
+operators and cohorts of samples. To accomplish this, the evaluation and testing strategy was separated
+into two phases, pilot (method development) and qualification. These are outlined in Figure A1.
+
+Provide
+Clarification
+No
+Attribute Sufficient
+Method Qualification
+Agreement Execute Dry Run comparability
+initiated
+Analysis between SME’s?
+Pilot
+Yes
+Qualification
+Testing completed
+Test method Sample sets
+Sufficient of sample sets Prepare seeded
+released for Yes shipped to each
+Comparability? delivered to samples
+publication Supplier
+Supplier B, C
+No
+Define actions
+Determine
+required correct/
+cause for lack of
+address identified
+comparability
+root cause(s).
+Figure A1 Process Map of the Pilot (method development) and Qualification Strategy
+The results from the pilot phase highlighted the necessity of seeding samples prior to distribution and
+evaluation by the three participating suppliers. Therefore, the formal qualification study was stratified
+as outlined in Figure A2. Three seeding groups were created by adding particles of elastomeric material
+and dissolved fiber. Although the fibers were added using a defined volume of a prepared aqueous mix-
+ture, the particle generation process employed a novel technique of creating fragments of elastomeric
+material and manual deposition onto the surface of each stopper sample contained in the sample bags.
+The resulting groups of sample bags were then provided to all three suppliers with the goal of minimi-
+zing the impact of variability of the three seeding groups.
+Statistical analysis of the resulting particulate count data revealed that the use of a nonstandard sam-
+ple extraction and transfer process (due to the inherent nature of the elastic particulate matter being
+extracted) of the seeded particles and fibers may have contributed to unintended consequences for the
+counting process. Inconsistencies in the seeding process and the possible impact of forces exerted upon
+the sample bags during transit seemed to be contributing factors that ultimately yielded the failing
+results observed. Significantly, counting results from all operators were repeatible when cross compari-
+sons were performed between operators.
+An extensive investigation was performed to quantitatively evaluate the impact of the multiple sources
+of varibility that were contributing to the intial results and define viable means of mitigation. Based
+on learnings from the previous studies, the team chose to discontinue the use of artificially seeded par-
+ticles and opted, instead, to use stoppers that were not processed in a pharmaceutical washer in which
+a higher native particle burden was exhibited. Accordingly, a final conclusive study was designed and
+executed to both evaluate the impact of transportation on the range of particles and fibers observed
+and to serve as the basis for recommending the specific method described in this report. To limit
+
+Stopper Samples split
+into 3 Seeding Groups
+Particles generated Particles generated Particles generated
+and fiber aliquot and fiber aliquot and fiber aliquot
+prepared prepared prepared
+Seeding Seeding Seeding
+Group-1 Group-2 Group-3
+Supplier-1 Supplier-2 Supplier-3
+Sample Bags Sample Bags Sample Bags
+Figure A2 Method Qualification Sample Generation Stratification
+the impact of nonhomgeniety in particle deposition when multiple smaller sample sets are created
+and then divided into one or more cohorts, a single bag of unseeded, non-washed stoppers was used
+between all three suppliers in series. Although multiple operators performed the replicate extractions,
+all individuals sampled from the previously mentioned single bag. The process map for this study is
+illustrated in Figure A3 below.
+Overall Study Results
+The particle and fiber count data from each supplier was statistically evaluated for reproducibility
+between operators and suppliers (using an Analysis of Variance (ANOVA) hypothesis test) and re-
+peatability of counting output between operators using a paired t-test when evaluating the same filter
+samples. Handling and time difference between inspections were minimized in all cases. An evaluation
+of the comparability of method results for a group of inspectors was completed for Supplier 1 and the
+results are shown in Figure A4 through Figure A6.
+Figure A4 shows the results for the particles >100 µm. Comparability of extraction was proven between
+three operators with ANOVA p-value = 0.590. As shown in Figure A5, reproducibility of the count-
+ing method for particles >100 µm was proven between three operators with paired t-test with resulting
+p-values of 0.078 – 0.761. The calculated p-value from the ANOVA results for fibers >300 µm did not
+reveal comparability of extraction between the three operators for Supplier 1, and the confidence inter-
+val for the fiber results extended into negative values in Figure A6. Nonetheless, reproducible results
+were achieved as demonstrated by the outcome of paired t-tests between Operator 1 vs Operator 3 and
+Operator 2 vs Operator 3 shown in Figure A7.
+
+Figure A3 Process Map of Final Method Qualification Study
+
+Op-1 Op-2 Op-3
+mu001>selcitraP
+The pooled standard deviation is used to calculate the intervals.
+Inspecting Analyst Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracted by Op-1 Op-2
+mu001>selcitraP
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Extraction by _2 2 4.167 2.083 0.56 0.590
+Error 9 33.500 3.722
+Total 11 37.667
+Figure A4 Interval plot of Supplier 1 results for particles >100 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op3 Paired T-test for Op 2 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.33 0.761 -2.63 0.078
+Figure A5 Interval plot of replicate inspection results for Supplier 1, Operators 1 vs 3 and Operator 2 vs 3, for particles
+>100 µm
+
+A similar evaluation of the comparability of method results for a group of inspectors for Supplier 2 was
+also completed and the results are shown in Figure A8 through Figure A10. Figures A8 and A9 show
+results for the particles >100 µm and Figure A10 through Figure A11 show results for fibers >300 µm.
+Although calculated p-values from the ANOVA results would appear to indicate comparability of extrac-
+tion between the three operators, these results are not feasible since the 95% confidence intervals extend
+to negative counts. The reproducibility of the counting method for particles >100µm (shown in A9) was
+demonstrated between the three operators producing paired t-test with resulting p-values of 0.444-0.903.
+Figure A11 shows the results for the fibers >300 µm. Reproducibility of the counting method was dem-
+onstrated between all three operators with paired t-test results yielding a p-value =1.000.
+-1
+-2
+Op-1 Op-2 Op-3
+mu003>srebiF
+The pooled standard deviation is used to calculate the intervals.
+Inspecting Analyst Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extraction by Op-1 Op-2
+mu003>srebiF
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Extraction by _5 2 19.50 9.750 6.05 0.022
+Error 9 14.50 1.611
+Total 11 34.00
+Figure A6 Interval plot of Supplier 1 results for particles >300 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op3 Paired T-test for Op 2 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.00 1.000 1.00 0.391
+Figure A7 Interval plot of replicate inspection results for Supplier 1, Operators 1 vs 3 & Operators 2 vs 3, for fibers >300 µm
+
+-2
+Inspecting Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracting Operator Op-2 Op-3
+mu001>
+selcitraP
+-1
+-2
+Op-1 Op-2 Op-3
+Figure A8 Interval plot of Supplier 2 results for particles >100 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+mu001>
+selcitraP
+The pooled standard deviation is used to calculate the intervals.
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 6.500 3.250 0.57 0.587
+Error 9 51.750 5.750
+Total 11 58.250
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.13 0.903 0.88 0.444
+Figure A9 Interval plot of Supplier 2 group performance for particles >100 µm
+
+Op-1 Op-2 Op-3
+mu003
+>
+rebiF
+The pooled standard deviation is used to calculate the intervals.
+-2
+-4
+Inspecting Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracting Operator Op-2 Op-3
+mu003
+>
+rebiF
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 18.50 9.250 1.91 0.203
+Error 9 43.50 4.833
+Total 11 62.00
+Figure A10 Interval plot of Supplier 2 results for fibers >300 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.00 1.000 0.00 1.000
+Figure A11 Interval plot of Supplier 2 group performance for fibers >300 µm
+
+Finally, a further evaluation of results from inspectors at Supplier 3 is shown in Figure A12 through
+Figure A15. Figure A12 and Figure A13 show the results for the particles >100 µm. Although cal-
+culated p-values would appear to indicate comparability of extraction between three operators with
+ANOVA, these results are again not feasible since the 95% CI’s extend to negative counts. The repro-
+ducibility of the counting method was confirmed between the three operators using a paired t-test
+resulting in p-values of 0.391-0.604. Figure A14 and Figure A15 show the results for the fibers >300
+µm. Comparability of extraction was not confirmed between the three operators with a resulting
+ANOVA p-value of 0.006. Reproducibility of the counting method was, however, proven between
+these three operators using a paired t-test with resulting p-values of 0.391-1.000.
+-1
+-2
+Op-1 Op-2 Op-3
+mu001>
+selcitraP
+The pooled standard deviation is used to calculate the intervals.
+-1
+-2
+Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracted by Op-2 Op-3
+mu001>
+selcitraP
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 10.17 5.083 1.73 0.232
+Error 9 26.50 2.944
+Total 11 36.67
+Figure A12 Interval plot of Supplier 3 results for particles >100 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+-1.00 0.391 -0.58 0.604
+Figure A13 Interval plot of Supplier 3 group performance for particles >100 µm
+
+Op-1 Op-2 Op-3
+mu003>srebiF
+The pooled standard deviation is used to calculate the intervals.
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 57.17 28.523 9.71 0.006
+Error 9 26.50 2.944
+Total 11 83.67
+Figure A14 Interval plot of Supplier 3 results for fibers >300 µm for each operator
+Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracted by Op-2 Op-3
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.00 1.000 1.00 0.391
+Figure A 15 Interval plot of Supplier 3 group performance for fibers >300 µm
+mu003>srebiF
+Individual standard deviations are used to calculate the intervals.
+
+An evaluation of the comparability of method results across the three separate suppliers where testing
+was performed is shown in Figures A16 through A19. Figure A16 and Figure A17 show the results
+for particles >100 µm. When the individual operators’ results are aggregated into supplier groups the
+values fail to prove comparability with a resulting p-value of 0.022. Figure A16 and Figure A17 show
+the results for fibers >300 µm. The same scenario as that observed for particles holds true for fibers
+where the values fail to prove comparability with a resulting p-value of 0.000.
+Supplier-2-
+S
+O
+u
+p
+p
+1 plier-2-
+S
+O
+u
+p
+p
+2 plier-2- O
+Su
+p
+p
+3 plier-3-
+S
+O
+u
+p
+p
+1 plier-3-
+S
+O
+u
+p
+p
+2 plier-3- O
+Su
+p
+p
+3 plier-1-
+S
+O
+u
+p
+p
+1 plier-1- O
+Su
+p
+p
+2 plier-1- Op3
+mu001>
+selcitraP
+One-way ANOVA: Particles > 100 µm versus Supplier
+Method
+Null hypothesis All means are equal
+Alternative hypothesis Not all means are equal
+Significance level =0.05
+α
+Equal variances were assumed for the analysis
+Factor Information
+Factor Levels Values
+Supplier 3 Aptar, Datwyler, West
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 30.17 15.083 4.27 0.022
+Error 33 116.58 3.533
+Total 35 146.75
+Figure A16 Comparison of inspection performance by both supplier and operator for particles >100 µm
+
+Supplier-2 Supplier-3 Supplier-1
+mu001>
+selcitraP
+Supplier-2-
+S
+O
+u
+p
+p
+1 plier-2-
+S
+O
+u
+p
+p
+2 plier-2- O
+Su
+p
+p
+3 plier-3-
+S
+O
+u
+p
+p
+1 plier-3-
+S
+O
+u
+p
+p
+2 plier-3- O
+Su
+p
+p
+3 plier-1-
+S
+O
+u
+p
+p
+1 plier-1- O
+Su
+p
+p
+2 plier-1- Op3
+mu003>srebiF
+Model Summary Means
+S R-sq R-sq(adj) R-sq(pred) Supplier_1 N Mean StDev 95% CI
+1.87958 20.56% 15.74% 5.46% Supplier_1 12 3.833 1.403 (2.729, 4.937)
+Supplier_2 12 2.250 2.301 (1.146, 3.354)
+Supplier_3 12 1.667 1.826 (0.563, 2.771)
+Pooled StDev = 1.87958
+Figure A17 Box plot of performance by supplier for particles >100 µm
+One-way ANOVA: Fibers > 300 µm versus Supplier
+Method Factor Information
+Null hypothesis All means are equal Factor Levels Values
+Alternative hypothesis Not all means are equal
+Supplier 3 Aptar, Datwyler, West
+Significance level =0.05
+α
+Equal variances were assumed for the analysis
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 158.2 79.083 15.86 0.000
+Error 33 164.6 4.967
+Total 35 322.8
+Figure A18 Comparison of inspection performance by both supplier and operator for fibers >300 µm
+
+Supplier-2 Supplier-3 Supplier-1
+Conclusion. The original strategy for confirming the robustness of the test method for extracting and
+counting the particulate present on the resulting membrane filter was intended to demonstrate quan-
+titatively the repeatability and reproducibility of both components of the test method. Preliminary
+studies for attribute agreement revealed that rigorous training and easy to follow instructions are key
+to reducing the subjectivity of the analyst’s counting techniques. Once this foundation of objectivity
+was formed for operators, the validity of their results was not in question. Repeatability of the particle
+and fiber count data was confirmed not only when extracted samples were independently reinspected,
+but also when all operators inspected each other’s filter samples. This is evident in the hypothesis test
+results (well above a p-value of 0.05) that were obtained throughout the studies and the multiple
+qualification cohorts. On the other hand, reproducibility of output data with replicate extractions or
+between each operator’s sample sets was not easily demonstrated.
+Through multiple investigatory design-of-experiments and review of the findings with the operators
+involved, specific factors that contributed to providing what was initially thought to be inexplicable
+variability in the particle counts were identified. The inherent lack of homogeneity of particle and fiber
+deposition on the surface of elastomeric components that are packaged within a bag or collectively
+transported in multiple cartons from the same batch was one of the underlying root causes for the
+inconsistencies of the initial data gathered. As a result, managing sample bag to sample bag variability
+proved to be one of the largest factors in obtaining sufficiently low CV values. Repetitive handling,
+sampling, and shipping greatly increases variability and localization of particles within the bags.
+Results from the final transportation and qualification study demonstrated that seeding particles was
+not necessary to generate counts that are sufficiently high to yield meaningful statistical evaluation if
+unwashed samples are used instead of RTS product.
+Although several studies revealed relatively good comparability within replicate extractions for indi-
+vidual operators within a supplier’s testing team, consistent agreement within the range of values for
+particles or fibers was not demonstrated across all organizations. Counting technique for particles and
+mu003>srebiF
+Model Summary Means
+S R-sq R-sq(adj) R-sq(pred) Supplier_1 N Mean StDev 95% CI
+2.23324 49.01% 45.92% 39.31% Supplier_1 12 1.083 1.311 (-0.228, 2.395)
+Supplier_2 12 3.000 2.374 (1.688, 4.312)
+Supplier_3 12 6.167 2.758 (4.855, 7.478)
+Pooled StDev = 2.23324
+Figure A19 Box plot of performance by supplier for fibers >300 µm
+
+fibers applied to sets of replicate extractions yielded good comparability between local operators for all
+three suppliers. This comparability between local operators for all three suppliers demonstrates that the
+newly developed method is a robust and repeatable procedure.
+
+### 8.2 Appendix B. Method: Determination of Visible Particles and Fibers on
+
+Elastomeric Components by Membrane Filtration and Microscopic
+Examination
+Introduction. The purpose of this method is to provide a procedure to quantify the number of visible
+particles present on elastomeric closures used for injectable pharmaceutical products. The procedure
+describes how the elastomeric closures are to be sampled from the fully assembled package, then rinsed
+to release any particles present, and subsequently sized and counted using a stereomicroscope.
+Scope. This method is applicable to all RTU and RTS elastomeric closures but only applies to visible
+particles. The method requires that such closures be tested from fully assembled final packaging to
+reflect how they are received and used by the pharmaceutical manufacturer.
+Fiber-like particles (i.e., length to width aspect ratio of ≥5) have significantly less surface area than a
+sphere of equivalent diameter to the fiber length. This results in significantly less detection capability for
+a 100 µm long fiber as compared to 100 µm diameter sphere. To ensure this analytical method is detect-
+ing visible particles only, fiber-like particles have been given a larger visible size threshold of 300 µm.
+Equipment and materials.
+Bolded items below are considered essential for executing the method.
+1. Laminar flow cabinet meeting the requirements of ISO Class 7 or better
+2. Dispensing pressure vessel
+3. Filter jet dispenser
+4. Jet spray nozzle
+5. Analytical petri slide
+6. Analytical filter holder
+7. Grey membrane filter for counting, gridded, 25 mm, 0.8um porosity
+8. Membrane filter for jet pistol, 25 mm
+9. Orbital shaker with a 12 mm arm length or equivalent. The suitable RPMs for orbital
+shaker arm lengths are show in Table B1 below. The RPM ranges are adjusted to ensure
+comparable performance between shakers of different arm lengths.
+10. Timer traceable to an internal standard
+11. Wide-mouth Erlenmeyer flask, 300 mL
+12. Graduated cylinder, class A to deliver, 50 mL
+13. Stereomicroscope capable of approximately 50x magnification
+14. Use Reticle, Klarmann part number KR-32972-1 at 50x magnification (or equivalent).
+15. Calibrated stage micrometer to verify reticle size at magnification used
+Table B1 Orbital Shaker RPM Ranges
+Allowable RPM Range
+Orbital Arm Length
+Low High
+10 mm 355 380
+12 mm 300 325
+25 mm 200 225
+
+Equivalent equipment and materials are acceptable but must be demonstrated to be suitable for the
+intended use. Equipment must be qualified and calibrated prior to use.
+Reagents
+1. Surfactant, Polysorbate 80, reagent grade
+2. Water, purified grade 1 or 2 as specified in ISO 3696 (32) and filtered through a terminal filter
+with NMT 1 um pore size.
+Preparation for the test. Ensure that the environment in which the test is to be carried out is free
+from extraneous particles which could cause interference. This involves wearing suitable garments
+such as synthetic, low particle-shedding frocks, hair nets and beard guards and gloves within a suitable
+laminar flow cabinet. Tools and equipment must be cleaned before use by rinsing thoroughly with
+water (as defined above as Reagent 2). The exterior of sample bags should be cleaned prior to being
+introduced into the cleaned test environment. Cleanroom certified wipes should be used to clean the
+bags by wiping in overlapping straight lines, away from the operator.
+Preparation and dispensing of 0.03% Polysorbate 80 solution. Dissolve 3g of Polysorbate 80
+in 10L of water. Alternative volumes may be prepared for use by keeping this ratio constant. Prepared
+solution should be dispensed under pressure to permit in-line filtration with a filter with a pore size
+of NMT 1 µm.
+Blank testing. Blanks should be tested before and after a sample series. Blanks must meet acceptance
+criteria prior to testing samples. If blank analysis after sample series do not meet acceptance criteria,
+sample results are considered invalid.
+The use of the terms clean or cleaned below refer to tools that have been rinsed with clean and filtered
+water before use.
+Blank testing procedure
+1. Using cleaned forceps, rinse gridded, then un-gridded side of filter for 20 sec per side and place
+on filter holder.
+2. Place clean funnel on filter holder.
+3. Fill 50 mL of Polysorbate 80 solution (as defined as Reagent 1 above) in a clean graduated cylinder.
+4. Pour the 50 mL of Polysorbate 80 solution into a clean Erlenmeyer flask or accurately add 50 mL
+of Polysorbate 80 solution directly to the Erlenmeyer flask through dosing.
+5. Shake the flask on the orbital shaker at the appropriate rpm (see Table B1) for 20 sec.
+6. Decant the solution from the flask into the funnel.
+7. Repeat steps 3-6.
+8. Rinse the inside of the Erlenmeyer flask thoroughly and pour Polysorbate 80 rinse into the funnel.
+9. Rinse the inside of the funnel thoroughly.
+10. Remove the funnel and with clean forceps, place the filter in a clean petri slide.
+11. Label the petri slide appropriately.
+12. Dry the filter by placing it in the laminar air stream with lid ajar at least until the filters have
+dried.
+Blank testing acceptance criterion. Blanks are acceptable if no particles or fibers >100 µm are
+observed under the specified microscopic examination conditions.
+Sample testing procedure. The use of the terms clean or cleaned below refer to tools that have been
+rinsed with clean and filtered water prior to use.
+1. Using cleaned forceps, rinse unprinted, then printed side of filter for 20 sec per side and place on
+filter holder.
+
+2. Place clean funnel on filter holder.
+3. Open the sample bag carefully and transfer 100 cm2 of parts to a clean Erlenmeyer flask.
+4. Fill 50 mL of Polysorbate 80 solution into a graduated cylinder.
+5. Pour the 50 mL of Polysorbate 80 solution into a clean Erlenmeyer flask or accurately add 50 mL
+of Polysorbate 80 solution directly to the Erlenmeyer flask through dosing.
+6. Shake the flask on the orbital shaker at the appropriate RPM for 20 sec.
+7. Decant the solution from the flask into the funnel.
+8. Repeat steps 4-7.
+9. Discard stoppers.
+10. Rinse the inside of the Erlenmeyer flask thoroughly with water (as defined above as Reagent 2)
+and pour rinsate into the funnel.
+11. Rinse the inside of the funnel thoroughly with water (as defined above as Reagent 2).
+12. Remove the funnel and with clean forceps, place the filter in a clean petri slide.
+13. Dry the filter by placing in the laminar air stream with lid ajar at least until the filters have dried.
+Filter Evaluation. The calibration of the stereomicroscope should be verified daily prior to use us-
+ing a micrometer that is calibrated at the operational magnification. Use suitable, direct illumination
+(e.g., from a goose-neck lamp, light emitting diode [LED] light source recommended) with angles
+set between 0 and 10° from the vertical viewing axis. The magnification used for examining the filters
+should be approximately 50x. Once the lighting conditions are set, the same conditions should be
+used throughout the analysis. The focus can be adjusted throughout the analysis to keep the particles
+in focus.
+Particles must exceed the borders of the templates in the reticle and meet the established aspect ratio
+requirements to be counted.
+• Particles: >100 µm in length (to be determined using the circle template)
+• Fibers: >300 µm in length (to be determined using the rectangle template)
+The reticle described in Section 4.1 and shown in Figure B1 must be used to accurately classify any
+observed particles as visible or subvisible for either particle or fiber-like form. The following diagram
+provides instruction for use of the reticle.
+Calculations. Use the following equation to calculate the number of visible particles per 10 cm2 for
+both particles and fibers.
+visible particles visible particles counted on filter × 10
+=
+10 cm2 number of parts used × surface area per part
+visible fibers visible fibers counted on filter × 10
+=
+10 cm2 number of parts used × surface area per part
+Reporting. Report the number of visible particles/10cm2 and visible fibers/10cm2
+
+### 8.3 Appendix C. Additional Information on Empty Glass Inspection
+
+Capability Studies
+Study Test Kits
+The glass container inspection study required the test kits to be of sufficient quality so as not to bias
+the study results. This was achieved through the following steps.
+
+Use defined
+magnification and Use red circle to Particle contained
+Filter Sample
+reticle to locate Fiber Like? No inspect inside circle (not Yes Do not count
+Mounted
+particulate on touching red border?
+filter
+Yes
+Use red box to
+inspect
+No
+Count and categorize
+Fiber contained
+into two groups; Fibers
+inside box (not
+No and Particles. Repeat Report test results
+touching red
+for all other particles
+border)?
+present on filter
+Yes
+Do not count
+Figure B1 Flowchart showing the use of the specified reticle to determine status of any observed particles on the filter
+
+Table C1 Summary of Nominal Particle Size by Material
+Particle/Fiber Size (µm)
+Type Material Color Photo
+selcitraP
+001 002 003 005 007 008
+000,1
+Glass Transparent
+X X X
+Rubber Orange – Cartridges
+Black – Syringes X X X X
+Gray – Vials (shown)
+Metal Silver/Gray
+X X X
+srebiF
+Cellulose White
+X X X X
+Plastic White
+X X X X
+Hair Brown
+X X
+Figure C1 Shape factor vs size for the particles and fibers seeded into test vials
+
+Figure C2 Graphic comparison of test kit composition (kits A, B, and C)
+The containers were washed and seeded with a particle of known size and type. Each particle was
+digitally photographed and measured before being glued with a highly transparent, UV-cured glue.
+Each container was then sealed to prevent further particle contamination. Three equivalent kits were
+produced and used for this study to ensure that the results were not influenced by the composition
+of a specific kit. A critical analysis of the composition of each kit was performed before use. Table C1
+shows the intended particle types and size ranges while Figure C1 shows the actual results. Figure C2
+provides a graphic comparison of the composition of the kits (A, B, and C) that were prepared and
+used in the study showing both SF and size of the particles and fibers seeded into test containers. The
+circled outliers were removed from the study kits to assure conformance with the intended kit design.
+Data Collection
+Study Data. A total of eleven companies participated in the study: five from the pharmaceutical in-
+dustry and six manufactures of the primary packaging materials. Each company used five inspectors
+for the study; each inspector performed the inspection six times, producing a total of 59,400 data
+points. The data were reviewed and confirmed as valid prior to being used in the statistical analysis.
+Inspection Rate. Sufficient time must be allowed for a thorough inspection of each container. The
+EP (26), USP (6), and JP (28) each specify a reference time of inspection per container of ten 10 sec;
+five sec each against black and white backgrounds. Before executing the study, an estimate was made
+for inspection of the complete test of 60 containers using the minimum inspection time defined by the
+compendia. The estimated target time to complete the inspection of the kit, allowing for the necessary
+container handling and inspection was determined to be 10-20 min.
+On completion of the study, an analysis was performed to establish inspection time boundaries based on
+actual time used and parameters for determining invalid and missing data. The lower limit was set at 9 min
+while the upper limit was calculated as the median plus 1.66 standard deviations, resulting in an upper limit
+of 31min. Results obtained outside of this range were not considered valid and were not used in the analysis.
+
+Figure C3 shows that about 86% of the test runs were considered valid for the analysis based on in-
+spection time. Data were also excluded if a container was broken or unavailable for inspection. This
+resulted in 49,360 of the 59,400 data points being used for subsequent analysis.
+Main influences on probability of detection
+Operator Experience. The inspectors participating in this study had differing levels of glass inspection
+experience. For pharmaceutical manufacturers, the inspectors typically inspect filled containers, whereas
+those at the suppliers primarily focus on empty containers. Overall, however, the results from both groups
+of inspectors were found to be comparable. See Figure C4 for particle inspection results and Figure C5 for
+results for fibers. Larger circles indicate a greater number of observations with the same value.
+Figure C3 Distribution of time required to complete inspection of test kit
+Figure C4 Particle inspection results with inspectors having prior experience with empty containers (Yes) and those
+without such experience (No). Circle diameter is proportional to the number of data points falling at a specific x-y location.
+
+Figure C5 Fiber inspection results with inspectors having both prior experience (Yes) with empty containers and those
+without such experience (No). Circle diameter is proportional to the number of data points falling at a specific x-y location.
+Particle/Fiber type. The material composition of the particle had a significant influence on the PoD
+observed. Glass, metal, and grey rubber particles (100 to 200 µm) were found to have a lower PoD
+than orange or black rubber particles of similar size as shown in Figure C6.
+Figure C6 Probability of detection for particles of differing type and size. Circle diameter is proportional to the number
+of data points falling at a specific x-y location.
+
+This becomes more pronounced with fibers, where cellulose fibers have a statistically lower PoD than
+that for brown hair or white plastic as shown in Figure C7. Optical contrast is necessary for reliable
+detection and greatly impacts the resulting PoD.
+Container Size/Type. Figure C8 for particles and Figure C9 for fibers show the influence of con-
+tainer size and type on inspection results. The vials used in the study were 30 ml and had a surface area
+approximately three times larger than either the 1 mL syringes or 3 mL cartridges used. This resulted
+in a decrease in the inspection time per unit surface area when examining containers of larger size and
+suggests a reason for lower detection rates in the vials used for this study.
+Figure C7 Probability of detection for fibers of differing type and size. Circle diameter is proportional to the number of
+data points falling at a specific x-y location.
+Figure C8 Probability of detection for particles in various container types and sizes. Circle diameter is proportional to
+the number of data points falling at a specific x-y location.
+
+Figure C9 Probability of detection for fibers in various container types and sizes. Circle diameter is proportional to the
+number of data points falling at a specific x-y location.
+Main Effects. Using the Boruta method (33) the data were analyzed for the significance that each
+variable has on the resulting PoD. This method is based on a machine learning technique called Ran-
+dom Forest. Random Forest computes the importance of predictor variables vs a response variable. It
+repeats this process and generates a distribution of importance for each predictor variable. It then sorts
+the predictor variables based on their importance and statistically compares them to random (shadow)
+variables to categorize them as:
+• Rejected: variable has significantly less predictive importance than random variables.
+• Confirmed: variable has significantly more predictive importance.
+• Tentative: variable cannot be categorized as either rejected or confirmed when computation stops.
+Figure C10 Boruta Plot of inspection study results demonstrating factors significant to reliable inspection performance.
+
+As a result, important variables are those that can play a significant role in predicting the response vari-
+able. This is similar to significant predictors in Analysis of Variance (ANOVA) but fails to satisfy usual
+assumptions of parametric models.
+Conclusion
+Based on statistical analysis of the valid data from the empty container inspection study, the main
+variables influencing the PoD were determined to be particle size, inspector, container, and particulate
+type. Further, particle size is a significant factor as well, with lower PoD observed for smaller particles.
+Material providing poorer contrast against the backgrounds produced lower PoD values. This was
+more significant when examining fibers where cellulose had a statistically lower PoD than brown hair
+and plastic. These results are consistent with previous visual inspection studies with filled containers.
+Finally, the container size influenced the PoD, with larger containers (with a greater surface area) effec-
+tively reducing the time per unit surface area available to inspect the product and resulting in reduced
+detection rates for smaller particles.
+
+### 8.4 Appendix D. Method: Visual Inspection of Empty Glass Containers
+
+Introduction. The purpose of this method is to provide a procedure to identify and quantify the
+number of visible particles present on empty glass containers used for injectable pharmaceutical prod-
+ucts. The procedure describes the inspection conditions and how the containers should be presented
+to the inspector.
+Scope. This method is applicable to all empty glass containers. Inspection times may need to be in-
+creased for larger (>100mL) containers.
+Equipment and materials.
+1. Inspection cabinet with matte black and white backgrounds with diffuse lighting of 2,000-
+3,750 lux at the point of inspection.
+Glass container inspection procedure.
+1. Remove a container from the uninspected tray.
+2. Hold the sample approximately 10 cm directly below the lamp at a distance approximately 30
+cm from the inspector’s eyes.
+3. Inspect the sample for 5-10 sec against the black background. Rotate and invert the container to
+ensure all areas are examined adjusting your grip on the container as needed.
+4. Inspect the sample for 5-10 sec against the white background. Rotate and invert the container to
+ensure all areas are examined adjusting your grip on the container as needed.
+5. Place each piece examined into the either the reject tray or passing tray as required.
+6. Complete any necessary records documenting the inspection of each piece before moving to the
+next inspection.
+The time spent per container may be controlled using a pacing device. Recording the time spent in-
+specting each batch and then calculating the nominal inspection rate is a reliable method to confirm
+that the rate of inspection was maintained within the defined limits.
+Information recorded during or after inspection may include details such as the type and location of
+any particles observed, and any other defects observed. On completion of the inspection, the data
+should be evaluated against the established acceptance criteria to determine the disposition of the
+batch. During inspection, the operator should avoid direct viewing of the light source and take regular
+eye breaks to avoid eye strain which may adversely influence the results of the inspection.
+
+Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
+An Authorized User of this electronic publication is the purchaser.
+Authorized Users are permitted to do the following:
+• Search and view the content of the PDA Electronic Publication
+• Download the PDA Electronic Publication for the individual use of an Authorized User
+• Print the PDA Electronic Publication for the individual use of an Authorized User
+• Make a reasonable number of photocopies of a printed PDA Electronic Publication for the individual use of an
+Authorized User
+Authorized Users are not permitted to do the following:
+• Allow anyone other than an Authorized User to use or access the PDA Electronic Publication
+• Display or otherwise make any information from the PDA Electronic Publication available to anyone other
+than an Authorized User
+• Post the PDA Electronic Publication or portions of the PDA Electronic Publication on websites, either available
+on the Internet or an Intranet, or in any form of online publications without a license from PDA, Inc.
+• Transmit electronically, via e-mail or any other file transfer protocols, any portion of the PDA Electronic
+Publication
+• Create a searchable archive of any portion of the PDA Electronic Publication
+• Use robots or intelligent agents to access, search and/or systematically download any portion of the PDA
+Electronic Publication
+• Sell, re-sell, rent, lease, license, sublicense, assign or otherwise transfer the use of the PDA Electronic Publication
+or its content
+• Use or copy the PDA Electronic Publication for document delivery, fee-for-service use, or bulk reproduction or
+distribution of materials in any form, or any substantially similar commercial purpose
+• Alter, modify, repackage or adapt any portion of the PDA Electronic Publication
+• Make any edits or derivative works with respect to any portion of the PDA Electronic Publication including any
+text or graphics
+• Delete or remove in any form or format, including on a printed article or photocopy, any copyright information
+or notice contained in the PDA Electronic Publication
+• Combine any portion of the PDA Electronic Publication with any other material
+To License or purchase Reprints
+• Licensing: Site licenses and licenses to distribute PDA Electronic Publication can be obtained for a fee.
+To learn more about licensing options and rates, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900,
+ext. 133. Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+• Reprints: Reprints of PDA Electronic Publication can be purchased for a fee.
+To order reprints, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
+Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
+Bethesda, MD 20814.
+
+Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric
+Closures and Glass Containers
+About PDA Technical Reports
+PDA Technical Reports are global consensus documents, prepared by member-driven Task Forces (listed on inside
+front cover) comprised of content experts, including scientists and engineers working in the pharmaceutical/bio-
+pharmaceutical industry, regulatory authorities and academia. While in development, PDA Technical Reports are
+subjected to a global review of PDA members and other topic-specific experts, often including regulatory officials.
+Comments from the global review are then considered by the authoring Task Force during the preparation of the
+final working draft. The level of expertise of the Task Force and those participating in the global review ensure a
+broad perspective reflecting best thinking and practices currently available.
+The final working draft is next reviewed by the PDA Advisory Board or Boards that sanctioned the project. PDA’s
+Advisory Boards are: Science Advisory Board, Biotechnology Advisory Board, and Regulatory Affairs and Quality
+Advisory Board. Following this stage of review, the PDA Board of Directors conducts the final review and deter-
+mines whether to publish or not publish the document as an official PDA Technical Report.
+While PDA goes to great lengths to ensure each Technical Report is of the highest quality, all readers are encouraged
+to contact PDA about any scientific, technical, or regulatory inaccuracies, discrepancies, or mistakes that might be
+found in any of the documents. Readers can email PDA at: TRfeedback@pda.org.
+Sanctioning Advisory Board: SAB PDA Officers and Directors
+Phil DeSantis, DeSantis Consulting Associates (Chair) Officers
+Greg Bassett, Amgen (Vice Chair)
+Chair: Jette Christensen, Novo Nordisk
+Masahiro Akimoto, OTSUKA
+Chair-Elect: Sue Schniepp, Regulatory Compliance
+John Ayres, MD, Consultant
+Associates Inc.
+Ed Balkovic, PhD, MicroBio Technical Support
+Treasurer: Melissa Seymour, Biogen, Inc.
+Marcia Baroni, Emergent BioSolutions Inc
+Secretary: Emma Ramnarine, Genentech/Roche
+Rebecca Brewer, Quality Executive Partners
+Imm. Past Chair: Rebecca Devine, PhD, Regulatory
+Tom Damratoski, Bristol Myers Squibb
+Consultant
+Rhonda Ezell, Vitruvias Therapeutics
+President: Richard Johnson
+Guenther Gapp, Gapp Quality GmbH
+Mauro Giusti, MS, Eli Lilly Directors
+Marc Glogovsky, MS, Valsource, LLC
+Barbara M. Allen, PhD, Eli Lilly and Company
+Gabriele Gori, MS, GlaxoSmithKline
+Michael Blackton, Adaptimmune, LLC
+Dennis Guilfoyle, PhD, Johnson & Johnson
+Bettine Boltres, PhD, West Pharmaceutical Services
+Ghada Haddad, PhD, Merck
+Kenneth Hinds, PhD, Johnson & Johnson Tia Bush, Amgen, Inc.
+Ken-ichi Izutsu, PhD, National Institute of Health Javier Camposano, Celltrion
+Sciences Ghada Haddad, Merck & Co./Merck Sharp & Dohme
+Gitte Letting, Novo Nordisk Joyce Hansen, Johnson & Johnson
+Ivy Louis, VIENNI TRAINING & CONSULTING, LLP
+Stephan Krause, PhD, AstraZeneca Biologics
+Stefan Merkle, PhD, Janssen
+Mary Oates, Emergent Bioscience
+Mike Sadowski, Baxter
+Mathias Romacker, Pfizer (ret.)
+Matthew Schmidt, MS, Merck
+Siegfried Schmitt, PhD, Parexel International Corp. Anil Sawant, PhD, Merck & Co./Merck Sharp & Dohme
+Kristin Valente, PhD, Merck Osamu Shirokizawa, LifeScientia
+PDA Publication Production and Editing
+Jahanvi Miller, MBA, Assistant Director, Scientific Affairs
+Glenn Wright, VP, Scientific & Regulatory Affairs
+Walter Morris, Senior Director of Publishing and Press Relations
+Katja Yount, Publication Designer
+Marilyn Foster, Technical Editor/Writer
+
+Bethesda Towers
+4350 East West Highway
+Suite 600
+Bethesda, MD 20814 USA
+Tel: +1 (301) 656-5900
+Fax: +1 (301) 986-0296
+E-mail: info@pda.org
+Web site: www.pda.org
+
+## 8.0 Appendices
+
+### 8.1 Appendix A. Additional Information on Enhanced Closures Testing
+
+Method Development
+Test methods that yield variable data with great certainty, such as dimensional measurements or po-
+tency, can be simply qualified or validated. However, human performance, such as visual inspection, is
+not directly measurable or validated. As such, the strategy for qualifying a methodology based on at-
+tribute data required an initial verification of the sample preparation process and the counting method
+that would ultimately be used to evaluate the comparability of within operator replicates or between
+operators and cohorts of samples. To accomplish this, the evaluation and testing strategy was separated
+into two phases, pilot (method development) and qualification. These are outlined in Figure A1.
+
+Provide
+Clarification
+No
+Attribute Sufficient
+Method Qualification
+Agreement Execute Dry Run comparability
+initiated
+Analysis between SME’s?
+Pilot
+Yes
+Qualification
+Testing completed
+Test method Sample sets
+Sufficient of sample sets Prepare seeded
+released for Yes shipped to each
+Comparability? delivered to samples
+publication Supplier
+Supplier B, C
+No
+Define actions
+Determine
+required correct/
+cause for lack of
+address identified
+comparability
+root cause(s).
+Figure A1 Process Map of the Pilot (method development) and Qualification Strategy
+The results from the pilot phase highlighted the necessity of seeding samples prior to distribution and
+evaluation by the three participating suppliers. Therefore, the formal qualification study was stratified
+as outlined in Figure A2. Three seeding groups were created by adding particles of elastomeric material
+and dissolved fiber. Although the fibers were added using a defined volume of a prepared aqueous mix-
+ture, the particle generation process employed a novel technique of creating fragments of elastomeric
+material and manual deposition onto the surface of each stopper sample contained in the sample bags.
+The resulting groups of sample bags were then provided to all three suppliers with the goal of minimi-
+zing the impact of variability of the three seeding groups.
+Statistical analysis of the resulting particulate count data revealed that the use of a nonstandard sam-
+ple extraction and transfer process (due to the inherent nature of the elastic particulate matter being
+extracted) of the seeded particles and fibers may have contributed to unintended consequences for the
+counting process. Inconsistencies in the seeding process and the possible impact of forces exerted upon
+the sample bags during transit seemed to be contributing factors that ultimately yielded the failing
+results observed. Significantly, counting results from all operators were repeatible when cross compari-
+sons were performed between operators.
+An extensive investigation was performed to quantitatively evaluate the impact of the multiple sources
+of varibility that were contributing to the intial results and define viable means of mitigation. Based
+on learnings from the previous studies, the team chose to discontinue the use of artificially seeded par-
+ticles and opted, instead, to use stoppers that were not processed in a pharmaceutical washer in which
+a higher native particle burden was exhibited. Accordingly, a final conclusive study was designed and
+executed to both evaluate the impact of transportation on the range of particles and fibers observed
+and to serve as the basis for recommending the specific method described in this report. To limit
+
+Stopper Samples split
+into 3 Seeding Groups
+Particles generated Particles generated Particles generated
+and fiber aliquot and fiber aliquot and fiber aliquot
+prepared prepared prepared
+Seeding Seeding Seeding
+Group-1 Group-2 Group-3
+Supplier-1 Supplier-2 Supplier-3
+Sample Bags Sample Bags Sample Bags
+Figure A2 Method Qualification Sample Generation Stratification
+the impact of nonhomgeniety in particle deposition when multiple smaller sample sets are created
+and then divided into one or more cohorts, a single bag of unseeded, non-washed stoppers was used
+between all three suppliers in series. Although multiple operators performed the replicate extractions,
+all individuals sampled from the previously mentioned single bag. The process map for this study is
+illustrated in Figure A3 below.
+Overall Study Results
+The particle and fiber count data from each supplier was statistically evaluated for reproducibility
+between operators and suppliers (using an Analysis of Variance (ANOVA) hypothesis test) and re-
+peatability of counting output between operators using a paired t-test when evaluating the same filter
+samples. Handling and time difference between inspections were minimized in all cases. An evaluation
+of the comparability of method results for a group of inspectors was completed for Supplier 1 and the
+results are shown in Figure A4 through Figure A6.
+Figure A4 shows the results for the particles >100 µm. Comparability of extraction was proven between
+three operators with ANOVA p-value = 0.590. As shown in Figure A5, reproducibility of the count-
+ing method for particles >100 µm was proven between three operators with paired t-test with resulting
+p-values of 0.078 – 0.761. The calculated p-value from the ANOVA results for fibers >300 µm did not
+reveal comparability of extraction between the three operators for Supplier 1, and the confidence inter-
+val for the fiber results extended into negative values in Figure A6. Nonetheless, reproducible results
+were achieved as demonstrated by the outcome of paired t-tests between Operator 1 vs Operator 3 and
+Operator 2 vs Operator 3 shown in Figure A7.
+
+Figure A3 Process Map of Final Method Qualification Study
+
+Op-1 Op-2 Op-3
+mu001>selcitraP
+The pooled standard deviation is used to calculate the intervals.
+Inspecting Analyst Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracted by Op-1 Op-2
+mu001>selcitraP
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Extraction by _2 2 4.167 2.083 0.56 0.590
+Error 9 33.500 3.722
+Total 11 37.667
+Figure A4 Interval plot of Supplier 1 results for particles >100 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op3 Paired T-test for Op 2 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.33 0.761 -2.63 0.078
+Figure A5 Interval plot of replicate inspection results for Supplier 1, Operators 1 vs 3 and Operator 2 vs 3, for particles
+>100 µm
+
+A similar evaluation of the comparability of method results for a group of inspectors for Supplier 2 was
+also completed and the results are shown in Figure A8 through Figure A10. Figures A8 and A9 show
+results for the particles >100 µm and Figure A10 through Figure A11 show results for fibers >300 µm.
+Although calculated p-values from the ANOVA results would appear to indicate comparability of extrac-
+tion between the three operators, these results are not feasible since the 95% confidence intervals extend
+to negative counts. The reproducibility of the counting method for particles >100µm (shown in A9) was
+demonstrated between the three operators producing paired t-test with resulting p-values of 0.444-0.903.
+Figure A11 shows the results for the fibers >300 µm. Reproducibility of the counting method was dem-
+onstrated between all three operators with paired t-test results yielding a p-value =1.000.
+-1
+-2
+Op-1 Op-2 Op-3
+mu003>srebiF
+The pooled standard deviation is used to calculate the intervals.
+Inspecting Analyst Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extraction by Op-1 Op-2
+mu003>srebiF
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Extraction by _5 2 19.50 9.750 6.05 0.022
+Error 9 14.50 1.611
+Total 11 34.00
+Figure A6 Interval plot of Supplier 1 results for particles >300 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op3 Paired T-test for Op 2 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.00 1.000 1.00 0.391
+Figure A7 Interval plot of replicate inspection results for Supplier 1, Operators 1 vs 3 & Operators 2 vs 3, for fibers >300 µm
+
+-2
+Inspecting Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracting Operator Op-2 Op-3
+mu001>
+selcitraP
+-1
+-2
+Op-1 Op-2 Op-3
+Figure A8 Interval plot of Supplier 2 results for particles >100 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+mu001>
+selcitraP
+The pooled standard deviation is used to calculate the intervals.
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 6.500 3.250 0.57 0.587
+Error 9 51.750 5.750
+Total 11 58.250
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.13 0.903 0.88 0.444
+Figure A9 Interval plot of Supplier 2 group performance for particles >100 µm
+
+Op-1 Op-2 Op-3
+mu003
+>
+rebiF
+The pooled standard deviation is used to calculate the intervals.
+-2
+-4
+Inspecting Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracting Operator Op-2 Op-3
+mu003
+>
+rebiF
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 18.50 9.250 1.91 0.203
+Error 9 43.50 4.833
+Total 11 62.00
+Figure A10 Interval plot of Supplier 2 results for fibers >300 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.00 1.000 0.00 1.000
+Figure A11 Interval plot of Supplier 2 group performance for fibers >300 µm
+
+Finally, a further evaluation of results from inspectors at Supplier 3 is shown in Figure A12 through
+Figure A15. Figure A12 and Figure A13 show the results for the particles >100 µm. Although cal-
+culated p-values would appear to indicate comparability of extraction between three operators with
+ANOVA, these results are again not feasible since the 95% CI’s extend to negative counts. The repro-
+ducibility of the counting method was confirmed between the three operators using a paired t-test
+resulting in p-values of 0.391-0.604. Figure A14 and Figure A15 show the results for the fibers >300
+µm. Comparability of extraction was not confirmed between the three operators with a resulting
+ANOVA p-value of 0.006. Reproducibility of the counting method was, however, proven between
+these three operators using a paired t-test with resulting p-values of 0.391-1.000.
+-1
+-2
+Op-1 Op-2 Op-3
+mu001>
+selcitraP
+The pooled standard deviation is used to calculate the intervals.
+-1
+-2
+Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracted by Op-2 Op-3
+mu001>
+selcitraP
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 10.17 5.083 1.73 0.232
+Error 9 26.50 2.944
+Total 11 36.67
+Figure A12 Interval plot of Supplier 3 results for particles >100 µm for each operator
+Individual standard deviations are used to calculate the intervals.
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+-1.00 0.391 -0.58 0.604
+Figure A13 Interval plot of Supplier 3 group performance for particles >100 µm
+
+Op-1 Op-2 Op-3
+mu003>srebiF
+The pooled standard deviation is used to calculate the intervals.
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 57.17 28.523 9.71 0.006
+Error 9 26.50 2.944
+Total 11 83.67
+Figure A14 Interval plot of Supplier 3 results for fibers >300 µm for each operator
+Operator Op-1 Op-2 Op-3 Op-1 Op-2 Op-3
+Extracted by Op-2 Op-3
+Paired T-test for Op 1 vs Op2 Paired T-test for Op 1 vs Op 3
+Test Test
+Null hypothesis H: µ_difference = 0 Null hypothesis H: µ_difference = 0
+0 0
+Alternative hypothesis H: µ_difference ≠ 0 Alternative hypothesis H: µ_difference ≠ 0
+1 1
+T-Value P-Value T-Value P-Value
+0.00 1.000 1.00 0.391
+Figure A 15 Interval plot of Supplier 3 group performance for fibers >300 µm
+mu003>srebiF
+Individual standard deviations are used to calculate the intervals.
+
+An evaluation of the comparability of method results across the three separate suppliers where testing
+was performed is shown in Figures A16 through A19. Figure A16 and Figure A17 show the results
+for particles >100 µm. When the individual operators’ results are aggregated into supplier groups the
+values fail to prove comparability with a resulting p-value of 0.022. Figure A16 and Figure A17 show
+the results for fibers >300 µm. The same scenario as that observed for particles holds true for fibers
+where the values fail to prove comparability with a resulting p-value of 0.000.
+Supplier-2-
+S
+O
+u
+p
+p
+1 plier-2-
+S
+O
+u
+p
+p
+2 plier-2- O
+Su
+p
+p
+3 plier-3-
+S
+O
+u
+p
+p
+1 plier-3-
+S
+O
+u
+p
+p
+2 plier-3- O
+Su
+p
+p
+3 plier-1-
+S
+O
+u
+p
+p
+1 plier-1- O
+Su
+p
+p
+2 plier-1- Op3
+mu001>
+selcitraP
+One-way ANOVA: Particles > 100 µm versus Supplier
+Method
+Null hypothesis All means are equal
+Alternative hypothesis Not all means are equal
+Significance level =0.05
+α
+Equal variances were assumed for the analysis
+Factor Information
+Factor Levels Values
+Supplier 3 Aptar, Datwyler, West
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 30.17 15.083 4.27 0.022
+Error 33 116.58 3.533
+Total 35 146.75
+Figure A16 Comparison of inspection performance by both supplier and operator for particles >100 µm
+
+Supplier-2 Supplier-3 Supplier-1
+mu001>
+selcitraP
+Supplier-2-
+S
+O
+u
+p
+p
+1 plier-2-
+S
+O
+u
+p
+p
+2 plier-2- O
+Su
+p
+p
+3 plier-3-
+S
+O
+u
+p
+p
+1 plier-3-
+S
+O
+u
+p
+p
+2 plier-3- O
+Su
+p
+p
+3 plier-1-
+S
+O
+u
+p
+p
+1 plier-1- O
+Su
+p
+p
+2 plier-1- Op3
+mu003>srebiF
+Model Summary Means
+S R-sq R-sq(adj) R-sq(pred) Supplier_1 N Mean StDev 95% CI
+1.87958 20.56% 15.74% 5.46% Supplier_1 12 3.833 1.403 (2.729, 4.937)
+Supplier_2 12 2.250 2.301 (1.146, 3.354)
+Supplier_3 12 1.667 1.826 (0.563, 2.771)
+Pooled StDev = 1.87958
+Figure A17 Box plot of performance by supplier for particles >100 µm
+One-way ANOVA: Fibers > 300 µm versus Supplier
+Method Factor Information
+Null hypothesis All means are equal Factor Levels Values
+Alternative hypothesis Not all means are equal
+Supplier 3 Aptar, Datwyler, West
+Significance level =0.05
+α
+Equal variances were assumed for the analysis
+Analysis of Variance
+Source DF Adj SS Adj MS F-Value P-Value
+Inspecting Operator 2 158.2 79.083 15.86 0.000
+Error 33 164.6 4.967
+Total 35 322.8
+Figure A18 Comparison of inspection performance by both supplier and operator for fibers >300 µm
+
+Supplier-2 Supplier-3 Supplier-1
+Conclusion. The original strategy for confirming the robustness of the test method for extracting and
+counting the particulate present on the resulting membrane filter was intended to demonstrate quan-
+titatively the repeatability and reproducibility of both components of the test method. Preliminary
+studies for attribute agreement revealed that rigorous training and easy to follow instructions are key
+to reducing the subjectivity of the analyst’s counting techniques. Once this foundation of objectivity
+was formed for operators, the validity of their results was not in question. Repeatability of the particle
+and fiber count data was confirmed not only when extracted samples were independently reinspected,
+but also when all operators inspected each other’s filter samples. This is evident in the hypothesis test
+results (well above a p-value of 0.05) that were obtained throughout the studies and the multiple
+qualification cohorts. On the other hand, reproducibility of output data with replicate extractions or
+between each operator’s sample sets was not easily demonstrated.
+Through multiple investigatory design-of-experiments and review of the findings with the operators
+involved, specific factors that contributed to providing what was initially thought to be inexplicable
+variability in the particle counts were identified. The inherent lack of homogeneity of particle and fiber
+deposition on the surface of elastomeric components that are packaged within a bag or collectively
+transported in multiple cartons from the same batch was one of the underlying root causes for the
+inconsistencies of the initial data gathered. As a result, managing sample bag to sample bag variability
+proved to be one of the largest factors in obtaining sufficiently low CV values. Repetitive handling,
+sampling, and shipping greatly increases variability and localization of particles within the bags.
+Results from the final transportation and qualification study demonstrated that seeding particles was
+not necessary to generate counts that are sufficiently high to yield meaningful statistical evaluation if
+unwashed samples are used instead of RTS product.
+Although several studies revealed relatively good comparability within replicate extractions for indi-
+vidual operators within a supplier’s testing team, consistent agreement within the range of values for
+particles or fibers was not demonstrated across all organizations. Counting technique for particles and
+mu003>srebiF
+Model Summary Means
+S R-sq R-sq(adj) R-sq(pred) Supplier_1 N Mean StDev 95% CI
+2.23324 49.01% 45.92% 39.31% Supplier_1 12 1.083 1.311 (-0.228, 2.395)
+Supplier_2 12 3.000 2.374 (1.688, 4.312)
+Supplier_3 12 6.167 2.758 (4.855, 7.478)
+Pooled StDev = 2.23324
+Figure A19 Box plot of performance by supplier for fibers >300 µm
+
+fibers applied to sets of replicate extractions yielded good comparability between local operators for all
+three suppliers. This comparability between local operators for all three suppliers demonstrates that the
+newly developed method is a robust and repeatable procedure.
+
+### 8.2 Appendix B. Method: Determination of Visible Particles and Fibers on
+
+Elastomeric Components by Membrane Filtration and Microscopic
+Examination
+Introduction. The purpose of this method is to provide a procedure to quantify the number of visible
+particles present on elastomeric closures used for injectable pharmaceutical products. The procedure
+describes how the elastomeric closures are to be sampled from the fully assembled package, then rinsed
+to release any particles present, and subsequently sized and counted using a stereomicroscope.
+Scope. This method is applicable to all RTU and RTS elastomeric closures but only applies to visible
+particles. The method requires that such closures be tested from fully assembled final packaging to
+reflect how they are received and used by the pharmaceutical manufacturer.
+Fiber-like particles (i.e., length to width aspect ratio of ≥5) have significantly less surface area than a
+sphere of equivalent diameter to the fiber length. This results in significantly less detection capability for
+a 100 µm long fiber as compared to 100 µm diameter sphere. To ensure this analytical method is detect-
+ing visible particles only, fiber-like particles have been given a larger visible size threshold of 300 µm.
+Equipment and materials.
+Bolded items below are considered essential for executing the method.
+1. Laminar flow cabinet meeting the requirements of ISO Class 7 or better
+2. Dispensing pressure vessel
+3. Filter jet dispenser
+4. Jet spray nozzle
+5. Analytical petri slide
+6. Analytical filter holder
+7. Grey membrane filter for counting, gridded, 25 mm, 0.8um porosity
+8. Membrane filter for jet pistol, 25 mm
+9. Orbital shaker with a 12 mm arm length or equivalent. The suitable RPMs for orbital
+shaker arm lengths are show in Table B1 below. The RPM ranges are adjusted to ensure
+comparable performance between shakers of different arm lengths.
+10. Timer traceable to an internal standard
+11. Wide-mouth Erlenmeyer flask, 300 mL
+12. Graduated cylinder, class A to deliver, 50 mL
+13. Stereomicroscope capable of approximately 50x magnification
+14. Use Reticle, Klarmann part number KR-32972-1 at 50x magnification (or equivalent).
+15. Calibrated stage micrometer to verify reticle size at magnification used
+Table B1 Orbital Shaker RPM Ranges
+Allowable RPM Range
+Orbital Arm Length
+Low High
+10 mm 355 380
+12 mm 300 325
+25 mm 200 225
+
+Equivalent equipment and materials are acceptable but must be demonstrated to be suitable for the
+intended use. Equipment must be qualified and calibrated prior to use.
+Reagents
+1. Surfactant, Polysorbate 80, reagent grade
+2. Water, purified grade 1 or 2 as specified in ISO 3696 (32) and filtered through a terminal filter
+with NMT 1 um pore size.
+Preparation for the test. Ensure that the environment in which the test is to be carried out is free
+from extraneous particles which could cause interference. This involves wearing suitable garments
+such as synthetic, low particle-shedding frocks, hair nets and beard guards and gloves within a suitable
+laminar flow cabinet. Tools and equipment must be cleaned before use by rinsing thoroughly with
+water (as defined above as Reagent 2). The exterior of sample bags should be cleaned prior to being
+introduced into the cleaned test environment. Cleanroom certified wipes should be used to clean the
+bags by wiping in overlapping straight lines, away from the operator.
+Preparation and dispensing of 0.03% Polysorbate 80 solution. Dissolve 3g of Polysorbate 80
+in 10L of water. Alternative volumes may be prepared for use by keeping this ratio constant. Prepared
+solution should be dispensed under pressure to permit in-line filtration with a filter with a pore size
+of NMT 1 µm.
+Blank testing. Blanks should be tested before and after a sample series. Blanks must meet acceptance
+criteria prior to testing samples. If blank analysis after sample series do not meet acceptance criteria,
+sample results are considered invalid.
+The use of the terms clean or cleaned below refer to tools that have been rinsed with clean and filtered
+water before use.
+Blank testing procedure
+1. Using cleaned forceps, rinse gridded, then un-gridded side of filter for 20 sec per side and place
+on filter holder.
+2. Place clean funnel on filter holder.
+3. Fill 50 mL of Polysorbate 80 solution (as defined as Reagent 1 above) in a clean graduated cylinder.
+4. Pour the 50 mL of Polysorbate 80 solution into a clean Erlenmeyer flask or accurately add 50 mL
+of Polysorbate 80 solution directly to the Erlenmeyer flask through dosing.
+5. Shake the flask on the orbital shaker at the appropriate rpm (see Table B1) for 20 sec.
+6. Decant the solution from the flask into the funnel.
+7. Repeat steps 3-6.
+8. Rinse the inside of the Erlenmeyer flask thoroughly and pour Polysorbate 80 rinse into the funnel.
+9. Rinse the inside of the funnel thoroughly.
+10. Remove the funnel and with clean forceps, place the filter in a clean petri slide.
+11. Label the petri slide appropriately.
+12. Dry the filter by placing it in the laminar air stream with lid ajar at least until the filters have
+dried.
+Blank testing acceptance criterion. Blanks are acceptable if no particles or fibers >100 µm are
+observed under the specified microscopic examination conditions.
+Sample testing procedure. The use of the terms clean or cleaned below refer to tools that have been
+rinsed with clean and filtered water prior to use.
+1. Using cleaned forceps, rinse unprinted, then printed side of filter for 20 sec per side and place on
+filter holder.
+
+2. Place clean funnel on filter holder.
+3. Open the sample bag carefully and transfer 100 cm2 of parts to a clean Erlenmeyer flask.
+4. Fill 50 mL of Polysorbate 80 solution into a graduated cylinder.
+5. Pour the 50 mL of Polysorbate 80 solution into a clean Erlenmeyer flask or accurately add 50 mL
+of Polysorbate 80 solution directly to the Erlenmeyer flask through dosing.
+6. Shake the flask on the orbital shaker at the appropriate RPM for 20 sec.
+7. Decant the solution from the flask into the funnel.
+8. Repeat steps 4-7.
+9. Discard stoppers.
+10. Rinse the inside of the Erlenmeyer flask thoroughly with water (as defined above as Reagent 2)
+and pour rinsate into the funnel.
+11. Rinse the inside of the funnel thoroughly with water (as defined above as Reagent 2).
+12. Remove the funnel and with clean forceps, place the filter in a clean petri slide.
+13. Dry the filter by placing in the laminar air stream with lid ajar at least until the filters have dried.
+Filter Evaluation. The calibration of the stereomicroscope should be verified daily prior to use us-
+ing a micrometer that is calibrated at the operational magnification. Use suitable, direct illumination
+(e.g., from a goose-neck lamp, light emitting diode [LED] light source recommended) with angles
+set between 0 and 10° from the vertical viewing axis. The magnification used for examining the filters
+should be approximately 50x. Once the lighting conditions are set, the same conditions should be
+used throughout the analysis. The focus can be adjusted throughout the analysis to keep the particles
+in focus.
+Particles must exceed the borders of the templates in the reticle and meet the established aspect ratio
+requirements to be counted.
+• Particles: >100 µm in length (to be determined using the circle template)
+• Fibers: >300 µm in length (to be determined using the rectangle template)
+The reticle described in Section 4.1 and shown in Figure B1 must be used to accurately classify any
+observed particles as visible or subvisible for either particle or fiber-like form. The following diagram
+provides instruction for use of the reticle.
+Calculations. Use the following equation to calculate the number of visible particles per 10 cm2 for
+both particles and fibers.
+visible particles visible particles counted on filter × 10
+=
+10 cm2 number of parts used × surface area per part
+visible fibers visible fibers counted on filter × 10
+=
+10 cm2 number of parts used × surface area per part
+Reporting. Report the number of visible particles/10cm2 and visible fibers/10cm2
+
+### 8.3 Appendix C. Additional Information on Empty Glass Inspection
+
+Capability Studies
+Study Test Kits
+The glass container inspection study required the test kits to be of sufficient quality so as not to bias
+the study results. This was achieved through the following steps.
+
+Use defined
+magnification and Use red circle to Particle contained
+Filter Sample
+reticle to locate Fiber Like? No inspect inside circle (not Yes Do not count
+Mounted
+particulate on touching red border?
+filter
+Yes
+Use red box to
+inspect
+No
+Count and categorize
+Fiber contained
+into two groups; Fibers
+inside box (not
+No and Particles. Repeat Report test results
+touching red
+for all other particles
+border)?
+present on filter
+Yes
+Do not count
+Figure B1 Flowchart showing the use of the specified reticle to determine status of any observed particles on the filter
+
+Table C1 Summary of Nominal Particle Size by Material
+Particle/Fiber Size (µm)
+Type Material Color Photo
+selcitraP
+001 002 003 005 007 008
+000,1
+Glass Transparent
+X X X
+Rubber Orange – Cartridges
+Black – Syringes X X X X
+Gray – Vials (shown)
+Metal Silver/Gray
+X X X
+srebiF
+Cellulose White
+X X X X
+Plastic White
+X X X X
+Hair Brown
+X X
+Figure C1 Shape factor vs size for the particles and fibers seeded into test vials
+
+Figure C2 Graphic comparison of test kit composition (kits A, B, and C)
+The containers were washed and seeded with a particle of known size and type. Each particle was
+digitally photographed and measured before being glued with a highly transparent, UV-cured glue.
+Each container was then sealed to prevent further particle contamination. Three equivalent kits were
+produced and used for this study to ensure that the results were not influenced by the composition
+of a specific kit. A critical analysis of the composition of each kit was performed before use. Table C1
+shows the intended particle types and size ranges while Figure C1 shows the actual results. Figure C2
+provides a graphic comparison of the composition of the kits (A, B, and C) that were prepared and
+used in the study showing both SF and size of the particles and fibers seeded into test containers. The
+circled outliers were removed from the study kits to assure conformance with the intended kit design.
+Data Collection
+Study Data. A total of eleven companies participated in the study: five from the pharmaceutical in-
+dustry and six manufactures of the primary packaging materials. Each company used five inspectors
+for the study; each inspector performed the inspection six times, producing a total of 59,400 data
+points. The data were reviewed and confirmed as valid prior to being used in the statistical analysis.
+Inspection Rate. Sufficient time must be allowed for a thorough inspection of each container. The
+EP (26), USP (6), and JP (28) each specify a reference time of inspection per container of ten 10 sec;
+five sec each against black and white backgrounds. Before executing the study, an estimate was made
+for inspection of the complete test of 60 containers using the minimum inspection time defined by the
+compendia. The estimated target time to complete the inspection of the kit, allowing for the necessary
+container handling and inspection was determined to be 10-20 min.
+On completion of the study, an analysis was performed to establish inspection time boundaries based on
+actual time used and parameters for determining invalid and missing data. The lower limit was set at 9 min
+while the upper limit was calculated as the median plus 1.66 standard deviations, resulting in an upper limit
+of 31min. Results obtained outside of this range were not considered valid and were not used in the analysis.
+
+Figure C3 shows that about 86% of the test runs were considered valid for the analysis based on in-
+spection time. Data were also excluded if a container was broken or unavailable for inspection. This
+resulted in 49,360 of the 59,400 data points being used for subsequent analysis.
+Main influences on probability of detection
+Operator Experience. The inspectors participating in this study had differing levels of glass inspection
+experience. For pharmaceutical manufacturers, the inspectors typically inspect filled containers, whereas
+those at the suppliers primarily focus on empty containers. Overall, however, the results from both groups
+of inspectors were found to be comparable. See Figure C4 for particle inspection results and Figure C5 for
+results for fibers. Larger circles indicate a greater number of observations with the same value.
+Figure C3 Distribution of time required to complete inspection of test kit
+Figure C4 Particle inspection results with inspectors having prior experience with empty containers (Yes) and those
+without such experience (No). Circle diameter is proportional to the number of data points falling at a specific x-y location.
+
+Figure C5 Fiber inspection results with inspectors having both prior experience (Yes) with empty containers and those
+without such experience (No). Circle diameter is proportional to the number of data points falling at a specific x-y location.
+Particle/Fiber type. The material composition of the particle had a significant influence on the PoD
+observed. Glass, metal, and grey rubber particles (100 to 200 µm) were found to have a lower PoD
+than orange or black rubber particles of similar size as shown in Figure C6.
+Figure C6 Probability of detection for particles of differing type and size. Circle diameter is proportional to the number
+of data points falling at a specific x-y location.
+
+This becomes more pronounced with fibers, where cellulose fibers have a statistically lower PoD than
+that for brown hair or white plastic as shown in Figure C7. Optical contrast is necessary for reliable
+detection and greatly impacts the resulting PoD.
+Container Size/Type. Figure C8 for particles and Figure C9 for fibers show the influence of con-
+tainer size and type on inspection results. The vials used in the study were 30 ml and had a surface area
+approximately three times larger than either the 1 mL syringes or 3 mL cartridges used. This resulted
+in a decrease in the inspection time per unit surface area when examining containers of larger size and
+suggests a reason for lower detection rates in the vials used for this study.
+Figure C7 Probability of detection for fibers of differing type and size. Circle diameter is proportional to the number of
+data points falling at a specific x-y location.
+Figure C8 Probability of detection for particles in various container types and sizes. Circle diameter is proportional to
+the number of data points falling at a specific x-y location.
+
+Figure C9 Probability of detection for fibers in various container types and sizes. Circle diameter is proportional to the
+number of data points falling at a specific x-y location.
+Main Effects. Using the Boruta method (33) the data were analyzed for the significance that each
+variable has on the resulting PoD. This method is based on a machine learning technique called Ran-
+dom Forest. Random Forest computes the importance of predictor variables vs a response variable. It
+repeats this process and generates a distribution of importance for each predictor variable. It then sorts
+the predictor variables based on their importance and statistically compares them to random (shadow)
+variables to categorize them as:
+• Rejected: variable has significantly less predictive importance than random variables.
+• Confirmed: variable has significantly more predictive importance.
+• Tentative: variable cannot be categorized as either rejected or confirmed when computation stops.
+Figure C10 Boruta Plot of inspection study results demonstrating factors significant to reliable inspection performance.
+
+As a result, important variables are those that can play a significant role in predicting the response vari-
+able. This is similar to significant predictors in Analysis of Variance (ANOVA) but fails to satisfy usual
+assumptions of parametric models.
+Conclusion
+Based on statistical analysis of the valid data from the empty container inspection study, the main
+variables influencing the PoD were determined to be particle size, inspector, container, and particulate
+type. Further, particle size is a significant factor as well, with lower PoD observed for smaller particles.
+Material providing poorer contrast against the backgrounds produced lower PoD values. This was
+more significant when examining fibers where cellulose had a statistically lower PoD than brown hair
+and plastic. These results are consistent with previous visual inspection studies with filled containers.
+Finally, the container size influenced the PoD, with larger containers (with a greater surface area) effec-
+tively reducing the time per unit surface area available to inspect the product and resulting in reduced
+detection rates for smaller particles.
+
+### 8.4 Appendix D. Method: Visual Inspection of Empty Glass Containers
+
+Introduction. The purpose of this method is to provide a procedure to identify and quantify the
+number of visible particles present on empty glass containers used for injectable pharmaceutical prod-
+ucts. The procedure describes the inspection conditions and how the containers should be presented
+to the inspector.
+Scope. This method is applicable to all empty glass containers. Inspection times may need to be in-
+creased for larger (>100mL) containers.
+Equipment and materials.
+1. Inspection cabinet with matte black and white backgrounds with diffuse lighting of 2,000-
+3,750 lux at the point of inspection.
+Glass container inspection procedure.
+1. Remove a container from the uninspected tray.
+2. Hold the sample approximately 10 cm directly below the lamp at a distance approximately 30
+cm from the inspector’s eyes.
+3. Inspect the sample for 5-10 sec against the black background. Rotate and invert the container to
+ensure all areas are examined adjusting your grip on the container as needed.
+4. Inspect the sample for 5-10 sec against the white background. Rotate and invert the container to
+ensure all areas are examined adjusting your grip on the container as needed.
+5. Place each piece examined into the either the reject tray or passing tray as required.
+6. Complete any necessary records documenting the inspection of each piece before moving to the
+next inspection.
+The time spent per container may be controlled using a pacing device. Recording the time spent in-
+specting each batch and then calculating the nominal inspection rate is a reliable method to confirm
+that the rate of inspection was maintained within the defined limits.
+Information recorded during or after inspection may include details such as the type and location of
+any particles observed, and any other defects observed. On completion of the inspection, the data
+should be evaluated against the established acceptance criteria to determine the disposition of the
+batch. During inspection, the operator should avoid direct viewing of the light source and take regular
+eye breaks to avoid eye strain which may adversely influence the results of the inspection.
+
+Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
+An Authorized User of this electronic publication is the purchaser.
+Authorized Users are permitted to do the following:
+• Search and view the content of the PDA Electronic Publication
+• Download the PDA Electronic Publication for the individual use of an Authorized User
+• Print the PDA Electronic Publication for the individual use of an Authorized User
+• Make a reasonable number of photocopies of a printed PDA Electronic Publication for the individual use of an
+Authorized User
+Authorized Users are not permitted to do the following:
+• Allow anyone other than an Authorized User to use or access the PDA Electronic Publication
+• Display or otherwise make any information from the PDA Electronic Publication available to anyone other
+than an Authorized User
+• Post the PDA Electronic Publication or portions of the PDA Electronic Publication on websites, either available
+on the Internet or an Intranet, or in any form of online publications without a license from PDA, Inc.
+• Transmit electronically, via e-mail or any other file transfer protocols, any portion of the PDA Electronic
+Publication
+• Create a searchable archive of any portion of the PDA Electronic Publication
+• Use robots or intelligent agents to access, search and/or systematically download any portion of the PDA
+Electronic Publication
+• Sell, re-sell, rent, lease, license, sublicense, assign or otherwise transfer the use of the PDA Electronic Publication
+or its content
+• Use or copy the PDA Electronic Publication for document delivery, fee-for-service use, or bulk reproduction or
+distribution of materials in any form, or any substantially similar commercial purpose
+• Alter, modify, repackage or adapt any portion of the PDA Electronic Publication
+• Make any edits or derivative works with respect to any portion of the PDA Electronic Publication including any
+text or graphics
+• Delete or remove in any form or format, including on a printed article or photocopy, any copyright information
+or notice contained in the PDA Electronic Publication
+• Combine any portion of the PDA Electronic Publication with any other material
+To License or purchase Reprints
+• Licensing: Site licenses and licenses to distribute PDA Electronic Publication can be obtained for a fee.
+To learn more about licensing options and rates, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900,
+ext. 133. Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+• Reprints: Reprints of PDA Electronic Publication can be purchased for a fee.
+To order reprints, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
+Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
+Bethesda, MD 20814.
+
+Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric
+Closures and Glass Containers
+About PDA Technical Reports
+PDA Technical Reports are global consensus documents, prepared by member-driven Task Forces (listed on inside
+front cover) comprised of content experts, including scientists and engineers working in the pharmaceutical/bio-
+pharmaceutical industry, regulatory authorities and academia. While in development, PDA Technical Reports are
+subjected to a global review of PDA members and other topic-specific experts, often including regulatory officials.
+Comments from the global review are then considered by the authoring Task Force during the preparation of the
+final working draft. The level of expertise of the Task Force and those participating in the global review ensure a
+broad perspective reflecting best thinking and practices currently available.
+The final working draft is next reviewed by the PDA Advisory Board or Boards that sanctioned the project. PDA’s
+Advisory Boards are: Science Advisory Board, Biotechnology Advisory Board, and Regulatory Affairs and Quality
+Advisory Board. Following this stage of review, the PDA Board of Directors conducts the final review and deter-
+mines whether to publish or not publish the document as an official PDA Technical Report.
+While PDA goes to great lengths to ensure each Technical Report is of the highest quality, all readers are encouraged
+to contact PDA about any scientific, technical, or regulatory inaccuracies, discrepancies, or mistakes that might be
+found in any of the documents. Readers can email PDA at: TRfeedback@pda.org.
+Sanctioning Advisory Board: SAB PDA Officers and Directors
+Phil DeSantis, DeSantis Consulting Associates (Chair) Officers
+Greg Bassett, Amgen (Vice Chair)
+Chair: Jette Christensen, Novo Nordisk
+Masahiro Akimoto, OTSUKA
+Chair-Elect: Sue Schniepp, Regulatory Compliance
+John Ayres, MD, Consultant
+Associates Inc.
+Ed Balkovic, PhD, MicroBio Technical Support
+Treasurer: Melissa Seymour, Biogen, Inc.
+Marcia Baroni, Emergent BioSolutions Inc
+Secretary: Emma Ramnarine, Genentech/Roche
+Rebecca Brewer, Quality Executive Partners
+Imm. Past Chair: Rebecca Devine, PhD, Regulatory
+Tom Damratoski, Bristol Myers Squibb
+Consultant
+Rhonda Ezell, Vitruvias Therapeutics
+President: Richard Johnson
+Guenther Gapp, Gapp Quality GmbH
+Mauro Giusti, MS, Eli Lilly Directors
+Marc Glogovsky, MS, Valsource, LLC
+Barbara M. Allen, PhD, Eli Lilly and Company
+Gabriele Gori, MS, GlaxoSmithKline
+Michael Blackton, Adaptimmune, LLC
+Dennis Guilfoyle, PhD, Johnson & Johnson
+Bettine Boltres, PhD, West Pharmaceutical Services
+Ghada Haddad, PhD, Merck
+Kenneth Hinds, PhD, Johnson & Johnson Tia Bush, Amgen, Inc.
+Ken-ichi Izutsu, PhD, National Institute of Health Javier Camposano, Celltrion
+Sciences Ghada Haddad, Merck & Co./Merck Sharp & Dohme
+Gitte Letting, Novo Nordisk Joyce Hansen, Johnson & Johnson
+Ivy Louis, VIENNI TRAINING & CONSULTING, LLP
+Stephan Krause, PhD, AstraZeneca Biologics
+Stefan Merkle, PhD, Janssen
+Mary Oates, Emergent Bioscience
+Mike Sadowski, Baxter
+Mathias Romacker, Pfizer (ret.)
+Matthew Schmidt, MS, Merck
+Siegfried Schmitt, PhD, Parexel International Corp. Anil Sawant, PhD, Merck & Co./Merck Sharp & Dohme
+Kristin Valente, PhD, Merck Osamu Shirokizawa, LifeScientia
+PDA Publication Production and Editing
+Jahanvi Miller, MBA, Assistant Director, Scientific Affairs
+Glenn Wright, VP, Scientific & Regulatory Affairs
+Walter Morris, Senior Director of Publishing and Press Relations
+Katja Yount, Publication Designer
+Marilyn Foster, Technical Editor/Writer
+
+Bethesda Towers
+4350 East West Highway
+Suite 600
+Bethesda, MD 20814 USA
+Tel: +1 (301) 656-5900
+Fax: +1 (301) 986-0296
+E-mail: info@pda.org
+Web site: www.pda.org

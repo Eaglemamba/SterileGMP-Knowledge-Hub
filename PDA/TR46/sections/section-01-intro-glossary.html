@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR46 - Section 1: Introduction &amp; Glossary</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY DEFINITION BLOCKS ===== */
+.glossary-block {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #3182ce;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.glossary-block .term-name {
+    font-weight: 700;
+    color: #1e3a5f;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.glossary-block .term-abbr {
+    display: inline-block;
+    background: #edf2f7;
+    color: #2d3748;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+}
+
+.glossary-block .term-def {
+    font-size: 0.88rem;
+    color: #4a5568;
+    line-height: 1.65;
+    margin: 0.3rem 0 0;
+}
+
+/* Colour variants for glossary by category */
+.glossary-block.cat-data     { border-left-color: #3182ce; }
+.glossary-block.cat-quality  { border-left-color: #38a169; }
+.glossary-block.cat-chain    { border-left-color: #dd6b20; }
+.glossary-block.cat-tech     { border-left-color: #805ad5; }
+.glossary-block.cat-cold     { border-left-color: #00bcd4; }
+
+/* ===== COMPARISON TABLE (RFID vs Barcode) ===== */
+.compare-table th {
+    background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+    color: white;
+    font-size: 0.85rem;
+}
+
+.compare-table td {
+    font-size: 0.85rem;
+    vertical-align: top;
+}
+
+.compare-table .yes { color: #276749; font-weight: 600; }
+.compare-table .no  { color: #9b2c2c; font-weight: 600; }
+
+/* ===== SUPPLY CHAIN FLOW DIAGRAM ===== */
+.chain-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+}
+
+.chain-node {
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.chain-node.manufacturer  { background: #bee3f8; color: #1a365d; }
+.chain-node.wholesaler    { background: #c6f6d5; color: #1c4532; }
+.chain-node.pharmacy      { background: #fefcbf; color: #744210; }
+.chain-node.hospital      { background: #fed7d7; color: #742a2a; }
+.chain-node.patient       { background: #e9d8fd; color: #44337a; }
+.chain-node.last-mile     { background: #fed7d7; color: #742a2a; border: 2px dashed #e53e3e; }
+
+.chain-arrow {
+    color: #718096;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.chain-bracket {
+    font-size: 0.78rem;
+    color: #e53e3e;
+    font-style: italic;
+    margin-left: 0.25rem;
+}
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-top: 2rem;
+}
+
+.section-summary h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    opacity: 0.95;
+}
+
+.section-summary .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+    .section-summary .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    .chain-flow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.summary-col h4 {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>TR46 Sections 1&ndash;2: Introduction &amp; Glossary</h1>
+    <div class="subtitle">導論與術語表 &mdash; 最後一哩GDP指引</div>
+    <div class="page-info">PDA Technical Report No. 46 (Revised 2024) | p1&ndash;p3</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>本章學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解「最後一哩」（<em>Last Mile</em>）的定義：從製造商/批發商到終端用戶（患者/藥局/醫院）的最後配送段，是整條供應鏈中管控最薄弱的一環</li>
+            <li>區分TR46與TR39的互補關係：TR39聚焦製造商到批發商的溫控運輸，TR46聚焦從批發商到終端患者的最後一段</li>
+            <li>掌握17個GDP核心術語，特別是MKT（平均動力學溫度）、相變材料（PCM）、逆向物流、Pedigree/e-Pedigree</li>
+            <li>了解ALCOA+數據完整性原則在配送鏈文件管理中的應用，以及元數據（Metadata）與原始記錄（Original Record）的法規意義</li>
+        </ul>
+    </div>
+
+    <!-- ===== SECTION 1.0 INTRODUCTION ===== -->
+    <div class="two-column" id="sec-1-intro">
+
+        <!-- LEFT: Original English -->
+        <div class="left-column">
+            <h2>1.0 Introduction</h2>
+            <p>
+                This guidance document complements the information provided in
+                <span class="key-term">PDA Technical Report No. 39 (Revised 2021)</span>:
+                <em>Guidance for Temperature-Controlled Medicinal Products &mdash; Maintaining the
+                Quality of Temperature-Sensitive Medicinal Products through the Transportation
+                Environment</em> by going beyond manufacturer-focused issues and addressing
+                issues specifically encountered within the <span class="key-term">"last mile"</span>
+                of the distribution of medicinal products and devices. This revision updates
+                the original 2009 technical report to account for expanded regulations, the
+                development and implementation of newer, more advanced technologies and supply
+                chains that have become more extensive and complex.
+            </p>
+
+            <h3>1.1 Purpose and Scope</h3>
+            <p>
+                "Last mile" distribution is an often-used logistical term that refers to the
+                transport of product from the manufacturing facility to the
+                <span class="key-term">end user</span>. For the purposes of this technical
+                report, <span class="key-term">last mile</span> is defined as the final
+                transfer of a drug from the manufacturer or wholesaler to the end user which
+                could be either the patient or the entity (e.g.,
+                <span class="key-term">pharmacy</span>,
+                <span class="key-term">hospital</span>) that provides the drug to the patient.
+            </p>
+
+            <div class="quote-box">
+                Transfers earlier in the distribution process involve organizations with greater
+                knowledge of the product and the resources to ensure carefully controlled
+                conditions of storage and transport compared to those available to the end
+                user. As such, PDA Technical Report No. 46 (Revised 2024): <em>Last Mile:
+                Guidance for Good Distribution Practices for Pharmaceutical Products to End
+                User</em> provides recommendations and tools based on current best practices
+                to ensure that product quality is maintained until the final handoff.
+            </div>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary -->
+        <div class="right-column">
+            <h2>中文解說 Commentary</h2>
+
+            <div class="concept-box">
+                <h4>TR46 vs TR39 定位關係</h4>
+                <p><strong>TR39</strong>（2021年修訂）聚焦的是製造商至批發商之間的溫控運輸，涵蓋大型冷鏈基礎設施、驗証性研究（qualification studies）與運輸容器測試，是供應鏈的「主幹道」管控。</p>
+                <p><strong>TR46</strong>（2024年修訂）則接棒TR39，處理批發商或製造商到<strong>最終患者/藥局/醫院</strong>這最後一段路。這段配送的特徵是：</p>
+                <ul>
+                    <li>組織GDP知識薄弱（藥局人員、快遞員、甚至患者本人）</li>
+                    <li>溫度暴露風險高（最後一段往往無溫控車輛）</li>
+                    <li>管制鏈鬆散（監控設備不足、紙本記錄主導）</li>
+                </ul>
+                <p>兩份技術報告合用，才能涵蓋完整的藥品供應鏈溫控管理。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>最後一哩的快遞業類比</h4>
+                <p>「最後一哩」源自電信與物流產業。以快遞業為例：</p>
+                <ul>
+                    <li><strong>主幹網絡</strong>（製造商&rarr;區域配送中心）：效率高、溫控穩定、全程追蹤</li>
+                    <li><strong>最後一哩</strong>（配送中心&rarr;家門口）：最難控制——受交通、天氣、配送員素質、電梯故障等影響</li>
+                </ul>
+                <p>藥品配送亦然：大型物流商的倉庫到配送卡車管控精良，但藥品離開藥局窗口、交到患者手中的這一段，往往沒有冷藏袋、沒有溫度記錄，是品質風險最高的環節。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>2024年修訂新增重點</h4>
+                <p>相較於2009年原版，此次修訂主要更新：</p>
+                <ul>
+                    <li><strong>法規更新</strong>：序列化（Serialization）、DSCSA（美國藥品供應鏈安全法）、FMD（歐盟藥品偽造指令）</li>
+                    <li><strong>新技術</strong>：區塊鏈（Blockchain）追溯、無人機（drone）配送、IoT感測器</li>
+                    <li><strong>地區擴展</strong>：納入非洲、中國、東南亞等新興市場的最後一哩挑戰</li>
+                    <li><strong>直接配送到患者（DTP）</strong>：特別針對細胞與基因治療（CGT）產品的居家輸注服務</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>台灣實務：最後一哩的挑戰</h4>
+                <p>台灣藥品配送最後一哩面臨獨特挑戰：</p>
+                <ul>
+                    <li><strong>冷藏鏈斷點</strong>：許多社區藥局無符合規格的冷藏設備，患者取藥後以一般購物袋攜帶</li>
+                    <li><strong>偏遠地區</strong>：離島（金門、澎湖）與山區部落運輸時間長，溫度累積暴露顯著</li>
+                    <li><strong>居家護理</strong>：生物製劑（胰島素、生長激素）居家注射用藥，患者冰箱溫度管理參差不齊</li>
+                    <li><strong>電商藥局</strong>：網路購藥興起，常溫快遞運送需要冷媒包但規範尚不明確</li>
+                </ul>
+                <p>TR46提供的框架可直接應用於台灣健保藥品配送SOP的制訂與稽核。</p>
+            </div>
+        </div>
+    </div><!-- end two-column sec-1 -->
+
+    <!-- ===== SECTION 2.0 GLOSSARY HEADER ===== -->
+    <div class="two-column" id="sec-2-glossary-intro">
+        <div class="left-column">
+            <h2>2.0 Glossary and Abbreviations</h2>
+            <p>
+                The Glossary includes a list of common terms specific to this technical report.
+                Definitions of terms are listed alphabetically and may come from sources such as
+                the <span class="key-term">U.S. Pharmacopeia</span>,
+                <span class="key-term">American Society for Testing Materials (ASTM)</span>,
+                <span class="key-term">International Conference for Harmonisation (ICH)</span>,
+                <span class="key-term">International Organization for Standardization (ISO)</span>,
+                or other PDA technical reports. Definitions quoted from other sources are cited
+                at the end of the definition.
+            </p>
+        </div>
+        <div class="right-column">
+            <h2>中文解說 Commentary</h2>
+            <div class="concept-box">
+                <h4>術語來源的法規層次</h4>
+                <p>TR46的術語定義刻意引用多個國際權威來源，體現GDP管理的多元監管框架。理解各術語的來源有助於法規對接：</p>
+                <ul>
+                    <li><strong>USP</strong>（美國藥典）：MKT計算方法的法規依據</li>
+                    <li><strong>ICH Q10</strong>：品質管理體系（PQS）框架，CAPA源自此處</li>
+                    <li><strong>ISO 9001</strong>：Customer（客戶）定義的來源</li>
+                    <li><strong>FDA 21 CFR Part 11</strong>：電子記錄與Data Integrity要求的基礎</li>
+                </ul>
+                <p>本節17個術語按字母排列，以下逐一解說，並標示各術語所屬的管理類別。</p>
+            </div>
+        </div>
+    </div><!-- end glossary intro -->
+
+    <!-- ===== GLOSSARY TERMS ===== -->
+    <div class="two-column" id="sec-2-glossary-terms">
+
+        <!-- LEFT: English Definitions -->
+        <div class="left-column">
+            <h3>Glossary Terms (A&ndash;Z)</h3>
+
+            <!-- ALCOA+ -->
+            <div class="glossary-block cat-data">
+                <div class="term-name">ALCOA+</div>
+                <div class="term-def">
+                    An acronym standing for <strong>A</strong>ttributable, <strong>L</strong>egible,
+                    <strong>C</strong>ontemporaneous, <strong>O</strong>riginal, <strong>A</strong>ccurate
+                    ("ALCOA") and Complete, Consistent, Enduring and Available ("+"). It is a set of
+                    characteristics that all data must meet to ensure data integrity. Adherence to
+                    ALCOA+ principles is the basis for <span class="key-term">Good Documentation Practice</span>.
+                </div>
+            </div>
+
+            <!-- CAPA -->
+            <div class="glossary-block cat-quality">
+                <div class="term-name">Corrective Action, Preventive Action <span class="term-abbr">CAPA</span></div>
+                <div class="term-def">
+                    Action to eliminate the cause of a detected nonconformity or other undesirable
+                    situation. <strong>Corrective action</strong> is taken to prevent recurrence,
+                    whereas <strong>preventive action</strong> is taken to prevent occurrence.
+                </div>
+            </div>
+
+            <!-- Customer -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Customer</div>
+                <div class="term-def">
+                    In distribution, the customer is the <strong>trading partner or reseller</strong>;
+                    in direct-to-consumer situations, the customer is the <strong>end user</strong>
+                    who is either the patient taking the product or the person administering the product
+                    to the patient such as a physician.
+                </div>
+            </div>
+
+            <!-- Data Integrity -->
+            <div class="glossary-block cat-data">
+                <div class="term-name">Data Integrity</div>
+                <div class="term-def">
+                    The degree to which data are complete, consistent, accurate, trustworthy, reliable
+                    and that these characteristics of the data are maintained throughout the
+                    <span class="key-term">data life cycle</span>.
+                </div>
+            </div>
+
+            <!-- Downstream -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Downstream</div>
+                <div class="term-def">
+                    Refers to the <strong>demand side</strong> of the supply chain that consists of
+                    one or more companies or individuals who participate in the flow of pharmaceuticals
+                    moving from the manufacturer to the end user.
+                </div>
+            </div>
+
+            <!-- GDP -->
+            <div class="glossary-block cat-quality">
+                <div class="term-name">Good Distribution Practices <span class="term-abbr">GDP</span></div>
+                <div class="term-def">
+                    Defined as the part of quality assurance that ensures the quality of the
+                    pharmaceutical product is maintained by means of adequate control of the numerous
+                    activities that occur during the <span class="key-term">distribution process</span>.
+                </div>
+            </div>
+
+            <!-- GMP -->
+            <div class="glossary-block cat-quality">
+                <div class="term-name">Good Manufacturing Practices <span class="term-abbr">GMP</span></div>
+                <div class="term-def">
+                    Best practices in manufacturing of pharmaceuticals or biopharmaceuticals, from a
+                    regulatory standpoint, regarded as the minimum current good manufacturing practice
+                    for methods, facilities, and controls used for the manufacture, processing,
+                    packaging, or holding of a drug to ensure it meets requirements of safety, identity,
+                    strength, quality and purity.
+                </div>
+            </div>
+
+            <!-- Last Mile -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Last Mile</div>
+                <div class="term-def">
+                    A multidimensional, cross-industry term that defines a point in the supply chain
+                    where the product or service <strong>directly faces the customer, end user, or
+                    patient</strong>.
+                </div>
+            </div>
+
+            <!-- MKT -->
+            <div class="glossary-block cat-cold">
+                <div class="term-name">Mean Kinetic Temperature <span class="term-abbr">MKT</span></div>
+                <div class="term-def">
+                    The single calculated temperature at which the <strong>total amount of degradation</strong>
+                    over a particular period is equal to the sum of the individual degradations that would
+                    occur at various temperatures. MKT may be considered as an isothermal storage
+                    temperature that simulates the nonisothermal effects of storage temperature variation.
+                    <strong>It is not a simple arithmetic mean.</strong>
+                </div>
+            </div>
+
+            <!-- Metadata -->
+            <div class="glossary-block cat-data">
+                <div class="term-name">Metadata</div>
+                <div class="term-def">
+                    Data that describe the attributes of other data and provide context and meaning.
+                    Typically describe the structure, data elements, inter-relationships, and other
+                    characteristics of data (e.g., <span class="key-term">audit trails</span>).
+                    Metadata also permit data to be attributable to an individual or, if automatically
+                    generated, to the original data source.
+                </div>
+            </div>
+
+            <!-- Original Record -->
+            <div class="glossary-block cat-data">
+                <div class="term-name">Original Record</div>
+                <div class="term-def">
+                    Data as the file or format in which it was <strong>originally generated</strong>,
+                    preserving the integrity (accuracy, completeness, content and meaning) of the record
+                    &mdash; e.g., original paper record of manual observation, or electronic raw data file
+                    from a computerized system.
+                </div>
+            </div>
+
+            <!-- Pedigree / e-Pedigree -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Pedigree, e-Pedigree</div>
+                <div class="term-def">
+                    A <span class="key-term">pedigree</span> is a record containing information
+                    regarding each transaction resulting in a change of ownership of a pharmaceutical,
+                    from sale by a manufacturer, through acquisition and sale by a wholesaler, until
+                    final sale to a pharmacy or person furnishing, administering, or dispensing the
+                    pharmaceutical. An <span class="key-term">e-Pedigree</span> is the electronic
+                    form of this record.
+                </div>
+            </div>
+
+            <!-- PCM -->
+            <div class="glossary-block cat-cold">
+                <div class="term-name">Phase Change Material <span class="term-abbr">PCM</span></div>
+                <div class="term-def">
+                    A physical material that <strong>stores and releases thermal energy</strong> when
+                    freezing or melting. A PCM releases energy when freezing (latent heat energy) and
+                    absorbs energy when melting.
+                </div>
+            </div>
+
+            <!-- RFID -->
+            <div class="glossary-block cat-tech">
+                <div class="term-name">Radio Frequency Identification <span class="term-abbr">RFID</span></div>
+                <div class="term-def">
+                    An automatic technique for identifying objects using
+                    <span class="key-term">radio frequency transmissions</span>. An RFID system
+                    generally consists of a tag, reader, antenna, and software. Tags comprise a
+                    semiconductor chip with memory, processing capability and a transmitter connected
+                    to an antenna.
+                </div>
+            </div>
+
+            <!-- Reverse Logistics -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Reverse Logistics</div>
+                <div class="term-def">
+                    The process of planning, implementing, and controlling the efficient, cost-effective
+                    flow of raw materials, in-process inventory, finished goods and related information
+                    <strong>from the point of consumption to the point of origin</strong> for the purpose
+                    of recapturing value or disposal.
+                </div>
+            </div>
+
+            <!-- Shipping Lane -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Shipping Lane</div>
+                <div class="term-def">
+                    An established route of transportation between a specific
+                    <span class="key-term">point of origin</span> to a specific
+                    <span class="key-term">destination</span>. More defined routes will consistently
+                    use the same combination and types of transportation vehicles and transfer
+                    procedures, but this may not be observed through all shipping lanes throughout
+                    the last mile.
+                </div>
+            </div>
+
+            <!-- Supply Chain -->
+            <div class="glossary-block cat-chain">
+                <div class="term-name">Supply Chain</div>
+                <div class="term-def">
+                    The chain of events or process which includes all storage and movement of
+                    raw materials, work-in-process inventory, and finished goods from
+                    <span class="key-term">point-of-origin</span> to
+                    <span class="key-term">point-of-consumption</span>.
+                </div>
+            </div>
+
+        </div><!-- end left-column glossary -->
+
+        <!-- RIGHT: Chinese Commentary on Glossary -->
+        <div class="right-column">
+            <h2>中文解說 Commentary</h2>
+
+            <!-- ALCOA+ -->
+            <div class="concept-box">
+                <h4>ALCOA+ 逐字解析</h4>
+                <p>ALCOA+是FDA數據完整性稽查的核心框架，在GDP配送記錄管理中同等重要：</p>
+                <ul>
+                    <li><strong>A</strong>ttributable（可歸屬）：誰在何時做的記錄？必須可追溯到個人</li>
+                    <li><strong>L</strong>egible（清晰可讀）：溫度計錄單手寫必須清楚，不可塗改</li>
+                    <li><strong>C</strong>ontemporaneous（即時）：溫度異常發生時立即記錄，不可事後補記</li>
+                    <li><strong>O</strong>riginal（原始）：保留原始數據，不可只保留摘要</li>
+                    <li><strong>A</strong>ccurate（準確）：溫度記錄器經過校正，數值可信</li>
+                    <li><strong>+</strong>：Complete（完整）、Consistent（一致）、Enduring（持久）、Available（可取得）</li>
+                </ul>
+                <p>違反ALCOA+常見例子：配送員事後補填溫度日誌（違反C）；用修正液塗改記錄（違反O）。</p>
+            </div>
+
+            <!-- CAPA -->
+            <div class="concept-box">
+                <h4>CAPA 在配送偏差中的應用</h4>
+                <p><strong>糾正措施（CA）</strong>：針對已發生的偏差，消除根本原因。例：某批次冷藏藥品溫度超標，CA = 立即隔離批次 + 根因調查 + 更換冰排配方。</p>
+                <p><strong>預防措施（PA）</strong>：防止類似問題再次發生。例：夏季高溫季節主動縮短配送時間窗口、要求使用更高規格的保溫箱。</p>
+                <p>在最後一哩GDP稽查中，稽查員最常查CAPA的有效性：措施是否真正解決了根本原因，還是只是表面的「再訓練人員」。</p>
+            </div>
+
+            <!-- Customer & Supply Chain direction -->
+            <div class="concept-box">
+                <h4>Upstream vs. Downstream 方向辨析</h4>
+                <div class="chain-flow">
+                    <span class="chain-node manufacturer">製造商</span>
+                    <span class="chain-arrow">&rarr;</span>
+                    <span class="chain-node wholesaler">批發商</span>
+                    <span class="chain-arrow">&rarr;</span>
+                    <span class="chain-node pharmacy">藥局/醫院</span>
+                    <span class="chain-arrow">&rarr;</span>
+                    <span class="chain-node patient">患者</span>
+                    <span class="chain-bracket">&#8592; Last Mile &#8594;</span>
+                </div>
+                <p><strong>Upstream（上游）</strong>：從患者方向看回去，是製造商/原料供應商側。供應側。</p>
+                <p><strong>Downstream（下游）</strong>：從製造商方向看出去，是需求側，最終到患者。</p>
+                <p>TR46的「Customer」定義靈活：B2B情境下，客戶是交易夥伴（批發商）；DTC（直接到消費者）情境下，客戶是患者或施藥的醫師。這個雙重定義直接影響GDP文件管理對象的設計。</p>
+            </div>
+
+            <!-- MKT -->
+            <div class="formula-box">
+                <h4>MKT（平均動力學溫度）深度解說</h4>
+                <p>MKT <strong>不是</strong>算術平均溫度，而是用<strong>Arrhenius方程</strong>計算的「降解等效溫度」。其意義是：在MKT這個單一溫度下連續儲存，藥品降解量等同於在實際波動溫度歷程中的降解量。</p>
+                <p><strong>計算公式：</strong></p>
+                <pre>T_MKT = (ΔH/R) / [-ln((e^(-ΔH/RT₁) + e^(-ΔH/RT₂) + ... + e^(-ΔH/RTₙ)) / n)]
+
+其中：
+  ΔH = 活化能（Activation Energy），藥品降解反應的能量閾值
+       USP 預設值 ≈ 83.144 kJ/mol（20 kcal/mol）
+  R  = 氣體常數 8.314 J/(mol·K)
+  Tᵢ = 第 i 個時間點的溫度（單位：Kelvin）
+  n  = 溫度測量點數</pre>
+                <p><strong>實務意涵：</strong>若某批次藥品在配送途中有2小時暴露在38°C環境（夏日無空調廂型車），MKT計算後可能等效於在28°C下儲存更長時間。透過MKT可客觀評估是否超出允許範圍，而非武斷地以單一峰值溫度判斷批次命運。</p>
+            </div>
+
+            <!-- Metadata & Original Record -->
+            <div class="note-box">
+                <h4>Metadata 與 Original Record 的法規重要性</h4>
+                <p>FDA數據完整性警告信中，最常見的違規是<strong>刪除或覆蓋原始電子數據</strong>，只保留人工篩選後的「乾淨」記錄。</p>
+                <p><strong>Metadata例子</strong>（配送場景）：溫度記錄器的稽核軌跡（audit trail）——誰在何時設定了記錄器、是否有人修改過時間戳記。這些元數據與溫度數值本身同等重要。</p>
+                <p><strong>Original Record要求</strong>：若使用電子溫度記錄器，原始數據必須保留原始格式（如.pdf或廠商專屬格式），不可只保留匯出的Excel摘要，因為Excel版本無法證明數據未被竄改。</p>
+            </div>
+
+            <!-- Pedigree / e-Pedigree -->
+            <div class="concept-box">
+                <h4>Pedigree/e-Pedigree：藥品追溯的法規演進</h4>
+                <p>Pedigree（藥品所有權鏈記錄）是現代藥品序列化法規的前身：</p>
+                <ul>
+                    <li><strong>美國</strong>：DSCSA（Drug Supply Chain Security Act，2013年）要求2023年起全面序列化，取代早期的Pedigree概念，實現逐件追溯（unit-level tracing）</li>
+                    <li><strong>歐盟</strong>：FMD（Falsified Medicines Directive，2019年生效）要求藥品唯一識別碼與防偽裝置</li>
+                    <li><strong>台灣</strong>：衛福部食藥署推動藥品追蹤追溯系統，逐步要求藥廠上傳產品序號至國家資料庫</li>
+                </ul>
+                <p>e-Pedigree是區塊鏈（Blockchain）應用於藥品供應鏈的理想場景：每次所有權移轉即寫入不可竄改的分散式帳本。</p>
+            </div>
+
+            <!-- PCM -->
+            <div class="concept-box">
+                <h4>相變材料（PCM）的物理原理與應用</h4>
+                <p>PCM利用物質<strong>固液相變時的潛熱（Latent Heat）</strong>儲放大量熱能，維持特定溫度平台：</p>
+                <ul>
+                    <li><strong>結冰冰排（0°C）</strong>：一般冰袋，適合2–8°C保冷；缺點是可能造成凍傷（藥品直接接觸）</li>
+                    <li><strong>乾冰（-78.5°C）</strong>：固態CO₂，用於深冷運輸（如mRNA疫苗、CGT產品）；需注意CO₂揮發的密閉空間危險</li>
+                    <li><strong>特製PCM（2–8°C）</strong>：專門配方的鹽水溶液或有機材料，相變點精確設計在2–8°C，不會造成凍傷，是高端藥品冷鏈保溫箱的主流選擇</li>
+                    <li><strong>特製PCM（15–25°C）</strong>：用於「室溫」藥品的夏季保護，防止過熱</li>
+                </ul>
+                <p>PCM的核心優勢：在相變過程中，即使環境溫度大幅波動，箱內溫度幾乎保持恆定，比一般隔熱保溫更穩定。</p>
+            </div>
+
+            <!-- RFID vs Barcode -->
+            <div class="concept-box">
+                <h4>RFID vs. 條碼（Barcode）比較</h4>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>特性</th>
+                            <th>RFID</th>
+                            <th>條碼（1D/2D）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>讀取方式</td>
+                            <td>無線電波，無需視線</td>
+                            <td>光學掃描，需視線對齊</td>
+                        </tr>
+                        <tr>
+                            <td>批次讀取</td>
+                            <td class="yes">可同時讀數百個標籤</td>
+                            <td class="no">逐一掃描</td>
+                        </tr>
+                        <tr>
+                            <td>讀取距離</td>
+                            <td>被動式：數公尺；主動式：數十公尺</td>
+                            <td>幾公分至數十公分</td>
+                        </tr>
+                        <tr>
+                            <td>數據容量</td>
+                            <td>可儲存並更新數KB</td>
+                            <td>固定，僅能讀取</td>
+                        </tr>
+                        <tr>
+                            <td>成本</td>
+                            <td class="no">標籤成本較高（$0.1–$1+/個）</td>
+                            <td class="yes">印刷成本極低</td>
+                        </tr>
+                        <tr>
+                            <td>金屬/液體干擾</td>
+                            <td class="no">訊號受金屬遮蔽影響</td>
+                            <td class="yes">不受影響</td>
+                        </tr>
+                        <tr>
+                            <td>藥品序列化法規</td>
+                            <td>部分場景使用</td>
+                            <td class="yes">DSCSA/FMD主流方案</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; margin-top:0.5rem;">在最後一哩場景，RFID可實現倉庫出貨自動盤點；條碼則是藥局與醫院確認每盒藥品序號的主要工具。</p>
+            </div>
+
+            <!-- Reverse Logistics -->
+            <div class="concept-box">
+                <h4>逆向物流（Reverse Logistics）的GDP意涵</h4>
+                <p>在藥品供應鏈中，逆向物流涵蓋以下場景：</p>
+                <ul>
+                    <li><strong>藥品召回（Recall）</strong>：已流出的藥品從藥局/醫院/患者端回收，是最複雜的逆向物流場景，須追蹤到每個序號</li>
+                    <li><strong>到期品退回</strong>：藥局將近效期或過期藥品退回批發商，須確保逆向鏈的GDP文件完整</li>
+                    <li><strong>冷鏈中斷後的退貨</strong>：溫度偏差（excursion）發生後，受影響批次需退回並進行處置決策（disposition），逆向物流記錄是品質決策的依據</li>
+                    <li><strong>患者退藥</strong>：直接配送（DTC/DTP）場景中，患者退回未使用藥品的處理流程</li>
+                </ul>
+                <p>台灣藥事法對藥品回收有嚴格分級（自願召回/強制回收），逆向物流的GDP文件是回收完成報告的核心證據。</p>
+            </div>
+
+            <!-- Shipping Lane -->
+            <div class="concept-box">
+                <h4>Shipping Lane 配送路線管理</h4>
+                <p>每條Shipping Lane（配送航線/路線）在GDP框架下應被獨立驗証（Qualification）：</p>
+                <ul>
+                    <li><strong>夏季 vs. 冬季條件</strong>：同一路線在不同季節的溫度風險完全不同</li>
+                    <li><strong>最後一哩的特殊性</strong>：主幹物流路線有標準化的溫控貨車，但最後一哩（城市快遞、機車外送、步行取藥）往往沒有統一交通工具，每種模式需分別評估</li>
+                    <li><strong>Lane Qualification（路線驗証）</strong>：使用溫度記錄器進行實地配送測試，記錄最壞情境（worst-case）下的溫度分佈，作為配送容器設計的依據</li>
+                </ul>
+            </div>
+
+        </div><!-- end right-column glossary -->
+    </div><!-- end two-column glossary terms -->
+
+    <!-- ===== SECTION 2.1 ABBREVIATIONS ===== -->
+    <div class="two-column" id="sec-2-1-abbreviations">
+
+        <div class="left-column">
+            <h3>2.1 Abbreviations</h3>
+            <p>The following abbreviations are used throughout this technical report.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Abbreviation</th>
+                        <th>Full Term</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>ALCOA+</strong></td><td>Attributable, Legible, Contemporaneous, Original, Accurate + (Complete, Consistent, Enduring, Available)</td></tr>
+                    <tr><td><strong>ASTM</strong></td><td>American Society for Testing and Materials</td></tr>
+                    <tr><td><strong>CAPA</strong></td><td>Corrective Action, Preventive Action</td></tr>
+                    <tr><td><strong>CGT</strong></td><td>Cell and Gene Therapy</td></tr>
+                    <tr><td><strong>CQA</strong></td><td>Critical Quality Attribute</td></tr>
+                    <tr><td><strong>DTC</strong></td><td>Direct-to-Consumer</td></tr>
+                    <tr><td><strong>DTP</strong></td><td>Direct-to-Patient</td></tr>
+                    <tr><td><strong>DSCSA</strong></td><td>Drug Supply Chain Security Act (U.S.)</td></tr>
+                    <tr><td><strong>FMD</strong></td><td>Falsified Medicines Directive (EU)</td></tr>
+                    <tr><td><strong>GDP</strong></td><td>Good Distribution Practices</td></tr>
+                    <tr><td><strong>GMP</strong></td><td>Good Manufacturing Practices</td></tr>
+                    <tr><td><strong>ICH</strong></td><td>International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use</td></tr>
+                    <tr><td><strong>ISO</strong></td><td>International Organization for Standardization</td></tr>
+                    <tr><td><strong>MKT</strong></td><td>Mean Kinetic Temperature</td></tr>
+                    <tr><td><strong>PCM</strong></td><td>Phase Change Material</td></tr>
+                    <tr><td><strong>PDA</strong></td><td>Parenteral Drug Association</td></tr>
+                    <tr><td><strong>RFID</strong></td><td>Radio Frequency Identification</td></tr>
+                    <tr><td><strong>SOP</strong></td><td>Standard Operating Procedure</td></tr>
+                    <tr><td><strong>TR</strong></td><td>Technical Report</td></tr>
+                    <tr><td><strong>USP</strong></td><td>United States Pharmacopeia</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+
+            <div class="note-box">
+                <h4>縮寫速查：TR46稽查最常見詞彙</h4>
+                <p>稽查員在TR46框架下進行GDP稽查時，以下縮寫出現頻率最高：</p>
+                <ul>
+                    <li><strong>MKT</strong>：溫度偏差處理決策的核心計算工具，稽查員會要求查看MKT計算記錄與原始溫度數據</li>
+                    <li><strong>CAPA</strong>：偏差調查結束後的必要產出，無CAPA等同於承認系統失效</li>
+                    <li><strong>ALCOA+</strong>：稽查任何配送記錄（紙本或電子）的判斷準則</li>
+                    <li><strong>GDP</strong>：TR46的整體合規框架，需與GMP接軌但有配送特定要求</li>
+                    <li><strong>DTP/DTC</strong>：細胞治療、個人化醫療時代的新型配送模式，監管關注度快速上升</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>DSCSA vs. FMD：兩大序列化體系的比較</h4>
+                <p>兩套法規都要求藥品唯一識別，但執行細節不同：</p>
+                <ul>
+                    <li><strong>DSCSA（美國）</strong>：要求製造商、批發商、藥局三層追蹤，系統互通採用GS1標準，最終目標是建立全國藥品電子追蹤系統（EPCIS共享）</li>
+                    <li><strong>FMD（歐盟）</strong>：著重在藥局端的「點確認」（point-of-dispensing verification），藥局每次調劑前必須掃碼驗証並解封防偽裝置</li>
+                    <li><strong>台灣藥品追蹤</strong>：參考DSCSA/FMD架構，目前要求特定管制藥品與高風險品項上傳序號至食藥署系統</li>
+                </ul>
+                <p>e-Pedigree是Pedigree的電子化形式，DSCSA與FMD事實上已取代傳統Pedigree概念，但TR46保留此術語以涵蓋未實施序列化法規地區的追蹤需求。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>自我測驗：術語辨別</h4>
+                <p>閱讀以下場景，判斷涉及哪個TR46術語：</p>
+                <ol style="margin-left:1.25rem;">
+                    <li>配送員將胰島素放在室溫摩托車後座配送2小時，到達藥局後如何評估藥品是否可用？<em>（答：MKT計算）</em></li>
+                    <li>藥局要求退回過期血液製品至批發商，整個退貨流程的GDP文件要求是？<em>（答：Reverse Logistics + ALCOA+）</em></li>
+                    <li>政府要求查驗某批次藥品從製造商到患者的完整移轉記錄，使用哪個追蹤機制？<em>（答：Pedigree/e-Pedigree 或序列化）</em></li>
+                    <li>保溫箱內的藍色凝膠包在整個配送過程中維持2–8°C，這是什麼材料？<em>（答：PCM，相變點設計在2–8°C）</em></li>
+                </ol>
+            </div>
+        </div>
+
+    </div><!-- end abbreviations two-column -->
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>本節重點摘要 Section Summary</h3>
+        <div class="summary-grid">
+            <div class="summary-col">
+                <h4>核心概念 Key Concepts</h4>
+                <ul>
+                    <li>TR46定義「最後一哩」為從製造商/批發商到患者/藥局/醫院的最終轉移，是供應鏈GDP管控最薄弱的環節</li>
+                    <li>TR46與TR39互補：TR39管主幹冷鏈，TR46管最後一段</li>
+                    <li>2024年修訂新增序列化、區塊鏈、DTP等現代議題</li>
+                    <li>ALCOA+為所有配送記錄管理的基礎原則</li>
+                </ul>
+            </div>
+            <div class="summary-col">
+                <h4>重要術語 Key Terms</h4>
+                <ul>
+                    <li><strong>MKT</strong>：非算術平均的降解等效溫度，用Arrhenius方程計算</li>
+                    <li><strong>PCM</strong>：利用相變潛熱維持恆定溫度的材料（冰排、乾冰、特製PCM）</li>
+                    <li><strong>Pedigree/e-Pedigree</strong>：藥品所有權鏈記錄，現代序列化法規的前身</li>
+                    <li><strong>Reverse Logistics</strong>：從消費點到原點的逆向流動（召回、退貨、偏差處置）</li>
+                    <li><strong>Metadata</strong>：描述數據屬性的元數據，與原始記錄具同等法規地位</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 46 (Revised 2024): Last Mile: Guidance for Good Distribution Practices for Pharmaceutical Products to End User</p>
+    <p>Educational Material | Sections 1&ndash;2: Introduction &amp; Glossary | p1&ndash;p3</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">For educational purposes. Refer to the official PDA TR46 document for authoritative guidance.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

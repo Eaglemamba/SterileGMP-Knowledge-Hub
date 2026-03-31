@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-Isolators Section 2 — Physical Environment, Personnel & Integrity Testing</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.5rem; }
+
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+.right-column .column-header { color: #2c5282; }
+
+.section-title {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h4, .analogy-box h4, .note-box h4,
+.term-box h4, .key-note h4, .key-point-box h4, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p,
+.term-box p, .key-note p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+.concept-box ul, .analogy-box ul, .note-box ul,
+.term-box ul, .key-note ul, .key-point-box ul, .highlight-box ul {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li,
+.term-box li, .key-note li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.term-box h4, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h4, .key-note h4, .key-point-box h4 { color: #c65102 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+.quote-box {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Section summary */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-top: 2rem;
+    border: 1px solid #f6ad55;
+}
+.section-summary h2 {
+    color: #856404;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    border-bottom: 2px solid #f6ad55;
+    padding-bottom: 0.5rem;
+}
+.section-summary p { margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--text-dark); }
+.section-summary ul { margin: 0.5rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.section-summary li { margin-bottom: 0.45rem; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.topic-header {
+    background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.topic-header .topic-badge {
+    width: 42px; height: 42px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700; flex-shrink: 0;
+}
+.topic-header h2 { font-size: 1.1rem; font-weight: 600; margin: 0; }
+.topic-header p { font-size: 0.85rem; opacity: 0.85; margin: 0.15rem 0 0; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .topic-header { padding: 0.85rem 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)</h1>
+    <div class="subtitle">Section 2 — Topics 2–4: Physical Environment, Personnel &amp; Integrity Testing</div>
+    <div class="page-info">Source: PDA PtC-Isolators (2020) · Pages 8–21 · Q2-1 through Q4-3</div>
+</div>
+
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>掌握隔離器周圍環境分級的法規依據（ISO 14644、FDA 指引與 EU GMP Annex I），並理解「at rest」vs.「in operation」兩種量測情境的差異。</li>
+            <li>理解隔離器填充區為何可允許非單向氣流（湍流），以及 ISO 5 粒子限制如何作為等效保護依據。</li>
+            <li>說明氣流可視化研究（煙霧測試 / Airflow Visualization Study）的執行要求、時機及其在法規申報中的關鍵地位。</li>
+            <li>比較隔離器與傳統無菌室在人員更衣要求上的差異，並說明手套消毒在屏障系統中的防污染邏輯。</li>
+            <li>掌握隔離器及手套完整性測試的方法、頻率、維護計畫，以及在不同時間點發現手套失效時的標準應對流程。</li>
+        </ul>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- TOPIC 2: PHYSICAL ENVIRONMENT                         -->
+    <!-- ===================================================== -->
+    <div class="topic-header">
+        <div class="topic-badge">2</div>
+        <div>
+            <h2>Topic 2: Physical Environment</h2>
+            <p>Q2-1 ~ Q2-5 · Pages 8–14</p>
+        </div>
+    </div>
+
+    <!-- Q2-1 -->
+    <div class="section-title">Q2-1: What should the classification of the room surrounding the isolator be?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Determination of the classification level should be risk-based, taking into consideration the risk of introducing contaminants during preparation of the isolator with open doors, as well as movement into and out of the isolator during operation.</p>
+            <p><strong>Note:</strong> Current FDA guidance recommends a background environment of no less than ISO 8 in operation; current EU GMP Annex I recommends ISO 8 at rest (Grade D).</p>
+
+            <h3>Rationale</h3>
+            <p>When isolator systems are properly designed, contaminants are not exchanged between the interior of the isolator and the surrounding environment. Robust qualification of the isolator system provides assurance that the classified space within the isolator can be maintained.</p>
+            <p>Additional considerations for the surrounding room include maintaining a clean and organized space and controlled access. Temperature and humidity settings are generally for the comfort of the operators, but potential impact to decontamination processes of the surrounding environment must be considered.</p>
+            <p>The quality of the air inside the isolator is more critical to the process than the outside air. When the isolator functions properly and monitoring and alarm systems are integrated, the risk of the room air causing an issue to the process is minimal. Nonetheless, the space surrounding the isolator should be controlled and meet airborne particle limits for cleanrooms, as defined in ISO 14644, in order to provide a high degree of assurance that surrounding conditions and practices will not negatively affect the aseptic processes within the isolator.</p>
+            <p>Although Annex 1 requires only Grade D "at rest" determination of airborne particle count, it is common practice to apply at least the ISO 8 limit "in operation" for open and closed isolators with gloves. Higher risk operations may require more rigorous control. However, a lower Grade surrounding area/controlled environment may be acceptable for gloveless isolators that present no access during aseptic operation.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>核心法規要求速查</h4>
+                <table>
+                    <thead><tr><th>法規來源</th><th>要求</th><th>量測情境</th></tr></thead>
+                    <tbody>
+                        <tr><td>FDA 指引</td><td>不低於 ISO 8</td><td>In operation（運作中）</td></tr>
+                        <tr><td>EU GMP Annex I</td><td>Grade D（≈ ISO 8）</td><td>At rest（靜態）</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>直覺比喻：為什麼隔離器外的房間還需要分級？</h4>
+                <p>把隔離器想像成一個密封的魚缸。魚缸內的水質才是關鍵，但如果魚缸外的空氣充滿塵埃，每次開門換水時仍然存在污染風險。周圍環境分級，就是為那些「開蓋時刻」建立一道緩衝防護。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>操作主任的視角：兩個情境的差異很重要</h4>
+                <p><strong>At rest（靜態）</strong>：設備就緒但未生產，人員不在場。EU 的 Grade D 要求是在這個狀態下量測的。</p>
+                <p><strong>In operation（運作中）</strong>：生產進行中，人員活動增加粒子。FDA 要求的 ISO 8 是在這個更嚴苛的條件下符合。</p>
+                <p>實務上，許多廠房兩種情境都按 ISO 8 管控，以確保在任何狀態下都合規。法規查核時，inspector 通常會確認兩者都有量測記錄。</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>無手套隔離器的例外</h4>
+                <p>完全密閉的無手套（gloveless）隔離器，在無菌操作期間不存在人員介入的開口，因此周圍環境要求可以相對寬鬆。這是設備設計直接影響廠房分級成本的典型案例。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2-2 -->
+    <div class="section-title">Q2-2: Should the isolator fill zone have unidirectional flow?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Unidirectional airflow may not be required within an isolator fill zone where it has been demonstrated that nonunidirectional (i.e., turbulent) air does not present the risk of product contamination. In all cases, however, the airborne particulate limit should not exceed that for <strong>ISO 5</strong>. Likewise, the zone surrounding an isolator need not provide unidirectional air. In this zone, the airborne particulate limit should not exceed <strong>ISO 8 in operation</strong>.</p>
+
+            <h3>Rationale</h3>
+            <p>Airborne contamination is the major risk in the fill zone and other critical zones within an isolator, because the physical barrier provided by the isolator eliminates potential contamination directly from personnel. Air in the isolator is filtered through HEPA filters, providing the same degree of cleanliness whether or not flow is unidirectional. The purpose of unidirectional flow is to prevent the incursion of airborne contamination in the form of viable and nonviable particulates from outside the clean air stream.</p>
+            <p>In addition, all outside items introduced into the isolator are decontaminated, entering either through rapid transfer ports or a sterilizing tunnel. Nonsterile air incursion through isolator openings (e.g., an exit mousehole), is prevented by a positive pressure differential to the outside. The risk that surface contamination will become airborne in a turbulent air flow is obviated by effective chemical decontamination.</p>
+            <p>With proper risk analysis, an effective isolator decontamination process, and a rigorous aseptic fill challenge, turbulent air flow may be demonstrated to be acceptable in an aseptic fill isolator. ISO 5 is required in order to achieve an airborne particulate level equivalent to that prescribed for unidirectional airflow.</p>
+            <p>ISO 8 in operation is recommended for the area around an isolator to provide a controlled environment even though air exchange between this zone and the interior of the isolator is not possible.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>關鍵概念：為什麼隔離器可以允許湍流？</h4>
+                <p>傳統無菌室裡，Grade A 區域必須使用單向流（Unidirectional Flow / UDAF），原因是要把人員帶來的微生物「沖走」，避免其漂向產品。</p>
+                <p>但隔離器的邏輯完全不同——人員已被物理屏障隔絕在外，VHP 去污程序已消滅表面微生物，所有進入物品都經過除菌。因此，氣流的主要任務從「趕走人帶來的污染」變成「維持 ISO 5 的粒子環境」。HEPA 過濾本身就能做到這點，不一定需要單向流的方向性。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：「空氣品質」vs.「空氣方向」</h4>
+                <p>單向流就像一陣固定方向的清潔風，把污染物吹走；湍流則像房間裡均勻循環的冷氣，只要空氣本身夠乾淨（ISO 5），污染物就不會積累。</p>
+                <p>隔離器的屏障讓後者成立——前提是 VHP 去污有效，且每次進出物料的界面（mousehole、RTP）都能維持正壓差。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>法規審查時的重點：你能證明什麼？</h4>
+                <p>選擇湍流設計，代表你必須在驗證報告中提供足夠證據：粒子計數符合 ISO 5、APS（Media Fill）結果合格、mousehole 正壓差持續受控。這些是 inspector 一定會看的項目。如果選單向流，舉證負擔相對較低，但設備成本也高。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2-3 -->
+    <div class="section-title">Q2-3: Should airflow pattern visualization/demonstration be performed in an isolator?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Unidirectional airflow should first be verified by measuring air velocity 150–300 mm from the HEPA filter face as described in ISO Standard 14644-3. Once the airflow velocity distribution has been established, the airflow may be further verified by an <strong>airflow visualization or "smoke" study</strong>.</p>
+            <p>If nonunidirectional airflow is employed, only directional airflow at the boundaries of the isolator, e.g., mouse-hole exit, need be performed. Differential pressure between the isolator and the surrounding zone should be monitored continuously.</p>
+
+            <h3>Rationale</h3>
+            <p>For unidirectional isolators, the airflow velocity test will establish the airflow streamlines as delivered at the HEPA filter. Airflow visualization is used to ensure that any disruption to these streamlines, e.g., by a stationary object in the flow path, does not present a risk of contamination. This type of test may be extended to observe the effect of routine and expected non-routine glove-aided interventions. Where unidirectional flow is specified, "first-air" principles should be maintained.</p>
+            <p>Nonunidirectional isolators should be demonstrated with a high degree of assurance to not present a risk of product contamination. In such isolators, airflow will not necessarily follow defined streamlines and may be subject to random backflows and eddy currents. Visualization of these flows is of no value. On the other hand, measuring pressure differential satisfies this concern, but airflow visualization at the points determined by risk analysis to be vulnerable to incursion adds a high degree of assurance.</p>
+            <p>Air flow visualization studies should be performed at system qualification. In general, they do not have to be repeated except where a risk assessment has determined they are required, as in the case of a significant equipment change.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>氣流可視化研究（AVS / Smoke Study）是什麼？</h4>
+                <p>用發煙裝置（煙霧發生器或商業煙棒）在隔離器內產生可見霧氣，再透過攝影或錄影記錄煙霧的流動路徑。目的是確認：</p>
+                <ul>
+                    <li>單向流的「first-air」原則是否被遵守（乾淨氣流先接觸產品）</li>
+                    <li>手套操作介入是否造成危險的回流或渦流</li>
+                    <li>mousehole 等界面是否維持正向氣流方向（空氣只出不進）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>法規申報的關鍵：「in operation」才算數</h4>
+                <p>FDA 強烈暗示 AVS 必須在「in operation」情境下執行，EU GMP Annex I 對 Grade A / ISO 5 環境更是明確要求。也就是說，只有靜態的煙霧照片是不夠的——必須有操作人員透過手套進行典型介入動作時的錄影記錄。</p>
+                <p>提醒：影片必須作為 GMP 文件保存，並在法規查核時可提供展示。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>重複測試的門檻：什麼時候要重做 AVS？</h4>
+                <p>初次驗證做過之後，通常不需要定期重做。但以下情況需透過 risk assessment 評估是否重做：重大設備改造（如 HEPA 換位）、隔離器佈局大幅更動、新增介入動作類型、或發生污染事件需要根因調查。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的廠房隔離器使用湍流設計，近期更換了一個位置偏移的 mousehole 密封墊。這種情況是否需要重做 AVS？用 risk assessment 的角度思考：mousehole 是「最脆弱的氣流界面」，答案應該是肯定的。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2-4 -->
+    <div class="section-title">Q2-4: Should the isolator environment qualification runs (at rest and in operation) include the sample sites established according to ISO 14644-1 or can a reduced sampling plan be followed?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>For total particle count, the firm should use the methodology defined in <strong>ISO 14644-1</strong>. Because ISO 14644-1 only defines limits for total airborne particles, qualification of performance for viable counts should require a risk assessment to determine sampling methodology and location.</p>
+
+            <h3>Rationale</h3>
+            <p>ISO 14644-1 is the international consensus standard recognized by the European Union, PIC/S, and the U.S. FDA to define cleanroom classification and performance. ISO 14644-1 provides for a specific and well-defined sampling plan, including the minimum number of sample locations, sampling pattern, sample size, and methodology to interpret the data. By following the ISO standard, a firm may be highly confident in the isolator design and, upon recertification, continuing performance.</p>
+            <p>Qualification and recertification according to the ISO standard for total particle count provides assurance that pockets of potential contamination do not exist.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>兩種量測，兩套邏輯</h4>
+                <table>
+                    <thead><tr><th>類型</th><th>標準依據</th><th>取樣計畫</th></tr></thead>
+                    <tbody>
+                        <tr><td>總粒子數（非活性）</td><td>ISO 14644-1（強制遵循）</td><td>標準樣品點數量與佈局</td></tr>
+                        <tr><td>微生物（活性粒子）</td><td>Risk assessment 決定</td><td>彈性，但需有文件化依據</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>為什麼總粒子必須嚴格遵循 ISO 14644-1？</h4>
+                <p>ISO 14644-1 已被 FDA、EU、PIC/S 全球三大法規體系共同引用。如果你擅自縮減取樣點，inspector 的第一個問題就是：「你的 reduced sampling plan 是否符合 ISO 標準的最低要求？」一旦說不清楚，整個 IQ/OQ/PQ 的可信度都會動搖。</p>
+                <p>建議做法：在驗證計畫書（VP）中明確引用 ISO 14644-1 附件的計算方式，並記錄每個取樣位置的座標。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>微生物取樣的彈性：為什麼可以用 risk assessment？</h4>
+                <p>因為 ISO 14644-1 本身不規範微生物取樣（它只管非活性粒子）。FDA 和 EU 對微生物 EM 的位置和頻率有建議，但允許廠商基於製程特性和歷史數據進行調整。只要 risk assessment 文件完整、邏輯清晰，彈性空間是存在的。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2-5 -->
+    <div class="section-title">Q2-5: What techniques should be used to identify, track, and evaluate air flow during qualification and maintenance of the isolator?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>As with any pharmaceutical operation, a risk-based approach should be applied to isolators. Because airborne particulate presents a significant risk to pharmaceutical operations carried out within isolators, airflow visualization studies are often considered essential to assessing that risk. <strong>Video recording these studies provides even more value</strong> by allowing further analysis by more reviewers, as well as providing permanent documentation.</p>
+            <p>ISO 14644-3 Appendix B-7 describes various test methods applicable to airflow visualization, including: (a) tracer thread method, (b) tracer injection method, (c) airflow visualization method by image-processing techniques, and (d) airflow visualization method by the measurement of velocity distribution.</p>
+            <p>The <strong>tracer injection ("smoke" study) method</strong> is most frequently recommended for pharmaceutical isolators, for both unidirectional and nonunidirectional isolators. Aerosol fog covering a larger area to test unidirectional flow may be generated from deionized water or from commercial organic and inorganic solutions. Commercially available "candles" or "sticks" generate lesser quantities of visible fog and are usually limited to testing airflow direction at critical interfaces (e.g., mouseholes, transfer isolators).</p>
+
+            <h3>Rationale</h3>
+            <p>Evaluation of test results will depend upon the perceived risks. At critical isolator interfaces, such as mouseholes or transfer points, directional airflow can be visualized and recorded, adding evidence to air pressure differential measurements. Inadequate flow or even unacceptable reversals may be discovered and corrected before committing actual product to the isolator.</p>
+            <p>In operation, airflow visualization can help in the evaluation of the effect of normal movement (e.g., conveyed vials and stopper transport), as well as routine and nonroutine interventions. Particular attention should be paid to human activity through glove ports and the introduction of items through transfer ports. This can help distinguish between safe and unsafe technique and provide a valuable training aid, especially in video form.</p>
+            <p>Physical measurement, such as airflow velocity and pressure differential, provide important data regarding isolator operation. Experience has shown, however, these measurements alone may not be adequate unless correlated to actual experience. The FDA guidance on aseptic processing strongly implies that air visualization studies be conducted and emphasizes the "in operation" application of the test. EU GMP Annex I requires it in Grade A/ISO 5 environments.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>四種 AVS 方法比較</h4>
+                <table>
+                    <thead><tr><th>方法</th><th>特色</th><th>適用場景</th></tr></thead>
+                    <tbody>
+                        <tr><td>示蹤線法（tracer thread）</td><td>物理絲線顯示氣流方向</td><td>局部、簡易確認</td></tr>
+                        <tr><td>示蹤注入法（smoke study）</td><td>霧氣可視化，最常用</td><td>整體流場、介入評估</td></tr>
+                        <tr><td>影像處理法</td><td>高解析度分析</td><td>研究型或高複雜度設計</td></tr>
+                        <tr><td>速度分布量測法</td><td>數值化流場</td><td>搭配儀器設備使用</td></tr>
+                    </tbody>
+                </table>
+                <p>製藥隔離器首選：<strong>smoke study（示蹤注入法）</strong>，搭配錄影。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>錄影為什麼如此重要？</h4>
+                <p>靜態照片只能呈現一個瞬間，無法顯示氣流的動態行為（如介入時的短暫回流）。錄影可以：</p>
+                <ul>
+                    <li>提供多位審查者事後分析</li>
+                    <li>作為永久性 GMP 記錄留存</li>
+                    <li>成為操作人員訓練教材（哪些動作安全、哪些會干擾氣流）</li>
+                    <li>法規查核時提供具體視覺證據</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>「before committing actual product」的核心精神</h4>
+                <p>AVS 的最大價值在於：在正式生產之前找出問題。如果在 smoke study 中發現 mousehole 出現逆流，可以調整正壓差設定或修改操作程序，代價幾乎為零。但如果等到 APS 失敗或批次污染後才發現，代價將以天計算、以批次報廢計算。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的隔離器是湍流設計（turbulent flow）。Q2-3 說湍流隔離器的 AVS 「只需做邊界氣流方向測試」（如 mousehole）。那麼在 Q2-5 的更廣義框架下，你還需要對哪些「高風險介入點」進行可視化驗證？列出你廠房中至少三個。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- TOPIC 3: PERSONNEL                                    -->
+    <!-- ===================================================== -->
+    <div class="topic-header">
+        <div class="topic-badge">3</div>
+        <div>
+            <h2>Topic 3: Personnel</h2>
+            <p>Q3-1 ~ Q3-2 · Pages 15–17</p>
+        </div>
+    </div>
+
+    <!-- Q3-1 -->
+    <div class="section-title">Q3-1: How should personnel be gowned when working in the isolator or the background environment area during aseptic processing?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Depending on the classification of the surrounding area, it may be prudent to gown according to the company's <strong>Grade C/D gowning requirements</strong>. In addition, it is a good practice for operators working in isolator gloves to perform interventions or other activities inside the isolator to wear a separate set of <strong>sterile, cleanroom gloves</strong>. Street clothing should not be worn in the environment of production isolators to minimize the bioload in the room and in the isolator during cleaning, loading, and unloading.</p>
+            <p>For loading, unloading, and cleaning opened isolators, an additional hood, sterile goggles or glasses, and gloves, in addition to Grade C garments, should be considered to reduce the risk of particles and microbial load.</p>
+
+            <h3>Rationale</h3>
+            <p>The isolator provides a good physical barrier between the environment and the critical area; therefore, a Grade A/B garment is not required. Gloves worn underneath the isolator gloves will reduce the microbial load within the isolator gloves. Wearing sterile gloves provides an additional layer that can help to protect against potential ingress of microorganisms from the environment in the event of a pinhole in the isolator glove.</p>
+            <p>During the loading of the isolator, the aim is to keep the microbial load low. Skin flakes, hair, and particulates from operators may result in microbial or particulate contamination after the VHP-decontamination cycle. Operators should wear gloves to reduce the risk of passing oily substances/sebum onto the surface of the isolator as this could prevent the surface from being decontaminated.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>隔離器 vs. 傳統無菌室：更衣需求比較</h4>
+                <table>
+                    <thead><tr><th>操作情境</th><th>傳統無菌室</th><th>隔離器</th></tr></thead>
+                    <tbody>
+                        <tr><td>填充區作業</td><td>Grade A/B 全套無菌衣</td><td>Grade C/D 即可（外層屏障保護）</td></tr>
+                        <tr><td>手套要求</td><td>無菌手套（直接接觸產品）</td><td>無菌內手套 + 隔離器手套（雙層）</td></tr>
+                        <tr><td>開蓋裝載 / 卸貨</td><td>Grade A/B 全套</td><td>Grade C + 額外護目鏡、頭罩</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>隔離器更衣簡化的邏輯</h4>
+                <p>傳統無菌室裡，人員本身就是最大污染源，所以要用 Grade A/B 全身包覆來「封住人」。但隔離器把人和產品完全分開了——人在外面，產品在裡面。人員更衣的目的因此從「避免污染產品」轉變為「降低周圍環境的微生物負荷」，後者所需的保護等級自然低得多。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>「裝載時刻」是最高風險的時間窗口</h4>
+                <p>VHP 去污循環開始之前，隔離器必須開蓋裝入物料和組件。此時屏障失效，人員的皮屑、頭髮、皮脂直接暴露在隔離器內表面。油性皮脂特別危險——它會阻礙 VHP 的去污效果，形成微生物保護層。</p>
+                <p>因此，裝載前必須戴手套（避免皮脂污染），並考慮戴頭罩和護目鏡。這是一個即使更衣要求較低，仍需特別注意的操作節點。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>稽核思考</h4>
+                <p>如果 inspector 問你：「你的操作人員在進行隔離器裝載時，具體穿戴了哪些防護裝備，依據是什麼？」你的 SOP 是否明確規定了這個 risk-based 選擇，並且有文件化的 rationale？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q3-2 -->
+    <div class="section-title">Q3-2: Should operator gloves be disinfected prior to entering isolator gloves?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Sterile gloves should be disinfected before entering isolator gloves. Use of <strong>sterile 70% isopropanol or 70% ethanol</strong> is recommended, or another sanitizing/sporicidal agent can be used. The disinfectant can be applied by spraying or wiping.</p>
+
+            <h3>Rationale</h3>
+            <p>Disinfected gloves worn underneath isolator gloves will better reduce the microbial load within the isolator gloves than nondisinfected gloves. In the case of a pinhole in an isolator glove, a reduced microbial load on the inside of the isolator glove will reduce the chance of microbial ingression into the isolator.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>手套消毒的完整邏輯鏈</h4>
+                <p>這是一個「多層防護」的典型設計，每一層都有其作用：</p>
+                <ol>
+                    <li><strong>無菌內手套</strong>：降低人員皮膚微生物直接接觸隔離器手套內壁的風險</li>
+                    <li><strong>IPA 70% 消毒</strong>：進一步殺滅殘留在無菌手套表面的微生物</li>
+                    <li><strong>隔離器外層手套</strong>：提供物理屏障，阻擋外部環境污染進入</li>
+                </ol>
+                <p>這三層組合的目標：即使外層手套出現 pinhole，穿越漏點進入隔離器的微生物數量趨近於零。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>為什麼是 70% 而不是 100%？</h4>
+                <p>70% IPA/乙醇的殺菌效果優於純酒精，因為水分有助於蛋白質變性、促進滲透細胞壁。100% 酒精蒸發過快，來不及發揮作用。這是製藥消毒的基礎知識，但在法規查核中常被問到。</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>「pinhole 假設」是隔離器安全設計的核心思維</h4>
+                <p>整個 Topic 3 的設計邏輯建立在一個假設上：<em>如果手套出現肉眼不可見的微小漏點，我們的其他措施能否防止污染進入隔離器？</em> 這種「worst-case 假設」正是 PDA 推薦多層防護的理由，也是手套完整性測試（Topic 4）如此重要的原因。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- TOPIC 4: INTEGRITY TESTING                            -->
+    <!-- ===================================================== -->
+    <div class="topic-header">
+        <div class="topic-badge">4</div>
+        <div>
+            <h2>Topic 4: Integrity Testing of Isolator and Gloves</h2>
+            <p>Q4-1 ~ Q4-3 · Pages 18–21</p>
+        </div>
+    </div>
+
+    <!-- Q4-1 -->
+    <div class="section-title">Q4-1: What methods should be used for integrity testing of isolators and gloves?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Integrity testing of the isolator and gloves should be performed using <strong>visual, mechanical, and/or physical methods</strong>. Testing should be performed at defined periods — at a minimum, at the beginning and end of each batch or campaign and following any intervention that may affect the integrity of the unit.</p>
+            <p>Interventions that pose a risk to the integrity of the gloves or isolator should be avoided when possible. When they cannot be avoided, the integrity of the gloves should be visually inspected after such interventions.</p>
+            <p><strong>Pressure decay</strong> is confirmed using a fully automated, validated, and calibrated instrument for pre- and post-batch integrity testing and periodic integrity testing. Visual inspection should precede and augment pressure-decay testing.</p>
+
+            <h3>Rationale</h3>
+            <p>Isolators have components (including gloves) constructed of various materials that can be prone to puncture. Glove integrity is critical to maintaining the aseptic environment within the isolator. Integrity issues during production runs, regardless of type, create a potential contamination risk. Process impact is the same whether the process is a development (i.e., media fills) or a regular production run.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>三層測試方法的互補邏輯</h4>
+                <table>
+                    <thead><tr><th>方法</th><th>能偵測的缺陷</th><th>限制</th></tr></thead>
+                    <tbody>
+                        <tr><td>目視檢查（Visual）</td><td>可見裂縫、撕裂、變色</td><td>無法偵測 pinhole 漏點</td></tr>
+                        <tr><td>壓降測試（Pressure Decay）</td><td>微小漏點（包括 pinhole）</td><td>需要已驗證的自動化設備</td></tr>
+                        <tr><td>物理檢查（Mechanical）</td><td>手套柔韌性退化、材料老化</td><td>主觀性較高，需訓練</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>黃金組合：先目視，再壓降測試。</strong> 目視可以在壓降測試之前發現明顯缺陷，避免浪費測試時間。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>測試頻率的最低要求：每批次前後</h4>
+                <p>PDA 明確規定，完整性測試<strong>至少</strong>在每個批次或活動的開始和結束時進行。這意味著：</p>
+                <ul>
+                    <li>批次前測試：確認隔離器在上次使用後至今沒有損壞</li>
+                    <li>批次後測試：確認生產過程中沒有發生完整性損失</li>
+                    <li>介入後立即目視：任何高風險操作（如使用尖銳物品）後需立即目視確認</li>
+                </ul>
+            </div>
+
+            <div class="key-point-box">
+                <h4>手套完整性 = 隔離器操作的第一風險</h4>
+                <p>在隔離器的所有潛在污染風險中，手套漏點是最難被即時發現的。正壓差監控、VHP 去污都能連續監測，但手套上的 pinhole 在壓降測試之前是「隱形的」。這正是為什麼壓降測試必須使用<strong>已驗證、已校正的自動化儀器</strong>——人工方法的重複性和靈敏度不足以應對。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q4-2 -->
+    <div class="section-title">Q4-2: What should the maintenance program be for gloves?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>Expectations and practices regarding inspection and replacement of glove systems can be documented within the maintenance program. This should be supported with a <strong>quality risk assessment</strong> that details the rationale for glove replacement frequency.</p>
+            <p>The use of a glove may not exceed the glove vendor's expiry date. Common replacement frequencies are between <strong>6 and 12 months</strong>. Based on the required quality risk assessment, each glove may have a unique replacement frequency. Not all gloves in a system are required to be changed at the same frequency. Trending of glove performance is recommended, as this will ensure proactive identification of any developing patterns, such as type of damage or increased damage frequency to a particular glove location.</p>
+            <p><strong>Gloves should not be used until failure.</strong> Frequency of preventive maintenance activities must be established via risk assessment with input from the vendor.</p>
+
+            <p>The quality risk assessment should include, but not be limited to:</p>
+            <ul>
+                <li>Glove material of construction</li>
+                <li>Frequency of glove use</li>
+                <li>VHP contact time or concentration (delamination can occur due to prolonged VHP/decontaminant exposure)</li>
+                <li>Historical data for loss of integrity</li>
+                <li>How gloves are used (e.g., handling sharp-edged equipment, stretching, etc.)</li>
+                <li>Type of disinfectant used for inner disinfection of the gloves</li>
+                <li>Ability to clean residual product from the gloves</li>
+            </ul>
+
+            <h3>Rationale</h3>
+            <p>Glove integrity is critical to product quality. A robust risk assessment including specific process parameters will provide the information needed for maintenance procedures. Site procedures should define maintenance and operational procedures based on risk. Some manufacturers offer the ability to replace gloves aseptically.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>Risk Assessment 驅動的手套更換計畫</h4>
+                <p>PDA 的核心立場是：沒有適用所有廠房的固定更換週期。每個隔離器、每個手套位置，都可能因使用強度和環境條件不同，而有不同的最佳更換頻率。</p>
+                <p>6–12 個月只是「常見範圍」，不是規定。如果你的手套使用頻率極高（每天多班次），且接觸尖銳物品，可能 3–4 個月就要換。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>「不應等到失效才換」是 PM（預防性維護）的精髓</h4>
+                <p>等到壓降測試失敗才換手套，代表該手套已在「已知失效」狀態下使用了一段時間——而在那段時間內，你不知道有沒有批次被污染。預防性更換的目的正是避免這種不確定性。</p>
+                <p>趨勢分析（trending）在這裡非常有價值：如果某個手套位置的壓降測試數值逐漸變差（但仍在 pass 範圍），提前換掉比等到 fail 更安全。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>VHP 對手套材質的傷害：常被忽略的因素</h4>
+                <p>長期暴露在高濃度 VHP 下，某些手套材質會出現「去層化（delamination）」——表層材料逐漸分離。這個過程是累積的，不會突然發生。因此，VHP 循環的次數和濃度必須納入 risk assessment，同樣重要的還有消毒劑種類（某些消毒劑對橡膠材質的腐蝕性更強）。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>文件化挑戰</h4>
+                <p>你的維護程序是否能回答以下問題：（1）每個手套位置的預定更換頻率是多少？（2）這個頻率的 risk assessment 依據是什麼？（3）最近一次更換記錄在哪裡？法規查核時，這三個問題都可能被詢問。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q4-3 -->
+    <div class="section-title">Q4-3: What is the response to a glove integrity failure?</div>
+    <div class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original English (PDA PtC-Isolators)</div>
+
+            <h3>Recommendation</h3>
+            <p>A procedure should detail the actions required when a glove failure is discovered. Physical failure of gloves should be treated as a <strong>deviation</strong>, and the associated investigation must be documented. The response and actions taken may vary, depending on when the failure is identified.</p>
+
+            <p><strong>Scenario 1 — Before a production run:</strong> The run should not proceed until the failure is investigated and resolved.</p>
+
+            <p><strong>Scenario 2 — During line setup or prior to isolator decontamination:</strong> The nonintegral glove should be replaced.</p>
+
+            <p><strong>Scenario 3 — Subsequent to isolator decontamination, but prior to product exposure:</strong> The glove should be replaced and the decontamination cycle repeated. Conducting a full investigation may not be necessary if the previous post-batch physical integrity test and visual check passed. However, an investigation to determine the cause of the failure may be helpful for identifying actions required to prevent a repeat of the failure.</p>
+
+            <p><strong>Scenario 4 — During/after a production run:</strong> An investigation should be conducted to determine the cause of the failure and the impact on the filled product. The investigation should consider the location of the glove, the activities performed by those wearing the glove, and the timing of integrity tests that passed. Prior to resuming production, the glove should be replaced and the conditions that caused the failure should be resolved.</p>
+
+            <h3>Rationale</h3>
+            <p>Quality risk management should be applied for each scenario and corrective action should be taken in order to minimize the risk of contamination. Each site should evaluate the specific processes and procedures used. It is not acceptable to use nonintegral gloves or gloves with pinhole leaks during media fills or manufacturing processes. Validation activities should ensure adherence and performance to aseptic processing requirements.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">中文導讀與詮釋</div>
+
+            <div class="term-box">
+                <h4>四種情境的決策流程圖</h4>
+                <table>
+                    <thead><tr><th>發現時間點</th><th>立即行動</th><th>批次影響</th><th>調查需求</th></tr></thead>
+                    <tbody>
+                        <tr><td>生產前</td><td>停止生產，換手套</td><td>無</td><td>調查失效原因後才可繼續</td></tr>
+                        <tr><td>裝線中（去污前）</td><td>換手套即可</td><td>無</td><td>可選擇性調查</td></tr>
+                        <tr><td>去污後、產品暴露前</td><td>換手套 + 重跑 VHP 循環</td><td>無（未接觸產品）</td><td>可選擇性，建議追因</td></tr>
+                        <tr><td>生產中 / 生產後</td><td>隔離批次，停止生產</td><td>高風險，需全面評估</td><td>強制性完整偏差調查</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>生產中發現失效：三個調查焦點</h4>
+                <p>當手套失效發現於生產過程中或結束後，調查必須回答三個問題：</p>
+                <ol>
+                    <li><strong>位置</strong>：失效手套在哪個位置？它距離產品暴露區域多近？</li>
+                    <li><strong>活動</strong>：在失效期間，這個手套執行了哪些操作？是否直接觸碰了產品接觸面？</li>
+                    <li><strong>時間窗口</strong>：上次通過完整性測試是什麼時候？失效是在測試之後才發生，還是可能更早？</li>
+                </ol>
+                <p>這三個答案共同決定了批次的風險等級，進而決定是否需要拒批、重新取樣或其他 CAPA。</p>
+            </div>
+
+            <div class="key-point-box">
+                <h4>手套失效必須作為 Deviation 處理</h4>
+                <p>PDA 明確指出，手套失效不是「小事」——它必須進入正式偏差系統，並且要有文件化的調查。即使最後評估結論是「批次不受影響」，這個評估過程本身也必須留下記錄。</p>
+                <p>「不可接受使用有 pinhole 漏點的手套進行媒體灌充或生產」——這是 PDA 的底線。任何試圖「先生產、後補文件」的做法都是不被接受的。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>「最後通過測試」時間點的重要性</h4>
+                <p>如果批次後測試發現手套失效，但批次前測試是通過的，那麼失效「一定」發生在這兩次測試之間的生產過程中。調查的重點就集中在這個時間窗口內的所有操作。這就是為什麼批次前後都測試非常重要——它幫助你縮小調查範圍，提高根因分析的效率。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>情境演練</h4>
+                <p>生產結束後的壓降測試顯示 2 號手套失效。批次前測試通過。操作記錄顯示，一位操作員在生產中期透過 2 號手套插入了一個玻璃刮刀。你的偏差報告需要包含哪些評估內容？批次是否可以放行？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION SUMMARY                                       -->
+    <!-- ===================================================== -->
+    <div class="section-summary">
+        <h2>本節核心摘要 Section Summary</h2>
+
+        <p><strong>Topic 2：物理環境</strong>——隔離器周圍環境的分類要求以 risk-based 原則決定，最低要求為 ISO 8（at rest 或 in operation，取決於法規管轄）。隔離器填充區可採用湍流設計，但前提是粒子濃度符合 ISO 5，且有充分的驗證支持。氣流可視化研究（smoke study + 錄影）是法規申報的核心文件，必須在 in-operation 情境下執行。ISO 14644-1 的取樣方法對總粒子測試是強制依循的，微生物取樣則可依 risk assessment 調整。</p>
+
+        <p><strong>Topic 3：人員</strong>——隔離器最大的優勢之一是大幅簡化更衣要求（Grade C/D 取代 Grade A/B），但這項優勢建立在屏障系統的完整性上。操作人員仍需穿戴無菌內手套並以 70% IPA 消毒後才能插入隔離器手套。裝載開蓋階段是最高風險時段，需要額外防護措施防止皮脂和微生物污染內部表面。</p>
+
+        <p><strong>Topic 4：完整性測試</strong>——手套完整性是隔離器操作中第一風險項目。完整性測試必須結合目視檢查與自動化壓降測試，最低頻率為每批次前後。手套維護計畫需由 risk assessment 驅動，不應等到失效才更換，並需進行趨勢分析。手套失效必須作為正式偏差處理，依發現時間點採取不同的應對措施；若在生產過程中發現，批次影響評估是調查的核心任務。</p>
+
+        <p style="margin-top:1rem; font-style: italic; color: #856404;"><strong>Operations Director 的核心洞察：</strong>Topics 2–4 共同描述了隔離器系統中「環境控制 → 人員管理 → 屏障完整性」三層防線的相互依存關係。任何一層的弱化——氣流失控、手套消毒不確實、或完整性測試流於形式——都會破壞整個系統的防污染保證。這也是為什麼 PDA 在每個 Q&A 都強調 risk assessment 和文件化：不是形式主義，而是讓每一個決策都有可追溯的依據。</p>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>

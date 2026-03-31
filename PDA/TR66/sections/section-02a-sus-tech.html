@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR66 - Section 2a: SUS Technologies Part 1 (4.0-4.8)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.0-4.8: Single-Use Technologies and System Integration (Part 1)</h1>
+    <div class="subtitle">一次性使用技術與系統整合（第一部分）</div>
+    <div class="page-info">PDA Technical Report No. 66 (2014) - Single-Use Systems | p15 - p28</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Single-Use Systems (SUS，一次性使用系統) 與 Multiple-Use Systems (MUS，多次使用系統) 的功能差異與比較框架</li>
+        <li>掌握 SUS 的組件 (Components)、次組件 (Subassemblies)、組件 (Assemblies) 三層架構及品質管控責任分配</li>
+        <li>學習 SUS 技術可行性評估 (Technical Feasibility Assessment) 的風險架構，包含製程風險與產品風險</li>
+        <li>熟悉影響 SUS 設計的製程相容性 (Process Compatibility) 因素，以及設施部署 (Facility Deployment) 考量</li>
+        <li>認識常見的連接技術 (Connectors)、管路焊接 (Tube Welders)、管路封口 (Tube Sealers) 及其應用選擇</li>
+        <li>瞭解 SUS 常用塑膠材料的特性、優點與限制</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.0 & 4.1 Introduction -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-0">4.0 / 4.1 Single-Use Technologies and System Integration / Introduction</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section describes strategies for comparing <span class="key-term">single-use</span> and traditional fixed <span class="key-term">multiple-use</span> manufacturing methods with particular emphasis on the differences between SUS and the equivalent MUS. It also provides a framework for assessing the <span class="key-term">technical feasibility</span> and risks associated with implementing an SUS. A description of the most common technical attributes of SUSs is also provided. Although SU manufacturing is undergoing rapid technological changes that may affect the specific factors used to compare and contrast SU with MU technologies, the fundamental principles used to assess the feasibility or development of risk assessment is expected to remain unchanged. The methodology and key points presented in this section will continue to be relevant as SUS suppliers continue to innovate.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Single-Use System, SUS (一次性使用系統)：</strong>以塑膠聚合物材料為主體、設計為一次使用後即丟棄的製程設備系統。取代傳統不鏽鋼系統中需要 CIP/SIP 的重複使用設備。</p>
+            <p><strong>Multiple-Use System, MUS (多次使用系統)：</strong>傳統不鏽鋼固定式設備，需要 Clean-In-Place (CIP，就地清洗) 及 Sterilize-In-Place (SIP，就地滅菌) 才能重複使用。</p>
+            <p><strong>Technical Feasibility (技術可行性)：</strong>評估 SUS 是否能滿足特定應用的功能需求與法規要求。這是導入 SUS 前的第一道關卡。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在經營餐廳，面臨「用瓷器餐具 vs 免洗餐具」的選擇。瓷器（MUS）耐用但需要洗碗機和高溫消毒，佔空間且需要水電設施；免洗餐具（SUS）每次用完即丟，不需清洗設施，但材料成本會持續發生，且你要確保免洗材料不會影響食物品質（如溶出物）。本章就是幫助你建立系統化的決策框架來做這個選擇。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR66 強調：雖然 SU 技術日新月異，但用來評估可行性與風險的「基本原則」不會改變。這意味著你學會的評估方法論是長期有效的——不論具體產品怎麼變化，風險評估的思維框架是不變的。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.2 Comparison of MUS and SUS -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-2">4.2 Comparison of MUS and SUS</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Most stainless steel systems are available in an SU format. Since SU suppliers use less costly <span class="key-term">polymeric materials</span>, they have developed physical and mechanical operations to produce the functional equivalent unit operation in a format that is designed for an SU. A comparative description of the features of SU and MU technologies is presented in Table 4.2-1.</p>
+
+        <h3>Table 4.2-1 Comparison of MU and SU Systems</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Functional Requirement</th>
+                <th>MUS</th>
+                <th>SUS</th>
+            </tr>
+            <tr>
+                <td>Connections to sterile envelope</td>
+                <td>Stainless steel (SS), steam-in-place (SIP) valve arrays</td>
+                <td>Aseptic connectors, SIP connectors, and tubing welders. Alpha/beta ports</td>
+            </tr>
+            <tr>
+                <td>Disconnections from sterile envelope</td>
+                <td>SS SIP valve arrays</td>
+                <td>Aseptic disconnects, SIP connectors, and tubing sealers. Alpha/beta ports</td>
+            </tr>
+            <tr>
+                <td>Containment, storage, and transportation</td>
+                <td>SS tanks, fixed or portable</td>
+                <td>Polymeric film sealed to form 2D or 3D bags, unsupported, or as an insert to an external rigid support container (e.g., large bags, tank liners, and centrifuge liners)</td>
+            </tr>
+            <tr>
+                <td>Fluid transfer</td>
+                <td>SS piping, transfer panels</td>
+                <td>Tubing (flexible and rigid, polymeric)</td>
+            </tr>
+            <tr>
+                <td>Pumping</td>
+                <td>Multiple, fluid contact</td>
+                <td>Primarily peristaltic, nonfluid contact</td>
+            </tr>
+            <tr>
+                <td>Mixing (mass transfer)</td>
+                <td>SS impeller</td>
+                <td>Nonfluid contact (e.g., agitation and pumping) or SU impeller-based technology</td>
+            </tr>
+            <tr>
+                <td>Freezing</td>
+                <td>SS tanks or as integrated freeze-thaw systems</td>
+                <td>2D bags with or without shells, or as integrated SU freeze-thaw systems</td>
+            </tr>
+            <tr>
+                <td>Filtration</td>
+                <td>SS filter housings with filter elements (e.g., cartridges and plate/frame)</td>
+                <td>Capsule filters, hollow fiber cartridges, SU cassette technology</td>
+            </tr>
+            <tr>
+                <td>Chromatography</td>
+                <td>Multiple columns packed on-site with media (resin)</td>
+                <td>Prepacked columns and membrane adsorbers</td>
+            </tr>
+            <tr>
+                <td>Isolators</td>
+                <td>SS transfer canisters with docking port</td>
+                <td>2D bags with docking port and with or without tubing sets</td>
+            </tr>
+            <tr>
+                <td>Sampling</td>
+                <td>SS SIP sample valves</td>
+                <td>Sample bag or manifolds with or without SU sample valves. Aseptic connectors or tubing welders can be used to attach additional sample bags or manifolds if needed</td>
+            </tr>
+            <tr>
+                <td>Measurements</td>
+                <td>In situ reusable probe; can recalibrate during a process</td>
+                <td>In situ sensor may include a reusable probe or a single-use recalibrated sensor that cannot be adjusted or recalibrated during a process. Calibration is set during manufacturing and may be influenced by storage of the SUS</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Sterile Envelope (無菌封套)：</strong>指製程中維持無菌狀態的密閉邊界。SUS 使用 Aseptic Connectors（無菌連接器）和 Tubing Welders（管路焊接器）來建立和打開這個邊界，而 MUS 則依賴 SIP valve arrays（就地滅菌閥組）。</p>
+            <p><strong>Peristaltic Pump (蠕動泵)：</strong>SUS 主要使用的泵浦類型，其最大優勢是 nonfluid contact（非流體接觸）——泵頭不直接碰觸產品液體，降低了交叉污染風險，也不需要清洗泵頭。</p>
+            <p><strong>2D/3D Bags (二維/三維袋)：</strong>2D 袋是平面焊接的薄膜袋（像枕頭），3D 袋則有立體結構（像箱子）。3D 袋在大容積（>200L）應用中更常見，因為可以更好地利用外部支撐容器的空間。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這張對照表就像是「傳統廚房 vs 即棄式行動餐車」的設備清單比較。傳統廚房（MUS）有固定的不鏽鋼水槽、爐具、管路——耐用但安裝和清潔成本高；行動餐車（SUS）用免洗容器、一次性管路、蠕動式調味泵——每次用完即換新，省去清洗流程但材料消耗持續增加。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>注意 Measurements（量測）這一欄的關鍵差異：SUS 的感測器可能在出廠時就完成校正 (Calibration)，在製程中<strong>無法重新校正</strong>。這代表：</p>
+            <ul>
+                <li>感測器的儲存條件（溫度、濕度、時效）會直接影響量測準確度</li>
+                <li>需要更嚴格的供應商品質管控和進料檢驗</li>
+                <li>必須在製程驗證時確認感測器精度是否符合 CPP 需求</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 的泵浦以蠕動泵 (Peristaltic Pump) 為主？相較於 MUS 的直接接觸型泵浦，這在無菌保證上有什麼優勢？</li>
+                <li>如果你的製程需要在過程中重新校正 pH 感測器，從 MUS 轉換到 SUS 時應該如何處理這個需求差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.3 SU Components and Assembly -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-3">4.3 SU Components and Assembly</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The primary components for the assembly of an SUS include <span class="key-term">fittings</span>, <span class="key-term">tubing</span>, <span class="key-term">filters</span>, <span class="key-term">connectors</span>, <span class="key-term">bags (film)</span>, porting (bags), <span class="key-term">impellers</span>, <span class="key-term">spargers</span>, valves, <span class="key-term">sensors</span>, filling needles, pump heads, docking port containers, and outer pouches (dust covers). The individual components do not require environmentally controlled storage rooms; they are stored in sealed bags and must be handled with gloves once opened to avoid contamination during assembly of the SUS. Several of the components can be assembled into a system and supplied <span class="key-term">presterilized</span>, commonly via <span class="key-term">gamma irradiation</span>. This is especially convenient for a completed fluid contact pathway of tubing preattached to a bag with all the tubing legs either heat-sealed or terminated with aseptic connectors. These systems are called <span class="key-term">bag assemblies</span>, and they have tubing sets or tubing manifolds attached to them.</p>
+        <p>As shown in Figure 4.3-1, fully functional assemblies are often created by connecting components to a set of subassemblies, which in turn forms a functional SUS assembly that is capable of performing specific unit operations.</p>
+
+        <h3>Figure 4.3-1 Anatomy of an SUS</h3>
+        <div class="hierarchy-diagram">
+            <div class="hierarchy-level">
+                <span class="hierarchy-box level-1">COMPONENTS</span>
+            </div>
+            <div class="arrow-down">&#9660;</div>
+            <div style="font-size:0.82rem; color:var(--text-medium); margin-bottom:0.5rem;">
+                Fittings, Tubing, Filters, Connectors, Film, Ports, Impellers, Spargers, Valves, Sensors, Filling needles, Outer Bag
+            </div>
+            <div style="font-size:0.75rem; color:#718096; margin-bottom:0.75rem;">
+                Quality: Multiple supplier facility control for components
+            </div>
+            <div class="hierarchy-level">
+                <span class="hierarchy-box level-2">SUBASSEMBLIES</span>
+            </div>
+            <div class="arrow-down">&#9660;</div>
+            <div style="font-size:0.82rem; color:var(--text-medium); margin-bottom:0.5rem;">
+                Tube sets, Manifolds, Bags, Sensor assemblies, Filter assemblies
+            </div>
+            <div style="font-size:0.75rem; color:#718096; margin-bottom:0.75rem;">
+                Quality: Supplier control for subassembly | Connections, Sterilization
+            </div>
+            <div class="hierarchy-level">
+                <span class="hierarchy-box level-3">ASSEMBLIES</span>
+            </div>
+            <div class="arrow-down">&#9660;</div>
+            <div style="font-size:0.82rem; color:var(--text-medium); margin-bottom:0.5rem;">
+                Full-capacity unit operations
+            </div>
+            <div style="font-size:0.75rem; color:#718096;">
+                Quality: End user for final functional assembly | Fitness for use, Sterilization, Deployment
+            </div>
+        </div>
+
+        <p>MUSs are assembled in classified and environmentally monitored facilities, and the equipment interior is cleaned by a <span class="key-term">clean-in-place (CIP)</span> technique. An SUS must be manufactured and assembled in a clean environment because there is no practical method to clean an SU assembly. Some tubing can be purged with ultrapure air or nitrogen for particle removal during fabrication; however, this is not practical for the assembled SUS. The area where the SUS will be assembled must be prepared in advance using standard clean-room practices. The outside of each component package must be wiped with alcohol before transport into the assembly area. Assembly rooms are typically <span class="key-term">ISO 7 or 8</span> (Grade B/C or Grade C/D, respectively), and it is normal to conduct a combination of nonviable particle and microbial sampling of the assembly room. The design of the room is similar to that of pharmaceutical manufacturing suites (i.e., HEPA-filtered air, low returns, smooth surfaces, and airlocks for entry and exit). Staff gowning must be appropriate for an ISO 7 or ISO 8 environment. Regular, consistent, and high-quality cleaning of the assembly room is required to maintain area classification and provide a consistent environment for manufacturing SU solutions. SUS components are manufactured and assembled in controlled environments in order to meet acceptable standards for <span class="key-term">particle</span>, <span class="key-term">bioburden</span>, and <span class="key-term">endotoxin</span> levels. Since there are no established testing standards for an SUS, the end user must rely on the supplier's specifications and control strategies for particles, endotoxins, and bioburden. Suppliers should have quality systems in place to ensure their facilities and procedures meet end-user requirements. It is also critical that <span class="key-term">quality agreements</span> are established between end users and suppliers to ensure that the suppliers' facilities are adequate to deliver an SUS that meets end-user requirements.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>SUS 三層架構：</strong></p>
+            <ul>
+                <li><strong>Components (元件)：</strong>最基本的個別零件，如接頭、管路、濾器、薄膜、感測器等。品質由多家零件供應商在其各自設施中管控。</li>
+                <li><strong>Subassemblies (次組件)：</strong>由多個元件組裝而成的半成品，如管路組 (Tube sets)、歧管 (Manifolds)、袋體 (Bags)。品質由組裝供應商管控，並在此階段進行連接和滅菌（通常為 Gamma Irradiation，伽馬射線滅菌）。</li>
+                <li><strong>Assemblies (組件)：</strong>最終功能性組件，由終端使用者將多個次組件連接組裝而成，形成可執行特定單元操作的完整系統。</li>
+            </ul>
+            <p><strong>Gamma Irradiation (伽馬射線滅菌)：</strong>SUS 最常用的滅菌方式。與高壓蒸汽滅菌不同，伽馬射線可以在密封包裝狀態下穿透滅菌，非常適合預組裝的拋棄式系統。</p>
+            <p><strong>Quality Agreement (品質協議)：</strong>終端使用者與供應商之間的正式合約文件，明確定義雙方對品質的責任和要求，是 GMP 合規的關鍵要素。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 的三層架構就像組裝一台電腦：<strong>元件</strong>（CPU、RAM、硬碟）由各專業廠商製造並品管；<strong>次組件</strong>（主機板+CPU+RAM）由組裝商整合測試並出貨；最終<strong>組件</strong>（整台電腦+螢幕+周邊）由終端使用者依需求連接並確認功能。每一層都有不同的品質責任主體。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>SUS 與 MUS 有一個根本性差異：<strong>SUS 無法被清洗</strong>。這意味著：</p>
+            <ul>
+                <li>組裝環境的潔淨度直接決定了產品的微粒、生物負載和內毒素水準</li>
+                <li>組裝區域必須是 ISO 7 或 ISO 8 等級（相當於 EU GMP Grade B/C 或 C/D）</li>
+                <li>每個元件包裝在進入組裝區前必須以酒精擦拭外表面</li>
+                <li>由於目前沒有 SUS 專用的測試標準，終端使用者必須依賴供應商的規格和管控策略——這使得 Quality Agreement 至關重要</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 而言，SUS 的「供應鏈品質管理」比自建 MUS 更為複雜。你不只是管理自己的設備——你還要管理從元件到次組件的多層供應商。建議建立：</p>
+            <ul>
+                <li>供應商稽核計畫（依風險等級設定頻率）</li>
+                <li>進料檢驗 (IQC) 程序，至少涵蓋微粒、生物負載、內毒素</li>
+                <li>完整的品質協議，明確定義變更通知義務</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 組裝必須在潔淨室中進行，而非一般倉庫環境？如果組裝環境不夠潔淨，最可能影響哪些品質指標？</li>
+                <li>假設你發現供應商更換了袋體薄膜的聚合物配方，你應該啟動什麼流程？為什麼品質協議中的變更通知條款如此重要？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4 Technical Feasibility and Risk Assessment Framework -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-4">4.4 Technical Feasibility and Risk Assessment Framework</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>A <span class="key-term">technical feasibility assessment</span> is needed to show that a proposed SUS can meet the functional and regulatory requirements expected for a particular application. This assessment is performed after the generation of <span class="key-term">user requirements (UR)</span>, which outline the particular technical requirements for an SUS application. The design of the SUS must be evaluated for each SUS application, taking into consideration <span class="key-term">process compatibility</span>, <span class="key-term">facility fit</span>, and the effect of SUS design on <span class="key-term">critical process parameters (CPPs)</span> and <span class="key-term">critical quality attributes (CQAs)</span>. Figure 4.4-1 delineates potential process and product risk factors and provides a framework for conducting a technical feasibility assessment. In using this figure, one should be aware that process risk may lead to product risk.</p>
+
+        <h3>Figure 4.4-1 Implementation of an SUS and the Assessment of Drug Process and Product Risk</h3>
+
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1.25rem; margin:1rem 0;">
+            <div style="text-align:center; margin-bottom:1rem;">
+                <strong style="color:var(--primary-blue);">SUS Technical Feasibility</strong>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+                <div style="background:#edf2f7; padding:0.75rem; border-radius:6px;">
+                    <strong style="font-size:0.85rem;">Process Requirements &amp; Parameters</strong>
+                    <ul style="font-size:0.8rem; margin:0.5rem 0 0 1rem;">
+                        <li>Liquid constituents</li><li>Volume</li><li>Temperature</li><li>Pressure</li>
+                        <li>Flow rate</li><li>Time</li><li>pH</li><li>Oxygen sensitivity</li>
+                        <li>Light sensitivity</li><li>Sterility requirements</li><li>Sampling requirements</li>
+                        <li>Solid additions</li><li>Mixing requirements</li><li>Cell viability and growth rate</li>
+                        <li>Monitoring requirements</li><li>Mass transfer</li><li>Heat transfer</li>
+                    </ul>
+                </div>
+                <div style="background:#edf2f7; padding:0.75rem; border-radius:6px;">
+                    <strong style="font-size:0.85rem;">Product Requirements &amp; Attributes</strong>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;">Are CQAs still being met?</p>
+                </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div style="background:#fff3e0; padding:0.75rem; border-radius:6px; border-left:3px solid #ff9800;">
+                    <strong style="font-size:0.85rem; color:#e65100;">Process Risk Considerations</strong>
+                    <p style="font-size:0.8rem; margin-top:0.3rem;"><em>Potential Loss of System Integrity:</em></p>
+                    <ul style="font-size:0.78rem; margin:0.25rem 0 0 1rem;">
+                        <li>Deployment of SUS and operator training</li>
+                        <li>Physical strength of SUS</li>
+                        <li>Failure modes and recovery</li>
+                        <li>Failure rate of SUS vs MUS</li>
+                        <li>Impact on operator safety</li>
+                        <li>Preventive maintenance</li>
+                    </ul>
+                    <p style="font-size:0.8rem; margin-top:0.3rem;"><em>Potential Process Alteration:</em></p>
+                    <ul style="font-size:0.78rem; margin:0.25rem 0 0 1rem;">
+                        <li>Size limitations of SUS vs MUS</li>
+                        <li>Facility capacity/productivity</li>
+                        <li>Extent of process adjustments required</li>
+                        <li>Changes in SUS barrier due to surroundings</li>
+                        <li>Changes in time/duration of process</li>
+                    </ul>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;"><strong>Are CPPs still being met?</strong></p>
+                </div>
+                <div style="background:#fce4ec; padding:0.75rem; border-radius:6px; border-left:3px solid #e53935;">
+                    <strong style="font-size:0.85rem; color:#c62828;">Product Risk Considerations</strong>
+                    <p style="font-size:0.8rem; margin-top:0.3rem;"><em>Potential for Added Contaminants:</em></p>
+                    <ul style="font-size:0.78rem; margin:0.25rem 0 0 1rem;">
+                        <li>Leachables/extractables of SUS vs MUS</li>
+                        <li>Contamination due to manufacturing of SUS</li>
+                        <li>Microbial contamination due to SUS</li>
+                        <li>Chemical contamination due to SUS</li>
+                        <li>Cross contamination from other products</li>
+                    </ul>
+                    <p style="font-size:0.8rem; margin-top:0.3rem;"><em>Potential Process Alteration:</em></p>
+                    <ul style="font-size:0.78rem; margin:0.25rem 0 0 1rem;">
+                        <li>Adsorption of product or functional component</li>
+                        <li>Ability of SUS to catalyze a reaction</li>
+                        <li>Suboptimal processing due to technical limitations</li>
+                        <li>Change in SUS barrier due to surroundings</li>
+                    </ul>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;"><strong>Are CQAs still being met?</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>User Requirements, UR (使用者需求)：</strong>在啟動技術可行性評估之前，必須先產生的文件。UR 定義了特定 SUS 應用的技術規格要求，是後續所有評估的基準。</p>
+            <p><strong>Process Risk vs Product Risk (製程風險 vs 產品風險)：</strong>TR66 將風險分為兩個維度：</p>
+            <ul>
+                <li><strong>製程風險</strong>——系統完整性喪失（如 SUS 破裂）或製程改變（如尺寸限制影響產能）。核心問題：CPPs 是否仍能被滿足？</li>
+                <li><strong>產品風險</strong>——新增污染物（如 Extractables/Leachables，可萃取物/溶出物）或製程改變導致的產品品質影響（如吸附、催化反應）。核心問題：CQAs 是否仍能被滿足？</li>
+            </ul>
+            <p>關鍵認知：<strong>製程風險可能導致產品風險</strong>。例如，SUS 破裂（製程風險）會導致微生物污染（產品風險）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p>Figure 4.4-1 的架構可以理解為一個「雙漏斗」模型：</p>
+            <ul>
+                <li><strong>上層</strong>（輸入）：SUS 技術可行性、製程需求參數（17 個關鍵參數）、產品需求與屬性</li>
+                <li><strong>下層左側</strong>（製程風險）：系統完整性喪失 + 製程改變 &#8594; CPPs 是否被滿足？</li>
+                <li><strong>下層右側</strong>（產品風險）：新增污染物 + 製程改變 &#8594; CQAs 是否被滿足？</li>
+            </ul>
+            <p>值得特別注意的產品風險項目：<strong>Adsorption（吸附）</strong>——SUS 的塑膠材料可能吸附產品中的活性成分或功能性元件，導致效力下降。這在低濃度的生物製劑（如單株抗體、細胞因子）中尤為重要。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>技術可行性評估就像蓋房子前的建築師評估：你不只要確認「房子蓋得出來」（技術可行），還要評估「住進去會不會有問題」——地基穩不穩（系統完整性）、建材會不會釋放甲醛（溶出物）、通風好不好（mass transfer）、會不會隔壁裝潢的噪音傳過來（交叉污染）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 Figure 4.4-1 中列出了 17 個製程需求參數。如果你要將一個 pH 2.0 的酸性緩衝液儲存步驟從不鏽鋼槽改為 SUS，你會優先關注哪些參數？為什麼？</li>
+                <li>「Adsorption of product or functional component」被列為產品風險。請舉一個具體的生物製劑製程場景，說明這個風險如何實際發生。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.5 Factors Affecting SUS Design -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-5">4.5 Factors Affecting SUS Design</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>A technical feasibility study includes a thorough review of the design of a particular SUS in order to prevent mistakes stemming from <span class="key-term">component selection</span> and <span class="key-term">system configuration</span>. The scope of this design review will depend on both the functional objective and complexity of the SUS application in question. An inherent outcome of a technical feasibility study is the potential for identifying that a supplier's <span class="key-term">off-the-shelf</span> SUS configuration is suitably designed with prequalified components (e.g., as proposed by a supplier). In some cases a customized, user-specified component or system will be identified during a technical feasibility study. <span class="key-term">Custom SUS configurations</span> with specified components require additional efforts from an end user during a technical feasibility study if the supplier is not experienced with the user-specified components.</p>
+
+        <h3>4.5.1 Process Compatibility</h3>
+        <p>Another factor to consider during the technical feasibility study of an SUS is <span class="key-term">process compatibility</span>. This involves an assessment of how each of the components of the SUS, plus the SUS as a complete integrated unit, may impact the process outcome. A description of a process compatibility assessment is provided in Table 4.5.1-1.</p>
+
+        <h3>Table 4.5.1-1 Assessment of Process Compatibility</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Factor</th><th>Design Considerations</th></tr>
+            <tr>
+                <td><strong>Construction materials</strong></td>
+                <td>Chemical compatibility with the product and process fluids (liquid and solid), cleaning and sanitizing agents; biocompatibility; animal-derived components; extractable and leachable profiles; and nonspecific adsorption. Note that films may be permeable to some chemical agents (e.g., those used for wipe-down), which could have an impact on the process or product.</td>
+            </tr>
+            <tr>
+                <td><strong>Physical properties</strong></td>
+                <td>Attributes such as film or tube thickness, durometer, brittleness, surface smoothness, elongation, modulus, and impact and tear resistance will contribute to the ruggedness of the system and its resistance to breach of system integrity.</td>
+            </tr>
+            <tr>
+                <td><strong>Microbial control methods</strong></td>
+                <td>Ability to withstand gamma irradiation and/or other means of sanitization or sterilization</td>
+            </tr>
+            <tr>
+                <td><strong>Time</strong></td>
+                <td>Contact time (e.g., short passage in fluid conduit versus storage over an extended period of time), processing time (e.g., mixing time)</td>
+            </tr>
+            <tr>
+                <td><strong>Volume</strong></td>
+                <td>Size and scale of operation, holdup or residual volume (relative to drainage), dead volume</td>
+            </tr>
+            <tr>
+                <td><strong>Temperature</strong></td>
+                <td>Ability to withstand variations in temperature. Freezing applications require specialized systems to retain system integrity. The requirement for controlled addition of heat (e.g., to facilitate the flow of highly viscous fluids), and time for adjustment of temperature</td>
+            </tr>
+            <tr>
+                <td><strong>Gas barrier</strong></td>
+                <td>The loss of water vapor and moisture; oxygen, carbon dioxide, and nitrogen ingress and egress. (Barrier properties are temperature and relative humidity dependent.)</td>
+            </tr>
+            <tr>
+                <td><strong>pH</strong></td>
+                <td>Limitations in high or low pH; fixed versus variable pH over time or imposed profiles</td>
+            </tr>
+            <tr>
+                <td><strong>Pressure</strong></td>
+                <td>Limitations in absolute or differential pressure of the system and individual components (e.g., bags, which do not carry an absolute pressure rating; tubing burst pressure; and vacuum resistance ratings). Applications allowing for pressurized filling and draining of bags in enclosed rigid outer containers are possible following Good Engineering Practices.</td>
+            </tr>
+            <tr>
+                <td><strong>Optical</strong></td>
+                <td>Limitations in the visual process-monitoring capability (e.g., polymeric materials are often classified as transparent, translucent, or opaque)</td>
+            </tr>
+            <tr>
+                <td><strong>Light</strong></td>
+                <td>Sensitivity to light (including exposure time). The transparency of cell culture bags to light may or may not be a desirable feature.</td>
+            </tr>
+            <tr>
+                <td><strong>Flow rate</strong></td>
+                <td>Tubing ID, bag porting size, gravity drain versus pump capability</td>
+            </tr>
+            <tr>
+                <td><strong>Particulates</strong></td>
+                <td>Limitations due to normal particulate content or shedding as a result of abrasion and spallation</td>
+            </tr>
+            <tr>
+                <td><strong>Mixing</strong></td>
+                <td>Viscosity, inadequate mixing, and the generation of particles in cases where there is no terminal filtration. The ability to keep a solution homogeneous in applications involving suspensions. Make sure the design of the container allows for low-volume dispensing and mixing.</td>
+            </tr>
+            <tr>
+                <td><strong>Sterilizing filtration</strong></td>
+                <td>Location of the filter to ensure optimum product drainage; filtration inside sterile core or outside; venting or draining of filters during operation; pre-use flushing and integrity testing and post-use integrity testing; redundant sterilizing filters or need for prefiltration, filter sizing</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Off-the-shelf vs Custom SUS (現成品 vs 客製化 SUS)：</strong></p>
+            <ul>
+                <li><strong>Off-the-shelf（現成品）：</strong>供應商已預先設計和驗證的標準配置。元件已 prequalified（預先確認合格），導入速度快、成本低。</li>
+                <li><strong>Custom（客製化）：</strong>依使用者需求訂製的配置。如果供應商不熟悉使用者指定的元件，終端使用者需要投入額外的確認工作。</li>
+            </ul>
+            <p><strong>Process Compatibility (製程相容性)：</strong>不只看單一元件，還要看整個 SUS 作為完整整合單元對製程結果的影響。這是一個系統層級的評估。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 4.5.1-1 中有幾個常被忽略但至關重要的因素：</p>
+            <ul>
+                <li><strong>Gas Barrier（氣體阻隔性）：</strong>塑膠袋不像不鏽鋼那樣完全不透氣。水蒸氣流失、氧氣滲透都可能影響產品穩定性，尤其是對氧氣敏感的生物製劑。阻隔性會隨溫度和相對濕度而變化。</li>
+                <li><strong>Pressure（壓力）：</strong>塑膠袋通常沒有絕對壓力額定值——這與不鏽鋼壓力容器有根本差異。壓力操作需要使用外部剛性容器來支撐。</li>
+                <li><strong>Nonspecific Adsorption（非特異性吸附）：</strong>在建構材料一欄中特別提到，塑膠材料可能會吸附活性成分，這在低濃度產品中會造成顯著的效力損失。</li>
+                <li><strong>Film Permeability（薄膜滲透性）：</strong>用於擦拭消毒的化學藥劑可能穿透 SUS 薄膜，進入產品——這是一個容易被忽略的污染途徑。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>製程相容性評估就像測試新買的保鮮盒能不能用來微波加熱——你要確認材質耐溫度（Temperature）、不會釋放有害物質（Extractables）、蓋子密封性好（Gas Barrier）、不會變形（Physical Properties）、容量適合你的份量（Volume）。每一項看似簡單，但如果漏掉任何一項，結果可能是食物變質或容器破裂。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的製程需要在 -20°C 冷凍儲存中間體長達 6 個月。從 Table 4.5.1-1 中，哪些因素需要特別評估？請至少列出 4 個。</li>
+                <li>為什麼「bags do not carry an absolute pressure rating」是一個需要特別注意的設計限制？在實務操作中如何克服這個限制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.6 Facility Impact for SUS Setup and Deployment -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-6">4.6 Facility Impact for SUS Setup and Deployment</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Although SUSs can be set up and deployed in existing manufacturing facilities, a new or renovated facility may be more effective if a high level of <span class="key-term">SUS integration</span> is required. To manage the risk of damage to the SUS, assessment of <span class="key-term">facility design and layout</span> should include SUS material management, storage, and handling during operational setup. Including a defined setup and deployment stage, with standardized activities for each part, is a recognized success factor for SUS implementation and should be a routine part of the workflow and planning for each SUS application.</p>
+        <p><span class="key-term">Setup</span> includes those activities required to deliver the SUS to the point of use. <span class="key-term">Deployment</span> involves the hands-on steps required to successfully assemble and ready the system for use in a specific SUS application. Examples of the facility setup and deployment assessments are described in Table 4.6-1.</p>
+
+        <h3>Table 4.6-1 Assessment of SUS Facility Setup and Deployment</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Factor</th><th>Design Considerations</th></tr>
+            <tr>
+                <td><strong>Facility</strong></td>
+                <td>Room classifications and the level of SUS integration between SUS and MUS and intra-facility transport of materials to progressively more stringent clean-room classification. Large SUS units may require hoisting or other mechanized deployment and transport. SUS implementation can increase demand on support areas (such as warehouses) and at use storage.</td>
+            </tr>
+            <tr>
+                <td><strong>Staging, storage, and SUS deployment</strong></td>
+                <td>SUS storage and space for staging SUS materials prior to operations; operator handling training; standardization of SUS deployment activities. Storage space for SUS is affected by run frequency and supplier lead times.</td>
+            </tr>
+            <tr>
+                <td><strong>Floor space</strong></td>
+                <td>Factors such as the lack of available space, plus the size and geometry of components (e.g., storage containers), may be the source of some obstacles to an SUS setup. Consider factors such as floor space and the geometry of the container when configuring an SUS, and optimize the use of stackable or collapsible reusable storage containers.</td>
+            </tr>
+            <tr>
+                <td><strong>Changeover time</strong></td>
+                <td>Product and campaign changeover time and individual unit processing setup times; sequence, bottlenecks, and process streamlining; and materials management. SUS can reduce facility changeover time, but SUS availability must be closely managed or the potential time savings will be lost.</td>
+            </tr>
+            <tr>
+                <td><strong>Cleaning</strong></td>
+                <td>Consider the effect of reusable storage containers, cleaning, and changeover time. Construction materials and surface finish of reusable storage containers (e.g., tolerance toward chemical cleaning agents, hygienic design and drainability).</td>
+            </tr>
+            <tr>
+                <td><strong>Complexity</strong></td>
+                <td>Ease of the SUS setup and deployment due to system complexity, ergonomic design, and error proofing should be assessed.</td>
+            </tr>
+            <tr>
+                <td><strong>Labor</strong></td>
+                <td>SUS and MUS may have differing labor demands, and how labor is impacted should be analyzed in detail.</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3>4.6.1 Operational Requirements</h3>
+        <p>SUS processes have inherently more manual connection and operational steps than MUS processes, which are often highly automated. Although the initial system design of an SUS generates an initial method of operation, it may be necessary to optimize the process operation for an end user's individual process requirements and facility. Examples of operational requirement assessments are reviewed in Table 4.6.1-1.</p>
+
+        <h3>Table 4.6.1-1 Assessment of Operational Requirements</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Design Factor</th><th>Design Considerations</th></tr>
+            <tr>
+                <td><strong>Campaigning</strong></td>
+                <td>One use versus multiple fluid passages through an SUS</td>
+            </tr>
+            <tr>
+                <td><strong>Deployment</strong></td>
+                <td>Ability of bag and containment system to accommodate bag deployment during an SUS operation</td>
+            </tr>
+            <tr>
+                <td><strong>Fluid integrity</strong></td>
+                <td>Limitations in material strength, puncture resistance, and component and system integrity during normal operation</td>
+            </tr>
+            <tr>
+                <td><strong>Process connectivity</strong></td>
+                <td>Ability to make aseptic and sterile connections to SUS and MUS during the course of the process using aseptic connectors, including SIP connectors, and tube welders</td>
+            </tr>
+            <tr>
+                <td><strong>Process disconnectivity</strong></td>
+                <td>Ability to disconnect from the process stream aseptically, including SIP connectors (e.g., self-closing connectors, crimping tools, tube sealers)</td>
+            </tr>
+            <tr>
+                <td><strong>Sampling</strong></td>
+                <td>Ability to take representative and sterile samples from the process stream with considerations for point-of-use, volume, and frequency</td>
+            </tr>
+            <tr>
+                <td><strong>Calibration</strong></td>
+                <td>Practical considerations for the calibration of SU sensors</td>
+            </tr>
+            <tr>
+                <td><strong>Space</strong></td>
+                <td>Floor space for removing SUS after manufacturing</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Setup vs Deployment (設置 vs 部署)：</strong>TR66 將 SUS 的準備分為兩個階段：</p>
+            <ul>
+                <li><strong>Setup（設置）：</strong>將 SUS 從倉庫運送到使用點的所有活動——包括物料管理、拆包、環境準備</li>
+                <li><strong>Deployment（部署）：</strong>實際動手組裝 SUS、連接各次組件、使系統就緒的操作步驟</li>
+            </ul>
+            <p>這兩個階段的標準化被認為是 SUS 成功導入的「關鍵成功因素」(recognized success factor)。</p>
+            <p><strong>Changeover Time (換線時間)：</strong>SUS 可以大幅縮短產品或批次間的換線時間（因為不需要 CIP/SIP），但前提是 SUS 物料的供應和庫存必須被妥善管理——否則時間節省將被抵消。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 的設施部署就像 F1 賽車的 Pit Stop（進站換胎）——用一次性的新輪胎換掉舊輪胎比在場內修理輪胎快得多。但如果新輪胎沒有預先準備好、技師沒有訓練好標準流程，進站時間反而可能更長。SUS 的時間優勢完全取決於「標準化的部署流程」和「物料的即時可用性」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>SUS 導入常被忽略的設施影響：</p>
+            <ul>
+                <li><strong>倉儲壓力增大：</strong>SUS 是消耗品，需要持續補充庫存。相較 MUS 的固定設備，SUS 大幅增加了倉庫空間需求。供應商交期 (Lead Time) 和批次頻率直接影響庫存水位。</li>
+                <li><strong>廢棄物增加：</strong>Table 4.6.1-1 提到使用後需要空間移除 SUS——大量的使用後塑膠廢棄物是 SUS 特有的營運挑戰。</li>
+                <li><strong>手動操作增多：</strong>Section 4.6.1 明確指出 SUS 比 MUS 有更多手動連接和操作步驟。這意味著人為錯誤風險更高，需要更完善的操作員訓練和防錯設計 (Error Proofing)。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO，你可能同時服務多個客戶的不同產品。SUS 的最大營運優勢之一是<strong>快速換線</strong>——不需要在產品間進行完整的 CIP/SIP 驗證。但要實現這個優勢，你需要：</p>
+            <ul>
+                <li>為每個產品建立標準化的 SUS 配置清單 (BOM)</li>
+                <li>依照排程提前備料（考慮供應商交期通常為 8-16 週）</li>
+                <li>建立 SUS 部署的標準操作程序 (SOP)，並定期對操作員進行技能再確認</li>
+                <li>規劃足夠的使用後 SUS 暫存和廢棄物處理空間</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>SUS 號稱可以縮短換線時間，但 TR66 提到「SUS availability must be closely managed or the potential time savings will be lost」。請設計一個場景說明這種時間節省如何被抵消。</li>
+                <li>從 Table 4.6.1-1 中的 Process Connectivity 和 Disconnectivity 來看，為什麼 SUS 的操作比 MUS 更容易出現人為失誤？如何設計防錯機制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.7 Applications and Technology -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-7">4.7 Applications and Technology</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section discusses several applications that are common in biopharmaceutical manufacturing, along with their cognate SU technologies. The structure to discussing these applications and technologies is as follows:</p>
+        <ol>
+            <li>A description of the objective of the application</li>
+            <li>A description of current SU technologies available to meet the application needs</li>
+            <li>Specific considerations of the technology that one may use as part of a technical feasibility study</li>
+        </ol>
+
+        <h3>4.7.1 Process Connections</h3>
+        <p><span class="key-term">Connectors</span> and <span class="key-term">tube welders</span> are used primarily to connect:</p>
+        <ul>
+            <li>Components within an SU subassembly</li>
+            <li>Multiple subassemblies to create a complete operational assembly</li>
+            <li>An assembly to a neighboring unit operation</li>
+        </ul>
+        <p>In addition, connectors are used with <span class="key-term">tube sealers</span> or disconnectors to disconnect:</p>
+        <ul>
+            <li>Components (e.g., bags) within an SU subassembly</li>
+            <li>A subassembly from a complete operational assembly</li>
+        </ul>
+
+        <h3>4.7.1.1 Technological Examples</h3>
+        <p>A wide variety of connectors are commercially available for various user requirements. In general, two-piece connectors consist of two units with mating ends that may be joined to form a connection. Identical mating parts are denoted as "<span class="key-term">genderless</span>," and nonidentical mating parts are usually denoted as "male" or "female." Although connectors are usually used to create a connection between parts, they may be installed internally within a pipe in order, for example, to open a flow path of a steaming process.</p>
+        <p>Single-piece insert connectors commonly are variants of standard straight, Y, or T configurations and employ <span class="key-term">hose barbs</span> that can be inserted into tubing and secured with cable ties or clamps. A variant of a single-piece connector can be made by a specialized <span class="key-term">overmolding</span> procedure that creates a connection with a uniformly smooth inner bore.</p>
+        <p>Connectors with integrated valves and resterilizable <span class="key-term">SIP connectors</span> have the additional functionality of enabling aseptic disconnections and reconnection.</p>
+
+        <h3>Table 4.7.1.1-1 Functional Categories of Connectors</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Connector Category</th><th>Description</th></tr>
+            <tr>
+                <td><strong>Adapter type</strong></td>
+                <td>Hose barb and tri-clamp are the most common insert connection adapters. Hose barbs are for making tubing-to-tubing or tubing-to-device connections. Tri-clamp adapters are for making direct connections to stainless or filter with tri-clamp fittings. Overmolded connections can be converted into T, Y, 4-way, or tri-clamp configurations without insert connectors. Several connectors for aseptic requirements are commercially available.</td>
+            </tr>
+            <tr>
+                <td><strong>Diameter of the flow path</strong></td>
+                <td>Although there is a wide selection of commercially available connectors for tubing with standard diameters, in certain cases, it may be difficult to find an appropriate diameter of the flow path.</td>
+            </tr>
+            <tr>
+                <td><strong>Aseptic connection or disconnection</strong></td>
+                <td>Nonaseptic connectors are used in cases in which the connector is integrated into an SU assembly prior to sterilization via irradiation, whereas aseptic connectors are used to join two tubes that are part of a gamma-irradiated SU subassembly. Luer-lock connectors are examples of nonaseptic connectors that are used for small-bore (i.e., quarter inch or smaller) tubing connections during sampling applications. Steamable connectors are used to make aseptic connections between SU assemblies and traditional SIP stainless steel equipment; in this case, a resterilizable design system allows for aseptic disconnection. An aseptic connector with a built-in valve allows for aseptic disconnection from a process stream. A crimp-and-cut disconnector can also be used to achieve aseptic disconnection of an assembly. This is attained by installing a tightly fitting metal sleeve over the tubing. The sleeve is then crimped and cut with a specific tool.</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3>Table 4.7.1.1-2 Specific Considerations for Connectors</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Factor</th><th>Consideration</th></tr>
+            <tr>
+                <td><strong>Ease of use</strong></td>
+                <td>Determine the relative ease of use of the various connectors to ensure minimal operator error.</td>
+            </tr>
+            <tr>
+                <td><strong>Technology</strong></td>
+                <td>Evaluate the relative merits and feasibility of using tube-welding technology and aseptic connectors in a given application (such as tubing ID, space constraints, location of the needed weld, electricity/utilities requirements, and process requirements such as operating pressure). Examine risk factors of using tubing sets made with inserted hose barbs and overmolded connections with regard to the potential for leaks and fluid patch constrictions, which can affect flow rates and turbulence.</td>
+            </tr>
+            <tr>
+                <td><strong>Sizing</strong></td>
+                <td>Evaluate the effect of connector diameter on the flow rate requirement; ensure use of an appropriately sized connector.</td>
+            </tr>
+            <tr>
+                <td><strong>Fitness for use</strong></td>
+                <td>Check supplier qualification data for connector/disconnector, tube welding, and sealing technology to ensure the technology is suitable for the application. Make sure that connectors are qualified for use at pressures required in process. Consider how many connections are required for a particular application and location in the process design.</td>
+            </tr>
+            <tr>
+                <td><strong>Connector and tubing materials</strong></td>
+                <td>Evaluate the effect of materials on extractables and leachables and their potential impact on process and product.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p>The type of connection technology to be used should be considered when planning an SUS:</p>
+        <ul>
+            <li><strong>Tube welder:</strong> A tube welder is an alternative type of connection technology that is designed to make a connection by cutting the two pieces of appropriate thermoplastic tubing to be connected and rapidly heating, aligning, and joining the two ends to form an aseptic, integral weld upon cooling. There is no need for a specific connector in the thermoplastic tubing, as the welded thermoplastic forms the seal between the two lines connected. <span class="key-term">Silicone tubing is not a suitable material for tube welding</span>, as it is not a thermoplastic.</li>
+            <li><strong>Tube sealer:</strong> A tube sealer is a type of disconnection technology designed to seal a single thermoplastic tube using heat or energy to fuse together the lumen of one tubing end, segment, or fluid path. The sealed area is then separated from the rest of the tube by cutting it away. <span class="key-term">Silicone tubing is not appropriate for tube sealing</span>, as it is not a thermoplastic.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Connectors (連接器) 的三大功能類別：</strong></p>
+            <ul>
+                <li><strong>Adapter Type（轉接型）：</strong>Hose barb（倒鉤接頭）用於管對管或管對設備連接；Tri-clamp（三夾式）用於連接不鏽鋼或濾器的標準接口；Overmolded（包覆成型）提供光滑無縫的內壁。</li>
+                <li><strong>Flow Path Diameter（流道口徑）：</strong>標準口徑有多種選擇，但特殊口徑可能難以找到合適的連接器。</li>
+                <li><strong>Aseptic Connection/Disconnection（無菌連接/斷開）：</strong>非無菌連接器用於滅菌前的預組裝；無菌連接器用於連接兩個已經伽馬滅菌的次組件。</li>
+            </ul>
+            <p><strong>Tube Welder (管路焊接器)：</strong>透過加熱-切割-對齊-接合的方式，將兩段熱塑性管路焊接成一體。焊接處不需要任何連接器零件，由熱塑性材料本身形成密封。</p>
+            <p><strong>Tube Sealer (管路封口器)：</strong>用熱能或能量將熱塑性管路的內腔熔合封閉，然後切斷。用於無菌斷開的場景。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>矽膠管路的重要限制：</strong>TR66 明確指出矽膠管 (Silicone Tubing) <strong>無法</strong>用於管路焊接和管路封口——因為矽膠不是熱塑性材料 (Thermoplastic)。這意味著：</p>
+            <ul>
+                <li>如果你的製程中使用蠕動泵（蠕動泵常用矽膠管），需要在泵段之外的管路使用熱塑性管材（如 C-Flex、PharMed BPT 等）才能進行焊接/封口操作</li>
+                <li>設計 SUS 管路系統時，需要在一開始就考慮哪些位置需要焊接/封口，並在這些位置使用熱塑性管材</li>
+            </ul>
+            <p><strong>連接器選擇的風險考量：</strong>使用 Hose barb 連接器時要注意洩漏風險和流道收縮（影響流速和產生紊流）。Overmolded 連接提供更平滑的內壁，但製造成本較高。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 的連接技術就像水管工程的接管方式：</p>
+            <ul>
+                <li><strong>Hose barb（倒鉤接頭）</strong> = 家用水管快接頭，方便但可能漏水</li>
+                <li><strong>Tube welder（管路焊接）</strong> = 把兩段水管熱熔焊死，最牢固但不可逆</li>
+                <li><strong>Aseptic connector（無菌連接器）</strong> = 航太等級的密封接頭，確保在打開瞬間不會有外界空氣進入</li>
+                <li><strong>Tube sealer（管路封口）</strong> = 用熱風槍把水管口熔封起來</li>
+            </ul>
+            <p>每種方式各有適用場景，選擇取決於是否需要無菌操作、是否需要日後重新連接、以及流速和壓力要求。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你正在設計一個需要在製程中途無菌連接新增取樣袋的 SUS 系統。應該選擇什麼類型的連接技術？為什麼？</li>
+                <li>Table 4.7.1.1-2 中提到 Fitness for Use 需要確認「connectors are qualified for use at pressures required in process」。如果連接器的壓力額定值不足，最可能發生什麼後果？</li>
+                <li>為什麼 Overmolded connections 相較於 Hose barb 連接器在某些應用中更受青睞？從流體力學和無菌保證兩個角度分析。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.8 Materials of Construction -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec4-8">4.8 Materials of Construction</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Factors concerning the materials used for constructing the SUS may include <span class="key-term">inherent safety</span>, <span class="key-term">traceability</span>, <span class="key-term">physical properties</span>, and <span class="key-term">compatibility</span> with other components or product and process materials. The components used for the construction of SUSs are primarily comprised of plastic materials that may vary according to <span class="key-term">polymer class</span>, <span class="key-term">molecular weight</span>, and <span class="key-term">additives</span>. This variability confers a wide range of performance characteristics on the plastic materials. Table 4.8-1 contains a list of plastics commonly used for the production of SU components, along with their trade names, chemical abbreviations, properties, and applications.</p>
+
+        <h3>Table 4.8-1 Plastics Commonly Used in SUS</h3>
+
+        <h4>Fluoropolymers</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>PTFE</strong></td>
+                <td>Poly(tetrafluoroethylene)</td>
+                <td>Teflon, Fluon</td>
+                <td>Filters, tubing</td>
+                <td>Biologically inert; Chemically resistant; Extreme temperature resistance; Low E&amp;L</td>
+                <td>Cannot be sterilized using gamma irradiation; Limited mechanical properties</td>
+            </tr>
+            <tr>
+                <td><strong>PVDF</strong></td>
+                <td>Poly(vinylidenefluoride)</td>
+                <td>Kynar, Kynar Flex</td>
+                <td>Filters, fittings, tubing, bags</td>
+                <td>Biologically inert; Greater strength than PTFE; Broad compatibility; Low E&amp;L; Easily worked; Sterilizable by irradiation, steam, or chemical</td>
+                <td>Some strong solvents can solubilize the material</td>
+            </tr>
+        </table>
+        </div>
+
+        <h4>Polycarbonate</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>PC</strong></td>
+                <td>Polycarbonate</td>
+                <td>Lexan, Makrolon</td>
+                <td>Fittings</td>
+                <td>Easily worked, molded; Excellent durability; Temperature &amp; impact resistant; Autoclavable; Clear, lightweight</td>
+                <td>Limited chemical compatibility; Some grades may leach bisphenol A (BPA)</td>
+            </tr>
+        </table>
+        </div>
+
+        <h4>Polyester</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>PET/PETE, PBT</strong></td>
+                <td>Poly(ethylene terephthalate), Poly(butylene terephthalate)</td>
+                <td>Rynite, Crastin</td>
+                <td>Bottles, filter capsules</td>
+                <td>Semirigid to rigid; Lightweight; Good gas barrier; High transparency; High strength; Excellent stain &amp; wear resistance; Radiation sterilizable</td>
+                <td>Fair moisture barrier; Hygroscopic; Copolymer variations include PETG</td>
+            </tr>
+        </table>
+        </div>
+
+        <h4>Polyolefin (Polyalkene)</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>PP</strong></td>
+                <td>Polypropylene</td>
+                <td>Moplen, Pro-fax</td>
+                <td>Filters, housings, piping, fittings</td>
+                <td>Good chemical resistance; Tough, impact resistant; Good processing; Higher temp/chemical resistance over PE; Autoclavable; Irradiatable (stabilized formulations only)</td>
+                <td>Nonstabilized formulations cannot be gamma sterilized (reduces shelf life, elevates extractables); High thermal expansion; Poor impact at low temperature</td>
+            </tr>
+            <tr>
+                <td><strong>PE</strong></td>
+                <td>Polyethylene</td>
+                <td>Dowlex, Engage</td>
+                <td>Bags, fittings</td>
+                <td>Good processing; Impact resistant; Good toughness; High stress cracking resistance; Lower extractables than EVA; Cold temperature performance</td>
+                <td>Properties vary by density (high, low, ultralow, linear low); High thermal expansion; Cannot be autoclaved</td>
+            </tr>
+        </table>
+        </div>
+
+        <h4>Copolymers</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>EVOH</strong></td>
+                <td>Ethylene vinyl alcohols</td>
+                <td>Eval, Soranol</td>
+                <td>Barrier layer in films</td>
+                <td>Superior gas barrier; Good chemical resistance; Very good clarity; Can be coextruded</td>
+                <td>Hygroscopic, gas barrier diminished with moisture; Low moisture barrier</td>
+            </tr>
+            <tr>
+                <td><strong>EVA</strong></td>
+                <td>Ethylene vinyl acetate</td>
+                <td>Evatane, Elvax</td>
+                <td>Bags, tubing</td>
+                <td>Soft and flexible; Good clarity &amp; gloss; Good barrier; No odor; Excellent cold temp properties; Better tear resistance than LDPE</td>
+                <td>Gamma-irradiated EVA can lower pH; Extractables may be undesirable; Poor heat resistance; Attacked by polar solvents, hydrocarbons, oxidants, strong acids; Reduced creep resistance vs LDPE</td>
+            </tr>
+        </table>
+        </div>
+
+        <h4>Polyamides (Nylons)</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>PA6,6</strong></td>
+                <td>Polyamide 6,6 (nylon 6,6)</td>
+                <td>Zytel, Ultramid</td>
+                <td>Films, filters</td>
+                <td>High melt point (autoclavable); Lower E&amp;L than PA6; Moldable; Good mechanical &amp; wear</td>
+                <td>Susceptible to degradation by strong acids, bases, oxidizing agents</td>
+            </tr>
+            <tr>
+                <td><strong>PA6</strong></td>
+                <td>Polyamide 6 (nylon 6)</td>
+                <td>Zytel</td>
+                <td>Films, tubes</td>
+                <td>Tough, higher impact; High temp resistant; Easier to process; Lower mold shrinkage; Good fatigue resistance; Greater elasticity</td>
+                <td>Higher extractables; Susceptible to strong acids/bases/oxidizers; Highest water absorption</td>
+            </tr>
+            <tr>
+                <td><strong>PA11</strong></td>
+                <td>Polyamide 11 (nylon 11)</td>
+                <td>Rilsan 11, Alamid 11, Zytel</td>
+                <td>Films, tubes</td>
+                <td>Improved chemical resistance vs other PA; Some are bio-based; Low water adsorption</td>
+                <td>More expensive; Lower impact strength; Minimal heat resistance (not autoclavable)</td>
+            </tr>
+        </table>
+        </div>
+
+        <h4>PVC / Vinyl</h4>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Abbreviation</th><th>Chemical Name</th><th>Brand</th><th>Applications</th><th>Reasons to Use</th><th>Comments</th></tr>
+            <tr>
+                <td><strong>PVC</strong></td>
+                <td>Polyvinyl chloride / Poly(chloroethanediyl)</td>
+                <td>--</td>
+                <td>Pipes, films, tubes</td>
+                <td>Tough, strong; Inexpensive; Good stiffness-impact combo; High strength/weight ratio</td>
+                <td>Not autoclavable; High extractants; Must be free of DEHP for fluid contact; Low cost; Disposal issues (generates dioxin on incineration)</td>
+            </tr>
+            <tr>
+                <td><strong>CPVC</strong></td>
+                <td>Chlorinated polyvinyl chloride</td>
+                <td>--</td>
+                <td>Pipes</td>
+                <td>Good resistance to acids &amp; bases; Inexpensive; Improved chemical resistance over PVC; More flexible than PVC</td>
+                <td>Not autoclavable; Disposal issues (generates dioxin on incineration)</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>SUS 材料選擇的四大考量：</strong></p>
+            <ul>
+                <li><strong>Inherent Safety (固有安全性)：</strong>材料本身是否安全，例如 PVC 可能含有 DEHP（鄰苯二甲酸酯類塑化劑），焚燒時產生戴奧辛</li>
+                <li><strong>Traceability (可追溯性)：</strong>能否追蹤材料的來源、批次和加工歷史</li>
+                <li><strong>Physical Properties (物理特性)：</strong>強度、柔韌性、耐溫性、透明度等</li>
+                <li><strong>Compatibility (相容性)：</strong>與產品、製程液體和其他元件的化學相容性</li>
+            </ul>
+            <p><strong>Extractables &amp; Leachables, E&amp;L (可萃取物與溶出物)：</strong>這是 SUS 材料評估中最關鍵的因素之一。Extractables 是在極端條件下可從材料萃取出的物質；Leachables 是在實際使用條件下遷移到產品中的物質。不同材料的 E&amp;L 特性差異極大。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 4.8-1 中有幾個必須牢記的材料限制：</p>
+            <ul>
+                <li><strong>PTFE 無法伽馬滅菌：</strong>雖然 PTFE（鐵氟龍）化學惰性極佳，但不能用伽馬射線滅菌。這在 SUS 設計中是一個重大限制，因為伽馬滅菌是 SUS 最常用的滅菌方式。</li>
+                <li><strong>PP 的伽馬滅菌限制：</strong>只有穩定化配方 (Stabilized Formulations) 的 PP 才能接受伽馬滅菌。未穩定化的 PP 經伽馬照射後會降低保存期限並增加 Extractables。</li>
+                <li><strong>EVA 的 pH 影響：</strong>經伽馬照射的 EVA 會降低接觸液體的 pH 值——對於 pH 敏感的生物製劑，這是一個需要在製程開發中驗證的風險。</li>
+                <li><strong>PC 的 BPA 問題：</strong>某些等級的聚碳酸酯可能溶出雙酚 A (BPA)，已被多項研究指出可能有不良效應。</li>
+                <li><strong>PVC 的 DEHP 和環保問題：</strong>PVC 用於流體接觸應用時必須確認不含 DEHP；焚燒處理會產生戴奧辛，這在廢棄物處理法規日益嚴格的環境下需要考慮。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>選擇 SUS 的建構材料就像在超市選購食品保存容器：</p>
+            <ul>
+                <li><strong>玻璃容器（PTFE）</strong>= 最惰性、最安全，但無法微波加熱（不能伽馬滅菌）、容易碎（機械性差）</li>
+                <li><strong>不鏽鋼便當盒（PVDF）</strong>= 全方位優秀但較貴</li>
+                <li><strong>PP 保鮮盒</strong>= 常見好用，但要確認是「微波安全」等級（穩定化配方）才行</li>
+                <li><strong>PE 塑膠袋</strong>= 便宜靈活，但不能加熱（不可高壓滅菌）</li>
+                <li><strong>PVC 保鮮膜</strong>= 最便宜但可能含塑化劑，且丟棄有環保疑慮</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的日常工作中，材料選擇直接影響到：</p>
+            <ul>
+                <li><strong>E&amp;L 研究的範圍和成本：</strong>不同材料的 Extractables 特性不同，需要針對性的分析方法。PVDF 和 PE 通常 E&amp;L 較低，EVA 和 PVC 則需要更廣泛的 E&amp;L 評估。</li>
+                <li><strong>多層膜 (Multi-layer Film) 的設計邏輯：</strong>現代 SUS 袋體通常使用多層共擠膜，例如內層用低 E&amp;L 的 PE/PVDF（接觸產品）、中層用 EVOH（氣體阻隔）、外層用 PA（機械強度）。理解每層材料的功能有助於評估風險。</li>
+                <li><strong>法規考量：</strong>EU 和 FDA 對特定物質（如 BPA、DEHP）有不同的管制要求。材料選擇必須同時滿足目標市場的法規。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你需要選擇一種材料用於製造 SUS 過濾器殼體，需求為：可伽馬滅菌、耐酸鹼 (pH 2-12)、低 Extractables。從 Table 4.8-1 中你會選擇哪種材料？為什麼排除其他選項？</li>
+                <li>為什麼現代 SUS 袋體普遍採用多層共擠膜而非單一材料？請從 Gas Barrier、Mechanical Strength 和 E&amp;L 三個角度說明。</li>
+                <li>一個生物製劑儲存袋使用 EVA 內層，在伽馬滅菌後你發現儲存液的 pH 下降了 0.3 個單位。這是否符合 Table 4.8-1 中的預期？你應該如何評估這對產品品質的影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

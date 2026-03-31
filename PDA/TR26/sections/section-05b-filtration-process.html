@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR26 - Section 5.0 Part B: Filtration Process Design (5.4.2-5.9)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.0 Part B: Filtration Process Design, Usage, and Handling Considerations (5.4.2 - 5.9)</h1>
+    <div class="subtitle">過濾製程設計、使用與操作考量（下篇：放大、系統設計、生物負荷、沖洗、安裝與滅菌影響）</div>
+    <div class="page-info">PDA Technical Report No. 26 (Revised 2025) — Sterilizing Filtration of Liquids | p31 - p39</div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.4.2 Filtration Process-Scaling Considerations -->
+<!-- ============================================================= -->
+<div class="section-title">5.4.2 Filtration Process-Scaling Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Scaling up</span> filtration performance from a <span class="key-term">laboratory-scale filter unit</span> to a <span class="key-term">production-scale system</span>, which might contain multiple cartridges or units, poses several challenges to the filter user. Challenges include, but are not limited to:</p>
+
+        <ul>
+            <li>Product for filter trials might be in limited supply due to high production costs and limited production runs.</li>
+            <li><span class="key-term">Surrogate fluids</span> might not be representative of the actual process fluid for certain behaviors like fouling or <span class="key-term">non-Newtonian flow dynamics</span>.</li>
+            <li>Small-scale filter studies may not represent the conditions under which filtration occurs in the manufacturing process.</li>
+            <li>Laboratory-scale filter elements used for testing may not be directly predictive of <span class="key-term">large-scale filter capacity</span>.</li>
+        </ul>
+
+        <p>To overcome these challenges, filter users may elect to work with the filter manufacturer(s) to design small-scale studies that either closely approximate production systems or, alternatively, rely on appropriate <span class="key-term">safety factors</span> to account for unknown variables and ensure successful filtration operations at scale.</p>
+
+        <p>Careful attention should be paid to ensuring that the material used for the <span class="key-term">scale-down studies</span> is representative of the materials used for commercial production. In the production of proteins, there have been several documented examples where <span class="key-term">shear stresses</span> imparted on the molecule upstream in the process result in the formation of <span class="key-term">subvisible particulates</span> that can cause <span class="key-term">filter-fouling</span> (27). In many cases the same solution that has not been subjected to the same levels of shear stress will show no signs of fouling behavior; this represents a <span class="key-term">scale-up risk</span> that can be difficult to characterize that can manifest itself as filter-clogging during production. In this instance, considerable study may be required to create appropriate scale-down models of this shear behavior, as not all protein solutions and mixer types react in the same fashion. This is just one example of the importance of understanding the full-scale process and the <span class="key-term">stress history</span> of the filtrate and how they affect filtration performance. There are also instances where <span class="key-term">freeze-thaw</span> or shipping conditions of solutions, such as <span class="key-term">lipid nanoparticles (LNPs)</span> or <span class="key-term">lentivirus drug products</span> can affect the filtration performance (e.g., reduced volume throughput). It is critical that the impact of these factors is understood to ensure small-scale studies provide representative data.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Scale-Up（放大）vs Scale-Down（縮小模擬）：</strong>過濾製程開發通常從實驗室小規模開始，再放大至生產規模。Scale-down study（縮小模擬研究）是用小型設備模擬生產條件，以最少的原料獲得最多的數據。</p>
+            <p><strong>Shear Stress（剪切應力）：</strong>蛋白質溶液在上游製程中經過泵浦、攪拌、管路等設備時所受到的機械力。高剪切力可能導致蛋白質聚集形成次可見微粒（subvisible particulates），進而堵塞除菌濾膜。</p>
+            <p><strong>Surrogate Fluid（替代流體）：</strong>當實際產品供應有限或成本過高時，使用模擬液替代實際產品進行初步測試。但替代液可能無法完全模擬真實產品的阻塞行為。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在自家廚房（實驗室）用小鍋試做一道菜的食譜，覺得很成功。但當你搬到婚宴廚房（生產規模）用大鍋煮同一道菜時，火候不均、攪拌力道不同、食材批次差異，結果可能完全不一樣。Scale-down study 就像是在大鍋的環境條件下，刻意用小鍋重新模擬，才能真正預測大鍋出菜的品質。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>蛋白質的「壓力歷史」極為重要：</strong>同一批蛋白質溶液，在不同的上游製程設備（不同攪拌器、不同泵浦）處理後，可能展現完全不同的過濾行為。這就是為什麼 TR26 特別強調必須理解 filtrate 的 stress history（應力歷史）。</p>
+            <p><strong>LNP 和慢病毒產品的特殊風險：</strong>冷凍解凍（freeze-thaw）或運輸條件可能改變這些新型藥物的物理特性，導致過濾通量大幅下降。在進行小規模研究時，必須使用經歷過相同處理歷程的物料。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，客戶常提供有限量的臨床批次物料進行製程開發。如果你只用 WFI 做過濾測試而跳過真實產品測試，到了 GMP 生產時才發現濾膜堵塞，代價極其高昂——不僅浪費一整批產品，還可能延誤臨床進度。建議做法：至少用一部分真實產品進行小規模過濾研究，搭配安全係數（safety factor，通常 1.5-2x）來補償未知變數。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼同一個蛋白質溶液在實驗室不會堵塞濾膜，但在工廠卻會堵塞？可能的原因有哪些？</li>
+                <li>如果你的客戶只能提供 500 mL 的藥品進行過濾開發研究，你會如何設計試驗以最大化數據價值？</li>
+                <li>為什麼 LNP 藥品的運輸條件會影響過濾性能？這對 CDMO 的物料接收程序有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.5 Filtration System Design and Integration -->
+<!-- ============================================================= -->
+<div class="section-title">5.5 Filtration System Design and Integration</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>A <span class="key-term">user requirement specification (URS)</span> is a helpful tool in designing a <span class="key-term">SUS</span> or stainless-steel setup. The filter user should have detailed knowledge of all process operational parameters to define the requirements of a particular assembly. The suitability of particular components depends on the requirements of the product and process. URSs typically include:</p>
+
+        <ul>
+            <li>Flow rate</li>
+            <li>Pressure conditions</li>
+            <li>Temperature conditions</li>
+            <li>MoC</li>
+            <li>Filter (pore size, area)</li>
+            <li>Product volumes</li>
+            <li>Instrumentation</li>
+            <li>Sampling requirements</li>
+            <li>System configuration</li>
+            <li>Fluid properties</li>
+            <li>Integrity-test methods and needs</li>
+            <li>Sterilization method</li>
+            <li>Documentation requirements</li>
+        </ul>
+
+        <p>In addition to the integrity-test considerations stated in Section 7.0, the following points should be considered for filtration systems:</p>
+
+        <ul>
+            <li>Pressurization of the upstream side of the filter with gas after wetting</li>
+            <li>Need for a <span class="key-term">downstream vent filter</span> to accommodate the gas flow</li>
+            <li>Mechanism to aseptically remove the wetting fluid from the system, if necessary</li>
+            <li>Use of a <span class="key-term">hydrophilic drain filter</span> and a separate <span class="key-term">hydrophobic vent filter</span> or other appropriate valves and drains for the system</li>
+            <li>Use of a <span class="key-term">combination hydrophilic/hydrophobic vent filter</span>, where applicable</li>
+            <li>Appropriate placement of process controls, such as <span class="key-term">pressure sensors</span> or <span class="key-term">flowmeters</span>, and required sampling locations</li>
+        </ul>
+
+        <div class="quote-box">
+            "Note: Use of separate filters enables both to be integrity-tested in situ with water, whereas a combination hydrophilic/hydrophobic filter can only be tested with alcohol, off-line."
+        </div>
+
+        <p>The qualification tests listed in Section 4.1 are performed within the manufacturer's defined conditions. Assemblies of components require <span class="key-term">validation</span> within the filter/single-use user's process and environment. Validation should be performed to cover actual or <span class="key-term">worst-case process conditions</span>, preferably with the product or a model (surrogate) solution. The single-use component or assembly should meet process and regulatory requirements. The validation effort should ensure that the components/assembly functions as intended and does not negatively influence product attributes, neither the product and process conditions, nor the single-use components or assembly.</p>
+
+        <p>Furthermore, <span class="key-term">functionality tests</span> verify that desired process conditions, (e.g., filtration time) can be met. Documented evidence should be established that operational parameter specifications can be met repeatedly.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>User Requirement Specification / URS（使用者需求規格書）：</strong>在設計過濾系統之前，必須先將所有製程參數、品質需求、法規要求以書面形式定義清楚。URS 是設計的起點，也是後續驗證的基準。</p>
+            <p><strong>Hydrophilic vs Hydrophobic Filter（親水性 vs 疏水性濾膜）：</strong>親水性濾膜用於過濾液體（包括排水），疏水性濾膜用於過濾氣體（通氣）。在完整性測試的便利性上，選擇分開的濾膜 vs 組合式濾膜會有不同的測試策略影響。</p>
+            <p><strong>Worst-Case Process Conditions（最差條件）：</strong>驗證必須涵蓋實際或最差的製程條件，這是確保商業生產過程中無論遇到什麼情況，過濾系統都能正常運作的關鍵原則。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>URS 就像是你蓋房子之前的建築需求書——要幾間房、多大的客廳、需要什麼管線、承重多少。沒有清楚的 URS 就開始組裝過濾系統，就像沒有藍圖就開始蓋房子：等發現管線不通或承重不足時，改建成本遠高於一開始就規劃好。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>分開式 vs 組合式濾膜的完整性測試差異：</strong>這是一個容易被忽略但對實務影響很大的決策。如果使用組合式親水/疏水濾膜，就只能用酒精離線測試（off-line），這代表需要額外的操作步驟和風險。分開設置則可以在位（in situ）用水測試，操作更簡便也更符合法規期望。</p>
+            <p><strong>製造商資格確認 ≠ 使用者驗證：</strong>濾膜製造商在其定義的條件下做的 qualification test，不能直接替代使用者在自己的製程環境中進行的 validation。CDMO 必須在自身的實際製程條件下證明系統可行。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>列出你設計一個新的除菌過濾系統時，URS 中最關鍵的五個參數，並說明為什麼它們最重要。</li>
+                <li>在什麼情況下你會選擇組合式親水/疏水濾膜，而非分開設置？這個決策需要考慮哪些因素？</li>
+                <li>為什麼濾膜製造商的 qualification data 不能直接取代使用者的 process validation？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.5.1 Multiple Filters in Series -->
+<!-- ============================================================= -->
+<div class="section-title">5.5.1 Multiple Filters in Series</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Manufacturing processes are frequently designed with trains of <span class="key-term">multiple filters in a series</span> (sequential flow through one filter after another), but the purpose of these extra filters varies from process to process, and the design and purpose of each filter must be clearly documented.</p>
+
+        <h3>5.5.1.1 Two-Filter Sterilization (Double Filtration)</h3>
+
+        <p>In uncommon processes, where <span class="key-term">two filters together in series</span> are both required to achieve sterility and the train has been validated to achieve the sterilization of a specific product only when passing through both filters, the filter train can be considered a <span class="key-term">single sterilizing unit</span>, and both filters must successfully pass the <span class="key-term">integrity test</span>.</p>
+
+        <h3>5.5.1.2 Pre-Filtration</h3>
+
+        <p>One of the most common purposes for additional filters upstream of the final sterilizing filter is for <span class="key-term">prefiltration</span> functions, as opposed to sterilization. An example is <span class="key-term">bioburden reduction</span> that may be performed with a sterilizing-grade filter, but the filter is not performing a strict sterilizing function. Rather, it is assuring that a very low bioburden level is present before entering the final sterilizing filter.</p>
+
+        <p>Other prefilters may be performing functions unrelated to microbial control, such as <span class="key-term">aggregate or particle removal</span> prior to the final sterilizing filtration, that may not use sterilizing-grade filters.</p>
+
+        <h3>5.5.1.3 Redundant Filtration</h3>
+
+        <p>Processes where an additional (<span class="key-term">redundant</span>) sterilizing filter is placed in the filter train to ensure against loss of product due to potential-integrity test failure of the primary sterilizing filter. The additional "secondary" filter is typically identical to the primary sterilizing filter, is fully validated to sterilize the fluid on its own and undergoes <span class="key-term">post-use integrity-testing</span> as a contingency in the event the primary filter fails. Generally, the filter closest to filling (farthest downstream) should be the <span class="key-term">primary filter</span> (10). The pressure and flow-rate controls are generally designed to apply across both sterilizing filters.</p>
+
+        <p>Figure 5.5-1, Figure 5.5-2, Figure 5.5-3, and 5.5-4 illustrate different filter trains that can be used for the filtration operation (see Section 7.4.3 for additional information).</p>
+
+        <p><em>Note: DP/DS stands for drug product/drug substance.</em></p>
+
+        <p><em>Figure 5.5-1 Single Filter Train Configuration</em></p>
+        <p><em>Figure 5.5-2 Pre-Filter Train Configuration</em></p>
+        <p><em>Figure 5.5-3 Redundant Sterilizing Filter Train Configuration</em></p>
+        <p><em>Figure 5.5-4 "Double" Filtration Train Configuration (uncommon)</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三種串聯過濾配置的區別：</strong></p>
+            <ul>
+                <li><strong>Double Filtration（雙重除菌過濾）：</strong>兩支濾膜「共同」完成除菌功能，缺一不可，視為單一除菌單元。這是罕見的配置，通常只用於特殊產品。</li>
+                <li><strong>Pre-Filtration（前過濾）：</strong>上游濾膜負責降低生物負荷或去除微粒，保護下游的最終除菌濾膜，但本身不是執行「除菌」功能。</li>
+                <li><strong>Redundant Filtration（冗餘過濾）：</strong>備用除菌濾膜，各自獨立具備完整的除菌能力。當主濾膜完整性測試失敗時，備用濾膜可以保住整批產品。</li>
+            </ul>
+            <p><strong>Primary Filter（主要濾膜）位置：</strong>一般應將最靠近充填端（最下游）的濾膜定為主要濾膜。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像機場的安檢流程：</p>
+            <ul>
+                <li><strong>Pre-filtration</strong> = 行李 X 光機（初步篩選，去除明顯的禁止物品）</li>
+                <li><strong>Redundant filtration</strong> = 雙重安全門——即使第一道門故障，第二道門仍然能完全攔截</li>
+                <li><strong>Double filtration</strong> = 一道安檢需要兩個設備同時運作才能完成檢測（非常罕見的特殊設計）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Redundant filtration 的經濟學邏輯：</strong>多加一支除菌濾膜的成本可能只有幾千美元，但如果主濾膜完整性測試失敗而沒有備用濾膜，整批產品（可能價值數十萬到數百萬美元）就必須報廢。這是一個非常清楚的風險管理決策。</p>
+            <p><strong>每支濾膜的目的必須明確文件化：</strong>法規機構會審查每支濾膜在 filter train 中的角色定位。如果文件不清楚——例如 pre-filter 被描述為「除菌」功能——可能會引發額外的驗證要求。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，不同客戶的產品可能需要不同的 filter train 配置。建議建立標準的平台配置（例如：pre-filter + redundant sterilizing filter 作為基本配置），然後根據產品特性和客戶需求進行調整。這樣可以減少系統設計和驗證的重複工作，同時確保每個案子都有清楚的文件說明每支濾膜的功能定位。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 redundant filter 和 primary filter 都通過了使用後完整性測試，是否還需要保留 redundant filter 的配置？為什麼？</li>
+                <li>在什麼樣的產品特性下，你可能需要考慮 double filtration 而非 redundant filtration？</li>
+                <li>為什麼 primary filter 通常設在最下游（最靠近充填）的位置？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.6 Pre-Filtration Bioburden Monitoring -->
+<!-- ============================================================= -->
+<div class="section-title">5.6 Pre-Filtration Bioburden Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>An important aspect of filtration process design is <span class="key-term">pre-filtration bioburden monitoring</span>: a common regulatory expectation. The inlet to the final sterilizing filter should have <span class="key-term">well-controlled bioburden levels</span>, despite the extreme bacterial removal efficiency typically validated in retention studies (see Section 6.6) (28). The difference between the low bioburden levels routinely entering the sterilizing filter, and the high levels validated to be removed by retention studies provides a large <span class="key-term">safety factor</span> which is an important principle in sterilization by filtration. Factors to consider when designing a pre-filtration bioburden monitoring program include:</p>
+
+        <ul>
+            <li>Relevant regulatory expectations for allowable <span class="key-term">bioburden limit</span> (i.e., the acceptance criteria of the test)</li>
+            <li>Representative <span class="key-term">sampling time</span>:
+                <ul>
+                    <li>If bioburden levels could rise over the course of the filtration operation, sampling at or near the end of the filtration could be warranted. For short filtration durations or bacteriostatic/bactericidal fluids, sampling at the beginning of the filtration may be appropriate.</li>
+                </ul>
+            </li>
+            <li>Location of the sample: the pre-filtration bioburden sample should be taken immediately upstream of the sterilizing filter (or, in cases of redundant filtration, upstream of the first sterilizing filter), and downstream of any <span class="key-term">bioburden reduction filters</span>.</li>
+            <li>Impact of <span class="key-term">preservatives</span> on the bioburden assay.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Pre-Filtration Bioburden Monitoring（過濾前生物負荷監測）：</strong>在液體進入最終除菌濾膜之前，測量其中的微生物含量。這是法規的普遍期望，目的是確認進入除菌濾膜的微生物負荷在可控範圍內。</p>
+            <p><strong>Safety Factor（安全係數）的概念：</strong>細菌截留驗證研究（Section 6.6）通常使用極高的挑戰濃度（例如 10<sup>7</sup> CFU/cm<sup>2</sup>），而實際生產中進入濾膜的生物負荷遠低於此。這之間的差距就是安全係數——這個差距越大，無菌保證的信心越高。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像機場安檢前的行李 X 光檢查。雖然安檢門（除菌濾膜）本身已經驗證過能攔截武器，但你仍然會希望在進入安檢門之前就先用 X 光掃描過行李，確認大部分問題物品已經被提前發現。這樣即使安檢門偶爾出現小失誤，整體安全仍然有保障。Pre-filtration bioburden monitoring 就是那個行李 X 光。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>取樣時間點的選擇至關重要：</strong></p>
+            <ul>
+                <li>如果產品不含抑菌成分且過濾時間較長，微生物可能在過濾過程中增殖，此時應在過濾「結束時」取樣，代表最壞情況。</li>
+                <li>如果產品本身具有抑菌性（如含防腐劑），微生物不太可能在過濾過程中增長，可在過濾「開始時」取樣。</li>
+            </ul>
+            <p><strong>取樣位置：</strong>必須在除菌濾膜的「緊前方」取樣——如果有 bioburden reduction filter 在更上游，取樣點應在其下游但除菌濾膜上游。</p>
+            <p><strong>防腐劑對檢測的干擾：</strong>某些防腐劑會抑制或殺死檢測培養中的微生物，導致假陰性結果。需要在方法學驗證中考慮此因素。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的產品含有 0.02% 多聚山梨酯 80（Polysorbate 80，非抑菌濃度），過濾時間為 4 小時，你會在什麼時間點取 bioburden 樣品？為什麼？</li>
+                <li>為什麼即使細菌截留驗證已經證明濾膜能截留極高濃度的細菌，法規仍然要求監測 pre-filtration bioburden？</li>
+                <li>如果 pre-filtration bioburden 超出了接受標準，你會採取什麼措施？這會影響批次放行嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.7 Flushing Conditions/Filter Priming -->
+<!-- ============================================================= -->
+<div class="section-title">5.7 Flushing Conditions/Filter Priming</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Sterilizing-grade filters</span> generally must be flushed and primed prior to use, either in the process of integrity-testing or as a separate step, and filter manufacturers typically have recommendations for minimum flush volumes. Pre-use flushing with <span class="key-term">water for injection (WFI)</span>, buffer, product, or sequential combinations as necessary may be used to reduce <span class="key-term">leachables</span> and can be important to reduce the level of <span class="key-term">nonspecific adsorption</span> and ensure that the filtrate is homogeneous during the process. <span class="key-term">Filter-priming</span> is also necessary to remove air from the filters and ensure that the filter membrane is fully wet thus making use of all of the filter <span class="key-term">EFA</span> during the process. For specific flushing considerations related to pre-use post-sterilization integrity test (<span class="key-term">PUPSIT</span>) refer to Section 7.0.</p>
+
+        <p>Pre-use flush volumes are typically determined empirically at scale for each installation based on the needs of the process. Depending on the propensity of the filter to adsorb the product or excipients contained in the product stream, there may also be a specific flushing solution used. For example, <span class="key-term">polysorbate</span> or <span class="key-term">poloxamer</span> surfactants are common excipients in the final formulation of many protein-based pharmaceutical products. Depending on the filter chemistry and the formulation composition, the saturation of adsorption sites on the filter material with these excipients can occur considerably slower than the saturation of adsorption sites that chemically bind the protein active ingredient, leading to <span class="key-term">reduced excipient concentrations</span> at the beginning of the filtration. In these instances, a surfactant containing flush buffer can considerably reduce the required product flush volume, significantly increasing the <span class="key-term">product yield</span>.</p>
+
+        <p>The flush steps can be estimated using a scale down system, although due to the flow dynamics and different surface area-to-volume ratios between small-and-large scales, they require confirmation at full scale. In these instances, a larger flush volume, calculated as a multiple of the EFA-ratio scale-down volume required, is used, the flush is done in a stepwise fashion, and the material is collected after the filter. This fractionated material can then be subjected to characterization testing, such as <span class="key-term">TOC</span>, excipient concentration, or protein-specific assays that can be used to generate a <span class="key-term">filter-flush curve</span> to determine when the leachables are removed, the filter reaches saturation equilibrium and the filtrate is completely homogeneous. Nonproduct flushes may need to be chased with a product flush to avoid diluting effects and return the filtrate to a homogeneous state.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Filter Flushing（濾膜沖洗）：</strong>使用 WFI、緩衝液或產品沖洗濾膜，目的有三：(1) 降低可溶出物（leachables）含量，(2) 飽和濾膜的吸附位點以減少非特異性吸附，(3) 確保濾液均質。</p>
+            <p><strong>Filter Priming（濾膜排氣潤濕）：</strong>排除濾膜中的空氣，確保膜體完全潤濕，讓所有有效過濾面積（EFA）都參與過濾。未完全潤濕的區域等於浪費了付費購買的過濾面積。</p>
+            <p><strong>Filter-Flush Curve（濾膜沖洗曲線）：</strong>透過分段收集沖洗液並進行分析（TOC、賦形劑濃度等），繪製出隨沖洗體積增加，leachables 下降和濾液均質化的曲線，用以確定最適沖洗量。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像泡茶。第一泡會釋出最多的雜味（類似 leachables），茶壺本身也會吸附一些茶的成分（類似非特異性吸附）。有經驗的泡茶師會先用熱水「潤壺」，然後倒掉第一泡，這樣正式泡出來的茶味道才純正均勻。Filter flushing 的道理完全一樣——先沖洗掉雜質、飽和吸附位點，後續的產品濾液才能品質穩定。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>界面活性劑吸附的時間差問題：</strong>這是一個在蛋白質藥品製造中非常實際的問題。Polysorbate 80 等界面活性劑在濾膜上的吸附飽和速度可能比蛋白質活性成分慢得多，導致過濾初期的濾液中界面活性劑濃度不足。如果不處理這個問題，初期產品可能因為界面活性劑不足而不符合配方規格。</p>
+            <p><strong>解決方案：</strong>使用含界面活性劑的緩衝液預先沖洗濾膜，先飽和吸附位點，這樣可以大幅減少需要丟棄的產品沖洗量，直接提升產品回收率。</p>
+            <p><strong>小規模 vs 全規模確認：</strong>沖洗量可以用小規模試驗估算，但由於流體動力學差異和表面積/體積比的不同，最終必須在全規模下確認。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+沖洗量放大估算：
+全規模沖洗量 = 小規模沖洗量 × (全規模 EFA / 小規模 EFA) × 安全係數
+
+例：小規模 (EFA = 13 cm²) 需要 50 mL 沖洗
+    全規模 (EFA = 13,000 cm²)：
+    = 50 mL × (13,000/13) × 1.5
+    = 50 mL × 1,000 × 1.5
+    = 75,000 mL = 75 L
+
+安全係數通常取 1.2-2.0，視應用而定</pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對於高價值的蛋白質藥品（例如單株抗體），每毫升產品可能價值數百美元。如果需要丟棄 5 L 的產品沖洗液，損失可能高達數十萬美元。透過開發含界面活性劑的預沖洗步驟，將產品沖洗量從 5 L 降至 1 L，每批次可節省大量成本。這類工藝優化在 CDMO 中是重要的附加價值服務。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 polysorbate 在濾膜上的吸附飽和速度比蛋白質慢？這與兩者的分子特性有什麼關係？</li>
+                <li>如何設計一個 filter-flush curve 實驗來確定最適沖洗量？你會測量哪些指標？</li>
+                <li>為什麼非產品沖洗液之後還需要用產品再沖洗一次（product chase）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.8 Filter Handling and Installation -->
+<!-- ============================================================= -->
+<div class="section-title">5.8 Filter Handling and Installation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>An important part of the development of a sterilizing filtration process involves the installation and handling of the <span class="key-term">sterilizing filters</span> in the manufacturing environment. <span class="key-term">Filter cartridges</span> must be installed into a <span class="key-term">filter housing</span>. Filters encapsulated in a polymeric housing may be part of a pre-assembled <span class="key-term">SUS</span> assembly. Most commonly, the filter cartridge will be installed into the filter housing and heat sterilized via <span class="key-term">in-line steam sterilization</span> or <span class="key-term">autoclaving</span>. <span class="key-term">Capsule filters</span> are commonly supplied presterilized via <span class="key-term">irradiation</span>, or they can be autoclaved by the end user.</p>
+
+        <h3>5.8.1 Cartridge Handling and Installation Considerations</h3>
+
+        <p>By following these guidelines for cartridge-handling during the development of the process, users can ensure the proper installation, maintenance, and performance of the filtration system.</p>
+
+        <p><strong>1. Identification and Receipt</strong></p>
+        <ul>
+            <li>Cartridges should be identified by checking the part number, lot number, and description.</li>
+            <li>Enclosed documentation such as the <span class="key-term">quality certificate</span> or <span class="key-term">certificate of conformance</span> should be reviewed to verify the correct filter type and conformance with the specifications.</li>
+            <li>The outer and inner packaging material should be checked for damage with processes put in place to segregate and evaluate any instances of damage.</li>
+        </ul>
+
+        <p><strong>2. Installation</strong></p>
+        <ul>
+            <li>Cartridges should be installed in the <span class="key-term">classified area</span> as defined within the approved <span class="key-term">contamination control strategy (CCS)</span> to mitigate contamination.</li>
+            <li>Cartridges should be handled with care and protected by the packaging during installation to avoid contamination or unnecessary operator contact.</li>
+            <li>Cartridges should be inserted into the filter-housing recess or adapter without twisting and ensuring a secure fit without forcing it in place. If the cartridge includes locking tabs, the cartridge should be rotated into position by holding it near the filter's base rather than at the closed end.</li>
+            <li>If needed, the manufacturer's recommendations for lubricating O-rings and using a product-compatible liquid should be followed.</li>
+            <li>Proper alignment and secure installation to prevent <span class="key-term">leaks or bypass</span>.</li>
+            <li>Cartridges must be handled carefully to avoid damage to the filter media. Ensure proper procedures or instructions are in place to note any dropping or rough handling of the filtration system during installation.</li>
+        </ul>
+
+        <p><strong>3. Wetting</strong></p>
+        <ul>
+            <li>Some filter cartridges are required to be wet with water before <span class="key-term">steam sterilization</span> or autoclave cycles. In that case care should be taken to achieve <span class="key-term">saturated steam conditions</span> on the porous membrane structure during the sterilization phase and to ensure the differential pressure stays within the required conditions during the different sterilization phases.</li>
+            <li>Filter manufacturers typically have process recommendations on how to wet the filter to ensure the entire membrane matrix is properly wet.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Filter Cartridge vs Capsule Filter（濾芯 vs 膠囊式濾膜）：</strong></p>
+            <ul>
+                <li><strong>Cartridge（濾芯）：</strong>需要安裝到不銹鋼或塑膠外殼（housing）中，可以就地蒸汽滅菌或高壓滅菌。適用於多次使用的固定設備。</li>
+                <li><strong>Capsule（膠囊式）：</strong>濾膜已封裝在聚合物外殼中，通常為預滅菌（伽馬射線或 X 射線），屬於一次性使用系統（SUS）的一部分。</li>
+            </ul>
+            <p><strong>Contamination Control Strategy / CCS（污染控制策略）：</strong>定義濾芯應在什麼等級的環境中安裝，以降低污染風險。這是 EU GMP Annex 1 的核心要求之一。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>安裝濾芯就像外科醫生準備手術器械。你必須：(1) 先確認器械的型號和批號正確（identification），(2) 在無菌環境中打開包裝（classified area），(3) 輕柔操作不能碰到關鍵面（aseptic technique），(4) 確認器械正確就位且沒有鬆動（secure fit）。任何一個步驟出錯，都可能導致整個無菌操作的失敗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>不要用力硬塞濾芯：</strong>TR26 明確指出安裝時不可「forcing it in place」。強行安裝可能損壞 O-ring 密封或濾膜本身，導致旁路（bypass）——液體繞過濾膜直接通過，完全喪失除菌功能而不被察覺。</p>
+            <p><strong>掉落事件必須記錄：</strong>即使濾芯看起來沒有損壞，掉落或粗暴操作都必須記錄並評估。這是 GMP 的基本要求，也是保護產品安全的最後防線之一。</p>
+            <p><strong>濕潤與滅菌的時序：</strong>某些濾芯需要在蒸汽滅菌前先用水潤濕。這是為了確保滅菌過程中蒸汽能均勻穿透多孔膜結構。乾燥的疏水區域可能阻礙蒸汽穿透，形成冷點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一名操作員在安裝濾芯時不小心將其掉落在地上（B 級環境），你會如何處理？更換新濾芯的決策流程是什麼？</li>
+                <li>為什麼濾芯安裝時應握住底部而非頂端？這與濾芯的結構設計有什麼關係？</li>
+                <li>Capsule filter 為什麼通常不能進行就地蒸汽滅菌（in-line steaming）？材質和設計上的限制是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.8.2 In-Line Steam Sterilization Considerations -->
+<!-- ============================================================= -->
+<div class="section-title">5.8.2 In-Line Steam Sterilization Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">In-line steam sterilization</span> is one of the main sources of potential damage to a filter. Well-defined <span class="key-term">standard operating procedures (SOPs)</span>, a proper training program, and close qualification and monitoring of pressure conditions are essential to prevent damage during steam sterilization. In addition to the sterilization considerations outlined in Section 8.0, the following items should be considered during PD to ensure the filter is not subjected to undue stress during steam sterilization.</p>
+
+        <p><strong>1. Positioning</strong></p>
+        <ul>
+            <li>During steam sterilization, the cartridge should be positioned to prevent the accumulation of <span class="key-term">condensate</span>, allowing drainage from the housing.</li>
+        </ul>
+
+        <p><strong>2. Temperature and Pressure Monitoring</strong></p>
+        <ul>
+            <li><span class="key-term">Pressure gauges</span> should be installed as appropriate to monitor pressure conditions during the steam sterilization process or during qualification activities.</li>
+            <li>Excessive pressure conditions during steam sterilization can potentially damage the membrane of the filter cartridge.</li>
+        </ul>
+
+        <p><strong>3. Potential Damage</strong></p>
+        <ul>
+            <li><span class="key-term">Reverse-steaming</span> of the filter at elevated differential pressure conditions can cause damage to the filter, leading to issues like <span class="key-term">pleat-pack movement</span>, <span class="key-term">cage imprinting</span>, or <span class="key-term">cartridge deformation</span>.</li>
+        </ul>
+
+        <p><strong>4. Precautions</strong></p>
+        <ul>
+            <li>Care should be taken to avoid <span class="key-term">condensation vacuum</span> by pressurizing the system or venting through appropriate sterilizing-vent filters.</li>
+        </ul>
+
+        <p>By following these guidelines for steam sterilization of filter cartridges, end users can ensure the integrity of the filtration system and ensure the effective sterilization of the cartridges for safe and reliable filtration processes.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Reverse-Steaming（反向蒸汽滅菌）：</strong>蒸汽從濾膜的濾液側（下游）向進料側（上游）方向流動。在高差壓條件下，這會對濾膜結構造成嚴重損壞——包括褶皺層移位（pleat-pack movement）、支撐架壓痕（cage imprinting）和濾芯變形（cartridge deformation）。</p>
+            <p><strong>Condensation Vacuum（冷凝真空）：</strong>蒸汽冷凝後體積急劇縮小，如果系統密封，會產生真空狀態。這個真空會在濾膜兩側形成巨大的差壓，可能導致濾膜結構損壞。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你把一個塑膠寶特瓶裝滿熱水後立刻蓋緊瓶蓋。當水冷卻後，瓶內的蒸汽冷凝，體積縮小，外部大氣壓力把瓶子壓扁變形。Condensation vacuum 對濾膜的影響類似——如果不適當地通氣或加壓，冷凝產生的真空會把濾膜「壓扁」，造成不可逆的損壞。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>就地蒸汽滅菌是濾膜損壞的頭號原因：</strong>TR26 直接點名 in-line steam sterilization 是「one of the main sources of potential damage」。這不是理論風險，而是在實際生產中經常發生的問題。完善的 SOP、操作員培訓、以及壓力條件的持續監控是預防的三大支柱。</p>
+            <p><strong>排水位置的重要性：</strong>濾芯的安裝方向必須確保冷凝水能自然排出。冷凝水積聚會阻礙蒸汽穿透，形成冷點，導致滅菌不完全。同時積水也會在冷卻時產生更嚴重的真空效應。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 中，不同客戶的產品可能使用不同規格的濾芯和外殼。每次更換濾芯型號或修改蒸汽滅菌程序時，都必須重新進行滅菌確認（sterilization qualification），包括溫度分布研究和差壓監控。建議在 PD 階段就建立一套標準的蒸汽滅菌參數範圍，並將其納入變更管控程序，以減少重複驗證的工作量。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 reverse-steaming 比 forward-steaming 對濾膜的損害更大？請從濾膜的結構設計角度解釋。</li>
+                <li>你會在蒸汽滅菌系統的哪些位置安裝壓力感測器？為什麼需要同時監控上游和下游壓力？</li>
+                <li>如何預防 condensation vacuum 的產生？有哪些工程控制手段可以使用？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.8.3 Autoclaving Considerations -->
+<!-- ============================================================= -->
+<div class="section-title">5.8.3 Autoclaving Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>While the goals of steam sterilization using an <span class="key-term">autoclave</span> are similar to those of in-line steaming, the process of placing a filtration device into an autoclave chamber is distinct in several aspects. Similar to sterilizing any item in an autoclave, the preparation of the filter must be considered, including appropriate wetting if necessary and how to <span class="key-term">wrap</span> it to safeguard the sterilized equipment from contamination when removed after the sterilization cycle. The <span class="key-term">wrapping material</span> must strike a balance; it should be porous enough to allow the penetration of steam and air while effectively blocking any <span class="key-term">bacterial ingress</span>. Autoclave cycles typically run a <span class="key-term">pre- and post-vacuum cycle</span> to evacuate any residual air and to dry the load. These vacuum cycles can cause high differential pressure when the wrapping materials are affixed too tight on the inlet, outlet and vent connections. <span class="key-term">Sterilizing-grade filters</span> are vulnerable to damage from excessive differential pressure across the membrane at elevated temperatures; therefore the preparation of the filter requires attention during the development phase.</p>
+
+        <p>In addition, the placement of the filter within the autoclave is of importance as it should not have any contact with other parts within the autoclave especially the <span class="key-term">autoclave walls</span> as this could result in temperature gradients which can result in additional stress on the filter.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Autoclave Wrapping（高壓滅菌包裝）：</strong>將過濾裝置包裹後放入高壓滅菌鍋，包裝材料需要平衡兩個矛盾需求：(1) 足夠多孔以允許蒸汽穿透和空氣排出，(2) 足夠緻密以阻隔滅菌後微生物進入。</p>
+            <p><strong>Pre/Post-Vacuum Cycle（前/後真空循環）：</strong>高壓滅菌鍋通常在滅菌前抽真空以排除殘留空氣（確保蒸汽穿透），滅菌後抽真空以乾燥負載。這些真空循環會在濾膜兩側產生差壓。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>高壓滅菌濾膜就像真空包裝食品——如果包裝袋封得太緊，抽真空時食品會被壓扁變形。同樣地，如果包裝材料把濾芯的進出口包得太緊，高壓滅菌鍋的真空循環就會在濾膜兩側產生巨大差壓，可能壓壞濾膜。適當的「留氣空間」至關重要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>包裝鬆緊度是關鍵：</strong>這是一個看似簡單但經常出問題的操作細節。包裝太緊 → 真空循環時差壓過大 → 濾膜損壞。包裝太鬆 → 滅菌後無法阻隔微生物 → 無菌性失敗。必須在 PD 階段開發並驗證適當的包裝方法。</p>
+            <p><strong>避免接觸高壓滅菌鍋壁：</strong>鍋壁溫度可能不均勻，與鍋壁接觸會造成局部溫度梯度，對濾膜產生熱應力。應使用適當的架子或支撐物將濾膜懸離鍋壁。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你發現高壓滅菌後濾膜的完整性測試（integrity test）偶爾失敗，你會從哪些方面調查原因？</li>
+                <li>如何選擇適合的高壓滅菌包裝材料？需要考慮哪些特性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.8.4 Filter-Capsule Handling -->
+<!-- ============================================================= -->
+<div class="section-title">5.8.4 Filter-Capsule Handling</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The <span class="key-term">filter-capsule</span> handling can be compared with the filter-cartridge activities, except the filter capsule is a filter unit that does not need to be installed into a filter-housing; it is already encapsulated and just needs to be connected into the process stream. More detailed information on the handling of single-use capsule filters can be found in <span class="key-term">PDA TR 66</span>.</p>
+
+        <p>Most filter capsules cannot be <span class="key-term">in-line steam-sterilized</span> and either require to be autoclaved or are supplied <span class="key-term">presterilized</span> using <span class="key-term">gamma or x-ray irradiation</span>. The autoclaving cycle for filter capsules requires the same attention as the filter cartridge to prevent damage to the filtration system.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Capsule Filter（膠囊式濾膜）：</strong>濾膜已整合在聚合物外殼中，不需要外部金屬外殼。只需連接管路即可使用，大幅簡化安裝流程。常見於一次性使用系統（SUS）中。</p>
+            <p><strong>Presterilized Filter（預滅菌濾膜）：</strong>由供應商使用伽馬射線或 X 射線照射滅菌後交付，使用者無需自行滅菌。這簡化了操作流程但增加了供應鏈管理的要求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Cartridge filter 像是你買了一個鏡頭需要自己裝到相機上（housing），而 capsule filter 像是即可拍相機——出廠就組裝好了，接上就能用。方便快速，但如果出了問題也沒辦法拆開修理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>大多數 capsule filter 不能就地蒸汽滅菌：</strong>因為其聚合物外殼無法承受就地蒸汽的高溫高壓條件。這限制了滅菌方式的選擇——只能高壓滅菌鍋或使用預滅菌產品。在設計製程時必須提前考慮這個限制。</p>
+            <p><strong>交叉參考 PDA TR 66：</strong>TR26 特別引用了 PDA TR 66 作為一次性膠囊式濾膜操作的詳細指引。在實務中應將兩份技術報告結合使用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在什麼情況下你會選擇 capsule filter（預滅菌）而非 cartridge filter（就地蒸汽滅菌）？各有什麼優缺點？</li>
+                <li>使用預滅菌 capsule filter 時，供應鏈管理需要注意什麼？（提示：考慮滅菌效期、儲存條件、gamma 射線對材料的影響）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.9 Impact of Filter Sterilization -->
+<!-- ============================================================= -->
+<div class="section-title">5.9 Impact of Filter Sterilization</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>As shown in Table 4.1-1, the effect of the <span class="key-term">sterilization method</span> and conditions on filter <span class="key-term">bacterial retention</span> for both the membrane and the assembled filter unit should be a part of the <span class="key-term">filter manufacturer's qualification package</span>. These studies are generally performed to demonstrate that stresses that occur during the sterilization process do not affect the ability of the filtration system to retain microbes. The work that the filter manufacturers perform demonstrates, that after sterilization stress, the filter performs as designed as long as the <span class="key-term">integrity test passes</span>. Within the sterilization stress ranges studied, this allows <span class="key-term">nondestructive integrity-testing</span> of the filters by the end user to demonstrate that sterilizing filters are functioning as designed. It should be noted that these sterilization-method qualification studies are different than those performed for <span class="key-term">product-specific bacterial retention validation studies</span>, as outlined in Section 6.0. In the absence of any filtration surface modifications caused by the sterilization method, no additional product specific studies related to the filter sterilization conditions are generally required.</p>
+
+        <p>As long as the sterilization processes performed by the end user are within the ranges (e.g., temperature, time, ionizing radiation exposure) qualified by the filter manufacturer, performing an <span class="key-term">integrity test</span> is an appropriate control strategy that connects the filter performance back to the <span class="key-term">microbial-retention testing</span> performed during the filter qualifications.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Sterilization-Method Qualification（滅菌方法資格確認）：</strong>濾膜製造商必須證明，在其規定的滅菌條件範圍內（溫度、時間、輻射劑量等），濾膜經過滅菌處理後仍然保有完整的細菌截留能力。這是 Table 4.1-1 中濾膜資格確認的一部分。</p>
+            <p><strong>Integrity Test 作為橋接工具：</strong>製造商的資格確認建立了「完整性測試通過 → 細菌截留能力完好」的相關性。因此，使用者只需要進行非破壞性的完整性測試，就能間接證明濾膜的除菌功能正常。這是整個除菌過濾品質控制體系的核心邏輯鏈。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像汽車安全帶的出廠測試。安全帶製造商已經在各種極端條件下（高溫、低溫、反覆拉扯）測試過安全帶的強度。只要你使用的條件在製造商測試的範圍內，那麼你每次繫上安全帶時的「咔嗒一聲扣緊」（= integrity test）就足以確認安全帶可以正常運作——你不需要每次開車前都做一次碰撞測試。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>關鍵前提：使用者的滅菌條件必須在製造商確認的範圍內。</strong>如果你的蒸汽滅菌溫度或時間超出了製造商提供的資格確認範圍，完整性測試就不再能作為充分的控制策略。這種情況下，你可能需要進行額外的產品特異性細菌截留研究。</p>
+            <p><strong>滅菌方法資格確認 ≠ 產品特異性驗證：</strong>TR26 特別區分了這兩種研究。前者證明「滅菌不會破壞濾膜」，後者證明「特定產品在特定條件下能被有效過濾」（見 Section 6.0）。兩者都是必需的，但回答不同的問題。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，這個概念的實務意義在於：只要你使用的滅菌條件在濾膜供應商的資格確認範圍內，你就不需要針對每個客戶的不同滅菌參數重複進行細菌截留研究。這大幅減少了驗證的工作量和成本。但你必須仔細記錄並比對你的實際滅菌條件與供應商的資格確認範圍——任何超出範圍的情況都需要額外的風險評估和可能的補充研究。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請用你自己的話解釋「integrity test 作為橋接工具」的邏輯鏈。從製造商的資格確認到使用者的完整性測試，中間的每個環節是什麼？</li>
+                <li>如果你的蒸汽滅菌程序中偶爾出現溫度超調（overshoot），超出了製造商規定的最高溫度 2°C，你需要採取什麼措施？</li>
+                <li>為什麼 TR26 說「在沒有因滅菌方法造成的過濾表面改質的情況下」不需要額外的產品特異性研究？什麼情況下滅菌可能造成表面改質？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.0 COMPLETE SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>Section 5.0 全節重點回顧 Complete Section Summary</h3>
+    <ul>
+        <li><strong>製程設計先於驗證（Design Before Validation）：</strong>Section 5.0 的核心精神是 FDA 製程驗證三階段中的 Stage 1 — Process Design。品質必須「設計進去」而非「測試出來」。除菌過濾作為最終微生物控制屏障，其製程設計的嚴謹程度直接影響病患安全。</li>
+        <li><strong>設計空間的全面評估（Design Space Evaluation）：</strong>從產品特性與濾膜相容性（5.1.1）出發，定義操作範圍（5.1.2），涵蓋溫度、體積、流速、差壓、過濾時間、驅動力、配置等七大因素（Table 5.1.2-1）。</li>
+        <li><strong>流量特性是製程控制的核心（Flow Characteristics）：</strong>差壓（5.2.1）、溫度（5.2.2）、時間（5.2.3）三者交互影響過濾性能。理解這些參數的關係是正確設計過濾製程的基礎。</li>
+        <li><strong>通量與容量決定濾膜選型（Filter Throughput & Sizing）：</strong>Table 5.3-1 總結了影響通量的八大因素。小規模篩選試驗（5.4.1）搭配 EFA 比例放大是標準做法，但必須注意放大的非線性風險（5.4.2）——尤其是剪切應力歷史對蛋白質產品的影響。</li>
+        <li><strong>系統整合需要完整的 URS（System Design & Integration）：</strong>從 URS 開始（5.5），明確定義所有製程參數和系統需求。串聯過濾配置（5.5.1）必須清楚區分 pre-filtration、redundant filtration 和 double filtration 的不同角色和驗證要求。</li>
+        <li><strong>過濾前生物負荷監測提供安全係數（Bioburden Monitoring）：</strong>Pre-filtration bioburden monitoring（5.6）是法規的普遍期望，取樣時間和位置的選擇必須基於產品特性和製程風險評估。</li>
+        <li><strong>沖洗策略影響產品回收率（Flushing & Priming）：</strong>Filter flushing（5.7）不僅是降低 leachables 的品質要求，更是提升產品回收率的經濟機會——尤其對含界面活性劑的蛋白質產品。Filter-flush curve 是確定最適沖洗量的科學工具。</li>
+        <li><strong>操作與安裝細節決定成敗（Handling & Installation）：</strong>濾芯安裝（5.8.1）、就地蒸汽滅菌（5.8.2）、高壓滅菌（5.8.3）和膠囊式濾膜操作（5.8.4）每個環節都有可能導致濾膜損壞或污染。SOP、培訓和監控是預防的三大支柱。</li>
+        <li><strong>完整性測試是連結資格確認與日常操作的橋樑（Integrity Test as Bridge）：</strong>只要使用者的滅菌條件在製造商資格確認範圍內（5.9），非破壞性的完整性測試就能間接證明濾膜的除菌功能——這是整個除菌過濾品質體系的核心控制策略。</li>
+        <li><strong>決策優先順序永遠適用：</strong>無菌濾液保證 → 產品品質/CQA → 製程穩健性 → 商業與效率。當設計決策產生衝突時，上位原則永遠優先。</li>
+    </ul>
+</div>
+
+</body>
+</html>
