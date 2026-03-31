@@ -129,11 +129,19 @@ PDF_NOISE_PATTERNS = [
     re.compile(r'^PDA Manufacturing Technology Guide'),
     # ISPE header/footer patterns
     re.compile(r'^ISPE Baseline®?\s+Guide:?\s*$'),
+    re.compile(r'^ISPE Good Practice Guide:?\s*$'),
     re.compile(r'^Sterile Product Manufacturing Facilities\s*$'),
     re.compile(r'^Commissioning and Qualification\s*$'),
+    re.compile(r'^Heating,?\s*Ventilation,?\s*and\s*Air\s*Conditioning\s*$'),
     re.compile(r'^Page\s+\d+\s*$'),
     re.compile(r'^For individual use only\.\s*©\s*Copyright\s+ISPE'),
     re.compile(r'^©\s*Copyright\s+ISPE'),
+    # ISPE document license/download watermark (appears on every page)
+    re.compile(r'^This Document is licensed to'),
+    re.compile(r'^(Mr|Ms|Mrs|Dr)\.?\s+.{3,50},?\s*(Sr|Jr)?\.?\s*$'),
+    re.compile(r'^[A-Z][a-z]+,\s+[A-Z]{2}'),  # "Mexico, DF" / "City, ST" pattern
+    re.compile(r'^ID number:\s*\d+'),
+    re.compile(r'^Downloaded on:'),
 ]
 
 # Heading patterns in PDA source text: "3.0 Title", "3.1.2 Subtitle", "Appendix I: Title"

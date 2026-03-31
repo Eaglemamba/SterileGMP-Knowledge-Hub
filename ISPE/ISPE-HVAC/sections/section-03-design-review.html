@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Chapter 4: Design Review</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ISPE Green Override
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 4: Design Review</h1>
+    <div class="subtitle">設計審查</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p81 - p88</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Design Review（設計審查）與 Design Qualification（設計確效, DQ）的定義、目的及其在 HVAC 系統生命週期中的角色</li>
+        <li>掌握設計審查的七大目標，以及為何在施工前進行審查能大幅降低成本與風險</li>
+        <li>了解 GEP 審查與 GMP 審查的區分邏輯，以及何時需要啟動正式的設計確效（DQ）</li>
+        <li>熟悉 Table 4.1 ~ Table 4.4 四大設計審查 Checklist 的應用場景與關鍵審查項目</li>
+        <li>學會如何組建跨功能設計審查團隊，並運用 FMEA 等風險工具強化設計穩健性</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.1 Design Review (Design Qualification) -->
+<!-- ============================================================ -->
+<div class="section-title">4.1 Design Review (Design Qualification)（設計審查 / 設計確效）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This chapter provides guidance on verifying that the design as issued for construction will meet the <span class="key-term">user requirements</span>.</p>
+
+        <p>It is easier and more cost effective to change a design before it is constructed than during or after construction, and therefore, there is less impact on capital cost and schedule. As the design develops, input from all interested parties should be considered to avoid later changes.</p>
+
+        <p>The process of reviewing a design (drawings and specifications) as it develops from concept to issued-for-construction status has several objectives:</p>
+
+        <ul>
+            <li>to ensure that a design follows preferred custom and practice</li>
+            <li>to ensure that the concepts proposed are capable of meeting the requirements defined in the <span class="key-term">User Requirement</span> documentation, i.e., user expectations</li>
+            <li>to ensure that a design minimizes risk to <span class="key-term">product quality/patient safety</span></li>
+            <li>to ensure that a design is robust and will perform reliably and that performance can be documented</li>
+            <li>to ensure that a design proposed is cost effective</li>
+            <li>to ensure that design options, the <span class="key-term">life cycle costs</span>, and the risks have been identified and addressed</li>
+            <li>where an end user has preferred suppliers, the review should confirm that these have been specified</li>
+        </ul>
+
+        <p>Common practice is for a design to receive comments for the designer (engineer of record) to incorporate or provide a rationale for not incorporating. Users usually do not approve a design to avoid making design responsibility unclear.</p>
+
+        <p>For systems that may affect product quality, it is a common practice to split design reviews into two categories:</p>
+
+        <ol>
+            <li>engineering or technical reviews</li>
+            <li>quality (or GMP) focused reviews</li>
+        </ol>
+
+        <p>A final specific "quality" review usually is performed to confirm that the HVAC system (and the specified related conditions for the areas it serves (temperature, humidity, classification, DPs, etc.) comply with GMP regulations/organizational standards. This review may be called <span class="key-term">Design Qualification</span>, allowing the statement to be formally made that the design as reviewed is fit for its intended use, as well as confirming that the user requirements are met.</p>
+
+        <p>It should be noted that there are regulations requiring this review. <span class="key-term">ICH Q7</span> suggests a design review and the European regulations state:</p>
+
+        <div class="quote-box">
+            "The first element of the validation of new facilities, systems, or equipment could be design qualification (DQ)."
+        </div>
+
+        <div class="quote-box">
+            "The compliance of the design with GMP should be demonstrated and documented."
+        </div>
+
+        <p>The process of reviewing and accepting a design to be released for construction or the overall review process also may be considered a qualification of the design, because it confirms that the user organization has reviewed the design (documented through the design review process) and agrees to release the design for implementation.</p>
+
+        <p>Once a design has been accepted as fit for its intended use, <span class="key-term">formal change control</span> should be applied. Formal change control should ensure the system remains in compliance and is fit for its intended use. Individual change requests may be reviewed or a single review of the system and all changes may be performed during <span class="key-term">installation qualification</span>.</p>
+
+        <p>Figure 4.1 shows (diagrammatically) an overview of a typical design/design review process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Design Review vs. Design Qualification</h4>
+            <p><strong>Design Review（設計審查）</strong>：在設計開發過程中，由跨功能團隊對圖紙與規格進行系統性審查，確保設計符合使用者需求與工程最佳實踐。這是一個持續性的活動，從概念階段一直延續到施工發包。</p>
+            <p><strong>Design Qualification（設計確效, DQ）</strong>：最終的「品質審查」環節，正式確認設計符合 GMP 法規要求，並宣告設計「適合預定用途（fit for intended use）」。DQ 是 V-Model 確效生命週期的第一步。</p>
+            <p>兩者的關係：Design Review 是較廣泛的工程活動，DQ 是其中專注於 GMP 合規的子集。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蓋房子前先看藍圖</h4>
+            <p>想像你要蓋一棟新房子。在開始打地基之前，你會找建築師、水電師傅、室內設計師一起看藍圖：</p>
+            <ul>
+                <li><strong>建築師</strong>確認結構安全（= 工程審查）</li>
+                <li><strong>消防局</strong>確認逃生通道符合法規（= GMP 審查）</li>
+                <li><strong>屋主</strong>確認格局符合需求（= URS 比對）</li>
+            </ul>
+            <p>藍圖上改一條線只要幾分鐘，但房子蓋好後要拆牆改管線就要花幾十萬。HVAC 設計審查的邏輯完全一樣——<strong>施工前發現問題，成本是施工後的 1/10</strong>。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：DQ 是法規要求，不是可選項目</h4>
+            <p>ICH Q7 與歐盟 GMP 明確要求 DQ。許多公司誤以為 DQ 只是「好的工程實踐」，但實際上：</p>
+            <ul>
+                <li>EU GMP Annex 15 明確將 DQ 列為驗證的第一步</li>
+                <li>FDA 期望看到「設計符合 GMP 的書面證據」</li>
+                <li>DQ 報告是稽查員審查的第一份確效文件</li>
+            </ul>
+            <p>在 CDMO 環境中，DQ 更加關鍵——因為 HVAC 系統必須同時滿足多個客戶產品的環境需求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：設計核准 vs. 設計審查</h4>
+            <p>原文特別指出：「Users usually do not approve a design to avoid making design responsibility unclear.」</p>
+            <p>這是一個重要的法規觀念——<strong>使用者審查但不核准設計</strong>。設計責任仍屬於設計工程師（engineer of record）。使用者的角色是提出意見與確認需求被滿足，而不是承擔設計責任。這在出問題時的責任歸屬至關重要。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的設計審查策略</h4>
+            <p>對無菌充填 CDMO 而言，HVAC 設計審查必須特別關注：</p>
+            <ul>
+                <li><strong>多產品彈性</strong>：不同客戶產品可能需要不同溫濕度範圍，設計是否預留調整空間？</li>
+                <li><strong>交叉污染防控</strong>：壓差梯度與氣流方向是否能防止產品間交叉污染？</li>
+                <li><strong>法規多軌合規</strong>：同一設施可能需要同時符合 FDA、EMA、PIC/S 要求</li>
+                <li><strong>產能擴張</strong>：設計是否為未來新增產線預留 HVAC 容量？</li>
+            </ul>
+            <p>建議在 URS 階段就將這些 CDMO 特有需求明確寫入，避免設計審查時才發現缺口。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家 CDMO 的 HVAC 設計通過了工程審查，但尚未進行 GMP 審查就開始施工。如果稽查員發現這個情況，可能會提出什麼 observation？</li>
+                <li>設計確效（DQ）完成後，客戶要求將某間潔淨室從 ISO 8 升級為 ISO 7。這個變更應該走什麼流程？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Knowledge Capture Systems & Review Methods -->
+<!-- ============================================================ -->
+<div class="section-title">4.1 (cont'd) Knowledge Capture &amp; Review Methods（知識管理與審查方法）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Organizations may develop <span class="key-term">knowledge capture systems</span> such as:</p>
+
+        <ul>
+            <li>design review checklists (see Table 4.1 to Table 4.4)</li>
+            <li>design guides: defining the preferred way of designing a given system type, e.g., HVAC systems or compendial water systems</li>
+        </ul>
+
+        <p>These approaches should ensure that organizational experience and preferences are both captured and considered. They also should consider novel concepts.</p>
+
+        <p>The review method to be used should be defined and review participants should agree to the method. The method and participants may vary depending on the system type.</p>
+
+        <p>A preferred approach for design review is for a <span class="key-term">multi-disciplinary team</span> to ensure that key viewpoints are considered with SMEs in HVAC, controls, commissioning, and regulatory requirements.</p>
+
+        <p>For areas where high system reliability is required, e.g., vivariums, a formal review may be conducted, such as using a <span class="key-term">Failure Modes and Effects Analysis (FMEA)</span> to ensure that the design is adequately robust. A simplified version of this approach may be beneficial, considering the effect of system failures on adjacent areas to ensure that the design is robust and that system failure will not compromise product.</p>
+
+        <p>Notes taken from the design review should be implemented through drawing and specification changes. If the revision cross references the notes, it may not be necessary to formally close out all actions in a GEP environment. SMEs who sign off drawings for construction are expected to check that necessary changes have been incorporated in the drawing.</p>
+
+        <p>Large projects usually have multiple reviews at key stages, e.g., a review at the concept stage (to ensure that the user team agrees with the proposals from the A&amp;E design company), interim design reviews, and a final review. These may focus on individual systems, or on specific areas of the design, e.g., HVAC systems or chilled water systems.</p>
+
+        <p>For smaller projects, e.g., with one system, there may be fewer reviews, but there should be one review before design release, as a minimum. The project team should agree the approach to be applied to a specific project.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：知識管理系統（Knowledge Capture）</h4>
+            <p>ISPE 在此強調的是<strong>組織知識的制度化</strong>——不要讓經驗只留在資深工程師的腦袋裡。兩個關鍵工具：</p>
+            <ul>
+                <li><strong>Design Review Checklists</strong>：標準化的審查清單，確保每次審查都涵蓋所有關鍵面向（見 Table 4.1~4.4）</li>
+                <li><strong>Design Guides</strong>：公司內部的設計規範，定義 HVAC 系統的「慣用做法」</li>
+            </ul>
+            <p>這兩個工具的價值在於：即使資深工程師離職，組織知識仍然被保留。對 CDMO 而言，這更是確保多站點一致性的關鍵。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：飛行員的 Checklist</h4>
+            <p>波音 737 起飛前，無論飛行員多資深，都必須逐項完成起飛前檢查清單。這不是因為飛行員不夠專業，而是因為：</p>
+            <ul>
+                <li>人腦在處理複雜系統時容易遺漏</li>
+                <li>清單確保每次都達到同樣的品質標準</li>
+                <li>這是從歷史事故中提煉出的寶貴教訓</li>
+            </ul>
+            <p>HVAC 設計審查清單（Table 4.1~4.4）就是 HVAC 工程師的「起飛前 Checklist」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：FMEA 在 HVAC 設計中的應用</h4>
+            <p>原文提到對高可靠性需求的區域（如動物房 vivarium）可使用 <strong>FMEA（失效模式與效應分析）</strong>進行正式審查。</p>
+            <p>在無菌製造環境中，FMEA 特別適用於以下場景：</p>
+            <ul>
+                <li>單一 AHU 故障對相鄰潔淨室壓差的影響</li>
+                <li>冷卻系統失效時的溫度失控風險</li>
+                <li>HEPA 過濾器洩漏對潔淨度的影響</li>
+                <li>控制系統故障時的 fail-safe 設計是否足夠</li>
+            </ul>
+            <p>即使不做完整 FMEA，至少要考慮「系統失效對產品品質的影響」——這就是原文所說的 simplified version。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>設計審查階段規劃</h4>
+            <pre>
+大型專案（多系統）：
+  概念階段審查 → 中期設計審查 → 最終審查（施工前）
+  ├── 概念階段：確認 A&E 公司提案符合使用者需求
+  ├── 中期審查：檢視詳細設計，識別風險
+  └── 最終審查：確認施工圖完整，發行 DQ
+
+小型專案（單一系統）：
+  至少一次設計審查 → 施工前發行
+  └── 審查範圍與深度由專案團隊決定</pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的公司沒有 HVAC Design Guide，每次新專案都從頭設計。這可能造成什麼問題？你會如何建立第一版 Design Guide？</li>
+                <li>一位資深 HVAC 工程師即將退休，他 20 年來累積的設計經驗大部分在他腦中。你會用什麼方法在他退休前將這些知識「制度化」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.2 Design Review Process -->
+<!-- ============================================================ -->
+<div class="section-title">4.2 Design Review Process（設計審查流程）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Typically, the review process is formalized to make it more efficient and to ensure that all interested parties are involved the process.</p>
+
+        <p>The review may be structured to cover all design aspects or divided into two:</p>
+
+        <ol>
+            <li>A <span class="key-term">GEP review</span>: to ensure that GEPs are incorporated; this may include a review of maintainability of the systems.</li>
+            <li>A <span class="key-term">GMP review</span>: to ensure that compliance requirements are adequately addressed by the proposed design.</li>
+        </ol>
+
+        <p>(A Health and Safety review also may be justified for facilities handling potent or flammable compounds.)</p>
+
+        <p>The GEP review may be complex, (a significant amount of knowledge and experience within an organization can be captured and used in the review process). A formal audit trail usually is not required for GEP observations. Typically, reviewers ensure that comments have been addressed; therefore, there may be a benefit in keeping separate reviews.</p>
+
+        <p>The <span class="key-term">GMP review</span> typically is simple and consistent; observations should be tracked to ensure that they are addressed and an <span class="key-term">audit trail</span> established.</p>
+
+        <p>A series of typical categorized design challenges may be developed. See Table 4.1 to Table 4.4.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：GEP 審查 vs. GMP 審查</h4>
+            <p>這是本節最重要的架構性概念。ISPE 建議將設計審查分為兩軌：</p>
+            <ul>
+                <li><strong>GEP 審查（Good Engineering Practice）</strong>：涵蓋工程最佳實踐、可維護性、可靠性、節能等「做得好」的面向。觀察記錄不需要正式的 audit trail。</li>
+                <li><strong>GMP 審查</strong>：聚焦於法規合規——溫濕度、分級、壓差、交叉污染等「必須做到」的面向。每項觀察必須被追蹤並建立 audit trail。</li>
+            </ul>
+            <p>為什麼要分開？因為 GEP 觀察可能有數十甚至數百條（包括大量工程偏好），如果全部混在 GMP audit trail 裡，反而會稀釋真正關鍵的 GMP 合規議題。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：餐廳驗收的兩層審查</h4>
+            <p>一家新餐廳裝修完畢，驗收分兩個層級：</p>
+            <ul>
+                <li><strong>工程驗收（= GEP）</strong>：檢查電線是否整齊、水管是否有漏、排煙效果好不好、設備是否方便維修——做得好不好的問題</li>
+                <li><strong>衛生局稽查（= GMP）</strong>：檢查廚房溫度控制、食材儲存區域隔離、排水系統是否符合食安法規——合不合規的問題</li>
+            </ul>
+            <p>工程驗收有很多建議（「這個插座建議換個位置比較好用」），但衛生局稽查只關注法規紅線（「冷藏溫度超標就不發許可」）。分開處理，效率最高。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：EHS 審查不要忘記</h4>
+            <p>原文順帶提到：「A Health and Safety review also may be justified for facilities handling potent or flammable compounds.」</p>
+            <p>這在 CDMO 環境中特別重要，因為：</p>
+            <ul>
+                <li>高效價藥物（high potency compounds）需要負壓控制與專用排氣</li>
+                <li>易燃溶劑操作需要防爆設計（ATEX 分區）</li>
+                <li>生物製劑可能涉及生物安全等級（BSL）要求</li>
+            </ul>
+            <p>HVAC 設計審查時，務必確認是否需要額外的 EHS 審查，否則施工後補救代價極高。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 GEP 審查中，你發現設計工程師將 AHU 維護空間壓縮到僅 40 公分寬。這不違反任何 GMP 法規，但你認為會造成維護困難。你會如何在審查中記錄這個觀察？需要 audit trail 嗎？</li>
+                <li>一項 GMP 審查發現：設計圖上 B 級潔淨室與 C 級走廊之間的壓差設計為 10 Pa，低於建議的 15 Pa。你會如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Table 4.1: Concept Stage GMP Review -->
+<!-- ============================================================ -->
+<div class="section-title">Table 4.1: Typical Design Concept Stage GMP Review（概念階段 GMP 審查）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:60%">Design Challenge</th>
+                <th style="width:20%">Response</th>
+                <th style="width:20%">Action</th>
+            </tr>
+            <tr>
+                <td>Are <span class="key-term">critical parameters</span> and acceptance criteria defined/Are the reasons for making them critical (<span class="key-term">risk assessment</span>) documented?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the units and associated controllers located in a controlled access space?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the equipment maintainable? (Consider accessibility to key components of the system, filter maintenance requirements, filter integrity testing (if required), regeneration requirements, emissions, etc.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Review and evaluate the <span class="key-term">AHU service distribution drawing</span> and consider the following:</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How many AHU units (zones) are proposed, is the zoning based on the process requirements?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the <span class="key-term">airflow directions/differential pressures</span> correct to control product exposure/cross contamination?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the temperature and humidity design and operating conditions defined?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are any <span class="key-term">area classifications</span> required/defined?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the systems once-through or recirculating? (Are there provisions to handle solvents, high potent compounds or high particle generating operations, as required by the product/process operations?)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the <span class="key-term">control scheme</span> clearly defined, including monitoring and alarm requirements?</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：概念階段的「大方向」審查</h4>
+            <p>Table 4.1 是在設計最早期（概念階段）使用的 Checklist。此時重點不在細節，而在<strong>大方向是否正確</strong>：</p>
+            <ul>
+                <li><strong>關鍵參數是否定義？</strong>——如果連溫度、濕度、壓差的設計目標都沒有定義，後面的設計都是白做</li>
+                <li><strong>區域劃分是否合理？</strong>——AHU 分區必須基於製程需求，而非建築便利</li>
+                <li><strong>氣流方向是否正確？</strong>——空氣永遠從潔淨區流向較不潔淨區，這是最基本的 GMP 原則</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風險評估（Risk Assessment）是 DQ 的基礎</h4>
+            <p>第一個 Design Challenge 就問：「關鍵參數的選定理由（風險評估）是否有文件記錄？」</p>
+            <p>這揭示了一個關鍵邏輯：<strong>DQ 的起點不是設計本身，而是風險評估</strong>。你必須先透過 Risk Assessment 識別哪些參數是「關鍵的」，然後才能審查設計是否滿足這些關鍵參數。</p>
+            <p>沒有 Risk Assessment 支撐的 DQ，在稽查時會被視為「沒有科學依據的表面功夫」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蓋學校前先確認學區規劃</h4>
+            <p>概念階段審查就像蓋學校前，先確認：</p>
+            <ul>
+                <li>這個學區要服務多少學生？（= 製程需求決定 AHU 分區）</li>
+                <li>教室要不要空調？圖書館要不要獨立溫控？（= 溫濕度需求定義）</li>
+                <li>消防通道方向對不對？（= 氣流方向 / 壓差方向）</li>
+            </ul>
+            <p>如果這些大方向搞錯了，等校舍蓋好才發現，改建成本可能是原始建設成本的 30~50%。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你正在審查一個新廠的 HVAC 概念設計。設計圖顯示所有製造區域共用一台大型 AHU。從 GMP 角度，你會提出什麼疑慮？</li>
+                <li>設計書上寫著「溫度範圍 18-25&deg;C」但沒有定義哪些區域需要更嚴格的控制。這在概念階段審查中應該如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Table 4.2: Detail Design / Issue for Construction Stage GMP Review -->
+<!-- ============================================================ -->
+<div class="section-title">Table 4.2: Detail Design or Issue for Construction Stage GMP Review（詳細設計 / 施工階段 GMP 審查）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:60%">Design Challenge</th>
+                <th style="width:20%">Response</th>
+                <th style="width:20%">Action</th>
+            </tr>
+            <tr>
+                <td>Have the <span class="key-term">peak external design conditions</span> been established from a reliable source, which considers local geographical features/meteorological factors, e.g., lakes/prevailing wind direction?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Has the user defined <span class="key-term">availability requirements</span> for the products to allow the design external conditions to be defined? (i.e., the percentage of time that the facility will be able to maintain the manufacturing conditions)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the internal requirements specified: temperature/humidity/airflow direction &ndash; area DPs/classification?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Review location of <span class="key-term">outside air intake and exhaust</span>. Is the prevailing wind direction defined for the site with the HVAC inlet and outlet locations defined to demonstrate no risk of recirculation?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the facility divided into manufacturing zones (areas)? What rationale is used to divide the facility into zones?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the location of the <span class="key-term">monitoring sensors</span> specified, such that they will give representative readings of the space conditions: are they easily accessible for maintenance and calibration activities? (For large areas, such as a warehouse multi-point mapping and monitoring may be required; for smaller areas, 1 or 2 points generally are adequate with the reading demonstrated as representative of the areas where product is susceptible to conditions during qualification using sensors. Consider the size of the room and the location of key process operations (e.g., product exposure) in establishing the location and number of monitored points.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>If there are multiple AHUs servicing the manufacturing area, how will <span class="key-term">failure modes</span> affect the intended operation? Will failure of one unit increase the risk of cross contamination?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is there a site drawing/component numbering system which has been used?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are <span class="key-term">airflow directions/DPs</span> (from clean to less clean) appropriate to provide the minimum risk of product contamination/cross contamination, considering potential system failure modes?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are there <span class="key-term">airlocks</span> that separate areas of different classifications with a design DP of at least <span class="key-term">15 Pa</span> across the airlock? The design airlock classification should be same as the area served when measured at rest.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the airlocks specified with <span class="key-term">interlocked doors</span>? (It is recommended that the design DP is a minimum of <span class="key-term">20 Pa</span> to allow for construction issues.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Does the process require containment; if so, is exhaust air filtered using <span class="key-term">safe change high efficiency filters</span> with suitable re-filters (bag-in, bag-out)?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are there any provisions to handle solvents, high potency drugs, and/or high particle generating materials? If so, are the provisions in line with the area GMP operational requirements? (Airflow should be designed to contain high potency compounds. Biotech facilities design should conform to the US Center for Disease Control biosafety control levels.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the air handling systems designed for re-circulation where appropriate and with suitable return air filtration?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What assumptions have been made to specify the position of the temperature sensor to ensure that it is representative of room conditions?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What assumptions have been made to specify the position of the humidity sensor to ensure that it is representative of room conditions?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is there a qualified system for manufacturing areas to <span class="key-term">monitor and maintain records</span> of temperature, humidity, and airflow direction? (Define what will be the system of record and what will be the system of control.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is there a locally mounted <span class="key-term">alarm indicator</span> for any out of limit environmental condition: temperature, humidity, airflow direction? Have alarm limits been defined based on product and process requirements?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Has the position of <span class="key-term">inlet/outlet grilles</span> been specified where necessary? (If the area is classified, it is common practice to design with ceiling mounted supply grilles and return air taken at low level in the room?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the area served a laboratory, if so, what considerations have been made for: Fume hoods? Microenvironments, e.g., low humidity rooms? Sensitive scales?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Does <span class="key-term">humidification</span> use plant steam, if so, does it use approved additives (21 CFR 173.310) or chemical free steam? (If so, it should be injected before the final HEPA filter, where one is used.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the ductwork specified using an appropriate allowance for <span class="key-term">leakage</span> &ndash; is it shown on the design?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the AHUs mounted inside, if not, what provision is there to protect them and the personnel from the weather during maintenance?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Does the specification for the AHUs include access panels and test ports to facilitate maintenance and <span class="key-term">HEPA filter testing</span> if required?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are AHUs designed for CV and low leakage of conditioned air?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How does the specification of the AHU ensure that it will not degrade or corrode during its working life to affect its performance?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are <span class="key-term">progressive pre-filters</span> specified &ndash; what is the basis for their selection?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What <span class="key-term">final stage filters</span> are specified? Are all classified areas served via 99.97% efficient HEPAs? (Note terminal filtration is preferred). (H13 specified for in situ leakage testing, or H14).</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are <span class="key-term">lockable dampers</span> specified, and is there a requirement to record the as balanced setting in the commissioning records?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Confirm that the specification permits no interior lining of ductwork with any sound attenuators specified using non shedding lining.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What security arrangements are there for controls?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What happens in the event of <span class="key-term">power failure</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the ductwork made of galvanized steel or are there special requirements; for non classified areas, does the specification limit the use of <span class="key-term">flexible ductwork</span> to 4 feet long? Confirm that for classified areas the use of flexible ductwork is not permitted.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What are the leakage allowances &ndash; are they appropriate? (The use of flexible hosing must be carefully evaluated. Maintenance requirements must be discussed as part of the review process.)</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：詳細設計審查的全面性</h4>
+            <p>Table 4.2 是整個設計審查中<strong>最長、最詳盡</strong>的 Checklist，涵蓋了 HVAC 系統從外部條件到內部細節的所有 GMP 相關面向。可以將其分為幾個主題群組：</p>
+            <ul>
+                <li><strong>外部環境</strong>：氣象條件、進排氣口位置、盛行風向</li>
+                <li><strong>內部環境</strong>：溫度、濕度、壓差、分級、感測器位置</li>
+                <li><strong>空氣處理</strong>：AHU 設計、過濾器規格、風管材質</li>
+                <li><strong>監控與報警</strong>：紀錄系統、報警限值、控制安全</li>
+                <li><strong>失效模式</strong>：斷電、AHU 故障、交叉污染風險</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：關鍵數字必須記住</h4>
+            <p>Table 4.2 中包含幾個極為重要的設計數據：</p>
+            <ul>
+                <li><strong>15 Pa</strong>：不同潔淨等級之間 Airlock 的最低設計壓差</li>
+                <li><strong>20 Pa</strong>：建議的設計壓差（預留施工誤差的裕度）</li>
+                <li><strong>99.97%</strong>（H13/H14）：分級區域的 HEPA 過濾器效率要求</li>
+                <li><strong>4 feet（約 1.2 m）</strong>：非分級區域軟管最大允許長度；分級區域禁止使用軟管</li>
+            </ul>
+            <p>這些數字在稽查中經常被問到，必須能夠立即回答並引用出處。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：感測器位置的代表性</h4>
+            <p>原文對 monitoring sensor 位置的論述非常詳細，值得特別關注：</p>
+            <ul>
+                <li>大空間（如倉庫）需要多點 mapping 與監控</li>
+                <li>小空間 1-2 個監測點通常足夠，但需在確效時證明其<strong>代表性</strong></li>
+                <li>感測器位置要考慮「產品暴露在哪裡」——例如充填區的感測器應該靠近產品暴露點</li>
+                <li>感測器必須方便維護與校準</li>
+            </ul>
+            <p>感測器位置不當是 FDA 483 常見的觀察項目之一。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：溫度計放在冰箱門邊 vs. 食物旁</h4>
+            <p>家裡冰箱如果把溫度計放在門邊（每次開門溫度波動最大的地方），量到的溫度就不能代表食物儲存區的真實溫度。</p>
+            <p>潔淨室的感測器也一樣——如果放在天花板回風口旁，量到的數值反映的是回風溫度，不是操作人員身旁產品暴露點的溫度。<strong>感測器位置的「代表性」是審查中的關鍵質疑點</strong>。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 Table 4.2 審查要點</h4>
+            <p>對 CDMO 而言，Table 4.2 中有幾個問題特別需要深入審查：</p>
+            <ul>
+                <li><strong>Availability requirements（可用性需求）</strong>：不同客戶產品可能有不同的生產排程需求，HVAC 的設計外部條件百分比（如 99.6% availability = ASHRAE 0.4% design conditions）直接影響設備選型與成本</li>
+                <li><strong>Multiple AHU failure modes</strong>：CDMO 通常有多條產線同時運作，一台 AHU 故障是否會影響其他產線的壓差級聯？</li>
+                <li><strong>Containment provisions</strong>：如果某個客戶的產品是高效價藥物，排氣過濾設計必須升級</li>
+                <li><strong>21 CFR 173.310 steam additives</strong>：蒸氣加濕器的水質問題在 FDA 稽查中常被關注</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠位於台灣中南部，夏季高溫多濕。設計工程師使用台北的氣象數據作為外部設計條件。這會造成什麼問題？你會如何修正？</li>
+                <li>設計圖上所有 Airlock 的壓差設計為 15 Pa。考慮到施工後可能的偏差，你會建議修改嗎？為什麼 ISPE 建議 20 Pa？</li>
+                <li>一條新的無菌充填線，設計中沒有提到 AHU 故障時的 fail-safe 機制。你會在設計審查中提出什麼建議？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Table 4.3: GEP Design Review High Level Challenges -->
+<!-- ============================================================ -->
+<div class="section-title">Table 4.3: GEP Design Review High Level Challenges（GEP 設計審查高層級挑戰）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:60%">Design Challenge</th>
+                <th style="width:20%">Response</th>
+                <th style="width:20%">Action</th>
+            </tr>
+            <tr>
+                <td>What considerations are made for <span class="key-term">reliability/robustness</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Does the design proposed demonstrate <span class="key-term">current best practices</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How are <span class="key-term">maintenance/calibration</span> requirements addressed?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How are <span class="key-term">failure modes</span> considered?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are ceiling plenum returns proposed; if so, how would the ceiling void be cleaned?</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：GEP 審查的「戰略性」問題</h4>
+            <p>相較於 Table 4.2 那樣的詳細 Checklist，Table 4.3 只有 5 個問題，但每一個都是<strong>高層級的戰略性問題</strong>。這些問題不是問「有沒有做到某個規格」，而是問「設計的整體思維是否正確」：</p>
+            <ul>
+                <li><strong>Reliability</strong>：系統能否長期穩定運行？</li>
+                <li><strong>Best practices</strong>：是否採用了當前業界最佳做法？</li>
+                <li><strong>Maintainability</strong>：日常維護是否方便？校準是否可行？</li>
+                <li><strong>Failure modes</strong>：系統故障時會發生什麼？設計是否考慮了 fail-safe？</li>
+                <li><strong>Cleanability</strong>：天花板回風腔體（ceiling plenum）如何清潔？</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：買車的五大核心問題</h4>
+            <p>Table 4.3 就像你買車前問的五個根本問題：</p>
+            <ul>
+                <li>這車耐不耐用？（= reliability）</li>
+                <li>是不是最新款的安全配備？（= current best practices）</li>
+                <li>保養方不方便？維修費貴不貴？（= maintenance/calibration）</li>
+                <li>爆胎或電池沒電時怎麼辦？（= failure modes）</li>
+                <li>座椅套好不好洗？（= cleanability of ceiling plenum）</li>
+            </ul>
+            <p>這些是「買車決策」層級的問題，不是「這顆螺絲要不要鍍鉻」的細節問題。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Ceiling Plenum Return 的清潔問題</h4>
+            <p>最後一個 Design Challenge 特別值得關注：「Are ceiling plenum returns proposed; if so, how would the ceiling void be cleaned?」</p>
+            <p>許多工廠為了簡化設計，採用天花板上方空間（ceiling plenum）作為回風通道。但這帶來嚴重的清潔問題：</p>
+            <ul>
+                <li>天花板上方空間難以目視檢查</li>
+                <li>灰塵、微粒會在此處累積</li>
+                <li>在分級區域，如果 ceiling plenum 無法有效清潔，可能導致微粒從縫隙掉入潔淨室</li>
+            </ul>
+            <p>GEP 的觀點是：如果清潔不可行，就不應該採用這種設計，即使它更省錢。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設計團隊提出使用 ceiling plenum return 以降低建設成本。品質部門提出清潔疑慮。作為專案經理，你會如何評估這個 trade-off？</li>
+                <li>Table 4.3 問「Does the design proposed demonstrate current best practices?」——你會用什麼標準來定義 HVAC 的「current best practices」？你會參考哪些指引或標準？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Table 4.4: Detail Design or Issue for Construction Stage GEP Review -->
+<!-- ============================================================ -->
+<div class="section-title">Table 4.4: Detail Design or Issue for Construction Stage GEP Review（詳細設計 / 施工階段 GEP 審查）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:60%">Design Challenge</th>
+                <th style="width:20%">Response</th>
+                <th style="width:20%">Action</th>
+            </tr>
+            <tr>
+                <td>What arrangements are made to facilitate <span class="key-term">cleaning the system internally</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How does the design consider the risk of <span class="key-term">building sickness syndrome</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are airflow directions proposed for any catering areas to contain odor?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are there arrangements to extract from copier rooms?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the AHU construction specified to avoid risk of external condensation?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>If not, are the air handling systems designed for re-circulation where appropriate and with suitable return air filtration?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What assumptions have been made to specify the position of the temperature sensor to ensure that it is representative of room conditions?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What assumptions have been made to specify the position of the humidity sensor to ensure that it is representative of room conditions?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How does the design allow for future changes in the room layout in terms of sensor locations and zoning?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are the site-specific requirements defined in terms of preferred suppliers?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are AHUs located in an area suitable for easy maintenance, suitably protected from the external environment to facilitate maintenance?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Does the specification for the AHUs include access panels and test ports to facilitate maintenance?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the system designed with <span class="key-term">progressive filtration</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>How have filter grades been decided &ndash; are they a <span class="key-term">site standard</span>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Are lockable dampers specified and is there a requirement to record the balanced setting in the commissioning records?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What security arrangements are there for controls?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What happens in the event of power failure?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the fan drive external or a high efficiency/low loss design e.g., flat belt? What is the bearing design life at the maximum rated fan speed?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Is the ductwork made of galvanized steel, how is the internal finish specified, to ensure that the galvanizing is of good quality and finish?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Does the ductwork specification limit the use of flexible ductwork to 4 feet long?</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：GEP 審查的「操作導向」視角</h4>
+            <p>Table 4.4 與 Table 4.2 有許多重疊的審查項目（如感測器位置、風管材質、斷電處理），但審查的<strong>出發點不同</strong>：</p>
+            <ul>
+                <li><strong>Table 4.2 (GMP)</strong>：「這個設計是否符合法規要求？」</li>
+                <li><strong>Table 4.4 (GEP)</strong>：「這個設計是否方便操作、維護、並能長期可靠運行？」</li>
+            </ul>
+            <p>GEP 審查關注的是系統的<strong>長期可持續性</strong>——一個技術上合規但維護困難的系統，最終會因為維護不良而變得不合規。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：合法但不好用的廚房</h4>
+            <p>一個通過衛生局稽查的廚房（GMP 合規），如果：</p>
+            <ul>
+                <li>清洗區的水龍頭太矮，廚師長期彎腰導致背痛</li>
+                <li>冰箱放在狹窄角落，搬食材很不方便</li>
+                <li>排煙管道沒有清潔口，日積月累油垢堵塞</li>
+            </ul>
+            <p>這些都不違法，但會讓廚房運作效率低下。GEP 審查就是在抓這些「合規但不好用」的設計盲點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Building Sickness Syndrome</h4>
+            <p>Table 4.4 提到的 <strong>Building Sickness Syndrome（病態建築症候群）</strong> 是一個常被忽略但越來越受重視的議題：</p>
+            <ul>
+                <li>HVAC 系統設計不當可能導致工作人員頭痛、疲勞、過敏等症狀</li>
+                <li>常見原因：新鮮空氣比例不足、回風過濾不良、冷凝水排放不當導致微生物生長</li>
+                <li>對 CDMO 而言，操作人員的健康直接影響操作品質和人員流動率</li>
+            </ul>
+            <p>GEP 審查不只看設備，也看<strong>人</strong>——系統對操作人員的友善程度。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：未來擴展性（Future-Proofing）</h4>
+            <p>Table 4.4 有一個獨特的問題：「How does the design allow for future changes in the room layout in terms of sensor locations and zoning?」</p>
+            <p>這個問題在 GMP Checklist 中不會出現，但對 CDMO 極其重要：</p>
+            <ul>
+                <li>客戶組合會變化，製程需求可能改變</li>
+                <li>未來可能需要重新分區或增加監控點</li>
+                <li>設計時如果沒有預留彈性，每次變更都需要大規模改造</li>
+            </ul>
+            <p>好的 GEP 設計不只解決今天的問題，更為明天的變化留出空間。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：GEP vs GMP 審查的實際操作</h4>
+            <p>在實務中，建議的操作方式：</p>
+            <ul>
+                <li><strong>GEP 審查</strong>：由 HVAC 工程師主導，邀請廠務維護團隊參與。以工作坊形式進行，記錄在工程文件中，不需要正式的 CAPA 追蹤</li>
+                <li><strong>GMP 審查</strong>：由 QA 主導，邀請 HVAC SME 與製程工程師參與。每項觀察都需要在 DQ 報告中追蹤至結案</li>
+                <li><strong>分開進行</strong>：避免 GEP 的大量工程建議淹沒 GMP 的關鍵法規議題</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>比較 Table 4.2 和 Table 4.4 中關於「感測器位置」的審查問題。兩者的審查出發點有何不同？你會如何分別記錄 GMP 和 GEP 審查中的觀察？</li>
+                <li>你的工廠有 10 年歷史，當初沒有做 GEP 審查。現在要進行 HVAC 系統升級，你會建議加入哪些 GEP 審查項目來彌補原始設計的不足？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Design Review（設計審查）</strong>是確保 HVAC 設計在施工前符合使用者需求的系統性審查流程；<strong>Design Qualification（DQ, 設計確效）</strong>是其中專注於 GMP 合規的正式環節，為法規所要求</li>
+        <li>設計審查應分為 <strong>GEP 審查</strong>（工程最佳實踐，不需正式 audit trail）和 <strong>GMP 審查</strong>（法規合規，需要 audit trail），以避免混淆關鍵議題</li>
+        <li>Table 4.1（概念階段 GMP）聚焦大方向：關鍵參數定義、AHU 分區合理性、氣流方向正確性</li>
+        <li>Table 4.2（詳細設計 GMP）是最完整的 Checklist，涵蓋環境設計、監控、過濾、失效模式等所有 GMP 面向。關鍵數字：壓差至少 15 Pa（建議 20 Pa）、HEPA 效率 99.97%（H13/H14）</li>
+        <li>Table 4.3（GEP 高層級）以 5 個戰略性問題審查設計的可靠性、先進性與可維護性</li>
+        <li>Table 4.4（GEP 詳細）關注操作面的長期可持續性，包括清潔性、未來擴展性、人員健康（病態建築症候群）</li>
+        <li>設計審查團隊應為<strong>跨功能團隊</strong>（HVAC SME、控制工程師、試車人員、法規專家），高風險區域可運用 <strong>FMEA</strong> 強化設計穩健性</li>
+        <li>DQ 完成後必須啟動<strong>正式變更管控（Change Control）</strong>，確保後續任何設計變更都經過審查</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>
