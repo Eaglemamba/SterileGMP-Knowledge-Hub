@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Appendix 4: Science-Based Quality Risk Management</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 4: Science-Based Quality Risk Management</h1>
+    <div class="subtitle">附錄4：以科學為基礎的品質風險管理</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p209 - p216</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Risk Management（風險管理）的系統化方法，掌握識別、評估、控制和監控風險的完整流程</li>
+        <li>掌握 ICH Q9 Quality Risk Management（品質風險管理）的兩大核心原則及其在製藥 HVAC 系統中的應用</li>
+        <li>學會區分 Harm（傷害）、Hazard（危害）、Risk（風險）、Severity（嚴重性）等關鍵術語的精確定義</li>
+        <li>熟悉 Risk Assessment（風險評估）的三大問題框架：可能出什麼問題？發生的可能性？後果的嚴重性？</li>
+        <li>了解 Risk Control（風險控制）策略，包括 Risk Reduction（風險降低）與 Risk Acceptance（風險接受）的決策邏輯</li>
+        <li>掌握 FMEA、RCM、RCFA、PdM 等品質風險管理工具在維護管理中的實務應用</li>
+        <li>理解 Risk Communication（風險溝通）和 Risk Review（風險審查）在持續改善中的角色</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10 Introduction - Science-Based Quality Risk Management -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10">10 Appendix 4 &ndash; Science-Based Quality Risk Management（以科學為基礎的品質風險管理）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Risk management</span> is a systematic application of management policies, procedures, and practices to the task of identifying, assessing, controlling, and monitoring risks. It is typically an iterative process.</p>
+
+        <p>Risk management should be based on good science and product and process understanding, e.g., an understanding of <span class="key-term">CQAs</span>, which is based upon and ultimately traceable back to the relevant regulatory submission.</p>
+
+        <p>Qualitative or quantitative techniques may be used. The focus should be on the risk posed to <span class="key-term">patient safety</span> and <span class="key-term">product quality</span>.</p>
+
+        <p>Risk management should reduce risks to an acceptable level. Complete elimination of risk is neither practical nor necessary.</p>
+
+        <p>For a given organization, a framework for making risk management decisions should be defined to ensure consistency of application across functions. Such a framework is most effectively implemented when it is incorporated into the overall <span class="key-term">Quality Management System</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Risk Management（風險管理）</h4>
+            <p><strong>Risk Management（風險管理）</strong>是將管理政策、程序和實務系統化地應用於識別、評估、控制和監控風險的過程。這不是一次性的活動，而是一個<strong>迭代（iterative）</strong>的循環過程——隨著新資訊出現或環境改變，風險評估需要持續更新。</p>
+            <p>本附錄的核心訊息非常明確：</p>
+            <ul>
+                <li><strong>科學導向</strong>：風險管理必須建立在對產品和製程的深入理解上，特別是 CQAs（Critical Quality Attributes，關鍵品質屬性）</li>
+                <li><strong>患者優先</strong>：所有風險評估的最終焦點是患者安全和產品品質</li>
+                <li><strong>務實態度</strong>：目標是將風險降到「可接受水準」，而非追求零風險——這在實務上既不可能也不必要</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>風險管理就像開車時的安全系統。你不可能完全消除交通事故的風險（零風險不可能），但你可以透過系統化的措施把風險降到可接受的水準：安全帶（基本防護）、ABS 煞車（自動偵測與反應）、定期保養（預防性維護）、遵守交通規則（SOP）。每一項措施對應風險管理流程中的一個環節。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文強調風險管理框架應融入整體 <strong>Quality Management System（品質管理系統）</strong>中，而非獨立運作。這意味著：</p>
+            <ul>
+                <li>風險評估結果應與變更管理、偏差處理、CAPA 系統連動</li>
+                <li>各部門應使用一致的風險評估方法論和判定標準</li>
+                <li>在 CDMO 環境中，這對確保不同客戶產品之間的品質一致性尤為重要</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.1 ICH Q9 Quality Risk Management Approach -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-1">10.1 ICH Q9 Quality Risk Management Approach（ICH Q9 品質風險管理方法）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">International Conference on Harmonisation of Technical Requirements for Registration of Pharmaceuticals for Human Use (ICH)</span> guideline <span class="key-term">ICH Q9</span> (Reference 1, Appendix 12) describes a systematic approach to quality risk management. ICH Q9 is used as the basis of the Quality Risk Management approach described in the Guide.</p>
+
+        <p>ICH Q9 defines two primary principles of quality risk management:</p>
+
+        <p>The evaluation of the risk to quality should be based on <span class="key-term">scientific knowledge</span> and ultimately, link to the protection of the patient.</p>
+
+        <p>The level of effort, formality, and documentation of the quality risk management process should be <span class="key-term">commensurate with the level of risk</span>.</p>
+
+        <p>ICH Q9 is intended for general application within the pharmaceutical industry.</p>
+
+        <p>This Guide uses the following key terms taken from ICH Q9.</p>
+
+        <p><strong>Harm:</strong> damage to health, including the damage that can occur from loss of product quality or availability.</p>
+
+        <p><strong>Hazard:</strong> the potential source of harm.</p>
+
+        <p><strong>Risk:</strong> the combination of the probability of occurrence of harm and the severity of that harm.</p>
+
+        <p><strong>Severity:</strong> a measure of the possible consequences of a hazard.</p>
+
+        <p>This Guide applies the general principles of ICH Q9 to describe a general process for quality risk management consisting of the following elements:</p>
+
+        <ul>
+            <li>Risk Assessment</li>
+            <li>Risk Identification</li>
+            <li>Risk Analysis</li>
+            <li>Risk Evaluation</li>
+            <li>Risk Control</li>
+            <li>Risk Reduction</li>
+            <li>Risk Acceptance</li>
+            <li>Risk Communication</li>
+            <li>Risk Review</li>
+        </ul>
+
+        <p>The process is described in more detail in the following sections.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：ICH Q9 兩大原則</h4>
+            <p><strong>ICH Q9（品質風險管理指引）</strong>是製藥產業風險管理的國際標準框架。它的兩大原則非常重要：</p>
+            <ol>
+                <li><strong>科學基礎原則</strong>：風險評估必須基於科學知識，最終目的是保護患者。這表示不能憑「感覺」或「經驗」做風險判斷，要有數據支持</li>
+                <li><strong>比例原則（Commensurate）</strong>：投入的努力、正式程度和文件化程度應與風險等級相稱。低風險的事項不需要寫一百頁報告，高風險的事項則需要嚴格的評估和控制措施</li>
+            </ol>
+        </div>
+
+        <div class="concept-box">
+            <h4>術語辨析：Harm vs Hazard vs Risk vs Severity</h4>
+            <p>這四個術語容易混淆，用 HVAC 系統的例子來釐清：</p>
+            <ul>
+                <li><strong>Hazard（危害源）</strong>：HEPA 濾網破損——這是「潛在的」傷害來源</li>
+                <li><strong>Harm（傷害）</strong>：微粒污染導致產品不合格或患者健康受損——這是「實際的」損害結果</li>
+                <li><strong>Risk（風險）</strong>：HEPA 破損的「發生機率」× 導致產品污染的「嚴重程度」——機率和嚴重性的組合</li>
+                <li><strong>Severity（嚴重性）</strong>：如果 HEPA 真的破損，後果有多嚴重？——這是衡量後果的尺度</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在評估住家附近一棵老樹的風險：</p>
+            <ul>
+                <li><strong>Hazard</strong> = 老樹可能倒下（危害源）</li>
+                <li><strong>Harm</strong> = 壓壞房子、傷到人（實際傷害）</li>
+                <li><strong>Severity</strong> = 傷害有多嚴重？壓到花園 vs 壓到臥室，後果完全不同</li>
+                <li><strong>Risk</strong> = 倒下的「機率」&times; 造成的「嚴重程度」</li>
+            </ul>
+            <p>如果樹很健康且離房子很遠，即使嚴重性高但機率極低，整體風險可能是可接受的。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文列出的九個要素構成完整的風險管理流程。在 CDMO 實務中，這些要素通常對應到：</p>
+            <ul>
+                <li><strong>Risk Assessment（風險評估）</strong> = 含識別、分析、評價三個子步驟</li>
+                <li><strong>Risk Control（風險控制）</strong> = 含降低和接受兩個決策路徑</li>
+                <li><strong>Risk Communication（風險溝通）</strong> = 跨部門資訊共享</li>
+                <li><strong>Risk Review（風險審查）</strong> = 持續監控與更新</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.2 Overview of the Quality Risk Management Process -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-2">10.2 Overview of the Quality Risk Management Process（品質風險管理流程概覽）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Quality risk management</span> is a systematic process for the assessment, control, communication, and review of risks to the quality of the drug (medicinal) product across the <span class="key-term">product lifecycle</span>.</p>
+
+        <p>A model for quality risk management is outlined in Figure 10.1, which is taken from ICH Q9.</p>
+
+        <p>The emphasis on each component of the framework might differ from case to case, but a robust process will incorporate consideration of all the elements at a level of detail that is <span class="key-term">commensurate with the specific risk</span>.</p>
+
+        <p><em>Figure 10.1: Overview of a Typical Quality Risk Management Process &ndash; from ICH Q9</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：產品生命週期風險管理</h4>
+            <p>品質風險管理涵蓋藥品的<strong>整個生命週期（product lifecycle）</strong>——從開發、技術轉移、商業化生產到產品下市。這意味著：</p>
+            <ul>
+                <li><strong>設計階段</strong>：識別 HVAC 系統設計可能帶來的風險（如氣流方向、壓差設定）</li>
+                <li><strong>確效階段</strong>：評估安裝和運行確效是否充分驗證了風險控制措施</li>
+                <li><strong>常規生產</strong>：持續監控環境參數，確認風險控制持續有效</li>
+                <li><strong>變更管理</strong>：任何系統變更都需要重新評估風險</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>ICH Q9 的風險管理流程像一個「風險管理GPS」。它有三個核心功能：</p>
+            <ol>
+                <li><strong>定位（Assessment）</strong>：你在哪裡？風險有多大？</li>
+                <li><strong>導航（Control）</strong>：該往哪裡走？怎麼降低風險？</li>
+                <li><strong>即時更新（Review）</strong>：路況變了嗎？需要重新規劃路線嗎？</li>
+            </ol>
+            <p>「commensurate with the specific risk」就像 GPS 會根據路況調整指引——高速公路上不需要每50公尺提醒一次轉彎，但在複雜的市區街道可能需要更頻繁的指引。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Figure 10.1 是 ICH Q9 的經典流程圖（此處為文字版引用）。在實務中，這個流程圖通常被製作成公司內部的 SOP，並整合到品質管理系統中。CDMO 應確保每個客戶產品的風險管理流程都遵循這個框架，但評估的深度可以根據產品風險等級調整。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.3 Initiating Quality Risk Management -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-3">10.3 Initiating Quality Risk Management（啟動品質風險管理）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Quality risk management should include systematic processes designed to coordinate, facilitate, and improve <span class="key-term">science-based decision making</span> with respect to risk.</p>
+
+        <p>The following steps should be considered when initiating and planning a quality risk management process:</p>
+
+        <ul>
+            <li>Define the problem and/or risk question, including pertinent assumptions.</li>
+            <li>Identify the potential for risk.</li>
+            <li>Assemble background information and/or data on the potential hazard, harm, or human health impact relevant to the risk assessment.</li>
+            <li>Identify a leader and necessary resources.</li>
+            <li>Specify a timeline, deliverables, and appropriate level of decision making for the risk management process.</li>
+        </ul>
+
+        <p>Determining the risks associated with maintenance requires a common and shared understanding of factors such as:</p>
+
+        <ul>
+            <li>impact of <span class="key-term">operational tolerances</span> on patient safety and product quality</li>
+            <li>impact of design of facilities and equipment on maintenance activities</li>
+            <li>impact of methods and materials used during maintenance activities</li>
+            <li>maintenance programs and maintenance plans</li>
+            <li>training</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風險管理的啟動五步驟</h4>
+            <p>風險管理不是「想到就做」的事，原文提供了結構化的啟動步驟：</p>
+            <ol>
+                <li><strong>定義問題</strong>：明確界定要評估什麼風險（例如：「AHU 故障對潔淨區環境的影響」）</li>
+                <li><strong>識別風險潛力</strong>：有什麼可能出問題？</li>
+                <li><strong>收集背景資料</strong>：歷史數據、理論分析、專家意見</li>
+                <li><strong>指定負責人和資源</strong>：誰來主導？需要哪些部門參與？</li>
+                <li><strong>設定時程和交付物</strong>：什麼時候完成？產出什麼文件？</li>
+            </ol>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用 Application</h4>
+            <p><strong>維護相關的風險評估範例：</strong></p>
+            <p>原文特別強調了維護活動相關的風險因素。在 CDMO 的 HVAC 系統維護中，這些因素的具體表現包括：</p>
+            <ul>
+                <li><strong>操作容許偏差（Operational Tolerances）</strong>：壓差偏離設定值 &plusmn;5 Pa 是否仍可接受？溫度偏差多大會影響產品品質？</li>
+                <li><strong>設施設計對維護的影響</strong>：AHU 安裝位置是否便於檢修？HEPA 安裝方式是否允許不中斷生產的情況下更換？</li>
+                <li><strong>維護材料的影響</strong>：潤滑劑是否為食品級？備件是否經過材質相容性確認？</li>
+                <li><strong>人員訓練</strong>：維護技術員是否接受 GMP 訓練？是否了解潔淨區行為規範？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你要為 CDMO 的一台服務 Grade B 區域的 AHU 啟動風險評估，你會如何定義「問題/風險問題」？會列出哪些關鍵假設？</li>
+                <li>你的風險評估團隊應該包含哪些部門的人員？為什麼？</li>
+                <li>「維護材料和方法的影響」在無菌充填環境中，有哪些具體的風險情境？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.4 Risk Assessment -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-4">10.4 Risk Assessment（風險評估）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Risk assessment</span> consists of the identification of hazards and the analysis and evaluation of risks associated with exposure to those hazards, and consists of identification, analysis, and evaluation activities.</p>
+
+        <p>Risk assessment addresses the following questions:</p>
+
+        <ul>
+            <li>What might go wrong?</li>
+            <li>What is the likelihood (probability) it will go wrong?</li>
+            <li>What are the consequences (severity)?</li>
+        </ul>
+
+        <p><span class="key-term">Risk identification</span> is a systematic use of information to identify hazards referring to the risk question or problem description. Information can include historical data, theoretical analysis, informed opinions, and the concerns of stakeholders. Risk identification addresses "What might go wrong?" including identifying the possible consequences. This provides the basis for further steps in the quality risk management process.</p>
+
+        <p>Examples of CGMP risks include:</p>
+
+        <ul>
+            <li>contamination of product caused by maintenance practices, e.g., use of inappropriate spare parts that contaminate product</li>
+            <li>facilities or equipment design that does not facilitate appropriate levels of maintenance</li>
+            <li>lack of CGMP training for maintenance technicians</li>
+            <li>maintenance activities causes (critical) equipment to be (unknown to production) out of service</li>
+        </ul>
+
+        <p>Systems or equipment that may impact product quality or patient safety (CGMP systems or equipment) should be identified as part of the <span class="key-term">commissioning</span> process.</p>
+
+        <p><span class="key-term">Risk analysis</span> is the estimation of the risk associated with the identified hazards. It is the qualitative or quantitative process of linking the likelihood of occurrence and severity of harms. The ability to detect the harm also should be considered in the estimation of risk.</p>
+
+        <p><span class="key-term">Risk evaluation</span> compares the identified and analyzed risk against given risk criteria. Risk evaluations consider the strength of evidence for all three of the fundamental questions.</p>
+
+        <p>Typically, the outcome of the risk assessment will be expressed using qualitative descriptors, such as "high," "medium," or "low." These terms and how they are used should be defined in as much detail as possible.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風險評估三大問題</h4>
+            <p>風險評估的精髓可以濃縮為三個簡單但深刻的問題：</p>
+            <ol>
+                <li><strong>What might go wrong?</strong>（可能出什麼問題？）→ Risk Identification（風險識別）</li>
+                <li><strong>What is the likelihood?</strong>（發生的可能性多大？）→ Risk Analysis（風險分析）</li>
+                <li><strong>What are the consequences?</strong>（後果有多嚴重？）→ Risk Evaluation（風險評價）</li>
+            </ol>
+            <p>這三個問題對應風險評估的三個子步驟：識別 &rarr; 分析 &rarr; 評價。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>術語辨析：Risk Identification vs Analysis vs Evaluation</h4>
+            <ul>
+                <li><strong>Risk Identification（風險識別）</strong>：找出所有可能的危害——「盤點」階段。使用歷史數據、理論分析、專家意見等方法</li>
+                <li><strong>Risk Analysis（風險分析）</strong>：評估每個危害的發生機率和嚴重程度——「量化」階段。注意原文特別提到<strong>可偵測性（detectability）</strong>也應納入考量，這就是 FMEA 中的 D 值</li>
+                <li><strong>Risk Evaluation（風險評價）</strong>：將分析結果與風險標準比較——「判定」階段。結果通常用「高/中/低」來表達</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>原文列出的四個 CGMP 風險範例</strong>都與維護活動直接相關，這反映了本指引（HVAC Good Practice Guide）對設備維護風險的重視：</p>
+            <ul>
+                <li><strong>不當備件污染</strong>：例如使用含有不相容潤滑劑的軸承，導致微粒或化學污染</li>
+                <li><strong>設計不利於維護</strong>：AHU 面板無法打開、HEPA 位於無法觸及的高處</li>
+                <li><strong>訓練不足</strong>：維護人員不了解更衣程序就進入潔淨區</li>
+                <li><strong>未知的設備停用</strong>：維護部門關閉設備但未通知生產部門，導致在無環境控制的條件下繼續生產</li>
+            </ul>
+            <p>最後一點在 CDMO 特別危險——如果維護關了壓差控制但生產不知情，可能導致整批產品報廢。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用 Application</h4>
+            <p><strong>HVAC 風險評估的具體範例：</strong></p>
+            <table>
+                <tr>
+                    <th>風險問題</th>
+                    <th>識別</th>
+                    <th>分析</th>
+                    <th>評價</th>
+                </tr>
+                <tr>
+                    <td>HEPA 濾網完整性</td>
+                    <td>濾網洩漏導致微粒進入潔淨區</td>
+                    <td>機率：低（定期檢測）<br>嚴重性：高（直接污染產品）<br>可偵測性：中（需 PAO 測試）</td>
+                    <td>中-高風險</td>
+                </tr>
+                <tr>
+                    <td>壓差失效</td>
+                    <td>壓差低於設定值導致交叉污染</td>
+                    <td>機率：中（門開關、設備運轉影響）<br>嚴重性：高<br>可偵測性：高（連續監控）</td>
+                    <td>中風險</td>
+                </tr>
+                <tr>
+                    <td>AHU 風機故障</td>
+                    <td>風量不足導致換氣次數不達標</td>
+                    <td>機率：低<br>嚴重性：高<br>可偵測性：高（振動監測、壓差警報）</td>
+                    <td>中風險</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>原文提到風險分析應考慮「可偵測性」。在 HVAC 系統中，哪些風險是「高嚴重性但低可偵測性」的？這類風險應該如何管理？</li>
+                <li>風險評價結果用「高/中/低」表達。你的公司如何定義這三個等級？不同等級分別觸發什麼後續行動？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.5 Risk Control -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-5">10.5 Risk Control（風險控制）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Risk control</span> includes decision making either to reduce risks or accept them, or both. The purpose of risk control is to reduce the risk to an acceptable level. The amount of effort applied to risk control should be proportional to the significance of the risk.</p>
+
+        <p>Risk control addresses the following questions:</p>
+
+        <ul>
+            <li>Is the risk above an acceptable level?</li>
+            <li>What can be done to reduce or eliminate risks?</li>
+            <li>What is the appropriate balance among benefits, risks, and resources?</li>
+            <li>Are new risks introduced as a result of the identified risks being controlled?</li>
+        </ul>
+
+        <p><span class="key-term">Risk reduction</span> focuses on processes for mitigation or avoidance of quality risk when it exceeds a specified (acceptable) level. Risk reduction might include actions taken to mitigate the severity and probability of harm. Processes that improve the <span class="key-term">detectability</span> of hazards and quality risks also might be used as part of a risk control strategy. The use of <span class="key-term">PdM</span> technologies can increase the detectability of an equipment failure and might be implemented where the associated risk warrants such an approach.</p>
+
+        <p>The implementation of risk reduction measures can introduce new risks into the system or increase the significance of other existing risks. For example, frequent maintenance on equipment increases the probability of error in disassembly or reassembly. Hence, the results of risk assessment should be revisited to identify and evaluate any possible change in risk after implementing a risk reduction process.</p>
+
+        <p><span class="key-term">Risk acceptance</span> is a decision to accept risk. Risk acceptance can be a formal decision to accept the residual risk or it can be a passive decision in which residual risks are not specified.</p>
+
+        <p>For some types of harms, even the best quality risk management practices might not entirely eliminate risk. In these circumstances, it might be agreed that an appropriate quality risk management strategy has been applied and that quality risk is reduced to a specified (acceptable) level. This (specified) acceptable level will depend on many parameters and should be decided on a case-by-case basis.</p>
+
+        <p>Procedural and technical controls available to reduce risks to an acceptable level include:</p>
+
+        <ul>
+            <li>Establishing a <span class="key-term">Maintenance Program</span>, including:
+                <ul>
+                    <li>system inventory and risk assessments</li>
+                    <li>maintenance plans</li>
+                    <li>change management</li>
+                    <li>clearly defined roles and responsibilities</li>
+                    <li>documentation requirements</li>
+                    <li>spare parts</li>
+                    <li>training</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Risk Control 的決策邏輯</h4>
+            <p>風險控制本質上是一個<strong>決策過程</strong>，需要回答四個關鍵問題：</p>
+            <ol>
+                <li><strong>風險是否超過可接受水準？</strong>——如果沒有，不需要額外行動</li>
+                <li><strong>能做什麼來降低風險？</strong>——識別可行的控制措施</li>
+                <li><strong>效益、風險和資源的平衡？</strong>——投入過多資源在低風險項目上是浪費</li>
+                <li><strong>控制措施是否引入新風險？</strong>——這一點特別容易被忽略</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「控制措施引入新風險」是本節最重要的洞察。</strong></p>
+            <p>原文舉了一個極為實務的例子：頻繁維護設備雖然能降低故障風險，但每次拆卸和重組都增加了人為錯誤的機率。這在 HVAC 系統中的表現包括：</p>
+            <ul>
+                <li>頻繁更換 HEPA 濾網 &rarr; 每次更換都有安裝不當、洩漏的風險</li>
+                <li>頻繁校準感測器 &rarr; 每次拆裝都可能影響感測器精度</li>
+                <li>頻繁清潔風管 &rarr; 清潔過程本身可能產生微粒污染</li>
+            </ul>
+            <p>因此，風險降低措施實施後，必須<strong>重新評估</strong>整體風險狀態。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>術語辨析：Risk Reduction vs Risk Acceptance</h4>
+            <ul>
+                <li><strong>Risk Reduction（風險降低）</strong>：主動採取措施降低風險的機率或嚴重性。原文特別提到 <strong>PdM（Predictive Maintenance，預測性維護）</strong>可以提高可偵測性——例如透過振動監測提前發現風機軸承磨損，在故障前更換</li>
+                <li><strong>Risk Acceptance（風險接受）</strong>：在已經採取合理控制措施後，正式接受剩餘風險。這可以是明確的決策（文件化的殘餘風險接受），也可以是隱含的（未特別指定殘餘風險）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>風險控制就像管理一棟大樓的消防安全：</p>
+            <ul>
+                <li><strong>Risk Reduction</strong>：安裝灑水系統、煙霧偵測器、防火門——降低火災發生機率和嚴重性</li>
+                <li><strong>新風險引入</strong>：灑水系統如果誤觸發，反而會造成水損害——控制措施本身帶來新風險</li>
+                <li><strong>Risk Acceptance</strong>：即使做了所有防護，仍有微小的火災風險——這就是「可接受的殘餘風險」</li>
+                <li><strong>比例原則</strong>：高樓層需要更嚴格的消防措施，儲藏室不需要和手術室一樣的等級</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用 Application</h4>
+            <p><strong>維護計畫（Maintenance Program）是風險控制的核心工具。</strong>原文列出的七個要素構成完整的維護風險管理框架：</p>
+            <ul>
+                <li><strong>系統清冊與風險評估</strong>：列出所有 CGMP 相關 HVAC 設備，根據風險等級分類</li>
+                <li><strong>維護計畫</strong>：基於風險等級制定預防性/預測性維護頻率</li>
+                <li><strong>變更管理</strong>：任何維護方法或材料的變更都需要經過風險評估</li>
+                <li><strong>角色與責任</strong>：明確維護、生產、品質部門各自的職責</li>
+                <li><strong>文件要求</strong>：維護記錄的範圍和保留期限</li>
+                <li><strong>備件管理</strong>：關鍵備件庫存水準、材質合規性確認</li>
+                <li><strong>訓練</strong>：GMP 認知訓練、設備操作訓練、潔淨區行為規範</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.6 Risk Communication -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-6">10.6 Risk Communication（風險溝通）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Risk communication</span> is the sharing of information about risk and risk management between the decision makers and others. Parties can communicate at any stage of the risk management process.</p>
+
+        <p>The output and result of the quality risk management process should be appropriately documented, and communicated, e.g., to regulators, to the patient, within a company.</p>
+
+        <p>The relationship between the <span class="key-term">Maintenance Unit</span> and <span class="key-term">Operations</span> should be a partnership with mutual accountability for asset care. Each department should communicate with the other to ensure errors are avoided. For example, operating departments need to provide detailed information about equipment when in need of repair rather than indicating "it is not working." Similarly, the Maintenance Unit should inform the operating department that they can resume use of the asset following completion of a repair to avoid partially repaired equipment from being placed into service.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：維護與生產的夥伴關係</h4>
+            <p>本節的核心訊息是維護部門和生產部門之間應建立<strong>夥伴關係（partnership）</strong>，而非上下游的「客戶-供應商」關係。原文提出了兩個非常實務的溝通失敗範例：</p>
+            <ul>
+                <li><strong>生產端的溝通不足</strong>：只說「機器壞了」，不提供設備的具體症狀、異常發生的時間點、操作條件等詳細資訊</li>
+                <li><strong>維護端的溝通不足</strong>：修完設備不通知生產，導致尚未完全修復的設備被投入使用</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你去看醫生，只告訴醫生「我不舒服」，但不說哪裡不舒服、什麼時候開始、有什麼症狀——醫生很難做出正確診斷。同樣地，維護技術員需要從操作人員那裡獲得詳細的「症狀描述」才能有效排障。反過來，醫生治療完不告訴你就離開，你也不知道能不能正常活動——維護完成必須明確通知生產。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「partially repaired equipment being placed into service」是 GMP 環境中的重大風險。</strong></p>
+            <p>在 CDMO 的 HVAC 系統中，這類情境可能包括：</p>
+            <ul>
+                <li>AHU 維修後只恢復了部分功能（風量正常但溫度控制未校準），生產不知情就開始使用</li>
+                <li>壓差感測器更換後尚未完成校準，但房間已經被「釋放」用於生產</li>
+                <li>HEPA 更換後的完整性測試尚未完成，但維護人員忘了在工作單上標注</li>
+            </ul>
+            <p>解決方案：建立明確的<strong>設備釋放（equipment release）</strong>流程，維護完成後必須由品質或生產確認人員簽核才能恢復使用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 目前有什麼機制確保維護部門和生產部門之間的即時溝通？如果沒有，你會建議什麼系統？</li>
+                <li>原文提到風險管理結果應溝通給法規機關、患者和公司內部。在一般例行的 HVAC 維護風險管理中，這三種溝通各自包含什麼內容？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.7 Risk Review -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-7">10.7 Risk Review（風險審查）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Risk management</span> should be an ongoing part of the quality management process. A mechanism to review or monitor events should be implemented.</p>
+
+        <p>The output and results of the risk management process should be reviewed to take into account new knowledge and experience. Once a quality risk management process has been initiated, that process should continue to be utilized for events that might impact the original quality risk management decision, whether these events are planned (e.g., results of product review, inspections, audits, <span class="key-term">change control</span>) or unplanned (e.g., root cause from failure investigations, recall).</p>
+
+        <p>Use the data gathered by the quality system to find opportunities to further minimize the CGMP risks.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風險管理是持續性活動</h4>
+            <p>本節強調風險管理不是「做完一次就結束」的專案，而是品質管理系統中<strong>持續運作的一環</strong>。風險審查的觸發時機分為兩類：</p>
+            <ul>
+                <li><strong>計畫性事件（Planned Events）</strong>：
+                    <ul>
+                        <li>年度產品品質審查（Annual Product Review）</li>
+                        <li>法規稽查結果</li>
+                        <li>內部/外部審計發現</li>
+                        <li>變更控制（Change Control）——任何系統變更都應重新評估風險</li>
+                    </ul>
+                </li>
+                <li><strong>非計畫性事件（Unplanned Events）</strong>：
+                    <ul>
+                        <li>故障調查的根本原因分析（Root Cause Analysis）</li>
+                        <li>產品回收（Recall）</li>
+                        <li>偏差和 CAPA</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文最後一句「Use the data gathered by the quality system to find opportunities to further minimize the CGMP risks」是品質持續改善的核心精神。在 HVAC 系統中，這意味著：</p>
+            <ul>
+                <li><strong>趨勢分析</strong>：定期分析環境監控數據的趨勢，例如某個房間的微粒計數逐漸上升，可能暗示 HEPA 濾網效率下降</li>
+                <li><strong>維護記錄回溯</strong>：分析維護頻率與設備故障的相關性，優化預防性維護排程</li>
+                <li><strong>偏差模式識別</strong>：如果某類偏差反覆出現，需要重新評估相關的風險控制措施是否足夠</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用 Application</h4>
+            <p><strong>HVAC 風險審查的年度流程建議：</strong></p>
+            <ol>
+                <li>彙整過去一年的 HVAC 相關偏差、CAPA、變更控制記錄</li>
+                <li>分析環境監控數據趨勢（微粒、溫濕度、壓差、微生物）</li>
+                <li>審查維護記錄（預防性維護完成率、計畫外維修次數、備件使用量）</li>
+                <li>更新風險評估——是否有新的風險需要加入？現有控制措施是否仍然有效？</li>
+                <li>將審查結果納入下一年度的維護計畫和預算規劃</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10.8 Quality Risk Management Tools -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec10-8">10.8 Quality Risk Management Tools（品質風險管理工具）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>No one tool or set of tools is applicable to every situation in which a quality risk management process as described is applied. ICH Q9 provides a general overview of and references for some of the primary tools used in quality risk management by industry and regulators:</p>
+
+        <ul>
+            <li><span class="key-term">Predictive Maintenance (PdM)</span></li>
+            <li><span class="key-term">Reliability Centered Maintenance (RCM)</span> Analysis</li>
+            <li><span class="key-term">Failure Modes and Effects Analysis (FMEA)</span></li>
+            <li><span class="key-term">Root Cause Failure Analysis (RCFA)</span></li>
+        </ul>
+
+        <p>Typically, the Maintenance Unit is involved in these types of processes and analysis.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：四大風險管理工具</h4>
+            <p>原文列出的四個工具各有不同的應用場景：</p>
+            <ul>
+                <li><strong>PdM（Predictive Maintenance，預測性維護）</strong>：利用感測器數據（振動、溫度、電流等）預測設備何時可能故障，在故障前進行維護。適用於<strong>高價值、高風險</strong>的設備，如 AHU 風機、冷卻壓縮機</li>
+                <li><strong>RCM（Reliability Centered Maintenance，以可靠性為中心的維護）</strong>：系統化地分析設備的功能、故障模式和後果，制定最經濟有效的維護策略。RCM 幫助決定<strong>什麼設備需要什麼等級的維護</strong></li>
+                <li><strong>FMEA（Failure Modes and Effects Analysis，失效模式與效應分析）</strong>：系統化地列出所有可能的失效模式，評估每種模式的嚴重性（S）、發生機率（O）和可偵測性（D），計算 RPN（Risk Priority Number = S &times; O &times; D）。這是製藥產業<strong>最常用</strong>的風險評估工具</li>
+                <li><strong>RCFA（Root Cause Failure Analysis，根本原因失效分析）</strong>：設備故障發生後，系統化地追溯根本原因。常用方法包括魚骨圖、5 Whys、故障樹分析等</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這四個工具就像醫療體系中的不同功能：</p>
+            <ul>
+                <li><strong>PdM</strong> = 健康檢查（定期監測指標，提前發現問題）</li>
+                <li><strong>RCM</strong> = 健康管理規劃（根據你的健康風險因素，制定個人化的保健計畫）</li>
+                <li><strong>FMEA</strong> = 風險預防評估（列出所有可能生的病，評估嚴重性和機率，提前做好預防）</li>
+                <li><strong>RCFA</strong> = 疾病診斷（生病後找出真正的病因，不只治療症狀）</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用 Application</h4>
+            <p><strong>HVAC 系統中各工具的應用範例：</strong></p>
+            <table>
+                <tr>
+                    <th>工具</th>
+                    <th>應用場景</th>
+                    <th>輸出</th>
+                </tr>
+                <tr>
+                    <td>PdM</td>
+                    <td>AHU 風機軸承振動監測、馬達電流分析</td>
+                    <td>預測性維護排程、提前採購備件</td>
+                </tr>
+                <tr>
+                    <td>RCM</td>
+                    <td>整體 HVAC 系統維護策略制定</td>
+                    <td>每台設備的最佳維護方式（預防/預測/事後維修）</td>
+                </tr>
+                <tr>
+                    <td>FMEA</td>
+                    <td>新 AHU 設計審查、壓差控制系統風險評估</td>
+                    <td>RPN 排序表、高風險項目改善計畫</td>
+                </tr>
+                <tr>
+                    <td>RCFA</td>
+                    <td>HEPA 洩漏事件調查、溫度超標事件分析</td>
+                    <td>根本原因報告、CAPA 措施</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文強調「沒有一種工具適用於所有情境」——這意味著 CDMO 應該建立一個<strong>工具箱（toolbox）</strong>，根據具體情境選擇最合適的工具。在實務中：</p>
+            <ul>
+                <li>新系統設計/變更 → 優先使用 <strong>FMEA</strong></li>
+                <li>設備故障後調查 → 使用 <strong>RCFA</strong></li>
+                <li>制定長期維護策略 → 使用 <strong>RCM</strong></li>
+                <li>高價值關鍵設備日常監控 → 導入 <strong>PdM</strong></li>
+            </ul>
+            <p>維護部門通常是這些工具的主要使用者，但品質和工程部門也應參與，確保風險評估涵蓋 GMP 觀點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 目前使用哪些風險管理工具？是否有工具缺口？例如是否有 PdM 能力？</li>
+                <li>如果要為一台新安裝的 AHU 進行 FMEA，你會列出哪些主要的失效模式？每種模式的 S、O、D 大概是多少？</li>
+                <li>RCM 分析可能建議某些非 GMP 關鍵的 HVAC 元件採用「事後維修（run-to-failure）」策略。你認為哪些元件可以這樣做？哪些絕對不行？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Risk Management（風險管理）</strong>是識別、評估、控制和監控風險的系統化迭代過程，目標是將風險降到可接受水準，而非追求零風險</li>
+        <li><strong>ICH Q9</strong> 提供了製藥品質風險管理的國際框架，兩大原則：基於科學知識、與風險等級相稱（commensurate）</li>
+        <li><strong>四個關鍵術語</strong>必須精確區分：Hazard（危害源）&rarr; Harm（傷害）、Risk = Probability &times; Severity、Severity（嚴重性衡量）</li>
+        <li><strong>Risk Assessment 三步驟</strong>：Identification（找出問題）&rarr; Analysis（評估機率和嚴重性）&rarr; Evaluation（與標準比較判定等級）</li>
+        <li><strong>Risk Control</strong> 的關鍵洞察：控制措施本身可能引入新風險（例如頻繁維護增加人為錯誤機率），因此必須在實施後重新評估</li>
+        <li><strong>Risk Communication</strong> 強調維護與生產之間的夥伴關係——設備報修要提供詳細資訊、維修完成必須明確通知生產才能恢復使用</li>
+        <li><strong>Risk Review</strong> 是持續性活動，計畫性事件（審計、變更控制）和非計畫性事件（故障調查、回收）都應觸發風險重新評估</li>
+        <li><strong>四大工具</strong>各有擅長：PdM（預測性監控）、RCM（維護策略規劃）、FMEA（系統化風險預防評估）、RCFA（故障根因分析）——應根據具體情境選擇合適的工具</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

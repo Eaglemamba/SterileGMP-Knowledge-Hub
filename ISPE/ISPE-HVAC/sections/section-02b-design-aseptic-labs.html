@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Chapter 3 (Part B): Design Considerations — OSD, Aseptic, Labs, Warehouse</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 3: Design Considerations (Part B)</h1>
+    <div class="subtitle">設計考量（下）— OSD、無菌、包裝、實驗室、倉庫</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p56 - p80</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解口服固體劑型（OSD）設施中非強效與強效化合物的 HVAC 設計差異，特別是交叉污染控制策略</li>
+        <li>掌握無菌製程（Aseptic Processing）設施的 HVAC 關鍵設計要素：HEPA 過濾、壓差串聯、單向氣流（Unidirectional Airflow）</li>
+        <li>了解實驗室（Laboratory）VAV 系統設計、排煙櫃整合策略，以及不同類型實驗室的空氣處理要求</li>
+        <li>認識包裝/標籤、倉庫、取樣/秤量等輔助區域的 HVAC 基本需求</li>
+        <li>理解隔離器（Isolator）與 RABS 對背景環境分級的影響，以及製程設備整合（去熱原隧道、凍乾機、壓蓋）的特殊考量</li>
+        <li>認識醫療器材（Medical Device）製造設施的 HVAC 要求如何隨患者風險等級調整</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.7 OSD Non-Potent -->
+<!-- ============================================================ -->
+<div class="section-title">3.7 Oral Solid Dosage — Non-Potent Compounds（口服固體劑型——非強效化合物）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In Figure 3.5, return air filters are located at the rooms, which can cause room DP relationships to change with filter loading. For this reason, <span class="key-term">CVDs</span> are provided on return air to keep airflow constant.</p>
+        <p><em>[Figure 3.5: OSD Non-Potent System Schematic (Sample)]</em></p>
+        <p><em>[Figure 3.6: OSD System Schematic with Pretreatment (Sample)]</em></p>
+
+        <h3>3.7.1 System Design Considerations</h3>
+        <ul>
+            <li>Further discussion for <span class="key-term">Oral Solids Dosage</span> facilities is covered in the ISPE Baseline&reg; Guide on Oral Solid Dosage Forms (Reference 13, Appendix 12).</li>
+            <li>Oral dosage facilities usually do not require manufacturing activities to take place in areas with assigned <span class="key-term">cleanliness classifications</span>. While many processing rooms are designated <span class="key-term">CNC</span> and are capable of meeting EU Grade D (ISO9 or ISO8 at rest), they are not normally monitored for particles. Facilities designed in alignment with WHO 937 Annex 2 may be classified by the Owner and periodically monitored for airborne particulate. If aligning with WHO guidance, these facilities may be designed to maintain a DP of 10-15Pa from adjacent, unclassified, spaces.</li>
+            <li>However, process and process support areas require critical parameters to be controlled and maintained to protect the product from contamination, whether from another product in a multi-product facility or from external or personnel contamination. <span class="key-term">Airlocks or anterooms</span> are suggested to enhance segregation.</li>
+            <li>Cleanliness of open processing areas should be maintained via control of airflow between product handling area or airlock and surrounding spaces.</li>
+            <li>Isolation via a <span class="key-term">clean airlock</span> (pressure bubble or pressure sink) into the area of highest contamination is strongly recommended. Where solvents are used, this configuration is recommended to prevent migration of flammable vapors to the building.</li>
+            <li>Monitoring and alarming of direction of airflow (through DP, hotwire velocity sensors, air balance, flow tracking, etc.) to surrounding rooms is recommended.</li>
+            <li>AHU filtration &ndash; <span class="key-term">MERV 7</span> followed by <span class="key-term">MERV 13/14</span> filtration is recommended.</li>
+            <li>Final filtration &ndash; <span class="key-term">95% DOP/PAO efficiency</span> is recommended in exposed Oral Solid Dose and dry bulk (non-Aseptic) product areas, but terminal HEPA filters may be more practical for multiple product facilities. Where terminal HEPA filters are employed for cross-contamination control, 95% pre-filtration can help to maximize terminal filter life.</li>
+            <li>Large facilities may consider preconditioning outside air for distribution to local recirculated AHUs, each dedicated to one product suite.</li>
+            <li>Low RH may be required; desiccant dehumidification is not uncommon.</li>
+            <li>Return or exhaust air grilles may be equipped with easily removable 30% "dust stop" filters. The effect of filter loading on room pressurization or direction of airflow should be considered.</li>
+            <li>Recirculation systems with adequate filtration may be applied in multi-product areas where solvents are not present. Precautions are covered in the ISPE Baseline&reg; Guide on OSD Facilities.</li>
+            <li>Airflow and makeup air delivery should be directed to flow from the operator's breathing zone and the room entrance toward the source of airborne dust.</li>
+            <li><span class="key-term">Non-aspirating supply diffusers</span> are recommended to minimize air disturbances, eddies, and re-entrainment of dust.</li>
+            <li><span class="key-term">LEV</span> for open operation (i.e., open coating, tableting, and capsule fill) should be designed and engineered according to <span class="key-term">ACGIH</span> standards.</li>
+            <li>If risk to workers is assessed to be low, recirculation of LEV exhaust within a production room requires HEPA filtration. The ACGIH Industrial Ventilation Manual decision analysis and design criteria should be consulted for guidance on when recirculation is up to standard.</li>
+            <li>Recirculation of LEV exhaust to the AHU or the general building is not acceptable.</li>
+            <li>Multi-product concurrent manufacturing may require <span class="key-term">dual HEPA filtration</span> (one supply and one return) for recirculation systems.</li>
+            <li>Multi-product concurrent manufacturing typically uses <span class="key-term">pressure bubble or pressure sink airlocks</span> to avoid contamination of the common corridor.</li>
+            <li>Single-product or multi-product campaign facilities may employ a pressurized (bubble) common corridor as an airlock to the process.</li>
+            <li>Multi-product concurrent manufacturing facilities may be organized in single product suites to employ the pressurized corridor/airlock concept described in this section.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：OSD（口服固體劑型）的 HVAC 特性</h4>
+            <p><strong>OSD (Oral Solid Dosage，口服固體劑型)</strong>：指錠劑、膠囊、粉劑等口服固體藥品。HVAC 設計的核心挑戰不是無菌，而是<strong>粉塵控制</strong>與<strong>交叉污染預防</strong>。</p>
+            <p><strong>CNC (Controlled Not Classified，受控非分級)</strong>：房間的環境參數（溫濕度、氣流方向）受控管，但不需要正式的潔淨度分級認證。這是 OSD 設施最常見的設計基準。</p>
+            <p><strong>CVD (Constant Volume Device，定風量裝置)</strong>：安裝在回風管路上，確保即使過濾器逐漸阻塞，房間的風量仍維持恆定，從而穩定壓差關係。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：OSD 粉塵控制就像廚房抽油煙</h4>
+            <p>想像一個開放式廚房（OSD 製程區）。你不需要手術室等級的潔淨度，但你一定不希望油煙（粉塵）飄到餐廳（走廊）去。解決方案是：</p>
+            <ul>
+                <li><strong>抽油煙機（LEV 局部排氣）</strong>：在粉塵源頭直接抽走</li>
+                <li><strong>門簾/隔間（氣閘/前室）</strong>：阻隔廚房與餐廳之間的空氣流通</li>
+                <li><strong>保持廚房微負壓</strong>：讓空氣永遠從餐廳流向廚房，不反向飄散</li>
+            </ul>
+            <p>ISPE 建議的「氣流從操作員呼吸帶流向粉塵源」就是「讓空氣從乾淨處吹向油煙處」的原理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：多產品併行 vs 單產品輪換</h4>
+            <p><strong>多產品併行（Concurrent）</strong>製造是 CDMO 的商業核心——同時生產不同客戶的產品。但它要求更高規格的 HVAC：</p>
+            <ul>
+                <li>每個產品套間需獨立 AHU 或雙重 HEPA 過濾</li>
+                <li>走廊必須使用壓力泡（Pressure Bubble）或壓力沉（Pressure Sink）氣閘</li>
+                <li>LEV 排氣絕對不可回流到其他房間</li>
+            </ul>
+            <p><strong>單產品輪換（Campaign）</strong>製造較簡單，可用加壓走廊作為共用氣閘，但需要完整的換線清潔驗證。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 OSD 設施投資決策</h4>
+            <p>如果你的 CDMO 只做單一客戶的 OSD 產品，CNC 環境 + MERV 13/14 過濾就足夠了。但如果要承接多客戶併行生產（商業價值更高），你需要投資：</p>
+            <ul>
+                <li>獨立產品套間（各有專屬 AHU）</li>
+                <li>終端 HEPA 過濾（交叉污染防線）</li>
+                <li>壓力氣閘系統（物理隔離屏障）</li>
+            </ul>
+            <p>額外投資約 30-50%，但產能利用率和營收可能翻倍。這是典型的「商業與彈性 > 短期成本」決策。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 OSD 設施的 LEV 排氣不可以回流到 AHU？如果回流會產生什麼風險？</li>
+                <li>一個同時生產三種不同 OSD 產品的 CDMO 設施，走廊應該使用「壓力泡」還是「壓力沉」氣閘？為什麼？</li>
+                <li>MERV 7 + MERV 13/14 的兩段式過濾為什麼比直接使用單一 HEPA 過濾更實際？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.8 OSD Potent -->
+<!-- ============================================================ -->
+<div class="section-title">3.8 Oral Solid Dosage — Potent Compounds（口服固體劑型——強效化合物）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The typical AFD shown below introduces a number of key concepts that apply to non-potent as well as potent OSD HVAC:</p>
+        <p><em>[Figure 3.7: Potent OSD System Schematic (Sample)]</em></p>
+
+        <h3>3.8.1 System Design Considerations</h3>
+        <p>Potent OSD facilities should follow the guides above for OSD with the following exceptions:</p>
+        <ul>
+            <li>A minimum filtration of ASHRAE 85% (<span class="key-term">MERV 13 or 14</span>) in the Supply Air if a 100% once-through system.</li>
+            <li><span class="key-term">Closed containment</span> is the primary means of airborne contamination control for this class of material. If processes are proven closed, recirculated air should include HEPA filtration. If the process is not proven closed, <span class="key-term">once-through air</span> or <span class="key-term">double HEPA filtration</span> should be considered.</li>
+            <li>LEV should be provided at locations where containment is opened for introduction or removal of materials or in conjunction with other technologies, as required.</li>
+            <li>LEV should be used for solvent extraction only where containment is not technically feasible. Where LEV is used with any possibility of duct contamination by solids, <span class="key-term">HEPA filters</span> should be installed near the room, before the AHU, preferably in a <span class="key-term">bag-in/bag-out enclosure</span> in the return duct.</li>
+            <li>Isolation via active control of direction of airflow (using DP, hotwire velocity sensor, flow tracking) into the area of highest contamination from surrounding areas is strongly recommended.</li>
+            <li><span class="key-term">Audio-visual alert</span> on loss of airflow or containment should be transmitted to the controlled space for personnel safety.</li>
+            <li>Room air locks/anterooms are recommended for powder handling areas to provide a barrier that maintains a positive airflow differential with respect to the corridor and the processing room (this may also serve as a gowning area).</li>
+            <li>Airflow into de-gowning areas should be negative with respect to the corridor and processing area to contain particles shed from clothing.</li>
+            <li>A secondary control against the spread of active materials is direction of airflow within the room. Supply air should be directed to flow across the operator's breathing zone before crossing the source of dust. Wherever possible, supply air should be directed to flow from a location near the room entrance toward the source of dust and finally out low returns mounted on the far wall.</li>
+            <li>A <span class="key-term">dedicated HVAC system</span> is recommended for the controlled space where product is exposed.</li>
+            <li>It is recommended that air leaving an open-processing room is not recirculated. Main air systems for these rooms should be designed for <span class="key-term">100% exhaust, once-through supply</span>. However, most processes are enclosed and recirculation with HEPA filtration may be justified.</li>
+            <li>Recirculation of air from the controlled space into other areas is not recommended.</li>
+            <li>Recirculation of local exhaust (LEV) from equipment back to the room is not recommended.</li>
+            <li>Filtration of exhaust from potent dry product handling areas and LEV through HEPA filters, scrubbers, or other equivalent treatment methods prior to release outdoors may be required.</li>
+            <li>Where containment equipment is provided and PPE is not required, HEPA filters can protect the AHU and facility in case of an accidental release. These may be a room-accessible type with PPE used for change-out, if needed.</li>
+            <li>Exhaust/return filters should be located as near to processing area as possible to reduce the length of potentially contaminated air ducts. Control dampers may be needed to offset the rise in room pressure due to dirty exhaust/return filters.</li>
+            <li>Exhaust/return HEPA filters not located within a room or where high levels of airborne powders are expected should be <span class="key-term">safe-change type</span> with <span class="key-term">Bag-In/Bag-Out housing</span> and bubble tight dampers.</li>
+            <li>Terminal HEPA supply filters can protect against backflow to ductwork if product containment should fail because of AHU failure.</li>
+            <li>An annual testing and preventive maintenance program to ensure the integrity of HEPA filtration systems is suggested. Filters on processes requiring PPE should be tested more frequently.</li>
+            <li>Appropriate monitoring and interlocking of HVAC with process equipment should be considered to maintain containment integrity and to control cross contamination and emissions. Performance of isolator protection (DP) should be monitored.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：強效化合物的 HVAC 設計原則</h4>
+            <p><strong>Potent Compound（強效化合物）</strong>：指在極低劑量即產生藥理作用的藥物活性成分，如荷爾蒙、細胞毒性藥物等。OEL（Occupational Exposure Limit，職業暴露限值）通常 &lt;10 &mu;g/m&sup3;。</p>
+            <p>HVAC 設計從「保護產品」升級為<strong>同時保護產品與操作人員</strong>。核心策略轉變：</p>
+            <ul>
+                <li><strong>首選</strong>：密閉容器（Closed Containment）——從源頭杜絕暴露</li>
+                <li><strong>次選</strong>：100% 直排（Once-through）——不讓污染空氣有任何回流機會</li>
+                <li><strong>底線</strong>：雙重 HEPA 過濾——即使空氣回流，也確保安全</li>
+            </ul>
+            <p><strong>Bag-In/Bag-Out (BIBO) 過濾器</strong>：一種安全更換型 HEPA 過濾器外殼，讓維護人員在不接觸濾芯表面的情況下完成更換，避免二次暴露。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：強效化合物處理如同核電廠的放射性物質管控</h4>
+            <p>強效化合物的 HVAC 設計邏輯跟核電廠管理放射性物質很類似：</p>
+            <ul>
+                <li><strong>密閉操作</strong>（Closed Containment）= 密封反應爐——最好永遠不要打開</li>
+                <li><strong>負壓控制</strong>（Pressure Sink）= 放射性區域永遠維持負壓——萬一有洩漏，空氣只會往裡流</li>
+                <li><strong>BIBO 過濾器</strong> = 更換放射性廢棄物時使用的密封袋——保護維護人員</li>
+                <li><strong>聲光警報</strong> = 輻射洩漏警報——立即通知人員撤離或穿戴防護</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：穿脫衣區的壓差設計常被忽略</h4>
+            <p>本節有一個常被忽略但非常關鍵的設計要求：<strong>脫衣區（De-gowning Area）必須維持負壓</strong>。</p>
+            <p>為什麼？操作人員離開製程區時，衣物上附著的強效化合物粉塵會在脫衣過程中釋放。如果脫衣區是正壓，這些粉塵會飄向走廊，造成人員二次暴露。</p>
+            <p>壓差設計應為：走廊（正壓）&rarr; 穿衣區（中壓）&rarr; 製程區（負壓）&rarr; 脫衣區（最負壓）</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>氣流方向設計原則</h4>
+            <pre>
+【房間內氣流方向】
+    供氣口（靠近入口/操作人員呼吸帶）
+         ↓  乾淨空氣向下吹
+    操作人員呼吸帶
+         ↓  跨過
+    粉塵產生源
+         ↓  帶走粉塵
+    低位回風口（遠端牆壁底部）
+
+原則：人 → 塵 → 排，永遠保護操作人員！</pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個強效化合物的製程已被驗證為「密閉」（proven closed），是否還需要 100% 直排系統？根據本節內容，可以採取什麼替代方案？</li>
+                <li>為什麼 HEPA 過濾器要安裝在「盡可能靠近製程區」的位置？如果安裝在遠端的 AHU 機組裡有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.9 Aseptic Processing Facility -->
+<!-- ============================================================ -->
+<div class="section-title">3.9 Aseptic Processing Facility（無菌製程設施）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.8: Aseptic Processing System Schematic (Sample)]</em></p>
+
+        <h3>3.9.1 System Design Considerations</h3>
+        <ul>
+            <li>Considerable background on product requirements and the design of HVAC systems is covered in the ISPE Baseline&reg; Guide for <span class="key-term">Sterile Manufacturing Facilities</span>.</li>
+            <li>The impact of closed barrier devices and open isolators (such as <span class="key-term">RABS</span>) is covered in the ISPE Baseline&reg; Guide on Sterile Manufacturing Facilities and Chapter 3 of this Guide.</li>
+            <li>Area classification requirements for <span class="key-term">bioburden-controlled processing</span> (biotech) are covered in the ISPE Baseline&reg; Guide on Biopharmaceutical Manufacturing Facilities.</li>
+            <li>Closed wash equipment may not require room exhaust. Room pressure control may be needed if the exhaust fan can be turned on and off.</li>
+            <li>Revisions to <span class="key-term">EU GMP Annex 1</span> which went into effect in 2009 suggest that capping be accomplished under <span class="key-term">Grade A conditions</span> or if outside the aseptic space, under Grade A "airflow." Some may interpret this as meaning that capping equipment should be in a Grade 7 (EU Grade B) room under Grade A hood. The ISPE Baseline&reg; Guide recommends that "Grade A airflow" is provided by a <span class="key-term">unidirectional airflow module</span>, which provides HEPA filtered air directly to the uncapped vials until the crimp is complete.</li>
+            <li>EU Annex 1 requires exhaust from the crimping operation. This should be located as near as possible to the crimping head(s) to minimize aluminum particulate in the capper. Contamination from the air conditioning supply system should be eliminated with properly installed and integrity tested <span class="key-term">ceiling mounted terminal HEPA filters</span> for Grade 7/8 (EU Grade B/C).</li>
+            <li>AHU filters &ndash; <span class="key-term">MERV 7</span> followed by <span class="key-term">MERV 13/14</span>. A HEPA filter in the AHU should extend the life of the terminal HEPA filters. Draw-through AHU is acceptable if the final filter is after the fan and cooling condensate trap has sufficient height.</li>
+            <li>RH is normally controlled by condensing cooling or by humidification. Desiccant systems are often used for dew points below 40&deg;F (5&deg;C).</li>
+            <li>Outside air may be pre-conditioned and distributed from a central AHU, because of high airflow (air change) requirements.</li>
+            <li>Infiltration of contamination from uncontrolled spaces should be minimized by the use of <span class="key-term">room pressure differentials</span> and <span class="key-term">airlocks</span> between air classes.</li>
+            <li>Continuous room pressure monitoring with alarms and recording devices that indicate out of specification conditions are recommended. Rooms with stringent environmental parameters or where the product is exposed to the environment may require <span class="key-term">continuous monitoring</span>.</li>
+            <li>Consider <span class="key-term">automatic pressure controls</span> to keep the spaces within specified pressure limits where process exhaust volumes can change or where doors and hatches are frequently opened or door seal integrity changes over time.</li>
+            <li>Desiccant dehumidification with post cooling coils should be considered for low humidity room control. Low humidity and desiccant dehumidification usually are not needed, as most products are liquid.</li>
+            <li>A <span class="key-term">dedicated air handling system</span> is recommended to serve only the aseptic areas and to remain operational to maintain pressure control when other building systems are shut down during unoccupied periods.</li>
+            <li>HVAC systems for classified spaces should operate <span class="key-term">24 hours/day, 7 days/week</span>. After system shutdown or setback, a protocol for returning a room to proper operating condition should be developed with QA. This does not remove the possibility of reduced airflow during idle periods.</li>
+            <li>Ductwork should be designed per <span class="key-term">SMACNA</span> standards and should be constructed for 4 inch or greater water gauge duct static pressure and SMACNA seal Class "A."</li>
+            <li>Ductwork should be galvanized steel except where exposed in production areas or subject to moisture, in which case it should be a minimum <span class="key-term">304SS</span> stainless with cleanable finish.</li>
+            <li>Air to an aseptic area should be supplied through <span class="key-term">ceiling mounted terminal HEPA filters</span>. These terminal HEPA filters become part of the aseptic boundary and protect the room from outside contamination. The use of only remote bank mounted HEPA filters in the supply duct is not recommended. Access ports to introduce and monitor PAO (test aerosol) challenge materials upstream on the non-aseptic side of the HEPA diffusers are suggested for filter integrity testing.</li>
+            <li>Air supplied through ceiling mounted terminal HEPA filters should be returned at <span class="key-term">floor level</span> through multiple return duct drops. Return air in the air handling unit should be filtered through MERV 7 pleated and MERV 13 or 14 bag filters to extend HEPA filter life. Recirculation HEPA/fan units mounted below the ceiling as terminal HEPA units are not recommended, as they require service within the aseptic area and do not normally use low returns.</li>
+            <li>The return air openings in the aseptic area should be located near the floor, preferably on at least two (2) walls and along the long dimensions of a room to ensure maximum uniformity of airflow. More return openings are better than too few. Equipment and furniture should not block return openings.</li>
+            <li><span class="key-term">Differential air pressure</span> is needed to minimize infiltration of contaminants from outside the controlled space. The aseptic area should be designed for a positive pressure with all doors closed in relation to less clean adjacent areas outside the controlled space. Gowning areas are treated as airlocks with supply and return air, and are maintained at a negative pressure relative to the controlled aseptic area and at a positive pressure relative to the outside and uncontrolled spaces. DPs are measured across airlocks.</li>
+            <li>Each area should have an air supply and return with dampers to permit proper balancing. The room with exposed product is to be maintained most positive; while anterooms leading to this room are to be maintained successively less positive down to the zero reference level of uncontrolled spaces. Where potent product is open-filled and may become airborne, a high-pressure containment airlock that meets the filling room air grade may have pressure higher than the aseptic filling room. A control range should be established for each room pressure level.</li>
+            <li>The manual/remote gauges and controls or automatic controls should be mounted in a common panel outside the controlled space. An audible alarm may be provided to indicate loss of area pressure control.</li>
+            <li><span class="key-term">Unidirectional airflow</span> serves as a barrier between product and microbial and particulate contamination generated by the equipment and personnel within an aseptic area. Where components and equipment are not protected by unidirectional airflow, terminal HEPA filters should be located directly over the exposed product.</li>
+            <li>When the central system air conditioning air quantity required to maintain room conditions is not sufficient to provide adequate air changes for recovery or protection over the product, a supplemental ("local") HEPA filtered air recirculating system may be employed. The cooler central system conditioned air may be distributed into the local recirculating AHU or <span class="key-term">UFH</span> (preferably at the fan inlet) to maintain room temperature. The heat generated from the local recirculating system fan motor should be considered.</li>
+            <li>Airflow patterns within the workspace (inside the UFH) should be uniform with minimum turbulence. Ambient air may not aspirate into the work areas along the perimeter of the unidirectional airflow barrier. The hood filter area should deliver <span class="key-term">ISO 5</span> air at a target velocity of <span class="key-term">90 feet per minute (0.45 m/sec)</span> with uniformity within plus or minus 20%, measured just below the filter face (6 to 12 inches, 15 to 30 cm). Velocity at the work height also should be measured although it may measure close to zero if it is far from the filter face. The optimal filter face velocity should be determined during qualification of the UFH using <span class="key-term">airflow visualization</span> ("smoke testing").</li>
+            <li>Room temperatures should be controlled by maintaining constant airflow through a cooling/dehumidification coil, and possibly modulating a heating coil for temperature control. Systems that vary cool airflow to control room temperatures are not recommended because of adverse effects on room pressures.</li>
+            <li>The HVAC system may be required to quickly return room conditions after sanitization.</li>
+            <li>Since a <span class="key-term">Grade 5 (Grade A)</span> room requires a very large treated airflow to create the unidirectional condition, air from the Grade 5 room is normally recirculated rather than exhausted with some excess supply air to create room DP. A Grade 5 room would be unusual; the Grade 5 area is usually a UFH or RABS inside a Grade 7 (Grade B) room.</li>
+            <li>Dampers on return air may be modulated to maintain room pressure, while CV units on supply air help maintain constant flow to the room.</li>
+            <li>A desiccant dehumidifier may be required for aseptic liquid filling facilities.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：無菌製程 HVAC 的三大設計支柱</h4>
+            <p>無菌製程（Aseptic Processing，無菌製程）的 HVAC 是整本 ISPE HVAC 指引中最關鍵、最複雜的應用場景。三大設計支柱：</p>
+            <ul>
+                <li><strong>終端 HEPA 過濾</strong>：天花板安裝的 HEPA 過濾器是無菌屏障（Aseptic Boundary）的一部分——不是可選項，是必要條件</li>
+                <li><strong>壓差串聯（Pressure Cascade）</strong>：從最潔淨區（Grade A）逐級遞減到一般建築環境，形成「空氣只從乾淨處流向不潔淨處」的物理屏障</li>
+                <li><strong>單向氣流（Unidirectional Airflow，單向氣流）</strong>：在 Grade A 區域提供 0.45 m/s 的均勻向下氣流，將微粒和微生物「沖刷」離開暴露產品</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：24/7 運行是法規剛性需求</h4>
+            <p>本節明確指出無菌區的 HVAC <strong>必須 24 小時、7 天運行</strong>。為什麼？</p>
+            <ul>
+                <li>停機後壓差立即消失，未受控空氣可能滲入無菌區</li>
+                <li>重新啟動後需要執行「恢復協議」（Recovery Protocol），與 QA 共同確認房間已回到規格範圍內</li>
+                <li>可以在非生產時段降低風量（Reduced Airflow），但不可以完全停機</li>
+            </ul>
+            <p>這意味著無菌設施的 HVAC <strong>能源成本是其他區域的 3-5 倍</strong>——這是影響 CDMO 運營成本的重要因素。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：壓差串聯如同水壩的多級閘門</h4>
+            <p>無菌製程的壓差設計就像水壩的多級閘門系統：</p>
+            <ul>
+                <li><strong>Grade A（最高水位）</strong>：充填區，壓力最高，水（空氣）只會往外流</li>
+                <li><strong>Grade B（次高水位）</strong>：背景環境，接住 Grade A 外溢的水</li>
+                <li><strong>穿衣區/氣閘（中間水位）</strong>：過渡閘門，防止外界水倒灌</li>
+                <li><strong>一般建築（最低水位）</strong>：所有的水最終流到這裡</li>
+            </ul>
+            <p>任何時候如果閘門漏水（壓差失控），上游的潔淨水就可能被下游的污水回灌——這就是為什麼需要連續監控和警報。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>UFH 單向氣流關鍵參數</h4>
+            <pre>
+目標風速：0.45 m/s (90 fpm)
+均勻度要求：± 20%
+量測位置：HEPA 過濾器面下方 15-30 cm（6-12 inches）
+確效方法：氣流可視化測試（Smoke Testing）
+
+Grade A 區域 = ISO 5
+  ≤ 3,520 particles/m³ (≥0.5μm)
+Grade B 區域 = ISO 7 (at rest)
+  ≤ 352,000 particles/m³ (≥0.5μm)</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風管材質與施工標準</h4>
+            <p>本節特別規範：</p>
+            <ul>
+                <li>一般風管：鍍鋅鋼板，按 SMACNA 標準施工，最低 4 英寸水柱靜壓等級</li>
+                <li>暴露在生產區域或潮濕環境的風管：最低 304 不鏽鋼，可清洗表面</li>
+                <li>密封等級：SMACNA Class "A"（最高等級）</li>
+            </ul>
+            <p>這些要求直接影響工程造價。不鏽鋼風管的成本是鍍鋅鋼板的 3-5 倍，但在無菌區是必要投資。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 無菌設施的 HVAC 架構選擇</h4>
+            <p>設計無菌充填線的 HVAC 時，你面對兩個基本架構選擇：</p>
+            <ul>
+                <li><strong>Grade A UFH + Grade B 背景房</strong>（傳統方案）：UFH 提供 Grade A 單向氣流，背景環境維持 Grade B。適用於 RABS（限制進出屏障系統）或開放式充填線</li>
+                <li><strong>隔離器（Isolator，隔離器）+ 降級背景環境</strong>（進階方案）：密閉隔離器內部 Grade A，背景環境可降至 Grade C 甚至 Grade D。HVAC 需求大幅降低，但隔離器本身投資較高</li>
+            </ul>
+            <p>本節稍後 3.15.4 將詳細討論隔離器系統——它是「綠色技術」（Green Technology），能源消耗顯著低於傳統製程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 不建議在無菌區內使用天花板下方安裝的循環 HEPA/風扇單元？（提示：思考維護和氣流方向）</li>
+                <li>無菌區的低位回風口建議設置在至少兩面牆上，這是為什麼？如果只設在一面牆上會有什麼問題？</li>
+                <li>如果你的無菌充填線同時處理強效產品（Potent Product），壓差設計會變成什麼樣？（提示：保護產品的正壓 vs 保護人員的負壓之間的衝突）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.9.2 Aseptic Powder Potent Compounds -->
+<!-- ============================================================ -->
+<div class="section-title">3.9.2 Aseptic Powder Potent Compounds（無菌粉末——強效化合物）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.9: Aseptic Potent Powder Processing System Schematic with Pretreatment (Sample)]</em></p>
+        <ul>
+            <li>Processes should be contained in <span class="key-term">isolators</span> with dedicated HVAC for the containment enclosure.</li>
+            <li>Where the process leaks into a room, protect the HVAC system and other rooms on the system from hazardous compounds by using <span class="key-term">non-recirculating primary air conditioning systems</span>.</li>
+            <li>The exhaust or return air ducts may be kept clean with HEPA filters protected from physical damage with a pre-filter or equivalent. These filters should be located within the room where properly gowned and protected personnel can service them. Frequent filter change out or active room pressure controllers may be needed to offset loading of return air filters.</li>
+            <li>If return filters are located remote from the room where open processing occurs, they should be housed in a <span class="key-term">high containment bag-in/bag-out filter housing</span> and identified as such. These filters contain the potentially hazardous compounds and minimize particulate "fall back" during fan failure.</li>
+            <li>Gowning areas should be supplied with HEPA filtered air and maintained at a <span class="key-term">negative pressure</span> relative to the controlled aseptic area and at a positive pressure relative to the uncontrolled spaces. Local regulations may prefer two-stage gowning. The gowning area should be separated from the Grade 7 (EU Grade B) aseptic filling room by a <span class="key-term">high pressure Grade 7 (Grade B) airlock</span>.</li>
+            <li>The de-gowning area should be separated from the aseptic filling room by a <span class="key-term">low-pressure airlock</span>. The de-gowning room shall be maintained negative relative to adjacent spaces on the uncontrolled side.</li>
+            <li>Material entering the aseptic filling room should be transferred via a <span class="key-term">HEPA filtered, high-pressure tunnel, box, or sterilizer</span>. Contaminated material leaving the aseptic filling room should be transferred via a <span class="key-term">low-pressure tunnel or box</span>.</li>
+            <li>If aseptic product is a powder, very low RH may be required. Minimize leakage into the AHU after the dehumidification step (<span class="key-term">blow-through AHU</span> is preferred).</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：無菌 + 強效 = 最高等級 HVAC 挑戰</h4>
+            <p>這是 HVAC 設計中最具挑戰性的場景：同時要求<strong>無菌保證（Sterility Assurance，保護產品）</strong>和<strong>人員防護（Containment，保護操作員）</strong>。兩個需求在壓差方向上是矛盾的：</p>
+            <ul>
+                <li>無菌要求：充填區正壓 &rarr; 空氣向外流（保護產品不被污染）</li>
+                <li>密閉要求：操作區負壓 &rarr; 空氣向內流（防止毒性粉塵外洩）</li>
+            </ul>
+            <p>解決方案：使用<strong>隔離器（Isolator）+ 專屬 HVAC</strong>，讓隔離器內部保持無菌正壓，而隔離器周圍的房間可以維持負壓。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：進出動線如同太空站的氣閘艙</h4>
+            <p>無菌強效製程的人員與物料進出設計就像太空站的氣閘系統：</p>
+            <ul>
+                <li><strong>穿衣區（高壓氣閘）</strong>= 太空人穿上太空衣的準備室——從「地球」（走廊）過渡到「太空」（無菌區）</li>
+                <li><strong>脫衣區（低壓氣閘）</strong>= 太空人回來時的減壓艙——確保太空（製程區）的「毒物」不會帶回地球</li>
+                <li><strong>物料進入隧道（高壓 HEPA 過濾）</strong>= 貨物進入太空站的加壓通道</li>
+                <li><strong>廢棄物移出（低壓隧道）</strong>= 垃圾彈射艙——只出不進</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：乾粉無菌充填的特殊濕度需求</h4>
+            <p>無菌粉末產品（如凍乾粉注射劑）需要極低的相對濕度（RH），否則粉末會吸濕結塊。ISPE 建議：</p>
+            <ul>
+                <li>使用 <strong>Blow-through AHU</strong>（鼓風式空調機組）——風扇在冷卻盤管之前，減少除濕後的管路漏濕</li>
+                <li>這與液態無菌充填的 Draw-through AHU（抽風式）設計完全相反</li>
+            </ul>
+            <p>如果你的 CDMO 同時承接液態和粉末無菌產品，HVAC 系統必須有兩種不同的配置能力——這是設施彈性的重要考量。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼隔離器是解決「無菌 vs 密閉」壓差矛盾的最佳方案？如果不使用隔離器，你如何設計壓差系統？</li>
+                <li>物料進入無菌充填室使用「高壓隧道」，離開時使用「低壓隧道」——請解釋壓差設計背後的邏輯。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.10 Packaging/Labeling -->
+<!-- ============================================================ -->
+<div class="section-title">3.10 Packaging/Labeling（包裝/標籤）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.10: Packaging and Labeling System Schematic]</em></p>
+
+        <h3>3.10.1 System Design Considerations</h3>
+        <ul>
+            <li>Primary packaging for sterile products is covered in the ISPE Baseline&reg; Guide on Sterile Manufacturing Facilities.</li>
+            <li><span class="key-term">Primary packaging</span> areas should have the same area requirements as that used for manufacturing. Handling of product exposure and potent compound issues should be addressed. Room pressure or airflow direction may be required.</li>
+            <li><span class="key-term">Secondary packaging</span> (e.g., sealed bottles into cartons) is usually CNC with worker comfort conditions. Tight humidity control may be needed for specific labeling operations. Room pressure control usually is not required.</li>
+            <li>Some raw material warehouses in temperate climates need meet only USP storage requirements, sometimes with only supplemental heat in winter provided by steam, gas, or electric unit heaters.</li>
+            <li>As materials, drug substances, and drug products usually are stored closed and isolated from the room environment, humidity control may not be required.</li>
+            <li><span class="key-term">Draw-through AHU</span> is considered acceptable with MERV 7 and MERV 13 filtration. Terminal filtration usually is not required.</li>
+            <li>The use of more elaborate HVAC normally would be driven by business needs, where higher HVAC life cycle costs can be offset by the risk of loss of expensive product.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：初級包裝 vs 二級包裝的 HVAC 差異</h4>
+            <p><strong>Primary Packaging（初級包裝）</strong>：直接接觸產品的容器（如藥瓶、注射器），HVAC 要求等同製造區。</p>
+            <p><strong>Secondary Packaging（二級包裝）</strong>：將已密封的產品放入紙盒/箱子，通常只需 CNC 環境 + 人員舒適條件。</p>
+            <p>關鍵決策原則：<strong>HVAC 需求跟隨「產品暴露風險」</strong>——產品還是暴露的？用製造區標準。產品已密封？舒適條件即可。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：包裝就像食品裝盒</h4>
+            <p>壽司師傅把壽司放進餐盒（Primary Packaging）——必須在乾淨的廚房裡完成。但把餐盒放進外帶袋（Secondary Packaging）——在櫃檯就可以了，不需要回到廚房。HVAC 設計的邏輯一模一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：成本效益導向的 HVAC 升級</h4>
+            <p>本節最後一點特別有商業智慧：「更精細的 HVAC 通常由商業需求驅動，當較高的 HVAC 生命週期成本可以被昂貴產品損失的風險所抵消時。」</p>
+            <p>換句話說：存放便宜的原料？最低限度的 HVAC 即可。存放每批價值百萬美元的生物製劑？值得投資更好的溫濕度控制。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 CDMO 的包裝區同時處理強效化合物產品的初級包裝，HVAC 設計需要增加哪些額外要求？</li>
+                <li>標籤作業為什麼可能需要嚴格的濕度控制？（提示：想想標籤黏膠和印刷品質）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.11 Laboratories -->
+<!-- ============================================================ -->
+<div class="section-title">3.11 Laboratories（實驗室）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.11: Laboratory]</em></p>
+        <p><em>[Figure 3.12: Typical Laboratory Room HVAC Detail (with Pneumatic Actuators)]</em></p>
+
+        <h3>3.11.2 System Design Considerations</h3>
+        <ul>
+            <li>There are four exhaust ducts shown for the laboratory, two of which service <span class="key-term">fume hoods</span>. One services analytical equipment through flexible drops and the other keeps the laboratory at negative pressure in relation to the corridor or other adjacent spaces when fume hood airflow is low or when room cooling requirements require additional supply air. Laboratory facilities may serve these ducts with individual fans or with a single exhaust plenum held at constant pressure and serviced by one or two larger exhaust fans.</li>
+            <li>Laboratories using <span class="key-term">volatile solvents or radioisotopes</span> should be negative (commonly via airflow tracking) relative to corridors, offices, and adjacent occupied space. Air from offices or technical spaces adjacent to laboratories should transfer into the laboratory. <span class="key-term">Classified clean laboratory spaces</span> should be positive (via airflow tracking) relative to corridors, offices, and adjacent occupied space. A high pressure bubble airlock should be provided where activities in positively pressurized spaces pose a threat to corridor air quality.</li>
+            <li>Where chemicals or other hazardous materials are handled in the open, air systems should be <span class="key-term">100% exhaust</span>. Risks of recirculation of laboratory air should be evaluated if energy costs become prohibitive. Glove boxes to reduce dilution volumes and total airflow may be justified.</li>
+            <li>Recirculation of air in microbial and in-process or materials testing laboratories that do not employ volatile organic solvents may be considered. A <span class="key-term">ductless laboratory hood</span> may be justifiable. These hoods recirculate air to the room through activated carbon filters that remove vapor contamination. Maintenance is critical to the safety of the user.</li>
+            <li><span class="key-term">VAV control systems</span> are recommended for increased safety through monitoring capabilities and decreased energy usage (using hood diversity and variable flow). Airflow tracking (fixed difference between supply and exhaust) is common.</li>
+            <li><span class="key-term">Occupancy sensors</span> and night setback can enhance the energy saving potential of VAV systems. Minimum ventilation rates of 8 to 12 are recommended for most laboratories. Minimum ventilation rates below <span class="key-term">6 AC/hr</span> for occupied laboratories are not recommended.</li>
+            <li>Non-aspirating type diffusers are recommended to be selected and located to minimize velocity and turbulence near the hood face; design cross drafts should not exceed <span class="key-term">30 FPM</span> within 24 inches of the hood opening.</li>
+            <li>Galvanized exhaust ducts, boxes, and attenuators may be used except where process or research activity requires special corrosion resistance. Laboratory hood exhaust ducts and accessories that are inaccessible should be <span class="key-term">stainless steel (304)</span>. Laboratory hood exhaust ducts which handle large quantities of acids should be high grade stainless steel, Hastelloy, FRP, or other suitable material.</li>
+            <li><span class="key-term">Perchloric acid</span> digestion hood exhaust requires special handling and cleaning systems. These systems represent an explosion hazard, should be segregated, and designed by experienced professionals.</li>
+            <li>Stack height above a building roof should be maintained at a 10 ft minimum; although a stack height equal to 30% of the building height is preferred. Stacks should be located to avoid re-entrainment of air into HVAC systems.</li>
+            <li>Automatic hood closing systems with obstruction detection should be considered for energy savings. VAV boxes should not be oversized.</li>
+            <li>VAV systems should be sized with a <span class="key-term">diversity factor</span> to allow for savings in airflow and first cost. A factor of 70% of installed load is common.</li>
+            <li>A general room exhaust should be provided only when the hood flow at minimum sash position requires an air supply rate less than that required to satisfy heat loads or the specified minimum air change rate.</li>
+            <li>Air change rate or exhaust quantity will usually dictate the supply air quantity. Exhaust quantities should be reset upward when additional cooling is required.</li>
+            <li>Mounting VAV laboratory controls in accessible panels either flush in alcove outside laboratory or in dedicated rooms should improve ease of maintenance.</li>
+            <li>Manifolded exhaust systems are considered acceptable, except for perchloric acid hoods which should be on a dedicated exhaust system.</li>
+            <li>Approved exhausted chemical storage cabinets should be considered for solvents and hazardous materials.</li>
+            <li>Heat should be recovered from laboratory utility equipment, wherever possible.</li>
+            <li>Temperature alarms should be provided on refrigerators or freezers. Where critical, these should be connected to the BAS.</li>
+            <li>Where laboratory offices are on the exterior wall, heating at the perimeter wall is recommended.</li>
+            <li>Central draw-through air handlers are common. Distributed AHUs may be justified for areas that are frequently shut down.</li>
+            <li>Supply Air Filtration &ndash; <span class="key-term">MERV 7</span> and <span class="key-term">MERV 13/14</span> (in series). If required by product, HEPA may be needed for classified rooms.</li>
+            <li>Exhaust Air Filtration &ndash; As required by application. Where energy recovery is employed MERV 7 filters are required. Scrubbers may be required for some dedicated hoods. HEPA filtration may be required for formulation laboratories, BSL3&amp;4, etc.</li>
+            <li>In-duct silencers can help decrease noise from exhaust manifold valves. Packless type silencers can be used for chemical exhaust applications.</li>
+            <li>Biosafety laboratories are outside the scope of this Guide.</li>
+        </ul>
+
+        <h3>3.11.3 Vivarium</h3>
+        <p>Vivarium facilities should consist of individual suites, each capable of maintaining its own <span class="key-term">microenvironment</span> for the duration of the product study. Guidances are published by AAALAC, ASHRAE, and others.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：實驗室 HVAC 的核心挑戰——排煙櫃整合</h4>
+            <p><strong>Fume Hood（排煙櫃）</strong>：實驗室的核心安全設備，透過向內的氣流防止化學蒸氣逸出。排煙櫃的排氣需求直接決定了整個實驗室 HVAC 的設計。</p>
+            <p><strong>VAV (Variable Air Volume，變風量) 系統</strong>：根據排煙櫃的實際使用狀態自動調節風量的智慧控制系統。核心優勢：</p>
+            <ul>
+                <li><strong>安全性</strong>：透過氣流追蹤（Airflow Tracking）確保房間壓差始終符合要求</li>
+                <li><strong>節能性</strong>：只有在排煙櫃打開時才提供全風量，其餘時間降低風量</li>
+                <li><strong>Diversity Factor（多樣性因子）</strong>：不是所有排煙櫃會同時全開，因此系統可按 70% 容量設計中央設備</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：實驗室壓差設計的「兩種人格」</h4>
+            <p>實驗室的壓差設計有兩種完全相反的邏輯，像是同一棟建築裡住著兩種性格的人：</p>
+            <ul>
+                <li><strong>化學實驗室（「向內吸」型）</strong>：使用揮發性溶劑或放射性同位素——維持負壓，讓有害蒸氣不會飄到走廊（保護外部人員）</li>
+                <li><strong>潔淨實驗室（「向外推」型）</strong>：微生物檢測或製程中控制——維持正壓，讓走廊的污染不會進入實驗室（保護測試樣品）</li>
+            </ul>
+            <p>如果你的 QC 實驗室同時有化學分析和微生物檢測，就必須做好分區設計，讓這兩種「人格」互不干擾。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：排煙櫃前方的氣流干擾</h4>
+            <p>一個經常被忽略的設計細節：排煙櫃開口前方 24 英寸（60 cm）範圍內的<strong>橫向氣流不得超過 30 FPM（0.15 m/s）</strong>。</p>
+            <p>為什麼？如果供氣出風口產生的氣流經過排煙櫃前方，會擾亂排煙櫃的向內氣流，導致有害蒸氣逸出。這就是為什麼 ISPE 推薦<strong>非吸入式出風口（Non-aspirating Diffusers）</strong>——它們產生的氣流更柔和、更均勻。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>實驗室 HVAC 設計參數速查</h4>
+            <pre>
+最低換氣次數（已佔用實驗室）：6 AC/hr
+建議換氣次數：8-12 AC/hr
+VAV 多樣性因子：70%（常用值）
+排煙櫃面前橫向風速限制：≤ 30 FPM (0.15 m/s)
+排氣煙囪最低高度：10 ft (3 m) 或建築高度的 30%
+過高酸排氣管：304SS 或 Hastelloy/FRP
+夜間模式：佔用感測器 + 降載（Night Setback）</pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO QC 實驗室的 HVAC 投資優化</h4>
+            <p>對 CDMO 而言，QC 實驗室是必要但非營收直接產生的區域。HVAC 優化策略：</p>
+            <ul>
+                <li><strong>VAV 系統</strong>：初期投資較高，但能源節省 30-50%，2-3 年即可回收</li>
+                <li><strong>佔用感測器 + 夜間降載</strong>：QC 實驗室通常只有日班使用，夜間降低風量可節省大量能源</li>
+                <li><strong>排煙櫃自動關閉系統</strong>：防止人員離開後忘記降下窗框，避免不必要的排氣</li>
+                <li><strong>熱回收</strong>：從排煙櫃排出的空氣中回收熱量（但需注意化學品相容性）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼過氯酸（Perchloric Acid）的排煙櫃必須使用專用排氣系統，不能與其他排煙櫃共用？</li>
+                <li>一個 CDMO 的 QC 實驗室有 12 個排煙櫃，如果使用 70% 多樣性因子，中央排氣設備應按多少個排煙櫃的容量設計？</li>
+                <li>無管道型實驗室排煙櫃（Ductless Laboratory Hood）為什麼「不常見」且維護至關重要？活性碳飽和後會發生什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.12 Sampling/Dispensing -->
+<!-- ============================================================ -->
+<div class="section-title">3.12 Sampling/Dispensing（取樣/秤量）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.13: Sampling and Dispensing]</em></p>
+
+        <h3>3.12.1 System Design Considerations</h3>
+        <ul>
+            <li>Specific product requirements are in the appropriate ISPE Baseline&reg; Guide.</li>
+            <li><span class="key-term">Once-through air</span> may be applied for solvent use. Recirculated room air is possible with adequate air filtration. Exhaust air for sampling stations should not be recirculated.</li>
+            <li>Central Filtration should be minimum <span class="key-term">MERV 7</span> followed by <span class="key-term">MERV 13/14</span>. Starting materials for aseptic processing may require HEPA filtration to meet <span class="key-term">Grade C or D</span>.</li>
+            <li><span class="key-term">Airflow Tracking</span> or room pressure control are recommended for room segregation.</li>
+            <li>Powder sampling/dispensing may require low RH.</li>
+            <li>Airlocking between warehousing and sampling spaces is expected.</li>
+            <li>The area classification and environmental conditions in sampling and dispensing should reflect the conditions used when charging materials to the process.</li>
+            <li><span class="key-term">Unidirectional Flow modules</span> are, typically, employed as local protection for sampling activities, this gives greater flexibility when multiple materials are sampled or dispensed in a given area.</li>
+            <li>LEV should be considered for sampling or dispensing of hazardous materials. Exhaust hoods designed for this purpose are commercially available.</li>
+        </ul>
+
+        <h3>3.12.2 Downflow Booth</h3>
+        <p><em>[Figure 3.14: Uni-Directional Flow Booth for Local Protection]</em></p>
+        <p>The <span class="key-term">downflow booth</span> is a "packaged" HVAC system integrated into a booth that has sidewalls, a ceiling plenum, and a low level return inside the booth at the front. The unit is designed to provide operator protection when handling hazardous materials.</p>
+        <p>The design concepts are shown in Figure 3.14. The discharge HEPA filter (usually a safe change unit) may be mounted in the ductwork from the fan to the ceiling plenum with the ceiling a proprietary material designed to provide uniform <span class="key-term">laminar downflow</span> of air or the booth ceiling can be made up of HEPA filters. By introducing a material with a high pressure drop, the system creates a uniform high velocity downward flow from the ceiling.</p>
+        <p>The high air change rate means that heat builds up in the booth from the fan energy; therefore, the system usually has a <span class="key-term">cooling coil</span> mounted in the airstream controlled to maintain the temperature in the booth.</p>
+        <p>A small portion of air (usually around <span class="key-term">10%</span>) is bled from the plenum in order to create an inward flow of air in the front of the booth to provide containment; usually the systems have vinyl curtains mounted on the front to encourage the inflow at a low level.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：取樣/秤量區的「雙重身份」</h4>
+            <p>取樣和秤量區是<strong>倉庫與製程之間的橋樑</strong>。HVAC 設計必須反映「下游製程」的要求：</p>
+            <ul>
+                <li>如果材料進入無菌製程：取樣區可能需要 Grade C 或 D 環境</li>
+                <li>如果材料進入 OSD 製程：CNC 環境通常足夠</li>
+                <li>如果處理危險材料：需要 LEV 和操作員防護</li>
+            </ul>
+            <p><strong>Downflow Booth（下吹式工作台）</strong>：一種整合型 HVAC 設備，從天花板向下吹出均勻的 HEPA 過濾空氣，在工作台前方利用 10% 的排氣量產生向內的氣流，形成「看不見的空氣門」保護操作人員。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：下吹式工作台就像「空氣瀑布」</h4>
+            <p>想像站在一道小瀑布後面：水從上方均勻落下（HEPA 過濾空氣），你站在裡面（操作區），粉塵無法穿過水幕到達你的呼吸帶。瀑布底部有排水口（低位回風），帶走所有被水沖下的雜質。前方的水簾（乙烯基帘幕 + 10% 排氣）阻止外部的風吹散水幕。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：取樣區與倉庫之間必須設氣閘</h4>
+            <p>ISPE 明確要求倉庫和取樣空間之間必須使用<strong>氣閘（Airlock）</strong>分隔。原因：</p>
+            <ul>
+                <li>倉庫通常是非受控環境（CNC 或更低）</li>
+                <li>取樣區的潔淨度必須匹配下游製程要求</li>
+                <li>打開容器取樣時，產品暴露在環境中——此時環境條件直接影響產品品質</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 說取樣站的排氣「不應回流」，但房間一般空氣可以回流？兩者的風險差異是什麼？</li>
+                <li>一個同時服務 OSD 和無菌產品線的 CDMO，取樣區應該按什麼等級設計？如何平衡成本與合規？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.13 Admin & 3.14 Warehouse -->
+<!-- ============================================================ -->
+<div class="section-title">3.13 &ndash; 3.14 Administrative, General Building &amp; Warehouse（行政區、一般建築與倉庫）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.15: Admin Area System Schematic (Sample)]</em></p>
+
+        <h3>3.13.1 System Design Considerations</h3>
+        <ul>
+            <li>See general design considerations in Section 3.2.</li>
+            <li>Most office areas use <span class="key-term">VAV HVAC</span>, which is more energy efficient, but may, by its nature, create variable room pressures inside the office. If the administrative area borders on a pressure controlled processing area or the area of common pressure reference, there may be a disturbance of pressures inside the processing area. However, careful HVAC design can solve this problem.</li>
+        </ul>
+
+        <h3>3.14 Warehouse</h3>
+        <h3>3.14.1 System Design Considerations</h3>
+        <ul>
+            <li>Many warehouse facilities do not have central air handling, using only unit heaters. Be sure that their very warm air outlets do not overheat high-stacked material.</li>
+            <li>See product data or the <span class="key-term">USP</span> or equivalent pharmacopoeia for finished product temperature and RH requirements. The USP defines a limit for <span class="key-term">"controlled room temperature storage"</span> of <span class="key-term">15 to 30&deg;C (59 to 86&deg;F)</span> with a <span class="key-term">Mean Kinetic Temperature (MKT)</span> below 25&deg;C (77&deg;F).</li>
+            <li>Biological products may require lower temperatures than the USP specifies and may require a <span class="key-term">"cold chain"</span> or series of cold storage and handling areas to meet stability criteria.</li>
+            <li>The warehouse should be <span class="key-term">"temperature mapped"</span> to identify normally "hot" and "cold" locations and define the relationship between these locations and the measured temperature at the control sensors.</li>
+            <li>Mapping of temperature extremes in high bay warehouses is recommended.</li>
+            <li>Dedicated exhaust may be required for <span class="key-term">battery charging areas</span> to remove hydrogen gas emitted by charging lead/acid batteries.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：倉庫 HVAC 的關鍵——溫度分佈圖（Temperature Mapping）</h4>
+            <p><strong>Temperature Mapping（溫度分佈圖）</strong>：在倉庫的多個位置安裝溫度感測器，連續記錄至少一年的溫度數據（覆蓋所有季節），以識別「熱點」和「冷點」。</p>
+            <p><strong>Mean Kinetic Temperature (MKT，平均動力學溫度)</strong>：一個加權平均溫度，反映溫度波動對產品穩定性的實際影響。USP 要求 MKT &lt; 25&deg;C。</p>
+            <p>這意味著即使偶爾超過 30&deg;C，只要 MKT 控制在 25&deg;C 以下，仍然合規——但你必須有數據證明。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：溫度分佈圖就像「倉庫的健康檢查報告」</h4>
+            <p>就像人體需要定期健康檢查，了解哪些器官有潛在風險一樣，倉庫也需要「體檢」來了解哪些區域的溫度容易偏高或偏低。靠近天花板的高架區就像「容易發燒的額頭」，靠近大門的進出口就像「容易著涼的鼻子」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：行政區 VAV 系統對製程區壓差的干擾</h4>
+            <p>這是一個被低估的設計風險：辦公室的 VAV 系統會根據佔用人數和熱負荷自動調節風量，造成辦公區的壓力波動。如果辦公區<strong>緊鄰受控製程區</strong>，這些壓力波動可能干擾製程區的壓差控制。</p>
+            <p>解決方案：在辦公區與製程區之間設置緩衝走廊或氣閘，或使用定風量（CAV）系統供應辦公區中鄰近製程區的區域。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：生物製劑的冷鏈（Cold Chain）需求</h4>
+            <p>生物製劑（如單株抗體、mRNA 疫苗）通常需要 2-8&deg;C 甚至 -20&deg;C 或 -80&deg;C 的儲存條件。這遠超過 USP 的「受控室溫」標準，需要：</p>
+            <ul>
+                <li>專用冷藏/冷凍庫</li>
+                <li>連續溫度監控 + 警報系統</li>
+                <li>備用電力供應（不可中斷）</li>
+                <li>冷鏈驗證文件</li>
+            </ul>
+            <p>對 CDMO 而言，提供完整冷鏈能力是承接高價值生物製劑合同的先決條件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的倉庫在夏季最熱的一天，某個區域溫度達到 35&deg;C 持續 4 小時，但年度 MKT 仍為 24&deg;C。這個區域是否仍符合 USP「受控室溫」要求？你需要什麼文件來支持這個結論？</li>
+                <li>為什麼電池充電區需要專用排氣？如果不設排氣會有什麼安全風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.15 Process Equipment Integration -->
+<!-- ============================================================ -->
+<div class="section-title">3.15 Process Equipment Integration（製程設備整合）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are specific requirements for process equipment. Specific aspects for the area containing process equipment should be considered in the design of HVAC systems.</p>
+
+        <h3>3.15.1 Dust Extract Systems</h3>
+        <p>Where there is a common dust extract system, aspects to consider in the HVAC system design include:</p>
+        <ul>
+            <li>What happens if the unit fails? Does the unit have a damper that closes, preventing air leaving the system? Is the pressure difference between the rooms served by the system adequate to obtain flow with a consequential risk of <span class="key-term">cross contamination</span>?</li>
+            <li>How does the <span class="key-term">dust collector</span> clean itself? Some units are cleaned by a shaker mechanism; others use a pulse of compressed air. During this pulse, which is in the opposite direction to the normal airflow, the extract air flow can halt or even reverse for a short period, is this acceptable?</li>
+            <li>One of the advantages of a remote system is that the system heat gain is outside the room and the extract normally is located near an area where the equipment heat gain is high, so heat gains are extracted from the room, reducing the load on the area HVAC system. In addition, duct pressure is negative; keeping contaminants in the system should the duct develop a leak.</li>
+        </ul>
+
+        <h3>3.15.2 Granulators/Coaters/Fluid Bed Dryers</h3>
+        <p>These units typically have <span class="key-term">dedicated air-handling systems</span> that are independent of the area HVAC. The design should consider what happens during periods of non-use and whether there is potential for moisture to migrate from an outside high-humidity environment into the system. Other aspects to consider include:</p>
+        <ul>
+            <li>Assess the risks of corrosion during use &ndash; what ductwork materials should be used?</li>
+            <li>What areas of the duct are pressurized? What is the risk of drawing in untreated air? What is the risk of potentially contaminated (with product) air leaking out?</li>
+            <li>If for multiple campaigned products, does the duct need <span class="key-term">Clean In Place (CIP)</span>?</li>
+        </ul>
+
+        <h3>3.15.3 Glassware Depyrogenation Tunnels</h3>
+        <p><span class="key-term">Glassware depyrogenation tunnels</span> generally are located between rooms with different area classifications (grades) and operate intermittently. They present a challenge to HVAC system designers. Area pressure differentials typically need to be held at a consistent level, usually requiring some type of <span class="key-term">active pressure control</span>.</p>
+        <p>As tunnels are started up and the temperatures and volumes stabilize, there is a dynamic period in terms of changing airflow during which filling is not in operation. Without a pressurized cool in-feed zone between the washer and the heat zone of the tunnel, held at the same pressure as the sterile filling line, extremely hot air can exit the front of the tunnel, creating a need for local exhaust to remove the excess heat and potentially creating a hazard.</p>
+        <p>Other issues with depyrogenation tunnels include the testing and integrity of <span class="key-term">high temperature HEPA filters</span> and the monitoring of particle levels in the hot zone (sometimes over 325&deg;C).</p>
+
+        <h3>3.15.4 Isolator Systems</h3>
+        <p><em>[Figure 3.16: Isolator System Schematic 1]</em></p>
+        <p><em>[Figure 3.17: Isolator System Schematic 2]</em></p>
+        <p>Where aseptic processing or containment of hazardous materials is required, <span class="key-term">barrier-isolator technology</span> may be applied. Generally, when a closed isolator is used in aseptic processing and can be pressurized, room air class can be relieved by one or (often) two levels, requiring fewer air class zones, less gowning, and <span class="key-term">lower HVAC airflow</span>.</p>
+        <p>When an isolator is used as containment for non-sterile products, potential for product release to the air and cross-contamination often is greatly reduced, lessening risk to product and operators and requiring less rigorous HVAC systems.</p>
+        <p>Isolators are a microenvironment and the area of greatest risk, and therefore, greatest environmental control is minimized. This design makes isolators a <span class="key-term">"green" technology</span> with lower energy consumption than conventional processing.</p>
+        <p>Isolator technology for aseptic processing or containment of hazardous material can reduce the exposure of operators to product and the exposure of product to disinfection chemicals that may be used in a conventional aseptic processing suite.</p>
+        <p>Isolators may be fed with room air or by dedicated air handlers. The use of <span class="key-term">dedicated air handlers</span> decreases the risk of <span class="key-term">VPHP (vapor phase hydrogen peroxide)</span> escape from the isolator and simplifies balancing of the room and enclosure. Use of room air is more energy efficient and potentially demonstrates less impact on isolator pressurization relative to the room because of changes in the isolator operating mode (or phase).</p>
+        <p>Depending on the source of makeup air to an isolator's air handling system, there may be an effect on room pressure when an isolator is in use. Most isolators have multiple operating modes for open setup with unidirectional flow, CIP, closed-operation. The integration of an isolator to a processing room requires careful consideration of all operating phases and conditions.</p>
+        <p>VPHP sensors should monitor the room around the isolator and mechanical spaces outside the room as a further safety measure.</p>
+        <p>The air classification required for the background environment depends on the design of an isolator and the application. Room cooling loads should account for the heat generated by the isolator fan system(s).</p>
+
+        <h3>3.15.5 Vial Capping</h3>
+        <p>The 2008 revision to <span class="key-term">EU GMP Volume 4 Annex 1</span> provides specific requirements for finishing of sterile products, specifically for freeze drying vials:</p>
+        <div class="quote-box">"Partially stoppered freeze drying vials should be maintained under Grade A conditions at all times until the stopper is fully inserted."</div>
+        <div class="quote-box">"As the equipment used to crimp vials can generate large quantities of non viable particulates, the equipment should be located at a separate station equipped with adequate air extraction."</div>
+        <div class="quote-box">"Vial Capping can be undertaken as an aseptic process using sterilized caps or as a clean process outside the aseptic core. Where this latter approach is adopted, vials should be protected by Grade A conditions up to the point of leaving the aseptic filling area, and thereafter, stoppered vials should be protected with a Grade A supply until the cap has been crimped."</div>
+        <p>Where facilities are being modified to comply with these regulations, the following factors should be considered:</p>
+        <ul>
+            <li>A <span class="key-term">UFH</span> can be used to provide a robust Grade A (Grade 5) local airflow.</li>
+            <li>The loss of air from an area due to an extract system for capper particles should be considered during balancing, unless the air is re-introduced into the room (via a HEPA filter).</li>
+            <li>The heat gains from the fans of unidirectional flow and extract systems should be considered.</li>
+        </ul>
+
+        <h3>3.15.6 Lyophilizer</h3>
+        <p>As the loading and unloading of a <span class="key-term">freeze dryer</span> should be under Grade 5 (Grade A) conditions, it is usual to place a large UFH over the lyophilizer door. <span class="key-term">Smoke tests</span> (with and without operator presence) may reveal poor air patterns near the bottom of the door opening. A low level return (with considerable airflow) below the lyophilizer door may help improve patterns.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：製程設備與 HVAC 的「共舞」</h4>
+            <p>製程設備不是孤立運作的——每一台設備都會影響房間的壓差、溫度、濕度和氣流模式。本節涵蓋五類關鍵設備整合挑戰：</p>
+            <ul>
+                <li><strong>除塵系統（Dust Extract）</strong>：故障時的交叉污染風險、脈衝清潔時的氣流反向</li>
+                <li><strong>造粒/包衣/流化床（Granulators/Coaters/FBD）</strong>：獨立 AHU、非運作期的防潮、CIP 需求</li>
+                <li><strong>去熱原隧道（Depyrogenation Tunnel）</strong>：跨分級區域、啟動動態期、325&deg;C 高溫 HEPA 測試</li>
+                <li><strong>隔離器（Isolator）</strong>：多操作模式對房間壓差的影響、VPHP 洩漏監控</li>
+                <li><strong>壓蓋/凍乾機（Capping/Lyophilizer）</strong>：Grade A 保護需求、鋁屑排氣</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：隔離器是「太空站」，RABS 是「無塵室」</h4>
+            <p>回到我們的經典比喻：</p>
+            <ul>
+                <li><strong>隔離器（Isolator，隔離器）</strong>= 太空站：完全密閉的微環境，內部自給自足，與外部物理隔離。即使外面是「太空」（低等級環境），內部仍然安全</li>
+                <li><strong>RABS（限制進出屏障系統）</strong>= 無塵室：開放式屏障，依賴周圍環境（Grade B 背景）的氣流品質來維持無菌性</li>
+            </ul>
+            <p>ISPE 稱隔離器為<strong>「綠色技術」</strong>——因為背景環境可以降級，HVAC 風量和能耗大幅減少。這是未來 CDMO 設施的趨勢方向。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：去熱原隧道的 HVAC 設計陷阱</h4>
+            <p>去熱原隧道是無菌充填線上最容易被忽略的 HVAC 挑戰：</p>
+            <ul>
+                <li><strong>位置特殊</strong>：橫跨兩個不同潔淨等級的房間（洗瓶區 vs 充填區）</li>
+                <li><strong>間歇運行</strong>：啟動和穩定期間的氣流動態變化會擾亂壓差</li>
+                <li><strong>沒有加壓冷進料區</strong>：高溫空氣（可達 350&deg;C）會從隧道前端溢出</li>
+                <li><strong>高溫 HEPA 測試</strong>：在 325&deg;C 以上的環境中驗證 HEPA 完整性是極大技術挑戰</li>
+            </ul>
+            <p>解決方案的關鍵：設置<strong>與充填線同壓的加壓冷進料區</strong>，並使用<strong>主動壓差控制</strong>來應對隧道啟動期的動態變化。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：隔離器操作模式切換對房間壓差的影響</h4>
+            <p>隔離器有多個操作模式：開放設定（Unidirectional Flow）、CIP、密閉操作、VPHP 去污染、通風吹掃。每次模式切換都可能改變隔離器與房間之間的氣流關係。</p>
+            <p>特別注意 <strong>VPHP 通風吹掃階段</strong>：隔離器排出的空氣不再回到房間（因為含有殘餘 H2O2），這會導致房間壓力下降。HVAC 控制必須預先考慮這些過渡狀態。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的壓蓋策略決策</h4>
+            <p>EU Annex 1 對壓蓋提供了兩種合規路徑：</p>
+            <ul>
+                <li><strong>方案 A：無菌壓蓋</strong>——使用已滅菌的鋁蓋，在無菌核心區內完成。優點：簡化流程。缺點：設備成本高、鋁屑污染管理困難</li>
+                <li><strong>方案 B：潔淨壓蓋</strong>——在無菌核心區外完成，但必須用 Grade A 氣流保護已加塞的藥瓶，直到鋁蓋壓緊。優點：設備相對簡單。缺點：需要額外的 UFH 和排氣系統</li>
+            </ul>
+            <p>多數 CDMO 選擇方案 B + UFH 保護，因為它更容易在現有設施中改造實施。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>除塵系統使用壓縮空氣脈衝清潔時，氣流可能短暫反向——這對多房間共用除塵系統有什麼交叉污染風險？如何降低這個風險？</li>
+                <li>隔離器使用「房間空氣」和「專屬 AHU」作為進氣來源，各有什麼優缺點？CDMO 應該如何選擇？</li>
+                <li>為什麼凍乾機門前方的 UFH 需要做「有操作人員」和「無操作人員」兩種條件下的煙霧測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.16 Medical Devices -->
+<!-- ============================================================ -->
+<div class="section-title">3.16 Medical Devices（醫療器材）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>[Figure 3.18: Typical AF&amp;ID for "Clean" or Bioburden Reduced, Device Assembly]</em></p>
+        <p><em>[Figure 3.19: Horizontal Flow Clean Workstation]</em></p>
+        <p>Requirements for environmental control in <span class="key-term">medical device</span> facilities are based on the risk to patients from a medical device and downstream processing. For further information on the risks and classification of medical devices, see Appendicies 8 and 10.</p>
+        <p>Where devices do not contact the patient or contact the patient only externally, cleanliness requirements may be equivalent to those for packaging areas.</p>
+        <p>Where medical device components are used internally, but are processed downstream (e.g., <span class="key-term">terminally sterilized</span>) processing typically should be performed in a classified space, as with other sterile products.</p>
+        <p>Where devices or components of a device are used internally for patients, <span class="key-term">aseptic considerations</span> should be applied.</p>
+        <p>Cleanliness of open processing areas should be maintained via control of airflow between product handling area or airlock and surrounding spaces:</p>
+        <ul>
+            <li>Isolation via an airlock should be used. Where solvents are used (e.g., for welding plastics), <span class="key-term">pressure bubble airlocks</span> are recommended to prevent migration of flammable vapors to the building.</li>
+            <li>Monitoring and alarming of direction of airflow (through DP, hotwire velocity sensors, air balance, flow tracking, etc.) to surrounding rooms is recommended.</li>
+            <li>AHU filtration &ndash; <span class="key-term">MERV 7</span> followed by <span class="key-term">MERV 13/14</span> filtration is recommended.</li>
+            <li>Final filtration &ndash; <span class="key-term">95% DOP/PAO efficiency</span> is recommended in non-aseptic product areas; terminal HEPA filters may be appropriate.</li>
+            <li>Return or exhaust air grilles may be equipped with removable 30% dust stop filters. The effect of filter loading on room pressurization or direction of airflow should be considered.</li>
+            <li>Airflow and makeup air delivery should be directed to protect the product.</li>
+            <li>Dust collection with high transport velocities (<span class="key-term">3000 to 5000 fpm, 15 to 25 m/s</span>) may be required where plastics or metals are machined.</li>
+            <li>LEV for smoke and solvent vapor removal may be required where machining metal, welding metal and solvent, or heat welding plastics. These should be designed and engineered according to ACGIH standards.</li>
+            <li>The ACGIH Industrial Ventilation Manual decision analysis and design criteria should be consulted for guidance on recirculation.</li>
+            <li>Recirculation of LEV exhaust to the AHU or the general building usually is not acceptable.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：醫療器材 HVAC 遵循「患者風險分級」原則</h4>
+            <p><strong>Medical Device（醫療器材）</strong>：涵蓋範圍極廣，從外用繃帶到植入式心臟瓣膜。HVAC 需求完全取決於器材的<strong>患者風險等級</strong>：</p>
+            <ul>
+                <li><strong>不接觸患者 / 僅外部接觸</strong>：HVAC 需求等同包裝區——基本控制即可</li>
+                <li><strong>內部使用但有終端滅菌</strong>：需要分級環境（如 Grade C/D），因為終端滅菌是最後的安全網</li>
+                <li><strong>內部使用且無終端滅菌</strong>：必須使用無菌製程標準——等同注射劑充填的 HVAC 要求</li>
+            </ul>
+            <p>這個分級邏輯完全符合決策層級：<strong>無菌保證（患者安全）永遠是第一優先</strong>。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：醫療器材的 HVAC 就像餐具的衛生標準</h4>
+            <p>不同類型的餐具需要不同等級的清潔：</p>
+            <ul>
+                <li><strong>外帶紙盒（不接觸食物的外包裝）</strong>= 基本衛生即可</li>
+                <li><strong>盤子（接觸食物但會再洗一次）</strong>= 需要乾淨環境存放，但最後有清洗步驟</li>
+                <li><strong>手術刀（直接進入人體）</strong>= 必須在無菌條件下處理，容錯率為零</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：醫療器材製造的獨特挑戰——金屬/塑料加工</h4>
+            <p>與製藥設施不同，醫療器材製造可能涉及金屬切削、塑料焊接等工業加工。這帶來獨特的 HVAC 需求：</p>
+            <ul>
+                <li><strong>高速除塵</strong>：金屬/塑料碎屑需要 3000-5000 fpm（15-25 m/s）的高傳輸速度才能有效輸送</li>
+                <li><strong>溶劑蒸氣排除</strong>：塑料焊接產生的溶劑蒸氣需要 LEV 排除，且不可回流</li>
+                <li><strong>壓力泡氣閘</strong>：使用溶劑的區域建議採用壓力泡氣閘，防止易燃蒸氣擴散到建築其他區域</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個植入式骨科器材（如人工關節）的組裝線應該用什麼等級的 HVAC？如果該器材會在下游進行伽馬射線滅菌呢？</li>
+                <li>為什麼醫療器材製造中 LEV 的排氣不可以回流到 AHU？這與 OSD 設施的規定有什麼相似之處？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>OSD 非強效</strong>：CNC 環境、MERV 7+13/14 過濾、氣閘隔離、LEV 粉塵控制。多產品併行需雙重 HEPA 和壓力氣閘</li>
+        <li><strong>OSD 強效</strong>：密閉容器為首選，100% 直排或雙重 HEPA，BIBO 過濾器，聲光警報。操作員保護與產品保護同等重要</li>
+        <li><strong>無菌製程</strong>：終端 HEPA（天花板安裝）、壓差串聯、單向氣流 0.45 m/s、24/7 運行、304SS 風管。ISPE 的最高等級 HVAC 要求</li>
+        <li><strong>無菌強效粉末</strong>：隔離器 + 專屬 HVAC 解決「正壓 vs 負壓」矛盾。Blow-through AHU 用於低濕控制</li>
+        <li><strong>包裝/標籤</strong>：初級包裝等同製造區標準；二級包裝僅需 CNC + 舒適條件</li>
+        <li><strong>實驗室</strong>：VAV 系統 + 排煙櫃整合是核心。化學實驗室負壓、潔淨實驗室正壓。最低 6 AC/hr，建議 8-12 AC/hr</li>
+        <li><strong>取樣/秤量</strong>：HVAC 等級應匹配下游製程需求。下吹式工作台提供操作員防護</li>
+        <li><strong>倉庫</strong>：USP 受控室溫 15-30&deg;C / MKT &lt; 25&deg;C。溫度分佈圖是基本要求。生物製劑需要冷鏈</li>
+        <li><strong>製程設備整合</strong>：隔離器是「綠色技術」，可降低背景環境等級。去熱原隧道、壓蓋、凍乾機都有特殊 HVAC 考量</li>
+        <li><strong>醫療器材</strong>：HVAC 跟隨患者風險等級——從包裝區標準到無菌製程標準，取決於器材的預期用途和下游滅菌方式</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

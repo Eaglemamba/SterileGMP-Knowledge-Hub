@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Chapter 2: Design Process (Part A)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ISPE Green Override
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 2: Design Process (Part A)</h1>
+    <div class="subtitle">設計流程（上）：導論與使用者需求</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p21 - p36</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 HVAC（暖通空調）設計的四步驟流程：使用者需求 → 功能設計 → 詳細設計 → 施工文件，以及各步驟的交付物</li>
+        <li>掌握 URS（User Requirement Specification，使用者需求規格）的內容要素，以及它如何驅動整個 HVAC 設計策略</li>
+        <li>了解關鍵 HVAC 參數（溫度、濕度、壓差、換氣次數、微粒控制）對不同設施類型的影響差異</li>
+        <li>學會區分 Critical HVAC Parameters（關鍵 HVAC 參數）與 Non-Critical Parameters（非關鍵參數），以及對應的 Direct Impact / Indirect Impact 系統概念</li>
+        <li>理解 DQ（Design Qualification，設計確效）在 HVAC 設計流程中的檢查重點</li>
+        <li>掌握警報與監控策略：Design Point、Design Tolerance、Alert Limit、Action Alarm Limit 的階層關係</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1 Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">2.1 Introduction（導論）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The objectives of <span class="key-term">HVAC design</span> are to provide GMP compliant systems that meet product and process needs, along with <span class="key-term">GEP</span> and business requirements (such as reliability, maintainability, sustainability, flexibility, and safety). In addition, the design needs to comply with local codes and standards.</p>
+
+        <p>Therefore, the HVAC design team should understand both advanced HVAC system design and the current requirements of regulatory authorities that govern a facility's operations. This includes the GMPs of the regions where a facility's product will be sold, as well as where a facility is located. The team also should consider how HVAC systems integrate with, and are affected by, other aspects of the facility design and expected operation. Issues that are typically associated with HVAC design are:</p>
+
+        <ul>
+            <li>personnel, equipment, and material flow patterns</li>
+            <li>open or closed manufacturing</li>
+            <li>manufacturing activities envisioned in each room</li>
+            <li>architectural layout</li>
+            <li>finishes and tightness of room construction</li>
+            <li>door selection and location</li>
+            <li>air lock strategy</li>
+            <li>gowning and cleaning strategy</li>
+            <li>spatial requirements for HVAC equipment and ductwork</li>
+            <li>intake locations and exhaust locations</li>
+        </ul>
+
+        <p>The requirements of pharmaceutical regulatory bodies, such as the FDA and the EU regulators, will affect the project design at the HVAC system design level, particularly relating to establishment of <span class="key-term">critical parameters</span>. For further information, see the relevant ISPE Baseline Guides (Reference 13, Appendix 12).</p>
+
+        <p>The design team should deal with conflicts between GMP requirements and local building codes/standards that apply to the design of facilities and HVAC systems. These include applicable local building, mechanical, electrical, fire, energy, and seismic codes circulated by organizations, such as the International Code Council (ICC), National Fire Protection Association (NFPA) (US), and local building authorities. Other compliance related requirements from organizations such as Occupational Safety and Health Administration (OSHA) (US), Health and Safety Executive (HSE) (UK), and European Union – Occupational Safety and Health Administration (EU-OSHA)/European Agency for Safety and Health at Work (EASHW) deal with employee health and safety and process safety. The owner's insurance representative also may have requirements beyond those of the local codes authority.</p>
+
+        <p>HVAC design engineers should work closely with other disciplines to maximize the success of a project. This chapter provides suggestions to help determine the <span class="key-term">user requirements</span> (the 'what') and the <span class="key-term">functional design</span> (the schematic 'how to') that define a facility's objectives. It also provides options to be considered in creating a design that has low <span class="key-term">life cycle cost</span> and is sustainable.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 設計的雙重目標</h4>
+            <p><strong>HVAC（暖通空調）</strong>設計在藥廠中承擔兩個核心使命：</p>
+            <ul>
+                <li><strong>GMP 合規</strong>：確保產品品質——溫濕度、微粒、壓差等環境參數直接影響藥品無菌性與穩定性</li>
+                <li><strong>GEP（Good Engineering Practice，良好工程實務）</strong>：確保系統可靠、可維護、可持續且經濟——這是工程設計的本分</li>
+            </ul>
+            <p>本節開宗明義就點出：HVAC 設計不是只做到「法規要求」就好，還必須兼顧商業需求（reliability, maintainability, sustainability, flexibility, safety）。這正是 GEP 的精神。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：HVAC 設計如同城市規劃</h4>
+            <p>把一座藥廠想像成一座小型城市：</p>
+            <ul>
+                <li><strong>人員動線</strong> = 市民通勤路線——不能讓「髒區」的人流穿越「潔淨區」</li>
+                <li><strong>氣鎖策略</strong> = 城市安檢關卡——進入機場管制區必須通過安檢，進入潔淨室也必須通過氣鎖</li>
+                <li><strong>壓差控制</strong> = 水流方向——水永遠從高處往低處流，空氣也必須從「乾淨區」流向「較髒區」</li>
+            </ul>
+            <p>HVAC 工程師就是這座「製藥城市」的城市規劃師，必須同時滿足「住民安全」（GMP）和「市政效率」（GEP）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：GMP 與地方法規的衝突</h4>
+            <p>本節特別提醒設計團隊要處理 GMP 要求與當地建築法規之間的潛在衝突。例如：</p>
+            <ul>
+                <li><strong>消防法規</strong>可能要求走廊保持正壓排煙，但 GMP 要求走廊相對潔淨室為負壓</li>
+                <li><strong>節能法規</strong>可能限制換氣量，但 GMP 要求高換氣次數</li>
+                <li><strong>地震法規</strong>可能影響風管路徑設計</li>
+            </ul>
+            <p>實務上，GMP 要求通常優先，但必須透過風險評估（Risk Assessment）來正式記錄取捨邏輯。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的藥廠位於台灣，需要同時滿足 PIC/S GMP 和台灣建築法規。如果消防法規要求走廊正壓通風，但 GMP 要求走廊相對生產區為負壓，你會如何處理這個衝突？</li>
+                <li>為什麼 ISPE 特別強調 HVAC 設計需要「跨專業合作」？列出至少三個需要與 HVAC 工程師密切配合的專業角色。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- HVAC Design Process Steps -->
+<!-- ============================================================ -->
+<div class="section-title">HVAC Design Process（HVAC 設計流程）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The design process may be considered as several steps; each step provides a deliverable:</p>
+
+        <table>
+            <tr><th>Step</th><th>Deliverable</th></tr>
+            <tr><td>1. <span class="key-term">User Requirements/Conceptual Design</span></td><td>User Requirements/Conceptual Design Report (CDR)</td></tr>
+            <tr><td>2. <span class="key-term">Functional (Schematic) Design</span></td><td>Functional Design Specification (FDS)/Basis Of Design (BOD)</td></tr>
+            <tr><td>3. <span class="key-term">Detailed Design</span></td><td>Design Documents</td></tr>
+            <tr><td>4. <span class="key-term">Construction Documents and Support</span></td><td>Construction Documents (CDs), Revisions/Bulletins</td></tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：設計四步驟流程</h4>
+            <p>HVAC 設計採用<strong>漸進細化</strong>的四階段流程，每一階段都有明確的交付物（deliverable）。這確保設計從「大方向」逐步收斂到「施工細節」：</p>
+            <ul>
+                <li><strong>Step 1 — URS/CDR</strong>：定義「我要什麼」（What）——使用者需求</li>
+                <li><strong>Step 2 — FDS/BOD</strong>：定義「怎麼做」（How）——功能設計方案</li>
+                <li><strong>Step 3 — Detailed Design</strong>：把「怎麼做」轉化為可施工的技術細節</li>
+                <li><strong>Step 4 — CDs</strong>：出圖、發包、現場支援</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蓋房子的四個階段</h4>
+            <p>這就像蓋一棟房子：</p>
+            <ul>
+                <li><strong>Step 1</strong> = 跟建築師說「我要三房兩廳、朝南、有車庫」（需求）</li>
+                <li><strong>Step 2</strong> = 建築師畫出平面配置圖和動線規劃（方案設計）</li>
+                <li><strong>Step 3</strong> = 結構工程師算出樑柱尺寸、水電管線路徑（詳細設計）</li>
+                <li><strong>Step 4</strong> = 發包給營造廠，工地監造（施工）</li>
+            </ul>
+            <p>藥廠 HVAC 的邏輯完全一樣，只是多了「GMP 合規」這個維度。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：越早決定越省錢</h4>
+            <p>注意 Step 1（使用者需求）的重要性——文件明確指出，需求定義階段「has the greatest effect on the size and complexity of the facility, and ultimately, the cost」。在 Step 1 增加一點潔淨度要求，可能導致後續成本倍增。這就是為什麼 URS 階段必須極其嚴謹。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.1 User Requirements -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.1 User Requirements（使用者需求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The first step in the design process is the definition and documenting of the key requirements of the user (process and quality criteria, maintainability, etc.) by the HVAC design engineer. This requires collaboration with both the user and the <span class="key-term">Quality Unit</span> to determine critical HVAC performance parameters, and therefore, the environmental requirements for the facility design. Some parameters are directly controllable (such as room temperature), while other parameters (such as <span class="key-term">airborne particles</span>) cannot be controlled directly, but are the result of controllable parameters (room DP, airflow, filters, etc.).</p>
+
+        <p>Performance parameters may have been established through a user's internal standards. The definition of <span class="key-term">user requirements</span> is a critical step in the design process and has the greatest effect on the size and complexity of the facility, and ultimately, the cost to construct, commission, qualify, operate, and maintain that facility. Small incremental increases in the level of cleanliness or in the area of classified space can result in relatively large increases in the initial cost and ongoing operating costs of a facility. The required levels of cleanliness for airborne particles, biological or chemical contamination for processes, equipment, and personnel in a facility should be carefully considered, via <span class="key-term">risk assessment</span> and established explicitly.</p>
+
+        <p>HVAC engineers should play a key role throughout the design process in helping project teams to understand the implications of requirements on product quality and <span class="key-term">life cycle cost</span> of a facility or process. Time should be allowed to establish user requirements thoroughly and to ensure that they are understood by all parties involved. This should provide benefit in the long term with fewer changes (and costly changes/delays) in the detailed design.</p>
+
+        <p>User requirements for HVAC typically include:</p>
+        <ul>
+            <li>A room schedule with environmental parameters:
+                <ul>
+                    <li>Temperature</li>
+                    <li>RH</li>
+                    <li>Classification (if any)</li>
+                    <li>Recovery time (if any)</li>
+                    <li>Air change rate requirements</li>
+                    <li>Particulate control or filtration expectations (if not classified)</li>
+                    <li>DP or direction of airflow requirements</li>
+                    <li>Ancillary ventilation or extraction requirements (e.g., dust collection)</li>
+                </ul>
+            </li>
+            <li>Preliminary AHU count or list with zoning assumptions:
+                <ul>
+                    <li>Areas served</li>
+                    <li>AHU basic configuration (e.g., recirculated or 100% fresh air)</li>
+                </ul>
+            </li>
+            <li>Ancillary HVAC systems list:
+                <ul>
+                    <li>Dust collection</li>
+                    <li>Chilled water</li>
+                    <li>Cooling Towers</li>
+                    <li>Scrubbers/Carbon Adsorption</li>
+                </ul>
+            </li>
+            <li>System Qualification Philosophy (e.g., system boundaries at room or AHU level)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：直接可控 vs. 間接可控參數</h4>
+            <p>本節引入一個重要的概念區分：</p>
+            <ul>
+                <li><strong>直接可控參數</strong>：如溫度——可以直接設定空調溫度控制器</li>
+                <li><strong>間接可控參數</strong>：如微粒數——無法直接「設定」微粒數，必須透過控制壓差（DP）、換氣次數（Air Change Rate）、過濾效率等手段間接達成</li>
+            </ul>
+            <p>這個區分對 HVAC 設計極為關鍵——間接可控參數的達成需要多個系統協同工作，設計複雜度和驗證工作量都高出許多。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：潔淨度增加 = 成本指數上升</h4>
+            <p>原文明確警告：<strong>「Small incremental increases in the level of cleanliness... can result in relatively large increases in the initial cost and ongoing operating costs.」</strong></p>
+            <p>這是 HVAC 設計中最常見的陷阱——為了「保險起見」而過度提高潔淨等級。例如：</p>
+            <ul>
+                <li>將一個房間從 Grade D 提升到 Grade C，換氣次數可能從 6~20 AC/hr 提升到 20~40 AC/hr</li>
+                <li>這意味著 AHU（空氣處理機組）尺寸加大、風管加粗、能源消耗翻倍</li>
+                <li>每年多出的運營成本可能達數百萬台幣</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>成本影響模型</h4>
+            <pre>
+潔淨度等級提升的成本影響（概估）：
+
+Grade D → Grade C：初始成本 +30~50%，營運成本 +40~60%
+Grade C → Grade B：初始成本 +50~80%，營運成本 +60~100%
+Grade B → Grade A：初始成本 +100~200%，營運成本 +150~300%
+
+關鍵變數：
+  - AHU 容量 ∝ 換氣次數 × 房間體積
+  - 能耗 ∝ 風量 × 壓降 × 運轉時間
+  - 維護成本 ∝ HEPA 數量 × 更換頻率</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：餐廳的衛生等級投資</h4>
+            <p>這就像開餐廳決定要做到什麼衛生等級：</p>
+            <ul>
+                <li><strong>一般餐廳</strong>（Grade D）：基本通風、定期清潔就夠</li>
+                <li><strong>高檔壽司店</strong>（Grade C）：需要空調恆溫、專用冷藏區</li>
+                <li><strong>手術室級別</strong>（Grade A/B）：HEPA 過濾、正壓控制、全身無塵衣——成本暴增</li>
+            </ul>
+            <p>你不會為了做炒飯去建一間手術室廚房。同理，HVAC 設計必須根據<strong>實際產品需求</strong>決定潔淨等級，而非「預設最高標準」。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO（委託開發暨製造組織）的營運主管，你在規劃新產線時，客戶要求「所有生產區域都要 Grade B」。根據本節的原則，你應該：</p>
+            <ol>
+                <li>進行風險評估（Risk Assessment），確認哪些區域真正需要 Grade B</li>
+                <li>與客戶的品質團隊溝通，說明 Grade B 的成本影響</li>
+                <li>提出替代方案：例如關鍵操作區 Grade B + 輔助區 Grade C/D</li>
+                <li>用 TCO（總擁有成本）分析來支持你的建議</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼微粒數是「間接可控參數」而非「直接可控參數」？列出至少三個控制微粒數的手段。</li>
+                <li>如果你是 HVAC 工程師，客戶要求「所有倉儲區域都做 Grade D」，但你發現其中有些區域只存放密封容器中的成品，你會如何建議？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.2 Functional Design -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.2 Functional Design（功能設計）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Once user requirements are established, HVAC engineers should work with other disciplines to develop a <span class="key-term">functional (or schematic) design</span>. The functional design should include:</p>
+
+        <ul>
+            <li>flow patterns of people, product, equipment, and other materials; a basic layout</li>
+            <li>further clarification of the requirements established in the user requirements</li>
+            <li>a basic AFD and critical elements of an AF&amp;ID for each system</li>
+            <li>AHU zoning map</li>
+            <li>room classification map</li>
+            <li>pressure or direction of airflow map</li>
+            <li>airlocking schemes</li>
+            <li>potential contamination sources, paths, risks and their control</li>
+            <li>a <span class="key-term">risk assessment</span> of alternative engineering solutions that can meet the user requirements</li>
+            <li>preliminary sections or service zoning</li>
+            <li>preliminary specifications</li>
+        </ul>
+
+        <p>The risk assessment can be combined with an economic analysis to assist in design choices that yield a facility and HVAC system that will meet requirements effectively with best <span class="key-term">total cost of ownership</span>.</p>
+
+        <p>The project teams should consider the following issues during development of the functional design:</p>
+        <ul>
+            <li>relationship between room cleanliness and contamination risks to product</li>
+            <li>procedures to control deposited contamination (i.e., cleaning or sanitization)</li>
+            <li>reliability and redundancy of equipment and systems</li>
+            <li>flexibility of the facility and systems</li>
+            <li>ease of construction and of startup/commissioning</li>
+            <li>ease of maintenance, servicing, and operation</li>
+            <li>qualification strategy</li>
+            <li>commissioning and qualification plan</li>
+            <li>economics and facility life cycle cost</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：功能設計的關鍵交付物</h4>
+            <p>功能設計階段將 URS 的「需求語言」轉化為「工程語言」。幾個關鍵交付物值得特別理解：</p>
+            <ul>
+                <li><strong>AFD（Air Flow Diagram）</strong>：氣流方向圖——展示空氣如何在設施中流動</li>
+                <li><strong>AF&amp;ID（Air Flow &amp; Instrumentation Diagram）</strong>：類似 P&amp;ID，但專門針對 HVAC 系統——展示風管、閥門、感測器的配置</li>
+                <li><strong>AHU Zoning Map</strong>：空氣處理機組（AHU）分區圖——哪些房間由哪台 AHU 服務</li>
+                <li><strong>Pressure Map</strong>：壓差分布圖——整個設施的壓力階梯設計</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風險評估 + 經濟分析 = 最佳 TCO</h4>
+            <p>ISPE 明確建議將<strong>風險評估（Risk Assessment）</strong>與<strong>經濟分析</strong>結合使用。這是非常實際的工程決策方法：</p>
+            <ul>
+                <li>方案 A 可能風險最低但成本最高</li>
+                <li>方案 B 可能成本最低但需要更多監控</li>
+                <li>方案 C 可能是最佳平衡——合理風險 + 可接受成本</li>
+            </ul>
+            <p>在 CDMO 環境中，這種分析對投資決策尤為關鍵——你需要用數據說服管理層和客戶。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：裝修設計的方案選擇</h4>
+            <p>功能設計就像房屋裝修的「方案設計」階段——設計師不是只給你一個選項，而是給你 2~3 個不同的配置方案，分別標註預算和優缺點，讓你根據需求和預算做出最佳選擇。HVAC 的功能設計也是如此：提出多個替代方案，用風險評估和經濟分析來輔助決策。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼功能設計階段就需要考慮「qualification strategy」？如果等到詳細設計才考慮，可能會發生什麼問題？</li>
+                <li>AFD 和 AF&amp;ID 的關係是什麼？為什麼功能設計階段只需要「basic AFD」和「critical elements of AF&amp;ID」，而非完整的圖面？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.3 Detailed Design -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.3 Detailed Design（詳細設計）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Once the BOD is approved the project moves into <span class="key-term">Detailed Design</span>. During this phase, the technical details of how the systems will work should be established. The Detailed Design for HVAC systems should include:</p>
+
+        <ul>
+            <li>updates and further detail for all documents produced previously</li>
+            <li>draft ductwork plans</li>
+            <li>detailed <span class="key-term">AHU</span> layouts with performance specifications</li>
+            <li>draft sections, elevations, and coordination drawings</li>
+            <li>final AF&amp;ID for each system</li>
+            <li>control system sequences of operation</li>
+            <li>final equipment selections</li>
+            <li>final specifications</li>
+            <li>system commissioning and qualification draft protocols</li>
+        </ul>
+
+        <p>Commissioning and qualification requirements should be considered during the design phase to avoid a negative impact on the project in scope, cost, and schedule. HVAC engineers should include planning for commissioning and qualification activities during the design phase, before detail design is complete, because <span class="key-term">flaws in HVAC system design often initially become apparent during commissioning</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：BOD 核准後才進入詳細設計</h4>
+            <p><strong>BOD（Basis of Design）</strong>是功能設計的最終交付物，相當於設計的「定案文件」。只有在 BOD 被所有利害關係人核准後，才應該進入詳細設計。這個門檻（gate）的設置是為了防止在詳細設計階段還在改需求——那是最昂貴的變更。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：設計缺陷往往在試車時才浮現</h4>
+            <p>原文的一句話非常重要：<strong>「flaws in HVAC system design often initially become apparent during commissioning」</strong>。</p>
+            <p>這意味著：</p>
+            <ul>
+                <li>如果等到試車才發現設計問題，修改成本可能是設計階段的 10~50 倍</li>
+                <li>因此，ISPE 強烈建議在設計階段就準備好 C&amp;Q（Commissioning &amp; Qualification）草案方案</li>
+                <li>「為驗證而設計」（Design for Qualification）是最佳實踐</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：考試前先看考卷範圍</h4>
+            <p>在詳細設計階段就準備 C&amp;Q 方案，就像考試前先看考卷範圍——你知道最後要驗什麼，就能在設計時預留測試點、測量口、感測器位置。如果等到「考試當天」才發現需要在牆壁上鑽洞裝感測器，那代價就太大了。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「control system sequences of operation」必須在詳細設計階段完成？如果到施工階段才定義控制邏輯，會有什麼風險？</li>
+                <li>HVAC 系統的典型 commissioning 活動包含哪些？為什麼它常常是整個設施啟用中最具挑戰性的環節？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.4 Design Review and Qualification -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.4 Design Review and Qualification（設計審查與確效）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>At specific points in the design process (e.g., at the end of functional design and at the end of detailed design) a formal <span class="key-term">design review/design qualification</span> should be performed to verify that the project design to date is fit for use. This review should focus two main areas:</p>
+
+        <ul>
+            <li><strong><span class="key-term">GEP</span></strong>
+                <ul>
+                    <li>Is the design technically robust?</li>
+                    <li>Does the design satisfy user preferences as expressed in the user requirements?</li>
+                    <li>Can the design be constructed, commissioned, operated, and maintained?</li>
+                </ul>
+            </li>
+            <li><strong><span class="key-term">GMP</span></strong>
+                <ul>
+                    <li>Does the design meet the product requirements as expressed in the user requirements?</li>
+                    <li>Is the design aligned with the risk assessment?</li>
+                    <li>Does the design meet regulatory expectations?</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>For HVAC systems, typical areas to check during <span class="key-term">design qualification</span> include:</p>
+        <ul>
+            <li>compliance to temperature, humidity, and classification requirements</li>
+            <li>use of classified space, where required</li>
+            <li>AHU system map coordination with manufacturing activities</li>
+            <li>dust or contaminant generation coordination with mitigation (e.g., LEV)</li>
+            <li>cross-contamination controls</li>
+            <li>airlock plan coordination with pressure regime</li>
+            <li>air change rates used</li>
+            <li>compliance with fire and smoke codes, compliance with emissions permits</li>
+            <li>maintenance, testing, and commissioning access and clearances</li>
+            <li>redundancy and reliability</li>
+            <li>integration of process systems with facility</li>
+        </ul>
+
+        <p>For further information on Design Review, see Chapter 4 of this Guide.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：DQ 的雙重審查維度</h4>
+            <p><span class="key-term">DQ（Design Qualification，設計確效）</span>不只是「看看圖紙對不對」，而是從兩個完全不同的角度進行系統性審查：</p>
+            <ul>
+                <li><strong>GEP 維度</strong>（工程品質）：系統能不能造出來？好不好維護？使用者的偏好有沒有被滿足？</li>
+                <li><strong>GMP 維度</strong>（法規合規）：產品品質能不能被保護？風險評估有沒有對齊？法規期待有沒有達到？</li>
+            </ul>
+            <p>只通過 GMP 審查但工程上不可行的設計是無用的；只通過 GEP 審查但不符合 GMP 的設計是違規的。<strong>兩者缺一不可。</strong></p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：DQ 的 11 項 HVAC 檢查清單</h4>
+            <p>原文列出的 11 項 DQ 檢查重點是實務中非常有用的查核清單（checklist）。在 CDMO 環境中，建議你把這 11 項做成正式的 DQ 檢查表格，並要求設計工程師逐項簽核。特別注意：</p>
+            <ul>
+                <li><strong>Cross-contamination controls</strong>——在多產品 CDMO 設施中，這是客戶和法規稽查的焦點</li>
+                <li><strong>Maintenance access and clearances</strong>——設計時忘記預留維護通道是最常見的設計缺陷之一</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：建築師與消防隊的雙重驗收</h4>
+            <p>DQ 的雙重審查就像新建築物的驗收：</p>
+            <ul>
+                <li><strong>建築師驗收（GEP）</strong>：結構安全嗎？動線合理嗎？施工品質好嗎？</li>
+                <li><strong>消防隊驗收（GMP）</strong>：逃生通道符合消防法規嗎？灑水系統正常嗎？防火門到位嗎？</li>
+            </ul>
+            <p>兩個驗收都通過，建築物才能取得使用執照。藥廠的 DQ 也是同樣邏輯。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「AHU system map coordination with manufacturing activities」為什麼是 DQ 的檢查重點？如果一台 AHU 同時服務無菌充填區和包裝區，會有什麼潛在問題？</li>
+                <li>在多產品 CDMO 設施中，cross-contamination controls 的 DQ 審查應該特別關注哪些 HVAC 設計元素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.5 Construction Documents and Construction Support -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.5 Construction Documents and Construction Support（施工文件與施工支援）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>After detailed design is completed the HVAC design team should complete bid documentation, resolve construction questions, and perform on-site construction reviews. HVAC engineers also may be involved in activities related to the receipt and installation of equipment and systems, to verify that they were delivered and installed in a manner consistent with the design.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：設計到施工的銜接</h4>
+            <p>這個階段雖然篇幅短，但實務中極為重要。HVAC 工程師在施工階段的角色包括：</p>
+            <ul>
+                <li><strong>發包文件（Bid Documentation）</strong>：將設計轉化為施工商能理解的招標文件</li>
+                <li><strong>施工疑義解答（RFI）</strong>：現場施工遇到與設計圖不符的狀況時，提供技術指導</li>
+                <li><strong>現場巡檢</strong>：確認設備到貨和安裝品質符合設計意圖</li>
+            </ul>
+            <p>在台灣 CDMO 實務中，這個階段經常因為設計團隊「撤場太早」而出問題——施工商自行解讀設計意圖，導致偏差。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：設計意圖的傳遞</h4>
+            <p>HVAC 系統的施工品質直接影響後續 C&amp;Q 的成敗。風管焊接品質、保溫厚度、閥門方向、感測器位置——任何一個施工偏差都可能導致試車失敗。因此，設計團隊在施工階段的持續參與（Construction Support）不是「額外服務」，而是確保設計意圖被忠實執行的必要環節。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2 Developing User Requirements -->
+<!-- ============================================================ -->
+<div class="section-title">2.2 Developing User Requirements（發展使用者需求）</div>
+
+<!-- 2.2.1 Introduction -->
+<div class="section-title" style="font-size:1rem;">2.2.1 Introduction（導論）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Users should define the quality critical environmental requirements (the <span class="key-term">HVAC critical parameters</span> and their acceptance criteria), typically in a User Requirements document. This may include the following:</p>
+
+        <ul>
+            <li>temperature for product, process, or worker comfort</li>
+            <li>humidity for product, process, worker comfort, or microbial control</li>
+            <li>air flow directions/DPs for contamination control, properties of expected airborne contaminants</li>
+            <li>area classification – airborne particles – viable and non-viable (classified spaces)</li>
+            <li>clean up (recovery) times from in-use to at-rest (classified spaces)</li>
+            <li>process containment and exposure sites (high contamination risk areas)</li>
+        </ul>
+
+        <p>User requirements provide information that defines the processes, activities, and environments for an operating facility. Assembling programming data for a facility early in the design process is critical to a successful project, both in terms of production output and efficiency, and in delivering the asset at the right time to maximize <span class="key-term">Return on Investment (ROI)</span> and provide the lowest <span class="key-term">Total Cost of Ownership (TCO)</span>.</p>
+
+        <p>HVAC costs, both operating and initial capital costs, usually account for a significant portion of a facility's cost. Decisions and commitments made in the early phase of project planning often are too costly to change as the project advances to the final design and then to the execution phase. User requirements should be understood, agreed to by all parties, and properly applied early in the design process. Establishing, early in the project planning, fixed user requirements that drive HVAC design criteria is critical to the overall HVAC strategy for a facility.</p>
+
+        <p>For HVAC systems, user requirements are developed as a result of gathering relevant data with regard to:</p>
+        <ul>
+            <li><strong>process:</strong> critical environmental parameters that must be achieved and maintained</li>
+            <li><strong>quality:</strong> regulatory guidance and quality principles to guide decision making on HVAC parameters that can have product impact</li>
+            <li><strong>operations:</strong> correct environment for working conditions that affect the HVAC system design</li>
+            <li><strong>maintenance:</strong> provide input on critical aspects of the HVAC system design that would ensure a low TCO</li>
+        </ul>
+
+        <p>Critical HVAC parameters often associated with qualification (e.g., temperature, humidity, DP, air quality, etc.) are treated differently from non-critical HVAC parameters. <span class="key-term">Critical HVAC parameters</span> are part of <span class="key-term">direct impact systems</span>, while systems providing only non-critical HVAC parameters are either <span class="key-term">indirect</span> or <span class="key-term">no impact systems</span> as defined in the ISPE Baseline Guide for Commissioning and Qualification.</p>
+
+        <p>HVAC systems are commissioned following GEP, while those that provide critical HVAC parameters (direct impact systems) are further qualified.</p>
+
+        <p>User requirements can either be in the form of <span class="key-term">performance-based information</span> that describes an operation and sets expectations, or may be strict criteria where critical HVAC parameters are defined by the product or regulations, e.g., air classifications (operational, or possibly at-rest or as-built).</p>
+
+        <p>For performance based information, relevant information should be obtained and the necessary criteria to meet the user requirements should be proposed. It is accepted practice to copy (similar) HVAC criteria from one facility to another facility, as long as the rationale for the original criteria is properly understood. For example, temperature and RH design criteria in an aseptic environment depend on:</p>
+        <ul>
+            <li>the type of process (closed or open)</li>
+            <li>powder or liquid</li>
+            <li>local regulatory expectations</li>
+            <li>gowning procedures</li>
+            <li>environmental monitoring procedures</li>
+            <li>the level and type of activity in the area</li>
+            <li>required alert and alarm limits</li>
+        </ul>
+
+        <p>Each of these variables should be considered when proposing criteria. Using "industry norms" or "accepted industry practices" without understanding the variables involved should be avoided.</p>
+
+        <p>Once user requirements are established, design strategies and their effects should be considered. It may be desirable to segregate HVAC systems, such that only one system deals with critical parameters, and therefore, has direct impact (e.g., processing areas on one HVAC system, support areas on another HVAC system). This may help simplify the scope of qualification.</p>
+
+        <p>The flow diagrams shown in Figure 2.1 are a simple model segregating critical HVAC parameters with separate HVAC systems versus combining critical and non-critical areas in a single HVAC system. Both design approaches would meet user requirements, but illustrate the potential complexity when using a single HVAC system to serve areas with both critical HVAC parameters and non-critical HVAC parameters. It should be noted that not every room parameter affected by a direct impact system will be critical (e.g., humidity may not be critical in a storage area inside a production facility where humidity is critical elsewhere although both areas are on the same AHU).</p>
+
+        <p>The <span class="key-term">impact assessment methodology</span> evaluates the HVAC system at the component level to identify critical (with potential impact on product) and non-critical components; therefore, making it possible to have a single HVAC system that can serve all areas. Well-defined and accepted procedures should be established, or agreed upon, when defining user requirements, allowing a single HVAC system with perhaps a lower total cost of ownership. If these concepts are not well understood, or if established procedures or practices do not recognize this methodology, the HVAC design may increase the total cost of ownership.</p>
+
+        <p><em>Figure 2.1: User Requirements that Drive HVAC Critical Parameters</em></p>
+
+        <p>Figure 2.1 reflects a traditional approach, as described in the ISPE Baseline Guide on Commissioning and Qualification, where two systems, one direct impact and one indirect or no impact, can serve a facility. The second approach is a single system that is qualified to serve both process and support areas in the facility with a focus on critical components where the system has direct impact on the process/product.</p>
+
+        <p>An alternative approach is to define systems by function, rather than by AHU. For example, monitoring systems for critical HVAC parameters are direct impact. If all the room DP monitors were grouped as the DP monitoring system they could be qualified as a single system, the air handlers themselves being indirect impact systems. Should any AHU fail to deliver the correct quantity of air, the direct impact system (the DP monitoring system) would detect it. Other grouped systems can be temperature monitoring, HEPA filtration (periodic testing), airflow monitoring (to verify air changes and recovery), RH monitoring, etc.</p>
+
+        <p>An enhanced science- and risk-based approach to verifying that HVAC systems are fit for intended use are currently being developed based on recent regulatory and industry trends and guidance. For further information, see Appendix 6.</p>
+
+        <p><strong>References for User Requirements</strong></p>
+        <p>ISPE Baseline Guides (Reference 13, Appendix 12) provide a framework to understand the different products and processes within pharmaceutical and biopharmaceutical manufacturing facility. Section 2.2.2 describes HVAC parameters as covered in the ISPE Baseline Guides and the importance of each parameter to each type of facility.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Direct Impact vs. Indirect Impact 系統</h4>
+            <p>這是 ISPE 確效框架中的核心分類概念：</p>
+            <ul>
+                <li><strong>Direct Impact System（直接影響系統）</strong>：提供關鍵 HVAC 參數的系統——必須經過 GEP commissioning + qualification（確效）</li>
+                <li><strong>Indirect Impact System（間接影響系統）</strong>：不直接影響產品品質，但支持直接影響系統運作——只需 GEP commissioning</li>
+                <li><strong>No Impact System（無影響系統）</strong>：與產品品質無關——依 GEP 管理即可</li>
+            </ul>
+            <p>這個分類直接決定了 C&amp;Q 的範圍和深度——只有 Direct Impact 系統需要完整確效。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：不要盲目複製「業界慣例」</h4>
+            <p>原文特別警告：<strong>「Using 'industry norms' or 'accepted industry practices' without understanding the variables involved should be avoided.」</strong></p>
+            <p>這在實務中極為常見的錯誤——把 A 廠的溫濕度標準直接搬到 B 廠，卻忽略了兩廠的產品、製程、氣候、穿衣規定完全不同。每一個 HVAC 參數的設定都必須有<strong>可追溯的技術理由</strong>（rationale）。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：系統分區策略——兩種方法</h4>
+            <p>本節介紹了兩種截然不同的 HVAC 系統設計方法：</p>
+            <ul>
+                <li><strong>方法 1（傳統）</strong>：按 AHU 物理分區——Direct Impact AHU 服務製程區，Indirect Impact AHU 服務輔助區。清晰但可能成本較高。</li>
+                <li><strong>方法 2（功能分區）</strong>：按功能分組——例如所有壓差監控器為一個 Direct Impact System，所有 AHU 本身為 Indirect Impact。更靈活但管理更複雜。</li>
+            </ul>
+            <p>方法 2 的核心邏輯：如果 DP 監控系統能偵測到 AHU 故障（因為壓差會偏移），那麼 AHU 本身可以視為 Indirect Impact——真正的 Direct Impact 是「監控系統」本身。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：保全系統 vs. 大門鎖</h4>
+            <p>想像一棟大樓的安全系統：</p>
+            <ul>
+                <li><strong>方法 1</strong>：每扇門都裝最好的鎖（每台 AHU 都做完整確效）——安全但昂貴</li>
+                <li><strong>方法 2</strong>：門鎖用普通的就好，但裝一套監控攝影系統（DP 監控系統做確效，AHU 只做 commissioning）——如果有人闖入，攝影系統會立刻偵測到</li>
+            </ul>
+            <p>方法 2 的前提是：你的「攝影系統」（監控系統）必須 100% 可靠。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在你的 CDMO 設施中，有一台 AHU 同時服務 Grade B 充填室和 Grade D 更衣室前區。根據本節的概念：</p>
+            <ul>
+                <li>這台 AHU 整體是 Direct Impact System（因為它服務 Grade B 區域）</li>
+                <li>但服務 Grade D 區域的風管分支上的閥門和感測器可能是 Non-critical Components</li>
+                <li>Impact Assessment 可以在元件層級識別哪些是 Critical、哪些是 Non-critical</li>
+                <li>這樣可以避免對非關鍵元件做不必要的確效測試</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>假設你的工廠有 10 台 AHU，其中 3 台服務 Grade B/C 製程區，7 台服務非分級區域。使用功能分區方法（方法 2），你會如何定義 Direct Impact 系統？</li>
+                <li>為什麼 ISPE 說「not every room parameter affected by a direct impact system will be critical」？請舉一個具體例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2 HVAC Parameters -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.2 HVAC Parameters（HVAC 參數）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>HVAC parameters that may have an effect on product generally include:</p>
+        <ul>
+            <li>temperature</li>
+            <li>RH (dry products, some liquids)</li>
+            <li>airborne contamination (viable and non-viable particles) which is affected by:
+                <ul>
+                    <li>room relative pressure</li>
+                    <li>airflow patterns (especially <span class="key-term">Unidirectional Flow Hoods (UFHs)</span>)</li>
+                    <li>air flow volume and air changes</li>
+                    <li>air filtration</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>Within the context of the ISPE Baseline Guides some parameters are common to all facility types, while other parameters apply only to specific facilities. Table 2.1 depicts an overview of typical HVAC parameters that would generally apply to each facility type.</p>
+
+        <h3>Table 2.1: Typical HVAC Critical Parameters by Facility Type</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Facility Type</th>
+                <th>Temperature</th>
+                <th>Relative Humidity</th>
+                <th>Room Relative Pressure</th>
+                <th>Airborne Particles</th>
+                <th>Air Changes</th>
+            </tr>
+            <tr>
+                <td>Pharmaceutical Ingredients</td>
+                <td>X</td>
+                <td>Final API / Powder / Bioburden API</td>
+                <td>Low</td>
+                <td>Low</td>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <td>Oral Solid Dosage Forms</td>
+                <td>X</td>
+                <td>X</td>
+                <td>X Air Direction / Cross Contamination</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Sterile Manufacturing Facilities</td>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>Biopharmaceuticals</td>
+                <td>X</td>
+                <td>X</td>
+                <td>Classified Space</td>
+                <td>See Baseline Guide</td>
+                <td>Classified Space</td>
+            </tr>
+            <tr>
+                <td>Packaging, Labeling, and Warehousing</td>
+                <td>X</td>
+                <td>Exposed Product</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Quality Laboratories</td>
+                <td>X</td>
+                <td>X</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Notes:</strong></p>
+        <ul>
+            <li>Shaded areas represent HVAC parameters that commonly have a product impact or are required for operator comfort to keep airborne contamination low. Some products may not have temperature, humidity, or particulate limits, but USP temperature and humidity limits may apply.</li>
+            <li>Non-shaded areas are HVAC parameters that normally do not have product impact. However, there may be other requirements, such as local codes or regulations that may require specific parameters be considered in the design. For example, room relative pressure may not have product impact in an API facility where processes operate closed, but because of governing codes, the design may include room negative pressurization in order to meet fire safety requirements because of the presence of flammable liquids or vapors.</li>
+        </ul>
+
+        <p>Individual HVAC parameters are discussed with an emphasis on minimum requirements to achieve "compliance," the importance of the parameter, the impact on design, and the challenges faced in determining these requirements.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：不同設施類型的 HVAC 參數需求差異</h4>
+            <p>Table 2.1 是本章最重要的參考表之一。它清楚展示了一個關鍵事實：<strong>不是每種藥廠都需要控制所有 HVAC 參數</strong>。</p>
+            <ul>
+                <li><strong>無菌製造設施（Sterile）</strong>：所有參數都是關鍵——這是最嚴格的</li>
+                <li><strong>固體劑型（OSD）</strong>：主要關注溫濕度和氣流方向（防交叉污染），但微粒和換氣次數不一定是關鍵參數</li>
+                <li><strong>原料藥（API）</strong>：溫度關鍵，其他參數只在特定條件下重要</li>
+                <li><strong>倉儲/包裝</strong>：只有溫度（和暴露產品的濕度）需要控制</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Table Analysis</h4>
+            <p>閱讀 Table 2.1 時要注意兩個重點：</p>
+            <ol>
+                <li><strong>「X」不等於「法規強制」</strong>——它只表示該參數「commonly have a product impact」。具體是否為 Critical Parameter，仍需透過風險評估決定。</li>
+                <li><strong>非關鍵不等於不需要</strong>——即使某參數不影響產品品質，local codes（如消防法規要求 API 設施負壓防爆）可能仍然要求控制。</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：不同餐廳的衛生管控重點不同</h4>
+            <p>不同類型的藥廠就像不同類型的餐廳：</p>
+            <ul>
+                <li><strong>無菌製造</strong> = 手術室級無塵廚房——溫度、濕度、微粒、壓差、通風全部嚴格控制</li>
+                <li><strong>固體劑型</strong> = 烘焙坊——溫度和粉塵控制很重要，但不需要無塵環境</li>
+                <li><strong>倉儲</strong> = 食品冷藏庫——只要溫度對就好</li>
+            </ul>
+            <p>不會用手術室的標準去管冷藏庫，同理也不該用無菌廠的 HVAC 標準去設計倉儲區。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 工廠同時有無菌充填線和固體劑型生產區。根據 Table 2.1，兩個區域的 HVAC 設計需求有哪些核心差異？</li>
+                <li>為什麼 API 設施的 Room Relative Pressure 標記為「Low」而非「X」？這對 HVAC 設計有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2.1 Temperature and Humidity -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.2.1 Temperature and Humidity（溫度與濕度）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>General Requirements</h3>
+        <p>Room temperature and RH requirements depend on the application (process design), product requirements, and operator comfort.</p>
+
+        <p>When operator comfort is the only requirement, the ranges, e.g., 65-74&deg;F (18-23&deg;C)/30-60% RH, are well understood and usually are based on historical operating practices that include gowning requirements, type of work being performed, and local climate (e.g., tropic or temperate zone).</p>
+
+        <p>EU Guide Annex 12 reinforces that the temperature and humidity within a sterile facility be kept at a comfortable condition, presumably to avoid shedding of particles and bioburden from excessive perspiration.</p>
+
+        <h3>Specific Requirements</h3>
+        <p>Room temperature and RH requirements at which product quality is adversely affected should be based on <span class="key-term">stability studies</span> or process parameters that demonstrate the acceptable operating ranges for the product or process. In the case of sterile facilities, where air is in direct contact with the product (Grade A/Grade 5 open processing areas) temperature may have an effect on product quality, and therefore, the temperature range may be limited to plus/minus a few degrees.</p>
+
+        <p>Room temperature and RH for bulk biological processing areas generally are maintained just for operator comfort. Most product processing occurs in Grade C or D (Grade 8 or CNC) areas with closed operations. In areas with unjacketed processing, when it can be demonstrated that room temperature and RH may affect product quality or processing, these HVAC parameters are considered critical.</p>
+
+        <p>For solid dosage facilities, although air is in direct contact with product, temperature generally is not as critical to product quality. Set points often are based on operator comfort for the level of gowning. Many powder products are <span class="key-term">hygroscopic</span> and require lower humidity than usually provided for operator comfort. Products or processes may require strict environmental room conditions for production or to maintain product quality (e.g., where the hygroscopic nature of an ingredient causes a weight gain when exposed to ambient humidity, which may affect weight upon formulation).</p>
+
+        <p>Storage of finished goods or raw materials, as stated by regulatory requirements, requires environmental control and monitoring of storage conditions. Generally, space temperature and humidity are monitored and controlled because of labeling requirements of the finished product or raw material. For closed and sealed containers, humidity requirements usually are not as stringent.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：溫濕度控制的三個驅動因素</h4>
+            <p>溫濕度控制不是「統一一個標準」那麼簡單。驅動因素有三：</p>
+            <ol>
+                <li><strong>產品需求</strong>：stability study 數據決定了產品可接受的溫濕度範圍</li>
+                <li><strong>製程需求</strong>：如吸濕性粉末需要低濕環境，否則會增重影響配方精度</li>
+                <li><strong>操作人員舒適度</strong>：穿著無塵衣工作的人，如果環境太熱太悶，會增加流汗→增加微粒脫落→影響潔淨度</li>
+            </ol>
+            <p>前兩者通常是「法規驅動」的關鍵參數，第三個看似「非關鍵」但在無菌環境中也可能影響產品品質。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：EU Annex 1 的「舒適度」要求</h4>
+            <p>EU GMP Annex 1（原文引用的是舊版 Annex 12，新版已整合為 Annex 1）要求無菌設施維持「舒適」的溫濕度。這看似模糊，但背後有嚴謹的科學邏輯：</p>
+            <ul>
+                <li>人體在不適環境下會<strong>大量流汗</strong></li>
+                <li>汗水蒸發會釋放<strong>微粒和微生物</strong></li>
+                <li>在 Grade A/B 環境中，這直接威脅<strong>無菌保證</strong></li>
+            </ul>
+            <p>因此，「操作員舒適度」在無菌設施中不只是人因工程問題，而是<strong>無菌保證策略</strong>的一部分。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：巧克力工廠的溫控</h4>
+            <p>吸濕性（Hygroscopic）粉末藥品就像巧克力工廠中的巧克力——如果環境濕度太高，巧克力表面會「出汗」（sugar bloom），品質完全報廢。藥品的吸濕性問題更嚴重，因為吸水增重會直接影響藥品劑量精確度（formulation weight），可能導致藥效偏移。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 Grade A 區域的溫度控制精度要求是「plus/minus a few degrees」（如 20&plusmn;2&deg;C），而一般 Grade D 區域可能是 18-25&deg;C。請解釋為什麼 Grade A 的溫度範圍必須更窄。</li>
+                <li>台灣地處亞熱帶，夏季高溫高濕。這對藥廠 HVAC 設計有什麼特殊挑戰？如何在 URS 中反映這些挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2.2 Airborne Particles -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.2.2 Airborne Particles（氣載微粒）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Airborne particles</span> should be controlled in classified facilities; i.e., Grade A, B, C (Grade 5, 7, 8), etc. Other types of facilities, e.g., oral solid dosage, bulk chemical, warehouse/storage, and packaging/labeling, generally have no specific criteria for airborne particulate, except that filtration is provided to reduce particulates below ambient levels. Local requirements may stipulate a minimum level of particulate control in specific types of facilities or product manufacture. These should be reviewed with the local quality unit for application and impact. In general, user requirements should not specify space classification for applications that do not require them. See the appropriate facility ISPE Baseline Guide.</p>
+
+        <p>Airflow patterns can influence local airborne particle levels significantly. For aseptic and classified areas, a protective <span class="key-term">isolator</span> or <span class="key-term">UFH</span> can isolate the product area from the room substantially. Although airflow patterns are not monitored, the performance of the protective device (isolator, UFH) can be monitored (e.g., pressure monitoring for an isolator or air flow monitoring for a UFH).</p>
+
+        <p>Elevators present a particular challenge in the control of airborne particulates. The piston action of the cab in the elevator shaft causes DPs change as the elevator cab moves. This makes elevators and elevator shafts difficult to construct as classified space. If elevators are needed for transport of material, closed transfer procedures are recommended.</p>
+
+        <p>For further information on the requirements for routine particle monitoring see Appendix 2. Continuous particle monitoring systems may provide a financial benefit by allowing the period between formal re-qualification and a quality benefit by providing a continuous set of environmental data.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：微粒控制的層級策略</h4>
+            <p>微粒控制不是「到處裝 HEPA（高效微粒空氣過濾器）」那麼簡單。ISPE 提出的策略層級是：</p>
+            <ol>
+                <li><strong>不需要分級的區域</strong>：只需基本過濾，降低微粒至低於外部環境即可</li>
+                <li><strong>分級區域（Classified Space）</strong>：依 Grade 設定微粒限值，用 HEPA + 換氣次數 + 壓差達成</li>
+                <li><strong>產品暴露點</strong>：用 Isolator（隔離器）或 UFH（單向流罩）提供局部 Grade A 保護</li>
+            </ol>
+            <p>關鍵原則：<strong>user requirements should not specify space classification for applications that do not require them</strong>——不要過度分級。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：電梯的「活塞效應」</h4>
+            <p>這是一個在教科書中很少被討論但在實務中極為重要的問題。電梯轎廂在井道中移動時，就像一個巨大的活塞——往下移動時壓縮下方空氣、拉低上方壓力，導致相鄰走廊的壓差劇烈波動。</p>
+            <p>解決方案：</p>
+            <ul>
+                <li>電梯井不設為 classified space</li>
+                <li>需要跨樓層傳遞物料時，使用<strong>密閉傳遞方式</strong></li>
+                <li>在電梯前室設置氣鎖（airlock）以緩衝壓差波動</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：隔離器就像太空站</h4>
+            <p>Isolator（隔離器）的概念就像太空站——在充滿「微粒」的太空環境中（背景房間），創造一個完全密封的潔淨空間（Grade A），內部壓力高於外部，任何洩漏都是「從裡往外」而非「從外往裡」。</p>
+            <p>UFH（Unidirectional Flow Hood，單向流罩）則像是一把「潔淨空氣雨傘」——從上方吹下一層穩定的潔淨空氣，把微粒推開，保護傘下的產品。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 客戶要求「所有走廊都要 Grade C」。根據本節的原則，你會如何評估這個要求的合理性？</li>
+                <li>連續微粒監測（Continuous Particle Monitoring）相比定期再確效（Periodic Re-qualification），在法規和經濟上各有什麼優勢？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2.3 Room Relative Pressure/Direction of Airflow -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.2.3 Room Relative Pressure/Direction of Airflow（房間相對壓力/氣流方向）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>General Requirements</h3>
+        <p>Room relative pressurization (direction of airflow control) is critical to protecting most manufacturing operations and often becomes the most challenging part of commissioning and qualification. A pressurization or airflow direction scheme should be established early in the design process to integrate the HVAC design with the architectural features of the facility, for example:</p>
+        <ul>
+            <li>door swings</li>
+            <li>airlock strategy</li>
+            <li>wall and floor openings</li>
+            <li>pass-throughs</li>
+        </ul>
+
+        <p>HVAC engineers should assist in the selection of the building and room fabric (i.e., walls, ceilings, etc.) during building design. Control of room pressurization can range from simple (<span class="key-term">manual balancing</span>) to complex (<span class="key-term">fully automated dynamic control</span>).</p>
+
+        <p>Manual systems are less complex, less expensive, and require less effort to commission and qualify, but are not flexible and may need to be checked and adjusted periodically.</p>
+
+        <p>Fully automated systems are more complex and expensive, can take considerably more effort to commission and qualify, have a greater tendency to tuning upsets, but are very flexible, provide consistency in measurement, and a have a high degree of reliability (as long as the correct hardware has been specified). Door closure devices that can work against the anticipated <span class="key-term">pressure differential</span> should be specified by the architect.</p>
+
+        <h3>Specific Requirements</h3>
+
+        <h3>Sterile Facilities</h3>
+        <p>Room pressurization for sterile facilities normally is designed to cascade from areas of highest cleanliness to areas of lower cleanliness. The design <span class="key-term">DP</span> measured between different grade rooms, inclusive of airlocks, should be held between <span class="key-term">10 Pa to 15 Pa</span> with the doors in their normal closed positions. For complex facility designs, where there are many different levels of pressurization, consideration should be given to avoiding an absolute pressure above <span class="key-term">37 Pa</span>, which could lead to excessive air leakage, building fabric failures, and difficulty in opening/closing doors. Special consideration should be given to product conveying lines that pass from a higher-pressure area to a lower pressure area. Such high differential room pressures also create significant air velocity through the "mouse hole" that can lead to toppling of vials or product. This DP is critical, and generally, will tend to be the highest DP across one wall in a facility.</p>
+
+        <p>Where rooms are of the same cleanliness class, a more critical room may be the same pressure, but is usually slightly higher. General industry practices have shown that, while DPs as low as 1.2 Pa are achievable, DPs of approximately <span class="key-term">5 Pa</span> between rooms are easily measurable and controllable.</p>
+
+        <h3>Bulk Biological Facilities</h3>
+        <p>Bulk biological facilities generally will operate under the same principles for pressurization as sterile facilities, where open operations are performed. Closed processes may be in a CNC space. In both types of facilities, where there are live viruses, organisms, or open powder handling, rooms may be designed as <span class="key-term">containment areas</span>. In these cases, there should be a negative pressure "sink" or pressure "bubble" airlock to interrupt the path of fugitive airborne particles.</p>
+
+        <h3>Oral Solid Dosage Facilities</h3>
+        <p>In oral solid dosage facilities where airflow direction is considered critical to maintaining room cleanliness, the direction of airflow at room interfaces (doors, pass-through(s) or other openings) can be controlled by an offset between supply and return/exhaust with periodic verification. DP also can be used to ensure the direction of airflow and can be a critical parameter. Although there are no regulatory guidelines that state DP values for these facilities, internal company guidelines or policy may stipulate criteria. Generally, any measurable DP will work. Room DP strategy is influenced by the following:</p>
+        <ul>
+            <li>facility usage (dedicated, multi-product, or flexible/campaigned)</li>
+            <li>product mix</li>
+            <li>process characteristics (open or closed)</li>
+            <li>unit operations</li>
+            <li>air filter capture and location</li>
+            <li>material and people flow</li>
+        </ul>
+
+        <p>Solid dosage facility pressurization strategies focus on airflow direction that minimizes contamination from extraneous matter and cross-contamination from one product to another.</p>
+
+        <p>In general, measurement of DP is performed directly (room-to-room) or indirectly (room-to-reference) and may employ both strategies. Alert and alarm levels that a facility will be observing should be considered when choosing a measurement strategy.</p>
+
+        <p>Action alarms (unusual events for the most critical rooms) may be measured directly (across the airlock) to ensure end-to-end data accuracy, rather than indirectly where DP is calculated in a control system (computer based).</p>
+
+        <p>Alerts (maintenance/operations notification of potential problems) can be measured indirectly.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：壓差（DP）控制的關鍵數值</h4>
+            <p>本節提供了三個極為重要的壓差數值，必須牢記：</p>
+            <ul>
+                <li><strong>10-15 Pa</strong>：不同等級房間之間的標準設計壓差（含氣鎖）</li>
+                <li><strong>5 Pa</strong>：同等級但不同關鍵性房間之間的最小可控壓差</li>
+                <li><strong>37 Pa</strong>：累積絕對壓力的上限——超過此值會導致開門困難、建築結構受損、漏氣增加</li>
+            </ul>
+            <p>這些數值是設計 HVAC 壓差階梯的基礎。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>壓差階梯計算範例</h4>
+            <pre>
+典型無菌設施壓差階梯（由外到內）：
+
+走廊（非分級）  →  氣鎖  →  Grade D  →  氣鎖  →  Grade C  →  氣鎖  →  Grade B  →  Grade A
+   0 Pa         +10Pa    +10Pa       +10Pa    +10Pa      +10Pa    +10Pa
+
+累積壓力：0 → 10 → 20 → 30 → 40 → 50 → 60 Pa ← 超過 37 Pa 上限！
+
+解決方案：
+- 減少壓差級距（如用 7.5 Pa 代替 10 Pa）
+- 設置「壓力中斷點」（pressure break）
+- 重新規劃分級數量，減少級距層數</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「Mouse Hole」問題</h4>
+            <p>原文提到一個非常實務的問題：當產品輸送線（如西林瓶輸送帶）穿越高壓差牆面時，穿牆口（mouse hole）的高速氣流可能<strong>吹倒瓶子</strong>。這不只是品質問題，更是生產效率問題——倒瓶需要停線處理。</p>
+            <p>實務解決方案包括：</p>
+            <ul>
+                <li>在穿牆口安裝可調節風簾</li>
+                <li>設計較大的穿牆口以降低氣流速度</li>
+                <li>使用壓力緩衝區域</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：壓差控制如同水壩系統</h4>
+            <p>房間壓差就像一系列水壩：</p>
+            <ul>
+                <li>每道壩（牆壁）維持一定的水位差（壓差）</li>
+                <li>水永遠從高處流向低處（空氣從高壓流向低壓）</li>
+                <li>如果累積水位差太大（超過 37 Pa），壩體可能潰堤（建築結構受損）</li>
+                <li>壩上的水閘門（門）必須能抵抗水壓差（門閉門器必須能克服壓差）</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：手動平衡 vs. 全自動控制</h4>
+            <p>壓差控制有兩種極端方案：</p>
+            <table>
+                <tr><th>項目</th><th>Manual Balancing（手動平衡）</th><th>Fully Automated Dynamic Control（全自動動態控制）</th></tr>
+                <tr><td>複雜度</td><td>低</td><td>高</td></tr>
+                <tr><td>成本</td><td>低</td><td>高</td></tr>
+                <tr><td>C&amp;Q 工作量</td><td>少</td><td>多</td></tr>
+                <tr><td>彈性</td><td>差——製程改變需要重新平衡</td><td>佳——自動適應</td></tr>
+                <tr><td>維護</td><td>需要定期檢查調整</td><td>需要控制系統維護和校準</td></tr>
+                <tr><td>可靠度</td><td>穩定但不自動補償</td><td>高度可靠（硬體正確的前提下）</td></tr>
+            </table>
+            <p>在 CDMO 多產品環境中，全自動系統通常更適合，因為頻繁的產品切換需要壓差策略的彈性調整。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>你的 CDMO 工廠正在規劃一條新的固體劑型生產線，將在同一設施中生產 5 種不同產品（campaigned）。根據本節內容，壓差策略應考慮：</p>
+            <ol>
+                <li>以「防止交叉污染」為主要目標設定氣流方向</li>
+                <li>由於是多產品設施，建議採用<strong>動態壓差控制</strong>，以便在產品切換時調整壓差方向</li>
+                <li>壓差量測採用<strong>直接量測（room-to-room）</strong>用於 Action Alarm，<strong>間接量測（room-to-reference）</strong>用於 Alert</li>
+                <li>在 URS 中明確定義每個房間的壓差目標值和 Alert/Action 限值</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在含有活病毒的生物製劑設施中，為什麼需要「negative pressure sink」或「pressure bubble airlock」？請用污染控制的邏輯解釋。</li>
+                <li>直接量測（room-to-room）和間接量測（room-to-reference）各有什麼優缺點？為什麼 Action Alarm 建議用直接量測？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2.4 Air Changes -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.2.4 Air Changes（換氣次數）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>There is a common understanding in the Pharmaceutical Industry of a regulatory requirement for a minimum <span class="key-term">air change rate</span> for an area – typically a rate of <span class="key-term">20 per hour</span> for classified areas. There is no minimum air change rate for non-classified areas, except as defined in local Building Codes (often 4 or 6 per hour), although the WHO guidance for OSD HVAC suggests that a room class, air change rate, and recovery period be established by the facility owner. The European GMP regulations have a requirement for a <span class="key-term">"clean up" time of 15 to 20 minutes</span> in a sterile product processing facility. The 2004 FDA "Guidance for Industry for Sterile Drug Products Produced by Aseptic Processing – Current Good Manufacturing Practice" gives the following guidance:</p>
+
+        <div class="quote-box">
+            "For Class 100,000 (ISO 8) supporting rooms, airflow sufficient to achieve at least 20 air changes per hour is typically acceptable. Significantly higher air change rates are normally needed for Class 10,000 and Class 100 areas."
+        </div>
+
+        <p>There is no minimum air change rate for non-sterile product facilities, except as defined in local Building Codes (often 4 or 6 per hour due to chemical storage) although the WHO guidance for OSD HVAC suggests that a room class, air change rate, and recovery period be established by the facility owner.</p>
+
+        <p>The resultant particulate level achieved in the various operating states (at-rest and dynamic) that are affected by the supply airflow volume, which can then be translated to air changes for a particular room is more important than the number of air changes. For further information, see Appendix 1.</p>
+
+        <p>However, the recovery of a room from in-use to at-rest is directly related to its air change rate; the higher the air change rate, the quicker the recovery. As shown in the ISPE Baseline Guide on Sterile Manufacturing Facilities, calculating recovery based on 20 AC/hr of clean air supplied to a Grade B (Grade 7) room with completely uniform mixing, the recovery time from ISO 7 in use to ISO 5 at rest is <span class="key-term">14 minutes</span>, which meets the EU requirement.</p>
+
+        <p>Designers may default to "rules of thumb" for ventilation rate by the class of a space, rather than calculating the actual airflow required by the process. Knowledgeable designers use rules of thumb for only conceptual design with the intent of later reducing air changes (and thus overall capital and energy costs) in detail design, based on further knowledge of the processes to be protected. Typical values of rules of thumb are:</p>
+        <ul>
+            <li>6 to 20 AC/hr for CNC, EU Grade D spaces</li>
+            <li>20 to 40 AC/hr for Grade 8 (EU Grade C) spaces</li>
+            <li>40 to 60 AC/hr for Grade 7 (EU Grade B) spaces</li>
+            <li>Grade 5 (EU Grade A) spaces: For unidirectional flow, air changes do not matter; air flow velocity and pattern are important.</li>
+        </ul>
+
+        <p>The number of air changes can have a significant influence on system cost and should be considered carefully and defined. Organizations may require air change rates that are not based on operating data. Airflow (volume/time) determines steady state particle levels, and should be used where historical process data are known. Utilizing arbitrary air change rates throughout a design should be avoided; the designer and owner should take responsibility for defining the required airflow based on a number of factors as discussed in this Guide.</p>
+
+        <p>In order to define the actual volumetric flow rate required (CFM or cu.M/hr), the following interrelated factors should be considered:</p>
+        <ul>
+            <li>heat gain to the conditioned space due to external influences, e.g., solar gain, wall gain</li>
+            <li>heat gain to the space because of internal influences, e.g., equipment and people</li>
+            <li>moisture gain to the conditioned space because of external influences, e.g., external humidity</li>
+            <li>moisture gain to the space because of internal influences, e.g., occupants, processes, such as washing activities</li>
+            <li>the number and location of the occupants in the space</li>
+            <li>the tasks the occupants are doing</li>
+            <li>the clothing (gowning level) of the occupants</li>
+            <li>the process and its particle generation rate (PGR) (generally, the driver requiring the most airflow)</li>
+            <li>the cleanliness of the supply air</li>
+            <li>the means and efficiency of coverage of distributing the supply air</li>
+            <li>the means and location of extracting the air from the conditioned space</li>
+            <li>the locations where the specified conditions are critical, e.g., in a tablet compression room, the process will add a considerable amount of heat to the product; the critical area is likely to be where the raw material is exposed</li>
+            <li>airflow required to achieve required DPs (usually small compared to other factors)</li>
+        </ul>
+
+        <p>Heat and humidity gain typically are more easily offset, and therefore, less critical for establishing airflow for classified space than particulate load. The cost of installing a system to deliver higher than required air change rates is significant both in terms of the capital and system operating costs. A process that generates low volumes of particles in a large room may need fewer air changes to maintain desirable particle levels. For classified spaces (Grade C/Grade 8 or cleaner), however, 20 AC/hr is a common minimum design target, as it is cited in the FDA Sterile Guidance and meets EU Annex 1 recovery requirements. Acceptable recovery tests and particle measurement during HVAC and process qualification may justify setting lower air change rates after startup of process equipment. (Air changes should not be reduced to the point that HVAC equipment is significantly oversized and difficult to control.)</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：換氣次數的經驗法則</h4>
+            <p>換氣次數（Air Change Rate，AC/hr）是 HVAC 設計中最容易被「過度設計」的參數。本節給出的經驗法則（rules of thumb）：</p>
+            <ul>
+                <li><strong>Grade D / CNC</strong>：6~20 AC/hr</li>
+                <li><strong>Grade C (ISO 8)</strong>：20~40 AC/hr</li>
+                <li><strong>Grade B (ISO 7)</strong>：40~60 AC/hr</li>
+                <li><strong>Grade A (ISO 5)</strong>：不論 AC/hr，而是看<strong>單向流速度和氣流型態</strong></li>
+            </ul>
+            <p>但 ISPE 特別強調：這些只是<strong>概念設計</strong>用的參考值，詳細設計時應根據實際製程需求計算。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>Recovery Time 計算</h4>
+            <pre>
+Recovery（恢復）時間與換氣次數的關係：
+
+假設：完全均勻混合（ideal mixing）
+公式：C(t) = C₀ × e^(-n×t)
+
+其中：
+  C₀ = 初始微粒濃度（in-use 狀態）
+  C(t) = t 時間後的微粒濃度
+  n = 換氣次數（AC/hr）
+  t = 時間（hr）
+
+範例（Grade B，20 AC/hr）：
+  ISO 7 (in-use) → ISO 5 (at-rest)
+  需要降低約 100 倍
+  t = ln(100) / 20 = 4.6 / 20 = 0.23 hr ≈ 14 min
+
+  ✓ 符合 EU 要求的 15~20 分鐘恢復時間
+
+若 AC/hr 降至 15：
+  t = 4.6 / 15 = 0.31 hr ≈ 18.4 min（仍可接受）
+
+若 AC/hr 降至 10：
+  t = 4.6 / 10 = 0.46 hr ≈ 27.6 min（超出 EU 要求）</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：避免「任意」設定換氣次數</h4>
+            <p>原文中最重要的警告：<strong>「Utilizing arbitrary air change rates throughout a design should be avoided」</strong>。</p>
+            <p>為什麼？因為每增加 10 AC/hr：</p>
+            <ul>
+                <li>AHU 風量增加 → AHU 尺寸和成本增加</li>
+                <li>風管尺寸增加 → 天花板空間需求增加</li>
+                <li>能耗增加 → 年度運營成本顯著上升</li>
+                <li>噪音增加 → 可能需要額外消音措施</li>
+            </ul>
+            <p>正確的做法是：用概念設計的經驗法則開始，在詳細設計階段根據實際 PGR（Particle Generation Rate，微粒產生率）和熱負荷數據來優化。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：換氣次數如同抽水機流量</h4>
+            <p>想像一個游泳池裡有人在持續丟垃圾（微粒產生）。換氣就是抽水機的工作——把髒水（含微粒的空氣）抽出去，灌入乾淨水（過濾後的空氣）。</p>
+            <ul>
+                <li><strong>AC/hr 太低</strong>：垃圾累積得比清理的快，水池會變髒</li>
+                <li><strong>AC/hr 剛好</strong>：垃圾清理速度等於產生速度，維持乾淨</li>
+                <li><strong>AC/hr 過高</strong>：水池確實很乾淨，但電費帳單會讓你心痛——而且水流太急可能反而干擾游泳（氣流太強影響製程）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>你在評估一個 Grade C 房間的 HVAC 設計。工程顧問提出 40 AC/hr 的設計，但這個房間只有一台自動密封的灌裝機（低微粒產生率）。根據本節原則：</p>
+            <ol>
+                <li>首先確認 20 AC/hr 是否能滿足 EU Annex 1 的 recovery 要求</li>
+                <li>如果製程微粒產生率低，20~25 AC/hr 可能就足夠</li>
+                <li>用 recovery test 數據來驗證降低 AC/hr 的合理性</li>
+                <li>計算節省的能源成本：40→25 AC/hr 可能每年節省數十萬台幣</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Grade A（ISO 5）區域不討論「換氣次數」而是討論「氣流速度和型態」？這與單向流（unidirectional flow）有什麼關係？</li>
+                <li>一個 Grade B 房間的 recovery test 結果是 18 分鐘（從 in-use 恢復到 at-rest）。這是否符合 EU 要求？如果不符合，你會建議增加多少 AC/hr？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.3 Managing Critical HVAC Criteria -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.3 Managing Critical HVAC Criteria and Non-Critical HVAC Criteria（管理關鍵與非關鍵 HVAC 標準）</div>
+
+<!-- 2.2.3.1 Alarming of Parameters -->
+<div class="section-title" style="font-size:1rem;">2.2.3.1 Alarming of Parameters（參數警報）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Temperature, RH, and room pressurization may be critical to product quality or patient safety; organizations may decide which through policy, internal guidelines, or operating experience. Critical parameters should be defined during the creation of the User Requirements document with the involvement of the HVAC design, development, production, and Quality Assurance groups.</p>
+
+        <p>Specific terms should be understood in context (for definitions see Appendix 13):</p>
+        <ul>
+            <li><span class="key-term">Action (or Alarm) Limit</span></li>
+            <li><span class="key-term">Alert Limit</span></li>
+            <li><span class="key-term">Design Point</span></li>
+            <li><span class="key-term">Design Tolerance</span></li>
+            <li><span class="key-term">Normal Operating Range</span></li>
+        </ul>
+
+        <p>The illustrations provided are intended to assist in establishing ranges of critical HVAC parameters within a facility and describe critical HVAC parameters that are normally monitored. They are intended to help to illustrate the difference between design criteria and operating values; to provide a sample framework to show how critical HVAC parameters are controlled, monitored, and communicated.</p>
+
+        <p>Figure 2.2 shows a room pressure plot. The <span class="key-term">design point</span> is the target value for the control system to achieve. The <span class="key-term">design tolerance</span> is the expected variance of the measured pressure around the design point, given instrumentation accuracy, drift, and normal activity in the room. <span class="key-term">Alert and Action Alarm limits</span> are the points that lie beyond the design point and tolerance, and also should lie beyond the Normal Operating Range.</p>
+
+        <p><em>Figure 2.2: Example 1: Pressurization – Monitoring and Control Diagram</em></p>
+
+        <p>Figure 2.3 shows a similar profile for room temperature. Unlike the pressurization profile, most HVAC parameters will have different set-points for alert and action alarm limits. Usually temperature has a wider range in which to operate and changes slowly, allowing different alert and alarm limits. For example, if a chiller fails, a high room temperature alert would signal that something is happening and provide time to react to a potential action alarm. If product requirements have tight environmental limits, however, it may not be practical to have alert and alarm levels at widely different set-points. Therefore, alarms would revert to the same alert/alarm strategy as for pressurization, setting time delays around the same set point. This is usually not necessary with temperature or humidity.</p>
+
+        <p><em>Figure 2.3: Example 2: Temperature – Monitoring and Control Diagram</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：五層參數控制架構</h4>
+            <p>ISPE 定義了一套從設計到營運的五層參數管控架構，從內到外依序為：</p>
+            <ol>
+                <li><strong>Design Point（設計點）</strong>：控制系統的目標值，如壓差目標 12.5 Pa</li>
+                <li><strong>Design Tolerance（設計容差）</strong>：考慮儀器精度和正常波動的預期範圍，如 &plusmn;2.5 Pa</li>
+                <li><strong>Normal Operating Range（正常運行範圍）</strong>：實際運行中觀察到的正常波動範圍</li>
+                <li><strong>Alert Limit（警告限值）</strong>：超出正常範圍的早期預警——通知維護/操作人員注意</li>
+                <li><strong>Action (Alarm) Limit（行動限值）</strong>：接近或超出可接受範圍——必須立即採取行動</li>
+            </ol>
+            <p>關鍵原則：<strong>Alert 和 Action Limit 必須位於 Normal Operating Range 之外</strong>——否則會產生大量假警報。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：壓差 vs. 溫度的警報策略差異</h4>
+            <p>壓差和溫度的警報策略為什麼不同？</p>
+            <ul>
+                <li><strong>壓差</strong>：變化<strong>快</strong>（開門幾秒就會偏移）→ Alert 和 Action 通常設在同一數值，靠<strong>時間延遲</strong>（time delay）來區分</li>
+                <li><strong>溫度</strong>：變化<strong>慢</strong>（冷水機故障後可能需要 30 分鐘以上才會明顯升溫）→ Alert 和 Action 可以設在<strong>不同數值</strong>，提供「預警窗口」讓維護人員有時間反應</li>
+            </ul>
+            <p>這個差異直接影響控制系統程式設計和 SOP 編寫。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：汽車儀表板的警示燈</h4>
+            <p>這套五層架構就像汽車的溫度警示系統：</p>
+            <ul>
+                <li><strong>Design Point</strong> = 引擎正常工作溫度 90&deg;C</li>
+                <li><strong>Design Tolerance</strong> = 正常波動 85~95&deg;C</li>
+                <li><strong>Normal Operating Range</strong> = 實際行駛觀察到的 82~98&deg;C</li>
+                <li><strong>Alert</strong> = 溫度表進入黃色區域 100&deg;C——「注意，可能有問題」</li>
+                <li><strong>Action Alarm</strong> = 溫度表進入紅色區域 110&deg;C——「立即停車檢查！」</li>
+            </ul>
+            <p>如果你把 Alert 設在 90&deg;C，正常行駛就會一直響——這就是為什麼 Alert/Action 必須在 Normal Operating Range 之外。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你正在為一個 Grade B 房間設定壓差警報。Design Point 是 15 Pa，Design Tolerance 是 &plusmn;3 Pa。你會如何設定 Alert Limit 和 Action Limit？請說明你的理由。</li>
+                <li>為什麼原文說「如果產品要求有嚴格的環境限制，溫度的 Alert 和 Action 可能需要回歸壓差的策略（同一數值 + 時間延遲）」？在什麼情況下會發生這種狀況？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 2.2.3.2 Managing HVAC Parameters (Monitoring) -->
+<div class="section-title" style="font-size:1rem;">2.2.3.2 Managing HVAC Parameters – Monitoring（HVAC 參數管理——監控）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Considerations for a monitoring system for the critical parameters (see Appendix 2) include:</p>
+
+        <ul>
+            <li>Accountability for alerts and alarms:
+                <ul>
+                    <li>Who deals with them?</li>
+                    <li>Written procedures should be established.</li>
+                    <li>The location of alarm indicators affects design of monitoring systems.</li>
+                </ul>
+            </li>
+            <li>Methodology in determining appropriate alarm delays:
+                <ul>
+                    <li>Will they be based on actual operating data or upon predetermined values?</li>
+                </ul>
+            </li>
+            <li>How to monitor – in the DCS:
+                <ul>
+                    <li>Process control system, in the BAS, by procedural means, or by manual monitoring?</li>
+                </ul>
+            </li>
+            <li>What should be monitored:
+                <ul>
+                    <li>Every room or select representative rooms?</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：監控系統設計的四大考量</h4>
+            <p>監控系統不只是「裝感測器」那麼簡單，需要回答四個關鍵問題：</p>
+            <ol>
+                <li><strong>誰負責（Accountability）</strong>：警報響了誰去處理？要有書面 SOP。警報顯示在哪裡——控制室？生產區？品保辦公室？</li>
+                <li><strong>延遲策略（Alarm Delays）</strong>：用歷史數據還是預設值來設定？歷史數據更精準但需要一段時間的營運數據收集。</li>
+                <li><strong>監控平台（How）</strong>：用 DCS（分散式控制系統）、BAS（樓宇自動化系統）、手動巡檢、還是混合使用？</li>
+                <li><strong>監控範圍（What）</strong>：每個房間都監控，還是選擇代表性房間？</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：DCS vs. BAS 的選擇</h4>
+            <p>在實務中，HVAC 監控常面臨一個系統整合問題：</p>
+            <ul>
+                <li><strong>DCS（Distributed Control System）</strong>：通常管理製程設備，有嚴格的 GMP 確效要求</li>
+                <li><strong>BAS（Building Automation System）</strong>：通常管理 HVAC 等設施設備，確效層級較低</li>
+            </ul>
+            <p>關鍵 HVAC 參數如果放在 BAS 中監控，BAS 可能需要提升到 Direct Impact 系統的確效層級。這個決策在設計初期就必須做出，因為它影響系統架構和整體成本。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：工廠的保全監控室</h4>
+            <p>監控系統就像工廠的保全監控室——你需要決定：</p>
+            <ul>
+                <li>螢幕顯示哪些攝影機畫面（監控哪些房間）？</li>
+                <li>有人闖入時誰負責（警報誰處理）？</li>
+                <li>是用中央監控還是各門口獨立警報器（DCS vs. BAS vs. 手動）？</li>
+                <li>所有門都裝感應器還是只裝主要出入口（每間房都監控還是代表性選擇）？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠有 50 個生產房間。如果不是每個房間都做壓差監控，你會選擇哪些「代表性房間」？選擇的邏輯是什麼？</li>
+                <li>Alarm Delay 設定得太短和太長分別會造成什麼問題？如何找到適當的延遲時間？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>HVAC 設計四步驟</strong>：URS → Functional Design (FDS/BOD) → Detailed Design → Construction Documents。每一步都有明確交付物，越早的決策影響越大。</li>
+        <li><strong>URS 是 HVAC 設計的基石</strong>：小幅度提高潔淨等級就可能導致大幅成本增加。使用者需求必須基於風險評估，而非盲目套用「業界慣例」。</li>
+        <li><strong>Critical vs. Non-Critical 參數</strong>：只有 Critical HVAC Parameters 需要完整確效（Qualification），Non-Critical 只需 GEP Commissioning。系統分區策略（按 AHU 或按功能）直接影響確效範圍和成本。</li>
+        <li><strong>壓差控制是最具挑戰性的 HVAC 參數</strong>：10-15 Pa 標準級距、37 Pa 累積上限、手動 vs. 自動控制的權衡。在 CDMO 多產品環境中，動態控制通常更適合。</li>
+        <li><strong>換氣次數不應任意設定</strong>：20 AC/hr 是 Grade C/ISO 8 的最低設計目標（FDA 引用），但實際需求應根據 PGR、熱負荷、Recovery 要求計算。</li>
+        <li><strong>五層警報架構</strong>：Design Point → Design Tolerance → Normal Operating Range → Alert → Action Alarm。壓差用時間延遲區分 Alert/Action，溫度可用不同數值。</li>
+        <li><strong>DQ 的雙重審查</strong>：GEP（工程可行性）+ GMP（法規合規性）缺一不可。11 項 HVAC DQ 檢查清單是實務中的重要工具。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

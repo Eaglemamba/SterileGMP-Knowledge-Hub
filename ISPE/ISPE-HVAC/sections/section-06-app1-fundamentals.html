@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Appendix 1: Fundamentals of HVAC</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ISPE Green Override
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 1: Fundamentals of HVAC</h1>
+    <div class="subtitle">附錄1：HVAC 基礎原理</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p143 - p158</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 HVAC 系統的三大基本任務：人員舒適、產品保護、環境安全，以及它們在 GMP 環境中的優先順序</li>
+        <li>掌握影響產品品質的三個主要環境變數（溫度、濕度、空氣污染）與次要 HVAC 因素（壓差、換氣次數、氣流方向）之間的因果關係</li>
+        <li>了解 Classified Space（潔淨分級空間）的國際分類體系差異（EU Grade A-D vs. FDA ISO 5/7/8），以及 ISPE 的統一 "Grade" 命名方式</li>
+        <li>學會區分 Air Change Rate（換氣次數）與 Air Flow Rate（送風量）的本質差異，理解為何任意換氣次數可能不足或過量</li>
+        <li>認識 Psychrometrics（空氣調節學）的基本概念：Sensible Heat（顯熱）、Latent Heat（潛熱）、Dry Bulb（乾球溫度）、Wet Bulb（濕球溫度）、Dew Point（露點）及其在 HVAC 設計中的應用</li>
+        <li>理解 Differential Pressure（壓差）如何控制氣流方向，以及計算裂縫氣流速度的基本公式</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.1 Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">7.1 Introduction（導論）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This Appendix introduces the fundamentals of <span class="key-term">HVAC</span> systems that control a GMP workplace environment.</p>
+
+        <p>HVAC aims to make personnel comfortable and to protect both workers inside a facility and the environment outside a facility from airborne materials that could be hazardous. In pharmaceutical manufacturing facilities, there also is a specific requirement to control the impact of the environment on the finished product (to assure <span class="key-term">product quality</span>).</p>
+
+        <p>Three primary room environment variables may affect product and processes (at "<span class="key-term">critical locations</span>," i.e., locations where product is exposed or where cleaned product contact surfaces are exposed):</p>
+        <ul>
+            <li>air temperature</li>
+            <li>RH</li>
+            <li>airborne contamination (viable and non-viable particles)</li>
+        </ul>
+
+        <p>Some of these variables, such as local airborne contaminants, depend on secondary HVAC factors, for example:</p>
+        <ul>
+            <li>room pressure</li>
+            <li>air changes</li>
+            <li>airflow volume</li>
+            <li>airflow direction</li>
+            <li>airflow pattern</li>
+            <li>exhaust location and air velocity</li>
+            <li>air filter efficiency</li>
+        </ul>
+
+        <p>Tertiary HVAC variables, such as fan speed and duct pressure, may vary to satisfy these secondary HVAC factors, and therefore, have an effect on them.</p>
+
+        <p>This appendix explores these variables and how they affect product, patient, and personnel. It also introduces some basic HVAC terminology.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 的三層變數架構</h4>
+            <p>ISPE 將 HVAC 變數分為三個層級，這種層級思維對系統設計非常重要：</p>
+            <ul>
+                <li><strong>Primary Variables（一級變數）</strong>：溫度、濕度、空氣污染 — 這些直接影響產品品質，也是 GMP 法規關注的核心</li>
+                <li><strong>Secondary Variables（二級變數）</strong>：壓差、換氣次數、氣流方向等 — 這些是達成一級變數控制的「手段」</li>
+                <li><strong>Tertiary Variables（三級變數）</strong>：風機轉速、風管壓力等 — 這些是工程執行層面的操作參數</li>
+            </ul>
+            <p>在 CDMO 日常營運中，品保人員關注一級變數，設施工程師調控二級變數，而維護技師監控三級變數。三者之間的因果鏈若斷裂，就會出現 OOS（Out of Specification）事件。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 HVAC 系統想像成一家餐廳的廚房通風系統：</p>
+            <ul>
+                <li><strong>一級目標</strong>：讓客人（產品）不被油煙（污染）影響、保持舒適溫度</li>
+                <li><strong>二級手段</strong>：抽油煙機的位置、排風量、廚房與用餐區的氣壓差</li>
+                <li><strong>三級執行</strong>：馬達轉速、風管尺寸、風閥開度</li>
+            </ul>
+            <p>你不會直接對客人說「我們的馬達是 3000 RPM」，你會說「廚房油煙不會飄到用餐區」— 這就是為什麼法規聚焦在一級變數上。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Critical Locations（關鍵位置）</strong>是本節最重要的概念之一。指的是產品暴露在環境中、或已清潔的產品接觸面暴露的位置。在無菌充填（Aseptic Filling）中，這就是灌裝針頭到瓶口之間的區域。HVAC 系統的設計必須優先保護這些位置。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的工廠中，哪些位置屬於 "critical locations"？這些位置的環境控制是否都已經被 HVAC 系統涵蓋？</li>
+                <li>如果空調系統的風機轉速下降（三級變數），這會如何影響換氣次數（二級）和最終的微粒控制（一級）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2 What Is HVAC? -->
+<!-- ============================================================ -->
+<div class="section-title">7.2 What Is Heating, Ventilation, and Air Conditioning?（什麼是暖通空調？）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Heating, Ventilation, and Air Conditioning (HVAC)</span> is the generic name given to a system that conditions the environment through the control of temperature, RH, air movement, and air quality (including fresh air, airborne particles, and vapors). HVAC systems can:</p>
+        <ul>
+            <li>increase or decrease temperature</li>
+            <li>increase or reduce the moisture or humidity of the air</li>
+            <li>decrease the level of particulate or gaseous contaminants in the air</li>
+        </ul>
+
+        <p>These capabilities are employed to protect personnel and product and for human comfort. HVAC systems also can protect the outdoor environment from hazardous material removed from a workplace environment via HVAC exhaust.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 的四大功能</h4>
+            <p>HVAC 的名稱本身就揭示了三大功能：<strong>Heating（加熱）</strong>、<strong>Ventilation（通風）</strong>、<strong>Air Conditioning（空氣調節）</strong>。但在製藥環境中，我們需要加上第四個隱性功能：</p>
+            <ul>
+                <li><strong>溫度控制</strong>（升溫/降溫）</li>
+                <li><strong>濕度控制</strong>（加濕/除濕）</li>
+                <li><strong>空氣品質控制</strong>（過濾微粒/氣態污染物）</li>
+                <li><strong>環境保護</strong>（防止有害物質排放到外部環境）</li>
+            </ul>
+            <p>最後一點容易被忽略，但在處理高效能活性藥物成分（HPAPI）的 CDMO 設施中，排氣處理是法規審查的重點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>注意原文提到 HVAC 可以「保護外部環境」。這在處理高活性化合物、荷爾蒙類或抗癌藥物時特別重要。排氣系統必須配備適當的過濾裝置（通常是 HEPA 過濾器），確保有害粉塵不會排放到大氣中。這也是環保法規（如 COSHH）要求的一部分。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.1 Personnel Comfort -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.1 Personnel Comfort（人員舒適）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The primary role of HVAC systems is to protect personnel and product. The most common role is to make personnel comfortable.</p>
+
+        <p>Four criteria usually are considered for <span class="key-term">personnel comfort</span> and safety:</p>
+        <ul>
+            <li>Temperature</li>
+            <li>Humidity</li>
+            <li>Air quality (carbon dioxide (CO<sub>2</sub>) levels and odors)</li>
+            <li>Air movement (sense of air movement and unwanted "drafts")</li>
+        </ul>
+
+        <h3>7.2.1.1 Temperature and Humidity</h3>
+        <p>Figure 2.1 shows two boxes that define <span class="key-term">comfort conditions</span> (temperature and humidity) that personnel in the US generally find comfortable in winter and summer (ASHRAE Handbook). This standard varies across the world, e.g., in parts of the tropics, people prefer an office at 78&deg;F (26&deg;C) to one at 72&deg;F (22&deg;C).</p>
+
+        <p>Note: these are general guidelines; numerous factors affect these conditions, e.g., the type and variety of work being performed, the extent of personnel gowning, as well as individual preferences.</p>
+
+        <p>Generally, non-production areas should fall within the "comfort zone" shown in Figure 2.1.</p>
+
+        <p>Where gowning levels are heavier or where work is more intense, room conditions should be cooler and less humid than for office areas. Workers in industrial settings, especially those who are required to wear over-garments (gowning) in pharmaceutical facilities, could be uncomfortable working in office room conditions. Typically, room temperatures are cooler (about <span class="key-term">20 to 21&deg;C or 68 to 70&deg;F</span>) with room humidity below 60% to provide "comfort" conditions. In addition, the lower limit on comfort humidity often is set at <span class="key-term">30%</span> to minimize static charges and to avoid irritation of the throat that could lead to an increased risk of respiratory illness.</p>
+
+        <h3>7.2.1.2 Air Movement</h3>
+        <p>A sensation of gentle air movement often is preferable; a typical design figure of <span class="key-term">0.1 m/s (0.3 ft/s)</span> is used in an office environment. Greater air velocities (up to <span class="key-term">1 m/s or 3.28 ft/s (200 ft/min)</span>) usually are needed for product protection to capture airborne particles. In manufacturing environments, higher velocities may be needed where operators experience discomfort from heavier gowning.</p>
+
+        <h3>7.2.1.3 Air Quality</h3>
+        <p>Fresh air is required to dilute exhaled carbon dioxide, odors, and other environmental contaminants. The amount of fresh air required depends on personnel activities. Table 2.1 shows typical oxygen use for different levels of activity.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; font-size:0.9rem;">Table 7.1: Oxygen Consumption by Activity Level</caption>
+            <tr><th>Level of Exertion</th><th>Oxygen (Air) Consumed L/min</th></tr>
+            <tr><td>Light Work</td><td>Less Than 0.5 (&lt; 2.5)</td></tr>
+            <tr><td>Moderate Work</td><td>0.5 to 1.0 (2.5 &ndash; 5)</td></tr>
+            <tr><td>Heavy Work</td><td>1.0 to 1.5 (5 &ndash; 7.5)</td></tr>
+            <tr><td>Very Heavy Work</td><td>1.5 to 2.0 (7.5 &ndash; 10)</td></tr>
+            <tr><td>Extremely Heavy Work</td><td>Greater Than 2.0 (&gt; 10)</td></tr>
+        </table>
+        </div>
+
+        <p>ASHRAE 62 states the amount of fresh air required to provide adequate <span class="key-term">IAQ</span> in a non-contaminated workspace should be <span class="key-term">15 to 20 cubic feet/min (CFM)</span> or 24 to 32 cubic meters per hour per person; unless a complex ASHRAE analysis is performed. Local building codes may require different quantities.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：GMP 環境 vs. 辦公室環境</h4>
+            <p>這一節的關鍵洞見是：<strong>製藥潔淨室的「舒適」標準與一般辦公室不同</strong>。穿著完整無塵衣的操作人員需要更低的溫度（20-21&deg;C）和更低的濕度（&lt;60%）。</p>
+            <p><strong>ASHRAE Comfort Zone（舒適區）</strong>是美國暖通空調學會定義的人體感覺舒適的溫濕度範圍。但在製藥環境中，因為穿戴防護衣物，操作員的代謝熱散失受阻，需要額外降溫。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你穿著冬天的羽絨衣在 25&deg;C 的辦公室裡工作 8 小時 — 你一定會覺得非常悶熱。GMP 潔淨室裡的操作員穿著無塵衣（甚至雙層手套、面罩），就跟穿羽絨衣一樣。所以潔淨室溫度要比一般辦公室低 2-4&deg;C 才能達到同等的舒適感。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>濕度下限 30% 的設計考量</strong>：</p>
+            <ul>
+                <li><strong>靜電風險</strong>：低於 30% RH 時，靜電積累加劇。在粉末充填或含有易燃溶劑的區域，靜電可能引發安全事故</li>
+                <li><strong>人員健康</strong>：過於乾燥的空氣會刺激喉嚨黏膜，增加呼吸道疾病風險，而生病的操作員是潔淨室的污染源</li>
+                <li><strong>微粒產生</strong>：不舒適的操作員會產生更多微粒（從每分鐘 100,000 顆增加到數百萬顆）</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>新鮮空氣需求量（ASHRAE 62 標準）</strong>：</p>
+            <pre>
+每人需要新鮮空氣量 = 15-20 CFM (24-32 m³/hr)
+
+範例：若潔淨室同時有 10 名操作員
+最低新鮮空氣需求 = 10 × 20 CFM = 200 CFM
+                   = 10 × 32 m³/hr = 320 m³/hr
+
+注意：這只是最低 IAQ 需求，
+實際送風量通常遠大於此（因為還需要滿足潔淨度要求）
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景</strong>：某 CDMO 的 Grade B 區域操作員抱怨太熱。工程師發現房間溫度設定為 22&deg;C（辦公室標準），但操作員穿著二級無塵衣。將溫度調降至 20&deg;C 後，操作員的環境微粒監測數據明顯改善 — 因為舒適的人員會產生更少的微粒。這個案例說明：<strong>人員舒適不只是福利問題，更是產品品質問題</strong>。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的潔淨室溫度設定是多少？是否有考慮操作員的穿衣等級？</li>
+                <li>為什麼 ISPE 說「不舒適的操作員每分鐘可能散發數百萬顆微粒」？這對你的環境監測（EM）數據會有什麼影響？</li>
+                <li>在辦公室環境中空氣流速 0.1 m/s 就足夠，但產品保護需要 1 m/s — 這兩者之間的平衡在你的設施中是如何處理的？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.2 Product and Process Considerations -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.2 Product and Process Considerations（產品與製程考量）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Products may be sensitive to temperature, humidity, and airborne contamination from outside sources or <span class="key-term">cross-contamination</span> between products.</p>
+
+        <p>Process operators may need protection from exposure to hazardous airborne materials.</p>
+
+        <p>When considered critical, product environmental requirements normally are listed in a <span class="key-term">New Drug Application (NDA)</span>. Data from process development of a new drug may be available. The affects of conditions outside these ranges will depend on the duration of exposure; prolonged exposure time may affect product quality. Safety requirements for personnel exposure normally are found in <span class="key-term">Material Safety Data Sheets (MSDSs)</span>.</p>
+
+        <p>Control of airborne contamination should be considered and frequently is associated with temperature and humidity, e.g., the effect of temperature:</p>
+        <ul>
+            <li>Comfortable personnel work more efficiently and are more productive. They also produce fewer environmental contaminants: a typical worker will discharge <span class="key-term">100,000 particles a minute</span> doing relatively sedentary work (particles sized 0.3 &mu;m and larger (a human hair is approximately 100 &mu;m in diameter)). A worker who is hot and uncomfortable may shed <span class="key-term">several million particles per minute</span> in the size range, including a greater number of bacteria.</li>
+        </ul>
+
+        <p>Additional ways in which environmental conditions inside a building can influence the product include, e.g., high humidity may increase microbial and mold growth rates on surfaces.</p>
+
+        <p>If environmental conditions inside are significantly different from environmental conditions outside a building and the fabric of the building has insufficient integrity, condensation can occur in interstitial spaces and can lead to microbial contamination problems and deterioration of the building.</p>
+
+        <p>In addition, protection of personnel depends on airflow direction both within and between rooms. Airflow can entrain particles of product or other hazardous materials harmful to operators. <span class="key-term">DP</span> and the airflow it produces frequently are used to control the migration of airborne particulate between two rooms (to prevent cross-contamination between products).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：環境條件與產品品質的雙向關係</h4>
+            <p>這一節揭示了 HVAC 設計中一個關鍵的「雙向邏輯」：</p>
+            <ul>
+                <li><strong>環境 → 產品</strong>：溫度、濕度、微粒直接影響產品品質</li>
+                <li><strong>人員 → 環境</strong>：不舒適的操作員會產生更多微粒，間接影響產品</li>
+            </ul>
+            <p><strong>Cross-contamination（交叉污染）</strong>在 CDMO 尤其重要，因為同一設施可能同時生產多種產品。壓差（DP）控制是防止交叉污染的主要 HVAC 手段。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像醫院的隔離病房：如果病房內的氣壓比走廊低（負壓），打開門時空氣會從走廊流向病房，防止病菌擴散到走廊。HVAC 的壓差控制原理完全相同 — 讓空氣永遠從「乾淨」流向「較不乾淨」的區域。在 CDMO 處理多產品時，每個產品區域就像一間「隔離病房」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>人體微粒釋放量的驚人數據</strong>：</p>
+            <ul>
+                <li>安靜坐姿：約 <strong>100,000 顆/分鐘</strong>（0.3 &mu;m 以上）</li>
+                <li>悶熱不適時：<strong>數百萬顆/分鐘</strong></li>
+            </ul>
+            <p>這意味著不適的操作員會讓微粒產生量增加 10-50 倍！這就是為什麼人員舒適度不僅是人力資源議題，更是品質管理議題。CDMO 的環境監測（EM）異常事件中，有相當比例可以追溯到溫度控制不當。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：建築物結露風險</h4>
+            <p>原文提到一個容易忽略的問題：<strong>Interstitial Condensation（牆體內結露）</strong>。當室內外溫差大、且建築密封性不足時，水蒸氣會在牆壁、天花板夾層內凝結。這不僅造成建築物損壞，更會成為黴菌和微生物的溫床。在台灣這樣的高濕度氣候下，這個問題尤其嚴重。CDMO 設施的建築維護檢查應包含牆體結露評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施中，NDA 文件有沒有明確規定產品的環境溫濕度範圍？如果沒有，你是如何決定潔淨室的溫濕度設定點的？</li>
+                <li>在多產品 CDMO 設施中，如果兩個相鄰房間都有產品暴露，壓差應該如何設定才能防止交叉污染？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.3 Control of Parameters by HVAC Systems -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.3 Control of Parameters by HVAC Systems（HVAC 系統的參數控制）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.2.3.1 Temperature and Humidity</h3>
+        <p>HVAC systems control the temperature and humidity in a room by supplying that room with air in a condition that produces the desired temperature and humidity when mixed with the room air.</p>
+
+        <p>Thermal heat gains and losses to and from a space occur through three types of <span class="key-term">heat transfer</span>:</p>
+        <ol>
+            <li>radiant</li>
+            <li>conductive</li>
+            <li>convective</li>
+        </ol>
+
+        <p>These may occur as a result of the temperature from sunlight outside the facility and internal heat gains resulting from the process, equipment, lighting, and personnel.</p>
+
+        <p>Changes in humidity may arise because of processes, personnel, and the environment. Moisture migration through openings or porous walls into a controlled space from surrounding areas is governed by the difference in <span class="key-term">vapor pressure</span> (as defined by <span class="key-term">Dalton's law</span>) and may migrate against an air pressure differential.</p>
+
+        <h3>7.2.3.2 Air Velocity</h3>
+        <p>Air velocity in manufacturing spaces usually is higher than recommended for human comfort. Adequate velocity is vital to correct mixing (dilution) of air within the room and for the removal of airborne contaminants. The direction of airflow should protect operators as well as product. Air velocity that is too high can create <span class="key-term">eddies and vortices</span> near operators and increase the risk of exposure to hazardous material.</p>
+
+        <h3>7.2.3.3 Particulate, Fume, and Vapor Control</h3>
+        <p>Filtration in HVAC systems usually is capable of removing almost the entire mass of particles. Filters vary in efficiency:</p>
+        <ul>
+            <li>Low efficiency filters may remove much of the mass of particles, but this represents only 20 to 30% of the number of particles.</li>
+            <li><span class="key-term">High Efficiency Particulate Air (HEPA)</span> and <span class="key-term">Ultra Low Particulate Air (ULPA)</span> filters remove almost the entire number of particles, but a very small number of nearly "massless" particles may pass through.</li>
+        </ul>
+
+        <p>The majority of airborne particles are non-viable. A fraction (&lt; 1%) of airborne particles are viable, e.g., bacteria and viruses; however, these can multiply. Viable particles travel with non-viable particles; therefore, controlling the total number of airborne particles also controls the number of viable particles.</p>
+
+        <p>Airflow patterns have a significant effect on the control of airborne contaminants, which may be removed by dilution or displacement (see Section 2.8), reducing contaminant levels through the use of exhaust and replacement (makeup) fresh air where necessary.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種熱傳遞方式</h4>
+            <p><strong>Thermodynamics（熱力學）</strong>的基礎知識：</p>
+            <ul>
+                <li><strong>Radiant（輻射）</strong>：太陽光透過窗戶加熱房間，或設備表面散發的紅外線熱輻射</li>
+                <li><strong>Conductive（傳導）</strong>：熱量通過牆壁、地板等固體材料傳遞</li>
+                <li><strong>Convective（對流）</strong>：空氣流動帶走或帶來熱量 — 這正是 HVAC 系統的主要工作方式</li>
+            </ul>
+            <p>HVAC 設計師必須計算所有熱源（日照、設備、照明、人員），才能正確選配冷卻能力。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：水蒸氣 vs. 空氣壓差</h4>
+            <p>原文中一個非常重要但容易被忽略的觀點：<strong>水蒸氣可以逆著空氣壓差遷移</strong>。這是因為水蒸氣的遷移遵循 <strong>Dalton's Law（道爾頓定律）</strong>，由蒸氣壓差驅動，而非空氣壓差。</p>
+            <p>實務意涵：即使你的潔淨室維持正壓，水分仍可能從高濕度的外部環境滲透進來。這就是為什麼在高濕度氣候（如台灣）中，除了壓差控制外，還需要良好的建築密封性和除濕系統。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：HEPA vs. ULPA 過濾器</h4>
+            <p><strong>HEPA（High Efficiency Particulate Air，高效微粒空氣過濾器）</strong>：效率 ≥ 99.97%（對 0.3 &mu;m 微粒）</p>
+            <p><strong>ULPA（Ultra Low Particulate Air，超低微粒空氣過濾器）</strong>：效率 ≥ 99.999%（對 0.12 &mu;m 微粒）</p>
+            <p>關鍵洞見：低效過濾器可能去除了大部分微粒的「重量」（質量），但只去除了 20-30% 的微粒「數量」。這是因為大量微小微粒雖然總質量輕，但數量極多。而 GMP 法規關注的是微粒數量，不是質量。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你用一般的廚房濾網過濾沙子和水的混合物。濾網會擋住大顆的砂石（佔了大部分重量），但細小的泥沙（數量多但重量輕）全部通過了。HEPA 過濾器就像是用極細密的濾紙，連最小的泥沙都能攔截。這就是為什麼潔淨室必須使用 HEPA 而非一般過濾器。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Viable = Non-viable 的搭便車者</h4>
+            <p>原文的一個關鍵聲明：<strong>活性微粒（細菌、病毒）附著在非活性微粒上一起移動</strong>。因此，控制總微粒數量就等於控制活性微粒數量。這就是為什麼 GMP 法規同時要求監測 viable（活性）和 non-viable（非活性）微粒 — 它們是「一對搭便車的旅伴」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的設施中，主要的熱源有哪些？是否有進行過熱負荷計算？</li>
+                <li>為什麼過高的空氣流速反而可能增加操作員接觸有害物質的風險（提示：eddies and vortices）？</li>
+                <li>如果低效過濾器去除了 90% 的微粒質量但只去除了 25% 的微粒數量，這對 GMP 環境監測意味著什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.4 Limitations of HVAC Systems -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.4 Limitations of HVAC Systems（HVAC 系統的局限性）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>HVAC systems are not a substitute for good process, facilities, and equipment design or for good operating procedures. HVAC systems are <strong>not</strong> able to:</p>
+        <ul>
+            <li>clean surfaces that are already contaminated</li>
+            <li>adequately control processes that generate excessive contaminants</li>
+            <li>compensate for improperly designed or maintained facilities</li>
+        </ul>
+
+        <p>As viable particles, such as bacteria and viruses, travel with non-viable particles, HVAC systems can only help control biocontamination in a room by delivering clean air to that room. Where an HVAC system has been properly designed, constructed, and maintained, that system is unlikely to be either the cause or the solution for persistent contamination problems.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 不是萬靈丹</h4>
+            <p>這一節非常重要，ISPE 明確劃清了 HVAC 系統的能力邊界：</p>
+            <ul>
+                <li>HVAC <strong>不能</strong>清潔已經受污染的表面 — 這是清潔程序（CIP/SIP）的工作</li>
+                <li>HVAC <strong>不能</strong>補償設計不良的設施 — 如果門沒有自動關閉、牆面有裂縫，再好的 HVAC 也無法維持潔淨度</li>
+                <li>HVAC <strong>不能</strong>控制產生過量污染物的製程 — 需要從源頭控制（如密閉操作）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>HVAC 就像家裡的空氣清淨機。如果你不打掃地板、不清理垃圾，光靠空氣清淨機是不可能讓房間乾淨的。空氣清淨機只能處理空氣中的微粒，它沒辦法擦桌子或拖地板。同樣，HVAC 只能控制空氣品質，不能取代適當的設施設計和操作程序。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文最後一句話暗含了一個重要的調查邏輯：<strong>如果 HVAC 系統設計、建造和維護都正確，那麼持續性的污染問題不太可能是 HVAC 造成的，也不太可能靠 HVAC 來解決</strong>。</p>
+            <p>在 CDMO 的偏差調查中，人們經常第一反應就是質疑 HVAC 系統。但如果 HVAC 維護記錄和性能數據都正常，調查方向應該轉向：操作人員行為、清潔程序、設備設計或建築完整性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的設施中，過去一年的環境監測（EM）偏差中，有多少最終追溯到 HVAC 系統？有多少其實是操作或清潔問題？</li>
+                <li>如果一個房間頻繁出現微粒超標，而 HVAC 系統運作正常，你會從哪些方向進行調查？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3 Air Quality Fundamentals -->
+<!-- ============================================================ -->
+<div class="section-title">7.3 Air Quality Fundamentals（空氣品質基礎）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.3.1 Introduction</h3>
+        <p>Pharmaceutical HVAC should control airborne contamination and needs to help to ensure the "...purity, identity and quality..." of the product (21 CFR Part 211). By introducing conditioned clean air, HVAC can help control temperature, humidity, and airborne particulates in a space within the requirements for a product. In order to determine the equipment needed at the HVAC system level, the purpose of air supplied to a room needs to be predefined.</p>
+
+        <p>Both the quality (temperature, humidity, cleanliness) and quantity of air introduced into a room affect its ability to maintain environmental conditions. The effects of physical layout (geometry), air velocity, and air volume should be considered to ensure effective ventilation.</p>
+
+        <h3>7.3.2 Fundamentals of Ventilation</h3>
+        <p><span class="key-term">Ventilation</span> is the movement and replacement of air for the purpose of maintaining a desired environmental quality within a space. The term "Ventilation" has two common uses:</p>
+        <ul>
+            <li>It may refer to the movement or exchange of air through a space, which is responsible for the transport of airborne particles, the mixing or displacement of masses of hot or cold air, and the removal of airborne contaminants (e.g., vapors and fumes). In this use, ventilation may supply all outdoor ("fresh") air or may recirculate air from the building combined with some fresh air.</li>
+            <li>It may refer to the supply of "fresh" oxygen-rich air.</li>
+        </ul>
+
+        <p>This Guide uses the definition only for movement or exchange of air through a space.</p>
+
+        <p>For pharmaceutical spaces, both "<span class="key-term">air change rates</span>" and "<span class="key-term">ventilation rate</span>" may be used. Appropriate filtration and attention to the physical airflow patterns in a space tends to be successful where pharmaceutical HVAC design.</p>
+
+        <p>The locations of air inlets and outlets relative to the location of sources of contamination/heat and to expected airflow obstructions are crucial to controlling contamination. The relationship between these factors is expressed in the "<span class="key-term">effective ventilation rate</span>" for a space. This measure expresses the efficiency of the dilution air supply at removing contaminants expressed as a percentage of the theoretical performance with perfect (complete) dilution. For further information and calculations, see Appendix 9.</p>
+
+        <p>A comparison of the ventilation rates of various designs indicates that good air supply layout, good return/exhaust layout, and effective supply filtration may produce desired airborne particulate levels and recovery rates with less air change rates than used traditionally. The importance of room level airflow patterns in the control of contamination and the performance of classified spaces has lead to the application of computer modeling (<span class="key-term">Computational Fluid Dynamics (CFD)</span>) and testing to assure effective design. The WHO guidance 937 Annex 2 suggest that this be performed for oral dosage spaces, but the practice is common only for the most potent products.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Ventilation 的雙重含義</h4>
+            <p><strong>Ventilation（通風）</strong>在製藥語境中有兩個含義：</p>
+            <ul>
+                <li><strong>空氣交換</strong>：移動和替換房間內的空氣以控制污染物（本指引的主要定義）</li>
+                <li><strong>新鮮空氣供給</strong>：提供含氧的新鮮空氣</li>
+            </ul>
+            <p><strong>Effective Ventilation Rate（有效通風率）</strong>是衡量通風效率的關鍵指標，表示實際稀釋效果佔理論完美稀釋的百分比。一個 60% 的有效通風率意味著 40% 的送風被「浪費」在短路循環或死角區域。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在一個充滿煙霧的房間裡開窗通風。如果窗戶在房間的同一側（進風口和出風口太近），大部分新鮮空氣會直接從一個窗戶流到另一個窗戶，房間角落的煙霧幾乎不受影響 — 這就是低效通風。但如果窗戶在對角線位置，新鮮空氣會穿過整個房間才離開 — 這就是高效通風。HVAC 的進風口和回風口佈局原理完全相同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CFD 模擬的價值</h4>
+            <p><strong>Computational Fluid Dynamics（CFD，計算流體力學）</strong>已成為現代 HVAC 設計的重要工具。通過電腦模擬，工程師可以在施工前預測：</p>
+            <ul>
+                <li>房間內的氣流路徑和速度分佈</li>
+                <li>微粒濃度的分佈圖（識別「熱點」）</li>
+                <li>不同進風/回風佈局的效果比較</li>
+                <li>操作員和設備對氣流的干擾影響</li>
+            </ul>
+            <p>對 CDMO 而言，CFD 可以在設計階段就優化 HVAC 系統，避免施工後才發現問題需要昂貴的改造。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施在 HVAC 設計階段是否使用過 CFD 模擬？如果沒有，有沒有在試車時進行煙霧測試（smoke study）來驗證氣流模式？</li>
+                <li>21 CFR Part 211 要求確保產品的 "purity, identity and quality"。你能說明 HVAC 是如何分別支撐這三個要求的嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.3 Contamination Control -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.3 Contamination Control（污染控制）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Pharmaceutical HVAC should help to:</p>
+        <ul>
+            <li>prevent unwanted environmental contaminants from adversely affecting product</li>
+            <li>prevent products from contaminating each another</li>
+            <li>limit operator exposure to hazardous pharmaceutical compounds, ingredients, or reagent vapors</li>
+            <li>prevent hazardous materials being spread to the outdoor environment</li>
+        </ul>
+
+        <p>Room contamination control generally is achieved by filtering the incoming air to ensure that it does not carry unwanted particles, and then introducing the air to the work space to mix with ambient air and dilute any contaminants. Contaminants may be removed more rapidly using <span class="key-term">displacement airflow</span> of adequate velocity and direction (e.g., in a UFH, local extraction vent, or via non-aspirating diffusers) than with dilution ventilation.</p>
+
+        <p>The number and intensity of contamination sources in a room should be considered; if low, a displacement airstream may be more useful in controlling airborne contaminants than dilution.</p>
+
+        <p>The orientation of airflows can be aligned to protect product or personnel by sweeping across one or the other (or both) between the supply terminal and the extract point. Local (usually high level) supply or extraction, or complete enclosure of the process also can create a local environment that excludes or removes particulates. Local supply or extraction is considered most effective when located near the point of contaminant generation.</p>
+
+        <p>Pharmaceutical HVAC can help control contaminants within a space, but facilities should be designed with physical architectural features, such as <span class="key-term">airlocks</span>, which limit the migration of contaminants.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：稀釋 vs. 置換</h4>
+            <p>HVAC 控制微粒有兩種基本策略：</p>
+            <ul>
+                <li><strong>Dilution Ventilation（稀釋通風）</strong>：送入乾淨空氣，與房間內的污染空氣混合，降低整體污染物濃度。就像往一杯墨水裡不斷加清水。</li>
+                <li><strong>Displacement Airflow（置換氣流）</strong>：用乾淨空氣從一端「推」走污染空氣，就像用乾淨水把墨水「沖」出去。效率更高，但需要更精確的氣流設計。</li>
+            </ul>
+            <p>UFH（Unidirectional Flow Hood，單向氣流工作台）就是置換氣流的典型應用，空氣從 HEPA 過濾器垂直向下或水平吹過工作區域，把微粒「沖」離關鍵位置。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：HVAC 的四重保護</h4>
+            <p>注意原文列出 HVAC 需要同時保護的四個面向：</p>
+            <ol>
+                <li><strong>產品免受環境污染</strong>（主要責任）</li>
+                <li><strong>產品之間的交叉污染預防</strong>（CDMO 的核心挑戰）</li>
+                <li><strong>操作人員免受有害物質暴露</strong>（職業安全）</li>
+                <li><strong>外部環境免受有害物質排放</strong>（環境保護）</li>
+            </ol>
+            <p>在設計 HVAC 系統時，這四個需求有時會互相衝突。例如：保護產品需要正壓，但保護操作員免受高活性藥物暴露則需要負壓。如何平衡？— 這就是 Containment HVAC 設計的核心挑戰。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景</strong>：你的 CDMO 同時為客戶 A 生產青黴素類抗生素，為客戶 B 生產注射用蛋白質藥物。這兩個產品絕對不能交叉污染（青黴素過敏可致命）。HVAC 設計必須確保：(1) 兩個區域完全獨立的空調系統，(2) 走廊對兩個區域都保持正壓，(3) Airlock 作為物理屏障。這就是原文說的 "physical architectural features" 配合 HVAC 的典型案例。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的設施中，哪些區域使用置換氣流（displacement），哪些使用稀釋通風（dilution）？為什麼？</li>
+                <li>你能列出至少三個「汙染源應在局部排風口附近」的例子嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.4 Classified Space -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.4 Classified Space（潔淨分級空間）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The concentration of total airborne particles and microbial contamination within the space is a key measurement of room environmental conditions for pharmaceutical operations, particularly for sterile products and some biopharmaceutical APIs. The target maximum reading for these measurements is referred to as the "<span class="key-term">classification</span>" of the space.</p>
+
+        <p>Several similar systems have been communicated for the classification of space; however, there is no consensus between international regulators on a single terminology for classification:</p>
+        <ul>
+            <li>the EMEA uses "<span class="key-term">Grades A to D</span>"</li>
+            <li>the FDA refers to <span class="key-term">ISO levels (5, 7 and 8)</span>, but only "in-use" (there are no "at-rest" limits), and further adds bioburden limits for each ISO class</li>
+        </ul>
+
+        <p>It would be cumbersome to apply EU and FDA GMP nomenclature to facilities and to explicitly state "ISO X, in-use with colony forming unit (CFU) limits of Y per cubic meter."</p>
+
+        <p>This Guide uses the term "<span class="key-term">Grade</span>" followed by an ISO level number. Therefore, "Grade 7" meets ISO 7 (10,000 0.5 micron particles per cubic foot or 352,000 per cubic meter) in use only with bioburden limits of 10 per cubic meter. By comparison, a Grade 7 space looks much like a European Grade B space, but the European Grade (A, B, C, D) also has at-rest limits.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; font-size:0.9rem;">Table 7.2: Comparison of Classified Spaces</caption>
+            <tr>
+                <th>Reference</th>
+                <th>Description</th>
+                <th colspan="5">Classification</th>
+            </tr>
+            <tr>
+                <th>ISPE Sterile Baseline&reg; Guide</th>
+                <th>Environmental Classification</th>
+                <th>Grade 5</th>
+                <th>Grade 7</th>
+                <th>Grade 8</th>
+                <th>CNC (with local monitoring)</th>
+                <th>CNC</th>
+            </tr>
+            <tr>
+                <td rowspan="3"><strong>European Commission</strong><br>EU GMP, Annex 1, Vol. IV<br>(effective 1 March 2009)</td>
+                <td>Descriptive Grade</td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>Not Defined</td>
+            </tr>
+            <tr>
+                <td>At Rest: Max particles/m&sup3; &ge; 0.5 &mu;m</td>
+                <td>3,520</td>
+                <td>3,520</td>
+                <td>352,000</td>
+                <td>3,520,000</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>In Operation: Max particles/m&sup3; &ge; 0.5 &mu;m</td>
+                <td>3,520</td>
+                <td>352,000</td>
+                <td>3,520,000</td>
+                <td>Not stated</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>EU: Max viable organisms cfu/m&sup3;</td>
+                <td></td>
+                <td>&lt; 1</td>
+                <td>&lt; 10</td>
+                <td>&lt; 100</td>
+                <td>&lt; 200</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>FDA</strong><br>Guidance for Industry<br>Sterile Drug Products (Oct 2004)</td>
+                <td>In Operation: ISO Classification</td>
+                <td>ISO 5 (Class 100)</td>
+                <td>ISO 7 (Class 10,000)</td>
+                <td>ISO 8 (Class 100,000)</td>
+                <td>Not Defined</td>
+                <td>See ISPE Baseline&reg; Guides</td>
+            </tr>
+            <tr>
+                <td>Action level: viable organisms cfu/m&sup3;</td>
+                <td>1</td>
+                <td>10</td>
+                <td>100</td>
+                <td>Not Defined</td>
+                <td>-</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Notes:</strong></p>
+        <ul>
+            <li>There are small differences in numerical values between the US and European air classes.</li>
+            <li>The US particle levels are for the 'in operation' state only, but it is considered GEP to measure periodic at rest particle levels to monitor the overall health of a facility.</li>
+            <li>The US has no equivalent to EU Grade D although the term <span class="key-term">Controlled Not Classified (CNC)</span> has been used in the pharmaceutical industry and is discussed in the ISPE Baseline&reg; Guides for Sterile and Biopharmaceuticals. A CNC space may meet ISO 8 at rest without the use of HEPA filters if the airborne challenge is low.</li>
+            <li>Air quality for facilities that do not require classified spaces, (e.g., oral dosage, packaging, warehousing, closed biopharmaceutical, most APIs (except aseptic processing), and API intermediates) is described in the relevant ISPE Baseline&reg; Guide.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：國際潔淨度分類體系</h4>
+            <p>製藥界的潔淨度分類系統是一個常見的混亂來源。ISPE 嘗試用「Grade + ISO 數字」來簡化：</p>
+            <ul>
+                <li><strong>Grade 5</strong> = ISO 5 in-use = EU Grade A = 舊制 Class 100</li>
+                <li><strong>Grade 7</strong> = ISO 7 in-use = 類似 EU Grade B = 舊制 Class 10,000</li>
+                <li><strong>Grade 8</strong> = ISO 8 in-use = 類似 EU Grade C = 舊制 Class 100,000</li>
+                <li><strong>CNC</strong> = Controlled Not Classified = 類似 EU Grade D</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：EU vs. FDA 的關鍵差異</h4>
+            <p>對 CDMO 的實務影響非常大：</p>
+            <ul>
+                <li><strong>EU 有 "at-rest"（靜態）和 "in-operation"（動態）兩組限值</strong>，FDA 只有 "in-operation"</li>
+                <li><strong>EU 有 Grade D</strong>（最低等級的分級空間），FDA 沒有對應等級</li>
+                <li><strong>CDMO 如果同時為歐美客戶生產</strong>，必須滿足兩邊的要求 — 通常意味著需要同時滿足 at-rest 和 in-operation 的微粒限值</li>
+            </ul>
+            <p>建議：CDMO 設施設計時應以較嚴格的標準為基準，才能同時滿足歐美法規要求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把潔淨室分級想像成飯店星級。EU 就像一個同時評估「打掃後」（at-rest）和「住客入住時」（in-operation）的評鑑系統。FDA 只評估「住客入住時」— 他們認為實際使用狀態才是真正重要的。ISPE 則說：「我們用 ISO 星級數字，但加上 FDA 的微生物限值」，試圖建立一個統一的語言。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Table Analysis</h4>
+            <p><strong>Table 7.2</strong> 是一張非常重要的速查表，建議你列印出來放在辦公桌上。重點觀察：</p>
+            <ul>
+                <li>Grade A/ISO 5 的 0.5 &mu;m 微粒限值在 at-rest 和 in-operation 都是 3,520/m&sup3; — 意味著這個等級幾乎不允許人員活動帶來的微粒增加</li>
+                <li>Grade B 在 at-rest 時微粒限值與 Grade A 相同（3,520），但 in-operation 允許高達 352,000 — 差了 100 倍！這就是為什麼 "recovery time"（恢復時間）這個概念如此重要</li>
+                <li>活性微生物限值：Grade A 要求 &lt;1 cfu/m&sup3;，幾乎是零容忍</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施目前使用哪套分類系統（EU Grade 或 ISO Class）？如果需要轉換到另一套系統，有哪些差異需要注意？</li>
+                <li>你的 CNC 區域（如果有）是否定期進行微粒監測？它的性能與 EU Grade D 相比如何？</li>
+                <li>如果你的 CDMO 要同時為 EU 和 US 客戶生產無菌產品，HVAC 系統應該設計到什麼等級才能同時滿足兩邊的要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.5 Total Airflow Volume and Ventilation Rate -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.5 Total Airflow Volume and Ventilation Rate（總送風量與換氣率）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The relationship between <span class="key-term">air change rate</span>, ventilation rate, the air particle concentration in the space, and recovery rates from in-use to at-rest conditions should be considered.</p>
+
+        <p>The process that will be operated in a given space should be understood in order to determine the <span class="key-term">air flow rate</span> (not air change rate) required to meet the stated room air classification (see Chapter 5 of this Guide).</p>
+
+        <p>Arbitrary air changes may be either excessive or insufficient. The airborne particle level depends on several factors. After a facility is commissioned, particle levels and room recovery should be sufficiently below specified limits, rather than having an arbitrary number of air changes.</p>
+
+        <h3>7.3.5.1 Air Change or Air Flow?</h3>
+        <p>Arbitrarily set air change rates often drive decisions regarding room size and airflows. This can have significant cost implications, but does not relate directly to the particle count in a room. Air change rates are more related to a room's ability to <span class="key-term">recover from an upset</span>, not the room classification. The following is an explanation of this difference:</p>
+
+        <ul>
+            <li>Assume a 1 cubic foot room containing an aseptic process that generates <span class="key-term">10,000 particles per minute</span>. If the room is purged with 1 CFM of clean air, the steady state (equilibrium) airborne particle level will be 10,000 particles per cubic foot (PCF). This 1 CFM creates an air change every 1 minute or 60 air changes per hour. This value (60/hr) is often assumed to be more than enough to keep a space well below 10,000 PCF.</li>
+        </ul>
+
+        <p>Now put the same process into a 100 cubic foot volume and keep the airflow at 1 CFM, assuming good mixing occurs inside the room. Now the room sees an air change every 100 minutes or about 0.67 ac/hr. However, when the dilution is calculated, the equilibrium airborne particle counts are still 10,000 PCF (10,000 particles per minute/1 cubic foot per minute = 10,000 particles per cubic foot). Hence, average airborne particle counts are not determined by the air changes, but by the three factors (assuming perfect mixing, see Appendix 9):</p>
+
+        <ol>
+            <li>particles generated inside a space (<span class="key-term">PGR</span>)</li>
+            <li>quantity of dilution air supplied to a space (cubic volume per time) assuming adequate mixing in the room</li>
+            <li>cleanliness of dilution air (assumed to be negligible in aseptic processing based on HEPA filtration)</li>
+        </ol>
+
+        <p>A room receiving only 1 air change per hour will take several hours to recover from in-use to at-rest conditions. With a clean air supply of <span class="key-term">20 air changes per hour</span>, a 100-fold reduction in airborne particle levels can occur with less than 20 minutes recovery time, satisfying the European GMP requirement. See the ISPE Sterile Manufacturing Facilities Baseline&reg; Guide.</p>
+
+        <p>For recovery, air changes are important; a rate of 20/hr often is used as the minimum for classified spaces.</p>
+
+        <p>For applicable oral dosage facilities, the WHO 40th report suggests 6 to 20 AC/hr with recovery of 20 minutes from in-use to at-rest conditions (to be defined by the User and verified at building commissioning).</p>
+
+        <p>Although "air change rate" is important, for pharmaceutical HVAC system design, greater benefit may be obtained from correct air filtration and attention to the airflow patterns in a space.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：換氣次數 vs. 送風量 — 關鍵區分</h4>
+            <p>這是本附錄最重要的概念之一。ISPE 用一個精彩的數學例子說明：</p>
+            <ul>
+                <li><strong>Air Change Rate（換氣次數）</strong> = 送風量 &divide; 房間體積。它取決於房間大小，但不直接決定微粒濃度</li>
+                <li><strong>Air Flow Rate（送風量）</strong> = 實際的清潔空氣供應量。這才是真正決定穩態微粒濃度的因素</li>
+            </ul>
+            <p>結論：<strong>相同的送風量，放在大房間裡換氣次數低，放在小房間裡換氣次數高 — 但穩態微粒濃度完全相同！</strong></p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>穩態微粒濃度公式（假設完美混合）</strong>：</p>
+            <pre>
+穩態微粒濃度 = PGR / Q
+
+其中：
+  PGR = Particle Generation Rate（微粒產生率，顆/分鐘）
+  Q   = Air Flow Rate（送風量，CFM 或 m³/min）
+
+範例一（1 ft³ 房間）：
+  PGR = 10,000 顆/min，Q = 1 CFM
+  濃度 = 10,000 / 1 = 10,000 PCF
+  換氣次數 = 1 CFM / 1 ft³ = 60 次/hr
+
+範例二（100 ft³ 房間）：
+  PGR = 10,000 顆/min，Q = 1 CFM
+  濃度 = 10,000 / 1 = 10,000 PCF（完全相同！）
+  換氣次數 = 1 CFM / 100 ft³ = 0.67 次/hr
+
+結論：換氣次數差了 90 倍，但微粒濃度完全一樣。
+送風量（Q）才是控制穩態濃度的關鍵。
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在浴缸和游泳池裡分別滴入一滴墨水，然後以相同的流量（例如每分鐘 1 公升）注入清水。浴缸的「換水次數」很高（因為體積小），游泳池的「換水次數」很低（因為體積大）。但最終，如果你持續以相同速率滴入墨水、注入清水，兩者的平衡墨水濃度是一樣的。差別在於：浴缸恢復到透明的速度比游泳池快得多 — 這就是為什麼 recovery time（恢復時間）才跟換氣次數相關。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：換氣次數的迷思</h4>
+            <p>製藥業長期存在一個迷思：「換氣次數越高越好」。ISPE 明確指出這是一個<strong>昂貴的誤解</strong>：</p>
+            <ul>
+                <li>過高的換氣次數意味著更大的空調設備、更高的能耗、更多的 HEPA 過濾器更換成本</li>
+                <li>換氣次數主要影響 <strong>recovery time</strong>（恢復時間），而非穩態微粒濃度</li>
+                <li>20 次/hr 是分級空間的常見最低值，可在 20 分鐘內實現 100 倍的微粒下降</li>
+                <li>正確的方法是：先確定 PGR 和目標濃度，再計算所需送風量，最後才知道換氣次數</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>成本影響</strong>：某 CDMO 的 Grade 7 房間（50 m&sup3;）設計換氣次數為 40 次/hr（送風量 2000 m&sup3;/hr）。試車後發現 at-rest 微粒遠低於限值，recovery 只需 8 分鐘。將換氣次數降至 25 次/hr（1250 m&sup3;/hr），recovery 時間增加到 14 分鐘（仍在 20 分鐘要求內），但空調能耗降低約 35%。年節省電費和過濾器成本約數十萬台幣。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的分級空間的換氣次數是多少？是根據計算得出的還是「行業慣例」？</li>
+                <li>如果將換氣次數降低 25%，recovery time 會增加多少？是否仍能滿足法規要求？</li>
+                <li>你是否知道你的潔淨室的 PGR（微粒產生率）？如果不知道，是否有方法估算？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.5.2 Particle Generation Rate -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.5.2 Particle Generation Rate（微粒產生率）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">PGR</span> for an existing process may be calculated if the steady-state room particle count, the room supply airflow, and the supply airflow particle level are known (see Appendix 9). The calculated value of PGR can then be used for the same process in a new facility.</p>
+
+        <p>However, equipment manufacturers may not know the PGR of their equipment, necessitating HVAC designers to make conservative estimates and over-design room airflow. Data gathered during "water batching" (process simulation), but before actual production, may offer an opportunity to reduce airflow rates where in-operation airborne particle levels appear to be low (because of over-design).</p>
+
+        <p>When using empirical data for airborne particulate monitoring, it should be taken into consideration that particulate of the product being processed is not a contaminant. This is of particular interest in aseptic powder filling operations, where high particle counts may be associated with the filling process, but do not indicate failure of a cleanroom design. If an air volume reduction appears to be feasible, other critical HVAC parameters (temperature, RH, room DP, recovery, and at-rest levels) should be maintained.</p>
+
+        <p>Figure 7.2 gives an indication of particulates generated by personnel within a cleanroom. Although equipment in operation can generate many times more particles per minute, personnel are a primary source of viable contamination. Increased control of total particles released from personnel leads to an increased control of viable particles in a room.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：PGR 的實務意義</h4>
+            <p><strong>Particle Generation Rate（PGR，微粒產生率）</strong>是 HVAC 設計的關鍵輸入參數。如果你知道 PGR，就能精確計算所需的送風量。但現實中：</p>
+            <ul>
+                <li>設備廠商通常不提供 PGR 數據</li>
+                <li>HVAC 設計師被迫做保守估計，導致過度設計（over-design）</li>
+                <li>過度設計 = 更大的設備 + 更高的能耗 + 更多的成本</li>
+            </ul>
+            <p>好消息是：在 water batching（水模擬批次）階段可以實測 PGR，如果發現比估計低，有機會降低送風量來節省成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：產品粉塵不是污染物</h4>
+            <p>這是一個非常重要但容易混淆的概念。在<strong>無菌粉末充填（Aseptic Powder Filling）</strong>操作中，微粒計數器可能顯示非常高的讀數，但這些微粒是產品本身的粉末，不是環境污染物。</p>
+            <p>這不代表潔淨室設計失敗。但要注意：即使產品粉塵本身不是污染物，高濃度的粉塵仍可能干擾環境監測的判讀。CDMO 需要建立明確的數據解讀標準，區分「產品相關微粒」和「環境污染微粒」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PGR 就像一個水龍頭漏水的速率。如果你知道漏水速率（PGR），你就能計算需要多大的排水管（送風量）來防止積水（微粒超標）。但如果你不知道漏水速率，你只能裝一根「應該夠大」的排水管 — 這就是過度設計。試車階段就像第一次開水龍頭測試：你終於知道實際漏水速率，可以決定是否可以換一根較小（較省錢）的排水管。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施在試車或 APS（無菌製程模擬）階段是否有收集 PGR 數據？這些數據是否被用來優化 HVAC 設計？</li>
+                <li>如果你的粉末充填線的微粒計數在操作中遠超 ISO 7 限值，但全部是產品粉塵，你會如何處理這個環境監測數據？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.5.3 Impact of UFH on Air Change Rates -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.5.3 Impact of Unidirectional Airflow Hoods on Air Change Rates（單向氣流罩對換氣次數的影響）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Air leaving the processing space inside a hood is often significantly cleaner than the air of the room into which it moves. The relatively clean air from the hood may help, along with the supply air from the HVAC system to dilute airborne particles in the room.</p>
+
+        <p>In addition to reducing airborne particles, air flow from a hood may accelerate the <span class="key-term">recovery time</span> of a room from in-use to at-rest conditions. The entire air flow from a hood may not be available to include in air change calculations because:</p>
+        <ul>
+            <li>Short-circuiting of the air leaving the hood zone back (upward) to the hood inlet; the added dilution will affect only areas near the airflow path. If the hood inlet is near a room air supply outlet, that air could also short circuit into the hood without helping to mix air in the room.</li>
+            <li>Hood air may not be as clean as HVAC supply air. Even though the critical location under the hood might be rated as ISO 5, the air leaving the Grade 5 work space has collected additional contaminants from equipment and personnel outside the critical zone before passing back into the hood inlet.</li>
+            <li>Similar increases in room air cleanliness and recovery can be accomplished with <span class="key-term">HEPA-equipped FFUs</span> operating inside a room. Short circuiting of filtered air back to the air intake may create only localized "super-clean" areas, as with UFHs.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：UFH/FFU 的換氣次數貢獻</h4>
+            <p><strong>Unidirectional Flow Hood（UFH，單向氣流罩）</strong>和 <strong>Fan Filter Unit（FFU，風機過濾單元）</strong>會在房間內產生額外的清潔氣流。但是，不能簡單地把這些氣流加到房間的換氣次數計算中。原因有三：</p>
+            <ul>
+                <li><strong>Short-circuiting（短路循環）</strong>：UFH 排出的空氣可能直接被自己的進風口吸回，沒有真正稀釋整個房間的空氣</li>
+                <li><strong>污染物積累</strong>：離開 Grade 5 工作區的空氣已經收集了設備和人員的微粒，不再是「乾淨」的</li>
+                <li><strong>局部效應</strong>：FFU 可能只在其正下方創造一個「超潔淨」區域，而非均勻改善整個房間</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在一個充滿灰塵的房間裡放了一台桌上型空氣清淨機。清淨機會讓它附近的空氣變得很乾淨，但如果出風口和進風口太近，乾淨空氣會在清淨機周圍循環，房間的另一端還是很髒。你不能說「清淨機的風量 + 中央空調的風量 = 房間的總換氣量」，因為清淨機的風量只在局部有效。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 HVAC 確效（Qualification）時，需要驗證 UFH/FFU 對整個房間的實際影響：</p>
+            <ul>
+                <li>在 UFH 運作和關閉兩種狀態下分別測量房間微粒</li>
+                <li>測量 UFH 出風口不同距離處的微粒濃度，繪製衰減曲線</li>
+                <li>進行煙霧測試確認是否存在短路循環</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的潔淨室中有 UFH 或 FFU 嗎？在計算換氣次數時，你是否把它們的風量包含在內？</li>
+                <li>你有沒有做過煙霧測試來確認 UFH 的氣流是否存在短路循環？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.6 Room Air Distribution -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.6 Room Air Distribution and Quality of Incoming Air（房間空氣分佈與進氣品質）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Optimal layout for air inlet and outlet, and adequate filtration, can produce desired airborne particulate levels and recovery rates using lower air change rates than those used traditionally.</p>
+
+        <p>Using the recovery example in Section 2.3.5.1 of this Guide, faster recovery can be accomplished in a classified room where clean air supply is distributed over a high percentage of the ceiling (or via multiple <span class="key-term">non-aspirating diffusers</span>) than by supplying the same total supply volume from one conventional air outlet. It is not necessary to create a "laminar flow ceiling." Numerous air outlets equally spaced, with equal flow rates, can create a "<span class="key-term">plug flow</span>," a situation where air generally moves downward from ceiling to floor, but not at constant velocity. This can lead to faster recovery (often less than 10 minutes for 20 ac/hr) and also prevent "hot spots" of high particle count in a room. The resultant downward velocities are much less than those used in a unidirectional flow (Grade 5) area, and activity in the room may cause undesirable airflow patterns that should be investigated during commissioning. Numerous well-located low wall air returns can help prevent "<span class="key-term">dead zones</span>" near the floor. (Generally, pharmaceutical facilities do not use perforated floors for air returns.)</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Plug Flow vs. Laminar Flow</h4>
+            <p>ISPE 提出了一個重要的設計理念：你不需要建造昂貴的「層流天花板」（laminar flow ceiling）來獲得良好的空氣分佈。</p>
+            <ul>
+                <li><strong>Laminar Flow（層流）</strong>：所有空氣以均勻、恆定的速度向同一方向移動。昂貴，需要整個天花板都是 HEPA 過濾器</li>
+                <li><strong>Plug Flow（柱塞流）</strong>：空氣大致從天花板向地面移動，但速度不恆定。通過均勻分佈的多個出風口實現，成本更低</li>
+            </ul>
+            <p><strong>Non-aspirating Diffuser（非引射式散流器）</strong>是實現 plug flow 的關鍵設備，它將空氣以低速垂直向下送出，不會捲入周圍的空氣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Dead Zones 的風險</h4>
+            <p><strong>Dead Zones（死角區域）</strong>是指房間中空氣幾乎不流動的區域，通常在角落和地板附近。微粒會在這些區域積累，成為潛在的污染源。解決方案：</p>
+            <ul>
+                <li>在低牆位置設置多個回風口</li>
+                <li>避免在角落堆放物品阻擋氣流</li>
+                <li>在試車時使用煙霧測試識別死角</li>
+            </ul>
+            <p>注意：製藥設施通常<strong>不使用穿孔地板</strong>作為回風口（與半導體晶圓廠不同），因為清潔和維護困難。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的潔淨室使用什麼類型的送風散流器？是傳統的方形散流器還是非引射式散流器？</li>
+                <li>你的設施在試車時是否進行過煙霧測試來識別 dead zones？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.7 Airflow Direction and Pressurization -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.7 Airflow Direction and Pressurization（氣流方向與壓力控制）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Constructing a space that is absolutely airtight is considered impractical using normal construction techniques; therefore, alternative approaches are required to prevent airborne particulate migrating into or out of a space. A continuous flow of air in the desired direction through the cracks in building construction (door gaps, wall penetrations, conduits, etc.) can reduce transport of airborne particulates. A velocity of <span class="key-term">100 to 200 FPM (0.5 to 1.0 m/sec)</span> usually will capture and transport light powders and bioburden, assuming there are no strong drafts nearby (such as a worker passing quickly in front of a laboratory hood).</p>
+
+        <p>One method to control the direction of airflow is to control the relative pressurization of adjacent spaces, i.e., the <span class="key-term">DP</span> between the spaces.</p>
+
+        <p>A simplified method (neglecting the orifice coefficient for the opening) to calculate the expected velocity of airflow through a "crack" (e.g., around a closed door) resulting from a given pressure differential is:</p>
+
+        <div class="quote-box">
+            V = 4005 &radic;VP &nbsp;&nbsp;or&nbsp;&nbsp; VP = (V/4005)&sup2;<br><br>
+            Velocity (V) can be broken down to volume divided by area, giving V = Q/A:<br><br>
+            VP = (Q/4005A)&sup2;<br><br>
+            For metric units: VP (Pascals) = (Q/110A)&sup2;<br>
+            (where Q is in m&sup3;/hr and A is in square meters)
+        </div>
+
+        <p>Where:</p>
+        <ul>
+            <li>4005 is a conversion factor</li>
+            <li>V is velocity in ft/min</li>
+            <li>VP is velocity pressure, here assumed to be the room DP in inches wg</li>
+            <li>A is area of the opening in square feet</li>
+            <li>Q is airflow in Cubic Feet per Minute</li>
+        </ul>
+
+        <p>Assuming room DP converts fully to VP through an opening (a conservative assumption), calculating the opening area, such as the crack area around a closed door between rooms, allows calculation of the airflow (CFM) required to create a pressure across that door, or the velocity that results from a known DP.</p>
+
+        <div class="quote-box">
+            For A=1 sq foot (0.1 sq m) opening, 890 CFM (about 1500 m&sup3;/hr or 0.45 m&sup3;/sec) will create 0.05 inch wg (12.5 Pa) DP (V = Q/A = 890 FPM = 4.5 M/s)
+        </div>
+
+        <p>Other "cracks" in the fabric separating a pressurized room from lower pressure spaces may not be accounted for using this calculation. This often leads to a requirement for more airflow to the room than predicted by the calculation to satisfy DP requirements. A common method which accounts for this additional airflow is to allocate <span class="key-term">0.05 to 0.5 CFM per square foot of room surface</span>, depending on construction and DP. This airflow can be minimized by constructing rooms tightly and testing for (and correcting) leaks during commissioning.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Differential Pressure（壓差，DP）控制</h4>
+            <p><strong>Differential Pressure（壓差）</strong>是製藥 HVAC 中最重要的控制參數之一。核心原理：</p>
+            <ul>
+                <li>完全氣密的房間不可能用一般建築工法實現</li>
+                <li>門縫、管路穿牆處、電線管路等都會有「裂縫」</li>
+                <li>通過維持房間之間的壓差，讓空氣永遠從高壓（潔淨）側流向低壓（較不潔淨）側</li>
+                <li>裂縫處的空氣流速需達到 100-200 FPM（0.5-1.0 m/s）才能有效阻擋微粒和微生物遷移</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>壓差-流速-風量關係公式</strong>：</p>
+            <pre>
+Imperial:  V = 4005 × sqrt(VP)
+           VP = (Q / (4005 × A))²
+
+Metric:    VP(Pa) = (Q / (110 × A))²
+           Q = m³/hr, A = m²
+
+實例計算：
+假設門縫面積 A = 0.1 m²（約 1 ft²）
+目標壓差 VP = 12.5 Pa (0.05 inch wg)
+
+Q = 110 × A × sqrt(VP)
+Q = 110 × 0.1 × sqrt(12.5)
+Q = 110 × 0.1 × 3.54
+Q ≈ 39 m³/min ≈ 1500 m³/hr
+
+即：僅一個門縫就需要約 1500 m³/hr 的
+「額外」送風來維持 12.5 Pa 的壓差！
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>壓差控制就像氣球：如果氣球有小孔，你需要不斷充氣來維持氣球的膨脹狀態（正壓）。小孔越多或越大，需要充氣的速率就越高。房間的門縫、管路穿牆孔就是「小孔」，送風系統就是「打氣筒」。建築施工越密封，需要的「充氣量」就越少，也就越省能源。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：隱藏的成本因素</h4>
+            <p>壓差維持所需的「滲漏補償風量」是 HVAC 能耗的一個重要但經常被低估的來源：</p>
+            <ul>
+                <li>常見的估算方法：每平方英尺房間表面分配 0.05-0.5 CFM 的滲漏補償風量</li>
+                <li>建築密封性越差，所需補償風量越大，能耗越高</li>
+                <li>在試車期間測試並修補滲漏點是降低長期營運成本的最佳時機</li>
+            </ul>
+            <p>CDMO 在評估廠房租賃或新建時，建築的氣密性品質直接影響 HVAC 營運成本。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施中，各潔淨室之間的壓差設定值是多少 Pa？這些值是如何決定的？</li>
+                <li>你是否知道你的潔淨室門縫的大致面積？這對維持壓差所需的送風量有什麼影響？</li>
+                <li>在試車階段，你的設施是否進行過氣密性測試並修補滲漏點？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.8 Control of Operator Exposure -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.8 Control of Operator Exposure to Potent and Hazardous Compounds（操作員暴露控制）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Modern pharmaceutical processing increasingly requires handling of <span class="key-term">potent active ingredients</span>, requiring small dosages to produce a pharmacological effect, and may require the handling of other materials that can be hazardous to human health. The prevalence of these challenges creates a burden on the HVAC system and process engineers to control operator exposure and possible environmental discharge. Worker protection standards vary by jurisdiction, but <span class="key-term">Control of Substances Hazardous to Human Health (COSHH)</span> regulations (this is a terminology coined in the UK, but common in the industry) are ubiquitous. These standards may specify 8 hour <span class="key-term">Operator Exposure Limits (OELs)</span> for commonly used substances and require that manufacturers specify OELs for proprietary compounds. A hierarchy of control is expected; with substitution and control at the source being considered before <span class="key-term">Local Exhaust Ventilation (LEV)</span> and other HVAC methods, followed by <span class="key-term">Personal Protective Equipment (PPE)</span> and administrative controls.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：操作員暴露控制的層級</h4>
+            <p>處理高活性藥物成分（HPAPI）時，ISPE 強調一個控制層級（Hierarchy of Control）：</p>
+            <ol>
+                <li><strong>Substitution（替代）</strong>：能否使用較不危險的替代物質？</li>
+                <li><strong>Source Control（源頭控制）</strong>：密閉容器、隔離器、封閉式轉料系統</li>
+                <li><strong>LEV（Local Exhaust Ventilation，局部排風）</strong>：在產塵點設置排風口</li>
+                <li><strong>HVAC 方法</strong>：整體房間的壓差和換氣控制</li>
+                <li><strong>PPE（Personal Protective Equipment，個人防護裝備）</strong>：面罩、呼吸器等</li>
+                <li><strong>Administrative Controls（行政管控）</strong>：輪班制度、暴露時間限制</li>
+            </ol>
+            <p>重點：PPE 是<strong>最後一道防線</strong>，不應該是第一選擇。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：OEL 與 HVAC 設計的關係</h4>
+            <p><strong>Operator Exposure Limit（OEL，操作員暴露限值）</strong>直接影響 HVAC 設計。OEL 越低（藥物越強效），HVAC 系統需要提供的保護就越高：</p>
+            <ul>
+                <li>OEL &gt; 100 &mu;g/m&sup3;：一般通風 + 基本 PPE 可能就足夠</li>
+                <li>OEL 10-100 &mu;g/m&sup3;：需要 LEV + 負壓控制</li>
+                <li>OEL &lt; 10 &mu;g/m&sup3;：需要隔離器或密閉系統</li>
+                <li>OEL &lt; 1 &mu;g/m&sup3;：需要完全密閉的隔離器系統</li>
+            </ul>
+            <p>對 CDMO 而言，接受高活性藥物訂單前，必須評估現有 HVAC 系統是否能提供足夠的保護。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 商業決策</strong>：某 CDMO 收到一個 HPAPI 產品的生產詢價，OEL 為 0.5 &mu;g/m&sup3;。現有設施沒有隔離器，只有開放式操作台和 LEV。投標前需要評估：(1) 改造 HVAC 系統的成本，(2) 購買隔離器的投資，(3) 操作員健康監測的額外成本。這些成本必須反映在報價中，否則會虧錢或違反職業安全法規。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施目前能處理的最低 OEL 等級是多少？如果客戶要求更低的 OEL，你需要什麼升級？</li>
+                <li>控制層級中，你的設施目前主要依賴哪一層？是否過度依賴 PPE 而不是工程控制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.4 Psychrometrics -->
+<!-- ============================================================ -->
+<div class="section-title">7.4 Psychrometrics（空氣調節學）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.4.1 Introduction</h3>
+        <p><span class="key-term">Psychrometrics</span> is the science involving the properties of moist air (a mixture of dry air and water vapor) and the process in which the temperature or the water vapor content of the mixture are changed. A <span class="key-term">psychrometric chart</span> is used to identify conditions of air and to illustrate the process of achieving the desired state of the controlled space. For further information, see Appendix 1. See sources such as the ASHRAE Fundamentals Handbook for a detailed discussion. This section contains a high level overview of psychrometrics.</p>
+
+        <h3>7.4.2 Basic Properties of Air</h3>
+        <p>Dry air is normally comprised of 78.1% nitrogen, 21% oxygen, and has trace amounts of 10 additional elements totaling 0.9%. Air is normally a mixture of dry air and water vapor. When moist air reaches a level at which it cannot hold more moisture, it is said to be, "<span class="key-term">saturated</span>." The colder the air, the less moisture it can hold. Warmer air can hold larger quantities of moisture.</p>
+
+        <p>The moisture in air (its <span class="key-term">specific humidity</span>) is measured in:</p>
+        <ul>
+            <li>grains of moisture per pound of air (7,000 grains equal 1 pound)</li>
+            <li>grams of moisture per kg of air (SI units)</li>
+        </ul>
+
+        <p>Air at 75&deg;F (24&deg;C) and 60% RH has a specific humidity of 78 grains of water per pound (7000 grains) of dry air (11g/kg).</p>
+
+        <p>A psychrometric chart (see Appendix 3) provides an overview of thermodynamic properties of air-water mixtures. If any two properties of the air mixture are known, the chart allows an engineer to determine its remaining properties. Air-water vapor mixtures have interrelated psychrometric properties that can be plotted on the chart. The values on the chart are for a given barometric pressure (usually assumed to be at sea level); the values will be different at substantially different elevations.</p>
+
+        <h3>7.4.2 (continued) Sensible and Latent Heat</h3>
+        <p><span class="key-term">Sensible (dry) heat</span> causes a change in the temperature of a substance. Sensible heat can be "sensed" or felt and quantified by measurement with a <span class="key-term">dry bulb thermometer</span>. Addition or removal of sensible heat will cause the measured air temperature to rise or fall.</p>
+
+        <p>On the psychrometric chart, sensible heat shows as temperature, as a horizontal line with a scale increasing from left to right. As mixed air is heated with only sensible heat, there is no resulting change in the amount of water vapor in the air.</p>
+
+        <p><span class="key-term">Latent heat</span> is the heat of vaporization carried by the moisture in the air/water mixture. Changes in latent heat are not detected with a dry bulb thermometer. The addition of water vapor to air may increase the humidity of the air without changing the temperature of the air, for example:</p>
+        <ul>
+            <li>If sufficient latent heat is added to water in its liquid state, it will change state into a vapor (or steam) by evaporation:
+                <ul>
+                    <li>The change of state caused by heating a liquid to steam is called the <span class="key-term">latent heat of vaporization</span>.</li>
+                    <li>The change of state caused by cooling from a steam to a liquid is called the <span class="key-term">latent heat of condensation</span>.</li>
+                    <li>The change of state from a liquid to a solid (ice) is called the <span class="key-term">latent heat of fusion</span>.</li>
+                    <li>The change of state from a solid to liquid is called the <span class="key-term">latent heat of melting</span>.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>Latent heat (mass of water per mass of dry air) appears on the psychrometric chart as horizontal lines on a vertical scale.</p>
+
+        <p><span class="key-term">RH</span> is the amount of moisture in the air versus the air's capacity to hold moisture. As warmer air can hold more moisture, sensible heating of air reduces the RH, and vice versa. Generally, at room temperature, it is assumed that each degree Fahrenheit change in temperature will yield a <span class="key-term">2% change in RH</span>. RH is a useful measure as it is related to the vapor pressure of water in the air, and therefore, reflects the tendency of water (in its liquid state) or moist surfaces to lose moisture to the air. Human comfort is more closely associated with RH than specific humidity, because of this drying effect on skin and mucus membranes.</p>
+
+        <h3>7.4.3 Psychrometric Properties of Air</h3>
+        <p>See Appendix 3 for a discussion of the terms used in Psychrometrics and for an explanation of the Psychrometric Chart.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Psychrometrics 空氣調節學</h4>
+            <p><strong>Psychrometrics（空氣調節學）</strong>是研究濕空氣（乾空氣 + 水蒸氣）性質的科學。對 HVAC 工程師來說，這是設計空調系統的數學基礎。核心概念：</p>
+            <ul>
+                <li><strong>Dry Bulb Temperature（乾球溫度）</strong>：普通溫度計測量的溫度，反映 Sensible Heat（顯熱）</li>
+                <li><strong>Wet Bulb Temperature（濕球溫度）</strong>：包裹濕布的溫度計測量的溫度，反映蒸發冷卻效果</li>
+                <li><strong>Dew Point（露點）</strong>：空氣冷卻到開始凝結水滴的溫度</li>
+                <li><strong>Specific Humidity / Humidity Ratio（含濕量）</strong>：每公斤乾空氣含有多少克水蒸氣</li>
+                <li><strong>Enthalpy（焓）</strong>：空氣中的總能量（顯熱 + 潛熱）</li>
+                <li><strong>Relative Humidity, RH（相對濕度）</strong>：目前含水量與飽和含水量的比值</li>
+            </ul>
+            <p>關鍵工具：<strong>Psychrometric Chart（焓濕圖）</strong>— 只要知道任意兩個參數，就能從圖上讀出所有其他參數。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：Sensible Heat 顯熱 vs. Latent Heat 潛熱</h4>
+            <p>這是 HVAC 設計中最基礎也最重要的區分：</p>
+            <ul>
+                <li><strong>Sensible Heat（顯熱）</strong>：改變溫度但不改變含水量的熱量。你「感覺」得到溫度變化。在焓濕圖上是水平移動。</li>
+                <li><strong>Latent Heat（潛熱）</strong>：改變含水量（相態變化）但不改變溫度的熱量。你「感覺」不到，只有濕度計能測到。在焓濕圖上是垂直移動。</li>
+            </ul>
+            <p>潛熱的四種形態：</p>
+            <ul>
+                <li><strong>Latent Heat of Vaporization（蒸發潛熱）</strong>：液態 → 氣態</li>
+                <li><strong>Latent Heat of Condensation（凝結潛熱）</strong>：氣態 → 液態</li>
+                <li><strong>Latent Heat of Fusion（融化潛熱）</strong>：液態 → 固態</li>
+                <li><strong>Latent Heat of Melting（熔化潛熱）</strong>：固態 → 液態</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>顯熱 vs. 潛熱</strong>的最佳比喻：</p>
+            <p>想像你在煮一鍋水。從冷水加熱到 100&deg;C 的過程中，你可以看到溫度計一直上升 — 這就是<strong>顯熱</strong>。但水到了 100&deg;C 後，你繼續加熱，溫度計不動了！所有的熱量都用來把水變成蒸氣 — 這就是<strong>潛熱</strong>。在 HVAC 中，空調的冷卻盤管需要同時處理顯熱（降溫）和潛熱（除濕），這就是為什麼 HVAC 設計需要分別計算這兩種熱負荷。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>溫度-相對濕度近似關係</strong>：</p>
+            <pre>
+經驗法則（室溫範圍）：
+  溫度每升高 1°F → RH 下降約 2%
+  溫度每下降 1°F → RH 上升約 2%
+
+範例：
+  房間初始條件：72°F, 50% RH
+  加熱至 77°F（升高 5°F）
+  新的 RH ≈ 50% - (5 × 2%) = 40%
+
+這就是為什麼冬天暖氣開得越大，
+空氣越乾燥 — 溫度上升，RH 自動下降。
+
+含濕量範例：
+  75°F (24°C), 60% RH 的空氣
+  Specific Humidity = 78 grains/lb = 11 g/kg
+  （7,000 grains = 1 pound）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：高海拔的影響</h4>
+            <p>原文提到焓濕圖的數值假設在海平面氣壓下。在<strong>高海拔地區</strong>（如墨西哥城 2,240m、昆明 1,890m），氣壓較低，空氣密度較小：</p>
+            <ul>
+                <li>相同體積的空氣含有較少的氧氣和較少的水蒸氣容量</li>
+                <li>風機需要更大的體積流量來達到相同的質量流量</li>
+                <li>標準焓濕圖的數值需要修正</li>
+            </ul>
+            <p>對在不同海拔地區設有工廠的 CDMO 而言，HVAC 設計不能直接複製 — 需要根據當地氣壓重新計算。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景 — 除濕設計</strong>：你的潔淨室需要維持 20&deg;C / 45% RH。外部空氣是 35&deg;C / 80% RH（台灣夏天）。空調必須：(1) 先大幅冷卻空氣到露點以下，讓水蒸氣凝結（處理潛熱），(2) 再加熱到 20&deg;C（處理顯熱）。這個「先冷後熱」的過程消耗大量能源，是台灣 CDMO 能耗的一大來源。了解 Psychrometrics 可以幫助你評估不同除濕策略（轉輪除濕 vs. 冷卻除濕）的能效差異。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你能從焓濕圖上讀出 20&deg;C / 50% RH 空氣的露點溫度嗎？這對冷卻盤管的設計溫度有什麼意義？</li>
+                <li>為什麼人體的舒適感更接近 RH 而非含濕量（Specific Humidity）？</li>
+                <li>在你的設施中，HVAC 的能耗中，顯熱和潛熱處理各佔大約多少比例？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Section Summary -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>HVAC 三層變數架構</strong>：一級（溫度、濕度、微粒）直接影響產品，二級（壓差、換氣次數、氣流方向）是控制手段，三級（風機轉速、風管壓力）是操作參數。三者之間存在明確的因果鏈。</li>
+        <li><strong>HVAC 的局限性</strong>：HVAC 不能清潔已受污染的表面、不能補償不良的設施設計、也不能控制產生過量污染物的製程。HVAC 只是污染控制策略（CCS）的一部分。</li>
+        <li><strong>換氣次數 vs. 送風量</strong>：穩態微粒濃度由 PGR（微粒產生率）和送風量（Q）決定，與換氣次數無直接關係。換氣次數主要影響 recovery time（恢復時間）。任意設定的換氣次數可能導致過度設計和不必要的成本。</li>
+        <li><strong>潔淨分級差異</strong>：EU 使用 Grade A-D（含 at-rest 和 in-operation 限值），FDA 使用 ISO 5/7/8（僅 in-operation）。CDMO 同時服務歐美客戶時，應以較嚴格標準為設計基準。</li>
+        <li><strong>壓差控制</strong>：通過維持房間間的壓差（DP），迫使空氣從潔淨區流向較不潔淨區。建築密封性直接影響維持壓差所需的額外送風量和能耗。</li>
+        <li><strong>Psychrometrics 空氣調節學</strong>：Sensible Heat（顯熱）改變溫度，Latent Heat（潛熱）改變含水量。Psychrometric Chart（焓濕圖）是 HVAC 設計的核心工具，只需知道任意兩個參數即可確定空氣的所有性質。</li>
+        <li><strong>操作員暴露控制層級</strong>：從源頭控制（替代、密閉）到工程控制（LEV、HVAC）再到 PPE，層級越高越優先。PPE 永遠是最後一道防線，不應作為第一選擇。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

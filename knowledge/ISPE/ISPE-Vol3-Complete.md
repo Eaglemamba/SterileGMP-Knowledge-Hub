@@ -10884,7 +10884,6 @@ High Efficiency Particulate Air
 HSA
 Headspace Analysis
 HVAC
-Heating, Ventilation, and Air Conditioning
 HVLD
 High Voltage Leak Detection
 ICC

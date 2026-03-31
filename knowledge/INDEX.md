@@ -748,6 +748,46 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-HVAC-Complete.md
+**Report:** ISPE Good Practice Guide: Heating, Ventilation, and Air Conditioning (HVAC)
+**Pages:** p1–p288 | **Sections:** 13 (6 chapters + 7 appendices, split into 19 subsections)
+
+**Covers questions about:**
+- HVAC system design fundamentals for pharmaceutical facilities: air handling units (AHU), coils, fans, dampers, humidifiers
+- Cleanroom classification and environmental control: Grade A/B/C/D, ISO classes, air change rates, particle control
+- Design process and risk assessment: CPP/CQA impact, parameter risk tables, facility programming and layout
+- HVAC design considerations for API, oral solid dosage, aseptic, and laboratory areas
+- Design review methodology: conceptual, basic, and detailed design stages
+- Equipment specification, qualification (IQ/OQ/PQ), commissioning, and maintenance (PM/PdM)
+- HEPA filtration: integrity testing, filter arrangements, MPPS, bleed-through
+- Pressure cascade control: differential pressure, airlocks (cascade/bubble/sink), air leakage calculations
+- Ventilation strategies: dilution vs. displacement air distribution, UDAF
+- Psychrometrics: heating/cooling/humidification/dehumidification processes on psychrometric chart
+- Science-based quality risk management for HVAC: ICH Q9, FMEA, RCM, PdM
+- HVAC engineering calculations: ideal gas law, Bernoulli, fan power, particle recovery, cascaded HEPA efficiency
+- Economics and sustainability: energy efficiency, heat recovery, CO₂ impact
+- Temperature mapping methodology: NF X15-140, seasonal testing, sensor placement
+- Medical device manufacturing HVAC requirements
+
+**Key terms:** HVAC, AHU (air handling unit), HEPA, ULPA, differential pressure, air change rate, Grade A/B/C/D, ISO 14644, cleanroom, pressure cascade, airlock, pass-through, UDAF (unidirectional airflow), fan, coil, damper, humidifier, dehumidifier, psychrometric chart, commissioning, qualification, IQ/OQ/PQ, PM (preventive maintenance), PdM (predictive maintenance), RCM (reliability centered maintenance), FMEA, ICH Q9, TAB (testing adjusting balancing), AFD, AF&ID, recovery test, MPPS, energy recovery, sustainability
+
+**Sections:**
+0. Introduction (Ch1, p9-20)
+1a-1b. Design Process (Ch2, p21-46) — 2 parts
+2a-2b. Design Considerations (Ch3, p47-88) — 2 parts (API/OSD/Aseptic/Labs)
+3. Design Review (Ch4, p89-96)
+4a-4c. Equipment Specification & Qualification (Ch5, p89-136) — 3 parts
+5. Documentation (Ch6, p137-146)
+6. App 1: HVAC Fundamentals (p147-158)
+7a-7b. App 2: HVAC Applications (p159-198) — 2 parts (AHU/Coils + Fans/Dampers)
+8. App 3: Psychrometrics (p199-208)
+9. App 4: Risk Management (p209-216)
+10. App 5-8: Examples (p217-232)
+11. App 9: Economics & Sustainability (p233-246)
+12a-12b. App 10-13: Misc, References & Glossary (p247-288) — 2 parts
+
+---
+
 ## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
@@ -863,14 +903,24 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | DI worked examples: API, FDF, sterility, packaging / 資料完整性案例：原料藥、製劑、無菌、包裝 | TR84 |
 | Sterile facility design, cleanroom layout, facility architecture / 無菌設施設計、潔淨室佈局 | ISPE-Vol3 |
 | Cleanroom classification, Grade A/B/C/D, ISO 14644 / 潔淨室分級、A/B/C/D級 | ISPE-Vol3 |
-| HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 |
-| Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 |
+| HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
+| Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
 | WFI system, clean steam, utility systems for sterile / 注射用水、潔淨蒸汽、無菌公用工程 | ISPE-Vol3 |
 | Sterile facility material flow, personnel flow, gowning rooms / 物料流、人員流、更衣室設計 | ISPE-Vol3 |
 | Lyophilizer, depyrogenation tunnel, sterile process equipment / 凍乾機、去熱原隧道、無菌製程設備 | ISPE-Vol3 |
 | Smoke study, airflow visualization, HVAC qualification / 煙霧測試、氣流可視化、HVAC確效 | ISPE-Vol3 |
 | VHP decontamination cycle, biological indicator, isolator leak rate / VHP除污、生物指示劑、隔離器洩漏率 | ISPE-Vol3 |
+| HVAC design, AHU, air handling unit, coils, fans, dampers / HVAC設計、空調箱、盤管、風機、風門 | ISPE-HVAC |
+| HVAC risk assessment, HVAC CPP, HVAC qualification / HVAC風險評估、HVAC關鍵製程參數、HVAC確效 | ISPE-HVAC |
+| Psychrometrics, humidity control, dehumidification / 濕空氣學、濕度控制、除濕 | ISPE-HVAC |
+| Air change rate calculation, particle recovery, dilution ventilation / 換氣次數計算、微粒回復、稀釋通風 | ISPE-HVAC + ISPE-Vol3 |
+| HEPA filter integrity test, DOP test, filter arrangement / HEPA完整性測試、DOP測試、過濾器配置 | ISPE-HVAC + ISPE-Vol3 |
+| Airlock design, cascade airlock, bubble airlock, sink airlock / 氣閘設計、級聯式氣閘、正壓氣閘、負壓氣閘 | ISPE-HVAC + ISPE-Vol3 |
+| Temperature mapping, NF X15-140, seasonal qualification / 溫度分佈驗證、季節確效 | ISPE-HVAC |
+| HVAC energy, sustainability, heat recovery / HVAC能源、永續發展、熱回收 | ISPE-HVAC |
+| Preventive maintenance PdM RCM, HVAC maintenance / 預防保養、預測保養、可靠度中心維護 | ISPE-HVAC |
+| Medical device HVAC, clean workstation / 醫療器材HVAC、潔淨工作站 | ISPE-HVAC |
 
 ## Not Covered in This Knowledge Base
 
@@ -907,7 +957,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
@@ -925,7 +975,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-Isolators ★★★ (isolator gowning, glove disinfection) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
 
 **Equipment Qualification IQ/OQ/PQ (設備確效)**
-→ TR60 ★★★ (lifecycle qualification framework) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
+→ TR60 ★★★ (lifecycle qualification framework) | ISPE-HVAC ★★★ (HVAC commissioning & qualification: V-diagram, particle counting, recovery test, DP alarm delay) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
+
+**HVAC Engineering / Air Handling (暖通空調工程)**
+→ ISPE-HVAC ★★★ (comprehensive HVAC guide: AHU design, filtration, pressure control, psychrometrics, risk management, maintenance, economics) | ISPE-Vol3 ★★★ (HVAC for sterile facilities: air change rates, pressure cascades, HEPA, UDAF) | TR90 ★★ (HVAC as CCS element) | PtC-12 ★ (RABS HVAC requirements)
 
 **Regulatory Background — FDA/EMA GMP (法規)**
 → TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)

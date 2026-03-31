@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Appendix 3: Psychrometrics</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 3: Psychrometrics</h1>
+    <div class="subtitle">附錄3：空氣線圖與濕度學</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p199 - p208</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Psychrometric Chart（空氣線圖）的基本結構，以及圖上各軸線代表的物理意義</li>
+        <li>掌握三種可量測溫度參數：Dry Bulb Temperature（乾球溫度）、Wet Bulb Temperature（濕球溫度）、Dew Point Temperature（露點溫度）的定義與差異</li>
+        <li>學會區分可量測屬性（Measurable Properties）與可計算屬性（Calculable Properties），理解兩者在 HVAC 設計中的互補關係</li>
+        <li>了解 Relative Humidity（相對濕度）、Enthalpy（焓）、Humidity Ratio（含濕量）、Specific Volume（比容）、Vapor Pressure（水蒸氣壓力）等計算參數的意義</li>
+        <li>熟悉八大基本向量（Eight Fundamental Vectors）及其在 HVAC 系統設計中的應用</li>
+        <li>掌握 System Mapping（系統映射）概念，能在空氣線圖上追蹤空調處理過程的每個階段</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.1 Introduction -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-1">9.1 Introduction（導論）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section augments the discussion on <span class="key-term">psychrometrics</span> in Appendix 1, see Figure 9.1.</p>
+
+        <p><strong>Figure 9.1: A Typical Psychrometric Chart (SI units)</strong></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Measurable Psychrometric Properties</th>
+                <th>Symbol</th>
+                <th>Calculable Psychrometric Properties</th>
+                <th>Symbol</th>
+            </tr>
+            <tr>
+                <td>Dry-bulb Temperature</td>
+                <td>t<sub>DB</sub></td>
+                <td>Specific Enthalpy</td>
+                <td>h</td>
+            </tr>
+            <tr>
+                <td>Wet-bulb Temperature</td>
+                <td>t<sub>WB</sub></td>
+                <td>Specific Volume</td>
+                <td>v</td>
+            </tr>
+            <tr>
+                <td>Dew-point Temperature</td>
+                <td>t<sub>DP</sub></td>
+                <td>Humidity Ratio</td>
+                <td>W</td>
+            </tr>
+            <tr>
+                <td>Relative Humidity</td>
+                <td>RH</td>
+                <td>Water Vapor Pressure</td>
+                <td>p<sub>wv</sub></td>
+            </tr>
+            <tr>
+                <td>Barometric Pressure</td>
+                <td>P<sub>BAR</sub></td>
+                <td colspan="2">&mdash;</td>
+            </tr>
+        </table>
+        </div>
+        <p style="text-align:center; font-size:0.85rem; color:#4a5568;">Table 9.1: Psychrometric Terminologies</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Psychrometrics（空氣線圖與濕度學）</h4>
+            <p><strong>Psychrometrics（空氣線圖與濕度學）</strong>是研究空氣與水蒸氣混合物熱力學性質的科學。在製藥 HVAC 設計中，這門學問是一切溫濕度控制的理論基礎。</p>
+            <p>空氣線圖（Psychrometric Chart）是將這些複雜的熱力學關係「視覺化」的工具。只要知道任意兩個獨立參數，就能在圖上確定空氣的完整狀態——溫度、濕度、焓值等所有資訊一目了然。</p>
+            <p>Table 9.1 將參數分為兩大類：</p>
+            <ul>
+                <li><strong>可量測屬性（Measurable）</strong>：可以用儀器直接量到的——溫度計量乾球、濕球，露點儀量露點，濕度計量 RH，氣壓計量氣壓</li>
+                <li><strong>可計算屬性（Calculable）</strong>：需要透過公式從量測值推導出來的——焓、比容、含濕量、水蒸氣壓力</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把空氣線圖想像成「空氣的健康檢查報告」。就像人的健檢報告上有體溫、血壓、心跳等指標，空氣線圖上也呈現了空氣的「體溫」（乾球溫度）、「含水量」（含濕量）、「飽和程度」（相對濕度）等。只要量到兩個數值，就能推算出完整的「體檢結果」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對 CDMO 工程師而言，空氣線圖不只是理論工具——它直接影響：</p>
+            <ul>
+                <li><strong>AHU 選型</strong>：冷卻盤管的容量、加濕器的規格，都需要從空氣線圖上讀取焓差、含濕量差來計算</li>
+                <li><strong>能耗分析</strong>：夏季除濕、冬季加濕的能耗成本，根源就在空氣線圖上的狀態變化路徑</li>
+                <li><strong>GMP 合規</strong>：藥廠對潔淨區的溫度（通常 18-25&deg;C）和相對濕度（通常 30-65% RH）都有嚴格要求，空氣線圖幫助你理解如何同時達成這兩個目標</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼在空氣線圖上，只需要兩個獨立參數就能確定空氣的完整狀態？這和熱力學中的「狀態公設」（State Postulate）有什麼關係？</li>
+                <li>Table 9.1 中哪些參數是在製藥潔淨區日常監測中最常用的？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.2 Dry-Bulb Temperature -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-2">9.2 Dry-Bulb Temperature（乾球溫度）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Dry bulb temperature</span> can be read with an ordinary thermometer, RTD, or temperature sensor that has no moisture on its surface. The process of changing the dry bulb temperature is referred to as "<span class="key-term">sensible heating</span>" or "<span class="key-term">sensible cooling</span>."</p>
+
+        <p><strong>Symbol:</strong> t<sub>DB</sub></p>
+        <p><strong>Units:</strong> &deg;F (&deg;C)</p>
+        <p><strong>Example:</strong> 70&deg;F<sub>DB</sub> (21&deg;C<sub>DB</sub>)</p>
+
+        <p>The dry bulb temperature of the air is represented as <span class="key-term">vertical lines</span>, increasing in temperature from left to right on the psychrometric chart, Figure 9.2.</p>
+
+        <p><strong>Figure 9.2: Dry Bulb Temperature</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Dry Bulb Temperature（乾球溫度）</h4>
+            <p><strong>Dry Bulb Temperature（乾球溫度，t<sub>DB</sub>）</strong>就是我們日常所說的「氣溫」——用普通溫度計（RTD 或熱電偶）在乾燥狀態下量到的溫度。之所以叫「乾球」，是為了和下一節的「濕球」溫度區分。</p>
+            <p>關鍵概念：改變乾球溫度的過程叫做 <strong>Sensible Heating（顯熱加熱）</strong>或 <strong>Sensible Cooling（顯熱冷卻）</strong>。「顯熱」的意思是「看得到（感覺得到）的熱」——溫度計會有變化。相對的，改變濕度的過程涉及「潛熱」（Latent Heat），溫度計可能不會變化。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>乾球溫度就像你在天氣 App 上看到的溫度。當氣象說「今天 30&deg;C」，那就是乾球溫度。但你有沒有注意到，同樣 30&deg;C，台北和沙漠的體感完全不同？那是因為濕度不一樣——這就是為什麼只有乾球溫度還不夠，我們還需要濕球溫度和露點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p><strong>Figure 9.2</strong> 顯示乾球溫度在空氣線圖上的表現方式：</p>
+            <ul>
+                <li>乾球溫度以<strong>垂直線</strong>表示，從左到右溫度遞增</li>
+                <li>底部水平軸就是乾球溫度的刻度</li>
+                <li>在空氣線圖上，沿著同一條垂直線移動，代表溫度不變但濕度在改變（加濕或除濕）</li>
+                <li>沿著水平線移動（底部軸），代表溫度變化但含濕量不變——這就是純粹的「顯熱」過程</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p>顯熱負荷計算（Sensible Heat Load）：</p>
+            <pre>
+Q_sensible = m x c_p x (t_DB2 - t_DB1)
+
+其中：
+  Q = 顯熱量 (kW 或 BTU/hr)
+  m = 空氣質量流量 (kg/s 或 lb/hr)
+  c_p = 空氣比熱 ≈ 1.006 kJ/(kg·K)
+  t_DB = 乾球溫度 (°C 或 °F)
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在空氣線圖上，如果一個空氣狀態點沿水平線向右移動，代表什麼物理過程？溫度和含濕量分別如何變化？</li>
+                <li>為什麼製藥潔淨區通常設定 18-25&deg;C？溫度太高或太低對生產有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.3 Wet-Bulb Temperature -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-3">9.3 Wet-Bulb Temperature（濕球溫度）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Wet bulb temperature</span> is indicated by an ordinary thermometer having its sensor (bulb) covered with a sleeve wetted with (distilled) water in rapidly moving air, measuring the reading as the water evaporates. Evaporation removes heat from the thermometer bulb, cooling the thermometer in proportion to the amount of evaporation. This cooling lowers the temperature of the "wet bulb" thermometer. How much the wetted sleeve cools depends on the rate at which the water on the wick evaporates, which depends on the dry bulb temperature of the air and the moisture content of the air. If the air is very dry, the water on the wet bulb wick evaporates very quickly and the temperature drops sharply. If the air already contains a lot of moisture, very little moisture will be able to evaporate from the wick and the temperature will change very little. When the air is saturated with moisture (100% RH), no water will evaporate to cool the thermometer bulb and the <span class="key-term">wet bulb temperature will be the same as the dry bulb temperature</span>.</p>
+
+        <p><strong>Symbol:</strong> t<sub>WB</sub></p>
+        <p><strong>Units:</strong> &deg;F (&deg;C)</p>
+        <p><strong>Example:</strong> 65&deg;F<sub>WB</sub> (18&deg;C<sub>WB</sub>)</p>
+
+        <p>The wet bulb temperature of air is represented as <span class="key-term">downward slanting lines from top-left to bottom-right</span> on the psychrometric chart, Figure 9.3.</p>
+
+        <p><strong>Figure 9.3: Wet Bulb Temperature</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Wet Bulb Temperature（濕球溫度）</h4>
+            <p><strong>Wet Bulb Temperature（濕球溫度，t<sub>WB</sub>）</strong>的量測原理非常巧妙：用一塊濕布包裹溫度計的感應頭，放在快速流動的空氣中。水分蒸發會「帶走熱量」（蒸發潛熱），使溫度計讀數降低。</p>
+            <p>核心邏輯：</p>
+            <ul>
+                <li><strong>空氣越乾</strong> &rarr; 蒸發越快 &rarr; 帶走越多熱 &rarr; 濕球溫度越低 &rarr; 乾濕球溫差越大</li>
+                <li><strong>空氣越濕</strong> &rarr; 蒸發越慢 &rarr; 帶走較少熱 &rarr; 濕球溫度越接近乾球溫度</li>
+                <li><strong>100% RH（飽和）</strong> &rarr; 完全不蒸發 &rarr; t<sub>WB</sub> = t<sub>DB</sub></li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>濕球溫度就像夏天從泳池出來的感覺。如果空氣很乾（比如沙漠），身上的水分快速蒸發，你會覺得很涼甚至發冷——這就是「乾濕球溫差大」的體感。但如果是在台灣夏天的高濕環境，水分蒸發很慢，出水後還是覺得很悶熱——因為乾濕球溫差很小。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>濕球溫度在 HVAC 工程中的重要性：</p>
+            <ul>
+                <li><strong>冷卻塔設計</strong>：冷卻塔的理論最低出水溫度就是當地的濕球溫度。這是設計冷凍水系統的關鍵參數</li>
+                <li><strong>總熱量指標</strong>：濕球溫度同時反映了顯熱（溫度）和潛熱（濕度），是衡量空氣「總能量」的近似指標</li>
+                <li><strong>圖上特徵</strong>：Figure 9.3 顯示濕球溫度線在空氣線圖上從左上方向右下方傾斜延伸。注意這些線和焓線幾乎平行——因為兩者都反映空氣的總能量</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在台灣地區，夏季設計濕球溫度通常取 27-28&deg;C（ASHRAE 0.4% 設計條件）。這直接決定了冷卻塔的選型和冷凍水供應溫度。在 CDMO 廠房設計初期，必須取得當地氣象數據的設計濕球溫度，否則可能導致夏季冷卻能力不足，潔淨區溫濕度超標。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果某地乾球溫度 35&deg;C，濕球溫度 20&deg;C，這代表空氣狀態偏乾還是偏濕？為什麼？</li>
+                <li>為什麼冷卻塔的出水溫度永遠無法低於環境的濕球溫度？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.4 Dew-Point Temperature -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-4">9.4 Dew-Point Temperature（露點溫度）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The temperature at which water vapor leaves the air and collects on cool objects in the form of fine water droplets or bands together and becomes fog is called the <span class="key-term">saturation or dew point (t<sub>DP</sub>) temperature</span>. The higher the amount of moisture in the air; the higher the dew point temperature.</p>
+
+        <p><strong>Symbol:</strong> t<sub>DP</sub></p>
+        <p><strong>Units:</strong> &deg;F (&deg;C)</p>
+        <p><strong>Example:</strong> 62&deg;F<sub>DP</sub> (16&deg;C<sub>DP</sub>)</p>
+
+        <p>Dew point temperature is represented by <span class="key-term">horizontal lines</span> extending across the chart and intersecting the saturation line, the left boundary of the chart (see Figure 9.4).</p>
+
+        <p><strong>Figure 9.4: Saturation/Dew Point Temperature</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Dew Point Temperature（露點溫度）</h4>
+            <p><strong>Dew Point（露點，t<sub>DP</sub>）</strong>是空氣中的水蒸氣開始凝結成水滴的溫度。當你把空氣持續冷卻（不加不減水分），到了某個溫度，空氣「裝不下」那麼多水蒸氣，水就會以液態出現——在物體表面形成露珠，或在空中形成霧。</p>
+            <p>關鍵關係：</p>
+            <ul>
+                <li>露點只取決於空氣中的<strong>絕對含水量</strong>（含濕量 W），與溫度無關</li>
+                <li>含水量越高 &rarr; 露點越高</li>
+                <li>在空氣線圖上，露點就是某狀態點水平向左延伸到飽和線（100% RH 曲線）的交點溫度</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>露點就像一杯冰水外面出現的水珠。夏天你拿一杯冰水，杯壁溫度低於周圍空氣的露點，空氣中的水蒸氣接觸到冷杯壁就凝結成水滴。如果房間裡非常乾燥（露點很低），杯壁要更冷才會出水珠；如果房間很潮濕（露點很高），杯壁稍微涼一點就會「冒汗」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>露點在製藥環境中的關鍵應用：</p>
+            <ul>
+                <li><strong>凝結風險控制</strong>：如果潔淨區內設備表面溫度（如冷卻水管、冷凍乾燥機外壁）低於室內空氣的露點，就會產生凝結水——這在 GMP 環境中是嚴重的污染風險</li>
+                <li><strong>除濕設計依據</strong>：冷卻除濕的原理就是把空氣冷卻到露點以下，讓水分凝結出來。冷卻盤管的設計溫度必須低於目標露點</li>
+                <li><strong>凍乾（Lyophilization）</strong>：凍乾製程對環境露點有極嚴格要求，通常需要露點 &le; -40&deg;C 的乾燥空氣</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果潔淨區空氣條件是 22&deg;C / 50% RH，露點大約是多少？如果冷凍水管路表面溫度是 8&deg;C，會不會凝結？</li>
+                <li>為什麼露點比相對濕度更適合作為「絕對含水量」的指標？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.5 Relative Humidity -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-5">9.5 Relative Humidity (Percent of Saturation)（相對濕度）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">RH</span> is the ratio of the amount of water vapor in the air compared to the maximum amount of water vapor the air can hold at the same dry bulb temperature and pressure, expressed as a percentage. Air's ability to hold moisture increases as the temperature of the air increases. The dry bulb temperature of the air should be defined when using RH, as it is <span class="key-term">relative to a specific dry bulb temperature</span>.</p>
+
+        <p><strong>Symbol:</strong> RH</p>
+        <p><strong>Units:</strong> %</p>
+        <p><strong>Example:</strong> 77% RH at 68&deg;F<sub>DB</sub> (77% RH at 20&deg;C<sub>DB</sub>)</p>
+
+        <p>RH is displayed as a series of <span class="key-term">upward curved lines</span> on the psychrometric chart (see Figure 9.5). The uppermost curve that runs from the left axis to left side of the top is <span class="key-term">100% humidity line</span>, representing totally saturated air. The bottom axis (horizontal line) of the chart is the 0% humidity line and represents totally dry air.</p>
+
+        <p><strong>Figure 9.5: Relative Humidity</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Relative Humidity（相對濕度）</h4>
+            <p><strong>Relative Humidity（相對濕度，RH）</strong>是空氣中<em>實際</em>水蒸氣含量與同溫度下<em>最大</em>可容納水蒸氣含量的比值，以百分比表示。</p>
+            <p>關鍵字是「相對」——同樣的含水量，溫度不同，RH 就不同：</p>
+            <ul>
+                <li>30&deg;C 的空氣能容納的最大水蒸氣量遠大於 10&deg;C</li>
+                <li>因此，含水量相同的空氣，加熱後 RH 降低，冷卻後 RH 升高</li>
+                <li>這就是為什麼冬天開暖氣後室內會變得很乾燥（溫度升高但含水量不變，RH 下降）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一個水杯。小杯子（冷空氣）裝半杯水就是 50%，大杯子（熱空氣）裝同樣多的水可能只佔 20%。RH 就像「杯子裝滿的程度」——溫度決定杯子大小，含水量決定水有多少。同樣的水量（含濕量），杯子越大（溫度越高），裝滿的比例（RH）就越低。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>RH 在 GMP 環境中的重要性：</p>
+            <ul>
+                <li><strong>法規要求</strong>：大多數藥廠潔淨區要求 RH 在 30-65% 之間。過低（&lt;30%）會導致靜電問題和操作人員不適；過高（&gt;65%）會促進微生物生長和設備腐蝕</li>
+                <li><strong>產品穩定性</strong>：許多藥品（特別是固體劑型和凍乾產品）對環境濕度極度敏感。過高 RH 會導致吸潮、結塊、降解</li>
+                <li><strong>圖上特徵</strong>：RH 線在空氣線圖上是向上彎曲的弧線。最上方的弧線就是 100% RH（飽和線），也就是空氣線圖的左上邊界。底部水平軸代表 0% RH（完全乾燥的空氣）</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+RH = (p_wv / p_ws) x 100%
+
+其中：
+  p_wv = 空氣中水蒸氣的實際分壓 (Pa)
+  p_ws = 同溫度下的飽和水蒸氣壓 (Pa)
+
+例：20°C 時飽和水蒸氣壓 p_ws = 2,338 Pa
+    若實際水蒸氣壓 p_wv = 1,169 Pa
+    則 RH = 1,169 / 2,338 x 100% = 50%
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某潔淨區空氣在 22&deg;C 時 RH 為 55%。如果因為夜間溫度自然降到 18&deg;C（含水量不變），RH 會變成多少？會不會超過 65% 的上限？</li>
+                <li>為什麼 ISPE 指南強調使用 RH 時「必須同時註明乾球溫度」？只說 50% RH 有什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.6 Barometric or Total Pressure -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-6">9.6 Barometric or Total Pressure（大氣壓力）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Pressure</span> is the force per unit area exerted by gravity on an air mass. Barometric pressure is measured with a barometer, often filled with mercury. Unless stated otherwise, the properties of moist air/water mixtures represented on a psychrometric chart are those of air at <span class="key-term">standard sea level barometric pressure (29.92 inch Hg or 101.325 kPa)</span>; therefore, there is no scale on the chart for barometric pressure.</p>
+
+        <p><strong>Symbol:</strong> P<sub>BAR</sub></p>
+        <p><strong>Units:</strong> inch Hg (Pa)</p>
+        <p><strong>Example:</strong> 29.92 inch Hg or 101.3 kPa</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Barometric Pressure（大氣壓力）</h4>
+            <p><strong>Barometric Pressure（大氣壓力，P<sub>BAR</sub>）</strong>是大氣對地表施加的壓力。標準海平面氣壓為 101.325 kPa（760 mmHg 或 29.92 inch Hg）。</p>
+            <p>重要：大多數空氣線圖都是基於<strong>標準海平面氣壓</strong>繪製的。如果你的藥廠位於高海拔地區，需要使用對應海拔的空氣線圖或進行修正計算。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>大氣壓力就像「空氣的重量」壓在你身上。在海平面上，頭頂有整個大氣層壓著（101.3 kPa）。上到高山，頭頂的空氣少了，壓力就小了。空氣線圖就像一張地圖——它是針對特定「海拔」畫的。如果你把海平面的地圖拿到山上用，路線可能會有偏差。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對製藥 HVAC 設計的影響：</p>
+            <ul>
+                <li><strong>高海拔修正</strong>：在海拔 600m 以上的廠址（如墨西哥城、昆明），空氣密度降低，需要更大的風量才能達到同樣的質量流量，風機選型和風管尺寸都需要修正</li>
+                <li><strong>壓差管理</strong>：GMP 要求的潔淨區壓差（如 15 Pa）是「表壓」——也就是相對於大氣壓的差值。大氣壓本身的變化（天氣、季節）不影響壓差的 GMP 合規判定</li>
+                <li><strong>空氣線圖上無刻度</strong>：因為整張圖都假定在同一個氣壓下，所以圖上不會有氣壓的軸線</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 CDMO 廠房位在海拔 1,500m 的高原上，使用標準海平面空氣線圖會造成什麼樣的設計偏差？</li>
+                <li>大氣壓力的日常波動（颱風、鋒面）會影響潔淨區的壓差讀數嗎？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.7 Specific Enthalpy -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-7">9.7 Specific Enthalpy（比焓）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Enthalpy</span> is a measure of both <span class="key-term">latent heat</span> (moisture) and <span class="key-term">sensible heat</span> (dry heat only). Enthalpy difference is used to quantify the total amount of heat energy (BTU or Joules) added to or removed from air in a given HVAC process. When air is hot or contains moisture, the enthalpy value is higher than air that is cold or contains lower quantities of moisture.</p>
+
+        <p><strong>Symbol:</strong> h</p>
+        <p><strong>Units:</strong> BTU/lb (kJ/kg) of air</p>
+        <p><strong>Example:</strong> 30.02 BTU/lb</p>
+
+        <p>Enthalpy is represented by <span class="key-term">slanted lines</span> that travel from top-left of the psychrometric chart (see Figure 9.6), extending downward to bottom-right of the psychrometric chart to the bottom axis, almost parallel to t<sub>WB</sub> lines.</p>
+
+        <p><strong>Figure 9.6: Enthalpy</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Enthalpy（焓）</h4>
+            <p><strong>Enthalpy（焓，h）</strong>代表空氣的「總能量含量」，同時包含兩種熱量：</p>
+            <ul>
+                <li><strong>Sensible Heat（顯熱）</strong>：空氣溫度高低所帶的熱量。可以用溫度計「感覺到」</li>
+                <li><strong>Latent Heat（潛熱）</strong>：空氣中水蒸氣所攜帶的熱量。溫度計量不到，但水蒸氣確實帶著大量能量（水蒸發需要吸收 2,260 kJ/kg 的潛熱）</li>
+            </ul>
+            <p>焓差（&Delta;h）是 HVAC 工程中計算冷卻/加熱負荷的核心參數。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>焓就像你的「總財富」——包含現金（顯熱，看得到摸得到）和投資（潛熱，帳面上看不到但確實存在）。當你要搬家（空調處理空氣），需要計算的是「總財富」的變化，不能只算現金（溫度）。同樣是 30&deg;C 的空氣，濕潤空氣的焓值比乾燥空氣高很多——就像兩個人帳戶餘額一樣但投資組合完全不同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>焓在 HVAC 設計中的核心應用：</p>
+            <ul>
+                <li><strong>冷卻負荷計算</strong>：Q<sub>total</sub> = m &times; &Delta;h。這個公式涵蓋了顯熱和潛熱，是冷凍主機選型的基礎</li>
+                <li><strong>節能分析</strong>：比較回風焓值和新風焓值，可以判斷是否應該增加新風比例（經濟運轉模式）。當外氣焓值低於回風焓值時，增加新風比可以節省冷卻能耗</li>
+                <li><strong>與濕球溫度的關係</strong>：焓線幾乎平行於濕球溫度線，這不是巧合——兩者都反映空氣的「總熱量」狀態</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+h = c_p × t_DB + W × (h_fg + c_pv × t_DB)
+
+簡化近似（SI 單位）：
+h ≈ 1.006 × t_DB + W × (2,501 + 1.86 × t_DB) kJ/kg
+
+其中：
+  t_DB = 乾球溫度 (°C)
+  W = 含濕量 (kg/kg dry air)
+  2,501 kJ/kg = 0°C 時水的蒸發潛熱
+  1.006 kJ/(kg·K) = 乾空氣比熱
+  1.86 kJ/(kg·K) = 水蒸氣比熱
+
+例：t_DB = 22°C, W = 0.008 kg/kg
+h ≈ 1.006×22 + 0.008×(2501+1.86×22)
+  ≈ 22.13 + 0.008×2541.9
+  ≈ 22.13 + 20.34
+  ≈ 42.5 kJ/kg
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在空氣線圖上，焓線和濕球溫度線幾乎平行。這在物理上代表什麼意義？</li>
+                <li>為什麼夏季台灣的冷卻負荷特別大？從焓的角度分析，外氣高溫高濕對冷凍主機造成什麼挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.8 Specific Volume -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-8">9.8 Specific Volume（比容）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Specific volume</span> is the amount of space 1 lb of air occupies at specific atmospheric conditions, expressed as cubic feet per pound of dry air. It is the inverse of density.</p>
+
+        <p>When a cubic foot of air is heated, it will expand to more than a cubic foot of space although its original weight will not change. A cubic foot of the heated air will weigh less than a cubic foot of the original air. Since the heated air weighs less than the original (now cooler) air, the heated air will "rise" higher and the cooler air will "sink" lower.</p>
+
+        <p>When working in altitudes above 2,000 feet (600 m), calculations should be adjusted for specific volume and density. With increasing elevations, the air becomes "thinner" so a <span class="key-term">greater volume of air needs to be moved</span> in order to move the required mass of air needed to meet design criteria.</p>
+
+        <p><strong>Symbol:</strong> v</p>
+        <p><strong>Units:</strong> ft&sup3;/lb (m&sup3;/kg) of dry air</p>
+        <p><strong>Example:</strong> 13.61 ft&sup3;/lb</p>
+
+        <p>Specific volume is represented as <span class="key-term">steep downward sloping lines</span> traveling from the top of the psychrometric chart, Figure 9.7 to the bottom axis.</p>
+
+        <p><strong>Figure 9.7: Specific Volume</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Specific Volume（比容）</h4>
+            <p><strong>Specific Volume（比容，v）</strong>是單位質量空氣所佔的體積，是密度的倒數。</p>
+            <ul>
+                <li>比容 v = 1 / 密度 &rho;</li>
+                <li>單位：m&sup3;/kg（SI）或 ft&sup3;/lb（IP）</li>
+                <li>標準條件下（20&deg;C, 101.325 kPa），乾空氣比容約 0.84 m&sup3;/kg</li>
+            </ul>
+            <p>核心原理：</p>
+            <ul>
+                <li><strong>溫度升高</strong> &rarr; 空氣膨脹 &rarr; 比容增大 &rarr; 密度降低 &rarr; 熱空氣上升</li>
+                <li><strong>海拔升高</strong> &rarr; 大氣壓降低 &rarr; 空氣「更薄」 &rarr; 比容更大</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>比容就像氣球的大小。同一個氣球，加熱後會脹大（比容增加），帶到高山上也會脹大（氣壓降低）。雖然裡面的空氣質量沒變，但佔的空間更大了。在 HVAC 設計中，你需要的是「空氣的重量」（質量流量），而不是「空氣的體積」。如果空氣膨脹了，你就需要更大的管道和更大的風機才能送出同樣「重量」的空氣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>比容對 HVAC 設計的實務影響：</p>
+            <ul>
+                <li><strong>高海拔設計修正</strong>：海拔 600m 以上時，空氣密度明顯降低。例如在海拔 2,000m（如墨西哥城），空氣密度約為海平面的 80%。風管截面積和風機能力都需要放大 20-25%</li>
+                <li><strong>風機選型</strong>：風機規格通常以體積流量（CMH 或 CFM）標示，但 HVAC 設計需要的是質量流量。必須用比容做轉換：<br>
+                質量流量 = 體積流量 / 比容</li>
+                <li><strong>熱氣上升效應</strong>：在高大廠房中，溫度分層（上方較熱、下方較冷）是因為熱空氣比容大、密度低而上浮。這影響氣流組織和溫度均勻性的設計</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某 CDMO 工廠位於海拔 1,800m。如果設計文件中的風量是基於海平面條件計算的 10,000 CMH，實際需要供應多少體積流量才能達到同樣的質量流量？</li>
+                <li>為什麼潔淨區的送風口通常設在天花板、回風口設在地板附近？從比容和密度的角度解釋。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.9 Humidity Ratio -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-9">9.9 Humidity Ratio or Specific Humidity（含濕量／比濕度）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Humidity ratio</span> is a measurement of the actual amount of water in the air and is independent of the air's temperature. It is measured in either lbs/lbs or in grains/lb dry air. The weight of the moisture in the air is compared to the weight of the air.</p>
+
+        <p><strong>Symbol:</strong> W</p>
+        <p><strong>Units:</strong> lbs of water vapor/lbs of dry air or grains/lb (kg<sub>WV</sub>/kg<sub>DA</sub> or grams water/kg dry air)</p>
+        <p><strong>Example:</strong> 85 grains/lb or 0.012 lb/lb or 12 g/kg</p>
+
+        <p>Humidity ratio can be read by tracing a horizontal line from an established condition on the psychrometric chart, Figure 9.8 to the charts right edge, where the scale indicates the weight of the moisture in mass/mass. If the scale is expressed in grains of moisture per pound (gr/lb) of air and there is a need to convert the scale to pounds of moisture per pound of air, divide the number of grains by 7,000. If the scale is expressed in pounds of moisture per pound of air and there is a need to convert the scale to grains of moisture per pound of air (or kg/kg), multiply the W number by 7,000.</p>
+
+        <p><strong>Figure 9.8: Humidity Ratio</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Humidity Ratio（含濕量）</h4>
+            <p><strong>Humidity Ratio（含濕量，W）</strong>是空氣中水蒸氣的「絕對量」——每公斤乾空氣中含有多少公斤（或克）的水蒸氣。</p>
+            <p>關鍵特性：含濕量<strong>與溫度無關</strong>。不管你把空氣加熱或冷卻（只要不凝結），W 值不變。這和 RH 完全不同——RH 會隨溫度變化。</p>
+            <p>單位換算（IP 系統）：</p>
+            <ul>
+                <li>1 pound = 7,000 grains</li>
+                <li>85 grains/lb = 85 / 7,000 = 0.012 lb/lb</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>如果 RH 是「杯子裝滿的程度」，那含濕量就是「杯子裡水的實際重量」。不管杯子多大（溫度多高），水的重量不會變。當你要計算除濕量或加濕量時，用的是含濕量的差值（&Delta;W），而不是 RH 的差值——因為只有含濕量才是真正的「水分質量」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>含濕量在 HVAC 工程中的應用：</p>
+            <ul>
+                <li><strong>除濕量計算</strong>：凝結水量 = 風量 &times; &Delta;W。這是選擇冷卻盤管和計算排水量的基礎</li>
+                <li><strong>加濕器選型</strong>：加濕量 = 風量 &times; &Delta;W。蒸汽加濕器的產汽量直接從含濕量差算出</li>
+                <li><strong>圖上讀法</strong>：從狀態點畫水平線到右側邊緣，讀取 Y 軸上的數值就是含濕量</li>
+                <li><strong>與露點的關係</strong>：含濕量和露點是一一對應的——知道含濕量就知道露點，反之亦然</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+潛熱負荷（Latent Heat Load）：
+Q_latent = m × h_fg × ΔW
+
+其中：
+  m = 空氣質量流量 (kg/s)
+  h_fg = 水的蒸發潛熱 ≈ 2,501 kJ/kg (at 0°C)
+  ΔW = 含濕量差 (kg/kg)
+
+例：風量 5 kg/s，從 W=0.012 除濕到 W=0.008
+Q_latent = 5 × 2,501 × (0.012 - 0.008)
+         = 5 × 2,501 × 0.004
+         = 50 kW
+
+單位換算：
+  1 grain = 1/7000 lb = 0.0648 g
+  85 grains/lb ÷ 7,000 = 0.012 lb/lb
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼在計算加濕/除濕量時，應該用含濕量（W）的差值，而不是相對濕度（RH）的差值？</li>
+                <li>如果外氣條件是 35&deg;C / 70% RH（W &asymp; 25 g/kg），送風目標是 14&deg;C / 95% RH（W &asymp; 9.5 g/kg），每公斤空氣需要除掉多少克的水？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.10 Vapor Pressure -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-10">9.10 Vapor Pressure（水蒸氣壓力）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Water vapor pressure</span> is the pressure exerted by the water vapor molecules in the air/water mixture, the higher the specific humidity the higher the vapor pressure.</p>
+
+        <p><strong>Symbol:</strong> p<sub>WV</sub></p>
+        <p><strong>Units:</strong> inches Hg (Pa) or inches Hg</p>
+        <p><strong>Example:</strong> 0.5691 inch Hg</p>
+
+        <p>The vapor pressure scale is sometimes found on the right side of the psychrometric chart, Figure 9.9, increasing linearly from the bottom of chart to the top of chart.</p>
+
+        <p><strong>Figure 9.9: Vapor Pressure</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Vapor Pressure（水蒸氣壓力）</h4>
+            <p><strong>Vapor Pressure（水蒸氣壓力，p<sub>WV</sub>）</strong>是空氣中水蒸氣分子施加的分壓力。根據 Dalton 定律，大氣壓力是所有成分氣體分壓的總和：P<sub>BAR</sub> = p<sub>dry air</sub> + p<sub>WV</sub>。</p>
+            <p>水蒸氣壓力和含濕量（W）成正比——空氣中的水蒸氣越多，分壓越大。這個參數是計算 RH 的數學基礎：RH = p<sub>WV</sub> / p<sub>WS</sub>（實際壓力 / 飽和壓力）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>水蒸氣壓力就像一個房間裡的「人口密度」。人越多（水蒸氣分子越多），每個人佔的空間就越擠（壓力越大）。當房間「擠滿了」（飽和蒸氣壓），就不能再塞更多人了（水蒸氣開始凝結）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li><strong>與 RH 的關係</strong>：水蒸氣壓力是 RH 計算的底層物理量。RH = (p<sub>WV</sub> / p<sub>WS</sub>) &times; 100%，其中 p<sub>WS</sub> 是飽和水蒸氣壓（只與溫度有關）</li>
+                <li><strong>圖上位置</strong>：有些空氣線圖在右側邊緣會標示水蒸氣壓力的刻度，從下到上線性增加</li>
+                <li><strong>實務中較少直接使用</strong>：在日常 HVAC 設計中，工程師較少直接操作水蒸氣壓力，而是使用含濕量（W）或相對濕度（RH）。但理解它有助於掌握 RH 的物理本質</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果在空氣線圖右側讀到水蒸氣壓力為 1.2 kPa，而該溫度下的飽和水蒸氣壓為 2.4 kPa，相對濕度是多少？</li>
+                <li>為什麼水蒸氣壓力和含濕量幾乎成線性關係？（提示：想想道爾頓分壓定律）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.11 Eight Fundamental Vectors -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-11">9.11 Eight Fundamental Vectors（八大基本向量）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are eight (8) <span class="key-term">fundamental vectors or processes</span> that can be represented on a psychrometric chart (see Figure 9.1).</p>
+
+        <ol>
+            <li><span class="key-term">Humidification</span></li>
+            <li><span class="key-term">Heating and Humidification</span></li>
+            <li><span class="key-term">Sensible Heating</span></li>
+            <li><span class="key-term">Chemical Dehumidification</span></li>
+            <li><span class="key-term">Dehumidification</span></li>
+            <li><span class="key-term">Sensible Cooling</span></li>
+            <li><span class="key-term">Cooling and Dehumidification</span></li>
+            <li><span class="key-term">Evaporative Cooling</span></li>
+        </ol>
+
+        <p><strong>Figure 9.10: Eight Fundamental Vectors</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Eight Fundamental Vectors（八大基本向量）</h4>
+            <p>空氣線圖上的每一個空氣處理過程，都可以用一個「向量」（方向箭頭）來表示。所有可能的 HVAC 過程都可以分解為以下八個基本方向：</p>
+            <ul>
+                <li><strong>1. Humidification（加濕）</strong>：垂直向上。只增加水分，溫度不變</li>
+                <li><strong>2. Heating + Humidification（加熱加濕）</strong>：右上方向。同時升溫和增加水分</li>
+                <li><strong>3. Sensible Heating（顯熱加熱）</strong>：水平向右。只升溫，含水量不變</li>
+                <li><strong>4. Chemical Dehumidification（化學除濕）</strong>：右下方向。用乾燥劑吸走水分，同時溫度略升（吸附放熱）</li>
+                <li><strong>5. Dehumidification（除濕）</strong>：垂直向下。只去除水分，溫度不變</li>
+                <li><strong>6. Sensible Cooling（顯熱冷卻）</strong>：水平向左。只降溫，含水量不變</li>
+                <li><strong>7. Cooling + Dehumidification（冷卻除濕）</strong>：左下方向。同時降溫和除濕——這是最常見的夏季空調過程</li>
+                <li><strong>8. Evaporative Cooling（蒸發冷卻）</strong>：左上方向。水蒸發吸熱降溫，但增加了水分。沿等焓線移動</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把這八個向量想像成「遙控器上的八個方向鍵」。空氣的狀態就是螢幕上的游標位置（溫度 = X 軸，含濕量 = Y 軸）。每按一個方向鍵，游標就朝對應方向移動。HVAC 系統設計就是選擇正確的「按鍵組合」，讓空氣從室外狀態移動到目標狀態。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>製藥 HVAC 中最常用的向量：</p>
+            <ul>
+                <li><strong>向量 7（Cooling + Dehumidification）</strong>：夏季最主要的處理過程。冷卻盤管將空氣冷到露點以下，同時降溫和除濕</li>
+                <li><strong>向量 3（Sensible Heating）</strong>：冬季或除濕後的再熱過程。送風溫度太低時，用加熱盤管只升溫不加濕</li>
+                <li><strong>向量 1（Humidification）</strong>：冬季乾燥時需要加濕。蒸汽加濕幾乎是純加濕（垂直向上）</li>
+                <li>實際的 HVAC 過程是多個向量的組合——例如「先冷卻除濕（向量7）→ 再顯熱加熱（向量3）」就能精確控制溫度和濕度</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 無菌充填間設計中，典型的夏季空氣處理路徑：</p>
+            <ol>
+                <li>外氣（35&deg;C, 70% RH） &rarr; 混合回風 &rarr; 混合狀態點</li>
+                <li>混合空氣通過冷卻盤管 &rarr; <strong>向量 7</strong>：冷卻除濕至 12&deg;C/95% RH</li>
+                <li>通過風機後溫度略升 &rarr; <strong>向量 3</strong>：顯熱加熱約 1-2&deg;C</li>
+                <li>進入房間後吸收熱負荷 &rarr; <strong>向量 3</strong>：顯熱加熱至 22&deg;C</li>
+                <li>最終達到目標：22&deg;C / 45% RH</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你需要將空氣從 30&deg;C / 60% RH 處理到 22&deg;C / 50% RH，需要用到哪幾個向量的組合？</li>
+                <li>Evaporative Cooling（蒸發冷卻）為什麼是沿等焓線移動？這和冷卻塔的工作原理有什麼關聯？</li>
+                <li>Chemical Dehumidification（化學除濕）的向量為什麼是向右下方？乾燥劑除濕過程中的溫度為什麼會升高？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.12 System Mapping -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9-12">9.12 System Mapping（系統映射）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The treatment of supply air to a room can be "<span class="key-term">mapped</span>" on a psychrometric chart. Each segment of the map represents a specific operation (e.g., heating, cooling) being performed on the air. See Figure 9.11.</p>
+
+        <p><span class="key-term">Room air and outdoor air are mixed</span> to create mixed air. The mixed air is then cooled to the dewpoint of the mixture (the line extending to the left) and with further cooling, the saturated mixture is dehumidified. The air then passes through the <span class="key-term">draw-through fan</span>, which adds sensible (dry) heat. As the air is introduced into the room, it is mixed with air heated by the room's heat sources to reach the desired temperature and humidity conditions.</p>
+
+        <p><strong>Figure 9.11: Typical HVAC Cooling/Dehumidification Process with a Draw-Through AHU</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：System Mapping（系統映射）</h4>
+            <p><strong>System Mapping（系統映射）</strong>是將 AHU（Air Handling Unit，空調箱）的整個空氣處理過程，一步步「畫」在空氣線圖上。每一段線段代表一個具體的處理單元（混合、冷卻、加熱、加濕等），整條路徑就是空氣從「進入 AHU」到「送進房間」再到「回到 AHU」的完整旅程。</p>
+            <p>Figure 9.11 描述的典型夏季流程：</p>
+            <ol>
+                <li><strong>混合（Mixing）</strong>：回風（Room Air）和新風（Outdoor Air）在混合段混合，狀態點落在兩者的連線上</li>
+                <li><strong>冷卻至露點（Sensible Cooling）</strong>：混合空氣先降溫到露點——這段是水平向左移動</li>
+                <li><strong>冷卻除濕（Cooling + Dehumidification）</strong>：溫度低於露點後，水分開始凝結，空氣沿飽和線向左下移動</li>
+                <li><strong>風機加熱（Fan Heat）</strong>：Draw-Through（抽吸式）風機消耗的電能轉化為熱量，使空氣溫度略升——純顯熱加熱，水平向右</li>
+                <li><strong>房間熱負荷（Room Heat Gain）</strong>：空氣進入房間後吸收設備、人員等散發的熱量，最終達到室內設計條件</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>System Mapping 就像 Google Maps 上的導航路線。起點是外氣狀態（你的出發地），終點是室內設計條件（你的目的地），中間每個轉彎點就是一個空調處理單元。你可以選擇不同的「路線」（不同的處理組合）到達同一個目的地，但每條路線的「距離」（能耗）和「通行費」（設備成本）不同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>System Mapping 對 CDMO 工程師的價值：</p>
+            <ul>
+                <li><strong>設備選型依據</strong>：圖上每段線段的「長度」和「方向」，直接對應該處理單元的容量需求。冷卻段的焓差決定冷卻盤管容量，含濕量差決定凝結水量</li>
+                <li><strong>故障診斷工具</strong>：當室內溫濕度不達標時，可以量測 AHU 各段的溫濕度，在空氣線圖上標出實際的處理路徑，與設計路徑對比，快速定位是哪個處理單元出了問題</li>
+                <li><strong>能效優化</strong>：透過比較不同的處理路徑，找到能耗最低的組合。例如：增大回風比例可以降低混合點的焓值，從而減少冷卻負荷</li>
+                <li><strong>Draw-Through vs Blow-Through</strong>：抽吸式（Draw-Through）AHU 的風機在冷卻盤管後面，風機熱會加在已冷卻的空氣上。吹送式（Blow-Through）風機在前面，風機熱會被冷卻盤管帶走。兩種配置在空氣線圖上的路徑不同</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 潔淨區 AHU 設計案例：</strong></p>
+            <p>假設某 Grade B 無菌充填間的設計條件為 22&deg;C &plusmn; 2&deg;C / 45% &plusmn; 10% RH，夏季外氣條件為 35&deg;C / 75% RH，回風比 80%：</p>
+            <ol>
+                <li><strong>混合點</strong>：回風 (22&deg;C, 45% RH) 佔 80% + 外氣 (35&deg;C, 75% RH) 佔 20% &rarr; 混合後約 24.6&deg;C</li>
+                <li><strong>冷卻除濕</strong>：將混合空氣冷卻至 12&deg;C，含濕量從約 10 g/kg 降至 8.5 g/kg</li>
+                <li><strong>風機加熱</strong>：約 +1&deg;C（13&deg;C）</li>
+                <li><strong>房間吸熱</strong>：送風 13&deg;C &rarr; 回風 22&deg;C，溫差 9&deg;C 攜帶掉房間熱負荷</li>
+            </ol>
+            <p>這整個路徑可以在空氣線圖上完整描繪出來，每段的焓差和含濕量差就是計算冷卻容量和除濕量的依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果回風比從 80% 改為 60%，混合點在空氣線圖上會如何移動？對冷卻負荷有什麼影響？</li>
+                <li>Draw-Through AHU 的風機熱約 2-3&deg;C。在空氣線圖上，這段「風機加熱」的向量方向是什麼？如果改用 Blow-Through 配置，路徑會如何變化？</li>
+                <li>如果冬季外氣條件是 5&deg;C / 60% RH，同一個潔淨區需要怎樣的處理路徑？需要用到哪些向量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>空氣線圖（Psychrometric Chart）</strong>是 HVAC 工程師的核心工具，將空氣的所有熱力學性質視覺化。掌握它就等於掌握了空調設計的「語言」</li>
+        <li><strong>五個可量測參數</strong>：乾球溫度（t<sub>DB</sub>）、濕球溫度（t<sub>WB</sub>）、露點溫度（t<sub>DP</sub>）、相對濕度（RH）、大氣壓力（P<sub>BAR</sub>）——只需量到任意兩個，就能用空氣線圖找到其他所有參數</li>
+        <li><strong>四個可計算參數</strong>：焓（h）、比容（v）、含濕量（W）、水蒸氣壓力（p<sub>WV</sub>）——這些是 AHU 選型、風管設計、能耗分析的計算基礎</li>
+        <li><strong>八大基本向量</strong>涵蓋了所有可能的空氣處理方向。製藥環境最常用的是 Cooling + Dehumidification（夏季）、Sensible Heating（再熱）和 Humidification（冬季加濕）</li>
+        <li><strong>System Mapping</strong>將 AHU 的完整處理流程「畫」在空氣線圖上，是設備選型、故障診斷和能效優化的強大工具</li>
+        <li>在製藥 CDMO 環境中，空氣線圖的應用直接關係到<strong>潔淨區溫濕度合規、微生物控制、產品穩定性和能源成本</strong>——這些都是無菌保證和商業競爭力的核心要素</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

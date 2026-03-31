@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Appendix 2 Part B: Fans, Dampers, Ductwork, Controls</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 2: HVAC Applications (Part B)</h1>
+    <div class="subtitle">附錄2：HVAC 應用（下）— 風機、風門、風管與控制系統</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p179 - p198</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解送風分配策略（Room Air Supply Distribution）在 GMP 空間與潔淨室中的設計原則，特別是氣流方向從潔淨側流向較不潔淨側的關鍵概念</li>
+        <li>掌握三種排氣/回風策略（Release &amp; Dilution、Capture at Source、Containment &amp; Exhaust）的適用場景與選擇邏輯</li>
+        <li>了解風管設計（Ductwork Design）的基本原則，以及風門（Damper）類型（單葉片、平行葉片、對向葉片、氣囊式、文丘里式）的特性與選用</li>
+        <li>熟悉 HVAC 控制系統架構：單迴路控制、DDC/BMS、DCS 智慧現場設備，及其成本與複雜度的權衡</li>
+        <li>掌握關鍵環境參數（風量、壓差、溫度、相對濕度）的量測技術、感測器選址原則、警報設計與記錄要求</li>
+        <li>理解微粒連續監測系統（Manifold System vs. Individual Counters）的設計考量與法規期望</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Table of Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec-8413">8.4.1.3 Room Air Supply Distribution</a>
+        <a href="#sec-8414">8.4.1.4 Air Walls</a>
+        <a href="#sec-842">8.4.2 Extract Strategies</a>
+        <a href="#sec-843">8.4.3 Ductwork Design</a>
+        <a href="#sec-85">8.5 HVAC Controls &amp; Monitoring</a>
+        <a href="#sec-852">8.5.2 Controls</a>
+        <a href="#sec-853">8.5.3 Actuation Methods</a>
+        <a href="#sec-854">8.5.4 Critical Parameter Control</a>
+        <a href="#sec-855">8.5.5 Setpoints</a>
+        <a href="#sec-856">8.5.6 Monitoring of Critical HVAC Parameters</a>
+        <a href="#sec-857">8.5.7 Equipment Monitoring/Maintenance</a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.4.1.3 Room Air Supply Distribution Options -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-8413">8.4.1.3 Room Air Supply Distribution Options（房間送風分配方式）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Conventional air distribution techniques generally are acceptable for administrative, warehouse, and unclassified spaces. However, large warehouse spaces may see hot and cold spots with poor air distribution. <span class="key-term">Aspirating diffusers</span> are commonly used.</p>
+
+        <p>GMP spaces and cleanrooms require more stringent methods. For classified spaces, <span class="key-term">supply air should be introduced at the ceiling level</span> and return/general exhaust air should be extracted near the floor (process exhaust should be extracted as close to the point of emission as possible). The use of non-aspirating diffusers on the face on terminal <span class="key-term">HEPA filters</span> may improve room airflow patterns, but may decrease the degree of uniform mixing and dilution of airborne particles.</p>
+
+        <p>Within mixed airflow rooms, airflow patterns should be from the <span class="key-term">clean side</span> of a space to the <span class="key-term">less clean</span>. For example, within a space that contains an ISO 5 micro-environment/zone with an ISO 7 background, air should flow from the cleaner zone into the less clean background area.</p>
+
+        <p>Some process operations, e.g., tableting or capsule filling, are inherently particle generating. Airflow patterns within the spaces that contain these processes should take this into account by locating returns/exhausts near the particle generating operation. Enclosed processes generally require much less exhaust volume and provide a physical separation between the product and operator. For classified rooms, returns should be distributed evenly and located on as many walls as possible, and not behind cabinets and other equipment against the wall.</p>
+
+        <p><span class="key-term">Airlocks</span> and gown rooms are usually divided, often by a physical line on the floor, into "clean" and "dirty" zones in accordance with the flow of personnel, material, and equipment. Within such rooms, air should flow from the clean side to the 'dirty' side of the airlock. HEPA air supplies should be located on the clean side and low wall returns should be located on the opposite side of the room. This also applies if gowning is divided into two separate airlocks in series (pre-gown and final gown). This helps to minimize the effect of opening of the airlock door on the clean space.</p>
+
+        <p><span class="key-term">Low wall returns</span> can help keep contamination below the height of working surfaces and should, therefore, be located below the working level, preferably about 12 inch (30 cm) above the floor. Return openings and ducts should be sized generously and well distributed around the room, but not within 2 feet (0.6 m) of door openings where they can induce flow through the door. Unless low level exhaust ducts need to convey powders, return and exhaust ductwork velocities should be low to minimize noise. The heel of the connecting elbow should have a broad radius to facilitate cleaning. If cleaning is required, the elbow and first section of connecting ductwork may be Type 316L stainless steel to prevent corrosion from cleaning agents. A removable perforated grille can facilitate cleaning and prevent room items from being drawn into the air system. Fewer choices may be available if a cleanroom panel system is used, as the return duct and grille are integral to the panel.</p>
+
+        <p>Return air ducts located in stud wall spaces need not be insulated within the walls. Insulation should terminate at the top of the wall. The facility architect should be consulted to assure that, where needed, wall cavities are adequate to contain low wall returns.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：GMP 送風的黃金法則</h4>
+            <p><strong>送風從天花板，回風靠地面</strong>——這是潔淨室氣流設計最基本的原則。背後的物理邏輯很簡單：</p>
+            <ul>
+                <li>潔淨空氣從上方送入，利用重力讓微粒向下沉降</li>
+                <li>回風口（Return）設在低處，將含微粒的空氣帶走</li>
+                <li>製程排氣（Process Exhaust）要盡可能靠近排放源</li>
+            </ul>
+            <p><strong>Aspirating Diffuser（吸引式散流器）</strong>：利用引射效應將周圍室內空氣混入送風氣流中，增加混合均勻性。適合一般區域，但 GMP 潔淨室可能需要非吸引式散流器（Non-Aspirating Diffuser）來維持更清潔的定向氣流。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：氣流方向如同水流</h4>
+            <p>想像潔淨室就像一個有坡度的廚房地板——水（空氣）永遠從高處（乾淨側）流向低處（較不乾淨側）。如果你在 ISO 5 區域旁放了一個 ISO 7 背景區，空氣就像水一樣，從 ISO 5「流下」到 ISO 7。</p>
+            <p>低壁回風口就像地板排水孔——位置太高就接不到地面的髒水，位置太靠近門就會把走廊的水也吸進來。所以 ISPE 建議距地面 30 cm，且距門口至少 60 cm。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：氣鎖室的氣流方向設計</h4>
+            <p>氣鎖室（Airlock）和更衣室的氣流設計是稽查重點：</p>
+            <ul>
+                <li>HEPA 送風口必須設在「乾淨側」</li>
+                <li>低壁回風口設在「非乾淨側」</li>
+                <li>兩段式更衣（預更衣 + 最終更衣）也適用同樣原則</li>
+                <li>目的：當門打開時，氣流方向確保微粒往外走，不會進入潔淨區</li>
+            </ul>
+            <p>EU GMP Annex 1 (2022) 對氣鎖室壓差與氣流方向的要求更為嚴格，這裡的設計原則直接支持法規合規。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：低壁回風口的細節設計</h4>
+            <p>看似簡單的回風口，實際有許多魔鬼細節：</p>
+            <ul>
+                <li>風速要低——避免噪音問題</li>
+                <li>彎頭要大圓弧——方便清潔</li>
+                <li>需要清洗的區域，第一段風管用 316L 不鏽鋼——防腐蝕</li>
+                <li>可拆卸穿孔格柵——方便清潔且防止物品被吸入</li>
+            </ul>
+            <p>在 CDMO 環境中，不同客戶產品可能對清潔度有不同要求，選擇可清潔的 316L 風管比事後改裝便宜得多。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間 ISO 7 壓片間（tableting room），回風口應該設在哪裡？為什麼不能設在門旁？</li>
+                <li>如果潔淨室使用面板系統（cleanroom panel system），回風口設計會受到什麼限制？這對 CDMO 多產品切換有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.4.1.4 Air Walls -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-8414">8.4.1.4 Air Walls（氣牆）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>An <span class="key-term">"air wall"</span> is a vertical duct chase constructed by placing a "false wall" that spans from the ceiling to near the floor within the room, adjacent to the room walls. It is used to convey large quantities of return airflow to the AHU, typical plenum depths of 12 inches (30 cm). The opening is about 12 to 20 inches (30 to 51 cm) above finished floor and protected with a wire screen having a large free open area. Placement of an air wall on only one side of a clean space is not recommended and can drastically affect uniformity of downward airflow in clean spaces.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Air Wall 的功能</h4>
+            <p><strong>Air Wall（氣牆）</strong>是一種在房間內壁旁建造的垂直風管通道，利用假牆形成的空腔來輸送大量回風。常見於需要高換氣量的潔淨室。</p>
+            <ul>
+                <li>典型深度：12 吋（30 cm）</li>
+                <li>開口高度：距地面 12-20 吋（30-51 cm）</li>
+                <li>保護：大開口面積的鐵絲網</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：單側氣牆的風險</h4>
+            <p>ISPE 明確警告：<strong>只在潔淨室一側設置氣牆是不建議的</strong>——這會嚴重影響向下氣流的均勻性。在 ISO 5 單向流（Unidirectional Airflow）環境中，不均勻的回風會導致氣流偏轉，可能在產品暴露區域形成渦流，直接影響微粒控制。</p>
+            <p>設計時應確保氣牆對稱配置，或至少在多面牆上分布回風路徑。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.4.2 Extract (Exhaust/Return) Strategies -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-842">8.4.2 Extract (Exhaust/Return) Strategies（排氣/回風策略）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are three approaches to dealing with the capture and removal of hazardous materials:</p>
+        <ol>
+            <li><strong>Release and dilution:</strong> used for mildly offensive non-hazardous materials. Contaminants are diluted with room air supply to acceptable levels (not captured at the source), e.g., sugar coatings for oral dosage. Generally, extract grilles should be located at a high level (for gasses and hot air) or low (for heavy vapors and large particles), as close to the point of emission as possible.</li>
+            <li><strong>Capture at the source:</strong> used for hazardous materials that, if allowed to pervade room air, could lead to health, safety, or flammability issues. An <span class="key-term">LEV</span> hood, e.g., a capture hood for ethanol fumes in an open granulator, typically operating at high velocity to enhance capture, is placed near the source.</li>
+            <li><strong>Containment and exhaust:</strong> used for very hazardous materials that can cause health or safety problems at very low levels in the air and for less hazardous materials to enhance housekeeping. The process is contained and the enclosure exhausted, e.g., a glove box for viruses, high potency oral dosage API.</li>
+        </ol>
+
+        <p>For information on methods of capture see the Industrial Ventilation Manual published by the American Council of Government Industrial Hygienists. (Reference 19, Appendix 12) Containment techniques constantly change; see the ISPE Containment COP for current information (www.ispe.org) (Reference 17, Appendix 12).</p>
+
+        <p>Point capture and containment also may be used to prevent particles and heat generated within a room from dispersing in the room (e.g., from a motor in a Grade 7 room).</p>
+
+        <p>Many materials captured at the process require rigorous control, usually through:</p>
+        <ul>
+            <li>scrubbing</li>
+            <li>dust collection</li>
+            <li>high efficiency (or HEPA) filtration</li>
+            <li>carbon adsorption</li>
+        </ul>
+
+        <p>Some materials may be exhausted to the outdoor atmosphere via a tall/high velocity stack. For further information on abatement system design see the ASHRAE Handbooks (Reference 22, Appendix 12).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種排氣策略的選擇邏輯</h4>
+            <p>這是 HVAC 設計中最重要的風險分級決策之一：</p>
+            <table>
+                <tr><th>策略</th><th>適用對象</th><th>典型應用</th></tr>
+                <tr><td>Release &amp; Dilution（釋放稀釋）</td><td>低危害、非毒性物質</td><td>口服劑糖衣、一般粉塵</td></tr>
+                <tr><td>Capture at Source（源頭捕捉）</td><td>有健康/安全/易燃風險的物質</td><td>乙醇蒸氣、溶劑排放</td></tr>
+                <tr><td>Containment &amp; Exhaust（密閉排氣）</td><td>極高毒性物質</td><td>病毒操作手套箱、高活性 API</td></tr>
+            </table>
+            <p><strong>LEV（Local Exhaust Ventilation，局部排氣通風）</strong>是源頭捕捉的核心設備，通常以高風速運作來增強捕捉效率。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：廚房排油煙的三種方式</h4>
+            <p>想像三種處理廚房油煙的方式：</p>
+            <ul>
+                <li><strong>開窗通風（Release &amp; Dilution）</strong>：炒青菜的小油煙，開窗讓空氣對流稀釋就好</li>
+                <li><strong>抽油煙機（Capture at Source）</strong>：煎牛排產生的大量油煙，需要在爐灶上方直接抽走</li>
+                <li><strong>密閉烤箱排氣（Containment &amp; Exhaust）</strong>：處理高溫可能產生有毒氣體的食材，在密閉空間內處理並排出</li>
+            </ul>
+            <p>藥廠的邏輯完全一樣——根據物質的危害等級選擇對應的排氣策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：排氣後處理不可忽略</h4>
+            <p>捕捉到的危害物質不能直接排到大氣中，必須經過適當處理：</p>
+            <ul>
+                <li><strong>Scrubbing（洗滌）</strong>：溶解水溶性有害氣體</li>
+                <li><strong>Dust Collection（集塵）</strong>：攔截固體微粒</li>
+                <li><strong>HEPA Filtration</strong>：過濾微細顆粒</li>
+                <li><strong>Carbon Adsorption（活性碳吸附）</strong>：去除有機溶劑蒸氣</li>
+            </ul>
+            <p>在 CDMO 接受高活性 API 客戶時，排氣後處理系統的能力直接決定你能接什麼等級的產品。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 正評估是否接受一個 OEL &lt; 1 μg/m3 的高活性 API 客戶。HVAC 排氣系統目前只有 Release &amp; Dilution 能力。升級到 Containment &amp; Exhaust 需要：密閉操作設備 + HEPA 排氣過濾 + 活性碳吸附。這不只是 HVAC 的變更，更涉及整個 Contamination Control Strategy (CCS) 的重新評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間開放式造粒機（open granulator）使用乙醇作為黏合劑，應選擇哪種排氣策略？為什麼不能只靠 Release &amp; Dilution？</li>
+                <li>為什麼 ISPE 建議排氣口位置要分「高位」和「低位」？這與物質的物理特性有什麼關係？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.4.3 Ductwork Design -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-843">8.4.3 Ductwork Design（風管設計）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Design concepts for <span class="key-term">ductwork</span> distribution systems, e.g., equal velocity, equal friction, and static regain are covered in the ASHRAE and SMACNA Handbooks (References 22 and 30, Appendix 12). These calculations should be performed by appropriately qualified HVAC professionals, who understand HVAC system design, using manual or computerized methods.</p>
+
+        <p>In general, good ductwork designs:</p>
+        <ul>
+            <li>are reasonably symmetrical</li>
+            <li>have the minimum number of offsets and turns</li>
+            <li>reduce in size as the flow decreases</li>
+            <li>are equipped with <span class="key-term">balancing dampers</span> to control non-plenum divergences or convergences of flow</li>
+            <li>have balancing dampers, but do not depend solely on them to regulate flow</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風管設計五大原則</h4>
+            <p><strong>Ductwork（風管）</strong>是 HVAC 系統的「動脈」，將調節後的空氣輸送到各個房間。好的風管設計（Good Ductwork Design）遵循五條原則：</p>
+            <ol>
+                <li><strong>合理對稱</strong>：左右分支平衡，避免一邊壓力高、一邊壓力低</li>
+                <li><strong>最少彎折</strong>：每個彎頭都增加壓損和噪音</li>
+                <li><strong>漸縮管徑</strong>：隨風量減少而縮小，維持適當風速</li>
+                <li><strong>配備平衡風門（Balancing Damper）</strong>：用於微調各分支的風量分配</li>
+                <li><strong>不能只靠風門調節</strong>：風管設計本身就要接近平衡，風門只做微調</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：風管設計如同自來水配管</h4>
+            <p>想像大樓的自來水管——如果主管一路到底不變細，末端水壓會很弱；如果管路彎來彎去，水壓損失更多。好的配管設計是：主管漸漸變細、分支盡量對稱、每個出口有獨立閥門微調水量，但不能全靠閥門硬擠——那樣既浪費能源又容易產生水錘。</p>
+            <p>HVAC 風管也是同理——<strong>Balancing Damper（平衡風門）</strong>就像水管的調節閥，但好的設計在安裝風門之前就已經大致平衡了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：三種風管設計方法</h4>
+            <p>ASHRAE 教科書提供三種經典設計方法：</p>
+            <ul>
+                <li><strong>Equal Velocity（等速法）</strong>：所有風管段維持相同風速，最簡單但壓損最大</li>
+                <li><strong>Equal Friction（等摩擦法）</strong>：每段風管的摩擦損失相同，最常用</li>
+                <li><strong>Static Regain（靜壓恢復法）</strong>：利用風速降低時的壓力恢復來平衡分支壓力，最節能但計算最複雜</li>
+            </ul>
+            <p>這些計算應由合格的 HVAC 專業人員執行——ISPE 在這裡強調「appropriately qualified」，意味著 HVAC 風管設計不是隨便畫畫就行的。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 強調風管設計「不能只靠風門調節風量」？如果完全依賴風門會有什麼後果？</li>
+                <li>在一個有 10 間潔淨室的 CDMO 設施中，如果風管設計不對稱，最遠的房間會面臨什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5 HVAC Controls and Monitoring -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-85">8.5 HVAC Controls and Monitoring（HVAC 控制與監測）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.5.1 Introduction</h3>
+        <p>This section gives a brief overview of the options available for controlling and monitoring HVAC systems and the environments that they provide. The section also provides guidance on the points to consider when designing a new system or reviewing an existing installation.</p>
+
+        <p>Early in the design process, decisions should be made regarding whether an HVAC control system (or multi-use system such as a <span class="key-term">Building Management System/Building Automation System (BMS/BAS)</span>) will also act as the quality 'system of record' to provide alarm functionality, operator response management, and electronic data records proving that critical environments are maintained within specified limits. This system also can capture data from critical HVAC equipment, as well as direct environmental monitoring data that may be used to support product release or other GMP processes.</p>
+
+        <p>A common alternative approach is to employ an independent system for alarming and managing critical data, such as a data logger, process control system, or LIMS. The HVAC control system is limited to control and maintenance information required to manage a facility.</p>
+
+        <p>A BMS/BAS could be used as a data source interface to equipment and instruments, transmitting information to the monitoring system, which is responsible for all other data management and backup/archiving functionality. The maintenance of separate parallel systems, without validation of the control loop, can be challenged if not carefully undertaken and is not preferred.</p>
+
+        <p>In smaller facilities needing to monitor just a few HVAC parameters, the data management and the control of all HVAC points can be included in the process control system (<span class="key-term">Distributed Control System (DCS)</span>, <span class="key-term">Direct Digital Control (DDC)</span>, PLC, etc.). On a cost per point basis, this is likely the most expensive plan, as software often needs to be written to handle HVAC functions, including basic functions, as opposed to pre-programmed HVAC software that is included with BMS systems. In addition, with both critical and non-critical HVAC points in the same system, the extent of computer system qualification expands significantly. A hybrid plan, with DCS for critical points and standalone controls for non-critical points, differentiates the maintenance and record-keeping roles, and therefore, may be less expensive to qualify, but may be more costly to maintain.</p>
+
+        <p>Where critical parameter logging, indication, recording, and alarming take place, critical field data may be collected by a separate standalone process computer (e.g., DCS or PLC), instead of 'validating' a BMS for process HVAC recording and alarming. The critical parameter data may originate from a common device and be relayed to the BMS/BAS or the output may go to both systems. The BMS is commissioned to perform the actual control function and to deal with non-critical data and control.</p>
+
+        <p>Using a common device has the advantage of common data being provided to both systems with one device to calibrate. Systems using two parallel sensors are likely to suffer from different readings because of, e.g., sensor calibration/location. See the GAMP Forum position paper on use of BMS systems in Pharmaceutical Engineering (Reference 16, Appendix 12).</p>
+
+        <p>BMS/BAS systems may control and monitor a range of systems and equipment, from critical utilities and environmental stores (e.g., cooling and humidity for product/intermediates), to building lighting and security. Commissioning and qualification plans for testing the system in association with HVAC systems should be designed to isolate non-critical HVAC functions from higher-level requirements related to product-critical functions. This approach to verifying systems in the manufacturing domain is based on a <span class="key-term">functional-level assessment of risk</span>.</p>
+
+        <p>If a part of the system requires commissioning and qualification to meet regulatory requirements, functionality for specific common attributes, such as <span class="key-term">data integrity</span>, may need to be tested to a higher standard.</p>
+
+        <p>Each approach can help mitigate the efforts needed for verifying, operating, and maintaining a BMS and associated HVAC System. In addition to GMP, monitoring of safety requirements and parameters should be considered, using methods, such as HACCP to determine risks and appropriate mitigation approaches. These decisions affect the overall controls and monitoring designs and affect the number and scope of items that need to be included in a GMP commissioning and qualification plan.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：BMS 的雙重角色抉擇</h4>
+            <p>HVAC 控制系統設計的第一個關鍵決策是：<strong>BMS（Building Management System，樓宇管理系統）是否同時擔任品質記錄系統？</strong></p>
+            <p>兩種主要架構：</p>
+            <ul>
+                <li><strong>方案 A：BMS 兼任品質記錄系統</strong>——控制 + 記錄 + 警報全在一個系統中。優點是資料一致，缺點是整個 BMS 都需要依 GAMP 進行確效（Validation）</li>
+                <li><strong>方案 B：BMS 只做控制，獨立系統做品質記錄</strong>——使用獨立的 DCS、PLC 或 Data Logger 記錄關鍵參數。BMS 只需 Commissioning（試車），不需要全面確效</li>
+            </ul>
+            <p>ISPE 建議使用<strong>共用感測器（Common Device）</strong>同時輸出到兩個系統，避免兩套平行感測器因校正差異產生不同讀數。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：BMS 如同大樓的神經中樞</h4>
+            <p>BMS 就像一棟智慧大樓的中央神經系統——它同時管理空調、照明、保全、消防。問題是：如果你讓這個系統同時兼任「藥品品質的證明記錄」，那整棟大樓的燈光控制軟體也得一起做確效驗證——這就像因為銀行保險庫在這棟大樓裡，就要求連咖啡廳的門鎖也要金庫級別的安全認證。</p>
+            <p>所以 ISPE 建議：<strong>將關鍵（Critical）與非關鍵（Non-Critical）功能分層</strong>，只對影響產品品質的功能做高標準驗證。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Data Integrity 的影響</h4>
+            <p>無論選擇哪種架構，只要涉及關鍵環境參數的記錄，<strong>Data Integrity（資料完整性）</strong>就是不可迴避的要求：</p>
+            <ul>
+                <li>ALCOA+ 原則：Attributable, Legible, Contemporaneous, Original, Accurate</li>
+                <li>電子記錄需符合 21 CFR Part 11 或 EU GMP Annex 11</li>
+                <li>即使 BMS 只做控制，如果它提供的數據被用於品質決策，該數據路徑仍需驗證</li>
+            </ul>
+            <p>這是近年 FDA 和 EMA 稽查的高頻發現項目——環境監測資料的完整性問題。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>系統架構比較</h4>
+            <pre>
+方案 A：全整合 BMS
+  BMS → 控制 + 記錄 + 警報 → 全系統需 GAMP 確效
+  優點：資料統一、維護單一系統
+  缺點：確效範圍大、變更控制複雜
+
+方案 B：分離式架構
+  BMS → 控制 + 非關鍵數據（GEP 管理）
+  DCS/PLC → 關鍵參數記錄 + 警報（GMP 確效）
+  優點：確效範圍小、變更靈活
+  缺點：兩套系統維護成本較高
+
+方案 C：混合式（ISPE 推薦）
+  共用感測器 → 同時輸出至 BMS + DCS
+  BMS：控制功能 + 非關鍵監測
+  DCS：關鍵參數記錄 + 品質警報
+  一個感測器、一次校正、兩套系統</pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家中型 CDMO 正在建置新廠，有 15 間潔淨室需要環境監測。如果選擇方案 A（BMS 全整合），整個 BMS 含照明、門禁、空調都需要完整的 CSV（Computer System Validation），預估驗證費用增加 30-40%。選擇方案 C（混合式），只需要驗證 DCS 部分的關鍵控制迴路，BMS 用 GEP 管理即可。節省的驗證成本可能達數十萬美元。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個 BMS 系統同時控制 HVAC 和照明，但只有 HVAC 是 GMP 相關的，你如何劃分驗證範圍？</li>
+                <li>使用「兩套平行感測器」（一套給 BMS、一套給 DCS）有什麼風險？ISPE 為什麼不推薦這種做法？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.2 Controls -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-852">8.5.2 Controls（控制系統類型）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Many types of equipment can be used to monitor and control an HVAC system, each with advantages and disadvantages. Three of the more common are:</p>
+        <ol>
+            <li>Single Loop Controls</li>
+            <li>DDC/BMS</li>
+            <li>DCS with Intelligent Field Devices</li>
+        </ol>
+
+        <h3>8.5.2.1 Single Loop Controls</h3>
+        <p>A traditional basic system may use packaged stand-alone controllers ranging from 'proportional' only (such as a thermostat) to <span class="key-term">Proportional and Integral (PI)</span> or <span class="key-term">Proportional Integral and Derivative (PID)</span> electronic controls for each of the controlled variables. There may be independent control units, e.g., temperature, humidity, or a single combined temperature/RH unit with the sensors and controlled items, e.g., dampers or valves, connected to the controller. The controller also may provide alarms and send data to a central data collection system.</p>
+        <p>This option usually has low purchase and installation costs. Control panels in a large installation can be standardized and complete panels can be held as spares.</p>
+        <p>As the controller is not able to monitor or analyze the system performance trends or component performance significantly; however, this type of controller is usually used in simple systems or where local technology cannot support more complex PLC/SCADA or computer-based systems. A typical control unit is shown in Figure 8.15.</p>
+
+        <h3>8.5.2.2 Direct Digital Control/Building Management System</h3>
+        <p>The most common monitoring/control system found in the HVAC industry is the <span class="key-term">DDC/BMS (BAS)</span>; a proprietary packaged system typically comprised of a number of local independent controllers and accessories panels, field panels, or outstations with the software/control logic installed. The panel may control one or more HVAC systems or other building systems (e.g., fire, security, and lighting).</p>
+        <p>The field panels are connected by a network to one or several "supervisors." These are computer terminals that allow a user to see the input and output signals and to setup the system to record data and alarms. The terminals allow users to review plant performance data and trends, change setpoints, and have alarms reported/printed in a central location.</p>
+        <p>This type of system is more expensive, but allows HVAC system performance to be monitored remotely with adjustments made to set points from a central location if required. A hierarchy of alarms and security also can be setup easily. The large-scale use of these systems has reduced the cost significantly, leading to wider application and ease of commissioning. Although the use of BMS/BAS is not required, manufacturers have developed methods to qualify BMS/BAS systems for pharmaceutical HVAC applications.</p>
+
+        <h3>8.5.2.3 Distributed Control System with Intelligent Field Devices</h3>
+        <p>DCSs are similar to those used for process control. These may employ advanced features, such as redundant processors and "intelligent" components (sensors and valves) connected via networks to the control system (e.g., "Fieldbus," profibus, arcnet, and Echelon).</p>
+        <p>There are a number of industry standard communication protocols.</p>
+        <p>The software is held within the control system that communicates with the devices; devices can self diagnose faults. Automated components also can self-calibrate to the control signals.</p>
+        <p>This type of system is the most expensive to install, but should be more reliable and simple to maintain, as controllers are self-checking. The cost typically limits the use of this type of system to process operations, but this may change as the costs reduce.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種控制系統的比較</h4>
+            <table>
+                <tr><th>特性</th><th>Single Loop</th><th>DDC/BMS</th><th>DCS + 智慧設備</th></tr>
+                <tr><td>成本</td><td>最低</td><td>中等</td><td>最高</td></tr>
+                <tr><td>複雜度</td><td>簡單</td><td>中等</td><td>複雜</td></tr>
+                <tr><td>遠端監控</td><td>無</td><td>有</td><td>有</td></tr>
+                <tr><td>趨勢分析</td><td>無</td><td>有</td><td>進階</td></tr>
+                <tr><td>自我診斷</td><td>無</td><td>有限</td><td>完整</td></tr>
+                <tr><td>備品策略</td><td>標準化面板</td><td>專用面板</td><td>智慧元件</td></tr>
+                <tr><td>適用場景</td><td>小型/簡單系統</td><td>大多數藥廠</td><td>高精度製程</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：三種控制層級如同車輛控制</h4>
+            <p><strong>Single Loop Control</strong> = 傳統手排車——每個功能獨立操作，司機自己看溫度表、自己開冷氣。便宜可靠，但什麼都要人盯。</p>
+            <p><strong>DDC/BMS</strong> = 現代自排車帶智慧巡航——一個中控螢幕管理所有系統，可以遠端設定目標速度（設定點），系統自動調節。</p>
+            <p><strong>DCS + 智慧設備</strong> = 特斯拉全自動駕駛——每個感測器都有自己的「大腦」，能自我診斷、自我校正，透過網路彙報給中央系統。最貴但最聰明。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：DDC/BMS 是藥廠主流選擇</h4>
+            <p>對大多數製藥設施而言，DDC/BMS 是最具性價比的選擇：</p>
+            <ul>
+                <li>大規模應用已顯著降低成本</li>
+                <li>預設的 HVAC 控制軟體減少客製開發</li>
+                <li>製造商已開發藥廠適用的確效方法</li>
+                <li>支援集中監控、分級警報、趨勢記錄</li>
+            </ul>
+            <p><strong>PID 控制</strong>是 HVAC 中最常用的控制演算法——Proportional（比例）處理當前誤差、Integral（積分）消除穩態誤差、Derivative（微分）預測未來趨勢。溫度和濕度控制通常用 PI 就足夠，壓差控制可能需要完整的 PID。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家位於東南亞的小型 CDMO（5 間潔淨室），當地技術支援有限。你會推薦哪種控制系統？為什麼？</li>
+                <li>DCS 的「智慧現場設備」能自我診斷和自我校正，這對校正管理（Calibration Management）有什麼影響？是否能減少校正頻率？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.3 Actuation Methods -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-853">8.5.3 Actuation Methods（致動方式）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are two common means of actuating control components:</p>
+        <ol>
+            <li>electric motors</li>
+            <li>pneumatic actuators</li>
+        </ol>
+
+        <h3>8.5.3.1 Electric Actuators</h3>
+        <p><span class="key-term">Electric actuators</span> vary in sophistication from small low voltage motors controlled by low resolution positioning circuits to servo motors and line voltage motors controlled by sophisticated positioners. The speed of actuation of electric or electronic actuators typically is slower than that for pneumatic actuators, because of the prevalence of low torque motors and high gear ratios in units sold for HVAC devices. They are well suited for slowly changing parameters, such as temperature and humidity control. The speed of the best electronic actuators rivals that of pneumatic actuators.</p>
+
+        <h3>8.5.3.2 Pneumatic Actuators</h3>
+        <p><span class="key-term">Pneumatic actuators</span> use compressed air as the motive force for actuation, instead of electricity. These are prevalent in industrial HVAC systems. Pneumatic actuators typically respond quickly and are well suited for fast changing control loops, such as airflow control for <span class="key-term">Variable Air Volume (VAV)</span> laboratories. These units typically have a faster response time than an electric or electronic unit. The all-pneumatic system also is ideal for hazardous areas requiring intrinsically safe installations. Typical applications would include active pressure control.</p>
+
+        <p>For further information on actuators and the control of liquids, see Appendix 9.</p>
+
+        <p>For HVAC applications, response time of controls may not be critical, as the response time of the overall system is slow, e.g., even if the full room heat load is added instantaneously, the room temperature will rise slowly, not instantaneously. Similarly the rate of change of outdoor conditions typically is slow. If the design requires <span class="key-term">dynamic control of room pressure</span>; however, actuators for pressure control may require response times in the range of seconds. Generally, this is feasible if all controllers respond quickly to changes in parameters.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：電動 vs. 氣動致動器</h4>
+            <p><strong>Actuator（致動器）</strong>是將控制信號轉化為物理動作的元件——打開/關閉風門（Damper）或控制閥（Control Valve）。</p>
+            <table>
+                <tr><th>特性</th><th>Electric Actuator（電動）</th><th>Pneumatic Actuator（氣動）</th></tr>
+                <tr><td>動力來源</td><td>電力</td><td>壓縮空氣</td></tr>
+                <tr><td>反應速度</td><td>較慢（通常）</td><td>較快</td></tr>
+                <tr><td>適用場景</td><td>溫度、濕度等慢變參數</td><td>壓差、VAV 等快變參數</td></tr>
+                <tr><td>防爆需求</td><td>需特殊規格</td><td>天然適用（無電火花）</td></tr>
+                <tr><td>基礎設施</td><td>只需電力</td><td>需壓縮空氣系統</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：電動 vs. 氣動如同電動窗 vs. 液壓門</h4>
+            <p><strong>電動致動器</strong>就像汽車的電動車窗——慢慢升降，精度不錯，但需要時間到位。日常用夠了。</p>
+            <p><strong>氣動致動器</strong>就像公車的氣壓門——「嘶」一聲就開關到位，反應極快。適合需要快速動作的場景。</p>
+            <p>壓差控制為什麼需要快速反應？因為門一開，壓差立刻歸零——如果致動器反應慢，等它調好風門，門都關上了，根本來不及補償。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：壓差動態控制的反應時間</h4>
+            <p>ISPE 指出一個重要但常被忽略的設計考量：</p>
+            <ul>
+                <li>溫度、濕度變化慢——反應時間不是關鍵</li>
+                <li><strong>壓差（DP）變化極快</strong>——門一開就歸零</li>
+                <li>動態壓差控制需要<strong>秒級反應時間</strong></li>
+                <li>所有控制器都必須快速回應才行——一個慢的就拖累全部</li>
+            </ul>
+            <p>這就是為什麼高等級潔淨室的壓差控制迴路通常使用氣動致動器，而溫濕度控制可以用較便宜的電動致動器。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個處理有機溶劑的房間需要主動壓差控制，你會選擇電動還是氣動致動器？考慮哪些因素？</li>
+                <li>VFD（Variable Frequency Drive，變頻器）控制風機轉速也是一種「致動」方式，它與風門控制相比有什麼優勢？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.4 Critical Parameter Control -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-854">8.5.4 Critical Parameter Control（關鍵參數控制）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The requirements for instrumentation should be considered in regard to selecting the most cost effective type and to define the appropriate calibration regime. Industrial grade instruments/sensors usually are employed, as they usually are more reliable, more robust, but more expensive.</p>
+
+        <p>For some instruments, accuracy and repeatability are important, e.g., measuring room temperature. For others, accuracy is not as important as repeatability, e.g., measuring a system's flow rate in order to maintain constant flow using a variable speed fan.</p>
+
+        <p>Three point calibration may be required, but single point calibration may be justifiable.</p>
+
+        <p>Commonly monitored environmental parameters include:</p>
+        <ul>
+            <li><span class="key-term">airflow</span> (affects the dilution of airborne particles in a room and room recovery from in-use to at-rest conditions)</li>
+            <li><span class="key-term">DP between rooms</span> (affects the migration of contaminants into a room from adjoining spaces)</li>
+            <li><span class="key-term">temperature</span> (may affect exposed product quality)</li>
+            <li><span class="key-term">RH</span> (may affect exposed product quality)</li>
+        </ul>
+
+        <h3>8.5.4.1 Airflow Measurement</h3>
+        <p>Measurement of supply airflow from the AHU and in ducts typically is coupled with the control of constant supply airflow in a system to:</p>
+        <ul>
+            <li>offset flow decay because of an increasing pressure drop in air filters</li>
+            <li>offset changes in variable exhausts (known as <span class="key-term">"airflow tracking"</span>)</li>
+        </ul>
+
+        <p>For classified spaces, supply airflow should be kept constant to ensure that particle counts, recovery, and room pressure are controlled.</p>
+
+        <p>Air velocity may be measured using a grid (array) of measuring devices in a duct, arranged to compensate for the non-uniform nature of velocities within the duct.</p>
+
+        <p><span class="key-term">Pitot tubes</span> commonly are used for this purpose. Pitot tubes normally employ small holes facing upstream to sense total air pressure or have holes facing perpendicular to the direction of flow (or downstream) to sense throat sub-static pressure. The difference in pressure signal between the two sets of tubes is proportional to the square of the mean velocity in the duct. By connecting the output tubes to a suitable instrument, the pressure difference, and therefore, the velocity can be measured easily. To get total flow, velocity is multiplied by the area of the duct. DP flow measurements have a limited turndown capability, because of the square-root calculation of flow.</p>
+
+        <p>A similar grid system uses a <span class="key-term">hot wire anemometer</span>. Anemometers indicate velocity, but are more properly considered a mass flow measurement device, as they measure the ability of the airflow to affect the temperature, and therefore, the resistance and current flow through a heated wire or thermister. The cooling effect of the mass of air is linearly proportional to the mass flow, and therefore, the velocity. Improved accuracy is possible at low flows or where sufficient straight duct length is not possible, because flow sensing is not dependent on the square root of pressure.</p>
+
+        <p>The <span class="key-term">vortex shedding flowmeter</span> also is a linear response device that is employed in airflow measuring arrays. This device works on the principle that an obstruction in a fluid flow stream produces low pressure vortices on the downstream side of the body. These vortices originate on alternating sides of the body at a frequency that is linearly related to the flowrate.</p>
+
+        <p>To achieve a degree of accuracy, an in-duct airflow monitor should be installed in a straight section of ductwork, usually a minimum 5 duct diameters upstream and 3 duct diameters downstream; the monitor manufacturer may provide alternative installation requirements. HVAC System designs may include flow straighteners upstream of airflow monitor grids. These devices remove turbulence, but (like the monitor itself) if installed too close to elbows, fan outlets, or other direction changes, will not help to improve accuracy.</p>
+
+        <p><span class="key-term">Fan venturi meters</span> (piezometer rings) provide the advantage of reading total air volume with greater accuracy. They can either be retrofitted to or be an integral part of the system fan inlet. Performance is independent of the ductwork design (the fan is inside the AHU), and can be a useful commissioning aid. The wiring and tubing are all local to the fan/AHU, simplifying installation.</p>
+
+        <p>The principal function of the grid is to maintain the desired conditions determined during system commissioning, whether reading actual flow or not, rather than to obtain an accurate reading.</p>
+
+        <p>For specialized applications, such as the monitoring of low velocity unidirectional air flow devices (UFH or laminar flow hoods), hot wire anemometers are used. Vane anemometers commonly are used for air velocity measurement in commissioning, as they tend to have an averaging effect over the sample area compared to the spot reading from the hot wire unit.</p>
+
+        <h3>8.5.4.2 Airflow Control</h3>
+        <p>The most common form of airflow control is the <span class="key-term">damper</span>, which can be manually adjusted or actuated, and can use a single blade, or be multi blade parallel or opposed blade. Fan airflow volume may be controlled using a discharge damper, an inlet damper (or "guide vanes"), or <span class="key-term">variable frequency motor speed control</span>. <span class="key-term">VFDs</span> have become an accepted method for fan airflow control in terms of energy savings and cost. The use of a fan discharge damper wastes energy and is not recommended.</p>
+
+        <p>Dampers usually are basic; the relationship between airflow and position is non-linear. Care should be taken when using motorized blade type dampers for varying air flow control; correct sizing is critical to provide good control across a damper. Improved airflow control is possible using more expensive devices, such as a pneumatic 'bladder' damper, which uses a bladder inflated with low pressure compressed air to open aerodynamically shaped blades. These provide more linear control with better pressure recovery and turndown.</p>
+
+        <p>A <span class="key-term">variable orifice</span>, also called a <span class="key-term">venturi damper</span>, may provide better control. A venturi orifice commonly is used for laboratory hood flow control and room pressure control.</p>
+
+        <h3>8.5.4.3 Fluid Control Valves</h3>
+        <p>The correct selection of a fluid (liquids, compressed air, or steam) <span class="key-term">control valve</span> is critical for good system performance, together with tuning of the control loop.</p>
+        <p>There are two types of control valve:</p>
+        <ol>
+            <li>the <span class="key-term">three port valve</span>, which can be used as a mixing or diverting valve to supply the controlled equipment</li>
+            <li>the <span class="key-term">two port valve</span>, which directly controls flow to the equipment</li>
+        </ol>
+        <p>For further information on control valves, see Appendix 9.</p>
+
+        <h3>8.5.4.4 DP</h3>
+        <p>There are three applications for the measurement of DP:</p>
+        <ol>
+            <li>the use of a DP monitor to interpret the readings from an airflow-measuring device (pitot tube)</li>
+            <li>the use of a pressure switch to detect:
+                <ul>
+                    <li>flow failure of a fan (usually not necessary if the system has flow monitoring)</li>
+                    <li>detection of high pressure across a filter or filter set to provide an indication that the filters require changing (not necessary unless filters load quickly)</li>
+                </ul>
+            </li>
+            <li>The detection of low DP between rooms to provide an indication of incorrect airflow direction (non sterile areas) or failure of a design DP (sterile areas). A pressure switch is not needed if the pressure sensor and monitor system can provide an alarm.</li>
+        </ol>
+
+        <p>There are several options for DP sensing and indication:</p>
+        <ul>
+            <li>The inclined manometer is acceptable for local DP measurements, such as the pressure drop across an air filter or from the inside of an isolator to its room.</li>
+            <li>A basic instrument is the <span class="key-term">Magnehelic gauge</span>: a robust device that measures the deflection of a metal diaphragm due to air pressure and provides a visual indication of DP. This gauge also is available with an adjustable electrical contact switch (high and low alarm, the Photohelic gauge) or a variable output. Mounting position affects whether accurate readings are obtained. These gauges often are used to monitor room DP, but resolution of readings may be marginal and the gauges can be only single point calibrated (the zero is adjustable, the span is not). These gauges are excellent airflow direction indicators for locations where the exact pressure is not critical, but are not suitable for precise DP measurement. It may be possible to obtain silk screening of the faces of these gauges to indicate the desired conditions with a green quadrant and the out of range conditions with red quadrants.</li>
+            <li>A simple device using a colored ball mounted in a clear inclined tube provides an alternative direction of airflow indicator. This type of unit is very simple and does not require calibration, but has the disadvantage that there is airflow through the unit so it requires routine cleaning. In addition, it indicates only relative DP and not an absolute value of DP so it finds better use in non-classified spaces (oral dosage, etc.)</li>
+        </ul>
+
+        <p>Where greater sensitivity is required or a control function is needed based on a DP, electronic pressure transducers can be used. These are available with or without indicator readouts to allow operators to see the measured value. The most sophisticated DP sensors are pressure diaphragms with an accuracy of +/- 0.005 inch (+/- 1.25 Pa). Output is commonly 4-20 mA.</p>
+
+        <p>When specifying DP units, the operating pressure range should be considered and the device should be sufficiently robust to handle the occasional pressure spike.</p>
+
+        <p>Pressure transducers are located where they can be calibrated with tubing connecting them to the rooms where DP is to be measured. The exterior of the sensor tube should be cleanable where tubing penetrates into the room.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：四大關鍵環境參數</h4>
+            <p>HVAC 系統需監測的四大關鍵環境參數：</p>
+            <ul>
+                <li><strong>Airflow（風量）</strong>：影響微粒稀釋和房間從「使用中」到「靜態」的恢復速度</li>
+                <li><strong>DP（壓差）</strong>：影響相鄰房間之間的微粒遷移方向</li>
+                <li><strong>Temperature（溫度）</strong>：可能影響暴露產品的品質</li>
+                <li><strong>RH（相對濕度）</strong>：可能影響暴露產品的品質（吸濕性藥品尤其敏感）</li>
+            </ul>
+            <p>注意 ISPE 的用詞：溫度和濕度「may affect」——這取決於具體產品和製程。不是所有場景都需要嚴格控制溫濕度。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：精度 vs. 重複性</h4>
+            <p>ISPE 提出一個非常重要的區分：</p>
+            <ul>
+                <li><strong>Accuracy（精度）</strong>：量測值與真實值的接近程度——量房間溫度時很重要</li>
+                <li><strong>Repeatability（重複性）</strong>：多次量測同一對象得到相同結果的能力——用變頻器（VFD）維持恒定風量時，重複性比精度更重要</li>
+            </ul>
+            <p>這影響校正策略：需要高精度的感測器可能需要三點校正（Three Point Calibration），而只需重複性的可能單點校正（Single Point Calibration）就足夠了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風量量測技術總覽</h4>
+            <table>
+                <tr><th>技術</th><th>原理</th><th>特點</th><th>適用場景</th></tr>
+                <tr><td>Pitot Tube（皮托管）</td><td>量測動壓與靜壓差</td><td>成本低，但低風量時精度差（平方根關係）</td><td>風管內一般風量量測</td></tr>
+                <tr><td>Hot Wire Anemometer（熱線風速計）</td><td>空氣冷卻加熱絲的程度</td><td>線性響應，低風量精度佳</td><td>UFH/層流罩監測</td></tr>
+                <tr><td>Vortex Shedding Flowmeter（渦街流量計）</td><td>障礙物產生渦流頻率</td><td>線性響應</td><td>風量量測陣列</td></tr>
+                <tr><td>Fan Venturi Meter（風機文丘里計）</td><td>風機入口壓差</td><td>精度高，不受風管設計影響</td><td>AHU 總風量量測</td></tr>
+                <tr><td>Vane Anemometer（葉片風速計）</td><td>風推動葉片旋轉</td><td>面積平均效果好</td><td>現場試車（Commissioning）</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風門（Damper）類型與選擇</h4>
+            <p>風門（Damper）是最常見的風量控制元件：</p>
+            <ul>
+                <li><strong>Single Blade（單葉片）</strong>：最簡單，適合開/關控制</li>
+                <li><strong>Parallel Blade（平行葉片）</strong>：葉片同方向旋轉，適合混合氣流</li>
+                <li><strong>Opposed Blade（對向葉片）</strong>：葉片反方向旋轉，適合流量調節</li>
+                <li><strong>Pneumatic Bladder Damper（氣囊式風門）</strong>：用低壓壓縮空氣膨脹氣囊來開啟空氣動力學外型的葉片，控制更線性</li>
+                <li><strong>Venturi Damper（文丘里風門）</strong>：可變孔口設計，最佳控制精度，常用於實驗室通風櫃和房間壓差控制</li>
+            </ul>
+            <p>ISPE 明確指出：<strong>風機出口風門（Discharge Damper）浪費能源，不建議使用。</strong>應改用 VFD（Variable Frequency Drive，變頻器）控制風機轉速。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：風門 vs. VFD 如同水龍頭 vs. 水泵</h4>
+            <p>控制水流量有兩種方式：</p>
+            <ul>
+                <li><strong>關小水龍頭（風門控制）</strong>：水泵全力運轉，但在出水口用閥門擋住——能量白白浪費在摩擦上</li>
+                <li><strong>調低水泵轉速（VFD 控制）</strong>：直接降低水泵的功率，用多少就產多少——節能省電</li>
+            </ul>
+            <p>VFD 的節能效果是驚人的——風機能耗與轉速的三次方成正比（Fan Affinity Law），轉速降 20% 可以節省約 50% 的能耗！</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式：風機親和定律 Fan Affinity Laws</h4>
+            <pre>
+風量 Q ∝ N        （轉速的一次方）
+壓力 P ∝ N²       （轉速的二次方）
+功率 W ∝ N³       （轉速的三次方）
+
+範例：
+  轉速從 100% 降到 80%
+  風量 = 80%
+  功率 = 0.8³ = 51.2%（節省近 49% 能耗！）</pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：壓差量測設備</h4>
+            <p>壓差（DP）量測有多種工具，精度和成本差異很大：</p>
+            <ul>
+                <li><strong>Inclined Manometer（傾斜壓力計）</strong>：適合本地讀數，如過濾器壓降</li>
+                <li><strong>Magnehelic Gauge</strong>：堅固耐用的機械式壓差計，是業界標準。但只能單點校正（調零不調跨距），精度有限</li>
+                <li><strong>Colored Ball Indicator（色球指示器）</strong>：最簡單，不需校正，但只指示方向不顯示數值</li>
+                <li><strong>Electronic Pressure Transducer（電子壓力變送器）</strong>：最高精度（+/- 1.25 Pa），4-20 mA 輸出可接入控制系統</li>
+            </ul>
+            <p>關鍵提醒：壓力變送器安裝在可校正的位置，用管路連接到被量測的房間。管路穿入房間處的外表面必須可清潔。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 說風量量測陣列的主要功能是「維持試車時確定的條件」而不是「獲得精確讀數」？這對日常操作有什麼啟示？</li>
+                <li>一間無菌充填室（Grade A/B）的壓差監測，你會選擇 Magnehelic Gauge 還是 Electronic Pressure Transducer？為什麼？</li>
+                <li>安裝風管內風量監測器時，為什麼需要上游 5 倍管徑、下游 3 倍管徑的直管段？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.4.5 Temperature Sensor & 8.5.4.6 Humidity Sensor -->
+<!-- ============================================================ -->
+<div class="section-title">8.5.4.5-8.5.4.6 Temperature &amp; Humidity Sensors（溫度與濕度感測器）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.5.4.5 Temperature Sensor</h3>
+        <p>The <span class="key-term">Resistance Temperature Device (RTD)</span> is an industrial sensor used to monitor temperature. 100-Ohm RTDs are available with different accuracy standards and response curves, e.g., accurate to +/- 0.2°F (approx. +/- 0.1°C). Industrial standards require the use of a transmitter to offset accuracy losses because of resistance in the system wiring. Some HVAC systems may use 1000-Ohm sensors to minimize the effect of wiring resistance without the use of a transmitter. Thermocouples also may be used. Self-contained liquid and gas expansion systems are used for actuation of self-acting controllers and switches. Temperature sensors may not be capable of being calibrated in the field and should be replaced if found to be out of specification.</p>
+
+        <h3>8.5.4.6 Humidity Sensor</h3>
+        <p>RH in a room usually is monitored, though there are applications where it may be advantageous to monitor a room's absolute humidity or dew point. For example, in a system used to supply multiple areas, each room's supply duct has a local temperature control re-heater, and the HVAC control system would "reset" the supply temperatures to be able to turn off one re-heater to save energy. If an RH sensor at the AHU controls supply moisture, the change in supply temperature would change the RH in air leaving the AHU. This would cause a change in room RH. Where there are many rooms with moisture sources, it is possible to monitor room RH, while controlling dew point (absolute humidity) leaving the AHU. It also is common (in smaller systems) to use RH sensors in critical rooms and to control humidity in the AHU by reading the average RH in the return duct before it enters the AHU.</p>
+
+        <p>The sensors used to monitor RH industrially usually are units that measure the change in capacitance between two plates due to the variation in humidity. Accuracy usually is in the range of +/- 2%. Commercial grade RH sensors may have lower accuracy. Semiannual or more frequent calibration may be justified.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：溫度感測器選擇</h4>
+            <p><strong>RTD（Resistance Temperature Device，電阻溫度偵測器）</strong>是製藥 HVAC 最常用的溫度感測器：</p>
+            <ul>
+                <li><strong>100-Ohm RTD（Pt100）</strong>：標準工業規格，精度可達 +/- 0.1°C，但需要變送器（Transmitter）來補償線路電阻</li>
+                <li><strong>1000-Ohm RTD（Pt1000）</strong>：高電阻值使線路電阻影響可忽略，不需變送器，適合 HVAC 應用</li>
+                <li><strong>Thermocouple（熱電偶）</strong>：較便宜但精度較低，適合非關鍵量測</li>
+            </ul>
+            <p>關鍵注意：許多溫度感測器<strong>無法現場校正</strong>——超出規格時只能更換。這對備品管理和校正計畫有直接影響。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：RH 控制的「露點策略」</h4>
+            <p>ISPE 揭示了一個進階的濕度控制技巧：</p>
+            <ul>
+                <li>多個房間共用一台 AHU 時，各房間有獨立的再加熱器（Re-heater）調溫</li>
+                <li>如果用 RH 控制 AHU 的除濕量，改變送風溫度會連帶改變 RH——造成連鎖反應</li>
+                <li><strong>解決方案：在 AHU 出口控制露點（Dew Point / Absolute Humidity）</strong>，而非 RH</li>
+                <li>各房間的溫度變化不會影響送風的含水量</li>
+            </ul>
+            <p>這對 CDMO 特別重要——不同客戶產品可能有不同的溫濕度要求，使用露點控制可以讓同一 AHU 更靈活地服務多個房間。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：RH vs. 露點如同體感溫度 vs. 實際溫度</h4>
+            <p><strong>相對濕度（RH）</strong>就像「體感溫度」——同樣的水汽含量，溫度高時 RH 低，溫度低時 RH 高。它會隨溫度波動。</p>
+            <p><strong>露點（Dew Point）</strong>就像「實際氣溫」——不管你穿多少衣服，溫度就是溫度。它只反映空氣中的實際含水量，不受溫度影響。</p>
+            <p>控制 AHU 出口的「露點」而非「RH」，就像根據實際氣溫穿衣而非根據體感溫度——更穩定、更可靠。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>RH 感測器精度通常只有 +/- 2%，這對設定 RH 規格範圍（如 30-65% RH）有什麼影響？控制設定點應該怎麼設？</li>
+                <li>為什麼 ISPE 建議濕度感測器的校正頻率可能需要半年或更頻繁？與溫度感測器相比有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.5 Setpoints -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-855">8.5.5 Setpoints（控制設定點）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Controls setpoints</span> should be selected to assure that errors (drift, hysteresis, accuracy) do not combine to allow a condition outside operating or acceptance criteria. This is particularly important in systems where multiple instrument signals are used to calculate a control response (e.g., airflow tracking, multi-point pressure control).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：設定點的安全餘裕</h4>
+            <p>設定點（Setpoint）不是簡單地設在規格範圍的中心。必須考慮<strong>所有誤差的疊加效應</strong>：</p>
+            <ul>
+                <li><strong>Drift（漂移）</strong>：感測器隨時間偏離校正值</li>
+                <li><strong>Hysteresis（遲滯）</strong>：上升和下降時讀數不同</li>
+                <li><strong>Accuracy（精度）</strong>：量測值與真值的偏差</li>
+            </ul>
+            <p>當多個儀表信號組合計算時（如風量追蹤、多點壓差控制），誤差會疊加——設定點必須留足餘裕。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>設定點餘裕計算示例</h4>
+            <pre>
+溫度規格範圍：18-25°C
+感測器精度：+/- 0.5°C
+感測器漂移：+/- 0.3°C
+總不確定度：+/- 0.8°C
+
+安全操作範圍：18.8 - 24.2°C
+建議設定點：21.5°C（中心值）
+警報設定：19.0°C（低）/ 24.0°C（高）</pre>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.6 Monitoring of Critical HVAC Parameters -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-856">8.5.6 Monitoring of Critical HVAC Parameters（關鍵 HVAC 參數監測）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.5.6.1 Critical HVAC Parameters</h3>
+        <p>Critical HVAC parameters are particular to individual products and processes. Typical critical parameters may not apply to facility areas or equipment where the HVAC parameters have little or no impact. For example, closed processes and processes with clean environments maintained inside product containers or equipment may see little or no impact from HVAC systems, unless normal operations require opening the process or changing process connections.</p>
+
+        <p>It is common practice to qualify monitoring systems (sensors, transmitters, indicators, recorders, alarms, etc.) for those parameters defined as critical (usually handled in the process monitoring computer system) and to use GEP to ensure the development and maintenance of a robust control system (via the HVAC control system, see Figure 8.14).</p>
+
+        <p>This approach provides the quality unit with a record from a validated system of room conditions during process operations, without the need for a formal change control process for the HVAC control system (an engineering change control system is still required, which typically is more manageable and less extensive in its scope, e.g., it may include only some set points and some hardware in the system).</p>
+
+        <p>Main factors to consider for a monitoring system:</p>
+        <ul>
+            <li>accuracy and repeatability required</li>
+            <li>long term stability and failure modes</li>
+            <li>sensor location/locations</li>
+            <li>alarm requirements</li>
+            <li>record requirements</li>
+            <li>ease of maintenance and calibration</li>
+        </ul>
+
+        <h3>8.5.6.2 Accuracy Required</h3>
+        <p>The potential error of any single loop in a monitoring system should be subtracted from the defined limits to ensure that the product requirements are met. It may be cost effective to use a reliable high accuracy sensor, allowing maximum latitude for the control system.</p>
+        <p>For example, if the acceptance criteria are 18 to 25°C (64 to 77°F) and the monitoring system has an accuracy of +/- 0.5°C, the action limits should be set at 18.5 to 24.5°C; if the monitoring sensor has an accuracy of +/- 2°C, the limits should be set between 20°C and 23°C.</p>
+
+        <h3>8.5.6.3 Long Term Stability and Failure Modes</h3>
+        <p>Some instruments are prone to drift out of calibration more than others, e.g., liquid pH probes. Humidity sensors may require more frequent calibration than temperature or pressure sensors. Maintenance procedures and frequencies should be based on manufacturers' recommendations.</p>
+        <p>Failure modes should be considered by system designers:</p>
+        <ul>
+            <li>If an instrument (sensor/transmitter, indicator, recorder, alarm) were to fail, in what mode should it fail?
+                <ul><li>Generally, an unusual reading should trigger an alarm.</li></ul>
+            </li>
+            <li>If an actuated field device (control valve or damper) fails, should it fail open, closed, or in its last position?
+                <ul><li>A failure mode should be chosen that is safest for the product and personnel and maximizes the probability of detection of the failure.</li></ul>
+            </li>
+        </ul>
+
+        <h3>8.5.6.4 Sensor Location – General</h3>
+        <p>The following should be considered when selecting where to mount a sensor:</p>
+        <ul>
+            <li>Instrument should be mounted to be easily accessible and easy to calibrate and replace. Local indicators should not be obscured.</li>
+            <li>Local cleaning required should be considered in the instrument specification and mounting.</li>
+            <li>Pneumatic control lines should be kept as short as possible.</li>
+            <li>Sensor elements in negative pressure duct and mechanical spaces should be appropriately sealed to avoid the influence of unconditioned air.</li>
+            <li>Contaminated locations should be avoided, particularly where hazardous materials are handled to avoid calibration problems and exposure to personnel.</li>
+            <li>Sensors should be located in well-mixed air (e.g., not in an AHU mixing box where outdoor air can stratify).</li>
+            <li>Potential interference to electronic devices from nearby electrical devices, especially motors should be considered.</li>
+        </ul>
+
+        <h3>8.5.6.5 Temperature and Relative Humidity Sensor Locations</h3>
+        <p>Potential lack of uniformity throughout a room should be considered for mounting of temperature and humidity (typically RH) sensors (see Appendix 11).</p>
+        <p>Temperature and RH monitoring sensors often are mounted in the common return air duct, giving an average of the conditions in a space, assuming that the supply diffusers are mixing the supply air with the room air adequately.</p>
+        <p>An RH sensor (or temperature sensor) in a negative pressure (return) air duct should be located upstream of duct access doors and should be sealed thoroughly to prevent the ingress of warm or humid air that would corrupt the sensor reading, causing the control system to over-react and push a critical parameter out of its normal operating range.</p>
+        <p>It may still be necessary to study the relationship between worst-case conditions in the room and the mixed condition in the return duct to see if the average reading agrees with the readings near the critical sites. Assumptions regarding sensor location can be verified during commissioning.</p>
+        <p>If there are significant heat or humidity sources, the local conditions near the source will be different.</p>
+        <p>When considering sensor locations, the process in regard to the product should be considered. For example, for a typical tablet compression room:</p>
+        <ul>
+            <li>The raw material sits in a hopper typically near a supply register so that the hopper is flushed with clean air. It is then fed into the tableting dies, where it is compressed, generating a significant amount of heat and dust. The compressed tablet is then released into a de-duster/metal detector, then into a collection bin, where it cools and is exposed to room conditions. The local RH will be lower at the bin because of the localized heat although the moisture content (dew point) is the same throughout the room.</li>
+            <li>Since the equipment generates a significant amount of heat, the airflow rate or air mixing in the room may need to be high to keep the room air temperature variation within product limits. The difference between the temperature at the product and the temperature as indicated on the room temperature sensor can be "mapped" during performance qualification, if, potentially, the temperature is critical.</li>
+            <li>The most critical area is the feed hopper, which is washed by supply air. If temperature or humidity are critical parameters and could be out of range within normal room variations (sometimes as much as +/- 5°F), it is appropriate to monitor near the feed hopper to indicate the condition of the material within it. Since this site may be dusty, it also is acceptable to monitor at a more convenient location in the room and verify (during commissioning) the offset in temperature between the sensor and the area near the hopper.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：關鍵參數的定義是產品導向的</h4>
+            <p>ISPE 在這裡傳達一個重要訊息：<strong>HVAC 關鍵參數不是固定的清單，而是取決於具體產品和製程。</strong></p>
+            <ul>
+                <li>密閉製程（Closed Process）：HVAC 參數可能完全不是關鍵的</li>
+                <li>開放製程（Open Process）：溫度、濕度、壓差都可能是關鍵參數</li>
+                <li>判斷依據：HVAC 參數是否對產品品質有實際影響</li>
+            </ul>
+            <p>這與 ICH Q9 Quality Risk Management（品質風險管理）的原則完全一致——基於風險評估來決定監測範圍和程度。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>感測器精度對操作範圍的影響</h4>
+            <pre>
+ISPE 範例（溫度）：
+  接受標準：18-25°C（規格範圍 = 7°C）
+
+  高精度感測器（+/- 0.5°C）：
+    行動限值 = 18.5 - 24.5°C
+    可用操作窗口 = 6°C（86% 利用率）
+
+  低精度感測器（+/- 2°C）：
+    行動限值 = 20 - 23°C
+    可用操作窗口 = 3°C（43% 利用率）
+
+結論：高精度感測器雖然貴，但讓控制系統
+有更大的操作空間，反而更經濟！</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：失效模式設計——產品安全優先</h4>
+            <p>ISPE 要求設計師回答兩個關鍵問題：</p>
+            <ol>
+                <li><strong>感測器失效時</strong>：應產生異常讀數觸發警報（Fail-to-Alarm）</li>
+                <li><strong>致動器失效時</strong>：應選擇對產品和人員最安全的失效模式
+                    <ul>
+                        <li>Fail Open（失效開啟）：如排氣風門——確保危害物持續排出</li>
+                        <li>Fail Closed（失效關閉）：如送風風門在高活性區域——防止交叉污染</li>
+                        <li>Fail in Last Position（維持最後位置）：適合緩慢變化的參數</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>這直接呼應本指引的決策層級：<strong>無菌保證 > 產品 CQA > 商業彈性</strong>。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：感測器選址如同安裝監視器</h4>
+            <p>感測器選址就像在商店安裝監視器：</p>
+            <ul>
+                <li>要裝在<strong>看得清楚</strong>的位置（well-mixed air，不能裝在死角）</li>
+                <li>要<strong>容易維護</strong>（accessible for calibration，不能藏在天花板深處）</li>
+                <li>不能被電器<strong>干擾</strong>（electromagnetic interference，遠離大馬達）</li>
+                <li>負壓風管中的感測器要<strong>密封好</strong>——就像防止外面的人偷偷從後門溜進來（unconditioned air ingress）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：壓片室的感測器選位案例</h4>
+            <p>ISPE 用壓片室（Tablet Compression Room）做了一個非常實用的案例分析：</p>
+            <ul>
+                <li>設備產生大量熱和粉塵——房間內溫度不均勻</li>
+                <li>產品最關鍵位置是進料斗（Feed Hopper）——被送風空氣沖洗</li>
+                <li>收集箱（Collection Bin）附近因局部熱量導致 RH 較低</li>
+                <li>解決方案：在方便的位置監測，但在 Commissioning 時驗證該位置與關鍵位置的溫度偏差（Offset Mapping）</li>
+            </ul>
+            <p>這就是「實用主義」的典範——不一定要把感測器裝在最理想但最難維護的位置，而是裝在方便的位置並驗證其代表性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個使用隔離器（Isolator）進行無菌充填的製程，HVAC 的溫度是否為關鍵參數？為什麼？</li>
+                <li>一台排氣風門（Exhaust Damper）服務含有機溶劑的房間，它的失效模式應該是 Fail Open 還是 Fail Closed？為什麼？</li>
+                <li>在 Commissioning 時進行 Offset Mapping 的目的是什麼？如果不做，會有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.6.6-8.5.6.8 Alarm & Record Requirements -->
+<!-- ============================================================ -->
+<div class="section-title">8.5.6.6-8.5.6.8 Alarm &amp; Record Requirements（警報與記錄要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.5.6.6 Alarm Requirements</h3>
+        <p>Alarms may provide an audible or visual indication, e.g., a horn and flashing light mounted in a common area of the production suite, where they can be seen or heard from the entire suite. The choice of alarm type should consider noise levels during operations and locations of personnel.</p>
+
+        <p>It is considered good practice to set the <span class="key-term">action alarm</span> at the extreme acceptance conditions and have an engineering <span class="key-term">"alert" alarm</span> at conditions just outside the normal (observed) operating range to alert engineering personnel of a potentially unusual condition (e.g., a loss of a water chiller causes room temperature to drift upward) as soon as possible, so that steps may be taken to prevent an action alarm.</p>
+
+        <h3>Alarm Time Delays</h3>
+        <p>Parameters may change slowly or rapidly. Room pressure can change very quickly, and therefore, has potential to create a low-pressure (nuisance) alarm whenever a door is opened. DP alarms often have <span class="key-term">time delays</span>, particularly where airlocks are not employed to keep DP between air classifications above zero. The duration of the time delay should be sufficient to permit normal passage through a door and be verified during commissioning by particle counting in the cleaner space. For DP across airlocks, the set point should be above zero (just below the normal DP with a door open). When the DP across an airlock is zero (meaning more than one airlock door is opened), a low DP alarm with no delay may be used. For areas with no airlock, the DP alarm set point should be zero with acceptable delay to permit passage through an open door.</p>
+
+        <h3>Time Weighted Averaging</h3>
+        <p>Measurements with "noisy" (rapidly changing) signals, such as airflow measurements, may require filtering to avoid nuisance alarms. A commonly used filter is to use a <span class="key-term">rolling time weighted average</span> signal, rather than an instantaneous signal for recording and alarming. A rolling average of readings from 4 to 10 seconds typically is capable of smoothing out signal noise without missing significant failure events.</p>
+
+        <h3>8.5.6.7 Alarm Response</h3>
+        <p>The desired response to an alarm state should be considered.</p>
+        <p>An <span class="key-term">alert alarm</span> should provide early warning to facility engineering personnel of an unusual state requiring attention or adjustment, but not an indication of a deviation outside the required operating conditions for a product or process (acceptance criteria).</p>
+        <p><span class="key-term">Action alarms</span> for a variable may indicate that operating conditions have exceeded the specified acceptance criteria and that action is required to ensure that product quality is not compromised. These alarms should be relayed to the appropriate business and quality unit.</p>
+        <p>This engineering alarm may come from a validated monitoring system or a GEP control system (see Figure 8.15 and Appendix 2).</p>
+
+        <p>The regulatory requirement is for a local alarm, notifying the operator when the conditions are outside the acceptance criteria limits. However, there should be a written course of action defined for each action alarm:</p>
+        <ul>
+            <li>Who sees it?</li>
+            <li>Who responds to it?</li>
+            <li>Where is it recorded?</li>
+            <li>What action will be taken?</li>
+            <li>Where the information on the action will be stored?</li>
+        </ul>
+        <p>If no action is needed, justification for the action alarm may be questionable.</p>
+
+        <h3>8.5.6.8 Record Requirements</h3>
+        <p>The frequency of data collection is dependent on the parameter being measured.</p>
+        <p>There is no regulatory guidance regarding frequency of monitoring although the USP (in the general chapters &lt;1118&gt;) (Reference 31, Appendix 12) states that the user must consider how rapidly the monitored condition is likely to change, suggesting that for storage conditions, a response time of 15 minutes may be appropriate, whereas for transport of product a more rapid response time of 5 minutes may be required.</p>
+        <p>In a manufacturing area, there are unlikely to be sources of heat energy or humidity that can create instant changes, considering the thermal mass and sizes of the monitored areas. Therefore, temperature and humidity will change very slowly and could be recorded on two or three minute intervals (or longer) and still provide an accurate record of the environmental conditions. Room pressure changes quickly so data intervals may be very short, perhaps seconds, during an out-of-specification state. For classified spaces without airlocks, DP will drop to zero soon after the door is opened. This drop should be recorded, but the alarm should be on a time delay to permit the door to close within a validated time.</p>
+        <p>It may be acceptable to have a record of alarms (or lack thereof) only during manufacturing, recorded on the batch record sheet.</p>
+        <p>It may be preferable to have an actual record of measured values.</p>
+        <p>Data logging may be in the form of a continuous chart or a daily printout of minimum, maximum, average, standard deviation.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Alert Alarm vs. Action Alarm</h4>
+            <p>ISPE 定義了兩層警報架構，這是 HVAC 監測設計的核心：</p>
+            <table>
+                <tr><th>類型</th><th>Alert Alarm（預警警報）</th><th>Action Alarm（行動警報）</th></tr>
+                <tr><td>觸發條件</td><td>超出正常操作範圍</td><td>超出接受標準（Acceptance Criteria）</td></tr>
+                <tr><td>通知對象</td><td>工程維護人員</td><td>品質部門 + 業務單位</td></tr>
+                <tr><td>性質</td><td>「注意，可能有問題」</td><td>「已偏差，須立即處理」</td></tr>
+                <tr><td>文件要求</td><td>工程記錄</td><td>品質偏差報告（Deviation Report）</td></tr>
+            </table>
+            <p>這是「預防性維護」思維的體現——在出事前先預警，而非出事後才反應。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：兩層警報如同車速警示</h4>
+            <p><strong>Alert Alarm</strong> = 導航提醒你「前方有測速照相」——你還沒超速，但再不注意就要超速了。工程師收到通知，趕緊檢查冷凍水系統。</p>
+            <p><strong>Action Alarm</strong> = 你已經被照到超速——罰單已開。品質部門介入，啟動偏差調查，評估產品影響。</p>
+            <p>ISPE 的智慧在於：<strong>如果某個 Action Alarm 觸發後不需要任何行動，那這個 Action Alarm 的存在本身就值得質疑</strong>——為什麼設定一個不需要回應的警報？</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：壓差警報的時間延遲設計</h4>
+            <p>壓差（DP）警報設計是最容易出錯的環節之一：</p>
+            <ul>
+                <li>門一開，壓差立刻降到零——如果沒有延遲，每次開門都會觸發「假警報」（Nuisance Alarm）</li>
+                <li><strong>有氣鎖的區域</strong>：DP 設定點應在「門開時的正常壓差」略下方（仍 > 0）。當兩道門同時開（DP = 0）時，無延遲立即警報</li>
+                <li><strong>無氣鎖的區域</strong>：DP 設定點 = 0，加上合理的時間延遲，允許正常通行</li>
+                <li>延遲時間必須在 Commissioning 時用微粒計數驗證——確認延遲期間潔淨空間不受污染</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：數據記錄頻率的合理性</h4>
+            <p>ISPE 提供了一個非常實用的資料記錄頻率指引：</p>
+            <table>
+                <tr><th>參數</th><th>變化速度</th><th>建議記錄間隔</th></tr>
+                <tr><td>溫度</td><td>慢（熱質量大）</td><td>2-3 分鐘或更長</td></tr>
+                <tr><td>濕度</td><td>慢</td><td>2-3 分鐘或更長</td></tr>
+                <tr><td>壓差</td><td>極快（門一開即歸零）</td><td>秒級（OOS 狀態時）</td></tr>
+                <tr><td>儲存條件</td><td>極慢</td><td>15 分鐘（USP &lt;1118&gt;）</td></tr>
+                <tr><td>運輸條件</td><td>中等</td><td>5 分鐘（USP &lt;1118&gt;）</td></tr>
+            </table>
+            <p>記錄方式可以是連續圖表、或日報表（每日最小值、最大值、平均值、標準差）。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：Action Alarm 的五個 W</h4>
+            <p>每個 Action Alarm 必須有書面的回應計畫，回答五個問題：</p>
+            <ol>
+                <li><strong>Who sees it?</strong>——誰看到警報？（操作員、值班工程師？）</li>
+                <li><strong>Who responds to it?</strong>——誰負責回應？（是否需要 QA 介入？）</li>
+                <li><strong>Where is it recorded?</strong>——記錄在哪裡？（BMS 日誌、偏差系統？）</li>
+                <li><strong>What action will be taken?</strong>——採取什麼行動？（停機、調整、通知？）</li>
+                <li><strong>Where is the information stored?</strong>——行動記錄存在哪裡？（CAPA 系統？）</li>
+            </ol>
+            <p>這五個 W 是 FDA 稽查時最常問的問題——如果你的 SOP 沒有清楚回答，就是 483 觀察項的候選。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間 Grade B 潔淨室沒有氣鎖，壓差警報延遲設為 30 秒。如何在 Commissioning 時驗證這個延遲是否足夠？</li>
+                <li>風量量測信號「noisy」時使用 Rolling Time Weighted Average 來過濾——為什麼平均窗口建議 4-10 秒而非更長？太長會有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.6.9 Airborne Particle Monitoring -->
+<!-- ============================================================ -->
+<div class="section-title">8.5.6.9 Airborne Particle Monitoring（懸浮微粒監測）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The 2004 FDA Guidance for Industry, "Sterile Products Produced by Aseptic Processing – Current Good Manufacturing Practice" (Reference 9, Appendix 12) states "Regular monitoring should be performed during each production shift."</p>
+
+        <p>EU GMP Volume 4 Annex 1 (Reference 4, Appendix 12) makes the following statement:</p>
+        <div class="quote-box">
+            "A continuous measurement system should be used for monitoring the concentration of particles in the grade A zone and is recommended for the surrounding grade B areas. For routine testing the total sample volume should not be less than 1 m3 for grade A and B areas and preferably also in grade C areas."
+        </div>
+
+        <p>These requirements have been interpreted as requiring a minimum of one test per day (during the periods that production is taking place) with re-qualification of the aseptic process areas of a facility every 6 months.</p>
+
+        <p>The version of EU GMP Volume 4 Annex 1 that came into force on 1 March 2009 gives much more specific information – it states that "for Grade A zones, a minimum sample of 1 m3 should be taken per sample location" (it defines Grade A as ISO 4.8 as dictated by the limit for particles >= 5.0 um, and allows the use of ISO14644-1 to determine the number of sample locations).</p>
+
+        <div class="quote-box">
+            "Portable counters with a short length of sample tubing should be used for classification purposes because of the relatively high rate of precipitation of particles >= 5.0 um in remote sampling systems with long lengths of tubing."
+        </div>
+
+        <div class="quote-box">
+            "For Grade A zones, particle monitoring should be undertaken for the full duration of critical processing, including equipment assembly, except where justified by contaminants in the process that would damage the particle counter..."
+        </div>
+
+        <p>The requirement for a 1 m3 sample with a standard particle counter means that a single test will generally take between 20 and 35 minutes depending on the sampling rate of the equipment being used.</p>
+
+        <p>ISO 14644 (Reference 3, Appendix 12) provides the following guidance:</p>
+        <div class="quote-box">
+            This Standard provides a formula to calculate the sample size to be used to classify a clean-room or clean air device. The sample volume must be based on the class limit of the largest considered particle size. When considering >= 5 micron particle size, this would require a sample volume of approximately 0.7 m3. The standard also provides guidance on test frequencies; it suggests that an ISO 5 clean room that has continuous particle monitoring installed should be re-qualified at least every 24 months.
+        </div>
+
+        <p>Based on this guidance, there is a trend toward the installation of continuous monitoring systems since they provide a better understanding of the process, and the data can be used to support a reduced frequency of testing, while assuring continued levels of control.</p>
+
+        <p>There are three methods that can be used to obtain continuous data:</p>
+        <ol>
+            <li>a manifold system</li>
+            <li>individual particle counters</li>
+            <li>a combination of a manifold system and individual particle counters</li>
+        </ol>
+
+        <h3>Description of Continuous Monitoring Systems</h3>
+        <h3>Manifold System</h3>
+        <p>Manifold systems are composed of a network of sampling lines fed to a single particle counter. This may be the lowest cost option for some applications, but does not provide true continuous sampling. The settling of particles in the sampling lines and manifold may render the information unreliable, making this technique unsuitable for some applications (especially Grade 5/Grade A), where larger particle sizes need to be evaluated. The operation of manifold systems requires that the monitoring point be switched sequentially to cover all of the installed points. Systems are usually configured to have more frequent sampling for those points that are deemed to be more critical (or representative of the area where product is exposed). Sample size is less than cited in the EU GMP, because of the need to continually switch points. Manifold systems may require identical lengths of tubing from each area. Manufacturers should be consulted before designing a real-time particle monitoring system.</p>
+
+        <h3>Individual Particle Counters</h3>
+        <p>A particle counter should be used for each location; networked electronically to a data acquisition and evaluation system. This configuration can provide continuous data and also the flexibility to modify sampling locations and the sampling frequency. It is likely to be the most expensive option.</p>
+
+        <h3>Combination System</h3>
+        <p>A combination of the manifold systems and particle counters with dedicated particle counters in higher risk areas and manifold system sampling for less critical locations.</p>
+
+        <h3>Considerations</h3>
+        <p>The following should be considered when selecting a system for a specific application:</p>
+        <ul>
+            <li>the selection of sample locations, using a risk-based approach to assess the process</li>
+            <li>The effect of particle loss in sample tubing. Long tubes can lead to attenuation of particle concentration, particularly at larger particle sizes. This may invalidate such systems where consideration of larger particles is a requirement.</li>
+            <li>The potential for static charge of sample tubing. Suitable smooth tubing using materials, such as stainless steel or specialist antistatic plastics should be chosen to reduce particle loss and accumulation in tubing systems. Static charges also can lead to intermittent "clump" release of particles, creating false readings.</li>
+            <li>the smoothness and long radius of bends in the sample tubing installation</li>
+            <li>the maintenance of appropriate turbulent transport velocities in sample tubing</li>
+            <li>the sampling frequency at each location</li>
+            <li>the sample time at each location and the potential to detect contaminant release from an operator intervention or other contamination event</li>
+            <li>when manifold systems are used, the adverse effect of no-flow conditions that may occur between sample acquisitions at the same location</li>
+        </ul>
+
+        <h3>Sample Locations</h3>
+        <p>ISO 14644-2 (Reference 3, Appendix 12) provides guidance on determining the number of particle monitoring points. There is a regulatory (EU) expectation that at least one location be the most likely to experience high counts (such as near the product where the operator can interfere with protective air flow patterns).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：微粒監測的法規要求演進</h4>
+            <p>ISPE 彙整了三大法規對微粒監測的要求：</p>
+            <table>
+                <tr><th>法規</th><th>Grade A 要求</th><th>Grade B 要求</th></tr>
+                <tr><td>FDA (2004)</td><td>每班次常規監測</td><td>常規監測</td></tr>
+                <tr><td>EU GMP Annex 1</td><td>連續監測，取樣 >= 1 m3</td><td>建議連續監測</td></tr>
+                <tr><td>ISO 14644</td><td>連續監測可延長再確效至 24 個月</td><td>依分級計算取樣量</td></tr>
+            </table>
+            <p>趨勢非常明確：<strong>連續監測已成為 Grade A/B 區域的業界標準</strong>。安裝連續監測系統可以：(1) 更深入了解製程，(2) 支持降低分類測試頻率（如 ISO 14644 允許有連續監測的 ISO 5 環境每 24 個月再確效）。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：三種連續監測架構</h4>
+            <table>
+                <tr><th>系統</th><th>架構</th><th>優點</th><th>缺點</th></tr>
+                <tr><td>Manifold System（歧管系統）</td><td>多條取樣管接到一台計數器</td><td>成本最低</td><td>非真正連續；大粒子在管路沉降；不適合 Grade A</td></tr>
+                <tr><td>Individual Counters（獨立計數器）</td><td>每個位置一台計數器</td><td>真正連續數據；靈活調整</td><td>成本最高</td></tr>
+                <tr><td>Combination（組合式）</td><td>高風險用獨立計數器，低風險用歧管</td><td>成本與效果平衡</td><td>系統較複雜</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：微粒監測如同保全監控</h4>
+            <p><strong>Manifold System</strong> = 一台監視器接多個攝影機，輪流切換畫面。便宜但你永遠只能看到一個畫面——如果小偷在你沒看的那個角落行動，你就錯過了。</p>
+            <p><strong>Individual Counters</strong> = 每個角落都有獨立的監視器和錄影機，24/7 不間斷。最貴但最安全——任何異常都逃不過。</p>
+            <p><strong>Combination</strong> = 在金庫門口裝獨立監視器（Grade A），走廊用輪切系統（Grade C/D）。這是大多數藥廠的實際選擇。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：取樣管路的「隱形殺手」</h4>
+            <p>微粒監測系統最容易被忽視的風險在取樣管路：</p>
+            <ul>
+                <li><strong>Particle Loss（微粒損失）</strong>：管路越長，大粒子沉降越嚴重——5 μm 粒子在長管路中損失率可能超過 50%</li>
+                <li><strong>Static Charge（靜電荷）</strong>：塑膠管路容易累積靜電，微粒「黏」在管壁上，偶爾「叢釋放」造成假高讀數</li>
+                <li><strong>No-Flow Condition（無流動狀態）</strong>：歧管系統在切換取樣點時，非活動管路中的微粒會沉降</li>
+                <li><strong>解決方案</strong>：使用不鏽鋼或抗靜電塑膠管路、保持適當湍流傳輸速度、管路彎頭要圓滑且大半徑</li>
+            </ul>
+            <p>EU GMP Annex 1 明確要求分級測試使用短管路可攜式計數器——就是因為長管路會導致大粒子損失。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 正在為新的無菌充填線設計微粒監測系統。Grade A 區域有 4 個關鍵取樣點（靠近充填針、瓶口、膠塞放置、軋蓋）。選擇方案：</p>
+            <ul>
+                <li><strong>方案 A</strong>：4 台獨立計數器 —— 成本約 $200K，真正連續監測</li>
+                <li><strong>方案 B</strong>：1 台歧管系統 —— 成本約 $80K，但 EU Annex 1 可能挑戰 Grade A 的歧管監測可靠性</li>
+                <li><strong>推薦</strong>：Grade A 用獨立計數器（符合 EU GMP 連續監測要求），Grade B 可用歧管系統</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>EU GMP Annex 1 要求 Grade A 微粒監測「覆蓋整個關鍵製程期間」，但允許例外——在什麼情況下可以不監測？</li>
+                <li>ISO 14644 允許有連續監測的 ISO 5 環境每 24 個月再確效。這比沒有連續監測的環境（6 個月）長 4 倍。這對你的監測系統投資決策有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5.7 Equipment Monitoring/Maintenance -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-857">8.5.7 Equipment Monitoring/Maintenance（設備監測/維護）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are several ways that HVAC equipment can be monitored; e.g., considering a fan motor:</p>
+        <ul>
+            <li>the control contactor can be wired so that an alarm is given if the unit goes into overload</li>
+            <li>the motor current can be monitored</li>
+            <li>the motor temperature can be monitored</li>
+            <li>vibration or acoustic output may be monitored</li>
+            <li>the airflow from the fan can be monitored using an in-duct device or an in-fan device</li>
+        </ul>
+
+        <p>The unit that measures the flow is the unit that can detect all of the fan failure modes, but does not provide any predictive information. Other units have potential limitations, depending on the fan drive arrangement. Airflow measurement also is likely to be the most sensitive. In addition, for a system requiring fixed airflow to the spaces (e.g., for classified rooms), the flow monitor provides a continuous indication of acceptable air quantity delivery. Current monitoring is less sensitive than flow measurement, provides information on common failure modes, and can give predictive information regarding filter loading, incipient bearing, or drive coupling failure. Current monitoring is most effective as a maintenance measurement when the system has airflow control on the AHU or individual use points.</p>
+
+        <p>Vibration-sensing accelerometers may make it cost effective to monitor the performance of rotating equipment to diagnose system wear or predict incipient failure. The sensors can be wired to a BMS or be wireless, transmitting data to a base station for monitoring.</p>
+
+        <p>Other equipment parameters also may be monitored as part of GEP to ensure lowest life cycle cost:</p>
+        <ul>
+            <li>supply duct pressure (to permit energy setback)</li>
+            <li>damper actuator positions (to predict need for re-balancing of the HVAC system or filter change out)</li>
+            <li>Filter pressure drop. AHU and in-duct filters should be outfitted with manometers, as a minimum, for visual pressure drop indication</li>
+            <li>cooling coil leaving air temperature (may be reset upward when humidity is satisfied)</li>
+            <li>return static pressure</li>
+            <li>casing high and low pressure safeties</li>
+            <li>freezestat, firestat and smoke detector safeties</li>
+            <li>coil entering and leaving temperature</li>
+            <li>coil pressure drop (where bypass dampers are employed)</li>
+            <li>outside air filter pressure drop and rate of rise (rate of rise identifies snow accumulation on filters)</li>
+            <li>outside air quantity</li>
+            <li>outside air enthalpy (temperature and RH)</li>
+            <li>mixed air temperature</li>
+            <li>exhaust air volume</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風機監測五種方法比較</h4>
+            <table>
+                <tr><th>監測方法</th><th>偵測能力</th><th>預測能力</th><th>靈敏度</th></tr>
+                <tr><td>過載警報</td><td>僅極端失效</td><td>無</td><td>低</td></tr>
+                <tr><td>電流監測</td><td>常見失效模式</td><td>有（濾器負載、軸承磨損）</td><td>中</td></tr>
+                <tr><td>溫度監測</td><td>過熱情況</td><td>有限</td><td>中</td></tr>
+                <tr><td>振動監測</td><td>機械磨損</td><td>佳（預測失效）</td><td>高</td></tr>
+                <tr><td>風量監測</td><td>所有失效模式</td><td>無</td><td>最高</td></tr>
+            </table>
+            <p>ISPE 的結論非常清楚：<strong>風量監測是最靈敏的，能偵測所有風機失效模式</strong>。但它只能告訴你「出問題了」，不能預測「即將出問題」。電流監測和振動監測則能提供預測性資訊。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：風機監測如同汽車健康診斷</h4>
+            <ul>
+                <li><strong>過載警報</strong> = 引擎過熱紅燈——壞了才亮，為時已晚</li>
+                <li><strong>電流監測</strong> = 定期檢查油耗——如果油耗突然增加，可能是某個零件開始退化</li>
+                <li><strong>振動監測</strong> = 聽引擎異音——老師傅能從聲音判斷哪個零件快壞了</li>
+                <li><strong>風量監測</strong> = 加速測試——最靈敏地反映整體性能，但不告訴你哪裡壞</li>
+            </ul>
+            <p>最佳策略是組合監測：風量確保即時偵測，電流+振動提供預測性維護資訊。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：GEP 驅動的預防性維護監測清單</h4>
+            <p>ISPE 列出了 14 項可監測的設備參數，這些不是 GMP 強制要求，而是 <strong>GEP（Good Engineering Practice）</strong>的建議，目的是確保最低生命週期成本（Lowest Life Cycle Cost）。重點項目包括：</p>
+            <ul>
+                <li><strong>風門致動器位置（Damper Actuator Position）</strong>：如果風門越來越開到極限，可能代表濾器需要更換或系統需要再平衡</li>
+                <li><strong>濾器壓降（Filter Pressure Drop）</strong>：最基本的維護指標，至少要安裝壓力計提供目視讀數</li>
+                <li><strong>外氣濾器壓降上升速率（Rate of Rise）</strong>：可識別異常情況如積雪堵塞</li>
+                <li><strong>冷卻盤管出口溫度</strong>：當濕度已滿足時，可調高設定溫度節省能源（Energy Setback）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 正在建立預防性維護（Preventive Maintenance）程式。利用 BMS 監測風機電流趨勢和振動數據，可以：</p>
+            <ul>
+                <li>在軸承失效前 2-4 週預測更換需求，避免計劃外停機</li>
+                <li>追蹤濾器壓降趨勢，優化更換時間（不必提前更換浪費，也不會太晚影響品質）</li>
+                <li>每年可能節省 $50K-$100K 的緊急維修和停產損失</li>
+            </ul>
+            <p>無線振動感測器（Wireless Accelerometer）的成本已大幅降低，適合 retrofit 到既有設備上。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 說「風量監測是最靈敏的，但不能提供預測資訊」？預測性維護需要什麼額外的監測手段？</li>
+                <li>風門致動器位置（Damper Actuator Position）如何預測系統需要再平衡？請舉一個具體場景說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>送風分配</strong>：GMP 空間送風從天花板，回風靠地面；氣流從潔淨側流向非潔淨側；氣鎖室 HEPA 在乾淨側，回風在非乾淨側</li>
+        <li><strong>排氣策略三級</strong>：Release &amp; Dilution（低危害）→ Capture at Source（中危害，LEV）→ Containment &amp; Exhaust（高危害，密閉排氣）</li>
+        <li><strong>風管設計</strong>：對稱、最少彎折、漸縮管徑、配備平衡風門但不完全依賴風門</li>
+        <li><strong>控制系統</strong>：BMS 決策（是否兼任品質記錄）是首要設計決定；DDC/BMS 是藥廠主流；關鍵與非關鍵功能應分層管理</li>
+        <li><strong>致動器</strong>：電動適合慢變參數（溫濕度），氣動適合快變參數（壓差）；VFD 控制風機轉速是節能首選（功率與轉速三次方成正比）</li>
+        <li><strong>風量量測</strong>：Pitot Tube（低成本）、Hot Wire Anemometer（低風量精度佳）、Fan Venturi Meter（AHU 最準確）</li>
+        <li><strong>風門類型</strong>：Opposed Blade 用於流量調節、Venturi Damper 精度最佳、Discharge Damper 浪費能源不建議使用</li>
+        <li><strong>壓差量測</strong>：Magnehelic 適合方向指示但精度有限；電子壓力變送器（+/- 1.25 Pa）適合精確控制</li>
+        <li><strong>警報設計</strong>：Alert Alarm（預警給工程師）+ Action Alarm（行動警報給品質部）雙層架構；壓差警報需時間延遲；每個 Action Alarm 必須有五 W 回應計畫</li>
+        <li><strong>微粒監測</strong>：連續監測已成 Grade A/B 標準；Grade A 用獨立計數器；取樣管路的靜電、沉降、無流動狀態是隱形風險</li>
+        <li><strong>設備監測</strong>：風量監測偵測所有失效但無預測力；電流+振動監測提供預測性維護能力；GEP 驅動的 14 項監測清單確保最低生命週期成本</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

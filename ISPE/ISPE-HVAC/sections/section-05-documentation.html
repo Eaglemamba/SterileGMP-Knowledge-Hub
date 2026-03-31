@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Chapter 6: Documentation Requirements</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 6: Documentation Requirements</h1>
+    <div class="subtitle">文件要求</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p135 - p139</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 HVAC 工程文件的生命週期（Life Cycle，生命週期）：從概念設計到竣工圖（As-built Drawing，竣工圖）再到主文件（Master Document，主文件）的演進過程</li>
+        <li>區分三類 HVAC 文件：維護/營運文件（Non-GMP）、主文件/記錄文件（Record Document，記錄文件）、以及 GMP 文件（GMP Document，GMP 文件）</li>
+        <li>掌握 Engineering Turnover Package（ETOP，工程移交文件包）的內容與建置時機</li>
+        <li>理解 Critical Master Document（關鍵主文件）的定義、維護標準及其在 CMC 申報中的角色</li>
+        <li>熟悉試車確效（Commissioning &amp; Qualification）與製程驗證（Process Validation）階段所需的 HVAC 文件清單</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.1 Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">6.1 Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>On completion of qualification, the disposition of HVAC system documentation should be established. Documents may be used by maintenance and operations or required for periodic <span class="key-term">Chemistry Manufacturing Controls (CMC)</span> filings, becoming <span class="key-term">critical master documents</span>, i.e., engineering documents maintained as GMP records.</p>
+        <p>This section discusses documents which typically are required and provides guidance regarding classification and use of documents.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 文件的雙重身分</h4>
+            <p><strong>HVAC 文件不只是工程資料，更可能是 GMP 記錄。</strong></p>
+            <p>確效完成後，HVAC 系統的文件需要被「分類」——哪些留給維護團隊參考用，哪些要升格為 GMP 記錄文件，甚至成為 CMC 申報的一部分。</p>
+            <p><strong>CMC（Chemistry Manufacturing Controls）</strong>：藥品上市申請中描述製造與品管方法的章節。HVAC 相關的環境分類圖（Area Classification）、管儀圖（P&amp;ID，管儀圖）等，都可能被納入 CMC 申報。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：房屋買賣的文件分級</h4>
+            <p>買一棟房子時，會有各種文件：建築設計圖、水電配線圖、裝潢合約、驗屋報告、房屋所有權狀。</p>
+            <p>有些文件只在裝修時有用（如裝潢合約），有些需要長期保管（如所有權狀），有些在轉賣時必須出示（如驗屋報告）。</p>
+            <p>HVAC 文件也一樣——施工圖紙完成使命後可以歸檔，但竣工圖和環境分級圖必須隨時保持最新狀態，因為稽查員隨時可能要求查看。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：文件分類的時機</h4>
+            <p>本節開宗明義指出，文件分類應在「確效完成後」確立。但實務上，<strong>越早規劃文件分類越好</strong>——最佳時機是在概念設計階段就定義哪些文件將成為 GMP 記錄。等到確效完成才決定，往往發現許多資料已經遺失或格式不符。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你是 CDMO 的工程主管，剛完成一條新的無菌充填線 HVAC 系統確效，你會如何決定哪些文件歸維護部門、哪些升格為 GMP 記錄？判斷標準是什麼？</li>
+                <li>為什麼 CMC 申報需要包含 HVAC 相關文件？這與產品品質有什麼直接關聯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.2 Engineering Document Life Cycle -->
+<!-- ============================================================ -->
+<div class="section-title">6.2 Engineering Document Life Cycle</div>
+
+<!-- 6.2.1 Planning Life Cycle -->
+<div class="section-title" style="font-size:1rem; margin-top:1rem;">6.2.1 Planning Life Cycle</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">life cycle</span> of project documents should be defined during conceptual design and no later than Functional/Schematic design to help to reduce ambiguity and prevent loss of data.</p>
+        <p>The planning document should define, which documents are required for construction, which documents will be part of an <span class="key-term">Engineering Turnover Package (ETOP)</span> for maintenance and operations, which documents will be leveraged into qualifications, and which documents will be maintained as <span class="key-term">record documents</span> for Maintenance and GMP use.</p>
+        <p>Defining the contents of the ETOP early in a project also allows the easy capture of design calculations and risk assessments as they are generated. Document management and collaboration software, which will apply the appropriate life cycle to documents as they are generated and approved, may be used to capture design and construction information into an ETOP.</p>
+        <p>A <span class="key-term">"Traceability Matrix,"</span> (a documentation of the plan and progress of documentation and concepts through the sequence of design, construction, qualification, and eventually showing that the HVAC is fit for service through process validation) may be used for planning and updating of document life cycle. The traceability matrix shows this progress and maintains the chain of design intent, linking final documents to conceptual design documents (User Requirements and Functional Design).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：文件生命週期規劃</h4>
+            <p><strong>Life Cycle（生命週期）</strong>：文件從產生到歸檔、維護、最終廢止的完整過程。ISPE 強調，文件的「命運」必須在專案最早期就決定。</p>
+            <p><strong>ETOP（Engineering Turnover Package，工程移交文件包）</strong>：施工完成後，從工程團隊正式移交給營運/維護團隊的文件包。內容涵蓋設計依據、竣工圖、設備手冊等。</p>
+            <p><strong>Traceability Matrix（追溯矩陣）</strong>：一份追蹤文件，串聯「使用者需求 → 功能設計 → 施工 → 確效 → 製程驗證」的完整鏈條，確保每個設計意圖都能被追溯到最終驗證結果。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蓋房子前先決定保固資料</h4>
+            <p>想像你要蓋一棟自住的房子。聰明的做法是在<strong>動工之前</strong>就決定：哪些文件要給裝修公司存檔、哪些要自己保管做日後維修用、哪些要送政府備查。</p>
+            <p>如果等到蓋好才回頭找文件，會發現設計師的計算書找不到了、水電配管圖沒有更新、結構計算書還是初版。ISPE 建議在「概念設計」甚至「功能設計」階段就決定每份文件的歸宿，正是同樣的道理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：追溯矩陣的稽查價值</h4>
+            <p>Traceability Matrix 不只是專案管理工具，更是<strong>法規稽查的防禦武器</strong>。FDA 稽查員經常會問：「你的確效方案是基於什麼設計依據？設計依據又回應了什麼使用者需求？」</p>
+            <p>追溯矩陣讓你能一步步反推：確效結果 → 測試方案 → 設計規格 → 使用者需求。這條「可追溯鏈」完整，稽查就不會有疑慮。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 ETOP 最佳實踐</h4>
+            <p>對 CDMO 而言，客戶經常在專案完成後才進行技術轉移稽查。此時如果 ETOP 不完整，會造成極大的溝通成本。</p>
+            <ul>
+                <li><strong>時機</strong>：在 P&amp;ID 審查會議時，同步規劃 ETOP 內容清單</li>
+                <li><strong>工具</strong>：使用文件管理系統（如 MasterControl、Veeva）自動套用文件生命週期</li>
+                <li><strong>人員</strong>：指定一位「文件協調員」負責追蹤每份文件的狀態</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的專案到了施工階段才開始規劃 ETOP 內容，可能會遇到什麼問題？舉一個具體的例子。</li>
+                <li>Traceability Matrix 和確效方案（Validation Protocol）有什麼關係？兩者可以整合成一份文件嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 6.2.2 Typical Steps in the Document Life Cycle -->
+<div class="section-title" style="font-size:1rem; margin-top:1rem;">6.2.2 Typical Steps in the Document Life Cycle</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>HVAC documents typically start their life cycle as conceptual documents, including:</p>
+        <ul>
+            <li>AFDs</li>
+            <li>AF&amp;IDs</li>
+            <li>room/zoning layouts</li>
+            <li>room condition tables (temperature, RH, area class, DP, etc.)</li>
+            <li>load calculations</li>
+            <li>design basis/assumption tables</li>
+        </ul>
+        <p>These documents progress through the Engineering Process to:</p>
+        <ul>
+            <li>calculations</li>
+            <li>plan drawings</li>
+            <li>detail drawings</li>
+            <li>specifications</li>
+            <li>tables</li>
+        </ul>
+        <p>Plans, details, and diagrams should be updated throughout (or after) the construction process to an <span class="key-term">"as-built" state</span> (corrected after construction to match the actual final configuration). The update to "as-built status" is essential to maintenance and particularly important for systems that monitor or control critical environments. Specifications and designer's calculations usually are augmented (or replaced) by manufacturer's submittals, details, and calculations.</p>
+        <p>Some documents should be converted into <span class="key-term">master documents</span> (engineering documents with construction notes removed) as a record of the ongoing state of systems and equipment and to allow capture of future construction changes. Those master documents that define the critical attributes of the HVAC system should be maintained as <span class="key-term">critical master documents</span> (master documents that are maintained in a constant state of inspection readiness). The AF&amp;ID, HVAC zoning layouts, and area classifications should be kept up to date, as a minimum.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：文件的三階段演進</h4>
+            <p>HVAC 文件的生命週期可以分為三個明確的階段：</p>
+            <ul>
+                <li><strong>概念文件（Conceptual）</strong>：AFD（Air Flow Diagram，氣流圖）、AF&amp;ID（Air Flow &amp; Instrument Diagram，氣流與儀錶圖）、房間條件表等。這些是設計初期的藍圖。</li>
+                <li><strong>施工文件（Construction）</strong>：詳細計算書、平面圖、施工圖、規格書。這些是實際建造的依據。</li>
+                <li><strong>竣工/主文件（As-built / Master）</strong>：施工完成後更新為「竣工狀態」，反映實際安裝情況。關鍵文件進一步升格為「主文件」或「關鍵主文件」。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：文件演進如同建築竣工驗收</h4>
+            <p>建築師畫的設計圖（概念文件）是理想狀態。施工過程中，因為現場條件限制，管線走向可能會微調、設備位置可能會偏移。</p>
+            <p><strong>竣工圖（As-built Drawing，竣工圖）</strong>就像 Google Maps 的「實景圖」——不是設計師畫的理想路線，而是實際蓋好後的真實配置。</p>
+            <p>如果你拿著「設計圖」去找管線，可能會在錯誤的位置打洞。這就是為什麼 ISPE 強調「as-built 更新」對維護至關重要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：主文件 vs. 關鍵主文件</h4>
+            <p>本節定義了兩種「主文件」層級：</p>
+            <ul>
+                <li><strong>Master Document（主文件）</strong>：移除施工註記後的工程文件，作為系統持續狀態的記錄。</li>
+                <li><strong>Critical Master Document（關鍵主文件）</strong>：定義 HVAC 系統關鍵屬性的主文件，<strong>必須隨時保持在「可接受稽查」的狀態</strong>。</li>
+            </ul>
+            <p>「constant state of inspection readiness」（隨時可接受稽查）是關鍵字——意味著這些文件不能等到稽查通知後才更新，而是<strong>每次變更後都必須立即更新</strong>。</p>
+            <p>ISPE 明確指出，至少 AF&amp;ID、HVAC 分區佈局圖和區域分級圖必須保持在最新狀態。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>文件演進流程圖</h4>
+            <pre>
+概念文件 (AFD, AF&amp;ID, 房間條件表)
+    |
+    v  工程設計階段
+施工文件 (計算書, 施工圖, 規格書)
+    |
+    v  施工完成 → 竣工更新
+竣工文件 (As-built Drawings)
+    |
+    +--→ 維護用文件 (ETOP)
+    |
+    +--→ 主文件 (Master Documents)
+    |         |
+    |         +--→ 關鍵主文件 (Critical Master Documents)
+    |                   ↑ 隨時可接受稽查
+    |
+    +--→ 確效文件 (Qualification Documents)</pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一份 HVAC 系統的 AF&amp;ID 在施工後發現需要增加一個 HEPA 過濾器。這份文件需要經歷哪些步驟才能正確更新為關鍵主文件？</li>
+                <li>如果某份設計計算書在施工階段被設備廠商的送審資料取代了，這份原始計算書還需要保留嗎？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.3 Documents for Maintenance and Operations (Non-GMP) -->
+<!-- ============================================================ -->
+<div class="section-title">6.3 Documents for Maintenance and Operations (Non-GMP)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A well-constructed (and concise) ETOP can save time during troubleshooting or when entering data into a <span class="key-term">Computerized Maintenance Management System (CMMS)</span> and may be more beneficial to maintenance than a complete set of design and construction documents.</p>
+        <p>The list may contain items that have no GMP impact on laboratories, OSD, Packaging, API, etc. Typical Documents for an HVAC ETOP include:</p>
+        <ul>
+            <li>user requirements/FRS/functional design specification</li>
+            <li>room condition tables &ndash; temperature, RH (and particle levels, DP, air changes, as required)</li>
+            <li>as-built airflow and instrument diagram</li>
+            <li>area classification diagrams</li>
+            <li>pressure or airflow direction &ldquo;maps&rdquo;</li>
+            <li>AHU zoning diagrams (what areas are served by each AHU)</li>
+            <li>filter integrity testing (classified spaces, cross contamination in other facilities)</li>
+            <li>air balance</li>
+            <li>face velocity testing (HEPA filters in classified spaces)</li>
+            <li>alarm testing</li>
+            <li>pressure relationships</li>
+            <li>equipment submittals</li>
+            <li>ductwork shop drawings</li>
+            <li>coordination drawings</li>
+            <li>as-built ductwork, piping, and equipment plans</li>
+            <li>control diagrams</li>
+            <li>commissioning documents</li>
+        </ul>
+        <p>The ISPE Baseline&reg; Guides (Reference 13, Appendix 12) for each facility type define the critical parameters for the facility.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：ETOP 的定位與價值</h4>
+            <p><strong>ETOP（Engineering Turnover Package，工程移交文件包）</strong>是施工團隊移交給營運/維護團隊的核心文件集。它的設計原則是<strong>「精簡但完整」</strong>。</p>
+            <p>注意：ETOP 中的文件<strong>不一定都是 GMP 文件</strong>。本節特別標註「Non-GMP」，意味著這些文件主要服務於維護和營運需求，而非法規合規目的。</p>
+            <p><strong>CMMS（Computerized Maintenance Management System，電腦化維護管理系統）</strong>：用於管理預防性維護排程、工單追蹤、備品庫存的系統。ETOP 中的設備資料是建立 CMMS 資料庫的基礎。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：新車交車時的資料袋</h4>
+            <p>買新車時，車商會給你一個「交車資料袋」：車主手冊、保養排程、保固卡、緊急救援電話、輪胎規格表。</p>
+            <p>你不需要整本設計工程圖——那些是給原廠工程師用的。你需要的是<strong>日常使用和維護所需的精華資訊</strong>。</p>
+            <p>ETOP 就是 HVAC 系統的「交車資料袋」。給維護團隊的不是上百頁的設計文件，而是他們真正需要的竣工圖、設備參數、控制邏輯和測試記錄。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：ETOP 清單的實務價值</h4>
+            <p>本節列出的 17 項 ETOP 典型文件是一份<strong>極好的檢查清單</strong>。實務上建議：</p>
+            <ul>
+                <li><strong>AHU 分區圖</strong>：維護時最常用——哪台 AHU 服務哪些區域？停機影響範圍多大？</li>
+                <li><strong>風量平衡（Air Balance）</strong>：系統微調或故障排除的基準線</li>
+                <li><strong>控制圖</strong>：BMS 程式邏輯的物理呈現，是故障診斷的起點</li>
+                <li><strong>壓差/氣流方向圖</strong>：日常巡檢的參考依據</li>
+            </ul>
+            <p>特別注意：ISPE 提到這些文件「may have no GMP impact」用於實驗室、OSD、包裝、API 等區域。但在<strong>無菌製造區域</strong>，同樣的文件可能就具有 GMP 關鍵性。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 ETOP 管理策略</h4>
+            <p>CDMO 的挑戰在於同時服務多個客戶，每個客戶可能對 HVAC 文件有不同要求。建議：</p>
+            <ul>
+                <li><strong>建立標準 ETOP 模板</strong>：所有新專案統一使用，確保一致性</li>
+                <li><strong>電子化管理</strong>：將 ETOP 文件納入文件管理系統，方便客戶稽查時快速調閱</li>
+                <li><strong>定期審查</strong>：每年至少一次確認 ETOP 內容是否仍然反映系統現狀</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 ETOP 中的風量平衡數據與系統實際運行狀態不符（因為後來做了變更但沒更新文件），可能造成什麼後果？</li>
+                <li>本節提到 ETOP 比「完整的設計施工文件」對維護更有用。為什麼「更精簡」反而「更有價值」？請從維護人員的工作場景分析。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.4 Master/Record Documents -->
+<!-- ============================================================ -->
+<div class="section-title">6.4 Master/Record Documents</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Documents that typically are kept updated to become HVAC <span class="key-term">master documents</span> (for maintenance and facility engineering) include:</p>
+        <ul>
+            <li>as-built AF&amp;IDs</li>
+            <li>area classification diagrams (if spaces are classified)</li>
+            <li>pressure or airflow direction &ldquo;maps&rdquo;</li>
+            <li>AHU zoning diagrams</li>
+            <li>filter test data</li>
+            <li>control diagrams and critical alarms calibration/test records</li>
+            <li>sequence of operation</li>
+            <li>equipment submittal drawings</li>
+            <li>as-built ductwork, piping, and equipment plans</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：主文件的範疇</h4>
+            <p><strong>Master Document（主文件）</strong>是「活的文件」——它不是施工結束就封存的歷史記錄，而是持續反映系統當前狀態的參考文件。</p>
+            <p>與 ETOP 的差異在於：ETOP 是一次性移交的文件包，而主文件必須<strong>隨著系統變更而持續更新</strong>。</p>
+            <p>本節列出的 9 項文件，每一項都對應著維護和設施工程的核心需求：</p>
+            <ul>
+                <li><strong>AF&amp;ID</strong>：系統「全貌圖」，最重要的主文件</li>
+                <li><strong>序列操作（Sequence of Operation）</strong>：記錄 HVAC 系統的控制邏輯，如啟動/停機順序、連鎖條件</li>
+                <li><strong>過濾器測試數據</strong>：HEPA 完整性測試記錄，直接影響環境分級</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：主文件如同病歷</h4>
+            <p>主文件就像一個人的病歷——它不是出生時寫一次就永遠不變，而是每次就醫都會更新。血壓、體重、用藥記錄都要持續反映最新狀態。</p>
+            <p>如果醫生看到的是五年前的病歷，就無法做出正確的診斷。同理，如果維護工程師拿到的 AF&amp;ID 還是三年前的版本，在故障排除時就可能做出錯誤判斷。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：變更管理與主文件同步</h4>
+            <p>主文件維護的最大挑戰是<strong>變更管理的執行力</strong>。每次 HVAC 系統有變更（新增過濾器、修改風量、調整壓差設定），都必須同步更新相關的主文件。</p>
+            <p>常見的失敗模式：工程變更已經完成、確效已經簽核，但 AF&amp;ID 還停留在變更前的版本。這在 FDA 稽查中是高頻缺失項目。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>比較 6.3 節的 ETOP 清單和 6.4 節的主文件清單，哪些文件出現在兩份清單中？為什麼這些文件需要同時存在於兩個體系？</li>
+                <li>「sequence of operation」（操作序列）為什麼是主文件？如果控制邏輯變更了但操作序列文件沒有更新，可能造成什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5 GMP HVAC Documents -->
+<!-- ============================================================ -->
+<div class="section-title">6.5 GMP HVAC Documents</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>It is important to align with the <span class="key-term">risk assessment</span> performed in the design process to determine the HVAC documents to be leveraged into commissioning and qualification or become <span class="key-term">Critical Master Documents</span>. Since the risk assessment varies by project, the following lists of typical documents should be reviewed against project/product needs. See the ISPE Baseline&reg; Guides (Reference 13, Appendix 12).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風險評估驅動的文件分類</h4>
+            <p>本節是整章最重要的轉折——從「工程文件」進入「GMP 文件」領域。</p>
+            <p>ISPE 的核心邏輯是：<strong>哪些 HVAC 文件需要成為 GMP 文件，不是由固定清單決定，而是由風險評估（Risk Assessment）驅動</strong>。</p>
+            <p>這意味著同樣一份 AHU 分區圖，在 OSD 廠房可能只是 ETOP 文件，但在無菌充填區就是 Critical Master Document。<strong>差異取決於該系統對產品品質的風險影響程度。</strong></p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Decision Hierarchy 在文件管理中的體現</h4>
+            <p>回到 ISPE 的決策層級：</p>
+            <ol>
+                <li><strong>無菌保證（Sterility Assurance）</strong>：直接影響無菌保證的 HVAC 文件（如 Grade A/B 區域的環境分級圖、HEPA 測試記錄）必須是 Critical Master Document</li>
+                <li><strong>產品 CQA</strong>：影響產品品質屬性的 HVAC 參數文件（如溫濕度記錄）需要 GMP 管控</li>
+                <li><strong>營運彈性</strong>：僅影響營運效率的文件（如非分級區域的 AHU 圖）可以是非 GMP 文件</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 6.5.1 Commissioning and Qualification Documents -->
+<div class="section-title" style="font-size:1rem; margin-top:1rem;">6.5.1 Commissioning and Qualification Documents</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Documents that typically are leveraged into commissioning and qualification include:</p>
+        <ul>
+            <li>as-built AF&amp;IDs</li>
+            <li>room environmental conditions &ndash; tables/schedules</li>
+            <li>area classification diagrams (classified spaces)</li>
+            <li>pressure or airflow direction &ldquo;maps&rdquo;</li>
+            <li>GMP air filter location map</li>
+            <li>AHU zoning diagrams</li>
+            <li>control diagrams or functional design for direct impact systems</li>
+            <li>critical instrument specifications</li>
+            <li>commissioning documents:
+                <ul>
+                    <li>filter integrity or overall penetration testing (HEPA/ULPA)</li>
+                    <li>airflow patterns for Grade 5 (Grade A) hoods and Grade 7 (Grade B) rooms</li>
+                    <li>air balance (air changes OK for classified spaces, airflow direction OK)</li>
+                    <li>face velocity testing (HEPA/ULPA for Grade 5/Grade A)</li>
+                    <li>pressure relationships (contamination control)</li>
+                    <li>particle counts at rest</li>
+                    <li>critical monitoring and alarm testing, including calibration and alarm delay verification</li>
+                    <li>temperature</li>
+                    <li>humidity (if deemed critical)</li>
+                    <li>room DP or leakage air velocity (for contamination control)</li>
+                    <li>supply airflow (classified spaces)</li>
+                    <li>Grade A/Grade 5 hood air flow (DP, sail switch, velocity sensor)</li>
+                    <li>temperature mapping (usually for warehouse) &ndash; see Appendix 2</li>
+                    <li>test protocols and supporting information</li>
+                    <li>evidence that acceptance criteria have been met</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Documents that are typically produced during commissioning and qualification (or Process Validation) are:</p>
+        <ul>
+            <li>airflow visualization for Grade 5 (EU Grade A) or local protection areas in use</li>
+            <li>total airborne particulate testing</li>
+            <li>viable airborne particulate testing</li>
+            <li>room recovery testing (classified spaces)</li>
+            <li>test protocols and supporting information</li>
+            <li>evidence that acceptance criteria have been met</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：C&amp;Q 文件的兩個類別</h4>
+            <p>本節將試車確效（C&amp;Q）文件分為兩大類：</p>
+            <ul>
+                <li><strong>被「槓桿」進 C&amp;Q 的文件</strong>（leveraged into）：這些文件原本是工程/設計文件，現在被納入確效體系作為證據。例如 AF&amp;ID、環境條件表等。</li>
+                <li><strong>在 C&amp;Q 過程中「產生」的文件</strong>（produced during）：這些文件是測試活動的直接產出，如氣流可視化測試、微粒計數等。</li>
+            </ul>
+            <p>「槓桿」（leverage）這個詞是 ISPE 的用語特色——意思是<strong>不需要重做測試，直接引用已有的工程數據作為確效證據</strong>。這是「不重複測試」原則的具體體現。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：考試的「免試入學」vs.「參加考試」</h4>
+            <p>Leveraged documents 就像「免試入學」——你在施工階段已經做過的測試（如 HEPA 完整性測試），不需要在確效階段再做一次，直接引用結果。</p>
+            <p>Produced documents 就像「參加考試」——氣流可視化、微生物測試等，必須在確效階段（或製程驗證階段）才能執行，因為需要在「接近實際運行」的狀態下測試。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：試車文件清單中的關鍵細節</h4>
+            <ul>
+                <li><strong>濕度「if deemed critical」</strong>：ISPE 特別標註濕度測試是「如果被判定為關鍵」。這意味著不是每個專案都必須做濕度確效——取決於產品對濕度的敏感性（如吸濕性粉末）。</li>
+                <li><strong>Alarm delay verification</strong>：不只測試警報功能，還要驗證警報延遲時間。過短會造成假警報，過長則喪失保護意義。</li>
+                <li><strong>Grade A vs. Grade B 的測試差異</strong>：Grade A（層流區）需要做面風速測試和氣流可視化；Grade B（背景環境）主要測試換氣次數和壓差。</li>
+                <li><strong>Particle counts "at rest"</strong>：靜態微粒計數在試車階段進行；動態微粒計數（in operation）則在製程驗證階段執行。</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 C&amp;Q 文件策略</h4>
+            <p>對 CDMO 而言，C&amp;Q 文件的品質直接影響客戶稽查結果和法規申報速度：</p>
+            <ul>
+                <li><strong>建立 C&amp;Q 文件模板庫</strong>：標準化每個測試的方案格式和允收標準</li>
+                <li><strong>善用 Leverage 原則</strong>：FAT 在設備供應商端完成的測試數據，可直接引用為 IQ 證據，節省到場測試時間</li>
+                <li><strong>「at rest」vs.「in operation」的時序規劃</strong>：將靜態測試安排在試車階段，動態測試安排在製程驗證階段，避免排程衝突</li>
+                <li><strong>警報延遲驗證</strong>：與 BMS/SCADA 供應商在 FAT 階段就完成，避免到場後反覆調整</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>本節列出了「leveraged into」和「produced during」兩類文件。如果你在製程驗證階段才發現某項測試在試車階段被遺漏了，應該如何處理？重新做測試算是 Commissioning 還是 Qualification？</li>
+                <li>為什麼「airflow visualization」不能在靜態（at rest）階段完成，而必須在「in use」狀態下執行？請從污染控制的角度解釋。</li>
+                <li>某 CDMO 的新建無菌充填區使用 RABS 技術。請列出該區域 HVAC C&amp;Q 至少需要哪 8 項關鍵測試文件。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 6.5.2 Critical Master Documents -->
+<div class="section-title" style="font-size:1rem; margin-top:1rem;">6.5.2 Critical Master Documents</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Critical Master Documents</span> provide HVAC information for the <span class="key-term">CMC section</span> of a drug filing and are subject to regulatory review.</p>
+        <p>Documents that typically are maintained as critical master documents include:</p>
+        <ul>
+            <li>as-built AF&amp;IDs</li>
+            <li>risk assessments and traceability matrix</li>
+            <li>room environmental conditions &ndash; tables and schedules</li>
+            <li>area classification diagrams</li>
+            <li>pressure or airflow direction &ldquo;maps&rdquo;</li>
+            <li>AHU Zoning Diagrams</li>
+            <li>qualification documents:
+                <ul>
+                    <li>filter integrity testing (HEPA/ULPA)</li>
+                    <li>air balance</li>
+                    <li>air change calculations or recovery testing for classified spaces</li>
+                    <li>face velocity testing (HEPA/ULPA in critical zones)</li>
+                    <li>pressure relationships (continuous logging for classified spaces or spot-check?)</li>
+                    <li>critical alarm and delay testing (temperature, RH, DP, airflow, etc.)</li>
+                    <li>airflow visualization for Grade 5 (EU Grade A) or local protection areas</li>
+                    <li>total airborne particulate testing (classified spaces)</li>
+                    <li>viable airborne particulate testing (classified spaces)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：關鍵主文件的法規意義</h4>
+            <p><strong>Critical Master Document（關鍵主文件）</strong>是 HVAC 文件體系中層級最高的文件類別。它有兩個關鍵特徵：</p>
+            <ul>
+                <li><strong>提供 CMC 申報資訊</strong>：藥品上市申請中，CMC 部分需要描述製造環境條件。HVAC 的關鍵主文件就是這些描述的數據來源。</li>
+                <li><strong>受法規審查</strong>：FDA、EMA 等法規機構有權要求查看這些文件，且期望它們<strong>永遠反映系統的當前狀態</strong>。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：關鍵主文件 vs. C&amp;Q 文件的比較</h4>
+            <p>比較 6.5.1 和 6.5.2 的清單，會發現兩者高度重疊但有重要差異：</p>
+            <ul>
+                <li><strong>新增項目</strong>：Risk assessments 和 Traceability matrix——這兩項在 C&amp;Q 文件清單中未出現，但在關鍵主文件中必須包含。原因是稽查員需要看到「為什麼選擇這些測試項目」的邏輯依據。</li>
+                <li><strong>壓差記錄方式的疑問</strong>：「continuous logging for classified spaces or spot-check?」——ISPE 刻意用問號，表示這取決於風險評估。對無菌區域，連續記錄（continuous logging）通常是必要的；對非無菌分級區域，定期抽查（spot-check）可能就足夠。</li>
+                <li><strong>移除項目</strong>：溫濕度 mapping、倉庫相關測試等不在此清單中——因為這些通常不屬於「關鍵」範疇。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：關鍵主文件如同公司營業執照</h4>
+            <p>關鍵主文件的地位，就像企業的營業執照和重要合約——不是放在抽屜裡偶爾拿出來的東西，而是<strong>隨時可能被政府機關要求查看</strong>的文件。</p>
+            <p>如果營業執照上的地址已經搬遷但沒有更新，會怎樣？被罰款、被質疑誠信。HVAC 的關鍵主文件也是同理——如果稽查員發現 AF&amp;ID 上的設備配置與現場不符，後果可能是 FDA 483 觀察項甚至 Warning Letter。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：良好文件管理規範（GDocP）在關鍵主文件中的應用</h4>
+            <p><strong>GDocP（Good Documentation Practice，良好文件管理規範）</strong>對關鍵主文件有特別嚴格的要求：</p>
+            <ul>
+                <li><strong>版本控制</strong>：每次修訂必須有版本號、修訂日期、修訂原因、審批簽名</li>
+                <li><strong>變更追蹤</strong>：所有變更必須通過正式的變更控制程序（Change Control）</li>
+                <li><strong>定期審查</strong>：建議每年至少審查一次，確認文件內容是否仍然反映系統現狀</li>
+                <li><strong>備份與歸檔</strong>：紙本和電子版都需要安全保管，符合數據完整性（Data Integrity）要求</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 FDA 稽查員要求查看你的 HVAC 關鍵主文件，你能在多少時間內提供？如果不能在 24 小時內提供最新版本，這反映了什麼問題？</li>
+                <li>為什麼 Risk Assessment 和 Traceability Matrix 只出現在「關鍵主文件」清單而不在「C&amp;Q 文件」清單中？這兩份文件在法規稽查中扮演什麼角色？</li>
+                <li>「continuous logging or spot-check?」這個問題的答案取決於什麼因素？請為一個 CDMO 的無菌充填區設計你的壓差監控策略，並說明理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>文件生命週期規劃要趁早</strong>：在概念設計階段就決定每份 HVAC 文件的最終歸宿（ETOP / 主文件 / 關鍵主文件），不要等到確效完成才分類</li>
+        <li><strong>竣工圖（As-built）是基礎</strong>：所有 HVAC 文件管理的起點是將設計圖更新為竣工狀態，反映實際安裝配置。AF&amp;ID、區域分級圖和壓差圖是最低限度必須保持最新的文件</li>
+        <li><strong>ETOP 精簡但完整</strong>：工程移交文件包的設計原則是「給維護團隊他們真正需要的」，而非「把所有文件都丟過去」</li>
+        <li><strong>主文件是「活的」</strong>：Master Document 必須隨系統變更持續更新，而 Critical Master Document 更必須隨時保持在可接受稽查的狀態</li>
+        <li><strong>風險評估驅動 GMP 文件分類</strong>：哪些文件需要成為 GMP 文件，取決於設計階段的風險評估結果，而非一成不變的清單</li>
+        <li><strong>C&amp;Q 文件的「槓桿」原則</strong>：善用 leverage 概念，將施工階段已完成的測試數據直接引用為確效證據，避免重複測試</li>
+        <li><strong>關鍵主文件是最高層級</strong>：提供 CMC 申報資訊、受法規審查、包含風險評估和追溯矩陣，必須符合 GDocP（良好文件管理規範）的嚴格要求</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>
