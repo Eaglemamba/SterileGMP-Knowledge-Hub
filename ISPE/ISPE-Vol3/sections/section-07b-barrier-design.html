@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 9b: Barrier & Isolator Design & Operations (9.5-9.10)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 9b: Barrier &amp; Isolator &mdash; Design &amp; Operations (9.5&ndash;9.10)</h1>
+    <div class="subtitle">屏障與隔離器 &mdash; 設計與操作（下）</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p179 &ndash; p188</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives / 本章學習目標</h3>
+    <ul>
+        <li>Understand equipment design principles for isolator and RABS interiors, including ergonomics, transfer systems, and glove systems / 理解隔離器與RABS內部設備設計原則，包含人體工學、物料傳遞系統及手套系統</li>
+        <li>Master the VHP decontamination cycle development process: cleaning, bio-decontamination, aeration, and validation with biological indicators / 掌握VHP去污循環開發流程：清潔、生物去污、排氣及生物指示劑驗證</li>
+        <li>Apply environmental monitoring strategies specific to barrier systems / 應用屏障系統專屬的環境監測策略</li>
+        <li>Evaluate leak rate testing methods and acceptance criteria for isolators / 評估隔離器洩漏率測試方法與可接受標準</li>
+        <li>Implement preventive maintenance programs for gloves, seals, and HEPA filters / 建立手套、密封件及HEPA濾網的預防性維護計畫</li>
+        <li>Recognize the importance of structured operator training for barrier system operations / 認識屏障系統操作員結構化培訓的重要性</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.5 EQUIPMENT DESIGN FOR INSIDE AN ISOLATOR OR RABS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-5">9.5 Equipment Design for Inside an Isolator or RABS</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Equipment should be designed with the <span class="key-term">ergonomics</span> of operating through glove ports in mind. The use of <span class="key-term">robotics or manipulators</span> should be part of the design of isolators and RABS. This helps to minimize the potential for microbial contamination, by assuring better protection of the sterile product during aseptic processing. Considerations for equipment design inside an isolator or RABS include:</p>
+        <ul>
+            <li>Format parts should be accessible via glove ports and the change should be designed as a one hand operation and tool-less, if possible.</li>
+            <li>Tools, such as forceps, should be used to separate the glove from the process.</li>
+            <li>Critical areas, where product is exposed to the surrounding, should not be covered with any parts or moving equipment, to allow proper UAF over the product.</li>
+            <li>Large components (e.g., stopper bowls) should be perforated to allow the airflow to penetrate as much as possible.</li>
+            <li>Obstructed surfaces should be avoided.</li>
+            <li>The interface of the equipment to the isolator should be gas tight. Penetrations (e.g., shafts and drives) should be sealed.</li>
+            <li>If the equipment requires shaft movements up and down through the base plate, such shafts should be protected by either a specific dynamic air barrier or bellows, to avoid ingress of contamination during operation.</li>
+            <li>Parts that undergo maintenance should be designed to be external to the ISO 5/Grade A environment.</li>
+            <li>The use of automated equipment should be considered, where feasible, to minimize human involvement within the controlled environment.</li>
+            <li>Half-suits may help operators to access equipment. Half-suits should be of good ergonomic design, cleanable, able to be decontaminated, and should undergo integrity testing.</li>
+        </ul>
+
+        <p>For isolators and RABS that are decontaminated by gassing or fogging using sporicidal agents, the following should be considered for exposed equipment materials:</p>
+        <ul>
+            <li>Chemical/corrosion resistance against decontamination agents used</li>
+            <li>No catalytic effect on decontamination agents</li>
+            <li>Potential impact on the decontamination efficiency of the surface structure of materials</li>
+        </ul>
+
+        <p>The surface structure of materials can have an impact on the decontamination efficiency. Material studies should be performed to show the impact on the <span class="key-term">D-value</span> of different surface materials. The results should be taken into consideration when validating decontamination efficiency inside an isolator.</p>
+
+        <p>The control system for the filling equipment should be configured to permit <span class="key-term">slow motion movement</span> during decontamination of the isolator, to expose all the equipment surfaces to the decontamination agent.</p>
+
+        <p>Ergonomic design should allow access for all surfaces to be cleaned effectively, prior to gaseous surface decontamination. Before a decontamination cycle begins, the isolator should be mechanically clean (and dry, depending on the decontaminating agent). This may necessitate a manual cleaning and a drying step prior to decontamination.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：隔離器內設備設計原則</h4>
+            <p><strong>人體工學優先（Ergonomics First）：</strong>所有設備操作都必須考慮「透過手套口操作」的限制。操作員戴著厚手套，手指靈活度有限，因此設備設計必須盡可能簡化——單手操作、免工具更換格式件是黃金標準。</p>
+            <p><strong>UAF（單向氣流）保護：</strong>關鍵區域（產品暴露處）上方不能有遮擋物或活動設備，確保單向氣流能直接覆蓋產品，這是無菌保護的第一道防線。</p>
+            <p><strong>D-Value（D值）：</strong>指在特定去污條件下，將微生物數量減少90%（1-log）所需的時間。不同表面材質的D值不同，粗糙表面可能使微生物更難被去污劑接觸到。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>想像你戴著厚厚的滑雪手套在廚房做菜。你會希望所有器具都很容易拿起、刀具有大握把、瓶蓋是旋轉式而非需要指尖捏的按壓式。隔離器內的設備設計邏輯完全一樣——一切都要為「戴手套操作」而優化。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：慢動作模式</h4>
+            <p>去污循環期間，充填設備的控制系統應設定為<strong>慢速運動模式（slow motion movement）</strong>。目的是讓所有設備表面都能被 VHP 接觸到。如果設備靜止不動，被遮蔽的表面（如活塞下方、傳動軸後方）可能無法被去污劑覆蓋，造成去污盲區。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的充填線隔離器內有哪些設備零件需要「穿越底板」（shaft movements through base plate）？目前是用氣動屏障還是波紋管（bellows）來保護？</li>
+                <li>列出你的隔離器內使用的所有材質。是否做過不同材質的 D-value 比較研究？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.5.1 COMPONENT AND EQUIPMENT TRANSFERS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-5-1">9.5.1 Component and Equipment Transfers</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p><span class="key-term">Transfer systems</span> are used to transfer containers, product, monitoring material, and tools in and out of the enclosure. Ingress of contamination through transfer systems should be avoided. Weaknesses of transfer systems (e.g., ring of concern in RTP) should be considered. Proper manipulation and suitably trained operators can help to control risk associated with transfer systems.</p>
+
+        <p>Types of transfer systems include:</p>
+        <ul>
+            <li>Dry heat tunnels to sterilize glass containers in-line into the ISO 5/Grade A environment</li>
+            <li>Electron beam (e-beam) tunnels to sterilize heat sensitive products in-line (e.g., pre-sterilized syringes in tubs)</li>
+            <li>RTPs designed for batch transfer of externally sterilized materials (e.g., filling pumps, stoppers, single-use assemblies)</li>
+            <li>Liquid transfer systems to connect bulk containers to the filling system inside an isolator</li>
+            <li>Transfer air locks, with the use of VHP as a surface decontamination method, to transfer heat sensitive materials, non-direct product contact parts, and bagged sterilized goods</li>
+        </ul>
+
+        <p>Special consideration should be given to all interfaces for product transfer. If supply material is introduced from a lower grade area into a higher grade area by shedding an outer layer, an additional bioburden reduction step should be applied.</p>
+
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; color:var(--primary-blue);">Table 9.2: Overview of Transfer Method Options</caption>
+            <thead>
+                <tr>
+                    <th>Transfer Method</th>
+                    <th>Batch / Continuous</th>
+                    <th>Safety (Log Reduction)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>No Treatment</td><td>Continuous</td><td>Very low</td></tr>
+                <tr><td>Sporicidal (sporicidal tunnel)</td><td>Batch (Continuous)</td><td>~2- to 3-log</td></tr>
+                <tr><td>Pulse Light / UV</td><td>Batch</td><td>~3- to 4-log</td></tr>
+                <tr><td>Plasma Chamber</td><td>Batch</td><td>&gt; 4-log</td></tr>
+                <tr><td>VHP Airlock</td><td>Batch</td><td>&gt; 6-log</td></tr>
+                <tr><td>Dry Heat Tunnel</td><td>Continuous</td><td>&gt; 6-log</td></tr>
+                <tr><td>Steam Autoclave</td><td>Batch</td><td>&gt; 6-log</td></tr>
+                <tr><td>E-beam</td><td>Continuous</td><td>&gt; 6-log</td></tr>
+            </tbody>
+        </table>
+
+        <p>For <span class="key-term">isolator</span> applications, a 6-log reduction is typically required (a minimum of 4-log can be satisfactory for very low bioburden surfaces); for <span class="key-term">RABS</span>, a 3-log reduction is typically acceptable.</p>
+
+        <p>When transfers involve toxic compounds, a thorough risk assessment is required to define appropriate cleaning procedures. The efficiency of aseptic connectors should be validated during media fill.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：物料傳遞系統</h4>
+            <p><strong>RTP（Rapid Transfer Port, 快速傳遞口）：</strong>用於批次傳入已滅菌物料（如膠塞、充填泵浦）。RTP的關鍵弱點是「ring of concern（關注環）」——兩個對接面之間的微小縫隙，是微生物可能滲入的風險區域。</p>
+            <p><strong>Log Reduction（對數下降值）：</strong>衡量去污或滅菌效果的量化指標。6-log表示將微生物從100萬個降到1個（10<sup>6</sup> &rarr; 10<sup>0</sup>）。隔離器要求6-log，RABS要求3-log，反映了兩者在密封度和風險等級上的本質差異。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>物料傳遞系統就像太空站的氣閘門（airlock）。太空人從外太空回到太空站時，不能直接打開艙門（否則空氣全跑光）——必須先進入氣閘室、關閉外門、加壓、確認安全後才能開內門。同理，物料進入隔離器也需要一個「緩衝機制」，根據物料類型選擇適當的log reduction方法。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：傳遞方法選擇</h4>
+            <p>Table 9.2 是選擇傳遞方法的決策依據。關鍵判斷邏輯：</p>
+            <ul>
+                <li><strong>隔離器</strong>：需要 &ge;6-log &rarr; 選擇乾熱隧道、高壓滅菌、VHP氣閘或e-beam</li>
+                <li><strong>RABS</strong>：需要 &ge;3-log &rarr; 殺孢子劑隧道或脈衝光/UV可能足夠</li>
+                <li><strong>連續生產 vs. 批次</strong>：乾熱隧道和e-beam支援連續傳遞，適合高速充填線；RTP和高壓滅菌適合批次更換</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.5.2 GLOVE SYSTEMS AND HALF-SUITS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-5-2">9.5.2 Glove Systems and Half-Suits</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The type of glove to be used depends on the application and on the replacement cost of different assemblies. Gloves can be:</p>
+        <ul>
+            <li>One-piece gloves</li>
+            <li>Two-piece gloves with sleeves</li>
+            <li>Half-suits with arms and gloves (if required by the process)</li>
+        </ul>
+
+        <p>Inspection, cleaning, and disinfection should be considered for gloves and half-suits mounted in both isolators and RABS. Maintenance can be difficult for a half-suit, as it has a large surface area. Care should be taken when cleaning and integrity testing half-suits.</p>
+
+        <p>Gloves, gloves with sleeves or half-suit system are considered the <span class="key-term">weakest part of the system</span> and can develop leaks. Automation of the process can minimize operator interventions that necessitate the use of gloves and half-suits. The impact of any leakage requires thorough investigation and evaluation.</p>
+
+        <p>Occurrences of leakages can be reduced by using robust materials in conjunction with appropriate maintenance and inspection regimes. The use of a thin sterile glove liner worn by the operator, as part of a gowning regime and coupled with hand disinfection, may protect the glove from bio-contamination and reduce risk in case of damage.</p>
+
+        <p>Bioburden data may be collected on the non-process side of the gloves, for both isolators and RABS. All media should be removed from the glove after sampling.</p>
+
+        <p>Daily visual inspection and regular physical <span class="key-term">glove testing</span> should demonstrate that the gloves retain their integrity and are, therefore, acceptable for continued use. This can significantly reduce the risk of an undetected pinhole.</p>
+
+        <p>The physical test is typically performed on open isolator/RABS doors before the enclosure is closed and decontaminated. Commercially available test systems typically use the <span class="key-term">pressure decay method</span>, measuring a pressure drop inside the glove/sleeve, or the <span class="key-term">constant pressure method</span>, measuring the leak rate as a flow. Physical test methods cannot detect holes measuring down to several micrometers and, therefore, cannot completely prevent microbiological contamination.</p>
+
+        <p>Studies show that a visual test by a trained operator can detect holes on white gloves with a high precision. This is a convenient method and should be performed frequently.</p>
+
+        <p>A preventive glove replacement program can help to avoid sudden out of specification results. How frequently gloves, sleeves, and half-suits need to be replaced depends on the frequency of use, the cleaning agents used, and the mechanical stress applied during the process.</p>
+
+        <h3>Cleaning of Gloves</h3>
+        <p>Gloves are a potential source to transport contamination from one point to another; therefore, a proper cleaning process should be applied. Cleaning has the following purposes:</p>
+        <ul>
+            <li>New gloves are typically covered with a lubricant layer caused by the manufacturing process. This layer can cover contamination and prevent an efficient decontamination process. New gloves need to be cleaned thoroughly before being installed.</li>
+            <li>In the case of a pinhole, a high bioburden load on the outside of the glove may increase the risk of contamination on the inside; therefore, gloves need to be manually wiped and cleaned regularly on the inside and the outside.</li>
+            <li>As gloves, especially finger tips, are touching different surfaces inside an isolator/RABS, the risk of enabling bioburden contamination can be significant. A regular manual wipe and cleaning process needs to be applied.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：手套完整性測試</h4>
+            <p><strong>Glove Integrity Testing（手套完整性測試）：</strong>手套是隔離器/RABS中最脆弱的環節。測試方法有兩種主流：</p>
+            <ul>
+                <li><strong>Pressure Decay Method（壓力衰減法）：</strong>將手套充氣加壓，測量一段時間內的壓力下降。壓降超過標準表示有洩漏。</li>
+                <li><strong>Constant Pressure Method（恆壓法）：</strong>維持手套內恆定壓力，測量維持壓力所需的補氣流量。流量越大，洩漏越嚴重。</li>
+            </ul>
+            <p>重要限制：物理測試無法偵測到微米級的針孔（pinhole），因此不能完全排除微生物污染風險。這就是為什麼還需要搭配目視檢查和預防性更換計畫。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：手套是「最脆弱的環節」</h4>
+            <p>ISPE明確指出手套系統是整個屏障系統中最薄弱的部分。這句話的實務意義是：</p>
+            <ul>
+                <li>任何手套洩漏都需要進行<strong>徹底調查與影響評估（thorough investigation）</strong></li>
+                <li>自動化程度越高，手套使用頻率越低，風險越低</li>
+                <li>操作員應配戴<strong>無菌手套內襯（sterile glove liner）</strong>作為額外保護層</li>
+                <li>白色手套比深色手套更容易用目視檢查發現破洞</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>手套就像潛水衣。即使潛水衣只有一個微小的針孔，水就會慢慢滲入，最終影響潛水員的體溫和安全。同樣地，隔離器手套的任何微小洩漏都可能讓外部環境的微生物進入無菌區域。這就是為什麼需要「多重防線」：定期物理測試 + 每日目視檢查 + 預防性更換 + 無菌內襯手套。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>最佳實踐建議</h4>
+            <ul>
+                <li>建立<strong>預防性手套更換計畫</strong>，基於使用頻率、清潔劑類型和機械應力決定更換週期</li>
+                <li>新手套安裝前必須<strong>徹底清洗</strong>，去除製造過程中的潤滑劑層</li>
+                <li>定期收集手套非製程面的<strong>生物負荷數據</strong>，追蹤趨勢</li>
+                <li>使用白色手套以提高目視檢查的偵測率</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.5.3–9.5.5 BACKGROUND ENVIRONMENT & CLASSIFICATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-5-3">9.5.3&ndash;9.5.5 Background Environment, Monitoring &amp; Classification</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>9.5.3 Background Environment</h3>
+        <p>The classification of the <span class="key-term">background environment</span> in which the enclosure is located should be based on a risk assessment that considers the design choice and operational characteristics of the chosen system and its associated transfer mechanisms and discharge ports (e.g., mouseholes).</p>
+        <ul>
+            <li>For a globally compliant facility, the isolator background should be <span class="key-term">ISO 8/Grade C</span>. A Grade D environment which is classified as ISO 8 "in operation" as well as "at rest" is also possible.</li>
+            <li>Quality control isolators providing aseptic conditions for test environments (e.g., sterility test) with no dynamically sealed openings to the surrounding room can be situated in CNC areas.</li>
+            <li><span class="key-term">RABS</span> designs require an aseptic processing environment external to the enclosure, typically <span class="key-term">ISO 7/Grade B</span>.</li>
+        </ul>
+
+        <h3>9.5.4 Background Monitoring</h3>
+        <p>Monitoring of cleanliness classes should be applied as specified for the relevant ISO/Grade classification. The monitoring efforts with isolators are normally significantly lower than for RABS, due to the reduced foot print and the surrounding environment being a cleaner grade for RABS as compared to isolators.</p>
+
+        <h3>9.5.5 Enclosure Classification</h3>
+        <p>The inner environment should meet <span class="key-term">ISO 5/Grade A</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：背景環境分級差異</h4>
+            <p>隔離器與RABS在背景環境要求上的差異是兩者選擇的關鍵考量之一：</p>
+            <table>
+                <thead>
+                    <tr><th>系統類型</th><th>內部環境</th><th>背景環境</th><th>監測負擔</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Isolator（隔離器）</td><td>ISO 5 / Grade A</td><td>ISO 8 / Grade C</td><td>較低</td></tr>
+                    <tr><td>RABS</td><td>ISO 5 / Grade A</td><td>ISO 7 / Grade B</td><td>較高</td></tr>
+                </tbody>
+            </table>
+            <p><strong>CNC（Controlled Not Classified）：</strong>品管無菌檢驗用隔離器如果沒有動態密封開口，可以放在CNC區域——有出入控制和定期清潔，但不做微粒或微生物監測。這能大幅降低QC實驗室的設施成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：監測成本差異</h4>
+            <p>RABS的背景環境是Grade B，需要更嚴格的微粒和微生物監測，這意味著更高的日常營運成本。隔離器的背景環境只需Grade C（甚至可接受Grade D達到ISO 8 in-operation），監測工作量顯著降低。這是許多新建廠房傾向選擇隔離器的經濟因素之一。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.6 DECONTAMINATION CYCLE DEVELOPMENT -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-6">9.6 Decontamination Cycle Development (Isolators)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>9.6.1 Cleaning and Surface Decontamination</h3>
+        <p>Before any <span class="key-term">bio-decontamination</span> is performed, an efficient cleaning needs to be applied to critical surfaces. Cleaning can either be performed manually or, if applicable, with automated WIP/CIP cycles.</p>
+
+        <p>The design of the enclosure and all integrated equipment needs to be compatible with cleaning processes and cleaning agents.</p>
+
+        <p>Cleaning validation needs to prove the efficiency of the cleaning process and its ability to avoid cross-contamination or exposure of hazardous substances to the surrounding when opening the enclosure. Removal of cleaning residuals after the cleaning process should be considered, as they may impact bio-decontamination efficiency or may be of concern to the product handled inside the isolator or RABS. Failure or incomplete cleaning can prevent exposure of hydrogen peroxide and may lead to failure of the bio-decontamination cycle.</p>
+
+        <p>Cycle development should be performed to establish the parameters and bio-decontamination capabilities and limits that reflect the different volumes, contours, and loading patterns within an isolator or RABS. Validation should prove that developed parameters are accurate.</p>
+
+        <p>The necessary level of bio-decontamination should be determined on the basis of risk assessment and analysis.</p>
+
+        <p>To measure the decontamination efficiency inside the isolator, <span class="key-term">biological indicators</span> (<em>Geobacillus stearothermophilus</em>) are typically used to demonstrate a <span class="key-term">6-log reduction</span> during validation and revalidation.</p>
+
+        <p>In isolators, surface bio-decontamination is performed after cleaning and closing the enclosure. This is typically a fully automated process using <span class="key-term">vaporized or fogged hydrogen peroxide (VHP)</span>. After achieving the specified bio-decontamination efficiency, the bio-decontamination agent is aerated out of the isolator by either venting with HEPA filtered fresh air or by using catalytic converters to break down the hydrogen peroxide into water and oxygen.</p>
+
+        <p>In RABS, bio-decontamination can be performed manually with sporicidal agents via open doors. In newer RABS, automated decontamination systems using vaporized or fogged hydrogen peroxide may be used. In RABS applications, typically only a 3 to 4-log reduction is demonstrated.</p>
+
+        <p>The main difference between an isolator and a RABS is that a RABS is located in an ISO 7/Grade B environment and, therefore, the decontamination also needs to include the surrounding environment.</p>
+
+        <p>Although bio-decontamination is performed on the isolator and RABS, the indirect product contact parts (e.g., stopper tracks) should preferably be SIP or autoclaved. Where such parts cannot be sterilized in an autoclave (e.g., vibratory feeding bowls), a hydrogen peroxide decontamination system can be utilized after a thorough manual cleaning has been performed. The process should be validated and achieve a 6-log reduction of an appropriate challenge organism.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：VHP去污循環</h4>
+            <p><strong>VHP（Vaporized Hydrogen Peroxide, 汽化過氧化氫）循環</strong>是隔離器最常用的生物去污方法。完整循環包含四個階段：</p>
+            <ol>
+                <li><strong>清潔（Cleaning）：</strong>手動或自動（WIP/CIP）清潔所有關鍵表面，去除殘留物質</li>
+                <li><strong>去污（Decontamination）：</strong>密封隔離器後，注入VHP蒸氣覆蓋所有內部表面</li>
+                <li><strong>暴露/維持（Exposure/Dwell）：</strong>維持足夠的VHP濃度和時間以達到6-log reduction</li>
+                <li><strong>排氣（Aeration）：</strong>用HEPA過濾新鮮空氣或催化轉化器將H<sub>2</sub>O<sub>2</sub>分解為水和氧氣</li>
+            </ol>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：生物指示劑（BI）</h4>
+            <p><strong>Biological Indicator, BI（生物指示劑）：</strong>使用<em>Geobacillus stearothermophilus</em>（嗜熱脂肪芽孢桿菌）孢子作為挑戰微生物。這種孢子對VHP有高度抗性，如果能達到6-log reduction（殺死100萬個孢子中的99.9999%），就證明去污循環對一般環境微生物綽綽有餘。</p>
+            <p>BI應放置在隔離器內最難到達的位置（worst-case locations），如死角、設備下方、管路連接處等。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：清潔是去污的前提</h4>
+            <p>ISPE特別強調：<strong>不完整的清潔可能導致去污循環失敗</strong>。原因包括：</p>
+            <ul>
+                <li>殘留物質（如產品、清潔劑）可能遮蔽微生物，使VHP無法接觸</li>
+                <li>清潔劑殘留可能與H<sub>2</sub>O<sub>2</sub>產生化學反應，降低去污效率</li>
+                <li>濕氣會影響VHP的分佈和效能</li>
+            </ul>
+            <p>因此，去污前必須確保隔離器「機械清潔且乾燥」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的隔離器VHP循環中，BI放置點有多少個？是否涵蓋了所有「最差情況位置」？</li>
+                <li>間接產品接觸件（如膠塞軌道）是否採用SIP或高壓滅菌？如果有無法高壓滅菌的零件（如振動進料碗），如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.6.2–9.6.5 BIO-DECONTAMINATION SYSTEMS, SURFACES, AERATION, AIRFLOW -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-6-2">9.6.2&ndash;9.6.5 Bio-Decontamination Systems, Surface Finishes, Aeration &amp; Airflow</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>9.6.2 Bio-Decontamination Systems</h3>
+        <p>There are several types of bio-decontamination systems available for use with isolators or RABS. Methods using <span class="key-term">vaporized or fogged hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>)</span> are most commonly used. Other methods such as <span class="key-term">chlorine dioxide (ClO<sub>2</sub>)</span> or <span class="key-term">nitrogen dioxide (NO<sub>2</sub>)</span> are available. The following criteria should be considered when selecting the bio-decontamination method:</p>
+        <ul>
+            <li>Resistance of surface materials to the selected decontamination agent</li>
+            <li>Decontamination efficiency on all surfaces inside the enclosure</li>
+            <li>Integrity of the enclosure based on the Threshold Limit Value (TLV) of the decontamination agent (e.g., 0.5 ppm for H<sub>2</sub>O<sub>2</sub>, 0.1 ppm for ClO<sub>2</sub>)</li>
+            <li>Ability to aerate or neutralize the decontamination agent after the process</li>
+        </ul>
+
+        <p>Precautions should be taken at the design stage to define load volume, configuration, and packing materials. Particular attention should be paid to areas where there is poor vapor circulation and poor accessibility for prior cleaning (e.g., masked surfaces such as beneath bottles and component packs, dead ends caused by the presence of sensors and pipework).</p>
+
+        <h3>9.6.3 Surface Finishes</h3>
+        <p>Considerations for surface finishes include:</p>
+        <ul>
+            <li>Cleanability of the surfaces before and after the process</li>
+            <li>Guaranteeing an efficient bio-decontamination with vaporized, fogged, or gaseous decontamination agents, as cracks and crevices might shadow potential biological contamination that may not be exposed to the bio-decontaminant. Studies show different D-values of the same type spores on different surface materials.</li>
+        </ul>
+
+        <h3>9.6.4 Removal of the Decontaminant &ndash; Aeration</h3>
+        <p>The aeration phase after the decontamination cycle is important to reduce the level of decontamination agent to acceptable levels to expose to the environment (e.g., through open mouseholes), as well as to the product. Some products are very sensitive to oxidation; in such cases it might be necessary to aerate the inside of the enclosure down to low levels (parts per billion (ppb)).</p>
+
+        <p>Aeration is typically achieved by diluting the inside of the enclosure with HEPA filtered air until the specified residual levels have been reached. Fresh air can be taken from the surrounding room or provided by makeup air units. <span class="key-term">Catalytic converters</span> allow aerating of the enclosure in a circulation loop and can provide significant HVAC cost savings.</p>
+
+        <p>Aeration time studies should consider that decontamination agents can be adsorbed by some materials, such as gloves and other plastic materials. Packed materials (e.g., steam sterilized components packed in Tyvek paper) should also be considered, as the decontamination agent may penetrate the packaging material and aeration can be more challenging.</p>
+
+        <p>The aeration cycle should be performed at a <span class="key-term">positive differential pressure</span> to the surrounding environment.</p>
+
+        <h3>9.6.5 Airflow Modeling</h3>
+        <p>Air handling systems are fundamental to the performance of decontamination processes. Air handling systems should provide even distribution of the decontamination vapor and efficient aeration.</p>
+
+        <p>The design of an air handling system should consider half-suits, gauntlets, wrist collars, and gloves in regard to areas likely to be shadowed from the decontaminant vapor. Frames inserted into the suit or gauntlet can ensure the garment is fully deployed. Gauntlets, wrist collars, and gloves, including fingers, should be fully extended and separated, and should not mask any surface during decontamination.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：去污劑選擇與TLV</h4>
+            <p><strong>TLV（Threshold Limit Value, 閾限值）：</strong>操作員可安全暴露的去污劑最大濃度。</p>
+            <table>
+                <thead>
+                    <tr><th>去污劑</th><th>TLV (ppm)</th><th>特點</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>H<sub>2</sub>O<sub>2</sub>（過氧化氫）</td><td>0.5</td><td>最常用，分解產物為水和氧，安全性高</td></tr>
+                    <tr><td>ClO<sub>2</sub>（二氧化氯）</td><td>0.1</td><td>TLV更低，對密封性要求更高</td></tr>
+                    <tr><td>NO<sub>2</sub>（二氧化氮）</td><td>0.2</td><td>新興替代方案</td></tr>
+                </tbody>
+            </table>
+            <p>TLV越低的去污劑，對隔離器密封性（leak rate）的要求越嚴格，因為即使微量洩漏也可能使周圍環境濃度超標。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：排氣（Aeration）的隱藏挑戰</h4>
+            <p>排氣階段往往是最耗時的步驟，實務上常見的陷阱包括：</p>
+            <ul>
+                <li><strong>材料吸附：</strong>手套和塑膠材料會吸附H<sub>2</sub>O<sub>2</sub>，然後緩慢釋放，延長排氣時間</li>
+                <li><strong>包裝材料滲透：</strong>Tyvek包裝內的已滅菌組件可能吸收VHP，排氣特別困難</li>
+                <li><strong>對氧化敏感的產品：</strong>某些生物製劑對氧化極度敏感，可能需要將殘留H<sub>2</sub>O<sub>2</sub>降至ppb級別</li>
+                <li><strong>催化轉化器：</strong>可在循環迴路中加速H<sub>2</sub>O<sub>2</sub>分解，顯著降低排氣時間和HVAC成本</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>VHP排氣就像新裝潢的房子散味。即使你打開窗戶通風（HEPA過濾空氣沖洗），油漆和木材仍會持續釋放殘餘氣體（就像手套吸附VHP後緩慢釋出）。如果你安裝空氣清淨機（催化轉化器），可以大幅加速這個過程。而且排氣時必須保持正壓——就像你不希望外面的灰塵在通風時飄進新裝潢的房間。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的隔離器使用哪種去污劑？排氣時間通常多長？是否使用催化轉化器？</li>
+                <li>去污循環期間，半身衣和手套的手指是否有展開機構（frames）確保蒸氣能覆蓋所有表面？</li>
+                <li>如果你的產品對氧化敏感，你會如何設定H<sub>2</sub>O<sub>2</sub>殘留的可接受限度？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.7 ENVIRONMENTAL MONITORING -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-7">9.7 Environmental Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p><span class="key-term">Environmental monitoring</span> schedules for isolators and RABS are similar to those for a classified cleanroom. The aseptic quality of the sampling apparatus should be considered, in order to avoid false contamination of the sample. Non-invasive sampling is preferred, for example:</p>
+        <ul>
+            <li>Sampling heads inside and equipment located outside the containment</li>
+            <li>Use of equipment exposed to the same decontamination regime as the isolator</li>
+        </ul>
+
+        <p>Use of environmental monitoring equipment should be validated to ensure the results are comparable to those obtained by local sampling, because of the potential for microorganism capture in the sampling tubing. In addition, swab samples and contact plates can provide useful data.</p>
+
+        <p>Environmental monitoring positions should be determined during ergonomic studies for both isolators and RABS, to ensure that manipulations can be performed without compromising the integrity of the containment.</p>
+
+        <p>It may be possible to reduce the number of sample locations and/or frequency, depending on the level of separation of the operator from the process. This should be supported by a risk assessment.</p>
+
+        <p>The transfer of materials and liquids to and from the enclosure can present a significant challenge to the sterility of the system, in addition to the background challenge of the surrounding environment.</p>
+
+        <p>Additionally, the special requirements of glove systems should be considered, especially since a number of operators using the same gloves presents a challenge to the hygiene of the glove system.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：屏障系統內的環境監測</h4>
+            <p><strong>Environmental Monitoring, EM（環境監測）：</strong>屏障系統內的EM有其獨特挑戰：</p>
+            <ul>
+                <li><strong>非侵入式取樣（Non-invasive sampling）：</strong>取樣探頭放在隔離器內部，但控制設備和讀取裝置放在外部。這避免了因開啟取樣口而破壞屏障完整性的風險。</li>
+                <li><strong>取樣設備的無菌品質：</strong>取樣器具本身必須經過與隔離器相同的去污處理（VHP），否則可能引入假陽性。</li>
+                <li><strong>取樣管路中的微生物捕獲：</strong>遠端取樣設備的管路可能截留微生物，導致結果不能真實反映隔離器內部狀態。需要驗證遠端取樣結果與現場取樣的等效性。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風險評估驅動的監測頻率</h4>
+            <p>與傳統潔淨室不同，屏障系統可以根據「操作員與製程的隔離程度」來<strong>降低取樣點數量和/或頻率</strong>——但必須有風險評估支持。這是一個常見的法規審查重點：如果你的監測計畫比傳統潔淨室精簡，稽核員會要求你出示支持的風險評估文件。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>在隔離器內做環境監測，就像在手術室的無菌區域做空氣品質檢測——你不能為了採樣而打開無菌區域的門。所以你需要用「伸進去的探針」（非侵入式取樣頭）來收集數據，同時確保探針本身是無菌的。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的隔離器EM取樣點是非侵入式還是需要開啟取樣口？如果是後者，是否評估過對屏障完整性的影響？</li>
+                <li>多名操作員共用同一副手套時，你的手套衛生管理程序是什麼？是否有足夠的消毒頻率？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.8 LEAK RATE -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-8">9.8 Leak Rate</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The integrity of the enclosure should prevent:</p>
+        <ul>
+            <li>Hazardous decontamination agents to escape during the decontamination process</li>
+            <li>Hazardous product escape during production</li>
+            <li>Ingress of contamination that could harm the product quality</li>
+        </ul>
+
+        <p>During the decontamination process, the isolator needs to be kept in constant <span class="key-term">positive pressure</span> to the surrounding environment. A potential leak in the enclosure can generate an increased concentration in the surroundings. The maximum allowable size of such a leak depends on the following parameters:</p>
+        <ul>
+            <li>Differential pressure</li>
+            <li>Concentration inside enclosure</li>
+            <li>Volume of the surrounding area</li>
+            <li>Fresh air exchanges of the surrounding area</li>
+            <li>Acceptable concentration for an operator</li>
+        </ul>
+
+        <p>Where hazardous products are used, similar considerations (i.e., those for decontamination agents) can be applied to determine an acceptable leak rate during production. Only airborne contamination can escape. In enclosures with UAF, only surfaces on the downstream side of the airflow and return ducts are exposed to such contamination.</p>
+
+        <p>The ingress of contamination can be prevented by providing a continuous <span class="key-term">positive pressure</span> to the enclosure. Airflow around mouseholes may generate turbulence and cause inflow of air; therefore, mouseholes are usually protected by HEPA filtered airflow on the outside of the enclosure.</p>
+
+        <h3>9.8.1 Leak Rate Test Methods</h3>
+        <p><span class="key-term">Leak rates</span> can be determined by closing the enclosure with gas tight flaps and applying a <span class="key-term">pressure drop test</span> or a <span class="key-term">constant pressure test</span>. Both tests are typically performed at double operating pressure.</p>
+
+        <p>As for aseptic isolators that are not in contact with potent or hazardous products and for RABS applications, the only risk is the leakage of decontamination agent during decontamination. Continuous monitoring of the decontamination agent concentration in the surrounding room can be sufficient, if openings (such as doors) are position controlled and gloves are leak tested individually.</p>
+
+        <p>During installation, a <span class="key-term">tracer gas</span> (such as helium or ammonia) or soap solutions can be used to identify a leak. Although these methods may be an efficient way to find a leak, they are not useful for routine operation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：洩漏率測試</h4>
+            <p><strong>Leak Rate Testing（洩漏率測試）</strong>驗證隔離器的密封完整性。兩種主要方法：</p>
+            <ul>
+                <li><strong>Pressure Drop Test（壓力衰減測試）：</strong>密封隔離器，加壓至操作壓力的兩倍，測量壓力下降速率。壓降速率越低，密封性越好。</li>
+                <li><strong>Constant Pressure Test（恆壓測試）：</strong>維持隔離器在設定壓力，測量需要補充多少氣體來維持壓力。補氣量越少，密封性越好。</li>
+            </ul>
+            <p><strong>Tracer Gas（示蹤氣體）：</strong>安裝階段使用氦氣或氨氣定位洩漏點。氦氣偵測器可以精確找到微小洩漏位置，但不適合日常操作使用。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：洩漏率的三重保護目的</h4>
+            <p>洩漏率測試不只是「測密封性」這麼簡單——它同時保護三個方向：</p>
+            <ol>
+                <li><strong>向外保護操作員：</strong>防止VHP或有害產品洩漏到操作環境（OEL/TLV考量）</li>
+                <li><strong>向外防止產品散逸：</strong>高活性藥物（ADC、荷爾蒙等）不能外洩</li>
+                <li><strong>向內保護產品：</strong>防止外部污染物侵入無菌環境（正壓防護）</li>
+            </ol>
+            <p>最大可接受洩漏率取決於五個參數的組合計算，不是一個固定數值。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>洩漏率測試就像測試游泳池是否漏水。你可以觀察水位下降速度（pressure drop test），或是量測需要補多少水才能維持水位（constant pressure test）。而在最初施工時，你會用染料（類似示蹤氣體）倒入水中來找出具體的漏點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的隔離器洩漏率測試是在多少倍操作壓力下進行？測試頻率是多少？</li>
+                <li>Mousehole（鼠洞口）是否配備HEPA過濾氣流保護？是否曾在煙霧測試中觀察到turbulence？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.9 MAINTENANCE -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-9">9.9 Maintenance</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>An adequate, condition-based, <span class="key-term">preventative maintenance</span> program should be used to assist in sterility assurance.</p>
+
+        <p>Ergonomic modeling should consider the requirements of maintenance personnel who perform ongoing running adjustments to the equipment. Designs should consider the maintenance aspects of the enclosure, its support services, and also the equipment contained therein. Provision of maintenance access panels should be considered.</p>
+
+        <p>Maintenance should also consider:</p>
+        <ul>
+            <li>Filters</li>
+            <li>Gaskets</li>
+            <li>Seals</li>
+            <li>Items specific to an enclosure, such as door seals, transfer port gaskets, and the attachment of glove rings to glazing panels</li>
+        </ul>
+
+        <p><span class="key-term">HEPA filters</span> and gloves should be replaced on a regular and scheduled basis, along with other components, as part of a maintenance program.</p>
+
+        <p>Protocols should be developed for the calibration of sensors on an ongoing basis. Test equipment to calibrate dedicated probes (e.g., temperature and humidity sensors, pressure transducers) should be provided.</p>
+
+        <p>Maintenance personnel should use PPE for maintenance of critical areas where hazardous substances might be present or could not be cleaned by another method.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：預防性維護計畫</h4>
+            <p><strong>Preventive Maintenance（預防性維護）</strong>對屏障系統的無菌保證至關重要。需要定期維護的關鍵項目：</p>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th>維護重點</th><th>頻率考量</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>HEPA濾網</td><td>完整性測試（DOP/PAO）、更換</td><td>定期排程</td></tr>
+                    <tr><td>手套/半身衣</td><td>完整性測試、預防性更換</td><td>基於使用頻率和機械應力</td></tr>
+                    <tr><td>門封條</td><td>檢查彈性、密封性</td><td>基於狀態評估</td></tr>
+                    <tr><td>傳遞口墊圈</td><td>檢查磨損、更換</td><td>基於使用頻率</td></tr>
+                    <tr><td>手套環與玻璃面板</td><td>檢查安裝牢固度</td><td>定期排程</td></tr>
+                    <tr><td>感測器</td><td>校準（溫度、濕度、壓差）</td><td>依校準計畫</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：維護人員的PPE</h4>
+            <p>維護人員進入可能殘留有害物質的關鍵區域時，必須使用適當的PPE（個人防護裝備）。這個要求常被忽略——生產人員有完善的更衣程序，但維護人員的防護規定往往不夠嚴謹。特別是處理高活性藥物的隔離器，維護期間的殘留暴露風險需要明確評估。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>最佳實踐建議</h4>
+            <ul>
+                <li>建立<strong>基於狀態的維護（condition-based maintenance）</strong>計畫，而非純粹時間驅動</li>
+                <li>設計階段就應考慮<strong>維護通道面板（maintenance access panels）</strong>，讓維護人員能在不影響ISO 5區域的情況下進行調整</li>
+                <li>所有感測器校準必須有<strong>文件化的SOP</strong>，包含偏差處理流程</li>
+                <li>維護活動應有<strong>風險評估</strong>，評估對無菌環境的潛在影響</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 9.10 TRAINING -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec9-10">9.10 Training</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Reliance only on the enclosure to preserve the <span class="key-term">aseptic processing environment</span> may not be sufficient and may give a false sense of security. The selection, training, and motivation of personnel are fundamental to GMPs.</p>
+
+        <p>Operators should be given a thorough understanding of how to operate the control system and perform <span class="key-term">aseptic operations</span> within the enclosure. Operators are required to have knowledge of transfer devices, decontamination systems, and their interrelationship with the overall aseptic process.</p>
+
+        <p>Operators should adhere to <span class="key-term">aseptic techniques</span> in performing manipulations for any aseptic process. Failure events and how operators are to react should be considered during training.</p>
+
+        <p>Operator procedures should not permit inappropriate manipulation by gloves or gauntlets in the critical zone and should stress the use of sterile tools during aseptic operations. Training should consist of both theoretical and practical aspects, concluding with a formal, documented assessment and authorization to work with the system.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：屏障系統操作員培訓</h4>
+            <p><strong>Aseptic Technique（無菌操作技術）：</strong>ISPE特別警告不要過度依賴屏障系統本身來維護無菌環境，這可能帶來「虛假的安全感（false sense of security）」。培訓內容應包含：</p>
+            <ul>
+                <li><strong>理論培訓：</strong>屏障系統原理、去污循環、傳遞系統、環境監測概念</li>
+                <li><strong>實務操作：</strong>手套操作技巧、控制系統操作、無菌工具使用</li>
+                <li><strong>異常處理：</strong>失敗事件的辨識和應對程序（如手套破損、壓差警報、去污循環失敗）</li>
+                <li><strong>正式評核：</strong>理論 + 實務考核，通過後取得正式授權</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「不能在關鍵區域亂動手套」</h4>
+            <p>ISPE明確要求操作程序<strong>不允許在關鍵區域進行不當的手套/護臂操作</strong>，並強調使用無菌工具。這意味著：</p>
+            <ul>
+                <li>即使在隔離器內，操作員也不能直接用手套觸碰產品接觸面</li>
+                <li>必須使用鑷子、夾具等無菌工具進行操作</li>
+                <li>操作動作應該經過設計和驗證，減少不必要的手套介入</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>就像自動駕駛汽車的駕駛——即使車輛有高度自動化系統，駕駛仍然需要接受完整培訓、了解系統原理、知道何時介入、如何應對緊急狀況。如果駕駛因為「反正車子會自己開」而放鬆警惕，反而更危險。屏障系統的操作員也是如此：系統越先進，對操作員理解系統和正確操作的要求反而越高。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的操作員培訓計畫是否包含失敗事件模擬（如手套洩漏警報、VHP循環中斷）？操作員的反應是否有SOP可循？</li>
+                <li>新操作員取得正式授權需要通過哪些考核項目？是否包含實務操作評估？</li>
+                <li>如何避免操作員產生「隔離器很安全所以不需要太注意無菌技術」的心態？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>Section Summary / 本節重點回顧</h3>
+    <ul>
+        <li><strong>Equipment Design (9.5):</strong> All equipment inside isolators/RABS must be designed for glove-port ergonomics, with emphasis on UAF protection, tool-less format changes, automated operations, and material compatibility with decontamination agents. / 隔離器/RABS內設備必須為手套口人體工學設計，強調UAF保護、免工具換型、自動化操作及材質與去污劑的相容性。</li>
+        <li><strong>Transfer Systems (9.5.1):</strong> Multiple transfer methods exist with varying log reduction capabilities. Isolators require 6-log, RABS require 3-log. RTP ring of concern is a key vulnerability. / 多種傳遞方法各有不同的log reduction能力。隔離器要求6-log，RABS要求3-log。RTP關注環是關鍵弱點。</li>
+        <li><strong>Glove Systems (9.5.2):</strong> Gloves are the weakest link in barrier systems. Multi-layered defense: physical testing (pressure decay/constant pressure), daily visual inspection, preventive replacement, and sterile liners. / 手套是屏障系統最脆弱環節。多層防線：物理測試、每日目視檢查、預防性更換及無菌內襯手套。</li>
+        <li><strong>VHP Decontamination (9.6):</strong> Complete cycle = cleaning + decontamination + aeration. Validate with BIs (6-log for isolators). Aeration is often the longest phase due to material adsorption. / 完整循環 = 清潔 + 去污 + 排氣。用BI驗證（隔離器6-log）。排氣常因材料吸附而耗時最長。</li>
+        <li><strong>Environmental Monitoring (9.7):</strong> Non-invasive sampling preferred. Monitoring frequency can be reduced based on risk assessment of operator-process separation level. / 優先採用非侵入式取樣。可基於操作員與製程隔離程度的風險評估降低監測頻率。</li>
+        <li><strong>Leak Rate (9.8):</strong> Three-directional protection (operator, environment, product). Tested at double operating pressure using pressure drop or constant pressure methods. / 三向保護（操作員、環境、產品）。在雙倍操作壓力下用壓力衰減法或恆壓法測試。</li>
+        <li><strong>Maintenance (9.9):</strong> Condition-based preventive maintenance for HEPA filters, gloves, seals, and gaskets. Sensor calibration protocols are essential. / 對HEPA濾網、手套、密封件和墊圈進行基於狀態的預防性維護。感測器校準程序不可或缺。</li>
+        <li><strong>Training (9.10):</strong> Do not rely solely on the barrier system — operators must understand aseptic technique, failure responses, and proper tool use. Formal assessment and authorization required. / 不要僅依賴屏障系統——操作員必須理解無菌操作技術、異常應對及正確工具使用。需要正式考核與授權。</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+</body>
+</html>

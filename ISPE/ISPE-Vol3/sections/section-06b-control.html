@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.3 - Chapter 8: Control and Instrumentation</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 8: Control and Instrumentation / 儀控系統</h1>
+    <div class="subtitle">ISPE Baseline Guide Vol. 3 (3rd Ed.) &mdash; Sterile Product Manufacturing Facilities</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p157 &ndash; p166</div>
+</div>
+
+<div class="main-container">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives / 本章學習目標</h3>
+    <ul>
+        <li>Understand the role of C&amp;I systems in sterile manufacturing and how they impact patient safety and product quality / 理解儀控系統在無菌製造中的角色及其對病患安全與產品品質的影響</li>
+        <li>Identify critical environmental process parameters (CPPs) and their monitoring requirements / 辨識關鍵環境製程參數及其監測要求</li>
+        <li>Distinguish between active and passive control strategies for environmental parameters / 區分環境參數的主動式與被動式控制策略</li>
+        <li>Apply the hierarchy of Process Limits, Alert Limits, and Normal Operating Conditions / 運用製程限值、警示限值與正常操作條件的層級關係</li>
+        <li>Understand instrument selection criteria: accuracy, location, and calibration / 理解儀器選擇標準：精確度、安裝位置與校正</li>
+        <li>Evaluate HVAC control system choices: BMS/BAS vs. DCS/PLC/SCADA / 評估 HVAC 控制系統選擇：BMS/BAS 與 DCS/PLC/SCADA 的差異</li>
+        <li>Describe airborne particle counting configurations and monitoring considerations / 描述空氣中粒子計數系統架構與監測考量</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>Section Index / 本節內容索引</h3>
+    <div class="toc-grid">
+        <a href="#sec81">8.1 Introduction</a>
+        <a href="#sec82">8.2 CPPs &ndash; Environmental</a>
+        <a href="#sec823">8.2.3 Alert &amp; Action Alarms</a>
+        <a href="#sec824">8.2.4 Limits Hierarchy</a>
+        <a href="#sec83">8.3 Instrumentation</a>
+        <a href="#sec84">8.4 Production Process Parameters</a>
+        <a href="#sec85">8.5 General Design Issues</a>
+        <a href="#sec86">8.6 HVAC Controls</a>
+        <a href="#sec862">8.6.2 Particle Counting</a>
+        <a href="#summary">Section Summary</a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1 INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec81">8.1 Introduction &mdash; Control &amp; Instrumentation Overview</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.1 Introduction</h3>
+
+        <p>This chapter considers the various functions of <span class="key-term">Control and Instrumentation (C&amp;I)</span> systems for sterile products manufacturing facilities and focuses on those facility and environment controls which affect patient safety and product quality. The objective is to provide design guidance for cost effective systems which can be qualified.</p>
+
+        <p>C&amp;I systems are used in many facility related systems. They may be deemed to affect patient safety and product quality if they control, monitor, or record a <span class="key-term">CPP</span>, or directly affect a <span class="key-term">CQA</span>. Components of C&amp;I systems may also be considered critical if they come into direct physical contact with the product.</p>
+
+        <p>The functions described may be combined within a single C&amp;I system or be performed by several independent systems.</p>
+
+        <p>Specific design advice has been given where possible, but it is stressed that each application has different priorities and operational preferences that influence the adopted solution.</p>
+
+        <p>Designers should also consider other relevant design criteria, such as safety, reliability, data integrity, and design for maintenance.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：C&amp;I 系統在無菌廠的角色</h4>
+            <p>儀控系統 (C&amp;I) 是無菌製造設施的「神經系統」。它做三件事：</p>
+            <ul>
+                <li><strong>控制 (Control)：</strong>讓溫度、壓差、濕度等參數維持在指定範圍內</li>
+                <li><strong>監測 (Monitor)：</strong>持續或定期量測，確認參數在限值內</li>
+                <li><strong>記錄 (Record)：</strong>將數據保存以供追溯與合規查核</li>
+            </ul>
+            <p>任何一個子系統，只要它控制、監測或記錄了一個 <strong>關鍵製程參數 (CPP)</strong> 或直接影響 <strong>關鍵品質屬性 (CQA)</strong>，就被認定為「可能影響病患安全與產品品質」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：無菌廠的神經系統</h4>
+            <p>把無菌廠想成人體。HVAC 是呼吸系統（提供潔淨空氣），水系統是血液循環（輸送純水），而 C&amp;I 就是神經系統——感知環境（感測器）、傳遞訊號（訊號線與網路）、做出反應（控制器調整閥門或馬達）、留下記憶（資料記錄）。</p>
+            <p>沒有神經系統，身體無法維持體溫恆定——無菌廠沒有 C&amp;I，也無法維持潔淨室的壓差、溫度與微粒等級。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Data Integrity 是設計標準之一</h4>
+            <p>本節明確將「資料完整性 (Data Integrity)」列為設計考量。這表示在選擇或設計儀控系統時，不只要考慮「測得準」，還要確保「記得住且不可竄改」——這對 ALCOA+ 原則的落實至關重要。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.2 CRITICAL PROCESS PARAMETERS – ENVIRONMENTAL -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec82">8.2 Critical Process Parameters &mdash; Environmental Conditions</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.2.1 Environmental Conditions within the Production Area</h3>
+
+        <p>The production of sterile products requires a clean classified work environment for open, exposed processes. Processes and products vary greatly. Specific environmental parameters should be considered, specified, monitored, and recorded, as discussed in Chapter 5.</p>
+
+        <p>Several requirements for particulate and microbiological cleanliness, <span class="key-term">differential pressure (DP)</span>, and airflow are required in the GMPs for typical process steps and unit operations.</p>
+
+        <p>If manufacture of several products is considered, the design team should ensure that the design accommodates the most demanding product requirements.</p>
+
+        <h3>8.2.2 Monitoring and Documenting</h3>
+
+        <p><span class="key-term">CPPs should be monitored and documented.</span></p>
+
+        <p><strong>Monitoring</strong> means that a parameter is continuously or periodically measured to ensure it is within its defined limits. This can be accomplished with either permanently installed, portable, or disposable instruments. When determining whether to monitor a CPP continuously or periodically, it is recommended to perform a comprehensive risk assessment and develop a mitigation plan to fully define the rationale.</p>
+
+        <p><strong>Documented</strong> means that the parameter value (or evidence that the value is within control limits) is recorded at some predefined frequency for future reference. The frequency should be based on a documented rationale which reflects:</p>
+        <ul>
+            <li>Consequences of manufacturing outside required (process) limits</li>
+            <li>Probability and frequency of temporary parameter control loss</li>
+            <li>Duration and frequency of activities such as process interventions</li>
+        </ul>
+
+        <p>An <span class="key-term">active control system</span> is deemed to have a control loop with direct feed-back or feed-forward. A <span class="key-term">passive control system</span> is where a condition is monitored, and management action is implemented, if needed, to rectify the deviation in conditions.</p>
+
+        <p>When CPPs are monitored, the monitoring regime should, where possible, be established with <span class="key-term">alert and action limits</span>. Alert limits provide early warning of a potential deviation enabling corrective or preventative measures to be taken prior to an action limit being reached; in some conditions, alarm condition delays may be appropriate.</p>
+
+        <h3>Table 8.1: Typical Environmental Process Parameters</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Environmental Parameter</th>
+                    <th>Active / Passive Control</th>
+                    <th>Monitoring Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Room temperature</td>
+                    <td>Always active</td>
+                    <td>Continuous recording recommended</td>
+                </tr>
+                <tr>
+                    <td>Room relative humidity (RH)</td>
+                    <td>Always active</td>
+                    <td>Continuous recording recommended</td>
+                </tr>
+                <tr>
+                    <td>Room differential pressure</td>
+                    <td>Active or Passive</td>
+                    <td>Active: continuous recording recommended. Passive (air balancing + relief dampers): may document less frequently; excursions should be recorded</td>
+                </tr>
+                <tr>
+                    <td>Particle count</td>
+                    <td>Passive</td>
+                    <td>Controlled via filters, low-leakage ductwork, personnel control, ACR. Continuous recording may not be necessary; maintain monitoring schedules per classification</td>
+                </tr>
+                <tr>
+                    <td>Process environment temperature</td>
+                    <td>Always active</td>
+                    <td>Continuous recording recommended</td>
+                </tr>
+                <tr>
+                    <td>Process environment RH</td>
+                    <td>HVAC psychrometrics</td>
+                    <td>Continuous recording recommended</td>
+                </tr>
+                <tr>
+                    <td>Room/enclosure pressure differential</td>
+                    <td>Active or Passive</td>
+                    <td>If essential for space separation between cleanliness classes: continuously monitored, recorded, and alarmed. Passive (locked damper) with continuous monitoring is the technical baseline</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Airborne particle levels (viable and non-viable) reflect the effect of achieving and maintaining the control parameters in Table 8.1. Particle levels are also influenced by internal operations (personnel).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：主動控制 vs 被動控制</h4>
+            <p>這是本節最重要的分類框架：</p>
+            <ul>
+                <li><strong>主動控制 (Active Control)：</strong>有控制迴路、有回饋 (feedback) 或前饋 (feedforward)。例如 AHU 送風溫度控制——感測器偵測到溫度偏高，控制器自動開大冷水閥。</li>
+                <li><strong>被動控制 (Passive Control)：</strong>沒有自動迴路。靠設計本身（如固定風量比例、HEPA 過濾器）來維持條件，偏差時由人員介入。</li>
+            </ul>
+            <p>關鍵判斷原則：被動控制系統的可靠度通常比主動系統更高（零件少、不會故障），但一旦偏差，反應速度更慢。因此本指南對被動控制的監測頻率要求可以「較低」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：壓差控制的爭議</h4>
+            <p>注意 Table 8.1 中一個關鍵建議：<strong>本指南不建議使用致動控制風門 (actuated control dampers) 來主動控制壓差。</strong></p>
+            <p>原因：壓差對門的開關、人員進出極為敏感。用主動控制風門容易造成不同房間之間的「壓力振盪」——A 房升壓，B 房的控制器反應降壓，結果形成不穩定的來回震盪。</p>
+            <p>技術基線 (Technical Baseline)：<strong>被動式鎖定風門 + 連續監測</strong>。簡單而可靠。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：被動 vs 主動控制</h4>
+            <p>被動控制像一條設計好坡度的水溝——水自然會流向正確方向，不需要泵浦。只要定期巡檢，確認沒有堵塞即可。</p>
+            <p>主動控制像裝了泵浦的管路——能精確控制流量，但泵浦故障時水就不流了。需要更頻繁的監測和維護。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>監測頻率的決策邏輯</h4>
+            <p>「多久量一次？」不是憑感覺決定的。ISPE 提出三個評估因素：</p>
+            <ol>
+                <li><strong>偏差後果：</strong>製程限值外製造的嚴重程度（產品報廢？召回？病患風險？）</li>
+                <li><strong>失控機率：</strong>控制系統的可靠度與複雜度</li>
+                <li><strong>干預頻率：</strong>人員操作、門開關等可能擾動參數的活動頻率</li>
+            </ol>
+            <p>風險越高 → 監測越頻繁。Grade A/B 區域的壓差與溫度通常需要連續監測；Grade C/D 可以較低頻率。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用：CDMO 多產品設計</h4>
+            <p>本節提醒：如果同一區域要製造多種產品，設計必須滿足「最嚴格的產品需求」。對 CDMO 而言，這意味著：</p>
+            <ul>
+                <li>溫度範圍取所有產品中最窄的要求</li>
+                <li>壓差等級取最高分類要求</li>
+                <li>監測系統要能在不同產品間切換警示限值</li>
+            </ul>
+            <p>設計建議：預留 BMS 參數切換功能，讓操作人員依據不同產品批次快速載入對應的限值組態。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.2.3 ALERT AND ACTION ALARMS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec823">8.2.3 Alert and Action Alarms / 警示與行動警報</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.2.3 Alert and Action Alarms</h3>
+
+        <p>CPPs should remain within specified values. Where monitoring and documenting is necessary, the monitoring system should provide an:</p>
+        <ul>
+            <li><span class="key-term">Alert Alarm</span> to indicate that the parameter has deviated from the normal operating range (i.e., outside the Normal Operating Conditions &mdash; a possible control problem)</li>
+            <li><span class="key-term">Action Alarm</span> to indicate that the parameter has deviated from Process Limits (i.e., may result in a product quality issue)</li>
+        </ul>
+
+        <p>Alarms should <span class="key-term">latch and not self-cancel</span> (i.e., the alarm remains active even after the condition has been corrected) until acknowledged by the user/operator. All alarm conditions should be documented and corrective actions recorded.</p>
+
+        <p>Where momentary parameter deviation outside specified limits is acceptable, appropriate <span class="key-term">time delay intervals</span> can be incorporated into the alarm logic. These should be thoroughly tested, with the rationale documented as part of the system qualification.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>雙層警報架構</h4>
+            <p>本節建立了 GMP 儀控系統的標準警報模型：</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><div class="hierarchy-box level-1">Action Alarm（行動警報）— 逼近製程限值</div></div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-2">Alert Alarm（警示警報）— 偏離正常操作範圍</div></div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-3">Normal Operating Conditions（正常操作條件）</div></div>
+            </div>
+            <p>Alert = 早期預警，讓你有時間採取預防措施。Action = 已接近或超出製程限值，必須立即處理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Alarm Latch（鎖存）原則</h4>
+            <p>警報「鎖存且不自動取消」是 GMP 的核心設計要求。即使偏差條件已恢復正常，警報仍保持激活狀態，直到操作員手動確認。</p>
+            <p><strong>為什麼？</strong>確保每一次偏差都有人看到、有人判斷、有記錄。如果警報自動消失，操作員可能永遠不知道偏差發生過——這對產品品質判定和偏差調查是致命的。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Time Delay 的陷阱</h4>
+            <p>允許短暫偏差的「時間延遲」邏輯聽起來合理（例如開門瞬間壓差短暫下降），但設定不當會隱藏真正的問題。</p>
+            <p>ISPE 要求：延遲邏輯必須經過「徹底測試」且「文件化理由」。稽核時，查核重點往往在：延遲設定依據是什麼？有沒有經過風險評估？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.2.4 LIMITS HIERARCHY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec824">8.2.4 Environmental Process Limits, Facility Design Limits, and Normal Operating Conditions / 限值層級架構</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.2.4 Environmental Process Limits, Facility Design Limits, and Normal Operating Conditions</h3>
+
+        <p><span class="key-term">Environmental Process Limits</span> are the upper and lower limits demanded by the production process(es). The <span class="key-term">Facility Design Limits</span> are used to calculate HVAC facility or utility capacity, and are based upon a number of factors, such as:</p>
+        <ul>
+            <li>Operator comfort</li>
+            <li>Energy conservation</li>
+            <li>Regulatory requirements</li>
+            <li>Process limits</li>
+            <li>What is technically and practically possible</li>
+        </ul>
+
+        <p>Facility Design Limits should be set to operate within Normal Operating Conditions, where the extremes of these conditions are defined by the Alert Limits.</p>
+
+        <p><strong>Example:</strong> Assume that Process Limits are 22&deg;C &plusmn; 4&deg;C (71.6&deg;F &plusmn; 7.2&deg;F). The HVAC system facility is designed to provide 22&deg;C &plusmn; 2&deg;C (71.6&deg;F &plusmn; 3.6&deg;F); however, control to within 22&deg;C &plusmn; 1&deg;C (71.6&deg;F &plusmn; 1.8&deg;F) is usual. Alert Limits can be set at a lower limit of 21&deg;C (69.8&deg;F) and an upper limit of 23&deg;C (71.4&deg;F), as deviation outside these conditions indicates a situation which may require investigation.</p>
+
+        <p><em>Figure 8.1: Alert and Alarm Limits</em> illustrates this relationship.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>四層限值架構——從寬到窄</h4>
+            <p>這是本章最重要的設計概念，用溫度的例子一層層解析：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>層級</th>
+                        <th>範圍</th>
+                        <th>意義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>製程限值 (Process Limits)</strong></td>
+                        <td>22&deg;C &plusmn; 4&deg;C (18-26&deg;C)</td>
+                        <td>超出此範圍 = 產品品質風險</td>
+                    </tr>
+                    <tr>
+                        <td><strong>設施設計限值 (Facility Design)</strong></td>
+                        <td>22&deg;C &plusmn; 2&deg;C (20-24&deg;C)</td>
+                        <td>HVAC 系統的設計能力</td>
+                    </tr>
+                    <tr>
+                        <td><strong>警示限值 (Alert Limits)</strong></td>
+                        <td>21-23&deg;C</td>
+                        <td>正常操作邊界，超出需調查</td>
+                    </tr>
+                    <tr>
+                        <td><strong>正常操作條件 (NOC)</strong></td>
+                        <td>22&deg;C &plusmn; 1&deg;C</td>
+                        <td>日常實際控制範圍</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>層與層之間的「留白」就是安全裕度。設計好的系統，各層之間有足夠空間，不會因為一點小擾動就觸發 Action Alarm。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：高速公路的速限</h4>
+            <p>想像高速公路限速 110 km/h（Process Limit）。車子設計巡航速度 100 km/h（Facility Design Limit）。你通常開在 95-105 km/h（Normal Operating Conditions）。儀表板在 105 km/h 時亮黃燈提醒（Alert），超過 110 km/h 時響警報（Action Alarm）。</p>
+            <p>重點：每一層都有其存在的理由，缺一不可。如果直接用 Process Limit 當 Alert Limit，就沒有預警空間了。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>如果一個產品的製程限值是 22&deg;C &plusmn; 2&deg;C（很窄），而 HVAC 系統在夏天外部溫度 35&deg;C 時只能控制到 &plusmn; 1.5&deg;C，這代表什麼問題？該如何解決？</li>
+                <li>為什麼 ISPE 強調「設施設計限值」要同時考慮操作員舒適度和節能？這和產品品質有什麼關聯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.3 INSTRUMENTATION -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec83">8.3 Instrumentation / 儀器設計與選擇</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.3.1 Physical Design</h3>
+
+        <p>Instruments in process areas should be located to allow cleaning and sanitization of exposed surfaces and should be designed and installed to prevent accumulation of particulate matter. Computer screens and keyboards located in processing areas should be cleanable, such as by utilizing <span class="key-term">touch membrane technology</span>.</p>
+
+        <p>Instruments in direct contact with the product, its components, or associated with a critical manufacturing process should be designed and installed to:</p>
+        <ul>
+            <li>Prevent accumulation of any matter (including product)</li>
+            <li>Withstand required cleaning/sanitization processes and agents without degradation</li>
+            <li>Not present a contamination risk to the product or its components</li>
+            <li>Not be degraded (physically or in performance) by contact with the product</li>
+        </ul>
+
+        <p>Many instruments have sensing elements remote from their data processing components. The use of such instruments allows isolation, separation, or remote location of the processing components. This may simplify cleaning and reduce contamination risk.</p>
+
+        <h3>8.3.2 Performance: Accuracy</h3>
+
+        <p>When assessing an instrument's accuracy, several factors should be considered:</p>
+        <ul>
+            <li>Fitness for purpose</li>
+            <li>Instrument cost increases with accuracy</li>
+            <li>How misleading the instrument can be without threatening product quality</li>
+            <li>Higher accuracy instruments reduce the risk of manufacture under unsuitable conditions because of instrument drift</li>
+        </ul>
+
+        <p>For each CPP, there are usually <span class="key-term">Process Limits</span> within which a product should be produced. C&amp;I systems should be designed to control conditions to a set point within the Process Limits, usually with a margin of safety or reserve.</p>
+
+        <p>An indicated value on an instrument is subject to uncertainty (i.e., subject to the instrument accuracy). For the true condition to remain within Process Limits at the indicated extremes of the Alert Limits, the instrument's accuracy should give a measurement whose uncertainty is no greater than the difference between the Process and Alert Limits. This difference defines the <span class="key-term">Instrument Permitted Limit</span>.</p>
+
+        <p><strong>Example:</strong> Process Limits are 22&deg;C &plusmn; 2&deg;C, Alert Limits are 22&deg;C &plusmn; 1&deg;C. At the extremes of the Alert Limits, the instrument should be accurate to at least &plusmn; 0.5&deg;C to guarantee temperature remains within Process Limits.</p>
+
+        <h3>8.3.3 Location</h3>
+
+        <p>Instrument sensors measuring the critical process or environmental parameter(s) should be located at a point representative of the condition to be measured. Ease of calibration should also be considered.</p>
+
+        <p>Where separate sensors are used to control and monitor the same CPP, they should be co-located to ensure the parameter is equally measured.</p>
+
+        <h3>8.3.4 Calibration</h3>
+
+        <p>The calibration method and its cost should be considered when selecting any instrument. Comprehensive calibration guidance should be obtained from the suppliers before an instrument is chosen.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>儀器物理設計四原則</h4>
+            <p>無菌區域的儀器不只要「量得準」，還要符合潔淨室設計原則：</p>
+            <ol>
+                <li><strong>可清潔 (Cleanable)：</strong>表面光滑、無死角，能承受消毒劑</li>
+                <li><strong>不積塵 (No Accumulation)：</strong>安裝方式避免水平凹槽或縫隙</li>
+                <li><strong>不污染 (No Contamination Risk)：</strong>與產品接觸的部分材質相容</li>
+                <li><strong>耐腐蝕 (Durable)：</strong>不被產品或清潔劑降解</li>
+            </ol>
+            <p>實務上，越來越多儀器採用「感測端遠端分離」設計——只有一個小探頭在潔淨室內，電子處理元件在技術夾層，大幅降低清潔難度與污染風險。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Instrument Permitted Limit（儀器允許限值）</h4>
+            <p>這是一個精妙的設計概念：</p>
+            <p><strong>儀器允許限值 = 製程限值 - 警示限值</strong></p>
+            <p>以溫度為例：</p>
+            <ul>
+                <li>製程限值：22&deg;C &plusmn; 2&deg;C → 上限 24&deg;C</li>
+                <li>警示限值：22&deg;C &plusmn; 1&deg;C → 上限 23&deg;C</li>
+                <li>儀器允許限值：24 - 23 = 1&deg;C</li>
+                <li>因此儀器精確度至少需要 &plusmn; 0.5&deg;C</li>
+            </ul>
+            <p>如果用更高精確度的儀器（例如 &plusmn; 0.1&deg;C），就有更大的「漂移裕度」，校正週期可以拉長——長遠省錢。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：精確度 vs 成本的決策</h4>
+            <p>精確度越高，儀器越貴，但帶來三個好處：</p>
+            <ul>
+                <li>更大的漂移容許空間 → 校正頻率可降低</li>
+                <li>降低在不適當條件下生產的風險</li>
+                <li>減少偏差事件 → 減少調查和報廢成本</li>
+            </ul>
+            <p>ISPE 建議：對關鍵支援系統 (critical support system) 的儀器選高精確度，非關鍵系統可用較低精確度。這符合「風險為基礎」的設計哲學。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：感測器共置 (Co-location)</h4>
+            <p>當「控制」和「監測」同一個 CPP 使用不同感測器時，兩者必須安裝在相同位置。否則可能出現：控制感測器顯示 21.5&deg;C（正常），但監測感測器因為在不同位置讀到 23.5&deg;C（超標），造成混淆和調查負擔。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個溫度感測器安裝在回風口（較暖），另一個安裝在操作台面正上方（較冷）。哪一個更適合作為「代表性量測點」？為什麼？</li>
+                <li>如果校正成本是選擇儀器的考量之一，一支難以現場校正的高精確度感測器和一支容易校正的中等精確度感測器，你如何取捨？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.4 PRODUCTION PROCESS PARAMETERS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec84">8.4 Production Process Parameters / 生產製程參數</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.4 Production Process Parameters</h3>
+
+        <p>The number and diversity of production processes that can be used in sterile product manufacturing facilities are such that a comprehensive discussion of their parameters is not practical within the scope of this Guide.</p>
+
+        <p>Detailed knowledge of the production process in question and application of rigorous design and operation review methods are necessary to identify appropriate systems of control and monitoring. This can be achieved through detailed <span class="key-term">PAT (Process Analytical Technology)</span> and application of process control to achieve proper parameters or conditions that mitigate product quality issues and avoid impact on patient safety.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>本節為何簡短？——設計哲學的暗示</h4>
+            <p>本節刻意簡短，因為生產製程參數（如充填重量、壓塞位置、封蓋力矩等）因產品而異，無法一體適用。但它傳達了兩個重要訊息：</p>
+            <ol>
+                <li><strong>PAT 是首選方法：</strong>使用即時分析技術來監測製程，而非依賴最終檢驗</li>
+                <li><strong>必須經過嚴格的設計審查：</strong>每一個生產製程的控制與監測系統，都需要透過風險評估來量身打造</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：環境參數 vs 製程參數</h4>
+            <p>如果環境參數（溫度、壓差、粒子數）是「舞台的燈光和空調」，那麼製程參數（充填量、壓塞深度、密封完整性）就是「演員的表演」。</p>
+            <p>ISPE Vol.3 主要在設計舞台——環境控制。演員的表演（製程控制）則需要配合特定劇目（產品）來設計，所以本指南只提方法論（PAT + 設計審查），不提具體參數。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用：CDMO 常見的製程參數</h4>
+            <p>雖然本節未列舉，以下是 CDMO 無菌充填線常見的 CPP：</p>
+            <ul>
+                <li><strong>充填重量 (Fill Weight)：</strong>通常 &plusmn; 2-5% 範圍，取決於劑型與容器</li>
+                <li><strong>壓塞位置 (Stopper Placement)：</strong>壓塞高度與歪斜度</li>
+                <li><strong>密封完整性 (Seal Integrity)：</strong>鋁蓋壓合力矩</li>
+                <li><strong>充填速度 (Fill Speed)：</strong>影響起泡與精確度</li>
+                <li><strong>惰氣覆蓋 (Inert Gas Overlay)：</strong>殘氧量控制</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.5 GENERAL DESIGN ISSUES -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec85">8.5 General Design Issues / 一般設計議題</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.5 General Design Issues</h3>
+
+        <p>Computerized system lifecycle activities, such as specification, design, and verification should be scaled according to:</p>
+        <ul>
+            <li>Potential for system to impact patient safety, product quality, and <span class="key-term">data integrity</span> (risk assessment)</li>
+            <li>System complexity and novelty (architecture and categorization of system components)</li>
+            <li>Outcome of supplier assessment (supplier capability)</li>
+        </ul>
+
+        <p>Refer to <span class="key-term">ISPE GAMP 5</span> for further details of these considerations and the scaling of lifecycle activities.</p>
+
+        <p>The following sections discuss cost effective separation of system functions (i.e., monitoring and control) and system choice in the context of typical supplier capabilities.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：電腦化系統生命週期的「分級」原則</h4>
+            <p>不是所有儀控系統都需要同樣嚴格的驗證。ISPE 引用 GAMP 5 的核心理念：<strong>依風險分級 (Risk-Based Approach)</strong>。</p>
+            <p>三個分級維度：</p>
+            <ul>
+                <li><strong>影響程度：</strong>這個系統如果出錯，會影響病患安全嗎？會影響資料完整性嗎？</li>
+                <li><strong>複雜程度：</strong>是簡單的單迴路控制器，還是整合多個子系統的 SCADA？</li>
+                <li><strong>供應商可靠度：</strong>供應商有完善的品質管理系統嗎？軟體開發有遵循 SDLC 嗎？</li>
+            </ul>
+            <p>影響高 + 複雜度高 + 供應商未經驗證 = 需要最完整的驗證文件。影響低 + 成熟簡單系統 + 知名供應商 = 可簡化驗證。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：監控與控制的分離</h4>
+            <p>本節暗示了一個重要的設計策略：將「控制」和「監測」功能分離到不同系統上。例如：</p>
+            <ul>
+                <li><strong>控制：</strong>由 BMS/BAS 負責 HVAC 迴路控制</li>
+                <li><strong>監測：</strong>由獨立的環境監測系統 (EMS) 負責記錄和警報</li>
+            </ul>
+            <p>好處：監測系統獨立於控制系統，可作為「第二道防線」。控制系統故障時，監測系統仍能偵測到偏差。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.6 HVAC CONTROL SYSTEM CHOICE -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec86">8.6 HVAC Control System Choice / HVAC 控制系統選擇</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.6.1 Control System Choice</h3>
+
+        <p>Commercially available <span class="key-term">Building Management Systems/Building Automation Systems (BMS/BAS)</span> are encouraged to be installed in all facilities to monitor critical facility control systems.</p>
+
+        <p>There may be some safety-critical systems that should utilize <span class="key-term">Distributed Control Systems (DCS)</span> and <span class="key-term">Programmable Logic Controllers (PLC)</span> with <span class="key-term">Supervisory Control and Data Acquisition (SCADA)</span>; however, these are primarily targeted at controlling processes.</p>
+
+        <p>HVAC may be monitored and controlled using several control system types. Those designed specifically for HVAC include conventional controllers (typically single loop controls) and, more appropriately, BMS/BAS.</p>
+
+        <p>When specifying systems to control HVAC, the following should be considered:</p>
+        <ul>
+            <li>HVAC's industrial nature in cleanroom applications may not justify use of PLC or DCS based solutions; however, personnel safety issues may justify their use.</li>
+            <li>Pharmaceutical HVAC can be controlled satisfactorily using HVAC industry control systems.</li>
+        </ul>
+
+        <p>Where control is needed for a few simple systems, conventional controls may provide a marginal cost advantage. This advantage is offset by the fact that conventional controls cannot be integrated readily into any future BMS/BAS demanded by site development.</p>
+
+        <p>As the application scale, complexity, and remote monitoring demands increase, the use of BMS/BAS rapidly becomes more cost effective.</p>
+
+        <p>Monitoring of critical environmental parameters can be accomplished via the Process Control System, which should be qualified. The qualification of the BMS/BAS may then become simpler.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>控制系統選擇矩陣</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>系統類型</th>
+                        <th>適用場景</th>
+                        <th>優勢</th>
+                        <th>限制</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BMS/BAS</strong></td>
+                        <td>HVAC、環境監控</td>
+                        <td>成本效益高、擴充性佳、遠端監控</td>
+                        <td>不適合高速製程控制</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DCS</strong></td>
+                        <td>複雜製程控制</td>
+                        <td>高可靠度、整合性強</td>
+                        <td>成本高、HVAC 用途殺雞用牛刀</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLC + SCADA</strong></td>
+                        <td>安全關鍵系統</td>
+                        <td>即時反應速度快</td>
+                        <td>需專業程式設計</td>
+                    </tr>
+                    <tr>
+                        <td><strong>傳統控制器</strong></td>
+                        <td>小規模、簡單系統</td>
+                        <td>初始成本低</td>
+                        <td>無法整合、難以擴充</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：ISPE 明確推薦 BMS/BAS</h4>
+            <p>本節的核心訊息很清楚：<strong>HVAC 用 BMS/BAS，不需要用 DCS 或 PLC。</strong></p>
+            <p>理由：</p>
+            <ul>
+                <li>藥廠 HVAC 的「工業本質」不需要 DCS/PLC 的高速處理能力</li>
+                <li>BMS/BAS 是 HVAC 產業的原生解決方案，供應商生態系統成熟</li>
+                <li>隨著規模增長，BMS/BAS 的成本效益優勢越來越明顯</li>
+            </ul>
+            <p>例外：如果涉及人員安全（如有毒氣體偵測、緊急排氣），則可能需要 PLC/DCS。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：選車的邏輯</h4>
+            <p>用 DCS 控制 HVAC，就像用 F1 賽車送小孩上學——性能遠超需求，但維護成本高昂、操作複雜。</p>
+            <p>BMS/BAS 就像家用休旅車——功能完全滿足需求，維修容易，未來要加裝導航或倒車雷達（擴充功能）也很方便。</p>
+            <p>傳統單迴路控制器就像腳踏車——短距離很好用，但無法帶全家人出門。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>監測與控制分離策略</h4>
+            <p>ISPE 提出一個聰明的簡化策略：</p>
+            <ol>
+                <li>用已驗證的製程控制系統 (Process Control System) 來「監測」關鍵環境參數</li>
+                <li>BMS/BAS 只負責「控制」HVAC</li>
+                <li>結果：BMS/BAS 的確認 (Qualification) 可以簡化，因為關鍵的 CPP 監測已由另一個已驗證的系統承擔</li>
+            </ol>
+            <p>這大幅降低了 BMS/BAS 的驗證範圍與成本，同時不犧牲合規性。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.6.2 AIRBORNE PARTICLE COUNTING -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec862">8.6.2 Airborne Particle Counting / 空氣中粒子計數系統</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.6.2 Airborne Particle Counting</h3>
+
+        <p>The act of <span class="key-term">classification</span> of a space environment, and of <span class="key-term">monitoring</span> that environment "in operation", should be differentiated:</p>
+        <ul>
+            <li>The method for formal classification is specified in <span class="key-term">ISO 14644-1</span>. This standard defines the minimum number of sample locations, the minimum sample size at each location, the class limits, and the method for evaluation of data.</li>
+            <li>Note: In the context of sterile product manufacture, <span class="key-term">EU Annex 1</span> sets some class limits that are different from those found in <span class="key-term">FDA guidance</span> and ISO 14644-1.</li>
+            <li>Monitoring may use similar instrumentation; in this case, specific critical or most important locations are determined from investigation and studies, and these are monitored to demonstrate the performance of critical parts of the controlled environment.</li>
+        </ul>
+
+        <p>Particle counting instruments operate by taking a sample of the air and measuring the particle concentration by evaluation of scattered light in a special optical chamber. Such instruments can measure both the number and size of particles in the size range 0.1 &micro;m to 5.0 &micro;m.</p>
+
+        <p><strong>Particle counting system configurations:</strong></p>
+        <ul>
+            <li><strong>Single portable instruments:</strong> Located close to the environment being classified or monitored. Suitable for evaluating particles 0.1 &micro;m to 5.0 &micro;m. Used for both classification and monitoring.</li>
+            <li><strong>Single fixed instruments with manifold:</strong> Connected to multiple sample locations via tubing arrays. Each location sampled in turn. Suitable only for 0.1 &micro;m to 0.5 &micro;m due to potential drop out of larger particles in transport tubing. Used for monitoring only.</li>
+            <li><strong>Multiple miniature point-of-use counters:</strong> Each located close to a monitoring location, connected to a data acquisition system. Suitable for 0.1 &micro;m to 5.0 &micro;m. Used for monitoring only.</li>
+        </ul>
+
+        <p><strong>Major points to consider for particle monitoring systems:</strong></p>
+        <ul>
+            <li>Difficulty of correlating data from the relatively small number of sample points of a monitoring system compared to the larger number used for classification</li>
+            <li>Identifying the room "worst case" points and relating them to overall room conditions</li>
+            <li>Determination of an appropriate sampling frequency</li>
+            <li>Management and interpretation of potentially large amounts of data</li>
+            <li>Determination of alert and action levels</li>
+            <li>Procedures for excursion beyond alert and action levels</li>
+            <li>Re-evaluation of sample points if there is a change in room layout</li>
+            <li>Special attention to the distance between air collection point and counter: inner diameter of tubing, airflow throughput and turbulence (Reynolds numbers), particle drop-out impact, tubing material (surface roughness, electrostatic charge), geometry of flow paths (kinks, obstructions, sharp curves)</li>
+        </ul>
+
+        <p>Where particle concentrations are very low, monitoring system alert and action levels may be better expressed using frequency (pattern) of seeing low counts rather than trying to discriminate between very low numbers.</p>
+
+        <div class="quote-box">
+            <p><strong>2004 FDA Guidance:</strong> "Regular monitoring should be performed during each production shift. We recommend conducting nonviable particle monitoring with a remote counting system. These systems are capable of collecting more comprehensive data and are generally less invasive than portable particle counters."</p>
+        </div>
+
+        <div class="quote-box">
+            <p><strong>2009 EU Annex 1:</strong> "For Grade A zone, particle monitoring should be undertaken for the full duration of critical processing, including equipment assembly, except where justified by contaminants in the process that would damage the particle counter or present a hazard... It is recommended that a similar system be used for Grade B zones although the sample frequency may be decreased."</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>分類 (Classification) vs 監測 (Monitoring)——不可混淆</h4>
+            <p>這是法規稽核中常見的混淆點：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>分類 (Classification)</th>
+                        <th>監測 (Monitoring)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>目的</td>
+                        <td>證明潔淨室「符合」特定等級</td>
+                        <td>證明潔淨室持續「維持」該等級</td>
+                    </tr>
+                    <tr>
+                        <td>依據</td>
+                        <td>ISO 14644-1</td>
+                        <td>SOP + 風險評估</td>
+                    </tr>
+                    <tr>
+                        <td>取樣點數</td>
+                        <td>依 ISO 14644-1 公式計算（較多）</td>
+                        <td>選擇關鍵位置（較少）</td>
+                    </tr>
+                    <tr>
+                        <td>頻率</td>
+                        <td>定期（如每年重新分類）</td>
+                        <td>持續或每班次</td>
+                    </tr>
+                    <tr>
+                        <td>狀態</td>
+                        <td>At rest 或 In operation</td>
+                        <td>In operation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="concept-box">
+            <h4>三種粒子計數系統比較</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>類型</th>
+                        <th>粒徑範圍</th>
+                        <th>用途</th>
+                        <th>優缺點</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>攜帶式 (Portable)</td>
+                        <td>0.1-5.0 &micro;m</td>
+                        <td>分類 + 監測</td>
+                        <td>靈活但需人工操作，侵入性較高</td>
+                    </tr>
+                    <tr>
+                        <td>固定式 + 歧管 (Manifold)</td>
+                        <td>0.1-0.5 &micro;m 限定</td>
+                        <td>僅監測</td>
+                        <td>自動化高，但管路損失大粒子</td>
+                    </tr>
+                    <tr>
+                        <td>多點式微型 (Point-of-use)</td>
+                        <td>0.1-5.0 &micro;m</td>
+                        <td>僅監測</td>
+                        <td>最準確但成本最高</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：管路設計是隱藏的關鍵</h4>
+            <p>固定式歧管系統只能量 0.1-0.5 &micro;m，因為 &ge; 0.5 &micro;m 的大粒子在輸送管路中會「沉降」（drop out）。影響因素包括：</p>
+            <ul>
+                <li><strong>管路內徑：</strong>太細則流速過高產生紊流</li>
+                <li><strong>管路長度：</strong>越長，大粒子損失越多</li>
+                <li><strong>管路材質：</strong>內壁粗糙度和靜電荷會吸附粒子</li>
+                <li><strong>彎頭與障礙物：</strong>銳角彎頭是粒子損失的主要原因</li>
+            </ul>
+            <p>設計時必須計算雷諾數 (Reynolds Number)，確保管內流態在適當範圍內。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：FDA vs EU Annex 1 的差異</h4>
+            <p>兩大法規對粒子監測的要求有微妙差異：</p>
+            <ul>
+                <li><strong>FDA：</strong>建議每班次監測，推薦使用遠端計數系統（侵入性低、資料更全面）</li>
+                <li><strong>EU Annex 1：</strong>Grade A 區必須在整個關鍵製程期間全程監測（要求更嚴格），Grade B 可降低頻率</li>
+            </ul>
+            <p>如果產品同時出口歐美，必須取兩者中的嚴格標準——即 Grade A 全程連續監測。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：低計數的「頻率」表達法</h4>
+            <p>粒子數極低時（例如 Grade A 區經常是 0 或 1 個粒子），單純看數字沒有意義——0 和 1 的差異不具統計意義。</p>
+            <p>ISPE 建議改用「頻率模式」：例如「每 100 次取樣中有 5 次偵測到 &ge; 1 個粒子」比「平均 0.05 個粒子/m&sup3;」更有資訊量。就像判斷一個地區是否安全，不是看「平均犯罪率 0.001」，而是看「過去一年有 3 次事件，集中在週末深夜」——模式比數字更有意義。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你正在為一條新的充填線選擇粒子監測系統。充填線在 Grade A 隔離器內，需同時滿足 FDA 和 EU Annex 1。你會選擇哪種系統配置？為什麼？</li>
+                <li>如果歧管式系統的取樣管路從粒子計數器到最遠取樣點有 15 米，你會擔心什麼問題？如何驗證管路損失是否可接受？</li>
+                <li>Room layout 變更後，為什麼必須重新評估取樣點位置？請舉一個具體例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-title" id="summary">Section Summary / 本章重點摘要</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Key Takeaways</h2>
+
+        <div class="concept-box">
+            <h4>Chapter 8 Summary</h4>
+            <ol>
+                <li><strong>C&amp;I systems</strong> are the nervous system of sterile manufacturing facilities &mdash; they control, monitor, and record parameters that affect patient safety and product quality.</li>
+                <li><strong>Environmental CPPs</strong> (temperature, RH, differential pressure, particle count) can be managed through active or passive control strategies, each with different monitoring frequency requirements.</li>
+                <li><strong>Alert and Action alarms</strong> provide a two-tier warning system. Alarms must latch (not self-cancel) and any time delays must be justified and qualified.</li>
+                <li>A clear <strong>hierarchy of limits</strong> (Process Limits &gt; Facility Design Limits &gt; Alert Limits &gt; Normal Operating Conditions) ensures adequate safety margins at every level.</li>
+                <li><strong>Instrument selection</strong> must balance accuracy vs. cost, with the Instrument Permitted Limit defining the minimum acceptable accuracy. Sensors must be co-located when used for both control and monitoring of the same CPP.</li>
+                <li><strong>BMS/BAS</strong> is the recommended control system for HVAC in pharmaceutical facilities. DCS/PLC/SCADA should be reserved for safety-critical or complex process control applications.</li>
+                <li><strong>Airborne particle counting</strong> requires clear differentiation between classification (ISO 14644-1) and monitoring. System configuration must account for tubing losses, and both FDA and EU Annex 1 requirements must be met for global supply.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>重點摘要</h2>
+
+        <div class="concept-box">
+            <h4>第八章摘要</h4>
+            <ol>
+                <li><strong>儀控系統 (C&amp;I)</strong> 是無菌廠的神經系統——控制、監測、記錄影響病患安全與產品品質的參數。</li>
+                <li><strong>環境 CPP</strong>（溫度、濕度、壓差、粒子數）可透過主動或被動控制策略管理，監測頻率依策略而異。</li>
+                <li><strong>Alert 與 Action 警報</strong>構成雙層預警系統。警報必須鎖存（不自動取消），時間延遲必須有合理依據且經過確認。</li>
+                <li><strong>四層限值架構</strong>（製程限值 &gt; 設施設計限值 &gt; 警示限值 &gt; 正常操作條件）確保每一層都有足夠的安全裕度。</li>
+                <li><strong>儀器選擇</strong>必須平衡精確度與成本，「儀器允許限值」定義了最低可接受精確度。控制與監測同一 CPP 的感測器必須共置。</li>
+                <li><strong>BMS/BAS</strong> 是藥廠 HVAC 的推薦控制系統。DCS/PLC/SCADA 應保留給安全關鍵或複雜製程控制。</li>
+                <li><strong>空氣中粒子計數</strong>必須區分「分類」（ISO 14644-1）和「監測」。系統配置必須考慮管路損失，同時供應全球市場須滿足 FDA 和 EU Annex 1 雙重要求。</li>
+            </ol>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>CDMO 營運關鍵行動項目</h4>
+            <ul>
+                <li>確認所有環境 CPP 都有明確的四層限值架構文件</li>
+                <li>審查 BMS 警報是否為鎖存式，時間延遲是否有文件化依據</li>
+                <li>評估儀器精確度是否滿足「儀器允許限值」要求</li>
+                <li>確認控制與監測感測器的共置狀態</li>
+                <li>審查粒子監測系統是否同時滿足 FDA 與 EU Annex 1 要求</li>
+                <li>確認歧管式系統的管路損失經過驗證</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-container -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol. 3, 3rd Edition (2018): Sterile Product Manufacturing Facilities</p>
+    <p>Chapter 8: Control and Instrumentation | Pages 157&ndash;166</p>
+    <p>Educational Material &mdash; For Training and Reference Purposes</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
+
+<script>
+// Back to top visibility
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

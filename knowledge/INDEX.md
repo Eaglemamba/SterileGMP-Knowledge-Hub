@@ -712,6 +712,42 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 8. Change Management & Good Documentation Practice (Ch12-13, p89-104)
 9. Implementation Strategies & Key Appendices (Ch14+App, p105+)
 
+## ISPE/ISPE-Vol3-Complete.md
+**Report:** ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities
+**Pages:** p1–p244 | **Sections:** 21 (13 chapters, split into subsections)
+
+**Covers questions about:**
+- Sterile manufacturing facility design: regulatory basis (EU GMP Annex 1, FDA Aseptic Guidance, ISO 14644)
+- Cleanroom area classification: Grade A/B/C/D, ISO 5/7/8, at rest vs in operation
+- Risk-based facility design: Quality by Design (QbD), ICH Q9 applied to facility layout
+- Process equipment for sterile manufacturing: formulation, filling, lyophilization, washing, sterilization, inspection
+- Architecture and layout: cleanroom wall/ceiling/floor systems, material/personnel flow, pressure cascades, airlocks
+- HVAC system design: air change rates, HEPA filtration, temperature/humidity control, energy efficiency
+- Utility systems: WFI, purified water, clean steam, compressed gases, CIP/SIP
+- Electrical and control/instrumentation: BMS, SCADA, alarm management, door interlocks
+- Barrier and isolator technology: oRABS vs cRABS vs isolator comparison, VHP decontamination, glove integrity
+- Environmental monitoring within barriers, leak rate testing, maintenance and training
+- General considerations: waste management, health & safety, site selection, energy, security
+- HVAC engineering appendix: air change rate calculations, particle generation, UAF design, pressure control
+
+**Key terms:** Grade A/B/C/D, ISO 14644, cleanroom, RABS (oRABS/cRABS), isolator, HVAC, HEPA, UAF (unidirectional air flow), differential pressure, air change rate, WFI, clean steam, CIP, SIP, lyophilizer, depyrogenation tunnel, airlock, pass-through, gowning, pressure cascade, smoke study, VHP, BMS, SCADA, QbD, CQA, CPP
+
+**Sections:**
+0. Introduction (Ch1, p9-16)
+1a. Regulatory & Design Concepts (Ch2a, p17-26)
+1b. Classification & Integrated Design (Ch2b, p27-36)
+2a-2d. Process Equipment (Ch3, p37-78) — 4 parts
+3a-3c. Architecture & Layout (Ch4, p79-106) — 3 parts
+4a-4c. HVAC (Ch5, p107-142) — 3 parts
+5. Utility Systems (Ch6, p143-150)
+6. Electrical & Controls (Ch7-8, p151-166)
+7a-7b. Barrier & Isolator Technology (Ch9, p167-188) — 2 parts
+8. General Considerations (Ch10, p189-198)
+9a-9b. Appendix 1: HVAC Engineering (Ch11, p199-222) — 2 parts
+10. References & Glossary (Ch12-13, p223-244)
+
+---
+
 ## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
@@ -825,6 +861,16 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | CSV, data backup, true copy, raw data / 電腦系統驗證、資料備份、真實副本 | TR84 |
 | Big Data, IoT in pharma, continuous manufacturing data / 大數據、製藥物聯網 | TR84 |
 | DI worked examples: API, FDF, sterility, packaging / 資料完整性案例：原料藥、製劑、無菌、包裝 | TR84 |
+| Sterile facility design, cleanroom layout, facility architecture / 無菌設施設計、潔淨室佈局 | ISPE-Vol3 |
+| Cleanroom classification, Grade A/B/C/D, ISO 14644 / 潔淨室分級、A/B/C/D級 | ISPE-Vol3 |
+| HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 |
+| Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 |
+| oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
+| WFI system, clean steam, utility systems for sterile / 注射用水、潔淨蒸汽、無菌公用工程 | ISPE-Vol3 |
+| Sterile facility material flow, personnel flow, gowning rooms / 物料流、人員流、更衣室設計 | ISPE-Vol3 |
+| Lyophilizer, depyrogenation tunnel, sterile process equipment / 凍乾機、去熱原隧道、無菌製程設備 | ISPE-Vol3 |
+| Smoke study, airflow visualization, HVAC qualification / 煙霧測試、氣流可視化、HVAC確效 | ISPE-Vol3 |
+| VHP decontamination cycle, biological indicator, isolator leak rate / VHP除污、生物指示劑、隔離器洩漏率 | ISPE-Vol3 |
 
 ## Not Covered in This Knowledge Base
 
@@ -861,7 +907,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
@@ -985,3 +1031,12 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Computer System Validation / CSV (電腦系統驗證)**
 → TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
+
+**Sterile Facility Design / Cleanroom Architecture (無菌設施設計/潔淨室建築)**
+→ ISPE-Vol3 ★★★ (complete facility design guide: classification, HVAC, architecture, utilities, barriers) | PtC-12 ★★ (RABS facility integration) | PtC-14 ★★ (ATMP facility) | PtC-15 ★★ (mobile/modular facility) | TR90 ★★ (facility as CCS element)
+
+**HVAC / Air Handling / Environmental Control (暖通空調/環境控制)**
+→ ISPE-Vol3 ★★★ (complete HVAC design + engineering appendix: air change rates, HEPA, pressure cascades, UAF, smoke studies) — single primary source
+
+**Barrier Technology: RABS & Isolator (屏障技術: RABS與隔離器)**
+→ ISPE-Vol3 ★★★ (oRABS/cRABS/isolator comparison, design, decontamination, EM, leak testing) | PtC-12 ★★★ (RABS operational detail) | PtC-Isolators ★★★ (isolator operational detail) | TR90 ★★ (CCS barrier context)

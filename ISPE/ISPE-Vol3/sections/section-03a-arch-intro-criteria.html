@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4a: Architecture & Layout (4.1-4.3) | ISPE Vol.3</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Chapter 4a: Architecture &amp; Layout (4.1&ndash;4.3) / &#24314;&#31689;&#20296;&#23616;&#65288;&#19978;&#65289;</h1>
+    <div class="subtitle">ISPE Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities (3rd Ed. 2018)</div>
+    <div class="page-info">ISPE Baseline Guide Vol. 3 (3rd Ed.) | p79 &ndash; p91</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives / &#23416;&#32722;&#30446;&#27161;</h3>
+        <ol>
+            <li>Understand the three fundamental facility design approaches for product protection: spatial separation, procedural means, and time separation (campaigning)</li>
+            <li>Differentiate between open processing (with and without barrier technology) and closed processing for aseptic production</li>
+            <li>Identify the key process & operational considerations that drive facility layout decisions</li>
+            <li>Explain the programming process for layout design: goals, block flow diagrams, zoning diagrams, and space planning</li>
+            <li>Describe the principles of unidirectional material and personnel flows and their impact on contamination control</li>
+            <li>Recognize additional layout considerations including fire protection, cost optimization, and service distribution</li>
+        </ol>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>Section Contents / &#31456;&#31680;&#30446;&#37636;</h3>
+        <div class="toc-grid">
+            <a href="#sec-4-1">4.1 Introduction</a>
+            <a href="#sec-4-1-1">4.1.1 Facility Design Approaches</a>
+            <a href="#sec-4-1-2">4.1.2 Design Approach Implementation</a>
+            <a href="#sec-4-1-3">4.1.3 Concurrent Production</a>
+            <a href="#sec-4-2">4.2 General Design Criteria</a>
+            <a href="#sec-4-2-1">4.2.1 Process &amp; Operational</a>
+            <a href="#sec-4-2-2">4.2.2 Site &amp; Building</a>
+            <a href="#sec-4-2-3">4.2.3 Facility Fit</a>
+            <a href="#sec-4-3">4.3 Layout Considerations</a>
+            <a href="#sec-4-3-flow">4.3.7 Material/Personnel Flows</a>
+            <a href="#sec-4-3-add">4.3.8 Additional Layout Issues</a>
+            <a href="#sec-4-3-cost">4.3.9 Cost &amp; Fire Protection</a>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.1: INTRODUCTION                                      -->
+    <!-- ============================================================= -->
+    <h2 class="section-title" id="sec-4-1">4.1 Introduction</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.1 Introduction</h3>
+            <p>This chapter addresses the importance of integrated design and examines considerations for facility layout, together with the architectural detailing and finish requirements. The key concept emphasized in this chapter is <span class="key-term">risk assessment</span> and how it integrates into facility design.</p>
+            <p>A risk assessment should appropriately evaluate where the product is at risk and to address and mitigate the potential for product chemical or bio-contamination by using facility design approaches.</p>
+            <p>The facility design approaches addressed in this chapter are:</p>
+            <ul>
+                <li>Product protection by <strong>spatial (physical) separation</strong></li>
+                <li>Product protection by <strong>procedural means</strong></li>
+                <li>Product protection using <strong>time separation</strong> (also referred to as "campaigning" or "temporal segregation")</li>
+            </ul>
+            <p>Implementation of these approaches is determined by three basic categories for aseptic production:</p>
+            <ul>
+                <li><strong>Open processing aseptic production:</strong> e.g., filling of open vials in an isolator where product is exposed to the environment within the isolator</li>
+                <li><strong>Closed processing aseptic production:</strong> e.g., direct connections of formulation charging containers to formulation vessels via aseptic transfer valves</li>
+                <li><strong>Open processing non-aseptic production</strong> for terminally sterilized products: measures should minimize bioburden prior to sterilization</li>
+            </ul>
+            <p><em>Note: The term "product protection" as used in this chapter includes protecting the product, product contact sterile processing surfaces, and protecting the prepared primary components and containers for filling.</em></p>
+        </div>
+        <div class="right-column">
+            <h3>&#31532;&#22235;&#31456; &#24341;&#35328;</h3>
+            <p>&#26412;&#31456;&#25506;&#35342;&#25972;&#21512;&#35373;&#35336;&#30340;&#37325;&#35201;&#24615;&#65292;&#20006;&#27298;&#35222;&#35373;&#26045;&#20296;&#23616;&#12289;&#24314;&#31689;&#32048;&#37096;&#33287;&#39166;&#38754;&#35201;&#27714;&#12290;&#26412;&#31456;&#30340;&#26680;&#24515;&#27010;&#24565;&#26159;<span class="key-term">&#39080;&#38570;&#35413;&#20272;</span>&#21450;&#20854;&#22914;&#20309;&#34701;&#20837;&#35373;&#26045;&#35373;&#35336;&#12290;</p>
+            <p>&#39080;&#38570;&#35413;&#20272;&#25033;&#36969;&#30070;&#35413;&#20272;&#29986;&#21697;&#38754;&#33256;&#39080;&#38570;&#30340;&#29872;&#31680;&#65292;&#20006;&#36879;&#36942;&#35373;&#26045;&#35373;&#35336;&#26041;&#27861;&#20358;&#22240;&#25033;&#33287;&#38477;&#20302;&#28507;&#22312;&#30340;&#21270;&#23416;&#25110;&#29983;&#29289;&#27745;&#26579;&#12290;</p>
+
+            <div class="concept-box">
+                <h4>&#19977;&#22823;&#35373;&#35336;&#26041;&#27861;</h4>
+                <ol>
+                    <li><strong>&#31354;&#38291;&#65288;&#29289;&#29702;&#65289;&#20998;&#38548;</strong> &mdash; &#36879;&#36942;&#23526;&#39636;&#23631;&#38556;&#23559;&#28500;&#28136;&#21312;&#33287;&#38750;&#28500;&#28136;&#21312;&#38548;&#38626;</li>
+                    <li><strong>&#31243;&#24207;&#25163;&#27573;</strong> &mdash; &#36879;&#36942; SOP&#12289;&#25805;&#20316;&#22521;&#35347;&#33287;&#24037;&#20316;&#25351;&#20196;&#36914;&#34892;&#25511;&#21046;</li>
+                    <li><strong>&#26178;&#38291;&#20998;&#38548;&#65288;&#25136;&#24441;&#24335;&#29983;&#29986;&#65289;</strong> &mdash; &#19981;&#21516;&#29986;&#21697;&#25110;&#25805;&#20316;&#22312;&#19981;&#21516;&#26178;&#27573;&#36914;&#34892;&#65292;&#20013;&#38291;&#26045;&#20197;&#28165;&#28500;&#33287;&#25563;&#27683;</li>
+                </ol>
+            </div>
+
+            <div class="analogy-box">
+                <h4>&#27604;&#21947;&#65306;&#37291;&#38498;&#25163;&#34899;&#23460;&#30340;&#28961;&#33740;&#20445;&#35703;</h4>
+                <p>&#24819;&#20687;&#19968;&#38291;&#25163;&#34899;&#23460;&#65306;&#29289;&#29702;&#20998;&#38548;&#23601;&#20687;&#28961;&#33740;&#38272;&#33287;&#29572;&#38364;&#65307;&#31243;&#24207;&#25163;&#27573;&#23601;&#20687;&#27927;&#25163;&#33287;&#31359;&#25163;&#34899;&#34915;&#27969;&#31243;&#65307;&#26178;&#38291;&#20998;&#38548;&#23601;&#20687;&#22312;&#20841;&#21488;&#25163;&#34899;&#20043;&#38291;&#36914;&#34892;&#25163;&#34899;&#23460;&#28040;&#27602;&#12290;&#19977;&#32773;&#37117;&#26159;&#28858;&#20102;&#20445;&#35703;&#30149;&#20154;&#65288;&#29986;&#21697;&#65289;&#20813;&#21463;&#27745;&#26579;&#12290;</p>
+            </div>
+
+            <p>&#19977;&#39006;&#22522;&#26412;&#28961;&#33740;&#29983;&#29986;&#27169;&#24335;&#65306;</p>
+            <ul>
+                <li><strong>&#38283;&#25918;&#24335;&#28961;&#33740;&#29983;&#29986;</strong>&#65306;&#29986;&#21697;&#26292;&#38706;&#26044;&#29872;&#22659;&#65288;&#22914;&#38548;&#38626;&#22120;&#20839;&#30340;&#35037;&#22635;&#25805;&#20316;&#65289;</li>
+                <li><strong>&#23494;&#38281;&#24335;&#28961;&#33740;&#29983;&#29986;</strong>&#65306;&#29986;&#21697;&#22312;&#23494;&#23553;&#31649;&#36335;&#33287;&#23481;&#22120;&#20839;&#27969;&#36681;</li>
+                <li><strong>&#38283;&#25918;&#24335;&#38750;&#28961;&#33740;&#29983;&#29986;</strong>&#65306;&#26368;&#32066;&#28357;&#33740;&#29986;&#21697;&#65292;&#20173;&#38656;&#25511;&#21046;&#29983;&#29289;&#36000;&#33655;</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== 4.1.1 FACILITY DESIGN APPROACHES ===== -->
+    <h2 class="section-title" id="sec-4-1-1">4.1.1 Facility Design Approaches</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.1.1 Facility Design Approaches</h3>
+            <p>Facility design approaches for product protection have traditionally been achieved by procedural segregation, spatial segregation, by campaigning (segregation by time), or by a combination of all three. This Guide recommends the use of <span class="key-term">spatial separation</span>, where practical, to maintain protection of the ISO 5/Grade A environment.</p>
+            <p>Examples of product protection by spatial (or physical) separation include:</p>
+            <ul>
+                <li><strong>An open process placed within either an isolator or RABS:</strong>
+                    <ul>
+                        <li>In an <strong>isolator</strong> setup, the surrounding room environment does not come in contact with the product. The level of finish and HVAC classification of the surrounding room can be reduced.</li>
+                        <li>In a <strong>RABS</strong> setup, most interactions occur through integral glove ports. The surrounding environment should meet ISO 7/Grade B specifications. The space next to the RABS into which doors open should meet LP/GAAS conditions.</li>
+                    </ul>
+                </li>
+                <li><strong>Closed process systems</strong> where the product is processed within closed or sealed process equipment</li>
+                <li><strong>Dedicated gowning rooms</strong> for ingress (entering) and egress (exiting) to prevent contamination from egress garments reaching ingress garments</li>
+            </ul>
+            <p>An example of product protection using time separation:</p>
+            <ul>
+                <li><strong>Shared gowning room</strong> for bidirectional traffic, but with non-concurrent gowning and de-gowning, with a suitable air exchange clean-up period</li>
+            </ul>
+            <p>The use of separate routes for personnel ingress and egress into aseptic areas of classification ISO 7/Grade B and cleaner is recommended, where possible.</p>
+        </div>
+        <div class="right-column">
+            <h3>4.1.1 &#35373;&#26045;&#35373;&#35336;&#26041;&#27861;</h3>
+            <p>&#26412;&#25351;&#21335;&#25512;&#34214;&#22312;&#21487;&#34892;&#24773;&#27841;&#19979;&#20778;&#20808;&#20351;&#29992;<span class="key-term">&#31354;&#38291;&#20998;&#38548;</span>&#20358;&#32173;&#35703; ISO 5/Grade A &#29872;&#22659;&#30340;&#20445;&#35703;&#12290;</p>
+
+            <div class="note-box">
+                <h4>&#37325;&#40670;&#65306;&#38548;&#38626;&#22120; vs. RABS &#23565;&#21608;&#22285;&#29872;&#22659;&#30340;&#24433;&#38911;</h4>
+                <ul>
+                    <li><strong>&#38548;&#38626;&#22120;</strong>&#65306;&#21608;&#22285;&#25151;&#38291;&#33287;&#29986;&#21697;&#23436;&#20840;&#38548;&#38626;&#65292;&#25151;&#38291;&#31561;&#32026;&#21487;&#38477;&#20302;&#65288;ISO 8/Grade C &#25110;&#26356;&#20302;&#65289;</li>
+                    <li><strong>RABS</strong>&#65306;&#20598;&#29246;&#38656;&#38283;&#38272;&#65292;&#21608;&#22285;&#29872;&#22659;&#20173;&#38656;&#32173;&#25345; ISO 7/Grade B&#65292;&#38272;&#38283;&#21855;&#20596;&#38656;&#28415;&#36275; LP/GAAS &#26781;&#20214;</li>
+                </ul>
+            </div>
+
+            <p>&#31354;&#38291;&#20998;&#38548;&#30340;&#20856;&#22411;&#25033;&#29992;&#65306;</p>
+            <ul>
+                <li>&#38283;&#25918;&#35069;&#31243;&#32622;&#26044;&#38548;&#38626;&#22120;&#25110; RABS &#20839;</li>
+                <li>&#23494;&#38281;&#35069;&#31243;&#31995;&#32113;&#65288;&#23494;&#23553;&#31649;&#36335;&#36939;&#36865;&#29986;&#21697;&#65289;</li>
+                <li>&#23560;&#29992;&#31359;&#34915;&#23460;&#65306;&#36914;&#20837;&#33287;&#38626;&#38283;&#20998;&#38283;&#65292;&#38450;&#27490;&#33067;&#34915;&#27745;&#26579;&#24433;&#38911;&#31359;&#34915;&#21312;</li>
+            </ul>
+
+            <div class="analogy-box">
+                <h4>&#27604;&#21947;&#65306;&#20998;&#38548;&#26041;&#24335;&#30340;&#36984;&#25799;</h4>
+                <p>&#24819;&#20687;&#19968;&#23478;&#39184;&#24307;&#30340;&#24282;&#25151;&#21205;&#32218;&#65306;&#36914;&#26009;&#21475;&#33287;&#20986;&#33756;&#21475;&#20998;&#38283;&#65288;&#31354;&#38291;&#20998;&#38548;&#65289;&#26159;&#26368;&#20339;&#26041;&#26696;&#65307;&#20294;&#23567;&#39184;&#24307;&#21487;&#33021;&#21482;&#33021;&#29992;&#21516;&#19968;&#20491;&#38272;&#20294;&#37679;&#38283;&#26178;&#38291;&#65288;&#26178;&#38291;&#20998;&#38548;&#65289;&#12290;&#24288;&#25151;&#35215;&#27169;&#33287;&#39080;&#38570;&#27770;&#23450;&#20102;&#21738;&#31278;&#26041;&#27861;&#26368;&#36969;&#21512;&#12290;</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.1.2 DESIGN APPROACH IMPLEMENTATION ===== -->
+    <h2 class="section-title" id="sec-4-1-2">4.1.2 Design Approach Implementation</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.1.2 Design Approach Implementation</h3>
+            <p>There are three basic facility types related to open processing sterile product manufacturing:</p>
+            <ul>
+                <li>Open processing aseptic production <strong>in the absence of barrier technology</strong></li>
+                <li>Open processing aseptic production <strong>utilizing barrier technology</strong></li>
+                <li>Open processing <strong>non-aseptic production</strong> for terminally sterilized products</li>
+            </ul>
+
+            <p><strong>4.1.2.1 Open Processing Without Barrier Technology:</strong> Where open aseptic production occurs without barrier technology, operations should be conducted within a laminar flow cabinet. ISO 5/Grade A conditions should be met within the cabinet. The surrounding room should meet ISO 7/Grade B requirements.</p>
+            <p>Design measures include:</p>
+            <ul>
+                <li>Room air classification, zoning, directional airflow, and monitoring to protect the product</li>
+                <li>Personnel gowning areas and material airlocks providing step-up transitions to cleaner classifications</li>
+                <li><span class="key-term">Coved corners</span> at floor, wall, and ceiling intersections to facilitate room cleaning</li>
+                <li>Flush detailing to minimize horizontal surfaces and difficult-to-clean areas</li>
+                <li>Low wall HVAC exhaust points designed for easy cleaning; vertically mounted louvered grills should be avoided</li>
+            </ul>
+
+            <p><strong>4.1.2.2 RABS:</strong> The aseptic critical zone is separated from the surrounding environment via barrier walls and ISO 5/Grade A air overspill. Most intrusions use glove ports; however, occasional door openings may be needed, requiring ISO 7/Grade B surrounding environment.</p>
+
+            <p><strong>4.1.2.3 Isolators:</strong> Isolators provide a fully enclosed and segregated aseptic environment. The critical zone is reduced to the volume of air inside the isolator. Key reductions may include: room classification, gowning requirements, number of airlocks, extent of room cleaning, and room finishes (still meeting ISO 8/Grade C minimum).</p>
+
+            <p><strong>4.1.2.4 Non-Aseptic Processing (Terminal Sterilization):</strong> The process should occur within RABS protected by LP/GAAS. The local environment should not add particulates or bioburden that the terminal sterilization process cannot remove.</p>
+
+            <p><strong>4.1.2.5 Closed System Aseptic Processing:</strong> Defined with examples in Section 2.8.2.</p>
+        </div>
+        <div class="right-column">
+            <h3>4.1.2 &#35373;&#35336;&#26041;&#27861;&#23526;&#26045;</h3>
+            <p>&#38283;&#25918;&#24335;&#28961;&#33740;&#35069;&#36896;&#26377;&#19977;&#31278;&#22522;&#26412;&#35373;&#26045;&#39006;&#22411;&#65306;</p>
+
+            <div class="concept-box">
+                <h4>&#19977;&#31278;&#38283;&#25918;&#35069;&#31243;&#35373;&#26045;&#27604;&#36611;</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>&#35373;&#26045;&#39006;&#22411;</th>
+                            <th>&#33256;&#30028;&#21312; (ISO 5)</th>
+                            <th>&#21608;&#22285;&#25151;&#38291;</th>
+                            <th>&#28500;&#28136;&#31561;&#32026;&#24433;&#38911;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&#28961;&#23631;&#38556;&#25216;&#34899;</td>
+                            <td>&#23652;&#27969;&#32617;</td>
+                            <td>ISO 7/Grade B</td>
+                            <td>&#26368;&#22196;&#26684;</td>
+                        </tr>
+                        <tr>
+                            <td>RABS</td>
+                            <td>&#23631;&#38556;&#22721; + &#27683;&#27969;&#22806;&#28322;</td>
+                            <td>ISO 7/Grade B</td>
+                            <td>&#22196;&#26684;</td>
+                        </tr>
+                        <tr>
+                            <td>&#38548;&#38626;&#22120;</td>
+                            <td>&#20840;&#23553;&#38281;&#33108;&#39636;</td>
+                            <td>ISO 8/Grade C &#25110;&#26356;&#20302;</td>
+                            <td>&#21487;&#25918;&#23532;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>&#37325;&#40670;&#65306;&#38548;&#38626;&#22120;&#25216;&#34899;&#30340;&#31680;&#30465;&#25928;&#26524;</h4>
+                <p>&#20351;&#29992;&#38548;&#38626;&#22120;&#26178;&#65292;&#21487;&#33021;&#28187;&#23569;&#30340;&#38917;&#30446;&#65306;</p>
+                <ul>
+                    <li>&#25151;&#38291;&#31354;&#27683;&#20998;&#32026;&#33287;&#30435;&#28204;&#35201;&#27714;</li>
+                    <li>&#31359;&#34915;&#31561;&#32026;&#35201;&#27714;</li>
+                    <li>&#27683;&#38296;&#33287;&#31359;&#34915;&#23460;&#25976;&#37327;</li>
+                    <li>&#28165;&#28500;&#31684;&#22285;&#33287;&#38971;&#29575;</li>
+                    <li>&#25151;&#38291;&#39166;&#38754;&#33287;&#32048;&#37096;&#35201;&#27714;&#65288;&#20294;&#20173;&#38656;&#28415;&#36275;&#26368;&#20302;&#27161;&#28310;&#65289;</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4>&#27880;&#24847;&#65306;&#29289;&#26009;&#27969;&#20173;&#38656;&#25511;&#21046;</h4>
+                <p>&#21363;&#20351;&#20351;&#29992;&#38548;&#38626;&#22120;&#65292;&#29289;&#26009;&#12289;&#35069;&#31243;&#12289;&#20154;&#21729;&#12289;&#24290;&#26820;&#29289;&#21644;&#35373;&#20633;&#30340;&#31227;&#21205;&#36335;&#24465;&#20173;&#38656;&#36969;&#30070;&#20998;&#38626;&#65292;&#20197;&#38450;&#27490;&#28151;&#28102;&#21644;&#20132;&#21449;&#27745;&#26579;&#12290;&#39080;&#38570;&#35413;&#20272;&#25033;&#30906;&#23450;&#20998;&#38626;&#35201;&#27714;&#65292;&#29305;&#21029;&#26159;&#22312;&#22810;&#29986;&#21697;&#20341;&#34892;&#35069;&#36896;&#26178;&#12290;</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.1.3 CONCURRENT PRODUCTION ===== -->
+    <h2 class="section-title" id="sec-4-1-3">4.1.3 Concurrent Production</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.1.3 Concurrent Production</h3>
+            <p>Although concurrent production of multiple products (each in its own fully segregated system in the same area) is technically feasible, the practical application can generate many concerns regarding the potential for mix-ups.</p>
+            <p>Such a facility would have to rely heavily on procedures and automation to control the status of all containers, equipment, and components associated with different lots and stages of production.</p>
+            <p>In accordance with GMPs, it is generally recommended to provide <span class="key-term">physical barriers</span> and adequate space to control materials rather than to rely on procedures. Concurrent multi-product facilities, which place different products in separate rooms, provide a robust engineering solution for prevention of lot mix-up and errors.</p>
+        </div>
+        <div class="right-column">
+            <h3>4.1.3 &#20341;&#34892;&#29983;&#29986;</h3>
+            <p>&#22810;&#29986;&#21697;&#20341;&#34892;&#29983;&#29986;&#22312;&#25216;&#34899;&#19978;&#21487;&#34892;&#65292;&#20294;&#23526;&#38555;&#25805;&#20316;&#20013;&#28151;&#28102;&#39080;&#38570;&#24456;&#39640;&#12290;</p>
+
+            <div class="note-box">
+                <h4>GMP &#21407;&#21063;&#65306;&#24037;&#31243;&#25163;&#27573;&#20778;&#26044;&#31243;&#24207;&#25163;&#27573;</h4>
+                <p>GMP &#35215;&#31684;&#19968;&#33268;&#25512;&#34214;&#20351;&#29992;&#29289;&#29702;&#23631;&#38556;&#33287;&#36275;&#22816;&#31354;&#38291;&#20358;&#25511;&#21046;&#29289;&#26009;&#65292;&#32780;&#38750;&#20721;&#20173;&#20381;&#38752;&#31243;&#24207;&#25511;&#21046;&#12290;&#23559;&#19981;&#21516;&#29986;&#21697;&#25918;&#22312;&#29544;&#31435;&#25151;&#38291;&#26159;&#26368;&#31337;&#20581;&#30340;&#24037;&#31243;&#35299;&#27770;&#26041;&#26696;&#12290;</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>&#27604;&#21947;&#65306;&#24282;&#25151;&#30340;&#39135;&#26448;&#20998;&#38548;</h4>
+                <p>&#23601;&#20687;&#39135;&#21697;&#24037;&#24288;&#19981;&#26371;&#22312;&#21516;&#19968;&#24037;&#20316;&#21488;&#19978;&#21516;&#26178;&#34389;&#29702;&#33457;&#29983;&#21644;&#19981;&#21547;&#33457;&#29983;&#29986;&#21697;&#19968;&#27171;&#65292;&#34277;&#21697;&#24037;&#24288;&#25033;&#23559;&#19981;&#21516;&#29986;&#21697;&#25918;&#22312;&#29544;&#31435;&#25151;&#38291;&#65292;&#29992;&#29289;&#29702;&#23631;&#38556;&#38450;&#27490;&#28151;&#28102;&#12290;</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.2: GENERAL DESIGN CRITERIA                           -->
+    <!-- ============================================================= -->
+    <h2 class="section-title" id="sec-4-2">4.2 General Design Criteria</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2 General Design Criteria</h3>
+            <p>A facility should be designed to help protect the product. It should also protect operators from hazardous product exposure. Protection begins with a thorough knowledge of the product(s) to be produced. This knowledge sets the direction for facility design.</p>
+            <p>One of the first major decisions in the project should be to determine which of the three basic approaches (spatial, procedural, or time-based) will apply to the facility design.</p>
+            <p>The general design criteria are grouped into two major categories:</p>
+            <ul>
+                <li><strong>Process and operational</strong></li>
+                <li><strong>Facility</strong> (site and building)</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>4.2 &#19968;&#33324;&#35373;&#35336;&#28310;&#21063;</h3>
+            <p>&#35373;&#26045;&#35373;&#35336;&#30340;&#38617;&#37325;&#30446;&#27161;&#65306;&#20445;&#35703;&#29986;&#21697;&#20813;&#21463;&#27745;&#26579;&#65292;&#21516;&#26178;&#20445;&#35703;&#25805;&#20316;&#20154;&#21729;&#20813;&#21463;&#26377;&#23475;&#29986;&#21697;&#26292;&#38706;&#12290;&#35373;&#35336;&#30340;&#36215;&#40670;&#26159;&#20805;&#20998;&#29702;&#35299;&#35069;&#36896;&#30340;&#29986;&#21697;&#12290;</p>
+
+            <div class="concept-box">
+                <h4>&#35373;&#35336;&#28310;&#21063;&#20841;&#22823;&#39006;&#21029;</h4>
+                <ol>
+                    <li><strong>&#35069;&#31243;&#33287;&#25805;&#20316;</strong>&#65306;&#29986;&#21697;&#39006;&#22411;&#12289;&#29986;&#37327;&#12289;&#35373;&#20633;&#12289;&#27969;&#21521;</li>
+                    <li><strong>&#35373;&#26045;</strong>&#65306;&#22580;&#22336;&#12289;&#24314;&#31689;&#12289;&#25972;&#21512;&#37197;&#21512;</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.1 PROCESS AND OPERATIONAL ===== -->
+    <h2 class="section-title" id="sec-4-2-1">4.2.1 Process &amp; Operational Considerations</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.1 Process and Operational Considerations</h3>
+            <p>The operating philosophy can determine how a facility is organized and how layouts are developed. Key points to consider include:</p>
+            <ul>
+                <li>Types of products and desired throughput per year</li>
+                <li>Potential product hazards and containment requirements</li>
+                <li>Whether products are aseptically produced, non-aseptically produced, or a combination</li>
+                <li>Product final form: liquid, lyophilized powder, or sterile API powder</li>
+                <li>Clinical fills vs. commercial fills (no facility difference, but barrier technology should be utilized)</li>
+                <li>Governing regulatory agencies</li>
+                <li>Product volume scaling up or down</li>
+                <li>Production schedules and rate of product movement through the facility</li>
+                <li>Material handling approaches (high volume lines need high quantities of primary containers)</li>
+                <li>Batch versus continuous processes</li>
+                <li>Use of ready-to-use components (e.g., syringes, vials, stoppers, caps/seals)</li>
+                <li>Use of single-use disposable systems and impact on storage</li>
+                <li>Multi-product campaigned or concurrent production</li>
+                <li>Level of technology: manual fills are high risk and not recommended</li>
+                <li>Level of automation</li>
+                <li>Line integration: primary fill with secondary packaging</li>
+                <li>Open vs. closed processes (RABS require individual rooms; isolators can share rooms)</li>
+                <li>Equipment layout footprints, operational and maintenance access clearances</li>
+                <li>Material staging and access for each process area</li>
+                <li>Movement of used equipment parts to cleaning rooms</li>
+                <li>Environmental room classification for each room or area</li>
+                <li>Number of personnel and gowning philosophy</li>
+                <li>Routing of utilities (central or localized)</li>
+                <li>Waste disposal/treatment</li>
+                <li>Personnel support areas</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>4.2.1 &#35069;&#31243;&#33287;&#25805;&#20316;&#32771;&#37327;</h3>
+            <p>&#25805;&#20316;&#21746;&#23416;&#27770;&#23450;&#20102;&#35373;&#26045;&#30340;&#32068;&#32340;&#26041;&#24335;&#33287;&#20296;&#23616;&#38283;&#30332;&#12290;&#20197;&#19979;&#26159;&#38364;&#37749;&#32771;&#37327;&#40670;&#30340;&#20998;&#39006;&#25972;&#29702;&#65306;</p>
+
+            <div class="concept-box">
+                <h4>&#29986;&#21697;&#33287;&#35069;&#31243;&#23450;&#32681;</h4>
+                <ul>
+                    <li>&#29986;&#21697;&#39006;&#22411;&#12289;&#29986;&#37327;&#33287;&#29986;&#33021;&#30446;&#27161;</li>
+                    <li>&#21361;&#23475;&#24615;&#33287;&#25511;&#21046;&#38656;&#27714;</li>
+                    <li>&#28961;&#33740; vs. &#38750;&#28961;&#33740;&#35069;&#31243;</li>
+                    <li>&#26368;&#32066;&#21137;&#22411;&#65306;&#28082;&#39636;&#12289;&#20941;&#20094;&#31881;&#26411;&#12289;&#28961;&#33740; API &#31881;&#26411;</li>
+                    <li>&#33256;&#24202;&#35430;&#39511; vs. &#21830;&#26989;&#29983;&#29986;</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>&#35373;&#20633;&#33287;&#25216;&#34899;&#27770;&#31574;</h4>
+                <ul>
+                    <li>&#25209;&#27425; vs. &#36899;&#32396;&#35069;&#31243;&#65288;&#22914;&#25209;&#27425;&#27927;&#29942;+&#28888;&#31665; vs. &#36899;&#32396;&#38567;&#36947;&#65289;</li>
+                    <li>&#21363;&#29992;&#22411;&#32068;&#20214;&#65288;RTU &#37341;&#31570;&#12289;&#35199;&#26519;&#29942;&#12289;&#33184;&#22622;&#12289;&#23553;&#33995;&#65289;</li>
+                    <li>&#19968;&#27425;&#24615;&#31995;&#32113;&#23565;&#20489;&#20786;&#30340;&#24433;&#38911;</li>
+                    <li>&#33258;&#21205;&#21270;&#31243;&#24230;&#65288;&#25163;&#21205;&#35037;&#22635;&#28858;&#39640;&#39080;&#38570;&#65292;&#19981;&#24314;&#35696;&#65289;</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>RABS vs. &#38548;&#38626;&#22120;&#23565;&#20296;&#23616;&#30340;&#24433;&#38911;</h4>
+                <p>&#38283;&#25918;&#35069;&#31243;&#20351;&#29992; RABS &#26178;&#65292;&#27599;&#20491;&#38283;&#25918;&#35069;&#31243;&#27493;&#39519;&#25033;&#20308;&#29992;&#29544;&#31435;&#25151;&#38291;&#65292;&#38656;&#35201;&#26356;&#22810;&#27155;&#22320;&#38754;&#31309;&#33287;&#26356;&#22810;&#28500;&#28136; HVAC &#20998;&#21312;&#12290;&#38548;&#38626;&#22120;&#20445;&#35703;&#30340;&#35069;&#31243;&#21063;&#21487;&#33287;&#20854;&#20182;&#38548;&#38626;&#22120;&#35069;&#31243;&#20849;&#29992;&#25151;&#38291;&#12290;</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.2 SITE AND BUILDING ===== -->
+    <h2 class="section-title" id="sec-4-2-2">4.2.2 Site &amp; Building Considerations</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.2 Site and Building Considerations</h3>
+            <p>Few projects begin as a "green field" site with unlimited building area. Most projects and sites have limitations from both internal and external sources. The key is to understand the limitations and make reasonable decisions in fitting the process and operational criteria into the project site.</p>
+            <p>Site and building limitations or opportunities to consider:</p>
+            <ul>
+                <li>Site planning ordinances or construction code requirements (building height, total area)</li>
+                <li>Environmental protection codes</li>
+                <li>Operator protection codes</li>
+                <li>Site access/traffic including shipping and receiving vehicles (truck traffic patterns are key for air intake locations)</li>
+                <li>Existing site infrastructure</li>
+                <li>Constructing within an existing building with physical limitations</li>
+                <li>Retrofitting an existing filling suite</li>
+                <li>Project construction phasing, schedule, funding, and approvals</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>4.2.2 &#22580;&#22336;&#33287;&#24314;&#31689;&#32771;&#37327;</h3>
+            <p>&#22823;&#22810;&#25976;&#23560;&#26696;&#37117;&#26377;&#22580;&#22336;&#38480;&#21046;&#12290;&#38364;&#37749;&#22312;&#26044;&#29702;&#35299;&#36889;&#20123;&#38480;&#21046;&#65292;&#20006;&#21512;&#29702;&#22320;&#23559;&#35069;&#31243;&#33287;&#25805;&#20316;&#38656;&#27714;&#25972;&#21512;&#21040;&#22580;&#22336;&#20013;&#12290;</p>
+
+            <div class="note-box">
+                <h4>&#29305;&#21029;&#27880;&#24847;&#65306;&#36554;&#36635;&#33287;&#36914;&#27683;&#20301;&#32622;</h4>
+                <p>&#21345;&#36554;&#33287;&#22823;&#22411;&#36554;&#36635;&#30340;&#20132;&#36890;&#21205;&#32218;&#23565;&#27770;&#23450; HVAC &#33287;&#35069;&#31243;&#22739;&#32302;&#31354;&#27683;&#31995;&#32113;&#30340;&#36914;&#27683;&#20301;&#32622;&#33267;&#38364;&#37325;&#35201;&#12290;&#36914;&#27683;&#21475;&#25033;&#36960;&#38626;&#25490;&#27683;&#12289;&#36554;&#36635;&#24290;&#27683;&#33287;&#39166;&#22645;&#28304;&#12290;</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>&#24120;&#35211;&#23560;&#26696;&#22580;&#26223;</h4>
+                <ul>
+                    <li><strong>&#26032;&#24314;&#65288;Green Field&#65289;</strong>&#65306;&#26368;&#22823;&#35373;&#35336;&#33258;&#30001;&#24230;</li>
+                    <li><strong>&#26082;&#26377;&#24314;&#31689;&#25913;&#36896;</strong>&#65306;&#21463;&#32080;&#27083;&#12289;&#27155;&#39640;&#12289;&#26609;&#36317;&#38480;&#21046;</li>
+                    <li><strong>&#26082;&#26377;&#35037;&#22635;&#22871;&#20214;&#25913;&#35037;</strong>&#65306;&#26368;&#22196;&#26684;&#30340;&#38480;&#21046;&#65292;&#38656;&#22312;&#21407;&#26377;&#26694;&#26550;&#20839;&#26368;&#20339;&#21270;</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.3 FACILITY FIT ===== -->
+    <h2 class="section-title" id="sec-4-2-3">4.2.3 Facility Fit Considerations</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.3 Facility Fit Considerations</h3>
+            <p>Fitting or integrating the process and operational requirements into a project site is considered essential for a successful project. Although the project focus tends to be on the production areas, designers should also consider equipment, engineering, and operational requirements.</p>
+            <p>This process is called <span class="key-term">facility modeling</span>. Consideration should be given to facility systems and support areas to ensure that the entire project scope can be accommodated.</p>
+        </div>
+        <div class="right-column">
+            <h3>4.2.3 &#35373;&#26045;&#36969;&#37197;&#32771;&#37327;</h3>
+            <p>&#23559;&#35069;&#31243;&#33287;&#25805;&#20316;&#38656;&#27714;&#25972;&#21512;&#21040;&#23560;&#26696;&#22580;&#22336;&#26159;&#23560;&#26696;&#25104;&#21151;&#30340;&#38364;&#37749;&#12290;&#36889;&#20491;&#36942;&#31243;&#31281;&#28858;<span class="key-term">&#35373;&#26045;&#24314;&#27169;</span>&#65288;Facility Modeling&#65289;&#12290;</p>
+            <p>&#38500;&#20102;&#29983;&#29986;&#21312;&#22495;&#22806;&#65292;&#35373;&#35336;&#32773;&#36996;&#25033;&#32771;&#24942;&#65306;</p>
+            <ul>
+                <li>&#35373;&#20633;&#32173;&#35703;&#31354;&#38291;</li>
+                <li>&#24037;&#31243;&#25216;&#34899;&#21312;&#22495;&#65288;&#27231;&#26800;&#22841;&#23652;&#12289;&#31649;&#36947;&#36890;&#36947;&#65289;</li>
+                <li>&#25805;&#20316;&#25903;&#25588;&#21312;&#22495;&#65288;&#28165;&#28500;&#23460;&#12289;&#20489;&#24235;&#12289;&#20154;&#21729;&#25903;&#25588;&#65289;</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 4.3: LAYOUT CONSIDERATIONS                             -->
+    <!-- ============================================================= -->
+    <h2 class="section-title" id="sec-4-3">4.3 Layout Considerations</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3 Layout Considerations</h3>
+            <p>Designers should go through a programming process consisting of the following steps:</p>
+            <ol>
+                <li><strong>Define goals and objectives</strong> that support the business case for the project</li>
+                <li><strong>Understand product and process requirements</strong> and use this information to generate block flow diagrams and a specific project program</li>
+                <li><strong>Create a zoning and transition diagram</strong> which defines transition requirements between different area classifications and identifies directional airflows. This establishes the "rules" the layout should follow.</li>
+                <li><strong>Develop conceptual layout</strong> based on the program, equipment arrangements, and requirements of the zoning and transition diagram</li>
+            </ol>
+            <p>The process specialist, architect, layout engineer, HVAC engineer, and QA representative should collaborate to ensure a successful integrated design.</p>
+
+            <p><strong>4.3.1 Project Goals and Objectives:</strong> Goals are the "what" &mdash; expected outcomes. Objectives are the "how" &mdash; statements of action that should be clear, realistic, specific, measurable, and time-limited.</p>
+
+            <p><strong>4.3.2 Block Flow Diagram:</strong> Used to define production steps, identify major processing areas, area classifications, key adjacencies, segregation, and flows. They document inputs and outputs for given activities.</p>
+
+            <p><strong>4.3.3 Facility Program:</strong> A list of all rooms with special requirements and designated area classifications. An initial program should be developed based on known requirements and updated as the design develops. (See Table 4.1 for example.)</p>
+        </div>
+        <div class="right-column">
+            <h3>4.3 &#20296;&#23616;&#32771;&#37327;</h3>
+            <p>&#35373;&#35336;&#24107;&#25033;&#36981;&#24490;&#22235;&#27493;&#39519;&#35215;&#21123;&#27969;&#31243;&#65306;</p>
+
+            <div class="concept-box">
+                <h4>&#20296;&#23616;&#35373;&#35336;&#22235;&#27493;&#39519;</h4>
+                <ol>
+                    <li><strong>&#23450;&#32681;&#30446;&#27161;&#33287;&#30446;&#30340;</strong> &mdash; &#25903;&#25345;&#23560;&#26696;&#21830;&#26989;&#26696;&#20363;</li>
+                    <li><strong>&#29702;&#35299;&#29986;&#21697;&#33287;&#35069;&#31243;</strong> &mdash; &#29986;&#29983;&#26041;&#22602;&#27969;&#31243;&#22294;&#33287;&#23560;&#26696;&#31243;&#24335;&#26360;</li>
+                    <li><strong>&#24314;&#31435;&#20998;&#21312;&#33287;&#36681;&#25563;&#22294;</strong> &mdash; &#23450;&#32681;&#21312;&#22495;&#20998;&#32026;&#36681;&#25563;&#33287;&#27683;&#27969;&#26041;&#21521;</li>
+                    <li><strong>&#30332;&#23637;&#27010;&#24565;&#20296;&#23616;</strong> &mdash; &#25972;&#21512;&#35373;&#20633;&#37197;&#32622;&#33287;&#20998;&#21312;&#35215;&#21063;</li>
+                </ol>
+            </div>
+
+            <div class="analogy-box">
+                <h4>&#27604;&#21947;&#65306;&#20296;&#23616;&#35373;&#35336;&#22914;&#22478;&#24066;&#35215;&#21123;</h4>
+                <p>&#20296;&#23616;&#35373;&#35336;&#22914;&#21516;&#35215;&#21123;&#19968;&#24231;&#22478;&#24066;&#65306;&#20808;&#30906;&#23450;&#21151;&#33021;&#20998;&#21312;&#65288;&#20303;&#23429;&#12289;&#21830;&#26989;&#12289;&#24037;&#26989;&#65289;&#65292;&#20877;&#35215;&#21123;&#20132;&#36890;&#21205;&#32218;&#65288;&#29289;&#26009;&#27969;&#33287;&#20154;&#21729;&#27969;&#65289;&#65292;&#26368;&#24460;&#24067;&#32622;&#20855;&#39636;&#24314;&#31689;&#65288;&#35373;&#20633;&#37197;&#32622;&#65289;&#12290;&#20998;&#21312;&#22294;&#23601;&#26159;&#22478;&#24066;&#30340;&#37117;&#24066;&#35336;&#30059;&#27861;&#65292;&#30906;&#20445;&#21508;&#21312;&#22495;&#38291;&#30340;&#36681;&#25563;&#21512;&#29702;&#12290;</p>
+            </div>
+
+            <p><strong>&#35373;&#26045;&#31243;&#24335;&#26360;</strong>&#65288;Facility Program&#65289;&#31684;&#20363;&#65306;</p>
+            <table>
+                <thead>
+                    <tr><th>&#25151;&#38291;</th><th>&#20998;&#32026;</th><th>&#38754;&#31309;</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>&#26356;&#34915;&#23460;</td><td>&#26410;&#20998;&#32026;</td><td>1,200 ft&sup2;</td></tr>
+                    <tr><td>&#31359;&#34915;&#23460;</td><td>ISO 8/Grade C</td><td>120 ft&sup2;</td></tr>
+                    <tr><td>&#33067;&#34915;&#23460;</td><td>ISO 8/Grade C</td><td>80 ft&sup2;</td></tr>
+                    <tr><td>&#35519;&#37197;&#23460;</td><td>ISO 8/Grade C</td><td>600 ft&sup2;</td></tr>
+                    <tr><td>&#35037;&#22635;&#23460;&#65288;&#38548;&#38626;&#22120;&#65289;</td><td>ISO 8/Grade C</td><td>1,500 ft&sup2;</td></tr>
+                    <tr><td>&#28961;&#33740;&#35373;&#20633;&#26283;&#23384;</td><td>ISO 8/Grade C</td><td>400 ft&sup2;</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ===== 4.3.4 TRANSITION AND ZONING DIAGRAM ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3.4 Transition and Zoning Diagram</h3>
+            <p>The transition and zoning diagram identifies all areas that can affect or influence the required space or unit operations, defines their interrelationships, and establishes the flow pattern that best represents the process GMP and operator requirements.</p>
+            <p>These diagrams establish the "rules" of the facility and serve as the basis from which the layout is developed. Personnel, product, and material flows should be fully understood prior to development of the layout.</p>
+            <p>Area classifications and directional airflows should be defined to ensure proper airlock schemes at transitions and where containment is required.</p>
+
+            <p><strong>4.3.5 Space Planning:</strong> The designer should develop a series of functional room layouts which graphically illustrate the area requirements to support operations. A conceptual layout is developed by combining all functional room layouts in an arrangement meeting transition and zoning requirements.</p>
+
+            <p><strong>4.3.6 Equipment Arrangements:</strong> Equipment arrangements help determine room sizes, structural grids, and access routes. They are generally developed to optimize production, but facility restrictions may impact arrangements, requiring collaborative effort between architects, engineers, and equipment vendors.</p>
+        </div>
+        <div class="right-column">
+            <h3>4.3.4 &#36681;&#25563;&#33287;&#20998;&#21312;&#22294;</h3>
+            <p>&#36681;&#25563;&#33287;&#20998;&#21312;&#22294;&#35672;&#21029;&#25152;&#26377;&#24433;&#38911;&#21934;&#20803;&#25805;&#20316;&#30340;&#21312;&#22495;&#65292;&#23450;&#32681;&#20854;&#30456;&#20114;&#38364;&#20418;&#65292;&#20006;&#24314;&#31435;&#26368;&#33021;&#31526;&#21512; GMP &#21644;&#25805;&#20316;&#21729;&#38656;&#27714;&#30340;&#27969;&#21205;&#27169;&#24335;&#12290;</p>
+
+            <div class="concept-box">
+                <h4>&#20998;&#21312;&#22294;&#30340;&#38364;&#37749;&#35201;&#32032;</h4>
+                <ul>
+                    <li><strong>&#21312;&#22495;&#20998;&#32026;</strong>&#65306;&#27599;&#20491;&#25151;&#38291;&#30340;&#28500;&#28136;&#31561;&#32026;</li>
+                    <li><strong>&#27683;&#27969;&#26041;&#21521;</strong>&#65306;&#24478;&#39640;&#28500;&#28136;&#21312;&#27969;&#21521;&#20302;&#28500;&#28136;&#21312;&#65288;&#22739;&#21147;&#26799;&#24230;&#65289;</li>
+                    <li><strong>&#27683;&#38296;&#37197;&#32622;</strong>&#65306;&#27599;&#20491;&#21312;&#22495;&#36681;&#25563;&#40670;&#30340;&#27683;&#38296;&#35373;&#35336;</li>
+                    <li><strong>&#20154;&#21729;&#33287;&#29289;&#26009;&#36335;&#24465;</strong>&#65306;&#28165;&#26970;&#23450;&#32681;&#30340;&#21205;&#32218;</li>
+                </ul>
+            </div>
+
+            <p><strong>&#31354;&#38291;&#35215;&#21123;&#65306;</strong>&#35373;&#35336;&#24107;&#25033;&#38283;&#30332;&#21151;&#33021;&#25151;&#38291;&#20296;&#23616;&#65292;&#22294;&#35299;&#25903;&#25588;&#25805;&#20316;&#25152;&#38656;&#30340;&#38754;&#31309;&#12290;&#22296;&#38538;&#25033;&#35413;&#20272;&#26410;&#20358;&#25216;&#34899;&#25110;&#29986;&#33021;&#25844;&#20805;&#23565;&#31354;&#38291;&#30340;&#24433;&#38911;&#12290;</p>
+
+            <p><strong>&#35373;&#20633;&#37197;&#32622;&#65306;</strong>&#35373;&#20633;&#37197;&#32622;&#21332;&#21161;&#30906;&#23450;&#25151;&#38291;&#22823;&#23567;&#12289;&#32080;&#27083;&#26609;&#36317;&#21644;&#36890;&#36947;&#36335;&#32218;&#12290;&#38656;&#35201;&#24314;&#31689;&#24107;&#12289;&#24037;&#31243;&#24107;&#33287;&#35373;&#20633;&#20379;&#25033;&#21830;&#20849;&#21516;&#21332;&#20316;&#12290;</p>
+        </div>
+    </div>
+
+    <!-- ===== 4.3.7 MATERIAL/PERSONNEL FLOWS ===== -->
+    <h2 class="section-title" id="sec-4-3-flow">4.3.7 Material/Personnel Flows</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3.7 Material/Personnel Flows</h3>
+            <p>The design of personnel and material flows should minimize or prevent the introduction of contaminants into the clean area. This is significant in open system aseptic processing rooms where container closures and product are exposed to the room.</p>
+            <p><strong>Product, material, and equipment flows</strong> should address:</p>
+            <ul>
+                <li>Layout should prevent product cross-contamination and environmental contamination</li>
+                <li><span class="key-term">One-way flows</span> should be considered for suites where open aseptic processing occurs without barrier technology or with RABS</li>
+                <li>Simultaneous two-way flows through a common area should be prohibited by using door interlocks, indicator lights, alarms, or similar means</li>
+                <li>Process waste should be removed from the aseptic area without contaminating the product</li>
+                <li>In-process storage should be provided</li>
+                <li>Logical flow of product components to prevent mix-ups</li>
+            </ul>
+            <p><strong>Personnel flow</strong> into and within the clean area should address:</p>
+            <ul>
+                <li>Compliance with gowning requirements</li>
+                <li>Sufficient space for personnel movement with clearly defined instructions</li>
+                <li>Compliance with GMP and HVAC zones</li>
+                <li>No non-emergency personnel ingress/egress except through controlled gowning change area</li>
+                <li>Design of airlocks, step-over benches, gowning areas, time delay alarms, and door interlocks</li>
+                <li>One-way personnel flow for areas where product is exposed to the room environment</li>
+                <li>Minimizing interventions into the critical zone</li>
+            </ul>
+            <p><em>Note: Changing rooms requiring crossover benches for GMP should not be placed in the path of egress as the benches could be viewed as tripping hazards.</em></p>
+        </div>
+        <div class="right-column">
+            <h3>4.3.7 &#29289;&#26009;&#27969;&#33287;&#20154;&#21729;&#27969;</h3>
+            <p>&#20154;&#21729;&#33287;&#29289;&#26009;&#27969;&#30340;&#35373;&#35336;&#25033;&#26368;&#22823;&#31243;&#24230;&#38477;&#20302;&#27745;&#26579;&#29289;&#36914;&#20837;&#28500;&#28136;&#21312;&#30340;&#39080;&#38570;&#12290;</p>
+
+            <div class="concept-box">
+                <h4>&#29289;&#26009;&#27969;&#35373;&#35336;&#21407;&#21063;</h4>
+                <ul>
+                    <li><strong>&#21934;&#21521;&#27969;</strong>&#65306;&#38283;&#25918;&#35069;&#31243;&#21312;&#22495;&#25033;&#25505;&#29992;&#21934;&#21521;&#27969;&#21205;</li>
+                    <li><strong>&#31105;&#27490;&#38617;&#21521;&#21516;&#27493;&#27969;</strong>&#65306;&#36879;&#36942;&#38272;&#32879;&#37782;&#12289;&#25351;&#31034;&#29128;&#12289;&#35686;&#22577;&#38450;&#27490;</li>
+                    <li><strong>&#24290;&#26820;&#29289;&#36335;&#24465;</strong>&#65306;&#19981;&#24471;&#32147;&#36942;&#29986;&#21697;&#26292;&#38706;&#21312;</li>
+                    <li><strong>&#35069;&#31243;&#20013;&#26283;&#23384;</strong>&#65306;&#25033;&#25552;&#20379;&#36969;&#30070;&#31354;&#38291;</li>
+                    <li><strong>&#36991;&#20813;&#28151;&#28102;</strong>&#65306;&#32068;&#20214;&#27969;&#21205;&#36335;&#24465;&#25033;&#21512;&#29702;&#26126;&#30906;</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>&#20154;&#21729;&#27969;&#35373;&#35336;&#21407;&#21063;</h4>
+                <ul>
+                    <li><strong>&#31359;&#34915;&#21512;&#35215;</strong>&#65306;&#27599;&#27425;&#36914;&#20837;&#24517;&#38920;&#32147;&#36942;&#25511;&#21046;&#30340;&#31359;&#34915;&#21312;</li>
+                    <li><strong>&#27683;&#38296;&#33287;&#36328;&#36234;&#24335;&#26356;&#34915;&#26885;</strong>&#65306;&#38272;&#32879;&#37782;&#38450;&#27490;&#21516;&#26178;&#38617;&#21521;&#36890;&#34892;</li>
+                    <li><strong>&#21934;&#21521;&#20154;&#21729;&#27969;</strong>&#65306;&#29986;&#21697;&#26292;&#38706;&#21312;&#22495;&#24517;&#38920;&#21934;&#21521;</li>
+                    <li><strong>&#26368;&#23567;&#21270;&#24178;&#38928;</strong>&#65306;&#28187;&#23569;&#23565;&#33256;&#30028;&#21312;&#30340;&#20154;&#21729;&#20171;&#20837;</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4>&#23433;&#20840;&#27880;&#24847;&#65306;&#36328;&#36234;&#26885; vs. &#36867;&#29983;&#36335;&#24465;</h4>
+                <p>GMP &#35201;&#27714;&#30340;&#36328;&#36234;&#24335;&#26356;&#34915;&#26885;&#19981;&#25033;&#25918;&#22312;&#32202;&#24613;&#36867;&#29983;&#36335;&#24465;&#19978;&#65292;&#22240;&#28858;&#23427;&#20497;&#21487;&#33021;&#34987;&#35222;&#28858;&#32070;&#20498;&#21361;&#38570;&#12290;&#25033;&#32771;&#24942;&#20351;&#29992;&#29289;&#26009;&#27683;&#38296;&#25110;&#29544;&#31435;&#32202;&#24613;&#38272;&#20316;&#28858;&#36867;&#29983;&#36335;&#24465;&#12290;</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3.8 ADDITIONAL LAYOUT CONSIDERATIONS ===== -->
+    <h2 class="section-title" id="sec-4-3-add">4.3.8 Additional Layout Considerations</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3.8 Additional Layout Considerations</h3>
+            <p>In addition to flow considerations, the layout should address:</p>
+            <ul>
+                <li>Adoption of barrier or isolator technology can significantly impact material flow and personnel movement compared with traditional open aseptic processing</li>
+                <li>A <span class="key-term">risk assessment</span> should determine the extent of unidirectional flows, considering cleanliness levels, product type, extent of closed processing, and concurrent multi-product production</li>
+                <li>Where room integrity is critical, equipment interfaces with building fabric/finishes should be minimized; where unavoidable, clear access all around should be provided</li>
+                <li>Services penetrating clean areas can be grouped together to allow manifold plates</li>
+                <li>Service distribution and pipework should be located outside the cleanroom in a separate manifold room, where possible</li>
+                <li>Cleanrooms ISO 8/Grade C or cleaner should <strong>not</strong> be placed directly adjacent to exterior walls (moisture infiltration, pest infiltration, wind influence on room pressure)</li>
+                <li>Equipment interchangeability and long-term maintenance/replacement access should be incorporated</li>
+                <li>General piping and services distribution should be addressed by allocating horizontal and vertical distribution zones</li>
+                <li>HVAC airflow patterns should be compared to equipment layout to avoid turbulence or dead spots in critical zones</li>
+                <li>Horizontal surfaces should be avoided to prevent UAF disruption and particle accumulation</li>
+                <li><strong>Open sinks and drains are not permitted</strong> in aseptic processing areas (ISO 7/Grade B and ISO 5/Grade A)</li>
+                <li>Properly designed HEPA filtered portable vacuums are acceptable. Central vacuum systems should have back flow preventers installed.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>4.3.8 &#38468;&#21152;&#20296;&#23616;&#32771;&#37327;</h3>
+            <p>&#38500;&#20102;&#27969;&#21205;&#35373;&#35336;&#22806;&#65292;&#20296;&#23616;&#36996;&#25033;&#34389;&#29702;&#20197;&#19979;&#21839;&#38988;&#65306;</p>
+
+            <div class="note-box">
+                <h4>&#38364;&#37749;&#35215;&#21063;&#65306;&#28500;&#28136;&#23460;&#33287;&#22806;&#29254;</h4>
+                <p>ISO 8/Grade C &#25110;&#26356;&#39640;&#31561;&#32026;&#30340;&#28500;&#28136;&#23460;<strong>&#19981;&#25033;&#30452;&#25509;&#32202;&#37168;&#22806;&#29254;</strong>&#12290;&#21407;&#22240;&#21253;&#25324;&#65306;</p>
+                <ul>
+                    <li>&#28629;&#27683;&#28402;&#36879;/&#20957;&#32080;&#39080;&#38570;</li>
+                    <li>&#23475;&#34802;&#20837;&#20405;&#39080;&#38570;</li>
+                    <li>&#39080;&#21147;&#23565;&#25151;&#38291;&#22739;&#21147;&#30340;&#24433;&#38911;</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>&#31649;&#36335;&#33287;&#26381;&#21209;&#37197;&#32622;&#21407;&#21063;</h4>
+                <ul>
+                    <li>&#31359;&#36234;&#28500;&#28136;&#21312;&#30340;&#31649;&#36335;&#25033;&#38598;&#20013;&#37197;&#32622;&#65292;&#20351;&#29992;&#27495;&#31649;&#26495;</li>
+                    <li>&#31649;&#36335;&#33287;&#26381;&#21209;&#37197;&#32622;&#30433;&#37327;&#25918;&#22312;&#28500;&#28136;&#23460;&#22806;&#30340;&#29544;&#31435;&#31649;&#36947;&#23460;</li>
+                    <li>&#20998;&#37197;&#27700;&#24179;&#33287;&#22402;&#30452;&#31649;&#36947;&#21312;&#22495;</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4>&#28961;&#33740;&#21312;&#22495;&#22196;&#31105;&#20107;&#38917;</h4>
+                <ul>
+                    <li>ISO 7/Grade B &#21644; ISO 5/Grade A &#21312;&#22495;<strong>&#31105;&#27490;&#38283;&#25918;&#24335;&#27700;&#27133;&#33287;&#25490;&#27700;&#21475;</strong></li>
+                    <li>&#27700;&#24179;&#38754;&#25033;&#30433;&#37327;&#28187;&#23569;&#65292;&#38450;&#27490;&#24494;&#31890;&#31309;&#32047;&#33287;&#24178;&#25854;&#21934;&#21521;&#27683;&#27969;&#65288;UAF&#65289;</li>
+                    <li>&#30495;&#31354;&#31995;&#32113;&#30340;&#20027;&#27231;&#19981;&#24471;&#25918;&#22312; ISO 5 &#25110; ISO 7 &#21312;&#22495;&#20839;</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3.9 & 4.3.10 COST & FIRE PROTECTION ===== -->
+    <h2 class="section-title" id="sec-4-3-cost">4.3.9&ndash;4.3.10 Cost Optimization &amp; Fire Protection</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3.9 Planning Layouts to Minimize Cost</h3>
+            <p><strong>External Building Shape:</strong> The layout configuration affects cost by influencing materials, labor, and running costs. External walls and insulation are high cost items. Simple plan shapes are most economical. Minimum perimeter length results from a square plan shape.</p>
+            <p><strong>Building Height:</strong> Average cost per square meter increases with the number of stories due to:</p>
+            <ul>
+                <li>Increase in perimeter wall for any given total floor area</li>
+                <li>Effect of increased load on the structure</li>
+                <li>Additional hoisting of materials and extra time for operators to reach higher floors</li>
+            </ul>
+            <p><strong>Foundation:</strong> Foundation costs vary with load and height. Cost of structure per square meter increases rapidly above four stories.</p>
+            <p><strong>Internal Layouts:</strong> The overall cost of the aseptic area (including HVAC services) is significantly higher than any other part of the facility. This area should be kept as small as possible without affecting efficient operation.</p>
+            <p>Modular wall and ceiling systems or prefabricated systems reduce construction time and may provide flexibility to expand, rearrange, or relocate.</p>
+
+            <h3>4.3.10 Fire Protection and Means of Escape</h3>
+            <p>Issues become more onerous as building size grows:</p>
+            <ul>
+                <li>Specific time periods of fire resistance for design elements</li>
+                <li>Compartmentalization of the building to isolate fire within specific areas</li>
+                <li>Emergency escape routes for personnel</li>
+                <li>Provision of suitable separation to prevent fire, hot gases, and smoke spreading via circulation routes</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>4.3.9 &#25104;&#26412;&#26368;&#20339;&#21270;&#20296;&#23616;</h3>
+            <p><strong>&#22806;&#37096;&#24314;&#31689;&#24418;&#29376;&#65306;</strong>&#31777;&#21934;&#30340;&#24179;&#38754;&#24418;&#29376;&#26368;&#32147;&#28639;&#12290;&#27491;&#26041;&#24418;&#24179;&#38754;&#22312;&#30456;&#21516;&#38754;&#31309;&#19979;&#36913;&#38263;&#26368;&#23567;&#65292;&#22806;&#29254;&#25104;&#26412;&#26368;&#20302;&#12290;</p>
+
+            <div class="concept-box">
+                <h4>&#24314;&#31689;&#39640;&#24230;&#33287;&#25104;&#26412;&#38364;&#20418;</h4>
+                <ul>
+                    <li>&#27155;&#23652;&#22686;&#21152; &rarr; &#27599;&#24179;&#26041;&#31859;&#24179;&#22343;&#25104;&#26412;&#19978;&#21319;</li>
+                    <li>&#36229;&#36942;&#22235;&#23652;&#26178;&#32080;&#27083;&#25104;&#26412;&#24613;&#21127;&#22686;&#21152;</li>
+                    <li>&#29872;&#22659;&#33287;&#26381;&#21209;&#38568;&#24314;&#31689;&#35079;&#38620;&#24230;&#33287;&#39640;&#24230;&#22686;&#21152;&#32780;&#35722;&#24471;&#26356;&#36020;</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>&#38364;&#37749;&#25104;&#26412;&#21407;&#21063;&#65306;&#28961;&#33740;&#21312;&#38754;&#31309;&#26368;&#23567;&#21270;</h4>
+                <p>&#28961;&#33740;&#21312;&#22495;&#65288;&#21547; HVAC &#26381;&#21209;&#65289;&#30340;&#25972;&#39636;&#25104;&#26412;&#39023;&#33879;&#39640;&#26044;&#35373;&#26045;&#20854;&#20182;&#37096;&#20998;&#12290;&#22312;&#19981;&#24433;&#38911;&#35069;&#36896;&#25928;&#29575;&#30340;&#21069;&#25552;&#19979;&#65292;&#25033;&#30433;&#37327;&#32302;&#23567;&#28961;&#33740;&#21312;&#38754;&#31309;&#12290;</p>
+                <p><strong>&#27169;&#32068;&#21270;&#29254;&#39636;&#33287;&#22825;&#33457;&#26495;&#31995;&#32113;</strong>&#21487;&#32302;&#30701;&#26045;&#24037;&#26178;&#38291;&#65292;&#20006;&#25552;&#20379;&#26410;&#20358;&#25844;&#24314;&#12289;&#37325;&#26032;&#37197;&#32622;&#25110;&#25644;&#36983;&#30340;&#24392;&#24615;&#12290;</p>
+            </div>
+
+            <h3 style="margin-top: 1.5rem;">4.3.10 &#28040;&#38450;&#33287;&#36867;&#29983;</h3>
+            <ul>
+                <li>&#24314;&#31689;&#35373;&#35336;&#20803;&#20214;&#30340;&#32784;&#28779;&#26178;&#38480;&#35201;&#27714;</li>
+                <li>&#24314;&#31689;&#20998;&#33368;&#21270;&#65306;&#23559;&#28779;&#28797;&#38548;&#38626;&#22312;&#29305;&#23450;&#21312;&#22495;</li>
+                <li>&#20154;&#21729;&#32202;&#24613;&#36867;&#29983;&#36335;&#24465;</li>
+                <li>&#38450;&#27490;&#28779;&#28976;&#12289;&#39640;&#28331;&#27683;&#39636;&#33287;&#29017;&#38695;&#36879;&#36942;&#27700;&#24179;/&#22402;&#30452;&#36890;&#36335;&#25844;&#25955;</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION SUMMARY                                                -->
+    <!-- ============================================================= -->
+    <div class="concept-box" style="margin-top: 2rem;">
+        <h3>Section Summary / &#31456;&#31680;&#25688;&#35201;</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Key Takeaway</th>
+                    <th>&#20027;&#38988;</th>
+                    <th>&#38364;&#37749;&#37325;&#40670;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Three Design Approaches</td>
+                    <td>Spatial separation is preferred; procedural and time-based are alternatives when physical barriers are impractical</td>
+                    <td>&#19977;&#22823;&#35373;&#35336;&#26041;&#27861;</td>
+                    <td>&#31354;&#38291;&#20998;&#38548;&#28858;&#20778;&#20808;&#65307;&#31243;&#24207;&#33287;&#26178;&#38291;&#20998;&#38548;&#28858;&#26367;&#20195;&#26041;&#26696;</td>
+                </tr>
+                <tr>
+                    <td>Barrier Technology Impact</td>
+                    <td>Isolators reduce surrounding room requirements significantly; RABS still require ISO 7/Grade B background</td>
+                    <td>&#23631;&#38556;&#25216;&#34899;&#24433;&#38911;</td>
+                    <td>&#38548;&#38626;&#22120;&#21487;&#22823;&#24133;&#38477;&#20302;&#21608;&#22285;&#38656;&#27714;&#65307;RABS &#20173;&#38656; ISO 7/Grade B</td>
+                </tr>
+                <tr>
+                    <td>Layout Programming</td>
+                    <td>Four-step process: Goals &rarr; Block Flow &rarr; Zoning Diagram &rarr; Conceptual Layout</td>
+                    <td>&#20296;&#23616;&#35215;&#21123;</td>
+                    <td>&#22235;&#27493;&#39519;&#65306;&#30446;&#27161; &rarr; &#26041;&#22602;&#27969;&#31243; &rarr; &#20998;&#21312;&#22294; &rarr; &#27010;&#24565;&#20296;&#23616;</td>
+                </tr>
+                <tr>
+                    <td>Unidirectional Flow</td>
+                    <td>Material and personnel flows must be separated and unidirectional in open processing areas; door interlocks prevent simultaneous access</td>
+                    <td>&#21934;&#21521;&#27969;</td>
+                    <td>&#38283;&#25918;&#35069;&#31243;&#21312;&#22495;&#30340;&#29289;&#26009;&#33287;&#20154;&#21729;&#27969;&#24517;&#38920;&#20998;&#38626;&#19988;&#21934;&#21521;</td>
+                </tr>
+                <tr>
+                    <td>Cleanroom Placement</td>
+                    <td>Grade C+ cleanrooms must not be placed against exterior walls (moisture, pests, pressure instability)</td>
+                    <td>&#28500;&#28136;&#23460;&#37197;&#32622;</td>
+                    <td>Grade C &#20197;&#19978;&#28500;&#28136;&#23460;&#19981;&#24471;&#32202;&#37168;&#22806;&#29254;</td>
+                </tr>
+                <tr>
+                    <td>Cost Optimization</td>
+                    <td>Minimize aseptic area footprint; use modular systems; simple building shapes reduce perimeter cost</td>
+                    <td>&#25104;&#26412;&#26368;&#20339;&#21270;</td>
+                    <td>&#32302;&#23567;&#28961;&#33740;&#21312;&#38754;&#31309;&#65307;&#27169;&#32068;&#21270;&#31995;&#32113;&#65307;&#31777;&#21934;&#24314;&#31689;&#24418;&#29376;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== KEY TERMINOLOGY REFERENCE ===== -->
+    <div class="term-box" style="margin-top: 1.5rem;">
+        <h3>Key Terminology / &#38364;&#37749;&#34899;&#35486;</h3>
+        <table>
+            <thead>
+                <tr><th>English Term</th><th>&#20013;&#25991;&#34899;&#35486;</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Cleanroom Wall System</td><td>&#28500;&#28136;&#23460;&#29254;&#39636;&#31995;&#32113;</td><td>Modular or stick-built systems forming cleanroom envelope</td></tr>
+                <tr><td>Ceiling System</td><td>&#22825;&#33457;&#26495;&#31995;&#32113;</td><td>Walk-on or non-walk-on panels with sealed joints</td></tr>
+                <tr><td>Floor System</td><td>&#22320;&#26495;&#31995;&#32113;</td><td>Epoxy, vinyl, or resin flooring with coved junctions</td></tr>
+                <tr><td>Coved Junction</td><td>&#22291;&#24359;&#25509;&#35282;</td><td>Curved wall-to-floor/ceiling transitions preventing particle accumulation</td></tr>
+                <tr><td>Pressure Cascade</td><td>&#22739;&#21147;&#26799;&#24230;</td><td>Higher pressure in clean core, decreasing outward</td></tr>
+                <tr><td>Material Flow</td><td>&#29289;&#26009;&#27969;</td><td>Path of materials through facility zones</td></tr>
+                <tr><td>Personnel Flow</td><td>&#20154;&#21729;&#27969;</td><td>Path of operators through gowning and processing zones</td></tr>
+                <tr><td>Airlock</td><td>&#27683;&#38296;</td><td>Transition chamber between different cleanliness zones</td></tr>
+                <tr><td>Pass-Through</td><td>&#20659;&#36958;&#31383;</td><td>Material transfer hatch between zones without personnel passage</td></tr>
+                <tr><td>Zoning</td><td>&#20998;&#21312;</td><td>Designation of cleanliness classification areas within the facility</td></tr>
+                <tr><td>Spatial Separation</td><td>&#31354;&#38291;&#20998;&#38548;</td><td>Physical barriers separating clean and non-clean areas</td></tr>
+                <tr><td>Facility Modeling</td><td>&#35373;&#26045;&#24314;&#27169;</td><td>Process of integrating all requirements into the project site</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities</p>
+    <p>Chapter 4a: Architecture &amp; Layout (4.1&ndash;4.3) &mdash; Educational Reference Material</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
