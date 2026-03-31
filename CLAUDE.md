@@ -224,7 +224,7 @@ Report metadata is in `reports.json`. Current reports:
 | **ISPE** | | | |
 | `ISPE/ISPE-Vol3/` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | — | Planned |
 | `ISPE/ISPE-Vol4/` | ISPE Baseline Vol.4: Water & Steam Systems | — | Planned |
-| `ISPE/ISPE-Vol5/` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | — | Planned |
+| `ISPE/ISPE-Vol5/` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 11 | Complete |
 | `ISPE/ISPE-Vol6/` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | — | Planned |
 | `ISPE/ISPE-Vol7/` | ISPE Baseline Vol.7: Risk-Based Manufacture of Pharmaceutical Products | — | Planned |
 | `ISPE/ISPE-GAMP5/` | ISPE GAMP 5 (2nd Ed.): Computerized Systems Validation | — | Planned |
