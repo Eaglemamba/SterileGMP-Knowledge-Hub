@@ -130,7 +130,10 @@ PDF_NOISE_PATTERNS = [
     # ISPE header/footer patterns
     re.compile(r'^ISPE Baseline®?\s+Guide:?\s*$'),
     re.compile(r'^Sterile Product Manufacturing Facilities\s*$'),
+    re.compile(r'^Commissioning and Qualification\s*$'),
     re.compile(r'^Page\s+\d+\s*$'),
+    re.compile(r'^For individual use only\.\s*©\s*Copyright\s+ISPE'),
+    re.compile(r'^©\s*Copyright\s+ISPE'),
 ]
 
 # Heading patterns in PDA source text: "3.0 Title", "3.1.2 Subtitle", "Appendix I: Title"
