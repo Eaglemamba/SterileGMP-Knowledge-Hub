@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-1 - Section 0: Introduction &amp; Glossary</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE (amber/gold for PtC-1) ===== */
+.source-badge {
+    display: inline-block;
+    background: #fef3c7;
+    color: #78350f;
+    border: 1px solid #d97706;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+/* ===== GLOSSARY TERM ENTRY ===== */
+.glossary-entry {
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #d97706;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.glossary-entry .term-name {
+    font-weight: 700;
+    color: #78350f;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.glossary-entry p {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+}
+
+.glossary-entry .term-note {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+    margin-top: 0.25rem;
+}
+
+/* ===== PRINCIPLE CARD ===== */
+.principle-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.85rem;
+    border-left: 5px solid #d97706;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.principle-card .principle-num {
+    display: inline-block;
+    background: #d97706;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+}
+
+.principle-card p {
+    font-size: 0.92rem;
+    margin-bottom: 0;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0 — Introduction &amp; Glossary <span class="source-badge">PtC-1</span></h1>
+    <div class="subtitle">導論與術語表 | PDA Points to Consider No. 1: Aseptic Processing (Revised 2023)</div>
+    <div class="page-info">PDA Points to Consider No. 1 | p1 – p6 | 127 pages total</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 PDA PtC-1 的歷史沿革（2003 → 2015/16 → 2023），以及 2022 EU Annex 1 如何觸發本次修訂</li>
+        <li>掌握指導本文件的五大原則，並能解釋每一原則對 CDMO 日常決策的實務意涵</li>
+        <li>熟悉 Glossary 中每個術語的精確定義，辨別易混淆的相似詞（如 At-Rest vs. In-Operations，Action Limit vs. Alert Limit）</li>
+        <li>建立「無菌保證 (Sterility Assurance) 優先於一切」的決策階層思維框架</li>
+    </ul>
+</div>
+
+<!-- ==================== PART 1: INTRODUCTION ==================== -->
+<div class="section-title">0.1 Introduction — Background &amp; Five Guiding Principles</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Points to Consider No. 1: Aseptic Processing (Revised 2023)</span> offers PDA's thoughts and does not represent a standard or regulatory guidance.</p>
+
+        <p>PDA first issued <span class="key-term">Points to Consider for Aseptic Processing</span> in <strong>2003</strong>. To address the impact of the knowledge gained in the intervening years, PDA assembled a task force of subject-matter experts from industry to revise this report. Published in <strong>2015 and 2016</strong>, Points to Consider for Aseptic Processing parts 1 and 2 provided positions on current topics, best practices, and areas of clarification important to the manufacture of quality sterile products.</p>
+
+        <div class="quote-box">
+            NOTE: The topics discussed in the 2015 and 2016 Points to Consider documents are <strong>superseded</strong> by this revision.
+        </div>
+
+        <p>With technology and regulatory advancements, specifically the issuance of the revised <span class="key-term">European GMP Annex 1: Manufacture of Sterile Medicinal Products (EU Annex 1)</span> in <strong>August 2022</strong>, another update of this document was undertaken. This revision reflects current industry best practices and scientific positions as well as regulatory expectations. Where there may be a divergence between recommendations in this Points to Consider document and a regulatory position, that divergence is noted.</p>
+
+        <p>Many of the topics included in the 2015 Points to Consider resulted from discussion and input from PDA members at conferences and meetings. These topics were reviewed considering the advancements made in the past decade and, where applicable, this report has been revised based on similar inputs. While the current revision maintains the original organization of topics into categories, topics that had been discussed separately in Parts 1 and 2 have been <strong>combined into a single document</strong>. Each topic discussion begins with a problem statement in the form of a question about issues or points needing clarification on that specific topic. Recommendations from the PDA task force are then presented as an answer to the question. The rationale and references for each recommendation follow.</p>
+
+        <p>This document provides points to consider on topics related to the physical environment in which <span class="key-term">aseptic processing</span> is conducted, monitoring of that environment, cleanroom personnel, material transfer, <span class="key-term">aseptic process simulation</span> and validation, "modern" <span class="key-term">blow-fill-seal</span> technology, cleaning, disinfection and sterilization, and critical utilities. It also includes points to consider on aspects of <span class="key-term">filter-integrity testing</span> and <span class="key-term">water-for-injection (WFI)</span> preparation.</p>
+
+        <p>The recommendations presented in this Points to Consider document are based on <strong>five guiding and linked principles</strong> for improvement in sterile health care products:</p>
+
+        <div class="principle-card">
+            <span class="principle-num">1</span>
+            <strong>Scientifically sound, risk-based approaches</strong> should be used to obtain information needed to make decisions related to the evaluation, design, qualification, operation, and monitoring of sterile-product manufacturing processes. Risk- and science-based approaches should be used as well to develop and implement control strategies and acceptance criteria designed to ensure the establishment and maintenance of manufacturing conditions that affect the sterility of products. Sterile drug-product manufacturing processes and testing requirements should have a basis in and relevance to risks to product quality and patient safety. Similar principles and considerations may also apply to non-sterile drug products. Risk management and assessment methods should be developed not only to identify risks, but also to allow the improvement of processes and control strategies.
+        </div>
+
+        <div class="principle-card">
+            <span class="principle-num">2</span>
+            Where feasible, the use of <span class="key-term">newer technologies</span> should be considered to mitigate or reduce risks to product quality identified in manufacturing processes and operations. Companies involved in the manufacture of sterile drug products should be encouraged to identify and consider the use of modern technologies, and regulatory guidance should enable this by presenting expectations that encourage the use of these technologies. Technologies and facility, equipment, and process designs that protect products and product-contact surfaces from personnel and environmental contact and that provide more reliable and useful information are particularly beneficial to reducing the risk of <span class="key-term">microbiological contamination</span> during aseptic processing.
+        </div>
+
+        <div class="principle-card">
+            <span class="principle-num">3</span>
+            The effectiveness of certain <span class="key-term">traditional testing and monitoring methods</span> used as control strategies should be reevaluated. As technology has been introduced and knowledge has been acquired, the usefulness and value of testing procedures have changed. Testing and monitoring should be designed and performed, and the results should be evaluated, based on scientific value, risk to product quality, patient safety, and usefulness in determining process control. Where testing and monitoring approaches and methods no longer meet current needs or are not optimal, their replacement or modification should be considered. The use of outdated testing and monitoring methods has the potential to increase risk, provide a false sense of control, prove ineffective, and deploy resources in a manner that may not be efficient or optimal, thus detracting from the development and use of more effective testing and monitoring approaches.
+        </div>
+
+        <div class="principle-card">
+            <span class="principle-num">4</span>
+            <span class="key-term">New product/container presentations, therapies, and technologies</span> present challenges to existing methods for the development, manufacture, validation, and testing of sterile products. To meet these challenges, an emphasis on thorough technical and process understanding, science, and risk will become important in designing effective means to ensure product quality. Companies should be encouraged to seek out the most effective means rather than try to fit traditional methods to these new products, technologies, and therapies.
+        </div>
+
+        <div class="principle-card">
+            <span class="principle-num">5</span>
+            When scientific approaches are similar and agreed upon, <span class="key-term">global health authority requirements and guidance</span> should be consistent in technical language and definition. Harmonized technical and regulatory language, where possible, should be consistent with approaches presented in other similar guidance documents. This practice should promote clarity of global regulatory expectations and reduce the risk of misunderstanding and redundant efforts.
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — PDA PtC-1 是什麼？為什麼重要？</h4>
+            <p><strong>Points to Consider (PtC，考量要點)</strong> 是 PDA 出版的一種特殊文件類型，介於技術報告（Technical Report）與法規指引之間。它<strong>不具法規約束力</strong>，但代表業界最佳智識共識，常被 FDA 與 EMA 稽查員引用作為期望水準的參考依據。</p>
+            <p>PtC-1 專注於<strong>無菌加工 (Aseptic Processing)</strong>，是整個 PDA 文獻體系中關於無菌環境管控、人員、APS 模擬、BFS 技術、清潔消毒的最權威單一文件。對 CDMO 而言，這份文件等同於「客戶稽核的教科書」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 文件版本演進的比喻</h4>
+            <p>想像 PtC-1 是一本「廚房衛生操作手冊」：</p>
+            <ul>
+                <li><strong>2003 年版</strong>：基礎版，教你洗手與刀具消毒</li>
+                <li><strong>2015/2016 年版</strong>：加入新式不鏽鋼廚具與空氣過濾設備的指引，分上下冊</li>
+                <li><strong>2023 年版（本版）</strong>：合併上下冊，並全面對齊 2022 年發布的「全球最嚴格廚房衛生法規」（EU Annex 1）——不只更新設備章節，連人員資格、消毒劑輪換等細節全部重寫</li>
+            </ul>
+            <p>重點：<strong>舊版（2015/16）已被本版完全取代</strong>。如果你的 SOP 還引用 2015 年 PtC-1，現在必須更新。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 2022 EU Annex 1 的衝擊</h4>
+            <p>2022 年 8 月，歐盟發布重新修訂的 GMP Annex 1，全長 58 頁（前版僅 16 頁），新增大量要求：</p>
+            <ul>
+                <li>強制要求 <span class="key-term">Contamination Control Strategy (CCS，污染控制策略)</span> 作為系統性文件</li>
+                <li>Isolator 與 RABS 明確區分，並提升 RABS 要求等級</li>
+                <li>BFS 技術納入 "modern technology" 框架</li>
+                <li>APS 媒體填充要求更嚴格</li>
+            </ul>
+            <p>正因 Annex 1 如此重大，PDA 才緊急於 2023 年更新 PtC-1，確保兩者技術立場相符。<strong>每當 Annex 1 與 PtC-1 有分歧，本文件會明確標注</strong>——這個設計對 CDMO 特別寶貴，因為你的客戶可能同時受 FDA 與 EMA 管轄。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>五大原則解析（CDMO 視角）</h4>
+            <p><strong>原則 1 — 科學/風險導向：</strong>不能只依賴「傳統做法就這樣」，每個決策（環境監控頻率、APS 挑戰數量）都要有科學根據與風險評估支撐。對 CDMO：當客戶要求比 GMP 更嚴的標準時，用風險評估說明你現有標準已足夠或確實需要提升。</p>
+            <p><strong>原則 2 — 採用新技術：</strong>法規<em>鼓勵</em>使用 Isolator、RABS、一次性系統等新技術，不應因「稽查官不熟悉」而保守。CDMO 的競爭優勢之一就是率先導入新技術。</p>
+            <p><strong>原則 3 — 重新評估傳統方法：</strong>某些傳統測試（如固定頻率的手動 settle plates）可能已過時，應以更科學的方式取代。這是本版最具突破性的立場之一。</p>
+            <p><strong>原則 4 — 新療法/新技術的挑戰：</strong>mRNA 疫苗、CAR-T 細胞治療等新型態產品，無法套用傳統無菌加工框架，必須重新設計管控策略。</p>
+            <p><strong>原則 5 — 全球法規一致性：</strong>FDA、EMA、PIC/S 技術語言的統一，減少 CDMO 在多地區申請時重複努力。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-color:#d97706;">
+            <h4>實務應用 — CDMO 的 PtC-1 使用場景</h4>
+            <p><strong>場景 1：客戶稽核準備</strong><br>客戶品保問："你們的環境監測計畫依據哪份指引？"<br>回答："依據 FDA Aseptic Guidance (2004)、EU Annex 1 (2022) 及 PDA PtC-1 (2023 修訂版)，三者相互對照，差異處均有書面說明。"</p>
+            <p><strong>場景 2：SOP 審查</strong><br>稽核員發現你的 SOP 引用 "PDA PtC for Aseptic Processing (2016)"——應立即更新為 2023 年版，並說明兩版差異評估已完成。</p>
+            <p><strong>場景 3：技術評估新技術</strong><br>評估是否導入 Isolator 時，引用原則 2 作為技術決策依據，並透過 QRM 評估風險降低的程度，向客戶展示投資價值。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>PDA PtC-1 與 FDA Aseptic Guidance 的法規位階有何不同？在稽查中各自扮演什麼角色？</li>
+                <li>為什麼 2022 EU Annex 1 的發布會促使 PDA 在 2023 年修訂 PtC-1？這說明了 PDA 文件與法規的什麼關係？</li>
+                <li>五大原則中，哪一個原則最能支持你考慮將手動 settle plates 改為持續粒子計數器？請說明理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PART 2: GLOSSARY ==================== -->
+<div class="section-title">0.2 Glossary — Defined Terms</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Definitions have been provided to help clarify the concepts discussed in this document. While some of the definitions vary among companies, the definitions described below are consistent for use within this Points to Consider document. Where a definition is based on another published source, the source is cited.</p>
+
+        <div class="glossary-entry">
+            <div class="term-name">Aborted Run</div>
+            <p>Aseptic process simulation run that begins and is then stopped and not filled to completion.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Action Limit</div>
+            <p>An established relevant measure (e.g., microbial, or airborne particle limits) that, when exceeded, should trigger appropriate investigation and corrective action based on the investigation.</p>
+            <div class="term-note">NOTE: In a prior version of this document, this term was called "Action Level."</div>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Advanced Aseptic Processing Personnel Qualification</div>
+            <p>A defined and documented procedure for determining the criteria by which personnel are permitted to enter and perform higher-risk and complex activities, under less supervision, in the aseptic processing area during commercial operations. (See Section IV, Topic B.)</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Air Shroud</div>
+            <p>A physical enclosure for a blow-fill-seal (BFS) machine that contains or surrounds the filling zone. It is typically supplied by sterile filtered or Grade A quality air. The air shroud should be sterilized or decontaminated to maintain Grade A conditions.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Air Visualization Studies / Airflow Visualization Studies</div>
+            <p>Tests using a visible medium (e.g., smoke or vaporized liquid nitrogen) simulating the properties of air flow, designed to indicate the direction and disruption of air flow. Sometimes referred to as 'smoke studies'.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Aseptic Preparation / Processing</div>
+            <p>The handling of sterile product, containers and/or devices in a controlled environment in which the air supply, materials and personnel are regulated to prevent microbial, endotoxin/pyrogen and particle contamination.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Aseptic Process Simulation (APS)</div>
+            <p>A means for establishing the capability of an aseptic process as performed using a growth medium.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">At-Rest</div>
+            <p>The condition whereby the installation of all the utilities is complete including any functioning HVAC, with the main manufacturing equipment installed as specified but not operating and without personnel present in the room.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Blow-Fill-Seal (BFS) Process</div>
+            <p>The BFS machine, including the parison extrusion, parison transport (if applicable), container filling and final sealing operations.</p>
+            <div class="term-note">NOTE: Some companies refer to this process as "Form-Fill-Seal" (FFS). However, EU Annex 1 defines Form-Fill-Seal as an automated filling process, typically used for terminally sterilised products, which constructs the primary container out of a continuous flat roll of packaging film while simultaneously filling and sealing in a continuous process.</div>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Corrective and Preventive Actions (CAPA)</div>
+            <p>Actions to eliminate the cause of a detected nonconformity or other undesirable situation.</p>
+            <div class="term-note">NOTE: Corrective actions are taken to prevent recurrence, whereas preventive actions are taken to prevent occurrence.</div>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Cleaning Agents</div>
+            <p>The solution or solvent used in the washing step of a cleaning process. Examples of cleaning agents are water, organic solvent, commodity chemical diluted in water, and formulated detergent diluted in water.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Closed Parison (Rotary or Reciprocating Machines)</div>
+            <p>BFS machines that use a fill system enclosed in the continuous parison. Containers are closed in such a way as to not expose the parison interior or fill zone to the environment.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Contamination Control Strategy (CCS)</div>
+            <p>A planned set of controls for microorganisms, endotoxin/pyrogen and particles, derived from current product and process understanding that assures process performance and product quality. The controls can include parameters and attributes related to active substance, excipient and drug product materials and components, facility and equipment operating conditions, in-process controls, finished product specifications, and the associated methods and frequency of monitoring and control.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Critical Surface</div>
+            <p>A surface within a critical zone that may come in direct contact with sterilized products, containers, or closures.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Critical Zone</div>
+            <p>A location within the aseptic processing area in which product and critical surfaces are exposed to the environment.</p>
+            <div class="term-note">NOTE: This term was previously referred to as "Critical Area."</div>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Disinfectant</div>
+            <p>A chemical or physical agent that reduces, destroys, or eliminates vegetative forms of harmful microorganisms, but not spores.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Disqualification of Aseptic Processing Personnel</div>
+            <p>A defined and documented procedure for determining the criteria by which previously qualified aseptic processing personnel are no longer permitted to enter and perform higher-risk and complex activities in the aseptic processing area during commercial operations. (See Section IV, Topic B.)</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Environmental Monitoring (EM)</div>
+            <p>Describes the processes and activities that need to take place to characterize and monitor the quality of the environment.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">First Air</div>
+            <p>Refers to filtered air that has not been interrupted prior to contacting exposed product and product contact surfaces with the potential to add contamination to the air prior to reaching the critical zone.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Grade A Air Supply</div>
+            <p>Air which is passed through a filter qualified as capable of producing grade A total particle quality air, but where there is no requirement to perform continuous total particle monitoring or meet grade A viable monitoring limits. Specifically used for the protection of fully stoppered vials where the cap has not yet been crimped.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Good Manufacturing Practice (GMP)</div>
+            <p>Best practices in manufacturing of pharmaceuticals or biopharmaceuticals. From a regulatory standpoint, GMPs are regarded as the minimum current good manufacturing practice for methods to be used in, and the facilities or controls to be used for, the manufacture, processing, packaging, or holding of a drug to assure that such drug meets the requirements of safety, identity, and strength and meets the quality and purity characteristics that it purports or is represented to possess.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">High-Efficiency Particulate Air (HEPA) Filter</div>
+            <p>High efficiency particulate air filter with minimum 0.3 µm particle retaining efficiency of 99.97 percent.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">In-Operations</div>
+            <p>Condition where the installation of the cleanroom is complete, the HVAC system fully operational, equipment installed and functioning in the manufacturer's defined operating mode with the maximum number of personnel present performing or simulating routine operational work.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Invalid Run</div>
+            <p>Aseptic processing simulation run that was filled to completion and then invalidated.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Isolator</div>
+            <p>A contained, decontaminated environment meeting Grade A/ISO 5 conditions used for aseptic process manufacturing that provides an uncompromised, continuous isolation of its interior from the external environment. Once decontaminated by a validated cycle, an isolator prevents the microbiological contamination of sterile products and product contact surfaces of the interior by enclosures and the supply of continuous, controlled overpressure of HEPA-filtered air.</p>
+            <p><strong>Closed isolator systems</strong> exclude external contamination from the isolator's interior by accomplishing material transfer via aseptic connection to auxiliary equipment, rather than using openings to the surrounding environment. Closed systems remain sealed throughout operations.</p>
+            <p><strong>Open isolator systems</strong> are designed to allow for the continuous or semi-continuous ingress and/or egress of materials during operations through one or more openings. Openings are engineered (e.g., using continuous overpressure) to exclude the entry of external contamination into the isolator.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Initial Aseptic Processing Personnel Qualification</div>
+            <p>A defined and documented procedure for determining the criteria by which personnel are permitted to enter and perform certain low-risk and less complex activities, under direct supervision, in the aseptic processing area during commercial operations. (See Section IV, Topic B.)</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Ongoing Aseptic Processing Personnel Assessment</div>
+            <p>A defined and documented procedure for determining the criteria by which the performance of personnel, deemed as qualified to enter and perform activities in the aseptic processing area during commercial operations, is assessed on a prescribed, periodic basis. (See Section IV, Topic B.)</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Open Parison (Shuttle Machines)</div>
+            <p>Blow-fill-seal machines where the parison is cut from the extruder and the open parison is contained in the mold during transport to the critical fill zone.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Requalification of Aseptic Processing Personnel following Disqualification</div>
+            <p>A defined and documented procedure for determining the criteria by which previously disqualified aseptic processing personnel are again permitted to enter and perform activities in the aseptic processing area during commercial operations. (See Section IV, Topic B.)</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Restricted Access Barrier System (RABS)</div>
+            <p>An area that includes one or more critical work areas that is fully or partially enclosed with ridged or semi-rigid walls, which restricts the access of aseptic processing personnel, via fixed gloves, to the critical work area during aseptic operations.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Sanitizers</div>
+            <p>A compound that will reduce the number of vegetative microorganisms to a safe level as determined by public health requirements. Normally, a reduction of 10<sup>3</sup> in vegetative microorganisms is obtained.</p>
+        </div>
+
+        <div class="glossary-entry">
+            <div class="term-name">Total Particulate</div>
+            <p>Refers to what is often termed "nonviable particles," which, in fact, are measures of both viable and nonviable particulates.</p>
+        </div>
+
+        <h3 style="margin-top:1.5rem; margin-bottom:0.75rem;">References</h3>
+        <ol style="font-size:0.88rem; color:var(--text-medium); margin-left:1.5rem;">
+            <li style="margin-bottom:0.5rem;">European Commission. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4 – EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use; European Commission: Brussels, 2022.</li>
+            <li style="margin-bottom:0.5rem;">Parenteral Drug Association, Inc. Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators; PDA, Bethesda, Md., 2020.</li>
+            <li style="margin-bottom:0.5rem;">U.S. Food and Drug Administration. Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing—Current Good Manufacturing Practice; U.S. Department of Health and Human Services: Rockville, Md., 2004.</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>為什麼 Glossary 如此重要？</h4>
+            <p>GMP 文件中的術語定義不是裝飾，而是法規語言的基礎。一旦術語定義不同，可能導致：</p>
+            <ul>
+                <li><strong>法規分歧</strong>：FDA 與 EMA 對同一概念的定義微妙差異，影響驗證策略</li>
+                <li><strong>內部誤解</strong>：工廠操作員、QA、客戶對 "Action Limit" 與 "Alert Limit" 的混用</li>
+                <li><strong>稽查缺失</strong>：稽查員發現你的 SOP 使用了被取代的舊術語（如 "Action Level" → "Action Limit"；"Critical Area" → "Critical Zone"）</li>
+            </ul>
+            <p>PtC-1 的 Glossary 已與 2022 EU Annex 1 對齊，請務必以此版本為準更新你的 SOP 術語。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — At-Rest vs. In-Operations</h4>
+            <p>把無塵室想像成一間手術室：</p>
+            <ul>
+                <li><strong>At-Rest（靜態）</strong>：手術室清潔完畢、設備就位、空調運轉，但手術團隊尚未進入——就像手術前的環境檢測狀態</li>
+                <li><strong>In-Operations（動態）</strong>：手術正在進行，醫護人員全員到位、最大人數活動中——這才是真正代表生產條件的狀態</li>
+            </ul>
+            <p>GMP 要求兩種狀態都要達標，但 <strong>In-Operations 的粒子計數要求更嚴格</strong>，因為人員活動會產生污染。絕不可只測 At-Rest 然後宣稱符合動態標準。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 人員資格的三層架構</h4>
+            <p>PtC-1 首次在 Glossary 層級明確定義人員資格的三個階段，這是本版的重要創新：</p>
+            <table>
+                <tr>
+                    <th>階段</th>
+                    <th>英文術語</th>
+                    <th>對應活動</th>
+                    <th>監督強度</th>
+                </tr>
+                <tr>
+                    <td>初始資格</td>
+                    <td>Initial Qualification</td>
+                    <td>低風險、簡單操作</td>
+                    <td>直接監督</td>
+                </tr>
+                <tr>
+                    <td>進階資格</td>
+                    <td>Advanced Qualification</td>
+                    <td>高風險、複雜操作</td>
+                    <td>較少監督</td>
+                </tr>
+                <tr>
+                    <td>持續評估</td>
+                    <td>Ongoing Assessment</td>
+                    <td>定期重新評估</td>
+                    <td>週期性</td>
+                </tr>
+            </table>
+            <p>此外還有 <strong>Disqualification（取消資格）</strong> 與 <strong>Requalification（重新資格）</strong> 的程序，形成完整的人員管控閉環。CDMO 應建立對應的 SOP 與資格矩陣。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>易混淆術語對比解析</h4>
+            <p><strong>Disinfectant（消毒劑）vs. Sanitizer（衛生劑）：</strong></p>
+            <ul>
+                <li>Disinfectant：殺滅植物型微生物，<em>但不包括孢子</em></li>
+                <li>Sanitizer：將植物型微生物降至安全水準（通常 10³ 降低），標準比消毒劑更低</li>
+                <li>GMP 無菌區域通常使用 Disinfectant，而非僅 Sanitizer</li>
+            </ul>
+            <p><strong>Aborted Run vs. Invalid Run（APS 相關）：</strong></p>
+            <ul>
+                <li>Aborted Run：<em>開始後中止</em>，未完成充填——需調查為何中止，通常需要重新執行</li>
+                <li>Invalid Run：<em>充填完成後</em>才被認定無效——需有充分的科學論據支持無效化，否則必須視為失敗</li>
+                <li>兩者的處理程序完全不同，混淆可能導致重大稽查缺失</li>
+            </ul>
+            <p><strong>Critical Zone vs. Critical Surface：</strong></p>
+            <ul>
+                <li>Critical Zone（關鍵區域）：產品暴露的<em>空間位置</em></li>
+                <li>Critical Surface（關鍵表面）：Critical Zone 內可能<em>直接接觸</em>產品/容器/封蓋的<em>表面</em></li>
+                <li>Critical Surface 一定在 Critical Zone 內，但 Critical Zone 不是每個點都是 Critical Surface</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>BFS 術語解析 — Parison 類型的無菌意義</h4>
+            <p>BFS（Blow-Fill-Seal，吹製-充填-封口）製程中，parison（型坯）的設計直接影響無菌保證：</p>
+            <ul>
+                <li><strong>Closed Parison（密閉型坯）</strong>：充填系統完全包覆在連續型坯內，充填區不暴露於環境——污染風險較低，但機器設計更複雜</li>
+                <li><strong>Open Parison（開放型坯）</strong>：型坯切斷後在模具中傳送至充填區，型坯內部短暫暴露——需要 Air Shroud 提供 Grade A 保護</li>
+            </ul>
+            <p><strong>Air Shroud（氣流罩）</strong>是 Open Parison 設計中的關鍵污染控制元件，必須使用無菌過濾或 Grade A 品質的空氣，並定期消毒/去污染。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>First Air 概念 — 無菌充填的核心原理</h4>
+            <p><strong>First Air（初始氣流）</strong>是 HEPA 過濾器吹出後、尚未受任何障礙物干擾的空氣。這是 Grade A 保護最純淨的狀態。</p>
+            <p>實務原則：<strong>產品暴露部位（開口容器、填針）必須始終沐浴在 First Air 中</strong>。任何障礙物（操作員的手、零件、工具托盤）一旦介於 HEPA 與產品之間，First Air 就被打斷，污染風險立即上升。</p>
+            <p>這也是為何無菌操作員手部動作必須嚴格訓練的根本原因，也是 Airflow Visualization Study（氣流可視化研究）必須評估的核心項目。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>Total Particulate — 術語澄清</h4>
+            <pre>
+"Total Particulate" ≠ "非活性粒子（Nonviable Particles）"
+
+Total Particulate 的測量值包含：
+  ├── Viable Particles（活性粒子，含微生物）
+  └── Nonviable Particles（非活性粒子）
+
+環境監控（EM）常見粒子計數器量測的是：
+  → 所有 ≥0.5 µm 與 ≥5.0 µm 粒子的總和
+  → 即 Total Particulate，而非單純 Nonviable
+
+重要意涵：即使粒子計數超標，
+也不能推論一定有微生物污染；
+反之，即使粒子計數合格，
+也不能完全排除微生物風險。
+兩種監控方式互補，不能相互取代。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — CCS 是系統性架構，不是清單</h4>
+            <p><span class="key-term">Contamination Control Strategy (CCS，污染控制策略)</span> 的定義強調幾個關鍵詞：</p>
+            <ul>
+                <li><strong>"Planned set of controls"</strong>：必須是<em>系統性、有計畫的</em>控制組合，不是拼湊的清單</li>
+                <li><strong>"Derived from current product and process understanding"</strong>：必須基於對產品與製程的<em>現況理解</em>，隨新知識動態更新</li>
+                <li><strong>"Assures process performance AND product quality"</strong>：同時保證製程表現與產品品質，缺一不可</li>
+            </ul>
+            <p>EU Annex 1 要求 CCS 作為正式文件存在。對 CDMO，CCS 應是客戶技術協議 (Quality Agreement) 中的核心附件之一，也是無菌設施稽查的重點審查對象。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-color:#d97706;">
+            <h4>實務應用 — Isolator vs. RABS 在 CDMO 的選擇決策</h4>
+            <p>根據 Glossary 定義，兩者的核心差異在「隔離的完整性」：</p>
+            <ul>
+                <li><strong>Isolator</strong>：「uncompromised, continuous isolation」——太空站，外部與內部完全隔絕，去污染週期後內部被視為獨立無菌空間，APS 失敗風險極低</li>
+                <li><strong>RABS</strong>：「restricts access via fixed gloves」——仍是有限制進入的開放架構，需要背景 Grade B 潔淨室，人員干預管控要求高</li>
+            </ul>
+            <p>決策框架（依 PROMPT.md 決策階層）：</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><div class="hierarchy-box level-1">無菌保證要求 (APS Pass Rate, Product Sterility Risk)</div></div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-2">產品 CQAs（熱敏感性、暴露時間窗口、批量大小）</div></div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-3">商業考量（投資金額、廠房空間、客戶偏好）</div></div>
+            </div>
+            <p>只有在前兩層需求滿足後，才應考慮商業可行性。商業壓力不能倒推決定 Isolator 或 RABS 的選擇。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠 SOP 記載清潔步驟使用「消毒劑輪換」，但某同事認為只要使用 Sanitizer 就夠了。請根據 PtC-1 Glossary 的定義，說明兩者差異，以及無菌區域應使用哪一種？</li>
+                <li>APS 執行過程中，充填機因警報而暫停，操作員排除故障後繼續完成充填，最終培養結果全陰性。這是 Aborted Run 還是一般的 APS 完成？該如何處理？</li>
+                <li>如果你的 Grade B 背景室粒子計數合格，是否可以推論 Grade A 工作區也必然合格？請根據 At-Rest / In-Operations 的定義說明。</li>
+                <li>CCS 文件中，你打算只列舉 EM 監控計畫與清潔 SOP。稽查員可能指出什麼缺口？根據 CCS 的完整定義，還應涵蓋哪些要素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>歷史沿革：</strong>PtC-1 歷經 2003 → 2015/16 → 2023 三次演進；2023 版由 EU Annex 1 (2022) 觸發，完全取代前兩版，並將分冊合一</li>
+        <li><strong>五大原則：</strong>科學/風險導向、採用新技術、重新評估傳統測試、因應新療法挑戰、全球法規語言一致性——這五個原則貫穿 PtC-1 全文所有建議的邏輯基礎</li>
+        <li><strong>關鍵術語辨析：</strong>Action Limit（非 Level）、Critical Zone（非 Area）、Aborted vs. Invalid Run、At-Rest vs. In-Operations、Disinfectant vs. Sanitizer、Total Particulate（含活性粒子）</li>
+        <li><strong>人員資格框架：</strong>Initial → Advanced Qualification → Ongoing Assessment → Disqualification → Requalification，形成完整閉環，CDMO 必須建立對應 SOP</li>
+        <li><strong>CCS 是系統性文件：</strong>EU Annex 1 要求正式 CCS，涵蓋原料、設施、設備、製程參數、EM、成品規格等全面控制——不只是 EM 計畫</li>
+        <li><strong>決策階層不動搖：</strong>無菌保證 > 產品 CQAs > 商業考量，此優先順序在 PtC-1 每一章節的建議背後都得到體現</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

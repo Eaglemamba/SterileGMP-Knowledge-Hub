@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-1 — Topics I–O: RABS, BFS, Airlocks, Particle Monitoring</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE (amber/gold for PtC-1) ===== */
+.source-badge {
+    display: inline-block;
+    background: #fef3c7;
+    color: #78350f;
+    border: 1px solid #d97706;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.topic-header {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 5px solid #d97706;
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0 1rem;
+    color: #78350f;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>PDA Points to Consider No. 1: Aseptic Processing (Revised 2023)</h1>
+    <div class="subtitle">Topics I–O: Physical Environment — RABS, BFS, Airlocks &amp; Particle Monitoring</div>
+    <div class="subtitle">主題 I–O：物理環境 — RABS、吹-填-封、氣閘與粒子監測</div>
+    <div class="page-info">PDA Points to Consider No. 1 (2023) | p23 – p36 <span class="source-badge">PtC-1</span></div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 Isolator（隔離器）、Closed RABS（封閉型限制進出屏障系統）、Open RABS 三者在無菌保護等級上的差異，以及各自適用的環境分級要求。</li>
+        <li>掌握 Blow-Fill-Seal（BFS，吹瓶-充填-封口）製程的環境控制邏輯：為何 BFS 不需 Grade B 過渡區，其「Grade A 等效」如何透過設計實現。</li>
+        <li>了解潔淨室「清除期（Clean-Up Period）」的確立方式，以及 EU Annex 1 的 20 分鐘指導值背後的意義。</li>
+        <li>區別「靜止狀態（At-Rest）」與「操作狀態（In-Operation）」的定義、監測要求，以及 ≥5 µm 粒子監測的限值爭議與實務應對。</li>
+        <li>掌握氣閘（Air Lock）設計原則：壓力梯度設計、人員通道與物料通道分離，以及 ISO 14644-1 分級採樣量的標準。</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節涵蓋主題 Topics Covered</h3>
+    <div class="toc-grid">
+        <a href="#topic-i">Topic I: RABS &amp; Isolators</a>
+        <a href="#topic-j">Topic J: Clean-Up Period</a>
+        <a href="#topic-k1">Topic K.1: BFS Process Design</a>
+        <a href="#topic-k2">Topic K.2: Resin Storage</a>
+        <a href="#topic-k3">Topic K.3: BFS APS</a>
+        <a href="#topic-l">Topic L: Air Locks</a>
+        <a href="#topic-m">Topic M: At-Rest vs In-Operation</a>
+        <a href="#topic-n">Topic N: Sample Volume</a>
+        <a href="#topic-o">Topic O: ≥0.5 &amp; ≥5 µm Monitoring</a>
+    </div>
+</div>
+
+<!-- ==================== TOPIC I ==================== -->
+<div id="topic-i" class="topic-header">Topic I: RABS and Isolators — Aseptic Processing Technologies (p23–p26)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What "barrier" systems and practices should be used to reduce the risk of microbiological contamination from human intervention and external environment in aseptic processing systems?</p>
+
+        <h3>Recommendation</h3>
+        <p><span class="key-term">Barrier systems</span> should be used for aseptic processes. Barrier methods typically include <span class="key-term">isolators</span> and <span class="key-term">RABS</span> but may also include other technologies where physical separation is achieved. The systems and controls associated with the design and use of barrier systems should be included in the <span class="key-term">CCS</span>.</p>
+
+        <p>Barrier systems are defined as "<span class="key-term">closed</span>" or "<span class="key-term">open</span>", based on exposure to the surrounding environment. While all isolators and RABS provide a barrier from personnel and the external environment, <span class="key-term">closed isolators</span> provide a higher level of protection with respect to open isolator systems and RABS, which require additional precautions and controls to prevent contamination.</p>
+
+        <p>Isolators differ from RABS because they usually have <span class="key-term">automated decontamination systems</span>, employ <span class="key-term">continuous HEPA-filtered air differential/over-pressure control</span>, are physically sealed from the external environment or, in the case of open isolators, have positive airflow at the product exit and have doors or panels that <strong>cannot be opened for any reason during the aseptic process without repeating the decontamination process</strong>. As such, isolators should provide a higher level of protection compared to RABS which, in turn, provides a higher level of protection compared to <span class="key-term">classical curtained manual aseptic processing</span>.</p>
+
+        <h3>Design and Operation</h3>
+        <p>Isolators and RABS should be designed and operated in such a way as to reduce the risk of microbiological contamination to critical operations, including transfer of materials and components, EM, setup of filling systems, removal of fallen containers or components, fill checks, or other interventions within these systems.</p>
+
+        <p>The following should be considered for the design and operation of isolators and RABS:</p>
+        <ul>
+            <li><span class="key-term">Open isolators</span> may be placed in <strong>Grade C</strong> environments. <span class="key-term">Closed isolators</span> may be placed in <strong>Grade D</strong> environments. <span class="key-term">RABS</span> should be placed in <strong>Grade B</strong> environments only. The decontamination and transfer of materials into and out of the isolator and RABS should be qualified, controlled, and monitored to prevent contamination of materials and sterile product.</li>
+            <li>The design should facilitate uncomplicated aseptic setup of the filling line and should negate the need for any contact to critical surfaces (e.g., filling needles) via operator gloves or RABS/isolator gloves and should provide for <span class="key-term">first-air principles</span> to be maintained within the critical zone.</li>
+            <li>Direct contact of critical surfaces by RABS/isolator gloves should be avoided.</li>
+            <li>The location of glove ports and gloves in isolators and RABS should be designed to facilitate effective and easy performance of interventions by all personnel. Their location and design should provide for first-air protection in the critical zone and should not present an ergonomic challenge to operators that may otherwise result in suboptimal, or a lapse in, aseptic technique during operations.</li>
+            <li><span class="key-term">Glove ports, gloves, and transfer ports</span> should remain integral after decontamination and throughout the operation and should be tested regularly for leaks.</li>
+            <li>Gloves should be designed and positioned to avoid damage.</li>
+            <li>The interior of the isolator and RABS, including the positioning of glove ports, gloves, and other equipment, should be designed to facilitate effective decontamination and transfer/movement of materials and product.</li>
+            <li>Isolator and RABS <span class="key-term">decontamination methods</span> should be validated and controlled to render surfaces and items incapable of contaminating the environment or sterile product.</li>
+            <li>Controls should be in place to maintain a decontaminated state of interior, environment, and materials.</li>
+            <li>The decontamination method should not chemically contaminate or otherwise compromise materials.</li>
+            <li>Equipment and isolator and RABS should be designed to work with operational procedures and aseptic techniques to minimize the need for interventions.</li>
+        </ul>
+
+        <h3>Intervention Control</h3>
+        <p>Proper aseptic techniques should be used to perform activities and interventions in the RABS/isolator. Interventions performed in isolators and RABS should be assessed for risk of contamination to product and should not be permitted if they present an unacceptable increased risk to the aseptic process.</p>
+
+        <p>RABS should be designed and operated with <strong>doors and panels closed during aseptic processing</strong>. Interventions with open doors or panels should be avoided. Where possible, interventions performed in RABS should be performed with doors closed using fixed mounted gloves. Where not possible, interventions performed with open RABS doors should be limited and special controls and precautions should be used.</p>
+
+        <p>When processes require <span class="key-term">open-door interventions</span>, those activities should be assessed for contamination risk, must be part of the qualified list of interventions, and must incorporate additional control measures. Such additional control measures may include:</p>
+        <ul>
+            <li>Additional disinfection and sanitization of non-product-contact surfaces using a qualified disinfection agent and procedures, including the interior of doors and panels opened during the activity</li>
+            <li>Door access with recorded intervention alarms or an effective means of documentation</li>
+            <li>Documented line clearance</li>
+            <li>Positive airflow from the enclosure to the surrounding environment when the door is opened, which has been assessed and documented in smoke studies</li>
+            <li>Additional monitoring of product-contact surfaces and interior environment in proximity to activity</li>
+            <li>Additional removal or testing of materials or products exposed to the intervention</li>
+            <li>Monitoring of operator gloves and sleeves immediately after the open-door intervention</li>
+            <li>Air visualization studies or other means to assure that the activity and intervention design allows for performance without disrupting <span class="key-term">first-air principles</span></li>
+        </ul>
+
+        <h3>Decontamination</h3>
+        <p>Direct product-contact surfaces, including product and holding vessels, should be sterilized using validated methods and maintained in a sterile state throughout production. Indirect product-contact surfaces (e.g., stopper bowls and tracks) must be rendered free of microbiological contamination. Where possible, sterilization should be used; where not feasible, a validated decontamination method rendering surfaces incapable of contaminating sterile product must be employed.</p>
+
+        <p>All interior non-product-contact surfaces, including glove ports, gloves, equipment, transfer ports, container transfer systems, and equipment surfaces should be decontaminated using validated methods. <span class="key-term">Glove integrity</span> should be monitored frequently, normally at the end of production and after the performance of interventions or activities that may pose a risk to glove integrity.</p>
+
+        <h3>Failure Investigation</h3>
+        <p>Personnel can still be the source of contamination in isolators and RABS if the process or equipment design is flawed or if activities are not performed properly. Special consideration should also be given to system and process design, cleaning and disinfection procedures, decontamination process, and proper transfer procedures and material integrity, when investigating critical-zone <span class="key-term">EM</span> excursions, sterility-test failures, and APS failures.</p>
+
+        <h3>Rationale</h3>
+        <p>Personnel are a significant source of microbiological contamination. Barrier systems such as isolators and RABS provide physical separation between personnel, external environment, and exposed product or product-contact surfaces. For this reason, they provide more preventive controls and protection than <span class="key-term">conventional aseptic processing lines</span> located in cleanrooms.</p>
+
+        <p>The interior of these systems, including fixed gloves, are <strong>decontaminated, and not necessarily sterilized</strong>. Therefore, there is a need for proper equipment design, qualified cleaning procedures and use of aseptic technique and first-air principles, and the avoidance of contact with critical surfaces when performing activities and interventions.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 屏障系統三層次</h4>
+            <p>PDA PtC-1 將無菌製程的屏障防護分為三個等級，保護強度由低到高：</p>
+            <ul>
+                <li><strong>傳統帷幕式手工無菌充填</strong>（Classical Curtained Manual）：人員直接在潔淨室操作，依賴 Grade A 層流保護。保護強度最低。</li>
+                <li><strong>RABS（限制進出屏障系統）</strong>：透過固定式手套連接的物理圍欄，將操作員手臂與產品空間隔離。需要放置於 Grade B 環境中（自身提供 Grade A 保護）。</li>
+                <li><strong>Isolator（隔離器）</strong>：完全密封的氣密空間，配備自動化去污系統（通常為 VHP，氣化過氧化氫）。Open Isolator 需 Grade C；Closed Isolator 僅需 Grade D。保護強度最高。</li>
+            </ul>
+            <p><strong>關鍵：</strong>等級越高，對周圍環境分級的要求反而越低，因為設備本身已提供極高的保護。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 太空站 vs 無塵室</h4>
+            <p>把這三種系統想像成不同等級的「防護空間」：</p>
+            <ul>
+                <li><strong>Isolator = 太空站</strong>：完全密封於外界環境，太空人（操作員）完全在外面，透過機械臂（手套）操作。太空站（Grade D）周圍即使是真空宇宙（惡劣環境）也無所謂，因為內部完全隔絕。進行任何維修（等同開門干預）都必須先做「艙外行走準備」（重新去污）。</li>
+                <li><strong>RABS = 有圍欄的無塵室</strong>：潔淨室（Grade B）中加裝了玻璃圍欄，操作員仍在同一空間裡，只是手伸進去操作。環境的等級還是很重要。</li>
+                <li><strong>傳統手工充填 = 開放手術室</strong>：完全依賴空間潔淨度和操作員技術。</li>
+            </ul>
+            <p>這個比喻也解釋了為何 Isolator 去污後不能隨便開門——就像太空艙開艙門前必須先重新加壓一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 環境分級要求對照</h4>
+            <p>這是監管機構和廠房設計師最常查核的細節：</p>
+            <table>
+                <tr>
+                    <th>技術類型</th>
+                    <th>所需周圍環境</th>
+                    <th>自身提供保護</th>
+                </tr>
+                <tr>
+                    <td>Closed Isolator（封閉隔離器）</td>
+                    <td><strong>Grade D</strong></td>
+                    <td>Grade A 等效</td>
+                </tr>
+                <tr>
+                    <td>Open Isolator（開放隔離器）</td>
+                    <td><strong>Grade C</strong></td>
+                    <td>Grade A 等效</td>
+                </tr>
+                <tr>
+                    <td>RABS（開放或封閉型）</td>
+                    <td><strong>Grade B</strong></td>
+                    <td>Grade A</td>
+                </tr>
+                <tr>
+                    <td>傳統無菌充填</td>
+                    <td><strong>Grade B</strong></td>
+                    <td>Grade A（層流）</td>
+                </tr>
+            </table>
+            <p><strong>CDMO 廠房設計含義：</strong>選用 Closed Isolator 可以將廠房主體降到 Grade D 等級，大幅降低 HVAC 建造和運營成本。這是許多新建無菌廠選擇 Isolator 的核心財務理由。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Open vs Closed RABS 的差異</h4>
+            <p>雖然 PtC-1 文中未明確區分，但 ISPE 定義如下（參考 PDA PtC-12）：</p>
+            <ul>
+                <li><strong>Closed RABS</strong>：干預時門始終關閉，只能透過固定手套操作。保護強度較高。</li>
+                <li><strong>Open RABS</strong>：允許在特殊情況下打開門進行干預。必須有補充控制措施（煙霧測試、額外消毒、監測等）。</li>
+            </ul>
+            <p>PtC-1 的立場：RABS 開門干預不是禁止的，但必須是「合格干預清單」中預先評估的項目，且附帶明確的額外控制措施。這是一個「風險為本」的方法。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>決策框架 — 選擇屏障技術的邏輯樹</h4>
+            <pre>
+新建無菌充填廠房選型決策：
+
+Q1: 產品需要最高無菌保證（高風險、生物製品）？
+    → 是：優先考慮 Closed Isolator
+
+Q2: 廠房預算有限，但希望降低環境級別要求？
+    → 是：Closed Isolator（Grade D 環境）
+    → 否：RABS（Grade B 環境，建造成本較高）
+
+Q3: 產品換型頻繁（CDMO 多產品共線）？
+    → 是：RABS 更易於清洗和換型
+    → 否：Isolator 去污時間較長，但長期無菌保證更好
+
+Q4: 現有設施升級（改造 Grade B 空間）？
+    → RABS 是改造現有潔淨室的理想選擇
+    → Isolator 需要更多基礎設施（VHP 系統、廢氣處理）
+
+參考：EU Annex 1 (2022) 明確鼓勵使用 Isolator 或 RABS，
+視為對 CCS 的積極貢獻。
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 場景</h4>
+            <p>假設你的 CDMO 同時承接兩個客戶專案：</p>
+            <ul>
+                <li><strong>客戶 A：</strong>高價值生物製劑，每批次 500 vials，年產 6 批。要求最高無菌保證，監管機構為 EMA。</li>
+                <li><strong>客戶 B：</strong>通用注射劑，每批次 50,000 vials，年產 50 批，頻繁換型。監管機構為 FDA。</li>
+            </ul>
+            <p><strong>分析：</strong>客戶 A 建議使用 Closed Isolator（最高保護，EU 監管傾向）。客戶 B 建議使用 RABS（換型彈性大，批量高）。如果只有一條線，需要做 QRM（品質風險管理）評估共線可行性——這正是 PDA PtC-1 將屏障技術納入 CCS 框架的原因。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家工廠將 RABS 設置在 Grade C 環境中，認為已符合 PDA 建議。這樣做是否正確？理由為何？（提示：PtC-1 明確規定 RABS 必須在 Grade B 環境中。）</li>
+                <li>當 RABS 需要進行開門干預時，PDA PtC-1 要求的「額外控制措施」至少包含哪幾項？（請列舉至少 4 項。）</li>
+                <li>Isolator 的內表面被說成是「去污（decontaminated）」而非「滅菌（sterilized）」，這在操作規範上有什麼含義？（提示：手套不能觸碰關鍵表面的原因。）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC J ==================== -->
+<div id="topic-j" class="topic-header">Topic J: Environmental Clean-Up Period Determination (At Rest) (p27–p28)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>How much time is needed to reestablish acceptable cleanroom conditions after disruption of these conditions?</p>
+
+        <h3>Recommendation</h3>
+        <p>The particle levels for the "<span class="key-term">at-rest</span>" state should be achieved after a "<span class="key-term">clean-up period</span>", one that is sufficiently long to allow enough air turnover to return to qualified conditions, that has been established through qualification activities, and is controlled via established procedures.</p>
+
+        <p>The best approach for this concept is <strong>not a time limit</strong> but, rather, a pre-established program of steps and measures to be taken in the event of a deviation in the CCS. This program should not be a description of what to do but, rather, of what to consider when returning an environment to a controlled condition.</p>
+
+        <h3>Rationale</h3>
+        <p>Cleanroom facilities and operations differ. Therefore, it is impossible to prescribe time limits for reestablishing acceptable cleanroom conditions after a disruption for all facilities and operations. Companies should establish a clean-up period based on <span class="key-term">system qualification</span>.</p>
+
+        <div class="quote-box">
+            "NOTE: EU Annex 1, Section 4.29, does state a guidance value of 20 minutes for cleanroom reestablishment of conditions, but says the time period should be determined under qualification and adhered to in operations."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 清除期 (Clean-Up Period)</h4>
+            <p><strong>清除期（Clean-Up Period）</strong>是指：潔淨室在受到擾動（例如人員進出、干預操作、設備維修）後，需要多長時間才能恢復到「靜止狀態（At-Rest）」的粒子水準。</p>
+            <p>PDA PtC-1 的核心立場：<strong>清除時間不應是固定的時間規定，而應是透過資格確認（Qualification）建立的、設施專屬的數據。</strong> 這反映了 GMP 中「科學為本」的原則——每個廠房的 HVAC 設計、換氣次數（ACH）、房間大小都不同，不可能一刀切。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 餐廳廚房換氣</h4>
+            <p>想像一個大型廚房在炒菜後充滿油煙：一個小廚房（高換氣率）可能5分鐘後就恢復清潔；一個大型工業廚房（低換氣率、大空間）可能需要30分鐘。你不能規定「所有廚房必須10分鐘清除」——必須實測。</p>
+            <p>潔淨室也一樣：EU Annex 1 的 20 分鐘是「指引值（guidance value）」，不是強制標準。你的廠房也許 10 分鐘就夠，也許需要 35 分鐘——關鍵是用數據說話。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU Annex 1 的 20 分鐘與 PDA 立場的差異</h4>
+            <p><strong>EU Annex 1 第 4.29 條：</strong>提供 20 分鐘作為指引值，但明確表示應透過資格確認確定具體時間。</p>
+            <p><strong>PDA PtC-1 立場：</strong>更進一步，認為「不應設定時間限制」，而應建立一套「偏差後環境恢復的系統程序」，包括：</p>
+            <ul>
+                <li>確認擾動已停止</li>
+                <li>驗證 HVAC 運行正常</li>
+                <li>實際粒子監測確認恢復（而非假設時間到就好）</li>
+            </ul>
+            <p><strong>實務含義：</strong>FDA 查核時，查官可能問：「你的清除期是如何確立的？」——你需要提供資格確認的數據，而不只是引用「EU 說 20 分鐘」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式參考 — 換氣次數與清除時間的關係</h4>
+            <pre>
+理論清除時間估算（ISPE 方法）：
+
+清除時間 ≈ 3 ÷ ACH（每小時換氣次數）× 60 分鐘
+
+例：Grade B 房間 ACH = 20
+→ 理論清除時間 ≈ 3 ÷ 20 × 60 = 9 分鐘（99% 清除率）
+
+但此公式為理論值，實際需透過粒子計數驗證：
+- 在擾動後（如人員退出）立即啟動粒子監測
+- 記錄粒子數降到 At-Rest 標準的實際時間
+- 此時間即為該設施的合格清除期
+
+注意：EU Annex 1 指引值 20 分鐘對應較保守的
+換氣次數（~9 ACH），現代潔淨室通常可更快。
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠 Grade B 填充室的 HVAC 換氣次數為 30 ACH，你的清除期是否可以設定為少於 EU Annex 1 的 20 分鐘指引值？需要提供什麼數據支持？</li>
+                <li>PDA PtC-1 說清除期「不應是時間限制」，那清除期的觸發條件是什麼？恢復的確認標準又是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC K.1 ==================== -->
+<div id="topic-k1" class="topic-header">Topic K.1: Blow-Fill-Seal Process Design and Operation (p28–p30)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What are the unique environmental contamination control considerations for the <span class="key-term">Blow-Fill-Seal (BFS)</span> process?</p>
+
+        <h3>Recommendation</h3>
+        <p>The environment in which the BFS machine is placed should be sufficient to protect the product-contact surfaces and product from environmental contaminants (typically <strong>Grade C</strong>). Open drains should not be present in the BFS filling cleanroom.</p>
+
+        <p>The <span class="key-term">critical fill zone</span> environment should be <strong>Grade A</strong>. This environment can be contained in an <span class="key-term">enclosed air shroud</span> or barrier, providing that system is qualified and demonstrates a low risk of microbial intrusion.</p>
+
+        <p>It should <strong>not be necessary</strong> to have a Grade B transition area between the Grade A critical zone and the Grade C BFS machine area.</p>
+
+        <p>Qualification studies, including <span class="key-term">airflow visualization studies</span>, should be performed to demonstrate that air from the environment does not flow from the surrounding fill room into the critical fill or exposed parison (transport) areas during operation and during interventions.</p>
+
+        <p>The <span class="key-term">open parison transport</span> environment should meet Grade A conditions and should be controlled and monitored to protect the interior and exterior of the container from contamination during transport. It may be necessary to utilize direct HEPA-filtered airflow over the parison cutting area.</p>
+
+        <p>Machinery, equipment, and operations that can be placed outside of the filling room, or otherwise separated from the filling room by way of barriers or BFS line design, should be considered.</p>
+
+        <p>Cleanroom personnel performing interventions or otherwise entering the filling room should be gowned for <strong>Grade A and Grade B</strong>. Any activities in the fill zone must use proper aseptic technique. Interventions should be minimized and limited to those performed outside of the enclosed air-shroud barrier systems and the critical fill and transport zones.</p>
+
+        <p>A risk-based approach to <span class="key-term">EM</span> should be used to select monitoring locations based on areas where environmental contamination poses the greatest risk to product contamination.</p>
+
+        <div class="quote-box">
+            "NOTE: For rotary or closed parison BFS machines, it may not be possible to take environmental samples adjacent to the filling nozzle due to the inclusion of the nozzle in the closed parison."
+        </div>
+
+        <h3>Rationale</h3>
+        <p>A properly designed and operated BFS process may provide a relatively low risk for microbial ingress or contamination of product due to:</p>
+        <ul>
+            <li>The <span class="key-term">high level of automation</span> (no operators in the immediate filling area)</li>
+            <li>Minimal need for interventions</li>
+            <li>Short periods of container exposure to the controlled environment prior to filling and sealing</li>
+        </ul>
+
+        <p>Due to the design of the BFS process and equipment, it may be difficult to achieve a defined Grade A environment. It may not be possible to achieve correct differential pressures and an adjacent Grade B environment at the <span class="key-term">extrusion/parison cutting</span> and transport areas. In addition, the parison cutting process may generate airborne particulates. Steps should be taken to examine the transport from the point at which the parison is cut and open to the point at which it enters the enclosed shroud area.</p>
+
+        <p>Protection of the <span class="key-term">open parison during transport and filling</span> should mitigate and control the risk of microbial contamination. Airflow volumes and velocity should be designed and balanced to minimize the risk of ingress of contamination, without creating excessive turbulence or unintentional cooling of the exposed parison, which could result in container formation and seal difficulties.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — BFS 的「先進無菌」地位</h4>
+            <p><strong>Blow-Fill-Seal（BFS，吹瓶-充填-封口）</strong>是一種整合式無菌包裝技術：塑膠粒料（Resin）在機器內被加熱擠出成型（Parison，熔融管），同時充填藥液，然後密封——整個過程在幾秒鐘內完成，幾乎沒有「開放暴露」時間。</p>
+            <p><strong>為何 BFS 不需要 Grade B 過渡區？</strong> 因為 BFS 的核心設計理念是「容器在充填前才存在」——不像傳統玻璃瓶需要運輸、清洗、滅菌等多個步驟，BFS 的容器是「即時製造即時充填」，暴露視窗極短，風險本質上不同。</p>
+            <p>這是 EU Annex 1（2022）與 FDA 都認可的「特殊情況」，允許 BFS 機房使用 Grade C，但仍要求 Air Shroud 內達到 Grade A 等效。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — BFS 像「現場製作的密封飲料」</h4>
+            <p>傳統無菌充填就像：工廠先生產空玻璃瓶（有清洗、滅菌過程），運到充填室，開口充填，再加蓋。每個步驟都有汙染風險。</p>
+            <p>BFS 就像：飲料機現場用熱塑膠「吹」出一個杯子，立刻注入飲料，立刻密封。杯子從沒有「空的」狀態——一生出來就被充填了。所以「容器被汙染」的機會視窗幾乎為零。</p>
+            <p>Air Shroud 就像「機器外罩一層玻璃罩子」，確保這個吹製-充填-密封的瞬間受到 Grade A 潔淨空氣保護。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — BFS 的 EM 特殊挑戰</h4>
+            <p>BFS 的環境監測（EM）與傳統充填線不同，有幾個特殊考量：</p>
+            <ul>
+                <li><strong>Parison 切割產生粒子：</strong>塑膠被切割時會產生顆粒，這些是「非微生物但干擾計數」的粒子。需要建立「基準（Baseline）」來區分製程相關粒子和真正的環境污染。</li>
+                <li><strong>封閉式 Parison 無法取樣：</strong>對於旋轉式或封閉 Parison 設計的 BFS 機器，充填噴嘴在 Parison 內部，根本無法在鄰近位置取 EM 樣本。這是監管機構允許的設計限制，但必須在 EM 計畫中說明理由。</li>
+                <li><strong>Grade A 的認定方式：</strong>因 BFS 難以設置標準的 Grade A 差壓環境，監管機構接受「透過資格確認研究（包括煙霧可視化）證明等效 Grade A 保護」的方式。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — FDA vs EU Annex 1 對 BFS 的立場對比</h4>
+            <p>FDA（2004 指引）：承認 BFS 的特殊性，接受 Grade C 機房環境，要求 Grade A 等效的關鍵充填區，但沒有明確要求 Grade B 過渡區。</p>
+            <p>EU Annex 1（2022）：同樣允許 BFS 在 Grade C 操作，明確確認不需要 Grade B 過渡區（這在 2022 年修訂中是一個重要的澄清），但要求充填關鍵區域提供 Grade A 等效保護的書面資格確認。</p>
+            <p><strong>CDMO 實務：</strong>如果同時面向 FDA 和 EMA 市場，BFS 的設計方案通常可以同時滿足兩個監管機構的要求——這是 BFS 的一個監管友好優勢。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — BFS CDMO 廠房設計</h4>
+            <p>如果 CDMO 考慮引入一台新的 BFS 機器：</p>
+            <ul>
+                <li><strong>廠房環境：</strong>機器主體可在 Grade C，但 Air Shroud 必須設計為 Grade A 等效。</li>
+                <li><strong>人員更衣：</strong>進入 BFS 充填室的人員必須按 Grade A/B 要求更衣（比 Grade C 更嚴格），因為他們一旦進行干預，就是在 Grade A 環境附近操作。</li>
+                <li><strong>EM 計畫：</strong>需要特別規劃：哪些位置可取樣、哪些不可取樣（並說明理由）、如何解讀 Parison 切割產生的非生物粒子。</li>
+                <li><strong>APS（無菌製程模擬）：</strong>必須模擬 Resin 充填過程，但由於容器為不透明/半透明塑膠，培養基生長的可見性可能受限——需要在 APS 計畫中特別說明判讀方法。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 PDA PtC-1 說 BFS 機房「不需要 Grade B 過渡區」？這個結論的科學依據是什麼？</li>
+                <li>BFS 的 Parison 切割區域粒子監測面臨哪些特殊挑戰？廠房應如何處理「因製程產生的非微生物粒子」對監測數據的影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC K.2 ==================== -->
+<div id="topic-k2" class="topic-header">Topic K.2: Plastic Resin Storage and Handling (p30–p31)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What are the unique container and resin control considerations for the BFS process?</p>
+
+        <h3>Recommendation</h3>
+        <p>Resin identity and quality should be maintained through the company's approved <span class="key-term">supply-chain management system</span>. <span class="key-term">Resin bioburden</span> (including endotoxin) limits should be established, controlled, and monitored based on product requirements.</p>
+
+        <p>Resin should be stored and dispensed from a <span class="key-term">controlled, non-classified area</span> in a manner that prevents the introduction of extraneous contamination. Consideration should be given to temperature and humidity controls.</p>
+
+        <p>Resin stored in <span class="key-term">large refillable containers (i.e., silos)</span> should be monitored for moisture accumulation and bioburden. Such containers should be closed, periodically emptied, and cleaned or sanitized.</p>
+
+        <p>Use of a <span class="key-term">resin-regrind mixture</span> in container formation should be qualified to confirm that such regrind levels are acceptable. Acceptability should be based, at least, on the ability to maintain resin bioburden from the container and the seal of the container, and container integrity should be maintained throughout the shelf life of the product.</p>
+
+        <p>Procedures should be established for ensuring clearance and cleaning of current resin from the transport lines and extruder when the <span class="key-term">changeover of resin</span> is required. Lot traceability of resin and resin-regrind mixture should be maintained.</p>
+
+        <h3>Rationale</h3>
+        <p>The selection, use, and handling of resin are key components of the BFS process. Resin quality is important to ensure the proper formation, sealing, stability, and overall performance of the containers and the control of bioburden; therefore, resin composition and identity should be maintained. Proper handling and storage should reduce the risk of bioburden formation. Bioburden monitoring should provide additional assurance of resin quality.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為什麼 Resin 品質在 BFS 中特別重要？</h4>
+            <p>在傳統無菌充填中，容器（玻璃瓶、安瓿）是預先製造的，廠商通過清洗-去熱原-滅菌來確保無菌。</p>
+            <p>在 BFS 中，塑膠樹脂（Resin）本身就是容器材料的前驅物。樹脂的微生物負荷（Bioburden）和內毒素（Endotoxin）直接影響最終容器的品質——雖然擠出成型的高溫（通常 >170°C）可殺滅大多數微生物，但高溫不能摧毀內毒素。因此，樹脂的生物負荷管控是 BFS 製程中容易被忽視但至關重要的環節。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Resin Regrind 的使用</h4>
+            <p><strong>Resin Regrind（回收研磨料）</strong>是指 BFS 生產中被切除的多餘塑膠（如容器頸部的廢料）被研磨後重新混入新樹脂使用，以減少物料浪費。</p>
+            <p>PDA PtC-1 的要求：Regrind 的使用必須經過資格確認，至少驗證：</p>
+            <ul>
+                <li>混用比例對生物負荷（Bioburden）的影響</li>
+                <li>容器封口完整性是否受影響</li>
+                <li>容器在整個保存期限（Shelf Life）內的完整性</li>
+            </ul>
+            <p><strong>注意：</strong>Regrind 在儲存和研磨過程中可能累積微生物，必須監測並設定限值。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Silo（大型儲料倉）的特殊風險</h4>
+            <p>BFS 工廠常使用大型儲料筒倉（Silos）存放大量樹脂。這些設備的風險點：</p>
+            <ul>
+                <li><strong>水分累積：</strong>塑膠樹脂吸濕後可能影響成型品質，還可能促進微生物生長。</li>
+                <li><strong>清潔挑戰：</strong>大型筒倉難以定期清潔，需要建立定期清空-清洗-消毒的 SOP。</li>
+                <li><strong>監測策略：</strong>定期取樣監測倉內樹脂的微生物負荷和濕度。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何 BFS 製程中需要監測樹脂的內毒素（Endotoxin）？擠出過程的高溫是否足以消除內毒素風險？</li>
+                <li>BFS 工廠的換型（Resin Changeover）需要哪些特別程序？為何需要確保輸送管線和擠出機的清除（Clearance）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC K.3 ==================== -->
+<div id="topic-k3" class="topic-header">Topic K.3: Blow-Fill-Seal Process Simulation (p31–p32)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What are the unique <span class="key-term">APS</span> considerations for the BFS process?</p>
+
+        <h3>Recommendation</h3>
+        <p><span class="key-term">APS</span> for BFS should be conducted in the same manner as non-BFS aseptic processes.</p>
+
+        <h3>Rationale</h3>
+        <p>The level of automation, absence of inherent interventions, and <span class="key-term">visibility of media contamination</span> in translucent, pigmented, or opaque plastic containers should be taken into consideration when designing the APS, as they would be in any aseptic filling process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — BFS APS 的特殊考量</h4>
+            <p>雖然 PDA PtC-1 說 BFS 的 APS 應「以相同方式進行」，但在實際執行時有幾個重要的特殊考量：</p>
+            <ul>
+                <li><strong>高度自動化（High Automation）：</strong>BFS 通常沒有人員直接在充填區操作，因此 APS 中「干預模擬」的設計需要特別思考——哪些是 BFS 固有的干預？（如機器停機、Parison 問題處理等）</li>
+                <li><strong>容器不透明/半透明問題：</strong>BFS 常用半透明或著色塑膠容器。培養基（通常是 TSB，黃褐色）在這類容器中，污染生長產生的渾濁可能不易目視判別，需要特殊的判讀 SOP 或輔助檢測方法。</li>
+                <li><strong>APS 頻率：</strong>PDA TR22 規定每半年至少一次，BFS 通常不需更頻繁——但因其高自動化程度，一旦有 APS 失敗，追查原因往往更困難。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 培養基可見度問題的監管關注</h4>
+            <p>FDA 查核時曾對 BFS 的 APS 結果判讀提出疑問：「你如何確認半透明容器內沒有微生物生長？」</p>
+            <p>建議的實務做法：</p>
+            <ul>
+                <li>使用透明版本的相同塑膠配方（如果可行）進行 APS，以提高可見度。</li>
+                <li>如果使用一般生產材料，建立額外的培養基目視判讀 SOP（例如背光照射、傾斜觀察）。</li>
+                <li>在 APS 計畫中明確說明「可見度限制」及補償措施，並獲得 QA 批准。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 BFS APS 使用的是著色（藍色）塑膠容器。培養基為 TSB（澄清黃棕色）。你如何設計 APS 的污染判讀方法？需要哪些額外的 SOP？</li>
+                <li>BFS 高度自動化，幾乎不需要人員干預——那麼 BFS 的 APS 需要模擬哪些「干預」？（提示：考慮機器異常、物料補充等場景。）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC L ==================== -->
+<div id="topic-l" class="topic-header">Topic L: Air Locks (p32–p34)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>Are separate air locks required for materials and for personnel to move into critical zones in order to prevent contamination?</p>
+
+        <h3>Recommendation</h3>
+        <p>Where possible, sterilized materials should be <span class="key-term">directly transferred into the critical zones</span> after sterilization through <span class="key-term">double-door sterilizers</span> or decontamination through other aseptic transfer devices. Where this is not performed, or cannot be performed, entry to these areas should be through separate air locks with an active air supply for (1) personnel and (2) equipment and materials.</p>
+
+        <p>Where it is not possible or feasible to physically separate the movement of personnel and materials or to have separate air locks, <span class="key-term">time-based separation</span> of movement by procedure should be considered. Where an assessment aligned with the CCS indicates that the risk of contamination is high, however, separate rooms for personnel and material entering and leaving production areas should be used.</p>
+
+        <p>The <strong>final area of a gowning room should be in at-rest (as-built) conditions of the same grade as the area into which this area leads</strong>. The entrance into and exit from critical zones and Grade A and Grade B, including gowning rooms, should be through separate air locks or entrances.</p>
+
+        <p>Gowning rooms for entrances into and exits from the controlled and graded areas should be designed with air locks and used to provide physical separation of the different stages of gowning and, thus, minimize microbial and particulate contamination of protective clothing and more highly controlled areas.</p>
+
+        <p>For equipment and materials, separate air locks for entrances and exits should be considered. If separate air locks are not possible, procedures should be in place to prevent entrances and exits without intermediate cleaning or sanitization.</p>
+
+        <h3>Rationale</h3>
+        <p>The control of contamination as a result of personnel and material movement can be achieved through the segregation of entities, by means of the:</p>
+        <ul>
+            <li>Design of the process (e.g., <span class="key-term">double-door sterilizers</span>)</li>
+            <li>Use of <span class="key-term">separate air locks</span> for personnel and materials</li>
+            <li>Unidirectional flow of personnel and materials</li>
+            <li>Use of <span class="key-term">active air supply</span> in the air locks</li>
+            <li>Use of <span class="key-term">interlocks and timed procedures</span> for the opening of sequential airlock entrances</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 氣閘（Air Lock）的設計原則</h4>
+            <p><strong>氣閘（Air Lock）</strong>是不同等級潔淨區域之間的過渡緩衝空間，功能類似於隔離不同壓力環境的「緩衝區」。其設計應符合以下原則：</p>
+            <ul>
+                <li><strong>人員與物料分開：</strong>人員更衣氣閘和物料傳遞氣閘應分開設置，避免交叉污染。</li>
+                <li><strong>最終更衣室等級匹配：</strong>最終更衣區（脫下外衣、穿好潔淨服的最後一步）必須達到與其通往區域相同等級的靜止條件。</li>
+                <li><strong>主動供氣：</strong>氣閘應有自己的獨立送風系統（Active Air Supply），而不僅僅依賴相鄰房間的空氣滲入。</li>
+                <li><strong>互鎖（Interlock）：</strong>防止兩側門同時開啟，確保任何時刻只有一扇門是開著的。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 氣閘像水壩的閘門系統</h4>
+            <p>想像一個運河閘門系統（船閘）：高水位區（Grade A 或 B）和低水位區（Grade C 或 D）之間，透過一個可控制的「閘門空間」連接。進入時先進入閘門空間，關閉後方門，改變水位（等效：關閉氣閘、恢復壓力差），然後才能開啟前方門。</p>
+            <p>潔淨室氣閘的「水位」對應「壓力差」：</p>
+            <ul>
+                <li>Grade A/B 通常是正壓（避免外部空氣流入）</li>
+                <li>氣閘是「過渡壓力」的緩衝區</li>
+                <li>互鎖確保兩側不會同時開啟，防止「水（空氣）溢出」</li>
+            </ul>
+            <p>PDA PtC-1 還提到一個更簡單的解決方案：<strong>雙門滅菌器（Double-Door Sterilizer）</strong>——就像水壩裡裝了一個「物料傳送管道」，物料直接從非潔淨側進入滅菌機，從潔淨側出來，完全不需要氣閘。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Grade B 更衣室的最終區域要求</h4>
+            <p>PtC-1 明確規定：<strong>「更衣室的最終區域（final area）應在與其通往區域相同等級的靜止條件下運行。」</strong></p>
+            <p>實務含義：如果更衣室通往 Grade B 充填室，那麼最終更衣區（穿上最後一層潔淨衣的地方）必須在靜止狀態下達到 Grade B 的粒子標準（ISO 5 等效）。這不僅是設計要求，也是更衣室的資格確認內容。</p>
+            <p><strong>常見問題：</strong>許多老廠的更衣室「最終更衣區」沒有達到這個標準，或者沒有做過粒子計數確認——這是 EU Annex 1（2022）查核時的高頻缺陷點。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>壓力梯度設計原則</h4>
+            <pre>
+典型壓力梯度設計（正壓保護模式）：
+
+Grade A/B（充填室）    > Grade B（更衣/氣閘）   > Grade C（外走廊）
+
+壓差建議值（依 EU Annex 1）：
+相鄰區域之間：≥ 10–15 Pa
+
+設計要點：
+1. 氣閘應有獨立送風（不能只靠相鄰房間洩壓）
+2. 互鎖系統：A 門開著時 B 門不能開
+3. 單向人流和物流（進入/退出路線不交叉）
+4. 緊急情況（如毒性或 OEB 高毒性產品）：
+   使用「負壓氣閘」保護外部環境，
+   而非保護內部
+
+Grade A 為正壓的核心邏輯：
+外部空氣（Grade C/D）不應流入 Grade A/B，
+因此 Grade A/B 的壓力必須高於外部。
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果因廠房限制無法設置獨立的人員氣閘和物料氣閘，PDA PtC-1 建議的替代方案是什麼？這個替代方案需要滿足哪些條件？</li>
+                <li>Grade B 充填室的最終更衣區，在靜止狀態下應達到哪個 ISO 等級？這個要求應如何透過資格確認活動來驗證？</li>
+                <li>一個設施進行高毒性（OEB 5）產品的無菌充填，氣閘的壓力設計應為正壓還是負壓？為什麼？（這個問題超出 PtC-1 範疇，但考驗整合理解。）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC M ==================== -->
+<div id="topic-m" class="topic-header">Topic M: "At-Rest" and "In-Operation" Status (p34–p35)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>Should we test or monitor cleanrooms for total particulates in "at-rest" conditions in addition to "in-operation" conditions?</p>
+
+        <h3>Recommendation</h3>
+        <p>For <span class="key-term">qualification</span> and regular <span class="key-term">requalification</span>, both <strong>at-rest</strong> as well as <strong>in-operation</strong> test conditions should be used. Routine monitoring of at-rest conditions is <strong>not required</strong> as long as operational (total particulate) monitoring is in place.</p>
+
+        <p>Consideration should be given to the analysis of total particulate monitoring of base levels for processes that inherently generate process-related particles, for example, containers closed by fusion or processes that otherwise generate product-related particles. These may include processes related to <span class="key-term">BFS, form-fill-seal, and powder filling</span>.</p>
+
+        <h3>Rationale</h3>
+        <p><span class="key-term">At-rest conditions</span> are reflective of design and initial operation and should be periodically verified (i.e., during requalification) to ensure that no significant changes have occurred.</p>
+
+        <p>At-rest monitoring may also be useful to establish baseline conditions that can be taken into consideration when setting <span class="key-term">in-process limits</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — At-Rest vs In-Operation 的定義</h4>
+            <p>這是 EU Annex 1 和 ISO 14644 中非常基礎但容易混淆的概念：</p>
+            <ul>
+                <li><strong>At-Rest（靜止狀態）：</strong>潔淨室安裝完成、HVAC 運行，但無設備運轉、無人員在場。測試的是「環境本身」的潔淨能力。也稱為「As-Built」（剛建成）或「Unoccupied」（無人狀態）。</li>
+                <li><strong>In-Operation（操作狀態）：</strong>生產設備正在運行，人員正在進行正常操作。測試的是「真實生產條件下」的潔淨室表現。</li>
+            </ul>
+            <p>兩種狀態通常會有粒子數量差異（操作狀態通常粒子數更高），EU Annex 1 對 Grade A-D 都規定了兩種狀態的限值。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — At-Rest 是「空教室」，In-Operation 是「上課中」</h4>
+            <p>想像一間學校教室：</p>
+            <ul>
+                <li><strong>At-Rest = 下課後清掃完畢的空教室：</strong>地板乾淨、空氣清新。這反映了「教室本身的清潔能力」。</li>
+                <li><strong>In-Operation = 上課中（50 個學生坐在裡面）：</strong>粉筆灰、說話噴的飛沫、走動揚起的塵埃。這是「實際使用條件」。</li>
+            </ul>
+            <p>資格確認時，兩種狀態都要測——你需要知道教室本身能達到多乾淨（At-Rest），也需要知道使用中還能維持什麼程度的潔淨（In-Operation）。但日常監測只要有「上課中」的監測就夠了——因為「上課中」的數據已經包含了最壞情況。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU Annex 1 兩種狀態的粒子限值</h4>
+            <table>
+                <tr>
+                    <th>等級</th>
+                    <th>At-Rest ≥0.5µm (per m³)</th>
+                    <th>In-Operation ≥0.5µm (per m³)</th>
+                </tr>
+                <tr>
+                    <td>Grade A</td>
+                    <td>3,520</td>
+                    <td>3,520</td>
+                </tr>
+                <tr>
+                    <td>Grade B</td>
+                    <td>3,520</td>
+                    <td>352,000</td>
+                </tr>
+                <tr>
+                    <td>Grade C</td>
+                    <td>352,000</td>
+                    <td>3,520,000</td>
+                </tr>
+                <tr>
+                    <td>Grade D</td>
+                    <td>3,520,000</td>
+                    <td>未規定</td>
+                </tr>
+            </table>
+            <p><strong>注意 Grade A：</strong>At-Rest 和 In-Operation 的限值相同（3,520 per m³）。這表示 Grade A（通常是層流保護或 Isolator 內部）在操作過程中不應因人員活動而升高粒子數——這也是為什麼 Isolator/RABS 如此重要：它防止了人員成為 Grade A 區的粒子來源。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 製程產生粒子的特殊處理</h4>
+            <p>PDA PtC-1 特別提到 BFS、Form-Fill-Seal（形成-充填-密封）和粉末充填等製程會本身產生粒子（製程相關粒子），不是環境污染的結果。</p>
+            <p>對這類製程，建議：</p>
+            <ul>
+                <li>先建立「沒有製程干擾時的基準（Baseline）」粒子水準</li>
+                <li>用「相對偏差」（相對於基準的異常升高）來設定警戒和行動限值</li>
+                <li>而非直接套用 ISO/EU 的絕對粒子數限值</li>
+            </ul>
+            <p>這是 PDA 對監管框架的務實補充：標準數字是給一般情況用的，特殊製程需要特殊評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>PDA PtC-1 說日常監測不需要做 At-Rest 粒子監測——那麼什麼情況下需要重新做 At-Rest 測試？（提示：想想「定期重新確認（Requalification）」的觸發條件。）</li>
+                <li>一個粉末充填室（Grade B）的操作狀態粒子計數持續偏高，但 At-Rest 時完全符合標準。這意味著什麼？應如何調查？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC N ==================== -->
+<div id="topic-n" class="topic-header">Topic N: Sample Volume for Classification (p35–p36)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What is the air volume, in relation to particles, to be sampled for <span class="key-term">classification</span> purposes of cleanrooms?</p>
+
+        <h3>Recommendation</h3>
+        <p>The sample size described in the most current version of <span class="key-term">ISO 14644-1</span> should be used because this represents the current industry standard that is required by many regulators around the world.</p>
+
+        <h3>Rationale</h3>
+        <p>The ISO standard is based on scientific principles and industry expertise.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — ISO 14644-1 採樣量的計算</h4>
+            <p>ISO 14644-1:2015 定義了每個採樣點的最小採樣量（V<sub>s</sub>）：</p>
+            <p>計算公式：<strong>V<sub>s</sub> = (20 / C<sub>n,m</sub>) × 1000 (公升)</strong></p>
+            <p>其中 C<sub>n,m</sub> 是該潔淨等級在指定粒徑下的最大允許粒子濃度（per m³）。分子「20」代表統計學上需要捕獲到至少 20 個粒子才能使計數具有統計意義。</p>
+            <p>這對不同等級的含義：</p>
+            <ul>
+                <li><strong>Grade A（ISO 5，≥0.5µm，3,520 per m³）：</strong>V<sub>s</sub> = 20/3,520 × 1000 ≈ 5.7 L。由於 Grade A 粒子極少，5.7 升就夠了。</li>
+                <li><strong>Grade D（ISO 8，≥0.5µm，3,520,000 per m³）：</strong>V<sub>s</sub> 更小，因粒子濃度高，少量樣本即可。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 最小採樣量 vs 連續監測的差異</h4>
+            <p>ISO 14644-1 的最小採樣量是針對<strong>分類/資格確認</strong>用的——你要「宣告」這個房間是 ISO Class X，需要採多少樣本。</p>
+            <p>但日常生產監測（Routine EM）通常使用<strong>連續粒子計數器</strong>，每分鐘採集固定流量（通常 28.3 L/min = 1 CFM），這是一種不同的方法。兩者的目的不同：</p>
+            <ul>
+                <li>ISO 採樣量（大）→ 用於「證明分類」（Classification/Qualification）</li>
+                <li>連續監測（小流量但長時間）→ 用於「趨勢分析和即時警報」（Routine Monitoring）</li>
+            </ul>
+            <p>PDA PtC-1 的立場：分類請遵守 ISO 14644-1，不要發明自己的採樣量——因為這是全球監管機構共同接受的標準。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式 — ISO 14644-1 最小採樣量</h4>
+            <pre>
+最小採樣量計算：
+
+Vs = (20 / Cn,m) × 1000  [單位：公升]
+
+Cn,m = 該潔淨等級在目標粒徑下的最大濃度（per m³）
+
+Grade A/B（ISO 5）：
+  ≥0.5µm → Cn,m = 3,520 per m³
+  → Vs = (20/3,520) × 1000 ≈ 5.67 L → 取整為 ≥ 6 L
+
+Grade C（ISO 7）：
+  ≥0.5µm → Cn,m = 352,000 per m³
+  → Vs = (20/352,000) × 1000 ≈ 0.057 L ≈ 57 mL
+
+Grade D（ISO 8）：
+  ≥0.5µm → Cn,m = 3,520,000 per m³
+  → Vs = (20/3,520,000) × 1000 ≈ 0.0057 L ≈ 5.7 mL
+
+注意：實際取樣量通常遠大於最小值，
+因連續粒子計數器每分鐘採 28.3L。
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Grade A 環境需要採集比 Grade C 更多體積的空氣樣本才能進行分類？這背後的統計學原理是什麼？</li>
+                <li>一個粒子計數器的流量為 28.3 L/min，每次採樣時間為 1 分鐘。這樣的採樣量對 Grade A 分類是否足夠？（請用計算說明。）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOPIC O ==================== -->
+<div id="topic-o" class="topic-header">Topic O: ≥0.5 µm and ≥5 µm Total Particle Monitoring (p36–p37)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>Should limits be applied for <span class="key-term">≥5 µm particle monitoring</span> for Grade A routine monitoring?</p>
+
+        <h3>Recommendation</h3>
+        <p>Routine monitoring for ≥5 µm within Grade A can provide useful information. However, due to the <span class="key-term">low concentration of particles</span> and the <span class="key-term">possibility of false readings</span>, the setting of limits may be misleading. The focus should be on the <strong>overall trend</strong> rather than individual numbers, based on the low accuracy of the measurement when counting particles ≥5 µm separately. The <span class="key-term">analysis of monitoring-result trends</span> is more appropriate.</p>
+
+        <h3>Rationale</h3>
+        <p>ISO 14644-1:2015 states:</p>
+        <div class="quote-box">
+            "Sampling and statistical limitations for particles in low concentration make classification inappropriate… Sample collection limitations for both particles in low concentration and particles greater than 1 micrometer make classification of this particle size inappropriate, due to potential particle losses in the sampling system."
+        </div>
+
+        <p>Monitoring and reporting of particles ≥0.5 µm and ≥5 µm should be adequate for evaluation of Grade A environments. However, <strong>limits are not required for ≥5 µm particles for Grade A classification purposes</strong>.</p>
+
+        <p style="font-size:0.85rem; color:#666; font-style:italic;">Footnote 1: Quantification of ≥5 µm particle monitoring for Grade A zones, in addition to ≥0.5 µm particle monitoring, is currently required by some regulatory agencies, including in the EU.</p>
+        <p style="font-size:0.85rem; color:#666; font-style:italic;">Footnote 2: The same recommendation should apply to Grade B environments in nonoperational (as-built/at-rest) conditions (ISO Class 5).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為何 ≥5 µm 粒子監測如此困難？</h4>
+            <p>粒子計數器（Particle Counter）是透過光散射原理偵測粒子。≥5 µm 的粒子計數面臨三個技術問題：</p>
+            <ul>
+                <li><strong>濃度太低（Statistically Rare）：</strong>在 Grade A 環境中，≥5 µm 粒子本來就極少。當濃度極低時，計數的隨機誤差（統計誤差）相對於實際數字非常大——你可能測到 0、1、2 個粒子，但這個差異在統計上沒有意義。</li>
+                <li><strong>採樣管損失（Particle Loss in Tubing）：</strong>大粒子在彎曲的採樣管中容易沉降或撞壁損失，到達偵測器的粒子比實際少，造成「假低讀數」。</li>
+                <li><strong>假讀數（False Counts）：</strong>相反地，液滴（比如操作員呼吸或設備潤滑油霧）可能被誤計為大粒子，造成「假高讀數」。</li>
+            </ul>
+            <p>ISO 14644-1 的結論是：≥5 µm 粒子計數的不確定性太高，不適合用於分類（Classification），但仍可用於趨勢監測。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 在空蕩蕩的廣場數人頭</h4>
+            <p>想像你需要計算一個巨大廣場上的人數。如果廣場上有 10,000 人（就像 Grade C 的粒子），計數誤差±100 人（1%）是可以接受的。</p>
+            <p>但如果廣場上只有 3 個人（Grade A 的 ≥5 µm 粒子），你的計數可能是 2 或 4 個人（±1 的誤差就是 33%！）。這個測量本身就不精確。</p>
+            <p>所以 PDA 說：在幾乎沒有 ≥5 µm 粒子的 Grade A 環境中，每次測到的個位數數字不應設定硬性限值——應該看的是「這個數字是否開始持續上升」（趨勢），而不是「這次測到了 2 個，超過了限值 1」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — PDA 與 EU Annex 1 的立場差異（監管現實）</h4>
+            <p>這是 Topic O 最重要的監管張力：</p>
+            <table>
+                <tr>
+                    <th>機構</th>
+                    <th>≥5 µm Grade A 的要求</th>
+                </tr>
+                <tr>
+                    <td><strong>PDA PtC-1</strong></td>
+                    <td>建議監測但<strong>不建議設定硬性限值</strong>；使用趨勢分析</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 14644-1</strong></td>
+                    <td>認為 ≥5 µm 計數不適合用於分類（統計理由）</td>
+                </tr>
+                <tr>
+                    <td><strong>EU Annex 1 (2022)</strong></td>
+                    <td><strong>要求定量監測並設定限值</strong>（Grade A：≥5 µm 最大 20 per m³）</td>
+                </tr>
+                <tr>
+                    <td><strong>FDA</strong></td>
+                    <td>沒有明確 ≥5 µm 的強制限值，傾向接受趨勢監測</td>
+                </tr>
+            </table>
+            <p><strong>CDMO 實務建議：</strong>如果你的產品在 EU 市場上市，EU Annex 1 要求優先——你<strong>必須</strong>設定並遵守 ≥5 µm 限值。同時在監測策略中說明你理解其統計局限性（引用 ISO 14644），並以趨勢分析作為補充解讀工具。這樣既滿足法規要求，又展現科學成熟度。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>Grade A 粒子監測限值對照（EU Annex 1 2022）</h4>
+            <pre>
+EU Annex 1 (2022) Grade A 粒子限值：
+
+狀態          ≥0.5 µm (per m³)    ≥5 µm (per m³)
+At-Rest       3,520               20
+In-Operation  3,520               20
+
+Grade B：
+狀態          ≥0.5 µm (per m³)    ≥5 µm (per m³)
+At-Rest       3,520               29 (ISO 5 等效)
+In-Operation  352,000             2,900
+
+PDA PtC-1 的提醒：
+對於 Grade A 的 ≥5 µm 限值（20 per m³），
+由於測量不確定性，建議：
+1. 遵守 EU 法規要求（必須測量並設定限值）
+2. 同時做趨勢分析（不要過度解讀單次數字）
+3. 假陽性出現時，優先排查液滴/油霧等假讀數來源
+4. 建立查詢流程（Investigation Threshold）而非
+   機械性地觸發生產停線
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 如何處理 Grade A ≥5 µm 超標事件</h4>
+            <p>假設你的 Grade A 充填區連續粒子監測器顯示 ≥5 µm 粒子突然從 0 變成 3 個（單次測量）。</p>
+            <p><strong>根據 EU Annex 1 限值（20 per m³），3 個粒子是否需要啟動偏差調查？</strong></p>
+            <p>PDA PtC-1 的建議思路：</p>
+            <ol>
+                <li>首先核查是否為假讀數（液滴、油霧、儀器誤觸）</li>
+                <li>查看同時間的 ≥0.5 µm 數據是否也有異常（一致性驗證）</li>
+                <li>如果 ≥0.5 µm 正常而 ≥5 µm 偶發偏高，可能是假讀數——記錄並觀察趨勢</li>
+                <li>如果 ≥5 µm 持續升高或與 ≥0.5 µm 同步升高，啟動完整的偏差調查</li>
+                <li>調查焦點：是否有新污染源？設備維修後粒子未清除？</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ISO 14644-1:2015 為什麼說 ≥5 µm 粒子計數「不適合用於分類」？其核心的科學理由是什麼？</li>
+                <li>你的設施同時面向 FDA 和 EMA 市場。針對 Grade A 的 ≥5 µm 監測，你的 EM 計畫應如何撰寫，才能同時滿足兩個監管機構的期望並展示科學成熟度？</li>
+                <li>為什麼 PDA PtC-1 在腳注中特別說明「Grade B 在 At-Rest 條件下（ISO Class 5）也應適用相同建議」？這個等同的依據是什麼？（提示：Grade B at-rest = ISO 5，與 Grade A in-operation 的粒子濃度相同。）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #d97706;">
+    <h3 style="color: #78350f;">本節重點回顧 Section Summary — Topics I–O</h3>
+    <ul>
+        <li><strong>屏障技術層次（Topic I）：</strong>保護強度由低到高：傳統手工 &lt; RABS（需 Grade B 環境）&lt; Open Isolator（需 Grade C）&lt; Closed Isolator（需 Grade D）。更高等級的屏障技術允許更低等級的周圍環境，從而降低廠房建造和運營成本。</li>
+        <li><strong>清除期以資格確認為準（Topic J）：</strong>EU Annex 1 的 20 分鐘是指引值，不是強制值。每個廠房應透過實測數據建立自己的清除期，重點在「確認粒子已恢復至 At-Rest 標準」，而非計時。</li>
+        <li><strong>BFS 的特殊地位（Topic K.1–K.3）：</strong>BFS 因高度自動化和極短暴露時間，被允許在 Grade C 環境操作（不需 Grade B 過渡區），但充填關鍵區域仍需達到 Grade A 等效，並須透過資格確認（含煙霧可視化）證明。樹脂生物負荷和 APS 培養基可見度是 BFS 特有的管控挑戰。</li>
+        <li><strong>氣閘設計關鍵（Topic L）：</strong>最終更衣區應達到與通往區域相同等級的靜止條件；人員和物料氣閘應盡量分開；雙門滅菌器是物料無菌轉移的最優方案。</li>
+        <li><strong>At-Rest vs In-Operation（Topic M）：</strong>兩種狀態都需要在資格確認中測試；日常生產監測只需 In-Operation；製程產生粒子（BFS、粉末充填）的環境應建立基準而非直接套用絕對限值。</li>
+        <li><strong>採樣量與粒子監測（Topic N, O）：</strong>分類採樣量依 ISO 14644-1 計算（最小 20 個粒子的統計量）；≥5 µm 粒子因統計局限性，PDA 建議趨勢分析而非硬性限值，但 EU Annex 1 要求設定限值——面向歐盟市場的廠房必須遵守，同時應用趨勢分析作為補充解讀工具。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
