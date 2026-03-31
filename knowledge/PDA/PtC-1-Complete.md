@@ -1,5 +1,157 @@
 # PDA Points to Consider No. 1 (Revised 2023): Aseptic Processing
 
+Points to Consider No. 1:
+Aseptic Processing (Revised 2023)
+Points to Consider No. 1: Aseptic Processing (Revised 2023) Team
+Authors and Contributors
+PDA Aseptic Processing Task Force
+Harold Baseman, Valsource Inc. (Chair)
+Gabriele Gori, Biogen International GMBH
+(Co-Chair)
+Masahiro Akimoto, Heartseed Inc.
+Marc Besson, Sanofi-Pasteur
+Jette Christensen, Novo Nordisk
+Veronique Davoust, Pfizer
+Phil DeSantis, DeSantis Consulting Associates
+Maik Jornitz, BioProcess Resources, LLC
+Carol Lampe, Consultant
+William Miele, PhD, Pfizer (retired)
+Rainer Newman, Consultant
+Vincent O’Shaughnessy, Amgen
+Mike Sadowski, Baxter Healthcare
+Edward Tidswell, PhD, Merck
+Edward H. Trappler, Lyophilization
+Technology, Inc.
+Chuck Reed, Weiler Engineering Inc. (retired)
+PDA 2023 Targeted Revision – EU Annex 1 Impacts Task Force
+Marcia Baroni, Emergent BioSolutions
+Harold Baseman, Valsource, Inc.
+Guenther Gapp, PhD, Gapp Quality
+Gabriele Gori, Biogen International GMBH
+Bruce Loxley, GlaxoSmithKline
+Vincent O’Shaughnessy, Amgen
+Points to Consider No. 1:
+Aseptic Processing
+(Revised 2023)
+ISBN: 978-1-945584-42-8
+All rights reserved.
+Table of Contents
+INTRODUCTION������������������������������������������������������1
+GLOSSARY��������������������������������������������������������������2
+I.
+PHYSICAL ENVIRONMENT ��������������������������������7
+Topic A.1:	 Airflow Velocity��������������������������������������������8
+Topic A.2:	 Airflow Velocity Measurements�������������������9
+Topic A.3: 	Airflow Velocity Measurement Frequency ���10
+Topic B.1:	 Airflow Visualization����������������������������������11
+Topic B.2:	 Airflow Visualization Recording ����������������13
+Topic C:	 Grade A Environment Over Cappers��������������14
+Topic D:	 Differential Pressure ������������������������������������15
+Topic E:	 Testing of HEPA Filters����������������������������������17
+Topic F:	 HEPA Filter Patching ������������������������������������19
+Topic G:	 Laminar Versus Unidirectional Airflow���������21
+Topic H:	 Length and Radii of Airborne
+Sampling Tubing������������������������������������������22
+Topic I:	 RABS and Isolators—Aseptic Processing
+Technologies �����������������������������������������������23
+Topic J:  Environmental Clean-Up Period
+Determination (at Rest) ������������������������������27
+Topic K.1:  Blow-Fill-Seal Process Design and
+Operation���������������������������������������������������28
+Topic K.2:	 Plastic Resin Storage and Handling �����������30
+Topic K.3:	 Blow-Fill-Seal Process Simulation �������������31
+Topic L:
+Air Locks ����������������������������������������������������32
+Topic M:	 “At-Rest” and “In-Operation” Status ����������34
+Topic N:	 Sample Volume for Classification ��������������35
+Topic O:	 ≥0.5 µm and ≥5 µm Total Particle
+Monitoring ��������������������������������������������������������36
+II.	 ENVIRONMENTAL MONITORING ���������������������37
+Topic A.1:	 Setting Alert Levels and Action Limits�������38
+Topic B.1:	 Environmental Monitoring Alert and Action
+Limits�����������������������������������������������������������40
+Topic C:	 Environmental Monitoring—Relationship to
+Batch Release ����������������������������������������������41
+Topic D:	 Location, Frequency, and Duration of Viable
+and Total Particulate Monitoring �����������������42
+Topic E:	 Investigation and Documentation of
+Environmental Monitoring Excursions ���������44
+Topic F:	 Rooms Classification/Zoning for Terminally
+Sterilized Solution Products ������������������������46
+Topic G:	 Cleaning and Disinfection Program for Grade
+A and Grade B Rooms ����������������������������������48
+Topic H:	 Identification of Environmental Isolates�������50
+Topic I:	 Growth-Promotion Testing of Environmental
+Monitoring Media ���������������������������������������52
+Topic J:	 Incubation Temperatures for Environmental
+Monitoring Samples ������������������������������������53
+III.	 VALIDATION (ASEPTIC PROCESS SIMULATION)�54
+Topic A:	 Acceptance Criteria �������������������������������������55
+Topic B:	 Duration of Process Simulations versus
+Production ��������������������������������������������������57
+Topic C:  Incubation Temperatures �����������������������������59
+Topic D:	 Incubation of Nonintegral and Rejected Units �60
+Topic E:  Aseptic Process Simulation Reconciliation����62
+Topic F:	 Inverting Units Prior to or During Incubation ���63
+Topic G:	 Aerobic versus Anaerobic ����������������������������64
+Topic H:	 Aseptic Process Simulation Boundaries �������65
+Topic I:	 Fill Volume ��������������������������������������������������66
+Topic J:	 Interventions — Type and Frequency ���������67
+Topic K:	 Video Recording ������������������������������������������69
+Topic L:	 Invalidated or Aborted Aseptic Process
+Simulation ��������������������������������������������������70
+Topic M:	 Number of Aseptic Process Simulation
+Tests Required ���������������������������������������������71
+Topic N:	 Infrequently Used Lines ������������������������������73
+Topic O:	 Special Considerations for Aseptic Process
+Simulation in Isolators and Other Advanced
+Aseptic Processes ����������������������������������������74
+Topic P:	 Hold Times for Sterile Bulk ��������������������������75
+IV.	 PERSONNEL���������������������������������������������������77
+Topic A:	 Glove Monitoring ����������������������������������������78
+Topic B:	 Aseptic Personnel Qualification Program ����80
+Topic C:	 Aseptic Processing Area Access Control �������85
+Topic D:	 Performance of Environmental Monitoring �86
+Topic E:	 Supervision in the Aseptic Processing Area �87
+Topic F:	 Personnel Monitoring Frequency
+and Location �����������������������������������������������88
+Topic G:  	 Gown Usage �����������������������������������������������90
+Topic H:	 Occupancy in the Aseptic Processing Area ���91
+Topic I:	 Personnel Practices for Hygiene and Hand
+Washing ������������������������������������������������������92
+V.
+MATERIAL TRANSFER�������������������������������������94
+Topic A:	 Entry of Equipment and Material into an
+Aseptic Processing Area �������������������������������95
+Topic B:	 Sterile Hold Times for Materials �������������������96
+VI.	 CLEANING, DISINFECTION, AND STERILIZATION ��97
+Topic A:	 Disinfection Program ����������������������������������98
+Topic B:	 Sterilization of Sanitizers, Disinfectants,
+and Cleaning Agents ���������������������������������100
+Topic C:	 Hold Times for Sterilized Wrapped Parts,
+Components, and Other Material ��������������102
+Topic D:	 Frequency of Requalification of Sterilization
+Processes ���������������������������������������������������103
+Topic E:	 Porous/Hard Goods Sterilization Process
+Qualification ���������������������������������������������105
+Topic F:	 Integrity Testing of 0.2 Micron Filters ��������106
+Topic G:	 Sterilization – Steam Sterilizers ����������������107
+Topic H:	 Lyophilizer Leak Qualification��������������������110
+Topic I:	 Sterilizing Grade Gas or Vent Filter Integrity
+Testing ������������������������������������������������������112
+Topic J:	 Pre-Use, Post-Sterilization Integrity Test
+of Sterilizing Filters �����������������������������������113
+Topic K:	 Integrity Testing of Sterilizing Filters ���������115
+Topic L:	 Use of Two Sterilizing-Grade Filters for
+Product Sterile Filtration ���������������������������116
+VII.	 CRITICAL UTILITIES �������������������������������������117
+Topic A:	 Methods of Production Requirements for
+Water for Injection�������������������������������������118
+Topic B:	 Requirements for Water for Injection���������119
+FIGURES AND TABLES INDEX
+Table H-1
+Identification/Characterization Scheme�����50
+Points to Consider No. 1: Aseptic Processing (Revised 2023)
 Introduction
 Points to Consider No. 1: Aseptic Processing (Revised 2023) offers PDA’s thoughts and does not represent
 a standard or regulatory guidance.

@@ -127,6 +127,10 @@ PDF_NOISE_PATTERNS = [
     # Common PDF running headers: "NN © YYYY PDA" or just the report short name
     re.compile(r'^\d+\s+©\s*\d{4}'),
     re.compile(r'^PDA Manufacturing Technology Guide'),
+    # ISPE header/footer patterns
+    re.compile(r'^ISPE Baseline®?\s+Guide:?\s*$'),
+    re.compile(r'^Sterile Product Manufacturing Facilities\s*$'),
+    re.compile(r'^Page\s+\d+\s*$'),
 ]
 
 # Heading patterns in PDA source text: "3.0 Title", "3.1.2 Subtitle", "Appendix I: Title"
@@ -300,12 +304,13 @@ def source_to_markdown(
 
     # Collect all source files, sorted
     txt_files = sorted(source_dir.glob("*.txt"))
-    # Separate full-text files from section files
+    # Separate: section-* (finest split) > chapter-* > full-text
     full_text = [f for f in txt_files if "full-text" in f.name.lower()]
-    section_files = [f for f in txt_files if "full-text" not in f.name.lower()]
+    section_files = [f for f in txt_files if f.name.startswith("section-")]
+    chapter_files = [f for f in txt_files if f.name.startswith("chapter-")]
 
-    # Prefer section files (they're pre-split); fall back to full-text
-    files_to_read = section_files if section_files else full_text
+    # Prefer section files (finest split); fall back to chapter, then full-text
+    files_to_read = section_files if section_files else (chapter_files if chapter_files else full_text)
 
     if not files_to_read:
         print(f"  [WARNING] No source text files found in {source_dir}")
@@ -338,10 +343,62 @@ def source_to_markdown(
                         html = f.read()
                     html_fallback_by_file[fn] = _filter_original_only(html_to_markdown(html))
 
+    # Regex for split headings: number alone on a line (e.g., "3.1\t" or "3.1")
+    SPLIT_HEADING_NUM_RE = re.compile(r'^(\d+(?:\.\d+)*)\s*$')
+    # Bare chapter number without dot (e.g., "3\t Process Equipment")
+    BARE_CHAPTER_RE = re.compile(r'^(\d+)\s+([A-Z].+)$')
+
     for txt_file in files_to_read:
         with open(txt_file, "r", encoding="utf-8") as f:
             raw_lines = f.readlines()
             raw_content = ''.join(raw_lines)
+
+        # Pre-process: merge split headings where number and title are on
+        # separate lines (common in ISPE PDF extractions).
+        # Pattern: "3.1\t\n" followed by "Introduction\n" → "3.1 Introduction\n"
+        merged_lines = []
+        i = 0
+        first_content_seen = False
+        while i < len(raw_lines):
+            line = raw_lines[i].rstrip()
+            m = SPLIT_HEADING_NUM_RE.match(line.strip())
+            # Match dotted numbers (3.1, 5.2.1) anywhere in file
+            is_dotted = m and '.' in m.group(1) and int(m.group(1).split('.')[0]) > 0
+            # Bare chapter numbers (1-20) only at the very start of the file
+            is_bare_ch = m and '.' not in m.group(1) and 0 < int(m.group(1)) <= 20 and not first_content_seen
+            if m and (is_dotted or is_bare_ch):
+                # Look ahead for title on next non-blank line
+                j = i + 1
+                while j < len(raw_lines) and not raw_lines[j].strip():
+                    j += 1
+                if j < len(raw_lines):
+                    next_line = raw_lines[j].strip()
+                    # Title should start with uppercase, be short, and not a sentence
+                    if (next_line and re.match(r'[A-Z]', next_line) and len(next_line) < 100
+                            and not re.search(r'\.\s+[a-z]', next_line) and not next_line.endswith('.')):
+                        num = m.group(1) if is_dotted else f"{m.group(1)}.0"
+                        merged_lines.append(f"{num} {next_line}\n")
+                        first_content_seen = True
+                        i = j + 1
+                        continue
+            # Also handle bare chapter numbers: "3\t Process Equipment" → "3.0 Process Equipment"
+            # Only at the very start of the file (first non-blank content line)
+            bm = BARE_CHAPTER_RE.match(line.strip())
+            if (bm and not first_content_seen and 0 < int(bm.group(1)) <= 20
+                    and len(bm.group(2).strip()) < 80
+                    and not re.search(r'\.\s+[a-z]', bm.group(2))
+                    and not bm.group(2).strip().endswith('.')
+                    and '\t' in line):
+                merged_lines.append(f"{bm.group(1)}.0 {bm.group(2).strip()}\n")
+                first_content_seen = True
+                i += 1
+                continue
+            if line.strip() and not _is_noise(line):
+                first_content_seen = True
+            merged_lines.append(raw_lines[i])
+            i += 1
+        raw_lines = merged_lines
+        raw_content = ''.join(raw_lines)
 
         skip_raw_table = False  # reset at each source file boundary
 
@@ -442,8 +499,11 @@ def source_to_markdown(
                 # Not a unit/value line (title is just a unit like "L/min", "PSI", "PSIG", "L")
                 # Units are typically short (1-5 chars), all caps or with / symbol
                 first_word = sec_title.split()[0] if sec_title else ''
-                UNIT_WORDS = {'L', 'PSI', 'PSIG', 'KG', 'ML', 'MM', 'CM', 'HR', 'MIN'}
+                UNIT_WORDS = {'L', 'PSI', 'PSIG', 'KG', 'ML', 'MM', 'CM', 'HR', 'MIN',
+                              'Pa', 'kPa', 'mbar', 'CFR'}
                 not_unit = first_word not in UNIT_WORDS and not re.match(r'^[A-Z][a-z]*/[A-Za-z²³]+$', first_word)
+                # Reject lines that look like sentences (footnotes, body text)
+                not_sentence = not re.search(r'\.\s+[a-z]', sec_title) and not sec_title.endswith('.')
                 # Reasonable length
                 not_long = len(stripped) < 150
 
@@ -454,6 +514,7 @@ def source_to_markdown(
                     and not_paren
                     and not_toc
                     and not_unit
+                    and not_sentence
                     and not_long
                 ):
                     depth = _heading_depth(sec_num)

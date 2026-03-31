@@ -132,38 +132,46 @@ ing of the tub and nest during filling. Warping leads to variations in plunger s
 the middle and edges of the nests.
 Double steribag
 Single steribag
-14.0
-Drug Product
+
+## 14.0 Drug Product
+
 Compatibility
-13.0
-Manufacturing
+
+## 13.0 Manufacturing
+
 Requirements
-12.0
-Container
+
+## 12.0 Container
+
 Closure
 Intergrity
-11.0
-Plunger
+
+## 11.0 Plunger
+
 Stopper
 Suitability
-10.0
-Siliconization
-9.0
-Cosmetic
+
+## 10.0 Siliconization
+
+## 9.0 Cosmetic
+
 Imperfections
 6.0, 7.0, 8.0
 Glass Barrel,
 Needle, &
 Needle Shield
-3.0
-PFS
+
+## 3.0 PFS
+
 Development &
 Licensing
-5.0
-Extractables &
+
+## 5.0 Extractables &
+
 Leachables
-4.0
-Human
+
+## 4.0 Human
+
 Factors
 
 ##### 13.1.1.2 Tub
@@ -597,38 +605,46 @@ ing of the tub and nest during filling. Warping leads to variations in plunger s
 the middle and edges of the nests.
 Double steribag
 Single steribag
-14.0
-Drug Product
+
+## 14.0 Drug Product
+
 Compatibility
-13.0
-Manufacturing
+
+## 13.0 Manufacturing
+
 Requirements
-12.0
-Container
+
+## 12.0 Container
+
 Closure
 Intergrity
-11.0
-Plunger
+
+## 11.0 Plunger
+
 Stopper
 Suitability
-10.0
-Siliconization
-9.0
-Cosmetic
+
+## 10.0 Siliconization
+
+## 9.0 Cosmetic
+
 Imperfections
 6.0, 7.0, 8.0
 Glass Barrel,
 Needle, &
 Needle Shield
-3.0
-PFS
+
+## 3.0 PFS
+
 Development &
 Licensing
-5.0
-Extractables &
+
+## 5.0 Extractables &
+
 Leachables
-4.0
-Human
+
+## 4.0 Human
+
 Factors
 
 ##### 13.1.1.2 Tub
@@ -1020,38 +1036,46 @@ example of the output of a risk assessment exercise, including process steps, pa
 nale, criticality based on scoring, and recommended actions. For further information on conducting
 formal risk assessments, refer to PDA Technical Report No. 54: Implementation of  Quality Risk Manage-
 ment for Pharmaceutical and Biotechnology Manufacturing Operations (36).
-14.0
-Drug Product
+
+## 14.0 Drug Product
+
 Compatibility
-13.0
-Manufacturing
+
+## 13.0 Manufacturing
+
 Requirements
-12.0
-Container
+
+## 12.0 Container
+
 Closure
 Intergrity
-11.0
-Plunger
+
+## 11.0 Plunger
+
 Stopper
 Suitability
-10.0
-Siliconization
-9.0
-Cosmetic
+
+## 10.0 Siliconization
+
+## 9.0 Cosmetic
+
 Imperfections
 6.0, 7.0, 8.0
 Glass Barrel,
 Needle, &
 Needle Shield
-3.0
-PFS
+
+## 3.0 PFS
+
 Development &
 Licensing
-5.0
-Extractables &
+
+## 5.0 Extractables &
+
 Leachables
-4.0
-Human
+
+## 4.0 Human
+
 Factors
 
 **Table 14.1-1	 Example of Risk Assessment Output**
@@ -1536,38 +1560,46 @@ example of the output of a risk assessment exercise, including process steps, pa
 nale, criticality based on scoring, and recommended actions. For further information on conducting
 formal risk assessments, refer to PDA Technical Report No. 54: Implementation of  Quality Risk Manage-
 ment for Pharmaceutical and Biotechnology Manufacturing Operations (36).
-14.0
-Drug Product
+
+## 14.0 Drug Product
+
 Compatibility
-13.0
-Manufacturing
+
+## 13.0 Manufacturing
+
 Requirements
-12.0
-Container
+
+## 12.0 Container
+
 Closure
 Intergrity
-11.0
-Plunger
+
+## 11.0 Plunger
+
 Stopper
 Suitability
-10.0
-Siliconization
-9.0
-Cosmetic
+
+## 10.0 Siliconization
+
+## 9.0 Cosmetic
+
 Imperfections
 6.0, 7.0, 8.0
 Glass Barrel,
 Needle, &
 Needle Shield
-3.0
-PFS
+
+## 3.0 PFS
+
 Development &
 Licensing
-5.0
-Extractables &
+
+## 5.0 Extractables &
+
 Leachables
-4.0
-Human
+
+## 4.0 Human
+
 Factors
 
 | Process Step | Process Parameter | Rationale | Criticality | Action |

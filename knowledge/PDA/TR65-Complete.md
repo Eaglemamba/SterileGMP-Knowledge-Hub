@@ -849,8 +849,9 @@ address each unique requirement for an individual product transfer. The TT Team 
 termine the specific requirements necessary to ensure that the RU obtains and implements all the
 knowledge needed to manufacture safe, effective, and consistent product in compliance with CMC
 requirements.
-5.1
-Initiation Stage
+
+### 5.1 Initiation Stage
+
 The Initiation stage covers the process of determining whether the TT of CMC activities for a phar-
 maceutical or biopharmaceutical product should be performed. In this stage, the team evaluating the
 need for the TT often has limited information on the product characteristics, process requirements,
@@ -1113,8 +1114,9 @@ full scope of the project
 • Verify internal and external (as applicable) commitment to the project and identify any risks with resources
 and timing
 • Ensure that all involved parties are transparent in their needs for the key milestones, drivers, and ability to deliver
-5.2
-Planning Stage
+
+### 5.2 Planning Stage
+
 The Planning stage begins after the site selection decision has been made and the initial charter has been
 approved; it is the start of the knowledge transfer from the SU. At this point, the TT PM is assigned,
 and the core TT Team at the RU is resourced. The members of the TT Team at the SU or MAH may or
@@ -1692,8 +1694,9 @@ The product realization requirements outlined in this technical report follow th
 International Council for Harmonization of Technical Requirements for Pharmaceuticals for Human
 Use (ICH) and should be documented in the chemistry, manufacturing, and controls (CMC) section
 of the regulatory filing.
-1.1
-Purpose
+
+### 1.1 Purpose
+
 This technical report aims to provide a standardized approach to the TT process by supplying a ma-
 trixed “Reference Guide to Technology Transfer Activities and Deliverables,” which can be used to
 coordinate cross-functional TT activities that help achieve operational readiness and culminate in
@@ -1701,8 +1704,9 @@ regulatory approval. As specific details around each TT differ greatly, based on
 of the manufacturing process or analytical method being transferred, only a certain level of detail could
 be covered in a single technical report. This technical report is intended to provide a level of detail and
 approaches that can be applied across TT types.
-1.2
-Scope
+
+### 1.2 Scope
+
 This technical report covers the full range of requirements needed for TTs, such as new product in-
 troductions and the transfer of products that are being manufactured for phase III clinical trials or
 commercial release, which are the most comprehensive in nature. In transfers of products at an earlier
@@ -1800,8 +1804,9 @@ The set of owner, user and engineering re-
 quirements necessary and sufficient to create a
 feasible design meeting the intended purpose of
 the system.
-2.1
-Abbreviations
+
+### 2.1 Abbreviations
+
 APR
 Annual product report
 CAR
@@ -1859,8 +1864,9 @@ Although this section describes all types of TTs, this technical report focuses 
 activities necessary for introduction of a new product to a manufacturing site when the product is
 moving from clinical phase III to commercial manufacturing or from one commercial manufacturing
 site to another.
-3.1
-Product Lifecycle
+
+### 3.1 Product Lifecycle
+
 During its lifecycle, a product typically progresses through discovery and development, culminating
 in commercial readiness and regulatory approval as depicted in Figure 3.1-1. TTs are a key part of
 
@@ -1921,8 +1927,9 @@ In TTs involving a marketed product, the original or current manufacturing locat
 full CMC requirements, with historical product and process knowledge, that demonstrate manufacturing
 robustness. These types of TTs may be an opportunity to implement process improvements at the receiving
 unit, provided that those improvements align with the business and regulatory strategies for the TT.
-3.2
-Site Types
+
+### 3.2 Site Types
+
 Typically, two types of sites are involved in a TT: the sending unit (SU) and the receiving unit (RU).
 The SU is the site with the current knowledge of the product, process, and analytical methods, while
 the RU is the location where the product will be manufactured or tested in the future. The use of
@@ -2036,8 +2043,9 @@ steps to fit the type of TT being undertaken, the company’s organizational str
 risk tolerance.
 In every TT, assessing and managing risks is essential. A mature quality risk management program, like
 that described in PDA TR 54, should be in place prior to starting a TT project.
-4.1
-Cross-Functional Roles and the Project Manager
+
+### 4.1 Cross-Functional Roles and the Project Manager
+
 A successful TT requires the engagement of experts from cross-functional areas as well as strong project
 management. Table 4.1-1 outlines the basic functional roles that maintain responsibilities throughout
 a TT and should be represented on a TT team. Because each company is organized differently, the
@@ -2112,8 +2120,9 @@ TT, however, an individual from the MAH may act as the TT PM to ensure a smooth 
 flow of knowledge transfer. In large, complex TTs, the TT PM may be someone different from the site
 PMs. Wherever the TT PM is located, this role is critical in facilitating constant communication and
 should be the primary contact point for changes, decisions, and team alignment.
-4.2
-TT Management Oversight
+
+### 4.2 TT Management Oversight
+
 The organizational structure supporting a TT requires clarity and definition to ensure the TT Team
 can maintain focus, manage resourcing, and resolve issues. A defined structure for the TT allows for
 improved communication and clear definition of priorities among team members and management.
@@ -2210,8 +2219,9 @@ address each unique requirement for an individual product transfer. The TT Team 
 termine the specific requirements necessary to ensure that the RU obtains and implements all the
 knowledge needed to manufacture safe, effective, and consistent product in compliance with CMC
 requirements.
-5.1
-Initiation Stage
+
+### 5.1 Initiation Stage
+
 The Initiation stage covers the process of determining whether the TT of CMC activities for a phar-
 maceutical or biopharmaceutical product should be performed. In this stage, the team evaluating the
 need for the TT often has limited information on the product characteristics, process requirements,
@@ -2610,8 +2620,9 @@ full scope of the project
 • Verify internal and external (as applicable) commitment to the project and identify any risks with resources
 and timing
 • Ensure that all involved parties are transparent in their needs for the key milestones, drivers, and ability to deliver
-5.2
-Planning Stage
+
+### 5.2 Planning Stage
+
 The Planning stage begins after the site selection decision has been made and the initial charter has been
 approved; it is the start of the knowledge transfer from the SU. At this point, the TT PM is assigned,
 and the core TT Team at the RU is resourced. The members of the TT Team at the SU or MAH may or
@@ -3004,8 +3015,9 @@ requirements are understood upon award
 (Table 5.2.10-1 Continued)
 
 --- PAGE 34 ---
-5.3
-Knowledge Transfer Stage
+
+### 5.3 Knowledge Transfer Stage
+
 The Knowledge Transfer (KT) stage significantly overlaps with the prior Planning stage and the fol-
 lowing Readiness stage. During Planning, key pieces of the KT are needed to finalize the TT charter
 and perform risk assessments. KT often is still in progress while key activities in the Readiness stage
@@ -3382,8 +3394,9 @@ Operations and Quality Affairs/Quality Control units, and other critical functio
 #### 5.3.10 Best Practices and Additional Suggestions
 
 Table 5.3.10-1 describes best practices and presents some additional ideas for consideration in the KT stage.
-5.4
-Readiness Stage
+
+### 5.4 Readiness Stage
+
 In the Readiness stage, the TT Team has all documentation, equipment, and analytical methods in place,
 and the RU site is prepared to safely perform process qualification in a compliant manner. Preliminary
 KT has occurred, so the RU can finalize the control strategy, qualify the analytical methods, and complete
@@ -3868,8 +3881,9 @@ straight through? Will batch records be reviewed on the floor as completed? What
 and how are all requirements of the change control satisfied? Are trucks scheduled if outside normal hours?
 
 --- PAGE 46 ---
-5.5
-Execution Stage
+
+### 5.5 Execution Stage
+
 PPQ is performed in the Execution stage, during which all operational readiness and compliance require-
 ments are completed to allow for manufacture at the RU. Materials are tested and released to perform
 the engineering batch and PPQ batches, as defined in the project plan and process VMP. With multiple
@@ -4161,8 +4175,9 @@ post-transfer operations team)
 repeatable, and is ready for Handover
 • Review any process improvements/learnings from qualification before Handover
 • Review risk management plan and appropriateness of mitigations
-5.6
-Handover Stage
+
+### 5.6 Handover Stage
+
 The Handover stage comprises the transition of the product from the TT Team to the RU post-transfer
 operations team, covering routine production of marketed products. Because the risk assessment is
 a living document, risk identification and risk mitigation strategies should be constantly reviewed
@@ -4360,8 +4375,9 @@ that all necessary activities and deliverables for that stage have been satisfac
 the TT charter, as described in Section 4.3, can be accomplished. When a TT Team finds information
 during a stage that may change the TT boundaries and/or assumptions, it should be communicated
 immediately to the steering committee rather than waiting for the stage gate review.
-4.3
-TT Charter and Success Factors
+
+### 4.3 TT Charter and Success Factors
+
 The overall framework of a TT should be documented in a charter. The charter should be developed by
 the TT Team and must be approved by the steering committee and, if applicable, the Project Sponsor.
 Approval by the steering committee establishes that the sites have reached the alignment necessary to
@@ -5484,8 +5500,9 @@ Use of a detailed knowledge transfer process with transparent communications all
 to be completed on time with no delays.
 
 --- PAGE 61 ---
-8.6
-Performing Process Fit Assessment to Facilitate Technology Transfer
+
+### 8.6 Performing Process Fit Assessment to Facilitate Technology Transfer
+
 Product Lifecycle Phase: Development-Commercial
 TT Process Stage: Initiation, Planning
 Site Types: Internal-Internal
@@ -5514,8 +5531,9 @@ flow dynamics modeling and a model chemical reaction to ensure adequate mixing a
 The process fit assessment begun during the Initiation stage and revised during the Knowledge Trans-
 fer stage was vital to ensuring that the right equipment was specified and procured and that the right
 process development work was conducted to ensure a successful TT of Product Alpha.
-8.7
-Planning Ahead for On Time Commercial Launch
+
+### 8.7 Planning Ahead for On Time Commercial Launch
+
 Product Lifecycle Phase: Commercial-Commercial
 TT Process Stages: Initiation, Planning, Execution, Handover
 Site Types: Internal-External
@@ -5552,8 +5570,9 @@ Team to a post-transfer operations team with complementary expertise and respons
 of commercial production.
 As a result of this successful planning and management of Handover activities, the site was ready to
 begin commercial production at the scheduled start without any delays.
-8.8
-Navigating Process, Capital, & Ownership Changes During a Drug
+
+### 8.8 Navigating Process, Capital, & Ownership Changes During a Drug
+
 Product Transfer
 Product Lifecycle Phase: Development-Commercial
 TT Process Stage: All: Initiation, Planning, Knowledge Transfer, Readiness, Execution, Handover
@@ -5609,8 +5628,9 @@ with the exception that the Company B agreed to purchase a couple of the more ex
 additional difficulty was that the MAH had not negotiated or retained the rights to the methods, batch
 records, and all documents necessary for the transfer that Company A was performing for them. Had
 the MAH preemptively ensured it owned those rights, the TT would have been easier to execute.
-8.9
-Failed Process Qualification Due to Incomplete Process Readiness &
+
+### 8.9 Failed Process Qualification Due to Incomplete Process Readiness &
+
 Knowledge Transfer
 Product Lifecycle Phase: Commercial-Commercial
 TT Process Stage: Readiness, Execution
