@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-13 - Section 0: Introduction, Glossary &amp; Abbreviations</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== PtC-13 SOURCE ACCENT ===== */
+.source-badge {
+    display: inline-block;
+    background: #0284c7;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.header {
+    background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0 — Introduction, Glossary &amp; Abbreviations
+        <span class="source-badge">PtC-13</span>
+    </h1>
+    <div class="subtitle">導論、詞彙表與縮寫 | ATMP製造中的物料管理</div>
+    <div class="page-info">PDA Points to Consider No. 13: Materials in ATMP Manufacturing (2025) | p1 – p3 (共 42 頁)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 ATMP（先進療法藥品）原物料為何面臨比傳統藥品更複雜的品質管理挑戰，包含來源多樣性、法規不一致及供應商成熟度問題。</li>
+        <li>掌握本文件的適用範圍：涵蓋臨床與商業製造中所有與製程流接觸之原物料，包含細胞治療、基因治療、mRNA 及組織工程產品。</li>
+        <li>區分初級（Primary）、次級（Secondary）、三級（Tertiary）動物源性與人源性物料的定義，並能在實際採購及風險評估中正確應用。</li>
+        <li>熟悉本文件使用的核心縮寫（AAV、CAR、RUO、TSE、iPSC 等），作為閱讀後續章節的語言基礎。</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION: INTRODUCTION ==================== -->
+<div class="section-title">導論 Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This document provides key "Points to Consider" for navigating the complexities of <span class="key-term">raw materials in the manufacturing of advanced therapy medicinal products (ATMP)</span>, aiming to guide stakeholders in establishing robust strategies for raw material management, promoting best practices, and supporting the safe and effective development and manufacturing of ATMPs.</p>
+
+        <p>The unique nature of ATMPs presents distinct challenges compared to <span class="key-term">traditional pharmaceuticals</span>, demanding a focused approach to material selection, qualification, and supplier management.</p>
+
+        <p>Specifically addressed in this document are the intricacies arising from the fact that ATMP raw materials are often:</p>
+        <ul>
+            <li><span class="key-term">Animal- or human-derived</span></li>
+            <li><span class="key-term">Not monographed</span> (no pharmacopoeial standard)</li>
+            <li>Not manufactured for <span class="key-term">GMP applications</span> (e.g., research-only grade / <span class="key-term">RUO</span>)</li>
+            <li><span class="key-term">Single-sourced</span> and/or required to be used for aseptic manufacturing</li>
+        </ul>
+
+        <div class="quote-box">
+            "Very often, ATMP material suppliers and vendors are small, specialized companies with roots in academia that do not have a mature GMP quality system."
+        </div>
+
+        <p>These characteristics contribute to a complex regulatory landscape, as <span class="key-term">regulations for ATMP materials are not globally harmonized</span>. Variations in regulations exist among the:</p>
+        <ul>
+            <li>U.S. Food and Drug Administration (<span class="key-term">FDA</span>)</li>
+            <li>European Medicines Agency (<span class="key-term">EMA</span>)</li>
+            <li>Japan Pharmaceutical and Medical Devices Agency (<span class="key-term">PMDA</span>)</li>
+            <li>Pharmaceutical Inspection Co-operation Scheme (<span class="key-term">PIC/S</span>)</li>
+            <li>Individual country-specific laws to which companies must adhere</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為何 ATMP 物料管理如此複雜？</h4>
+            <p>Advanced Therapy Medicinal Products（先進療法藥品，ATMP）涵蓋四大類：</p>
+            <ul>
+                <li><strong>基因治療產品（Gene Therapy）</strong>：如 AAV 載體基因治療、mRNA 療法</li>
+                <li><strong>體細胞治療產品（Somatic Cell Therapy）</strong>：如 CAR-T、TIL 療法</li>
+                <li><strong>組織工程產品（Tissue Engineered Products）</strong>：如人工皮膚、軟骨修復</li>
+                <li><strong>複合式 ATMP（Combined ATMP）</strong>：結合醫材與細胞/基因治療</li>
+            </ul>
+            <p>相較於傳統小分子藥或生物製劑，ATMP 的原物料往往直接來自生物體（人或動物），缺乏藥典專論（monograph）作為品質標準錨點，且大量物料僅有研究等級（RUO）規格，這使得品質保證的起點就已相當困難。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — CDMO 採購視角的比喻</h4>
+            <p>想像您在替一家米其林三星餐廳採購食材：傳統藥廠就像採購有產地認證、農殘標準的超市蔬菜；但 ATMP 的物料採購，更像是向山區農夫個人直接訂購稀有野菇——供應商可能只是一位退休教授在自家實驗室培養，沒有 ISO 認證，沒有 GMP 廠房，但您的患者卻完全依賴這瓶培養基的品質。</p>
+            <p>這就是 PtC-13 存在的根本原因：替 CDMO 和 MAH 提供一套系統性的思考框架，在不得不使用「農夫直送野菇」的情況下，仍能確保患者安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 法規不一致的實務衝擊</h4>
+            <p>目前，ATMP 物料的法規要求在四大監管體系間存在顯著差異：</p>
+            <ul>
+                <li><strong>FDA（美國）</strong>：主要依 21 CFR Part 210/211 及 Part 1271，以 IND/BLA 申請為核心管控架構</li>
+                <li><strong>EMA（歐盟）</strong>：ATMP 受 Regulation (EC) No 1394/2007 規範，有專屬的 ATMP 委員會（CAT）</li>
+                <li><strong>PMDA（日本）</strong>：JSBRM（生物原料標準）為日本特有要求，對動物源性物料的文件要求極為嚴格</li>
+                <li><strong>PIC/S</strong>：提供 GMP 指南，但成員國仍有各自詮釋空間</li>
+            </ul>
+            <p>對 CDMO 而言，若同時服務 FDA、EMA、PMDA 監管下的客戶，需要為同一批物料維護多套合規文件——這是 PtC-13 對策略性物料管理強調的核心原因之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 CDMO 正在為 CAR-T 細胞治療產品採購 IL-2（介白素-2），供應商只提供 RUO 等級規格。請問這在 GMP 製造中會引發哪些合規風險？您會採取哪些措施來降低風險？</li>
+                <li>為什麼「單一供應商（single-sourced）」的物料對 ATMP 製造特別危險？請從品質風險管理（QRM）的角度分析，並列出至少兩項緩解策略。</li>
+                <li>PtC-13 提到法規未全球統一。若您的 ATMP 產品需同時在美國（FDA）和歐盟（EMA）申請上市，物料管理策略上應提前準備哪些差異性文件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION: SCOPE ==================== -->
+<div class="section-title">適用範圍 Scope</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This document applies to all <span class="key-term">process-stream-contacting raw materials</span>, including:</p>
+        <ul>
+            <li>Starting and ancillary materials</li>
+            <li>Excipients</li>
+            <li>Consumables</li>
+            <li><span class="key-term">Container–closure systems</span></li>
+        </ul>
+        <p>…for ATMPs both in <span class="key-term">clinical stage</span> and <span class="key-term">commercial manufacture</span>.</p>
+
+        <p>This includes but is not limited to:</p>
+        <ul>
+            <li><span class="key-term">Cell-free mRNA therapeutics</span></li>
+            <li><span class="key-term">Viral vector-based in-vivo gene therapies</span></li>
+            <li><span class="key-term">Human cells for autologous or allogeneic cell therapies</span></li>
+            <li><span class="key-term">Tissue-engineered medicinal products</span></li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 「與製程流接觸」的物料範疇</h4>
+            <p><strong>Process-stream-contacting raw materials（與製程流接觸之原物料）</strong>是 PtC-13 的管控核心。這個概念涵蓋任何在製程中可能與產品直接接觸、或透過間接方式影響產品品質的物料，包括：</p>
+            <ul>
+                <li><strong>起始物料（Starting materials）</strong>：如患者或捐贈者的細胞、病毒種子株</li>
+                <li><strong>輔助物料（Ancillary materials）</strong>：如培養基成分、生長因子、轉導試劑</li>
+                <li><strong>賦形劑（Excipients）</strong>：製劑配方成分</li>
+                <li><strong>消耗品（Consumables）</strong>：如過濾器、一次性袋、管路</li>
+                <li><strong>容器密封系統（Container-closure systems）</strong>：最終儲存容器</li>
+            </ul>
+            <p>請注意：<strong>不</strong>與製程流直接接觸的設備（如廠房結構、HVAC）不在本文件主要討論範圍內。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — ATMP 產品類型的光譜</h4>
+            <p>PtC-13 的範圍涵蓋了 ATMP 的完整產品光譜，從製造複雜度由低到高可排列為：</p>
+            <p><strong>mRNA 療法</strong>（如 mRNA 疫苗類型）&rarr; <strong>AAV 病毒載體基因治療</strong>&rarr; <strong>異體細胞治療（allogeneic cell therapy）</strong>&rarr; <strong>自體細胞治療（autologous cell therapy，如 CAR-T）</strong></p>
+            <p>越往右，製程中用到的生物源性物料越多、製程複雜度越高，物料管理挑戰也越大。理解自己的產品位於這個光譜的哪個位置，直接決定物料風險評估的深度。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 臨床與商業製造的物料策略差異</h4>
+            <p>PtC-13 明確涵蓋<strong>臨床期（clinical stage）</strong>與<strong>商業製造（commercial manufacture）</strong>兩個階段，但實務上兩者的物料策略有所不同：</p>
+            <ul>
+                <li><strong>臨床期</strong>：接受較高風險的 RUO 物料，但必須有風險評估文件支撐；供應商審計可採用問卷代替現場稽核</li>
+                <li><strong>商業製造</strong>：須完成完整的供應商資格確認（Vendor Qualification），物料規格需與法規申請文件鎖定</li>
+            </ul>
+            <p>這種「相對應的 phase-appropriate 方法」是 ATMP 物料管理的核心哲學，在 PtC-13 後續章節中會反覆出現。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 物料範疇盤點</h4>
+            <p>作為一個正在承接 AAV 基因治療 CDMO 合約的品保主管，您在啟動物料管理計畫時，應按以下層次盤點製程物料：</p>
+            <ol>
+                <li><strong>第一層：起始物料</strong> — 質體 DNA（plasmid DNA）、細胞種子庫（如 HEK293 細胞）是否有 GMP 級別的 CoA 和 CoO？</li>
+                <li><strong>第二層：培養製程輔助物料</strong> — 無血清培養基的動物源性成分分析（Animal-Derived Component Free, ADCF 聲明）是否完整？</li>
+                <li><strong>第三層：下游純化耗材</strong> — 親和層析管柱填料是否含動物源蛋白質（如配基蛋白 Protein A/G）？</li>
+                <li><strong>第四層：製劑賦形劑與容器密封</strong> — 是否使用 USP/EP 藥典等級物料？容器材質相容性測試文件是否齊全？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION: GLOSSARY ==================== -->
+<div class="section-title">詞彙表 Glossary</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Definitions have been provided to help clarify the concepts discussed in this document. While some definitions used vary among companies, geographic location, etc., the definitions described below are <span class="key-term">consistently used within this Points to Consider document</span>. Where a definition is based on another published source, the source is cited.</p>
+
+        <h3>Creutzfeldt-Jakob Disease (CJD)</h3>
+        <p>A rare, fatal brain disorder belonging to a group of diseases called <span class="key-term">prion diseases</span>. It is caused by an abnormal infectious protein, a <span class="key-term">prion</span>, that accumulates in the brain, leading to rapid mental decline and neurological symptoms.</p>
+
+        <h3>Primary Animal-Derived Materials</h3>
+        <p>Any material <span class="key-term">derived directly from animal sources</span>.</p>
+
+        <h3>Primary Human-Derived Materials</h3>
+        <p>Any material <span class="key-term">derived directly from human sources</span>.</p>
+
+        <h3>Secondary Animal-Derived Materials</h3>
+        <p>Any material manufactured using processes that include <span class="key-term">materials derived from animal sources</span>.</p>
+
+        <h3>Secondary Human-Derived Materials</h3>
+        <p>Any material manufactured using processes that include <span class="key-term">materials derived from human sources</span>.</p>
+
+        <h3>Tertiary Animal-Derived Materials</h3>
+        <p>Any material <span class="key-term">free of animal-derived components</span> that has been manufactured using secondary animal-derived materials.</p>
+
+        <h3>Tertiary Human-Derived Materials</h3>
+        <p>Any material <span class="key-term">free of human-derived components</span> that has been manufactured using secondary human-derived materials.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Primary / Secondary / Tertiary 三層分類系統</h4>
+            <p>PtC-13 對動物源性和人源性物料建立了一套「三層污染追蹤分類系統」，這是本文件最重要的概念架構之一。理解三者的差異是後續風險評估的基礎：</p>
+            <ul>
+                <li><strong>初級（Primary）物料</strong>：直接來自動物或人體的物料。<br>
+                    <em>動物源例子</em>：牛血清白蛋白（BSA）、豬胰島素、牛胎血清（FBS）<br>
+                    <em>人源例子</em>：人血漿白蛋白、人血小板溶解物（hPL）、患者 PBMC</li>
+                <li><strong>次級（Secondary）物料</strong>：製造過程中使用了動物/人源物料，但最終產品本身不一定含有動物/人源成分。<br>
+                    <em>例子</em>：用含 BSA 的培養基生產的重組蛋白；用含動物成分的培養基生產的酵素</li>
+                <li><strong>三級（Tertiary）物料</strong>：最終產品本身不含動物/人源成分，但其製造過程使用了次級物料。<br>
+                    <em>例子</em>：用含動物源酵素催化合成的化學原料；用次級物料生產的無動物源試劑</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 咖啡的「產地溯源」比喻</h4>
+            <p>用咖啡供應鏈來類比三層分類系統：</p>
+            <ul>
+                <li><strong>初級物料</strong> = 咖啡豆本身（直接來自植物）。如果把「動物」換成「植物」，生咖啡豆就是直接來源。</li>
+                <li><strong>次級物料</strong> = 用動物奶沖泡的拿鐵咖啡液（製程中使用了動物源性原料）。最終液體包含奶的成分。</li>
+                <li><strong>三級物料</strong> = 用拿鐵製成的咖啡糖果（最終產品加工後可能不含奶，但製程確實用過含奶的中間物）。</li>
+            </ul>
+            <p>在 ATMP 製造中，三級物料雖然「看起來乾淨」，但仍需要記錄其製程溯源，以評估潛在的 TSE/BSE 風險或病毒污染風險。這就是供應商必須提供完整 CoO 的原因。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — CJD 與 TSE/BSE 的監管意義</h4>
+            <p><strong>克雅氏病（Creutzfeldt-Jakob Disease, CJD）</strong>屬於<strong>傳染性海綿狀腦病（TSE, Transmissible Spongiform Encephalopathies）</strong>家族，與牛腦海綿狀病（BSE，俗稱「狂牛症」）同屬 prion disease（普里昂疾病）。</p>
+            <p>為何 PtC-13 在詞彙表第一條就定義 CJD？因為動物源性物料（尤其是牛源性物料如 FBS）是 TSE/BSE 的主要潛在污染路徑。監管機構對牛源性物料有嚴格的地理來源要求——</p>
+            <ul>
+                <li><strong>FDA</strong>：依 BSE 風險分類，來自高風險國家的牛源物料需額外文件證明</li>
+                <li><strong>EMA</strong>：Note for Guidance on Minimising the Risk of Transmitting Animal Spongiform Encephalopathy Agents via Human and Veterinary Medicinal Products</li>
+                <li><strong>PMDA / JSBRM</strong>：對生物原料的動物源及地理來源有最為嚴格的規定</li>
+            </ul>
+            <p>因此，若您的 ATMP 製程中用到任何牛源物料，必須取得該物料的 CoO（Certificate of Origin）並評估 TSE 風險，這不只是 GMP 要求，也是各國市場准入的必要條件。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>分類框架 — 三層物料風險分類決策樹</h4>
+            <pre>
+物料X 是否直接來自動物或人體組織/體液？
+├─ 是 → 【初級物料 Primary】
+│        風險最高，需完整 CoA + CoO + TSE 風險評估
+│
+└─ 否 → 其製造過程是否使用動物/人源物料？
+         ├─ 是 → 【次級物料 Secondary】
+         │        需供應商聲明 + 製程物料清單（BOM）
+         │        確認動物源成分種類與地理來源
+         │
+         └─ 否（但供應商的供應商可能用過）→
+                  【三級物料 Tertiary】或【非動物源】
+                  需供應商提供「Animal-Derived Component
+                  Free (ADCF)」書面聲明方可接受
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 物料分類實戰演練</h4>
+            <p>請將以下 ATMP 製造常見物料分類為初級／次級／三級動物源性物料，並說明理由：</p>
+            <ol>
+                <li><strong>牛胎血清（Fetal Bovine Serum, FBS）</strong>：由牛胎兒血液直接分離 → <em>初級動物源性物料</em></li>
+                <li><strong>無血清培養基（Serum-Free Medium, SFM）</strong>：配方中不含血清，但某成分（如重組白蛋白）係用含 FBS 培養基的宿主細胞生產 → <em>次級動物源性物料</em></li>
+                <li><strong>化學合成的 DMSO（二甲基亞碸）</strong>：全化學合成，供應商以書面聲明製程不使用任何動物源物料 → <em>非動物源物料（需保存聲明文件）</em></li>
+                <li><strong>重組蛋白 A 親和層析填料</strong>：蛋白 A 係大腸桿菌重組表達，但培養基可能含有動物源水解物 → <em>需調查確認，可能為次級或三級</em></li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼三級動物源性物料雖然「最終產品不含動物源成分」，在 ATMP 製造中仍需要記錄其製程溯源？請從 TSE 風險管理和法規遵從的角度說明。</li>
+                <li>人源性物料（Human-Derived Materials）的分類邏輯與動物源性相同。請列舉一個初級人源性物料、一個次級人源性物料的例子，並說明各自的主要安全風險（提示：病毒安全性、傳染病）。</li>
+                <li>如果您的 ATMP 供應商聲稱其重組酵素為「ADCF（Animal-Derived Component Free）」，作為採購方您應要求哪些文件來驗證此聲明？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION: ABBREVIATIONS ==================== -->
+<div class="section-title">縮寫表 Abbreviations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Abbreviation 縮寫</th>
+                        <th>Full Term 全稱</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>AAV</strong></td>
+                        <td>Adeno-associated Virus</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ATMP</strong></td>
+                        <td>Advanced Therapy Medicinal Products</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BLA</strong></td>
+                        <td>Biologics License Application</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CAR</strong></td>
+                        <td>Chimeric Antigen Receptor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CFR</strong></td>
+                        <td>Code of Federal Regulations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CJD</strong></td>
+                        <td>Creutzfeldt-Jakob Disease</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CoA</strong></td>
+                        <td>Certificate of Analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CoO</strong></td>
+                        <td>Certificate of Origin</td>
+                    </tr>
+                    <tr>
+                        <td><strong>gRNA</strong></td>
+                        <td>guide RNA (ribonucleic acid)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>hESC</strong></td>
+                        <td>human Embryonic Stem Cell</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IND</strong></td>
+                        <td>Investigational New Drug</td>
+                    </tr>
+                    <tr>
+                        <td><strong>iPSC</strong></td>
+                        <td>induced Pluripotent Stem Cells</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JSBRM</strong></td>
+                        <td>Japanese Standards for Biological Raw Materials</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PBMC</strong></td>
+                        <td>Peripheral Blood Mononuclear Cells</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RUO</strong></td>
+                        <td>Research Use Only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TIL</strong></td>
+                        <td>Tumor Infiltrating Lymphocyte</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TSE</strong></td>
+                        <td>Transmissible spongiform encephalopathies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BSE</strong></td>
+                        <td>Bovine spongiform encephalopathy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — ATMP 產品類型縮寫解析</h4>
+            <p>PtC-13 的縮寫表揭示了 ATMP 治療領域的主要技術方向。以下按治療模態分組：</p>
+            <p><strong>基因治療載體：</strong></p>
+            <ul>
+                <li><strong>AAV（腺相關病毒）</strong>：目前最主流的體內（in-vivo）基因治療載體，如治療血友病的 Hemgenix、脊髓性肌萎縮症的 Zolgensma</li>
+                <li><strong>gRNA（導引 RNA）</strong>：CRISPR 基因編輯的核心組件，gRNA 引導 Cas9 蛋白切割特定 DNA 位點</li>
+            </ul>
+            <p><strong>細胞治療起始物料：</strong></p>
+            <ul>
+                <li><strong>PBMC（周邊血單核細胞）</strong>：採集自患者或捐贈者血液，是 CAR-T 和 TIL 治療的細胞起始物料</li>
+                <li><strong>TIL（腫瘤浸潤淋巴細胞）</strong>：從腫瘤組織中分離的免疫細胞，用於實體瘤細胞治療（如黑色素瘤）</li>
+            </ul>
+            <p><strong>幹細胞來源：</strong></p>
+            <ul>
+                <li><strong>hESC（人類胚胎幹細胞）</strong>：多能幹細胞，倫理爭議較大，使用受嚴格監管</li>
+                <li><strong>iPSC（誘導多能幹細胞）</strong>：由成體細胞重編程而來，是下一代異體細胞治療的關鍵平台技術</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 法規與品質文件縮寫</h4>
+            <p><strong>CoA vs. CoO — 兩張最關鍵的物料文件：</strong></p>
+            <ul>
+                <li><strong>CoA（Certificate of Analysis，分析合格證書）</strong>：記錄物料的實測品質數據（如純度、效價、外觀），是物料放行的品質依據</li>
+                <li><strong>CoO（Certificate of Origin，原產地證書）</strong>：記錄物料的動物/人源組分地理來源，是 TSE/BSE 風險評估和海關申報的法規依據</li>
+            </ul>
+            <p>ATMP 製造中，CoO 的重要性不亞於 CoA——一批沒有 CoO 的動物源性培養基，即使品質數據完美，在某些監管轄區也可能無法用於 GMP 製造。</p>
+            <p><strong>IND vs. BLA：</strong></p>
+            <ul>
+                <li><strong>IND（Investigational New Drug）</strong>：美國 FDA 的臨床試驗申請，物料合規要求相對寬鬆（phase-appropriate）</li>
+                <li><strong>BLA（Biologics License Application）</strong>：美國 FDA 的生物製品上市申請，物料需完成完整資格確認</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — JSBRM 是什麼？為何重要？</h4>
+            <p><strong>JSBRM（Japanese Standards for Biological Raw Materials，生物原料日本標準）</strong>是日本 PMDA 對生物醫藥製造中生物原料的特定要求，由日本厚生勞動省（MHLW）發布。</p>
+            <p>JSBRM 的核心要求包括：</p>
+            <ul>
+                <li>對所有動物源性和人源性物料的完整文件記錄</li>
+                <li>製造商必須建立並維護生物原料的「起源和製造史（History of Manufacture）」文件</li>
+                <li>比 EMA 或 FDA 更嚴格的 TSE 風險評估要求</li>
+            </ul>
+            <p>對於計劃進入日本市場的 ATMP CDMO，JSBRM 合規往往是最耗時的前期準備工作，應在物料採購策略制定階段就納入考量，而非等到日本申請時才補救。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — RUO 物料的合規邊界</h4>
+            <p><strong>RUO（Research Use Only，僅供研究用）</strong>是 ATMP 物料管理中最常見的合規挑戰。RUO 等級物料的主要問題：</p>
+            <ul>
+                <li><strong>生產環境不受 GMP 監管</strong>：供應商可能無 GMP 廠房認證</li>
+                <li><strong>規格標準較鬆散</strong>：CoA 可能缺少 GMP 製造所需的部分關鍵測試項目</li>
+                <li><strong>批間差異較大</strong>：缺乏嚴格的製程控制</li>
+                <li><strong>法規申請風險</strong>：FDA 和 EMA 在商業申請中對 RUO 物料的接受度極低</li>
+            </ul>
+            <p>然而，在 ATMP 早期臨床開發中，許多關鍵物料（如特定細胞因子、稀有生長因子）目前只有 RUO 等級可購。PtC-13 後續章節提供了在不得不使用 RUO 物料時的風險緩解策略（如強化進料測試、供應商稽核）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>JSBRM 是日本特有的生物原料標準。若您的公司正在為一個 CAR-T 產品準備日本 PMDA 的臨床申請，請列出至少三項需要比 FDA IND 額外準備的物料文件。</li>
+                <li>iPSC（誘導多能幹細胞）作為下一代異體細胞治療的平台技術，其細胞庫（Cell Bank）本身是否屬於 PtC-13 定義的「起始物料（Starting Materials）」？從初級/次級/三級分類的角度，iPSC 細胞庫應如何分類？</li>
+                <li>某 CAR-T 製程使用了含有人血小板溶解物（human Platelet Lysate, hPL）作為培養基添加物，hPL 是什麼分類的物料？需要哪些特別的病毒安全性文件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- DECISION HIERARCHY REINFORCEMENT -->
+<div class="section-title">決策優先級強化 Decision Hierarchy</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <div class="quote-box">
+            "The unique nature of ATMPs presents distinct challenges compared to traditional pharmaceuticals, demanding a focused approach to material selection, qualification, and supplier management."
+            <br><br>
+            — PDA PtC-13, Introduction
+        </div>
+        <p>This statement encapsulates the fundamental principle that drives all material management decisions in ATMP manufacturing: the stakes are uniquely high because the materials themselves are often derived from living organisms and may directly impact the safety, identity, purity, and potency of a product that is administered to patients — often with no alternative treatment available.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — ATMP 物料管理的決策優先級</h4>
+            <p>在 ATMP 物料選擇和供應商決策中，當多個考量相互衝突時，請遵循以下優先級：</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-1">1. 無菌保證 &amp; 患者安全<br><small>Sterility Assurance / Patient Safety</small></div>
+                </div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-2">2. 產品關鍵品質屬性<br><small>Product CQAs (Efficacy, Identity, Purity)</small></div>
+                </div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-3">3. 商業與法規可行性<br><small>Business Needs &amp; Regulatory Strategy</small></div>
+                </div>
+            </div>
+            <p><strong>實務含義</strong>：若一個物料供應商報價最低，且交期最短，但無法提供完整的 TSE 風險評估文件（威脅患者安全），則應拒絕使用，無論商業壓力多大。在 ATMP 領域，無替代治療的患者通常正在承受生命威脅——這使得物料管理決策的道德重量遠超傳統藥品。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — ATMP 物料如同「最後防線的磚塊」</h4>
+            <p>傳統口服藥生產，原料的微小品質偏差或許可以被製程後續步驟（如再結晶、滅菌）吸收。但 ATMP 製造更像是一棟沒有任何補救機會的建築——如果最底層的磚塊（原物料）本身就帶有裂縫（如 TSE 污染、批間差異導致細胞活性下降），整棟建築（最終療效和安全性）都無法挽救。</p>
+            <p>這正是 PtC-13 整份文件的核心出發點：原物料管理，不是 ATMP 製造的最後一道程序，而是<strong>第一道且最關鍵的防線</strong>。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>複雜性根源</strong>：ATMP 原物料面臨的挑戰遠超傳統藥品——動物/人源衍生、無藥典標準、RUO 等級、單一供應商、供應商 GMP 成熟度不足、全球法規不統一，六大因素疊加形成獨特的風險環境。</li>
+        <li><strong>適用範圍</strong>：PtC-13 涵蓋所有與製程流接觸的物料（起始物料、輔助物料、賦形劑、耗材、容器密封系統），適用於臨床與商業製造兩個階段，涵蓋 mRNA、AAV 基因治療、細胞治療及組織工程產品。</li>
+        <li><strong>三層分類系統</strong>：初級（Primary）= 直接來自動物/人體；次級（Secondary）= 製程中使用動物/人源物料；三級（Tertiary）= 最終不含動物/人源成分但製程使用次級物料。此分類直接對應 TSE 風險評估的深度要求。</li>
+        <li><strong>CJD / TSE / BSE</strong>：這三者構成動物源性物料最嚴重的生物安全威脅，CoO（原產地證書）是評估 TSE 風險的關鍵文件，在 FDA、EMA、PMDA 法規申請中均不可或缺。</li>
+        <li><strong>法規景觀</strong>：FDA / EMA / PMDA / PIC/S 對 ATMP 物料的要求存在顯著差異，JSBRM 是進入日本市場的特殊門檻，多地區 CDMO 須提前為差異性法規文件做準備。</li>
+        <li><strong>決策優先級</strong>：患者安全（TSE 風險、無菌保證）永遠優先於商業考量，物料管理是 ATMP 製造的第一道防線，而非最後程序。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
