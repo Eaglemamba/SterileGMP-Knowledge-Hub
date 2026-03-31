@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR22 - Section 4a: Elements of APS Part 1 (7.0-7.4)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7.0 - 7.4: Elements of Aseptic Process Simulations (Part 1)</h1>
+    <div class="subtitle">無菌製程模擬要素（第一部分）</div>
+    <div class="page-info">PDA Technical Report No. 22 (Revised 2025) | p44 - p53</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>瞭解 APS 設計時須考量的關鍵參數與其對模擬有效性的影響</li>
+        <li>掌握設施與充填機台評估的頻率及涵蓋範圍要求</li>
+        <li>理解設備組裝 (Equipment Setup) 在 APS 中的重要性及其作為固有干預的角色</li>
+        <li>學習培養基選擇原則，包含 SCDM (TSB) 的適用場景及厭氧條件的特殊考量</li>
+        <li>認識惰性氣體 (Inert Gassing) 對 APS 培養基微生物回收能力的影響及替代方案</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本部分章節導覽</h3>
+    <div class="toc-grid">
+        <a href="#sec7-0">7.0 總論</a>
+        <a href="#sec7-1">7.1 設施與充填機台</a>
+        <a href="#sec7-2">7.2 設備組裝</a>
+        <a href="#sec7-3">7.3 培養基選擇與製備</a>
+        <a href="#sec7-4">7.4 惰性氣體</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.0 Elements of APS - Overview -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec7-0">7.0 Elements of Aseptic Process Simulations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>This section contains general information to consider when conducting any type of <span class="key-term">APS</span>. Issues such as <span class="key-term">operator intervention</span>, fill volumes, line speeds, container sizes, and <span class="key-term">run duration</span> play a key role in effectively simulating the production process.</p>
+        <p>Careful consideration should be given to each of the parameters discussed in <span class="key-term">Section 7.1-7.18</span> for inclusion in the APS study design. Parameter selection and justification should be well documented and approved by the organization's <span class="key-term">Quality Unit</span>.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Elements of APS (APS 要素)：</strong>本章是 TR22 的核心實務章節之一，涵蓋了從 7.1 到 7.18 共計 18 個關鍵參數。每一個參數都直接影響 APS 能否真正反映實際生產條件。</p>
+            <p>TR22 特別強調：參數的選擇與合理性論述（justification）必須有完整的書面文件，並經品質單位（Quality Unit）批准。這意味著 APS 的設計不能「拍腦袋決定」，而是要有系統性的風險評估支撐。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要為一棟大樓做消防演練。你不能只測試一層樓、一種情境——你需要考慮每層樓的人數、逃生路線、電梯故障情境、特殊區域（如地下室）等。APS 的 18 個要素就像消防演練的檢查清單：每一項都是確保「模擬夠真實」的必要條件。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節（Section 4a）涵蓋 7.0 至 7.4，後續 Section 4b 將繼續涵蓋 7.5 以後的要素。兩部分合併後才是完整的 APS 要素全貌。</p>
+            <p>請特別注意：Quality Unit 的批准是法規監管機構（如 FDA、EMA）查核 APS 時的第一個檢查點——沒有 QU 簽核的 APS 設計文件，在稽查時幾乎等同於「未執行」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR22 將 APS 要素細分為 18 個參數，而不是僅給出一個通用指導原則？這樣的細分對 CDMO 有什麼實務好處？</li>
+                <li>如果 Quality Unit 未參與 APS 設計的審批，在稽查中可能引發哪些風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.1 Facility and Filling Machine Considerations -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec7-1">7.1 Facility and Filling Machine Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>APS programs should ensure that each aseptic process that takes place on <span class="key-term">aseptic-processing equipment</span>, in <span class="key-term">filling lines</span> or rooms, or any combination thereof are evaluated <span class="key-term">every six months</span>. Multiple APSs may be needed to address the aseptic processing that takes place on those lines and in those rooms. Where multiple <span class="key-term">container closure configurations</span> are run on a given filling line, a <span class="key-term">bracketing</span> or a <span class="key-term">matrix approach</span> may be considered (see Section 7.5.1.1). The key consideration is that the aseptic filling or manufacturing process is being evaluated, not a specific product.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Semi-annual APS (每半年執行 APS)：</strong>這是全球法規的基本要求——每條無菌充填線至少每六個月須執行一次 APS。但請注意，TR22 的用語是「each aseptic process...are evaluated every six months」，意味著如果一條線有多個不同的無菌製程，每個製程都需要被涵蓋。</p>
+            <p><strong>Bracketing / Matrix Approach (分群/矩陣方法)：</strong>當同一充填線可運行多種容器密封配置時，不一定每種都要獨立做完整 APS。可以透過 bracketing（選最大最小兩端）或 matrix（輪替涵蓋）來合理減少 APS 次數，但這需要風險評估支持。</p>
+            <p><strong>評估對象是「製程」而非「產品」：</strong>這是一個關鍵觀念。APS 驗證的是無菌充填的操作能力，不是特定藥品的品質。因此同一條線生產的不同產品可以共用 APS 結果，前提是製程條件相似。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像餐廳的衛生檢查，稽查員檢查的是「廚房的衛生操作能力」，而不是針對「每一道菜」做獨立檢查。只要你的廚房環境、操作人員、清潔流程都合格，不同菜色都可以在合格的環境中製作。同理，APS 驗證的是你的無菌操作「廚房」，而不是某一支「菜」（藥品）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CDMO 特別注意：</strong>對於 CDMO 而言，一條充填線可能服務多個客戶、多種容器規格。合理運用 bracketing/matrix 策略可以大幅降低 APS 的執行頻率與成本。但這需要：</p>
+            <ul>
+                <li>完整的風險評估文件</li>
+                <li>清楚的 worst-case 定義</li>
+                <li>Quality Unit 的事先批准</li>
+            </ul>
+            <p>若分群策略設計不當，一次 APS 失敗可能同時影響所有被涵蓋的產品/配置，造成更大的商業衝擊。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設你的 CDMO 有一條充填線，可使用 2mL、5mL、10mL、20mL 四種西林瓶。在 bracketing 策略下，你可以選擇 2mL（最小）和 20mL（最大）進行 APS，以涵蓋中間規格。但需確保中間規格的設備變更（如充填針頭、瓶塞規格）不會引入 worst case 未被涵蓋的風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一條充填線在六個月內有三次重大設備變更，APS 的執行頻率是否仍然只需每半年一次？為什麼？</li>
+                <li>「評估製程而非產品」的原則下，若某客戶要求其產品有獨立的 APS 結果，CDMO 應如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.2 Equipment Setup -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec7-2">7.2 Equipment Setup</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The setup for an aseptic process usually entails some manual assembly of the sterilized equipment, including items that directly or indirectly contact product, such as <span class="key-term">filler parts</span>, <span class="key-term">closure placement and insertion systems</span>, <span class="key-term">filter housings</span>, <span class="key-term">stopper hopper-/bowl</span>, and other assemblies. Because equipment setup activities may require more manipulation of critical surfaces than subsequent processing operations, the steps involved are considered <span class="key-term">inherent interventions</span> and must be included in the APS.* The allowable adjustment or replacement of these parts during a production run should be considered as a <span class="key-term">corrective intervention</span> and should also be included in APS runs. Personnel performing setup operations during routine manufacturing operations should perform these inherent and corrective interventions during APS studies.</p>
+
+        <div class="quote-box">
+            "*Note: In many aseptic processing facilities, this is the most operator intensive part of the aseptic process. Greater emphasis and observation should be placed on its execution including details of transfer, handling, connection, placement, connection of parts and addition of components."
+        </div>
+
+        <p>Equipment setups, including filler parts that are similar (e.g., filling needles, nozzles, pumps, valves, other spare parts) and involve the same activities or interventions, should not require inclusion in separate APS studies. However, where there are potential differences in the use or condition of these parts, for example, parts from different supplier sources or evidence of differences from process performance records, a risk assessment should be used to help determine if additional or separate APS studies are required.</p>
+
+        <p>Consideration should be given to parts that are used in routine production rather than for APS studies alone, if risk related characteristics such as wear or condition vary.</p>
+
+        <p>Where there are differences in variables, such as the size of filler parts and closure placement and insertion systems, a risk assessment should be used to determine if an APS bracketing approach or matrix is applicable. This approach should not be based solely on the physical dimensions of the parts or lines. It should consider <span class="key-term">process variables</span> that may or may not be included because of the bracketing approach (see Section 7.5.1.1). Where it is determined that not all relevant variables are captured by a bracketing approach, it will be necessary to capture such sizes and variables in multiple APS runs.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Inherent Intervention (固有干預)：</strong>指製程中不可避免的操作步驟，如設備組裝、管路連接等。這些是生產過程的一部分，每次都會發生。</p>
+            <p><strong>Corrective Intervention (矯正干預)：</strong>指生產過程中為了維持運作而進行的非計畫性操作，如更換故障零件、調整充填量等。</p>
+            <p>TR22 明確指出：設備組裝（Equipment Setup）是大多數無菌製程中「操作人員操作強度最高」的環節。因此它在 APS 中被歸類為固有干預，必須納入模擬。這不是可選的——是「must」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像外科手術前的器械準備。護理師打開無菌包、擺放手術器械的過程，就是「固有干預」——每次手術都必須做。而手術中發現某把鉗子不好用需要更換，就是「矯正干預」。兩種情境都可能破壞無菌環境，因此消防演練（APS）必須同時模擬這兩種場景。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>關鍵觀察點：</strong>TR22 的腳註特別強調了設備組裝階段的重要性。在稽查中，這一階段往往是被特別關注的。建議：</p>
+            <ul>
+                <li>APS 觀察員應對設備組裝階段給予<strong>最高關注度</strong></li>
+                <li>需記錄每一步的傳遞、處理、連接、放置細節</li>
+                <li>操作人員在 APS 中執行的組裝動作必須與日常生產一致</li>
+            </ul>
+            <p><strong>零件差異的處理：</strong>相似的零件（如同類型充填針頭）不需要分別做 APS，但如果來自不同供應商或有磨損差異，需要透過風險評估來判斷是否需要額外的 APS。這對 CDMO 來說是一個成本優化的機會點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 零件磨損考量</h4>
+            <p>TR22 特別提到要注意「實際生產中使用的零件」而非「僅在 APS 時使用的零件」。言下之意：有些工廠會為 APS 專門準備全新零件，但真正的風險來自日常生產中已有磨損的零件。APS 應盡量使用與實際生產條件一致的零件狀態。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR22 要求 APS 中的設備組裝由「日常負責該操作的人員」執行，而不是由最有經驗的人員執行？</li>
+                <li>如果你的工廠有來自 A、B 兩家供應商的充填針頭，在什麼條件下可以只用其中一家的針頭做 APS？在什麼條件下必須兩家都做？</li>
+                <li>「Bracketing 不應僅基於物理尺寸」這句話的言外之意是什麼？請舉出一個除了尺寸之外需要考慮的製程變數。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.3 Media Selection and Preparation -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec7-3">7.3 Media Selection and Preparation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The most common medium for APS is <span class="key-term">SCDM</span>, also referred to as <span class="key-term">TSB</span>. SCDM is a general-purpose growth medium well-suited for the recovery of aerobic microorganisms of the types commonly associated with human-borne and environmental contamination. It is identical to SCDM agar (although without the agar), which is widely used for microbial recovery in aseptic areas for the same reason. Replacement of the products, diluents, and buffer solutions with SCDM is customary when performing APS studies.</p>
+
+        <p>Where there is evidence that the process or environment may have <span class="key-term">anaerobic microorganism</span> contamination that provides a risk of product contamination, the APS studies should include filling of an alternate media, such as <span class="key-term">fluid thioglycolate medium (FTM)</span> or another suitable medium in addition to conducting an aerobic evaluation. This evidence may include aseptic processing conducted in a strict anaerobic environment, for an aerobic process if anaerobic microorganisms are consistently recovered during periodic EM (for anaerobes), or if facultative anaerobes are detected exclusively in a FTM sterility-test medium. If oxygen is excluded from processing, then such parameters as container fill-volume and inert gassing may require modification to provide a true anaerobic environment for the APS study. In the case of a purely anaerobic environment, the use of SCDM is not recommended and a purely anaerobic APS can be conducted.</p>
+
+        <p>Media containing animal-derived components should be sourced from non-<span class="key-term">bovine spongiform encephalopathy/-transmissible spongiform encephalopathies (BSE/TSE)</span> origin. Alternatively, vegetable options (e.g., <span class="key-term">vegetable peptone broth</span>) are a viable alternative. Manufacturing processes with a risk of <span class="key-term">mycoplasma</span> or prion transmission should always utilize a vegetable-based growth medium. These media are often very similar in composition to SCDM, but with the casein component being replaced with a plant peptone (see Section 13.2).</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>SCDM / TSB (大豆酪蛋白消化液體培養基)：</strong>全名為 Soybean-Casein Digest Medium，也稱為 Tryptic Soy Broth (TSB)。這是 APS 最常用的培養基，因為它能廣泛回收好氧微生物，特別是人體和環境來源的常見污染菌。</p>
+            <p><strong>FTM (液體硫代乙醇酸培養基)：</strong>Fluid Thioglycolate Medium，專用於厭氧微生物的培養。只有在有證據顯示製程環境可能有厭氧菌污染風險時才需要使用。</p>
+            <p><strong>BSE/TSE 風險考量：</strong>動物來源的培養基成分（如酪蛋白）必須確認不來自 BSE/TSE 風險區域。更安全的替代方案是使用植物性蛋白腖培養基。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>選擇 APS 培養基就像選擇「餌」去釣魚。SCDM/TSB 就像萬用餌——能吸引大多數常見的魚（好氧菌）。但如果你的池塘（製程環境）裡已知有深水魚（厭氧菌），你就需要加掛深水專用餌（FTM）。如果整個池塘都是深水區（純厭氧環境），那就只用深水餌就好了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>何時需要加做厭氧 APS？</strong>TR22 列出了三個觸發條件：</p>
+            <ol>
+                <li>製程在嚴格厭氧環境下進行</li>
+                <li>定期環境監測中持續回收到厭氧菌</li>
+                <li>在無菌試驗的 FTM 管中<strong>專一性地</strong>檢出兼性厭氧菌</li>
+            </ol>
+            <p>關鍵字是「consistently」和「exclusively」——偶爾檢出不構成觸發條件，但持續性或專一性的檢出就必須認真對待。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — BSE/TSE 與植物性培養基</h4>
+            <p>對於 ATMP（先進治療醫藥產品）和細胞治療產品，BSE/TSE 風險是法規特別關注的議題。TR22 建議：凡有黴漿菌（mycoplasma）或普利昂蛋白（prion）傳播風險的製程，<strong>一律使用植物性培養基</strong>。這不僅是 APS 的選擇，也反映了 Section 13.2 中對培養基合規性的更廣泛要求。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>情境：你的 CDMO 同時生產傳統注射劑和 CAR-T 細胞治療產品。傳統注射劑使用標準 SCDM 做 APS 沒有問題。但 CAR-T 產品線因為涉及人源細胞，有潛在的 mycoplasma 風險——你應該選擇植物性蛋白腖培養基（如 vegetable peptone broth）來執行 APS，避免引入額外的 BSE/TSE 法規風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SCDM 被稱為「通用培養基」？它與環境監測中使用的 SCDM agar 有什麼關係？</li>
+                <li>假設你的環境監測數據在過去 12 個月中有 2 次在 settle plate 上檢出厭氧菌，你是否需要在 APS 中加入 FTM？請用 TR22 的判斷標準進行分析。</li>
+                <li>植物性蛋白腖培養基的微生物促進生長能力是否與 SCDM 完全相同？在使用前需要確認什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 7.4 Inert Gassing -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec7-4">7.4 Inert Gassing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><span class="key-term">Nitrogen</span> or other <span class="key-term">inert gases</span> are used to provide a low-oxygen environment for oxygen-sensitive products. They are also used to provide positive pressure for solution transfer. Nitrogen (or other gases) for these uses does not provide a true anaerobic environment (less than 0.1% residual oxygen is needed for anaerobic conditions). However, the use of an inert gas with SCDM, may still inhibit growth. In these instances, <span class="key-term">filter-sterilized air</span> should be used in lieu of an inert gas for APS studies. Air should replace the inert gas and be delivered by the same delivery system, thus assuring that the purge/transfer setup-and-delivery considerations are fully considered in the simulation. If it is necessary to use an inert gas for simulation of an oxygen-free process, testing should confirm the ability of the medium selected (e.g., an anaerobic media) to support microbial growth when the inert gas is utilized. Any replacement of gases should not result in additional risk to the equipment, process, or personnel. It is important to note that the sterility of the inert gas supply, including filters, connections, and the piping system, is being evaluated as part of the APS.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Inert Gassing (惰性氣體充填)：</strong>許多藥品（特別是蛋白質藥物）對氧氣敏感，生產時會使用氮氣或其他惰性氣體排除容器中的氧氣。惰性氣體也常用於提供正壓以推動溶液轉移。</p>
+            <p><strong>核心矛盾：</strong>惰性氣體排氧雖然保護了產品，卻可能抑制 SCDM 中好氧微生物的生長，導致 APS 的微生物回收能力降低。這就產生了一個根本性矛盾：模擬製程的需要 vs. 培養基生長促進能力的需要。</p>
+            <p><strong>TR22 的解決方案：</strong>用無菌過濾空氣（filter-sterilized air）替代惰性氣體，但必須通過相同的輸送系統。這樣既保證了培養基的生長促進能力，又確保了氣體輸送系統的無菌性在 APS 中被驗證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像消防演練中的煙霧問題。真正的火災會產生濃煙（惰性氣體），但演練時如果用真正的濃煙，參與者可能看不到逃生路線（微生物無法生長）。所以演練時用「無害的可見煙霧」（過濾空氣）來替代——它仍然從相同的煙霧發生器（氣體輸送系統）釋放，確保系統路徑被測試，但不會造成真正的傷害（不會抑制生長）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>三個關鍵原則：</strong></p>
+            <ol>
+                <li><strong>替代不能增加風險：</strong>用空氣替代惰性氣體時，不能對設備、製程或人員造成額外風險（例如，某些對氧氣敏感的設備材質可能與空氣不相容）</li>
+                <li><strong>輸送系統完整評估：</strong>空氣必須通過與惰性氣體相同的管路、過濾器、接頭輸送，這是因為 APS 同時也在評估整個氣體供應系統的無菌性</li>
+                <li><strong>純厭氧製程的例外：</strong>如果是真正的無氧製程模擬，可以使用惰性氣體，但必須事先確認所選厭氧培養基在該惰性氣體條件下仍能促進微生物生長</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 氣體系統的隱藏風險</h4>
+            <p>TR22 最後一句話常被忽略但極為重要：「the sterility of the inert gas supply, including filters, connections, and the piping system, is being evaluated as part of the APS.」</p>
+            <p>這意味著 APS 不僅僅是在測試充填操作——它同時也在驗證整個氣體供應系統（氣體過濾器、管路接頭、配管系統）的無菌性。如果在 APS 中完全跳過氣體系統（例如不通氣），等於遺漏了一個重要的無菌風險來源。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>情境：你的充填線生產一支蛋白質藥物，使用氮氣做 headspace purge。在執行 APS 時，你應該：</p>
+            <ul>
+                <li>將氮氣替換為無菌過濾空氣</li>
+                <li>空氣通過相同的氮氣管路、過濾器和接頭輸送</li>
+                <li>記錄氣體替換的合理性（justification）</li>
+                <li>確認空氣的引入不會對設備材質造成問題</li>
+                <li>確保氣體過濾器的完整性測試 (integrity test) 仍在 APS 流程中執行</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼不能在 APS 中簡單地「不通氣」來避免惰性氣體對培養基的影響？這樣做會遺漏什麼驗證目的？</li>
+                <li>假設你的製程使用的不是氮氣而是二氧化碳（CO<sub>2</sub>），CO<sub>2</sub> 對 SCDM 的影響與氮氣有何不同？你會如何設計 APS？</li>
+                <li>如何驗證「替代不增加風險」？請列出至少三個需要評估的項目。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR91 Section 2 — Background & Key Elements of PQS</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 91 (2023)</h1>
+    <div class="subtitle">Post-Approval Change Management and Implementation for Biologics and Pharmaceutical Drug Products — A User's Guide</div>
+    <div class="subtitle">Section 2 — Background &amp; Key Elements of PQS</div>
+    <div class="page-info">Sections 3.0 &amp; 4.0–4.5 &nbsp;|&nbsp; p4–p9</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>了解 ICH Q12 如何作為 PAC 法規彈性的核心框架，以及目前全球協調工作的進展與缺口。</li>
+            <li>掌握有效 PQS（製藥品質系統）的五大關鍵要素，說明每個要素如何支撐 PAC 管理。</li>
+            <li>理解高階管理層（Management Review）在 PAC 文化建立中的責任，超越單純法規遵循的思維。</li>
+            <li>辨別 CAPA 系統如何成為 PAC 流程的起點，以及變更管理系統如何決定法規申報路徑。</li>
+            <li>解釋 QRM（品質風險管理）與 KM（知識管理）如何共同使 PAC 決策更科學、更具彈性。</li>
+        </ol>
+    </div>
+
+    <!-- ===== SECTION 3.0: Background and Landscape for PACs ===== -->
+    <h2 class="section-title">3.0 Background and Landscape for PACs — 背景與全球監管環境</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>3.0 Background and Landscape for PACs</h3>
+            <p>The importance of PAC and the need to overcome these myriad challenges has led many international organizations, including the Parenteral Drug Association (PDA), to develop recommendations and proposals to address the situation:</p>
+            <ul>
+                <li><span class="key-term">PDA PAC iAM</span> (Post Approval Change; Innovations of the Availability of Medicines) program has developed numerous papers, including this technical report.</li>
+                <li>The European Federation of Pharmaceutical Industries and Associations (<span class="key-term">EFPIA</span>) and International Federation of Pharmaceutical Manufacturers and Associations (<span class="key-term">IFPMA</span>) have issued position papers on PAC, calling for regulatory convergence and proposing a relevant framework.</li>
+                <li><span class="key-term">One Voice of Quality for PAC</span>, an initiative sponsored by the chief quality officers of more than 30 global pharmaceutical companies, has been developing risk-based recommendations to help reduce the global complexity associated with PACs.</li>
+                <li>The <span class="key-term">World Health Organization (WHO)</span> has provided guidance, suggesting pathways and requirements for PACs.</li>
+                <li>The <span class="key-term">International Council for Harmonisation (ICH)</span> has continued its push for harmonization by publishing <span class="key-term">Quality Guideline Q12</span>: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management, which focuses specifically on PACs, while building upon established ICH Quality Guidelines Q8–Q11.</li>
+            </ul>
+            <p>The <span class="key-term">ICH Q12</span> guidance, which describes key concepts necessary to streamline the PAC process, is recognized as a significant step forward. In addition to the implementation of ICH Q12, there are areas where work is still needed to achieve full harmonization, including:</p>
+            <ul>
+                <li>Agreement on the change categories among regulatory authorities</li>
+                <li>Harmonization on filing procedures and timelines within ICH regions</li>
+                <li>Inclusion of non-ICH regulatory authorities to converge on the application of these principles</li>
+            </ul>
+            <p>By fully implementing <span class="key-term">ICH Quality Guidelines Q8–Q11</span>, manufacturing firms can develop an effective internal PQS sufficient to optimize the management of PACs. Demonstrating the effectiveness of the PQS would allow a reduction in the regulatory reporting burden for changes with a lower level of risk, as they would be managed through a firm's PQS, by:</p>
+            <ul>
+                <li>Ensuring ICH Q8–Q12 are implemented and leveraged as building blocks for PAC management</li>
+                <li>Working with regulators to drive consistent reporting categories</li>
+                <li>Developing a robust PQS system</li>
+                <li>Enhancing transparency and trust between companies and regulators to identify when a firm's PQS system is sufficient to allow certain types of lower-risk change to be implemented without reporting</li>
+            </ul>
+            <p>In keeping with ICH Q10 and Q12 guidances and with a robust PQS system in place, <span class="key-term">PACs requiring prior approval</span> by regulatory authorities would be limited to changes assessed as having the potential to have a major impact on product quality and/or patient safety. <span class="key-term">Minor-to-moderate changes</span> would be made with notification to the regulatory authorities, and <span class="key-term">low-risk changes</span> would be managed under a firm's PQS. The benefits of this paradigm shift are depicted in Figure 3.0-1.</p>
+
+            <!-- Figure 3.0-1 represented as table -->
+            <div class="figure-container">
+                <p style="font-weight:600; color: var(--primary-blue); margin-bottom:0.5rem;">Figure 3.0-1: Scientific and Risk-Based Approach to Categorization of Changes</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk Level</th>
+                            <th>Current Regulatory Categories (examples)</th>
+                            <th>Future Vision</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Low Risk</td>
+                            <td>Type IA / Annual Notification / CBE-0</td>
+                            <td>Entirely in Firm's PQS (no reporting)</td>
+                        </tr>
+                        <tr>
+                            <td>Moderate Risk</td>
+                            <td>Type IB / Minor Variation / CBE-30</td>
+                            <td>Notification (Do and Tell)</td>
+                        </tr>
+                        <tr>
+                            <td>High Risk</td>
+                            <td>Type II / Major Variation / PAS</td>
+                            <td>Prior Approval (Tell, Wait, and Do)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="figure-caption">All changes are evaluated and documented in the PQS. The goal is to shift more changes toward the left (firm's PQS-managed) over time as trust and harmonization improve.</p>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：全球 PAC 監管環境</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：為什麼需要協調？</h4>
+                <p>藥廠做一個變更（例如更換原料藥來源），在美國可能只需 CBE-30（30天通知），在歐盟卻需要 Type II（重大變更，事前核准），在日本又是另一套規定。同樣的風險，四套報告要求 — 這就是 PAC 全球複雜性的核心問題。</p>
+                <p>ICH Q12（2019年發布）是迄今最重要的框架，試圖把這些分歧拉近。但 Q12 只是起點，非終點。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：護照通關 vs. 每國重辦簽證</h4>
+                <p>試想你持有一本護照，在大多數國家可以快速通關，但每次都要重新辦理該國簽證 — 即使你的風險評估已做得很完整。現在的 PAC 世界就是這樣：每個市場都要「重新申報」，不承認其他地區的評估結果。</p>
+                <p>ICH Q12 的願景就是讓「品質護照」成立：如果你的 PQS 夠強、資料夠透明，主管機關應該信任你、讓你用更低的申報類別管理低風險變更。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：三層申報架構</h4>
+                <ul>
+                    <li><strong>高風險</strong> → 事前核准（Prior Approval / PAS / Type II）：先說、等待、再做</li>
+                    <li><strong>中低風險</strong> → 通知（Notification / CBE / Type IB）：做了之後告知</li>
+                    <li><strong>低風險</strong> → 完全由 PQS 管理：只在內部記錄，無需外部申報</li>
+                </ul>
+                <p>這個三層架構是 TR91 整份報告的底層邏輯 — 每個後續章節都在探討「如何讓更多變更往低風險那一層移動」。</p>
+            </div>
+
+            <!-- Global Filing Categories Table -->
+            <div class="concept-box">
+                <h4>各地區申報類別對照（同一變更，不同要求）</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>地區</th>
+                            <th>低風險</th>
+                            <th>中等風險</th>
+                            <th>高風險</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>美國 FDA</td>
+                            <td>CBE-0 / Annual Report</td>
+                            <td>CBE-30</td>
+                            <td>PAS（Prior Approval Supplement）</td>
+                        </tr>
+                        <tr>
+                            <td>歐盟 EMA</td>
+                            <td>Type IA Notification</td>
+                            <td>Type IB / Minor Variation</td>
+                            <td>Type II / Major Variation</td>
+                        </tr>
+                        <tr>
+                            <td>加拿大 HC</td>
+                            <td>Annual Notification</td>
+                            <td>Notifiable Change</td>
+                            <td>Supplement</td>
+                        </tr>
+                        <tr>
+                            <td>日本 PMDA</td>
+                            <td>Minor Change</td>
+                            <td>Partial Change</td>
+                            <td>Full Change Notification</td>
+                        </tr>
+                        <tr>
+                            <td>WHO</td>
+                            <td>Minor Variation</td>
+                            <td>Major Variation</td>
+                            <td>New Application</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>同一個製程變更，在不同地區可能落在不同類別 — 這正是全球協調工作的難點。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你們公司上一次做 PAC（例如更換供應商、調整灌裝速度），在美國、歐盟、台灣各做了哪種申報？申報準備時間有多大差異？</p>
+                <p>如果你的 PQS 已達到 ICH Q10 的成熟水準，理論上你有資格爭取哪些變更的「降級申報」？這個問題值得帶入下次管理層審查討論。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.0: Key Elements of PQS ===== -->
+    <h2 class="section-title">4.0 Key Elements of a Pharmaceutical Quality System for PAC Management — PQS 五大核心要素</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.0 Key Elements of a Pharmaceutical Quality System for PAC Management</h3>
+            <p>An effective <span class="key-term">PQS</span> is the foundation upon which PAC management and implementation are established. PQS effectiveness in relation to risk-based change management is a core concept within the <span class="key-term">ICH Q12</span> framework. Several PQS elements are needed to establish effective PAC management:</p>
+            <ul>
+                <li>Management review</li>
+                <li>A corrective action and preventive action (<span class="key-term">CAPA</span>) program</li>
+                <li>A change management system</li>
+                <li>Process performance and product quality monitoring</li>
+            </ul>
+            <p>Importantly, <span class="key-term">knowledge management</span> and <span class="key-term">quality risk management</span> are key enablers of a firm's PQS.</p>
+            <p>Having an established PQS that is executed effectively and consistently within a firm will provide confidence to the regulatory agency that changes are supported by data obtained through the application of patient-centric, scientific, risk-based principles. A well designed and effective PQS is an essential foundation for trust between regulatory authorities and industry that will facilitate harmonization on the categorization of changes. It also should allow more PACs to be managed under the firm's PQS without requiring prior review and approval by regulatory agencies.</p>
+            <p>When using <span class="key-term">contract manufacturing organizations (CMO)</span> or <span class="key-term">contract development and manufacturing organizations (CDMO)</span>, a firm needs to ensure that appropriate contractual agreements are in place for PACs occurring at the CMO or CDMO and that they maintain an effective PQS. The same principles for lifecycle management and reporting responsibility apply.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：PQS 是 PAC 的地基</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：PQS 不只是文件系統</h4>
+                <p>PQS（製藥品質系統）在這裡的意義遠超過 SOP 和記錄管理。它是一套能夠「主動識別變更需求、評估風險、決定申報類別、執行變更、驗證效果」的完整管理架構。</p>
+                <p>ICH Q12 的核心主張：一家公司的 PQS 越成熟，主管機關就越願意讓它自主管理低風險變更 — 減少事前核准、增加 PQS 內部自理。這是「信任換取彈性」的交換邏輯。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：飛行員執照分級</h4>
+                <p>初學飛行員每次起飛都需要塔台核准；有儀器飛行證書（IFR）的飛行員可以在更多條件下自主判斷；有豐富記錄的機長甚至可以在特定情境下自主決策。</p>
+                <p>PQS 就是你的「飛行紀錄本」——越完整、越成熟，主管機關對你的信任度越高，賦予你的自主空間也越大。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>CDMO 的特別責任</h4>
+                <p>如果你是 CDMO（例如 TWi），你的客戶是 MAH（上市許可持有人），但製程發生在你的設施裡。這段話特別重要：</p>
+                <ul>
+                    <li>CDMO 必須維持有效 PQS，且與客戶的 PAC 責任合約有明確規範</li>
+                    <li>變更管理的生命週期責任（包括申報）不因外包而消失</li>
+                    <li>客戶的申報義務 + CDMO 的 PQS 能力，兩者缺一不可</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你們的 CDMO 合約中，對 PAC 的責任歸屬是否有明確條款？當製程在你們廠發生變更時，誰啟動 PAC 評估？誰決定申報類別？這個流程是否書面化？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.1: Management Review ===== -->
+    <h2 class="section-title">4.1 Management Review — 管理層審查</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.1 Management Review</h3>
+            <p>A firm's senior management is responsible for ensuring that appropriate systems and processes are in place to manage changes effectively. In accordance with <span class="key-term">ICH Quality Guideline Q10</span>: Pharmaceutical Quality System, these responsibilities include:</p>
+            <ul>
+                <li>Defining and communicating roles within the change management system</li>
+                <li>Ensuring timely and appropriate communication to address potential quality issues</li>
+                <li>Providing adequate resources to ensure that changes are made based on sound scientific and risk-based judgments</li>
+                <li>Maintaining awareness of the long-term product <span class="key-term">lifecycle management strategy</span> and ensuring that appropriate controls are in place</li>
+                <li>Developing and fostering the desired <span class="key-term">quality culture</span> at all levels throughout the firm to safeguard the patient's access to high-quality medicines</li>
+            </ul>
+            <p><span class="key-term">Quality culture</span> is a set of behaviors, beliefs, and values of an enterprise that serve as a guide to decision-making. In the ideal state, a quality mindset and quality-focused behaviors are embedded into all functions of daily work and result in positive patient outcomes. In an organization with a well-established quality-culture environment, employees not only follow quality guidelines but consistently see others taking quality-focused actions, hear others talk about quality, and understand the importance of quality in everyday activities.</p>
+            <p>For sustained effectiveness, the PQS needs to be embedded alongside a firm's <span class="key-term">culture of quality</span> for it to properly perform its function and be considered reliable. Management plays an important role in nurturing key elements of a mature quality culture, including a focus on continuous improvement, demonstration of leadership, communication of a common vision, and investment in employee development and education. Training is essential to ensure a proficient and knowledgeable quality-oriented workforce.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：管理層是 PAC 的守門人</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：PAC 是品質系統活動，不只是法規合規</h4>
+                <p>許多公司把 PAC 視為「法規部門的事」——只有在必須申報時才啟動。但 ICH Q10 的精神是：PAC 應該是管理層定期審查的議題，因為每一個變更都是產品生命週期管理的一部分。</p>
+                <p>管理層的責任具體包括：定義角色、分配資源、建立文化。特別是「文化」這一點，不是管理層說說而已 — 員工看到的日常行為才算數。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：品質文化如同組織免疫系統</h4>
+                <p>免疫系統不是在你生病時才啟動的 — 它平時就在運作，隨時識別異常並回應。品質文化也是如此：不是在稽查前緊急補文件，而是每個人在日常工作中都把「這個決定對病患安全有何影響？」當成反射性問題。</p>
+                <p>管理層的角色是讓這個「免疫系統」保持活化 — 通過榜樣、資源、教育訓練，而不只是 KPI 考核。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：管理審查與 PAC 的連結</h4>
+                <p>你的年度管理審查（Management Review）是否包含以下 PAC 相關指標？</p>
+                <ul>
+                    <li>本年度啟動的 PAC 數量與類型</li>
+                    <li>PAC 申報時間是否符合各市場要求</li>
+                    <li>PAC 有效性查核（Effectiveness Check）的結果</li>
+                    <li>因 PAC 衍生的 CAPA 追蹤狀況</li>
+                </ul>
+                <p>如果這些指標不在管理審查中，PAC 就只是法規部門的例行工作，而非公司層級的品質承諾。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>上次你參加或主持管理審查時，有沒有討論到「我們的 PAC 管理有沒有比上一年度更有效率？」這個問題？如果沒有，是什麼原因？資料不足、沒有指定負責人，還是組織文化上這不被視為管理層該關心的事？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.2: CAPA ===== -->
+    <h2 class="section-title">4.2 Corrective Action and Preventive Action (CAPA) Program — CAPA 系統</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2 Corrective Action and Preventive Action Program</h3>
+            <p>A properly functioning <span class="key-term">CAPA</span> system identifies not only when actions are needed as a result of an event that has occurred, but also operates proactively to improve based on weaknesses identified prior to an event occurring. Ideally, the majority of all actions would be <span class="key-term">preventative</span>. The CAPA system is often where the initial need for change is identified and where the <span class="key-term">PAC process begins</span>. Having a strong CAPA program is a critical component of any PQS system, which will lead to better process understanding, process control, and determining when action is needed.</p>
+            <p>An effective CAPA program <span class="key-term">monitors and manages unintended risks and consequences of PACs</span> for internal and outsourced operations. It should enable identification of root cause(s) so that appropriate actions can be taken to correct problems and prevent their recurrence. The program should also monitor and verify the <span class="key-term">effectiveness of any CAPAs associated with PAC initiatives</span>.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：CAPA 是 PAC 的起點</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：CAPA → 變更需求 → PAC</h4>
+                <p>CAPA 系統是 PAC 流程最常見的發源地。以下是典型的觸發路徑：</p>
+                <ul>
+                    <li><strong>缺陷矯正</strong>：OOS（超標結果）調查 → 根本原因是製程不穩定 → CAPA 要求製程改善 → 觸發 PAC</li>
+                    <li><strong>主動改善</strong>：趨勢分析發現製程漂移 → 預防性 CAPA → 啟動製程優化 PAC</li>
+                    <li><strong>法規更新</strong>：主管機關發布新指引 → 現有方法不符合 → CAPA 要求方法驗證更新 → PAC</li>
+                </ul>
+                <p>CAPA 不只是「出了問題才做」，理想狀態下大多數行動應該是「預防性」的 — 這正是成熟 PQS 的標誌。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：CAPA 是品質系統的神經系統</h4>
+                <p>神經系統接收全身訊號（痛覺、壓力、溫度），整合後輸出指令（縮手、調整姿勢）。CAPA 系統的功能類似：接收各種品質訊號（偏差、投訴、稽查觀察），整合根本原因分析，輸出系統性改善行動。</p>
+                <p>一個「只有反應，沒有預防」的 CAPA 系統，就像一個只有痛覺、沒有本體感覺的神經系統 — 等到痛了才知道出問題，已經太晚了。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：CAPA 與 PAC 的雙向關係</h4>
+                <p>CAPA 不只觸發 PAC，也必須監控 PAC 本身帶來的非預期後果。一個變更實施後，如果監測發現品質指標惡化，必須立即啟動 CAPA — 這是 PAC 有效性查核的安全閥機制。</p>
+                <p>雙向流動：CAPA → PAC，以及 PAC 後監測 → CAPA。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>回顧你們過去12個月的 CAPA 清單：有多少 CAPA 最終觸發了 PAC 評估？這個比例是否合理？如果 CAPA 很多但 PAC 幾乎沒有，可能代表 CAPA 處理的都是表面問題，沒有觸及製程根本改善。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.3: Change Management System ===== -->
+    <h2 class="section-title">4.3 Change Management System — 變更管理系統</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3 Change Management System</h3>
+            <p>While most changes made have no impact on the regulatory dossier, the importance of having a system that appropriately evaluates changes and their impact on the manufacturing processes and product cannot be emphasized enough. The change process must be able to adequately evaluate the change, the level of risk to the process and product, and the need for a PAC to be filed. Tools, such as those described in <span class="key-term">ICH Q10 and Q12</span> and in the <span class="key-term">PIC/S Recommendation</span>: How to Evaluate/Demonstrate the Effectiveness of a Pharmaceutical Quality System in relation to Risk-based Change Management, focus on the relevance of risk-based change management.</p>
+            <p>The <span class="key-term">PIC/S recommendation</span> provides a checklist to evaluate the effectiveness of a firm's PQS in relation to risk-based change management and acknowledges that the level of effort and associated documentation should be commensurate with the level of risk the change entails. This, in turn, should be used to justify the categorization and filing requirements for that change. To ensure that the underlying risk level is well understood, the change management process needs to be robust enough to capture the impact of any proposed change. Therefore, it must support a knowledge-based assessment and review of the change, ensuring that the final scientific justification supports the ultimate filing decision to the applicable regulatory agency.</p>
+            <p>A structured, well-organized change management process is essential for a successful PAC process. It must cover:</p>
+            <ul>
+                <li><span class="key-term">Critical Quality Attributes (CQA)</span></li>
+                <li><span class="key-term">Critical Process Parameters (CPP)</span></li>
+                <li><span class="key-term">Product Lifecycle Management (PLCM)</span></li>
+                <li>Control strategy</li>
+                <li>Creating <span class="key-term">Established Conditions (ECs)</span> as appropriate</li>
+            </ul>
+            <p>Such an approach ensures that relevant quality aspects are considered, and possible quality impacts are thoroughly assessed, documented, and communicated to relevant stakeholders, including regulatory bodies.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：變更管理系統決定申報路徑</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：變更分類決定一切</h4>
+                <p>變更管理系統的最關鍵功能是「分類」——這個變更是否影響 CQA？是否涉及 CPP？是否改變了 Established Conditions（EC）？這些問題的答案直接決定申報類別。</p>
+                <p>典型的變更管理流程：</p>
+                <div class="hierarchy-diagram">
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-1">變更提案（Change Initiation）</span>
+                    </div>
+                    <div class="arrow-down">↓</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-2">影響評估（Impact Assessment：CQA / CPP / EC）</span>
+                    </div>
+                    <div class="arrow-down">↓</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-2">法規分類（Regulatory Classification）</span>
+                    </div>
+                    <div class="arrow-down">↓</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-3">實施 → 驗證 → 有效性查核</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：建築許可申請</h4>
+                <p>你要改建房子：換一扇窗（低風險）vs. 拆掉一面承重牆（高風險）。換窗只需內部記錄；拆牆需要建築師評估、結構工程師簽名、政府核可。</p>
+                <p>變更管理系統就是那個「判斷這個改動是換窗還是拆牆」的評估機制。問題在於：很多公司沒有清晰的判斷標準，導致所有變更都按最高等級申報（浪費資源），或者低估風險少報（監管風險）。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：Established Conditions (ECs) 的核心地位</h4>
+                <p>ICH Q12 引入 EC（已建立條件）的概念：這些是法規申請中記載的製程/產品參數，一旦改變就需要申報。</p>
+                <p>有效的變更管理系統必須能清楚回答：「這個變更是否改變了任何 EC？」如果 EC 清單設計得好（只包含真正關鍵的參數），公司就能把更多低風險變更保留在 PQS 內部管理。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你們公司的 CMS（Change Management System）在評估一個新的變更時，是否有結構化的問卷或決策樹來判斷是否影響 CQA/CPP/EC？這個判斷是由誰做出的（單人決定 vs. 跨部門審查）？文件記錄是否足以支撐未來稽查時的科學論證？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.4: PPPQ Monitoring ===== -->
+    <h2 class="section-title">4.4 Process Performance and Product Quality Monitoring — 製程績效與產品品質監測</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.4 Process Performance and Product Quality Monitoring</h3>
+            <p>A comprehensive program to monitor the manufacturing process performance and product quality should be in place at every manufacturing facility to ensure that the process continues to perform in a <span class="key-term">state of control</span> and in keeping with the <span class="key-term">validated state</span>. A sound monitoring plan allows a firm to establish the <span class="key-term">baseline process performance</span> and detect early warnings of atypical process performance.</p>
+            <p>Having some process monitoring data before and after the change is an essential component of the overall qualification of any change. In essence, product and process monitoring results serve as the <span class="key-term">scientific basis for improvement</span> of the manufacturing process and the control system. Typically, after a process change is put in place, monitoring frequency is increased to confirm that the process continues to perform as expected. For example, documentation of any deviations from <span class="key-term">trend limits</span> and/or adverse trends with respect to process, in-process, release, and/or stability testing parameters should be carefully assessed in line with the quality system. These deviations should be investigated for root cause and evaluated to ensure the change has no adverse impact on product quality.</p>
+            <p>Effective change management is fundamental to ensuring that PACs are controlled in an environment characterized by <span class="key-term">data-driven, scientific, and risk-based assessments</span>. In an effective change management environment, all aspects of the product and process are managed to ensure that there are no unintended consequences and that product quality and process performance are maintained in a state of control.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：APR/PQR 是 PAC 觸發器</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：監測數據 = PAC 的科學依據</h4>
+                <p>PPPQ（製程績效與產品品質）監測，也就是我們日常說的 APR（Annual Product Review）或 PQR（Product Quality Review），是 PAC 的兩個關鍵功能：</p>
+                <ul>
+                    <li><strong>觸發功能</strong>：趨勢分析發現 OOS 增加、穩定性失敗、製程漂移 → 產生變更需求 → 觸發 PAC</li>
+                    <li><strong>驗證功能</strong>：變更實施後，監測數據確認變更沒有帶來非預期後果</li>
+                </ul>
+                <p>沒有完善監測計畫的公司，等於既無法提前發現問題，也無法在申報時提交有力的數據支持。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：心電圖 vs. 只在胸痛時才量血壓</h4>
+                <p>連續心電圖監測可以在心臟病發前就發現異常心律；只有在胸痛時才去量血壓，等到症狀出現時往往已經是嚴重問題。</p>
+                <p>製程監測就是品質系統的「連續心電圖」——越早發現趨勢偏離，越能以低成本的預防性 PAC 介入，而不是等到批次失敗才做緊急矯正。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：變更前後的監測密度</h4>
+                <p>這段文字有一個非常實用的操作指引：<strong>變更實施後，監測頻率應該提高</strong>（increased monitoring frequency），直到確認製程仍在預期範圍內。</p>
+                <p>在驗證方案（Validation Protocol）和 PAC 申報文件中，應該明確說明：</p>
+                <ul>
+                    <li>變更前基線數據（Pre-change baseline）</li>
+                    <li>變更後強化監測計畫（Post-change enhanced monitoring plan）</li>
+                    <li>回復正常監測的判斷標準（Criteria to return to normal monitoring）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你們的 APR/PQR 報告有沒有「PAC 觸發分析」這一節？也就是：本年度 APR 發現了哪些趨勢，哪些趨勢已轉化為正式的變更評估？如果 APR 只是例行性的數據彙整，沒有連接到變更管理系統，它對 PAC 的價值就大打折扣。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.5: QRM and Knowledge Management ===== -->
+    <h2 class="section-title">4.5 Quality Risk Management and Knowledge Management — QRM 與知識管理</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.5 Quality Risk Management and Knowledge Management</h3>
+            <p><span class="key-term">Quality risk management (QRM)</span> and <span class="key-term">knowledge management (KM)</span> are key enablers of an effective PQS. An organization that strives to have a strong, quality-oriented culture will use QRM and KM to guide the identification and proactive management of PACs. PDA Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations provides a comprehensive description of the QRM elements and tools aligned with <span class="key-term">ICH Q9</span>.</p>
+            <p>An effective <span class="key-term">QRM system</span> provides a sound framework that ensures systematic and proactive risk-based and data-driven decision-making is being employed for all PACs. QRM should enable innovation by allowing faster implementation of changes that reduce the risk of quality failures and manufacturing problems and improve process capability. An effective QRM system can also separate changes that require regulatory reporting or notification from changes that can be managed completely within the PQS. Effective QRM enables a firm to demonstrate an understanding of the existing production process and of the risks, associated impacts, and mitigation of those risks in that process.</p>
+            <p>An effective <span class="key-term">KM system</span> leverages historical and recently identified product and process knowledge, including innovation and technology advancements. It also considers knowledge gained from process monitoring, deviations, trends, complaints, recalls, <span class="key-term">annual product or product quality review</span>, audits, inspections, and management reviews. Effective KM ensures that the right knowledge is used by the right people at the right time, allowing for effective risk-based decision-making and formal product and process risk assessments. A systematic, transparent, and well-understood KM system ensures that changes are based on scientific rationale and can facilitate implementation of identified changes accordingly.</p>
+            <p>Several FDA, Health Canada, and WHO guidance documents on CMC changes in a post-approval situation demonstrate how product and process knowledge and effective QRM can be leveraged to establish <span class="key-term">lesser reporting categories</span> for changes. FDA consistently states in guidances its intent to apply the principles of quality risk assessment and risk management in accordance with <span class="key-term">ICH Q9</span> during their review. The Agency recognizes that, in order to keep pace with the many advances in quality management practices in manufacturing and enable it to more effectively allocate its limited regulatory resources, implementing a risk-based approach for regulating pharmaceutical manufacturing is necessary. Accordingly, one FDA guidance allows that changes demonstrated to have a <span class="key-term">minimal impact</span> to a product can be filed as an <span class="key-term">annual reportable item</span>. Likewise, the Health Canada and WHO guidances, which provide conditions to be fulfilled for specific change types to help guide firms on how to assess risk and categorize changes accordingly, include the option of annual notification for minimal impact. In light of this, the principles of KM and QRM can be equally applied in both ICH and non-ICH regions and should be recognized by global regulatory authorities.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>解說：QRM + KM 是 PAC 決策的雙引擎</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：QRM 決定「做不做」，KM 決定「怎麼證明」</h4>
+                <p><strong>QRM（ICH Q9）</strong> 在 PAC 中的作用：</p>
+                <ul>
+                    <li>用 FMEA、風險矩陣等工具評估變更的潛在影響</li>
+                    <li>決定這個變更是「高風險需要事前核准」還是「低風險可以 PQS 自管」</li>
+                    <li>讓申報決策有可追溯的科學依據</li>
+                </ul>
+                <p><strong>KM（ICH Q10）</strong> 在 PAC 中的作用：</p>
+                <ul>
+                    <li>彙整歷史製程知識、先前驗證數據、研發階段的理解</li>
+                    <li>讓風險評估不是憑感覺，而是基於「我們真的了解這個製程」</li>
+                    <li>當知識充分時，可以支持更低的申報類別（因為「我們了解，所以風險可控」）</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：QRM 是 GPS 導航，KM 是地圖資料庫</h4>
+                <p>GPS（QRM）告訴你現在應該走哪條路、風險在哪裡；但如果地圖資料庫（KM）是空的或過時的，GPS 再強也會導錯路。</p>
+                <p>同樣地，QRM 工具再精良，如果公司沒有完整保存製程知識（驗證報告、DOE 數據、歷史趨勢），風險評估就只是紙上談兵。KM 是 QRM 的燃料。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：知識充分 = 申報類別降低</h4>
+                <p>這是本節最重要的實務啟示：FDA、Health Canada、WHO 的指引都明確表示，當一個變更被充分論證為「對產品影響極小」時，可以降低申報類別（甚至只需年度申報）。</p>
+                <p>這個「充分論證」就需要 KM + QRM 共同支撐：</p>
+                <ul>
+                    <li>KM 提供：我們了解這個製程對產品品質的影響機理</li>
+                    <li>QRM 提供：風險評估顯示這個變更不會影響 CQA</li>
+                    <li>結論：申報類別可以從 PAS 降為 CBE-30 或 Annual Report</li>
+                </ul>
+                <p>對 CDMO 而言，這也意味著：越早建立完整的製程知識庫，越能在未來的 PAC 中幫助客戶節省申報時間和成本。</p>
+            </div>
+
+            <!-- QRM Tools Reference Table -->
+            <div class="concept-box">
+                <h4>常用 QRM 工具與 PAC 應用場景</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>工具</th>
+                            <th>PAC 應用場景</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FMEA（失效模式與影響分析）</td>
+                            <td>評估製程變更對 CQA 的潛在失效路徑</td>
+                        </tr>
+                        <tr>
+                            <td>Risk Ranking &amp; Filtering</td>
+                            <td>比較多個待執行 PAC 的優先順序</td>
+                        </tr>
+                        <tr>
+                            <td>Ishikawa / 魚骨圖</td>
+                            <td>識別變更觸發因素的根本原因</td>
+                        </tr>
+                        <tr>
+                            <td>Control Charts / SPC</td>
+                            <td>監測變更前後製程穩定性</td>
+                        </tr>
+                        <tr>
+                            <td>Design of Experiments (DOE)</td>
+                            <td>建立製程知識（KM），支持 EC 設定</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你們的製程知識目前存放在哪裡？是分散在各個驗證報告、研發筆記、個別部門的 Excel 裡，還是有一個可搜尋、可引用的結構化知識庫？當你需要做一個 PAC 的風險評估時，能多快找到支持性的歷史數據？</p>
+                <p>如果你是 CDMO，你的製程知識庫是否已足夠支持未來客戶要求的「降級申報論證」？這是一個值得現在就開始投資的能力。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div style="background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%); border-radius: 12px; padding: 1.75rem; margin-top: 2rem; border: 1px solid #f6ad55;">
+        <h2 style="color: #856404; font-size: 1.15rem; margin-bottom: 1rem; border-bottom: 2px solid #f6ad55; padding-bottom: 0.5rem;">Section 2 重點總結 — PQS 五要素與全球 PAC 框架</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div>
+                <p style="font-weight: 600; color: #856404; margin-bottom: 0.5rem;">核心架構回顧</p>
+                <ul style="margin-left: 1.25rem; font-size: 0.92rem; line-height: 1.8;">
+                    <li><strong>ICH Q12（2019）</strong> 是 PAC 監管彈性的使能框架，但全球協調仍有缺口（分類標準、申報時程、非 ICH 地區）。</li>
+                    <li><strong>三層申報架構</strong>：高風險（事前核准）→ 中低風險（通知）→ 低風險（PQS 自管）— 目標是讓更多變更落在後兩層。</li>
+                    <li><strong>強大的 PQS</strong> 是獲得監管信任的關鍵，是讓更多 PAC 在公司內部管理的前提。</li>
+                    <li>CDMO 有特別責任：須與客戶合約明定 PAC 責任歸屬，且自身 PQS 必須有效。</li>
+                </ul>
+            </div>
+            <div>
+                <p style="font-weight: 600; color: #856404; margin-bottom: 0.5rem;">PQS 五要素與其 PAC 功能</p>
+                <ul style="margin-left: 1.25rem; font-size: 0.92rem; line-height: 1.8;">
+                    <li><strong>管理審查（4.1）</strong>：定義責任、投入資源、建立品質文化 — PAC 是公司層級的品質承諾，不只是法規部門的事。</li>
+                    <li><strong>CAPA（4.2）</strong>：PAC 最常見的起點；也是變更後非預期後果的偵測機制。CAPA → 變更請求 → PAC。</li>
+                    <li><strong>變更管理系統（4.3）</strong>：評估 CQA/CPP/EC 影響、決定申報類別 — 分類準確是降低申報負擔的關鍵。</li>
+                    <li><strong>PPPQ 監測（4.4）</strong>：APR/PQR 是 PAC 觸發器；變更前後的監測數據是科學論證的基礎。</li>
+                    <li><strong>QRM + KM（4.5）</strong>：QRM 評估風險、KM 提供製程知識 — 兩者充分則可支持申報類別降級。</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f6ad55;">
+            <p style="font-size: 0.92rem; color: #856404;"><strong>給 CDMO 運營主管的一句話：</strong> TR91 Section 2 的核心訊息是：PAC 監管彈性不是「爭取」來的，而是「證明」出來的 — 用你的 PQS 成熟度、監測數據品質、風險評估嚴謹度，換取主管機關對你的信任。建立這五個要素，不只是為了合規，而是為了讓未來的每一個變更都能更快、更低成本地實施。</p>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 91 (2023) — Post-Approval Change Management and Implementation for Biologics and Pharmaceutical Drug Products</p>
+    <p>Section 2: Background &amp; Key Elements of PQS | p4–p9 | Educational bilingual version for internal learning use</p>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

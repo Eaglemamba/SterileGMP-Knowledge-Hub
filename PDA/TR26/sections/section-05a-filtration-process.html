@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR26 - Section 5.0 Part A: Filtration Process Design (5.0-5.4.1)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.0 Filtration Process Design, Usage, and Handling Considerations (Part A)</h1>
+    <div class="subtitle">過濾製程設計、使用與操作考量（第一部分：5.0 - 5.4.1）</div>
+    <div class="page-info">PDA Technical Report No. 26 (Revised 2025) &mdash; Sterilizing Filtration of Liquids | p23 - p31</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解除菌過濾製程設計（Filtration Process Design）的整體架構，掌握 FDA 製程驗證三階段與 ICH Q8 設計空間的核心理念</li>
+        <li>學會如何評估產品特性與濾膜相容性（Product Properties and Filter Compatibility），包含化學相容性、物理特性與吸附效應</li>
+        <li>掌握設計空間（Design Space）的定義方法，了解影響過濾操作範圍的關鍵因子（溫度、體積、流速、壓力、時間等）</li>
+        <li>理解流量特性（Flow Characteristics）、入口/差壓（Inlet/Differential Pressure）、過濾溫度（Temperature）、過濾時間（Filtration Time）的相互關係與製程影響</li>
+        <li>掌握濾膜通量與最大體積（Filter Throughput and Maximum Volume）的評估方法及影響因子</li>
+        <li>理解縮小規模系統（Scale-Down Systems）與小規模裝置測試（Small Scale Device Testing）的原理、方法與放大注意事項</li>
+    </ul>
+</div>
+
+<!-- ============================== -->
+<!-- 5.0 OVERVIEW -->
+<!-- ============================== -->
+<div class="section-title">5.0 Filtration Process Design, Usage, and Handling Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>According to the <span class="key-term">FDA's Guidance for Industry: Process Validation: General Principles and Practices (Revision 1)</span>, quality, efficacy, and safety must be built into the product and cannot be tested at the end of the manufacturing process. This concept is especially important for many <span class="key-term">sterilizing filtration</span> operations, as the filter often represents the <span class="key-term">final microbial control barrier</span> prior to patient dosing (25). This guidance document outlines three stages of process validation: <span class="key-term">Stage 1-Process Design</span>, <span class="key-term">Stage 2-Process Qualification</span>, and <span class="key-term">Stage 3-Continued Process Verification</span>. Section 5.0 focuses on the process design aspects, and Section 6.0 focuses on the process-specific validation requirements for a sterilizing filtration process. Continued process verification is generally out of scope in this document and is covered in other guidance documents. The process design methodology discussed here is consistent with the principles of the <span class="key-term">International Council for Harmonization (ICH) Quality Guideline (Q8): Pharmaceutical Development</span>, which is to first evaluate the design space, then develop a control strategy (8).</p>
+
+        <p>Membrane filters are used for multiple applications within the pharmaceutical industry and therefore, membrane filter types, designs and configurations are as varied as their applications. This chapter will focus on the process design and usage of <span class="key-term">sterilizing filters</span> for the removal of microorganisms in pharmaceutical processing. Many of these design principles will also apply to the use of sterilizing-grade filters in locations other than the final sterilizing barrier for the control of <span class="key-term">bioburden</span>, although those use cases have significantly reduced risk to product quality and may not require the same level of validation and controls to be applied (26).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>製程驗證三階段（Three Stages of Process Validation）：</strong></p>
+            <ul>
+                <li><strong>Stage 1 - Process Design（製程設計）：</strong>透過開發活動，定義製程的商業化製造條件。本章（5.0）正是聚焦於此。</li>
+                <li><strong>Stage 2 - Process Qualification（製程確認）：</strong>在實際製造環境中驗證設計的製程能夠可重複地運作。Section 6.0 涵蓋此內容。</li>
+                <li><strong>Stage 3 - Continued Process Verification（持續製程確認）：</strong>持續監控，確保製程維持在受控狀態。</li>
+            </ul>
+            <p><strong>ICH Q8 設計空間（Design Space）：</strong>先定義出操作空間的邊界，再建立控制策略 (Control Strategy)，確保在空間內的任何操作條件都能穩定產出合格產品。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你是一位大廚要開新餐廳。你不會等食物端上桌後才檢查好不好吃（那就是「事後檢驗」）。正確做法是：</p>
+            <ul>
+                <li><strong>Stage 1（設計）：</strong>先在實驗廚房研發菜單，確定食材、溫度、時間的最佳範圍</li>
+                <li><strong>Stage 2（確認）：</strong>在正式廚房依配方試做，確認出品一致</li>
+                <li><strong>Stage 3（監控）：</strong>開業後持續品管，確保每道菜的品質不走味</li>
+            </ul>
+            <p>除菌過濾就像餐廳最後一道食安關卡 -- 如果你的食材本身已經有問題，再好的過濾也無法完全補救。「品質內建」的概念就是從源頭把關。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>濾膜是最後的微生物控制屏障：</strong>在無菌充填製程中，除菌濾膜（Sterilizing Filter）往往是產品給予病患前的最後一道防線。這意味著過濾失敗 = 直接影響病患安全，沒有後續補救手段。</p>
+            <p><strong>非最終屏障的應用：</strong>除菌級濾膜也可用於中間製程的 Bioburden（生物負荷）控制，這些應用的風險較低，驗證要求可以適度簡化。但「可以簡化」不代表「可以忽略」。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>作為 CDMO，你可能同時為多個客戶代工不同產品，每個產品的除菌過濾製程都需要獨立的 Stage 1 設計。即使使用相同型號的濾膜，不同產品的化學特性、粒子負荷、溫度要求都不同，設計空間必須個別建立。這是合規的基本要求，也是客戶稽核時的重點關注項目。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>FDA 製程驗證三階段中，為什麼 Stage 1（製程設計）必須在 Stage 2（製程確認）之前完成？如果跳過會有什麼後果？</li>
+                <li>為什麼 TR26 強調除菌濾膜是「final microbial control barrier」？在你的工廠中，是否有其他微生物控制措施可以作為後備？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.1 Process Design: Design Space Evaluation -->
+<!-- ============================== -->
+<div class="section-title">5.1 Process Design: Design Space Evaluation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>An initial evaluation of the <span class="key-term">design space</span> for a sterilizing-filtration operation will generally encompass a survey of the <span class="key-term">product properties</span>, <span class="key-term">compatibility</span> and required <span class="key-term">operational ranges</span> used in the process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Design Space（設計空間）：</strong>根據 ICH Q8 的定義，設計空間是「經證明能提供品質保證的多維度組合與交互作用」。在除菌過濾中，這意味著你必須定義出溫度、壓力、流速、體積、時間等參數的安全操作範圍。</p>
+            <p>設計空間的三大要素評估順序：</p>
+            <ol>
+                <li><strong>產品特性（Product Properties）：</strong>了解你要過濾什麼</li>
+                <li><strong>相容性（Compatibility）：</strong>確認產品與濾膜系統能和平共處</li>
+                <li><strong>操作範圍（Operational Ranges）：</strong>定義每個參數的上下限</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>設計空間就像開車時的安全駕駛範圍：你的車有速限（最大壓力），有最低油溫才能正常運轉（最低溫度），輪胎有最大承載量（最大體積），油箱有容量限制（過濾時間）。只有在所有這些參數同時落在安全範圍內，你才能安全到達目的地。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>注意這裡說的是「初步評估」（initial evaluation），暗示設計空間的建立是一個迭代過程 -- 隨著你獲得更多製程知識，空間會不斷精煉。不要期望一次就能完美定義所有範圍。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ICH Q8 提出的「設計空間」概念如何應用到除菌過濾？與傳統的單一操作條件驗證有何不同？</li>
+                <li>為什麼評估順序是產品特性 → 相容性 → 操作範圍？能否顛倒順序？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.1.1 Product Properties and Filter Compatibility -->
+<!-- ============================== -->
+<div class="section-title">5.1.1 Product Properties and Filter Compatibility</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>A good first step in the design of a sterilizing-filtration process is to evaluate the solution that needs to be sterilized and how it will interact with the <span class="key-term">filtration system</span>. A thorough evaluation of the properties of the filtrate will guide in the selection of a <span class="key-term">filtration membrane</span> and <span class="key-term">housing system</span> that can withstand chemical stress such as <span class="key-term">solvents</span>, strongly basic or acidic media, and <span class="key-term">high-ionic strengths</span>. After performing this type of analysis, it can allow the user to select filtration systems that are appropriate for the application.</p>
+
+        <p>For the second step of the compatibility analysis, an evaluation of the <span class="key-term">physical properties</span> of the process fluid and intended processing parameters should be carried out. Characteristics such as the fluid <span class="key-term">temperature range</span>, <span class="key-term">particulate load</span>, and <span class="key-term">viscosity</span> can also affect the filter membrane and filtration system selection. The system must be able to handle the <span class="key-term">mechanical stresses</span> placed on it and remain integral for the duration of the filtration process. Since there may be numerous <span class="key-term">chemical interactions</span> between filter device/SUS components and the process fluid or solvents, the typical <span class="key-term">chemical compatibility table</span> provided by the filter manufacturer is commonly used as a starting point for filter selection.</p>
+
+        <p>Another dimension of filter compatibility to consider is <span class="key-term">adsorption</span> of components from the process stream. Adsorption is a mechanism of product binding to the membrane or product contacting materials, which may affect the <span class="key-term">product composition</span> and <span class="key-term">concentration</span>. Potential adsorption of product components to the filter and other components of the filtration system (e.g., bags, connectors, tubing) must be considered independently. Considerations should include <span class="key-term">membrane type</span>, <span class="key-term">MoC</span> used throughout the filtration system, hardware, and support materials. Flow rate, product concentration, contact time, process fluid components, temperature and pH can also affect the level of adsorption.</p>
+
+        <p>In instances where elevated adsorption occurs in the beginning of the filtration process but levels off during filtration, the filtered volume could be pooled to achieve the specified product composition. During PD, adsorption tests are typically performed at small scale and confirmed at large scale. These tests can also be used to establish potential <span class="key-term">pretreatment options</span> (e.g., <span class="key-term">buffer flush</span>, soaking), necessary process parameter options or <span class="key-term">membrane polymer</span> choices. Elevated levels of nonspecific product adsorption on the filter membrane can result in accelerated <span class="key-term">filter-fouling</span> and performance degradation that would need to be studied as part of <span class="key-term">filter-sizing studies</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>相容性分析的兩步驟：</strong></p>
+            <p><strong>第一步 -- 化學相容性（Chemical Compatibility）：</strong></p>
+            <ul>
+                <li>評估溶液的化學特性（溶劑、酸鹼度、離子強度）</li>
+                <li>確認濾膜材質和外殼（Housing）能否承受這些化學環境</li>
+                <li>起點：濾膜製造商的化學相容性表</li>
+            </ul>
+            <p><strong>第二步 -- 物理相容性（Physical Compatibility）：</strong></p>
+            <ul>
+                <li>評估溫度範圍、粒子負荷、黏度</li>
+                <li>確認系統能承受機械應力並在整個過濾過程維持完整性</li>
+            </ul>
+            <p><strong>Adsorption（吸附）：</strong>產品成分與濾膜或系統材料結合的現象。這不是過濾的目的，而是副作用。吸附可能導致：</p>
+            <ul>
+                <li>產品濃度降低 -- 尤其對高價值生物製劑影響巨大</li>
+                <li>產品組成改變 -- 某些成分被選擇性吸附</li>
+                <li>濾膜堵塞加速 -- 吸附物累積導致 Fouling（堵塞）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要用一個新的水壺泡茶。你需要考慮：</p>
+            <ul>
+                <li><strong>化學相容性：</strong>這個水壺材質能不能承受熱水？會不會被茶的單寧酸腐蝕？就像確認濾膜能否承受你的製程液體</li>
+                <li><strong>物理相容性：</strong>水壺夠大嗎？能承受高溫嗎？就像確認過濾系統能處理你的溫度和體積</li>
+                <li><strong>吸附問題：</strong>新水壺會不會吸走茶的香氣或顏色？就像濾膜會吸附某些藥物成分。前幾壺泡出來的茶味道不對，但泡久了就穩定了 -- 這就是「初期吸附高，後來趨於平穩」的現象</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>MoC（Materials of Construction，建構材料）：</strong>吸附評估不能只看濾膜！整個過濾系統的所有接觸面（bags、connectors、tubing）都可能吸附產品成分，必須個別評估。</p>
+            <p><strong>預處理選項：</strong>Buffer flush（緩衝液沖洗）或 soaking（浸泡）可以「飽和」濾膜的吸附位點，減少後續過濾時的產品損失。對於高價值的生物製劑，這是常見的實務做法。</p>
+            <p><strong>Filter-Fouling（濾膜堵塞）：</strong>非特異性吸附不僅影響產品收率，還會加速濾膜堵塞，直接影響過濾性能和 Filter Sizing（濾膜規格選擇）。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>吸附率估算概念：</strong></p>
+            <pre>
+Adsorption Rate = (C_feed - C_filtrate) / C_feed x 100%
+
+其中：
+  C_feed = 進料端產品濃度
+  C_filtrate = 濾液端產品濃度
+
+若 Adsorption Rate > 可接受範圍：
+  → 考慮 Buffer flush 預處理
+  → 評估替代濾膜材質
+  → 調整過濾體積以池化稀釋
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>一家 CDMO 接到新客戶的單株抗體（mAb）產品代工需求。在除菌過濾製程設計階段，你發現該 mAb 的等電點（pI）接近製程 pH，導致蛋白質在 PVDF 膜上的吸附率高達 15%。</p>
+            <p>應對策略：(1) 切換至 PES 膜材測試吸附率 (2) 進行 buffer flush 預處理降低初始吸附 (3) 評估池化策略是否可行 (4) 計算吸附導致的產品損失成本，與更換濾膜的成本做比較。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼化學相容性評估要在物理相容性之前？如果順序顛倒，可能遇到什麼問題？</li>
+                <li>對於一個高濃度蛋白質藥物，你預期在過濾初期和後期的吸附行為會有什麼不同？這對生產操作有什麼影響？</li>
+                <li>除了濾膜本身，還有哪些過濾系統組件需要評估吸附風險？列舉至少三個。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.1.2 Defining the Design Space and Operational Ranges -->
+<!-- ============================== -->
+<div class="section-title">5.1.2 Defining the Design Space and Operational Ranges</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Knowledge of the desired at-scale process prospectively allows setting ranges to be studied during the development of the filtration process. For example, a survey of the <span class="key-term">compounding process</span> and the maximum and minimum volumes that will flow through the filter during the sterilizing filtration process can create an important set of <span class="key-term">operational ranges</span> that the filter must be able to process. In addition, a subset of these parameters will define ranges that need to be <span class="key-term">validated</span> later (see Section 6.3). While some parameters can be difficult to know during the initial PD exercise, it can be useful to evaluate the potential <span class="key-term">market demands</span> for the product and maximum expected batch volume. This will potentially reduce the need for additional development and <span class="key-term">revalidation</span> of the sterilizing-filtration process as the conditions change over the product lifecycle. Table 5.1.2-1 shows a list of potential factors to consider during the process design phase that can help determine operational ranges to study.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left;">Table 5.1.2-1 Factors to Consider When Developing Operational Ranges for Study During Sterilizing-Filtration Process Design and Development</caption>
+            <tr>
+                <th>Factor</th>
+                <th>Extent</th>
+                <th>Rationale</th>
+            </tr>
+            <tr>
+                <td><span class="key-term">Temperature</span></td>
+                <td>Refrigerated to Warmed</td>
+                <td>Dependent on product quality effects and physical property optimization, can affect filter differential pressures and flow rate due to viscosity differences and also microbial growth rates</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Total Product Volume</span></td>
+                <td>Minimum and Maximum</td>
+                <td>Sets limits for bacterial retention study validation and allows proper filter sizing</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Flow Rate</span></td>
+                <td>Zero to Maximum Expected</td>
+                <td>Flow rate dependent on application, e.g., in line with sterile filling machine or bulk filtration</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Differential Pressure</span></td>
+                <td>Minimum to Maximum</td>
+                <td>Requires appropriate development studies to determine pressure/flow rate relationship; reasonable maximum differential pressure should be defined based on expected conditions as well as a minimum expected to aid, for example, in detection of filter installation errors</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Filtration Time</span></td>
+                <td>Maximum</td>
+                <td>Dependent on the processing time required, determines how long the process will take, including process setup and any necessary process stops</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Product Contact Time</span></td>
+                <td>Maximum</td>
+                <td>Extended contact time may impact product compatibility, membrane fouling, or filter integrity</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Driving Force</span></td>
+                <td>Pulsatile and/or Constant Pressure</td>
+                <td>Determines what type of pump or driving force will be used in the commercial setting; certain filters may be used in more than one manufacturing setup</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Configuration</span></td>
+                <td>Single or Redundant Filter Setup or Multiple Filter Setup</td>
+                <td>Knowledge of physical size constraints for the filter may necessitate the use of multiple filters; site, business or procedural factors may also require the use of redundant filtration; and knowing this up front will aid in the design of the filtration process</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>前瞻性設計（Prospective Design）：</strong>TR26 強調在設計階段就要預見商業化規模的需求。不要只看現在的臨床批量，要考慮未來市場需求可能帶來的最大批量。這樣做的好處是避免日後因批量放大而需要重新驗證（Revalidation）。</p>
+            <p><strong>Table 5.1.2-1 八大設計因子：</strong></p>
+            <ul>
+                <li><strong>溫度（Temperature）：</strong>從冷藏到加溫，影響黏度、流速和微生物生長</li>
+                <li><strong>總產品體積（Total Product Volume）：</strong>最小到最大，決定細菌截留驗證範圍和濾膜尺寸</li>
+                <li><strong>流速（Flow Rate）：</strong>零到最大預期值，取決於應用場景</li>
+                <li><strong>差壓（Differential Pressure）：</strong>最小到最大，需研究壓力與流速的關係</li>
+                <li><strong>過濾時間（Filtration Time）：</strong>最大值，包含製程設置和中斷時間</li>
+                <li><strong>產品接觸時間（Product Contact Time）：</strong>最大值，影響相容性和完整性</li>
+                <li><strong>驅動力（Driving Force）：</strong>脈動或恆壓，決定泵浦類型</li>
+                <li><strong>配置（Configuration）：</strong>單一或冗餘/多重濾膜，考量物理空間和風險管理</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>定義設計空間就像規劃高速公路。你不只考慮今天的車流量，還要預測未來 20 年的交通需求。如果只按現在的車流量設計雙線道，五年後車流量翻倍時就得重新施工擴建（= 重新驗證）。但如果一開始就預留四線道的空間（= 涵蓋未來最大批量），即使初期有些「多餘」，長期來看卻省下大量重建成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>最小差壓也很重要：</strong>注意 Table 中「Differential Pressure」的範圍包含最小值。設定合理的最小差壓可以幫助偵測濾膜安裝錯誤 -- 如果過濾時壓差異常低，可能表示濾膜沒有正確安裝或存在旁路（bypass）。</p>
+            <p><strong>Product Contact Time vs Filtration Time：</strong>這是兩個不同的概念。過濾時間是實際過濾的持續時間；產品接觸時間包含了製程等待時間、中斷時間等。後者通常更長，且是驗證的最差情境。</p>
+            <p><strong>Configuration 決策：</strong>冗餘過濾（Redundant Filtration）在某些監管轄區可能是要求，而非選項。提前在設計空間中納入，避免後期被動修改。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的工廠目前為客戶生產 100L 批量的注射劑，但客戶的商業化計畫預計批量將擴展到 500L。如果你在設計空間中只驗證到 150L，當客戶需求增長時就必須重新進行細菌截留驗證和製程驗證，耗時 3-6 個月。但如果一開始就將設計空間擴展到 600L（含安全餘量），雖然初期研發成本多 20%，但可以避免未來的重新驗證，為公司節省大量時間和成本。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Table 5.1.2-1 中的「Flow Rate」範圍從「Zero」開始？在什麼情境下流速為零？</li>
+                <li>「Driving Force」中提到 pulsatile（脈動）和 constant pressure（恆壓）兩種模式，各適用於什麼情境？為什麼這會影響設計空間？</li>
+                <li>如果你是 CDMO 的製程開發人員，你會如何說服管理層在初期多投入資源建立更寬廣的設計空間？請用商業語言描述投資報酬率。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.2 Flow Characteristics -->
+<!-- ============================== -->
+<div class="section-title">5.2 Flow Characteristics</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Flow-performance criteria</span> during a filtration operation can include parameters such as <span class="key-term">flow rate</span>, <span class="key-term">total throughput</span>, <span class="key-term">thermal and mechanical resistance</span>, and <span class="key-term">nonspecific adsorption</span>. A filter's <span class="key-term">EFA</span> is used in calculations for scaling filter performance, determining extractables levels, reporting flow rates (i.e., <span class="key-term">flux</span>), and assuring of <span class="key-term">bacterial retention</span>. Since applications vary, desired filter-performance characteristics also vary. For example, since buffers widely utilized in purification processes are nonfouling, the optimum filter may be one with the highest flow rate; for solutions that may contain foulants, such as media, the optimum filter may be one with the highest filtration capacity for that solution. Optimizing the filter to the process requires determination of <span class="key-term">critical and key operational parameters</span> and performance requirements.</p>
+
+        <p>Filter flow rate is affected by such parameters as the EFA, membrane porosity, pore size, thickness and area, differential pressure, flow path design, fluid viscosity, and temperature. Table 5.2-1 shows the relationships between flow rate and a common list of process parameters.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left;">Table 5.2-1 Common Factors Affecting Flow Rate</caption>
+            <tr>
+                <th>Higher Flow Rate</th>
+                <th>Lower Flow Rate</th>
+            </tr>
+            <tr>
+                <td>High Porosity/Greater Void Volume</td>
+                <td>Low Porosity/Lesser Void Volume</td>
+            </tr>
+            <tr>
+                <td>Large Pore Size</td>
+                <td>Small Pore Size</td>
+            </tr>
+            <tr>
+                <td>Thin Membrane (less hydraulic resistance)</td>
+                <td>Thick Membrane (greater hydraulic resistance)</td>
+            </tr>
+            <tr>
+                <td>Large Effective Filtration Area (EFA)</td>
+                <td>Low Effective Filtration Area (EFA)</td>
+            </tr>
+            <tr>
+                <td>High Differential Pressure (fluid force)</td>
+                <td>Low Differential Pressure</td>
+            </tr>
+            <tr>
+                <td>Straight Flow Path</td>
+                <td>Tortuous Flow Path</td>
+            </tr>
+            <tr>
+                <td>Low Viscosity</td>
+                <td>High Viscosity</td>
+            </tr>
+            <tr>
+                <td>High Temperature</td>
+                <td>Low Temperature</td>
+            </tr>
+        </table>
+        </div>
+
+        <p>Most of these parameters are governed by membrane and filter designs or particular fluid properties. The primary parameter is the <span class="key-term">differential pressure</span> that is, the difference between inlet (feed side) and outlet (filtrate side) pressure. The differential pressure can be adjusted within the filter manufacturer supplied maximum temperature/pressure ranges to achieve the desired process flow rates. Studying the required pressure and flow rate ranges using <span class="key-term">scale-down membrane areas</span> with the actual product stream is further elaborated in Section 5.4.1. It is important to understand this information thoroughly to determine the ranges that will be challenged during the <span class="key-term">validation activities</span> (see Section 6.8).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>EFA（Effective Filtration Area，有效過濾面積）：</strong>這是過濾科學中最核心的參數之一。EFA 是濾膜實際參與過濾的表面積，是放大（Scale-up）和縮小（Scale-down）計算的基礎。</p>
+            <p><strong>Flux（通量）：</strong>單位面積的流速，通常以 L/m&sup2;/hr 表示。這是比較不同尺寸濾膜性能的標準化指標。</p>
+            <p><strong>Table 5.2-1 的邏輯：</strong>流速受八個因素影響，其中大部分由濾膜設計和液體性質決定。在實際操作中，你能直接控制的主要是差壓（Differential Pressure）-- 這就是為什麼它是「最關鍵的可調參數」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>理解流速就像理解水龍頭出水。想像你家的水管：</p>
+            <ul>
+                <li><strong>孔隙大小（Pore Size）= 水管口徑：</strong>管子越粗，水流越大</li>
+                <li><strong>差壓（ΔP）= 水壓：</strong>打開水壓開關，水流更大</li>
+                <li><strong>黏度（Viscosity）= 水 vs 蜂蜜：</strong>蜂蜜流得慢，需要更大壓力才能推動</li>
+                <li><strong>膜厚度 = 水管長度：</strong>管子越長，阻力越大</li>
+                <li><strong>EFA = 多少條水管同時開：</strong>開越多條，總流量越大</li>
+            </ul>
+            <p>在所有這些因素中，你最容易調節的就是「水壓」（差壓），其他因素在你選定濾膜和液體後就固定了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>不同應用有不同最佳化目標：</strong></p>
+            <ul>
+                <li><strong>緩衝液等非堵塞性流體：</strong>最佳化目標 = 最大流速 → 選高通量濾膜</li>
+                <li><strong>培養基等含污染物流體：</strong>最佳化目標 = 最大通量（容量）→ 選高容量濾膜</li>
+            </ul>
+            <p>同一支濾膜不一定同時是「最快」和「最能裝」的 -- 這需要根據應用場景做取捨。</p>
+            <p><strong>連結驗證：</strong>本節的流速範圍研究結果，最終將用來定義 Section 6.8 中驗證活動的挑戰範圍。設計階段定義得越清楚，驗證活動就越精準高效。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>基本流量關係（達西定律簡化版）：</strong></p>
+            <pre>
+Q = (ΔP x A x K) / (μ x L)
+
+其中：
+  Q = 流量 (Flow Rate)
+  ΔP = 差壓 (Differential Pressure)
+  A = 有效過濾面積 (EFA)
+  K = 膜滲透係數 (Membrane Permeability)
+  μ = 流體黏度 (Viscosity)
+  L = 膜厚度 (Membrane Thickness)
+
+Flux = Q / A = (ΔP x K) / (μ x L)
+
+放大計算基礎：
+  Q_large / Q_small = EFA_large / EFA_small
+  （在相同 ΔP、溫度條件下）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Table 5.2-1 中的八個因素，哪些是操作人員可以控制的？哪些在選定濾膜後就固定了？</li>
+                <li>為什麼「Tortuous Flow Path」（彎曲流路）會降低流速？但它對細菌截留有什麼影響？</li>
+                <li>一位同事建議「既然壓力越高流速越快，那就把壓力開到最大」。這個建議有什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.2.1 Inlet and Differential Pressure -->
+<!-- ============================== -->
+<div class="section-title">5.2.1 Inlet and Differential Pressure</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>From the filtration curves it can be determined that increasing the pressure across the membrane will result in an increased flow rate under most processing conditions, which is an important variable to control during the sterilizing-filtration process. There are two important ways to specify the pressure: <span class="key-term">Differential pressure (ΔP)</span> is the difference in pressure between the upstream (inlet) and downstream (effluent) sides of the filter, while <span class="key-term">inlet pressure</span> is the pressure measured directly on the inlet side of the filter. To determine the differential pressure, the inlet pressure must be measured using a <span class="key-term">pressure gauge or sensor</span>. When appropriate, outlet pressure may be assumed to be atmospheric (e.g., a vented downstream vessel). If the outlet pressure is higher than the atmospheric pressure (e.g., when the fluid is transferred into a pressurized or unvented system or if the flow rate causes a significant pressure drop downstream of the filter) either the outlet pressure must be measured, or assume that the inlet pressure represents a worst-case upper limit on the true differential pressure.</p>
+
+        <p>Depending on the flow regime and the safety factor to the validated maximum pressure it may be important to monitor the inlet or differential pressure of the filtration system (see Section 6.8). Increasing <span class="key-term">differential pressure at a constant flow rate</span> is indicative of <span class="key-term">filter fouling</span>, and detection may be important for certain types of process streams that are susceptible to fouling behavior.</p>
+
+        <p>Many modern filtration systems are driven by <span class="key-term">peristaltic pumps</span>, especially in the case of <span class="key-term">SUS</span>. As peristaltic pumps are a type of <span class="key-term">positive displacement pump</span>, the flow rate can be easily controlled (correlated with pump revolutions per minute (RPM) and defined tubing diameter) without needing to worry about cleaning internal pump components or tubing systems; this adds a degree of safety and convenience to many filtration process designs. On the other hand, filtration can also be performed by <span class="key-term">pressurizing the system</span>, managed by a <span class="key-term">pressure control valve</span>, which avoids the need of a pump system. In most final sterilizing-filtration systems, the process stream is nonfouling and the filtration pressure remains relatively consistent over time. With proper system design and appropriate safety factors, constant flow rate or pressure filtration setups can operate in pressure regimes well below <span class="key-term">validated filter pressure limits</span>. Some form of pressure control or monitoring may be an expectation of certain <span class="key-term">health authorities</span>, even for pump-driven sterilization filtration processes that do not exhibit significant fouling.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Differential Pressure (ΔP，差壓) vs Inlet Pressure（入口壓力）：</strong></p>
+            <ul>
+                <li><strong>ΔP = P_inlet - P_outlet：</strong>真正驅動液體通過濾膜的力。這才是影響過濾性能的核心參數。</li>
+                <li><strong>Inlet Pressure：</strong>只測量進料側的壓力。當出口為大氣壓（如排入開放容器）時，Inlet Pressure ≈ ΔP。</li>
+                <li>但如果出口端是加壓系統（如密封的儲槽），你必須同時測量出口壓力才能算出真正的 ΔP。</li>
+            </ul>
+            <p><strong>Filter Fouling 指標：</strong>在恆流速操作下，差壓逐漸上升 = 濾膜正在堵塞。這是一個重要的製程監控信號。</p>
+            <p><strong>兩種驅動模式：</strong></p>
+            <ul>
+                <li><strong>泵驅動（Pump-driven）：</strong>蠕動泵（Peristaltic Pump）控制流速，壓力隨阻力變化</li>
+                <li><strong>壓力驅動（Pressure-driven）：</strong>壓力控制閥維持恆壓，流速隨阻力變化</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>差壓和入口壓力的差別，就像水塔供水：</p>
+            <ul>
+                <li><strong>入口壓力 = 水塔的水壓：</strong>你可以在水表上讀到</li>
+                <li><strong>出口壓力 = 你家樓層的水壓：</strong>住在一樓幾乎是零，住在十樓就有明顯的背壓</li>
+                <li><strong>差壓 = 真正推動水流的力：</strong>如果水塔壓力 5 bar，你家背壓 2 bar，真正驅動水流的只有 3 bar</li>
+            </ul>
+            <p>如果你只看水塔壓力就說「水壓很夠」，但忽略了你家背壓很高，實際水流可能很小。同樣地，只看 Inlet Pressure 可能會高估實際的過濾驅動力。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>蠕動泵（Peristaltic Pump）在一次性使用系統（SUS）中的優勢：</strong></p>
+            <ul>
+                <li>無需清洗內部零件（流體只接觸管路，不接觸泵機構）</li>
+                <li>流速與轉速（RPM）和管徑直接相關，容易控制</li>
+                <li>非常適合一次性使用系統的理念</li>
+            </ul>
+            <p><strong>監管期望：</strong>即使是使用蠕動泵的恆流速系統，某些衛生主管機關仍然可能要求進行壓力監控。這意味著壓力感測器/壓力錶應該被視為標準配備，而非可選項。</p>
+            <p><strong>安全餘量原則：</strong>適當的系統設計應確保操作壓力遠低於驗證的最大壓力限值，留有充足的安全裕度。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+差壓計算：
+  ΔP = P_inlet - P_outlet
+
+情境一：出口排入開放容器（vented vessel）
+  P_outlet ≈ 大氣壓（1 atm）
+  ΔP ≈ P_inlet - 1 atm
+
+情境二：出口排入加壓系統
+  P_outlet = 須實測
+  ΔP = P_inlet - P_outlet（實測值）
+
+情境三：無法測量出口壓力時
+  假設 P_inlet = ΔP（最差情境上限）
+  → 這是保守估算，確保不超過驗證壓力
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的無菌充填線使用蠕動泵驅動的一次性過濾系統。泵設定在固定 RPM，正常操作壓力約 1.2 bar。某次生產時，操作員注意到壓力已上升到 1.8 bar，但流速維持不變。</p>
+            <p>這代表什麼？ -- 濾膜正在堵塞（fouling）。雖然流速還正常，但如果壓力持續上升到接近驗證上限（例如 2.5 bar），就必須停止並更換濾膜。這就是差壓監控的價值：它能在問題影響產品品質之前提供預警。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在什麼情況下，Inlet Pressure 不等於 Differential Pressure？請舉出你工廠中的實例。</li>
+                <li>蠕動泵驅動系統和壓力驅動系統各有什麼優缺點？對於 CDMO 來說，你會如何選擇？</li>
+                <li>為什麼在恆流速操作下，差壓上升是 filter fouling 的指標？如果是恆壓操作，fouling 的指標會是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.2.2 Filtration Process Temperature -->
+<!-- ============================== -->
+<div class="section-title">5.2.2 Filtration Process Temperature</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Process temperature has a variety of effects on the filter and fluid stream. Elevated temperatures reduce the <span class="key-term">maximum allowable differential pressure</span> due to the strength of the mechanical structure of the filter. <span class="key-term">Pressure limits</span> may vary between forward-and-reverse flow directions, based on filter structure (reverse flow often being considered worst-case). Pressure limits at specific process temperatures may be listed by the filter manufacturer in the <span class="key-term">qualification documentation</span> of the particular filter type. Figure 5.2.2-1 depicts an example of the relationship between process temperature and maximum differential pressure, that is, the higher the process temperature, the lower the pressure resistance of a filter. Under elevated temperature conditions, filter users should evaluate the <span class="key-term">risk factors</span>, and if necessary, monitor process parameters carefully.</p>
+
+        <p>In addition to affecting differential-pressure capabilities, higher process temperatures could result in elevated <span class="key-term">leachables</span> or <span class="key-term">chemical incompatibilities</span>. Consideration should also be given to temperature, as some <span class="key-term">polymeric membranes</span> are sensitive to <span class="key-term">hydrolytic and oxidative alterations</span> by heat.</p>
+
+        <p>Higher temperatures reduce fluid viscosity and increase the flow rate through the filter for most <span class="key-term">Newtonian fluids</span>. Higher viscosities could also result in the need for higher differential pressures to achieve a required flow rate. These elevated differential pressures correspondingly require increased monitoring of flow rate and/or differential pressure to avoid exceeding the <span class="key-term">rated pressure conditions</span>.</p>
+
+        <p style="text-align:center; font-style:italic; color:#4a5568; margin-top:1rem;">Figure 5.2.2-1 Example of Filter Pressure/Temperature Resistance<br>(Figure not available in text extraction &mdash; refer to original TR26 document p28)</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>溫度對過濾系統的三重影響：</strong></p>
+            <ol>
+                <li><strong>機械強度降低：</strong>溫度升高 → 濾膜材料軟化 → 最大承受壓力下降。這是一個反比關係：溫度越高，允許的最大差壓越低。</li>
+                <li><strong>可溶出物（Leachables）增加：</strong>高溫促進濾膜材料中化學物質的溶出，可能影響產品品質和安全性。</li>
+                <li><strong>流體黏度降低：</strong>溫度升高 → 黏度降低 → 流速增加。對於牛頓流體（Newtonian Fluids），這是正面效果。</li>
+            </ol>
+            <p><strong>正向 vs 反向流動：</strong>壓力限值在正向和反向流動可能不同。反向流動通常被視為最差情境，因為濾膜結構設計通常是針對正向流動最佳化的。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>溫度對濾膜的影響就像天氣對橡皮筋的影響：</p>
+            <ul>
+                <li><strong>低溫：</strong>橡皮筋硬但結實，能承受大力拉扯（高壓力）</li>
+                <li><strong>高溫：</strong>橡皮筋軟化，容易被拉斷（低壓力就可能損壞）</li>
+                <li><strong>流體黏度：</strong>就像蜂蜜加熱後變稀一樣 -- 同樣的壓力下流動更快</li>
+            </ul>
+            <p>但這裡有一個矛盾：高溫雖然讓液體更容易流動（好事），卻也讓濾膜變脆弱（壞事）。所以操作溫度需要在兩者之間找到平衡。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>溫度-壓力的反比關係：</strong>Figure 5.2.2-1 所描繪的典型曲線呈下降趨勢 -- 隨著溫度上升，最大允許差壓逐步降低。務必查閱濾膜製造商的資格文件（Qualification Documentation），取得你所使用的特定濾膜型號在各溫度下的壓力限值。</p>
+            <p><strong>Leachables（可溶出物）的雙重風險：</strong></p>
+            <ul>
+                <li>產品品質風險：溶出物可能與藥物活性成分交互作用</li>
+                <li>病患安全風險：某些溶出物可能有毒性</li>
+            </ul>
+            <p>高溫操作時，Leachables 評估尤其重要，這與 Section 4（濾膜資格確認）中的 Extractables/Leachables 研究直接相關。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p><strong>Figure 5.2.2-1（溫度/壓力耐受性曲線）：</strong>雖然此處無法顯示原圖，但典型的曲線樣態如下：</p>
+            <ul>
+                <li>X 軸 = 溫度（°C），從室溫到最高使用溫度</li>
+                <li>Y 軸 = 最大允許差壓（bar 或 psi）</li>
+                <li>曲線向右下方傾斜：溫度越高，允許的最大壓力越低</li>
+                <li>通常在某個溫度點會有一個顯著的轉折點，超過該點後壓力限值急劇下降</li>
+            </ul>
+            <p><strong>實務意義：</strong>在進行製程設計時，必須在此曲線的安全區域內操作，並留有適當的安全餘量。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你需要過濾一個必須在 60°C 操作的產品，你需要向濾膜供應商確認哪些資訊？</li>
+                <li>溫度升高同時降低黏度（有利）和降低壓力耐受度（不利），你如何在實際操作中平衡這兩個因素？</li>
+                <li>為什麼反向流動通常被視為壓力限值的最差情境？在什麼操作步驟中可能發生反向流動？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.2.3 Filtration Time -->
+<!-- ============================== -->
+<div class="section-title">5.2.3 Filtration Time</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Filtration time</span> (duration) is the amount of time required to filter a single batch (or campaign) of production fluid. The process duration will differ depending on if the process is a <span class="key-term">single bulk-sterilizing filtration</span> operation or an <span class="key-term">intermittent in-line-filtration</span> operation used to maintain the level in a <span class="key-term">break tank</span> connected to dosing pumps during a sterile filling process. Increasing filtration times may increase the potential for <span class="key-term">bacterial penetration</span>; therefore, the filter retentive performance should be validated to the <span class="key-term">maximum product/filter contact time</span> for the process (see Section 6.8).</p>
+
+        <p>As part of the development of the process an assessment should be conducted to determine the longest potential <span class="key-term">product-contact time</span> with the sterilizing filter. The worst-case process time should include maximum filling-process duration, including <span class="key-term">manufacturing interruption scenarios</span> prior to and during filtration.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>兩種過濾模式的時間特性：</strong></p>
+            <ul>
+                <li><strong>單次批量過濾（Single Bulk Filtration）：</strong>將整批藥液一次性過濾到無菌儲槽。過濾時間相對固定且較短。</li>
+                <li><strong>間歇式線上過濾（Intermittent In-line Filtration）：</strong>配合充填機的速度，持續地將藥液過濾到 Break Tank（緩衝槽），由充填泵取用。過濾時間等於整個充填製程的持續時間，可能長達數小時甚至整天。</li>
+            </ul>
+            <p><strong>過濾時間 vs 產品接觸時間：</strong></p>
+            <ul>
+                <li><strong>過濾時間：</strong>實際過濾的持續時間</li>
+                <li><strong>產品接觸時間：</strong>= 過濾時間 + 等待時間 + 中斷時間。這是更嚴格的定義，用於驗證。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你用濾水壺過濾自來水：</p>
+            <ul>
+                <li><strong>批量過濾：</strong>一次倒滿一整壺水等它濾完 -- 接觸時間就是過濾完成所需的時間</li>
+                <li><strong>線上過濾：</strong>你邊喝水邊加水，濾水壺從早到晚一直在工作 -- 接觸時間是一整天</li>
+            </ul>
+            <p>時間越長，細菌穿透濾膜的風險越高 -- 就像門開越久，蚊子飛進來的機會越大。所以驗證必須涵蓋最長的可能接觸時間。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Bacterial Penetration（細菌穿透）風險與時間的關係：</strong>時間是細菌截留驗證中的關鍵最差情境參數。原因包括：</p>
+            <ul>
+                <li>長時間接觸讓細菌有更多機會尋找並穿透膜孔</li>
+                <li>某些細菌在接觸濾膜後可能改變形態（如縮小體積）</li>
+                <li>長時間浸泡可能影響濾膜材料的完整性</li>
+            </ul>
+            <p><strong>Manufacturing Interruption Scenarios（製造中斷情境）：</strong>最差情境時間必須包含非計畫性中斷。例如：充填機故障、環境監測警報、設備清潔等可能導致過濾暫停但濾膜仍與產品接觸的情境。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的充填線通常一個批次充填 8 小時，但偶爾會遇到設備故障需要暫停 2 小時，且生產操作規範允許最多暫停兩次。那麼你的最差情境產品接觸時間 = 8 + 2 + 2 = 12 小時。你的細菌截留驗證必須涵蓋至少 12 小時的接觸時間，否則一旦實際生產超過驗證範圍，該批次可能面臨合規性質疑。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的工廠中，除菌過濾的最大產品接觸時間是多少？是否已將所有可能的中斷情境納入考量？</li>
+                <li>批量過濾和線上過濾的時間風險有何不同？哪種模式需要更嚴格的時間驗證？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.3 Filter Throughput and Maximum Volume -->
+<!-- ============================== -->
+<div class="section-title">5.3 Filter Throughput and Maximum Volume</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Filter throughput</span>, or capacity, is the measurement of a total volume that can be filtered through the <span class="key-term">EFA</span> under defined process conditions. Filter capacity depends on <span class="key-term">membrane material</span>, porosity, pore size, <span class="key-term">nonspecific adsorption</span>, pore shape, filtration area, <span class="key-term">pressure differential</span>, contaminant load, and the physical properties of the product type being filtered. Table 5.3-1 lists potential factors affecting throughput.</p>
+
+        <p>Many process fluids that undergo sterilizing filtration are in the final formulation and do not result in significant fouling or <span class="key-term">filter-flux degradation</span> over any practical volume. In many cases, there is no practical limit to the throughput, while in other cases, there can be <span class="key-term">particulate matter</span> or <span class="key-term">subvisible particles</span> present in the filtrate that do limit the filter throughput. In some cases, the prior processing history of the filtrate can affect the capacity (e.g., <span class="key-term">high-shear mixing of monoclonal antibodies</span> can generate agglomerates) (27). Appropriate <span class="key-term">scale-down studies</span> can be used to determine these behaviors as outlined in Section 5.4. Even in the case where no defined maximum filter capacity can be determined, the <span class="key-term">maximum volume</span> that will be filtered should be specified so it can be covered during the <span class="key-term">filter-validation studies</span> (see Section 6.8).</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left;">Table 5.3-1 Factors Affecting Throughput</caption>
+            <tr>
+                <th>Higher Total Throughput</th>
+                <th>Lower Total Throughput</th>
+            </tr>
+            <tr>
+                <td>High Porosity/Higher Void Volume</td>
+                <td>Low Porosity/Lesser Void Volume</td>
+            </tr>
+            <tr>
+                <td>Large Pore Size</td>
+                <td>Small Pore Size</td>
+            </tr>
+            <tr>
+                <td>Low Nonspecific Adsorption</td>
+                <td>High Nonspecific Adsorption</td>
+            </tr>
+            <tr>
+                <td>Asymmetric Pore Shape</td>
+                <td>Isotropic Pore Shape</td>
+            </tr>
+            <tr>
+                <td>High Effective Filtration Area (EFA)</td>
+                <td>Low Effective Filtration Area (EFA)</td>
+            </tr>
+            <tr>
+                <td>Low Contaminant Load</td>
+                <td>High Contaminant Load</td>
+            </tr>
+            <tr>
+                <td>Nondeformable, Hard Contaminant</td>
+                <td>Deformable, Soft Contaminant</td>
+            </tr>
+            <tr>
+                <td>Low Shear-Stress History</td>
+                <td>High Shear-Stress History</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Filter Throughput（濾膜通量/容量）：</strong>在特定製程條件下，一支濾膜能處理的總體積。這與 Flow Rate（流速）不同 -- 流速是「多快」，通量是「多少」。</p>
+            <p><strong>Table 5.3-1 的關鍵洞見：</strong></p>
+            <ul>
+                <li><strong>Asymmetric vs Isotropic Pore Shape（非對稱 vs 等向孔形）：</strong>非對稱膜的孔隙從進料側到出口側逐漸收窄，形成漸進式截留，能容納更多粒子 → 通量更高</li>
+                <li><strong>Deformable, Soft Contaminant（可變形軟質污染物）：</strong>軟質粒子（如蛋白質聚集體）會被壓入膜孔，堵塞更嚴重 → 通量更低。硬質粒子則停留在表面，不會深入堵塞</li>
+                <li><strong>Shear-Stress History（剪切應力歷史）：</strong>製程上游的高剪切操作（如高速攪拌）可能產生蛋白質聚集體，直接影響過濾通量</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在用咖啡濾紙沖咖啡：</p>
+            <ul>
+                <li><strong>流速（Flow Rate）：</strong>水流過濾紙的速度 -- 「多快」</li>
+                <li><strong>通量（Throughput）：</strong>這張濾紙在堵塞之前總共能沖幾杯 -- 「多少」</li>
+                <li><strong>軟質 vs 硬質污染物：</strong>細咖啡渣（軟、可變形）會鑽進濾紙纖維裡，很快堵死。粗咖啡豆碎片（硬）停在表面，濾紙能用更久</li>
+                <li><strong>前段製程影響：</strong>如果你把咖啡豆磨得太細（= 高剪切），濾紙堵塞得更快</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>許多最終配方不會造成堵塞：</strong>TR26 特別指出，很多經過除菌過濾的藥液是最終配方，實際上不會造成明顯的濾膜堵塞。在這些情境中，通量限制不是技術問題，但你仍然需要指定一個最大過濾體積用於驗證。</p>
+            <p><strong>高剪切攪拌的影響：</strong>TR26 引用了一個重要案例 -- 單株抗體的高剪切攪拌會產生聚集體（agglomerates），直接影響過濾通量。這提醒我們：過濾性能不只取決於當下的操作條件，還受上游製程歷史的影響。</p>
+            <p><strong>即使沒有通量限制也要指定最大體積：</strong>這是驗證要求。驗證必須有明確的邊界條件。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的客戶提供了一個 mAb 產品用於除菌過濾。在小規模測試中，你發現過濾到 500 L/m&sup2; 時流速開始明顯下降。進一步調查發現，客戶的上游製程使用了高速攪拌器進行混合，產生了蛋白質聚集體。</p>
+            <p>解決方案：(1) 建議客戶降低攪拌速度或改用低剪切混合 (2) 增加預過濾步驟去除聚集體 (3) 增加 EFA（使用更大的濾膜）以確保足夠通量 (4) 將上游攪拌條件納入製程設計空間。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Asymmetric Pore Shape 比 Isotropic Pore Shape 能提供更高的通量？請從結構角度說明。</li>
+                <li>如果你的製程液體在實際操作中從未造成濾膜堵塞，你是否還需要進行通量測試？為什麼？</li>
+                <li>上游製程的剪切歷史如何影響下游的除菌過濾性能？這對 CDMO 的跨部門協作有什麼啟示？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.4 Scale-Down Systems and Testing -->
+<!-- ============================== -->
+<div class="section-title">5.4 Scale-Down Systems and Testing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">PD activities</span> are generally done at the <span class="key-term">bench-scale</span> using <span class="key-term">scale-down systems</span> to minimize material quantities and allow for faster and more efficient experimentation. In order for the scale-down systems to be representative of the larger scales used in manufacturing the available systems and scaling considerations are discussed in this section.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Scale-Down Systems（縮小規模系統）：</strong>在實驗台規模（Bench-scale）模擬大規模生產的過濾條件。核心目的是用少量材料獲得具代表性的製程數據，用於預測商業化規模的性能。</p>
+            <p>關鍵要求：縮小規模系統必須能「代表」（Representative）大規模製造的過濾行為。這意味著不能隨便縮小 -- 需要保持關鍵參數（如 flux、ΔP、溫度）的一致性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>縮小規模測試就像建築師做的建築模型：你用 1:100 的比例模型測試結構強度和空氣流動。模型必須按比例精確縮小，而不是隨意做一個小房子。同樣地，過濾的 scale-down 系統必須按 EFA 比例縮小，同時維持相同的流速（flux）和壓力條件，否則測試結果無法放大到實際生產。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Scale-down 系統的「代表性」是整個製程開發的基礎。如果小規模測試的結果不能準確預測大規模表現，所有後續的設計決策都會建立在不可靠的數據上。這就是為什麼本節要深入討論可用的系統類型和放大考量。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼製程開發（PD）活動要在小規模而非大規模進行？除了節省材料，還有哪些考量？</li>
+                <li>如果小規模測試結果與大規模生產結果不一致，你會從哪些方面排查原因？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- 5.4.1 Small Scale Device Testing -->
+<!-- ============================== -->
+<div class="section-title">5.4.1 Small Scale Device Testing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Filter-screening</span> is generally performed using the process fluid in a <span class="key-term">constant flow</span> or <span class="key-term">constant pressure</span> experimental setup. Traditionally, <span class="key-term">25mm or 47 mm discs</span> or disc composites (Figure 5.4.1-1) installed in holders (Figure 5.4.1-2) were used for these screening studies. With modern filtration systems, however, most filter manufacturers have developed specialized <span class="key-term">encapsulated discs</span> or <span class="key-term">small pleated capsules</span> that better represent the flow dynamics of full-sized filters and allow closer estimates of scaling by EFA (see Figure 4.2-2). The screening tests can also be helpful to determine potential <span class="key-term">prefilter combinations</span> to optimize the total throughput and reduce fouling, where required. For <span class="key-term">yield-sensitive applications</span>, filtrate samples can be taken at frequent intervals to determine any <span class="key-term">nonspecific adsorption</span> effects. Small-scale device tests may not always accurately predict the actual process in regard to <span class="key-term">flow-path dynamics</span> and <span class="key-term">pleat-density parameters</span>, however, and therefore may not scale up in a linear fashion, so care must be taken in the experimental design to ensure that any throughput or flux limitations are well understood.</p>
+
+        <p style="text-align:center; font-style:italic; color:#4a5568; margin-top:1rem;">Figure 5.4.1-1 Filter Disc / Figure 5.4.1-2 Filter Disc Holder<br>(Figures not available in text extraction &mdash; refer to original TR26 document p30)</p>
+
+        <p>Most filterability tests are performed by keeping <span class="key-term">pressure constant</span> and measuring the decline in flow rate as a function of filtered volume. The pressure set-point should mimic <span class="key-term">production pressure conditions</span>. Nevertheless, there are some applications that should be evaluated using <span class="key-term">constant flow rate</span>, such as the filtration of media. For constant-flow testing, the flow rate is controlled while the pressure gradually increases until a maximum pressure is reached. This mode of testing avoids <span class="key-term">compression of contaminants</span> that may be captured on the membrane surface, leading to <span class="key-term">membrane fouling</span>. Either constant-flow or constant-pressure filterability tests can be used to predict manufacturing-scale performance. Ideally, small-scale tests should be performed using flux and pressure conditions representative of the manufacturing-scale process or a <span class="key-term">representative worst-case scenario</span>.</p>
+
+        <p>The main output of these small-scale filtration studies is to develop and understand the <span class="key-term">flow curves</span> and evaluate <span class="key-term">filter flux</span> at different pressure conditions, thus allowing selection of the optimal filter size and configuration to use in the at-scale process. If properly designed, the <span class="key-term">fouling propensity</span> of the filter and process fluid combinations can also determine a maximum filter-throughput value. With this information under representative temperature and process conditions, the process can be <span class="key-term">scaled up using the ratio of EFA</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>濾膜篩選（Filter Screening）的演進：</strong></p>
+            <ul>
+                <li><strong>傳統方法：</strong>使用 25mm 或 47mm 平面濾膜片（Disc）安裝在支架上進行測試</li>
+                <li><strong>現代方法：</strong>使用封裝式濾膜片或小型皺褶膠囊（Small Pleated Capsule），更能代表實際生產中全尺寸濾膜的流動動力學</li>
+            </ul>
+            <p><strong>兩種測試模式：</strong></p>
+            <ul>
+                <li><strong>恆壓測試（Constant Pressure）：</strong>固定壓力，測量流速隨過濾體積的衰減。適用於大多數應用。</li>
+                <li><strong>恆流速測試（Constant Flow Rate）：</strong>固定流速，測量壓力隨過濾體積的上升。適用於含污染物的流體（如培養基），因為恆壓操作可能壓縮膜面的污染物導致更嚴重的堵塞。</li>
+            </ul>
+            <p><strong>線性放大的限制：</strong>由於流路動力學（Flow-path Dynamics）和皺褶密度（Pleat Density）的差異，小規模結果不一定能線性放大。實驗設計必須充分理解這些限制。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>小規模測試就像試穿衣服。傳統的 47mm 濾膜片測試就像看尺寸表估算 -- 只能得到大概的尺寸感。而現代的小型皺褶膠囊測試就像在店裡實際試穿小碼衣服 -- 更能感受到實際穿著時的合身程度和舒適度。</p>
+            <p>但即使是實際試穿，也不能保證同款的加大碼穿起來完全一樣 -- 放大後的版型可能有微妙差異。同樣地，小規模過濾測試的結果在放大到生產規模時，也可能出現非線性的偏差。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>恆壓 vs 恆流速的選擇邏輯：</strong></p>
+            <ul>
+                <li>恆壓測試更常見，也是多數廠商推薦的默認方法</li>
+                <li>但對於含有可壓縮污染物的流體（如培養基），恆壓會將污染物壓入膜孔，導致不具代表性的嚴重堵塞</li>
+                <li>恆流速測試避免了這個問題，因為壓力是逐漸上升的</li>
+            </ul>
+            <p><strong>Prefilter Combinations（預過濾組合）：</strong>小規模測試也可以用來評估預過濾器（Prefilter）的效果 -- 在除菌級濾膜前增加一個孔徑較大的預過濾器，去除大粒子，延長除菌級濾膜的壽命，降低整體成本。</p>
+            <p><strong>Yield-Sensitive Applications（對收率敏感的應用）：</strong>對於高價值生物製劑，必須在過濾過程中頻繁取樣檢測產品濃度，確認吸附損失在可接受範圍內。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>EFA 比例放大計算：</strong></p>
+            <pre>
+放大倍數 = EFA_production / EFA_small-scale
+
+例如：
+  小規模測試：EFA = 3.5 cm² (47mm disc)
+  生產規模需處理 500L，小規模可處理 50 mL
+
+  所需放大倍數 = 500,000 mL / 50 mL = 10,000
+  生產規模所需 EFA = 3.5 cm² × 10,000 = 35,000 cm² = 3.5 m²
+
+注意：此計算假設線性放大，實際可能需要
+加入安全係數（通常 1.2-2.0x）以補償
+非線性效應和皺褶密度差異。
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你需要為一個新的 mAb 產品選擇除菌濾膜。你手上有三個候選濾膜廠商的小型測試膠囊。</p>
+            <p><strong>建議的篩選流程：</strong></p>
+            <ol>
+                <li>使用相同的製程液體，在恆壓條件下（模擬生產壓力）測試三支濾膜</li>
+                <li>繪製流速 vs 過濾體積曲線（Flow Curve）</li>
+                <li>比較各濾膜的通量（L/m&sup2;）、堵塞傾向和吸附表現</li>
+                <li>選出最佳候選者後，用 EFA 比例計算生產規模所需的濾膜尺寸</li>
+                <li>加入 1.5-2.0x 安全係數以補償放大過程中的不確定性</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼現代的小型皺褶膠囊比傳統 47mm 平面濾膜片更能代表生產規模的性能？從流動動力學角度說明。</li>
+                <li>在什麼情況下你會選擇恆流速測試而非恆壓測試？請結合你的實際製程經驗回答。</li>
+                <li>如果小規模測試顯示濾膜在 200 L/m&sup2; 時堵塞，但你的生產需求是 180 L/m&sup2;，你認為安全餘量是否足夠？你會如何決策？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

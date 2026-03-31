@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR90 - Section 4.3-4.4: Nonsterile DP Process Control & In-Process Monitoring</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.3-4.4: Nonsterile Drug Product Process Control & In-Process Monitoring</h1>
+    <div class="subtitle">非無菌藥品製程管控與製程中監測</div>
+    <div class="page-info">PDA Technical Report No. 90 — Contamination Control Strategy Development | p13 - p15</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解非無菌藥品 (Nonsterile Drug Products) 為何同樣需要有效的污染控制策略 (CCS)</li>
+        <li>掌握液態/半固態與固態劑型各自面臨的微生物污染風險差異</li>
+        <li>了解原物料與設備管控在非無菌製程中的關鍵角色</li>
+        <li>認識製程中監測 (In-Process Monitoring) 的規劃原則，包括生物負荷 (Bioburden) 與內毒素 (Endotoxin) 監測計畫的開發要點</li>
+        <li>理解如何以風險為基礎建立合理的取樣計畫與管制限度</li>
+    </ul>
+</div>
+
+<!-- ==================== 4.3 Nonsterile Drug Product Process Control ==================== -->
+<div class="section-title" id="sec-4-3">4.3 Nonsterile Drug Product Process Control</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Effective <span class="key-term">CCS</span> is also important for <span class="key-term">nonsterile finished products</span> that are susceptible to contamination. <span class="key-term">Microbial contamination</span> can lead to degradation of the product, loss of potency, and potentially unsafe levels of microorganisms and by-products being administered to the patient. Consider that many nonsterile products are available without prescription to a broad population of people with a range of underlying ailments or immune-compromising conditions. Nonsterile products and their intermediates should be handled and stored under conditions that limit the risk of microbial contamination considering the specific hazards of microbial ingress and proliferation.</p>
+
+        <p>Liquid and semisolid nonsterile products, such as <span class="key-term">syrups, creams, and ointments</span>, are inherently prone to contamination due to the <span class="key-term">water activity</span> levels that support microbial growth. For these products, <span class="key-term">preservatives</span> are often added to avoid fouling during the shelf life. Preservatives are rarely effective against all potentially contaminating species or high levels of bioburden and may lose effectiveness over the product's shelf life, so microbial control is also important to prevent and detect microorganisms during the process.</p>
+
+        <p><span class="key-term">Solid dosage products</span>, such as tablets and dry powders, are generally less prone to contamination due to lower water activity; however, they are not contamination-proof. Specific contamination hazards should be identified in the manufacturing process and in the handling and distribution of nonsterile products. Some process operations can introduce unacceptable levels of contamination, such as <span class="key-term">tablet-coating</span>, and there is potential for contamination during handling and dispensing activities, for example, blister packs protecting the product until administration.</p>
+
+        <p><span class="key-term">Foreign matter</span>, such as particulates, should also be controlled in nonsterile products because foreign matter can include toxic materials that leach into the product, can introduce microbial contamination that degrades the product, and can lead to product rejection for cosmetic reasons.</p>
+
+        <p><span class="key-term">Raw material</span> and equipment controls are particularly important for nonsterile products that are often made on a large scale. Raw materials can be a source of very high levels of microorganisms and their byproducts into the process and may overchallenge the process controls, resulting in final product contamination. <span class="key-term">Process water</span> is one of the most abundant raw materials and is well known for introducing contaminants, including those that may be resistant to preservatives and difficult to detect with traditional microbiological testing, such as <span class="key-term">Burkholderia cepacia</span>. Equipment often includes large vessels that are potential sources of high levels of microorganisms. Equipment must be cleaned and drained when not in use to prevent fouling with <span class="key-term">biofilms</span>. For equipment designs that may prevent the cleanability or drainability, additional actions should be undertaken periodically to reduce the occurrence of biofilm (see PDA Technical Report 69 for further details). In addition, the process considerations in Tables 4.2-1 and 4.2-2 can be useful for nonsterile products to extrapolate from and customize to the organization's operations.</p>
+
+        <p>Process monitoring for nonsterile products often includes methods to detect <span class="key-term">total microbial numbers</span> as well as <span class="key-term">specific microorganisms</span> that are considered objectionable for that product, and potentially the patient population, based on its route of administration. <span class="key-term">In-process monitoring</span> of nonsterile product manufacture, which is generally less frequent for low-bioburden drug substance processes, should be conducted where specific hazards exist in the nonsterile production process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>非無菌藥品的 CCS (Nonsterile Product CCS)：</strong>許多人誤以為只有無菌注射劑才需要嚴格的污染控制策略。事實上，非無菌產品（如糖漿、乳膏、藥膏、錠劑等）同樣需要有效的 CCS。原因在於微生物污染可導致產品降解 (degradation)、效價損失 (loss of potency)，甚至使患者接觸到不安全水平的微生物及其副產物。</p>
+            <p><strong>Water Activity (水活性)：</strong>這是決定微生物能否在產品中生長的關鍵參數。液態及半固態劑型因水活性較高，本質上更容易遭受微生物污染。固態劑型（錠劑、乾粉）水活性較低，但並非完全免疫。</p>
+            <p><strong>Objectionable Organisms (不良微生物)：</strong>非無菌產品的監測不僅關注總微生物數量，還需針對特定「不良微生物」進行檢測，這取決於產品的給藥途徑及目標患者群。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一下餐廳的食品安全管理。即使是不需要冷藏的乾糧（如餅乾、堅果），也需要防止蟲害和黴菌污染 -- 這就像固態劑型的管控。而湯品和醬料（液態/半固態產品）因為含水量高，更容易滋生細菌，需要更嚴格的溫度控制和保存劑（防腐劑）。但即便加了防腐劑，如果原料本身污染嚴重（例如水源不潔），再好的防腐劑也無法挽回 -- 這就是為什麼原物料管控如此重要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Burkholderia cepacia 的威脅：</strong>TR90 特別點名了 <em>Burkholderia cepacia</em> 這類微生物。它們能在製藥用水中存活且可能對防腐劑具有抗性，並且難以被傳統微生物檢測方法偵測。近年來 FDA 對此類微生物引起的非無菌產品召回案例高度關注。</p>
+            <p><strong>Biofilm (生物膜) 風險：</strong>大型設備的死角、不易排水的區域容易形成生物膜。生物膜一旦形成，常規清潔難以根除，成為持續性污染源。TR90 引用了 PDA TR69 作為進一步參考。</p>
+            <p><strong>防腐劑的局限性：</strong>防腐劑不是萬能的 -- 它們很少能對抗所有潛在污染菌種，且效力可能隨產品貨架期而降低。因此，製程中的微生物控制仍是不可或缺的第一道防線。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景：</strong>假設你的工廠同時生產口服液劑和外用乳膏。在開發 CCS 時，需要分別評估：</p>
+            <ul>
+                <li>口服液劑：水活性高，需要關注製程用水的微生物品質、容器的清潔驗證、以及防腐劑效力測試 (Preservative Effectiveness Test, PET)</li>
+                <li>外用乳膏：除微生物外，還需注意異物 (foreign matter) 管控，因外觀品質同樣關乎產品可接受性</li>
+                <li>兩者共用的設備必須建立清潔確效，特別注意排水性 (drainability) 設計以防止生物膜形成</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼非無菌產品中的防腐劑不能完全取代製程中的微生物控制？請列舉至少兩個原因。</li>
+                <li>固態劑型（如錠劑）在哪些製程操作中特別容易引入微生物污染？</li>
+                <li>在非無菌產品的 CCS 中，為什麼 <em>Burkholderia cepacia</em> 被特別提及？它與一般微生物有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 4.4 In-Process Monitoring ==================== -->
+<div class="section-title" id="sec-4-4">4.4 In-Process Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p><span class="key-term">In-process monitoring</span> provides information about the state of control of the process, facility, and product. A <span class="key-term">holistic control plan</span> includes monitoring for microbial control of the process, facility, and product, including intermediates. <span class="key-term">Mycoplasma</span> and <span class="key-term">viruses</span> are also included in the monitoring plan of biological products with cell systems that can propagate those contaminants. <span class="key-term">Particle monitoring</span> is included for the environment, and <span class="key-term">visual inspection</span> of product-contacting equipment, consumables, and solutions is conducted where a foreign particle risk for the product exists.</p>
+
+        <p>A <span class="key-term">strategic sampling plan</span> should take into consideration the criticality of the process steps, the susceptibility to microbial ingress, the growth-promoting ability of the process intermediates and solutions, and the downstream particle-removal steps. The collection and handling of in-process samples should ensure the <span class="key-term">chain of custody</span> from collection to final review of the test results. Table 4.4.1-1 provides more detail on monitoring plans.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>In-Process Monitoring (製程中監測)：</strong>這是了解製程、設施及產品處於受控狀態的窗口。它不僅僅是「取樣檢驗」，而是一個整體性 (holistic) 管控計畫的組成部分，涵蓋微生物控制、黴漿菌 (Mycoplasma)、病毒及微粒監測。</p>
+            <p><strong>Strategic Sampling Plan (策略性取樣計畫)：</strong>取樣不是越多越好，而是要「策略性」地規劃。考量因素包括：製程步驟的關鍵性、微生物侵入的易感性、中間體的促生長能力、以及下游的微粒去除步驟。</p>
+            <p><strong>Chain of Custody (監管鏈)：</strong>從取樣到最終結果審查的全程追溯能力。確保樣品的完整性和結果的可靠性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>製程中監測就像醫院的感染管控計畫 -- 不是等病人出現感染症狀才處理，而是在各個可能的感染途徑上設置監控點。手術室有空氣微粒監測（環境監測），手術器械有滅菌確認（設備監測），醫護人員定期進行手部衛生稽核（人員監測）。同樣地，製藥製程中的監測也需要在各個潛在風險點進行策略性布局。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>生物製品的額外要求：</strong>如果製造的是生物製品（使用細胞系統），監測計畫還必須包含 Mycoplasma（黴漿菌）和 Virus（病毒）的檢測，因為這些污染物能在細胞培養系統中增殖。</p>
+            <p><strong>目視檢查的重要性：</strong>TR90 特別提到對產品接觸設備、耗材和溶液進行「目視檢查 (visual inspection)」以偵測異物微粒風險，這是一項經常被低估但極為重要的管控手段。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 4.4.1 Bioburden/Endotoxin Monitoring ==================== -->
+<div class="section-title" id="sec-4-4-1">4.4.1 Bioburden/Endotoxin Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The control and monitoring of <span class="key-term">bioburden</span> and <span class="key-term">endotoxin</span> levels throughout the manufacture of DS and DP are important elements of the overall <span class="key-term">microbial control program</span>. Process monitoring provides valuable insight into the microbial status of the manufacturing process, which in turn leads to the microbial quality of the final product. A <span class="key-term">risk-based assessment</span> involving the process mapping of potential ingress sites and operational steps that are susceptible to bioburden growth should be used to develop the monitoring plan. The assessment should include an evaluation of the contamination risks and the capability of the process at each process step to mitigate each risk. Recurring sporadic contaminations should be investigated as they may be indicative of <span class="key-term">biofilm</span> present in product-contact surfaces of the equipment or of pervasive environmental contamination in the process areas. PDA Technical Report 69 contains additional information on biofilm.</p>
+
+        <p>Several aspects should be considered when developing a bioburden and endotoxin monitoring plan. What, when, and how to monitor should be well planned, based on the risks to the process and product, while at the same time ensuring the sampling process does not contaminate the process or produce false-positive results. A sensible approach includes mapping of the process based on the steps with the likelihood of microorganism ingress; susceptible locations where residual risks cannot be mitigated should then be monitored based on that mapping. In general, performing <span class="key-term">bioburden monitoring</span> should be considered before <span class="key-term">bioburden reduction steps</span> are conducted. Inputs range widely from sterile raw materials to highly growth-promoting media used for production. The manufacturing facility and processes may include a multitude of manufacturing risk levels, including the design and classification of the area and its <span class="key-term">EM history</span>. That history should include contaminations that spread or are persistent and difficult to eliminate, growth-promotion properties of the in-process intermediates, and the type of equipment&mdash;from open tank processes and <span class="key-term">single-use bag systems</span> to bioreactors with intricate piping and valve configurations (16).</p>
+
+        <p>Dealing with the data produced can also be challenging. As in-process bioburden counts are typically low and <span class="key-term">not normally distributed</span>, classical statistical approaches (e.g., parametric or &plusmn;3 standard deviations) cannot be used for establishing meaningful limits. Therefore, a scientific, <span class="key-term">risk-based approach</span> should be employed to set limits that can be further evaluated upon gathering sufficient historical data from longer-term manufacturing. Also, a <span class="key-term">robust metric control plan</span> should be developed that covers the facility and the overall network to ensure there is appropriate senior management visibility to the microbial/endotoxin state of control.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Bioburden (生物負荷)：</strong>指在製程中間體或最終產品中存在的活微生物數量。它是評估製程微生物控制狀態的核心指標。</p>
+            <p><strong>Endotoxin (內毒素)：</strong>革蘭氏陰性菌細胞壁的成分，即使微生物被過濾去除後，內毒素仍可能殘留。對注射劑而言，內毒素可引起熱原反應 (pyrogenic reaction)，是重要的安全指標。</p>
+            <p><strong>Risk-Based Assessment (風險評估)：</strong>監測計畫的開發應基於製程圖 (process mapping)，識別潛在的微生物侵入點和易於微生物增殖的操作步驟，而非簡單地在每個步驟都取樣。</p>
+            <p><strong>EM History (環境監測歷史)：</strong>過往的環境監測數據是設計監測計畫的重要參考，特別是那些擴散性的、持續存在且難以消除的污染事件。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>設計生物負荷和內毒素的監測計畫就像設計一棟大樓的安防系統。你不會在每個房間都裝相同規格的攝影機，而是先繪製大樓平面圖（製程圖），找出最容易遭入侵的位置（如一樓大門、地下停車場入口、屋頂天窗），然後在這些高風險區域部署最密集的監控。同理，製程中生物負荷還原步驟（如過濾）之前是關鍵取樣點 -- 就像在安檢關卡之前確認是否有可疑人員。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>反覆出現的偶發污染 (Recurring Sporadic Contaminations)：</strong>TR90 特別強調，這類看似隨機的污染事件可能暗示設備產品接觸面存在生物膜 (biofilm) 或製程區域存在普遍性環境污染。務必進行深入調查，不可僅視為偶發事件而忽略。</p>
+            <p><strong>取樣本身的風險：</strong>取樣過程可能引入污染或產生偽陽性結果 (false-positive results)。因此，取樣方法和時機的設計必須兼顧資訊獲取的需求與製程完整性的保護。</p>
+            <p><strong>數據的統計挑戰：</strong>製程中生物負荷計數通常很低且不符合常態分佈 (not normally distributed)，因此不能使用傳統的參數統計方法（如 &plusmn;3 標準差）來建立有意義的管制限度。應採用科學的、基於風險的方法設定限度，並在累積足夠的歷史數據後持續評估調整。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>管制限度設定邏輯 Limit-Setting Logic</h4>
+            <p>由於生物負荷數據的特殊性，TR90 建議的限度設定邏輯如下：</p>
+            <pre>
+傳統方法（不適用）：
+  Alert Limit = Mean + 2SD
+  Action Limit = Mean + 3SD
+  問題：數據低且非常態分佈，SD 無意義
+
+建議方法：
+  1. 風險評估 → 初始限度設定
+  2. 長期製造 → 累積歷史數據
+  3. 數據趨勢分析 → 限度評估與更新
+  4. 網路層級的指標控管計畫 → 高層可見性
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景：</strong>你正在為一個新的生物製劑原料藥 (Biologic DS) 製程建立生物負荷/內毒素監測計畫。關鍵步驟：</p>
+            <ul>
+                <li><strong>Step 1 - 製程圖繪製：</strong>從細胞培養、收穫、純化到最終原料藥，標註每個步驟的微生物侵入風險</li>
+                <li><strong>Step 2 - 風險分級：</strong>開放操作 > 半封閉操作 > 完全封閉操作；促生長培養基 > 緩衝液 > 清潔用水</li>
+                <li><strong>Step 3 - 取樣點選擇：</strong>優先在生物負荷還原步驟（如過濾）之前取樣；在高風險的開放操作後取樣</li>
+                <li><strong>Step 4 - 初始限度：</strong>基於風險評估設定初始限度，隨製造批次累積數據後進行修訂</li>
+                <li><strong>Step 5 - 趨勢監控：</strong>建立跨設施的指標控管計畫，確保管理層對微生物/內毒素控制狀態的可見性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR90 建議在「生物負荷還原步驟之前」進行生物負荷監測，而非之後？</li>
+                <li>反覆出現的偶發性污染事件可能暗示什麼潛在問題？應如何調查？</li>
+                <li>為什麼傳統的 &plusmn;3 標準差方法不適用於製程中生物負荷數據的管制限度設定？你會建議採用什麼替代方法？</li>
+                <li>在設計取樣計畫時，如何平衡「獲取足夠監測資訊」與「避免取樣本身引入污染風險」這兩個目標？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>非無菌產品同樣需要 CCS：</strong>微生物污染可導致產品降解、效價損失及患者安全風險。液態/半固態產品因水活性高而風險更大，但固態劑型也非完全免疫。</li>
+        <li><strong>防腐劑有其局限性：</strong>防腐劑無法對抗所有菌種且效力會隨時間下降，因此製程中的微生物控制是不可替代的基礎防線。</li>
+        <li><strong>原物料與設備管控是關鍵：</strong>製程用水 (Process Water) 與大型設備是非無菌製程中最主要的污染源，特別需要注意 <em>Burkholderia cepacia</em> 和生物膜 (Biofilm) 問題。</li>
+        <li><strong>製程中監測需要策略性規劃：</strong>基於風險評估的取樣計畫應考量製程步驟的關鍵性、微生物侵入易感性、中間體促生長特性及下游去除能力。</li>
+        <li><strong>生物負荷/內毒素監測計畫的核心原則：</strong>以製程圖為基礎進行風險評估，在生物負荷還原步驟前取樣，關注反覆出現的偶發污染，並採用風險為基礎的方法設定管制限度（非傳統統計方法）。</li>
+        <li><strong>數據管理與高層可見性：</strong>建立跨設施的指標控管計畫 (metric control plan)，確保管理層對微生物/內毒素控制狀態有充分掌握。</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+</body>
+</html>

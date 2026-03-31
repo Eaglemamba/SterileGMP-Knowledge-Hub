@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-14 — Topic 3: Utilities (p25-p28)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== PRACTICE BOX GREEN SOLID - CDMO scenarios ===== */
+.practice-box.green-solid {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+
+.practice-box.green-solid h3,
+.practice-box.green-solid h4 {
+    color: #1b5e20 !important;
+}
+
+/* ===== DECISION HIERARCHY BANNER ===== */
+.decision-hierarchy-banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.decision-hierarchy-banner h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.85rem;
+}
+
+.hierarchy-levels {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.h-level {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.h-level .h-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.25);
+    flex-shrink: 0;
+}
+
+.h-level-1 { background: rgba(239,68,68,0.25); border: 1px solid rgba(239,68,68,0.5); color: #fca5a5; }
+.h-level-2 { background: rgba(249,115,22,0.25); border: 1px solid rgba(249,115,22,0.5); color: #fdba74; }
+.h-level-3 { background: rgba(234,179,8,0.25); border: 1px solid rgba(234,179,8,0.5); color: #fde047; }
+.h-level-4 { background: rgba(34,197,94,0.25); border: 1px solid rgba(34,197,94,0.5); color: #86efac; }
+.h-level-5 { background: rgba(96,165,250,0.25); border: 1px solid rgba(96,165,250,0.5); color: #93c5fd; }
+
+.h-arrow {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.9rem;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #fde8d8; color: #7d3c00; }
+.badge.purple { background: #e8d5f5; color: #5b21b6; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+    .hierarchy-levels { flex-direction: column; align-items: flex-start; }
+    .h-arrow { transform: rotate(90deg); }
+}
+
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Points to Consider No. 14</h1>
+    <div class="subtitle">Topic 3: Utilities — Q3.1 ATMP Facility Utility Design Requirements</div>
+    <div class="page-info">Source: PDA PtC-14 (2025), Pages 25–28 | Educational Commentary in Traditional Chinese</div>
+</div>
+
+<!-- ===== DECISION HIERARCHY BANNER ===== -->
+<div class="main-content">
+    <div class="decision-hierarchy-banner">
+        <h3>ATMP Decision Hierarchy — All Utility Decisions Follow This Priority Order</h3>
+        <div class="hierarchy-levels">
+            <div class="h-level h-level-1"><span class="h-num">1</span> Operator Safety (BSL Containment)</div>
+            <span class="h-arrow">&#8250;</span>
+            <div class="h-level h-level-2"><span class="h-num">2</span> Patient Safety (Sterility Assurance)</div>
+            <span class="h-arrow">&#8250;</span>
+            <div class="h-level h-level-3"><span class="h-num">3</span> Product Quality</div>
+            <span class="h-arrow">&#8250;</span>
+            <div class="h-level h-level-4"><span class="h-num">4</span> Regulatory Compliance</div>
+            <span class="h-arrow">&#8250;</span>
+            <div class="h-level h-level-5"><span class="h-num">5</span> Business Flexibility</div>
+        </div>
+    </div>
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives — 本節學習目標</h3>
+        <ul>
+            <li>Understand why ATMP utility design follows the same GMP principles as conventional biologics but with added BSL containment layers.</li>
+            <li>Identify the six major utility subsystems addressed in Q3.1 and the specific ATMP risk each carries.</li>
+            <li>Explain why CO&#8322; and LN&#8322; systems require oxygen-depletion monitoring and personal O&#8322; sensors.</li>
+            <li>Compare Purified Water vs. WFI requirements for ATMP cleaning and formulation steps.</li>
+            <li>Apply the cross-contamination prevention principle (pressure differential / double-block-and-bleed) to utility distribution design.</li>
+            <li>Describe how gaseous disinfection validation requirements interact with facility airtightness for BSL suites.</li>
+        </ul>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>Topic 3 Quick Navigation</h3>
+        <div class="toc-grid">
+            <a href="#overview">Q3.1 Overview</a>
+            <a href="#gaseous">1. Gaseous Disinfection</a>
+            <a href="#co2">2. CO&#8322; System</a>
+            <a href="#pw">3. Purified Water</a>
+            <a href="#wfi">4. WFI System</a>
+            <a href="#ln2">5. Liquid Nitrogen</a>
+            <a href="#n2">6. Nitrogen (N&#8322;)</a>
+            <a href="#summary-table">Comparison Table</a>
+            <a href="#cdmo-scenarios">CDMO Scenarios</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION: OVERVIEW ===== -->
+    <div id="overview" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">Q3.1</div>
+            <div class="chapter-info">
+                <h2>Are there any specific requirements for designing utilities in an ATMP facility?</h2>
+                <p>PDA PtC-14, p25–28 | Topic 3: Utilities — General Principles</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Original Text — Recommendation (p25)</h3>
+                    <p>There are no specific design requirements for utilities used for the manufacture of ATMPs compared to traditional small-molecule or large-molecule manufacture. However, specific requirements pertaining to <span class="key-term">containment</span> and <span class="key-term">BSL facilities</span> may apply according to local and international regulations.</p>
+                    <p><span class="key-term">EU GMP Annex 1</span> and other suggested readings provide recommendations of utilities for product contact. Although the design requirements are generally consistent with other types of manufacture, the following good principles apply to <span class="key-term">clean utilities</span>:</p>
+                    <div class="quote-box">
+                        "The design requirements are generally consistent with other types of manufacture — but containment and BSL requirements add a critical overlay."
+                        <br><br>— PDA PtC-14, Topic 3 Preamble
+                    </div>
+                    <p>The six clean utility systems addressed in Q3.1 are:</p>
+                    <ol>
+                        <li>Gaseous disinfection system</li>
+                        <li>Carbon dioxide (CO&#8322;) generation and distribution</li>
+                        <li>Purified water generation and distribution</li>
+                        <li>Water for Injection (WFI) generation and distribution</li>
+                        <li>Liquid nitrogen (LN&#8322;) generation and distribution</li>
+                        <li>Nitrogen (N&#8322;) distribution</li>
+                    </ol>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>解說：為什麼 ATMP 公用系統設計有其獨特性？</h3>
+                    <div class="concept-box">
+                        <h4>核心原則：基礎相同，但加了一層 BSL 防護</h4>
+                        <p>PDA PtC-14 明確指出：ATMP 的公用系統設計<strong>沒有全新的特殊要求</strong>，其 GMP 基礎與傳統小分子、大分子製藥一致。</p>
+                        <p>差異在於：ATMP 涉及活細胞、病毒載體、GMO，因此<strong>生物安全等級（BSL）</strong>要求在所有公用系統設計上疊加了一層「圍堵邏輯」。</p>
+                        <ul>
+                            <li>傳統藥廠：公用系統主要服務產品品質與無菌保障</li>
+                            <li>ATMP 廠房：公用系統<strong>同時</strong>必須維持 BSL 圍堵完整性</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：醫院隔離病房的通風系統</h4>
+                        <p>一般病房與隔離病房（如 COVID-19 負壓病房）都需要暖通空調（HVAC）。但隔離病房的 HVAC 多了一項核心要求：<strong>負壓設計確保污染物不外洩</strong>。</p>
+                        <p>ATMP 廠房的公用系統邏輯完全相同——基礎 GMP 規範不變，BSL 圍堵要求是額外疊加的防護層。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>決策優先序：公用系統穿牆穿板的核心原則</h4>
+                        <p>每一條管線、每一個感測器、每一個電源插座穿過潔淨室牆壁或 BSL 圍堵邊界時，都必須先問：</p>
+                        <p><strong>#1 此穿透點是否維持了 BSL 圍堵完整性？</strong>（操作人員安全）</p>
+                        <p>如果不能，設計必須修改，無論成本為何。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考題 1</h4>
+                        <p>一家傳統 mAb 廠要轉型生產 CAR-T 細胞療法。工廠主任說：「我們的 WFI 和 Clean Steam 系統已符合 EU GMP Annex 1，應該不用改了。」</p>
+                        <p>這個說法哪裡正確？哪裡可能有遺漏？（提示：BSL 邊界的管線穿透點是否已評估？）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1: GASEOUS DISINFECTION ===== -->
+    <div id="gaseous" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1</div>
+            <div class="chapter-info">
+                <h2>Gaseous Disinfection System</h2>
+                <p>PDA PtC-14, p25 | Risk-based commissioning, airtightness validation, residual removal</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Gaseous Disinfection — Key Requirements</h3>
+                    <p><strong>a.</strong> A <span class="key-term">risk-based commissioning approach</span> for gaseous disinfection systems should be applied.</p>
+                    <p><strong>b.</strong> <span class="key-term">Airtightness</span> of the space needs to be demonstrated if gaseous disinfection is designed into an ATMP facility to decontaminate the facility/rooms. All surfaces and/or <span class="key-term">penetrations</span> (e.g., sensors, electrical sockets) and openings that cannot be sealed in routine operation (e.g., the gap around the door, <span class="key-term">leak-tight isolation dampers</span> in the HVAC duct) should be adequately sealed to prevent the escape of the decontaminating agent(s).</p>
+                    <p><strong>c.</strong> The performance of the gaseous-disinfection system should be demonstrated through <span class="key-term">validation</span> and appropriate <span class="key-term">Environmental Monitoring Performance Qualification</span>.</p>
+                    <p><strong>d.</strong> The <span class="key-term">residual level</span> of disinfectant post-disinfection process should be validated using trace-limit-detection methods to demonstrate that the residuals are removed to levels that will have no adverse impact on the manufactured pharmaceutical product.</p>
+                    <p><strong>e.</strong> Pipes should be marked with <span class="key-term">gas identity signs</span> and should indicate the flow direction.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>氣態去污系統 — ATMP 廠房關鍵解析</h3>
+                    <div class="concept-box">
+                        <h4>什麼是氣態去污系統？</h4>
+                        <p>氣態去污（Gaseous Disinfection / Biodecontamination）是指使用氣態或蒸氣形式的殺菌劑對封閉空間進行滅菌/去污，最常見的試劑為：</p>
+                        <ul>
+                            <li><strong>VHP（Vaporized Hydrogen Peroxide，汽化過氧化氫）</strong>：最廣泛使用</li>
+                            <li><strong>氯二氧化物（ClO&#8322;）</strong>：適用於大空間</li>
+                            <li><strong>甲醛氣體</strong>：已逐漸被淘汰（毒性考量）</li>
+                        </ul>
+                        <p>在 ATMP 廠房，氣態去污特別重要，因為處理活病毒或 GMO 後，<strong>整個房間</strong>可能需要徹底去污，而非僅表面清潔。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>關鍵警告：氣密性（Airtightness）是 BSL 圍堵的命脈</h4>
+                        <p>要點 (b) 特別強調：所有穿透點——包括感測器、電源插座、門縫、HVAC 隔離閘門——都必須在氣態去污期間被有效密封。</p>
+                        <p>這直接對應決策優先序 <strong>#1（操作人員安全）</strong>：若 VHP 或 ClO&#8322; 外洩到走廊，等於 BSL 圍堵失效，操作人員面臨雙重風險（化學品暴露 + 生物材料外洩）。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>氣態去污驗證的三個關鍵量化指標</h4>
+                        <pre>
+1. 氣密性測試（Airtightness / Room Integrity Test）
+   - 通常使用壓力衰減法（Pressure Decay Test）
+   - 驗收標準：典型值 < 0.5%/hr 壓力衰減（視試劑種類而定）
+   - BSL 2+ 設施可能要求更嚴格的標準
+
+2. 去污效果確認（Biodecontamination Efficacy）
+   - 使用生物指示劑（BI），通常為枯草桿菌芽孢（Geobacillus stearothermophilus）
+   - 目標：≥ 6-log reduction（D-value × 週期次數）
+
+3. 殘留量驗證（Residual Level Validation）
+   - VHP 殘留量分析（trace-limit-detection method）
+   - 驗收標準：對產品無不良影響的殘留濃度
+   - 通常 < 1 ppm VHP（視產品敏感度而定）
+                        </pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：熱氣球充氣前的氣密性檢查</h4>
+                        <p>氣態去污就像在氣密空間裡充入有殺菌效果的「氣體」。就像熱氣球充氣前需要確認無破洞，ATMP 廠房在進行 VHP 去污前，必須先驗證整個房間的氣密性。</p>
+                        <p>差別在於：熱氣球漏氣只是飛不起來，ATMP 廠房氣密失效可能導致 BSL 病原體或有毒試劑外洩，後果截然不同。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考題 2</h4>
+                        <p>設施工程師在 BSL-2 ATMP 生產間安裝了一個新的溫溼度感測器，將探頭穿過牆板固定，但未對穿牆孔進行封堵處理。</p>
+                        <p>在下次 VHP 去污週期中可能發生什麼問題？應如何預防？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2: CO2 SYSTEM ===== -->
+    <div id="co2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2</div>
+            <div class="chapter-info">
+                <h2>Carbon Dioxide (CO&#8322;) Generation and Distribution System</h2>
+                <p>PDA PtC-14, p25–26 | Cell culture supply, asphyxiation risk, O&#8322; monitoring</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>CO&#8322; System — Key Requirements</h3>
+                    <p><strong>a.</strong> Any CO&#8322; distribution lines installed should be tested to confirm that the <span class="key-term">microbial and particulate levels</span> are suitable for the intended use. The quality classification of the distribution line generally depends on the intended use (e.g., the classification of the air space within the equipment for which the CO&#8322; is used).</p>
+                    <p><strong>b.</strong> The design of the distribution system should consider the <span class="key-term">pressure requirements</span> of the intended use including any possible future expansion needs. Appropriate <span class="key-term">pressure regulation</span> should be included in the design if equipment with different pressure requirements is connected to the distribution system.</p>
+                    <p><strong>c.</strong> The design should include the necessary controls to provide a <span class="key-term">continuous supply</span> of CO&#8322; gas (e.g., <span class="key-term">source tank switchover</span>) at the appropriate flow rate and such features should be commissioned and/or qualified.</p>
+                    <p><strong>d.</strong> Branched-distribution system designs serving different processes should consider how <span class="key-term">cross-contamination risk</span> through the piping can be prevented.</p>
+                    <p><strong>e.</strong> Pipes must be marked with CO&#8322; signs and should indicate the flow direction.</p>
+                    <p><strong>f.</strong> An <span class="key-term">oxygen (O&#8322;) sensor</span> with visual and audible alarm should be installed to notify personnel of a <span class="key-term">low-oxygen condition</span>. Personnel should also be equipped with <span class="key-term">personal O&#8322; sensors</span>. A <span class="key-term">buddy system</span> and/or <span class="key-term">man-down alarms</span> should also be considered.</p>
+                    <p><strong>g.</strong> A risk-based approach should be used for the qualification.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>CO&#8322; 系統 — 細胞培養的「生命線」</h3>
+                    <div class="concept-box">
+                        <h4>為什麼 ATMP 廠房特別需要 CO&#8322; 系統？</h4>
+                        <p>CO&#8322; 在 ATMP 製造中的主要用途是細胞培養（Cell Culture）。哺乳動物細胞（包括 T 細胞、NK 細胞、iPSC）的培養環境需要：</p>
+                        <ul>
+                            <li>溫度：37°C（模擬體溫）</li>
+                            <li><strong>CO&#8322; 濃度：5%（維持培養液 pH 值在 7.2–7.4）</strong></li>
+                            <li>濕度：高濕度（防止培養液蒸發）</li>
+                        </ul>
+                        <p>傳統小分子藥廠幾乎不需要 CO&#8322; 系統；ATMP 廠房的 CO&#8322; 供應一旦中斷，細胞可能在數小時內因 pH 值失控而死亡，導致批次報廢。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>生命安全警告：CO&#8322; 窒息風險（Asphyxiation Risk）</h4>
+                        <p>CO&#8322; 是無色無味的氣體，在封閉空間中濃度升高時，操作人員在察覺前可能已喪失行動能力。</p>
+                        <p>要點 (f) 要求的三重防護：</p>
+                        <ul>
+                            <li><strong>房間 O&#8322; 監測系統</strong>：固定式感測器，設視覺 + 聽覺警報</li>
+                            <li><strong>個人 O&#8322; 感測器</strong>：操作人員隨身攜帶</li>
+                            <li><strong>夥伴制度（Buddy System）/ 倒地警報（Man-Down Alarm）</strong>：若人員失去回應，觸發緊急救援</li>
+                        </ul>
+                        <p>這三重防護對應決策優先序 <strong>#1（操作人員安全）</strong>，屬於不可妥協的強制要求。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>CO&#8322; 系統品質分類原則</h4>
+                        <pre>
+CO&#8322; 品質分類取決於接觸點的環境分級：
+
+使用場景              CO&#8322; 管線品質要求
+─────────────────────────────────────────
+CO&#8322; 進入 ISO 5 層流罩內部  →  需達到同等潔淨室標準
+CO&#8322; 進入 ISO 7 培養箱      →  符合 ISO 7 微粒/微生物要求
+CO&#8322; 用於非產品接觸用途     →  一般工業級可能可接受
+(如 HVAC 壓力平衡用途)
+
+關鍵原則：CO&#8322; 管線品質 ≥ 其進入的最嚴格環境分級
+                        </pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：餐廳廚房的天然氣供應</h4>
+                        <p>想像一家餐廳的天然氣系統：</p>
+                        <ul>
+                            <li>需要<strong>持續供氣</strong>（備用桶切換 = Source Tank Switchover）</li>
+                            <li>不同爐具有<strong>不同壓力需求</strong>（需要壓力調節）</li>
+                            <li>天然氣有<strong>爆炸/窒息風險</strong>（需要洩漏偵測）</li>
+                        </ul>
+                        <p>CO&#8322; 系統的邏輯完全相同，只是廚房換成了細胞培養間，天然氣換成了 CO&#8322;，後果從廚房爆炸換成了細胞死亡 + 人員窒息。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考題 3</h4>
+                        <p>一個 CAR-T 細胞製造設施有兩條獨立生產線：Line A（自體）和 Line B（異體）。設施工程師建議共用一條 CO&#8322; 主幹管，再分支到各個培養箱，以節省建設成本。</p>
+                        <p>從要點 (d)「交叉污染風險」角度評估：這個設計有何潛在問題？需要哪些工程控制措施？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 3: PURIFIED WATER ===== -->
+    <div id="pw" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3</div>
+            <div class="chapter-info">
+                <h2>Purified Water (PW) Generation and Distribution System</h2>
+                <p>PDA PtC-14, p26 | Biofilm prevention, disinfectant preparation, pressure differential</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Purified Water — Key Requirements</h3>
+                    <p><strong>a.</strong> Any purified water generation and distribution system should be <span class="key-term">qualified and commissioned</span> for the intended use. <span class="key-term">Routine sampling</span> of both the generation and distribution system should be conducted to ensure the ongoing quality of the purified water.</p>
+                    <p><strong>b.</strong> The use of purified water in cleaning activities should consider the impact of water quality on any <span class="key-term">surface-disinfectant preparation</span> and on the ability to maintain room classification, or <span class="key-term">WFI should be considered as an alternative</span>.</p>
+                    <p><strong>c.</strong> The design and maintenance (e.g., temperature, flow rate, routine disinfection) of the distribution system should ensure <span class="key-term">no biofilm formation</span>.</p>
+                    <p><strong>d.</strong> Distribution systems serving different processes or different equipment within the process should ensure that the process, including the cleaning process, operates at a <span class="key-term">lower pressure</span> than the purified distribution system to prevent a <span class="key-term">cross-contamination risk</span> through the piping, or the valve design should prevent any possible mixing (e.g., <span class="key-term">double-block and bleed</span>).</p>
+                    <p><strong>e.</strong> Pipes must be marked with "Purified Water" signs and should indicate the flow direction.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>純化水系統 — ATMP 廠房的清潔水策略</h3>
+                    <div class="concept-box">
+                        <h4>純化水（Purified Water, PW）的定義與 ATMP 適用範圍</h4>
+                        <p>純化水依 Ph. Eur. / USP 標準生產，主要用途：</p>
+                        <ul>
+                            <li>清潔用水（設備表面清洗）</li>
+                            <li>配製非注射用消毒劑（如 70% IPA、次氯酸鈉溶液）</li>
+                            <li>非直接產品接觸用途</li>
+                        </ul>
+                        <p>要點 (b) 提出一個重要的 ATMP 特有考量：若純化水水質不穩定，可能影響所配製消毒劑的<strong>效力</strong>（硬度、pH 值影響），從而危及 BSL 環境維持能力。在這種情況下，應考慮<strong>改用 WFI</strong> 來配製消毒劑。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>ATMP 廠房純化水的特殊挑戰：生物膜（Biofilm）</h4>
+                        <p>傳統藥廠已有成熟的純化水生物膜控制措施（高溫循環、定期臭氧消毒等），但 ATMP 廠房面臨額外風險：</p>
+                        <ul>
+                            <li>若設施規模較小（如 autologous ATMP 設施），水系統使用頻率可能較低</li>
+                            <li>低流速期間生物膜形成風險上升</li>
+                            <li>ATMP 免疫療法患者往往免疫力極度低下（化療後），對水中微生物污染<strong>零容忍</strong></li>
+                        </ul>
+                        <p>要點 (c) 的「無生物膜」要求在 ATMP 廠房中等同決策優先序 <strong>#2（患者安全）</strong>的直接要求。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>壓力差防交叉污染原則（Pressure Differential Principle）</h4>
+                        <pre>
+雙塊洩放閥（Double-Block and Bleed, DBB）設計：
+
+高壓端（PW 主管）
+       |
+    [Block Valve 1]  ← 正常關閉狀態
+       |
+    [Bleed Valve]    ← 任何洩漏都從此排放到安全位置
+       |
+    [Block Valve 2]  ← 正常關閉狀態
+       |
+低壓端（製程設備 / 清潔用途）
+
+原則：設備側壓力 < PW 分配管壓力
+      即使閥門失效，污染不能逆流進入主管
+
+替代方案：獨立管路設計（無共用連接）
+                        </pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：城市自來水系統的逆流防止器</h4>
+                        <p>城市自來水管網在接入用水戶時，會安裝「逆流防止閥」（Backflow Preventer），確保自來水廠水壓始終高於用戶端，防止污染物從用戶端逆流回水廠。</p>
+                        <p>ATMP 廠房 PW 系統的 DBB 設計原理完全相同：確保潔淨水源永遠不被製程端污染，方向只能是「水源 → 製程」，永不逆流。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4: WFI SYSTEM ===== -->
+    <div id="wfi" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4</div>
+            <div class="chapter-info">
+                <h2>Water for Injection (WFI) Generation and Distribution System</h2>
+                <p>PDA PtC-14, p26 | Distillation requirement, product-contact validation, biofilm prevention</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>WFI System — Key Requirements</h3>
+                    <p><strong>a.</strong> Any WFI generation and distribution system should be <span class="key-term">qualified and validated</span> to consistently produce water meeting the specification as it is intended to be used. <span class="key-term">Sampling locations</span> close to the intended points of use should be defined according to the <span class="key-term">Control of Contamination Strategy (CCS)</span>. Routine sampling of both the generation and distribution system should be conducted to ensure the ongoing quality of the WFI.</p>
+                    <p><strong>b.</strong> WFI should be produced by <span class="key-term">distillation</span> or by a purification process that is equivalent to distillation if WFI is used for <span class="key-term">direct product-contact</span> purposes.</p>
+                    <p><strong>c.</strong> The design and maintenance (e.g., temperature, flow rate, routine disinfection) of the distribution system should ensure <span class="key-term">no biofilm formation</span>.</p>
+                    <p><strong>d.</strong> Distribution systems serving different processes or different equipment within the process should ensure that the process, including the cleaning process, operates at a <span class="key-term">lower pressure</span> than the WFI distribution system to prevent cross-contamination risk through the piping, or the valve design should prevent any possible mixing (e.g., <span class="key-term">double block and bleed</span>).</p>
+                    <p><strong>e.</strong> Pipes must be marked with "WFI" signs and should indicate the flow direction.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>注射用水系統 — ATMP 最高水質要求</h3>
+                    <div class="concept-box">
+                        <h4>WFI 在 ATMP 製造中的用途</h4>
+                        <p>注射用水（Water for Injection, WFI）是 ATMP 製造中用於直接產品接觸的水質等級，包括：</p>
+                        <ul>
+                            <li>最終配製（Final Formulation）：稀釋細胞懸浮液</li>
+                            <li>緩衝液配製（Buffer Preparation）</li>
+                            <li>無菌清洗（Final Rinse after CIP）</li>
+                            <li>蒸汽滅菌鍋進水（若使用純蒸汽）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>WFI vs. 純化水：ATMP 廠房的選擇準則</h4>
+                        <table>
+                            <tr>
+                                <th>用途</th>
+                                <th>建議水質</th>
+                                <th>理由</th>
+                            </tr>
+                            <tr>
+                                <td>直接接觸最終產品</td>
+                                <td><span class="badge green">WFI 必須</span></td>
+                                <td>內毒素、微生物最高管控</td>
+                            </tr>
+                            <tr>
+                                <td>配製注射用緩衝液</td>
+                                <td><span class="badge green">WFI 必須</span></td>
+                                <td>產品接觸等同直接接觸</td>
+                            </tr>
+                            <tr>
+                                <td>設備最終清洗淋洗</td>
+                                <td><span class="badge green">WFI 建議</span></td>
+                                <td>防止殘留水中內毒素污染</td>
+                            </tr>
+                            <tr>
+                                <td>配製消毒劑（非直接產品接觸）</td>
+                                <td><span class="badge blue">PW 可能可接受</span></td>
+                                <td>需進行風險評估</td>
+                            </tr>
+                            <tr>
+                                <td>設備初洗、環境清潔</td>
+                                <td><span class="badge yellow">PW 通常足夠</span></td>
+                                <td>非產品接觸用途</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="concept-box">
+                        <h4>CCS（污染控制策略）與 WFI 取樣點設計</h4>
+                        <p>要點 (a) 特別提到依據 <strong>CCS</strong> 定義取樣位置，這是 EU GMP Annex 1（2022 版）的核心概念。</p>
+                        <p>CCS 要求不能只在 WFI 產生機出口取樣，必須在<strong>最接近實際使用點</strong>（Point of Use）的位置取樣，因為分配管線本身也可能是污染源。</p>
+                        <p>在 ATMP 小批量生產中，WFI 系統可能規模較小，取樣點設計尤其重要，因為使用頻率低的支管更容易累積微生物。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：醫院直飲水系統與手術室用水</h4>
+                        <p>醫院走廊的飲水機（純化水等級）和手術室的無菌生理食鹽水（WFI 等級），使用不同的水質標準，因為後者直接進入患者體內。</p>
+                        <p>ATMP 廠房的邏輯相同——「用到哪裡、就要達到那裡的水質」，這是 CCS 導向設計的核心精神。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考題 4</h4>
+                        <p>一家新建的 ATMP CDMO 設施，由於空間限制，工程師提議：WFI 和純化水共用同一條分配管的最後一段，在使用點前才分叉。為了節省成本，兩個管路共用一個取樣口。</p>
+                        <p>從 Q3.1 要點 (d) 和 CCS 角度，這個設計有哪些問題？如何改進？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 5: LIQUID NITROGEN ===== -->
+    <div id="ln2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5</div>
+            <div class="chapter-info">
+                <h2>Liquid Nitrogen (LN&#8322;) Generation and Distribution System</h2>
+                <p>PDA PtC-14, p26–27 | Ultra-low temperature storage, cryogenic burn risk, cell bank backup</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Liquid Nitrogen — Key Requirements</h3>
+                    <p><strong>a.</strong> Installation of a <span class="key-term">liquid nitrogen (LN&#8322;)</span> generation and distribution system should consider the <span class="key-term">asphyxiation risk</span>. A room O&#8322;-level monitoring system with visual and audible alarms should be available, and personnel should also be equipped with <span class="key-term">O&#8322; personal-monitoring instruments</span>. A <span class="key-term">buddy system</span> and/or <span class="key-term">man-down alarms</span> should also be considered. Means to detect and isolate any leak in the system should be available, including <span class="key-term">PPE</span> for routine use and emergency-rescue purposes.</p>
+                    <p><strong>b.</strong> LN&#8322; is extremely cold and contact to bare skin causes <span class="key-term">severe frostbite</span>. Signage should be posted throughout the space. <span class="key-term">PPE-donning stations</span> should be prominently positioned within the floor plan. <span class="key-term">First-aid stations</span> should also be available for accidental exposures.</p>
+                    <p><strong>c.</strong> The materials that require storage in LN&#8322; (<span class="key-term">ultra-low temperature storage</span>) are commonly the most critical materials in the process (e.g., <span class="key-term">cell or viral banks</span>). Therefore, it is common in designs to consider the inclusion of <span class="key-term">back-up equipment</span> (e.g., LN&#8322; freezers) in case of equipment failure. The back-up equipment should be qualified for use and subject to routine maintenance so it is ready for deployment.</p>
+                    <p><strong>d.</strong> Piping for distributing LN&#8322; should be adequately <span class="key-term">insulated</span> both due to the cold-burn risk and to avoid condensation on external surfaces.</p>
+                    <p><strong>e.</strong> Pipes should be marked with "LN&#8322;" signs and should indicate the flow direction.</p>
+                    <p><strong>f.</strong> Due to the risk of testing LN&#8322; and its stability, LN&#8322; quality through the distribution system is typically confirmed by the use of a <span class="key-term">Certificate of Compliance or Certificate of Analysis</span> provided by LN&#8322; supplier.</p>
+                    <p><strong>g.</strong> Design should include controls to provide <span class="key-term">continuous supply</span> of LN&#8322; as required (e.g., source-tank switchover), and such features should be commissioned and/or qualified accordingly.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>液態氮系統 — ATMP 最關鍵的儲存介質</h3>
+                    <div class="concept-box">
+                        <h4>為什麼 LN&#8322; 對 ATMP 如此關鍵？</h4>
+                        <p>液態氮（Liquid Nitrogen, LN&#8322;，沸點 -196°C）是 ATMP 製造中儲存以下最高價值物料的介質：</p>
+                        <ul>
+                            <li><strong>細胞庫（Cell Banks）</strong>：Master Cell Bank / Working Cell Bank，是整個產品線的源頭</li>
+                            <li><strong>病毒庫（Viral Banks）</strong>：基因療法產品的病毒載體種子庫</li>
+                            <li><strong>患者細胞（Patient Cells）</strong>：自體 CAR-T 治療的起始原料，不可再生</li>
+                        </ul>
+                        <p>要點 (c) 明確指出：這些是「製程中最關鍵的物料」，因此必須考慮備援設備。這在決策優先序中同時涉及 <strong>#2（患者安全）</strong>和 <strong>#3（產品品質）</strong>。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>雙重危害：窒息（Asphyxiation）+ 低溫灼傷（Cryogenic Burn）</h4>
+                        <p>LN&#8322; 系統是 ATMP 廠房中最危險的公用系統之一，具有兩種截然不同的危害機制：</p>
+                        <p><strong>危害 1：窒息風險</strong></p>
+                        <ul>
+                            <li>LN&#8322; 氣化後體積膨脹約 700 倍，迅速排擠空間中的 O&#8322;</li>
+                            <li>O&#8322; 濃度 &lt; 19.5%：危險警戒；&lt; 16%：失去判斷力；&lt; 10%：立即喪失意識</li>
+                            <li>整個過程可能在數分鐘內發生，且無明顯預警感覺</li>
+                        </ul>
+                        <p><strong>危害 2：低溫灼傷（凍傷）</strong></p>
+                        <ul>
+                            <li>-196°C 的 LN&#8322; 接觸皮膚，0.1 秒內造成嚴重凍傷</li>
+                            <li>液氮噴濺可能造成眼睛永久性損傷</li>
+                            <li>PPE 穿戴站和急救站必須在平面圖中醒目標示</li>
+                        </ul>
+                    </div>
+                    <div class="formula-box">
+                        <h4>LN&#8322; 備援系統設計考量</h4>
+                        <pre>
+備援設計的三個層級：
+
+Level 1：備用儲槽（Backup Dewar / Tank）
+  - 確保主儲槽耗盡前可切換
+  - 供應切換需經 Commissioning 驗證
+  - 通常需要額外的樓板荷重設計
+
+Level 2：備用 LN&#8322; 冷凍箱（Backup LN&#8322; Freezer）
+  - 主設備故障時，立即將關鍵物料轉移
+  - 備用設備同樣需要 IQ/OQ/PQ 確效
+  - 需定期演練轉移程序（SOP）
+
+Level 3：異地儲存（Off-site Storage）
+  - 細胞銀行和病毒銀行通常應在兩個物理分離的地點備份
+  - 這是行業最佳實務，但超出 Q3.1 的範圍
+
+注意：備援設計增加了：
+  + 設施佔地面積（Floor Footprint）
+  + 資本支出（CapEx）
+  + LN&#8322; 供應管路複雜度
+                        </pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：醫院加護病房的不斷電系統（UPS）</h4>
+                        <p>加護病房的維生設備（呼吸器、心臟監護儀）絕不能因停電而中斷，因此醫院設計了 UPS + 發電機雙重備援。</p>
+                        <p>ATMP 廠房的 LN&#8322; 備援邏輯完全相同：細胞庫就是患者的「維生設備」，一旦 LN&#8322; 供應中斷而無備援，患者可能失去唯一的治療機會，後果不可逆。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考題 5</h4>
+                        <p>一家自體 CAR-T 細胞療法的 CDMO，計劃在新設施中儲存 50 名患者的白血球分離產品（每位患者樣本不可複製）。</p>
+                        <p>工廠設計師建議只安裝一台 LN&#8322; 儲存箱，以節省空間和成本。</p>
+                        <p>從風險管理和決策優先序角度，你如何回應？需要準備哪些論據說服管理層？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6: NITROGEN GAS ===== -->
+    <div id="n2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6</div>
+            <div class="chapter-info">
+                <h2>Nitrogen (N&#8322;) Distribution System</h2>
+                <p>PDA PtC-14, p27 | Inert overlay, sterile filtration, asphyxiation risk, classification</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Nitrogen (N&#8322;) — Key Requirements</h3>
+                    <p><strong>a.</strong> Any nitrogen (N&#8322;) distribution line installed should be <span class="key-term">classified</span>. The classification of the distribution line generally depends on the intended use (e.g., classified environment within the equipment where the N&#8322; is used, criticality of the material in contact with the N&#8322; gas). Examples of N&#8322; use include, but are not limited to, <span class="key-term">N&#8322; overlay</span> in the product container head space and N&#8322; overlaying in the bulk-material containers (i.e., displacement of oxygen to reduce oxidation of materials and/or maintain the stability of raw materials).</p>
+                    <p><strong>b.</strong> Installation of an N&#8322; generation and distribution system should consider the <span class="key-term">asphyxiation risk</span>. An O&#8322;-level monitoring system room with visual and audible alarms should be available, and personnel should also be equipped with O&#8322; personal-monitoring instruments. Personnel in the room, or intending to enter the room, should be trained to exit (or not enter) the room when the alarm is active. A buddy system and/or man-down alarms should also be considered. The means to detect and isolate any leak in the system should be available, including the availability of PPE for emergency-rescue purposes.</p>
+                    <p><strong>c.</strong> Appropriately <span class="key-term">qualified source and terminal sterile filtration</span> should be considered if N&#8322; is used for product-contact purposes.</p>
+                    <p><strong>d.</strong> Distribution systems serving different processes or different equipment within the process should ensure that the design prevents the risk of <span class="key-term">cross-contamination</span>.</p>
+                    <p><strong>e.</strong> Pipes must be marked with "N&#8322;" signs and should indicate the flow direction.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>氮氣系統 — 惰性保護與產品穩定性</h3>
+                    <div class="concept-box">
+                        <h4>N&#8322; 在 ATMP 製造中的兩種主要用途</h4>
+                        <p><strong>用途 1：惰性覆蓋（Inert Overlay / Blanket）</strong></p>
+                        <ul>
+                            <li>在產品容器（藥瓶、袋）頭部空間覆蓋 N&#8322;，排除 O&#8322;</li>
+                            <li>防止產品（特別是細胞、蛋白質、脂質奈米顆粒）被氧化</li>
+                            <li>維持原料（如敏感性緩衝液試劑）的穩定性</li>
+                        </ul>
+                        <p><strong>用途 2：管路吹掃（Purging）</strong></p>
+                        <ul>
+                            <li>在灌裝前用 N&#8322; 吹掃管路，排除空氣中的 O&#8322; 和水分</li>
+                            <li>在維修後恢復設備前確認管路潔淨</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>N&#8322; 的窒息風險與 CO&#8322; 的差異</h4>
+                        <p>N&#8322; 和 CO&#8322; 都有窒息風險，但機制稍有不同：</p>
+                        <table>
+                            <tr>
+                                <th>特性</th>
+                                <th>N&#8322;（氮氣）</th>
+                                <th>CO&#8322;（二氧化碳）</th>
+                            </tr>
+                            <tr>
+                                <td>比重</td>
+                                <td>約與空氣相當（0.97）</td>
+                                <td>重於空氣（1.53）</td>
+                            </tr>
+                            <tr>
+                                <td>在空間中的行為</td>
+                                <td>均勻擴散</td>
+                                <td>沉積在低處（坑道、地板）</td>
+                            </tr>
+                            <tr>
+                                <td>警告感覺</td>
+                                <td>完全無警告（純窒息）</td>
+                                <td>高濃度時有刺激感</td>
+                            </tr>
+                            <tr>
+                                <td>危險程度</td>
+                                <td>極高（無預警）</td>
+                                <td>高（低處尤其危險）</td>
+                            </tr>
+                        </table>
+                        <p>N&#8322; 的無警告特性使其在所有窒息性氣體中被認為是最危險的，操作人員可能在毫無感覺的情況下喪失意識。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>N&#8322; 無菌過濾設計：Source vs. Terminal 過濾</h4>
+                        <pre>
+當 N&#8322; 直接接觸產品時，需要雙重過濾保障：
+
+供應端過濾（Source Filtration）：
+  位置：N&#8322; 供應站（Gas Manifold）出口
+  功能：去除來自氣源的微粒和微生物
+  確效：依使用點的環境分級要求確效
+
+末端過濾（Terminal Filtration）：
+  位置：最接近使用點（Point of Use）
+  功能：確保進入產品接觸區域的 N&#8322; 達到無菌標準
+  確效：0.22 μm 除菌過濾，需進行完整性測試
+
+為何需要兩道過濾？
+  Source 過濾保護管線不受外部污染
+  Terminal 過濾是最後一道防線，防止管線內部污染
+  兩道過濾共同確保到達產品的 N&#8322; 是無菌的
+                        </pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：手術室醫療氣體系統</h4>
+                        <p>手術室天花板上的醫療氣體終端（O&#8322;、N&#8322;O、壓縮空氣）每一個接頭都有顏色標示和防錯設計，就像 Q3.1(e) 要求的管路標示一樣。</p>
+                        <p>手術室的 O&#8322; 若被 N&#8322; 污染，患者有立即生命危險。ATMP 廠房的 N&#8322; 若被生物污染物逆流污染，可能危及後續患者的產品安全性。標示的目的都是防止「接錯管子」的災難性後果。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考題 6</h4>
+                        <p>在 mRNA LNP（脂質奈米顆粒）製造設施中，N&#8322; 被用於兩個目的：(1) 原料儲槽的惰性覆蓋保護（直接接觸脂質原料）；(2) 空調系統的吹掃氣體（不接觸產品）。</p>
+                        <p>依據 Q3.1 要點 (a) 和 (c)，這兩條 N&#8322; 管路應分別達到什麼品質分類和過濾要求？可以共用同一條主管嗎？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPARISON TABLE SECTION ===== -->
+    <div id="summary-table" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#9776;</div>
+            <div class="chapter-info">
+                <h2>Utility Systems — Comprehensive Comparison Table</h2>
+                <p>All six utility subsystems: primary risk, safety monitoring, and validation requirements</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Table -->
+                <div class="left-column">
+                    <h3>Six Utility Subsystems at a Glance</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Utility System</th>
+                                <th>Primary Safety Risk</th>
+                                <th>Key Monitoring Requirement</th>
+                                <th>Validation Approach</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Gaseous Disinfection</strong></td>
+                                <td>Chemical agent escape; BSL containment breach</td>
+                                <td>Room integrity test; residual level post-cycle</td>
+                                <td>Validation + EM Performance Qualification</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CO&#8322; Distribution</strong></td>
+                                <td>Asphyxiation (O&#8322; displacement)</td>
+                                <td>Fixed room O&#8322; sensor + personal O&#8322; monitor</td>
+                                <td>Risk-based qualification; microbial/particulate test</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Purified Water</strong></td>
+                                <td>Biofilm; disinfectant efficacy failure</td>
+                                <td>Routine sampling (generation + distribution)</td>
+                                <td>IQ/OQ/PQ; ongoing monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>WFI</strong></td>
+                                <td>Endotoxin; biofilm; cross-contamination</td>
+                                <td>Point-of-use sampling per CCS; routine testing</td>
+                                <td>Full validation; distillation or equivalent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Liquid Nitrogen</strong></td>
+                                <td>Asphyxiation + cryogenic burn; cell bank loss</td>
+                                <td>Fixed O&#8322; sensor + personal monitor; PPE stations</td>
+                                <td>CoA from supplier; backup equipment qualified</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nitrogen Gas</strong></td>
+                                <td>Asphyxiation (no warning); cross-contamination</td>
+                                <td>Fixed O&#8322; sensor + personal monitor; buddy system</td>
+                                <td>Source + terminal sterile filtration if product contact</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h3>Personnel Safety Equipment Summary</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Safety Measure</th>
+                                <th>CO&#8322;</th>
+                                <th>LN&#8322;</th>
+                                <th>N&#8322;</th>
+                                <th>VHP/ClO&#8322;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fixed room O&#8322; monitor</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Personal O&#8322; sensor</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Buddy system / man-down</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Cryogenic PPE station</td>
+                                <td>—</td>
+                                <td>&#10003;</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>First-aid station</td>
+                                <td>—</td>
+                                <td>&#10003;</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Room airtightness test</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td>Leak isolation means</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                                <td>&#10003;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <h3>比較表解讀 — ATMP 公用系統設計的四個共通原則</h3>
+                    <div class="concept-box">
+                        <h4>原則 1：所有公用系統都需要「分類」決策</h4>
+                        <p>Q3.1 中每個公用系統都強調依「預期用途（Intended Use）」分類。這是一個貫穿整個文件的核心原則：</p>
+                        <ul>
+                            <li>CO&#8322; 進入 ISO 5 環境 = 需達到 ISO 5 品質</li>
+                            <li>N&#8322; 直接接觸產品 = 需無菌過濾</li>
+                            <li>WFI 用於最終配製 = 最嚴格的驗證要求</li>
+                        </ul>
+                        <p>這與 EU GMP Annex 1 的「基於風險的方法」（Risk-Based Approach）完全一致。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>原則 2：氣體系統 = 窒息風險的三重防護</h4>
+                        <p>CO&#8322;、LN&#8322;、N&#8322; 三個系統都需要完全相同的三重安全防護架構：</p>
+                        <ol>
+                            <li>固定式房間 O&#8322; 監測（視覺 + 聽覺雙重警報）</li>
+                            <li>個人攜帶式 O&#8322; 感測器</li>
+                            <li>夥伴制度（Buddy System）/ 倒地警報（Man-Down Alarm）</li>
+                        </ol>
+                        <p>這三重防護源自同一個決策優先序 <strong>#1（操作人員安全）</strong>，在任何 ATMP 設施設計中都是不可妥協的硬性要求。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>原則 3：防交叉污染 = 壓力差或雙塊洩放閥</h4>
+                        <p>PW、WFI、CO&#8322;、N&#8322; 系統都強調了交叉污染風險。預防方法有兩種：</p>
+                        <ul>
+                            <li><strong>壓力差法</strong>：分配主管壓力 > 製程設備壓力，污染不能逆流</li>
+                            <li><strong>閥門設計法</strong>：雙塊洩放閥（DBB），即使一個閥門失效，也有第二道防護</li>
+                        </ul>
+                        <p>在 ATMP 廠房，交叉污染的後果可能包括批次間患者細胞混淆，屬於決策優先序 <strong>#2（患者安全）</strong>的最高風險類別。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>原則 4：管路標示是 GMP 的基礎，也是安全的第一道防線</h4>
+                        <p>Q3.1 中所有六個公用系統都要求管路標示流向。這看似基礎，但在 ATMP 廠房中特別重要：</p>
+                        <ul>
+                            <li>多種高風險氣體（CO&#8322;、N&#8322;、LN&#8322;）同時存在於同一設施</li>
+                            <li>接錯管路可能導致窒息事故或產品污染</li>
+                            <li>維護人員在緊急狀況下需要快速識別管路類型</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CDMO SCENARIOS SECTION ===== -->
+    <div id="cdmo-scenarios" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#9733;</div>
+            <div class="chapter-info">
+                <h2>CDMO ATMP Facility Planning Scenarios</h2>
+                <p>Practical application of Q3.1 utility design principles in real CDMO contexts</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- Full-width CDMO scenarios section -->
+            <div class="practice-box green-solid">
+                <h3>CDMO Scenario 1：從傳統生技廠轉型 ATMP CDMO</h3>
+                <p><strong>情境背景：</strong>一家台灣 CDMO 目前主要生產重組蛋白和 mAb，計劃新增 CAR-T 細胞治療的代工服務。現有廠房已有完整的 WFI、純化水、CDA（Clean Dry Air）系統，通過 EU GMP 認證。</p>
+                <p><strong>需要新增或改造哪些公用系統？</strong></p>
+                <ul>
+                    <li><strong>必須新增：CO&#8322; 系統</strong> — 傳統蛋白質生產不需要 CO&#8322;，CAR-T 細胞培養需要 5% CO&#8322; 恆定供應。需要安裝 CO&#8322; 分配管、房間 O&#8322; 監測、個人感測器。</li>
+                    <li><strong>必須新增：LN&#8322; 系統</strong> — 患者白血球分離產品（Apheresis）和培養後的 CAR-T 細胞需要 LN&#8322; 長期保存。必須同時規劃備援儲存系統。</li>
+                    <li><strong>需要評估升級：氣態去污系統</strong> — 若 BSL-2 設施需要 VHP 或 ClO&#8322; 去污，需進行氣密性測試，並確認所有穿牆穿板點的密封性。</li>
+                    <li><strong>現有系統可能需要確認：N&#8322; 管路品質分類</strong> — 若用於細胞產品的惰性覆蓋，需確認是否已安裝末端無菌過濾。</li>
+                    <li><strong>WFI 系統可能可沿用</strong> — 但需依 CCS 重新評估新增生產區域的取樣點佈局。</li>
+                </ul>
+            </div>
+
+            <div class="practice-box green-solid">
+                <h3>CDMO Scenario 2：設計新建 ATMP 多功能設施（Multi-modal Facility）</h3>
+                <p><strong>情境背景：</strong>一家新創 ATMP CDMO 計劃建設一個多功能設施，同時支援：Line A（自體 CAR-T，BSL-2）、Line B（AAV 基因療法，BSL-2）、Line C（異體 iPSC 衍生 NK 細胞，BSL-1）。</p>
+                <p><strong>公用系統設計的關鍵決策點：</strong></p>
+                <ul>
+                    <li><strong>CO&#8322; 系統是否共用主幹管？</strong><br>Q3.1 要點 (d) 警告分支系統的交叉污染風險。自體 vs. 異體生產線的 CO&#8322; 管路應考慮獨立佈置，或在每個取用點安裝防回流閥，確保 Line A 患者細胞不會通過 CO&#8322; 管路污染 Line B。</li>
+                    <li><strong>LN&#8322; 備援如何設計？</strong><br>三條生產線共用一個 LN&#8322; 儲存系統還是各自獨立？共用節省成本，但 Line A 自體細胞（不可複製）的風險等級遠高於 Line B/C，建議 Line A 配備獨立備援儲槽。</li>
+                    <li><strong>氣態去污系統的 BSL 邊界管理：</strong><br>三條生產線的 BSL 邊界不同，VHP 去污週期需要分別設計。BSL-2 的 Line A/B 需要更嚴格的氣密性要求，Line C 可能採用不同的去污策略。</li>
+                    <li><strong>WFI vs. PW 分配管路的壓力設計：</strong><br>多條生產線共用 WFI 主管時，DBB 設計必須確保每條支管的製程壓力低於主管壓力，這需要在設計階段就由設施工程師和工藝開發團隊共同確認壓力需求。</li>
+                </ul>
+            </div>
+
+            <div class="practice-box green-solid">
+                <h3>CDMO Scenario 3：法規稽查準備 — 公用系統的常見 FDA/EMA 檢查重點</h3>
+                <p><strong>基於 Q3.1 原則，稽查員最可能關注的問題：</strong></p>
+                <ul>
+                    <li><strong>WFI 取樣點是否依 CCS 設計？</strong><br>最常見的缺陷：只在 WFI 產生機出口取樣，未在最接近使用點的位置取樣。稽查員會要求看到 CCS 文件，並核對實際取樣點位置與圖面的一致性。</li>
+                    <li><strong>LN&#8322; 備援設備是否已完成確效（Qualification）？</strong><br>許多設施購置了備用 LN&#8322; 冷凍箱，但從未進行 IQ/OQ/PQ，因此在緊急情況下備援設備可能是「未確效狀態」，無法合規使用。</li>
+                    <li><strong>氣態去污殘留物驗證是否完整？</strong><br>稽查員會要求看到 VHP 殘留量分析的驗證報告，確認殘留水平對產品無不良影響。若缺少 Trace-Limit Detection 方法的驗證，這是典型的 483 觀察項目。</li>
+                    <li><strong>O&#8322; 監測系統的驗證狀態？</strong><br>CO&#8322;、LN&#8322;、N&#8322; 房間的 O&#8322; 監測系統是安全關鍵設備（Safety-Critical Equipment），必須有定期校驗記錄和警報測試記錄。稽查員會核對設備校驗日誌。</li>
+                    <li><strong>所有穿牆管線是否有密封記錄？</strong><br>尤其是氣態去污設施的所有穿透點。稽查員可能要求現場確認或查看密封材料的防火/防化學品相容性認證。</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Cross-Reference: Q3.1 to Decision Hierarchy</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Q3.1 Requirement</th>
+                                <th>Decision Priority</th>
+                                <th>Consequence of Non-Compliance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>O&#8322; monitoring for CO&#8322;/LN&#8322;/N&#8322;</td>
+                                <td><span class="badge red">#1 Operator Safety</span></td>
+                                <td>Personnel asphyxiation / fatality</td>
+                            </tr>
+                            <tr>
+                                <td>Gaseous disinfection airtightness</td>
+                                <td><span class="badge red">#1 Operator Safety</span></td>
+                                <td>Chemical agent + BSL breach</td>
+                            </tr>
+                            <tr>
+                                <td>LN&#8322; cryogenic PPE stations</td>
+                                <td><span class="badge red">#1 Operator Safety</span></td>
+                                <td>Severe frostbite injury</td>
+                            </tr>
+                            <tr>
+                                <td>LN&#8322; backup equipment for cell banks</td>
+                                <td><span class="badge orange">#2 Patient Safety</span></td>
+                                <td>Loss of irreplaceable patient cells</td>
+                            </tr>
+                            <tr>
+                                <td>Cross-contamination prevention (DBB)</td>
+                                <td><span class="badge orange">#2 Patient Safety</span></td>
+                                <td>Patient identity mix-up</td>
+                            </tr>
+                            <tr>
+                                <td>WFI biofilm prevention</td>
+                                <td><span class="badge orange">#2 Patient Safety</span></td>
+                                <td>Endotoxin contamination</td>
+                            </tr>
+                            <tr>
+                                <td>N&#8322; terminal sterile filtration</td>
+                                <td><span class="badge yellow">#3 Product Quality</span></td>
+                                <td>Microbial contamination of product</td>
+                            </tr>
+                            <tr>
+                                <td>CO&#8322; continuous supply (switchover)</td>
+                                <td><span class="badge yellow">#3 Product Quality</span></td>
+                                <td>Cell death / batch loss</td>
+                            </tr>
+                            <tr>
+                                <td>VHP residual level validation</td>
+                                <td><span class="badge green">#4 Regulatory</span></td>
+                                <td>FDA 483 observation</td>
+                            </tr>
+                            <tr>
+                                <td>Pipe labeling (all systems)</td>
+                                <td><span class="badge blue">#5 Business</span></td>
+                                <td>GMP deviation; audit finding</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>總結：Q3.1 的核心設計思維</h3>
+                    <div class="concept-box">
+                        <h4>一句話總結 Q3.1</h4>
+                        <p>ATMP 公用系統設計的<strong>基礎</strong>與傳統藥廠相同（GMP 標準），但有兩個額外疊加層：</p>
+                        <ol>
+                            <li><strong>BSL 圍堵完整性</strong>：所有公用系統的穿透點、分配設計都必須維持 BSL 邊界</li>
+                            <li><strong>活細胞/病毒的特殊脆弱性</strong>：CO&#8322; 中斷 = 細胞死亡；LN&#8322; 失效 = 無可挽救的損失</li>
+                        </ol>
+                    </div>
+                    <div class="note-box">
+                        <h4>ATMP CDMO 在公用系統設計上最容易犯的三個錯誤</h4>
+                        <ol>
+                            <li><strong>低估 CO&#8322; 和 N&#8322; 的窒息風險</strong>：很多設施只安裝了固定式感測器，忘記要求操作人員攜帶個人感測器，違反 Q3.1 三重防護要求。</li>
+                            <li><strong>未驗證備援 LN&#8322; 設備</strong>：買了備用冷凍箱但從未確效，緊急時無法合規使用，使備援形同虛設。</li>
+                            <li><strong>CCS 取樣點設計不足</strong>：WFI 取樣只在產生機出口，不在使用點，無法發現分配管中的生物膜問題。</li>
+                        </ol>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>最終比喻：ATMP 公用系統 = 手術室的維生系統</h4>
+                        <p>手術室有三個不能失效的系統：</p>
+                        <ul>
+                            <li>醫療氣體（O&#8322;、麻醉氣體）→ 對應 CO&#8322;/N&#8322;/LN&#8322;</li>
+                            <li>無菌用水（手術沖洗液）→ 對應 WFI</li>
+                            <li>負壓通風（防止外部污染進入）→ 對應氣態去污 + BSL 圍堵</li>
+                        </ul>
+                        <p>每一個系統失效都可能直接危及患者生命。ATMP 廠房的公用系統也是如此——它們不只是「基礎設施」，它們是<strong>患者治療成功的保障</strong>。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>最終綜合練習</h4>
+                        <p>假設你是一家台灣 ATMP CDMO 的 VP Engineering，正在向 Board 提交新設施的公用系統預算。董事會問：「為什麼 LN&#8322; 系統預算比傳統凍結乾燥設施高出 3 倍？能否削減成本？」</p>
+                        <p>請用本節學到的知識，準備一個 3 分鐘的口頭說明，涵蓋：(1) 雙重危害，(2) 備援必要性，(3) 對患者安全的影響，(4) 法規合規要求。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 14 — Facilities and Equipment Considerations for ATMPs</p>
+    <p>Topic 3: Utilities (Q3.1) | Source Pages: 25–28 | Educational Commentary Version 1.0</p>
+    <p style="opacity:0.6; font-size:0.82rem; margin-top:0.5rem;">Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc. — Educational use only. Not for redistribution.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide - Section 21A: Case Studies in Aseptic Filling System Design (Part 1)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 21A: Case Studies in Aseptic Filling System Design (Part 1)</h1>
+    <div class="subtitle">無菌充填系統設計案例研究（第一部分）</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | doc p225 - p246</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解如何將產品特性（黏度、氧敏感性、剪切敏感性、起泡性）直接轉化為充填設備設計要求</li>
+        <li>掌握小容量針劑（Case 1：預充填注射器）與大容量針劑（Case 2：瓶裝液體）的設計差異與決策邏輯</li>
+        <li>學習如何透過結構化的需求矩陣，系統性比較 PP、RPP、TP、DP 四種充填技術的適用性</li>
+        <li>了解生產規模（批次大小、活動策略、IPC 選擇）如何影響充填線設計與年產量估算</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 1 — Product Characteristics (21.1.1) -->
+<!-- ============================================================ -->
+<div class="section-title">21.1 Case 1: Small Volume Parenteral — Liquid in a Syringe (預充填注射器案例)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Specifications for Case 1 are detailed below:</p>
+        <ul>
+            <li>Product: <span class="key-term">monoclonal antibody</span></li>
+            <li>Filling Volume: 0.5 mL</li>
+            <li>Container / Closure System: <span class="key-term">prefilled syringe (PFS)</span>; 1 mL long</li>
+            <li>Dosing System: to be determined</li>
+        </ul>
+
+        <h3>21.1.1 Case 1: Product Characteristics</h3>
+        <p>Table 21.1.1-1 provides details on product characteristic considerations. Refer to Section 1.0 and Section 4.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Pharmaceutical Characteristics</td>
+            </tr>
+            <tr>
+                <td>Highly Potent</td>
+                <td>No</td>
+                <td>None; although containment for toxicity is not required, a decision has been made to fill within an <span class="key-term">isolator</span> to provide enhanced <span class="key-term">sterility assurance (SA)</span></td>
+            </tr>
+            <tr>
+                <td>Toxic</td>
+                <td>No</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>OEL / OEB level</td>
+                <td>No classification</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Product Biological or Physicochemical Requirements</td>
+            </tr>
+            <tr>
+                <td>Temperature-sensitive</td>
+                <td>No</td>
+                <td>Filled under ambient conditions</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Oxygen-sensitive</span></td>
+                <td>Yes</td>
+                <td>Inert gas introduction must be considered; bubble/air-gap size between plunger and liquid is not critical, therefore vacuum stoppering is not necessary</td>
+            </tr>
+            <tr>
+                <td>Light-sensitive</td>
+                <td>Yes</td>
+                <td>Isolator lighting has to have compatible spectrum</td>
+            </tr>
+            <tr>
+                <td>Metal-sensitive</td>
+                <td>No</td>
+                <td>None; no restrictions on product-contact materials of construction</td>
+            </tr>
+            <tr>
+                <td>Silicone-sensitive</td>
+                <td>No</td>
+                <td>None; no restrictions on polymers and tubing</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Chemical-physical Properties</td>
+            </tr>
+            <tr>
+                <td>Viscosity</td>
+                <td>Water-like, 1–2 mPa-s</td>
+                <td>None; no restriction on filling technology based on viscosity</td>
+            </tr>
+            <tr>
+                <td>Surface Tension</td>
+                <td>Less than Water</td>
+                <td>No significant concern for dripping; cylindrical needles acceptable</td>
+            </tr>
+            <tr>
+                <td>Solution or Suspension</td>
+                <td>Solution</td>
+                <td>No active agitation or recirculation required</td>
+            </tr>
+            <tr>
+                <td>Flammable or Explosive</td>
+                <td>No</td>
+                <td>None; NEMA/ATEX cabinetry not required</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Shear-sensitive</span></td>
+                <td>Yes</td>
+                <td>To be verified for future products; different dosing systems could be utilized if future products are not shear-sensitive</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Foaming Tendency</span></td>
+                <td>Yes</td>
+                <td>Filling curve (e.g., start, stop, acceleration) to be carefully designed; level of filling start, filling end, and careful needle movement must be incorporated to prevent foam generation</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 產品特性驅動設計決策</h4>
+            <p>Case 1 的關鍵設計驅動因素有三個：</p>
+            <ul>
+                <li><strong>氧敏感性 (Oxygen-sensitive)：</strong>必須在充填關閉站導入惰性氣體（氮氣），以維護產品品質。這直接影響充填機的站點設計。</li>
+                <li><strong>剪切敏感性 (Shear-sensitive)：</strong>單株抗體 (monoclonal antibody, mAb) 蛋白質結構脆弱，高剪切力會造成蛋白質變性，直接排除旋轉活塞泵 (RPP) 的選用。</li>
+                <li><strong>起泡性 (Foaming Tendency)：</strong>要求充填曲線（加速、停止控制）精心設計，並採用潛針充填 (diving needle)，防止泡沫污染。</li>
+            </ul>
+            <p><strong>注意：</strong>雖然本產品非高毒性，但廠商主動選擇隔離器 (isolator)，理由是「提升無菌保證」——這正是決策層級 #1 無菌保證 (Sterility Assurance) 優先於商業考量的示範。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>想像你在煮一道很容易起泡的湯（比如豆漿）。你不能大火猛衝——必須用小火慢加熱，鍋緣輕輕倒入，避免攪拌過度。充填單株抗體也是同樣的道理：充填針的下降速度、充填起始位置、停止曲線都必須像廚師一樣精細控制，才能避免起泡和蛋白質損傷。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「非高毒性」的產品，廠商仍選擇隔離器而非 RABS？這個決策反映了哪個設計優先級？</li>
+                <li>如果未來要在同一條線上充填不耐剪切的不同 mAb，旋轉活塞泵是否可行？請說明理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 1 — Container-Closure Characteristics (21.1.2) -->
+<!-- ============================================================ -->
+<div class="section-title">21.1.2 Case 1: Container–Closure Characteristics (容器密封系統特性)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Table 21.1.2-1 provides details on container-closure characteristic considerations. Refer to Section 1.0, Section 6.0 and Section 7.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Pharmaceutical Primary–Packaging Characteristics</td>
+            </tr>
+            <tr>
+                <td>Syringe (type, dimensions)</td>
+                <td>1 mL long RNS, small round flange, Supplier Name, Drawing #123</td>
+                <td>Details inform equipment designers of the needed filling height and filling controls for the specific syringe design</td>
+            </tr>
+            <tr>
+                <td>Stopper (type, dimension, weight)</td>
+                <td>Plunger 1 mL long, standard silicone, Supplier Name, Drawing #456</td>
+                <td>Details inform equipment designers of the requirement for the sorting-system bowl and tracks</td>
+            </tr>
+            <tr>
+                <td>Tub (type, drawing, dimension)</td>
+                <td>Tub Height 97 mm, Supplier Name, Drawing #789</td>
+                <td>Details inform equipment designers of the details of the conveyance system</td>
+            </tr>
+            <tr>
+                <td>Nest (type, drawing, dimension)</td>
+                <td>160, 1 mL long, lengthwise, Supplier Name, Drawing #101</td>
+                <td>Details inform equipment designers of the number of fill lanes, any X/Y movement needed for the fill heads and the nest-handling</td>
+            </tr>
+            <tr>
+                <td>Tub Wrapping Details</td>
+                <td>Polypropylene Bag, Tyvek Lid, Tyvek Liner, Supplier Name, Spec. Sheet: 567</td>
+                <td>Details of number of bags, bag folding, material types, and method of affixing lid dictate details of removal and disposal, including needed robotics and location of removal</td>
+            </tr>
+            <tr>
+                <td>Assembly Drawing</td>
+                <td>Supplier Name Drawing #112</td>
+                <td>Details inform equipment supplier of assembled dimensional requirements; e.g., whether position of the plunger is critical, whether an air bubble is permissible</td>
+            </tr>
+            <tr>
+                <td>Components (stacked dimensional tolerances)</td>
+                <td>Supplier Name Drawing #134</td>
+                <td>Details inform equipment supplier of assembled dimensional requirements and the needed tolerance flexibility</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Inherent-Component CCI</span></td>
+                <td>To be confirmed by Development Report 12345</td>
+                <td>Ensures a container system can provide the appropriate level of tightness for the intended application</td>
+            </tr>
+            <tr>
+                <td>Plunger Insertion Depth and Critical Bubble-size</td>
+                <td>Bubble/air-gap size between plunger and liquid is not critical</td>
+                <td>Shipping studies must support sterility at maximum bubble/air-gap size</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Headspace Maintenance for Inert-gas Overlay</span></td>
+                <td>Yes</td>
+                <td>Need to consider if 100% of containers must be analyzed on-line for headspace</td>
+            </tr>
+            <tr>
+                <td>Cold-storage Performance</td>
+                <td>Yes, product stored cold; not temperature-sensitive during filling</td>
+                <td>Ambient filling is acceptable; cold storage required at desired storage and shipping temperatures</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 巢式預充填系統的設計細節</h4>
+            <p>Case 1 採用巢式 (nested) 預充填注射器，每個設計細節都牽動充填機的特定子系統：</p>
+            <ul>
+                <li><strong>Nest 規格（160 支 / 盤）：</strong>直接決定充填頭的排列數量（fill lanes）及 X/Y 方向的運動需求。</li>
+                <li><strong>Tub 高度（97 mm）：</strong>影響蓋膜 (lid) 與內襯 (liner) 的移除站設計，甚至決定是否需要機器人手臂。</li>
+                <li><strong>容器密封完整性 (CCI)：</strong>必須在開發階段即確認，確保整個運輸鏈（包括冷藏）維持無菌密封。</li>
+            </ul>
+            <p>頂空維護 (Headspace Maintenance) 需求直接引發一個設計問題：是否需要 100% 線上頂空檢測？這將影響充填速率與設備選型。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 供應商圖號的重要性</h4>
+            <p>表格中大量引用「Supplier Name, Drawing #XXX」，這不是形式主義。每個圖號代表精確的尺寸公差，直接影響分料碗 (sorting bowl)、軌道、插柱站的設計。CDMO 在早期就要鎖定這些資料——後期更改供應商或規格，可能導致整個充填機需要重新改裝。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果廠商決定改用 200 支 / 盤的 nest，會對充填機設計產生哪些影響？</li>
+                <li>「氣泡大小不重要」的判斷依據是什麼？什麼情況下氣泡大小會變成關鍵設計參數？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 1 — Specific Filling Requirements (21.1.3) -->
+<!-- ============================================================ -->
+<div class="section-title">21.1.3 Case 1: Specific Filling Requirements — Headspace & Deaeration (充填頭空間與除氣要求)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Table 21.1.3-1 provides guidance on specific filling requirement considerations. Refer to Section 2.0 and Section 7.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Consideration</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td>What inert gas will be used?</td>
+                <td>Nitrogen</td>
+                <td>Utility to be available; location to be determined based on subsequent answers</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">When will gas be applied?</td>
+            </tr>
+            <tr>
+                <td>Pre-gassing</td>
+                <td>No</td>
+                <td rowspan="4">Inert gas to be located at plunger-insertion station</td>
+            </tr>
+            <tr>
+                <td>Gassing during filling</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Post-fill gassing</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Gassing during closing</span></td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Will vacuum be applied?</td>
+            </tr>
+            <tr>
+                <td>For removal of bubble at tip at initiation of filling</td>
+                <td>No</td>
+                <td>Size of bubble at tip not critical for this application</td>
+            </tr>
+            <tr>
+                <td>For deaeration during filling</td>
+                <td>No</td>
+                <td>Although product has foaming tendency, this can be adequately controlled through fill curve adjustments</td>
+            </tr>
+            <tr>
+                <td>For removal of air in headspace before inert-gas purge</td>
+                <td>Yes</td>
+                <td>Assists in air removal at the point of adding the inert gas</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">How will Stopper-Setting be performed?</td>
+            </tr>
+            <tr>
+                <td>Vent tube for stopper-setting (with gassing)?</td>
+                <td>Yes</td>
+                <td>Gas bubble/air-gap size not critical, and plunger material is robust (no tendency to wrinkle)</td>
+            </tr>
+            <tr>
+                <td>Vacuum stopper-setting with short vent tube?</td>
+                <td>No</td>
+                <td>No wrinkling tendency; vacuum short-vent tube not required (Note: future use of plastic syringes with silicone-free stopper may make this important)</td>
+            </tr>
+            <tr>
+                <td>Vacuum stopper-setting with long vent tube?</td>
+                <td>No</td>
+                <td>Stopper position not so deep; not a large volume of gas to be removed</td>
+            </tr>
+            <tr>
+                <td>Vacuum bell?</td>
+                <td>No</td>
+                <td>Product is low viscosity, so a vacuum bell is not called for</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 氮氣充入時機的設計邏輯</h4>
+            <p>惰性氣體（氮氣）的施加時機是一個「越晚越好」的設計原則：</p>
+            <ul>
+                <li><strong>在關閉站施加（gassing during closing）：</strong>這是本案例的選擇。氮氣在插柱瞬間充入頂空，排除最後一段空氣，效果最直接。</li>
+                <li><strong>充填前或充填中施加：</strong>適用於對氧極度敏感的產品（如某些脂質體），但會增加設備複雜度及氮氣消耗。</li>
+            </ul>
+            <p>「充填前先抽真空排氣，再充入氮氣」的組合設計（本案即如此），是業界針對氧敏感注射器最常見的解決方案。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 未來彈性的前瞻設計</h4>
+            <p>文中特別注記：「未來若改用矽膠游離塞塞 (silicone-free stopper) 的塑膠注射器，真空短通氣管可能變得重要。」這是 Guide 全書一貫的精神——設計當下的需求，同時為未來留下升級空間，避免日後因設備限制喪失產品多樣性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果同一條線未來要充填一個對氧「極度」敏感（&lt;0.1% O₂）的產品，目前「gassing during closing only」的設計是否足夠？需要增加哪些站點？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 1 — Multi-container / Multi-volume Flexibility (21.1.4) -->
+<!-- ============================================================ -->
+<div class="section-title">21.1.4 Case 1: Multi-container / Multi-volume / Multi-product Flexibility (多容器／多體積／多產品彈性)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Table 21.1.4-1 provides guidance regarding multi-container/multi-volume/multi-product filling requirements. Refer to Section 1.0, Section 2.0 and Section 5.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Additional Containers, Closures, and Sizes to be Filled on the Same Line</td>
+            </tr>
+            <tr>
+                <td>1–3 mL Syringe</td>
+                <td>3 mL Luer Lock, round flange, Drawing #123</td>
+                <td>Tub and nest configuration should also be known to fully understand change-part needs (e.g., conveyance, tub height, number of filling lanes needed)</td>
+            </tr>
+            <tr>
+                <td>1 mL-long Plunger, coated</td>
+                <td>Drawing #456</td>
+                <td>No impact to current design if coating is compatible with closure sorting-system and if number of ribs and dimensions are consistent</td>
+            </tr>
+            <tr>
+                <td>1–3 mL Plunger, coated</td>
+                <td>Drawing #789</td>
+                <td>Evaluation of dimensional differences in parts on sorting-system change parts and insertion station required</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Additional Fill Volume / Product Requirements</td>
+            </tr>
+            <tr>
+                <td>1 mL-long syringe, 0.2 mL fill</td>
+                <td>mAb</td>
+                <td rowspan="4">Fill volumes to be considered for selected filling technology; product attributes should be assessed to determine if additional controls are required (e.g., viscosity, foam, shear-force-sensitivity, oxygen-sensitivity, light-sensitivity, metal-sensitivity)</td>
+            </tr>
+            <tr>
+                <td>1 mL-long syringe, 1 mL fill</td>
+                <td>Peptide</td>
+            </tr>
+            <tr>
+                <td>1–3 mL, 1 mL fill</td>
+                <td>Product uncertain</td>
+            </tr>
+            <tr>
+                <td>1–3 mL, 3 mL fill</td>
+                <td>NaCl</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Required Level of Flexibility (Base Case: 1 mL-Long Nested Glass Syringes)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Container Flexibility</span></td>
+                <td>Nested, precapped cartridges possible in future</td>
+                <td>When using only nested, glassware washer and depyrogenation tunnels are not needed. Sensor filling may be required for cartridges (see Section 5.0). Adding cartridges could result in need for sensor-filling or application of vacuum</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Container Material Flexibility</span></td>
+                <td>Plastic syringes possible in future</td>
+                <td>Filling line should be provided with deionization capabilities for reducing static charge. Differences in tub height might influence lid and lid-liner removal station. Vacuum might be needed for setting the plunger in plastic syringes</td>
+            </tr>
+            <tr>
+                <td>Alternative Sizes</td>
+                <td>2.25 mL and 5 mL syringes in future</td>
+                <td>Ensure format parts consider the range of sizes to be filled and whether format parts will be sourced with the initial purchase or only when needed</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Filling Technology Flexibility</span></td>
+                <td>Identify need based on intended range of activities</td>
+                <td>With some systems, it may be possible to add a different filling technology on the same machine-base (e.g., RPP with PP as alternate). Design can be more complex than a single system; knowledge that this will be a future requirement is critical to initial filling line and isolator/RABS design</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — CDMO 平台設計的彈性思維</h4>
+            <p>對 CDMO 而言，單一產品設計的充填線幾乎沒有商業意義。Case 1 展示了「多產品平台設計」的系統性思考：</p>
+            <ul>
+                <li><strong>容器彈性：</strong>從玻璃注射器到塑膠注射器，再到卡匣式容器——每一個變化都可能要求新的去靜電裝置、真空插柱能力或感測充填 (sensor filling)。</li>
+                <li><strong>充填體積彈性：</strong>0.2 mL（底端能力）到 3 mL，跨越 15 倍的體積範圍，不是每種泵都能優雅應對。</li>
+                <li><strong>充填技術彈性：</strong>同一機台底座 (machine base) 能否容納不同泵型（如 RPP + PP 並存），必須在初始設計時就決定——事後追加幾乎等於重建。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>這就像餐廳設計廚房：你現在只做義大利麵，但你已知三年後要加入壽司和烤肉。如果從一開始就預留了煤氣管線位置、排風管道、冷藏分區，未來擴展只需要安裝設備；若沒有預留，則需要打牆重裝——成本是原來的十倍。CDMO 的充填線設計也是如此。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若未來要在這條線上充填 0.2 mL 的 mAb，哪種充填技術最適合？為什麼 DP（滾動膜片泵）可能被排除？</li>
+                <li>從「巢式玻璃注射器」改為「塑膠注射器」時，設計上需要增加哪兩項主要能力？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 1 — Batch Sizes & Operating Practices (21.1.5) -->
+<!-- ============================================================ -->
+<div class="section-title">21.1.5 Case 1: Anticipated Batch Sizes and Operating Practices (批次規模與生產操作規劃)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Table 21.1.5-1 outlines typical batch parameters to consider. Refer to Section 1.0 and Section 5.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Batch Sizes</td>
+            </tr>
+            <tr>
+                <td>100-liter Batch Size</td>
+                <td>500,000 syringes at 0.2 mL fill volume; 100,000 syringes at 1.0 mL fill; 33,300 syringes at 3.0 mL fill</td>
+                <td>50,000 syringes per lane maximum each batch if using a 10-lane filler (number of cycles needed to assess potential wear-part effects)</td>
+            </tr>
+            <tr>
+                <td>500-liter Batch Size</td>
+                <td>2.5 MM syringes at 0.2 mL fill; 500,000 syringes at 1.0 mL fill; 166,700 syringes at 3.0 mL fill</td>
+                <td>250,000 syringes per lane maximum each batch if using a 10-lane filler. Filler will need to be capable of long, stable run times; if using PP or DP, tubing/diaphragm longevity may be an issue</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Campaign Criteria</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Campaign Strategy</span></td>
+                <td>Yes, 5 batch maximum per campaign</td>
+                <td>Consider maximum number of batches per week; consider system longevity and whether same primary packaging will be used for all 5 batches</td>
+            </tr>
+            <tr>
+                <td>Length of Campaign</td>
+                <td>10 days</td>
+                <td>At line speed and batch size, this represents 5 batches with flexibility for normal downtime and change of fluid path between batches</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Filling-path Management</span></td>
+                <td>Replace filling-path with each batch</td>
+                <td>Filling-path must be fully disposable or be CIP/SIP-capable</td>
+            </tr>
+            <tr>
+                <td>Container–Closure Management</td>
+                <td>Required to sterilize indirect product-contact parts before each campaign</td>
+                <td>Product utilizes the same container–closure and can be filled in the same campaign; between batches, no changeover required</td>
+            </tr>
+            <tr>
+                <td>Environmental Monitoring (EM)</td>
+                <td>To be performed on each batch within the campaign</td>
+                <td>Adequate EM materials must be located inside the filling line at the start of the campaign or be able to be transferred within the line between batches (e.g., RTP canister)</td>
+            </tr>
+            <tr>
+                <td>Interventions</td>
+                <td>APS must be designed to include representative number and type of interventions during the campaign</td>
+                <td>Filling machine must be designed to limit interventions; any intervention must utilize good aseptic technique</td>
+            </tr>
+            <tr>
+                <td>Holding Times</td>
+                <td>Length of campaign must accommodate standard disruptions</td>
+                <td>Consideration should be given to bulk hold times to ensure they support the campaign strategy</td>
+            </tr>
+            <tr>
+                <td>Batch Failure Mode</td>
+                <td>Recovery time after loss of batch to be kept to minimum</td>
+                <td>Filling system should be designed to minimize loss upon line repreparation and provide redundancy for backup product supply</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">APS Strategy for Campaigns</span></td>
+                <td>Must comply with all guidelines (EU GMP Annex 1, FDA Aseptic Processing)</td>
+                <td>Machine build must comply with the desired campaign strategy</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Operating Criteria</td>
+            </tr>
+            <tr>
+                <td>100% IPC for Dose Weight</td>
+                <td>No</td>
+                <td>In nested fillers, 100% IPC drastically reduces the fill rate (100s per hour rather than 100s per minute for non-100% IPC fills). A suitable frequency must be determined for statistical IPC. For expensive products, 100% IPC may be more valuable at conserving product than the gains from higher-speed filling</td>
+            </tr>
+            <tr>
+                <td>Staffing Level</td>
+                <td>24/7</td>
+                <td>Verify whether maximum processing time per batch will be accommodated in a single day and number of batches per week possible with changeover</td>
+            </tr>
+            <tr>
+                <td>Shutdown Allowances</td>
+                <td>Two planned two-week shutdowns: Winter and Summer</td>
+                <td>Verify whether selected technology maintenance and recalibration can be accommodated in planned shutdowns. Consider duration for technology transfer, APS, etc.</td>
+            </tr>
+            <tr>
+                <td>Changeover Time</td>
+                <td>32 hours between campaigns; 4 hours between batches within a campaign</td>
+                <td>Use these values to determine annualized throughput on the line. Ensure changeover time accounts for emptying bulk, clearing line, closing batch documentation, addressing changeover of fluid pathway, filter-path integrity-testing, closeout of EM samples</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">% Yield Expected</span></td>
+                <td>98% Yield; 2% Scrap</td>
+                <td>2–4% scrap is typical, inclusive of all rejection causes (filter flush, filler priming, end of aseptic-fill unit operation, intervention clearance)</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">% Line Efficiency</span></td>
+                <td>85% Desired</td>
+                <td>75% minimum target; more than 80% is possible but each additional percentage-point requires significant effort. Often less about equipment design and more about operator expertise on setup</td>
+            </tr>
+            <tr>
+                <td>% Facility Efficiency</td>
+                <td>70–80%</td>
+                <td>Amount includes needed maintenance, recalibration, shutdowns for facility maintenance, and APS</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>公式與計算 — 年產量估算框架</h4>
+            <pre>
+年可用工時 = 365 天 × 24 h × 設備效率 (70-80%)
+           ≈ 365 × 24 × 0.75 = 6,570 小時
+
+每批充填時間 = 批次充填數量 ÷ 充填速率
+活動間換線 = 32 小時
+批次間換線 = 4 小時
+
+以 1 mL fill, 10-lane filler 為例：
+100 L 批次 = 100,000 支注射器
+若充填速率 = 400 支/min → 約 4.2 小時/批
+
+5 批活動 = 5 × 4.2h 充填
+           + 4h × 4 批次間換線
+           + 32h 活動換線
+           ≈ 85 小時 / 活動
+            </pre>
+            <p>年產量估算需整合以上所有參數，任何單項假設（如良率、線效率、換線時間）的變動都會顯著影響年批次數。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 100% IPC vs. 統計 IPC 的取捨</h4>
+            <p>Guide 明確指出：巢式充填機若要做 100% IPC（每支都稱重），充填速率會從「分鐘計百支」掉到「小時計百支」——差距達 100 倍以上。然而，對於高價值 mAb 產品，100% IPC 保護的產品損耗節省，可能超過速度損失的機會成本。決策本質是 <strong>產品 CQA（藥品完整性）vs. 商業效率</strong>，決策層級 #2 vs. #3。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若選用蠕動泵 (PP) 並執行 500 L 批次（2.5 百萬支注射器），管路磨損 (hose wear) 為何成為關鍵考量？你會如何在設計中緩解這個問題？</li>
+                <li>「線效率 85%」主要靠什麼實現——設備自動化，還是操作員技能？Guide 的觀點是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 1 — Filling System Capability Comparison (21.1.6) -->
+<!-- ============================================================ -->
+<div class="section-title">21.1.6 Case 1: Comparison of Requirements to Filling System Capabilities (充填技術比較矩陣)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Now that some of the preliminary design requirements for the product and its intended packaging have been defined, the requirements can be compared to the filling-system capabilities and attributes as described in Section 2.0. Comparison of the filling system-capabilities to the product needs, for this example, leads to the following evaluative matrix.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Product Requirements</th>
+                <th>Peristaltic Pump (PP)</th>
+                <th>Rotary Piston Pump (RPP)</th>
+                <th>Time Pressure (TP)</th>
+                <th>Diaphragm Pump (DP)</th>
+            </tr>
+            <tr>
+                <td>Filling Range (0.2 mL future fill-volume)</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ At lower end of capability</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Marginal (lower end)</td>
+            </tr>
+            <tr>
+                <td>Viscosity Range (low viscosity)</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Product Compatibility (shear-sensitive proteins)</span></td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#f8d7da; color:#721c24; text-align:center;">✗ Not ideal for shear-sensitive</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Diving Needle Capable (to reduce foaming)</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Dynamic Fill Curve (to reduce foaming)</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Less flexibility due to pressure control at vessel</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Range of Fill Volumes</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ May require different pump heads for wide ranges</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Requires different pump-sets</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Generally requires different orifices</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Requires different fluid pathway</td>
+            </tr>
+            <tr>
+                <td>Drip Control</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ True suck-back not available; rapid pinch-valve may suffice</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Vacuum to Reduce Bubble at Tip (future for cartridges)</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Vacuum with PP technology not typical</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Vacuum with TP not typical</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Dosing Accuracy / Stability Across Run</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Statistical IPC required</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Statistical IPC recommended; very stable</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Statistical IPC required</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Statistical IPC required</td>
+            </tr>
+            <tr>
+                <td>Single-Use (SU) Fluid Pathway</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Rare but possible due to pump expense</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Possible but may be expensive</td>
+            </tr>
+            <tr>
+                <td>CIP/SIP Execution</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Rare; often SU instead</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Stability Over Long Batches / Cycles</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Hose-wear a detriment</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Single-point hose-wear at pinch-point</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Diaphragm wear after excessive operation</td>
+            </tr>
+            <tr>
+                <td>Campaign Compatibility</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Hose wear must be considered</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Filling equipment can be replaced</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Single-point hose-wear must be considered</td>
+                <td style="background:#fff3cd; color:#856404; text-align:center;">~ Diaphragm-wear must be considered</td>
+            </tr>
+            <tr>
+                <td>Speed of Setup / Changeover</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Requires aseptic setup or CIP/SIP</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ Requires aseptic setup or CIP/SIP</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ CIP/SIP; fluid path reduced vs. RPP</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓ CIP/SIP or single-use (fastest changeover)</td>
+            </tr>
+            <tr>
+                <td>Nested Syringes Compatible</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+                <td style="background:#d4edda; color:#155724; text-align:center;">✓</td>
+            </tr>
+            <tr>
+                <td>Sensor-Filling Compatible (future for cartridges)</td>
+                <td style="background:#f8d7da; color:#721c24; text-align:center;">✗ Not generally compatible with nest fillers</td>
+                <td style="background:#f8d7da; color:#721c24; text-align:center;">✗ Not generally compatible with nest fillers</td>
+                <td style="background:#f8d7da; color:#721c24; text-align:center;">✗ Not generally compatible with nest fillers</td>
+                <td style="background:#f8d7da; color:#721c24; text-align:center;">✗ Not generally compatible with nest fillers</td>
+            </tr>
+        </table>
+        </div>
+
+        <div class="quote-box">
+            "Based on the above chart, the product characteristics make PP, TP, and DP the leading candidates as shear-sensitivity of the product may preclude RPP. PP, TP, and DP are well-matched. Decision-making may come down to whether smaller volume fills will be required in the future (ruling out DP, which is at the lower end of its capability at around 0.2 mL), or whether single-use (SU) technology (favoring PP and DP) or CIP/SIP are preferred (favoring TP and DP). If the foaming with the product is severe and SU technology is the desire, then PP will be the strongest contender, as long as the number of cycles between tubing changeout is managed."
+        </div>
+
+        <h3>21.1.7 Other Design Elements for Consideration</h3>
+        <p>There are a number of other design decisions that will impact the layout and operation of the filling line, such as:</p>
+        <ul>
+            <li>Operator Interface with the line (Section 8.0)</li>
+            <li>Supply of Components (Section 9.0 and Section 10.0)</li>
+            <li>Product Filtration, including location of filters, required number of filter elements, integrity testing pre- and post-filling (Section 11.0)</li>
+            <li>Filling Environment and Utilities (Section 14.0 and Section 15.0)</li>
+        </ul>
+        <p>Generally, these decisions should be made as part of the filling-line specification process as they may affect costs and can influence placement of equipment; however, these are generally less of a direct impact on the selection of the filling technology itself.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 矩陣決策法的實際應用</h4>
+            <p>本節最重要的學習是「如何用需求矩陣做充填技術決策」。Guide 的結論邏輯：</p>
+            <ol>
+                <li><strong>RPP 首先被排除：</strong>剪切敏感性是非談判性紅線，直接淘汰。</li>
+                <li><strong>DP 條件性排除：</strong>若未來 0.2 mL 小劑量是必要需求，DP 在其能力下限，風險較高。</li>
+                <li><strong>PP vs. TP 的最終競爭：</strong>
+                    <ul>
+                        <li>若偏好 SU 流路 + 嚴重起泡 → PP 最優</li>
+                        <li>若偏好 CIP/SIP + 精準充填穩定性 → TP 最優</li>
+                        <li>DP 作為 SU 替代也有競爭力，但體積彈性較弱</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>這就是決策層級的實踐：無菌保證 (SA) 驅動選擇隔離器；產品 CQA（剪切敏感）驅動排除 RPP；商業彈性（SU vs. CIP/SIP）才決定 PP / TP / DP 的最終選擇。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>這就像選購廚房主刀：第一步先排除不適合食材的刀型（比如剔骨刀不適合切薄片），第二步在剩下的候選刀中，根據你的使用習慣（慣用日式還是西式、用多久換一次）做最終決定。充填泵的選擇邏輯完全相同——先用產品 CQA 砍掉不相容的選項，再用商業需求做最終比選。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>本案最終選定 PP、TP、DP 為候選，若你是 CDMO 的技術總監，你會選哪一個？請從「5 批活動 × 500 L 批次」的磨損和 SU 成本角度給出理由。</li>
+                <li>「感測充填（sensor filling）與巢式充填機不兼容」這個限制，對未來添加卡匣式容器的計畫有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 2 — Product Characteristics (21.2.1) -->
+<!-- ============================================================ -->
+<div class="section-title">21.2 Case 2: Large Volume Parenteral — Liquid in a Bottle (大容量瓶裝液體案例)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Specifications for Case 2 are detailed below:</p>
+        <ul>
+            <li>Product: <span class="key-term">blood-plasma protein product</span></li>
+            <li>Filling Volume: 250 mL</li>
+            <li>Container / Closure System: Bottle 250 mL</li>
+            <li>Dosing System: to be determined</li>
+        </ul>
+
+        <h3>21.2.1 Case 2: Product Characteristics</h3>
+        <p>Table 21.2.1-1 provides details on product characteristic considerations. Refer to Section 1.0, Section 3.0 and Section 4.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Pharmaceutical Characteristics</td>
+            </tr>
+            <tr>
+                <td>Highly Potent</td>
+                <td>No</td>
+                <td>None; no firm decision has been made to fill in an <span class="key-term">isolator</span> (preferred) or on a conventional <span class="key-term">RABS</span> filling line; therefore, both possibilities will be explored</td>
+            </tr>
+            <tr>
+                <td>Toxic</td>
+                <td>No</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>OEL / OEB Level</td>
+                <td>No classification</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Product Biological or Physicochemical Requirements</td>
+            </tr>
+            <tr>
+                <td>Temperature-sensitive</td>
+                <td>No</td>
+                <td>Filled under ambient conditions</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Oxygen-sensitive</span></td>
+                <td>Yes</td>
+                <td>Inert gas introduction must be considered at stoppering</td>
+            </tr>
+            <tr>
+                <td>Light-sensitive</td>
+                <td>No</td>
+                <td>None; no restrictions on lighting</td>
+            </tr>
+            <tr>
+                <td>Metal-sensitive</td>
+                <td>No</td>
+                <td>None; no restrictions on product-contact materials of construction</td>
+            </tr>
+            <tr>
+                <td>Silicone-sensitive</td>
+                <td>No</td>
+                <td>None; no restrictions on polymers and tubing</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Chemical-physical Properties</td>
+            </tr>
+            <tr>
+                <td>Viscosity</td>
+                <td>25 mPa-s</td>
+                <td>None; not high enough to create an issue with selected technologies</td>
+            </tr>
+            <tr>
+                <td>Surface Tension</td>
+                <td>Less than Water</td>
+                <td>No concern for dripping; cylindrical needles acceptable</td>
+            </tr>
+            <tr>
+                <td>Solution or Suspension</td>
+                <td>Solution</td>
+                <td>No active agitation or recirculation required</td>
+            </tr>
+            <tr>
+                <td>Flammable or Explosive</td>
+                <td>No</td>
+                <td>None; NEMA/ATEX cabinetry not required</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Shear-Sensitive</span></td>
+                <td>Yes</td>
+                <td>To be verified for future products; different dosing systems could be utilized if future products are not shear sensitive</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Foaming Tendency</span></td>
+                <td>Yes</td>
+                <td>Filling curve (e.g., start, stop, acceleration) to be carefully designed; level of filling start, filling end, and careful needle movement must be incorporated to prevent foam generation</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Case 1 vs. Case 2 的關鍵差異</h4>
+            <p>Case 2 與 Case 1 有兩個決定性的結構差異：</p>
+            <ul>
+                <li><strong>容器類型：</strong>從巢式預充填注射器 (nested PFS) 改為傳統散裝瓶 (bulk bottle)，需要玻璃瓶清洗機 + 去熱原隧道 (depyrogenation tunnel)，整個容器供應邏輯完全不同。</li>
+                <li><strong>充填體積：</strong>從 0.5 mL 跳到 250 mL，放大 500 倍。這不僅影響泵型選擇（需要更高流量），也影響充填曲線設計與針頭直徑。</li>
+                <li><strong>環境選擇未定：</strong>Case 1 明確選擇隔離器；Case 2 的隔離器 vs. RABS 還在評估。這是商業決策（成本考量）進入設計流程的時機，但前提是兩者都能滿足無菌保證。</li>
+            </ul>
+            <p>相同點：同樣氧敏感、同樣剪切敏感、同樣有起泡傾向——血漿蛋白與 mAb 在物理化學行為上有諸多共通之處。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 黏度 25 mPa-s 的設計意義</h4>
+            <p>Case 2 的黏度（25 mPa-s）遠高於 Case 1 的水狀液體（1-2 mPa-s），但 Guide 明確指出「還不足以限制技術選擇」。通常黏度超過 100-200 mPa-s，充填技術才會受到顯著影響（如需要加熱系統或特殊泵型）。此處教導我們：黏度是設計篩選的連續變數，不是非黑即白的開關。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Case 2 的充填體積是 Case 1 的 500 倍，但充填速率不一定要是 500 倍——為什麼？大容量充填在哪些方面反而讓設計「更簡單」？</li>
+                <li>為什麼 Case 2 的充填環境（隔離器 vs. RABS）還未決定，但 Case 1 已確定使用隔離器？這個差異說明了什麼設計邏輯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CASE 2 — Container-Closure & Filling Requirements (21.2.2-21.2.3) -->
+<!-- ============================================================ -->
+<div class="section-title">21.2.2–21.2.3 Case 2: Container–Closure Characteristics &amp; Specific Filling Requirements</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>21.2.2 Case 2: Container–Closure Characteristics</h3>
+        <p>Table 21.2.2-1 provides details on container-closure characteristic considerations.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Pharmaceutical Primary Packaging Characteristics</td>
+            </tr>
+            <tr>
+                <td>Container (vial type, dimensions)</td>
+                <td>250 mL, ISO 8536-1, D=68 mm, H=125 mm, weight 170 g, Supplier Name, Drawing #123</td>
+                <td>Details inform equipment designers of the needed filling height and filling controls for the specific container design</td>
+            </tr>
+            <tr>
+                <td>Stopper (type, drawing, dimension)</td>
+                <td>32 mm infusion stopper (liquid stopper), Supplier Name, Drawing #456</td>
+                <td>Details inform equipment designers of the requirement for the sorting-system bowl and tracks</td>
+            </tr>
+            <tr>
+                <td>Tub / Nest / Tub Wrapping</td>
+                <td>N/A</td>
+                <td>Will use traditional bulk line that will receive glass that is washed and depyrogenated in-line</td>
+            </tr>
+            <tr>
+                <td>Assembly Drawing</td>
+                <td>Not Required</td>
+                <td>Not required if individual component drawings are provided</td>
+            </tr>
+            <tr>
+                <td>Components (stacked dimensional tolerances)</td>
+                <td>Supplier Name, Drawing #789</td>
+                <td>Details inform equipment supplier of assembled dimensional requirements and tolerance flexibility. Will also identify tolerances associated with roundness control</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Inherent-Component CCI</span></td>
+                <td>To be confirmed by Development Report 12345</td>
+                <td>Ensures correct stopper and cap fit; cap cannot be rotated after crimping; crimping results in no damage to neck of container</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Crimp Seal Specifications</span></td>
+                <td>32 mm Flip Seal, aluminum skirt length = 13 mm, Supplier Name, Drawing #101</td>
+                <td>For crimp seal, may also determine placement and variability permitted in crimp-seal ink or laser jet labeling to ensure fit and legibility</td>
+            </tr>
+            <tr>
+                <td>Intended Capping Force or Residual Seal Force</td>
+                <td>To be confirmed by Development Report 121212</td>
+                <td>After parameter-setting, on-line evaluation through visual inspection and manual control. CCI test confirmed for each batch</td>
+            </tr>
+            <tr>
+                <td>Multi-puncture Closures</td>
+                <td>N/A — SU product</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>Plunger Insertion Depth / Critical Bubble-size</td>
+                <td>N/A for vials/bottles</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>Headspace Maintenance for Inert-gas Overlay</td>
+                <td>Yes</td>
+                <td>Need to consider if 100% of containers must be analyzed on-line for headspace</td>
+            </tr>
+            <tr>
+                <td>Cold-storage Performance</td>
+                <td>No</td>
+                <td>None</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3>21.2.3 Case 2: Specific Filling Requirements</h3>
+        <p>Table 21.2.3-1 provides guidance on specific filling requirement considerations. See Section 2.0 and Section 7.0 for additional information.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Consideration</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td>What inert gas will be used?</td>
+                <td>Nitrogen</td>
+                <td>Utility to be available; location to be determined based on subsequent answers</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">When will gas be applied?</td>
+            </tr>
+            <tr>
+                <td>Pre-gassing</td>
+                <td>No</td>
+                <td rowspan="4">Inert gas to be located at stopper-insertion station; specification &lt;4% O₂ in headspace</td>
+            </tr>
+            <tr>
+                <td>Gassing During Filling</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Post-fill Gassing</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td><span class="key-term">Gassing During Closing</span></td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background:#edf2f7; font-weight:600; color:#1e3a5f;">Will vacuum be applied?</td>
+            </tr>
+            <tr>
+                <td>For removal of bubble at tip</td>
+                <td>N/A for vials/bottles</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>For deaeration during filling</td>
+                <td>No</td>
+                <td>Although product has foaming tendency, this can be adequately controlled through fill curve adjustments</td>
+            </tr>
+            <tr>
+                <td>For removal of air in headspace before inert-gas purge</td>
+                <td>Yes</td>
+                <td>Assists in air removal at the point of adding the inert gas</td>
+            </tr>
+            <tr>
+                <td>Will vacuum insertion or mechanical insertion be used for stopper-setting?</td>
+                <td><span class="key-term">Mechanical</span></td>
+                <td>Mechanical stopper-insertion is sufficient for the designated stopper and container; development reports from line trials must demonstrate that there is limited risk of pop-off of the stoppers after insertion</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 散裝線 vs. 巢式線的容器供應差異</h4>
+            <p>Case 2 使用傳統散裝玻璃瓶 (bulk glass bottle)，沒有 Tub/Nest 系統。這意味著：</p>
+            <ul>
+                <li>需要在線洗瓶機 (in-line washer) 和去熱原隧道 (depyrogenation tunnel)，設備占地更大。</li>
+                <li>玻璃瓶的圓度公差 (roundness control) 是關鍵——圓度不佳的瓶子在傳送帶上容易卡住或傾倒，影響線效率。</li>
+                <li>軋蓋規格（32 mm Flip Seal，鋁裙長 13 mm）直接決定軋蓋機的壓力設定和線上視覺检查的合格標準。</li>
+            </ul>
+            <p>頂空氧含量規格（&lt;4% O₂）是具體的 CQA 目標，設備設計必須確保能穩定達成這個指標。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 機械插塞 vs. 真空插塞的選擇</h4>
+            <p>Case 2 選擇機械插塞 (mechanical stopper-insertion)，理由是：250 mL 大瓶的瓶口夠大（32 mm），插塞力學上不需要真空輔助。但文中要求開發報告證明插塞後不會因壓力彈起 (pop-off)——這是品質風險管理 (QRM) 在關閉操作中的具體體現。相比之下，Case 1 的注射器選用通氣管 (vent tube) 插塞，是因為注射器管徑小，真空不必要但通氣管可輔助排氣。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>想像你在裝瓶紅酒：250 mL 的大瓶子（Case 2）可以直接機械壓蓋，軟木塞靠機械力穩穩壓入；但細長的注射器（Case 1）像在幫針筒裝蓋，空間狹小，需要借助通氣管讓空氣排出，才能順利到位。容器幾何形狀決定了關閉方式。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Case 2 的頂空規格是 &lt;4% O₂。如果你是設備驗收工程師，你會設計哪些測試來證明這個規格能被穩定達成？</li>
+                <li>Case 2 不需要冷藏設計，但 Case 1 需要。這個差異如何影響廠房佈局（clean room 與倉儲銜接）的設計？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section 21A Summary</h3>
+    <ul>
+        <li><strong>結構化需求矩陣是核心工具：</strong>Guide 透過「產品特性 → 容器密封 → 充填要求 → 批次規模 → 技術比較」的五步驟框架，系統性地將產品知識轉化為設備設計決策。</li>
+        <li><strong>決策層級貫穿每個案例：</strong>無菌保證 (SA) 驅動了 Case 1 選擇隔離器的決定（即使產品非高毒性）；產品 CQA（剪切敏感性）排除了 RPP；商業需求（SU vs. CIP/SIP）才決定最終泵型選擇。</li>
+        <li><strong>Case 1 vs. Case 2 的設計分歧點：</strong>容器格式（巢式 vs. 散裝）、充填體積（0.5 mL vs. 250 mL）、插塞方式（通氣管 vs. 機械），以及充填環境選擇（已確定 vs. 待評估），揭示了不同產品形態如何導向截然不同的設備設計路徑。</li>
+        <li><strong>前瞻彈性是 CDMO 的生命線：</strong>從多體積、多容器、多產品的彈性規劃，到填充技術的可擴展性，Guide 反覆強調：初始設計時不考慮未來的決策，日後將以數倍代價彌補。</li>
+        <li><strong>具體操作指標的實務意義：</strong>98% 良率、85% 線效率、70-80% 設備效率、32 小時活動換線——這些數字不是口號，是年度產量計算的基礎，也是 CDMO 對客戶交貨承諾的底層假設。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

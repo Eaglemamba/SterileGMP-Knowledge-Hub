@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR60 - Section 2b2: PPQ Protocol & Report — Enhanced Sampling, Batch Justification & Study Design</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.4.2: PPQ Protocol & Report &mdash; Enhanced Sampling, Batch Justification & Study Design</h1>
+    <div class="subtitle">PPQ 方案與報告 &mdash; 加強取樣計畫、批次數量論證與研究設計</div>
+    <div class="page-info">PDA Technical Report No. 60 (Revised 2026) &mdash; Process Validation: A Lifecycle Approach | p49 - p57</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 PPQ 加強取樣計畫 (Enhanced Sampling Plan) 的設計邏輯，包括三大統計工具：Individual Value Plots、Tolerance Intervals、Variance Components</li>
+        <li>掌握取樣數量如何依據 CQA 關鍵性等級 (criticality) 進行風險分層設定</li>
+        <li>學習 PPQ 批次數量的風險評估決策樹方法，以及 N=3 基線的科學依據</li>
+        <li>了解 PPQ 在正常操作條件下執行的原則，以及個別單元操作研究與分組 (bracketing/matrix/family) 策略</li>
+        <li>認識 PPQ 數據分析報告的結構化呈現方式，以及無法執行統計分析時的替代策略</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec-4421">4.4.2.1 Enhanced Sampling Plans</a>
+        <a href="#sec-44211">4.4.2.1.1 Sample-Size Selection</a>
+        <a href="#sec-44212">4.4.2.1.2 Sample Size Methods</a>
+        <a href="#sec-44213">4.4.2.1.3 PPQ Analysis of Enhanced Samples</a>
+        <a href="#sec-4422">4.4.2.2 Risk-Based Batch Justification</a>
+        <a href="#sec-44221">4.4.2.2.1 Justification of Baseline</a>
+        <a href="#sec-44222">4.4.2.2.2 High-Level Approach</a>
+        <a href="#sec-4423">4.4.2.3 PPQ at Normal Operating Conditions</a>
+        <a href="#sec-4424">4.4.2.4 Individual Operation Studies</a>
+        <a href="#sec-4425">4.4.2.5 Bracketing, Matrix & Family</a>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.1 Enhanced Sampling Plans & Statistical Tools                 -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-4421">4.4.2.1 Enhanced Sampling Plans &amp; Statistical Tools for PPQ</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>Finally, the number of samples should:</p>
+        <ul>
+            <li>Be adequate to provide sufficient <span class="key-term">statistical confidence</span> of quality both within a batch and between batches</li>
+            <li>Have risk-based statistical testing levels tied to the relative criticality of the particular attribute under examination</li>
+            <li>Allow the normal range of variation and trends to be established</li>
+            <li>Provide sufficient data for evaluation</li>
+        </ul>
+
+        <p>Sampling during this stage should be more extensive than is typical during routine production; this can be called an <span class="key-term">enhanced sampling plan</span>. The plan has risk-based components, uses general prior knowledge, and allows for statistically based confidence statements regarding the firm's understanding of within- and between-batch variability.</p>
+
+        <p>There are three basic components or tools commonly used to demonstrate statistical confidence and understanding of variation for enhanced sampling plans both within a batch and between batches for aseptically filled products. The basic components included in the PPQ data analysis of each attribute are (refer to Section 6.2):</p>
+
+        <ul>
+            <li><strong><span class="key-term">Individual Value Plots</span>:</strong> General or basic analysis and graphing, preferably using individual value plots; visually describes inter- and intra-batch variation.</li>
+            <li><strong><span class="key-term">Tolerance Intervals</span>:</strong> Tolerance interval is one of the most commonly used tools applied during PV; it provides a method to measure the control and capability of product attributes. The tolerance interval level being tested ties back to the relative criticality of the product attributes and compares the variation seen for each product attribute (by batch) to the product specification. This comparison is an objective measure that allows for a capability statement to be provided as part of PV for each attribute tested.</li>
+            <li><strong><span class="key-term">Variance Components</span>:</strong> In the case of an aseptically filled DP, variance components describe the percentage of variance that can be attributed to within-batch or batch-to-batch variability meeting guidance requirements.</li>
+        </ul>
+
+        <p>Enhanced sampling plans for aseptically filled products (e.g., vaccines, biologics, small-molecule parenterals) take samples that align with three time periods: <span class="key-term">beginning, middle, and end positions (B/M/E)</span>. The minimum number of reportable value samples taken per timepoint should be n = 2 (6 total&ndash;2B/2M/2E), to allow for variance component calculations. Replicates at each point are needed for the analysis to be performed. This may increase (typically up to n = 5, or 15 total&ndash;5B/5M/5E), depending on the relative criticality of the attribute and its variability estimate. Examples are presented in Table 4.4.2.1-1, Table 4.4.2.1-2, and Figure 4.4.2.1-1.</p>
+
+        <!-- Table 4.4.2.1-1 -->
+        <p><strong>Table 4.4.2.1-1 Sampling Requirement</strong></p>
+        <table>
+            <tr>
+                <th>Critical Quality Attribute (CQA)</th>
+                <th>Severity of Potential Harms (Effects)</th>
+                <th>Statistical Sampling Requirements</th>
+            </tr>
+            <tr>
+                <td>Potency</td>
+                <td>High</td>
+                <td>+++</td>
+            </tr>
+            <tr>
+                <td>Osmolality</td>
+                <td>Medium</td>
+                <td>++</td>
+            </tr>
+            <tr>
+                <td>pH</td>
+                <td>Low</td>
+                <td>+</td>
+            </tr>
+        </table>
+
+        <!-- Table 4.4.2.1-2 -->
+        <p><strong>Table 4.4.2.1-2 Confidence</strong></p>
+        <table>
+            <tr>
+                <th>Critical Quality Attribute (CQA)</th>
+                <th>Severity of Potential Harms (Effects)</th>
+                <th>Example Confidence and Proportion Requirements</th>
+            </tr>
+            <tr>
+                <td>Potency</td>
+                <td>High</td>
+                <td>95/99</td>
+            </tr>
+            <tr>
+                <td>Osmolality</td>
+                <td>Medium</td>
+                <td>95/95</td>
+            </tr>
+            <tr>
+                <td>pH</td>
+                <td>Low</td>
+                <td>95/90</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：加強取樣計畫 Enhanced Sampling Plan</h4>
+            <p><strong>Enhanced Sampling Plan (加強取樣計畫)</strong> 是 PPQ 階段的核心設計要素。與日常生產的常規取樣不同，PPQ 階段需要收集更多樣本，目的是建立對製程變異性的統計信心。</p>
+            <p>PPQ 使用三大統計工具來分析數據：</p>
+            <ul>
+                <li><strong>Individual Value Plots (個別值圖)：</strong>最直覺的視覺化工具，將每個數據點繪製在圖上，同時展示批內和批間的變異分布</li>
+                <li><strong>Tolerance Intervals (容許區間)：</strong>PPQ 中最常用的統計工具，用來衡量製程的管控能力和能力指標，將觀察到的變異與規格進行客觀比較</li>
+                <li><strong>Variance Components (變異成分分析)：</strong>將總變異拆解為「批內變異」和「批間變異」，幫助理解變異的來源</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你是一位餐廳品管經理，要確認新廚師團隊的出品是否穩定。你不會只在開業當天嚐一道菜就下結論（常規取樣），而是會在開業前幾天，每天的早、中、晚各多嚐幾道菜（加強取樣），這樣才能判斷：</p>
+            <ul>
+                <li><strong>個別值圖</strong> = 把每道菜的評分畫在圖上，一眼看出整體分布</li>
+                <li><strong>容許區間</strong> = 計算「95% 的菜品評分會落在哪個範圍」，看是否都在及格線以上</li>
+                <li><strong>變異成分</strong> = 分析評分差異是來自「同一天不同時段」還是「不同天之間」</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>B/M/E 取樣策略：</strong>無菌充填產品的取樣必須對齊充填過程的三個時間點 &mdash; 開始 (Beginning)、中間 (Middle)、結束 (End)。這不是隨意設計的，而是為了捕捉充填過程中可能的時間相關變異（例如：設備磨損、溫度漂移、操作員疲勞等）。</p>
+            <p><strong>最低取樣量：</strong>每個時間點最少 n=2（共 6 個樣本），才能進行變異成分計算。根據屬性的關鍵性，可增加到 n=5（共 15 個樣本）。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>風險分層取樣邏輯</h4>
+            <pre>
+CQA 關鍵性     嚴重度     信心/涵蓋度     取樣需求
+─────────────────────────────────────────────
+Potency        High       95/99          +++（最多樣本）
+Osmolality     Medium     95/95          ++
+pH             Low        95/90          +（最少樣本）
+
+「95/99」意義：
+  95% 信心度下，至少 99% 的未來量測值
+  將落在規格範圍內
+
+最低取樣量公式：
+  n_min = 2 per timepoint × 3 timepoints = 6
+  n_max = 5 per timepoint × 3 timepoints = 15
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼加強取樣計畫要求每個時間點至少 n=2 的重複？如果只取 n=1 會有什麼統計限制？</li>
+                <li>如果某個 CQA 被評為高關鍵性但歷史變異極小，你會如何調整取樣策略？</li>
+                <li>95/99 與 95/90 容許區間在實務中的差異是什麼？對取樣數量有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.1.1 Sample-Size Selection Considerations                     -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-44211">4.4.2.1.1 Sample-Size Selection Considerations</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>Generally, enhanced <span class="key-term">sample-size selection</span> is based on a combination of <span class="key-term">prior knowledge</span> and the relative criticality of the attributes. Prior knowledge may come from legacy PPQ batches or pre-PPQ batches (e.g., engineering, clinical), while the relative criticality of the attribute is derived during Stage 1 CQA determination. The approach uses the same analysis tool that will be applied during the PPQ analysis, the tolerance interval. Normal tolerance intervals are constructed and compared to the release-acceptance criteria for each evaluated attribute to provide confidence that all current and future measurements will fall within a percentage of the required coverage (based on criticality).</p>
+
+        <p>The enhanced plan has risk-based components, uses general prior knowledge, and allows for statistically based confidence statements regarding the firm's understanding of within- and between-batch variability.</p>
+
+        <p>Occasionally, due to a number of considerations, such as in a <span class="key-term">pandemic response</span>, prior knowledge is not available to construct these intervals. As such, each attribute selected for enhanced sampling can be sampled at the minimum, that is, n = 6 (2 each for B/M/E), at a calculated, uniform <span class="key-term">95/95 confidence level</span> and coverage. The minimum n = 6 sample size is appropriate as it will allow statements of confidence and of inter- and intra-batch variability using variance components for each attribute within the enhanced sampling plan.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：取樣數量決定邏輯</h4>
+            <p>取樣數量的決定不是拍腦袋，而是基於兩個輸入：</p>
+            <ul>
+                <li><strong>Prior Knowledge (先驗知識)：</strong>來自 Stage 1 的開發數據，包括臨床批次、特性化研究或工程批次的歷史數據</li>
+                <li><strong>CQA Criticality (CQA 關鍵性)：</strong>在 Stage 1 的風險評估中已確定的屬性關鍵性等級</li>
+            </ul>
+            <p>核心方法是用 Stage 1 的數據來預估所需取樣量，使用與 PPQ 分析相同的工具 &mdash; Tolerance Interval (容許區間) &mdash; 來反推需要多少樣本才能達到目標信心水準。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：緊急情境下的最低取樣策略</h4>
+            <p>TR60 特別提到<strong>疫情緊急應變 (pandemic response)</strong> 等特殊情境。當沒有足夠的先驗知識時，可以採用統一的最低取樣策略：</p>
+            <ul>
+                <li>每個屬性均取 n=6（B/M/E 各 2 個）</li>
+                <li>統一使用 95/95 信心/涵蓋度水準</li>
+                <li>雖然取樣量最少，但仍足以進行變異成分分析和信心度聲明</li>
+            </ul>
+            <p>這是一種「安全底線」設計 &mdash; 確保即使在最緊急的情況下，仍能獲得有意義的統計結論。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像醫生的體檢方案：如果你有完整的病歷（先驗知識），醫生可以針對你的風險因素設計客製化檢查項目（風險分層取樣）。但如果你是第一次來看診、沒有任何病歷（無先驗知識），醫生會安排一套標準的基本檢查套餐（95/95 統一最低取樣），確保至少能發現主要問題。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.1.2 Sample Size Methods                                      -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-44212">4.4.2.1.2 Sample Size Methods</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>The <span class="key-term">tolerance interval method</span> for selection of samples for PPQ requires a few pieces of Stage 1 information for its use:</p>
+        <ul>
+            <li>Criticality level of the CQA being evaluated</li>
+            <li>Stage 1 development data to get point estimates and confidence intervals for average and standard deviation of the CQA being evaluated
+                <ul>
+                    <li>Development data can come from clinical runs, characterization, or engineering runs</li>
+                    <li>Stage 1 is not limited to new products; it can be an historical evaluation of commercial batches as part of a TT (36)</li>
+                </ul>
+            </li>
+            <li>Procedure or work instruction to tie CQA criticality to a risk level</li>
+        </ul>
+
+        <p>Table 4.4.2.1.2-1 lists some examples of product attributes, but please note it is not an exhaustive listing.</p>
+
+        <!-- Table 4.4.2.1.2-1 -->
+        <p><strong>Table 4.4.2.1.2-1 Example Sample Plan</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Product Attribute</th>
+                <th>Minimum Enhanced PPQ Samples per Batch (n)</th>
+            </tr>
+            <tr>
+                <td>Container Closure Integrity (CCI)</td>
+                <td>n = 12 (USP &lt;671&gt;)</td>
+            </tr>
+            <tr>
+                <td>pH</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results</td>
+            </tr>
+            <tr>
+                <td>Osmolality</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results</td>
+            </tr>
+            <tr>
+                <td>Total protein</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results</td>
+            </tr>
+            <tr>
+                <td>High performance size exclusion chromatography (HPSEC)</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results</td>
+            </tr>
+            <tr>
+                <td>Reducing capillary gel electrophoresis</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results</td>
+            </tr>
+            <tr>
+                <td>Nonreducing capillary gel electrophoresis</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results</td>
+            </tr>
+            <tr>
+                <td>Bioassay</td>
+                <td>n = 1 for release</td>
+            </tr>
+            <tr>
+                <td>Subvisible particles (&#8805;10 &micro;m: &#8804;6000; &#8805;25 &micro;m: &#8804;600)</td>
+                <td>n = 3 for B/M/E &mdash; 9 total results (each)</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：容許區間法的三個輸入</h4>
+            <p>使用 <strong>Tolerance Interval Method (容許區間法)</strong> 決定取樣量需要三個來自 Stage 1 的資訊：</p>
+            <ol>
+                <li><strong>CQA 關鍵性等級</strong> &mdash; 決定目標信心/涵蓋度（如 95/99 vs 95/90）</li>
+                <li><strong>Stage 1 開發數據</strong> &mdash; 提供平均值和標準差的點估計和信賴區間，這些數據可來自臨床批、特性化研究或工程批次</li>
+                <li><strong>CQA 關鍵性與風險等級的對應程序</strong> &mdash; 一份正式的程序文件，將關鍵性分級對應到具體的取樣需求</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：技術轉移也是 Stage 1</h4>
+            <p>TR60 明確指出：Stage 1 不限於新產品。對於 Technology Transfer (技術轉移, TT)，歷史商業批次的回顧性評估同樣可以作為 Stage 1 的數據基礎。這意味著接收 CDMO 可以利用原廠的歷史數據來設計 PPQ 取樣計畫，而不需要從零開始。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>取樣計畫表就像一份「體檢套餐菜單」：</p>
+            <ul>
+                <li><strong>CCI</strong> 像心電圖 &mdash; 需要較多量測點 (n=12) 才能確認完整性</li>
+                <li><strong>pH/Osmolality</strong> 像血壓 &mdash; B/M/E 各 3 次足以反映穩定性</li>
+                <li><strong>Bioassay</strong> 像基因檢測 &mdash; 一次即可，因為方法本身已有高靈敏度且檢測成本高</li>
+            </ul>
+            <p>每項檢查的次數不是越多越好，而是要根據該項目的臨床重要性和方法特性來合理設定。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>當你的公司承接一個生物製劑的技術轉移專案時，應該：</p>
+            <ol>
+                <li>向原廠索取完整的 Stage 1 數據包（臨床批/商業批的分析結果）</li>
+                <li>利用原廠數據的平均值和標準差，反推每個 CQA 在目標信心水準下所需的最低取樣量</li>
+                <li>如果原廠數據不足以計算，則採用 n=6 的最低標準</li>
+                <li>將這些決策和依據記錄在 PVMP 中</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.1.3 DP PPQ Analysis of Enhanced Samples                      -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-44213">4.4.2.1.3 Drug Product PPQ Analysis of Enhanced Samples</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>If possible, the drug-product enhanced sample analysis should be structured in the PPQ in the following manner:</p>
+        <ul>
+            <li>Summary table for all attributes provides summary statistics as well the <span class="key-term">tolerance intervals</span> and <span class="key-term">variance components</span>, as appropriate, per batch.</li>
+            <li>Summary analysis for each attribute, including:
+                <ul>
+                    <li>Graphical analysis using <span class="key-term">individual value plots</span> per attribute. All batches should be plotted on the graph for maximum effect. Reference lines denoting specification limits should be used to show the data in context.</li>
+                    <li>Tolerance interval charts per attribute per batch.</li>
+                    <li>Variance component analysis table per batch.</li>
+                    <li>Summary statement per attribute regarding achieved-control and capability-based upon the analysis presented.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>There are cases when analysis cannot be executed, for instance when:</p>
+        <ul>
+            <li>Values are below a <span class="key-term">limit of detection</span>, which means there are no values to report, in which case, neither graphical nor statistical analysis can be performed.</li>
+            <li>There are not enough unique values to perform the analysis either due to the rounding of the data, precision of the method, or very little variation in the process. This can be minimized by requesting <span class="key-term">raw analytical data</span> (full recorded values) rather than reported data (which may be truncated). In the case of not-enough unique values, graphical analysis can be performed, but the tolerance interval and variance component cannot. Graphical analysis in this situation can still provide powerful visual support for control and capability within and between batches.</li>
+        </ul>
+
+        <p>The samples must be tested and analyzed using statistical tools and graphing, as appropriate, to provide sufficient statistical confidence of quality within and between batches as well as evidence the product and process are ready for commercial manufacturing. Minimum acceptance requires that the test results are within release specification based on the release criteria.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：PPQ 報告的結構化分析架構</h4>
+            <p>TR60 建議 PPQ 報告應包含層次分明的分析結構：</p>
+            <ol>
+                <li><strong>總覽摘要表：</strong>所有屬性的摘要統計量、容許區間和變異成分，按批次呈現</li>
+                <li><strong>逐屬性詳細分析：</strong>
+                    <ul>
+                        <li>個別值圖（所有批次繪製在同一圖上）</li>
+                        <li>容許區間圖表</li>
+                        <li>變異成分分析表</li>
+                        <li>每個屬性的管控與能力總結聲明</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>這種結構化方法確保審查者能快速掌握整體狀況，同時也能深入檢視個別屬性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：無法執行統計分析的情境</h4>
+            <p>實務上有兩種常見情況會導致無法執行統計分析：</p>
+            <ul>
+                <li><strong>低於偵測極限 (LOD)：</strong>所有數值都是「&lt;LOD」，沒有可報告的數值 &mdash; 此時圖形和統計分析都無法進行</li>
+                <li><strong>不夠多的獨特值：</strong>由於數據四捨五入、方法精密度限制或製程變異極小，導致大多數結果相同 &mdash; 此時容許區間和變異成分無法計算，但圖形分析仍可提供有力的視覺證據</li>
+            </ul>
+            <p><strong>實務建議：</strong>向分析實驗室索取未經截斷的原始分析數據 (raw analytical data)，而非四捨五入後的報告數據，可以大幅減少「不夠多獨特值」的問題。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PPQ 報告的結構就像一份投資分析報告：</p>
+            <ul>
+                <li><strong>摘要表</strong> = 投資組合總覽頁，快速看到所有持股的績效</li>
+                <li><strong>個別值圖</strong> = 各支股票的走勢圖</li>
+                <li><strong>容許區間</strong> = 各股票的風險評估（波動率分析）</li>
+                <li><strong>管控聲明</strong> = 各股票的投資建議總結</li>
+            </ul>
+            <p>審查者（如同投資委員會）需要同時看到全局和個別細節才能做出決策。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 PPQ 報告中，為什麼建議將所有批次的數據繪製在同一張個別值圖上？這對審查者的判斷有什麼幫助？</li>
+                <li>如果某個 CQA 的測試結果全部為「&lt;LOD」，你會在 PPQ 報告中如何處理和說明？</li>
+                <li>「管控與能力總結聲明」應該包含哪些要素？如何區分「受控」和「具能力」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.2 Risk-Based Justification for Number of PPQ Batches         -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-4422">4.4.2.2 Risk-Based Justification for Number of PPQ Batches</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>An effective PPQ should evaluate a sound process design, an effective control strategy, and operational proficiency at commercial scale (56). The number of batches in the PPQ study(ies) will be influenced by many factors such as the:</p>
+        <ul>
+            <li>Study(ies) performance and acceptance criteria</li>
+            <li>Analyses to be performed and the type and amount of data necessary to perform those analyses</li>
+            <li>Level of process knowledge and understanding gained from Stage 1, as well as from the engineering runs in the commercial facility</li>
+            <li>Type and complexity of manufacturing technology employed in the various unit operations</li>
+            <li>Knowledge from previous experience with similar well-controlled processes</li>
+            <li>Inherent or known variability of the process resulting from raw materials, age of the equipment, or operator experience</li>
+        </ul>
+
+        <p>Using risk-based approaches allows a balance between the number of batches studied and the risk of the process. They can also be used in conjunction with objective approaches to determine the number of batches to include.</p>
+
+        <p>Where practical, statistical methods are recommended to guide the determination of the number of PPQ batches needed to achieve a desired level of statistical confidence (refer to Section 6.1.1 and Section 8.0). However, this approach alone may not always be feasible or meaningful. One such example is PPQ studies of a protein DS process with a limited number of clinical batches. This limited output could be due to such factors as manufacturing scale or product indications (e.g., <span class="key-term">orphan drug</span>) where infrequent future manufacturing campaigns are to be performed. In addition to limitations on manufacturing batch production, the nature of protein drug-substance manufacturing makes increased number of samples of the process streams of limited usefulness to achieve a statistically significant sample size.</p>
+
+        <p>When it is not feasible or meaningful to use conventional statistical approaches, a practical, scientifically based, holistic approach may be more appropriate. In this case, the following factors may be used to support the rationale for the number of PPQ batches selected based on knowledge accumulation:</p>
+        <ul>
+            <li>Prior knowledge (e.g., development/clinical batches) and platform manufacturing information or data</li>
+            <li>Risk analysis of the process to factor the level of risk into the batch number selection</li>
+            <li>Increased reliance on Stage 1 data to support that the process is under control and to add to the dataset</li>
+            <li>Continuation of heightened sampling or testing plans during CPV until a sufficient dataset to achieve statistical confidence has been accumulated</li>
+            <li>For very expensive products, understanding of the probability of product approval for release-to-market versus the demonstrated shelf life (i.e., a late approval could mean wasting PPQ lots)</li>
+        </ul>
+
+        <p>When a combination of approaches and data are used, the rationale and justification should be clearly documented in the PVMP. Also, references to all supporting source data should be included.</p>
+
+        <p>The <span class="key-term">risk-based assessment method</span> for the selection of an acceptable number of PPQ batches is based upon process, product, business needs and site knowledge. As knowledge increases, the potential starting point for the number of batches decreases.</p>
+
+        <p>The approach described here makes use of a <span class="key-term">decision-tree or checklist approach</span>. These approaches employ Yes or No questions to guide the decision-making process, which reduces the approach/assessment subjectivity bias. A risk-evaluation table is used to guide the determination (refer to Table 4.4.2.2-1).</p>
+
+        <p>There are three basic steps to the selection process:</p>
+        <ul>
+            <li><strong>Step 1:</strong> Determine the <span class="key-term">baseline number</span> of batches using product and process knowledge.
+                <ul>
+                    <li>The level of product and process knowledge are used to determine the minimum number of batches (or baseline) that need to be produced during PPQ.</li>
+                    <li>Answers to the questions provide guidance on one of three risk-based evaluation starting points for N batches. As product and process knowledge increases, the potential starting point for the selection of the number of batches decreases.</li>
+                </ul>
+            </li>
+            <li><strong>Step 2:</strong> Determine if any additional controls, activities, or technical rationales are required.
+                <ul>
+                    <li>This step helps to confirm the selection of the number of batches from Step 1 and determines specific site-level knowledge.</li>
+                    <li>Risk control activities determine if additional studies or batches need to be performed/executed.</li>
+                </ul>
+            </li>
+            <li><strong>Step 3:</strong> Determine if there are any non-GMP-related risks, such as business, technical, or strategic justifications, for the addition or reduction of batches.
+                <ul>
+                    <li>This is a non-quality risk-based step.</li>
+                    <li>After Step 3, the number of batches, N, is provisionally set.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Table 4.4.2.2-1 -->
+        <p><strong>Table 4.4.2.2-1 Generic Risk Evaluation Table</strong></p>
+        <table>
+            <tr>
+                <th>Knowledge</th>
+                <th>Risk</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>Low Level of Knowledge</td>
+                <td>High Risk</td>
+                <td>Consider additional development or preparation activities. Leadership approval to start PPQ with risks detailed prior to proceeding to PPQ.
+                    <ul style="margin:0.3rem 0 0 1rem;font-size:0.85rem;">
+                        <li>New formulation/equipment</li>
+                        <li>Technology transfer of poorly known platform technology</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Typical / Average Level of Knowledge</td>
+                <td>Moderate Risk</td>
+                <td>PPQ: N = Baseline. Note: Justification for Baseline required. See Section 4.4.2.2.2.
+                    <ul style="margin:0.3rem 0 0 1rem;font-size:0.85rem;">
+                        <li>Existing formulation/equipment</li>
+                        <li>Technology transfer of moderately known platform technology</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>High / Very High Level of Knowledge</td>
+                <td>Low Risk</td>
+                <td>PPQ: N &le; Baseline
+                    <ul style="margin:0.3rem 0 0 1rem;font-size:0.85rem;">
+                        <li>Technology transfer of known platform technology</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：PPQ 批次數量決定的三步驟法</h4>
+            <p>PPQ 需要幾批？這是每個驗證專案最常被問到的問題。TR60 提供了一個系統化的三步驟決策框架：</p>
+            <ol>
+                <li><strong>Step 1 - 確定基線批次數：</strong>根據產品和製程知識水準，確定最低批次數（基線 N）。知識越多，起始批次數越少。</li>
+                <li><strong>Step 2 - 評估是否需要追加：</strong>確認現場特定知識和控制措施，判斷是否需要追加研究或批次。</li>
+                <li><strong>Step 3 - 考量非 GMP 因素：</strong>商業、技術和策略性的考量，可能增加或減少批次數。</li>
+            </ol>
+            <p>關鍵原則：<strong>知識與風險反向相關</strong> &mdash; 掌握的知識越多，風險越低，所需的 PPQ 批次數越少。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PPQ 批次數的決策就像駕照考試：</p>
+            <ul>
+                <li><strong>低知識/高風險</strong> = 第一次學開車的新手，需要更多路考練習（更多 PPQ 批次），甚至需要先去駕訓班（追加開發活動）</li>
+                <li><strong>中等知識/中等風險</strong> = 有其他車款駕照的駕駛人，基本路考次數即可（N = Baseline）</li>
+                <li><strong>高知識/低風險</strong> = 經驗豐富的職業駕駛，可能只需一次路考就能通過（N &#8804; Baseline）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：孤兒藥與昂貴產品的特殊考量</h4>
+            <p>TR60 明確承認統計方法並非萬能。對於以下情境，傳統統計方法可能不可行：</p>
+            <ul>
+                <li><strong>Orphan Drug (孤兒藥)：</strong>生產頻率極低，無法累積足夠的統計數據</li>
+                <li><strong>蛋白質 DS 製程：</strong>製程流的取樣增加對統計樣本量的貢獻有限</li>
+                <li><strong>昂貴產品：</strong>需考慮產品獲批概率與效期之間的商業風險（晚批准可能浪費 PPQ 批次）</li>
+            </ul>
+            <p>此時可採用<strong>整體性科學方法 (holistic approach)</strong>，結合先驗知識、風險分析、Stage 1 數據和延伸到 CPV 的加強取樣，來支持批次數的選擇。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>知識-風險-批次數對應矩陣</h4>
+            <pre>
+知識水準         風險等級      PPQ 批次數策略
+──────────────────────────────────────────
+低知識           高風險        N > Baseline
+                              + 追加開發/準備活動
+                              + 高層核准才可啟動 PPQ
+
+中等知識         中等風險      N = Baseline (通常 N=3)
+                              + 需提供 Baseline 論證
+
+高/極高知識      低風險        N ≤ Baseline
+                              可使用平台知識簡化
+
+決策樹方法特點：
+  - 使用 Yes/No 問題引導
+  - 降低主觀偏差
+  - 三步驟依序執行
+  - 最終 N 為暫定值
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>一家 CDMO 同時承接兩個技術轉移專案：</p>
+            <ul>
+                <li><strong>專案 A：</strong>已知平台技術的單株抗體，原廠提供了 50 批商業數據 &rarr; 高知識/低風險 &rarr; 可考慮 N &#8804; 3</li>
+                <li><strong>專案 B：</strong>新型 mRNA 疫苗，僅有 3 批臨床數據 &rarr; 低知識/高風險 &rarr; N > 3，且需追加工程研究</li>
+            </ul>
+            <p>兩個專案的 PPQ 策略可以完全不同，但都必須在 PVMP 中清楚記錄決策依據和支持數據來源。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR60 建議使用決策樹/檢查表方法而非開放式討論來決定 PPQ 批次數？</li>
+                <li>Step 3 提到「非 GMP 相關風險」，請舉出三個可能導致增加或減少 PPQ 批次數的商業考量。</li>
+                <li>如果你的 CDMO 同時為三個不同客戶生產相同的平台產品，這些知識如何影響後續客戶的 PPQ 設計？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.2.1 Justification of Baseline                                -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-44221">4.4.2.2.1 Justification of Baseline</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>Risk-based approaches and application of <span class="key-term">QRM</span> to the PV lifecycle are noted in health authority guidance(s), including those of the FDA and EU.</p>
+
+        <p>The determination of the number of batches should be based upon risk-based principles as well as product and process knowledge. The more knowledge one possesses (with proof), the relative risk to move into commercial production is reduced, and the number of batches required within a PPQ campaign may be lessened.</p>
+
+        <p>While all the guidances state that a risk-based approach must be used, <span class="key-term">EU GMP Annex 15</span> provides additional support for the use of <span class="key-term">N = 3</span> as a starting point for the evaluation table used in this approach.</p>
+        <ul>
+            <li>The number of batches manufactured and the number of samples taken should be based on QRM principles, should allow the normal range of variation and trends to be established, and should provide sufficient data for evaluation within the PPQ report.</li>
+            <li>It is generally considered acceptable that a minimum of three consecutive batches manufactured under routine conditions could constitute a validation of the process.</li>
+            <li>An alternative number of batches may be justified, taking into account whether standard methods of manufacture are used and whether similar products or processes are already used at the site (50).</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：N=3 的法規依據</h4>
+            <p><strong>N=3 基線</strong>是業界最常使用的 PPQ 批次數量起點。TR60 引用 EU GMP Annex 15 來提供科學與法規依據：</p>
+            <ul>
+                <li>「一般認為，在例行條件下連續製造至少三批，可構成製程驗證」</li>
+                <li>但 N=3 不是固定答案 &mdash; 可以根據標準方法的使用和現場類似產品/製程的經驗來調整</li>
+            </ul>
+            <p>關鍵訊息：N=3 是<strong>起點</strong>而非<strong>答案</strong>。你必須透過風險評估和知識累積來論證你的選擇是否合理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：法規機構的期望</h4>
+            <p>FDA 和 EU 的法規指引都要求使用風險方法。但要注意：</p>
+            <ul>
+                <li>FDA 2011 Process Validation Guidance 未明確規定批次數量，強調的是「足夠的統計信心」</li>
+                <li>EU GMP Annex 15 明確提到 N=3 為起點，但也允許替代方案</li>
+                <li>無論選擇幾批，<strong>論證依據 (justification)</strong> 的品質比批次數量本身更重要</li>
+            </ul>
+            <p>查核員會問的不是「為什麼做三批」，而是「你的論證是否完整、科學、可追溯」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>N=3 就像學校的「及格分數 60 分」&mdash; 它是一個被廣泛接受的最低標準，但：</p>
+            <ul>
+                <li>對於高風險科目（高關鍵性產品），老師可能要求 80 分才通過（N > 3）</li>
+                <li>對於已經有相關免修資格的學生（平台知識豐富），可以申請部分免考（N &lt; 3）</li>
+                <li>無論如何，你都需要提供成績單和學習記錄（論證文件）</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.2.2 High-Level Approach                                      -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-44222">4.4.2.2.2 High-Level Approach (Decision Tree)</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>The approach provided in Figure 4.4.2.2.2-1 is an example of a high-level view of what can be a very detailed decision tree and multipage risk-based checklist (refer to Table 4.4.2.2.2-1).</p>
+
+        <p><em>Figure 4.4.2.2.2-1 Decision Tree for Determination of Number of Process Performance Qualification Lots</em></p>
+        <p style="color:#4a5568; font-size:0.88rem;">[Refer to original document for full decision tree diagram]</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：決策樹的結構</h4>
+            <p>TR60 建議的決策樹 (Decision Tree) 是一個結構化的問答流程，用 Yes/No 問題引導使用者逐步確定 PPQ 批次數。其核心設計理念是：</p>
+            <ul>
+                <li><strong>消除主觀性：</strong>透過預定義的問題和答案選項，避免「拍腦袋」式決策</li>
+                <li><strong>可追溯性：</strong>每個決策節點都有明確的輸入和輸出，方便審查和追蹤</li>
+                <li><strong>靈活性：</strong>高層次的決策樹可以細化為多頁的風險檢查表，適應不同產品和製程的需求</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：決策樹的實施建議</h4>
+            <p>在建立公司內部的 PPQ 批次數決策樹時，建議：</p>
+            <ul>
+                <li>將決策樹嵌入公司的 PVMP 模板或 SOP 中，確保一致性</li>
+                <li>每個決策節點應有明確的評估標準和證據要求</li>
+                <li>決策結果應經過跨功能團隊（品質、製造、法規）審查</li>
+                <li>定期回顧和更新決策樹，納入新的平台知識和經驗教訓</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>設計一個簡化的 3 題決策樹，幫助判斷某個產品的 PPQ 批次數應該是 N=2、N=3 還是 N&gt;3。</li>
+                <li>決策樹方法與開放式風險評估（如 FMEA）相比，各有什麼優缺點？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.3 PPQ at Normal Operating Conditions                         -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-4423">4.4.2.3 PPQ at Normal Operating Conditions</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>PPQ studies are typically conducted in a manner that demonstrates a <span class="key-term">state of control</span> under <span class="key-term">normal operating conditions</span> to assess the process variability expected during routine production. Process characterization (robustness) studies conducted during Stage 1 serve as the foundation for establishing <span class="key-term">NOR</span>, <span class="key-term">PAR</span>, and <span class="key-term">design space</span>, if appropriate. Effects-of-scale should also be considered if scaled-down models are suitably qualified, well-planned, and executed. Study data on robustness should support conducting commercial-scale PPQ under routine manufacturing conditions. Supplemental engineering studies at scale may be appropriate to evaluate extremes of the NOR (e.g., line speed or compression speed). In most cases, available Stage 1 data makes it unnecessary to execute PPQ over the entire operating range during the commercial manufacturing process. The PVMP should provide the justification for the approach used and reference all source data.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：PPQ 在正常操作條件下執行</h4>
+            <p>PPQ 通常在<strong>正常操作條件 (Normal Operating Conditions)</strong> 下執行，而非在極端條件下。這是因為：</p>
+            <ul>
+                <li><strong>NOR (Normal Operating Range, 正常操作範圍)：</strong>日常生產實際使用的參數範圍</li>
+                <li><strong>PAR (Proven Acceptable Range, 已證可接受範圍)：</strong>在 Stage 1 已證明可接受的更寬範圍</li>
+                <li><strong>Design Space (設計空間)：</strong>ICH Q8 定義的多維度參數組合範圍</li>
+            </ul>
+            <p>Stage 1 的製程特性化/穩健性研究已經探索了參數的極端值，因此 PPQ 不需要重複這些工作。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：何時需要補充工程研究</h4>
+            <p>雖然 PPQ 在正常條件下執行，但在某些情況下可能需要<strong>補充性的工程研究 (supplemental engineering studies)</strong> 來評估 NOR 的極端值：</p>
+            <ul>
+                <li>充填線速度的最快和最慢設定</li>
+                <li>壓錠速度的極端值</li>
+                <li>規模效應的評估（如果縮小模型已適當確認）</li>
+            </ul>
+            <p>這些工程研究可以在 PPQ 之前或同時進行，但不需要作為正式 PPQ 的一部分。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PPQ 就像新飛機的認證試飛：試飛員在<strong>正常飛行條件</strong>下測試飛機的性能，而不是在颱風中試飛。極端條件的測試（失速、極端高度等）已經在之前的地面模擬和工程測試中完成了（Stage 1）。但如果有些地面模擬無法完全代表實際情況，可能需要在正式試飛前補充一些邊界條件的飛行測試（補充工程研究）。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.4 PPQ Using Individual Operation Studies                     -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-4424">4.4.2.4 PPQ Using Individual Operation Studies</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>The PPQ of a manufacturing process can be achieved by performing PPQ studies on each <span class="key-term">individual unit operation</span> (or related groups of operations). This approach calls for the writing of individual protocols that outline the studies to be conducted on each unit operation to achieve PPQ for the entire process. Protocols should define the testing performed and acceptance criteria for the output of the unit operation (intermediate) as prescribed by GMP. They may also require that the final DS or DP meets all specifications and predefined acceptance criteria.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：逐單元操作 PPQ</h4>
+            <p><strong>Individual Unit Operation PPQ (逐單元操作 PPQ)</strong> 是將整個製造流程拆分為個別的單元操作，分別撰寫 PPQ 方案並執行驗證。</p>
+            <p>這種方法的優勢：</p>
+            <ul>
+                <li>每個單元操作有獨立的測試和接受標準</li>
+                <li>可以針對中間體 (intermediate) 設定 GMP 規定的品質標準</li>
+                <li>出現偏差時更容易定位問題來源</li>
+                <li>特別適合長流程或複雜的生物製劑 DS 製程</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>使用逐單元操作 PPQ 時，不要忽略<strong>整體製程</strong>的驗證。個別單元操作的 PPQ 通過，不代表整個製程一定符合要求。最終的 DS 或 DP 仍然必須符合所有規格和預定義的接受標準。</p>
+            <p>這種方法常見於蛋白質藥物原料藥 (protein DS) 的製程，因為其製程步驟多且各有獨特的關鍵參數。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>逐單元操作 PPQ 就像組裝一輛汽車：你可以分別測試引擎、變速箱、煞車系統各自的性能（單元操作 PPQ），但最終還是要做一次完整的路測（最終 DS/DP 規格確認），確保所有零件組裝在一起後的整體表現符合標準。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- 4.4.2.5 PPQ Using Bracketing, Matrix & Family Approaches           -->
+<!-- ================================================================== -->
+<h2 class="section-title" id="sec-4425">4.4.2.5 PPQ Using Bracketing, Matrix, and Family Approaches</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>Many operations involve similar or identical process operations or equipment. In these cases, designs where grouping is used may be considered (57). Some process variables that might be amenable to approaches using <span class="key-term">bracketing</span>, <span class="key-term">matrix</span>, or <span class="key-term">family grouping</span> PPQ include:</p>
+        <ul>
+            <li>Batch sizes</li>
+            <li>DP dosage strength</li>
+            <li>Identical equipment</li>
+            <li>Different size vessels, tanks, or similar configurations of the same design and operating principle or in-kind equipment</li>
+            <li>Various vial sizes and/or fill volumes of the same DP (e.g., smallest and largest vial size)</li>
+            <li>Filling line speeds (e.g., fastest and slowest line speed)</li>
+            <li>Product packaging (e.g., bottle heights or dosage counts)</li>
+            <li>Transport validation for biological products</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：分組驗證策略</h4>
+            <p>當多個產品或配置共用相似的製程和設備時，可以使用分組策略來減少 PPQ 的總工作量：</p>
+            <ul>
+                <li><strong>Bracketing (括弧法)：</strong>只驗證極端值（如最小和最大批量），假設中間值的表現也可接受。適用於連續變數（批量、線速度、充填量）。</li>
+                <li><strong>Matrix (矩陣法)：</strong>在多個因子的所有組合中選擇代表性的子集進行驗證。適用於有多個獨立變數的情況。</li>
+                <li><strong>Family Grouping (家族分組)：</strong>將使用相同製程/設備的產品歸為一族，選擇代表性成員進行驗證。適用於相同平台的多個產品。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>分組驗證就像買鞋試穿：</p>
+            <ul>
+                <li><strong>Bracketing</strong> = 你只試穿最大號和最小號，確認都合腳後，就相信中間尺碼也沒問題</li>
+                <li><strong>Matrix</strong> = 你有三種顏色和三種尺碼共九雙，但只挑幾雙有代表性的組合來試穿</li>
+                <li><strong>Family</strong> = 同品牌同系列的不同款式，你知道它們的楦型一樣，只需試穿一款就能預測其他款的合腳程度</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>使用分組策略時必須注意：</p>
+            <ul>
+                <li>必須有科學論證支持為什麼這些產品/條件可以被歸為同一組</li>
+                <li>如果組內某個條件的結果不符合預期，可能需要擴大驗證範圍</li>
+                <li>分組策略特別適合 CDMO，因為 CDMO 通常在相同設備上生產多個客戶的產品</li>
+                <li>運輸驗證 (transport validation) 也可使用分組策略，特別適合有多條運輸路線的生物製品</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的充填線可以處理 2R 到 50R 的西林瓶。與其對每種瓶型都做完整 PPQ，你可以：</p>
+            <ol>
+                <li>使用 <strong>Bracketing</strong>：只對最小 (2R) 和最大 (50R) 瓶型做完整 PPQ</li>
+                <li>使用 <strong>Matrix</strong>：結合瓶型和充填量，選擇代表性組合</li>
+                <li>論證中間瓶型的行為可以從極端值結果推斷</li>
+                <li>在 PVMP 中記錄分組策略的科學依據</li>
+            </ol>
+            <p>這可以將 PPQ 工作量從十幾批減少到數批，同時保持科學嚴謹性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在哪些情況下，Bracketing 策略不適用？請舉出至少兩個例子。</li>
+                <li>如果你使用 Family Grouping 來驗證三個不同劑量強度的產品，但最低劑量強度的結果不符合預期，你會如何處理？</li>
+                <li>Transport Validation 使用 Bracketing 時，「極端值」應該包含哪些因素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================== -->
+<!-- SECTION SUMMARY                                                     -->
+<!-- ================================================================== -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>加強取樣計畫 (Enhanced Sampling Plan)：</strong>PPQ 階段的取樣必須比日常生產更廣泛，使用三大統計工具 &mdash; Individual Value Plots（視覺化）、Tolerance Intervals（能力衡量）、Variance Components（變異來源分析）&mdash; 來提供批內和批間品質的統計信心。</li>
+        <li><strong>風險分層取樣：</strong>取樣數量依 CQA 關鍵性分級（高/中/低），對應不同的信心/涵蓋度要求（95/99、95/95、95/90）。無菌充填產品使用 B/M/E 時間點取樣，最低 n=6（各 2），最高可達 n=15（各 5）。</li>
+        <li><strong>取樣數量決定邏輯：</strong>基於先驗知識（Stage 1 數據）和 CQA 關鍵性的組合，使用容許區間法反推所需取樣量。無先驗知識時（如疫情緊急應變），可採用統一的 95/95 最低取樣標準。</li>
+        <li><strong>PPQ 批次數的三步驟決策法：</strong>Step 1 確定基線批次數（知識越多，起始批次越少）；Step 2 評估是否需要追加控制或研究；Step 3 考量非 GMP 商業因素。N=3 依據 EU GMP Annex 15 為常用起點，但必須有完整的風險評估論證。</li>
+        <li><strong>PPQ 報告結構：</strong>應包含所有屬性的摘要統計表、逐屬性的圖形分析（個別值圖）、容許區間圖表、變異成分表，以及每個屬性的管控與能力總結聲明。無法執行統計分析時（如低於 LOD 或獨特值不足），應說明原因並使用替代方法。</li>
+        <li><strong>PPQ 執行策略的靈活性：</strong>PPQ 通常在正常操作條件下執行（極端條件已在 Stage 1 探索）；可按個別單元操作分別執行 PPQ；多產品/多配置可使用 Bracketing、Matrix 或 Family Grouping 策略來提升效率。</li>
+        <li><strong>所有決策和論證必須記錄在 PVMP 中，</strong>包括取樣策略、批次數選擇依據、分組策略的科學依據，以及所有支持數據來源的引用。</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 60 (Revised 2026): Process Validation &mdash; A Lifecycle Approach</p>
+    <p>Section 4.4.2: PPQ Enhanced Sampling, Batch Justification &amp; Study Design (p49&ndash;p57)</p>
+    <p>Educational Material &mdash; For Training Purposes Only</p>
+</div>
+
+</body>
+</html>

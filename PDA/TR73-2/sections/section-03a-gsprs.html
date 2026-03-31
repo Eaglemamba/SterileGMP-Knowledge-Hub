@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73-2 - Section 3a: GSPRs Part 1 (5.0–5.2)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GSPR TABLE CUSTOM STYLES ===== */
+.gspr-table {
+    font-size: 0.82rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.gspr-table th {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.gspr-table td {
+    padding: 0.45rem 0.6rem;
+    vertical-align: top;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.gspr-table td:first-child {
+    text-align: center;
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 50px;
+}
+
+.gspr-table td:nth-child(2) {
+    min-width: 100px;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.gspr-table td ul {
+    margin: 0.2rem 0 0.2rem 1rem;
+    padding: 0;
+    list-style-type: disc;
+}
+
+.gspr-table td ul ul {
+    margin: 0.1rem 0 0.1rem 0.8rem;
+    list-style-type: circle;
+}
+
+.gspr-table td ul ul ul {
+    list-style-type: "- ";
+}
+
+.gspr-table td li {
+    margin-bottom: 0.15rem;
+}
+
+.gspr-table tr.chapter-header td {
+    background: linear-gradient(135deg, #e2e8f0 0%, #edf2f7 100%);
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 0.6rem;
+}
+
+.gspr-table tr:hover td {
+    background-color: #f0f7ff;
+}
+
+.gspr-table tr.chapter-header:hover td {
+    background: linear-gradient(135deg, #e2e8f0 0%, #edf2f7 100%);
+}
+
+.gspr-footnotes {
+    font-size: 0.78rem;
+    color: var(--text-medium);
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.gspr-footnotes p {
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.0&ndash;5.2: GSPRs Part 1 &mdash; General Safety &amp; Performance Requirements</h1>
+    <div class="subtitle">第五章（上）：一般安全與性能要求 &mdash; GSPR 指引表</div>
+    <div class="page-info">PDA Technical Report No. 73-2 (2024): MDR Annex I for Staked Needle Systems | p15 &ndash; p29</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 MDR Annex I 中 <strong>General Safety and Performance Requirements (GSPRs)</strong> 對預充填注射器系統的適用範圍</li>
+        <li>掌握 Table 5.1-1 的三欄結構：Device Part（裝置零件）、Syringe Subassembly（注射器次組件）、Plunger Stoppers（柱塞膠塞）各自的文件責任歸屬</li>
+        <li>瞭解 Chapter I（一般要求，GSPR 1&ndash;8）與 Chapter II（設計與製造要求，GSPR 10&ndash;11）各項條款所需的支持性文件</li>
+        <li>學習申請者（Applicant）與供應商（Supplier）在法規符合性文件上的分工關係</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- 5.0 INTRODUCTION TO GSPRs -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec5-0">5.0&ndash;5.1 Introduction to the GSPR Guidance Table</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+
+        <p>ISO can be the current version of the Final Draft International Standard (FDIS) or European Standard (EN) version, depending on availability and upon agreement between the parties involved.</p>
+
+        <p>The columns in <span class="key-term">Table 5.1-1</span> are organized by <span class="key-term">device part</span>, <span class="key-term">syringe subassembly</span>, and <span class="key-term">plunger stopper</span> to reflect the current structure in industry and to build a bridge between the suppliers and the applicant. These three points summarize the contents of each of the corresponding columns in the table:</p>
+
+        <ul>
+            <li><strong>Evidence of Conformity of the Device Part of the Prefilled Syringe</strong><br>
+            This column refers to the <span class="key-term">device part</span> (see Glossary), including the soft needle shield, needle with lubrication, polymer or glass barrel with lubrication, if existing, and plunger stopper, including lubrication, coating, and/or lamination if existing. Content listed here is what the <span class="key-term">applicant</span> provides to the NB.</li>
+
+            <li><strong>Supportive Documents and Methods for the Syringe Subassembly Ready for Filling</strong><br>
+            This column refers to the <span class="key-term">syringe subassembly ready for filling</span> (see Glossary), including the soft needle shield, needle with lubrication, and polymer or glass barrel with lubrication if existing. Content listed here is provided by the <span class="key-term">suppliers</span> of the syringe subassembly to the applicant.</li>
+
+            <li><strong>Supportive Documents and Methods for Plunger Stoppers</strong><br>
+            This column refers to the <span class="key-term">plunger stopper</span>, but also to the soft part of the needle shield, including lubrication, coating, and/or lamination if existing. Content listed here is provided by the <span class="key-term">suppliers</span> of the plunger stopper/needle shield to the applicant.</li>
+        </ul>
+
+        <p>Documents regarding the <span class="key-term">plunger rod</span>, the <span class="key-term">rigid part of the needle shield</span> (if used), and the <span class="key-term">backstop</span> (if used) are listed in Section 5.3.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>GSPR (General Safety and Performance Requirements，一般安全與性能要求)：</strong>這是 EU MDR (Regulation (EU) 2017/745) Annex I 所列出的基本要求。醫療器材必須符合所有適用的 GSPR 才能取得 CE 標誌。</p>
+            <p><strong>Device Part (裝置零件)：</strong>指預充填注射器作為整體裝置的所有組成部分，包含針頭護套（soft needle shield）、帶潤滑的針頭、玻璃或聚合物筒身、柱塞膠塞等。</p>
+            <p><strong>Syringe Subassembly (注射器次組件)：</strong>指已準備好可進行充填的注射器組件，通常由注射器筒身供應商提供，包含針頭護套、帶潤滑的針頭、筒身等。</p>
+            <p><strong>Plunger Stopper (柱塞膠塞)：</strong>包含膠塞本體及其表面處理（潤滑、塗層、覆膜），由膠塞供應商提供。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把預充填注射器的 GSPR 文件想像成蓋房子的建築許可申請。<strong>申請者（Applicant）</strong>就像建商，負責整合所有文件向主管機關（NB）提出申請；<strong>注射器次組件供應商</strong>像是鋼筋水泥供應商，提供結構材料的檢驗報告；<strong>膠塞供應商</strong>像是門窗五金供應商，提供密封性能的測試數據。每個環節的文件都不可或缺，缺一環就無法取得使用執照。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 5.1-1 的三欄結構反映了產業實務中的責任分工：</p>
+            <ul>
+                <li><strong>第1欄 (Device Part)：</strong>由「申請者」提供給公告機構（NB），是最終的合規證據</li>
+                <li><strong>第2欄 (Syringe Subassembly)：</strong>由注射器「供應商」提供給申請者的支持性文件</li>
+                <li><strong>第3欄 (Plunger Stoppers)：</strong>由膠塞「供應商」提供給申請者的支持性文件</li>
+            </ul>
+            <p>注意：柱塞桿（plunger rod）、針頭護套剛性部分（rigid part of needle shield）及後擋（backstop）的文件列於 Section 5.3，不在本表範圍內。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Table 5.1-1 要按「裝置零件/注射器次組件/膠塞」三欄來組織，而不是按 GSPR 條款分欄？</li>
+                <li>如果你是 CDMO 的法規專員，收到注射器供應商的文件包後，你需要做什麼整合工作才能滿足第1欄的要求？</li>
+                <li>Plunger rod 和 backstop 的文件為什麼不在 Table 5.1-1 中？這反映了什麼樣的供應鏈結構？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- TABLE 5.1-1 -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="table-5-1-1">Table 5.1-1: Supportive Documents Suggested to Address Relevant GSPRs</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text &mdash; Table 5.1-1</h3>
+
+        <div style="overflow-x:auto;">
+        <table class="gspr-table">
+            <thead>
+                <tr>
+                    <th rowspan="3" style="min-width:55px;">GSPR</th>
+                    <th rowspan="3" style="min-width:110px;">Scope</th>
+                    <th>Device Part</th>
+                    <th>Syringe Subassembly</th>
+                    <th>Plunger Stoppers</th>
+                </tr>
+                <tr>
+                    <th style="font-weight:400; font-size:0.75rem;">Evidence of Conformity of the Device Part<sup>1</sup> of the Prefilled Syringe</th>
+                    <th style="font-weight:400; font-size:0.75rem;">Supportive Documents and Methods for the Syringe Subassembly Ready for Filling<sup>2</sup></th>
+                    <th style="font-weight:400; font-size:0.75rem;">Supportive Documents and Methods for Plunger Stoppers<sup>3</sup></th>
+                </tr>
+                <tr>
+                    <th style="font-weight:400; font-size:0.75rem;">Provided by Applicant</th>
+                    <th style="font-weight:400; font-size:0.75rem;">Provided by Supplier</th>
+                    <th style="font-weight:400; font-size:0.75rem;">Provided by Supplier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Chapter I Header -->
+                <tr class="chapter-header">
+                    <td colspan="5">Chapter I &mdash; General Requirements<sup>4</sup></td>
+                </tr>
+
+                <!-- GSPR 1 -->
+                <tr>
+                    <td>1</td>
+                    <td>Intended Performance</td>
+                    <td>
+                        <ul>
+                            <li>Intended Use statement or reference to information provided in Table 4.2-3</li>
+                            <li>Risk management file</li>
+                            <li>Design verification summary report</li>
+                            <li>Biological evaluation report</li>
+                            <li>Usability engineering file</li>
+                            <li>Traceability matrix</li>
+                            <li>Benefit/risk assessment</li>
+                            <li>Evidence of compliance with the applicable parts of GMP requirements for medicinal products</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence how suppliers specified and verified performance</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence how suppliers specified and verified performance</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                    <li>ISO 14971, ICH Q9</li>
+                                    <li>ISO 11040-8</li>
+                                    <li>ISO 10993-1</li>
+                                    <li>IEC 62366-1</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 2 -->
+                <tr>
+                    <td>2</td>
+                    <td>Risk Reduction I</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file</li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence how suppliers specified and verified performance</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence how suppliers specified and verified performance</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 3 -->
+                <tr>
+                    <td>3 (a-f)</td>
+                    <td>Risk management system</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Risk management plan</li>
+                                    <li>Hazard identification document</li>
+                                    <li>Use-related risk analysis</li>
+                                    <li>Post-market surveillance plan</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 4 -->
+                <tr>
+                    <td>4 (a-c)</td>
+                    <td>Risk control measures</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Risk management plan</li>
+                                    <li>Hazard identification document</li>
+                                    <li>Use-related risk analysis</li>
+                                    <li>Post-market surveillance plan</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of GMP requirements for medicinal products
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                    <li>IEC 62366-1</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 5 -->
+                <tr>
+                    <td>5</td>
+                    <td>Risk reduction II</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Risk management plan</li>
+                                    <li>Hazard identification document</li>
+                                    <li>Use-related risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Usability engineering file, including
+                                <ul>
+                                    <li>information for safety, incl. residual risks</li>
+                                    <li>intended use, users and context of use information</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of GMP requirements for medicinal products
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                    <li>IEC 62366-1</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 6 -->
+                <tr>
+                    <td>6</td>
+                    <td>Characteristics and performance</td>
+                    <td>
+                        <ul>
+                            <li>Release Specification</li>
+                            <li>Shelf life and storage information</li>
+                            <li>Design verification summary report</li>
+                            <li>Traceability matrix</li>
+                            <li>Evidence of compliance with the applicable parts of GMP requirements for medicinal products
+                                <ul>
+                                    <li>ICH Q1A</li>
+                                    <li>ISO 11040-8</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Packaging validation summary</li>
+                            <li>Shelf life and storage information</li>
+                            <li>Real-time stability (aging) / accelerated aging studies summary, e.g., based on
+                                <ul>
+                                    <li>ICH Q1A and/or ASTM F1980</li>
+                                    <li>ISO 11040-4, -6, -7</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Packaging validation summary</li>
+                            <li>Shelf life and storage information</li>
+                            <li>Real-time stability (aging) / accelerated aging studies summary, e.g., based on
+                                <ul>
+                                    <li>ICH Q1A and/or ASTM F1980</li>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 7 -->
+                <tr>
+                    <td>7</td>
+                    <td>Design, manufacture, packaging</td>
+                    <td>
+                        <ul>
+                            <li>Release Specification</li>
+                            <li>Shelf life and storage information</li>
+                            <li>Design verification summary report</li>
+                            <li>Traceability matrix</li>
+                            <li>Shipping &amp; transport validation summaries</li>
+                            <li>Evidence of compliance with the applicable parts of GMP requirements for medicinal products
+                                <ul>
+                                    <li>ICH Q1A</li>
+                                    <li>ISO 11040-8</li>
+                                    <li>ASTM D4169</li>
+                                    <li>ISO 11607-1 (if applicable)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Packaging validation summary</li>
+                            <li>Shelf life and storage information</li>
+                            <li>Real-time stability (aging) / accelerated aging studies summary, e.g., based on ICH Q1A and/or ASTM F1980</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6, -7</li>
+                                    <li>ASTM D4169</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Packaging validation summary</li>
+                            <li>Shelf life/Use-by date and storage information</li>
+                            <li>Real-time stability (aging) / accelerated aging studies summary, e.g., based on ICH Q1A and/or ASTM F1980</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 8 -->
+                <tr>
+                    <td>8</td>
+                    <td>Risks and side-effects</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Risk management report</li>
+                                    <li>Benefit/risk assessment</li>
+                                </ul>
+                            </li>
+                            <li>Usability engineering file, including
+                                <ul>
+                                    <li>Information for safety, incl. residual risks</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS and a usability engineering process, e.g., according to
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                    <li>IEC 62366-1</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS</li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- Chapter II Header -->
+                <tr class="chapter-header">
+                    <td colspan="5">Chapter II &mdash; Requirements Regarding Design and Manufacture</td>
+                </tr>
+
+                <!-- GSPR 10.1(a) -->
+                <tr>
+                    <td>10.1 (a)</td>
+                    <td>Chemical, physical, and biological properties</td>
+                    <td>
+                        <ul>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products, incl.
+                                        <ul>
+                                            <li>Extractables &amp; Leachables</li>
+                                            <li>Compatibility</li>
+                                        </ul>
+                                    </li>
+                                    <li>Biocompatibility according to
+                                        <ul>
+                                            <li>ISO 10993-1</li>
+                                            <li>ISO 11040-8</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1</li>
+                                </ul>
+                            </li>
+                            <li>Statement on REACH</li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.1, 3.2.2.1, (3.1.16, 3.1.17, 3.3.9.)<sup>5</sup></li>
+                            <li>Typical physical properties</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>ISO 9626</li>
+                                    <li>ISO 7864</li>
+                                    <li>ISO 15510</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1, USP &lt;87&gt;</li>
+                                </ul>
+                            </li>
+                            <li>Statement on REACH</li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.9</li>
+                            <li>Typical physical properties</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -2, -3, -4</li>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.1(b) -->
+                <tr>
+                    <td>10.1 (b)</td>
+                    <td>Materials, substances, compatibility, material properties</td>
+                    <td>
+                        <ul>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products, incl.
+                                        <ul>
+                                            <li>Extractables &amp; Leachables</li>
+                                            <li>Compatibility</li>
+                                        </ul>
+                                    </li>
+                                    <li>Biocompatibility according to
+                                        <ul>
+                                            <li>ISO 10993-1</li>
+                                            <li>ISO 11040-8</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                </ul>
+                            </li>
+                            <li>Biocompatibility, based on ISO 10993-1</li>
+                            <li>Statement on REACH</li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.1, 3.2.2.1, (3.1.16, 3.1.17, 3.3.9.)<sup>5</sup></li>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>ISO 9626</li>
+                                    <li>ISO 7864</li>
+                                    <li>ISO 15510</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                </ul>
+                            </li>
+                            <li>Biocompatibility, based on ISO 10993-1, USP &lt;87&gt;</li>
+                            <li>Statement on REACH</li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.9</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -2, -3, -4</li>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.1(d) -->
+                <tr>
+                    <td>10.1 (d)</td>
+                    <td>Materials, substances, compatibility, material properties</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Process risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                    <li>Control strategy</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>Biocompatibility according to
+                                        <ul>
+                                            <li>ISO 10993-1</li>
+                                            <li>ISO 11040-8</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                            <li>Process validation summary, incl critical process parameters</li>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS, incl. critical process parameters</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1, USP &lt;87&gt;</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a QMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 13485</li>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                            <li>Process validation summary, incl. critical process parameters</li>
+                            <li>High-level risk management summary as evidence for the implementation of a RMS, incl. critical process parameters</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.1(f) -->
+                <tr>
+                    <td>10.1 (f)</td>
+                    <td>Materials, substances, compatibility, material properties</td>
+                    <td>
+                        <ul>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Confirmation of suitability of the materials for the intended use</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance of the material with the required mechanical properties for the intended use based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>ISO 9626</li>
+                                    <li>ISO 7864</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -2, -3, -4</li>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.1(g) -->
+                <tr>
+                    <td>10.1 (g)</td>
+                    <td>Materials, substances, compatibility, material properties</td>
+                    <td>
+                        <ul>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Confirmation of suitability of materials for the intended use</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance of the material with the required mechanical properties for the intended use based on supplier information</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8, 3.2.1, 3.2.9</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>ISO 9626</li>
+                                    <li>ISO 7864</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.9.</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -2, -3, -4</li>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                            <li>Information on the surface finish, e.g., lubrication, coating, lamination</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.1(h) -->
+                <tr>
+                    <td>10.1 (h)</td>
+                    <td>Materials, substances, compatibility, material properties</td>
+                    <td>
+                        <ul>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Confirmation of suitability of the materials for the intended use</li>
+                                </ul>
+                            </li>
+                            <li>Control strategy</li>
+                            <li>Evidence of compliance of the material with the required mechanical properties for the intended use based on supplier information</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.1, 3.2.2.1, (3.1.16, 3.1.17, 3.3.9.)<sup>5</sup></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>ISO 9626</li>
+                                    <li>ISO 7864</li>
+                                    <li>ISO 15510</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8, 3.2.9</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -2, -3, -4</li>
+                                    <li>ISO 11040-5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.2 -->
+                <tr>
+                    <td>10.2</td>
+                    <td>Risks related to contaminants and residues</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Process risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                    <li>Control strategy</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                    <li>Biocompatibility according to
+                                        <ul>
+                                            <li>ISO 10993-1</li>
+                                            <li>ISO 11040-8</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1</li>
+                                </ul>
+                            </li>
+                            <li>Process validation summary, incl. process residues</li>
+                            <li>Washing and sterilization validation summary</li>
+                            <li>Manufacturing flow chart, incl. critical process steps and the according controls</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8, 3.2.1, 3.2.9</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                    <li>ISO 10993-7</li>
+                                    <li>ISO 11135</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1, USP &lt;87&gt;</li>
+                                </ul>
+                            </li>
+                            <li>Specification, incl. endotoxins, bioburden, particles</li>
+                            <li>Quality certificate, incl. endotoxins, bioburden, particles</li>
+                            <li>Process validation summary, incl. process residues</li>
+                            <li>Washing and sterilization validation summary</li>
+                            <li>Manufacturing flow chart, incl. critical process steps and the according controls</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.9</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -3, -4</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.3 -->
+                <tr>
+                    <td>10.3</td>
+                    <td>Use with materials and substances</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, incl.
+                                <ul>
+                                    <li>Risk management plan</li>
+                                    <li>Hazard identification document</li>
+                                    <li>Use-related risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Confirmation of suitability of materials for the intended use</li>
+                                    <li>Control strategy</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                    <li>Biocompatibility according to
+                                        <ul>
+                                            <li>ISO 10993-1</li>
+                                            <li>ISO 11040-8</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of ISO 15378</li>
+                            <li>Evidence of compliance of the material with the required mechanical properties for the intended use based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1</li>
+                                </ul>
+                            </li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.1.</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6</li>
+                                    <li>ISO 10993-7</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1, USP &lt;87&gt;</li>
+                                </ul>
+                            </li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Evidence of compliance with Ph. Eur. 3.1.8., 3.2.9.</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-4</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.4.1 -->
+                <tr>
+                    <td>10.4.1</td>
+                    <td>Risks posed by substances or particles</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, incl.
+                                <ul>
+                                    <li>Design risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                    <li>Control strategy</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                    <li>Biocompatibility according to
+                                        <ul>
+                                            <li>ISO 10993-1</li>
+                                            <li>ISO 11040-8</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of ISO 15378</li>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1</li>
+                                </ul>
+                            </li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Specification, incl. particles</li>
+                            <li>Quality Certificate</li>
+                            <li>Process validation summary, incl. process residues</li>
+                            <li>Washing and sterilization validation summary</li>
+                            <li>Manufacturing flow chart, incl. critical process steps and the according controls</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Summary of assessment of
+                                <ul>
+                                    <li>Extractables, incl. ICH Q3D elements</li>
+                                    <li>Biocompatibility, based on ISO 10993-1, USP &lt;87&gt;</li>
+                                </ul>
+                            </li>
+                            <li>Content declaration on substances of concern, e.g., TSE/BSE, latex, nitrosamines, CMR/ED, phthalates</li>
+                            <li>Specification, incl. particles</li>
+                            <li>Quality Certificate</li>
+                            <li>Process validation summary, incl. process residues</li>
+                            <li>Washing and sterilization validation summary</li>
+                            <li>Manufacturing flow chart, incl. critical process steps and the according controls</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-1, -3, -4</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.4.2 -->
+                <tr>
+                    <td>10.4.2</td>
+                    <td>CMR and/or endocrine-disrupting substances</td>
+                    <td>
+                        <ul>
+                            <li>Not directly applicable (link to GSPR 10.4.1)</li>
+                            <li>If applicable, benefit/risk assessment</li>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Content declaration on CMR/ED substances</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Content declaration on CMR/ED substances</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.4.3 -->
+                <tr>
+                    <td>10.4.3</td>
+                    <td>Phthalates</td>
+                    <td>
+                        <ul>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Content declaration on phthalates</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Content declaration on phthalates</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.5 -->
+                <tr>
+                    <td>10.5</td>
+                    <td>Risks related to unintentional ingress of substances</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, including
+                                <ul>
+                                    <li>Design risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Control strategy</li>
+                                    <li>Shipping validation</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015 incl. CCI and stability testing</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of ISO 15378</li>
+                            <li>For polymer syringes: Permeability studies summary</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Statement on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6, incl. Removal force and closure system/barrel integrity</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Information on physical properties, incl. water vapor/oxygen transmission rate</li>
+                            <li>Statements on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 2782-1</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- GSPR 10.6 -->
+                <tr>
+                    <td>10.6</td>
+                    <td>Risks related to particles</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, incl.
+                                <ul>
+                                    <li>Design risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                    <li>Control strategy</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 15378</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with material safety requirements based on supplier information</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Specification, incl. particles</li>
+                            <li>Quality Certificate</li>
+                            <li>Statement on use of nanomaterials</li>
+                            <li>Statement on compliance with the applicable parts of ISO 11040-4, -6</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Specification, incl. particles</li>
+                            <li>Quality Certificate</li>
+                            <li>Statement on use of nanomaterials</li>
+                            <li>Statement on compliance with the applicable parts of
+                                <ul>
+                                    <li>ISO 8871-3</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- 11 – Infection and Microbial Contamination -->
+                <tr class="chapter-header">
+                    <td colspan="5">11 &mdash; Infection and Microbial Contamination</td>
+                </tr>
+
+                <!-- GSPR 11.1 -->
+                <tr>
+                    <td>11.1 (a-d)</td>
+                    <td>Possible risks of infection to patients</td>
+                    <td>
+                        <ul>
+                            <li>Risk management file, incl.
+                                <ul>
+                                    <li>Design risk analysis</li>
+                                </ul>
+                            </li>
+                            <li>Design verification summary report, incl.
+                                <ul>
+                                    <li>Biological Evaluation report</li>
+                                    <li>Control strategy</li>
+                                </ul>
+                            </li>
+                            <li>Usability engineering file, incl.
+                                <ul>
+                                    <li>Information for safety, incl. residual risks</li>
+                                    <li>Intended use, users, and context of use information</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of
+                                <ul>
+                                    <li>GMP requirements for medicinal products</li>
+                                    <li>EMA/CHMP/CVMP/QWP/850374/2015</li>
+                                </ul>
+                            </li>
+                            <li>Evidence for the implementation of a RMS, e.g., according to the applicable parts of
+                                <ul>
+                                    <li>ISO 14971, ICH Q9</li>
+                                </ul>
+                            </li>
+                            <li>Evidence of compliance with the applicable parts of ISO 15378</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Sterilization validation summary, incl. reference to applicable parts of
+                                <ul>
+                                    <li>ISO 11040-4, -6, -7</li>
+                                    <li>ISO 11135</li>
+                                    <li>ISO 11137</li>
+                                    <li>ISO 14937</li>
+                                    <li>ASTM 4169/ISTA 3E</li>
+                                </ul>
+                            </li>
+                            <li>Transport validation summary, incl. transportation and shipping studies</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate, incl. sterilization confirmation</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Sterilization validation summary, incl. reference to applicable parts of
+                                <ul>
+                                    <li>ISO 17665</li>
+                                    <li>ISO 11135</li>
+                                    <li>ISO 11137</li>
+                                    <li>ISO 11607-1</li>
+                                    <li>ASTM 4169 ISTA 3E</li>
+                                </ul>
+                            </li>
+                            <li>Transport validation summary, incl. transportation and shipping studies</li>
+                            <li>Specification</li>
+                            <li>Quality Certificate, incl. sterilization confirmation</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="gspr-footnotes">
+            <p><sup>1</sup> See Glossary: incl. barrel, lubrication (if needed), needle and adhesive, NS/RNS, plunger stopper, plunger rod, backstop; suggestions for documentation on the rigid part of the RNS, plunger rod and backstop are provided in Section 5.3.</p>
+            <p><sup>2</sup> Incl. lubrication (if existing), needle and adhesive, NS/RNS (for supportive documentation on the soft part of the NS, please use column 3).</p>
+            <p><sup>3</sup> Incl. lubrication, coating and/or lamination.</p>
+            <p><sup>4</sup> For addressing Quality Management System considerations for Device Parts, a reference to a supplier's ISO 15378 and/or ISO 13485 certification can be added.</p>
+            <p><sup>5</sup> Still in draft at the time this document was published.</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts &mdash; Table 5.1-1 結構總覽</h4>
+            <p>Table 5.1-1 是整份 TR73-2 的核心參考表格，將 MDR Annex I 的 GSPR 條款對應到具體的文件需求。它分為兩大章節：</p>
+            <ul>
+                <li><strong>Chapter I &mdash; General Requirements (一般要求，GSPR 1&ndash;8)：</strong>涵蓋預期性能、風險管理、風險控制、特性與性能、設計/製造/包裝、風險與副作用等基本要求</li>
+                <li><strong>Chapter II &mdash; Design and Manufacture (設計與製造要求，GSPR 10&ndash;11)：</strong>涵蓋化學/物理/生物特性、污染物與殘留物風險、物質與材料使用、CMR/ED 物質、鄰苯二甲酸酯、非預期物質進入風險、微粒風險、感染與微生物污染等</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes &mdash; Chapter I 常見文件模式</h4>
+            <p>觀察 GSPR 1&ndash;8 的 Device Part 欄位，會發現幾份核心文件反覆出現：</p>
+            <ul>
+                <li><strong>Risk Management File (風險管理檔案)：</strong>幾乎每個 GSPR 都需要，包含風險管理計畫、危害識別、使用相關風險分析、上市後監督計畫</li>
+                <li><strong>Design Verification Summary Report (設計驗證摘要報告)：</strong>證明產品符合設計規格</li>
+                <li><strong>Usability Engineering File (可用性工程檔案)：</strong>證明使用者可安全且正確使用裝置（GSPR 1, 5, 8 需要）</li>
+                <li><strong>Traceability Matrix (可追溯性矩陣)：</strong>將所有要求連結到對應的驗證活動</li>
+                <li><strong>GMP Compliance (GMP 合規)：</strong>因為預充填注射器是藥品與器材的組合，必須同時符合藥品 GMP</li>
+            </ul>
+            <p>供應商欄位的模式更為統一：通常要求提供高階風險管理摘要（high-level risk management summary）和 QMS 實施證據（ISO 13485 / ISO 15378）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在申請一棟大樓的使用執照：</p>
+            <ul>
+                <li><strong>GSPR 1&ndash;3（預期性能與風險管理）</strong>就像建築設計審查 &mdash; 你需要提出完整的設計圖、結構分析報告和安全評估</li>
+                <li><strong>GSPR 4&ndash;5（風險控制）</strong>就像消防和防震審查 &mdash; 要展示具體的風險控制措施</li>
+                <li><strong>GSPR 6&ndash;7（特性與設計/製造/包裝）</strong>就像材料檢驗和施工品質管控 &mdash; 需要放行規格、架儲壽命資料、穩定性數據</li>
+                <li><strong>GSPR 8（風險與副作用）</strong>就像最終的綜合安全評估 &mdash; 效益/風險評估和殘餘風險揭露</li>
+            </ul>
+            <p>而供應商提供的文件就像各個分包商（鋼筋廠、水泥廠）出具的材料證明書。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes &mdash; Chapter II (GSPR 10.x) 深度要求</h4>
+            <p>Chapter II 的文件要求遠比 Chapter I 更為細緻，反映了材料科學和生物相容性的複雜性：</p>
+            <ul>
+                <li><strong>Extractables &amp; Leachables (E&amp;L，萃取物與浸出物)：</strong>GSPR 10.1(a)(b)(d)、10.2、10.3、10.4.1 都需要 E&amp;L 評估，包含 ICH Q3D 元素雜質</li>
+                <li><strong>Biocompatibility (生物相容性)：</strong>注射器次組件參照 ISO 10993-1，膠塞額外參照 USP &lt;87&gt;</li>
+                <li><strong>REACH / CMR / ED / Phthalates：</strong>GSPR 10.4.2 和 10.4.3 特別針對致癌/致突變/生殖毒性物質及內分泌干擾物質的申報</li>
+                <li><strong>Ph. Eur. (歐洲藥典)：</strong>注射器次組件需符合 Ph. Eur. 3.1.8, 3.2.1, 3.2.2.1 等，膠塞需符合 Ph. Eur. 3.1.8, 3.2.9</li>
+                <li><strong>Container Closure Integrity (CCI，容器密封完整性)：</strong>GSPR 10.5 特別要求 CCI 和穩定性測試，聚合物注射器還需要滲透性研究</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 &mdash; ISO 標準對照</h4>
+            <p>Table 5.1-1 引用了大量 ISO 標準，理解它們的對應關係非常重要：</p>
+            <ul>
+                <li><strong>ISO 11040-4, -6, -7：</strong>預充填注射器系列標準（玻璃筒身-4、聚合物筒身-6、不鏽鋼彈性護套組件-7）&mdash; 注射器次組件供應商的核心標準</li>
+                <li><strong>ISO 11040-5：</strong>柱塞膠塞標準 &mdash; 膠塞供應商的核心標準</li>
+                <li><strong>ISO 11040-8：</strong>與藥品接觸的預充填注射器要求 &mdash; 申請者的整合標準</li>
+                <li><strong>ISO 8871-1, -2, -3, -4：</strong>彈性體密封件系列 &mdash; 膠塞材料的基礎標準</li>
+                <li><strong>ISO 9626 / ISO 7864 / ISO 15510：</strong>針管/一次性針頭/不鏽鋼標準 &mdash; 針頭相關</li>
+                <li><strong>ISO 14971：</strong>醫療器材風險管理 &mdash; 貫穿所有 GSPR</li>
+                <li><strong>IEC 62366-1：</strong>可用性工程 &mdash; 與使用者安全相關的 GSPR</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; GSPR 11.1 感染風險的滅菌要求</h4>
+            <p>GSPR 11.1 (a-d) 的滅菌驗證要求值得特別注意：</p>
+            <ul>
+                <li><strong>注射器次組件：</strong>引用 ISO 11135（環氧乙烷滅菌）、ISO 11137（輻射滅菌）、ISO 14937（通用滅菌要求）</li>
+                <li><strong>膠塞：</strong>引用 ISO 17665（濕熱滅菌）、ISO 11135、ISO 11137、ISO 11607-1（最終滅菌包裝）</li>
+                <li>兩者都需要運輸驗證摘要和含滅菌確認的品質證書</li>
+            </ul>
+            <p>這反映了注射器次組件和膠塞通常採用不同的滅菌方法：注射器多用 EtO 或輻射，膠塞常用高壓蒸汽滅菌。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設你是一家 CDMO 的法規事務專員，正在準備一個新的預充填注射器產品的 MDR 技術文件。你需要：</p>
+            <ol>
+                <li><strong>向注射器筒身供應商索取：</strong>E&amp;L 評估摘要、ISO 10993-1 生物相容性報告、Ph. Eur. 合規證據、ISO 11040-4/-6 合規聲明、滅菌驗證摘要、品質證書</li>
+                <li><strong>向膠塞供應商索取：</strong>E&amp;L 評估摘要（含 USP &lt;87&gt;）、ISO 8871 系列合規聲明、ISO 11040-5 合規聲明、Ph. Eur. 3.2.9 合規證據、CMR/ED/鄰苯二甲酸酯含量聲明</li>
+                <li><strong>自行準備：</strong>風險管理檔案（ISO 14971）、設計驗證摘要報告（含生物評估報告）、可追溯性矩陣、可用性工程檔案（IEC 62366-1）、藥品 GMP 合規證據</li>
+            </ol>
+            <p>Table 5.1-1 就是你的「文件檢核清單」，確保不遺漏任何法規要求的支持性文件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼膠塞供應商在 GSPR 10.1(a) 需要額外提供 USP &lt;87&gt; 的生物相容性數據，而注射器次組件供應商只需 ISO 10993-1？</li>
+                <li>GSPR 10.4.2（CMR/ED 物質）對 Device Part 欄位標註「Not directly applicable」，但仍要求供應商提供含量聲明。這背後的法規邏輯是什麼？</li>
+                <li>如果你的產品使用聚合物筒身（polymer barrel）而非玻璃筒身，在 GSPR 10.5 會多出什麼額外要求？為什麼？</li>
+                <li>比較 GSPR 10.2（污染物與殘留物）和 GSPR 10.4.1（物質或微粒風險）的文件要求，哪些文件是重疊的？哪些是 10.2 獨有的？</li>
+                <li>從表中找出所有提及 EMA/CHMP/CVMP/QWP/850374/2015 的 GSPR 條款。這份 EMA 指引主要涉及什麼議題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>
