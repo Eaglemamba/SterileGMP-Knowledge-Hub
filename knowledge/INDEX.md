@@ -524,6 +524,43 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+
+---
+
+## ISPE/ISPE-Vol5-Complete.md
+**Report:** ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition)
+**Pages:** p9–p212 | **Sections:** 11 sections (Ch1-Ch14 + Appendices)
+
+**Covers questions about:**
+- C&Q (Commissioning and Qualification) process framework and how it differs from traditional IQ/OQ/PQ
+- System Classification: Direct Impact vs Not Direct Impact systems; 8 classification criteria (Q1-Q8)
+- User Requirements Specification (URS): development, approval, what to include and what NOT to include
+- System Risk Assessment (SRA): identifying CDEs and CAs through QRM; risk levels Low/Medium/High; 13-column SRA format
+- Design Review (DR) and Design Qualification (DQ): objectives, process, timing, Traceability Matrix
+- C&Q Planning: plan contents, approval matrix, timing sequence, document strategy
+- C&Q Testing: FAT/SAT/PDI/RI, Turnover Packages, Installation/Operational/Performance testing, Discrepancy Management
+- Acceptance and Release: qualified state initiation, 4 report options, Quality System Elements
+- Periodic Review: 3-tier approach (Tier A/B/C), system categorization (Cat 0/1/2/3), risk-based frequency
+- Vendor Assessment: using vendor FAT docs for qualification, assessment factors, GMP-unfamiliar vendors
+- Engineering Quality Process (EQP): relationship to PQS, document hierarchy, Deming's principle
+- Change Management: Engineering Change Management (ECM) vs Quality Change Control (QCC)
+- Good Documentation Practice (GDocP): ALCOA+, data integrity, electronic records, corrections
+
+**Key terms:** C&Q, CDE (Critical Design Element), CA (Critical Aspect), Direct Impact System, URS, System Risk Assessment, SRA, DQ, DR, C&Q Plan, FAT, SAT, PDI, TOP (Turnover Package), Acceptance and Release, Qualified State, Periodic Review, Traceability Matrix, Engineering Quality Process, QRM, GEP, ALCOA+, GDocP, ECM, QCC
+
+**Sections:**
+0. Introduction & Key Concepts (Ch1, p9-18)
+1. URS & System Classification (Ch2-3, p19-26)
+2. System Risk Assessment (Ch4, p27-34)
+3. Design Review & Design Qualification (Ch5, p35-40)
+4. C&Q Planning (Ch6, p41-48)
+5a. C&Q Testing & Documentation Part 1 (Ch7a, p49-56)
+5b. C&Q Testing Part 2 + Acceptance & Release (Ch7b-8, p57-68)
+6. Periodic Review (Ch9, p69-78)
+7. Vendor Assessment & Engineering Quality Process (Ch10-11, p79-88)
+8. Change Management & Good Documentation Practice (Ch12-13, p89-104)
+9. Implementation Strategies & Key Appendices (Ch14+App, p105+)
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -704,3 +741,15 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Risk Assessment / FMEA (風險評估/FMEA)**
 → TR54 ★★★ (excipient RA: risk ranking/filtering, supply chain RA) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR87 ★★★ (glass breakage FMEA, RPN) | TR26 ★★ (filter risk) | TR90 ★★ (CCS risk)
+
+**C&Q / Commissioning and Qualification / 確效 (ISPE)**
+→ ISPE/ISPE-Vol5 ★★★ (complete C&Q lifecycle framework: URS→SRA→DR/DQ→Testing→Release→Periodic Review) | PDA/TR60 ★★ (process validation lifecycle, overlaps with C&Q philosophy)
+
+**Commissioning & Qualification / IQ/OQ/PQ / 系統確效**
+→ ISPE/ISPE-Vol5 ★★★ (complete C&Q framework, replaces V-model with risk-based approach) | PDA/TR60 ★★ (validation lifecycle) | PDA/TR22 ★ (APS qualification)
+
+**FAT / SAT / Factory Acceptance Testing (工廠驗收測試)**
+→ ISPE/ISPE-Vol5 ★★★ (FAT as IQ evidence, SAT, PDI, integration with qualification)
+
+**System Risk Assessment / CDE (系統風險評估)**
+→ ISPE/ISPE-Vol5 ★★★ (CDE identification via QRM, 13-column SRA format, risk levels)
