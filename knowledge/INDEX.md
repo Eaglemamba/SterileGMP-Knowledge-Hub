@@ -524,6 +524,35 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PDA/TR68-Complete.md
+**Report:** PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages
+**Pages:** p1–p54 | **Sections:** 6
+
+**Covers questions about:**
+- How to assess drug shortage risk using the 4-step Risk Triage Model (PHA approach)
+- Classifying products by Risk Level A/B/C (patient impact) and Priority Level 1/2/3 (risk triage output)
+- How to develop a Drug Shortage Risk Register — single source of truth for shortage risks
+- How to create a Drug Shortage Prevention and Response Plan (DSPR Plan): 5 components
+- Supply chain mapping using Value Stream Mapping (VSM) to identify inventory stress points
+- Managing risks from aging manufacturing facilities and legacy analytical technologies
+- Expedited Post-Approval Changes (PACs) and the ICH Q12 regulatory flexibility framework
+- Stakeholder management: when and how to notify FDA/EMA of a potential drug shortage
+- Global regulatory landscape for shortage notification (US Section 506C, EU GMP Article 13)
+- Management responsibilities and quality culture elements for shortage prevention
+- Risk-based decision-making by companies and health authorities during active shortages
+
+**Key terms:** drug shortage, Risk Triage Model, Risk Level A/B/C, Risk Priority Level 1/2/3, Drug Shortage Risk Register, Drug Shortage Prevention and Response Plan, Value Stream Mapping (VSM), meaningful disruption, medically necessary drug, critical medicine, Marketing Authorization Holder (MAH), Post-Approval Change (PAC), ICH Q9(R1), ICH Q10, ICH Q12, continuous process verification (CPV), global change protocol (gCP), Quality Risk Management (QRM), Pharmaceutical Quality System (PQS), supply chain resilience, preliminary hazards analysis (PHA)
+
+**Sections:**
+0. Introduction & Glossary (Sections 1.0–2.0, p1–p5)
+1. Drug Shortage — Global Problem & Management Responsibilities (Sections 3.0–4.0, p6–p11)
+2. Risk-Based Prevention Framework (Section 5.0, p12–p15)
+3. Risk Triage Model — Steps 1–4 & Supply Chain/Aging/PAC (Sections 6.0–6.4, p16–p32)
+4. Prevention Plan & Stakeholder Management (Sections 7.0–8.0, p33–p37)
+5. Conclusions, References & Appendices (Sections 9.0–12.0, p38–p54)
+
+---
+
 
 ---
 
@@ -591,7 +620,16 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | VHP, gaseous decontamination, biological indicator / 過氧化氫蒸氣、氣態除污、生物指示劑 | TR70 + PtC-12 |
 | COVID-19 pandemic lessons, mRNA manufacturing, LNP, vaccine scale-up / COVID-19疫情經驗、mRNA製造、脂質奈米粒子 | PtC-9 |
 | Remote inspection, pandemic GMP, BCP, workforce shortage / 遠端查廠、疫情GMP、業務持續計畫、人力短缺 | PtC-9 |
-| Supply chain resilience, SUS shortage, cold chain, API shortage / 供應鏈韌性、一次性材料短缺、冷鏈、原料短缺 | PtC-9 |
+| Supply chain resilience, SUS shortage, cold chain, API shortage / 供應鏈韌性、一次性材料短缺、冷鏈、原料短缺 | PtC-9 + TR68 |
+| Drug shortage prevention, shortage risk management, shortage triage / 藥品短缺預防、短缺風險管理、短缺分流 | TR68 |
+| Drug shortage notification, FDA EMA shortage reporting / 藥品短缺通知、FDA EMA通報義務 | TR68 |
+| Risk triage model, Risk Level A B C, Risk Priority Level 1 2 3 / 風險分流模型、風險等級A/B/C、風險優先等級1/2/3 | TR68 |
+| Drug Shortage Risk Register, DSPR Plan, shortage prevention plan / 藥品短缺風險登記表、短缺預防應對計劃 | TR68 |
+| Value Stream Mapping VSM, supply chain mapping, inventory stress points / 價值流圖、供應鏈映射、庫存壓力點 | TR68 |
+| Aging facilities, legacy equipment, continual improvement, equipment obsolescence / 老化設施、老舊設備、持續改進 | TR68 |
+| Post-approval change PAC expedited review, ICH Q12, regulatory flexibility, gCP / 法規變更申請、ICH Q12、法規彈性 | TR68 |
+| Medically necessary drug, critical medicine, life sustaining product / 醫療必需品、關鍵藥品、維生藥品 | TR68 |
+| MAH accountability supply chain, CDMO contract manufacturer shortage / MAH供應鏈責任、CDMO合約製造商短缺責任 | TR68 |
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
 | Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
@@ -662,7 +700,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
 → TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
@@ -686,10 +724,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
-→ TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
+→ TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | TR68 ★★ (PAC expediting for shortage prevention: ICH Q12, gCP framework) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
 
 **Pandemic Preparedness / Business Continuity (疫情準備/業務持續計畫)**
-→ PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) — single primary source
+→ PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) | TR68 ★★★ (drug shortage prevention framework, VSM, DSPR Plan)
+
+**Drug Shortage Prevention & Supply Chain Resilience (藥品短缺預防/供應鏈韌性)**
+→ TR68 ★★★ (risk triage model, Risk Register, DSPR Plan, VSM, aging facilities, PAC expediting) | PtC-9 ★★ (pandemic supply chain, SUS/API shortage lessons)
 
 **Statistical Methods / SPC (統計方法)**
 → TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics)

@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR-68 Section 0: Introduction &amp; Glossary | 導論與術語</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    /* TR-68 orange theme */
+    --tr68-bg: #fff7ed;
+    --tr68-text: #7c2d12;
+    --tr68-bar: #ea580c;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #7c2d12 0%, #b45309 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3 {
+    color: #7c2d12;
+    border-bottom: 2px solid #ea580c;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column {
+    background: var(--tr68-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #fed7aa;
+}
+
+.right-column h2,
+.right-column h3 {
+    color: #7c2d12;
+    border-bottom: 2px solid #ea580c;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: #7c2d12;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ea580c;
+    font-size: 1rem;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term {
+    background: linear-gradient(to right, #fed7aa, #fdba74);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #7c2d12;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box {
+    background: linear-gradient(to right, #fff7ed, #ffedd5);
+    border-left: 4px solid #ea580c;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.formula-box,
+.key-point-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.formula-box h3, .formula-box h4,
+.key-point-box h3, .key-point-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.formula-box p,
+.key-point-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.formula-box ul, .formula-box ol,
+.key-point-box ul, .key-point-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.formula-box li,
+.key-point-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== CONCEPT BOX (Green) - 核心概念 ===== */
+.concept-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box h3, .concept-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4 {
+    color: #856404 !important;
+}
+
+/* ===== NOTE BOX (Orange) - 重點提示 ===== */
+.note-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式/框架 ===== */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* Application box (green solid) */
+.practice-box.application {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+
+.practice-box.application h3,
+.practice-box.application h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    font-weight: 600;
+    color: #7c2d12;
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #fef9f5;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #fed7aa;
+}
+
+.learning-objectives h3 {
+    color: #7c2d12;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border: 1px solid #f6ad55;
+}
+
+.section-summary h3 {
+    color: #856404;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f6ad55;
+}
+
+.section-summary ul {
+    margin-left: 1.5rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+}
+
+/* ===== SUBSECTION TITLE BAR ===== */
+.subsection-bar {
+    background: linear-gradient(135deg, #7c2d12 0%, #b45309 100%);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.subsection-bar .section-num {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border-radius: 5px;
+    padding: 0 8px;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION DIVIDER ===== */
+.section-divider {
+    border: none;
+    border-top: 2px solid #fed7aa;
+    margin: 2rem 0;
+}
+
+/* ===== GLOSSARY TABLE SPECIAL STYLES ===== */
+.glossary-table th:nth-child(1) { width: 18%; }
+.glossary-table th:nth-child(2) { width: 45%; }
+.glossary-table th:nth-child(3) { width: 37%; }
+
+.glossary-table td:nth-child(1) {
+    font-weight: 600;
+    color: #7c2d12;
+    font-size: 0.88rem;
+}
+
+.glossary-table td:nth-child(3) {
+    font-size: 0.88rem;
+    color: #4a5568;
+}
+
+.abbrev-table th:nth-child(1) { width: 15%; }
+.abbrev-table th:nth-child(2) { width: 40%; }
+.abbrev-table th:nth-child(3) { width: 45%; }
+
+.abbrev-table td:nth-child(1) {
+    font-weight: 700;
+    color: #7c2d12;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #7c2d12;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: #ea580c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(234, 88, 12, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #c2410c;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .back-to-top { display: none !important; }
+
+    .two-column {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 68 (Revised 2024)</h1>
+    <div class="subtitle">Risk-Based Approach for Prevention and Management of Drug Shortages<br>
+    <strong>藥品短缺預防與管理之風險基礎方法</strong></div>
+    <div class="page-info">Section 0: Introduction &amp; Glossary（導論與術語）&nbsp;|&nbsp;Pages p1–p5</div>
+</div>
+
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>了解 PDA TR-68 的起源背景與 2024 年修訂版的核心更新方向，掌握其與 ICH Q9(R1) 及 ICH Q12 的關聯性。</li>
+            <li>描述自 2000 年代以來全球藥品短缺問題加劇的多因素根本原因，並辨識美國 FDA 及歐洲 EMA 的監管因應措施。</li>
+            <li>說明 TR-68 的適用範圍——從製造到「移交第一經濟客戶」的完整供應鏈，以及超出範圍的部分（通路端短缺）。</li>
+            <li>熟悉本報告提供的三項核心工具：風險基礎框架、風險分流模型（Risk Triage Model）、以及藥品短缺風險登錄冊（Risk Register）範本。</li>
+            <li>掌握第 2.0 節所有關鍵術語的精確定義，並能區辨「藥品短缺」、「潛在藥品短缺」、「重大短缺」與「剩餘風險」等概念的差異。</li>
+        </ul>
+    </div>
+
+    <!-- ===== SECTION 1.0 INTRODUCTION ===== -->
+    <div class="subsection-bar">
+        <span class="section-num">1.0</span>Introduction &nbsp;|&nbsp; 導論
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English -->
+        <div class="left-column">
+            <h3>1.0 Introduction</h3>
+            <p>
+                <span class="key-term">PDA Technical Report No. 68</span>: Risk-Based Approach for Prevention and Management of Drug Shortages
+                was originally developed in 2014 as part of the interassociation collaborative response to the <span class="key-term">European
+                Medicines Agency's (EMA)</span> initiative on medicinal product shortages caused by manufacturing,
+                quality, and/or good manufacturing practice (<span class="key-term">GMP</span>) issues. This revision updates the 2014 version
+                to recognize emerging regulatory expectations and current terminology. The risk-based approach and
+                concepts in the original technical report are broadly recognized and remain unchanged.
+            </p>
+            <p>
+                This revision recognizes the advances made in pharmaceutical manufacturing and aligns the text of
+                TR-68 with the current regulatory environment, for example, the <span class="key-term">International Council for
+                Harmonisation (ICH)</span> Quality Guideline <span class="key-term">Q9(R1)</span>: Quality Risk Management, <span class="key-term">ICH Quality Guideline
+                Q12</span>: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management, regional
+                regulations and guidelines, and terminologies used for drug shortages that have since been published.
+                Examples for preventive measures to avoid drug shortages consider lessons learned since TR-68 was
+                first published in 2014. Elements in the templates and forms included in this revision have been
+                updated to reflect current regulatory expectations and terminology used in the European Union and
+                its Member States and in the United States, while it also supports compliance with global expectations
+                on managing and preventing drug shortages.
+            </p>
+            <p>
+                Sustainable access to safe, efficacious, and high-quality products every time a patient needs them is
+                just as important as the therapeutic advances that have transformed the lives and survival of patients
+                worldwide. The <span class="key-term">ICH Q9(R1)</span> defines <span class="key-term">harm</span> as "damage to health, including damage that can occur
+                from loss of product quality or availability." Ensuring uninterrupted availability of and access to
+                products, especially medically necessary, lifesaving or life sustaining critical medicines that do not have
+                effective alternatives, is essential.
+            </p>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary -->
+        <div class="right-column">
+            <div class="column-header">中文導讀 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：TR-68 是什麼？</h4>
+                <p><strong>PDA Technical Report No. 68（TR-68）</strong>是由製藥業領導協會 PDA（Parenteral Drug Association）所發布的技術指引，聚焦於「藥品短缺的預防與管理」。</p>
+                <ul>
+                    <li><strong>首版</strong>：2014 年，回應 EMA（歐洲藥品管理局）對製造/品質導致藥品短缺的議題。</li>
+                    <li><strong>2024 修訂版</strong>：納入 ICH Q9(R1)（品質風險管理）與 ICH Q12（產品生命週期管理）的最新監管框架。</li>
+                    <li><strong>核心方法不變</strong>：風險基礎（risk-based）的預防與緩解方法仍是主軸。</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：預防勝於治療</h4>
+                <p>想像藥品短缺就像醫院的「急診室爆滿」——平時若有良好的預防性健康管理（風險控制），急診需求自然降低。TR-68 的精神正是：<strong>在問題發生之前，就建立系統性的風險識別與預防機制</strong>，而非等短缺發生後才緊急應變。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：ICH Q9(R1) 對「危害」的新定義</h4>
+                <p>ICH Q9(R1) 將「危害（harm）」定義為：「對健康的損害，包括因<strong>產品品質或可用性喪失</strong>所導致的損害。」</p>
+                <p>這是重大轉變——過去「harm」主要指品質缺陷，新定義明確將「缺貨/供應中斷」也納入危害範疇，直接將藥品短缺問題提升為品質風險管理的核心議題。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>TR-68 最初是在回應哪個監管機構的哪項倡議？2024 年修訂版新增了哪兩項 ICH 指引作為對齊基準？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.1 BACKGROUND ===== -->
+    <hr class="section-divider">
+    <div class="subsection-bar">
+        <span class="section-num">1.1</span>Background &nbsp;|&nbsp; 背景
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English -->
+        <div class="left-column">
+            <h3>1.1 Background</h3>
+            <p>
+                Drug shortages have become more frequent, more severe, and longer-lasting globally since the early
+                2000s for a variety of reasons. As <span class="key-term">globalization</span> increases, the complexity of supply chains grows, global
+                and regional regulatory expectations evolve, and economic and business motivators change. The drivers
+                behind drug shortages in different geographic areas and countries vary, and those causes are usually
+                <span class="key-term">multifactorial</span>. The range of causes includes financial, economic, and business concerns, increased or
+                unanticipated market demand (e.g., pandemic), evolving regulatory expectations, manufacturing and
+                quality issues, capacity constraints, lack of redundancy, and supply chain issues. Recognition has
+                evolved that the multifactorial root causes for shortages extend beyond manufacturing and quality
+                issues, as has the need for <span class="key-term">multistakeholder interaction and collaboration</span> to address the local issue of a
+                shortage in a multiregional environment.
+            </p>
+            <p>
+                The emerging global challenge of supply disruptions is drawing greater focus from the pharmaceutical
+                industry, regulators, legislators, healthcare providers, patient organizations, and patients, and drug
+                shortages are now covered in the media to a much larger extent. <span class="key-term">ICH Q9(R1)</span> places greater emphasis
+                on <span class="key-term">product availability risks</span>—a noteworthy change from the original guideline—in the context of
+                quality and manufacturing issues, including GMP noncompliance, that can be a "significant cause
+                of product availability issues (e.g., product shortages)." Furthermore, while "manufacturing and
+                supply chain diversity can be enablers of product availability, increasingly complex supply chains lead to
+                interdependencies that can introduce <span class="key-term">systemic quality/manufacturing risks</span> impacting supply chain
+                robustness."
+            </p>
+            <p>
+                The legislative and regulatory processes for shortage-related issues continue to evolve. In 2012, EMA
+                published a reflection paper and implementation plan for drug shortages that affect patients. EMA followed
+                up by holding workshops with stakeholders in October 2013 and again in October 2015. In 2016, the
+                <span class="key-term">European Heads of Medicines Agencies (HMA)</span> and EMA established a joint task force to develop
+                and coordinate actions for better prevention, identification, management, and communication of issues
+                affecting the availability of medicines to improve the continuity of medicines supply across Europe. In
+                2020, the European Commission's <span class="key-term">Pharmaceutical Strategy</span> further elaborated upon the need for proactive
+                measures to address the issue of drug shortages, and in March 2023, the HMA/EMA Task Force held
+                a third workshop to inform and update stakeholders on their deliverables and activities.
+            </p>
+            <p>
+                The focus on drug shortages has also increased in the United States. In 2013, the <span class="key-term">U.S. Food and Drug
+                Administration (FDA)</span> established a <span class="key-term">Drug Shortage Task Force</span>, which published a strategic plan for
+                preventing and reducing drug shortages. The task force continues to identify the root causes of drug
+                shortages and advance long-term solutions, reporting annually to Congress. As in many countries,
+                notification of a potential drug shortage is a <span class="key-term">legal requirement</span> in the United States, and early and timely
+                notifications has reduced the number of shortages by enabling manufacturers and health authorities to
+                jointly take steps to minimize supply disruption. The annual reports to Congress for calendar years
+                2021 and 2022 included the impact of the increased risk of shortages during the <span class="key-term">COVID-19 pandemic</span>
+                and the actions taken to address them.
+            </p>
+            <p>
+                A 2023 Majority Staff Report of the U.S. Senate Committee on Homeland Security and Governmental
+                Affairs, <em>Short Supply: The Health and National Security Risks of Drug Shortages</em>, concluded that
+                active drug shortages had risen by <span class="key-term">30% between 2021 and 2022</span>, lasted one-and-a-half years longer on
+                average, and impacted patient care. According to the report, overreliance on foreign resources was
+                deemed a <span class="key-term">national security risk</span>, FDA lacked critical information to mitigate shortages, and both
+                industry and regulators lacked <span class="key-term">end-to-end supply chain visibility</span>.
+            </p>
+            <p>
+                It is essential for the <span class="key-term">senior management</span> of a firm that is the <span class="key-term">Marketing Authorization Holder (MAH)</span>
+                to have control of and be accountable for ensuring the uninterrupted supply of their products as long
+                as it is within their control. Senior Management decisions impact not only a firm's ability to cause
+                shortages but also to prevent and recover from shortages in an expedient manner. As stated in
+                <span class="key-term">ICH Q9(R1)</span>, the principles of <span class="key-term">quality risk management (QRM)</span> that enable risk-based decision-making by
+                both companies and health authorities are fundamental for the proactive prevention of drug shortages.
+            </p>
+            <div class="quote-box">
+                "Addressing lifecycle risks to manufacturing reliability and quality assurance is the foundation for supply predictability." — ICH Concept Paper, November 2020
+            </div>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary -->
+        <div class="right-column">
+            <div class="column-header">中文導讀 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：藥品短缺的多因素根源</h4>
+                <p>自 2000 年代初期起，全球藥品短缺問題逐漸惡化，原因是「多因素（multifactorial）」的，主要包括：</p>
+                <ul>
+                    <li><strong>財務與商業因素</strong>：低利潤藥品被廠商放棄生產</li>
+                    <li><strong>供應鏈全球化</strong>：API（活性藥品成分）高度集中在少數國家製造</li>
+                    <li><strong>法規要求演進</strong>：GMP 合規標準日益嚴格，導致廠商停產或召回</li>
+                    <li><strong>需求突增</strong>：如 COVID-19 疫情期間的非預期需求</li>
+                    <li><strong>產能不足與缺乏備援</strong>：單一廠址、單一來源的脆弱架構</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：供應鏈就像水管網絡</h4>
+                <p>全球製藥供應鏈就像一個錯綜複雜的城市水管網絡。全球化使管線越鋪越長、越交錯越複雜，任何一段管線的破裂（製造問題、法規查廠）都可能影響下游整個城市（患者）的供水。</p>
+                <p>ICH Q9(R1) 特別指出：<strong>供應鏈多樣性雖可提升可用性，但過度複雜的供應鏈反而會引入系統性風險</strong>，這是一個值得警惕的悖論。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>監管里程碑時間軸</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>年份</th>
+                            <th>事件</th>
+                            <th>影響</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2012</td>
+                            <td>EMA 發布藥品短缺反思文件</td>
+                            <td>歐洲監管框架啟動</td>
+                        </tr>
+                        <tr>
+                            <td>2013</td>
+                            <td>FDA 成立藥品短缺特別工作組</td>
+                            <td>美國建立通報機制</td>
+                        </tr>
+                        <tr>
+                            <td>2016</td>
+                            <td>HMA/EMA 聯合工作組成立</td>
+                            <td>歐洲跨境協調機制</td>
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>歐盟藥品戰略 + COVID-19</td>
+                            <td>供應鏈韌性提上政策議程</td>
+                        </tr>
+                        <tr>
+                            <td>2021</td>
+                            <td>美國白宮供應鏈韌性報告</td>
+                            <td>國家安全視角介入</td>
+                        </tr>
+                        <tr>
+                            <td>2023</td>
+                            <td>美國參院報告：短缺增加 30%</td>
+                            <td>端對端可視性成核心訴求</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>重點：MAH 高層管理的責任</h4>
+                <p>TR-68 明確指出：<strong>行銷授權持有人（MAH，Marketing Authorization Holder）的高層管理</strong>對確保產品不間斷供應負有直接責任，其決策不僅影響短缺發生的可能性，也決定了從短缺中恢復的速度。</p>
+                <p>這不只是 QA 部門的問題，而是企業治理層級的核心義務。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>關鍵統計數據（2023 美國參院報告）</h4>
+                <ul>
+                    <li>2021–2022 年間，活躍藥品短缺案例<strong>增加 30%</strong></li>
+                    <li>短缺持續時間平均<strong>延長 1.5 年</strong></li>
+                    <li>過度依賴境外資源被認定為<strong>國家安全風險</strong></li>
+                    <li>FDA 與業界均缺乏<strong>端對端供應鏈可視性</strong></li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>根據本節背景，請列舉三個不屬於「製造或品質問題」的藥品短缺根本原因。為什麼 TR-68 強調需要多方利害關係人（multistakeholder）的協作才能解決短缺問題？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.2 PURPOSE AND SCOPE ===== -->
+    <hr class="section-divider">
+    <div class="subsection-bar">
+        <span class="section-num">1.2</span>Purpose and Scope &nbsp;|&nbsp; 目的與範圍
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English -->
+        <div class="left-column">
+            <h3>1.2 Purpose and Scope</h3>
+            <p>
+                This revision of TR-68 addresses the following aspects for proactive prevention of drug shortages and
+                provides useful tools to assist in preparation:
+            </p>
+            <ul>
+                <li>A holistic, <span class="key-term">risk-based framework</span> at a product level for the prevention and management of drug
+                    shortages caused by manufacturing and quality issues</li>
+                <li>A <span class="key-term">risk triage model</span> that can be used to assess drug shortage risks and implement appropriate
+                    controls in the end-to-end value chain for the manufacturing and distribution of a product
+                    (Section 11.0, Appendix 1)</li>
+                <li>Templates for developing a <span class="key-term">Drug Shortage Risk Register</span> and a <span class="key-term">Drug Shortage Prevention and
+                    Response Plan</span> at a product level (Section 12.0, Appendix 2)</li>
+            </ul>
+            <p>
+                The concepts and approach presented in this report may be adopted and applied by other stakeholders
+                in the entire supply chain, such as wholesale distributors, as well as suppliers and vendors of materials
+                used in processing, for example, filters, single-use bags, flow paths, resins, and solvents.
+            </p>
+            <p>
+                TR-68 focuses on addressing shortages caused by manufacturing and quality issues toward <span class="key-term">batch release</span>.
+                The next step in the supply chain after manufacturing and release is usually called the
+                <span class="key-term">"handover, to the first economic customer,"</span> after which the MAH often has limited-to-no visibility
+                (e.g., shortages related to issues that arise in distribution channels, pharmacies, or hospitals).
+                Shortages after the "handover, to the first economic customer" are <span class="key-term">out of scope</span> of this technical report.
+                Nevertheless, there may be situations where the MAH is responsible for distribution as well and,
+                therefore, is responsible for mitigating shortages in these instances. TR-68 does apply in these situations.
+            </p>
+            <p>
+                The framework provided in TR-68 also supports and enables MAHs and manufacturers to meet the
+                requirements of <span class="key-term">Section 506C of the U.S. Federal Food, Drug, and Cosmetic Act</span> and
+                <span class="key-term">Article 13 of EU Commission Directive 2003/94/EC</span> to notify relevant health authorities in the
+                event of a drug shortage.
+            </p>
+            <p>
+                Development of PDA's risk-based approach for prevention and management of drug shortages at a
+                product level began in 2012 as part of the <span class="key-term">Paradigm Change in Manufacturing Operations (PCMO®)</span>
+                project and incorporated input from the EMA-sanctioned industry interassociation task force and
+                multistakeholder events. PDA also participated in various HMA/EMA multistakeholder workshops,
+                including the one held in 2023; key outcomes from the workshop discussions have been incorporated
+                into this revision of TR-68.
+            </p>
+            <p>
+                Additionally, <span class="key-term">PDA Technical Report No. 54</span>: Implementation of Quality Risk Management for
+                Pharmaceutical and Biotechnology Manufacturing Operations and its series of best-practice and
+                companion case-study documents provide detailed guidance and practical application on how to
+                implement QRM for the management of product quality risks in manufacturing operations, supply
+                chains, and operations of third parties (e.g., suppliers, contract manufacturers).
+                <span class="key-term">PDA Technical Report No. 59</span>: Utilization of Statistical Methods for Production Monitoring
+                describes additional risk-based activities that use statistical methodologies for quality control
+                and manufacturing.
+            </p>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary -->
+        <div class="right-column">
+            <div class="column-header">中文導讀 Commentary</div>
+
+            <div class="formula-box">
+                <h4>TR-68 提供的三項核心工具</h4>
+                <p>本報告的「目的與範圍」明確提供三個層次的實用工具：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>工具</th>
+                            <th>功能</th>
+                            <th>位置</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>整體風險框架</td>
+                            <td>產品層級的短缺預防與管理架構</td>
+                            <td>全報告</td>
+                        </tr>
+                        <tr>
+                            <td>風險分流模型（Risk Triage Model）</td>
+                            <td>評估端對端供應鏈風險並設定優先順序</td>
+                            <td>Section 11.0 / Appendix 1</td>
+                        </tr>
+                        <tr>
+                            <td>藥品短缺風險登錄冊 + 預防應變計畫範本</td>
+                            <td>可直接使用的文件範本</td>
+                            <td>Section 12.0 / Appendix 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h4>核心概念：TR-68 的適用範圍邊界</h4>
+                <p>TR-68 的適用範圍有明確的「終止點」：</p>
+                <ul>
+                    <li><strong>範圍內（In Scope）</strong>：從製造開始，到「移交第一經濟客戶（handover to the first economic customer）」為止，即批次放行（batch release）到移交批發商/經銷商</li>
+                    <li><strong>範圍外（Out of Scope）</strong>：移交後在配銷通路、藥局、醫院內發生的短缺</li>
+                    <li><strong>例外情況</strong>：若 MAH 自行負責配銷，則範圍可延伸至配銷環節</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：餐廳廚房 vs. 外送平台</h4>
+                <p>TR-68 就像一份「餐廳廚房管理規範」——它管控從食材採購、烹飪到出餐（批次放行）的品質與供應穩定性。但一旦餐點交給外送員（移交第一經濟客戶），外送過程中的問題就不在本規範範圍內。</p>
+                <p>當然，若餐廳自己也負責外送，那外送流程也就落入管理範圍了。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>法規依據：通報義務</h4>
+                <p>TR-68 框架協助 MAH 履行以下通報義務：</p>
+                <ul>
+                    <li><strong>美國</strong>：《聯邦食品、藥品和化妝品法》第 506C 條——須向 FDA 通報潛在短缺</li>
+                    <li><strong>歐盟</strong>：EU 指令 2003/94/EC 第 13 條——須向相關主管機關通報</li>
+                </ul>
+                <p>早期通報已被證實能有效降低短缺件數，使製造商與主管機關有時間共同採取預防措施。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>相關 PDA 技術報告</h4>
+                <ul>
+                    <li><strong>TR-54</strong>：品質風險管理在製藥生產中的實施指引（QRM 實施細節）</li>
+                    <li><strong>TR-59</strong>：統計方法在生產監控中的應用（提供額外的風險基礎活動）</li>
+                </ul>
+                <p>TR-68 是這個風險管理工具家族的重要成員，專注於供應可靠性議題。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>假設一家 MAH 同時負責藥品製造與配銷至醫院。TR-68 的框架在這種情況下適用到哪個環節？如果一家 MAH 將配銷完全委託給第三方批發商，則 TR-68 的適用範圍止於何處？</p>
+            </div>
+
+            <div class="practice-box application">
+                <h4>實際應用：識別工具需求</h4>
+                <p>在您的組織中，以下哪項工具目前已存在？哪項尚未建立？</p>
+                <ul>
+                    <li>針對特定產品的供應鏈風險評估文件</li>
+                    <li>藥品短缺風險登錄冊（Risk Register）</li>
+                    <li>藥品短缺預防與應變計畫（Prevention &amp; Response Plan）</li>
+                    <li>潛在短缺的內部通報機制</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.0 GLOSSARY ===== -->
+    <hr class="section-divider">
+    <div class="subsection-bar">
+        <span class="section-num">2.0</span>Glossary and Abbreviations &nbsp;|&nbsp; 術語與縮寫
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English Glossary -->
+        <div class="left-column">
+            <h3>2.0 Glossary and Abbreviations</h3>
+            <p>The following key terms are defined for the purposes of this Technical Report.</p>
+
+            <table class="glossary-table">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="key-term">Critical Medicine</span></td>
+                        <td>Critical medicines, sometimes called "essential medicines" or "medically necessary drugs," are considered critical for public health, taking into consideration the therapeutic indication of the medicines, the availability of alternative treatments, and the vulnerability of the supply chain.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Corrective Action and Preventative Action (CAPA)</span></td>
+                        <td>Action to eliminate the cause of a detected nonconformity or other undesirable situation.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Critical Shortage</span></td>
+                        <td>A shortage where no alternative treatment is available.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Drug Shortage or Shortage</span></td>
+                        <td>
+                            A shortage of a drug or medicinal product that occurs when supply does not meet demand at a national level, where a:
+                            <ul>
+                                <li><strong>Shortage</strong> allows for identification of current, impeding, or anticipated disruption of supply of a medicinal product.</li>
+                                <li><strong>Supply</strong> refers to the total volume of stock of the individual medicinal product that is placed on the market by the MAH.</li>
+                                <li><strong>Demand</strong> relates to the request for a medicinal product by a healthcare professional, veterinarian, or patient in response to a clinical need. For demand to be satisfactorily met, the medicinal product will need to be acquired in time and in sufficient quantity to allow continuity of best care of patients or animals.</li>
+                                <li><strong>National level</strong> refers to the situation in a specific country, that is, if there is an insufficient supply of medicine to meet the demands of the country overall. Logistics-related issues leading to regional supply disruption (e.g., delivery difficulties, national redistribution of stock) are a short-term and localized problem and should not be taken into account.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Drug Shortage Prevention &amp; Response Plan</span></td>
+                        <td>A document that provides a structured action plan to proactively prevent drug shortages and also respond to a shortage in the event that one occurs. This also may also be known as a "Drug Shortage Prevention and Mitigation Plan."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Drug Shortage Risk Register</span></td>
+                        <td>A single source of information on risks that can result in drug shortages, associated risk levels, risk control actions with owners, status, due dates, and residual risk after appropriate risk control actions have been taken.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Harm</span></td>
+                        <td>Damage to health, including the damage that can occur from loss of product quality or availability.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Knowledge Management</span></td>
+                        <td>Systematic approach to acquiring, analyzing, storing, and disseminating information related to products, manufacturing processes, and components.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Life Supporting or Life Sustaining Drug</span></td>
+                        <td>A product that is essential to, or that yields information that is essential to, the restoration or continuation of a bodily function that is important to the continuation of human life.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Meaningful Disruption</span></td>
+                        <td>A meaningful disruption is a change in production that is reasonably likely to lead to a reduction in the supply of a drug by a manufacturer that is more than negligible and affects the ability of the manufacturer to fill orders or meet expected demand for its product. A meaningful disruption is not an interruption in manufacturing due to matters such as routine maintenance and does not include insignificant changes in manufacturing so long as the manufacturer expects to resume operations in a short period of time.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Medically Necessary Drug</span></td>
+                        <td>Any drug product used to treat or prevent a serious disease or medical condition for which there is no other adequately available drug product that is judged by medical staff to be an appropriate substitute.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Potential Drug Shortage</span></td>
+                        <td>A potential drug shortage is described as the occurrence of internal or external situations (single or in a combination of both), which could result in an interruption of supplies of a medicinal product, if not properly addressed and controlled.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Quality Risk Management</span></td>
+                        <td>A systematic process for the assessment, control, communication, and review of risks to the quality of the drug (medicinal) product across the product lifecycle.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Residual Risk</span></td>
+                        <td>Risk remaining after risk control measures have been implemented. In the context of drug shortages, this is considered to be the risk of a shortage after preventive and other risk control measures have been implemented.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Risk</span></td>
+                        <td>The combination of the probability of occurrence of harm and the severity of that harm, where harm is defined as "damage to health, including the damage that can occur from loss of product quality or availability."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Risk-based Triage for Drug Shortages</span></td>
+                        <td>A process of assessing and assigning priorities for managing drug shortage risks based on criticality and impact to patients.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Risk Priority Level</span></td>
+                        <td>A relative priority ranking assigned to a risk based on a combination of (a) therapeutic use of a product and patient impact due to product unavailability, (b) availability of alternatives, and (c) likelihood of a shortage.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-term">Value Stream Map</span></td>
+                        <td>A tool used to document, analyze, understand, and improve the flow of information or materials required to produce a product or service for a customer as it makes its way through the value stream (a set of actions that take place to add value for customers from the initial request through realization of value by the customer).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary on Glossary -->
+        <div class="right-column">
+            <div class="column-header">中文術語解說 Glossary Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：TR-68 術語體系概覽</h4>
+                <p>本節 18 個術語構成 TR-68 的語意基礎，可按功能分為四大群組：</p>
+                <ul>
+                    <li><strong>藥品分類</strong>：Critical Medicine、Medically Necessary Drug、Life Supporting/Sustaining Drug</li>
+                    <li><strong>短缺類型</strong>：Drug Shortage、Critical Shortage、Potential Drug Shortage、Meaningful Disruption</li>
+                    <li><strong>風險管理工具</strong>：QRM、Risk、Residual Risk、Risk Triage、Risk Priority Level</li>
+                    <li><strong>管理文件</strong>：Risk Register、Prevention &amp; Response Plan、Value Stream Map</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：三種藥品重要性層次</h4>
+                <p>想像一個醫院的藥品清單：</p>
+                <ul>
+                    <li><strong>Critical Medicine（關鍵藥品）</strong>：考量治療適應症、替代治療可及性、供應鏈脆弱性。例如：抗生素、化療藥物。</li>
+                    <li><strong>Medically Necessary Drug（醫療必要藥品）</strong>：治療或預防嚴重疾病，且<em>無合適替代品</em>。例如：某些罕見病用藥。</li>
+                    <li><strong>Life Supporting/Sustaining Drug（維生藥品）</strong>：缺少此藥，患者的基本生理功能將中斷。例如：胰島素、呼吸器用藥。</li>
+                </ul>
+                <p>越往後，短缺的緊迫性越高，監管通報與緩解措施的優先順序也越高。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點辨析：「藥品短缺」的四個關鍵元素</h4>
+                <p>TR-68 對「Drug Shortage（藥品短缺）」的定義包含四個必須理解的子元素：</p>
+                <ul>
+                    <li><strong>Shortage（短缺本身）</strong>：識別目前、即將發生或預期的供應中斷</li>
+                    <li><strong>Supply（供應）</strong>：MAH 投放市場的總存量</li>
+                    <li><strong>Demand（需求）</strong>：醫療專業人員/患者基於臨床需要的請求；需在<em>正確時間、足夠數量</em>下獲得</li>
+                    <li><strong>National level（國家層級）</strong>：在<em>全國</em>層面供不應求；地區性物流問題（如配送困難）<strong>不算</strong>藥品短缺</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點辨析：Meaningful Disruption vs. 一般停產</h4>
+                <p><strong>重大供應中斷（Meaningful Disruption）</strong> 需滿足：</p>
+                <ul>
+                    <li>生產變更<strong>合理地可能</strong>導致供應明顯減少</li>
+                    <li>影響廠商的訂單履行能力或預期需求的供應</li>
+                </ul>
+                <p><strong>不屬於</strong> Meaningful Disruption：</p>
+                <ul>
+                    <li>例行維修保養（routine maintenance）</li>
+                    <li>預計在<strong>短期內</strong>可恢復運作的細微生產調整</li>
+                </ul>
+                <p>這一定義直接影響廠商是否需要向 FDA 提交「早期通報」的義務觸發點。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>風險定義公式</h4>
+                <p>TR-68 沿用 ICH Q9(R1) 的風險定義：</p>
+                <pre>Risk = Probability of Harm × Severity of Harm</pre>
+                <p>其中「危害（Harm）」= 健康損害，包括因<strong>產品品質或可用性喪失</strong>所致的損害</p>
+                <p>「剩餘風險（Residual Risk）」= 實施風險控制措施後<strong>仍殘存</strong>的短缺風險——這是評估現有控制措施是否足夠的重要指標。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>核心概念：Risk Priority Level 的三個維度</h4>
+                <p>風險優先等級（Risk Priority Level）由以下三個維度的組合決定：</p>
+                <ol>
+                    <li><strong>治療用途與患者衝擊</strong>：產品不可及對患者的嚴重程度</li>
+                    <li><strong>替代品可及性</strong>：是否有其他有效替代治療</li>
+                    <li><strong>短缺可能性</strong>：供應中斷發生的概率評估</li>
+                </ol>
+                <p>這三個維度對應到 Section 11.0 的風險分流模型（Risk Triage Model），是整個 TR-68 方法論的核心評分機制。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>請判斷以下情境是否構成 TR-68 定義下的「Meaningful Disruption」，並說明理由：</p>
+                <ol>
+                    <li>某廠因計畫性設備翻修停線 2 週，已提前備有 3 個月庫存。</li>
+                    <li>某廠因 GMP 查廠缺失被 FDA 發出警告信，導致無法出口，短缺可能持續 6 個月以上。</li>
+                    <li>某廠因原料商漲價而暫停生產 1 個月，評估市場替代方案。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.1 ABBREVIATIONS ===== -->
+    <hr class="section-divider">
+    <div class="subsection-bar">
+        <span class="section-num">2.1</span>Abbreviations &nbsp;|&nbsp; 縮寫對照表
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Abbreviations Table -->
+        <div class="left-column">
+            <h3>2.1 Abbreviations</h3>
+            <table class="abbrev-table">
+                <thead>
+                    <tr>
+                        <th>Abbreviation</th>
+                        <th>Full Term</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ANDA</td>
+                        <td>Abbreviated New Drug Application</td>
+                    </tr>
+                    <tr>
+                        <td>API</td>
+                        <td>Active Pharmaceutical Ingredient</td>
+                    </tr>
+                    <tr>
+                        <td>CAPA</td>
+                        <td>Corrective Action and Preventative Action</td>
+                    </tr>
+                    <tr>
+                        <td>EMA</td>
+                        <td>European Medicines Agency</td>
+                    </tr>
+                    <tr>
+                        <td>FDA</td>
+                        <td>U.S. Food and Drug Administration</td>
+                    </tr>
+                    <tr>
+                        <td>GDP</td>
+                        <td>Good Distribution Practice</td>
+                    </tr>
+                    <tr>
+                        <td>GMP</td>
+                        <td>Good Manufacturing Practice</td>
+                    </tr>
+                    <tr>
+                        <td>ICH</td>
+                        <td>International Council for Harmonisation</td>
+                    </tr>
+                    <tr>
+                        <td>MAH</td>
+                        <td>Marketing Authorization Holder</td>
+                    </tr>
+                    <tr>
+                        <td>NDA</td>
+                        <td>New Drug Application</td>
+                    </tr>
+                    <tr>
+                        <td>PAC</td>
+                        <td>Post-Approval Change</td>
+                    </tr>
+                    <tr>
+                        <td>PQS</td>
+                        <td>Pharmaceutical Quality System</td>
+                    </tr>
+                    <tr>
+                        <td>QRM</td>
+                        <td>Quality Risk Management</td>
+                    </tr>
+                    <tr>
+                        <td>VSM</td>
+                        <td>Value Stream Mapping</td>
+                    </tr>
+                    <tr>
+                        <td>WHO</td>
+                        <td>World Health Organization</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary on Abbreviations -->
+        <div class="right-column">
+            <div class="column-header">中文縮寫解說 Abbreviations Commentary</div>
+
+            <div class="concept-box">
+                <h4>完整縮寫中文對照表</h4>
+                <table class="abbrev-table">
+                    <thead>
+                        <tr>
+                            <th>縮寫</th>
+                            <th>全稱</th>
+                            <th>中文說明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ANDA</td>
+                            <td>Abbreviated New Drug Application</td>
+                            <td>簡化新藥申請（學名藥上市申請）</td>
+                        </tr>
+                        <tr>
+                            <td>API</td>
+                            <td>Active Pharmaceutical Ingredient</td>
+                            <td>活性藥品成分（原料藥）</td>
+                        </tr>
+                        <tr>
+                            <td>CAPA</td>
+                            <td>Corrective Action and Preventative Action</td>
+                            <td>矯正與預防措施</td>
+                        </tr>
+                        <tr>
+                            <td>EMA</td>
+                            <td>European Medicines Agency</td>
+                            <td>歐洲藥品管理局</td>
+                        </tr>
+                        <tr>
+                            <td>FDA</td>
+                            <td>U.S. Food and Drug Administration</td>
+                            <td>美國食品藥物管理局</td>
+                        </tr>
+                        <tr>
+                            <td>GDP</td>
+                            <td>Good Distribution Practice</td>
+                            <td>優良配銷作業規範</td>
+                        </tr>
+                        <tr>
+                            <td>GMP</td>
+                            <td>Good Manufacturing Practice</td>
+                            <td>優良製造作業規範</td>
+                        </tr>
+                        <tr>
+                            <td>ICH</td>
+                            <td>International Council for Harmonisation</td>
+                            <td>人用藥品技術要求國際協調理事會</td>
+                        </tr>
+                        <tr>
+                            <td>MAH</td>
+                            <td>Marketing Authorization Holder</td>
+                            <td>行銷授權持有人（藥品許可證持有人）</td>
+                        </tr>
+                        <tr>
+                            <td>NDA</td>
+                            <td>New Drug Application</td>
+                            <td>新藥申請</td>
+                        </tr>
+                        <tr>
+                            <td>PAC</td>
+                            <td>Post-Approval Change</td>
+                            <td>核准後變更</td>
+                        </tr>
+                        <tr>
+                            <td>PQS</td>
+                            <td>Pharmaceutical Quality System</td>
+                            <td>藥品品質系統</td>
+                        </tr>
+                        <tr>
+                            <td>QRM</td>
+                            <td>Quality Risk Management</td>
+                            <td>品質風險管理</td>
+                        </tr>
+                        <tr>
+                            <td>VSM</td>
+                            <td>Value Stream Mapping</td>
+                            <td>價值流程圖（精實生產工具）</td>
+                        </tr>
+                        <tr>
+                            <td>WHO</td>
+                            <td>World Health Organization</td>
+                            <td>世界衛生組織</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>縮寫重要性提示：MAH 的核心地位</h4>
+                <p><strong>MAH（行銷授權持有人）</strong> 是 TR-68 中最核心的角色。在歐盟法規架構下，MAH 是藥品上市許可的持有者，對藥品的品質、安全性及供應連續性負有<strong>最終責任</strong>。</p>
+                <p>在台灣，相當於「藥品許可證持有人」，即藥廠或藥商持有衛福部食藥署核發的藥品許可證者。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>關鍵縮寫：ANDA vs. NDA 對供應鏈的意涵</h4>
+                <ul>
+                    <li><strong>NDA（新藥申請）</strong>：原廠藥（innovator drug）的上市申請，通常有更強的市場地位，但若停產則無替代品</li>
+                    <li><strong>ANDA（簡化新藥申請）</strong>：學名藥（generic drug）的上市申請，市場上可能有多家競爭者，短缺衝擊相對較小</li>
+                </ul>
+                <p>這一區別在評估「替代品可及性」時至關重要，直接影響 Risk Priority Level 的評分。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>PAC（核准後變更）與藥品短缺的關聯</h4>
+                <p><strong>PAC（Post-Approval Change，核准後變更）</strong> 是供應鏈風險的重要觸發點。廠商在進行製造場址變更、供應商變更或製程變更時，需依法向主管機關申請 PAC，處理時間可能長達數月至數年，期間若未有適當備貨，即可能引發藥品短缺。</p>
+                <p>TR-68 的風險框架將 PAC 管理納入預防措施的重要考量之一。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>縮寫測驗</h4>
+                <p>不查表，請嘗試回答：</p>
+                <ol>
+                    <li>「品質風險管理」的英文縮寫是什麼？它由哪四個核心步驟組成？</li>
+                    <li>VSM 是什麼工具？它在 TR-68 中的作用是什麼？</li>
+                    <li>EMA 和 FDA 分別代表哪兩個地區的藥品監管機構？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>本節總結 Section Summary</h3>
+        <ul>
+            <li><strong>TR-68 的定位</strong>：PDA 於 2014 年發布、2024 年修訂的技術指引，聚焦於藥品短缺的「預防性風險管理」，並與 ICH Q9(R1)、ICH Q12 全面對齊。</li>
+            <li><strong>問題嚴重性</strong>：自 2000 年代以來，全球藥品短缺日趨頻繁、嚴重且持久，根本原因是多因素的（製造品質、供應鏈全球化、法規演進、經濟因素、需求突增），需要多方利害關係人協作解決。</li>
+            <li><strong>監管趨勢</strong>：EMA、FDA 均已建立藥品短缺工作組與通報機制；美國法規（FD&C Act §506C）與歐盟指令（2003/94/EC 第 13 條）均要求 MAH 通報潛在短缺；早期通報已被證實有效降低短缺件數。</li>
+            <li><strong>TR-68 的工具箱</strong>：提供整體風險框架、風險分流模型（Appendix 1）及藥品短缺風險登錄冊與預防應變計畫範本（Appendix 2），適用範圍從製造到「移交第一經濟客戶」。</li>
+            <li><strong>關鍵術語</strong>：熟記 Drug Shortage、Potential Drug Shortage、Critical Shortage、Meaningful Disruption、Risk Priority Level 及 Residual Risk 的精確定義，是正確應用 TR-68 方法論的前提。</li>
+            <li><strong>MAH 責任</strong>：高層管理須對產品不間斷供應負責；風險基礎決策（QRM 原則）是主動預防藥品短缺的根本。</li>
+        </ul>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages</p>
+    <p>Section 0: Introduction &amp; Glossary — Educational Bilingual Version | Pages p1–p5</p>
+    <p style="font-size:0.8rem; opacity:0.6; margin-top:0.5rem;">
+        Licensed to Kuo, Li-Hung / TWi Pharmaceuticals Inc. — Copying and Distribution Prohibited.<br>
+        Educational commentary in Traditional Chinese. Original English text &copy; 2024 Parenteral Drug Association, Inc.
+    </p>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" title="回到頂部">&#8679;</button>
+
+<script>
+    // Back to top button
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backBtn.classList.add('visible');
+        } else {
+            backBtn.classList.remove('visible');
+        }
+    });
+    backBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
