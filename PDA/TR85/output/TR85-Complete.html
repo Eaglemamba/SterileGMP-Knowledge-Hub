@@ -4975,6 +4975,42 @@ Upper Limit = Median + 1.66 x SD = 31 min
         const btnLeft = document.getElementById('navScrollLeft');
         const btnRight = document.getElementById('navScrollRight');
 
+        // Reading progress tracking
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
+        let _saveTimer = null;
+        let _current = '';
+
+        function _saveProgress() {
+            if (!_current) return;
+            const nav = document.querySelector('.nav-item.active');
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id: _current,
+                    label: nav ? (nav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num: nav ? (nav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    ts: Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then saved progress
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
         function updateNavArrows() {
             btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
             btnRight.classList.toggle('hidden',
@@ -4996,21 +5032,25 @@ Upper Limit = Median + 1.66 x SD = 31 min
                 backToTop.classList.remove('visible');
             }
 
-            let current = '';
+            _current = '';
             sections.forEach(function(section) {
                 const sectionTop = section.offsetTop - 100;
                 if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
+                    _current = section.getAttribute('id');
                 }
             });
 
             navItems.forEach(function(item) {
                 item.classList.remove('active');
-                if (item.getAttribute('data-section') === current) {
+                if (item.getAttribute('data-section') === _current) {
                     item.classList.add('active');
                     item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
                 }
             });
+
+            // Debounced save
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
         });
     });
     </script>
