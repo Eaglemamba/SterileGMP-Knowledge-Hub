@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR60 - Section 4.4: Design Strategy for PPQ</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.4 Design Strategy for Process Performance Qualification</h1>
+    <div class="subtitle">製程性能確認之設計策略</div>
+    <div class="page-info">PDA Technical Report No. 60 (Revised 2026): Process Validation &mdash; A Lifecycle Approach | p49 - p56</div>
+</div>
+
+<div class="main-container">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 PPQ 設計策略的整體框架，以及為何需要系統性方法來確認製程性能</li>
+        <li>掌握如何運用先驗知識 (Prior Knowledge) 與 Stage 1 數據支持 PPQ 研究設計</li>
+        <li>瞭解 PPQ 研究設計的關鍵要素，包括批次數量、操作條件、取樣計畫與統計評估</li>
+        <li>學習風險導向的 PPQ 取樣大小論證方法，包括 FDA 對取樣的法規要求</li>
+        <li>認識 PPQ 計畫 (PPQ Master Plan) 的架構與其在 QTPP 到 QRM 到 PPQ Protocol 之間的橋樑角色</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4 Design Strategy for PPQ - Introduction -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-4">4.4 Design Strategy for Process Performance Qualification</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><span class="key-term">Design Strategy for PPQ</span> refers to a systematic approach used in the pharmaceutical and biopharmaceutical industries to ensure that a manufacturing process is capable of consistently producing products that meet predefined specifications and quality attributes. The strategy focuses on validating the manufacturing process through testing and gathering data under normal operating conditions. This strategy should be internally evaluated by a multi-department team, including quality assurance and regulatory affairs personnel.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PPQ Design Strategy (PPQ 設計策略)：</strong>這不是單純「跑三批就好」的傳統思維。PPQ 設計策略是一套系統性方法，從製程理解出發，透過科學化的試驗設計來證明商業化製程具備一致性生產合格產品的能力。</p>
+            <p>關鍵在於「<strong>predefined specifications</strong>」&mdash;&mdash;所有接受標準必須在執行 PPQ 之前就已定義完成，而非事後回頭修改。這體現了 ICH Q8/Q9/Q10 所強調的品質源於設計 (Quality by Design, QbD) 理念。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PPQ 設計策略就像規劃一場<strong>大規模的期末考</strong>：你不能等到考試當天才決定考哪些範圍。老師（製程開發團隊）必須根據整學期教的內容（Stage 1 數據），決定考試題目（PPQ 測試項目）、評分標準（接受標準）、以及需要多少題目才能全面評估學生能力（批次數量與取樣策略）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR60 特別強調 PPQ 設計策略需要<strong>跨部門團隊</strong>（multi-department team）共同評估，包含 QA 與 RA 人員。這意味著 PPQ 不僅是製造部門的事，品質保證與法規事務的早期參與對於確保策略的合規性至關重要。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4.1 Use of Prior Knowledge -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-4-1">4.4.1 Use of Prior Knowledge and Stage 1 Data to Support PPQ</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>In a lifecycle approach to PV, sources of data and information outside of the PPQ batches may be used to support a high degree of confidence in an ongoing state of process control. <span class="key-term">Prior knowledge</span> is that which has been gained from similar products and processes. It may come from experience with a portfolio of similar molecules, where <span class="key-term">platform manufacturing strategies</span> have been developed using existing facilities and equipment (e.g., platform manufacturing processes for monoclonal antibodies) or from similar process and unit operations. Leveraging the data from similar products and processes may provide an additional level of confidence in the process control of a product and process that uses a similar control strategy and unit operations. However, the situation could change in the case of <span class="key-term">molecule-specific sensitivity</span> (e.g., sensitivity to gamma-irradiated critical consumables or VPHP) resulting in the need to apply changes to the platform manufacturing strategies (e.g., switching from gamma-sterilized to steam-sterilized consumables) and to consider additional aspects of the control strategy.</p>
+
+        <p>By contrast, likely first-in-class molecules and/or products manufactured in new facilities or with new equipment will probably require increased emphasis on data-gathering in Stage 1 to support PPQ readiness. To gather sufficient data to demonstrate an acceptable level of confidence in the commercial manufacturing process when little prior knowledge or Stage 1 data are available, the scope and extent of PPQ may need to be increased. This increased scope can both be translated in the need to run <span class="key-term">demo or engineering lots</span> prior to official PPQ lots and/or by increasing the number of PPQ lots. Demo lots or engineering lots may be manufactured to gain knowledge into the process while also exploring operational ranges for CPPs. Successful demo or engineering lots can be used as a gateway to proceed into PPQ. In addition, successful completion of demo or engineering lots could be used to justify the number of lots needed for PPQ.</p>
+
+        <p>The rationale and scientific justification for the use of existing data (prior knowledge) to support Stage 2 should be documented in the <span class="key-term">PV master plan</span>. All prior knowledge and Stage 1 data used to support PPQ must be retrievable, traceable, verified, and generated using good scientific practices.</p>
+
+        <p>Where there is greater prior knowledge or process design for a new product or process, that knowledge and data is used in a scientific, statistical, and risk-based manner to determine the appropriate size of PPQ studies. Limited prior knowledge will require proportionally more Stage 1 and/or PPQ knowledge.</p>
+
+        <p>Some examples of cases where prior knowledge may be useful for PPQ include:</p>
+        <ul>
+            <li>Setting acceptance criteria in PPQ studies, for example, bioburden and endotoxin in-process acceptance criteria, in cases where facility history and limits for other processes can be applied to similar processes that employ the same facility and equipment. (Assumes the limits for the previous product are appropriate for the quality of the new product.)</li>
+            <li>Using data from other product PPQ supportive studies, for example, in platform purification operations where the same or similar buffer formulations will be used in the same vessels, buffer hold-studies already performed for a different product can be used to support the PPQ for buffers used for the new product (52).</li>
+        </ul>
+
+        <div class="quote-box">
+            Note: For more information regarding solid and semi-solid dosage forms, refer to TR 60-2 (53).
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Prior Knowledge (先驗知識)：</strong>指從類似產品與製程中獲得的知識與數據。在生物製藥領域，這通常來自<strong>平台製造策略</strong> (Platform Manufacturing Strategies)，例如以單株抗體 (mAb) 為基礎的平台製程。</p>
+            <p>TR60 明確指出先驗知識與 PPQ 範圍之間存在<strong>反比關係</strong>：</p>
+            <ul>
+                <li><strong>先驗知識充足</strong> &rarr; PPQ 範圍可適度精簡</li>
+                <li><strong>先驗知識有限</strong> &rarr; 需增加 Stage 1 研究和/或 PPQ 批次數量</li>
+            </ul>
+            <p><strong>Demo / Engineering Lots (示範批/工程批)：</strong>在正式 PPQ 批次前製造的非商業批次，用於探索 CPP 操作範圍、累積製程知識，並作為進入 PPQ 的門檻評估。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>先驗知識就像你搬到<strong>新廚房</strong>做菜的經驗累積。如果你在同一品牌的烤箱上已經烤了上百個蛋糕（平台製程），你大概知道溫度和時間怎麼設定。但如果是你從未用過的全新品牌烤箱（first-in-class），你需要先做幾次試烤（demo lots）來熟悉新設備，才能有信心正式出貨。</p>
+            <p>而「molecule-specific sensitivity」就像發現某些食材對特定烤盤材質會產生意外反應（例如酸性水果碰到鋁箔），即使你對烤箱操作很熟悉，仍需要針對特殊材料調整策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>先驗知識使用的四大要求：</strong>所有用於支持 PPQ 的先驗知識必須滿足：</p>
+            <ul>
+                <li><strong>Retrievable (可檢索)：</strong>能找得到原始資料</li>
+                <li><strong>Traceable (可追溯)：</strong>能追溯資料來源與生成過程</li>
+                <li><strong>Verified (已驗證)：</strong>資料的準確性已經確認</li>
+                <li><strong>Generated using good scientific practices (依良好科學實務生成)：</strong>研究設計與執行符合科學原則</li>
+            </ul>
+            <p>這些要求確保先驗知識不是「拍腦袋」的經驗談，而是有科學根據的可靠數據。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景：</strong>假設你的 CDMO 有三個已完成 PPQ 的 mAb 產品，都使用相同的 Protein A 層析管柱和相同的 CIP 程序。當第四個 mAb 產品進來時，你可以引用前三個產品的層析管柱清洗驗證數據作為先驗知識，減少第四個產品在這個單元操作上的 PPQ 測試範圍。但必須在 PVMP 中詳細記錄科學論證。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的公司正在開發一個 first-in-class 的基因治療產品，而公司過去只有 mAb 製造經驗，哪些方面的先驗知識仍然可以適用？哪些需要從頭建立？</li>
+                <li>Demo lots 與正式 PPQ 批次的主要區別是什麼？Demo lots 的數據可以直接用來取代 PPQ 數據嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4.1.1 Use of Stage 1 Data -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-4-1-1">4.4.1.1 Use of Stage 1 Data for Process Performance Qualification</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p>Processes and products for which there is little or no prior knowledge may require a greater emphasis on <span class="key-term">Stage 1</span> and PPQ activities to demonstrate an acceptable level of confidence in the process control strategy. Data from Stage 1 <span class="key-term">process characterization studies</span> and clinical manufacturing are generally used to support the establishment of the control strategy for new products (refer to Section 3.0). Stage 1 data may be used to support PPQ if sufficient scientific evidence for its use is available. At a minimum, the studies claimed to support PPQ should represent the <span class="key-term">commercial-manufacturing scale</span> (e.g., be scale-independent) or derived from <span class="key-term">qualified small-scale model(s)</span> proven to represent the full-scale process. In some cases, data from clinical-manufacturing batches may be used in conjunction with data gathered during PPQ to increase the amount of data that can be used to achieve an acceptable level of confidence in the process. For example, the use of Stage 1 data to support the PPQ might include (1, 50):</p>
+        <ul>
+            <li>In some cases, Stage 1 data that supports PPQ may be supported by adding stricter testing for a defined number of batches to confirm the results obtained in the Stage 1 studies and the PPQ batches. For example, small-scale column lifetime studies may be used to support column reuse limits. These are then confirmed with a heightened level of impurity-monitoring until the reuse period has been reached at full scale.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Stage 1 數據用於支持 PPQ 的條件：</strong></p>
+            <ul>
+                <li><strong>規模代表性 (Scale Representativeness)：</strong>Stage 1 數據必須能代表商業化規模的製程，或來自已<strong>確認合格的小規模模型</strong> (Qualified Small-Scale Model)。這是使用小規模數據支持大規模 PPQ 的先決條件。</li>
+                <li><strong>科學證據充分 (Sufficient Scientific Evidence)：</strong>不能僅因為「有數據」就直接引用；必須有科學論據說明為何該數據適用於商業規模。</li>
+            </ul>
+            <p><strong>Qualified Small-Scale Model (合格小規模模型)：</strong>這是製程開發中的重要工具。小規模模型的「合格」意味著已經科學化地證明它能忠實反映大規模製程的行為，包括 CQA 的趨勢與變異性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Stage 1 數據支持 PPQ，就像用<strong>建築模型測試</strong>支持實際建築的安全評估。建築師可以用風洞測試的小型模型數據來預測實際大樓的風力承受能力，但前提是這個模型必須經過嚴格的「比例驗證」（即 qualified small-scale model），確認縮小版的行為能夠可靠地推算到實際尺寸。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>確認策略 (Confirmation Strategy)：</strong>即使 Stage 1 數據可用於支持 PPQ，TR60 仍建議在商業規模中進行<strong>加嚴測試</strong>（stricter testing）來確認小規模結果。例如：</p>
+            <ul>
+                <li>小規模層析管柱壽命研究 &rarr; 商業規模加強雜質監控直到達到重複使用上限</li>
+                <li>這種做法既利用了小規模數據的效率，又在大規模中提供了安全保障</li>
+            </ul>
+            <p>這體現了「<strong>Trust but verify</strong>（信任但驗證）」的製程驗證哲學。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的小規模模型尚未經過正式確認合格 (qualification)，但手上有大量小規模數據。在法規上，這些數據能否直接用來支持 PPQ？為什麼？</li>
+                <li>臨床生產批次 (clinical manufacturing batches) 的數據在什麼條件下可以與 PPQ 數據合併使用？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4.2 PPQ Study Design -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-4-2">4.4.2 Process Performance Qualification Study Design</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><span class="key-term">PPQ</span> is a means to demonstrate that all critical and other process parameters of unit operations are under the appropriate degree of control, and that all important variables and elements of the unit operation have been considered, that is, facility, utilities, equipment, personnel, process, control procedures, and components (refer to Figure 4.4.2-1).</p>
+
+        <p><em>Figure 4.4.2-1 Stage 2 Activities</em></p>
+
+        <p>Typically, a <span class="key-term">PPQ Master Plan</span> would be developed as required, based on the complexity of the PPQ study. The plan would include the summary of the design of the study as well as previous knowledge that aided in implementation of the study. The PPQ Master Plan should serve as a bridge between the <span class="key-term">QTPP</span> and the QRM and PPQ protocols (refer to Table 3.8-1). In other words, starting with QTPP, you would perform your risk assessment and, based on that, determine the PPQ study design, which would result in a PPQ plan. Based on the complexity of the PPQ study, the information that would typically comprise the PPQ plan could reside in the PPQ protocol.</p>
+
+        <p>It should be noted that the complexity and effort of the PPQ master plan should be commensurate with the complexity and criticality of the PPQ studies.</p>
+
+        <p>Typical aspects covered by the PPQ plan are:</p>
+        <ul>
+            <li>Process flow, including possible variations</li>
+            <li>Number of batches and rationale</li>
+            <li>Operating conditions</li>
+            <li>Variability in the reagents, excipients, and primary containers</li>
+            <li>Individual unit operations validation</li>
+            <li>Justification behind selection of bracketing, matrixing, and/or family approach</li>
+            <li>Sampling plans and justification</li>
+            <li>Stability studies, including comparison with development or tech-transfer product</li>
+            <li>Combination-product assembly and packaging requirements</li>
+            <li>Shipping requirements</li>
+            <li>Statistical analysis and evaluation requirements</li>
+            <li>Environmental monitoring</li>
+        </ul>
+
+        <p>During PPQ, <span class="key-term">CPPs</span> and <span class="key-term">CQAs</span> are monitored along with process performance parameters. Their evaluation is useful in demonstrating consistency and can enhance confidence in the overall process control strategy when included in the PPQ. All parameters and attributes intended for ongoing <span class="key-term">CPV</span> in Stage 3 should be included in the PPQ.</p>
+
+        <p>Prior to entering commercial PPQ batches, it would be advisable to run demo, engineering, or trial batches. This would be representative of the initial PPQ batches and would constitute a general trial for the commercial facility and proposed commercial process. It is also possible to leverage these engineering batches to confirm the <span class="key-term">PARs</span> for given parameters, thus confirming the robustness of the process.</p>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PPQ Master Plan (PPQ 主計畫)：</strong>扮演從 QTPP（目標產品品質概況）到 QRM（品質風險管理）到 PPQ Protocol（PPQ 方案書）之間的<strong>橋樑角色</strong>。其核心邏輯鏈為：</p>
+            <p style="text-align:center;"><strong>QTPP &rarr; Risk Assessment &rarr; PPQ Study Design &rarr; PPQ Plan</strong></p>
+            <p>PPQ Master Plan 的複雜度應與 PPQ 研究本身的複雜度和關鍵性相稱。對於較簡單的產品和製程，PPQ 計畫的內容可以直接納入 PPQ Protocol 中。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>PPQ 計畫的 12 項關鍵涵蓋面向：</strong></p>
+            <table>
+                <tr><th>面向</th><th>說明</th></tr>
+                <tr><td>製程流程與變異</td><td>包括所有可能的製程變化情境</td></tr>
+                <tr><td>批次數量與論證</td><td>基於科學和統計的批次數理由</td></tr>
+                <tr><td>操作條件</td><td>正常操作範圍內的參數設定</td></tr>
+                <tr><td>原料變異性</td><td>試劑、賦形劑、主要容器的變異</td></tr>
+                <tr><td>單元操作驗證</td><td>各個別單元操作的驗證策略</td></tr>
+                <tr><td>Bracketing / Matrixing</td><td>分組和矩陣設計的科學論證</td></tr>
+                <tr><td>取樣計畫</td><td>取樣位置、頻率與統計論證</td></tr>
+                <tr><td>安定性研究</td><td>與開發或技轉產品的比較</td></tr>
+                <tr><td>組合產品組裝</td><td>組合產品的組裝與包裝要求</td></tr>
+                <tr><td>運輸要求</td><td>運輸條件的驗證需求</td></tr>
+                <tr><td>統計分析</td><td>統計方法與評估要求</td></tr>
+                <tr><td>環境監控</td><td>PPQ 期間的環境監測計畫</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PPQ Master Plan 就像籌備一場<strong>大型演唱會的總企劃書</strong>。你需要涵蓋場地（facility）、音響設備（equipment）、樂團排練（personnel training）、節目流程（process flow）、票務管理（sampling plan）、以及天候備案（process variations）。每個環節都需要事前規劃，而不是到了現場才即興處理。</p>
+            <p>Demo lots 就像<strong>彩排</strong>&mdash;&mdash;在正式演出前先完整跑一次流程，確認所有環節銜接順暢。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>CPV 銜接概念</h4>
+            <p><strong>Stage 3 的銜接設計：</strong>TR60 強調一個非常重要的原則&mdash;&mdash;所有預計在 Stage 3 持續製程確認 (Continued Process Verification, CPV) 中監控的參數和品質屬性，都應該在 PPQ 中包含。這確保了：</p>
+            <ul>
+                <li>PPQ 數據可作為 CPV 的<strong>基線</strong> (baseline)</li>
+                <li>Stage 2 到 Stage 3 的過渡<strong>無縫接軌</strong></li>
+                <li>CPV 計畫有足夠的初始數據支持管制限的設定</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>PAR (Proven Acceptable Range，已證明可接受範圍)：</strong>工程批可用於確認特定參數的 PAR，進而驗證製程的穩健性 (robustness)。PAR 是透過 Stage 1 製程特性化研究所建立的操作空間，在 PPQ 前用工程批確認 PAR 可以增強對製程設計空間的信心。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在什麼情況下，PPQ Master Plan 的內容可以簡化並直接併入 PPQ Protocol？請舉出至少兩個考量因素。</li>
+                <li>為什麼 TR60 建議所有 Stage 3 CPV 監控項目都應納入 PPQ？如果某個參數在 PPQ 中未被監控，對 Stage 3 會造成什麼影響？</li>
+                <li>Demo lots 和 PPQ 批次使用相同的商業化設備和製程。那麼，它們最根本的區別在哪裡？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 4.4.2.1 Risk-Based PPQ Sample-Size Justification -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-4-4-2-1">4.4.2.1 Risk-Based Process Performance Qualification Sample-Size Justification</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>原文內容 Original Text</h3>
+        <p><span class="key-term">QRM</span> or risk-based approaches are used to assist in demonstrating control and capability throughout the PV lifecycle activities. Risk-based rationales are used to justify the number of batches manufactured and the number of samples taken during PPQ. It should be noted that there is no set number of expected batches prescribed in regulatory expectations or industry standard practice because the number of batches will be unique to a given product and process based upon the variability. The rationales assure sufficient data is available for the evaluation to demonstrate, with a high level of assurance, a process is capable of consistently delivering quality product, allowing the normal range of variation and trends to be established and providing sufficient data for evaluation. The evaluation of data should include <span class="key-term">objective measures</span> (e.g., statistical metrics), wherever feasible and meaningful, to achieve adequate assurance.</p>
+
+        <p>Additionally, FDA's GMP regulations regarding sampling set forth a number of requirements for validation:</p>
+        <ul>
+            <li>Samples must represent the batch under analysis (54)</li>
+            <li>Sampling plan must result in <span class="key-term">statistical confidence</span> (55)</li>
+            <li>Batch(es) must meet its predetermined specifications (55)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>導師解析 Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Risk-Based Sample-Size Justification (風險導向的取樣大小論證)：</strong>這是 PPQ 設計中最具挑戰性也最常被法規審查的部分。核心原則包括：</p>
+            <ul>
+                <li><strong>沒有固定批次數：</strong>法規和業界標準都不規定一個「正確」的 PPQ 批次數。傳統的「三批驗證」概念已被淘汰。</li>
+                <li><strong>基於變異性：</strong>批次數量取決於特定產品和製程的變異特性。變異性越大，通常需要越多批次來建立信心。</li>
+                <li><strong>客觀量測：</strong>數據評估應盡可能使用統計指標等客觀方法，而非僅靠主觀判斷。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>決定 PPQ 需要多少批次，就像決定你需要<strong>試吃多少道菜</strong>才能評價一家餐廳的品質。如果是連鎖餐廳（平台製程），你可能只需要試幾道招牌菜就能下判斷；但如果是全新的創意料理餐廳（first-in-class），你可能需要多次造訪、品嚐更多菜色，才能確信品質是穩定的。</p>
+            <p>而取樣的代表性就像你不能只嚐湯的表面，要攪拌後從不同深度取樣，才能代表整鍋湯的味道。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>FDA GMP 取樣三大要求：</strong></p>
+            <ol>
+                <li><strong>代表性 (Representativeness)：</strong>取樣必須能代表被分析的批次&mdash;&mdash;這意味著取樣點的選擇（位置、時間）必須有科學根據</li>
+                <li><strong>統計信心 (Statistical Confidence)：</strong>取樣計畫必須能產生統計上有意義的結論&mdash;&mdash;這要求取樣數量必須經過統計學論證</li>
+                <li><strong>符合預定規格 (Meet Predetermined Specifications)：</strong>批次必須符合事前設定的規格&mdash;&mdash;接受標準不能在看到結果後才修改</li>
+            </ol>
+            <p>這三個要求共同構成了 PPQ 取樣策略的法規基石，每一份 PPQ Protocol 都必須清楚回應。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>統計考量 Statistical Considerations</h4>
+            <p>雖然 TR60 未在此章節給出特定公式，但取樣大小論證通常涉及以下統計概念：</p>
+            <pre>
+信心水準 (Confidence Level) = 通常 95% 或 99%
+覆蓋率 (Coverage) = 通常 95% 或 99%
+容許區間 (Tolerance Interval) = 用於評估批內和批間變異
+
+例如：95% 信心水準 / 95% 覆蓋率
+= 至少 95% 的信心認為至少 95% 的產品符合規格
+
+取樣數量 n 取決於：
+- 已知的製程變異性 (process variability)
+- 所需的信心水準 (confidence level)
+- 所需的覆蓋率 (coverage)
+- 可接受的風險水準 (acceptable risk level)
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景：</strong>客戶要求你的 CDMO 進行 PPQ，但只願意支付三批的費用。作為驗證團隊，你應該如何處理？</p>
+            <ul>
+                <li>首先評估先驗知識和 Stage 1 數據的充分程度</li>
+                <li>進行風險評估以確定所需的批次數量</li>
+                <li>如果科學論證支持三批即可提供足夠信心，則記錄完整的統計論據</li>
+                <li>如果三批不足以建立充分信心，應向客戶說明法規風險並建議增加批次</li>
+                <li>考慮是否可以利用先驗知識來減少 PPQ 範圍</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 FDA 不規定一個固定的 PPQ 批次數量？這對於業界來說是好事還是壞事？</li>
+                <li>「取樣計畫必須產生統計信心」這一要求對取樣策略的設計有什麼具體影響？請列舉至少三個需要考慮的統計要素。</li>
+                <li>如何在 PPQ Protocol 中同時滿足 FDA 的三大取樣要求？請為一個充填製程設計一個概念性的取樣策略。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- NO SUMMARY - This section merges with 2b2 -->
+
+</div><!-- end main-container -->
+
+</body>
+</html>

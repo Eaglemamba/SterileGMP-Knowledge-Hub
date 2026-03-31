@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR26 - Section 3: How Filters Work</title>
+    <style>
+    /* =============================================================
+       PDA Educational Material - Shared CSS Template
+       Version: 2.0 (for Claude Code automation)
+       Last Updated: 2025
+
+       Usage: Embed this entire file inside <style> tags in each
+       section HTML. This ensures each file works standalone
+       AND merges correctly into the final TopNav document.
+       ============================================================= */
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+        --primary-blue: #1e3a5f;
+        --accent-blue: #3498db;
+        --light-gray: #fafafa;
+        --light-blue: #f0f7ff;
+        --yellow-start: #fff9e6;
+        --yellow-end: #fff3cd;
+        --green-bg: #e8f5e9;
+        --green-border: #4caf50;
+        --orange-bg: #fff3e0;
+        --orange-border: #ff9800;
+        --purple-bg: #f3e5f5;
+        --purple-border: #9c27b0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --header-height: 60px;
+        --nav-height: 50px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.75;
+        color: var(--text-dark);
+        background: #f0f2f5;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+    }
+
+    .header .subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 0.3rem;
+    }
+
+    .header .page-info {
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+
+    /* ===== TOP HEADER (for merged TopNav) ===== */
+    .top-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    .top-header h1 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .top-header .subtitle {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    /* ===== TOP NAVIGATION (for merged TopNav) ===== */
+    .top-nav {
+        background: #2d3748;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-container::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .nav-container::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        border-radius: 3px;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-item.active {
+        color: white;
+        border-bottom-color: var(--accent-blue);
+        background: rgba(255,255,255,0.05);
+    }
+
+    .nav-num {
+        width: 24px;
+        height: 24px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .nav-item.active .nav-num {
+        background: var(--accent-blue);
+    }
+
+    .nav-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    /* ===== MAIN CONTENT WRAPPER ===== */
+    .main-content {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .main-container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    /* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+    .chapter-section {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+        scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+
+    .chapter-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+        color: white;
+    }
+
+    .chapter-badge {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .chapter-info h2 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+
+    .chapter-info p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    .chapter-body {
+        padding: 1.5rem;
+    }
+
+    /* ===== TWO COLUMN LAYOUT ===== */
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ===== LEFT COLUMN - Original Content ===== */
+    .left-column,
+    .original-content {
+        background: var(--light-gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .left-column h2,
+    .left-column h3,
+    .original-content h2,
+    .original-content h3 {
+        color: var(--primary-blue);
+        border-bottom: 2px solid #3182ce;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .left-column p,
+    .original-content p {
+        margin-bottom: 0.85rem;
+        text-align: justify;
+        font-size: 0.95rem;
+    }
+
+    .left-column ul, .left-column ol,
+    .original-content ul, .original-content ol {
+        margin: 0.75rem 0 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .left-column li,
+    .original-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* ===== RIGHT COLUMN - Commentary ===== */
+    .right-column,
+    .commentary {
+        background: var(--light-blue);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #bee3f8;
+    }
+
+    .right-column h2,
+    .right-column h3,
+    .commentary h2,
+    .commentary h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #63b3ed;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .right-column p,
+    .commentary p {
+        margin-bottom: 0.85rem;
+        font-size: 0.95rem;
+    }
+
+    /* ===== COLUMN HEADERS ===== */
+    .column-header {
+        font-weight: 600;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid currentColor;
+        font-size: 1rem;
+    }
+
+    .right-column .column-header,
+    .commentary .column-header {
+        color: #2c5282;
+    }
+
+    /* Hide original container padding in merged mode */
+    .chapter-body .container,
+    .chapter-body .main-container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* ===== KEY TERMS (inline highlight) ===== */
+    .key-term,
+    .highlight-term {
+        background: linear-gradient(to right, #d4edda, #c3e6cb);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #155724;
+        font-size: 0.9em;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote-box,
+    .important-quote {
+        background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+        border-left: 4px solid #3182ce;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    /* ===== CONCEPT BOXES - Unified Base ===== */
+    .concept-box,
+    .analogy-box,
+    .note-box,
+    .key-note,
+    .term-box,
+    .formula-box,
+    .key-term-box,
+    .key-point-box,
+    .highlight-box {
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 0.92rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .concept-box h3, .concept-box h4,
+    .analogy-box h3, .analogy-box h4,
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .term-box h3, .term-box h4,
+    .formula-box h3, .formula-box h4,
+    .key-term-box h3, .key-term-box h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        margin-bottom: 0.6rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .concept-box p,
+    .analogy-box p,
+    .note-box p,
+    .key-note p,
+    .term-box p,
+    .formula-box p,
+    .key-term-box p,
+    .key-point-box p,
+    .highlight-box p {
+        margin-bottom: 0.5rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box ul, .concept-box ol,
+    .analogy-box ul, .analogy-box ol,
+    .note-box ul, .note-box ol,
+    .key-note ul, .key-note ol,
+    .term-box ul, .term-box ol,
+    .formula-box ul, .formula-box ol,
+    .key-term-box ul, .key-term-box ol,
+    .key-point-box ul, .key-point-box ol,
+    .highlight-box ul, .highlight-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box li,
+    .analogy-box li,
+    .note-box li,
+    .key-note li,
+    .term-box li,
+    .formula-box li,
+    .key-term-box li,
+    .key-point-box li,
+    .highlight-box li {
+        margin-bottom: 0.35rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== ANALOGY BOX (Yellow) ===== */
+    .analogy-box,
+    .concept-box[class*="analogy"],
+    .concept-box.analogy,
+    div[class*="analogy"]:not(.content-grid):not(.two-column) {
+        background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+        border-left: 4px solid #f6ad55 !important;
+    }
+
+    .analogy-box h3, .analogy-box h4,
+    .concept-box.analogy h3, .concept-box.analogy h4 {
+        color: #856404 !important;
+    }
+
+    /* ===== TERM/CONCEPT BOX (Green) ===== */
+    .term-box,
+    .key-term-box,
+    .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+        background: var(--green-bg) !important;
+        border-left: 4px solid var(--green-border) !important;
+    }
+
+    .concept-box:not(.analogy):not(.application) h3,
+    .concept-box:not(.analogy):not(.application) h4,
+    .term-box h3, .term-box h4,
+    .key-term-box h3, .key-term-box h4 {
+        color: #2e7d32 !important;
+    }
+
+    /* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+    .note-box,
+    .key-note,
+    .key-point-box,
+    .concept-box[class*="note"],
+    .concept-box[class*="highlight"],
+    .key-point,
+    .highlight-box {
+        background: var(--orange-bg) !important;
+        border-left: 4px solid var(--orange-border) !important;
+    }
+
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        color: #c65102 !important;
+    }
+
+    /* ===== FORMULA BOX (Purple) ===== */
+    .formula-box,
+    .concept-box[class*="formula"] {
+        background: var(--purple-bg) !important;
+        border-left: 4px solid var(--purple-border) !important;
+    }
+
+    .formula-box h3, .formula-box h4 {
+        color: #7b1fa2 !important;
+    }
+
+    .formula-box pre {
+        background: rgba(156, 39, 176, 0.08);
+        padding: 0.75rem;
+        border-radius: 6px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        white-space: pre-wrap;
+    }
+
+    /* ===== APPLICATION BOX ===== */
+    .concept-box.application,
+    .application-box {
+        background: #e3f2fd !important;
+        border-left: 4px solid #1976d2 !important;
+    }
+
+    .concept-box.application h3,
+    .concept-box.application h4,
+    .application-box h3,
+    .application-box h4 {
+        color: #1565c0 !important;
+    }
+
+    /* ===== PRACTICE BOX (Blue dashed) ===== */
+    .practice-box {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+        border: 2px dashed #3182ce !important;
+        border-radius: 10px !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        font-size: 0.92rem !important;
+    }
+
+    .practice-box h3, .practice-box h4 {
+        color: #2c5282 !important;
+        margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .practice-box p,
+    .practice-box li {
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #e2e8f0;
+        text-align: left;
+    }
+
+    th {
+        background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        font-weight: 600;
+        color: var(--primary-blue);
+        font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+        background: #f7fafc;
+    }
+
+    /* ===== LEARNING OBJECTIVES ===== */
+    .learning-objectives {
+        background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .learning-objectives h3 {
+        color: #117a65;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .learning-objectives ul,
+    .learning-objectives ol {
+        margin-left: 1.25rem;
+    }
+
+    .learning-objectives li {
+        margin-bottom: 0.4rem;
+        font-size: 0.92rem;
+    }
+
+    /* ===== STRUCTURE LIST ===== */
+    .structure-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .structure-list li {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        background: white;
+        border-radius: 6px;
+        border-left: 4px solid #3182ce;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        font-size: 0.9rem;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title,
+    .section-divider {
+        font-size: 1.1rem;
+        color: var(--primary-blue);
+        margin: 1.5rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .section-divider {
+        border-bottom: 1px solid #e2e8f0;
+        margin: 2rem 0;
+    }
+
+    /* ===== TABLE OF CONTENTS (per section) ===== */
+    .toc {
+        background: white;
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .toc h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .toc-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .toc-grid a {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        background: #edf2f7;
+        border-radius: 6px;
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+    }
+
+    .toc-grid a:hover {
+        background: var(--accent-blue);
+        color: white;
+    }
+
+    /* ===== FIGURE CONTAINERS ===== */
+    .figure-container {
+        margin: 1.25rem 0;
+        text-align: center;
+    }
+
+    .figure-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .figure-caption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+
+    /* ===== HIERARCHY DIAGRAM ===== */
+    .hierarchy-diagram {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .hierarchy-level {
+        margin: 0.5rem 0;
+    }
+
+    .hierarchy-box {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .hierarchy-box.level-1 {
+        background: #fee2e2;
+        border: 2px solid #ef4444;
+        color: #b91c1c;
+    }
+
+    .hierarchy-box.level-2 {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        color: #92400e;
+    }
+
+    .hierarchy-box.level-3 {
+        background: #d1fae5;
+        border: 2px solid #10b981;
+        color: #065f46;
+    }
+
+    .arrow-down {
+        font-size: 1.2rem;
+        color: var(--text-medium);
+        margin: 0.25rem 0;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .badge.green {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .badge.red {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .badge.blue {
+        background: #cce5ff;
+        color: #004085;
+    }
+
+    .badge.yellow {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .checklist li {
+        padding: 0.3rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .checklist li::before {
+        content: "\2610";
+        position: absolute;
+        left: 0;
+        color: var(--accent-blue);
+    }
+
+    /* ===== CARDS ===== */
+    .pump-card,
+    .tech-card,
+    .info-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 0.75rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+        background: var(--primary-blue);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .main-footer p {
+        opacity: 0.9;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+        background: var(--accent-blue);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.3rem;
+        box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: #2980b9;
+        transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            gap: 1rem;
+        }
+
+        .left-column, .right-column,
+        .original-content, .commentary {
+            padding: 1.25rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr;
+        }
+
+        .top-header h1,
+        .header h1 {
+            font-size: 1.1rem;
+        }
+
+        .nav-label {
+            display: none;
+        }
+
+        .nav-item {
+            padding: 0.75rem;
+        }
+
+        .nav-num {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+        }
+
+        .chapter-divider {
+            padding: 0.85rem 1rem;
+        }
+
+        .chapter-badge {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info h2 {
+            font-size: 1rem;
+        }
+
+        .main-content,
+        .main-container {
+            padding: 1rem;
+        }
+
+        .chapter-body {
+            padding: 1rem;
+        }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+        .top-nav, .back-to-top, .header {
+            display: none !important;
+        }
+
+        .top-header {
+            background: var(--primary-blue) !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .chapter-section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .main-content,
+        .main-container {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+
+    /* ===== VENN DIAGRAM (custom for this section) ===== */
+    .venn-diagram {
+        position: relative;
+        width: 100%;
+        max-width: 480px;
+        height: 320px;
+        margin: 1.5rem auto;
+    }
+    .venn-circle {
+        position: absolute;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.78rem;
+        font-weight: 600;
+        line-height: 1.4;
+        padding: 1rem;
+    }
+    .venn-outer {
+        width: 300px;
+        height: 300px;
+        background: rgba(52, 152, 219, 0.12);
+        border: 2px solid #3498db;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .venn-middle {
+        width: 210px;
+        height: 210px;
+        background: rgba(46, 204, 113, 0.15);
+        border: 2px solid #2ecc71;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .venn-inner {
+        width: 120px;
+        height: 120px;
+        background: rgba(231, 76, 60, 0.18);
+        border: 2px solid #e74c3c;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .venn-label {
+        position: absolute;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.3;
+    }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 3: How Filters Work</h1>
+    <div class="subtitle">第三章：過濾器的工作原理</div>
+    <div class="page-info">PDA Technical Report No. 26 (Revised 2008) &mdash; Sterilizing Filtration of Liquids | p7 - p10</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解液體過濾的兩大截留機制：Size Exclusion（尺寸排除）與 Adsorptive Sequestration（吸附截留），以及它們為何同時存在</li>
+        <li>認識除菌級濾膜的真實孔結構 &mdash; 海綿狀迷宮而非簡單圓柱孔，並理解這對截留效能的影響</li>
+        <li>掌握 ASTM F838 標準測試的定義與意義，區分 &ldquo;0.2 &micro;m Rated Filter&rdquo;、&ldquo;Sterilizing-Grade Filter&rdquo; 與 &ldquo;Sterilizing Filter&rdquo; 三個關鍵術語的本質差異</li>
+        <li>了解現代除菌級濾膜的演進歷程，以及完整的品質要求清單如何影響 CDMO 的濾膜選擇策略</li>
+        <li>建立「通過標準測試 ≠ 保證製程無菌」的核心觀念，理解為何每個應用都必須獨立驗證</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 3.0: HOW FILTERS WORK (MAIN INTRO)   -->
+<!-- ============================================ -->
+<div class="section-title">3.0 How Filters Work &mdash; 過濾器的工作原理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Liquid filters work through a combination of <span class="key-term">size-exclusion</span> (involving <span class="key-term">surface screening</span> as well as entrapment in the filter matrix depth) and <span class="key-term">adsorptive sequestration</span>. The filtration mechanisms are well described in the literature (references 3, 4, 6, 7, 9, 11, 21, 22).</p>
+
+        <p><span class="key-term">Sterilizing-grade filters</span> have a <span class="key-term">sponge-like pore structure</span>; they are not simple screens with cylindrical pores of a defined size. As a consequence, their retention characteristics are dependent upon a number of factors, including <span class="key-term">differential pressure</span>, <span class="key-term">flow rate</span>, the number of particles or microorganisms to be retained (<span class="key-term">bioburden</span>), <span class="key-term">binding-site saturation</span>, <span class="key-term">surface tension</span>, <span class="key-term">pH</span>, and <span class="key-term">ionic strength</span>.</p>
+
+        <p>For very small microorganisms that can grow, shrink, deform, and divide, retention becomes <span class="key-term">probabilistic</span> rather than absolute. Accordingly, each application of a sterilizing filter must be <span class="key-term">validated</span> to demonstrate its suitability for the intended use.</p>
+
+        <div class="quote-box">
+            "Sterilizing-grade filters have a sponge-like pore structure; they are not simple screens with cylindrical pores of a defined size."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Size Exclusion（尺寸排除）：</strong>這是最直觀的截留機制。微粒或微生物的尺寸大於濾膜的孔徑，所以被物理性地攔截下來。這又分為兩種：</p>
+            <ul>
+                <li><strong>Surface Screening（表面篩除）：</strong>粒子在濾膜表面就被攔住，無法進入孔道內部</li>
+                <li><strong>Entrapment in Filter Matrix Depth（深層截留）：</strong>粒子進入了濾膜的多層結構，在曲折的孔道中被卡住</li>
+            </ul>
+            <p><strong>Adsorptive Sequestration（吸附截留）：</strong>這是較不直觀但同樣重要的機制。微生物或粒子透過靜電吸引力、凡德瓦力等表面作用力，被「黏附」在濾膜的內部表面上，即使它們的尺寸小到理論上可以通過孔道。</p>
+            <p>關鍵認識：除菌過濾（Sterilizing Filtration）的成功不是只靠「孔夠小」，而是兩種機制的協同作用。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>安檢門 vs 便衣警察：</strong></p>
+            <p>想像機場的安全檢查系統。Size Exclusion（尺寸排除）就像<strong>安檢門</strong> &mdash; 超過一定尺寸的物品直接被攔住，無法通過。這是被動的、基於物理尺寸的篩選。</p>
+            <p>而 Adsorptive Sequestration（吸附截留）則像是<strong>便衣警察</strong> &mdash; 即使某個可疑人物體型夠小、能通過安檢門，便衣警察也會透過「辨識特徵」將他攔下。這是主動的、基於表面特性的截留。</p>
+            <p>真正安全的機場需要兩者並用。同理，真正有效的除菌過濾也需要尺寸排除和吸附截留的雙重保障。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) - Sponge Maze -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy &mdash; 海綿迷宮</h4>
+            <p><strong>海綿迷宮 vs 簡單篩網：</strong></p>
+            <p>許多人直覺地認為過濾膜就像家裡的紗窗 &mdash; 有一排排整齊的圓形小孔，大的蚊蟲被擋在外面，小的空氣分子可以通過。但 TR26 明確告訴我們：<strong>除菌級濾膜的結構更像一塊海綿</strong>。</p>
+            <p>想像把一塊海綿切開來看：裡面是無數互相連通的不規則空腔和曲折通道。微生物要「通關」，就必須在這個三維迷宮中找到一條從頭到尾都足夠大的路徑 &mdash; 而這幾乎是不可能的，因為總會在某個彎道被卡住，或者在某個窄處被孔壁吸附住。</p>
+            <p>這就是為什麼我們說濾膜的「0.2 &micro;m」不是一個精確的孔徑尺寸，而是一個<strong>功能性的評級</strong>。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「機率性截留」是最關鍵的概念！</strong></p>
+            <p>TR26 用了 "probabilistic" 這個字，而非 "absolute"。這代表：</p>
+            <ul>
+                <li>沒有任何濾膜能 100% 保證截留所有微生物</li>
+                <li>微生物是活的 &mdash; 它們會生長、縮小、變形、分裂，這些都會影響截留結果</li>
+                <li>截留效能受到多種製程條件影響：壓差（Differential Pressure）、流速（Flow Rate）、Bioburden（生物負荷）、pH 值、離子強度等</li>
+            </ul>
+            <p><strong>對 CDMO 的啟示：</strong>你不能只買一個標示「0.2 &micro;m」的濾膜就認為萬事大吉。你必須用<strong>你自己的產品、在你自己的製程條件下</strong>進行驗證。這就是為什麼 Filter Validation（過濾驗證）是法規的硬性要求。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) - Factors affecting retention -->
+        <div class="note-box">
+            <h4>影響截留的七大因素</h4>
+            <p>TR26 列出了影響截留特性的所有關鍵因素，讓我們逐一理解為什麼每個都重要：</p>
+            <ul>
+                <li><strong>Differential Pressure（壓差）：</strong>壓差越大，液體通過越快，微生物與濾膜接觸時間越短，吸附截留效果可能下降</li>
+                <li><strong>Flow Rate（流速）：</strong>與壓差類似，高流速減少接觸時間</li>
+                <li><strong>Bioburden（生物負荷）：</strong>微生物數量越多，結合位點越快飽和，後續的微生物就更容易「漏網」</li>
+                <li><strong>Binding-Site Saturation（結合位點飽和）：</strong>吸附截留的「便衣警察」數量有限，一旦全部忙碌，新的可疑分子就可能通過</li>
+                <li><strong>Surface Tension（表面張力）：</strong>影響液體與濾膜的潤濕行為，進而影響截留</li>
+                <li><strong>pH：</strong>影響微生物表面與濾膜的帶電狀態，改變靜電吸附效果</li>
+                <li><strong>Ionic Strength（離子強度）：</strong>溶液中的離子會遮蔽靜電作用，高離子強度可能降低吸附截留效果</li>
+            </ul>
+        </div>
+
+        <!-- PRACTICE BOX (Blue dashed) -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的藥品配方 pH 從 7.0 調整到 4.0，這可能如何影響過濾驗證的結果？為什麼需要重新驗證？</li>
+                <li>為什麼高 Bioburden（生物負荷）的原料藥溶液比低 Bioburden 的更需要謹慎評估過濾效果？試從 Binding-Site Saturation 的角度分析。</li>
+                <li>一家 CDMO 客戶說：「我們用的是 0.2 &micro;m 濾膜，所以過濾驗證不需要做。」你會如何回應？用本節的哪些概念來說服他？</li>
+                <li>如果濾膜是像紗窗一樣的簡單篩網結構（而非海綿迷宮），你認為「吸附截留」這個機制還會存在嗎？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 3.1: PORE SIZE RATING & NOMENCLATURE -->
+<!-- ============================================ -->
+<div class="section-title">3.1 Pore Size Rating and Filter Nomenclature &mdash; 孔徑評級與濾膜命名</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Currently, <span class="key-term">sterilizing-grade filters</span> are defined not by a physical pore size, but by the ability to retain a minimum challenge of <span class="key-term">10<sup>7</sup> CFU/cm<sup>2</sup></span> of <span class="key-term">Brevundimonas diminuta</span> (<span class="key-term">ATCC 19146</span>) when tested per <span class="key-term">ASTM F838</span>.</p>
+
+        <p>Table 3.1-1 below defines three related but distinct terms that are commonly used &mdash; and commonly confused &mdash; in the context of sterilizing filtration.</p>
+
+        <h3>Table 3.1-1: Filter Nomenclature</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>0.2 &micro;m Rated Filter</strong></td>
+                    <td>A filter whose <span class="key-term">pore-size rating</span> is based on a correlation to the ASTM F838 <em>Brevundimonas diminuta</em> challenge test <strong>or other criteria established by the filter manufacturer</strong>. This rating may indicate that the filter has passed the ASTM F838 test, but it may also be based on other manufacturer-defined criteria. The term is ambiguous and should not be assumed to mean the filter is a sterilizing-grade filter.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sterilizing-Grade Filter</strong></td>
+                    <td>A filter that has demonstrated the ability to produce a <span class="key-term">sterile effluent</span> when challenged with <span class="key-term">10<sup>7</sup> CFU/cm<sup>2</sup></span> of <em>Brevundimonas diminuta</em> (<em>B. diminuta</em>, ATCC 19146) per <span class="key-term">ASTM F838</span>. This is a claim about the <strong>filter itself</strong>, validated by the manufacturer under standard test conditions. It does not guarantee sterile filtration performance in a specific application.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sterilizing Filter</strong></td>
+                    <td>A filter that, when used in a specific application under defined conditions, produces a <span class="key-term">sterile effluent</span>. This is an <strong>application-specific claim</strong> that requires <span class="key-term">process validation</span> by the end user. Demonstrating that a filter functions as a sterilizing filter requires validation with the actual product, under actual process conditions.</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>The relationships among these three terms can be visualized as a set of concentric circles (Figure 3.1-1), where the outermost circle represents the broadest category (&ldquo;0.2 &micro;m Rated Filters&rdquo;) and the innermost circle represents the most restrictive claim (&ldquo;Sterilizing Filter&rdquo;).</p>
+
+        <!-- Textual description of Figure 3.1-1 Venn Diagram -->
+        <h3>Figure 3.1-1: Relationship Among Filter Terms (Venn Diagram)</h3>
+        <div class="figure-container">
+            <div class="venn-diagram">
+                <div class="venn-circle venn-outer"></div>
+                <div class="venn-circle venn-middle"></div>
+                <div class="venn-circle venn-inner"></div>
+                <div class="venn-label" style="top: 8px; left: 50%; transform: translateX(-50%); color: #2980b9;">0.2 &micro;m Rated Filter</div>
+                <div class="venn-label" style="top: 55px; left: 50%; transform: translateX(-50%); color: #27ae60; width: 160px;">Sterilizing-Grade Filter</div>
+                <div class="venn-label" style="top: 50%; left: 50%; transform: translate(-50%, -50%); color: #c0392b; width: 100px;">Sterilizing Filter</div>
+                <div class="venn-label" style="bottom: 0; left: 50%; transform: translateX(-50%); color: #4a5568; font-size: 0.7rem; width: 300px;">Broadest (outer) &rarr; Most restrictive (inner)</div>
+            </div>
+            <p class="figure-caption">Figure 3.1-1: Concentric relationship among the three filter terms. The outermost circle (blue) represents all 0.2 &micro;m rated filters &mdash; the broadest and most ambiguous category. The middle circle (green) represents sterilizing-grade filters that have passed ASTM F838. The innermost circle (red) represents sterilizing filters validated for a specific application.</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>ASTM F838 標準測試：</strong>這是定義除菌級濾膜的「黃金標準」。測試方法是用 <em>Brevundimonas diminuta</em>（B. diminuta）這種已知最小的可培養細菌，以每平方公分至少 10<sup>7</sup> CFU（Colony Forming Units，菌落形成單位）的濃度挑戰濾膜。如果濾液完全無菌，該濾膜就可以被稱為 Sterilizing-Grade Filter（除菌級濾膜）。</p>
+            <p><strong>為什麼選 B. diminuta？</strong>因為它是目前已知最小的可培養細菌之一（直徑約 0.3 &micro;m），被視為「最嚴格的挑戰微生物」。如果濾膜連它都能截留，那截留更大的微生物就更有信心。</p>
+            <p><strong>三個術語的本質區別：</strong></p>
+            <ul>
+                <li><strong>0.2 &micro;m Rated Filter（0.2 &micro;m 額定濾膜）：</strong>最寬泛、最模糊的術語。可能通過了 ASTM F838，也可能只是廠商自行定義的標準。<span style="color:#c0392b;"><strong>不能假設它就是除菌級！</strong></span></li>
+                <li><strong>Sterilizing-Grade Filter（除菌級濾膜）：</strong>明確通過 ASTM F838 的濾膜。這是<strong>關於濾膜本身</strong>的聲明，由濾膜製造商在標準測試條件下驗證。</li>
+                <li><strong>Sterilizing Filter（除菌濾膜）：</strong>在<strong>特定應用</strong>中被驗證能產生無菌濾液的濾膜。這是<strong>關於功能</strong>的聲明，需要終端使用者進行製程驗證（Process Validation）。</li>
+            </ul>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) - ASTM F838 -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy &mdash; 駕照考試</h4>
+            <p><strong>ASTM F838 = 駕照考試：</strong></p>
+            <p>ASTM F838 測試就像駕照考試。通過駕照考試證明你具備「基本的駕駛能力」&mdash; 這對應 Sterilizing-Grade Filter（除菌級濾膜）的概念。</p>
+            <p>但是，拿到駕照不代表你可以安全駕駛任何車輛、在任何路況下都沒問題。你可能在雪地開車就出狀況，或者開大卡車就不行。<strong>真正的安全駕駛需要在具體情境中證明</strong> &mdash; 這就對應 Sterilizing Filter（除菌濾膜），需要在你的具體藥品、你的製程條件下驗證。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) - 0.2 µm -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy &mdash; 大學文憑</h4>
+            <p><strong>0.2 &micro;m Rating = 大學文憑：</strong></p>
+            <p>「0.2 &micro;m Rated」就像一張大學文憑 &mdash; 它告訴你這個人「畢業了」，但不告訴你他是從哪所大學畢業的（名校還是野雞大學？），也不保證他能做好某個特定的工作。</p>
+            <p>同樣地，「0.2 &micro;m」這個數字只是一個評級標籤，背後的測試標準可能是嚴格的 ASTM F838，也可能是廠商自訂的寬鬆標準。所以 TR26 特別提醒我們：<strong>看到「0.2 &micro;m」不能自動假設它就是除菌級濾膜。</strong></p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「0.2 &micro;m Rated」的陷阱 &mdash; CDMO 必須警覺！</strong></p>
+            <p>這是 TR26 最重要的警告之一。在日常溝通中，很多人（包括供應商和製造人員）會混用這三個術語。但在法規環境下，這三者有嚴格的層級關係：</p>
+            <ul>
+                <li>並非所有「0.2 &micro;m Rated Filter」都是「Sterilizing-Grade Filter」</li>
+                <li>並非所有「Sterilizing-Grade Filter」都是「Sterilizing Filter」（即使通過 ASTM F838，在你的特定產品中可能無法達到除菌效果）</li>
+            </ul>
+            <p><strong>法規稽核時：</strong>如果稽核員問你「你怎麼知道這個濾膜是除菌級的？」，正確回答不是「因為它標示 0.2 &micro;m」，而是「因為濾膜供應商提供了 ASTM F838 測試的驗證數據，且我們已對我們的特定產品和製程條件完成了過濾驗證（Filter Validation）。」</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) - Figure Analysis -->
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis &mdash; Venn Diagram</h4>
+            <p><strong>Figure 3.1-1 的 Venn 圖（同心圓）解讀：</strong></p>
+            <p>這張圖以同心圓的方式呈現三個術語之間的包含關係：</p>
+            <ul>
+                <li><strong>最外圈（藍色）&mdash; 0.2 &micro;m Rated Filter：</strong>最大、最模糊的集合。所有標示「0.2 &micro;m」的濾膜都在這裡，但品質和驗證標準參差不齊。</li>
+                <li><strong>中間圈（綠色）&mdash; Sterilizing-Grade Filter：</strong>只有通過 ASTM F838 測試的濾膜才能進入這個圈。這是濾膜製造商對「產品品質」的承諾。</li>
+                <li><strong>最內圈（紅色）&mdash; Sterilizing Filter：</strong>最嚴格的聲明。只有在特定應用中經過完整製程驗證的濾膜才屬於此類。這是使用者對「製程效能」的證明。</li>
+            </ul>
+            <p><strong>核心訊息：</strong>從外圈到內圈，要求越來越嚴格、範圍越來越小。你的目標是確保你在 CDMO 生產中使用的每一支濾膜都處於<strong>最內圈</strong>。</p>
+        </div>
+
+        <!-- PRACTICE BOX - Application -->
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>你的公司承接了一個新客戶的生物製劑充填專案。客戶提供了一份文件，指定使用某廠牌的「0.2 &micro;m membrane filter」進行除菌過濾。</p>
+            <p><strong>你應該做的事：</strong></p>
+            <ol>
+                <li><strong>確認該濾膜是否為 Sterilizing-Grade：</strong>向濾膜供應商索取 ASTM F838 的 B. diminuta 挑戰測試報告</li>
+                <li><strong>進行 Filter Validation：</strong>用客戶的<em>實際產品</em>、在你的<em>實際製程條件</em>下（壓差、溫度、過濾時間、Bioburden 水準）進行細菌截留驗證</li>
+                <li><strong>建立濾膜的 Integrity Test 標準：</strong>確立你的 Bubble Point（泡點測試）或 Diffusion Test（擴散測試）的合格標準，並與細菌截留能力做關聯</li>
+            </ol>
+        </div>
+
+        <!-- PRACTICE BOX (Blue dashed) -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Table 3.1-1 中 &ldquo;0.2 &micro;m Rated Filter&rdquo; 的定義提到 &ldquo;or other criteria established by the filter manufacturer&rdquo; &mdash; 這句話為什麼是一個重大的風險信號？</li>
+                <li>一個通過了 ASTM F838 測試的濾膜（Sterilizing-Grade Filter），在過濾含有高濃度界面活性劑的藥品溶液時，有沒有可能「降級」為不合格？為什麼？</li>
+                <li>Venn 圖中，從「Sterilizing-Grade Filter」到「Sterilizing Filter」的跨越，需要由誰來完成？製造商還是使用者？為什麼？</li>
+                <li>如果一張濾膜的 Integrity Test（完整性測試）通過了，但 Filter Validation（過濾驗證）使用的是水而非實際藥品，你認為這算有效的驗證嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION 3.2: EVOLUTION OF STERILIZING FILTER -->
+<!-- ============================================ -->
+<div class="section-title">3.2 Evolution of the Sterilizing Filter &mdash; 除菌濾膜的演進</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>While the basic function of a <span class="key-term">sterilizing filter</span> &mdash; the removal of microorganisms from a liquid &mdash; has remained unchanged, the performance requirements and quality expectations placed on modern sterilizing-grade filters have evolved considerably. Today's sterilizing-grade filters are expected to meet a comprehensive set of requirements that go well beyond simple bacterial retention.</p>
+
+        <p>Modern <span class="key-term">sterilizing-grade filters</span> have evolved to include the following attributes and requirements:</p>
+
+        <ul>
+            <li><span class="key-term">Steam sterilization resistance</span> &mdash; the ability to withstand repeated steam sterilization cycles (typically 121&deg;C for 30 minutes or more) without loss of integrity or retention performance</li>
+            <li><span class="key-term">Irradiation resistance</span> &mdash; compatibility with gamma irradiation sterilization, particularly important for single-use (disposable) filter assemblies</li>
+            <li><span class="key-term">Minimal extractables</span> &mdash; low levels of extractable substances to minimize the risk of product contamination and ensure patient safety</li>
+            <li><span class="key-term">Mechanical resistance</span> &mdash; structural integrity under the mechanical stresses of installation, pressurization, and operation</li>
+            <li><span class="key-term">Low unspecific adsorption</span> &mdash; minimal non-specific binding of product components (particularly proteins) to the filter membrane, to maintain product yield and quality</li>
+            <li><span class="key-term">Optimal throughputs</span> &mdash; the ability to process the required volume of product within an acceptable timeframe</li>
+            <li><span class="key-term">Flow rates</span> &mdash; consistent and predictable flow performance under defined operating conditions</li>
+            <li><span class="key-term">Robust integrity testing</span> &mdash; reliable and reproducible integrity test methods (e.g., Bubble Point, Diffusion Test) that correlate with bacterial retention</li>
+            <li><span class="key-term">Full qualification documentation</span> &mdash; comprehensive documentation packages including validation guides, extractables data, bacterial retention data, and regulatory support files</li>
+            <li><span class="key-term">Individual process validation</span> &mdash; support for end-user validation of the filter in the specific application, with the actual product and process conditions</li>
+            <li><span class="key-term">100% integrity tested by manufacturer</span> &mdash; every filter unit is integrity tested before shipment to ensure no defective units reach the end user</li>
+            <li><span class="key-term">Transportation and shelf life validation</span> &mdash; demonstrated stability of filter performance throughout storage and shipping conditions</li>
+            <li><span class="key-term">Membrane casting batch consistency</span> &mdash; manufacturing controls to ensure lot-to-lot consistency of the filter membrane</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>「除菌」只是最低門檻：</strong></p>
+            <p>TR26 在這個小節傳達了一個非常重要的訊息：現代除菌級濾膜的角色早已超越「單純攔截微生物」。它必須同時滿足<strong>十三項</strong>品質與效能要求。這些要求可以分為四大類：</p>
+            <ul>
+                <li><strong>耐受性（Resistance）：</strong>蒸汽滅菌耐受、輻射照射耐受、機械強度</li>
+                <li><strong>產品兼容性（Product Compatibility）：</strong>低析出物、低非特異性吸附</li>
+                <li><strong>效能（Performance）：</strong>流量、處理量、完整性測試的可靠性</li>
+                <li><strong>品質體系（Quality System）：</strong>完整文件、製程驗證支援、出廠全數測試、運輸與有效期驗證、批次一致性</li>
+            </ul>
+            <p>這代表：選擇濾膜不只是看「能不能過濾」，而是一個<strong>涉及品質、法規、製程和商業</strong>的全方位決策。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>早期濾膜 vs 現代濾膜 = 早期手機 vs 現代智慧手機：</strong></p>
+            <p>早期的除菌濾膜就像早期的手機 &mdash; 只需要能「打電話」（攔截細菌）就好。但現代的除菌級濾膜就像智慧手機，除了基本通話功能，還要有相機（完整性測試）、GPS（文件追蹤）、防水（耐蒸汽滅菌）、強化玻璃（機械強度）、長電池壽命（有效期驗證）、穩定的作業系統更新（批次一致性）......</p>
+            <p>如果你今天去買手機，你會只看「能不能打電話」就做決定嗎？當然不會。同樣地，選擇除菌級濾膜時，你也不應該只看「能不能截留 B. diminuta」。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes &mdash; CDMO 選膜策略</h4>
+            <p><strong>對 CDMO 特別重要的幾項要求：</strong></p>
+            <ul>
+                <li><strong>Low Unspecific Adsorption（低非特異性吸附）：</strong>對於生物製劑（蛋白質藥物、抗體藥物），如果濾膜會「吃掉」產品中的活性成分，你的收率（Yield）就會下降。這直接影響成本和客戶滿意度。選擇低蛋白吸附的膜材（如 PES &mdash; Polyethersulfone）是關鍵。</li>
+                <li><strong>Minimal Extractables（最低析出物）：</strong>濾膜釋出的化學物質可能成為藥品的雜質。法規要求你必須知道析出物的種類和含量，並證明它們對產品和病人安全無害。</li>
+                <li><strong>100% Integrity Tested by Manufacturer：</strong>這代表每一支出廠的濾膜都經過完整性測試，沒有「漏網之魚」。這是 CDMO 最基本的供應商品質期望。</li>
+                <li><strong>Membrane Casting Batch Consistency（鑄膜批次一致性）：</strong>如果每批濾膜的品質不一致，你的過濾製程參數就需要不斷調整，增加了驗證負擔和風險。</li>
+            </ul>
+        </div>
+
+        <!-- NOTE BOX (Orange) - Decision Hierarchy -->
+        <div class="note-box">
+            <h4>決策層級連結 Decision Hierarchy</h4>
+            <p>選擇濾膜時，請記住 PDA 的優先順序：</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-1">1. Sterility Assurance（無菌保證）</div>
+                </div>
+                <div class="arrow-down">&darr;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-2">2. Product CQAs（產品關鍵品質屬性）</div>
+                </div>
+                <div class="arrow-down">&darr;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-3">3. Business &amp; Flexibility（商業與彈性）</div>
+                </div>
+            </div>
+            <p>例如：一支濾膜的流量很高（對商業效率有利），但蛋白質吸附也高（影響產品 CQA），你必須選擇犧牲流量以保全產品品質。而如果某濾膜很便宜但完整性測試不可靠，則無菌保證（最高優先）受到威脅，這種濾膜絕對不能用。</p>
+        </div>
+
+        <!-- FORMULA BOX (Purple) -->
+        <div class="formula-box">
+            <h4>公式與計算 Formula &mdash; 蛋白質吸附損失估算</h4>
+            <p>當評估 Low Unspecific Adsorption 時，一個簡單的估算：</p>
+            <pre>
+蛋白質損失量 = 吸附密度 (&micro;g/cm&sup2;) &times; 有效過濾面積 (cm&sup2;)
+
+範例：
+  吸附密度: 5 &micro;g/cm&sup2;（典型 PVDF 膜）
+  過濾面積: 13,000 cm&sup2;（10吋 cartridge filter）
+  損失量 = 5 &times; 13,000 = 65,000 &micro;g = 65 mg
+
+如果你的蛋白質藥物總量只有 500 mg：
+  損失率 = 65 / 500 = 13%
+
+若改用低吸附 PES 膜（吸附密度: 0.5 &micro;g/cm&sup2;）：
+  損失量 = 0.5 &times; 13,000 = 6,500 &micro;g = 6.5 mg
+  損失率 = 6.5 / 500 = 1.3%
+
+結論：膜材選擇可以讓蛋白質損失從 13% 降到 1.3%
+            </pre>
+        </div>
+
+        <!-- PRACTICE BOX - Application -->
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 供應商評估情境：</strong></p>
+            <p>你正在評估兩家濾膜供應商（A 和 B）。兩者都聲稱是 Sterilizing-Grade Filter，都通過了 ASTM F838。你應該用 Section 3.2 的十三項要求作為「評分卡」來比較：</p>
+            <ul>
+                <li>供應商 A 提供完整的 Extractables 報告和 Validation Guide，但只有主要產品線有輻射照射耐受數據</li>
+                <li>供應商 B 的價格便宜 15%，但沒有提供運輸驗證數據，且批次間的 Integrity Test 數值變異較大</li>
+            </ul>
+            <p>根據決策層級，供應商 B 的批次一致性問題可能影響無菌保證（最高優先），即使價格更有吸引力也應該謹慎評估。而供應商 A 的輻射照射數據缺口，如果你的製程不使用 gamma 照射滅菌的一次性系統，則可能不是致命缺陷。</p>
+        </div>
+
+        <!-- PRACTICE BOX (Blue dashed) -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 Section 3.2 列出的十三項要求中，哪三項你認為對 CDMO 營運最有直接的財務影響？為什麼？</li>
+                <li>「100% Integrity Tested by Manufacturer」意味著製造商對每一支濾膜都做了完整性測試。那為什麼使用者（CDMO）在使用前還需要再做一次 Pre-Use Post-Sterilization Integrity Test (PUPSIT)？</li>
+                <li>如果一家新的濾膜供應商只提供了 ASTM F838 測試報告，但缺少 Extractables 數據和 Transportation Validation 數據，你會建議你的品質部門採取什麼行動？</li>
+                <li>「Membrane Casting Batch Consistency」如果做得不好，會如何連鎖影響 CDMO 的製程驗證策略和日常操作？試列出至少三個可能的影響。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- SECTION SUMMARY                              -->
+<!-- ============================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>雙重截留機制：</strong>除菌過濾（Sterilizing Filtration）同時依賴 Size Exclusion（尺寸排除 &mdash; 表面篩除 + 深層截留）和 Adsorptive Sequestration（吸附截留）兩種機制。如同安檢門搭配便衣警察，二者缺一不可。</li>
+        <li><strong>海綿迷宮結構：</strong>除菌級濾膜的孔結構是海綿狀（sponge-like）的三維迷宮，而非簡單的圓柱形篩孔。這決定了「0.2 &micro;m」是一個功能性評級，而非精確的物理孔徑尺寸。</li>
+        <li><strong>截留是機率性的：</strong>因為微生物會生長、縮小、變形和分裂，截留效果受到壓差、流速、生物負荷、pH、離子強度等多種因素影響，因此是機率性（probabilistic）而非絕對性的。</li>
+        <li><strong>三大術語務必區分：</strong>「0.2 &micro;m Rated Filter」（最寬泛、可能模糊）、「Sterilizing-Grade Filter」（通過 ASTM F838 的濾膜本身聲明）、「Sterilizing Filter」（在特定應用中經過驗證的功能聲明）。從外到內，要求逐層遞增。</li>
+        <li><strong>通過標準測試 ≠ 保證無菌：</strong>ASTM F838 是「駕照考試」，通過了代表基本能力，但在你的具體「路況」（產品、製程條件）下能否安全駕駛，需要獨立的 Process Validation（製程驗證）。</li>
+        <li><strong>現代濾膜的十三項全方位要求：</strong>從蒸汽滅菌耐受、低析出物、低蛋白吸附，到出廠全數測試、批次一致性、運輸驗證，現代除菌級濾膜的選擇是涉及品質、法規、製程和商業的<strong>全方位決策</strong>。</li>
+        <li><strong>CDMO 核心啟示：</strong>絕對不能只看「0.2 &micro;m」標籤就做決定。完整的供應商評估、嚴謹的過濾驗證、以及對決策層級（無菌保證 > 產品 CQA > 商業彈性）的遵循，才是確保病人安全和法規合規的正確路徑。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

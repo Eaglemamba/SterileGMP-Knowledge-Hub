@@ -33,6 +33,20 @@ REPO_ROOT = Path(__file__).parent.resolve()
 KNOWLEDGE_DIR = REPO_ROOT / "knowledge"
 TEMPLATE_CSS = REPO_ROOT / "template.css"
 
+
+def _report_dir(report_id: str, config: dict):
+    """Return absolute folder path for a report (respects config['folder'])."""
+    return REPO_ROOT / config.get("folder", report_id)
+
+
+def _knowledge_subdir(config: dict):
+    """Return knowledge/<SOURCE>/ path based on config's folder field."""
+    folder = config.get("folder", "")
+    source = folder.split("/")[0] if "/" in folder else "PDA"
+    subdir = REPO_ROOT / "knowledge" / source
+    subdir.mkdir(parents=True, exist_ok=True)
+    return subdir
+
 # Import merge functions from merge_engine (still used for HTML merging)
 sys.path.insert(0, str(REPO_ROOT))
 from merge_engine import (
@@ -168,7 +182,7 @@ def _extract_tables_from_html(report_id: str, config: dict) -> dict:
     """
     from merge_engine import html_to_markdown
 
-    sections_dir = REPO_ROOT / report_id / "sections"
+    sections_dir = _report_dir(report_id, config) / "sections"
     if not sections_dir.exists():
         return {}, {}
 
@@ -271,7 +285,7 @@ def source_to_markdown(
     Tables are extracted from HTML sections (which have proper structure)
     and spliced into the source-text MD at matching table title locations.
     """
-    source_dir = REPO_ROOT / report_id / "source"
+    source_dir = _report_dir(report_id, config) / "source"
 
     # Extract properly formatted tables from HTML sections
     labeled_tables, tables_by_file = _extract_tables_from_html(report_id, config)
@@ -314,7 +328,7 @@ def source_to_markdown(
     # Pre-build HTML-stripped content per HTML file for equation fallback
     from merge_engine import html_to_markdown, _filter_original_only
     html_fallback_by_file = {}
-    sections_html_dir = REPO_ROOT / report_id / "sections"
+    sections_html_dir = _report_dir(report_id, config) / "sections"
     if sections_html_dir.exists():
         for entry in config.get("section_map", []):
             for fn in entry["files"]:
@@ -518,10 +532,10 @@ def generate_md_from_source(report_id: str, config: dict = None) -> Path:
     if config is None:
         config = load_config(report_id)
 
-    KNOWLEDGE_DIR.mkdir(exist_ok=True)
+    knowledge_dir = _knowledge_subdir(config)
 
     output_stem = config["output_filename"].replace(".html", "")
-    md_path = KNOWLEDGE_DIR / f"{output_stem}.md"
+    md_path = knowledge_dir / f"{output_stem}.md"
 
     md_content = source_to_markdown(report_id, config)
     if not md_content:
@@ -711,9 +725,9 @@ def generate_md_from_pdf(report_id: str, config: dict = None) -> Path:
     content = content.strip()
 
     # --- Write output ---
-    KNOWLEDGE_DIR.mkdir(exist_ok=True)
+    knowledge_dir = _knowledge_subdir(config)
     output_stem = config["output_filename"].replace(".html", "")
-    md_path = KNOWLEDGE_DIR / f"{output_stem}.md"
+    md_path = knowledge_dir / f"{output_stem}.md"
 
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(content)
@@ -722,7 +736,7 @@ def generate_md_from_pdf(report_id: str, config: dict = None) -> Path:
     pipe_rows = sum(1 for l in content.split('\n') if l.strip().startswith('|'))
     math_remaining = len(re.compile(r'[\U0001d400-\U0001d7ff]').findall(content))
     size_kb = md_path.stat().st_size / 1024
-    print(f"  [MD] {md_path.name} → knowledge/ ({size_kb:.1f} KB, {pipe_rows} table rows, {math_remaining} math chars)")
+    print(f"  [MD] {md_path.name} → knowledge/ ({size_kb:.1f} KB, {pipe_rows} table rows, {math_remaining} math chars, source={knowledge_dir.name})")
     return md_path
 
 
@@ -732,7 +746,9 @@ def generate_md_from_pdf(report_id: str, config: dict = None) -> Path:
 
 def cmd_scaffold(args):
     report_id = args.report_id
-    report_dir = REPO_ROOT / report_id
+    source = (getattr(args, "source", None) or "PDA").upper()
+    folder = f"{source}/{report_id}"
+    report_dir = REPO_ROOT / folder
 
     for sub in ["sections", "source", "output"]:
         (report_dir / sub).mkdir(parents=True, exist_ok=True)
@@ -754,7 +770,8 @@ def cmd_scaffold(args):
             "date": "",
             "title": "",
             "titleZh": "",
-            "source": f"PDA {report_id}",
+            "folder": folder,
+            "source": f"{source} {report_id}",
             "source_color": {"bg": "#f1f5f9", "text": "#475569", "bar": "#6b7280", "short": report_id},
             "tags": [],
             "summary": "",
@@ -767,7 +784,7 @@ def cmd_scaffold(args):
         data.setdefault("reports", {})[report_id] = skeleton
         with open(REPORTS_JSON, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print(f"  [OK] Added '{report_id}' skeleton to reports.json")
+        print(f"  [OK] Added '{report_id}' skeleton to reports.json (folder: {folder})")
 
     print(f"\n[SUCCESS] Scaffold created: {report_dir}/")
     print(f"\nNext steps:")
@@ -828,10 +845,10 @@ def _merge_one(report_id: str, config: dict):
         output_filename=config["output_filename"],
         footer_text=config.get("footer_text", ""),
         chapter_label=config.get("chapter_label", "Section"),
-        base_dir=str(REPO_ROOT / report_id),
+        base_dir=str(_report_dir(report_id, config)),
     )
     # Overwrite the HTML-stripped MD with source-text MD if source files exist
-    source_dir = REPO_ROOT / report_id / "source"
+    source_dir = _report_dir(report_id, config) / "source"
     txt_files = list(source_dir.glob("*.txt")) if source_dir.exists() else []
     if txt_files:
         print("  [MD] Regenerating from source text (overriding HTML-stripped version)...")
@@ -868,7 +885,8 @@ def main():
 
     # scaffold
     p_scaffold = sub.add_parser("scaffold", help="Create new report folder + config.json")
-    p_scaffold.add_argument("report_id", help="Report folder name (e.g., TR70)")
+    p_scaffold.add_argument("report_id", help="Report folder name (e.g., TR70, ISPE-Vol5)")
+    p_scaffold.add_argument("--source", default="PDA", help="Source prefix: PDA (default), ISPE, FDA, etc.")
 
     # md
     p_md = sub.add_parser("md", help="Generate knowledge MD from source text")

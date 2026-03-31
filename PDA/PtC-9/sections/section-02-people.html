@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-9 Section II: People — 人員管理</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Section II: People</h1>
+    <div class="subtitle">人員管理：COVID-19 大流行中的勞動力挑戰與應對</div>
+    <div class="page-info">PDA Points to Consider No. 9 (2024): Lessons Learned from the COVID-19 Pandemic &nbsp;|&nbsp; pp. 13–22 &nbsp;|&nbsp; Q2-1 to Q2-5</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解 COVID-19 大流行如何造成製藥業勞動力短缺，並掌握緩解短缺的具體策略（獎金、混合工作模式、疫苗要求）。</li>
+            <li>辨識製造場域中「關鍵員工（essential workers）」的角色定義，以及維持批次記錄審查與產品放行的人員需求。</li>
+            <li>熟悉工程控制（engineering controls）與行政控制（administrative controls）在降低職場傳染風險中的應用方式。</li>
+            <li>了解疫苗接種優先順序對製藥製造人員的意涵，以及公司如何在法規允許範圍內建立疫苗政策。</li>
+            <li>掌握後疫苗時代的人力資源政策調整，包括接觸追蹤（contact tracing）、隔離程序，以及對未接種員工的管理措施，並思考其對 TWi CDMO 業務持續計劃（BCP）的影響。</li>
+        </ul>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>本節問題索引</h3>
+        <div class="toc-grid">
+            <a href="#q2-1">Q2-1 勞動力短缺</a>
+            <a href="#q2-2">Q2-2 關鍵員工限制</a>
+            <a href="#q2-3">Q2-3 降低傳染風險</a>
+            <a href="#q2-4">Q2-4 疫苗優先順序</a>
+            <a href="#q2-5">Q2-5 後疫苗人事政策</a>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Q2-1: Workforce Shortage                              -->
+    <!-- ===================================================== -->
+    <div class="section-title" id="q2-1">
+        Q 2-1: How do we overcome the workforce shortage induced by COVID-19?
+        &nbsp;<span style="color:#4a5568;font-size:0.9rem;">/ 如何克服 COVID-19 引發的勞動力短缺？</span>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English text -->
+        <div class="left-column">
+            <h3>Background</h3>
+            <p>The pandemic created an unexpected and prolonged shortage of workers. This shortage occurred because companies were neither prepared or equipped to ensure that workers could return to a safe environment. The initial worker shortage continued through the pandemic due, in part, to the impact of <span class="key-term">unvaccinated essential workers</span> not being able to return to the workplace. Compounding this in some countries was government-augmented unemployment and housing benefits for workers, which created an economic driver for some vaccinated workers to delay their return to the workforce. The decreased availability of workers was largely also due to:</p>
+            <ul>
+                <li>Lack of available childcare causing parents to stay at home</li>
+                <li>People voluntarily leaving the workforce entirely</li>
+                <li>People going into early retirement</li>
+                <li>People choosing to move from an essential job to a nonessential job</li>
+            </ul>
+            <p>Low <span class="key-term">vaccination rates</span> lengthened the severity of the pandemic as virus mutations (e.g., Beta, Delta, and Omicron) developed and moved through the population. This phenomenon of <span class="key-term">vaccine hesitancy</span> was not limited to the United States but was also seen in many other countries where vaccines were available. In addition to the low vaccination rates, breakthrough infections of individuals who were vaccinated also resulted in a high infection rate and absence from work.</p>
+            <p>The pandemic has been emotionally challenging for many people and has changed many aspects of everyday life in unprecedented ways. One positive method to encourage employees and decrease worker shortages is to protect employees and create an atmosphere of safety. Companies began reimplementing certain aspects of their safety plans, such as wearing masks, social distancing, and frequent hand-sanitizing. Maintaining flexibility is important during transitional times while the right policies and support for workers are identified. Communicating with employees to ensure their needs are addressed is extremely important.</p>
+
+            <h3>Lessons Learned</h3>
+            <p>To reduce the level of pandemic-induced worker shortages, companies should have plans in place to minimize employee risk in the face of potential pandemics, not only for an initial outbreak but also for the recurring waves of a pandemic that might be expected. The external environment should then be continually evaluated to determine what specific steps need to be taken to minimize the risk to employees, such as returning to specific requirements, like wearing masks and social distancing, that were implemented during the initial wave of the pandemic and then relaxed as the initial wave subsided. Ensuring that workers feel safe in the workplace is essential to maintaining the workforce.</p>
+            <p>As needed, there are also other approaches that companies can use to entice workers to return, thus reducing worker shortages. One such approach is the use of <span class="key-term">special bonuses</span> to entice workers to return as well as to attract new employees to fill openings. To further encourage workers, companies should consider other added benefits such as more flexible <span class="key-term">work-from-home options</span> (hybrid models seem to be the most accepted in the industry when nonessential work can be done from home a few days a week), childcare funding, company cell phones, and college tuition assistance. These were all used effectively by various companies as the pandemic progressed.</p>
+            <p>Companies may require <span class="key-term">disclosure of employee vaccination status</span>, where allowed, to encourage workers to get vaccinated. In the United States, requiring the disclosure of COVID-19 vaccination status was allowed. Ultimately, companies may mandate that workers return to work or forfeit their employment if no remote work opportunities are available.</p>
+            <p>As a result of the worker shortages, companies began offering bonuses and other incentives to entice existing workers to return and to attract new workers during the pandemic. With the shift to remote working, it also created an opportunity for employees to change jobs for increased pay — many called this phenomenon <span class="key-term">"the great resignation."</span> Another form of enticement, once legally allowed, was a provision that permitted companies to mandate that workers be vaccinated and return to work or lose their employment. Some companies used a combination of requiring vaccination or weekly testing.</p>
+        </div>
+
+        <!-- RIGHT: Traditional Chinese commentary -->
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：勞動力短缺的多重根源</h4>
+                <p>COVID-19 造成的員工短缺並非單一原因，而是多重因素疊加：</p>
+                <ul>
+                    <li><strong>未接種者（unvaccinated essential workers）</strong>無法回到工作場所</li>
+                    <li>政府補貼延遲員工重返就業市場的意願</li>
+                    <li>托兒問題迫使家長留在家中</li>
+                    <li>大批員工選擇提前退休或轉換非關鍵職位</li>
+                </ul>
+                <p>對製藥 CDMO 而言，上述任何一項都可能導致關鍵生產線人手不足，直接衝擊批次完成率與交期。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明：「大辭職潮」的現實衝擊</h4>
+                <p>「大辭職潮（the great resignation）」就像一場人才市場的「地殼移動」——遠端工作的普及打破了地理限制，讓員工可以在不搬家的情況下跳槽到待遇更好的公司。對無塵室作業員這類必須實體到場的職位，這個現象雖然衝擊較小，但技術支援、品保審查等可遠端化的職位則損失嚴重。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：彈性工作模式的關鍵設計原則</h4>
+                <p>PDA 明確指出，業界最接受的方式是<strong>混合工作模式（hybrid model）</strong>：非關鍵性工作每週在家數天，關鍵性製造作業則必須到廠。</p>
+                <p>對 TWi 而言，以下職位屬於「必須到廠」類別：</p>
+                <ul>
+                    <li>無菌充填操作員</li>
+                    <li>環境監測（EM）執行人員</li>
+                    <li>設備清潔與滅菌人員</li>
+                    <li>批次記錄現場執行人員</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>疫苗接種揭露與 HIPAA 合規</h4>
+                <p>在美國，要求員工揭露疫苗接種狀況（vaccination status disclosure）並不違反 HIPAA，只要透過公司醫療人員或指定管道處理。這個原則在許多其他國家也類似適用，但需依當地法規確認。</p>
+                <p>TWi 行動建議：在下一次大流行發生前，預先確認台灣法規對疫苗狀況揭露的規定，並納入 BCP 人員政策中。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>TWi CDMO 情境思考</h4>
+                <p>假設明天出現新型呼吸道傳染病，TWi 的無菌充填線需要維持 70% 產能：</p>
+                <ul>
+                    <li>哪些職位是絕對必須到廠的關鍵員工？</li>
+                    <li>有哪些留任獎勵（retention bonus）方案可以快速啟動？</li>
+                    <li>遠端二次驗證（remote second-person verification）技術是否已備妥？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Q2-2: Essential Worker Restrictions                   -->
+    <!-- ===================================================== -->
+    <div class="section-title" id="q2-2">
+        Q 2-2: What restrictions should be considered for essential workers to ensure continued operation?
+        &nbsp;<span style="color:#4a5568;font-size:0.9rem;">/ 應對關鍵員工實施哪些限制以確保持續運作？</span>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English text -->
+        <div class="left-column">
+            <h3>Background</h3>
+            <p>At the start of the pandemic, few companies outlined what roles were considered <span class="key-term">essential for ensuring continued operations</span> or what actions should be taken to protect those individuals.</p>
+            <p>Disruptions caused some companies to lose weeks and even months of manufacturing productivity as operations were shut down, limiting the spread of the virus. Even companies manufacturing the vaccine, such as Pfizer and Moderna, announced a worker shortage and difficulty recruiting people in Boston, Massachusetts.</p>
+            <p>The lack of personnel created a strain on the activities required to support production and <span class="key-term">batch release</span> in the following areas:</p>
+            <ul>
+                <li>Lack of trained and qualified operators on the manufacturing lines</li>
+                <li>Lack of trained technical support for setup and changeover</li>
+                <li>Lack of qualified personnel for batch-records review</li>
+            </ul>
+            <p>Without the required personnel, the operations will be interrupted and items like changeovers, technical support, and batch disposition cannot be provided or performed. Additionally, batch records cannot be reviewed, manufacturing processes are interrupted, product testing will not be completed, and product is held in the warehouse and cannot be released.</p>
+
+            <h3>Lessons Learned</h3>
+            <p>To prevent a strain on activities supporting production and batch release, sites must be ready to quickly apply new approved technologies (e.g., cameras to replace second-person verifications, implementation of <span class="key-term">electronic signatures</span> for approval of batch records, <span class="key-term">augmented reality (AR) glasses</span> or handheld devices for problem-solving on the line). New technologies, such as cameras and AR glasses, can support manufacturing-line operations by reducing the number of staff who need to be physically at the factory. The qualified personnel can provide instructions remotely. The remote support could be used for such functions as line clearance, second-person approval, and on-the-job training. Dispensing of raw materials can be performed by having the second operator perform the verification remotely. A risk assessment would define what activities can be performed remotely and what activities cannot.</p>
+            <p>Automation of dispensing and filling lines can continue to be performed with a very limited number of resources on site and can ensure continued manufacturing using these principles.</p>
+            <p>Additionally, companies should have plans in place that outline and define what roles are considered essential for manufacturing operations. The plan should outline the emergency procedures to be implemented to protect those essential workers and account for any possible governmentally mandated regulations. While the exact characteristics of the infectious agent and its mode of transmission may not be known with all certainty, common-sense measures should be put in place, such as:</p>
+            <ul>
+                <li>Use of face coverings (if not already in place) in GMP areas</li>
+                <li>Increased cleaning of facilities and equipment</li>
+                <li>Nonessential workers working remotely</li>
+                <li>Cafeteria, conference rooms, and other common areas closed, or the number of personnel allowed to be present restricted</li>
+            </ul>
+            <p>A review of how essential workers <span class="key-term">commute to work</span> should be evaluated. Where the normal mode of transportation is via mass transportation (e.g., trains, buses, subways) or carpools, alternative modes of transportation to reduce the chance of workers being exposed should be considered. Plans to provide written documentation for employees to keep on their person for transit should be in place to comply with local, state, and federal requirements.</p>
+            <p>Consideration should be given to scheduling groups of employees in <span class="key-term">shifts or units (cohorting)</span> — having a defined group of people working together, while the other group is working from home and vice versa. If the shifts or units remain unchanged, the risk of the entire team being impacted is reduced. Personnel movement should be restricted to specific buildings or areas to minimize the possibility of a <span class="key-term">super-spreader event</span> occurring.</p>
+            <p>Social distancing, visual cues of vaccination status, floor markers for the flow of personnel, and distance between individuals, should be implemented. If possible, electronic proximity detectors should be used to alert individuals when they are too close to one another. Physical barriers, such as plexiglass, should be installed to minimize exposure between individuals. Additionally, the speed of programs to screen workers on site should be established quickly (e.g., temperature, contact-tracing, quarantine requirements, daily health questionnaires).</p>
+        </div>
+
+        <!-- RIGHT: Traditional Chinese commentary -->
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：關鍵員工的定義與分層</h4>
+                <p>在製藥製造中，「關鍵員工（essential workers）」是指那些工作性質無法遠端執行、缺席將直接中斷生產或產品放行的人員。具體包括：</p>
+                <ul>
+                    <li>製造線操作員（充填、凍乾）</li>
+                    <li>設備設定（setup）與換型（changeover）技術人員</li>
+                    <li>品管實驗室測試人員</li>
+                    <li>批次記錄（batch records）審查與授權放行人員（Qualified Person）</li>
+                    <li>倉儲與出貨人員</li>
+                </ul>
+                <p>缺少任何一個環節，整條生產鏈都可能停頓，造成產品積壓於倉庫無法放行。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明：分組隔離 (Cohorting) 像「足球隊輪替制」</h4>
+                <p>想像一支足球隊把球員分成 A、B 兩組——A 組上場時，B 組完全隔離待命；若 A 組有人確診，B 組立刻頂替，比賽繼續。這就是 Cohorting（分組制）的核心邏輯：透過固定小組隔離，確保即使一個組別全數隔離，另一組仍可支撐生產線。</p>
+                <p>對 TWi 的無菌充填線而言，這意味著 A Shift 與 B Shift 的人員應避免在休息室、更衣室等非生產區域交叉接觸。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：遠端二次驗證的法規考量</h4>
+                <p>PDA 提出可以用攝影機與 AR 眼鏡取代部分「二人確認（second-person verification）」的實體在場要求。然而在無菌製造中，這些替代方案需要：</p>
+                <ul>
+                    <li>事先進行<strong>風險評估（risk assessment）</strong>，明確界定哪些活動可遠端、哪些不行</li>
+                    <li>更新 SOP 並取得相關監管當局的認可（視稽核要求而定）</li>
+                    <li>電子簽章系統需符合 21 CFR Part 11 要求</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>通勤安全與員工通行文件</h4>
+                <p>許多國家在大流行期間實施了行動管制，製造場所的關鍵員工需持有<strong>通行文件（transit documentation）</strong>才能正常上班。公司應預先準備標準化證明文件範本，說明員工屬於關鍵產業人員，以符合政府管制規定。</p>
+                <p>TWi 行動建議：在 BCP 文件中預備一份中英文「關鍵員工通行證明」範本，並取得主管機關（衛福部/工業局）的預先確認程序。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>TWi CDMO 情境思考</h4>
+                <p>若 TWi 某充填線的操作員確診，觸發 Cohorting 計劃：</p>
+                <ul>
+                    <li>備用小組（B 班）能在多少小時內完成換班並恢復生產？</li>
+                    <li>批次記錄審查人員能否使用電子簽章系統遠端完成批次放行？</li>
+                    <li>AR 輔助或攝影機設備是否已完成 IQ/OQ 驗證並可即時啟用？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Q2-3: Minimizing Contagion Risk                       -->
+    <!-- ===================================================== -->
+    <div class="section-title" id="q2-3">
+        Q 2-3: What actions can be taken to minimize the risk of spreading contagions in the workplace?
+        &nbsp;<span style="color:#4a5568;font-size:0.9rem;">/ 如何降低職場中傳播傳染病的風險？</span>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English text -->
+        <div class="left-column">
+            <h3>Background</h3>
+            <p>At the onset of the pandemic, the steps taken to minimize the spread of infection varied regionally. Companies referred to the guidance from public officials, world regulatory authorities, and regional health departments in an attempt to minimize the spread of COVID-19. In many cases, workplaces were temporarily closed, or the occupancy was limited to try and slow the spread of the infection in the population. Some companies also limited the operations to only <span class="key-term">essential workers</span>, with supporting personnel working from home.</p>
+            <p>Some workers were classified as "essential" to the continuation of critical functions for society, and thus were required to be physically present to conduct business activities. Individuals with functions directly related to the manufacturing, testing, warehousing, and distribution of critical supplies, such as medicines, medical treatments, and medical supplies (including raw materials and test reagents), were classified in this way and continued to enter the workplace throughout the pandemic.</p>
+
+            <h3>Lessons Learned — Engineering Controls</h3>
+            <p>Manufacturers of pharmaceutical and medical-device products already have robust contamination controls in place for their manufacturing areas. These controls (e.g., gowning, high airflow and exchange, documented cleaning, disinfection programs) are already effective strategies to reduce the risk of spreading contaminants in the manufacturing area. A greater risk of transmission is in the office space and other communal areas, where controls are not commonly in place.</p>
+            <p><span class="key-term">Engineering Controls</span> include:</p>
+            <ul>
+                <li>Modify seat or workstation placement</li>
+                <li>Construct physical separations, such as plexiglass partitions</li>
+                <li>Install floor markers for flow of personnel with the required distancing between individuals</li>
+                <li>Close or impose restrictions on cafeterias, common areas, and conference rooms</li>
+                <li>Mandate the use of <span class="key-term">electronic proximity detectors</span> to alert individuals when they are too close to one another</li>
+                <li>Disinfect shared filing or storage spaces between uses</li>
+                <li>Replace high-touch communal items with prepackaged single servings</li>
+                <li>Improve ventilation in the building and consider air-filtration systems</li>
+                <li>Consider local filtration systems where the HVAC system cannot be improved</li>
+                <li>Ensure that adequate ventilation, air changes, and appropriate filtration can be used during the design of new facilities or those being renovated</li>
+                <li>Open windows frequently in office spaces and keep doors open in office spaces without windows</li>
+            </ul>
+
+            <h3>Lessons Learned — Administrative Controls</h3>
+            <p><span class="key-term">Administrative Controls</span> include:</p>
+            <ul>
+                <li>Mandate face coverings</li>
+                <li>Require staff to stay home if they or a family member are ill; consider requiring testing before a return to site is permitted</li>
+                <li>Limit maximum occupancy in common areas such as breakrooms</li>
+                <li>Add additional shifts or stagger shifts, start times, and break times to reduce worker density</li>
+                <li>Restrict personnel movement to specific buildings or areas and/or segregate working groups</li>
+                <li>Reassign personnel to minimize movement between buildings or areas</li>
+                <li>Provide personnel training on correct masking, hand sanitization, and social distancing</li>
+                <li>Implement programs to screen workers upon entering the site (e.g., temperature check, <span class="key-term">PCR</span> or antigen, and completion of daily health questionnaires)</li>
+                <li>Establish infection notification, <span class="key-term">contact-tracing</span>, and quarantine requirements</li>
+                <li>Institute a cleaning and disinfection program for common areas and office areas</li>
+                <li>Clean daily high-touch surfaces, such as door handles, desks, light switches, faucets, toilets, workstations, keyboards, telephones, handrails, printer/copier machines, and drinking fountains</li>
+                <li>Post instructions and reminders at entrances and strategic places in the building on masking, hand sanitization, and cough-and-sneeze etiquette</li>
+            </ul>
+            <p>Consideration should also be given to sanitation concerns, such as hand hygiene and surface disinfection. Hand-hygiene stations should be placed at the entry and exits of high-traffic areas and in communal areas.</p>
+            <p>The cleaning and disinfection of communal areas and workspace surfaces should be reviewed to ensure that it is adequate and effective against contagions of concern. The frequency of disinfection should be based on risk. <span class="key-term">Proof of cleaning</span> and disinfection of common areas, workstations, and desks should be made evident with use of status cards or color indicators.</p>
+            <p>Having a cleaning and disinfectant program in place is not enough. The products used should be <span class="key-term">efficacious</span>. As the SARS-CoV-2 was a novel virus, none of the biocides on the market had label claims for efficacy against the virus at the beginning of the pandemic. However, the U.S. EPA issued a list (List N) of all products that the agency expected to kill the SARS-CoV-2 coronavirus when used in accordance with label directions.</p>
+            <p>Requiring <span class="key-term">nonessential-worker vaccination</span> was not commonly considered by companies until the COVID-19 vaccines were made widely available. Before allowing workers to physically return to the workplace, it is recommended that the vaccine status of employees is cataloged for business continuity and safety purposes.</p>
+            <p>Employees and companies may prefer a <span class="key-term">staggered return to work</span>. This can be achieved by surveying employees on when and how they would like to return to the workplace setting.</p>
+        </div>
+
+        <!-- RIGHT: Traditional Chinese commentary -->
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：工程控制 vs. 行政控制</h4>
+                <p>職業安全框架將風險控制分為兩大類：</p>
+                <ul>
+                    <li><strong>工程控制（Engineering Controls）</strong>：改變物理環境本身，如隔板、通風系統、地板標線。效果較為恆久，不依賴人員行為。</li>
+                    <li><strong>行政控制（Administrative Controls）</strong>：通過政策、程序和培訓來管理人員行為，如口罩要求、健康問卷、接觸追蹤。</li>
+                </ul>
+                <p>兩者需要配合使用。製藥廠的 GMP 區域已有較完善的工程控制（潔淨室正壓、更衣程序），但辦公區、更衣室、餐廳等非 GMP 區域則是主要漏洞。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明：辦公區是「防疫的阿基里斯腱」</h4>
+                <p>製藥廠的無塵室就像一個已有嚴密防護的「堡壘」，但休息室、更衣間、停車場卻是沒有護城河的「開放地帶」。大部分的院內群聚感染（super-spreader events）都發生在非生產區，而非生產線本身。因此，工程控制必須延伸到整個廠區，不能只聚焦在 GMP 區域。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：消毒劑選擇的科學依據</h4>
+                <p>SARS-CoV-2 出現初期，市面上沒有任何消毒劑有針對該病毒的標籤聲明（label claim）。美國 EPA 透過<strong>名單 N（List N）</strong>發布了預期有效的產品清單，作為過渡指引。</p>
+                <p>這個經驗告訴我們：未來面對新型病原體時，應預先建立「消毒劑快速評估程序」，參考 EPA List N 類似機制，而不是等待正式標籤驗證。</p>
+                <p>對 TWi 而言，現有 GMP 消毒劑計劃（如 Sporicidin、IPA 70%）若面對新型病毒，需要快速查驗其對 enveloped viruses 的廣效性。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>接觸追蹤（Contact Tracing）的關鍵要素</h4>
+                <p>有效的接觸追蹤系統需要：</p>
+                <ul>
+                    <li>精確記錄每位員工每日進入哪些區域（門禁紀錄）</li>
+                    <li>定義「高風險接觸」的距離與時間閾值（通常為 15 分鐘以內、1.5 公尺以內）</li>
+                    <li>確診通報後 24 小時內完成追蹤通知</li>
+                    <li>建立隔離期間的臨時人力替補機制</li>
+                </ul>
+                <p>電子近距偵測器（proximity detectors）可大幅提升追蹤精準度，但需考量員工隱私接受度。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>TWi CDMO 應用清單</h4>
+                <p>TWi 廠區的防疫工程控制優先盤點項目：</p>
+                <ul>
+                    <li>更衣室（gowning room）容量限制是否已明確規定人數上限？</li>
+                    <li>非 GMP 區域（辦公室、餐廳）的通風換氣率（ACH）是否符合建議標準？</li>
+                    <li>進廠健康問卷是否已電子化，可快速擴展為每日必填？</li>
+                    <li>「清潔完成」狀態指示卡是否已規範化使用於公共區域？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Q2-4: Vaccine Priority                                -->
+    <!-- ===================================================== -->
+    <div class="section-title" id="q2-4">
+        Q 2-4: Who gets the vaccine first?
+        &nbsp;<span style="color:#4a5568;font-size:0.9rem;">/ 誰應該優先接種疫苗？</span>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English text -->
+        <div class="left-column">
+            <h3>Background</h3>
+            <p>As the first vaccines were developed and approved for <span class="key-term">emergency use</span>, the number of doses available were limited. The question of who should receive the first doses was a topic of great discussion and debate. After health care workers and those at greatest risk, such as the elderly in long-term care facilities, came <span class="key-term">essential workers</span> and those over 65. It was not clear during the vaccine roll-out exactly where <span class="key-term">pharmaceutical manufacturing personnel</span> stood in regard to their priority in receiving the vaccine.</p>
+
+            <h3>Lessons Learned</h3>
+            <p>As the continued supply of pharmaceutical products is critical, it is important that the pharmaceutical industry workers within the manufacturing facility who are directly supporting the manufacturing floor operations and whose jobs cannot be performed remotely should be on the list to receive the vaccine early, and they should be the first vaccinated within the company based on their importance to the manufacturing operations.</p>
+            <p>The line of workers that comprise manufacturing-floor operations should include:</p>
+            <ul>
+                <li>The technicians directly performing testing of the products</li>
+                <li>The warehousing and shipping personnel responsible for moving and shipping the product</li>
+                <li>Other individuals who must be present for the product to be produced, released, and shipped</li>
+            </ul>
+            <p>These workers are essential to ensure product supply. Companies should have plans in place to quickly identify these individuals in the event of another pandemic.</p>
+        </div>
+
+        <!-- RIGHT: Traditional Chinese commentary -->
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：製藥人員的疫苗優先權論據</h4>
+                <p>在 COVID-19 疫情初期，疫苗優先接種順序通常是：</p>
+                <ol>
+                    <li>醫護人員（最高風險暴露）</li>
+                    <li>長照機構老人（最高死亡風險）</li>
+                    <li>65 歲以上一般民眾</li>
+                    <li>關鍵基礎設施員工（essential workers）</li>
+                </ol>
+                <p>製藥製造人員雖然不直接接觸病患，但其重要性在於：他們生產的是維持全體社會生命的藥品，一旦產線停擺，影響的是所有需要用藥的患者。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明：製藥廠就像「彈藥工廠」</h4>
+                <p>在二戰時期，軍火工廠的工人雖然不上前線，卻是整個戰爭勝利的關鍵後盾。製藥廠的無菌充填操作員也是如此——他們不在加護病房，但他們生產的注射劑卻讓加護病房能夠運作。因此，這群人理應在疫苗分配中獲得等同於關鍵基礎設施人員的優先權。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：提前建立「優先接種名單」</h4>
+                <p>PDA 的建議是：<strong>在下一次大流行發生前，公司應預先建立一份「關鍵製造人員優先接種名單」</strong>，以便在疫苗開始分配時能夠快速提報政府機關，爭取優先取得疫苗劑量。</p>
+                <p>名單設計原則：</p>
+                <ul>
+                    <li>以「工作性質是否可遠端執行」作為納入標準</li>
+                    <li>包含直接生產、測試、倉儲、出貨人員</li>
+                    <li>排除可居家辦公的行政、財務、業務人員（除非有特殊情況）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>TWi CDMO 行動建議</h4>
+                <p>建議 TWi 在 BCP 文件中新增「關鍵製造人員疫苗優先名單」附件，並定期（每年）更新。名單應包含：姓名、職稱、工作性質說明（無法遠端執行的理由），並由 HR 與製造主管共同簽核。</p>
+                <p>此名單未來可直接提供給衛生主管機關（如疾管署）作為優先疫苗分配的依據。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Q2-5: HR Policy Post-Vaccine                          -->
+    <!-- ===================================================== -->
+    <div class="section-title" id="q2-5">
+        Q 2-5: How do safety and human resource policies change after a vaccine is readily available?
+        &nbsp;<span style="color:#4a5568;font-size:0.9rem;">/ 疫苗普及後安全與人事政策如何調整？</span>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original English text -->
+        <div class="left-column">
+            <h3>Background</h3>
+            <p>As the pandemic progressed and vaccines became widely available, a significant percentage of the population refused to receive the vaccination. There were multiple underlying reasons for this, among them, religious beliefs, general fear of vaccinations, and fears specific to the COVID-19 vaccine due to the lack of long-term clinical data. Compounding these challenges was a preexisting and active <span class="key-term">anti-vaccination movement</span> that caused many individuals to avoid receiving the vaccine based on incorrect safety information. A strain on the availability of vaccinated employees resulted.</p>
+            <p>Because the COVID-19 virus is highly infectious, the percentage of the population required to obtain <span class="key-term">herd immunity</span> to the virus would be expected to be very high. Adding to the percentage required to achieve this is the question of the vaccine's protection against infection over time as well as the potential of reinfection over time. Based on these factors, governments have taken the unusual step of allowing employers to request the vaccination status of workers, apply restrictions and, in some countries, require vaccinations as a term of continued employment.</p>
+            <p>For many, this was a paradigm shift and a significant change in expectations between employers and employees.</p>
+
+            <h3>Lessons Learned</h3>
+            <p>When on-site workers or visitors test positive for SARS-CoV-2, certain preventive measures need to take place. It is important to have processes in place for <span class="key-term">contact-tracing</span> to let other employees know that they have been in contact with this individual, that they are at risk, and that they need to quarantine as well. The infected person should stay at home until they are no longer infectious. The duration may vary depending on the strain. Companies should follow the quarantine durations established by their <span class="key-term">public health authorities</span>.</p>
+            <p>The work area where this person was located needs to be cleaned and disinfected with an effective disinfectant. People identified through contact-tracing may need to provide a negative COVID-19 test result prior to returning to work. Personnel should be trained on masking, hand sanitization, and social distancing to lower the risk of future outbreaks and potential super-spreader events.</p>
+            <p>Companies should put processes in place where legally permitted to restrict the access to individuals (employees and visitors) who have not been vaccinated. For employees who have chosen not to receive the vaccination, companies should consider requiring a <span class="key-term">PCR or antigen test</span> no older than 48 or 72 hours to be shown or, in some cases, should seek to replace them with employees who have been vaccinated. The vaccination status of all employees and visitors should be verified, and the records of the verification should be kept on file. Any exceptions should be rare and specific restrictions should be applied.</p>
+        </div>
+
+        <!-- RIGHT: Traditional Chinese commentary -->
+        <div class="right-column">
+            <h3>中文解析</h3>
+
+            <div class="concept-box">
+                <h4>核心概念：疫苗猶豫（Vaccine Hesitancy）對製造業的衝擊</h4>
+                <p>疫苗猶豫現象在 COVID-19 期間呈現多種面貌：宗教信仰反對、對新型 mRNA 疫苗缺乏長期安全數據的顧慮，以及反疫苗運動的推波助瀾。在製藥製造場所中，這直接轉化為「有接種意願的員工不足以維持分組（cohorting）安全邊際」的問題。</p>
+                <p><strong>群體免疫（herd immunity）</strong>的達成需要高接種率，加上突破性感染（breakthrough infections）的存在，使得即便在大多數員工已接種後，仍需維持一定程度的非藥物介入措施（口罩、社交距離）。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明：PCR 測試作為「替代通行證」</h4>
+                <p>對於選擇不接種疫苗的員工，要求提供 48-72 小時內的陰性 PCR 或快篩結果，就像強制要求非持照駕駛人每次開車前通過路考——這是一種<strong>以持續驗證代替資格認定</strong>的管理機制。</p>
+                <p>這個設計承認了個人選擇權，但同時保護了整個職場的集體安全，在合法範圍內取得平衡。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：確診後的標準作業流程</h4>
+                <p>PDA 建議的確診處理程序包含：</p>
+                <ol>
+                    <li><strong>立即隔離</strong>：確診者居家隔離至不具傳染性（時間依病毒株而定，遵循當地衛生機關指引）</li>
+                    <li><strong>接觸追蹤</strong>：通知所有密切接觸者，要求進行篩檢與預防性隔離</li>
+                    <li><strong>區域消毒</strong>：使用有效消毒劑對確診者工作區域進行徹底消毒</li>
+                    <li><strong>復工條件</strong>：被隔離者需提供陰性報告方可返廠</li>
+                    <li><strong>記錄留存</strong>：所有疫苗接種驗證記錄、接觸追蹤記錄需妥善保存備查</li>
+                </ol>
+            </div>
+
+            <div class="concept-box">
+                <h4>雇主疫苗政策的法律邊界</h4>
+                <p>PDA 指出，在多數國家，雇主有權：</p>
+                <ul>
+                    <li>要求員工<strong>揭露接種狀態</strong>（不違反隱私法，因係透過公司醫療管道）</li>
+                    <li>要求未接種員工提交<strong>定期陰性測試</strong>作為到廠條件</li>
+                    <li>在部分國家，甚至可將疫苗接種列為繼續聘用的條件</li>
+                </ul>
+                <p>台灣的法律框架與美國有所不同，TWi HR 需與法律顧問確認在未來大流行期間可採取的政策邊界。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>TWi CDMO BCP 政策建議</h4>
+                <p>建議在下次大流行前，TWi 完成以下 HR 政策預備：</p>
+                <ul>
+                    <li>制定「疫苗狀態記錄與管理辦法」（含保存期限、資料保護條款）</li>
+                    <li>建立「員工確診通報 SOP」：含接觸追蹤時限、隔離通知模板、復工條件</li>
+                    <li>規劃未接種員工的「替代性篩檢方案」（頻率、費用承擔方式）</li>
+                    <li>確認訪客管理系統是否可記錄疫苗或篩檢狀態，作為進廠條件</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION SUMMARY                                        -->
+    <!-- ===================================================== -->
+    <div class="section-title">
+        Section II Summary — 章節總結
+    </div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Key Lessons from Section II: People</h3>
+            <p>Section II addresses one of the most challenging dimensions of pandemic response: managing the human workforce in a critical manufacturing environment. The five questions collectively reveal that workforce disruption was not just about illness — it was amplified by psychological, economic, logistical, and policy factors at every level.</p>
+            <p><strong>Core takeaways:</strong></p>
+            <ul>
+                <li><strong>Q2-1:</strong> Workforce shortages are multi-causal and require layered responses — from bonuses and hybrid work to vaccination mandates. Worker safety perception is fundamental to retention.</li>
+                <li><strong>Q2-2:</strong> Companies must pre-define essential roles and have documented cohorting, remote verification, and commute-safety protocols ready before a crisis hits.</li>
+                <li><strong>Q2-3:</strong> Office and communal areas are the primary contagion risk in pharma facilities. Engineering and administrative controls must cover the entire site, not just GMP areas.</li>
+                <li><strong>Q2-4:</strong> Pharmaceutical manufacturing staff should be proactively positioned on government priority vaccine lists, with companies maintaining updated critical-role registries.</li>
+                <li><strong>Q2-5:</strong> Post-vaccine HR policies must include contact-tracing SOP, testing alternatives for non-vaccinated staff, and legally-compliant vaccination status record-keeping.</li>
+            </ul>
+            <p>The overarching message: <em>preparation before the next pandemic is the only effective strategy.</em> Reactive measures during a crisis are too slow for an aseptic manufacturing environment where every day of downtime has patient safety implications.</p>
+        </div>
+
+        <div class="right-column">
+            <h3>TWi CDMO BCP 整合行動清單</h3>
+
+            <div class="concept-box">
+                <h4>立即可行（建議 Q2 2026 前完成）</h4>
+                <ul>
+                    <li>完成「關鍵員工（Essential Workers）」職位清單，納入 BCP 主文件</li>
+                    <li>建立 Cohorting 分組計劃草案（A/B 班隔離原則、換班 SOP）</li>
+                    <li>盤點辦公區、更衣室、餐廳的工程控制缺口（通風、人流動線）</li>
+                    <li>確認電子簽章系統（21 CFR Part 11）現況，評估批次記錄遠端審查可行性</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>中期規劃（6-12 個月）</h4>
+                <ul>
+                    <li>制定「疫苗狀態管理辦法」與員工確診通報 SOP</li>
+                    <li>準備「關鍵員工通行證明」中英文範本，並確認政府預先溝通管道</li>
+                    <li>評估 AR 輔助設備或遠端攝影機方案的驗證可行性（IQ/OQ 計劃）</li>
+                    <li>更新消毒劑驗證策略，建立「新型病原體快速評估程序」</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>PtC-9 Section II 的最終啟示</h4>
+                <p>COVID-19 讓整個製藥業體認到一個事實：<strong>人員管理才是業務持續計劃中最脆弱的環節</strong>。技術、設備、SOP 都可以應急調整，但人員短缺一旦發生，任何應急措施都是亡羊補牢。</p>
+                <p>TWi 作為 CDMO，不只要保護自己的生產線，更要向客戶展示我們有完整的疫情人員連續性方案——這本身就是商業競爭力的一部分。</p>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 9 (2024): Lessons Learned from the COVID-19 Pandemic</p>
+    <p>Section II: People — pp. 13–22</p>
+    <p style="opacity:0.6;font-size:0.8rem;margin-top:0.5rem;">Licensed to Kuo, Li-Hung / TWi Pharmaceuticals Inc. — Educational Use Only</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back-to-top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

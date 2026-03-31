@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TR88 Section 4b — Phase I: Specific Test Investigations</title>
+<style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SECTION-SPECIFIC: Summary gradient ===== */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border: 1px solid #f6ad55;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.section-summary h3 {
+    color: #92400e;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f6ad55;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 88 (2022)</h1>
+    <div class="subtitle">Microbial Data Deviation Investigations in the Pharmaceutical Industry</div>
+    <div class="subtitle">Section 4b &mdash; Phase I: Specific Test Investigations</div>
+    <div class="page-info">Coverage: 4.2.2 BET &middot; 4.2.3 AET &middot; 4.2.4 Mycoplasma &middot; 4.2.5 Biological Indicators &middot; 4.2.6 Media Fills &middot; 4.2.7 EM &middot; 4.2.8 Utilities &middot; 4.3 Phase I Conclusion &nbsp;|&nbsp; pp. 16&ndash;26</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解細菌內毒素試驗（BET）作為酵素促進反應（而非微生物生長試驗）的獨特失效模式，包括 pH 敏感性、抑制/增強效應，以及 USP &lt;85&gt; 所要求的關鍵對照組。</li>
+            <li>掌握抗菌效能試驗（AET，USP &lt;51&gt;）偏差調查的核心要素：接種菌品質、保存劑濃度、培養條件與計數計算的完整性。</li>
+            <li>認識黴漿菌（Mycoplasma）試驗的特殊性——其對標準培養基無反應、依賴 PCR 或細胞指示劑試驗，並了解 OOS 結果的確認流程。</li>
+            <li>區分生物指示劑（BI）失敗與產品非無菌之間的差異，並能從 D 值與 Z 值的角度評估滅菌循環是否充分。</li>
+            <li>熟悉 Phase I 調查的三種可能結論（無效試驗 / 不確定 / 確認偏差），並清楚各結論對後續 Phase II 調查的啟動條件。</li>
+        </ol>
+    </div>
+
+    <!-- ===== 4.2.2 BET ===== -->
+    <div class="section-title">4.2.2 Bacterial Endotoxins Testing (BET) Investigations &mdash; 細菌內毒素試驗調查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.2 Bacterial Endotoxins Testing Investigations</h3>
+            <p>Compendial <span class="key-term">bacterial endotoxins testing (BET)</span> detect and/or quantify lipopolysaccharide cell membrane components derived from the outer-cell membrane of Gram-negative bacteria that are most commonly responsible for human pyrogenic responses. This method is more comparable to chemical assay than to the traditional methods used for the detection and enumeration of microorganisms in pharmaceuticals, biopharmaceuticals, and medical devices. For this reason, the enzyme cascade-based <span class="key-term">Limulus amoebocyte lysate (LAL)</span> BET has unique analytical requirements that may affect the reliability of the test results. <span class="key-term">USP &lt;85&gt;</span> Bacterial Endotoxin Tests describes the procedures for performing both the <span class="key-term">gel clot</span> and <span class="key-term">spectrophotometric methods</span> for detecting and quantifying bacterial endotoxins. Because the methods are based on enzymatic components and principles, incubation conditions (e.g., temperature and time) are important, and laboratory analysts should have a technical understanding of the potential <span class="key-term">inhibition and enhancement</span> of the product matrix on the product/lysate mixture. Another critical factor is the measurement and, if necessary, the adjustment of the product&ndash;lysate mixture to fall within the required <span class="key-term">pH range</span> as stated in the lysate instructions for use. If the pH is not within the specified range, the endotoxin test results can be significantly altered from the true results (usually lower). Therefore, it is important that analysts understand the details of the compendial test and are trained to recognize how changes in the procedures may cause erroneous results is imperative (14). Section 4.2.2 describes general approaches for investigating BET deviations and provides guidance and references that contain detailed protocols on how to conduct investigations.</p>
+            <p>A deviation may be due to one of the following from a partial list of reasons:</p>
+            <ul>
+                <li>Error during product dilution (excessive volume transfer during serial dilution preparation), incorrect volume (too little or too much) during reagent rehydration, misplacement of handled test tubes causing a <span class="key-term">control standard endotoxin (CSE)</span> serial dilution for positive control preparation and inhibition and enhancement results to be incorrect, mislabeling of test tubes, or a test tube mix-up between product and CSE serial dilutions</li>
+                <li>CSE cross-contamination caused by pipette tips (or pipets) used repeatedly</li>
+                <li>Automated pipettors or bulbs contaminated with aspirated endotoxin solution because of improper use or not being cleaned routinely</li>
+                <li>Working on a lab bench with a nearby splash sink that creates water aerosols (tap water commonly contaminated with Gram-negative bacteria)</li>
+                <li>Analyst not performing the test according to the prescribed method</li>
+                <li>Reagent(s) or equipment not adequately depyrogenated or not handled aseptically with pyrogen-free water</li>
+                <li>Unexpected occurrence during the analysis that interrupted the completion of the gel clot (e.g., table vibration from draw closure or fan vibration in air-circulating stand-up incubators)</li>
+                <li><span class="key-term">Glucans</span>, at high enough concentrations, present in the test material may cause false positives</li>
+                <li>Contaminated water baths used for incubation of gel clot test tubes</li>
+            </ul>
+            <p>Section 4.2.2.1 compiles a number of factors important to BET that, if not performed correctly, may culminate in a faulty analysis.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：BET 是化學分析，不是微生物生長試驗</h4>
+                <p>BET 的本質是偵測內毒素這種<strong>化學物質</strong>（脂多醣，LPS），而非偵測活菌。LAL 反應是一套酵素串聯反應（enzyme cascade）：內毒素活化 Factor C，後者活化 Factor B，最終裂解凝固蛋白（coagulogen）形成凝膠或改變光吸收值。</p>
+                <p>這意味著試驗的失效模式與培養法完全不同——不是「菌沒長出來」的問題，而是「酵素反應被干擾了」的問題。</p>
+                <ul>
+                    <li><strong>pH 敏感性</strong>：LAL 反應要求 pH 6.0&ndash;8.0；偏酸偏鹼均會使結果偏低（假陰性）</li>
+                    <li><strong>抑制效應</strong>：產品基質中的蛋白質、界面活性劑、螯合劑（EDTA）可能抑制 LAL 酵素</li>
+                    <li><strong>增強效應</strong>：某些成分反而放大訊號，造成假陽性</li>
+                    <li><strong>Glucan 干擾</strong>：葡聚醣（真菌細胞壁成分）能活化 Factor G 通路，造成假陽性</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>生活比喻：妊娠試劑 vs. 血液培養</h4>
+                <p>把 BET 想像成<strong>妊娠試劑</strong>：它偵測的是一個特定化學物質（hCG / 內毒素）的存在，而不是培養「有沒有細菌長出來」。妊娠試劑也怕 pH 偏差、也怕試劑過期——道理完全相同。</p>
+                <p>這就是為什麼 BET OOS 的調查方向，第一步是「試劑與操作條件是否正確」，而不是「無菌作業有沒有破壞」。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：LAL 試驗最常見的假失效原因</h4>
+                <ul>
+                    <li>系列稀釋操作錯誤（移量誤差、試管對換）</li>
+                    <li>吸管頭重複使用造成 CSE 交叉污染</li>
+                    <li>附近水槽噴濺——自來水本身含有革蘭氏陰性菌</li>
+                    <li>pH 沒有確認或調整</li>
+                    <li>培養期間震動或干擾（凝膠法）</li>
+                </ul>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習 &mdash; David 的 Fill-Finish 場景</h4>
+                <p>你的 WFI 成品注射劑 BET 報告 OOS。在啟動調查之前，問自己：這批產品的基質（pH、蛋白質含量）與驗證時的基質有何差異？PPC（Positive Product Control）的回收率是落在 50&ndash;200% 範圍內嗎？這兩個答案幾乎可以直接決定你是「Lab Error」還是「Need Phase II」。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.2.1 ===== -->
+    <div class="section-title">4.2.2.1 Compendial Bacterial Endotoxins Test &mdash; 法定藥典內毒素試驗要求</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.2.1 Compendial Bacterial Endotoxins Test</h3>
+            <p>When faced with an endotoxin <span class="key-term">LAL OOS result</span> it would be best to start with a review of the mandatory requirements and controls in the harmonized compendial chapter, <span class="key-term">USP &lt;85&gt;</span>. As with any testing used to release products, performing these key analytical steps and documenting them accurately and contemporaneously as required by company SOPs and the lysate manufacturer's instructions for use is essential. These records will prove critical in the event the laboratory management or auditors review or question the validity of the results. The harmonized compendial chapters include specific considerations for addressing BET analytical anomalies:</p>
+            <ul>
+                <li>In the section for INTERPRETATION of the harmonized gel-clot method, when a positive result is found for only one duplicate of <span class="key-term">Solution A</span> (product only), the test should be repeated. In the repeat test, the preparation under test complies with the test if a negative result is found for both replicates of Solution A. The preparation does not comply with the test if a positive result is found for one or both replicates of Solution A. However, if the preparation does not comply with the test at a dilution less than the <span class="key-term">maximum valid dilution (MVD)</span>, the test may be repeated using a greater product dilution, not exceeding the MVD.</li>
+                <li>Along with each gel-clot Limit and Quantitative Test, a <span class="key-term">2&lambda; positive product control</span>, a 2&lambda; positive control in BET water, and a negative control with just BET water should be included.</li>
+                <li>For the Photometric Quantitative Techniques, the absolute value of the correlation coefficient, r, must be 0.980 for the range of endotoxin concentrations used.</li>
+                <li>For the Photometric Quantitative Techniques, to be considered free of factors that interfere with the assay under the conditions of the test, the measured concentration of the endotoxin added to the sample solution must be within <span class="key-term">50%&ndash;200%</span> of the known added endotoxin concentration after subtraction of any endotoxin detected in the solution without added endotoxin. Note: Knowing how to interpret the value of the positive product control (PPC) is very important when reading either under or over the allowed range. Even an assay within the allowable PPC range may still give false test results, which may be caused by the natural endotoxin in the test sample and the spiked CSE combining to give an acceptable value for this control.</li>
+                <li>Additional suggestions on how to investigate bacterial endotoxin deviation can be found in <span class="key-term">USP &lt;1085&gt;</span> Guidelines on the Endotoxins Test, in the section entitled &ldquo;Out-of-Specification Results and Retesting Considerations&rdquo; (21).</li>
+                <li>For those laboratories responsible for performing BET on sterile implantable devices or combination products (one that includes a medical device), specific guidance is provided in <span class="key-term">USP &lt;161&gt;</span> Medical Devices&ndash;Bacterial Endotoxin and Pyrogen Tests (22). For medical device testing, careful attention to the compendial requirements should be given to performing the bacterial endotoxin extraction step from the device products.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：USP &lt;85&gt; 的關鍵合規查核點</h4>
+                <p>法規調查員審核 BET OOS 時，USP &lt;85&gt; 是第一份翻開的文件。以下幾個控制點是最容易被挑到缺失的：</p>
+                <ul>
+                    <li><strong>重複管判讀規則</strong>：Solution A 兩管中只有一管陽性 &rarr; 允許重複試驗，但必須兩管均陰性才合格</li>
+                    <li><strong>MVD 限制</strong>：稀釋不能無限擴大，必須在 Maximum Valid Dilution 之內</li>
+                    <li><strong>PPC 回收率 50&ndash;200%</strong>：這是抑制/增強評估的核心窗口；落在範圍內不代表一定沒問題</li>
+                    <li><strong>相關係數 r &ge; 0.980</strong>：光度法的標準曲線品質要求</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：PPC 就像料理的口味校正</h4>
+                <p>Positive Product Control（PPC）就像廚師在上菜前用一個已知鹽量的「標準菜」來校正自己的味覺：如果你嚐到的鹹度在預期範圍內，代表你的感官（＝試驗系統）是可信的。但如果產品本身已有天然鹽分，即使加料後嚐起來「剛好」，也不代表試驗系統沒有問題——這就是 PPC 解讀的陷阱。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：USP 三層文件架構</h4>
+                <ul>
+                    <li><strong>USP &lt;85&gt;</strong>：強制執行的法定方法（Gel-Clot + 光度法）</li>
+                    <li><strong>USP &lt;1085&gt;</strong>：指引章節（非強制），提供 OOS 調查建議</li>
+                    <li><strong>USP &lt;161&gt;</strong>：醫療器械 + 組合產品專用（需特別注意萃取步驟）</li>
+                </ul>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的 BET PPC 回收率是 185%（略低於 200% 上限但仍合規）。這表示你的產品基質對 LAL 有輕微的「增強效應」。下次審查基質驗證報告時，你應該多注意哪個趨勢？（提示：如果增強效應隨批次配方輕微變化，可能某一天就跨越 200% 邊界。）</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.2.2 ===== -->
+    <div class="section-title">4.2.2.2 FDA Guidance &mdash; FDA 指引補充</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.2.2 FDA Guidance</h3>
+            <p>When performing a deviation investigation for results associated with BET, the <span class="key-term">2012 FDA Guidance for Industry: Pyrogen and Endotoxin Testing: Questions and Answers</span> may offer valuable insights as to some regulatory expectations (23). In general, the guidance suggests that the sampling plan used by firms should consider the potential presence of bacterial endotoxin contamination in raw materials, in-process materials, and the finished product. Specifically, they should consider aspects of the manufacturing design, including consistency of a manufacturing process, impact of in-process hold-times, endotoxin-removal steps, and finished-product endotoxin specifications. Sections of this FDA guidance document may be particularly helpful during deviation investigations, for example:</p>
+            <div class="quote-box">
+                When is retesting appropriate? When conflicting results occur within a test run, firms should consult USP Chapter &lt;85&gt;, Gel Clot Limits Test, Interpretation, for guidance on repeat testing. As specified in Chapter &lt;85&gt;, if the test failure occurred at less than the maximum valid dilution (MVD), the test should be repeated using a greater (product) dilution not exceeding the MVD&hellip; All testing procedures, including those for retesting within the above limits, should be specified in advance in the standard operating procedures approved by the firm&rsquo;s quality control unit.
+            </div>
+            <p>Because of the unique nature of endotoxins to clump or bind to container surfaces, the issue of <span class="key-term">sample storage and handling</span> becomes important. The FDA guidance recommends firms &ldquo;establish procedures for storing and handling (which includes product-mixing) samples for bacterial endotoxin analysis&hellip;&rdquo;</p>
+            <div class="quote-box">
+                FDA recommends that pooled samples be a composite of aseptically removed aliquots (after at least <span class="key-term">30 seconds of vigorous mixing</span>) from each of the product containers (24). In this way, the original, individual containers will be available for possible retesting in the event the pooled sample displays an OOS result.<br><br>
+                &hellip;For purposes of evaluating the relative risk of product contamination, <span class="key-term">quantitative testing</span> may be preferable to limit testing to facilitate product quality trending and to identify and correct excursions before they exceed the specification and cause product failure.
+            </div>
+            <p>Therefore, when an endotoxin is detected, quantitating the actual amount present is preferred to depending on the guesswork of using a limit test approach.</p>
+            <p>Two other documents that may be helpful during the investigation of either a laboratory deviation or the manufacturing areas are: <span class="key-term">FDA's Inspection Technical Guides: No. 40 Bacterial Endotoxins/Pyrogens</span> and standards document <span class="key-term">ANSI/AAMI ST72:2019</span> Bacterial Endotoxins&mdash;Test Methodologies, Routine Monitoring, and Alternatives to Batch Testing (25, 26). The AAMI standard is acknowledged as an acceptable standard for performing BET and has been referenced in the 2012 FDA Guidance document excerpted above. Both of these documents may be used by FDA and other international government investigators during their inspectional preparation of both parenteral and medical device manufacturers.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：內毒素的特殊物理特性影響取樣</h4>
+                <p>內毒素分子（LPS）是兩性分子（amphiphilic），在水溶液中會自發聚集、也容易吸附在容器表面。這兩個特性讓取樣操作變得關鍵：</p>
+                <ul>
+                    <li><strong>聚集效應</strong>：未充分振搖的樣品，LPS 可能沉積在底部或管壁，導致取樣濃度不均</li>
+                    <li><strong>容器吸附</strong>：去熱原處理不足的容器可能「釋出」殘留內毒素，造成假陽性</li>
+                    <li><strong>30 秒劇烈振搖</strong>：FDA 明確規定的操作要求，目的是打散聚集體，確保代表性取樣</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：定量法 vs. 限度法 = 血糖機 vs. 尿糖試紙</h4>
+                <p>Limit test（限度試驗）只告訴你「超過/未超過規格」，就像尿糖試紙只有陰陽兩色。Quantitative test（定量試驗）則給你實際數值，就像血糖機讓你知道是 6.5 mmol/L 還是 12 mmol/L。FDA 建議優先做定量試驗，因為趨勢管理需要數值，而不只是合格/不合格的判斷。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：重測的前提條件</h4>
+                <p>FDA 明確指出：重測程序必須在 SOP 中<strong>事先規定</strong>（pre-specified）。不能在 OOS 發生後才決定要不要重測、重測幾次。這是稽核時最容易被質疑的灰色地帶。</p>
+                <p>另外，保留原始個別容器而不混合為單一 pooled sample，是為了 OOS 時有「退路」可以個別重測。</p>
+            </div>
+            <div class="practice-box">
+                <h4>實務行動</h4>
+                <p>檢查你的 BET SOP：是否已明確規定 pooled sample 的振搖秒數（至少 30 秒）？重測的條件（何時允許 / 最多幾次）是否事先定義清楚？如果還沒有，這是下次 SOP 審查的優先改善項目。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.3 AET ===== -->
+    <div class="section-title">4.2.3 Antimicrobial Effectiveness Testing (AET) Investigations &mdash; 抗菌效能試驗調查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.3 Antimicrobial Effectiveness Testing Investigations</h3>
+            <p>The test methods and acceptance criteria for different dosage forms are defined in <span class="key-term">USP &lt;51&gt;</span> Antimicrobial Effectiveness Testing. In general, the test is only applicable to aqueous, multiple-use sterile and nonsterile drug products that may be subject to microbial contamination during use. USP &lt;51&gt; defines aqueous as a <span class="key-term">water activity (A<sub>w</sub>)</span> of more than 0.6. Products with A<sub>w</sub> &lt; 0.6 will not support the growth of microorganisms and may be demonstrably self-preserving. The test confirms the effectiveness of the antimicrobial preservative system and/or other supporting physicochemical attributes to meet product category criteria. Although a drug product would be required to meet the test criteria during development and to be demonstrated as effective in a long-term stability study, the test is a <span class="key-term">shelf-life specification</span>, but not a release requirement. In contrast, the preservative concentration required within the formulation to meet the product category criteria at release and at expiry is a product specification included in the regulatory submission. Typically, USP &lt;51&gt; is looked upon as a stability-indicating pass/fail test, where the results in terms of <span class="key-term">log reduction</span> of the challenge organisms at specified time intervals are evaluated against the log reduction requirement for the product category. Given the inherent variability of the test method, marginally preserved products have a potential to fail at one or more time intervals in long-term stability studies supporting marketed products (27).</p>
+
+            <h3>4.2.3.1 Investigating Antimicrobial Effectiveness Test Deviation</h3>
+            <p>Table 4.2.3.1-1 outlines points to consider in a laboratory investigation of an antimicrobial effectiveness test deviation.</p>
+
+            <p><strong>Table 4.2.3.1-1 Questions Concerning Antimicrobial Effectiveness Testing</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AET Component</th>
+                        <th>Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="5"><strong>Sample Preparation</strong></td>
+                        <td>Was the challenge organism inoculum of the proper quality and purity?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the appropriate inoculum concentration used?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the proper qualified diluent used in the inoculum preparation?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the inoculated product well mixed prior to storage and at the time of testing?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the pH of the product within the specified range?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>Incubation</strong></td>
+                        <td>Was the preservative concentration as measured by chemical assay within specification, e.g., 80&ndash;120% of label claim?</td>
+                    </tr>
+                    <tr>
+                        <td>Were the test materials held at 20&ndash;25 &deg;C during the 28-day test period?</td>
+                    </tr>
+                    <tr>
+                        <td>Were the stability samples incubated upright or inverted?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><strong>Results Evaluation</strong></td>
+                        <td>For evaluation of the statistical robustness of the number of colonies per pour plate over a 10-fold dilution range: Did the replicate plates fall into the range of 25 to 250 colonies per plate for bacteria and 8 to 80 for mold?</td>
+                    </tr>
+                    <tr>
+                        <td>Are the counts on the plates comparable?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the growth-promotion testing conducted with the appropriate microbiology growth medium?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the challenge organism recovery method validated?</td>
+                    </tr>
+                    <tr>
+                        <td>Is the recovered growth morphologically consistent with the inoculum organism?</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Was the laboratory worksheet complete and the log reduction calculations accurate (i.e., were appropriate rounding rules followed?)?</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：AET 的調查邏輯樹</h4>
+                <p>AET（抗菌效能試驗）是多劑量產品（multi-dose）的專屬試驗，確認產品在使用期間不會因反覆開瓶而發生微生物污染。USP &lt;51&gt; 將產品分為類別 A（注射、眼藥）、類別 B（外用、口服）、類別 C（特殊劑型），各有不同的對數減少要求。</p>
+                <p>OOS 調查的邏輯樹：</p>
+                <ol>
+                    <li><strong>保存劑濃度是否符合規格（80&ndash;120%）？</strong> &rarr; 若低於 80%，這是根本原因，直接連結 Phase II 配方或穩定性調查</li>
+                    <li><strong>接種菌品質是否正確？</strong> &rarr; 菌株傳代過多、活性下降，可能造成假失敗</li>
+                    <li><strong>計數計算是否正確？</strong> &rarr; 稀釋倍數計算錯誤、四捨五入規則不一致，是最常見的 Lab Error</li>
+                    <li><strong>培養條件是否維持 20&ndash;25&deg;C 整整 28 天？</strong> &rarr; 溫度偏差會影響菌的生長動力學</li>
+                </ol>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：眼藥水瓶的「開瓶後效期」管理</h4>
+                <p>AET 就像驗證「一瓶眼藥水在 28 天使用期內，每次開瓶後保存劑還能壓制污染菌」。產品的完整性（有沒有被頻繁使用），與試驗執行的正確性（inoculum 品質、培養條件），是兩條需要分別排查的線索。</p>
+                <p>若真的是配方保存劑衰減的問題，這就不是 Lab Error，必須進入 Phase II 評估穩定性策略。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：AET 不是放行規格</h4>
+                <p>AET 是<strong>穩定性指標試驗</strong>（shelf-life specification），不是批放行要求。OOS 不代表這批藥要立即召回，而是需要評估長期穩定性策略。但若發生在市售產品的穩定性試驗中，仍需啟動完整的偏差調查。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的多劑量注射劑在 12 個月穩定性取樣中 AET 失敗（Category A 要求：28 天後細菌 log 降幅 &ge; 2 log）。化學保存劑（benzalkonium chloride）含量為 78%（規格 80&ndash;120%）。下一步你會怎麼決定調查路徑？這還在 Phase I 調查範圍內嗎？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.4 Mycoplasma ===== -->
+    <div class="section-title">4.2.4 Mycoplasma Testing Investigations &mdash; 黴漿菌試驗調查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.4 Mycoplasma Testing Investigations</h3>
+            <p><span class="key-term">Mycoplasma</span> contamination is a serious concern when using mammalian, plant, and insect cell cultures in the development and production of cell-derived biopharmaceutical products for human use. These products may include viral vaccines, monoclonal antibodies, growth factors, replacement therapies, and gene and cell therapies. Contamination of cell culture ingredients and cell lines represent a potential patient safety risk as well as an economical loss in terms of reduced product yields, rejections, and recalls. To minimize these risks, master and working cell lines or banks, cell culture ingredients, inoculum expansions, process materials, and finished products are routinely screened for mycoplasma.</p>
+            <p>The most common contaminating mycoplasma species (95%), in descending order, are <span class="key-term"><em>Mycoplasma orale</em></span> (human cell lines), <em>M. hyorhinis</em> (porcine cell lines), <em>M. arginini</em> (bovine cell lines), <em>M. fermentans</em> (human cell lines), <em>M. hominis</em> (human cell lines), and <em>Acholeplasma laidlawii</em> (bovine cell lines).</p>
+
+            <h3>4.2.4.1 Laboratory Investigation for Out-of-Specification Result</h3>
+            <p>The mycoplasma contamination rates within cell cultures, especially cell banks, historically have been high (28,29), though screening and removal strategies, such as irradiation and heat treatment, have progressively reduced the rates. When the mycoplasma testing laboratory has a failing result, how does the laboratory management and QCU know that it is a valid result?</p>
+            <p>Points to consider when conducting the laboratory investigation of culture- or PCR-based detection methods are presented in Tables 4.3.4.1-1 and 4.3.4.1-2, respectively.</p>
+
+            <p><strong>Table 4.3.4.1-1 Culture-Based Mycoplasma Testing Considerations</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Culture Testing Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4"><strong>Sample/Organism</strong></td>
+                        <td>What mycoplasma species was detected in the test specimen?</td>
+                    </tr>
+                    <tr>
+                        <td>Could that species be found on laboratory personnel or in the cell line?</td>
+                    </tr>
+                    <tr>
+                        <td>Is there a history of presence of mycoplasma in the specific cell culture, cell culture media, processing ingredients, upstream processing, or finished product?</td>
+                    </tr>
+                    <tr>
+                        <td>What was the test sample (e.g., fresh, frozen, or freeze-dried cell pellets; genomic extracts from the cell line; cell culture media ingredients; mammalian cell harvest for viral vaccine product)?</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Did the test sample contain low or high levels of mycoplasma contamination as determined on the duration of the enrichment steps to detect mycoplasma? <em>Note: Contaminated cell lines will contain higher mycoplasma counts, whereas media ingredients that have mycoplasma inactivation steps and no cells to support mycoplasma growth may have low-level mycoplasma contamination.</em></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Although cell culture media will not show turbidity or a pH change, do cell cultures of the contaminated cell line show morphological signs of mycoplasma contamination (i.e., cytopathogenic effects or presence of fluorochrome-stainable mycoplasma)?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>Method Suitability</strong></td>
+                        <td>Did the test meet the USP &lt;63&gt; method suitability requirements? (29)</td>
+                    </tr>
+                    <tr>
+                        <td>Did the media pass the growth promotion tests? Did the positive and negative controls give the required results?</td>
+                    </tr>
+                    <tr>
+                        <td>Was <em>Mycoplasma orale</em> recovered from a non-human mammalian, microbial, insect, or plant cell line? If yes, it may have been introduced during upstream processing or testing. As it is the most common mycoplasma species in the oral cavity of healthy people, it has the greatest potential as a testing contaminant.</td>
+                    </tr>
+                    <tr>
+                        <td>Has the analyst conducting the test been adequately trained and is experienced with the test? Was the test conducted with adequate personnel and environmental controls?</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Table 4.3.4.1-2 Mycoplasma PCR-Based Detection Testing Considerations</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>PCR Testing Component</th>
+                        <th>Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Reagents/Sample Preparation</strong></td>
+                        <td>Was there evidence that the reagents, i.e., master and assay mixes, were satisfactory? Did the inhibition, negative, and positive controls meet the specified requirements? Were the amplification plot, melting temperature, and derivative value interpreted correctly?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Method</strong></td>
+                        <td>Was the test environment adequately isolated? Is the test method an open or closed system? Was the method validation and suitability testing for the test sample adequate?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Confirmation</strong></td>
+                        <td>Was the initial test repeated in duplicate with two of three replicates being clearly positive? Does the follow-up culture method (required with PCR failures) support or dispute the initial PCR-based assay reported failure?</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：黴漿菌為什麼特別危險？</h4>
+                <p>黴漿菌（Mycoplasma）是最小的自我複製生物，沒有細胞壁，因此：</p>
+                <ul>
+                    <li>不受 Beta-lactam 抗生素影響（沒有細胞壁就沒有靶點）</li>
+                    <li><strong>不會在標準 TSA/TSB 培養基上生長</strong>——必須用特殊固體/液體培養基（SP-4, PPLO）或 PCR / 細胞指示劑試驗（indicator cell assay）才能偵測</li>
+                    <li>污染細胞培養後，細胞不會明顯死亡（沒有渾濁），但會低調地影響代謝、轉錄和蛋白質表達——這使污染很容易被忽視數個月</li>
+                </ul>
+                <p>對 MAb、CAR-T、病毒疫苗等生物製劑製造而言，一旦 MCB/WCB 被污染，後果是大量物料廢棄與設施大規模除污。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：沉默的房客</h4>
+                <p>黴漿菌就像一個房客，不佔空間、不製造噪音、不改變你家的外觀——但他每天悄悄動你的東西。你的細胞培養看起來「一切正常」，但實驗重現性越來越差、MAb 糖化模式改變，才發現源頭是幾個月前就進來的黴漿菌。這就是為什麼定期篩查（MCB、WCB、in-process）是不可省略的關卡。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：M. orale 是最容易被誤判的污染菌</h4>
+                <p><em>M. orale</em> 存在於健康人的口腔中。若在非人類細胞株（如昆蟲細胞、植物細胞）檢出 <em>M. orale</em>，高度懷疑是<strong>試驗人員口腔飛沫污染</strong>，而非真正的細胞培養污染。這個鑑別對於決定批次處置至關重要。</p>
+                <p>PCR 確認流程：初始陽性 &rarr; 重複兩管（三管中至少兩管陽性才確認）&rarr; 培養法交叉確認（PCR 陽性但培養法陰性，仍需謹慎評估）。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習 &mdash; 生物製劑場景</h4>
+                <p>你的 MAb 製程在 Harvest 取樣時 PCR Mycoplasma 陽性。培養法尚未有結果。你現在需要做的三件事：(1) 確認 PCR 控制組（陽性/陰性/抑制）是否全部正常；(2) 是否需要立即隔離此批細胞培養；(3) 同源細胞庫（MCB/WCB）是否需要緊急篩查？思考這些問題與 Phase I / Phase II 調查的分工。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.5 Biological Indicators ===== -->
+    <div class="section-title">4.2.5 Biological Indicators (BI) Investigations &mdash; 生物指示劑調查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.5 Biological Indicators Investigations</h3>
+            <p><span class="key-term">Biological indicators (BI)</span> are used during the validation of moist heat, dry heat, and gaseous sterilization processes and during vapor-phase hydrogen peroxide decontamination cycles. BIs may also be used for monitoring routine cycles to support the release of products that are used by the pharmaceutical industry. Additionally, a BI can be used as a load monitor to support <span class="key-term">parametric release</span> of moist-heat sterilized products in the U.S. Typically, they consist of high numbers of resistant bacterial spores with characterized calibrated <span class="key-term">D-values</span> that are included in sterilization loads, retrieved, and cultured to demonstrate the lethality of their destruction during the sterilization cycle.</p>
+            <p>It is an expectation that a company will conduct confirmatory testing of the population and purity stated in the certificate of analysis of the incoming BI lot and growth of the cultured spore strip. Low counts may reflect the incomplete recovery from the matrix supporting the bacterial spores, whereas the growth of a heat-resistant spore-forming bacteria like <span class="key-term"><em>Geobacillus stearothermophilus</em></span> from a BI is most likely caused by contamination of the laminar flow hood and/or test supplies from positive controls in the testing environment (30).</p>
+            <p>Probable causes of failure would include gross mishandling, insufficient exposure to the sterilization parameters, and higher BI D-values that result in a lower probability of destruction in the sterilization cycle. Other points to consider include:</p>
+            <ul>
+                <li>Were the BIs stored and handled prior to use, as recommended by the manufacturer?</li>
+                <li>Were the BIs incubated in accordance with regulatory expectations and manufacturer instructions?</li>
+                <li>Were the BIs used in the manner prescribed by the manufacturer?</li>
+                <li>Was the appropriate BI used for the product being tested (e.g., ampoule BI used for liquid products)?</li>
+                <li>In cases where the BI is directly inoculated into a solution or onto a substrate, what is the D-value as used in that form?</li>
+            </ul>
+            <p>PDA Technical Report 51 Biological Indicators for Gas and Vapor-Phase Decontamination Processes: Specification, Manufacture, Control and Use provides further guidance on this topic (31).</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：D 值與 Z 值——滅菌保證的語言</h4>
+                <p><strong>D 值（Decimal Reduction Time）</strong>：在特定溫度下，殺死 90%（1 log）目標菌所需時間。例如 <em>G. stearothermophilus</em> 在 121&deg;C 下 D 值約為 1.5 分鐘。</p>
+                <p><strong>Z 值（Temperature Coefficient）</strong>：D 值改變 1 log（10 倍）所需的溫度變化量。典型濕熱滅菌 Z = 10&deg;C。</p>
+                <p>BI 失敗 &ne; 產品非無菌。BI 失敗的第一步調查方向是：</p>
+                <ol>
+                    <li>滅菌循環參數是否真的達標（溫度、時間、壓力紀錄）？</li>
+                    <li>BI 本身的 D 值是否偏高（CoA 複核）？</li>
+                    <li>BI 的放置位置是否在最冷點（worst-case location）？</li>
+                    <li>BI 培養時有無 <em>G. stearothermophilus</em> 正對照污染？</li>
+                </ol>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：BI 就像雞蛋的「熟度指示劑」</h4>
+                <p>BI 就像在鍋裡放一顆「標準蛋」來判斷水有沒有真的煮沸夠久。如果這顆蛋沒熟，你要先確認的不是「其他蛋有沒有問題」，而是「這顆蛋有沒有被放在最難熱到的地方」、「溫度計有沒有出錯」。BI 陽性是一個警示，不是直接否定整批物料無菌性的宣判。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：Parametric Release 的 BI 角色</h4>
+                <p>在美國，無菌物料可以使用 Parametric Release（參數放行）取代傳統無菌試驗，但前提是 BI 作為 load monitor 的數據必須支持循環效能。一旦 BI 失敗，Parametric Release 的依據就會動搖，這使調查更加嚴格。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的高壓蒸氣滅菌器（autoclave）完成一個滅菌循環後，裝在最冷點（cold spot）的 BI 在培養 48h 後顯示陽性（渾濁）。同一循環的溫度與時間記錄顯示完全達標。你的第一個調查問題是什麼？（提示：<em>G. stearothermophilus</em> 的正對照培養試管在哪裡進行？距離 BI 培養試管多遠？）</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.6 Media Fill ===== -->
+    <div class="section-title">4.2.6 Aseptic Process Simulation Failures (Media Fills) &mdash; 無菌製程模擬失敗調查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.6 Aseptic Process Simulation Failures (Media Fills)</h3>
+            <p>Proper design and execution of aseptic process simulations can be found in <span class="key-term">PDA Technical Report 22</span>: Process Simulation for Aseptically Filled Products, <span class="key-term">FDA Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing&mdash;Current Good Manufacturing Practice</span>, <span class="key-term">PIC/S Annex 1</span>: Manufacture of Sterile Medicinal Products, Guide to GMP for Medicinal Products, and <span class="key-term">ISO 13408-5</span> (3, 5, 32, 33). Any media-filled containers that, upon inspection, score as <span class="key-term">&ldquo;turbid&rdquo;</span> during the incubation period should be examined by a microbiologist and transferred to the microbiology laboratory for investigation. The growth of microorganisms in culture medium may include any slight haze, pellicle formation, floccular amassment, or precipitation. The first task, prior to opening the container to subculture the media, is to establish if the container is <span class="key-term">flawed</span> in any manner that would compromise the sterility of the medium. Damage may take the form of inadequate crimps to a stoppered vial, leakage around the container closure, or chips or cracks in the container that could threaten integrity. Any damage should be adequately recorded and, if possible, supplemented with photographs. Involving packaging experts in the laboratory investigation who can evaluate the extent of damage may be helpful, for instance, in performing physicochemical integrity testing to confirm that the damage would result in microbial ingress. The media fill may be inspected for damaged/nonintegral units, and those units should be discarded. The rationale for excluding these units from the final run tally should be fully documented and the deviation should be explained in the media fill report. (3, 34).</p>
+            <p>In the absence of obvious damage, the contents of a turbid container would be aseptically sampled and subcultured with appropriate solid media and incubated at <span class="key-term">20&ndash;25 &deg;C</span> and <span class="key-term">30&ndash;35 &deg;C</span> for three to seven days. The contents of the media fill containers may be examined microscopically for the presence of microorganisms. Any isolates should be identified at least to <span class="key-term">species</span> and, preferably, <span class="key-term">strain-typed</span> to aid the follow-up investigations. Guidance may be found in <span class="key-term">USP &lt;1113&gt;</span> (16).</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：Media Fill 失敗是無菌製程的最高警戒線</h4>
+                <p>APS（Aseptic Process Simulation，即 Media Fill）是無菌充填製程的全模擬試驗。與其他微生物試驗不同，Media Fill 的標準是最嚴格的：</p>
+                <ul>
+                    <li><strong>單一污染單位</strong>即構成失敗，需要完整調查</li>
+                    <li>法規要求批量 &ge; 5,000 個單位時，零污染（0/5000+）才符合標準</li>
+                    <li>失敗後，通常需要暫停商業生產、完成調查並實施 CAPA 後才能重新驗證</li>
+                </ul>
+                <p>調查的核心問題：這個污染菌來自哪裡？</p>
+                <ul>
+                    <li><strong>充填線</strong>（設備表面、液體接觸路徑）</li>
+                    <li><strong>人員</strong>（皮膚菌、操作介入時機）</li>
+                    <li><strong>環境</strong>（空氣微粒、EM 數據）</li>
+                    <li><strong>容器完整性缺陷</strong>（瓶口壓蓋不良、破損）</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：Media Fill 就像無菌手術的「演練記分」</h4>
+                <p>Media Fill 就像手術團隊在無患者的情況下模擬完整手術流程，最後統計「哪個培養皿被污染了」。一旦培養皿（= 充填容器）渾濁，就必須追問：是手術刀（設備）、手術手套（人員介入）、還是手術室空氣（環境）出了問題。菌株鑑定（strain typing）就像 DNA 鑑識，幫你找到犯罪現場的源頭。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：容器完整性是優先排查項</h4>
+                <p>發現渾濁容器後，<strong>開瓶之前</strong>先做容器完整性評估。如果瓶蓋壓鋁不良（under-crimp）或瓶身有裂縫，這個容器應排除計數並記錄理由——但必須有物理/化學完整性測試（CCI test）支持排除決定，不能只憑肉眼判斷。</p>
+            </div>
+            <div class="practice-box">
+                <h4>實務場景 &mdash; Fill-Finish CDMO</h4>
+                <p>你的 vial 充填 APS 共 10,000 支，培養 14 天後發現 1 支渾濁。分離菌株鑑定為 <em>Staphylococcus epidermidis</em>（皮膚常在菌）。同批次的 EM 顯示充填操作期間有一次人工介入，操作時間點在渾濁容器的充填位置附近。你的調查如何連結菌株鑑定、EM 數據與介入記錄？CAPA 應指向哪個管控點？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.7 Environmental Monitoring ===== -->
+    <div class="section-title">4.2.7 Environmental Monitoring (EM) &mdash; 環境監控調查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.7 Environmental Monitoring</h3>
+            <p>Laboratory investigations are an opportunity to take stock of the sampling program and operation of the microbiology laboratory. Common questions that may be asked during a laboratory investigation include those in Table 4.3.7-1.</p>
+
+            <p><strong>Table 4.3.7-1 Environmental Monitoring: Questions Concerning Laboratory and Sampling</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Laboratory Component</th>
+                        <th>Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="5"><strong>Sample Collection</strong></td>
+                        <td>Was the correct sampling method/technique performed?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the sampling technician properly trained and qualified?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the sampling technician properly gowned for the area requirements?</td>
+                    </tr>
+                    <tr>
+                        <td>Were the negative controls handled properly? Were results negative?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the correct swab or contact plate used?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><strong>Media Handling</strong></td>
+                        <td>Was the media appropriate for intended monitoring (i.e., tryptic soy agar, Gamma-irradiated media, double- or triple-wrapped media)?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the media properly received and stored in good condition?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the media growth promoted? Were the results passed, approved?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the lot used within expiry as supported by growth-promotion studies?</td>
+                    </tr>
+                    <tr>
+                        <td>Were the swabs, sterile diluent, and liquid media within expiry?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><strong>Equipment</strong></td>
+                        <td>Was the active air sampling equipment used within the current calibration period?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the equipment functioning properly during sampling?</td>
+                    </tr>
+                    <tr>
+                        <td>Were the equipment batteries charged?</td>
+                    </tr>
+                    <tr>
+                        <td>Were the sampling heads appropriately sterilized or sanitized prior to use?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the equipment handled properly and not dropped during use?</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Was the appropriate flow rate delivered to the sample?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>Media Incubation</strong></td>
+                        <td>Did incubation take place at the correct time and temperature?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the incubator temperature within the acceptable range throughout the incubation?</td>
+                    </tr>
+                    <tr>
+                        <td>Did any equipment alarms or power outages occur during incubation?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><strong>Microbial Identification</strong></td>
+                        <td>Were the samples handled with care and not dropped?</td>
+                    </tr>
+                    <tr>
+                        <td>Was the colony color and morphology documented?</td>
+                    </tr>
+                    <tr>
+                        <td>Was a Gram stain performed and cellular morphology determined?</td>
+                    </tr>
+                    <tr>
+                        <td>Were any preliminary biochemical reactions performed?</td>
+                    </tr>
+                    <tr>
+                        <td>Were microbial identifications conducted correctly and documented?</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Was the organism reviewed against routine EM results to determine if it had been seen at lower levels of contamination prior to the event?</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Was the source of the organism (e.g., water, personnel) determined to evaluate where the contamination came from?</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：Alert Level vs. Action Limit 的管理意義</h4>
+                <p>EM 系統使用兩層警戒值：</p>
+                <ul>
+                    <li><strong>Alert Level（警示水準）</strong>：早期警告信號，提示趨勢可能惡化，需要強化監測與調查。不需要立即停產，但必須記錄並追蹤。</li>
+                    <li><strong>Action Limit（行動限值）</strong>：超過此值需要立即採取行動——啟動偏差調查、評估產品風險、加強消毒頻率。</li>
+                </ul>
+                <p>EM 偏差調查的邏輯順序：</p>
+                <ol>
+                    <li>先排除取樣技術問題（最常見的假陽性來源）</li>
+                    <li>確認培養基與設備的適用性</li>
+                    <li>鑑定菌株到種（species level）</li>
+                    <li>比對歷史 EM 趨勢資料（是否此菌過去也出現過？是否有上升趨勢？）</li>
+                    <li>追溯污染源（人員 / 水系 / 原料 / 環境）</li>
+                </ol>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：EM 就像潔淨室的「體溫計 + 脈搏計」</h4>
+                <p>Alert level 是體溫 37.5&deg;C——值得注意但可能只是輕微感冒；action limit 是體溫 39&deg;C——必須就醫。但就算燒到 39&deg;C，醫生的第一步也是「先排除量體溫方法有沒有錯」（腋下沒夾緊？計溫計壞掉？），而不是直接開退燒藥。EM 調查的「先確認取樣技術」是同樣邏輯。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：菌株鑑定到種是關鍵</h4>
+                <p>不同菌種代表不同污染源：</p>
+                <ul>
+                    <li><em>Staphylococcus epidermidis</em>（革蘭氏陽性球菌）&rarr; 人員皮膚</li>
+                    <li><em>Bacillus</em> spp.（革蘭氏陽性芽孢桿菌）&rarr; 環境/原料</li>
+                    <li><em>Pseudomonas</em> spp.（革蘭氏陰性桿菌）&rarr; 水系/生物膜</li>
+                    <li><em>Cladosporium</em> spp.（黴菌）&rarr; 空調/過濾器</li>
+                </ul>
+                <p>菌株鑑定結果直接決定 CAPA 方向，絕不能只記「革蘭氏陰性桿菌」就結束。</p>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>你的 Grade B 更衣間表面接觸碟在本月出現三次 Alert level 超標，均分離到同一株 <em>S. epidermidis</em>。負控 TSA 培養碟全部陰性，主動採樣設備校正在效期內。下一步你最需要調查什麼人員行為或更衣程序？這是 Alert level 管理還是需要開 Action？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.8 Utilities ===== -->
+    <div class="section-title">4.2.8 Utilities Monitoring &mdash; 公用設施監控</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.2.8 Utilities Monitoring</h3>
+            <h3>4.2.8.1 Pharmaceutical-Grade Water Systems</h3>
+            <p>The purpose of the laboratory investigation is to determine whether a definitive source of sampling and/or laboratory error contributed to the root cause of the deviation. This section addresses the initial and extended laboratory investigations associated with samples collected from pharmaceutical-grade water systems, such as purified water and <span class="key-term">water for injection (WFI)</span>.</p>
+            <p>Microbiological testing of pharmaceutical water systems, including the source water (i.e., potable water) and purification steps, typically consists of <span class="key-term">total viable microbial count</span>, <span class="key-term">BET</span>, and/or a test for the absence of coliforms, depending on the grade of water and any local regulatory requirements. After a pharmaceutical water system is successfully validated, both the system and the source are subject to periodic microbial monitoring using standard methods. <span class="key-term">Action limits</span> and <span class="key-term">alert levels</span> should be established to recognize adverse trends in the water system. These alert levels or action limits should be based on historical data, the intended purpose of the sampling plan, as well as the recommended compendial or regulatory limits. In general, specifications are not set for water systems.</p>
+            <p>In a well-designed, well-operated pharmaceutical water system, sanitized by maintaining a minimum turbulence level and elevated temperature (&gt; 65 &deg;C) or periodic heat or chemical sanitization, test results above the action limit should be very rare.</p>
+            <p>Several events can signal that a laboratory investigation should be conducted:</p>
+            <ul>
+                <li>A single test result that exceeds an action limit</li>
+                <li>Multiple test results that exceed an alert level, thus indicating an adverse trend</li>
+                <li>Isolation of microorganisms of concern based on the dosage forms manufactured in the facility</li>
+            </ul>
+            <p>The cross-functional team conducting the laboratory investigation should review the collection and microbiological testing of the subject water sample to determine any potential sampling and laboratory errors. The data collected should include the sampling location, sample containers, sampling technique, and any alert level or action limit excursions associated with the sampling location, loop, or water system, and the operators collecting the water samples.</p>
+            <p>If this investigation does not identify a definitive source of laboratory error to explain the deviation result, the laboratory should immediately notify the owner of the utility system, operational users, and the QCU.</p>
+
+            <h3>4.2.8.1.1 Evaluation of Sample Handling</h3>
+            <p>The methods used for preparing, storing, and attaching hoses and sampling apparatus to the sample ports are critical. Regulatory guidance recommends that each point of use should be flushed using the same flushing procedure used in the manufacturing process (35).</p>
+            <p>The potential for changes in the microbial population in samples should be limited by restricting the holding time before testing and controlling the storage temperature. If the samples cannot be tested within two hours, they should be transported and stored at refrigeration temperature for a maximum of <span class="key-term">24 hours</span>. In situations where even 24 hours is not possible (such as when using off-site contract laboratories), it is particularly important to qualify the microbiological sample hold times and storage conditions. (See APHA/AWWA/WEF Standard Methods, USP &lt;1231&gt;, EMA 496873, and Japan: G8 for guidance (28, 36-38). Prior to removing the test aliquot, all samples should be adequately mixed to ensure a homogeneous mixture is achieved. Any parameters for storage and transportation of water samples that are different from standard methods should be qualified to ensure the samples are not negatively affected, resulting in potentially invalid results.</p>
+
+            <h3>4.2.8.1.2 Evaluation of Test Methods</h3>
+            <p>Review of all materials associated with the testing and their appropriateness for the grade of water tested is required in a laboratory investigation. Sterility of the <span class="key-term">membrane filters</span>, sample containers, pipettes, and utensils used to perform testing must be suitable for their intended use and must conform within sterilization dating. Also, all diluents and reagents used must be suitable (such as sterile and/or endotoxin-free) and within their expiry dating.</p>
+            <p>Any deviation from these requirements must be evaluated and investigated. <span class="key-term">Confluent microbial growth</span>, in contrast to discrete colonies on the membranes or pour plates, may be indicative of equipment contamination. The position of the analyst&rsquo;s head, hands, and arms in the path of the airflow (preferably in a laminar flow hood with horizontal air flow) over the test materials may also be a source of microbial contamination (personnel-related considerations are discussed further in Section 5.2.1).</p>
+            <p>The identity of the microorganism(s) associated with the investigation may also reveal information about the source of contamination. The most common water isolates are <span class="key-term">Gram-negative, nonfermenting, rod-shaped bacteria</span> historically described as pseudomonads, which may be indicators for a <span class="key-term">biofilm formation</span> within the water system. The recovery of organisms that do not thrive or survive under the low ionic strength/low carbon conditions found in a pharmaceutical water system may suggest contamination of the sample or insufficient control or flushing of the sampling apparatus and/or hoses attached at the port. Gram-positive cocci commonly found on the human skin, such as <em>Staphylococcus epidermidis</em>, can be indicative of potential sampling contamination, while Gram-positive spore-formers, such as <em>Bacillus</em> species or the fungus <em>Cladosporium</em> species, can be indicative of potential environmental contamination.</p>
+
+            <h3>4.2.8.1.3 Evaluation of Trending Data</h3>
+            <p>Reviewing the historical test data will help determine if an adverse trend is associated with individual points-of-use, loops, and water systems. This information will be also useful for the manufacturing investigation.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：WFI 系統的微生物控制機制</h4>
+                <p>製藥級用水系統（尤其是 WFI）的微生物控制，依賴兩個主要機制：</p>
+                <ul>
+                    <li><strong>熱維持</strong>：WFI 迴路維持 &gt;65&deg;C 循環——大多數非嗜熱菌在此溫度下無法增殖</li>
+                    <li><strong>紊流（turbulence）</strong>：最低流速確保生物膜無法在管壁穩定定殖</li>
+                </ul>
+                <p>最危險的失敗模式是<strong>生物膜（biofilm）</strong>：假單胞菌（Pseudomonas）等革蘭氏陰性桿菌在低流速、死角位置形成生物膜後，定期脫落進入主管路，造成反覆超標。這是 Phase II 調查最常見的根本原因之一。</p>
+                <p>取樣調查順序：先排除取樣錯誤 &rarr; 再評估試驗方法 &rarr; 最後分析趨勢數據。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：水管生物膜就像水垢，但更危險</h4>
+                <p>生物膜就像不鏽鋼管內壁長出的微生物城市：外層有黏液（polysaccharide）保護，消毒劑難以穿透，即使上游水質合格，生物膜仍持續「補充」下游取樣點的菌數。發現 WFI 反覆分離到假單胞菌，幾乎可以直接懷疑是管路特定位置的生物膜問題，需要強化巴氏殺菌（pasteurization）或化學消毒。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：菌株特性告訴你污染源</h4>
+                <table style="font-size:0.88rem; margin-top:0.5rem;">
+                    <thead>
+                        <tr>
+                            <th>分離到的菌株</th>
+                            <th>最可能來源</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>革蘭氏陰性非發酵桿菌（假單胞菌類）</td>
+                            <td>水系統生物膜</td>
+                        </tr>
+                        <tr>
+                            <td><em>S. epidermidis</em>（革蘭氏陽性球菌）</td>
+                            <td>取樣操作員皮膚污染</td>
+                        </tr>
+                        <tr>
+                            <td><em>Bacillus</em> spp.（芽孢桿菌）</td>
+                            <td>環境（空氣、原料）污染</td>
+                        </tr>
+                        <tr>
+                            <td><em>Cladosporium</em>（黴菌）</td>
+                            <td>環境（通風、過濾器）污染</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:0.5rem;"><strong>滿盤生長（confluent growth）</strong>而非分散菌落 &rarr; 優先懷疑器材本身污染，而非水樣本身超標。</p>
+            </div>
+            <div class="concept-box">
+                <h4>取樣處理的關鍵時間窗口</h4>
+                <ul>
+                    <li>2 小時內可以在室溫下測試（理想）</li>
+                    <li>超過 2 小時：必須冷藏保存，最長 24 小時</li>
+                    <li>外送委外實驗室（&gt;24 小時）：需要有驗證數據支持延長保存條件</li>
+                    <li>取樣前必須依製造流程沖洗取樣點（flushing）</li>
+                    <li>測試前充分混勻樣品，確保均質性</li>
+                </ul>
+            </div>
+            <div class="practice-box">
+                <h4>思考練習 &mdash; WFI 超標事件</h4>
+                <p>你的 WFI 迴路 Loop 3 取樣點 P3-05 在本週連續兩次超過 Action Limit（&gt;10 CFU/100mL），分離到 <em>Pseudomonas putida</em>。Loop 3 其他取樣點均正常。P3-05 附近有一個低頻使用的支管（dead leg）。Phase I 調查發現取樣操作員訓練合格、器材在效期內、滿盤生長陰性。你的結論是 Lab Error 還是進 Phase II？Phase II 應調查哪個系統位置？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3 Phase I Conclusion ===== -->
+    <div class="section-title">4.3 Phase I: Conclusion and Next Steps &mdash; 第一階段結論與後續步驟</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>4.3 Phase I: Conclusion and Next Steps</h3>
+            <p>Evaluation and questions related to the Phase I deviation investigation must use strong, evidence-based data. The investigation may not be definitive but may suggest probable cause(s). The Phase I investigation commonly concludes with one of three possible outcomes:</p>
+
+            <ol>
+                <li>
+                    <p>Events uncovered during the investigation may be responsible for the deviation and present a <span class="key-term">clear root cause</span> that is directly responsible for the deviation. Examples could show contamination due to failure to follow SOPs, use of poor aseptic techniques during either sampling or testing, a recognized laboratory error, or the use of nonsterile testing materials. There may be a direct link between isolate identification and the same contamination from the testing environment. In these cases, the test may be considered <span class="key-term">invalid</span>.</p>
+                    <p>In the case of invalid tests, the Phase I investigation would conclude without advancing to the Phase II manufacturing investigation, or where Phase I and Phase II investigations were undertaken concurrently, the cancellation of the Phase II investigation would be warranted. Depending on the sample type and source of contamination, <span class="key-term">resampling or retesting</span> may also be considered as long as the QCU agrees. <span class="key-term">CAPAs</span> must be implemented (preferably prior to any retesting or resampling), however, in order to remediate the original cause of the invalidation.</p>
+                </li>
+                <li>
+                    <p>While the investigation might have revealed issues, there may be <span class="key-term">insufficient evidence</span> to directly correlate the investigative findings to the deviation. For example, if the EM conducted during the testing showed microorganisms present but the organisms were a different genus and species than the contamination within the sample, the environmental results may cast doubt on the sample, but they would not invalidate the original result. Thus, the Phase I laboratory investigation would be found <span class="key-term">inconclusive</span>, not providing sufficient evidence to invalidate the result, and the result is deemed to be valid. The investigation would then proceed to a Phase II manufacturing investigation.</p>
+                </li>
+                <li>
+                    <p>The results of the investigation <span class="key-term">did not show any evidence of testing failure</span>. In other words, it can be clearly demonstrated that all procedures were followed, analysts were properly qualified to perform the testing, and all materials, equipment, and testing environment were considered appropriate for the test. The calculations for reporting data and all final results were correct and verified. Therefore, the deviation is <span class="key-term">confirmed</span> and deemed valid, so the investigation must proceed to Phase II in order to determine the source of contamination from the processes used during manufacturing.</p>
+                </li>
+            </ol>
+        </div>
+        <div class="right-column">
+            <h3>中文解說 Commentary</h3>
+            <div class="concept-box">
+                <h4>核心概念：三種結論，各有不同路徑</h4>
+                <p>Phase I 的結論像一個三叉路口，每條路的後果完全不同：</p>
+                <table style="font-size:0.88rem; margin-top:0.5rem;">
+                    <thead>
+                        <tr>
+                            <th>結論</th>
+                            <th>定義</th>
+                            <th>後續行動</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>結論 1：試驗無效</strong></td>
+                            <td>找到明確的 Lab Error 根本原因</td>
+                            <td>先實施 CAPA &rarr; 再重測/重採 &rarr; 不進入 Phase II</td>
+                        </tr>
+                        <tr>
+                            <td><strong>結論 2：不確定</strong></td>
+                            <td>有跡象但無法直接否定結果</td>
+                            <td>結果視為有效 &rarr; 進入 Phase II</td>
+                        </tr>
+                        <tr>
+                            <td><strong>結論 3：確認偏差</strong></td>
+                            <td>完全無 Lab Error 證據</td>
+                            <td>偏差確認有效 &rarr; 強制進入 Phase II</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：法庭審判的三種判決</h4>
+                <p><strong>結論 1</strong>（試驗無效）＝「無罪釋放」——有具體的反證（Lab Error），無法成立犯罪事實，案件結案。但 CAPA 是「防止再犯」的保釋條件。</p>
+                <p><strong>結論 2</strong>（不確定）＝「疑點存在但證據不足定罪」——案件移交更高法院（Phase II）繼續審查。</p>
+                <p><strong>結論 3</strong>（確認偏差）＝「直接起訴」——調查一清二楚，沒有任何 Lab Error，偏差坐實，必須追究製造端責任（Phase II）。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示：CAPA 必須在重測之前實施</h4>
+                <p>這是監管機構最在意的一點：不能先重測、發現新結果合格、再回頭補 CAPA。正確的順序是：</p>
+                <ol>
+                    <li>識別 Lab Error 根本原因</li>
+                    <li>實施 CAPA（修正程序、再訓練、設備校正等）</li>
+                    <li>QCU 批准 CAPA 後，才可進行重測/重採</li>
+                </ol>
+                <p>若跳過此順序，FDA/EMA 稽查時會質疑重測結果的可信度。</p>
+            </div>
+            <div class="practice-box">
+                <h4>決策練習 &mdash; 你的 Phase I 調查結論</h4>
+                <p>以下三個場景，你的結論是哪一種（1 / 2 / 3）？</p>
+                <ul>
+                    <li>(A) 無菌試驗 OOS，EM 在測試期間 Grade B LAF 中分離到 <em>S. epidermidis</em>，但樣品分離菌為 <em>Pseudomonas fluorescens</em>（菌種不同）。&rarr; 結論？</li>
+                    <li>(B) BET OOS，分析師訓練記錄顯示未完成 LAL 試驗的年度 re-qualification。&rarr; 結論？</li>
+                    <li>(C) Media Fill 1 支渾濁，容器完整性測試合格，分離到 <em>Micrococcus</em> spp.，所有試驗對照組均正確，所有設備校正在效期內。&rarr; 結論？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>Section 4b 重點摘要 &mdash; Phase I 特定試驗調查</h3>
+        <ul>
+            <li><strong>BET（4.2.2）</strong>：LAL 是酵素反應，不是微生物培養。失效模式源自 pH 偏差（要求 6.0&ndash;8.0）、抑制/增強效應、操作污染（自來水噴濺、CSE 交叉污染）。USP &lt;85&gt; PPC 回收率 50&ndash;200% 是核心合規指標；重測程序必須事先在 SOP 中規定。</li>
+            <li><strong>AET（4.2.3）</strong>：USP &lt;51&gt; 適用於多劑量水性產品，是穩定性指標試驗而非放行規格。OOS 調查需檢查接種菌品質、保存劑濃度（80&ndash;120%）、計數計算正確性，以及 28 天培養期間的溫度控制。</li>
+            <li><strong>Mycoplasma（4.2.4）</strong>：生物製劑（MAb、基因/細胞治療）專屬風險。黴漿菌不在標準培養基上生長，需要 USP &lt;63&gt; 特殊培養法或 PCR 確認（三管中至少兩管陽性）。<em>M. orale</em> 在非人類細胞株出現時，優先懷疑試驗人員污染。</li>
+            <li><strong>BI（4.2.5）</strong>：D 值（log 降幅時間）和 Z 值（溫度係數）是滅菌保證的核心參數。BI 失敗首先調查循環參數記錄，而非直接判定產品非無菌。注意正對照污染的風險。</li>
+            <li><strong>Media Fill（4.2.6）</strong>：最嚴格的無菌製程門檻——單一渾濁容器即觸發完整調查。調查順序：先確認容器完整性 &rarr; 再分離培養 &rarr; 菌株鑑定至 species level，最好進行 strain typing，以連結充填線、人員或環境作為污染源。</li>
+            <li><strong>EM（4.2.7）</strong>：區分 Alert Level（早期警示）與 Action Limit（立即行動）。調查先排除取樣技術問題，再鑑定菌株判斷污染源（皮膚菌 vs. 水系菌 vs. 環境菌），並與歷史趨勢比對。</li>
+            <li><strong>Water Systems（4.2.8）</strong>：WFI 的典型根本原因是死角生物膜（假單胞菌）。取樣前需按製程沖洗、2 小時內測試（或冷藏 &le;24 小時）。滿盤生長（confluent growth）提示器材污染而非水質問題。</li>
+            <li><strong>Phase I 三種結論（4.3）</strong>：(1) Lab Error 找到 &rarr; 試驗無效 &rarr; CAPA 優先 &rarr; 重測 &rarr; 不進 Phase II；(2) 有疑點但證據不足 &rarr; 不確定 &rarr; 進 Phase II；(3) 無 Lab Error 跡象 &rarr; 偏差確認 &rarr; 強制進 Phase II。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR60 - Section 3b: Continued Process Verification Part 2 (5.3-5.5)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.3-5.5: Continued Process Verification Part 2 &mdash; Reacting, Change Management &amp; Reporting</h1>
+    <div class="subtitle">持續製程確認 第二部分 &mdash; 回應 CPV 數據信號、變更管理與報告</div>
+    <div class="page-info">PDA Technical Report No. 60 (Revised 2026): Process Validation &mdash; A Lifecycle Approach | p77 - p83</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 CPV 數據信號 (Data Signals) 的分類方式，以及如何區分可歸因變異、共同原因變異與特殊原因變異</li>
+        <li>掌握 CPV 決策樹 (Decision Tree) 的運作邏輯，避免對個別事件過度反應或反應不足</li>
+        <li>了解 CPV 如何整合品質系統以支持生命週期變更管理，包括 Established Conditions (ECs) 與 ICH Q12 框架</li>
+        <li>學習 Stage 3a 與 Stage 3b 報告的核心內容，以及 CPV 數據如何支援年度產品回顧 (APQR/YBPR)</li>
+        <li>認識即時與批次間回饋機制在持續製程改進中的角色</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec-5-3">5.3 Reacting to CPV Data Signals</a>
+        <a href="#sec-5-3-1">5.3.1 CPV Decision-Making</a>
+        <a href="#sec-5-4">5.4 Applying CPV for Lifecycle Change Management</a>
+        <a href="#sec-5-4-1">5.4.1 Quality Systems and CPV</a>
+        <a href="#sec-5-4-2">5.4.2 Regulatory Commitments and ECs</a>
+        <a href="#sec-5-5">5.5 CPV Data Review and Reporting</a>
+        <a href="#sec-5-5-1">5.5.1 Stage 3a Reporting</a>
+        <a href="#sec-5-5-2">5.5.2 Stage 3b Reporting</a>
+        <a href="#sec-5-5-3">5.5.3 Utilizing CPV for APR/YBPR</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.3: REACTING TO CPV DATA SIGNALS                      -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-3">5.3 Reacting to Continued Process Verification Data Signals</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The practical implementation of <span class="key-term">CPV</span> is expected to reduce the cost of quality, provide opportunities to improve product quality, increase product and process knowledge, and reduce regulatory compliance risks. A system or systems for continually and efficiently detecting unplanned departures from the process as designed is essential to accomplish the CPV goal. Collection and evaluation of <span class="key-term">process performance data</span> should allow detection of <span class="key-term">process drift</span> if adequately monitored through application appropriate methodologies. These efforts can identify variability in the process, signal potential process improvements, and provide opportunities to mitigate and control those variabilities if properly carried out.</p>
+        <div class="quote-box">
+            "The FDA PV guidance specifically states that trending should be performed in such a way that it guards against overreaction to individual events."
+        </div>
+        <p>An upfront approach for addressing the relevant variables and signals is therefore important in avoiding under-detection or overreaction. The CPV signals are <span class="key-term">"yellow flags"</span> that represent the process variability and drifts and the severity of the signal is then determined.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Core Concepts</h4>
+            <p><strong>CPV Data Signals (CPV 數據信號):</strong> CPV 信號並非 OOS（超出規格）或 OOT（超出趨勢）的偏差事件。它們是統計製程管制圖上出現的「黃旗」(yellow flags)，代表製程正在發生變異或漂移。信號的嚴重程度需要進一步評估，而非立即採取糾正措施。</p>
+            <p><strong>Process Drift (製程漂移):</strong> 指製程隨時間緩慢偏離原設計中心值的現象。若不及時偵測，漂移最終可能導致 OOS 或品質失敗。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>想像你開車在高速公路上。<strong>CPV 信號就像車道偏離警示系統</strong>：車子稍微偏向車道邊緣時，系統會發出「嗶嗶」聲提醒你（黃旗）。這不代表你已經出了車禍（OOS），而是提醒你注意方向盤。如果你每次聽到「嗶」就猛打方向盤（overreaction），反而會造成危險；但如果完全忽視警示（under-detection），最終可能衝出車道。CPV 的精髓就在於「適度反應」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Key Notes</h4>
+            <p><strong>FDA 明確要求：</strong>趨勢分析方法必須能夠防止對個別事件過度反應 (overreaction to individual events)。這意味著企業需要建立系統性的決策流程，而非讓個人判斷決定行動方案。</p>
+            <p><strong>CPV 的四大效益：</strong></p>
+            <ul>
+                <li>降低品質成本 (cost of quality)</li>
+                <li>提供產品品質改進機會</li>
+                <li>增加產品與製程知識</li>
+                <li>降低法規合規風險</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.3.1: CPV DECISION-MAKING                             -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-3-1">5.3.1 Continued Process Verification Decision-Making</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Routine CPV trending within established <span class="key-term">alert limits</span>, signal detection and action enables organizations to maintain an enhanced product control strategy. A CPV signal can be for a quality attribute, material attribute, process parameter defined in the control strategy, and/or performance indicator with varying degrees of severity. A <span class="key-term">risk-based categorization</span> of signals received (e.g., CPP, CQA) is also required, as all signals are not equally significant, which leads to requiring different action plans to address the signals on a case-by-case basis. When a significant amount of data is available, the suggested action in Figure 5.3.1-1 may be applied. Paths are determined based on practical relevance and the statistical strength of the signal. For instance, taking Path 1 is proposed when the observed drift results from an assignable event extrinsic to the process and characterized by an isolated event which may or may not have been identified as a quality management system (QMS) deviation or incident.</p>
+
+        <p style="text-align:center; font-style:italic; color:var(--text-medium); margin:1rem 0;">
+            <em>Figure 5.3.1-1 Decision-Tree Guideline (Stage 3b)</em>
+        </p>
+
+        <p>The CPV signal, once determined not to be an <span class="key-term">OOS/OOT/deviation</span>, is further assessed for statistical significance. A <span class="key-term">change review</span> step provides insights into any potential impact of the sources of variability, that is, personnel, raw material, process, test method, equipment, utilities, facility, and environmental conditions. Understanding the causes of variability allows for control at the source.</p>
+
+        <p>The preliminary assessment allows for determining the signal as either <span class="key-term">assignable</span>, <span class="key-term">common</span>, or <span class="key-term">special-cause variation</span>. The proposed path of either continuing monitoring, assessment of control strategy, or a change requirement is then documented. Defined systemic decision-making steps guard against overreaction to individual events as well as against failure to act on the observed process variability.</p>
+
+        <p>The systematic steps justify the robustness of routine CPV operational decision-making process, reduces person-to-person variability, and minimizes operational delays, holds, or product loss. A CPV program with both Stage 3a and Stage 3b would need different approaches for each stage because the data set available during Stage 3a is less compared to Stage 3b. When limited data is available, a science- and statistics-driven deep dive into the available data is warranted to understand what actions can be taken until additional data are generated.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Core Concepts: Signal Classification</h4>
+            <p><strong>Assignable Cause Variation (可歸因變異):</strong> 變異源自可辨識的特定原因，例如某批原料品質異常、設備校正偏差、新人員操作。這類變異可以追溯根因並加以消除。</p>
+            <p><strong>Common Cause Variation (共同原因變異):</strong> 製程固有的隨機波動，在統計管制範圍內屬正常現象。例如環境溫溼度的自然波動、不同批次原料間的微小差異。</p>
+            <p><strong>Special-Cause Variation (特殊原因變異):</strong> 超出正常統計範圍的非隨機變異，通常指向系統性問題。需要立即調查並可能需要修改控制策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Decision Tree Logic</h4>
+            <p>決策樹的核心邏輯包含三條路徑：</p>
+            <ul>
+                <li><strong>Path 1 (繼續監控):</strong> 信號來自可歸因的外部孤立事件（如一次性設備異常），不需要變更控制策略，繼續正常 CPV 監控即可</li>
+                <li><strong>Path 2 (評估控制策略):</strong> 信號顯示統計顯著性，需要深入分析控制策略是否仍然適當</li>
+                <li><strong>Path 3 (要求變更):</strong> 信號強烈且持續，表明現有控制策略已不足，必須執行變更</li>
+            </ul>
+            <p>關鍵步驟：CPV 信號 &rarr; 排除 OOS/OOT &rarr; 統計顯著性評估 &rarr; Change Review（變更審查）&rarr; 判定變異類型 &rarr; 選擇路徑</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>CPV 決策樹就像醫院的<strong>分級檢傷制度 (triage system)</strong>。急診室不會對所有病人採取相同的處理方式：</p>
+            <ul>
+                <li><strong>綠色（輕微）:</strong> 小感冒 = Path 1，觀察追蹤即可</li>
+                <li><strong>黃色（需注意）:</strong> 持續發燒 = Path 2，需要進一步檢查診斷</li>
+                <li><strong>紅色（緊急）:</strong> 心臟驟停 = Path 3，立即介入治療</li>
+            </ul>
+            <p>同樣地，並非所有 CPV 信號都同等重要——CQA 相關信號的風險等級通常高於 KPI 相關信號。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Stage 3a vs. Stage 3b Difference</h4>
+            <p>本文特別指出 Stage 3a 和 3b 需要不同的 CPV 方法：</p>
+            <ul>
+                <li><strong>Stage 3a:</strong> 數據量有限（剛上市的前幾批），統計信心不足，需要更保守謹慎的科學分析</li>
+                <li><strong>Stage 3b:</strong> 數據量充足，可以建立穩健的統計基線與管制圖，適用完整的決策樹流程</li>
+            </ul>
+            <p>這就像天氣預報：只有3天的數據做預測（Stage 3a）與用30年歷史數據建模（Stage 3b），所需的方法論完全不同。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>你的 CPV 管制圖顯示某 CQA 連續 7 個批次呈上升趨勢但仍在規格內。這屬於哪種變異？應選擇 Decision Tree 的哪條路徑？</li>
+                <li>為什麼 FDA 強調要防止「對個別事件過度反應」？在實務中，過度反應可能造成什麼後果？</li>
+                <li>Stage 3a 數據有限時，你會如何調整 CPV 信號的回應策略？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.4: CPV FOR LIFECYCLE CHANGE MANAGEMENT               -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-4">5.4 Applying Continued Process Verification for Lifecycle Change Management</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Applying <span class="key-term">CPV</span> to lifecycle change management refers to the integration of CPV principles and practices to monitor and ensure consistent product quality and process stability throughout the entire lifecycle of a product, especially during and after any changes in the process or product.</p>
+        <p>In regulated industries like pharmaceuticals, medical devices, or manufacturing, <span class="key-term">lifecycle changes</span>&mdash;such as adjustments in raw materials, equipment upgrades, process optimization, or even regulatory changes&mdash;are inevitable. Applying CPV in these contexts helps ensure that these changes do not negatively impact the product's quality, safety, or compliance with regulatory requirements.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Core Concept</h4>
+            <p><strong>Lifecycle Change Management (生命週期變更管理):</strong> 在產品的整個商業化生命週期中，原料、設備、製程、法規等各方面的變更是不可避免的。CPV 的角色是確保這些變更不會對產品品質、安全性或法規合規性產生負面影響。</p>
+            <p>CPV 不是一個靜態的「確認完畢就結束」的活動，而是一個動態的、持續性的監控框架，與企業的變更控制系統 (Change Control System) 緊密整合。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>將 CPV 比作汽車的<strong>行車電腦 (ECU) 監控系統</strong>。當你更換了新品牌的輪胎（原料變更）、升級了引擎零件（設備升級）、或調整了駕駛模式（製程優化），行車電腦會持續監測各項性能指標（油耗、排放、引擎溫度），確保這些變更不會影響整車的安全與性能。CPV 就是製藥業的「行車電腦」。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.4.1: QUALITY SYSTEMS AND CPV                         -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-4-1">5.4.1 Quality Systems and Continued Process Verification</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>The best tools for continued confirmation and refinement of process control are the <span class="key-term">quality system elements</span> that provide feedback and objective measures of process control. The tools are based on product and process understanding and are enabled by procedures that monitor, measure, analyze, and control the process performance. Communication of CPV signals to the manufacturing, quality, and regulatory stakeholders (for improvement and/or compliance reasons) is an iterative and essential part of the lifecycle.</p>
+        <p><span class="key-term">Feedback mechanisms</span>, where required, can vary between immediate (intra-batch or real-time), after each batch, after a series of batches, or after a defined period. Figure 5.4.1-1 depicts integration of sources of data and information for the purpose of process control to enable real-time continuous improvement decision-making.</p>
+
+        <p style="text-align:center; font-style:italic; color:var(--text-medium); margin:1rem 0;">
+            <em>Figure 5.4.1-1 Integration of Data Sources for Improved Process Controls</em>
+        </p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Feedback Mechanisms Hierarchy</h4>
+            <p>TR60 描述了四個層級的回饋機制，由即時到長期：</p>
+            <ul>
+                <li><strong>即時 / 批內回饋 (Intra-batch / Real-time):</strong> 如 PAT（製程分析技術）即時監控，在製造過程中即可調整參數</li>
+                <li><strong>批次後回饋 (After each batch):</strong> 每批完成後檢視 CPV 數據，判斷是否需要在下一批調整</li>
+                <li><strong>系列批次後回饋 (After a series of batches):</strong> 累積數批數據進行趨勢分析，偵測中期漂移</li>
+                <li><strong>定期回饋 (After a defined period):</strong> 如年度回顧 (APQR)，進行全面性製程健康評估</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>Key Stakeholder Communication</h4>
+            <p>CPV 信號的溝通對象包括三大部門：</p>
+            <ul>
+                <li><strong>製造部門 (Manufacturing):</strong> 負責執行實際的製程調整</li>
+                <li><strong>品質部門 (Quality):</strong> 評估信號對產品品質的影響，決定是否需要偏差調查</li>
+                <li><strong>法規部門 (Regulatory):</strong> 評估變更是否涉及 Established Conditions，是否需要向法規機構申報</li>
+            </ul>
+            <p>三個部門的協作是一個<strong>迭代過程 (iterative process)</strong>——不是一次性通知就結束。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>Practical Application: CDMO Scenario</h4>
+            <p>作為 CDMO，你同時為多個客戶生產不同產品。某條產線的 CPV 監控發現充填體積的標準差在過去 20 批中逐漸增加。你的回饋策略應該是：</p>
+            <ul>
+                <li><strong>即時：</strong>通知製造團隊加強該產線的設備檢查</li>
+                <li><strong>批次後：</strong>每批後比對充填泵的校正數據</li>
+                <li><strong>系列批次後：</strong>進行設備磨損分析，評估是否需要預防性維護排程</li>
+                <li><strong>定期：</strong>在下次 APQR 中納入此趨勢分析結果</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.4.2: REGULATORY COMMITMENTS AND ECs                  -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-4-2">5.4.2 Regulatory Commitments and Established Conditions</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Although the <span class="key-term">common technical document (CTD)</span> format has been defined for regulatory submissions, harmonized approaches to defining what changes would require a submission have yet to be determined. <span class="key-term">Established conditions (ECs)</span> are legally binding information (or approved matters) considered necessary to assure product quality. They are contained in a regulatory submission, proposed by the applicant, and approved by the regulatory authority. Any change to ECs necessitates a submission to the regulatory authority that is consistent with regional regulations or guidances or has been agreed upon during the review and approval of the marketing application.</p>
+        <p><span class="key-term">ICH Q12</span> provides a framework to facilitate the management of post-approval CMC changes more predictably and efficiently across the product lifecycle. It allows regulators to better understand the firm's PQS for the management of post-approval CMC changes. Incremental changes over time should also be considered, and the need for any additional actions (e.g., enhanced sampling) should be assessed.</p>
+        <p>The lack of harmonized requirements for lifecycle management is a disincentive for manufacturers to make improvements to increase process robustness. One post-approval change can take <span class="key-term">three to five years</span> to implement across all regions, resulting in additional costs and potential supply disruption due to the need for multiple inventories since opportunities for "operational flexibility" offered by the science- and risk-based approaches in ICH guidelines Q8&ndash;Q11 have not been fully realized.</p>
+        <p>Additional information and approaches to manage process changes can be found in PDA Technical Report No. 91: Post Approval Change Management and Implementation for Biologics and Pharmaceutical Drug Products &mdash; A User's Guide.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Core Concepts</h4>
+            <p><strong>Established Conditions (ECs, 已建立條件):</strong> 指法規核准文件中具有法律約束力的資訊，被視為確保產品品質所必要的條件。任何對 ECs 的變更都必須向法規機構提交申請。ECs 概念是 ICH Q12 的核心，目的在於明確界定哪些資訊具有法規約束力。</p>
+            <p><strong>ICH Q12:</strong> 全名為「Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management」，提供上市後 CMC 變更管理的框架，使變更流程更可預測、更有效率。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Regulatory Pain Point</h4>
+            <p>TR60 直接點出一個產業痛點：<strong>一項上市後變更可能需要 3-5 年才能在全球各地區實施。</strong>這是因為：</p>
+            <ul>
+                <li>各國法規對變更分類和申報要求不一致</li>
+                <li>需要同時維持多個版本的庫存（變更前後的產品）</li>
+                <li>ICH Q8-Q11 提供的「操作彈性」(operational flexibility) 尚未被充分利用</li>
+            </ul>
+            <p>這個問題對 CDMO 尤其嚴重，因為客戶的產品可能在數十個國家上市，每個國家都有不同的法規時程。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>Established Conditions 就像<strong>房屋所有權狀 (property deed)</strong> 上的資訊。如果你要改變房屋的結構（如拆除承重牆），必須向建管單位申請許可。但如果只是重新粉刷牆壁或更換家具，通常不需要申報。ICH Q12 的目的就是幫助產業和法規機構明確劃分哪些變更是「拆承重牆」（需要申報），哪些是「換家具」（不需要申報）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>為什麼「缺乏統一的生命週期管理要求」會成為製造商改善製程穩健性的阻礙？</li>
+                <li>假設你的 CDMO 客戶想要將某一關鍵製程參數的操作範圍擴大 10%。請說明這是否可能涉及 Established Conditions 的變更，以及你會建議什麼樣的 CPV 策略來支持此變更。</li>
+                <li>ICH Q12 如何幫助解決上市後變更需要 3-5 年實施的問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.5: CPV DATA REVIEW AND REPORTING                     -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-5">5.5 Continued Process Verification Data Review and Reporting</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Stage 3a is a product-specific, protocol-driven initial assessment following a new product launch that uses data from all stages of the PV lifecycle for <span class="key-term">statistical evaluation</span> to gain deeper product understanding and is pivotal in understanding product variability. The Stage 3a protocol may be initiated upon completion of Stage 2b. The number of batches required for Stage 3a should be statistically significant to provide sufficient data, understand variation in the process, and establish limits for Stage 3b. To achieve this goal, the sampling and testing requirements may be maintained at the same level of Stage 2b, as applicable.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Stage 3a Overview</h4>
+            <p><strong>Stage 3a（初始持續製程確認）</strong>是新產品上市後的第一階段強化監控。其核心特徵：</p>
+            <ul>
+                <li><strong>依循協議 (Protocol-driven):</strong> 有明確的取樣計畫、統計分析方法和完成標準</li>
+                <li><strong>強化取樣：</strong> 取樣和測試要求可能維持在 Stage 2b（PPQ）的水準</li>
+                <li><strong>目的：</strong> 建立 Stage 3b 常規監控的統計基線和管制限</li>
+                <li><strong>啟動時機：</strong> Stage 2b（PPQ）完成後即可開始</li>
+            </ul>
+            <p>Stage 3a 的批次數量必須具有統計意義，足以理解製程變異並建立 Stage 3b 的管制限。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>Stage 3a 就像新員工的<strong>試用期 (probation period)</strong>。在試用期間，主管會更密切地觀察新員工的表現（強化取樣），設定明確的評估標準（protocol），並在試用期結束時決定是否轉正以及未來的績效考核方式（Stage 3b 計畫）。試用期不是要找碴，而是要深入了解這位員工的能力和潛在風險。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.5.1: STAGE 3a REPORTING                              -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-5-1">5.5.1 Stage 3a Reporting</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Stage 3a is designed to allow close monitoring of process parameters and quality attributes while detecting the undesirable process variabilities and providing an opportunity to enhance the product control strategy. Additional sampling and testing are typically conducted at Stage 3a. Confirming the <span class="key-term">Stage 3b monitoring plan</span> is part of Stage 3a. Evaluation of data from Stage 3a and Stage 3b is a valuable resource for product development and risk mitigation of similar products and processes. The assessment demonstrates an organization's compliance in establishing an enhanced product control strategy and quality.</p>
+        <p>Stage 3a allows for an improved understanding of the sources of analytical and process variability which is important for acquiring further knowledge of the newly qualified commercial manufacturing process and suggesting continuous improvement or enhancement of the initial control strategy changes at the earliest opportunity.</p>
+        <p>The Stage 3a report may systematically summarize:</p>
+        <ul>
+            <li>Statistical assessment to determine the impact of <span class="key-term">material attributes</span></li>
+            <li>Statistical assessment to determine the impact of <span class="key-term">process parameters</span></li>
+            <li>Statistical assessment of <span class="key-term">quality attributes</span></li>
+            <li><span class="key-term">Multivariate correlation</span> analysis</li>
+            <li>Impact of changes, if any</li>
+            <li>Product <span class="key-term">stability data</span> analysis</li>
+            <li>Inter-batch and intra-batch variability</li>
+            <li>Estimating inherent process and method variability</li>
+            <li><span class="key-term">Process capability</span> and robustness indices</li>
+            <li>Verification of Stage 1 (QbD) design space with newly gathered data*</li>
+            <li>Review of OOS, deviations, complaints, and field alerts; where applicable, data collated for APQR should be utilized</li>
+            <li>Enhance control strategy recommendations and conclusions</li>
+            <li>Ongoing CPV (Stage 3b) monitoring criteria and justification</li>
+        </ul>
+        <p><em>*Note: The preliminary process capability assessment needs to be interpreted with caution considering the low number of batches.</em></p>
+        <p>A product-specific <span class="key-term">quality dashboard</span> may be a component of a Stage 3a assessment for determining product robustness, similar to any dashboards being used in Stage 2b. The dashboard can address the elements in FDA's <span class="key-term">Quality Metrics Reporting Program</span>, where the Agency suggests optional metrics as evidence of manufacturing robustness and a commitment to quality. Data reported may suggest the manufacturing site and processes are of low risk. Each processing stage can be evaluated against a predetermined process capability target to provide an overall product performance synopsis.</p>
+        <p>The Stage 3a assessment is a resource for product development and risk mitigation activities. A trained statistician should be responsible for the selection of the statistical tools employed in this assessment. The process and product understanding gained can be applied to new, similar process or product development.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Stage 3a Report Elements</h4>
+            <p>Stage 3a 報告是一份全面性的統計評估文件，涵蓋 13 個核心要素。以下將其歸納為四大類別：</p>
+            <p><strong>1. 變異性分析：</strong></p>
+            <ul>
+                <li>物料屬性影響評估</li>
+                <li>製程參數影響評估</li>
+                <li>品質屬性統計評估</li>
+                <li>批間 (inter-batch) 與批內 (intra-batch) 變異性</li>
+                <li>固有製程與方法變異性估計</li>
+            </ul>
+            <p><strong>2. 相關性與能力分析：</strong></p>
+            <ul>
+                <li>多變量相關性分析 (Multivariate correlation)</li>
+                <li>製程能力與穩健性指數</li>
+                <li>QbD 設計空間驗證</li>
+            </ul>
+            <p><strong>3. 歷史數據回顧：</strong></p>
+            <ul>
+                <li>變更影響評估</li>
+                <li>穩定性數據分析</li>
+                <li>OOS、偏差、客訴、field alert 回顧</li>
+            </ul>
+            <p><strong>4. 前瞻性建議：</strong></p>
+            <ul>
+                <li>控制策略強化建議</li>
+                <li>Stage 3b 監控標準與理由</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>Quality Dashboard and FDA Quality Metrics</h4>
+            <p>TR60 建議使用<strong>產品品質儀表板 (Quality Dashboard)</strong>作為 Stage 3a 評估的一部分。此儀表板可以整合 FDA 品質指標報告計畫 (Quality Metrics Reporting Program) 的要素，包括：</p>
+            <ul>
+                <li>批次合格率 (Lot Acceptance Rate)</li>
+                <li>客訴率 (Complaint Rate)</li>
+                <li>產品品質偏差率 (Product Quality Deviation Rate)</li>
+            </ul>
+            <p>透過儀表板呈現的數據，可以向 FDA 證明製造場址和製程屬於<strong>低風險 (low risk)</strong>等級。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Important Caveat</h4>
+            <p>TR60 特別提醒：由於 Stage 3a 的批次數量較少，初步的<strong>製程能力評估 (process capability assessment)</strong> 需要謹慎解讀。統計指標如 Ppk 在小樣本下的信賴區間會很寬，不宜過度依賴單一數值。</p>
+            <p>此外，TR60 強調 Stage 3a 的統計工具選擇應由<strong>受過訓練的統計學家 (trained statistician)</strong> 負責——這不是一般品質人員可以自行決定的事項。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>Practical Application: Knowledge Transfer</h4>
+            <p>TR60 指出 Stage 3a 評估的知識可以應用於新的、類似的製程或產品開發。對 CDMO 而言，這是一個重要的<strong>知識資產 (knowledge asset)</strong>：</p>
+            <ul>
+                <li>客戶 A 的單株抗體產品 Stage 3a 數據可以作為客戶 B 類似產品開發的參考</li>
+                <li>某平台製程的 Stage 3a 報告可以加速新產品的 Stage 1 風險評估</li>
+                <li>跨產品的趨勢比較可以識別場址層級的系統性問題</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>為什麼 Stage 3a 報告需要包含「QbD 設計空間驗證」？這與 Stage 1 的設計空間有什麼關係？</li>
+                <li>如果你的 Stage 3a 評估發現某個 CPP 的實際操作範圍比 Stage 1 設計空間窄很多，這代表什麼？你會採取什麼行動？</li>
+                <li>Quality Dashboard 如何幫助 CDMO 在 FDA 檢查時展示製程的穩健性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.5.2: STAGE 3b REPORTING                              -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-5-2">5.5.2 Stage 3b Reporting</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p><span class="key-term">SPC tools</span> and predefined rules are primarily used in CPV to alert to potential drifts. Triggering a signal indicates with reasonable statistical confidence that something may have changed within the process that may have an impact on the product's quality, safety, process robustness, and control. While these signals should trigger a response reaction, the reaction strategy should depend on the <span class="key-term">risk level</span>.</p>
+        <p>The continual Stage 3b sampling and testing requirements may be included in the <span class="key-term">master batch record</span> and monitored batch-to-batch electronically through other controls. Systems should be in place to ensure that Stage 3b signals, if any, are addressed prior to the start of processing the next batch of the product or similar products.</p>
+        <p>Qualified monitoring systems with <span class="key-term">real- or near-real-time data trending</span> integrate product information, parameters, and quality attributes, thus allowing for swift decision making on an observed signal. Section 5.3.1 discusses a decision-making process that can be followed. The assessment outcome is documented electronically or according to standard operating procedure (SOP) requirements.</p>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>Stage 3b Reporting Framework</h4>
+            <p>Stage 3b 報告與 Stage 3a 有根本性的不同：</p>
+            <ul>
+                <li><strong>Stage 3a:</strong> 一次性的總結報告，在完成強化取樣後撰寫</li>
+                <li><strong>Stage 3b:</strong> 持續性的監控報告，融入日常批次生產作業中</li>
+            </ul>
+            <p>Stage 3b 的取樣和測試要求可以直接納入<strong>主批次紀錄 (Master Batch Record)</strong>，這意味著 CPV 監控不是一個獨立的額外活動，而是日常生產流程的一部分。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Critical Timing Requirement</h4>
+            <p>TR60 提出一個重要的時效性要求：<strong>Stage 3b 信號必須在開始處理下一批產品之前得到處理。</strong>這意味著：</p>
+            <ul>
+                <li>CPV 數據回顧不能等到月底或季度才進行</li>
+                <li>需要即時或近即時的數據趨勢系統</li>
+                <li>決策流程必須足夠簡潔，不會造成生產延誤</li>
+            </ul>
+            <p>對於高頻率生產的產品（如每天多批），這對數據系統和人員效率都是很大的挑戰。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>Stage 3b 監控就像航空公司的<strong>飛航安全檢查制度</strong>。每次飛行後，機組人員都會回報任何異常（批次後數據回顧）。如果發現任何信號（如引擎振動異常），必須在下一次起飛前解決——你不能讓有潛在問題的飛機繼續載客。同樣地，CPV 信號必須在下一批產品開始之前被處理。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR60 建議將 Stage 3b 取樣要求納入主批次紀錄，而非獨立的 CPV 協議？</li>
+                <li>在一個每天生產 3 批的高速產線上，如何確保 CPV 信號在下一批開始前被處理？需要什麼樣的系統支援？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION 5.5.3: UTILIZING CPV FOR APR/YBPR                     -->
+<!-- ============================================================= -->
+<h2 class="section-title" id="sec-5-5-3">5.5.3 Utilizing Continued Process Verification for Annual Product Review / Yearly Biologic Product Report</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>Original Text</h3>
+        <p>Ongoing monitoring allows for early detection of potential process drift. Where the corrective actions are required, they could be implemented before reaching the failure point. On-going monitoring and <span class="key-term">corrective and preventative action (CAPA)</span> implementation should not be postponed until the next APQR season but executed for each batch manufacturing.</p>
+        <div class="quote-box">
+            "However, the CPV data summary should be used or referenced for completing the applicable sections of an APQR report."
+        </div>
+        <p>Stage 3b covers many <span class="key-term">APQR</span> components, a few of which are identified in Table 5.5.3-1. The opportunity to continually analyze process data more often than in the traditional APQR makes the CPV program critical in detecting drifts and proactively taking action (if required) on those signals to avoid potential process failures.</p>
+
+        <h3 style="margin-top:1.5rem;">Table 5.5.3-1: Annual Product Review or Yearly Biologic Product Report Elements Supported by CPV</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Report Elements / Sections</th>
+                        <th>Supported by CPV Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Manufactured Batches Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>Raw Material Attribute Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>Environmental Monitoring Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>Media Fill Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>PM / Cal Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Yield Trend Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>Training Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Change Trend Review (Continuous Improvement included)</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>CPP Trend Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>CQA Trend Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>Re-Qualification / Validation Results Review</td><td style="text-align:center; color:#155724; font-weight:600;">Yes</td></tr>
+                    <tr><td>Non-Conformance / Investigation Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Rejected Batch Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Complaint Trend Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Field Alert / Recall Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Retain Sample Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Quality Agreement Review</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                    <tr><td>Review of Previous APR</td><td style="text-align:center; color:#721c24; font-weight:600;">No</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h3>Tutorial Commentary</h3>
+
+        <div class="concept-box">
+            <h4>CPV vs. APQR: Complementary but Not Interchangeable</h4>
+            <p><strong>APQR (Annual Product Quality Review, 年度產品品質回顧):</strong> 又稱 APR，是法規要求的年度性綜合品質評估，涵蓋製造、品質、合規等多面向。</p>
+            <p><strong>YBPR (Yearly Biologic Product Report, 年度生物製品報告):</strong> 生物製品特有的年度報告要求。</p>
+            <p>TR60 明確指出兩個關鍵原則：</p>
+            <ul>
+                <li><strong>CPV 不能取代 APQR</strong>（在 Section 5.1.3 中已提及）</li>
+                <li><strong>CAPA 不應等到 APQR 季節才執行</strong>——應該在每批生產時就處理</li>
+            </ul>
+            <p>CPV 提供的是持續性、即時性的數據分析，而 APQR 是一個定期的全面性回顧。兩者互補但不可互相替代。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Table Analysis: What CPV Covers</h4>
+            <p>從表 5.5.3-1 可以觀察到一個清晰的模式：</p>
+            <p><strong>CPV 支持的要素（10 項）：</strong>主要是與製程數據、趨勢分析直接相關的項目——批次回顧、原料屬性、環境監控、收率趨勢、CPP/CQA 趨勢等。</p>
+            <p><strong>CPV 不支持的要素（8 項）：</strong>主要是品質管理系統層面的項目——訓練、客訴、召回、品質協議等。這些需要 QMS 其他模組的數據支持。</p>
+            <p>這說明 CPV 是 APQR 的<strong>重要數據來源</strong>，但 APQR 的範圍比 CPV 更廣，需要整合多個品質系統的資訊。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>CPV 與 APQR 的關係就像<strong>月報與年報</strong>的關係。公司的財務月報（CPV）提供即時的營運數據，讓管理層能及時發現問題並採取行動。年度財報（APQR）則是更全面的檢視，包含策略評估、公司治理、社會責任等月報不會涵蓋的內容。你不會等到年底才處理現金流問題（不應等到 APQR 才執行 CAPA），但年報仍然需要整合所有月報的數據。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>Practical Application: Streamlining APQR</h4>
+            <p>一個成熟的 CPV 計畫可以大幅提升 APQR 的效率：</p>
+            <ul>
+                <li><strong>數據就緒：</strong>表中 10 個「Yes」的要素，CPV 系統已經持續收集和分析數據，APQR 時只需彙整引用</li>
+                <li><strong>減少重工：</strong>無需在 APQR 季節重新趨勢分析已經在 CPV 中完成的數據</li>
+                <li><strong>前瞻性管理：</strong>CPV 信號已在日常中處理，APQR 只需確認所有信號都已被適當回應</li>
+            </ul>
+            <p>對 CDMO 而言，管理數十個產品的 APQR 是巨大的工作量。良好的 CPV 計畫可以從根本上降低 APQR 的執行負擔。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>為什麼「PM/Cal Review」和「Training Review」不被視為 CPV 支持的 APQR 要素？這些項目的數據來源是什麼？</li>
+                <li>如果你的 CPV 系統在第 6 個月偵測到某 CQA 的顯著漂移並已完成 CAPA，在年度 APQR 中你應該如何呈現這個事件？</li>
+                <li>請解釋為什麼「CAPA 不應等到 APQR 季節才執行」對患者安全至關重要。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY                                                -->
+<!-- ============================================================= -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>Section Summary</h3>
+    <ul>
+        <li><strong>CPV 信號是「黃旗」而非「紅旗」：</strong>CPV 數據信號代表製程變異和漂移，需要系統性評估其嚴重程度，而非立即觸發糾正行動。FDA 明確要求防止對個別事件過度反應。</li>
+        <li><strong>Decision Tree 三路徑模型：</strong>CPV 信號經過 OOS/OOT 排除、統計顯著性評估和變更審查後，根據變異類型（可歸因/共同原因/特殊原因）分別導向繼續監控、評估控制策略或要求變更三條路徑。Stage 3a 和 Stage 3b 因數據量不同需要不同的決策方法。</li>
+        <li><strong>CPV 是生命週期變更管理的核心工具：</strong>透過品質系統的整合，CPV 提供即時到長期的多層級回饋機制（批內即時、批次後、系列批次後、定期），確保變更不會負面影響產品品質。</li>
+        <li><strong>Established Conditions (ECs) 與 ICH Q12：</strong>法規核准文件中具有約束力的資訊變更需要申報。目前各國法規不一致導致一項變更可能需要 3-5 年才能全球實施，ICH Q12 旨在解決此問題。</li>
+        <li><strong>Stage 3a 報告是全面性統計評估：</strong>涵蓋 13 個核心要素，包括變異性分析、相關性分析、歷史數據回顧和前瞻性建議。注意初步製程能力評估在小樣本下需謹慎解讀。</li>
+        <li><strong>Stage 3b 融入日常生產：</strong>取樣要求可納入主批次紀錄，信號必須在下一批開始前處理，需要即時或近即時的數據系統支援。</li>
+        <li><strong>CPV 支持但不取代 APQR：</strong>CPV 可支持 APQR 中 10 個核心要素的數據需求，但 APQR 仍需整合 QMS 其他模組的資訊。CAPA 不應延遲至 APQR 季節才執行。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 60 (Revised 2026): Process Validation &mdash; A Lifecycle Approach</p>
+    <p>Section 3b: Continued Process Verification Part 2 (5.3-5.5) | Pages 77-83</p>
+    <p>Educational Material for CDMO Professionals</p>
+</div>
+
+</body>
+</html>

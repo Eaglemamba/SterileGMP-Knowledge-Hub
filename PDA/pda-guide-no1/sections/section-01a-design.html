@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide No.1 — Section 1A: Aseptic Filling System Design Elements</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1A — Aseptic Filling System Design Elements</h1>
+    <div class="subtitle">無菌充填系統設計要素：產品考量因素</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | p8 – p16 &nbsp;|&nbsp; Sections 1.0, 1.1.1 – 1.1.3</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-container">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解「靶心設計哲學」——無菌保證 (SA) > 關鍵品質屬性 (CQA) > 商業彈性的決策層級，並能在實際情境中正確應用優先順序。</li>
+        <li>掌握高藥理活性產品（高毒性、高效能藥物）對充填系統的強制性要求，說明為何必須選擇 cRABS 或隔離器技術。</li>
+        <li>針對五大產品敏感性（溫度、氧氣、光線、金屬、矽油），說明每項敏感性的降解機制及對應的工程解決方案。</li>
+        <li>識別產品物理化學性質（黏度、表面張力、起泡性、懸浮液、易乾燥、易燃易爆）如何影響充填系統的技術選型，以及可能的設計對策。</li>
+        <li>從 CDMO 商業角度理解：設計階段的每一個技術決策，將鎖定未來 10 年以上的成本結構與業務彈性。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.0 — OVERVIEW -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-0">1.0 Aseptic Filling System Design Elements — Overview &nbsp;|&nbsp; 無菌充填系統設計要素概述</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>When designing an aseptic filling process, there are many considerations. First, we must recognize that the product is intended to be a <span class="key-term">sterile product</span> and that our target is an optimally designed <span class="key-term">aseptic filling system</span> (see the red bullseye in Figure 1.0-1) that supports the goal of producing a sterile product. Therefore, the filling system must be easy to clean, biodecontaminate, and/or sterilize, minimize the need for interventions, maintain air quality within the environment during operation, and the like. Ensuring <span class="key-term">sterility assurance (SA)</span> will govern all our decision-making as the primary consideration.</p>
+
+        <p>Next, the attributes of the product that will impact the design are evaluated. These include, but are not limited to, the product <span class="key-term">critical to quality attributes (CQAs)</span>. Only after these product attributes are fulfilled by the design, can the desired flexibility and business targets be considered. Figure 1.0-1 illustrates some of these various considerations and shows the complexity of how they might interplay to identify the optimal aseptic filling system design.</p>
+
+        <div class="quote-box">
+            "When considering all the factors depicted in Figure 1.0-1 collectively, compromises may be required. For example, some of the desired business or flexibility attributes may be waived in order to ensure that the product CQAs, including sterility, are fulfilled."
+        </div>
+
+        <p>The points to consider for several of the elements to be evaluated in a mature design are provided in this topic and throughout this document. Section 21.0 contains case studies that make use of the principles described in Section 1.0 to demonstrate how design decisions and trade-offs are made.</p>
+
+        <p>It is important to note that the physical equipment selection is not the only necessary element for success in aseptic filling. The ways in which <span class="key-term">personnel interact</span> with the filling system represent risks to microbial control and opportunities to improve sterility assurance. Therefore <em>Part 3: Operational Considerations Including Interventions, Component Handling, Filtration, Fluid Pathway, and Discards</em> should not be overlooked when identifying an appropriate design. Only as an <span class="key-term">integrated whole</span> (engineering solutions coupled with the required operational behaviors) can an appropriate aseptic design be accomplished.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析：「靶心設計哲學」</h4>
+            <p>PDA Guide No.1 的核心是一個「靶心 (bullseye)」模型——把最終目標放在圓心，向外依序排列各層考量。</p>
+            <p><strong>第一圈（最核心）：無菌保證 (Sterility Assurance, SA)</strong><br>
+            這是絕對的底線。任何設計決策，第一個問題永遠是：「這會不會損害無菌性？」若答案是「會」，則無論其他理由多充分，都不可行。</p>
+            <p><strong>第二圈：關鍵品質屬性 (CQAs)</strong><br>
+            包括效價、純度、外觀、pH、可見微粒等。SA 是 CQA 的一部分，但 CQA 的範圍更廣，涵蓋所有影響病患安全與療效的屬性。</p>
+            <p><strong>第三圈（最外層）：商業彈性與業務目標</strong><br>
+            如產能、多產品兼容性、換批速度、成本。只有在前兩圈需求都被滿足後，才輪到這一層考量。</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><span class="hierarchy-box level-1">1. 無菌保證 SA — 最優先，不可妥協</span></div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level"><span class="hierarchy-box level-2">2. 產品 CQA — 病患安全，必須滿足</span></div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level"><span class="hierarchy-box level-3">3. 商業彈性 — 最後考量，可以妥協</span></div>
+            </div>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：手術室中準備食物</h4>
+            <p>無菌充填 (Aseptic Filling) 就像在手術室裡為病患準備食物。食物（藥液）本身要安全無虞，但更重要的是，整個準備環境（充填系統）必須達到手術室等級的潔淨度。</p>
+            <p>你不會因為覺得「手術室太麻煩，換個普通廚房就好」而妥協——因為病患的生命安全不容妥協。這正是「SA 永遠是 #1」的精髓。</p>
+            <p>而且手術室的成功不只靠設備（無影燈、消毒器械），還要靠外科醫師的正確行為（洗手、穿無菌衣）。同理，無菌充填的成功需要「工程解決方案 + 操作行為」的整合，缺一不可。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：設計決策的不可逆性</h4>
+            <p>本章最重要的隱含訊息：<strong>充填線設計是一個高度不可逆的決策</strong>。一旦系統建置完成，要改變基礎架構（例如從 RABS 升級到 Isolator，或增加真空充填能力）的成本極高，停產損失更大。</p>
+            <p>這就是為什麼「在設計階段花足夠時間思考所有產品屬性」遠比「先建好再改」更有價值。PDA 指南的整個第一章，就是在教你「設計前該問哪些問題」。</p>
+            <p>對 CDMO 而言，這個設計決策往往鎖定了未來 10–15 年的客戶類型和接案能力。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CDMO 的設計選型邏輯</h4>
+            <p>假設你是一個 CDMO 的工程主管，正在規劃一條新的無菌充填線。業務部門說：「我們想同時接生物製劑小瓶和預填式針筒，最好也能處理懸浮液。」</p>
+            <p>按照靶心模型，你的思考順序應該是：</p>
+            <ol style="margin-left:1.2rem; font-size:0.92rem;">
+                <li><strong>SA 層面</strong>：每種容器形式的無菌保證方式是否相容？預填針筒和小瓶的密封完整性驗證是否都能在同一個屏障系統內實現？</li>
+                <li><strong>CQA 層面</strong>：懸浮液需要攪拌和再循環，生物製劑對剪切力敏感——這兩者在同一條線上的充填系統（pump type）能同時滿足嗎？</li>
+                <li><strong>商業彈性層面</strong>：換型時間多長？需要幾套換型零件？這條「多能彈性線」的實際產能是否真的能支撐業務需求？</li>
+            </ol>
+            <p>只有前兩層都有明確可行的答案，才值得進行商業可行性計算。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個 CDMO 客戶要求「充填速度至少 400 vials/min 以降低成本」，但你的評估顯示這個速度下干預頻率會顯著上升。根據靶心模型，你應該如何回應這個商業需求？</li>
+                <li>為什麼 PDA 強調「工程解決方案必須與操作行為整合」？舉一個具體例子說明「設備再好、但操作不當」如何危害無菌性。</li>
+                <li>Figure 1.0-1 描述的「bullseye」概念，與 ICH Q8 的 Quality by Design (QbD) 理念有何相似之處？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1 — PRODUCT CONSIDERATIONS (INTRO) -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1">1.1 Product Considerations for Aseptic Filling System Selection and Design &nbsp;|&nbsp; 無菌充填系統選型與設計的產品考量</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The <span class="key-term">physicochemical attributes</span>, sensitivities, and tendencies of each product may dictate special filling conditions for that material. Further, the product's attributes, or the intended administration of the product, may also designate specific final containers. In general, if there are specific physicochemical attributes associated with the product that dictate special handling, these considerations will often outweigh the desired requirements for flexibility or fulfillment of business desires.</p>
+
+        <p>Sections 1.1.1–1.1.3 discuss product attributes that may need to be taken into consideration.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：產品屬性如何「強迫」設計決策</h4>
+            <p>這段文字傳達一個重要訊息：<strong>產品的物理化學特性不是可以協商的商業條件，而是設計的硬性約束條件 (hard constraint)</strong>。</p>
+            <p>舉例：如果你的產品對矽油敏感，你就沒有選擇——容器密封系統必須是無矽油的。這個約束會連鎖影響：容器類型 → 封蓋方式 → 充填方式 → 整條線的機械設計。</p>
+            <p>換句話說，產品屬性是「上游輸入」，充填線設計是「下游輸出」。很多 CDMO 的設計失誤，源於在不充分了解產品屬性的情況下，就倉促選定設備型號。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：1.1.1 到 1.1.3 的地圖</h4>
+            <p>接下來這個大章節可以分三個層次來理解：</p>
+            <ul>
+                <li><strong>1.1.1 藥理活性</strong>：產品對「人」的危害 → 決定屏障系統選型</li>
+                <li><strong>1.1.2 產品敏感性</strong>：環境因素對「產品」的危害 → 決定充填環境與容器設計</li>
+                <li><strong>1.1.3 物理化學性質</strong>：產品本身的行為特性 → 決定充填技術與針頭設計</li>
+            </ul>
+            <p>記住這個地圖，讀接下來的章節時就不會迷失。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.1 — PHARMACEUTICAL ACTIVITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-1">1.1.1 Pharmaceutical Activity &nbsp;|&nbsp; 藥理活性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Products that are <span class="key-term">hazardous</span> (e.g., highly potent, toxic, specific designations for <span class="key-term">occupational exposure band (OEB)</span>, or <span class="key-term">occupational exposure level (OEL)</span>) should be filled using a <span class="key-term">closed Restricted Access Barrier System (cRABS)</span> or <span class="key-term">isolator</span> technology with containment features (e.g., airflow, appropriate pressure cascades) designed to protect the environment, personnel, and product.</p>
+
+        <p>The enclosures also commonly include special capabilities to clean residual product, handle soiled parts, and deal with spillage or breakage. In such cases, <span class="key-term">safety of all personnel</span> must be considered in addition to the routine considerations for product quality and safety.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析</h4>
+            <p><strong>OEB (Occupational Exposure Band，職業暴露區間)</strong>：一個 1–5 分的分級系統，數字越高代表藥物毒性/效能越強，對操作人員的暴露限制越嚴格。OEB 4–5 通常要求隔離操作。</p>
+            <p><strong>OEL (Occupational Exposure Level，職業暴露限值)</strong>：以 µg/m³ 表示的空氣中允許濃度上限。OEL 越低，代表藥物越危險，需要越嚴密的圍堵措施。</p>
+            <p><strong>cRABS (closed Restricted Access Barrier System，密閉式限制進出屏障系統)</strong>：比開放式 RABS 提供更好的圍堵，但比隔離器略遜。適合中高危藥物。</p>
+            <p><strong>Isolator (隔離器)</strong>：全密封環境，人員透過手套箱操作，提供最高等級的圍堵與無菌保證。高效能或高細胞毒性藥物的首選。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：隔離器 vs RABS — 太空站 vs 無塵室</h4>
+            <p>想像你要在月球上工作：</p>
+            <p><strong>隔離器 = 太空站</strong>：完全密封的人造環境，你與外界的互動只能透過特定的氣閘（RTP 快速傳遞口）。進出都有嚴格程序。月球塵埃（微生物、高效能藥物）絕對進不來，你的呼吸的空氣也不會洩漏出去。</p>
+            <p><strong>cRABS = 特殊防護無塵室</strong>：有物理屏障和正壓保護，但不是完全密封。適合月球表面短暫作業，但不適合長期暴露在極端環境中。</p>
+            <p>高效能藥物（如抗癌藥物、荷爾蒙類）之所以需要隔離器，不是為了保護「藥品」不受汙染，而是為了保護「操作人員」不受藥品傷害——這是 1.1.1 與 1.1.2 最根本的區別。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：雙向保護的概念</h4>
+            <p>一般的無菌充填屏障系統（RABS/Isolator）主要目的是「保護產品不受外界汙染」——正壓設計，防止外界微生物進入。</p>
+            <p>但高藥理活性產品的充填系統必須同時具備「圍堵功能 (containment)」——<strong>負壓設計或雙重屏障</strong>，防止危險藥物洩漏傷害人員。</p>
+            <p>這兩個目標在壓力設計上有時是矛盾的（正壓 vs 負壓），因此需要精心的氣流設計（如 cascade pressure，階梯式壓力差）來同時達成兩個目標。這是高效能藥物充填線設計中最具挑戰性的工程問題之一。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>決策框架：選擇屏障系統的判斷邏輯</h4>
+            <pre>
+產品 OEB 等級評估
+      │
+      ├─ OEB 1-2 (低毒性)
+      │     → 標準開放式 RABS 或傳統無菌室
+      │
+      ├─ OEB 3 (中等毒性)
+      │     → 開放式 RABS 或 cRABS
+      │     → 需評估：正壓充填環境 + 局部廢氣處理
+      │
+      ├─ OEB 4 (高毒性，如抗癌藥)
+      │     → cRABS（密閉式）為最低要求
+      │     → 優先考慮隔離器 (Isolator)
+      │
+      └─ OEB 5 (超高毒性，OEL &lt; 1 µg/m³)
+            → 隔離器為強制要求
+            → 需設計負壓圍堵 + 雙手套箱
+            → 清洗站、廢料處理均需特殊設計
+            </pre>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CDMO 接案的成本影響</h4>
+            <p>當一個 CDMO 接到一個 OEB 4/5 的高效能藥物充填專案時，如果現有設備是標準 RABS，可能面臨以下情況：</p>
+            <ul>
+                <li>需要安裝額外的圍堵設備（成本：數百萬美元）</li>
+                <li>現有人員需要高效能藥物處理培訓</li>
+                <li>清潔驗證程序需要完全重新設計（包含殘留限值計算）</li>
+                <li>廠房空調系統可能需要改造（廢氣過濾）</li>
+            </ul>
+            <p>這些都是「在接案報價前就應該評估」的成本，而非事後發現的驚喜。許多 CDMO 在這一點上吃過大虧。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個抗體藥物偶聯物 (ADC) 產品，其 OEL 為 0.1 µg/m³，你會推薦哪種屏障系統？說明理由。</li>
+                <li>為什麼高效能藥物的充填設備「特別能夠清洗殘留產品」這個能力如此重要？從 GMP 和員工安全兩個角度分別說明。</li>
+                <li>cRABS 和傳統 RABS 在「密閉性」上的主要差異是什麼？對無菌保證的影響有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.2 — PRODUCT SENSITIVITIES (INTRO) -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-2">1.1.2 Product Sensitivities &nbsp;|&nbsp; 產品敏感性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Biological or physicochemical requirements for ensuring the quality and safety of the product must be assured. Sections 1.1.2.1–1.1.2.6 provide examples of product sensitivities that need to be taken into consideration.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>五大敏感性概覽</h4>
+            <p>接下來的 1.1.2.1–1.1.2.5 涵蓋了最常見的產品敏感性。每一項都代表一個「如果忽略，會造成藥品降解或病患受害」的風險點。</p>
+            <p>學習方式建議：對每一項敏感性，記住三件事：<strong>(1) 降解機制是什麼、(2) 主要工程對策、(3) 如果不處理的後果</strong>。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.2.1 — TEMPERATURE SENSITIVITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-2-1">1.1.2.1 Temperature Sensitivity &nbsp;|&nbsp; 溫度敏感性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Temperature-sensitive products</span> may require temperature-controlled conditions during filling, (e.g., temperature control may be required on the bulk vessel, product-feed pathway, intermediate vessel and/or filling system). Alternatively, or in addition, there could be a <span class="key-term">time limitation for filling</span> to prevent excessive "time out of temperature" for any individual dose.</p>
+
+        <p>In some cases, <span class="key-term">recirculation</span> is possible as a means to maintain the product in contact with temperature-control media (e.g., vessel jacket, temperature coils within the vessel) (see Section 4.0 and Section 4.7 for additional design options).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：溫度敏感性的兩種控制策略</h4>
+            <p><strong>策略一：主動溫控 (Active Temperature Control)</strong><br>
+            在充填路徑的每一個環節都維持目標溫度。包括：保溫桶（夾套或內置溫控盤管）、保溫輸液管路（熱保護外層）、充填機本體的溫控。典型例子：某些蛋白質藥物需要在 2–8°C 冷藏溫度下充填。</p>
+            <p><strong>策略二：時間限制 (Time Limitation)</strong><br>
+            設定每個充填批次的最大允許時間（即「允許出溫控時間 time out of temperature」）。超過時間，剩餘藥液必須廢棄。這個時間限制通常來自藥品開發時的穩定性研究數據。</p>
+            <p><strong>再循環 (Recirculation)</strong>：當充填線必須暫停時，讓藥液在溫控容器中持續循環，避免局部過熱或過冷。但要注意：再循環對剪切力敏感的蛋白質藥物可能有風險（見 1.1.2.6）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：冰淇淋工廠的冷鏈</h4>
+            <p>溫度敏感性藥品就像冰淇淋：從工廠出來到送到消費者手中，必須全程維持冷鏈。如果中間某個環節斷鏈（運送卡車沒有冷藏），冰淇淋融化又再凍結，品質就被破壞了——即使外觀看起來還好。</p>
+            <p>藥品也是如此。蛋白質藥物在偏高溫度下可能發生聚集 (aggregation)，即使後來放回冷藏，損害已無法逆轉。充填過程中的「溫控冷鏈」，就是確保藥品從桶槽到容器密封的整個過程，溫度從未偏離規格。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：不只是冷藏，也有需要加熱充填的藥品</h4>
+            <p>大多數人想到「溫度控制」就想到「冷藏」，但有些藥品（如含蠟脂質的半固態製劑）在常溫下黏度過高，必須加熱到特定溫度才能流動充填，但又不能過熱以免降解。這類藥品的充填窗口可能極窄（例如 40–45°C），對整條充填路徑的溫度均一性要求極高。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>設計考量清單：溫控充填系統的關鍵問題</h4>
+            <pre>
+設計問題清單：
+1. 目標充填溫度範圍為何？（min/max）
+2. 充填路徑各段（桶槽 → 管路 → 泵 → 針頭）
+   的溫度均一性能否維持？
+3. 允許的 "time out of temperature" 上限是多少？
+   （依據穩定性研究）
+4. 停線時是否需要再循環？
+   若是，再循環路徑對產品有無額外剪切力風險？
+5. 溫控系統故障的備援計畫為何？
+   （偏差處理程序）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個需要 2–8°C 充填的 mRNA 疫苗，充填線因設備警報停機 30 分鐘。你的 SOP 說明允許 time out of temperature 上限為 2 小時。這批藥品應如何處置？需要哪些評估步驟？</li>
+                <li>為什麼「再循環」可以幫助維持溫度，但對某些生物製劑來說又可能有風險？說明其中的矛盾，並提出一個可能的解決方案。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.2.2 — OXYGEN SENSITIVITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-2-2">1.1.2.2 Oxygen Sensitivity &nbsp;|&nbsp; 氧氣敏感性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Oxygen-sensitive products</span> can experience <span class="key-term">oxidation-degradation</span> with a loss of effectiveness of the product in the presence of oxygen over time. Steps must be taken during holding and processing to reduce the risk of such degradation. <span class="key-term">Inert gases</span> are therefore used in the headspace of holding vessels (e.g., <span class="key-term">nitrogen overlay</span>) during the filling and closing of the filled containers to minimize oxygen exposure.</p>
+
+        <p>Overlay in the container may be accomplished with:</p>
+        <ul>
+            <li><span class="key-term">Pre-gassing</span> — gassing of the container before filling</li>
+            <li><span class="key-term">Gassing during filling</span> — with a special double-walled filling needle</li>
+            <li><span class="key-term">Post-gassing</span> — gassing after filling but before closing</li>
+            <li><span class="key-term">Gassing during closing</span> — the most important and effective method for overlay</li>
+        </ul>
+
+        <p>Gassing during closing is the most important and effective method for overlay (see Section 4.0 and Section 4.9).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：氧化降解與惰性氣體覆蓋</h4>
+            <p><strong>氧化降解 (Oxidation Degradation)</strong>：氧分子與藥物活性成分（特別是含有雙鍵、巰基、酚基的分子）發生化學反應，導致分子結構改變，療效喪失或產生有害雜質。這是許多小分子藥物和生物製劑最重要的化學降解途徑之一。</p>
+            <p><strong>氮氣覆蓋 (Nitrogen Overlay)</strong>：最常用的惰性氣體保護方法。氮氣（N₂）比氧氣便宜且安全，被用來「置換」容器頭空間 (headspace) 中的氧氣，阻斷氧化反應的氧氣來源。</p>
+            <p><strong>四種充氣方式的時序：</strong>
+            <br>Pre-gassing → 充填前先沖洗容器
+            <br>充填中充氣 → 雙層充填針同時充填藥液和沖氣
+            <br>Post-gassing → 充填後、封蓋前沖氣
+            <br>封蓋時充氣 → 在封蓋的瞬間維持惰性氣體環境（最有效）
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：真空包裝的咖啡豆</h4>
+            <p>高品質咖啡豆如果暴露在空氣中，幾天內風味就會氧化流失。所以咖啡廠商使用真空包裝或充氮包裝——先抽掉氧氣，再充入氮氣密封，讓咖啡豆在惰性環境中保存。</p>
+            <p>藥品的惰性氣體充填原理完全相同。差別在於：咖啡豆壞掉只是浪費錢，藥品氧化可能導致患者用到無效甚至有害的藥物。</p>
+            <p>為什麼「封蓋時充氣」是最有效的？因為即使之前各步驟都做了，從充填完成到封蓋前這段時間，藥液表面還是暴露在空氣中。封蓋時充氣是「最後一道防線」，確保封口時頭空間已被惰性氣體占領。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：殘留氧含量 (Residual Oxygen Content, ROC) 的量化</h4>
+            <p>對氧氣敏感的藥品，通常在產品規格中會設定頭空間殘留氧含量的上限（如 &lt;1%）。這個指標必須在充填工藝開發和驗證中被證明可以持續達到。</p>
+            <p>充氣方法的組合（pre + post + closing）通常需要通過 headspace gas analysis 驗證，確認在整個批次的充填過程中（包括開始、中間、結束），ROC 都能符合規格。</p>
+            <p>特別要注意：<strong>在停線後的重新啟動</strong>是 ROC 最容易超標的時間點，因為頭空間的惰性氣體可能在停線期間被置換。這需要專門的程序控制。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>充氣策略決策框架</h4>
+            <pre>
+產品 ROC 目標值（依穩定性研究確定）
+      │
+      ├─ ROC 目標 &gt; 5%（低度敏感）
+      │     → Post-gassing 通常足夠
+      │
+      ├─ ROC 目標 1–5%（中度敏感）
+      │     → Pre-gassing + Post-gassing 組合
+      │     → 驗證批次數量：≥3 批
+      │
+      └─ ROC 目標 &lt; 1%（高度敏感）
+            → 全程覆蓋策略：
+              容器桶槽 N₂ overlay
+              + Pre-gassing
+              + 充填中充氣（雙層針）
+              + Post-gassing
+              + 封蓋時充氣
+            → 可能需要評估真空充填或
+              氧氣阻隔包材（barrier packaging）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的產品 ROC 規格是 &lt;0.5%。在工藝驗證中發現批次結束時（大約充填了 10,000 支）ROC 開始超標，但批次開始時（前 2,000 支）都合格。最可能的原因是什麼？你會調查哪些方面？</li>
+                <li>氮氣覆蓋保護的是「頭空間」，但藥液本身溶解的氧氣怎麼辦？如果需要降低藥液中的溶解氧，你會採取什麼措施？</li>
+                <li>為什麼「充填中充氣（使用雙層充填針）」在技術上比「充填前後充氣」更複雜？從設備設計和驗證的角度分析。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.2.3 — LIGHT SENSITIVITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-2-3">1.1.2.3 Light Sensitivity &nbsp;|&nbsp; 光線敏感性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Light-sensitive products</span> must be protected from light exposure during the filling and storage process to prevent degradation. These products can be filled in a <span class="key-term">light-absorbent container</span>, such as <span class="key-term">amber glass</span>, or the entirety of the filling system, including the filler, capper, and any transfer systems or loading/unloading systems, can be designed with attributes such as:</p>
+        <ul>
+            <li>Light-protective windows</li>
+            <li>Light-emitting diode (LED) lighting</li>
+            <li>Wavelength diffusers</li>
+            <li>Lighting of a specific wavelength</li>
+        </ul>
+
+        <p>Different products may have sensitivity to different wavelengths (e.g., visible blue light and invisible ultraviolet light are more energetic than red light). Higher energy wavelengths from <span class="key-term">300 nm to 500 nm</span> are most often responsible for <span class="key-term">photodegradation</span>.</p>
+
+        <p>Therefore, performing <span class="key-term">characterization studies</span> to determine the light-mediated degradation pathway is recommended in order to ensure that the most appropriate solution, without compromising product quality, is implemented. For example, the use of light-absorbent containers may make <span class="key-term">visual inspection</span> more difficult and may be contraindicated in some cases.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：光降解的物理機制</h4>
+            <p><strong>光降解 (Photodegradation)</strong>：光子能量被藥物分子吸收後，激發電子躍遷，引發化學反應（如氧化、異構化、聚合、水解）。能量越高的光（波長越短），引發的損害越大。</p>
+            <p><strong>300–500 nm 波長段最危險</strong>：
+            <br>UVB (280–315 nm) 和 UVA (315–400 nm)：無形的高能量紫外線
+            <br>可見光藍紫段 (400–500 nm)：雖肉眼可見，仍有相當能量
+            <br>黃光/紅光 (&gt;580 nm)：能量低，通常不引發光降解
+            </p>
+            <p><strong>琥珀色玻璃 (Amber Glass)</strong>：透過吸收 &lt;470 nm 的光，阻擋最危險的波長。但這也使得容器不透明，影響目視檢查。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：曬傷與防曬乳</h4>
+            <p>人的皮膚曬傷是因為 UVB 光子能量破壞了 DNA。防曬乳的原理是吸收或反射這些高能量光子，讓它們無法傷害皮膚。</p>
+            <p>光敏感藥品的保護策略完全類似：
+            <br>- 琥珀玻璃 = SPF 50 防曬乳（吸收/阻擋危險波長）
+            <br>- LED 燈具取代螢光燈 = 選擇對皮膚友善的燈光（螢光燈含 UV 成分，LED 可精確控制波長）
+            <br>- 波長擴散器 = 傘（散射光線、降低直接照射強度）
+            </p>
+            <p>關鍵點：不是「暗」就是安全——關鍵是「特定危險波長是否被阻斷」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：琥珀玻璃的兩難困境</h4>
+            <p>琥珀玻璃看似最簡單的解決方案，但有一個重大代價：<strong>視覺檢查 (visual inspection) 的困難度大幅上升</strong>。</p>
+            <p>無菌充填線的終點是 100% 目視檢查（或自動視覺檢查，AVI），用來篩除可見微粒、容器缺陷等問題。透過深色琥珀玻璃，很多缺陷根本看不見。</p>
+            <p>這是一個典型的「CQA 之間的取捨」：為了保護藥品不降解（無菌保證相關 CQA），可能犧牲了另一個 CQA（微粒控制的可檢測性）。</p>
+            <p>這正是為什麼 PDA 建議先做「光降解特性研究 (characterization studies)」，精確了解哪個波長段是真正的威脅，再決定最小化保護方案，而不是一律使用最深色的琥珀玻璃。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CDMO 的光保護充填線設計</h4>
+            <p>當 CDMO 承接一個光敏感小分子藥物的充填合約時，需要評估以下選項（成本由低到高）：</p>
+            <table>
+                <tr>
+                    <th>保護方案</th>
+                    <th>優點</th>
+                    <th>限制</th>
+                </tr>
+                <tr>
+                    <td>更換充填間照明為黃光/紅光 LED</td>
+                    <td>成本低，不改變容器</td>
+                    <td>仍需確認黃光不引發降解</td>
+                </tr>
+                <tr>
+                    <td>為充填機加裝遮光護罩</td>
+                    <td>針對性保護，不影響其他區域</td>
+                    <td>需驗證護罩覆蓋的完整性</td>
+                </tr>
+                <tr>
+                    <td>使用琥珀玻璃容器</td>
+                    <td>最直接的產品保護</td>
+                    <td>視檢困難、容器成本高</td>
+                </tr>
+                <tr>
+                    <td>全套光保護充填線改造</td>
+                    <td>最全面的保護</td>
+                    <td>成本高、改造時間長</td>
+                </tr>
+            </table>
+            <p>最佳策略通常是「特性研究驅動的最小化保護」——找出真正危險的波長，精準阻擋，而非所有光線一刀切。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的客戶堅持使用透明玻璃瓶（方便視檢），但產品對 400–450 nm 光敏感。除了更換容器，你有哪些充填環境改造選項？如何驗證這些改造足夠？</li>
+                <li>為什麼 PDA 強調先做「光降解特性研究」再決定保護方案，而不是直接採用最保守的全遮光設計？從 CDMO 商業角度分析「過度保護」的代價。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.2.4 — METAL SENSITIVITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-2-4">1.1.2.4 Metal Sensitivity &nbsp;|&nbsp; 金屬敏感性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Metal-sensitive products</span> must be protected from contact with certain metals, which may limit the alloys that can be used in the design of the product-contact surfaces.</p>
+
+        <p><span class="key-term">Single-use (SU) disposable elastomers</span> for the fluid pathway are often employed, and materials of construction such as <span class="key-term">ceramics</span> are selected for the filling equipment rather than low-iron material parts such as <span class="key-term">chrome-plated stainless steel</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：金屬離子對藥品的危害</h4>
+            <p><strong>金屬敏感性 (Metal Sensitivity)</strong>：某些藥物（尤其是蛋白質、多肽、核酸類生物製劑）對痕量金屬離子（如 Fe²⁺、Cu²⁺、Ni²⁺、Cr³⁺）極為敏感。這些金屬離子可能：</p>
+            <ul>
+                <li>催化氧化反應（金屬催化氧化，MCO），加速藥物降解</li>
+                <li>與蛋白質結合引發結構變化或聚集</li>
+                <li>作為可浸出物 (leachables) 進入藥品，超過安全閾值</li>
+            </ul>
+            <p><strong>不鏽鋼的問題</strong>：傳統 316L 不鏽鋼含有鐵、鉻、鎳。在酸性或含氯環境下，金屬離子可能從表面浸出，進入藥液。鍍鉻不鏽鋼（chrome-plated SS）更是鉻離子的潛在來源。</p>
+            <p><strong>替代方案</strong>：
+            <br>- 陶瓷 (Ceramics)：化學惰性極強，幾乎不溶出任何金屬
+            <br>- 一次性使用 (SU) 彈性體管路：避開不鏽鋼，改用高純度聚合物
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：免洗餐具 vs 瓷器</h4>
+            <p>傳統充填管路（不鏽鋼）就像餐廳的金屬餐具：耐用、可重複使用、可清洗，但接觸食物後可能有微量金屬溶出（特別是在有醋/酸性食物時）。</p>
+            <p>一次性使用 (SU) 聚合物管路就像高級壽司店的免洗陶瓷杯：每次都是全新的，不存在「累積浸出」問題，但用完即丟。</p>
+            <p>陶瓷充填泵則像真正的頂級陶瓷餐具：比金屬更惰性，不會「染味」，特別適合高純度要求的場合。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：可萃取物/可浸出物 (E&amp;L) 研究的重要性</h4>
+            <p>無論選擇哪種材質，與產品接觸的每一種材料都必須經過「可萃取物與可浸出物 (Extractables &amp; Leachables, E&amp;L)」研究，確認在藥品有效期內，從材料中浸出到藥液的痕量化學物質種類和數量均在安全限值內。</p>
+            <p>這不只是金屬的問題：聚合物管路也可能有有機可萃取物（增塑劑、抗氧化劑等添加劑）。E&amp;L 研究是現代藥品法規（如 USP &lt;661&gt;、ICH Q3E，及 BPSA/ELSIE 指南）的強制要求。</p>
+            <p>對 CDMO：換用新的 SU 供應商或新批次聚合物材料，通常需要重新評估 E&amp;L，這是一個常被忽視的供應鏈風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的一個 mAb（單株抗體）客戶要求整條充填路徑使用「金屬離子接觸最小化」設計。請列出從桶槽到充填針的完整路徑，並為每一個環節說明推薦材質和理由。</li>
+                <li>陶瓷充填泵相較於傳統不鏽鋼旋轉活塞泵，除了金屬離子問題，還有什麼其他優缺點？（提示：想想維護、清洗、成本、耐磨性）</li>
+                <li>一次性使用 (SU) 系統的優點是「避免清洗/滅菌驗證的複雜性」，但它自己也有 E&amp;L 問題。你認為 SU 系統的 E&amp;L 風險是否比可重複使用的不鏽鋼系統更低或更高？說明你的理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.2.5 — SILICONE SENSITIVITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-2-5">1.1.2.5 Silicone Sensitivity &nbsp;|&nbsp; 矽油敏感性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Silicone-sensitive products</span> must be protected from contact with silicone oils or emulsions that are commonly applied to glass containers and elastomers. To protect from silicone exposure, polymer <span class="key-term">container–closure systems</span> (e.g., <span class="key-term">cyclic olefin copolymer (COC)</span>) may be used as the designated silicone-free container.</p>
+
+        <p>Alternatively, there are glass containers available with lubricant that have been <span class="key-term">polymerized onto the glass</span> either by heat or by high voltage. Elastomeric closures may be completely coated with an alternative polymeric coating, or only the <span class="key-term">product contact surface</span> of the elastomer may have a specific coating that is silicone-free.</p>
+
+        <p>When handling silicone-free elastomers, especially for syringes, the filling line may need to be designed with <span class="key-term">vacuum stoppering</span> as the silicone-free or coated stoppers may not withstand the mechanical friction and compression of a vent-tube closure system (see Section 7.3).</p>
+
+        <p>When employing vacuum stoppering, <span class="key-term">vacuum filling</span> might also be required, especially for higher viscosities, to extract the air bubble from the syringe's luer channel while filling. This vacuum filling approach will also reduce the potential of splashing due to rapid air withdrawal from the luer channel during vacuum stoppering.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：矽油與蛋白質藥物的相互作用</h4>
+            <p><strong>矽油 (Silicone Oil)</strong>：一種廣泛用於玻璃注射器內壁潤滑的物質（dimethicone），讓活塞能夠順暢滑動。傳統預填式注射器幾乎無一例外地使用矽油潤滑。</p>
+            <p><strong>矽油的問題</strong>：矽油微滴在蛋白質藥液中可作為「疏水核心」，誘發蛋白質聚集 (aggregation) 或顆粒形成，這是免疫原性 (immunogenicity) 的重要風險因素。對生物製劑（特別是 mAb、酶替代療法藥物）而言，這是一個嚴肅的病患安全問題。</p>
+            <p><strong>COC 容器 (Cyclic Olefin Copolymer)</strong>：一種高純度的聚合物材料，可以做成注射器或小瓶，完全不需要矽油潤滑，且透明度接近玻璃，方便視覺檢查。缺點是成本較玻璃高，且剛性較差（對某些自動注射器可能有配合性問題）。</p>
+            <p><strong>聚合固定潤滑劑 (Polymerized Lubricant)</strong>：通過熱處理或高壓電將矽油「燒結」固定在玻璃表面，讓矽油不再游離脫落進入藥液。這種方案可保留玻璃容器，同時大幅降低矽油遷移風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：有蠟的模具 vs 不沾鍋</h4>
+            <p>傳統預填針筒的矽油問題，就像烘焙用的蛋糕模具：你需要在內壁塗抹奶油/麵粉（矽油），這樣蛋糕（活塞）才不會黏住，但有時候一小塊油脂會沾在蛋糕上（矽油微滴進入藥液）。</p>
+            <p>COC 注射器就像不沾鍋：表面塗層（聚合物本身）已經具有低摩擦特性，不需要額外潤滑劑，天然就不黏。</p>
+            <p>聚合固定矽油玻璃瓶則像把奶油「燒進」模具表面——油還在，但固定了，不會脫落到食物上。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：矽油問題引發的連鎖設計變化</h4>
+            <p>選擇無矽油容器/塞子，會像多米諾骨牌一樣引發一系列設計改變，這是本節最重要的系統性思維：</p>
+            <ol style="margin-left:1.2rem; font-size:0.92rem;">
+                <li><strong>無矽油膠塞 → 必須改用真空封蓋 (vacuum stoppering)</strong><br>因為沒有矽油潤滑，傳統的排氣管封蓋（vent-tube）的機械摩擦力會損傷塞子，導致碎屑或塞子插入不完整。真空封蓋（vacuum stoppering）避開了機械插入問題，改用負壓讓塞子「被吸進去」。</li>
+                <li><strong>真空封蓋 → 可能需要真空充填 (vacuum filling)</strong><br>真空封蓋時，針筒內的空氣會被快速抽走。如果藥液黏度較高，空氣從 luer 頭端快速逸出的瞬間，會導致藥液飛濺，污染封蓋區域。真空充填可以預先排除針筒內空氣，從根本上解決這個問題。</li>
+                <li><strong>整條充填線需要重新設計</strong>：包括真空系統安裝、充填程序修改、重新驗證。</li>
+            </ol>
+            <p>這是「設計決策的連鎖效應」最典型的例子：一個看似簡單的容器選擇，牽動了整條充填線的技術架構。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>矽油敏感性設計決策樹</h4>
+            <pre>
+產品是否對矽油敏感？
+（依據蛋白質聚集研究、E&amp;L 要求）
+      │
+      是
+      │
+      ├─ 步驟 1：選擇無矽油容器系統
+      │     選項 A：COC 聚合物注射器/小瓶
+      │     選項 B：聚合固定潤滑劑玻璃容器
+      │
+      ├─ 步驟 2：選擇無矽油封蓋
+      │     選項 A：全塗層橡皮塞（complete polymer coat）
+      │     選項 B：局部塗層（僅產品接觸面無矽油）
+      │
+      ├─ 步驟 3：評估封蓋方式
+      │     無矽油塞 → 傳統排氣管封蓋可能損傷塞子
+      │     → 改用真空封蓋 (vacuum stoppering)
+      │
+      └─ 步驟 4：評估充填方式
+            若藥液黏度高 + 真空封蓋
+            → 考慮真空充填 (vacuum filling)
+            → 避免 luer 頭端飛濺問題
+            </pre>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CDMO 承接 mAb 預填針充填的完整評估</h4>
+            <p>場景：客戶帶來一個高濃度 mAb（150 mg/mL，黏度約 15 cP），要求使用 1 mL 預填式注射器，且因蛋白質對矽油極為敏感，必須無矽油。</p>
+            <p>你需要的設備改造清單：</p>
+            <ul>
+                <li>容器：由標準矽化玻璃注射器 → COC 注射器（或聚合固定矽油玻璃注射器）</li>
+                <li>封蓋：由傳統橡皮塞 → 全塗層無矽油 Fluorotec 塞（或 NovaPure 塞）</li>
+                <li>封蓋機構：由排氣管 (vent-tube) 封蓋 → 真空封蓋系統（需新增真空幫浦和控制系統）</li>
+                <li>充填方式：評估是否需要真空充填（特別是在高黏度下）</li>
+                <li>重新驗證範圍：容器密封完整性 (CCI)、封蓋力、可見微粒、E&amp;L、模擬運送測試</li>
+            </ul>
+            <p>成本影響：COC 注射器成本約為標準玻璃注射器的 2–3 倍；真空封蓋系統的設備投資通常在數十萬美元以上；完整驗證可能需要 6–12 個月。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的生產線已有傳統排氣管封蓋系統，但新接的產品需要無矽油塞。你能否保留現有封蓋機構，只更換塞子類型？說明為什麼可以或不可以，並提出替代方案。</li>
+                <li>COC 注射器不需要矽油，但它的聚合物材質本身有沒有可能與蛋白質藥物發生其他不良交互作用？你會怎麼評估？（提示：考慮 E&amp;L 研究和蛋白質吸附測試）</li>
+                <li>「真空充填」解決了 luer 頭端飛濺問題，但它本身有沒有新的挑戰或限制？（提示：考慮藥液發泡傾向、含氣泡問題）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.1.3 — PHYSICOCHEMICAL PROPERTIES -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-1-1-3">1.1.3 Physicochemical Properties &nbsp;|&nbsp; 物理化學性質</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Properties such as <span class="key-term">viscosity</span>, <span class="key-term">surface tension</span>, or <span class="key-term">foaming tendencies</span> for liquids, or products that are <span class="key-term">suspensions</span>, <span class="key-term">quick-drying</span>, <span class="key-term">flammable</span>, or <span class="key-term">explosive</span> may require specialized filling technologies, special filling needles, or specific filling-process conditions for optimal, safe filling. Compatibility of the materials in contact with product should also be evaluated to ensure maintenance of the physicochemical properties of the product.</p>
+
+        <p>Powder characteristics that will influence powder filling-system selection and process control are flowability, particle size, particle morphology, bulk and tapped density, angle of repose, and surface area, among others (see Section 17.0).</p>
+
+        <p>The following are examples of physicochemical properties that may need to be taken into consideration:</p>
+
+        <p><strong>High Viscosity:</strong> High viscosity products, which must be filled air-bubble-free, often need to be filled under vacuum. Depending on the surface tension and break-away behavior (e.g., likelihood to drip) during filling, a <span class="key-term">fluted filling needle</span> (or, in some cases, a closing needle) may be considered (see Section 3.0 for additional detail on needle types).</p>
+
+        <p><strong>Low Surface Tension:</strong> Products with a surface tension that is less than water must be filled with a smaller internal diameter cylindrical needle, or a needle with a <span class="key-term">crimped outlet</span> or <span class="key-term">basketed outlet</span> to prevent dripping (see Section 3.0 for more details on needle types).</p>
+
+        <p><strong>Foaming:</strong> Products with a tendency to foam during handling often create a foam or froth when agitation occurs at the air-liquid interface. The fluid pathway and vessels must be carefully designed to minimize the opportunities for foaming, which may include but are not limited to:</p>
+        <ul>
+            <li>Controlling the methods of introduction to the bulk or intermediate vessel (e.g., through a J-tube or tube that extends to the bottom of the vessel)</li>
+            <li>Limiting the pressure applied to the product</li>
+            <li>Controlling the <span class="key-term">fill-curve</span> for the liquid dispensing (i.e., controlled velocity, acceleration, deceleration)</li>
+            <li>Use of <span class="key-term">diving needles</span> (i.e., synchronized movement of the filling needle correlated to the liquid dispensing)</li>
+            <li>Or several of these techniques together (see Section 4.0 for more details)</li>
+        </ul>
+
+        <p><strong>Suspension:</strong> Suspension products are a heterogeneous mixture of a liquid and finely distributed solids (particles). To ensure that there is no settling of the particles and to ensure uniform filling, the solids must be <span class="key-term">continuously suspended</span> in the liquid. This can be accomplished by agitating the suspension using agitators and/or recirculation. In addition, it will be very important to control filling-stoppage times (see Section 4.6 for diagrams of possible designs for both agitation and recirculation). Care must be taken to ensure that the selected suspension mechanism does not impact the biological or physicochemical characteristics of the product. Another consideration for suspensions is that the solids content in the suspension can have an abrasive effect, which may influence the selection of the materials of construction of the filling equipment (e.g., using ceramic instead of chrome-plated stainless steel).</p>
+
+        <p><strong>Quick-Drying:</strong> Quick-drying products or those that have a tendency to crystallize can accumulate at the points where they are exposed to air such as at the tips of filling needles. The exact characteristics of the formulation will determine the appropriate engineering solution. Therefore, it is important to evaluate the composition of the product to determine which ingredient(s) is(are) responsible for any visible residue and, when possible, formulate to limit their impact (some excipients have a tendency to form very visible residues even when the solid quantities are negligible). Data should be available on the impact of dried residue ending up within a dosage unit in order to determine risk to patients (e.g., what are the quality implications for potency? stability? particulate?). When reformulation is not possible, the filling needle design must be selected to prevent dripping or accumulation; <span class="key-term">basket needle designs</span> may be helpful. The implementation of <span class="key-term">jacketed needles</span> (i.e., gassing needles) may help with some products (see Section 3.0 for additional details on needle selection). <span class="key-term">Suck back</span> may also be helpful to avoid accumulation of product at the tip of the needle.</p>
+
+        <p>The <span class="key-term">fill curve</span> is the primary method to control splashing and accumulation of product on the outside of the needle. The fill curve should avoid any sudden acceleration or excessive velocity, the filling should be conducted from bottom up, and the needle motion should avoid touching the surface of the liquid at any point during the fill curve. Smooth flow throughout the filling cycle should be the goal.</p>
+
+        <p>With regard to the dosing system, the <span class="key-term">product-lubricated rotary piston pump (RPP)</span> may experience drying at the interface where the piston enters. Therefore, a better choice in filling system might incorporate closed system technology such as PP, TP, or DP. Environmental conditions such as low humidity may also exacerbate rapid drying. During prolonged operation or prolonged periods of line stoppage, drying may become inevitable and may require interventions such as flushing needles and discarding units upon restart, or disabling or replacing filling stations in the worst cases. From a quality control perspective if the residue affects dosing accuracy 100% IPC may be required (see Section 5.0 for additional details on IPC for dose control).</p>
+
+        <p><strong>Flammable or Explosive:</strong> Flammable or explosive products will require that influencing factors be evaluated prior to determining the appropriate filling technology, such as:</p>
+        <ul>
+            <li>Material properties (e.g., flash point, ignition temperature, maximum content of the flammable constituent in the formulation)</li>
+            <li>Maximum volume to be filled in each container and headspace for volatile constituents</li>
+            <li>Zone classification, temperature class, and explosion group</li>
+            <li>Identification of external influences and ambient temperature</li>
+            <li>Safety data sheet</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：物理化學性質的六大充填挑戰</h4>
+            <p>本節列出了六種最常見的特殊物理化學性質，每一種都對應不同的工程挑戰：</p>
+            <table>
+                <tr>
+                    <th>性質</th>
+                    <th>核心問題</th>
+                    <th>主要對策</th>
+                </tr>
+                <tr>
+                    <td>高黏度</td>
+                    <td>難以精確充填；殘留氣泡</td>
+                    <td>真空充填；凹槽針頭</td>
+                </tr>
+                <tr>
+                    <td>低表面張力</td>
+                    <td>針頭滴液污染</td>
+                    <td>縮口/籃形針頭</td>
+                </tr>
+                <tr>
+                    <td>易起泡</td>
+                    <td>泡沫影響充填準確性和無菌性</td>
+                    <td>J 型進液管；潛水針；控制充填曲線</td>
+                </tr>
+                <tr>
+                    <td>懸浮液</td>
+                    <td>粒子沉降導致充填不均一</td>
+                    <td>持續攪拌/再循環；控制停線時間</td>
+                </tr>
+                <tr>
+                    <td>易乾燥/結晶</td>
+                    <td>針頭積聚結晶影響計量和微粒</td>
+                    <td>籃形針；回吸；封閉式泵；充填曲線優化</td>
+                </tr>
+                <tr>
+                    <td>易燃易爆</td>
+                    <td>爆炸/火災安全風險</td>
+                    <td>防爆電氣設計；區域分類；閃點評估</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：充填問題就像廚房裡的挑戰</h4>
+            <p>把充填系統想成一個「廚房」，不同性質的藥液就像不同的食材：</p>
+            <p><strong>高黏度</strong> = 蜂蜜倒入小瓶：倒得太快，容器裡有氣泡；倒得太慢，每批都黏在杯口。解法：加熱降低黏度（或真空抽泡）。</p>
+            <p><strong>低表面張力</strong> = 酒精倒入杯子：比水更容易「滴下來」，因為表面張力小，液滴容易從器皿邊緣滑落。解法：用更細的管口控制流速，或在出口設計「回縮結構」。</p>
+            <p><strong>易起泡</strong> = 啤酒倒入杯子：從高處倒，泡沫就衝出來；沿杯壁緩慢倒，泡沫才少。「充填曲線」就是控制「倒酒的速度和角度」的程序。</p>
+            <p><strong>懸浮液</strong> = 果粒柳橙汁：不搖動的話，果粒都沉到底，前幾杯全是水後幾杯全是渣。充填前必須持續攪拌。</p>
+            <p><strong>易結晶</strong> = 鹽水蒸發：暴露在空氣中的邊緣會結晶。藥品在針頭出口同理——空氣接觸就結晶，久了堵塞出口。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：充填曲線 (Fill Curve) 的重要性</h4>
+            <p>「充填曲線 (fill curve)」是指充填過程中藥液流速隨時間的變化模式——包括加速、維持、減速三個階段。</p>
+            <p>一個設計良好的充填曲線應該：</p>
+            <ul>
+                <li>避免突然加速（防止湍流 → 起泡/飛濺）</li>
+                <li>從容器底部開始充填（從下往上，避免自由落體衝擊）</li>
+                <li>充填針全程不接觸液面（防止針頭被液體污染或液面攪動）</li>
+                <li>結尾平滑減速（防止最後幾滴多余的滴落）</li>
+            </ul>
+            <p>充填曲線是藥液充填工藝開發中最需要根據實際產品特性「量身定制」的參數，不能直接借用其他產品的曲線。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：懸浮液的特殊風險——磨損性</h4>
+            <p>很多人知道懸浮液需要攪拌以保持均一，但容易忽略另一個問題：<strong>固體顆粒對充填設備的磨損 (abrasion)</strong>。</p>
+            <p>懸浮液中的硬質顆粒（如某些無機鹽晶體、礦物質成分）在流過泵和針頭時，會像砂紙一樣逐漸磨損金屬表面。磨損的金屬碎屑會成為可見/不可見微粒，直接進入藥液——這是一個嚴重的品質風險。</p>
+            <p>這就是為什麼懸浮液充填通常優選陶瓷材質（硬度高、化學惰性、耐磨）的充填泵，而非傳統的鍍鉻不鏽鋼。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>易乾燥藥品的工程對策決策框架</h4>
+            <pre>
+易乾燥/結晶藥品的充填挑戰評估：
+      │
+      ├─ Step 1：配方評估
+      │     識別「哪個成分」導致結晶/乾燥
+      │     能否調整配方降低影響？
+      │
+      ├─ Step 2：針頭設計選擇
+      │     - 籃形針 (basket needle)：減少積聚面積
+      │     - 夾套針/充氣針：惰性氣體包圍針頭出口
+      │     - 回吸功能 (suck back)：針頭退出後
+      │       主動將殘液回抽，避免在針頭懸掛
+      │
+      ├─ Step 3：充填曲線優化
+      │     避免急加速、急減速
+      │     從底部充填 (bottom-up)
+      │     針頭全程不觸液面
+      │
+      ├─ Step 4：充填泵選擇
+      │     RPP（旋轉活塞泵）活塞入口可能乾燥
+      │     → 優先考慮密封式：PP、TP、DP 泵
+      │
+      └─ Step 5：停線管理程序
+            停線 → 預設沖洗週期
+            重啟 → 棄置頭幾支、恢復充填
+            長時間停線 → 停用充填站或更換針頭
+            如影響劑量精度 → 啟動 100% IPC
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：易燃/易爆產品的法規框架</h4>
+            <p>易燃/易爆藥品（如含乙醇的注射液、某些揮發性有機溶劑）在充填時必須遵循電氣防爆規範，這不是 GMP 問題，而是工業安全法規問題，涉及多套標準：</p>
+            <ul>
+                <li><strong>ATEX 指令（歐盟）</strong>：爆炸性環境中設備和保護系統的指令</li>
+                <li><strong>NEC（美國）</strong>：美國國家電氣規範，定義危險區域分類</li>
+                <li><strong>IEC 60079 系列</strong>：防爆電氣設備的國際標準</li>
+            </ul>
+            <p>關鍵參數：閃點 (flash point) 和引火溫度 (ignition temperature) 決定了危險區域分類（Zone 0/1/2 或 Class I Div 1/2），進而決定充填設備必須具備哪個等級的防爆認證（Ex d, Ex e, Ex i 等）。</p>
+            <p>這意味著充填間的<strong>所有電氣設備</strong>——馬達、開關、感應器、電腦控制系統——都必須符合對應的防爆認證，這對設備採購和廠房設計有重大影響。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CDMO 物理化學性質評估的業務流程</h4>
+            <p>在 CDMO 承接一個新的充填業務前，技術評估階段應包含「產品特性問卷 (Product Characteristics Questionnaire)」，覆蓋以下問題：</p>
+            <table>
+                <tr>
+                    <th>問題</th>
+                    <th>答案影響</th>
+                </tr>
+                <tr>
+                    <td>藥液在充填溫度下的黏度是多少？</td>
+                    <td>泵型選擇；充填曲線設計；是否需要真空充填</td>
+                </tr>
+                <tr>
+                    <td>表面張力是否低於水（72 mN/m）？</td>
+                    <td>針頭類型選擇</td>
+                </tr>
+                <tr>
+                    <td>是否有已知的起泡傾向？</td>
+                    <td>進料系統設計；充填曲線；是否需要潛水針</td>
+                </tr>
+                <tr>
+                    <td>是溶液還是懸浮液？</td>
+                    <td>是否需要攪拌/再循環；設備材質（陶瓷 vs SS）</td>
+                </tr>
+                <tr>
+                    <td>是否有已知的結晶或乾燥傾向？</td>
+                    <td>針頭設計；泵型選擇；停線管理程序</td>
+                </tr>
+                <tr>
+                    <td>是否含有易燃成分？（閃點？）</td>
+                    <td>廠房防爆認證要求；特殊設備採購</td>
+                </tr>
+            </table>
+            <p>這份問卷的答案，直接決定了是否需要在現有設備上追加投資，或者這個業務根本不適合在現有充填線上生產。在報價前搞清楚這些問題，可以避免後期高昂的改造成本和項目延誤。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你正在評估一個疫苗懸浮液充填合約。客戶說：「我們只需要充填設備能夠攪拌懸浮液就好。」為什麼這個要求遠遠不夠？你還需要問哪些關鍵問題，以確保充填品質？</li>
+                <li>一個含 20% 乙醇（閃點約 16°C）的注射液需要充填，充填間環境溫度 20°C。從安全角度，這個充填操作需要哪些特殊的廠房和設備要求？</li>
+                <li>充填曲線是「從底部充填 (bottom-up filling)」的原則。請解釋為什麼從容器底部開始充填比從頂部滴落更好，分別從「無菌性」和「充填精度」兩個角度說明。</li>
+                <li>RPP（旋轉活塞泵）對易結晶藥品特別不利，而 PP（蠕動泵）更合適——這個論述的理由是什麼？說明兩種泵的結構差異如何決定它們對易乾燥藥品的適用性。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — Section 1A</h3>
+    <ul>
+        <li><strong>靶心設計哲學</strong>：SA（無菌保證）永遠是第一優先；CQA（關鍵品質屬性）第二；商業彈性最後。當三者衝突時，上層永遠優先，這個原則貫穿整個 PDA Guide No.1。</li>
+        <li><strong>設計決策的不可逆性</strong>：無菌充填線的設計鎖定了未來 10–15 年的技術架構和業務能力；前期充分的產品特性分析，遠比後期改造更經濟。</li>
+        <li><strong>高藥理活性產品</strong>：OEB 4–5 產品強制要求 cRABS 或隔離器；需同時考慮「保護產品」（正壓）和「保護人員」（圍堵/負壓）的雙重設計目標。</li>
+        <li><strong>五大產品敏感性</strong>：溫度（主動溫控/時間限制）、氧氣（惰性氣體覆蓋，封蓋時充氣最有效）、光線（特性研究後的最小化保護，注意視檢能力取捨）、金屬（陶瓷/SU系統，E&amp;L評估）、矽油（COC容器 → 無矽油塞 → 真空封蓋 → 可能需真空充填，連鎖設計影響）。</li>
+        <li><strong>六大物理化學性質</strong>：高黏度（真空充填/特殊針頭）、低表面張力（縮口/籃形針頭）、易起泡（J管/潛水針/充填曲線控制）、懸浮液（持續攪拌/陶瓷設備防磨損）、易乾燥結晶（籃形針/回吸/密封式泵/100% IPC）、易燃易爆（防爆電氣認證/區域分類）。</li>
+        <li><strong>工程與操作的整合</strong>：無菌充填的成功需要「設備設計」與「操作行為」協同——任何一方的缺失都可能危害無菌性，設備選型時必須同時考慮操作程序的可行性。</li>
+    </ul>
+</div>
+
+</div><!-- end main-container -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+// Back to top button
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

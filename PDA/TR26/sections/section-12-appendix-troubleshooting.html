@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR26 - Section 12: Appendix III - Integrity Test Troubleshooting Guide</title>
+    <style>
+    /* =============================================================
+       PDA Educational Material - Shared CSS Template
+       Version: 2.0 (for Claude Code automation)
+       Last Updated: 2025
+
+       Usage: Embed this entire file inside <style> tags in each
+       section HTML. This ensures each file works standalone
+       AND merges correctly into the final TopNav document.
+       ============================================================= */
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+        --primary-blue: #1e3a5f;
+        --accent-blue: #3498db;
+        --light-gray: #fafafa;
+        --light-blue: #f0f7ff;
+        --yellow-start: #fff9e6;
+        --yellow-end: #fff3cd;
+        --green-bg: #e8f5e9;
+        --green-border: #4caf50;
+        --orange-bg: #fff3e0;
+        --orange-border: #ff9800;
+        --purple-bg: #f3e5f5;
+        --purple-border: #9c27b0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --header-height: 60px;
+        --nav-height: 50px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.75;
+        color: var(--text-dark);
+        background: #f0f2f5;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+    }
+
+    .header .subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 0.3rem;
+    }
+
+    .header .page-info {
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+
+    /* ===== TOP HEADER (for merged TopNav) ===== */
+    .top-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    .top-header h1 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .top-header .subtitle {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    /* ===== TOP NAVIGATION (for merged TopNav) ===== */
+    .top-nav {
+        background: #2d3748;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-container::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .nav-container::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        border-radius: 3px;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-item.active {
+        color: white;
+        border-bottom-color: var(--accent-blue);
+        background: rgba(255,255,255,0.05);
+    }
+
+    .nav-num {
+        width: 24px;
+        height: 24px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .nav-item.active .nav-num {
+        background: var(--accent-blue);
+    }
+
+    .nav-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    /* ===== MAIN CONTENT WRAPPER ===== */
+    .main-content {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .main-container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    /* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+    .chapter-section {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+        scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+
+    .chapter-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+        color: white;
+    }
+
+    .chapter-badge {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .chapter-info h2 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+
+    .chapter-info p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    .chapter-body {
+        padding: 1.5rem;
+    }
+
+    /* ===== TWO COLUMN LAYOUT ===== */
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ===== LEFT COLUMN - Original Content ===== */
+    .left-column,
+    .original-content {
+        background: var(--light-gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .left-column h2,
+    .left-column h3,
+    .original-content h2,
+    .original-content h3 {
+        color: var(--primary-blue);
+        border-bottom: 2px solid #3182ce;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .left-column p,
+    .original-content p {
+        margin-bottom: 0.85rem;
+        text-align: justify;
+        font-size: 0.95rem;
+    }
+
+    .left-column ul, .left-column ol,
+    .original-content ul, .original-content ol {
+        margin: 0.75rem 0 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .left-column li,
+    .original-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* ===== RIGHT COLUMN - Commentary ===== */
+    .right-column,
+    .commentary {
+        background: var(--light-blue);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #bee3f8;
+    }
+
+    .right-column h2,
+    .right-column h3,
+    .commentary h2,
+    .commentary h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #63b3ed;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .right-column p,
+    .commentary p {
+        margin-bottom: 0.85rem;
+        font-size: 0.95rem;
+    }
+
+    /* ===== COLUMN HEADERS ===== */
+    .column-header {
+        font-weight: 600;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid currentColor;
+        font-size: 1rem;
+    }
+
+    .right-column .column-header,
+    .commentary .column-header {
+        color: #2c5282;
+    }
+
+    .chapter-body .container,
+    .chapter-body .main-container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* ===== KEY TERMS (inline highlight) ===== */
+    .key-term,
+    .highlight-term {
+        background: linear-gradient(to right, #d4edda, #c3e6cb);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #155724;
+        font-size: 0.9em;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote-box,
+    .important-quote {
+        background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+        border-left: 4px solid #3182ce;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    /* ===== CONCEPT BOXES - Unified Base ===== */
+    .concept-box,
+    .analogy-box,
+    .note-box,
+    .key-note,
+    .term-box,
+    .formula-box,
+    .key-term-box,
+    .key-point-box,
+    .highlight-box {
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 0.92rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .concept-box h3, .concept-box h4,
+    .analogy-box h3, .analogy-box h4,
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .term-box h3, .term-box h4,
+    .formula-box h3, .formula-box h4,
+    .key-term-box h3, .key-term-box h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        margin-bottom: 0.6rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .concept-box p,
+    .analogy-box p,
+    .note-box p,
+    .key-note p,
+    .term-box p,
+    .formula-box p,
+    .key-term-box p,
+    .key-point-box p,
+    .highlight-box p {
+        margin-bottom: 0.5rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box ul, .concept-box ol,
+    .analogy-box ul, .analogy-box ol,
+    .note-box ul, .note-box ol,
+    .key-note ul, .key-note ol,
+    .term-box ul, .term-box ol,
+    .formula-box ul, .formula-box ol,
+    .key-term-box ul, .key-term-box ol,
+    .key-point-box ul, .key-point-box ol,
+    .highlight-box ul, .highlight-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box li,
+    .analogy-box li,
+    .note-box li,
+    .key-note li,
+    .term-box li,
+    .formula-box li,
+    .key-term-box li,
+    .key-point-box li,
+    .highlight-box li {
+        margin-bottom: 0.35rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== ANALOGY BOX (Yellow) ===== */
+    .analogy-box,
+    .concept-box[class*="analogy"],
+    .concept-box.analogy,
+    div[class*="analogy"]:not(.content-grid):not(.two-column) {
+        background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+        border-left: 4px solid #f6ad55 !important;
+    }
+
+    .analogy-box h3, .analogy-box h4,
+    .concept-box.analogy h3, .concept-box.analogy h4 {
+        color: #856404 !important;
+    }
+
+    /* ===== TERM/CONCEPT BOX (Green) ===== */
+    .term-box,
+    .key-term-box,
+    .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+        background: var(--green-bg) !important;
+        border-left: 4px solid var(--green-border) !important;
+    }
+
+    .concept-box:not(.analogy):not(.application) h3,
+    .concept-box:not(.analogy):not(.application) h4,
+    .term-box h3, .term-box h4,
+    .key-term-box h3, .key-term-box h4 {
+        color: #2e7d32 !important;
+    }
+
+    /* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+    .note-box,
+    .key-note,
+    .key-point-box,
+    .concept-box[class*="note"],
+    .concept-box[class*="highlight"],
+    .key-point,
+    .highlight-box {
+        background: var(--orange-bg) !important;
+        border-left: 4px solid var(--orange-border) !important;
+    }
+
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        color: #c65102 !important;
+    }
+
+    /* ===== FORMULA BOX (Purple) ===== */
+    .formula-box,
+    .concept-box[class*="formula"] {
+        background: var(--purple-bg) !important;
+        border-left: 4px solid var(--purple-border) !important;
+    }
+
+    .formula-box h3, .formula-box h4 {
+        color: #7b1fa2 !important;
+    }
+
+    .formula-box pre {
+        background: rgba(156, 39, 176, 0.08);
+        padding: 0.75rem;
+        border-radius: 6px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        white-space: pre-wrap;
+    }
+
+    /* ===== APPLICATION BOX ===== */
+    .concept-box.application,
+    .application-box {
+        background: #e3f2fd !important;
+        border-left: 4px solid #1976d2 !important;
+    }
+
+    .concept-box.application h3,
+    .concept-box.application h4,
+    .application-box h3,
+    .application-box h4 {
+        color: #1565c0 !important;
+    }
+
+    /* ===== PRACTICE BOX (Blue dashed) ===== */
+    .practice-box {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+        border: 2px dashed #3182ce !important;
+        border-radius: 10px !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        font-size: 0.92rem !important;
+    }
+
+    .practice-box h3, .practice-box h4 {
+        color: #2c5282 !important;
+        margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .practice-box p,
+    .practice-box li {
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #e2e8f0;
+        text-align: left;
+    }
+
+    th {
+        background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        font-weight: 600;
+        color: var(--primary-blue);
+        font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+        background: #f7fafc;
+    }
+
+    /* ===== LEARNING OBJECTIVES ===== */
+    .learning-objectives {
+        background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .learning-objectives h3 {
+        color: #117a65;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .learning-objectives ul,
+    .learning-objectives ol {
+        margin-left: 1.25rem;
+    }
+
+    .learning-objectives li {
+        margin-bottom: 0.4rem;
+        font-size: 0.92rem;
+    }
+
+    /* ===== STRUCTURE LIST ===== */
+    .structure-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .structure-list li {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        background: white;
+        border-radius: 6px;
+        border-left: 4px solid #3182ce;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        font-size: 0.9rem;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title,
+    .section-divider {
+        font-size: 1.1rem;
+        color: var(--primary-blue);
+        margin: 1.5rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .section-divider {
+        border-bottom: 1px solid #e2e8f0;
+        margin: 2rem 0;
+    }
+
+    /* ===== TABLE OF CONTENTS ===== */
+    .toc {
+        background: white;
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .toc h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .toc-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .toc-grid a {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        background: #edf2f7;
+        border-radius: 6px;
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+    }
+
+    .toc-grid a:hover {
+        background: var(--accent-blue);
+        color: white;
+    }
+
+    /* ===== FIGURE CONTAINERS ===== */
+    .figure-container {
+        margin: 1.25rem 0;
+        text-align: center;
+    }
+
+    .figure-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .figure-caption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+
+    /* ===== HIERARCHY DIAGRAM ===== */
+    .hierarchy-diagram {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .hierarchy-level {
+        margin: 0.5rem 0;
+    }
+
+    .hierarchy-box {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .hierarchy-box.level-1 {
+        background: #fee2e2;
+        border: 2px solid #ef4444;
+        color: #b91c1c;
+    }
+
+    .hierarchy-box.level-2 {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        color: #92400e;
+    }
+
+    .hierarchy-box.level-3 {
+        background: #d1fae5;
+        border: 2px solid #10b981;
+        color: #065f46;
+    }
+
+    .arrow-down {
+        font-size: 1.2rem;
+        color: var(--text-medium);
+        margin: 0.25rem 0;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .badge.green {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .badge.red {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .badge.blue {
+        background: #cce5ff;
+        color: #004085;
+    }
+
+    .badge.yellow {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .checklist li {
+        padding: 0.3rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .checklist li::before {
+        content: "\2610";
+        position: absolute;
+        left: 0;
+        color: var(--accent-blue);
+    }
+
+    /* ===== CARDS ===== */
+    .pump-card,
+    .tech-card,
+    .info-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 0.75rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+        background: var(--primary-blue);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .main-footer p {
+        opacity: 0.9;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+        background: var(--accent-blue);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.3rem;
+        box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: #2980b9;
+        transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            gap: 1rem;
+        }
+
+        .left-column, .right-column,
+        .original-content, .commentary {
+            padding: 1.25rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr;
+        }
+
+        .top-header h1,
+        .header h1 {
+            font-size: 1.1rem;
+        }
+
+        .nav-label {
+            display: none;
+        }
+
+        .nav-item {
+            padding: 0.75rem;
+        }
+
+        .nav-num {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+        }
+
+        .chapter-divider {
+            padding: 0.85rem 1rem;
+        }
+
+        .chapter-badge {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info h2 {
+            font-size: 1rem;
+        }
+
+        .main-content,
+        .main-container {
+            padding: 1rem;
+        }
+
+        .chapter-body {
+            padding: 1rem;
+        }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+        .top-nav, .back-to-top, .header {
+            display: none !important;
+        }
+
+        .top-header {
+            background: var(--primary-blue) !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .chapter-section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .main-content,
+        .main-container {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 12.0 Appendix III: Integrity Test Troubleshooting Guide</h1>
+    <div class="subtitle">附錄三：完整性測試故障排除指南</div>
+    <div class="page-info">PDA Technical Report No. 26 (Revised 2025) — Sterilizing Filtration of Liquids | p89 - p92</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握手動完整性測試失敗時的基本排查方向（潤濕不足、不當潤濕液、錯誤孔徑）</li>
+        <li>學會使用 Table 12.0-1 系統性排查自動化儀器完整性測試的各類故障</li>
+        <li>理解不同故障現象（無壓力建立、穩定階段中止、泡點失敗、擴散流失敗、壓力衰減失敗等）的可能原因</li>
+        <li>建立從「現象到根因」的邏輯調查思維，避免直接歸咎於濾膜缺陷</li>
+        <li>掌握溫度、潤濕、密封、管路連接等共通根因在多種故障模式中的角色</li>
+    </ul>
+</div>
+
+<!-- CONTENT: 12.0 Introduction -->
+<div class="section-title">12.0 Integrity Test Troubleshooting Guide</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Problems may occur when performing <span class="key-term">integrity tests</span>, manually or with an <span class="key-term">automatic test unit</span>. The following tables are a troubleshooting guide to facilitate <span class="key-term">failure investigations</span>. It is important to note that an automatic test device avoids human subjectivity and, therefore, may be more reproducible.</p>
+
+        <p>When investigating a <span class="key-term">manual integrity test failure</span>, the following items should be considered:</p>
+        <ul>
+            <li><span class="key-term">Insufficiently wetted filter</span></li>
+            <li>Inappropriate <span class="key-term">wetting medium</span> (e.g., solvent instead of water)</li>
+            <li>Incorrect filter <span class="key-term">pore size rating</span></li>
+        </ul>
+
+        <p>Table 12.0-1 lists items for consideration when investigating an automatic device integrity-test failure.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Integrity Test Troubleshooting (完整性測試故障排除):</strong> 當完整性測試結果不符合預期時，需要系統性地調查根本原因。關鍵的思維轉變是：<strong>測試失敗不等於濾膜失敗</strong>。</p>
+            <p>故障來源可分為三大類：</p>
+            <ul>
+                <li><strong>濾膜相關：</strong> 真正的膜缺陷、錯誤的孔徑規格、膜上殘留產品液</li>
+                <li><strong>操作相關：</strong> 潤濕不足、潤濕液不適當、參數設定錯誤、穩定時間不足</li>
+                <li><strong>系統相關：</strong> 管路洩漏、密封損壞、氣源問題、儀器內部故障、溫度偏移</li>
+            </ul>
+            <p>手動測試還有第四類：<strong>人為判斷錯誤</strong>（例如泡點測試中誤判擴散氣泡為泡點）。自動化儀器消除了這一類問題。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>完整性測試故障排除就像汽車檢測不合格時的調查過程：</p>
+            <ul>
+                <li><strong>排放檢測失敗：</strong> 不代表引擎一定壞了。可能是感測器故障、油品不對、前一次維修沒裝好、或者測試條件（溫度）不對</li>
+                <li><strong>正確的調查順序：</strong> 先檢查最簡單且最常見的原因（感測器、連接、油品），再往複雜的方向排查（引擎本體）</li>
+                <li><strong>同樣的邏輯：</strong> 濾膜測試失敗時，先查潤濕、密封、管路、參數，最後才考慮濾膜本身有問題</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>最常見的三個手動測試失敗原因：</strong></p>
+            <ul>
+                <li><strong>潤濕不足 (Insufficiently Wetted Filter)：</strong> 這是最常見的根因。如果濾膜沒有被完全潤濕，乾燥的孔隙會讓氣體直接通過，導致擴散流偏高或泡點偏低。解決方案：按照製造商建議的潤濕程序操作，確保足夠的潤濕時間和壓力</li>
+                <li><strong>不適當的潤濕液 (Inappropriate Wetting Medium)：</strong> 使用溶劑而非水作為潤濕液，會改變表面張力和接觸角，導致測試參數完全不同。必須使用製造商指定的潤濕液</li>
+                <li><strong>錯誤的孔徑規格：</strong> 安裝了 0.45 &mu;m 的濾膜卻用 0.2 &mu;m 的測試參數，測試必然「失敗」</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula — 故障排除的優先順序模型</h4>
+            <pre>
+故障排除的「外到內」優先順序：
+
+Level 1 (最外層 — 先查)：
+  ├── 管路連接是否正確？
+  ├── 密封 / O-ring 是否完好？
+  ├── 閥門是否在正確位置？
+  └── 氣源是否正常供應？
+
+Level 2 (操作層面)：
+  ├── 潤濕程序是否完整執行？
+  ├── 潤濕液是否正確？
+  ├── 測試參數是否正確設定？
+  ├── 穩定時間是否充足？
+  └── 溫度是否穩定？
+
+Level 3 (儀器層面)：
+  ├── 儀器內部氣動元件是否正常？
+  ├── 參考體積是否正確？
+  └── 測試代碼是否正確？
+
+Level 4 (最內層 — 最後查)：
+  └── 濾膜本身是否有缺陷？
+
+統計規律：
+  ~70% 的測試失敗由 Level 1-2 造成
+  ~20% 由 Level 3 造成
+  ~10% 才是真正的濾膜問題
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼自動化測試儀器雖然消除了人為主觀性，但仍然可能出現測試失敗？請列舉至少三種自動化儀器特有的故障原因。</li>
+                <li>如果同一支濾芯在手動測試中通過但在自動化測試中失敗，你會如何調查？反過來呢？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 12.0-1 -->
+<div class="section-title">Table 12.0-1 Automatic Device Integrity Test Troubleshooting Guide</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Table 12.0-1 Automatic Device Integrity Test Troubleshooting Guide</h3>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th style="width:30%;">Issue</th>
+                    <th style="width:70%;">Possible Cause</th>
+                </tr>
+                <tr>
+                    <td><strong>No Test Pressure Build-Up</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Filter system leakage (e.g., damaged sealing, damaged tubing, valve open, clamps improperly closed, damaged filter)</li>
+                            <li>Improperly wetted filter</li>
+                            <li>Inappropriate wetting medium (e.g., solvent instead of water)</li>
+                            <li>Filter contains traces of product solution or extraneous material from wetting fluid</li>
+                            <li>Incorrect filter pore-size rating</li>
+                            <li>Gas supply to the unit blocked</li>
+                            <li>Inlet tubing to the filter-housing improperly installed</li>
+                            <li>Excessive temperature drifts</li>
+                            <li>Improper valve function within the test unit</li>
+                            <li>Internal pneumatic leaks</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Continuous Venting of the Unit</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Internal valve contamination and improper function</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Abortion of Test During Stabilization Phase</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Filter system leakage (e.g., damaged sealing, damaged tubing, valve open, clamps improperly closed, damaged filter)</li>
+                            <li>Insufficiently wetted filter</li>
+                            <li>Contaminated filter</li>
+                            <li>Incorrect filter pore-size rating</li>
+                            <li>Excessive temperature drifts</li>
+                            <li>Internal pneumatic leaks</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Abortion During Upstream Volume Test</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Upstream volume of filter system is too large</li>
+                            <li>External reference volume is connected inappropriately</li>
+                            <li>Internal pneumatic leaks</li>
+                            <li>Filter failure</li>
+                            <li>Inadequate stabilization time</li>
+                            <li>Insufficiently wetted filter</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Measured Volume is Wrong</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Incorrect input of reference volume</li>
+                            <li>Contaminated internal reference tank</li>
+                            <li>Internal pneumatic leaks</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Failure of Bubble Point</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Damaged filter</li>
+                            <li>Insufficiently wetted filter</li>
+                            <li>Inappropriate wetting medium (e.g., solvent instead of water)</li>
+                            <li>Wetting fluid temperature</li>
+                            <li>Incorrect filter pore-size</li>
+                            <li>Filter contains traces of product solution or extraneous material from wetting fluid</li>
+                            <li>Internal pneumatic works improperly</li>
+                            <li>Inlet tubing to the filter-housing improperly installed</li>
+                            <li>Incorrect test gas</li>
+                            <li>Incorrect test parameter setting</li>
+                            <li>Incorrect test code</li>
+                            <li>Large multiple-cartridge assembly</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Failure of Diffusive Flow</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Damaged filter</li>
+                            <li>Insufficiently wetted filter</li>
+                            <li>Inappropriate wetting medium (e.g., solvent instead of water)</li>
+                            <li>Filter contains traces of product solution or extraneous material from wetting fluid</li>
+                            <li>Incorrect filter pore size</li>
+                            <li>Internal pneumatic works improperly</li>
+                            <li>Inlet tubing to the filter housing improperly installed</li>
+                            <li>Incorrect test parameter setting</li>
+                            <li>Incorrect test gas</li>
+                            <li>Temperature shifts during test time</li>
+                            <li>Insufficient stabilization time</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Failure of Pressure Decay</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Filter-system leakage (e.g., damaged sealing, valve open, clamps improperly closed, damaged filter)</li>
+                            <li>Insufficiently wetted filter</li>
+                            <li>Inappropriate wetting medium (e.g., solvent instead of water)</li>
+                            <li>Incorrect filter pore-size rating</li>
+                            <li>Filter contains traces of product solution or extraneous material from wetting fluid</li>
+                            <li>Internal pneumatic works improperly</li>
+                            <li>Inlet tubing to the filter-housing improperly installed</li>
+                            <li>Incorrect test-parameter setting</li>
+                            <li>Incorrect test gas</li>
+                            <li>Temperature shifts during test time</li>
+                            <li>Insufficient stabilization time or incorrect test time</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>No Pressure Decay</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Inlet tubing to the housing improperly installed</li>
+                            <li>Downstream valve closed</li>
+                            <li>Blocked connector</li>
+                            <li>Blocked internal pneumatic</li>
+                            <li>Elevated temperature during test time</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Failed or Elevated Diffusion Test Result</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem;">
+                            <li>Damaged filter</li>
+                            <li>Insufficiently wetted filter</li>
+                            <li>Inappropriate wetting medium (e.g., solvent instead of water)</li>
+                            <li>Incorrect filter pore size</li>
+                            <li>Internal pneumatic works improperly</li>
+                            <li>Inlet tubing to the filter-housing improperly installed</li>
+                            <li>Incorrect test-parameter setting</li>
+                            <li>Incorrect test gas</li>
+                            <li>Temperature shifts during the test time</li>
+                            <li>Insufficient stabilization time</li>
+                            <li>Incorrect upstream volume (i.e., when not automatically accounted for)</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>表格結構解讀：</strong> Table 12.0-1 列出了 10 種不同的故障現象 (Issue)，每種現象對應多個可能原因 (Possible Cause)。學習這張表格的關鍵不在於死記，而在於理解以下模式：</p>
+            <ul>
+                <li><strong>高頻根因：</strong> 「潤濕不足」(Insufficiently wetted filter) 出現在幾乎所有故障類型中 — 這是最普遍的問題</li>
+                <li><strong>系統性問題：</strong> 「內部氣動元件異常」(Internal pneumatic works improperly) 同樣是高頻原因，指向儀器維護的重要性</li>
+                <li><strong>參數錯誤：</strong> 「錯誤的測試參數設定」和「錯誤的測試氣體」提醒我們人為設定錯誤的風險</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這張故障排除表就像醫院急診的「症狀-鑑別診斷」對照表：</p>
+            <ul>
+                <li><strong>症狀（Issue）：</strong> 病人發燒（= 測試失敗）</li>
+                <li><strong>鑑別診斷（Possible Cause）：</strong> 可能是感冒、肺炎、尿路感染、甚至闌尾炎 — 同一個症狀可能有很多不同原因</li>
+                <li><strong>調查策略：</strong> 不是看到發燒就開抗生素（= 不是測試失敗就判定濾膜壞了），而是要做系統性的排查</li>
+            </ul>
+            <p>同樣地，有些「疾病」（= 根因）會表現為多種不同的「症狀」（= 故障現象）。例如「潤濕不足」這個根因，可能表現為泡點失敗、擴散流失敗、或壓力衰減失敗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>特別值得關注的故障現象：</strong></p>
+            <ul>
+                <li><strong>「No Pressure Decay」（無壓力衰減）：</strong> 這是唯一一個可能表示「假通過」的情況。如果下游閥門關閉或管路堵塞，氣體無法擴散到下游，壓力不會衰減 — 測試顯示「通過」但實際上根本沒有測到濾膜！這比測試「失敗」更危險</li>
+                <li><strong>「Elevated temperature during test time」（測試期間溫度升高）：</strong> 在「No Pressure Decay」中出現，因為溫度升高會增加系統壓力，抵消了擴散造成的壓力下降</li>
+                <li><strong>「Large multiple-cartridge assembly」（大型多支濾芯組件）：</strong> 僅在泡點失敗中出現，因為多支濾芯並聯時，大量擴散流會掩蓋泡點信號</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 共通根因分析</h4>
+            <p><strong>跨故障類型的共通根因統計：</strong></p>
+            <table>
+                <tr><th>根因</th><th>出現次數（/10種故障）</th></tr>
+                <tr><td>Insufficiently wetted filter（潤濕不足）</td><td>8</td></tr>
+                <tr><td>Internal pneumatic issues（內部氣動問題）</td><td>7</td></tr>
+                <tr><td>Inappropriate wetting medium（不適當潤濕液）</td><td>7</td></tr>
+                <tr><td>Incorrect test parameter setting（參數設定錯誤）</td><td>6</td></tr>
+                <tr><td>Inlet tubing improperly installed（進口管路安裝不當）</td><td>6</td></tr>
+                <tr><td>Incorrect filter pore size（孔徑規格錯誤）</td><td>6</td></tr>
+                <tr><td>Incorrect test gas（測試氣體錯誤）</td><td>5</td></tr>
+                <tr><td>Temperature shifts（溫度偏移）</td><td>5</td></tr>
+                <tr><td>Damaged filter（濾膜損壞）</td><td>5</td></tr>
+                <tr><td>Filter system leakage（系統洩漏）</td><td>3</td></tr>
+            </table>
+            <p>結論：<strong>前三大根因都不是「濾膜壞了」</strong>。潤濕、儀器維護和潤濕液選擇才是最需要注意的。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景 — 建立標準調查程序 (SOP)：</strong></p>
+            <p>在 CDMO 環境中，完整性測試失敗的調查不僅影響當批產品的放行決策，還涉及法規要求的偏差調查和 CAPA。建議建立以下調查流程：</p>
+            <ol>
+                <li><strong>第一步 — 記錄現場狀態：</strong> 記錄測試參數、環境溫度、濾芯批號、潤濕程序執行記錄</li>
+                <li><strong>第二步 — 排除操作和系統因素：</strong> 對照 Table 12.0-1 逐項排查非濾膜因素</li>
+                <li><strong>第三步 — 重新潤濕並重測：</strong> 如果懷疑潤濕不足，按照完整的潤濕程序重新潤濕後再測</li>
+                <li><strong>第四步 — 更換濾芯重測：</strong> 如果仍然失敗，更換新濾芯測試，確認是否為系統問題</li>
+                <li><strong>第五步 — 判定與記錄：</strong> 根據調查結果做出最終判定，記錄根因和改善措施</li>
+            </ol>
+            <p>關鍵原則：無菌保證 (Sterility Assurance) 永遠是第一優先。如果無法排除濾膜缺陷的可能性，該批產品不得放行。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 Table 12.0-1 的 10 種故障中，哪一種最危險（可能導致不完整的濾膜被誤判為「通過」）？請解釋你的推理。</li>
+                <li>如果你在 CDMO 中遇到連續三個批次的擴散流測試都「偏高但剛好通過」（未超過限值但趨勢上升），你會如何處理？這屬於偏差還是趨勢管理的範疇？</li>
+                <li>「Filter contains traces of product solution or extraneous material from wetting fluid」這個根因出現在多個故障類型中。為什麼產品液殘留會影響完整性測試結果？它會使結果偏高還是偏低？</li>
+                <li>你的團隊報告說「壓力衰減測試失敗」。請按照優先順序列出你會排查的前五個可能原因，並解釋為什麼按這個順序。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>測試失敗不等於濾膜失敗：</strong> 統計上，大多數完整性測試失敗的根因來自操作（潤濕不足、參數錯誤）和系統（管路洩漏、儀器問題），而非濾膜本身的缺陷</li>
+        <li><strong>手動測試三大排查方向：</strong> 潤濕不足 (Insufficiently Wetted Filter)、不適當的潤濕液 (Inappropriate Wetting Medium)、錯誤的孔徑規格 (Incorrect Pore Size Rating)</li>
+        <li><strong>「No Pressure Decay」是最危險的故障：</strong> 可能導致不完整的濾膜被誤判為通過，因為下游阻塞或溫度升高抵消了壓力衰減</li>
+        <li><strong>共通高頻根因：</strong> 潤濕不足（出現在 8/10 種故障中）、內部氣動問題（7/10）、不當潤濕液（7/10）是最需要預防性管理的因素</li>
+        <li><strong>系統性調查思維：</strong> 採用「由外到內」的排查順序 — 先查管路/密封/操作，再查儀器，最後才考慮濾膜缺陷。建立標準調查 SOP 可以確保調查的一致性和完整性</li>
+        <li><strong>無菌保證優先：</strong> 在無法明確排除濾膜缺陷的情況下，必須遵循無菌保證 (Sterility Assurance) 優先原則，不得放行產品</li>
+    </ul>
+</div>
+
+</body>
+</html>

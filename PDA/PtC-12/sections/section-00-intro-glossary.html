@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-12 - Section 0: Introduction, Glossary & Abbreviations</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY SPECIFIC ===== */
+.glossary-term-title {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.97rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.glossary-sub-term {
+    font-weight: 600;
+    color: #2c5282;
+    font-size: 0.93rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    padding-left: 1rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction, Glossary &amp; Abbreviations</h1>
+    <div class="subtitle">導言、術語表與縮寫</div>
+    <div class="page-info">PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems | p1 - p7</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 PDA PtC No. 12 的定位：這是一份專門針對 RABS 的業界最佳實踐指引，而非法規標準</li>
+        <li>掌握 RABS 與 Isolator 的根本性差異，以及為何需要獨立的指引文件</li>
+        <li>熟悉 RABS 技術中常用的關鍵術語定義，特別是 oRABS / cRABS 的區別</li>
+        <li>了解本文件的範圍涵蓋 RABS 全生命週期：設計、確效、操作與屏障系統介面</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- INTRODUCTION -->
+<!-- ============================================================= -->
+<div class="section-title" id="introduction">Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>This document represents the views of the <span class="key-term">Parenteral Drug Association (PDA)</span>. The document is designed to communicate PDA's thoughts and considerations pertaining to the design, operation, and use of <span class="key-term">Restricted Access Barrier Systems (RABS)</span> for <span class="key-term">aseptic processing</span>, processes subjected to <span class="key-term">terminal sterilization</span> and low bioburden, while encouraging further dialog with industry, health authorities, and suppliers of technologies and materials. This document considers the evolution and needs of the modern, global, sterile, healthcare product manufacturing industry. This document does not represent a standard or regulatory guidance.</p>
+
+        <p>In 2020, PDA issued <span class="key-term">Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators</span>, which focus on important regulatory and technology updates surrounding isolator design, validation, and operation for aseptic processing. Several other PDA documents equally address many of the principles for working and operating with RABS, including <span class="key-term">Points to Consider No. 1: Aseptic Processing (Revised 2023)</span> or <span class="key-term">Technical Report No. 62</span> Recommended Practices for Manual Aseptic Processes. Additionally regulatory guidance documents as the European Commission's <span class="key-term">EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use Annex 1: Manufacture of Sterile Medicinal Products (2022)</span>, U.S. Food and Drug Administration (FDA) <span class="key-term">Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing-Current Good Manufacturing Practice (2004)</span> and others are addressing the special requirements for RABS. While many of the recommendations and principles from these documents are equally applicable to RABS, until this point, there was no equivalent guideline or Points to Consider (PtC) dedicated to RABS for which technology and operational specific nuances apply. Hence, a taskforce was established to focus on industry best practices, regulatory and technology considerations directly relevant to the application and use of RABS in an aseptic manufacturing setting.</p>
+
+        <p>A fundamental principle of sterile product manufacturing is to minimize the risks of contamination (microbiological and particulate) through appropriate facility, equipment, and manufacturing process design, and qualification. The use of <span class="key-term">barrier systems</span>, including RABS, to increase the protection of the product is not only recommended but should be considered in the context of an overall <span class="key-term">contamination control</span> and risk-reduction strategy. RABS technology provides for increased product protection compared to non-barrier systems used for <span class="key-term">Grade A</span> and <span class="key-term">Grade B</span> aseptic manufacturing operations. RABS is a very different technology to isolators and, consequently, key design, regulatory and operational differences, and considerations apply, most notably background environments, cleaning, disinfection and decontamination methods, aseptic setup, and strictly defined conditions and controls governing <span class="key-term">open-door RABS interventions</span>.</p>
+
+        <div class="quote-box">
+            <sup>1</sup> The Pharmaceutical Inspection Co-operation Scheme (PIC/S) Good Manufacturing Practice (GMP) Annex 1 is identical to the European Union (EU) Annex 1 and hereafter EU Annex 1 is also understood to mean EU PIC/S Annex 1.
+        </div>
+
+        <p>As such, this PtC is organized by Topics, followed by relevant points for reader consideration. Each point begins with a problem statement in the form of a question, representing issues or points needing clarification on that specific topic. Recommendations from the authors, who are subject matter experts, are presented in response to each question. The rationale for the recommendation follows, as well as references to support these recommendations, where available. The questions and answers reflect topics suggested by the pharmaceutical industry and recommendations of the members of the task force on what to consider when designing and managing RABS systems with consideration to current regulatory guidance.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Restricted Access Barrier Systems, RABS (限制進出屏障系統)：</strong>RABS 是一種用於無菌製程的物理屏障技術。它提供一個封閉但並非完全密封的環境，透過剛性壁面、整合式手套、單向氣流等設計，將操作人員與 Grade A 關鍵區域隔離，從而降低微生物和微粒污染的風險。</p>
+            <p><strong>PDA (Parenteral Drug Association)：</strong>全球最大的注射劑藥品技術協會，其發布的 Points to Consider 系列文件代表業界專家的共識觀點，雖非法規要求，但在實務中被廣泛採用為最佳實踐依據。</p>
+            <p><strong>本文件定位：</strong>這是 PDA 首份專門針對 RABS 的完整指引。在此之前，RABS 的相關知識散見於各法規和技術報告中，缺乏系統性的整合。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在一間高級餐廳的開放式廚房工作。<strong>Isolator (隔離器)</strong> 就像是把整個料理區用密封玻璃罩完全隔離，廚師只能透過手套操作；而 <strong>RABS</strong> 則像是在料理區與用餐區之間設置了透明屏障，廚師主要透過整合的手套操作，但在嚴格控制的條件下可以短暫開門進行特定操作。兩者都比沒有屏障的傳統開放廚房安全得多，但設計邏輯和操作規範截然不同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>RABS =/= Isolator：</strong>文件特別強調 RABS 與 Isolator 是「非常不同的技術」(a very different technology)。主要差異包括：</p>
+            <ul>
+                <li><strong>背景環境要求：</strong>RABS 需要 Grade B 背景環境，Isolator 可在 Grade D</li>
+                <li><strong>去污方法：</strong>RABS 以手動擦拭消毒為主，Isolator 使用自動化 VPHP 去污</li>
+                <li><strong>密封程度：</strong>RABS 不完全密封（有 mouseholes 等開口），Isolator 追求完全隔離</li>
+                <li><strong>開門操作：</strong>RABS 在嚴格條件下允許開門介入，Isolator 原則上不開門</li>
+            </ul>
+            <p>這些差異直接影響設施設計、確效策略和日常操作程序。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>法規背景 Regulatory Context</h4>
+            <p>本文件頻繁引用的法規基礎：</p>
+            <ul>
+                <li><strong>EU GMP Annex 1 (2022)：</strong>歐盟最新的無菌製造規範，對 RABS 和 Isolator 提出了明確但有區別的要求。PIC/S GMP Annex 1 與之完全相同。</li>
+                <li><strong>FDA Guidance (2004)：</strong>美國 FDA 的無菌製程指引，雖然年代較早，但其核心原則仍然適用。</li>
+                <li><strong>PDA PtC No. 1 (2023)：</strong>PDA 無菌製程的總體指引，許多原則同樣適用於 RABS。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 PDA 認為有必要為 RABS 單獨編寫一份 Points to Consider？既有的 Isolator 指引為何不足以涵蓋 RABS？</li>
+                <li>本文件明確聲明「不代表標準或法規指引」，那麼在法規查核（regulatory inspection）時，這份文件扮演什麼角色？</li>
+                <li>如果你的工廠正在評估從傳統開放式充填線升級到 RABS，你會優先關注本文件中的哪些面向？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SCOPE -->
+<!-- ============================================================= -->
+<div class="section-title" id="scope">Scope</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>This PtC is designed to address key questions and considerations raised from industry relating to the use, application, and operations of RABS in an <span class="key-term">aseptic manufacturing</span> setting. While the scope of the document relates to considerations of RABS employed for aseptic processing, the principles contained within are equally applicable to RABS for other applications, including products subjected to <span class="key-term">terminal sterilization</span> and <span class="key-term">low bioburden</span> processes. In addressing these considerations, the document communicates best practices across the <span class="key-term">lifecycle of RABS systems</span> including their design and application, qualification, and operation, and extending to <span class="key-term">barrier system interfaces</span> for both existing and new systems.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>範圍解析 Scope Analysis</h4>
+            <p>本文件的範圍涵蓋 RABS 的<strong>全生命週期</strong>：</p>
+            <ul>
+                <li><strong>設計與應用 (Design & Application)：</strong>如何選擇和配置 RABS</li>
+                <li><strong>確效 (Qualification)：</strong>如何驗證 RABS 系統符合預期功能</li>
+                <li><strong>操作 (Operation)：</strong>日常使用中的最佳實踐</li>
+                <li><strong>屏障系統介面 (Barrier System Interfaces)：</strong>RABS 與其他設備的銜接處理</li>
+            </ul>
+            <p>值得注意的是，雖然主要針對無菌製程 (Aseptic Processing)，但原則也適用於終端滅菌和低生物負荷製程中使用的 RABS。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這份文件就像是一本<strong>駕駛手冊</strong>：它涵蓋了從買車（設計選擇）、領牌驗車（確效）、日常駕駛（操作）到停車入庫（介面管理）的完整內容。雖然主要是為高速公路駕駛（無菌製程）而寫，但許多規則在一般道路（終端滅菌製程）上也同樣適用。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- GLOSSARY -->
+<!-- ============================================================= -->
+<div class="section-title" id="glossary">Glossary</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Definitions have been provided to help clarify the concepts discussed in this document. While some definitions used vary among companies, geographic location, etc., the definitions described below are consistently used within this Points to Consider document. Where a definition is based on another published source, the source is cited.</p>
+
+        <!-- APS -->
+        <div class="glossary-term-title"><span class="key-term">Aseptic Process Simulation (APS)</span></div>
+        <p>A simulation of the entire aseptic manufacturing process in order to verify the capability of the process to assure product sterility. Includes all aseptic operations associated with routine manufacturing, e.g. equipment assembly, formulation, filling, lyophilization and sealing processes as necessary (1).</p>
+
+        <!-- Bio-decontamination -->
+        <div class="glossary-term-title"><span class="key-term">Bio-decontamination</span></div>
+        <p>A process that eliminates bioburden via use of a sporicidal chemical agent (1).</p>
+        <p><em>Note: In the context of open RABS (oRABS), this is a manual treatment process with sporicidal agents.</em></p>
+
+        <!-- Biological Indicator -->
+        <div class="glossary-term-title"><span class="key-term">Biological Indicator (BI)</span></div>
+        <p>Test systems that contain viable microorganisms with a defined concentration and resistance to a specific decontamination process. They help monitor whether the necessary conditions were met to kill a specified number of microorganisms for a given process.</p>
+
+        <!-- Campaign -->
+        <div class="glossary-term-title"><span class="key-term">Campaign</span></div>
+        <p>Processing of multiple lots or batches of the same product serially in the same manufacturing line.</p>
+
+        <!-- Contact Time -->
+        <div class="glossary-term-title"><span class="key-term">Contact Time</span></div>
+        <p>The minimum amount of time that a sanitizer, disinfectant, or sporicide must be left in complete (wet) contact with the surface to be treated in order to be effective (2).</p>
+        <p><em>Note: This is typically referred to as "wet contact time".</em></p>
+
+        <!-- Critical Zone -->
+        <div class="glossary-term-title"><span class="key-term">Critical Zone</span></div>
+        <p>A location within the aseptic processing area in which product and critical surfaces are exposed to the environment (1).</p>
+
+        <!-- Critical Surfaces -->
+        <div class="glossary-term-title"><span class="key-term">Critical Surfaces</span></div>
+        <p>Surfaces that may come directly into contact with, or directly affect, a sterile product or its containers or closures. Critical surfaces are rendered sterile prior to the start of the manufacturing operation, and sterility is maintained throughout processing (1).</p>
+
+        <!-- Decontamination -->
+        <div class="glossary-term-title"><span class="key-term">Decontamination</span></div>
+        <p>The overall process of removal or reduction of any contaminants (chemical, waste, residue, or microorganisms) from an area, object, or person. The method of decontamination used (e.g., cleaning, disinfection, sterilization) should be chosen and validated to achieve a level of cleanliness appropriate to the intended use of the item decontaminated (1). See also Bio-decontamination.</p>
+
+        <!-- Disinfection -->
+        <div class="glossary-term-title"><span class="key-term">Disinfection</span></div>
+        <p>The process by which the reduction of the number of microorganisms is achieved by the irreversible action of a product on their structure or metabolism to a level deemed to be appropriate for a defined purpose (1).</p>
+        <p><em>Note: In this document, it is understood that sanitizers and disinfectants are used in the same context.</em></p>
+
+        <!-- First Air -->
+        <div class="glossary-term-title"><span class="key-term">First Air</span></div>
+        <p>Refers to filtered air that has not been interrupted prior to contacting exposed product and product contact surfaces with the potential to add contamination to the air prior to reaching the critical zone (1).</p>
+
+        <!-- Format Parts -->
+        <div class="glossary-term-title"><span class="key-term">Format Parts</span></div>
+        <p>Container specific parts (e.g., based on different container sizes) that allow the proper guidance/transfer of product containers through a manufacturing line.</p>
+
+        <!-- Grade A Air Supply -->
+        <div class="glossary-term-title"><span class="key-term">Grade A Air Supply</span></div>
+        <p>Air which is passed through a filter qualified as capable of producing grade A total particle quality air, but where there is no requirement to perform continuous total particle monitoring or meet grade A viable monitoring limits. Specifically used for the protection of fully stoppered vials where the cap has not yet been crimped (1).</p>
+        <p><em>Note: For the purposes of this document, the term Grade A is understood to be interchangeable with International Organization for Standardization (ISO) 5.</em></p>
+
+        <!-- Hold Time -->
+        <div class="glossary-term-title"><span class="key-term">Hold Time</span></div>
+        <p>Set durations between qualified events or process steps.</p>
+
+        <div class="glossary-sub-term">Aseptic Hold Time</div>
+        <p style="padding-left:1rem;">A defined and validated maximum time for 'holding' conditions for aseptic preparation and processing.</p>
+
+        <div class="glossary-sub-term">Clean Hold Time</div>
+        <p style="padding-left:1rem;">Duration between when cleaning is implemented to meet a target requirement before the use of parts or areas. This type of hold time would typically apply before sterilization or bio-decontamination processes.</p>
+
+        <div class="glossary-sub-term">Sterile Hold Time</div>
+        <p style="padding-left:1rem;">Duration sterilized items can be held after sterilization and before use.</p>
+
+        <!-- Intervention -->
+        <div class="glossary-term-title"><span class="key-term">Intervention</span></div>
+        <p>Activities, manipulations, and tasks performed in Grade A, or other critical processing areas, during aseptic operations.</p>
+
+        <div class="glossary-sub-term">Corrective Intervention</div>
+        <p style="padding-left:1rem;">An intervention that is performed to correct or adjust an aseptic process during its execution. These may not occur at a set frequency in the routine aseptic process. Examples include such activities as clearing component jams, stopping leaks, adjusting sensors, and replacing equipment components.</p>
+
+        <div class="glossary-sub-term">Inherent Intervention</div>
+        <p style="padding-left:1rem;">An intervention that is an integral part of the aseptic process and is required for either set-up, routine operation and/or monitoring (e.g., aseptic assembly, container replenishment, environmental sampling). Inherent interventions are required by procedure or work instruction for the execution of the aseptic process.</p>
+
+        <div class="glossary-sub-term">Critical Intervention</div>
+        <p style="padding-left:1rem;">An intervention (corrective or inherent) into the critical zone (1).</p>
+        <p style="padding-left:1rem;"><em>Note: An example of this type of intervention would be an open-door intervention when critical surfaces are exposed within the Grade A RABS. This could be a corrective or inherent intervention.</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 - 清潔與去污層級</h4>
+            <p>本術語表中有一組容易混淆的概念，需要特別釐清其層級關係：</p>
+            <ul>
+                <li><strong>Cleaning (清潔)：</strong>去除可見污垢與殘留物</li>
+                <li><strong>Disinfection (消毒)：</strong>降低微生物數量至適當水平，但不一定能殺滅芽孢</li>
+                <li><strong>Bio-decontamination (生物去污)：</strong>使用殺孢子劑消除生物負荷</li>
+                <li><strong>Sterilization (滅菌)：</strong>消除所有存活微生物（最高等級）</li>
+                <li><strong>Decontamination (去污)：</strong>涵蓋上述所有方法的總稱</li>
+            </ul>
+            <p>在 RABS 的操作情境中，通常使用 Disinfection 和 Bio-decontamination 而非 Sterilization，因為 RABS 內部表面通常是手動擦拭消毒，而非透過自動化系統進行滅菌。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 - Intervention 介入操作分類</h4>
+            <p>Intervention (介入操作) 的分類是 RABS 操作管理中最關鍵的概念之一：</p>
+            <ul>
+                <li><strong>Inherent Intervention (固有介入)：</strong>製程中必須執行的操作，例如環境監測取樣、容器補充。這些是可預期、有計畫的。</li>
+                <li><strong>Corrective Intervention (矯正介入)：</strong>因異常而執行的操作，例如清除卡瓶、修復洩漏。這些是不可預期的。</li>
+                <li><strong>Critical Intervention (關鍵介入)：</strong>任何進入 Critical Zone 的介入，無論是固有或矯正。在 RABS 環境中，這特別指需要開門的操作。</li>
+            </ul>
+            <p>RABS 的操作程序設計應盡量減少所有介入操作，尤其是需要開門的 Critical Intervention。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 - First Air 初始空氣</h4>
+            <p><strong>First Air (初始空氣)</strong> 的概念可以用淋浴來理解：想像你站在蓮蓬頭下方，水從上方直接流到你身上，這就是「初始水流」；但如果水先碰到牆壁再彈到你身上，那就不再是初始水流了，因為它可能已經攜帶了牆上的髒污。</p>
+            <p>同理，從 HEPA 過濾器出來的空氣直接吹到產品暴露表面，中間沒有被任何障礙物阻擋或擾亂，這就是 First Air。任何阻礙初始空氣的物體都可能在空氣抵達 Critical Zone 之前引入污染。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - Hold Time 管理</h4>
+            <p>Hold Time（維持時間）在 RABS 操作中扮演關鍵角色。三種 Hold Time 構成了時間控管的完整鏈條：</p>
+            <ul>
+                <li><strong>Clean Hold Time：</strong>清潔完成 → 滅菌/去污開始（確保清潔狀態不劣化）</li>
+                <li><strong>Sterile Hold Time：</strong>滅菌完成 → 實際使用（確保無菌狀態維持）</li>
+                <li><strong>Aseptic Hold Time：</strong>無菌操作準備完成 → 製程結束（確保無菌製程持續可靠）</li>
+            </ul>
+            <p>每種 Hold Time 都需要經過驗證 (validation)，超時則需要重新處理。在 RABS 環境中，由於不完全密封的特性，這些時間限制通常比 Isolator 更為嚴格。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - Grade A vs ISO 5</h4>
+            <p>文件特別註明 <strong>Grade A</strong> 與 <strong>ISO 5</strong> 在本文中可互換使用。但要注意，Grade A 是 EU GMP 的分類（涵蓋微粒和微生物限度），而 ISO 5 是 ISO 14644 的分類（僅涵蓋微粒）。Grade A 在概念上更為嚴格，因為它同時包含微生物監測要求。</p>
+            <p><strong>Grade A Air Supply</strong> 是一個特殊概念：空氣品質達到 Grade A 微粒標準，但不需要連續微粒監測或符合 Grade A 微生物限度。主要用於完全加塞但尚未鋁蓋封口的小瓶保護。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 oRABS 環境中執行 Bio-decontamination 時，為什麼是手動擦拭而非自動化去污？這對操作人員的訓練有什麼影響？</li>
+                <li>試舉出三個在 RABS 充填線上可能發生的 Corrective Intervention 範例，並說明它們為何構成 Critical Intervention。</li>
+                <li>如果 Sterile Hold Time 驗證為 24 小時，但某批次的滅菌零件因排程延遲在 26 小時後才使用，應該如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- GLOSSARY continued: Isolator, Product Contact Parts, RTP, RABS -->
+<!-- ============================================================= -->
+<div class="section-title" id="glossary-2">Glossary (continued)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <!-- Isolator -->
+        <div class="glossary-term-title"><span class="key-term">Isolator</span></div>
+        <p>A contained, decontaminated environment meeting Grade A/ISO 5 conditions used for aseptic process manufacturing that provides an uncompromised, continuous isolation of its interior from the external environment. Once decontaminated by a validated cycle, an isolator prevents the microbiological contamination of sterile products and product contact surfaces of the interior by enclosures and the supply of continuous, controlled overpressure of HEPA-filtered air (3).</p>
+
+        <div class="glossary-sub-term">Closed Isolator Systems</div>
+        <p style="padding-left:1rem;">Exclude external contamination from the isolator's interior by accomplishing material transfer via aseptic connection to auxiliary equipment, rather than using openings to the surrounding environment. Closed systems remain sealed throughout operations (1).</p>
+
+        <div class="glossary-sub-term">Open Isolator</div>
+        <p style="padding-left:1rem;">Systems are designed to allow for the continuous or semi-continuous ingress and/or egress of materials during operations through one or more openings. Openings are engineered (e.g., using continuous overpressure) to exclude the entry of external contamination into the isolator (1).</p>
+
+        <!-- Product Contact Parts -->
+        <div class="glossary-term-title"><span class="key-term">Product Contact Parts</span></div>
+
+        <div class="glossary-sub-term">Direct Product Contact Parts</div>
+        <p style="padding-left:1rem;">Are those that the product passes through, such as filling needles or pumps (1).</p>
+
+        <div class="glossary-sub-term">Indirect Product Contact Parts</div>
+        <p style="padding-left:1rem;">Are equipment parts that do not contact the product, but may come into contact with other sterilized surfaces, the sterility of which is critical to the overall product sterility (e.g., sterilized items such as stopper bowls and guides, and sterilized components) (1).</p>
+
+        <!-- RTP -->
+        <div class="glossary-term-title"><span class="key-term">Rapid Transfer Port (RTP)</span></div>
+        <p>A System used for the transfer of items into RABS or isolators that minimizes the risk to the critical zone. An example would be a rapid transfer container with an alpha/beta port (1).</p>
+
+        <!-- RABS -->
+        <div class="glossary-term-title"><span class="key-term">Restricted Access Barrier System (RABS)</span></div>
+        <p>System that provides an enclosed, but not fully sealed, environment meeting defined air quality conditions (for aseptic processing grade A), and using a rigid-wall enclosure and integrated gloves to separate its interior from the surrounding cleanroom environment. The inner surfaces of the RABS are disinfected and decontaminated with a sporicidal agent. Operators use gloves, half suits, RTPs and other integrated transfer ports to perform manipulations or convey materials to the interior of the RABS. Depending on the design, doors are rarely opened, and only under strictly pre-defined conditions (1).</p>
+
+        <div class="glossary-sub-term">Closed RABS (cRABS)</div>
+        <p style="padding-left:1rem;">A RABS for which the barrier prevents air exchange with the surrounding environment. Closed RABS uses a dedicated unidirectional air flow unit (UDAF) system for air supply. Unlike a closed isolator, a closed RABS typically has mouseholes, and commonly has no automated biodecontamination system.</p>
+
+        <div class="glossary-sub-term">Open RABS (oRABS)</div>
+        <p style="padding-left:1rem;">A RABS for which the barrier permits air exchange with the surrounding environment. Passive Open RABS uses the room HVAC for supply. Active Open RABS uses a dedicated unidirectional air flow unit (UDAF) system for air supply but exchanges the exhaust with the room.</p>
+        <p style="padding-left:1rem;"><em>Note: Although Open RABS cannot be automatically biodecontaminated, there are some installations where the cleanroom, and all the equipment it contains including the open RABS, is biodecontaminated, but this is a special case.</em></p>
+
+        <!-- 6-Log Reduction -->
+        <div class="glossary-term-title"><span class="key-term">6-Log Reduction</span></div>
+        <p>The reduction of viable microorganisms with the chance of 1:1,000,000 to have a surviving organism.</p>
+
+        <!-- Sporicidal Agent -->
+        <div class="glossary-term-title"><span class="key-term">Sporicidal Agent</span></div>
+        <p>An agent that destroys bacterial and fungal spores when used in sufficient concentration for specified contact time. It is expected to kill all vegetative microorganisms (1).</p>
+
+        <!-- UDAF -->
+        <div class="glossary-term-title"><span class="key-term">Unidirectional Airflow (UDAF)</span></div>
+        <p>An airflow moving in a single direction, in a robust and uniform manner, and at sufficient speed, to reproducibly sweep particles away from the critical processing or testing area (1).</p>
+
+        <div class="glossary-term-title"><span class="key-term">Unidirectional Airflow (UDAF) Unit</span></div>
+        <p>A cabinet supplied with filtered unidirectional airflow (previously referred to as a Laminar Airflow Unit or LAF) (1).</p>
+
+        <!-- VPHP -->
+        <div class="glossary-term-title"><span class="key-term">Vapor Phase Hydrogen Peroxide (VPHP)</span></div>
+        <p>Agent for the decontamination of the interior of the isolator, including all exposed surfaces, fixed isolator glove exteriors (portion extending into the barrier), transfer systems, equipment, and certain supplies, materials, and parts, using a defined and validated gaseous mixture or micro-atomization of hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) over a defined and validated period of time, under defined and validated conditions.</p>
+
+        <!-- Working Position -->
+        <div class="glossary-term-title"><span class="key-term">Working Position</span></div>
+        <p>Position where high-risk operations occur and where product and/or components are exposed (1).</p>
+        <p><em>Note: This is sometimes referred to as "working height".</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 - RABS 類型比較</h4>
+            <p>RABS 分為兩大類，核心差異在於<strong>空氣系統的隔離程度</strong>：</p>
+            <table>
+                <tr>
+                    <th>特性</th>
+                    <th>cRABS (封閉式)</th>
+                    <th>oRABS (開放式)</th>
+                </tr>
+                <tr>
+                    <td>空氣交換</td>
+                    <td>阻止與背景環境的空氣交換</td>
+                    <td>允許與背景環境的空氣交換</td>
+                </tr>
+                <tr>
+                    <td>空氣供應</td>
+                    <td>專用 UDAF 系統</td>
+                    <td>被動式：房間 HVAC<br>主動式：專用 UDAF（排氣至房間）</td>
+                </tr>
+                <tr>
+                    <td>自動去污</td>
+                    <td>通常無自動化系統（有 mouseholes）</td>
+                    <td>無法自動去污（特殊案例除外）</td>
+                </tr>
+                <tr>
+                    <td>密封程度</td>
+                    <td>較高，但仍有 mouseholes</td>
+                    <td>較低，有意設計的開口</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 - Isolator vs RABS 完整比較</h4>
+            <p>將 Isolator 的定義與 RABS 對照，可以清楚看出關鍵差異：</p>
+            <table>
+                <tr>
+                    <th>特性</th>
+                    <th>Isolator</th>
+                    <th>RABS</th>
+                </tr>
+                <tr>
+                    <td>隔離程度</td>
+                    <td>完全連續隔離 (uncompromised, continuous isolation)</td>
+                    <td>封閉但不完全密封 (enclosed, but not fully sealed)</td>
+                </tr>
+                <tr>
+                    <td>去污方式</td>
+                    <td>經驗證的自動化去污週期（通常 VPHP）</td>
+                    <td>殺孢子劑消毒（手動擦拭為主）</td>
+                </tr>
+                <tr>
+                    <td>正壓維持</td>
+                    <td>持續受控正壓</td>
+                    <td>視類型而定（cRABS 較能維持）</td>
+                </tr>
+                <tr>
+                    <td>物料傳入</td>
+                    <td>RTP 或密封連接</td>
+                    <td>手套、半身衣、RTP</td>
+                </tr>
+                <tr>
+                    <td>開門操作</td>
+                    <td>原則上不允許</td>
+                    <td>在嚴格預定條件下允許</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 - cRABS vs oRABS</h4>
+            <p>想像兩種不同的手術環境：</p>
+            <p><strong>cRABS</strong> 就像一間有獨立空調系統的手術室，門通常關著，空氣不會與走廊混合，但門底下仍有小縫隙（mouseholes），需要時可以開門。</p>
+            <p><strong>oRABS</strong> 就像一間使用走廊空調的手術室，雖然有門和屏障，但空氣會與走廊交換。因此，走廊（Grade B 背景環境）的空氣品質對手術室內的潔淨度至關重要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - 6-Log Reduction</h4>
+            <p><strong>6-Log Reduction (六對數減少)</strong> 是去污效力的重要指標。「6-log」表示微生物數量減少到原來的百萬分之一 (10<sup>-6</sup>)。</p>
+            <p>在 RABS 環境中，6-log reduction 通常是 bio-decontamination 製程的驗收標準。使用 Biological Indicator (BI) 來驗證去污製程是否達到此標準。</p>
+            <p>對照：Isolator 的 VPHP 去污通常也要求至少 6-log reduction。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - RTP 快速傳遞口</h4>
+            <p><strong>Rapid Transfer Port, RTP (快速傳遞口)</strong> 是 RABS 和 Isolator 中用於物料傳入的關鍵裝置。其 alpha/beta port 設計原理：</p>
+            <ul>
+                <li><strong>Alpha port：</strong>安裝在 RABS/Isolator 壁面上的固定部分</li>
+                <li><strong>Beta port：</strong>安裝在傳遞容器上的配對部分</li>
+                <li>對接時，兩個 port 的外露面（可能受污染的面）被夾在中間，不會接觸到 RABS 內部</li>
+            </ul>
+            <p>在 RABS 中使用 RTP 可以減少開門操作的需求，是降低污染風險的重要設計。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 - VPHP 與 RABS 的關係</h4>
+            <p>注意 <strong>VPHP (汽化過氧化氫)</strong> 的定義中明確提到是用於「isolator 內部的去污」。這反映了一個重要事實：<strong>VPHP 自動去污是 Isolator 的標準配備，但不是 RABS 的標準配備</strong>。</p>
+            <p>RABS（特別是 oRABS）通常依靠手動擦拭殺孢子劑來達成 bio-decontamination。cRABS 雖然結構上更接近 Isolator，但也「通常沒有自動化 biodecontamination 系統」。</p>
+            <p>這個差異對操作程序、人員訓練和確效策略有深遠影響。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境：</strong>假設你的 CDMO 工廠目前使用 oRABS 進行無菌充填，一家客戶要求升級到 cRABS。從本術語表的定義出發，你需要考慮的主要變更包括：</p>
+            <ul>
+                <li>空氣供應系統從共用 HVAC 改為專用 UDAF</li>
+                <li>屏障設計需要阻止空氣交換（但仍需保留 mouseholes 供容器進出）</li>
+                <li>去污程序可能需要重新設計和驗證</li>
+                <li>Hold Time 參數可能需要重新驗證</li>
+                <li>介入操作（Intervention）的程序和評估標準需要更新</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>cRABS 有 mouseholes 但 Closed Isolator 沒有 -- 這個設計差異對污染控制策略有什麼影響？</li>
+                <li>為什麼 Grade A Air Supply 不要求連續微粒監測？在什麼操作階段會使用這種空氣品質等級？</li>
+                <li>Direct Product Contact Parts 和 Indirect Product Contact Parts 的滅菌驗證要求有何不同？</li>
+                <li>RTP 的 alpha/beta port 設計如何確保傳遞過程中不會引入污染？請畫出或描述對接過程。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- DOCUMENT STRUCTURE OVERVIEW -->
+<!-- ============================================================= -->
+<div class="section-title" id="doc-structure">Document Structure Overview</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>As such, this PtC is organized by Topics, followed by relevant points for reader consideration. Each point begins with a <span class="key-term">problem statement</span> in the form of a question, representing issues or points needing clarification on that specific topic. Recommendations from the authors, who are <span class="key-term">subject matter experts</span>, are presented in response to each question. The <span class="key-term">rationale</span> for the recommendation follows, as well as <span class="key-term">references</span> to support these recommendations, where available.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>文件結構解析</h4>
+            <p>本 PtC 採用的 Q&A 結構非常有特色，每個議題包含四個層次：</p>
+            <ol>
+                <li><strong>Problem Statement (問題陳述)：</strong>以提問形式呈現業界實際面臨的疑問</li>
+                <li><strong>Recommendation (建議)：</strong>由專家小組提出的最佳實踐建議</li>
+                <li><strong>Rationale (理據)：</strong>解釋為什麼如此建議</li>
+                <li><strong>References (參考文獻)：</strong>支持建議的文獻依據</li>
+            </ol>
+            <p>這種結構使得讀者可以直接找到與自身問題相關的議題，而不必通讀全文。在後續章節的學習中，請注意識別這四個層次。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>文件定位：</strong>PDA PtC No. 12 是首份專門針對 RABS 的業界指引，代表專家共識而非法規要求，但在實務中具有重要參考價值</li>
+        <li><strong>RABS vs Isolator：</strong>兩者是根本不同的技術，在密封程度、去污方式、背景環境要求和開門操作規範上有本質差異</li>
+        <li><strong>RABS 兩大類型：</strong>cRABS（封閉式）阻止空氣交換並使用專用 UDAF；oRABS（開放式）允許空氣交換，對背景環境要求更高</li>
+        <li><strong>關鍵術語：</strong>掌握 Critical Zone、First Air、Intervention 分類、Hold Time 類型、Bio-decontamination 等核心概念，是理解後續章節的基礎</li>
+        <li><strong>全生命週期範圍：</strong>本文件涵蓋 RABS 的設計、確效、操作和介面管理，適用於無菌製程及終端滅菌/低生物負荷製程</li>
+        <li><strong>Q&A 結構：</strong>後續章節採用 Problem Statement → Recommendation → Rationale → References 的四層結構</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

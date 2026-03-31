@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Guide - Section 21B: Case Studies in Aseptic Filling System Design (Part 2)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== DECISION MATRIX TABLE ===== */
+.matrix-ok { color: #22543d; font-weight: 700; text-align: center; }
+.matrix-warn { color: #744210; font-weight: 700; text-align: center; font-style: italic; }
+.matrix-na { color: #a0aec0; text-align: center; }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 21B: Case Studies in Aseptic Filling System Design (Part 2)</h1>
+    <div class="subtitle">第21B節：無菌充填系統設計案例研究（下篇）— Case 2 完整分析</div>
+    <div class="page-info">PDA Manufacturing Technology Guide No. 1 | doc p247 - p267</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding: 1.25rem 1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解多容器／多規格／多產品充填線的需求如何轉化為設備設計規格</li>
+        <li>掌握批次大小、生產節拍（Campaign）與充填技術耐久性之間的關聯</li>
+        <li>能夠使用能力比較矩陣（Capability Comparison Matrix）評選最適合的充填技術</li>
+        <li>建立產線效率（Line Efficiency）、設施效率（Facility Efficiency）與年產量目標的計算思維</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION 21.2.4 — Multi-container/Multi-volume Requirements -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding: 0 1.5rem;">
+    21.2.4 Case 2: Requirements for Multi-container / Multi-volume / Multi-product Filling
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding: 0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Table 21.2.4-1 provides guidance regarding <span class="key-term">multi-container/multi-volume/multi-product filling requirements</span>. Refer to Section 1.0 and Section 2.0 for additional information.</p>
+
+        <p><strong>Table 21.2.4-1 Case 2: Requirements for Multi-container/Multi-volume/Multi-product Filling</strong></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td><strong>Additional containers, closures, and sizes to be filled on the same line</strong></td>
+                <td>
+                    50 IL — Supplier Name, Drawing #123<br>
+                    250 IL — Supplier Name, Drawing #456<br>
+                    500 IL — Supplier Name, Drawing #789<br>
+                    32 mm Lyophilization Stopper — Drawing #101
+                </td>
+                <td>Dimensions should be fully understood in order to design appropriate <span class="key-term">conveyance flexibility</span> and <span class="key-term">change parts</span> (e.g., feed screws, star wheels, walking rakes/beams). Evaluation of dimensional differences in parts on sorting-system change-parts and insertion station required.</td>
+            </tr>
+            <tr>
+                <td><strong>Additional fill volume / product requirements</strong></td>
+                <td>
+                    50 mL — Freeze-dried blood plasma protein<br>
+                    70 mL — Blood plasma protein solution<br>
+                    200 mL Fill<br>
+                    250 mL Fill<br>
+                    500 mL Fill
+                </td>
+                <td>Fill volumes to be considered for selected filling technology, including whether <span class="key-term">change-parts</span> will be required for the various volumetric differences. Product attributes for each product are identical, therefore, no additional sensitivities (e.g., shear, oxygen, metal) are to be considered.</td>
+            </tr>
+            <tr>
+                <td><strong>Container Flexibility</strong> (Required level of flexibility for future products)</td>
+                <td>Bulk production with on-line washing and depyrogenation</td>
+                <td>Bulk-container handling will require glassware washer and tunnel, which will affect <span class="key-term">line footprint</span>. No anticipated future need for ready to use (RTU) glassware.</td>
+            </tr>
+            <tr>
+                <td><strong>Container Material Flexibility</strong></td>
+                <td>All foreseen containers to be glass</td>
+                <td>No anticipated adaptations due to materials of construction foreseen.</td>
+            </tr>
+            <tr>
+                <td><strong>Alternative Sizes</strong></td>
+                <td>Range from 50 IL to 500 IL</td>
+                <td>Ensure that format parts consider the range of sizes (diameters, height) to be filled and whether the format parts will be sourced with the initial purchase, or only when needed.<br><br>All vials indicated are <span class="key-term">molded glass infusion bottles (IL)</span>. If tubing vials (R) or injection vials (H) were to be filled in the future, additional format parts would be required due to different weights, diameters/tolerances, different stopper-setting requirements, and differences in neck/shoulder for crimp sealing. Extreme variability in glass components could also affect line speeds at the extreme sizes.</td>
+            </tr>
+            <tr>
+                <td><strong>Filling Technology Flexibility</strong></td>
+                <td>Identify need based on intended range of filling activities and product types</td>
+                <td>With some systems, it may be possible to add a different filling technology on the same machine base if required for different products and/or different packaging configurations (e.g., <span class="key-term">rotary piston pumps with peristaltic pumps as the alternate filler</span> when needed). While design with alternate filling technologies can be more complex than a single system, the knowledge that this will be a future requirement is a critical element to the initial filling line and isolator or RABS design.<br><br>With the elements of this case, the similarity of the product, containers, and closures signal that a separate technology will not be needed unless there is a plan for a future product not described here.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Change Parts（換型零件）:</strong> 充填線上因容器規格不同而需更換的機械元件，包含送瓶螺桿（feed screws）、星輪（star wheels）、步進梁（walking beams）等。每換一種規格，就需要一套對應的 change parts。</p>
+            <p><strong>IL / R / H 玻璃瓶分類:</strong> IL = 模製輸液瓶（Infusion bottle, molded glass），R = 管製小瓶（tubing vial），H = 管製注射瓶。三種瓶型的重量、直徑公差、頸肩尺寸均不同，若混用則需重新驗證 change parts。</p>
+            <p><strong>Line Footprint（產線佔地）:</strong> 整條產線的物理空間需求。本案例因使用 bulk 容器（需洗瓶機 + 除熱原隧道），footprint 遠大於使用 RTU 預洗容器的產線。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一家餐廳同時服務 50mL 的濃縮湯品與 500mL 的大碗料理 — 廚房的鍋具、分裝設備、托盤尺寸全部不同。若餐廳一開始沒設計好「換鍋系統」，之後每次換菜單就要大改廚房。本案例中的 change parts 設計，就是預先為所有菜單尺寸準備好對應的廚具。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>決策層級提醒：</strong>填充技術彈性是「業務靈活性」需求（第三優先），但若未在初期設計中納入，日後新增填充技術可能需要重新驗證整條充填線 — 代價遠高於預先規劃。<br>因此：<strong>在設計鎖定前，務必確認未來5年的產品管線是否需要不同的充填技術。</strong></p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若日後新增 tubing vial (R型)，哪些 change parts 需要重新設計？為什麼 molded glass 和 tubing glass 的公差差異會影響充填線速？</li>
+                <li>本案例選擇 bulk 洗瓶而非 RTU，對設施 footprint 和驗證工作量各有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION 21.2.5 — Batch Sizes and Operating Practices -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding: 0 1.5rem;">
+    21.2.5 Case 2: Anticipated Batch Sizes and Operating Practices
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding: 0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Table 21.2.5-1 outlines typical batch parameters to consider. Refer to Section 1.0, Section 3.0, and Section 4.0 for additional information.</p>
+
+        <p><strong>Table 21.2.5-1 Case 2: Anticipated Batch Sizes and Operating Practices</strong></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td><strong>Batch Sizes</strong></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1,000-liter Batch Size</td>
+                <td>250 mL fill (initial): 10,000 units/batch<br>50–500 mL (future): 20,000 to 4,000 units/batch</td>
+                <td>Note that the <span class="key-term">depyrogenation tunnel</span> will likely be rate-limiting for the line speed for this size glassware regardless of filler design; therefore, increasing the number of fill heads may not increase the line output.<br><br>1,000 to 25,000 vials per lane maximum each batch if using a 4-lane filler (the number of cycles is needed to assess potential wear-part effects on the filling pathway).<br><br>For the smallest batch sizes with the larger fill volumes, the filler may have one or more station turned off. Since all stations will not be required to operate in order to match maximum tunnel line-speed, turning off one or more fill heads will conserve product and reduce line losses. Alternatively, two stations may each be used to provide <span class="key-term">half the fill volume</span> to the container — enabling the use of smaller filling needles, which can reduce dripping.</td>
+            </tr>
+            <tr>
+                <td>4,000-liter Batch Size</td>
+                <td>250 mL fill (initial): 40,000 units/batch<br>50–500 mL (future): 80,000 to 8,000 units/batch</td>
+                <td>For the smallest batch sizes with the larger fill volumes, the filler may have one or more station turned off.</td>
+            </tr>
+            <tr>
+                <td>5,000-liter Batch Size</td>
+                <td>250 mL fill (initial): 50,000 units/batch<br>50–500 mL (future): 100,000 to 10,000 units/batch</td>
+                <td>Filling system will need to be capable of <span class="key-term">long, stable run times</span>; if using PP or DP, tubing/diaphragm longevity may be an issue for the largest batch sizes.</td>
+            </tr>
+            <tr>
+                <td><strong>Campaign Strategy</strong></td>
+                <td>Yes — multiple batches campaigned to reduce changeover time</td>
+                <td>Ensure that changeover time makes sense for small batch sizes that are planned. Use of campaigns may drive the determination towards <span class="key-term">isolators</span> for greater sterility assurance (rather than RABS).</td>
+            </tr>
+            <tr>
+                <td><strong>Length of Campaign</strong></td>
+                <td>5 days</td>
+                <td>At the predicted line speeds and batch size, this represents 2–3 batches per day with 3–4 filling days.</td>
+            </tr>
+            <tr>
+                <td><strong>Filling Path Management</strong></td>
+                <td>Complete changeover between batches</td>
+                <td><span class="key-term">Filling-path must be fully disposable or be CIP/SIP capable</span>; duration of typical CIP/SIP cycle to be assessed to determine if it is compatible with required line throughput. If not, disposable will be required.</td>
+            </tr>
+            <tr>
+                <td><strong>Container–Closure Management</strong></td>
+                <td>Required to sterilize indirect product-contact parts before each campaign</td>
+                <td>Between batches, no changeover is required. If automated adjustable rakes are available, different container sizes may be accommodated.</td>
+            </tr>
+            <tr>
+                <td><strong>Environmental Monitoring (EM)</strong></td>
+                <td>To be performed on each batch of the campaign</td>
+                <td>Adequate EM materials must be located inside of the filling line at the start of the campaign or be able to be transferred within the line between batches (e.g., <span class="key-term">rapid transfer chamber or RTP canister</span>).</td>
+            </tr>
+            <tr>
+                <td><strong>Interventions</strong></td>
+                <td>APS must be designed to include a representative (and possibly bracketed) number and type of interventions during the campaign</td>
+                <td>Filling machine must be designed to limit interventions and should limit any interventions that would require line clearance. Any intervention must be designed to utilize <span class="key-term">good aseptic technique</span>.</td>
+            </tr>
+            <tr>
+                <td><strong>Holding Times</strong></td>
+                <td>Hold times to consider intended operation of 16/5 to permit hold-over nonoperational shift</td>
+                <td>Bulk hold times should ensure that batches are available on demand after any possible delays are incurred on changeover between batches or normal process upsets, as well as for the hold times during the normal operational cadence of 16 working hours per day.</td>
+            </tr>
+            <tr>
+                <td><strong>Batch Failure Mode</strong></td>
+                <td>Recovery time after loss of batch to be kept to a minimum</td>
+                <td>The filling system (and product-supply tubing/lines) should be designed both to minimize loss upon line repreparation, as well as provide <span class="key-term">redundancy for backup product supply</span>.</td>
+            </tr>
+            <tr>
+                <td><strong>APS Strategy for Campaigns</strong></td>
+                <td>Must comply with all guidelines (EU GMP Annex 1, FDA Aseptic Processing)</td>
+                <td>Machine build must comply with the desired campaign strategy.</td>
+            </tr>
+            <tr>
+                <td><strong>100% IPC for Dose Weight</strong></td>
+                <td>Yes</td>
+                <td>Due to cost of product, constant final dosing (see Section 5.0) is preferred. <span class="key-term">100% IPC</span> will also make it possible to conserve more vials from priming and end of the aseptic fill-unit operation as well.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Operating Criteria (and their influence on batch throughput)</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Determination</th>
+                <th>Design Implication</th>
+            </tr>
+            <tr>
+                <td><strong>Staffing Level</strong></td>
+                <td>16/5 (16 hours/day, 5 days/week)</td>
+                <td>Verify whether the number of batches produced per week, including changeover time, will meet production targets at intended bulk/filled-unit volumes.</td>
+            </tr>
+            <tr>
+                <td><strong>Shutdown Allowances</strong></td>
+                <td>Two planned two-week shutdowns: Winter and Summer</td>
+                <td>Verify whether the selected technology maintenance and re-calibration can be accommodated in the planned shutdowns. Also consider the likely duration for technology transfer for new products, execution of APS, etc.</td>
+            </tr>
+            <tr>
+                <td><strong>Changeover Time</strong></td>
+                <td>32 hours between campaigns; 4 hours between batches within a campaign</td>
+                <td>With the time between batches for a campaign, ensure that this time accounts for: emptying the bulk, clearing the line, closing the batch documentation, addressing any needed changeover, changeover of the fluid-pathway, <span class="key-term">filter-path integrity testing</span>, closeout of EM samples, etc. All tasks should be accounted for and considered in this time as this will influence the possible number of batches within the campaign period.</td>
+            </tr>
+            <tr>
+                <td><strong>% Yield Expected</strong></td>
+                <td>98% Yield / 2% Scrap</td>
+                <td>2–4% scrap typical experience inclusive of all rejection causes (e.g., filter flush, filler priming, end of aseptic filling-unit operation, intervention clearance).</td>
+            </tr>
+            <tr>
+                <td><strong>% Line Efficiency</strong></td>
+                <td>85% Desired</td>
+                <td>75% minimum target; more than 80% is possible, but each additional percentage-point requires significant effort to achieve. This parameter is often less about the equipment design and more on the expertise of the operators on setup, as well as appropriate sensors and detection to improve the operational efficiency without down-time. Interruptions during small batches will have an outsized influence on this parameter.</td>
+            </tr>
+            <tr>
+                <td><strong>% Facility Efficiency</strong></td>
+                <td>70–80%</td>
+                <td>Amount includes needed maintenance, recalibration, shutdowns for facility maintenance, APS.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Campaign Strategy（生產節拍策略）:</strong> 將多批次連續填充，批次間只做小幅換型，而非每次完整 changeover。優點是大幅縮短停機時間；代價是無菌風險累積更長，因此傾向選用隔離器（Isolator）而非 RABS。</p>
+            <p><strong>Rate-Limiting Step（速率限制步驟）:</strong> 本案例的除熱原隧道（depyrogenation tunnel）是瓶頸 — 即使增加充填頭數量，整體線速也無法提升，因為隧道的輸送速度才是關鍵限制。這是典型的「木桶效應」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>效率計算框架 Efficiency Calculation</h4>
+            <pre>
+年可用工時 = 365天 × 16hr/天 × (5/7天/週)
+           ≈ 4,160 小時/年
+
+扣除停機 (Facility Efficiency 75%):
+可用生產時間 ≈ 4,160 × 0.75 = 3,120 小時
+
+線效率 85% → 實際充填時間 ≈ 3,120 × 0.85
+           ≈ 2,652 小時/年
+
+yield 98% → 有效產出 = 充填量 × 0.98
+
+實務啟示：每提升1%線效率，
+相當於多出約26小時有效充填時間/年。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Campaign 期間 EM 管理是關鍵：</strong>每批結束時需完成 EM 樣本，但 EM 材料必須在充填線啟動前備妥於隔離器/RABS 內部，或透過 RTP 傳入。這是操作計劃的細節，卻是 APS 設計的重要組成部分。</p>
+            <p><strong>Filling Path 策略決定 4 小時換批是否可行：</strong>若使用 CIP/SIP，需確認 CIP/SIP 週期時間 &lt; 4 小時（含所有文件和完整性測試）；若不可行，應在設計初期改用一次性流路（single-use pathway）。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION 21.2.6 — Comparison of Requirements to Filling System Capabilities -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding: 0 1.5rem;">
+    21.2.6 Case 2: Comparison of Requirements to Filling System Capabilities
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding: 0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Now that some of the preliminary design requirements for the product and its intended packaging have been defined, the requirements can be compared to the filling system capabilities and attributes as described in Section 2.0. Comparison of the filling system capabilities to the product needs for this example leads to the following evaluative matrix in Table 21.2.6-1. Refer to Section 2.0 and Section 4.0 for additional information.</p>
+
+        <p><strong>Table 21.2.6-1 Case 2: Comparison of Requirements to Filling System Capabilities</strong></p>
+        <p><em>Legend: filled circle = available or acceptable | empty/noted = not available or not acceptable</em></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Product Requirements</th>
+                <th>Peristaltic Pump (PP)</th>
+                <th>Rotary Piston Pump (RPP)</th>
+                <th>Time Pressure (TP)</th>
+                <th>Diaphragm Pump (DP)</th>
+            </tr>
+            <tr>
+                <td><strong>Filling Range</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">pump size prohibitive for the largest volumes; would require multi-stroke operation</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">pump size prohibitive for the largest volumes; would require multi-stroke operation</td>
+            </tr>
+            <tr>
+                <td><strong>Viscosity Range</strong> (low viscosity for this product)</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Product Compatibility</strong> (proteins)</td>
+                <td class="matrix-warn">not ideal for shear-sensitive products</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Diving Needle Capable to Reduce Foaming</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Dynamic Fill Curve (start/stop, acceleration) to Reduce Foaming</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">less flexibility for dynamic fill curve due to pressure control at vessel</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Range of Fill Volumes</strong></td>
+                <td class="matrix-warn">will require different pump heads for wide ranges of fill volumes</td>
+                <td class="matrix-warn">requires different pump sets for different fill volumes</td>
+                <td class="matrix-warn">will require different orifices and fluid pathway to maintain accuracy across the range</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Drip Control</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">viscosity higher than water will reduce likelihood to drip, and rapid closure of pinch-valve is likely to be sufficient</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Dosing Accuracy</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">very accurate, but volume of fill contraindicates this technology</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Dosing Accuracy Stability Across Run</strong></td>
+                <td class="matrix-warn">100% IPC planned; dosing accuracy very stable</td>
+                <td class="matrix-warn">statistical IPC adequate</td>
+                <td class="matrix-warn">100% IPC planned</td>
+                <td class="matrix-warn">100% IPC planned</td>
+            </tr>
+            <tr>
+                <td><strong>Single-Use (SU) Fluid Pathway</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">rare (but possible) due to pump expense</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">possible but may be expensive</td>
+            </tr>
+            <tr>
+                <td><strong>CIP/SIP Execution</strong></td>
+                <td class="matrix-warn">rare (but possible); often SU instead</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Stability Over Long Batches / Number of Cycles</strong></td>
+                <td class="matrix-warn">hose wear a detriment, but relatively modest batch sizes make this suitable</td>
+                <td class="matrix-warn">hose wear at pinch point a minor consideration; processor required for varying head pressure</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">diaphragm wear can be a minor consideration but usually only after excessive operation</td>
+            </tr>
+            <tr>
+                <td><strong>Campaign Compatibility</strong></td>
+                <td class="matrix-warn">hose wear must be considered</td>
+                <td class="matrix-warn">filling equipment can be replaced</td>
+                <td class="matrix-warn">single-point hose-wear must be considered</td>
+                <td class="matrix-warn">diaphragm-wear must be considered</td>
+            </tr>
+            <tr>
+                <td><strong>Execution Outside Isolator or RABS</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-ok">OK</td>
+            </tr>
+            <tr>
+                <td><strong>Speed of Setup / Changeover</strong></td>
+                <td class="matrix-ok">OK</td>
+                <td class="matrix-warn">requires aseptic setup or CIP/SIP</td>
+                <td class="matrix-warn">requires aseptic setup or CIP/SIP, but fluid path is reduced compared to RPP</td>
+                <td class="matrix-warn">requires aseptic setup, CIP/SIP, or SU (which is the fastest changeover)</td>
+            </tr>
+        </table>
+        </div>
+
+        <p>Based on the above chart, the product characteristics make <span class="key-term">PP and TP the leading candidates</span>, as planned fill volumes and shear-sensitivity of the product may preclude RPP (both volume and shear) and DP (volume alone).</p>
+
+        <p>PP and TP are well-matched. Decision-making may come down to whether <span class="key-term">SU technology (favoring PP)</span> or <span class="key-term">CIP/SIP (favoring TP)</span> are preferred. That decision may be driven by the changeover time with each, as the modest batch sizes will result in frequent changeover of the fluid pathway within the campaigns. If the foaming with the product is severe and SU technology is the desire, then PP will be the strongest contender if the cost of SU is not prohibitive based on the planned number of batches.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>能力比較矩陣的使用邏輯：</strong>這張矩陣不是要找「完美的技術」，而是系統性地淘汰不符合條件的選項。本案例中：</p>
+            <ul>
+                <li><strong>RPP 被淘汰</strong> — 大體積（250–500 mL）下泵尺寸受限，且對蛋白質的剪切風險不可接受</li>
+                <li><strong>DP 被淘汰</strong> — 同樣受大體積限制</li>
+                <li><strong>PP vs TP</strong> — 勝負在 SU 偏好 vs CIP/SIP 偏好，由商業決策定奪</li>
+            </ul>
+            <p>決策層級：無菌保證優先 &gt; 產品 CQA（剪切敏感）&gt; 商業靈活性（SU 成本）</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這張矩陣就像在餐廳選廚具：你有四種料理設備（PP/RPP/TP/DP），但菜單（蛋白質大體積充填）對廚具有明確要求。不是每種廚具都能做大鍋料理，也不是每種都對食材夠溫和。矩陣幫你逐項打分數，最終兩款廚具並列第一，最後的抉擇取決於你的廚房清潔策略（洗碗機 vs 拋棄式容器）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>PP vs TP 的最終決策因素：</strong></p>
+            <ul>
+                <li>若產品起泡嚴重 + 偏好 SU → <strong>選 PP</strong>（但需計算 SU 成本 × 年批次數）</li>
+                <li>若 changeover 時間緊（4小時批次間隔）且 CIP/SIP 可在時間內完成 → <strong>選 TP</strong></li>
+                <li>若 campaign 橫跨 5 天且磨耗是風險 → PP 的軟管磨耗需要更嚴格的監測計劃</li>
+            </ul>
+            <p>這是本指南最核心的示範：<strong>沒有唯一正確答案，只有基於數據的最佳選擇。</strong></p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若你是 CDMO 的技術轉移工程師，客戶的原料藥批次成本極高（每批 $2M），100% IPC 對 PP 的意義是什麼？選 PP 還是 TP 時，這個因素如何影響決策？</li>
+                <li>若 campaign 長達 5 天，PP 的軟管磨耗如何在 APS 中體現？應如何設計監測計劃？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION 21.2.7 — Other Design Elements -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding: 0 1.5rem;">
+    21.2.7 Case 2: Other Design Elements for Consideration
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding: 0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>There are a number of other design decisions that will impact the layout and operation of the filling line, such as:</p>
+        <ul>
+            <li>Operator Interface with the line (Section 8.0)</li>
+            <li>Supply of Components (Section 9.0 and Section 10.0)</li>
+            <li>Product Filtration, including location of filters, required number of filter elements, integrity-testing pre- and post-filling (Section 11.0)</li>
+            <li>Filling Environment and Utilities (Section 14.0 and Section 15.0)</li>
+        </ul>
+        <p>Generally, these decisions should be made as part of the filling-line specification process as they may affect costs and can influence placement of equipment; however, these are generally less of a direct impact on the selection of the filling technology itself.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節是 Case 2 的收尾，提醒讀者：充填技術選型完成後，仍有一系列「週邊設計決策」需要完成，包含操作員介面、零組件供應、過濾器位置與完整性測試，以及廠務設施。</p>
+            <p>這些決策雖然不直接決定充填技術，但會影響：設備佔地、CAPEX、操作風險，以及最終的 URS（使用需求規格書）內容。建議在充填技術確定後，立即啟動這些週邊設計的討論。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>設計決策的優先順序：</strong></p>
+            <ol>
+                <li><strong>充填技術選型</strong> — 本 Case Study 的核心（21.2.1–21.2.6）</li>
+                <li><strong>週邊系統設計</strong> — 本節所列（操作員介面、組件供應、過濾、廠務）</li>
+                <li><strong>空間佈局與成本估算</strong> — 基於前兩項完成後進行</li>
+            </ol>
+            <p>以上流程確保最重要的決策（無菌保證 &gt; CQA）先定，再逐層往下設計，避免因佈局或成本倒逼技術選型。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 22.0 — Vendor Resources (Back Matter — informational only) -->
+<!-- ============================================================ -->
+<div class="section-title" style="max-width:1800px; margin:0 auto 1rem; padding: 0 1.5rem;">
+    22.0 Relevant Vendor and Supplier Resources (Back Matter)
+</div>
+
+<div class="two-column" style="max-width:1800px; margin:0 auto 1.5rem; padding: 0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The following paid advertisements are presented to the reader as potential supplemental resources which may aid in execution or fulfillment of the concepts, material, and information presented herein.</p>
+
+        <div class="quote-box">
+            The inclusion of these resources does not imply any endorsement or preference on part of PDA or the authors of this technical document.
+        </div>
+
+        <p><strong>Featured Vendors (p259–p262):</strong></p>
+
+        <div class="info-card">
+            <h3>Bausch+Ströbel — GENEX System</h3>
+            <p><em>"Pharmaceutical production of the future — Maximum safety and highest quality through gloveless aseptic production."</em></p>
+            <p>GENEX is a groundbreaking machine concept designed specifically for <span class="key-term">small and medium batch production</span>. The fully automated GENEX filling and packaging system utilizes <span class="key-term">robot technology</span>, automating size changes and environmental monitoring while ensuring full compliance with GMP regulations.</p>
+            <p><strong>GENEX Key Features:</strong></p>
+            <ul>
+                <li>Scale out</li>
+                <li>Zero Reject Principle</li>
+                <li>Next Level Hygienic Design</li>
+                <li>GMP / ANNEX 1 Conforming machine design</li>
+                <li>Eliminate Human Intervention</li>
+                <li>Short decontamination cycle</li>
+                <li>Processing Various Packaging Materials</li>
+                <li>Integrated System</li>
+            </ul>
+            <p><em>Bausch+Ströbel | 74532 Ilshofen, Germany</em></p>
+        </div>
+
+        <div class="info-card">
+            <h3>groninger — Filling and Closing Solutions</h3>
+            <p><em>"Filling and closing of liquid pharmaceuticals from small batch to high speed."</em></p>
+            <p>groninger is a globally recognized leader in the design and manufacture of advanced filling and closing equipment for the pharmaceutical industry. They offer a comprehensive portfolio ranging from <span class="key-term">highly customized equipment</span> to standardized line concepts for series production.</p>
+            <p><em>www.groninger-group.com</em></p>
+        </div>
+
+        <div class="info-card">
+            <h3>IMA Pharma — Injecta 36 with Detecta &amp; Nebula</h3>
+            <p><em>"Single Detection. Single Rejection. High-speed advanced robotic processing for Ready-To-Use components."</em></p>
+            <p>The Injecta 36 system pairs with Detecta (high-speed inspection unit with robotic accuracy for plunger presence checking) and Nebula (high-speed decontamination tunnel) for <span class="key-term">RTU component processing</span> at the highest speeds.</p>
+            <p><em>ima.it/pharma</em></p>
+        </div>
+
+        <div class="info-card">
+            <h3>OPTIMA pharma — Turnkey Integrated Solutions</h3>
+            <p><em>"Your home for turnkey — Fully integrated solutions from one partner: Sterile filling, containment and freeze-drying."</em></p>
+            <ul>
+                <li>Flexible filling of vials, syringes and cartridges</li>
+                <li>Smart solutions for liquid, viscous and high-potent products</li>
+                <li>Different dosing / combi-dosing systems according to product requirements</li>
+                <li>Technologies for maximum product yield and minimizing product loss</li>
+                <li>Options for different product path handling: CIP/SIP, single-use, autoclavable</li>
+                <li>Decades of experience in aseptic and sterile filling</li>
+            </ul>
+            <p><em>OPTIMA pharma GmbH | Schwaebisch Hall, Germany | www.optima-packaging.com/pharma</em></p>
+        </div>
+
+        <p><strong>About PDA Technical Documents (p264)</strong></p>
+        <p>PDA Technical Documents are global consensus documents, prepared by member-driven Teams comprised of content experts, including scientists and engineers working in the pharmaceutical/biopharmaceutical industry, regulatory authorities and academia. The viewpoints and strategies presented in this document are those of the authors as independent subject matter experts and do not necessarily represent the policies and practices of their respective companies.</p>
+
+        <p><strong>Special Acknowledgement:</strong> PDA and the authors would like to thank <em>groninger &amp; co. gmbh</em> for their generous contribution of multiple images for use in this Manufacturing Technology Guide.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>廠商資源章節的性質：</strong>第22節是付費廣告（paid advertisements）收錄於 PDA 技術指南末尾，PDA 明確聲明「不代表認可或偏好」。對讀者而言，這一節的實際價值是：了解當前市場上有哪些主要設備供應商，以及它們各自強調的技術方向。</p>
+            <p>值得注意的是，這四家廠商（Bausch+Ströbel、groninger、IMA、OPTIMA）均是歐洲主流無菌充填設備製造商，反映了歐洲在高端藥機領域的主導地位。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 技術趨勢觀察</h4>
+            <p><strong>GENEX（Bausch+Ströbel）的核心命題：</strong>"Gloveless Aseptic Production" — 無手套無菌生產。手套口（glove port）歷來是 RABS/Isolator 最大的污染風險點之一（參見 EU GMP Annex 1 干預管理要求）。機器人自動化取代手動干預，是下一代無菌充填線的核心趨勢。</p>
+            <p><strong>IMA Detecta 的「Single Rejection」概念：</strong>傳統視覺系統在偵測缺陷後，可能拒絕整個批次或多個單位；Single Rejection 代表機器人精確只排除單一缺陷單位，大幅提升良率。這呼應本指南第5節中 100% IPC 對高價值產品的重要性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這些廠商廣告就像汽車雜誌末尾的廠商名錄 — 不是評測，但能讓你快速掌握市場格局。當你未來要寫 RFQ（詢價單）或 URS（使用需求規格書）時，這些廠商名稱就是你的第一輪「詢盤清單」。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin:0 auto 2rem; padding: 1.25rem 1.5rem;">
+    <h3>本節重點回顧 Section 21B Summary</h3>
+    <ul>
+        <li><strong>多容器/多規格設計（21.2.4）：</strong>設計初期必須鎖定所有容器規格、change parts 清單、以及未來是否可能新增不同玻璃瓶型（IL/R/H），否則後期增加任何新規格都需要重新驗證。</li>
+        <li><strong>批次參數與生產節拍（21.2.5）：</strong>除熱原隧道是大瓶型的速率限制瓶頸；campaign 策略傾向使用隔離器；批次間 4 小時 changeover 必須涵蓋所有任務（CIP/SIP、完整性測試、EM 清點、文件）。</li>
+        <li><strong>效率三層結構：</strong>Line Efficiency（85%目標）× Facility Efficiency（70-80%）× Yield（98%），三者共同決定年實際產出 — 每個百分點都需要顯著投入才能改善。</li>
+        <li><strong>技術選型結論（21.2.6）：</strong>RPP 與 DP 因大體積/蛋白質剪切問題被排除；PP 與 TP 並列最優，最終選擇取決於 SU 偏好（PP）或 CIP/SIP 偏好（TP），由 campaign 换批時間與 SU 成本共同決定。</li>
+        <li><strong>決策層級永遠成立：</strong>Sterility Assurance &gt; Product CQAs &gt; Business Flexibility — 本案例中，campaign 驅動隔離器選型（SA優先），剪切敏感性排除 RPP（CQA優先），SU vs CIP/SIP 是最後才考慮的商業決策。</li>
+    </ul>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

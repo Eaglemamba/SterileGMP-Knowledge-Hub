@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-15 — Topic 2 &amp; 3 + Appendix A: Regulatory &amp; Implementation</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== PRACTICE BOX GREEN SOLID - CDMO Strategy ===== */
+.practice-box.cdmo-strategy {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+    border: 2px solid #4caf50 !important;
+}
+
+.practice-box.cdmo-strategy h3,
+.practice-box.cdmo-strategy h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== DECISION HIERARCHY BANNER ===== */
+.decision-banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.decision-banner h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.decision-hierarchy-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.dh-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.dh-item.priority-1 {
+    background: rgba(239,68,68,0.25);
+    border: 1px solid rgba(239,68,68,0.6);
+}
+
+.dh-item.priority-2 {
+    background: rgba(245,158,11,0.25);
+    border: 1px solid rgba(245,158,11,0.6);
+}
+
+.dh-item.priority-3 {
+    background: rgba(16,185,129,0.25);
+    border: 1px solid rgba(16,185,129,0.6);
+}
+
+.dh-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.priority-1 .dh-num { background: #ef4444; }
+.priority-2 .dh-num { background: #f59e0b; }
+.priority-3 .dh-num { background: #10b981; }
+
+.dh-arrow {
+    color: rgba(255,255,255,0.4);
+    font-size: 1.1rem;
+}
+
+/* ===== TOPIC DIVIDER BAR ===== */
+.topic-bar {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a9e 100%);
+    color: white;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topic-bar .topic-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.topic-bar h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ===== APPENDIX BAR ===== */
+.appendix-bar {
+    background: linear-gradient(135deg, #4a1d96 0%, #6d28d9 100%);
+    color: white;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.appendix-bar .topic-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.appendix-bar h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ===== DOCUMENT SUMMARY BLOCK ===== */
+.doc-summary {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: white;
+    border-radius: 14px;
+    padding: 2rem;
+    margin-top: 2.5rem;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+}
+
+.doc-summary h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    letter-spacing: 0.04em;
+}
+
+.doc-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.summary-topic {
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.summary-topic h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.summary-topic h3.t1 { color: #fca5a5; }
+.summary-topic h3.t2 { color: #fcd34d; }
+.summary-topic h3.t3 { color: #6ee7b7; }
+.summary-topic h3.app { color: #c4b5fd; }
+
+.summary-topic ul {
+    margin-left: 1.1rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+.summary-topic li {
+    margin-bottom: 0.35rem;
+    opacity: 0.9;
+}
+
+.summary-takeaway {
+    grid-column: 1 / -1;
+    background: rgba(52,152,219,0.15);
+    border: 1px solid rgba(52,152,219,0.4);
+    border-radius: 10px;
+    padding: 1.25rem;
+}
+
+.summary-takeaway h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #93c5fd;
+    margin-bottom: 0.75rem;
+}
+
+.summary-takeaway p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    opacity: 0.92;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+
+    .decision-hierarchy-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dh-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+    }
+
+    .doc-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-takeaway {
+        grid-column: 1;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Points to Consider No. 15 — Mobile Manufacturing Units</h1>
+    <div class="subtitle">Topic 2: Regulatory Considerations &nbsp;|&nbsp; Topic 3: Implementation &nbsp;|&nbsp; Appendix A: Regional Compliance Expectations</div>
+    <div class="page-info">Source: PDA PtC-15, pp. 10–16 &nbsp;|&nbsp; Questions 2.1, 2.2, 3.1 &nbsp;|&nbsp; Bilingual Educational Edition</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== DECISION HIERARCHY BANNER ===== -->
+    <div class="decision-banner">
+        <h3>MOBILE MANUFACTURING DECISION HIERARCHY — 行動製造決策優先順序</h3>
+        <div class="decision-hierarchy-row">
+            <div class="dh-item priority-1">
+                <div class="dh-num">1</div>
+                <span>Product Quality &amp; Patient Safety (GMP Compliance) &mdash; 產品品質與病患安全</span>
+            </div>
+            <div class="dh-arrow">&#8594;</div>
+            <div class="dh-item priority-2">
+                <div class="dh-num">2</div>
+                <span>Regulatory Compliance &mdash; 法規遵循（各地授權、查驗、申請）</span>
+            </div>
+            <div class="dh-arrow">&#8594;</div>
+            <div class="dh-item priority-3">
+                <div class="dh-num">3</div>
+                <span>Business Flexibility &mdash; 商業靈活性（快速應變、加速上市）</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>本節內容導覽 — Section Navigator</h3>
+        <div class="toc-grid">
+            <a href="#topic2-overview">Topic 2 — 法規考量概覽</a>
+            <a href="#q21">Q2.1 — 現行法規的影響</a>
+            <a href="#q22">Q2.2 — 主管機關可採取的行動</a>
+            <a href="#topic3-overview">Topic 3 — 實施概覽</a>
+            <a href="#q31">Q3.1 — 新地點的確效策略</a>
+            <a href="#appendix-a">Appendix A — 各地區法規期望比較表</a>
+            <a href="#doc-summary">Document Summary</a>
+        </div>
+    </div>
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives &mdash; 學習目標</h3>
+        <ul>
+            <li>Understand how current GMP regulations (FDA 21 CFR 210/211, EMA EU GMP, ICH Q10) constrain or challenge mobile manufacturing unit (MMU) adoption.</li>
+            <li>Identify specific regulatory actions — procedural, administrative, and technical — that would facilitate MMU implementation at scale.</li>
+            <li>Apply a risk-based validation framework to qualify an MMU at a new location, distinguishing what must be repeated versus what can be leveraged from the initial site.</li>
+            <li>Navigate multi-jurisdictional complexity using Appendix A's regional compliance comparison (FDA, EMA, PMDA, Health Canada, and others).</li>
+            <li>理解現行法規體系（尤其是固定設施假設）對MMU部署的結構性障礙。</li>
+            <li>掌握跨地點確效的分段策略與法規申報（NDA/BLA/ANDA補件）的觸發條件。</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TOPIC 2: REGULATORY CONSIDERATIONS                           -->
+    <!-- ============================================================ -->
+    <div id="topic2-overview">
+        <div class="topic-bar">
+            <span class="topic-tag">TOPIC 2</span>
+            <h2>Regulatory Considerations &mdash; 法規考量</h2>
+        </div>
+    </div>
+
+    <!-- ===== Q2.1 SECTION ===== -->
+    <div id="q21">
+        <div class="topic-bar" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); margin-top: 0;">
+            <span class="topic-tag">Q 2.1</span>
+            <h2>How do current regulations impact the adoption of mobile manufacturing?</h2>
+        </div>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT: Original Text -->
+        <div class="left-column">
+            <h3>Original Text — PDA PtC-15 (pp. 14–15)</h3>
+
+            <p>Current regulatory expectations with respect to facilities used in the manufacturing of drugs and biologics is that they are required to be designed in compliance with <span class="key-term">cGMPs</span>. At a high level, processing should permit a smooth flow of materials through the facility. Space must be provided for receiving, quarantine, sampling, and storage of all manufacturing materials, including intermediate and finished bulk drug substance.</p>
+
+            <p>More specifically, facility builds or modifications need to ensure compliance with a host of regulations, such as the <span class="key-term">U.S. FDA Title 21, Code of Federal Regulations</span>, the <span class="key-term">EMA Commission Decision 2021/1240</span> of 13 July 2021, and the equivalent requirements of other global regulators. Appendix A provides examples of applicable compliance expectations.</p>
+
+            <p>As a requirement of licensure, <span class="key-term">marketing authorization holders (MAHs)</span> must provide information on the manufacturing locations, such as the address (and potentially GPS coordinates), that will allow the relevant regulatory agencies to identify the manufacturing location. The location needs to hold a <span class="key-term">manufacturing license</span> and a <span class="key-term">GMP certificate</span>. In some jurisdictions, the facility locations and specific GMP activities (e.g., analytical testing, storage, manufacturing) must be registered and assigned specific identification and status by the regulators.</p>
+
+            <p>For example, the FDA assigns a <span class="key-term">Firm Establishment Identifier (FEI) number</span> to all facilities, and the identification of the facility or site is linked to an address and specific business entity (e.g., DUN &amp; Bradstreet number). If multiple locations are listed in the dossier (i.e., the application), then this is required for each location. The requirements to file and register facility-specific information, including addresses and site contacts, are in large part linked to the regulators, enabling them to triage inspections.</p>
+
+            <p>In an ideal case of mobile manufacturing, the MMU could move from one physical location to another, and the license and certificate would only be required once. <strong>However, there are no provisions in current regulations for such a scenario.</strong> Moreover, in the United States, many <span class="key-term">state boards of pharmacy</span> require registration for in-state drug manufacturers, presenting additional complexity of rapidly moving across state lines.</p>
+
+            <p>In addition, the movement of the MMU could create logistical challenges for regulators when making decisions about where and when they would need to deploy resources to conduct GMP inspections. Also, the full manufacturing process may be segmented in different locations (e.g., warehousing and the quality control of raw materials may be centrally located for stocking of one or a set of MMUs).</p>
+
+            <p>Finally, some countries have multiple agencies that would first need to agree to accept the license and certificate from another agency within their country. Typically, countries will not have provisions to accept such licenses from other agencies. The situation becomes even more convoluted and complicated if the MMU is expected to cross country borders.</p>
+        </div>
+
+        <!-- RIGHT: Chinese Commentary -->
+        <div class="right-column">
+            <h3>重點解析 &mdash; 繁體中文導讀</h3>
+
+            <div class="concept-box">
+                <h4>核心障礙：法規是為「固定設施」而設計</h4>
+                <p>現行 cGMP（現行良好製造規範）的基礎假設是：製造設施是固定在某個地址的永久建築物。從 FDA 的 21 CFR 210/211，到 EMA 的 EU GMP 指令，都圍繞著「地址綁定」的許可模式建立。</p>
+                <p>行動製造單元（MMU）的本質是「位置可變動」，這與現行法規的根本假設直接衝突，構成制度性障礙。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>關鍵法規概念</h4>
+                <ul>
+                    <li><strong>MAH（行銷授權持有人）</strong>：持有藥品上市許可的公司，對產品品質負最終責任。</li>
+                    <li><strong>FEI 號碼</strong>：FDA 對每個製造設施賦予的唯一識別碼，與實體地址及企業 D&amp;B 號碼掛鉤。MMU 每次搬移就需要新的 FEI，在實務上極為複雜。</li>
+                    <li><strong>製造許可 + GMP 證書</strong>：雙重認證要求。在歐盟，GMP 證書由查核後頒發，每個地點各需一份。</li>
+                    <li><strong>州藥局（State Boards of Pharmacy）</strong>：美國特有的州級監管層，MMU 跨州移動需面對 50 個不同的州法規要求。</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：駕照 vs. 汽車牌照</h4>
+                <p>想像一個外籍廚師帶著整套廚房設備在不同城市開設快閃餐廳。他的廚師資格（技術能力）雖已獲認可，但每到一個城市都需要重新申請「餐廳營業執照」——因為執照是綁定地址的，不是綁定廚師或廚房設備的。</p>
+                <p>MMU 面臨的法規問題完全相同：GMP 認證是頒發給「這棟建築物在這個地址」，而非頒發給「這套製造系統」。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>多層法規障礙清單</h4>
+                <ul>
+                    <li><strong>聯邦層</strong>：FDA FEI 號碼重新申請（每次搬遷）</li>
+                    <li><strong>州層</strong>：50 個州各有不同的藥局法規</li>
+                    <li><strong>跨國層</strong>：EMA、PMDA、MHRA 等各自的 GMP 認證</li>
+                    <li><strong>多機構問題</strong>：部分國家有多個主管機關需要協調一致才能承認許可</li>
+                    <li><strong>查核資源問題</strong>：主管機關難以安排 GMP 查核，因地點不固定</li>
+                </ul>
+                <p>這五層障礙疊加，解釋了為何 MMU 在實務中的法規路徑至今仍不清晰。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考問題</h4>
+                <p>若您的公司計畫在台灣部署一個 MMU，從台北移到台南再到高雄，您需要應對哪些法規步驟？TFDA（食藥署）目前是否有相應的行動製造框架？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2.1 Secondary Commentary Block (Regulatory Impact deep dive) -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Site Registration Mechanics — 設施登記機制詳解</h3>
+
+            <div class="concept-box">
+                <h4>FDA Dossier Filing Requirements (US)</h4>
+                <ul>
+                    <li><strong>NDA / BLA / ANDA</strong>: All marketing applications must list each manufacturing site with its physical address. Any site change requires a <span class="key-term">Prior Approval Supplement (PAS)</span>, <span class="key-term">Changes Being Effected (CBE-30)</span>, or annual report, depending on risk level.</li>
+                    <li><strong>Drug Establishment Registration</strong>: Required annually under 21 CFR 207. Each domestic establishment must register before manufacturing.</li>
+                    <li><strong>Foreign Establishment Registration</strong>: Foreign manufacturers must also register and pay fees under the PDUFA/GDUFA framework.</li>
+                    <li><strong>FEI Number Assignment</strong>: Linked to a specific physical address. Relocation triggers a new FEI application process.</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>EMA Site Change Variation Procedures (EU)</h4>
+                <ul>
+                    <li><strong>Type IA / IB / II Variations</strong>: Manufacturing site changes are classified as variations. A new primary manufacturing site is typically a <strong>Type II Major Variation</strong>, requiring advance approval before implementation.</li>
+                    <li><strong>Manufacturing Authorisation</strong>: Each EU member state issues a Manufacturing Authorisation (MA) for each site. Cross-border MMU movement requires new MAs in each country.</li>
+                    <li><strong>GMP Certificate</strong>: Issued after successful inspection by national competent authority (e.g., MHRA, BfArM, ANSM). A new site requires a new inspection and new certificate.</li>
+                    <li><strong>Annex 1 (2023)</strong>: Updated sterile manufacturing guidance does not contemplate MMU scenarios.</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>ICH Q10 — Pharmaceutical Quality System</h4>
+                <p>ICH Q10 establishes the Pharmaceutical Quality System (PQS) framework. Its site independence requirements mean:</p>
+                <ul>
+                    <li>Each site must have its own fully functional QMS.</li>
+                    <li>Quality oversight, batch release authority, and deviation management must be site-specific.</li>
+                    <li>For an MMU, replicating a complete QMS in a compact mobile unit and maintaining site independence at each new location is operationally challenging.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>申報機制深度解析 &mdash; 繁體中文</h3>
+
+            <div class="concept-box">
+                <h4>美國 FDA 申報類型對照</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>變更類型</th>
+                            <th>申報方式</th>
+                            <th>等待時間</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>主要製造地點新增</td>
+                            <td>Prior Approval Supplement (PAS)</td>
+                            <td>約 6–12 個月</td>
+                        </tr>
+                        <tr>
+                            <td>次要地點變更</td>
+                            <td>CBE-30</td>
+                            <td>30 天後生效</td>
+                        </tr>
+                        <tr>
+                            <td>微小行政變更</td>
+                            <td>Annual Report</td>
+                            <td>年度彙報</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>MMU 若頻繁搬遷，每次移動都可能觸發 PAS，6–12 個月的審查時間完全抵消了「快速部署」的商業優勢。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>法規申報負擔計算</h4>
+                <pre>
+若 MMU 每年搬遷 4 次，跨 3 個不同監管轄區：
+
+申請次數 = 4 搬遷 × 3 轄區 × 1–2 申請類型
+         = 12–24 份法規申請 / 年
+
+加上：
+- 設施登記更新
+- GMP 查核申請
+- 各州藥局重新登記（美國境內）
+
+實際行政負擔可能高達每年 30–50 份文件
+→ 這使得「靈活部署」在現行法規架構下近乎不可能</pre>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：連鎖餐廳加盟標準化</h4>
+                <p>麥當勞可以在全球任何城市快速開設新分店，原因是其「標準化設備 + 標準化流程」已通過認證。但如果每開一家分店都需要重新進行 12 個月的食品安全審查，麥當勞的商業模式就會完全崩潰。</p>
+                <p>MMU 的理想願景正是類似的「標準化平台認證」——但現行法規還沒有這個框架。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>ICH Q10 對 CDMO 的實務意義</h4>
+                <p>對於 CDMO（合約開發製造組織）而言，ICH Q10 的「設施獨立性」要求意味著：</p>
+                <ul>
+                    <li>每個 MMU 都需要配備完整的 QMS 基礎架構（SOP 系統、偏差管理、CAPA 系統）。</li>
+                    <li>批次放行權（Batch Release Authority）需要有明確的授權架構。</li>
+                    <li>在資源有限的移動單元內維持「可查核」的完整 QMS，是技術與組織上的重大挑戰。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Q2.2 SECTION                                                  -->
+    <!-- ============================================================ -->
+    <div id="q22">
+        <div class="topic-bar" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+            <span class="topic-tag">Q 2.2</span>
+            <h2>What actions can global regulators take to help facilitate mobile manufacturing?</h2>
+        </div>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+            <h3>Original Text — PDA PtC-15 (pp. 15–16)</h3>
+
+            <p>Regulators can facilitate mobile manufacturing both by <span class="key-term">adjusting regulatory/administrative procedures</span> and <span class="key-term">modifying validation and qualification expectations</span>.</p>
+
+            <p>A prime example of where regulatory requirements could be revisited is the FDA approach to the <span class="key-term">FEI number</span>. It would not be practical to give each MMU an FEI number: there would be too many units in circulation and the MMU manufacturer would need to reapply for a new one each time an MMU relocated, potentially every month. Not only would it be burdensome for the manufacturer but for FDA, with little public health benefit.</p>
+
+            <p>Alternatively, an approach could be to have an FEI number for the <span class="key-term">site where the MMUs are produced</span> and then have that site's Quality Unit track the unit numbers from there. This would ensure the traceability expected by regulators, and regulators could revisit the concept of 100% "facility" inspection. If the MMU was viewed as analogous with a "facility," as set forth in 21 CFR 201.1, it would be impractical — a strict interpretation may require that each and every mobile unit be inspected after they are produced.</p>
+
+            <p>Novel validation and qualification approaches would also ease otherwise insurmountable regulatory burdens. For example, implementing a <span class="key-term">"family approach"</span> towards validation and qualification of MMUs would streamline mobile unit qualification, without lowering quality standards. In this approach, once one unit is qualified and validated, identical follow-on units would be subject to reduced testing.</p>
+
+            <p>As another streamlining concept, the <span class="key-term">bulk release of raw materials or water</span> could take place at one mobile manufacturing site, with portions of the pre-released material distributed to each unit. This would avoid unit-specific testing each time an MMU is made and stocked with material.</p>
+
+            <p>Recent draft guidances issued by the FDA on the <span class="key-term">Platform Technology Designation Program</span> and the <span class="key-term">Advanced Manufacturing Technologies Designation Program</span> potentially offer a new opportunity for MMUs. Specifically, these draft guidances propose that once a platform technology has been designated as such, it may be leveraged for other new or future products from the same sponsor or if a full right of reference for the same platform technology is provided to a third party.</p>
+
+            <p>As currently written, these draft guidances are limited to technology incorporated into a drug or biological product which is essential to its structure or function. Expansion of the guidances, or additional guidance to include the methods of manufacturing and the production platforms themselves, could prove useful to accelerate this paradigm.</p>
+
+            <p>The designation of a <span class="key-term">platform manufacturing technology</span> should be considered early in development during the clinical phase. Other regulators, including <span class="key-term">Health Canada</span> and the <span class="key-term">MHRA</span>, are creating frameworks for advanced therapeutic products that take into account scientific and technological advances leading to distributed and point-of-care manufacturing, both of which could take advantage of mobile manufacturing facilities.</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+            <h3>重點解析 &mdash; 繁體中文導讀</h3>
+
+            <div class="concept-box">
+                <h4>主管機關可採取的兩大行動方向</h4>
+                <p>PDA 明確指出，監管機關可以從兩個維度推進：</p>
+                <ul>
+                    <li><strong>行政/程序面</strong>：修改 FEI 號碼制度、允許設施許可「跟著系統走」而非「綁定地址」</li>
+                    <li><strong>技術/確效面</strong>：引入「家族法」（Family Approach）減少重複確效，允許原料/水系統集中批次放行</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>FEI 號碼改革提案解析</h4>
+                <p>現行問題：FEI = 地址綁定 → MMU 搬移 = 新 FEI 申請</p>
+                <p>PDA 提議的替代方案：</p>
+                <ul>
+                    <li>FEI 號碼僅頒發給「MMU 製造商（生產 MMU 的工廠）」</li>
+                    <li>製造商的品質部門負責追蹤各個 MMU 的機台序號</li>
+                    <li>FDA 可以查核「製造 MMU 的設施」而非每一台 MMU 本身</li>
+                </ul>
+                <p>這個提案的本質是：<strong>將查核焦點從「地點」轉移到「系統設計與製造品質」</strong>。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：汽車型式認證 vs. 逐輛查核</h4>
+                <p>一輛特定型號的汽車（例如 Toyota Corolla 2026），不需要每一輛都重新通過碰撞測試——只需要「該型號」通過認證，之後每輛出廠車只需進行標準出廠檢查即可。</p>
+                <p>「Family Approach」的邏輯完全相同：MMU 型號認證一次，後續同型機台只需減量確效（Reduced Testing），而非從頭開始。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>FDA 平台技術認定計畫</h4>
+                <p>FDA 的兩個新方向對 MMU 業者有潛在利益：</p>
+                <ul>
+                    <li><strong>Platform Technology Designation</strong>：平台技術一旦被認定，可跨產品複用，減少重複審查</li>
+                    <li><strong>Advanced Manufacturing Technologies (AMT) Designation</strong>：新興製造技術可申請專案認定，取得 FDA 的主動技術支援</li>
+                </ul>
+                <p>目前這兩個計畫仍聚焦在「藥物本身的核心技術」，尚未擴展至「製造平台本身」。PDA 建議 FDA 擴大適用範圍，讓 MMU 製造平台本身也能被認定為「平台技術」。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>業界倡議管道</h4>
+                <p>PDA 及 ISPE 等行業協會在推動 MMU 法規框架方面扮演關鍵角色：</p>
+                <ul>
+                    <li><strong>Pre-submission Meeting（預提交會議）</strong>：MMU 首創性專案應主動與 FDA 召開會議，提前釐清申報策略</li>
+                    <li><strong>Emerging Technology Program (ETP)</strong>：FDA 設有新興技術計畫，鼓勵創新製造技術業者提前溝通</li>
+                    <li><strong>MHRA / Health Canada</strong>：英國和加拿大已針對先進治療產品（ATMPs）建立更靈活的框架，可作為 MMU 的法規突破口</li>
+                </ul>
+            </div>
+
+            <div class="practice-box cdmo-strategy">
+                <h4>CDMO 法規策略建議 — 行動製造模組化布局</h4>
+                <p>對於計畫導入 MMU 的 CDMO 而言，現階段最可行的法規策略包括：</p>
+                <ul>
+                    <li><strong>提前接觸監管機關</strong>：在 MMU 設計階段即安排 Pre-Sub 或 INTERACT 會議（FDA），明確申報路徑。</li>
+                    <li><strong>選擇法規友善的先行市場</strong>：英國（MHRA）和加拿大（Health Canada）目前法規框架較有彈性，可作為 MMU 首次部署的試點市場。</li>
+                    <li><strong>建立平台認定策略</strong>：若 MMU 採用連續製造或其他新興技術，應積極申請 FDA AMT Designation，累積法規資本。</li>
+                    <li><strong>Family Approach 文件架構</strong>：從第一台 MMU 起就建立「標準機台確效包（Validation Master Package）」，為後續同型機台鋪路。</li>
+                    <li><strong>集中 QMS 架構</strong>：設計雲端化、可移動的 QMS 基礎架構，確保每個地點都能即時符合 ICH Q10 要求。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q2.2 Regulatory Actions Table -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Summary: Regulatory Actions to Facilitate MMU</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action Category</th>
+                        <th>Specific Action</th>
+                        <th>Lead Agency / Body</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Administrative Reform</td>
+                        <td>Revise FEI system to track MMUs by manufacturer rather than address</td>
+                        <td>FDA</td>
+                    </tr>
+                    <tr>
+                        <td>Administrative Reform</td>
+                        <td>Allow single manufacturing license to follow the MMU system, not the address</td>
+                        <td>EMA, national competent authorities</td>
+                    </tr>
+                    <tr>
+                        <td>Validation Flexibility</td>
+                        <td>Implement "family approach" — one unit qualified, reduced testing for identical follow-on units</td>
+                        <td>All agencies (ICH Q7/Q10)</td>
+                    </tr>
+                    <tr>
+                        <td>Supply Chain</td>
+                        <td>Allow bulk release of raw materials / WFI at a central site for distribution to MMUs</td>
+                        <td>FDA, EMA</td>
+                    </tr>
+                    <tr>
+                        <td>Innovation Programs</td>
+                        <td>Expand Platform Technology Designation to include manufacturing platforms</td>
+                        <td>FDA</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced Manufacturing</td>
+                        <td>Create MMU-specific frameworks under ATMPs / distributed manufacturing guidance</td>
+                        <td>MHRA, Health Canada</td>
+                    </tr>
+                    <tr>
+                        <td>Early Dialogue</td>
+                        <td>Pre-submission meetings (ETP, INTERACT) for first-in-kind MMU projects</td>
+                        <td>FDA, EMA, MHRA</td>
+                    </tr>
+                    <tr>
+                        <td>International Harmonization</td>
+                        <td>ICH guideline development for multi-site validation of modular manufacturing</td>
+                        <td>ICH, WHO</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-column">
+            <h3>法規行動摘要 &mdash; 重點解析</h3>
+            <div class="concept-box">
+                <h4>兩軌並行的法規推進策略</h4>
+                <p>從業者角度看，法規推進需要同時在兩個軌道上運作：</p>
+                <ul>
+                    <li><strong>短期（現行框架內）</strong>：利用 FDA Emerging Technology Program、Pre-Sub 會議取得個案指引；選擇已有彈性框架的轄區（英國、加拿大）作為先行部署點。</li>
+                    <li><strong>中長期（框架改革）</strong>：透過 PDA、ISPE 等組織的政策倡議，推動 FEI 改革、Family Approach 官方指引、ICH 跨區確效指南的制定。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>法規監管風險警示</h4>
+                <p>在任何一個 MMU 項目中，必須注意以下申報策略陷阱：</p>
+                <ul>
+                    <li>不要假設「一國批準 = 跨國通用」——每個監管轄區必須獨立評估。</li>
+                    <li>不要在未取得主管機關同意前即進行跨州/跨國搬遷——可能觸發 Consent Decree 或停產令。</li>
+                    <li>不要低估 Type II Variation（EMA）的審查時間——平均 60–90 天，部分案例超過 12 個月。</li>
+                    <li>多轄區同步申請雖可縮短時間，但需要大量協調資源，建議設置「法規地圖（Regulatory Roadmap）」專項。</li>
+                </ul>
+            </div>
+
+            <div class="formula-box">
+                <h4>多轄區申請時程框架</h4>
+                <pre>
+MMU 部署法規時程規劃（建議）：
+
+T-18 個月：設計凍結 + 啟動 Pre-Sub（FDA）
+T-15 個月：與 EMA 或 MHRA 進行科學建議會議
+T-12 個月：提交申報文件（PAS / Type II Variation）
+T-06 個月：回應審查問題（IR 回應週期）
+T-03 個月：預期批准 / GMP 查核排程
+T+00 個月：第一個地點部署
+T+03 個月：第二個地點部署（Family Approach 減量確效）
+
+注意：此時程假設法規路徑已預先釐清。
+首創性專案（First-in-Kind）應額外預留 6–12 個月。</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TOPIC 3: IMPLEMENTATION                                       -->
+    <!-- ============================================================ -->
+    <div id="topic3-overview">
+        <div class="topic-bar">
+            <span class="topic-tag">TOPIC 3</span>
+            <h2>Implementation &mdash; 實施</h2>
+        </div>
+    </div>
+
+    <div id="q31">
+        <div class="topic-bar" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); margin-top: 0;">
+            <span class="topic-tag">Q 3.1</span>
+            <h2>How would one validate a mobile manufacturing unit at a new location?</h2>
+        </div>
+    </div>
+
+    <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+            <h3>Original Text — PDA PtC-15 (p. 16)</h3>
+
+            <p>Assuming the initial validation was fully conducted at the initially qualified site, validation of an MMU should be done <span class="key-term">in stages</span>, with as many elements completed at the initially qualified site as possible (see Question 1.3). The initial stage occurs at the <span class="key-term">manufacturing site of the MMU (vendor)</span>, where critical systems like water and air are qualified via <span class="key-term">installation qualification/operational qualification (IQ/OQ)</span>. Mobility over various terrains would be part of this exercise as well.</p>
+
+            <p>Some systems could be tested at the <span class="key-term">initially qualified site of the receiving company</span> (i.e., the drug manufacturer). For example, testing and qualification of raw materials should occur at the receiving company's fixed site, as could the initial process validation. These systems would need to be further qualified in field testing, through <span class="key-term">performance qualification (PQ)</span> or confirmatory runs and, potentially, process validation.</p>
+
+            <p>This is analogous to <span class="key-term">"static" and "dynamic" testing</span> of air systems where use in the field would be analogous to "dynamic" testing. In the case of <span class="key-term">process validation (PV)</span>, if the MMU is intended for multiproduct use, it may be challenging to perform PV for every potential product. The choice of the model process for PV should consider its complexity and robustness in order to cover a range of product types.</p>
+
+            <h3 style="margin-top:1.5rem;">Key Validation Elements from Q1.3</h3>
+            <p>Building on Q1.3, elements to address for MMU validation include:</p>
+            <ul>
+                <li>Identify the need for an MMU and the initially qualified site</li>
+                <li>Determine what unit operations will be performed</li>
+                <li>List systems requiring qualification: utilities, manufacturing systems, computer systems, servers, access control, unit operation validation, method validation, cleaning validation, shipping validation</li>
+                <li>Describe procurement strategy and identify training requirements</li>
+                <li>Define quality oversight structure</li>
+            </ul>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+            <h3>重點解析 &mdash; 繁體中文導讀</h3>
+
+            <div class="concept-box">
+                <h4>分段確效的核心邏輯</h4>
+                <p>MMU 確效的基本原則是：<strong>盡可能在控制環境中提前完成確效，最小化在新地點現場重做的範圍</strong>。</p>
+                <p>這個原則反映了風險管理思維：越早完成確效，越能在受控條件下取得高品質數據；現場確效（Field Testing）應聚焦在「地點特定的不確定因素」。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>三階段確效地點分工</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>確效階段</th>
+                            <th>執行地點</th>
+                            <th>主要活動</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>第一階段</td>
+                            <td>MMU 製造商廠（Vendor Site）</td>
+                            <td>IQ/OQ（水系統、HVAC）、移動性測試（各地形顛簸模擬）</td>
+                        </tr>
+                        <tr>
+                            <td>第二階段</td>
+                            <td>藥廠初始合格地點（Initially Qualified Site）</td>
+                            <td>原料確效、初始製程驗證（PV）、系統整合測試</td>
+                        </tr>
+                        <tr>
+                            <td>第三階段</td>
+                            <td>新部署地點（New Field Location）</td>
+                            <td>PQ（性能確效）、確認性批次、動態環境測試</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：靜態測試 vs. 動態測試</h4>
+                <p>PDA 使用空調系統的靜態/動態測試作為比喻，這是製藥人熟悉的概念：</p>
+                <ul>
+                    <li><strong>靜態測試</strong>（At-rest）：在無人員、無操作活動的條件下測試潔淨室性能——類比於在 Vendor 廠或初始合格地點進行的 IQ/OQ。</li>
+                    <li><strong>動態測試</strong>（In-operation）：在模擬生產條件下測試——類比於在實際部署地點進行的 PQ 和確認性批次。</li>
+                </ul>
+                <p>這個比喻非常實用：靜態確效建立「基準性能」，動態確效驗證「實際操作條件下的穩健性」。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>多產品 MMU 的製程驗證挑戰</h4>
+                <p>若 MMU 設計為多產品使用（Multiproduct），則面臨一個實務困境：</p>
+                <ul>
+                    <li>理論上，每個產品都需要完整的製程驗證（PV）。</li>
+                    <li>在行動單元中對所有潛在產品進行 PV 是不現實的。</li>
+                    <li>PDA 的建議：選擇一個「最具代表性的模型製程（Model Process）」進行 PV，該製程應具備足夠的複雜性和穩健性，能夠涵蓋計畫生產的各類產品範圍。</li>
+                </ul>
+                <p>這個策略的法規依據需要與主管機關提前討論，確認「模型製程」的選擇邏輯被接受。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q3.1 Deep Dive: Relocation Validation Framework -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Relocation Validation: Risk-Based Scope Matrix</h3>
+
+            <div class="formula-box">
+                <h4>Relocation Validation Scope Decision Matrix</h4>
+                <pre>
+FOR EACH SYSTEM AT NEW LOCATION:
+
+Step 1: Has the system changed since last qualification?
+  YES → Full requalification required
+  NO  → Proceed to Step 2
+
+Step 2: Has the environment changed?
+  (new HVAC, utilities, vibration profile, humidity zone)
+  YES → IQ/OQ/PQ at new site
+  NO  → Proceed to Step 3
+
+Step 3: Is this a critical system directly impacting product quality?
+  YES → Minimum PQ + confirmatory batch required
+  NO  → Review / Risk Assessment + reduced testing
+
+Step 4: Are regulatory filings required for this relocation?
+  YES → Coordinate with RA team before MMU moves
+  NO  → Document in Change Control record
+
+Output: Validation scope = systems in Steps 1+2+3
+        Minimum document: Change Control + Risk Assessment
+        Recommended: Site Validation Protocol (SVP)</pre>
+            </div>
+
+            <div class="concept-box">
+                <h4>Change Control for Each Relocation</h4>
+                <p>Every relocation of an MMU must be captured in the <span class="key-term">Change Control system</span>. Key documentation includes:</p>
+                <ul>
+                    <li><strong>Change Control Form</strong>: Record relocation trigger, new address/site details, planned validation scope</li>
+                    <li><strong>Risk Assessment</strong>: Evaluate impact on product quality, utility performance, environmental conditions</li>
+                    <li><strong>Validation Protocol (SVP)</strong>: Define scope, acceptance criteria, responsibilities</li>
+                    <li><strong>Regulatory Impact Assessment</strong>: Determine if regulatory filings are triggered (PAS, CBE-30, Variation)</li>
+                    <li><strong>Commissioning Checklist</strong>: Utility hook-ups, HVAC performance, power quality, water system flushing</li>
+                    <li><strong>Environmental Monitoring Plan</strong>: EM program specific to new location</li>
+                    <li><strong>Validation Summary Report</strong>: Post-relocation report before resuming production</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>搬遷確效架構 &mdash; 繁體中文解析</h3>
+
+            <div class="formula-box">
+                <h4>確效範圍決定矩陣（中文版）</h4>
+                <pre>
+對新地點的每個系統依序判斷：
+
+問題1：系統本身是否有變動？
+  是 → 需完整重新確效（Full Requalification）
+  否 → 進入問題2
+
+問題2：環境條件是否改變？
+  （新HVAC、新公用設施、振動輪廓、濕度帶）
+  是 → 需在新地點執行 IQ/OQ/PQ
+  否 → 進入問題3
+
+問題3：是否為直接影響產品品質的關鍵系統？
+  是 → 最低限度：PQ + 確認性批次
+  否 → 風險評估 + 減量測試
+
+問題4：此次搬遷是否觸發法規申報？
+  是 → 搬遷前先與法規部門協調
+  否 → 納入變更管制紀錄
+
+輸出：確效範圍 = 問題1+2+3 觸發的系統</pre>
+            </div>
+
+            <div class="concept-box">
+                <h4>每次搬遷的變更管制文件清單</h4>
+                <ul>
+                    <li><strong>變更管制單（CCF）</strong>：記錄搬遷觸發原因、新地點資訊、計畫確效範圍</li>
+                    <li><strong>風險評估（RA）</strong>：評估對產品品質、公用設施、環境的影響</li>
+                    <li><strong>地點確效協議（SVP）</strong>：定義確效範圍、驗收標準、責任分工</li>
+                    <li><strong>法規影響評估</strong>：判斷是否觸發 PAS / CBE-30 / Type II Variation</li>
+                    <li><strong>啟動前檢查清單</strong>：公用設施接駁、HVAC 性能確認、電力品質、WFI 系統沖洗</li>
+                    <li><strong>環境監測計畫（EM Plan）</strong>：針對新地點的環境監測方案</li>
+                    <li><strong>確效摘要報告</strong>：恢復生產前的總結報告</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>持續製程確認（CPV）的角色</h4>
+                <p>ICH Q10 要求在商業化製造期間進行持續製程確認（Continued Process Verification, CPV）。對 MMU 而言，每次搬遷後的 CPV 計畫應特別注意：</p>
+                <ul>
+                    <li>重新建立製程控制圖的基準（Baseline）——因地點改變可能引入新的變異來源</li>
+                    <li>增加搬遷後前幾批的 CPV 取樣頻率</li>
+                    <li>確保 CPV 數據與搬遷前數據有可比較的橋接批次（Bridging Batches）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考問題</h4>
+                <p>假設您正在管理一個生產單克隆抗體原液（mAb DS）的 MMU，計畫從台灣北部移到南部的一個新廠房。以下哪些系統您認為需要完整重做 PQ？哪些只需要風險評估？</p>
+                <ul>
+                    <li>WFI 純水系統（全套內置於 MMU）</li>
+                    <li>一次性生物反應器（與批次產品接觸）</li>
+                    <li>HVAC 系統（MMU 內建）</li>
+                    <li>冷凍鏈（使用廠商提供的公用設施）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q3.1 Shipping + Environmental Qualification -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Commissioning at New Site — Practical Checklist</h3>
+
+            <div class="concept-box">
+                <h4>Site Commissioning Before Qualification</h4>
+                <p>Before formal qualification activities begin at the new location, a comprehensive commissioning check must confirm:</p>
+                <ul>
+                    <li><strong>Utility Hook-Ups</strong>: Electrical (voltage, frequency, phase), compressed air quality, nitrogen supply, steam or hot water, drainage systems</li>
+                    <li><strong>Water System</strong>: If Purified Water or WFI is generated onboard the MMU, flush and sanitize the system before use; test water quality per Ph. Eur. / USP specifications</li>
+                    <li><strong>HVAC Performance</strong>: Verify differential pressure cascades, air change rates, temperature/humidity setpoints at the new location (climate may differ significantly)</li>
+                    <li><strong>Environmental Monitoring Baseline</strong>: Run EM program for a defined period before production to establish baseline particulate and microbial counts at the new site</li>
+                    <li><strong>Vibration / Shock Assessment</strong>: Inspect critical equipment for damage sustained during transport (especially precision instruments, filling needles, sensors)</li>
+                    <li><strong>Computer System Revalidation</strong>: Confirm software, network connectivity, and data integrity systems function correctly at new site</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>Shipping Validation for MMU Relocation</h4>
+                <p>Shipping the MMU itself is a validation exercise. Key elements:</p>
+                <ul>
+                    <li>Define transport conditions (temperature, humidity, vibration, shock limits)</li>
+                    <li>Use data loggers to record actual transport conditions</li>
+                    <li>Compare actual conditions against validated transport profiles</li>
+                    <li>Inspect all critical equipment upon arrival per SOP</li>
+                    <li>Document any excursions and evaluate impact on system qualification status</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3>現場啟動 &mdash; 繁體中文解析</h3>
+
+            <div class="concept-box">
+                <h4>公用設施接駁的實務重點</h4>
+                <p>MMU 的公用設施接駁是搬遷後最容易出問題的環節，尤其是：</p>
+                <ul>
+                    <li><strong>電力品質</strong>：不同國家電壓（110V/220V/380V）、頻率（50Hz/60Hz）差異。即使在台灣境內，工業區電網品質也可能影響精密儀器。</li>
+                    <li><strong>壓縮空氣/氮氣</strong>：需確認純度等級符合藥品製造要求（ISO 8573）。</li>
+                    <li><strong>排水/廢水</strong>：製藥廢水處理要求可能因地點而異，需預先確認當地環保規定。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>環境監測基準建立</h4>
+                <p>每次搬遷到新地點後，必須重新建立 EM 基準：</p>
+                <ul>
+                    <li>在開始生產前，執行至少 2–4 週的環境監測數據收集</li>
+                    <li>評估新地點的背景微生物譜（Microbiological Profile）——不同地理位置的常見污染菌種可能不同</li>
+                    <li>根據新地點的 EM 數據，更新警戒限度（Alert Level）和行動限度（Action Level）</li>
+                    <li>此步驟是 Annex 1 (2023) 的明確要求，不可省略</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>運輸驗證——最容易被忽略的環節</h4>
+                <p>MMU 的搬遷本身就是一個「製造設施的運輸」，需要完整的運輸驗證文件：</p>
+                <ul>
+                    <li>運輸期間的溫度、濕度、振動和衝擊數據（使用資料記錄器）</li>
+                    <li>到達後的設備目視檢查 SOP（特別是填充針、精密感測器、閥件）</li>
+                    <li>任何運輸條件偏差均需進行影響評估（Impact Assessment），決定是否需要額外的確效活動</li>
+                </ul>
+            </div>
+
+            <div class="practice-box cdmo-strategy">
+                <h4>CDMO 確效策略建議</h4>
+                <p>為了最大化 MMU 的商業靈活性，CDMO 應在初始確效階段即建立「可攜帶的確效包（Portable Validation Package）」：</p>
+                <ul>
+                    <li>標準確效主計畫（VMP）涵蓋所有預期搬遷場景</li>
+                    <li>預定義的「觸發條件清單（Trigger Criteria List）」——什麼情況下需要完整 PQ，什麼情況下只需橋接確效</li>
+                    <li>預格式化的「地點特定確效協議模板（Site-Specific VP Template）」，減少每次搬遷的準備時間</li>
+                    <li>電子化變更管制和確效記錄系統，確保文件可隨 MMU 移動</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- APPENDIX A: REGIONAL REGULATORY EXPECTATIONS                  -->
+    <!-- ============================================================ -->
+    <div id="appendix-a">
+        <div class="appendix-bar">
+            <span class="topic-tag">APPENDIX A</span>
+            <h2>Regulatory Compliance Expectations — Multi-Region Comparison</h2>
+        </div>
+    </div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Appendix A — Regional Regulatory Expectations Overview</h3>
+
+            <p>The following table summarizes the key regulatory compliance expectations for mobile manufacturing units across major pharmaceutical regulatory jurisdictions. These expectations reflect the <strong>current regulatory framework</strong> for fixed facilities as applied to MMU scenarios, along with known challenges and emerging opportunities.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:15%;">Region / Agency</th>
+                        <th style="width:25%;">Key Regulatory Framework</th>
+                        <th style="width:35%;">MMU-Relevant Requirements &amp; Challenges</th>
+                        <th style="width:25%;">Emerging Opportunities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>United States</strong><br>FDA (CDER/CBER)</td>
+                        <td>21 CFR 210/211 (cGMP)<br>21 CFR 207 (Drug Establishment Registration)<br>FD&amp;C Act Section 501<br>PDUFA / GDUFA Fee Frameworks</td>
+                        <td>
+                            FEI number tied to physical address; must reregister on relocation.<br>
+                            NDA/BLA/ANDA site changes require PAS (Prior Approval Supplement) or CBE-30.<br>
+                            State board of pharmacy registration required in each state of operation.<br>
+                            100% facility inspection concept may require each MMU to be individually inspected.
+                        </td>
+                        <td>
+                            Emerging Technology Program (ETP) for early dialogue.<br>
+                            Platform Technology Designation (draft guidance).<br>
+                            Advanced Manufacturing Technologies (AMT) Designation.<br>
+                            INTERACT meetings for novel manufacturing approaches.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>European Union</strong><br>EMA + National Competent Authorities</td>
+                        <td>EU GMP (EudraLex Vol. 4)<br>Annex 1 (2023) — Sterile Manufacturing<br>Directive 2001/83/EC<br>EMA Commission Decision 2021/1240<br>Variation Regulation (EC) No. 1234/2008</td>
+                        <td>
+                            Manufacturing Authorisation (MA) issued per site by national authority (e.g., MHRA, BfArM).<br>
+                            New primary manufacturing site = Type II Major Variation (60–90 day review).<br>
+                            GMP Certificate required per site; issued after inspection by national authority.<br>
+                            Cross-border MMU movement requires separate MA in each EU member state.
+                        </td>
+                        <td>
+                            PRIME designation for advanced therapies.<br>
+                            EMA Scientific Advice for novel manufacturing approaches.<br>
+                            MHRA (post-Brexit) developing flexible frameworks for ATMPs and distributed manufacturing.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Japan</strong><br>PMDA</td>
+                        <td>Pharmaceutical and Medical Devices Act (PMD Act)<br>GMP Ministerial Ordinance No. 179<br>PMDA Review Guidance</td>
+                        <td>
+                            Manufacturing site registration mandatory for all domestic and foreign sites.<br>
+                            Site changes require prior approval under PMD Act before implementation.<br>
+                            Foreign manufacturers must have a Japan-registered agent (MAH surrogate).<br>
+                            Conservative regulatory culture; limited precedent for mobile or modular manufacturing.
+                        </td>
+                        <td>
+                            PMDA Sakigake designation (fast-track for innovative products).<br>
+                            PMDA RS Strategy (regulatory science) initiatives for advanced manufacturing.<br>
+                            MOU with FDA and EMA for mutual recognition of inspection data.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Canada</strong><br>Health Canada (HC)</td>
+                        <td>Food and Drugs Act<br>Food and Drug Regulations (C.02)<br>HC GMP Guidelines (GUI-0001)</td>
+                        <td>
+                            Drug Establishment License (DEL) required for each manufacturing site.<br>
+                            Site changes require DEL amendment and potentially Supplemental New Drug Submission (SNDS).<br>
+                            Inspection required before DEL is granted for new sites.
+                        </td>
+                        <td>
+                            Health Canada is actively developing frameworks for Advanced Therapeutic Products (ATPs).<br>
+                            Early engagement encouraged for novel manufacturing technologies.<br>
+                            MRA with EMA enables recognition of some inspection data, potentially streamlining multi-site work.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>United Kingdom</strong><br>MHRA</td>
+                        <td>Human Medicines Regulations 2012<br>UK GMP (post-Brexit, aligned with EU GMP)<br>MHRA Innovation Office</td>
+                        <td>
+                            Manufacturer's Licence (ML) required per site, similar to EU MA.<br>
+                            Site changes require variation to Marketing Authorisation.<br>
+                            GMP Certificate issued after MHRA inspection.
+                        </td>
+                        <td>
+                            MHRA actively developing flexible regulatory pathways for decentralized and point-of-care manufacturing.<br>
+                            MHRA Innovation Office provides early dialogue for novel manufacturing approaches.<br>
+                            Accelerated Access Review (AAR) program could benefit MMU products.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brazil</strong><br>ANVISA</td>
+                        <td>RDC No. 301/2019 (GMP)<br>Resolução RDC 204/2017<br>ANVISA GMP Certification Program</td>
+                        <td>
+                            Manufacturing site authorization required; tied to specific address.<br>
+                            Foreign manufacturing sites must hold valid GMP certification from home country or ANVISA inspection.<br>
+                            Site changes require regulatory submission and potentially new GMP certification.<br>
+                            Complex regulatory landscape with requirements for local product registration (GGMED).
+                        </td>
+                        <td>
+                            ANVISA is a member of PANDRH (Pan American Network for Drug Regulatory Harmonization).<br>
+                            Brazil's regulatory modernization efforts (MDER) may create new pathways for innovative manufacturing.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>China</strong><br>NMPA (formerly CFDA)</td>
+                        <td>Drug Administration Law (2019 revision)<br>GMP for Pharmaceutical Products (2010)<br>NMPA Regulation on Drug Registration</td>
+                        <td>
+                            GMP Certificate required per manufacturing site; significant local inspection requirements.<br>
+                            Foreign manufacturers exporting to China must register sites with NMPA and may face on-site inspections.<br>
+                            Site changes require supplemental registration; prior approval required for major changes.<br>
+                            Political and trade factors can influence regulatory timelines.
+                        </td>
+                        <td>
+                            China's "Healthy China 2030" initiative includes focus on advanced manufacturing.<br>
+                            NMPA ICH membership (since 2017) drives harmonization with global standards.<br>
+                            Drug registration reform has streamlined some pathways for innovative products.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>WHO / Developing Countries</strong></td>
+                        <td>WHO GMP Guidelines (Technical Report Series)<br>WHO Prequalification Programme<br>Stringent Regulatory Authority (SRA) reliance models</td>
+                        <td>
+                            Many developing countries rely on WHO Prequalification or SRA approval for drug registration.<br>
+                            Mobile manufacturing in these contexts may face less formal regulatory barriers but more logistical ones.<br>
+                            Supply chain security, cold chain infrastructure, and local QC capacity are key challenges.
+                        </td>
+                        <td>
+                            WHO Prequalification pathway may be the fastest route for MMU deployment in endemic disease contexts.<br>
+                            COVAX and pandemic preparedness frameworks showed potential for expedited approvals.<br>
+                            Emergency Use Listing (EUL) could apply to MMU products in crisis scenarios.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-column">
+            <h3>Appendix A 解析 &mdash; 繁體中文導讀</h3>
+
+            <div class="concept-box">
+                <h4>多轄區法規比較的核心發現</h4>
+                <p>橫跨所有主要監管轄區，Appendix A 的核心發現可以歸納為一個共同主題：</p>
+                <p><strong>所有現行 GMP 法規體系都假設製造設施是固定在某個地址的，沒有任何一個主要監管轄區有專門針對 MMU 的法規條文。</strong></p>
+                <p>這個共識性缺口，正是 PDA PtC-15 存在的核心理由。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>各地區法規難度分級（MMU 視角）</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>地區</th>
+                            <th>法規靈活性</th>
+                            <th>創新對話機制</th>
+                            <th>MMU 部署難度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>英國 MHRA</td>
+                            <td>高</td>
+                            <td>完善（Innovation Office）</td>
+                            <td style="color:#065f46;font-weight:600;">相對較低</td>
+                        </tr>
+                        <tr>
+                            <td>加拿大 Health Canada</td>
+                            <td>中高</td>
+                            <td>主動推進（ATP 框架）</td>
+                            <td style="color:#065f46;font-weight:600;">相對較低</td>
+                        </tr>
+                        <tr>
+                            <td>美國 FDA</td>
+                            <td>中</td>
+                            <td>有（ETP / AMT）但程序繁複</td>
+                            <td style="color:#92400e;font-weight:600;">中等</td>
+                        </tr>
+                        <tr>
+                            <td>歐盟 EMA</td>
+                            <td>中低</td>
+                            <td>有（Scientific Advice）但慢</td>
+                            <td style="color:#92400e;font-weight:600;">中等偏高</td>
+                        </tr>
+                        <tr>
+                            <td>日本 PMDA</td>
+                            <td>低</td>
+                            <td>有限（Sakigake）</td>
+                            <td style="color:#b91c1c;font-weight:600;">高</td>
+                        </tr>
+                        <tr>
+                            <td>中國 NMPA</td>
+                            <td>低</td>
+                            <td>有限</td>
+                            <td style="color:#b91c1c;font-weight:600;">高</td>
+                        </tr>
+                        <tr>
+                            <td>巴西 ANVISA</td>
+                            <td>低</td>
+                            <td>有限（PANDRH）</td>
+                            <td style="color:#b91c1c;font-weight:600;">高</td>
+                        </tr>
+                        <tr>
+                            <td>WHO 預認證</td>
+                            <td>中（緊急情況下高）</td>
+                            <td>EUL 緊急機制</td>
+                            <td style="color:#065f46;font-weight:600;">危機情境下較低</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>多轄區複雜性警示</h4>
+                <p>在規劃 MMU 跨境部署時，以下幾點是最常被低估的複雜性：</p>
+                <ul>
+                    <li><strong>雙向認可問題</strong>：即使兩國之間有 MRA（相互承認協議），這通常只適用於查核報告的共享，不等同於自動接受許可。</li>
+                    <li><strong>語言與文件要求</strong>：日本要求日文申請文件；中國要求中文 CTD；巴西要求葡萄牙文——語言本身就是一個時間成本。</li>
+                    <li><strong>本地代理人要求</strong>：日本、中國等市場要求有本地持有人（MAH）才能申請，CDMO 單獨行動可能受限。</li>
+                    <li><strong>查核時機不可預測</strong>：各國主管機關對「何時查核」有自主決定權，MMU 搬遷後可能面臨即時查核要求。</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：國際駕照 vs. 各國本地駕照</h4>
+                <p>您持有台灣駕照，到日本旅遊時可以使用「國際駕照」在有限時間內合法駕車。但如果您要在日本長期居住並以此為業，您必須通過日本駕照考試，取得日本本地駕照。</p>
+                <p>這正是 MMU 跨境運作的現實：短期緊急部署可能獲得「臨時豁免」或緊急授權（EUL），但長期商業運作仍需在每個市場完成完整的本地授權程序。</p>
+            </div>
+
+            <div class="practice-box cdmo-strategy">
+                <h4>CDMO 多轄區申請策略建議</h4>
+                <p>對計畫在多個市場部署 MMU 的 CDMO，建議採用以下策略框架：</p>
+                <ul>
+                    <li><strong>分波段策略（Phased Market Entry）</strong>：第一波選擇 MHRA 和 Health Canada（法規靈活），建立 MMU 法規先例；第二波進入 FDA 轄區（利用先例數據）；第三波考慮其他地區。</li>
+                    <li><strong>法規平行申請（Parallel Submissions）</strong>：與 FDA、EMA 同步進行 Pre-Sub / Scientific Advice，雖需大量資源，但可縮短 12–18 個月的時程差。</li>
+                    <li><strong>WHO 預認證作為橋接</strong>：在 LMIC（低中收入國家）市場，WHO 預認證可以替代大多數本地申請要求。</li>
+                    <li><strong>建立法規數據庫</strong>：系統性追蹤各轄區 MMU 相關法規動態，設立季度法規情報彙報機制。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appendix A Full-Width Regional Summary -->
+    <div style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+        <h3 style="color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+            Appendix A — Full Multi-Region Compliance Reference Table / 全球法規對照速查表
+        </h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Jurisdiction / 轄區</th>
+                    <th>Primary GMP Regulation / 主要法規</th>
+                    <th>Site Licensing Mechanism / 設施許可機制</th>
+                    <th>Site Change Filing Type / 地點變更申報類型</th>
+                    <th>Innovation Dialogue Channel / 創新溝通機制</th>
+                    <th>MMU Specific Guidance Exists? / MMU 專屬指引</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>US (FDA)</td>
+                    <td>21 CFR 210/211</td>
+                    <td>Drug Establishment Registration + FEI Number</td>
+                    <td>PAS / CBE-30 / Annual Report (by risk level)</td>
+                    <td>ETP, INTERACT, Pre-Sub Meeting</td>
+                    <td><span class="badge red">No</span></td>
+                </tr>
+                <tr>
+                    <td>EU (EMA + NCA)</td>
+                    <td>EudraLex Vol. 4 + Annex 1</td>
+                    <td>Manufacturing Authorisation (per site, per member state)</td>
+                    <td>Type IA / IB / II Variation (by risk level)</td>
+                    <td>EMA Scientific Advice, PRIME</td>
+                    <td><span class="badge red">No</span></td>
+                </tr>
+                <tr>
+                    <td>UK (MHRA)</td>
+                    <td>UK GMP (post-Brexit)</td>
+                    <td>Manufacturer's Licence (ML)</td>
+                    <td>Variation to MA</td>
+                    <td>MHRA Innovation Office, Accelerated Access</td>
+                    <td><span class="badge yellow">In development</span></td>
+                </tr>
+                <tr>
+                    <td>Japan (PMDA)</td>
+                    <td>PMD Act + GMP Ordinance No. 179</td>
+                    <td>Manufacturing Site Registration (per address)</td>
+                    <td>Prior Approval required for major site changes</td>
+                    <td>Sakigake, PMDA RS Strategy</td>
+                    <td><span class="badge red">No</span></td>
+                </tr>
+                <tr>
+                    <td>Canada (HC)</td>
+                    <td>C.02 + GUI-0001</td>
+                    <td>Drug Establishment License (DEL)</td>
+                    <td>DEL Amendment + SNDS for major changes</td>
+                    <td>HC Pre-submission, ATP Framework</td>
+                    <td><span class="badge yellow">In development</span></td>
+                </tr>
+                <tr>
+                    <td>Brazil (ANVISA)</td>
+                    <td>RDC No. 301/2019</td>
+                    <td>Site Authorization (per address)</td>
+                    <td>Regulatory submission required</td>
+                    <td>PANDRH, MDER Modernization</td>
+                    <td><span class="badge red">No</span></td>
+                </tr>
+                <tr>
+                    <td>China (NMPA)</td>
+                    <td>Drug Administration Law + GMP 2010</td>
+                    <td>GMP Certificate (per site)</td>
+                    <td>Supplemental Registration (prior approval for major changes)</td>
+                    <td>NMPA ICH alignment initiatives</td>
+                    <td><span class="badge red">No</span></td>
+                </tr>
+                <tr>
+                    <td>WHO (Developing Countries)</td>
+                    <td>WHO GMP TRS (Technical Report Series)</td>
+                    <td>WHO Prequalification + SRA Reliance</td>
+                    <td>Prequalification update required for site changes</td>
+                    <td>Emergency Use Listing (EUL), COVAX</td>
+                    <td><span class="badge green">Partial (crisis context)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- DOCUMENT SUMMARY                                              -->
+    <!-- ============================================================ -->
+    <div id="doc-summary" class="doc-summary">
+        <h2>DOCUMENT SUMMARY — PDA Points to Consider No. 15: Mobile Manufacturing Units</h2>
+        <h2 style="font-size: 0.95rem; text-align: center; margin-top: -0.75rem; margin-bottom: 1.5rem; opacity: 0.8; font-weight: 400;">文件總結 &mdash; PDA 第15號考量要點：行動製造單元</h2>
+
+        <div class="doc-summary-grid">
+            <!-- Topic 1 Summary -->
+            <div class="summary-topic">
+                <h3 class="t1">Topic 1: Introduction &amp; Fundamentals — 導論與基礎 (p.1–13)</h3>
+                <ul>
+                    <li>MMU defined: self-contained, relocatable pharmaceutical manufacturing platform</li>
+                    <li>Advantages: supply resilience, rapid response, personalized medicine, new business models</li>
+                    <li>Challenges: scale limits, weight, structural codes, utility requirements, equipment handling</li>
+                    <li>Validation elements: IQ/OQ/PQ staged approach; FAT/SAT leveraged into CQV strategy</li>
+                    <li>Technology transfer: MMU networks can reduce post-marketing submissions via equivalent design</li>
+                    <li>MMU 的五大優勢與五大挑戰；分段確效的基本框架；FAT/SAT 的策略運用</li>
+                </ul>
+            </div>
+
+            <!-- Topic 2 Summary -->
+            <div class="summary-topic">
+                <h3 class="t2">Topic 2: Regulatory Considerations — 法規考量 (p.14–16)</h3>
+                <ul>
+                    <li>Q2.1: Current regulations (FDA 21 CFR, EMA EU GMP, ICH Q10) written for fixed facilities — no MMU provisions exist anywhere</li>
+                    <li>FEI number system, manufacturing licenses, and GMP certificates are all address-bound</li>
+                    <li>Multi-layer barrier: federal, state, cross-border, multi-agency, inspection logistics</li>
+                    <li>Q2.2: Two levers for regulators — administrative reform (FEI, licenses) and validation flexibility (family approach, bulk release)</li>
+                    <li>FDA ETP, Platform Technology Designation, AMT Designation as pathways</li>
+                    <li>MHRA and Health Canada leading on flexible frameworks for advanced manufacturing</li>
+                </ul>
+            </div>
+
+            <!-- Topic 3 Summary -->
+            <div class="summary-topic">
+                <h3 class="t3">Topic 3: Implementation — 實施 (p.16)</h3>
+                <ul>
+                    <li>Q3.1: Staged validation: Vendor site (IQ/OQ) → Initially qualified site (PV, raw material QC) → New field location (PQ, confirmatory batches)</li>
+                    <li>Static vs. dynamic testing analogy for air systems applies to full MMU validation</li>
+                    <li>Multiproduct MMUs: select representative model process for PV; cannot validate every possible product</li>
+                    <li>Each relocation requires: Change Control, Risk Assessment, Site Validation Protocol, Regulatory Impact Assessment, EM baseline</li>
+                    <li>Shipping validation required for the MMU transport itself</li>
+                    <li>CPV: reestablish baseline after each relocation; bridging batches essential</li>
+                </ul>
+            </div>
+
+            <!-- Appendix A Summary -->
+            <div class="summary-topic">
+                <h3 class="app">Appendix A: Regional Compliance — 各地區法規期望 (p.10–16)</h3>
+                <ul>
+                    <li>FDA (US): FEI + Establishment Registration; PAS/CBE-30 for site changes; state board complexity</li>
+                    <li>EMA (EU): Type II Variation for new sites; per-member-state Manufacturing Authorisation</li>
+                    <li>PMDA (Japan): Prior approval required; conservative regulatory culture; limited MMU precedent</li>
+                    <li>Health Canada: DEL amendment; actively developing ATP frameworks</li>
+                    <li>MHRA (UK): Most progressive; Innovation Office actively developing decentralized manufacturing pathways</li>
+                    <li>ANVISA, NMPA: High regulatory burden; site-bound authorizations; limited innovation dialogue</li>
+                    <li>WHO: Emergency pathways (EUL, Prequalification) most viable for crisis deployment in developing countries</li>
+                </ul>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="summary-takeaway">
+                <h3>Key Takeaways for CDMO Regulatory Strategy — CDMO 法規策略核心要點</h3>
+                <p>
+                    <strong>The fundamental challenge of MMU regulation is structural, not technical:</strong> every major regulatory framework globally was designed for fixed-address facilities, and there are currently zero jurisdictions with dedicated MMU regulatory pathways. The short-term strategy for any CDMO is to use existing innovation dialogue channels (FDA ETP, MHRA Innovation Office, Health Canada Pre-submission) to negotiate individual project pathways. The medium-term opportunity lies in building a "portable validation package" and using the family approach to dramatically reduce requalification burden per relocation. The long-term play is advocacy through PDA and ISPE to establish ICH-level guidance for multi-site MMU validation and a global consensus on address-independent manufacturing authorization.
+                </p>
+                <p>
+                    <strong>MMU 法規監管的核心挑戰是結構性的，而非技術性的：</strong>全球所有主要法規框架都是為固定地址設施設計的，目前沒有任何一個轄區有 MMU 專屬法規路徑。CDMO 的短期策略是利用現有的創新對話機制（FDA ETP、MHRA 創新辦公室、Health Canada 預申請）為個別專案協商路徑。中期機會在於建立「可攜帶確效包」並運用 Family Approach 大幅降低每次搬遷的重新確效負擔。長期方向是透過 PDA、ISPE 等組織的政策倡議，推動 ICH 層級的多地點 MMU 確效指南，以及全球對「地址無關製造授權」的共識建立。
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Points to Consider No. 15 — Mobile Manufacturing Units</p>
+    <p>Topic 2: Regulatory Considerations &nbsp;|&nbsp; Topic 3: Implementation &nbsp;|&nbsp; Appendix A: Regional Compliance</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc. &nbsp;|&nbsp; Bilingual Educational Edition &nbsp;|&nbsp; &copy; 2025 Parenteral Drug Association, Inc.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

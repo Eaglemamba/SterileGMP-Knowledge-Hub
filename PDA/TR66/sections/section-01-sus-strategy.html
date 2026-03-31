@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR66 - Section 3.0: SUS Manufacturing Strategy</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 3.0: Points to Consider for Single-Use System Manufacturing Strategy</h1>
+    <div class="subtitle">一次性使用系統製造策略之考量要點</div>
+    <div class="page-info">PDA Technical Report No. 66 (2014) - Single-Use Systems | p4 - p14</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Single-Use System (SUS) 製造策略的四大關鍵決策領域：技術、確認、商業驅動力、實施</li>
+        <li>掌握 SUS 可行性評估的閘門式決策流程 (Gated Decision Pathway) 及其科學與風險導向方法</li>
+        <li>學習如何從技術可行性、商業分析、產品/製程風險及物流控制等面向評估 SUS 導入方案</li>
+        <li>了解 SUS 實施過程中供應商管理、變更通知、廢棄物處理及供應鏈管理的重要考量</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本節目錄 Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec3-0">3.0 Overview</a>
+        <a href="#sec3-1">3.1 SU Technologies</a>
+        <a href="#sec3-2">3.2 Business Drivers</a>
+        <a href="#sec3-3">3.3 Qualification</a>
+        <a href="#sec3-4">3.4 Process Control</a>
+        <a href="#sec3-5">3.5 Implementation</a>
+    </div>
+</div>
+
+<!-- ==================== 3.0 OVERVIEW ==================== -->
+<div class="section-title" id="sec3-0">3.0 Points to Consider for Single-Use System Manufacturing Strategy</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>This section provides an introduction to and overview of the most important points to consider and the necessary steps the end user must accomplish in order to implement a successful <span class="key-term">single-use (SU) strategy</span>, while a more detailed description of these points and a structured implementation strategy can be found in the subsequent sections of this document. Additionally, this section offers a guideline for a structured approach for an initial <span class="key-term">feasibility evaluation</span> of a single-use system (SUS) manufacturing strategy.</p>
+
+        <p>The key to successful SU technology implementation is the development of an effective <span class="key-term">manufacturing strategy</span> for the molecule or formulation to be produced. Many factors must be considered when an organization is making strategic decisions, and implementation of SU technology is no different. In this report we suggest developing a high-level manufacturing strategy after a <span class="key-term">science- and risk-based approach</span> with consideration given to four main areas that influence the success of SUS implementation:</p>
+        <ul>
+            <li>Technologies and system integration</li>
+            <li>Qualification of assembled products</li>
+            <li>Business drivers</li>
+            <li>Implementation</li>
+        </ul>
+
+        <p>The resulting manufacturing strategy will then outline the questions for consideration needed for successful implementation of an SUS. This technical report has a dedicated section for each of these areas of consideration. An overview of each will be presented in this section.</p>
+
+        <p>As depicted in Figure 3.0-1, each area plays a crucial role in establishing successful use of SUSs. Questions within these areas of focus must be considered and balanced against an organization's needs and competencies when developing a manufacturing strategy (detailed in Section 7.1). Only a comprehensive approach ensures that the primary customer-based goals of <span class="key-term">patient safety</span>, <span class="key-term">product availability</span>, product understanding, and process understanding are met when implementing new technology.</p>
+
+        <div class="quote-box">
+            "Figure 3.0-1: Key Decision Areas for an SUS Manufacturing Strategy"
+        </div>
+
+        <p>Each area has a situation-dependent role in the decision process and may be weighed differently according to the circumstances of the end user. For example, a contract manufacturer may value the ability to shorten changeover time between different products, whereas a large pharmaceutical company may weigh the risk of adopting new technology against utilization of existing capabilities. A small organization may not have the resources (manpower or capital) to invest in a fixed <span class="key-term">multiple-use system (MUS)</span>. Other important factors to consider are:</p>
+        <ul>
+            <li>The current stage of drug development</li>
+            <li>The scale of post-launch manufacturing</li>
+            <li>The likelihood of the facility being used to produce other products in the future</li>
+            <li>The risk associated with depending on a sole SUS supplier</li>
+        </ul>
+
+        <p>A detailed implementation process for SUS is described in Section 7, and this includes details of the workflow for the implementation process, starting with the preparation of the manufacturing strategy reviewed in this section.</p>
+
+        <p>A <span class="key-term">gated approach</span> is used to facilitate the preparation of the manufacturing strategy and decision process. A "gate," as it is used here, is a decision point where the pros and cons of the strategy are addressed using a science- and risk-based approach. A proposal for the effective evaluation of important factors within the gated approach is described in Figure 3.0-2. Each stage is crucial to the successful implementation of a new technology. Negative results at any stage may halt the implementation of the SUS. An example of such a negative decision will be a case in which there will be an adverse effect on patient safety or where there is no feasible solution to a technical problem. The aim of the gated approach is to <span class="key-term">fail the process quickly</span> when a major problem cannot be solved. The decision pathway is not necessarily linear&mdash;the end user may decide to enter the pathway at any given point. However, each stage must be addressed to have a balanced decision process prior to the implementation of an SUS.</p>
+
+        <p>A detailed implementation process for SUSs is described in Section 7, and the implementation workflow is developed based on the decisions made in the manufacturing strategy reviewed in this section. An overview of the different implementation stages is described in Figure 7.0-1 and Table 7.0-1. Key documentary outputs for the whole implementation process are listed in Section 8, Appendix I: SUS Facility Overall User Requirement Specification.</p>
+
+        <p>The following sections provide an overview of a proposed decision-making process for implementing an SUS strategy.</p>
+
+        <p>Figure 3.0-3 offers an overview of how the sections in this document are related and support the structured approach for implementation of SUS.</p>
+
+        <div class="quote-box">
+            "Figure 3.0-2: Proposed SUS Decision Pathway" &mdash; A gated approach evaluating: Technical Feasibility &rarr; Business Case &rarr; Product Risk &rarr; Process Risk &rarr; Process Control Strategy &rarr; Implementation Strategy &rarr; Logistic Control Strategy
+        </div>
+
+        <div class="quote-box">
+            "Figure 3.0-3: Technical Report Structure Overview" &mdash; Initial Feasibility Study (Section 3) &rarr; Key Drivers (Sections 4-7) &rarr; Detailed Implementation Workflow (Section 7)
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Single-Use System, SUS (一次性使用系統):</strong> 由高分子材料組件組裝而成的工程化製程設備方案，設計為一次性或短期活動使用。與傳統 Multiple-Use System (MUS，多次使用系統) 相比，SUS 免除了 CIP/SIP 的需求，但引入了供應鏈依賴性和材料相容性等新挑戰。</p>
+            <p><strong>Manufacturing Strategy (製造策略):</strong> TR66 強調，成功導入 SUS 的關鍵不在於單一技術選擇，而是建立一套完整的製造策略。此策略必須涵蓋四大領域：</p>
+            <ul>
+                <li><strong>Technologies (技術):</strong> SUS 能否滿足製程需求？</li>
+                <li><strong>Qualification (確認):</strong> 如何驗證組裝產品的品質？</li>
+                <li><strong>Business Drivers (商業驅動):</strong> 經濟效益是否合理？</li>
+                <li><strong>Implementation (實施):</strong> 如何落地執行？</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你正在決定餐廳廚房要用<strong>免洗餐具</strong>還是<strong>瓷器餐具</strong>。免洗餐具 (SUS) 不需要洗碗機 (CIP) 和高壓消毒 (SIP)，換菜單更快 (快速換線)，但你必須確保：供應商能穩定供貨 (供應鏈)、材料不會溶出有害物質 (E&L)、用量和成本是否划算 (商業分析)、垃圾處理怎麼辦 (廢棄物管理)。這不是簡單的「買或不買」，而是一個需要全面評估的策略決策。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Gated Approach (閘門式決策):</strong> 這是 TR66 最核心的決策框架。每個「閘門」都是一個 Go/No-Go 決策點，採用科學與風險導向的方法。其設計理念是「快速失敗」(Fail Fast) &mdash; 如果在任何階段發現重大問題無法解決（例如影響病人安全），就應立即停止 SUS 導入。</p>
+            <p>Figure 3.0-2 所示的決策路徑包含六個關鍵閘門：</p>
+            <ol>
+                <li>技術可行性 (Technical Feasibility)</li>
+                <li>商業可行性 (Business Case)</li>
+                <li>產品風險 (Product Risk)</li>
+                <li>製程風險 (Process Risk)</li>
+                <li>製程控制策略 (Process Control Strategy)</li>
+                <li>實施與物流策略 (Implementation & Logistics)</li>
+            </ol>
+            <p>注意：此路徑不一定是線性的，終端使用者可以從任何一點進入，但每個階段都必須被妥善處理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p><strong>Figure 3.0-2 (SUS 決策路徑):</strong> 此圖呈現一個串聯式的決策流程，每個方框代表一個評估領域，每個菱形代表一個決策閘門。只有當所有閘門都通過時，才能確認 SUS 是可行的。任何一個閘門的否定結果都可能導致「SUS may not be applicable」的結論。</p>
+            <p><strong>Figure 3.0-3 (報告結構概覽):</strong> 此圖展示了 TR66 的三層架構：(1) 初步可行性研究 (Section 3)、(2) 四大驅動力的詳細討論 (Sections 4-7)、(3) 詳細實施工作流程 (Section 7)。這三層由上而下，從策略到執行。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 情境:</strong> 作為 CDMO (Contract Development and Manufacturing Organization)，你同時為多個客戶生產不同的生物製劑。導入 SUS 的最大價值在於<strong>縮短換線時間</strong>和<strong>降低交叉污染風險</strong>。但你必須評估：如果關鍵供應商斷貨，你能否在合理時間內切換到替代方案？這正是 TR66 閘門式決策框架的實際應用場景。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR66 強調 SUS 製造策略必須採用「科學與風險導向」方法，而非僅靠經濟分析？</li>
+                <li>在閘門式決策中，哪些情況下應該在第一個閘門就否決 SUS 方案？試舉三個例子。</li>
+                <li>對於一家小型 CMO 而言，SUS 的哪些優勢最具吸引力？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3.1 SU TECHNOLOGIES ==================== -->
+<div class="section-title" id="sec3-1">3.1 Single-Use Technologies</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>SUSs differ in many ways from conventional MUSs. When examining whether a technically feasible single-use solution exists, the end user should evaluate <span class="key-term">process operating parameters</span> and requirements in relation to traditional systems:</p>
+        <ul>
+            <li>Process and product are compatible with <span class="key-term">materials of construction</span></li>
+            <li>Process volume, temperature, pH, pressure, and flow rate are within specifications</li>
+            <li>Oxygen, moisture, or light <span class="key-term">barrier properties</span> of the system are adequate for the process</li>
+            <li>Specific process components can be sterilized</li>
+            <li>Process monitoring and sampling strategy exists for the critical operating parameters</li>
+            <li>Access ports and connection technology are available to perform the operation</li>
+            <li>Mixing technology meets the uniformity needs of the process</li>
+            <li>Weight, size, and physical strength of SUS meet the needs of the process and facility</li>
+        </ul>
+
+        <p>After an organization determines that a technical solution exists for a single-use solution, other considerations to be included in the final decision to implement an SUS are as follows:</p>
+        <ul>
+            <li>Does the implementation of SUS impact existing process equipment that will need modification to optimize use of an SUS?</li>
+            <li>What is the impact on cost and material management of customization, given that custom manufacturing of small quantities is less effective for suppliers? Although there are advantages to using a supplier's standard configurations, in some cases the SUS itself may require customization to accommodate an individual organization's needs.</li>
+            <li>What is the potential impact on facility design and utility requirements?</li>
+        </ul>
+
+        <p>The end user's approach to the determination of technical feasibility should be recorded in a <span class="key-term">risk-analysis document</span> that is consistent with the methods outlined in <span class="key-term">ICH Q9</span>, and it should include process-specific considerations such as:</p>
+        <ul>
+            <li>The stage of the SUS application</li>
+            <li>Process performance or capability</li>
+            <li>Process scale</li>
+            <li>Product quality attributes</li>
+            <li>Batch production rates</li>
+            <li>Factors affecting system design (e.g., process compatibility, component reliability, facility design, storage and materials handling, and/or transportation)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Technical Feasibility (技術可行性):</strong> 這是閘門式決策的第一道關卡。在考慮任何商業或實施因素之前，必須先確認 SUS 在技術上是否可行。評估重點包括：</p>
+            <ul>
+                <li><strong>Materials of Construction (建構材料):</strong> SUS 主要使用高分子材料，必須與製程流體和產品相容</li>
+                <li><strong>Barrier Properties (阻隔特性):</strong> 高分子薄膜對氧氣、濕氣、光線的阻隔能力，直接影響產品穩定性</li>
+                <li><strong>Operating Parameters (操作參數):</strong> SUS 在溫度、壓力、pH 等方面的耐受範圍通常比不鏽鋼系統窄</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>評估 SUS 技術可行性就像選擇<strong>廚房設備</strong>：你不會用塑膠鍋來做油炸（溫度限制），也不會用紙杯來裝酸性果汁長時間存放（化學相容性）。SUS 的高分子材料有其物理和化學極限，必須在這些限制範圍內運作。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>ICH Q9 風險分析:</strong> TR66 明確要求技術可行性的判定過程必須記錄在符合 ICH Q9 (Quality Risk Management，品質風險管理) 方法論的風險分析文件中。這不是可選的 &mdash; 而是一項合規要求。</p>
+            <p><strong>客製化的兩難:</strong> 使用供應商的標準配置較具成本效益，但有時必須客製化以符合組織需求。客製化意味著小量生產，這對供應商而言效率較低，成本也較高。此外，客製化產品的供應風險也更大。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>列舉三種製程情境，在技術上可能不適合使用 SUS（提示：考慮溫度、壓力、體積）。</li>
+                <li>為什麼 SUS 的 barrier properties 對生物製劑特別重要？光線和氧氣如何影響蛋白質藥物？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3.2 BUSINESS DRIVERS ==================== -->
+<div class="section-title" id="sec3-2">3.2 Business Drivers for the Adoption of Single-Use Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>The decision between a single-use and a multiple-use process solution is often heavily influenced by a desire to reduce costs, increase the flexibility of a facility, and accelerate the drug development process. To that end, a structural comparative model that analyzes the <span class="key-term">cost of production</span>, capital, quality, and process development, combined with the time constraints of the project, can be developed. The model's level of accuracy and detail should be suitable for the decision under consideration and should incorporate company-specific information wherever possible. A holistic model takes into account many factors that are useful for deciding if a <span class="key-term">greenfield facility</span> is needed as opposed to a retrofit of existing applications. Often, a simplified model may be sufficient for an initial decision of whether SUS should be considered. The important point to consider is that an economic analysis needs to be done to support any important decision, and this is best done right from the start as part of developing a high-level manufacturing strategy.</p>
+
+        <p>The following lists include examples of elements that may be considered when evaluating the business rationale for implementation of an SUS.</p>
+
+        <h3>Capital Design</h3>
+        <ul>
+            <li>Capital investment</li>
+            <li>Equipment costs</li>
+            <li>Utilities costs</li>
+            <li>Facility floor space (cleanroom versus lower classification, production area versus warehouse)</li>
+            <li>Validation&mdash;costs of validation clean-in-place and steam-in-place systems, facility environment</li>
+            <li>Cost of retrofitting the facility for a new product or purpose</li>
+            <li>Commissioning&mdash;costs associated with start-up and validation, testing, and documentation</li>
+            <li>Cost of capital&mdash;borrowing costs</li>
+        </ul>
+
+        <h3>Operating Costs: Day-to-Day Variable Costs</h3>
+        <ul>
+            <li>Labor</li>
+            <li>Utilities and energy</li>
+            <li>Waste management (solid and liquid, disposal versus recycling)</li>
+            <li>Sterilization</li>
+            <li>Cleaning</li>
+            <li>Setup and changeover time and labor</li>
+            <li>Amount lost to sterility failure or integrity losses</li>
+            <li>Operation model make or buy SUS</li>
+            <li>SUS run costs</li>
+            <li>Inventory</li>
+            <li>Media and buffer</li>
+            <li>Preventive maintenance</li>
+            <li>Value-added activities, quality audits of suppliers</li>
+            <li>Multiple-product (MP) or single-product (SP) facility, changeover, testing, and regulatory submissions</li>
+        </ul>
+
+        <h3>Drug Development and Process Assessment</h3>
+        <ul>
+            <li>Time-to-market and constraints</li>
+            <li>Number of batches per year</li>
+            <li>Number of products per year</li>
+            <li>Product lifecycle&mdash;estimates of product demand over time</li>
+            <li>Increased manufacturing time (may not fit existing manufacturing and quality processes)</li>
+            <li>Process complexity</li>
+            <li>Proximity to final drug presentation or container closures</li>
+            <li>Workforce skill level</li>
+            <li>Cost of active ingredients and intermediates</li>
+            <li>Health, safety, and the environment (HSE) (e.g., biosafety, toxicity, occupational health, and industrial hygiene)</li>
+            <li>Multiple-product or single-product facility</li>
+        </ul>
+
+        <h3>Time</h3>
+        <ul>
+            <li>Process uptime</li>
+            <li>Construction time</li>
+            <li>Time constraints</li>
+            <li>Regulatory milestones</li>
+            <li>Expected market competition milestones</li>
+            <li>Expected product launch date</li>
+            <li>Product demand growth rate</li>
+            <li>Inventory build time line</li>
+            <li>Equipment and component assembly</li>
+        </ul>
+
+        <h3>Green Manufacturing</h3>
+        <ul>
+            <li>Environmental concerns for manufacturing process</li>
+            <li>SUS waste generation</li>
+            <li>Resources for waste management</li>
+            <li>Design for sustainability</li>
+        </ul>
+
+        <h3>Value-Added Activities</h3>
+        <ul>
+            <li>Cost of quality and cost of failure</li>
+            <li>Quality, compliance, validation, calibration, operations</li>
+            <li>Outsourced activities, make versus buy SUS</li>
+            <li>Expedited transfer of manufacturing site to new location, reducing the time required to accommodate demand for additional product</li>
+        </ul>
+
+        <p>Modeling will be highly dependent on specific circumstances and may result in different outcomes, dependent on model design, scale, timing, facility fit, product demand, and process frequency. For these reasons, it is not possible to make specific model design recommendations in this report. Every organization handles economic and process modeling differently. The concepts are presented in this report so the reader is aware that modeling plays an important role in supporting the decision process. Readers should reach out to others in their organization to decide how to best develop models for their organization. The following tools and resources may be useful to aid the decision process:</p>
+        <ul>
+            <li>ICH Q9 Risk Assessment Tools, FMEA, fishbone, fault tree, HACCP</li>
+            <li>Comparative matrix</li>
+            <li>Internal cost databases</li>
+            <li>Cost-of-goods modeling</li>
+            <li>Comprehensive cost models</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Business Drivers (商業驅動因素):</strong> SUS 導入決策不能僅憑技術可行性，還需要一個完整的商業分析模型。TR66 列出六大類商業考量：</p>
+            <ul>
+                <li><strong>Capital Design (資本設計):</strong> 一次性投資，包括設備、廠房、驗證等</li>
+                <li><strong>Operating Costs (營運成本):</strong> 每日變動成本，如人力、能源、廢棄物</li>
+                <li><strong>Drug Development (藥物開發):</strong> 上市時程、製程複雜度、人力技能</li>
+                <li><strong>Time (時間):</strong> 建置時間、法規里程碑、市場競爭時程</li>
+                <li><strong>Green Manufacturing (綠色製造):</strong> 環境影響、廢棄物管理</li>
+                <li><strong>Value-Added Activities (增值活動):</strong> 品質成本、外包策略</li>
+            </ul>
+            <p><strong>Greenfield Facility (全新設施):</strong> 指從零開始建造的新廠房，與 Retrofit (改建現有設施) 相對。SUS 的一大優勢是大幅降低 greenfield 設施的資本投資需求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS vs MUS 的商業分析就像<strong>買車的全生命週期成本 (TCO)</strong> 評估。你不能只看車價 (資本投入)，還要考慮油耗 (營運成本)、保養費 (維護)、保險 (風險管理)、停車位 (廠房空間)，甚至轉手價值 (設施未來用途)。每個組織的情況不同，就像每個人的通勤距離和用車習慣不同，最終的最佳選擇也會不同。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>成本比較框架 Cost Comparison Framework</h4>
+            <pre>
+SUS 總成本 = 較低的資本投入 + 較高的營運成本 (SUS耗材)
+             + 較低的驗證成本 (無CIP/SIP)
+             + 較低的換線成本 + 廢棄物處理成本
+
+MUS 總成本 = 較高的資本投入 + 較低的營運耗材
+             + 較高的驗證成本 (CIP/SIP/清潔確效)
+             + 較高的換線成本 + 較高的用水/用電成本
+
+判斷依據: 批次數量、產品數量、設施類型 (多產品/單產品)
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>經濟分析的時機:</strong> TR66 特別強調，經濟分析應該在「一開始」就進行，作為高階製造策略開發的一部分。不要等到技術評估完成後才開始思考成本問題 &mdash; 二者應該並行。</p>
+            <p><strong>無法給出通用建議:</strong> TR66 明確指出，由於每個組織的情況 (規模、時機、設施、產品需求、製程頻率) 都不同，不可能提供特定的模型設計建議。重點在於「必須做經濟分析」，而非告訴你哪個選項一定更好。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 決策情境:</strong> 假設你的 CDMO 正在評估是否為一個新的 Phase III 生物製劑客戶建立產能：</p>
+            <ul>
+                <li>如果選擇 MUS：需要 18-24 個月建置時間，但單批成本較低</li>
+                <li>如果選擇 SUS：可在 6-9 個月內投產，但每批 SUS 耗材成本較高</li>
+                <li>如果產品通過審查後需求激增，SUS 更容易快速擴充產能</li>
+            </ul>
+            <p>在這種情境下，time-to-market 和產品生命週期不確定性將是關鍵決策因素。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR66 將 Green Manufacturing 列為商業驅動因素之一？SUS 在環境永續性方面的利弊為何？</li>
+                <li>一家專注於細胞治療的小型 CDMO，其 SUS 商業分析中哪些因素會特別突出？</li>
+                <li>「Cost of quality and cost of failure」如何影響 SUS vs MUS 的決策？請舉例說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3.3 QUALIFICATION ==================== -->
+<div class="section-title" id="sec3-3">3.3 Qualification and Verification of Suppliers, Materials, Components, and Completed Assemblies</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Any adverse effect on <span class="key-term">product quality</span> and, hence, <span class="key-term">patient safety</span> must be the main concern when the end user performs a risk assessment of an SUS. An assessment of <span class="key-term">critical operational parameters</span> must be performed in order to determine the potential impact of an SUS on product quality. In this exercise, the end user must take into account the potential for interaction between process fluid and the materials of construction of the process equipment.</p>
+
+        <h3>3.3.1 Product Risk</h3>
+        <p>The potential impact of the SUS on the product quality is a key area to be assessed through a risk-based approach considering its proximity to the final product, the processing stage, and product requirements. The following are examples of specific considerations for potential interactions between SUS and product fluids:</p>
+        <ul>
+            <li>An SUS is a defined system, which may minimize the risk of both microbial and chemical contamination.</li>
+            <li>SUSs are susceptible to generation of <span class="key-term">particulates</span> during the fabrication and operation of the system.</li>
+            <li>SUS minimizes risk of <span class="key-term">cross-contamination</span> when they are used once or in campaign manufacturing of a single drug substance.</li>
+            <li>An SUS will contribute to the <span class="key-term">leachables</span> present in a process. An assessment of impact can be made by 1) Identifying potential leachables through an <span class="key-term">extractables</span> study and 2) Conducting further studies should an extractables study identify materials of concern.</li>
+        </ul>
+
+        <p>Product impact considerations typically include:</p>
+        <ul>
+            <li>Sterility</li>
+            <li>Degradation, or binding to the product molecule</li>
+            <li>Adsorption of the product molecule or product pool</li>
+            <li>Adsorption of the functional component of the media or buffer</li>
+            <li>Interactions between leachables or their breakdown products with the product molecule or formulation or the process materials of construction</li>
+            <li>Technical limitations of the SUS, which could lead to suboptimal processing, poor cell growth, low yields, or impact to product-critical quality attribute (e.g., limitation of temperature control may impact MAB glycan profile)</li>
+            <li>Changes in the light, gas, moisture, or other barrier to the surroundings, which could cause oxidation or chemical reaction of the product molecule, product pool, or media components</li>
+        </ul>
+
+        <p>In addition to product quality considerations, incorporating an SUS may affect key operating parameters at different process steps and potentially the control strategy for the entire process. An assessment for each process step, as well as the entire process, should include the following considerations:</p>
+        <ul>
+            <li>Impact on system integrity (may be positive or negative)</li>
+            <li>Estimation of risk of equipment or system failure for both SUS and MUS, including downtime for correcting potential failures and backup equipment required (e.g., maintaining an ISO 5/Grade A-B area for connections if an SU connector fails or designing the connection for backup sterile tube welding if a connector fails)</li>
+            <li>Size limitations of an SUS as compared to an MUS</li>
+            <li>Productivity impacts when using SUS as compared to an MUS approach</li>
+            <li>Verification activities, such as system integrity or leaks, compared to an MUS approach</li>
+            <li>Supplier and vendor supply-chain transparency, change control, communication, product quality, and supply security</li>
+            <li>Proximity of the SUS to the final drug product</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Extractables & Leachables, E&L (可萃取物與溶出物):</strong> 這是 SUS 最獨特的風險領域之一。</p>
+            <ul>
+                <li><strong>Extractables (可萃取物):</strong> 在實驗室加速條件下，從 SUS 材料中萃取出的化學物質</li>
+                <li><strong>Leachables (溶出物):</strong> 在實際製程條件下，從 SUS 材料遷移到製程流體中的化學物質</li>
+            </ul>
+            <p>E&L 評估是一個兩步驟過程：先進行 extractables 研究以識別潛在風險物質，若發現疑慮物質，再進行進一步的 leachables 研究。</p>
+            <p><strong>Cross-contamination (交叉污染):</strong> SUS 一次性使用的特性實際上是一個優勢 &mdash; 它最小化了產品間的交叉污染風險，這在多產品設施中尤為重要。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>E&L 的概念就像用<strong>塑膠容器加熱食物</strong>。你知道塑膠在高溫下可能釋放化學物質到食物中。Extractables 就像在實驗室用極端條件測試「最壞情況下會釋放什麼」；Leachables 則是「正常使用時實際釋放了什麼」。對於藥品製造，這種評估至關重要，因為任何溶出物都可能影響藥物品質和病人安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「越靠近最終產品，風險越高」:</strong> TR66 反覆強調 SUS 與最終藥品的「接近度 (proximity)」概念。在上游製程（如培養基配製）中使用 SUS 的風險，遠低於在最終充填步驟中使用。這是因為下游製程的純化步驟可以移除許多潛在污染物。</p>
+            <p><strong>微粒 (Particulates) 風險:</strong> SUS 在製造和操作過程中容易產生微粒，這是 SUS 特有的風險。因此需要適當的微粒監測和控制策略。</p>
+            <p><strong>備援策略:</strong> 必須考慮 SU 連接器故障時的備援方案，例如維持 ISO 5/Grade A-B 環境以進行無菌管路焊接。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 SUS 在減少交叉污染方面比 MUS 更有優勢？在什麼情況下這個優勢最為關鍵？</li>
+                <li>MAB glycan profile 受溫度控制限制影響的例子，說明了 SUS 的什麼類型的風險？</li>
+                <li>你如何建立一個 SUS 連接器故障的備援計畫？需要哪些設施和人員準備？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3.4 PROCESS CONTROL ==================== -->
+<div class="section-title" id="sec3-4">3.4 Process Control Strategy Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>The monitoring capability of single-use and multiple-use systems may differ. Some points to keep in mind include the following:</p>
+        <ul>
+            <li>When deciding between <span class="key-term">reusable and single-use probes</span>, balance the cost per batch to generate the desired data, control of sensor calibration, cleaning validation requirements, and probe accuracy and reliability.</li>
+            <li>Consider and assess impact from potential differences in <span class="key-term">automation level</span>; SUSs typically include more manual controls dependent on operator training and execution. Some SUSs may incorporate proprietary support framework and control systems at comparable costs to traditional process skids; however, this significantly limits <span class="key-term">SUS interchangeability</span>. To avoid this problem, the end user may wish to adopt cross-platform <span class="key-term">supervisory control and data application (SCADA)</span> systems, which provide greater flexibility and portability.</li>
+            <li>Consider that an SUS may affect how adjustments to the process are made (e.g., adjusting pH, adding solids, foam control); in some cases these adjustments may not be possible with SUS.</li>
+            <li>Note that qualifying and calibrating probes and the measurement system before use may be more complicated or not possible if a single-use probe is built into a presterilized system. Batch documentation practices for recording sensor calibration may be different for SUS.</li>
+            <li>Evaluate dependency on the supplier's and vendor's quality system and qualification activities.</li>
+            <li>Account for the possibility of smaller batch sizes with increased frequency or sub-batch or batch pooling due to smaller container volumes.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>SUS Interchangeability (SUS 互換性):</strong> 這是 TR66 的一個重要概念。如果你採用供應商的專有控制系統，雖然功能完整，但會被「鎖定」在該供應商的生態系統中。TR66 建議考慮使用跨平台的 SCADA 系統來保持彈性。</p>
+            <p><strong>Single-Use Probes (一次性探頭):</strong> SUS 中的感測器 (如 pH、溫度、溶氧探頭) 可能是預先整合在系統中的一次性探頭。這帶來校準的挑戰 &mdash; 如果探頭已經內建在預滅菌的系統中，傳統的使用前校準程序可能不適用。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 的自動化挑戰就像從<strong>全自動洗碗機</strong>切換到<strong>手洗</strong>。手洗 (SUS 較多手動操作) 需要更多的操作員技能和標準化訓練，而全自動 (MUS 的固定系統) 則依賴設備本身的一致性。選擇哪種方式取決於你的產量、人力素質和預算。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>操作員依賴度增加:</strong> SUS 通常包含更多的手動控制，這意味著對操作員訓練和執行能力的依賴度更高。這在 GMP 環境中是一個重要的考量 &mdash; 人為錯誤的風險可能增加。</p>
+            <p><strong>批次策略改變:</strong> 由於 SUS 容器體積可能較小，可能需要調整批次策略，例如增加批次頻率、使用子批次 (sub-batch) 或批次合併 (batch pooling)。這會影響品質控制和放行策略。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你選擇了供應商的專有 SCADA 系統，在該供應商停止支援時會面臨什麼風險？如何透過 cross-platform SCADA 來降低此風險？</li>
+                <li>一次性 pH 探頭預先整合在預滅菌系統中，你如何確保其測量準確度？需要什麼替代的校準策略？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3.5 IMPLEMENTATION ==================== -->
+<div class="section-title" id="sec3-5">3.5 Implementation of a Single-Use System</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p><span class="key-term">Implementation</span> includes all of the activities required for the realization of the end user's manufacturing strategy. Since the manufacturing strategy is an assessment of feasibility informed by evaluation of the considerations from the sections on technology, business drivers, qualification, and implementation in this report, it provides a framework for implementation of the specific situation evaluated. However, each evaluation performed will be unique.</p>
+
+        <p>Furthermore, since <span class="key-term">time-to-clinic</span> and <span class="key-term">time-to-market</span> are becoming increasingly important factors for making implementation decisions, a comparative implementation assessment has become a crucial requirement. A well-thought-out and thorough implementation plan is important for successful implementation of an SUS. The implementation process is organized as a road map with a series of gateways between stages. The workflow should be organized around the following themes.</p>
+
+        <h3>3.5.1 Stakeholder Management</h3>
+        <p>Successful implementation of an SUS may require an active analysis of the effects of the implementation on the organization and <span class="key-term">stakeholder management</span>. Broad implementation of SUS across an organization can impose certain organizational strains and stresses and problems may arise which have to be considered and dealt with.</p>
+
+        <h3>3.5.2 Risk Management</h3>
+        <p>The use of formal <span class="key-term">risk-assessment methods</span> during SUS implementation provides a means for quantitative comparisons of risk related to MUS versus SUS to assist in decision making and stakeholder management.</p>
+
+        <h3>3.5.3 Process Validation and Verification (PVV)</h3>
+        <p>The <span class="key-term">PVV strategy</span> for an SUS differs from that of an MUS. Therefore, the end user must be aware that traditional qualification activities may have limited value for an SUS implementation without the confidence that the supplier's production processes are of a high enough caliber and the end user's process is sufficiently robust to tolerate any variations of the SUS by the supplier.</p>
+
+        <h3>3.5.4 Scoping</h3>
+        <p>This segment of the implementation plan contains a detailed description of the technical scope of the SUS project; it complements the manufacturing strategy by providing global guidance and policies to be applied for SU applications across the project.</p>
+
+        <h3>3.5.5 Project Execution Plan (PEP)</h3>
+        <p>A <span class="key-term">PEP</span> provides a detailed description of the project, the execution strategy, management, and compliance in order to attain project goals in terms of budget, time, and quality. This includes a policy for the identification and selection of suppliers, which will encourage the creation of a transparent relationship and help prevent the selection of equipment and suppliers from becoming an ad hoc process. An example PEP is shown in Section 9, Appendix II: SUS Facility Project Execution Plan Example.</p>
+
+        <h3>3.5.6 End-User Requirements</h3>
+        <p>This section of the plan provides a description of the end user's requirements for the SUS, including E&amp;L and standardization in preparation for the equipment procurement process.</p>
+
+        <h3>3.5.7 Testing and Documentation</h3>
+        <p>Following delivery and installation, the user will develop methods and documentation for equipment SOPs; maintenance; qualification and process validation; the HSE plan; and personnel training.</p>
+
+        <h3>3.5.8 Supplier Management</h3>
+        <p>The effective management of SUS suppliers must include periodic review meetings involving the analysis of the supplier's performance during the previous period for quality and punctuality. Business review meetings should also include collaborative planning and effective forecasting of future demands in order to take effective advantage of the supplier's resources, lower the costs of maintaining capacity, and eliminate spikes in demand that may affect lead times. Appropriate supply and quality agreements must be in place to clearly communicate expectations to critical suppliers.</p>
+
+        <p>Drug master files provided by either the polymer compound or film supplier can be referred to, however, they may not exist for all applications and the level of detail of the information may vary by submission. The polymer compound formulations (type and levels of additives), for example, may only list the highest amount of the additives that can be included in the polymer rather than specifying the actual specification range of additives. In any case the information is not available to the end user so it is preferable to receive the information in the form of a <span class="key-term">regulatory support file</span>.</p>
+
+        <h3>3.5.9 Logistics Control Requirements</h3>
+        <p>A <span class="key-term">logistics control strategy</span> is a critical part of the implementation of an SUS because the end user relies on the supplier's production and quality systems to a higher degree than for the implementation of an MUS. The following factors are important for an effective logistics control strategy.</p>
+
+        <h3>3.5.9.1 Inventory and Supply Chain Management</h3>
+        <p>A thorough analysis of the entire supply chain is necessary in order to safeguard the supply of important materials for undisrupted SUS production. Such an analysis must encompass the supply and inventory strategy of the vendors who supply components and materials to SUS manufacturers in addition to the supply and inventory strategies of the SUS suppliers themselves. SUS suppliers have a responsibility to protect the security and supply of their finished goods by appropriate risk analyses and risk-mitigation strategies for the materials and components they purchase. It is incumbent on the end user to confirm that these strategies are adequate to maintain the continuity of supply. If the supplier's control strategies fall short of expectations, the end user may mitigate the risk of supply interruption by qualifying <span class="key-term">secondary sources</span> or putting specific inventory management and supply agreements in place.</p>
+
+        <h3>3.5.9.2 Waste</h3>
+        <p>Operation of an SUS leads to an increased amount of solid waste compared to an MUS. An SUS waste-management strategy must include:</p>
+        <ul>
+            <li>Collecting, storing, and inactivating waste in the facility</li>
+            <li>Avoiding cross-contamination</li>
+            <li>Monitoring the waste-management activities of subcontractors</li>
+        </ul>
+
+        <h3>3.5.9.3 Transportation</h3>
+        <p>All aspects of transportation and holding must be understood for their role in maintaining integrity of the material throughout the supply chain. SU Technology requires additional care be taken during the entire supply chain; transportation, receiving, storage and delivery to the point of use. Some considerations are:</p>
+        <ul>
+            <li>Maintain integrity of material throughout the supply chain.</li>
+            <li>An SUS must have a control strategy (such as supplier qualification, ID tests, or statistical analysis) of any product contacting materials to assure performance of critical components. Note that testing incoming components will in many cases be impractical beyond confirming the package and label, since SUS are typically not fully unpacked until the point of use.</li>
+            <li>Ensure proper warehousing and inventory management.</li>
+            <li>SU processes place additional demands on a warehouse. Consider shelf space and support functions for a warehouse and ways of improving delivery time, maintaining integrity, and documenting chain of custody from the vendor.</li>
+        </ul>
+
+        <h3>3.5.9.4 Single Suppliers</h3>
+        <p>In cases where an SUS component, film, or integrated assembly may be unique and proprietary, making it difficult to find and qualify a second supplier, the risk (including mitigation efforts and additional equipment needed to ensure uninterrupted supply) must be recorded in a risk-assessment document.</p>
+        <p>In some cases, sole source situations may exist with <span class="key-term">intellectual property (IP)</span> protections, which need to be addressed with special contractual provisions in the event that the supplier is no longer able to provide the SUS in the future.</p>
+
+        <h3>3.5.9.5 Change Notifications</h3>
+        <p>The end user must make sure that a <span class="key-term">change notification agreement</span> is in place with suppliers (including third-party suppliers) and that such an agreement provides enough time to assess the effects of any changes on SUS functionality. Predictable, controlled transitions and ongoing operations of an SUS depend on this.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Implementation (實施):</strong> TR66 將 SUS 實施分為九大主題，涵蓋從利害關係人管理到變更通知的完整範圍。這反映了 SUS 導入不僅是技術專案，更是組織變革專案。</p>
+            <p><strong>PVV - Process Validation and Verification (製程確效與驗證):</strong> SUS 的確效策略與 MUS 截然不同。傳統的 IQ/OQ/PQ 模式可能不完全適用，因為 SUS 的品質高度依賴供應商的製造品質和一致性。因此，供應商管理和品質協議變得至關重要。</p>
+            <p><strong>Regulatory Support File (法規支援檔案):</strong> 與 Drug Master File (DMF) 不同，法規支援檔案的資訊可直接提供給終端使用者。由於 DMF 的內容可能不夠詳盡（例如僅列出添加劑的最高允許量而非實際規格範圍），且終端使用者無法直接取得 DMF 資訊，因此 TR66 建議優先取得法規支援檔案形式的資訊。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUS 的供應鏈管理就像經營一家<strong>完全依賴外送食材的餐廳</strong>。不同於傳統餐廳可以自己種菜養魚 (MUS 自有設備)，你的每一道菜都依賴外部供應商。這意味著你必須：(1) 確認供應商的品質一致 (供應商確認)，(2) 備有第二供應商以防斷貨 (secondary sources)，(3) 確保食材在運送過程中不變質 (運輸完整性)，(4) 管理好倉儲和庫存 (inventory management)，(5) 供應商換食譜時要提前通知你 (change notification)。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Stakeholder Management (利害關係人管理):</strong> SUS 導入可能在組織內造成壓力和抗拒。想像一下：維護團隊可能擔心工作減少、QA 團隊需要學習新的確效方法、倉儲團隊面臨更大的空間壓力。有效的利害關係人管理是成功的關鍵。</p>
+            <p><strong>Single Supplier Risk (單一供應商風險):</strong> 這是 SUS 最大的戰略風險之一。如果某個關鍵組件（如特殊薄膜或專利連接器）只有一家供應商，而該供應商因故無法供貨，整條生產線可能停擺。TR66 要求這類風險必須記錄在風險評估文件中，並透過合約條款來保護（特別是涉及 IP 保護的情況）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 - 物流控制 Key Notes - Logistics</h4>
+            <p><strong>廢棄物挑戰:</strong> SUS 產生的固體廢棄物顯著多於 MUS。廢棄物管理不僅是環保議題，也涉及交叉污染風險（含有活性藥物成分或生物材料的廢棄 SUS 需要妥善去活化處理）。</p>
+            <p><strong>倉儲需求:</strong> SUS 對倉儲的要求遠高於 MUS。大量的一次性組件需要適當的儲存空間和環境控制。SUS 通常在使用時才完全拆封，因此進貨檢驗主要限於包裝和標籤的確認。</p>
+            <p><strong>Change Notification (變更通知):</strong> 終端使用者必須與所有供應商（包括第三方供應商）建立變更通知協議。這些協議必須提供足夠的時間來評估變更對 SUS 功能性的影響。這是維持 SUS 運作可預測性和穩定性的基礎。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>供應鏈風險管理情境:</strong> 2020 年 COVID-19 疫情期間，全球 SUS 供應鏈嚴重緊縮，許多藥廠面臨 SUS 耗材短缺。這個真實案例完美印證了 TR66 關於 secondary sources 和 inventory management 的建議。</p>
+            <p><strong>CDMO 最佳實踐:</strong></p>
+            <ul>
+                <li>為關鍵 SUS 組件維持至少 3-6 個月的安全庫存</li>
+                <li>為關鍵組件確認至少一個替代供應商</li>
+                <li>在供應合約中納入 12-18 個月的變更通知期</li>
+                <li>定期（至少每年一次）審核關鍵供應商的品質系統和產能</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR66 說傳統的確效活動 (qualification activities) 對 SUS 的價值有限？SUS 的確效策略應該更加關注哪些面向？</li>
+                <li>如果你是一家 CDMO 的供應鏈經理，你如何建立一個「SUS 供應鏈風險矩陣」？哪些組件應該被歸類為最高風險？</li>
+                <li>Change notification agreement 應該包含哪些關鍵要素？提前通知期應該設定為多長？為什麼？</li>
+                <li>比較 SUS 和 MUS 在廢棄物管理方面的差異。SUS 廢棄物中哪些成分需要特別的去活化處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>四大決策領域:</strong> SUS 製造策略必須全面考量技術 (Technology)、確認 (Qualification)、商業驅動 (Business Drivers) 和實施 (Implementation) 四大領域，缺一不可</li>
+        <li><strong>閘門式決策:</strong> 採用 Gated Approach，在技術可行性、商業可行性、產品風險、製程風險、製程控制策略和物流控制等六個閘門逐一評估，任何一個閘門未通過即應停止導入</li>
+        <li><strong>Fail Fast 原則:</strong> 閘門式決策的核心目標是在發現無法解決的重大問題時，能夠快速中止導入過程，避免浪費資源</li>
+        <li><strong>E&L 評估:</strong> SUS 材料與製程流體的交互作用（特別是 Extractables & Leachables）是最關鍵的產品風險考量，與最終藥品的接近程度直接影響風險等級</li>
+        <li><strong>供應鏈依賴性:</strong> SUS 比 MUS 更加依賴供應商，因此供應商管理、第二供應商確認、庫存管理和變更通知協議是確保供應穩定的關鍵要素</li>
+        <li><strong>經濟分析:</strong> 必須在策略開發初期就進行 SUS vs MUS 的經濟分析，考量資本設計、營運成本、藥物開發時程、綠色製造和增值活動等多維度因素</li>
+        <li><strong>組織變革:</strong> SUS 導入不僅是技術專案，更是組織變革，需要有效的利害關係人管理來應對可能的組織壓力和抗拒</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 66 (2014): Single-Use Systems</p>
+    <p>Section 3.0: Points to Consider for SUS Manufacturing Strategy | p4-p14</p>
+    <p>Educational material for CDMO professionals</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
