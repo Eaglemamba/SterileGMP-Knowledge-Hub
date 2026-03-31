@@ -881,8 +881,9 @@ of their in-use period.
 	
 
 $
-7.0
-Control of the Environment
+
+## 7.0 Control of the Environment
+
 An effective cleaning and disinfection system starts by limiting the introduction of contamination into
 the facility by controlling its entry. Stopping as much viable as well as nonviable contamination from
 entering controlled areas is critical to assuring that the desired environmental conditions are met. If
@@ -2631,9 +2632,8 @@ fundamentals of cleaning and disinfection.
 	
 
 $
-17.0
 
-## Appendix I: History Of Disinfection
+## 17.0 Appendix I: History Of Disinfection
 
 A disinfectant is a substance that kills microorganisms, also known as bacteria, viruses, and other
 pathogenic microorganisms, on inanimate objects. People were routinely killing microorganisms long
@@ -2832,9 +2832,7 @@ state, and country requirements prior to use of chemical agents for disinfection
 	
 
 $
-
-## 19.0 Appendix III: Overview Of The U.S.
-
+19.0 Appendix III: Overview Of The U.S.
 Environmental Protection Agency
 The United States Environmental Protection Agency (EPA) regulates antimicrobial products under
 the Federal Insecticide, Fungicide and Rodenticide Act (FIFRA). FIFRA requires U.S. EPA registration
@@ -3367,9 +3365,8 @@ and appropriate due diligence should be exerted to meet all federal, state, and 
 	
 
 $
-24.0
 
-## Appendix VIII: Large-Scale
+## 24.0 Appendix VIII: Large-Scale
 
 Gassing Or Fogging Of Clean Rooms
 Vaporization or fogging of disinfectants for large-scale decontamination is being used or considered

@@ -23,8 +23,9 @@ cesses is required. It can be applied across many types of manufacturing operati
 pharmaceutical products including biologics, small molecules, ATMPs, and others. This document
 should be viewed as technical guidance and is not intended to establish any voluntary or mandatory
 standards.
-1.1
-Purpose
+
+### 1.1 Purpose
+
 This addendum complements the existing PDA TR-13 and is not meant to change or modify its
 content. The addendum provides recommendations for the development of an environmental
 control and monitoring program for classified areas and the associated GMP processes used for
@@ -38,8 +39,9 @@ presents a hybrid approach that is intended to help analyze operational risk in 
 propriate levels of EM required to monitor operations. When implementing these tools in the design
 of any EM program, the resulting program should fit the intended purpose. It should not unneces-
 sarily impede the operation or introduce additional risk to the process.
-1.2
-Scope
+
+### 1.2 Scope
+
 TR-13-2 focuses on environmental controls and monitoring programs for classified areas where
 manufacturing processes are required to ensure a low bioburden level of the material being produced.
 Although a comprehensive EM program addresses both viable and nonviable aspects of the facil-
@@ -340,8 +342,9 @@ EM risk assessments can also be used to investigate a contamination event or tre
 • Adverse data trend in a microbial measurement system (i.e., bioburden/endotoxin, EM, or critical
 utility system monitoring)
 • Identification and evaluation of a potential source of contamination or atypical recovery
-4.1
-General Guidelines
+
+### 4.1 General Guidelines
+
 Risk assessments highlight manufacturing process steps or room locations that exhibit the greatest
 opportunity for introduction of potential contamination to the product or process stream, a criti-
 cal utility system, or the environment. A process flow map based on production records, applicable
@@ -355,8 +358,9 @@ Tours of the facility and manufacturing operations using the process flow map ar
 to collect information and determine the criticality factors relevant to the risk assessment being per-
 formed (see Table 4.3.1-1 and Table 4.3.1-2). Only the criticality factors that apply to the scope of
 the risk assessment should be selected.
-4.2
-Criticality Factors
+
+### 4.2 Criticality Factors
+
 Criticality factors assist in identifying contamination hazards by determining how each factor might
 impact the potential for product, process, or environmental contamination. The criticality factors are
 based on the various sources of contamination.
@@ -454,8 +458,9 @@ ums, and drains. Risk of potential contamination from exposure to these utilitie
 ered when determining sampling locations and frequencies for an EM program. How these utilities
 impact the process and product should also be considered, as they impact the quality and design of
 the resulting EM program.
-4.3
-Risk Assessment Design
+
+### 4.3 Risk Assessment Design
+
 Many methods are available for designing and implementing a risk assessment. The selection of the
 method should be based on the process in question and the relevant criticality factors selected. For
 the purposes of illustration, Sections 4.4 and 4.5 present examples of hypothetical risk assessment
@@ -544,8 +549,9 @@ surate with process requirements. Current guidance recommends using a risk-based
 velop an EM program suitable to support manufacturing steps. The assessment of the critical factors
 identified in this technical report and presented methodology for executing a structured and robust
 risk assessment provide a scientifically sound approach to developing a risk-based EM program.
-4.4
-Risk Assessment Design: Example 1
+
+### 4.4 Risk Assessment Design: Example 1
+
 This example summarizes results of a risk analysis conducted to evaluate the EM sample plans for
 a drug substance facility cell-culture area (not all details of the complete risk analysis process are
 included). A facilitator coordinated with participants from the manufacturing, quality assurance,
@@ -796,8 +802,8 @@ Low (1)
 ISO 8 (3)
 Medium (3)
 
-4.5
-Risk Assessment Design: Example 2
+### 4.5 Risk Assessment Design: Example 2
+
 This report summarizes results of the risk analysis conducted to evaluate the EM sample plan for a
 media supplementation (via aliquoting) process for a cell therapy manufacturing process.
 Knowledgeable personnel from the microbiology, manufacturing, quality assurance, compliance, and

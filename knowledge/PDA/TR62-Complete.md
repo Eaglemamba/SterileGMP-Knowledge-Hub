@@ -386,8 +386,9 @@ through the critical manufacturing areas, and exits to the surrounding environme
 An isolator is a decontaminated system, meeting ISO 5 conditions, which provides uncompromised
 and continuous isolation of its interior from the surrounding environment. A closed isolator only al-
 lows air exchanges with the surrounding environment through microbially retentive filters. An open
-3.0
-Buildings And Facilities
+
+## 3.0 Buildings And Facilities
+
 --- PAGE 11 ---
 isolator may transfer air directly to the surrounding environment through openings (commonly called
 “mouse holes”) that preclude the ingress of microbial contamination. All these environments provide
@@ -499,8 +500,8 @@ should be in place and implemented to ensure the sterility of these items are ma
 duced into an aseptic environment and used in production. Where sterilization or depyrogenation
 of processes for non-product contact surfaces cannot be utilized, a validated sanitization process is
 required to be performed.
-5.0
-Equipment, Components and Container/Closure
+
+## 5.0 Equipment, Components and Container/Closure
 
 --- PAGE 15 ---
 Personnel time limitations with MAP are usually more important than with automated aseptic pro-
@@ -521,8 +522,8 @@ discussed in PDA Technical Report No. 22 (6).
 Note: As part of the process risk assessment, personnel fatigue factors need to be considered, and
 where possible minimized/eliminated through improvement in ergonomics, an understanding of
 human factors, etc.
-6.0
-Process Time Limitations
+
+## 6.0 Process Time Limitations
 
 --- PAGE 16 ---
 Sterility assurance requires a holistic approach to the entire manufacturing process, and encompasses

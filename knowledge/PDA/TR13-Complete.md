@@ -1,5 +1,7 @@
 # PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
 
+## 1.0 Technical Report No. 13 (Revised 2022)
+
 ## 1.0 Introduction
 
 The design and implementation of an environmental monitoring (EM) program allows the confirma-
@@ -23,15 +25,17 @@ Although this TR has been updated to ensure its alignment with existing current 
 lines, current and/or newly updated regulations or guidelines should be consulted when implementing or
 changing an environmental monitoring program. This TR should be viewed as technical guidance, it is not
 intended to replace existing or future regulations, nor should it be considered an all-inclusive document.
-1.1
-Purpose
+
+### 1.1 Purpose
+
 This document was created to aid in the establishment of an environmental monitoring program that
 is robust, meaningful, and practical whilst embracing innovation and the principles of quality risk
 management. This revision updates microbiological and total airborne particulate control concepts
 and principles as they relate to facilities involved in the manufacture of sterile pharmaceutical products
 and other designated cleanroom environments.
-1.2
-Scope
+
+### 1.2 Scope
+
 TR-13 serves as a resource applicable for controlled environments in general however its primary focus
 is environmental monitoring for sterile product manufacturing.
 This document discusses international standards and regulatory guidances, elements of an EM program,
@@ -57,8 +61,9 @@ Bulk and intermediate product bioburden monitoring (except for pharmaceutical wa
 sidered part of all EM programs and is therefore outside of the scope of this technical report. For more
 specifics on this topic, refer to PDA Technical Report No. 69: Bioburden and Biofilm Management in
 Pharmaceutical Manufacturing Operations (1).
-2.0
-Glossary and Abbreviations
+
+## 2.0 Glossary and Abbreviations
+
 Action Limit
 A microbial or total airborne particulate limit
 that, when exceeded, indicates a process is out-
@@ -317,8 +322,9 @@ Cells in an actively growing state. Some microor-
 ganisms can only be vegetative, while others are
 spore-formers and can be in a vegetative or spore
 (dormant) state.
-2.1
-Abbreviations
+
+### 2.1 Abbreviations
+
 API
 Active pharmaceutical ingredient
 CCS
@@ -345,8 +351,9 @@ Trypticase soy agar or tryptone soya
 agar (synonymous with SCDA)
 VBNC
 Viable but not culturable
-3.0
-Environmental Classifications: Regulatory Expectations
+
+## 3.0 Environmental Classifications: Regulatory Expectations
+
 An EM program should be designed and implemented in conformance with the requirements of
 the government agencies regulating the manufacturing site as well as requirements of international
 standard-setting organizations. If the intent is to serve multinational markets, the most stringent re-
@@ -385,6 +392,9 @@ The most commonly accepted international cleanroom standard related to total air
 is ISO 14644-1:2015 Cleanrooms and Associated Controlled Environments — Part 1: Classification of Air
 Cleanliness by Particle Concentration. ISO class designations are based on the number of particles greater
 than a specified size (0.1–5 μm) per cubic meter of air sampled. ISO 14644-1 defines classes from 1 to
+
+## 5.0 Technical Report No. 13 (Revised 2022)
+
 Trend Analysis
 A review performed in response to an alert or ac-
 tion condition or as part of periodic data review.
@@ -398,8 +408,9 @@ Cells in an actively growing state. Some microor-
 ganisms can only be vegetative, while others are
 spore-formers and can be in a vegetative or spore
 (dormant) state.
-2.1
-Abbreviations
+
+### 2.1 Abbreviations
+
 API
 Active pharmaceutical ingredient
 CCS
@@ -426,8 +437,9 @@ Trypticase soy agar or tryptone soya
 agar (synonymous with SCDA)
 VBNC
 Viable but not culturable
-3.0
-Environmental Classifications: Regulatory Expectations
+
+## 3.0 Environmental Classifications: Regulatory Expectations
+
 An EM program should be designed and implemented in conformance with the requirements of
 the government agencies regulating the manufacturing site as well as requirements of international
 standard-setting organizations. If the intent is to serve multinational markets, the most stringent re-
@@ -643,8 +655,8 @@ Note: Settle plates should be exposed for the duration of operations and changed
 the suitability of the media used).
 (Table 3.0-2 Continued)
 
-4.0
-Environmental Monitoring Qualification of
+## 4.0 Environmental Monitoring Qualification of
+
 Cleanrooms (Classified Areas) Used for Manufacturing and
 Filling of Sterile Products
 Clean areas for the manufacture of sterile products are classified according to the required characteris-
@@ -689,8 +701,11 @@ The runs described in this section may form part of the OQ of the cleanroom. Dat
 this stage should be used as part of the EM risk assessment to define routine sampling locations. For
 both total airborne particulate runs (in the at-rest and in-operational conditions), one run conducted
 according to ISO 14644-1 is considered sufficient.
-4.0
-Environmental Monitoring Qualification of
+
+## 11.0 Technical Report No. 13 (Revised 2022)
+
+## 4.0 Environmental Monitoring Qualification of
+
 Cleanrooms (Classified Areas) Used for Manufacturing and
 Filling of Sterile Products
 Clean areas for the manufacture of sterile products are classified according to the required characteris-
@@ -762,8 +777,9 @@ ficacy tests, additional evaluation of the periodic cleaning program, etc.).
 Production or room configuration changes with a possible impact on EM (e.g., gowning procedures,
 cleaning set-up, layout, material or personnel flow, or other areas) should include a new assessment on
 the qualified status of the cleanroom and may require requalification as part of the change.
-5.0
-Environmental Monitoring Program
+
+## 5.0 Environmental Monitoring Program
+
 An EM program (including EMPQ) should be in conformance with current GMP, which includes
 appropriate training and authority of personnel involved in implementing the EM program. Equip-
 ment used should be qualified and calibrated, and microbiological growth media should be properly
@@ -782,8 +798,9 @@ related sample sites with a similar design or activities. Data obtained are subj
 and alert and action decisions are made by qualified personnel. A documentation system should be in
 place for identifying and investigating excursions and adverse trends and the effectiveness of the cor-
 rective actions taken. All data should be documented and periodically trended.
-5.1
-Cleaning, Sanitization or Disinfection and Decontamination
+
+### 5.1 Cleaning, Sanitization or Disinfection and Decontamination
+
 EM data demonstrates the effectiveness of the cleaning and disinfection program. The qualification of
 cleaning and disinfection procedures should demonstrate microbial reduction and maintenance of a
 microbiological state of control and should provide confidence in the effectiveness of the procedure.
@@ -792,8 +809,9 @@ reduction, supplemented by in-situ studies.
 Both USP <1072> and PDA Technical Report No. 70: Fundamentals of Cleaning and Disinfection Pro-
 grams for Aseptic Manufacturing Facilities provide sufficient details of the requirements and in-vitro
 surface challenge methodology for qualification of the efficacy of the agent used (2,15).
-5.2
-EM Sample Site Selection Using Risk Management Principles
+
+### 5.2 EM Sample Site Selection Using Risk Management Principles
+
 Sample site selection, selection of the appropriate sampling methods, sampling volumes, and monitor-
 ing frequencies are critical components of contamination control within a facility. However, EM risk
 assessments are only intended to define the EM program as a part of the overall contamination control
@@ -801,8 +819,9 @@ strategy. This section addresses how to create and how to maintain an EM program
 approach (Section 5.2.1) and the use of quality risk management principles to identify and select sites
 for EM of classified environments including ISO 5-8/Grades A-D as well as personnel monitoring
 (Section 5.2.2). Sections 6.8 and 6.9 discuss utilities (WFI/Compressed Air, Nitrogen, etc.).
-5.2.1
-Lifecycle Approach to an Environmental Monitoring Program
+
+#### 5.2.1 Lifecycle Approach to an Environmental Monitoring Program
+
 The creation and maintenance of EM programs are best achieved using a lifecycle approach. This
 lifecycle approach encompasses the evaluation and definition of suitable sample sites, sample types,
 sampling volumes, and sample frequency for microbiological monitoring that are required before
@@ -817,8 +836,9 @@ general flow of the lifecycle approach of an EM program. Each step defined is de
 once an EM program is developed, is it carefully reviewed during the lifecycle of the area, product, or
 process to affirm that a state of control is maintained. A periodic reevaluation of the EM program (e.g.,
 in response to an adverse trend report) may be necessary.
-5.2.2
-Initiation of Quality Risk Management Process
+
+#### 5.2.2 Initiation of Quality Risk Management Process
+
 Prior to executing a risk assessment, several elements must be defined: scope and objective, risk ques-
 tion or problem statement, risk management tool to be applied, and risk-ranking criteria.
 To conduct an EM risk assessment, a risk facilitator should be assigned and a multidisciplinary team
@@ -991,6 +1011,9 @@ still in place. If there are discrepancies between the initial and current condi
 modified, and the hazards are re-ranked to determine if the risks are below the required threshold. Any
 major deviations to the relevant criteria should be considered, and mitigation actions may be defined
 to control the risks.
+
+## 17.0 Technical Report No. 13 (Revised 2022)
+
 Strategies regarding risk scoring and risk ranking can be found in the BioPhorum EM Risk Assessment
 Toolkit.(18) For example, each risk factor is ranked as low (1), medium (2) or high risk (4), with excep-
 tion of “proximity to product,” which is ranked as low (1), medium (4) or high risk (8). The calculated
@@ -1053,8 +1076,9 @@ ditional controls have been implemented, the assessment will be revisited to ens
 effective in minimizing the risk. In addition to reviewing the effectiveness of in-process or procedural
 controls, the completed risk assessment is subject to review on a routine basis (e.g., annually) to ensure
 the EM program is functioning as designed.
-5.3
-Alert Levels and Action Limits
+
+### 5.3 Alert Levels and Action Limits
+
 EM programs require action limits to be established based on the applicable regulatory guidelines or
 requirements. These guidelines frequently recommend alert levels also be established. Some companies
 also choose to set levels for individual cleanrooms or sample sites. The alert level will be established
@@ -1241,8 +1265,9 @@ control or if data indicate some issues and any related CAPAs
 •
 Analysis of potential correlations between observed product contamination (e.g., bioburden) and
 the micro-organisms recovered within the cleanroom environment.
-5.4
-Data Management
+
+### 5.4 Data Management
+
 Routine review and analysis of EM data for trends at an appropriate frequency is essential to aid in the
 interpretation of process stability and assess overall environmental control performance. Management
 must be kept abreast of trends and the subsequent state of operations within facilities with review of
@@ -1390,8 +1415,9 @@ quire further attention as this may point to construction activities, facility c
 process, flow of material, seasonal variations, disruptive events, or other factors.
 Understanding the potential impact of the results generated during EM is critical to a successful EM
 program.
-5.5
-Rapid Microbiological Methods in Environmental Monitoring
+
+### 5.5 Rapid Microbiological Methods in Environmental Monitoring
+
 The majority of EM performed currently relies on conventional methods based on the recovery and
 growth of microorganisms using solid or liquid microbiological culture media. However, these meth-
 ods are often limited by slow microbial growth rates, long incubation periods, unintended selectivity
@@ -1601,8 +1627,8 @@ ing a rapid method that does not rely on microbial growth, as organisms that wou
 traditional, growth-based method could be detected using alternative methods. This is especially true when
 the organisms are viable, but not culturable (VBNC), physically stressed, damaged, or in a dormant state.
 
-5.6
-Identification of Isolates
+### 5.6 Identification of Isolates
+
 Identifying and strain-typing of microorganisms is not only important as part of the cleanroom quali-
 fication or when related to EM excursions but should also form an integral part of routine surveillance
 monitoring programs.
@@ -1649,8 +1675,9 @@ eas. A change in the microflora might signify a change in the environmental cont
 should be investigated. Identification can be useful information as to the possible source of isolates.
 For example, Staphylococcus species are commonly found on skin, Pseudomonas species are usually as-
 sociated with water sources, and Bacillus species and mold are generally connected to soil, dust, and air.
-5.7
-Investigations and Corrective Actions
+
+### 5.7 Investigations and Corrective Actions
+
 Investigations are needed in response to an action-limit excursion and to address an adverse trend in
 order to determine a cause-and-effect relationship or most probable cause (i.e., sources of contamina-
 tion). For consistency in the response to excursions, investigative and corrective action steps should be
@@ -1731,8 +1758,9 @@ The reviewer may employ scientific judgment to postpone any corrective action un
 firmed and/or an investigation has been completed. It may also be appropriate to provide management
 with a routine summary of action-level excursions for review. All corrective actions listed include an
 evaluation of the action for effect on the product.
-5.8
-Documentation
+
+### 5.8 Documentation
+
 The types of records that should be maintained as part of a routine EM program include:
 1.	 Date and time of sampling
 2.	 Product identification
@@ -1771,12 +1799,14 @@ Identification of persons responsible for relevant corrective action
 Description of action steps and their schedule for implementation
 •
 Evaluation of effectiveness of corrective and preventative action steps
-6.0
-Environmental Monitoring by Manufacturing Application
+
+## 6.0 Environmental Monitoring by Manufacturing Application
+
 The levels and types of monitoring conducted may vary based on the type of product being manufac-
 tured, the attributes of the product, and the manufacturing areas and processes used.
-6.1
-Terminal Sterilization
+
+### 6.1 Terminal Sterilization
+
 Environmental monitoring in support of terminal sterilization monitors microflora from all sources—
 manufacturing environment, process gases, water used in product formulations, sterilizer feed and
 cooling water—that have the potential to contribute to product bioburden or endotoxin. This includes
@@ -1786,8 +1816,9 @@ product is not terminally sterilized using an overkill cycle). While control of 
 the products are prepared is important, the most critical aspect of the program is the bioburden of
 the product and components to be sterilized, including both the number and type of microorganisms
 found.
-6.2
-Aseptic Processing
+
+### 6.2 Aseptic Processing
+
 Environmental monitoring in support of aseptic processing is specifically designed to determine the
 number and type of microorganisms associated with the direct assembly or preparation of product
 prior to sealing the filled containers. The number of sample sites and frequency of monitoring are
@@ -1819,12 +1850,14 @@ Identification of persons responsible for relevant corrective action
 Description of action steps and their schedule for implementation
 •
 Evaluation of effectiveness of corrective and preventative action steps
-6.0
-Environmental Monitoring by Manufacturing Application
+
+## 6.0 Environmental Monitoring by Manufacturing Application
+
 The levels and types of monitoring conducted may vary based on the type of product being manufac-
 tured, the attributes of the product, and the manufacturing areas and processes used.
-6.1
-Terminal Sterilization
+
+### 6.1 Terminal Sterilization
+
 Environmental monitoring in support of terminal sterilization monitors microflora from all sources—
 manufacturing environment, process gases, water used in product formulations, sterilizer feed and
 cooling water—that have the potential to contribute to product bioburden or endotoxin. This includes
@@ -1834,8 +1867,9 @@ product is not terminally sterilized using an overkill cycle). While control of 
 the products are prepared is important, the most critical aspect of the program is the bioburden of
 the product and components to be sterilized, including both the number and type of microorganisms
 found.
-6.2
-Aseptic Processing
+
+### 6.2 Aseptic Processing
+
 Environmental monitoring in support of aseptic processing is specifically designed to determine the
 number and type of microorganisms associated with the direct assembly or preparation of product
 prior to sealing the filled containers. The number of sample sites and frequency of monitoring are
@@ -1856,8 +1890,9 @@ after each filling operation; however, monitoring of isolator gloves and half-su
 of each filling operation or campaign (as applicable) to detect potential contamination. Product con-
 tact surfaces that are sterilized or changed out between batches in a campaign should be monitored at
 the end of the batch specific activities, prior to sterilization / change out.
-6.3
-Air
+
+### 6.3 Air
+
 Effectively designed air-handling units and use of high-efficiency particulate air (HEPA) filters or ul-
 tralow particulate air filters bring air of appropriate quality to cleanrooms. Although the use of HEPA
 filters and air exchange rates to remove particles from the incoming air is a very effective way to reduce
@@ -1958,8 +1993,8 @@ Alternative microbiological methods may require more extensive validation. For a
 cussion, refer to PDA Technical Report No. 33 (Revised 2013): Evaluation, Validation and Implementa-
 tion of Alternative and Rapid Microbiological Methods (22).
 
-6.4
-Surface Monitoring
+### 6.4 Surface Monitoring
+
 In addition to conducting viable air and total airborne particulate monitoring to determine the micro-
 bial contaminants and particulates surrounding the manufacturing operations, surface monitoring is
 conducted to determine the bioburden of surfaces, e.g., walls, floors and ceilings, in the manufacturing
@@ -2031,8 +2066,9 @@ equipment, trains, tanks). A sterile diluent should be used as the rinsing fluid
 with the interior surface and is then collected and tested. Membrane filtration is used to test the rinse
 fluid, because of the large sample volume, and the applied holding time of the rinsing samples prior
 to plating should be qualified.
-6.5
-Personnel Considerations
+
+### 6.5 Personnel Considerations
+
 Personnel are the primary source of contamination, which is why all cleanroom personnel (including
 maintenance workers and others who enter periodically when cleanrooms are in operation) must be
 carefully trained and qualified before entering an aseptic environment.
@@ -2073,8 +2109,8 @@ Recertification should be required after extended absences (e.g., for illness or
 Recertification and/or retraining should be considered as corrective action for trends in
 personnel monitoring excursions
 
-6.6
-Environmental Monitoring During Product Sterility Testing
+### 6.6 Environmental Monitoring During Product Sterility Testing
+
 Sterility-testing facilities should be monitored to demonstrate the absence microbial contamination
 (4,10,14). Routine types of monitoring that are conducted are as follows:
 •
@@ -2087,8 +2123,9 @@ Total airborne particulate monitoring is not mandatory; however, it may provide 
 regarding the HEPA filters in the ISO 5 testing environment or the integrity of isolators. Lab materials
 may generate particles that are not representative of the actual manufacturing conditions, and there is
 no risk to marketed product in the testing environment.
-6.7
-Environmental Monitoring in Grade A Air Supply
+
+### 6.7 Environmental Monitoring in Grade A Air Supply
+
 The term “Grade A air supply” is introduced in Annex 1 and is specifically used to support the capping
 of fully stoppered vials until the cap has been crimped by providing additional protection without the
 requirement to meet all criteria related to a Grade A area (e.g., environmental continuous total par-
@@ -2104,8 +2141,9 @@ At rest viable (air and surfaces) and total particulate monitoring may be perfor
 assessment. Routine monitoring, limits, and positioning should reflect the requirements for this “clean
 process” and be aligned with the contamination control strategy and meet criteria applied for the back-
 ground of the Grade A Air supply (usually Grade C, but minimum Grade D).
-6.8
-Water
+
+### 6.8 Water
+
 As water is used as a raw material in the production, processing, and formulation of products, this
 document only addresses the process monitoring of the water for microbial attributes. Most countries
 have compendial requirements for evaluation of water quality The recently published EMA Guideline
@@ -2201,8 +2239,9 @@ tion systems monitoring, methods, requirements, frequencies, and levels.
 1	 For optimum recovery, an alternative medium may be more appropriate (e.g., m-HPC, TSA/SCDA, R2A).
 2	 For optimum recovery, alternative incubation times may be needed.
 3	 For optimum recovery, alternative incubation temperatures may be needed.
-6.9
-Compressed Gas Monitoring
+
+### 6.9 Compressed Gas Monitoring
+
 The use of compressed air and compressed gas in the aseptic ISO 5 environment may adversely affect
 the environmental conditions if appropriate precautions, routine testing, and critical assurances are
 not developed into a system. This section offers some points that should be considered.
@@ -2213,8 +2252,9 @@ be installed in the system to reduce the bioburden to the point-of-use filter th
 reduce the possibility of higher contamination reaching the area.
 The particulate or bioburden level of any gas or air expelled into the environment should be equal to
 or better than the classification level of the room (10).
-7.0
-Environmental Monitoring Prerequisites
+
+## 7.0 Environmental Monitoring Prerequisites
+
 This section briefly describes the scope of prerequisites for EM, which includes the following:
 1.	 Good facility and equipment design
 2.	 Media vendor audit and qualification
@@ -2236,8 +2276,9 @@ promotion
 1	 For optimum recovery, an alternative medium may be more appropriate (e.g., m-HPC, TSA/SCDA, R2A).
 2	 For optimum recovery, alternative incubation times may be needed.
 3	 For optimum recovery, alternative incubation temperatures may be needed.
-6.9
-Compressed Gas Monitoring
+
+### 6.9 Compressed Gas Monitoring
+
 The use of compressed air and compressed gas in the aseptic ISO 5 environment may adversely affect
 the environmental conditions if appropriate precautions, routine testing, and critical assurances are
 not developed into a system. This section offers some points that should be considered.
@@ -2248,8 +2289,9 @@ be installed in the system to reduce the bioburden to the point-of-use filter th
 reduce the possibility of higher contamination reaching the area.
 The particulate or bioburden level of any gas or air expelled into the environment should be equal to
 or better than the classification level of the room (10).
-7.0
-Environmental Monitoring Prerequisites
+
+## 7.0 Environmental Monitoring Prerequisites
+
 This section briefly describes the scope of prerequisites for EM, which includes the following:
 1.	 Good facility and equipment design
 2.	 Media vendor audit and qualification
@@ -2278,8 +2320,9 @@ system
 in-operation)
 Note: Items 14-16 are fundamental prequalification activities that do not require further elaboration,
 so not discussed further in this section.
-7.1
-Facility Design
+
+### 7.1 Facility Design
+
 As stated in regulations, separate or defined areas of operation in an aseptic processing facility should
 be appropriately controlled to attain different degrees of air quality depending on the nature of the
 operation. Design of a given area involves satisfying microbiological and particle criteria as defined
@@ -2291,8 +2334,9 @@ are available for other types of product manufacturing.
 The two-part ISO 14698 series (superseded by BS EN 17141:2020) provides extensive guidance on
 contamination control, and ISO 14644-1 provides methods to assess the control of air, surfaces, and
 liquid contamination (8,25,33).
-7.2
-Selection of Microbiological Culture Media for EM Testing
+
+### 7.2 Selection of Microbiological Culture Media for EM Testing
+
 Microbiological growth medium, such as soybean-casein digest medium (SCDM) or trypticase soy agar
 (TSA) is suitable as it supports growth of a wide range of bacteria, yeast, and molds. This medium can
 be supplemented with neutralizing agents to overcome or to minimize the effects of sanitizing agents
@@ -2334,8 +2378,9 @@ testing based on risk assessment, including appropriate supplier control confide
 quality agreement.
 •
 Perform growth promotion testing of medium using micro-organisms as per requirement above
-7.3
-Selection of Microorganisms for Growth Promotion
+
+### 7.3 Selection of Microorganisms for Growth Promotion
+
 Selection of microorganisms for growth promotion should be established according to relevant phar-
 macopeial guidance, and with consideration of USP <61>, based on the media to be evaluated (35).
 Microorganisms selected should include those required by the appropriate compendial chapter and
@@ -2344,15 +2389,17 @@ crobial profiling assessment using the data from the framework of routine trendi
 facility, organisms initially recovered from cleanroom qualification activities can be used. A microbio-
 logical culture maintenance program should be established that includes a procedure for testing and
 release with appropriate documentation of used passages (see USP <1117>) (36).
-7.4
-Sample Holding Studies and Transport
+
+### 7.4 Sample Holding Studies and Transport
+
 EM samples are sensitive to handling and storage conditions, which are deemed critical parameters.
 These conditions are affected by time of sampling and temperature of storage. Sample hold studies
 should be performed to validate the sample handling from end of sampling through initial incuba-
 tion. Care should be used if transferring EM media using sanitizing airlocks (e.g., through sanitizing
 airlocks equipped with UV lights).
-7.5
-Environmental Monitoring Sample Incubation Strategy and Validation
+
+### 7.5 Environmental Monitoring Sample Incubation Strategy and Validation
+
 Guidance documents and practices within the industry differ regarding incubation conditions. Informa-
 tion is available regarding selection of a suitable microbiological growth medium, but information about
 appropriate incubation times and optimum temperature conditions is limited or sometimes conflicting.
@@ -2366,8 +2413,9 @@ propriate level of sensitivity. These are typically laboratory-based in-vitro st
 organisms, a combination of reference cultures such as ATCC strains and in-house isolates recovered
 from the production environment. Studies, such as those published by Gordon, et.al., demonstrate
 that there may be a difference between in vitro and in situ testing (37).
-7.6
-Environmental Monitoring Equipment Qualification
+
+### 7.6 Environmental Monitoring Equipment Qualification
+
 Assessment may be required to determine gaps in equipment qualification. The following items should
 be considered as prerequisite:
 
@@ -2383,15 +2431,17 @@ Tube length requirement for total airborne particulate monitoring equipment
 Data collection, transmission and storage, alarm conditions
 •
 Installation and Operational qualification of EM equipment
-7.7
-Microbiology Analyst or Operator Training and Qualification
+
+### 7.7 Microbiology Analyst or Operator Training and Qualification
+
 Appropriate training curricula and qualification requirements should be established for EM analysts
 or operators. That entails relevant, cohesive standard operating procedures, including gowning and
 gowning qualification for aseptic areas, and a good understanding of the procedures, their importance
 in aseptic manufacturing operations, and the impact or risk to quality for not adhering to these
 procedures.
-8.0
-References
+
+## 8.0 References
+
 1.
 Parenteral Drug Association. Technical Report
 No. 69: Bioburden and Biofilm Management
@@ -2589,13 +2639,11 @@ USP: Rockville, Md., 2016.
 Incubation Conditions for Microbiological
 Environmental Monitoring. PDA J Pharm
 Sci and Technol 2014, 68 (5), 394-406.
-9.0
-
-## Appendix 1: Qualification of Cleanrooms (Classified Areas)
-
+9.0 Appendix 1: Qualification of Cleanrooms (Classified Areas)
 Used for Manufacturing and Filling of Sterile Products
-9.1
-Purpose
+
+### 9.1 Purpose
+
 This appendix provides a consistent methodology for qualification of cleanrooms (classified areas) as
 defined in this technical report and used for the manufacture, processing, packaging, holding, and
 testing of active pharmaceutical ingredients, bulk, intermediates, and finished dosage forms of sterile
@@ -2603,8 +2651,9 @@ drug products, biologics, and medical devices for human use.
 European Union and World Health Organization (WHO) designations for cleanroom classifications
 are used throughout, as these are widely used and specific to their application as described in Section
 4.0. Applicable ISO classifications are added where appropriate.
-9.2
-Scope
+
+### 9.2 Scope
+
 Section 9.0 (Appendix 1) focuses on the activities necessary to provide a high degree of assurance
 that cleanrooms used meet the requirements necessary to ensure product quality. Provided that ap-
 propriate environmental monitoring (EM) and/or alarm systems are in place, HVAC mechanical and
@@ -2655,13 +2704,11 @@ USP: Rockville, Md., 2016.
 Incubation Conditions for Microbiological
 Environmental Monitoring. PDA J Pharm
 Sci and Technol 2014, 68 (5), 394-406.
-9.0
-
-## Appendix 1: Qualification of Cleanrooms (Classified Areas)
-
+9.0 Appendix 1: Qualification of Cleanrooms (Classified Areas)
 Used for Manufacturing and Filling of Sterile Products
-9.1
-Purpose
+
+### 9.1 Purpose
+
 This appendix provides a consistent methodology for qualification of cleanrooms (classified areas) as
 defined in this technical report and used for the manufacture, processing, packaging, holding, and
 testing of active pharmaceutical ingredients, bulk, intermediates, and finished dosage forms of sterile
@@ -2669,8 +2716,9 @@ drug products, biologics, and medical devices for human use.
 European Union and World Health Organization (WHO) designations for cleanroom classifications
 are used throughout, as these are widely used and specific to their application as described in Section
 4.0. Applicable ISO classifications are added where appropriate.
-9.2
-Scope
+
+### 9.2 Scope
+
 Section 9.0 (Appendix 1) focuses on the activities necessary to provide a high degree of assurance
 that cleanrooms used meet the requirements necessary to ensure product quality. Provided that ap-
 propriate environmental monitoring (EM) and/or alarm systems are in place, HVAC mechanical and
@@ -2695,8 +2743,9 @@ dedicated specialized equipment rather than by traditional HVAC systems are excl
 ization tunnels or other devices that use unidirectional or HEPA-filtered air are not covered by Section
 9.0 (Appendix 1), the test methods described for the airflow, filter testing, and air classification may
 be directly applied.
-9.3
-Procedure
+
+### 9.3 Procedure
+
 At a minimum, the following inspections and tests should be considered and applied based on risk
 to product quality. In general, these are recommended for all cleanrooms described in this technical
 report.
@@ -2886,9 +2935,7 @@ ISO: Geneva, 2015.
 2.	 International Organization for Standardization. ISO 14644-3:2019 Cleanrooms and Associated
 Controlled Environments — Part 3: Test Methods; ISO: Geneva, 2019.
 
-10.0
-
-## Appendix 2: Risk Assessment Examples
+## 10.0 Appendix 2: Risk Assessment Examples
 
 Table 10.0-1 shows a real-life example provided by Gapp Associates of a review of an existing EM program at a closed RABS filling operation (vial filling; Grade B
 background). Note that only 5 risk items - from a total of 19 - are listed in the table below.

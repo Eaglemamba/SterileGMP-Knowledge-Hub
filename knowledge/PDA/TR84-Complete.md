@@ -1,5 +1,7 @@
 # PDA Technical Report No. 84 (2020): Integrating Data Integrity into Manufacturing and Packaging Operations
 
+## 1.0 Technical Report No. 84
+
 ## 1.0 Introduction and Scope
 
 Data integrity is the cornerstone of establishing and maintaining confidence in the reliability of the
@@ -27,8 +29,9 @@ discusses regulatory trends, risk management concepts, and recommendations for i
 propriate data integrity controls in manufacturing operations applicable to paper-based, electronic-
 based and hybrid systems. The case studies included in this technical report provide examples of how
 to assess current data integrity risks and implement the concepts presented here.
-1.1
-Purpose
+
+### 1.1 Purpose
+
 The continuous and rapid advances in automation and information technology, availability of
 economical data storage, and superiority of electronic audit trail capabilities over paper records have
 compelled the pharmaceutical industry to rethink good manufacturing practices (GMP) controls.
@@ -54,8 +57,9 @@ reliable. Managers, quality assurance personnel, operators, technicians, and sup
 
 remain aware of the significance of maintaining and documenting data integrity for the quality and
 safety of their products.
-1.2
-Scope
+
+### 1.2 Scope
+
 The information in this technical report applies to the management of data at pharmaceutical facili-
 ties that manufacture, process, package, or hold a finished pharmaceutical, API, or intermediate.
 Specifically, it addresses data pertaining to manufacturing operations, materials, facilities and equip-
@@ -352,8 +356,9 @@ entire content and meaning of the original re-
 cord including, in the case of electronic data,
 all essential metadata and the original record
 format as appropriate (4).
-2.1
-Abbreviations
+
+### 2.1 Abbreviations
+
 AHU/HVAC  Air Handling Unit/Heating,
 Ventilation, and Air Conditioning
 ALCOA	 Attributable, Legible, Contemporaneous,
@@ -422,8 +427,8 @@ Warning Letter
 
 ## 3.0 Data Integrity Trends at International Drug Manufacturers
 
-3.1
-Historical Perspective
+### 3.1 Historical Perspective
+
 In 1963, the U.S. Food and Drug Administration (FDA) issued its current good manufacturing
 practices (GMP) regulations for processing, packing, or holding drugs and its major revision in 1978
 under 21 CFR Part 211 (10-11). Since that time, the FDA has acted upon data integrity violations
@@ -473,8 +478,8 @@ ing procedures, and intentional acts of falsification.
 
 ## 3.0 Data Integrity Trends at International Drug Manufacturers
 
-3.1
-Historical Perspective
+### 3.1 Historical Perspective
+
 In 1963, the U.S. Food and Drug Administration (FDA) issued its current good manufacturing
 practices (GMP) regulations for processing, packing, or holding drugs and its major revision in 1978
 under 21 CFR Part 211 (10-11). Since that time, the FDA has acted upon data integrity violations
@@ -619,6 +624,9 @@ of quality management systems for production operations between February 2012 an
 | Taiwan | 2 |
 | UAE, Austria, Denmark, Germany, Hungary, Korea | 1 each |
 
+### 3.2 Regulatory Guidance
+
+Data integrity throughout the product lifecycle has always been of concern to global regulatory
 authorities. During the past 40+ years, multiple worldwide GxP regulations, such as the FDA’s 1978
 Good Laboratory Practice for Nonclinical Laboratory Studies (17), have included requirements indi-
 cating that data need to be attributable, legible, contemporaneous, original, and accurate (ALCOA).
@@ -648,8 +656,9 @@ NMPA: Draft Drug Data Management Standard (Oct 2016) (19)
 TGA: Data Management and Data Integrity (DMDI) webpage (April 2017) (20)
 •
 SID&GP: Guidelines: Data Integrity and Validation of Computerized Systems (August 2018) (21)
-3.3
-Industry Best Practices
+
+### 3.3 Industry Best Practices
+
 Several associations, including PDA, ISPE, and the Active Pharmaceutical Ingredients Committee
 (APIC), also have issued best practice documents related to data integrity:
 •
@@ -667,8 +676,8 @@ ISPE: Good Practice Guide: Data Integrity – Manufacturing Records (April 2019)
 •
 APIC: Practical Risk-Based Guide for Managing Data Integrity (March 2019) (25)
 
-4.0
-Quality Risk Management Applied to Data Integrity
+## 4.0 Quality Risk Management Applied to Data Integrity
+
 The principles of QRM apply to the data lifecycle, which includes the capture, recording, transcrip-
 tion, archiving, and other aspects of data management. This section uses examples to describe how
 certain elements could pose a risk to the integrity of pharmaceutical and biopharmaceutical data.
@@ -685,8 +694,9 @@ The PDA Technical Report No. 54 series describes QRM more broadly, including how
 an appropriate risk assessment and formulate a mitigation strategy to reduce the risks identified. For
 more information on QRM generally and other important elements, such as risk communication,
 please see the TR 54 series and ICH Quality Guideline Q9: Quality Risk Management (8,26).
-4.1
-Considerations in Assessing Risk
+
+### 4.1 Considerations in Assessing Risk
+
 Risk assessments should be conducted proactively at the time any new data management system is
 implemented and should be captured by the overarching change control. At this stage in the process,
 risk assessments can serve as preventive measures to ensure that data integrity is maintained through-
@@ -704,8 +714,10 @@ Data integrity controls should be considered from both the behavioral and techni
 From a behavioral perspective, the overall quality culture, including communications and training, is
 intimately related to the effectiveness of the data integrity program.
 
-4.0
-Quality Risk Management Applied to Data Integrity
+## 11.0 Technical Report No. 84
+
+## 4.0 Quality Risk Management Applied to Data Integrity
+
 The principles of QRM apply to the data lifecycle, which includes the capture, recording, transcrip-
 tion, archiving, and other aspects of data management. This section uses examples to describe how
 certain elements could pose a risk to the integrity of pharmaceutical and biopharmaceutical data.
@@ -722,8 +734,9 @@ The PDA Technical Report No. 54 series describes QRM more broadly, including how
 an appropriate risk assessment and formulate a mitigation strategy to reduce the risks identified. For
 more information on QRM generally and other important elements, such as risk communication,
 please see the TR 54 series and ICH Quality Guideline Q9: Quality Risk Management (8,26).
-4.1
-Considerations in Assessing Risk
+
+### 4.1 Considerations in Assessing Risk
+
 Risk assessments should be conducted proactively at the time any new data management system is
 implemented and should be captured by the overarching change control. At this stage in the process,
 risk assessments can serve as preventive measures to ensure that data integrity is maintained through-
@@ -805,8 +818,9 @@ use of a second person checking or a supervisor reviewing is also important, pro
 ly. Frequently, the supervisory review takes place too long after an event to confirm that it occurred
 as recorded. Moving further into the digital age, electronic automation will replace such reviews
 when implemented and qualified appropriately.
-4.2
-Data Integrity Risk Management Model
+
+### 4.2 Data Integrity Risk Management Model
+
 All data, whether recorded electronically or on paper, requires a risk management approach to deter-
 mine what controls are important to assure data integrity.
 In order to estimate the level of exposure to potential data integrity issues, the following elements
@@ -905,6 +919,11 @@ high-, medium-, and low-level data controls that may be appropriate for the crit
 | Data Criticality | Definition |
 | --- | --- |
 
+4.3 Data Vulnerability (9-Box)
+Data vulnerability is an indicator of the level of exposure to data integrity issues due to intrinsic
+weaknesses in three key elements: data management technology, human factors, GMP manufactur-
+ing processes, or a combination thereof.
+To determine the vulnerability of the data being collected, the user first must assess the level of data
 criticality and the existing level of data control. Each will be assessed as High, Medium, or Low, us-
 ing the definitions in Tables 4.2.1-1 and 4.2.2-1.
 Subsequently, a 9-Box grid can be created by mapping the data criticality level with the data control
@@ -943,6 +962,10 @@ assessed. Appendix 1 provides further instructions for using the 9-Box grid, wit
 | Medium | HEPA | |
 | Low | | GMP |
 
+### 4.4 Using the Data Vulnerability Grid
+
+The data vulnerability grid (9-Box), as depicted in the flowchart in Figure 4.2-1, will not provide
+one overall categorization of a company’s data vulnerability, but offers a tool to use for each process
 and subprocess of operations that involve GMP data. The 9-Box is a holistic approach that allows
 users to categorize the risk to the data in their current manufacturing processes and data lifecycle
 processes using internal data criticality and data control assessments. Companies can leverage the
@@ -1017,8 +1040,9 @@ L/H, L/M, L/L), the controls in place may be more than required for the critical
 the minimal risk factors identified. This does not imply that the controls for these processes should
 be decreased, but that resources potentially could be shifted to other processes, such as those in the
 orange and red boxes.
-4.5
-Data Process Flow Maps
+
+### 4.5 Data Process Flow Maps
+
 Data process flow maps, a GMP requirement in certain parts of the world (29), are an extremely
 useful tool for visualizing the movement of data through a given operation and can facilitate the
 identification of areas of high risk to the data. Every step from start to end of a given process (e.g.,
@@ -1352,8 +1376,9 @@ Routine data verification and periodic surveillance checks should be performed.
 Self-inspections should include verification of the effectiveness of the data integrity controls.
 •
 A strong change management system is required.
-5.1
-Potential Differentiation of Controls
+
+### 5.1 Potential Differentiation of Controls
+
 While there are many requirements to ensure a robust QMS, Section 5.0 only focuses on data
 integrity controls where it is acceptable to differentiate the level of controls that may be applied. This
 means that the levels of controls applied (e.g., frequency of review, number of items to check, who
@@ -1385,8 +1410,9 @@ or less critical (e.g., secondary packaging systems that do not store data relat
 or parameters such as expiry dates), the same controls should be in place to restrict access.
 Any given system may have some controls for which it is possible to differentiate the level of controls
 applied, and some controls that will be the same regardless of the criticality of the activity.
-5.2
-Methodology Used to Determine Differentiated Controls
+
+### 5.2 Methodology Used to Determine Differentiated Controls
+
 To determine the controls required for data, records, or systems, existing regulations and guidelines
 for data integrity were reviewed (2-5,22,27). The recommended controls were categorized against
 the type of document control system being employed: paper-based, electronic-based, and a hybrid.
@@ -1429,6 +1455,10 @@ ensuring a robust QMS and are out of scope for this technical report.
 | Type of System | Category | Short Description |
 | --- | --- | --- |
 
+### 5.3 Areas of Differentiated Data Integrity Controls
+
+While all data potentially impacts the quality of the product, the impact to the manufacturing
+processes governing product quality and patient safety varies depending on the type of data, record,
 or system being used to govern the process. For the seven categories identified where different levels
 of data integrity controls are acceptable, a criticality rating of High, Medium, or Low was used. (See
 Section 4.2.1 for definitions of criticality.)
@@ -1594,13 +1624,14 @@ the printed report (e.g., times, temperatures, critical parameters, pass/fail re
 In some situations where hybrid systems are employed, it is acceptable to differentiate the levels of
 controls required based on the criticality of the activity. For manual activities, when recording or
 transferring data between paper and electronic formats, three scenarios were identified:
-5.3.3.1
-Data Accuracy when Manually Recording Data without a Controlled Second
+
+##### 5.3.3.1 Data Accuracy when Manually Recording Data without a Controlled Second
+
 Format
-5.3.3.2
-Transcription of Manually Recorded Data into an Electronic System
-5.3.3.3
-True Copy (Paper to Electronic)
+
+##### 5.3.3.2 Transcription of Manually Recorded Data into an Electronic System
+
+5.3.3.3 True Copy (Paper to Electronic)
 The controls are applied at the data level for the first and second scenarios, and at the record level
 for the true copy scenario. All controls are designed to prevent a potential data integrity issue from
 occurring.
@@ -2154,6 +2185,9 @@ ing the steps to be taken to transfer the data.
 | Data Transfer and Migration | High Data Criticality | Medium Data Criticality | Low Data Criticality |
 | --- | --- | --- | --- |
 
+## 6.0 Controls for Big Data as it Relates to Data Integrity
+
+Pharmaceutical manufacturing data is being collected at an accelerated rate, beyond human processing
 capability using traditional mechanisms. These challenges increasingly drive the need for governance and
 active controls of data and information. Processes, roles, and standards must be created to allow the effec-
 tive and efficient use of information and technology tools to enable an organization to achieve its goals.
@@ -2164,8 +2198,8 @@ within the framework of governance and controls of big data in manufacturing.
 Collectively, these two technical reports will provide guidance on the management of data and big
 data in a regulated pharmaceutical or biopharmaceutical facility.
 
-7.0
-References
+## 7.0 References
+
 1.
 Parenteral Drug Association. Technical Report
 No. 80: Data Integrity Management System for
@@ -2299,13 +2333,13 @@ erised Systems, EudraLex – Volume 4 – Good
 Manufacturing Practice for Medicinal Products
 for Human and Veterinary Use; European Com-
 mission: Brussels, 2011.
-8.0
 
-## Appendix I: Examples — How to Use the 9-Box
+## 8.0 Appendix I: Examples — How to Use the 9-Box
 
 Vulnerability Grid
-8.1
-API Process Examples
+
+### 8.1 API Process Examples
+
 The following examples demonstrate how High, Medium, and Low criticality data from various
 API manufacturing processes reside in the 9-Box vulnerability grid based on the level of controls in
 place. The vulnerability of data from each unit operation must be considered separately, because the
@@ -2381,13 +2415,13 @@ erised Systems, EudraLex – Volume 4 – Good
 Manufacturing Practice for Medicinal Products
 for Human and Veterinary Use; European Com-
 mission: Brussels, 2011.
-8.0
 
-## Appendix I: Examples — How to Use the 9-Box
+## 8.0 Appendix I: Examples — How to Use the 9-Box
 
 Vulnerability Grid
-8.1
-API Process Examples
+
+### 8.1 API Process Examples
+
 The following examples demonstrate how High, Medium, and Low criticality data from various
 API manufacturing processes reside in the 9-Box vulnerability grid based on the level of controls in
 place. The vulnerability of data from each unit operation must be considered separately, because the
@@ -2802,8 +2836,8 @@ electronic analysis of data, automatic data
 storage & audit trail
 Negligible
 
-8.2
-Finished Dosage Form Examples
+### 8.2 Finished Dosage Form Examples
+
 Examples 4–6 demonstrate where High-, Medium-, and Low-criticality data from a sieving opera-
 tion are placed in the 9-Box vulnerability grid, based on the level of controls in place. The examples
 are for humidity monitoring during sieving of a drug substance, prior to blending and compression.
@@ -3108,8 +3142,8 @@ Data Mgmt: Humidity data is managed per
 Part 11 requirements
 Negligible
 
-8.3
-Sterility Assurance Examples
+### 8.3 Sterility Assurance Examples
+
 The following examples demonstrate how High-, Medium-, and Low-criticality data from an aseptic
 filling process is mapped in the 9-Box vulnerability grid. Sterility is achieved through filtration
 at the point of fill. The sterility assurance at the point of fill impacts a CQA of the final product.
@@ -3416,8 +3450,8 @@ Data Mgmt: Reliance on automation, validation, and
 the robustness of monitoring process
 Negligible
 
-8.4
-Tablet Packaging Process Examples
+### 8.4 Tablet Packaging Process Examples
+
 Example 10 demonstrates how the 9-Box grid can be used to assess the data vulnerability of the tab-
 let packaging process depicted in Figure 8.4-1. In this example, the 9-Box grid can be used to help
 determine if the controls in place at different stages of the packaging process are adequate.
@@ -3735,8 +3769,9 @@ generates a report at the end of
 packaging; report template and data are
 locked and no one can edit the contents
 Moderate
-8.5
-References for Appendix I
+
+### 8.5 References for Appendix I
+
 1.	 U.S. Food and Drug Administration. Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing—Current Good Manufacturing Practice; U.S.
 Department of Health and Human Services: Rockville, Md., 2004.
 2.	 European Commission. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4 – Good Manufacturing Practice for Medicinal Products for
@@ -3907,6 +3942,9 @@ significantly more controls in place than are required.
 | Ex | Mfg. Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
 | --- | --- | --- | --- | --- | --- |
 
+### 8.2 Finished Dosage Form Examples
+
+Examples 4–6 demonstrate where High-, Medium-, and Low-criticality data from a sieving opera-
 tion are placed in the 9-Box vulnerability grid, based on the level of controls in place. The examples
 are for humidity monitoring during sieving of a drug substance, prior to blending and compression.
 In Example 4, humidity is a CPP that will impact CQA (Table 8.2-1). The drug substance is hygro-
@@ -3959,8 +3997,8 @@ access controls. The vulnerability of the data remains unchanged at a Negligible
 | Ex | Mfg Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
 | --- | --- | --- | --- | --- | --- |
 
-8.3
-Sterility Assurance Examples
+### 8.3 Sterility Assurance Examples
+
 The following examples demonstrate how High-, Medium-, and Low-criticality data from an aseptic
 filling process is mapped in the 9-Box vulnerability grid. Sterility is achieved through filtration
 at the point of fill. The sterility assurance at the point of fill impacts a CQA of the final product.
@@ -4028,6 +4066,9 @@ module. While this example is theoretically possible to put into practice, it is
 | Ex | Mfg. Operation | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
 | --- | --- | --- | --- | --- |
 
+### 8.4 Tablet Packaging Process Examples
+
+Example 10 demonstrates how the 9-Box grid can be used to assess the data vulnerability of the tab-
 let packaging process depicted in Figure 8.4-1. In this example, the 9-Box grid can be used to help
 determine if the controls in place at different stages of the packaging process are adequate.
 As shown in Table 8.4-1, this example leads to the conclusion that the controls in place are adequate
@@ -4344,8 +4385,9 @@ generates a report at the end of
 packaging; report template and data are
 locked and no one can edit the contents
 Moderate
-8.5
-References for Appendix I
+
+### 8.5 References for Appendix I
+
 1.	 U.S. Food and Drug Administration. Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing—Current Good Manufacturing Practice; U.S.
 Department of Health and Human Services: Rockville, Md., 2004.
 2.	 European Commission. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex – Volume 4 – Good Manufacturing Practice for Medicinal Products for
