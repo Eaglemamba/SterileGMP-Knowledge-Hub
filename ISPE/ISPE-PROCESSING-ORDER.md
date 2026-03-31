@@ -10,7 +10,7 @@ Last updated: 2026-03-31
 
 | Priority | Folder | Document | PDF Size | Status | Notes |
 |----------|--------|----------|----------|--------|-------|
-| **1** | `ISPE-Vol5` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 6 MB | 🔄 In Progress | English original + Chinese translation in source/. Start here — most queried C&Q reference in pharma. Bridges PDA TR60. |
+| **1** | `ISPE-Vol5` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 6 MB | ✅ Complete | English original + Chinese translation in source/. Start here — most queried C&Q reference in pharma. Bridges PDA TR60. |
 | **2** | `ISPE-Vol3` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | 10 MB | ⬜ Planned | Core facility design guide. Most directly aligned with Hub's sterile manufacturing focus. 2 PDFs in source (2011 version + main). |
 | **3** | `ISPE-HVAC` | ISPE GPG: Heating, Ventilation and Air Conditioning | 11 MB | ⬜ Planned | Critical for Grade A/B/C/D cleanroom design. Only dedicated HVAC guide in the Hub. |
 | **4** | `ISPE-Vol4` | ISPE Baseline Vol.4: Water & Steam Systems | 5 MB | ⬜ Planned | WFI/PW/PS utility systems. Lightweight, high practical relevance. |
