@@ -431,7 +431,6 @@ Range and accuracy for any controlled parameters
 >
 National, local and site requirements, as applicable
 >
-Business, HSE, system owner, and SME requirements
 >
 Engineering specifications and industry standards (e.g., ASME [16], ASTM [17], ISO [18])
 >

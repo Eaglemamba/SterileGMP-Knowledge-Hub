@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Chapter 2: Design Process (Part B)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ISPE Green Override
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 2: Design Process (Part B)</h1>
+    <div class="subtitle">設計流程（下）：風險評估、設施規劃與 AFD/AF&ID</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p35 - p44</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 HVAC System Risk Assessment（HVAC 系統風險評估）的流程：如何將系統拆解為元件，評估各元件對 CPP/CQA 的影響</li>
+        <li>掌握 Impact Assessment（影響性評估）方法：使用參數風險評估表（Parameter Risk Assessment Table）區分 Critical 與 Non-Critical HVAC 參數</li>
+        <li>學會四步驟風險評估法：定義 CPP → 定義系統邊界 → 定義監控方式 → 定義達成方式與偵測能力</li>
+        <li>理解 Programming for Detail Design（細部設計規劃）中的設施佈局、維護策略與製程考量</li>
+        <li>掌握 AFD（Air Flow Diagram，氣流圖）與 AF&ID（Air Flow & Instrumentation Diagram，氣流儀控圖）的差異、內容與應用</li>
+        <li>了解模組化施工（Modular Construction）對 HVAC 設計的限制與注意事項</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.3 HVAC System Risk Assessment -->
+<!-- ============================================================ -->
+<div class="section-title">2.3 HVAC System Risk Assessment（HVAC 系統風險評估）</div>
+
+<!-- 2.3.1 Introduction -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.3.1 Introduction</h3>
+
+        <p><span class="key-term">Risk assessment</span> is used as a process to evaluate the impact of systems or components on product quality. The risk assessment is performed by dividing the systems into components and evaluating the impact of those systems/components on the <span class="key-term">Critical Process Parameters (CPPs)</span> (derived from the relevant <span class="key-term">Critical Quality Attributes (CQAs)</span>). As the components included within a system can significantly affect the ability to maintain CPPs within their acceptable limits, the definition of <span class="key-term">system boundaries</span> is a critical step in a successful risk assessment.</p>
+
+        <p>The risk and potential impact of system failure should be reviewed by HVAC engineers with consideration given to the potential modes of failure, for example:</p>
+
+        <ul>
+            <li>airflow failure</li>
+            <li>filter failure (loss of control of airborne particles or cross-contamination)</li>
+            <li>failure of temperature control</li>
+            <li>failure of humidity control</li>
+            <li>failure of one AHU, upsetting DP created by other AHUs</li>
+        </ul>
+
+        <p>The potential impact of system failure can influence significantly the HVAC system design and maintenance, as well as the design of the supporting utilities. The scope of the analysis may include business as well as quality aspects. (If a system fails and the qualified (verified) monitoring system advises the Quality Unit that the area is not within specifications, there is no risk to patient, but the cost to the business could be considerable.)</p>
+
+        <p>The risk assessment process may be used to determine:</p>
+
+        <ul>
+            <li>the testing (commissioning, qualification) requirements for the system and its controls</li>
+            <li>the level of documentation that is appropriate</li>
+            <li>the individual components that should be verified (commissioned/qualified)</li>
+            <li>the necessary level of change control to apply to system components</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 風險評估的邏輯</h4>
+            <p>HVAC 風險評估的本質是一個「拆解 → 評估 → 分級」的過程：</p>
+            <ul>
+                <li><strong>拆解</strong>：將整套 HVAC 系統拆成個別元件（風機、過濾器、冷卻盤管、感測器等）</li>
+                <li><strong>評估</strong>：每個元件故障時，是否會影響 Critical Process Parameters（CPPs）？</li>
+                <li><strong>分級</strong>：影響大的元件 → GMP Change Control（品質變更管制）；影響小的 → GEP Change Control（工程變更管制）</li>
+            </ul>
+            <p>關鍵術語：<strong>CQA（Critical Quality Attribute，關鍵品質屬性）</strong>是最終產品必須符合的品質標準；<strong>CPP</strong> 是為了達到 CQA 必須控制的製程參數。HVAC 系統的任務就是維持 CPP 在可接受範圍內。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：汽車安全檢查</h4>
+            <p>HVAC 風險評估就像對一輛車做安全檢查：</p>
+            <ul>
+                <li><strong>煞車系統</strong>（Critical）→ 故障會直接危及生命 → 必須定期嚴格檢驗</li>
+                <li><strong>冷氣系統</strong>（Non-Critical）→ 故障不影響行車安全 → 壞了修就好</li>
+                <li><strong>System Boundary</strong>（系統邊界）→ 檢查煞車時，要把煞車油管、來令片、ABS 感測器都包含進去，缺一不可</li>
+            </ul>
+            <p>同理，HVAC 風險評估不是只看 AHU 本身，而是要看整個「從 AHU 到房間末端」的完整鏈條。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重要觀念：品質風險 vs. 商業風險</h4>
+            <p>原文特別指出一個重要區分：</p>
+            <ul>
+                <li><strong>品質/病患風險</strong>：如果監控系統能即時偵測到異常，QA 會立刻介入，產品不會放行 → 病患沒有風險</li>
+                <li><strong>商業風險</strong>：但系統故障期間的產品可能全部報廢，停機損失可能極為可觀</li>
+            </ul>
+            <p>在 CDMO 環境中，這個區分特別重要——客戶產品報廢的賠償責任是巨大的商業風險。</p>
+        </div>
+    </div>
+</div>
+
+<!-- HVAC Performance Parameters -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>Typical HVAC Performance Parameters Affecting CPPs</h3>
+
+        <p>Typical HVAC performance parameters that may affect CPPs include the following:</p>
+
+        <ul>
+            <li>temperature</li>
+            <li>RH</li>
+            <li>particle count at rest</li>
+            <li>total particle count in use (area classification)</li>
+            <li>clean up and <span class="key-term">room recovery time</span> from in-use to at-rest</li>
+            <li>supply air <span class="key-term">HEPA filter</span> performance (capture of contaminants)</li>
+            <li><span class="key-term">air change rates</span>/airflow volumes (affecting particle counts and recovery)</li>
+            <li>area <span class="key-term">DPs</span> (room protection)</li>
+            <li>airflow patterns at critical site</li>
+            <li>microbial viable particulate test results &ndash; in air (related to total airborne particles)</li>
+            <li>microbial viable particulate test results &ndash; swab tests (indirectly affected by HVAC)</li>
+        </ul>
+
+        <p>The list of critical parameters should be reviewed to ensure it minimizes risk to product quality and patient safety. The impact of the failure of a component should be assessed.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：影響 CPP 的 HVAC 參數</h3>
+
+        <div class="concept-box">
+            <h4>關鍵參數分類</h4>
+            <p>這份清單可以按「控制目的」分為三大類：</p>
+            <ul>
+                <li><strong>微粒/微生物控制</strong>：粒子計數（靜態/動態）、Recovery Time（回復時間）、HEPA 過濾器效能、換氣次數、氣流型態</li>
+                <li><strong>環境條件控制</strong>：溫度、相對濕度（RH, Relative Humidity）</li>
+                <li><strong>交叉污染防護</strong>：壓差（DP, Differential Pressure）、氣流方向</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用</h4>
+            <p>在無菌充填 CDMO 中，最關鍵的 HVAC 參數通常是：</p>
+            <ol>
+                <li><strong>壓差（DP）</strong>— 防止低等級空氣侵入高等級區域，是交叉污染防護的第一道防線</li>
+                <li><strong>HEPA 過濾器完整性</strong>— Grade A/B 區域的 HEPA 如果洩漏，整個潔淨等級失效</li>
+                <li><strong>Recovery Time</strong>— 人員活動後，房間能否在規定時間內回到 at-rest 標準（通常 15-20 分鐘）</li>
+                <li><strong>氣流型態</strong>— 特別是 Grade A 層流區域的單向氣流（Unidirectional Airflow），直接保護暴露的產品</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>注意：微生物擦拭與 HVAC 的間接關係</h4>
+            <p>原文提到表面微生物（swab tests）是「indirectly affected by HVAC」。這意味著：表面微生物主要來自人員和物料接觸，但 HVAC 系統的氣流設計影響微粒沉降的位置和數量，因此是間接影響因子。不要因為是「間接」就忽略——在法規查核時，表面微生物超標常常會追溯到 HVAC 設計不當。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.3.2 Impact Assessment -->
+<!-- ============================================================ -->
+<div class="section-title">2.3.2 Impact Assessment（影響性評估）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.3.2 Impact Assessment</h3>
+
+        <p>A recommended practice is to begin the <span class="key-term">impact assessment</span> process with a table of HVAC monitoring points and evaluate them for impact on product quality or patient safety. Table 2.2 is intended to encourage discussions between the Quality Unit, process, and engineering to identify and segregate <span class="key-term">critical and non-critical HVAC points</span> using appropriate risk analysis when no formal guidance or written procedures exist.</p>
+
+        <p><strong>Table 2.2: Parameter Risk Assessment Table</strong></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Monitored Area</th>
+                    <th>Point Name</th>
+                    <th>HVAC Critical Parameter? (Y/N)</th>
+                    <th>Alert Limit</th>
+                    <th>Alert Delay</th>
+                    <th>Alarm Limit</th>
+                    <th>Alarm Delay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td rowspan="9"><strong>AHU</strong></td><td>Supply Airflow</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Return Airflow</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Supply Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Supply Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Return Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Return Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Supply Static Pressure</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Return Static Pressure</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Mixed Air Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td rowspan="4"><strong>Grade A/B Room</strong></td><td>Room Pressurization</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Supply Airflow AC/hr</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td rowspan="4"><strong>Grade C Room</strong></td><td>Room Pressurization</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Supply Airflow AC/hr</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td rowspan="4"><strong>Grade D / Controlled Unclassified Room</strong></td><td>Room Pressurization</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Supply Airflow AC/hr</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td rowspan="4"><strong>OSD Film Coater Room</strong></td><td>Room Pressurization</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Supply Airflow</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td rowspan="4"><strong>Controlled Storage Warehouse</strong></td><td>Room Pressurization</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Supply Airflow</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td rowspan="4"><strong>Drug Substance Room &ndash; Dry Area</strong></td><td>Room Pressurization</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Temperature</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Humidity</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Room Supply Airflow</td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Notes:</strong></p>
+        <ul>
+            <li>Although one room for various facilities is included, the intent is to develop a room-by-room analysis for each facility, segregating critical HVAC parameters from non-critical HVAC parameters.</li>
+            <li>Parameters inside the AHU (except possibly supply airflow) usually are not considered critical, as they are the value needed to satisfy room parameters. Excessive constraints on parameters inside the AHU or ductwork should be avoided.</li>
+        </ul>
+
+        <p>Typical critical HVAC parameters under a given process or classification should be identified, i.e.:</p>
+
+        <ul>
+            <li>Product Driven</li>
+            <li>Flammability or Hazard Issues</li>
+            <li>Environmental Air Classification</li>
+            <li>Open/Closed processes</li>
+            <li>Terminally Sterilized</li>
+            <li>Oral Solid Dosage Forms</li>
+        </ul>
+
+        <p>Assumptions or clarifications should be discussed and documented.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：影響性評估實務</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：參數風險評估表的使用方法</h4>
+            <p>Table 2.2 是一個非常實用的模板工具。使用方式：</p>
+            <ol>
+                <li><strong>列出所有監控點</strong>：每個 AHU 和每個房間的所有 HVAC 監控參數</li>
+                <li><strong>逐一判定 Critical Y/N</strong>：該參數失控是否直接影響產品品質？</li>
+                <li><strong>設定 Alert/Alarm</strong>：Critical = Y 的參數，必須設定警報限值和延遲時間</li>
+            </ol>
+            <p>這張表的重點不在於「填完」，而在於<strong>促使品質、製程、工程三方對話</strong>，達成共識。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>關鍵提醒：AHU 內部參數通常不是 Critical</h4>
+            <p>原文明確指出：AHU 內部參數（如回風溫度、回風濕度、靜壓等）<strong>通常不被視為 Critical</strong>，因為它們是「手段」而非「目的」——真正的目的是房間端的溫濕度和潔淨度。</p>
+            <p>常見錯誤：把 AHU 內部所有參數都標為 Critical → 導致過度監控、過多警報、確效範圍膨脹。</p>
+            <p><strong>正確做法</strong>：只有 AHU 的 Supply Airflow（送風量）可能是 Critical，因為它直接決定房間的換氣次數。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：餐廳的品質管理</h4>
+            <p>想像你是一間餐廳的品管經理：</p>
+            <ul>
+                <li><strong>客人吃到的菜（房間參數）</strong>= Critical，必須嚴格控制味道、溫度、衛生</li>
+                <li><strong>廚房爐火的火力大小（AHU 內部參數）</strong>= Non-Critical，只要最終出菜合格就好</li>
+                <li>如果你連廚師翻鍋幾下都要管（過度控制 AHU 內部），廚師會崩潰，效率會大降</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務：不同產品類型的 Critical 參數差異</h4>
+            <p>原文列出的六種分類，在 CDMO 中的應用：</p>
+            <ul>
+                <li><strong>Product Driven（產品驅動）</strong>：凍乾製品對溫濕度極敏感 → 溫度和 RH 都是 Critical</li>
+                <li><strong>Open/Closed processes（開放/封閉製程）</strong>：使用 RABS 或隔離器的封閉製程 → 房間環境要求可降低</li>
+                <li><strong>Terminally Sterilized（最終滅菌）</strong>：因為有最終滅菌步驟 → 環境微粒/微生物控制要求較低</li>
+                <li><strong>Flammability（易燃性）</strong>：使用乙醇等溶劑 → 需額外考慮防爆通風和排氣設計</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的無菌充填廠房中，Grade B 區域的「Room Humidity」應該標記為 Critical 還是 Non-Critical？理由是什麼？</li>
+                <li>如果一個 AHU 同時服務 Grade B 和 Grade C 區域，風險評估時應該如何處理系統邊界？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.3.3 Risk and Components -->
+<!-- ============================================================ -->
+<div class="section-title">2.3.3 Risk and Components（風險與元件）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.3.3 Risk and Components</h3>
+
+        <p>The risk assessment process is used to determine which HVAC system components are critical to the product quality. These components then require additional attention through <span class="key-term">qualification</span> and may require installed <span class="key-term">redundancy</span> to avoid business impact. This could be extended to determine which components should be under <span class="key-term">GMP change control</span> with the remainder of the direct impact system under <span class="key-term">GEP change control</span>.</p>
+
+        <p>One method to address this is a matrix in which the individual components of the HVAC system (e.g., preheat coil, fan, temperature sensor, HEPA filters) are listed on one axis, and a series of challenge questions to aid in determining the GMP-critical nature of that component are listed on the other axis. Generally, failure does not make a component critical if its failure can be detected quickly (through monitoring, see Appendix 2).</p>
+
+        <p>There are several approaches to performing a risk assessment, for example:</p>
+
+        <p><strong>STEP 1.0</strong> Define the CPPs for the area served by the HVAC system, together with the supporting rationale. Some examples may be:</p>
+        <ul>
+            <li>Humidity is not a critical factor for the product as it is an aqueous liquid.</li>
+            <li>Temperature is not a critical factor as the product is contained in temperature-controlled vessels.</li>
+            <li>Air quality is considered a critical factor &ndash; the room supplied is classified as Grade 8 (EU Grade C) because product-contact equipment is exposed.</li>
+            <li>Room pressure differentials are considered critical to maintain the room environment, minimizing the risk of contamination/cross contamination, because the room is classified Grade 8.</li>
+        </ul>
+
+        <p><strong>STEP 2.0</strong> Define system boundaries for HVAC systems:</p>
+        <ul>
+            <li>Systems can be organized by components of like type (i.e., system that is all one type of components, such as only HEPA filters).</li>
+            <li>Systems can be organized geographically (i.e., at room level).</li>
+            <li>Systems can be organized by connected components (i.e., an AHU system).</li>
+            <li>Control and monitoring system can be either a separate system, or may be included as part of another system.</li>
+        </ul>
+
+        <p><strong>STEP 3.0</strong> Define how the CPPs are monitored. Some examples may be:</p>
+        <ul>
+            <li>Humidity is monitored by an independent <span class="key-term">SCADA</span> based environmental monitoring system.</li>
+            <li>Temperature is monitored by an independent SCADA based environmental monitoring system.</li>
+            <li>Air quality is monitored by a routine test using a particle counter per ISO CEN 14644-2 for particles, and also via microbial testing.</li>
+            <li>Microbial monitoring for viable particles is tested per local SOP.</li>
+            <li>Room pressure differentials are monitored by an independent SCADA based environmental monitoring system.</li>
+        </ul>
+
+        <p><strong>STEP 4.0</strong> Define how the CPPs are achieved, and any associated equipment risks of failure and the probability of detection of those failures. Some examples may be:</p>
+        <ul>
+            <li>Humidity control is achieved by either dehumidifying (through cooling or desiccant) or by adding moisture with a steam humidifier. As humidity is continuously monitored by a verified system, it is considered adequate to commission the humidifier/dehumidifier system, and maintain it under engineering change control.</li>
+            <li>Temperature control is obtained through the use of the heating or cooling coils. As temperature is continuously monitored by a verified system, it is considered adequate to commission the heat system, and maintain it under engineering change control.</li>
+            <li>Air quality in Grade 8 is obtained through the final HEPA grade filter, which is leak tested annually with a particle count conducted periodically. As the HEPA filter integrity is not continuously monitored and is directly responsible for this aspect of the system performance, it will be verified and maintained under quality change control.</li>
+            <li>Room pressure differentials are the result of resistance to leakage from and to the conditioned space from adjacent areas. As pressure is continuously monitored by a verified system, it is considered adequate to commission the duct/damper system and maintain it under engineering change control.</li>
+        </ul>
+
+        <p>Based on the above examples, the equipment to be verified and maintained under formal Change Control is shown as shaded boxes in Figure 2.4.</p>
+
+        <p><em>Figure 2.4: A Typical Schematic of Critical Devices</em></p>
+
+        <p>Examples of other methods for performing an HVAC risk assessment, including some typical risk assessments of HVAC components are included in the appendices.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：四步驟風險評估法</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：四步驟法的邏輯鏈</h4>
+            <p>這四個步驟形成了一個完整的風險評估邏輯：</p>
+            <ol>
+                <li><strong>Step 1 — 定義 CPP</strong>：先搞清楚「什麼重要」，並提供理由（Rationale）</li>
+                <li><strong>Step 2 — 定義系統邊界</strong>：決定評估的範圍——按元件類型、地理位置、還是連接系統？</li>
+                <li><strong>Step 3 — 定義監控方式</strong>：CPP 是如何被偵測的？連續監控還是定期檢測？</li>
+                <li><strong>Step 4 — 定義達成方式與偵測能力</strong>：CPP 靠什麼設備達成？如果設備故障，能多快被發現？</li>
+            </ol>
+            <p>最後的關鍵判斷：<strong>如果故障能被連續監控即時偵測 → Engineering Change Control 即可；如果無法即時偵測 → 需要 Quality Change Control + 定期驗證</strong>。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>關鍵洞察：HEPA 過濾器為什麼是最高風險元件</h4>
+            <p>從 Step 4 的範例可以看出，四個 CPP 中，只有 HEPA 過濾器需要 Quality Change Control，原因是：</p>
+            <ul>
+                <li>溫度、濕度、壓差 → 都有<strong>連續監控（SCADA）</strong>，故障可即時偵測</li>
+                <li>HEPA 過濾器完整性 → <strong>沒有連續監控</strong>，只能透過年度洩漏測試和定期粒子計數來驗證</li>
+            </ul>
+            <p>這就是為什麼 HEPA 過濾器在 Figure 2.4 中被標記為 Critical Device（以陰影框表示）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：偵測能力決定管制等級</h4>
+            <p>想像兩種水管破裂情境：</p>
+            <ul>
+                <li><strong>浴室水管</strong>：裝了漏水感測器，破裂立刻警報 → 只要確保感測器有效（Engineering Control）</li>
+                <li><strong>牆壁內的暗管</strong>：沒有感測器，可能漏水幾個月才發現 → 必須定期檢查、嚴格記錄（Quality Control）</li>
+            </ul>
+            <p>HEPA 就像「牆壁內的暗管」——它的失效不會立刻被發現，所以需要最嚴格的管制。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務：系統邊界的定義策略</h4>
+            <p>Step 2 提出三種系統邊界定義方式，在 CDMO 中的建議：</p>
+            <ul>
+                <li><strong>按 AHU 系統定義</strong>（最常用）：一台 AHU + 其服務的所有管道和末端設備 = 一個系統。適合大多數情況。</li>
+                <li><strong>按房間定義</strong>：當一個房間被多台 AHU 服務時（如 Grade A 層流 + Grade B 背景），需要按房間來定義邊界。</li>
+                <li><strong>按元件類型定義</strong>：例如把所有 HEPA 過濾器作為一個「系統」來管理——適合統一排程洩漏測試。</li>
+            </ul>
+            <p>實務建議：同時使用 AHU 系統邊界（用於確效）+ 元件類型邊界（用於維護排程），兩者互補。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 CDMO 新增了一台 PAT（Process Analytical Technology）即時粒子監控系統，能連續監測 HEPA 下游的粒子數，這會改變 HEPA 的風險分級嗎？為什麼？</li>
+                <li>Step 1 的範例中，「溫度不是 Critical 因為產品在溫控容器中」。如果換成凍乾充填線，這個結論會改變嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.4 Programming for Detail Design -->
+<!-- ============================================================ -->
+<div class="section-title">2.4 Programming for Detail Design（細部設計規劃）</div>
+
+<!-- 2.4.1 Programming and Layout -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.4.1 Programming and Layout Considerations (Schematic Design)</h3>
+
+        <p>Issues with HVAC systems may affect the programming and layout of a facility design to avoid future problems in the construction, commissioning and qualification, operation, and maintenance of the facility. The impact of HVAC varies by type of facility, generally increasing as the complexity of the facility increases from general administrative office areas to more complex facilities for <span class="key-term">aseptic</span> or <span class="key-term">potent compound</span> processing.</p>
+
+        <p>In general, the larger the classified area and the more stringent the environmental cleanliness class, the more complex and costly the HVAC system, both in first cost and ongoing operating costs. Once the <span class="key-term">user requirements document</span> is formally approved, design can begin. Changes in scope that affect the user requirements should be formally approved before design can be changed.</p>
+
+        <p>Special requirements should be determined for temperature or RH for specific rooms (freezers, chill rooms, stability storage chambers, R&D suites, etc.).</p>
+
+        <p>HVAC engineers should understand the flow of materials, equipment, and personnel (<span class="key-term">unidirectional flow</span>; gravity flow, etc.) in determining area classifications, pressurization strategies, and <span class="key-term">airlock</span> strategies (the use of airlocks to separate areas of different requirements for cleanliness, pressure, temperature, and RH), their classification, HVAC system zoning, etc., and location of changing rooms and their classification. Note: Elevators serving classified spaces should be located outside those classified spaces.</p>
+
+        <p>Area functionalities and adjacencies (both horizontal and vertical) should be determined.</p>
+
+        <p>Functional/relational adjacencies should be determined (e.g., avoid placing large AHUs next to a laboratory with vibration-sensitive precision analytical equipment).</p>
+
+        <p>There may be special considerations in the layout and adjacencies for projects employing <span class="key-term">prefabricated modular construction</span>.</p>
+
+        <p>HVAC and utilities equipment, duct/pipe routing and supply/exhaust/return, and diffusers/grilles locations and issues should be considered. Outside air intakes and exhaust stacks should be located to avoid entrainment/re-entrainment of unwanted fumes and odors, such as laboratory fume hood exhausts, process vents, and fumes from idling trucks near docks and other loading/unloading facilities. Major equipment may be located, e.g., in a basement, penthouse, or roof, accordingly. Building configuration (H &times; W &times; L) may affect the location of central services and how they are distributed.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：設施規劃與 HVAC 佈局</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 複雜度與成本的金字塔</h4>
+            <p>設施類型從簡單到複雜，HVAC 成本呈指數成長：</p>
+            <ul>
+                <li><strong>一般辦公室</strong> → 基本空調（最低成本）</li>
+                <li><strong>OSD（口服固體劑型）</strong> → 控溫控濕 + 除塵（中等成本）</li>
+                <li><strong>無菌充填</strong> → 多級潔淨室 + HEPA + 壓差控制（高成本）</li>
+                <li><strong>高效力/高活性藥物</strong> → 上述全部 + 負壓隔離 + 專用排氣（最高成本）</li>
+            </ul>
+            <p>關鍵原則：<strong>潔淨區域越大、等級越高，HVAC 建置成本和運轉成本都越高</strong>。這就是為什麼 URS 階段要精確定義需求，避免過度設計。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重要提醒：佈局決定一切</h4>
+            <p>原文提到的幾個關鍵佈局考量：</p>
+            <ul>
+                <li><strong>電梯不能設在潔淨區內</strong>：電梯的活塞效應（piston effect）會嚴重擾亂壓差控制</li>
+                <li><strong>AHU 不要靠近精密儀器實驗室</strong>：大型風機的振動會影響分析天平等精密設備</li>
+                <li><strong>外氣進氣口位置</strong>：要避開排氣口、貨車卸貨區（柴油廢氣）、實驗室排風</li>
+            </ul>
+            <p>這些在設計初期（Schematic Design）就必須決定，後期修改代價極大。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蓋房子的順序</h4>
+            <p>HVAC 設施規劃就像蓋房子：</p>
+            <ul>
+                <li><strong>格局（Layout）</strong>先確定 → 客廳、臥室、廚房的位置和大小</li>
+                <li><strong>動線（Flow）</strong>次確定 → 乾淨衣物和髒衣物的路線不能交叉</li>
+                <li><strong>水電管線（HVAC Routing）</strong>配合格局 → 不是先拉管線再決定格局</li>
+            </ul>
+            <p>在藥廠中，「格局」就是各等級潔淨室的配置，「動線」就是人流物流，「水電管線」就是 HVAC 管道。三者的決定順序不能顛倒。</p>
+        </div>
+    </div>
+</div>
+
+<!-- Maintenance & Process -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>Maintenance & Process Considerations</h3>
+
+        <p><strong>Maintenance</strong></p>
+
+        <p>The requirements for maintenance, testing, repair, and replacement should be considered, including the locations for access doors/panels for HVAC system inspection, testing, maintenance, and HEPA filter scan testing and replacement.</p>
+
+        <p>Access to field instruments for calibration, testing, and repair also should be considered.</p>
+
+        <p>For AHU maintenance, removal or replacement of large motors and fans, dehumidifier wheels, coils, and filters should be considered. Access to AHUs should allow the removal and replacement of large equipment (clear pathways, hoists/elevators, etc.).</p>
+
+        <p>Locations and access requirements for <span class="key-term">BMS/EMS</span> data and control should be identified. Requirements for local indications and control features for BMS/EMS should be determined.</p>
+
+        <p>Facility maintenance philosophies (i.e., maintain from inside or outside of room) should be defined.</p>
+
+        <p><strong>Process</strong></p>
+
+        <p>Materials to be used in a process (i.e., potent, solvents, cytotoxic, sterile) and the approaches and technologies for product containment and clean/sterile processing should be determined.</p>
+
+        <p>The use of <span class="key-term">micro-environments</span> (barrier isolators, <span class="key-term">Restricted Access Barrier System (RABS)</span>, biosafety cabinets, etc.) may reduce both the required amount and grade of classified space, compared to traditional dedicated classified rooms for open pharmaceutical processing. This may result in a smaller facility footprint, fewer airlocks, and lower overall HVAC system life cycle cost.</p>
+
+        <p>The location and associated maintenance of hazardous equipment and ductwork may affect facility layout.</p>
+
+        <p>Process issues related to codes and standards, include:</p>
+        <ul>
+            <li>codes and standards applicable to the region (e.g., Americans with Disabilities Act (ADA), Fire, OSHA, Energy, IMC)</li>
+            <li>ease of egress and other safety considerations</li>
+            <li>risks associated with various layout and programming issues (i.e., area electrical classification, explosion-relief panels, product risks)</li>
+            <li>special considerations associated with hydrogen or nitrogen operations</li>
+            <li>Where facility modules are prefabricated in a jurisdiction different to that of the facility location, special attention should be given to requirements of local codes and standards. Applicable requirements should be identified early in the design process.</li>
+        </ul>
+
+        <p>Process issues within a room which should be considered include:</p>
+        <ul>
+            <li>locations of personnel, processes, and product with respect to HVAC supplies and exhaust/returns</li>
+            <li>equipment heat loads (where is heat generated and how is it cooled or extracted?)</li>
+            <li>Locations of utilities connections in regard to the operations to be performed. Room HVAC system should be designed as an integrated system in rooms with fume hoods, biosafety cabinets, LEV systems, and process equipment HVAC systems. Using a manifold exhaust system rather than one fan per hood may affect facility layout.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：維護與製程考量</h3>
+
+        <div class="concept-box">
+            <h4>維護策略的兩大哲學</h4>
+            <p>原文提到「maintain from inside or outside of room」，這在潔淨室設計中是一個根本性的決策：</p>
+            <ul>
+                <li><strong>從室內維護（Inside-out）</strong>：維護人員進入潔淨室操作 → 更衣程序、潔淨紀律要求高，但設備佈局較簡單</li>
+                <li><strong>從室外維護（Outside-in）</strong>：將可維護元件（過濾器、馬達、閥門）設置在技術走廊（service corridor）→ 不影響潔淨室運作，但建築成本較高</li>
+            </ul>
+            <p>在無菌 CDMO 中，Grade A/B 區域幾乎一定採用「從室外維護」策略。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 關鍵應用：微環境技術的影響</h4>
+            <p>原文提到的 RABS（Restricted Access Barrier System，限制進入屏障系統）和 Isolator（隔離器）對 HVAC 設計影響巨大：</p>
+            <ul>
+                <li><strong>傳統開放式製程</strong>：整個房間需要 Grade A → HVAC 必須對整個房間提供層流</li>
+                <li><strong>RABS</strong>：屏障內 Grade A，背景 Grade B → 房間 HVAC 只需維持 Grade B</li>
+                <li><strong>Isolator</strong>：隔離器內 Grade A，背景可降至 Grade C/D → HVAC 複雜度和成本大幅降低</li>
+            </ul>
+            <p>結論：微環境技術不只是無菌保證的升級，更是 HVAC 成本優化的重要策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>注意：模組化施工的法規風險</h4>
+            <p>原文特別提醒：如果模組（module）在不同國家/地區預製，必須注意當地法規差異。例如：</p>
+            <ul>
+                <li>在中國預製的模組運到台灣安裝 → 必須同時符合兩地的消防、電氣、建築法規</li>
+                <li>歐洲 ATEX 防爆標準 vs. 美國 NEC Class/Division 分類 → 兩套體系不完全對應</li>
+            </ul>
+            <p>這些要在設計初期就確認，否則模組到場後發現不合規，改裝成本極高。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.4.2 Architectural Considerations -->
+<!-- ============================================================ -->
+<div class="section-title">2.4.2 Architectural Considerations（建築考量）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.4.2 Architectural Considerations</h3>
+
+        <p>HVAC engineers and the project architects should coordinate HVAC on issues and considerations which affect both the architectural aspects of a project and HVAC systems. Problems in the construction, commissioning and qualification, operation, and maintenance of a facility may be avoided.</p>
+
+        <p>The materials of construction of a facility include:</p>
+        <ul>
+            <li><strong>Room Finishes</strong>: these should be cleanable, resistant to cleaning and sanitization chemicals, suitable for the environment, and be wear/bump resistant.</li>
+            <li><strong>Flooring</strong>: appropriate flooring materials should be selected for an application. The technique and skills of flooring installers should be verified. Installing test patches of the materials and the techniques being considered may be used to evaluate their performance in a specific application. Poor flooring can add to airborne particle levels.</li>
+        </ul>
+
+        <p>For further information, see relevant ISPE Baseline&reg; Guides.</p>
+
+        <p>Construction methodologies for both architecture and HVAC designs should be coordinated:</p>
+        <ul>
+            <li><strong><span class="key-term">Room tightness</span></strong>: where pressure differential is significant, floor to ceiling walls should be used. Hard (gypsum or gasketed, interlocking, steel or FRP panels) ceiling construction may be used for pressure-controlled spaces. In addition, air migration above a ceiling should be minimized between controlled and uncontrolled spaces. If RH is significant, reducing moisture migration through unsealed penetrations, drains, door seals, and porous wall materials should be addressed. Door specifications should address seals, windows, interlocks, construction of the door, actuation, direction of swing, and hardware.</li>
+            <li>To minimize air leakage, the gap between finished floor and the bottom of door should be uniform (typically approximately .125 to .5 inch (3 to 14 mm)) when closed. Door sweeps are typically not recommended for swinging doors in manufacturing spaces, because of their accumulation of dirt, scratching of the floor, and increased maintenance.</li>
+            <li>A commissioning test to verify room tightness (i.e., <span class="key-term">room leakage test</span> or room integrity test per ISO 14644-3) should be considered.</li>
+            <li>The use of prefabricated modular facility construction techniques may impose additional restrictions on a HVAC design (e.g., design may be limited to equipment suppliers with which the module contractor has an established relationship; the size of AHUs may be limited to the size of a standard module). Owners should understand the limitations and preferences associated with each module supplier, for example:
+                <ul>
+                    <li>duct and piping joints at each module interface, misalignment, and leakage potential</li>
+                    <li>limited height</li>
+                    <li>constraints on duct routing</li>
+                    <li>tight access to mechanical spaces for service and removal/replacement</li>
+                </ul>
+            </li>
+            <li>Where possible, service distribution and pipe work should be located outside a cleanroom in an adjacent utility space to promote better airflow patterns and to produce fewer pockets for dirt to accumulate. In addition, this location is helpful for the maintainability of equipment.</li>
+            <li>The effect of HVAC systems on programming and layout will vary depending on the type of facility. See Chapter 3.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：建築與 HVAC 的協調</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：房間氣密性（Room Tightness）</h4>
+            <p>房間氣密性是壓差控制的物理基礎。如果房間「漏」，再大的送風量也維持不了壓差。關鍵要點：</p>
+            <ul>
+                <li><strong>牆面</strong>：必須從地板到天花板完整封閉，天花板上方的空間也要隔離</li>
+                <li><strong>門縫</strong>：底部間隙 3-14 mm，要均勻一致</li>
+                <li><strong>不建議使用門底掃條（Door Sweeps）</strong>：會積灰、刮地板、增加維護負擔</li>
+                <li><strong>所有貫穿件（penetrations）</strong>：管道、電線穿牆處必須密封</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：給輪胎充氣</h4>
+            <p>維持房間壓差就像給輪胎充氣：</p>
+            <ul>
+                <li>如果輪胎有破洞（房間漏風），你打再多氣（送再多風）也維持不了壓力</li>
+                <li>先補好破洞（確保房間氣密），再充適量的氣（設計合適的送風量）</li>
+                <li>ISO 14644-3 的 Room Leakage Test 就是在「檢查輪胎有沒有破洞」</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重要提醒：地板品質影響空氣品質</h4>
+            <p>原文提到一個容易被忽略的重點：<strong>Poor flooring can add to airborne particle levels</strong>（不良地板會增加空氣中的微粒數）。</p>
+            <p>原因：環氧樹脂地板如果施工不良（氣泡、裂縫、剝落），使用中會持續產生微粒。建議在正式施工前先做「test patch」驗證施工品質。在 CDMO 中，地板品質問題常常在運轉後才浮現，但修復需要停產，代價極高。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務：模組化施工的 HVAC 限制</h4>
+            <p>模組化施工（Modular Construction）在近年 CDMO 快速擴產中越來越常見，但 HVAC 設計必須注意：</p>
+            <ul>
+                <li><strong>AHU 尺寸限制</strong>：受限於標準模組的運輸尺寸，可能需要拆分為多台小型 AHU</li>
+                <li><strong>模組介面</strong>：兩個模組連接處的管道接頭是最大的洩漏風險點</li>
+                <li><strong>維護空間</strong>：模組內的機械空間通常很狹窄，大型元件更換困難</li>
+                <li><strong>管道路由</strong>：模組化設計對管道走向的彈性遠低於傳統施工</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.4.3 AFD and AF&ID -->
+<!-- ============================================================ -->
+<div class="section-title">2.4.3 AFD and AF&ID（氣流圖與氣流儀控圖）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.4.3 AFD and AF&ID</h3>
+
+        <p>Once functional relationships between areas are established along with their HVAC requirements, and product contamination and operator risks are identified, a simple <span class="key-term">AFD</span> can be created. Critical components of filtration or parameter monitoring systems also may have been identified, and provide the initial elements of an <span class="key-term">AF&ID</span>. (On completion, an AF&ID should show all instrumentation.)</p>
+
+        <p>An AF&ID may be considered the HVAC version of a <span class="key-term">P&ID</span>. For a definition of P&ID, see Appendix 12.</p>
+
+        <p>An AF&ID usually will include:</p>
+        <ul>
+            <li>instrumentation with tag numbers</li>
+            <li>equipment with tag numbers</li>
+            <li>control and manual valves/dampers with tag numbers</li>
+            <li>duct and piping, sizes, and identification references</li>
+            <li>vents, drains, fittings (e.g., reducers, increasers), sample points</li>
+            <li>flow directions</li>
+            <li>control inputs and outputs, interlocks</li>
+            <li>safety and regulatory requirements, including seismic category</li>
+            <li>annunciation inputs</li>
+            <li>supplier and contractor interfaces</li>
+            <li>identification of components and subsystems delivered by others, i.e., system boundaries</li>
+        </ul>
+
+        <p>This should be supplemented by documentation of intended physical sequence of the equipment, startup, and operational information.</p>
+
+        <p>An AF&ID typically does not include:</p>
+        <ul>
+            <li>instrument root valves</li>
+            <li>control relays</li>
+            <li>manual switches</li>
+            <li>equipment capacity</li>
+            <li>pressure temperature and flow data</li>
+        </ul>
+
+        <p>An AFD will usually include:</p>
+        <ul>
+            <li>ductwork</li>
+            <li>major HVAC equipment with tag numbers</li>
+            <li>valves and dampers that affect operation of the system, including balancing dampers</li>
+            <li>interconnections with other systems</li>
+            <li>system ratings and operational values as a minimum, normal and maximum flow, temperature, and pressure</li>
+        </ul>
+
+        <p>An AFD typically does not include:</p>
+        <ul>
+            <li>duct classification and material</li>
+            <li>line numbers</li>
+            <li>minor bypass duct</li>
+            <li>isolation and shutoff dampers</li>
+            <li>access points</li>
+            <li>safety and regulatory requirements, including seismic category</li>
+        </ul>
+
+        <p>As there is no standardized in its approach, organizations may have "standard practices" that fall between AFDs and AF&IDs.</p>
+
+        <p>An AFD/AF&ID may be used as a master "record" that is maintained on an ongoing basis for regulatory purposes. The master record AFD/AF&ID should include:</p>
+        <ul>
+            <li>the volumetric airflows to the rooms and acceptable tolerances</li>
+            <li>the design and operating limits for room temperature and humidity</li>
+            <li>area classifications</li>
+            <li>airflow directions/pressure differentials and infiltration/exfiltration</li>
+            <li>the process flow</li>
+            <li>critical instruments</li>
+        </ul>
+
+        <p>Note: References pipe and ductwork routing (dimensional) drawings may be included in the list of requirements for an 'as built' record drawing, but these are not considered to be critical for an HVAC application.</p>
+
+        <p>Other drawings, such as installation drawings which are kept for engineering record purposes, may be updated on an 'as needed' basis.</p>
+
+        <p>A nomenclature for "tag numbers" shown on AF&IDs should be established to help improve understanding between designers, contractors, and operators. Industry systems, such as the tagging nomenclature established by <span class="key-term">ISA</span>, commonly are used. For example, in ISA TE-209 is a Temperature Sensing Element (TE) on control loop 209 or room 209.</p>
+
+        <p>As the AF&ID develops, a description of how a HVAC system satisfies User Requirements can be developed (i.e., the 'functional design'). Programmers of the HVAC control and monitoring systems, commissioning personnel, and regulators who need to understand the role of the HVAC system in protecting product should find this helpful.</p>
+    </div>
+
+    <div class="right-column">
+        <h3>教學解析：AFD 與 AF&ID 的差異與應用</h3>
+
+        <div class="concept-box">
+            <h4>核心概念：AFD vs. AF&ID</h4>
+            <p>簡單區分這兩種圖面：</p>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th>AFD（Air Flow Diagram）</th><th>AF&ID（Air Flow & Instrumentation Diagram）</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>類比</td><td>像地圖上的主要道路</td><td>像包含所有路標、紅綠燈的詳細道路圖</td></tr>
+                    <tr><td>詳細程度</td><td>概要（Schematic）</td><td>詳細（Detailed）</td></tr>
+                    <tr><td>儀器/控制</td><td>不含</td><td>包含所有儀器與控制元件</td></tr>
+                    <tr><td>用途</td><td>初步設計、系統概念溝通</td><td>施工、確效、法規紀錄</td></tr>
+                    <tr><td>P&ID 對應</td><td>類似 PFD（Process Flow Diagram）</td><td>等同 P&ID（Piping & Instrumentation Diagram）</td></tr>
+                </tbody>
+            </table>
+            <p>AF&ID 就是 HVAC 版本的 P&ID，是整個系統最重要的工程文件之一。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Google Maps 的不同檢視</h4>
+            <p>AFD 和 AF&ID 的關係就像 Google Maps 的不同縮放等級：</p>
+            <ul>
+                <li><strong>AFD = 縮小檢視</strong>：看得到主要道路（管道）、交流道（AHU）、城市（房間），但看不到紅綠燈和路標</li>
+                <li><strong>AF&ID = 放大檢視</strong>：每個紅綠燈（感測器）、路標（標示牌）、車道標線（閥門/風門）都清楚標示</li>
+            </ul>
+            <p>開長途只需要縮小檢視（AFD），但市區導航需要放大檢視（AF&ID）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重要：AF&ID 作為法規主紀錄（Master Record）</h4>
+            <p>原文強調 AF&ID 可作為持續維護的法規主紀錄。這意味著：</p>
+            <ul>
+                <li>任何 HVAC 系統變更都必須更新 AF&ID</li>
+                <li>法規查核（Regulatory Inspection）時，查核員會要求看 AF&ID 來理解系統設計</li>
+                <li>Master Record AF&ID 必須包含：風量、溫濕度限值、區域分級、壓差方向、關鍵儀器</li>
+            </ul>
+            <p>注意：管道路由圖（routing drawings）不被視為 HVAC 應用的 critical 文件，可在需要時更新即可。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>ISA 標籤命名規範（Tag Nomenclature）</h4>
+            <p>原文舉例 ISA 標籤系統：<strong>TE-209</strong> = Temperature Sensing Element，位於迴路 209 或房間 209。</p>
+            <p>常見 HVAC 相關 ISA 標籤前綴：</p>
+            <ul>
+                <li><strong>TE</strong> = Temperature Element（溫度感測元件）</li>
+                <li><strong>TT</strong> = Temperature Transmitter（溫度傳送器）</li>
+                <li><strong>PT</strong> = Pressure Transmitter（壓力傳送器）</li>
+                <li><strong>PDT</strong> = Pressure Differential Transmitter（壓差傳送器）</li>
+                <li><strong>FT</strong> = Flow Transmitter（流量傳送器）</li>
+                <li><strong>ME</strong> = Moisture Element（濕度感測元件）</li>
+            </ul>
+            <p>統一的命名規範讓設計師、施工方、操作人員能「說同一種語言」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠即將接受 FDA 查核。查核員要求看「HVAC 系統的控制策略文件」。你會提供 AFD 還是 AF&ID？為什麼？</li>
+                <li>如果你要新增一個壓差感測器到現有的 Grade B 走廊，需要更新哪些文件？變更管制流程應該走 GMP 還是 GEP？</li>
+                <li>原文提到 AF&ID 不包含「equipment capacity」和「pressure temperature and flow data」。這些資訊應該記錄在哪些文件中？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>HVAC 風險評估的本質</strong>：將系統拆解為元件，逐一評估對 CPP/CQA 的影響。關鍵判斷標準是「故障能否被即時偵測」——能即時偵測的用 Engineering Change Control，無法即時偵測的（如 HEPA）用 Quality Change Control。</li>
+        <li><strong>四步驟風險評估法</strong>：定義 CPP → 定義系統邊界 → 定義監控方式 → 定義達成方式與偵測能力。每一步都需要 Quality、Process、Engineering 三方參與討論。</li>
+        <li><strong>影響性評估表（Table 2.2）的應用</strong>：逐房間、逐參數填寫 Critical Y/N，核心價值在於促進跨部門對話。AHU 內部參數通常 Non-Critical（除了 Supply Airflow）。</li>
+        <li><strong>設施規劃三原則</strong>：潔淨區域越小越好（成本效益）、動線不能交叉（人流物流分離）、維護從室外操作（避免污染潔淨室）。微環境技術（RABS/Isolator）可大幅降低 HVAC 複雜度和成本。</li>
+        <li><strong>建築與 HVAC 協調</strong>：房間氣密性是壓差控制的基礎。地板品質影響空氣品質。模組化施工對 HVAC 設計有多項限制，需在設計初期就確認。</li>
+        <li><strong>AFD vs. AF&ID</strong>：AFD 是概要氣流圖（類似 PFD），AF&ID 是詳細氣流儀控圖（類似 P&ID）。AF&ID 可作為法規主紀錄（Master Record），任何系統變更必須同步更新。ISA 標籤命名規範確保各方溝通一致。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Chapter 5: Equipment Qualification & Maintenance (Part C)</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 5: Equipment Qualification &amp; Maintenance (Part C)</h1>
+    <div class="subtitle">設備確效與維護保養</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p115 - p136</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握 HVAC 設備安裝與啟動（Installation &amp; Startup）各組件的關鍵檢查要點：AHU、風扇、盤管、加濕器、除濕器、HEPA 濾網、風管等</li>
+        <li>理解 Commissioning（調試）與 Qualification（確效）的差異，以及 V-Model 在 HVAC 系統中的應用</li>
+        <li>了解潔淨室粒子計數、恢復測試、壓差驗證與壓差報警延遲測試的執行方法</li>
+        <li>熟悉 HVAC 系統人員培訓的範圍與內容要求</li>
+        <li>掌握各類 HVAC 設備的預防性維護（PM）與預測性維護（PdM）策略，包括維護頻率建議</li>
+        <li>理解備品管理（Spare Parts）策略，確保關鍵組件故障時能快速復原</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.2 (cont.) HEPA Filter Specification & Testing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-2-cont">5.2 (cont.) Specifying and Testing HEPA Filters（HEPA 濾網規格與測試）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Recommended practices to avoid the <span class="key-term">bleed-through</span> problem:</p>
+        <ul>
+            <li>specify the filter for the maximum velocity it will see in operation</li>
+            <li>factory test for efficiency and leakage at that velocity at the filter's <span class="key-term">MPPS</span></li>
+            <li>If the filter will be field integrity tested with a <span class="key-term">hot-block generator</span>, the filter should meet (as a minimum) the requirements for an IEST Type K or an EN-1822 Type H14 with a local penetration limit of two times the global penetration (i.e., 0.01%) instead of the standard five times (0.025%) as called for in EN-1822.</li>
+            <li>If bleed-through presents an insurmountable obstacle, <span class="key-term">ULPA filters</span> may be used. In addition, HEPA filters that use <span class="key-term">Teflon media (ePTFE)</span> can give better performance than other HEPA filters, but may present their own testing problems in the field. As ULPA and Teflon filters are more expensive than HEPA filters, their use should be justified and manufacturers consulted before specifying.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Bleed-through（穿透洩漏）</h4>
+            <p><strong>Bleed-through（穿透洩漏）：</strong>HEPA 濾網在高風速下，原本被攔截的微粒被「吹穿」濾材，導致過濾效率下降。這不是濾網破損，而是物理上的效率衰減。</p>
+            <p><strong>MPPS（Most Penetrating Particle Size，最大穿透粒徑）：</strong>通常在 0.1~0.3 微米之間，是 HEPA 濾網效率最低的粒徑範圍。工廠測試必須在此粒徑下進行才有意義。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：局部穿透限值</h4>
+            <p>如果現場使用 hot-block generator 做完整性測試，要求比 EN-1822 標準更嚴格：局部穿透限值從 5 倍全球穿透（0.025%）收緊到 2 倍（0.01%）。這是因為 hot-block 產生的氣溶膠粒徑分布與 DOP/PAO 不同，需要更嚴格的規格來確保等效的安全水準。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一個魚網——在水流緩慢時可以攔住所有魚，但如果水流太急，部分小魚就會被沖穿過去。HEPA 濾網的 bleed-through 就是這個原理：風速越高，微粒越容易穿透。所以濾網必須在「實際最大風速」下測試，而不是在理想低速下測。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.3 Equipment Installation and Startup -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-3">5.3 Equipment Installation and Startup（設備安裝與啟動）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.3.1 Introduction</h3>
+        <p>The guidance in this section should be considered for HVAC design drawings, as well as in the construction specification.</p>
+        <p>Care should be taken during installation and startup to preclude operational and maintenance problems. It usually is helpful for the HVAC system installer to follow <span class="key-term">"build clean" practices</span>, such as cleaning duct and components prior to installation, cleaning after installation, and sealing installed ductwork to prevent ingress of contamination. A <span class="key-term">"white glove test"</span> may not be specified, but systems should be capable of passing this test.</p>
+        <p>This section is not all-inclusive, and the user should consult with the equipment manufacturer for detailed specifics and procedures. Guidance for startup also may apply to ongoing operation and maintenance.</p>
+        <p>Air system startup usually is contracted to trained and certified professionals. Organizations such as <span class="key-term">NEBB</span> have offered specific cleanroom certification. Occasionally, a "facility HVAC engineer" may be called upon to solve an immediate problem. The solution depends on the engineer's skill and access to specific tools:</p>
+        <ul>
+            <li>hot-wire anemometer</li>
+            <li>pressure sensor, 0.01 inch (2.5 Pa) accuracy to 0.5 inch full scale (125 Pa). Higher pressure range is needed to troubleshoot fan and duct problems.</li>
+            <li>flow hood (used to measure supply outlet or return airflow)</li>
+            <li>hand-held thermometer, RH meter</li>
+            <li>particle counter</li>
+            <li>cold aerosol generator (for HEPA test)</li>
+            <li>smoke source (smoke sticks, smoke candles) for air pattern visualization</li>
+            <li>duct tape and cardboard (used to temporarily block openings, divert airflow patterns, change the shape of equipment under UDAF hoods, etc.)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Build Clean（潔淨施工）</h4>
+            <p><strong>Build Clean（潔淨施工）：</strong>在施工階段就開始控制潔淨度——安裝前清潔組件、安裝後清潔系統、密封已完工的風管防止污染進入。這個概念的重要性在於：施工階段的髒污會「嵌入」系統中，開機後很難完全清除。</p>
+            <p><strong>White Glove Test（白手套測試）：</strong>用白手套擦拭風管內壁，檢查是否有灰塵殘留。雖然可能不會正式寫入規格，但 ISPE 期望系統品質要能「通過」這個測試。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像裝潢新房子——如果在油漆、鋪地板之前沒有把建築粉塵清乾淨，那些灰塵就會永遠藏在牆壁和地板之間。HVAC 系統也一樣：施工期間的金屬碎屑、油脂、灰塵如果沒有清除，開機後就會被吹入潔淨室，甚至刺穿 HEPA 濾網。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用</h4>
+            <p>作為 CDMO，工廠在改建或擴廠時，HVAC 系統的 build clean 執行力度直接影響後續確效的順利程度。建議：</p>
+            <ul>
+                <li>將 build clean 要求寫入施工合約，明訂驗收標準</li>
+                <li>每日施工結束時進行區域清潔檢查</li>
+                <li>HVAC 風管完成後立即密封，設專人巡視</li>
+                <li>準備上述工具清單中的基本量測設備，培養內部 HVAC 工程師的問題排解能力</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.3.2 AHU Shipping, Storage, Installation -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-3-2">5.3.2 Air Handling Units Shipping, Storage, Installation（AHU 運輸、儲存與安裝）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Larger air volume AHUs typically are disassembled after factory testing, and each section is separately wrapped for shipment. The unit or sections should be lifted vertically on a level plane by their <span class="key-term">lifting lug bracket arms</span> to prevent distortion and stress on the components. It is recommended that an experienced rigger supervise the lifting and installation of the equipment.</p>
+        <p>The air-handling units should be stored in a dry area to protect components (fan-shaft, bearings and wheel, coils, humidifiers, and filters) against dust and corrosion. If a unit is idle for more than one month prior to startup, equipment with bearings should have their shafts <span class="key-term">manually rotated every two weeks</span> to prevent premature bearing failure and redistribution of the lubricant.</p>
+        <p>The AHU position should allow sufficient free space for servicing its utility connections (steam, chilled and hot water, and electric) and internal components (e.g., coils, motors, filters). It should be mounted on a rigid, level foundation for correct alignment of the fan and drive equipment, for freedom from excessive vibration, and for the removal of condensate. It should be set sufficiently high to allow for correct condensate drainage using a <span class="key-term">P-trap</span> and cap for ease of the trap's priming, removal, and cleanout.</p>
+        <p>When reassembling sections of the AHU, gaskets, and <span class="key-term">RTV sealant</span> should be used to eliminate air leakage. Minimal sealant should be applied to produce a clean, smooth, and level bead surface.</p>
+        <p>Procedures during the installation and startup of the unit should preclude dirt and debris accumulating within and around the unit. The interior of the air handler should be wiped down to remove residual oil and grease.</p>
+        <p>Prior to startup, a checklist can encourage smooth operation. Items that may be considered are covered in ASHRAE Guideline 1.</p>
+        <p>Fasteners, bolts, wheel hub set screws, and bearing locking collars should be checked for tightness before equipment startup.</p>
+        <p>Shipping tie down bolts and shims also should be removed before air handler startup.</p>
+        <p>Dampers on air handlers should operate freely and blades close tightly.</p>
+        <p>When supplied with a <span class="key-term">variable frequency drive</span>, the unit should be started at low rpm and its speed increased slowly up to its maximum capacity. Unusual noise should be listened for and inspection should be performed for increased vibration and overheating of bearings.</p>
+        <p>Tests to be considered include:</p>
+        <ul>
+            <li>a pressurized leak test to ensure joints/connections are correctly aligned and the air handler cabinet is not leaking in excess of the specified value</li>
+            <li>condensate drain pans and traps should be filled with water to confirm correct drainage, while the unit is operating</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示：閒置設備的軸承保護</h4>
+            <p>這是一個容易被忽略但代價高昂的細節：AHU 閒置超過一個月，軸承就可能因為潤滑油重力沉降導致乾磨損。<strong>每兩週手動轉動軸承</strong>是最簡單的預防措施。在專案施工延遲的情況下，這一點特別重要——設備到場後等待數月才安裝的情況屢見不鮮。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：AHU 安裝五大要點</h4>
+            <ul>
+                <li><strong>吊裝：</strong>使用吊耳支架垂直水平起吊，防止變形。必須由有經驗的吊裝師傅監督</li>
+                <li><strong>基礎：</strong>剛性水平基座，確保風扇對中、減少振動、排水順暢</li>
+                <li><strong>P-trap 高度：</strong>凝結水排水 P-trap 必須足夠高，防止運轉時空氣反吸</li>
+                <li><strong>密封：</strong>組裝段與段之間用墊片 + RTV 密封膠，膠量要少、表面要平滑</li>
+                <li><strong>VFD 啟動：</strong>從低轉速慢慢加速，邊聽邊看邊摸（聽噪音、看振動、摸軸承溫度）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>AHU 安裝就像組裝一台精密的大型引擎：每個螺絲的鬆緊度、每個密封面的平整度、每個軸承的潤滑狀態都會影響最終性能。就像新車磨合期要慢速行駛一樣，VFD 驅動的 AHU 也要從低速「磨合」開始，逐步提速到設計轉速。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠在 AHU 到貨後、安裝前的儲存期間，是否有執行軸承定期轉動的程序？</li>
+                <li>AHU 啟動前的檢查清單是否包含洩漏測試和凝結水排放測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.3.3 Fans + 5.3.4 Heating & Cooling Coils + 5.3.5 Steam Humidifiers -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-3-3">5.3.3 - 5.3.5 Fans, Coils &amp; Humidifiers Installation（風扇、盤管與加濕器安裝）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.3.3 Fans</h3>
+        <p>Correct fan installation and startup are critical to providing sufficient airflow in a safe manner, as a tremendous amount of <span class="key-term">kinetic energy</span> is produced, and potentially, catastrophic results can result.</p>
+        <p><span class="key-term">Laser alignment</span> on the fan and motor shafts should be performed after the fan has been installed at the site, because shipping and installation can alter the factory alignment.</p>
+        <p>Drive belts should be adjusted to their proper tension prior to startup. Following 24 hours of operation, the belts should be re-tensioned.</p>
+        <p>Bearings should be checked for correct lubrication. If automatic lubrication units have been installed, they should be activated only at the time of startup.</p>
+        <p>Fan wheels should be turned over by hand to see that they run free and do not strike fan housings. The location of wheels in relation to fan inlets should be checked and fan housings should not be distorted. The fan should be <span class="key-term">jogged electrically</span> to check for correct rotation.</p>
+        <p><span class="key-term">Vibration testing</span> should be performed following installation and startup to promote longevity and reliable operation of the equipment. It should be verified that the fan will not operate near its <span class="key-term">critical speed</span>.</p>
+
+        <h3>5.3.4 Heating and Cooling Coils</h3>
+        <p>Coils should be inspected for concealed or visible damage prior to acceptance of delivery. The coil fins should be <span class="key-term">combed</span> after installation to foster good air distribution and heat exchange.</p>
+        <p>Piping to the coil should be independently supported to avoid deforming the coil nozzle, headers or tubes, and stressing the brazed joints.</p>
+        <p>Insulation with protective jackets should be installed on hot and cold piping to eliminate hazard to personnel, reduce surface condensation, and reduce heat loss/gain.</p>
+        <p>Coils should be vented of air on initial startup and should include a manual or an automatic air vent.</p>
+        <p>For cooling coils, the term <span class="key-term">"moisture carry-over"</span> describes the action of condensate being blown off the coil's surface with cooled air. Following startup when condensing occurs, observation should be made for moisture carry over. If carryover occurs, then the following resolutions are available:</p>
+        <ul>
+            <li>reduce the coil face velocity (may not be possible if rooms need more airflow)</li>
+            <li>install a perforated screen upstream of the coil to evenly distribute air across the coil, producing a more even face velocity</li>
+            <li>install a mist eliminator after the coil</li>
+        </ul>
+
+        <h3>5.3.5 Steam Humidifiers</h3>
+        <p>The <span class="key-term">steam distribution manifold</span> should be placed where the supply air temperature is sufficiently warm to absorb steam being discharged without causing condensation at or after the unit. Inside an AHU, this may be downstream of the pre-heating coil and upstream of the cooling coil (which acts as a mist eliminator). Do not place the steam distribution manifold too near to the face of air filters where saturation of the filters will greatly shorten their life. Avoid placing the steam distribution manifold where visible discharge mist will impinge directly on a metal surface.</p>
+        <p>Another common location is in the ductwork after the reheat coil and air filters. When the humidifier is located in ductwork, a downstream section of the ductwork should be constructed of <span class="key-term">stainless steel</span> to eliminate the possibility of rusting. Access panels should be located both upstream and downstream of the humidifier for servicing.</p>
+        <p>Drain pans and condensate piping should catch and carry away water that can occur from humidification 'spitting' during startup. The drain and trap should flow and the water column will not drain completely when the duct is pressurized.</p>
+        <p>Uniform airflow over the cross section of the steam distribution manifold should be verified to assure absorption of steam.</p>
+        <p>The airflow sensor ("sail switch" or a signal from the AHU airflow monitor) should prevent the steam valve from opening unless air is moving in the duct.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示：風扇安裝的安全警告</h4>
+            <p>ISPE 用了「catastrophic（災難性）」和「life threatening（危及生命）」這樣的字眼——這在整本指南中非常罕見。風扇轉動時產生的動能極大，如果安裝不當（葉輪不平衡、軸承未對準、皮帶張力不對），可能造成葉片飛出、軸承爆裂等嚴重事故。</p>
+            <ul>
+                <li><strong>雷射對中：</strong>出廠對中在運輸後會位移，現場必須重新做</li>
+                <li><strong>皮帶張力：</strong>啟動前調好，24 小時後必須重新調整（新皮帶會伸長）</li>
+                <li><strong>點動測試：</strong>先用手轉確認不碰殼，再電動點動確認旋轉方向</li>
+                <li><strong>臨界轉速：</strong>確認運轉轉速遠離共振點</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：Moisture Carry-over（水滴攜帶）</h4>
+            <p><strong>Moisture Carry-over（水滴攜帶）：</strong>冷卻盤管表面的凝結水被氣流吹離，隨空氣進入下游設備和風管。這會導致：風管內壁生鏽、微生物滋生、HEPA 濾網受潮。三種解決方案按優先順序：降低面速度 > 安裝擋水板 > 安裝除霧器。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：蒸汽加濕器位置禁忌</h4>
+            <p>蒸汽分配歧管的放置位置有三個「不可以」：</p>
+            <ul>
+                <li><strong>不可靠近濾網：</strong>蒸汽飽和會大幅縮短濾網壽命</li>
+                <li><strong>不可對著金屬面：</strong>可見蒸汽直接衝擊金屬表面會造成腐蝕</li>
+                <li><strong>不可在溫度不足的位置：</strong>空氣溫度不夠高時無法完全吸收蒸汽，造成凝結</li>
+            </ul>
+            <p>另外，風管內安裝加濕器時，下游風管必須用不鏽鋼——因為蒸汽未完全吸收前會持續凝結。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務提醒</h4>
+            <p>台灣氣候高溫高濕，蒸汽加濕器主要用於冬季和乾季。但冷卻盤管的 moisture carry-over 在全年都是潛在問題。建議在 AHU 啟動後的第一個夏季高溫期，專門觀察是否有水滴攜帶現象，並在 PM 記錄中列為檢查項目。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.3.6-5.3.8 Desiccant, Filtration, Ductwork -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-3-6">5.3.6 - 5.3.8 Desiccant Dehumidifiers, Air Filtration &amp; Ductwork（除濕器、空氣過濾與風管）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.3.6 Desiccant Dehumidifiers</h3>
+        <p><span class="key-term">Desiccant dehumidification systems</span> are the most common means of achieving low RH for the pharmaceutical industry.</p>
+        <p>Desiccant units should be clear of surrounding obstructions to allow removal and replacement of the desiccant wheels, fans, filters, etc.</p>
+        <p>The air from the reactivation portion of the wheel should be ducted (sloped to the outside, if horizontal path) to the exterior of the building due to its high moisture and heat content. The intake and outlet for the process and reactivation air streams should not be located close together to avoid <span class="key-term">short cycling</span> that can reduce overall dehumidification capacity.</p>
+        <p>Operation of bypass and humidity control dampers should be verified.</p>
+        <p>Manufacturer's recommendations should be followed for starting up their particular dehumidifier. This includes verifying wheel rotation and reactivation discharge temperature to dry the wheel before applying load to the wheel.</p>
+        <p>Wheels using <span class="key-term">lithium chloride</span> should be kept hot and rotating, even when dehumidification is not required, to avoid damage to the desiccant due to over-absorption.</p>
+
+        <h3>5.3.7 Air Filtration</h3>
+        <p>Temporary filters should be installed during construction to keep the AHU, components, and ductwork clear of contaminants if the system is energized to provide temporary conditioning to the workspace. Once construction of the building and spaces has been completed, these filters should be replaced with clean filters.</p>
+        <p><span class="key-term">HEPA/ULPA filters</span> should be handled with special care. Consideration needs to be taken in the selection of the method and carrier used for filter shipment. Each pallet of filters should be checked before accepting shipment from the carrier. Pallets of filters that have been damaged or broken down should not be accepted without a thorough inspection and appropriate comments noted on the shipping documentation.</p>
+        <p>The filters should be stored to prevent damage or intrusion of foreign matter. Storage should be indoors, under roof, within <span class="key-term">40 to 100&deg;F (4 to 38&deg;C)</span> and 25 to 75% RH and be thoroughly protected from moisture.</p>
+        <p>Competent personnel and proven techniques and procedures should be employed for the installation of the filters. Prior to installation of HEPA/ULPA filters, duct and filter housings should be checked for cleanliness and obstructions that might impair filter operation. Filters should be unpacked and inspected for damage. Damaging the filter media should be avoided. If the media are damaged or have visible holes, filters should not be installed.</p>
+        <p>Filter clamping mechanisms should ensure that air does not bypass around filters or their supporting grid. This is particularly important at <span class="key-term">terminal filters</span> mounted in ceiling frames.</p>
+        <p><span class="key-term">Penetration (pinhole) testing</span> is usually performed on only filters that provide direct contact air over product and critical locations, i.e., Grade A/Grade 5 hoods, and on occasion, for filters used to capture hazardous materials. There is little value in testing for pinholes in HEPA filters installed in ductwork and air handlers, where overall capture efficiency testing is more valuable. For further information see ISO 14644-3.</p>
+
+        <h3>5.3.8 Ductwork</h3>
+        <p>Ductwork typically is found in locations difficult to access. Sufficient access to service components, such as volume control devices and reheat coils, should be provided. Protection of the ductwork during construction and access to and around it should be provided; otherwise, damage to the ductwork may result in airflow leakage or increased air pressure drop and velocity. In addition, ductwork insulation that has been compromised will result in condensation and rusting and loss or gain in heat.</p>
+        <p>The use of flexible ducting should be limited to minimum lengths, properly supported, and securely fastened at each end. Sharp bends and turns, which will reduce the cross-sectional area of the flexible duct and result in reduced air volume delivery, should be avoided.</p>
+        <p>Ductwork should be wiped and cleaned of oil, dirt, and metal shavings prior to field installation. A solution of alcohol and lint free wipes may be used to remove oils or grease that may have accumulated during the fabrication and installation of the ductwork.</p>
+        <p>After ductwork is cleaned, openings should be covered with plastic sheeting and tape to keep them clean.</p>
+        <p>Avoiding the use of <span class="key-term">self-drilling sheet metal screws</span> is recommended, as they generate small metal chips inside the cleaned ductwork. <span class="key-term">Self-piercing (zip) screws</span> are preferred when there is concern for loose contamination inside the ductwork.</p>
+        <p>Installation of pressure test ports, smoke detectors, temperature sensors, and duct traverse testing ports at a later date can contaminate interior of ductwork with metal chips as a result of their field penetrations into a duct. Penetrations of the duct wall should maintain ductwork interior cleanliness. Where metal shavings or debris may have been produced, the interior of ducts should be cleaned, providing access as required, and the access opening sealed. Failure to follow these practices can result in sharp metal fragments being blown into the delicate HEPA filter media, causing filter integrity failures.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示：LiCl 乾燥劑輪的特殊要求</h4>
+            <p>氯化鋰（Lithium Chloride）乾燥劑有一個致命弱點：如果停機時放著不管，它會過度吸收環境水分，膨脹後從輪子上「爆裂」出來。所以即使不需要除濕，LiCl 輪也必須保持加熱和轉動。這是一個「不用也不能停」的設備。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：HEPA 濾網的處置鏈</h4>
+            <p>ISPE 對 HEPA 濾網的處置要求涵蓋整個「供應鏈」：</p>
+            <ul>
+                <li><strong>運輸：</strong>選擇適當的運送方式和載具，到貨逐批檢查</li>
+                <li><strong>收貨：</strong>損壞的棧板不可接受，必須註記在運送文件上</li>
+                <li><strong>儲存：</strong>室內、有屋頂、4~38&deg;C、25~75% RH</li>
+                <li><strong>安裝前：</strong>檢查濾網外殼和安裝框架的潔淨度</li>
+                <li><strong>安裝時：</strong>避免損傷濾材，確認夾持機構無旁通</li>
+            </ul>
+            <p>任何一個環節的疏忽，都可能讓一個幾萬元的 HEPA 濾網還沒啟用就報廢。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風管金屬碎屑的連鎖反應</h4>
+            <p>這是一個被低估的風險：風管施工後期安裝感測器、偵煙器時，鑽孔產生的金屬碎屑留在風管內，系統啟動後被吹向 HEPA 濾網，尖銳的金屬碎片刺穿濾材，導致完整性測試失敗。</p>
+            <p><strong>預防措施：</strong>用 self-piercing (zip) screws 取代 self-drilling screws。後期開孔時必須清潔風管內部。風管清潔後立即用塑膠膜封口。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 HEPA 濾網供應商是否有明確的運輸和儲存要求？收貨檢查程序是否涵蓋包裝完整性？</li>
+                <li>風管施工規範中是否禁止使用 self-drilling screws？是否要求後期開孔後清潔風管？</li>
+                <li>施工期間是否安裝臨時過濾器保護 AHU 和風管系統？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.3.8.1 Duct Leakage Test -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-3-8-1">5.3.8.1 Duct Leakage Test（風管洩漏測試）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Pressure testing is recommended for ductwork systems serving a GMP system to avoid:</p>
+        <ul>
+            <li>increased use of outside air to overcome supply air losses and maintain adequate flow</li>
+            <li>increased energy costs to operate system</li>
+            <li>operating equipment at its maximum capacity with no reserve capacity</li>
+            <li>unwanted air leaking into surrounding (mechanical) spaces from positive pressurized ductwork or room air leaking into negatively pressurized ductwork, requiring more airflow through fans</li>
+        </ul>
+        <p>The <span class="key-term">"Total Percentage Leakage Method"</span> is recommended: a percentage of total air delivery of duct section under test at a specific static pressure for performing duct leakage. See SMACNA or HVCA DW143. Typical leakage percentages for various operations include:</p>
+        <ul>
+            <li><span class="key-term">0% (essentially) leakage</span> for positive pressure exhaust duct on hazardous operations to avoid release of harmful materials to the plant room</li>
+            <li>no more than <span class="key-term">1% for product processing areas</span></li>
+        </ul>
+        <p>Evaluation of leakage versus energy cost should be performed for laboratory supply systems and support and administrative areas.</p>
+        <p>Other leakage testing methods may be employed. It is generally not a GMP requirement for ducts to be leak-free; energy savings are a bigger driver for lower leakage. Risks associated with leakage should be assessed.</p>
+
+        <h3>Table 5.5: Ductwork Testing Requirements</h3>
+        <table>
+            <thead>
+                <tr><th>Duct Type</th><th>Testing Requirement</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Classified and Rooms Requiring Pressure Differential</td><td>Test 100% Supply</td></tr>
+                <tr><td>Duct Conveying Hazardous Materials</td><td>Test 100% Supply and Return</td></tr>
+                <tr><td>Laboratories, Ducted Bio Safety Cabs and Hoods</td><td>Test 100% Exhaust</td></tr>
+            </tbody>
+        </table>
+        <p>Duct leakage testing should be performed with <span class="key-term">traceable calibrated test instruments</span> and documented with signed approvals.</p>
+        <p>Leakage from non-duct components (fire dampers, smoke dampers, air flow monitors, duct heating coils, manual volume damper quadrants, and access doors) is an integral part of the overall system leakage, and these components should be included in the duct leakage tests.</p>
+        <p>Once construction is completed, the system should be <span class="key-term">blown down for at least 1 hour</span> to purge the ductwork of loose and light debris that may have accumulated. Blow down will not flush the system of metal fragments that result from poor ductwork cleanliness control.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：風管洩漏的影響層次</h4>
+            <p>風管洩漏不只是「漏風」那麼簡單，它會造成連鎖效應：</p>
+            <ul>
+                <li><strong>風量不足：</strong>下游房間得不到設計風量，換氣次數降低</li>
+                <li><strong>壓差失控：</strong>漏風改變了系統的壓力平衡</li>
+                <li><strong>能耗增加：</strong>風扇必須更用力補償洩漏量</li>
+                <li><strong>容量耗盡：</strong>系統在全負載運轉，沒有儲備容量</li>
+                <li><strong>交叉污染風險：</strong>正壓風管漏入機房，或機房空氣漏入負壓風管</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>數值規格速查 Specifications Quick Reference</h4>
+            <pre>
+危險物質排氣風管：洩漏率 = 0%（基本上零洩漏）
+產品加工區域：洩漏率 ≤ 1%
+一般區域：依能耗經濟分析決定
+
+施工完成後吹掃：≥ 1 小時
+測試儀器：可追溯校正
+文件：簽章核准
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：吹掃 ≠ 清潔</h4>
+            <p>ISPE 特別指出：吹掃（blow down）只能清除鬆散的輕質碎屑，無法清除因為施工不當留下的金屬碎片。這句話的弦外之音是：不要指望靠吹掃來彌補 build clean 的不足。潔淨施工是根本，吹掃只是補充。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.3.9-5.3.15 Other Installation Items -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-3-9">5.3.9 - 5.3.15 Dampers, Diffusers, UV Lights, Exhaust, UDAF, Controls &amp; Building（其他安裝項目）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.3.9 Dampers and Louvers</h3>
+        <p>Actuators should be accessible for service and maintenance. Drive linkages should be secure and should operate without binding over their full range of travel.</p>
+        <p>Assemblies should be sealed to the framing of the opening to reduce bypass around damper perimeters.</p>
+
+        <h3>5.3.10 Diffusers and Registers</h3>
+        <p>Diffusers and registers should prevent poor distribution of air and to minimize drafts and <span class="key-term">short-circuiting</span> of supply air.</p>
+
+        <h3>5.3.11 Ultraviolet Lights</h3>
+        <p>UV wavelength lighting degrades many plastics, including: synthetic air filter media and frames, plastic coated wires, gaskets, grommets, and duct insulation. These materials should be at least <span class="key-term">3 ft (~1 m)</span> from the light source.</p>
+        <p>UV power supply circuits should be interrupted upon the loss of airflow past the lighting elements.</p>
+        <p>There should be no escape of UV light through direct or indirect transmission. In addition, warning signs should be placed in the area to advise personnel.</p>
+        <p>Gloves should be worn when handling emitters. Oil from fingerprints can permanently etch emitter glass and weaken its structure. If necessary, emitter should be cleaned using isopropyl alcohol and lint free wipe.</p>
+
+        <h3>5.3.12 Exhaust/Extraction Systems</h3>
+        <p>Ductwork or stacks should be independently supported, as the additional weight may stress the fan housing and result in vibration that can transmit to building structures. Guy wires (supports) may be needed for adequate stack bracing.</p>
+        <p>Positive pressure process ducts handling contaminated exhaust inside a building should be <span class="key-term">leak-free</span>.</p>
+        <p>Install fire dampers and explosion vents in accordance with the US National Fire Protection Association Codes and other applicable codes and standards.</p>
+        <p>Fans and filtration equipment should be located, such that maintenance access is serviceable.</p>
+
+        <h3>5.3.13 Unidirectional Airflow</h3>
+        <p><span class="key-term">UDAF hoods</span> should be commissioned and then verified fit for use:</p>
+        <ul>
+            <li>Airflow face velocity is usually measured <span class="key-term">6 to 12 inches (15 to 30 cm)</span> from the filter face. Uniformity of velocity is expected to be within <span class="key-term">20% of the target value</span>.</li>
+            <li>HEPA filters should be integrity tested at accepted velocity. The casing of the hood also should be scanned for leaks at this time.</li>
+            <li>Pressure drop across HEPA filters should be recorded at the accepted velocity.</li>
+            <li>Airflow patterns at rest (no operators, production equipment not running) at the optimal average velocity. If not 90 ft/min (0.45 m/sec), it may be advisable to test at the lowest and highest velocities that create acceptable airflow patterns to justify a different velocity from 90 ft/min.</li>
+            <li>Flow alarms should be tested. The alarm should not be a motor sensor, as the motor may continue to operate after the supply fan has failed.</li>
+        </ul>
+        <p>The science of fluid dynamics says that air turbulence increases with velocity and with distance. For these reasons, optimal airflow patterns may occur at lower velocity and closer to the filter face. It is not uncommon, during the commissioning phase, to create <span class="key-term">temporary curtains and aerodynamic shields</span> to improve airflow patterns at critical sites.</p>
+
+        <h3>5.3.14 Controls and Instrumentation</h3>
+        <p>Instrumentation should be readily accessible for maintenance and replacement. Components should be <span class="key-term">calibrated prior to commissioning</span> of the HVAC with calibration stickers applied.</p>
+
+        <h3>5.3.15 Building</h3>
+        <p>Construction activities typically occur at a tightly coordinated and accelerated pace to meet schedule commitments. The owner should inspect the site on a regular schedule to verify design intent, construction quality, and integration of systems occur as planned.</p>
+        <p>Typical construction issues include:</p>
+        <ul>
+            <li>Air migration through the building caused by poorly sealed penetrations and finishes can lead to unacceptable control of space DPs. The following penetrations and openings should be checked: piping, ductwork, electrical conduit and receptacles, doors, diffusers and registers, architectural wall and ceiling joints, lighting fixtures.</li>
+            <li>During construction, cleaning procedures should minimize the accumulation of construction debris and dirt.</li>
+            <li>Procedures should be in place for personnel to wear appropriate gowning (i.e., booties, smocks) to keep out dirt from areas which have been designated and substantially complete. Before HVAC startup, equipment, walls, and cleanroom floors should have been wiped down and floors swept and vacuumed.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：UDAF 驗證要點</h4>
+            <p><strong>UDAF（Unidirectional Airflow，單向氣流罩）：</strong>Grade A/ISO 5 區域的核心設備。驗證要點：</p>
+            <ul>
+                <li><strong>面速度測量位置：</strong>距濾網面 15~30 cm，不是在工作面上</li>
+                <li><strong>均勻度標準：</strong>各測量點速度與目標值偏差 ≤ 20%</li>
+                <li><strong>氣流可視化：</strong>靜態（無操作員、設備不運轉）條件下觀察氣流型態</li>
+                <li><strong>最佳速度不一定是 0.45 m/s：</strong>可以測試不同速度下的氣流型態，找到最佳平衡點</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：亂流與距離的關係</h4>
+            <p>就像淋浴的水柱——靠近蓮蓬頭時水流整齊筆直，但離蓮蓬頭越遠，水柱就越散亂。UDAF 的氣流也是如此：離 HEPA 濾網越近越層流，越遠越紊流。所以 ISPE 建議在調試階段使用臨時簾幕和空氣動力學擋板來改善關鍵區域的氣流型態——就像在淋浴間加裝擋板來導引水流一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：UV 燈的隱藏風險</h4>
+            <p>UV 燈會降解塑膠材料——包括濾網濾材和邊框、電線外皮、墊片、風管保溫材。安裝時必須確保這些材料距離 UV 光源至少 1 公尺。另外，手指油脂會永久蝕刻 UV 燈管玻璃，必須戴手套操作。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：建築密封性的「七大漏洞」</h4>
+            <p>ISPE 列出了壓差失控最常見的滲漏源：</p>
+            <ol>
+                <li>管道穿牆處</li>
+                <li>風管穿牆處</li>
+                <li>電線導管和插座</li>
+                <li>門縫</li>
+                <li>出風口和回風口</li>
+                <li>牆壁和天花板接縫</li>
+                <li>燈具</li>
+            </ol>
+            <p>這些都是施工期間必須逐一檢查、密封的位置。遺漏任何一個都可能導致壓差控制不達標，延遲確效進度。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 UDAF 面速度均勻度是否在 ±20% 以內？是否做過靜態氣流可視化測試？</li>
+                <li>施工期間是否有專人負責檢查穿牆管線的密封狀態？</li>
+                <li>潔淨區施工人員是否穿著指定的防護服（鞋套、工作服）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.4 Commissioning and Qualification -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-4">5.4 Commissioning and Qualification（調試與確效）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.4 Introduction</h3>
+        <p>It is considered <span class="key-term">GEP</span> for HVAC systems to be commissioned to verify that they perform as designed. Commissioning protocols typically are developed during design and executed during and after construction. HVAC engineers often are involved in <span class="key-term">Factory Acceptance Testing (FAT)</span> and <span class="key-term">Site Acceptance Testing (SAT)</span> of major HVAC equipment and systems.</p>
+        <p>Qualification should be performed for HVAC systems which have a <span class="key-term">direct impact</span> on product quality and of components which are critical to product quality. Qualification may leverage documentation from earlier steps or may require extra testing.</p>
+        <p>Note: the "what" that needs to be done to qualify the system is shown (user requirements and functional design requirements should be satisfied). For further detail, see ASHRAE Standard 1 on Commissioning, ISO 14644-3 on cleanroom commissioning, and various Recommended Practices (RP) from IEST.</p>
+        <p><span class="key-term">Direct impact</span>, <span class="key-term">indirect impact</span>, and <span class="key-term">no impact</span> systems should be identified, followed by identification of the critical components within the direct impact systems. Critical systems and components should be qualified; the remainder of the systems and components should be commissioned. See the ISPE Baseline&reg; Guide on Commissioning and Qualification.</p>
+        <p>HVAC systems may be identified as direct impact systems with, e.g., the HEPA filters being critical components. An alternative approach may be to identify all the final HEPA filters as the "air quality system," drawing a boundary around them as a direct impact system to be qualified with the air handler and its prefilters being indirect impact.</p>
+        <p>Similarly, direct impact system boundaries can be defined for pressure monitoring, temperature monitoring, etc., allowing qualification documents to focus on the components presenting the greatest risk to product quality and patient safety.</p>
+
+        <h3>5.4.1 Typical Commissioning and Qualification Activities</h3>
+        <p>Typical <strong>commissioning</strong> activities may include:</p>
+        <ul>
+            <li>ductwork leak testing</li>
+            <li>layout and device location verification</li>
+            <li>safety device testing (freezestats, firestats, smoke detectors, pressure switches, etc.)</li>
+            <li>verification of filter installation</li>
+            <li>AHU and duct cleaning</li>
+            <li>motor rotation, speed, and amperage verification</li>
+            <li>operational testing of all components (dampers, motors, switches, indicators, etc.)</li>
+            <li>rotating equipment balancing</li>
+            <li>vibration measurement</li>
+            <li>lubrication</li>
+            <li>static pressure setpoint adjustment</li>
+            <li>temperature setpoint adjustment</li>
+            <li>VFD adjustment</li>
+            <li>air balancing</li>
+            <li>coil performance verification (water and air side)</li>
+            <li>startup</li>
+        </ul>
+        <p>Typical <strong>qualification</strong> activities might include:</p>
+        <ul>
+            <li>air balancing</li>
+            <li>filter integrity testing</li>
+            <li>room classification testing</li>
+            <li>room pressurization or airflow direction testing</li>
+            <li>airflow visualization</li>
+            <li>face velocity testing</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Commissioning vs Qualification 的關鍵差異</h4>
+            <p>這是 HVAC 確效中最重要的概念區分：</p>
+            <ul>
+                <li><strong>Commissioning（調試）：</strong>GEP（Good Engineering Practice）的範疇，驗證系統「按設計運作」。所有系統都應該做。屬於工程層面的驗證。</li>
+                <li><strong>Qualification（確效）：</strong>GMP 的範疇，驗證系統對產品品質有「直接影響」的關鍵組件。只有 direct impact 系統才需要。屬於品質層面的驗證。</li>
+            </ul>
+            <p>兩者的交叉點是 air balancing——它同時出現在 commissioning 和 qualification 清單中，因為它既是工程調整也是品質驗證。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：Impact Assessment（影響評估）</h4>
+            <p>ISPE 的系統分類框架：</p>
+            <ul>
+                <li><strong>Direct Impact（直接影響）：</strong>對產品品質有直接影響 &rarr; 必須 Qualify。例如：HEPA 濾網、壓差監控、溫度監控</li>
+                <li><strong>Indirect Impact（間接影響）：</strong>支持直接影響系統 &rarr; Commissioning 即可。例如：AHU 本體、預過濾器</li>
+                <li><strong>No Impact（無影響）：</strong>與產品品質無關 &rarr; 基本 Commissioning。例如：辦公區 HVAC</li>
+            </ul>
+            <p>ISPE 提供了一個巧妙的「系統邊界」思維：可以把所有終端 HEPA 濾網定義為「空氣品質系統」，畫出一個 direct impact 的邊界，而把 AHU 和預濾器歸類為 indirect impact。這樣確效文件就能聚焦在風險最高的組件上。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一家餐廳的衛生檢查：「Commissioning」就像檢查廚房設備都能正常運作（爐子會點火、冰箱會製冷、抽油煙機會排氣）。「Qualification」則是檢查那些直接接觸食物的設備是否滿足食品安全標準（砧板消毒、冷藏溫度、烹飪溫度）。不是所有設備都需要食安檢查，但直接接觸食物的設備必須通過。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用</h4>
+            <p>在 CDMO 環境中，Impact Assessment 的結果會直接影響變更控制（Change Control）的範圍和力度。正確的系統分類可以：</p>
+            <ul>
+                <li><strong>減少確效文件量：</strong>只有 direct impact 組件需要正式的 IQ/OQ/PQ</li>
+                <li><strong>加速變更審批：</strong>indirect impact 組件的更換不需要重新確效</li>
+                <li><strong>聚焦資源：</strong>把有限的 QA 資源集中在真正影響產品品質的地方</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.4.1.1 - 5.4.1.4 Room Testing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-4-1">5.4.1.1 - 5.4.1.4 Room Testing（房間測試）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.4.1.1 Room Particle Counting</h3>
+        <p>Setup for particle counting in a room is described in <span class="key-term">ISO 14644-2</span>.</p>
+
+        <h3>5.4.1.2 Room Recovery Test</h3>
+        <p>Procedures using a smoke generator and multiple particle counters are outlined in <span class="key-term">ISO 14644-3</span>.</p>
+        <p>For further information on recovery testing, see the ISPE HVAC COP Web site.</p>
+
+        <h3>5.4.1.3 Room DP</h3>
+        <p>Procedures for verifying DP are described in ISO 14644-3.</p>
+
+        <h3>5.4.1.4 Time Delay on DP alarm</h3>
+        <p>If a classified space is not separated from a space of a lower classification by an airlock, it may be necessary to verify the time delay on <span class="key-term">low DP alarms</span>; a test may involve:</p>
+        <ol>
+            <li>Raising particle levels in the space with lower classification with a smoke generator; monitoring these levels to assure that they do not drop on their own. They should be at the upper limit of the space's in-use air class.</li>
+            <li>Setting a particle counter in the cleaner space, between the doorway and the critical site. (If the critical site is under a UFH, locating the counter away from the hood.)</li>
+            <li>Opening the door and simulating normal traffic through the door. Measuring the time before particle counts start to increase beyond normal expected levels. This time period will be the maximum time delay permitted.</li>
+            <li>Setting the time delay set point at a time much less (e.g., 50%) than the measured time interval.</li>
+        </ol>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：壓差報警延遲測試</h4>
+            <p>這是一個非常實用且經常被忽略的測試。當兩個不同潔淨等級的房間之間沒有氣鎖（airlock）時，開門會瞬間破壞壓差。壓差報警如果設定太靈敏，操作人員每次開門都會觸發報警（假報警太多）；設定太遲鈍，真正的壓差異常又來不及發現。</p>
+            <p><strong>ISPE 的方法：</strong>用實驗測量「開門後多久粒子會超標」，然後把報警延遲設定在這個時間的 50% 以下。這樣既不會有太多假報警，也能在真正異常時及時警告。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像設定汽車超速警報：如果你在高速公路上偶爾超速 1~2 秒就響鈴，司機會很煩然後把它關掉。但如果設定在「超速超過 5 秒才響」，就能區分「偶爾加速超車」和「持續超速」。壓差報警延遲的邏輯完全相同——給正常操作（開門走動）留出時間窗口，但對真正的異常要快速反應。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：測試方法的精妙設計</h4>
+            <p>注意這個測試設計的巧思：</p>
+            <ul>
+                <li>先把低潔淨區的粒子抬到「上限」——模擬最惡劣的情境</li>
+                <li>粒子計數器放在「門和關鍵區域之間」——監測的是粒子入侵的「路徑」</li>
+                <li>如果關鍵區域在 UDAF 下面，計數器要遠離——因為 UDAF 會干擾結果</li>
+                <li>延遲設定在測量值的 50% 以下——留有充足的安全裕度</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.5 Training -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-5">5.5 Training（培訓）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Personnel who operate and maintain the HVAC system should be trained on its intended function (to satisfy the user requirements) and on the procedures needed to keep it running.</p>
+        <ul>
+            <li>What the system is expected to do (the <span class="key-term">user requirements</span>): effect on product and patient. Operator or maintenance personnel should understand why an HVAC system and its maintenance are important.</li>
+            <li>How do the HVAC systems maintain user requirements?</li>
+            <li>Qualification activities and documentation &ndash; what components are under <span class="key-term">change control</span> (as few as possible, based on criticality), as-built drawings?</li>
+            <li>Operating SOPs: what are the access to set points, system startup, troubleshooting procedures?</li>
+            <li>Maintenance SOPs: what activities are needed and when?</li>
+            <li>Cleaning and precautions during maintenance activities</li>
+            <li>Instrument calibration: procedures, frequency</li>
+            <li>Where and how records are stored: records for GMP purposes may be stored separately. Who has access and control?</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 培訓的「Why-How-What」架構</h4>
+            <p>ISPE 的培訓內容架構完全符合黃金圈法則（Golden Circle）：</p>
+            <ul>
+                <li><strong>Why（為什麼）：</strong>HVAC 系統對產品和病人的影響——讓維護人員理解自己工作的意義</li>
+                <li><strong>How（如何做）：</strong>系統如何維持 User Requirements——理解原理才能做對的事</li>
+                <li><strong>What（做什麼）：</strong>具體的 SOP、校正程序、紀錄保存——日常執行的細節</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：變更控制的範圍</h4>
+            <p>ISPE 特別強調：納入變更控制的組件要「盡可能少」（as few as possible），基於關鍵性（criticality）判斷。這與前面 Impact Assessment 的邏輯一致——不是所有 HVAC 組件都需要變更控制，只有 direct impact 的關鍵組件才需要。這是風險導向思維在培訓內容中的體現。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用</h4>
+            <p>在 CDMO 環境中，HVAC 維護人員的培訓尤其重要，因為：</p>
+            <ul>
+                <li>不同客戶產品可能有不同的環境要求（溫濕度、壓差、換氣次數）</li>
+                <li>產品轉換時 HVAC 參數可能需要調整</li>
+                <li>維護人員需要理解「為什麼這些參數很重要」而非只是「照表操課」</li>
+                <li>培訓記錄是 GMP 稽查的必查項目</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.6 Equipment Operation and Maintenance -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-6">5.6 Equipment Operation and Maintenance（設備運轉與維護保養）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.6.1 Introduction</h3>
+        <p>The maintenance of systems is fundamental to achieving correct operation, appearance, longevity, and safety. Inadequate maintenance can lead to unexpected and extended shutdowns. It also could lead to underperformance in maintaining the various environmental parameters (temperature, humidity, air quality, air flow, and pressurization) required for GMP facilities.</p>
+        <p><span class="key-term">Predictive Maintenance (PdM)</span> encompasses a range of technologies to detect degradation of equipment performance at an early stage before it can become a problem. This allows maintenance personnel to order parts, schedule manpower, and plan multiple repairs during a scheduled shutdown. The goal of PdM is to proactively correct problems before significant deterioration occurs.</p>
+        <p>Traditional (scheduled) <span class="key-term">Preventive Maintenance (PM)</span> practices often cannot identify mechanical equipment failures that could have been detected through changes in operating temperature, vibration signatures, and bearing wear indicators. Equipment is susceptible to unplanned catastrophic failure that can interrupt production operations, cause risk to product, and result in reactive repairs that can be more expensive than planned repairs.</p>
+        <p>Physical appearance of equipment and its surroundings reflects the quality of the maintenance performed upon the equipment. Spent materials, extra parts, and trash could give a regulatory inspector the impression of poor maintenance practices. Maintaining clean HVAC systems is important to acceptable <span class="key-term">IAQ</span>. Common contaminants include:</p>
+        <ul>
+            <li>dust particles</li>
+            <li>active bacterial or fungal growth</li>
+            <li>debris from HVAC components (rust, belt shedding, grease)</li>
+            <li>loose duct lining</li>
+            <li>mold spores</li>
+        </ul>
+        <p>Holes in the vapor barrier on exterior insulation can lead to condensation inside the insulation and eventual growth of mold and bacteria, as well as loss of insulating properties; good housekeeping practices should be followed.</p>
+        <p>Periodic walk downs of mechanical areas can ensure housekeeping is maintained at an acceptable level of quality. A new coat of paint may not improve HVAC performance, but it conveys a sense of attention to the state of the HVAC system.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：PM vs PdM 維護策略</h4>
+            <p>兩種維護策略的本質差異：</p>
+            <ul>
+                <li><strong>PM（Preventive Maintenance，預防性維護）：</strong>按時間表定期維護——「時間到了就做」，不管設備狀態如何。像定期換機油。</li>
+                <li><strong>PdM（Predictive Maintenance，預測性維護）：</strong>基於設備狀態監測（振動、溫度、磨損指標）決定何時維護——「快壞了才做」。像根據機油分析結果決定何時換油。</li>
+            </ul>
+            <p>ISPE 明確指出 PM 的局限：無法提前發現許多機械故障。PdM 的優勢在於可以：提前訂購零件、安排人力、在計畫停機期間合併修繕。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PM 就像每 5,000 公里換一次機油，不管油的品質如何。PdM 就像用油品分析儀檢測機油劣化程度，在油真正開始失效前才換。PM 可能換太早（浪費）或太晚（損壞），PdM 則精準打擊「最佳更換時機」。在 HVAC 系統中，振動分析就是最好的 PdM 工具——它能提前數週甚至數月預測軸承故障。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：外觀即品質</h4>
+            <p>ISPE 提出了一個很有深度的觀點：「設備的外觀反映維護的品質」。即使重新刷漆不會改善 HVAC 性能，但它傳達了「我們重視這個系統」的訊息。在 FDA 稽查時，機房裡的廢棄物料、多餘零件和垃圾會讓稽查官對整個維護程式的品質產生質疑。外觀管理是 cGMP 稽查的隱形加分項。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.6.2 - 5.6.5 AHU, Fans, Coils, Humidifiers Maintenance -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-6-2">5.6.2 - 5.6.5 AHU, Fans, Coils &amp; Humidifiers Maintenance（AHU、風扇、盤管與加濕器維護）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.6.2 Air Handling Units</h3>
+        <p>The AHU should be inspected periodically for air leaks, rusting, condensate drainage problems, and dirt accumulation, and to verify the proper operation of doors, drives, dampers and actuators, and lighting and switches.</p>
+        <p>Periodic cleaning of the unit's interior is recommended, particularly for units serving classified spaces, such as aseptic operation. A cleanliness inspection should consider the components within the unit, such as: filters, heating and cooling coils, condensate pans, condensate drain lines, humidification systems, acoustic insulation, fans, fan compartments, dampers, door gaskets, and general unit integrity.</p>
+        <p>Prefilters do not remove all air contaminants inside an AHU. Dirt accumulation over time can lead to <span class="key-term">microbial growth</span>. Typically, the units are washed down with a solution that will kill microorganisms, while at the same time, eliminating grease and oil that may have been dispersed from bearings and other lubricated joints.</p>
+        <p>It is recommended that visible rust is removed and surfaces repainted to return their appearance to new.</p>
+        <p>Pools of <span class="key-term">standing water</span> in condensate drain pans can lead to microbial growth and rusting of ferrous parts. Drainage should be checked during hot and humid periods when condensate generation is high.</p>
+        <p>Lighting fixtures with failed fluorescent tubes or ballasts result in poor lighting levels, affecting maintenance of AHU components and personnel safety.</p>
+        <p>Defective electrical switches and receptacles can lead to electrical hazards, poor operation of the components they serve, and increased maintenance.</p>
+        <p>Door maintenance is significant to the air tightness of a space. Gaskets, frames, hinges and latching handles tend to loosen and wear, leading to lower air delivery from the unit, energy loss, sweating, and infiltration of dirt.</p>
+
+        <h3>5.6.3 Fans</h3>
+        <p>Maintaining desired fan airflow is critical to providing adequate conditioned supply air into a space. If not appropriately maintained, fan components can lead to diminished airflow and eventual failure; components include: fan housings, wheels, bearings, belts, guards, and motors.</p>
+        <p>The fan wheel should be checked periodically for accumulation of dirt, mechanical fatigue, and imbalance that can result in increased vibration and noise, and ultimately catastrophic failure with <span class="key-term">life threatening potential</span> (i.e., broken blades and housings).</p>
+        <p><span class="key-term">Bearing failure</span> is common, because of over- or under-lubrication and the use of lubricants that are not intended for the airstream environment. Personnel should have appropriate training from bearing manufacturers and lubrication suppliers. Vibration and temperature monitoring can assist in trending analysis to identify impending bearing failure.</p>
+        <p>Belt drives need extensive care and procedures for removing, installing, and starting-up equipment with belt drives. Improper belt tension is one of the most common root causes of premature failure; steps which should be followed include:</p>
+        <ul>
+            <li>Check belt tension, using a tension gauge or <span class="key-term">Sonic Tension Meter</span>. Adjust the belt drive's center distance until the correct tension is measured.</li>
+            <li>Rotate the belt drive by hand for a few revolutions. Re-check the belt tension and adjust as necessary.</li>
+            <li>Start the drive, looking and listening for any unusual noise or vibration. If the motor or bearings are hot, the belt tension may be too high.</li>
+            <li><span class="key-term">V-belt Run-In Procedure</span>: a run-in procedure is recommended for v-belt drives to optimize belt life. A run-in consists of starting the drive and letting it run under full load for up to 24 hours. After the belts have run-in, stop the belt drive and check the belt tension. Re-adjust as necessary. Failure to check and re-tension the belt will result in low belt tension, belt slippage, reduction of airflow, and eventual premature belt failure.</li>
+        </ul>
+        <p>Motors should be capable of operating for more than <span class="key-term">10 years</span> without major problems. Since motors are expensive to purchase and their operating costs are high (e.g., 25 hp motor &times; 8760 hrs/yr &times; $0.075/kwh = $12,250/yr) maintenance is essential to keep operating costs at a minimum. The following activities should be performed:</p>
+        <ul>
+            <li>Dirty motors run hot when thick dirt insulates the frame and clogs cooling air passages. Motor exterior should be periodically cleaned.</li>
+            <li>Check for signs of corrosion. Serious corrosion may indicate internal deterioration and a need for external repainting.</li>
+            <li>Lubricate the bearings only when scheduled or if they are noisy or running hot. Do not over-lubricate.</li>
+            <li>Feel the motor frame and bearings for excessive heat or vibration. Listen for abnormal noise.</li>
+            <li>Verify that belt and motor drive guards are securely fastened.</li>
+        </ul>
+
+        <h3>5.6.4 Heating and Cooling Coils</h3>
+        <p>Coils, whether for heating, cooling, or dehumidifying, should be clean both internally and externally, and the fins for heat transfer should be intact and undamaged. Cooling coils typically reduce both the <span class="key-term">sensible</span> (cooling) and <span class="key-term">latent</span> (de-humidify) heat of the air, and they are more sensitive to loss in heat transfer capability than are heating coils. Cooling coils are more likely to accumulate dirt since they are usually wet.</p>
+        <p>Typically, coils (especially cooling coils) are externally cleaned <span class="key-term">once a year</span>, as this side of the coil receives the most dirt. Internal cleaning typically is performed only when DPs of the heat transfer fluid increase beyond manufacturer recommendations. Coils may be periodically pressure tested for leaks. When face and bypass heat coils are used, the damper mechanisms should be inspected annually to ensure they correctly operate smoothly over their entire range of motion.</p>
+        <p>Control valves wear out over time due to constant modulation. These valves should be included in a regularly scheduled maintenance program.</p>
+
+        <h3>5.6.5 Steam Humidifiers</h3>
+        <p>There are a number of components that make up the humidifier system; items that should be inspected and maintained include:</p>
+        <ul>
+            <li>the strainer screen: twice per year as a minimum (if fouled, steam flow will be reduced)</li>
+            <li>the control valve: annually to ensure that: (1) the steam valve closes tightly, (2) the stem packing is not leaking steam, (3) the diaphragm in the actuator is not leaking air</li>
+            <li>the sealing and O-rings to assure that no steam leaks into the surrounding area with the possibility of personnel injury</li>
+            <li>the nozzles for proper dispersion of steam into the airstream; if steam is not dispersing properly, capacity can be reduced or condensate can form downstream</li>
+            <li>the silencer: annually as a minimum for cleanliness</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示：AHU 維護的微生物風險</h4>
+            <p>AHU 內部的微生物風險來源：</p>
+            <ul>
+                <li><strong>積灰 + 濕度 = 微生物溫床：</strong>預濾器無法攔截所有灰塵，AHU 內部逐漸積灰，加上盤管和加濕器附近的濕度，形成微生物生長的完美條件</li>
+                <li><strong>凝結水積水：</strong>排水盤中的積水是最常見的微生物來源。台灣夏季高溫高濕期間要特別注意排水狀況</li>
+                <li><strong>保溫材破損：</strong>外部保溫的蒸氣屏障破損會導致保溫內部凝結，促進黴菌和細菌生長</li>
+            </ul>
+            <p><strong>對策：</strong>用殺菌溶液定期清洗 AHU 內部，同時去除油脂。除銹後重新上漆。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：風扇維護的「五感法則」</h4>
+            <p>ISPE 描述的風扇維護本質上是一種「五感」檢查法：</p>
+            <ul>
+                <li><strong>看（Look）：</strong>檢查皮帶磨損、葉輪積灰、腐蝕跡象</li>
+                <li><strong>聽（Listen）：</strong>異常噪音可能預示軸承故障或不平衡</li>
+                <li><strong>摸（Feel）：</strong>馬達和軸承的過熱或異常振動</li>
+                <li><strong>量（Measure）：</strong>皮帶張力（用張力計或音波張力計）、振動值</li>
+                <li><strong>算（Calculate）：</strong>馬達運轉成本分析，證明維護投資的合理性</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>馬達年運轉成本計算</h4>
+            <pre>
+年度電費 = 馬達功率 (hp) × 8760 hr/yr × 電費單價
+
+範例：25 hp × 8760 hr/yr × $0.075/kWh = $12,250/yr
+（約 NT$390,000/年）
+
+這代表一台 25 hp 馬達每年的電費就接近 40 萬台幣。
+維護良好可延長壽命至 10 年以上，
+而因維護不當導致的提前更換成本遠高於維護費用。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：V-belt 磨合程序</h4>
+            <p>新皮帶必須做「磨合」（Run-In）：全負載運轉 24 小時後重新調整張力。新皮帶會伸長，如果不重新張力調整：</p>
+            <ul>
+                <li>皮帶打滑 &rarr; 風量降低</li>
+                <li>打滑產熱 &rarr; 皮帶加速老化</li>
+                <li>最終結果：皮帶過早斷裂、非計畫停機</li>
+            </ul>
+            <p>這是風扇維護中最常見的根本原因之一，卻也是最容易被忽略的步驟。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 AHU 內部清潔頻率是多少？是否使用殺菌溶液？</li>
+                <li>軸承潤滑是否有明確的頻率和用量規範？是否曾因過度潤滑導致軸承損壞？</li>
+                <li>皮帶更換後是否有執行 24 小時磨合和重新張力調整的程序？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.6.6 - 5.6.9 Desiccant, Filtration, Ductwork, Dampers Maintenance -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-6-6">5.6.6 - 5.6.9 Desiccant, Filtration, Ductwork &amp; Dampers Maintenance（除濕器、濾網、風管與風門維護）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.6.6 Desiccant Dehumidifier</h3>
+        <p>The maintenance of desiccant units includes: filters, wheel drive assembly, wheel support bearings, seals between process and regeneration sections, fans, belts, and controls.</p>
+        <p>Desiccant components should be maintained according to a recommended schedule.</p>
+        <p>As a desiccant system has incoming air on the supply side and a second air stream for reactivation, both sets of <span class="key-term">inlet air filters</span> need regular replacement to prevent airflow being reduced. Clogged filters on the supply or process air will cause overheating because of reduced airflows, as well as wasted energy. Clogged filters on the reactivation side may cause problems, including insufficient airflow to remove the moisture from the desiccant wheel, reducing system performance. As filters load still further, there is insufficient airflow to safely absorb the heat from the reactivation heater, so the unit shuts down because the temperature of the reactivation air entering the wheel is too high. A large number of reported problems related to desiccant systems can be traced to <span class="key-term">clogged filters</span>.</p>
+        <p>Seals between regeneration and process airflow sections should be inspected. Leakage will degrade performance.</p>
+        <p><span class="key-term">Lithium chloride</span> desiccant can absorb excess moisture, expanding and literally "exploding" out of the wheel. When not in use, LiCl wheels should be kept hot and rotating.</p>
+        <p>The drive belt around the desiccant wheel needs to be sufficiently tight to turn the wheel, but not so tight as to put an excessive load on the drive motor shaft bearings. Belt tension should be checked at least twice a year or when the filters are changed.</p>
+        <p>The desiccant wheel has bearings that should be inspected at the same time as the fan bearings, and should be greased based on the manufacturer's recommendation. Typically, greasing is needed only once a year because of the wheel's slow rotational speed.</p>
+        <p>Controls should be recalibrated regularly to assure a steady state of operation. Bypass dampers should be checked for proper operation and seating. Shut off damper seals should be checked.</p>
+
+        <h3>5.6.7 Air Filtration</h3>
+        <p>As filters load with particles, resistance to airflow increases (higher pressure drop) to a point where airflow could be reduced and the filters could collapse. Alternatively, as filters load with material, their efficiency increases. Ideally, filters should be replaced based on a predetermined DP drop and the cost of the filters. This optimizes the <span class="key-term">TCO</span> for the filters.</p>
+
+        <h4>5.6.7.1 ASHRAE Type Filters</h4>
+        <p>ASHRAE type filters should be replaced after no more than <span class="key-term">two years of service</span>, even if pressure differential change-out limits have not yet been reached. This eliminates potential microbial growth and filter degradation. Filters should be inspected twice per year as a minimum.</p>
+        <p>ASHRAE type filters (non-HEPA) should not be repaired nor require leak testing.</p>
+
+        <h4>5.6.7.2 HEPA/ULPA</h4>
+        <p>Depending on the testing method and product/process, leakage of the upstream aerosol concentration above an acceptable limit when tested in-situ may require that HEPA/ULPA filters be replaced or patched. The most commonly recognized limit for defining a filter leak is a localized leak rate equal to or greater than <span class="key-term">0.01% of the upstream aerosol concentration</span> when tested via an in-situ filter face leak scan.</p>
+        <p>In-situ leak testing normally is performed <span class="key-term">once a year for GMP operations</span>, but <span class="key-term">aseptic manufacturing normally requires testing every six months</span> for some areas.</p>
+        <p>HEPA/ULPA filter leaks can occur in several ways: rough handling or touching with instruments, tools, or hands may easily damage the filter medium. Leaks also may occur along the interface where the medium is sealed to the frame. Another major leak source is at <span class="key-term">silicone gel seals</span>, where the filter housing meets the knife-edge of the filter grid system. Over time, the gel can deteriorate because of exposure to aerosols used in the testing of filters.</p>
+        <p>When leaks are detected, the filter may be replaced or repaired. HEPA filters should be replaced when the patched area is more than <span class="key-term">3 to 5% of the net face area</span> or when a single patch has a lesser linear dimension exceeding <span class="key-term">1.5 inches (3.8 cm)</span>. Patching material should be <span class="key-term">RTV silicone sealant caulk</span>, which meets the FDA 21CFR 177.2600 and USDA for food grade applications.</p>
+        <p>It is not recommended to attempt to caulk a leak between silicone gel and the filter frame knife-edge, nor to repair a filter leak in a Grade 5 &ndash; Grade A hood where airflow patterns need to be uniform.</p>
+        <p>Care should be taken when storing, handling, installing, and testing HEPA/ULPA filters. They should be stored within 40 to 100&deg;F (4 to 38&deg;C) and 25 to 75% RH.</p>
+        <p>Prior to installation, it is recommended that information on individual filters and filter housings is recorded (model number, serial number, performance, factory test data, etc.). This can resolve future questions regarding filter efficiency, replacement filters, or issues arising from a product recall.</p>
+
+        <h3>5.6.8 Ductwork</h3>
+        <p>Periodic inspection of HVAC ductwork can identify potential problems (dirt, debris, leaks, and corrosion) to be corrected before unexpected failure and extensive repairs are needed. Ductwork can lose its seal over time and can be a source of excessive leakage that can affect room pressurization. Ductwork that has been crushed leads to insufficient airflow, increased noise, and poor airflow control. Damaged or lost duct insulation should be quickly replaced.</p>
+
+        <h3>5.6.9 Dampers and Louvers</h3>
+        <p>These should be checked for dirt accumulation and free movement without binding of the linkages over the full range of operation (full open to close). Linkages should not be loose. Dampers for low leakage applications should be replaced if gaskets have become hardened or do not provide a good seal.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示：乾燥劑系統故障的第一嫌疑犯——濾網堵塞</h4>
+            <p>ISPE 明確指出：「大量乾燥劑系統的問題報告都可追溯到濾網堵塞」。乾燥劑系統有兩組進氣濾網（製程側 + 再生側），任一側堵塞都會造成問題：</p>
+            <ul>
+                <li><strong>製程側堵塞：</strong>風量不足 &rarr; 系統過熱 + 能耗浪費</li>
+                <li><strong>再生側堵塞：</strong>無法帶走濕氣 &rarr; 除濕效能下降 &rarr; 最終因過溫保護而自動關機</li>
+            </ul>
+            <p><strong>最佳實務：</strong>每次更換濾網時同時檢查皮帶張力，一石二鳥。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：HEPA 濾網修補規則</h4>
+            <p>HEPA 濾網不是一有洩漏就必須更換，ISPE 允許修補，但有嚴格限制：</p>
+            <ul>
+                <li><strong>修補面積上限：</strong>≤ 濾網淨面積的 3~5%</li>
+                <li><strong>單一修補點尺寸上限：</strong>最短邊 ≤ 1.5 吋（3.8 cm）</li>
+                <li><strong>修補材料：</strong>FDA 21CFR 177.2600 食品級 RTV 矽膠</li>
+                <li><strong>不可修補的情況：</strong>矽膠凝膠與刀刃框架之間的洩漏、Grade A/5 罩式 HEPA（因為會影響氣流均勻性）</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>HEPA 測試頻率速查</h4>
+            <pre>
+GMP 操作：每年 1 次現場完整性測試
+無菌製造：部分區域每 6 個月 1 次
+ASHRAE 型濾網：每半年檢查 1 次，最多 2 年更換
+洩漏判定：局部洩漏率 ≥ 0.01%（上游氣溶膠濃度）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：HEPA 洩漏的三大來源</h4>
+            <ol>
+                <li><strong>濾材損傷：</strong>粗暴搬運、工具或手碰觸造成的破洞</li>
+                <li><strong>濾材與邊框的密封處：</strong>黏膠裂開或與邊框脫離（通常是品管不良或黏膠與氣流中化學物質不相容）</li>
+                <li><strong>矽膠凝膠密封處：</strong>濾網外殼與刀刃框架之間的矽膠凝膠，因長期暴露於測試氣溶膠而劣化</li>
+            </ol>
+            <p>第三種來源特別值得注意：用來「測試」濾網的氣溶膠，反而會加速密封材料的老化。這是一個諷刺但真實的問題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 HEPA 濾網是否有個別追蹤紀錄（序號、出廠測試數據、安裝日期）？</li>
+                <li>是否曾修補過 HEPA 濾網？修補面積是否符合 3~5% 的規範？</li>
+                <li>乾燥劑系統的濾網更換頻率是否足夠？是否有因濾網堵塞導致停機的經驗？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.6.10-5.6.14 Other Maintenance + Air Balancing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-6-10">5.6.10 - 5.6.14 Other Equipment Maintenance &amp; Air Balancing（其他設備維護與風量平衡）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.6.10 Diffusers and Registers</h3>
+        <p>Dirt accumulation will result in insufficient air distribution and can be seen from a room. Registers and diffusers should be inspected and cleaned periodically.</p>
+
+        <h3>5.6.11 Ultraviolet Lights</h3>
+        <p>Maintenance required for ultra-violet lighting involves the replacement of the UV lamp or bulb. The bulbs typically last about <span class="key-term">8,000 hours</span>, but their life will be shortened by accumulation of dirt or fingerprints on them. Dirt limits the lamp's intensity and its ability to destroy microbes effectively.</p>
+        <p>UV lighting ballasts typically have a life of more than five years.</p>
+
+        <h3>5.6.12 Fume Exhaust/Extraction Systems</h3>
+        <p>Exhaust systems serving pharmaceutical operations need a high level of reliability, because of the impact on the process should they fail. Maintenance should ensure equipment up time, including:</p>
+        <ul>
+            <li>The system should be inspected to ensure it is free of debris and dirt that may reduce airflow volume.</li>
+            <li>Control dampers should operate freely.</li>
+            <li>Flexible duct connections should be checked to assure they are not leaking air, often because of deterioration or wear.</li>
+        </ul>
+        <p>Fume hood performance should be tested in accordance with <span class="key-term">ASHRAE Standard 110</span>.</p>
+        <p>Fans are the primary component in fume exhaust/extraction systems.</p>
+
+        <h3>5.6.13 Building</h3>
+        <p>As buildings age, leakage through the room fabric increases over time and can result in loss of <span class="key-term">room pressure relationships</span>, requiring frequent readjustment of pressure dampers. Ultimately, the source of the leakage will need to be located; periodic inspection of penetrations and seals is recommended.</p>
+
+        <h3>5.6.14 Air Balancing</h3>
+        <p><span class="key-term">Testing, Adjusting, and Balancing (TAB)</span> for HVAC systems should be performed at regular intervals to ensure system compliance, as well as to verify that systems are operating as efficiently as possible. When changes to the room configurations or HVAC equipment occur, TAB should be performed.</p>
+        <p>At a minimum, recalibration of monitoring instruments, verifying supply airflow to process spaces and recalculating <span class="key-term">air changes per hour (ACPH)</span>, and adjusting pressure relationships should occur at least annually for GMP spaces, or when terminal HEPA filters are tested. Full rebalancing should be considered every five years as a minimum and seven years for non-GMP spaces.</p>
+        <p>A total rebalancing can uncover unsuspected increases in energy consumption and potential equipment failures. There is a risk in performing partial re-balancing; as a change in airflow to one zone may cause the opposite change in other zones (increasing air flow to one room may reduce airflow to all other rooms).</p>
+        <p>Note that typical airflow measurement accuracy is in the order of <span class="key-term">&plusmn;10%</span>. This should cause no concern as long as room conditions (and recovery if measured) are achieved. Flow hoods used for air balancing should be calibrated periodically, usually annually. Adequate lead time should be factored into the re-balancing schedule for calibration.</p>
+
+        <h3>Table 5.6: Suggested Maintenance Frequency</h3>
+        <table>
+            <thead>
+                <tr><th>Room Type</th><th>Frequency</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Aseptic Operation (Grades 5-7) &ndash; re-calibration of instruments, check ACPH and airflow; test HEPA filters</td><td>6 months</td></tr>
+                <tr><td>GMP Classified Operation (Grade 8) &ndash; re-calibration of instruments, check ACPH and airflow, test HEPA filters</td><td>1 year</td></tr>
+                <tr><td>Other GMP Spaces, Pilot Plants, Animal Facilities, Laboratory Space, R&amp;D Space &ndash; full rebalancing</td><td>5 years</td></tr>
+                <tr><td>Non-GMP Spaces including electrical and mechanical rooms, auditoriums, utility spaces, central plant ventilation, kitchens and offices &ndash; full rebalancing</td><td>7 years</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：TAB（風量平衡）的風險與頻率</h4>
+            <p><strong>TAB（Testing, Adjusting, and Balancing）：</strong>風量平衡不是一次性的工作，是需要定期重做的循環作業。ISPE 提出的關鍵洞見：</p>
+            <ul>
+                <li><strong>局部調整的蝴蝶效應：</strong>增加一個房間的風量，可能會減少所有其他房間的風量。這就像一根水管分出多個支管——打開一個閥門，其他支管的水壓都會降低</li>
+                <li><strong>建築老化效應：</strong>隨著建築老化，穿牆管線密封處逐漸劣化，漏氣增加，壓差關係失控</li>
+                <li><strong>測量精度 ±10%：</strong>不要過度追求完美數字，只要房間條件（粒子、壓差、溫濕度）和恢復性能達標即可</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>維護頻率速查表</h4>
+            <pre>
+無菌操作（Grade 5-7）：
+  儀器校正 + ACPH 確認 + HEPA 測試 = 每 6 個月
+
+GMP 潔淨操作（Grade 8）：
+  儀器校正 + ACPH 確認 + HEPA 測試 = 每 1 年
+
+其他 GMP 空間（中試、動物房、實驗室）：
+  完整風量再平衡 = 每 5 年
+
+非 GMP 空間（機房、辦公室）：
+  完整風量再平衡 = 每 7 年
+
+風量測量罩校正：每年 1 次
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：UV 燈的維護陷阱</h4>
+            <p>UV 燈泡壽命約 8,000 小時（約 11 個月連續運轉）。但壽命會因積灰和指紋而縮短。很多工廠只在燈泡不亮時才更換，卻忽略了：即使燈泡還亮，UV 強度可能已經降到無法有效殺菌的水平。建議搭配 UV 強度計定期測量，而非只看「亮不亮」。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用</h4>
+            <p>在 CDMO 環境中，風量平衡的挑戰尤其大：</p>
+            <ul>
+                <li><strong>房間用途變更：</strong>不同客戶產品可能需要不同的換氣次數和壓差</li>
+                <li><strong>產能擴張：</strong>加裝新設備可能改變房間的熱負荷和送風需求</li>
+                <li><strong>局部調整的連鎖反應：</strong>為一條新產線調整風量，可能影響同一 AHU 服務的所有其他房間</li>
+            </ul>
+            <p>建議：任何涉及風量變更的改動，都要做全系統 TAB，不要只做局部調整。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.7 Spare Parts -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-5-7">5.7 Spare Parts（備品管理）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">GEP</span> and the economics of keeping production on line require that spare parts are kept to minimize the effect of failures. A good PdM program should predict the need to replace parts before they fail, allowing time to order replacement parts. However, there are specific items that may be useful in case of sudden failure:</p>
+        <ul>
+            <li>A spare <span class="key-term">desiccant wheel</span>: a desiccant wheel may fail because of remaining idle for months (as during cold winters when dehumidification is not needed), and not be ready for service the first humid day. This is particularly true for LiCl wheels, but silica wheels also have been known to become less effective over time.</li>
+            <li><span class="key-term">Sensors and transmitters</span> for critical parameters. If all the temperature sensors in the system are the same specification, only one spare is needed; similarly for RH and DP sensors.</li>
+            <li>Terminal <span class="key-term">HEPA filter</span> or UFH HEPA filter: over-zealous cleaning may damage a HEPA filter exposed to the room. Rips and tears in UFH filters may have an effect on a critical zone. Sudden failure because of dirt loading of a terminal filter should not be a concern, particularly if a high efficiency filter in the AHU precedes the HEPA filter. Failed HEPA filters in an AHU have much less effect, and it may be possible to repair the filter while replacements are on order.</li>
+            <li><span class="key-term">High temperature HEPA filter</span>: because of the gradual destruction of the binders in high temperature filters operated beyond their rated temperature, it is possible that the entire filter bank in a depyrogenation tunnel will need to be replaced at one time. Repairs are not possible.</li>
+            <li><span class="key-term">Fan belts</span>: a good inspection program should notice belt wear; cost is relatively low.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：備品策略的「關鍵五項」</h4>
+            <p>ISPE 列出的五項關鍵備品反映了 HVAC 系統最脆弱的環節：</p>
+            <ol>
+                <li><strong>乾燥劑輪：</strong>閒置後可能失效，尤其是 LiCl 輪。備用一組可以在第一個潮濕日立即替換</li>
+                <li><strong>感測器/傳送器：</strong>利用「規格統一化」策略，相同規格的感測器只需備一個——這是備品管理的智慧</li>
+                <li><strong>終端 HEPA 濾網：</strong>最可能被「清潔過度」損壞的組件。UFH 的 HEPA 撕裂會直接影響 Grade A 區</li>
+                <li><strong>高溫 HEPA 濾網：</strong>除熱原隧道用，可能需要整批同時更換，無法修補。交期長，必須提前備貨</li>
+                <li><strong>風扇皮帶：</strong>成本低、更換頻繁、定期檢查可預測更換時機</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>備品管理就像家裡的急救箱——你不需要儲備所有藥品，只需要備好最可能用到的：OK 繃（風扇皮帶）、退燒藥（感測器）、紗布（HEPA 濾網）。關鍵是根據「故障風險」和「停機影響」來決定備什麼、備多少。高溫 HEPA 濾網就像特殊處方藥——不常用，但一旦需要就非常緊急，而且不能臨時配藥。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：HEPA 濾網的「過度清潔」風險</h4>
+            <p>ISPE 用了「over-zealous cleaning（過度熱心的清潔）」這個詞——這在潔淨室環境中是一個反直覺的風險。清潔人員為了確保潔淨度，可能過度用力擦拭暴露在房間中的 HEPA 濾網面，導致濾材撕裂。這提醒我們：清潔 SOP 必須明確規定 HEPA 濾網的清潔方式和限制。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務應用</h4>
+            <p>CDMO 的備品策略需要考慮的額外因素：</p>
+            <ul>
+                <li><strong>多產品共線：</strong>不同產品可能需要不同規格的 HEPA 濾網或特殊感測器</li>
+                <li><strong>供應鏈風險：</strong>高溫 HEPA 濾網的供應商通常很少，交期可能長達 3~6 個月</li>
+                <li><strong>成本效益分析：</strong>備品庫存成本 vs 停機損失。一天的生產停機可能比整年的備品庫存成本更高</li>
+                <li><strong>規格統一化：</strong>在新廠設計階段就統一感測器規格，可以大幅減少備品種類和數量</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠是否有 HVAC 備品清單？是否涵蓋 ISPE 建議的五項關鍵備品？</li>
+                <li>高溫 HEPA 濾網的備品數量是否足以一次更換整個除熱原隧道的濾網組？</li>
+                <li>感測器規格是否已經統一化？如果現有系統使用多種規格，未來改造時是否計畫統一？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>潔淨施工（Build Clean）是基礎：</strong>安裝前清潔、安裝後密封、使用 zip screws 而非 self-drilling screws。施工期間的金屬碎屑是 HEPA 完整性失敗的主要原因之一</li>
+        <li><strong>AHU 安裝五要點：</strong>正確吊裝、水平基座、P-trap 高度、RTV 密封、VFD 慢速啟動。閒置超過一個月的設備需每兩週轉動軸承</li>
+        <li><strong>風扇安裝是高風險作業：</strong>雷射對中、皮帶張力、點動測試、振動測試，每一步都攸關安全和系統壽命</li>
+        <li><strong>Commissioning vs Qualification：</strong>Commissioning = GEP（所有系統都做）；Qualification = GMP（只有 direct impact 系統才需要）。Impact Assessment 決定確效範圍</li>
+        <li><strong>壓差報警延遲測試：</strong>實驗測量「開門後粒子超標時間」，報警延遲設定在 50% 以下</li>
+        <li><strong>PdM 優於 PM：</strong>振動和溫度監測可提前預測軸承故障。外觀整潔也是 GMP 合規的隱形指標</li>
+        <li><strong>HEPA 維護關鍵數字：</strong>洩漏判定 ≥ 0.01%、修補面積 ≤ 3~5%、單一修補 ≤ 1.5 吋。GMP 年測一次、無菌區半年一次</li>
+        <li><strong>TAB 風量平衡的蝴蝶效應：</strong>局部調整影響全系統。無菌區每 6 個月、Grade 8 每年、其他 GMP 每 5 年、非 GMP 每 7 年做完整再平衡</li>
+        <li><strong>備品五項必備：</strong>乾燥劑輪、統一規格感測器、終端 HEPA、高溫 HEPA（整批備貨）、風扇皮帶</li>
+        <li><strong>乾燥劑系統故障主因是濾網堵塞：</strong>兩組進氣濾網（製程側 + 再生側）都需要定期更換。LiCl 輪閒置時必須保持加熱和轉動</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

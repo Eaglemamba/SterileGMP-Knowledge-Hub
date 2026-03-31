@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE HVAC - Appendix 2 Part A: AHU, Coils, and System Configuration</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 2: HVAC Applications (Part A)</h1>
+    <div class="subtitle">附錄2：HVAC 應用（上）— 空調箱、盤管與系統配置</div>
+    <div class="page-info">ISPE Good Practice Guide: HVAC | p158 - p178</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解 Air Handling Unit（AHU，空調箱）的組成元件及各元件對環境參數（溫度、濕度、壓差、氣流量、空氣潔淨度）的影響</li>
+        <li>掌握加熱盤管（Heating Coil）、冷卻盤管（Cooling Coil）、加濕器（Humidifier）、除濕器（Dehumidifier）的功能與設計注意事項</li>
+        <li>理解空氣過濾系統的分級：Pre-filter → Intermediate Filter → Final Filter → Terminal HEPA 的保護邏輯</li>
+        <li>比較三種基本 HVAC 系統類型：Once-Through（全新風）、Recirculated（再循環）、Exhaust（排氣）的優缺點與適用場景</li>
+        <li>了解 AHU 的 Blow-Through 與 Draw-Through 兩種配置的特性差異</li>
+        <li>掌握壓差控制策略：Cascade（梯級）、Pressure Bubble（正壓氣泡）、Pressure Sink（負壓阱）三種氣鎖壓力配置</li>
+        <li>理解送風分配設計：Dilution（稀釋式）vs. Displacement（置換式）的選擇與 GMP 分級要求</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節目錄 Table of Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec-811">8.1.1 Introduction</a>
+        <a href="#sec-812">8.1.2 AHU</a>
+        <a href="#sec-817">8.1.7 Heating Coil</a>
+        <a href="#sec-818">8.1.8 Cooling Coil</a>
+        <a href="#sec-819">8.1.9 Humidifier</a>
+        <a href="#sec-8110">8.1.10 Dehumidifier</a>
+        <a href="#sec-8111">8.1.11 Air Filtration</a>
+        <a href="#sec-822">8.2.2 Number of AHUs</a>
+        <a href="#sec-823">8.2.3 System Types</a>
+        <a href="#sec-824">8.2.4 AHU Configurations</a>
+        <a href="#sec-83">8.3 Pressure Control</a>
+        <a href="#sec-833">8.3.3 Airlocks</a>
+        <a href="#sec-834">8.3.4 DP &amp; Air Leakage</a>
+        <a href="#sec-84">8.4 Ventilation Strategies</a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.1 Introduction & 8.1.2 AHU -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-811">8.1 Equipment / 8.1.1 Introduction（設備總論）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.1.1 Introduction</h3>
+        <p>HVAC equipment helps to meet the <span class="key-term">user requirements</span> for room environmental conditions. HVAC equipment serving GMP areas is intended to work in conjunction with associated controls and sequences of operation systems to:</p>
+        <ul>
+            <li>maintain room temperature</li>
+            <li>maintain room pressurization and <span class="key-term">DP relationships</span>; therefore, assisting in the prevention of contamination and cross-contamination</li>
+            <li>minimize airborne contamination delivered to the conditioned space by HVAC systems</li>
+            <li>provide make-up air for ventilation and room pressurization</li>
+            <li>maintain RH by adding to or removing from the moisture content of the air</li>
+            <li>provide required air flow volumes to maintain room cleanliness classification and recovery rate, when required</li>
+        </ul>
+        <p>Figure 8.1 illustrates the possible arrangement of components in an HVAC system for a draw-through, recirculating air handler with nearly all possible components. (Note that the arrangement is not considered preferable; it is for illustration only.)</p>
+
+        <h3 id="sec-812">8.1.2 Air Handling Unit</h3>
+        <p>An <span class="key-term">Air Handling Unit (AHU)</span> is an equipment package that includes a casing box (usually metal), a fan or blower, heating and cooling coils, air filtration, etc. to provide HVAC to duct systems and then to a building. Access doors or panels are usually provided for maintenance of each component.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：HVAC 設備的六大任務</h4>
+            <p>HVAC 設備在 GMP 環境中不只是「吹冷氣」，它承擔六項關鍵任務：</p>
+            <ol>
+                <li><strong>溫度控制</strong>——維持製程和人員舒適所需溫度</li>
+                <li><strong>壓差維持</strong>——透過 DP（Differential Pressure，壓差）關係防止交叉污染</li>
+                <li><strong>空氣潔淨</strong>——最小化 HVAC 系統本身帶入的微粒污染</li>
+                <li><strong>新風補充</strong>——提供通風和壓差所需的外氣</li>
+                <li><strong>濕度調節</strong>——控制相對濕度（RH, Relative Humidity）</li>
+                <li><strong>換氣量</strong>——維持潔淨等級和恢復率（Recovery Rate）</li>
+            </ol>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：什麼是 AHU？</h4>
+            <p><strong>AHU（Air Handling Unit，空調箱）</strong>是一個整合式設備包，包含：</p>
+            <ul>
+                <li>金屬外殼箱體（Casing Box）</li>
+                <li>風機或鼓風機（Fan/Blower）</li>
+                <li>加熱和冷卻盤管（Heating/Cooling Coils）</li>
+                <li>空氣過濾器（Air Filtration）</li>
+                <li>維護用檢修門/面板（Access Doors/Panels）</li>
+            </ul>
+            <p>AHU 就像是 HVAC 系統的「心臟」，將空氣調節到需要的狀態後，透過風管系統輸送到各個房間。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：AHU 就像一台多功能淨水器</h4>
+            <p>想像一台大型淨水器：水進來先過濾（空氣過濾），然後加熱或冷卻到適當溫度（盤管），再用泵浦（風機）把處理好的水送到各個水龍頭（房間）。AHU 對空氣做的事情和淨水器對水做的事情完全一樣——過濾、調溫、調濕、加壓輸送。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 特別強調 HVAC 系統要「最小化自身帶入的微粒污染」？HVAC 系統本身可能產生哪些污染？</li>
+                <li>AHU 的檢修門/面板（Access Doors）為什麼對 GMP 很重要？如果維護困難會有什麼後果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.3-8.1.6 Fan, Mixing Box, Energy Recovery, Fume Exhaust -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-813">8.1.3-8.1.6 Fan, Mixing Box, Energy Recovery, Fume Exhaust（風機、混合箱、能量回收、排氣系統）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.1.3 Fan</h3>
+        <p>A <span class="key-term">fan</span> is a driven air moving device used to supply, return, or exhaust/extract air to or from a room through ductwork to move air in sufficient amounts to provide ventilation, heating, or cooling or to overcome room air pressure losses.</p>
+        <p><strong>8.1.3.1 Supply Fan:</strong> Air handlers have a supply fan to provide the motive force to distribute air throughout an HVAC system.</p>
+        <p><strong>8.1.3.2 Return Fan:</strong> Most large recirculating air systems use a return air fan. This fan allows return duct pressure and flow to be managed independently from the supply. This is particularly important if the duct system has volume controllers on both the supply and return (such as for controlled supply air volume and room pressure control). It also allows the return air to be diverted to exhaust when outside air conditions are closer to desired discharge conditions than return air (<span class="key-term">economizer cycle</span>) or when return air contains flammables.</p>
+
+        <h3>8.1.4 Mixing Box</h3>
+        <p>Common in recirculating air systems, the return air is mixed with outside air for pressurization and fresh air ventilation. The resulting air stream is referred to as <span class="key-term">mixed air</span>. In very cold environments, the mixed air may "stratify" and not mix well with return air, leading to errors in temperature readings and potential for partial freeze-up of heating coils (even a steam heating coil can freeze). An internal turbulence-inducing device (<span class="key-term">air blender</span>) can assure thorough mixing and avoid temperature stratification.</p>
+
+        <h3>8.1.5 Energy Recovery Coil</h3>
+        <p>Once-through air systems, or other systems with high amounts of expensive exhausted air, may employ an <span class="key-term">energy recovery coil</span> to return a portion of the energy lost in the exhausted air to the incoming air. These coils typically are upstream of other supply air conditioning coils, and may be placed upstream of the intake air filters to melt snow in cold climates. These systems also may employ a bypass damper to decrease pressure drop caused by the coil when energy recovery is not advantageous.</p>
+
+        <h3>8.1.6 Fume Exhaust/Extraction System</h3>
+        <p>This is a system made up of ductwork, fans, and possibly air cleaners (filters, dust collectors, scrubbers, carbon adsorbers, etc.) that discharges unwanted or contaminated air to the outside atmosphere to a safe distance to avoid re-entrainment of exhausted materials in other HVAC systems, and to avoid exposure to people.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Supply Fan vs. Return Fan</h4>
+            <p><strong>送風機（Supply Fan）</strong>提供空氣流動的動力，將調節後的空氣送到各房間。<strong>回風機（Return Fan）</strong>則獨立管理回風側的壓力和流量。</p>
+            <p>為什麼需要 Return Fan？在大型再循環系統中，如果只靠 Supply Fan，回風側的壓力和流量無法獨立調節。特別是當系統有變風量控制器（VAV）時，回風機可以獨立應對房間壓差變化。</p>
+            <p><strong>Economizer Cycle（節能器循環）</strong>：當室外空氣的溫濕度條件接近需要的送風條件時，可以增加外氣比例，減少冷卻能耗——直接用「免費冷氣」。但此模式通常只用於非壓差控制區域（辦公室、倉庫）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：混合箱的溫度分層風險</h4>
+            <p>在寒冷環境中，混合箱內的冷外氣和暖回風可能無法均勻混合，形成<strong>溫度分層（Temperature Stratification）</strong>：</p>
+            <ul>
+                <li>上層暖空氣 + 下層冷空氣 → 溫度感測器讀數不準確</li>
+                <li>局部低溫 → 加熱盤管局部結凍（即使是蒸汽盤管也可能結凍！）</li>
+                <li>解決方案：安裝 Air Blender（空氣混合器），利用渦流強制混合</li>
+            </ul>
+            <p>這在台灣較少遇到，但如果你的 CDMO 在北美或歐洲有工廠，冬季防凍設計是關鍵。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：能量回收盤管就像熱交換型抽油煙機</h4>
+            <p>在全新風系統中，你花了大量能源把室外空氣調節到 22°C / 45% RH，然後全部排出去——就像把洗好的熱水直接倒掉。<strong>Energy Recovery Coil（能量回收盤管）</strong>就像家用熱交換型全熱交換器（HRV/ERV），用排出的空氣先「預熱」或「預冷」進來的新空氣，回收 50-80% 的能量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：排氣系統的 Re-entrainment 風險</h4>
+            <p><strong>Re-entrainment（再吸入）</strong>是排氣系統設計中最容易被忽略的風險——排出的污染空氣被其他 HVAC 系統的進氣口吸回來。ISPE 要求排氣要排到「安全距離」，實務上意味著：</p>
+            <ul>
+                <li>排氣口與進氣口之間有足夠的距離和高度差</li>
+                <li>排氣口應在屋頂以上，且遠離新風口</li>
+                <li>考慮主導風向的影響</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.7 Heating Coil -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-817">8.1.7 Heating Coil（加熱盤管）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A <span class="key-term">Heating Coil</span> is a heat transfer device consisting of a coil of piping, covered with heat-transfer fins, which increases the sensible heat transfer into an air stream, using steam, hot water, glycol, or sometimes hot refrigerant gas as the heating medium. An electric air-heating element also can be called a "heating coil."</p>
+
+        <h3>8.1.7.1 Preheat Coil</h3>
+        <p>Once-through air systems or other systems with high amounts of cold outside air may employ a <span class="key-term">preheat coil</span> to condition the incoming or mixed air. These coils are positioned upstream of cooling coils to protect them from freezing and may be placed upstream of the filters to melt airborne snow. As these coils do not typically impose a large pressure drop, a bypass damper is not common. Care should be taken to avoid freezing preheat coils if the temperature of the air mixture entering them is below freezing. In warm weather, the coil's heating is turned off.</p>
+
+        <h3>8.1.7.2 Reheat Coil</h3>
+        <p>Systems that require over-cooling for humidity control (in place of desiccant dehumidification) also may employ a <span class="key-term">reheat coil</span> to avoid overcooling of the space. By heating air leaving cooling coils, reheat coils decrease the RH of air leaving the AHU to avoid condensation in air filters or in the ductwork.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種加熱盤管的角色</h4>
+            <p>加熱盤管看似簡單，但在 HVAC 系統中有三種不同角色：</p>
+            <table>
+                <tr><th>類型</th><th>位置</th><th>功能</th></tr>
+                <tr><td>Heating Coil（主加熱盤管）</td><td>AHU 內</td><td>將空氣加熱到需要的送風溫度</td></tr>
+                <tr><td>Preheat Coil（預熱盤管）</td><td>冷卻盤管上游</td><td>保護下游設備免於結凍；融化空中飛雪</td></tr>
+                <tr><td>Reheat Coil（再熱盤管）</td><td>冷卻盤管下游</td><td>除濕後重新加熱，降低過低的 RH</td></tr>
+            </table>
+            <p>加熱介質可以是蒸汽（Steam）、熱水（Hot Water）、乙二醇（Glycol）、熱冷媒氣體，或電加熱元件。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Reheat 的邏輯——先冷再熱</h4>
+            <p>「先冷卻再加熱」聽起來很浪費，但想像一下：你洗完澡後浴室鏡子都是霧氣（高濕度），你用除濕機（冷卻盤管）降溫把水分凝結出來，但空氣變太冷了。這時用 Reheat Coil 再加熱，就能得到溫暖又乾燥的空氣。</p>
+            <p>藥廠的許多製程（如吸入劑、乾粉產品）對濕度要求嚴格，「先冷後熱」是最簡單的除濕方式。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Preheat Coil 防凍設計</h4>
+            <p>ISPE 特別警告：如果進入預熱盤管的空氣溫度低於冰點，必須採取防凍措施。即使是蒸汽盤管（通常被認為不會凍）也可能因為控制閥故障或蒸汽壓力下降而在局部結凍。常見防凍方法包括：</p>
+            <ul>
+                <li>使用乙二醇循環而非純水</li>
+                <li>安裝 Freezestat（防凍溫控開關）</li>
+                <li>確保蒸汽盤管有足夠的凝結水排放能力</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.8 Cooling Coil -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-818">8.1.8 Cooling Coil（冷卻盤管）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A <span class="key-term">cooling coil</span> is a heat transfer device consisting of a coil of piping, covered with heat-transfer fins, which reduces the sensible heat and possibly latent heat (via condensation of water vapor) in the air stream using chilled liquid or refrigeration gas as the cooling medium. Cooling to maintain environmental conditions is common in pharmaceutical applications. Cooling coils may be located upstream or downstream of the fan (draw-through versus blow-through). A cooling coil is a common method of lowering air humidity; therefore, air velocity and drainage from these coils are key design issues. <span class="key-term">Mist eliminators</span> may be employed to eliminate carryover of liquid water droplets that condense on the coil. These coils impose a large pressure drop, but a bypass damper (used when cooling is not needed) can add a risk of unconditioned air leakage around the coil when maximum cooling is needed.</p>
+
+        <h3>8.1.8.1 Re-cool Coil (Post-cooling Coil)</h3>
+        <p>These coils may be installed downstream of desiccant dehumidifiers to eliminate excess sensible heat in the supply air. They may provide additional dehumidification downstream of a condensing cooling coil, operating below chilled water temperature using a refrigerant or a low temperature brine (typically water and glycol (ethylene or propylene)). Mist eliminators may be employed on these coils. Coils operating at sub-freezing internal temperatures can eventually ice over, and an alternation bypass/de-icing scheme is normally needed.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：冷卻盤管的雙重任務</h4>
+            <p><strong>Cooling Coil（冷卻盤管）</strong>同時處理兩種熱負荷：</p>
+            <ul>
+                <li><strong>Sensible Heat（顯熱）</strong>：降低空氣溫度</li>
+                <li><strong>Latent Heat（潛熱）</strong>：將水蒸氣凝結成液態水，降低濕度</li>
+            </ul>
+            <p>這就是為什麼冷卻盤管是 AHU 中最常見的除濕方式。關鍵設計議題：</p>
+            <ul>
+                <li><strong>Air Velocity（風速）</strong>：過快會把凝結水滴吹向下游</li>
+                <li><strong>Drainage（排水）</strong>：凝結水必須順暢排出，否則滋生微生物</li>
+                <li><strong>Mist Eliminator（除霧器）</strong>：攔截被氣流帶走的水滴</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Bypass Damper 的兩面刃</h4>
+            <p>冷卻盤管壓降大，不冷卻時用 Bypass Damper 旁通可以節省風機能耗。但 ISPE 警告：需要最大冷卻時，旁通風門可能發生<strong>未調節空氣洩漏</strong>——部分空氣繞過盤管直接進入送風系統，導致溫度和濕度控制失敗。</p>
+            <p>在 GMP 環境中，建議優先考慮：不使用 Bypass Damper，或確保其密封性能經過確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Re-cool Coil 的結冰風險</h4>
+            <p><strong>Re-cool Coil（再冷卻盤管）</strong>運行在冰水溫度以下（使用冷媒或低溫鹽水），盤管內部溫度可能低於冰點，導致盤管表面結冰。解決方案是交替旁通/除冰循環（Alternation Bypass/De-icing Scheme）——兩組盤管輪流工作，一組除冰時另一組繼續冷卻。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間乾粉吸入劑（DPI）生產間要求 RH &lt; 25%，冷卻盤管的除濕能力是否足夠？什麼時候需要加裝乾燥劑除濕器（Desiccant Dehumidifier）？</li>
+                <li>冷卻盤管的凝結水排水如果堵塞，對 GMP 合規性有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.9 Humidifier -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-819">8.1.9 Humidifier（加濕器）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Humidifiers</span> increase the humidity within a controlled space by the discharge of water vapor (steam or water mist) into a supply air stream or directly into a room. Systems in cold or arid climates may employ a humidifier to inject water vapor to increase the moisture level of the air supply. These devices typically are downstream of the preheating coil, and may be mounted in ductwork where air turbulence and high velocity promote absorption of water vapor. When employed in an AHU, mounting upstream of a cooling coil provides a natural baffle to prevent carryover of liquid water droplets, as it is unlikely that both humidifier and dehumidification through cooling will be in use at the same time.</p>
+
+        <p>Generally, the water source is steam, potable water, or demineralized water (produced via reverse osmosis (RO), ion exchange resins, or distillation) that will not introduce objectionable contaminants into a room. It is common practice to use steam that is free of volatile additives in pharmaceutical manufacturing HVAC systems. Volatile additives that meet USP requirements can be considered, allowing direct use of plant steam in pharmaceutical manufacturing HVAC systems. Plant steam (which may contain amines or other volatile additives, necessary to prevent corrosion in steam piping) frequently is used for non-production spaces.</p>
+
+        <p>Facilities may use <span class="key-term">clean steam</span>, generated from USP purified water or Water For Injection (WFI) (also called pure steam) for humidification. This practice is considered wasteful, as steam of adequate cleanliness for classified spaces may be obtained from copper, brass, or stainless steel re-boilers fed with water of adequate quality and heated by higher pressure plant steam. However, it may make sense to use clean steam if it is the most readily available form of steam. Maintenance should be considered, as purified steam or steam free from additives can corrode piping. Softened or demineralized water are commonly used for this service, as minerals in potable water can be left behind in the steam generator.</p>
+
+        <p>Water mist humidifiers are usually fed with deionized or purified water to prevent the carryover of dissolved mineral solids into an air stream. When a humidifier is not in use, additional care is required to prevent growth of bacteria in an unprotected water system.</p>
+
+        <p>It is common practice to install a length of welded, liquid tight stainless steel (or other corrosion resistant) ducting downstream of in-duct humidifiers to prevent damage and rust from condensation. Generally, duct humidity should be kept significantly below saturation level; 80% RH is a common upper limit.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：加濕器的水源選擇——GMP 的關鍵決策</h4>
+            <p>加濕器向空氣中噴入水蒸氣或水霧，水源品質直接影響產品安全。ISPE 列出的水源選項（從最嚴格到最寬鬆）：</p>
+            <ol>
+                <li><strong>Clean Steam（潔淨蒸汽）</strong>：由 USP 純化水或 WFI 產生。ISPE 認為用於 HVAC 加濕是<strong>浪費（wasteful）</strong></li>
+                <li><strong>Re-boiler 蒸汽</strong>：用銅/黃銅/不鏽鋼再沸器，以適當品質的水為原料，被工廠蒸汽加熱產生。這是 ISPE 推薦的折衷方案</li>
+                <li><strong>無揮發性添加劑的工廠蒸汽</strong>：可直接用於製藥生產區</li>
+                <li><strong>含添加劑的工廠蒸汽（Plant Steam）</strong>：含胺類防腐劑，只能用於非生產區</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蒸汽品質就像飲水標準</h4>
+            <p>想像你要在餐廳噴水霧降溫：用自來水就好，不需要用瓶裝礦泉水。但如果你是在手術室噴水霧，至少要用 RO 水。用 WFI 蒸汽做 HVAC 加濕，就像拿著 Evian 礦泉水洗地板——品質夠好但實在浪費。ISPE 建議用 Re-boiler 產生的蒸汽，就像在手術室用品質足夠的 RO 水——既安全又經濟。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：加濕器停用時的微生物風險</h4>
+            <p>ISPE 特別提醒：加濕器<strong>不使用時</strong>，殘留水分系統如果沒有適當保護，極容易滋生細菌。這在季節性使用的加濕器上尤其危險——冬天用完，春夏閒置的管路變成微生物培養皿。</p>
+            <p>最佳做法：不使用時排空系統、定期消毒、或使用 SIP（Steam In Place）設計。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風管內加濕的上限——80% RH</h4>
+            <p>風管內的相對濕度不能接近飽和點，否則會在風管壁面、過濾器上形成凝結水，導致：</p>
+            <ul>
+                <li>金屬風管腐蝕（所以加濕器下游要用不鏽鋼風管）</li>
+                <li>過濾器吸水後效率降低且可能滋生微生物</li>
+                <li>常見設計上限：80% RH</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 發現冬季送風濕度不足（RH &lt; 20%），考慮安裝加濕器。關鍵決策點：</p>
+            <ul>
+                <li>水源選擇：工廠是否有不含胺類的蒸汽？是否需要 Re-boiler？</li>
+                <li>安裝位置：在 AHU 內冷卻盤管上游，還是在風管內？</li>
+                <li>下游風管材質：加濕器後至少 3-5 公尺改用焊接密封的不鏽鋼風管</li>
+                <li>閒置管理：夏季不用時的消毒和排空 SOP</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.10 Dehumidifier -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-8110">8.1.10 Dehumidifier（除濕器）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A <span class="key-term">dehumidifier</span> is a device that removes water vapor from the air to reduce humidity, either by condensation of water vapor from the air using a cooling coil or by absorption or adsorption using a <span class="key-term">desiccant</span> (when room RH below 30 to 40% is required). Desiccant dehumidifiers often are located downstream of a cooling coil that removes much of the moisture challenge at lower energy cost and increases RH to increase desiccant efficiency. However, care should be taken to assure saturation or carryover of liquid water droplets does not damage the desiccant.</p>
+
+        <p>The choice of desiccant depends on the application. Desiccants are regenerated using heat; therefore, air leaving the dehumidifier is both drier and hotter than upon entering. A re-cooling coil may be needed. It may be necessary to keep the wheel regenerated even when dehumidification is not needed to prevent damage to some desiccants. Appropriate expertise is required to design and commission the control of desiccant dehumidifiers. Manufacturers should be consulted before attempting a dehumidification control scheme.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：兩種除濕方式的臨界點</h4>
+            <p>HVAC 系統有兩種除濕方式，選擇取決於目標 RH：</p>
+            <ul>
+                <li><strong>冷卻盤管除濕</strong>：經濟實惠，但只能將 RH 降到約 30-40%。原理：空氣冷卻到露點以下，水分凝結在盤管上</li>
+                <li><strong>乾燥劑除濕（Desiccant）</strong>：可將 RH 降到 10% 以下。原理：吸附劑（如矽膠、分子篩）吸收空氣中的水分，然後用熱空氣再生</li>
+            </ul>
+            <p>最佳實務是<strong>兩者串聯</strong>：冷卻盤管先去除大部分水分（低成本），再用乾燥劑做精密除濕。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Desiccant Dehumidifier 的三大注意事項</h4>
+            <ol>
+                <li><strong>出風溫度升高</strong>：乾燥劑吸附水分會釋放熱量，出風比進風更熱更乾→通常需要 Re-cool Coil</li>
+                <li><strong>乾燥劑保護</strong>：液態水滴會損壞乾燥劑，所以上游冷卻盤管需要 Mist Eliminator</li>
+                <li><strong>閒置時仍需再生</strong>：某些乾燥劑在不使用時也需要保持再生狀態，否則會損壞</li>
+            </ol>
+            <p>ISPE 強調：設計和調試乾燥劑除濕器的控制系統需要<strong>專門的專業知識</strong>，應諮詢設備製造商。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間生產吸入劑乾粉（DPI）的房間要求 RH &lt; 15%，只用冷卻盤管除濕可以嗎？為什麼？</li>
+                <li>為什麼 ISPE 建議乾燥劑除濕器設在冷卻盤管下游，而不是上游？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.11 Air Filtration -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-8111">8.1.11 Air Filtration（空氣過濾）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Air filters</span> remove particulate material from an airstream by means of various media types. Pre-filters typically are provided upstream of coils in an air handler to protect the coils from fouling with dirt or debris. Pre-filters use low efficiency dust stop filters followed by a medium or high efficiency intermediate filter. For further information, see Chapter 2 of this Guide.</p>
+
+        <p>Air filters of activated carbon or other materials may be used to absorb some vapors. This is common where objectionable aromas or small quantities of volatile organics need to be decreased.</p>
+
+        <h3>8.1.11.1 Final Filter</h3>
+        <p>Filters may be provided as the last air treatment step in an air handler. The use of high efficiency filters (typically 95% DOP or <span class="key-term">HEPA</span>) can assure air quality (with reference to particles) inside supply air ductwork and can protect terminal (ceiling mounted) filters from fouling with dirt or debris; therefore, extending the life of the terminal filters and preventing differential blinding. See the ISPE Baseline Guide on Sterile Manufacturing Facilities.</p>
+
+        <p>In systems without terminal filtration, final filters in AHUs can provide adequate filtration, perhaps for some classified spaces, as long as ductwork is clean. High efficiency final filters are more commonly used in systems that employ fan drive belts that shed particulate into the airstream.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：空氣過濾的三道防線</h4>
+            <p>HVAC 空氣過濾系統採用層層保護的策略：</p>
+            <ol>
+                <li><strong>Pre-filter（預過濾器）</strong>：低效率的粗塵過濾，位於盤管上游，保護盤管不被灰塵堵塞</li>
+                <li><strong>Intermediate Filter（中效過濾器）</strong>：中高效率，進一步減少微粒</li>
+                <li><strong>Final Filter（終端過濾器）</strong>：95% DOP 或 HEPA（High Efficiency Particulate Air），確保送風風管內的空氣品質</li>
+                <li><strong>Terminal HEPA（末端 HEPA）</strong>：安裝在天花板上的最後一道過濾，確保進入房間的空氣達到潔淨等級</li>
+            </ol>
+            <p>每一層都在保護下一層——延長壽命、降低更換成本、防止<strong>差異性遮蔽（Differential Blinding）</strong>。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：過濾系統就像多層淨水</h4>
+            <p>想像家用淨水系統：PP 棉濾芯（Pre-filter）擋住大顆粒 → 活性碳（Intermediate）去除異味 → RO 膜（Final Filter）去除微量雜質。每一層都在保護更精密的下一層。如果你跳過 PP 棉直接用 RO 膜，膜會快速堵塞、成本暴增。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：活性碳過濾器的特殊用途</h4>
+            <p>ISPE 提到活性碳過濾器用於吸收氣味和揮發性有機物（VOC）。在 CDMO 環境中，這可能用於：</p>
+            <ul>
+                <li>處理溶劑型製程（如流化床造粒使用的異丙醇、乙醇）的排氣</li>
+                <li>防止不同產品間的氣味交叉影響</li>
+                <li>保護操作人員免受低濃度有害蒸氣暴露</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.1.12-8.1.15 Ductwork, Damper/Louver, Diffuser, UV -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-8112">8.1.12-8.1.15 Ductwork, Damper, Diffuser, UV Light（風管、風門、散流器、紫外光）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.1.12 Ductwork</h3>
+        <p>This is a network of air conduits distributed throughout a building, connected to a fan or AHU to supply, return, or exhaust/extract air to or from zones and rooms in a building. These ducts may be constructed of metal, plastic, building construction materials, fiberglass boards, or a combination of these materials. <span class="key-term">Metal ductwork</span> is recommended for most pharmaceutical applications.</p>
+
+        <h3>8.1.13 Damper and Louver</h3>
+        <p><strong>8.1.13.1 Damper:</strong> A <span class="key-term">damper</span> is a valve for controlling airflow in ductwork, which consists of a movable element plate, plunger, or bladder that opens and closes to regulate airflow. Dampers may be used to regulate airflow to and from specific rooms (to "balance" airflow) and to control fresh air or return air to the AHU.</p>
+        <p><strong>8.1.13.2 Louver:</strong> A <span class="key-term">louver</span> is an assembly of sloping vanes, usually fixed in position, intended to permit air to pass through, while inhibiting passage of water droplets from outdoors into air systems. A louver also may be found in return air ductwork at room interfaces.</p>
+
+        <h3>8.1.14 Diffuser, Register, and Grille</h3>
+        <p>Air distribution inlet or outlet grilles are composed of a combination of blades, plates, or vanes intended to direct airflow entering or leaving a space in a desired pattern. Grilles generally are characterized by their pattern of distribution from 1 to 4 directions and projection distance at a given airflow (the throw).</p>
+        <p><span class="key-term">Registers</span> are grilles with an added airflow control damper close coupled to the concealed side.</p>
+        <p><span class="key-term">Diffusers</span> are air outlets, assembled from a series of vanes and plates, generally designed to mix supply air with room air to minimize drafts and maximize dilution. An exception is the <span class="key-term">non-aspirating diffuser</span>, which is designed to provide equal velocity of discharge in all directions with minimal mixing. Diffusers are usually found at ceilings and located to distribute the air as uniformly as possible throughout a space.</p>
+
+        <h3>8.1.15 Ultraviolet Light</h3>
+        <p><span class="key-term">Ultraviolet (UV) lights</span> (a form of ionizing radiation) at 254 nm may be employed in an airstream to disrupt microorganisms. The energy flux required to achieve destruction at typical duct or AHU velocities is prohibitively high, because of the relationship between the energy level and exposure time needed for this purpose. UV lights may be mounted in conjunction with filters to increase exposure time; however, this is considered of <span class="key-term">little value in pharmaceutical HVAC systems</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Grille、Register、Diffuser 的區別</h4>
+            <p>這三個英文詞在中文常常混用，但定義不同：</p>
+            <table>
+                <tr><th>元件</th><th>特點</th><th>用途</th></tr>
+                <tr><td>Grille（格柵）</td><td>固定葉片，無調節功能</td><td>導引氣流方向</td></tr>
+                <tr><td>Register（調節格柵）</td><td>Grille + 內建風門</td><td>可調節氣流量</td></tr>
+                <tr><td>Diffuser（散流器）</td><td>混合送風與室內空氣</td><td>均勻分布、減少吹風感</td></tr>
+            </table>
+            <p>在潔淨室中，<strong>Non-Aspirating Diffuser（非吸引式散流器）</strong>特別重要——它提供等速向下的氣流，最小化混合，適用於需要單向流或低混合度的場所（如 HEPA 過濾器面板）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：UV 燈在藥廠 HVAC 中「幾乎無價值」</h4>
+            <p>ISPE 的立場很明確：UV 燈在製藥 HVAC 中<strong>價值有限</strong>。原因是：</p>
+            <ul>
+                <li>風管內風速太高（通常 5-15 m/s），微生物通過 UV 照射區的時間太短</li>
+                <li>要達到有效殺菌劑量，需要極高的 UV 能量密度——不經濟</li>
+                <li>即使搭配過濾器增加暴露時間，效果也有限</li>
+            </ul>
+            <p>藥廠的微生物控制應依靠 HEPA 過濾和壓差控制，而非 UV 燈。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：為什麼藥廠推薦金屬風管？</h4>
+            <p>ISPE 推薦金屬風管（Metal Ductwork），原因包括：</p>
+            <ul>
+                <li>不會釋放纖維——玻璃纖維板風管會釋放纖維微粒</li>
+                <li>內壁光滑——易清潔，減少微粒和微生物附著</li>
+                <li>耐用——不會因清潔劑或消毒劑而劣化</li>
+                <li>不吸潮——塑膠或玻璃纖維材料可能吸收水分</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Table 8.1: System Components -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-table81">Table 8.1: System Components and Their Influence on Environmental Parameters（系統元件與環境參數影響矩陣）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <table>
+            <tr><th>Equipment</th><th>Temperature</th><th>Humidity</th><th>Room Static Pressure</th><th>Airflow Rate</th><th>Air Cleanliness</th></tr>
+            <tr><td>Air Handler</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr>
+            <tr><td>Fan (Supply and Return Air)</td><td></td><td></td><td>X</td><td>X</td><td></td></tr>
+            <tr><td>Fume Exhaust/Extract Systems</td><td></td><td></td><td></td><td>X</td><td>X</td></tr>
+            <tr><td>Heating Coil</td><td>X</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Cooling Coil</td><td>X</td><td>X</td><td></td><td></td><td></td></tr>
+            <tr><td>Air Filter</td><td></td><td></td><td></td><td></td><td>X</td></tr>
+            <tr><td>Humidifier</td><td></td><td>X</td><td></td><td></td><td></td></tr>
+            <tr><td>Dehumidifier</td><td></td><td>X</td><td></td><td></td><td></td></tr>
+            <tr><td>Ductwork</td><td></td><td></td><td>X</td><td>X</td><td></td></tr>
+            <tr><td>Damper and Louver</td><td></td><td></td><td></td><td>X</td><td></td></tr>
+            <tr><td>Diffuser and Register</td><td></td><td></td><td></td><td>X</td><td></td></tr>
+            <tr><td>UV Light</td><td></td><td></td><td></td><td></td><td>X</td></tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：如何閱讀這張矩陣？</h4>
+            <p>這張表是理解 HVAC 系統設計的「速查表」——每個元件影響哪些環境參數，一目了然。</p>
+            <p>關鍵觀察：</p>
+            <ul>
+                <li><strong>Air Handler（AHU）</strong>是唯一影響所有五個參數的設備——這就是為什麼它是系統的核心</li>
+                <li><strong>Cooling Coil</strong>同時影響溫度和濕度——它是 AHU 中最「多功能」的元件</li>
+                <li><strong>Air Filter</strong>只影響 Air Cleanliness——但這是 GMP 最關鍵的參數</li>
+                <li><strong>風管和風門</strong>影響壓力和風量——它們是「輸送系統」，不做空氣調節</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一間潔淨室的溫度偏高但濕度正常，問題最可能出在哪個元件？如果溫度正常但濕度偏高呢？</li>
+                <li>使用這張表，設計一個「最小化」的 HVAC 系統（只需控制壓差和空氣潔淨度），需要哪些元件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.2 HVAC System Configuration -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-822">8.2 HVAC System Configuration / 8.2.2 Number of Air Handling Units（HVAC 系統配置 / AHU 數量決策）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.2.1 Introduction</h3>
+        <p>This section gives a brief overview of the key factors to consider, the options available in HVAC system design, and the factors influencing decisions to choose a particular system type. This section should be read in conjunction with Chapter 3 of this Guide.</p>
+
+        <h3>8.2.2 Number of Air Handling Units</h3>
+        <p>A manufacturing area often is divided into zones with a separate <span class="key-term">AHU</span> for each zone. In the pharmaceutical industry, a zone is usually considered to be an area with one type of manufacturing process or area cleanliness classification, e.g., a tablet compression suite in an oral solid dosage facility or all classified areas for aseptic product.</p>
+        <p>When dividing a facility into zones, advantages include:</p>
+        <ul>
+            <li>Use of multiple AHUs improves reliability of the total area; it would be unusual for all zone units to fail. If one unit fails, other zones may continue to operate.</li>
+            <li>The use of multiple smaller AHUs may make air balancing (commissioning) easier and reduce the need for automated balance or pressure controls.</li>
+            <li>Total energy costs may be lower, as each zone uses only what it needs and may be turned down to use much less energy if idle, without the use of automated balancing controls.</li>
+            <li>The use of multiple smaller AHUs allows the main distribution ducts to be smaller, and therefore, easier to route in smaller ceiling voids.</li>
+            <li>Modifications to parts of a facility should be easier. Upgrades to a small AHU serving a single zone should be easier than changing a large single AHU, which serves many zones, without automated balancing controls.</li>
+            <li>The use of multiple AHUs allows easier separation of areas within a multi-product concurrent manufacturing plant. The potential for cross contamination of products via the HVAC system is minimized, hazardous materials can be isolated, and upstream processes for a single product can be isolated from those downstream. Air filtration also can address this issue.</li>
+        </ul>
+        <p>Disadvantages include:</p>
+        <ul>
+            <li>If once-through air is desired for all zones, there is less justification for more zoning of AHUs to reduce risk of cross-contamination between products. A single large system may be sufficient.</li>
+            <li>If an automated air balancing control system is employed, most of the advantages are offset by the ability of the control system to manage system changes.</li>
+            <li>Increased initial cost (more of the same controls for more systems).</li>
+            <li>Increased maintenance (more labor, more parts, more protocols).</li>
+        </ul>
+        <p>The decisions regarding AHU system zoning are important factors in subsequent facility commissioning, qualification, and related documentation. The decisions for zoning should be based on <span class="key-term">risk to product and to operators</span>, taking into account the preferred air filtration and monitoring technology.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：AHU 分區——多台小機 vs. 一台大機</h4>
+            <p>這是 HVAC 設計的第一個重大決策。ISPE 的分析框架：</p>
+            <table>
+                <tr><th>考量因素</th><th>多台小 AHU</th><th>一台大 AHU</th></tr>
+                <tr><td>可靠性</td><td>高（一台故障不影響其他區域）</td><td>低（單點故障影響全廠）</td></tr>
+                <tr><td>交叉污染風險</td><td>低（區域隔離）</td><td>高（共用風管系統）</td></tr>
+                <tr><td>調試難度</td><td>簡單</td><td>需要自動平衡控制</td></tr>
+                <tr><td>能源效率</td><td>佳（閒置區可降載）</td><td>較差</td></tr>
+                <tr><td>初始成本</td><td>較高</td><td>較低</td></tr>
+                <tr><td>維護成本</td><td>較高</td><td>較低</td></tr>
+                <tr><td>改建彈性</td><td>高</td><td>低</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 的特殊考量</h4>
+            <p>對於多產品 CDMO 來說，AHU 分區設計直接影響營運彈性：</p>
+            <ul>
+                <li><strong>交叉污染控制</strong>：不同客戶的產品不應共用 AHU——即使有 HEPA 過濾，法規和客戶稽查都會質疑</li>
+                <li><strong>同時生產（Concurrent Manufacturing）</strong>：ISPE 明確指出多台 AHU 可以更容易實現多產品同時生產</li>
+                <li><strong>產品特性差異</strong>：一些產品需要低濕度、一些需要密閉排氣——不同 AHU 可以獨立設定</li>
+                <li><strong>決策原則</strong>：以「產品風險和操作人員風險」為基礎——這符合 ICH Q9 風險管理的精神</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 正在規劃新廠房，有三條產線：口服固體劑型、無菌充填、高活性 API 製劑。最佳 AHU 分區策略：</p>
+            <ul>
+                <li>無菌充填區：獨立 AHU + 全新風或高效回風過濾</li>
+                <li>高活性 API 製劑區：獨立 AHU + 全排氣（Once-Through）+ 排氣處理</li>
+                <li>口服固體劑型區：可分為壓片、包衣、包裝等子區域，每區獨立 AHU</li>
+            </ul>
+            <p>每增加一台 AHU 雖然增加初始和維護成本，但降低的交叉污染風險和增加的營運彈性在 CDMO 商業模式中價值更大。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.2.3 Basic System Types -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-823">8.2.3 Basic System Types（基本系統類型）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.2.3.1 Once-Through HVAC Systems</h3>
+        <p><span class="key-term">Once-through HVAC systems</span> supply treated outside air to satisfy the design conditions for a space. This air is then extracted from the space and exhausted to the atmosphere.</p>
+        <p>Advantages:</p>
+        <ul>
+            <li>Provides an abundance of oxygen rich fresh air to dilute contaminants and assure the health of personnel.</li>
+            <li>Can handle hazardous materials without recirculation into supply air; however, the extracted air may need treatment before it is discharged to the atmosphere.</li>
+            <li>Lower risk of cross contamination of products from another room, via HVAC system ducting.</li>
+            <li>Exhaust fans may be located remote from the AHU making exhaust duct routing simpler.</li>
+            <li>As there are fewer concerns about noise in the extract ductwork, it can usually be sized for a high velocity and smaller diameter, making it easier to route.</li>
+        </ul>
+        <p>Disadvantages:</p>
+        <ul>
+            <li>More expensive to operate than an equivalent recirculating system, particularly when cooling and heating. Energy recovery often is justifiable.</li>
+            <li>Air filter loading will be very high leading to frequent replacement.</li>
+            <li>Potential need for air treatment for exhausted air contaminated by the process.</li>
+            <li>Room conditions may be more difficult to control as the system needs to be sized to handle extreme outdoor air conditions, but may operate most of the time under much less load.</li>
+        </ul>
+
+        <h3>8.2.3.2 Recirculating Systems</h3>
+        <p>This system type is widespread; the room supply air is made up of a portion of treated outside air mixed with some of the air returned from the space. An equivalent portion of the air supplied to the room is either discarded or lost through leakage to adjacent areas, due to local area pressurization. The amount of outside air is driven by:</p>
+        <ul>
+            <li>IAQ requirements (see ASHRAE 62), about 20 CFM (35 cuM/hr) per occupant</li>
+            <li>the need to offset exhaust from the area</li>
+            <li>the need to provide excess air to pressurize the area</li>
+        </ul>
+        <p>Advantages:</p>
+        <ul>
+            <li>A smaller range of challenge to HVAC systems may result in better control of parameters, as heating/cooling equipment may be smaller.</li>
+            <li>Usually, less AHU air filter loading is required; therefore, less filter maintenance is required.</li>
+            <li>Usually, lower heating/cooling energy cost than once-through air systems.</li>
+            <li>A single once-through AHU may pre-treat outdoor air for numerous individual recirculated systems, concentrating pre-heating and humidity control in one unit, with potential energy savings.</li>
+        </ul>
+        <p>Disadvantages:</p>
+        <ul>
+            <li>Return air ductwork routing back to the AHU may complicate congestion above ceiling and make duct chases larger.</li>
+            <li>Potential for cross contamination, via the HVAC system. Requires adequate supply air filtration.</li>
+            <li>Potential for recirculation of odors and vapors. Poor design may result in inadequate fresh air supply for the health of personnel and room pressurization.</li>
+        </ul>
+
+        <h3>8.2.3.3 Exhaust (Extract) System</h3>
+        <p>Exhaust systems may be stand-alone systems that remove airborne contaminants from a work space. They may be interlinked to a once-through or recirculated air supply system. Used alone, the extract/exhaust system will create a negative DP in a room or space, drawing in air from the surroundings.</p>
+        <p>Advantages:</p>
+        <ul>
+            <li>Simple to operate. Makeup air for the fan is pulled from surrounding spaces.</li>
+            <li>It can be used to draw fresh air into an unventilated building, such as a warehouse, that does not require heating or cooling.</li>
+        </ul>
+        <p>Disadvantages:</p>
+        <ul>
+            <li>If used to capture large quantities of contaminants, such as from open processes, high energy costs will be associated with conditioned air being discarded. Exhaust system energy is greatly reduced if emissions from processes are contained within process enclosures.</li>
+            <li>If exhaust air is not adequately cleaned, stack height and velocity should be adequate to prevent re-entrainment in HVAC systems and to prevent personnel hazards.</li>
+            <li>Temperature and humidity are influenced by the surrounding area.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種系統類型的比較</h4>
+            <table>
+                <tr><th>特性</th><th>Once-Through（全新風）</th><th>Recirculated（再循環）</th><th>Exhaust（排氣）</th></tr>
+                <tr><td>交叉污染風險</td><td>最低</td><td>中等</td><td>不適用</td></tr>
+                <tr><td>能源成本</td><td>最高</td><td>最低</td><td>依規模</td></tr>
+                <tr><td>濾器壽命</td><td>最短</td><td>最長</td><td>不適用</td></tr>
+                <tr><td>環境控制精度</td><td>較難</td><td>較易</td><td>無控制</td></tr>
+                <tr><td>適用場景</td><td>高活性、高危害</td><td>一般 GMP 生產</td><td>輔助系統</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：三種系統就像三種通風方式</h4>
+            <ul>
+                <li><strong>Once-Through（全新風）</strong>= 開著所有窗戶 + 排風扇：新鮮空氣不斷進來，但冷暖氣全部吹走，電費驚人</li>
+                <li><strong>Recirculated（再循環）</strong>= 一般家用冷氣：大部分空氣在室內循環，只補充少量外氣，最省能源</li>
+                <li><strong>Exhaust（排氣）</strong>= 廚房抽油煙機：只把髒空氣抽走，靠門窗縫隙吸入周圍空氣</li>
+            </ul>
+            <p>實際藥廠通常是<strong>組合使用</strong>——潔淨區用再循環系統（省能源），高危害區用全新風（安全），局部用排氣系統（捕捉污染物）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Once-Through 系統的隱藏成本</h4>
+            <p>全新風系統在熱帶氣候（如台灣、東南亞）特別昂貴：</p>
+            <ul>
+                <li>夏天外氣 35°C / 80% RH → 需要大量冷卻和除濕能力</li>
+                <li>冬天外氣乾燥 → 可能需要加濕</li>
+                <li>全年外氣含大量微粒 → 預過濾器更換頻率大增</li>
+            </ul>
+            <p>ISPE 建議：如果使用全新風，<strong>Energy Recovery（能量回收）通常是合理的</strong>——可回收排氣中 50-80% 的能量。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.2.3.4-8.2.4 AHU in Parallel/Series & AHU Configurations -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-824">8.2.3.4-8.2.4 AHU Parallel/Series &amp; Blow-Through vs. Draw-Through（AHU 串並聯 &amp; 吹入式 vs. 抽入式）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.2.3.4 Use of Air Handling Units in Parallel or Series</h3>
+        <p>AHUs may be placed in <span class="key-term">series</span>, e.g., if a higher air pressure is required to offset the pressure drop through HEPA filters in ductwork to just one area served by the primary HVAC system. A common series configuration uses an AHU to precondition outdoor air as makeup air to one or more 'local' AHUs downstream. This minimizes or eliminates condensation at local AHUs, simplifies installation, and saves energy at the local AHU(s).</p>
+
+        <p>The use of <span class="key-term">parallel AHUs</span> is common practice where large areas are being conditioned. This approach increases reliability allowing acceptable conditions in the area to be maintained if one unit fails or when the load on the system is light. Parallel fan installations may be configured for 100% or reduced redundancy. In a 100% redundant installation, multiple fans are sized to be capable of meeting the entire load with one fan out of service.</p>
+
+        <p><strong>Example:</strong> A system with 2 fans each capable of delivering 50% of flow at design pressure may deliver as much as 70% of design capacity with one fan out of service because of a reduction in static pressure.</p>
+
+        <h3>8.2.3.5 Series Configuration for Outside Air Pretreatment</h3>
+        <p>In recirculating air systems, a separate, series air handler may be used to pre-treat incoming outside air rather than overcooling or chemical dehumidification of an entire recirculated air stream. This is a common configuration, particularly where the outside air conditions represent all or most of the latent load addressed by a system (e.g., in the tropics). In its most economical application, a central pre-conditioning unit may serve multiple recirculation systems.</p>
+
+        <h3>8.2.4 Air Handling Unit Configurations</h3>
+        <p>There are two basic types of AHU configuration: (1) <span class="key-term">blow-through</span> and (2) <span class="key-term">draw-through</span>. The term describes the relationship of the fan to the coils inside an AHU.</p>
+
+        <p><strong>8.2.4.1 Blow-Through Units:</strong> In blow-through units, air is drawn into the AHU through pre-filters, then blown through the coils. Advantages: (1) AHU discharge temperature can be at the cooling coil discharge air temperature, because fan heat is removed in the cooling coil — useful when heat loads are particularly high. (2) If the drain trap runs dry, treated air will blow out through the trap, not allowing contaminants to enter the AHU. Disadvantages: (1) Unit typically needs to be longer to allow a diffuser after the fan. (2) Air leaving the cooling coil may be saturated with moisture that could collect on final filters.</p>
+
+        <p><strong>8.2.4.2 Draw-Through Units:</strong> Pre-filters and coils are before the fan. Advantages: Unit is often smaller, and the motor and fan provide a small amount of reheat (usually 1 to 2°F, 1°C) to air coming off the cooling coil, which lowers the RH and prevents wetting final AHU HEPA filter banks. Disadvantages: If the drain trap is dry, untreated air can be drawn into the unit through the trap.</p>
+
+        <p><strong>8.2.4.3 Air Handling Unit Design Variations:</strong> A <span class="key-term">face and bypass damper</span> to direct a portion of the air stream for further treatment should be considered. This approach helps to achieve more precise control of a parameter, particularly when it is not easily controllable. Careful selection and sizing of the dampers is necessary to achieve the correct operation and to maintain constant system volume as the proportions of the air streams are varied.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Blow-Through vs. Draw-Through</h4>
+            <table>
+                <tr><th>特性</th><th>Blow-Through（吹入式）</th><th>Draw-Through（抽入式）</th></tr>
+                <tr><td>風機位置</td><td>盤管上游（風機把空氣吹過盤管）</td><td>盤管下游（風機把空氣抽過盤管）</td></tr>
+                <tr><td>出風溫度</td><td>等於冷卻盤管出口溫度</td><td>比冷卻盤管出口高 1-2°F（風機加熱）</td></tr>
+                <tr><td>HEPA 風險</td><td>較高（飽和空氣可能弄濕 HEPA）</td><td>較低（風機再熱降低 RH）</td></tr>
+                <tr><td>排水陷阱乾涸</td><td>空氣向外吹出（安全）</td><td>外部空氣被吸入（危險）</td></tr>
+                <tr><td>體積</td><td>較大（需要擴散器）</td><td>較小</td></tr>
+            </table>
+            <p><strong>Draw-Through 是藥廠更常見的選擇</strong>——體積小、風機自帶再熱功能可保護 HEPA。但要注意排水陷阱（Drain Trap）的設計。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：串聯 AHU 就像兩段式淨水</h4>
+            <p>串聯 AHU 特別適合<strong>熱帶地區</strong>（如台灣）：一台中央 AHU 先處理外氣的高溫高濕（預調節），再把預處理過的空氣分配給下游各區域的 AHU 做精密調節。就像淨水系統先用大型前處理設備去除大部分雜質，再讓各樓層的小型淨水器做最後精製。</p>
+            <p>好處：下游 AHU 不需要處理極端的外氣條件，設備可以更小、控制更精準。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：並聯冗餘設計的 70% 法則</h4>
+            <p>ISPE 的範例很經典：兩台各 50% 容量的風機並聯，一台故障時另一台可以提供 70%（而非 50%）的設計風量。原因：風管阻力與風量的平方成正比，風量減少時阻力大幅下降，單台風機的工作點往高風量方向移動。</p>
+            <p>這個概念對 CDMO 特別重要——可以在不完全停產的情況下維持基本的環境控制。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Drain Trap 乾涸是隱形風險</h4>
+            <p>排水陷阱（Drain Trap）乾涸看似小事，但在 Draw-Through 系統中會讓<strong>未經過濾的外部空氣被吸入 AHU</strong>——直接繞過所有過濾系統。預防措施：</p>
+            <ul>
+                <li>設計自動補水裝置</li>
+                <li>定期巡檢確認水封完整</li>
+                <li>陷阱高度要足夠抵抗系統負壓</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.3 Pressure Control Strategies -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-83">8.3 Pressure Control Strategies（壓差控制策略）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.3.1 Airflow Direction or Measurable DP?</h3>
+        <p>GMPs for classified spaces, such as EMEA Grade B or FDA ISO7/Grade 7, require a <span class="key-term">measurable DP</span> between cleanrooms and adjacent less clean spaces, in the order of <span class="key-term">10 to 15 Pa</span> (0.04 to 0.06 inch wg) DP between air classes. Airlocks can prevent DP between air classes from dropping to zero when doors are opened between the classes.</p>
+
+        <p>Products in rooms that are not classified may be protected by measurable DP or by airflow velocity and direction that cannot be measured with traditional DP instrumentation.</p>
+
+        <p>Oral solid dosage facilities and laboratories often are protected by airflow patterns between rooms that can be verified by <span class="key-term">"smoke testing"</span> or by calculating the offset between supply and return/exhaust airflow, taking into account the measurement accuracy.</p>
+
+        <p>When DP sensors and airlocks are used, satisfactory protection can be achieved at the lowest range of current DP sensor technology. An outward airflow of 100 to 200 ft/min (0.5 to 1 m/sec) can keep airborne particles from passing through an opening. The DP needed to create this velocity (&lt; 1 Pa) is lower than current DP sensor accuracy (+/- 1.2 Pa). If a DP sensor is used for non-classified spaces; therefore, a DP reading of greater than the instrument accuracy is justified (usually 2 Pa minimum DP or more commonly 5 Pa, which also satisfies WHO 937 recommendations).</p>
+
+        <h3>8.3.2 Automated Differential Pressure Control</h3>
+        <p>There is no GMP requirement that DP or airflow direction be automatically controlled (such as by using actuated dampers or CV devices). Satisfactory designs using <span class="key-term">"static" air balance</span> to achieve desired DP values are common in the pharmaceutical industry and are successful because:</p>
+        <ul>
+            <li>Airflow to the room is constant:
+                <ul>
+                    <li>Terminal HEPA filters do not load very quickly, because they are preceded by a protective high efficiency filter in the air handler.</li>
+                    <li>CV devices can also keep airflow to each zone constant; however, this adds a level of complexity.</li>
+                </ul>
+            </li>
+            <li>There are no significant variable flows for air leaving the room:
+                <ul>
+                    <li>There are no on/off extract systems.</li>
+                    <li>Door seals and pass-throughs are diligently maintained so leakage through them is constant and pressure degrades very slowly.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：壓差 vs. 氣流方向——選擇依據</h4>
+            <p>ISPE 將壓差控制分為兩個層次：</p>
+            <ul>
+                <li><strong>分級空間（Classified Spaces）</strong>：必須有<strong>可量測的壓差（Measurable DP）</strong>——10-15 Pa</li>
+                <li><strong>非分級空間（Non-Classified）</strong>：可以用<strong>氣流方向</strong>代替壓差量測——透過煙霧測試（Smoke Test）或風量差計算驗證</li>
+            </ul>
+            <p>關鍵數據：保持微粒不通過開口的氣流速度只需 0.5-1 m/s，對應的壓差 &lt; 1 Pa。但現有壓差感測器精度約 +/- 1.2 Pa，所以非分級空間的最低壓差建議至少 2 Pa，更常見 5 Pa。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「不需要自動壓差控制」——但有條件</h4>
+            <p>ISPE 明確指出：<strong>GMP 並不要求自動壓差控制</strong>。「靜態平衡（Static Air Balance）」——在 Commissioning 時手動調好風量——在藥廠中很常見且成功。但前提是：</p>
+            <ul>
+                <li>送風量恆定（HEPA 負載緩慢，有預過濾器保護）</li>
+                <li>沒有開關式排氣系統</li>
+                <li>門封和傳遞窗維護良好，洩漏量恆定</li>
+            </ul>
+            <p>如果這些條件不成立（例如有粉塵處理排氣的開關），就可能需要自動控制。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間口服固體劑型的壓片間，不需要分級，但需要防止粉塵擴散到走廊。你會用壓差控制還是氣流方向控制？為什麼？</li>
+                <li>為什麼「靜態平衡」在 HEPA 過濾器剛換和快換時的壓差表現不同？這對維護計畫有什麼啟示？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.3.3 Airlocks -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-833">8.3.3 Airlocks（氣鎖室）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The primary role of <span class="key-term">airlocks</span> is to provide an effective obstacle to airborne contamination.</p>
+
+        <p>In order to minimize the amount of air that is needed to maintain airborne particle transport velocities (usually greater than 100 fpm or 0.5 m/s), the doors of a contamination controlled space should remain closed. An open door of 21 square feet (2 square meters) area would need a very high airflow through it (i.e., 2100 CFM, 3500 CuM/hr) to contain airborne particles. A closed door of 21 square feet area may need less than 100 CFM (160 CuM/hr) leaking through only its cracks to keep particles out.</p>
+
+        <p>An <span class="key-term">interlocking system</span> or a visual or audible warning system is recommended to prevent the opening of more than one door at a time (required for sterile facilities by EU GMP Annex 1).</p>
+
+        <p>Airlocks also may:</p>
+        <ul>
+            <li>maintain a DP between the two areas, avoiding low DP alarms</li>
+            <li>Provide a location for gowning or de-gowning prior to entering or upon exiting a classified space. Two or more airlocks in series may be used for "staged gowning."</li>
+            <li>Be designed with a small volume but a modest airflow, yet still have a high air change rate to allow them to recover quickly from high airborne particulate levels.</li>
+            <li>Provide a location for sanitizing/decontamination of incoming or outgoing materials and equipment (Material Air Lock, MAL).</li>
+            <li>Act as a high pressure or low-pressure buffer (anteroom) to control the ingress and egress of contaminants for special processes.</li>
+        </ul>
+
+        <p>Specific small material airlocks, called <span class="key-term">'pass-throughs,'</span> are too small for personnel use, but can experience high air change rates just from leakage through their access doors. For very clean rooms (Grade 7 or cleaner), pass-throughs should be ventilated with HEPA filtered air.</p>
+
+        <p>Many non-aseptic facilities have <span class="key-term">bi-directional airlocks</span>, i.e., they are used for passage in as well as passage out. HVAC system design should be similar to that for one-way airlocks, but more frequent air changes may be necessary if in and out activities are close together in time.</p>
+
+        <h3>8.3.3.1 Cascade</h3>
+        <p>The <span class="key-term">"cascade"</span> pressurization scheme should be used when there are area cleanliness classification requirements but few containment issues, or there are containment issues but no cleanliness classification requirements. The normal differential from one air class to the next (across the airlock) is 10 to 15 Pa. The pressure inside the airlock is somewhere between the two adjoining spaces. When only one door of an airlock is opened, a measurable DP between the air classes persists.</p>
+
+        <h3>8.3.3.2 Special Airlocks/Anterooms</h3>
+        <p>If there are requirements for both area cleanliness classification and product containment, the use of <span class="key-term">pressure sinks</span> and <span class="key-term">bubbles</span> may be required. Pressure bubbles usually are used for 'uncontaminated operations' (e.g., gowning or material entry airlock). Pressure sinks usually are used for 'contaminated operations' (e.g., de-gowning, material decontamination/exit airlock).</p>
+
+        <h3>8.3.3.3 Positive Pressure Bubble</h3>
+        <p>The normal design pressure target for a 'bubble' pressurization scheme, with doors closed, between room classifications should be 10 to 15 Pa. The bubble should be at the same in-operation air class as the cleaner room it serves, because air exfiltrates to the classified room. The pressure of the 'bubble' is usually designed to be about 5 to 8 Pa above the higher of the two room pressures. Supply airflow to the bubble should be much greater than return airflow, which may be zero if there is sufficient leakage.</p>
+
+        <h3>8.3.3.4 Negative Pressure Sink</h3>
+        <p>With the <span class="key-term">"sink"</span> pressurization scheme, the normal design pressure between classifications should be 10 to 15 Pa with doors closed. The pressure of the contaminated airlock 'sink' usually is designed to be about 5 to 8 Pa below the lesser of the two room pressures. Although more air needs to be removed from the airlock than is supplied, supplying some airflow to the sink is recommended to facilitate quicker recovery from the contaminated state.</p>
+
+        <h3>8.3.3.5 Pass-Through Boxes</h3>
+        <p>A <span class="key-term">pass-through box</span> is a very small airlock used for material transfer from one zone to another. Pressure cascades should follow the product requirements; for classified spaces, there should be a cascade from cleanest area downward. If high degrees of cleanliness or fast recovery are needed, ventilation (often with HEPA filtered air) is common.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種氣鎖壓力配置</h4>
+            <table>
+                <tr><th>配置</th><th>適用場景</th><th>壓力關係</th></tr>
+                <tr><td>Cascade（梯級）</td><td>只有潔淨分級或只有密閉需求</td><td>潔淨側 → 氣鎖 → 非潔淨側，壓力依次遞減</td></tr>
+                <tr><td>Bubble（正壓氣泡）</td><td>需同時滿足潔淨分級 + 密閉，「未污染操作」側</td><td>氣鎖壓力高於兩側房間</td></tr>
+                <tr><td>Sink（負壓阱）</td><td>需同時滿足潔淨分級 + 密閉，「已污染操作」側</td><td>氣鎖壓力低於兩側房間</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：門的物理學</h4>
+            <p>開門 vs. 關門的空氣需求差異驚人：</p>
+            <ul>
+                <li><strong>2 m2 的開門</strong>：需要 3,500 m3/hr 的氣流才能阻擋微粒通過</li>
+                <li><strong>同尺寸的關門</strong>：只需 160 m3/hr 通過門縫即可——差了 20 倍以上！</li>
+            </ul>
+            <p>這就是為什麼氣鎖室的門互鎖（Interlocking）如此重要——EU GMP Annex 1 對無菌設施已經是強制要求。如果兩扇門同時打開，等於失去了壓差屏障。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Bubble vs. Sink 的選擇邏輯</h4>
+            <p>當同時需要潔淨分級和產品密閉時：</p>
+            <ul>
+                <li><strong>進入時（更衣、物料進入）</strong>→ 使用 Pressure Bubble（正壓）：氣鎖內的空氣向兩側洩漏，防止外部污染進入，也防止內部危害物質洩出</li>
+                <li><strong>退出時（脫衣、物料消毒退出）</strong>→ 使用 Pressure Sink（負壓）：氣鎖內的空氣被抽走，任何從房間帶出的污染物都被吸住</li>
+            </ul>
+            <p>Bubble 的潔淨等級應與它服務的較潔淨房間相同——因為 Bubble 的空氣會洩漏進入那間潔淨室。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; border-color:#22c55e !important;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 有一間 Grade B（ISO 7）無菌充填室，操作高活性 API。需要同時保護產品（潔淨）和操作人員（密閉）。氣鎖設計：</p>
+            <ul>
+                <li><strong>人員更衣氣鎖（進入側）</strong>：Pressure Bubble，壓力高於 Grade B 室 5-8 Pa，Grade B 等級</li>
+                <li><strong>人員脫衣氣鎖（退出側）</strong>：Pressure Sink，壓力低於兩側 5-8 Pa，配備排氣處理</li>
+                <li><strong>物料傳遞窗</strong>：HEPA 通風，從 Grade B 側向外梯級壓差</li>
+                <li>所有門配備互鎖系統——Annex 1 強制要求</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.3.4-8.3.5 DP and Air Leakage / DP Measurement -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-834">8.3.4-8.3.5 Determining DP &amp; Air Leakage / DP Measurement（壓差與空氣洩漏計算 / 壓差量測）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.3.4 Determining DP and Air Leakage</h3>
+        <p>For operational reasons, it often is necessary to have pressure differentials between rooms within the same air class area. The minimum operational differential between areas of the same classification (where required) is suggested to be <span class="key-term">1.5 Pa</span> with a design target of <span class="key-term">5 Pa as a minimum</span>, because of limits of sensor technology. Directional air flows may be needed for operational reasons, without a measurable pressure differential.</p>
+
+        <p>Pressure relationships usually are not possible across open doors between air classes when no airlocks are present. Without the added protection provided by the airlock, excessive airflow volumes would be required to maintain measurable DPs.</p>
+
+        <p>The airflow leakage rate should be calculated for each room. This calculation should be based on the known architecture and the design pressure differential established in the project documents. <span class="key-term">It should not be based on an arbitrary method, e.g., percentage of supply air.</span></p>
+
+        <p>The door perimeter (especially if silencers are employed without door gaskets) is the primary path of room air leakage; therefore, doors and door frames are critical components of the facility construction. Common practice is to design for a 1/8 inch (3 mm) average crack between the door and frame on sides and top, and 0.25 inch to 0.5 inch (7 mm to 15 mm) on the bottom.</p>
+
+        <p>The calculated room leakage may exceed the design air change rate for small rooms, e.g., airlocks. In these instances the total supply air to the space should match the calculated leakage. The design should allow for some return air from the space, in case the actual leakage is less than calculated. The return is often sized for 50% to 80% the supply airflow into the room.</p>
+
+        <p>It is considered <span class="key-term">GEP</span> to put a tighter specification on the supply air volume (which is more critical to maintain the room conditions) and a broader design range on the return air flow.</p>
+
+        <h3>8.3.5 DP Measurement</h3>
+        <p>Two methods of measurement are commonly used to monitor room pressure relationships:</p>
+        <ul>
+            <li><strong>room-to-room</strong></li>
+            <li><strong>room-to-common reference point</strong></li>
+        </ul>
+        <p>Larger facilities needing to record numerous pressure differentials usually use the <span class="key-term">common reference point</span> method to minimize the number of pressure sensors and to minimize compounded error. One port of the DP transmitter is piped to the room being monitored and the other side is piped to a common reference in a pressure-stable location not under the influence of outdoor wind.</p>
+        <p>The ideal pressure reference location has a large volume, few openings, and an unvarying pressure relationship to the outdoors, for example: mechanical equipment rooms, the interstitial space above all the pressurized rooms, or an open general building space that adjoins the pressurized suite.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：壓差設計的關鍵數據</h4>
+            <p>ISPE 提供了非常具體的壓差設計指引：</p>
+            <ul>
+                <li><strong>不同潔淨等級之間</strong>：10-15 Pa（透過氣鎖量測）</li>
+                <li><strong>相同等級不同房間</strong>：最低 1.5 Pa 可運作，設計目標至少 5 Pa</li>
+                <li><strong>非分級空間</strong>：至少 2 Pa（超過感測器精度）</li>
+            </ul>
+            <p><strong>門縫設計假設</strong>：側面和頂部 3 mm，底部 7-15 mm——這些「小數字」決定了整個房間的洩漏風量計算。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：洩漏計算不能用「百分比法」</h4>
+            <p>ISPE 明確反對用「供氣量的 X%」作為洩漏估算——這是業界常見的偷懶做法。正確方法是基於：</p>
+            <ul>
+                <li>已知的建築結構（門數量、門縫尺寸、傳遞窗數量）</li>
+                <li>設計壓差值</li>
+                <li>ASHRAE Handbook 的計算公式（見 Appendix 1）</li>
+            </ul>
+            <p>百分比法的風險：可能嚴重低估或高估——低估導致壓差不足，高估導致能源浪費和 AHU 過大。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：兩種壓差量測方法</h4>
+            <p><strong>Room-to-Room（房間對房間）</strong>：適合小型簡單設施，直接量測最關鍵的壓差關係。</p>
+            <p><strong>Room-to-Common Reference（房間對共用參考點）</strong>：適合大型設施，減少感測器數量和累積誤差。參考點應選在壓力穩定的位置（如機械設備間、技術夾層）。</p>
+            <p>注意：戶外壓力作為參考點在理論上很直覺，但實際上因天氣影響很難穩定——不建議使用。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：GEP——送風規格嚴、回風規格寬</h4>
+            <p>ISPE 提出一個實用的工程原則：<strong>送風量應有嚴格的規格，回風量應有較寬的設計範圍</strong>。原因：</p>
+            <ul>
+                <li>送風量直接決定房間的潔淨度和溫濕度——必須精確</li>
+                <li>回風量 = 送風量 - 洩漏量，但實際洩漏量與計算值可能有差距</li>
+                <li>回風管通常設計為送風量的 50-80%，留有餘量應對實際洩漏偏低的情況</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8.4 Ventilation Strategies -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec-84">8.4 Ventilation Strategies / 8.4.1 Room Air Supply Distribution（通風策略 / 房間送風分配）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8.4.1 Room Air Supply Distribution</h3>
+        <p>There are two basic types of room air supply distribution:</p>
+        <ol>
+            <li><span class="key-term">dilution air supply distribution</span></li>
+            <li><span class="key-term">displacement air supply distribution</span></li>
+        </ol>
+
+        <h3>8.4.1.1 Dilution Air Distribution</h3>
+        <p>In a dilution air supply distribution design, room air is mixed continuously with supply air to help achieve uniform air temperatures within a room. In areas where temperature uniformity is the only factor, aspirating-type diffusers allow turbulent mixing of room air with supply air. From a particulates perspective, this dilution also can mix 'less clean' room air with clean supply air; <span class="key-term">non-aspirating-type diffusers</span> are preferred in clean classified rooms.</p>
+
+        <p>Non-aspirating diffusers reduce undesirable mixing effects, but do not eliminate turbulent air patterns in a room. The overall particulate level in a room can be reduced through dilution by increasing the flow of the clean air supply.</p>
+
+        <p>Dilution air supply distribution with non-aspirating diffusers (typically perforated face plate covering the terminal HEPA face) is acceptable to clean classified areas up to <span class="key-term">Grade 7 (EU Grade B)</span>. This method is also preferred where powders are handled and may become airborne.</p>
+
+        <h3>8.4.1.2 Displacement Air Distribution</h3>
+        <p>In a displacement air supply distribution design, such as for <span class="key-term">Grade 5</span> areas, airborne particles in a room are displaced by clean terminal HEPA filtered air flowing in one direction. This design requires nearly continuous HEPA coverage at the ceiling and properly sized and located low level returns or exhaust grilles. Rooms of lesser classification (Grade 6 or 7) may have a number of ceiling supply outlets, but with much less than 100% coverage to create a downflow air pattern (plug flow).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Dilution vs. Displacement——潔淨等級決定選擇</h4>
+            <table>
+                <tr><th>特性</th><th>Dilution（稀釋式）</th><th>Displacement（置換式）</th></tr>
+                <tr><td>原理</td><td>潔淨空氣與室內空氣混合稀釋</td><td>潔淨空氣「推」走室內空氣</td></tr>
+                <tr><td>散流器</td><td>Non-Aspirating（非吸引式）</td><td>HEPA 面板，均勻向下氣流</td></tr>
+                <tr><td>HEPA 覆蓋率</td><td>部分覆蓋</td><td>接近 100% 天花板覆蓋</td></tr>
+                <tr><td>適用等級</td><td>最高到 Grade 7 / ISO 7（EU Grade B）</td><td>Grade 5 / ISO 5（EU Grade A）</td></tr>
+                <tr><td>氣流模式</td><td>混合流（Turbulent/Mixed）</td><td>單向流（Unidirectional/Plug Flow）</td></tr>
+                <tr><td>成本</td><td>較低</td><td>顯著較高</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：泳池的兩種清潔方式</h4>
+            <p><strong>Dilution（稀釋）</strong>就像在髒水池中不斷加入乾淨水——髒水被稀釋，整池水逐漸變乾淨，但永遠不可能完全乾淨。加水越快，水越乾淨。</p>
+            <p><strong>Displacement（置換）</strong>就像從泳池的一端推入乾淨水，把髒水從另一端擠出去——乾淨水和髒水之間有明確的界線。這就是 ISO 5 單向流的原理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Grade 7 (ISO 7) 的關鍵分界線</h4>
+            <p>ISPE 指出 Dilution 方式最高可接受到 Grade 7（EU Grade B），這是一個重要的設計分界線：</p>
+            <ul>
+                <li><strong>Grade 7 及以下</strong>：Dilution + Non-Aspirating Diffuser + 部分 HEPA 覆蓋</li>
+                <li><strong>Grade 5</strong>：必須 Displacement + 接近 100% HEPA 天花板覆蓋 + 低位回風</li>
+                <li><strong>Grade 6</strong>：介於兩者之間，多個天花板送風口，但覆蓋率低於 100%</li>
+            </ul>
+            <p>在 CDMO 環境中，理解這個分界線直接影響設施設計成本和營運效率。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一間 Grade 7 背景區（EU Grade B）採用 Dilution 送風。如果需要在同一房間內設置 Grade 5 的局部區域（RABS 或 Isolator），送風策略應如何調整？</li>
+                <li>為什麼 ISPE 說 Dilution 方式「也適合處理可能飛揚的粉塵的場所」？Displacement 方式處理粉塵有什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>AHU 組成</strong>：金屬箱體 + 風機 + 加熱/冷卻盤管 + 過濾器 + 加濕/除濕器，是 HVAC 的核心設備，影響所有五大環境參數</li>
+        <li><strong>盤管系統</strong>：Preheat Coil 防凍保護；Cooling Coil 兼做除濕（注意 Mist Eliminator 和排水）；Reheat Coil 用於除濕後再加熱；Re-cool Coil 用於乾燥劑後降溫</li>
+        <li><strong>加濕器水源</strong>：Clean Steam 浪費、Re-boiler 蒸汽推薦、Plant Steam 只限非生產區；閒置時微生物風險不可忽略</li>
+        <li><strong>除濕兩階段</strong>：冷卻盤管除濕到 30-40% RH → 乾燥劑除濕到更低（兩者串聯最經濟）</li>
+        <li><strong>過濾層級</strong>：Pre-filter → Intermediate → Final (95% DOP/HEPA) → Terminal HEPA，每層保護下一層</li>
+        <li><strong>三種系統類型</strong>：Once-Through（高安全、高能耗）、Recirculated（經濟主流）、Exhaust（輔助用途）</li>
+        <li><strong>AHU 配置</strong>：Draw-Through 較常見（自帶再熱保護 HEPA），Blow-Through 適合高熱負荷場景</li>
+        <li><strong>壓差控制</strong>：分級空間 10-15 Pa；同級別房間設計目標 ≥ 5 Pa；靜態平衡在條件滿足時可行，不一定需要自動控制</li>
+        <li><strong>氣鎖三配置</strong>：Cascade（單一需求）、Bubble（正壓，乾淨操作進入側）、Sink（負壓，污染操作退出側）；門互鎖是 Annex 1 強制要求</li>
+        <li><strong>送風分配</strong>：Dilution 適用到 Grade 7（稀釋混合），Displacement 用於 Grade 5（單向流置換）——潔淨等級決定選擇</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>
