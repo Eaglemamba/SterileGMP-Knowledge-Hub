@@ -210,6 +210,30 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PDA/PtC-13-Complete.md
+**Report:** PDA PtC-13: Materials in ATMP Manufacturing (2025)
+**Pages:** p1–p35 | **Sections:** 5
+
+**Covers questions about:**
+- ATMP material categories: starting materials, ancillary materials, excipients, single-use components, CCS
+- Primary/Secondary/Tertiary Animal-Derived and Human-Derived material classification
+- What is a "critical raw material" under EU vs US regulatory definitions
+- Risk-based material qualification strategy for ATMP: phase-appropriate approach
+- TSE/BSE safety requirements for animal-derived ATMP materials
+- Microbial and viral safety testing requirements (Table 3.2-1 cross-regulatory overview)
+- ID testing: US (21 CFR 211.84(d)(2)) vs EU (EudraLex Vol.4 CoA-based) requirements
+- Single-use component qualification for ATMP (cryobags, vials, extractables & leachables)
+- Risk-based supplier qualification: tiering, audit strategy, SQA requirements
+- Managing RUO-grade material suppliers with immature GMP systems
+- Lifecycle management for commercial ATMP manufacturing (Q5.1–Q5.4)
+- IND filing material requirements, cross-contamination control, gRNA/nuclease quality
+
+**Key terms:** ATMP, critical raw material, ancillary material, primary animal-derived, secondary animal-derived, TSE, BSE, CJD, sterility assurance, ID testing, CoA, CoO, RUO (Research Use Only), IND, single-use component, extractables and leachables, supplier qualification, SQA, gRNA, AAV, CAR-T, autologous, allogeneic, phase-appropriate, PIC/S Annex 2A, EudraLex Vol.4
+
+**Sections:** Section 0 (Intro, Glossary, Abbreviations) → Topic 1-2 (Categories & Strategy) → Topic 3a (Q3.1-Q3.2 Qualification) → Topic 3b-4 (Single-Use & Supplier) → Topic 5 (Lifecycle & References)
+
+---
+
 ## PDA/PtC-14-Complete.md
 **Report:** PDA PtC-14: Manufacturing of ATMPs — Facility Design
 **Pages:** p6–p55 | **Sections:** 6
@@ -595,7 +619,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | Guide-No1 ★★ (syringe filling machine)
 
 **Supplier / Vendor Qualification (供應商確認)**
-→ TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
+→ PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
 → TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
@@ -613,7 +637,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
-→ PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
+→ PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
+
+**ATMP Raw Materials / Material Qualification (ATMP原材料/材料資格認定)**
+→ PtC-13 ★★★ (complete material strategy: categories, risk-based qualification, supplier, lifecycle) — single primary source
+
+**TSE/BSE / Animal-Derived Materials (TSE/BSE/動物源材料)**
+→ PtC-13 ★★★ (safety requirements, regulatory overview Table 3.2-1, human/animal-derived classification) — single primary source
 
 **Powder Filling (粉末充填)**
 → Guide-No1 ★★★ (auger, vacuum powder systems) — single-report topic

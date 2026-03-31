@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-13 - Section 3a: Risk-Based Material Qualification (Q3.1 & Q3.2)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SECTION-SPECIFIC: Sky Blue accent for PtC-13 ===== */
+.ptc13-accent {
+    border-left-color: #0284c7 !important;
+}
+.ptc13-tag {
+    background: #e0f2fe;
+    color: #0284c7;
+    border: 1px solid #7dd3fc;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Figure placeholder styling */
+.figure-placeholder {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px dashed #0284c7;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: #0369a1;
+}
+
+.figure-placeholder p {
+    font-style: italic;
+    color: #0369a1 !important;
+    margin-bottom: 0.25rem !important;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header" style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);">
+    <div style="margin-bottom:0.5rem;">
+        <span class="ptc13-tag" style="background:rgba(255,255,255,0.2); color:white; border-color:rgba(255,255,255,0.4);">PDA PtC-13</span>
+    </div>
+    <h1>Section 3a — Topic 3: Risk-Based Material Qualification</h1>
+    <div class="subtitle">Q3.1 Key Considerations &amp; Q3.2 General Requirements — Biological Safety, ID Testing &amp; Phase-Appropriate Strategy</div>
+    <div class="page-info">PDA Points to Consider No. 13: Materials in ATMP Manufacturing (2025) | p11 – p21</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 ATMP 物料合格審定 (Material Qualification) 的風險導向框架，並能區分臨床早期與商業化階段的不同要求。</li>
+        <li>掌握生物安全關鍵物料屬性 (Critical Material Attribute: Biological Safety) 的核心管控要求，包含 TSE/BSE、病毒安全性及無菌保證的限制。</li>
+        <li>能夠解讀 Table 3.2-1（微生物/病毒安全性法規概覽）及 Table 3.2-2（美國 vs 歐盟 ID 測試法規比較），並應用於 CDMO 實際工作。</li>
+        <li>理解美國 21 CFR 211.84(d)(2) 與歐盟 EudraLex Vol. 4 在身份鑑別測試 (ID Testing) 上的關鍵差異，並能為 ATMP 製造設計合規策略。</li>
+        <li>區分自體 (Autologous) 與異體 (Allogeneic) 細胞治療在物料測試上的差異要求，包含供體同意書的商業化注意事項。</li>
+        <li>了解取樣及留樣策略 (Material Sampling and Retain Requirements) 對 ATMP 的特殊挑戰，並能說明合理的豁免依據。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: Topic 3 Intro + Q3.1 -->
+<!-- ============================================================ -->
+<div class="section-title" style="border-bottom-color: #0284c7;">Topic 3 — Risk-Based Material Qualification: Overview &amp; Q3.1</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Topic 3. Risk-Based Material Qualification</h3>
+        <p>
+            ATMP material qualification follows a <span class="key-term">risk-based approach</span> (see PDA Technical Report No. 81: Cell-Based Therapy Control Strategy for risk assessment examples). Besides the general requirements, which apply to all clinical stages and commercial manufacturing, several requirements differentiate between early- and late-stage clinical to commercial transition. These differences must be considered when developing a comprehensive strategy that is also <span class="key-term">phase appropriate</span>. Further, the sponsor of a clinical trial (manufacturer) is responsible for managing critical material information, like the <span class="key-term">Certificate of Analysis (CoA)</span>, Certificate of Origin, and material numbers, from material suppliers because health authorities require this information in regulatory filings to ensure traceability and consistent quality of material. Appropriate <span class="key-term">supplier management</span>, along with phase-appropriate material testing, where required, are the key elements of qualification.
+        </p>
+
+        <h3>Q 3.1. What are key considerations for ATMP material qualification and specification setting?</h3>
+        <p>
+            <span class="key-term">Critical material attributes</span> should be established based on the intended material use and final product quality. Material specifications are intended to ensure that materials meet the compliance requirements of the appropriate market and to ensure materials consistently meet the expected quality. Further, technical information regarding the composition, formulation, and characterization of critical materials is crucial for the assessment of suitability and safety. The level of risk related to the presence of organic and other impurities (e.g., nitrosamine, melamine, heavy metals, human allergens) must also be identified and evaluated.
+        </p>
+        <p>
+            For ATMPs that fall under <span class="key-term">PIC/S Guide to Good Manufacturing Practice for Medicinal Products regulation</span>, Annex 2A, Part A, Section 5.23 provides additional guidance. For more information on the qualification and specification of plasmids and vectors, see <em>PDA Points to Consider No. 11: Development, Classification, Manufacture, Control, and Testing of Plasmids and Vectors Used in ATMP Production</em>.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 風險導向合格審定框架</h4>
+            <p><strong>Risk-Based Material Qualification (風險導向物料合格審定):</strong> 意即不對每種物料採用相同的嚴格度，而是依據物料對病患安全與產品品質的影響程度，分層級分配測試資源。</p>
+            <p><strong>Phase-Appropriate (階段適切性):</strong> 臨床 Phase I 的物料合規要求，可比商業化生產寬鬆許多。隨著臨床進展，要求逐步升級。這是 ICH Q8/Q9/Q10 生命週期管理概念在物料層面的落地。</p>
+            <p><strong>Critical Material Attributes (CMA，關鍵物料屬性):</strong> 對應產品的 CQA（關鍵品質屬性），CMA 是物料本身必須符合的特性，例如：特定細胞激素的生物活性、質體的純度和序列完整性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 餐廳食材採購的分級管理</h4>
+            <p>想像一家高檔餐廳的食材採購策略：食鹽（非人/動物來源、低風險）只需看供應商 CoA；牛排（動物來源、中風險）要求產地證明和動物健康檢查；主廚特選生魚（高風險、直接入口）則每批到貨都要自己驗微生物。</p>
+            <p>ATMP 物料合格審定的邏輯完全相同——風險越高（越接近病患、越難後處理），合格審定就越嚴格、測試就越多。這就是「風險導向」的本質：<strong>把有限的測試資源花在刀刃上</strong>。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — CDMO 的 Supplier Management 義務</h4>
+            <p>PtC-13 明確指出：臨床試驗申辦者（即製造商）有責任向供應商索取並管理 <strong>CoA、Certificate of Origin（產地/來源證明）及物料編號</strong>，因為健康主管機關在 IND/IMPD 及 BLA/MAA 審核時，<strong>必定要求可追溯性文件</strong>。</p>
+            <p>CDMO 實務建議：在接受新客戶 ATMP 委託時，應在 Quality Agreement 中明確規定客戶提供這些文件的時間節點，避免因文件缺失延誤批次放行或法規申請。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 的物料合格審定分層策略</h4>
+            <p>一家 CDMO 同時承接多個 ATMP 計畫，物料合格審定如何規劃？建議依以下三層分類：</p>
+            <ul>
+                <li><strong>Tier 1（最高風險）:</strong> 人/動物來源物料（FBS、人血清）→ 每批次完整測試，供應商需提供 TSE/BSE 憑證。</li>
+                <li><strong>Tier 2（中等風險）:</strong> 直接接觸製程的試劑（細胞激素、質體）→ 收貨 ID 測試 + 依 CoA 驗收其他參數。</li>
+                <li><strong>Tier 3（低風險）:</strong> 化學定義培養基成分（無動物來源）→ 依供應商 CoA 驗收，定期稽核供應商。</li>
+            </ul>
+            <p>此策略對應 USP &lt;1043&gt; Ancillary Materials 的分層概念（Tier 1–3）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 Phase I 的 CAR-T 製造計畫，使用了含有 FBS 的培養基，從風險導向角度，您會建議哪些最低限度的合格審定措施？</li>
+                <li>PIC/S Annex 2A Section 5.23 與 ICH Q9 在物料合格審定的風險評估方法上有何互補關係？</li>
+                <li>為何「phase-appropriate」的概念在 ATMP 領域特別重要？與傳統小分子藥物相比有何差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: Q3.2 General Requirements — Biological Safety -->
+<!-- ============================================================ -->
+<div class="section-title" style="border-bottom-color: #0284c7;">Q3.2 General Requirements — Critical Material Attribute: Biological Safety</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 3.2. What are the General Requirements?</h3>
+        <p>
+            Prior to setting up the manufacturing process and whenever a change of the respective material is implemented, a <span class="key-term">quality risk management (QRM)</span> process should assess the overall risk to the entire manufacturing process and the resulting product.
+        </p>
+        <p>
+            Only materials that have been released by the <span class="key-term">Quality Unit</span> that are within their expiration or retest date should be used.
+        </p>
+
+        <h3>Critical Material Attribute: Biological Safety</h3>
+        <p>
+            Ensuring patient safety and preventing transmission of <span class="key-term">infectious diseases</span> is a general requirement for ATMP materials that applies to all clinical phases and commercial manufacturing.
+        </p>
+        <p>
+            <span class="key-term">Human- or animal-derived materials</span> (see Section 3.1 for a detailed definition) are tightly controlled by health authorities, as they pose the highest risk of transmitting pathogens to patients of all ATMP materials. The agreement between the ATMP manufacturer (or the Marketing Authorization Holder) and the supplier, including blood and tissue establishments, should contain clear provisions about the transfer of information. This should include the results of tests performed by the supplier, traceability data, and transmission of healthy donor information.
+        </p>
+        <p>Controls can include, but are not limited to:</p>
+        <ul>
+            <li>Testing for human and animal viruses and other adventitious agents like <span class="key-term">mycoplasma</span> and parasites.</li>
+            <li><span class="key-term">Virus inactivation</span> (e.g., heat inactivation, low pH treatment, filtration, gamma-irradiation), if possible.</li>
+            <li>Controlled sourcing and screening of human and animal materials to reduce the risk of <span class="key-term">CJD/TSE/BSE</span> transmission.</li>
+        </ul>
+
+        <div class="quote-box">
+            Note: Based on their inherent risk profile, autologous cell therapies are usually exempted from donor (patient) testing, per 21 CFR 1271.
+        </div>
+
+        <p>
+            Many suppliers of ATMP materials cannot guarantee sterility assurance compliant with <span class="key-term">Eur. Ph. 5.1.1</span>, EU Annex 1, EMA Guideline on the sterilization of the medicinal product, active substance, excipient and primary container, or similar regulations. Consequently, these raw materials should be considered as <span class="key-term">nonsterile</span> even if they have been 0.2 µm-filtered. Sponsors may mitigate the risk associated with these nonsterile raw materials for aseptic ATMP manufacturing by considering the following aspects:
+        </p>
+        <ul>
+            <li>Nonsterile materials should be added to the aseptic process via <span class="key-term">validated 0.2 µm filtration</span> steps followed by a filter-integrity test. A generic filter validation per the <span class="key-term">ASTM F838-20</span> standard or equivalent is acceptable.</li>
+            <li>Nonsterile raw materials should be tested for <span class="key-term">sterility</span> (e.g., USP &lt;71&gt;) or compendial <span class="key-term">microbial enumeration testing</span> (TAMC/TYMC) (e.g., USP &lt;61&gt;) with tight limits.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Q3.2 的雙重安全要求</h4>
+            <p>Q3.2 的「一般要求」實際上涵蓋兩個截然不同的安全面向：</p>
+            <ul>
+                <li><strong>生物安全 (Biological Safety):</strong> 防止人/動物病原體（病毒、TSE/BSE、支原體）傳播給病患——這是生物學層面的風險。</li>
+                <li><strong>無菌保證 (Sterility Assurance):</strong> 防止微生物（細菌、真菌）在製造過程中汙染產品——這是製程層面的風險。</li>
+            </ul>
+            <p>兩者不能混淆：一個「無菌」的物料，仍然可能帶有 TSE 病原體（Prion）；而一個有 TSE 憑證的物料，未必符合 Eur. Ph. 5.1.1 的無菌保證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — TSE/BSE 就像食安界的「狂牛症問題」</h4>
+            <p>TSE（Transmissible Spongiform Encephalopathies，傳播性海綿狀腦病）和 BSE（Bovine Spongiform Encephalopathy，牛海綿狀腦病，俗稱「狂牛症」）是由<strong>Prion（普利昂蛋白）</strong>引起的，這種蛋白異常折疊後無法被一般的滅菌方法（高壓滅菌、伽馬射線）消滅。</p>
+            <p>類比：就像一塊牛肉，即使高溫烹調後可殺死所有細菌，但若牛隻本身帶有 Prion，吃進去後仍可能致病。這就是為何動物來源物料需要「<strong>受控來源 (controlled sourcing)</strong>」——從頭就要確保原料來自無 BSE 風險的牛群。對 ATMP 而言，FBS（胎牛血清）是最常見的 TSE/BSE 風險來源，供應商必須提供<strong>TSE/BSE 憑證</strong>，說明原料來源地（例如：紐西蘭或澳洲是公認的低風險地區）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Eur. Ph. 5.1.1 的無菌保證限制</h4>
+            <p>這是 PtC-13 非常重要的實務提醒：<strong>大多數 ATMP 物料供應商，即使提供了 0.2 µm 過濾憑證，也無法保證符合 Eur. Ph. 5.1.1 的無菌保證標準</strong>（該標準要求特定的生物指示劑 (BI) 驗證，並非僅靠過濾）。</p>
+            <p>因此，這些物料應被視為「<strong>非無菌原料 (nonsterile raw materials)</strong>」。這對 CDMO 的 GMP 操作影響重大：</p>
+            <ul>
+                <li>這些物料進入無菌製程前，必須經過<strong>已驗證的 0.2 µm 過濾步驟 + 過濾器完整性測試 (filter integrity test)</strong>。</li>
+                <li>或者對這些物料執行 USP &lt;71&gt; 無菌測試或 USP &lt;61&gt; 微生物計數測試（TAMC/TYMC），並設定嚴格的限度標準。</li>
+            </ul>
+            <p>注意：ASTM F838-20 是過濾器細菌截留驗證的標準，替代傳統的熱原驗證（Eur. Ph. 5.1.1 模式），對 ATMP 物料而言是被接受的通用過濾驗證方法。</p>
+        </div>
+
+        <div class="note-box" style="background:#fdf4ff !important; border-left-color:#9c27b0 !important;">
+            <h4 style="color:#7b1fa2 !important;">自體療法豁免注意事項</h4>
+            <p>「自體細胞治療通常豁免於供體（病患）測試」這一規定來自 <strong>21 CFR 1271</strong>，邏輯是：病患接受的是自己的細胞，傳染病傳播風險已自我承擔，無需對供體（病患本人）執行傳染病篩檢。</p>
+            <p>然而，這個豁免<strong>只適用於供體（病患）測試</strong>，並不豁免其他物料（如培養基成分、細胞激素）的安全性要求。CDMO 操作自體療法計畫時，應特別注意此豁免的邊界。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 ATMP 製造使用了含 FBS 的培養基，供應商提供了 0.2 µm 過濾憑證。依據 PtC-13，這樣的憑證是否足夠？您還需要哪些補充措施？</li>
+                <li>TSE/BSE 的 Prion 為何無法被一般滅菌方法消滅？這對物料來源管理有何意義？</li>
+                <li>Eur. Ph. 5.1.1 與 ASTM F838-20 在無菌保證驗證上有何本質差異？為何後者對 ATMP 物料更具實用性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: Table 3.2-1 -->
+<!-- ============================================================ -->
+<div class="section-title" style="border-bottom-color: #0284c7;">Table 3.2-1 — Overview of Relevant Guidelines Related to Microbial/Viral Safety &amp; TSE/BSE/CJD Safety</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Table 3.2-1 provides an overview of relevant regulations and guidelines related to microbial and viral safety as well as TSE/BSE and CJD safety. This list is not exhaustive, and sponsors should also familiarize themselves with national laws that are required for the use of biological materials for ATMP manufacturing purposes. Health authority requirements can vary significantly and should be carefully assessed during early process development to avoid rejections or delays from the U.S. Investigational New Drug/European Investigational Medicinal Product Dossier (IND/IMPD) during the Biologics License Application (BLA)/Marketing Authorization Application process. Conducting a thorough <span class="key-term">gap assessment</span> against relevant regulations is recommended to create a strategy for the product development lifecycle via consultation with health authorities for the intended region.
+        </p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white;">Type of ATMP Material</th>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white;">Relevant Guideline</th>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white;">Example</th>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white;">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Non-Human / Non-Animal Derived Material</strong></td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>U.S. GMP regulations</li>
+                            <li>EMA EudraLex – Vol. 4 for ATMPs</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>Chemically defined cell culture media</li>
+                            <li><em>E. coli</em> plasmid</li>
+                            <li>Nucleotides (e.g., guide RNA)</li>
+                        </ul>
+                    </td>
+                    <td>Microbial and viral safety requirements must be defined as part of the product's overall contamination control strategy</td>
+                </tr>
+                <tr>
+                    <td><strong>Human Blood Derived Material</strong></td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>U.S. 21 CFR 610.40</li>
+                            <li>U.S. 21 CFR 640</li>
+                            <li>Ph. Eur. 5.2.12</li>
+                            <li>Ph. Eur. 1646</li>
+                            <li>MHLW Notification No. 37 (2018): JSBRM</li>
+                            <li>FDA Guidance: Recommendations to Reduce Possible Risk of CJD/vCJD by Blood and Blood Components (2022)</li>
+                            <li>FDA Draft Guidance: Considerations for Use of Human- and Animal-Derived Materials in CGT/TEMP (2024)</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>Human serum</li>
+                            <li>Human serum albumin</li>
+                        </ul>
+                    </td>
+                    <td>None (additional comment beyond the guideline list)</td>
+                </tr>
+                <tr>
+                    <td><strong>Human Tissue and Cell Derived Material</strong></td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>FDA Guidance: CJD/vCJD risk reduction (2022)</li>
+                            <li>U.S. 21 CFR 1271.50</li>
+                            <li>FDA Guidance: CMC for Human Gene Therapy INDs (2020)</li>
+                            <li>FDA Guidance: Characterization and Qualification of Cell Substrates (2010)</li>
+                            <li>Ph. Eur. 5.2.12; USP &lt;1046&gt;</li>
+                            <li>EU Directive 2004/23/EC (human tissues &amp; cells quality/safety standards)</li>
+                            <li>Directive 2006/17/EC; Directive 2002/98/EC (blood collection/testing)</li>
+                            <li>Directive 2004/33/EC; Directive 2006/86/EC (traceability for tissues &amp; cells)</li>
+                            <li>MHLW Notification No. 37 (2018): JSBRM</li>
+                            <li>PFSB Notification No. 1213002</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>Feeder cells (e.g., cord-derived feeder cells)</li>
+                            <li>HEK293 cell banks</li>
+                            <li>Autologous: Apheresis material</li>
+                            <li>Allogeneic: PBMC for iPSC</li>
+                            <li>Allogeneic: Cord blood</li>
+                            <li>Allogeneic: hESC</li>
+                        </ul>
+                    </td>
+                    <td>Donor eligibility must be determined through screening for risk factors and/or clinical evidence of infection due to relevant communicable disease. Donor testing for relevant communicable disease is also required to demonstrate conformity with appropriate requirements.</td>
+                </tr>
+                <tr>
+                    <td><strong>Animal Derived</strong></td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem;">
+                            <li>9 CFR 113: Standard Requirements — viral safety for animal materials</li>
+                            <li>MHLW Notification No. 37 (2018): JSBRM</li>
+                            <li>ICH Q5A</li>
+                            <li>WHO Guidelines on TSEs in Relation to Biological &amp; Pharmaceutical Products (2003)</li>
+                            <li>EMA/410/01</li>
+                        </ul>
+                    </td>
+                    <td>FBS</td>
+                    <td>None (additional comment beyond the guideline list)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>表格解讀 — Table 3.2-1 的四大物料分類邏輯</h4>
+            <p>這張表格按照<strong>「物料的生物來源風險」由低至高</strong>排列，是 ATMP 物料管理最重要的分類框架：</p>
+            <ul>
+                <li><strong>非人/非動物來源：</strong>風險最低，適用一般 GMP（美國 21 CFR + 歐盟 Vol.4）。但仍需定義微生物/病毒安全控制策略（污染控制策略的一部分）。</li>
+                <li><strong>人血液來源：</strong>適用高度專門化的法規（21 CFR 610/640、Ph. Eur. 5.2.12），尤其需要關注 CJD 風險（2022 FDA 指引）。</li>
+                <li><strong>人組織/細胞來源：</strong>法規最複雜，覆蓋 FDA、EMA、日本 MHLW，且涉及<strong>供體資格審核 (donor eligibility)</strong>和傳染病篩檢要求。</li>
+                <li><strong>動物來源（FBS）：</strong>需符合 USDA 9 CFR 113、ICH Q5A 和 WHO TSE 指引，重點在病毒安全性驗證。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>法規地圖 — CDMO 同時服務美/歐/日三市場的物料合規矩陣</h4>
+            <pre>
+物料類型         美國              歐盟              日本
+─────────────────────────────────────────────────────
+非人/非動物     21 CFR GMP        Vol.4 ATMP         MHLW
+人血液          21 CFR 610/640    Ph.Eur. 5.2.12     JSBRM
+人組織/細胞     21 CFR 1271.50    Dir. 2004/23/EC    PFSB 1213002
+                FDA CGT 2020      Dir. 2006/86/EC
+動物(FBS)       9 CFR 113         EMA/410/01         JSBRM
+                ICH Q5A           ICH Q5A
+─────────────────────────────────────────────────────
+注意：ICH Q5A（病毒安全性）是美/歐/日三方共同認可的
+      harmonized 標準，是最具跨地區適用性的基準。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 及早進行 Gap Assessment 避免 IND/BLA 延誤</h4>
+            <p>PtC-13 特別警示：各地健康主管機關的要求可能有<strong>顯著差異</strong>，建議在早期開發階段就進行<strong>Gap Assessment（差距評估）</strong>，並諮詢目標地區的健康主管機關。</p>
+            <p>CDMO 實務場景：一個美國 Phase II 的 CAR-T 計畫，若計畫同步申請歐盟 IMPD，供應商只有 9 CFR 113（美國 USDA）的 FBS 認證，卻沒有 EMA/410/01 的 TSE 證明，可能導致歐盟 IMPD 審核時被要求補件，延誤整個計畫時程。<strong>早規劃 = 早解決問題</strong>。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — HEK293 細胞銀行的多法規合規挑戰</h4>
+            <p>HEK293（人胚腎細胞系）是 ATMP 製造中最常用的包裝細胞系，屬於「人組織/細胞來源」，需同時符合：</p>
+            <ul>
+                <li>21 CFR 1271.50（美國細胞組織法規）</li>
+                <li>FDA 2010 指引（細胞基質特性描述）</li>
+                <li>EU Directive 2004/23/EC（歐盟組織細胞品質標準）</li>
+                <li>Ph. Eur. 5.2.12（歐洲藥典細胞基質檢驗）</li>
+                <li>USP &lt;1046&gt;（細胞治療產品）</li>
+            </ul>
+            <p>一個完整的 HEK293 Master Cell Bank 建立計畫，必須在 MCB 建立前就確認上述所有法規要求，否則後期補測非常昂貴且耗時。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: Allogeneic Specific + ID Testing -->
+<!-- ============================================================ -->
+<div class="section-title" style="border-bottom-color: #0284c7;">Q3.2 Continued — Allogeneic-Specific Considerations &amp; ID Testing Requirements</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Specific Safety Considerations for Allogeneic Therapies</h3>
+        <p>
+            For <span class="key-term">allogeneic therapies</span>, testing at various levels (e.g., donor cells, cell banks, during drug substance/drug product manufacture) can address additional safety concerns from donor cells not covered by donor testing at the first timing of donation. Ensuring <span class="key-term">donor consent for commercial usage</span> is recommended; otherwise, it may become an issue at the timing of commercialization if it is not fully agreed upon. For allogeneic ATMP manufacturing, which falls under the PIC/S GMP regulation, detailed guidance on seed lot and cell banking systems is given in <span class="key-term">Annex 2a, Sections 5.30 to 5.38</span>.
+        </p>
+
+        <h3>ID Testing</h3>
+        <p>
+            Verification of identity is required for all raw materials that will be used to manufacture drug products; the requirements of global health authorities range from testing to the full specifications of the manufacturer to accepting on physical inspection and/or documentation. <span class="key-term">U.S. regulation 21 CFR 211.84(d)(2)</span> requires a specific identity test, where available, to be performed for each lot of raw material received. In instances where specific tests are not available, <span class="key-term">surrogate testing</span> to evaluate relevant characteristics (e.g. size, purity, spectral profile) may be combined to serve as verification of identity.
+        </p>
+        <p>
+            <span class="key-term">EU regulation EudraLex - Vol. 4</span> allows acceptance of materials based on the manufacturer's CoA where all risks are understood or adequately mitigated by other means; however, it does recommend identity-testing for critical raw materials (e.g., excipients), see Table 3.2-2 and Figure 3.2-1 for an overview. The strategy for verifying the identity of raw materials upon receipt should be considered early, within the development phase of the product lifecycle.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 自體 vs 異體療法的物料測試差異</h4>
+            <p><strong>Autologous（自體）療法：</strong>病患即供體，細胞來源確定，傳染病傳播風險「回到自身」，依 21 CFR 1271，通常豁免供體測試。但製造物料（培養基等）仍需完整合格審定。</p>
+            <p><strong>Allogeneic（異體）療法：</strong>一名供體的細胞治療多名病患，傳染病傳播風險大幅提高。除了初次捐贈時的供體篩檢，還需要在<strong>細胞銀行 (cell bank) 建立期間和藥物製造過程中</strong>進行多層次安全測試。</p>
+            <p>這就是為何異體療法的物料測試要求遠比自體療法嚴格——一個受汙染的 Master Cell Bank，可能影響未來數千名病患。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 異體療法的「一對多」風險倍增效應</h4>
+            <p>想像一個血庫：若一袋血液受到 HIV 汙染，只有接受這袋血的一位病患受害（類似自體）。但若一個異體 CAR-T 細胞銀行受汙染，而這個銀行生產的細胞被分配給 500 位病患，則有 500 位病患可能受害。</p>
+            <p>這就是 PtC-13 強調異體療法需要「<strong>多層次測試（donor cells → cell banks → DS/DP manufacturing）</strong>」的根本原因：越早發現問題，影響越少病患，代價越小。</p>
+            <p>對 CDMO 而言，承接異體 ATMP 計畫意味著需要建立更完整的細胞銀行品質體系（符合 PIC/S Annex 2A §5.30–5.38）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 供體同意書的商業化陷阱</h4>
+            <p>PtC-13 特別提醒：<strong>必須確保供體的商業使用同意 (donor consent for commercial usage)</strong>。這在早期臨床試驗中常被忽視，但在商業化申請（BLA/MAA）時可能成為阻礙。</p>
+            <p>CDMO 實務建議：在異體 ATMP 計畫的細胞捐贈協議（Donation Agreement）中，應明確包含<strong>商業生產用途的同意條款</strong>。若客戶在 Phase I 時已捐贈的細胞缺少此條款，後期重新取得同意書在實務上可能非常困難（供體已故、失聯等情況）。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — US vs EU 的 ID Testing 哲學差異</h4>
+            <p><strong>美國 21 CFR 211.84(d)(2) — 強制性 Specific Identity Test：</strong></p>
+            <p>每批收到的原料都必須執行至少一項<strong>特異性身份鑑別測試 (specific identity test)</strong>。若無特異性測試，可使用組合替代測試（大小、純度、光譜輪廓）。這是<strong>強制規定</strong>，不能以 CoA 取代。</p>
+            <p><strong>歐盟 EudraLex Vol. 4 — 基於風險的 CoA 接受：</strong></p>
+            <p>允許以供應商 CoA 接受物料（前提是風險充分評估並有適當緩解措施），但<strong>建議</strong>對關鍵原料（如賦形劑）執行 ID 測試。這是<strong>建議性規定</strong>，有更大的靈活空間。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個異體 CAR-T 計畫從 Phase I 進入 Phase III，原先的供體同意書沒有涵蓋商業用途。您作為 CDMO 的 QA 主管，應如何處理？</li>
+                <li>對於一種新型細胞激素，目前市面上沒有公認的「specific identity test」，依照 21 CFR 211.84(d)(2)，您應如何設計替代測試策略？</li>
+                <li>異體療法的細胞銀行建立，為何需要符合 PIC/S Annex 2A §5.30–5.38？這些條款的核心要求是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: Table 3.2-2 + Figure 3.2-1 -->
+<!-- ============================================================ -->
+<div class="section-title" style="border-bottom-color: #0284c7;">Table 3.2-2 — US vs EU GMP Regulations for Material ID Testing &amp; Figure 3.2-1</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white; width:30%;">Reference</th>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white; width:35%;">Requirement</th>
+                    <th style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%); color:white; width:35%;">Guidance on Implementation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>U.S. 21 CFR Part 210.2(c)</strong><br>Applicability of Current Good Manufacturing Practice Regulations</td>
+                    <td>Production of an investigational drug for use in a <strong>Phase 1 study is exempt</strong> from compliance with the regulations in 21 CFR Part 211. However, this exemption does not apply once the investigational drug has been made available for use by or for the sponsor in a <strong>Phase 2 or Phase 3 study</strong>.</td>
+                    <td>U.S. FDA Guidance for Industry: Investigational Drug for Use in a Phase 1 Study</td>
+                </tr>
+                <tr>
+                    <td><strong>U.S. 21 CFR Part 211.84(d)(2)</strong><br>Testing and Approval or Rejection of Components, Drug Product Containers, and Closures</td>
+                    <td>Each component shall be tested for conformity with all appropriate written specifications for purity, strength, and quality. In lieu of such testing by the manufacturer, a report of analysis may be accepted from the supplier of a component, provided that <strong>at least one specific identity test is conducted</strong>.</td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                            <li>USP &lt;1043&gt; Ancillary Materials for Cell, Gene, and Tissue-Engineered Products</li>
+                            <li>USP &lt;1046&gt; Cell-Based Advanced Therapies and Tissue-Based Products</li>
+                            <li>USP &lt;1047&gt; Gene Therapy Products</li>
+                            <li>USP &lt;1665&gt; Characterization and Qualification of Plastic Components</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>EudraLex - Vol. 4</strong><br>Guidelines on GMP Specific to Advanced Therapy Medicinal Products, Section 7.15</td>
+                    <td>The ATMP manufacturer should verify compliance of the supplier's materials with the agreed specifications… <strong>Reliance on the certificate of analysis of the supplier is acceptable if all the risks are duly understood</strong>, and measures are put in place to eliminate the risks or mitigate them to an acceptable level (e.g. qualification of suppliers).</td>
+                    <td>
+                        <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                            <li>EMA Guideline on Quality, Non-Clinical and Clinical Aspects of Medicinal Products Containing Genetically Modified Cells</li>
+                            <li>EMA Guideline on Plasma-Derived Medical Products</li>
+                            <li>EMA Guideline on Quality, Non-Clinical and Clinical Requirements for Investigational ATMPs in Clinical Trials</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Figure 3.2-1 — Application of US and EU GMP Regulations for Material ID Testing</h3>
+
+        <!-- Figure placeholder since no image file is available -->
+        <div class="figure-placeholder">
+            <p><strong>Figure 3.2-1</strong></p>
+            <p>Application of United States and the European Union GMP Regulations related to material Identification Testing</p>
+            <p style="font-size:0.8rem; color:#64748b !important;">[Decision flow diagram showing the branching paths under US 21 CFR 211.84(d)(2) vs EU EudraLex Vol.4 Section 7.15 for determining ID testing strategy based on clinical phase, material criticality, and supplier qualification status]</p>
+        </div>
+        <p class="figure-caption">Figure 3.2-1: Application of US and EU GMP Regulations related to Material Identification Testing (PDA PtC-13, 2025, p19)</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>表格解讀 — Table 3.2-2 核心差異一覽</h4>
+            <pre>
+維度           美國 (21 CFR 211)    歐盟 (EudraLex Vol.4)
+─────────────────────────────────────────────────────────
+Phase I       豁免（21 CFR 210.2c） 可依 CoA 接受
+Phase II+     必須符合全 GMP        可依 CoA 接受（風險評估）
+ID Test       強制：每批至少1項      建議：關鍵物料應做
+              特異性測試             可由 CoA + 供應商資格替代
+CoA 接受       僅限供替代其他測試    風險評估後可全面接受
+              但 ID test 不可省略
+執行靈活性     較低（強制性）         較高（風險導向）
+
+關鍵結論：同時服務美/歐市場的 CDMO 應以
+          "美國標準" 為底線——Phase II 起
+          必須對每批原料執行 ID test。
+            </pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>圖表解讀 — Figure 3.2-1 決策流程解析</h4>
+            <p>Figure 3.2-1 描繪了一個<strong>雙軌決策流程</strong>，協助 ATMP 製造商判斷每種物料的 ID 測試策略：</p>
+            <p><strong>美國路徑（左側）：</strong></p>
+            <ul>
+                <li>Phase I → 豁免（21 CFR 210.2c）</li>
+                <li>Phase II/III/商業化 → 強制 ID test（21 CFR 211.84(d)(2)）</li>
+                <li>有特異性測試方法 → 執行特異性測試</li>
+                <li>無特異性測試方法 → 組合替代測試（大小 + 純度 + 光譜）</li>
+            </ul>
+            <p><strong>歐盟路徑（右側）：</strong></p>
+            <ul>
+                <li>任何階段 → 評估是否已充分了解所有風險</li>
+                <li>是 + 有緩解措施（供應商資格審計）→ 可接受 CoA</li>
+                <li>否 或 關鍵物料 → 執行 ID 測試（建議性）</li>
+            </ul>
+            <p>對同時申請美/歐的計畫，應取兩者<strong>較嚴格的要求（美國標準）</strong>作為操作基線。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — USP &lt;1043&gt; Tier 1 的特殊豁免</h4>
+            <p>依 USP &lt;1043&gt;（Ancillary Materials），<strong>Tier 1 輔助材料</strong>定義為：已獲 FDA 批准用於其他用途的藥物或醫療器材（例如：FDA 核准的注射劑賦形劑），在 ATMP 製造中作為原料使用時，<strong>可以直接依供應商 CoA 接受，不需自行確認測試結果</strong>。</p>
+            <p>這是美國體系中少數允許「跳過 ID test 強制性要求」的例外情況，其邏輯是：FDA 已對這些材料進行了審查（在原有批准用途中），製造商可合理信任其品質系統。但這個豁免有嚴格的前提——物料必須是<strong>FDA approved 的藥品或醫療器材等級</strong>，而非僅有供應商聲明。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 同時服務美/歐 CDMO 的 ID Testing SOP 設計</h4>
+            <p>建議 CDMO 建立一套統一的 ID Testing 決策 SOP，流程如下：</p>
+            <ol>
+                <li><strong>確認計畫目標市場</strong>（美國/歐盟/兩者）</li>
+                <li><strong>確認臨床階段</strong>（Phase I → 美國豁免；Phase II+ → 美國強制 ID test）</li>
+                <li><strong>物料分類</strong>（非人/非動物 vs 人血液 vs 動物來源）</li>
+                <li><strong>是否為 USP &lt;1043&gt; Tier 1</strong>？若是 → 可依 CoA 接受（僅美國）</li>
+                <li><strong>有無 specific identity test 方法</strong>？若有 → 執行；若無 → 設計組合替代測試</li>
+                <li><strong>記錄決策依據</strong>（法規引用 + 風險評估）於物料規格書或 QRM 文件中</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一種 ATMP 製造用的重組細胞激素（recombinant cytokine），供應商為研究試劑廠，提供了 SDS-PAGE 和 ELISA 報告作為 CoA。依美國 21 CFR 211.84(d)(2)，這樣的 CoA 能否取代 ID test？您需要採取哪些行動？</li>
+                <li>Table 3.2-2 中，EudraLex Vol.4 §7.15 允許「CoA 接受」的前提條件是什麼？在實際 QA 操作中，「充分了解風險 (all risks are duly understood)」應如何文件化？</li>
+                <li>一個 Phase II 的 ATMP 計畫正在準備向 FDA 遞交 IND 修正。製造商使用了 10 種原料，其中 3 種為動物來源，2 種為化學定義合成物，5 種為人組織來源。請依 Table 3.2-2 的框架，說明各類物料的 ID testing 策略。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION: Material Sampling + Phase-Appropriate Considerations -->
+<!-- ============================================================ -->
+<div class="section-title" style="border-bottom-color: #0284c7;">Q3.2 Continued — Material Sampling, Retain Requirements &amp; Phase-Appropriate Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Material Sampling and Retain Requirements</h3>
+        <p>
+            As part of the strategy for setting material specifications, the requirements for <span class="key-term">material sampling and retention</span> in routine operations should be considered. According to EudraLex, Vol. 4, specification documents are required for all incoming materials and should include complete instructions for sampling and testing, as appropriate, as well as <span class="key-term">retention of samples</span> for analytical purposes. The sampling and retain strategy should consider the risks and limitations related to the specific product. The use of <span class="key-term">dedicated raw material vials or containers</span> for quality control testing is generally recommended to avoid contamination or impact on material by additional freeze-thaw cycles, in the case of raw materials that are stored and shipped frozen. For raw materials, <span class="key-term">retention samples of critical raw materials</span> are important for investigation of product quality issues, whereas retention of starting materials or intermediates may be challenging due to limited quantities available beyond that needed for manufacturing. These intrinsic limitations are justifiable where they may impact the availability of the finished product; in such cases, appropriate mitigation measures should be applied and the strategy documented.
+        </p>
+
+        <h3>Considerations for Investigational/Early Clinical Stage (Pre-Pivotal)</h3>
+        <p>Besides the general considerations mentioned here, there are considerations for investigational/early clinical stage programs. The list includes but is not limited to:</p>
+        <ul>
+            <li>Material must allow manufacturing of a functional product.</li>
+            <li>Under EU regulations, reliance on the documentation provided by the supplier (e.g., CoA, CoO, TSE/BSE certificate) is acceptable, and no physical or chemical identification testing must be performed if the ATMP manufacturer fully understands the associated risks and has appropriate risk mitigations in place (e.g., supplier qualification, Quality Assurance Agreement).</li>
+            <li>Under U.S. regulation, reliance on supplier documentation is acceptable only for Phase I investigational studies.
+                <ul>
+                    <li>By the time sponsors start a Phase 2 study, FDA expects that manufacturers will operate under the GMPs outlined in <span class="key-term">21 CFR 211, Subpart E</span>.</li>
+                    <li>A sponsor may rely on vendor information for confirmation of purity, strength, and quality if they perform a specific identity test and have confidence in the supplier. The risk-based approach to material qualification for ATMP is also outlined in USP &lt;1043&gt;. For example, <span class="key-term">Tier 1 Ancillary Material</span> relies on the vendor's CoA without confirming the test results for FDA-approved products utilized as raw materials.</li>
+                </ul>
+            </li>
+            <li>Components may be received on verification of vendor documentation, such as a Product Certificate or Certificate of Compliance. <span class="key-term">Primary container–closure systems</span> should, at a minimum, be subject to quality control visual examination.</li>
+            <li>Perform incoming testing of identity for critical materials, for example, <span class="key-term">full sequencing on receipt</span> of any plasmids and viral vectors used for ex-vivo gene modification.</li>
+            <li>Avoid using <span class="key-term">RUO (Research Use Only)</span> material. If use of an RUO material is inevitable, perform a risk assessment in terms of functionality and safety:
+                <ul>
+                    <li>Functionality (functional attributes) of the lot can be tested through an engineering run prior to the clinical manufacturing of cell and gene therapies.</li>
+                    <li>Based on the risk assessment for the raw material, mitigate the risks as needed, for example, additional testing for identity, functionality, and safety, or add sterility control prior to use.</li>
+                    <li>Use the same lot, if applicable, for manufacturing toxicology-study sample and Phase 1 clinical trial material to minimize the risks for lot variation or unknown risks of the RUO material.</li>
+                </ul>
+            </li>
+            <li>Selection criteria for excipients should be established and documented in the early phase of product development.
+                <ul>
+                    <li>For cell-based products, excipients may include culture media, electrolyte solutions for injections, exogeneous proteins, human serum, or cryoprotectants (USP &lt;1046&gt;).</li>
+                    <li>For vector-based products, final formulation depends on the physiochemical and biological characteristics of the vector system; ionic buffers, organic carbohydrates, amino acids, surfactants and extraneous proteins are common excipients (USP &lt;1047&gt;).</li>
+                </ul>
+            </li>
+            <li>For non-approved and novel excipients, a complete safety assessment should be performed as described in USP &lt;1046&gt; and should include risk-benefit assessment according to FDA Guidance for Industry: Nonclinical Studies for the Safety Evaluation of Pharmaceutical Excipients.</li>
+        </ul>
+
+        <h3>Considerations for Late Stage/Pivotal Clinical Trials</h3>
+        <p>Implementing the following aspects is recommended for commercial manufacturing:</p>
+        <ul>
+            <li>Limited or no amount of lower-grade materials (e.g., RUO).</li>
+            <li>Material attribute assessments based on product and process development data (helps understand lot-to-lot variability and to define second supplier).</li>
+            <li>Limited or no amount of human- and animal-derived materials, if possible; if these materials cannot be avoided, the highest possible grade should be used.</li>
+            <li>An internal material specification has been defined, based on a thorough material attribute assessment and reflecting the specific needs of the product. Material specifications at this stage <strong>should not be a copy of supplier specifications</strong> unless further justified.
+                <div class="quote-box" style="margin-top:0.5rem;">
+                    Note: Vendor or supplier specifications often do not reflect the intended use in ATMP manufacturing (e.g., cytokines).
+                </div>
+            </li>
+            <li>Analytical capabilities to allow for internal material release-testing should be established; each parameter according to the internal material specification must be tested internally, including contract labs.
+                <div class="quote-box" style="margin-top:0.5rem;">
+                    Note: This effort might be very resource-intensive and should be planned carefully. For material qualification, tests are performed prior to the process validation. A minimum of three lots will be required to complete this. If material qualification cannot be performed prior to process validation, or if sourcing three lots is not possible prior to the usage of materials for commercial GMP purposes, <span class="key-term">concurrent qualification</span> can be used if it meets the following requirements:
+                    <ol style="margin-top:0.5rem; padding-left:1.2rem;">
+                        <li>Quality approval on the use of concurrent qualification.</li>
+                        <li>At least one lot must pass all testing.</li>
+                        <li>Qualification of previously qualified material is leveraged if (a) they are from the same manufacturer and have different part numbers, and the change is due to processing; (b) a technical assessment shows equivalence between the new and previously qualified material; and (c) the supplier is on the approved supplier list.</li>
+                    </ol>
+                </div>
+            </li>
+            <li>When using medical devices and approved medicinal drugs as materials, in case of limited inventory (drug shortage), it should be considered that material allocation could go to other entities (e.g., hospitals, clinics).</li>
+            <li>Prior to the start of late-phase (pivotal) manufacturing, <span class="key-term">process-consumable-related risk assessments</span> should be used to identify and evaluate the risks related to each specific scenario of usage.</li>
+            <li>Components that have contact with the process stream should undergo quality control visual examination and/or testing. <span class="key-term">Primary container closure systems</span> should be tested, at a minimum, for sterility, integrity, and bacterial endotoxin, in addition to visual examination, prior to usage.</li>
+            <li><span class="key-term">Leachables and extractables</span> and/or chemical compatibility might be challenged (e.g., for DMSO-containing formulations), and study data might be necessary to demonstrate safety.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 取樣/留樣策略的 ATMP 特殊挑戰</h4>
+            <p>傳統藥物製造中，留樣（retention sample）是常規操作，沒有特別難度。但 ATMP 物料有兩個獨特挑戰：</p>
+            <p><strong>1. 起始物料（如自體細胞）數量極為有限：</strong>一個自體 CAR-T 療程，病患的血球採集量可能就只夠製造一個批次，根本沒有多餘量留樣。PtC-13 認可此「固有限制 (intrinsic limitation)」可以成為豁免留樣的依據，但需要文件化替代緩解措施。</p>
+            <p><strong>2. 冷凍物料的凍融次數限制：</strong>許多 ATMP 物料（如細胞激素、病毒載體）在冷凍儲存，每次凍融都會降低品質。建議使用<strong>專用 QC 小瓶 (dedicated QC vials)</strong>，避免因 QC 取樣而對主批次造成額外凍融損傷。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 臨床階段就像學生到職場的成長歷程</h4>
+            <p>早期臨床（Phase I）就像剛進入職場的新鮮人：公司允許一定的學習曲線，不要求一開始就達到全部的成熟員工標準（GMP 豁免）。</p>
+            <p>但當你進入 Phase II（穩定工作後），公司開始要求你完全遵守所有工作規定（21 CFR 211 全面適用）。到了商業化階段（正式員工），不僅要遵守規定，還要能夠<strong>自主制定標準（內部物料規格）</strong>，而不是照抄供應商的規格（就像資深員工要能獨立判斷，不依賴初入職時的操作手冊）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — RUO 物料使用的紅線管理</h4>
+            <p><strong>RUO（Research Use Only，僅供研究用途）</strong>物料是 ATMP 早期開發中最常見的風險來源之一。PtC-13 的立場是：<strong>盡量避免使用，但若不可避免，必須執行正式風險評估</strong>。</p>
+            <p>CDMO 實務的三個 RUO 使用紅線：</p>
+            <ul>
+                <li><strong>紅線 1：</strong>商業化階段（BLA/MAA 後）禁止使用 RUO 物料——這是法規底線。</li>
+                <li><strong>紅線 2：</strong>在 Phase I 使用 RUO 物料時，毒理研究與 Phase I 臨床物料應<strong>使用同一批次</strong>（減少批次差異風險）。</li>
+                <li><strong>紅線 3：</strong>若 RUO 物料缺乏滅菌保證，必須在進入無菌製程前執行過濾滅菌 + 完整性測試。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>並行合格審定 (Concurrent Qualification) 的啟動條件</h4>
+            <pre>
+並行合格審定三大前提條件（缺一不可）：
+─────────────────────────────────────
+條件 1: Quality Unit 書面批准 concurrent qualification 的使用
+
+條件 2: 至少 1 個批次通過全部測試項目
+        （不得全部都是「並行進行」的批次）
+
+條件 3: 若利用先前已合格物料的資料，需滿足：
+  (a) 同一製造商（不同料號），變更原因為製程調整
+  (b) 技術評估顯示新舊物料等效
+  (c) 供應商在核准供應商清單 (ASL) 上
+─────────────────────────────────────
+傳統要求：至少 3 個批次，在製程驗證前完成
+並行合格：風險較高，需要 QA 書面批准，
+          適用於供貨緊張或計畫時程緊迫的情況
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 商業化物料規格不能照抄供應商規格</h4>
+            <p>PtC-13 特別強調：商業化階段的<strong>內部物料規格（internal material specification）不應是供應商規格的複製品</strong>，除非有正當理由。</p>
+            <p>原因：供應商的規格是針對其通用客戶群設計的，例如：一個細胞激素供應商的規格可能只要求「生物活性 ≥ 80%」，但您的特定 ATMP 製造製程可能需要「生物活性 ≥ 95%」才能確保產品 CQA 達標。若直接接受供應商規格，等於放棄了針對特定製程的品質把控。</p>
+            <p>CDMO 建議：在製程開發（PD）階段，系統性收集物料 CoA 數據（尤其是關鍵參數的批次間差異），作為設定內部物料規格的科學依據。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 可沖出物/可萃出物 (Leachables and Extractables) 的重要性</h4>
+            <p><strong>Extractables (E):</strong> 在極端條件下（如強溶劑、高溫）從接觸物料中萃取的化學物質——用於了解最壞情況下的化學物質潛在風險。</p>
+            <p><strong>Leachables (L):</strong> 在正常製程條件下實際從接觸物料遷移進入藥品的化學物質——直接影響病患安全。</p>
+            <p>對 ATMP 而言，含 <strong>DMSO（二甲亞碸）</strong> 的冷凍保存液（cryoprotectant）是特別需要關注 E&amp;L 的場景，因為 DMSO 是強溶劑，能顯著增加塑料容器中化學物質的遷移量。此研究數據在晚期臨床/商業化申請中可能被法規要求提供。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 從 Phase I 到商業化的物料合格審定升級路線圖</h4>
+            <table style="font-size:0.85rem; margin-top:0.5rem;">
+                <thead>
+                    <tr>
+                        <th>要素</th>
+                        <th>Phase I（早期）</th>
+                        <th>Phase II/III（晚期）</th>
+                        <th>商業化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID Testing</td>
+                        <td>EU: CoA 接受<br>US: 豁免</td>
+                        <td>US: 強制 ID test</td>
+                        <td>完整合格審定</td>
+                    </tr>
+                    <tr>
+                        <td>物料等級</td>
+                        <td>RUO 可接受（需 RA）</td>
+                        <td>轉換至 GMP 等級</td>
+                        <td>禁止 RUO</td>
+                    </tr>
+                    <tr>
+                        <td>物料規格</td>
+                        <td>依供應商規格</td>
+                        <td>開始建立內部規格</td>
+                        <td>完整內部規格</td>
+                    </tr>
+                    <tr>
+                        <td>批次合格</td>
+                        <td>不需 3 批次</td>
+                        <td>並行合格可用</td>
+                        <td>至少 3 批次</td>
+                    </tr>
+                    <tr>
+                        <td>E&amp;L 研究</td>
+                        <td>不要求</td>
+                        <td>啟動 E&amp;L 研究</td>
+                        <td>完整 E&amp;L 數據</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個自體 CAR-T 計畫，每個病患的採集量僅夠製造一個批次，無多餘的起始材料留樣。依 PtC-13，如何合理豁免留樣要求？應採取哪些替代緩解措施？</li>
+                <li>一個 CDMO 正在為客戶的 Phase III 計畫做物料規格升級準備。發現目前使用的 IL-2（白介素-2）的內部規格與供應商規格完全相同，且供應商規格的生物活性下限為 75%。您作為 QA 負責人，應如何評估並提出建議？</li>
+                <li>什麼情況下允許啟動並行合格審定 (Concurrent Qualification)？如果一種物料的三批次中只有 1 批通過了測試，是否符合 PtC-13 的要求？</li>
+                <li>DMSO 保存液為何是 ATMP 製程中 Leachables &amp; Extractables 研究的重點？應針對哪些包材/接觸物料進行 E&amp;L 研究？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin-top: 1.5rem;">
+    <h3 style="color: #92400e;">本節重點回顧 Section Summary — Q3.1 &amp; Q3.2 Risk-Based Material Qualification</h3>
+    <ul>
+        <li><strong>風險導向框架：</strong>ATMP 物料合格審定依物料來源（非人/非動物 → 人血液 → 人組織 → 動物）的生物風險層級，分配不同嚴格度的測試要求，參考 PDA TR81 的風險評估範例。</li>
+        <li><strong>生物安全雙面向：</strong>TSE/BSE/CJD 風險需透過「受控來源」管理（Prion 無法被一般滅菌消滅）；無菌保證需注意 ATMP 物料通常不符合 Eur. Ph. 5.1.1，須透過已驗證的 0.2 µm 過濾 + ASTM F838-20 標準緩解風險。</li>
+        <li><strong>Table 3.2-1 四大物料類別：</strong>非人/非動物來源（最低風險，一般 GMP）、人血液（21 CFR 610/640、Ph. Eur. 5.2.12）、人組織/細胞（最複雜，需供體資格審核 + 多層次測試）、動物來源（9 CFR 113、ICH Q5A、TSE 管控）。</li>
+        <li><strong>US vs EU ID Testing 關鍵差異：</strong>美國 21 CFR 211.84(d)(2) 強制要求每批至少 1 項特異性 ID test（Phase I 豁免，Phase II 起適用）；歐盟 EudraLex Vol.4 §7.15 允許風險評估後以 CoA 接受，ID test 為建議性。同時服務兩市場時，應以美國標準為底線。</li>
+        <li><strong>自體 vs 異體差異：</strong>自體療法依 21 CFR 1271 豁免供體測試；異體療法需多層次測試（供體細胞 → 細胞銀行 → DS/DP 製造），並務必取得供體的商業用途同意。</li>
+        <li><strong>Phase-Appropriate 升級路徑：</strong>Phase I 可用 RUO 物料（需 RA）、依供應商規格；Phase II 起強制 ID test、轉換 GMP 等級；商業化前需完成至少 3 批次物料合格審定（或滿足 3 條件的並行合格）、建立獨立內部規格、完成 E&amp;L 研究。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

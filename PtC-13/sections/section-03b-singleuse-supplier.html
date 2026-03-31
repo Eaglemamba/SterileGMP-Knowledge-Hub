@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-13 — Section 3b: Single-Use Components & Supplier Qualification</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE ACCENT (sky blue for PtC-13) ===== */
+.source-badge {
+    display: inline-block;
+    background: #0284c7;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+.section-header-accent {
+    border-left: 5px solid #0284c7;
+    padding-left: 0.75rem;
+    margin-bottom: 1.2rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 3b — Q3.3 Single-Use Components &amp; Final Containers | Topic 4 Q4.1 Risk-Based Supplier Qualification</h1>
+    <div class="subtitle">一次性使用元件與最終容器 ｜ 風險導向供應商資格審查</div>
+    <div class="page-info">PDA Points to Consider No. 13: Materials in ATMP Manufacturing (2025) | p22 – p25</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 ATMP 一次性使用元件 (Single-Use Components) 與最終容器 (Final Containers) 的特殊選用考量，包含冷凍保存袋、玻璃瓶、預充填注射器的差異。</li>
+        <li>掌握可萃取物與可滲出物 (Extractables &amp; Leachables, E&amp;L) 對活細胞產品之獨特風險：滲出物可能直接影響細胞活性 (Cell Viability)，遠比小分子藥物更敏感。</li>
+        <li>能夠應用風險分層 (Risk Tiering) 原則，將供應商分為 Tier 1/2/3，依物料關鍵性決定稽核策略（現場稽核、書面稽核或技術訪視）。</li>
+        <li>了解針對學術源頭或 GMP 體系不成熟供應商的管理策略，以及單一供應商 (Single-Source Supplier) 的風險緩解措施。</li>
+        <li>掌握 PIC/S Annex 2A Section 5.27 對個人化療法 (Individualized/Autologous Therapies) 供應鏈資訊傳遞的特殊要求。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION Q3.3 -->
+<!-- ============================================================ -->
+<div class="section-title section-header-accent">
+    Q3.3 — Specific Considerations for ATMP Single-Use Components and Final Containers
+    <span class="source-badge">PtC-13 p22</span>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Q 3.3. What are specific considerations for ATMP single-use components and final containers?</h3>
+
+        <p>For control of <span class="key-term">single-use components</span> in all phases of clinical manufacturing, the manufacturing site and supplier for each component should be identified. Full <span class="key-term">traceability of the supply chain</span> should be known to identify any potential entry routes for adulterants or contaminants. Well-characterized, sterile, pyrogen-free components with intended usage as injectable/implantable medical devices, as well as drug delivery devices, present the lowest level of risk for usage within manufacturing processes.</p>
+
+        <h3>Late Clinical Stage and Commercial — Container-Closure Specific Requirements</h3>
+
+        <p>Prior to the start of late-phase (pivotal) manufacturing, <span class="key-term">process-consumable-related risk assessments</span> should be used to identify and evaluate the risks related to each specific scenario of usage, for each component, with consideration for such process parameters as temperature and duration of contact, evaluated against material and component attributes such as materials of construction and composition of the process stream.</p>
+
+        <p>Components that have contact with the process stream should undergo quality control visual examination and/or testing, based on the specific risks identified through assessment. <span class="key-term">Primary container closure systems</span> should be tested, at a minimum, for sterility, integrity, and bacterial endotoxin, in addition to visual examination, prior to usage.</p>
+
+        <p><span class="key-term">Leachables and extractables</span> and/or chemical compatibility might be challenged (e.g., for DMSO-containing formulations), and study data might be necessary to demonstrate safety. Testing should aim to establish the worst-case drug-product profile to facilitate development of specifications and acceptance criteria where needed.</p>
+
+        <div class="quote-box">
+            "Well-characterized, sterile, pyrogen-free components with intended usage as injectable/implantable medical devices, as well as drug delivery devices, present the lowest level of risk for usage within manufacturing processes."
+            <br><em>— PDA PtC-13 (2025), Q3.3</em>
+        </div>
+
+        <h3>Container-Closure Systems for ATMPs</h3>
+        <p>ATMP final containers span a range of formats, each with distinct considerations:</p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Container Type</th>
+                <th>Typical ATMP Use</th>
+                <th>Key Qualification Focus</th>
+            </tr>
+            <tr>
+                <td>Cryopreservation bag (e.g., CryoMACS, Origen)</td>
+                <td>Autologous/allogeneic cell therapies (stored at &minus;80°C or LN₂)</td>
+                <td>Integrity under cryogenic stress; E&amp;L with DMSO; weld-seal integrity</td>
+            </tr>
+            <tr>
+                <td>Vial (glass or polymer)</td>
+                <td>Viral vectors, mRNA LNPs, some cell suspensions</td>
+                <td>Headspace, stopper compatibility, container closure integrity (CCI)</td>
+            </tr>
+            <tr>
+                <td>Prefilled syringe</td>
+                <td>Direct-to-patient autologous cells, CAR-T infusion bags drawn down to syringe</td>
+                <td>Silicone oil impact on cells; tip-cap integrity; plunger lubrication compatibility</td>
+            </tr>
+            <tr>
+                <td>Infusion bag (IV bag)</td>
+                <td>Allogeneic cell therapies diluted for infusion</td>
+                <td>E&amp;L with plasticizers (e.g., DEHP); compatibility with cell media</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3>Sterility Assurance for Single-Use Components</h3>
+        <p>Many suppliers of ATMP materials cannot guarantee <span class="key-term">sterility assurance</span> compliant with Eur. Ph. 5.1.1, EU Annex 1, EMA Guideline on the sterilization of the medicinal product, active substance, excipient and primary container, or similar regulations. Consequently, these raw materials should be considered as nonsterile even if they have been 0.2 µm-filtered.</p>
+        <ul>
+            <li>Nonsterile materials should be added to the aseptic process via validated 0.2 µm filtration steps followed by a filter-integrity test.</li>
+            <li>Primary container closure systems should be tested, at a minimum, for <strong>sterility, integrity, and bacterial endotoxin</strong>, in addition to visual examination, prior to usage.</li>
+        </ul>
+
+        <h3>Container Integrity Under Cryogenic Conditions</h3>
+        <p>For ATMPs stored at cryogenic temperatures (e.g., &minus;80°C freezer or liquid nitrogen vapor phase), <span class="key-term">container closure integrity (CCI)</span> under thermal stress is a critical qualification parameter. Freeze-thaw cycling can cause:</p>
+        <ul>
+            <li>Seal failures at bag weld points or vial crimp closures</li>
+            <li>Micro-crack propagation in glass vials under rapid temperature change</li>
+            <li>Stopper retraction in prefilled syringes at ultra-low temperatures</li>
+        </ul>
+        <p>Risk assessments should evaluate temperature range, thermal cycling frequency, and storage duration against component material specifications.</p>
+
+        <h3>PIC/S Annex 2A, Section 5.27 — Individualized Therapies</h3>
+        <p>For <span class="key-term">individualized therapies</span> (e.g., autologous cell therapies), since each batch of product is manufactured for a specific patient, an error-free system for patient-derived materials (e.g., tumor samples or leukocytes) must be in place to maintain the <span class="key-term">chain of identity</span> and <span class="key-term">chain of custody</span>.</p>
+        <p>PIC/S Annex 2A, Section 5.27 guidance states: the agreement between the ATMP manufacturer and the supplier should contain clear provisions about the transfer of information, including traceability data and transmission of health donor information that may become available after the supply that may have an impact on the quality or safety of the ATMPs manufactured.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 一次性使用元件的 ATMP 特殊性</h4>
+            <p><strong>Single-Use Component (一次性使用元件):</strong> 在 ATMP 製造中，一次性使用元件不只是方便性工具，而是產品品質與患者安全的直接屏障。與傳統小分子藥物不同，ATMP 的最終容器（特別是細胞治療的冷凍保存袋）在整個生命週期中都與活細胞直接接觸。</p>
+            <p><strong>Container-Closure System (容器密封系統):</strong> ATMP 的容器密封系統選擇必須同時考慮：</p>
+            <ul>
+                <li><strong>物理完整性：</strong>在 &minus;196°C 液氮到 37°C 解凍之間的溫度劇變中維持密封</li>
+                <li><strong>化學相容性：</strong>與 DMSO（常用冷凍保護劑，濃度可達 5–10%）長時間接觸</li>
+                <li><strong>生物相容性：</strong>不得釋出影響細胞活性的滲出物</li>
+            </ul>
+            <p><strong>Traceability (可追溯性):</strong> 對自體細胞治療而言，每一個容器都對應一個特定患者，供應鏈的完整可追溯性是「不可妥協的底線」，而非一般 GMP 好做法。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 細胞治療袋 vs 玻璃瓶的選擇</h4>
+            <p>想像你要運送一批活的熱帶魚（活細胞）跨洲越洋。你的容器選擇決定了魚能否存活到目的地：</p>
+            <ul>
+                <li><strong>冷凍保存袋</strong>就像特製的保溫運魚袋——柔軟有彈性、可以在極低溫中壓縮而不破裂，但需確認袋材不會釋放毒素到水中（E&amp;L 問題）。</li>
+                <li><strong>玻璃瓶</strong>就像堅固的玻璃魚缸——化學性質穩定，但在急凍急解時可能因熱脹冷縮而出現微裂縫（CCI 問題）。</li>
+                <li><strong>預充填注射器</strong>就像注射器式的精準給藥工具——適合直接到患者，但針管內的矽油 (Silicone Oil) 可能影響細胞功能。</li>
+            </ul>
+            <p>關鍵判斷：「這個容器在整個冷鏈旅程（從製造廠到患者手術室）中，能讓我的細胞保持活性嗎？」</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — E&amp;L 對活細胞的獨特威脅</h4>
+            <p>傳統 E&amp;L 研究（例如依據 USP &lt;661&gt;、ISO 10993）主要評估對患者安全的化學毒性。然而，對於細胞治療產品，E&amp;L 有一個額外的維度：<strong>對細胞活性 (Cell Viability) 的直接影響。</strong></p>
+            <p>即使某個滲出物的濃度低到對人體無毒，它仍可能在製造過程中造成：</p>
+            <ul>
+                <li>細胞死亡率上升（活性 &lt; 70% 可能導致批次報廢）</li>
+                <li>T 細胞或 NK 細胞的功能性下降（CAR-T 擴增效率降低）</li>
+                <li>幹細胞分化方向改變（誘導多能幹細胞 iPSC 的異常分化）</li>
+            </ul>
+            <p>實務上：在容器材料選型初期，就應進行<strong>細胞相容性測試 (Cell Compatibility Study)</strong>，而不是等到 E&amp;L 化學分析完成才回頭確認對細胞的影響。兩者應並行進行。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 容器選型決策框架</h4>
+            <p>當客戶帶著一個新的 ATMP 細胞治療產品來諮詢容器選擇時，建議以下決策流程：</p>
+            <ol>
+                <li><strong>產品型態：</strong>最終產品是懸浮細胞？凍乾粉末？液態製劑？ → 決定容器格式（袋/瓶/注射器）</li>
+                <li><strong>儲存條件：</strong>需要冷凍至 &minus;80°C 或液氮（&minus;196°C）？還是冷藏 2–8°C？ → 決定材料耐溫規格</li>
+                <li><strong>配方特性：</strong>含 DMSO？含特殊緩衝液或蛋白質？ → 決定 E&amp;L 測試的優先溶劑</li>
+                <li><strong>給藥途徑：</strong>靜脈輸注？直接注射到腫瘤部位？ → 決定無菌保證等級要求</li>
+                <li><strong>法規市場：</strong>EU（EMA）、US（FDA）、日本（PMDA）？ → 決定適用的 CCI 測試標準</li>
+            </ol>
+            <p>將上述答案對應到「容器材料需求規格書」，才能有意義地進行供應商詢價與資格審查。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 CAR-T 細胞治療產品需要在 &minus;196°C 液氮中長期保存，並以 DMSO 作為冷凍保護劑。請問在選擇最終容器時，你需要評估哪些關鍵風險？請列出至少三項。</li>
+                <li>為什麼對於自體細胞治療（Autologous Cell Therapy），容器的可追溯性要求比異體細胞治療（Allogeneic Cell Therapy）更為嚴格？</li>
+                <li>PIC/S Annex 2A Section 5.27 要求供應商在供貨後若發現新的健康捐贈者資訊，應通知 ATMP 製造商。請問這個要求在實務上如何透過「供應商品質協議」(Supplier Quality Agreement) 落實？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION TOPIC 4 / Q4.1 OVERVIEW -->
+<!-- ============================================================ -->
+<div class="section-title section-header-accent">
+    Topic 4 — Risk-Based Supplier Qualification: Overview
+    <span class="source-badge">PtC-13 p23</span>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Topic 4. Risk-Based Supplier Qualification</h3>
+
+        <p>ATMP material-supplier qualification is a <span class="key-term">risk-based approach</span>. The level of oversight should be proportionate to the risks posed by the individual materials, taking into account their source, manufacturing process, supply chain complexity, and final use to which the material will be put in the ATMP.</p>
+
+        <p><em>Note: For products that fall under PIC/S GMP regulation, Annex 2A provides additional requirements. Besides general requirements, which are applicable to all clinical stages and commercial manufacturing, several requirements differentiate between early- and late-stage clinical manufacturing to commercial manufacturing.</em></p>
+
+        <h3>Q 4.1. What are the key considerations when qualifying an ATMP material vendor or supplier?</h3>
+
+        <h4>General Considerations — Material under GMP Regulation</h4>
+        <ul>
+            <li><span class="key-term">Paper audit</span> (e.g., questionnaire) may be acceptable for lower-risk raw material, such as off-the-shelf material used in the upstream process of cell and gene therapies (early stage only).</li>
+            <li>Whether an <span class="key-term">on-site audit</span> needs to be performed at a manufacturer's or distributor's premises should be defined based on QRM principles. Generally, audits need to be performed at vendors of all materials defined as critical for the manufacturing process according to its product risk profile.</li>
+            <li>Per PIC/S, Annex 2A, a regular qualification of the vendors (e.g., manufacturers, distributors) of all materials to confirm that they comply with the relevant GMP requirements should be performed. This regulation may not apply to one-time-use materials such as a master cell bank.</li>
+        </ul>
+
+        <h4>General Considerations — Material under Non-GMP Conditions</h4>
+        <ul>
+            <li>SME should conduct a <span class="key-term">technical visit</span> to evaluate the risks, in case an audit is not feasible (or accepted) for the supplier, such as a standard supplier with a low-quality management system, for example, one using off-the-shelf RUO material.</li>
+        </ul>
+
+        <h4>Additional Considerations</h4>
+        <ul>
+            <li>If, during technical visits or audits, gaps are identified, the sponsor should evaluate the risks of using the material and provide a justification in terms of safety and functionality by means of additional testing (e.g., product in-process testing, performance test, use of the same lot for manufacturing of toxicology-study sample and Phase 1 clinical-trial material).</li>
+            <li>For U.S. suppliers of approved or licensed therapeutic products, reports of past audits may be leveraged along with cross-reference of the <span class="key-term">Device Master File</span> in lieu of a technical audit. Standard risk-reduction measures should still be applied to the receipt and release of these materials.</li>
+            <li>A written agreement for <span class="key-term">change notifications</span> from the supplier of the critical raw material is recommended to be in place regardless of the clinical phase to evaluate potential impact. (See Q1.1 and Topic 3 for the definition of critical raw material).</li>
+        </ul>
+
+        <div class="quote-box">
+            "For starting material of human origin, the agreement between the ATMP manufacturer (or, as appropriate, the MAH) and the supplier (including blood and tissue establishments) should contain clear provisions about the transfer of information. In particular, this should include test results performed by the supplier, traceability data, and transmission of health donor information that may become available after the supply that may have an impact on the quality or safety of the ATMPs manufactured…."
+            <br><em>— PIC/S Annex 2A, Section 5.27, as cited in PDA PtC-13 Q4.1</em>
+        </div>
+
+        <h4>Specific Consideration for Individualized Therapies</h4>
+        <p>For <span class="key-term">individualized therapies</span> (e.g., autologous cell therapies), since each batch of product is manufactured for a specific patient, an error-free system for patient-derived materials (e.g., tumor samples or leukocytes) must be in place to maintain the <span class="key-term">chain of identity</span> and <span class="key-term">chain of custody</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 供應商風險分層模型</h4>
+            <p>PtC-13 的供應商資格審查哲學核心是：<strong>「監管力道與物料風險成正比」</strong>。這在實務上轉化為供應商分層 (Supplier Tiering)：</p>
+            <ul>
+                <li><strong>Tier 1（關鍵物料供應商）：</strong>直接接觸產品、影響最終產品安全性的物料（例：冷凍保存袋、細胞擴增培養基、病毒載體）→ 必須進行現場稽核 (On-Site Audit) + 書面品質協議。</li>
+                <li><strong>Tier 2（重要物料供應商）：</strong>間接影響產品品質，但不直接接觸最終產品（例：GMP 等級細胞因子、關鍵試劑）→ 書面稽核（問卷）+ 變更通知協議即可。</li>
+                <li><strong>Tier 3（一般物料供應商）：</strong>低風險、可替換、市售現成品（例：標準實驗耗材）→ 供應商選擇記錄 + CoA 即可。</li>
+            </ul>
+            <p>分層依據：物料的生物來源風險、接觸時間與溫度、不可替代性、GMP 符合程度。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 像連鎖餐廳管理供應商一樣</h4>
+            <p>想像你是一家頂級連鎖餐廳的品質總監，你的食材供應商就是 ATMP 的物料供應商：</p>
+            <ul>
+                <li><strong>松露供應商（Tier 1，關鍵物料）：</strong>每季親自拜訪農場，確認採收、保鮮、運輸全程 — 就像現場稽核 (On-Site Audit)。</li>
+                <li><strong>有機蔬菜供應商（Tier 2，重要物料）：</strong>每年寄送問卷確認有機認證仍有效，不需親自到場 — 就像書面稽核 (Paper Audit)。</li>
+                <li><strong>工業用鹽供應商（Tier 3，一般物料）：</strong>只確認每批符合食品安全標準規格即可 — 就像 CoA 查核。</li>
+            </ul>
+            <p>當你發現松露供應商換了農場（等同供應商的重大變更 Change Notification），你一定希望第一時間被告知，而不是收貨後才發現品質異常。這就是「書面變更通知協議」(Written Change Notification Agreement) 的核心價值。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — "GMP Grade" 不等於真正的 GMP</h4>
+            <p>PtC-13 特別點出一個在 ATMP 產業非常普遍的誤解：<strong>供應商標榜「GMP Grade」物料，不代表其製造過程符合 cGMP 法規。</strong></p>
+            <p>實務上常見的情況：</p>
+            <ul>
+                <li>供應商在型錄上印「GMP Grade」，但這只是自我聲稱，沒有第三方稽核驗證。</li>
+                <li>真正的 GMP 符合性需透過問卷評估或現場稽核來驗證。</li>
+                <li>如果你在稽核中發現供應商無法提供批次製造記錄 (Batch Manufacturing Record)，這是重大缺失——不論其型錄上寫了什麼等級。</li>
+            </ul>
+            <p>行動建議：CDMO 的供應商批准清單 (Approved Supplier List, ASL) 應記錄每個物料的「GMP 等級聲稱依據」及「實際驗證方法」，避免單憑型錄定級。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>供應商風險評分框架 Supplier Risk Scoring</h4>
+            <pre>
+供應商風險評分 =
+  物料關鍵性評分 (1–5)
+  × 供應商 GMP 成熟度 (1–5，5 = 無認證)
+  × 供應來源風險 (1–5，5 = 動物源)
+  ÷ 可替代性 (1–5，1 = 易替換)
+
+風險分層：
+  低風險 (≤ 10)  → Tier 3 → CoA + 變更通知
+  中風險 (11–25) → Tier 2 → 書面稽核 + 品質協議
+  高風險 (> 25)  → Tier 1 → 現場稽核 + 完整 SQA
+
+範例：
+  冷凍保存袋 = 5 × 2 × 2 ÷ 1 = 20 → Tier 2/1 邊界
+  人源血清白蛋白 = 5 × 3 × 5 ÷ 2 = 37.5 → Tier 1
+  標準培養皿 = 1 × 2 × 1 ÷ 5 = 0.4 → Tier 3
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家小型學術衍生公司（Academic Spin-off）提供你一種 ATMP 製造用的客製化細胞培養基（Custom Cell Culture Medium），但他們的 GMP 體系尚不成熟，不接受外部稽核。PtC-13 建議你採取什麼替代措施？此措施的局限性是什麼？</li>
+                <li>你的某個關鍵細胞因子供應商（Tier 1）通知你，他們即將更換原料蛋白質的表達系統。根據 PtC-13 的指引，你應該要求供應商提供哪些文件，以評估這個變更對你的 ATMP 製造的影響？</li>
+                <li>一個美國已獲 FDA 許可上市的治療性蛋白質產品，你需要將其用作 ATMP 的輔助材料。PtC-13 說此情況可以如何簡化供應商資格審查？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION Q4.1 EARLY CLINICAL STAGE -->
+<!-- ============================================================ -->
+<div class="section-title section-header-accent">
+    Q4.1 (continued) — Early Clinical Stage Requirements
+    <span class="source-badge">PtC-13 p24</span>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Early Clinical Stage</h3>
+
+        <p>A <span class="key-term">quality system</span> should be in place. The level of quality standard should be adequate to the criticality of the raw material. To enable a clinical trial application, the following minimum requirements must be met:</p>
+        <ul>
+            <li>Supplier quality system must be capable of providing <span class="key-term">safety-relevant documentation</span>.</li>
+            <li><span class="key-term">Traceability</span> of materials and reagents (e.g., a unique material or catalogue number assigned).</li>
+            <li>Description of the origin and history of the material (e.g., donor tissue, chemically defined or recombinant, based on a cell bank).</li>
+            <li>For EU-regulated starting materials, GMP principles should be applied.</li>
+        </ul>
+
+        <p>For <span class="key-term">customized materials</span> (e.g., viral vector, custom-made media and buffers), a <span class="key-term">quality agreement</span> should be in place.</p>
+
+        <p>For off-the-shelf or low-risk materials, it may be sufficient to have a <span class="key-term">change-notification agreement</span> in place before comprehensive quality agreements are in place.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 早期臨床階段供應商最低要求</h4>
+            <p>在 Phase 1 臨床試驗申請（IND/IMPD）階段，PtC-13 採取了「最低但可行」的務實立場。以下是三類物料的差異化要求：</p>
+            <ul>
+                <li><strong>客製化物料（Custom Materials）：</strong>例如客製化病毒載體、特製培養基 → 必須有書面品質協議 (Quality Agreement)，因為這些物料具有獨特性，無法被其他供應商直接替換。</li>
+                <li><strong>關鍵現成品（Critical Off-the-Shelf）：</strong>例如特定廠牌的細胞因子 → 至少要有「變更通知協議 (Change Notification Agreement)」——當供應商改變配方或生產地點時，你必須第一時間知道。</li>
+                <li><strong>低風險現成品（Low-Risk Off-the-Shelf）：</strong>例如實驗室標準試劑 → 型錄號碼 + CoA 即可，暫時不需要正式協議。</li>
+            </ul>
+            <p>關鍵原則：臨床進展就是「資格審查升級」的觸發點。Phase 1 → Phase 3 的路途上，每個關卡都需重新評估供應商的資格等級。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 管理學術源頭供應商</h4>
+            <p>ATMP 產業有很多供應商是「學術衍生公司」(Academic Spin-off)——他們的技術往往是世界最先進的，但 GMP 體系可能剛起步，就像一個剛從學校畢業的天才工程師：腦袋裡有最新的知識，但還不熟悉工廠的 SOP 規範。</p>
+            <p>CDMO 在此扮演的角色就像一位有耐心的前輩：</p>
+            <ul>
+                <li>第一步：協助他們建立基本文件系統（材料追溯、批次號管理）</li>
+                <li>第二步：要求簽訂變更通知協議（讓他們養成「有變動要通報」的習慣）</li>
+                <li>第三步：提供 GMP 要求的培訓，等他們能力成熟後，再升級為正式品質協議</li>
+            </ul>
+            <p>這個策略在 PtC-13 中被稱為「phase-appropriate supplier development」——你不需要等到供應商完全成熟才開始合作，但每個階段都必須有對應的管控措施。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 變更通知協議是最重要的第一步</h4>
+            <p>在所有供應商協議中，<strong>變更通知協議 (Change Notification Agreement)</strong> 是最快應該建立的，因為它的目的是「防止你在不知情的情況下使用了不同品質的物料」。</p>
+            <p>以下是常見的供應商變更場景及其對 ATMP 的潛在影響：</p>
+            <ul>
+                <li>培養基配方調整（細胞擴增效率改變）</li>
+                <li>生產廠房搬遷（環境監控標準可能不同）</li>
+                <li>原料來源地改變（動物源風險，TSE/BSE 問題）</li>
+                <li>保存劑種類改變（E&amp;L 風險改變）</li>
+            </ul>
+            <p>即使在 Phase 1 階段，缺少變更通知協議可能導致：使用了已悄悄改版的物料，而兩批毒理學研究與 Phase 1 臨床試驗用料之間出現批次不一致，引發 FDA/EMA 的審查問題。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION Q4.1 LATE CLINICAL & COMMERCIAL -->
+<!-- ============================================================ -->
+<div class="section-title section-header-accent">
+    Q4.1 (continued) — Late Clinical Stage &amp; Commercial: Single-Source Risk Mitigation
+    <span class="source-badge">PtC-13 p24–p25</span>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Late Clinical Stage and Commercial</h3>
+
+        <p>The quality system standard should be increased to meet GMP regulations or GMP principles defined by EMA whenever possible. The level of GMP adherence should be justified based on the risks of the gaps, with the understanding of material attributes and impact on manufacturing the final drug product.</p>
+
+        <div class="quote-box">
+            <em>Note: Material grades are not standardized. The term "GMP grade" does not necessarily mean that material is manufactured and distributed under current GMP regulations. Instead, the supplier's GMP should be confirmed through assessment by questionnaire or audit to verify the material is of GMP grade.</em>
+        </div>
+
+        <p>To ensure supply for confirmatory or pivotal clinical trials and the approved product, establishing <span class="key-term">second suppliers</span> of materials, especially critical raw materials, is essential. Where high-risk materials (e.g., animal-derived, high-risk supplier) are determined to be critical to product availability and cannot be eliminated or substituted, <span class="key-term">risk assessments</span> should be utilized to identify and evaluate the specific risks posed by the material in relation to the production and availability of the finished product.</p>
+
+        <p>Consideration of such factors as the <span class="key-term">number of suppliers and/or alternatives available</span>, especially where materials are <span class="key-term">single-sourced</span>, as well as the <span class="key-term">lead time and shelf life</span>, for example, are crucial to ensuring the control measures applied are commensurate with the level of risk posed. Specific control measures sufficient to eliminate or mitigate to an acceptable level each risk scenario identified should be established, documented, and applied to each receipt of the respective material.</p>
+
+        <p>Having a <span class="key-term">second qualified supplier</span> is preferred to reduce the risk of drug shortages and ensure <span class="key-term">business continuity</span>.</p>
+
+        <h3>Summary: Key Control Measures for Single-Source Situations</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Risk Scenario</th>
+                <th>Control Measure</th>
+                <th>Documentation Required</th>
+            </tr>
+            <tr>
+                <td>Supplier discontinues product</td>
+                <td>Safety stock (buffer inventory), lead time monitoring</td>
+                <td>Risk assessment; supply continuity plan</td>
+            </tr>
+            <tr>
+                <td>Supplier quality failure (OOS lot)</td>
+                <td>Incoming testing per approved spec; qualified alternate source development</td>
+                <td>Incoming testing protocol; alternate supplier qualification record</td>
+            </tr>
+            <tr>
+                <td>Supplier site disaster / force majeure</td>
+                <td>Dual-source qualification; geographic diversification</td>
+                <td>Business continuity plan (BCP); dual-source agreement</td>
+            </tr>
+            <tr>
+                <td>Regulatory filing for single-source material</td>
+                <td>Document justification in IND/IMPD/BLA; include risk mitigation strategy</td>
+                <td>Regulatory filing section; risk assessment document</td>
+            </tr>
+            <tr>
+                <td>Material with long lead time (&gt; 3 months)</td>
+                <td>Extended safety stock; demand forecasting integration</td>
+                <td>Inventory management SOP; rolling 12-month forecast</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 晚期臨床與商業化階段的供應商升級要求</h4>
+            <p>Phase 2/3（確認性或樞紐試驗，Confirmatory/Pivotal Clinical Trial）是供應商管理的重大轉折點。此時：</p>
+            <ul>
+                <li>批次失敗不只是損失研究物料，而是直接影響患者入組進度、試驗時間表，以及數億美元的臨床投資。</li>
+                <li>商業化後的物料短缺 (Drug Shortage) 可能直接影響等待治療的患者，觸發監管機構的緊急調查。</li>
+                <li>監管申報（BLA/MAA）要求供應商資訊有更高的透明度與一致性，包括物料規格、品質協議內容、稽核頻率等。</li>
+            </ul>
+            <p>這就是為什麼 PtC-13 在此階段特別強調<strong>「第二供應商」</strong>——不是因為法規強制要求，而是因為沒有備援的後果實在太嚴重。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 單一供應商風險就像沒有備用輪胎</h4>
+            <p>在 F1 賽車比賽中，如果你的唯一輪胎供應商在決賽前一天無法出貨，你只能棄賽——不論你的車有多快。對於 ATMP 商業化產品，單一關鍵物料供應商就是這個單點故障。</p>
+            <p>緩解策略的類比：</p>
+            <ul>
+                <li><strong>備胎（Safety Stock）：</strong>提前備貨，計算合理的安全庫存量（考慮物料效期 vs. 進貨前置時間）。</li>
+                <li><strong>備用車隊（Second Qualified Supplier）：</strong>提前資格審查第二個供應商，即使平時不用，危急時可以立即切換。</li>
+                <li><strong>車隊保險（Business Continuity Plan）：</strong>書面記錄當主供應商停產時的應對流程，包含監管機構通知流程。</li>
+            </ul>
+            <p>CDMO 的商業考量：建立第二供應商需要額外投入資格審查的時間（3–12 個月）與成本，但與商業化後物料斷貨的損失相比，這是值得的投資。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 決策層級的優先順序</h4>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-1">1. 無菌保證 Sterility Assurance</div>
+                </div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-2">2. 產品關鍵品質屬性 CQAs (患者安全)</div>
+                </div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-3">3. 商業連續性 Business Continuity</div>
+                </div>
+            </div>
+            <p>在評估是否接受「有 GMP 缺口」的單一供應商時，這個層級至關重要：如果接受該供應商的缺口會危及無菌保證（Level 1），則無論業務壓力多大，都不應接受——直到缺口被修正。</p>
+            <p>實務情境：當你的唯一冷凍保存袋供應商無法提供無菌測試記錄時（涉及 Level 1 風險），CDMO 必須暫停物料接收並通知客戶，即使這可能延誤患者治療時程。患者安全永遠優先於時程壓力。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 供應商品質協議 (Supplier Quality Agreement, SQA) 核心條款</h4>
+            <p>一份完整的 SQA 對 ATMP 關鍵物料供應商應涵蓋以下核心條款：</p>
+            <ul>
+                <li><strong>物料規格：</strong>雙方認可的技術規格書 (Technical Specification)</li>
+                <li><strong>測試責任：</strong>供應商責任測試 vs. 廠內入廠測試的分工</li>
+                <li><strong>變更管理：</strong>供應商啟動變更前的通知期（建議：重大變更至少提前 6 個月通知）</li>
+                <li><strong>批次記錄：</strong>每批應提供的文件（CoA、CoC、批製造記錄摘要）</li>
+                <li><strong>稽核權限：</strong>廠方的現場稽核頻率與預先通知時間</li>
+                <li><strong>不符合品管理：</strong>OOS 批次的處理流程與 CAPA 通知義務</li>
+                <li><strong>供應鏈資訊：</strong>（人源物料特別條款）PIC/S 5.27 要求的捐贈者健康資訊傳遞機制</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CAR-T 療法的唯一關鍵細胞因子供應商（單一供應商，進貨前置時間 4 個月）宣布將在 6 個月後停止生產。請根據 PtC-13 的指引，制定一份緊急應對計畫，並列出需通知監管機構的時機與方式。</li>
+                <li>在商業化申請（BLA/MAA）階段，監管機構審查員發現你的 IND/IMPD 中所列的關鍵培養基供應商從未接受過現場稽核，只有問卷紀錄。這是否符合 PtC-13 的指引？你需要補充哪些文件或行動？</li>
+                <li>一個早期臨床階段（Phase 1）的 ATMP 廠商，因人力資源有限，準備將所有供應商一律處理為 Tier 3（僅 CoA 查核）。根據 PtC-13 的風險導向原則，這樣的做法有哪些缺失？請舉出至少兩種物料說明應升級至更高層級的理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — PtC-13 Section 3b & Topic 4 Q4.1</h3>
+    <ul>
+        <li><strong>Q3.3 一次性使用元件：</strong>ATMP 容器密封系統的選擇需同時評估物理完整性（低溫 CCI）、化學相容性（DMSO 等冷凍保護劑）、以及生物相容性（E&amp;L 對活細胞的影響）——三者缺一不可，且 E&amp;L 評估必須包含細胞相容性測試，不能只做化學安全分析。</li>
+        <li><strong>無菌保證的特殊性：</strong>許多 ATMP 物料供應商無法保證符合藥典等級的無菌性；主要容器密封系統的入廠測試最低應包含無菌性、完整性（CCI）、細菌內毒素三項。</li>
+        <li><strong>PIC/S Annex 2A 5.27 要求：</strong>人源起始物料的供應協議必須包含捐贈者健康資訊的回溯傳遞條款——即使是供貨後才發現的健康相關資訊，供應商也有義務通知 ATMP 製造商。</li>
+        <li><strong>風險分層供應商管理：</strong>供應商稽核策略（現場稽核 vs. 書面稽核 vs. 技術訪視）應依物料關鍵性和供應商 GMP 成熟度來決定，而非一刀切。早期臨床可接受較低標準，但必須隨臨床進展逐步升級。</li>
+        <li><strong>"GMP Grade" 標籤的誤解：</strong>供應商型錄上的 GMP Grade 標示不代表真實的 cGMP 符合性，必須通過問卷評估或現場稽核加以驗證。</li>
+        <li><strong>單一供應商風險：</strong>晚期臨床與商業化階段，關鍵物料的第二供應商資格審查是必要的風險管理措施，而非可選項——物料斷貨對 ATMP 患者的衝擊遠超一般藥品。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
