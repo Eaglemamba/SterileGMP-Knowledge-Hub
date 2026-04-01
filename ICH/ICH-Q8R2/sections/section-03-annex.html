@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICH Q8(R2) - Section 3: Annex — QbD Elements, Design Space & Control Strategy</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template v2.0
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1.2rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .formula-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start), var(--yellow-end)); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; }
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; }
+.application-box h4 { color: #1565c0; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.application-box p, .application-box ul { font-size: 0.92rem; margin-bottom: 0.5rem; }
+.application-box ul { margin-left: 1.25rem; }
+.summary-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
+.summary-box h3 { color: #92400e; margin-bottom: 0.75rem; }
+.summary-box ul { margin-left: 1.25rem; }
+.summary-box li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 1.5rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ICH Q8(R2) — Pharmaceutical Development</h1>
+    <div class="subtitle">Section 3: Part II Annex — QbD Elements, Design Space & Control Strategy｜附件：品質源於設計要素、設計空間與控制策略</div>
+    <div class="page-info">ICH Harmonised Tripartite Guideline | Part II Annex (Step 4: November 2008) | p9–p15</div>
+</div>
+
+<div class="main-content">
+
+    <!-- 學習目標 -->
+    <div class="learning-objectives">
+        <h3>本章學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解 Part II Annex 的定位：不建立新要求，而是闡明 QbD 工具的實際應用方式</li>
+            <li>掌握 QbD 最小要素（minimal elements）vs 增強方法（enhanced approach）的差異</li>
+            <li>精確理解 QTPP 和 CQA 的官方定義，及其在製劑開發中的角色</li>
+            <li>理解風險評估如何將物料屬性和製程參數連結至 CQA</li>
+            <li>掌握 Design Space 的六個子議題（2.4.1–2.4.6）：變數選擇、描述方式、單元操作、比例放大、PAR vs DS、失效邊界</li>
+            <li>理解控制策略（Control Strategy）的完整框架及 RTRT 的應用條件</li>
+        </ul>
+    </div>
+
+    <!-- Block 1: Annex Introduction + Approaches -->
+    <h2 class="section-title">Annex 1: Introduction & Approaches to Pharmaceutical Development｜附件導論與開發方法論</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>Part II Annex — Section 1: Introduction</h2>
+            <p>This guideline is an annex to ICH Q8 Pharmaceutical Development and provides further clarification of key concepts outlined in the core guideline. In addition, this annex describes the principles of <span class="key-term">quality by design</span> (QbD). The annex is not intended to establish new standards or to introduce new regulatory requirements; however, it shows how concepts and tools (e.g., design space) outlined in the parent Q8 document could be put into practice by the applicant for all dosage forms.</p>
+            <p>Pharmaceutical development should include, at a minimum, the following elements:</p>
+            <ul>
+                <li>Defining the <span class="key-term">quality target product profile</span> (QTPP) as it relates to quality, safety and efficacy, considering e.g., the route of administration, dosage form, bioavailability, strength, and stability</li>
+                <li>Identifying potential <span class="key-term">critical quality attributes</span> (CQAs) of the drug product, so that those product characteristics having an impact on product quality can be studied and controlled</li>
+                <li>Determining the critical quality attributes of the drug substance, excipients etc., and selecting the type and amount of excipients to deliver drug product of the desired quality</li>
+                <li>Selecting an appropriate manufacturing process</li>
+                <li>Defining a <span class="key-term">control strategy</span></li>
+            </ul>
+            <p>An enhanced, QbD approach to product development would additionally include:</p>
+            <ul>
+                <li>A systematic evaluation, understanding and refining of the formulation and manufacturing process, including identifying material attributes and process parameters that can have an effect on product CQAs, and determining the functional relationships that link them</li>
+                <li>Using the enhanced product and process understanding in combination with quality risk management to establish an appropriate control strategy which can include a proposal for a design space and/or <span class="key-term">real-time release testing</span></li>
+            </ul>
+            <div class="quote-box">
+                It is the knowledge gained and submitted to the authorities, and not the volume of data collected, that forms the basis for science- and risk-based submissions and regulatory evaluations.
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>中文解析</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：QbD 最小要素 vs 增強方法</h4>
+                <p>Annex 明確區分兩個層次，這是理解 Q8 監管期望的關鍵：</p>
+                <table>
+                    <thead>
+                        <tr><th>層次</th><th>要求</th><th>監管期望</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>最小要素</strong><br>（Minimal elements）</td><td>QTPP + CQA + 製程選擇 + 控制策略</td><td>所有申請均應具備</td></tr>
+                        <tr><td><strong>增強方法</strong><br>（Enhanced / QbD）</td><td>+系統性風險評估 + 功能關係建立 + Design Space + RTRT</td><td>選擇性，但帶來法規彈性</td></tr>
+                    </tbody>
+                </table>
+                <p>增強方法的回報：更大的操作彈性（Design Space 內不須補件）、支持 RTRT（取代部分終點測試）、潛在減少 post-approval change。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>QbD 開發流程框架</h4>
+                <table>
+                    <thead>
+                        <tr><th>步驟</th><th>活動</th><th>工具</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1. 目標設定</td><td>定義 QTPP</td><td>文獻、臨床需求分析</td></tr>
+                        <tr><td>2. 屬性識別</td><td>識別 CQA（由 QTPP 推導）</td><td>QRM（Ishikawa、FMEA）</td></tr>
+                        <tr><td>3. 風險評估</td><td>物料屬性 + CPP → CQA 的連結</td><td>風險矩陣、FMEA、PHA</td></tr>
+                        <tr><td>4. 知識建立</td><td>DoE、機理模型、先驗知識</td><td>RSM、統計模型</td></tr>
+                        <tr><td>5. 設計空間</td><td>多維 CPP+MA 的可接受操作範圍</td><td>多變量分析、模型</td></tr>
+                        <tr><td>6. 控制策略</td><td>整合所有控制要素確保品質</td><td>RTRT、CPV、SPC</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>重要澄清：Annex 不新增要求</h4>
+                <p>Q8 Annex 明確聲明：<strong>不建立新標準或引入新法規要求</strong>。這意味著：</p>
+                <ul>
+                    <li>不採用 QbD 方法也可以通過審查，只要滿足最小要素</li>
+                    <li>QbD 是「機會」不是「義務」——但選擇 QbD 路徑的申請方可享有更大彈性</li>
+                    <li>「知識的品質」比「數據的數量」更重要</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block 2: QTPP + CQA -->
+    <h2 class="section-title">Annex 2.1 & 2.2: QTPP & CQA｜品質目標產品特性與關鍵品質屬性</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>2.1 Quality Target Product Profile (QTPP)</h2>
+            <p>The quality target product profile forms the <strong>basis of design</strong> for the development of the product. Considerations for the quality target product profile could include:</p>
+            <ul>
+                <li>Intended use in clinical setting, route of administration, dosage form, delivery systems</li>
+                <li>Dosage strength(s)</li>
+                <li>Container closure system</li>
+                <li>Therapeutic moiety release or delivery and attributes affecting pharmacokinetic characteristics (e.g., dissolution, aerodynamic performance)</li>
+                <li>Drug product quality criteria (e.g., sterility, purity, stability and drug release) appropriate for the intended marketed product</li>
+            </ul>
+
+            <h2>2.2 Critical Quality Attributes (CQAs)</h2>
+            <p>A CQA is a physical, chemical, biological, or microbiological property or characteristic that should be within an <strong>appropriate limit, range, or distribution</strong> to ensure the desired product quality. CQAs are generally associated with the drug substance, excipients, intermediates (in-process materials) and drug product.</p>
+            <p>CQAs of <strong>solid oral dosage forms</strong> are typically those aspects affecting product purity, strength, drug release and stability. CQAs for other delivery systems can additionally include more product specific aspects, such as <span class="key-term">aerodynamic properties</span> for inhaled products, <span class="key-term">sterility</span> for parenterals, and <span class="key-term">adhesion properties</span> for transdermal patches.</p>
+            <p>For drug substances, raw materials and intermediates, the CQAs can additionally include those properties (e.g., <span class="key-term">particle size distribution</span>, <span class="key-term">bulk density</span>) that affect drug product CQAs.</p>
+            <p>Potential drug product CQAs derived from the QTPP and/or prior knowledge are used to guide the product and process development. Relevant CQAs can be identified by an <span class="key-term">iterative process</span> of quality risk management and experimentation that assesses the extent to which their variation can have an impact on the quality of the drug product.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析</h2>
+
+            <div class="concept-box">
+                <h4>QTPP：製劑設計的「目標設定書」</h4>
+                <p><strong>QTPP（Quality Target Product Profile）</strong>是製劑開發的起點——定義了「理想中這個產品應該是什麼樣子」。它不是規格表，而是一份<strong>願景文件</strong>，驅動所有後續開發決策。</p>
+                <p>QTPP 的五個考量維度：</p>
+                <ul>
+                    <li><strong>臨床用途</strong>：適應症、給藥途徑、劑型（如口服、注射、吸入）</li>
+                    <li><strong>劑量強度</strong>：治療劑量範圍</li>
+                    <li><strong>容器封閉</strong>：預期包裝形式</li>
+                    <li><strong>藥物釋放</strong>：溶出特性、氣動性能（對應 PK 目標）</li>
+                    <li><strong>品質標準</strong>：無菌性、純度、穩定性</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>類比：QTPP 如同建築設計的需求說明書</h4>
+                <p>建設一棟建築前，業主會提出需求（幾層樓、使用功能、預算、耐震等級）。這份需求說明就是 QTPP——它驅動建築師（製劑科學家）的所有設計決策。若沒有清晰的 QTPP，開發方向可能偏離臨床需求。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>CQA：從 QTPP 推導的品質屬性清單</h4>
+                <p><strong>官方定義</strong>：物理、化學、生物或微生物特性，必須在適當限度/範圍/分布內，以確保期望的產品品質。</p>
+                <p><strong>CQA vs 規格（Specification）的區別</strong>：</p>
+                <ul>
+                    <li>CQA 是<strong>開發工具</strong>——識別哪些屬性需要被研究和控制</li>
+                    <li>規格（spec）是<strong>監管要求</strong>——最終商業產品的驗收標準</li>
+                    <li>CQA 列表在開發過程中是<strong>動態的</strong>，隨知識增加而修訂</li>
+                </ul>
+                <p>不同劑型的特色 CQA：</p>
+                <ul>
+                    <li>固體口服：純度、效價、溶出、穩定性</li>
+                    <li>吸入製劑：氣動粒徑分布（APSD）、MMAD</li>
+                    <li>注射劑：無菌性、微粒、可見/不可見異物</li>
+                    <li>貼片：黏附力、皮膚通透性</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>原料藥 CQA 也影響製劑 CQA</h4>
+                <p>CQA 的概念延伸到原料藥和中間體——API 的粒徑分布（PSD）和堆積密度（bulk density）雖然是 API 的屬性，但直接影響製劑的含量均勻性（CQA）。</p>
+                <p>這種<strong>「上游 CQA → 下游 CQA」的鏈結關係</strong>是風險評估的核心分析對象（見 2.3 節）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block 3: Risk Assessment (2.3) + Design Space (2.4) -->
+    <h2 class="section-title">Annex 2.3 & 2.4: Risk Assessment & Design Space｜風險評估與設計空間詳解</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>2.3 Risk Assessment: Linking Material Attributes and Process Parameters to CQAs</h2>
+            <p>Risk assessment is a valuable science-based process used in quality risk management (see ICH Q9) that can aid in identifying which material attributes and process parameters potentially have an effect on product CQAs. Risk assessment is typically performed early in the pharmaceutical development process and is <strong>repeated as more information becomes available</strong> and greater knowledge is obtained.</p>
+            <p>Risk assessment tools can be used to <strong>identify and rank</strong> parameters (e.g., process, equipment, input materials) with potential to have an impact on product quality, based on prior knowledge and initial experimental data. The initial list of potential parameters can be quite extensive, but can be modified and prioritized by further studies (e.g., through a combination of design of experiments, mechanistic models).</p>
+            <p>Once the significant parameters are identified, they can be further studied (e.g., through a combination of design of experiments, mathematical models, or studies that lead to mechanistic understanding) to achieve a higher level of process understanding.</p>
+
+            <h2>2.4 Design Space — Six Sub-Topics</h2>
+
+            <h3>2.4.1 Selection of Variables</h3>
+            <p>A description should be provided in the application of the process parameters and material attributes considered for the design space, those that were included, and their effect on product quality. The rationale for inclusion in the design space should be presented. In some cases it is helpful to provide also the rationale as to why some parameters were excluded.</p>
+
+            <h3>2.4.2 Describing a Design Space in a Submission</h3>
+            <p>A design space can be described in terms of ranges of material attributes and process parameters, or through more complex mathematical relationships. It is possible to describe a design space as a <span class="key-term">time dependent function</span> (e.g., temperature and pressure cycle of a lyophilisation cycle), or as a combination of variables such as components of a <span class="key-term">multivariate model</span>. Scaling factors can also be included if the design space is intended to span multiple operational scales.</p>
+
+            <h3>2.4.3 Unit Operation Design Space(s)</h3>
+            <p>The applicant can choose to establish <strong>independent design spaces for one or more unit operations</strong>, or to establish a single design space that spans multiple operations. While a separate design space for each unit operation is often simpler to develop, a design space that spans the entire process can provide more operational flexibility.</p>
+
+            <h3>2.4.4 Relationship of Design Space to Scale and Equipment</h3>
+            <p>A design space can be developed at any scale. The applicant should justify the relevance of a design space developed at small or pilot scale to the proposed production scale manufacturing process. If the design space is proposed to be applicable to multiple scales, it should be described in terms of <span class="key-term">scale-independent parameters</span> (e.g., shear rate rather than agitation rate).</p>
+
+            <h3>2.4.5 Design Space Versus Proven Acceptable Ranges</h3>
+            <p>A combination of proven acceptable ranges does <strong>not</strong> constitute a design space. However, proven acceptable ranges based on univariate experimentation can provide useful knowledge about the process.</p>
+
+            <h3>2.4.6 Design Space and Edge of Failure</h3>
+            <p>It can be helpful to determine the <span class="key-term">edge of failure</span> for process parameters or material attributes, beyond which the relevant quality attributes cannot be met. However, determining the edge of failure or demonstrating failure modes are <strong>not essential</strong> parts of establishing a design space.</p>
+        </div>
+        <div class="right-column">
+            <h2>中文解析</h2>
+
+            <div class="concept-box">
+                <h4>2.3 風險評估：從「可能影響清單」到「關鍵參數確認」</h4>
+                <p>風險評估在製劑開發中是一個<strong>迭代過程</strong>：</p>
+                <ol>
+                    <li><strong>初始風險評估</strong>（開發早期）：基於先驗知識，列出所有可能影響 CQA 的物料屬性和製程參數——清單通常很長</li>
+                    <li><strong>風險排序</strong>：用 FMEA、Fishbone、風險矩陣篩選高優先級參數</li>
+                    <li><strong>實驗驗證</strong>（DoE）：確認哪些參數真正對 CQA 有統計顯著影響</li>
+                    <li><strong>持續更新</strong>：隨開發進展重複評估，清單逐漸聚焦</li>
+                </ol>
+                <p>最終確認的「顯著參數」成為 CPP，進入 Design Space 設計。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>2.4.1–2.4.6 設計空間六個子議題速覽</h4>
+                <table>
+                    <thead>
+                        <tr><th>子議題</th><th>核心問題</th><th>關鍵要點</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2.4.1 變數選擇</td><td>哪些參數納入 DS？為何？</td><td>需提供納入和排除的理由</td></tr>
+                        <tr><td>2.4.2 DS 描述方式</td><td>如何在 CTD 中呈現 DS？</td><td>可為範圍、數學模型、時間函數</td></tr>
+                        <tr><td>2.4.3 單元操作</td><td>每個製程步驟獨立 DS 還是統一？</td><td>統一 DS 提供更多彈性</td></tr>
+                        <tr><td>2.4.4 比例放大</td><td>小試 DS 如何外推至商業規模？</td><td>需用尺度無關參數（如剪切速率）</td></tr>
+                        <tr><td>2.4.5 DS vs PAR</td><td>PAR 的組合等於 DS 嗎？</td><td>不等於！DS 是多維交互空間</td></tr>
+                        <tr><td>2.4.6 失效邊界</td><td>必須確定失效邊界嗎？</td><td>有助但非必要</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>2.4.5 最常見誤解：PAR 組合 ≠ Design Space</h4>
+                <p>這是 Q8 最重要的澄清之一：</p>
+                <ul>
+                    <li><strong>PAR（Proven Acceptable Range）</strong>：單一參數的可接受範圍，通過單變數實驗確定（univariate），不考慮其他參數的影響</li>
+                    <li><strong>Design Space</strong>：多個 CPP 和物料屬性的<strong>多維交互空間</strong>，考慮參數間的交互作用，通過 DoE 等多變數實驗確定</li>
+                </ul>
+                <p>例如：造粒水量的 PAR 是 15-25%，噴霧速率的 PAR 是 5-10 g/min。但這兩個 PAR 的組合（長方形區域）<strong>不等於</strong> Design Space——因為在某些組合（高水量+高噴霧速率）下品質可能不可接受。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>類比：DS vs PAR 的差別</h4>
+                <p>想像一棟房子的安全承重範圍：<br>
+                PAR 方法 = 只測試每根柱子的最大承重（個別）<br>
+                DS 方法 = 測試所有柱子組合下的結構整體承重（考慮柱子間的支撐交互作用）</p>
+                <p>顯然 DS 提供了更準確的「安全操作空間」理解。</p>
+            </div>
+
+            <div class="application-box">
+                <h4>2.4.4 比例放大（Scale-up）的尺度無關參數</h4>
+                <p>當 DS 需要跨越實驗室、試量產、商業生產規模時，必須用<strong>尺度無關參數（scale-independent parameters）</strong>描述：</p>
+                <ul>
+                    <li>攪拌敏感性製品：用<strong>剪切速率（shear rate）</strong>而非轉速（RPM）</li>
+                    <li>乾燥過程：用<strong>無因次數（Dimensionless numbers）</strong>如 Froude number</li>
+                    <li>凍乾製品：用<strong>時間-溫度-壓力曲線</strong>的函數形式</li>
+                </ul>
+                <p>這允許同一 DS 在不同規模設備上有效適用，支持商業化後的製造彈性。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block 4: Control Strategy (2.5) + Lifecycle (2.6) + CTD Submission (3.x) -->
+    <h2 class="section-title">Annex 2.5, 2.6 & Section 3: Control Strategy, Lifecycle & CTD Submission｜控制策略、生命週期管理與 CTD 提交</h2>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>2.5 Control Strategy</h2>
+            <p>A control strategy is designed to ensure that a product of required quality will be produced consistently. A control strategy can include, but is not limited to, the following:</p>
+            <ul>
+                <li>Control of input material attributes (e.g., drug substance, excipients, primary packaging materials) based on an understanding of their impact on processability or product quality</li>
+                <li>Product specification(s)</li>
+                <li>Controls for unit operations that have an impact on downstream processing or product quality</li>
+                <li>In-process or <span class="key-term">real-time release testing</span> in lieu of end-product testing (e.g., measurement and control of CQAs during processing)</li>
+                <li>A monitoring program (e.g., full product testing at regular intervals) for verifying multivariate prediction models</li>
+            </ul>
+            <div class="quote-box">
+                Sources of variability that can impact product quality should be identified, appropriately understood, and subsequently controlled. This process understanding can enable an alternative manufacturing paradigm where the variability of input materials could be less tightly constrained — instead it can be possible to design an adaptive process step.
+            </div>
+
+            <h2>2.6 Product Lifecycle Management and Continual Improvement</h2>
+            <p>Throughout the product lifecycle, companies have opportunities to evaluate innovative approaches to improve product quality (see ICH Q10). Process performance can be monitored to ensure that it is working as anticipated to deliver product quality attributes as predicted by the design space.</p>
+            <p>Expansion, reduction or redefinition of the design space could be desired upon gaining additional process knowledge. <strong>Change of design space is subject to regional requirements.</strong></p>
+
+            <h2>3. CTD Submission Guidance</h2>
+            <p>Key CTD placement guidance for QbD elements:</p>
+            <ul>
+                <li><strong>3.1 QRM and Process Development</strong>: Risk analyses linking material attributes, process parameters and CQAs → included in P.2.1, P.2.2, and P.2.3</li>
+                <li><strong>3.2 Design Space</strong>: Design space(s) described in P.3.3 (manufacturing process and process controls); summary and development studies basis in P.2.1, P.2.2, P.2.3; relationship to control strategy in P.5.6</li>
+                <li><strong>3.3 Control Strategy</strong>: Submitted in P.2 (development rationale), P.3.3 (manufacturing controls), P.3.4 (critical steps controls), and P.5.6 (specification justification)</li>
+                <li><strong>3.4 Drug Substance Related Information</strong>: DS properties that influence drug product quality in S.4.5, API in-process controls in S.2.4</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>中文解析</h2>
+
+            <div class="concept-box">
+                <h4>控制策略（Control Strategy）的完整框架</h4>
+                <p>控制策略是 QbD 的「操作化」——將科學知識轉化為實際的製造控制措施。完整的控制策略包含五個層次：</p>
+                <table>
+                    <thead>
+                        <tr><th>控制層次</th><th>例子</th><th>特點</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1. 輸入物料控制</td><td>API 粒徑規格、賦形劑水分限度</td><td>最上游的控制</td></tr>
+                        <tr><td>2. 製程控制（CPP）</td><td>造粒終點、壓錠力監控</td><td>在線/離線監測</td></tr>
+                        <tr><td>3. 製程中測試（IPC）</td><td>混合均勻度、水分含量測試</td><td>及早發現偏差</td></tr>
+                        <tr><td>4. 終點測試</td><td>含量、溶出、無菌性</td><td>傳統放行控制</td></tr>
+                        <tr><td>5. RTRT（即時放行）</td><td>NIR 取代含量測定</td><td>以 PAT 數據取代終點測試</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h4>RTRT（Real-Time Release Testing）即時放行測試</h4>
+                <p>RTRT 是 QbD 帶來的最大製造效益之一——以製程中的即時量測<strong>取代部分終點測試</strong>：</p>
+                <ul>
+                    <li><strong>條件</strong>：已建立 PAT 量測與 CQA 之間的可靠數學模型</li>
+                    <li><strong>例子</strong>：NIR 即時測定含量均勻性 → 取代傳統 content uniformity 測試</li>
+                    <li><strong>限制</strong>：RTRT 可<strong>取代終點測試</strong>，但<strong>不能取代</strong> GMP 要求的批次審核和品管放行步驟</li>
+                    <li><strong>益處</strong>：更快放行、更高品質保證（連續數據 vs 抽樣測試）</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>類比：控制策略如同多層防禦</h4>
+                <p>控制策略如同機場安全系統——不依賴單一關卡，而是多層防禦：邊境管制（輸入物料）→ 行李 X 光（製程 IPC）→ 人身安檢（製程中測試）→ 登機口驗證（終點測試）。每層防禦針對不同風險，整體確保「不合格品不會到達乘客手中（患者手中）」。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>Design Space 變更的監管要求</h4>
+                <p>Q8 Annex 2.6 明確：<strong>Design Space 的變更（擴大、縮小、重新定義）受各地區法規要求管轄</strong>。這意味著：</p>
+                <ul>
+                    <li>Design Space 一旦獲批，不可任意更改</li>
+                    <li>獲批後的知識更新（如模型維護）若不改變 DS 本身，可在公司品質體系內管理（無需監管申報）</li>
+                    <li>希望擴大 DS 範圍 → 需按 post-approval change 流程申報</li>
+                </ul>
+                <p>這是 DS「靈活但有邊界」特性的體現。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>QbD 元素在 CTD Module 3 中的分布</h4>
+                <table>
+                    <thead>
+                        <tr><th>QbD 元素</th><th>CTD 主要位置</th><th>次要位置</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>QTPP</td><td>P.2（開頭）</td><td>P.1（製劑說明）</td></tr>
+                        <tr><td>CQA 識別</td><td>P.2.2（製劑開發）</td><td>P.5.6（規格說明）</td></tr>
+                        <tr><td>風險評估</td><td>P.2.1, P.2.2, P.2.3</td><td>-</td></tr>
+                        <tr><td>Design Space</td><td>P.3.3（製程控制）</td><td>P.2.3（製程開發摘要）</td></tr>
+                        <tr><td>控制策略</td><td>P.3.3, P.3.4</td><td>P.5.6, P.2（論證）</td></tr>
+                        <tr><td>RTRT</td><td>P.3.4（關鍵步驟控制）</td><td>P.5.6（取代規格論證）</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="practice-box">
+                <h4>自我測試</h4>
+                <ol>
+                    <li>一個固體口服製劑，QTPP 中定義了「快速溶出（&gt;85% in 30 min）」的目標，應如何推導相關 CQA？</li>
+                    <li>為何 PAR 的組合不等於 Design Space？舉一個具體例子說明其差別。</li>
+                    <li>Control Strategy 的第幾層（RTRT）有什麼使用限制？RTRT 可以完全取代 QC 批次審核嗎？</li>
+                    <li>若要將一個在試量產規模建立的 Design Space 應用於商業規模，如何描述比例放大的科學依據？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- 小結 -->
+    <div class="summary-box">
+        <h3>本節重點回顧 Key Takeaways</h3>
+        <ul>
+            <li><strong>Annex 定位</strong>：不建立新要求，而是展示 QbD 概念的實際應用；知識品質 > 數據數量</li>
+            <li><strong>QbD 最小要素</strong>：QTPP → CQA → 製程選擇 → 控制策略（所有申請均應具備）</li>
+            <li><strong>增強 QbD</strong>：+風險評估 + 功能關係建立 + Design Space + RTRT（帶來監管彈性）</li>
+            <li><strong>QTPP</strong>：製劑設計的起點和願景，驅動所有後續開發決策</li>
+            <li><strong>CQA</strong>：必須在適當限度內的物理/化學/生物/微生物屬性；從 QTPP 推導；清單動態更新</li>
+            <li><strong>風險評估（2.3）</strong>：迭代過程，從廣泛清單聚焦至 CPP；DoE 驗證顯著性</li>
+            <li><strong>Design Space（2.4）</strong>：多維交互空間；PAR 組合 ≠ DS；可跨單元操作或跨比例；比例放大需尺度無關參數</li>
+            <li><strong>控制策略（2.5）</strong>：五層防禦（輸入→製程→IPC→終點→RTRT）；RTRT 取代部分終點測試但不取代 GMP 放行程序</li>
+            <li><strong>Design Space 變更</strong>受各地區法規管轄；DS 本身不變的模型維護可在公司品質體系內處理</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="main-footer">
+    <p>ICH Q8(R2) Pharmaceutical Development — Section 3: Part II Annex — QbD Elements, Design Space & Control Strategy</p>
+    <p>SterileGMP Knowledge Hub | Educational Use Only</p>
+</div>
+
+</body>
+</html>
