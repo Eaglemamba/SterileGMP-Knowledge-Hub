@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10)
+Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10; ISPE Vol.6 complete)
 
 ---
 
@@ -22,11 +22,11 @@ Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10)
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 7 | Vol.3, Vol.4, Vol.5, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.) |
-| Not yet started | ~8 | Vol.6, GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT |
+| Complete | 8 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.) |
+| Not yet started | 7 | GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT |
 | **Total** | **~15** | |
 
-**Completion: 47%** (see `ISPE/ISPE-PROCESSING-ORDER.md` for prioritized queue)
+**Completion: 53%** (see `ISPE/ISPE-PROCESSING-ORDER.md` for prioritized queue)
 
 ### Other Sources
 
@@ -38,7 +38,7 @@ Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10)
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 47 of ~65-70 target documents complete (approx. 71%)**
+**Overall: 48 of ~65-70 target documents complete (approx. 72%)**
 
 ---
 
@@ -142,9 +142,10 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | ~~**New source: PIC/S**~~ | ~~PIC/S Annex 1 (2022)~~ | ✅ Done |
 | **New source: FDA** | Aseptic Processing Guidance (2004) | Medium |
 | **New source: FDA** | Process Validation Guidance (2011, Rev 2) | Medium |
-| **New source: ICH** | Q9(R1) Quality Risk Management | Small (~30 pages) |
-| **New source: ICH** | Q10 Pharmaceutical Quality System | Small (~20 pages) |
-| **New source: ICH** | Q8(R2) Pharmaceutical Development | Small (~30 pages) |
+| **New source: FDA** | Process Inspection Guidance | Medium |
+| ~~**New source: ICH**~~ | ~~Q9(R1) Quality Risk Management~~ | ✅ Done |
+| ~~**New source: ICH**~~ | ~~Q10 Pharmaceutical Quality System~~ | ✅ Done |
+| ~~**New source: ICH**~~ | ~~Q8(R2) Pharmaceutical Development~~ | ✅ Done |
 
 ### Phase 3: Pharmacopeial Standards + Cleanrooms
 
@@ -168,7 +169,7 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | Fill lyophilization gap | PDA TR36 (or equivalent) | Medium |
 | Fill CCI gap | PDA TR27 (Package Integrity) | Medium |
 | Fill steam sterilization gap | ISO 17665 | Medium |
-| Complete ISPE #8-15 | Vol.6, GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT | Large (cumulative) |
+| Complete ISPE #9-15 | GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT | Large (cumulative) |
 | Additional FDA | Container Closure Guidance, Terminal Sterilization Guidance | Medium |
 | Additional USP | \<787\>, \<790\>, \<1228\>, \<1229\>, \<382\>, \<661\> | Medium (cumulative) |
 
@@ -222,9 +223,10 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 │   └── ...
 ├── PICS/                   # PIC/S (future)
 │   └── PICS-Annex1/
-├── FDA/                    # FDA Guidance for Industry (future)
+├── FDA/                    # FDA Guidance for Industry (scaffolded, content pending)
 │   ├── FDA-Aseptic/
-│   └── FDA-ProcessVal/
+│   ├── FDA-ProcessVal/
+│   └── FDA-ProcessInspection/
 ├── ICH/                    # ICH Q8, Q9, Q10 only (future)
 │   ├── ICH-Q8R2/
 │   ├── ICH-Q9R1/
@@ -259,11 +261,11 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 |--------|---------|--------|-------|
 | PDA | 33 | ~35 | Add TR27, TR36; complete 4 skeletons |
 | ISPE | 15 | 15 | Complete all scaffolded guides |
-| PIC/S | 0 | 1 | Annex 1 only |
-| FDA | 0 | 2-3 | Aseptic Processing, Process Validation, Container Closure |
-| ICH | 0 | 3 | Q8(R2), Q9(R1), Q10 |
+| PIC/S | 1 | 1 | Annex 1 ✅ |
+| FDA | 0 | 3-4 | Aseptic Processing, Process Validation, Process Inspection, Container Closure |
+| ICH | 3 | 3 | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ |
 | USP | 0 | 5-8 | \<71\>, \<85\>, \<788\>, \<1116\>, \<1211\>, optionally \<787\>, \<790\>, \<1228\> |
 | ISO | 0 | 2-3 | 14644-1/2/3, optionally 17665 |
-| **Total** | **48 (31 complete)** | **~65-70** | |
+| **Total** | **52 (45 complete)** | **~65-70** | |
 
 The infrastructure (tooling, workflow, dashboard, chatbot) is already built. The remaining work is content processing — the hardest part of the project is done.
