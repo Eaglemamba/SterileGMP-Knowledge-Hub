@@ -1144,6 +1144,36 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## PDA/TR1-Complete.md
+**Report:** PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes: Cycle Design, Development, Qualification and Ongoing Control
+**Pages:** p1–p57 | **Sections:** 7
+
+**Covers questions about:**
+- D-value, z-value, F0 value — definitions, calculations, and practical application
+- Overkill vs bioburden-based sterilization approach — how to choose and justify
+- Survivor curve model and SAL (Sterility Assurance Level) concept
+- Biological indicators (BI) — selection criteria, D-value determination, placement strategy
+- Steam quality requirements: saturated vs superheated steam, noncondensable gases, dryness fraction
+- Cycle types: gravity displacement, pre-vacuum/SFPP, liquid cycle, air-steam mixture
+- Load types: porous/hard goods vs liquid loads — cold spot identification and thermocouple placement
+- Cycle development workflow: temperature mapping, worst-case load, equilibration time, half-cycle studies
+- Process Performance Qualification (PPQ): physical and biological qualification, acceptance criteria
+- Bracketing and sterilizer equivalence strategies
+- Ongoing process control: parametric release, system suitability, change control, requalification
+
+**Key terms:** moist heat sterilization, autoclave, F0 value, D-value, z-value, SAL, overkill, bioburden-based, biological indicator (BI), Geobacillus stearothermophilus, survivor curve, lethality, lethal rate, cold spot, saturated steam, superheated steam, noncondensable gases, dryness fraction, pre-vacuum cycle, SFPP, gravity cycle, liquid cycle, SAM (steam-air mixture), temperature mapping, thermocouple, equilibration time, half-cycle study, worst-case load, PPQ, physical qualification, biological qualification, bracketing, parametric release, system suitability, requalification
+
+**Sections:**
+0. Introduction & Glossary (p3–p10) — 1.0–2.0
+1. Sterilization Science: Models & Lethality (p10–p18) — 3.0–3.1 (D-value, z-value, F0, overkill vs bioburden)
+2. Process Indicators & Thermal Science (p18–p25) — 3.2–3.3 (BI, chemical indicators, steam types, steam quality)
+3. Process Development: Design Approaches & Load Types (p25–p34) — 4.0–4.3
+4. Cycle Development & Stability Studies (p34–p42) — 4.4–4.5
+5. Process Performance Qualification (p42–p48) — 5.0–5.5 (physical/biological QPQ, bracketing)
+6. Ongoing Process Control & References (p48–p57) — 6.0–7.0
+
+---
+
 ## PDA/TR49-Complete.md
 **Report:** PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation
 **Pages:** p1–p76 | **Sections:** 9
@@ -1226,6 +1256,14 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
 | Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
+| Moist heat sterilization, autoclave, steam sterilization, F0 value, D-value, z-value / 濕熱滅菌、高壓滅菌釜、F0值、D值、z值 | TR1 |
+| Overkill approach, bioburden-based sterilization, SAL, 10^-6 sterility assurance / 過度殺滅法、生物負載法、無菌保證水準 | TR1 |
+| Biological indicator BI sterilization, Geobacillus stearothermophilus, BI D-value placement / 生物指示劑、嗜熱脂肪土芽孢桿菌 | TR1 |
+| Saturated steam, superheated steam, noncondensable gases, steam quality, dryness fraction / 飽和蒸汽、過熱蒸汽、不可凝氣體、蒸汽品質 | TR1 |
+| Pre-vacuum cycle SFPP, gravity cycle, liquid cycle, autoclave cycle type / 前真空週期、重力置換週期、液體滅菌週期 | TR1 |
+| Temperature mapping thermocouple, cold spot, worst-case load, equilibration time / 溫度分佈驗證、最冷點、最差情況負載、均衡時間 | TR1 |
+| PPQ physical qualification biological qualification autoclave, bracketing sterilizer equivalence / 製程效能確效、物理確效、生物確效、括弧策略 | TR1 |
+| Parametric release sterilization, requalification autoclave, system suitability moist heat / 參數放行、滅菌再確效、系統適用性 | TR1 |
 | Cleaning validation, carryover, MAC, MSSR, acceptance limits, biotechnology cleaning / 清潔驗證、殘留攜帶、最大允許攜帶量、生物技術清潔 | TR49 |
 | Biotech cleaning: swab vs rinse sampling, recovery study, sampler qualification / 生物製藥取樣方法、棉棒vs沖洗取樣、回收率研究 | TR49 |
 | TOC, total organic carbon, cleaning analytical method, LOD LOQ method validation / 總有機碳、清潔分析方法、偵測極限 | TR49 |
@@ -1408,6 +1446,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
+
+**Moist Heat Sterilization / Autoclave Validation (濕熱滅菌 / 高壓滅菌確效)**
+→ TR1 ★★★ (primary reference: F0/D-value/z-value science, overkill vs bioburden approaches, cycle types, temperature mapping, PPQ, parametric release, bracketing) | PICS-Annex1 ★★★ (regulatory requirements: terminal sterilization F0≥8, overkill F0≥12, sterilisation principles, EU GMP context) | TR60 ★★ (lifecycle validation framework applied to sterilization) | TR22 ★ (sterilization as prerequisite for aseptic processing)
 
 **Cleaning Validation (清潔驗證)**
 → TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)

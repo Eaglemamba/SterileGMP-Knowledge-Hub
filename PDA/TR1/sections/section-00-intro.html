@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR1 — Section 0: Introduction &amp; Glossary</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY TERM ENTRIES ===== */
+.glossary-entry {
+    margin-bottom: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #3182ce;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.glossary-entry .term-name {
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.glossary-entry .synonym {
+    font-style: italic;
+    color: var(--text-medium);
+    font-size: 0.88rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Glossary | 導論與術語詞彙</h1>
+    <div class="subtitle">PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</div>
+    <div class="page-info">Covers: 1.0 Introduction &bull; 1.1 Scope &bull; 2.0 Glossary of Terms</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== TOC ===== -->
+    <div class="toc">
+        <h3>Contents of This Section | 本節內容</h3>
+        <div class="toc-grid">
+            <a href="#sec-intro">1.0 Introduction</a>
+            <a href="#sec-scope">1.1 Scope</a>
+            <a href="#sec-glossary">2.0 Glossary of Terms</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.0 INTRODUCTION ===== -->
+    <div id="sec-intro" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.0</div>
+            <div class="chapter-info">
+                <h2>Introduction | 導論</h2>
+                <p>Historical context, objectives, and task force composition</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>PDA's original Technical Monograph No. 1, <em>Validation of Steam Sterilization Cycles</em>, published in 1978, introduced the principles of steam sterilization to an entire generation of pharmaceutical scientists and engineers. This revision retains the focus on microbiology and engineering of <span class="key-term">moist heat sterilization</span> in the original document, and updates it by including contemporary subject matter. References to appropriate and up-to-date scientific publications, international regulatory documents, journal articles, technical papers and books are used where more detail and supportive data can be found.</p>
+
+                    <p>The primary objective of the task force was to develop a scientific technical report on <span class="key-term">moist heat sterilization</span> that may be used in all regulatory environments. The report does not always address region-specific regulatory expectations, but provides up-to-date, scientific recommendations for use by industry and regulators. This report should be considered a guide and is not intended to establish standards for sterilization validation. It is intended to be a single-source overview that complements existing documents listed in the reference section.</p>
+
+                    <p>The task force was composed of European and North American industry and regulatory professionals to ensure the methods, terminology and practices of sterilization science presented reflect sound science and can be used globally. This technical report was disseminated in draft for public review and comment prior to publication to ensure its suitability as a valuable guide to industry in steam sterilization.</p>
+
+                    <p>The overarching goal was to provide enough information to convey an understanding of the science of moist heat sterilization with sufficient technical detail to assist in developing a sterilization policy.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">學習重點 | Learning Commentary (繁體中文)</h3>
+
+                    <div class="learning-objectives">
+                        <h3>學習目標 Learning Objectives</h3>
+                        <ul>
+                            <li>了解 PDA TR1 的歷史沿革與修訂目的</li>
+                            <li>掌握本報告的適用範圍與侷限性</li>
+                            <li>熟悉 2.0 節中所有關鍵術語的定義</li>
+                            <li>區分致死性相關指標（D值、z值、F0值）的概念差異</li>
+                            <li>了解過度殺滅法（Overkill）與生物負載法（Bioburden-based）的設計邏輯</li>
+                            <li>掌握 SAL（無菌保證水準）的量化意義</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>TR1 的歷史地位</h4>
+                        <p>PDA TR1 的前身是 1978 年發布的《蒸汽滅菌週期確效》技術專論，距今已超過 45 年。2007 年修訂版將標題更名為「濕熱滅菌製程確效」，涵蓋週期設計、開發、確效與持續管控，範圍更廣、科學依據更紮實。</p>
+                        <p>這份文件由歐美業界與法規專家共同撰寫，代表當時全球滅菌科學的共識基準，至今仍是 FDA 及 EMA 查廠時常被引用的工業指引。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要定位提醒</h4>
+                        <p>TR1 是「指引」（guide），<strong>不是法規標準</strong>。它不強制規定特定方法，但提供科學建議。實際操作時，仍需參考各地法規（FDA、EMA、PIC/S 等）。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比說明</h4>
+                        <p>把 TR1 想像成一本「最佳實務教科書」，不是法律條文。它告訴你「為什麼這樣做更科學」，而不是「你必須這樣做」。但查廠時若你的做法偏離 TR1，審查員可能會問你為何偏離，你需要有科學依據。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.1 SCOPE ===== -->
+    <div id="sec-scope" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.1</div>
+            <div class="chapter-info">
+                <h2>Scope | 適用範圍</h2>
+                <p>Structure of the report and boundaries of application</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+
+                    <p>The new title, "Validation of Moist Heat Sterilization Processes — Cycle Design, Development, Qualification and Ongoing Control" reflects the content of this technical report with a focus on manufacturing.</p>
+
+                    <p>This technical report is organized in a logical progression from the essential elements of sterilization science through sterilization <span class="key-term">cycle development</span> and qualification, as depicted in Figure 1.1-1.</p>
+
+                    <p>In the interest of clarity, the report begins with a glossary of technical terms, including synonyms. With <span class="key-term">validation</span> as the overarching theme, a discussion of microbiology and sterilization science, including thermal science (Section 3.0), is presented as the foundation.</p>
+
+                    <p>Process development (Section 4.0) presents the theory for the design of actual sterilization cycles used in pharmaceutical manufacturing, including <span class="key-term">overkill</span> and product-specific approaches. A decision tree provides a guide on how to select the most appropriate sterilization process for various load types. Example process parameter tables for liquid and porous/hard goods load types are given to assist in assessing risk associated with different cycle phases.</p>
+
+                    <p><span class="key-term">Process Performance Qualification (PPQ)</span> (Section 5.0) is the heart of sterilization process validation. Performance qualification of the sterilization cycle in a manufacturing plant or other facility is addressed using physical and biological qualification approaches. This discussion includes the practice and science necessary to demonstrate delivery of the desired <span class="key-term">lethality</span> in sterilizer systems.</p>
+
+                    <p>Ongoing controls (Section 6.0) address day-to-day performance considerations to maintain sterilization process state-of-control. The section covers change control, system suitability, and periodic requalification.</p>
+
+                    <p>Application of the concepts presented in this technical report to laboratories or other non-CGMP applications, including hospitals, is <strong>not intended</strong>. Other important elements such as facilities, equipment, maintenance, utilities and analytical qualification are not covered in this technical report.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3 class="column-header">學習重點 | Learning Commentary (繁體中文)</h3>
+
+                    <div class="concept-box">
+                        <h4>TR1 的報告架構</h4>
+                        <p>TR1 採用「由科學基礎到實務應用」的邏輯順序：</p>
+                        <ul>
+                            <li><strong>Section 2</strong>：術語定義（本節學習基礎）</li>
+                            <li><strong>Section 3</strong>：滅菌科學（微生物學 + 熱力學）</li>
+                            <li><strong>Section 4</strong>：製程開發（週期設計 + 決策樹）</li>
+                            <li><strong>Section 5</strong>：PPQ 製程效能確效（物理 + 生物確效）</li>
+                            <li><strong>Section 6</strong>：持續管控（變更管控 + 系統適用性 + 再確效）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>範圍邊界（重要！）</h4>
+                        <p>TR1 <strong>不適用</strong>於實驗室、醫院等非 CGMP 環境。設備確效（IQ/OQ）、設施、公用系統等也不在本報告範疇內。這些限制在查廠時很重要——別拿 TR1 當作設備確效的依據。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>PPQ 的核心地位</h4>
+                        <p>TR1 明確指出 PPQ（Section 5）是「滅菌製程確效的核心（heart）」。這句話點明了一個重要觀念：IQ/OQ 只是前提，真正能向法規機關證明製程有效的，是 PPQ 的物理與生物數據。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>兩種週期設計方法預告</h4>
+                        <p>Section 4 會介紹兩種主流設計方法：</p>
+                        <ul>
+                            <li><strong>過度殺滅法（Overkill）</strong>：不需了解生物負載，以最差情況假設設計，目標 F0 &gt; 12 分鐘</li>
+                            <li><strong>生物負載法（Bioburden-based / Product-Specific）</strong>：根據實際生物負載與產品熱敏感性設計，PNSU ≤ 10⁻⁶</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.0 GLOSSARY ===== -->
+    <div id="sec-glossary" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.0</div>
+            <div class="chapter-info">
+                <h2>Glossary of Terms | 術語詞彙</h2>
+                <p>Definitions and synonyms for all key terms used in this technical report</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Introductory note -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Original Text (English)</h3>
+                    <p>Term usage may differ from company to company, and some terms may be subject to change in the future. However, the terms used in a validation program must be clearly defined and well understood within the company. Regulatory guidelines may offer other definitions that should be considered. For the purposes of this technical report, the following terms are used and are accompanied by their definitions and synonyms, where applicable.</p>
+                </div>
+                <div class="right-column">
+                    <h3 class="column-header">學習重點 | Learning Commentary (繁體中文)</h3>
+                    <div class="concept-box">
+                        <h4>術語標準化的意義</h4>
+                        <p>TR1 強調術語必須在公司內部明確定義並達成共識。查廠時，審查員可能直接問「你們 F0 是如何定義的？」或「你們的 D值 是在哪個溫度下量測的？」確保 SOP 與確效文件中的術語與 TR1 一致，可大幅降低溝通風險。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Glossary A–F: Lethality Concepts -->
+            <h3 class="section-title">Glossary — Part 1: Lethality &amp; Measurement Concepts | 致死性與量測概念</h3>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Term Definitions (English)</h3>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">D-Value</span><br>
+                        The time in minutes required for a one-logarithm, or 90%, reduction of the population of microorganisms used as a biological indicator under specified lethal conditions. For steam sterilization, the D-value should always be specified with a reference temperature, D<sub>T</sub>. For example, a BI system with a D<sub>121°C</sub> = 1.4 minutes requires 1.4 minutes at 121°C to reduce the population by one logarithm.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">z-Value</span><br>
+                        The number of degrees of temperature change necessary to change the D-value by a factor of 10. The z-value allows integration of the lethal effects of heat as the temperature changes during the heating and cooling phases of a sterilization cycle.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">F-Value (Lethality Factor)</span><br>
+                        A measurement of sterilization effectiveness. F<sub>T,z</sub> is the calculated equivalent lethality (using a specified z-value), in terms of minutes at a reference temperature (T<sub>ref</sub>), delivered by a sterilization cycle to an item.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">F<sub>physical</sub></span><br>
+                        A term used to describe the delivered lethality calculated based on the physical parameters of the cycle. The F<sub>physical</sub>-value is the integration of the lethal rate (L) over time. The lethal rate is calculated for a reference temperature (T<sub>ref</sub>) and z-value using the equation: L = 10<sup>(T–T<sub>ref</sub>)/z</sup>.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">F<sub>0</sub></span><br>
+                        A term used when the specific reference conditions of T<sub>ref</sub> = 121.1°C and z = 10°C are used to calculate the equivalent lethality. For example, a cycle with an F<sub>0</sub> equal to 8 minutes is equivalent (in terms of delivered lethality) to a square wave cycle of 8 minutes at 121.1°C. <em>Note: 121°C is used throughout this report for brevity.</em>
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">F<sub>biological</sub></span><br>
+                        A term used to describe the delivered lethality, measured in terms of actual kill of microorganisms on or in a BI challenge system. The F<sub>biological</sub>-value is calculated as D<sub>T</sub> × LR, where D<sub>T</sub> is the D-value of the BI system at the reference temperature (T) and LR is the actual logarithmic reduction (log N<sub>0</sub> – log N<sub>F</sub>) of the BI population achieved during the cycle.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Lethality</span> — see F-Value, F<sub>0</sub>, F<sub>physical</sub>, F<sub>biological</sub> above.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Sterility Assurance Level (SAL)</span><br>
+                        Probability of a single viable microorganism occurring on an item after sterilization. <span class="synonym">[Synonym: PNSU]</span><br>
+                        <em>NOTE: The term SAL takes a quantitative value, generally 10<sup>–3</sup> or 10<sup>–6</sup>. An SAL of 10<sup>–6</sup> has a lower value but provides a greater assurance of sterility than an SAL of 10<sup>–3</sup>.</em>
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Probability of a Non-Sterile Unit (PNSU)</span><br>
+                        The number that expresses the probability of occurrence of a non-sterile unit after exposure to a sterilization process. Within the pharmaceutical industry, a design end point better than or equal to 10<sup>–6</sup> (one non-sterile unit per million) is expected. <span class="synonym">[Synonym: SAL]</span>
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Survivor Curve</span><br>
+                        Graphical representation of the inactivation of a population of microorganisms with increasing exposure to a microbicidal agent under stated conditions.
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">術語學習 — 致死性概念群 (繁體中文)</h3>
+
+                    <div class="formula-box">
+                        <h4>D值、z值、F0值的關係</h4>
+                        <pre>D值：殺死 90% 微生物所需的分鐘數（在特定溫度下）
+z值：使 D值 改變 10 倍所需的溫度變化（°C）
+F0值：以 121°C、z=10°C 為基準的等效滅菌時間（分鐘）
+
+公式：L（致死率）= 10^[(T - 121) / z]
+F0 = ∫L dt（對時間積分）</pre>
+                        <p>例如：若 D<sub>121°C</sub> = 1.5 分鐘，代表每隔 1.5 分鐘，微生物數量減少 90%（一個 log）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>SAL vs PNSU — 容易混淆的雙胞胎</h4>
+                        <p>SAL（無菌保證水準）和 PNSU（非無菌單位機率）是同一概念的不同稱呼。藥廠標準：PNSU ≤ 10<sup>–6</sup>，即每百萬個產品中非無菌品不超過 1 個。</p>
+                        <p><strong>注意反直覺邏輯</strong>：SAL 數字越小（10<sup>–6</sup> &lt; 10<sup>–3</sup>），無菌保證越高。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>F<sub>physical</sub> vs F<sub>biological</sub>：兩種驗證角度</h4>
+                        <ul>
+                            <li><strong>F<sub>physical</sub></strong>：從溫度感測器數據計算 → 物理確效（Physical Qualification）</li>
+                            <li><strong>F<sub>biological</sub></strong>：從 BI 實際存活數計算 → 生物確效（Biological Qualification）</li>
+                        </ul>
+                        <p>兩者需互相驗證：物理計算的 F0 應能預測 BI 的殺滅效果。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比：F0值 就像「等效工作時間」</h4>
+                        <p>想像你用 121°C 工作 8 分鐘，等同於你用 116°C 工作 25.9 分鐘（F0 同為 8 分鐘）。溫度越高，每分鐘的殺滅效果（致死率 L）越大。z值則描述溫度對效率的影響程度。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Glossary Part 2: BI Concepts -->
+            <h3 class="section-title">Glossary — Part 2: Biological Indicator Concepts | 生物指示劑相關概念</h3>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Term Definitions (English)</h3>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Biological Indicator Challenge System (BI)</span><br>
+                        A test system containing viable microorganisms of a pure, specified strain providing a defined resistance to a specified sterilization process. <span class="synonym">[Synonyms: BI Challenge System, Microbial Challenge, Microbiological Challenge System]</span>
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Biological Qualification</span><br>
+                        A component of performance qualification that demonstrates, by use of biological indicators, that the required lethality (F<sub>0</sub>) is achieved consistently throughout the load.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Half-Cycle Qualification</span><br>
+                        A qualification method that uses fifty percent of the exposure time to demonstrate sterilization cycle efficacy. The physical and biological lethality values achieved in the half-cycle exposure time are doubled to project the lethality that will be achieved by the full cycle.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Fraction-Negative Methods</span><br>
+                        Methods that use the starting population of a biological indicator (N<sub>0</sub>) and data in the quantal range to create a two-point line from which the D<sub>T</sub>-value can be determined. The quantal range is the exposure period over which a set of replicate test units exhibit a dichotomous response — some are positive for growth and the rest are negative for growth.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Resistometer</span><br>
+                        Test equipment designed to create defined combinations of the physical and/or chemical variables of a sterilization process. Formerly called biological indicator evaluator resistometers (BIER) vessels. Used primarily in the laboratory to determine D- and z-values.
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">術語學習 — 生物指示劑概念群 (繁體中文)</h3>
+
+                    <div class="concept-box">
+                        <h4>生物指示劑（BI）的功能</h4>
+                        <p>BI 是滅菌確效中的「終極考驗」——用已知數量、已知耐熱性的純培養微生物，實際放入滅菌器中測試。最常用的是 <em>Geobacillus stearothermophilus</em> 孢子，因其對濕熱具有高度耐受性。</p>
+                        <p>BI 的 D<sub>121°C</sub> 通常為 1.5～2.5 分鐘，初始孢子數約 10<sup>6</sup>，用於模擬最差情境。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>半週期確效法（Half-Cycle Qualification）</h4>
+                        <p>這是過度殺滅法（Overkill）中常見的確效策略：以正式週期一半的曝露時間進行測試，若 BI 全數滅活，則推論完整週期的殺滅能力至少是 2 倍，保守估計足以達到 10<sup>–6</sup> SAL。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>Fraction-Negative 方法類比</h4>
+                        <p>想像你在測試一批 BI：在某個曝露時間，有些 BI 長菌（陽性）、有些沒有（陰性）。這個「混合區間」就是 quantal range，用來精確推算 D 值。比直接用「全滅/全活」更有統計力。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Glossary Part 3: Process & Cycle Concepts -->
+            <h3 class="section-title">Glossary — Part 3: Process &amp; Cycle Concepts | 製程與週期概念</h3>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Term Definitions (English)</h3>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Sterilization Cycle</span><br>
+                        A sequence of defined operating parameters (e.g., time, temperature and pressure) and conditions required to render an item sterile.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Overkill Design Approach</span><br>
+                        A sterilization design approach where minimal information is required about the product bioburden. A worst-case bioburden assumption is used to determine the delivered lethality needed to achieve a PNSU of 10<sup>–6</sup>. When using this approach, the qualification program must demonstrate that both the F<sub>physical</sub> and F<sub>biological</sub> are greater than 12 minutes.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Product-Specific Design Approach</span><br>
+                        A sterilization design approach that is based on the characteristics of the bioburden (on or in the load) and the heat sensitivity of the product that delivers the lethality needed to achieve a PNSU of 10<sup>–6</sup>.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Process Performance Qualification (PPQ)</span><br>
+                        Documented verification that a system is capable of consistently performing or controlling the activities of the processes it is required to perform or control, according to written and preapproved specifications, while operating in its specified operating environment.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Physical Qualification</span><br>
+                        A component of performance qualification that demonstrates that predetermined physical requirements, including temperature distribution and heat penetration, are achieved consistently throughout the load.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Parametric Release</span><br>
+                        A sterility release system based upon effective control, monitoring, documentation, and batch records review of a validated sterilization process cycle in lieu of release procedures based upon end-product sterility testing.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Minimum Acceptable Cycle (MAC)</span><br>
+                        The minimum cycle (in terms of delivered lethality), as specified in operating procedures, that would be considered acceptable for load release.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Routine Operational Cycle</span><br>
+                        Parameters that are specified for ongoing sterilization operations. The operational cycle is typically controlled to produce additional lethality over the qualified minimum acceptable cycle in order to provide increased sterility assurance.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Bracketing Approach</span><br>
+                        A scientific approach for defining product/load characteristics (e.g., viscosity, container sizes, fill volumes, item sizes, loading configurations) that are tested at upper and/or lower limits.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Worst-Case Load</span><br>
+                        The load configuration that is determined to be most difficult to sterilize. This is a function of the cycle control strategy and load item characteristics (e.g., mass, configuration, or air removal challenges). For porous/hard goods loads, this may not necessarily be the minimum or maximum load.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Chamber Cold Spot</span><br>
+                        The location(s) within the load zone that achieves the lowest process lethality (F<sub>0</sub>) and/or the lowest distribution temperatures during the sterilization process.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Container Cold Spot</span><br>
+                        The location within a sealed liquid container that achieves the lowest process lethality (F<sub>0</sub>) during a sterilization process.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Terminal Sterilization</span><br>
+                        A process whereby product is sterilized within its sterile barrier system.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Validation</span><br>
+                        A documented program that provides a high level of scientific assurance that a manufacturing process will reliably produce acceptable product. The proof of validation is obtained through rational experimental design and the evaluation of data, preferably beginning from the process development phase and continuing through the commercial production phase.
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">術語學習 — 製程與週期概念群 (繁體中文)</h3>
+
+                    <div class="concept-box">
+                        <h4>兩種主流設計方法比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>過度殺滅法 (Overkill)</th>
+                                    <th>生物負載法 (Product-Specific)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>生物負載資訊需求</td>
+                                    <td>最少（假設最差情況）</td>
+                                    <td>需了解實際生物負載</td>
+                                </tr>
+                                <tr>
+                                    <td>F0 目標</td>
+                                    <td>&gt; 12 分鐘（F<sub>physical</sub> 和 F<sub>biological</sub>）</td>
+                                    <td>根據負載計算，PNSU ≤ 10<sup>–6</sup></td>
+                                </tr>
+                                <tr>
+                                    <td>適用產品</td>
+                                    <td>熱穩定性好的產品</td>
+                                    <td>熱敏感性產品（如蛋白質藥物）</td>
+                                </tr>
+                                <tr>
+                                    <td>驗證複雜度</td>
+                                    <td>相對簡單</td>
+                                    <td>需要更多數據與科學論證</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>MAC vs Routine Cycle — 操作上的緩衝</h4>
+                        <p><strong>MAC</strong>（最低可接受週期）是放行的最低門檻；<strong>Routine Cycle</strong>（日常操作週期）通常設計為比 MAC 還多給一些致死量（lethality margin）。這樣即使設備有輕微波動，仍能超過 MAC 放行。查廠時需能清楚解釋兩者的差異。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Cold Spot（冷點）的重要性</h4>
+                        <p>冷點是整個滅菌負載中接受到最少致死量的位置，是 Physical Qualification 的重點量測對象。確效必須在冷點位置安裝熱電偶，確保即使在最難達到高溫的地方，F0 仍然達標。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Parametric Release（參數放行）</h4>
+                        <p>傳統放行需做最終產品無菌測試（成本高、時間長）。Parametric Release 允許以已驗證的製程物理參數數據取代最終無菌測試，條件是：製程已充分驗證、控制完善、記錄齊全。歐盟法規（Annex 1）已認可此方法。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>Bracketing 策略類比</h4>
+                        <p>想像你有 10 種不同容量的注射瓶（5 mL 到 500 mL）。Bracketing 的邏輯是：只確效最小（5 mL，最快達溫）和最大（500 mL，最慢達溫）兩個極端，中間尺寸視為「已被涵蓋」。這大幅減少確效工作量，但需要科學論證支持。</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Glossary Part 4: Steam & Equipment Concepts -->
+            <h3 class="section-title">Glossary — Part 4: Steam Types &amp; Equipment Concepts | 蒸汽類型與設備概念</h3>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 class="column-header">Term Definitions (English)</h3>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Moist Heat</span><br>
+                        Steam, steam-air mixtures, and superheated water used for sterilization.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Saturated Steam</span><br>
+                        Steam that is at a temperature and pressure that corresponds to the vaporization curve of water. It is in a state of equilibrium between being a liquid and a gas, with no entrained liquid water. <span class="synonym">[Synonym: Dry Saturated Steam]</span>
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Superheated Steam</span><br>
+                        Steam whose temperature, at a given pressure, is higher than that indicated by the equilibration curve for the vaporization of water.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Superheated Water Process</span><br>
+                        A sterilization process in which the heating medium is superheated water that is continuously circulated with air overpressure. This process requires air overpressure to keep the water in a liquid state. <span class="synonym">[Synonyms: water cascade, water spray process, water immersion process, water submersion process, raining water process, steam-air-water process]</span>
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Steam-Air Mixture (SAM) Process</span><br>
+                        A sterilization process in which the heating medium is a mixture of air and steam, typically used for liquid loads. This addition of air results in an air overpressure condition.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Air Overpressure Sterilization Process</span><br>
+                        A moist heat sterilization process that operates at a controlled pressure greater than saturated steam pressure and typically uses compressed air to bring the chamber to the desired pressure.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Gravity Displacement Process</span><br>
+                        A sterilization process based on the principle that cold air within the chamber is heavier than the steam entering and will sink to the bottom. As steam enters the chamber, air is pushed out the bottom drain and exits, with the condensate, through a steam trap.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Prevacuum Process</span><br>
+                        A sterilization process in which air is removed from the chamber using a vacuum pump or other mechanical system before the exposure phase begins. Particularly suited to load items that can trap air such as tubing, filters and filling machine assemblies.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Pure Steam</span><br>
+                        Steam whose condensate complies with the compendial monograph, Water for Injection (WFI).
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Noncondensable Gases</span><br>
+                        Air and other gases that will not condense to liquid state, thereby not releasing latent heat under the conditions of sterilization.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Dryness Fraction</span><br>
+                        An absolute measure of the actual latent heat of a sample of steam relative to the theoretical latent heat of saturated steam.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Porous/Hard Goods Load (P/HG)</span><br>
+                        A load consisting of items in which the bioburden is inactivated through direct contact with saturated steam. Includes filters, stoppers, tubing (hoses), mops, garments, cleaning equipment, or machine change parts.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Liquid Load</span><br>
+                        A load consisting of closed containers of aqueous liquids. Sterilization is achieved through transfer of energy through the container into the aqueous liquid.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">System Suitability Evaluations</span><br>
+                        Physical evaluations (e.g., chamber integrity or air removal) conducted on a scheduled frequency to demonstrate ongoing control of the sterilizer system.
+                    </div>
+
+                    <div class="glossary-entry">
+                        <span class="key-term">Calibration</span><br>
+                        The demonstration that an instrument or device produces results within specified limits when compared to those produced by a reference standard or a standard that is traceable to national or international standards over an appropriate range of measurements.
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3 class="column-header">術語學習 — 蒸汽類型與設備群 (繁體中文)</h3>
+
+                    <div class="concept-box">
+                        <h4>三種主要滅菌介質比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>介質類型</th>
+                                    <th>中文</th>
+                                    <th>主要用途</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Saturated Steam</td>
+                                    <td>飽和蒸汽</td>
+                                    <td>多孔/硬質貨物（最標準的方法）</td>
+                                </tr>
+                                <tr>
+                                    <td>Steam-Air Mixture</td>
+                                    <td>蒸汽-空氣混合物</td>
+                                    <td>液態負載（防止容器爆裂）</td>
+                                </tr>
+                                <tr>
+                                    <td>Superheated Water</td>
+                                    <td>過熱水</td>
+                                    <td>液態負載（水噴淋/水浸泡式）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>超熱蒸汽（Superheated Steam）的危險</h4>
+                        <p>超熱蒸汽雖然溫度高，但殺菌效果比飽和蒸汽<strong>差</strong>！原因是超熱蒸汽缺乏濕氣（latent heat），無法有效將熱量傳遞給微生物的蛋白質。飽和蒸汽的冷凝液化才是濕熱殺菌的主要機制。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>重力排氣法 vs 預真空法</h4>
+                        <ul>
+                            <li><strong>重力排氣法（Gravity Displacement）</strong>：適合簡單的液態或無孔洞負載；空氣從底部排出，但排氣不完全。</li>
+                            <li><strong>預真空法（Prevacuum）</strong>：適合多孔、管狀、或複雜形狀的硬質貨物；機械泵強制抽真空，排氣效果更佳。填充機組件（灌裝機零件）必用此法。</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>不可凝氣體（Noncondensable Gases）的問題</h4>
+                        <p>空氣（不可凝氣體）如果殘留在滅菌腔中，會在某些位置形成「空氣包」，導致該區域溫度偏低、達不到滅菌效果。這就是為什麼空氣去除測試（Air Removal Test / Bowie-Dick Test）是 P/HG 負載確效的關鍵步驟。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Pure Steam vs Industrial Steam</h4>
+                        <p>Pure Steam（純蒸汽）的冷凝水需符合注射用水（WFI）標準，無熱原、微生物、重金屬超標等問題。直接接觸產品或產品接觸面的滅菌必須使用 Pure Steam，不可用工業蒸汽（Industrial Steam）。這是 GMP 基本要求。</p>
+                    </div>
+
+                    <!-- Practice Questions -->
+                    <div class="practice-box">
+                        <h4>練習題 Practice Questions</h4>
+                        <ol>
+                            <li style="margin-bottom:0.75rem"><strong>Q1：</strong>某 BI 的 D<sub>121°C</sub> = 2.0 分鐘，初始菌數 N<sub>0</sub> = 10<sup>6</sup>。若以 Overkill 法設計，理論上完整週期（F<sub>0</sub> &gt; 12 分鐘）能達到幾個 log 的降低？SAL 是否滿足 10<sup>–6</sup> 的要求？請說明計算邏輯。</li>
+                            <li><strong>Q2：</strong>一家工廠的注射劑滅菌器使用重力排氣法（Gravity Displacement），但某批次在確效時，腔室角落的熱電偶讀數比設定溫度低 2°C，持續整個曝露期間。請問：(a) 這代表什麼問題？(b) 應如何評估對 F0 的影響？(c) 下一步應採取什麼行動？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end sec-glossary -->
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</p>
+    <p>Cycle Design, Development, Qualification and Ongoing Control</p>
+    <p style="margin-top:0.5rem; opacity:0.6; font-size:0.8rem;">SterileGMP Knowledge Hub — Bilingual Educational Series</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
